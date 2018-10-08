@@ -18,7 +18,7 @@ plotZerosVsDepth(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
@@ -42,10 +42,9 @@ Calculate and visualize the dropout rate.
 plotZerosVsDepth(sce_small)
 }
 \seealso{
-Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotCountsPerBiotype}},
+Other Plot Functions: \code{\link{plotCountsPerBiotype}},
   \code{\link{plotGene}}, \code{\link{plotHeatmap}},
-  \code{\link{plotQC}}, \code{\link{plotQuantileHeatmap}}
+  \code{\link{plotQC}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

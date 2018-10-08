@@ -1,28 +1,12 @@
-# FIXME Return as `EggNOG` class.
-
-
-
-#' EggNOG Annotations
+#' `EggNOG` Generator
 #'
-#' EggNOG is a hierarchical orthology framework with functional annotations for
-#' eukaryotic, prokaryotic, and viral genomes.
-#'
-#' @family Annotation Functions
+#' @family S4 Generators
 #' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general
 #'
-#' @seealso [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt).
-#'
-#' @return `list` containing:
-#'
-#' 1. "`cogFunctionalCategories`": **C**luster of **O**rthologous **G**roups
-#'    (COG) functional category information.
-#' 2. "`annotations`": up-to-date functional descriptions and categories
-#'    for **Eu**karyotes **N**on-supervised **O**rthologous **G**roups (euNOG)
-#'    and **N**on-supervised **O**rthologous **G**roups (NOG) protein
-#'    identifiers.
+#' @return `EggNOG`.
 #'
 #' @examples
 #' x <- eggnog(.test = TRUE)
@@ -110,8 +94,11 @@ eggnog <- function(.test = FALSE) {
         arrange(!!sym("eggnogID"))
 
     # Return -------------------------------------------------------------------
-    list(
-        cogFunctionalCategories = categories,
-        annotations = annotations
+    new(
+        Class = "EggNOG",
+        list(
+            cogFunctionalCategories = categories,
+            annotations = annotations
+        )
     )
 }

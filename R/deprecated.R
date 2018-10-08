@@ -141,17 +141,11 @@ sanitizeAnnotable <- function(...) {
     sanitizeRowData(...)
 }
 
-# #' @rdname defunct
-# #' @export
-# tx2gene <- function(...) {
-#     .Defunct("makeTx2geneFromGFF or bcbioBase::readTx2gene")
-# }
-
 #' @rdname deprecated
 #' @export
 tx2geneFromGFF <- function(...) {
-    .Deprecated("makeTx2geneFromGFF")
-    makeTx2geneFromGFF(...)
+    .Deprecated("makeTx2GeneFromGFF")
+    makeTx2GeneFromGFF(...)
 }
 
 #' @rdname deprecated
@@ -221,29 +215,6 @@ paperwhiteTheme <- function(...) {
 
 
 
-# v0.6.2 =======================================================================
-#' @rdname defunct
-#' @export
-setMethod(
-    f = "broadClass",
-    signature = signature("data.frame"),
-    definition = function(object) {
-        .Defunct(
-            msg = "`broadClass()` now requires a `GRanges` class object"
-        )
-    }
-)
-
-#' @rdname defunct
-#' @export
-setMethod(
-    f = "broadClass",
-    signature = signature("DataFrame"),
-    definition = getMethod("broadClass", "data.frame")
-)
-
-
-
 # v0.6.3 =======================================================================
 #' @rdname defunct
 #' @export
@@ -266,6 +237,27 @@ assertIsURL <- function(...) {
 # v0.99.0 ======================================================================
 #' @rdname deprecated
 #' @export
+aggregateFeatures <- function(...) {
+    .Deprecated("aggregateRows")
+    aggregateRows(...)
+}
+
+#' @rdname deprecated
+#' @export
+aggregateReplicates <- function(...) {
+    .Deprecated("aggregateCols")
+    aggregateCols(...)
+}
+
+#' @rdname deprecated
+#' @export
+aggregateSamples <- function(...) {
+    .Deprecated("aggregateCols")
+    aggregateCols(...)
+}
+
+#' @rdname deprecated
+#' @export
 assertIsAHeaderLevel <- function(...) {
     .Deprecated("assertIsHeaderLevel")
     assertIsHeaderLevel(...)
@@ -282,6 +274,18 @@ assertIsCharacterOrNULL <- function(object, ...) {
     )
 }
 
+#' @rdname defunct
+#' @export
+assertIsGene2symbol <- function(...) {
+    .Defunct(msg = "Create `Gene2Symbol` class object.")
+}
+
+#' @rdname defunct
+#' @export
+assertIsTx2gene <- function(...) {
+    .Defunct(msg = "Create `Tx2Gene` class object.")
+}
+
 #' @rdname deprecated
 #' @export
 assertIsDataFrameOrNULL <- function(object, ...) {
@@ -291,6 +295,12 @@ assertIsDataFrameOrNULL <- function(object, ...) {
         classes = c("data.frame", "NULL"),
         ...
     )
+}
+
+#' @rdname defunct
+#' @export
+broadClass <- function(object, ...) {
+    .Defunct("makeGRanges")
 }
 
 #' @rdname deprecated
@@ -312,6 +322,12 @@ fixNA <- function(...) {
 flatFiles <- function(object) {
     .Deprecated("coerceS4ToList(from), as(object, \"list\"), or as.list(x)")
     coerceS4ToList(from = object)
+}
+
+#' @rdname deprecated
+#' @export
+grepString <- function(...) {
+    .Defunct("")
 }
 
 #' @rdname deprecated
@@ -381,6 +397,8 @@ separatorBar <- function(...) {
 setArgsToDoCall <- function(...) {
     .Defunct("matchArgsToDoCall")
 }
+
+# FIXME Deprecate the camel variants of makeGene2symbol and makeTx2gene
 
 
 

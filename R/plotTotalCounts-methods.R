@@ -8,6 +8,7 @@
 #' @inheritParams general
 #'
 #' @examples
+#' data(rse_small, sce_small)
 #' plotTotalCounts(rse_small)
 #' plotTotalCounts(sce_small)
 NULL

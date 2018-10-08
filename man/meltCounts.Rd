@@ -4,7 +4,7 @@
 \name{meltCounts}
 \alias{meltCounts}
 \alias{meltCounts,SummarizedExperiment-method}
-\title{Melt Counts Matrix to Long Format}
+\title{Melt Count Matrix to Long Format}
 \usage{
 meltCounts(object, ...)
 
@@ -16,13 +16,13 @@ meltCounts(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{nonzeroGenes}{\code{boolean}. Return only non-zero genes.}
 
 \item{trans}{\code{string}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
-the counts matrix prior to melting, if desired. Use \code{"identity"} to return
+the count matrix prior to melting, if desired. Use \code{"identity"} to return
 unmodified (default).}
 }
 \value{
@@ -30,29 +30,24 @@ unmodified (default).}
 (e.g. gene ID).
 }
 \description{
-Melt Counts Matrix to Long Format
+Melt Count Matrix to Long Format
 }
 \examples{
+data(rse_small)
 x <- meltCounts(rse_small)
 print(x)
 }
 \seealso{
 \code{\link[reshape2:melt]{reshape2::melt()}}.
 
-Other Data Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{aggregateCols}}, \code{\link{cell2sample}},
-  \code{\link{counts}},
-  \code{\link{makeSingleCellExperiment}},
+Other Data Functions: \code{\link{aggregate}},
+  \code{\link{combine}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapCellsToSamples}},
-  \code{\link{mapGenesToIDs}},
-  \code{\link{metricsPerSample}}, \code{\link{metrics}},
+  \code{\link{mapGenes}}, \code{\link{metrics}},
   \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{subsetPerSample}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh

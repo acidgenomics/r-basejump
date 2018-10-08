@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.99.0
-Date: 2018-10-02
+Date: 2018-10-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -29,7 +29,6 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: TRUE
 Depends:
     R (>= 3.5),
     SummarizedExperiment
@@ -106,28 +105,23 @@ Collate:
     'MethodDefinition.R'
     'RdTags.R'
     'aggregate-methods.R'
-    'aggregateCellsToSamples-methods.R'
-    'assert-internal.R'
     'assert.R'
-    'saveData.R'
-    'assignAndSaveData.R'
     'basejump-package.R'
-    'broadClass-methods.R'
     'cell2sample-methods.R'
     'coerce-methods.R'
     'collapseToString-methods.R'
     'combine-methods.R'
     'makeGRanges.R'
     'convertGenesToSymbols-methods.R'
-    'makeTx2gene.R'
+    'makeTx2Gene.R'
     'convertTranscriptsToGenes-methods.R'
     'convertUCSCBuildToEnsembl.R'
     'counts-methods.R'
     'data.R'
     'deprecated.R'
-    'detectHPC.R'
-    'detectLanes.R'
+    'detect.R'
     'dots.R'
+    'dplyr-methods.R'
     'eggnog.R'
     'emptyRanges.R'
     'ensembl2entrez.R'
@@ -136,22 +130,16 @@ Collate:
     'geneSynonyms.R'
     'general.R'
     'geometricMean-methods.R'
-    'ggplot2-internal.R'
-    'ggplot2_geoms.R'
-    'ggplot2_themes.R'
+    'ggplot2.R'
     'globals.R'
-    'grepString.R'
     'hgnc2ensembl.R'
     'import.R'
     'initializeDirectory.R'
     'interestingGroups-methods.R'
-    'load-internal.R'
     'loadData.R'
-    'loadDataAsName.R'
-    'loadRemoteData.R'
     'localOrRemoteFile.R'
     'logRatio-methods.R'
-    'makeGene2symbol.R'
+    'makeGene2Symbol.R'
     'makeNames-methods.R'
     'makeSingleCellExperiment.R'
     'makeSummarizedExperiment.R'
@@ -168,7 +156,6 @@ Collate:
     'matchInterestingGroups.R'
     'meltCounts-methods.R'
     'metrics-methods.R'
-    'metricsPerSample-methods.R'
     'mgi2ensembl.R'
     'microplate.R'
     'minimalSampleData.R'
@@ -177,7 +164,6 @@ Collate:
     'panther.R'
     'parseRd.R'
     'pheatmap-internal.R'
-    'plotCorrelationHeatmap-methods.R'
     'plotCountsPerBiotype-methods.R'
     'plotCountsPerGene-methods.R'
     'plotGene-methods.R'
@@ -185,7 +171,6 @@ Collate:
     'plotGenesDetected-methods.R'
     'plotHeatmap-methods.R'
     'plotQC-methods.R'
-    'plotQuantileHeatmap-methods.R'
     'plotTotalCounts-methods.R'
     'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
@@ -198,6 +183,7 @@ Collate:
     'sanitizePercent-methods.R'
     'sanitizeRowData.R'
     'sanitizeSampleData.R'
+    'saveData.R'
     'saveRdExamples.R'
     'selectSamples-methods.R'
     'separator.R'
@@ -205,9 +191,8 @@ Collate:
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
-    'tidy-methods.R'
     'toStringUnique.R'
-    'topCells-methods.R'
+    'topCellsPerSample-methods.R'
     'tpm-methods.R'
     'transmit.R'
     'tx2gene-methods.R'

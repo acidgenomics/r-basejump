@@ -9,24 +9,25 @@ reference:
   - title: S4 Classes
     contents:
     - ends_with("-class")
-  - title: Annotation Functions
+  - title: S4 Generators
     contents:
-    - broadClass
-    - starts_with("convert")
     - eggnog
-    - emptyRanges
     - ensembl2entrez
     - gene2symbol
-    - geneSynonyms
     - hgnc2ensembl
+    - mgi2ensembl
+    - panther
+    - tx2gene
+  - title: Annotation Functions
+    contents:
+    - starts_with("convert")
+    - emptyRanges
+    - geneSynonyms
     - makeGene2symbol
     - makeGRanges
     - makeTx2gene
-    - mgi2ensembl
     - organism
     - starts_with("strip")
-    - panther
-    - tx2gene
   - title: Read/Write Functions
     contents:
     - starts_with("assign")
@@ -43,12 +44,21 @@ reference:
     - counts
     - interestingGroups
     - makeSummarizedExperiment
-    - mapGenesToIDs
+    - starts_with("mapGenes")
     - meltCounts
     - metrics
+    - minimalSampleData
     - sampleData
     - sampleNames
     - selectSamples
+    - subsetPerSample
+    - tpm
+  - title: Single-Cell Functions
+    contents:
+    - cell2sample
+    - makeSingleCellExperiment
+    - mapCellsToSamples
+    - topCellsPerSample
   - title: Sanitization Functions
     contents:
     - makeNames
@@ -59,11 +69,11 @@ reference:
     - starts_with("plot")
   - title: ggplot2 Functions
     contents:
-    - starts_with("ggplot2_")
+    - starts_with("ggplot2-")
   - title: Math and Science Functions
     contents:
-    - matches("Change")
-    - matches("Mean")
+    - geometricMean
+    - logRatio
     - microplate
   - title: R Markdown Functions
     contents:
@@ -72,7 +82,6 @@ reference:
   - title: Atomic Vector Functions
     contents:
     - collapseToString
-    - grepString
     - sortUnique
     - toStringUnique
   - title: Coercion Methods
@@ -80,6 +89,7 @@ reference:
     - starts_with("coerce")
   - title: Developer Functions
     contents:
+    - starts_with("detect")
     - dots
     - starts_with("initialize")
     - localOrRemoteFile
@@ -100,6 +110,8 @@ reference:
     - starts_with("assert")
   - title: Example Datasets
     contents:
-    - ends_with("_counts")
-    - ends_with("_markers")
     - ends_with("_small")
+  - title: Internal Data
+    contents:
+    - gender_markers
+    - organism_mappings

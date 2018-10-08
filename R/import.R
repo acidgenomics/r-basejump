@@ -1,7 +1,3 @@
-# FIXME Update the Excel example.
-
-
-
 #' Import
 #'
 #' Read file by extension into R.

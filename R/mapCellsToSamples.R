@@ -4,7 +4,7 @@
 #' matching.
 #'
 #' @name mapCellsToSamples
-#' @family Data Functions
+#' @family Single-Cell Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

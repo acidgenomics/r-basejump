@@ -2,7 +2,7 @@
 % Please edit documentation in R/eggnog.R
 \name{eggnog}
 \alias{eggnog}
-\title{EggNOG Annotations}
+\title{\code{EggNOG} Generator}
 \usage{
 eggnog(.test = FALSE)
 }
@@ -10,40 +10,21 @@ eggnog(.test = FALSE)
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
-\code{list} containing:
-\enumerate{
-\item "\code{cogFunctionalCategories}": \strong{C}luster of \strong{O}rthologous \strong{G}roups
-(COG) functional category information.
-\item "\code{annotations}": up-to-date functional descriptions and categories
-for \strong{Eu}karyotes \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (euNOG)
-and \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (NOG) protein
-identifiers.
-}
+\code{EggNOG}.
 }
 \description{
-EggNOG is a hierarchical orthology framework with functional annotations for
-eukaryotic, prokaryotic, and viral genomes.
+\code{EggNOG} Generator
 }
 \examples{
 x <- eggnog(.test = TRUE)
 print(x)
 }
 \seealso{
-\href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}.
-
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},
-  \code{\link{gene2symbol}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{organism}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+Other S4 Generators: \code{\link{ensembl2entrez}},
+  \code{\link{gene2symbol}}, \code{\link{hgnc2ensembl}},
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{S4 Generators}

@@ -15,6 +15,8 @@
 #' @return `ggplot`.
 #'
 #' @examples
+#' data(rse_small, sce_small)
+#'
 #' # SummarizedExperiment ====
 #' plotCountsPerGene(rse_small, geom = "density")
 #' plotCountsPerGene(rse_small, geom = "boxplot")

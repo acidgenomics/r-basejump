@@ -1,5 +1,7 @@
 #' Counts
 #'
+#' Count matrix.
+#'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
 #'   defined in [assayNames()].
 #'
@@ -10,7 +12,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return Counts matrix. Typically `matrix` or `sparseMatrix` class.
+#' @return Matrix. Typically `matrix` or `sparseMatrix` class.
 #'
 #' @examples
 #' # SummarizedExperiment ====

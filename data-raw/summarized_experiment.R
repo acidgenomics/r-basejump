@@ -73,10 +73,10 @@ rse_small <- rse
 devtools::use_data(rse_small, compress = "xz", overwrite = TRUE)
 
 # tx_se_small ==================================================================
-tx2gene <- makeTx2geneFromEnsembl(organism, release = release)
+tx2gene <- makeTx2GeneFromEnsembl(organism, release = release)
 print(tx2gene)
 # Pick transcripts that have gene overlaps, to test our aggregate code.
-transcriptIDs <- c(
+transcripts <- c(
     "ENST00000494424",
     "ENST00000496771",
     "ENST00000612152",
@@ -84,18 +84,27 @@ transcriptIDs <- c(
     "ENST00000371588",
     "ENST00000413082"
 )
-stopifnot(all(transcriptIDs %in% rownames(tx2gene)))
-sampleIDs <- paste0("sample", seq_len(4L))
+samples <- paste0("sample", seq_len(4L))
 counts <- matrix(
-    data = seq_len(length(transcriptIDs) * length(sampleIDs)),
+    data = seq_len(length(transcripts) * length(samples)),
     byrow = TRUE,
-    nrow = length(transcriptIDs),
-    ncol = length(sampleIDs),
-    dimnames = list(transcriptIDs, sampleIDs)
+    nrow = length(transcripts),
+    ncol = length(samples),
+    dimnames = list(transcripts, samples)
 )
+rowData <- tx2gene %>%
+    as("DataFrame") %>%
+    .[
+        match(
+            x = rownames(counts),
+            table = .[["transcriptID"]]
+        ),
+        ,
+        drop = FALSE
+    ]
 se <- SummarizedExperiment(
     assays = list(counts = counts),
-    rowData = tx2gene[rownames(counts), , drop = FALSE],
+    rowData = rowData,
     metadata = list(date = Sys.Date())
 )
 # Report the size of each slot in bytes.

@@ -3,11 +3,20 @@
 \docType{methods}
 \name{gene2symbol}
 \alias{gene2symbol}
+\alias{Gene2Symbol}
+\alias{gene2symbol,tbl_df-method}
+\alias{gene2symbol,DataFrame-method}
 \alias{gene2symbol,GRanges-method}
 \alias{gene2symbol,SummarizedExperiment-method}
-\title{Gene-to-Symbol Mappings}
+\title{\code{Gene2Symbol} Generator}
 \usage{
 gene2symbol(object, ...)
+
+Gene2Symbol(object, ...)
+
+\S4method{gene2symbol}{tbl_df}(object)
+
+\S4method{gene2symbol}{DataFrame}(object)
 
 \S4method{gene2symbol}{GRanges}(object)
 
@@ -19,10 +28,10 @@ gene2symbol(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{gene2symbol}.
+\code{Gene2Symbol}.
 }
 \description{
-Gene-to-Symbol Mappings
+\code{Gene2Symbol} Generator
 }
 \note{
 This function will make any duplicated symbols unique by applying
@@ -30,23 +39,16 @@ This function will make any duplicated symbols unique by applying
 }
 \examples{
 # SummarizedExperiment ====
+data(rse_small)
 x <- gene2symbol(rse_small)
 print(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{eggnog}}, \code{\link{emptyRanges}},
-  \code{\link{ensembl2entrez}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{organism}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+Other S4 Generators: \code{\link{eggnog}},
+  \code{\link{ensembl2entrez}}, \code{\link{hgnc2ensembl}},
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{S4 Generators}

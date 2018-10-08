@@ -3,7 +3,7 @@
 #' @note `sampleID` column must be defined in [colData()].
 #'
 #' @name cell2sample
-#' @family Data Functions
+#' @family Single-Cell Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
@@ -14,6 +14,7 @@
 #' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
 #'
 #' @examples
+#' data(sce_small)
 #' x <- cell2sample(sce_small)
 #' table(x)
 NULL

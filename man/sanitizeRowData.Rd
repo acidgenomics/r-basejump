@@ -20,6 +20,7 @@ Complex columns (e.g. Entrez ID \code{list}) will fail to write to disk as CSVs.
 Supports \code{GRanges} and \code{DataFrame} class objects.
 }
 \examples{
+data(rse_small)
 from <- SummarizedExperiment::rowRanges(rse_small)
 colnames(S4Vectors::mcols(from))
 to <- sanitizeRowData(from)
@@ -27,8 +28,8 @@ vapply(to, is.atomic, logical(1L))
 print(to)
 }
 \seealso{
-Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{collapseToString}}, \code{\link{removeNA}},
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{makeNames}}, \code{\link{removeNA}},
   \code{\link{sanitizeNA}}, \code{\link{sanitizePercent}},
   \code{\link{sanitizeSampleData}}
 }

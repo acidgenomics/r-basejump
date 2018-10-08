@@ -63,21 +63,11 @@ x <- makeSingleCellExperiment(
 print(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{aggregateCols}}, \code{\link{cell2sample}},
-  \code{\link{counts}},
-  \code{\link{makeSummarizedExperiment}},
+Other Single-Cell Functions: \code{\link{cell2sample}},
   \code{\link{mapCellsToSamples}},
-  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metricsPerSample}}, \code{\link{metrics}},
-  \code{\link{minimalSampleData}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{topCellsPerSample}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{Single-Cell Functions}

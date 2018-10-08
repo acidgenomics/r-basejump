@@ -1,4 +1,4 @@
-# TODO Add SCE method support, writing out reducedDims
+# TODO Add SCE method support, writing out reducedDims if defined.
 
 
 

@@ -150,16 +150,12 @@ glimpse(x)
 \item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
 }
 
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{eggnog}}, \code{\link{emptyRanges}},
-  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
-  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{organism}},
-  \code{\link{panther}},
+  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
+  \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
+  \code{\link{organism}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

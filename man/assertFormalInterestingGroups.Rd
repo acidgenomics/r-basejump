@@ -19,6 +19,7 @@ Prevent unwanted downstream behavior when a missing interesting group
 is requested by the user.
 }
 \examples{
+data(rse_small)
 assertFormalInterestingGroups(rse_small, "treatment")
 assertFormalInterestingGroups(rse_small, NULL)
 }
@@ -41,11 +42,9 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsDir}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
-  \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHeaderLevel}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}
+  \code{\link{assertIsImplicitInteger}}
 }
 \author{
 Michael Steinbaugh

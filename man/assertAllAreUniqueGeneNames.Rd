@@ -21,9 +21,10 @@ unique (non-amgibuous) symbols. It is designed to be used for gene plotting
 particularly when performing single-cell RNA-seq marker analysis.
 }
 \examples{
+data(rse_small)
 object <- rse_small
 print(object)
-genes <- head(as.character(rowData(rse_small)[["geneName"]]))
+genes <- head(as.character(rowData(object)[["geneName"]]))
 print(genes)
 assertAllAreUniqueGeneNames(object = object, genes = genes)
 }
@@ -46,11 +47,9 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsDir}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
-  \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHeaderLevel}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}
+  \code{\link{assertIsImplicitInteger}}
 }
 \author{
 Michael Steinbaugh

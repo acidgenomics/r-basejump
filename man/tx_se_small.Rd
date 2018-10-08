@@ -12,7 +12,7 @@ tx_se_small
 Example Transcript-Level Data Set
 }
 \examples{
-print(tx_se_small)
+print(basejump::tx_se_small)
 }
 \seealso{
 Other Minimal Example Data: \code{\link{rse_small}},

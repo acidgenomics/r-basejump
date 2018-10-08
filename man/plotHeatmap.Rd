@@ -3,11 +3,21 @@
 \docType{methods}
 \name{plotHeatmap}
 \alias{plotHeatmap}
+\alias{plotCorrelationHeatmap}
+\alias{plotQuantileHeatmap}
 \alias{plotHeatmap,SummarizedExperiment-method}
 \alias{plotHeatmap,SingleCellExperiment-method}
+\alias{plotCorrelationHeatmap,SummarizedExperiment-method}
+\alias{plotCorrelationHeatmap,SingleCellExperiment-method}
+\alias{plotQuantileHeatmap,SummarizedExperiment-method}
+\alias{plotQuantileHeatmap,SingleCellExperiment-method}
 \title{Plot Heatmap}
 \usage{
 plotHeatmap(object, ...)
+
+plotCorrelationHeatmap(object, ...)
+
+plotQuantileHeatmap(object, ...)
 
 \S4method{plotHeatmap}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
@@ -22,6 +32,34 @@ plotHeatmap(object, ...)
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
   color = viridis::viridis, legendColor = viridis::viridis,
   borderColor = NULL, title = NULL, ...)
+
+\S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
+  assay = 1L, interestingGroups = NULL, method = c("pearson",
+  "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
+  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
+  color = viridis::viridis, legendColor = viridis::viridis,
+  borderColor = NULL, title = TRUE, ...)
+
+\S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object,
+  assay = 1L, interestingGroups = NULL, method = c("pearson",
+  "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
+  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
+  color = viridis::viridis, legendColor = viridis::viridis,
+  borderColor = NULL, title = TRUE, ...)
+
+\S4method{plotQuantileHeatmap}{SummarizedExperiment}(object, assay = 1L,
+  interestingGroups = NULL, n = 10L, clusterRows = TRUE,
+  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
+  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
+  legendColor = viridis::viridis, legend = FALSE, borderColor = NULL,
+  title = NULL, ...)
+
+\S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, assay = 1L,
+  interestingGroups = NULL, n = 10L, clusterRows = TRUE,
+  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
+  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
+  legendColor = viridis::viridis, legend = FALSE, borderColor = NULL,
+  title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -29,7 +67,7 @@ plotHeatmap(object, ...)
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}. The names of the
 arguments should be formatted in camel case, not snake case.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
@@ -68,18 +106,49 @@ for legend labels. Note that hexadecimal values are not supported. If set
 improved aesthetics.}
 
 \item{title}{\code{string} or \code{NULL}. Plot title.}
+
+\item{method}{\code{string}. Correlation coefficient (or covariance) method to be
+computed. Defaults to "\code{pearson}" but "\code{spearman}" can also be used.
+Consult the \code{\link[stats:cor]{stats::cor()}} documentation for more information.}
+
+\item{clusteringMethod}{\code{string}. Clustering method. Accepts the same values
+as \code{\link[stats:hclust]{stats::hclust()}}.}
+
+\item{n}{\code{scalar integer}. The number of quantile breaks to create.}
+
+\item{legend}{\code{boolean}. Show the color legend.}
 }
 \value{
 \code{pheatmap}.
 }
 \description{
-Construct a simple heatmap. By default, row- and column-wise hierarchical
-clustering is performed using the Ward method, but this behavior can be
-overrided by setting \code{clusterRows} or \code{clusterCols} to \code{FALSE}.
+Construct a simple heatmap.
 }
+\section{Hierarchical clustering}{
+
+
+By default, row- and column-wise hierarchical clustering is performed using
+the Ward method, but this behavior can be overrided by setting \code{clusterRows}
+or \code{clusterCols} to \code{FALSE}.
+}
+
+\section{Correlation heatmap}{
+
+
+Construct a correlation heatmap comparing the columns of the matrix.
+}
+
+\section{Quantile heatmap}{
+
+
+Apply quantile breaks.
+}
+
 \examples{
 # SummarizedExperiment ====
 plotHeatmap(rse_small)
+plotCorrelationHeatmap(rse_small)
+plotQuantileHeatmap(rse_small)
 
 # Disable column clustering.
 plotHeatmap(rse_small, clusterCols = FALSE)
@@ -94,6 +163,8 @@ plotHeatmap(rse_small, color = purple_orange)
 
 # SingleCellExperiment ====
 plotHeatmap(sce_small)
+plotCorrelationHeatmap(sce_small)
+plotQuantileHeatmap(sce_small)
 }
 \seealso{
 \itemize{
@@ -101,10 +172,17 @@ plotHeatmap(sce_small)
 \item \code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}.
 }
 
-Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotCountsPerBiotype}},
+\itemize{
+\item \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
+\item \code{\link[stats:cor]{stats::cor()}}.
+\item \code{\link[stats:hclust]{stats::hclust()}}.
+}
+
+Other Plot Functions: \code{\link{plotCountsPerBiotype}},
   \code{\link{plotGene}}, \code{\link{plotQC}},
-  \code{\link{plotQuantileHeatmap}},
   \code{\link{plotZerosVsDepth}}
+}
+\author{
+Michael Steinbaugh, Rory Kirchner
 }
 \concept{Plot Functions}

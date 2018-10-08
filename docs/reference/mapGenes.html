@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Map Genes — mapGenesToIDs • basejump</title>
+<title>Map Genes — mapGenes • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Map Genes — mapGenesToIDs" />
+<meta property="og:title" content="Map Genes — mapGenes" />
 
 <meta property="og:description" content="Take a user-defined gene vector and dynamically map the input to either the
 object rownames or the gene names (symbols). These functions are useful for
@@ -122,9 +122,9 @@ dynamically (e.g. for single-cell RNA-seq marker analysis).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
@@ -186,14 +186,13 @@ that is duplicated, these functions will return a warning.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
-  <code><a href='aggregate.html'>aggregateCols</a></code>, <code><a href='cell2sample.html'>cell2sample</a></code>,
-  <code><a href='counts.html'>counts</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregate</a></code>,
+  <code><a href='cell2sample.html'>cell2sample</a></code>, <code><a href='counts.html'>counts</a></code>,
   <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
   <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
-  <code><a href='meltCounts.html'>meltCounts</a></code>, <code><a href='metricsPerSample.html'>metricsPerSample</a></code>,
-  <code><a href='metrics.html'>metrics</a></code>, <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
+  <code><a href='meltCounts.html'>meltCounts</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
   <code><a href='selectSamples.html'>selectSamples</a></code>,
   <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,

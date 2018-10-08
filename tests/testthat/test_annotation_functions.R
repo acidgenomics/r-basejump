@@ -7,16 +7,6 @@ release <- 87L
 context("Annotation Functions : General")
 
 with_parameters_test_that(
-    "broadClass", {
-        expect_is(broadClass(object), "factor")
-    },
-    object = list(
-        SummarizedExperiment = rse_small,
-        SingleCellExperiment = sce_small
-    )
-)
-
-with_parameters_test_that(
     "convertUCSCBuildToEnsembl", {
         expect_identical(
             object = convertUCSCBuildToEnsembl(object) %>%
@@ -363,28 +353,27 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
 test_that("annotable", {
     object <- annotable(organism, release = release)
     expect_is(object, "tbl_df")
-    expect_true("rowname" %in% colnames(object))
-    expect_identical(dim(object), c(63970L, 13L))
-    expect_identical(object[["rowname"]][[1L]], "ENSG00000000003")
+    expect_identical(dim(object), c(63970L, 12L))
+    expect_identical(object[["geneID"]][[1L]], "ENSG00000000003")
 })
 
-gene2symbol <- makeGene2symbolFromEnsembl(
+gene2symbol <- makeGene2SymbolFromEnsembl(
     organism = organism,
     release = release
 )
 
-test_that("makeGene2symbolFromEnsembl", {
-    expect_is(gene2symbol, "gene2symbol")
+test_that("makeGene2SymbolFromEnsembl", {
+    expect_is(gene2symbol, "Gene2Symbol")
     expect_identical(nrow(gene2symbol), 63970L)
 })
 
-tx2gene <- makeTx2geneFromEnsembl(
+tx2gene <- makeTx2GeneFromEnsembl(
     organism = organism,
     release = release
 )
 
-test_that("makeTx2geneFromEnsembl", {
-    expect_is(tx2gene, "tx2gene")
+test_that("makeTx2GeneFromEnsembl", {
+    expect_is(tx2gene, "Tx2Gene")
     expect_identical(nrow(tx2gene), 216741L)
 })
 
@@ -396,11 +385,11 @@ context("Annotation Functions : GTF/GFF")
 with_parameters_test_that(
     "makeGene2symbolFromGFF", {
         object <- makeGene2symbolFromGFF(file)
-        expect_is(object, "gene2symbol")
+        expect_is(object, "Gene2Symbol")
         expect_identical(
             object = head(object, n = 2L),
             expected = new(
-                "gene2symbol",
+                "Gene2Symbol",
                 DataFrame(
                     geneID = c(
                         "ENSMUSG00000102693",
@@ -522,11 +511,11 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
 with_parameters_test_that(
     "makeTx2geneFromGFF", {
         object <- makeTx2geneFromGFF(file)
-        expect_is(object, "tx2gene")
+        expect_is(object, "Tx2Gene")
         expect_identical(
             object = head(object, n = 2L),
             expected = new(
-                Class = "tx2gene",
+                Class = "Tx2Gene",
                 DataFrame(
                     transcriptID = c(
                         "ENSMUST00000193812",

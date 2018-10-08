@@ -6,8 +6,61 @@ setOldClass(Classes = class(tibble::tibble()))
 
 
 
-# ensembl2entrez ===============================================================
-#' ensembl2entrez Class
+# EggNOG =======================================================================
+#' `EggNOG` Class
+#'
+#' [EggNOG](http://eggnogdb.embl.de) is a database of biological information
+#' hosted by the EMBL. It is based on the original idea of COGs (**c**lusters of
+#' **o**rthologous **g**roups) and expands that idea to non-supervised
+#' orthologous groups constructed from numerous organisms. eggNOG stands for
+#' **e**volutionary **g**enealogy of **g**enes: **N**on-supervised
+#' **O**rthologous **G**roups.
+#'
+#' This class extends `list` and contains:
+#'
+#' 1. "`cogFunctionalCategories`": **C**luster of **O**rthologous **G**roups
+#'    (COG) functional category information.
+#' 2. "`annotations`": up-to-date functional descriptions and categories
+#'    for **Eu**karyotes **N**on-supervised **O**rthologous **G**roups (euNOG)
+#'    and **N**on-supervised **O**rthologous **G**roups (NOG) protein
+#'    identifiers.
+#'
+#' @family S4 Classes
+#' @author Michael Steinbaugh
+#' @export
+#'
+#' @seealso
+#' - [eggnog()].
+#' - [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt).
+setClass(Class = "EggNOG", contains = "list")
+
+setValidity(
+    Class = "EggNOG",
+    method = function(object) {
+        assert_are_identical(
+            x = names(object),
+            y = c("cogFunctionalCategories", "annotations")
+        )
+        assert_are_identical(
+            x = colnames(object[["cogFunctionalCategories"]]),
+            y = c("letter", "description")
+        )
+        assert_are_identical(
+            x = colnames(object[["annotations"]]),
+            y = c(
+                "eggnogID",
+                "consensusFunctionalDescription",
+                "cogFunctionalCategory"
+            )
+        )
+        TRUE
+    }
+)
+
+
+
+# Ensembl2Entrez ===============================================================
+#' `Ensembl2Entrez` Class
 #'
 #' Ensembl gene ID to Entrez ID mappings.
 #'
@@ -18,31 +71,11 @@ setOldClass(Classes = class(tibble::tibble()))
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @inheritParams general
-#'
-#' @return `ensembl2entrez`.
-#'
 #' @seealso [ensembl2entrez()].
-#'
-#' @examples
-#' x <- new(
-#'     Class = "ensembl2entrez",
-#'     DataFrame(
-#'         geneID = "ENSG00000000003",
-#'         entrezID = 7105L,
-#'         row.names = "ENSG00000000003"
-#'     )
-#' )
-#' print(x)
-setClass(
-    Class = "ensembl2entrez",
-    contains = "DataFrame"
-)
-
-
+setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 
 setValidity(
-    Class = "ensembl2entrez",
+    Class = "Ensembl2Entrez",
     method = function(object) {
         assert_are_identical(
             x = colnames(object),
@@ -60,8 +93,8 @@ setValidity(
 
 
 
-# gene2symbol ==================================================================
-#' gene2symbol Class
+# Gene2Symbol ==================================================================
+#' `Gene2Symbol` Class
 #'
 #' Gene-to-symbol mappings.
 #'
@@ -71,46 +104,34 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @inheritParams general
-#'
-#' @return `gene2symbol`.
-#'
 #' @seealso
-#' - [makeGene2symbol].
 #' - [gene2symbol()].
-#'
-#' @examples
-#' x <- new(
-#'     Class = "gene2symbol",
-#'     DataFrame(
-#'         geneID = "ENSG00000000003",
-#'         geneName = "TSPAN6",
-#'         row.names = "ENSG00000000003"
-#'     )
-#' )
-#' print(x)
-setClass(
-    Class = "gene2symbol",
-    contains = "DataFrame"
-)
-
-
+#' - [makeGene2Symbol].
+setClass(Class = "Gene2Symbol", contains = "DataFrame")
 
 setValidity(
-    Class = "gene2symbol",
+    Class = "Gene2Symbol",
     method = function(object) {
-        # Deprecate and move this assert check code in a future release.
-        assertIsGene2symbol(object)
+        assert_are_identical(
+            x = colnames(object),
+            y = c("geneID", "geneName")
+        )
+        assert_has_rows(object)
+        # Assert that all columns are character.
+        invisible(lapply(object, assert_is_character))
+        # Assert that neither column has duplicates.
+        invisible(lapply(object, assert_has_no_duplicates))
+        stopifnot(all(complete.cases(object)))
         TRUE
     }
 )
 
 
 
-# hgnc2ensembl =================================================================
-#' hgnc2ensembl Class
+# HGNC2Ensembl =================================================================
+#' `HGNC2Ensembl` Class
 #'
-#' HGNC to Ensembl gene ID mappings.
+#' HGNC-to-Ensembl gene ID mappings.
 #'
 #' Contains a `DataFrame` with `hgncID` and `geneID` columns.
 #'
@@ -118,37 +139,22 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `hgnc2ensembl`.
-#'
 #' @seealso [hgnc2ensembl()].
-#'
-#' @examples
-#' x <- new(
-#'     Class = "hgnc2ensembl",
-#'     DataFrame(
-#'         hgncID = 5L,
-#'         geneID = "ENSG00000121410",
-#'         row.names = 5L
-#'     )
-#' )
-#' print(x)
-setClass(
-    Class = "hgnc2ensembl",
-    contains = "DataFrame"
-)
-
-
+setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
 
 setValidity(
-    Class = "hgnc2ensembl",
+    Class = "HGNC2Ensembl",
     method = function(object) {
         assert_are_identical(
-            x = colnames(object),
-            y = c("hgncID", "geneID")
+            x = lapply(object, class),
+            y = list(
+                hgncID = "integer",
+                geneID = "character"
+            )
         )
         assert_are_identical(
             x = rownames(object),
-            y = as.character(object[["hgncID"]])
+            y = NULL
         )
         TRUE
     }
@@ -156,10 +162,10 @@ setValidity(
 
 
 
-# mgi2ensembl ==================================================================
-#' mgi2ensembl Class
+# MGI2Ensembl ==================================================================
+#' `MGI2Ensembl` Class
 #'
-#' MGI to Ensembl gene ID mappings.
+#' MGI-to-Ensembl gene ID mappings.
 #'
 #' Contains a `DataFrame` with `mgiID` and `geneID` columns.
 #'
@@ -167,37 +173,15 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `mgi2ensembl`.
-#'
 #' @seealso [mgi2ensembl()].
-#'
-#' @examples
-#' x <- new(
-#'     Class = "mgi2ensembl",
-#'     DataFrame(
-#'         mgiID = 87853L,
-#'         geneID = "ENSMUSG00000027596",
-#'         row.names = 87853L
-#'     )
-#' )
-#' print(x)
-setClass(
-    Class = "mgi2ensembl",
-    contains = "DataFrame"
-)
-
-
+setClass(Class = "MGI2Ensembl", contains = "DataFrame")
 
 setValidity(
-    Class = "mgi2ensembl",
+    Class = "MGI2Ensembl",
     method = function(object) {
         assert_are_identical(
             x = colnames(object),
             y = c("mgiID", "geneID")
-        )
-        assert_are_identical(
-            x = rownames(object),
-            y = as.character(object[["mgiID"]])
         )
         TRUE
     }
@@ -206,23 +190,19 @@ setValidity(
 
 
 # PANTHER ======================================================================
-#' PANTHER Class
+#' `PANTHER` Class
 #'
-#' PANTHER Gene Ontology definitions.
+#' [PANTHER](http://www.pantherdb.org) gene ontology definitions.
+#'
+#' PANTHER stands for **P**rotein **AN**alysis **TH**rough **E**volutionary
+#' **R**elationships.
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `PANTHER`.
-#'
 #' @seealso [panther()].
-setClass(
-    Class = "PANTHER",
-    contains = "DataFrame"
-)
-
-
+setClass(Class = "PANTHER", contains = "DataFrame")
 
 setValidity(
     Class = "PANTHER",
@@ -247,8 +227,8 @@ setValidity(
 
 
 
-# tx2gene ======================================================================
-#' tx2gene Class
+# Tx2Gene ======================================================================
+#' `Tx2Gene` Class
 #'
 #' Transcript-to-gene mappings.
 #'
@@ -258,34 +238,24 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `tx2gene`.
-#'
 #' @seealso
-#' - [makeTx2gene].
 #' - [tx2gene()].
-#'
-#' @examples
-#' x <- new(
-#'     "tx2gene",
-#'     DataFrame(
-#'         transcriptID = "ENST00000000233",
-#'         geneID = "ENSG00000004059",
-#'         row.names = "ENST00000000233"
-#'     )
-#' )
-#' print(x)
-setClass(
-    Class = "tx2gene",
-    contains = "DataFrame"
-)
-
-
+#' - [makeTx2Gene].
+setClass(Class = "Tx2Gene", contains = "DataFrame")
 
 setValidity(
-    Class = "tx2gene",
+    Class = "Tx2Gene",
     method = function(object) {
-        # Deprecate and move this assert check code in a future release.
-        assertIsTx2gene(object)
+        assert_has_rows(object)
+        assert_are_identical(
+            x = colnames(object),
+            y = c("transcriptID", "geneID")
+        )
+        # Assert that all columns are character.
+        invisible(lapply(object, assert_is_character))
+        # Assert that there are no duplicate transcripts.
+        assert_has_no_duplicates(object[["transcriptID"]])
+        stopifnot(all(complete.cases(object)))
         TRUE
     }
 )

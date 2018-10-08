@@ -33,25 +33,16 @@ Cell to Sample Mappings
 \code{sampleID} column must be defined in \code{\link[=colData]{colData()}}.
 }
 \examples{
+data(sce_small)
 x <- cell2sample(sce_small)
 table(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{aggregateCols}}, \code{\link{counts}},
-  \code{\link{makeSingleCellExperiment}},
-  \code{\link{makeSummarizedExperiment}},
+Other Single-Cell Functions: \code{\link{makeSingleCellExperiment}},
   \code{\link{mapCellsToSamples}},
-  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metricsPerSample}}, \code{\link{metrics}},
-  \code{\link{minimalSampleData}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{topCellsPerSample}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{Single-Cell Functions}

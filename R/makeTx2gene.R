@@ -4,7 +4,7 @@
 #'
 #' Remote URLs and compressed files are supported.
 #'
-#' @name makeTx2gene
+#' @name makeTx2Gene
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @include makeGRanges.R
@@ -13,66 +13,47 @@
 #'
 #' @seealso [makeGRanges].
 #'
-#' @return `tx2gene`.
+#' @return `Tx2Gene`.
 #'
 #' @examples
 #' # makeTx2geneFromEnsembl ====
-#' x <- makeTx2geneFromEnsembl(organism = "Homo sapiens")
+#' x <- makeTx2GeneFromEnsembl(organism = "Homo sapiens")
 #' print(x)
 #'
 #' # makeTx2geneFromGFF ====
 #' # GTF
 #' file <- file.path(basejumpCacheURL, "example.gtf")
-#' x <- makeTx2geneFromGFF(file)
+#' x <- makeTx2GeneFromGFF(file)
 #' print(x)
 #'
 #' # GFF3
 #' file <- file.path(basejumpCacheURL, "example.gff3")
-#' x <- makeTx2geneFromGFF(file)
+#' x <- makeTx2GeneFromGFF(file)
 #' print(x)
 NULL
 
 
 
-.makeTx2gene <- function(data) {
-    data <- data %>%
-        as_tibble() %>%
-        select(!!!syms(c("transcriptID", "geneID"))) %>%
-        .[complete.cases(.), , drop = FALSE] %>%
-        unique() %>%
-        mutate_all(as.character) %>%
-        as("DataFrame") %>%
-        set_rownames(.[["transcriptID"]])
-    message(paste(
-        "tx2gene mappings:",
-        length(unique(data[["transcriptID"]])), "transcripts,",
-        length(unique(data[["geneID"]])), "genes"
-    ))
-    new("tx2gene", data)
-}
-
-
-
-#' @rdname makeTx2gene
+#' @rdname makeTx2Gene
 #' @export
-makeTx2geneFromEnsembl <-
+makeTx2GeneFromEnsembl <-
     function() {
         gr <- do.call(
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall(args = list(level = "transcripts"))
         )
-        .makeTx2gene(gr)
+        tx2gene(gr)
     }
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level", "metadata", "..."))]
-formals(makeTx2geneFromEnsembl) <- f
+formals(makeTx2GeneFromEnsembl) <- f
 
 
 
-#' @rdname makeTx2gene
+#' @rdname makeTx2Gene
 #' @export
-makeTx2geneFromGFF <- function(file) {
-    message("Making tx2gene from GFF...")
+makeTx2GeneFromGFF <- function(file) {
+    message("Making Tx2Gene from GFF...")
     gff <- import(file)
     assert_is_all_of(gff, "GRanges")
 
@@ -88,9 +69,6 @@ makeTx2geneFromGFF <- function(file) {
     # Remove rows that don't contain transcript annotations.
     data <- filter(data, !is.na(!!sym("transcriptID")))
 
-    # Get a vector of unique transcript IDs.
-    transcriptIDs <- unique(data[["transcriptID"]])
-
     if (type == "GFF") {
         assert_is_subset("parent", colnames(data))
         stopifnot(all(grepl("^gene:", data[["parent"]])))
@@ -102,14 +80,12 @@ makeTx2geneFromGFF <- function(file) {
         )
     }
 
-    data <- .makeTx2gene(data)
-    assert_are_identical(transcriptIDs, rownames(data))
-    data
+    tx2gene(data)
 }
 
 
 
 # Aliases ======================================================================
-#' @rdname makeTx2gene
+#' @rdname makeTx2Gene
 #' @export
-makeTx2geneFromGTF <- makeTx2geneFromGFF
+makeTx2GeneFromGTF <- makeTx2GeneFromGFF

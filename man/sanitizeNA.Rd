@@ -56,8 +56,8 @@ to <- sanitizeNA(from)
 print(to)
 }
 \seealso{
-Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{collapseToString}}, \code{\link{removeNA}},
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{makeNames}}, \code{\link{removeNA}},
   \code{\link{sanitizePercent}},
   \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}

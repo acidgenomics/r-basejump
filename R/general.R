@@ -9,7 +9,7 @@
 #' @param x Object.
 #' @param ... Additional arguments.
 #'
-#' @param assay `scalar`. Name or index of counts matrix slotted in [assays()].
+#' @param assay `scalar`. Name or index of count matrix slotted in [assays()].
 #'   When passing in a `string`, the name must be defined in [assayNames()].
 #' @param check `boolean`. Perform assert checks.
 #' @param color `ggproto`/`ScaleDiscrete` or `NULL`. Desired ggplot2 color
@@ -38,7 +38,7 @@
 #' @param limit `scalar numeric`. Threshold to denote on the plot, using a
 #'   dashed line.
 #' @param minCounts `scalar integer`. Minimum number of counts per gene in the
-#'   counts matrix.
+#'   count matrix.
 #' @param n `scalar integer`. Number to include.
 #' @param organism `string`. Full latin organism name (e.g. "`Homo sapiens`").
 #' @param perMillion `boolean`. Display as counts per million.

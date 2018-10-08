@@ -53,6 +53,8 @@ the columns map to a single sample (e.g. cells for a single-cell RNA-seq
 experiment).
 }
 \examples{
+data(rse_small, sce_small)
+
 # SummarizedExperiment ====
 x <- rse_small
 sampleData(x)
@@ -72,19 +74,13 @@ sampleData(x)[["batch"]] <- 1L
 sampleData(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{aggregateCols}}, \code{\link{cell2sample}},
-  \code{\link{counts}},
-  \code{\link{makeSingleCellExperiment}},
+Other Data Functions: \code{\link{aggregate}},
+  \code{\link{combine}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapCellsToSamples}},
-  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metricsPerSample}}, \code{\link{metrics}},
-  \code{\link{minimalSampleData}},
+  \code{\link{mapGenes}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{minimalSampleData}},
   \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{subsetPerSample}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh

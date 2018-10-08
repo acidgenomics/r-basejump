@@ -43,11 +43,9 @@ Other Assert Check Functions: \code{\link{assertAllAreURL}},
   \code{\link{assertIsDir}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
-  \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHeaderLevel}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}
+  \code{\link{assertIsImplicitInteger}}
 }
 \author{
 Michael Steinbaugh

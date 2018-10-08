@@ -1,8 +1,3 @@
-# FIXME SCE won't pass validity check (see below).
-# This is still failing with bioc-devel version of SCE.
-
-
-
 #' Combine Multiple Objects
 #'
 #' @note We're attempting to make this as strict as possible, requiring:
@@ -13,6 +8,7 @@
 #' - Specific metadata must be identical (see `metadata` parameter).
 #'
 #' @name combine
+#' @family Data Functions
 #' @author Michael Steinbaugh
 #' @importFrom BiocGenerics combine
 #' @export
@@ -27,6 +23,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
+#' data(rse_small)
 #' x <- rse_small
 #' colnames(x)
 #' colData(x)
@@ -44,6 +41,7 @@
 #' colData(c)
 #'
 #' # SingleCellExperiment ====
+#' data(sce_small)
 #' x <- sce_small
 #' head(colnames(x))
 #' sampleData(x)
@@ -66,13 +64,15 @@
 #' # Combine two SingleCellExperiment objects.
 #' c <- combine(x, y)
 #' print(c)
-#' # FIXME sampleData(c)
+#' sampleData(c)
 NULL
 
 
 
 .combine.SE <-  # nolint
     function(x, y) {
+        validObject(x)
+        validObject(y)
         # Coerce the objects to SummarizedExperiment.
         # Keep as RSE if the data is ranged.
         assert_are_identical(class(x), class(y))
@@ -157,20 +157,28 @@ NULL
 
 
 
+# FIXME Improve `spikeNames` handling.
+# Need to add support for RSE.
 .combine.SCE <-  # nolint
     function(x, y) {
+        validObject(x)
+        validObject(y)
         # Coerce to RSE and use combine method.
-        Class <- "RangedSummarizedExperiment"  # nolint
+        class <- "RangedSummarizedExperiment"
         rse <- combine(
-            x = as(object = x, Class = Class),
-            y = as(object = y, Class = Class)
+            x = as(object = x, Class = class),
+            y = as(object = y, Class = class)
         )
         validObject(rse)
         # Make SCE from RSE.
-        sce <- as(rse, "SingleCellExperiment")
-        # FIXME Note that SCE `as()` coercion doesn't currently return valid.
-        # TODO Check this against bioc-devel.
-        # validObject(sce)
+        # Note that standard SCE `as()` coercion method isn't returning valid.
+        sce <- makeSingleCellExperiment(
+            assays = assays(rse),
+            rowRanges = rowRanges(rse),
+            colData = colData(rse),
+            metadata = metadata(rse)
+        )
+        validObject(sce)
         sce
     }
 
