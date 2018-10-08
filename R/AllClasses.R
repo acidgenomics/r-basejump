@@ -34,7 +34,27 @@ setOldClass(Classes = class(tibble::tibble()))
 #' - [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt).
 setClass(Class = "EggNOG", contains = "list")
 
-# FIXME Add validity.
+setValidity(
+    Class = "EggNOG",
+    method = function(object) {
+        assert_are_identical(
+            x = names(object),
+            y = c("cogFunctionalCategories", "annotations")
+        )
+        assert_are_identical(
+            x = colnames(object[["cogFunctionalCategories"]]),
+            y = c("letter", "description")
+        )
+        assert_are_identical(
+            x = colnames(object[["annotations"]]),
+            y = c(
+                "eggnogID",
+                "consensusFunctionalDescription",
+                "cogFunctionalCategory"
+            )
+        )
+    }
+)
 
 
 
@@ -50,7 +70,7 @@ setClass(Class = "EggNOG", contains = "list")
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @seealso [Ensembl2Entrez()].
+#' @seealso [ensembl2entrez()].
 setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 
 setValidity(
@@ -83,7 +103,9 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @seealso [gene2symbol()].
+#' @seealso
+#' - [gene2symbol()].
+#' - [makeGene2Symbol].
 setClass(Class = "Gene2Symbol", contains = "DataFrame")
 
 setValidity(
@@ -160,10 +182,6 @@ setValidity(
             x = colnames(object),
             y = c("mgiID", "geneID")
         )
-        assert_are_identical(
-            x = rownames(object),
-            y = as.character(object[["mgiID"]])
-        )
         TRUE
     }
 )
@@ -173,8 +191,10 @@ setValidity(
 # PANTHER ======================================================================
 #' `PANTHER` Class
 #'
-#' [PANTHER](http://www.pantherdb.org) Gene Ontology definitions. PANTHER stands
-#' for **P**rotein **AN**alysis **TH**rough **E**volutionary **R**elationships.
+#' [PANTHER](http://www.pantherdb.org) gene ontology definitions.
+#'
+#' PANTHER stands for **P**rotein **AN**alysis **TH**rough **E**volutionary
+#' **R**elationships.
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
@@ -218,8 +238,8 @@ setValidity(
 #' @export
 #'
 #' @seealso
-#' - [makeTx2Gene].
 #' - [tx2gene()].
+#' - [makeTx2Gene].
 setClass(Class = "Tx2Gene", contains = "DataFrame")
 
 setValidity(
