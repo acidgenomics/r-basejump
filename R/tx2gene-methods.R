@@ -31,6 +31,8 @@ NULL
         }
         object %>%
             select(!!!syms(c("transcriptID", "geneID"))) %>%
+            # This is needed for processing GFF files.
+            unique() %>%
             mutate_all(as.character) %>%
             as("DataFrame") %>%
             new(Class = "Tx2Gene", .)
