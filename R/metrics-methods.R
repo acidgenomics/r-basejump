@@ -18,6 +18,8 @@
 #' @return `grouped_df`. Grouped by `sampleID` column.
 #'
 #' @examples
+#' data(rse_small, sce_small)
+#'
 #' # SummarizedExperiment ====
 #' x <- metrics(rse_small)
 #' print(x)

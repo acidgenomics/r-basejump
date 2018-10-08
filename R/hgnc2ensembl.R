@@ -1,12 +1,12 @@
-#' HGNC to Ensembl Gene ID Mappings.
+#' `HGNC2Ensembl` Generator
 #'
-#' @family Annotation Functions
+#' @family S4 Generators
 #' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general
 #'
-#' @return `hgnc2ensembl`.
+#' @return `HGNC2Ensembl`.
 #'
 #' @examples
 #' x <- hgnc2ensembl(.test = TRUE)
@@ -36,10 +36,15 @@ hgnc2ensembl <- function(.test = FALSE) {
     data[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", data[["hgncID"]]))
     data <- data[order(data[["hgncID"]]), ]
     data <- as(data, "DataFrame")
-    rownames(data) <- as.character(data[["hgncID"]])
 
-    new("hgnc2ensembl", data)
+    new(Class = "HGNC2Ensembl", data)
 }
+
+
+
+#' @rdname hgnc2ensembl
+#' @export
+HGNC2Ensembl <- hgnc2ensembl
 
 
 

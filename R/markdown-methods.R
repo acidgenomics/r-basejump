@@ -10,6 +10,7 @@
 #' @return Markdown output.
 #'
 #' @examples
+#' data(rse_small)
 #' markdown(rse_small)
 NULL
 

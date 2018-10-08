@@ -1,4 +1,4 @@
-#' PANTHER Gene Ontology Annotations
+#' `PANTHER` Generator
 #'
 #' @name panther
 #' @family Annotation Functions
@@ -247,3 +247,9 @@ panther <- function(
 
     new("PANTHER", data)
 }
+
+
+
+#' @rdname panther
+#' @export
+PANTHER <- panther

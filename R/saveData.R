@@ -29,6 +29,7 @@
 #' @return Invisible named `character`. File paths.
 #'
 #' @examples
+#' data(rse_small, sce_small)
 #' saveData(rse_small, sce_small, dir = "example")
 #' list.files("example")
 #'

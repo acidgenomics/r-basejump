@@ -22,6 +22,7 @@
 #' @return `DataFrame`.
 #'
 #' @examples
+#' data(rse_small)
 #' from <- sampleData(rse_small)
 #' print(from)
 #' to <- sanitizeSampleData(from)

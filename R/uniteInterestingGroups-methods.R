@@ -15,6 +15,7 @@
 #' @return Modified object, containing an `interestingGroups` column.
 #'
 #' @examples
+#' data(rse_small)
 #' object <- rse_small
 #' from <- sampleData(object)
 #' to <- uniteInterestingGroups(

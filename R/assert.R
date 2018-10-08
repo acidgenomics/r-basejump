@@ -71,9 +71,10 @@ assertAllAreNonExisting <- function(
 #'   corresponding `SummarizedExperiment`.
 #'
 #' @examples
+#' data(rse_small)
 #' object <- rse_small
 #' print(object)
-#' genes <- head(as.character(rowData(rse_small)[["geneName"]]))
+#' genes <- head(as.character(rowData(object)[["geneName"]]))
 #' print(genes)
 #' assertAllAreUniqueGeneNames(object = object, genes = genes)
 assertAllAreUniqueGeneNames <- function(object, genes) {
@@ -104,7 +105,7 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
 #' @export
 #'
 #' @examples
-#' assertAllAreValidNames(c("sample_1", "sample_2"))
+#' assertAllAreValidNames(c("sample1", "sample2"))
 assertAllAreValidNames <- function(object) {
     assert_is_character(object)
     assert_is_non_empty(object)
@@ -139,6 +140,7 @@ assertHasValidNames <- function(object) {
 #' @rdname assertAllAreValidNames
 #' @export
 #' @examples
+#' validDimnames(basejump::rse_small)
 #' validDimnames(datasets::mtcars)
 validDimnames <- function(object) {
     if (is.null(dim(object))) {
@@ -358,6 +360,7 @@ assertFormalGene2symbol <- function(
 #' @param object `SummarizedExperiment`.
 #'
 #' @examples
+#' data(rse_small)
 #' assertFormalInterestingGroups(rse_small, "treatment")
 #' assertFormalInterestingGroups(rse_small, NULL)
 assertFormalInterestingGroups <- function(object, interestingGroups) {

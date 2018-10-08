@@ -27,7 +27,6 @@ initializeDirectory <- function(dir) {
 
 
 
-# Aliases ======================================================================
 #' @rdname initializeDirectory
 #' @export
 initDir <- initializeDirectory

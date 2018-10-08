@@ -6,7 +6,7 @@
 #' @keywords internal
 #'
 #' @examples
-#' names(gender_markers)
+#' names(basejump::gender_markers)
 "gender_markers"
 
 
@@ -20,7 +20,7 @@
 #' @keywords internal
 #'
 #' @examples
-#' print(organism_mappings)
+#' print(basejump::organism_mappings)
 "organism_mappings"
 
 
@@ -34,7 +34,7 @@
 #' @author Michael Steinbaugh
 #'
 #' @examples
-#' print(rse_small)
+#' print(basejump::rse_small)
 "rse_small"
 
 
@@ -47,7 +47,7 @@
 #' @seealso `scater::sc_example_counts`.
 #'
 #' @examples
-#' print(sce_small)
+#' print(basejump::sce_small)
 "sce_small"
 
 
@@ -58,5 +58,5 @@
 #' @author Michael Steinbaugh
 #'
 #' @examples
-#' print(tx_se_small)
+#' print(basejump::tx_se_small)
 "tx_se_small"

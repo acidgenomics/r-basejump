@@ -27,6 +27,7 @@
 #' @return Invisible `list`. File paths.
 #'
 #' @examples
+#' data(rse_small, sce_small)
 #' rnaseq_counts <- counts(rse_small)
 #' single_cell_counts <- counts(sce_small)
 #'
