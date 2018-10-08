@@ -22,7 +22,7 @@ plotGene(object, ...)
 
 \item{genes}{\code{character}. Gene identifiers.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
@@ -53,7 +53,7 @@ palette globally, use \code{options(basejump.discrete.color = ggplot2::scale_col
 Plot Gene Expression
 }
 \examples{
-# SummarizedExperiment ====
+data(rse_small)
 object <- rse_small
 
 rownames <- head(rownames(object))

@@ -2,9 +2,12 @@
 % Please edit documentation in R/hgnc2ensembl.R
 \name{hgnc2ensembl}
 \alias{hgnc2ensembl}
-\title{HGNC to Ensembl Gene ID Mappings.}
+\alias{HGNC2Ensembl}
+\title{\code{HGNC2Ensembl} Generator}
 \usage{
 hgnc2ensembl(.test = FALSE)
+
+HGNC2Ensembl(.test = FALSE)
 }
 \arguments{
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
@@ -13,7 +16,7 @@ hgnc2ensembl(.test = FALSE)
 \code{HGNC2Ensembl}.
 }
 \description{
-HGNC to Ensembl Gene ID Mappings.
+\code{HGNC2Ensembl} Generator
 }
 \examples{
 x <- hgnc2ensembl(.test = TRUE)

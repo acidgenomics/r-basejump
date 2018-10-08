@@ -24,10 +24,10 @@
 \item{value}{Value to assign.}
 }
 \value{
-Counts matrix. Typically \code{matrix} or \code{sparseMatrix} class.
+Matrix. Typically \code{matrix} or \code{sparseMatrix} class.
 }
 \description{
-Counts
+Count matrix.
 }
 \note{
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly

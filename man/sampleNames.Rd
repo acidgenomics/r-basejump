@@ -23,6 +23,7 @@ the syntactically valid names defined as the rownames of \code{\link[=sampleData
 }
 \examples{
 # SummarizedExperiment ====
+data(rse_small)
 object <- rse_small
 x <- sampleNames(object)
 print(x)

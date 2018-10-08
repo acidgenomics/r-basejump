@@ -13,7 +13,7 @@ Strings to match gene/transcript identifiers, Ensembl genome build,
 and UCSC genome build.
 }
 \examples{
-print(organism_mappings)
+print(basejump::organism_mappings)
 }
 \author{
 Michael Steinbaugh

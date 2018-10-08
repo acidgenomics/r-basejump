@@ -39,6 +39,8 @@ objects but it's not intuitive. In this case, provide cellular barcode
 identifiers for columns and gene identifiers for rows.
 }
 \examples{
+data(rse_small, sce_small)
+
 # SummarizedExperiment ====
 object <- rse_small
 sample <- sampleNames(object) \%>\% head(1L)

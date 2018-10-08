@@ -4,7 +4,7 @@
 \name{meltCounts}
 \alias{meltCounts}
 \alias{meltCounts,SummarizedExperiment-method}
-\title{Melt Counts Matrix to Long Format}
+\title{Melt Count Matrix to Long Format}
 \usage{
 meltCounts(object, ...)
 
@@ -16,13 +16,13 @@ meltCounts(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{nonzeroGenes}{\code{boolean}. Return only non-zero genes.}
 
 \item{trans}{\code{string}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
-the counts matrix prior to melting, if desired. Use \code{"identity"} to return
+the count matrix prior to melting, if desired. Use \code{"identity"} to return
 unmodified (default).}
 }
 \value{
@@ -30,7 +30,7 @@ unmodified (default).}
 (e.g. gene ID).
 }
 \description{
-Melt Counts Matrix to Long Format
+Melt Count Matrix to Long Format
 }
 \examples{
 x <- meltCounts(rse_small)

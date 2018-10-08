@@ -29,6 +29,7 @@ generated internally, and should not be user defined.
 Currently supports \code{DataFrame} or \code{data.frame} input.
 }
 \examples{
+data(rse_small)
 from <- sampleData(rse_small)
 print(from)
 to <- sanitizeSampleData(from)

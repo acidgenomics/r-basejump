@@ -55,26 +55,28 @@ collapsed to gene level by default (see \code{aggregate} argument).
 Convert Ensembl Transcripts to Genes
 }
 \note{
-For objects containing a counts matrix, the object rows will be collapsed to
+For objects containing a count matrix, the object rows will be collapsed to
 gene level using \code{\link[=aggregateRows]{aggregateRows()}}. This applies to our
 \code{SummarizedExperiment} method.
 }
 \examples{
-tx2gene <- tx2gene(tx_se_small)
+data(tx_se_small)
+object <- tx_se_small
+
+tx2gene <- tx2gene(object)
 print(tx2gene)
-transcriptIDs <- rownames(tx_se_small)
-print(transcriptIDs)
-stopifnot(all(transcriptIDs \%in\% rownames(tx2gene)))
+transcripts <- rownames(object)
+print(transcripts)
 
 # character ====
 # Returns as factor.
-x <- convertTranscriptsToGenes(transcriptIDs, tx2gene = tx2gene)
+x <- convertTranscriptsToGenes(transcripts, tx2gene = tx2gene)
 print(x)
 str(x)
 
 # matrix ====
 # Note that transcript IDs currently must be in the rows.
-counts <- counts(tx_se_small)
+counts <- counts(object)
 print(counts)
 # Aggregate to gene level.
 x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
@@ -86,8 +88,8 @@ print(x)
 colSums(x)
 
 # SummarizedExperiment ====
-object <- tx_se_small
-print(object)
+x <- convertTranscriptsToGenes(object)
+print(x)
 }
 \seealso{
 \code{\link[=aggregateRows]{aggregateRows()}}.

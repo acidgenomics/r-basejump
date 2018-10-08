@@ -3,11 +3,20 @@
 \docType{methods}
 \name{gene2symbol}
 \alias{gene2symbol}
+\alias{Gene2Symbol}
+\alias{gene2symbol,tbl_df-method}
+\alias{gene2symbol,DataFrame-method}
 \alias{gene2symbol,GRanges-method}
 \alias{gene2symbol,SummarizedExperiment-method}
-\title{Gene-to-Symbol Mappings}
+\title{\code{Gene2Symbol} Generator}
 \usage{
 gene2symbol(object, ...)
+
+Gene2Symbol(object, ...)
+
+\S4method{gene2symbol}{tbl_df}(object)
+
+\S4method{gene2symbol}{DataFrame}(object)
 
 \S4method{gene2symbol}{GRanges}(object)
 
@@ -22,7 +31,7 @@ gene2symbol(object, ...)
 \code{Gene2Symbol}.
 }
 \description{
-Gene-to-Symbol Mappings
+\code{Gene2Symbol} Generator
 }
 \note{
 This function will make any duplicated symbols unique by applying
@@ -30,6 +39,7 @@ This function will make any duplicated symbols unique by applying
 }
 \examples{
 # SummarizedExperiment ====
+data(rse_small)
 x <- gene2symbol(rse_small)
 print(x)
 }

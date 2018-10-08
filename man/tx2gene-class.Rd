@@ -12,8 +12,8 @@ Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
 }
 \seealso{
 \itemize{
-\item \link{makeTx2Gene}.
 \item \code{\link[=tx2gene]{tx2gene()}}.
+\item \link{makeTx2Gene}.
 }
 
 Other S4 Classes: \code{\link{EggNOG-class}},

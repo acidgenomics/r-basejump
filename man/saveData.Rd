@@ -46,6 +46,7 @@ following the same conventions as \code{\link[base:save]{base::save()}}. Convers
 preferred.
 }
 \examples{
+data(rse_small, sce_small)
 saveData(rse_small, sce_small, dir = "example")
 list.files("example")
 

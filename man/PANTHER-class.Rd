@@ -5,8 +5,11 @@
 \alias{PANTHER-class}
 \title{\code{PANTHER} Class}
 \description{
-\href{http://www.pantherdb.org}{PANTHER} Gene Ontology definitions. PANTHER stands
-for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
+\href{http://www.pantherdb.org}{PANTHER} gene ontology definitions.
+}
+\details{
+PANTHER stands for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary
+\strong{R}elationships.
 }
 \seealso{
 \code{\link[=panther]{panther()}}.

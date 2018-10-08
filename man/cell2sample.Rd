@@ -33,6 +33,7 @@ Cell to Sample Mappings
 \code{sampleID} column must be defined in \code{\link[=colData]{colData()}}.
 }
 \examples{
+data(sce_small)
 x <- cell2sample(sce_small)
 table(x)
 }

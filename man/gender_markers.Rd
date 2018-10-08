@@ -12,7 +12,7 @@ gender_markers
 \emph{Homo sapiens} and \emph{Mus musculus} are currently defined.
 }
 \examples{
-names(gender_markers)
+names(basejump::gender_markers)
 }
 \author{
 Michael Steinbaugh

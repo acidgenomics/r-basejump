@@ -3,10 +3,13 @@
 \docType{methods}
 \name{ensembl2entrez}
 \alias{ensembl2entrez}
+\alias{Ensembl2Entrez}
 \alias{ensembl2entrez,SummarizedExperiment-method}
-\title{Ensembl Gene ID to Entrez ID Mappings}
+\title{\code{Ensembl2Entrez} Generator}
 \usage{
 ensembl2entrez(object, ...)
+
+Ensembl2Entrez(object, ...)
 
 \S4method{ensembl2entrez}{SummarizedExperiment}(object)
 }
@@ -23,6 +26,7 @@ Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 }
 \examples{
+data(rse_small)
 x <- ensembl2entrez(rse_small)
 print(x)
 }

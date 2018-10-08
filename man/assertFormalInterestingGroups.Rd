@@ -19,6 +19,7 @@ Prevent unwanted downstream behavior when a missing interesting group
 is requested by the user.
 }
 \examples{
+data(rse_small)
 assertFormalInterestingGroups(rse_small, "treatment")
 assertFormalInterestingGroups(rse_small, NULL)
 }

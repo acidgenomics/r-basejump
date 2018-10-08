@@ -15,13 +15,14 @@ plotQC(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 }
 \description{
 Plot Quality Control
 }
 \examples{
+data(rse_small)
 plotQC(rse_small)
 }
 \seealso{

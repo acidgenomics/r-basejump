@@ -2,9 +2,12 @@
 % Please edit documentation in R/mgi2ensembl.R
 \name{mgi2ensembl}
 \alias{mgi2ensembl}
-\title{MGI to Ensembl Gene ID Mappings}
+\alias{MGI2Ensembl}
+\title{\code{MGI2Ensembl} Generator}
 \usage{
 mgi2ensembl(.test = FALSE)
+
+MGI2Ensembl(.test = FALSE)
 }
 \arguments{
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
@@ -13,7 +16,7 @@ mgi2ensembl(.test = FALSE)
 \code{MGI2Ensembl}.
 }
 \description{
-MGI to Ensembl Gene ID Mappings
+\code{MGI2Ensembl} Generator
 }
 \examples{
 x <- mgi2ensembl(.test = TRUE)
