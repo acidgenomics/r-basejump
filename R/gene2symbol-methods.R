@@ -1,4 +1,4 @@
-#' Gene-to-Symbol Mappings
+#' `Gene2Symbol` Generator
 #'
 #' @note This function will make any duplicated symbols unique by applying
 #' [base::make.unique()], which will add ".1" to the end of the gene name.
@@ -14,6 +14,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
+#' data(rse_small)
 #' x <- gene2symbol(rse_small)
 #' print(x)
 NULL
@@ -51,9 +52,8 @@ Gene2Symbol <- function(object, ...) {
 .gene2symbol.DataFrame <-  # nolint
     function(object) {
         object %>%
-            as_tibble(rownames = NULL) %>%
-            gene2symbol() %>%
-            set_rownames(rownames(object))
+            as("tbl_df") %>%
+            gene2symbol()
     }
 
 
@@ -71,8 +71,8 @@ Gene2Symbol <- function(object, ...) {
     function(object) {
         object %>%
             rowData() %>%
-            set_rownames(rownames(object)) %>%
-            gene2symbol()
+            gene2symbol() %>%
+            set_rownames(rownames(object))
     }
 
 
