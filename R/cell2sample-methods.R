@@ -14,6 +14,7 @@
 #' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
 #'
 #' @examples
+#' data(sce_small)
 #' x <- cell2sample(sce_small)
 #' table(x)
 NULL
