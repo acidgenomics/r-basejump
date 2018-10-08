@@ -77,18 +77,6 @@ p <- ggplot(
 p +
     geom_point() +
     theme_paperwhite(legend_position = "none")
-
-# Midnight theme.
-p +
-    geom_point() +
-    theme_midnight(legend_position = "none")
-
-# Minimal bar plot
-p +
-    geom_bar(stat = "identity") +
-    # This will collapse the extra margin at y-intercept.
-    scale_y_continuous(expand = c(0, 0)) +
-    theme_paperwhite(minimal = TRUE, legend_position = "none")
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
