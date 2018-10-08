@@ -1,4 +1,4 @@
-context("Atomic Vector Functions")
+context("Atomic Vectors")
 
 
 

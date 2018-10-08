@@ -1,4 +1,4 @@
-context("Assert Check Functions")
+context("Assert Checks")
 
 g2s <- new(
     "Gene2Symbol",

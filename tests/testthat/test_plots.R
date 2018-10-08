@@ -2,7 +2,7 @@
 
 
 
-context("Plot Functions")
+context("Plots")
 
 
 

@@ -1,4 +1,4 @@
-context("Make Names Functions")
+context("Make Names")
 
 load("gr.rda")
 load("mn.rda")
