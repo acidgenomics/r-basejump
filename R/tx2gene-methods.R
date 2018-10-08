@@ -1,8 +1,9 @@
-#' Transcript-to-Gene Mappings
+#' `Tx2Gene` Generator
 #'
 #' @name tx2gene
 #' @family S4 Generators
 #' @author Michael Steinbaugh
+#' @inherit Tx2Gene-class
 #' @export
 #'
 #' @inheritParams general
@@ -11,6 +12,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
+#' data(tx_se_small)
 #' x <- tx2gene(tx_se_small)
 #' print(x)
 NULL
@@ -39,9 +41,8 @@ NULL
 .tx2gene.DataFrame <-  # nolint
     function(object) {
         object %>%
-            as_tibble(rownames = NULL) %>%
-            tx2gene() %>%
-            set_rownames(rownames(object))
+            as("tbl_df") %>%
+            tx2gene()
     }
 
 
@@ -60,8 +61,8 @@ NULL
         validObject(object)
         object %>%
             rowData() %>%
-            set_rownames(rownames(object)) %>%
-            tx2gene()
+            tx2gene() %>%
+            set_rownames(rownames(object))
     }
 
 
