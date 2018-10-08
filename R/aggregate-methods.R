@@ -1,7 +1,3 @@
-# TODO Improve SCE method documentation.
-
-
-
 #' Aggregate Rows or Columns
 #'
 #' Aggregate gene/transcript features (rows) or sample replicates (columns).
@@ -15,10 +11,19 @@
 #'
 #' @section SummarizedExperiment:
 #'
-#' Slot an `aggregate` column into [SummarizedExperiment::rowData()] for
-#' `aggregateRows()`, or into [SummarizedExperiment::colData()] for
-#' [aggregateCols()]. The S4 method will define the `groupings` automatically
-#' and perform the aggregation.
+#' Slot an `aggregate` column into [rowData()] for `aggregateRows()`, or into
+#' [colData()] for [aggregateCols()]. The S4 method will define the `groupings`
+#' automatically and perform the aggregation.
+#'
+#' @section SingleCellExperiment:
+#'
+#' Method support inherits from `SummarizedExperiment`, and still relies upon
+#' slotting an `aggregate` column into [colData()]. Note that these groupings
+#' will map to cells, so care must be taken to properly aggregate samples.
+#'
+#' [aggregateCellsToSamples()] is a utilty function that factilites
+#' cell-to-sample aggregation. By default, this function will sum the counts
+#' across cells to sample level.
 #'
 #' @name aggregate
 #' @family Data Functions
@@ -107,6 +112,7 @@
 #' aggregateCols(se)
 #'
 #' # aggregateCellsToSamples ====
+#' data(sce_small)
 #' x <- aggregateCellsToSamples(sce_small)
 #' print(x)
 NULL
