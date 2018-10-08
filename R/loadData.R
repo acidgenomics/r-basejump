@@ -150,7 +150,7 @@
 #' @note This function is desired for interactive use and interprets object
 #'   names using non-standard evaluation.
 #'
-#' @family Read Functions
+#' @family Import/Export Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -192,7 +192,7 @@ loadData <- function(
 #' @note This function is intended for interactive use and interprets object
 #'   names using non-standard evaluation.
 #'
-#' @family Read Functions
+#' @family Import/Export Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -276,7 +276,7 @@ loadDataAsName <- function(
 #' Load a remote R binary file. This function is vectorized and supports
 #' multiple URLs in a single call.
 #'
-#' @family Read Functions
+#' @family Import/Export Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

@@ -40,10 +40,13 @@ file.exists(readme)
 unlink("ensembl_readme.txt.gz")
 }
 \seealso{
-Other Write Functions: \code{\link{assignAndSaveData}},
-  \code{\link{saveData}}, \code{\link{writeCounts}}
+Other Import/Export Functions: \code{\link{assignAndSaveData}},
+  \code{\link{export}}, \code{\link{import}},
+  \code{\link{loadDataAsName}}, \code{\link{loadData}},
+  \code{\link{loadRemoteData}}, \code{\link{saveData}},
+  \code{\link{writeCounts}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Write Functions}
+\concept{Import/Export Functions}

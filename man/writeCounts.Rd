@@ -45,10 +45,13 @@ list.files("example")
 unlink("example", recursive = TRUE)
 }
 \seealso{
-Other Write Functions: \code{\link{assignAndSaveData}},
-  \code{\link{saveData}}, \code{\link{transmit}}
+Other Import/Export Functions: \code{\link{assignAndSaveData}},
+  \code{\link{export}}, \code{\link{import}},
+  \code{\link{loadDataAsName}}, \code{\link{loadData}},
+  \code{\link{loadRemoteData}}, \code{\link{saveData}},
+  \code{\link{transmit}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Write Functions}
+\concept{Import/Export Functions}

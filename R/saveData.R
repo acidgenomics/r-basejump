@@ -4,7 +4,7 @@
 #' symbols. This function saves each object into a separate `.rda` file rather
 #' than combining into a single file.
 #'
-#' @family Write Functions
+#' @family Import/Export Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -100,7 +100,7 @@ saveData <- function(
 #' Assigns a new object by name to the current working environment then saves
 #' the newly assigned object, specified by the "`dir`" argument.
 #'
-#' @family Write Functions
+#' @family Import/Export Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

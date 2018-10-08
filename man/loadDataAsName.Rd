@@ -36,10 +36,13 @@ loadDataAsName(
 class(renamed)
 }
 \seealso{
-Other Read Functions: \code{\link{import}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}}
+Other Import/Export Functions: \code{\link{assignAndSaveData}},
+  \code{\link{export}}, \code{\link{import}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Read Functions}
+\concept{Import/Export Functions}

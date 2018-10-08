@@ -120,10 +120,13 @@ colSums(x)
 \item \href{https://cran.r-project.org/web/packages/Matrix/index.html}{Matrix}.
 }
 
-Other Read Functions: \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}}
+Other Import/Export Functions: \code{\link{assignAndSaveData}},
+  \code{\link{export}}, \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Read Functions}
+\concept{Import/Export Functions}

@@ -45,11 +45,13 @@ names using non-standard evaluation.
 loadData(example, dir = system.file("extdata", package = "basejump"))
 }
 \seealso{
-Other Read Functions: \code{\link{import}},
+Other Import/Export Functions: \code{\link{assignAndSaveData}},
+  \code{\link{export}}, \code{\link{import}},
   \code{\link{loadDataAsName}},
-  \code{\link{loadRemoteData}}
+  \code{\link{loadRemoteData}}, \code{\link{saveData}},
+  \code{\link{transmit}}, \code{\link{writeCounts}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Read Functions}
+\concept{Import/Export Functions}
