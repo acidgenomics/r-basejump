@@ -37,9 +37,9 @@ interestingGroups(object, ...) <- value
 Interesting Groups
 }
 \examples{
-# SummarizedExperiment ====
 data(rse_small)
 object <- rse_small
+
 intgroup <- interestingGroups(object)
 print(intgroup)
 
