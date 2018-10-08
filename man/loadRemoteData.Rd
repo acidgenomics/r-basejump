@@ -30,10 +30,13 @@ x <- loadRemoteData(url)
 print(x)
 }
 \seealso{
-Other Read Functions: \code{\link{import}},
-  \code{\link{loadDataAsName}}, \code{\link{loadData}}
+Other Import/Export Functions: \code{\link{assignAndSaveData}},
+  \code{\link{export}}, \code{\link{import}},
+  \code{\link{loadDataAsName}}, \code{\link{loadData}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Read Functions}
+\concept{Import/Export Functions}

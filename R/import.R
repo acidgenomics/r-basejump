@@ -51,7 +51,7 @@
 #' - `colnames`: Sidecar file containing column names.
 #' - `rownames`: Sidecar file containing row names.
 #'
-#' @family Read Functions
+#' @family Import/Export Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

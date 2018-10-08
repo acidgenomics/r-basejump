@@ -54,10 +54,13 @@ rm(example)
 unlink("example.rds")
 }
 \seealso{
-Other Write Functions: \code{\link{saveData}},
-  \code{\link{transmit}}, \code{\link{writeCounts}}
+Other Import/Export Functions: \code{\link{export}},
+  \code{\link{import}}, \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Write Functions}
+\concept{Import/Export Functions}

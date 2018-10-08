@@ -28,7 +28,7 @@ reference:
     - makeTx2gene
     - organism
     - starts_with("strip")
-  - title: Read/Write Functions
+  - title: Import/Export Functions
     contents:
     - starts_with("assign")
     - export

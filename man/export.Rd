@@ -70,7 +70,14 @@ file.remove(c(
 }
 \seealso{
 \code{\link[rio:export]{rio::export()}}.
+
+Other Import/Export Functions: \code{\link{assignAndSaveData}},
+  \code{\link{import}}, \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
 }
 \author{
 Michael Steinbaugh
 }
+\concept{Import/Export Functions}
