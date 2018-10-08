@@ -12,7 +12,7 @@
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{check}{\code{boolean}. Perform assert checks.}
@@ -54,7 +54,7 @@ plots containing many samples.}
 dashed line.}
 
 \item{minCounts}{\code{scalar integer}. Minimum number of counts per gene in the
-counts matrix.}
+count matrix.}
 
 \item{n}{\code{scalar integer}. Number to include.}
 

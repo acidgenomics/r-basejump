@@ -19,7 +19,7 @@ plotGenderMarkers(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
@@ -49,6 +49,7 @@ chromosomes. Currently only \emph{Homo sapiens} and \emph{Mus musculus}
 genomes are supported.
 }
 \examples{
+data(rse_small)
 # Minimal example doesn't contain these genes.
 x <- tryCatch(
     expr = plotGenderMarkers(rse_small),

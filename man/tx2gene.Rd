@@ -3,10 +3,19 @@
 \docType{methods}
 \name{tx2gene}
 \alias{tx2gene}
+\alias{tx2gene,tbl_df-method}
+\alias{tx2gene,DataFrame-method}
+\alias{tx2gene,GRanges-method}
 \alias{tx2gene,SummarizedExperiment-method}
-\title{Transcript-to-Gene Mappings}
+\title{\code{Tx2Gene} Generator}
 \usage{
 tx2gene(object, ...)
+
+\S4method{tx2gene}{tbl_df}(object)
+
+\S4method{tx2gene}{DataFrame}(object)
+
+\S4method{tx2gene}{GRanges}(object)
 
 \S4method{tx2gene}{SummarizedExperiment}(object)
 }
@@ -19,10 +28,14 @@ tx2gene(object, ...)
 \code{Tx2Gene}.
 }
 \description{
-Transcript-to-Gene Mappings
+Transcript-to-gene mappings.
+}
+\details{
+Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
 }
 \examples{
 # SummarizedExperiment ====
+data(tx_se_small)
 x <- tx2gene(tx_se_small)
 print(x)
 }

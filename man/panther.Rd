@@ -2,9 +2,12 @@
 % Please edit documentation in R/panther.R
 \name{panther}
 \alias{panther}
-\title{PANTHER Gene Ontology Annotations}
+\alias{PANTHER}
+\title{\code{PANTHER} Generator}
 \usage{
 panther(organism, release = NULL, .test = FALSE)
+
+PANTHER(organism, release = NULL, .test = FALSE)
 }
 \arguments{
 \item{organism}{\code{string}. Full Latin organism name. Currently supported
@@ -21,7 +24,7 @@ release versions available from the FTP server (e.g. \code{"13.0"}).}
 \code{PANTHER}.
 }
 \description{
-PANTHER Gene Ontology Annotations
+\code{PANTHER} Generator
 }
 \examples{
 invisible(capture.output(

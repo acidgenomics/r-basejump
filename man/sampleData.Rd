@@ -53,6 +53,8 @@ the columns map to a single sample (e.g. cells for a single-cell RNA-seq
 experiment).
 }
 \examples{
+data(rse_small, sce_small)
+
 # SummarizedExperiment ====
 x <- rse_small
 sampleData(x)

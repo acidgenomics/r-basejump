@@ -33,6 +33,7 @@ We're attempting to make this as strict as possible, requiring:
 }
 \examples{
 # SummarizedExperiment ====
+data(rse_small)
 x <- rse_small
 colnames(x)
 colData(x)
@@ -50,6 +51,7 @@ colnames(c)
 colData(c)
 
 # SingleCellExperiment ====
+data(sce_small)
 x <- sce_small
 head(colnames(x))
 sampleData(x)

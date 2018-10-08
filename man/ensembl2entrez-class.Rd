@@ -12,7 +12,7 @@ Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns. Requ
 mappings.
 }
 \seealso{
-\code{\link[=Ensembl2Entrez]{Ensembl2Entrez()}}.
+\code{\link[=ensembl2entrez]{ensembl2entrez()}}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Gene2Symbol-class}},

@@ -24,7 +24,7 @@ plotGenesDetected(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
@@ -33,7 +33,7 @@ When passing in a \code{string}, the name must be defined in \code{\link[=assayN
 dashed line.}
 
 \item{minCounts}{\code{scalar integer}. Minimum number of counts per gene in the
-counts matrix.}
+count matrix.}
 
 \item{fill}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 fill scale.
 Must supply discrete values. When set to \code{NULL}, the default ggplot2 color
@@ -50,10 +50,8 @@ plots containing many samples.}
 Plot Genes Detected
 }
 \examples{
-# SummarizedExperiment ====
+data(rse_small, sce_small)
 plotGenesDetected(rse_small)
-
-# SingleCellExperiment ====
 plotGenesDetected(sce_small)
 }
 \seealso{

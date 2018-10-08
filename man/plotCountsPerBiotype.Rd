@@ -35,7 +35,7 @@ plotCountsPerBroadClass(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{n}{\code{scalar integer}. Number to include.}
@@ -54,8 +54,15 @@ When passing in a \code{string}, the name must be defined in \code{\link[=assayN
 Plot Counts per Biotype
 }
 \examples{
+data(rse_small, sce_small)
+
+# SummarizedExperiment ====
 plotCountsPerBiotype(rse_small)
 plotCountsPerBroadClass(rse_small)
+
+# SingleCellExperiment ====
+plotCountsPerBiotype(sce_small)
+plotCountsPerBroadClass(sce_small)
 }
 \seealso{
 \link{makeGRanges}.

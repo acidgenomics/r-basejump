@@ -28,7 +28,8 @@ Always stop on error.
 Assert All Are Valid Names
 }
 \examples{
-assertAllAreValidNames(c("sample_1", "sample_2"))
+assertAllAreValidNames(c("sample1", "sample2"))
+validDimnames(basejump::rse_small)
 validDimnames(datasets::mtcars)
 validNames(c(
     "sample_1",

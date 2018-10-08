@@ -11,7 +11,10 @@ Gene-to-symbol mappings.
 Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 }
 \seealso{
-\code{\link[=gene2symbol]{gene2symbol()}}.
+\itemize{
+\item \code{\link[=gene2symbol]{gene2symbol()}}.
+\item \link{makeGene2Symbol}.
+}
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

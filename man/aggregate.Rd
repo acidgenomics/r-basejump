@@ -78,10 +78,21 @@ sample replicates.
 \section{SummarizedExperiment}{
 
 
-Slot an \code{aggregate} column into \code{\link[SummarizedExperiment:rowData]{SummarizedExperiment::rowData()}} for
-\code{aggregateRows()}, or into \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}} for
-\code{\link[=aggregateCols]{aggregateCols()}}. The S4 method will define the \code{groupings} automatically
-and perform the aggregation.
+Slot an \code{aggregate} column into \code{\link[=rowData]{rowData()}} for \code{aggregateRows()}, or into
+\code{\link[=colData]{colData()}} for \code{\link[=aggregateCols]{aggregateCols()}}. The S4 method will define the \code{groupings}
+automatically and perform the aggregation.
+}
+
+\section{SingleCellExperiment}{
+
+
+Method support inherits from \code{SummarizedExperiment}, and still relies upon
+slotting an \code{aggregate} column into \code{\link[=colData]{colData()}}. Note that these groupings
+will map to cells, so care must be taken to properly aggregate samples.
+
+\code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}} is a utilty function that factilites
+cell-to-sample aggregation. By default, this function will sum the counts
+across cells to sample level.
 }
 
 \examples{
@@ -151,6 +162,7 @@ aggregateCols(sparse, groupings = samples)
 aggregateCols(se)
 
 # aggregateCellsToSamples ====
+data(sce_small)
 x <- aggregateCellsToSamples(sce_small)
 print(x)
 }
