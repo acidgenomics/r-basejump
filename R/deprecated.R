@@ -398,6 +398,8 @@ setArgsToDoCall <- function(...) {
     .Defunct("matchArgsToDoCall")
 }
 
+# FIXME Deprecate the camel variants of makeGene2symbol and makeTx2gene
+
 
 
 # nolint end
