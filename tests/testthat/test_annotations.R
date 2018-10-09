@@ -113,10 +113,9 @@ with_parameters_test_that(
         )
     },
     object = list(
-
+        matrix = mat,
+        SummarizedExperiment = rse_small
     )
-    matrix = mat,
-    SummarizedExperiment = rse_small
 )
 
 
