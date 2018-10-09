@@ -3,16 +3,8 @@
 \docType{class}
 \name{EggNOG-class}
 \alias{EggNOG-class}
-\title{\code{EggNOG} Class}
-\description{
-\href{http://eggnogdb.embl.de}{EggNOG} is a database of biological information
-hosted by the EMBL. It is based on the original idea of COGs (\strong{c}lusters of
-\strong{o}rthologous \strong{g}roups) and expands that idea to non-supervised
-orthologous groups constructed from numerous organisms. eggNOG stands for
-\strong{e}volutionary \strong{g}enealogy of \strong{g}enes: \strong{N}on-supervised
-\strong{O}rthologous \strong{G}roups.
-}
-\details{
+\title{EggNOG Database Annotations}
+\value{
 This class extends \code{list} and contains:
 \enumerate{
 \item "\code{cogFunctionalCategories}": \strong{C}luster of \strong{O}rthologous \strong{G}roups
@@ -22,6 +14,14 @@ for \strong{Eu}karyotes \strong{N}on-supervised \strong{O}rthologous \strong{G}r
 and \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (NOG) protein
 identifiers.
 }
+}
+\description{
+\href{http://eggnogdb.embl.de}{EggNOG} is a database of biological information
+hosted by the EMBL. It is based on the original idea of COGs (\strong{c}lusters of
+\strong{o}rthologous \strong{g}roups) and expands that idea to non-supervised
+orthologous groups constructed from numerous organisms. eggNOG stands for
+\strong{e}volutionary \strong{g}enealogy of \strong{g}enes: \strong{N}on-supervised
+\strong{O}rthologous \strong{G}roups.
 }
 \seealso{
 \itemize{

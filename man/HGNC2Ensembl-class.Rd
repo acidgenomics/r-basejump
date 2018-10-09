@@ -3,12 +3,12 @@
 \docType{class}
 \name{HGNC2Ensembl-class}
 \alias{HGNC2Ensembl-class}
-\title{\code{HGNC2Ensembl} Class}
-\description{
-HGNC-to-Ensembl gene ID mappings.
-}
-\details{
+\title{HGNC-to-Ensembl Identifier Mappings}
+\value{
 Contains a \code{DataFrame} with \code{hgncID} and \code{geneID} columns.
+}
+\description{
+HGNC-to-Ensembl Identifier Mappings
 }
 \seealso{
 \code{\link[=hgnc2ensembl]{hgnc2ensembl()}}.

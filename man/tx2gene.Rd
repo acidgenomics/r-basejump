@@ -3,6 +3,7 @@
 \docType{methods}
 \name{tx2gene}
 \alias{tx2gene}
+\alias{Tx2Gene}
 \alias{tx2gene,data.frame-method}
 \alias{tx2gene,DataFrame-method}
 \alias{tx2gene,GRanges-method}
@@ -28,10 +29,7 @@ tx2gene(object, ...)
 \code{Tx2Gene}.
 }
 \description{
-Transcript-to-gene mappings.
-}
-\details{
-Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
+\code{Tx2Gene} Generator
 }
 \note{
 No attempt is made to arrange the rows by transcript identifier.

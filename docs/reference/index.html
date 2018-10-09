@@ -139,43 +139,43 @@
         <td>
           <p><code><a href="EggNOG-class.html">EggNOG-class</a></code> </p>
         </td>
-        <td><p><code>EggNOG</code> Class</p></td>
+        <td><p>EggNOG Database Annotations</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="Ensembl2Entrez-class.html">Ensembl2Entrez-class</a></code> </p>
         </td>
-        <td><p><code>Ensembl2Entrez</code> Class</p></td>
+        <td><p>Ensembl-to-Entrez Identifier Mappings</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="Gene2Symbol-class.html">Gene2Symbol-class</a></code> </p>
         </td>
-        <td><p><code>Gene2Symbol</code> Class</p></td>
+        <td><p>Gene-to-Symbol Mappings</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="HGNC2Ensembl-class.html">HGNC2Ensembl-class</a></code> </p>
         </td>
-        <td><p><code>HGNC2Ensembl</code> Class</p></td>
+        <td><p>HGNC-to-Ensembl Identifier Mappings</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="MGI2Ensembl-class.html">MGI2Ensembl-class</a></code> </p>
         </td>
-        <td><p><code>MGI2Ensembl</code> Class</p></td>
+        <td><p>MGI-to-Ensembl Identifier Mappings.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="PANTHER-class.html">PANTHER-class</a></code> </p>
         </td>
-        <td><p><code>PANTHER</code> Class</p></td>
+        <td><p>PANTHER Database Annotations</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="Tx2Gene-class.html">Tx2Gene-class</a></code> </p>
         </td>
-        <td><p><code>Tx2Gene</code> Class</p></td>
+        <td><p>Transcript-to-Gene Identifier Mappings</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -193,31 +193,31 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="ensembl2entrez.html">ensembl2entrez()</a></code> <code><a href="ensembl2entrez.html">Ensembl2Entrez()</a></code> </p>
+          <p><code><a href="ensembl2entrez.html">ensembl2entrez()</a></code> </p>
         </td>
         <td><p><code>Ensembl2Entrez</code> Generator</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="gene2symbol.html">gene2symbol()</a></code> <code><a href="gene2symbol.html">Gene2Symbol()</a></code> </p>
+          <p><code><a href="gene2symbol.html">gene2symbol()</a></code> </p>
         </td>
         <td><p><code>Gene2Symbol</code> Generator</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="hgnc2ensembl.html">hgnc2ensembl()</a></code> <code><a href="hgnc2ensembl.html">HGNC2Ensembl()</a></code> </p>
+          <p><code><a href="hgnc2ensembl.html">hgnc2ensembl()</a></code> </p>
         </td>
         <td><p><code>HGNC2Ensembl</code> Generator</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mgi2ensembl.html">mgi2ensembl()</a></code> <code><a href="mgi2ensembl.html">MGI2Ensembl()</a></code> </p>
+          <p><code><a href="mgi2ensembl.html">mgi2ensembl()</a></code> </p>
         </td>
         <td><p><code>MGI2Ensembl</code> Generator</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="panther.html">panther()</a></code> <code><a href="panther.html">PANTHER()</a></code> </p>
+          <p><code><a href="panther.html">panther()</a></code> </p>
         </td>
         <td><p><code>PANTHER</code> Generator</p></td>
       </tr><tr>
@@ -267,9 +267,21 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGTF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
+          <p><code><a href="makeGene2Symbol.html">makeGene2SymbolFromEnsembl()</a></code> <code><a href="makeGene2Symbol.html">makeGene2SymbolFromGFF()</a></code> </p>
+        </td>
+        <td><p>Make Gene-to-Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
         </td>
         <td><p>Make Genomic Ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeTx2Gene.html">makeTx2GeneFromEnsembl()</a></code> <code><a href="makeTx2Gene.html">makeTx2GeneFromGFF()</a></code> </p>
+        </td>
+        <td><p>Make Transcript-to-Gene Mappings</p></td>
       </tr><tr>
         
         <td>
@@ -373,7 +385,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;sparseMatrix&gt;</i>)</a></code> </p>
+          <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> </p>
         </td>
         <td><p>Counts</p></td>
       </tr><tr>
@@ -382,6 +394,12 @@
           <p><code><a href="interestingGroups.html">interestingGroups()</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`()</a></code> </p>
         </td>
         <td><p>Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeSingleCellExperiment.html">makeSingleCellExperiment()</a></code> </p>
+        </td>
+        <td><p>Make Single-Cell Experiment</p></td>
       </tr><tr>
         
         <td>
@@ -451,6 +469,12 @@
         </th>
       </tr>
       <tr>
+        
+        <td>
+          <p><code><a href="aggregate.html">aggregateRows()</a></code> <code><a href="aggregate.html">aggregateCols()</a></code> <code><a href="aggregate.html">aggregateCellsToSamples()</a></code> </p>
+        </td>
+        <td><p>Aggregate Rows or Columns</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="cell2sample.html">cell2sample()</a></code> </p>

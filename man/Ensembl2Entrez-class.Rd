@@ -3,13 +3,15 @@
 \docType{class}
 \name{Ensembl2Entrez-class}
 \alias{Ensembl2Entrez-class}
-\title{\code{Ensembl2Entrez} Class}
-\description{
-Ensembl gene ID to Entrez ID mappings.
+\title{Ensembl-to-Entrez Identifier Mappings}
+\value{
+Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns.
 }
-\details{
-Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns. Requires 1:1
-mappings.
+\description{
+Ensembl-to-Entrez Identifier Mappings
+}
+\note{
+Requires 1:1 mappings.
 }
 \seealso{
 \code{\link[=ensembl2entrez]{ensembl2entrez()}}.

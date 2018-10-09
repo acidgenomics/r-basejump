@@ -3,12 +3,12 @@
 \docType{class}
 \name{Tx2Gene-class}
 \alias{Tx2Gene-class}
-\title{\code{Tx2Gene} Class}
-\description{
-Transcript-to-gene mappings.
-}
-\details{
+\title{Transcript-to-Gene Identifier Mappings}
+\value{
 Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
+}
+\description{
+Transcript-to-Gene Identifier Mappings
 }
 \seealso{
 \itemize{

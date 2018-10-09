@@ -12,8 +12,6 @@
 \usage{
 gene2symbol(object, ...)
 
-Gene2Symbol(object, ...)
-
 \S4method{gene2symbol}{data.frame}(object)
 
 \S4method{gene2symbol}{DataFrame}(object)

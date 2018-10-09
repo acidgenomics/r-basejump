@@ -10,8 +10,6 @@
 makeGene2SymbolFromEnsembl(organism, build = NULL, release = NULL)
 
 makeGene2SymbolFromGFF(file)
-
-makeGene2SymbolFromGTF(file)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}

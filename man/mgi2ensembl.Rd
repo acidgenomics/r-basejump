@@ -6,8 +6,6 @@
 \title{\code{MGI2Ensembl} Generator}
 \usage{
 mgi2ensembl(.test = FALSE)
-
-MGI2Ensembl(.test = FALSE)
 }
 \arguments{
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
