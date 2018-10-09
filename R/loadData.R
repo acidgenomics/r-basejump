@@ -32,7 +32,12 @@
         FUN.VALUE = character(1L),
         USE.NAMES = TRUE
     )
-    message(paste0("Loading ", toString(basename(files)), " from ", dir, "."))
+    message(paste0(
+        "Loading ",
+        toString(basename(files)),
+        " from ",
+        dir, "..."
+    ))
     files
 }
 
