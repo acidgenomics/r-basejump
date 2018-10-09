@@ -10,8 +10,6 @@
 makeTx2GeneFromEnsembl(organism, build = NULL, release = NULL)
 
 makeTx2GeneFromGFF(file)
-
-makeTx2GeneFromGTF(file)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}

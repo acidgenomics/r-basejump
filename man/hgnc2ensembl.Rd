@@ -6,8 +6,6 @@
 \title{\code{HGNC2Ensembl} Generator}
 \usage{
 hgnc2ensembl(.test = FALSE)
-
-HGNC2Ensembl(.test = FALSE)
 }
 \arguments{
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}

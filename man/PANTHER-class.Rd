@@ -3,13 +3,13 @@
 \docType{class}
 \name{PANTHER-class}
 \alias{PANTHER-class}
-\title{\code{PANTHER} Class}
-\description{
-\href{http://www.pantherdb.org}{PANTHER} gene ontology definitions.
+\title{PANTHER Database Annotations}
+\value{
+Contains a \code{DataFrame}.
 }
-\details{
-PANTHER stands for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary
-\strong{R}elationships.
+\description{
+\href{http://www.pantherdb.org}{PANTHER} gene ontology definitions. PANTHER stands
+for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \seealso{
 \code{\link[=panther]{panther()}}.

@@ -2,6 +2,7 @@
 % Please edit documentation in R/eggnog.R
 \name{eggnog}
 \alias{eggnog}
+\alias{EggNOG}
 \title{\code{EggNOG} Generator}
 \usage{
 eggnog(.test = FALSE)

@@ -3,12 +3,12 @@
 \docType{class}
 \name{Gene2Symbol-class}
 \alias{Gene2Symbol-class}
-\title{\code{Gene2Symbol} Class}
-\description{
-Gene-to-symbol mappings.
-}
-\details{
+\title{Gene-to-Symbol Mappings}
+\value{
 Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
+}
+\description{
+Gene-to-Symbol Mappings
 }
 \seealso{
 \itemize{

@@ -13,8 +13,6 @@ makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
 
 makeGRangesFromGFF(file, level = c("genes", "transcripts"))
 
-makeGRangesFromGTF(file, level = c("genes", "transcripts"))
-
 annotable(organism, level = c("genes", "transcripts"), build = NULL,
   release = NULL)
 }

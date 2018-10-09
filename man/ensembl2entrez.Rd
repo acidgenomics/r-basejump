@@ -9,8 +9,6 @@
 \usage{
 ensembl2entrez(object, ...)
 
-Ensembl2Entrez(object, ...)
-
 \S4method{ensembl2entrez}{SummarizedExperiment}(object)
 }
 \arguments{

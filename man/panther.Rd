@@ -6,8 +6,6 @@
 \title{\code{PANTHER} Generator}
 \usage{
 panther(organism, release = NULL, .test = FALSE)
-
-PANTHER(organism, release = NULL, .test = FALSE)
 }
 \arguments{
 \item{organism}{\code{string}. Full Latin organism name. Currently supported
