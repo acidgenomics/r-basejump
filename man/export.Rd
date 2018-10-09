@@ -32,6 +32,11 @@ export(x, ...)
 
 \item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
+
+\item{convertGenesToSymbols}{\code{boolean}. Automatically convert gene IDs to
+gene symbols in the rownames.}
+
+\item{compress}{\code{boolean}. Apply gzip compression to all files.}
 }
 \value{
 Invisible \code{character}. File path(s).
