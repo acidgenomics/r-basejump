@@ -4,7 +4,7 @@
 \name{gene2symbol}
 \alias{gene2symbol}
 \alias{Gene2Symbol}
-\alias{gene2symbol,tbl_df-method}
+\alias{gene2symbol,data.frame-method}
 \alias{gene2symbol,DataFrame-method}
 \alias{gene2symbol,GRanges-method}
 \alias{gene2symbol,SummarizedExperiment-method}
@@ -14,7 +14,7 @@ gene2symbol(object, ...)
 
 Gene2Symbol(object, ...)
 
-\S4method{gene2symbol}{tbl_df}(object)
+\S4method{gene2symbol}{data.frame}(object)
 
 \S4method{gene2symbol}{DataFrame}(object)
 
@@ -36,6 +36,8 @@ Gene2Symbol(object, ...)
 \note{
 This function will make any duplicated symbols unique by applying
 \code{\link[base:make.unique]{base::make.unique()}}, which will add ".1" to the end of the gene name.
+
+No attempt is made to arrange the rows by gene identifier.
 }
 \examples{
 # SummarizedExperiment ====

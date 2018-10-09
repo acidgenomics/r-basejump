@@ -3,7 +3,7 @@
 \docType{methods}
 \name{tx2gene}
 \alias{tx2gene}
-\alias{tx2gene,tbl_df-method}
+\alias{tx2gene,data.frame-method}
 \alias{tx2gene,DataFrame-method}
 \alias{tx2gene,GRanges-method}
 \alias{tx2gene,SummarizedExperiment-method}
@@ -11,7 +11,7 @@
 \usage{
 tx2gene(object, ...)
 
-\S4method{tx2gene}{tbl_df}(object)
+\S4method{tx2gene}{data.frame}(object)
 
 \S4method{tx2gene}{DataFrame}(object)
 
@@ -32,6 +32,9 @@ Transcript-to-gene mappings.
 }
 \details{
 Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
+}
+\note{
+No attempt is made to arrange the rows by transcript identifier.
 }
 \examples{
 # SummarizedExperiment ====
