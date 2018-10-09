@@ -8,7 +8,9 @@
 #'
 #' @inheritParams general
 #'
-#' @seealso [detectOrganism()].
+#' @seealso
+#' - [BiocGenerics::organism()].
+#' - [detectOrganism()].
 #'
 #' @examples
 #' data(rse_small)
