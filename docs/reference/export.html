@@ -125,7 +125,12 @@
 <span class='fu'>export</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='no'>format</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>)</pre>
+<span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>convertGenesToSymbols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>convertGenesToSymbols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +155,15 @@
       <th>dir</th>
       <td><p><code>string</code>. Output directory. Defaults to the current working
 directory.</p></td>
+    </tr>
+    <tr>
+      <th>convertGenesToSymbols</th>
+      <td><p><code>boolean</code>. Automatically convert gene IDs to
+gene symbols in the rownames.</p></td>
+    </tr>
+    <tr>
+      <th>compress</th>
+      <td><p><code>boolean</code>. Apply gzip compression to all files.</p></td>
     </tr>
     </table>
     
