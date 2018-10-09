@@ -67,12 +67,12 @@ NULL
         if (is.null(gene2symbol)) {
             message("Obtaining gene-to-symbol mappings from Ensembl...")
             if (is.null(organism)) {
-                organism <- organism(object)
+                organism <- detectOrganism(object)
             }
             assert_is_a_string(organism)
             message(paste(organism, "genes detected."))
             gene2symbol <- do.call(
-                what = makeGene2symbolFromEnsembl,
+                what = makeGene2SymbolFromEnsembl,
                 args = matchArgsToDoCall(
                     args = list(organism = organism),
                     removeFormals = c("object", "gene2symbol")
