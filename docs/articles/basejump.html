@@ -74,7 +74,7 @@
       <h1>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">7 October 2018</h4>
+            <h4 class="date">9 October 2018</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/steinbaugh/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -167,7 +167,7 @@
 ##   .. ..$ release        : chr "93"
 ##   .. ..$ level          : chr "genes"
 ##   .. ..$ version        :Classes 'package_version', 'numeric_version'  hidden list of 1
-##   .. ..$ date           : Date[1:1], format: "2018-10-07"</code></pre>
+##   .. ..$ date           : Date[1:1], format: "2018-10-09"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">names</span>(grch38))</code></pre></div>
 <pre><code>## [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 ## [5] "ENSG00000000460" "ENSG00000000938"</code></pre>
@@ -412,43 +412,43 @@
 <h2 class="hasAnchor">
 <a href="#gene-mapping-functions" class="anchor"></a>Gene mapping functions</h2>
 <p>Gene-to-symbol and transcript-to-gene mappings can be easily acquired with the <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/tx2gene.html">tx2gene()</a></code> functions. Both of these functions return a <code>data.frame</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gene2symbol &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGene2symbol.html">makeGene2symbolFromEnsembl</a></span>(<span class="st">"Homo sapiens"</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gene2symbol &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGene2Symbol.html">makeGene2SymbolFromEnsembl</a></span>(<span class="st">"Homo sapiens"</span>)
 <span class="kw">print</span>(gene2symbol)</code></pre></div>
-<pre><code>## gene2symbol with 65256 rows and 2 columns
-##                          geneID    geneName
-##                     &lt;character&gt; &lt;character&gt;
-## ENSG00000000003 ENSG00000000003      TSPAN6
-## ENSG00000000005 ENSG00000000005        TNMD
-## ENSG00000000419 ENSG00000000419        DPM1
-## ENSG00000000457 ENSG00000000457       SCYL3
-## ENSG00000000460 ENSG00000000460    C1orf112
-## ...                         ...         ...
-## LRG_995                 LRG_995     FUBP1.1
-## LRG_996                 LRG_996     ERBB3.1
-## LRG_997                 LRG_997      ROS1.1
-## LRG_998                 LRG_998     CCND3.1
-## LRG_999                 LRG_999       CIC.1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tx2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeTx2gene.html">makeTx2geneFromEnsembl</a></span>(<span class="st">"Homo sapiens"</span>)
+<pre><code>## Gene2Symbol with 65256 rows and 2 columns
+##                geneID    geneName
+##           &lt;character&gt; &lt;character&gt;
+## 1     ENSG00000000003      TSPAN6
+## 2     ENSG00000000005        TNMD
+## 3     ENSG00000000419        DPM1
+## 4     ENSG00000000457       SCYL3
+## 5     ENSG00000000460    C1orf112
+## ...               ...         ...
+## 65252         LRG_995     FUBP1.1
+## 65253         LRG_996     ERBB3.1
+## 65254         LRG_997      ROS1.1
+## 65255         LRG_998     CCND3.1
+## 65256         LRG_999       CIC.1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tx2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeTx2Gene.html">makeTx2GeneFromEnsembl</a></span>(<span class="st">"Homo sapiens"</span>)
 <span class="kw">print</span>(tx2gene)</code></pre></div>
-<pre><code>## tx2gene with 225358 rows and 2 columns
-##                    transcriptID          geneID
-##                     &lt;character&gt;     &lt;character&gt;
-## ENST00000000233 ENST00000000233 ENSG00000004059
-## ENST00000000412 ENST00000000412 ENSG00000003056
-## ENST00000000442 ENST00000000442 ENSG00000173153
-## ENST00000001008 ENST00000001008 ENSG00000004478
-## ENST00000001146 ENST00000001146 ENSG00000003137
-## ...                         ...             ...
-## LRG_998t1             LRG_998t1         LRG_998
-## LRG_998t2             LRG_998t2         LRG_998
-## LRG_999t1             LRG_999t1         LRG_999
-## LRG_999t2             LRG_999t2         LRG_999
-## LRG_99t1               LRG_99t1          LRG_99</code></pre>
+<pre><code>## Tx2Gene with 225358 rows and 2 columns
+##           transcriptID          geneID
+##            &lt;character&gt;     &lt;character&gt;
+## 1      ENST00000000233 ENSG00000004059
+## 2      ENST00000000412 ENSG00000003056
+## 3      ENST00000000442 ENSG00000173153
+## 4      ENST00000001008 ENSG00000004478
+## 5      ENST00000001146 ENSG00000003137
+## ...                ...             ...
+## 225354       LRG_998t1         LRG_998
+## 225355       LRG_998t2         LRG_998
+## 225356       LRG_999t1         LRG_999
+## 225357       LRG_999t2         LRG_999
+## 225358        LRG_99t1          LRG_99</code></pre>
 </div>
 <div id="parse-gtfgff-files" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parse-gtfgff-files" class="anchor"></a>Parse GTF/GFF files</h2>
-<p>For organisms that are not well supported on <a href="https://www.ensembl.org">Ensembl</a>, we recommend using <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> or <a href="https://useast.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GFF</a> files for gene annotations. In general, <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> files are more consistently standardized and recommended over GFF3, if possible. <code><a href="../reference/makeTx2gene.html">makeTx2geneFromGFF()</a></code> and <code><a href="../reference/makeGene2symbol.html">makeGene2symbolFromGFF()</a></code> are utility functions that can return transcript-to-gene and gene-to-symbol mappings from the genomic ranges returned by <code><a href="../reference/makeGRanges.html">makeGRangesFromGFF()</a></code>.</p>
+<p>For organisms that are not well supported on <a href="https://www.ensembl.org">Ensembl</a>, we recommend using <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> or <a href="https://useast.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GFF</a> files for gene annotations. In general, <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> files are more consistently standardized and recommended over GFF3, if possible. <code><a href="../reference/deprecated.html">makeTx2geneFromGFF()</a></code> and <code><a href="../reference/deprecated.html">makeGene2symbolFromGFF()</a></code> are utility functions that can return transcript-to-gene and gene-to-symbol mappings from the genomic ranges returned by <code><a href="../reference/makeGRanges.html">makeGRangesFromGFF()</a></code>.</p>
 <div id="gtf" class="section level3">
 <h3 class="hasAnchor">
 <a href="#gtf" class="anchor"></a>GTF</h3>
@@ -508,29 +508,25 @@ grch38 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/make
 <div id="hgnc" class="section level3">
 <h3 class="hasAnchor">
 <a href="#hgnc" class="anchor"></a>HGNC</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">FIXME</span><span class="co"> Use pre-calculated, for speed.</span>
-hgnc2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deprecated.html">hgnc2gene</a></span>()
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hgnc2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deprecated.html">hgnc2gene</a></span>(<span class="dt">.test =</span> <span class="ot">TRUE</span>)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(hgnc2gene)</code></pre></div>
 </div>
 <div id="mgi" class="section level3">
 <h3 class="hasAnchor">
 <a href="#mgi" class="anchor"></a>MGI</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">FIXME</span><span class="co"> Use pre-calculated, for speed.</span>
-mgi2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deprecated.html">mgi2gene</a></span>()
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mgi2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deprecated.html">mgi2gene</a></span>(<span class="dt">.test =</span> <span class="ot">TRUE</span>)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(mgi2gene)</code></pre></div>
 </div>
 <div id="eggnog" class="section level3">
 <h3 class="hasAnchor">
 <a href="#eggnog" class="anchor"></a>EggNOG</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">FIXME</span><span class="co"> Use pre-calculated, for speed.</span>
-eggnog &lt;-<span class="st"> </span><span class="kw"><a href="../reference/eggnog.html">eggnog</a></span>()
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eggnog &lt;-<span class="st"> </span><span class="kw"><a href="../reference/eggnog.html">eggnog</a></span>(<span class="dt">.test =</span> <span class="ot">TRUE</span>)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(eggnog)</code></pre></div>
 </div>
 <div id="panther" class="section level3">
 <h3 class="hasAnchor">
 <a href="#panther" class="anchor"></a>PANTHER</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">FIXME</span><span class="co"> Use pre-calculated, for speed.</span>
-panther &lt;-<span class="st"> </span><span class="kw"><a href="../reference/panther.html">panther</a></span>(<span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">panther &lt;-<span class="st"> </span><span class="kw"><a href="../reference/panther.html">panther</a></span>(<span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>, <span class="dt">.test =</span> <span class="ot">TRUE</span>)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(panther)</code></pre></div>
 </div>
 <div id="wormbase" class="section level3">
@@ -819,17 +815,19 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 <h1 class="hasAnchor">
 <a href="#r-session-information" class="anchor"></a>R session information</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sessioninfo<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/sessioninfo/topics/session_info">session_info</a></span>()</code></pre></div>
+<pre><code>## Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not
+## possible</code></pre>
 <pre><code>## ─ Session info ──────────────────────────────────────────────────────────
 ##  setting  value                       
-##  version  R version 3.5.1 (2018-07-02)
-##  os       macOS  10.14                
-##  system   x86_64, darwin15.6.0        
+##  version  R version 3.5.0 (2018-04-23)
+##  os       Red Hat Enterprise Linux    
+##  system   x86_64, linux-gnu           
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-10-07                  
+##  date     2018-10-09                  
 ## 
 ## ─ Packages ──────────────────────────────────────────────────────────────
 ##  package                * version   date       lib
@@ -847,7 +845,7 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 ##  assertive.types          0.0-3     2016-12-30 [1]
 ##  assertthat               0.2.0     2017-04-11 [1]
 ##  backports                1.1.2     2017-12-13 [1]
-##  basejump               * 0.99.0    2018-10-07 [1]
+##  basejump               * 0.99.0    2018-10-09 [1]
 ##  bindr                    0.1.1     2018-03-13 [1]
 ##  bindrcpp                 0.2.2     2018-03-29 [1]
 ##  Biobase                * 2.41.2    2018-07-18 [1]
@@ -874,12 +872,12 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 ##  desc                     1.2.0     2018-05-01 [1]
 ##  digest                   0.6.17    2018-09-12 [1]
 ##  dplyr                    0.7.6     2018-06-29 [1]
-##  EnsDb.Hsapiens.v75       2.99.0    2018-10-07 [1]
+##  EnsDb.Hsapiens.v75       2.99.0    2018-08-28 [1]
 ##  ensembldb                2.5.8     2018-08-31 [1]
 ##  evaluate                 0.11      2018-07-17 [1]
 ##  fs                       1.2.6     2018-08-23 [1]
 ##  GenomeInfoDb           * 1.17.2    2018-09-26 [1]
-##  GenomeInfoDbData         1.2.0     2018-10-07 [1]
+##  GenomeInfoDbData         1.2.0     2018-10-08 [1]
 ##  GenomicAlignments        1.17.3    2018-07-18 [1]
 ##  GenomicFeatures          1.33.3    2018-10-05 [1]
 ##  GenomicRanges          * 1.33.14   2018-09-20 [1]
@@ -902,7 +900,7 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 ##  lattice                  0.20-35   2017-03-25 [2]
 ##  lazyeval                 0.2.1     2017-10-29 [1]
 ##  magrittr                 1.5       2014-11-22 [1]
-##  MASS                     7.3-50    2018-04-30 [2]
+##  MASS                     7.3-50    2018-04-30 [1]
 ##  Matrix                   1.2-14    2018-04-13 [2]
 ##  Matrix.utils             0.9.7     2018-04-19 [1]
 ##  matrixStats            * 0.54.0    2018-07-23 [1]
@@ -935,6 +933,7 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 ##  rprojroot                1.3-2     2018-01-03 [1]
 ##  Rsamtools                1.33.6    2018-10-02 [1]
 ##  RSQLite                  2.1.1     2018-05-06 [1]
+##  rstudioapi               0.8       2018-10-02 [1]
 ##  rtracklayer              1.41.5    2018-08-31 [1]
 ##  S4Vectors              * 0.19.20   2018-09-29 [1]
 ##  scales                   1.0.0     2018-08-09 [1]
@@ -957,134 +956,136 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 ##  XVector                  0.21.4    2018-10-01 [1]
 ##  yaml                     2.2.0     2018-07-25 [1]
 ##  zlibbioc                 1.27.0    2018-06-13 [1]
-##  source                                       
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  local (mjsteinbaugh/basejump-private@75d4c8e)
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.1)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.1)                               
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.1)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.1)                               
-##  CRAN (R 3.5.1)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.1)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
-##  CRAN (R 3.5.0)                               
-##  Bioconductor                                 
+##  source                                  
+##  Bioconductor                            
+##  Bioconductor                            
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  local (mjsteinbaugh/basejump-private@NA)
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  Bioconductor                            
+##  Bioconductor                            
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  Bioconductor                            
+##  Bioconductor                            
+##  Bioconductor                            
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
+##  CRAN (R 3.5.0)                          
+##  Bioconductor                            
 ## 
-## [1] /Users/mike/R/library/3.5-bioc-3.8-devel
-## [2] /Library/Frameworks/R.framework/Versions/3.5/Resources/library</code></pre>
+## [1] /home/bioinfo/R/library/3.5-bioc-3.8-devel
+## [2] /usr/lib64/R/library
+## [3] /usr/share/R/library</code></pre>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">

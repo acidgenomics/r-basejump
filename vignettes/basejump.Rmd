@@ -154,7 +154,7 @@ summary(grch37)
 GenomeInfoDb::seqinfo(grch37)
 ```
 
-### `tibble` return
+### Annotable return (`tibble`)
 
 For convenience, if you prefer to return annotations as a `tibble` instead of `GRanges`, we provide the `annotable()` function. Internally, this calls the `makeGRangesFromEnsembl()` function and then automatically coerces the return to a `tibble` using our `as(object, Class = "tbl_df")` coercion method. For quick access to current [Ensembl][] annotations as a `tibble`, we also recommend the [annotables][] package.
 
@@ -245,30 +245,30 @@ In addition to interfacing with [Ensembl][], [basejump][] exports a number of ut
 
 ### HGNC
 
-```{r, eval=FALSE}
+```{r}
 hgnc2gene <- hgnc2gene(.test = TRUE)
-glimpse(hgnc2gene)
+summary(hgnc2gene)
 ```
 
 ### MGI
 
-```{r, eval=FALSE}
-mgi2gene <- mgi2gene(.test = TRUE)
-glimpse(mgi2gene)
+```{r}
+mgi2ensembl <- mgi2ensembl(.test = TRUE)
+summary(mgi2ensembl)
 ```
 
 ### EggNOG
 
-```{r, eval=FALSE}
+```{r}
 eggnog <- eggnog(.test = TRUE)
-glimpse(eggnog)
+summary(eggnog)
 ```
 
 ### PANTHER
 
-```{r, eval=FALSE}
+```{r}
 panther <- panther(organism = "Homo sapiens", .test = TRUE)
-glimpse(panther)
+summary(panther)
 ```
 
 ### WormBase
@@ -322,25 +322,13 @@ Additional, the package provides support for easy heatmap generation, by wrappin
 
 ```{r}
 plotHeatmap(rse_small)
-```
-
-```{r}
 plotCorrelationHeatmap(rse_small)
-```
-
-```{r}
 plotQuantileHeatmap(rse_small)
 ```
 
 # Sanitization functions
 
 The `makeNames` suite of function, consisting primarily of `camel()`, `dotted()`, `snake()`, and `upperCamel()`, provide S4 method support for sanitizing common data structures used in genomics research and on [Bioconductor][].
-
-Here is the current list of classes supported by these functions:
-
-```{r}
-showMethods("camel")
-```
 
 To see how these functions work, let's load up an example `list` named `mn` (short for `makeNames`).
 
@@ -351,6 +339,8 @@ loadRemoteData(url)
 
 ## Atomic vectors
 
+### Character
+
 ```{r}
 x <- mn$character
 print(x)
@@ -359,7 +349,11 @@ dotted(x)
 snake(x)
 upperCamel(x)
 makeNames(x)
+```
 
+### Named character
+
+```{r}
 x <- mn$namedCharacter
 print(x)
 camel(x)
@@ -367,7 +361,11 @@ dotted(x)
 snake(x)
 upperCamel(x)
 makeNames(x)
+```
 
+### Factor
+
+```{r}
 x <- mn$factor
 print(x)
 camel(x)
