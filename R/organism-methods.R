@@ -62,7 +62,9 @@ NULL
 
 
 # Note that `character` method conflicts with `annotate` package, so we're not
-# exporting this function as a method.
+# exporting this function as a method. This method gets loaded when DESeq2 is
+# attached into the NAMESPACE.
+#
 # We're using a while loop approach here so we can skip transgenes or spike-ins.
 # Fail after 50 unknowns, for speed.
 .organism.character <-  # nolint
