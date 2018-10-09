@@ -68,3 +68,16 @@ setMethod(
     ),
     definition = `.counts<-.SE`
 )
+
+
+
+#' @rdname counts
+#' @export
+setMethod(
+    f = "counts<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "matrix"
+    ),
+    definition = `.counts<-.SE`
+)
