@@ -1,7 +1,10 @@
 #' `Gene2Symbol` Generator
 #'
-#' @note This function will make any duplicated symbols unique by applying
+#' @note
+#' This function will make any duplicated symbols unique by applying
 #' [base::make.unique()], which will add ".1" to the end of the gene name.
+#'
+#' No attempt is made to arrange the rows by gene identifier.
 #'
 #' @name gene2symbol
 #' @family S4 Generators
@@ -29,16 +32,30 @@ Gene2Symbol <- function(object, ...) {
 
 
 
-.gene2symbol.tbl_df <-  # nolint
+.gene2symbol.data.frame <-  # nolint
     function(object) {
         assert_has_rows(object)
+
+        # Update legacy column names, if necessary.
+        colnames(object) <- sub(
+            pattern = "^ensgene$",
+            replacement = "geneID",
+            x = colnames(object)
+        )
+        colnames(object) <- sub(
+            pattern = "^symbol$",
+            replacement = "geneName",
+            x = colnames(object)
+        )
+
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
-            stop(
-                "Object does not contain gene-to-symbol mappings.",
-                call. = FALSE
-            )
+            stop(paste0(
+                "Object does not contain gene-to-symbol mappings.\n",
+                "Column names: ", toString(colnames(object))
+            ), call. = FALSE)
         }
+
         object %>%
             select(!!!syms(cols)) %>%
             # This is needed for processing GFF files.
@@ -53,18 +70,14 @@ Gene2Symbol <- function(object, ...) {
 
 .gene2symbol.DataFrame <-  # nolint
     function(object) {
-        object %>%
-            as("tbl_df") %>%
-            gene2symbol()
+        gene2symbol(as(object, "data.frame"))
     }
 
 
 
 .gene2symbol.GRanges <-  # nolint
     function(object) {
-        object %>%
-            as("DataFrame") %>%
-            gene2symbol()
+        gene2symbol(as(object, "DataFrame"))
     }
 
 
@@ -83,8 +96,8 @@ Gene2Symbol <- function(object, ...) {
 #' @export
 setMethod(
     f = "gene2symbol",
-    signature = signature("tbl_df"),
-    definition = .gene2symbol.tbl_df
+    signature = signature("data.frame"),
+    definition = .gene2symbol.data.frame
 )
 
 

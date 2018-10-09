@@ -1,5 +1,7 @@
 #' `Tx2Gene` Generator
 #'
+#' @note No attempt is made to arrange the rows by transcript identifier.
+#'
 #' @name tx2gene
 #' @family S4 Generators
 #' @author Michael Steinbaugh
@@ -19,16 +21,31 @@ NULL
 
 
 
-.tx2gene.tbl_df <-  # nolint
+.tx2gene.data.frame <-  # nolint
     function(object) {
         assert_has_rows(object)
+
+        # Update legacy column names, if necessary.
+        colnames(object) <- sub(
+            pattern = "^enstxp|txID$",
+            replacement = "transcriptID",
+            x = colnames(object)
+        )
+        colnames(object) <- sub(
+            pattern = "^ensgene$",
+            replacement = "geneID",
+            x = colnames(object)
+        )
+
+        # Check that required columns are present.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
-            stop(
-                "Object does not contain transcript-to-gene mappings.",
-                call. = FALSE
-            )
+            stop(paste0(
+                "Object does not contain transcript-to-gene mappings.\n",
+                "Column names: ", toString(colnames(object))
+            ), call. = FALSE)
         }
+
         object %>%
             select(!!!syms(c("transcriptID", "geneID"))) %>%
             # This is needed for processing GFF files.
@@ -42,18 +59,14 @@ NULL
 
 .tx2gene.DataFrame <-  # nolint
     function(object) {
-        object %>%
-            as("tbl_df") %>%
-            tx2gene()
+        tx2gene(as(object, "data.frame"))
     }
 
 
 
 .tx2gene.GRanges <-  # nolint
     function(object) {
-        object %>%
-            as("DataFrame") %>%
-            tx2gene()
+        tx2gene(as(object, "DataFrame"))
     }
 
 
@@ -73,8 +86,8 @@ NULL
 #' @export
 setMethod(
     f = "tx2gene",
-    signature = signature("tbl_df"),
-    definition = .tx2gene.tbl_df
+    signature = signature("data.frame"),
+    definition = .tx2gene.data.frame
 )
 
 
