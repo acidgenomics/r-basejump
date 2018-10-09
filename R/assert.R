@@ -140,7 +140,6 @@ assertHasValidNames <- function(object) {
 #' @rdname assertAllAreValidNames
 #' @export
 #' @examples
-#' validDimnames(basejump::rse_small)
 #' validDimnames(datasets::mtcars)
 validDimnames <- function(object) {
     if (is.null(dim(object))) {
