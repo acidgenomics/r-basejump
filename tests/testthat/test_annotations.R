@@ -105,9 +105,14 @@ test_that("stripTranscriptVersions : matrix", {
 # Organism Matching ============================================================
 context("Annotations : Organism Matching")
 
+# Not exporting character method, to avoid conflict with annotate package.
+
 with_parameters_test_that(
     "organism : Homo sapiens", {
-        expect_identical(organism(object), "Homo sapiens")
+        expect_identical(
+            object = .organism.character(object),
+            expected = "Homo sapiens"
+        )
     },
     object = c(
         "Homo sapiens",
@@ -121,7 +126,10 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "organism : Mus musculus", {
-        expect_identical(organism(object), "Mus musculus")
+        expect_identical(
+            object = .organism.character(object),
+            expected = "Mus musculus"
+        )
     },
     object = c(
         "Mus musculus",
@@ -135,7 +143,10 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "organism : Rattus norvegicus", {
-        expect_identical(organism(object), "Rattus norvegicus")
+        expect_identical(
+            object = .organism.character(object),
+            expected = "Rattus norvegicus"
+        )
     },
     object = c(
         "Rattus norvegicus",
@@ -149,7 +160,10 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "organism : Danio rerio", {
-        expect_identical(organism(object), "Danio rerio")
+        expect_identical(
+            object = .organism.character(object),
+            expected = "Danio rerio"
+        )
     },
     object = c(
         "Danio rerio",
@@ -163,7 +177,10 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "organism : Drosophila melanogaster", {
-        expect_identical(organism(object), "Drosophila melanogaster")
+        expect_identical(
+            object = .organism.character(object),
+            expected = "Drosophila melanogaster"
+        )
     },
     object = c(
         "Drosophila melanogaster",
@@ -177,7 +194,10 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "organism : Caenorhabditis elegans", {
-        expect_identical(organism(object), "Caenorhabditis elegans")
+        expect_identical(
+            object = .organism.character(object),
+            expected = "Caenorhabditis elegans"
+        )
     },
     object = c(
         "Caenorhabditis elegans",
@@ -190,7 +210,10 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "organism : Gallus gallus", {
-        expect_identical(organism(object), "Gallus gallus")
+        expect_identical(
+            object = .organism.character(object),
+            expected = "Gallus gallus"
+        )
     },
     object = c(
         "Gallus gallus",
@@ -202,7 +225,10 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "organism : Ovis aries", {
-        expect_identical(organism(object), "Ovis aries")
+        expect_identical(
+            object = .organism.character(object),
+            expected = "Ovis aries"
+        )
     },
     object = c(
         "Ovis aries",
@@ -217,7 +243,7 @@ with_parameters_test_that(
 test_that("organism : Multiple organisms", {
     # Function matches only the first genome.
     expect_identical(
-        object = organism(c(
+        object = .organism.character(c(
             "ENSG00000000001",
             "ENSG00000000002",
             "ENSMUSG00000000001",
@@ -227,18 +253,18 @@ test_that("organism : Multiple organisms", {
     )
 })
 
+test_that("organism : Failure", {
+    expect_error(
+        object = .organism.character("XXX"),
+        regexp = "Failed to detect organism"
+    )
+})
+
 test_that("organism : matrix", {
     object <- mat
     expect_identical(
         object = organism(object),
         expected = "Homo sapiens"
-    )
-})
-
-test_that("organism : Failure", {
-    expect_error(
-        object = organism("XXX"),
-        regexp = "Failed to detect organism"
     )
 })
 
