@@ -26,7 +26,6 @@
 \alias{assertIsAHeaderLevel}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
-\alias{detectOrganism}
 \alias{fixNA}
 \alias{flatFiles}
 \alias{grepString}
@@ -93,8 +92,6 @@ assertIsAHeaderLevel(...)
 assertIsCharacterOrNULL(object, ...)
 
 assertIsDataFrameOrNULL(object, ...)
-
-detectOrganism(object, ...)
 
 fixNA(...)
 

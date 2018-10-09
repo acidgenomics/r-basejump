@@ -32,7 +32,7 @@ Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{emptyRanges}}, \code{\link{makeGRanges}},
   \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
-  \code{\link{organism}}, \code{\link{panther}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
