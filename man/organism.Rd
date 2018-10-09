@@ -34,7 +34,10 @@ data(rse_small)
 organism(rse_small)
 }
 \seealso{
-\code{\link[=detectOrganism]{detectOrganism()}}.
+\itemize{
+\item \code{\link[BiocGenerics:organism]{BiocGenerics::organism()}}.
+\item \code{\link[=detectOrganism]{detectOrganism()}}.
+}
 
 Other Data Functions: \code{\link{aggregate}},
   \code{\link{combine}}, \code{\link{counts}},
