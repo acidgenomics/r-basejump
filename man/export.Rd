@@ -16,10 +16,10 @@ export(x, ...)
 \S4method{export}{sparseMatrix}(x, file, format)
 
 \S4method{export}{SummarizedExperiment}(x, dir = ".",
-  gene2symbol = FALSE, compress = TRUE)
+  convertGenesToSymbols = FALSE, compress = FALSE)
 
 \S4method{export}{SingleCellExperiment}(x, dir = ".",
-  gene2symbol = FALSE, compress = TRUE)
+  convertGenesToSymbols = FALSE, compress = FALSE)
 }
 \arguments{
 \item{x}{Object.}
