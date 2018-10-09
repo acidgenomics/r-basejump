@@ -4,14 +4,14 @@
 \alias{writeCounts}
 \title{Write Counts}
 \usage{
-writeCounts(..., dir = ".", gzip = FALSE)
+writeCounts(..., dir = ".", compress = FALSE)
 }
 \arguments{
 \item{...}{Count matrices, passed in as dots.}
 
 \item{dir}{\code{string}. Output directory.}
 
-\item{gzip}{\code{boolean}. Compress the counts file using gzip.}
+\item{compress}{\code{boolean}. Compress the files using gzip.}
 }
 \value{
 Invisible \code{list}. File paths.
