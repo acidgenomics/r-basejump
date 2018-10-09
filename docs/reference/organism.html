@@ -173,12 +173,9 @@
     <div class='dont-index'><p>Other Annotation Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='eggnog.html'>eggnog</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
-  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
-  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
-  <code><a href='panther.html'>panther</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
+  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>, <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
@@ -194,6 +191,7 @@
 <span class='co'># But it only returns the first match, if there are multiple genomes.</span>
 <span class='fu'>organism</span>(<span class='fu'>c</span>(<span class='st'>"ENSG00000000003"</span>, <span class='st'>"ENSMUSG00000000001"</span>))</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
 <span class='co'># SummarizedExperiment support.</span>
+<span class='fu'>data</span>(<span class='no'>rse_small</span>)
 <span class='fu'>organism</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

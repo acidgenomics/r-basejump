@@ -1,4 +1,6 @@
 # TODO Add SCE method support, writing out reducedDims if defined.
+# TODO Enable gene2symbol export for counts rownames.
+# TODO Enable sampleName export for counts colnames.
 
 
 

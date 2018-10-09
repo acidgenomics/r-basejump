@@ -33,7 +33,7 @@ NULL
         object,
         assay = 1L,
         interestingGroups = NULL,
-        geom = c("density", "boxplot", "violin"),
+        geom = c("boxplot", "density", "violin"),
         trans = c("identity", "log2", "log10"),
         color = getOption("basejump.discrete.color", NULL),
         fill = getOption("basejump.discrete.fill", NULL),

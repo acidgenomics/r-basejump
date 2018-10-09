@@ -235,8 +235,8 @@ is required, simply use the ggrepel version instead.</p>
 #&gt; position_identity </div><div class='input'>
 <span class='co'># basejump_geom_label_average ====</span>
 <span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_label_average</span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(
-        <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>),
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
+        <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>),
         <span class='kw'>counts</span> <span class='kw'>=</span> <span class='fu'>seq_len</span>(<span class='fl'>8L</span>)
     ),
     <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,

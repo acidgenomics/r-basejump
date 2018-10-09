@@ -43,6 +43,7 @@ hgnc2ensembl <- function(.test = FALSE) {
 
 
 #' @rdname hgnc2ensembl
+#' @usage NULL
 #' @export
 HGNC2Ensembl <- hgnc2ensembl
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Melt Counts Matrix to Long Format — meltCounts • basejump</title>
+<title>Melt Count Matrix to Long Format — meltCounts • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Melt Counts Matrix to Long Format — meltCounts" />
+<meta property="og:title" content="Melt Count Matrix to Long Format — meltCounts" />
 
-<meta property="og:description" content="Melt Counts Matrix to Long Format" />
+<meta property="og:description" content="Melt Count Matrix to Long Format" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,14 +105,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Melt Counts Matrix to Long Format</h1>
+    <h1>Melt Count Matrix to Long Format</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/meltCounts-methods.R'><code>R/meltCounts-methods.R</code></a></small>
     <div class="hidden name"><code>meltCounts.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Melt Counts Matrix to Long Format</p>
+    <p>Melt Count Matrix to Long Format</p>
     
     </div>
 
@@ -135,7 +135,7 @@
     </tr>
     <tr>
       <th>assay</th>
-      <td><p><code>scalar</code>. Name or index of counts matrix slotted in <code>assays()</code>.
+      <td><p><code>scalar</code>. Name or index of count matrix slotted in <code>assays()</code>.
 When passing in a <code>string</code>, the name must be defined in <code>assayNames()</code>.</p></td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@ When passing in a <code>string</code>, the name must be defined in <code>assayNa
     <tr>
       <th>trans</th>
       <td><p><code>string</code>. Apply a log transformation (e.g. <code>log2(x + 1L)</code>) to
-the counts matrix prior to melting, if desired. Use <code>"identity"</code> to return
+the count matrix prior to melting, if desired. Use <code>"identity"</code> to return
 unmodified (default).</p></td>
     </tr>
     </table>
@@ -159,20 +159,18 @@ unmodified (default).</p></td>
 
     <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/reshape2/topics/melt'>reshape2::melt()</a></code>.</p>
 <p>Other Data Functions: <code><a href='aggregate.html'>aggregate</a></code>,
-  <code><a href='cell2sample.html'>cell2sample</a></code>, <code><a href='counts.html'>counts</a></code>,
-  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
+  <code><a href='combine.html'>combine</a></code>, <code><a href='counts.html'>counts</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
-  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
-  <code><a href='metrics.html'>metrics</a></code>, <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
+  <code><a href='mapGenes.html'>mapGenes</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
   <code><a href='selectSamples.html'>selectSamples</a></code>,
-  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
-  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code>,
-  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>meltCounts</span>(<span class='no'>rse_small</span>)
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>meltCounts</span>(<span class='no'>rse_small</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 200 x 7
 #&gt; # Groups:   colname, rowname [?]
 #&gt;    rowname colname counts genotype treatment sampleName interestingGroups

@@ -21,6 +21,7 @@ NULL
 
 
 #' @rdname ensembl2entrez
+#' @usage NULL
 #' @export
 Ensembl2Entrez <- function(object, ...) {
     ensembl2entrez(object, ...)

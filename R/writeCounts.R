@@ -1,3 +1,7 @@
+# TODO Enable gene2symbol handling here?
+
+
+
 #' Write Counts
 #'
 #' Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq

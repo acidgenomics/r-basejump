@@ -94,5 +94,6 @@ makeGene2SymbolFromGFF <- function(file) {
 
 # Aliases ======================================================================
 #' @rdname makeGene2Symbol
+#' @usage NULL
 #' @export
 makeGene2SymbolFromGTF <- makeGene2SymbolFromGFF

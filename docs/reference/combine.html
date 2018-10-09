@@ -154,10 +154,20 @@
 <li><p><code><a href='http://www.rdocumentation.org/packages/BiocGenerics/topics/combine'>BiocGenerics::combine()</a></code>.</p></li>
 <li><p><code>help("merge.Matrix", "Matrix.utils")</code>.</p></li>
 </ul></div>
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregate</a></code>,
+  <code><a href='counts.html'>counts</a></code>,
+  <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapGenes.html'>mapGenes</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
+  <code><a href='metrics.html'>metrics</a></code>, <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
+  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
+  <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>)
+
+<span class='co'># SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
 <span class='fu'>colnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;         genotype treatment
@@ -177,8 +187,7 @@
 #&gt; sample7 wildtype   treated
 #&gt; sample8 knockout   treated</div><div class='input'>
 <span class='co'># Combine two SummarizedExperiment objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
-<span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 8 
 #&gt; metadata(6): interestingGroups version ... wd sessionInfo
 #&gt; assays(1): counts
@@ -222,8 +231,7 @@
 #&gt; sample4     sample4           sample4
 #&gt; sample3     sample3           sample3</div><div class='input'>
 <span class='co'># Combine two SingleCellExperiment objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
-<span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 200 2000 
 #&gt; metadata(4): combine date wd sessionInfo
 #&gt; assays(1): counts

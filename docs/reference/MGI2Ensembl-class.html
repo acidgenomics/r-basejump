@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ensembl2entrez Class — ensembl2entrez-class • basejump</title>
+<title><code>MGI2Ensembl</code> Class — MGI2Ensembl-class • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="ensembl2entrez Class — ensembl2entrez-class" />
+<meta property="og:title" content="<code>MGI2Ensembl</code> Class — MGI2Ensembl-class" />
 
-<meta property="og:description" content="Ensembl gene ID to Entrez ID mappings." />
+<meta property="og:description" content="MGI-to-Ensembl gene ID mappings." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,63 +105,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ensembl2entrez Class</h1>
+    <h1><code>MGI2Ensembl</code> Class</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
-    <div class="hidden name"><code>ensembl2entrez-class.Rd</code></div>
+    <div class="hidden name"><code>MGI2Ensembl-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Ensembl gene ID to Entrez ID mappings.</p>
+    <p>MGI-to-Ensembl gene ID mappings.</p>
     
     </div>
 
         
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>ensembl2entrez</code>.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Contains a <code>DataFrame</code> with <code>geneID</code> and <code>entrezID</code> columns. Requires 1:1
-mappings.</p>
+    <p>Contains a <code>DataFrame</code> with <code>mgiID</code> and <code>geneID</code> columns.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='ensembl2entrez.html'>ensembl2entrez()</a></code>.</p>
-<p>Other S4 Classes: <code><a href='PANTHER-class.html'>PANTHER-class</a></code>,
-  <code><a href='gene2symbol-class.html'>gene2symbol-class</a></code>,
-  <code><a href='hgnc2ensembl-class.html'>hgnc2ensembl-class</a></code>,
-  <code><a href='mgi2ensembl-class.html'>mgi2ensembl-class</a></code>,
-  <code><a href='tx2gene-class.html'>tx2gene-class</a></code></p></div>
+    <div class='dont-index'><p><code><a href='mgi2ensembl.html'>mgi2ensembl()</a></code>.</p>
+<p>Other S4 Classes: <code><a href='EggNOG-class.html'>EggNOG-class</a></code>,
+  <code><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez-class</a></code>,
+  <code><a href='Gene2Symbol-class.html'>Gene2Symbol-class</a></code>,
+  <code><a href='HGNC2Ensembl-class.html'>HGNC2Ensembl-class</a></code>,
+  <code><a href='PANTHER-class.html'>PANTHER-class</a></code>, <code><a href='Tx2Gene-class.html'>Tx2Gene-class</a></code></p></div>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(
-    <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"ensembl2entrez"</span>,
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
-        <span class='kw'>geneID</span> <span class='kw'>=</span> <span class='st'>"ENSG00000000003"</span>,
-        <span class='kw'>entrezID</span> <span class='kw'>=</span> <span class='fl'>7105L</span>,
-        <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='st'>"ENSG00000000003"</span>
-    )
-)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ensembl2entrez with 1 row and 2 columns
-#&gt;                          geneID  entrezID
-#&gt;                     &lt;character&gt; &lt;integer&gt;
-#&gt; ENSG00000000003 ENSG00000000003      7105</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
     <h2>Author</h2>
     

@@ -23,9 +23,9 @@ reference:
     - starts_with("convert")
     - emptyRanges
     - geneSynonyms
-    - makeGene2symbol
+    - makeGene2Symbol
     - makeGRanges
-    - makeTx2gene
+    - makeTx2Gene
     - organism
     - starts_with("strip")
   - title: Import/Export Functions
@@ -43,6 +43,7 @@ reference:
     - combine
     - counts
     - interestingGroups
+    - makeSingleCellExperiment
     - makeSummarizedExperiment
     - starts_with("mapGenes")
     - meltCounts
@@ -55,6 +56,7 @@ reference:
     - tpm
   - title: Single-Cell Functions
     contents:
+    - aggregateCellsToSamples
     - cell2sample
     - makeSingleCellExperiment
     - mapCellsToSamples

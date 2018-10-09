@@ -21,6 +21,15 @@ NULL
 
 
 
+#' @rdname tx2gene
+#' @usage NULL
+#' @export
+Tx2Gene <- function(object, ...) {
+    tx2gene(object, ...)
+}
+
+
+
 .tx2gene.data.frame <-  # nolint
     function(object) {
         assert_has_rows(object)
