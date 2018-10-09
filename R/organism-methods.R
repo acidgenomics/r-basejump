@@ -25,24 +25,6 @@
 #' @return `string`. Full latin organism name. Stops on match failure.
 #'
 #' @examples
-#' # Match by gene identifier.
-#' organism("ENSG00000000003")
-#'
-#' # Match by genome build.
-#' organism("GRCh38")  # Ensembl
-#' organism("hg38")    # UCSC
-#'
-#' # Match by alternate organism name.
-#' organism("H. sapiens")
-#' organism("hsapiens")
-#'
-#' # The function will skip transgenes/spike-ins until we find a match.
-#' organism(c("EGFP", "TDTOMATO", "ENSG00000000003"))
-#'
-#' # But it only returns the first match, if there are multiple genomes.
-#' organism(c("ENSG00000000003", "ENSMUSG00000000001"))
-#'
-#' # SummarizedExperiment support.
 #' data(rse_small)
 #' organism(rse_small)
 NULL
@@ -79,11 +61,14 @@ NULL
 
 
 
+# Note that `character` method conflicts with `annotate` package, so we're not
+# exporting this function as a method.
 # We're using a while loop approach here so we can skip transgenes or spike-ins.
 # Fail after 50 unknowns, for speed.
 .organism.character <-  # nolint
     function(object) {
-        # Parse the vector until we get a match.
+        assert_is_character(object)
+        # Parse the character vector until we get a match.
         x <- NA_character_
         i <- 1L
         while (
@@ -94,7 +79,7 @@ NULL
             i <- i + 1L
         }
         if (is.na(x)) {
-            stop("Failed to detect organism.")
+            stop("Failed to detect organism.", call. = FALSE)
         } else {
             x
         }
@@ -106,7 +91,7 @@ NULL
     function(object) {
         # Assume gene identifiers are defined in the rownames.
         assertHasRownames(object)
-        organism(rownames(object))
+        .organism.character(rownames(object))
     }
 
 
@@ -114,48 +99,31 @@ NULL
 .organism.GRanges <-  # nolint
     function(object) {
         assert_has_names(object)
-        organism(names(object))
+        .organism.character(names(object))
     }
 
 
 
-# Attempt to use metadata stash first.
+
 # Then attempt to check rowData.
 # Finally, check against the rownames.
 .organism.SE <-  # nolint
     function(object) {
+        # Attempt to use metadata stash, if defined.
         organism <- metadata(object)[["organism"]]
         if (is_a_string(organism)) {
-            organism
-        } else if ("geneID" %in% colnames(rowData(object))) {
-            organism(rowData(object)[["geneID"]])
-        } else {
-            organism(rownames(object))
+            return(organism)
         }
+
+        # Fall back to detecting from rowRanges or rownames.
+        if ("geneID" %in% colnames(rowData(object))) {
+            x <- as.character(rowData(object)[["geneID"]])
+        } else {
+            x <- rownames(object)
+        }
+
+        .organism.character(x)
     }
-
-
-
-#' @rdname organism
-#' @export
-setMethod(
-    f = "organism",
-    signature = signature("character"),
-    definition = .organism.character
-)
-
-
-
-#' @rdname organism
-#' @export
-setMethod(
-    f = "organism",
-    signature = signature("factor"),
-    definition = getMethod(
-        f = "organism",
-        signature = signature("character")
-    )
-)
 
 
 
