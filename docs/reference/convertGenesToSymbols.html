@@ -152,7 +152,7 @@
     </tr>
     <tr>
       <th>gene2symbol</th>
-      <td><p><code>data.frame</code> or <code>NULL</code>. Gene-to-symbol mappings. If set
+      <td><p><code>Gene2Symbol</code> or <code>NULL</code>. Gene-to-symbol mappings. If set
 <code>NULL</code>, the function will attempt to download the mappings from Ensembl
 automatically.</p></td>
     </tr>
@@ -180,54 +180,62 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 
     <div class='dont-index'><p>Other Annotation Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='eggnog.html'>eggnog</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
-  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
-  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
-  <code><a href='organism.html'>organism</a></code>, <code><a href='panther.html'>panther</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
+  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>, <code><a href='organism.html'>organism</a></code>,
+  <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gene2symbol</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGene2symbol.html'>makeGene2symbolFromEnsembl</a></span>(<span class='st'>"Mus musculus"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-10-04)...</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 93 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>  - AnnotationHub: "AH64461"</span>
-#&gt; <span class='message'>  - Organism: "Mus musculus"</span>
-#&gt; <span class='message'>  - Build: "GRCm38"</span>
-#&gt; <span class='message'>  - Release: "93"</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>gene2symbol</span>)</div><div class='output co'>#&gt; gene2symbol with 55029 rows and 2 columns
-#&gt;                                geneID    geneName
-#&gt;                           &lt;character&gt; &lt;character&gt;
-#&gt; ENSMUSG00000000001 ENSMUSG00000000001       Gnai3
-#&gt; ENSMUSG00000000003 ENSMUSG00000000003        Pbsn
-#&gt; ENSMUSG00000000028 ENSMUSG00000000028       Cdc45
-#&gt; ENSMUSG00000000031 ENSMUSG00000000031         H19
-#&gt; ENSMUSG00000000037 ENSMUSG00000000037       Scml2
-#&gt; ...                               ...         ...
-#&gt; ENSMUSG00000116995 ENSMUSG00000116995  AC110534.5
-#&gt; ENSMUSG00000116996 ENSMUSG00000116996  AC154540.3
-#&gt; ENSMUSG00000116997 ENSMUSG00000116997  CT030736.1
-#&gt; ENSMUSG00000116998 ENSMUSG00000116998  AC109266.1
-#&gt; ENSMUSG00000116999 ENSMUSG00000116999  AC154275.2</div><div class='input'><span class='no'>geneIDs</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>, <span class='st'>"ENSMUSG00000000003"</span>)
-<span class='no'>sampleIDs</span> <span class='kw'>=</span> <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>seq_len</span>(<span class='fl'>2L</span>))
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
+
+<span class='no'>gene2symbol</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gene2symbol.html'>gene2symbol</a></span>(<span class='no'>object</span>)
+<span class='fu'>print</span>(<span class='no'>gene2symbol</span>)</div><div class='output co'>#&gt; Gene2Symbol with 50 rows and 2 columns
+#&gt;                 geneID    geneName
+#&gt;            &lt;character&gt; &lt;character&gt;
+#&gt; gene1  ENSG00000000003      TSPAN6
+#&gt; gene2  ENSG00000000005        TNMD
+#&gt; gene3  ENSG00000000419        DPM1
+#&gt; gene4  ENSG00000000457       SCYL3
+#&gt; gene5  ENSG00000000460    C1orf112
+#&gt; ...                ...         ...
+#&gt; gene46 ENSG00000004059        ARF5
+#&gt; gene47 ENSG00000004139       SARM1
+#&gt; gene48 ENSG00000004142     POLDIP2
+#&gt; gene49 ENSG00000004399      PLXND1
+#&gt; gene50 ENSG00000004455         AK2</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>gene2symbol</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]])
 
 <span class='co'># character ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>geneIDs</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='no'>gene2symbol</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
-#&gt;            "Gnai3"             "Pbsn" </div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>genes</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='no'>gene2symbol</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
+#&gt;        "TSPAN6"          "TNMD"          "DPM1"         "SCYL3"      "C1orf112" 
+#&gt; ENSG00000000938 
+#&gt;           "FGR" </div><div class='input'>
 <span class='co'># matrix ====</span>
+<span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>colnames</span>(<span class='no'>object</span>))
 <span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq_len</span>(<span class='fu'>length</span>(<span class='no'>geneIDs</span>) * <span class='fu'>length</span>(<span class='no'>sampleIDs</span>)),
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq_len</span>(<span class='fu'>length</span>(<span class='no'>genes</span>) * <span class='fu'>length</span>(<span class='no'>samples</span>)),
     <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'>length</span>(<span class='no'>geneIDs</span>),
-    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fu'>length</span>(<span class='no'>sampleIDs</span>),
-    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='no'>geneIDs</span>, <span class='no'>sampleIDs</span>)
+    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'>length</span>(<span class='no'>genes</span>),
+    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fu'>length</span>(<span class='no'>samples</span>),
+    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='no'>genes</span>, <span class='no'>samples</span>)
 )
-<span class='fu'>print</span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;                    sample1 sample2
-#&gt; ENSMUSG00000000001       1       2
-#&gt; ENSMUSG00000000003       3       4</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>counts</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='no'>gene2symbol</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;       sample1 sample2
-#&gt; Gnai3       1       2
-#&gt; Pbsn        3       4</div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;                 sample1 sample2 sample3 sample4
+#&gt; ENSG00000000003       1       2       3       4
+#&gt; ENSG00000000005       5       6       7       8
+#&gt; ENSG00000000419       9      10      11      12
+#&gt; ENSG00000000457      13      14      15      16
+#&gt; ENSG00000000460      17      18      19      20
+#&gt; ENSG00000000938      21      22      23      24</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>counts</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='no'>gene2symbol</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;          sample1 sample2 sample3 sample4
+#&gt; TSPAN6         1       2       3       4
+#&gt; TNMD           5       6       7       8
+#&gt; DPM1           9      10      11      12
+#&gt; SCYL3         13      14      15      16
+#&gt; C1orf112      17      18      19      20
+#&gt; FGR           21      22      23      24</div><div class='input'>
 <span class='co'># SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>rse_small</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 

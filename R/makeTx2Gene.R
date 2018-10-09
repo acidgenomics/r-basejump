@@ -87,5 +87,6 @@ makeTx2GeneFromGFF <- function(file) {
 
 # Aliases ======================================================================
 #' @rdname makeTx2Gene
+#' @usage NULL
 #' @export
 makeTx2GeneFromGTF <- makeTx2GeneFromGFF

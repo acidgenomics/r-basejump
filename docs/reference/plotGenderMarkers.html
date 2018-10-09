@@ -143,7 +143,7 @@ genomes are supported.</p>
     </tr>
     <tr>
       <th>assay</th>
-      <td><p><code>scalar</code>. Name or index of counts matrix slotted in <code>assays()</code>.
+      <td><p><code>scalar</code>. Name or index of count matrix slotted in <code>assays()</code>.
 When passing in a <code>string</code>, the name must be defined in <code>assayNames()</code>.</p></td>
     </tr>
     <tr>
@@ -190,7 +190,8 @@ palette globally, use <code>options(basejump.discrete.color = ggplot2::scale_col
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Minimal example doesn't contain these genes.</span>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+<span class='co'># Minimal example doesn't contain these genes.</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>tryCatch</span>(
     <span class='kw'>expr</span> <span class='kw'>=</span> <span class='fu'>plotGenderMarkers</span>(<span class='no'>rse_small</span>),
     <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>

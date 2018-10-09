@@ -161,15 +161,19 @@ names using non-standard evaluation.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Write Functions: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code>,
-  <code><a href='saveData.html'>saveData</a></code>, <code><a href='transmit.html'>transmit</a></code></p></div>
+    <div class='dont-index'><p>Other Import/Export Functions: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code>,
+  <code><a href='export.html'>export</a></code>, <code><a href='import.html'>import</a></code>,
+  <code><a href='loadDataAsName.html'>loadDataAsName</a></code>, <code><a href='loadData.html'>loadData</a></code>,
+  <code><a href='loadRemoteData.html'>loadRemoteData</a></code>, <code><a href='saveData.html'>saveData</a></code>,
+  <code><a href='transmit.html'>transmit</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>rnaseq_counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>rse_small</span>)
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>)
+<span class='no'>rnaseq_counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>rse_small</span>)
 <span class='no'>single_cell_counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>sce_small</span>)
 
-<span class='fu'>writeCounts</span>(<span class='no'>rnaseq_counts</span>, <span class='no'>single_cell_counts</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Writing rnaseq_counts, single_cell_counts to /Users/mike/git/basejump-private/docs/reference/example...</span></div><div class='output co'>#&gt; <span class='message'>Exported rnaseq_counts.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported single_cell_counts.mtx, single_cell_counts.mtx.colnames, single_cell_counts.mtx.rownames.</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rnaseq_counts.csv"               "single_cell_counts.mtx"         
+<span class='fu'>writeCounts</span>(<span class='no'>rnaseq_counts</span>, <span class='no'>single_cell_counts</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Writing rnaseq_counts, single_cell_counts to /home/bioinfo/git/basejump-private/docs/reference/example...</span></div><div class='output co'>#&gt; <span class='message'>Exported rnaseq_counts.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported single_cell_counts.mtx, single_cell_counts.mtx.colnames, single_cell_counts.mtx.rownames.</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rnaseq_counts.csv"               "single_cell_counts.mtx"         
 #&gt; [3] "single_cell_counts.mtx.colnames" "single_cell_counts.mtx.rownames"</div><div class='input'>
 <span class='co'># Clean up</span>
 <span class='fu'>unlink</span>(<span class='st'>"example"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>

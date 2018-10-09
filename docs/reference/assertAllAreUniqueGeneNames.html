@@ -148,7 +148,7 @@ corresponding <code>SummarizedExperiment</code>.</p></td>
   <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
   <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
   <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
-  <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
+  <code><a href='assertFormalGene2Symbol.html'>assertFormalGene2Symbol</a></code>,
   <code><a href='assertFormalInterestingGroups.html'>assertFormalInterestingGroups</a></code>,
   <code><a href='assertHasRownames.html'>assertHasRownames</a></code>,
   <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
@@ -160,15 +160,14 @@ corresponding <code>SummarizedExperiment</code>.</p></td>
   <code><a href='assertIsDir.html'>assertIsDir</a></code>,
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
-  <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
   <code><a href='assertIsHeaderLevel.html'>assertIsHeaderLevel</a></code>,
   <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
-  <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
-  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code></p></div>
+  <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
 <span class='fu'>print</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 4 
 #&gt; metadata(3): version date interestingGroups
@@ -176,7 +175,7 @@ corresponding <code>SummarizedExperiment</code>.</p></td>
 #&gt; rownames(50): gene1 gene2 ... gene49 gene50
 #&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
 #&gt; colnames(4): sample1 sample2 sample3 sample4
-#&gt; colData names(2): genotype treatment</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>as.character</span>(<span class='fu'>rowData</span>(<span class='no'>rse_small</span>)<span class='kw'>[[</span><span class='st'>"geneName"</span>]]))
+#&gt; colData names(2): genotype treatment</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>as.character</span>(<span class='fu'>rowData</span>(<span class='no'>object</span>)<span class='kw'>[[</span><span class='st'>"geneName"</span>]]))
 <span class='fu'>print</span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div><div class='input'><span class='fu'>assertAllAreUniqueGeneNames</span>(<span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -128,21 +128,21 @@ dynamically (e.g. for single-cell RNA-seq marker analysis).</p>
 
 <span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for gene2symbol</span>
+<span class='co'># S4 method for Gene2Symbol</span>
 <span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='no'>genes</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='no'>genes</span>,
   <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='co'># S4 method for gene2symbol</span>
+<span class='co'># S4 method for Gene2Symbol</span>
 <span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='no'>genes</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='no'>genes</span>,
   <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='co'># S4 method for gene2symbol</span>
+<span class='co'># S4 method for Gene2Symbol</span>
 <span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>genes</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
@@ -187,21 +187,18 @@ that is duplicated, these functions will return a warning.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregate</a></code>,
-  <code><a href='cell2sample.html'>cell2sample</a></code>, <code><a href='counts.html'>counts</a></code>,
-  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
+  <code><a href='combine.html'>combine</a></code>, <code><a href='counts.html'>counts</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
-  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
   <code><a href='meltCounts.html'>meltCounts</a></code>, <code><a href='metrics.html'>metrics</a></code>,
   <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
   <code><a href='selectSamples.html'>selectSamples</a></code>,
-  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
-  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code>,
-  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
 <span class='fu'>print</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 4 
 #&gt; metadata(3): version date interestingGroups
@@ -217,14 +214,14 @@ that is duplicated, these functions will return a warning.</p>
 #&gt; [5] "ENSG00000000460" "ENSG00000000938"</div><div class='input'>
 <span class='no'>geneNames</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>as.character</span>(<span class='fu'>rowData</span>(<span class='no'>object</span>)<span class='kw'>[[</span><span class='st'>"geneName"</span>]]))
 <span class='fu'>print</span>(<span class='no'>geneNames</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div><div class='input'>
-<span class='co'># Row names</span>
+<span class='co'># Row names,</span>
 <span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;   gene1   gene2   gene3   gene4   gene5   gene6 
 #&gt; "gene1" "gene2" "gene3" "gene4" "gene5" "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
 #&gt;         "gene1"         "gene2"         "gene3"         "gene4"         "gene5" 
 #&gt; ENSG00000000938 
 #&gt;         "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;   TSPAN6     TNMD     DPM1    SCYL3 C1orf112      FGR 
 #&gt;  "gene1"  "gene2"  "gene3"  "gene4"  "gene5"  "gene6" </div><div class='input'>
-<span class='co'># Gene identifiers</span>
+<span class='co'># Gene identifiers.</span>
 <span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;             gene1             gene2             gene3             gene4 
 #&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
 #&gt;             gene5             gene6 
@@ -235,7 +232,7 @@ that is duplicated, these functions will return a warning.</p>
 #&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
 #&gt;          C1orf112               FGR 
 #&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'>
-<span class='co'># Gene names (symbols)</span>
+<span class='co'># Gene names (symbols).</span>
 <span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;      gene1      gene2      gene3      gene4      gene5      gene6 
 #&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112"      "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
 #&gt;        "TSPAN6"          "TNMD"          "DPM1"         "SCYL3"      "C1orf112" 

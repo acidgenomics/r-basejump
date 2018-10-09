@@ -7,7 +7,7 @@ setOldClass(Classes = class(tibble::tibble()))
 
 
 # EggNOG =======================================================================
-#' `EggNOG` Class
+#' EggNOG Database Annotations
 #'
 #' [EggNOG](http://eggnogdb.embl.de) is a database of biological information
 #' hosted by the EMBL. It is based on the original idea of COGs (**c**lusters of
@@ -16,7 +16,11 @@ setOldClass(Classes = class(tibble::tibble()))
 #' **e**volutionary **g**enealogy of **g**enes: **N**on-supervised
 #' **O**rthologous **G**roups.
 #'
-#' This class extends `list` and contains:
+#' @family S4 Classes
+#' @author Michael Steinbaugh
+#' @export
+#'
+#' @return This class extends `list` and contains:
 #'
 #' 1. "`cogFunctionalCategories`": **C**luster of **O**rthologous **G**roups
 #'    (COG) functional category information.
@@ -24,10 +28,6 @@ setOldClass(Classes = class(tibble::tibble()))
 #'    for **Eu**karyotes **N**on-supervised **O**rthologous **G**roups (euNOG)
 #'    and **N**on-supervised **O**rthologous **G**roups (NOG) protein
 #'    identifiers.
-#'
-#' @family S4 Classes
-#' @author Michael Steinbaugh
-#' @export
 #'
 #' @seealso
 #' - [eggnog()].
@@ -60,16 +60,15 @@ setValidity(
 
 
 # Ensembl2Entrez ===============================================================
-#' `Ensembl2Entrez` Class
+#' Ensembl-to-Entrez Identifier Mappings
 #'
-#' Ensembl gene ID to Entrez ID mappings.
-#'
-#' Contains a `DataFrame` with `geneID` and `entrezID` columns. Requires 1:1
-#' mappings.
+#' @note Requires 1:1 mappings.
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @return Contains a `DataFrame` with `geneID` and `entrezID` columns.
 #'
 #' @seealso [ensembl2entrez()].
 setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
@@ -94,15 +93,13 @@ setValidity(
 
 
 # Gene2Symbol ==================================================================
-#' `Gene2Symbol` Class
-#'
-#' Gene-to-symbol mappings.
-#'
-#' Contains a `DataFrame` with `geneID` and `geneName` columns.
+#' Gene-to-Symbol Mappings
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @return Contains a `DataFrame` with `geneID` and `geneName` columns.
 #'
 #' @seealso
 #' - [gene2symbol()].
@@ -129,15 +126,13 @@ setValidity(
 
 
 # HGNC2Ensembl =================================================================
-#' `HGNC2Ensembl` Class
-#'
-#' HGNC-to-Ensembl gene ID mappings.
-#'
-#' Contains a `DataFrame` with `hgncID` and `geneID` columns.
+#' HGNC-to-Ensembl Identifier Mappings
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @return Contains a `DataFrame` with `hgncID` and `geneID` columns.
 #'
 #' @seealso [hgnc2ensembl()].
 setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
@@ -163,15 +158,13 @@ setValidity(
 
 
 # MGI2Ensembl ==================================================================
-#' `MGI2Ensembl` Class
-#'
-#' MGI-to-Ensembl gene ID mappings.
-#'
-#' Contains a `DataFrame` with `mgiID` and `geneID` columns.
+#' MGI-to-Ensembl Identifier Mappings.
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @return Contains a `DataFrame` with `mgiID` and `geneID` columns.
 #'
 #' @seealso [mgi2ensembl()].
 setClass(Class = "MGI2Ensembl", contains = "DataFrame")
@@ -190,16 +183,16 @@ setValidity(
 
 
 # PANTHER ======================================================================
-#' `PANTHER` Class
+#' PANTHER Database Annotations
 #'
-#' [PANTHER](http://www.pantherdb.org) gene ontology definitions.
-#'
-#' PANTHER stands for **P**rotein **AN**alysis **TH**rough **E**volutionary
-#' **R**elationships.
+#' [PANTHER](http://www.pantherdb.org) gene ontology definitions. PANTHER stands
+#' for **P**rotein **AN**alysis **TH**rough **E**volutionary **R**elationships.
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @return Contains a `DataFrame`.
 #'
 #' @seealso [panther()].
 setClass(Class = "PANTHER", contains = "DataFrame")
@@ -228,15 +221,13 @@ setValidity(
 
 
 # Tx2Gene ======================================================================
-#' `Tx2Gene` Class
-#'
-#' Transcript-to-gene mappings.
-#'
-#' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
+#' Transcript-to-Gene Identifier Mappings
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @return Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 #'
 #' @seealso
 #' - [tx2gene()].

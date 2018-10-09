@@ -143,11 +143,11 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passthrough to <code><a href='makeTx2gene.html'>makeTx2geneFromEnsembl()</a></code>.</p></td>
+      <td><p>Passthrough to <code><a href='deprecated.html'>makeTx2geneFromEnsembl()</a></code>.</p></td>
     </tr>
     <tr>
       <th>tx2gene</th>
-      <td><p><code>tx2gene</code> or <code>NULL</code>. Transcript-to-gene mappings. If set
+      <td><p><code>Tx2Gene</code> or <code>NULL</code>. Transcript-to-gene mappings. If set
 <code>NULL</code>, the function will attempt to download the mappings from Ensembl
 automatically.</p></td>
     </tr>
@@ -184,7 +184,7 @@ collapsed to gene level by default (see <code>aggregate</code> argument).</p></l
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>For objects containing a counts matrix, the object rows will be collapsed to
+    <p>For objects containing a count matrix, the object rows will be collapsed to
 gene level using <code><a href='aggregate.html'>aggregateRows()</a></code>. This applies to our
 <code>SummarizedExperiment</code> method.</p>
     
@@ -193,17 +193,19 @@ gene level using <code><a href='aggregate.html'>aggregateRows()</a></code>. This
     <div class='dont-index'><p><code><a href='aggregate.html'>aggregateRows()</a></code>.</p>
 <p>Other Annotation Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='eggnog.html'>eggnog</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
-  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
-  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
-  <code><a href='organism.html'>organism</a></code>, <code><a href='panther.html'>panther</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
+  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>, <code><a href='organism.html'>organism</a></code>,
+  <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>tx2gene</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tx2gene.html'>tx2gene</a></span>(<span class='no'>tx_se_small</span>)</div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 6 transcripts, 2 genes</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>tx2gene</span>)</div><div class='output co'>#&gt; tx2gene with 6 rows and 2 columns
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>tx_se_small</span>)
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>tx_se_small</span>
+
+<span class='no'>tx2gene</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tx2gene.html'>tx2gene</a></span>(<span class='no'>object</span>)
+<span class='fu'>print</span>(<span class='no'>tx2gene</span>)</div><div class='output co'>#&gt; Tx2Gene with 6 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000494424 ENST00000494424 ENSG00000000003
@@ -211,13 +213,12 @@ gene level using <code><a href='aggregate.html'>aggregateRows()</a></code>. This
 #&gt; ENST00000612152 ENST00000612152 ENSG00000000003
 #&gt; ENST00000371584 ENST00000371584 ENSG00000000419
 #&gt; ENST00000371588 ENST00000371588 ENSG00000000419
-#&gt; ENST00000413082 ENST00000413082 ENSG00000000419</div><div class='input'><span class='no'>transcriptIDs</span> <span class='kw'>&lt;-</span> <span class='fu'>rownames</span>(<span class='no'>tx_se_small</span>)
-<span class='fu'>print</span>(<span class='no'>transcriptIDs</span>)</div><div class='output co'>#&gt; [1] "ENST00000494424" "ENST00000496771" "ENST00000612152" "ENST00000371584"
-#&gt; [5] "ENST00000371588" "ENST00000413082"</div><div class='input'><span class='fu'>stopifnot</span>(<span class='fu'>all</span>(<span class='no'>transcriptIDs</span> <span class='kw'>%in%</span> <span class='fu'>rownames</span>(<span class='no'>tx2gene</span>)))
-
+#&gt; ENST00000413082 ENST00000413082 ENSG00000000419</div><div class='input'><span class='no'>transcripts</span> <span class='kw'>&lt;-</span> <span class='fu'>rownames</span>(<span class='no'>object</span>)
+<span class='fu'>print</span>(<span class='no'>transcripts</span>)</div><div class='output co'>#&gt; [1] "ENST00000494424" "ENST00000496771" "ENST00000612152" "ENST00000371584"
+#&gt; [5] "ENST00000371588" "ENST00000413082"</div><div class='input'>
 <span class='co'># character ====</span>
 <span class='co'># Returns as factor.</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>transcriptIDs</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='no'>tx2gene</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>transcripts</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='no'>tx2gene</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ENST00000494424 ENST00000496771 ENST00000612152 ENST00000371584 ENST00000371588 
 #&gt; ENSG00000000003 ENSG00000000003 ENSG00000000003 ENSG00000000419 ENSG00000000419 
 #&gt; ENST00000413082 
@@ -226,7 +227,7 @@ gene level using <code><a href='aggregate.html'>aggregateRows()</a></code>. This
 #&gt;  - attr(*, "names")= chr [1:6] "ENST00000494424" "ENST00000496771" "ENST00000612152" "ENST00000371584" ...</div><div class='input'>
 <span class='co'># matrix ====</span>
 <span class='co'># Note that transcript IDs currently must be in the rows.</span>
-<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>tx_se_small</span>)
+<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>object</span>)
 <span class='fu'>print</span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;                 sample1 sample2 sample3 sample4
 #&gt; ENST00000494424       1       2       3       4
 #&gt; ENST00000496771       5       6       7       8
@@ -254,14 +255,18 @@ gene level using <code><a href='aggregate.html'>aggregateRows()</a></code>. This
 #&gt; ENSG00000000419      21      22      23      24</div><div class='input'><span class='fu'>colSums</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample1 sample2 sample3 sample4 
 #&gt;      66      72      78      84 </div><div class='input'>
 <span class='co'># SummarizedExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>tx_se_small</span>
-<span class='fu'>print</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 6 4 
-#&gt; metadata(1): date
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span>
+#&gt; <span class='message'>Groupings:</span>
+#&gt; <span class='message'>ENST00000494424 ENST00000496771 ENST00000612152 ENST00000371584 ENST00000371588 </span>
+#&gt; <span class='message'>ENSG00000000003 ENSG00000000003 ENSG00000000003 ENSG00000000419 ENSG00000000419 </span>
+#&gt; <span class='message'>ENST00000413082 </span>
+#&gt; <span class='message'>ENSG00000000419 </span>
+#&gt; <span class='message'>Levels: ENSG00000000003 ENSG00000000419</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 2 4 
+#&gt; metadata(0):
 #&gt; assays(1): counts
-#&gt; rownames(6): ENST00000494424 ENST00000496771 ... ENST00000371588
-#&gt;   ENST00000413082
-#&gt; rowData names(2): transcriptID geneID
+#&gt; rownames(2): ENSG00000000003 ENSG00000000419
+#&gt; rowData names(0):
 #&gt; colnames(4): sample1 sample2 sample3 sample4
 #&gt; colData names(0):</div></pre>
   </div>
