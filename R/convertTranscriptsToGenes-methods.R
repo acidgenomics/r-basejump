@@ -78,12 +78,12 @@ NULL
         if (is.null(tx2gene)) {
             message("Obtaining transcript-to-gene mappings from Ensembl...")
             if (is.null(organism)) {
-                organism <- organism(object)
+                organism <- detectOrganism(object)
             }
             assert_is_a_string(organism)
             message(paste(organism, "genes detected."))
             tx2gene <- do.call(
-                what = makeTx2geneFromEnsembl,
+                what = makeTx2GeneFromEnsembl,
                 args = matchArgsToDoCall(
                     args = list(organism = organism),
                     removeFormals = c("object", "tx2gene")
