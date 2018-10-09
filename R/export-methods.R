@@ -157,18 +157,17 @@ NULL
 
 
 
-# FIXME Enabling gene2symbol support for writing out counts.
 .export.SE <-  # nolint
     function(
         x,
         dir = ".",
-        gene2symbol = FALSE,
-        compress = TRUE
+        convertGenesToSymbols = FALSE,
+        compress = FALSE
     ) {
         call <- standardizeCall()
         name <- as.character(call[["x"]])
         dir <- initializeDirectory(file.path(dir, name))
-        assert_is_a_bool(gene2symbol)
+        assert_is_a_bool(convertGenesToSymbols)
         assert_is_a_bool(compress)
 
         files <- list()
@@ -179,23 +178,19 @@ NULL
         }
         ext <- paste0(".", format)
 
-        # Write the gene2symbol mappings, if necessary.
-        if (isTRUE(gene2symbol)) {
-            g2s <- gene2symbol(x)
+        # Gene-to-symbol conversion mode.
+        if (isTRUE(convertGenesToSymbols)) {
             files[["gene2symbol"]] <- export(
-                x = g2s,
+                x = gene2symbol(x),
                 file = file.path(dir, paste0("gene2symbol", ext))
             )
+            x <- convertGenesToSymbols(x)
         }
 
         # Assays
         assayNames <- assayNames(x)
         stopifnot(has_length(assayNames))
-        message(paste0(
-            "Exporting assays: ",
-            toString(assayNames),
-            "..."
-        ))
+        message(paste("Exporting assays:", toString(assayNames)))
         files[["assays"]] <- lapply(
             X = assayNames,
             FUN = function(name, dir) {
@@ -263,11 +258,7 @@ NULL
     # gene2symbol option here.
     reducedDimNames <- reducedDimNames(x)
     if (has_length(reducedDimNames)) {
-        message(paste0(
-            "Exporting reducedDims: ",
-            toString(reducedDimNames),
-            "..."
-        ))
+        message(paste("Exporting reducedDims:", toString(reducedDimNames)))
         files[["reducedDims"]] <- lapply(
             X = reducedDimNames,
             FUN = function(name, dir) {
