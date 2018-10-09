@@ -3,8 +3,6 @@
 \docType{methods}
 \name{organism}
 \alias{organism}
-\alias{organism,character-method}
-\alias{organism,factor-method}
 \alias{organism,matrix-method}
 \alias{organism,data.frame-method}
 \alias{organism,DataFrame-method}
@@ -13,10 +11,6 @@
 \alias{organism,SummarizedExperiment-method}
 \title{Organism Accessor}
 \usage{
-\S4method{organism}{character}(object)
-
-\S4method{organism}{factor}(object)
-
 \S4method{organism}{matrix}(object)
 
 \S4method{organism}{data.frame}(object)
@@ -54,24 +48,6 @@ Supports organism detection from Ensembl identifier or genome build.
 }
 
 \examples{
-# Match by gene identifier.
-organism("ENSG00000000003")
-
-# Match by genome build.
-organism("GRCh38")  # Ensembl
-organism("hg38")    # UCSC
-
-# Match by alternate organism name.
-organism("H. sapiens")
-organism("hsapiens")
-
-# The function will skip transgenes/spike-ins until we find a match.
-organism(c("EGFP", "TDTOMATO", "ENSG00000000003"))
-
-# But it only returns the first match, if there are multiple genomes.
-organism(c("ENSG00000000003", "ENSMUSG00000000001"))
-
-# SummarizedExperiment support.
 data(rse_small)
 organism(rse_small)
 }
