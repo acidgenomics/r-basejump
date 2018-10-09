@@ -74,7 +74,7 @@ detectOrganism <- function(object) {
     function(object) {
         assert_is_a_string(object)
         # Get reference data from sysdata.rda.
-        ref <- organism_mappings
+        ref <- basejump::organism_mappings
         assert_is_tbl_df(ref)
         # Generate a logical matrix of grep matches.
         hits <- apply(
