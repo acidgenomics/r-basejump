@@ -1,7 +1,3 @@
-# TODO Enable gene2symbol handling here?
-
-
-
 #' Write Counts
 #'
 #' Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq
@@ -26,7 +22,7 @@
 #' @inheritParams saveData
 #' @param ... Count matrices, passed in as dots.
 #' @param dir `string`. Output directory.
-#' @param gzip `boolean`. Compress the counts file using gzip.
+#' @param compress `boolean`. Compress the files using gzip.
 #'
 #' @return Invisible `list`. File paths.
 #'
@@ -40,12 +36,12 @@
 #'
 #' # Clean up
 #' unlink("example", recursive = TRUE)
-writeCounts <- function(..., dir = ".", gzip = FALSE) {
+writeCounts <- function(..., dir = ".", compress = FALSE) {
     dots <- dots_list(...)
     assert_is_list(dots)
     names <- dots(..., character = TRUE)
     dir <- initializeDirectory(dir)
-    assert_is_a_bool(gzip)
+    assert_is_a_bool(compress)
 
     # Iterate across the dot objects and write to disk.
     message(paste0("Writing ", toString(names), " to ", dir, "..."))
@@ -56,13 +52,13 @@ writeCounts <- function(..., dir = ".", gzip = FALSE) {
         x <- dots,
         FUN = function(name, x) {
             if (is.matrix(x)) {
-                if (isTRUE(gzip)) {
+                if (isTRUE(compress)) {
                     format <- "csv.gz"
                 } else {
                     format <- "csv"
                 }
             } else if (is(x, "sparseMatrix")) {
-                if (isTRUE(gzip)) {
+                if (isTRUE(compress)) {
                     format <- "mtx.gz"
                 } else {
                     format <- "mtx"
