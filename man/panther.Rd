@@ -36,7 +36,7 @@ Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}, \code{\link{organism}},
+  \code{\link{makeTx2Gene}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

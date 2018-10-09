@@ -59,7 +59,7 @@ Other Data Functions: \code{\link{aggregate}},
   \code{\link{combine}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{minimalSampleData}},
+  \code{\link{minimalSampleData}}, \code{\link{organism}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
   \code{\link{subsetPerSample}}, \code{\link{tpm}}

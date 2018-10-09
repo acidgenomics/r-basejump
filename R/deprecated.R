@@ -312,13 +312,6 @@ broadClass <- function(object, ...) {
 
 #' @rdname deprecated
 #' @export
-detectOrganism <- function(object, ...) {
-    .Deprecated("organism")
-    organism(object)
-}
-
-#' @rdname deprecated
-#' @export
 fixNA <- function(...) {
     .Deprecated("sanitizeNA")
     sanitizeNA(...)
