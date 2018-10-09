@@ -21,6 +21,9 @@
 #'
 #' @inheritParams general
 #' @inheritParams rio::export
+#' @param convertGenesToSymbols `boolean`. Automatically convert gene IDs to
+#'   gene symbols in the rownames.
+#' @param compress `boolean`. Apply gzip compression to all files.
 #'
 #' @return Invisible `character`. File path(s).
 #'
