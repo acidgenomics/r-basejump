@@ -27,8 +27,9 @@ abstract: >
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
-library("basejump")
+library(basejump)
 ggplot2::theme_set(theme_paperwhite())
+data(rse_small)
 ```
 
 # Introduction
