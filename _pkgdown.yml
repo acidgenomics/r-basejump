@@ -26,7 +26,6 @@ reference:
     - makeGene2Symbol
     - makeGRanges
     - makeTx2Gene
-    - organism
     - starts_with("strip")
   - title: Import/Export Functions
     contents:
@@ -49,6 +48,7 @@ reference:
     - meltCounts
     - metrics
     - minimalSampleData
+    - organism
     - sampleData
     - sampleNames
     - selectSamples
@@ -84,6 +84,8 @@ reference:
   - title: Atomic Vector Functions
     contents:
     - collapseToString
+    - detectLanes
+    - detectOrganism
     - sortUnique
     - toStringUnique
   - title: Coercion Methods
@@ -91,7 +93,7 @@ reference:
     - starts_with("coerce")
   - title: Developer Functions
     contents:
-    - starts_with("detect")
+    - detectHPC
     - dots
     - starts_with("initialize")
     - localOrRemoteFile

@@ -34,7 +34,7 @@
   
 <meta property="og:title" content="Organism Accessor — organism" />
 
-<meta property="og:description" content="Supports organism detection from Ensembl identifier or genome build." />
+<meta property="og:description" content="Organism Accessor" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,26 +112,20 @@
 
     <div class="ref-description">
     
-    <p>Supports organism detection from Ensembl identifier or genome build.</p>
+    <p>Organism Accessor</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for character</span>
+    <pre class="usage"><span class='co'># S4 method for matrix</span>
 <span class='fu'>organism</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for factor</span>
-<span class='fu'>organism</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for matrix</span>
+<span class='co'># S4 method for sparseMatrix</span>
 <span class='fu'>organism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>organism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>organism</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for sparseMatrix</span>
 <span class='fu'>organism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for GRanges</span>
@@ -149,49 +143,24 @@
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>string</code>. Full latin organism name. Stops on match failure.</p>
-    
-    <h2 class="hasAnchor" id="supported-organisms"><a class="anchor" href="#supported-organisms"></a>Supported organisms</h2>
-
-    
-    <ul>
-<li><p><em>Caenorhabditis elegans</em> (roundworm)</p></li>
-<li><p><em>Danio rerio</em> (zebrafish)</p></li>
-<li><p><em>Drosophila melanogaster</em> (fruitfly)</p></li>
-<li><p><em>Gallus gallus</em> (chicken)</p></li>
-<li><p><em>Homo sapiens</em> (human)</p></li>
-<li><p><em>Mus musculus</em> (mouse)</p></li>
-<li><p><em>Ovis aries</em> (sheep)</p></li>
-<li><p><em>Rattus norvegicus</em> (rat)</p></li>
-<li><p><em>Saccharomyces cerevisiae</em> (yeast)</p></li>
-</ul>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
-  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
-  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>, <code><a href='panther.html'>panther</a></code>,
-  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
+    <div class='dont-index'><ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/BiocGenerics/topics/organism_species'>BiocGenerics::organism()</a></code>.</p></li>
+<li><p><code><a href='detectOrganism.html'>detectOrganism()</a></code>.</p></li>
+</ul></div>
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregate</a></code>,
+  <code><a href='combine.html'>combine</a></code>, <code><a href='counts.html'>counts</a></code>,
+  <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapGenes.html'>mapGenes</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
+  <code><a href='metrics.html'>metrics</a></code>, <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
+  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
+  <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Match by gene identifier.</span>
-<span class='fu'>organism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
-<span class='co'># Match by genome build.</span>
-<span class='fu'>organism</span>(<span class='st'>"GRCh38"</span>)  <span class='co'># Ensembl</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>organism</span>(<span class='st'>"hg38"</span>)    <span class='co'># UCSC</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
-<span class='co'># Match by alternate organism name.</span>
-<span class='fu'>organism</span>(<span class='st'>"H. sapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>organism</span>(<span class='st'>"hsapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
-<span class='co'># The function will skip transgenes/spike-ins until we find a match.</span>
-<span class='fu'>organism</span>(<span class='fu'>c</span>(<span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>, <span class='st'>"ENSG00000000003"</span>))</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
-<span class='co'># But it only returns the first match, if there are multiple genomes.</span>
-<span class='fu'>organism</span>(<span class='fu'>c</span>(<span class='st'>"ENSG00000000003"</span>, <span class='st'>"ENSMUSG00000000001"</span>))</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
-<span class='co'># SummarizedExperiment support.</span>
-<span class='fu'>data</span>(<span class='no'>rse_small</span>)
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
 <span class='fu'>organism</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -199,10 +168,6 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#supported-organisms">Supported organisms</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

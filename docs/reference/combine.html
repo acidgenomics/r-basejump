@@ -159,8 +159,8 @@
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
   <code><a href='mapGenes.html'>mapGenes</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
   <code><a href='metrics.html'>metrics</a></code>, <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
-  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
-  <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='organism.html'>organism</a></code>, <code><a href='sampleData.html'>sampleData</a></code>,
+  <code><a href='sampleNames.html'>sampleNames</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code>,
   <code><a href='subsetPerSample.html'>subsetPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code></p></div>
     
 
@@ -187,7 +187,8 @@
 #&gt; sample7 wildtype   treated
 #&gt; sample8 knockout   treated</div><div class='input'>
 <span class='co'># Combine two SummarizedExperiment objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
+<span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 8 
 #&gt; metadata(6): interestingGroups version ... wd sessionInfo
 #&gt; assays(1): counts
@@ -231,7 +232,8 @@
 #&gt; sample4     sample4           sample4
 #&gt; sample3     sample3           sample3</div><div class='input'>
 <span class='co'># Combine two SingleCellExperiment objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
+<span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 200 2000 
 #&gt; metadata(4): combine date wd sessionInfo
 #&gt; assays(1): counts

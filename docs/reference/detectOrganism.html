@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>PANTHER</code> Generator — panther • basejump</title>
+<title>Detect Organism — detectOrganism • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="<code>PANTHER</code> Generator — panther" />
+<meta property="og:title" content="Detect Organism — detectOrganism" />
 
-<meta property="og:description" content="PANTHER Generator" />
+<meta property="og:description" content="Supports organism detection from Ensembl identifier or genome build." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,60 +105,70 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><code>PANTHER</code> Generator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/panther.R'><code>R/panther.R</code></a></small>
-    <div class="hidden name"><code>panther.Rd</code></div>
+    <h1>Detect Organism</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/detectOrganism.R'><code>R/detectOrganism.R</code></a></small>
+    <div class="hidden name"><code>detectOrganism.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>PANTHER</code> Generator</p>
+    <p>Supports organism detection from Ensembl identifier or genome build.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>panther</span>(<span class='no'>organism</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>detectOrganism</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>organism</th>
-      <td><p><code>string</code>. Full Latin organism name. Currently supported
-organisms: <em>Homo sapiens</em>, <em>Mus musculus</em>, <em>Caenorhabditis elegans</em>,
-<em>Drosophila melanogaster</em>.</p></td>
-    </tr>
-    <tr>
-      <th>release</th>
-      <td><p><code>string</code> or <code>NULL</code>. PANTHER release version. If set <code>NULL</code>,
-defaults to current release. Consult the PANTHER website for a list of
-release versions available from the FTP server (e.g. <code>"13.0"</code>).</p></td>
-    </tr>
-    <tr>
-      <th>.test</th>
-      <td><p><code>boolean</code>. <em>For unit testing only</em>.</p></td>
+      <th>object</th>
+      <td><p><code>character</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>PANTHER</code>.</p>
+    <p><code>string</code>. Full latin organism name. Stops on match failure.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Only the first match is returned. We're using a while loop approach here so
+we can skip transgenes or spike-ins. The function fails after a maximum of 50
+unknowns, for speed.</p>
+    
+    <h2 class="hasAnchor" id="supported-organisms"><a class="anchor" href="#supported-organisms"></a>Supported organisms</h2>
+
+    
+    <ul>
+<li><p><em>Caenorhabditis elegans</em> (roundworm)</p></li>
+<li><p><em>Danio rerio</em> (zebrafish)</p></li>
+<li><p><em>Drosophila melanogaster</em> (fruitfly)</p></li>
+<li><p><em>Gallus gallus</em> (chicken)</p></li>
+<li><p><em>Homo sapiens</em> (human)</p></li>
+<li><p><em>Mus musculus</em> (mouse)</p></li>
+<li><p><em>Ovis aries</em> (sheep)</p></li>
+<li><p><em>Rattus norvegicus</em> (rat)</p></li>
+<li><p><em>Saccharomyces cerevisiae</em> (yeast)</p></li>
+</ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
-  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
-  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
-  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
+    <div class='dont-index'><p>Other Atomic Vector Functions: <code><a href='detectLanes.html'>detectLanes</a></code>,
+  <code><a href='sortUnique.html'>sortUnique</a></code>, <code><a href='toStringUnique.html'>toStringUnique</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>invisible</span>(<span class='fu'>capture.output</span>(
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>panther</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-))</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release)...</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings...</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms...</span></div><div class='output co'>#&gt; <span class='message'>goMF</span></div><div class='output co'>#&gt; <span class='message'>goBP</span></div><div class='output co'>#&gt; <span class='message'>goCC</span></div><div class='output co'>#&gt; <span class='message'>pantherClass</span></div><div class='output co'>#&gt; <span class='message'>pantherPathway</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Length   Class    Mode 
-#&gt;       9 PANTHER      S4 </div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Match by gene identifier.</span>
+<span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># Match by genome build.</span>
+<span class='fu'>detectOrganism</span>(<span class='st'>"GRCh38"</span>)  <span class='co'># Ensembl</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)    <span class='co'># UCSC</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># Match by alternate organism name.</span>
+<span class='fu'>detectOrganism</span>(<span class='st'>"H. sapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hsapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># The function will skip transgenes/spike-ins until we find a match.</span>
+<span class='fu'>detectOrganism</span>(<span class='fu'>c</span>(<span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>, <span class='st'>"ENSG00000000003"</span>))</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># But it only returns the first match, if there are multiple genomes.</span>
+<span class='fu'>detectOrganism</span>(<span class='fu'>c</span>(<span class='st'>"ENSG00000000003"</span>, <span class='st'>"ENSMUSG00000000001"</span>))</div><div class='output co'>#&gt; [1] "Homo sapiens"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -166,6 +176,10 @@ release versions available from the FTP server (e.g. <code>"13.0"</code>).</p></
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#supported-organisms">Supported organisms</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
