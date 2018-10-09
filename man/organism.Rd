@@ -4,20 +4,20 @@
 \name{organism}
 \alias{organism}
 \alias{organism,matrix-method}
+\alias{organism,sparseMatrix-method}
 \alias{organism,data.frame-method}
 \alias{organism,DataFrame-method}
-\alias{organism,sparseMatrix-method}
 \alias{organism,GRanges-method}
 \alias{organism,SummarizedExperiment-method}
 \title{Organism Accessor}
 \usage{
 \S4method{organism}{matrix}(object)
 
+\S4method{organism}{sparseMatrix}(object)
+
 \S4method{organism}{data.frame}(object)
 
 \S4method{organism}{DataFrame}(object)
-
-\S4method{organism}{sparseMatrix}(object)
 
 \S4method{organism}{GRanges}(object)
 
@@ -26,41 +26,26 @@
 \arguments{
 \item{object}{Object.}
 }
-\value{
-\code{string}. Full latin organism name. Stops on match failure.
-}
 \description{
-Supports organism detection from Ensembl identifier or genome build.
+Organism Accessor
 }
-\section{Supported organisms}{
-
-\itemize{
-\item \emph{Caenorhabditis elegans} (roundworm)
-\item \emph{Danio rerio} (zebrafish)
-\item \emph{Drosophila melanogaster} (fruitfly)
-\item \emph{Gallus gallus} (chicken)
-\item \emph{Homo sapiens} (human)
-\item \emph{Mus musculus} (mouse)
-\item \emph{Ovis aries} (sheep)
-\item \emph{Rattus norvegicus} (rat)
-\item \emph{Saccharomyces cerevisiae} (yeast)
-}
-}
-
 \examples{
 data(rse_small)
 organism(rse_small)
 }
 \seealso{
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}, \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+\code{\link[=detectOrganism]{detectOrganism()}}.
+
+Other Data Functions: \code{\link{aggregate}},
+  \code{\link{combine}}, \code{\link{counts}},
+  \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapGenes}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{minimalSampleData}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}},
+  \code{\link{subsetPerSample}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{Data Functions}
