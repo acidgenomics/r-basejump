@@ -396,7 +396,7 @@ makeTx2geneFromGTF <- function(...) {
 #' @rdname deprecated
 #' @export
 mgi2gene <- function(...) {
-    .Deprecated("mgi2enseml")
+    .Deprecated("mgi2ensembl")
     mgi2ensembl(...)
 }
 
