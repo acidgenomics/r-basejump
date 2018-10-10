@@ -156,6 +156,21 @@
 
     <p><code>character</code>.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Metadata Functions: <code><a href='detectHPC.html'>detectHPC</a></code>,
+  <code><a href='detectLanes.html'>detectLanes</a></code>, <code><a href='detectOrganism.html'>detectOrganism</a></code>,
+  <code><a href='microplate.html'>microplate</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>, <code><a href='organism.html'>organism</a></code>,
+  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
+  <code><a href='uniteInterestingGroups.html'>uniteInterestingGroups</a></code></p>
+<p>Other SummarizedExperiment Functions: <code><a href='counts.html'>counts</a></code>,
+  <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapGenes.html'>mapGenes</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
+  <code><a href='metrics.html'>metrics</a></code>, <code><a href='sampleData.html'>sampleData</a></code>,
+  <code><a href='sampleNames.html'>sampleNames</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='tpm.html'>tpm</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
@@ -163,7 +178,7 @@
 
 <span class='no'>intgroup</span> <span class='kw'>&lt;-</span> <span class='fu'>interestingGroups</span>(<span class='no'>object</span>)
 <span class='fu'>print</span>(<span class='no'>intgroup</span>)</div><div class='output co'>#&gt; [1] "genotype"  "treatment"</div><div class='input'>
-<span class='co'># Assignment support.</span>
+<span class='co'>## Assignment support.</span>
 <span class='fu'>interestingGroups</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>intgroup</span><span class='kw'>[[</span><span class='fl'>1L</span>]]
 <span class='fu'>interestingGroups</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; [1] "genotype"</div></pre>
   </div>
@@ -173,13 +188,11 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

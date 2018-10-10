@@ -188,8 +188,12 @@ palette globally, use <code>options(basejump.discrete.color = ggplot2::scale_col
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Plot Functions: <code><a href='plotCountsPerBiotype.html'>plotCountsPerBiotype</a></code>,
+    <div class='dont-index'><p>Other Plots: <code><a href='plotCountsPerBiotype.html'>plotCountsPerBiotype</a></code>,
+  <code><a href='plotCountsPerGene.html'>plotCountsPerGene</a></code>,
+  <code><a href='plotGenderMarkers.html'>plotGenderMarkers</a></code>,
+  <code><a href='plotGenesDetected.html'>plotGenesDetected</a></code>,
   <code><a href='plotHeatmap.html'>plotHeatmap</a></code>, <code><a href='plotQC.html'>plotQC</a></code>,
+  <code><a href='plotTotalCounts.html'>plotTotalCounts</a></code>,
   <code><a href='plotZerosVsDepth.html'>plotZerosVsDepth</a></code></p></div>
     
 
@@ -203,7 +207,7 @@ palette globally, use <code>options(basejump.discrete.color = ggplot2::scale_col
 <span class='fu'>print</span>(<span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 #&gt; [5] "ENSG00000000460" "ENSG00000000938"</div><div class='input'><span class='no'>geneNames</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>g2s</span><span class='kw'>[[</span><span class='st'>"geneName"</span>]])
 <span class='fu'>print</span>(<span class='no'>geneNames</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div><div class='input'>
-<span class='co'># Rownames, gene IDs, and gene names (symbols) are supported.</span>
+<span class='co'>## Rownames, gene IDs, and gene names (symbols) are supported.</span>
 <span class='fu'>plotGene</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"facet"</span>)</div><div class='img'><img src='plotGene-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotGene</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"wide"</span>)</div><div class='img'><img src='plotGene-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -217,10 +221,6 @@ palette globally, use <code>options(basejump.discrete.color = ggplot2::scale_col
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

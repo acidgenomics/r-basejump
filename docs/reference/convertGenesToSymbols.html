@@ -178,12 +178,11 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
+    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
-  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>, <code><a href='panther.html'>panther</a></code>,
-  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
+  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
+  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
+  <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>, <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -206,13 +205,13 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; gene49 ENSG00000004399      PLXND1
 #&gt; gene50 ENSG00000004455         AK2</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>gene2symbol</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]])
 
-<span class='co'># character ====</span>
+<span class='co'>## character ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>genes</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='no'>gene2symbol</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
 #&gt;        "TSPAN6"          "TNMD"          "DPM1"         "SCYL3"      "C1orf112" 
 #&gt; ENSG00000000938 
 #&gt;           "FGR" </div><div class='input'>
-<span class='co'># matrix ====</span>
+<span class='co'>## matrix ====</span>
 <span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>colnames</span>(<span class='no'>object</span>))
 <span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq_len</span>(<span class='fu'>length</span>(<span class='no'>genes</span>) * <span class='fu'>length</span>(<span class='no'>samples</span>)),
@@ -235,7 +234,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; SCYL3         13      14      15      16
 #&gt; C1orf112      17      18      19      20
 #&gt; FGR           21      22      23      24</div><div class='input'>
-<span class='co'># SummarizedExperiment ====</span>
+<span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>rse_small</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 4 
@@ -244,7 +243,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; rownames(50): TSPAN6 TNMD ... PLXND1 AK2
 #&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
 #&gt; colnames(4): sample1 sample2 sample3 sample4
-#&gt; colData names(2): genotype treatment</div><div class='input'><span class='co'># Interconvert back to gene IDs.</span>
+#&gt; colData names(2): genotype treatment</div><div class='input'><span class='co'>## Interconvert back to gene IDs.</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>convertSymbolsToGenes</span>(<span class='no'>x</span>)
 <span class='fu'>print</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 4 
@@ -267,10 +266,6 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

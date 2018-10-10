@@ -181,8 +181,10 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Single-Cell Functions: <code><a href='cell2sample.html'>cell2sample</a></code>,
+    <div class='dont-index'><p>Other SingleCellExperiment Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
+  <code><a href='cell2sample.html'>cell2sample</a></code>,
   <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
   <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code></p></div>
     
 
@@ -198,7 +200,8 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
     <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='no'>rowRanges</span>,
     <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>,
     <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='no'>metadata</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 200 1000 
 #&gt; metadata(3): date wd sessionInfo
 #&gt; assays(1): counts
@@ -223,10 +226,6 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>
