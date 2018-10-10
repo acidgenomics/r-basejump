@@ -53,8 +53,8 @@ example(c("hello", "world"))
 }
 \seealso{
 \itemize{
-\item \code{\link[=standardizeCall]{standardizeCall()}}.
-\item \code{\link[base:do.call]{base::do.call()}}.
+\item \link{standardizeCall}.
+\item \link[base:do.call]{base::do.call}.
 }
 }
 \author{
