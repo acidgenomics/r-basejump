@@ -61,8 +61,8 @@ test_that("assertFormalCompress", {
 
 
 
-# assertFormalGene2symbol ======================================================
-test_that("assertFormalGene2symbol", {
+# assertFormalGene2Symbol ======================================================
+test_that("assertFormalGene2Symbol", {
     genes <- g2s[["geneID"]]
     expect_true(is.character(genes))
     object <- DataFrame(
@@ -70,9 +70,9 @@ test_that("assertFormalGene2symbol", {
         "sample2" = c(3L, 4L),
         row.names = genes
     )
-    expect_silent(assertFormalGene2symbol(object, genes, g2s))
+    expect_silent(assertFormalGene2Symbol(object, genes, g2s))
     expect_error(
-        object = assertFormalGene2symbol(mtcars, genes, g2s),
+        object = assertFormalGene2Symbol(mtcars, genes, g2s),
         regexp = "is_subset :"
     )
 })
