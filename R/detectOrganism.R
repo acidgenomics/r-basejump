@@ -1,9 +1,3 @@
-# Note that `organism()` `character` method conflicts with annotate package,
-# which gets loaded into the namespace when DESeq2 is attached. Instead, we're
-# exporting as a separate function named `detectOrganism()`.
-
-
-
 #' Detect Organism
 #'
 #' Supports organism detection from Ensembl identifier or genome build.
@@ -24,13 +18,20 @@
 #' - *Rattus norvegicus* (rat)
 #' - *Saccharomyces cerevisiae* (yeast)
 #'
-#' @family Atomic Vector Functions
+#' @note [organism()] `character` method conflicts with annotate package, which
+#'   gets loaded into the namespace when DESeq2 is attached. Instead, we're
+#'   exporting the character method here as a separate function named
+#'   [detectOrganism()].
+#'
+#' @family Annotations
 #' @author Michael Steinbaugh
 #' @export
 #'
 #' @param object `character`.
 #'
 #' @return `string`. Full latin organism name. Stops on match failure.
+#'
+#' @seealso [organism()].
 #'
 #' @examples
 #' # Match by gene identifier.
