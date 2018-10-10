@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HGNC-to-Ensembl Identifier Mappings — HGNC2Ensembl-class • basejump</title>
+<title>HGNC-to-Ensembl Gene Identifier Mappings — HGNC2Ensembl-class • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="HGNC-to-Ensembl Identifier Mappings — HGNC2Ensembl-class" />
+<meta property="og:title" content="HGNC-to-Ensembl Gene Identifier Mappings — HGNC2Ensembl-class" />
 
-<meta property="og:description" content="HGNC-to-Ensembl Identifier Mappings" />
+<meta property="og:description" content="HGNC-to-Ensembl Gene Identifier Mappings" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,14 +105,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>HGNC-to-Ensembl Identifier Mappings</h1>
+    <h1>HGNC-to-Ensembl Gene Identifier Mappings</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
     <div class="hidden name"><code>HGNC2Ensembl-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>HGNC-to-Ensembl Identifier Mappings</p>
+    <p>HGNC-to-Ensembl Gene Identifier Mappings</p>
     
     </div>
 
@@ -131,6 +131,20 @@
   <code><a href='PANTHER-class.html'>PANTHER-class</a></code>, <code><a href='Tx2Gene-class.html'>Tx2Gene-class</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='hgnc2ensembl.html'>hgnc2ensembl</a></span>(<span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; HGNC2Ensembl with 10 rows and 2 columns
+#&gt;       hgncID          geneID
+#&gt;    &lt;integer&gt;     &lt;character&gt;
+#&gt; 1       3095 ENSG00000010219
+#&gt; 2       3097 ENSG00000135636
+#&gt; 3      15479 ENSG00000197140
+#&gt; 4      18795 ENSG00000213886
+#&gt; 5      23685 ENSG00000148158
+#&gt; 6      25944 ENSG00000130772
+#&gt; 7      26333 ENSG00000151304
+#&gt; 8      28290 ENSG00000165716
+#&gt; 9      28894 ENSG00000163564
+#&gt; 10     29929 ENSG00000075188</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -139,7 +153,9 @@
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

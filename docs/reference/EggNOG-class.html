@@ -152,6 +152,47 @@ identifiers.</p></li>
   <code><a href='PANTHER-class.html'>PANTHER-class</a></code>, <code><a href='Tx2Gene-class.html'>Tx2Gene-class</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='eggnog.html'>eggnog</a></span>(<span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; An object of class "EggNOG"
+#&gt; [[1]]
+#&gt; # A tibble: 18 x 2
+#&gt;    letter description                           
+#&gt;    &lt;chr&gt;  &lt;chr&gt;                                 
+#&gt;  1 A      RNA processing and modification       
+#&gt;  2 B      Chromatin structure and dynamics      
+#&gt;  3 C      Energy production and conversion      
+#&gt;  4 E      Amino acid transport and metabolism   
+#&gt;  5 F      Nucleotide transport and metabolism   
+#&gt;  6 G      Carbohydrate transport and metabolism 
+#&gt;  7 H      Coenzyme transport and metabolism     
+#&gt;  8 I      Lipid transport and metabolism        
+#&gt;  9 K      Transcription                         
+#&gt; 10 N      Cell motility                         
+#&gt; 11 P      Inorganic ion transport and metabolism
+#&gt; 12 R      General function prediction only      
+#&gt; 13 S      Function unknown                      
+#&gt; 14 T      Signal transduction mechanisms        
+#&gt; 15 V      Defense mechanisms                    
+#&gt; 16 W      Extracellular structures              
+#&gt; 17 Y      Nuclear structure                     
+#&gt; 18 Z      Cytoskeleton                          
+#&gt; 
+#&gt; [[2]]
+#&gt; # A tibble: 10 x 3
+#&gt;    eggnogID   consensusFunctionalDescription                 cogFunctionalCate…
+#&gt;    &lt;chr&gt;      &lt;chr&gt;                                          &lt;chr&gt;             
+#&gt;  1 COG5153    Lipase which is essential for lysis of subvac… IU                
+#&gt;  2 COG5156    complex subunit 10                             DO                
+#&gt;  3 COG5157    cell division cycle 73, Paf1 RNA polymerase I… K                 
+#&gt;  4 COG5158    Vacuolar Protein                               U                 
+#&gt;  5 COG5159    cop9 signalosome complex subunit               O                 
+#&gt;  6 ENOG410IX… ADP-ribosylglycohydrolase                      S                 
+#&gt;  7 ENOG410J8… ZIP Zinc transporter                           P                 
+#&gt;  8 ENOG410J8… &lt;NA&gt;                                           S                 
+#&gt;  9 ENOG410KJ… GAL4                                           S                 
+#&gt; 10 ENOG410KJ… RING                                           O                 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,7 +201,9 @@ identifiers.</p></li>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

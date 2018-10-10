@@ -173,17 +173,17 @@ not particularly useful if there are elements that are &lt;= 0 and will return
 
     <div class='dont-index'><p>Modified version of <code><a href='http://www.rdocumentation.org/packages/psych/topics/geometric.mean'>psych::geometric.mean()</a></code> and Paul McMurdie's
 <a href='https://stackoverflow.com/a/25555105'>code</a>.</p>
-<p>Other Math and Science Functions: <code><a href='logRatio.html'>logRatio</a></code>,
-  <code><a href='microplate.html'>microplate</a></code></p></div>
+<p>Other Calculations: <code><a href='aggregate.html'>aggregate</a></code>,
+  <code><a href='logRatio.html'>logRatio</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># numeric ====</span>
+    <pre class="examples"><div class='input'><span class='co'>## numeric ====</span>
 <span class='no'>vec1</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>, <span class='fl'>5L</span>, <span class='fl'>1L</span>)
 <span class='fu'>print</span>(<span class='no'>vec1</span>)</div><div class='output co'>#&gt; [1] 1 2 3 4 5</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>vec1</span>)</div><div class='output co'>#&gt; [1] 2.605171</div><div class='input'>
 <span class='no'>vec2</span> <span class='kw'>&lt;-</span> <span class='no'>vec1</span> ^ <span class='fl'>2L</span>
 <span class='fu'>print</span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1]  1  4  9 16 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1] 6.786916</div><div class='input'>
-<span class='co'># matrix ====</span>
+<span class='co'>## matrix ====</span>
 <span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>vec1</span>, <span class='no'>vec2</span>),
     <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
@@ -195,7 +195,7 @@ not particularly useful if there are elements that are &lt;= 0 and will return
 #&gt; [3,]    3    9
 #&gt; [4,]    4   16
 #&gt; [5,]    5   25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div><div class='input'>
-<span class='co'># sparseMatrix ====</span>
+<span class='co'>## sparseMatrix ====</span>
 <span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
 <span class='fu'>print</span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 5 x 2 sparse Matrix of class "dgCMatrix"
 #&gt;          
@@ -218,10 +218,6 @@ not particularly useful if there are elements that are &lt;= 0 and will return
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

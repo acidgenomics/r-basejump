@@ -208,9 +208,9 @@ Additional information:</p><ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># R Data</span>
+    <pre class="examples"><div class='input'><span class='co'>## R Data</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"rnaseq_counts.rda"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda...</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'>
-<span class='co'># Comma Separated Values</span>
+<span class='co'>## Comma Separated Values</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.csv"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.csv...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;            genotype   treatment
 #&gt;         &lt;character&gt; &lt;character&gt;
@@ -218,7 +218,7 @@ Additional information:</p><ul>
 #&gt; sample2    knockout     control
 #&gt; sample3    wildtype     treated
 #&gt; sample4    knockout     treated</div><div class='input'>
-<span class='co'># Microsoft Excel Worksheet</span>
+<span class='co'>## Microsoft Excel Worksheet</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.xlsx"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.xlsx...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;            genotype   treatment
 #&gt;         &lt;character&gt; &lt;character&gt;
@@ -226,15 +226,15 @@ Additional information:</p><ul>
 #&gt; sample2    knockout     control
 #&gt; sample3    wildtype     treated
 #&gt; sample4    knockout     treated</div><div class='input'>
-<span class='co'># GTF/GFF</span>
+<span class='co'>## GTF/GFF</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.gtf...</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 95 ranges and 22 metadata columns"</div><div class='input'>
-<span class='co'># JSON</span>
+<span class='co'>## JSON</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.json"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.json...</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "fasta_hash"        "genomes"           "gtf_hash"         
 #&gt; [4] "input_fasta_files" "input_gtf_files"   "mem_gb"           
 #&gt; [7] "mkref_version"     "threads"           "version"          </div><div class='input'>
-<span class='co'># YAML</span>
+<span class='co'>## YAML</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.yml"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.yml...</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div><div class='input'>
-<span class='co'># Counts Table (i.e. aligned counts from bcbio)</span>
+<span class='co'>## Counts Table (i.e. aligned counts from bcbio)</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.counts"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.counts...</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  id = col_character(),</span>
@@ -274,10 +274,6 @@ Additional information:</p><ul>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

@@ -151,24 +151,21 @@ contains metadata.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code>help("seqinfo", "GenomeInfoDb")</code>.</p>
-<p>Other Annotation Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
-  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
+<p>Other Annotation Functions: <code><a href='eggnog.html'>eggnog</a></code>,
   <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
   <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>, <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
-  <code><a href='panther.html'>panther</a></code>,
-  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
+  <code><a href='panther.html'>panther</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Unknown/dead genes.</span>
+    <pre class="examples"><div class='input'><span class='co'>## Unknown/dead genes.</span>
 <span class='fu'>emptyRanges</span>(<span class='st'>"ENSG00000000000"</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"unknown"</span>)</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
 #&gt;                   seqnames    ranges strand
 #&gt;                      &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
 #&gt;   ENSG00000000000  unknown     1-100      *
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
-<span class='co'># Transgenes.</span>
+<span class='co'>## Transgenes.</span>
 <span class='fu'>emptyRanges</span>(<span class='fu'>c</span>(<span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>, <span class='st'>"GAL4"</span>), <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"transgene"</span>)</div><div class='output co'>#&gt; GRanges object with 3 ranges and 0 metadata columns:
 #&gt;             seqnames    ranges strand
 #&gt;                &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
@@ -177,7 +174,7 @@ contains metadata.</p></td>
 #&gt;       GAL4 transgene   201-300      *
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
-<span class='co'># Spike-ins.</span>
+<span class='co'>## Spike-ins.</span>
 <span class='fu'>emptyRanges</span>(<span class='st'>"ERCC"</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"spike"</span>)</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
 #&gt;        seqnames    ranges strand
 #&gt;           &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
@@ -196,10 +193,6 @@ contains metadata.</p></td>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

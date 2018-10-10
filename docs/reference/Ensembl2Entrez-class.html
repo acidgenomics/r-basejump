@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ensembl-to-Entrez Identifier Mappings — Ensembl2Entrez-class • basejump</title>
+<title>Ensembl-to-Entrez Gene Identifier Mappings — Ensembl2Entrez-class • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Ensembl-to-Entrez Identifier Mappings — Ensembl2Entrez-class" />
+<meta property="og:title" content="Ensembl-to-Entrez Gene Identifier Mappings — Ensembl2Entrez-class" />
 
-<meta property="og:description" content="Ensembl-to-Entrez Identifier Mappings" />
+<meta property="og:description" content="Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+Entrez ID if there are multiple identifiers that map to an Ensembl gene ID." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,14 +106,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Ensembl-to-Entrez Identifier Mappings</h1>
+    <h1>Ensembl-to-Entrez Gene Identifier Mappings</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
     <div class="hidden name"><code>Ensembl2Entrez-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Ensembl-to-Entrez Identifier Mappings</p>
+    <p>Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
     
     </div>
 
@@ -120,10 +122,6 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Contains a <code>DataFrame</code> with <code>geneID</code> and <code>entrezID</code> columns.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>Requires 1:1 mappings.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -135,6 +133,23 @@
   <code><a href='PANTHER-class.html'>PANTHER-class</a></code>, <code><a href='Tx2Gene-class.html'>Tx2Gene-class</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ensembl2entrez.html'>ensembl2entrez</a></span>(<span class='no'>rse_small</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Ensembl2Entrez with 49 rows and 2 columns
+#&gt;                          geneID  entrezID
+#&gt;                     &lt;character&gt; &lt;integer&gt;
+#&gt; ENSG00000000003 ENSG00000000003      7105
+#&gt; ENSG00000000005 ENSG00000000005     64102
+#&gt; ENSG00000000419 ENSG00000000419      8813
+#&gt; ENSG00000000457 ENSG00000000457     57147
+#&gt; ENSG00000000460 ENSG00000000460     55732
+#&gt; ...                         ...       ...
+#&gt; ENSG00000004059 ENSG00000004059       381
+#&gt; ENSG00000004139 ENSG00000004139     23098
+#&gt; ENSG00000004142 ENSG00000004142     26073
+#&gt; ENSG00000004399 ENSG00000004399     23129
+#&gt; ENSG00000004455 ENSG00000004455       204</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -142,10 +157,10 @@
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#note">Note</a></li>
-
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

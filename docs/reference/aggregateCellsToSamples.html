@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assert Is Fill Palette Scale Continuous or NULL — assertIsFillScaleContinuousOrNULL • basejump</title>
+<title>Aggregate Cells to Samples — aggregateCellsToSamples • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Assert Is Fill Palette Scale Continuous or NULL — assertIsFillScaleContinuousOrNULL" />
+<meta property="og:title" content="Aggregate Cells to Samples — aggregateCellsToSamples" />
 
-<meta property="og:description" content="Assert Is Fill Palette Scale Continuous or NULL" />
+<meta property="og:description" content="Utilty function that factilites cell-to-sample aggregation. By default, this
+function will sum the counts across cells to sample level." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,18 +106,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assert Is Fill Palette Scale Continuous or NULL</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
-    <div class="hidden name"><code>assertIsFillScaleContinuousOrNULL.Rd</code></div>
+    <h1>Aggregate Cells to Samples</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/aggregateCellsToSamples-methods.R'><code>R/aggregateCellsToSamples-methods.R</code></a></small>
+    <div class="hidden name"><code>aggregateCellsToSamples.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Assert Is Fill Palette Scale Continuous or NULL</p>
+    <p>Utilty function that factilites cell-to-sample aggregation. By default, this
+function will sum the counts across cells to sample level.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>assertIsFillScaleContinuousOrNULL</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>aggregateCellsToSamples</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>aggregateCellsToSamples</span>(<span class='no'>object</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,17 +131,47 @@
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>fun</th>
+      <td><p><code>string</code>. Name of the aggregation function. Uses <code>match.arg()</code>.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Always stop on error.</p>
+    <p><code>SummarizedExperiment</code>. Object with cell-level counts aggregated
+to sample-level.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function is intended primarily for quality control analysis.</p>
+<p>Internally it automatically obtains the cell-to-sample groupings and then
+performs aggregation with the <code><a href='aggregate.html'>aggregateCols()</a></code> function.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other SingleCellExperiment Functions: <code><a href='cell2sample.html'>cell2sample</a></code>,
+  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
+  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>fill</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_gradient'>scale_fill_gradient</a></span>(<span class='kw'>low</span> <span class='kw'>=</span> <span class='st'>"red"</span>, <span class='kw'>high</span> <span class='kw'>=</span> <span class='st'>"blue"</span>)
-<span class='fu'>class</span>(<span class='no'>fill</span>)</div><div class='output co'>#&gt; [1] "ScaleContinuous" "Scale"           "ggproto"         "gg"             </div><div class='input'><span class='fu'>assertIsFillScaleContinuousOrNULL</span>(<span class='no'>fill</span>)
-<span class='fu'>assertIsFillScaleContinuousOrNULL</span>(<span class='kw'>NULL</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>sce_small</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>sce_small</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+#&gt; dim: 200 2 
+#&gt; metadata(1): aggregate
+#&gt; assays(1): counts
+#&gt; rownames(200): ENSG00000000003 ENSG00000000005 ... ENSG00000008056
+#&gt;   ENSG00000008083
+#&gt; rowData names(4): geneID geneName geneBiotype broadClass
+#&gt; colnames(2): sample1 sample2
+#&gt; colData names(1): sampleName</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -143,6 +179,10 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

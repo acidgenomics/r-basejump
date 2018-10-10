@@ -34,9 +34,8 @@
   
 <meta property="og:title" content="Save Data — saveData" />
 
-<meta property="og:description" content="Wrapper for base::save() supporting quick saving of object names passed as
-symbols. This function saves each object into a separate .rda file rather
-than combining into a single file." />
+<meta property="og:description" content="Wrapper for save() supporting quick, interactive saving of object names
+passed as symbols." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,9 +113,8 @@ than combining into a single file." />
 
     <div class="ref-description">
     
-    <p>Wrapper for <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code> supporting quick saving of object names passed as
-symbols. This function saves each object into a separate <code>.rda</code> file rather
-than combining into a single file.</p>
+    <p>Wrapper for <code>save()</code> supporting quick, interactive saving of object names
+passed as symbols.</p>
     
     </div>
 
@@ -132,7 +130,7 @@ than combining into a single file.</p>
       <th>...</th>
       <td><p>Object names. Note that these arguments are interpreted as symbols
 using non-standard evaluation for convenience during interactive use, and
-<em>should not be quoted</em>.</p></td>
+<em>must not be quoted</em>.</p></td>
     </tr>
     <tr>
       <th>dir</th>
@@ -164,21 +162,21 @@ always the convention of <code>saveData()</code>, regardless of the extension us
 
     <p>Invisible named <code>character</code>. File paths.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function always saves each object into a separate file rather than
+combining multiple objects into a single file.</p>
+    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>This function is desired for interactive use and interprets object names
-using non-standard evaluation. It will <em>overwrite</em> existing saved data,
-following the same conventions as <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>. Conversely,
-<code><a href='http://www.rdocumentation.org/packages/devtools/topics/use_data'>devtools::use_data()</a></code> does not overwrite by default if that behavior is
-preferred.</p>
+    <p>This function is desired for interactive use and interprets object
+names using non-standard evaluation. It will <strong>overwrite</strong> existing files
+on disk, following the same conventions as <code>save()</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><ul>
-<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>.</p></li>
-<li><p><code>usethis::use_data()</code>.</p></li>
-</ul></div>
-    <div class='dont-index'><p>Other Import/Export Functions: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code>,
+    <div class='dont-index'><p>save, saveRDS.</p>
+<p>Other Import/Export Functions: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code>,
   <code><a href='export.html'>export</a></code>, <code><a href='import.html'>import</a></code>,
   <code><a href='loadDataAsName.html'>loadDataAsName</a></code>, <code><a href='loadData.html'>loadData</a></code>,
   <code><a href='loadRemoteData.html'>loadRemoteData</a></code>, <code><a href='transmit.html'>transmit</a></code>,
@@ -187,8 +185,8 @@ preferred.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>)
-<span class='fu'>saveData</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rse_small.rds, sce_small.rds to /home/bioinfo/git/basejump-private/docs/reference/example...</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rse_small.rds" "sce_small.rds"</div><div class='input'>
-<span class='co'># Clean up</span>
+<span class='fu'>saveData</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rse_small.rds, sce_small.rds to /Users/mike/git/basejump-private/docs/reference/example...</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rse_small.rds" "sce_small.rds"</div><div class='input'>
+<span class='co'>## Clean up.</span>
 <span class='fu'>unlink</span>(<span class='st'>"example"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -198,16 +196,14 @@ preferred.</p>
       
       <li><a href="#value">Value</a></li>
 
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

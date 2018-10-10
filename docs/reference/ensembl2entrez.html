@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>Ensembl2Entrez</code> Generator — ensembl2entrez • basejump</title>
+<title>Ensembl-to-Entrez Gene Identifier Mappings — ensembl2entrez • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="<code>Ensembl2Entrez</code> Generator — ensembl2entrez" />
+<meta property="og:title" content="Ensembl-to-Entrez Gene Identifier Mappings — ensembl2entrez" />
 
 <meta property="og:description" content="Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 Entrez ID if there are multiple identifiers that map to an Ensembl gene ID." />
@@ -106,7 +106,7 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><code>Ensembl2Entrez</code> Generator</h1>
+    <h1>Ensembl-to-Entrez Gene Identifier Mappings</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/ensembl2entrez.R'><code>R/ensembl2entrez.R</code></a></small>
     <div class="hidden name"><code>ensembl2entrez.Rd</code></div>
     </div>
@@ -142,9 +142,12 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other S4 Generators: <code><a href='eggnog.html'>eggnog</a></code>,
+    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
+  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
+  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
-  <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>, <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
+  <code><a href='mapGenes.html'>mapGenes</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
+  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -176,10 +179,6 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

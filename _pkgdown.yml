@@ -23,7 +23,7 @@ reference:
     - combine
     - markdown
     - organism
-  - title: Annotation Functions
+  - title: Annotations
     contents:
     - makeGRanges
     - makeGene2Symbol
@@ -32,7 +32,7 @@ reference:
     - eggnog
     - panther
     - emptyRanges
-  - title: Identifier Mapping Functions
+  - title: Identifier Mapping
     contents:
     - starts_with("convert")
     - starts_with("mapGenes")
@@ -41,14 +41,14 @@ reference:
     - ensembl2entrez
     - hgnc2ensembl
     - mgi2ensembl
-  - title: Transcript-Level Functions
+  - title: Transcript-Level
     contents:
     - convertTranscriptsToGenes
     - makeGRanges
     - makeTx2Gene
     - stripTranscriptVersions
     - tx2gene
-  - title: Import/Export Functions
+  - title: Import/Export
     contents:
     - starts_with("assign")
     - export
@@ -57,7 +57,7 @@ reference:
     - starts_with("save")
     - transmit
     - starts_with("write")
-  - title: Metadata Functions
+  - title: Metadata
     contents:
     - detectHPC
     - detectLanes
@@ -68,7 +68,7 @@ reference:
     - organism
     - starts_with("sample")
     - uniteInterestingGroups
-  - title: SummarizedExperiment Functions
+  - title: SummarizedExperiment
     contents:
     - counts
     - interestingGroups
@@ -80,7 +80,7 @@ reference:
     - starts_with("sample")
     - selectSamples
     - tpm
-  - title: SingleCellExperiment Functions
+  - title: SingleCellExperiment
     contents:
     - aggregateCellsToSamples
     - cell2sample
@@ -94,7 +94,7 @@ reference:
   - title: ggplot2
     contents:
     - starts_with("ggplot2-")
-  - title: Sanitization Functions
+  - title: Sanitization
     contents:
     - collapseToString
     - makeNames
@@ -108,11 +108,11 @@ reference:
     - aggregate
     - geometricMean
     - logRatio
-  - title: Markdown Functions
+  - title: Markdown
     contents:
     - starts_with("markdown")
     - prepareTemplate
-  - title: Developer Functions
+  - title: Developer
     contents:
     - detectHPC
     - dots
@@ -125,7 +125,7 @@ reference:
     - printString
     - separator
     - standardizeCall
-  - title: Documentation Functions
+  - title: Documentation
     contents:
     - matches("Rd")
   - title: Assert Checks
