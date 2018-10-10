@@ -29,4 +29,7 @@ Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{MGI2Ensembl-class}},
   \code{\link{PANTHER-class}}
 }
+\author{
+Michael Steinbaugh
+}
 \concept{S4 Classes}
