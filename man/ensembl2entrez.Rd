@@ -5,7 +5,7 @@
 \alias{ensembl2entrez}
 \alias{Ensembl2Entrez}
 \alias{ensembl2entrez,SummarizedExperiment-method}
-\title{\code{Ensembl2Entrez} Generator}
+\title{Ensembl-to-Entrez Gene Identifier Mappings}
 \usage{
 ensembl2entrez(object, ...)
 
@@ -29,11 +29,14 @@ x <- ensembl2entrez(rse_small)
 print(x)
 }
 \seealso{
-Other S4 Generators: \code{\link{eggnog}},
+Other Identifier Mapping Functions: \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{gene2symbol}}, \code{\link{hgnc2ensembl}},
-  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
+  \code{\link{mapGenes}}, \code{\link{mgi2ensembl}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{S4 Generators}
+\concept{Identifier Mapping Functions}

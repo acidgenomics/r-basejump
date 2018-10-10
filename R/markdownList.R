@@ -4,7 +4,7 @@
 #' works in any R Markdown code block. When calling from inside an `asis` chunk,
 #' set `asis = TRUE`.
 #'
-#' @family R Markdown Functions
+#' @family Markdown Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

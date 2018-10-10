@@ -23,6 +23,10 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
 \strong{e}volutionary \strong{g}enealogy of \strong{g}enes: \strong{N}on-supervised
 \strong{O}rthologous \strong{G}roups.
 }
+\examples{
+x <- eggnog(.test = TRUE)
+print(x)
+}
 \seealso{
 \itemize{
 \item \code{\link[=eggnog]{eggnog()}}.

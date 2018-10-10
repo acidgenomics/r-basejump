@@ -1,7 +1,7 @@
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
 #' @name convertGenesToSymbols
-#' @family Annotation Functions
+#' @family Identifier Mapping Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

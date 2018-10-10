@@ -1,10 +1,8 @@
 #' Match Arguments to Do Call
 #'
-#' @family Developer Functions
 #' @author Michael Steinbaugh
 #' @include standardizeCall.R
 #' @export
-#'
 #'
 #' @inheritParams standardizeCall
 #' @inheritParams base::do.call
@@ -15,9 +13,8 @@
 #' @return `list`. Arguments to pass to [do.call()].
 #'
 #' @seealso
-#' - [base::do.call()].
-#' - [base::sys.call()].
-#' - [base::sys.parent()].
+#' - [standardizeCall].
+#' - [base::do.call].
 #'
 #' @examples
 #' example <- function(object, xxx, ...) {

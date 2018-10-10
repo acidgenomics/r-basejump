@@ -1,6 +1,6 @@
 #' Minimal Sample Data
 #'
-#' @family Data Functions
+#' @family Metadata Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

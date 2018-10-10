@@ -1,7 +1,7 @@
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype
-#' @family Plot Functions
+#' @family Plots
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @export
 #'

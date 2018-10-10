@@ -1,7 +1,7 @@
 #' Subset Per Sample
 #'
 #' @name subsetPerSample
-#' @family Data Functions
+#' @family SingleCellExperiment Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

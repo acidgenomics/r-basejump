@@ -72,10 +72,10 @@ geometricMean(sparse)
 Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
 \href{https://stackoverflow.com/a/25555105}{code}.
 
-Other Math and Science Functions: \code{\link{logRatio}},
-  \code{\link{microplate}}
+Other Calculations: \code{\link{aggregate}},
+  \code{\link{logRatio}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Math and Science Functions}
+\concept{Calculations}

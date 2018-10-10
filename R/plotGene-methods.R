@@ -1,7 +1,7 @@
 #' Plot Gene Expression
 #'
 #' @name plotGene
-#' @family Plot Functions
+#' @family Plots
 #' @author Michael Steinbaugh
 #' @export
 #'

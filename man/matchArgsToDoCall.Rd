@@ -53,22 +53,10 @@ example(c("hello", "world"))
 }
 \seealso{
 \itemize{
+\item \code{\link[=standardizeCall]{standardizeCall()}}.
 \item \code{\link[base:do.call]{base::do.call()}}.
-\item \code{\link[base:sys.call]{base::sys.call()}}.
-\item \code{\link[base:sys.parent]{base::sys.parent()}}.
 }
-
-Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{separator}},
-  \code{\link{standardizeCall}},
-  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Developer Functions}

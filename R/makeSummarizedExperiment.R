@@ -13,7 +13,7 @@
 #'
 #' @note Column and rows always return sorted alphabetically.
 #'
-#' @family Data Functions
+#' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

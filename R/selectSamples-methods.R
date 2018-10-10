@@ -12,7 +12,7 @@
 #'   identifiers for columns and gene identifiers for rows.
 #'
 #' @name selectSamples
-#' @family Data Functions
+#' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

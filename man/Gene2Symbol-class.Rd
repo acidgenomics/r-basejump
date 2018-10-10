@@ -10,6 +10,12 @@ Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 \description{
 Gene-to-Symbol Mappings
 }
+\examples{
+# SummarizedExperiment ====
+data(rse_small)
+x <- gene2symbol(rse_small)
+print(x)
+}
 \seealso{
 \itemize{
 \item \code{\link[=gene2symbol]{gene2symbol()}}.

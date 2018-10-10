@@ -1,7 +1,7 @@
 #' Plot Quality Control
 #'
 #' @name plotQC
-#' @family Plot Functions
+#' @family Plots
 #' @author Michael Steinbaugh
 #' @export
 #'

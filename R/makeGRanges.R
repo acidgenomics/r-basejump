@@ -2,6 +2,7 @@
 #'
 #' @name makeGRanges
 #' @family Annotation Functions
+#' @family Transcript-Level Functions
 #' @author Michael Steinbaugh
 #'
 #' @section Ensembl annotations:

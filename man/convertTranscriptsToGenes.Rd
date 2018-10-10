@@ -92,16 +92,21 @@ x <- convertTranscriptsToGenes(object)
 print(x)
 }
 \seealso{
-\code{\link[=aggregateRows]{aggregateRows()}}.
+\link{aggregateRows}.
 
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
+Other Identifier Mapping Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}, \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{hgnc2ensembl}}, \code{\link{mapGenes}},
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
+
+Other Transcript-Level Functions: \code{\link{makeGRanges}},
+  \code{\link{makeTx2Gene}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{Identifier Mapping Functions}
+\concept{Transcript-Level Functions}

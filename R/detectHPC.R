@@ -5,7 +5,7 @@
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
 #'
-#' @family Developer Functions
+#' @family Metadata Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

@@ -3,15 +3,18 @@
 \docType{class}
 \name{Ensembl2Entrez-class}
 \alias{Ensembl2Entrez-class}
-\title{Ensembl-to-Entrez Identifier Mappings}
+\title{Ensembl-to-Entrez Gene Identifier Mappings}
 \value{
 Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns.
 }
 \description{
-Ensembl-to-Entrez Identifier Mappings
+Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 }
-\note{
-Requires 1:1 mappings.
+\examples{
+data(rse_small)
+x <- ensembl2entrez(rse_small)
+print(x)
 }
 \seealso{
 \code{\link[=ensembl2entrez]{ensembl2entrez()}}.

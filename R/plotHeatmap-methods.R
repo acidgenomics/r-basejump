@@ -23,7 +23,7 @@
 #' Apply quantile breaks.
 #'
 #' @name plotHeatmap
-#' @family Plot Functions
+#' @family Plots
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @export
 #'

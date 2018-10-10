@@ -3,7 +3,7 @@
 #' Obtain the top cellular barcodes, based on counts.
 #'
 #' @name topCellsPerSample
-#' @family Single-Cell Functions
+#' @family SingleCellExperiment Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

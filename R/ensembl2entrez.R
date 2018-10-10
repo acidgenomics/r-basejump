@@ -1,10 +1,7 @@
-#' `Ensembl2Entrez` Generator
-#'
-#' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
-#' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
+#' @inherit Ensembl2Entrez-class
 #'
 #' @name ensembl2entrez
-#' @family S4 Generators
+#' @family Identifier Mapping Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

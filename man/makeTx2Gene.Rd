@@ -53,15 +53,18 @@ print(x)
 \seealso{
 \link{makeGRanges}.
 
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
+Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{panther}}
+
+Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
+  \code{\link{makeGRanges}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
 \concept{Annotation Functions}
+\concept{Transcript-Level Functions}

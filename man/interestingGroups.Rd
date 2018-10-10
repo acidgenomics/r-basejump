@@ -47,6 +47,23 @@ print(intgroup)
 interestingGroups(object) <- intgroup[[1L]]
 interestingGroups(object)
 }
+\seealso{
+Other Metadata Functions: \code{\link{detectHPC}},
+  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
+  \code{\link{microplate}},
+  \code{\link{minimalSampleData}}, \code{\link{organism}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{uniteInterestingGroups}}
+
+Other SummarizedExperiment Functions: \code{\link{counts}},
+  \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapGenes}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}},
+  \code{\link{tpm}}
+}
 \author{
 Michael Steinbaugh
 }
+\concept{Metadata Functions}
+\concept{SummarizedExperiment Functions}

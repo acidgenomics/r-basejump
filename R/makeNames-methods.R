@@ -1,5 +1,4 @@
-# FIXME Add `makeDimnames()`.
-# FIXME Add plurarlized acronyms (e.g. "UMIs") to unit tests.
+# TODO Add plurarlized acronyms (e.g. "UMIs") to unit tests.
 
 
 
@@ -17,7 +16,6 @@
 #' `environment`, as that can introduce conflicts with base functions.
 #'
 #' @name makeNames
-#' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

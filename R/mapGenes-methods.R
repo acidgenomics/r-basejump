@@ -13,7 +13,8 @@
 #' that is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @family Data Functions
+#' @family Identifier Mapping Functions
+#' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

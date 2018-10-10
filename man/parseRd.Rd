@@ -38,10 +38,10 @@ print(examples)
 \seealso{
 \code{\link[tools:Rd_db]{tools::Rd_db()}}.
 
-Other R Documentation Functions: \code{\link{RdTags}},
+Other Documentation Functions: \code{\link{RdTags}},
   \code{\link{saveRdExamples}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{R Documentation Functions}
+\concept{Documentation Functions}

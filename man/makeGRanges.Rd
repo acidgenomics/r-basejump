@@ -148,15 +148,18 @@ glimpse(x)
 \item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
 }
 
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
+Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{panther}}
+
+Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
+  \code{\link{makeTx2Gene}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
 \concept{Annotation Functions}
+\concept{Transcript-Level Functions}

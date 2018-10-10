@@ -116,20 +116,6 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-package-information" class="hasAnchor"><a href="#section-package-information" class="anchor"></a>Package Information</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="basejump-package.html">basejump-package</a></code> </p>
-        </td>
-        <td><p>basejump</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-s-classes" class="hasAnchor"><a href="#section-s-classes" class="anchor"></a>S4 Classes</h2>
           <p class="section-desc"></p>
         </th>
@@ -145,7 +131,7 @@
         <td>
           <p><code><a href="Ensembl2Entrez-class.html">Ensembl2Entrez-class</a></code> </p>
         </td>
-        <td><p>Ensembl-to-Entrez Identifier Mappings</p></td>
+        <td><p>Ensembl-to-Entrez Gene Identifier Mappings</p></td>
       </tr><tr>
         
         <td>
@@ -157,13 +143,13 @@
         <td>
           <p><code><a href="HGNC2Ensembl-class.html">HGNC2Ensembl-class</a></code> </p>
         </td>
-        <td><p>HGNC-to-Ensembl Identifier Mappings</p></td>
+        <td><p>HGNC-to-Ensembl Gene Identifier Mappings</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="MGI2Ensembl-class.html">MGI2Ensembl-class</a></code> </p>
         </td>
-        <td><p>MGI-to-Ensembl Identifier Mappings.</p></td>
+        <td><p>MGI-to-Ensembl Gene Identifier Mappings</p></td>
       </tr><tr>
         
         <td>
@@ -189,31 +175,67 @@
         <td>
           <p><code><a href="eggnog.html">eggnog()</a></code> </p>
         </td>
-        <td><p><code>EggNOG</code> Generator</p></td>
+        <td><p>EggNOG Database Annotations</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="ensembl2entrez.html">ensembl2entrez()</a></code> </p>
         </td>
-        <td><p><code>Ensembl2Entrez</code> Generator</p></td>
+        <td><p>Ensembl-to-Entrez Gene Identifier Mappings</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="gene2symbol.html">gene2symbol()</a></code> </p>
         </td>
-        <td><p><code>Gene2Symbol</code> Generator</p></td>
+        <td><p>Gene-to-Symbol Mappings</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="hgnc2ensembl.html">hgnc2ensembl()</a></code> </p>
         </td>
-        <td><p><code>HGNC2Ensembl</code> Generator</p></td>
+        <td><p>HGNC-to-Ensembl Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
+        </td>
+        <td><p>Make Genomic Ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGene2Symbol.html">makeGene2SymbolFromEnsembl()</a></code> <code><a href="makeGene2Symbol.html">makeGene2SymbolFromGFF()</a></code> </p>
+        </td>
+        <td><p>Make Gene-to-Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> <code><a href="makeNames.html">makeDimnames()</a></code> </p>
+        </td>
+        <td><p>Make Syntactically Valid Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeSingleCellExperiment.html">makeSingleCellExperiment()</a></code> </p>
+        </td>
+        <td><p>Make Single-Cell Experiment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeSummarizedExperiment.html">makeSummarizedExperiment()</a></code> </p>
+        </td>
+        <td><p>Make Summarized Experiment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeTx2Gene.html">makeTx2GeneFromEnsembl()</a></code> <code><a href="makeTx2Gene.html">makeTx2GeneFromGFF()</a></code> </p>
+        </td>
+        <td><p>Make Transcript-to-Gene Mappings</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="mgi2ensembl.html">mgi2ensembl()</a></code> </p>
         </td>
-        <td><p><code>MGI2Ensembl</code> Generator</p></td>
+        <td><p>MGI-to-Ensembl Gene Identifier Mappings</p></td>
       </tr><tr>
         
         <td>
@@ -225,12 +247,100 @@
         <td>
           <p><code><a href="tx2gene.html">tx2gene()</a></code> </p>
         </td>
-        <td><p><code>Tx2Gene</code> Generator</p></td>
+        <td><p>Transcript-to-Gene Identifier Mappings</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-generic-methods" class="hasAnchor"><a href="#section-generic-methods" class="anchor"></a>Generic Methods</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="aggregate.html">aggregateRows()</a></code> <code><a href="aggregate.html">aggregateCols()</a></code> </p>
+        </td>
+        <td><p>Aggregate Rows or Columns</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="coerce.html">coerceS4ToList()</a></code> <code><a href="coerce.html">as.list(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Methods for Coercing an Object to a Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="combine.html">combine(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="combine.html">combine(<i>&lt;SingleCellExperiment&gt;</i>,<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Combine Multiple Objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdown.html">markdown()</a></code> </p>
+        </td>
+        <td><p>Markdown</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Organism Accessor</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
           <h2 id="section-annotation-functions" class="hasAnchor"><a href="#section-annotation-functions" class="anchor"></a>Annotation Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
+        </td>
+        <td><p>Make Genomic Ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGene2Symbol.html">makeGene2SymbolFromEnsembl()</a></code> <code><a href="makeGene2Symbol.html">makeGene2SymbolFromGFF()</a></code> </p>
+        </td>
+        <td><p>Make Gene-to-Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeTx2Gene.html">makeTx2GeneFromEnsembl()</a></code> <code><a href="makeTx2Gene.html">makeTx2GeneFromGFF()</a></code> </p>
+        </td>
+        <td><p>Make Transcript-to-Gene Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geneSynonyms.html">geneSynonyms()</a></code> </p>
+        </td>
+        <td><p>Gene Synonyms</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="eggnog.html">eggnog()</a></code> </p>
+        </td>
+        <td><p>EggNOG Database Annotations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="panther.html">panther()</a></code> </p>
+        </td>
+        <td><p><code>PANTHER</code> Generator</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="emptyRanges.html">emptyRanges()</a></code> </p>
+        </td>
+        <td><p>Generate Empty Genomic Ranges</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-identifier-mapping-functions" class="hasAnchor"><a href="#section-identifier-mapping-functions" class="anchor"></a>Identifier Mapping Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -255,21 +365,53 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="emptyRanges.html">emptyRanges()</a></code> </p>
+          <p><code><a href="mapGenes.html">mapGenesToRownames()</a></code> <code><a href="mapGenes.html">mapGenesToIDs()</a></code> <code><a href="mapGenes.html">mapGenesToSymbols()</a></code> </p>
         </td>
-        <td><p>Generate Empty Genomic Ranges</p></td>
+        <td><p>Map Genes</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="geneSynonyms.html">geneSynonyms()</a></code> </p>
+          <p><code><a href="gene2symbol.html">gene2symbol()</a></code> </p>
         </td>
-        <td><p>Gene Synonyms</p></td>
+        <td><p>Gene-to-Symbol Mappings</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGene2Symbol.html">makeGene2SymbolFromEnsembl()</a></code> <code><a href="makeGene2Symbol.html">makeGene2SymbolFromGFF()</a></code> </p>
+          <p><code><a href="tx2gene.html">tx2gene()</a></code> </p>
         </td>
-        <td><p>Make Gene-to-Symbol Mappings</p></td>
+        <td><p>Transcript-to-Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ensembl2entrez.html">ensembl2entrez()</a></code> </p>
+        </td>
+        <td><p>Ensembl-to-Entrez Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hgnc2ensembl.html">hgnc2ensembl()</a></code> </p>
+        </td>
+        <td><p>HGNC-to-Ensembl Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mgi2ensembl.html">mgi2ensembl()</a></code> </p>
+        </td>
+        <td><p>MGI-to-Ensembl Gene Identifier Mappings</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-transcript-level-functions" class="hasAnchor"><a href="#section-transcript-level-functions" class="anchor"></a>Transcript-Level Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> </p>
+        </td>
+        <td><p>Convert Ensembl Transcripts to Genes</p></td>
       </tr><tr>
         
         <td>
@@ -288,6 +430,12 @@
           <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
         </td>
         <td><p>Strip Transcript Versions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tx2gene.html">tx2gene()</a></code> </p>
+        </td>
+        <td><p>Transcript-to-Gene Identifier Mappings</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -360,23 +508,79 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-data-functions" class="hasAnchor"><a href="#section-data-functions" class="anchor"></a>Data Functions</h2>
+          <h2 id="section-metadata-functions" class="hasAnchor"><a href="#section-metadata-functions" class="anchor"></a>Metadata Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="aggregate.html">aggregateRows()</a></code> <code><a href="aggregate.html">aggregateCols()</a></code> <code><a href="aggregate.html">aggregateCellsToSamples()</a></code> </p>
+          <p><code><a href="detectHPC.html">detectHPC()</a></code> </p>
         </td>
-        <td><p>Aggregate Rows or Columns</p></td>
+        <td><p>Detect HPC Environment</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="combine.html">combine(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="combine.html">combine(<i>&lt;SingleCellExperiment&gt;</i>,<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
+          <p><code><a href="detectLanes.html">detectLanes()</a></code> </p>
         </td>
-        <td><p>Combine Multiple Objects</p></td>
+        <td><p>Detect Sequencing Lanes</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="detectOrganism.html">detectOrganism()</a></code> </p>
+        </td>
+        <td><p>Detect Organism</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="interestingGroups.html">interestingGroups()</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`()</a></code> </p>
+        </td>
+        <td><p>Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="microplate.html">microplate()</a></code> </p>
+        </td>
+        <td><p>Microtiter Plate Well Identifiers</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="minimalSampleData.html">minimalSampleData()</a></code> </p>
+        </td>
+        <td><p>Minimal Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Organism Accessor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sampleData.html">sampleData()</a></code> <code><a href="sampleData.html">`sampleData<-`()</a></code> <code><a href="sampleData.html">sampleNames(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sampleNames.html">`sampleNames<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;character&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Sample Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="uniteInterestingGroups.html">uniteInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Unite Interesting Groups</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-summarizedexperiment-functions" class="hasAnchor"><a href="#section-summarizedexperiment-functions" class="anchor"></a>SummarizedExperiment Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code> </p>
@@ -388,12 +592,6 @@
           <p><code><a href="interestingGroups.html">interestingGroups()</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`()</a></code> </p>
         </td>
         <td><p>Interesting Groups</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeSingleCellExperiment.html">makeSingleCellExperiment()</a></code> </p>
-        </td>
-        <td><p>Make Single-Cell Experiment</p></td>
       </tr><tr>
         
         <td>
@@ -427,12 +625,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Organism Accessor</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="sampleData.html">sampleData()</a></code> <code><a href="sampleData.html">`sampleData<-`()</a></code> <code><a href="sampleData.html">sampleNames(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
         </td>
         <td><p>Sample Data</p></td>
@@ -451,12 +643,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="subsetPerSample.html">subsetPerSample()</a></code> </p>
-        </td>
-        <td><p>Subset Per Sample</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="tpm.html">tpm(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
         </td>
         <td><p>Transcripts Per Million (TPM)</p></td>
@@ -464,22 +650,22 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-single-cell-functions" class="hasAnchor"><a href="#section-single-cell-functions" class="anchor"></a>Single-Cell Functions</h2>
+          <h2 id="section-singlecellexperiment-functions" class="hasAnchor"><a href="#section-singlecellexperiment-functions" class="anchor"></a>SingleCellExperiment Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="aggregate.html">aggregateRows()</a></code> <code><a href="aggregate.html">aggregateCols()</a></code> <code><a href="aggregate.html">aggregateCellsToSamples()</a></code> </p>
+          <p><code><a href="aggregateCellsToSamples.html">aggregateCellsToSamples()</a></code> </p>
         </td>
-        <td><p>Aggregate Rows or Columns</p></td>
+        <td><p>Aggregate Cells to Samples</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="cell2sample.html">cell2sample()</a></code> </p>
         </td>
-        <td><p>Cell to Sample Mappings</p></td>
+        <td><p>Cell-to-Sample Mappings</p></td>
       </tr><tr>
         
         <td>
@@ -495,6 +681,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="subsetPerSample.html">subsetPerSample()</a></code> </p>
+        </td>
+        <td><p>Subset Per Sample</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="topCellsPerSample.html">topCellsPerSample()</a></code> </p>
         </td>
         <td><p>Top Cells per Sample</p></td>
@@ -502,51 +694,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-sanitization-functions" class="hasAnchor"><a href="#section-sanitization-functions" class="anchor"></a>Sanitization Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> <code><a href="makeNames.html">makeDimnames()</a></code> </p>
-        </td>
-        <td><p>Make Syntactically Valid Names</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="removeNA.html">removeNA()</a></code> </p>
-        </td>
-        <td><p>Remove Rows and Columns Containing Only <code>NA</code> Values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sanitizeNA.html">sanitizeNA()</a></code> </p>
-        </td>
-        <td><p>Sanitize <code>NA</code> Values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sanitizePercent.html">sanitizePercent()</a></code> </p>
-        </td>
-        <td><p>Sanitize Percent</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> </p>
-        </td>
-        <td><p>Sanitize Row Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sanitizeSampleData.html">sanitizeSampleData()</a></code> </p>
-        </td>
-        <td><p>Sanitize Sample Data</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-plot-functions" class="hasAnchor"><a href="#section-plot-functions" class="anchor"></a>Plot Functions</h2>
+          <h2 id="section-plots" class="hasAnchor"><a href="#section-plots" class="anchor"></a>Plots</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -608,7 +756,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-ggplot-functions" class="hasAnchor"><a href="#section-ggplot-functions" class="anchor"></a>ggplot2 Functions</h2>
+          <h2 id="section-ggplot-" class="hasAnchor"><a href="#section-ggplot-" class="anchor"></a>ggplot2</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -628,11 +776,85 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-math-and-science-functions" class="hasAnchor"><a href="#section-math-and-science-functions" class="anchor"></a>Math and Science Functions</h2>
+          <h2 id="section-sanitization-functions" class="hasAnchor"><a href="#section-sanitization-functions" class="anchor"></a>Sanitization Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
+        
+        <td>
+          <p><code><a href="collapseToString.html">collapseToString()</a></code> </p>
+        </td>
+        <td><p>Collapse to String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> <code><a href="makeNames.html">makeDimnames()</a></code> </p>
+        </td>
+        <td><p>Make Syntactically Valid Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeNA.html">removeNA()</a></code> </p>
+        </td>
+        <td><p>Remove Rows and Columns Containing Only <code>NA</code> Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeNA.html">sanitizeNA()</a></code> </p>
+        </td>
+        <td><p>Sanitize <code>NA</code> Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizePercent.html">sanitizePercent()</a></code> </p>
+        </td>
+        <td><p>Sanitize Percent</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> </p>
+        </td>
+        <td><p>Sanitize Row Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeSampleData.html">sanitizeSampleData()</a></code> </p>
+        </td>
+        <td><p>Sanitize Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sortUnique.html">sortUnique()</a></code> </p>
+        </td>
+        <td><p>Sort and Make Unique</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
+        </td>
+        <td><p>Strip Transcript Versions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="toStringUnique.html">toStringUnique()</a></code> </p>
+        </td>
+        <td><p>Convert to a Unique Character String</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-calculations" class="hasAnchor"><a href="#section-calculations" class="anchor"></a>Calculations</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="aggregate.html">aggregateRows()</a></code> <code><a href="aggregate.html">aggregateCols()</a></code> </p>
+        </td>
+        <td><p>Aggregate Rows or Columns</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="geometricMean.html">geometricMean()</a></code> </p>
@@ -644,17 +866,11 @@
           <p><code><a href="logRatio.html">foldChangeToLogRatio()</a></code> <code><a href="logRatio.html">logRatioToFoldChange()</a></code> </p>
         </td>
         <td><p>Interconvert Log Ratio and Fold Change Values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="microplate.html">microplate()</a></code> </p>
-        </td>
-        <td><p>Microtiter Plate Well Identifiers</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-r-markdown-functions" class="hasAnchor"><a href="#section-r-markdown-functions" class="anchor"></a>R Markdown Functions</h2>
+          <h2 id="section-markdown-functions" class="hasAnchor"><a href="#section-markdown-functions" class="anchor"></a>Markdown Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -700,58 +916,6 @@
           <p><code><a href="prepareTemplate.html">prepareTemplate()</a></code> </p>
         </td>
         <td><p>Prepare R Markdown Template File</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-atomic-vector-functions" class="hasAnchor"><a href="#section-atomic-vector-functions" class="anchor"></a>Atomic Vector Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="collapseToString.html">collapseToString()</a></code> </p>
-        </td>
-        <td><p>Collapse to String</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="detectLanes.html">detectLanes()</a></code> </p>
-        </td>
-        <td><p>Detect Sequencing Lanes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="detectOrganism.html">detectOrganism()</a></code> </p>
-        </td>
-        <td><p>Detect Organism</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sortUnique.html">sortUnique()</a></code> </p>
-        </td>
-        <td><p>Sort and Make Unique</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="toStringUnique.html">toStringUnique()</a></code> </p>
-        </td>
-        <td><p>Convert to a Unique Character String</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-coercion-methods" class="hasAnchor"><a href="#section-coercion-methods" class="anchor"></a>Coercion Methods</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="coerce.html">coerceS4ToList()</a></code> <code><a href="coerce.html">as.list(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Methods for Coercing an Object to a Class</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -826,17 +990,11 @@
           <p><code><a href="standardizeCall.html">standardizeCall()</a></code> </p>
         </td>
         <td><p>Standardize Call</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="uniteInterestingGroups.html">uniteInterestingGroups()</a></code> </p>
-        </td>
-        <td><p>Unite Interesting Groups</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-r-documentation-functions" class="hasAnchor"><a href="#section-r-documentation-functions" class="anchor"></a>R Documentation Functions</h2>
+          <h2 id="section-documentation-functions" class="hasAnchor"><a href="#section-documentation-functions" class="anchor"></a>Documentation Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -862,7 +1020,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-assert-check-functions" class="hasAnchor"><a href="#section-assert-check-functions" class="anchor"></a>Assert Check Functions</h2>
+          <h2 id="section-assert-checks" class="hasAnchor"><a href="#section-assert-checks" class="anchor"></a>Assert Checks</h2>
           <p class="section-desc"><p>Readable check functions to ensure code integrity.</p></p>
         </th>
       </tr>
@@ -1002,7 +1160,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-example-datasets" class="hasAnchor"><a href="#section-example-datasets" class="anchor"></a>Example Datasets</h2>
+          <h2 id="section-example-data-sets" class="hasAnchor"><a href="#section-example-data-sets" class="anchor"></a>Example Data Sets</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -1032,24 +1190,25 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-package-information">Package Information</a></li>
       <li><a href="#section-s-classes">S4 Classes</a></li>
       <li><a href="#section-s-generators">S4 Generators</a></li>
+      <li><a href="#section-generic-methods">Generic Methods</a></li>
       <li><a href="#section-annotation-functions">Annotation Functions</a></li>
+      <li><a href="#section-identifier-mapping-functions">Identifier Mapping Functions</a></li>
+      <li><a href="#section-transcript-level-functions">Transcript-Level Functions</a></li>
       <li><a href="#section-import-export-functions">Import/Export Functions</a></li>
-      <li><a href="#section-data-functions">Data Functions</a></li>
-      <li><a href="#section-single-cell-functions">Single-Cell Functions</a></li>
+      <li><a href="#section-metadata-functions">Metadata Functions</a></li>
+      <li><a href="#section-summarizedexperiment-functions">SummarizedExperiment Functions</a></li>
+      <li><a href="#section-singlecellexperiment-functions">SingleCellExperiment Functions</a></li>
+      <li><a href="#section-plots">Plots</a></li>
+      <li><a href="#section-ggplot-">ggplot2</a></li>
       <li><a href="#section-sanitization-functions">Sanitization Functions</a></li>
-      <li><a href="#section-plot-functions">Plot Functions</a></li>
-      <li><a href="#section-ggplot-functions">ggplot2 Functions</a></li>
-      <li><a href="#section-math-and-science-functions">Math and Science Functions</a></li>
-      <li><a href="#section-r-markdown-functions">R Markdown Functions</a></li>
-      <li><a href="#section-atomic-vector-functions">Atomic Vector Functions</a></li>
-      <li><a href="#section-coercion-methods">Coercion Methods</a></li>
+      <li><a href="#section-calculations">Calculations</a></li>
+      <li><a href="#section-markdown-functions">Markdown Functions</a></li>
       <li><a href="#section-developer-functions">Developer Functions</a></li>
-      <li><a href="#section-r-documentation-functions">R Documentation Functions</a></li>
-      <li><a href="#section-assert-check-functions">Assert Check Functions</a></li>
-      <li><a href="#section-example-datasets">Example Datasets</a></li>
+      <li><a href="#section-documentation-functions">Documentation Functions</a></li>
+      <li><a href="#section-assert-checks">Assert Checks</a></li>
+      <li><a href="#section-example-data-sets">Example Data Sets</a></li>
     </ul>
   </div>
 </div>

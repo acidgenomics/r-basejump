@@ -27,13 +27,10 @@ x <- geneSynonyms(organism = "Homo sapiens", .test = TRUE)
 print(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
+Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{makeGRanges}},
   \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{panther}}
 }
 \author{
 Michael Steinbaugh

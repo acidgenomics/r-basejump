@@ -58,14 +58,6 @@ print(from)
 to <- removeNA(from)
 print(to)
 }
-\seealso{
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{makeNames}}, \code{\link{sanitizeNA}},
-  \code{\link{sanitizePercent}},
-  \code{\link{sanitizeRowData}},
-  \code{\link{sanitizeSampleData}}
-}
 \author{
 Michael Steinbaugh
 }
-\concept{Sanitization Functions}

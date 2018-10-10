@@ -20,16 +20,14 @@ x <- minimalSampleData(sample = c("sample 1", "sample 2"))
 print(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregate}},
-  \code{\link{combine}}, \code{\link{counts}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{organism}},
+Other Metadata Functions: \code{\link{detectHPC}},
+  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
+  \code{\link{interestingGroups}},
+  \code{\link{microplate}}, \code{\link{organism}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}}
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{Metadata Functions}

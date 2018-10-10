@@ -94,16 +94,22 @@ mapGenesToSymbols(object, genes = geneIDs)
 mapGenesToSymbols(object, genes = geneNames)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregate}},
-  \code{\link{combine}}, \code{\link{counts}},
+Other Identifier Mapping Functions: \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{hgnc2ensembl}}, \code{\link{mgi2ensembl}},
+  \code{\link{tx2gene}}
+
+Other SummarizedExperiment Functions: \code{\link{counts}},
+  \code{\link{interestingGroups}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{meltCounts}}, \code{\link{metrics}},
-  \code{\link{minimalSampleData}}, \code{\link{organism}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}}
+  \code{\link{selectSamples}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{Identifier Mapping Functions}
+\concept{SummarizedExperiment Functions}

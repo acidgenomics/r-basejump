@@ -6,7 +6,7 @@
 #'   defined in [assayNames()].
 #'
 #' @name counts
-#' @family Data Functions
+#' @family SummarizedExperiment Functions
 #' @importFrom BiocGenerics counts
 #' @export
 #'

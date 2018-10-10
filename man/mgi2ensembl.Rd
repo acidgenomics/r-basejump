@@ -3,7 +3,7 @@
 \name{mgi2ensembl}
 \alias{mgi2ensembl}
 \alias{MGI2Ensembl}
-\title{\code{MGI2Ensembl} Generator}
+\title{MGI-to-Ensembl Gene Identifier Mappings}
 \usage{
 mgi2ensembl(.test = FALSE)
 }
@@ -14,18 +14,21 @@ mgi2ensembl(.test = FALSE)
 \code{MGI2Ensembl}.
 }
 \description{
-\code{MGI2Ensembl} Generator
+MGI-to-Ensembl Gene Identifier Mappings
 }
 \examples{
 x <- mgi2ensembl(.test = TRUE)
 print(x)
 }
 \seealso{
-Other S4 Generators: \code{\link{eggnog}},
+Other Identifier Mapping Functions: \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
-  \code{\link{hgnc2ensembl}}, \code{\link{tx2gene}}
+  \code{\link{hgnc2ensembl}}, \code{\link{mapGenes}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{S4 Generators}
+\concept{Identifier Mapping Functions}

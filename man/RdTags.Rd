@@ -18,10 +18,10 @@ Rd <- db[["nrow.Rd"]]
 RdTags(Rd)
 }
 \seealso{
-Other R Documentation Functions: \code{\link{parseRd}},
+Other Documentation Functions: \code{\link{parseRd}},
   \code{\link{saveRdExamples}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{R Documentation Functions}
+\concept{Documentation Functions}

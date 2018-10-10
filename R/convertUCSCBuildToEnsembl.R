@@ -1,6 +1,6 @@
 #' Convert UCSC Build to Ensembl
 #'
-#' @family Annotation Functions
+#' @family Identifier Mapping Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
