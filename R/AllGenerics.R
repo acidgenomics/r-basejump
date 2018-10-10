@@ -137,6 +137,18 @@ setGeneric(
 
 
 
+# headtail =====================================================================
+#' @rdname headtail
+#' @export
+setGeneric(
+    name = "headtail",
+    def = function(x, ...) {
+        standardGeneric("headtail")
+    }
+)
+
+
+
 # interestingGroups ============================================================
 #' @rdname interestingGroups
 #' @export
