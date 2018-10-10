@@ -3,7 +3,7 @@
 \name{panther}
 \alias{panther}
 \alias{PANTHER}
-\title{\code{PANTHER} Generator}
+\title{PANTHER Database Annotations}
 \usage{
 panther(organism, release = NULL, .test = FALSE)
 }
@@ -22,7 +22,8 @@ release versions available from the FTP server (e.g. \code{"13.0"}).}
 \code{PANTHER}.
 }
 \description{
-\code{PANTHER} Generator
+\href{http://www.pantherdb.org}{PANTHER} gene ontology definitions. PANTHER stands
+for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \examples{
 invisible(capture.output(
