@@ -1,4 +1,4 @@
-context("Atomic Vectors")
+context("Metadata")
 
 
 
@@ -153,25 +153,5 @@ test_that("detectOrganism : Failure", {
     expect_error(
         object = detectOrganism("XXX"),
         regexp = "Failed to detect organism"
-    )
-})
-
-
-
-# sortUnique ===================================================================
-test_that("sortUnique", {
-    expect_identical(
-        sortUnique(c("milk", "eggs", "eggs", NA)),
-        c("eggs", "milk", NA)
-    )
-})
-
-
-
-# toStringUnique ===============================================================
-test_that("toStringUnique", {
-    expect_identical(
-        toStringUnique(c("hello", "world", NA, "hello", "world", NA)),
-        "hello, world"
     )
 })
