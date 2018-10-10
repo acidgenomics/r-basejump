@@ -12,7 +12,7 @@ saveData(..., dir = getOption("basejump.save.dir", "."),
 \arguments{
 \item{...}{Object names. Note that these arguments are interpreted as symbols
 using non-standard evaluation for convenience during interactive use, and
-\emph{should not be quoted}.}
+\emph{must not be quoted}.}
 
 \item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
