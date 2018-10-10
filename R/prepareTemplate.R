@@ -31,12 +31,12 @@
 #' @return Invisible `logical`. Was the file copied?.
 #'
 #' @examples
-#' # RNA-seq template
+#' ## RNA-seq template
 #' \dontrun{
 #' prepareTemplate(package = "bcbioRNASeq")
 #' }
 #'
-#' # Single-cell RNA-seq template
+#' ## Single-cell RNA-seq template
 #' \dontrun{
 #' prepareTemplate(package = "bcbioSingleCell")
 #' }

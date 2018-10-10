@@ -11,16 +11,16 @@
 #' @return `character`. Well identifiers.
 #'
 #' @examples
-#' # Single 96-well plate.
+#' ## Single 96-well plate.
 #' microplate(wells = 96L)
 #'
-#' # 2 96-well plates.
+#' ## 2 96-well plates.
 #' microplate(plates = 2L, wells = 96L)
 #'
-#' # Single 384-well plate.
+#' ## Single 384-well plate.
 #' microplate(wells = 384L)
 #'
-#' # 2 96-well plates with 6 control wells per plate.
+#' ## 2 96-well plates with 6 control wells per plate.
 #' microplate(plates = 2L, wells = 96L, controls = 6L)
 microplate <- function(
     plates = 1L,

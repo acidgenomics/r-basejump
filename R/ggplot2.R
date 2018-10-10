@@ -50,20 +50,20 @@
 #' @return `ggproto`.
 #'
 #' @examples
-#' # basejump_geom_abline ====
-#' # x-axis line
+#' ## basejump_geom_abline ====
+#' ## x-axis line
 #' geom <- basejump_geom_abline(xintercept = 1L)
 #' geom
 #'
-#' # y-axis line
+#' ## y-axis line
 #' geom <- basejump_geom_abline(yintercept = 1L)
 #' geom
 #'
-#' # basejump_geom_label ====
+#' ## basejump_geom_label ====
 #' geom <- basejump_geom_label()
 #' geom
 #'
-#' # basejump_geom_label_average ====
+#' ## basejump_geom_label_average ====
 #' geom <- basejump_geom_label_average(
 #'     data = tibble(
 #'         sampleName = rep(c("sample1", "sample2"), times = 4L),
@@ -74,7 +74,7 @@
 #' )
 #' geom
 #'
-#' # basejump_geom_label_repel ====
+#' ## basejump_geom_label_repel ====
 #' geom <- basejump_geom_label_repel()
 #' geom
 NULL
@@ -303,12 +303,12 @@ basejump_geom_label_repel <- function(
 #'     )
 #' )
 #'
-#' # Paperwhite theme.
+#' ## Paperwhite theme.
 #' p +
 #'     geom_point() +
 #'     theme_paperwhite(legend_position = "none")
 #'
-#' # Midnight theme.
+#' ## Midnight theme.
 #' p +
 #'     geom_point() +
 #'     theme_midnight(legend_position = "none")

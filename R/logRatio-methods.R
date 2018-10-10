@@ -14,10 +14,10 @@
 #' - `gtools::logratio2foldchange()`.
 #'
 #' @examples
-#' # Convert fold change to log ratio.
+#' ## Convert fold change to log ratio.
 #' foldChangeToLogRatio(c(-8, -4, -2, 1, 2, 4, 8))
 #'
-#' # Convert log ratio to fold change.
+#' ## Convert log ratio to fold change.
 #' logRatioToFoldChange(seq(-3, 3, 1))
 NULL
 

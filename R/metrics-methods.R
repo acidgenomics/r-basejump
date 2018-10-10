@@ -20,11 +20,11 @@
 #' @examples
 #' data(rse_small, sce_small)
 #'
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' x <- metrics(rse_small)
 #' print(x)
 #'
-#' # SingleCellExperiment ====
+#' ## SingleCellExperiment ====
 #' x <- metrics(sce_small)
 #' print(x)
 #'

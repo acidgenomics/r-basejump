@@ -70,12 +70,12 @@ unless the library sizes or total RNA expression are different.
 \examples{
 data(rse_small, sce_small)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 plotCountsPerGene(rse_small, geom = "density")
 plotCountsPerGene(rse_small, geom = "boxplot")
 plotCountsPerGene(rse_small, geom = "violin")
 
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 plotCountsPerGene(sce_small)
 }
 \seealso{

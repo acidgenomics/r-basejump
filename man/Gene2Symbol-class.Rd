@@ -11,7 +11,7 @@ Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 Gene-to-Symbol Mappings
 }
 \examples{
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 data(rse_small)
 x <- gene2symbol(rse_small)
 print(x)

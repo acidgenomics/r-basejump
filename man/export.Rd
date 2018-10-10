@@ -60,17 +60,17 @@ column in the CSV export.
 }
 
 \examples{
-# matrix ====
+## matrix ====
 rnaseq_counts <- counts(rse_small)
 stopifnot(is.matrix(rnaseq_counts))
 export(rnaseq_counts, format = "csv")
 
-# sparseMatrix ====
+## sparseMatrix ====
 single_cell_counts <- counts(sce_small)
 stopifnot(is(single_cell_counts, "sparseMatrix"))
 export(single_cell_counts, format = "mtx")
 
-# Clean up
+## Clean up.
 file.remove(c(
     "rnaseq_counts.csv",
     "single_cell_counts.mtx",

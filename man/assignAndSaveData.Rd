@@ -50,7 +50,7 @@ assignAndSaveData(name = "example", object = rse_small, ext = "rds")
 exists("example", inherits = FALSE)
 file.exists("example.rds")
 
-# Clean up
+## Clean up.
 rm(example)
 unlink("example.rds")
 }

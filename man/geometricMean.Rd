@@ -45,7 +45,7 @@ not particularly useful if there are elements that are <= 0 and will return
 \code{NaN}.
 }
 \examples{
-# numeric ====
+## numeric ====
 vec1 <- seq(1L, 5L, 1L)
 print(vec1)
 geometricMean(vec1)
@@ -54,7 +54,7 @@ vec2 <- vec1 ^ 2L
 print(vec2)
 geometricMean(vec2)
 
-# matrix ====
+## matrix ====
 matrix <- matrix(
     data = c(vec1, vec2),
     ncol = 2L,
@@ -63,7 +63,7 @@ matrix <- matrix(
 print(matrix)
 geometricMean(matrix)
 
-# sparseMatrix ====
+## sparseMatrix ====
 sparse <- as(matrix, "sparseMatrix")
 print(sparse)
 geometricMean(sparse)

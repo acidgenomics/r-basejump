@@ -12,7 +12,7 @@
 #' @return `Tx2Gene`.
 #'
 #' @examples
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' data(tx_se_small)
 #' x <- tx2gene(tx_se_small)
 #' print(x)

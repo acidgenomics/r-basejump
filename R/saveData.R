@@ -29,7 +29,7 @@
 #' saveData(rse_small, sce_small, dir = "example")
 #' list.files("example")
 #'
-#' # Clean up
+#' ## Clean up.
 #' unlink("example", recursive = TRUE)
 saveData <- function(
     ...,
@@ -115,7 +115,7 @@ saveData <- function(
 #' exists("example", inherits = FALSE)
 #' file.exists("example.rds")
 #'
-#' # Clean up
+#' ## Clean up.
 #' rm(example)
 #' unlink("example.rds")
 assignAndSaveData <- function(

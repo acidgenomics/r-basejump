@@ -41,14 +41,14 @@ identifiers for columns and gene identifiers for rows.
 \examples{
 data(rse_small, sce_small)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 object <- rse_small
 sample <- sampleNames(object) \%>\% head(1L)
 print(sample)
 subset <- selectSamples(object, sampleName = sample)
 print(subset)
 
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 object <- sce_small
 sample <- sampleNames(object) \%>\% head(1L)
 print(sample)

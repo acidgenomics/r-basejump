@@ -24,11 +24,11 @@ methodFunction(f, signature)
 Access to the Data Inside an S4 Method Definition
 }
 \examples{
-# Function
+## Function
 x <- methodFunction(f = "geometricMean", signature = "numeric")
 class(x)
 
-# Formals
+## Formals
 x <- methodFormals(f = "geometricMean", signature = "numeric")
 print(x)
 }

@@ -32,13 +32,13 @@ identical to the generic, and use a nested \code{.local()} call.
 aaa <- "AAA"
 bbb <- "BBB"
 
-# Standard function
+## Standard function
 testing <- function(a, b) {
     standardizeCall()
 }
 testing(aaa, bbb)
 
-# Inside S4 method
+## Inside S4 method
 setGeneric(
     name = "testing",
     def = function(a, b, ...) {

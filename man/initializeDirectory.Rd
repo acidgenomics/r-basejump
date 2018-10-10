@@ -23,6 +23,6 @@ up functions that require writes to a user-specified directory.
 initializeDirectory("testdir")
 dir.exists("testdir")
 
-# Clean up
+## Clean up.
 unlink("testdir", recursive = TRUE)
 }
