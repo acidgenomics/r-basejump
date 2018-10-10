@@ -4,11 +4,11 @@
 #' paths. Supports "`.rds`", "`.rda`", and "`.RData`" file extensions.
 #'
 #' [loadData()] is opinionated about the format of R data files it will accept.
-#' [base::save()] allows for the saving of multiple objects into a single R data
-#' file. This can later result in unexpected accidental replacement of an
-#' existing object in the current environment. Since an R data file internally
-#' stores the name of an object, if the file is later renamed the object name
-#' will no longer match.
+#' [save()] allows for the saving of multiple objects into a single R data file.
+#' This can later result in unexpected accidental replacement of an existing
+#' object in the current environment. Since an R data file internally stores the
+#' name of an object, if the file is later renamed the object name will no
+#' longer match.
 #'
 #' To avoid any accidental replacements, [loadData()] will only load R data
 #' files that contain a single object, and the internal object name must match
@@ -24,9 +24,11 @@
 #' @inheritParams general
 #' @param ... Object names. Note that these arguments are interpreted as symbols
 #'   using non-standard evaluation for convenience during interactive use, and
-#'   *should not be quoted*.
+#'   *must not be quoted*.
 #'
 #' @return Invisible `character`. File paths.
+#'
+#' @seealso [load], [readRDS].
 #'
 #' @examples
 #' loadData(example, dir = system.file("extdata", package = "basejump"))
@@ -315,18 +317,10 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     # Fail on attempt to load on top of an existing object.
     assertAllAreNonExisting(name, envir = envir, inherits = FALSE)
 
-    assign(
-        x = name,
-        value = data,
-        envir = envir
-    )
+    assign(x = name, value = data, envir = envir)
 
     # Ensure that assign worked.
-    assert_all_are_existing(
-        x = name,
-        envir = envir,
-        inherits = FALSE
-    )
+    assert_all_are_existing(x = name, envir = envir, inherits = FALSE)
 
     file
 }

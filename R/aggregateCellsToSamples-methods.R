@@ -13,6 +13,7 @@
 #' @export
 #'
 #' @inheritParams general
+#' @inheritParams aggregate
 #'
 #' @return `SummarizedExperiment`. Object with cell-level counts aggregated
 #'   to sample-level.
