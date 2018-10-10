@@ -274,10 +274,6 @@ with_parameters_test_that(
                     geneName = c(
                         "4933401J01Rik",
                         "Gm26206"
-                    ),
-                    row.names = c(
-                        "ENSMUSG00000102693",
-                        "ENSMUSG00000064842"
                     )
                 )
             )
@@ -400,10 +396,6 @@ with_parameters_test_that(
                     geneID = c(
                         "ENSMUSG00000102693",
                         "ENSMUSG00000064842"
-                    ),
-                    row.names = c(
-                        "ENSMUST00000193812",
-                        "ENSMUST00000082908"
                     )
                 )
             )
