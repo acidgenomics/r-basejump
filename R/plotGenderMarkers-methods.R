@@ -35,7 +35,7 @@ NULL
 
         # Load the relevant internal gender markers data.
         organism <- organism(object)
-        markers <- basejump::gender_markers
+        markers <- gender_markers
         assert_is_list(markers)
         # Error if the organism is not supported.
         # Convert from camel case back to full Latin.
