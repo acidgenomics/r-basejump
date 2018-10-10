@@ -1,11 +1,11 @@
-#' `Tx2Gene` Generator
+#' @inherit Tx2Gene-class
 #'
 #' @note No attempt is made to arrange the rows by transcript identifier.
 #'
 #' @name tx2gene
-#' @family S4 Generators
+#' @family Identifier Mapping Functions
+#' @family Transcript-Level Functions
 #' @author Michael Steinbaugh
-#' @inherit Tx2Gene-class
 #' @export
 #'
 #' @inheritParams general

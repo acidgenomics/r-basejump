@@ -37,10 +37,13 @@ x <- aggregateCellsToSamples(sce_small)
 print(x)
 }
 \seealso{
-Other Count Matrix Functions: \code{\link{aggregate}}
+Other SingleCellExperiment Functions: \code{\link{cell2sample}},
+  \code{\link{makeSingleCellExperiment}},
+  \code{\link{mapCellsToSamples}},
+  \code{\link{subsetPerSample}},
+  \code{\link{topCellsPerSample}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Count Matrix Functions}
 \concept{SingleCellExperiment Functions}

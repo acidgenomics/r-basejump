@@ -4,7 +4,8 @@
 #'   beginning with "ENS".
 #'
 #' @name stripTranscriptVersions
-#' @family Annotation Functions
+#' @family Sanitization Functions
+#' @family Transcript-Level Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -80,6 +81,19 @@ setMethod(
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("sparseMatrix"),
+    definition = getMethod(
+        f = "stripTranscriptVersions",
+        signature = signature("matrix")
+    )
+)
+
+
+
+#' @rdname stripTranscriptVersions
+#' @export
+setMethod(
+    f = "stripTranscriptVersions",
+    signature = signature("SummarizedExperiment"),
     definition = getMethod(
         f = "stripTranscriptVersions",
         signature = signature("matrix")

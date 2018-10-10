@@ -1,6 +1,6 @@
 #' Microtiter Plate Well Identifiers
 #'
-#' @family Math and Science Functions
+#' @family Metadata Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

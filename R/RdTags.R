@@ -2,7 +2,7 @@
 #'
 #' Modified version of the unexported `tools:::RdTags()` function.
 #'
-#' @family R Documentation Functions
+#' @family Documentation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

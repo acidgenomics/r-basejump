@@ -4,7 +4,7 @@
 #' values unique. The function also strips `NA` values. This is useful for
 #' repetitive gene vector operations, for example.
 #'
-#' @family Atomic Vector Functions
+#' @family Sanitization
 #' @author Michael Steinbaugh
 #' @export
 #'

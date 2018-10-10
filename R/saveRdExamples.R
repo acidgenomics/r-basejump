@@ -4,7 +4,7 @@
 #' script. Note that the `f` argument is parameterized and can handle multiple
 #' requests in a single call.
 #'
-#' @family R Documentation Functions
+#' @family Documentation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

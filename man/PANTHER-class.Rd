@@ -11,6 +11,12 @@ Contains a \code{DataFrame}.
 \href{http://www.pantherdb.org}{PANTHER} gene ontology definitions. PANTHER stands
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
+\examples{
+invisible(capture.output(
+    x <- panther("Homo sapiens", .test = TRUE)
+))
+summary(x)
+}
 \seealso{
 \code{\link[=panther]{panther()}}.
 

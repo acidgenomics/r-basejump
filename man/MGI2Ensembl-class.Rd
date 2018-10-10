@@ -3,12 +3,16 @@
 \docType{class}
 \name{MGI2Ensembl-class}
 \alias{MGI2Ensembl-class}
-\title{MGI-to-Ensembl Identifier Mappings.}
+\title{MGI-to-Ensembl Gene Identifier Mappings}
 \value{
 Contains a \code{DataFrame} with \code{mgiID} and \code{geneID} columns.
 }
 \description{
-MGI-to-Ensembl Identifier Mappings.
+MGI-to-Ensembl Gene Identifier Mappings
+}
+\examples{
+x <- mgi2ensembl(.test = TRUE)
+print(x)
 }
 \seealso{
 \code{\link[=mgi2ensembl]{mgi2ensembl()}}.

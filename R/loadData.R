@@ -1,140 +1,3 @@
-.listRData <- function(
-    names,
-    dir = "."
-) {
-    assert_is_character(names)
-    assert_all_are_dirs(dir)
-    assert_is_a_string(dir)
-    dir <- normalizePath(dir, winslash = "/", mustWork = TRUE)
-    files <- vapply(
-        X = names,
-        FUN = function(name) {
-            files <- list.files(
-                path = dir,
-                pattern = paste0("^", name, rdataExtPattern),
-                full.names = TRUE,
-                ignore.case = TRUE
-            )
-            # Add error checking here.
-            if (!has_length(files)) {
-                stop(paste0(
-                    name, " is missing.\n",
-                    rdataError
-                ), call. = FALSE)
-            } else if (length(files) > 1L) {
-                stop(paste0(
-                    name, " is not unique on disk.\n",
-                    rdataError
-                ), call. = FALSE)
-            }
-            files
-        },
-        FUN.VALUE = character(1L),
-        USE.NAMES = TRUE
-    )
-    message(paste0(
-        "Loading ",
-        toString(basename(files)),
-        " from ",
-        dir, "..."
-    ))
-    files
-}
-
-
-
-.safeLoad <- function(
-    file,
-    name = NULL,
-    envir = parent.frame()
-) {
-    assert_is_a_string(file)
-    assert_all_are_existing_files(file)
-    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
-    assertIsAStringOrNULL(name)
-    assert_is_environment(envir)
-
-    if (is.null(name)) {
-        stopifnot(grepl(rdataExtPattern, file, ignore.case = TRUE))
-        name <- gsub(rdataExtPattern, "", basename(file))
-    }
-
-    # Fail on attempt to load on top of an existing object.
-    assertAllAreNonExisting(name, envir = envir, inherits = FALSE)
-
-    # Load into a temporary environment.
-    tmpEnvir <- new.env()
-    loaded <- load(file, envir = tmpEnvir)
-
-    # Ensure that the loaded name is identical to the file name.
-    if (!is_a_string(loaded)) {
-        stop(paste0(
-            basename(file),
-            " contains multiple objects: ",
-            toString(loaded)
-        ))
-    }
-    if (!identical(name, loaded)) {
-        stop(paste0(
-            basename(file), " has been renamed.\n",
-            "The object name inside the file doesn't match.\n",
-            "  expected: ", name, "\n",
-            "    actual: ", loaded, "\n",
-            "Avoid renaming R data files. ",
-            "This can lead to accidental replacement."
-        ))
-    }
-    assert_are_identical(name, loaded)
-
-    # Now we're ready to assign into the target environment.
-    assign(
-        x = name,
-        value = get(name, envir = tmpEnvir, inherits = FALSE),
-        envir = envir
-    )
-
-    # Ensure that assign worked.
-    assert_all_are_existing(
-        x = name,
-        envir = envir,
-        inherits = FALSE
-    )
-
-    file
-}
-
-
-
-.safeLoadRDS <- function(file, envir = parent.frame()) {
-    assert_is_a_string(file)
-    assert_all_are_existing_files(file)
-    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
-    assert_is_environment(envir)
-
-    name <- gsub("\\.rds", "", basename(file), ignore.case = TRUE)
-    data <- readRDS(file)
-
-    # Fail on attempt to load on top of an existing object.
-    assertAllAreNonExisting(name, envir = envir, inherits = FALSE)
-
-    assign(
-        x = name,
-        value = data,
-        envir = envir
-    )
-
-    # Ensure that assign worked.
-    assert_all_are_existing(
-        x = name,
-        envir = envir,
-        inherits = FALSE
-    )
-
-    file
-}
-
-
-
 #' Load Data
 #'
 #' Load R data files from a directory using symbols rather than complete file
@@ -331,4 +194,142 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 
     assert_all_are_existing(names, envir = envir, inherits = FALSE)
     invisible(url)
+}
+
+
+
+# Internal =====================================================================
+.listRData <- function(
+    names,
+    dir = "."
+) {
+    assert_is_character(names)
+    assert_all_are_dirs(dir)
+    assert_is_a_string(dir)
+    dir <- normalizePath(dir, winslash = "/", mustWork = TRUE)
+    files <- vapply(
+        X = names,
+        FUN = function(name) {
+            files <- list.files(
+                path = dir,
+                pattern = paste0("^", name, rdataExtPattern),
+                full.names = TRUE,
+                ignore.case = TRUE
+            )
+            # Add error checking here.
+            if (!has_length(files)) {
+                stop(paste0(
+                    name, " is missing.\n",
+                    rdataError
+                ), call. = FALSE)
+            } else if (length(files) > 1L) {
+                stop(paste0(
+                    name, " is not unique on disk.\n",
+                    rdataError
+                ), call. = FALSE)
+            }
+            files
+        },
+        FUN.VALUE = character(1L),
+        USE.NAMES = TRUE
+    )
+    message(paste0(
+        "Loading ",
+        toString(basename(files)),
+        " from ",
+        dir, "..."
+    ))
+    files
+}
+
+
+
+.safeLoad <- function(
+    file,
+    name = NULL,
+    envir = parent.frame()
+) {
+    assert_is_a_string(file)
+    assert_all_are_existing_files(file)
+    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+    assertIsAStringOrNULL(name)
+    assert_is_environment(envir)
+
+    if (is.null(name)) {
+        stopifnot(grepl(rdataExtPattern, file, ignore.case = TRUE))
+        name <- gsub(rdataExtPattern, "", basename(file))
+    }
+
+    # Fail on attempt to load on top of an existing object.
+    assertAllAreNonExisting(name, envir = envir, inherits = FALSE)
+
+    # Load into a temporary environment.
+    tmpEnvir <- new.env()
+    loaded <- load(file, envir = tmpEnvir)
+
+    # Ensure that the loaded name is identical to the file name.
+    if (!is_a_string(loaded)) {
+        stop(paste0(
+            basename(file),
+            " contains multiple objects: ",
+            toString(loaded)
+        ))
+    }
+    if (!identical(name, loaded)) {
+        stop(paste0(
+            basename(file), " has been renamed.\n",
+            "The object name inside the file doesn't match.\n",
+            "  expected: ", name, "\n",
+            "    actual: ", loaded, "\n",
+            "Avoid renaming R data files. ",
+            "This can lead to accidental replacement."
+        ))
+    }
+    assert_are_identical(name, loaded)
+
+    # Now we're ready to assign into the target environment.
+    assign(
+        x = name,
+        value = get(name, envir = tmpEnvir, inherits = FALSE),
+        envir = envir
+    )
+
+    # Ensure that assign worked.
+    assert_all_are_existing(
+        x = name,
+        envir = envir,
+        inherits = FALSE
+    )
+
+    file
+}
+
+
+
+.safeLoadRDS <- function(file, envir = parent.frame()) {
+    assert_is_a_string(file)
+    assert_all_are_existing_files(file)
+    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+    assert_is_environment(envir)
+
+    name <- gsub("\\.rds", "", basename(file), ignore.case = TRUE)
+    data <- readRDS(file)
+
+    # Fail on attempt to load on top of an existing object.
+    assertAllAreNonExisting(name, envir = envir, inherits = FALSE)
+
+    assign(
+        x = name,
+        value = data,
+        envir = envir
+    )
+
+    # Ensure that assign worked.
+    assert_all_are_existing(
+        x = name,
+        envir = envir,
+        inherits = FALSE
+    )
+
+    file
 }

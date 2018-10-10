@@ -6,7 +6,8 @@
 #' `SummarizedExperiment` method.
 #'
 #' @name convertTranscriptsToGenes
-#' @family Annotation Functions
+#' @family Identifier Mapping Functions
+#' @family Transcript-Level Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -25,7 +26,7 @@
 #' - `matrix`, `sparseMatrix`, `SummarizedExperiment`: Object containing counts
 #'   collapsed to gene level by default (see `aggregate` argument).
 #'
-#' @seealso [aggregateRows()].
+#' @seealso [aggregateRows].
 #'
 #' @examples
 #' data(tx_se_small)

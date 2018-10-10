@@ -1,6 +1,6 @@
 #' Convert to a Unique Character String
 #'
-#' @family Atomic Vector Functions
+#' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

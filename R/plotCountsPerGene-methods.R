@@ -4,7 +4,7 @@
 #' unless the library sizes or total RNA expression are different.
 #'
 #' @name plotCountsPerGene
-#' @family Quality Control Functions
+#' @family Plots
 #' @author Michael Steinbaugh
 #' @export
 #'

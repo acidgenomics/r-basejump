@@ -25,18 +25,6 @@ characters, even though the default width is set at 80.
 \examples{
 cat(separator(times = 10L))
 }
-\seealso{
-Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchArgsToDoCall}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{standardizeCall}},
-  \code{\link{uniteInterestingGroups}}
-}
 \author{
 Michael Steinbaugh
 }
-\concept{Developer Functions}

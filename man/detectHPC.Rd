@@ -28,17 +28,15 @@ detectHPC()
 \item \code{.Platform}.
 }
 
-Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{dots}}, \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchArgsToDoCall}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{separator}},
-  \code{\link{standardizeCall}},
+Other Metadata Functions: \code{\link{detectLanes}},
+  \code{\link{detectOrganism}},
+  \code{\link{interestingGroups}},
+  \code{\link{microplate}},
+  \code{\link{minimalSampleData}}, \code{\link{organism}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Developer Functions}
+\concept{Metadata Functions}

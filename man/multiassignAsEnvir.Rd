@@ -25,18 +25,6 @@ multiassignAsEnvir(rse_small, sce_small, envirName = "example")
 class(example)
 ls(example)
 }
-\seealso{
-Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchArgsToDoCall}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{printString}}, \code{\link{separator}},
-  \code{\link{standardizeCall}},
-  \code{\link{uniteInterestingGroups}}
-}
 \author{
 Michael Steinbaugh
 }
-\concept{Developer Functions}

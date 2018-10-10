@@ -40,16 +40,14 @@ print(x)
 \seealso{
 \code{\link[reshape2:melt]{reshape2::melt()}}.
 
-Other Data Functions: \code{\link{aggregate}},
-  \code{\link{combine}}, \code{\link{counts}},
+Other SummarizedExperiment Functions: \code{\link{counts}},
+  \code{\link{interestingGroups}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenes}}, \code{\link{metrics}},
-  \code{\link{minimalSampleData}}, \code{\link{organism}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}}
+  \code{\link{selectSamples}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{SummarizedExperiment Functions}

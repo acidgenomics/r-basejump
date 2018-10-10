@@ -4,7 +4,6 @@
 #' This function is vectorized and supports mixed local and remote paths. Remote
 #' files are downloaded locally to a temporary directory.
 #'
-#' @family Developer Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

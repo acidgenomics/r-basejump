@@ -270,14 +270,7 @@ S4 object classes.
 \item \href{https://cran.r-project.org/package=lettercase}{lettercase}.
 \item \href{https://tazinho.github.io/snakecase}{snakecase}.
 }
-
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{removeNA}}, \code{\link{sanitizeNA}},
-  \code{\link{sanitizePercent}},
-  \code{\link{sanitizeRowData}},
-  \code{\link{sanitizeSampleData}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Sanitization Functions}

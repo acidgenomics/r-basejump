@@ -1,7 +1,6 @@
 #' Collapse to String
 #'
 #' @name collapseToString
-#' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

@@ -1,6 +1,5 @@
 #' Extract Dots from Function
 #'
-#' @family Developer Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

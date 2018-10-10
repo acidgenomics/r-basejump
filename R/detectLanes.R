@@ -1,6 +1,6 @@
 #' Detect Sequencing Lanes
 #'
-#' @family Atomic Vector Functions
+#' @family Metadata Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

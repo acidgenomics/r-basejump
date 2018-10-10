@@ -6,7 +6,7 @@
 #' genomes are supported.
 #'
 #' @name plotGenderMarkers
-#' @family Quality Control Functions
+#' @family Plots
 #' @author Michael Steinbaugh
 #' @include plotGene-methods.R
 #' @export

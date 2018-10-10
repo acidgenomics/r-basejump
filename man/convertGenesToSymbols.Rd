@@ -86,14 +86,13 @@ y <- convertSymbolsToGenes(x)
 print(y)
 }
 \seealso{
-Other Annotation Functions: \code{\link{convertTranscriptsToGenes}},
+Other Identifier Mapping Functions: \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}, \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{hgnc2ensembl}}, \code{\link{mapGenes}},
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{Identifier Mapping Functions}

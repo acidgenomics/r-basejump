@@ -23,7 +23,7 @@
 #'   exporting the character method here as a separate function named
 #'   [detectOrganism()].
 #'
-#' @family Annotations
+#' @family Metadata Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

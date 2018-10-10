@@ -9,7 +9,7 @@
 #' [aggregateCols()] works across the columns, and is designed to aggregate
 #' sample replicates.
 #'
-#' @family Count Matrix Functions
+#' @family Calculations
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
 #'

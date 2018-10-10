@@ -5,7 +5,8 @@
 #' the syntactically valid names defined as the rownames of [sampleData()].
 #'
 #' @name sampleNames
-#' @family Data Functions
+#' @family Metadata Functions
+#' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh
 #' @importFrom Biobase sampleNames sampleNames<-
 #' @export

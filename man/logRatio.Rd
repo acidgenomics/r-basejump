@@ -45,10 +45,10 @@ Modified variants of:
 \item \code{gtools::logratio2foldchange()}.
 }
 
-Other Math and Science Functions: \code{\link{geometricMean}},
-  \code{\link{microplate}}
+Other Calculations: \code{\link{aggregate}},
+  \code{\link{geometricMean}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Math and Science Functions}
+\concept{Calculations}

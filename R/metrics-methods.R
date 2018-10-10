@@ -8,7 +8,7 @@
 #' Note that metrics are cell level but grouped by sample.
 #'
 #' @name metrics
-#' @family Data Functions
+#' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @export
 #'

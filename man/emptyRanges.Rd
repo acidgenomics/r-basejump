@@ -40,13 +40,10 @@ emptyRanges("ERCC", seqname = "spike")
 \seealso{
 \code{help("seqinfo", "GenomeInfoDb")}.
 
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
+Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{geneSynonyms}}, \code{\link{makeGRanges}},
   \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{panther}}
 }
 \author{
 Michael Steinbaugh

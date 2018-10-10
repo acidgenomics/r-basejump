@@ -18,6 +18,7 @@ setOldClass(Classes = class(tibble::tibble()))
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit EggNOG
 #' @export
 #'
 #' @return This class extends `list` and contains:
@@ -60,12 +61,14 @@ setValidity(
 
 
 # Ensembl2Entrez ===============================================================
-#' Ensembl-to-Entrez Identifier Mappings
+#' Ensembl-to-Entrez Gene Identifier Mappings
 #'
-#' @note Requires 1:1 mappings.
+#' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+#' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit Ensembl2Entrez
 #' @export
 #'
 #' @return Contains a `DataFrame` with `geneID` and `entrezID` columns.
@@ -97,6 +100,7 @@ setValidity(
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit Gene2Symbol
 #' @export
 #'
 #' @return Contains a `DataFrame` with `geneID` and `geneName` columns.
@@ -126,10 +130,11 @@ setValidity(
 
 
 # HGNC2Ensembl =================================================================
-#' HGNC-to-Ensembl Identifier Mappings
+#' HGNC-to-Ensembl Gene Identifier Mappings
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit HGNC2Ensembl
 #' @export
 #'
 #' @return Contains a `DataFrame` with `hgncID` and `geneID` columns.
@@ -158,10 +163,11 @@ setValidity(
 
 
 # MGI2Ensembl ==================================================================
-#' MGI-to-Ensembl Identifier Mappings.
+#' MGI-to-Ensembl Gene Identifier Mappings
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit MGI2Ensembl
 #' @export
 #'
 #' @return Contains a `DataFrame` with `mgiID` and `geneID` columns.
@@ -190,6 +196,7 @@ setValidity(
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit PANTHER
 #' @export
 #'
 #' @return Contains a `DataFrame`.
@@ -225,6 +232,7 @@ setValidity(
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit Tx2Gene
 #' @export
 #'
 #' @return Contains a `DataFrame` with `transcriptID` and `geneID` columns.

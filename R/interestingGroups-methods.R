@@ -1,6 +1,8 @@
 #' Interesting Groups
 #'
 #' @name interestingGroups
+#' @family Metadata Functions
+#' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

@@ -67,11 +67,14 @@ plotCountsPerBroadClass(sce_small)
 \seealso{
 \link{makeGRanges}.
 
-Other Plot Functions: \code{\link{plotGene}},
+Other Plots: \code{\link{plotCountsPerGene}},
+  \code{\link{plotGenderMarkers}},
+  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
   \code{\link{plotHeatmap}}, \code{\link{plotQC}},
+  \code{\link{plotTotalCounts}},
   \code{\link{plotZerosVsDepth}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Plot Functions}
+\concept{Plots}

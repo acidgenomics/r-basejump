@@ -6,7 +6,6 @@
 #' [interestingGroups()] accessor function internally.
 #'
 #' @author Michael Steinbaugh
-#' @family Developer Functions
 #' @export
 #'
 #' @inheritParams general

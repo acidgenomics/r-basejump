@@ -6,7 +6,7 @@
 #'
 #' Knit multiple tables in a single R Markdown chunk.
 #'
-#' @family R Markdown Functions
+#' @family Markdown Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

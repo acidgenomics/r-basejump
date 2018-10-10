@@ -35,10 +35,14 @@ microplate(wells = 384L)
 microplate(plates = 2L, wells = 96L, controls = 6L)
 }
 \seealso{
-Other Math and Science Functions: \code{\link{geometricMean}},
-  \code{\link{logRatio}}
+Other Metadata Functions: \code{\link{detectHPC}},
+  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
+  \code{\link{interestingGroups}},
+  \code{\link{minimalSampleData}}, \code{\link{organism}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Math and Science Functions}
+\concept{Metadata Functions}

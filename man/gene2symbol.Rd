@@ -8,7 +8,7 @@
 \alias{gene2symbol,DataFrame-method}
 \alias{gene2symbol,GRanges-method}
 \alias{gene2symbol,SummarizedExperiment-method}
-\title{\code{Gene2Symbol} Generator}
+\title{Gene-to-Symbol Mappings}
 \usage{
 gene2symbol(object, ...)
 
@@ -29,13 +29,14 @@ gene2symbol(object, ...)
 \code{Gene2Symbol}.
 }
 \description{
-\code{Gene2Symbol} Generator
+Gene-to-Symbol Mappings
 }
 \note{
-This function will make any duplicated symbols unique by applying
+\itemize{
+\item This function will make any duplicated symbols unique by applying
 \code{\link[base:make.unique]{base::make.unique()}}, which will add ".1" to the end of the gene name.
-
-No attempt is made to arrange the rows by gene identifier.
+\item No attempt is made to arrange the rows by gene identifier.
+}
 }
 \examples{
 # SummarizedExperiment ====
@@ -44,11 +45,14 @@ x <- gene2symbol(rse_small)
 print(x)
 }
 \seealso{
-Other S4 Generators: \code{\link{eggnog}},
+Other Identifier Mapping Functions: \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{ensembl2entrez}}, \code{\link{hgnc2ensembl}},
-  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
+  \code{\link{mapGenes}}, \code{\link{mgi2ensembl}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{S4 Generators}
+\concept{Identifier Mapping Functions}

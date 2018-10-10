@@ -1,6 +1,6 @@
-#' `HGNC2Ensembl` Generator
+#' @inherit HGNC2Ensembl-class
 #'
-#' @family S4 Generators
+#' @family Identifier Mapping Functions
 #' @author Michael Steinbaugh
 #' @export
 #'

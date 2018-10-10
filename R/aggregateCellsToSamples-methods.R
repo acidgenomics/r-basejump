@@ -9,7 +9,6 @@
 #' performs aggregation with the [aggregateCols()] function.
 #'
 #' @name aggregateCellsToSamples
-#' @family Count Matrix Functions
 #' @family SingleCellExperiment Functions
 #' @author Michael Steinbaugh
 #' @export

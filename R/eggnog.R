@@ -1,6 +1,6 @@
-#' `EggNOG` Generator
+#' @inherit EggNOG-class
 #'
-#' @family S4 Generators
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -12,6 +12,7 @@
 #' x <- eggnog(.test = TRUE)
 #' print(x)
 eggnog <- function(.test = FALSE) {
+    stopifnot(has_internet())
     assert_is_a_bool(.test)
     if (isTRUE(.test)) {
         categoriesFile <- file.path(basejumpCacheURL, "cog.txt")

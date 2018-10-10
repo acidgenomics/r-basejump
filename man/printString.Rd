@@ -23,18 +23,7 @@ printString(c("hello", "world"))
 }
 \seealso{
 \code{\link[base:cat]{base::cat()}}.
-
-Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchArgsToDoCall}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{separator}}, \code{\link{standardizeCall}},
-  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Developer Functions}

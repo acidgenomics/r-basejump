@@ -5,7 +5,6 @@
 #' returned unmodified.
 #'
 #' @name sanitizeNA
-#' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
