@@ -1,6 +1,5 @@
 #' Assign Multiple Objects as an Environment
 #'
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams dots

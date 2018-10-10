@@ -3,7 +3,6 @@
 #' Checks and creates a directory recursively automatically. Useful for setting
 #' up functions that require writes to a user-specified directory.
 #'
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param dir `string`. Directory path.

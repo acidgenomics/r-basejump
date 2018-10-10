@@ -36,6 +36,3 @@ dots(a, b, c, character = TRUE)
 }
 }
 }
-\author{
-Michael Steinbaugh
-}

@@ -21,6 +21,3 @@ class(color)
 assertIsColorScaleContinuousOrNULL(color)
 assertIsColorScaleContinuousOrNULL(NULL)
 }
-\author{
-Michael Steinbaugh
-}

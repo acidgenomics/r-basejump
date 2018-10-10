@@ -18,6 +18,3 @@ Assert Is Directory
 \examples{
 assertIsDir("~")
 }
-\author{
-Michael Steinbaugh
-}

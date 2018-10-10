@@ -6,7 +6,6 @@
 #'
 #' @name uniteInterestingGroups
 #' @family Metadata Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

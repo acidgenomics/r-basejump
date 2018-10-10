@@ -59,6 +59,3 @@ assertFormalGene2Symbol(
     gene2symbol = gene2symbol
 )
 }
-\author{
-Michael Steinbaugh
-}

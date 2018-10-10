@@ -5,7 +5,6 @@
 #' headers are generated with the [markdownHeader()] function.
 #'
 #' @family Markdown Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

@@ -18,8 +18,5 @@ print(basejump::tx_se_small)
 Other Minimal Example Data: \code{\link{rse_small}},
   \code{\link{sce_small}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Minimal Example Data}
 \keyword{datasets}

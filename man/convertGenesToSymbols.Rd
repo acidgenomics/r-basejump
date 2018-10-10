@@ -92,7 +92,4 @@ Other Identifier Mapping Functions: \code{\link{convertTranscriptsToGenes}},
   \code{\link{hgnc2ensembl}}, \code{\link{mapGenes}},
   \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Identifier Mapping Functions}

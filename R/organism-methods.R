@@ -2,7 +2,6 @@
 #'
 #' @name organism
 #' @family Metadata Functions
-#' @author Michael Steinbaugh
 #' @importFrom BiocGenerics organism
 #' @export
 #'

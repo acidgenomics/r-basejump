@@ -28,6 +28,3 @@ genes <- head(as.character(rowData(object)[["geneName"]]))
 print(genes)
 assertAllAreUniqueGeneNames(object = object, genes = genes)
 }
-\author{
-Michael Steinbaugh
-}

@@ -24,6 +24,3 @@ printString(c("hello", "world"))
 \seealso{
 \code{\link[base:cat]{base::cat()}}.
 }
-\author{
-Michael Steinbaugh
-}

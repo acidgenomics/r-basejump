@@ -23,6 +23,3 @@ object <- tibble(
 )
 assertAreTranscriptAnnotations(object)
 }
-\author{
-Michael Steinbaugh
-}

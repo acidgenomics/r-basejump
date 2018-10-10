@@ -3,7 +3,6 @@
 #' Capture [base::print()] output of an `atomic` vector. Useful for returning
 #' informative messages inside a function.
 #'
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param x `atomic`.

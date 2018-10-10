@@ -25,6 +25,3 @@ multiassignAsEnvir(rse_small, sce_small, envirName = "example")
 class(example)
 ls(example)
 }
-\author{
-Michael Steinbaugh
-}

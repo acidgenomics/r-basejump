@@ -88,7 +88,4 @@ p +
 
 Other ggplot2 Functions: \code{\link{ggplot2-geoms}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{ggplot2 Functions}

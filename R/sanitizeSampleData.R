@@ -13,7 +13,6 @@
 #'
 #' Currently supports `DataFrame` or `data.frame` input.
 #'
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

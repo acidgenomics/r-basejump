@@ -5,7 +5,6 @@
 #'
 #' @name plotCountsPerGene
 #' @family Plots
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams meltCounts

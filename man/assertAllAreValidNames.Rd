@@ -38,6 +38,3 @@ validNames(c(
     "GFP+ sort"
 ))
 }
-\author{
-Michael Steinbaugh
-}

@@ -52,7 +52,4 @@ Other Markdown Functions: \code{\link{markdownHeader}},
   \code{\link{markdownPlotlist}},
   \code{\link{markdownTables}}, \code{\link{markdown}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Markdown Functions}

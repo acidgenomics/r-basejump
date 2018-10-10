@@ -30,7 +30,6 @@
 #'
 #' @name ggplot2-geoms
 #' @family ggplot2 Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams ggplot2::geom_label
 #' @param color `string`. Text color (e.g. `"orange"`).
@@ -273,7 +272,6 @@ basejump_geom_label_repel <- function(
 #'
 #' @name ggplot2-themes
 #' @family ggplot2 Functions
-#' @author Michael Steinbaugh
 #'
 #' @param base_size `scalar numeric`. Base font size.
 #' @param base_family `string`. Base font family.

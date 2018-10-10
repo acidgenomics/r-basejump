@@ -117,7 +117,4 @@ geom
 
 Other ggplot2 Functions: \code{\link{ggplot2-themes}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{ggplot2 Functions}

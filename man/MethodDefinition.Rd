@@ -35,6 +35,3 @@ print(x)
 \seealso{
 Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
 }
-\author{
-Michael Steinbaugh
-}

@@ -14,7 +14,6 @@
 #' @note Column and rows always return sorted alphabetically.
 #'
 #' @family SummarizedExperiment Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

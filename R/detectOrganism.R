@@ -24,7 +24,6 @@
 #'   [detectOrganism()].
 #'
 #' @family Metadata Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param object `character`.

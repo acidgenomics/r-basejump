@@ -27,6 +27,3 @@ to <- sanitizeRowData(from)
 vapply(to, is.atomic, logical(1L))
 print(to)
 }
-\author{
-Michael Steinbaugh
-}

@@ -45,7 +45,4 @@ Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
   \code{\link{panther}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Annotation Functions}

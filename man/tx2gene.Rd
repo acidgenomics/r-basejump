@@ -52,8 +52,5 @@ Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
   \code{\link{makeGRanges}}, \code{\link{makeTx2Gene}},
   \code{\link{stripTranscriptVersions}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Identifier Mapping Functions}
 \concept{Transcript-Level Functions}

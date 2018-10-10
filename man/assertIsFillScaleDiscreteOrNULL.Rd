@@ -21,6 +21,3 @@ class(fill)
 assertIsFillScaleDiscreteOrNULL(fill)
 assertIsFillScaleDiscreteOrNULL(NULL)
 }
-\author{
-Michael Steinbaugh
-}

@@ -4,7 +4,6 @@
 #' calling inside an `asis` chunk, set `asis = TRUE`.
 #'
 #' @family Markdown Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

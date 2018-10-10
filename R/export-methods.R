@@ -16,7 +16,6 @@
 #'
 #' @name export
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

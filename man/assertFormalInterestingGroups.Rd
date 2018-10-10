@@ -23,6 +23,3 @@ data(rse_small)
 assertFormalInterestingGroups(rse_small, "treatment")
 assertFormalInterestingGroups(rse_small, NULL)
 }
-\author{
-Michael Steinbaugh
-}

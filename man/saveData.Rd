@@ -65,7 +65,4 @@ Other Import/Export Functions: \code{\link{assignAndSaveData}},
   \code{\link{loadRemoteData}}, \code{\link{transmit}},
   \code{\link{writeCounts}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Import/Export Functions}

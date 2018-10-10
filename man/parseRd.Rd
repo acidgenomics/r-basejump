@@ -41,7 +41,4 @@ print(examples)
 Other Documentation Functions: \code{\link{RdTags}},
   \code{\link{saveRdExamples}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Documentation Functions}

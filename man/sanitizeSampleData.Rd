@@ -36,6 +36,3 @@ to <- sanitizeSampleData(from)
 all(vapply(to, is.factor, logical(1L)))
 print(to)
 }
-\author{
-Michael Steinbaugh
-}

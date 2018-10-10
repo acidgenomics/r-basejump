@@ -62,6 +62,3 @@ testing(aaa, bbb)
 \item \link[base:sys.parent]{base::sys.parent}.
 }
 }
-\author{
-Michael Steinbaugh
-}

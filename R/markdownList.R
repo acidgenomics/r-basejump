@@ -5,7 +5,6 @@
 #' set `asis = TRUE`.
 #'
 #' @family Markdown Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inherit markdownHeader

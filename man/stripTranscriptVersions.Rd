@@ -54,8 +54,5 @@ Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
   \code{\link{makeGRanges}}, \code{\link{makeTx2Gene}},
   \code{\link{tx2gene}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Sanitization Functions}
 \concept{Transcript-Level Functions}

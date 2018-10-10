@@ -77,6 +77,3 @@ ggplot2::mpg \%>\%
 \seealso{
 \code{\link[base:toString]{base::toString()}}.
 }
-\author{
-Michael Steinbaugh
-}

@@ -24,6 +24,3 @@ Assert All Variables Are Non-Existing
 \examples{
 assertAllAreNonExisting(c("XXX", "YYY"))
 }
-\author{
-Michael Steinbaugh
-}

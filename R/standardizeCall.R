@@ -3,7 +3,6 @@
 #' This function adds matching support for S4 methods with formals that aren't
 #' identical to the generic, and use a nested `.local()` call.
 #'
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams base::sys.call

@@ -63,7 +63,4 @@ Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
   \code{\link{mapCellsToSamples}},
   \code{\link{topCellsPerSample}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{SingleCellExperiment Functions}

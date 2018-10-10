@@ -5,7 +5,6 @@
 #' supports a missing `interestingGroups` argument, which will then use the
 #' [interestingGroups()] accessor function internally.
 #'
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

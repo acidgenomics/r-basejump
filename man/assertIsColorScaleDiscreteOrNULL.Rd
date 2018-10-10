@@ -21,6 +21,3 @@ class(color)
 assertIsColorScaleDiscreteOrNULL(color)
 assertIsColorScaleDiscreteOrNULL(NULL)
 }
-\author{
-Michael Steinbaugh
-}

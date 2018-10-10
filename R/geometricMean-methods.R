@@ -9,7 +9,6 @@
 #'
 #' @name geometricMean
 #' @family Calculations
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

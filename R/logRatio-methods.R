@@ -2,7 +2,6 @@
 #'
 #' @name logRatio
 #' @family Calculations
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param base `scalar integer`. Logarithm base. Defaults to `2`, for

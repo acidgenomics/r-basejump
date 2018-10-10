@@ -8,7 +8,6 @@
 #' @name convertTranscriptsToGenes
 #' @family Identifier Mapping Functions
 #' @family Transcript-Level Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @include makeTx2Gene.R

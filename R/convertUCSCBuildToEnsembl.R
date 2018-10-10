@@ -1,7 +1,6 @@
 #' Convert UCSC Build to Ensembl
 #'
 #' @family Identifier Mapping Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

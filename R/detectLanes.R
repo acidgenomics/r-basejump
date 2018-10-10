@@ -1,7 +1,6 @@
 #' Detect Sequencing Lanes
 #'
 #' @family Metadata Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param object `character`. Sequencing file or directory paths.

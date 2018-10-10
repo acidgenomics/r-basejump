@@ -6,7 +6,6 @@
 #' @name stripTranscriptVersions
 #' @family Sanitization Functions
 #' @family Transcript-Level Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

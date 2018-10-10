@@ -39,7 +39,4 @@ Other S4 Classes: \code{\link{Ensembl2Entrez-class}},
   \code{\link{MGI2Ensembl-class}},
   \code{\link{PANTHER-class}}, \code{\link{Tx2Gene-class}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{S4 Classes}

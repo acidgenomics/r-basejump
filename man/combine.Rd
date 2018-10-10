@@ -82,6 +82,3 @@ sampleData(c)
 \item \code{help("merge.Matrix", "Matrix.utils")}.
 }
 }
-\author{
-Michael Steinbaugh
-}

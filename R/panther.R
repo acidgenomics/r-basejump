@@ -2,7 +2,6 @@
 #'
 #' @name panther
 #' @family Annotation Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param organism `string`. Full Latin organism name. Currently supported

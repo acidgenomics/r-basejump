@@ -5,7 +5,6 @@
 #' repetitive gene vector operations, for example.
 #'
 #' @family Sanitization
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param object `atomic`.

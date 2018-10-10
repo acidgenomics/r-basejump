@@ -24,6 +24,3 @@ supports a missing \code{interestingGroups} argument, which will then use the
 data(rse_small)
 matchInterestingGroups(rse_small)
 }
-\author{
-Michael Steinbaugh
-}

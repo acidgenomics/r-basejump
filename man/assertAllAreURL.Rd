@@ -30,6 +30,3 @@ isURL(c(
     "r-project.org"
 ))
 }
-\author{
-Michael Steinbaugh
-}

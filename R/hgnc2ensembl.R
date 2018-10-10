@@ -1,7 +1,6 @@
 #' @inherit HGNC2Ensembl-class
 #'
 #' @family Identifier Mapping Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

@@ -36,7 +36,4 @@ Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
   \code{\link{makeTx2Gene}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Annotation Functions}

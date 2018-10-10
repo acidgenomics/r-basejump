@@ -5,7 +5,6 @@
 #' requests in a single call.
 #'
 #' @family Documentation Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

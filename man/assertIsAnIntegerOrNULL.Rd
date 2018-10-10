@@ -19,6 +19,3 @@ Assert Is an Integer or NULL
 assertIsAnIntegerOrNULL(1L)
 assertIsAnIntegerOrNULL(NULL)
 }
-\author{
-Michael Steinbaugh
-}

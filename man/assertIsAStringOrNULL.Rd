@@ -19,6 +19,3 @@ Assert Is a String or NULL
 assertIsAStringOrNULL("hello world")
 assertIsAStringOrNULL(NULL)
 }
-\author{
-Michael Steinbaugh
-}

@@ -2,7 +2,6 @@
 #'
 #' @name convertGenesToSymbols
 #' @family Identifier Mapping Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @include makeGRanges.R

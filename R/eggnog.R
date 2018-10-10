@@ -1,7 +1,6 @@
 #' @inherit EggNOG-class
 #'
 #' @family Annotation Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

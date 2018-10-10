@@ -4,7 +4,6 @@
 #'
 #' @name cell2sample
 #' @family SingleCellExperiment Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

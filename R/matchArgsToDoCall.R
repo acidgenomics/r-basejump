@@ -1,6 +1,5 @@
 #' Match Arguments to Do Call
 #'
-#' @author Michael Steinbaugh
 #' @include standardizeCall.R
 #' @export
 #'

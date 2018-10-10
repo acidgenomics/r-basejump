@@ -48,7 +48,4 @@ Modified variants of:
 Other Calculations: \code{\link{aggregate}},
   \code{\link{geometricMean}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Calculations}
