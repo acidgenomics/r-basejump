@@ -5,7 +5,7 @@
 \alias{PANTHER}
 \title{PANTHER Database Annotations}
 \usage{
-panther(organism, release = NULL, .test = FALSE)
+panther(organism, release = NULL, progress = TRUE, .test = FALSE)
 }
 \arguments{
 \item{organism}{\code{string}. Full Latin organism name. Currently supported
@@ -15,6 +15,8 @@ organisms: \emph{Homo sapiens}, \emph{Mus musculus}, \emph{Caenorhabditis elegan
 \item{release}{\code{string} or \code{NULL}. PANTHER release version. If set \code{NULL},
 defaults to current release. Consult the PANTHER website for a list of
 release versions available from the FTP server (e.g. \code{"13.0"}).}
+
+\item{progress}{\code{boolean}. Use \code{\link[=pblapply]{pblapply()}} internally to show progress.}
 
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
@@ -26,9 +28,7 @@ release versions available from the FTP server (e.g. \code{"13.0"}).}
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \examples{
-invisible(capture.output(
-    x <- panther("Homo sapiens", .test = TRUE)
-))
+x <- panther("Homo sapiens", progress = FALSE, .test = TRUE)
 summary(x)
 }
 \seealso{

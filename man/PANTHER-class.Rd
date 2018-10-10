@@ -12,9 +12,7 @@ Contains a \code{DataFrame}.
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \examples{
-invisible(capture.output(
-    x <- panther("Homo sapiens", .test = TRUE)
-))
+x <- panther("Homo sapiens", progress = FALSE, .test = TRUE)
 summary(x)
 }
 \seealso{
