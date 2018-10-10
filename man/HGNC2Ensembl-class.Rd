@@ -15,7 +15,7 @@ x <- hgnc2ensembl(.test = TRUE)
 print(x)
 }
 \seealso{
-\code{\link[=hgnc2ensembl]{hgnc2ensembl()}}.
+\link{hgnc2ensembl}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

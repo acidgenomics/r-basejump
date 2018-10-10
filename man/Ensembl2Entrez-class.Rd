@@ -17,7 +17,7 @@ x <- ensembl2entrez(rse_small)
 print(x)
 }
 \seealso{
-\code{\link[=ensembl2entrez]{ensembl2entrez()}}.
+\link{ensembl2entrez}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Gene2Symbol-class}},

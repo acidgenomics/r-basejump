@@ -17,10 +17,7 @@ x <- tx2gene(tx_se_small)
 print(x)
 }
 \seealso{
-\itemize{
-\item \code{\link[=tx2gene]{tx2gene()}}.
-\item \link{makeTx2Gene}.
-}
+\link{tx2gene}, \link{makeTx2Gene}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

@@ -1,4 +1,4 @@
-#' `PANTHER` Generator
+#' @inherit PANTHER-class
 #'
 #' @name panther
 #' @family Annotation Functions
