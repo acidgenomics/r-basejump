@@ -18,30 +18,6 @@ An alpha level must be between 0 and 1, but not equal either 0 or 1.
 \examples{
 assertIsAlpha(0.05)
 }
-\seealso{
-Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
-  \code{\link{assertAllAreURL}},
-  \code{\link{assertAllAreUniqueGeneNames}},
-  \code{\link{assertAllAreValidNames}},
-  \code{\link{assertAreGeneAnnotations}},
-  \code{\link{assertAreTranscriptAnnotations}},
-  \code{\link{assertFormalCompress}},
-  \code{\link{assertFormalGene2Symbol}},
-  \code{\link{assertFormalInterestingGroups}},
-  \code{\link{assertHasRownames}},
-  \code{\link{assertIsANumberOrNULL}},
-  \code{\link{assertIsAStringOrNULL}},
-  \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsColorScaleContinuousOrNULL}},
-  \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDir}},
-  \code{\link{assertIsFillScaleContinuousOrNULL}},
-  \code{\link{assertIsFillScaleDiscreteOrNULL}},
-  \code{\link{assertIsHeaderLevel}},
-  \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}}
-}
 \author{
 Michael Steinbaugh
 }
-\concept{Assert Check Functions}
