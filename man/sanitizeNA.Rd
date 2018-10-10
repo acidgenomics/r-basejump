@@ -55,6 +55,3 @@ print(from)
 to <- sanitizeNA(from)
 print(to)
 }
-\author{
-Michael Steinbaugh
-}

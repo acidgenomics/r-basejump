@@ -43,7 +43,4 @@ Other SingleCellExperiment Functions: \code{\link{cell2sample}},
   \code{\link{subsetPerSample}},
   \code{\link{topCellsPerSample}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{SingleCellExperiment Functions}

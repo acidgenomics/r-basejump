@@ -1,7 +1,6 @@
 #' Minimal Sample Data
 #'
 #' @family Metadata Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param sample `character`. Sample names (e.g. per-sample directory names).

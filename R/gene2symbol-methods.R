@@ -7,7 +7,6 @@
 #'
 #' @name gene2symbol
 #' @family Identifier Mapping Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

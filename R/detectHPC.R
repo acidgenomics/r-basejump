@@ -6,7 +6,6 @@
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
 #'
 #' @family Metadata Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @return `string` or `boolean`. Scheduler name if HPC is detected (e.g. LSF,

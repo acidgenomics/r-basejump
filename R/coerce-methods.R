@@ -33,7 +33,6 @@
 #'
 #' @name coerce
 #' @aliases as
-#' @author Michael Steinbaugh
 #' @importFrom methods coerce
 #' @exportMethod coerce
 #'

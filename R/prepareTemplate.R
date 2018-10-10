@@ -17,7 +17,6 @@
 #' - `bcbioSingleCell::prepareSingleCellTemplate()`.
 #'
 #' @family Markdown Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

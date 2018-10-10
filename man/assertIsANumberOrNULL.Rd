@@ -19,6 +19,3 @@ Assert Is a Number or NULL
 assertIsANumberOrNULL(1.1)
 assertIsANumberOrNULL(NULL)
 }
-\author{
-Michael Steinbaugh
-}

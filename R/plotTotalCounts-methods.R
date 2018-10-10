@@ -2,7 +2,6 @@
 #'
 #' @name plotTotalCounts
 #' @family Plots
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

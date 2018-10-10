@@ -23,7 +23,4 @@ toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 
 Other Sanitization Functions: \code{\link{stripTranscriptVersions}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Sanitization Functions}

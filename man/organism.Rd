@@ -47,7 +47,4 @@ Other Metadata Functions: \code{\link{detectHPC}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{uniteInterestingGroups}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Metadata Functions}

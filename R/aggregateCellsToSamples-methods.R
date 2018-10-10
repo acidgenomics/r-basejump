@@ -10,7 +10,6 @@
 #'
 #' @name aggregateCellsToSamples
 #' @family SingleCellExperiment Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

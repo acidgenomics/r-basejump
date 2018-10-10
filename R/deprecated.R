@@ -6,7 +6,6 @@
 #' Deprecated Functions
 #'
 #' @name deprecated
-#' @author Michael Steinbaugh
 #' @keywords internal
 #'
 #' @inheritParams general
@@ -19,7 +18,6 @@ NULL
 #' Defunct Functions
 #'
 #' @name defunct
-#' @author Michael Steinbaugh
 #' @keywords internal
 #'
 #' @inheritParams general

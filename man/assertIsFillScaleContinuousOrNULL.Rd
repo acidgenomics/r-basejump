@@ -21,6 +21,3 @@ class(fill)
 assertIsFillScaleContinuousOrNULL(fill)
 assertIsFillScaleContinuousOrNULL(NULL)
 }
-\author{
-Michael Steinbaugh
-}

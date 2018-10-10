@@ -94,6 +94,3 @@ names(x)
 \item \code{\link[=as.list]{as.list()}}.
 }
 }
-\author{
-Michael Steinbaugh
-}

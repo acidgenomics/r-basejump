@@ -2,7 +2,6 @@
 #'
 #' @name ensembl2entrez
 #' @family Identifier Mapping Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

@@ -1,7 +1,6 @@
 #' Access to the Data Inside an S4 Method Definition
 #'
 #' @name MethodDefinition
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams methods::selectMethod
 #'

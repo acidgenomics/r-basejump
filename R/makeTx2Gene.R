@@ -7,7 +7,6 @@
 #' @name makeTx2Gene
 #' @family Annotation Functions
 #' @family Transcript-Level Functions
-#' @author Michael Steinbaugh
 #' @include makeGRanges.R
 #'
 #' @inheritParams makeGRanges

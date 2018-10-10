@@ -21,7 +21,4 @@ RdTags(Rd)
 Other Documentation Functions: \code{\link{parseRd}},
   \code{\link{saveRdExamples}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Documentation Functions}

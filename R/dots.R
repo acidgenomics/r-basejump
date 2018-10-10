@@ -1,6 +1,5 @@
 #' Extract Dots from Function
 #'
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param ... Objects as dots.

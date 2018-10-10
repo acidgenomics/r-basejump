@@ -18,6 +18,3 @@ Markdown supports header levels 1-7 (\code{<H1>}-\code{<H7>}).
 \examples{
 assertIsHeaderLevel(1L)
 }
-\author{
-Michael Steinbaugh
-}

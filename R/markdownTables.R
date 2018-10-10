@@ -7,7 +7,6 @@
 #' Knit multiple tables in a single R Markdown chunk.
 #'
 #' @family Markdown Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param list `list` containing column data (e.g. `data.frame`, `matrix`).

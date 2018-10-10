@@ -28,6 +28,3 @@ object <- DataFrame(
 print(object)
 assertHasRownames(object)
 }
-\author{
-Michael Steinbaugh
-}

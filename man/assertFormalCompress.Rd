@@ -18,6 +18,3 @@ Assert Formal Compression
 \examples{
 assertFormalCompress("xz")
 }
-\author{
-Michael Steinbaugh
-}

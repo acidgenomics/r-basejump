@@ -271,6 +271,3 @@ S4 object classes.
 \item \href{https://tazinho.github.io/snakecase}{snakecase}.
 }
 }
-\author{
-Michael Steinbaugh
-}

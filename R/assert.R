@@ -29,7 +29,6 @@ NULL
 # assertAllAreNonExisting ======================================================
 #' Assert All Variables Are Non-Existing
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -60,7 +59,6 @@ assertAllAreNonExisting <- function(
 #' unique (non-amgibuous) symbols. It is designed to be used for gene plotting
 #' particularly when performing single-cell RNA-seq marker analysis.
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -97,7 +95,6 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
 # assertAllAreValidNames =======================================================
 #' Assert All Are Valid Names
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -203,7 +200,6 @@ validNames <- function(object) {
 #' Must contain `geneID` and `geneName` columns. Does not need to contain
 #' rownames, so `tibble` class is supported.
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -229,7 +225,6 @@ assertAreGeneAnnotations <- function(object) {
 #' Must contain `transcriptID` and `transcriptName` columns. Does not need to
 #' contain rownames, so `tibble` class is supported.
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -253,7 +248,6 @@ assertAreTranscriptAnnotations <- function(object) {
 # assertFormalCompress =========================================================
 #' Assert Formal Compression
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -272,7 +266,6 @@ assertFormalCompress <- function(object) {
 # assertFormalGene2Symbol ======================================================
 #' Assert Formal Gene-to-Symbol Mappings
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -343,7 +336,6 @@ assertFormalGene2Symbol <- function(
 #' Prevent unwanted downstream behavior when a missing interesting group
 #' is requested by the user.
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -387,7 +379,6 @@ assertFormalInterestingGroups <- function(object, interestingGroups) {
 #' A stricter alternative to the assertive version that works properly with
 #' data frames.
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -436,7 +427,6 @@ hasRownames <- function(object) {
 #'
 #' An alpha level must be between 0 and 1, but not equal either 0 or 1.
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -455,7 +445,6 @@ assertIsAlpha <- function(object) {
 # assertIsAnIntegerOrNULL ======================================================
 #' Assert Is an Integer or NULL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -474,7 +463,6 @@ assertIsAnIntegerOrNULL <- function(object) {
 # assertIsANumberOrNULL ========================================================
 #' Assert Is a Number or NULL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -493,7 +481,6 @@ assertIsANumberOrNULL <- function(object) {
 # assertIsAStringOrNULL ========================================================
 #' Assert Is a String or NULL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -512,7 +499,6 @@ assertIsAStringOrNULL <- function(object) {
 # assertIsColorScaleContinuousOrNULL ===========================================
 #' Assert Is Color Palette Scale Continuous or NULL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -538,7 +524,6 @@ assertIsColorScaleContinuousOrNULL <- function(object) {
 # assertIsColorScaleDiscreteOrNULL =============================================
 #' Assert Is Color Palette Scale Discrete or NULL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -563,7 +548,6 @@ assertIsColorScaleDiscreteOrNULL <- function(object) {
 
 #' Assert Is Directory
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
@@ -580,7 +564,6 @@ assertIsDir <- function(object) {
 # assertIsFillScaleContinuousOrNULL ============================================
 #' Assert Is Fill Palette Scale Continuous or NULL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
@@ -606,7 +589,6 @@ assertIsFillScaleContinuousOrNULL <- function(object) {
 # assertIsFillScaleDiscreteOrNULL ==============================================
 #' Assert Is Fill Palette Scale Discrete or NULL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
@@ -634,7 +616,6 @@ assertIsFillScaleDiscreteOrNULL <- function(object) {
 #'
 #' Markdown supports header levels 1-7 (`<H1>`-`<H7>`).
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -650,7 +631,6 @@ assertIsHeaderLevel <- function(object) {
 # assertIsHexColorFunctionOrNULL ===============================================
 #' Assert Is Hex Color Function or NULL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
@@ -681,7 +661,6 @@ assertIsHexColorFunctionOrNULL <- function(object) {
 #' Assert Is Implicit Integer
 #'
 #' @name assertIsImplicitInteger
-#' @author Michael Steinbaugh
 #' @inherit assert
 NULL
 
@@ -771,7 +750,6 @@ isImplicitInteger <- function(object) {
 # assertAllAreURL ==============================================================
 #' Assert All Are URL
 #'
-#' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'

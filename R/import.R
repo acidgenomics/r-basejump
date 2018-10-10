@@ -52,7 +52,6 @@
 #' - `rownames`: Sidecar file containing row names.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

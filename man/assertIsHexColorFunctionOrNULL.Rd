@@ -23,6 +23,3 @@ hex <- function(n) {
 assertIsHexColorFunctionOrNULL(hex)
 assertIsHexColorFunctionOrNULL(NULL)
 }
-\author{
-Michael Steinbaugh
-}

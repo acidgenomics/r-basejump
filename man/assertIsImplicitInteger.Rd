@@ -40,6 +40,3 @@ assertIsImplicitIntegerOrNULL(NULL)
 isAnImplicitInteger(1)
 isImplicitInteger(list(1, 1L, 1.1, "XXX"))
 }
-\author{
-Michael Steinbaugh
-}

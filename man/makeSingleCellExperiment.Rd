@@ -69,7 +69,4 @@ Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
   \code{\link{subsetPerSample}},
   \code{\link{topCellsPerSample}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{SingleCellExperiment Functions}

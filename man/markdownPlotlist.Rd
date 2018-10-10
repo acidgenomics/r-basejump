@@ -36,7 +36,4 @@ Other Markdown Functions: \code{\link{markdownHeader}},
   \code{\link{markdownTables}}, \code{\link{markdown}},
   \code{\link{prepareTemplate}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Markdown Functions}

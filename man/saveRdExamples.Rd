@@ -38,7 +38,4 @@ unlink("example", recursive = TRUE)
 Other Documentation Functions: \code{\link{RdTags}},
   \code{\link{parseRd}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Documentation Functions}

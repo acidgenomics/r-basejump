@@ -75,7 +75,4 @@ Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
 Other Calculations: \code{\link{aggregate}},
   \code{\link{logRatio}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Calculations}

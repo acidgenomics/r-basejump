@@ -60,7 +60,4 @@ Other Import/Export Functions: \code{\link{export}},
   \code{\link{saveData}}, \code{\link{transmit}},
   \code{\link{writeCounts}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Import/Export Functions}

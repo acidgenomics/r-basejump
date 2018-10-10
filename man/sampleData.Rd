@@ -89,8 +89,5 @@ Other SummarizedExperiment Functions: \code{\link{counts}},
   \code{\link{metrics}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}}, \code{\link{tpm}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Metadata Functions}
 \concept{SummarizedExperiment Functions}

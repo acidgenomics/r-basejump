@@ -5,7 +5,6 @@
 #' than combining into a single file.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams loadData
@@ -101,7 +100,6 @@ saveData <- function(
 #' the newly assigned object, specified by the "`dir`" argument.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams saveData

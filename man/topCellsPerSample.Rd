@@ -34,7 +34,4 @@ Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
   \code{\link{mapCellsToSamples}},
   \code{\link{subsetPerSample}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{SingleCellExperiment Functions}

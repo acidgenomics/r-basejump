@@ -5,7 +5,6 @@
 #'
 #' @name tpm
 #' @family SummarizedExperiment Functions
-#' @author Michael Steinbaugh
 #' @importFrom SingleCellExperiment tpm
 #' @export
 #'

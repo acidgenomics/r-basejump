@@ -4,7 +4,6 @@
 #' transgene and FASTA spike-in sequences.
 #'
 #' @family Annotation Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param names `character`. Gene or transcript names.

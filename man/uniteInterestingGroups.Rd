@@ -50,7 +50,4 @@ Other Metadata Functions: \code{\link{detectHPC}},
   \code{\link{minimalSampleData}}, \code{\link{organism}},
   \code{\link{sampleData}}, \code{\link{sampleNames}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Metadata Functions}

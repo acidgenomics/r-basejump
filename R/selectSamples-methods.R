@@ -13,7 +13,6 @@
 #'
 #' @name selectSamples
 #' @family SummarizedExperiment Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

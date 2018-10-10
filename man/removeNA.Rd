@@ -58,6 +58,3 @@ print(from)
 to <- removeNA(from)
 print(to)
 }
-\author{
-Michael Steinbaugh
-}

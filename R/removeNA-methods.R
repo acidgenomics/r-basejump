@@ -1,7 +1,6 @@
 #' Remove Rows and Columns Containing Only `NA` Values
 #'
 #' @name removeNA
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

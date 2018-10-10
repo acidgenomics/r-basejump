@@ -26,6 +26,3 @@ dir.exists("testdir")
 # Clean up
 unlink("testdir", recursive = TRUE)
 }
-\author{
-Michael Steinbaugh
-}

@@ -62,7 +62,4 @@ Other Plots: \code{\link{plotCountsPerBiotype}},
   \code{\link{plotTotalCounts}},
   \code{\link{plotZerosVsDepth}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Plots}

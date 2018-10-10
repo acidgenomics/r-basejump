@@ -36,7 +36,4 @@ Other Metadata Functions: \code{\link{detectLanes}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{uniteInterestingGroups}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Metadata Functions}

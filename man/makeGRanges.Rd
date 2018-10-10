@@ -158,8 +158,5 @@ Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
   \code{\link{stripTranscriptVersions}},
   \code{\link{tx2gene}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Annotation Functions}
 \concept{Transcript-Level Functions}

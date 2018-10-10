@@ -23,7 +23,4 @@ Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{HGNC2Ensembl-class}},
   \code{\link{PANTHER-class}}, \code{\link{Tx2Gene-class}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{S4 Classes}

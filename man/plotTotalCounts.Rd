@@ -58,7 +58,4 @@ Other Plots: \code{\link{plotCountsPerBiotype}},
   \code{\link{plotHeatmap}}, \code{\link{plotQC}},
   \code{\link{plotZerosVsDepth}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Plots}

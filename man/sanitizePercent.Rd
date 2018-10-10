@@ -35,6 +35,3 @@ x <- sanitizePercent(object)
 class(x)
 print(x)
 }
-\author{
-Michael Steinbaugh
-}

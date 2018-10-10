@@ -68,7 +68,4 @@ Other SummarizedExperiment Functions: \code{\link{counts}},
   \code{\link{metrics}}, \code{\link{sampleData}},
   \code{\link{sampleNames}}, \code{\link{tpm}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{SummarizedExperiment Functions}

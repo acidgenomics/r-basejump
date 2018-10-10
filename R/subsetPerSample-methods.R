@@ -2,7 +2,6 @@
 #'
 #' @name subsetPerSample
 #' @family SingleCellExperiment Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param minCells `scalar integer`. Minimum number of cells required per

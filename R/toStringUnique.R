@@ -1,7 +1,6 @@
 #' Convert to a Unique Character String
 #'
 #' @family Sanitization Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param object `atomic`.

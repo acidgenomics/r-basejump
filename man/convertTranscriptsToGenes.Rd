@@ -105,8 +105,5 @@ Other Transcript-Level Functions: \code{\link{makeGRanges}},
   \code{\link{stripTranscriptVersions}},
   \code{\link{tx2gene}}
 }
-\author{
-Michael Steinbaugh
-}
 \concept{Identifier Mapping Functions}
 \concept{Transcript-Level Functions}

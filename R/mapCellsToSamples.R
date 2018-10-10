@@ -5,7 +5,6 @@
 #'
 #' @name mapCellsToSamples
 #' @family SingleCellExperiment Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param cells `character`. Cell identifiers.

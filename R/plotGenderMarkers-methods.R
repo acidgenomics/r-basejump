@@ -7,7 +7,6 @@
 #'
 #' @name plotGenderMarkers
 #' @family Plots
-#' @author Michael Steinbaugh
 #' @include plotGene-methods.R
 #' @export
 #'

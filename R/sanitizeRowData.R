@@ -5,7 +5,6 @@
 #'
 #' @note Supports `GRanges` and `DataFrame` class objects.
 #'
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

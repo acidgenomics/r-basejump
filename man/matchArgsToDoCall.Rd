@@ -57,6 +57,3 @@ example(c("hello", "world"))
 \item \link[base:do.call]{base::do.call}.
 }
 }
-\author{
-Michael Steinbaugh
-}

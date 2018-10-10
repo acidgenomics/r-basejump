@@ -4,7 +4,6 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams saveData

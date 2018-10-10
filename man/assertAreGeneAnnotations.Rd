@@ -23,6 +23,3 @@ object <- tibble(
 )
 assertAreGeneAnnotations(object)
 }
-\author{
-Michael Steinbaugh
-}

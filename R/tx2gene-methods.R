@@ -5,7 +5,6 @@
 #' @name tx2gene
 #' @family Identifier Mapping Functions
 #' @family Transcript-Level Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

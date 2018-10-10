@@ -25,6 +25,3 @@ characters, even though the default width is set at 80.
 \examples{
 cat(separator(times = 10L))
 }
-\author{
-Michael Steinbaugh
-}

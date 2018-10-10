@@ -15,7 +15,6 @@
 #' @name mapGenes
 #' @family Identifier Mapping Functions
 #' @family SummarizedExperiment Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param strict `boolean`. Require all genes to match. Recommended by default.

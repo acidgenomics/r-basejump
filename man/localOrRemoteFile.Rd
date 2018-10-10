@@ -36,6 +36,3 @@ basename(x)
 \seealso{
 \code{\link[base:tempdir]{base::tempdir()}}.
 }
-\author{
-Michael Steinbaugh
-}

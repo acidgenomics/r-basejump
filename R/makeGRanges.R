@@ -3,7 +3,6 @@
 #' @name makeGRanges
 #' @family Annotation Functions
 #' @family Transcript-Level Functions
-#' @author Michael Steinbaugh
 #'
 #' @section Ensembl annotations:
 #'
@@ -118,8 +117,8 @@ NULL
 
 #' Broad Class Definitions
 #'
-#' @noRd
 #' @author Rory Kirchner, Michael Steinbaugh
+#' @noRd
 #'
 #' @inheritParams general
 #' @param object Object that can be coerced to `DataFrame`, containing gene or

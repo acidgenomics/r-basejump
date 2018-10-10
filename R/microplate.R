@@ -1,7 +1,6 @@
 #' Microtiter Plate Well Identifiers
 #'
 #' @family Metadata Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param plates `scalar integer`. Number of plates.

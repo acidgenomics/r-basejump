@@ -5,7 +5,6 @@
 #' returned unmodified.
 #'
 #' @name sanitizeNA
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

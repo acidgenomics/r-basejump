@@ -16,7 +16,6 @@
 #' `environment`, as that can introduce conflicts with base functions.
 #'
 #' @name makeNames
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param object Character vector or an object for which [names()] assignment

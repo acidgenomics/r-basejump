@@ -2,7 +2,6 @@
 #'
 #' @name plotGenesDetected
 #' @family Plots
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

@@ -1,7 +1,6 @@
 #' Collapse to String
 #'
 #' @name collapseToString
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

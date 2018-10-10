@@ -19,7 +19,6 @@
 #'   names using non-standard evaluation.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general
@@ -61,7 +60,6 @@ loadData <- function(
 #'   names using non-standard evaluation.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams loadData
@@ -145,7 +143,6 @@ loadDataAsName <- function(
 #' multiple URLs in a single call.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

@@ -4,7 +4,6 @@
 #'
 #' @name topCellsPerSample
 #' @family SingleCellExperiment Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param n `scalar integer`. Number of barcodes to return per sample.
