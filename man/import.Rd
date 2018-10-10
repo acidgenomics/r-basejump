@@ -85,31 +85,31 @@ Also supports some additional extensions commonly used with the
 }
 
 \examples{
-# R Data
+## R Data
 x <- import(file = file.path(basejumpCacheURL, "rnaseq_counts.rda"))
 class(x)
 
-# Comma Separated Values
+## Comma Separated Values
 x <- import(file = file.path(basejumpCacheURL, "example.csv"))
 print(x)
 
-# Microsoft Excel Worksheet
+## Microsoft Excel Worksheet
 x <- import(file = file.path(basejumpCacheURL, "example.xlsx"))
 print(x)
 
-# GTF/GFF
+## GTF/GFF
 x <- import(file = file.path(basejumpCacheURL, "example.gtf"))
 summary(x)
 
-# JSON
+## JSON
 x <- import(file = file.path(basejumpCacheURL, "example.json"))
 names(x)
 
-# YAML
+## YAML
 x <- import(file = file.path(basejumpCacheURL, "example.yml"))
 names(x)
 
-# Counts Table (i.e. aligned counts from bcbio)
+## Counts Table (i.e. aligned counts from bcbio)
 x <- import(file = file.path(basejumpCacheURL, "example.counts"))
 colSums(x)
 }

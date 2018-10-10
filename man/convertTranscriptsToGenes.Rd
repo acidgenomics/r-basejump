@@ -68,26 +68,26 @@ print(tx2gene)
 transcripts <- rownames(object)
 print(transcripts)
 
-# character ====
-# Returns as factor.
+## character ====
+## Returns as factor.
 x <- convertTranscriptsToGenes(transcripts, tx2gene = tx2gene)
 print(x)
 str(x)
 
-# matrix ====
-# Note that transcript IDs currently must be in the rows.
+## matrix ====
+## Note that transcript IDs currently must be in the rows.
 counts <- counts(object)
 print(counts)
-# Aggregate to gene level.
+## Aggregate to gene level.
 x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
 print(x)
 colSums(x)
-# Simply map to rownames.
+## Simply map to rownames.
 x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = FALSE)
 print(x)
 colSums(x)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 x <- convertTranscriptsToGenes(object)
 print(x)
 }

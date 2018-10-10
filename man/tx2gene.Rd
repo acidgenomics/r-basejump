@@ -35,7 +35,7 @@ Transcript-to-Gene Identifier Mappings
 No attempt is made to arrange the rows by transcript identifier.
 }
 \examples{
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 data(tx_se_small)
 x <- tx2gene(tx_se_small)
 print(x)

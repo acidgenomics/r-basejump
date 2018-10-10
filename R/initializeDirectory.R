@@ -13,7 +13,7 @@
 #' initializeDirectory("testdir")
 #' dir.exists("testdir")
 #'
-#' # Clean up
+#' ## Clean up.
 #' unlink("testdir", recursive = TRUE)
 initializeDirectory <- function(dir) {
     assert_is_a_string(dir)

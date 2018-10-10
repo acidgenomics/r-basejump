@@ -12,13 +12,13 @@
 #' @return Object containing proper `NA` values.
 #'
 #' @examples
-#' # character ====
+#' ## character ====
 #' from <- as.character(c(1L, "x", "", "NA", "NULL"))
 #' print(from)
 #' to <- sanitizeNA(from)
 #' print(to)
 #'
-#' # DataFrame ====
+#' ## DataFrame ====
 #' from <- DataFrame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),

@@ -15,13 +15,13 @@
 #' @return Named `character` vector of the sample names.
 #'
 #' @examples
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' data(rse_small)
 #' object <- rse_small
 #' x <- sampleNames(object)
 #' print(x)
 #'
-#' # Assignment support
+#' ## Assignment support
 #' value <- sampleNames(object)
 #' value <- toupper(value)
 #' print(value)

@@ -42,21 +42,21 @@ exporting the character method here as a separate function named
 }
 
 \examples{
-# Match by gene identifier.
+## Match by gene identifier.
 detectOrganism("ENSG00000000003")
 
-# Match by genome build.
+## Match by genome build.
 detectOrganism("GRCh38")  # Ensembl
 detectOrganism("hg38")    # UCSC
 
-# Match by alternate organism name.
+## Match by alternate organism name.
 detectOrganism("H. sapiens")
 detectOrganism("hsapiens")
 
-# The function will skip transgenes/spike-ins until we find a match.
+## The function will skip transgenes/spike-ins until we find a match.
 detectOrganism(c("EGFP", "TDTOMATO", "ENSG00000000003"))
 
-# But it only returns the first match, if there are multiple genomes.
+## But it only returns the first match, if there are multiple genomes.
 detectOrganism(c("ENSG00000000003", "ENSMUSG00000000001"))
 }
 \seealso{

@@ -39,7 +39,7 @@ Gene-to-Symbol Mappings
 }
 }
 \examples{
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 data(rse_small)
 x <- gene2symbol(rse_small)
 print(x)

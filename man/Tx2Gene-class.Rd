@@ -11,7 +11,7 @@ Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
 Transcript-to-Gene Identifier Mappings
 }
 \examples{
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 data(tx_se_small)
 x <- tx2gene(tx_se_small)
 print(x)

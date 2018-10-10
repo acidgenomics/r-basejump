@@ -55,22 +55,22 @@ experiment).
 \examples{
 data(rse_small, sce_small)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 x <- rse_small
 sampleData(x)
 
-# Assignment support
+## Assignment support
 sampleData(x)[["batch"]] <- 1L
-# `batch` column should be now defined.
+## `batch` column should be now defined.
 sampleData(x)
 
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 x <- sce_small
 sampleData(x)
 
-# Assignment support.
+## Assignment support.
 sampleData(x)[["batch"]] <- 1L
-# `batch` column should be now defined.
+## `batch` column should be now defined.
 sampleData(x)
 }
 \seealso{

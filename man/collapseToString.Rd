@@ -46,7 +46,7 @@ collapseToString(object, ...)
 Collapse to String
 }
 \examples{
-# character ====
+## character ====
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 collapseToString(
     groceries,
@@ -61,14 +61,14 @@ collapseToString(
     removeNA = FALSE
 )
 
-# numeric ====
+## numeric ====
 collapseToString(seq(1:5))
 
-# logical ====
+## logical ====
 collapseToString(c(TRUE, FALSE))
 collapseToString(c(NA, NaN))
 
-# data.frame ====
+## data.frame ====
 ggplot2::mpg \%>\%
     head() \%>\%
     collapseToString(sort = TRUE, unique = TRUE) \%>\%

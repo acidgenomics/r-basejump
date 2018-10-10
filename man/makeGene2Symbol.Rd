@@ -35,17 +35,17 @@ Remote URLs and compressed files are supported.
 }
 
 \examples{
-# makeGene2SymbolFromEnsembl ====
+## makeGene2SymbolFromEnsembl ====
 x <- makeGene2SymbolFromEnsembl(organism = "Homo sapiens")
 print(x)
 
-# makeGene2SymbolFromGFF ====
-# GTF
+## makeGene2SymbolFromGFF ====
+## GTF
 file <- file.path(basejumpCacheURL, "example.gtf")
 x <- makeGene2SymbolFromGFF(file)
 print(x)
 
-# GFF3
+## GFF3
 file <- file.path(basejumpCacheURL, "example.gff3")
 x <- makeGene2SymbolFromGFF(file)
 print(x)

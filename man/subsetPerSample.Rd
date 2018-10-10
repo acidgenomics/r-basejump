@@ -37,14 +37,14 @@ sample.}
 Subset Per Sample
 }
 \examples{
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 object <- sce_small
 
-# List mode (default).
+## List mode (default).
 list <- subsetPerSample(object, assignAndSave = FALSE)
 names(list)
 
-# Assign and save mode (useful for large datasets).
+## Assign and save mode (useful for large datasets).
 subsetPerSample(
     object = object,
     assignAndSave = TRUE,
@@ -53,7 +53,7 @@ subsetPerSample(
 )
 list.files("subsetPerSample")
 
-# Clean up.
+## Clean up.
 unlink("subsetPerSample", recursive = TRUE)
 }
 \seealso{

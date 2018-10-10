@@ -34,11 +34,11 @@ Sanitized object.
 Remove Rows and Columns Containing Only \code{NA} Values
 }
 \examples{
-# atomic ====
+## atomic ====
 removeNA(c("hello", "world", NA))
 removeNA(c(1, 2, NA))
 
-# matrix ====
+## matrix ====
 from <- matrix(
     data = c(1, NA, 3, NA, NA, NA, 2, NA, 4),
     nrow = 3,
@@ -48,7 +48,7 @@ print(from)
 to <- removeNA(from)
 print(to)
 
-# DataFrame ====
+## DataFrame ====
 from <- DataFrame(
     a = c("A", NA, "C"),
     b = c(NA, NA, NA),

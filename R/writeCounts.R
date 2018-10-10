@@ -34,7 +34,7 @@
 #' writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
 #' list.files("example")
 #'
-#' # Clean up
+#' ## Clean up.
 #' unlink("example", recursive = TRUE)
 writeCounts <- function(..., dir = ".", compress = FALSE) {
     dots <- dots_list(...)

@@ -37,14 +37,14 @@ This function is strict, and will only strip Ensembl transcript IDs
 beginning with "ENS".
 }
 \examples{
-# Ensembl (modify; contains versions)
+## Ensembl (modify; contains versions)
 stripTranscriptVersions(c(
     "ENSMUST00000000001.1",
     "ENSMUST00000000001-1",
     "ENSMUST00000000001_1"
 ))
 
-# WormBase (keep; doesn't contain versions)
+## WormBase (keep; doesn't contain versions)
 stripTranscriptVersions("cTel79B.1")
 }
 \seealso{

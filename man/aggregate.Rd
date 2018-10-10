@@ -89,7 +89,7 @@ aggregate samples.
 }}
 
 \examples{
-# Example data ====
+## Example data ====
 counts <- matrix(
     data = c(
         0L, 1L, 1L, 1L,
@@ -123,17 +123,17 @@ cells <- factor(paste0("cell", rep(seq_len(2L), each = 2L)))
 names(samples) <- colnames(counts)
 print(samples)
 
-# matrix
+## matrix
 matrix <- as(counts, "matrix")
 class(matrix)
 print(matrix)
 
-# sparseMatrix
+## sparseMatrix
 sparse <- as(matrix, "sparseMatrix")
 class(sparse)
 print(sparse)
 
-# SummarizedExperiment
+## SummarizedExperiment
 se <- SummarizedExperiment::SummarizedExperiment(
     assay = list(counts = sparse),
     colData = S4Vectors::DataFrame(
@@ -144,12 +144,12 @@ se <- SummarizedExperiment::SummarizedExperiment(
 )
 print(se)
 
-# aggregateRows ====
+## aggregateRows ====
 aggregateRows(matrix, groupings = genes)
 aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
 
-# aggregateCols ====
+## aggregateCols ====
 aggregateCols(matrix, groupings = samples)
 aggregateCols(sparse, groupings = samples)
 aggregateCols(se)

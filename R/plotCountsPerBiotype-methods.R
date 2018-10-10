@@ -14,11 +14,11 @@
 #' @examples
 #' data(rse_small, sce_small)
 #'
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' plotCountsPerBiotype(rse_small)
 #' plotCountsPerBroadClass(rse_small)
 #'
-#' # SingleCellExperiment ====
+#' ## SingleCellExperiment ====
 #' plotCountsPerBiotype(sce_small)
 #' plotCountsPerBroadClass(sce_small)
 NULL

@@ -31,7 +31,7 @@ saveRdExamples(
     dir = "example"
 )
 
-# Clean up
+## Clean up.
 unlink("example", recursive = TRUE)
 }
 \seealso{

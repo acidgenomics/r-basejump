@@ -43,7 +43,7 @@ object <- rse_small
 intgroup <- interestingGroups(object)
 print(intgroup)
 
-# Assignment support.
+## Assignment support.
 interestingGroups(object) <- intgroup[[1L]]
 interestingGroups(object)
 }

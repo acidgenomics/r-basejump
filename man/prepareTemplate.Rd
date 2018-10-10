@@ -36,12 +36,12 @@ This code is used internally by:
 }
 }
 \examples{
-# RNA-seq template
+## RNA-seq template
 \dontrun{
 prepareTemplate(package = "bcbioRNASeq")
 }
 
-# Single-cell RNA-seq template
+## Single-cell RNA-seq template
 \dontrun{
 prepareTemplate(package = "bcbioSingleCell")
 }

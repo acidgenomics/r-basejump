@@ -28,13 +28,13 @@ Utility function that provides support for creating internal \code{GRanges} for
 transgene and FASTA spike-in sequences.
 }
 \examples{
-# Unknown/dead genes.
+## Unknown/dead genes.
 emptyRanges("ENSG00000000000", seqname = "unknown")
 
-# Transgenes.
+## Transgenes.
 emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
 
-# Spike-ins.
+## Spike-ins.
 emptyRanges("ERCC", seqname = "spike")
 }
 \seealso{

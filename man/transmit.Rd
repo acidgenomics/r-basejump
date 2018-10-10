@@ -36,7 +36,7 @@ readme <- transmit(
 basename(readme)
 file.exists(readme)
 
-# Clean up
+## Clean up.
 unlink("ensembl_readme.txt.gz")
 }
 \seealso{

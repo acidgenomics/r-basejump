@@ -50,7 +50,7 @@ genomes are supported.
 }
 \examples{
 data(rse_small)
-# Minimal example doesn't contain these genes.
+## Minimal example doesn't contain these genes.
 x <- tryCatch(
     expr = plotGenderMarkers(rse_small),
     error = function(e) e
