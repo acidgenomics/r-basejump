@@ -37,6 +37,12 @@
 #' ## Clean up.
 #' unlink("example", recursive = TRUE)
 writeCounts <- function(..., dir = ".", compress = FALSE) {
+    # Catch legacy arguments.
+    call <- match.call()
+    if ("gzip" %in% names(call)) {
+        stop("Use `compress` instead of `gzip`.")
+    }
+
     dots <- dots_list(...)
     assert_is_list(dots)
     names <- dots(..., character = TRUE)
@@ -64,7 +70,7 @@ writeCounts <- function(..., dir = ".", compress = FALSE) {
                     format <- "mtx"
                 }
             } else {
-                stop(paste(name, "is not a matrix."), call. = FALSE)
+                stop(paste(name, "is not a matrix."))
             }
             file <- file.path(dir, paste0(name, ".", format))
             do.call(what = export, args = list(x = x, file = file))
