@@ -29,7 +29,6 @@ Assert All Are Valid Names
 }
 \examples{
 assertAllAreValidNames(c("sample1", "sample2"))
-validDimnames(basejump::rse_small)
 validDimnames(datasets::mtcars)
 validNames(c(
     "sample_1",
