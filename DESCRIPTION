@@ -135,6 +135,7 @@ Collate:
     'geometricMean-methods.R'
     'ggplot2.R'
     'globals.R'
+    'headtail-methods.R'
     'hgnc2ensembl.R'
     'import.R'
     'initializeDirectory.R'
