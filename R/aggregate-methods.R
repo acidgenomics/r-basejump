@@ -25,9 +25,9 @@
 #'   (samples).
 #'
 #' @seealso
-#' - [stats::aggregate].
-#' - [Matrix.utils::aggregate.Matrix].
-#' - [S4Vectors::aggregate].
+#' - [stats::aggregate()].
+#' - [S4Vectors::aggregate()].
+#' - [Matrix.utils::aggregate.Matrix()].
 #'
 #' @examples
 #' # Example data ====
