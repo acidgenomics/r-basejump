@@ -30,9 +30,10 @@ setOldClass(Classes = class(tibble::tibble()))
 #'    and **N**on-supervised **O**rthologous **G**roups (NOG) protein
 #'    identifiers.
 #'
-#' @seealso
-#' - [eggnog()].
-#' - [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt).
+#' @seealso [eggnog].
+#'
+#' The [EggNOG README file](http://eggnogdb.embl.de/download/latest/README.txt)
+#' contains additional useful reference information.
 setClass(Class = "EggNOG", contains = "list")
 
 setValidity(
@@ -73,7 +74,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `geneID` and `entrezID` columns.
 #'
-#' @seealso [ensembl2entrez()].
+#' @seealso [ensembl2entrez].
 setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 
 setValidity(
@@ -105,9 +106,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `geneID` and `geneName` columns.
 #'
-#' @seealso
-#' - [gene2symbol()].
-#' - [makeGene2Symbol].
+#' @seealso [gene2symbol], [makeGene2Symbol].
 setClass(Class = "Gene2Symbol", contains = "DataFrame")
 
 setValidity(
@@ -139,7 +138,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `hgncID` and `geneID` columns.
 #'
-#' @seealso [hgnc2ensembl()].
+#' @seealso [hgnc2ensembl].
 setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
 
 setValidity(
@@ -172,7 +171,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `mgiID` and `geneID` columns.
 #'
-#' @seealso [mgi2ensembl()].
+#' @seealso [mgi2ensembl].
 setClass(Class = "MGI2Ensembl", contains = "DataFrame")
 
 setValidity(
@@ -201,7 +200,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame`.
 #'
-#' @seealso [panther()].
+#' @seealso [panther].
 setClass(Class = "PANTHER", contains = "DataFrame")
 
 setValidity(
@@ -237,9 +236,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 #'
-#' @seealso
-#' - [tx2gene()].
-#' - [makeTx2Gene].
+#' @seealso [tx2gene], [makeTx2Gene].
 setClass(Class = "Tx2Gene", contains = "DataFrame")
 
 setValidity(

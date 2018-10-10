@@ -15,7 +15,7 @@ x <- mgi2ensembl(.test = TRUE)
 print(x)
 }
 \seealso{
-\code{\link[=mgi2ensembl]{mgi2ensembl()}}.
+\link{mgi2ensembl}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

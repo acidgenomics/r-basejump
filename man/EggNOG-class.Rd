@@ -28,10 +28,10 @@ x <- eggnog(.test = TRUE)
 print(x)
 }
 \seealso{
-\itemize{
-\item \code{\link[=eggnog]{eggnog()}}.
-\item \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}.
-}
+\link{eggnog}.
+
+The \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README file}
+contains additional useful reference information.
 
 Other S4 Classes: \code{\link{Ensembl2Entrez-class}},
   \code{\link{Gene2Symbol-class}},

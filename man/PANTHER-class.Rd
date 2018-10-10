@@ -18,7 +18,7 @@ invisible(capture.output(
 summary(x)
 }
 \seealso{
-\code{\link[=panther]{panther()}}.
+\link{panther}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},
