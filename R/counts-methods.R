@@ -15,7 +15,7 @@
 #' @return Matrix. Typically `matrix` or `sparseMatrix` class.
 #'
 #' @examples
-#' ## SummarizedExperiment ====
+#' data(rse_small)
 #' x <- counts(rse_small)
 #' summary(x)
 NULL
