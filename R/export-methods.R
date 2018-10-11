@@ -1,3 +1,7 @@
+# FIXME Add `human = TRUE` mode, which uses sampleNames and gene symbols.
+
+
+
 #' Export
 #'
 #' Export data out of R and write to disk.
