@@ -26,11 +26,11 @@ data(rse_small)
 plotQC(rse_small)
 }
 \seealso{
-Other Plot Functions: \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotGene}}, \code{\link{plotHeatmap}},
+Other Plots: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotCountsPerGene}},
+  \code{\link{plotGenderMarkers}},
+  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
+  \code{\link{plotHeatmap}}, \code{\link{plotTotalCounts}},
   \code{\link{plotZerosVsDepth}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Plot Functions}
+\concept{Plots}

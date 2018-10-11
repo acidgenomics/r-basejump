@@ -4,8 +4,8 @@
 #'   beginning with "ENS".
 #'
 #' @name stripTranscriptVersions
-#' @family Annotation Functions
-#' @author Michael Steinbaugh
+#' @family Sanitization Functions
+#' @family Transcript-Level Functions
 #' @export
 #'
 #' @inheritParams general
@@ -14,14 +14,14 @@
 #'   numbers.
 #'
 #' @examples
-#' # Ensembl (modify; contains versions)
+#' ## Ensembl (modify; contains versions)
 #' stripTranscriptVersions(c(
 #'     "ENSMUST00000000001.1",
 #'     "ENSMUST00000000001-1",
 #'     "ENSMUST00000000001_1"
 #' ))
 #'
-#' # WormBase (keep; doesn't contain versions)
+#' ## WormBase (keep; doesn't contain versions)
 #'stripTranscriptVersions("cTel79B.1")
 NULL
 
@@ -80,6 +80,19 @@ setMethod(
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("sparseMatrix"),
+    definition = getMethod(
+        f = "stripTranscriptVersions",
+        signature = signature("matrix")
+    )
+)
+
+
+
+#' @rdname stripTranscriptVersions
+#' @export
+setMethod(
+    f = "stripTranscriptVersions",
+    signature = signature("SummarizedExperiment"),
     definition = getMethod(
         f = "stripTranscriptVersions",
         signature = signature("matrix")

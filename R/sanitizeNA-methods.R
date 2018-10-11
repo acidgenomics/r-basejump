@@ -5,8 +5,6 @@
 #' returned unmodified.
 #'
 #' @name sanitizeNA
-#' @family Sanitization Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general
@@ -14,13 +12,13 @@
 #' @return Object containing proper `NA` values.
 #'
 #' @examples
-#' # character ====
+#' ## character ====
 #' from <- as.character(c(1L, "x", "", "NA", "NULL"))
 #' print(from)
 #' to <- sanitizeNA(from)
 #' print(to)
 #'
-#' # DataFrame ====
+#' ## DataFrame ====
 #' from <- DataFrame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),
@@ -33,6 +31,8 @@ NULL
 
 
 
+# atomic =======================================================================
+# Return unmodified for generic atomic vectors.
 #' @rdname sanitizeNA
 #' @export
 setMethod(
@@ -45,13 +45,10 @@ setMethod(
 
 
 
+# character ====================================================================
 # Note that names will be kept here after the gsub call.
-#' @rdname sanitizeNA
-#' @export
-setMethod(
-    f = "sanitizeNA",
-    signature = signature("character"),
-    definition = function(object) {
+.sanitizeNA.character <-  # nolint
+    function(object) {
         patterns <- c(
             "^$",
             "^\\s+$",
@@ -65,7 +62,27 @@ setMethod(
             x = object
         )
     }
+
+
+
+#' @rdname sanitizeNA
+#' @export
+setMethod(
+    f = "sanitizeNA",
+    signature = signature("character"),
+    definition = .sanitizeNA.character
 )
+
+
+
+# factor =======================================================================
+.sanitizeNA.factor <-  # nolint
+    function(object) {
+        x <- sanitizeNA(as.character(object))
+        levels(x) <- unique(sanitizeNA(levels(object)))
+        names(x) <- names(object)
+        x
+    }
 
 
 
@@ -74,22 +91,14 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("factor"),
-    definition = function(object) {
-        x <- sanitizeNA(as.character(object))
-        levels(x) <- unique(sanitizeNA(levels(object)))
-        names(x) <- names(object)
-        x
-    }
+    definition = .sanitizeNA.factor
 )
 
 
 
-#' @rdname sanitizeNA
-#' @export
-setMethod(
-    f = "sanitizeNA",
-    signature = signature("data.frame"),
-    definition = function(object) {
+# data.frame ===================================================================
+.sanitizeNA.data.frame <-  # nolint
+    function(object) {
         if (hasRownames(object)) {
             rownames <- rownames(object)
         } else {
@@ -99,7 +108,6 @@ setMethod(
         rownames(object) <- rownames
         object
     }
-)
 
 
 
@@ -107,8 +115,15 @@ setMethod(
 #' @export
 setMethod(
     f = "sanitizeNA",
-    signature = signature("DataFrame"),
-    definition = function(object) {
+    signature = signature("data.frame"),
+    definition = .sanitizeNA.data.frame
+)
+
+
+
+# DataFrame ====================================================================
+.sanitizeNA.DataFrame <-  # nolint
+    function(object) {
         rownames <- rownames(object)
         list <- lapply(
             X = object,
@@ -117,7 +132,24 @@ setMethod(
             })
         DataFrame(list, row.names = rownames)
     }
+
+
+
+#' @rdname sanitizeNA
+#' @export
+setMethod(
+    f = "sanitizeNA",
+    signature = signature("DataFrame"),
+    definition = .sanitizeNA.DataFrame
 )
+
+
+
+# tibble =======================================================================
+.sanitizeNA.tbl_df <-  # nolint
+    function(object) {
+        mutate_if(object, is.character, funs(sanitizeNA))
+    }
 
 
 
@@ -126,7 +158,5 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("tbl_df"),
-    definition = function(object) {
-        mutate_if(object, is.character, funs(sanitizeNA))
-    }
+    definition = .sanitizeNA.tbl_df
 )

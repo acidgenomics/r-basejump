@@ -10,11 +10,14 @@ Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
 \description{
 Transcript-to-Gene Identifier Mappings
 }
-\seealso{
-\itemize{
-\item \code{\link[=tx2gene]{tx2gene()}}.
-\item \link{makeTx2Gene}.
+\examples{
+## SummarizedExperiment ====
+data(tx_se_small)
+x <- tx2gene(tx_se_small)
+print(x)
 }
+\seealso{
+\link{tx2gene}, \link{makeTx2Gene}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

@@ -1,8 +1,6 @@
 #' Access to the Data Inside an S4 Method Definition
 #'
 #' @name MethodDefinition
-#' @family Developer Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams methods::selectMethod
 #'
@@ -13,11 +11,11 @@
 #' @seealso Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #'
 #' @examples
-#' # Function
+#' ## Function
 #' x <- methodFunction(f = "geometricMean", signature = "numeric")
 #' class(x)
 #'
-#' # Formals
+#' ## Formals
 #' x <- methodFormals(f = "geometricMean", signature = "numeric")
 #' print(x)
 NULL

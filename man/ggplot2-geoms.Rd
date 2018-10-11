@@ -81,20 +81,20 @@ is required, simply use the ggrepel version instead.
 }
 
 \examples{
-# basejump_geom_abline ====
-# x-axis line
+## basejump_geom_abline ====
+## x-axis line
 geom <- basejump_geom_abline(xintercept = 1L)
 geom
 
-# y-axis line
+## y-axis line
 geom <- basejump_geom_abline(yintercept = 1L)
 geom
 
-# basejump_geom_label ====
+## basejump_geom_label ====
 geom <- basejump_geom_label()
 geom
 
-# basejump_geom_label_average ====
+## basejump_geom_label_average ====
 geom <- basejump_geom_label_average(
     data = tibble(
         sampleName = rep(c("sample1", "sample2"), times = 4L),
@@ -105,7 +105,7 @@ geom <- basejump_geom_label_average(
 )
 geom
 
-# basejump_geom_label_repel ====
+## basejump_geom_label_repel ====
 geom <- basejump_geom_label_repel()
 geom
 }
@@ -116,8 +116,5 @@ geom
 }
 
 Other ggplot2 Functions: \code{\link{ggplot2-themes}}
-}
-\author{
-Michael Steinbaugh
 }
 \concept{ggplot2 Functions}

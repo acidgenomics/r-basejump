@@ -3,9 +3,9 @@
 \name{panther}
 \alias{panther}
 \alias{PANTHER}
-\title{\code{PANTHER} Generator}
+\title{PANTHER Database Annotations}
 \usage{
-panther(organism, release = NULL, .test = FALSE)
+panther(organism, release = NULL, progress = TRUE, .test = FALSE)
 }
 \arguments{
 \item{organism}{\code{string}. Full Latin organism name. Currently supported
@@ -16,30 +16,25 @@ organisms: \emph{Homo sapiens}, \emph{Mus musculus}, \emph{Caenorhabditis elegan
 defaults to current release. Consult the PANTHER website for a list of
 release versions available from the FTP server (e.g. \code{"13.0"}).}
 
+\item{progress}{\code{boolean}. Use \code{\link[=pblapply]{pblapply()}} internally to show progress.}
+
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
 \code{PANTHER}.
 }
 \description{
-\code{PANTHER} Generator
+\href{http://www.pantherdb.org}{PANTHER} gene ontology definitions. PANTHER stands
+for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \examples{
-invisible(capture.output(
-    x <- panther("Homo sapiens", .test = TRUE)
-))
+x <- panther("Homo sapiens", progress = FALSE, .test = TRUE)
 summary(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
+Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}},
-  \code{\link{stripTranscriptVersions}}
-}
-\author{
-Michael Steinbaugh
+  \code{\link{makeTx2Gene}}
 }
 \concept{Annotation Functions}

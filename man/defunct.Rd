@@ -57,7 +57,4 @@ setArgsToDoCall(...)
 \description{
 Defunct Functions
 }
-\author{
-Michael Steinbaugh
-}
 \keyword{internal}

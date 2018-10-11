@@ -23,21 +23,6 @@ up functions that require writes to a user-specified directory.
 initializeDirectory("testdir")
 dir.exists("testdir")
 
-# Clean up
+## Clean up.
 unlink("testdir", recursive = TRUE)
 }
-\seealso{
-Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchArgsToDoCall}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{separator}},
-  \code{\link{standardizeCall}},
-  \code{\link{uniteInterestingGroups}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Developer Functions}

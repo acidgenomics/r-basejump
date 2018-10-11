@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>Tx2Gene</code> Generator — tx2gene • basejump</title>
+<title>Transcript-to-Gene Identifier Mappings — tx2gene • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="<code>Tx2Gene</code> Generator — tx2gene" />
+<meta property="og:title" content="Transcript-to-Gene Identifier Mappings — tx2gene" />
 
-<meta property="og:description" content="Tx2Gene Generator" />
+<meta property="og:description" content="Transcript-to-Gene Identifier Mappings" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,14 +105,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><code>Tx2Gene</code> Generator</h1>
+    <h1>Transcript-to-Gene Identifier Mappings</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/tx2gene-methods.R'><code>R/tx2gene-methods.R</code></a></small>
     <div class="hidden name"><code>tx2gene.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>Tx2Gene</code> Generator</p>
+    <p>Transcript-to-Gene Identifier Mappings</p>
     
     </div>
 
@@ -153,13 +153,19 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other S4 Generators: <code><a href='eggnog.html'>eggnog</a></code>,
+    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
+  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
+  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code></p></div>
+  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
+  <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code></p>
+<p>Other Transcript-Level Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
+  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
+    <pre class="examples"><div class='input'><span class='co'>## SummarizedExperiment ====</span>
 <span class='fu'>data</span>(<span class='no'>tx_se_small</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>tx2gene</span>(<span class='no'>tx_se_small</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 6 rows and 2 columns
@@ -185,10 +191,6 @@
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

@@ -28,27 +28,21 @@ Utility function that provides support for creating internal \code{GRanges} for
 transgene and FASTA spike-in sequences.
 }
 \examples{
-# Unknown/dead genes.
+## Unknown/dead genes.
 emptyRanges("ENSG00000000000", seqname = "unknown")
 
-# Transgenes.
+## Transgenes.
 emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
 
-# Spike-ins.
+## Spike-ins.
 emptyRanges("ERCC", seqname = "spike")
 }
 \seealso{
 \code{help("seqinfo", "GenomeInfoDb")}.
 
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
+Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{geneSynonyms}}, \code{\link{makeGRanges}},
   \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
-}
-\author{
-Michael Steinbaugh
+  \code{\link{panther}}
 }
 \concept{Annotation Functions}

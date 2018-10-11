@@ -4,7 +4,7 @@
 \name{cell2sample}
 \alias{cell2sample}
 \alias{cell2sample,SingleCellExperiment-method}
-\title{Cell to Sample Mappings}
+\title{Cell-to-Sample Mappings}
 \usage{
 cell2sample(object, ...)
 
@@ -27,7 +27,7 @@ as the names.
 }
 }
 \description{
-Cell to Sample Mappings
+Cell-to-Sample Mappings
 }
 \note{
 \code{sampleID} column must be defined in \code{\link[=colData]{colData()}}.
@@ -38,11 +38,10 @@ x <- cell2sample(sce_small)
 table(x)
 }
 \seealso{
-Other Single-Cell Functions: \code{\link{makeSingleCellExperiment}},
+Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
+  \code{\link{makeSingleCellExperiment}},
   \code{\link{mapCellsToSamples}},
+  \code{\link{subsetPerSample}},
   \code{\link{topCellsPerSample}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Single-Cell Functions}
+\concept{SingleCellExperiment Functions}

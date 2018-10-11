@@ -28,11 +28,10 @@ x <- topCellsPerSample(sce_small)
 lapply(x, head)
 }
 \seealso{
-Other Single-Cell Functions: \code{\link{cell2sample}},
+Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
+  \code{\link{cell2sample}},
   \code{\link{makeSingleCellExperiment}},
-  \code{\link{mapCellsToSamples}}
+  \code{\link{mapCellsToSamples}},
+  \code{\link{subsetPerSample}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Single-Cell Functions}
+\concept{SingleCellExperiment Functions}

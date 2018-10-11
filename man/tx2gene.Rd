@@ -8,7 +8,7 @@
 \alias{tx2gene,DataFrame-method}
 \alias{tx2gene,GRanges-method}
 \alias{tx2gene,SummarizedExperiment-method}
-\title{\code{Tx2Gene} Generator}
+\title{Transcript-to-Gene Identifier Mappings}
 \usage{
 tx2gene(object, ...)
 
@@ -29,23 +29,28 @@ tx2gene(object, ...)
 \code{Tx2Gene}.
 }
 \description{
-\code{Tx2Gene} Generator
+Transcript-to-Gene Identifier Mappings
 }
 \note{
 No attempt is made to arrange the rows by transcript identifier.
 }
 \examples{
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 data(tx_se_small)
 x <- tx2gene(tx_se_small)
 print(x)
 }
 \seealso{
-Other S4 Generators: \code{\link{eggnog}},
+Other Identifier Mapping Functions: \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
-  \code{\link{hgnc2ensembl}}, \code{\link{mgi2ensembl}}
+  \code{\link{hgnc2ensembl}}, \code{\link{mapGenes}},
+  \code{\link{mgi2ensembl}}
+
+Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
+  \code{\link{makeGRanges}}, \code{\link{makeTx2Gene}},
+  \code{\link{stripTranscriptVersions}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{S4 Generators}
+\concept{Identifier Mapping Functions}
+\concept{Transcript-Level Functions}

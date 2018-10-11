@@ -58,29 +58,29 @@ slot:
 Column and rows always return sorted alphabetically.
 }
 \examples{
-# Rows (genes)
+## Rows (genes)
 genes <- c(
     "EGFP",  # transgene (see below)
     paste0("gene", seq_len(3L))
 )
 print(genes)
 
-# Columns (samples)
+## Columns (samples)
 samples <- paste0("sample", seq_len(4L))
 print(samples)
 
-# Counts (assay)
+## Counts (assay)
 counts <- matrix(
     data = seq_len(16L),
     nrow = 4L,
     ncol = 4L,
     dimnames = list(genes, samples)
 )
-# Primary assay must be named "counts".
+## Primary assay must be named "counts".
 assays <- list(counts = counts)
 print(assays)
 
-# Row data (genomic ranges)
+## Row data (genomic ranges)
 rowRanges <- GRanges(
     seqnames = rep("1", times = 3L),
     ranges = IRanges(
@@ -88,12 +88,12 @@ rowRanges <- GRanges(
         end = seq(from = 100L, to = 300L, by = 100L)
     )
 )
-# Note that we haven't defined the transgene here.
-# It will be handled automatically in the function call.
+## Note that we haven't defined the transgene here.
+## It will be handled automatically in the function call.
 names(rowRanges) <- paste0("gene", seq_len(3L))
 print(rowRanges)
 
-# Column data
+## Column data
 colData <- DataFrame(
     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
     age = rep(c(3L, 6L), 2L),
@@ -101,7 +101,7 @@ colData <- DataFrame(
 )
 print(colData)
 
-# Note that this returns with the dimnames sorted.
+## Note that this returns with the dimnames sorted.
 x <- makeSummarizedExperiment(
     assays = assays,
     rowRanges = rowRanges,
@@ -119,15 +119,10 @@ print(x)
 \item \code{SingleCellExperiment::SingleCellExperiment()}.
 }
 
-Other Data Functions: \code{\link{aggregate}},
-  \code{\link{combine}}, \code{\link{counts}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{minimalSampleData}},
-  \code{\link{organism}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}}
+Other SummarizedExperiment Functions: \code{\link{counts}},
+  \code{\link{interestingGroups}}, \code{\link{mapGenes}},
+  \code{\link{meltCounts}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}, \code{\link{tpm}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Data Functions}
+\concept{SummarizedExperiment Functions}

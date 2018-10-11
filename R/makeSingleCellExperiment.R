@@ -1,7 +1,6 @@
 #' Make Single-Cell Experiment
 #'
-#' @family Single-Cell Functions
-#' @author Michael Steinbaugh
+#' @family SingleCellExperiment Functions
 #' @inherit makeSummarizedExperiment
 #' @export
 #'

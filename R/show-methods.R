@@ -1,10 +1,23 @@
 # FIXME EggNOG
-# FIXME Ensembl2Entrez
-# FIXME Gene2Symbol
-# FIXME HGNC2Ensembl
-# FIXME MGI2Ensembl
 # FIXME PANTHER
-# FIXME Tx2Gene
+
+
+# # Include the gene lengths per phase.
+# split <- split(x = object, f = object[["phase"]])
+# stopifnot(is(split, "SplitDataFrameList"))
+# lengths <- nrow(split)
+
+
+
+
+
+
+
+.show.PANTHER <-  # nolint
+    function(object) {
+        genes <- length(geneID)
+
+    }
 
 # Tx2Gene
 # message(paste(

@@ -1,11 +1,12 @@
 #' Save Data
 #'
-#' Wrapper for [base::save()] supporting quick saving of object names passed as
-#' symbols. This function saves each object into a separate `.rda` file rather
-#' than combining into a single file.
+#' Wrapper for [save()] supporting quick, interactive saving of object names
+#' passed as symbols.
+#'
+#' This function always saves each object into a separate file rather than
+#' combining multiple objects into a single file.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams loadData
@@ -15,16 +16,11 @@
 #'   "`RData`"). RDS is preferred when saving single objects per file, which is
 #'   always the convention of [saveData()], regardless of the extension used.
 #'
-#' @note
-#' This function is desired for interactive use and interprets object names
-#' using non-standard evaluation. It will *overwrite* existing saved data,
-#' following the same conventions as [base::save()]. Conversely,
-#' [devtools::use_data()] does not overwrite by default if that behavior is
-#' preferred.
+#' @note This function is desired for interactive use and interprets object
+#'   names using non-standard evaluation. It will **overwrite** existing files
+#'   on disk, following the same conventions as [save()].
 #'
-#' @seealso
-#' - [base::save()].
-#' - `usethis::use_data()`.
+#' @seealso [save], [saveRDS].
 #'
 #' @return Invisible named `character`. File paths.
 #'
@@ -33,7 +29,7 @@
 #' saveData(rse_small, sce_small, dir = "example")
 #' list.files("example")
 #'
-#' # Clean up
+#' ## Clean up.
 #' unlink("example", recursive = TRUE)
 saveData <- function(
     ...,
@@ -101,7 +97,6 @@ saveData <- function(
 #' the newly assigned object, specified by the "`dir`" argument.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams saveData
@@ -115,11 +110,12 @@ saveData <- function(
 #' @note This function attempts to follow the same order as [base::assign()].
 #'
 #' @examples
+#' data(rse_small)
 #' assignAndSaveData(name = "example", object = rse_small, ext = "rds")
 #' exists("example", inherits = FALSE)
 #' file.exists("example.rds")
 #'
-#' # Clean up
+#' ## Clean up.
 #' rm(example)
 #' unlink("example.rds")
 assignAndSaveData <- function(

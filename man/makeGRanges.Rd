@@ -111,32 +111,32 @@ that \code{GRanges} also support coercion to a basic \code{data.frame} using
 }
 
 \examples{
-# makeGRangesFromEnsembl ====
-# Genes
+## makeGRangesFromEnsembl ====
+## Genes
 x <- makeGRangesFromEnsembl("Homo sapiens", level = "genes")
 summary(x)
 
-# Transcripts
+## Transcripts
 x <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
 summary(x)
 
-# makeGRangesFromGFF ====
+## makeGRangesFromGFF ====
 file <- file.path(basejumpCacheURL, "example.gtf")
 
-# Genes
+## Genes
 x <- makeGRangesFromGFF(file = file, level = "genes")
 summary(x)
 
-# Transcripts
+## Transcripts
 x <- makeGRangesFromGFF(file = file, level = "transcripts")
 summary(x)
 
-# annotable ====
-# Genes
+## annotable ====
+## Genes
 x <- annotable("Homo sapiens")
 glimpse(x)
 
-# Transcripts
+## Transcripts
 x <- annotable("Homo sapiens", level = "transcripts")
 glimpse(x)
 }
@@ -148,15 +148,15 @@ glimpse(x)
 \item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
 }
 
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
+Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
-}
-\author{
-Michael Steinbaugh
+  \code{\link{panther}}
+
+Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
+  \code{\link{makeTx2Gene}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{tx2gene}}
 }
 \concept{Annotation Functions}
+\concept{Transcript-Level Functions}

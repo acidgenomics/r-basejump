@@ -4,7 +4,6 @@
 #' identifiers and Ensembl annotations.
 #'
 #' @family Minimal Example Data
-#' @author Michael Steinbaugh
 #'
 #' @examples
 #' print(basejump::rse_small)
@@ -15,7 +14,6 @@
 #' Example Single-Cell RNA-Seq Data Set
 #'
 #' @family Minimal Example Data
-#' @author Michael Steinbaugh
 #'
 #' @seealso `scater::sc_example_counts`.
 #'
@@ -28,7 +26,6 @@
 #' Example Transcript-Level Data Set
 #'
 #' @family Minimal Example Data
-#' @author Michael Steinbaugh
 #'
 #' @examples
 #' print(basejump::tx_se_small)

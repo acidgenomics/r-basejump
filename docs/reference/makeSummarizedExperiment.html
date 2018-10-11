@@ -203,33 +203,31 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 <li><p><code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::SummarizedExperiment()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/SingleCellExperiment/topics/SingleCellExperiment'>SingleCellExperiment::SingleCellExperiment()</a></code>.</p></li>
 </ul></div>
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregate</a></code>,
-  <code><a href='combine.html'>combine</a></code>, <code><a href='counts.html'>counts</a></code>,
-  <code><a href='mapGenes.html'>mapGenes</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
-  <code><a href='metrics.html'>metrics</a></code>, <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
-  <code><a href='organism.html'>organism</a></code>, <code><a href='sampleData.html'>sampleData</a></code>,
-  <code><a href='sampleNames.html'>sampleNames</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code>,
-  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code></p></div>
+    <div class='dont-index'><p>Other SummarizedExperiment Functions: <code><a href='counts.html'>counts</a></code>,
+  <code><a href='interestingGroups.html'>interestingGroups</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
+  <code><a href='meltCounts.html'>meltCounts</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
+  <code><a href='selectSamples.html'>selectSamples</a></code>, <code><a href='tpm.html'>tpm</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Rows (genes)</span>
+    <pre class="examples"><div class='input'><span class='co'>## Rows (genes)</span>
 <span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(
     <span class='st'>"EGFP"</span>,  <span class='co'># transgene (see below)</span>
     <span class='fu'>paste0</span>(<span class='st'>"gene"</span>, <span class='fu'>seq_len</span>(<span class='fl'>3L</span>))
 )
 <span class='fu'>print</span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; [1] "EGFP"  "gene1" "gene2" "gene3"</div><div class='input'>
-<span class='co'># Columns (samples)</span>
+<span class='co'>## Columns (samples)</span>
 <span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>seq_len</span>(<span class='fl'>4L</span>))
 <span class='fu'>print</span>(<span class='no'>samples</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4"</div><div class='input'>
-<span class='co'># Counts (assay)</span>
+<span class='co'>## Counts (assay)</span>
 <span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq_len</span>(<span class='fl'>16L</span>),
     <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
     <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
     <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='no'>genes</span>, <span class='no'>samples</span>)
 )
-<span class='co'># Primary assay must be named "counts".</span>
+<span class='co'>## Primary assay must be named "counts".</span>
 <span class='no'>assays</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>counts</span> <span class='kw'>=</span> <span class='no'>counts</span>)
 <span class='fu'>print</span>(<span class='no'>assays</span>)</div><div class='output co'>#&gt; $counts
 #&gt;       sample1 sample2 sample3 sample4
@@ -238,7 +236,7 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 #&gt; gene2       3       7      11      15
 #&gt; gene3       4       8      12      16
 #&gt; </div><div class='input'>
-<span class='co'># Row data (genomic ranges)</span>
+<span class='co'>## Row data (genomic ranges)</span>
 <span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'>GRanges</span>(
     <span class='kw'>seqnames</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='st'>"1"</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>3L</span>),
     <span class='kw'>ranges</span> <span class='kw'>=</span> <span class='fu'>IRanges</span>(
@@ -246,8 +244,8 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
         <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>100L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>300L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>100L</span>)
     )
 )
-<span class='co'># Note that we haven't defined the transgene here.</span>
-<span class='co'># It will be handled automatically in the function call.</span>
+<span class='co'>## Note that we haven't defined the transgene here.</span>
+<span class='co'>## It will be handled automatically in the function call.</span>
 <span class='fu'>names</span>(<span class='no'>rowRanges</span>) <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"gene"</span>, <span class='fu'>seq_len</span>(<span class='fl'>3L</span>))
 <span class='fu'>print</span>(<span class='no'>rowRanges</span>)</div><div class='output co'>#&gt; GRanges object with 3 ranges and 0 metadata columns:
 #&gt;         seqnames    ranges strand
@@ -257,7 +255,7 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 #&gt;   gene3        1   201-300      *
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
-<span class='co'># Column data</span>
+<span class='co'>## Column data</span>
 <span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
     <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='st'>"wildtype"</span>, <span class='st'>"knockout"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>),
     <span class='kw'>age</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='fl'>3L</span>, <span class='fl'>6L</span>), <span class='fl'>2L</span>),
@@ -270,7 +268,7 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 #&gt; sample2    wildtype         6
 #&gt; sample3    knockout         3
 #&gt; sample4    knockout         6</div><div class='input'>
-<span class='co'># Note that this returns with the dimnames sorted.</span>
+<span class='co'>## Note that this returns with the dimnames sorted.</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeSummarizedExperiment</span>(
     <span class='kw'>assays</span> <span class='kw'>=</span> <span class='no'>assays</span>,
     <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='no'>rowRanges</span>,
@@ -301,10 +299,6 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

@@ -13,8 +13,8 @@
 #' that is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @family Data Functions
-#' @author Michael Steinbaugh
+#' @family Identifier Mapping Functions
+#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #' @param strict `boolean`. Require all genes to match. Recommended by default.
@@ -37,17 +37,17 @@
 #' geneNames <- head(as.character(rowData(object)[["geneName"]]))
 #' print(geneNames)
 #'
-#' # Row names,
+#' ## Row names,
 #' mapGenesToRownames(object, genes = rownames)
 #' mapGenesToRownames(object, genes = geneIDs)
 #' mapGenesToRownames(object, genes = geneNames)
 #'
-#' # Gene identifiers.
+#' ## Gene identifiers.
 #' mapGenesToIDs(object, genes = rownames)
 #' mapGenesToIDs(object, genes = geneIDs)
 #' mapGenesToIDs(object, genes = geneNames)
 #'
-#' # Gene names (symbols).
+#' ## Gene names (symbols).
 #' mapGenesToSymbols(object, genes = rownames)
 #' mapGenesToSymbols(object, genes = geneIDs)
 #' mapGenesToSymbols(object, genes = geneNames)

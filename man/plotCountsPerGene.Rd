@@ -70,20 +70,20 @@ unless the library sizes or total RNA expression are different.
 \examples{
 data(rse_small, sce_small)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 plotCountsPerGene(rse_small, geom = "density")
 plotCountsPerGene(rse_small, geom = "boxplot")
 plotCountsPerGene(rse_small, geom = "violin")
 
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 plotCountsPerGene(sce_small)
 }
 \seealso{
-Other Quality Control Functions: \code{\link{plotGenderMarkers}},
-  \code{\link{plotGenesDetected}},
-  \code{\link{plotTotalCounts}}
+Other Plots: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotGenderMarkers}},
+  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
+  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
+  \code{\link{plotTotalCounts}},
+  \code{\link{plotZerosVsDepth}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Quality Control Functions}
+\concept{Plots}

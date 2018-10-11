@@ -508,7 +508,7 @@ test_that("transmit : Invalid parameters", {
 test_that("writeCounts", {
     dir <- "example"
     expect_message(
-        object = writeCounts(mat, sparse, dir = dir, gzip = TRUE),
+        object = writeCounts(mat, sparse, dir = dir, compress = TRUE),
         regexp = "Writing mat, sparse"
     )
     expect_identical(

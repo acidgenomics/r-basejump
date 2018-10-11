@@ -45,11 +45,12 @@ the newly assigned object, specified by the "\code{dir}" argument.
 This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.
 }
 \examples{
+data(rse_small)
 assignAndSaveData(name = "example", object = rse_small, ext = "rds")
 exists("example", inherits = FALSE)
 file.exists("example.rds")
 
-# Clean up
+## Clean up.
 rm(example)
 unlink("example.rds")
 }
@@ -59,8 +60,5 @@ Other Import/Export Functions: \code{\link{export}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},
   \code{\link{saveData}}, \code{\link{transmit}},
   \code{\link{writeCounts}}
-}
-\author{
-Michael Steinbaugh
 }
 \concept{Import/Export Functions}

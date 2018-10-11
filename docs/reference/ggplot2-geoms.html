@@ -215,25 +215,25 @@ is required, simply use the ggrepel version instead.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># basejump_geom_abline ====</span>
-<span class='co'># x-axis line</span>
+    <pre class="examples"><div class='input'><span class='co'>## basejump_geom_abline ====</span>
+<span class='co'>## x-axis line</span>
 <span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_abline</span>(<span class='kw'>xintercept</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
 <span class='no'>geom</span></div><div class='output co'>#&gt; mapping: xintercept = ~xintercept 
 #&gt; geom_vline: na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
-<span class='co'># y-axis line</span>
+<span class='co'>## y-axis line</span>
 <span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_abline</span>(<span class='kw'>yintercept</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
 <span class='no'>geom</span></div><div class='output co'>#&gt; mapping: yintercept = ~yintercept 
 #&gt; geom_hline: na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
-<span class='co'># basejump_geom_label ====</span>
+<span class='co'>## basejump_geom_label ====</span>
 <span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_label</span>()
 <span class='no'>geom</span></div><div class='output co'>#&gt; geom_label: parse = FALSE, label.padding = 0.2, label.r = 0.15, label.size = NA, na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
-<span class='co'># basejump_geom_label_average ====</span>
+<span class='co'>## basejump_geom_label_average ====</span>
 <span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_label_average</span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
         <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>),
@@ -246,7 +246,7 @@ is required, simply use the ggrepel version instead.</p>
 #&gt; geom_label: parse = FALSE, label.padding = 0.2, label.r = 0.15, label.size = NA, na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
-<span class='co'># basejump_geom_label_repel ====</span>
+<span class='co'>## basejump_geom_label_repel ====</span>
 <span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_label_repel</span>()
 <span class='no'>geom</span></div><div class='output co'>#&gt; geom_label_repel: parse = FALSE, box.padding = 0.5, label.padding = 0.25, point.padding = 0.75, label.r = 0.15, label.size = 0.25, segment.colour = NULL, segment.size = 0.5, segment.alpha = NULL, min.segment.length = 0.5, arrow = list(angle = 30, length = 0.01, ends = 2, type = 1), na.rm = FALSE, force = 1, max.iter = 2000, nudge_x = 0, nudge_y = 0, xlim = c(NA, NA), ylim = c(NA, NA), direction = both, seed = NA
 #&gt; stat_identity: na.rm = FALSE
@@ -271,10 +271,6 @@ is required, simply use the ggrepel version instead.</p>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

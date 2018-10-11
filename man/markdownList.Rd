@@ -35,13 +35,10 @@ markdownList(groceries, ordered = TRUE)
 markdownList(groceries, asis = TRUE)
 }
 \seealso{
-Other R Markdown Functions: \code{\link{markdownHeader}},
+Other Markdown Functions: \code{\link{markdownHeader}},
   \code{\link{markdownLink}},
   \code{\link{markdownPlotlist}},
-  \code{\link{markdownTables}},
+  \code{\link{markdownTables}}, \code{\link{markdown}},
   \code{\link{prepareTemplate}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{R Markdown Functions}
+\concept{Markdown Functions}

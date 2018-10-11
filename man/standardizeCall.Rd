@@ -32,13 +32,13 @@ identical to the generic, and use a nested \code{.local()} call.
 aaa <- "AAA"
 bbb <- "BBB"
 
-# Standard function
+## Standard function
 testing <- function(a, b) {
     standardizeCall()
 }
 testing(aaa, bbb)
 
-# Inside S4 method
+## Inside S4 method
 setGeneric(
     name = "testing",
     def = function(a, b, ...) {
@@ -56,19 +56,9 @@ setMethod(
 testing(aaa, bbb)
 }
 \seealso{
-\code{\link[base:match.call]{base::match.call()}}.
-
-Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchArgsToDoCall}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{separator}},
-  \code{\link{uniteInterestingGroups}}
+\itemize{
+\item \link[base:match.call]{base::match.call}.
+\item \link[base:sys.call]{base::sys.call}.
+\item \link[base:sys.parent]{base::sys.parent}.
 }
-\author{
-Michael Steinbaugh
 }
-\concept{Developer Functions}

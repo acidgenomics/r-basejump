@@ -3,7 +3,7 @@
 #' Calculate and visualize the dropout rate.
 #'
 #' @name plotZerosVsDepth
-#' @family Plot Functions
+#' @family Plots
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
 #' @inheritParams general
@@ -11,7 +11,7 @@
 #' @return `ggplot`.
 #'
 #' @examples
-#' # SingleCellExperiment ====
+#' ## SingleCellExperiment ====
 #' plotZerosVsDepth(sce_small)
 NULL
 

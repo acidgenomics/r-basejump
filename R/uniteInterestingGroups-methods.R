@@ -5,8 +5,7 @@
 #' single column, delimited by a colon.
 #'
 #' @name uniteInterestingGroups
-#' @family Developer Functions
-#' @author Michael Steinbaugh
+#' @family Metadata Functions
 #' @export
 #'
 #' @inheritParams general
@@ -27,7 +26,7 @@ NULL
 
 
 
-.uniteInterestingGroups.df <-  # nolint
+.uniteInterestingGroups.data.frame <-  # nolint
     function(object, interestingGroups) {
         assert_is_character(interestingGroups)
         assert_is_subset(interestingGroups, colnames(object))
@@ -72,7 +71,7 @@ NULL
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("data.frame"),
-    definition = .uniteInterestingGroups.df
+    definition = .uniteInterestingGroups.data.frame
 )
 
 
@@ -82,7 +81,10 @@ setMethod(
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("DataFrame"),
-    definition = getMethod("uniteInterestingGroups", "data.frame")
+    definition = getMethod(
+        f = "uniteInterestingGroups",
+        signature = signature("data.frame")
+    )
 )
 
 

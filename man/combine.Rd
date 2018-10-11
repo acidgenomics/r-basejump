@@ -34,31 +34,31 @@ We're attempting to make this as strict as possible, requiring:
 \examples{
 data(rse_small, sce_small)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 x <- rse_small
 colnames(x)
 colData(x)
 
-# Create a copy of our minimal example.
+## Create a copy of our minimal example.
 y <- x
 colnames(y) <- paste0("sample", seq(from = 5L, to = 8L))
 colnames(y)
 colData(y)
 
-# Combine two SummarizedExperiment objects.
+## Combine two SummarizedExperiment objects.
 c <- combine(x, y)
 print(c)
 colnames(c)
 colData(c)
 
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 x <- sce_small
 head(colnames(x))
 sampleData(x)
 
-# Here we're faking a distinct replicate, just as an example.
+## Here we're faking a distinct replicate, just as an example.
 y <- x
-# Increase the cell ID numbers.
+## Increase the cell ID numbers.
 cells <- colnames(y) \%>\%
     sub("cell", "", .) \%>\%
     as.integer() \%>\%
@@ -66,12 +66,12 @@ cells <- colnames(y) \%>\%
     paste0("cell", .)
 colnames(y) <- cells
 head(colnames(y))
-# Increase the sample ID numbers.
+## Increase the sample ID numbers.
 y$sampleID <- gsub("1$", "3", y$sampleID)
 y$sampleID <- gsub("2$", "4", y$sampleID)
 sampleData(y)
 
-# Combine two SingleCellExperiment objects.
+## Combine two SingleCellExperiment objects.
 c <- combine(x, y)
 print(c)
 sampleData(c)
@@ -81,17 +81,4 @@ sampleData(c)
 \item \code{\link[BiocGenerics:combine]{BiocGenerics::combine()}}.
 \item \code{help("merge.Matrix", "Matrix.utils")}.
 }
-
-Other Data Functions: \code{\link{aggregate}},
-  \code{\link{counts}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{minimalSampleData}},
-  \code{\link{organism}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Data Functions}

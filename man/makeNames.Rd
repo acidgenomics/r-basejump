@@ -218,7 +218,7 @@ However, it is recommended to avoid using it for variable assignments into an
 \examples{
 loadRemoteData(url = file.path(basejumpCacheURL, "mn.rda"))
 
-# character ====
+## character ====
 x <- mn$character
 print(x)
 camel(x)
@@ -235,7 +235,7 @@ snake(x)
 upperCamel(x)
 makeNames(x)
 
-# factor ====
+## factor ====
 x <- mn$factor
 print(x)
 camel(x)
@@ -244,7 +244,7 @@ snake(x)
 upperCamel(x)
 makeNames(x)
 
-# data.frame ====
+## data.frame ====
 x <- datasets::USArrests
 dimnames(x)
 camel(x, rownames = TRUE, colnames = TRUE) \%>\% dimnames()
@@ -252,7 +252,7 @@ dotted(x, rownames = TRUE, colnames = TRUE) \%>\% dimnames()
 snake(x, rownames = TRUE, colnames = TRUE) \%>\% dimnames()
 upperCamel(x, rownames = TRUE, colnames = TRUE) \%>\% dimnames()
 
-# list ====
+## list ====
 x <- mn$list
 print(x)
 camel(x) \%>\% names()
@@ -270,14 +270,4 @@ S4 object classes.
 \item \href{https://cran.r-project.org/package=lettercase}{lettercase}.
 \item \href{https://tazinho.github.io/snakecase}{snakecase}.
 }
-
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{removeNA}}, \code{\link{sanitizeNA}},
-  \code{\link{sanitizePercent}},
-  \code{\link{sanitizeRowData}},
-  \code{\link{sanitizeSampleData}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Sanitization Functions}

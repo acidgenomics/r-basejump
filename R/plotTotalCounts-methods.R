@@ -1,8 +1,7 @@
 #' Plot Total Counts
 #'
 #' @name plotTotalCounts
-#' @family Quality Control Functions
-#' @author Michael Steinbaugh
+#' @family Plots
 #' @export
 #'
 #' @inheritParams general

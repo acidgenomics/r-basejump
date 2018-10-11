@@ -56,22 +56,25 @@ Plot Counts per Biotype
 \examples{
 data(rse_small, sce_small)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 plotCountsPerBiotype(rse_small)
 plotCountsPerBroadClass(rse_small)
 
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 plotCountsPerBiotype(sce_small)
 plotCountsPerBroadClass(sce_small)
 }
 \seealso{
 \link{makeGRanges}.
 
-Other Plot Functions: \code{\link{plotGene}},
+Other Plots: \code{\link{plotCountsPerGene}},
+  \code{\link{plotGenderMarkers}},
+  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
   \code{\link{plotHeatmap}}, \code{\link{plotQC}},
+  \code{\link{plotTotalCounts}},
   \code{\link{plotZerosVsDepth}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Plot Functions}
+\concept{Plots}

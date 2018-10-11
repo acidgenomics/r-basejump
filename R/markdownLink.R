@@ -2,7 +2,7 @@
 #'
 #' For use in `asis` blocks only.
 #'
-#' @family R Markdown Functions
+#' @family Markdown Functions
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @export
 #'

@@ -10,11 +10,14 @@ Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 \description{
 Gene-to-Symbol Mappings
 }
-\seealso{
-\itemize{
-\item \code{\link[=gene2symbol]{gene2symbol()}}.
-\item \link{makeGene2Symbol}.
+\examples{
+## SummarizedExperiment ====
+data(rse_small)
+x <- gene2symbol(rse_small)
+print(x)
 }
+\seealso{
+\link{gene2symbol}, \link{makeGene2Symbol}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

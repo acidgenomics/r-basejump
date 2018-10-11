@@ -36,23 +36,20 @@ This code is used internally by:
 }
 }
 \examples{
-# RNA-seq template
+## RNA-seq template
 \dontrun{
 prepareTemplate(package = "bcbioRNASeq")
 }
 
-# Single-cell RNA-seq template
+## Single-cell RNA-seq template
 \dontrun{
 prepareTemplate(package = "bcbioSingleCell")
 }
 }
 \seealso{
-Other R Markdown Functions: \code{\link{markdownHeader}},
+Other Markdown Functions: \code{\link{markdownHeader}},
   \code{\link{markdownLink}}, \code{\link{markdownList}},
   \code{\link{markdownPlotlist}},
-  \code{\link{markdownTables}}
+  \code{\link{markdownTables}}, \code{\link{markdown}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{R Markdown Functions}
+\concept{Markdown Functions}

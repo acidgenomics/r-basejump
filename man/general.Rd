@@ -82,7 +82,4 @@ recommended to enable this when debugging.}
 \description{
 General Arguments
 }
-\author{
-Michael Steinbaugh
-}
 \keyword{internal}

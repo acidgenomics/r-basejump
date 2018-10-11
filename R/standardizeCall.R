@@ -3,8 +3,6 @@
 #' This function adds matching support for S4 methods with formals that aren't
 #' identical to the generic, and use a nested `.local()` call.
 #'
-#' @family Developer Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams base::sys.call
@@ -15,19 +13,22 @@
 #' - `list`: `list`. Verbose list that includes additional information about how
 #'   the call was standardized.
 #'
-#' @seealso [base::match.call()].
+#' @seealso
+#' - [base::match.call].
+#' - [base::sys.call].
+#' - [base::sys.parent].
 #'
 #' @examples
 #' aaa <- "AAA"
 #' bbb <- "BBB"
 #'
-#' # Standard function
+#' ## Standard function
 #' testing <- function(a, b) {
 #'     standardizeCall()
 #' }
 #' testing(aaa, bbb)
 #'
-#' # Inside S4 method
+#' ## Inside S4 method
 #' setGeneric(
 #'     name = "testing",
 #'     def = function(a, b, ...) {

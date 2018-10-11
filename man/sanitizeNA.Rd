@@ -39,13 +39,13 @@ inside a character vector to \code{NA_character_}. Other \code{atomic} data type
 returned unmodified.
 }
 \examples{
-# character ====
+## character ====
 from <- as.character(c(1L, "x", "", "NA", "NULL"))
 print(from)
 to <- sanitizeNA(from)
 print(to)
 
-# DataFrame ====
+## DataFrame ====
 from <- DataFrame(
     a = c("foo", ""),
     b = c(NA, "bar"),
@@ -55,14 +55,3 @@ print(from)
 to <- sanitizeNA(from)
 print(to)
 }
-\seealso{
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{makeNames}}, \code{\link{removeNA}},
-  \code{\link{sanitizePercent}},
-  \code{\link{sanitizeRowData}},
-  \code{\link{sanitizeSampleData}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Sanitization Functions}

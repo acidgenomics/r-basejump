@@ -20,12 +20,4 @@ repetitive gene vector operations, for example.
 \examples{
 sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 }
-\seealso{
-Other Atomic Vector Functions: \code{\link{detectLanes}},
-  \code{\link{detectOrganism}},
-  \code{\link{toStringUnique}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Atomic Vector Functions}
+\concept{Sanitization}

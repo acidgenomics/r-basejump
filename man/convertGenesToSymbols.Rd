@@ -61,11 +61,11 @@ gene2symbol <- gene2symbol(object)
 print(gene2symbol)
 genes <- head(gene2symbol[["geneID"]])
 
-# character ====
+## character ====
 x <- convertGenesToSymbols(genes, gene2symbol = gene2symbol)
 print(x)
 
-# matrix ====
+## matrix ====
 samples <- head(colnames(object))
 counts <- matrix(
     data = seq_len(length(genes) * length(samples)),
@@ -78,22 +78,18 @@ print(counts)
 x <- convertGenesToSymbols(counts, gene2symbol = gene2symbol)
 print(x)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 x <- convertGenesToSymbols(rse_small)
 print(x)
-# Interconvert back to gene IDs.
+## Interconvert back to gene IDs.
 y <- convertSymbolsToGenes(x)
 print(y)
 }
 \seealso{
-Other Annotation Functions: \code{\link{convertTranscriptsToGenes}},
+Other Identifier Mapping Functions: \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}, \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{hgnc2ensembl}}, \code{\link{mapGenes}},
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Annotation Functions}
+\concept{Identifier Mapping Functions}

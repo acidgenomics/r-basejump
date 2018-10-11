@@ -1,7 +1,8 @@
 #' Interesting Groups
 #'
 #' @name interestingGroups
-#' @author Michael Steinbaugh
+#' @family Metadata Functions
+#' @family SummarizedExperiment Functions
 #' @export
 #'
 #' @inheritParams general
@@ -15,7 +16,7 @@
 #' intgroup <- interestingGroups(object)
 #' print(intgroup)
 #'
-#' # Assignment support.
+#' ## Assignment support.
 #' interestingGroups(object) <- intgroup[[1L]]
 #' interestingGroups(object)
 NULL

@@ -51,11 +51,11 @@ plotTotalCounts(rse_small)
 plotTotalCounts(sce_small)
 }
 \seealso{
-Other Quality Control Functions: \code{\link{plotCountsPerGene}},
+Other Plots: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotCountsPerGene}},
   \code{\link{plotGenderMarkers}},
-  \code{\link{plotGenesDetected}}
+  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
+  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
+  \code{\link{plotZerosVsDepth}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Quality Control Functions}
+\concept{Plots}

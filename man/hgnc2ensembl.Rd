@@ -3,7 +3,7 @@
 \name{hgnc2ensembl}
 \alias{hgnc2ensembl}
 \alias{HGNC2Ensembl}
-\title{\code{HGNC2Ensembl} Generator}
+\title{HGNC-to-Ensembl Gene Identifier Mappings}
 \usage{
 hgnc2ensembl(.test = FALSE)
 }
@@ -14,18 +14,18 @@ hgnc2ensembl(.test = FALSE)
 \code{HGNC2Ensembl}.
 }
 \description{
-\code{HGNC2Ensembl} Generator
+HGNC-to-Ensembl Gene Identifier Mappings
 }
 \examples{
 x <- hgnc2ensembl(.test = TRUE)
 print(x)
 }
 \seealso{
-Other S4 Generators: \code{\link{eggnog}},
+Other Identifier Mapping Functions: \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
-  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
+  \code{\link{mapGenes}}, \code{\link{mgi2ensembl}},
+  \code{\link{tx2gene}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{S4 Generators}
+\concept{Identifier Mapping Functions}

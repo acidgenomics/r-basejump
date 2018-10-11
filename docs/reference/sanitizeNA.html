@@ -157,21 +157,13 @@ returned unmodified.</p>
 
     <p>Object containing proper <code>NA</code> values.</p>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='collapseToString.html'>collapseToString</a></code>,
-  <code><a href='makeNames.html'>makeNames</a></code>, <code><a href='removeNA.html'>removeNA</a></code>,
-  <code><a href='sanitizePercent.html'>sanitizePercent</a></code>,
-  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code>,
-  <code><a href='sanitizeSampleData.html'>sanitizeSampleData</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># character ====</span>
+    <pre class="examples"><div class='input'><span class='co'>## character ====</span>
 <span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'>as.character</span>(<span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='st'>"x"</span>, <span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>))
 <span class='fu'>print</span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; [1] "1"    "x"    ""     "NA"   "NULL"</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeNA</span>(<span class='no'>from</span>)
 <span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; [1] "1" "x" NA  NA  NA </div><div class='input'>
-<span class='co'># DataFrame ====</span>
+<span class='co'>## DataFrame ====</span>
 <span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>),
@@ -194,15 +186,9 @@ returned unmodified.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

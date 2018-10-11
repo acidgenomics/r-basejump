@@ -68,18 +68,18 @@ returning the slots as a \code{list}.
 \examples{
 data(rse_small)
 
-# DataFrame to tbl_df ====
+## DataFrame to tbl_df ====
 data <- colData(rse_small)
 print(data)
 
-# Automatically move row names to `rowname` column by default.
+## Automatically move row names to `rowname` column by default.
 tbl_df <- as(data, Class = "tbl_df")
 
-# tbl_df to DataFrame ====
+## tbl_df to DataFrame ====
 data <- as(tbl_df, Class = "DataFrame")
 print(data)
 
-# SummarizedExperiment to list ====
+## SummarizedExperiment to list ====
 x <- as(rse_small, Class = "list")
 class(x)
 names(x)
@@ -93,7 +93,4 @@ names(x)
 \item \code{\link[tibble:as_tibble]{tibble::as_tibble()}}.
 \item \code{\link[=as.list]{as.list()}}.
 }
-}
-\author{
-Michael Steinbaugh
 }

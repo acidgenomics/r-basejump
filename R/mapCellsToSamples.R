@@ -4,8 +4,7 @@
 #' matching.
 #'
 #' @name mapCellsToSamples
-#' @family Single-Cell Functions
-#' @author Michael Steinbaugh
+#' @family SingleCellExperiment Functions
 #' @export
 #'
 #' @param cells `character`. Cell identifiers.

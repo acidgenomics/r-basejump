@@ -36,7 +36,7 @@ readme <- transmit(
 basename(readme)
 file.exists(readme)
 
-# Clean up
+## Clean up.
 unlink("ensembl_readme.txt.gz")
 }
 \seealso{
@@ -45,8 +45,5 @@ Other Import/Export Functions: \code{\link{assignAndSaveData}},
   \code{\link{loadDataAsName}}, \code{\link{loadData}},
   \code{\link{loadRemoteData}}, \code{\link{saveData}},
   \code{\link{writeCounts}}
-}
-\author{
-Michael Steinbaugh
 }
 \concept{Import/Export Functions}

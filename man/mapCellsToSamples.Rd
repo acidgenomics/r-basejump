@@ -19,11 +19,10 @@ This function extracts \code{sampleID} from the \code{cellID} column using grep
 matching.
 }
 \seealso{
-Other Single-Cell Functions: \code{\link{cell2sample}},
+Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
+  \code{\link{cell2sample}},
   \code{\link{makeSingleCellExperiment}},
+  \code{\link{subsetPerSample}},
   \code{\link{topCellsPerSample}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Single-Cell Functions}
+\concept{SingleCellExperiment Functions}

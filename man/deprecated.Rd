@@ -138,7 +138,4 @@ readYAML(...)
 \description{
 Deprecated Functions
 }
-\author{
-Michael Steinbaugh
-}
 \keyword{internal}

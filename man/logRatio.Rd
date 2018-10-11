@@ -32,10 +32,10 @@ compatibility with RNA-Seq differential expression output.}
 Interconvert Log Ratio and Fold Change Values
 }
 \examples{
-# Convert fold change to log ratio.
+## Convert fold change to log ratio.
 foldChangeToLogRatio(c(-8, -4, -2, 1, 2, 4, 8))
 
-# Convert log ratio to fold change.
+## Convert log ratio to fold change.
 logRatioToFoldChange(seq(-3, 3, 1))
 }
 \seealso{
@@ -45,10 +45,7 @@ Modified variants of:
 \item \code{gtools::logratio2foldchange()}.
 }
 
-Other Math and Science Functions: \code{\link{geometricMean}},
-  \code{\link{microplate}}
+Other Calculations: \code{\link{aggregate}},
+  \code{\link{geometricMean}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Math and Science Functions}
+\concept{Calculations}

@@ -1,8 +1,7 @@
 #' Organism Accessor
 #'
 #' @name organism
-#' @family Data Functions
-#' @author Michael Steinbaugh
+#' @family Metadata Functions
 #' @importFrom BiocGenerics organism
 #' @export
 #'

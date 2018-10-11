@@ -1,8 +1,7 @@
-#' `PANTHER` Generator
+#' @inherit PANTHER-class
 #'
 #' @name panther
 #' @family Annotation Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param organism `string`. Full Latin organism name. Currently supported
@@ -11,13 +10,12 @@
 #' @param release `string` or `NULL`. PANTHER release version. If set `NULL`,
 #'   defaults to current release. Consult the PANTHER website for a list of
 #'   release versions available from the FTP server (e.g. `"13.0"`).
+#' @param progress `boolean`. Use [pblapply()] internally to show progress.
 #'
 #' @return `PANTHER`.
 #'
 #' @examples
-#' invisible(capture.output(
-#'     x <- panther("Homo sapiens", .test = TRUE)
-#' ))
+#' x <- panther("Homo sapiens", progress = FALSE, .test = TRUE)
 #' summary(x)
 NULL
 
@@ -33,9 +31,12 @@ NULL
 
 
 
-.splitTerms <- function(vec) {
-    message(deparse(substitute(vec)))
-    pblapply(vec, function(x) {
+.splitTerms <- function(vec, progress = TRUE) {
+    if (isTRUE(progress)) {
+        message(deparse(substitute(vec)))
+        lapply <- pblapply
+    }
+    lapply(vec, function(x) {
         x <- x %>%
             strsplit(split = ";") %>%
             unlist() %>%
@@ -140,6 +141,7 @@ NULL
 panther <- function(
     organism,
     release = NULL,
+    progress = TRUE,
     .test = FALSE
 ) {
     stopifnot(has_internet())
@@ -153,6 +155,7 @@ panther <- function(
         release <- "current_release"
     }
     assert_is_a_string(release)
+    assert_is_a_bool(progress)
     assert_is_a_bool(.test)
 
     message(paste0(
@@ -197,7 +200,7 @@ panther <- function(
             "pantherPathway"
         ),
         col_types = cols(),
-        progress = FALSE
+        progress = progress
     ) %>%
         separate(
             col = "pantherID",
@@ -238,7 +241,8 @@ panther <- function(
             "pantherClass",
             "pantherPathway"
         ),
-        .funs = .splitTerms
+        .funs = .splitTerms,
+        progress = progress
     ) %>%
         # Sort columns alphabetically.
         .[, sort(colnames(.)), drop = FALSE] %>%
