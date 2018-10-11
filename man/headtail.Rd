@@ -4,11 +4,29 @@
 \name{headtail}
 \alias{headtail}
 \alias{headtail,atomic-method}
+\alias{headtail,matrix-method}
+\alias{headtail,sparseMatrix-method}
+\alias{headtail,data.frame-method}
+\alias{headtail,DataFrame-method}
+\alias{headtail,GRanges-method}
+\alias{headtail,SummarizedExperiment-method}
 \title{Return the First and Last Part of an Object}
 \usage{
 headtail(x, ...)
 
 \S4method{headtail}{atomic}(x, n = 2L)
+
+\S4method{headtail}{matrix}(x, n = 2L)
+
+\S4method{headtail}{sparseMatrix}(x, n = 2L)
+
+\S4method{headtail}{data.frame}(x, n = 2L)
+
+\S4method{headtail}{DataFrame}(x, n = 2L)
+
+\S4method{headtail}{GRanges}(x, n = 2L)
+
+\S4method{headtail}{SummarizedExperiment}(x, n = 2L)
 }
 \arguments{
 \item{x}{Object.}
@@ -19,16 +37,47 @@ headtail(x, ...)
 last items to include.}
 }
 \value{
-\code{character}.
+None (invisible \code{NULL}).
 }
 \description{
-Return the First and Last Part of an Object
+Inspired by the \code{\link[=print]{print()}} method for \code{DataFrame} class objects. Applies to
+both rows and columns, enabling quick inspection during interactive use.
 }
 \section{Methods (by class)}{
 \itemize{
 \item \code{atomic}: Paste collapse to a \code{string}.
+
+\item \code{matrix}: Show first and last rows.
+
+\item \code{sparseMatrix}: Same method as \code{matrix}.
+
+\item \code{data.frame}: Same method as \code{matrix}.
+
+\item \code{DataFrame}: Same method as \code{data.frame}.
+
+\item \code{GRanges}: Summarize the ranges.
+
+\item \code{SummarizedExperiment}: Summarize the primary \code{\link[=assay]{assay()}}.
 }}
 
+\examples{
+data(rse_small, sce_small)
+
+## data.frame ====
+headtail(datasets::mtcars)
+
+## SummarizedExperiment ====
+headtail(rse_small)
+headtail(colData(rse_small))
+headtail(rowData(rse_small))
+
+## SingleCellExperiment ====
+headtail(sce_small)
+}
 \seealso{
-\link{head}, \link{tail}.
+\itemize{
+\item \link{head}, \link{tail}, \link{cat}.
+\item \code{getMethod("show", "DataTable")}.
+\item \link[S4Vectors:showAsCell]{S4Vectors::showAsCell}.
+}
 }

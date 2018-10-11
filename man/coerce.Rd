@@ -6,6 +6,7 @@
 \alias{as}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
+\alias{coerce,sparseMatrix,data.frame-method}
 \alias{coerce,tbl_df,DataFrame-method}
 \alias{coerceS4ToList}
 \alias{coerce,SummarizedExperiment,list-method}

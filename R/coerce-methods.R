@@ -72,6 +72,9 @@ NULL
 
 
 # Internal =====================================================================
+# This helps avoid dropping of rowData when coercing from an object that
+# inherits from RangedSummarizedExperiment. This will be safe to remove once
+# we can fix the bug in SummarizedExperiment.
 .asSummarizedExperiment <- function(object) {
     assert_is_all_of(object, "SummarizedExperiment")
     if (is(object, "RangedSummarizedExperiment")) {
@@ -83,14 +86,18 @@ NULL
 
 
 # Coerce to tibble =============================================================
+# Note that our constructors move rownames to "rowname" column automatically
+# by default, to avoid dropping rownames accidentally.
+
+
+
 #' @importFrom tibble as_tibble
 #' @export
 tibble::as_tibble
 
 
 
-# Note that our constructors move rownames to "rowname" column automatically
-# by default, to avoid dropping rownames accidentally.
+# S3 constructor.
 .as_tibble <-  # nolint
     function(x, rownames = "rowname", ...) {
         # Check for valid columns (atomic, list).
@@ -111,7 +118,7 @@ tibble::as_tibble
             ), call. = FALSE)
         }
         # Coerce to standard data frame.
-        x <- as.data.frame(x)
+        x <- as(x, "data.frame")
         if (!hasRownames(x)) {
             rownames <- NULL
         }
@@ -127,7 +134,6 @@ tibble::as_tibble
 
 
 
-# S3 methods -------------------------------------------------------------------
 #' @importFrom tibble as_tibble
 #' @method as_tibble DataFrame
 #' @export
@@ -135,6 +141,8 @@ as_tibble.DataFrame <- .as_tibble
 
 
 
+# The default handling from data.frame isn't clean, so add this.
+# Default method will warn: `Arguments in '...' ignored`.
 #' @importFrom tibble as_tibble
 #' @method as_tibble GRanges
 #' @export
@@ -143,7 +151,7 @@ as_tibble.GRanges <-  # nolint
         do.call(
             what = .as_tibble,
             args = list(
-                x = as.data.frame(x),
+                x = as(x, "data.frame"),
                 rownames = rownames,
                 ...
             )
@@ -152,15 +160,11 @@ as_tibble.GRanges <-  # nolint
 
 
 
-# S4 methods -------------------------------------------------------------------
+# S4 constructor.
+# Note that we can't declare additional formals in S4 coercion methods, so
+# set reasonable defaults above in S3 methods.
 .asTibble <- function(from) {
-    from <- as.data.frame(from)
-    if (hasRownames(from)) {
-        rownames <- "rowname"
-    } else {
-        rownames <- NULL
-    }
-    as_tibble(from, rownames = rownames)
+    as_tibble(from)
 }
 
 
@@ -181,6 +185,42 @@ setAs(
     from = "GRanges",
     to = "tbl_df",
     def = .asTibble
+)
+
+
+
+# Coerce from sparseMatrix =====================================================
+#' @method as_tibble GRanges
+#' @export
+as.data.frame.sparseMatrix <-  # nolint
+    function(x, ...) {
+        as.data.frame(as.matrix(x), ...)
+    }
+
+
+
+#' @rdname coerce
+#' @name coerce,sparseMatrix,data.frame-method
+setAs(
+    from = "sparseMatrix",
+    to = "data.frame",
+    def = function(from) {
+        as.data.frame(from)
+    }
+)
+
+
+
+#' @rdname coerce
+#' @name coerce,sparseMatrix,data.frame-method
+setAs(
+    from = "sparseMatrix",
+    to = "DataFrame",
+    def = function(from) {
+        from %>%
+            as("data.frame") %>%
+            as("DataFrame")
+    }
 )
 
 
