@@ -31,7 +31,7 @@ For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
 defined in \code{\link[=assayNames]{assayNames()}}.
 }
 \examples{
-## SummarizedExperiment ====
+data(rse_small)
 x <- counts(rse_small)
 summary(x)
 }
