@@ -8,6 +8,7 @@
 \alias{headtail,sparseMatrix-method}
 \alias{headtail,data.frame-method}
 \alias{headtail,DataFrame-method}
+\alias{headtail,GRanges-method}
 \alias{headtail,SummarizedExperiment-method}
 \title{Return the First and Last Part of an Object}
 \usage{
@@ -22,6 +23,8 @@ headtail(x, ...)
 \S4method{headtail}{data.frame}(x, n = 2L)
 
 \S4method{headtail}{DataFrame}(x, n = 2L)
+
+\S4method{headtail}{GRanges}(x, n = 2L)
 
 \S4method{headtail}{SummarizedExperiment}(x, n = 2L)
 }
@@ -52,6 +55,8 @@ both rows and columns, enabling quick inspection during interactive use.
 
 \item \code{DataFrame}: Same method as \code{data.frame}.
 
+\item \code{GRanges}: Summarize the ranges.
+
 \item \code{SummarizedExperiment}: Summarize the primary \code{\link[=assay]{assay()}}.
 }}
 
@@ -73,5 +78,6 @@ headtail(sce_small)
 \itemize{
 \item \link{head}, \link{tail}, \link{cat}.
 \item \code{getMethod("show", "DataTable")}.
+\item \link[S4Vectors:showAsCell]{S4Vectors::showAsCell}.
 }
 }
