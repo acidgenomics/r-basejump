@@ -350,16 +350,11 @@ S4 object classes.</p></li>
 <li><p><a href='https://cran.r-project.org/package=lettercase'>lettercase</a>.</p></li>
 <li><p><a href='https://tazinho.github.io/snakecase'>snakecase</a>.</p></li>
 </ul></div>
-    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='collapseToString.html'>collapseToString</a></code>,
-  <code><a href='removeNA.html'>removeNA</a></code>, <code><a href='sanitizeNA.html'>sanitizeNA</a></code>,
-  <code><a href='sanitizePercent.html'>sanitizePercent</a></code>,
-  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code>,
-  <code><a href='sanitizeSampleData.html'>sanitizeSampleData</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"mn.rda"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading mn.rda...</span></div><div class='input'>
-<span class='co'># character ====</span>
+<span class='co'>## character ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>character</span>
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "nCount"         
 #&gt;  [5] "tx2gene"         "TX2GeneID"       "G2M.Score"       "worfdbHTMLRemap"
@@ -389,7 +384,7 @@ S4 object classes.</p></li>
 #&gt; "hello.world" "HELLO.WORLD" </div><div class='input'><span class='fu'>snake</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        item_a        item_b 
 #&gt; "hello_world" "hello_world" </div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        ItemA        ItemB 
 #&gt; "HelloWorld" "HELLOWORLD" </div><div class='input'><span class='fu'>makeNames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "hello_world" "HELLO_WORLD"</div><div class='input'>
-<span class='co'># factor ====</span>
+<span class='co'>## factor ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>factor</span>
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample 1 sample 2 sample 3 sample 4 
 #&gt;  group 1  group 1  group 2  group 2 
@@ -402,7 +397,7 @@ S4 object classes.</p></li>
 #&gt; Levels: group_1 group_2</div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Sample1 Sample2 Sample3 Sample4 
 #&gt;  Group1  Group1  Group2  Group2 
 #&gt; Levels: Group1 Group2</div><div class='input'><span class='fu'>makeNames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "group_1"   "group_1_1" "group_2"   "group_2_1"</div><div class='input'>
-<span class='co'># data.frame ====</span>
+<span class='co'>## data.frame ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/USArrests'>USArrests</a></span>
 <span class='fu'>dimnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt;  [1] "Alabama"        "Alaska"         "Arizona"        "Arkansas"      
@@ -490,7 +485,7 @@ S4 object classes.</p></li>
 #&gt; [[2]]
 #&gt; [1] "Murder"   "Assault"  "UrbanPop" "Rape"    
 #&gt; </div><div class='input'>
-<span class='co'># list ====</span>
+<span class='co'>## list ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>list</span>
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; $Item.A
 #&gt; [1] 1 2
@@ -512,10 +507,6 @@ S4 object classes.</p></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

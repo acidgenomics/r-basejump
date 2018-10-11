@@ -2,6 +2,8 @@
 #'
 #' Base functions for bioinformatics and R package development.
 #'
+#' @keywords internal
+#'
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce

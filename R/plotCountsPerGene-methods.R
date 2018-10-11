@@ -4,8 +4,7 @@
 #' unless the library sizes or total RNA expression are different.
 #'
 #' @name plotCountsPerGene
-#' @family Quality Control Functions
-#' @author Michael Steinbaugh
+#' @family Plots
 #' @export
 #'
 #' @inheritParams meltCounts
@@ -17,12 +16,12 @@
 #' @examples
 #' data(rse_small, sce_small)
 #'
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' plotCountsPerGene(rse_small, geom = "density")
 #' plotCountsPerGene(rse_small, geom = "boxplot")
 #' plotCountsPerGene(rse_small, geom = "violin")
 #'
-#' # SingleCellExperiment ====
+#' ## SingleCellExperiment ====
 #' plotCountsPerGene(sce_small)
 NULL
 

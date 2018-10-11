@@ -1,7 +1,6 @@
 #' Convert to a Unique Character String
 #'
-#' @family Atomic Vector Functions
-#' @author Michael Steinbaugh
+#' @family Sanitization Functions
 #' @export
 #'
 #' @param object `atomic`.

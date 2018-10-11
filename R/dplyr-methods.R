@@ -1,3 +1,8 @@
+# Extend dplyr method support for S4 DataFrame class.
+# These methods should mimic tbl_df support, so documentation isn't necessary.
+
+
+
 # Dependencies =================================================================
 #' @importFrom dplyr groups
 #' @export

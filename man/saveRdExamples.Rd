@@ -31,14 +31,11 @@ saveRdExamples(
     dir = "example"
 )
 
-# Clean up
+## Clean up.
 unlink("example", recursive = TRUE)
 }
 \seealso{
-Other R Documentation Functions: \code{\link{RdTags}},
+Other Documentation Functions: \code{\link{RdTags}},
   \code{\link{parseRd}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{R Documentation Functions}
+\concept{Documentation Functions}

@@ -1,5 +1,4 @@
-# FIXME Add `makeDimnames()`.
-# FIXME Add plurarlized acronyms (e.g. "UMIs") to unit tests.
+# TODO Add plurarlized acronyms (e.g. "UMIs") to unit tests.
 
 
 
@@ -17,8 +16,6 @@
 #' `environment`, as that can introduce conflicts with base functions.
 #'
 #' @name makeNames
-#' @family Sanitization Functions
-#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param object Character vector or an object for which [names()] assignment
@@ -47,7 +44,7 @@
 #' @examples
 #' loadRemoteData(url = file.path(basejumpCacheURL, "mn.rda"))
 #'
-#' # character ====
+#' ## character ====
 #' x <- mn$character
 #' print(x)
 #' camel(x)
@@ -64,7 +61,7 @@
 #' upperCamel(x)
 #' makeNames(x)
 #'
-#' # factor ====
+#' ## factor ====
 #' x <- mn$factor
 #' print(x)
 #' camel(x)
@@ -73,7 +70,7 @@
 #' upperCamel(x)
 #' makeNames(x)
 #'
-#' # data.frame ====
+#' ## data.frame ====
 #' x <- datasets::USArrests
 #' dimnames(x)
 #' camel(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
@@ -81,7 +78,7 @@
 #' snake(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
 #' upperCamel(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
 #'
-#' # list ====
+#' ## list ====
 #' x <- mn$list
 #' print(x)
 #' camel(x) %>% names()

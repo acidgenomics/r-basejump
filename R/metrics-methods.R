@@ -8,7 +8,7 @@
 #' Note that metrics are cell level but grouped by sample.
 #'
 #' @name metrics
-#' @family Data Functions
+#' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @export
 #'
@@ -20,11 +20,11 @@
 #' @examples
 #' data(rse_small, sce_small)
 #'
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' x <- metrics(rse_small)
 #' print(x)
 #'
-#' # SingleCellExperiment ====
+#' ## SingleCellExperiment ====
 #' x <- metrics(sce_small)
 #' print(x)
 #'

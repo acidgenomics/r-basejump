@@ -184,7 +184,7 @@ returning the slots as a <code>list</code>.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
 
-<span class='co'># DataFrame to tbl_df ====</span>
+<span class='co'>## DataFrame to tbl_df ====</span>
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>colData</span>(<span class='no'>rse_small</span>)
 <span class='fu'>print</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;         genotype treatment
@@ -193,10 +193,10 @@ returning the slots as a <code>list</code>.</p>
 #&gt; sample2 knockout   control
 #&gt; sample3 wildtype   treated
 #&gt; sample4 knockout   treated</div><div class='input'>
-<span class='co'># Automatically move row names to `rowname` column by default.</span>
+<span class='co'>## Automatically move row names to `rowname` column by default.</span>
 <span class='no'>tbl_df</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>data</span>, <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"tbl_df"</span>)
 
-<span class='co'># tbl_df to DataFrame ====</span>
+<span class='co'>## tbl_df to DataFrame ====</span>
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>tbl_df</span>, <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"DataFrame"</span>)
 <span class='fu'>print</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;         genotype treatment
@@ -205,7 +205,7 @@ returning the slots as a <code>list</code>.</p>
 #&gt; sample2 knockout   control
 #&gt; sample3 wildtype   treated
 #&gt; sample4 knockout   treated</div><div class='input'>
-<span class='co'># SummarizedExperiment to list ====</span>
+<span class='co'>## SummarizedExperiment to list ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>rse_small</span>, <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"list"</span>)
 <span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
 #&gt; [5] "elementMetadata" "metadata"       </div></pre>
@@ -225,10 +225,6 @@ returning the slots as a <code>list</code>.</p>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

@@ -4,8 +4,7 @@
 #'   were imported using a tximport caller (e.g. salmon, kallisto).
 #'
 #' @name tpm
-#' @family Data Functions
-#' @author Michael Steinbaugh
+#' @family SummarizedExperiment Functions
 #' @importFrom SingleCellExperiment tpm
 #' @export
 #'

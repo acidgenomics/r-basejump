@@ -5,8 +5,7 @@
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
 #'
-#' @family Developer Functions
-#' @author Michael Steinbaugh
+#' @family Metadata Functions
 #' @export
 #'
 #' @return `string` or `boolean`. Scheduler name if HPC is detected (e.g. LSF,

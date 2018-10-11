@@ -145,23 +145,23 @@ Apply quantile breaks.
 }
 
 \examples{
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 plotHeatmap(rse_small)
 plotCorrelationHeatmap(rse_small)
 plotQuantileHeatmap(rse_small)
 
-# Disable column clustering.
+## Disable column clustering.
 plotHeatmap(rse_small, clusterCols = FALSE)
 
-# Using pheatmap default colors.
+## Using pheatmap default colors.
 plotHeatmap(rse_small, color = NULL, legendColor = NULL)
 
-# Using hexadecimal color input.
+## Using hexadecimal color input.
 library(RColorBrewer)
 purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
 plotHeatmap(rse_small, color = purple_orange)
 
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 plotHeatmap(sce_small)
 plotCorrelationHeatmap(sce_small)
 plotQuantileHeatmap(sce_small)
@@ -178,11 +178,14 @@ plotQuantileHeatmap(sce_small)
 \item \code{\link[stats:hclust]{stats::hclust()}}.
 }
 
-Other Plot Functions: \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotGene}}, \code{\link{plotQC}},
+Other Plots: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotCountsPerGene}},
+  \code{\link{plotGenderMarkers}},
+  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
+  \code{\link{plotQC}}, \code{\link{plotTotalCounts}},
   \code{\link{plotZerosVsDepth}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Plot Functions}
+\concept{Plots}

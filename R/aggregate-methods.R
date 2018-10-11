@@ -9,24 +9,8 @@
 #' [aggregateCols()] works across the columns, and is designed to aggregate
 #' sample replicates.
 #'
-#' @section SummarizedExperiment:
-#'
-#' Slot an `aggregate` column into [rowData()] for `aggregateRows()`, or into
-#' [colData()] for [aggregateCols()]. The S4 method will define the `groupings`
-#' automatically and perform the aggregation.
-#'
-#' @section SingleCellExperiment:
-#'
-#' Method support inherits from `SummarizedExperiment`, and still relies upon
-#' slotting an `aggregate` column into [colData()]. Note that these groupings
-#' will map to cells, so care must be taken to properly aggregate samples.
-#'
-#' [aggregateCellsToSamples()] is a utilty function that factilites
-#' cell-to-sample aggregation. By default, this function will sum the counts
-#' across cells to sample level.
-#'
+#' @family Calculations
 #' @name aggregate
-#' @family Data Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general
@@ -41,12 +25,12 @@
 #'   (samples).
 #'
 #' @seealso
-#' - [stats::aggregate].
-#' - [Matrix.utils::aggregate.Matrix].
-#' - [S4Vectors::aggregate].
+#' - [stats::aggregate()].
+#' - [S4Vectors::aggregate()].
+#' - [Matrix.utils::aggregate.Matrix()].
 #'
 #' @examples
-#' # Example data ====
+#' ## Example data ====
 #' counts <- matrix(
 #'     data = c(
 #'         0L, 1L, 1L, 1L,
@@ -80,17 +64,17 @@
 #' names(samples) <- colnames(counts)
 #' print(samples)
 #'
-#' # matrix
+#' ## matrix
 #' matrix <- as(counts, "matrix")
 #' class(matrix)
 #' print(matrix)
 #'
-#' # sparseMatrix
+#' ## sparseMatrix
 #' sparse <- as(matrix, "sparseMatrix")
 #' class(sparse)
 #' print(sparse)
 #'
-#' # SummarizedExperiment
+#' ## SummarizedExperiment
 #' se <- SummarizedExperiment::SummarizedExperiment(
 #'     assay = list(counts = sparse),
 #'     colData = S4Vectors::DataFrame(
@@ -101,20 +85,15 @@
 #' )
 #' print(se)
 #'
-#' # aggregateRows ====
+#' ## aggregateRows ====
 #' aggregateRows(matrix, groupings = genes)
 #' aggregateRows(sparse, groupings = genes)
 #' aggregateRows(se)
 #'
-#' # aggregateCols ====
+#' ## aggregateCols ====
 #' aggregateCols(matrix, groupings = samples)
 #' aggregateCols(sparse, groupings = samples)
 #' aggregateCols(se)
-#'
-#' # aggregateCellsToSamples ====
-#' data(sce_small)
-#' x <- aggregateCellsToSamples(sce_small)
-#' print(x)
 NULL
 
 
@@ -435,24 +414,8 @@ formals(.aggregateCols.SCE)[["fun"]] <- .aggregateFuns
 
 
 
-.aggregateCellsToSamples.SCE <-  # nolint
-    function(object, fun) {
-        validObject(object)
-        fun <- match.arg(fun)
-        rse <- as(object, "RangedSummarizedExperiment")
-        colData(rse)[["aggregate"]] <- cell2sample(object)
-        aggregateCols(
-            object = rse,
-            col = "aggregate",
-            fun = fun
-        )
-    }
-formals(.aggregateCellsToSamples.SCE)[["fun"]] <- .aggregateFuns
-
-
-
 # Methods ======================================================================
-#' @rdname aggregate
+#' @describeIn aggregate Aggregate rows or columns using a grouping `factor`.
 #' @export
 setMethod(
     f = "aggregateRows",
@@ -462,7 +425,7 @@ setMethod(
 
 
 
-#' @rdname aggregate
+#' @describeIn aggregate Same conventions as `matrix`.
 #' @export
 setMethod(
     f = "aggregateRows",
@@ -472,7 +435,12 @@ setMethod(
 
 
 
-#' @rdname aggregate
+#' @describeIn aggregate Aggregate rows or columns in [assays()] using an
+#'   automatically generated grouping `factor`, which is obtained from a
+#'   user-defined column (`col` argument) in either [rowData()] or [colData()].
+#'   Slot an `aggregate` column into [rowData()] for `aggregateRows()`, or into
+#'   [colData()] for [aggregateCols()]. This method will define the `groupings`
+#'   automatically and perform the aggregation.
 #' @export
 setMethod(
     f = "aggregateRows",
@@ -512,20 +480,14 @@ setMethod(
 
 
 
-#' @rdname aggregate
+#' @describeIn aggregate Aggregate [assays()] across cell-level groupings,
+#'   defined by a column in [colData()]. Inherits from `SummarizedExperiment`,
+#'   and still relies upon slotting an `aggregate` column into [colData()]. Note
+#'   that these groupings will map to cells, so care must be taken to properly
+#'   aggregate samples.
 #' @export
 setMethod(
     f = "aggregateCols",
     signature = signature("SingleCellExperiment"),
     definition = .aggregateCols.SCE
-)
-
-
-
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateCellsToSamples",
-    signature = signature("SingleCellExperiment"),
-    definition = .aggregateCellsToSamples.SCE
 )

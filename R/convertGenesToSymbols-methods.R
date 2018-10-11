@@ -1,8 +1,7 @@
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
 #' @name convertGenesToSymbols
-#' @family Annotation Functions
-#' @author Michael Steinbaugh
+#' @family Identifier Mapping Functions
 #' @export
 #'
 #' @include makeGRanges.R
@@ -23,11 +22,11 @@
 #' print(gene2symbol)
 #' genes <- head(gene2symbol[["geneID"]])
 #'
-#' # character ====
+#' ## character ====
 #' x <- convertGenesToSymbols(genes, gene2symbol = gene2symbol)
 #' print(x)
 #'
-#' # matrix ====
+#' ## matrix ====
 #' samples <- head(colnames(object))
 #' counts <- matrix(
 #'     data = seq_len(length(genes) * length(samples)),
@@ -40,10 +39,10 @@
 #' x <- convertGenesToSymbols(counts, gene2symbol = gene2symbol)
 #' print(x)
 #'
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' x <- convertGenesToSymbols(rse_small)
 #' print(x)
-#' # Interconvert back to gene IDs.
+#' ## Interconvert back to gene IDs.
 #' y <- convertSymbolsToGenes(x)
 #' print(y)
 NULL

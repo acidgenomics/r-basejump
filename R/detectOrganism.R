@@ -1,9 +1,3 @@
-# Note that `organism()` `character` method conflicts with annotate package,
-# which gets loaded into the namespace when DESeq2 is attached. Instead, we're
-# exporting as a separate function named `detectOrganism()`.
-
-
-
 #' Detect Organism
 #'
 #' Supports organism detection from Ensembl identifier or genome build.
@@ -24,30 +18,36 @@
 #' - *Rattus norvegicus* (rat)
 #' - *Saccharomyces cerevisiae* (yeast)
 #'
-#' @family Atomic Vector Functions
-#' @author Michael Steinbaugh
+#' @note [organism()] `character` method conflicts with annotate package, which
+#'   gets loaded into the namespace when DESeq2 is attached. Instead, we're
+#'   exporting the character method here as a separate function named
+#'   [detectOrganism()].
+#'
+#' @family Metadata Functions
 #' @export
 #'
 #' @param object `character`.
 #'
 #' @return `string`. Full latin organism name. Stops on match failure.
 #'
+#' @seealso [organism()].
+#'
 #' @examples
-#' # Match by gene identifier.
+#' ## Match by gene identifier.
 #' detectOrganism("ENSG00000000003")
 #'
-#' # Match by genome build.
+#' ## Match by genome build.
 #' detectOrganism("GRCh38")  # Ensembl
 #' detectOrganism("hg38")    # UCSC
 #'
-#' # Match by alternate organism name.
+#' ## Match by alternate organism name.
 #' detectOrganism("H. sapiens")
 #' detectOrganism("hsapiens")
 #'
-#' # The function will skip transgenes/spike-ins until we find a match.
+#' ## The function will skip transgenes/spike-ins until we find a match.
 #' detectOrganism(c("EGFP", "TDTOMATO", "ENSG00000000003"))
 #'
-#' # But it only returns the first match, if there are multiple genomes.
+#' ## But it only returns the first match, if there are multiple genomes.
 #' detectOrganism(c("ENSG00000000003", "ENSMUSG00000000001"))
 detectOrganism <- function(object) {
     assert_is_character(object)

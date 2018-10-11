@@ -22,13 +22,13 @@ in the \code{sampleName} column of \code{\link[=sampleData]{sampleData()}}. Othe
 the syntactically valid names defined as the rownames of \code{\link[=sampleData]{sampleData()}}.
 }
 \examples{
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 data(rse_small)
 object <- rse_small
 x <- sampleNames(object)
 print(x)
 
-# Assignment support
+## Assignment support
 value <- sampleNames(object)
 value <- toupper(value)
 print(value)
@@ -38,16 +38,20 @@ print(x)
 colData(object)$sampleName
 }
 \seealso{
-Other Data Functions: \code{\link{aggregate}},
-  \code{\link{combine}}, \code{\link{counts}},
+Other Metadata Functions: \code{\link{detectHPC}},
+  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
+  \code{\link{interestingGroups}},
+  \code{\link{microplate}},
+  \code{\link{minimalSampleData}}, \code{\link{organism}},
+  \code{\link{sampleData}},
+  \code{\link{uniteInterestingGroups}}
+
+Other SummarizedExperiment Functions: \code{\link{counts}},
+  \code{\link{interestingGroups}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{minimalSampleData}},
-  \code{\link{organism}}, \code{\link{sampleData}},
-  \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}}
+  \code{\link{metrics}}, \code{\link{sampleData}},
+  \code{\link{selectSamples}}, \code{\link{tpm}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Data Functions}
+\concept{Metadata Functions}
+\concept{SummarizedExperiment Functions}

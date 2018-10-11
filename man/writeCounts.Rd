@@ -41,7 +41,7 @@ single_cell_counts <- counts(sce_small)
 writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
 list.files("example")
 
-# Clean up
+## Clean up.
 unlink("example", recursive = TRUE)
 }
 \seealso{

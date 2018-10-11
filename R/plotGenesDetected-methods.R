@@ -1,8 +1,7 @@
 #' Plot Genes Detected
 #'
 #' @name plotGenesDetected
-#' @family Quality Control Functions
-#' @author Michael Steinbaugh
+#' @family Plots
 #' @export
 #'
 #' @inheritParams general

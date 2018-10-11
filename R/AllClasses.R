@@ -18,6 +18,7 @@ setOldClass(Classes = class(tibble::tibble()))
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit EggNOG
 #' @export
 #'
 #' @return This class extends `list` and contains:
@@ -29,9 +30,10 @@ setOldClass(Classes = class(tibble::tibble()))
 #'    and **N**on-supervised **O**rthologous **G**roups (NOG) protein
 #'    identifiers.
 #'
-#' @seealso
-#' - [eggnog()].
-#' - [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt).
+#' @seealso [eggnog].
+#'
+#' The [EggNOG README file](http://eggnogdb.embl.de/download/latest/README.txt)
+#' contains additional useful reference information.
 setClass(Class = "EggNOG", contains = "list")
 
 setValidity(
@@ -60,17 +62,19 @@ setValidity(
 
 
 # Ensembl2Entrez ===============================================================
-#' Ensembl-to-Entrez Identifier Mappings
+#' Ensembl-to-Entrez Gene Identifier Mappings
 #'
-#' @note Requires 1:1 mappings.
+#' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+#' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit Ensembl2Entrez
 #' @export
 #'
 #' @return Contains a `DataFrame` with `geneID` and `entrezID` columns.
 #'
-#' @seealso [ensembl2entrez()].
+#' @seealso [ensembl2entrez].
 setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 
 setValidity(
@@ -97,13 +101,12 @@ setValidity(
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit Gene2Symbol
 #' @export
 #'
 #' @return Contains a `DataFrame` with `geneID` and `geneName` columns.
 #'
-#' @seealso
-#' - [gene2symbol()].
-#' - [makeGene2Symbol].
+#' @seealso [gene2symbol], [makeGene2Symbol].
 setClass(Class = "Gene2Symbol", contains = "DataFrame")
 
 setValidity(
@@ -126,15 +129,16 @@ setValidity(
 
 
 # HGNC2Ensembl =================================================================
-#' HGNC-to-Ensembl Identifier Mappings
+#' HGNC-to-Ensembl Gene Identifier Mappings
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit HGNC2Ensembl
 #' @export
 #'
 #' @return Contains a `DataFrame` with `hgncID` and `geneID` columns.
 #'
-#' @seealso [hgnc2ensembl()].
+#' @seealso [hgnc2ensembl].
 setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
 
 setValidity(
@@ -158,15 +162,16 @@ setValidity(
 
 
 # MGI2Ensembl ==================================================================
-#' MGI-to-Ensembl Identifier Mappings.
+#' MGI-to-Ensembl Gene Identifier Mappings
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit MGI2Ensembl
 #' @export
 #'
 #' @return Contains a `DataFrame` with `mgiID` and `geneID` columns.
 #'
-#' @seealso [mgi2ensembl()].
+#' @seealso [mgi2ensembl].
 setClass(Class = "MGI2Ensembl", contains = "DataFrame")
 
 setValidity(
@@ -190,11 +195,12 @@ setValidity(
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit PANTHER
 #' @export
 #'
 #' @return Contains a `DataFrame`.
 #'
-#' @seealso [panther()].
+#' @seealso [panther].
 setClass(Class = "PANTHER", contains = "DataFrame")
 
 setValidity(
@@ -225,13 +231,12 @@ setValidity(
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
+#' @inherit Tx2Gene
 #' @export
 #'
 #' @return Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 #'
-#' @seealso
-#' - [tx2gene()].
-#' - [makeTx2Gene].
+#' @seealso [tx2gene], [makeTx2Gene].
 setClass(Class = "Tx2Gene", contains = "DataFrame")
 
 setValidity(

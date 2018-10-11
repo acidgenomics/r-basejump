@@ -6,8 +6,8 @@
 #' `SummarizedExperiment` method.
 #'
 #' @name convertTranscriptsToGenes
-#' @family Annotation Functions
-#' @author Michael Steinbaugh
+#' @family Identifier Mapping Functions
+#' @family Transcript-Level Functions
 #' @export
 #'
 #' @include makeTx2Gene.R
@@ -25,7 +25,7 @@
 #' - `matrix`, `sparseMatrix`, `SummarizedExperiment`: Object containing counts
 #'   collapsed to gene level by default (see `aggregate` argument).
 #'
-#' @seealso [aggregateRows()].
+#' @seealso [aggregateRows].
 #'
 #' @examples
 #' data(tx_se_small)
@@ -36,26 +36,26 @@
 #' transcripts <- rownames(object)
 #' print(transcripts)
 #'
-#' # character ====
-#' # Returns as factor.
+#' ## character ====
+#' ## Returns as factor.
 #' x <- convertTranscriptsToGenes(transcripts, tx2gene = tx2gene)
 #' print(x)
 #' str(x)
 #'
-#' # matrix ====
-#' # Note that transcript IDs currently must be in the rows.
+#' ## matrix ====
+#' ## Note that transcript IDs currently must be in the rows.
 #' counts <- counts(object)
 #' print(counts)
-#' # Aggregate to gene level.
+#' ## Aggregate to gene level.
 #' x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
 #' print(x)
 #' colSums(x)
-#' # Simply map to rownames.
+#' ## Simply map to rownames.
 #' x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = FALSE)
 #' print(x)
 #' colSums(x)
 #'
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' x <- convertTranscriptsToGenes(object)
 #' print(x)
 NULL

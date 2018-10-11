@@ -1,8 +1,7 @@
 #' Melt Count Matrix to Long Format
 #'
 #' @name meltCounts
-#' @family Data Functions
-#' @author Michael Steinbaugh
+#' @family SummarizedExperiment Functions
 #' @export
 #'
 #' @inheritParams general

@@ -45,7 +45,7 @@ not particularly useful if there are elements that are <= 0 and will return
 \code{NaN}.
 }
 \examples{
-# numeric ====
+## numeric ====
 vec1 <- seq(1L, 5L, 1L)
 print(vec1)
 geometricMean(vec1)
@@ -54,7 +54,7 @@ vec2 <- vec1 ^ 2L
 print(vec2)
 geometricMean(vec2)
 
-# matrix ====
+## matrix ====
 matrix <- matrix(
     data = c(vec1, vec2),
     ncol = 2L,
@@ -63,7 +63,7 @@ matrix <- matrix(
 print(matrix)
 geometricMean(matrix)
 
-# sparseMatrix ====
+## sparseMatrix ====
 sparse <- as(matrix, "sparseMatrix")
 print(sparse)
 geometricMean(sparse)
@@ -72,10 +72,7 @@ geometricMean(sparse)
 Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
 \href{https://stackoverflow.com/a/25555105}{code}.
 
-Other Math and Science Functions: \code{\link{logRatio}},
-  \code{\link{microplate}}
+Other Calculations: \code{\link{aggregate}},
+  \code{\link{logRatio}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Math and Science Functions}
+\concept{Calculations}

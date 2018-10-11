@@ -1,7 +1,6 @@
 #' General Arguments
 #'
 #' @name general
-#' @author Michael Steinbaugh
 #' @keywords internal
 #'
 #' @param object Object.

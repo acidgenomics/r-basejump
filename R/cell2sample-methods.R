@@ -1,10 +1,9 @@
-#' Cell to Sample Mappings
+#' Cell-to-Sample Mappings
 #'
 #' @note `sampleID` column must be defined in [colData()].
 #'
 #' @name cell2sample
-#' @family Single-Cell Functions
-#' @author Michael Steinbaugh
+#' @family SingleCellExperiment Functions
 #'
 #' @inheritParams general
 #'

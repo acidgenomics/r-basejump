@@ -55,11 +55,11 @@ plotGenesDetected(rse_small)
 plotGenesDetected(sce_small)
 }
 \seealso{
-Other Quality Control Functions: \code{\link{plotCountsPerGene}},
-  \code{\link{plotGenderMarkers}},
-  \code{\link{plotTotalCounts}}
+Other Plots: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotCountsPerGene}},
+  \code{\link{plotGenderMarkers}}, \code{\link{plotGene}},
+  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
+  \code{\link{plotTotalCounts}},
+  \code{\link{plotZerosVsDepth}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Quality Control Functions}
+\concept{Plots}

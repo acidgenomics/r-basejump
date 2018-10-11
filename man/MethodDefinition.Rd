@@ -24,28 +24,14 @@ methodFunction(f, signature)
 Access to the Data Inside an S4 Method Definition
 }
 \examples{
-# Function
+## Function
 x <- methodFunction(f = "geometricMean", signature = "numeric")
 class(x)
 
-# Formals
+## Formals
 x <- methodFormals(f = "geometricMean", signature = "numeric")
 print(x)
 }
 \seealso{
 Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
-
-Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}, \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchArgsToDoCall}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{separator}},
-  \code{\link{standardizeCall}},
-  \code{\link{uniteInterestingGroups}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Developer Functions}

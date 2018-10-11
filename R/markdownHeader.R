@@ -3,8 +3,7 @@
 #' Generate a Markdown header (levels 1-7) in any R Markdown code block. When
 #' calling inside an `asis` chunk, set `asis = TRUE`.
 #'
-#' @family R Markdown Functions
-#' @author Michael Steinbaugh
+#' @family Markdown Functions
 #' @export
 #'
 #' @inheritParams general

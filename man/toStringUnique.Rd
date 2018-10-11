@@ -21,10 +21,6 @@ toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 \seealso{
 \code{\link[base:toString]{base::toString()}}.
 
-Other Atomic Vector Functions: \code{\link{detectLanes}},
-  \code{\link{detectOrganism}}, \code{\link{sortUnique}}
+Other Sanitization Functions: \code{\link{stripTranscriptVersions}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Atomic Vector Functions}
+\concept{Sanitization Functions}

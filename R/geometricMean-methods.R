@@ -8,8 +8,7 @@
 #' `NaN`.
 #'
 #' @name geometricMean
-#' @family Math and Science Functions
-#' @author Michael Steinbaugh
+#' @family Calculations
 #' @export
 #'
 #' @inheritParams general
@@ -23,7 +22,7 @@
 #'   [code](https://stackoverflow.com/a/25555105).
 #'
 #' @examples
-#' # numeric ====
+#' ## numeric ====
 #' vec1 <- seq(1L, 5L, 1L)
 #' print(vec1)
 #' geometricMean(vec1)
@@ -32,7 +31,7 @@
 #' print(vec2)
 #' geometricMean(vec2)
 #'
-#' # matrix ====
+#' ## matrix ====
 #' matrix <- matrix(
 #'     data = c(vec1, vec2),
 #'     ncol = 2L,
@@ -41,7 +40,7 @@
 #' print(matrix)
 #' geometricMean(matrix)
 #'
-#' # sparseMatrix ====
+#' ## sparseMatrix ====
 #' sparse <- as(matrix, "sparseMatrix")
 #' print(sparse)
 #' geometricMean(sparse)

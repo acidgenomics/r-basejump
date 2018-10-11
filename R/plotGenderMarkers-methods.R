@@ -6,8 +6,7 @@
 #' genomes are supported.
 #'
 #' @name plotGenderMarkers
-#' @family Quality Control Functions
-#' @author Michael Steinbaugh
+#' @family Plots
 #' @include plotGene-methods.R
 #' @export
 #'
@@ -20,7 +19,7 @@
 #'
 #' @examples
 #' data(rse_small)
-#' # Minimal example doesn't contain these genes.
+#' ## Minimal example doesn't contain these genes.
 #' x <- tryCatch(
 #'     expr = plotGenderMarkers(rse_small),
 #'     error = function(e) e

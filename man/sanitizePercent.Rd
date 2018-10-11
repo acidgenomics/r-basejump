@@ -35,13 +35,3 @@ x <- sanitizePercent(object)
 class(x)
 print(x)
 }
-\seealso{
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{makeNames}}, \code{\link{removeNA}},
-  \code{\link{sanitizeNA}}, \code{\link{sanitizeRowData}},
-  \code{\link{sanitizeSampleData}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Sanitization Functions}

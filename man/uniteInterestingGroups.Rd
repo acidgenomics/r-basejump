@@ -43,17 +43,11 @@ to <- uniteInterestingGroups(
 print(to)
 }
 \seealso{
-Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchArgsToDoCall}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{separator}},
-  \code{\link{standardizeCall}}
+Other Metadata Functions: \code{\link{detectHPC}},
+  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
+  \code{\link{interestingGroups}},
+  \code{\link{microplate}},
+  \code{\link{minimalSampleData}}, \code{\link{organism}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Developer Functions}
+\concept{Metadata Functions}

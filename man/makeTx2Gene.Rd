@@ -35,17 +35,17 @@ Remote URLs and compressed files are supported.
 }
 
 \examples{
-# makeTx2geneFromEnsembl ====
+## makeTx2geneFromEnsembl ====
 x <- makeTx2GeneFromEnsembl(organism = "Homo sapiens")
 print(x)
 
-# makeTx2geneFromGFF ====
-# GTF
+## makeTx2geneFromGFF ====
+## GTF
 file <- file.path(basejumpCacheURL, "example.gtf")
 x <- makeTx2GeneFromGFF(file)
 print(x)
 
-# GFF3
+## GFF3
 file <- file.path(basejumpCacheURL, "example.gff3")
 x <- makeTx2GeneFromGFF(file)
 print(x)
@@ -53,15 +53,15 @@ print(x)
 \seealso{
 \link{makeGRanges}.
 
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
+Other Annotation Functions: \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
-}
-\author{
-Michael Steinbaugh
+  \code{\link{panther}}
+
+Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
+  \code{\link{makeGRanges}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{tx2gene}}
 }
 \concept{Annotation Functions}
+\concept{Transcript-Level Functions}

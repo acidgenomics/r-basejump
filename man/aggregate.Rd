@@ -5,7 +5,6 @@
 \alias{aggregate}
 \alias{aggregateRows}
 \alias{aggregateCols}
-\alias{aggregateCellsToSamples}
 \alias{aggregateRows,matrix-method}
 \alias{aggregateRows,sparseMatrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}
@@ -13,14 +12,11 @@
 \alias{aggregateCols,sparseMatrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
 \alias{aggregateCols,SingleCellExperiment-method}
-\alias{aggregateCellsToSamples,SingleCellExperiment-method}
 \title{Aggregate Rows or Columns}
 \usage{
 aggregateRows(object, ...)
 
 aggregateCols(object, ...)
-
-aggregateCellsToSamples(object, ...)
 
 \S4method{aggregateRows}{matrix}(object, groupings, fun = c("sum",
   "mean"))
@@ -42,9 +38,6 @@ aggregateCellsToSamples(object, ...)
 
 \S4method{aggregateCols}{SingleCellExperiment}(object, fun = c("sum",
   "mean"))
-
-\S4method{aggregateCellsToSamples}{SingleCellExperiment}(object,
-  fun = c("sum", "mean"))
 }
 \arguments{
 \item{object}{Object.}
@@ -75,28 +68,28 @@ can be used to aggregate counts from transcript-level to gene-level.
 \code{\link[=aggregateCols]{aggregateCols()}} works across the columns, and is designed to aggregate
 sample replicates.
 }
-\section{SummarizedExperiment}{
+\section{Methods (by class)}{
+\itemize{
+\item \code{matrix}: Aggregate rows or columns using a grouping \code{factor}.
 
+\item \code{sparseMatrix}: Same conventions as \code{matrix}.
 
+\item \code{SummarizedExperiment}: Aggregate rows or columns in \code{\link[=assays]{assays()}} using an
+automatically generated grouping \code{factor}, which is obtained from a
+user-defined column (\code{col} argument) in either \code{\link[=rowData]{rowData()}} or \code{\link[=colData]{colData()}}.
 Slot an \code{aggregate} column into \code{\link[=rowData]{rowData()}} for \code{aggregateRows()}, or into
-\code{\link[=colData]{colData()}} for \code{\link[=aggregateCols]{aggregateCols()}}. The S4 method will define the \code{groupings}
+\code{\link[=colData]{colData()}} for \code{\link[=aggregateCols]{aggregateCols()}}. This method will define the \code{groupings}
 automatically and perform the aggregation.
-}
 
-\section{SingleCellExperiment}{
-
-
-Method support inherits from \code{SummarizedExperiment}, and still relies upon
-slotting an \code{aggregate} column into \code{\link[=colData]{colData()}}. Note that these groupings
-will map to cells, so care must be taken to properly aggregate samples.
-
-\code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}} is a utilty function that factilites
-cell-to-sample aggregation. By default, this function will sum the counts
-across cells to sample level.
-}
+\item \code{SingleCellExperiment}: Aggregate \code{\link[=assays]{assays()}} across cell-level groupings,
+defined by a column in \code{\link[=colData]{colData()}}. Inherits from \code{SummarizedExperiment},
+and still relies upon slotting an \code{aggregate} column into \code{\link[=colData]{colData()}}. Note
+that these groupings will map to cells, so care must be taken to properly
+aggregate samples.
+}}
 
 \examples{
-# Example data ====
+## Example data ====
 counts <- matrix(
     data = c(
         0L, 1L, 1L, 1L,
@@ -130,17 +123,17 @@ cells <- factor(paste0("cell", rep(seq_len(2L), each = 2L)))
 names(samples) <- colnames(counts)
 print(samples)
 
-# matrix
+## matrix
 matrix <- as(counts, "matrix")
 class(matrix)
 print(matrix)
 
-# sparseMatrix
+## sparseMatrix
 sparse <- as(matrix, "sparseMatrix")
 class(sparse)
 print(sparse)
 
-# SummarizedExperiment
+## SummarizedExperiment
 se <- SummarizedExperiment::SummarizedExperiment(
     assay = list(counts = sparse),
     colData = S4Vectors::DataFrame(
@@ -151,38 +144,27 @@ se <- SummarizedExperiment::SummarizedExperiment(
 )
 print(se)
 
-# aggregateRows ====
+## aggregateRows ====
 aggregateRows(matrix, groupings = genes)
 aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
 
-# aggregateCols ====
+## aggregateCols ====
 aggregateCols(matrix, groupings = samples)
 aggregateCols(sparse, groupings = samples)
 aggregateCols(se)
-
-# aggregateCellsToSamples ====
-data(sce_small)
-x <- aggregateCellsToSamples(sce_small)
-print(x)
 }
 \seealso{
 \itemize{
-\item \link[stats:aggregate]{stats::aggregate}.
-\item \link[Matrix.utils:aggregate.Matrix]{Matrix.utils::aggregate.Matrix}.
-\item \link[S4Vectors:aggregate]{S4Vectors::aggregate}.
+\item \code{\link[stats:aggregate]{stats::aggregate()}}.
+\item \code{\link[S4Vectors:aggregate]{S4Vectors::aggregate()}}.
+\item \code{\link[Matrix.utils:aggregate.Matrix]{Matrix.utils::aggregate.Matrix()}}.
 }
 
-Other Data Functions: \code{\link{combine}},
-  \code{\link{counts}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{minimalSampleData}},
-  \code{\link{organism}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}}
+Other Calculations: \code{\link{geometricMean}},
+  \code{\link{logRatio}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Data Functions}
+\concept{Calculations}

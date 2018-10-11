@@ -3,9 +3,6 @@ authors:
     href: /
 
 reference:
-  - title: Package Information
-    contents:
-    - basejump-package
   - title: S4 Classes
     contents:
     - ends_with("-class")
@@ -15,19 +12,43 @@ reference:
     - ensembl2entrez
     - gene2symbol
     - hgnc2ensembl
+    - starts_with("make")
     - mgi2ensembl
     - panther
     - tx2gene
-  - title: Annotation Functions
+  - title: Generic Methods
+    contents:
+    - aggregate
+    - coerce
+    - combine
+    - markdown
+    - organism
+  - title: Annotations
+    contents:
+    - makeGRanges
+    - makeGene2Symbol
+    - makeTx2Gene
+    - geneSynonyms
+    - eggnog
+    - panther
+    - emptyRanges
+  - title: Identifier Mapping
     contents:
     - starts_with("convert")
-    - emptyRanges
-    - geneSynonyms
-    - makeGene2Symbol
+    - starts_with("mapGenes")
+    - gene2symbol
+    - tx2gene
+    - ensembl2entrez
+    - hgnc2ensembl
+    - mgi2ensembl
+  - title: Transcript-Level
+    contents:
+    - convertTranscriptsToGenes
     - makeGRanges
     - makeTx2Gene
-    - starts_with("strip")
-  - title: Import/Export Functions
+    - stripTranscriptVersions
+    - tx2gene
+  - title: Import/Export
     contents:
     - starts_with("assign")
     - export
@@ -36,62 +57,62 @@ reference:
     - starts_with("save")
     - transmit
     - starts_with("write")
-  - title: Data Functions
+  - title: Metadata
     contents:
-    - starts_with("aggregate")
-    - combine
+    - detectHPC
+    - detectLanes
+    - detectOrganism
+    - interestingGroups
+    - microplate
+    - minimalSampleData
+    - organism
+    - starts_with("sample")
+    - uniteInterestingGroups
+  - title: SummarizedExperiment
+    contents:
     - counts
     - interestingGroups
-    - makeSingleCellExperiment
     - makeSummarizedExperiment
     - starts_with("mapGenes")
     - meltCounts
     - metrics
     - minimalSampleData
-    - organism
-    - sampleData
-    - sampleNames
+    - starts_with("sample")
     - selectSamples
-    - subsetPerSample
     - tpm
-  - title: Single-Cell Functions
+  - title: SingleCellExperiment
     contents:
     - aggregateCellsToSamples
     - cell2sample
     - makeSingleCellExperiment
     - mapCellsToSamples
+    - subsetPerSample
     - topCellsPerSample
-  - title: Sanitization Functions
+  - title: Plots
     contents:
+    - starts_with("plot")
+  - title: ggplot2
+    contents:
+    - starts_with("ggplot2-")
+  - title: Sanitization
+    contents:
+    - collapseToString
     - makeNames
     - starts_with("remove")
     - starts_with("sanitize")
-  - title: Plot Functions
+    - sortUnique
+    - starts_with("strip")
+    - toStringUnique
+  - title: Calculations
     contents:
-    - starts_with("plot")
-  - title: ggplot2 Functions
-    contents:
-    - starts_with("ggplot2-")
-  - title: Math and Science Functions
-    contents:
+    - aggregate
     - geometricMean
     - logRatio
-    - microplate
-  - title: R Markdown Functions
+  - title: Markdown
     contents:
     - starts_with("markdown")
     - prepareTemplate
-  - title: Atomic Vector Functions
-    contents:
-    - collapseToString
-    - detectLanes
-    - detectOrganism
-    - sortUnique
-    - toStringUnique
-  - title: Coercion Methods
-    contents:
-    - starts_with("coerce")
-  - title: Developer Functions
+  - title: Developer
     contents:
     - detectHPC
     - dots
@@ -104,14 +125,13 @@ reference:
     - printString
     - separator
     - standardizeCall
-    - uniteInterestingGroups
-  - title: R Documentation Functions
+  - title: Documentation
     contents:
     - matches("Rd")
-  - title: Assert Check Functions
+  - title: Assert Checks
     desc: Readable check functions to ensure code integrity.
     contents:
     - starts_with("assert")
-  - title: Example Datasets
+  - title: Example Data Sets
     contents:
     - ends_with("_small")

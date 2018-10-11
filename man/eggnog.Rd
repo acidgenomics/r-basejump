@@ -3,7 +3,7 @@
 \name{eggnog}
 \alias{eggnog}
 \alias{EggNOG}
-\title{\code{EggNOG} Generator}
+\title{EggNOG Database Annotations}
 \usage{
 eggnog(.test = FALSE)
 }
@@ -14,18 +14,21 @@ eggnog(.test = FALSE)
 \code{EggNOG}.
 }
 \description{
-\code{EggNOG} Generator
+\href{http://eggnogdb.embl.de}{EggNOG} is a database of biological information
+hosted by the EMBL. It is based on the original idea of COGs (\strong{c}lusters of
+\strong{o}rthologous \strong{g}roups) and expands that idea to non-supervised
+orthologous groups constructed from numerous organisms. eggNOG stands for
+\strong{e}volutionary \strong{g}enealogy of \strong{g}enes: \strong{N}on-supervised
+\strong{O}rthologous \strong{G}roups.
 }
 \examples{
 x <- eggnog(.test = TRUE)
 print(x)
 }
 \seealso{
-Other S4 Generators: \code{\link{ensembl2entrez}},
-  \code{\link{gene2symbol}}, \code{\link{hgnc2ensembl}},
-  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
+Other Annotation Functions: \code{\link{emptyRanges}},
+  \code{\link{geneSynonyms}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
+  \code{\link{panther}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{S4 Generators}
+\concept{Annotation Functions}

@@ -13,8 +13,7 @@
 #'
 #' @note Column and rows always return sorted alphabetically.
 #'
-#' @family Data Functions
-#' @author Michael Steinbaugh
+#' @family SummarizedExperiment Functions
 #' @export
 #'
 #' @inheritParams general
@@ -48,29 +47,29 @@
 #' - `SingleCellExperiment::SingleCellExperiment()`.
 #'
 #' @examples
-#' # Rows (genes)
+#' ## Rows (genes)
 #' genes <- c(
 #'     "EGFP",  # transgene (see below)
 #'     paste0("gene", seq_len(3L))
 #' )
 #' print(genes)
 #'
-#' # Columns (samples)
+#' ## Columns (samples)
 #' samples <- paste0("sample", seq_len(4L))
 #' print(samples)
 #'
-#' # Counts (assay)
+#' ## Counts (assay)
 #' counts <- matrix(
 #'     data = seq_len(16L),
 #'     nrow = 4L,
 #'     ncol = 4L,
 #'     dimnames = list(genes, samples)
 #' )
-#' # Primary assay must be named "counts".
+#' ## Primary assay must be named "counts".
 #' assays <- list(counts = counts)
 #' print(assays)
 #'
-#' # Row data (genomic ranges)
+#' ## Row data (genomic ranges)
 #' rowRanges <- GRanges(
 #'     seqnames = rep("1", times = 3L),
 #'     ranges = IRanges(
@@ -78,12 +77,12 @@
 #'         end = seq(from = 100L, to = 300L, by = 100L)
 #'     )
 #' )
-#' # Note that we haven't defined the transgene here.
-#' # It will be handled automatically in the function call.
+#' ## Note that we haven't defined the transgene here.
+#' ## It will be handled automatically in the function call.
 #' names(rowRanges) <- paste0("gene", seq_len(3L))
 #' print(rowRanges)
 #'
-#' # Column data
+#' ## Column data
 #' colData <- DataFrame(
 #'     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
 #'     age = rep(c(3L, 6L), 2L),
@@ -91,7 +90,7 @@
 #' )
 #' print(colData)
 #'
-#' # Note that this returns with the dimnames sorted.
+#' ## Note that this returns with the dimnames sorted.
 #' x <- makeSummarizedExperiment(
 #'     assays = assays,
 #'     rowRanges = rowRanges,

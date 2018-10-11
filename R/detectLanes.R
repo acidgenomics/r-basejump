@@ -1,7 +1,6 @@
 #' Detect Sequencing Lanes
 #'
-#' @family Atomic Vector Functions
-#' @author Michael Steinbaugh
+#' @family Metadata Functions
 #' @export
 #'
 #' @param object `character`. Sequencing file or directory paths.

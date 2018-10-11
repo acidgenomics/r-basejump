@@ -32,12 +32,9 @@ markdownTables(
 \item \href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow post}.
 }
 
-Other R Markdown Functions: \code{\link{markdownHeader}},
+Other Markdown Functions: \code{\link{markdownHeader}},
   \code{\link{markdownLink}}, \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}},
+  \code{\link{markdownPlotlist}}, \code{\link{markdown}},
   \code{\link{prepareTemplate}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{R Markdown Functions}
+\concept{Markdown Functions}

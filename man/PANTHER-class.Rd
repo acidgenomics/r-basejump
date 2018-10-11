@@ -11,8 +11,12 @@ Contains a \code{DataFrame}.
 \href{http://www.pantherdb.org}{PANTHER} gene ontology definitions. PANTHER stands
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
+\examples{
+x <- panther("Homo sapiens", progress = FALSE, .test = TRUE)
+summary(x)
+}
 \seealso{
-\code{\link[=panther]{panther()}}.
+\link{panther}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

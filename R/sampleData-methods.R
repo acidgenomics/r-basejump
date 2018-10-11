@@ -12,8 +12,8 @@
 #' experiment).
 #'
 #' @name sampleData
-#' @family Data Functions
-#' @author Michael Steinbaugh
+#' @family Metadata Functions
+#' @family SummarizedExperiment Functions
 #' @export
 #'
 #' @inheritParams general
@@ -27,45 +27,43 @@
 #' @examples
 #' data(rse_small, sce_small)
 #'
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' x <- rse_small
 #' sampleData(x)
 #'
-#' # Assignment support
+#' ## Assignment support
 #' sampleData(x)[["batch"]] <- 1L
-#' # `batch` column should be now defined.
+#' ## `batch` column should be now defined.
 #' sampleData(x)
 #'
-#' # SingleCellExperiment ====
+#' ## SingleCellExperiment ====
 #' x <- sce_small
 #' sampleData(x)
 #'
-#' # Assignment support.
+#' ## Assignment support.
 #' sampleData(x)[["batch"]] <- 1L
-#' # `batch` column should be now defined.
+#' ## `batch` column should be now defined.
 #' sampleData(x)
 NULL
 
 
 
+# SummarizedExperiment =========================================================
 # Don't run validity checks here.
 .sampleData.SE <-  # nolint
     function(object) {
         data <- colData(object)
         assertHasRownames(data)
-
         # Require `sampleName` column to be defined.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
         }
-
         # Generate `interestingGroups` column.
         data[["interestingGroups"]] <- NULL
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = matchInterestingGroups(object)
         )
-
         data
     }
 
@@ -85,6 +83,30 @@ NULL
 
 
 
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleData",
+    signature = signature("SummarizedExperiment"),
+    definition = .sampleData.SE
+)
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleData<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "DataFrame"
+    ),
+    definition = `.sampleData<-.SE`
+)
+
+
+
+# SingleCellExperiment =========================================================
 # Don't run validity checks here.
 .sampleData.SCE <-  # nolint
     function(
@@ -149,7 +171,7 @@ NULL
                 FUN.VALUE = logical(1L)
             ),
             drop = FALSE
-        ]
+            ]
         # Make the factor integer table.
         factortbl <- subset %>%
             as_tibble(rownames = NULL) %>%
@@ -217,7 +239,7 @@ NULL
             ,
             c("sampleID", setdiff(colnames(colData), colnames(value))),
             drop = FALSE
-        ]
+            ]
         colData <- left_join(
             x = colData,
             y = value,
@@ -227,30 +249,6 @@ NULL
 
         object
     }
-
-
-
-#' @rdname sampleData
-#' @export
-setMethod(
-    f = "sampleData",
-    signature = signature("SummarizedExperiment"),
-    definition = .sampleData.SE
-)
-
-
-
-#' @rdname sampleData
-#' @export
-setMethod(
-    f = "sampleData<-",
-    signature = signature(
-        object = "SummarizedExperiment",
-        value = "DataFrame"
-    ),
-    definition = `.sampleData<-.SE`
-)
-
 
 
 

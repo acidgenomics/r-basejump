@@ -4,7 +4,6 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @family Import/Export Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams saveData
@@ -28,7 +27,7 @@
 #' basename(readme)
 #' file.exists(readme)
 #'
-#' # Clean up
+#' ## Clean up.
 #' unlink("ensembl_readme.txt.gz")
 transmit <- function(
     remoteDir,

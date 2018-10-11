@@ -13,8 +13,6 @@
 #'
 #' Currently supports `DataFrame` or `data.frame` input.
 #'
-#' @family Sanitization Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

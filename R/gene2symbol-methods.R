@@ -1,14 +1,12 @@
-#' `Gene2Symbol` Generator
+#' @inherit Gene2Symbol-class
 #'
 #' @note
-#' This function will make any duplicated symbols unique by applying
-#' [base::make.unique()], which will add ".1" to the end of the gene name.
-#'
-#' No attempt is made to arrange the rows by gene identifier.
+#' - This function will make any duplicated symbols unique by applying
+#'   [base::make.unique()], which will add ".1" to the end of the gene name.
+#' - No attempt is made to arrange the rows by gene identifier.
 #'
 #' @name gene2symbol
-#' @family S4 Generators
-#' @author Michael Steinbaugh
+#' @family Identifier Mapping Functions
 #' @export
 #'
 #' @inheritParams general
@@ -16,7 +14,7 @@
 #' @return `Gene2Symbol`.
 #'
 #' @examples
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' data(rse_small)
 #' x <- gene2symbol(rse_small)
 #' print(x)

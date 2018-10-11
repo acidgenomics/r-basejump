@@ -37,14 +37,14 @@ sample.}
 Subset Per Sample
 }
 \examples{
-# SingleCellExperiment ====
+## SingleCellExperiment ====
 object <- sce_small
 
-# List mode (default).
+## List mode (default).
 list <- subsetPerSample(object, assignAndSave = FALSE)
 names(list)
 
-# Assign and save mode (useful for large datasets).
+## Assign and save mode (useful for large datasets).
 subsetPerSample(
     object = object,
     assignAndSave = TRUE,
@@ -53,20 +53,14 @@ subsetPerSample(
 )
 list.files("subsetPerSample")
 
-# Clean up.
+## Clean up.
 unlink("subsetPerSample", recursive = TRUE)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregate}},
-  \code{\link{combine}}, \code{\link{counts}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{minimalSampleData}},
-  \code{\link{organism}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{tpm}}
+Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
+  \code{\link{cell2sample}},
+  \code{\link{makeSingleCellExperiment}},
+  \code{\link{mapCellsToSamples}},
+  \code{\link{topCellsPerSample}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Data Functions}
+\concept{SingleCellExperiment Functions}

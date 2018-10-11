@@ -23,11 +23,15 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
 \strong{e}volutionary \strong{g}enealogy of \strong{g}enes: \strong{N}on-supervised
 \strong{O}rthologous \strong{G}roups.
 }
-\seealso{
-\itemize{
-\item \code{\link[=eggnog]{eggnog()}}.
-\item \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}.
+\examples{
+x <- eggnog(.test = TRUE)
+print(x)
 }
+\seealso{
+\link{eggnog}.
+
+The \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README file}
+contains additional useful reference information.
 
 Other S4 Classes: \code{\link{Ensembl2Entrez-class}},
   \code{\link{Gene2Symbol-class}},

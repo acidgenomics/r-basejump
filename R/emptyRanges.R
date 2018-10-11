@@ -4,7 +4,6 @@
 #' transgene and FASTA spike-in sequences.
 #'
 #' @family Annotation Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @param names `character`. Gene or transcript names.
@@ -22,13 +21,13 @@
 #' @seealso `help("seqinfo", "GenomeInfoDb")`.
 #'
 #' @examples
-#' # Unknown/dead genes.
+#' ## Unknown/dead genes.
 #' emptyRanges("ENSG00000000000", seqname = "unknown")
 #'
-#' # Transgenes.
+#' ## Transgenes.
 #' emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
 #'
-#' # Spike-ins.
+#' ## Spike-ins.
 #' emptyRanges("ERCC", seqname = "spike")
 emptyRanges <- function(
     names,

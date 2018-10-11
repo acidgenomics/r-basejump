@@ -1,11 +1,10 @@
-#' `Tx2Gene` Generator
+#' @inherit Tx2Gene-class
 #'
 #' @note No attempt is made to arrange the rows by transcript identifier.
 #'
 #' @name tx2gene
-#' @family S4 Generators
-#' @author Michael Steinbaugh
-#' @inherit Tx2Gene-class
+#' @family Identifier Mapping Functions
+#' @family Transcript-Level Functions
 #' @export
 #'
 #' @inheritParams general
@@ -13,7 +12,7 @@
 #' @return `Tx2Gene`.
 #'
 #' @examples
-#' # SummarizedExperiment ====
+#' ## SummarizedExperiment ====
 #' data(tx_se_small)
 #' x <- tx2gene(tx_se_small)
 #' print(x)

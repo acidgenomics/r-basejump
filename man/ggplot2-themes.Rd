@@ -73,12 +73,12 @@ p <- ggplot(
     )
 )
 
-# Paperwhite theme.
+## Paperwhite theme.
 p +
     geom_point() +
     theme_paperwhite(legend_position = "none")
 
-# Midnight theme.
+## Midnight theme.
 p +
     geom_point() +
     theme_midnight(legend_position = "none")
@@ -87,8 +87,5 @@ p +
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
 
 Other ggplot2 Functions: \code{\link{ggplot2-geoms}}
-}
-\author{
-Michael Steinbaugh
 }
 \concept{ggplot2 Functions}

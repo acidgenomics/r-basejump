@@ -21,7 +21,7 @@ setGeneric(
     }
 )
 
-#' @rdname aggregate
+#' @rdname aggregateCellsToSamples
 #' @export
 setGeneric(
     name = "aggregateCellsToSamples",
@@ -132,6 +132,18 @@ setGeneric(
     name = "geometricMean",
     def = function(object, ...) {
         standardGeneric("geometricMean")
+    }
+)
+
+
+
+# headtail =====================================================================
+#' @rdname headtail
+#' @export
+setGeneric(
+    name = "headtail",
+    def = function(x, ...) {
+        standardGeneric("headtail")
     }
 )
 

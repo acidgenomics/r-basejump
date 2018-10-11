@@ -5,8 +5,6 @@
 #'
 #' @note Supports `GRanges` and `DataFrame` class objects.
 #'
-#' @family Sanitization Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general

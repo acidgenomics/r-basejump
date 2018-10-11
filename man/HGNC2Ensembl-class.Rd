@@ -3,15 +3,19 @@
 \docType{class}
 \name{HGNC2Ensembl-class}
 \alias{HGNC2Ensembl-class}
-\title{HGNC-to-Ensembl Identifier Mappings}
+\title{HGNC-to-Ensembl Gene Identifier Mappings}
 \value{
 Contains a \code{DataFrame} with \code{hgncID} and \code{geneID} columns.
 }
 \description{
-HGNC-to-Ensembl Identifier Mappings
+HGNC-to-Ensembl Gene Identifier Mappings
+}
+\examples{
+x <- hgnc2ensembl(.test = TRUE)
+print(x)
 }
 \seealso{
-\code{\link[=hgnc2ensembl]{hgnc2ensembl()}}.
+\link{hgnc2ensembl}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

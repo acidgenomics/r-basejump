@@ -50,7 +50,7 @@ genomes are supported.
 }
 \examples{
 data(rse_small)
-# Minimal example doesn't contain these genes.
+## Minimal example doesn't contain these genes.
 x <- tryCatch(
     expr = plotGenderMarkers(rse_small),
     error = function(e) e
@@ -60,11 +60,11 @@ print(x)
 \seealso{
 \code{\link[=plotGene]{plotGene()}}.
 
-Other Quality Control Functions: \code{\link{plotCountsPerGene}},
-  \code{\link{plotGenesDetected}},
-  \code{\link{plotTotalCounts}}
+Other Plots: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotCountsPerGene}},
+  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
+  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
+  \code{\link{plotTotalCounts}},
+  \code{\link{plotZerosVsDepth}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Quality Control Functions}
+\concept{Plots}

@@ -36,13 +36,3 @@ to <- sanitizeSampleData(from)
 all(vapply(to, is.factor, logical(1L)))
 print(to)
 }
-\seealso{
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{makeNames}}, \code{\link{removeNA}},
-  \code{\link{sanitizeNA}}, \code{\link{sanitizePercent}},
-  \code{\link{sanitizeRowData}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Sanitization Functions}

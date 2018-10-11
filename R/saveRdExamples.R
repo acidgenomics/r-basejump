@@ -4,8 +4,7 @@
 #' script. Note that the `f` argument is parameterized and can handle multiple
 #' requests in a single call.
 #'
-#' @family R Documentation Functions
-#' @author Michael Steinbaugh
+#' @family Documentation Functions
 #' @export
 #'
 #' @inheritParams general
@@ -23,7 +22,7 @@
 #'     dir = "example"
 #' )
 #'
-#' # Clean up
+#' ## Clean up.
 #' unlink("example", recursive = TRUE)
 saveRdExamples <- function(
     Rd = NULL,  # nolint

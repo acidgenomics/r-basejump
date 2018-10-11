@@ -125,6 +125,9 @@
 <span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for sparseMatrix</span>
+<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -152,22 +155,20 @@ beginning with "ENS".</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
-  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
-  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>, <code><a href='panther.html'>panther</a></code></p></div>
+    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='toStringUnique.html'>toStringUnique</a></code></p>
+<p>Other Transcript-Level Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
+  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Ensembl (modify; contains versions)</span>
+    <pre class="examples"><div class='input'><span class='co'>## Ensembl (modify; contains versions)</span>
 <span class='fu'>stripTranscriptVersions</span>(<span class='fu'>c</span>(
     <span class='st'>"ENSMUST00000000001.1"</span>,
     <span class='st'>"ENSMUST00000000001-1"</span>,
     <span class='st'>"ENSMUST00000000001_1"</span>
 ))</div><div class='output co'>#&gt; [1] "ENSMUST00000000001" "ENSMUST00000000001" "ENSMUST00000000001"</div><div class='input'>
-<span class='co'># WormBase (keep; doesn't contain versions)</span>
+<span class='co'>## WormBase (keep; doesn't contain versions)</span>
 <span class='fu'>stripTranscriptVersions</span>(<span class='st'>"cTel79B.1"</span>)</div><div class='output co'>#&gt; [1] "cTel79B.1"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -183,10 +184,6 @@ beginning with "ENS".</p>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

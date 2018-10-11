@@ -1,7 +1,6 @@
-#' `MGI2Ensembl` Generator
+#' @inherit MGI2Ensembl-class
 #'
-#' @family S4 Generators
-#' @author Michael Steinbaugh
+#' @family Identifier Mapping Functions
 #' @export
 #'
 #' @inheritParams general

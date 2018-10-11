@@ -1,8 +1,7 @@
 #' Plot Gene Expression
 #'
 #' @name plotGene
-#' @family Plot Functions
-#' @author Michael Steinbaugh
+#' @family Plots
 #' @export
 #'
 #' @inheritParams general
@@ -28,7 +27,7 @@
 #' geneNames <- head(g2s[["geneName"]])
 #' print(geneNames)
 #'
-#' # Rownames, gene IDs, and gene names (symbols) are supported.
+#' ## Rownames, gene IDs, and gene names (symbols) are supported.
 #' plotGene(object, genes = geneIDs, style = "facet")
 #' plotGene(object, genes = geneNames, style = "wide")
 NULL

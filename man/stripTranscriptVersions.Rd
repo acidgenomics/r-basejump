@@ -7,6 +7,7 @@
 \alias{stripTranscriptVersions,character-method}
 \alias{stripTranscriptVersions,matrix-method}
 \alias{stripTranscriptVersions,sparseMatrix-method}
+\alias{stripTranscriptVersions,SummarizedExperiment-method}
 \title{Strip Transcript Versions}
 \usage{
 stripTranscriptVersions(object, ...)
@@ -16,6 +17,8 @@ stripTranscriptVersions(object, ...)
 \S4method{stripTranscriptVersions}{matrix}(object)
 
 \S4method{stripTranscriptVersions}{sparseMatrix}(object)
+
+\S4method{stripTranscriptVersions}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -34,25 +37,22 @@ This function is strict, and will only strip Ensembl transcript IDs
 beginning with "ENS".
 }
 \examples{
-# Ensembl (modify; contains versions)
+## Ensembl (modify; contains versions)
 stripTranscriptVersions(c(
     "ENSMUST00000000001.1",
     "ENSMUST00000000001-1",
     "ENSMUST00000000001_1"
 ))
 
-# WormBase (keep; doesn't contain versions)
+## WormBase (keep; doesn't contain versions)
 stripTranscriptVersions("cTel79B.1")
 }
 \seealso{
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}, \code{\link{panther}}
+Other Sanitization Functions: \code{\link{toStringUnique}}
+
+Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
+  \code{\link{makeGRanges}}, \code{\link{makeTx2Gene}},
+  \code{\link{tx2gene}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Annotation Functions}
+\concept{Sanitization Functions}
+\concept{Transcript-Level Functions}

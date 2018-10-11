@@ -68,40 +68,42 @@ print(tx2gene)
 transcripts <- rownames(object)
 print(transcripts)
 
-# character ====
-# Returns as factor.
+## character ====
+## Returns as factor.
 x <- convertTranscriptsToGenes(transcripts, tx2gene = tx2gene)
 print(x)
 str(x)
 
-# matrix ====
-# Note that transcript IDs currently must be in the rows.
+## matrix ====
+## Note that transcript IDs currently must be in the rows.
 counts <- counts(object)
 print(counts)
-# Aggregate to gene level.
+## Aggregate to gene level.
 x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
 print(x)
 colSums(x)
-# Simply map to rownames.
+## Simply map to rownames.
 x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = FALSE)
 print(x)
 colSums(x)
 
-# SummarizedExperiment ====
+## SummarizedExperiment ====
 x <- convertTranscriptsToGenes(object)
 print(x)
 }
 \seealso{
-\code{\link[=aggregateRows]{aggregateRows()}}.
+\link{aggregateRows}.
 
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
+Other Identifier Mapping Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}, \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{hgnc2ensembl}}, \code{\link{mapGenes}},
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
+
+Other Transcript-Level Functions: \code{\link{makeGRanges}},
+  \code{\link{makeTx2Gene}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{tx2gene}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Annotation Functions}
+\concept{Identifier Mapping Functions}
+\concept{Transcript-Level Functions}

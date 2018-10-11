@@ -24,30 +24,3 @@ Assert All Variables Are Non-Existing
 \examples{
 assertAllAreNonExisting(c("XXX", "YYY"))
 }
-\seealso{
-Other Assert Check Functions: \code{\link{assertAllAreURL}},
-  \code{\link{assertAllAreUniqueGeneNames}},
-  \code{\link{assertAllAreValidNames}},
-  \code{\link{assertAreGeneAnnotations}},
-  \code{\link{assertAreTranscriptAnnotations}},
-  \code{\link{assertFormalCompress}},
-  \code{\link{assertFormalGene2Symbol}},
-  \code{\link{assertFormalInterestingGroups}},
-  \code{\link{assertHasRownames}},
-  \code{\link{assertIsANumberOrNULL}},
-  \code{\link{assertIsAStringOrNULL}},
-  \code{\link{assertIsAlpha}},
-  \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsColorScaleContinuousOrNULL}},
-  \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDir}},
-  \code{\link{assertIsFillScaleContinuousOrNULL}},
-  \code{\link{assertIsFillScaleDiscreteOrNULL}},
-  \code{\link{assertIsHeaderLevel}},
-  \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Assert Check Functions}

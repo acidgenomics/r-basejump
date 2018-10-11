@@ -5,8 +5,6 @@
 #' sanitize data imported from Microsoft Excel.
 #'
 #' @name sanitizePercent
-#' @family Sanitization Functions
-#' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general
@@ -22,6 +20,17 @@
 #' class(x)
 #' print(x)
 NULL
+
+
+
+.sanitizePercent.character <-  # nolint
+    function(object) {
+        if (all(grepl("%$", object))) {
+            as.numeric(sub("%$", "", object)) / 100L
+        } else {
+            object
+        }
+    }
 
 
 
@@ -42,11 +51,5 @@ setMethod(
 setMethod(
     f = "sanitizePercent",
     signature = signature("character"),
-    definition = function(object) {
-        if (all(grepl("%$", object))) {
-            as.numeric(sub("%$", "", object)) / 100L
-        } else {
-            object
-        }
-    }
+    definition = .sanitizePercent.character
 )
