@@ -83,7 +83,7 @@ Additional information:
 }
 }
 
-\section{bcbio}{
+\section{bcbio files}{
 
 
 Also supports some additional extensions commonly used with the
