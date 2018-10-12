@@ -50,7 +50,7 @@
 #' - [Ensembl](http://www.ensembl.org/info/website/upload/gff.html)
 #' - [Gencode](http://www.gencodegenes.org/gencodeformat.html)
 #'
-#' @section bcbio:
+#' @section bcbio files:
 #'
 #' Also supports some additional extensions commonly used with the
 #' [bcbio](https://bcbio-nextgen.readthedocs.io) pipeline:
