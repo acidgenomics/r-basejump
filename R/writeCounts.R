@@ -50,7 +50,7 @@ writeCounts <- function(..., dir = ".", compress = FALSE) {
     assert_is_a_bool(compress)
 
     # Iterate across the dot objects and write to disk.
-    message(paste0("Writing ", toString(names), " to ", dir, "..."))
+    message(paste0("Writing ", toString(names), " to ", dir, "."))
 
     # Put the names first in the call here.
     files <- mapply(

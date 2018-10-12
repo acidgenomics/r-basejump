@@ -102,7 +102,7 @@ transmit <- function(
         return(invisible(files))
     }
 
-    message(paste0("Downloading ", toString(basename(files)), "..."))
+    message(paste0("Downloading ", toString(basename(files)), "."))
     files <- mapply(
         FUN = function(url, destfile, compress = FALSE) {
             download.file(url = url, destfile = destfile)

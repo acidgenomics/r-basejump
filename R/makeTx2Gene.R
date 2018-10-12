@@ -53,7 +53,7 @@ formals(makeTx2GeneFromEnsembl) <- f
 #' @rdname makeTx2Gene
 #' @export
 makeTx2GeneFromGFF <- function(file) {
-    message("Making Tx2Gene from GFF...")
+    message("Making Tx2Gene from GFF.")
     gff <- import(file)
     assert_is_all_of(gff, "GRanges")
 

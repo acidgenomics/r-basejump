@@ -20,7 +20,7 @@ mgi2ensembl <- function(.test = FALSE) {
         file <- .mgiURL
     }
 
-    message("Obtaining MGI to Ensembl gene ID mappings...")
+    message("Obtaining MGI to Ensembl gene ID mappings.")
     data <- read_tsv(
         file = file,
         # Using our global NA strings.

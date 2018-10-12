@@ -233,10 +233,8 @@ loadRemoteData <- function(url, envir = parent.frame()) {
         USE.NAMES = TRUE
     )
     message(paste0(
-        "Loading ",
-        toString(basename(files)),
-        " from ",
-        dir, "..."
+        "Loading ", toString(basename(files)),
+        " from ", dir, "."
     ))
     files
 }

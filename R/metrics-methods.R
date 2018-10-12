@@ -68,7 +68,7 @@ NULL
         fun = c("mean", "median", "sum")
     ) {
         fun <- match.arg(fun)
-        message(paste("Calculating", fun, "per sample..."))
+        message(paste("Calculating", fun, "per sample."))
         # Consider using `getFromNamespace()` here instead.
         FUN <- get(fun, inherits = TRUE)  # nolint
         assert_is_function(FUN)

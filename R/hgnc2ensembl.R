@@ -20,7 +20,7 @@ hgnc2ensembl <- function(.test = FALSE) {
         file <- .hgncURL
     }
 
-    message("Obtaining HGNC to Ensembl gene ID mappings...")
+    message("Obtaining HGNC to Ensembl gene ID mappings.")
     data <- read_tsv(
         file = file,
         # Suppress the column messages.

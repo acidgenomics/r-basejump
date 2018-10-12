@@ -4,7 +4,7 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, envir = parent.frame(),
+assignAndSaveData(name, object, envir = parent.frame(), ...,
   dir = getOption("basejump.save.dir", "."),
   ext = getOption("basejump.save.ext", "rds"),
   overwrite = getOption("basejump.save.overwrite", TRUE),
@@ -17,6 +17,10 @@ assignAndSaveData(name, object, envir = parent.frame(),
 
 \item{envir}{\code{environment}. Environment to use for assignment. Defaults to
 \code{\link[=parent.frame]{parent.frame()}}, the calling environment.}
+
+\item{...}{Object names. Note that these arguments are interpreted as symbols
+using non-standard evaluation for convenience during interactive use, and
+\emph{must not be quoted}.}
 
 \item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
