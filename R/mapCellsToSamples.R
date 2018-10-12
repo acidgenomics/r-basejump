@@ -1,3 +1,7 @@
+# FIXME Add working example.
+
+
+
 #' Map Cells to Samples
 #'
 #' This function extracts `sampleID` from the `cellID` column using grep

@@ -145,6 +145,8 @@ Apply quantile breaks.
 }
 
 \examples{
+data(rse_small, sce_small)
+
 ## SummarizedExperiment ====
 plotHeatmap(rse_small)
 plotCorrelationHeatmap(rse_small)

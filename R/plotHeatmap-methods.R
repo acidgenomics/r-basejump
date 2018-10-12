@@ -76,6 +76,8 @@
 #' - [stats::hclust()].
 #'
 #' @examples
+#' data(rse_small, sce_small)
+#'
 #' ## SummarizedExperiment ====
 #' plotHeatmap(rse_small)
 #' plotCorrelationHeatmap(rse_small)

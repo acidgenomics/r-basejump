@@ -11,7 +11,7 @@
 #' @return `ggplot`.
 #'
 #' @examples
-#' ## SingleCellExperiment ====
+#' data(sce_small)
 #' plotZerosVsDepth(sce_small)
 NULL
 
