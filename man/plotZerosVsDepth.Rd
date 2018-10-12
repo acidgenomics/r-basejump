@@ -38,7 +38,7 @@ palette globally, use \code{options(basejump.discrete.color = ggplot2::scale_col
 Calculate and visualize the dropout rate.
 }
 \examples{
-## SingleCellExperiment ====
+data(sce_small)
 plotZerosVsDepth(sce_small)
 }
 \seealso{

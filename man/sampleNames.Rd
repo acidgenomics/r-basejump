@@ -22,13 +22,12 @@ in the \code{sampleName} column of \code{\link[=sampleData]{sampleData()}}. Othe
 the syntactically valid names defined as the rownames of \code{\link[=sampleData]{sampleData()}}.
 }
 \examples{
-## SummarizedExperiment ====
 data(rse_small)
 object <- rse_small
 x <- sampleNames(object)
 print(x)
 
-## Assignment support
+## Assignment support.
 value <- sampleNames(object)
 value <- toupper(value)
 print(value)
