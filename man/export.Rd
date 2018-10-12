@@ -60,6 +60,8 @@ column in the CSV export.
 }
 
 \examples{
+data(rse_small, sce_small)
+
 ## matrix ====
 rnaseq_counts <- counts(rse_small)
 stopifnot(is.matrix(rnaseq_counts))

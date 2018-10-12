@@ -212,7 +212,7 @@ setAs(
 
 
 #' @rdname coerce
-#' @name coerce,sparseMatrix,data.frame-method
+#' @name coerce,sparseMatrix,DataFrame-method
 setAs(
     from = "sparseMatrix",
     to = "DataFrame",
