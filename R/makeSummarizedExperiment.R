@@ -145,7 +145,6 @@ makeSummarizedExperiment <- function(
     mcolsNames <- NULL
     # Dynamically allow input of rowRanges (recommended) or rowData (fallback).
     if (is(rowRanges, "GRanges")) {
-        userRows <- TRUE
         # Detect rows that don't contain annotations.
         # Transgenes should contain `transgene` seqname.
         # Spike-ins should contain `spike` seqname.
@@ -176,66 +175,33 @@ makeSummarizedExperiment <- function(
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
     } else if (is(rowData, "DataFrame")) {
-        userRows <- TRUE
         assert_is_subset(rownames(assay), rownames(rowData))
         rowData <- rowData[rownames(assay), , drop = FALSE]
     } else {
-        # Fallback support when working with poorly annotation genomes.
-        userRows <- FALSE
-        rowRanges <- GRanges()
+        message("Slotting empty ranges.")
+        rowRanges <- emptyRanges(names = rownames(assay))
     }
 
-    # Check for unannotated rows and inform the user.
+    # Error on user-defined row annotation mismatch (strict).
     if (is(rowRanges, "GRanges")) {
         data <- as(rowRanges, "DataFrame")
     } else if (is(rowData, "DataFrame")) {
         data <- rowData
-    } else {
-        data <- NULL
     }
-    if (!is.null(data)) {
-        setdiff <- setdiff(rownames(assay), rownames(data))
-        if (has_length(setdiff)) {
-            # If user has provided the row annotations, inform them when some
-            # rows are unannotated.
-            if (isTRUE(userRows)) {
-                # Stop on too may unannotated rows, otherwise warn.
-                # This should cover usage of old built-in bcbio genomes.
-                if (length(setdiff) > 500L) {
-                    f <- stop
-                } else {
-                    f <- warning
-                }
-                f(paste(
-                    # 24 characters (see trunc call below).
-                    paste(
-                        "Unannotated rows",
-                        paste0("(", length(setdiff), "):"),
-                        str_trunc(
-                            string = toString(setdiff),
-                            width = getOption("width") - 24L
-                        )
-                    ),
-                    "Consider regenerating the SummarizedExperiment.",
-                    "Check that your genome build and release are correct.",
-                    "Consider using a GTF/GFF file for row annotations.",
-                    paste(
-                        "Define transgenes with `transgeneNames`",
-                        "and spike-ins with `spikeNames`."
-                    ),
-                    sep = "\n"
-                ))
-            }
-            # Define the unknown ranges in rowRanges, if necessary.
-            if (is(rowRanges, "GRanges")) {
-                unknownRanges <- emptyRanges(
-                    names = setdiff,
-                    seqname = "unknown",
-                    mcolsNames = mcolsNames
-                )
-                rowRanges <- suppressWarnings(c(unknownRanges, rowRanges))
-            }
-        }
+    stopifnot(is(data, "DataFrame"))
+    setdiff <- setdiff(rownames(assay), rownames(data))
+    if (has_length(setdiff)) {
+        stop(paste0(
+            "Unannotated rows (", length(setdiff), "): ",
+            str_trunc(
+                string = toString(setdiff),
+                width = getOption("width") - 24L
+            ), "\n",
+            "Check that your genome build and Ensembl release are correct.\n",
+            "Consider using a GTF/GFF file.\n",
+            "Define transgenes with `transgeneNames`",
+            "and spike-ins with `spikeNames`."
+        ))
     }
     rm(data)
 
