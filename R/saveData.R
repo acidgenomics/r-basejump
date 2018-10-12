@@ -48,7 +48,7 @@ saveData <- function(
     files <- file.path(dir, paste(names(objects), ext, sep = "."))
     names(files) <- names(objects)
 
-    message(paste0("Saving ", toString(basename(files)), " to ", dir, "..."))
+    message(paste0("Saving ", toString(basename(files)), " to ", dir, "."))
 
     # If `overwrite = FALSE`, inform the user which files were skipped
     if (identical(overwrite, FALSE) && any(file.exists(files))) {

@@ -64,7 +64,7 @@ NULL
 
         # If no gene2symbol is provided, fall back to using Ensembl annotations.
         if (is.null(gene2symbol)) {
-            message("Obtaining gene-to-symbol mappings from Ensembl...")
+            message("Obtaining gene-to-symbol mappings from Ensembl.")
             if (is.null(organism)) {
                 organism <- detectOrganism(object)
             }

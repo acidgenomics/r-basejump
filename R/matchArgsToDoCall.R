@@ -75,7 +75,7 @@ matchArgsToDoCall <- function(
         .[setdiff(names(.), names(args))]
     args <- c(args, callArgs)
     formalArgs <- formals(definition) %>%
-        # Currently removing "...". We may want to change this.
+        # TODO Currently removing "...". We may want to change this.
         .[setdiff(names(.), "...")] %>%
         .[setdiff(names(.), names(args))]
     args <- c(args, formalArgs)

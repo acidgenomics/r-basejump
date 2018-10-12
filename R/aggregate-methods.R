@@ -107,7 +107,7 @@ NULL
     assert_is_factor(groupings)
     assert_is_a_string(fun)
     msg <- paste0(
-        "Aggregating counts using `", fun, "()`..."
+        "Aggregating counts using `", fun, "()`."
     )
     if (length(groupings) <= 20L) {
         msg <- paste(

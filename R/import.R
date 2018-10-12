@@ -103,7 +103,7 @@ import <- function(file, ...) {
     args <- list(file, ...)
     assert_is_a_string(file)
 
-    message(paste0("Reading ", basename(file), "..."))
+    message(paste0("Reading ", basename(file), "."))
     file <- localOrRemoteFile(file)
 
     ext <- basename(file) %>%

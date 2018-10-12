@@ -76,7 +76,7 @@ NULL
 
         # If no tx2gene is provided, fall back to using Ensembl annotations.
         if (is.null(tx2gene)) {
-            message("Obtaining transcript-to-gene mappings from Ensembl...")
+            message("Obtaining transcript-to-gene mappings from Ensembl.")
             if (is.null(organism)) {
                 organism <- detectOrganism(object)
             }

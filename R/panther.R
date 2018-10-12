@@ -161,7 +161,7 @@ panther <- function(
     message(paste0(
         "Downloading PANTHER annotations for ",
         organism,
-        " (", release, ")..."
+        " (", release, ")."
     ))
 
     if (isTRUE(.test)) {
@@ -231,7 +231,7 @@ panther <- function(
         arrange(!!sym("geneID"))
     assert_has_no_duplicates(data[["geneID"]])
 
-    message("Splitting and sorting the GO terms...")
+    message("Splitting and sorting the GO terms.")
     data <- data %>%
         mutate_at(
         .vars = c(

@@ -311,7 +311,7 @@ makeGRangesFromEnsembl <- function(
         message(paste0(
             "Making GRanges from Ensembl with AnnotationHub ",
             packageVersion("AnnotationHub"),
-            " (", snapshotDate(ah), ")..."
+            " (", snapshotDate(ah), ")."
         ))
 
         # Use ensembldb annotations by default.
@@ -738,7 +738,7 @@ makeGRangesFromGFF <- function(
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
 
     # Ensure GRanges is sorted by names.
-    message(paste0("Arranging by ", idCol, "..."))
+    message(paste0("Arranging by ", idCol, "."))
     object <- object[sort(names(object))]
 
     assert_is_all_of(object, "GRanges")
