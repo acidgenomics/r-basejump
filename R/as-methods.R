@@ -1,4 +1,8 @@
-#' Methods for Coercing an Object to a Class
+#' @name as
+#' @aliases coerce
+#' @importFrom methods coerce
+#' @inherit methods::as
+#' @exportMethod coerce
 #'
 #' @section tibble:
 #'
@@ -31,13 +35,7 @@
 #' here we have improved support for `SummarizedExperiment` to `list` coercion,
 #' returning the slots as a `list`.
 #'
-#' @name coerce
-#' @aliases as
-#' @importFrom methods coerce
-#' @exportMethod coerce
-#'
 #' @inheritParams general
-#' @inheritParams methods::coerce
 #'
 #' @return Object of new class.
 #'
@@ -169,7 +167,7 @@ as_tibble.GRanges <-  # nolint
 
 
 
-#' @rdname coerce
+#' @rdname as
 #' @name coerce,DataFrame,tbl_df-method
 setAs(
     from = "DataFrame",
@@ -179,7 +177,7 @@ setAs(
 
 
 
-#' @rdname coerce
+#' @rdname as
 #' @name coerce,GRanges,tbl_df-method
 setAs(
     from = "GRanges",
@@ -199,7 +197,7 @@ as.data.frame.sparseMatrix <-  # nolint
 
 
 
-#' @rdname coerce
+#' @rdname as
 #' @name coerce,sparseMatrix,data.frame-method
 setAs(
     from = "sparseMatrix",
@@ -211,7 +209,7 @@ setAs(
 
 
 
-#' @rdname coerce
+#' @rdname as
 #' @name coerce,sparseMatrix,DataFrame-method
 setAs(
     from = "sparseMatrix",
@@ -227,7 +225,7 @@ setAs(
 
 # Coerce from tibble ===========================================================
 # Currently only supporting S4 DataFrame here.
-#' @rdname coerce
+#' @rdname as
 #' @name coerce,tbl_df,DataFrame-method
 setAs(
     from = "tbl_df",
@@ -250,7 +248,7 @@ setAs(
 
 
 # Coerce to list ===============================================================
-#' @rdname coerce
+#' @rdname as
 #' @export
 coerceS4ToList <- function(from) {
     stopifnot(isS4(from))
@@ -267,7 +265,7 @@ coerceS4ToList <- function(from) {
 
 
 
-#' @rdname coerce
+#' @rdname as
 #' @name coerce,SummarizedExperiment,list-method
 setAs(
     from = "SummarizedExperiment",
@@ -277,7 +275,7 @@ setAs(
 
 
 
-#' @rdname coerce
+#' @rdname as
 #' @export
 setMethod(
     f = "as.list",

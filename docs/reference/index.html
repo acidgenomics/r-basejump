@@ -197,42 +197,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
-        </td>
-        <td><p>Make Genomic Ranges</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeGene2Symbol.html">makeGene2SymbolFromEnsembl()</a></code> <code><a href="makeGene2Symbol.html">makeGene2SymbolFromGFF()</a></code> </p>
-        </td>
-        <td><p>Make Gene-to-Symbol Mappings</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> <code><a href="makeNames.html">makeDimnames()</a></code> </p>
-        </td>
-        <td><p>Make Syntactically Valid Names</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeSingleCellExperiment.html">makeSingleCellExperiment()</a></code> </p>
-        </td>
-        <td><p>Make Single-Cell Experiment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeSummarizedExperiment.html">makeSummarizedExperiment()</a></code> </p>
-        </td>
-        <td><p>Make Summarized Experiment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeTx2Gene.html">makeTx2GeneFromEnsembl()</a></code> <code><a href="makeTx2Gene.html">makeTx2GeneFromGFF()</a></code> </p>
-        </td>
-        <td><p>Make Transcript-to-Gene Mappings</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="mgi2ensembl.html">mgi2ensembl()</a></code> </p>
         </td>
         <td><p>MGI-to-Ensembl Gene Identifier Mappings</p></td>
@@ -252,45 +216,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-generic-methods" class="hasAnchor"><a href="#section-generic-methods" class="anchor"></a>Generic Methods</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="aggregate.html">aggregateRows()</a></code> <code><a href="aggregate.html">aggregateCols()</a></code> </p>
-        </td>
-        <td><p>Aggregate Rows or Columns</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="coerce.html">coerceS4ToList()</a></code> <code><a href="coerce.html">as.list(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Methods for Coercing an Object to a Class</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="combine.html">combine(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="combine.html">combine(<i>&lt;SingleCellExperiment&gt;</i>,<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Combine Multiple Objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="markdown.html">markdown()</a></code> </p>
-        </td>
-        <td><p>Markdown</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Organism Accessor</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-annotations" class="hasAnchor"><a href="#section-annotations" class="anchor"></a>Annotations</h2>
+          <h2 id="section-genome-annotations" class="hasAnchor"><a href="#section-genome-annotations" class="anchor"></a>Genome Annotations</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -340,7 +266,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-identifier-mapping" class="hasAnchor"><a href="#section-identifier-mapping" class="anchor"></a>Identifier Mapping</h2>
+          <h2 id="section-gene-identifier-mapping" class="hasAnchor"><a href="#section-gene-identifier-mapping" class="anchor"></a>Gene Identifier Mapping</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -402,40 +328,46 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-transcript-level" class="hasAnchor"><a href="#section-transcript-level" class="anchor"></a>Transcript-Level</h2>
+          <h2 id="section-generic-methods" class="hasAnchor"><a href="#section-generic-methods" class="anchor"></a>Generic Methods</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> </p>
+          <p><code><a href="aggregate.html">aggregateRows()</a></code> <code><a href="aggregate.html">aggregateCols()</a></code> </p>
         </td>
-        <td><p>Convert Ensembl Transcripts to Genes</p></td>
+        <td><p>Aggregate Rows or Columns</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
+          <p><code><a href="as.html">coerceS4ToList()</a></code> <code><a href="as.html">as.list(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Make Genomic Ranges</p></td>
+        <td><p>Force an Object to Belong to a Class</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeTx2Gene.html">makeTx2GeneFromEnsembl()</a></code> <code><a href="makeTx2Gene.html">makeTx2GeneFromGFF()</a></code> </p>
+          <p><code><a href="combine.html">combine(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="combine.html">combine(<i>&lt;SingleCellExperiment&gt;</i>,<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Make Transcript-to-Gene Mappings</p></td>
+        <td><p>Combine Multiple Objects</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
+          <p><code><a href="markdown.html">markdown()</a></code> </p>
         </td>
-        <td><p>Strip Transcript Versions</p></td>
+        <td><p>Markdown</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="tx2gene.html">tx2gene()</a></code> </p>
+          <p><code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Transcript-to-Gene Identifier Mappings</p></td>
+        <td><p>Organism Accessor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="show.html">show(<i>&lt;PANTHER&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Show an Object</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -920,80 +852,6 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-developer" class="hasAnchor"><a href="#section-developer" class="anchor"></a>Developer</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="detectHPC.html">detectHPC()</a></code> </p>
-        </td>
-        <td><p>Detect HPC Environment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dots.html">dots()</a></code> </p>
-        </td>
-        <td><p>Extract Dots from Function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="initializeDirectory.html">initializeDirectory()</a></code> <code><a href="initializeDirectory.html">initDir()</a></code> </p>
-        </td>
-        <td><p>Initialize Directory</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="localOrRemoteFile.html">localOrRemoteFile()</a></code> </p>
-        </td>
-        <td><p>Dynamically Handle a Local or Remote File Path</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="matchArgsToDoCall.html">matchArgsToDoCall()</a></code> </p>
-        </td>
-        <td><p>Match Arguments to Do Call</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="matchInterestingGroups.html">matchInterestingGroups()</a></code> </p>
-        </td>
-        <td><p>Match Interesting Groups</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="MethodDefinition.html">methodFormals()</a></code> <code><a href="MethodDefinition.html">methodFunction()</a></code> </p>
-        </td>
-        <td><p>Access to the Data Inside an S4 Method Definition</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="multiassignAsEnvir.html">multiassignAsEnvir()</a></code> </p>
-        </td>
-        <td><p>Assign Multiple Objects as an Environment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="printString.html">printString()</a></code> </p>
-        </td>
-        <td><p>Print String</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="separator.html">separator()</a></code> </p>
-        </td>
-        <td><p>Separator Bar</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="standardizeCall.html">standardizeCall()</a></code> </p>
-        </td>
-        <td><p>Standardize Call</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-documentation" class="hasAnchor"><a href="#section-documentation" class="anchor"></a>Documentation</h2>
           <p class="section-desc"></p>
         </th>
@@ -1160,6 +1018,86 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
+          <h2 id="section-miscellaneous" class="hasAnchor"><a href="#section-miscellaneous" class="anchor"></a>Miscellaneous</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="detectHPC.html">detectHPC()</a></code> </p>
+        </td>
+        <td><p>Detect HPC Environment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dots.html">dots()</a></code> </p>
+        </td>
+        <td><p>Extract Dots from Function</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="headtail.html">headtail()</a></code> </p>
+        </td>
+        <td><p>Return the First and Last Part of an Object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="initializeDirectory.html">initializeDirectory()</a></code> <code><a href="initializeDirectory.html">initDir()</a></code> </p>
+        </td>
+        <td><p>Initialize Directory</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="localOrRemoteFile.html">localOrRemoteFile()</a></code> </p>
+        </td>
+        <td><p>Dynamically Handle a Local or Remote File Path</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchArgsToDoCall.html">matchArgsToDoCall()</a></code> </p>
+        </td>
+        <td><p>Match Arguments to Do Call</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchInterestingGroups.html">matchInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Match Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="MethodDefinition.html">methodFormals()</a></code> <code><a href="MethodDefinition.html">methodFunction()</a></code> </p>
+        </td>
+        <td><p>Access to the Data Inside an S4 Method Definition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="multiassignAsEnvir.html">multiassignAsEnvir()</a></code> </p>
+        </td>
+        <td><p>Assign Multiple Objects as an Environment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="printString.html">printString()</a></code> </p>
+        </td>
+        <td><p>Print String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="separator.html">separator()</a></code> </p>
+        </td>
+        <td><p>Separator Bar</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="standardizeCall.html">standardizeCall()</a></code> </p>
+        </td>
+        <td><p>Standardize Call</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
           <h2 id="section-example-data-sets" class="hasAnchor"><a href="#section-example-data-sets" class="anchor"></a>Example Data Sets</h2>
           <p class="section-desc"></p>
         </th>
@@ -1192,10 +1130,9 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-s-classes">S4 Classes</a></li>
       <li><a href="#section-s-generators">S4 Generators</a></li>
+      <li><a href="#section-genome-annotations">Genome Annotations</a></li>
+      <li><a href="#section-gene-identifier-mapping">Gene Identifier Mapping</a></li>
       <li><a href="#section-generic-methods">Generic Methods</a></li>
-      <li><a href="#section-annotations">Annotations</a></li>
-      <li><a href="#section-identifier-mapping">Identifier Mapping</a></li>
-      <li><a href="#section-transcript-level">Transcript-Level</a></li>
       <li><a href="#section-import-export">Import/Export</a></li>
       <li><a href="#section-metadata">Metadata</a></li>
       <li><a href="#section-summarizedexperiment">SummarizedExperiment</a></li>
@@ -1205,9 +1142,9 @@
       <li><a href="#section-sanitization">Sanitization</a></li>
       <li><a href="#section-calculations">Calculations</a></li>
       <li><a href="#section-markdown">Markdown</a></li>
-      <li><a href="#section-developer">Developer</a></li>
       <li><a href="#section-documentation">Documentation</a></li>
       <li><a href="#section-assert-checks">Assert Checks</a></li>
+      <li><a href="#section-miscellaneous">Miscellaneous</a></li>
       <li><a href="#section-example-data-sets">Example Data Sets</a></li>
     </ul>
   </div>

@@ -197,7 +197,9 @@ column in the CSV export.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## matrix ====</span>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>)
+
+<span class='co'>## matrix ====</span>
 <span class='no'>rnaseq_counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>rse_small</span>)
 <span class='fu'>stopifnot</span>(<span class='fu'>is.matrix</span>(<span class='no'>rnaseq_counts</span>))
 <span class='fu'>export</span>(<span class='no'>rnaseq_counts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Exported rnaseq_counts.csv.</span></div><div class='input'>
