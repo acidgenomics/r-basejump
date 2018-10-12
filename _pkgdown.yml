@@ -12,18 +12,10 @@ reference:
     - ensembl2entrez
     - gene2symbol
     - hgnc2ensembl
-    - starts_with("make")
     - mgi2ensembl
     - panther
     - tx2gene
-  - title: Generic Methods
-    contents:
-    - aggregate
-    - coerce
-    - combine
-    - markdown
-    - organism
-  - title: Annotations
+  - title: Genome Annotations
     contents:
     - makeGRanges
     - makeGene2Symbol
@@ -32,7 +24,7 @@ reference:
     - eggnog
     - panther
     - emptyRanges
-  - title: Identifier Mapping
+  - title: Gene Identifier Mapping
     contents:
     - starts_with("convert")
     - starts_with("mapGenes")
@@ -41,13 +33,14 @@ reference:
     - ensembl2entrez
     - hgnc2ensembl
     - mgi2ensembl
-  - title: Transcript-Level
+  - title: Generic Methods
     contents:
-    - convertTranscriptsToGenes
-    - makeGRanges
-    - makeTx2Gene
-    - stripTranscriptVersions
-    - tx2gene
+    - aggregate
+    - as
+    - combine
+    - markdown
+    - organism
+    - show
   - title: Import/Export
     contents:
     - starts_with("assign")
@@ -112,10 +105,18 @@ reference:
     contents:
     - starts_with("markdown")
     - prepareTemplate
-  - title: Developer
+  - title: Documentation
+    contents:
+    - matches("Rd")
+  - title: Assert Checks
+    desc: Readable check functions to ensure code integrity.
+    contents:
+    - starts_with("assert")
+  - title: Miscellaneous
     contents:
     - detectHPC
     - dots
+    - headtail
     - starts_with("initialize")
     - localOrRemoteFile
     - matchArgsToDoCall
@@ -125,13 +126,6 @@ reference:
     - printString
     - separator
     - standardizeCall
-  - title: Documentation
-    contents:
-    - matches("Rd")
-  - title: Assert Checks
-    desc: Readable check functions to ensure code integrity.
-    contents:
-    - starts_with("assert")
   - title: Example Data Sets
     contents:
     - ends_with("_small")

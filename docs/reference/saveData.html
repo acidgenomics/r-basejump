@@ -185,7 +185,7 @@ on disk, following the same conventions as <code>save()</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>)
-<span class='fu'>saveData</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rse_small.rds, sce_small.rds to /Users/mike/git/basejump-private/docs/reference/example...</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rse_small.rds" "sce_small.rds"</div><div class='input'>
+<span class='fu'>saveData</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rse_small.rds, sce_small.rds to /Users/mike/git/basejump-private/docs/reference/example.</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rse_small.rds" "sce_small.rds"</div><div class='input'>
 <span class='co'>## Clean up.</span>
 <span class='fu'>unlink</span>(<span class='st'>"example"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>

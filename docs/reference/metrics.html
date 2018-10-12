@@ -198,7 +198,7 @@ tibble grouped by sample, to be used for plotting with <code>ggplot2</code>.</p>
 #&gt;  9 cell009     38976. sample1  sample1    sample1          
 #&gt; 10 cell010     58569. sample1  sample1    sample1          
 #&gt; # ... with 990 more rows</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metricsPerSample</span>(<span class='no'>sce_small</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating mean per sample...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metricsPerSample</span>(<span class='no'>sce_small</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating mean per sample.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
 #&gt; # Groups:   sampleID [2]
 #&gt;   sampleID expLibSize sampleName interestingGroups
 #&gt;   &lt;fct&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt;            

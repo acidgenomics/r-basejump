@@ -167,11 +167,11 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## makeTx2geneFromEnsembl ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-10-04)...</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 93 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>  - AnnotationHub: "AH64446"</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.13.8 (2018-10-12).</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>  - AnnotationHub: "AH64923"</span>
 #&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
 #&gt; <span class='message'>  - Build: "GRCh38"</span>
-#&gt; <span class='message'>  - Release: "93"</span>
-#&gt; <span class='message'>  - Level: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 225358 rows and 2 columns
+#&gt; <span class='message'>  - Release: "94"</span>
+#&gt; <span class='message'>  - Level: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 228432 rows and 2 columns
 #&gt;           transcriptID          geneID
 #&gt;            &lt;character&gt;     &lt;character&gt;
 #&gt; 1      ENST00000000233 ENSG00000004059
@@ -180,15 +180,15 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; 4      ENST00000001008 ENSG00000004478
 #&gt; 5      ENST00000001146 ENSG00000003137
 #&gt; ...                ...             ...
-#&gt; 225354       LRG_998t1         LRG_998
-#&gt; 225355       LRG_998t2         LRG_998
-#&gt; 225356       LRG_999t1         LRG_999
-#&gt; 225357       LRG_999t2         LRG_999
-#&gt; 225358        LRG_99t1          LRG_99</div><div class='input'>
+#&gt; 228428       LRG_998t1         LRG_998
+#&gt; 228429       LRG_998t2         LRG_998
+#&gt; 228430       LRG_999t1         LRG_999
+#&gt; 228431       LRG_999t2         LRG_999
+#&gt; 228432        LRG_99t1          LRG_99</div><div class='input'>
 <span class='co'>## makeTx2geneFromGFF ====</span>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Tx2Gene from GFF...</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf...</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 20 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Tx2Gene from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 20 rows and 2 columns
 #&gt;           transcriptID             geneID
 #&gt;            &lt;character&gt;        &lt;character&gt;
 #&gt; 1   ENSMUST00000193812 ENSMUSG00000102693
@@ -204,7 +204,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; 20  ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
 <span class='co'>## GFF3</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gff3"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Tx2Gene from GFF...</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3...</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 26 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Tx2Gene from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 26 rows and 2 columns
 #&gt;           transcriptID             geneID
 #&gt;            &lt;character&gt;        &lt;character&gt;
 #&gt; 1   ENSMUST00000193812 ENSMUSG00000102693
