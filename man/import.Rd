@@ -15,9 +15,10 @@ import(file, ...)
 Varies, depending on the file extension:
 \itemize{
 \item Default: \code{DataFrame}.
-\item MTX: \code{sparseMatrix}.
-\item GTF/GFF: \code{GRanges}.
-\item JSON/YAML: \code{list}.
+\item \code{MTX}: \code{sparseMatrix}.
+\item \code{GTF}/\code{GFF}: \code{GRanges}.
+\item \code{JSON}/\code{YAML}: \code{list}.
+\item Source code or log: \code{character}.
 }
 
 Note that data frames are returned as S4 \code{DataFrame} class instead of
@@ -28,21 +29,31 @@ Read file by extension into R.
 }
 \details{
 This is a wrapper for \code{\link[rio:import]{rio::import()}} that adds support for additional common
-genomic data files. Remote URLs and compressed files are supported.
+genomic data files. Remote URLs and compressed files are supported. All
+extensions are case insensitive.
 
 This function supports automatic loading of common file types:
 \itemize{
-\item \code{csv}: Comma Separated Values.
-\item \code{tsv} Tab Separated Values.
-\item \code{xlsx}: Excel workbook.
-\item \code{mtx}: MatrixMarket sparse matrix.
-\item \code{gtf}/\code{gff}/\code{gff3}: General Feature Format.
-\item \code{rda}/\code{RData}: R Data. Must contain a single object. Doesn't require
-internal object name to match, like with the \code{\link[=loadData]{loadData()}} function.
-\item \code{rds}: R Data Serialized.
-\item \code{json}: JSON.
-\item \code{yaml}/\code{yml}: YAML.
+\item \code{CSV}: Comma Separated Values.
+\item \code{TSV} Tab Separated Values.
+\item \code{XLSX}: Excel workbook.
+\item \code{MTV}: MatrixMarket sparse matrix.
+\item \code{GTF}/\code{GFF}/\code{GFF3}: General Feature Format.
+\item \code{RDA}/\code{RDATA}: R Data.
+\itemize{
+\item Must contain a single object.
+\item Doesn't require internal object name to match, unlike \code{\link[=loadData]{loadData()}}.
 }
+\item \code{RDS}: R Data Serialized.
+\item \code{JSON}: JSON.
+\item \code{YAML}/\code{YML}: YAML.
+}
+
+These file formats will be read as (source code) lines:
+\code{LOG}, \code{MD}, \code{PY}, \code{R}, \code{RMD}, \code{SH}.
+
+These file formats are blacklisted, and intentionally not supported:
+\code{DOC}, \code{DOCX}, \code{PDF}, \code{PPT}, \code{PPTX}, \code{TXT}.
 
 If the file format isn't supported natively (or blacklisted), the
 \href{https://cran.r-project.org/web/packages/rio/index.html}{rio} package will
@@ -51,8 +62,8 @@ be used as a fallback attempt.
 \section{Matrix Market Exchange (MTX/MEX)}{
 
 
-Reading a Matrix Market Exchange ("\code{mtx}") file now requires "\code{colnames}" and
-\code{"rownames"} sidecar files containing the \code{\link[=colnames]{colnames()}} and \code{\link[=rownames]{rownames()}} of
+Reading a Matrix Market Exchange (\code{MTX}) file now requires \code{COLNAMES} and
+\code{ROWNAMES} sidecar files containing the \code{\link[=colnames]{colnames()}} and \code{\link[=rownames]{rownames()}} of
 the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.
 }
@@ -78,9 +89,9 @@ Additional information:
 Also supports some additional extensions commonly used with the
 \href{https://bcbio-nextgen.readthedocs.io}{bcbio} pipeline:
 \itemize{
-\item \code{counts}: Counts table (e.g. RNA-seq aligned counts).
-\item \code{colnames}: Sidecar file containing column names.
-\item \code{rownames}: Sidecar file containing row names.
+\item \code{COUNTS}: Counts table (e.g. RNA-seq aligned counts).
+\item \code{COLNAMES}: Sidecar file containing column names.
+\item \code{ROWNAMES}: Sidecar file containing row names.
 }
 }
 
