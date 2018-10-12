@@ -3,20 +3,28 @@
 #' Read file by extension into R.
 #'
 #' This is a wrapper for [rio::import()] that adds support for additional common
-#' genomic data files. Remote URLs and compressed files are supported.
+#' genomic data files. Remote URLs and compressed files are supported. All
+#' extensions are case insensitive.
 #'
 #' This function supports automatic loading of common file types:
 #'
-#' - `csv`: Comma Separated Values.
-#' - `tsv` Tab Separated Values.
-#' - `xlsx`: Excel workbook.
-#' - `mtx`: MatrixMarket sparse matrix.
-#' - `gtf`/`gff`/`gff3`: General Feature Format.
-#' - `rda`/`RData`: R Data. Must contain a single object. Doesn't require
-#'   internal object name to match, like with the [loadData()] function.
-#' - `rds`: R Data Serialized.
-#' - `json`: JSON.
-#' - `yaml`/`yml`: YAML.
+#' - `CSV`: Comma Separated Values.
+#' - `TSV` Tab Separated Values.
+#' - `XLSX`: Excel workbook.
+#' - `MTV`: MatrixMarket sparse matrix.
+#' - `GTF`/`GFF`/`GFF3`: General Feature Format.
+#' - `RDA`/`RDATA`: R Data.
+#'     - Must contain a single object.
+#'     - Doesn't require internal object name to match, unlike [loadData()].
+#' - `RDS`: R Data Serialized.
+#' - `JSON`: JSON.
+#' - `YAML`/`YML`: YAML.
+#'
+#' These file formats will be read as (source code) lines:
+#' `LOG`, `MD`, `PY`, `R`, `RMD`, `SH`.
+#'
+#' These file formats are blacklisted, and intentionally not supported:
+#' `DOC`, `DOCX`, `PDF`, `PPT`, `PPTX`, `TXT`.
 #'
 #' If the file format isn't supported natively (or blacklisted), the
 #' [rio](https://cran.r-project.org/web/packages/rio/index.html) package will
@@ -24,8 +32,8 @@
 #'
 #' @section Matrix Market Exchange (MTX/MEX):
 #'
-#' Reading a Matrix Market Exchange ("`mtx`") file now requires "`colnames`" and
-#' `"rownames"` sidecar files containing the [colnames()] and [rownames()] of
+#' Reading a Matrix Market Exchange (`MTX`) file now requires `COLNAMES` and
+#' `ROWNAMES` sidecar files containing the [colnames()] and [rownames()] of
 #' the sparse matrix. Legacy support for manual loading of these sidecar files
 #' is provided.
 #'
@@ -47,9 +55,9 @@
 #' Also supports some additional extensions commonly used with the
 #' [bcbio](https://bcbio-nextgen.readthedocs.io) pipeline:
 #'
-#' - `counts`: Counts table (e.g. RNA-seq aligned counts).
-#' - `colnames`: Sidecar file containing column names.
-#' - `rownames`: Sidecar file containing row names.
+#' - `COUNTS`: Counts table (e.g. RNA-seq aligned counts).
+#' - `COLNAMES`: Sidecar file containing column names.
+#' - `ROWNAMES`: Sidecar file containing row names.
 #'
 #' @family Import/Export Functions
 #' @export
@@ -59,9 +67,10 @@
 #' @return Varies, depending on the file extension:
 #'
 #' - Default: `DataFrame`.
-#' - MTX: `sparseMatrix`.
-#' - GTF/GFF: `GRanges`.
-#' - JSON/YAML: `list`.
+#' - `MTX`: `sparseMatrix`.
+#' - `GTF`/`GFF`: `GRanges`.
+#' - `JSON`/`YAML`: `list`.
+#' - Source code or log: `character`.
 #'
 #' Note that data frames are returned as S4 `DataFrame` class instead of
 #' `data.frame`, when applicable.
@@ -106,24 +115,25 @@ import <- function(file, ...) {
     message(paste0("Reading ", basename(file), "."))
     file <- localOrRemoteFile(file)
 
+    # Note that matching is case insensitive.
     ext <- basename(file) %>%
         str_match(extPattern) %>%
         .[1L, 2L] %>%
-        tolower()
+        toupper()
 
-    blacklist <- c("doc", "docx", "ppt", "pptx", "txt")
-    source <- c("md", "py", "r", "rmd", "sh")
+    blacklist <- c("DOC", "DOCX", "PDF", "PPT", "PPTX", "TXT")
+    lines <- c("LOG", "MD", "PY", "R", "RMD", "SH")
     unsupported <- paste("Unsupported extension", ":", deparse(ext))
 
     if (ext %in% blacklist) {
-        stop(unsupported)  # nocov
-    } else if (ext %in% source) {
-        message("Importing as source code lines.")
+        stop(unsupported)
+    } else if (ext %in% lines) {
+        message("Importing using `read_lines()`.")
         data <- do.call(what = read_lines, args = args)
-    } else if (ext %in% c("colnames", "rownames")) {
+    } else if (ext %in% c("COLNAMES", "ROWNAMES")) {
         args[["na"]] <- na
         data <- do.call(what = read_lines, args = args)
-    } else if (ext == "counts") {
+    } else if (ext == "COUNTS") {
         # bcbio counts output.
         args[["na"]] <- na
         data <- do.call(what = read_tsv, args = args)
@@ -149,11 +159,11 @@ import <- function(file, ...) {
             as.data.frame() %>%
             column_to_rownames("id") %>%
             as.matrix()
-    } else if (ext %in% c("gff", "gff3", "gtf")) {
+    } else if (ext %in% c("GFF", "GFF3", "GTF")) {
         data <- .importGFF(file)
-    } else if (ext == "mtx") {
+    } else if (ext == "MTX") {
         # MatrixMarket
-        # Require `.rownames` and `.colnames` files.
+        # Require `.ROWNAMES` and `.COLNAMES` files.
         data <- do.call(what = readMM, args = args)
         rownames <- paste(file, "rownames", sep = ".") %>%
             localOrRemoteFile() %>%
@@ -163,26 +173,26 @@ import <- function(file, ...) {
             read_lines(na = na)
         rownames(data) <- rownames
         colnames(data) <- colnames
-    } else if (ext %in% c("rda", "rdata")) {
+    } else if (ext %in% c("RDA", "RDATA")) {
         safe <- new.env()
         object <- load(file, envir = safe)
         if (!has_length(safe, n = 1L)) {
             stop("File does not contain a single object.")
         }
         data <- get(object, envir = safe, inherits = FALSE)
-    } else if (ext == "rds") {
+    } else if (ext == "RDS") {
         data <- readRDS(file)
-    } else if (ext == "json") {
+    } else if (ext == "JSON") {
         data <- .importJSON(file)
-    } else if (ext %in% c("yaml", "yml")) {
+    } else if (ext %in% c("YAML", "YML")) {
         data <- .importYAML(file)
     } else {
         # `rio::import`
         # How we declare NA strings depends on the file extension.
-        if (ext %in% c("csv", "tsv")) {
+        if (ext %in% c("CSV", "TSV")) {
             # `data.table::fread`
             args[["na.strings"]] <- na
-        } else if (ext %in% c("xls", "xlsx")) {
+        } else if (ext %in% c("XLS", "XLSX")) {
             # `readxl::read_excel`
             args[["na"]] <- na
         }
@@ -207,7 +217,10 @@ import <- function(file, ...) {
 
 .importGFF <- function(file) {
     assert_is_a_string(file)
-    assert_all_are_matching_regex(file, "\\.g(f|t)f(\\d)?(\\.gz)?$")
+    assert_all_are_matching_regex(
+        x = toupper(basename(file)),
+        pattern = "\\.G(F|T)F([[:digit:]])?(\\.GZ)?$"
+    )
     file <- localOrRemoteFile(file)
     tryCatch(
         rtracklayer::import(file),
@@ -224,7 +237,10 @@ import <- function(file, ...) {
 
 .importJSON <- function(file) {
     assert_is_a_string(file)
-    assert_all_are_matching_regex(file, "\\.json$")
+    assert_all_are_matching_regex(
+        x = toupper(basename(file)),
+        pattern = "\\.JSON$"
+    )
     file <- localOrRemoteFile(file)
     read_json(file)
 }
@@ -233,7 +249,10 @@ import <- function(file, ...) {
 
 .importYAML <- function(file) {
     assert_is_a_string(file)
-    assert_all_are_matching_regex(file, "\\.ya?ml$")
+    assert_all_are_matching_regex(
+        x = toupper(basename(file)),
+        pattern = "\\.YA?ML$"
+    )
     file <- localOrRemoteFile(file)
     yaml.load_file(file)
 }
