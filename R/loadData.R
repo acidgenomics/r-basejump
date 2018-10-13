@@ -205,7 +205,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     assert_is_character(names)
     assert_all_are_dirs(dir)
     assert_is_a_string(dir)
-    dir <- normalizePath(dir, winslash = "/", mustWork = TRUE)
+    dir <- realpath(dir)
     files <- vapply(
         X = names,
         FUN = function(name) {
@@ -248,7 +248,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 ) {
     assert_is_a_string(file)
     assert_all_are_existing_files(file)
-    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+    file <- realpath(file)
     assertIsAStringOrNULL(name)
     assert_is_environment(envir)
 
@@ -305,8 +305,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 
 .safeLoadRDS <- function(file, envir = parent.frame()) {
     assert_is_a_string(file)
-    assert_all_are_existing_files(file)
-    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+    file <- realpath(file)
     assert_is_environment(envir)
 
     name <- gsub("\\.rds", "", basename(file), ignore.case = TRUE)

@@ -190,14 +190,14 @@ test_that("loadData", {
     # rda
     expect_identical(
         object = loadData(gr),
-        expected = c(gr = normalizePath("gr.rda", winslash = "/"))
+        expected = c(gr = realpath("gr.rda"))
     )
 
     # rds
     expect_identical(
         object = loadData(serialized),
         expected = c(
-            serialized = normalizePath("serialized.rds", winslash = "/")
+            serialized = realpath("serialized.rds")
         )
     )
 })

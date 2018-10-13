@@ -226,7 +226,7 @@ makeSummarizedExperiment <- function(
     # Metadata -----------------------------------------------------------------
     metadata <- as.list(metadata)
     metadata[["date"]] <- Sys.Date()
-    metadata[["wd"]] <- normalizePath(".", winslash = "/", mustWork = TRUE)
+    metadata[["wd"]] <- realpath(".")
     metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
     metadata <- Filter(f = Negate(is.null), x = metadata)
 

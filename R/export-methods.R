@@ -85,7 +85,7 @@ NULL
             what = rio::export,
             args = list(x = x, file = file, ...)
         )
-        file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+        file <- realpath(file)
         message(paste0("Exported ", basename(file), "."))
         invisible(file)
     }
@@ -139,7 +139,7 @@ NULL
         }
 
         # Normalize the path.
-        file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+        file <- realpath(file)
 
         # Write barcodes (colnames).
         barcodes <- colnames(x)
