@@ -179,6 +179,7 @@ Collate:
     'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
     'printString.R'
+    'realpath.R'
     'reexports.R'
     'removeNA-methods.R'
     'sampleData-methods.R'
