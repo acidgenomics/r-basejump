@@ -84,7 +84,7 @@ NULL
             # File paths.
             names <- names(return)
             return <- unlist(return)
-            return <- normalizePath(return, winslash = "/", mustWork = TRUE)
+            return <- realpath(return)
             names(return) <- names
             invisible(return)
         } else {

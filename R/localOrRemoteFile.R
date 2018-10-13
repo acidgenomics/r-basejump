@@ -68,7 +68,6 @@ localOrRemoteFile <- function(file) {
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE
     )
-    assert_all_are_existing_files(local)
     assert_all_are_matching_regex(local, extPattern)
-    normalizePath(local, winslash = "/", mustWork = TRUE)
+    realpath(local)
 }

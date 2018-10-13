@@ -97,7 +97,7 @@ transmit <- function(
     # Early return if all files exist.
     if (!has_length(localPaths)) {
         message("All files are already downloaded.")
-        files <- normalizePath(files, winslash = "/", mustWork = TRUE)
+        files <- realpath(files)
         names(files) <- match
         return(invisible(files))
     }
@@ -109,7 +109,7 @@ transmit <- function(
             if (isTRUE(compress)) {
                 destfile <- gzip(destfile, overwrite = TRUE)
             }
-            normalizePath(destfile, winslash = "/", mustWork = TRUE)
+            realpath(destfile)
         },
         url = remotePaths,
         destfile = localPaths,
