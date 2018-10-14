@@ -42,14 +42,19 @@ NULL
     assert_is_atomic(x)
     assertIsAnImplicitInteger(n)
     assert_all_are_positive(n)
-    cat(paste(
-        c(
-            head(x, n = n),
-            "...",
-            tail(x, n = n)
-        ),
-        collapse = " "
-    ))
+    if (length(x) <= n) {
+        out <- x
+    } else {
+        out <- paste(
+            c(
+                head(x, n = n),
+                "...",
+                tail(x, n = n)
+            ),
+            collapse = " "
+        )
+    }
+    cat(out)
     invisible()
 }
 
