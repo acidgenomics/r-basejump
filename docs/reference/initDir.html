@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Deprecated Functions — deprecated • basejump</title>
+<title>Initialize Directory — initDir • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Deprecated Functions — deprecated" />
+<meta property="og:title" content="Initialize Directory — initDir" />
 
-<meta property="og:description" content="Deprecated Functions" />
+<meta property="og:description" content="Checks and creates a directory recursively automatically." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,119 +105,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Deprecated Functions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
-    <div class="hidden name"><code>deprecated.Rd</code></div>
+    <h1>Initialize Directory</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/initDir.R'><code>R/initDir.R</code></a></small>
+    <div class="hidden name"><code>initDir.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Deprecated Functions</p>
+    <p>Checks and creates a directory recursively automatically.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>checkAnnotable</span>(<span class='no'>...</span>)
-
-<span class='fu'>checkGene2symbol</span>(<span class='no'>...</span>)
-
-<span class='fu'>checkTx2gene</span>(<span class='no'>...</span>)
-
-<span class='fu'>assertFormalHeaderLevel</span>(<span class='no'>...</span>)
-
-<span class='fu'>assertFormalColorFunction</span>(<span class='no'>...</span>)
-
-<span class='fu'>assertIsAnnotable</span>(<span class='no'>...</span>)
-
-<span class='fu'>ensembl</span>(<span class='no'>...</span>)
-
-<span class='fu'>gene2symbolFromGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>gene2symbolFromGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>sanitizeAnnotable</span>(<span class='no'>...</span>)
-
-<span class='fu'>tx2geneFromGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>tx2geneFromGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>multiassignAsNewEnvir</span>(<span class='no'>...</span>)
-
-<span class='fu'>geomean</span>(<span class='no'>...</span>)
-
-<span class='fu'>midnightTheme</span>(<span class='no'>...</span>)
-
-<span class='fu'>paperwhiteTheme</span>(<span class='no'>...</span>)
-
-<span class='fu'>assertIsURL</span>(<span class='no'>...</span>)
-
-<span class='fu'>aggregateFeatures</span>(<span class='no'>...</span>)
-
-<span class='fu'>aggregateReplicates</span>(<span class='no'>...</span>)
-
-<span class='fu'>aggregateSamples</span>(<span class='no'>...</span>)
-
-<span class='fu'>assertFormalGene2symbol</span>(<span class='no'>...</span>)
-
-<span class='fu'>assertIsAHeaderLevel</span>(<span class='no'>...</span>)
-
-<span class='fu'>assertIsCharacterOrNULL</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>assertIsDataFrameOrNULL</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>fixNA</span>(<span class='no'>...</span>)
-
-<span class='fu'>flatFiles</span>(<span class='no'>object</span>)
-
-<span class='fu'>grepString</span>(<span class='no'>...</span>)
-
-<span class='fu'>hgnc2gene</span>(<span class='no'>...</span>)
-
-<span class='fu'>initializeDirectory</span>(<span class='no'>...</span>)
-
-<span class='fu'>kables</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeGene2symbolFromEnsembl</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeGene2symbolFromGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeGene2symbolFromGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeTx2geneFromEnsembl</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeTx2geneFromGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeTx2geneFromGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>mgi2gene</span>(<span class='no'>...</span>)
-
-<span class='fu'>readFileByExtension</span>(<span class='no'>...</span>)
-
-<span class='fu'>readGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>readGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>readJSON</span>(<span class='no'>...</span>)
-
-<span class='fu'>readYAML</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>initDir</span>(<span class='no'>dir</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>dir</th>
+      <td><p><code>string</code>. Directory path.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>.Deprecated()</code>.</p>
+    <p><code>string</code>. Directory path.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Useful for setting up functions that require writes to a user-specified
+directory.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>initDir</span>(<span class='st'>"testdir"</span>)</div><div class='output co'>#&gt; [1] "/Users/mike/git/basejump-private/docs/reference/testdir"</div><div class='input'><span class='fu'>dir.exists</span>(<span class='st'>"testdir"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='co'>## Clean up.</span>
+<span class='fu'>unlink</span>(<span class='st'>"testdir"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -225,7 +148,11 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
