@@ -205,12 +205,18 @@ experiment).</p>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"batch"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1L</span>
 <span class='co'>## `batch` column should be now defined.</span>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 5 columns
-#&gt;         genotype treatment sampleName     batch interestingGroups
-#&gt;         &lt;factor&gt;  &lt;factor&gt;   &lt;factor&gt; &lt;integer&gt;          &lt;factor&gt;
-#&gt; sample1 wildtype   control    sample1         1  wildtype:control
-#&gt; sample2 knockout   control    sample2         1  knockout:control
-#&gt; sample3 wildtype   treated    sample3         1  wildtype:treated
-#&gt; sample4 knockout   treated    sample4         1  knockout:treated</div><div class='input'>
+#&gt;         genotype treatment sampleName     batch
+#&gt;         &lt;factor&gt;  &lt;factor&gt;   &lt;factor&gt; &lt;integer&gt;
+#&gt; sample1 wildtype   control    sample1         1
+#&gt; sample2 knockout   control    sample2         1
+#&gt; sample3 wildtype   treated    sample3         1
+#&gt; sample4 knockout   treated    sample4         1
+#&gt;         interestingGroups
+#&gt;                  &lt;factor&gt;
+#&gt; sample1  wildtype:control
+#&gt; sample2  knockout:control
+#&gt; sample3  wildtype:treated
+#&gt; sample4  knockout:treated</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce_small</span>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns

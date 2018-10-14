@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Strip Transcript Versions — stripTranscriptVersions • basejump</title>
+<title>Convert Sample Identifiers to Names — convertSampleIDsToNames • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Strip Transcript Versions — stripTranscriptVersions" />
+<meta property="og:title" content="Convert Sample Identifiers to Names — convertSampleIDsToNames" />
 
-<meta property="og:description" content="Strip Transcript Versions" />
+<meta property="og:description" content="Convert Sample Identifiers to Names" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,30 +105,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Strip Transcript Versions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/stripTranscriptVersions-methods.R'><code>R/stripTranscriptVersions-methods.R</code></a></small>
-    <div class="hidden name"><code>stripTranscriptVersions.Rd</code></div>
+    <h1>Convert Sample Identifiers to Names</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertSampleIDsToNames-methods.R'><code>R/convertSampleIDsToNames-methods.R</code></a></small>
+    <div class="hidden name"><code>convertSampleIDsToNames.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Strip Transcript Versions</p>
+    <p>Convert Sample Identifiers to Names</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)
+    <pre class="usage"><span class='fu'>convertSampleIDsToNames</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>convertSampleIDsToNames</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>convertSampleIDsToNames</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,46 +137,23 @@
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Modified object, containing transcript identifiers without version
-numbers.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>This function is strict, and will only strip Ensembl transcript IDs
-beginning with "ENS".</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='toStringUnique.html'>toStringUnique</a></code></p>
-<p>Other Transcript-Level Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
-  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Ensembl (modify; contains versions)</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='fu'>c</span>(
-    <span class='st'>"ENSMUST00000000001.1"</span>,
-    <span class='st'>"ENSMUST00000000001-1"</span>,
-    <span class='st'>"ENSMUST00000000001_1"</span>
-))</div><div class='output co'>#&gt; [1] "ENSMUST00000000001" "ENSMUST00000000001"
-#&gt; [3] "ENSMUST00000000001"</div><div class='input'>
-<span class='co'>## WormBase (keep; doesn't contain versions)</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='st'>"cTel79B.1"</span>)</div><div class='output co'>#&gt; [1] "cTel79B.1"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+<span class='fu'>convertSampleIDsToNames</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; <span class='message'>Returning with samples unmodified.</span></div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+#&gt; dim: 50 4 
+#&gt; metadata(3): version date interestingGroups
+#&gt; assays(1): counts
+#&gt; rownames(50): gene1 gene2 ... gene49 gene50
+#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
+#&gt; colnames(4): sample1 sample2 sample3 sample4
+#&gt; colData names(2): genotype treatment</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

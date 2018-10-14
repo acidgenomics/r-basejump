@@ -141,37 +141,38 @@ Complex columns (e.g. Entrez ID <code>list</code>) will fail to write to disk as
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
 <span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>rse_small</span>)
-<span class='fu'>colnames</span>(<span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class'>mcols</a></span>(<span class='no'>from</span>))</div><div class='output co'>#&gt; [1] "geneID"      "geneName"    "geneBiotype" "broadClass"  "entrezID"   </div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeRowData</span>(<span class='no'>from</span>)
-<span class='fu'>vapply</span>(<span class='no'>to</span>, <span class='no'>is.atomic</span>, <span class='fu'>logical</span>(<span class='fl'>1L</span>))</div><div class='output co'>#&gt;    seqnames       start         end       width      strand      geneID 
-#&gt;        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
-#&gt;    geneName geneBiotype  broadClass 
-#&gt;        TRUE        TRUE        TRUE </div><div class='input'><span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 50 rows and 9 columns
-#&gt;        seqnames     start       end     width   strand          geneID
-#&gt;        &lt;factor&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;factor&gt;     &lt;character&gt;
-#&gt; gene1         X 100627109 100639991     12883        - ENSG00000000003
-#&gt; gene2         X 100584802 100599885     15084        + ENSG00000000005
-#&gt; gene3        20  50934867  50958555     23689        - ENSG00000000419
-#&gt; gene4         1 169849631 169894267     44637        - ENSG00000000457
-#&gt; gene5         1 169662007 169854080    192074        + ENSG00000000460
-#&gt; ...         ...       ...       ...       ...      ...             ...
-#&gt; gene46        7 127588345 127591705      3361        + ENSG00000004059
-#&gt; gene47       17  28364356  28404049     39694        + ENSG00000004139
-#&gt; gene48       17  28347177  28357522     10346        - ENSG00000004142
-#&gt; gene49        3 129555175 129606818     51644        - ENSG00000004399
-#&gt; gene50        1  33007940  33080996     73057        - ENSG00000004455
-#&gt;           geneName    geneBiotype  broadClass
-#&gt;        &lt;character&gt;    &lt;character&gt; &lt;character&gt;
-#&gt; gene1       TSPAN6 protein_coding      coding
-#&gt; gene2         TNMD protein_coding      coding
-#&gt; gene3         DPM1 protein_coding      coding
-#&gt; gene4        SCYL3 protein_coding      coding
-#&gt; gene5     C1orf112 protein_coding      coding
-#&gt; ...            ...            ...         ...
-#&gt; gene46        ARF5 protein_coding      coding
-#&gt; gene47       SARM1 protein_coding      coding
-#&gt; gene48     POLDIP2 protein_coding      coding
-#&gt; gene49      PLXND1 protein_coding      coding
-#&gt; gene50         AK2 protein_coding      coding</div></pre>
+<span class='fu'>colnames</span>(<span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class'>mcols</a></span>(<span class='no'>from</span>))</div><div class='output co'>#&gt; [1] "geneID"      "geneName"    "geneBiotype" "broadClass" 
+#&gt; [5] "entrezID"   </div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeRowData</span>(<span class='no'>from</span>)
+<span class='fu'>vapply</span>(<span class='no'>to</span>, <span class='no'>is.atomic</span>, <span class='fu'>logical</span>(<span class='fl'>1L</span>))</div><div class='output co'>#&gt;    seqnames       start         end       width      strand 
+#&gt;        TRUE        TRUE        TRUE        TRUE        TRUE 
+#&gt;      geneID    geneName geneBiotype  broadClass 
+#&gt;        TRUE        TRUE        TRUE        TRUE </div><div class='input'><span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 50 rows and 9 columns
+#&gt;        seqnames     start       end     width   strand
+#&gt;        &lt;factor&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;factor&gt;
+#&gt; gene1         X 100627109 100639991     12883        -
+#&gt; gene2         X 100584802 100599885     15084        +
+#&gt; gene3        20  50934867  50958555     23689        -
+#&gt; gene4         1 169849631 169894267     44637        -
+#&gt; gene5         1 169662007 169854080    192074        +
+#&gt; ...         ...       ...       ...       ...      ...
+#&gt; gene46        7 127588345 127591705      3361        +
+#&gt; gene47       17  28364356  28404049     39694        +
+#&gt; gene48       17  28347177  28357522     10346        -
+#&gt; gene49        3 129555175 129606818     51644        -
+#&gt; gene50        1  33007940  33080996     73057        -
+#&gt;                 geneID    geneName    geneBiotype  broadClass
+#&gt;            &lt;character&gt; &lt;character&gt;    &lt;character&gt; &lt;character&gt;
+#&gt; gene1  ENSG00000000003      TSPAN6 protein_coding      coding
+#&gt; gene2  ENSG00000000005        TNMD protein_coding      coding
+#&gt; gene3  ENSG00000000419        DPM1 protein_coding      coding
+#&gt; gene4  ENSG00000000457       SCYL3 protein_coding      coding
+#&gt; gene5  ENSG00000000460    C1orf112 protein_coding      coding
+#&gt; ...                ...         ...            ...         ...
+#&gt; gene46 ENSG00000004059        ARF5 protein_coding      coding
+#&gt; gene47 ENSG00000004139       SARM1 protein_coding      coding
+#&gt; gene48 ENSG00000004142     POLDIP2 protein_coding      coding
+#&gt; gene49 ENSG00000004399      PLXND1 protein_coding      coding
+#&gt; gene50 ENSG00000004455         AK2 protein_coding      coding</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

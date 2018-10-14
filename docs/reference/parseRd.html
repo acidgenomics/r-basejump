@@ -151,8 +151,8 @@ returns <code>character</code> instead of <code>matrix</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>db</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tools</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tools/topics/Rdutils'>Rd_db</a></span>(<span class='st'>"base"</span>)
-<span class='fu'>head</span>(<span class='fu'>names</span>(<span class='no'>db</span>))</div><div class='output co'>#&gt; [1] "Arithmetic.Rd"   "AsIs.Rd"         "Bessel.Rd"       "CallExternal.Rd"
-#&gt; [5] "Colon.Rd"        "Comparison.Rd"  </div><div class='input'><span class='no'>Rd</span> <span class='kw'>&lt;-</span> <span class='no'>db</span><span class='kw'>[[</span><span class='st'>"nrow.Rd"</span>]]
+<span class='fu'>head</span>(<span class='fu'>names</span>(<span class='no'>db</span>))</div><div class='output co'>#&gt; [1] "Arithmetic.Rd"   "AsIs.Rd"         "Bessel.Rd"      
+#&gt; [4] "CallExternal.Rd" "Colon.Rd"        "Comparison.Rd"  </div><div class='input'><span class='no'>Rd</span> <span class='kw'>&lt;-</span> <span class='no'>db</span><span class='kw'>[[</span><span class='st'>"nrow.Rd"</span>]]
 <span class='fu'>class</span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt; [1] "Rd"</div><div class='input'><span class='fu'>summary</span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;       Length Class  Mode
 #&gt;  [1,]  1     -none- list
 #&gt;  [2,]  1     -none- list
@@ -167,9 +167,10 @@ returns <code>character</code> instead of <code>matrix</code>.</p>
 #&gt; [11,]  5     -none- list
 #&gt; [12,] 10     -none- list
 #&gt; [13,] 11     -none- list
-#&gt; [14,]  8     -none- list</div><div class='input'><span class='fu'><a href='RdTags.html'>RdTags</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;  [1] "title"       "name"        "alias"       "alias"       "alias"      
-#&gt;  [6] "alias"       "keyword"     "description" "usage"       "arguments"  
-#&gt; [11] "value"       "references"  "seealso"     "examples"   </div><div class='input'><span class='no'>examples</span> <span class='kw'>&lt;-</span> <span class='fu'>parseRd</span>(<span class='no'>Rd</span>, <span class='kw'>tag</span> <span class='kw'>=</span> <span class='st'>"examples"</span>)
+#&gt; [14,]  8     -none- list</div><div class='input'><span class='fu'><a href='RdTags.html'>RdTags</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;  [1] "title"       "name"        "alias"       "alias"      
+#&gt;  [5] "alias"       "alias"       "keyword"     "description"
+#&gt;  [9] "usage"       "arguments"   "value"       "references" 
+#&gt; [13] "seealso"     "examples"   </div><div class='input'><span class='no'>examples</span> <span class='kw'>&lt;-</span> <span class='fu'>parseRd</span>(<span class='no'>Rd</span>, <span class='kw'>tag</span> <span class='kw'>=</span> <span class='st'>"examples"</span>)
 <span class='fu'>print</span>(<span class='no'>examples</span>)</div><div class='output co'>#&gt; [1] "ma &lt;- matrix(1:12, 3, 4)"                              
 #&gt; [2] "nrow(ma)   # 3"                                        
 #&gt; [3] "ncol(ma)   # 4"                                        

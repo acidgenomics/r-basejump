@@ -135,9 +135,10 @@
 
     <p>Varies, depending on the file extension:</p><ul>
 <li><p>Default: <code>DataFrame</code>.</p></li>
-<li><p>MTX: <code>sparseMatrix</code>.</p></li>
-<li><p>GTF/GFF: <code>GRanges</code>.</p></li>
-<li><p>JSON/YAML: <code>list</code>.</p></li>
+<li><p><code>MTX</code>: <code>sparseMatrix</code>.</p></li>
+<li><p><code>GTF</code>/<code>GFF</code>: <code>GRanges</code>.</p></li>
+<li><p><code>JSON</code>/<code>YAML</code>: <code>list</code>.</p></li>
+<li><p>Source code or log: <code>character</code>.</p></li>
 </ul>
 
 <p>Note that data frames are returned as S4 <code>DataFrame</code> class instead of
@@ -146,28 +147,35 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This is a wrapper for <code><a href='http://www.rdocumentation.org/packages/rio/topics/import'>rio::import()</a></code> that adds support for additional common
-genomic data files. Remote URLs and compressed files are supported.</p>
+genomic data files. Remote URLs and compressed files are supported. All
+extensions are case insensitive.</p>
 <p>This function supports automatic loading of common file types:</p><ul>
-<li><p><code>csv</code>: Comma Separated Values.</p></li>
-<li><p><code>tsv</code> Tab Separated Values.</p></li>
-<li><p><code>xlsx</code>: Excel workbook.</p></li>
-<li><p><code>mtx</code>: MatrixMarket sparse matrix.</p></li>
-<li><p><code>gtf</code>/<code>gff</code>/<code>gff3</code>: General Feature Format.</p></li>
-<li><p><code>rda</code>/<code>RData</code>: R Data. Must contain a single object. Doesn't require
-internal object name to match, like with the <code><a href='loadData.html'>loadData()</a></code> function.</p></li>
-<li><p><code>rds</code>: R Data Serialized.</p></li>
-<li><p><code>json</code>: JSON.</p></li>
-<li><p><code>yaml</code>/<code>yml</code>: YAML.</p></li>
+<li><p><code>CSV</code>: Comma Separated Values.</p></li>
+<li><p><code>TSV</code> Tab Separated Values.</p></li>
+<li><p><code>XLSX</code>: Excel workbook.</p></li>
+<li><p><code>MTV</code>: MatrixMarket sparse matrix.</p></li>
+<li><p><code>GTF</code>/<code>GFF</code>/<code>GFF3</code>: General Feature Format.</p></li>
+<li><p><code>RDA</code>/<code>RDATA</code>: R Data.</p><ul>
+<li><p>Must contain a single object.</p></li>
+<li><p>Doesn't require internal object name to match, unlike <code><a href='loadData.html'>loadData()</a></code>.</p></li>
+</ul></li>
+<li><p><code>RDS</code>: R Data Serialized.</p></li>
+<li><p><code>JSON</code>: JSON.</p></li>
+<li><p><code>YAML</code>/<code>YML</code>: YAML.</p></li>
 </ul>
-    <p>If the file format isn't supported natively (or blacklisted), the
+    <p>These file formats will be read as (source code) lines:
+<code>LOG</code>, <code>MD</code>, <code>PY</code>, <code>R</code>, <code>RMD</code>, <code>SH</code>.</p>
+<p>These file formats are blacklisted, and intentionally not supported:
+<code>DOC</code>, <code>DOCX</code>, <code>PDF</code>, <code>PPT</code>, <code>PPTX</code>, <code>TXT</code>.</p>
+<p>If the file format isn't supported natively (or blacklisted), the
 <a href='https://cran.r-project.org/web/packages/rio/index.html'>rio</a> package will
 be used as a fallback attempt.</p>
     
     <h2 class="hasAnchor" id="matrix-market-exchange-mtx-mex-"><a class="anchor" href="#matrix-market-exchange-mtx-mex-"></a>Matrix Market Exchange (MTX/MEX)</h2>
 
     
-    <p>Reading a Matrix Market Exchange ("<code>mtx</code>") file now requires "<code>colnames</code>" and
-<code>"rownames"</code> sidecar files containing the <code>colnames()</code> and <code>rownames()</code> of
+    <p>Reading a Matrix Market Exchange (<code>MTX</code>) file now requires <code>COLNAMES</code> and
+<code>ROWNAMES</code> sidecar files containing the <code>colnames()</code> and <code>rownames()</code> of
 the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.</p>
     
@@ -183,14 +191,14 @@ Additional information:</p><ul>
 <li><p><a href='http://www.gencodegenes.org/gencodeformat.html'>Gencode</a></p></li>
 </ul>
     
-    <h2 class="hasAnchor" id="bcbio"><a class="anchor" href="#bcbio"></a>bcbio</h2>
+    <h2 class="hasAnchor" id="bcbio-files"><a class="anchor" href="#bcbio-files"></a>bcbio files</h2>
 
     
     <p>Also supports some additional extensions commonly used with the
 <a href='https://bcbio-nextgen.readthedocs.io'>bcbio</a> pipeline:</p><ul>
-<li><p><code>counts</code>: Counts table (e.g. RNA-seq aligned counts).</p></li>
-<li><p><code>colnames</code>: Sidecar file containing column names.</p></li>
-<li><p><code>rownames</code>: Sidecar file containing row names.</p></li>
+<li><p><code>COUNTS</code>: Counts table (e.g. RNA-seq aligned counts).</p></li>
+<li><p><code>COLNAMES</code>: Sidecar file containing column names.</p></li>
+<li><p><code>ROWNAMES</code>: Sidecar file containing row names.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -268,7 +276,7 @@ Additional information:</p><ul>
 
       <li><a href="#general-feature-format-gff-gtf-">General Feature Format (GFF/GTF)</a></li>
 
-      <li><a href="#bcbio">bcbio</a></li>
+      <li><a href="#bcbio-files">bcbio files</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

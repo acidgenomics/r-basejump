@@ -114,6 +114,7 @@ reference:
     - starts_with("assert")
   - title: Miscellaneous
     contents:
+    - checkClasses
     - detectHPC
     - dots
     - headtail
@@ -124,7 +125,9 @@ reference:
     - MethodDefinition
     - multiassignAsEnvir
     - printString
+    - realpath
     - separator
+    - showSlotInfo
     - standardizeCall
   - title: Example Data Sets
     contents:
