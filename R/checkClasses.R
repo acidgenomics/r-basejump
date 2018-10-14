@@ -2,6 +2,7 @@
 #'
 #' @inheritParams general
 #' @param expected `list`. Named list of expected classes per slot.
+#' @param subset `boolean`. Only check a subset of slots in the object.
 #' @export
 #'
 #' @examples
@@ -13,7 +14,19 @@
 #'         interestingGroups = "character"
 #'     )
 #' )
-checkClasses <- function(object, expected) {
+checkClasses <- function(
+    object,
+    expected,
+    subset = FALSE
+) {
+    assert_is_list(expected)
+    assert_has_names(expected)
+    assert_is_a_bool(subset)
+    if (isTRUE(subset)) {
+        assert_is_subset(names(expected), names(object))
+    } else {
+        assert_are_set_equal(names(expected), names(object))
+    }
     valid <- mapply(
         slot = names(expected),
         classes = expected,

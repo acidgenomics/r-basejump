@@ -4,12 +4,14 @@
 \alias{checkClasses}
 \title{Check Classes}
 \usage{
-checkClasses(object, expected)
+checkClasses(object, expected, subset = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{expected}{\code{list}. Named list of expected classes per slot.}
+
+\item{subset}{\code{boolean}. Only check a subset of slots in the object.}
 }
 \description{
 Check Classes
