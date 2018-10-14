@@ -21,7 +21,7 @@ NULL
         sampleNames <- sampleNames(object)
         assert_are_identical(names(sampleNames), colnames(object))
         if (identical(as.character(sampleNames), colnames(object))) {
-            message("Returning unmodified.")
+            message("Returning with samples unmodified.")
         } else {
             colnames <- as.character(sampleNames)
             assert_has_no_duplicates(colnames)
@@ -51,6 +51,10 @@ setMethod(
     f = "convertSampleIDsToNames",
     signature = signature("SingleCellExperiment"),
     definition = function(object) {
-        stop("Not supported, since columns are cell level.")
+        message(paste(
+            "Returning with samples unmodified,",
+            "since object contains cells."
+        ))
+        object
     }
 )
