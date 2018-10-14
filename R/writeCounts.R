@@ -46,7 +46,7 @@ writeCounts <- function(..., dir = ".", compress = FALSE) {
     dots <- dots_list(...)
     assert_is_list(dots)
     names <- dots(..., character = TRUE)
-    dir <- initializeDirectory(dir)
+    dir <- initDir(dir)
     assert_is_a_bool(compress)
 
     # Iterate across the dot objects and write to disk.

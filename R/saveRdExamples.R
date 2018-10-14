@@ -31,7 +31,7 @@ saveRdExamples <- function(
 ) {
     assert_is_any_of(Rd, c("character", "NULL"))
     assert_is_a_string(package)
-    dir <- initializeDirectory(dir)
+    dir <- initDir(dir)
 
     # Get a database of the Rd files available in the requested package.
     db <- Rd_db(package)
