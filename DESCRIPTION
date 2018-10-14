@@ -140,7 +140,7 @@ Collate:
     'headtail-methods.R'
     'hgnc2ensembl.R'
     'import.R'
-    'initializeDirectory.R'
+    'initDir.R'
     'interestingGroups-methods.R'
     'loadData.R'
     'localOrRemoteFile.R'
