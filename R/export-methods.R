@@ -81,10 +81,10 @@ NULL
         } else if (missing(format)) {
             assert_is_a_string(file)
         }
-        file <- do.call(
+        file <- suppressMessages(do.call(
             what = rio::export,
             args = list(x = x, file = file, ...)
-        )
+        ))
         file <- realpath(file)
         message(paste0("Exported ", basename(file), "."))
         invisible(file)
@@ -169,13 +169,13 @@ NULL
     function(
         x,
         dir = ".",
-        convertGenesToSymbols = FALSE,
+        human = FALSE,
         compress = FALSE
     ) {
         call <- standardizeCall()
         name <- as.character(call[["x"]])
         dir <- initializeDirectory(file.path(dir, name))
-        assert_is_a_bool(convertGenesToSymbols)
+        assert_is_a_bool(human)
         assert_is_a_bool(compress)
 
         files <- list()
@@ -186,13 +186,16 @@ NULL
         }
         ext <- paste0(".", format)
 
-        # Gene-to-symbol conversion mode.
-        if (isTRUE(convertGenesToSymbols)) {
+        # Human readable data mode.
+        # Ensure colnames are converted to sample names.
+        # Ensure rownames are converted to gene names (symbols).
+        if (isTRUE(human)) {
             files[["gene2symbol"]] <- export(
                 x = gene2symbol(x),
                 file = file.path(dir, paste0("gene2symbol", ext))
             )
             x <- convertGenesToSymbols(x)
+            x <- convertSampleIDsToNames(x)
         }
 
         # Assays
