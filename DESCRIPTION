@@ -194,6 +194,7 @@ Collate:
     'selectSamples-methods.R'
     'separator.R'
     'show-methods.R'
+    'showSlotInfo.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
