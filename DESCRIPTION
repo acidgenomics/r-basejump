@@ -115,6 +115,7 @@ Collate:
     'combine-methods.R'
     'makeGRanges.R'
     'convertGenesToSymbols-methods.R'
+    'convertSampleIDsToNames-methods.R'
     'makeTx2Gene.R'
     'convertTranscriptsToGenes-methods.R'
     'convertUCSCBuildToEnsembl.R'
