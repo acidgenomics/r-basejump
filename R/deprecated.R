@@ -342,7 +342,7 @@ initializeDirectory <- function(...) {
     initDir(...)
 }
 
-#' @rdname defunct
+#' @rdname deprecated
 #' @export
 kables <- function(...) {
     .Deprecated("markdownTables")
