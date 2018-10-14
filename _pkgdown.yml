@@ -118,7 +118,7 @@ reference:
     - detectHPC
     - dots
     - headtail
-    - starts_with("initialize")
+    - starts_with("init")
     - localOrRemoteFile
     - matchArgsToDoCall
     - matchInterestingGroups
