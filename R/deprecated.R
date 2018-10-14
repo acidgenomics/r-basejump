@@ -337,9 +337,16 @@ hgnc2gene <- function(...) {
 
 #' @rdname deprecated
 #' @export
+initializeDirectory <- function(...) {
+    .Deprecated("initDir")
+    initDir(...)
+}
+
+#' @rdname defunct
+#' @export
 kables <- function(...) {
     .Deprecated("markdownTables")
-    import(...)
+    markdownTables(...)
 }
 
 #' @rdname deprecated

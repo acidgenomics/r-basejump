@@ -30,7 +30,7 @@
 \alias{flatFiles}
 \alias{grepString}
 \alias{hgnc2gene}
-\alias{kables}
+\alias{initializeDirectory}
 \alias{makeGene2symbolFromEnsembl}
 \alias{makeGene2symbolFromGFF}
 \alias{makeGene2symbolFromGTF}
@@ -101,7 +101,7 @@ grepString(...)
 
 hgnc2gene(...)
 
-kables(...)
+initializeDirectory(...)
 
 makeGene2symbolFromEnsembl(...)
 

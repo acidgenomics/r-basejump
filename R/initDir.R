@@ -1,7 +1,9 @@
 #' Initialize Directory
 #'
-#' Checks and creates a directory recursively automatically. Useful for setting
-#' up functions that require writes to a user-specified directory.
+#' Checks and creates a directory recursively automatically.
+#'
+#' Useful for setting up functions that require writes to a user-specified
+#' directory.
 #'
 #' @export
 #'
@@ -10,21 +12,15 @@
 #' @return `string`. Directory path.
 #'
 #' @examples
-#' initializeDirectory("testdir")
+#' initDir("testdir")
 #' dir.exists("testdir")
 #'
 #' ## Clean up.
 #' unlink("testdir", recursive = TRUE)
-initializeDirectory <- function(dir) {
+initDir <- function(dir) {
     assert_is_a_string(dir)
     if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     }
     realpath(dir)
 }
-
-
-
-#' @rdname initializeDirectory
-#' @export
-initDir <- initializeDirectory
