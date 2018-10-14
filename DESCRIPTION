@@ -110,6 +110,7 @@ Collate:
     'assert.R'
     'basejump-package.R'
     'cell2sample-methods.R'
+    'checkClasses.R'
     'collapseToString-methods.R'
     'combine-methods.R'
     'makeGRanges.R'
