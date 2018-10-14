@@ -31,6 +31,7 @@
 \alias{grepString}
 \alias{hgnc2gene}
 \alias{initializeDirectory}
+\alias{kables}
 \alias{makeGene2symbolFromEnsembl}
 \alias{makeGene2symbolFromGFF}
 \alias{makeGene2symbolFromGTF}
@@ -102,6 +103,8 @@ grepString(...)
 hgnc2gene(...)
 
 initializeDirectory(...)
+
+kables(...)
 
 makeGene2symbolFromEnsembl(...)
 
