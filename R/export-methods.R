@@ -129,7 +129,7 @@ NULL
         file <- sub("\\.gz", "", file)
 
         # Create the recursive directory structure, if necessary.
-        initializeDirectory(dirname(file))
+        initDir(dirname(file))
 
         # MatrixMarket file
         writeMM(obj = x, file = file)
@@ -174,7 +174,7 @@ NULL
     ) {
         call <- standardizeCall()
         name <- as.character(call[["x"]])
-        dir <- initializeDirectory(file.path(dir, name))
+        dir <- initDir(file.path(dir, name))
         assert_is_a_bool(human)
         assert_is_a_bool(compress)
 
@@ -218,7 +218,7 @@ NULL
                 file <- paste0(file, ".", format)
                 export(assay, file = file)
             },
-            dir = initializeDirectory(file.path(dir, "assays"))
+            dir = initDir(file.path(dir, "assays"))
         )
         names(files[["assays"]]) <- assayNames
 
@@ -286,7 +286,7 @@ NULL
                 file <- paste0(file, ".", format)
                 export(reducedDim, file = file)
             },
-            dir = initializeDirectory(file.path(dir, name, "reducedDims"))
+            dir = initDir(file.path(dir, name, "reducedDims"))
         )
         names(files[["reducedDims"]]) <- reducedDimNames
     }

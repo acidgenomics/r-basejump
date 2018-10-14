@@ -40,7 +40,7 @@ saveData <- function(
 ) {
     objects <- list(...)
     names(objects) <- dots(..., character = TRUE)
-    dir <- initializeDirectory(dir)
+    dir <- initDir(dir)
     ext <- match.arg(arg = ext, choices = c("rds", "rda", "RData"))
     assert_is_a_bool(overwrite)
     assertFormalCompress(compress)
@@ -125,7 +125,7 @@ assignAndSaveData <- function(
 ) {
     assert_is_a_string(name)
     assert_is_not_null(object)
-    dir <- initializeDirectory(dir)
+    dir <- initDir(dir)
     assertFormalCompress(compress)
     assert_is_environment(envir)
 

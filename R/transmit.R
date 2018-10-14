@@ -44,7 +44,7 @@ transmit <- function(
     if (!grepl("/$", remoteDir)) {
         remoteDir <- paste0(remoteDir, "/")
     }
-    localDir <- initializeDirectory(localDir)
+    localDir <- initDir(localDir)
     assert_is_a_string(pattern)
     assert_is_any_of(rename, c("character", "NULL"))
     assert_is_a_bool(compress)

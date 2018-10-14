@@ -51,7 +51,7 @@ NULL
         assert_all_are_positive(minCells)
         assert_is_a_bool(assignAndSave)
         assert_is_environment(envir)
-        dir <- initializeDirectory(dir)
+        dir <- initDir(dir)
 
         # Return objects or file paths.
         samples <- levels(cell2sample(object))
