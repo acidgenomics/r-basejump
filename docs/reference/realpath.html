@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Strip Transcript Versions — stripTranscriptVersions • basejump</title>
+<title>Express File Paths in Canonical Form — realpath • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Strip Transcript Versions — stripTranscriptVersions" />
+<meta property="og:title" content="Express File Paths in Canonical Form — realpath" />
 
-<meta property="og:description" content="Strip Transcript Versions" />
+<meta property="og:description" content="Convert file paths to canonical form for the platform, to display them
+  in a user-understandable form and so that relative and absolute paths can
+  be compared." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,72 +107,78 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Strip Transcript Versions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/stripTranscriptVersions-methods.R'><code>R/stripTranscriptVersions-methods.R</code></a></small>
-    <div class="hidden name"><code>stripTranscriptVersions.Rd</code></div>
+    <h1>Express File Paths in Canonical Form</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/realpath.R'><code>R/realpath.R</code></a></small>
+    <div class="hidden name"><code>realpath.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Strip Transcript Versions</p>
+    <p>Convert file paths to canonical form for the platform, to display them
+  in a user-understandable form and so that relative and absolute paths can
+  be compared.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>realpath</span>(<span class='no'>path</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <th>path</th>
+      <td><p>character vector of file paths.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Modified object, containing transcript identifiers without version
-numbers.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <p>A character vector.</p>
+<p>If an input is not a real path the result is system-dependent (unless
+  <code>mustWork = TRUE</code>, when this should be an error).  It will be
+  either the corresponding input element or a transformation of it into
+  an absolute path.</p>
+<p>Converting to an absolute file path can fail for a large number of
+  reasons.  The most common are</p><ul>
+<li><p>One of more components of the file path does not exist.</p></li>
+<li><p>A component before the last is not a directory, or there is
+    insufficient permission to read the directory.</p></li>
+<li><p>For a relative path, the current directory cannot be
+    determined.</p></li>
+<li><p>A symbolic link points to a non-existent place or links form a
+    loop.</p></li>
+<li><p>The canonicalized path would be exceed the maximum supported
+    length of a file path.</p></li>
+</ul>
 
-    <p>This function is strict, and will only strip Ensembl transcript IDs
-beginning with "ENS".</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Tilde-expansion (see <code>path.expand</code>) is first done on
+  <code>paths</code>.</p>
+<p>Where the Unix-alike platform supports it attempts to turn paths into
+  absolute paths in their canonical form (no <samp>./</samp>, <samp>../</samp> nor
+  symbolic links).  It relies on the POSIX system function
+  <code>realpath</code>: if the platform does not have that (we know of no
+  current example) then the result will be an absolute path but might
+  not be canonical.  Even where <code>realpath</code> is used the canonical
+  path need not be unique, for example <em>via</em> hard links or
+  multiple mounts.</p>
+<p>On Windows it converts relative paths to absolute paths, converts
+  short names for path elements to long names and ensures the separator
+  is that specified by <code>winslash</code>.  It will match paths
+  case-insensitively and return the canonical case.
+  UTF-8-encoded paths not valid in the current locale can be used.</p>
+<p><code>mustWork = FALSE</code> is useful for expressing paths for use in
+  messages.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='toStringUnique.html'>toStringUnique</a></code></p>
-<p>Other Transcript-Level Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
-  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/base/topics/normalizePath'>base::normalizePath()</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Ensembl (modify; contains versions)</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='fu'>c</span>(
-    <span class='st'>"ENSMUST00000000001.1"</span>,
-    <span class='st'>"ENSMUST00000000001-1"</span>,
-    <span class='st'>"ENSMUST00000000001_1"</span>
-))</div><div class='output co'>#&gt; [1] "ENSMUST00000000001" "ENSMUST00000000001"
-#&gt; [3] "ENSMUST00000000001"</div><div class='input'>
-<span class='co'>## WormBase (keep; doesn't contain versions)</span>
-<span class='fu'>stripTranscriptVersions</span>(<span class='st'>"cTel79B.1"</span>)</div><div class='output co'>#&gt; [1] "cTel79B.1"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>realpath</span>(<span class='st'>"."</span>)</div><div class='output co'>#&gt; [1] "/Users/mike/git/basejump-private/docs/reference"</div><div class='input'><span class='fu'>normalizePath</span>(<span class='st'>"."</span>)</div><div class='output co'>#&gt; [1] "/Users/mike/git/basejump-private/docs/reference"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -179,7 +187,7 @@ beginning with "ENS".</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#note">Note</a></li>
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

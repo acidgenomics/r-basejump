@@ -4,45 +4,6 @@
 #' @family Annotation Functions
 #' @family Transcript-Level Functions
 #'
-#' @section Ensembl annotations:
-#'
-#' Quickly obtain gene and transcript annotations from
-#' [Ensembl](http://www.ensembl.org) using
-#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub) and
-#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
-#'
-#' Simply specify the desired organism, using the full latin name. For example,
-#' we can obtain human annotations with `Homo sapiens`. Optionally, specific
-#' Ensembl genome builds (e.g. `GRCh38`) and release versions (e.g. `87`) are
-#' supported.
-#'
-#' Under the hood, this function fetches annotations from AnnotationHub using
-#' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
-#' back to version 87.
-#'
-#' Genome build: use "`GRCh38`" instead of "`hg38`" for the genome build, since
-#' we're querying Ensembl and not UCSC.
-#'
-#' @section GTF/GFF file:
-#'
-#' The GFF (General Feature Format) format consists of one line per feature,
-#' each containing 9 columns of data, plus optional track definition lines. The
-#' GTF (General Transfer Format) is identical to GFF version 2. We recommend
-#' using a GTF file instead of a GFF3 file, if possible.
-#'
-#' The UCSC website has detailed conventions on the GFF3 format, including
-#' the metadata columns.
-#'
-#' Remote URLs and compressed files are supported.
-#'
-#' @section GRCh37 legacy annotations:
-#'
-#' [makeGRangesFromEnsembl()] supports the legacy *Homo sapiens* GRCh37 (release
-#' 75) build by internally querying the
-#' [EnsDb.Hsapiens.v75](https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75)
-#' package. Alternatively, the corresponding GTF/GFF file can be loaded directly
-#' from GENCODE or Ensembl.
-#'
 #' @section Broad class definitions:
 #'
 #' For gene and transcript annotations, a `broadClass` column is added, which
@@ -58,12 +19,14 @@
 #'   - `tcr` (T cell receptor).
 #'   - `other`.
 #'
-#' @section annotable:
+#' @section GRCh37 (hg19) legacy annotations:
 #'
-#' [annotable()] is a legacy convenience function that calls
-#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
-#' that `GRanges` also support coercion to a basic `data.frame` using
-#' [as.data.frame()].
+#' [makeGRangesFromEnsembl()] supports the legacy *Homo sapiens* GRCh37 (release
+#' 75) build by internally querying the [EnsDb.Hsapiens.v75][] package.
+#' Alternatively, the corresponding GTF/GFF file can be loaded directly from
+#' GENCODE or Ensembl.
+#'
+#' [EnsDb.Hsapiens.v75]: https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75
 #'
 #' @inheritParams general
 #' @param level `string`. Return ranges as "`genes`" or "`transcripts`".
@@ -72,9 +35,7 @@
 #' @param release `scalar integer` or `NULL`. Release version (e.g. `90`). If
 #'   set `NULL`, defaults to the most recent release available.
 #'
-#' @return
-#' - `makeGRangesFromEnsembl()`, `makeGRangesFromGFF()`: `GRanges`.
-#' - `annotable()`: `tbl_df`.
+#' @return `GRanges`.
 #'
 #' @seealso
 #' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
@@ -102,15 +63,6 @@
 #' ## Transcripts
 #' x <- makeGRangesFromGFF(file = file, level = "transcripts")
 #' summary(x)
-#'
-#' ## annotable ====
-#' ## Genes
-#' x <- annotable("Homo sapiens")
-#' glimpse(x)
-#'
-#' ## Transcripts
-#' x <- annotable("Homo sapiens", level = "transcripts")
-#' glimpse(x)
 NULL
 
 
@@ -240,7 +192,23 @@ NULL
 
 
 
-#' @rdname makeGRanges
+#' @describeIn makeGRanges
+#' Quickly obtain gene and transcript annotations from
+#' [Ensembl](http://www.ensembl.org) using
+#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub) and
+#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
+#'
+#' Simply specify the desired organism, using the full latin name. For example,
+#' we can obtain human annotations with `Homo sapiens`. Optionally, specific
+#' Ensembl genome builds (e.g. `GRCh38`) and release versions (e.g. `87`) are
+#' supported.
+#'
+#' Under the hood, this function fetches annotations from AnnotationHub using
+#' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
+#' back to version 87.
+#'
+#' Genome build: use "`GRCh38`" instead of "`hg38`" for the genome build, since
+#' we're querying Ensembl and not UCSC.
 #' @export
 makeGRangesFromEnsembl <- function(
     organism,
@@ -485,7 +453,16 @@ makeGRangesFromEnsembl <- function(
 
 
 
-#' @rdname makeGRanges
+#' @describeIn makeGRanges
+#' The GFF (General Feature Format) format consists of one line per feature,
+#' each containing 9 columns of data, plus optional track definition lines. The
+#' GTF (General Transfer Format) is identical to GFF version 2. We recommend
+#' using a GTF file instead of a GFF3 file, if possible.
+#'
+#' The UCSC website has detailed conventions on the GFF3 format, including
+#' the metadata columns.
+#'
+#' Remote URLs and compressed files are supported.
 #' @export
 makeGRangesFromGFF <- function(
     file,
@@ -787,7 +764,11 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 
 
 # Legacy =======================================================================
-#' @rdname makeGRanges
+#' @describeIn makeGRanges
+#' [annotable()] is a legacy convenience function that calls
+#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
+#' that `GRanges` also support coercion to a basic `data.frame` using
+#' [as.data.frame()].
 #' @export
 annotable <-
     function() {

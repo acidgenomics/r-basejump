@@ -30,18 +30,14 @@ set \code{NULL}, defaults to the most recent release available.}
 \item{file}{\code{string}. File path.}
 }
 \value{
-\itemize{
-\item \code{makeGRangesFromEnsembl()}, \code{makeGRangesFromGFF()}: \code{GRanges}.
-\item \code{annotable()}: \code{tbl_df}.
-}
+\code{GRanges}.
 }
 \description{
 Make Genomic Ranges
 }
-\section{Ensembl annotations}{
-
-
-Quickly obtain gene and transcript annotations from
+\section{Functions}{
+\itemize{
+\item \code{makeGRangesFromEnsembl}: Quickly obtain gene and transcript annotations from
 \href{http://www.ensembl.org}{Ensembl} using
 \href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub} and
 \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
@@ -57,12 +53,8 @@ back to version 87.
 
 Genome build: use "\code{GRCh38}" instead of "\code{hg38}" for the genome build, since
 we're querying Ensembl and not UCSC.
-}
 
-\section{GTF/GFF file}{
-
-
-The GFF (General Feature Format) format consists of one line per feature,
+\item \code{makeGRangesFromGFF}: The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2. We recommend
 using a GTF file instead of a GFF3 file, if possible.
@@ -71,17 +63,12 @@ The UCSC website has detailed conventions on the GFF3 format, including
 the metadata columns.
 
 Remote URLs and compressed files are supported.
-}
 
-\section{GRCh37 legacy annotations}{
-
-
-\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} supports the legacy \emph{Homo sapiens} GRCh37 (release
-75) build by internally querying the
-\href{https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75}{EnsDb.Hsapiens.v75}
-package. Alternatively, the corresponding GTF/GFF file can be loaded directly
-from GENCODE or Ensembl.
-}
+\item \code{annotable}: \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
+\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
+that \code{GRanges} also support coercion to a basic \code{data.frame} using
+\code{\link[=as.data.frame]{as.data.frame()}}.
+}}
 
 \section{Broad class definitions}{
 
@@ -101,13 +88,13 @@ groups:
 }
 }
 
-\section{annotable}{
+\section{GRCh37 (hg19) legacy annotations}{
 
 
-\code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
-\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
-that \code{GRanges} also support coercion to a basic \code{data.frame} using
-\code{\link[=as.data.frame]{as.data.frame()}}.
+\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} supports the legacy \emph{Homo sapiens} GRCh37 (release
+75) build by internally querying the \href{https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75}{EnsDb.Hsapiens.v75} package.
+Alternatively, the corresponding GTF/GFF file can be loaded directly from
+GENCODE or Ensembl.
 }
 
 \examples{
@@ -130,15 +117,6 @@ summary(x)
 ## Transcripts
 x <- makeGRangesFromGFF(file = file, level = "transcripts")
 summary(x)
-
-## annotable ====
-## Genes
-x <- annotable("Homo sapiens")
-glimpse(x)
-
-## Transcripts
-x <- annotable("Homo sapiens", level = "transcripts")
-glimpse(x)
 }
 \seealso{
 \itemize{

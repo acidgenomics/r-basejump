@@ -208,41 +208,47 @@ that is duplicated, these functions will return a warning.</p>
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts
 #&gt; rownames(50): gene1 gene2 ... gene49 gene50
-#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
+#&gt; rowData names(5): geneID geneName geneBiotype
+#&gt;   broadClass entrezID
 #&gt; colnames(4): sample1 sample2 sample3 sample4
 #&gt; colData names(2): genotype treatment</div><div class='input'>
 <span class='no'>rownames</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>rownames</span>(<span class='no'>object</span>))
 <span class='fu'>print</span>(<span class='no'>rownames</span>)</div><div class='output co'>#&gt; [1] "gene1" "gene2" "gene3" "gene4" "gene5" "gene6"</div><div class='input'>
 <span class='no'>geneIDs</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>rowData</span>(<span class='no'>object</span>)<span class='kw'>[[</span><span class='st'>"geneID"</span>]])
-<span class='fu'>print</span>(<span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
-#&gt; [5] "ENSG00000000460" "ENSG00000000938"</div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419"
+#&gt; [4] "ENSG00000000457" "ENSG00000000460" "ENSG00000000938"</div><div class='input'>
 <span class='no'>geneNames</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>as.character</span>(<span class='fu'>rowData</span>(<span class='no'>object</span>)<span class='kw'>[[</span><span class='st'>"geneName"</span>]]))
-<span class='fu'>print</span>(<span class='no'>geneNames</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>geneNames</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112"
+#&gt; [6] "FGR"     </div><div class='input'>
 <span class='co'>## Row names,</span>
 <span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;   gene1   gene2   gene3   gene4   gene5   gene6 
-#&gt; "gene1" "gene2" "gene3" "gene4" "gene5" "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
-#&gt;         "gene1"         "gene2"         "gene3"         "gene4"         "gene5" 
-#&gt; ENSG00000000938 
-#&gt;         "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;   TSPAN6     TNMD     DPM1    SCYL3 C1orf112      FGR 
+#&gt; "gene1" "gene2" "gene3" "gene4" "gene5" "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 
+#&gt;         "gene1"         "gene2"         "gene3" 
+#&gt; ENSG00000000457 ENSG00000000460 ENSG00000000938 
+#&gt;         "gene4"         "gene5"         "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;   TSPAN6     TNMD     DPM1    SCYL3 C1orf112      FGR 
 #&gt;  "gene1"  "gene2"  "gene3"  "gene4"  "gene5"  "gene6" </div><div class='input'>
 <span class='co'>## Gene identifiers.</span>
-<span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;             gene1             gene2             gene3             gene4 
-#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
-#&gt;             gene5             gene6 
-#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt;   ENSG00000000003   ENSG00000000005   ENSG00000000419   ENSG00000000457 
-#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
-#&gt;   ENSG00000000460   ENSG00000000938 
-#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;            TSPAN6              TNMD              DPM1             SCYL3 
-#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
-#&gt;          C1orf112               FGR 
-#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'>
+<span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;             gene1             gene2             gene3 
+#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" 
+#&gt;             gene4             gene5             gene6 
+#&gt; "ENSG00000000457" "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt;   ENSG00000000003   ENSG00000000005   ENSG00000000419 
+#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" 
+#&gt;   ENSG00000000457   ENSG00000000460   ENSG00000000938 
+#&gt; "ENSG00000000457" "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;            TSPAN6              TNMD              DPM1 
+#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" 
+#&gt;             SCYL3          C1orf112               FGR 
+#&gt; "ENSG00000000457" "ENSG00000000460" "ENSG00000000938" </div><div class='input'>
 <span class='co'>## Gene names (symbols).</span>
-<span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;      gene1      gene2      gene3      gene4      gene5      gene6 
-#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112"      "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
-#&gt;        "TSPAN6"          "TNMD"          "DPM1"         "SCYL3"      "C1orf112" 
-#&gt; ENSG00000000938 
-#&gt;           "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;     TSPAN6       TNMD       DPM1      SCYL3   C1orf112        FGR 
-#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112"      "FGR" </div></pre>
+<span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;      gene1      gene2      gene3      gene4      gene5 
+#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112" 
+#&gt;      gene6 
+#&gt;      "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 
+#&gt;        "TSPAN6"          "TNMD"          "DPM1" 
+#&gt; ENSG00000000457 ENSG00000000460 ENSG00000000938 
+#&gt;         "SCYL3"      "C1orf112"           "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;     TSPAN6       TNMD       DPM1      SCYL3   C1orf112 
+#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112" 
+#&gt;        FGR 
+#&gt;      "FGR" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
