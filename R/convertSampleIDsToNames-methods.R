@@ -16,11 +16,11 @@ NULL
 .convertSampleIDsToNames.SE <-  # nolint
     function(object) {
         validObject(object)
-        colData <- colData(object)
-        stopifnot(!"sampleID" %in% colnames(colData))
         sampleNames <- sampleNames(object)
-        assert_are_identical(names(sampleNames), colnames(object))
-        if (identical(as.character(sampleNames), colnames(object))) {
+        if (
+            identical(as.character(sampleNames), colnames(object)) ||
+            !identical(names(sampleNames), colnames(object))
+        ) {
             message("Returning with samples unmodified.")
         } else {
             colnames <- as.character(sampleNames)
