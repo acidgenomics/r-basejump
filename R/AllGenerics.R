@@ -77,6 +77,18 @@ setGeneric(
 
 
 
+# convertSampleIDsToNames ======================================================
+#' @rdname convertSampleIDsToNames
+#' @export
+setGeneric(
+    name = "convertSampleIDsToNames",
+    def = function(object, ...) {
+        standardGeneric("convertSampleIDsToNames")
+    }
+)
+
+
+
 # convertTranscriptsToGenes ====================================================
 #' @rdname convertTranscriptsToGenes
 #' @export
