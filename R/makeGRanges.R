@@ -408,7 +408,7 @@ makeGRangesFromEnsembl <- function(
 
     # Ready to create our metadata list to stash inside the GRanges.
     metadata <- list(
-        AnnotationHubID = ahid,
+        annotationHub = ahid,
         organism = organism(edb),
         ensembldb = metadata(edb),
         build = build,
