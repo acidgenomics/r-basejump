@@ -1,8 +1,3 @@
-# FIXME n = 1 errors out here.
-# FIXME headtail(colData(sce_small)) errors out.
-
-
-
 #' Return the First and Last Part of an Object
 #'
 #' Inspired by the [print()] method for `DataFrame` class objects. Applies to
@@ -62,9 +57,6 @@ NULL
 
 
 
-# FIXME Improve this function to be less strict for objects with small n.
-# FIXME Coerce factors to character.
-# FIXME Use `showAsCell()` here to handle "..." better for factors.
 .headtail.data.frame <-  # nolint
     function(x, n = 2L) {
         assert_has_dims(x)
@@ -94,6 +86,9 @@ NULL
                 drop = FALSE
             ]
 
+            # Coerce to data.frame, for consistency.
+            square <- as.data.frame(square)
+
             # Sanitize all non-atomic columns to placeholder symbol.
             list <- lapply(
                 X = square,
@@ -107,7 +102,6 @@ NULL
                     }
                 }
             )
-
             # Now safe to coerce to atomic data.frame.
             square <- data.frame(
                 list,
@@ -123,10 +117,10 @@ NULL
 
             # Split into quadrants, so we can add vertical separators.
             # upper/lower, left/right.
-            ul <- square[seq_len(n), seq_len(n)]
-            ur <- square[seq_len(n), seq_len(n) + n]
-            ll <- square[seq_len(n) + n, seq_len(n)]
-            lr <- square[seq_len(n) + n, seq_len(n) + n]
+            ul <- square[seq_len(n), seq_len(n), drop = FALSE]
+            ur <- square[seq_len(n), seq_len(n) + n, drop = FALSE]
+            ll <- square[seq_len(n) + n, seq_len(n), drop = FALSE]
+            lr <- square[seq_len(n) + n, seq_len(n) + n, drop = FALSE]
 
             head <- data.frame(
                 ul,
