@@ -1,5 +1,7 @@
 context("Coercion")
 
+data(rse_small, envir = environment())
+
 
 
 # list =========================================================================

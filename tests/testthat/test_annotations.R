@@ -1,3 +1,4 @@
+data(rse_small, envir = environment())
 organism <- "Homo sapiens"
 release <- 87L
 
