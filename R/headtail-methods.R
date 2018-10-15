@@ -27,6 +27,7 @@
 #'
 #' ## data.frame ====
 #' headtail(datasets::mtcars)
+#' headtail(dplyr::starwars)
 #'
 #' ## SummarizedExperiment ====
 #' headtail(rse_small)
@@ -43,6 +44,7 @@ NULL
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
         if (length(x) <= n) {
+            message("Returning entire vector.")
             out <- x
         } else {
             out <- paste(
@@ -63,63 +65,96 @@ NULL
 # FIXME Improve this function to be less strict for objects with small n.
 # FIXME Coerce factors to character.
 # FIXME Use `showAsCell()` here to handle "..." better for factors.
-.headtail.matrix <-  # nolint
+.headtail.data.frame <-  # nolint
     function(x, n = 2L) {
         assert_has_dims(x)
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
 
-        # Consider making this less strict.
-        stopifnot(nrow(x) >= n * 2L)
-        stopifnot(ncol(x) >= n * 2L)
-
-        square <- x[
-            c(
-                head(rownames(x), n = n),
-                tail(rownames(x), n = n)
-            ),
-            c(
-                head(colnames(x), n = n),
-                tail(colnames(x), n = n)
-            ),
-            drop = FALSE
+        if (nrow(x) <= n * 2L || ncol(x) <= n * 2L) {
+            message("Object can't be split into quadrants.")
+            out <- x[
+                head(rownames(x), n = n * 2L),
+                head(colnames(x), n = n * 2L),
+                drop = FALSE
+            ]
+            out <- as.data.frame(out)
+        } else {
+            # Ensure that we're performing subset operation before coercion to
+            # data.frame, as this can blow up in memory for sparse matrices.
+            square <- x[
+                c(
+                    head(rownames(x), n = n),
+                    tail(rownames(x), n = n)
+                ),
+                c(
+                    head(colnames(x), n = n),
+                    tail(colnames(x), n = n)
+                ),
+                drop = FALSE
             ]
 
-        # For sparseMatrix, this step depends on our custom coerion methods.
-        # We want to apply this step after subsetting, so a large matrix doesn't
-        # deparse and blow up in memory.
-        square <- as.data.frame(square)
+            # Sanitize all non-atomic columns to placeholder symbol.
+            list <- lapply(
+                X = square,
+                FUN = function(x) {
+                    if (is.factor(x)) {
+                        as.character(x)
+                    } else if (is.atomic(x)) {
+                        x
+                    } else {
+                        "<>"
+                    }
+                }
+            )
 
-        # FIXME Coerce factors to strings, to avoid invalid factor level NAs.
-        # For example, this can happens with `seqnames` from GRanges.
+            # Now safe to coerce to atomic data.frame.
+            square <- data.frame(
+                list,
+                row.names = rownames(square),
+                check.rows = FALSE,
+                check.names = FALSE,
+                stringsAsFactors = FALSE
+            )
 
-        # Check that we have square dimensions.
-        stopifnot(nrow(square) == n * 2L)
-        stopifnot(ncol(square) == n * 2L)
+            # Check that we have square dimensions.
+            stopifnot(nrow(square) == n * 2L)
+            stopifnot(ncol(square) == n * 2L)
 
-        # Split into quadrants, so we can add vertical separators.
-        # upper/lower, left/right.
-        ul <- square[seq_len(n), seq_len(n)]
-        ur <- square[seq_len(n), seq_len(n) + n]
-        ll <- square[seq_len(n) + n, seq_len(n)]
-        lr <- square[seq_len(n) + n, seq_len(n) + n]
+            # Split into quadrants, so we can add vertical separators.
+            # upper/lower, left/right.
+            ul <- square[seq_len(n), seq_len(n)]
+            ur <- square[seq_len(n), seq_len(n) + n]
+            ll <- square[seq_len(n) + n, seq_len(n)]
+            lr <- square[seq_len(n) + n, seq_len(n) + n]
 
-        # Add horizontal separators between head and tail.
-        head <- data.frame(
-            ul,
-            "..." = rep("...", times = n),
-            ur
-        )
-        tail <- data.frame(
-            ll,
-            "..." = rep("...", times = n),
-            lr
-        )
-        out <- rbind(
-            head,
-            "..." = rep("...", times = n * 2L),
-            tail
-        )
+            head <- data.frame(
+                ul,
+                "\u2502" = rep("\u2502", times = n),
+                ur,
+                check.rows = FALSE,
+                check.names = FALSE,
+                stringsAsFactors = FALSE
+            )
+            tail <- data.frame(
+                ll,
+                "\u2502" = rep("\u2502", times = n),
+                lr,
+                check.rows = FALSE,
+                check.names = FALSE,
+                stringsAsFactors = FALSE
+            )
+            out <- rbind(
+                head,
+                "\u2500" = c(
+                    rep("\u2500", times = n),
+                    "\u253C",
+                    rep("\u2500", times = n)
+                ),
+                tail,
+                stringsAsFactors = FALSE
+            )
+        }
 
         print(out)
         invisible()
@@ -142,7 +177,7 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("matrix"),
-    definition = .headtail.matrix
+    definition = .headtail.data.frame
 )
 
 
@@ -176,7 +211,6 @@ setMethod(
 
 
 
-# FIXME Improve handling for factor columns. seqnames generates a warning.
 #' @describeIn headtail Summarize the ranges.
 #' @export
 setMethod(
