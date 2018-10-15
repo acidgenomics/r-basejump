@@ -23,9 +23,10 @@ NULL
 #' @rdname tx2gene
 #' @usage NULL
 #' @export
-Tx2Gene <- function(object, ...) {
-    tx2gene(object, ...)
-}
+Tx2Gene <-  # nolint
+    function(object, ...) {
+        tx2gene(object, ...)
+    }
 
 
 

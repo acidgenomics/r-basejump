@@ -252,49 +252,50 @@ NULL
 
 
 
-.export.SCE <- function(x) {
-    assert_is_a_bool(compress)
-    call <- standardizeCall()
-    name <- as.character(call[["x"]])
+.export.SCE <-  # nolint
+    function(x) {
+        assert_is_a_bool(compress)
+        call <- standardizeCall()
+        name <- as.character(call[["x"]])
 
-    # Primarily use SE method to export.
-    se <- .asSummarizedExperiment(x)
-    assign(x = name, value = se)
-    args <- matchArgsToDoCall()
-    args[["x"]] <- as.name(name)
-    files <- do.call(what = export, args = args)
-    print(files)
+        # Primarily use SE method to export.
+        se <- .asSummarizedExperiment(x)
+        assign(x = name, value = se)
+        args <- matchArgsToDoCall()
+        args[["x"]] <- as.name(name)
+        files <- do.call(what = export, args = args)
+        print(files)
 
-    # Also export reducedDims to disk, if defined.
-    # Note that these don't map to object rownames, so we don't have to handle
-    # gene2symbol option here.
-    reducedDimNames <- reducedDimNames(x)
-    if (has_length(reducedDimNames)) {
-        message(paste("Exporting reducedDims:", toString(reducedDimNames)))
-        files[["reducedDims"]] <- lapply(
-            X = reducedDimNames,
-            FUN = function(name, dir) {
-                file <- file.path(dir, name)
-                reducedDim <- reducedDims(x)[[name]]
-                if (is(reducedDim, "matrix")) {
-                    format <- "csv"
-                } else if (is(reducedDim, "sparseMatrix")) {
-                    format <- "mtx"
-                }
-                if (isTRUE(compress)) {
-                    format <- paste0(format, ".gz")
-                }
-                file <- paste0(file, ".", format)
-                export(reducedDim, file = file)
-            },
-            dir = initDir(file.path(dir, name, "reducedDims"))
-        )
-        names(files[["reducedDims"]]) <- reducedDimNames
+        # Also export reducedDims to disk, if defined. Note that these don't map
+        # to object rownames, so we don't have to handle gene2symbol option
+        # here.
+        reducedDimNames <- reducedDimNames(x)
+        if (has_length(reducedDimNames)) {
+            message(paste("Exporting reducedDims:", toString(reducedDimNames)))
+            files[["reducedDims"]] <- lapply(
+                X = reducedDimNames,
+                FUN = function(name, dir) {
+                    file <- file.path(dir, name)
+                    reducedDim <- reducedDims(x)[[name]]
+                    if (is(reducedDim, "matrix")) {
+                        format <- "csv"
+                    } else if (is(reducedDim, "sparseMatrix")) {
+                        format <- "mtx"
+                    }
+                    if (isTRUE(compress)) {
+                        format <- paste0(format, ".gz")
+                    }
+                    file <- paste0(file, ".", format)
+                    export(reducedDim, file = file)
+                },
+                dir = initDir(file.path(dir, name, "reducedDims"))
+            )
+            names(files[["reducedDims"]]) <- reducedDimNames
+        }
+
+        assert_has_names(files)
+        invisible(files)
     }
-
-    assert_has_names(files)
-    invisible(files)
-}
 formals(.export.SCE) <- formals(.export.SE)
 
 

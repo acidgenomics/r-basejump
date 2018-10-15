@@ -45,7 +45,7 @@ makeGene2SymbolFromEnsembl <-
         gene2symbol(gr)
     }
 f <- formals(makeGRangesFromEnsembl)
-f <- f[setdiff(names(f), c("level"))]
+f <- f[setdiff(names(f), "level")]
 formals(makeGene2SymbolFromEnsembl) <- f
 
 

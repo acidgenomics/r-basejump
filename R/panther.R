@@ -257,4 +257,4 @@ panther <- function(
 #' @rdname panther
 #' @usage NULL
 #' @export
-PANTHER <- panther
+PANTHER <- panther  # nolint

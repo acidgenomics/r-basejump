@@ -136,7 +136,7 @@ tibble::as_tibble
 #' @importFrom tibble as_tibble
 #' @method as_tibble DataFrame
 #' @export
-as_tibble.DataFrame <- .as_tibble
+as_tibble.DataFrame <- .as_tibble  # nolint
 
 
 

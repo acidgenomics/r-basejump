@@ -325,14 +325,18 @@ test_that("loadRemoteData", {
 test_that("loadRemoteData : Already loaded", {
     example <- TRUE
     expect_error(
-        object = loadRemoteData(paste(basejumpCacheURL, "example.rda", sep = "/")),
+        object = loadRemoteData(
+            url = paste(basejumpCacheURL, "example.rda", sep = "/")
+        ),
         regexp = "Already exists in environment: example"
     )
 })
 
 test_that("loadRemoteData : Invalid arguments", {
     expect_error(
-        object = loadRemoteData(paste(basejumpCacheURL, "mmusculus.gtf", sep = "/")),
+        object = loadRemoteData(
+            url = paste(basejumpCacheURL, "mmusculus.gtf", sep = "/")
+        ),
         regexp = rdataError
     )
     expect_error(
@@ -341,7 +345,7 @@ test_that("loadRemoteData : Invalid arguments", {
     )
     expect_error(
         object = loadRemoteData(
-            paste(paste(basejumpCacheURL, "example.rda", sep = "/")),
+            url = paste(paste(basejumpCacheURL, "example.rda", sep = "/")),
             envir = "XXX"
         ),
         regexp = "is_environment : envir"

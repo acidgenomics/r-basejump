@@ -19,9 +19,10 @@ NULL
 #' @rdname ensembl2entrez
 #' @usage NULL
 #' @export
-Ensembl2Entrez <- function(object, ...) {
-    ensembl2entrez(object, ...)
-}
+Ensembl2Entrez <-  # nolint
+    function(object, ...) {
+        ensembl2entrez(object, ...)
+    }
 
 
 
