@@ -24,9 +24,10 @@ NULL
 #' @rdname gene2symbol
 #' @usage NULL
 #' @export
-Gene2Symbol <- function(object, ...) {
-    gene2symbol(object, ...)
-}
+Gene2Symbol <-  # nolint
+    function(object, ...) {
+        gene2symbol(object, ...)
+    }
 
 
 

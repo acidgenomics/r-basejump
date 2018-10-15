@@ -44,7 +44,7 @@ mgi2ensembl <- function(.test = FALSE) {
 #' @rdname mgi2ensembl
 #' @usage NULL
 #' @export
-MGI2Ensembl <- mgi2ensembl
+MGI2Ensembl <- mgi2ensembl  # nolint
 
 
 

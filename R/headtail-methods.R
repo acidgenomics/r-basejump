@@ -37,91 +37,93 @@ NULL
 
 
 
-.headtail.atomic <- function(x, n = 2L) {
-    assert_is_atomic(x)
-    assertIsAnImplicitInteger(n)
-    assert_all_are_positive(n)
-    if (length(x) <= n) {
-        out <- x
-    } else {
-        out <- paste(
-            c(
-                head(x, n = n),
-                "...",
-                tail(x, n = n)
-            ),
-            collapse = " "
-        )
+.headtail.atomic <-  # nolint
+    function(x, n = 2L) {
+        assert_is_atomic(x)
+        assertIsAnImplicitInteger(n)
+        assert_all_are_positive(n)
+        if (length(x) <= n) {
+            out <- x
+        } else {
+            out <- paste(
+                c(
+                    head(x, n = n),
+                    "...",
+                    tail(x, n = n)
+                ),
+                collapse = " "
+            )
+        }
+        cat(out)
+        invisible()
     }
-    cat(out)
-    invisible()
-}
 
 
 
 # FIXME Improve this function to be less strict for objects with small n.
 # FIXME Coerce factors to character.
 # FIXME Use `showAsCell()` here to handle "..." better for factors.
-.headtail.matrix <- function(x, n = 2L) {
-    assert_has_dims(x)
-    assertIsAnImplicitInteger(n)
-    assert_all_are_positive(n)
+.headtail.matrix <-  # nolint
+    function(x, n = 2L) {
+        assert_has_dims(x)
+        assertIsAnImplicitInteger(n)
+        assert_all_are_positive(n)
 
-    # Consider making this less strict.
-    stopifnot(nrow(x) >= n * 2L)
-    stopifnot(ncol(x) >= n * 2L)
+        # Consider making this less strict.
+        stopifnot(nrow(x) >= n * 2L)
+        stopifnot(ncol(x) >= n * 2L)
 
-    square <- x[
-        c(
-            head(rownames(x), n = n),
-            tail(rownames(x), n = n)
-        ),
-        c(
-            head(colnames(x), n = n),
-            tail(colnames(x), n = n)
-        ),
-        drop = FALSE
-    ]
+        square <- x[
+            c(
+                head(rownames(x), n = n),
+                tail(rownames(x), n = n)
+            ),
+            c(
+                head(colnames(x), n = n),
+                tail(colnames(x), n = n)
+            ),
+            drop = FALSE
+            ]
 
-    # For sparseMatrix, this step depends on our custom coerion methods.
-    # We want to apply this step after subsetting, so a large matrix doesn't
-    # deparse and blow up in memory.
-    square <- as.data.frame(square)
+        # For sparseMatrix, this step depends on our custom coerion methods.
+        # We want to apply this step after subsetting, so a large matrix doesn't
+        # deparse and blow up in memory.
+        square <- as.data.frame(square)
 
-    # FIXME Coerce factors to strings, to avoid invalid factor level NAs.
-    # For example, this can happens with `seqnames` from GRanges.
+        # FIXME Coerce factors to strings, to avoid invalid factor level NAs.
+        # For example, this can happens with `seqnames` from GRanges.
 
-    # Check that we have square dimensions.
-    stopifnot(nrow(square) == n * 2L)
-    stopifnot(ncol(square) == n * 2L)
+        # Check that we have square dimensions.
+        stopifnot(nrow(square) == n * 2L)
+        stopifnot(ncol(square) == n * 2L)
 
-    # Split into quadrants, so we can add vertical separators.
-    # upper/lower, left/right.
-    ul <- square[seq_len(n), seq_len(n)]
-    ur <- square[seq_len(n), seq_len(n) + n]
-    ll <- square[seq_len(n) + n, seq_len(n)]
-    lr <- square[seq_len(n) + n, seq_len(n) + n]
+        # Split into quadrants, so we can add vertical separators.
+        # upper/lower, left/right.
+        ul <- square[seq_len(n), seq_len(n)]
+        ur <- square[seq_len(n), seq_len(n) + n]
+        ll <- square[seq_len(n) + n, seq_len(n)]
+        lr <- square[seq_len(n) + n, seq_len(n) + n]
 
-    # Add horizontal separators between head and tail.
-    head <- data.frame(
-        ul,
-        "..." = rep("...", times = n),
-        ur
-    )
-    tail <- data.frame(
-        ll,
-        "..." = rep("...", times = n),
-        lr
-    )
-    out <- rbind(
-        head,
-        "..." = rep("...", times = n * 2L),
-        tail
-    )
+        # Add horizontal separators between head and tail.
+        head <- data.frame(
+            ul,
+            "..." = rep("...", times = n),
+            ur
+        )
+        tail <- data.frame(
+            ll,
+            "..." = rep("...", times = n),
+            lr
+        )
+        out <- rbind(
+            head,
+            "..." = rep("...", times = n * 2L),
+            tail
+        )
 
-    print(out)
-    invisible()
-}
+        print(out)
+        invisible()
+    }
 
 
 

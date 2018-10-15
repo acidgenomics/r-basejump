@@ -108,4 +108,4 @@ eggnog <- function(.test = FALSE) {
 #' @rdname eggnog
 #' @usage NULL
 #' @export
-EggNOG <- eggnog
+EggNOG <- eggnog  # nolint

@@ -23,7 +23,7 @@ test_that("filter", {
     )
     expect_identical(
         object = df %>%
-            filter_all(dplyr::all_vars(. < 15)) %>%
+            filter_all(dplyr::all_vars(. < 15L)) %>%
             rownames(),
         expected = c("ENSG00000000001", "ENSG00000000002")
     )

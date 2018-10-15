@@ -180,7 +180,7 @@ setMethod(
         trash <- !vapply(
             X = factortbl,
             FUN = function(x) {
-                identical(x, factortbl$sampleID)
+                identical(x, factortbl[["sampleID"]])
             },
             FUN.VALUE = logical(1L)
         )
