@@ -1,7 +1,3 @@
-# FIXME Add working example.
-
-
-
 #' Map Cells to Samples
 #'
 #' This function extracts `sampleID` from the `cellID` column using grep
@@ -15,6 +11,13 @@
 #' @param samples `character`. Sample identifiers.
 #'
 #' @return `factor`. Cells as the names and samples as the levels.
+#'
+#' @examples
+#' samples <- paste0("sample", seq_len(2L))
+#' print(samples)
+#' cells <- paste(samples, c("AAAAAAAA", "CCCCCCCC"), sep = "_")
+#' print(cells)
+#' mapCellsToSamples(cells, samples)
 mapCellsToSamples <- function(cells, samples) {
     assert_is_character(cells)
     assert_has_no_duplicates(cells)
