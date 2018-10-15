@@ -62,7 +62,7 @@ x <- Gene2Symbol(rse_small)
 show(x)
 
 ## PANTHER ====
-x <- PANTHER("Homo sapiens", .test = TRUE)
+x <- PANTHER("Homo sapiens", progress = FALSE, .test = TRUE)
 show(x)
 }
 \seealso{
