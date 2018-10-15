@@ -1,4 +1,4 @@
-# FIXME Consider slotting which columns are sample level in metadata, for speed.
+# TODO SCE: Consider slotting which columns are sample level in metadata.
 
 
 
