@@ -65,6 +65,7 @@ data(rse_small, sce_small)
 
 ## data.frame ====
 headtail(datasets::mtcars)
+headtail(dplyr::starwars)
 
 ## SummarizedExperiment ====
 headtail(rse_small)

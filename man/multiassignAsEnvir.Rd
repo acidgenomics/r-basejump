@@ -4,14 +4,14 @@
 \alias{multiassignAsEnvir}
 \title{Assign Multiple Objects as an Environment}
 \usage{
-multiassignAsEnvir(..., envirName, parentEnvir = parent.frame())
+multiassignAsEnvir(..., envirName, parentFrame = parent.frame())
 }
 \arguments{
 \item{...}{Objects as dots.}
 
 \item{envirName}{\code{string}. Name of the new \code{environment} to create.}
 
-\item{parentEnvir}{\code{environment}. Parent \code{environment} where to assign the
+\item{parentFrame}{\code{environment}. Parent \code{environment} where to assign the
 new \code{environment}, specified by \code{envirName} argument.}
 }
 \value{
