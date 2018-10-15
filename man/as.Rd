@@ -19,6 +19,10 @@ coerceS4ToList(from)
 \S4method{as.list}{SummarizedExperiment}(x)
 }
 \arguments{
+\item{from}{The classes between which the coerce methods
+    \code{def} and \code{replace} perform coercion.
+  }
+
 \item{x}{Object.}
 }
 \value{

@@ -15,11 +15,11 @@ export(x, ...)
 
 \S4method{export}{sparseMatrix}(x, file, format)
 
-\S4method{export}{SummarizedExperiment}(x, dir = ".", human = FALSE,
-  compress = FALSE)
+\S4method{export}{SummarizedExperiment}(x, dir = ".", compress = FALSE,
+  human = FALSE)
 
-\S4method{export}{SingleCellExperiment}(x, dir = ".", human = FALSE,
-  compress = FALSE)
+\S4method{export}{SingleCellExperiment}(x, dir = ".", compress = FALSE,
+  human = FALSE)
 }
 \arguments{
 \item{x}{Object.}
@@ -35,8 +35,9 @@ directory.}
 
 \item{compress}{\code{boolean}. Apply gzip compression to all files.}
 
-\item{convertGenesToSymbols}{\code{boolean}. Automatically convert gene IDs to
-gene symbols in the rownames.}
+\item{human}{\code{boolean}. Automatically convert gene IDs to
+gene symbols in the \code{\link[=rownames]{rownames()}} and sample IDs to sample names in the
+\code{\link[=colnames]{colnames()}}.}
 }
 \value{
 Invisible \code{character}. File path(s).

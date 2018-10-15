@@ -24,9 +24,10 @@
 #'
 #' @inheritParams general
 #' @inheritParams rio::export
-#' @param convertGenesToSymbols `boolean`. Automatically convert gene IDs to
-#'   gene symbols in the rownames.
 #' @param compress `boolean`. Apply gzip compression to all files.
+#' @param human `boolean`. Automatically convert gene IDs to
+#'   gene symbols in the [rownames()] and sample IDs to sample names in the
+#'   [colnames()].
 #'
 #' @return Invisible `character`. File path(s).
 #'
@@ -169,14 +170,14 @@ NULL
     function(
         x,
         dir = ".",
-        human = FALSE,
-        compress = FALSE
+        compress = FALSE,
+        human = FALSE
     ) {
         call <- standardizeCall()
         name <- as.character(call[["x"]])
         dir <- initDir(file.path(dir, name))
-        assert_is_a_bool(human)
         assert_is_a_bool(compress)
+        assert_is_a_bool(human)
 
         files <- list()
 
