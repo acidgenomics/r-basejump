@@ -1,5 +1,5 @@
 .prototypeMetadata <- list(
-    version = packageVersion,
+    version = packageVersion("basejump"),
     date = Sys.Date()
 )
 

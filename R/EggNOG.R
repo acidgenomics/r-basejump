@@ -1,8 +1,3 @@
-# TODO Include the date and basejump version.
-# FIXME This is breaking.
-
-
-
 #' @inherit EggNOG-class
 #'
 #' @family Annotation Functions
@@ -61,7 +56,8 @@ EggNOG <- function(.test = FALSE) {
         as_tibble() %>%
         select(-1L) %>%
         set_colnames(c("letter", "description")) %>%
-        arrange(!!sym("letter"))
+        arrange(!!sym("letter")) %>%
+        as("DataFrame")
 
     # Annotations --------------------------------------------------------------
     colnames <- c(
@@ -96,7 +92,8 @@ EggNOG <- function(.test = FALSE) {
             "cogFunctionalCategory"
         ))) %>%
         rename(eggnogID = !!sym("groupName")) %>%
-        arrange(!!sym("eggnogID"))
+        arrange(!!sym("eggnogID")) %>%
+        as("DataFrame")
 
     # Return -------------------------------------------------------------------
     out <- new(

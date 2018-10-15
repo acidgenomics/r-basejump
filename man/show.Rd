@@ -3,10 +3,28 @@
 \docType{methods}
 \name{show}
 \alias{show}
+\alias{show,EggNOG-method}
+\alias{show,Ensembl2Entrez-method}
+\alias{show,Gene2Symbol-method}
+\alias{show,HGNC2Ensembl-method}
+\alias{show,MGI2Ensembl-method}
 \alias{show,PANTHER-method}
+\alias{show,Tx2Gene-method}
 \title{Show an Object}
 \usage{
+\S4method{show}{EggNOG}(object)
+
+\S4method{show}{Ensembl2Entrez}(object)
+
+\S4method{show}{Gene2Symbol}(object)
+
+\S4method{show}{HGNC2Ensembl}(object)
+
+\S4method{show}{MGI2Ensembl}(object)
+
 \S4method{show}{PANTHER}(object)
+
+\S4method{show}{Tx2Gene}(object)
 }
 \arguments{
 \item{object}{Any R object}
@@ -37,8 +55,14 @@ complete, original object, with misleading results.  See the
 the discussion in \code{\link{setIs}} for the general concept.
 }
 \examples{
+data(rse_small)
+
+## Gene2Symbol ====
+x <- Gene2Symbol(rse_small)
+show(x)
+
 ## PANTHER ====
-x <- panther("Homo sapiens", .test = TRUE)
+x <- PANTHER("Homo sapiens", .test = TRUE)
 show(x)
 }
 \seealso{

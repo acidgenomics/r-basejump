@@ -47,6 +47,7 @@ Imports:
     BiocGenerics,
     cowplot (>= 0.9),
     curl,
+    crayon,
     dendsort,
     dplyr (>= 0.7),
     ensembldb,
