@@ -101,13 +101,13 @@ setGeneric(
 
 
 
-# ensembl2entrez ===============================================================
-#' @rdname ensembl2entrez
+# Ensembl2Entrez ===============================================================
+#' @rdname Ensembl2Entrez
 #' @export
 setGeneric(
-    name = "ensembl2entrez",
+    name = "Ensembl2Entrez",
     def = function(object, ...) {
-        standardGeneric("ensembl2entrez")
+        standardGeneric("Ensembl2Entrez")
     }
 )
 
@@ -125,13 +125,13 @@ setGeneric(
 
 
 
-# gene2symbol ==================================================================
-#' @rdname gene2symbol
+# Gene2Symbol ==================================================================
+#' @rdname Gene2Symbol
 #' @export
 setGeneric(
-    name = "gene2symbol",
+    name = "Gene2Symbol",
     def = function(object, ...) {
-        standardGeneric("gene2symbol")
+        standardGeneric("Gene2Symbol")
     }
 )
 
@@ -580,13 +580,13 @@ setGeneric(
 
 
 
-# tx2gene ======================================================================
-#' @rdname tx2gene
+# Tx2Gene ======================================================================
+#' @rdname Tx2Gene
 #' @export
 setGeneric(
-    name = "tx2gene",
+    name = "Tx2Gene",
     def = function(object, ...) {
-        standardGeneric("tx2gene")
+        standardGeneric("Tx2Gene")
     }
 )
 

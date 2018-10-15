@@ -1,6 +1,6 @@
 #' @inherit Ensembl2Entrez-class
 #'
-#' @name ensembl2entrez
+#' @name Ensembl2Entrez
 #' @family Identifier Mapping Functions
 #' @export
 #'
@@ -10,23 +10,13 @@
 #'
 #' @examples
 #' data(rse_small)
-#' x <- ensembl2entrez(rse_small)
+#' x <- Ensembl2Entrez(rse_small)
 #' print(x)
 NULL
 
 
 
-#' @rdname ensembl2entrez
-#' @usage NULL
-#' @export
-Ensembl2Entrez <-  # nolint
-    function(object, ...) {
-        ensembl2entrez(object, ...)
-    }
-
-
-
-.ensembl2entrez.SE <-  # nolint
+.Ensembl2Entrez.SE <-  # nolint
     function(object) {
         rowData <- rowData(object)
         assert_is_subset(
@@ -58,10 +48,10 @@ Ensembl2Entrez <-  # nolint
 
 
 
-#' @rdname ensembl2entrez
+#' @rdname Ensembl2Entrez
 #' @export
 setMethod(
-    f = "ensembl2entrez",
+    f = "Ensembl2Entrez",
     signature = signature("SummarizedExperiment"),
-    definition = .ensembl2entrez.SE
+    definition = .Ensembl2Entrez.SE
 )

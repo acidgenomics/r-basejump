@@ -1,8 +1,3 @@
-# FIXME EggNOG
-# FIXME PANTHER
-
-
-
 #' @inherit methods::show
 #' @importFrom methods show
 #' @name show
@@ -16,22 +11,12 @@ NULL
 
 
 
-# Internals ====================================================================
-# TODO Add maxwidth handling in a future update.
-.slotInfo <- function(
-    object,
-    name = NULL,
-    unique = FALSE
-) {
-    if (is.null(name)) {
-        name <- deparse(substitute(object))
-    }
-    if (isTRUE(unique)) {
-        object <- unique(object)
-    }
-    length <- length(object)
-    headtail <- capture.output(headtail(object))
-    paste0(name, "(", length, "): ", headtail)
+.showHeader <- function(object, version = NULL) {
+    cat(c(
+        bold(paste(class(object), version)),
+        italic("https://steinbaugh.com/basejump"),
+        "citation(\"basejump\")"
+    ), sep = "\n")
 }
 
 
@@ -46,11 +31,12 @@ NULL
 
 
 # PANTHER ======================================================================
-# FIXME Slot metadata into the data frame that we can show.
+# FIXME Slot version into PANTHER metadata.
 .show.PANTHER <-  # nolint
     function(object) {
-        genes <- .slotInfo(object[["geneID"]], name = "genes")
-        cat(genes)
+        showSlotInfo(list(
+            genes = object[["geneID"]]
+        ))
     }
 
 

@@ -73,7 +73,7 @@
 #' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom S4Vectors %in% aggregate as.data.frame as.list complete.cases cor
-#'   head mcols mcols<- metadata metadata<- na.omit setdiff tail
+#'   head mcols mcols<- metadata metadata<- na.omit setdiff SimpleList tail
 #' @importFrom sessioninfo session_info
 #' @importFrom SingleCellExperiment isSpike<- SingleCellExperiment reducedDims
 #'   reducedDimNames spikeNames
