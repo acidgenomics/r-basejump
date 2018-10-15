@@ -34,10 +34,10 @@ env:
 # r_build_args: "--no-build-vignettes"
 # r_check_args: "--no-vignettes"
 
-# Set true before submission to Bioconductor
+# Set true before submission to Bioconductor.
 warnings_are_errors: true
 
-# Temporarily enable when caching Bioconductor packages
+# Temporarily enable when caching Bioconductor packages.
 # script: true
 
 r_packages:
