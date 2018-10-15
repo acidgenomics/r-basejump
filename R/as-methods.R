@@ -2,6 +2,7 @@
 #' @aliases coerce
 #' @importFrom methods coerce
 #' @inherit methods::as
+#' @inheritParams methods::coerce
 #' @exportMethod coerce
 #'
 #' @section tibble:

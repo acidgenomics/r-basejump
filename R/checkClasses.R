@@ -9,7 +9,7 @@
 #' checkClasses(
 #'     object = metadata(rse_small),
 #'     expected = list(
-#'         version = c("package_version" "numeric_version"),
+#'         version = c("package_version", "numeric_version"),
 #'         date = "Date",
 #'         interestingGroups = "character"
 #'     )
