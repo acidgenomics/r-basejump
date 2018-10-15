@@ -1,9 +1,3 @@
-# FIXME Improve the documentation here. Need to explain why correlation and
-# quantile heatmaps are useful.
-# TODO Consider erroring or prompting the user for really large datasets.
-
-
-
 #' Plot Heatmap
 #'
 #' Construct a simple heatmap.
@@ -13,14 +7,6 @@
 #' By default, row- and column-wise hierarchical clustering is performed using
 #' the Ward method, but this behavior can be overrided by setting `clusterRows`
 #' or `clusterCols` to `FALSE`.
-#'
-#' @section Correlation heatmap:
-#'
-#' Construct a correlation heatmap comparing the columns of the matrix.
-#'
-#' @section Quantile heatmap:
-#'
-#' Apply quantile breaks.
 #'
 #' @name plotHeatmap
 #' @family Plots
@@ -512,7 +498,8 @@ setMethod(
 
 
 
-#' @rdname plotHeatmap
+#' @describeIn plotHeatmap Construct a correlation heatmap comparing the columns
+#'   of the matrix.
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",
@@ -532,7 +519,7 @@ setMethod(
 
 
 
-#' @rdname plotHeatmap
+#' @describeIn plotHeatmap Scale the heatmap by applying quantile breaks.
 #' @export
 setMethod(
     f = "plotQuantileHeatmap",

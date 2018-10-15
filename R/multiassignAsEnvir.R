@@ -18,7 +18,6 @@ multiassignAsEnvir <- function(
     envirName,
     parentFrame = parent.frame()
 ) {
-    # FIXME Is this not working correctly in `multiassign` unit test?
     dots <- dots(...)
     assert_is_list(dots)
     names <- dots(..., character = TRUE)
