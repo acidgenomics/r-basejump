@@ -4,7 +4,7 @@
 #'
 #' @inheritParams dots
 #' @param envirName `string`. Name of the new `environment` to create.
-#' @param parentEnvir `environment`. Parent `environment` where to assign the
+#' @param parentFrame `environment`. Parent `environment` where to assign the
 #'   new `environment`, specified by `envirName` argument.
 #'
 #' @return `character`. Object names defined in the new `environment`.
@@ -16,22 +16,30 @@
 multiassignAsEnvir <- function(
     ...,
     envirName,
-    parentEnvir = parent.frame()
+    parentFrame = parent.frame()
 ) {
+    # FIXME Is this not working correctly in `multiassign` unit test?
     dots <- dots(...)
     assert_is_list(dots)
-    dotsNames <- dots(..., character = TRUE)
-    assert_is_character(dotsNames)
+    names <- dots(..., character = TRUE)
+    assert_is_character(names)
     assert_is_a_string(envirName)
-    assert_is_environment(parentEnvir)
+    assert_is_environment(parentFrame)
 
-    envir <- new.env(parent = parentEnvir)
-    invisible(lapply(seq_along(dots), function(a) {
-        assign(dotsNames[[a]], eval(dots[[a]]), envir = envir)
-    }))
+    envir <- new.env(parent = parentFrame)
+    invisible(lapply(
+        X = seq_along(dots),
+        FUN = function(a) {
+            assign(
+                x = names[[a]],
+                value = eval(expr = dots[[a]], envir = parentFrame),
+                envir = envir
+            )
+        }
+    ))
 
-    message(paste0("Assigning ", toString(dotsNames), " as ", envirName, "."))
-    assign(envirName, value = envir, envir = parentEnvir)
+    message(paste0("Assigning ", toString(names), " as ", envirName, "."))
+    assign(envirName, value = envir, envir = parentFrame)
 
     invisible(objects(envir))
 }
