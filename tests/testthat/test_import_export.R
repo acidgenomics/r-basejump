@@ -138,13 +138,10 @@ test_that("import : Counts file (.counts)", {
 })
 
 test_that("import : R script", {
-    file <- "example.R"
-    expect_message(
-        object = import(file),
-        regexp = "Importing as source code lines"
+    expect_is(
+        object = import(file = "example.R"),
+        class = "character"
     )
-    object <- import(file)
-    expect_is(object, "character")
 })
 
 test_that("import : R Data", {
