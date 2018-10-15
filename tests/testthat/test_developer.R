@@ -80,15 +80,16 @@ test_that("methodFormals", {
 
 # multiassignAsEnvir ===========================================================
 test_that("multiassignAsEnvir", {
-    object <- multiassignAsEnvir(rse_small, sce_small, envirName = "example")
-    expected <- c("rse_small", "sce_small")
-    expect_identical(object, expected)
+    object <- rse_small
+    x <- multiassignAsEnvir(object, envirName = "example")
+    expected <- c("object")
+    expect_identical(x, expected)
     expect_identical(
         object = ls(example),
         expected = expected
     )
     expect_error(
-        object = multiassignAsEnvir(rse_small, envirName = parent.frame()),
+        object = multiassignAsEnvir(object, envirName = parent.frame()),
         regexp = "is_a_string : envirName"
     )
 })
