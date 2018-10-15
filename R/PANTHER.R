@@ -251,5 +251,7 @@ PANTHER <- function(  # nolint
 
     out <- new("PANTHER", data)
     metadata(out) <- .prototypeMetadata
+    metadata(out)[["organism"]] <- organism
+    metadata(out)[["release"]] <- release
     out
 }

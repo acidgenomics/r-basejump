@@ -39,7 +39,6 @@ NULL
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
         if (length(x) <= n) {
-            message("Returning entire vector.")
             out <- x
         } else {
             out <- paste(
