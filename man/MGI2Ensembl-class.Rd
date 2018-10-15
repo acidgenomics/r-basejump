@@ -11,11 +11,11 @@ Contains a \code{DataFrame} with \code{mgiID} and \code{geneID} columns.
 MGI-to-Ensembl Gene Identifier Mappings
 }
 \examples{
-x <- mgi2ensembl(.test = TRUE)
+x <- MGI2Ensembl(.test = TRUE)
 print(x)
 }
 \seealso{
-\link{mgi2ensembl}.
+\code{\link[=MGI2Ensembl]{MGI2Ensembl()}}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

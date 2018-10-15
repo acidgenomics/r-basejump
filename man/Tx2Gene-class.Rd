@@ -13,11 +13,11 @@ Transcript-to-Gene Identifier Mappings
 \examples{
 ## SummarizedExperiment ====
 data(tx_se_small)
-x <- tx2gene(tx_se_small)
+x <- Tx2Gene(tx_se_small)
 print(x)
 }
 \seealso{
-\link{tx2gene}, \link{makeTx2Gene}.
+\code{\link[=Tx2Gene]{Tx2Gene()}}, \link{makeTx2Gene}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

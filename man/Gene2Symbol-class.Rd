@@ -12,11 +12,11 @@ Gene-to-Symbol Mappings
 }
 \examples{
 data(rse_small)
-x <- gene2symbol(rse_small)
+x <- Gene2Symbol(rse_small)
 print(x)
 }
 \seealso{
-\link{gene2symbol}, \link{makeGene2Symbol}.
+\code{\link[=Gene2Symbol]{Gene2Symbol()}}, \link{makeGene2Symbol}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

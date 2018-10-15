@@ -13,11 +13,11 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 }
 \examples{
 data(rse_small)
-x <- ensembl2entrez(rse_small)
+x <- Ensembl2Entrez(rse_small)
 print(x)
 }
 \seealso{
-\link{ensembl2entrez}.
+\code{\link[=Ensembl2Entrez]{Ensembl2Entrez()}}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Gene2Symbol-class}},

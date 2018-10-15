@@ -24,11 +24,11 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
 \strong{O}rthologous \strong{G}roups.
 }
 \examples{
-x <- eggnog(.test = TRUE)
+x <- EggNOG(.test = TRUE)
 print(x)
 }
 \seealso{
-\link{eggnog}.
+\code{\link[=EggNOG]{EggNOG()}}.
 
 The \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README file}
 contains additional useful reference information.

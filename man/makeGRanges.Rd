@@ -126,15 +126,15 @@ summary(x)
 \item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
 }
 
-Other Annotation Functions: \code{\link{eggnog}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
-  \code{\link{panther}}
+Other Annotation Functions: \code{\link{EggNOG}},
+  \code{\link{PANTHER}}, \code{\link{emptyRanges}},
+  \code{\link{geneSynonyms}},
+  \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}}
 
-Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
+Other Transcript-Level Functions: \code{\link{Tx2Gene}},
+  \code{\link{convertTranscriptsToGenes}},
   \code{\link{makeTx2Gene}},
-  \code{\link{stripTranscriptVersions}},
-  \code{\link{tx2gene}}
+  \code{\link{stripTranscriptVersions}}
 }
 \concept{Annotation Functions}
 \concept{Transcript-Level Functions}

@@ -11,11 +11,11 @@ Contains a \code{DataFrame} with \code{hgncID} and \code{geneID} columns.
 HGNC-to-Ensembl Gene Identifier Mappings
 }
 \examples{
-x <- hgnc2ensembl(.test = TRUE)
+x <- HGNC2Ensembl(.test = TRUE)
 print(x)
 }
 \seealso{
-\link{hgnc2ensembl}.
+\code{\link[=HGNC2Ensembl]{HGNC2Ensembl()}}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

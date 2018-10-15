@@ -50,9 +50,9 @@ stripTranscriptVersions("cTel79B.1")
 \seealso{
 Other Sanitization Functions: \code{\link{toStringUnique}}
 
-Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
-  \code{\link{makeGRanges}}, \code{\link{makeTx2Gene}},
-  \code{\link{tx2gene}}
+Other Transcript-Level Functions: \code{\link{Tx2Gene}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{makeGRanges}}, \code{\link{makeTx2Gene}}
 }
 \concept{Sanitization Functions}
 \concept{Transcript-Level Functions}
