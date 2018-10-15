@@ -1,3 +1,10 @@
+.prototypeMetadata <- list(
+    version = packageVersion,
+    date = Sys.Date()
+)
+
+
+
 # S3 classes ===================================================================
 # tibble
 # Note that `tbl_df` is exported in tibble v1.4.99 (see GitHub).
@@ -30,31 +37,31 @@ setOldClass(Classes = class(tibble::tibble()))
 #'    and **N**on-supervised **O**rthologous **G**roups (NOG) protein
 #'    identifiers.
 #'
-#' @seealso [eggnog].
+#' @seealso [EggNOG()].
 #'
 #' The [EggNOG README file](http://eggnogdb.embl.de/download/latest/README.txt)
 #' contains additional useful reference information.
-setClass(Class = "EggNOG", contains = "list")
+setClass(Class = "EggNOG", contains = "SimpleList")
 
 setValidity(
     Class = "EggNOG",
     method = function(object) {
-        assert_are_identical(
-            x = names(object),
-            y = c("cogFunctionalCategories", "annotations")
-        )
-        assert_are_identical(
-            x = colnames(object[["cogFunctionalCategories"]]),
-            y = c("letter", "description")
-        )
-        assert_are_identical(
-            x = colnames(object[["annotations"]]),
-            y = c(
-                "eggnogID",
-                "consensusFunctionalDescription",
-                "cogFunctionalCategory"
-            )
-        )
+        # assert_are_identical(
+        #     x = names(object),
+        #     y = c("cogFunctionalCategories", "annotations")
+        # )
+        # assert_are_identical(
+        #     x = colnames(object[["cogFunctionalCategories"]]),
+        #     y = c("letter", "description")
+        # )
+        # assert_are_identical(
+        #     x = colnames(object[["annotations"]]),
+        #     y = c(
+        #         "eggnogID",
+        #         "consensusFunctionalDescription",
+        #         "cogFunctionalCategory"
+        #     )
+        # )
         TRUE
     }
 )
@@ -74,7 +81,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `geneID` and `entrezID` columns.
 #'
-#' @seealso [ensembl2entrez].
+#' @seealso [Ensembl2Entrez()].
 setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 
 setValidity(
@@ -106,7 +113,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `geneID` and `geneName` columns.
 #'
-#' @seealso [gene2symbol], [makeGene2Symbol].
+#' @seealso [Gene2Symbol()], [makeGene2Symbol].
 setClass(Class = "Gene2Symbol", contains = "DataFrame")
 
 setValidity(
@@ -138,7 +145,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `hgncID` and `geneID` columns.
 #'
-#' @seealso [hgnc2ensembl].
+#' @seealso [HGNC2Ensembl()].
 setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
 
 setValidity(
@@ -171,7 +178,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `mgiID` and `geneID` columns.
 #'
-#' @seealso [mgi2ensembl].
+#' @seealso [MGI2Ensembl()].
 setClass(Class = "MGI2Ensembl", contains = "DataFrame")
 
 setValidity(
@@ -200,7 +207,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame`.
 #'
-#' @seealso [panther].
+#' @seealso [PANTHER()].
 setClass(Class = "PANTHER", contains = "DataFrame")
 
 setValidity(
@@ -236,7 +243,7 @@ setValidity(
 #'
 #' @return Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 #'
-#' @seealso [tx2gene], [makeTx2Gene].
+#' @seealso [Tx2Gene()], [makeTx2Gene].
 setClass(Class = "Tx2Gene", contains = "DataFrame")
 
 setValidity(
