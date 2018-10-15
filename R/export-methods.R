@@ -1,7 +1,3 @@
-# FIXME Add `human = TRUE` mode, which uses sampleNames and gene symbols.
-
-
-
 #' Export
 #'
 #' Export data out of R and write to disk.
@@ -266,9 +262,9 @@ NULL
         files <- do.call(what = export, args = args)
         print(files)
 
-        # Also export reducedDims to disk, if defined. Note that these don't map
-        # to object rownames, so we don't have to handle gene2symbol option
-        # here.
+        # Note that we don't have to worry about sanizing reduced dims when
+        # human mode is enabled, because the rownames map to cells, and the
+        # colnames map to the dimensions of interest.
         reducedDimNames <- reducedDimNames(x)
         if (has_length(reducedDimNames)) {
             message(paste("Exporting reducedDims:", toString(reducedDimNames)))
