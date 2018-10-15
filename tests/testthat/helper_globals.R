@@ -1,4 +1,5 @@
-data(rse_small, sce_small, tx_se_small, envir = environment())
+# FIXME Disable lazy loading.
+# data(rse_small, sce_small, tx_se_small, envir = environment())
 mat <- matrix(
     data = seq(1L:16L),
     nrow = 4L,

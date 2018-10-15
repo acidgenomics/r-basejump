@@ -78,6 +78,7 @@ test_that("methodFormals", {
 
 # multiassignAsEnvir ===========================================================
 test_that("multiassignAsEnvir", {
+    # FIXME Erroring on macOS Travis.
     object <- multiassignAsEnvir(
         rse_small, sce_small,
         envirName = "example"
