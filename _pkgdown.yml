@@ -8,13 +8,13 @@ reference:
     - ends_with("-class")
   - title: S4 Generators
     contents:
-    - eggnog
-    - ensembl2entrez
-    - gene2symbol
-    - hgnc2ensembl
-    - mgi2ensembl
-    - panther
-    - tx2gene
+    - EggNOG
+    - Ensembl2Entrez
+    - Gene2Symbol
+    - HGNC2Ensembl
+    - MGI2Ensembl
+    - PANTHER
+    - Tx2Gene
   - title: Genome Annotations
     contents:
     - makeGRanges
