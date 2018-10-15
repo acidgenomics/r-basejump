@@ -68,15 +68,13 @@ headtail(datasets::mtcars)
 
 ## SummarizedExperiment ====
 headtail(rse_small)
-headtail(colData(rse_small))
-headtail(rowData(rse_small))
 
 ## SingleCellExperiment ====
 headtail(sce_small)
 }
 \seealso{
 \itemize{
-\item \link{head}, \link{tail}, \link{cat}.
+\item \code{\link[=head]{head()}}, \code{\link[=tail]{tail()}}, \code{\link[=cat]{cat()}}.
 \item \code{getMethod("show", "DataTable")}.
 \item \link[S4Vectors:showAsCell]{S4Vectors::showAsCell}.
 }

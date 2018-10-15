@@ -1,4 +1,5 @@
 # FIXME n = 1 errors out here.
+# FIXME headtail(colData(sce_small)) errors out.
 
 
 
@@ -17,7 +18,7 @@
 #' @return None (invisible `NULL`).
 #'
 #' @seealso
-#' - [head], [tail], [cat].
+#' - [head()], [tail()], [cat()].
 #' - `getMethod("show", "DataTable")`.
 #' - [S4Vectors::showAsCell].
 #'
@@ -29,8 +30,6 @@
 #'
 #' ## SummarizedExperiment ====
 #' headtail(rse_small)
-#' headtail(colData(rse_small))
-#' headtail(rowData(rse_small))
 #'
 #' ## SingleCellExperiment ====
 #' headtail(sce_small)
