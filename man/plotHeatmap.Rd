@@ -124,24 +124,20 @@ as \code{\link[stats:hclust]{stats::hclust()}}.}
 \description{
 Construct a simple heatmap.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{SummarizedExperiment}: Construct a correlation heatmap comparing the columns
+of the matrix.
+
+\item \code{SummarizedExperiment}: Scale the heatmap by applying quantile breaks.
+}}
+
 \section{Hierarchical clustering}{
 
 
 By default, row- and column-wise hierarchical clustering is performed using
 the Ward method, but this behavior can be overrided by setting \code{clusterRows}
 or \code{clusterCols} to \code{FALSE}.
-}
-
-\section{Correlation heatmap}{
-
-
-Construct a correlation heatmap comparing the columns of the matrix.
-}
-
-\section{Quantile heatmap}{
-
-
-Apply quantile breaks.
 }
 
 \examples{

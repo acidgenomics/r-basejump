@@ -12,11 +12,11 @@ Contains a \code{DataFrame}.
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \examples{
-x <- panther("Homo sapiens", progress = FALSE, .test = TRUE)
+x <- PANTHER("Homo sapiens", progress = FALSE, .test = TRUE)
 summary(x)
 }
 \seealso{
-\link{panther}.
+\code{\link[=PANTHER]{PANTHER()}}.
 
 Other S4 Classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},

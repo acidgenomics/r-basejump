@@ -18,6 +18,13 @@ mapCellsToSamples(cells, samples)
 This function extracts \code{sampleID} from the \code{cellID} column using grep
 matching.
 }
+\examples{
+samples <- paste0("sample", seq_len(2L))
+print(samples)
+cells <- paste(samples, c("AAAAAAAA", "CCCCCCCC"), sep = "_")
+print(cells)
+mapCellsToSamples(cells, samples)
+}
 \seealso{
 Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
   \code{\link{cell2sample}},
