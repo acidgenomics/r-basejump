@@ -1,5 +1,7 @@
 context("Developer")
 
+data(rse_small, sce_small, envir = environment())
+
 
 
 # detectHPC ====================================================================
@@ -54,7 +56,7 @@ test_that("matchInterestingGroups", {
     )
     expect_identical(
         object = matchInterestingGroups(
-            object = rse_small,
+            object = object,
             interestingGroups = interestingGroups(object)[[1L]]
         ),
         expected = interestingGroups(object)[[1L]]
@@ -78,11 +80,7 @@ test_that("methodFormals", {
 
 # multiassignAsEnvir ===========================================================
 test_that("multiassignAsEnvir", {
-    # FIXME Erroring on macOS Travis.
-    object <- multiassignAsEnvir(
-        rse_small, sce_small,
-        envirName = "example"
-    )
+    object <- multiassignAsEnvir(rse_small, sce_small, envirName = "example")
     expected <- c("rse_small", "sce_small")
     expect_identical(object, expected)
     expect_identical(

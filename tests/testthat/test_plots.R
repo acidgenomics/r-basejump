@@ -4,6 +4,8 @@
 
 context("Plots")
 
+data(rse_small, envir = environment())
+
 
 
 # Counts per biotype ===========================================================

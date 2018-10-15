@@ -1,5 +1,6 @@
 context("Assert Checks")
 
+data(rse_small, envir = environment())
 g2s <- new(
     "Gene2Symbol",
     DataFrame(
