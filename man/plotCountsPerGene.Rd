@@ -71,9 +71,8 @@ unless the library sizes or total RNA expression are different.
 data(rse_small, sce_small)
 
 ## SummarizedExperiment ====
-plotCountsPerGene(rse_small, geom = "density")
 plotCountsPerGene(rse_small, geom = "boxplot")
-plotCountsPerGene(rse_small, geom = "violin")
+plotCountsPerGene(rse_small, geom = "density")
 
 ## SingleCellExperiment ====
 plotCountsPerGene(sce_small)
