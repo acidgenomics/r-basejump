@@ -78,19 +78,20 @@ NULL
 #'
 #' @return Named `factor` containing broad class definitions.
 .broadClass <- function(object) {
-    rownames <- rownames(object)
-    assert_is_character(rownames)
-    assert_is_non_empty(rownames)
+    assert_is_all_of(object, "GRanges")
+
+    names <- names(object)
+    assert_is_character(names)
+    assert_is_non_empty(names)
+
+    data <- as_tibble(object)
 
     # Early return if already defined.
     if ("broadClass" %in% colnames(data)) {
         broad <- data[["broadClass"]]
-        names(broad) <- rownames
+        names(broad) <- names
         return(broad)
     }
-
-    # Coerce to tibble.
-    data <- as_tibble(object, rownames = NULL)
 
     # Gene name (required).
     assert_is_subset("geneName", colnames(data))
@@ -189,7 +190,7 @@ NULL
     )
 
     broad <- as.factor(broad)
-    names(broad) <- rownames
+    names(broad) <- names
     broad
 }
 
@@ -421,11 +422,19 @@ makeGRangesFromEnsembl <- function(
         # Join the transcript- and gene-level annotations.
         txData <- mcols(tx)
         geneData <- mcols(gene)
-        data <- left_join(x = txData, y = geneData, by = "gene_id")
-        assert_are_identical(txData[["tx_id"]], data[["tx_id"]])
+        # Consider importing BiocTibble left_join DataFrame method here.
+        data <- left_join(
+            x = as_tibble(txData),
+            y = as_tibble(geneData),
+            by = "gene_id"
+        )
+        assert_are_identical(
+            x = txData[["tx_id"]], 
+            y = data[["tx_id"]]
+        )
 
         # Now we can slot back into the transcript mcols.
-        mcols(tx) <- data
+        mcols(tx) <- as(data, "DataFrame")
         gr <- tx
     }
 
