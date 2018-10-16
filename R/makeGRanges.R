@@ -196,34 +196,14 @@ NULL
 
 
 
-#' @describeIn makeGRanges
-#' Quickly obtain gene and transcript annotations from
-#' [Ensembl](http://www.ensembl.org) using
-#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub) and
-#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
-#'
-#' Simply specify the desired organism, using the full latin name. For example,
-#' we can obtain human annotations with `Homo sapiens`. Optionally, specific
-#' Ensembl genome builds (e.g. `GRCh38`) and release versions (e.g. `87`) are
-#' supported.
-#'
-#' Under the hood, this function fetches annotations from AnnotationHub using
-#' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
-#' back to version 87.
-#'
-#' Genome build: use "`GRCh38`" instead of "`hg38`" for the genome build, since
-#' we're querying Ensembl and not UCSC.
-#' @export
-makeGRangesFromEnsembl <- function(
+.getEnsDbFromAnnotationHub <- function(
     organism,
-    level = c("genes", "transcripts"),
     build = NULL,
     release = NULL
 ) {
     assert_is_a_string(organism)
-    # Standard organism query, if necessary.
+    # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
-    level <- match.arg(level)
     assertIsAStringOrNULL(build)
     # Check for accidental UCSC input and stop, informing user.
     if (is_a_string(build)) {
@@ -246,130 +226,134 @@ makeGRangesFromEnsembl <- function(
         release <- as.integer(release)
     }
 
-    # Ensure `select()` isn't masked by ensembldb and/or AnnotationDbi.
-    userAttached <- .packages()
+    # AnnotationHub --------------------------------------------------------
+    # Connect to AnnotationHub. On a fresh install this will print a
+    # txProgressBar to the console. We're using `capture.output()` here
+    # to suppress the console output, since it's not very informative and
+    # can cluster R Markdown reports.
+    invisible(capture.output(
+        ah <- suppressMessages(AnnotationHub())
+    ))
 
-    # Fetch annotations from AnnotationHub/ensembldb ---------------------------
-    # ah: AnnotationHub
-    # edb: Ensembl database
+    message(paste0(
+        "Making GRanges from Ensembl with AnnotationHub ",
+        packageVersion("AnnotationHub"),
+        " (", snapshotDate(ah), ")."
+    ))
+
+    # Use ensembldb annotations by default.
+    rdataclass <- "EnsDb"
+
+    # For legacy release requests, switch to newest version available.
+    if (!is.null(release) && release < 87L) {
+        warning(paste(
+            "ensembldb currently only supports Ensembl releases >= 87.",
+            "Switching to current release instead.",
+            sep = "\n"
+        ))
+        release <- NULL
+    }
+
+    # Query AnnotationHub.
+    ahs <- query(
+        x = ah,
+        pattern = c(
+            "Ensembl",
+            organism,
+            build,
+            release,
+            rdataclass
+        ),
+        ignore.case = TRUE
+    )
+
+    # Get the AnnotationHub from the metadata columns.
+    mcols <- mcols(ahs)
+
+    # Abort if there's no match and working offline.
     if (
-        identical(tolower(organism), "homo sapiens") &&
-        (
-            identical(tolower(as.character(build)), "grch37") ||
-            identical(release, 75L)
-        )
+        !isTRUE(has_internet()) &&
+        !nrow(mcols)
     ) {
-        # GRCh37 release 75
-        ahid <- "EnsDb.Hsapiens.v75"
-        if (requireNamespace(ahid, quietly = TRUE)) {
-            edb <- get(ahid, envir = asNamespace(ahid), inherits = FALSE)
-        } else {
-            # nocov start
-            stop(paste(
-                "GRCh37 genome build requires the", ahid, "package."
-            ))
-            # nocov end
-        }
-    } else {
-        # AnnotationHub --------------------------------------------------------
-        # Connect to AnnotationHub. On a fresh install this will print a
-        # txProgressBar to the console. We're using `capture.output()` here
-        # to suppress the console output, since it's not very informative and
-        # can cluster R Markdown reports.
-        invisible(capture.output(
-            ah <- suppressMessages(AnnotationHub())
-        ))
-
-        message(paste0(
-            "Making GRanges from Ensembl with AnnotationHub ",
-            packageVersion("AnnotationHub"),
-            " (", snapshotDate(ah), ")."
-        ))
-
-        # Use ensembldb annotations by default.
-        rdataclass <- "EnsDb"
-
-        # For legacy release requests, switch to newest version available.
-        if (!is.null(release) && release < 87L) {
-            warning(paste(
-                "ensembldb currently only supports Ensembl releases >= 87.",
-                "Switching to current release instead.",
-                sep = "\n"
-            ))
-            release <- NULL
-        }
-
-        # Query AnnotationHub.
-        ahs <- query(
-            x = ah,
-            pattern = c(
-                "Ensembl",
-                organism,
-                build,
-                release,
-                rdataclass
-            ),
-            ignore.case = TRUE
+        # nocov start
+        stop(
+            "AnnotationHub requires an Internet connection for query.",
+            call. = FALSE
         )
+        # nocov end
+    }
 
-        # Get the AnnotationHub from the metadata columns.
-        mcols <- mcols(ahs)
+    # Ensure build matches, if specified.
+    if (!is.null(build)) {
+        assert_is_subset("genome", colnames(mcols))
+        mcols <- mcols[mcols[["genome"]] %in% build, , drop = FALSE]
+    }
 
-        # Abort if there's no match and working offline.
-        if (
-            !isTRUE(has_internet()) &&
-            !nrow(mcols)
-        ) {
-            # nocov start
-            stop("AnnotationHub requires an Internet connection for query.")
-            # nocov end
-        }
-
-        # Ensure build matches, if specified.
-        if (!is.null(build)) {
-            assert_is_subset("genome", colnames(mcols))
-            mcols <- mcols[mcols[["genome"]] %in% build, , drop = FALSE]
-        }
-
-        # Ensure release matches, or pick the latest one.
-        if (!is.null(release)) {
-            assert_is_subset("title", colnames(mcols))
-            mcols <- mcols[
-                grepl(paste("Ensembl", release), mcols[["title"]]),
-                ,
-                drop = FALSE
+    # Ensure release matches, or pick the latest one.
+    if (!is.null(release)) {
+        assert_is_subset("title", colnames(mcols))
+        mcols <- mcols[
+            grepl(paste("Ensembl", release), mcols[["title"]]),
+            ,
+            drop = FALSE
             ]
-            assert_is_of_length(nrow(mcols), 1L)
-        }
+        assert_is_of_length(nrow(mcols), 1L)
+    }
 
-        if (!nrow(mcols)) {
-            stop(paste(
-                paste0(
-                    "No ID matched on AnnotationHub ",
-                    packageVersion("AnnotationHub"), "."
-                ),
-                paste(li, "Organism:", deparse(organism)),
-                paste(li, "Build:", deparse(build)),
-                paste(li, "Release:", deparse(release)),
-                sep = "\n"
-            ))
-        }
-
-        mcols <- tail(mcols, 1L)
-        message(mcols[["title"]])
-        ahid <- rownames(mcols)
-
-        # This step will also output `txProgressBar()` on a fresh install. Using
-        # `capture.output()` here again to suppress console output.
-        # Additionally, it attaches ensembldb and other Bioconductor dependency
-        # packages, which will mask some tidyverse functions (e.g. `select()`).
-        invisible(capture.output(
-            edb <- suppressMessages(ah[[ahid]])
+    if (!nrow(mcols)) {
+        stop(paste(
+            paste0(
+                "No ID matched on AnnotationHub ",
+                packageVersion("AnnotationHub"), "."
+            ),
+            paste(li, "Organism:", deparse(organism)),
+            paste(li, "Build:", deparse(build)),
+            paste(li, "Release:", deparse(release)),
+            sep = "\n"
         ))
     }
 
-    # Get annotations from EnsDb -----------------------------------------------
+    mcols <- tail(mcols, 1L)
+    message(mcols[["title"]])
+    ahid <- rownames(mcols)
+
+    # This step will also output `txProgressBar()` on a fresh install. Using
+    # `capture.output()` here again to suppress console output.
+    # Additionally, it attaches ensembldb and other Bioconductor dependency
+    # packages, which will mask some tidyverse functions (e.g. `select()`).
+    invisible(capture.output(
+        edb <- suppressMessages(ah[[ahid]])
+    ))
+
     assert_is_all_of(edb, "EnsDb")
+    edb
+}
+
+
+
+#' Get EnsDb annotations from package.
+.getEnsDbFromPackage <- function(package) {
+    assert_is_a_string(package)
+    require(package, character.only = TRUE)
+    edb <- get(
+        x = package,
+        envir = asNamespace(package),
+        inherits = FALSE
+    )
+    assert_is_all_of(edb, "EnsDb")
+    edb
+}
+
+
+
+#' Make GRanges from ensembldb EnsDb object.
+#' FIXME This isn't working because it's split out...
+.makeGRangesFromEnsDb <- function(
+    edb,
+    level = c("genes", "transcripts")
+) {
+    assert_is_all_of(edb, "EnsDb")
+    level <- match.arg(level)
 
     # Get the genome build from the ensembldb metdata.
     build <- metadata(edb) %>%
@@ -380,7 +364,6 @@ makeGRangesFromEnsembl <- function(
 
     # Ready to create our metadata list to stash inside the GRanges.
     metadata <- list(
-        annotationHub = ahid,
         organism = organism(edb),
         ensembldb = metadata(edb),
         build = build,
@@ -391,7 +374,6 @@ makeGRangesFromEnsembl <- function(
     )
 
     message(paste(
-        paste(li, "AnnotationHub:", metadata[["annotationHub"]]),
         paste(li, "Organism:", metadata[["organism"]]),
         paste(li, "Build:", metadata[["build"]]),
         paste(li, "Release:", metadata[["release"]]),
@@ -462,6 +444,63 @@ makeGRangesFromEnsembl <- function(
 
     .makeGRanges(gr)
 }
+# FIXME Automatically match the formals with makeGRangesFromEnsembl
+
+
+
+#' @describeIn makeGRanges
+#' Quickly obtain gene and transcript annotations from
+#' [Ensembl](http://www.ensembl.org) using
+#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub) and
+#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
+#'
+#' Simply specify the desired organism, using the full latin name. For example,
+#' we can obtain human annotations with `Homo sapiens`. Optionally, specific
+#' Ensembl genome builds (e.g. `GRCh38`) and release versions (e.g. `87`) are
+#' supported.
+#'
+#' Under the hood, this function fetches annotations from AnnotationHub using
+#' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
+#' back to version 87.
+#'
+#' Genome build: use "`GRCh38`" instead of "`hg38`" for the genome build, since
+#' we're querying Ensembl and not UCSC.
+#' @export
+makeGRangesFromEnsembl <- function(
+    organism,
+    level = c("genes", "transcripts"),
+    build = NULL,
+    release = NULL
+) {
+    assert_is_a_string(organism)
+    level <- match.arg(level)
+
+    # Ensure `select()` isn't masked by ensembldb and/or AnnotationDbi.
+    userAttached <- .packages()
+    # FIXME Need to improve the handling when we split out EnsDb functionality.
+
+    # Fetch annotations from AnnotationHub/ensembldb ---------------------------
+    # ah: AnnotationHub
+    # edb: Ensembl database
+    if (
+        identical(tolower(organism), "homo sapiens") &&
+        (
+            identical(tolower(as.character(build)), "grch37") ||
+            identical(release, 75L)
+        )
+    ) {
+        edb <- .getEnsDb(package = "EnsDb.Hsapiens.v75")
+    } else {
+        edb <- .getEnsDbFromAnnotationHub(
+            organism = organism,
+            build = build,
+            release = release
+        )
+    }
+
+    .makeGRangesFromEnsDb(edb = edb, level = level)
+}
+# FIXME Slot AnnotationHub ID in metadata.
 
 
 
