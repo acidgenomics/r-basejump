@@ -57,8 +57,7 @@ NULL
 # Organism-specific data modifiers =============================================
 .PANTHER.homoSapiens <-  # nolint
     function(data, .test = FALSE) {
-        hgnc2ensembl <- hgnc2ensembl(.test = .test) %>%
-            as_tibble(rownames = NULL)
+        hgnc2ensembl <- HGNC2Ensembl(.test = .test)
 
         # Ensembl matches.
         ensembl <- data %>%
@@ -76,7 +75,10 @@ NULL
                 hgncID = as.integer(!!sym("hgncID"))
             ) %>%
             filter(!is.na(!!sym("hgncID"))) %>%
-            left_join(hgnc2ensembl, by = "hgncID") %>%
+            left_join(
+                as_tibble(hgnc2ensembl, rownames = NULL),
+                by = "hgncID"
+            ) %>%
             select(-!!sym("hgncID")) %>%
             filter(!is.na(!!sym("geneID"))) %>%
             unique()
@@ -88,8 +90,7 @@ NULL
 
 .PANTHER.musMusculus <-  # nolint
     function(data, .test = FALSE) {
-        mgi2ensembl <- mgi2ensembl(.test = .test) %>%
-            as_tibble(rownames = NULL)
+        mgi2ensembl <- MGI2Ensembl(.test = .test)
 
         # Ensembl matches.
         ensembl <- data %>%
@@ -106,7 +107,10 @@ NULL
                 mgiID = as.integer(!!sym("mgiID"))
             ) %>%
             filter(!is.na(!!sym("mgiID"))) %>%
-            left_join(mgi2ensembl, by = "mgiID") %>%
+            left_join(
+                as_tibble(mgi2ensembl, rownames = NULL),
+                by = "mgiID"
+            ) %>%
             select(-!!sym("mgiID")) %>%
             filter(!is.na(!!sym("geneID")))
 
