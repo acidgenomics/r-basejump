@@ -200,6 +200,7 @@ Collate:
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
+    'tibble-internal.R'
     'toStringUnique.R'
     'topCellsPerSample-methods.R'
     'tpm-methods.R'

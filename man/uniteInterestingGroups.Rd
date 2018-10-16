@@ -6,7 +6,6 @@
 \alias{uniteInterestingGroups}
 \alias{uniteInterestingGroups,data.frame-method}
 \alias{uniteInterestingGroups,DataFrame-method}
-\alias{uniteInterestingGroups,tbl_df-method}
 \title{Unite Interesting Groups}
 \usage{
 uniteInterestingGroups(object, ...)
@@ -14,8 +13,6 @@ uniteInterestingGroups(object, ...)
 \S4method{uniteInterestingGroups}{data.frame}(object, interestingGroups)
 
 \S4method{uniteInterestingGroups}{DataFrame}(object, interestingGroups)
-
-\S4method{uniteInterestingGroups}{tbl_df}(object, interestingGroups)
 }
 \arguments{
 \item{object}{Object containing column data that defines interesting groups.}
