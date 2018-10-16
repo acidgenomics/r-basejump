@@ -63,7 +63,7 @@ makeTx2GeneFromGFF <- function(file) {
     message(paste(source, type, "detected."))
 
     # Coerce GRanges to tibble.
-    data <- camel(as(gff, "tbl_df"))
+    data <- camel(as_tibble(gff))
     assert_is_subset("transcriptID", colnames(data))
 
     # Remove rows that don't contain transcript annotations.
