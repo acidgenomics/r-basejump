@@ -251,7 +251,12 @@ setAs(
 #' @export
 as_tibble.GRanges <-  # nolint
     function(x, rownames = "rowname") {
+        names <- names(x)
         x <- as(x, "data.frame")
+        rownames(x) <- names
+        if (!hasRownames(x)) {
+            rownames <- NULL
+        }
         do.call(
             what = as_tibble,
             args = list(x = x, rownames = rownames)
