@@ -98,7 +98,7 @@ setAs(
 # DataFrame ====================================================================
 as.DataFrame <-  # nolint
     function(x) {
-        UseMethod("as.SummarizedExperiment")
+        UseMethod("as.DataFrame")
     }
 
 
