@@ -47,25 +47,6 @@ NULL
 
 
 
-.uniteInterestingGroups.tbl_df <-  # nolint
-    function(object, interestingGroups) {
-        assert_is_character(interestingGroups)
-        assert_is_subset(interestingGroups, colnames(object))
-        object[["interestingGroups"]] <- NULL
-        object <- unite(
-            data = object,
-            col = interestingGroups,
-            !!interestingGroups,
-            sep = ":",
-            remove = FALSE
-        )
-        object[["interestingGroups"]] <-
-            as.factor(object[["interestingGroups"]])
-        object
-    }
-
-
-
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
@@ -85,15 +66,4 @@ setMethod(
         f = "uniteInterestingGroups",
         signature = signature("data.frame")
     )
-)
-
-
-
-
-#' @rdname uniteInterestingGroups
-#' @export
-setMethod(
-    f = "uniteInterestingGroups",
-    signature = signature("tbl_df"),
-    definition = .uniteInterestingGroups.tbl_df
 )
