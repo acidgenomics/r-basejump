@@ -71,13 +71,25 @@ NULL
     ) {
         assert_is_scalar(assay)
         counts <- assays(object)[[assay]]
+
         data <- zerosVsDepth(counts)
-        # Add sample ID column.
         data[["sampleID"]] <- cell2sample(object)
-        # Join the sample data.
+
         sampleData <- sampleData(object)
         sampleData[["sampleID"]] <- as.factor(rownames(sampleData))
-        left_join(x = data, y = sampleData, by = "sampleID")
+
+        assert_is_all_of(data, "DataFrame")
+        assert_is_all_of(sampleData, "DataFrame")
+
+        # Use BiocTibble left_join DataFrame method here.
+        join <- left_join(
+            x = as_tibble(data, rownames = "rowname"),
+            y = as_tibble(sampleData, rownames = NULL),
+            by = "sampleID"
+        )
+        out <- as(join, "DataFrame")
+        assertHasRownames(out)
+        out
     }
 
 
@@ -134,6 +146,7 @@ setMethod(
         assertIsAStringOrNULL(title)
 
         data <- zerosVsDepth(object, assay = assay)
+        assert_is_all_of(data, "DataFrame")
 
         p <- ggplot(
             data = as_tibble(data),

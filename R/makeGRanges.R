@@ -422,14 +422,14 @@ makeGRangesFromEnsembl <- function(
         # Join the transcript- and gene-level annotations.
         txData <- mcols(tx)
         geneData <- mcols(gene)
-        # Consider importing BiocTibble left_join DataFrame method here.
+        # Use BiocTibble left_join DataFrame method here.
         data <- left_join(
             x = as_tibble(txData),
             y = as_tibble(geneData),
             by = "gene_id"
         )
         assert_are_identical(
-            x = txData[["tx_id"]], 
+            x = txData[["tx_id"]],
             y = data[["tx_id"]]
         )
 
