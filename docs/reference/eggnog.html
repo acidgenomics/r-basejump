@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EggNOG Database Annotations — eggnog • basejump</title>
+<title>EggNOG Database Annotations — EggNOG • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="EggNOG Database Annotations — eggnog" />
+<meta property="og:title" content="EggNOG Database Annotations — EggNOG" />
 
 <meta property="og:description" content="EggNOG is a database of biological information
 hosted by the EMBL. It is based on the original idea of COGs (clusters of
@@ -111,8 +111,8 @@ Orthologous Groups." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>EggNOG Database Annotations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/eggnog.R'><code>R/eggnog.R</code></a></small>
-    <div class="hidden name"><code>eggnog.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/EggNOG.R'><code>R/EggNOG.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
+    <div class="hidden name"><code>EggNOG.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -126,7 +126,7 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
     
     </div>
 
-    <pre class="usage"><span class='fu'>eggnog</span>(<span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>EggNOG</span>(<span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,6 +134,10 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
     <tr>
       <th>.test</th>
       <td><p><code>boolean</code>. <em>For unit testing only</em>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
@@ -143,53 +147,19 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='emptyRanges.html'>emptyRanges</a></code>,
-  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
-  <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>, <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
-  <code><a href='panther.html'>panther</a></code></p></div>
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='PANTHER.html'>PANTHER</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
+  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>eggnog</span>(<span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; An object of class "EggNOG"
-#&gt; [[1]]
-#&gt; # A tibble: 18 x 2
-#&gt;    letter description                           
-#&gt;    &lt;chr&gt;  &lt;chr&gt;                                 
-#&gt;  1 A      RNA processing and modification       
-#&gt;  2 B      Chromatin structure and dynamics      
-#&gt;  3 C      Energy production and conversion      
-#&gt;  4 E      Amino acid transport and metabolism   
-#&gt;  5 F      Nucleotide transport and metabolism   
-#&gt;  6 G      Carbohydrate transport and metabolism 
-#&gt;  7 H      Coenzyme transport and metabolism     
-#&gt;  8 I      Lipid transport and metabolism        
-#&gt;  9 K      Transcription                         
-#&gt; 10 N      Cell motility                         
-#&gt; 11 P      Inorganic ion transport and metabolism
-#&gt; 12 R      General function prediction only      
-#&gt; 13 S      Function unknown                      
-#&gt; 14 T      Signal transduction mechanisms        
-#&gt; 15 V      Defense mechanisms                    
-#&gt; 16 W      Extracellular structures              
-#&gt; 17 Y      Nuclear structure                     
-#&gt; 18 Z      Cytoskeleton                          
-#&gt; 
-#&gt; [[2]]
-#&gt; # A tibble: 10 x 3
-#&gt;    eggnogID   consensusFunctionalDescription                 cogFunctionalCate…
-#&gt;    &lt;chr&gt;      &lt;chr&gt;                                          &lt;chr&gt;             
-#&gt;  1 COG5153    Lipase which is essential for lysis of subvac… IU                
-#&gt;  2 COG5156    complex subunit 10                             DO                
-#&gt;  3 COG5157    cell division cycle 73, Paf1 RNA polymerase I… K                 
-#&gt;  4 COG5158    Vacuolar Protein                               U                 
-#&gt;  5 COG5159    cop9 signalosome complex subunit               O                 
-#&gt;  6 ENOG410IX… ADP-ribosylglycohydrolase                      S                 
-#&gt;  7 ENOG410J8… ZIP Zinc transporter                           P                 
-#&gt;  8 ENOG410J8… &lt;NA&gt;                                           S                 
-#&gt;  9 ENOG410KJ… GAL4                                           S                 
-#&gt; 10 ENOG410KJ… RING                                           O                 
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>EggNOG</span>(<span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; EggNOG 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; ids(10): COG5153 COG5156 ... ENOG410KJ10 ENOG410KJ1P
+#&gt; categories(18): Amino acid transport and metabolism Carbohydrate transport and metabolism ... Signal transduction mechanisms Transcription</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

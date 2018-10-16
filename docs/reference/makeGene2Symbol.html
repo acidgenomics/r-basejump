@@ -155,19 +155,24 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='makeGRanges.html'>makeGRanges</a>.</p>
-<p>Other Annotation Functions: <code><a href='eggnog.html'>eggnog</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
-  <code><a href='panther.html'>panther</a></code></p></div>
+<p>Other Annotation Functions: <code><a href='EggNOG.html'>EggNOG</a></code>,
+  <code><a href='PANTHER.html'>PANTHER</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## makeGene2SymbolFromEnsembl ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.13.8 (2018-10-12).</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>  - AnnotationHub: "AH64923"</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.13.8 (2018-10-15).</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>  - AnnotationHub: NULL</span>
 #&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
 #&gt; <span class='message'>  - Build: "GRCh38"</span>
 #&gt; <span class='message'>  - Release: "94"</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 65687 rows and 2 columns
+#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 65687 rows and 2 columns
 #&gt;                geneID    geneName
 #&gt;           &lt;character&gt; &lt;character&gt;
 #&gt; 1     ENSG00000000003      TSPAN6
@@ -180,11 +185,17 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; 65684         LRG_996     ERBB3.1
 #&gt; 65685         LRG_997      ROS1.1
 #&gt; 65686         LRG_998     CCND3.1
-#&gt; 65687         LRG_999       CIC.1</div><div class='input'>
+#&gt; 65687         LRG_999       CIC.1
+#&gt; 65687 genes; 65687 symbols</div><div class='input'>
 <span class='co'>## makeGene2SymbolFromGFF ====</span>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Gene2Symbol from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 17 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Gene2Symbol from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 17 rows and 2 columns
 #&gt;                 geneID      geneName
 #&gt;            &lt;character&gt;   &lt;character&gt;
 #&gt; 1   ENSMUSG00000102693 4933401J01Rik
@@ -197,10 +208,16 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; 14  ENSMUSG00000102592       Gm38385
 #&gt; 15  ENSMUSG00000088333       Gm27396
 #&gt; 16  ENSMUSG00000102343       Gm37381
-#&gt; 17  ENSMUSG00000025900           Rp1</div><div class='input'>
+#&gt; 17  ENSMUSG00000025900           Rp1
+#&gt; 17 genes; 17 symbols</div><div class='input'>
 <span class='co'>## GFF3</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gff3"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Gene2Symbol from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 20 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Gene2Symbol from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 20 rows and 2 columns
 #&gt;                 geneID      geneName
 #&gt;            &lt;character&gt;   &lt;character&gt;
 #&gt; 1   ENSMUSG00000102693 4933401J01Rik
@@ -213,7 +230,8 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; 17  ENSMUSG00000025900           Rp1
 #&gt; 18  ENSMUSG00000102948        Gm6101
 #&gt; 19  ENSMUSG00000104123       Gm37483
-#&gt; 20  ENSMUSG00000025902         Sox17</div></pre>
+#&gt; 20  ENSMUSG00000025902         Sox17
+#&gt; 20 genes; 20 symbols</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

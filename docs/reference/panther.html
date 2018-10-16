@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PANTHER Database Annotations — panther • basejump</title>
+<title>PANTHER Database Annotations — PANTHER • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="PANTHER Database Annotations — panther" />
+<meta property="og:title" content="PANTHER Database Annotations — PANTHER" />
 
 <meta property="og:description" content="PANTHER gene ontology definitions. PANTHER stands
 for Protein ANalysis THrough Evolutionary Relationships." />
@@ -107,8 +107,8 @@ for Protein ANalysis THrough Evolutionary Relationships." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>PANTHER Database Annotations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/panther.R'><code>R/panther.R</code></a></small>
-    <div class="hidden name"><code>panther.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/PANTHER.R'><code>R/PANTHER.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
+    <div class="hidden name"><code>PANTHER.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -118,7 +118,7 @@ for <strong>P</strong>rotein <strong>AN</strong>alysis <strong>TH</strong>rough 
     
     </div>
 
-    <pre class="usage"><span class='fu'>panther</span>(<span class='no'>organism</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>PANTHER</span>(<span class='no'>organism</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,6 +143,10 @@ release versions available from the FTP server (e.g. <code>"13.0"</code>).</p></
       <th>.test</th>
       <td><p><code>boolean</code>. <em>For unit testing only</em>.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -151,14 +155,16 @@ release versions available from the FTP server (e.g. <code>"13.0"</code>).</p></
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='eggnog.html'>eggnog</a></code>,
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='EggNOG.html'>EggNOG</a></code>,
   <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
   <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2Symbol.html'>makeGene2Symbol</a></code>,
   <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>panther</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Length   Class    Mode 
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>PANTHER</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'hgnc2ensembl' is deprecated.</span>
+#&gt; <span class='warning'>Use 'HGNC2Ensembl' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Length   Class    Mode 
 #&gt;       9 PANTHER      S4 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
