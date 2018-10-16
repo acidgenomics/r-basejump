@@ -63,14 +63,14 @@ gene level using \code{\link[=aggregateRows]{aggregateRows()}}. This applies to 
 data(tx_se_small)
 object <- tx_se_small
 
-tx2gene <- tx2gene(object)
-print(tx2gene)
+t2g <- Tx2Gene(object)
+print(t2g)
 transcripts <- rownames(object)
 print(transcripts)
 
 ## character ====
 ## Returns as factor.
-x <- convertTranscriptsToGenes(transcripts, tx2gene = tx2gene)
+x <- convertTranscriptsToGenes(transcripts, tx2gene = t2g)
 print(x)
 str(x)
 
@@ -79,11 +79,11 @@ str(x)
 counts <- counts(object)
 print(counts)
 ## Aggregate to gene level.
-x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
+x <- convertTranscriptsToGenes(counts, tx2gene = t2g, aggregate = TRUE)
 print(x)
 colSums(x)
 ## Simply map to rownames.
-x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = FALSE)
+x <- convertTranscriptsToGenes(counts, tx2gene = t2g, aggregate = FALSE)
 print(x)
 colSums(x)
 
