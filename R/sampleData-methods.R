@@ -1,7 +1,3 @@
-# TODO SCE: Consider slotting which columns are sample level in metadata.
-
-
-
 #' Sample Data
 #'
 #' Metadata that describes the samples.
@@ -218,6 +214,8 @@ setMethod(
 
 `.sampleData<-.SCE` <-  # nolint
     function(object, value) {
+        assert_is_all_of(value, "DataFrame")
+
         # Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {
             message("Removed legacy `sampleData` in `metadata()` slot.")
@@ -230,6 +228,7 @@ setMethod(
         value[["sampleID"]] <- NULL
 
         # Generate `sampleID` column.
+        assertHasRownames(value)
         value[["sampleID"]] <- as.factor(rownames(value))
 
         # Update colData slot.
@@ -239,13 +238,18 @@ setMethod(
             ,
             c("sampleID", setdiff(colnames(colData), colnames(value))),
             drop = FALSE
-            ]
-        colData <- left_join(
-            x = colData,
-            y = value,
+        ]
+
+        # Join the sample-level metadata into cell-level colData.
+        # Use BiocTibble left_join DataFrame method here.
+        join <- left_join(
+            x = as_tibble(colData, rownames = "rowname"),
+            y = as_tibble(value, rownames = NULL),
             by = "sampleID"
         )
-        colData(object) <- colData
+        value <- as(join, "DataFrame")
+        assertHasRownames(value)
+        colData(object) <- value
 
         object
     }
