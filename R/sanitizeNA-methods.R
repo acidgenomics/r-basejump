@@ -142,21 +142,3 @@ setMethod(
     signature = signature("DataFrame"),
     definition = .sanitizeNA.DataFrame
 )
-
-
-
-# tibble =======================================================================
-.sanitizeNA.tbl_df <-  # nolint
-    function(object) {
-        mutate_if(object, is.character, funs(sanitizeNA))
-    }
-
-
-
-#' @rdname sanitizeNA
-#' @export
-setMethod(
-    f = "sanitizeNA",
-    signature = signature("tbl_df"),
-    definition = .sanitizeNA.tbl_df
-)
