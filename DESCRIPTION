@@ -133,7 +133,6 @@ Collate:
     'detectLanes.R'
     'detectOrganism.R'
     'dots.R'
-    'dplyr-methods.R'
     'emptyRanges.R'
     'ensembl2entrez.R'
     'export-methods.R'
