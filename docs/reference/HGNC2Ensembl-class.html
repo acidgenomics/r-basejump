@@ -123,7 +123,7 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='hgnc2ensembl.html'>hgnc2ensembl</a>.</p>
+    <div class='dont-index'><p><code><a href='HGNC2Ensembl.html'>HGNC2Ensembl()</a></code>.</p>
 <p>Other S4 Classes: <code><a href='EggNOG-class.html'>EggNOG-class</a></code>,
   <code><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez-class</a></code>,
   <code><a href='Gene2Symbol-class.html'>Gene2Symbol-class</a></code>,
@@ -132,7 +132,10 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='hgnc2ensembl.html'>hgnc2ensembl</a></span>(<span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; HGNC2Ensembl with 10 rows and 2 columns
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='HGNC2Ensembl.html'>HGNC2Ensembl</a></span>(<span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; HGNC2Ensembl 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 10 rows and 2 columns
 #&gt;       hgncID          geneID
 #&gt;    &lt;integer&gt;     &lt;character&gt;
 #&gt; 1       3095 ENSG00000010219

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Transcript-to-Gene Identifier Mappings — tx2gene • basejump</title>
+<title>Transcript-to-Gene Identifier Mappings — Tx2Gene • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Transcript-to-Gene Identifier Mappings — tx2gene" />
+<meta property="og:title" content="Transcript-to-Gene Identifier Mappings — Tx2Gene" />
 
 <meta property="og:description" content="Transcript-to-Gene Identifier Mappings" />
 <meta name="twitter:card" content="summary" />
@@ -106,8 +106,8 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Transcript-to-Gene Identifier Mappings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/tx2gene-methods.R'><code>R/tx2gene-methods.R</code></a></small>
-    <div class="hidden name"><code>tx2gene.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/Tx2Gene-methods.R'><code>R/Tx2Gene-methods.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
+    <div class="hidden name"><code>Tx2Gene.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -116,19 +116,19 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>Tx2Gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for GRanges</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,12 +153,13 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
+    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='Ensembl2Entrez.html'>Ensembl2Entrez</a></code>,
+  <code><a href='Gene2Symbol.html'>Gene2Symbol</a></code>, <code><a href='HGNC2Ensembl.html'>HGNC2Ensembl</a></code>,
+  <code><a href='MGI2Ensembl.html'>MGI2Ensembl</a></code>,
+  <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
-  <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code></p>
+  <code><a href='mapGenes.html'>mapGenes</a></code></p>
 <p>Other Transcript-Level Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeTx2Gene.html'>makeTx2Gene</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
@@ -167,8 +168,11 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## SummarizedExperiment ====</span>
 <span class='fu'>data</span>(<span class='no'>tx_se_small</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>tx2gene</span>(<span class='no'>tx_se_small</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 6 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>Tx2Gene</span>(<span class='no'>tx_se_small</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 6 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000494424 ENST00000494424 ENSG00000000003
@@ -176,7 +180,8 @@
 #&gt; ENST00000612152 ENST00000612152 ENSG00000000003
 #&gt; ENST00000371584 ENST00000371584 ENSG00000000419
 #&gt; ENST00000371588 ENST00000371588 ENSG00000000419
-#&gt; ENST00000413082 ENST00000413082 ENSG00000000419</div></pre>
+#&gt; ENST00000413082 ENST00000413082 ENSG00000000419
+#&gt; 6 transcripts; 2 genes</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

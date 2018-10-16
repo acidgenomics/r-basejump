@@ -146,6 +146,12 @@ matching.</p>
   <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>seq_len</span>(<span class='fl'>2L</span>))
+<span class='fu'>print</span>(<span class='no'>samples</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2"</div><div class='input'><span class='no'>cells</span> <span class='kw'>&lt;-</span> <span class='fu'>paste</span>(<span class='no'>samples</span>, <span class='fu'>c</span>(<span class='st'>"AAAAAAAA"</span>, <span class='st'>"CCCCCCCC"</span>), <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"_"</span>)
+<span class='fu'>print</span>(<span class='no'>cells</span>)</div><div class='output co'>#&gt; [1] "sample1_AAAAAAAA" "sample2_CCCCCCCC"</div><div class='input'><span class='fu'>mapCellsToSamples</span>(<span class='no'>cells</span>, <span class='no'>samples</span>)</div><div class='output co'>#&gt; sample1_AAAAAAAA sample2_CCCCCCCC 
+#&gt;          sample1          sample2 
+#&gt; Levels: sample1 sample2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -155,7 +161,9 @@ matching.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

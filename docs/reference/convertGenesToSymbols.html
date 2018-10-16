@@ -178,19 +178,24 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
+    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='Ensembl2Entrez.html'>Ensembl2Entrez</a></code>,
+  <code><a href='Gene2Symbol.html'>Gene2Symbol</a></code>, <code><a href='HGNC2Ensembl.html'>HGNC2Ensembl</a></code>,
+  <code><a href='MGI2Ensembl.html'>MGI2Ensembl</a></code>, <code><a href='Tx2Gene.html'>Tx2Gene</a></code>,
+  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
-  <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>, <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
+  <code><a href='mapGenes.html'>mapGenes</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
 
-<span class='no'>gene2symbol</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gene2symbol.html'>gene2symbol</a></span>(<span class='no'>object</span>)
-<span class='fu'>print</span>(<span class='no'>gene2symbol</span>)</div><div class='output co'>#&gt; Gene2Symbol with 50 rows and 2 columns
+<span class='no'>gene2symbol</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>gene2symbol</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>gene2symbol</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 50 rows and 2 columns
 #&gt;                 geneID    geneName
 #&gt;            &lt;character&gt; &lt;character&gt;
 #&gt; gene1  ENSG00000000003      TSPAN6
@@ -203,7 +208,8 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; gene47 ENSG00000004139       SARM1
 #&gt; gene48 ENSG00000004142     POLDIP2
 #&gt; gene49 ENSG00000004399      PLXND1
-#&gt; gene50 ENSG00000004455         AK2</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>gene2symbol</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]])
+#&gt; gene50 ENSG00000004455         AK2
+#&gt; 50 genes; 50 symbols</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>gene2symbol</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]])
 
 <span class='co'>## character ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>genes</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='no'>gene2symbol</span>)
@@ -235,8 +241,9 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; C1orf112      17      18      19      20
 #&gt; FGR           21      22      23      24</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>rse_small</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 4 
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts
@@ -244,8 +251,9 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
 #&gt; colnames(4): sample1 sample2 sample3 sample4
 #&gt; colData names(2): genotype treatment</div><div class='input'><span class='co'>## Interconvert back to gene IDs.</span>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>convertSymbolsToGenes</span>(<span class='no'>x</span>)
-<span class='fu'>print</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>convertSymbolsToGenes</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 4 
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts

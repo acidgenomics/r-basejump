@@ -125,7 +125,7 @@ for <strong>P</strong>rotein <strong>AN</strong>alysis <strong>TH</strong>rough 
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='panther.html'>panther</a>.</p>
+    <div class='dont-index'><p><code><a href='PANTHER.html'>PANTHER()</a></code>.</p>
 <p>Other S4 Classes: <code><a href='EggNOG-class.html'>EggNOG-class</a></code>,
   <code><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez-class</a></code>,
   <code><a href='Gene2Symbol-class.html'>Gene2Symbol-class</a></code>,
@@ -135,7 +135,9 @@ for <strong>P</strong>rotein <strong>AN</strong>alysis <strong>TH</strong>rough 
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='panther.html'>panther</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Length   Class    Mode 
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PANTHER.html'>PANTHER</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'hgnc2ensembl' is deprecated.</span>
+#&gt; <span class='warning'>Use 'HGNC2Ensembl' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Length   Class    Mode 
 #&gt;       9 PANTHER      S4 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

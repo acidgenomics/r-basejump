@@ -123,7 +123,7 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='tx2gene.html'>tx2gene</a>, <a href='makeTx2Gene.html'>makeTx2Gene</a>.</p>
+    <div class='dont-index'><p><code><a href='Tx2Gene.html'>Tx2Gene()</a></code>, <a href='makeTx2Gene.html'>makeTx2Gene</a>.</p>
 <p>Other S4 Classes: <code><a href='EggNOG-class.html'>EggNOG-class</a></code>,
   <code><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez-class</a></code>,
   <code><a href='Gene2Symbol-class.html'>Gene2Symbol-class</a></code>,
@@ -135,8 +135,11 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## SummarizedExperiment ====</span>
 <span class='fu'>data</span>(<span class='no'>tx_se_small</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tx2gene.html'>tx2gene</a></span>(<span class='no'>tx_se_small</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 6 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Tx2Gene.html'>Tx2Gene</a></span>(<span class='no'>tx_se_small</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 6 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000494424 ENST00000494424 ENSG00000000003
@@ -144,7 +147,8 @@
 #&gt; ENST00000612152 ENST00000612152 ENSG00000000003
 #&gt; ENST00000371584 ENST00000371584 ENSG00000000419
 #&gt; ENST00000371588 ENST00000371588 ENSG00000000419
-#&gt; ENST00000413082 ENST00000413082 ENSG00000000419</div></pre>
+#&gt; ENST00000413082 ENST00000413082 ENSG00000000419
+#&gt; 6 transcripts; 2 genes</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

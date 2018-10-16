@@ -186,12 +186,12 @@ that is duplicated, these functions will return a warning.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
+    <div class='dont-index'><p>Other Identifier Mapping Functions: <code><a href='Ensembl2Entrez.html'>Ensembl2Entrez</a></code>,
+  <code><a href='Gene2Symbol.html'>Gene2Symbol</a></code>, <code><a href='HGNC2Ensembl.html'>HGNC2Ensembl</a></code>,
+  <code><a href='MGI2Ensembl.html'>MGI2Ensembl</a></code>, <code><a href='Tx2Gene.html'>Tx2Gene</a></code>,
+  <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
-  <code><a href='tx2gene.html'>tx2gene</a></code></p>
+  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code></p>
 <p>Other SummarizedExperiment Functions: <code><a href='counts.html'>counts</a></code>,
   <code><a href='interestingGroups.html'>interestingGroups</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
@@ -208,47 +208,59 @@ that is duplicated, these functions will return a warning.</p>
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts
 #&gt; rownames(50): gene1 gene2 ... gene49 gene50
-#&gt; rowData names(5): geneID geneName geneBiotype
-#&gt;   broadClass entrezID
+#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
 #&gt; colnames(4): sample1 sample2 sample3 sample4
 #&gt; colData names(2): genotype treatment</div><div class='input'>
 <span class='no'>rownames</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>rownames</span>(<span class='no'>object</span>))
 <span class='fu'>print</span>(<span class='no'>rownames</span>)</div><div class='output co'>#&gt; [1] "gene1" "gene2" "gene3" "gene4" "gene5" "gene6"</div><div class='input'>
 <span class='no'>geneIDs</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>rowData</span>(<span class='no'>object</span>)<span class='kw'>[[</span><span class='st'>"geneID"</span>]])
-<span class='fu'>print</span>(<span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419"
-#&gt; [4] "ENSG00000000457" "ENSG00000000460" "ENSG00000000938"</div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
+#&gt; [5] "ENSG00000000460" "ENSG00000000938"</div><div class='input'>
 <span class='no'>geneNames</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>as.character</span>(<span class='fu'>rowData</span>(<span class='no'>object</span>)<span class='kw'>[[</span><span class='st'>"geneName"</span>]]))
-<span class='fu'>print</span>(<span class='no'>geneNames</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112"
-#&gt; [6] "FGR"     </div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>geneNames</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div><div class='input'>
 <span class='co'>## Row names,</span>
-<span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;   gene1   gene2   gene3   gene4   gene5   gene6 
-#&gt; "gene1" "gene2" "gene3" "gene4" "gene5" "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 
-#&gt;         "gene1"         "gene2"         "gene3" 
-#&gt; ENSG00000000457 ENSG00000000460 ENSG00000000938 
-#&gt;         "gene4"         "gene5"         "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;   TSPAN6     TNMD     DPM1    SCYL3 C1orf112      FGR 
+<span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt;   gene1   gene2   gene3   gene4   gene5   gene6 
+#&gt; "gene1" "gene2" "gene3" "gene4" "gene5" "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
+#&gt;         "gene1"         "gene2"         "gene3"         "gene4"         "gene5" 
+#&gt; ENSG00000000938 
+#&gt;         "gene6" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt;   TSPAN6     TNMD     DPM1    SCYL3 C1orf112      FGR 
 #&gt;  "gene1"  "gene2"  "gene3"  "gene4"  "gene5"  "gene6" </div><div class='input'>
 <span class='co'>## Gene identifiers.</span>
-<span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;             gene1             gene2             gene3 
-#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" 
-#&gt;             gene4             gene5             gene6 
-#&gt; "ENSG00000000457" "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt;   ENSG00000000003   ENSG00000000005   ENSG00000000419 
-#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" 
-#&gt;   ENSG00000000457   ENSG00000000460   ENSG00000000938 
-#&gt; "ENSG00000000457" "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;            TSPAN6              TNMD              DPM1 
-#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" 
-#&gt;             SCYL3          C1orf112               FGR 
-#&gt; "ENSG00000000457" "ENSG00000000460" "ENSG00000000938" </div><div class='input'>
+<span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt;             gene1             gene2             gene3             gene4 
+#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
+#&gt;             gene5             gene6 
+#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt;   ENSG00000000003   ENSG00000000005   ENSG00000000419   ENSG00000000457 
+#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
+#&gt;   ENSG00000000460   ENSG00000000938 
+#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt;            TSPAN6              TNMD              DPM1             SCYL3 
+#&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
+#&gt;          C1orf112               FGR 
+#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'>
 <span class='co'>## Gene names (symbols).</span>
-<span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;      gene1      gene2      gene3      gene4      gene5 
-#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112" 
-#&gt;      gene6 
-#&gt;      "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 
-#&gt;        "TSPAN6"          "TNMD"          "DPM1" 
-#&gt; ENSG00000000457 ENSG00000000460 ENSG00000000938 
-#&gt;         "SCYL3"      "C1orf112"           "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt;     TSPAN6       TNMD       DPM1      SCYL3   C1orf112 
-#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112" 
-#&gt;        FGR 
-#&gt;      "FGR" </div></pre>
+<span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt;      gene1      gene2      gene3      gene4      gene5      gene6 
+#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112"      "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
+#&gt;        "TSPAN6"          "TNMD"          "DPM1"         "SCYL3"      "C1orf112" 
+#&gt; ENSG00000000938 
+#&gt;           "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>geneNames</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'gene2symbol' is deprecated.</span>
+#&gt; <span class='warning'>Use 'Gene2Symbol' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt;     TSPAN6       TNMD       DPM1      SCYL3   C1orf112        FGR 
+#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112"      "FGR" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

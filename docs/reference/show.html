@@ -124,7 +124,25 @@ Formal methods for show will
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for PANTHER</span>
+    <pre class="usage"><span class='co'># S4 method for EggNOG</span>
+<span class='fu'>show</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for Ensembl2Entrez</span>
+<span class='fu'>show</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for Gene2Symbol</span>
+<span class='fu'>show</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for HGNC2Ensembl</span>
+<span class='fu'>show</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for MGI2Ensembl</span>
+<span class='fu'>show</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for PANTHER</span>
+<span class='fu'>show</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for Tx2Gene</span>
 <span class='fu'>show</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -161,8 +179,37 @@ the discussion in <code>setIs</code> for the general concept.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## PANTHER ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='panther.html'>panther</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='output co'>#&gt; <span class='message'>goMF</span></div><div class='output co'>#&gt;    |                                                  | 0 % ~calculating     |+++++                                             | 10% ~00s             |++++++++++                                        | 20% ~00s             |+++++++++++++++                                   | 30% ~00s             |++++++++++++++++++++                              | 40% ~00s             |+++++++++++++++++++++++++                         | 50% ~00s             |++++++++++++++++++++++++++++++                    | 60% ~00s             |+++++++++++++++++++++++++++++++++++               | 70% ~00s             |++++++++++++++++++++++++++++++++++++++++         | 80% ~00s             |+++++++++++++++++++++++++++++++++++++++++++++    | 90% ~00s             |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed = 00s</div><div class='output co'>#&gt; <span class='message'>goBP</span></div><div class='output co'>#&gt;    |                                                  | 0 % ~calculating     |+++++                                             | 10% ~00s             |++++++++++                                        | 20% ~00s             |+++++++++++++++                                   | 30% ~00s             |++++++++++++++++++++                              | 40% ~00s             |+++++++++++++++++++++++++                         | 50% ~00s             |++++++++++++++++++++++++++++++                    | 60% ~00s             |+++++++++++++++++++++++++++++++++++               | 70% ~00s             |++++++++++++++++++++++++++++++++++++++++         | 80% ~00s             |+++++++++++++++++++++++++++++++++++++++++++++    | 90% ~00s             |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed = 00s</div><div class='output co'>#&gt; <span class='message'>goCC</span></div><div class='output co'>#&gt;    |                                                  | 0 % ~calculating     |+++++                                             | 10% ~00s             |++++++++++                                        | 20% ~00s             |+++++++++++++++                                   | 30% ~00s             |++++++++++++++++++++                              | 40% ~00s             |+++++++++++++++++++++++++                         | 50% ~00s             |++++++++++++++++++++++++++++++                    | 60% ~00s             |+++++++++++++++++++++++++++++++++++               | 70% ~00s             |++++++++++++++++++++++++++++++++++++++++         | 80% ~00s             |+++++++++++++++++++++++++++++++++++++++++++++    | 90% ~00s             |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed = 00s</div><div class='output co'>#&gt; <span class='message'>pantherClass</span></div><div class='output co'>#&gt;    |                                                  | 0 % ~calculating     |+++++                                             | 10% ~00s             |++++++++++                                        | 20% ~00s             |+++++++++++++++                                   | 30% ~00s             |++++++++++++++++++++                              | 40% ~00s             |+++++++++++++++++++++++++                         | 50% ~00s             |++++++++++++++++++++++++++++++                    | 60% ~00s             |+++++++++++++++++++++++++++++++++++               | 70% ~00s             |++++++++++++++++++++++++++++++++++++++++         | 80% ~00s             |+++++++++++++++++++++++++++++++++++++++++++++    | 90% ~00s             |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed = 00s</div><div class='output co'>#&gt; <span class='message'>pantherPathway</span></div><div class='output co'>#&gt;    |                                                  | 0 % ~calculating     |+++++                                             | 10% ~00s             |++++++++++                                        | 20% ~00s             |+++++++++++++++                                   | 30% ~00s             |++++++++++++++++++++                              | 40% ~00s             |+++++++++++++++++++++++++                         | 50% ~00s             |++++++++++++++++++++++++++++++                    | 60% ~00s             |+++++++++++++++++++++++++++++++++++               | 70% ~00s             |++++++++++++++++++++++++++++++++++++++++         | 80% ~00s             |+++++++++++++++++++++++++++++++++++++++++++++    | 90% ~00s             |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed = 00s</div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; genes(10): ENSG00000010219 ENSG00000075188 ... ENSG00000197140 ENSG00000213886</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+
+<span class='co'>## Gene2Symbol ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='no'>rse_small</span>)
+<span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 50 rows and 2 columns
+#&gt;                 geneID    geneName
+#&gt;            &lt;character&gt; &lt;character&gt;
+#&gt; gene1  ENSG00000000003      TSPAN6
+#&gt; gene2  ENSG00000000005        TNMD
+#&gt; gene3  ENSG00000000419        DPM1
+#&gt; gene4  ENSG00000000457       SCYL3
+#&gt; gene5  ENSG00000000460    C1orf112
+#&gt; ...                ...         ...
+#&gt; gene46 ENSG00000004059        ARF5
+#&gt; gene47 ENSG00000004139       SARM1
+#&gt; gene48 ENSG00000004142     POLDIP2
+#&gt; gene49 ENSG00000004399      PLXND1
+#&gt; gene50 ENSG00000004455         AK2
+#&gt; 50 genes; 50 symbols</div><div class='input'>
+<span class='co'>## PANTHER ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PANTHER.html'>PANTHER</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'hgnc2ensembl' is deprecated.</span>
+#&gt; <span class='warning'>Use 'HGNC2Ensembl' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; PANTHER 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; organism: Homo sapiens
+#&gt; release: current_release
+#&gt; genes(10): ENSG00000010219 ENSG00000075188 ... ENSG00000197140 ENSG00000213886</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

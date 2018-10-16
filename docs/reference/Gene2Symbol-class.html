@@ -123,7 +123,7 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='gene2symbol.html'>gene2symbol</a>, <a href='makeGene2Symbol.html'>makeGene2Symbol</a>.</p>
+    <div class='dont-index'><p><code><a href='Gene2Symbol.html'>Gene2Symbol()</a></code>, <a href='makeGene2Symbol.html'>makeGene2Symbol</a>.</p>
 <p>Other S4 Classes: <code><a href='EggNOG-class.html'>EggNOG-class</a></code>,
   <code><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez-class</a></code>,
   <code><a href='HGNC2Ensembl-class.html'>HGNC2Ensembl-class</a></code>,
@@ -133,8 +133,11 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gene2symbol.html'>gene2symbol</a></span>(<span class='no'>rse_small</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 50 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='no'>rse_small</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 50 rows and 2 columns
 #&gt;                 geneID    geneName
 #&gt;            &lt;character&gt; &lt;character&gt;
 #&gt; gene1  ENSG00000000003      TSPAN6
@@ -147,7 +150,8 @@
 #&gt; gene47 ENSG00000004139       SARM1
 #&gt; gene48 ENSG00000004142     POLDIP2
 #&gt; gene49 ENSG00000004399      PLXND1
-#&gt; gene50 ENSG00000004455         AK2</div></pre>
+#&gt; gene50 ENSG00000004455         AK2
+#&gt; 50 genes; 50 symbols</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

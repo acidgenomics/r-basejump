@@ -178,7 +178,7 @@ last items to include.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p>head, tail, cat.</p></li>
+<li><p><code>head()</code>, <code>tail()</code>, <code>cat()</code>.</p></li>
 <li><p><code>getMethod("show", "DataTable")</code>.</p></li>
 <li><p><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/show-utils'>S4Vectors::showAsCell</a>.</p></li>
 </ul></div>
@@ -188,31 +188,30 @@ last items to include.</p></td>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>)
 
 <span class='co'>## data.frame ====</span>
-<span class='fu'>headtail</span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/mtcars'>mtcars</a></span>)</div><div class='output co'>#&gt;                mpg cyl ... gear carb
-#&gt; Mazda RX4       21   6 ...    4    4
-#&gt; Mazda RX4 Wag   21   6 ...    4    4
-#&gt; ...            ... ... ...  ...  ...
-#&gt; Maserati Bora   15   8 ...    5    8
-#&gt; Volvo 142E    21.4   4 ...    4    2</div><div class='input'>
+<span class='fu'>headtail</span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/mtcars'>mtcars</a></span>)</div><div class='output co'>#&gt;                mpg cyl │ gear carb
+#&gt; Mazda RX4       21   6 │    4    4
+#&gt; Mazda RX4 Wag   21   6 │    4    4
+#&gt; ─                ─   ─ ┼    ─    ─
+#&gt; Maserati Bora   15   8 │    5    8
+#&gt; Volvo 142E    21.4   4 │    4    2</div><div class='input'><span class='fu'>headtail</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='no'><a href='http://dplyr.tidyverse.org/reference/starwars.html'>starwars</a></span>)</div><div class='output co'>#&gt;             name height │ vehicles starships
+#&gt; 1 Luke Skywalker    172 │       &lt;&gt;        &lt;&gt;
+#&gt; 2          C-3PO    167 │       &lt;&gt;        &lt;&gt;
+#&gt; ─              ─      ─ ┼        ─         ─
+#&gt; 3 Captain Phasma   &lt;NA&gt; │       &lt;&gt;        &lt;&gt;
+#&gt; 4  Padmé Amidala    165 │       &lt;&gt;        &lt;&gt;</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>headtail</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt;        sample1 sample2 ... sample3 sample4
-#&gt; gene1        7       4 ...      14      50
-#&gt; gene2       24       2 ...       4       1
-#&gt; ...        ...     ... ...     ...     ...
-#&gt; gene49       1       1 ...       1       2
-#&gt; gene50       7      14 ...      14       9</div><div class='input'><span class='fu'>headtail</span>(<span class='fu'>colData</span>(<span class='no'>rse_small</span>))</div><div class='output co'>#&gt; <span class='error'>Error in .local(x, ...): ncol(x) &gt;= n * 2L is not TRUE</span></div><div class='input'><span class='fu'>headtail</span>(<span class='fu'>rowData</span>(<span class='no'>rse_small</span>))</div><div class='output co'>#&gt;                 geneID geneName ... broadClass entrezID
-#&gt; gene1  ENSG00000000003   TSPAN6 ...     coding     7105
-#&gt; gene2  ENSG00000000005     TNMD ...     coding    64102
-#&gt; ...                ...      ... ...        ...      ...
-#&gt; gene49 ENSG00000004399   PLXND1 ...     coding    23129
-#&gt; gene50 ENSG00000004455      AK2 ...     coding      204</div><div class='input'>
+<span class='fu'>headtail</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; <span class='message'>Object can't be split into quadrants.</span></div><div class='output co'>#&gt;       sample1 sample2 sample3 sample4
+#&gt; gene1       7       4      14      50
+#&gt; gene2      24       2       4       1
+#&gt; gene3       2       5       1       9
+#&gt; gene4     230     135     111      93</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='fu'>headtail</span>(<span class='no'>sce_small</span>)</div><div class='output co'>#&gt;                 cell001 cell002 ... cell999 cell1000
-#&gt; ENSG00000000003      82      52 ...      48       93
-#&gt; ENSG00000000005       0      99 ...       0      138
-#&gt; ...                 ...     ... ...     ...      ...
-#&gt; ENSG00000008056     423     305 ...     391      487
-#&gt; ENSG00000008083     133     101 ...     133      168</div></pre>
+<span class='fu'>headtail</span>(<span class='no'>sce_small</span>)</div><div class='output co'>#&gt;                 cell001 cell002 │ cell999 cell1000
+#&gt; ENSG00000000003      82      52 │      48       93
+#&gt; ENSG00000000005       0      99 │       0      138
+#&gt; ─                     ─       ─ ┼       ─        ─
+#&gt; ENSG00000008056     423     305 │     391      487
+#&gt; ENSG00000008083     133     101 │     133      168</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
