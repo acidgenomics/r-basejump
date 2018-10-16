@@ -78,9 +78,9 @@ NULL
 #'
 #' @return Named `factor` containing broad class definitions.
 .broadClass <- function(object) {
-    data <- as(object, "tbl_df")
-    assert_are_identical(data[["rowname"]], names(object))
-    rownames <- data[["rowname"]]
+    rownames <- rownames(object)
+    assert_is_character(rownames)
+    assert_is_non_empty(rownames)
 
     # Early return if already defined.
     if ("broadClass" %in% colnames(data)) {
@@ -89,11 +89,14 @@ NULL
         return(broad)
     }
 
+    # Coerce to tibble.
+    data <- as_tibble(object, rownames = NULL)
+
     # Gene name (required).
     assert_is_subset("geneName", colnames(data))
     geneName <- data[["geneName"]]
 
-    # Biotype (optional)
+    # Biotype (optional).
     # Prioritize transcript over gene, if present.
     biotypeCol <- grep(
         pattern = "biotype$",
