@@ -61,7 +61,7 @@ makeGene2SymbolFromGFF <- function(file) {
     message(paste(source, type, "detected."))
 
     # Coerce to tibble.
-    data <- camel(as(gff, "tbl_df"))
+    data <- camel(as_tibble(gff))
 
     # Require `geneID` column.
     assert_is_subset("geneID", colnames(data))
