@@ -42,7 +42,7 @@ makeGene2SymbolFromEnsembl <-
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall(args = list(level = "genes"))
         )
-        gene2symbol(gr)
+        Gene2Symbol(gr)
     }
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), "level")]
@@ -86,7 +86,7 @@ makeGene2SymbolFromGFF <- function(file) {
         }
     }
 
-    gene2symbol(data)
+    Gene2Symbol(data)
 }
 
 

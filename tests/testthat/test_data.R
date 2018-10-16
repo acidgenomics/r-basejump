@@ -37,7 +37,7 @@ test_that("counts", {
 
 # gene2symbol ==================================================================
 test_that("gene2symbol", {
-    object <- gene2symbol(rse_small)
+    object <- Gene2Symbol(rse_small)
     expect_is(object, "DataFrame")
     expect_identical(colnames(object), c("geneID", "geneName"))
     expect_true(hasRownames(object))
@@ -47,7 +47,7 @@ test_that("gene2symbol : No mappings", {
     object <- rse_small
     mcols(rowRanges(object))[["geneName"]] <- NULL
     expect_error(
-        object = gene2symbol(object),
+        object = Gene2Symbol(object),
         regexp = "Object does not contain gene-to-symbol mappings"
     )
 })

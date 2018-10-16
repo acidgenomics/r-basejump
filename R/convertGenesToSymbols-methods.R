@@ -18,12 +18,12 @@
 #' data(rse_small)
 #' object <- rse_small
 #'
-#' gene2symbol <- gene2symbol(object)
-#' print(gene2symbol)
-#' genes <- head(gene2symbol[["geneID"]])
+#' g2s <- Gene2Symbol(object)
+#' print(g2s)
+#' genes <- head(g2s[["geneID"]])
 #'
 #' ## character ====
-#' x <- convertGenesToSymbols(genes, gene2symbol = gene2symbol)
+#' x <- convertGenesToSymbols(genes, gene2symbol = g2s)
 #' print(x)
 #'
 #' ## matrix ====
@@ -36,7 +36,7 @@
 #'     dimnames = list(genes, samples)
 #' )
 #' print(counts)
-#' x <- convertGenesToSymbols(counts, gene2symbol = gene2symbol)
+#' x <- convertGenesToSymbols(counts, gene2symbol = g2s)
 #' print(x)
 #'
 #' ## SummarizedExperiment ====
@@ -128,7 +128,7 @@ formals(.convertGenesToSymbols.matrix) <- f
 .convertGenesToSymbols.SE <-  # nolint
     function(object) {
         validObject(object)
-        g2s <- gene2symbol(object)
+        g2s <- Gene2Symbol(object)
         symbols <- g2s[["geneName"]]
         assert_has_no_duplicates(symbols)
         # Update the object rownames.
@@ -189,7 +189,7 @@ setMethod(
 .convertSymbolsToGenes.SE <-  # nolint
     function(object) {
         validObject(object)
-        g2s <- gene2symbol(object)
+        g2s <- Gene2Symbol(object)
         assert_are_identical(
             x = rownames(object),
             y = g2s[["geneName"]]

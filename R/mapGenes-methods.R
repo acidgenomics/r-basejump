@@ -123,7 +123,7 @@ NULL
 .mapGenesToRownames.SE <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        g2s <- gene2symbol(object)
+        g2s <- Gene2Symbol(object)
         assert_are_identical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToRownames,
@@ -180,7 +180,7 @@ setMethod(
 .mapGenesToIDs.SE <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        g2s <- gene2symbol(object)
+        g2s <- Gene2Symbol(object)
         assert_are_identical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToIDs,
@@ -237,7 +237,7 @@ setMethod(
 .mapGenesToSymbols.SE <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        g2s <- gene2symbol(object)
+        g2s <- Gene2Symbol(object)
         assert_are_identical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToSymbols,

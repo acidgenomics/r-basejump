@@ -188,7 +188,7 @@ NULL
         # Ensure rownames are converted to gene names (symbols).
         if (isTRUE(human)) {
             files[["gene2symbol"]] <- export(
-                x = gene2symbol(x),
+                x = Gene2Symbol(x),
                 file = file.path(dir, paste0("gene2symbol", ext))
             )
             x <- convertGenesToSymbols(x)
