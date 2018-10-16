@@ -22,9 +22,9 @@ sanitizeRowData <- function(object) {
     assert_is_any_of(object, classes = c("GRanges", "DataFrame"))
     validObject(object)
 
-    # Coerce to tibble. We'll return as `DataFrame`.
+    # Coerce to S3 data frame.
     # This step helps coerce nested S4 data to atomic columns.
-    data <- as(object, "tbl_df")
+    data <- as.data.frame(object)
 
     # Enforce camel case.
     data <- camel(data)
