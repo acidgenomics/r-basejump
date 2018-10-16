@@ -136,7 +136,7 @@ setMethod(
         data <- zerosVsDepth(object, assay = assay)
 
         p <- ggplot(
-            data = as(data, "tbl_df"),
+            data = as_tibble(data),
             mapping = aes(
                 x = !!sym("depth"),
                 y = !!sym("dropout"),
