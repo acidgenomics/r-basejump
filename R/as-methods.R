@@ -18,7 +18,7 @@
 #' Coerce an object to a `tibble` (`tbl_df`) data frame using either S3 or S4
 #' methods:
 #'
-#' - S3: `as_tibble(x)` (or `as.tibble()` alias).
+#' - S3: `as_tibble(x)` (or `as_tibble()` alias).
 #' - S4: `as(object, Class = "tbl_df")`.
 #'
 #' Tibbles don't support row name assignment, so here we are ensuring they are
