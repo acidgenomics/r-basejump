@@ -55,12 +55,10 @@ NULL
         }
         assert_is_subset(biotypeCol, colnames(rowData))
 
-        # Coerce the row data to a tibble containing our column of interest.
-        rowData <- rowData[, biotypeCol, drop = FALSE] %>%
-            as("tbl_df")
-
         # Get the top biotypes from the row data.
         biotypes <- rowData %>%
+            as_tibble() %>%
+            select(!!sym(biotypeCol)) %>%
             group_by(!!sym(biotypeCol)) %>%
             summarize(n = n()) %>%
             # Require at least 10 genes.
@@ -99,7 +97,10 @@ NULL
         data <- data %>%
             # Drop zero counts, which is useful when log scaling the axis.
             filter(!!sym("counts") > 0L) %>%
-            left_join(rowData, by = "rowname") %>%
+            left_join(
+                as_tibble(rowData, rownames = "rowname"),
+                by = "rowname"
+            ) %>%
             filter(!!sym(biotypeCol) %in% !!biotypes) %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID"))) %>%
             left_join(sampleData, by = "sampleID") %>%
@@ -158,10 +159,10 @@ NULL
         rowData <- rowData(object)
         biotypeCol <- "broadClass"
         assert_is_subset(biotypeCol, colnames(rowData))
-        rowData <- rowData[, biotypeCol, drop = FALSE] %>%
-            as("tbl_df")
 
         biotypes <- rowData %>%
+            as_tibble() %>%
+            select(!!sym(biotypeCol)) %>%
             group_by(!!sym(biotypeCol)) %>%
             summarize(n = n()) %>%
             # Require at least 10 genes.
@@ -196,7 +197,10 @@ NULL
 
         data <- data %>%
             filter(!!sym("counts") > 0L) %>%
-            left_join(rowData, by = "rowname") %>%
+            left_join(
+                as_tibble(rowData, rownames = "rowname"),
+                by = "rowname"
+            ) %>%
             filter(!!sym(biotypeCol) %in% !!biotypes) %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID"))) %>%
             left_join(sampleData, by = "sampleID")
