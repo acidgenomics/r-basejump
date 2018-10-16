@@ -391,11 +391,11 @@ makeGRangesFromEnsembl <- function(
     )
 
     message(paste(
-        paste(li, "AnnotationHub:", deparse(metadata[["AnnotationHubID"]])),
-        paste(li, "Organism:", deparse(metadata[["organism"]])),
-        paste(li, "Build:", deparse(metadata[["build"]])),
-        paste(li, "Release:", deparse(metadata[["release"]])),
-        paste(li, "Level:", deparse(metadata[["level"]])),
+        paste(li, "AnnotationHub:", metadata[["annotationHub"]]),
+        paste(li, "Organism:", metadata[["organism"]]),
+        paste(li, "Build:", metadata[["build"]]),
+        paste(li, "Release:", metadata[["release"]]),
+        paste(li, "Level:", metadata[["level"]]),
         sep = "\n"
     ))
 
