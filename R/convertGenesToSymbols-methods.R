@@ -52,7 +52,6 @@ NULL
 # convertGenesToSymbols ========================================================
 .convertGenesToSymbols.character <-  # nolint
     function(
-        # Setting formals below.
         object,
         gene2symbol = NULL,
         organism = NULL

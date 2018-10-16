@@ -42,7 +42,7 @@ makeTx2GeneFromEnsembl <-
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall(args = list(level = "transcripts"))
         )
-        tx2gene(gr)
+        Tx2Gene(gr)
     }
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level", "metadata", "..."))]
@@ -80,7 +80,7 @@ makeTx2GeneFromGFF <- function(file) {
         )
     }
 
-    tx2gene(data)
+    Tx2Gene(data)
 }
 
 
