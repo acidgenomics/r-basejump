@@ -5,8 +5,11 @@
 #' @keywords internal
 #'
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
+#'
+#' @importMethodsFrom BiocGenerics as.data.frame
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
+#'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom assertive.base assert_all_are_not_na assert_all_are_true
 #'   assert_are_identical assert_is_identical_to_na is_not_na
@@ -37,7 +40,7 @@
 #'   assert_is_environment assert_is_factor assert_is_function assert_is_integer
 #'   assert_is_list assert_is_matrix assert_is_name assert_is_numeric
 #'   assert_is_symbol assert_is_tbl_df is_a_number is_a_string
-#' @importFrom BiocGenerics do.call lapply match
+#' @importFrom BiocGenerics as.data.frame as.list do.call lapply match setdiff
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
 #' @importFrom crayon bold italic
@@ -73,8 +76,8 @@
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors %in% aggregate as.data.frame as.list complete.cases cor
-#'   head mcols mcols<- metadata metadata<- na.omit setdiff SimpleList tail
+#' @importFrom S4Vectors %in% aggregate complete.cases cor head mcols mcols<-
+#'   metadata metadata<- na.omit SimpleList tail
 #' @importFrom sessioninfo session_info
 #' @importFrom SingleCellExperiment isSpike<- SingleCellExperiment reducedDims
 #'   reducedDimNames spikeNames
