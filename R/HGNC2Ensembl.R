@@ -27,7 +27,7 @@ HGNC2Ensembl <- function(.test = FALSE) {
         col_types = cols(),
         progress = FALSE
     )
-    data <- as(data, "tbl_df")
+    data <- as.data.frame(data)
     data <- camel(data)
     data <- data[, c("hgncID", "ensemblGeneID")]
     colnames(data)[[2L]] <- "geneID"
