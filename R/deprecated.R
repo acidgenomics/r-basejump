@@ -312,6 +312,7 @@ broadClass <- function(object, ...) {
 #' @usage NULL
 #' @export
 eggnog <- function(...) {
+    .Deprecated("EggNOG")
     EggNOG(...)
 }
 
@@ -319,6 +320,7 @@ eggnog <- function(...) {
 #' @usage NULL
 #' @export
 ensembl2entrez <- function(...) {
+    .Deprecated("Ensembl2Entrez")
     Ensembl2Entrez(...)
 }
 
@@ -340,13 +342,14 @@ flatFiles <- function(object) {
 #' @usage NULL
 #' @export
 gene2symbol <- function(...) {
+    .Deprecated("Gene2Symbol")
     Gene2Symbol(...)
 }
 
 #' @rdname deprecated
 #' @export
 grepString <- function(...) {
-    .Defunct("")
+    .Defunct()
 }
 
 #' @rdname deprecated
@@ -360,6 +363,7 @@ hgnc2gene <- function(...) {
 #' @usage NULL
 #' @export
 hgnc2ensembl <- function(...) {
+    .Deprecated("HGNC2Ensembl")
     HGNC2Ensembl(...)
 }
 
@@ -430,6 +434,7 @@ mgi2gene <- function(...) {
 #' @usage NULL
 #' @export
 mgi2ensembl <- function(...) {
+    .Deprecated("MGI2Ensembl")
     MGI2Ensembl(...)
 }
 
@@ -437,6 +442,7 @@ mgi2ensembl <- function(...) {
 #' @usage NULL
 #' @export
 panther <- function(...) {
+    .Deprecated("PANTHER")
     PANTHER(...)
 }
 
@@ -491,6 +497,7 @@ setArgsToDoCall <- function(...) {
 #' @usage NULL
 #' @export
 tx2gene <- function(...) {
+    .Deprecated("Tx2Gene")
     Tx2Gene(...)
 }
 
