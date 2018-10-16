@@ -4,23 +4,31 @@
 \name{as}
 \alias{as}
 \alias{coerce}
+\alias{as.data.frame,sparseMatrix-method}
 \alias{coerce,sparseMatrix,data.frame-method}
 \alias{coerce,sparseMatrix,DataFrame-method}
+\alias{coerce,GRanges,tbl_df-method}
 \alias{coerceS4ToList}
-\alias{coerce,SummarizedExperiment,list-method}
 \alias{as.list,SummarizedExperiment-method}
+\alias{coerce,SummarizedExperiment,list-method}
+\alias{coerce,DataFrame,tbl_df-method}
 \title{Force an Object to Belong to a Class}
 \usage{
+\S4method{as.data.frame}{sparseMatrix}(x, row.names = NULL,
+  optional = FALSE, ...)
+
 coerceS4ToList(from)
 
 \S4method{as.list}{SummarizedExperiment}(x)
 }
 \arguments{
+\item{x}{Object.}
+
+\item{...}{Additional arguments.}
+
 \item{from}{The classes between which the coerce methods
     \code{def} and \code{replace} perform coercion.
   }
-
-\item{x}{Object.}
 }
 \value{
 Object of new class.
@@ -36,6 +44,32 @@ storage. Here we are providing the \code{\link[=coerceS4ToList]{coerceS4ToList()
 consistently coerces the slots in any S4 to a standard \code{list}. Additionally,
 here we have improved support for \code{SummarizedExperiment} to \code{list} coercion,
 returning the slots as a \code{list}.
+}
+
+\section{tibble}{
+
+
+Coerce an object to a \code{tibble} (\code{tbl_df}) data frame using either S3 or S4
+methods:
+\itemize{
+\item S3: \code{as_tibble(x)} (or \code{as_tibble()} alias).
+\item S4: \code{as(object, Class = "tbl_df")}.
+}
+
+Tibbles don't support row name assignment, so here we are ensuring they are
+kept by moving them to a column named \code{rowname} by default. This helps avoid
+downstream unexpected data loss when using the dplyr chain of single table
+verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or \code{\link[dplyr:mutate]{dplyr::mutate()}}.
+
+This behavior can be overriden in the S3 method by setting \code{rowname = NULL}
+instead, which is the current default in the tibble package. The S4 coercion
+method doesn't support arguments, and therefore always attempts to move
+rownames automatically, if defined.
+
+Conversely, when coercing a \code{tibble} back to an S4 \code{DataFrame}, our
+\code{as(tbl_df, Class = "DataFrame")} method looks for the \code{rowname} column and
+will attempt to move it back to \code{\link[=rownames]{rownames()}} automatically, unless there are
+duplicates present.
 }
 
 \section{Description}{
