@@ -1,7 +1,3 @@
-# TODO Add plurarlized acronyms (e.g. "UMIs") to unit tests.
-
-
-
 #' Make Syntactically Valid Names
 #'
 #' For `atomic` vectors, these functions will sanitize the values. Otherwise,
