@@ -8,7 +8,6 @@
 \alias{sanitizeNA,factor-method}
 \alias{sanitizeNA,data.frame-method}
 \alias{sanitizeNA,DataFrame-method}
-\alias{sanitizeNA,tbl_df-method}
 \title{Sanitize \code{NA} Values}
 \usage{
 sanitizeNA(object, ...)
@@ -22,8 +21,6 @@ sanitizeNA(object, ...)
 \S4method{sanitizeNA}{data.frame}(object)
 
 \S4method{sanitizeNA}{DataFrame}(object)
-
-\S4method{sanitizeNA}{tbl_df}(object)
 }
 \arguments{
 \item{object}{Object.}
