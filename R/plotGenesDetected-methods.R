@@ -2,7 +2,6 @@
 #'
 #' @name plotGenesDetected
 #' @family Plots
-#' @export
 #'
 #' @inheritParams general
 #'

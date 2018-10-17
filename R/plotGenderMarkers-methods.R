@@ -8,7 +8,6 @@
 #' @name plotGenderMarkers
 #' @family Plots
 #' @include plotGene-methods.R
-#' @export
 #'
 #' @inheritParams plotGene
 #' @inheritParams general

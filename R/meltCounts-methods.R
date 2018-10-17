@@ -2,7 +2,6 @@
 #'
 #' @name meltCounts
 #' @family SummarizedExperiment Functions
-#' @export
 #'
 #' @inheritParams general
 #' @param nonzeroGenes `boolean`. Return only non-zero genes.

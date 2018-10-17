@@ -6,7 +6,6 @@
 #'
 #' @name uniteInterestingGroups
 #' @family Metadata Functions
-#' @export
 #'
 #' @inheritParams general
 #' @param object Object containing column data that defines interesting groups.

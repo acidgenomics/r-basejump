@@ -5,7 +5,6 @@
 #' sanitize data imported from Microsoft Excel.
 #'
 #' @name sanitizePercent
-#' @export
 #'
 #' @inheritParams general
 #'

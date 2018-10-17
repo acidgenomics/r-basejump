@@ -1,7 +1,6 @@
 #' Convert Sample Identifiers to Names
 #'
 #' @name convertSampleIDsToNames
-#' @export
 #'
 #' @inheritParams general
 #'

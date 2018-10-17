@@ -1,3 +1,10 @@
+#' @rdname combine
+#' @importFrom BiocGenerics combine
+#' @export
+combine <- BiocGenerics::combine
+
+
+
 #' Combine Multiple Objects
 #'
 #' @note We're attempting to make this as strict as possible, requiring:
@@ -9,8 +16,6 @@
 #' - Specific metadata must be identical (see `metadata` parameter).
 #'
 #' @name combine
-#' @importFrom BiocGenerics combine
-#' @export
 #'
 #' @inheritParams BiocGenerics::combine
 #'
