@@ -48,12 +48,12 @@ slot:
 }
 }
 \examples{
+data(sce_small)
 object <- sce_small
 assays <- assays(object)
 rowRanges <- rowRanges(object)
 colData <- colData(object)
 metadata <- metadata(object)
-
 x <- makeSingleCellExperiment(
     assays = assays,
     rowRanges = rowRanges,
