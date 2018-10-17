@@ -16,15 +16,11 @@ convertGenesToSymbols(object, ...)
 
 convertSymbolsToGenes(object, ...)
 
-\S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
-  organism = NULL, build = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{character}(object, gene2symbol)
 
-\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
-  organism = NULL, build = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol)
 
-\S4method{convertGenesToSymbols}{sparseMatrix}(object,
-  gene2symbol = NULL, organism = NULL, build = NULL,
-  release = NULL)
+\S4method{convertGenesToSymbols}{sparseMatrix}(object, gene2symbol)
 
 \S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 
@@ -35,17 +31,7 @@ convertSymbolsToGenes(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{gene2symbol}{\code{Gene2Symbol} or \code{NULL}. Gene-to-symbol mappings. If set
-\code{NULL}, the function will attempt to download the mappings from Ensembl
-automatically.}
-
-\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
-
-\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
-"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
-
-\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
-set \code{NULL}, defaults to the most recent release available.}
+\item{gene2symbol}{\code{Gene2Symbol}. Gene-to-symbol mappings.}
 }
 \value{
 Object with gene IDs converted to names (symbols).
@@ -60,6 +46,7 @@ object <- rse_small
 g2s <- Gene2Symbol(object)
 print(g2s)
 genes <- head(g2s[["geneID"]])
+print(genes)
 
 ## character ====
 x <- convertGenesToSymbols(genes, gene2symbol = g2s)
