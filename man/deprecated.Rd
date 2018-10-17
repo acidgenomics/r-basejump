@@ -26,10 +26,14 @@
 \alias{assertIsAHeaderLevel}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
+\alias{eggnog}
+\alias{ensembl2entrez}
 \alias{fixNA}
 \alias{flatFiles}
+\alias{gene2symbol}
 \alias{grepString}
 \alias{hgnc2gene}
+\alias{hgnc2ensembl}
 \alias{initializeDirectory}
 \alias{kables}
 \alias{makeGene2symbolFromEnsembl}
@@ -39,11 +43,14 @@
 \alias{makeTx2geneFromGFF}
 \alias{makeTx2geneFromGTF}
 \alias{mgi2gene}
+\alias{mgi2ensembl}
+\alias{panther}
 \alias{readFileByExtension}
 \alias{readGFF}
 \alias{readGTF}
 \alias{readJSON}
 \alias{readYAML}
+\alias{tx2gene}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -94,13 +101,21 @@ assertIsCharacterOrNULL(object, ...)
 
 assertIsDataFrameOrNULL(object, ...)
 
+eggnog(...)
+
+ensembl2entrez(...)
+
 fixNA(...)
 
 flatFiles(object)
 
+gene2symbol(...)
+
 grepString(...)
 
 hgnc2gene(...)
+
+hgnc2ensembl(...)
 
 initializeDirectory(...)
 
@@ -120,6 +135,10 @@ makeTx2geneFromGTF(...)
 
 mgi2gene(...)
 
+mgi2ensembl(...)
+
+panther(...)
+
 readFileByExtension(...)
 
 readGFF(...)
@@ -129,6 +148,8 @@ readGTF(...)
 readJSON(...)
 
 readYAML(...)
+
+tx2gene(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
