@@ -8,13 +8,13 @@
 #' @return `HGNC2Ensembl`.
 #'
 #' @examples
-#' x <- HGNC2Ensembl(.test = TRUE)
+#' options(basejump.test = TRUE)
+#' x <- HGNC2Ensembl()
 #' print(x)
-HGNC2Ensembl <- function(.test = FALSE) {
+HGNC2Ensembl <- function() {
     stopifnot(has_internet())
-    assert_is_a_bool(.test)
 
-    if (isTRUE(.test)) {
+    if (isTRUE(getOption("basejump.test"))) {
         file <- file.path(basejumpCacheURL, "hgnc.txt.gz")
     } else {
         file <- .hgncURL

@@ -53,6 +53,4 @@
 #' @param url `string`. Uniform Resource Locator (URL). HTTP or FTP address.
 #' @param verbose `boolean`. Run the function with verbose messages? It is only
 #'   recommended to enable this when debugging.
-#'
-#' @param .test `boolean`. *For unit testing only*.
 NULL

@@ -5,11 +5,9 @@
 \alias{mgi2ensembl}
 \title{MGI-to-Ensembl Gene Identifier Mappings}
 \usage{
-MGI2Ensembl(.test = FALSE)
+MGI2Ensembl()
 }
 \arguments{
-\item{.test}{\code{boolean}. \emph{For unit testing only}.}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -19,7 +17,8 @@ MGI2Ensembl(.test = FALSE)
 MGI-to-Ensembl Gene Identifier Mappings
 }
 \examples{
-x <- MGI2Ensembl(.test = TRUE)
+options(basejump.test = TRUE)
+x <- MGI2Ensembl()
 print(x)
 }
 \seealso{

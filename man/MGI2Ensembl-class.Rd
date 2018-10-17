@@ -11,7 +11,8 @@ Contains a \code{DataFrame} with \code{mgiID} and \code{geneID} columns.
 MGI-to-Ensembl Gene Identifier Mappings
 }
 \examples{
-x <- MGI2Ensembl(.test = TRUE)
+options(basejump.test = TRUE)
+x <- MGI2Ensembl()
 print(x)
 }
 \seealso{

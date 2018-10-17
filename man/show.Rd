@@ -12,6 +12,8 @@
 \alias{show,Tx2Gene-method}
 \title{Show an Object}
 \usage{
+show(object)
+
 \S4method{show}{EggNOG}(object)
 
 \S4method{show}{Ensembl2Entrez}(object)
@@ -56,13 +58,14 @@ the discussion in \code{\link{setIs}} for the general concept.
 }
 \examples{
 data(rse_small)
+options(basejump.test = TRUE)
 
 ## Gene2Symbol ====
 x <- Gene2Symbol(rse_small)
 show(x)
 
 ## PANTHER ====
-x <- PANTHER("Homo sapiens", progress = FALSE, .test = TRUE)
+x <- PANTHER("Homo sapiens", progress = FALSE)
 show(x)
 }
 \seealso{
