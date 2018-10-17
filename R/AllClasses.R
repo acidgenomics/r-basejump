@@ -33,7 +33,7 @@
 #'
 #' The [EggNOG README file](http://eggnogdb.embl.de/download/latest/README.txt)
 #' contains additional useful reference information.
-setClass(Class = "EggNOG", contains = "SimpleList")
+setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
 
 setValidity(
     Class = "EggNOG",
