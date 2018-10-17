@@ -460,7 +460,7 @@ makeGRangesFromEnsembl <- function(
         )
         edb <- .getEnsDbFromAnnotationHub(id = id)
     }
-    gr <- makeGRangesFromEnsDb(edb = edb, level = level)
+    gr <- makeGRangesFromEnsDb(object = edb, level = level)
     metadata(gr)[["id"]] <- id
     gr
 }
