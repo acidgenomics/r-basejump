@@ -7,11 +7,12 @@
 \alias{as.data.frame,sparseMatrix-method}
 \alias{coerce,sparseMatrix,data.frame-method}
 \alias{coerce,sparseMatrix,DataFrame-method}
-\alias{coerce,GRanges,tbl_df-method}
+\alias{coerce,tbl_df,DataFrame-method}
 \alias{coerceS4ToList}
 \alias{as.list,SummarizedExperiment-method}
 \alias{coerce,SummarizedExperiment,list-method}
 \alias{coerce,DataFrame,tbl_df-method}
+\alias{coerce,GRanges,tbl_df-method}
 \title{Force an Object to Belong to a Class}
 \usage{
 \S4method{as.data.frame}{sparseMatrix}(x, row.names = NULL,
