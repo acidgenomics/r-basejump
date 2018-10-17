@@ -547,7 +547,7 @@ context("Annotations : Databases")
 
 test_that("EggNOG", {
     expect_is(
-        object = EggNOG(.test = TRUE),
+        object = EggNOG(),
         class = "EggNOG"
     )
 })
@@ -555,7 +555,7 @@ test_that("EggNOG", {
 # TODO Add coverage for all supported organisms.
 test_that("geneSynonyms", {
     expect_is(
-        object = geneSynonyms(organism = "Homo sapiens", .test = TRUE),
+        object = geneSynonyms(organism = "Homo sapiens"),
         class = "grouped_df"
     )
 })
@@ -563,7 +563,7 @@ test_that("geneSynonyms", {
 with_parameters_test_that(
     "PANTHER", {
         invisible(capture.output(
-            object <- PANTHER(organism, .test = TRUE)
+            object <- PANTHER(organism)
         ))
         expect_is(object, "PANTHER")
     },

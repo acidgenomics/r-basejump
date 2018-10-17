@@ -11,7 +11,8 @@ Contains a \code{DataFrame} with \code{hgncID} and \code{geneID} columns.
 HGNC-to-Ensembl Gene Identifier Mappings
 }
 \examples{
-x <- HGNC2Ensembl(.test = TRUE)
+options(basejump.test = TRUE)
+x <- HGNC2Ensembl()
 print(x)
 }
 \seealso{

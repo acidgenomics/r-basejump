@@ -5,7 +5,7 @@
 \alias{panther}
 \title{PANTHER Database Annotations}
 \usage{
-PANTHER(organism, release = NULL, progress = TRUE, .test = FALSE)
+PANTHER(organism, release = NULL, progress = TRUE)
 }
 \arguments{
 \item{organism}{\code{string}. Full Latin organism name. Currently supported
@@ -18,8 +18,6 @@ release versions available from the FTP server (e.g. \code{"13.0"}).}
 
 \item{progress}{\code{boolean}. Use \code{\link[=pblapply]{pblapply()}} internally to show progress.}
 
-\item{.test}{\code{boolean}. \emph{For unit testing only}.}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -30,7 +28,8 @@ release versions available from the FTP server (e.g. \code{"13.0"}).}
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \examples{
-x <- PANTHER("Homo sapiens", progress = FALSE, .test = TRUE)
+options(basejump.test = TRUE)
+x <- PANTHER("Homo sapiens", progress = FALSE)
 summary(x)
 }
 \seealso{

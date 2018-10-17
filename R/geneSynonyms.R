@@ -15,15 +15,15 @@
 #' @return `grouped_df`. Grouped by `geneID` column.
 #'
 #' @examples
-#' x <- geneSynonyms(organism = "Homo sapiens", .test = TRUE)
+#' options(basejump.test = TRUE)
+#' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
-geneSynonyms <- function(organism, .test = FALSE) {
+geneSynonyms <- function(organism) {
     stopifnot(has_internet())
     organism <- match.arg(
         arg = organism,
         choices = .geneSynonymsOrganisms
     )
-    assert_is_a_bool(.test)
 
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
@@ -35,7 +35,7 @@ geneSynonyms <- function(organism, .test = FALSE) {
 
     genome <- c(kingdom = kingdom, species = species)
 
-    if (isTRUE(.test)) {
+    if (isTRUE(getOption("basejump.test"))) {
         stopifnot(organism == "Homo sapiens")
         file <- file.path(
             basejumpCacheURL,

@@ -5,11 +5,9 @@
 \alias{eggnog}
 \title{EggNOG Database Annotations}
 \usage{
-EggNOG(.test = FALSE)
+EggNOG()
 }
 \arguments{
-\item{.test}{\code{boolean}. \emph{For unit testing only}.}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -24,7 +22,8 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
 \strong{O}rthologous \strong{G}roups.
 }
 \examples{
-x <- EggNOG(.test = TRUE)
+options(basejump.test = TRUE)
+x <- EggNOG()
 print(x)
 }
 \seealso{

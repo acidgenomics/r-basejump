@@ -24,7 +24,8 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
 \strong{O}rthologous \strong{G}roups.
 }
 \examples{
-x <- EggNOG(.test = TRUE)
+options(basejump.test = TRUE)
+x <- EggNOG()
 print(x)
 }
 \seealso{

@@ -4,13 +4,11 @@
 \alias{geneSynonyms}
 \title{Gene Synonyms}
 \usage{
-geneSynonyms(organism, .test = FALSE)
+geneSynonyms(organism)
 }
 \arguments{
 \item{organism}{\code{string}. Supported organisms: \emph{Homo sapiens},
 \emph{Mus musculus}, \emph{Drosophila melanogaster}.}
-
-\item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
 \code{grouped_df}. Grouped by \code{geneID} column.
@@ -23,7 +21,8 @@ Synonym support for \emph{Caenorhabditis elegans} is poor on NCBI.
 Use the wormbase package instead.
 }
 \examples{
-x <- geneSynonyms(organism = "Homo sapiens", .test = TRUE)
+options(basejump.test = TRUE)
+x <- geneSynonyms(organism = "Homo sapiens")
 print(x)
 }
 \seealso{

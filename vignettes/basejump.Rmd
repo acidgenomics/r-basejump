@@ -28,6 +28,7 @@ abstract: >
 
 ```{r setup, include=FALSE, message=FALSE}
 library(basejump)
+options(basejump.test = TRUE)
 ggplot2::theme_set(theme_paperwhite())
 knitr::opts_chunk$set(message = FALSE)
 data(rse_small)
@@ -87,8 +88,8 @@ By default, the function will use the latest release version available from [Ann
 ```{r}
 grch38 <- makeGRangesFromEnsembl("Homo sapiens")
 summary(grch38)
-glimpse(grch38)
 head(names(grch38))
+names(metadata(grch38))
 ```
 
 Data inside a `GRanges` object can be accessed with a number of functions defined in the [GenomeInfoDb][] package.
@@ -115,54 +116,41 @@ Gene metadata is contained in the `mcols` slot of the object, using a `DataFrame
 
 ```{r}
 S4Vectors::mcols(grch38) %>% colnames()
-S4Vectors::mcols(grch38) %>% glimpse()
+S4Vectors::mcols(grch38) %>% lapply(., head)
 ```
 
 Transcript-level annotations are also supported, using the `level = "transcripts"` argument.
 
-```{r}
-transcripts <- makeGRangesFromEnsembl(
-    organism = "Homo sapiens",
-    level = "transcripts"
-)
-summary(transcripts)
-S4Vectors::mcols(transcripts) %>% glimpse()
+```{r, eval=FALSE}
+transcripts <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
 ```
 
 ### Versioned releases
 
 Versioned releases are supported by the "`release`" argument, which currently supports back to [Ensembl][] 87. If an older [Ensembl][] release is required, resort to using a [GTF][]/[GFF][] file or browse the [Bioconductor][] website to see if a suitable annotation database package is available.
 
-```{r}
-grch38_90 <- makeGRangesFromEnsembl(
-    organism = "Homo sapiens",
-    release = 90
-)
-summary(grch38_90)
-GenomeInfoDb::seqinfo(grch38_90)
+```{r, eval=FALSE}
+grch38_90 <- makeGRangesFromEnsembl("Homo sapiens", release = 90)
 ```
 
 ### GRCh37
 
 The legacy [Ensembl GRCh37 genome build][GRCh37] (release 75; also known as [UCSC hg19][hg19]) is also supported, but is no longer recommended for use in new analyses. Internally, support for [GRCh37][] is provided by the [EnsDb.Hsapiens.v75][] annotation database package.
 
-```{r}
-grch37 <- makeGRangesFromEnsembl(
-    organism = "Homo sapiens",
-    build = "GRCh37"
-)
-summary(grch37)
-GenomeInfoDb::seqinfo(grch37)
+```{r, eval=FALSE}
+grch37 <- makeGRangesFromEnsembl("Homo sapiens", build = "GRCh37")
 ```
 
 ## Gene mapping functions
 
 Gene-to-symbol and transcript-to-gene mappings can be easily acquired with the `gene2symbol()` and `tx2gene()` functions. Both of these functions return a `data.frame`.
 
-```{r, message=FALSE}
+```{r}
 gene2symbol <- makeGene2SymbolFromEnsembl("Homo sapiens")
 print(gene2symbol)
+```
 
+```{r}
 tx2gene <- makeTx2GeneFromEnsembl("Homo sapiens")
 print(tx2gene)
 ```
@@ -183,7 +171,7 @@ gtf_file <- paste(
     "Homo_sapiens.GRCh38.92.gtf.gz",
     sep = "/"
 )
-grch38 <- makeGRangesFromGFF(gtf_file)
+grch38_92 <- makeGRangesFromGFF(gtf_file)
 ```
 
 ### GFF3
@@ -198,7 +186,7 @@ gff_file <- paste(
     "Homo_sapiens.GRCh38.92.gff3.gz",
     sep = "/"
 )
-grch38 <- makeGRangesFromGFF(gff_file)
+grch38_92 <- makeGRangesFromGFF(gff_file)
 ```
 
 ## Gene interconversion functions
@@ -229,28 +217,28 @@ In addition to interfacing with [Ensembl][], [basejump][] exports a number of ut
 ### HGNC
 
 ```{r}
-hgnc2gene <- hgnc2gene(.test = TRUE)
+hgnc2gene <- HGNC2Ensembl()
 summary(hgnc2gene)
 ```
 
 ### MGI
 
 ```{r}
-mgi2ensembl <- mgi2ensembl(.test = TRUE)
+mgi2ensembl <- MGI2Ensembl()
 summary(mgi2ensembl)
 ```
 
 ### EggNOG
 
 ```{r}
-eggnog <- eggnog(.test = TRUE)
+eggnog <- EggNOG()
 summary(eggnog)
 ```
 
 ### PANTHER
 
 ```{r}
-panther <- panther(organism = "Homo sapiens", .test = TRUE)
+panther <- PANTHER(organism = "Homo sapiens")
 summary(panther)
 ```
 
