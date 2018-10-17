@@ -6,6 +6,7 @@
 #' @export
 #'
 #' @examples
+#' data(rse_small)
 #' checkClasses(
 #'     object = metadata(rse_small),
 #'     expected = list(
