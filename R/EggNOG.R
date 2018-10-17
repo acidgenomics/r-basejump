@@ -8,12 +8,12 @@
 #' @return `EggNOG`.
 #'
 #' @examples
-#' x <- EggNOG(.test = TRUE)
+#' options(basejump.test = TRUE)
+#' x <- EggNOG()
 #' print(x)
-EggNOG <- function(.test = FALSE) {
+EggNOG <- function() {
     stopifnot(has_internet())
-    assert_is_a_bool(.test)
-    if (isTRUE(.test)) {
+    if (isTRUE(getOption("basejump.test"))) {
         categoriesFile <- file.path(basejumpCacheURL, "cog.txt")
         eunogFile <- file.path(basejumpCacheURL, "eunog.tsv.gz")
         nogFile <- file.path(basejumpCacheURL, "nog.tsv.gz")

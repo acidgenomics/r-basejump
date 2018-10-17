@@ -3,9 +3,14 @@
 \docType{methods}
 \name{sampleNames}
 \alias{sampleNames}
+\alias{sampleNames<-}
 \alias{sampleNames<-,SummarizedExperiment,character-method}
 \title{Sample Names}
 \usage{
+sampleNames(object)
+
+sampleNames(object) <- value
+
 \S4method{sampleNames}{SummarizedExperiment,character}(object) <- value
 }
 \arguments{

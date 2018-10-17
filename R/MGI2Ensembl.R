@@ -8,13 +8,13 @@
 #' @return `MGI2Ensembl`.
 #'
 #' @examples
-#' x <- MGI2Ensembl(.test = TRUE)
+#' options(basejump.test = TRUE)
+#' x <- MGI2Ensembl()
 #' print(x)
-MGI2Ensembl <- function(.test = FALSE) {
+MGI2Ensembl <- function() {
     stopifnot(has_internet())
-    assert_is_a_bool(.test)
 
-    if (isTRUE(.test)) {
+    if (isTRUE(getOption("basejump.test"))) {
         file <- file.path(basejumpCacheURL, "mgi.rpt.gz")
     } else {
         file <- .mgiURL

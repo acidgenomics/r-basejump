@@ -1,3 +1,4 @@
+options(basejump.test = TRUE)
 mat <- matrix(
     data = seq(1L:16L),
     nrow = 4L,

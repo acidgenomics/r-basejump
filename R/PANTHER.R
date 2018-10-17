@@ -15,7 +15,8 @@
 #' @return `PANTHER`.
 #'
 #' @examples
-#' x <- PANTHER("Homo sapiens", progress = FALSE, .test = TRUE)
+#' options(basejump.test = TRUE)
+#' x <- PANTHER("Homo sapiens", progress = FALSE)
 #' summary(x)
 NULL
 
@@ -56,8 +57,8 @@ NULL
 
 # Organism-specific data modifiers =============================================
 .PANTHER.homoSapiens <-  # nolint
-    function(data, .test = FALSE) {
-        hgnc2ensembl <- HGNC2Ensembl(.test = .test)
+    function(data) {
+        hgnc2ensembl <- HGNC2Ensembl()
 
         # Ensembl matches.
         ensembl <- data %>%
@@ -89,8 +90,8 @@ NULL
 
 
 .PANTHER.musMusculus <-  # nolint
-    function(data, .test = FALSE) {
-        mgi2ensembl <- MGI2Ensembl(.test = .test)
+    function(data) {
+        mgi2ensembl <- MGI2Ensembl()
 
         # Ensembl matches.
         ensembl <- data %>%
@@ -120,21 +121,15 @@ NULL
 
 
 .PANTHER.drosophilaMelanogaster <-  # nolint
-    function(data, .test = FALSE) {
-        mutate(
-            data,
-            geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$")
-        )
+    function(data) {
+        mutate(data, geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$"))
     }
 
 
 
 .PANTHER.caenorhabditisElegans <-  # nolint
-    function(data, .test = FALSE) {
-        mutate(
-            data,
-            geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$")
-        )
+    function(data) {
+        mutate(data, geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$"))
     }
 
 
@@ -145,8 +140,7 @@ NULL
 PANTHER <- function(  # nolint
     organism,
     release = NULL,
-    progress = TRUE,
-    .test = FALSE
+    progress = TRUE
 ) {
     stopifnot(has_internet())
     organism <- match.arg(
@@ -160,7 +154,6 @@ PANTHER <- function(  # nolint
     }
     assert_is_a_string(release)
     assert_is_a_bool(progress)
-    assert_is_a_bool(.test)
 
     message(paste0(
         "Downloading PANTHER annotations for ",
@@ -168,7 +161,7 @@ PANTHER <- function(  # nolint
         " (", release, ")."
     ))
 
-    if (isTRUE(.test)) {
+    if (isTRUE(getOption("basejump.test"))) {
         file <- file.path(
             basejumpCacheURL,
             paste0("PTHR13.1_", pantherName, ".gz")
@@ -220,7 +213,7 @@ PANTHER <- function(  # nolint
     # Using organism-specific internal return functions here.
     fun <- get(paste("", "PANTHER", camel(organism), sep = "."))
     assert_is_function(fun)
-    data <- fun(data, .test = .test)
+    data <- fun(data)
     assert_has_rows(data)
 
     data <- data %>%

@@ -12,7 +12,8 @@ Contains a \code{DataFrame}.
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \examples{
-x <- PANTHER("Homo sapiens", progress = FALSE, .test = TRUE)
+options(basejump.test = TRUE)
+x <- PANTHER("Homo sapiens", progress = FALSE)
 summary(x)
 }
 \seealso{
