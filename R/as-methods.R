@@ -60,6 +60,7 @@ NULL
 
 # data.frame ===================================================================
 #' @rdname as
+#' @inheritParams BiocGenerics::as.data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
@@ -202,7 +203,7 @@ tibble::as_tibble
 #' @method as_tibble DataFrame
 #' @export
 as_tibble.DataFrame <-  # nolint
-    function(x, rownames = "rowname") {
+    function(x, ..., rownames = "rowname") {
         # Check for valid columns (atomic, list).
         valid <- vapply(
             X = x,
@@ -227,7 +228,11 @@ as_tibble.DataFrame <-  # nolint
         }
         do.call(
             what = as_tibble,
-            args = list(x = x, rownames = rownames)
+            args = list(
+                x = x,
+                ...,
+                rownames = rownames
+            )
         )
     }
 
@@ -250,7 +255,7 @@ setAs(
 #' @method as_tibble GRanges
 #' @export
 as_tibble.GRanges <-  # nolint
-    function(x, rownames = "rowname") {
+    function(x, ..., rownames = "rowname") {
         names <- names(x)
         x <- as(x, "data.frame")
         rownames(x) <- names
@@ -259,7 +264,11 @@ as_tibble.GRanges <-  # nolint
         }
         do.call(
             what = as_tibble,
-            args = list(x = x, rownames = rownames)
+            args = list(
+                x = x,
+                ...,
+                rownames = rownames
+            )
         )
     }
 
