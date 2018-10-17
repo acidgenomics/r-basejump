@@ -209,7 +209,7 @@ validNames <- function(object) {
 #' @param object Object that can be coerced to `data.frame`.
 #'
 #' @examples
-#' object <- tibble(
+#' object <- tibble::tibble(
 #'     geneID = "ENSG00000000003",
 #'     geneName = "TSPAN6"
 #' )
@@ -235,7 +235,7 @@ assertAreGeneAnnotations <- function(object) {
 #'
 #'
 #' @examples
-#' object <- tibble(
+#' object <- tibble::tibble(
 #'     transcriptID = "ENST00000000233",
 #'     geneID = "ENSG00000004059"
 #' )
