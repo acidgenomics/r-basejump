@@ -29,6 +29,7 @@ abstract: >
 ```{r setup, include=FALSE, message=FALSE}
 library(basejump)
 ggplot2::theme_set(theme_paperwhite())
+knitr::opts_chunk$set(message = FALSE)
 data(rse_small)
 ```
 
@@ -45,11 +46,11 @@ This vignette focuses on the most common user-facing functions that fall into th
 
 There are additional function families whose functionality lie outside the scope of this vignette. Consult the [basejump][] website or package documentation for more information of these types of functions, which are more technical in nature and predominantly developer-facing:
 
-- R Markdown functions
-- Atomic vector functions
-- Coercion methods
-- Developer functions
-- Assert check functions
+- R Markdown functions.
+- Atomic vector functions.
+- Coercion methods.
+- Developer functions.
+- Assert check functions.
 
 # The S4 object system
 
@@ -152,24 +153,6 @@ grch37 <- makeGRangesFromEnsembl(
 )
 summary(grch37)
 GenomeInfoDb::seqinfo(grch37)
-```
-
-### Annotable return (`tibble`)
-
-For convenience, if you prefer to return annotations as a `tibble` instead of `GRanges`, we provide the `annotable()` function. Internally, this calls the `makeGRangesFromEnsembl()` function and then automatically coerces the return to a `tibble` using our `as(object, Class = "tbl_df")` coercion method. For quick access to current [Ensembl][] annotations as a `tibble`, we also recommend the [annotables][] package.
-
-```{r, message=FALSE}
-genes <- annotable("Homo sapiens", level = "genes")
-glimpse(genes)
-
-transcripts <- annotable("Homo sapiens", level = "transcripts")
-glimpse(transcripts)
-```
-
-Note that `GRanges` objects can be coerced to a standard `data.frame` using the `as.data.frame()` coercion method.
-
-```{r}
-grch38 %>% as.data.frame() %>% glimpse()
 ```
 
 ## Gene mapping functions
@@ -275,7 +258,7 @@ summary(panther)
 
 Note that for *Caenorhabditis elegans* genome annotations, we recommend additional use of our specialized [wormbase package][r-wormbase], which queries the [WormBase][] database [@Stein2001-mk] directly, and provides support of versioned releases (e.g. WS265) that have additional metadata not currently available on [Ensembl][].
 
-# Read/write functions
+# Import/export functions
 
 FIXME This section is still under development.
 
