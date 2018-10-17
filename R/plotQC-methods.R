@@ -2,7 +2,6 @@
 #'
 #' @name plotQC
 #' @family Plots
-#' @export
 #'
 #' @inheritParams general
 #'

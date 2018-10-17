@@ -5,7 +5,6 @@
 #' @name Tx2Gene
 #' @family Identifier Mapping Functions
 #' @family Transcript-Level Functions
-#' @export
 #'
 #' @inheritParams general
 #'

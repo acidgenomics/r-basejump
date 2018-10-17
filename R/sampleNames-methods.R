@@ -1,3 +1,15 @@
+#' @rdname sampleNames
+#' @importFrom Biobase sampleNames
+#' @export
+sampleNames <- Biobase::sampleNames
+
+#' @rdname sampleNames
+#' @importFrom Biobase sampleNames<-
+#' @export
+`sampleNames<-` <- Biobase::`sampleNames<-`
+
+
+
 #' Sample Names
 #'
 #' This function will return the human readable sample names if defined
@@ -7,8 +19,6 @@
 #' @name sampleNames
 #' @family Metadata Functions
 #' @family SummarizedExperiment Functions
-#' @importFrom Biobase sampleNames sampleNames<-
-#' @export
 #'
 #' @inheritParams general
 #'

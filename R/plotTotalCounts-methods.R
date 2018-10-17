@@ -2,7 +2,6 @@
 #'
 #' @name plotTotalCounts
 #' @family Plots
-#' @export
 #'
 #' @inheritParams general
 #'

@@ -5,7 +5,6 @@
 #' returned unmodified.
 #'
 #' @name sanitizeNA
-#' @export
 #'
 #' @inheritParams general
 #'

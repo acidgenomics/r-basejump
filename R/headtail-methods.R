@@ -4,7 +4,6 @@
 #' both rows and columns, enabling quick inspection during interactive use.
 #'
 #' @name headtail
-#' @export
 #'
 #' @inheritParams general
 #' @param n `scalar integer`. Positive integer denoting the number of first and

@@ -7,7 +7,6 @@
 #'
 #' @name Gene2Symbol
 #' @family Identifier Mapping Functions
-#' @export
 #'
 #' @inheritParams general
 #'

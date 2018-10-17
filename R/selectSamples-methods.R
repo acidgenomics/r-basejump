@@ -13,7 +13,6 @@
 #'
 #' @name selectSamples
 #' @family SummarizedExperiment Functions
-#' @export
 #'
 #' @inheritParams general
 #' @param ... Selection arguments that map to the column names of
