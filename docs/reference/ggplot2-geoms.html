@@ -235,13 +235,15 @@ is required, simply use the ggrepel version instead.</p>
 #&gt; position_identity </div><div class='input'>
 <span class='co'>## basejump_geom_label_average ====</span>
 <span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_label_average</span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>tibble</span>(
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
         <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>),
         <span class='kw'>counts</span> <span class='kw'>=</span> <span class='fu'>seq_len</span>(<span class='fl'>8L</span>)
     ),
     <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,
     <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>
-)</div><div class='output co'>#&gt; <span class='error'>Error in tibble(sampleName = rep(c("sample1", "sample2"), times = 4L),     counts = seq_len(8L)): could not find function "tibble"</span></div><div class='input'><span class='no'>geom</span></div><div class='output co'>#&gt; geom_label: parse = FALSE, label.padding = 0.2, label.r = 0.15, label.size = NA, na.rm = FALSE
+)
+<span class='no'>geom</span></div><div class='output co'>#&gt; mapping: label = ~roundedAverage 
+#&gt; geom_label: parse = FALSE, label.padding = 0.2, label.r = 0.15, label.size = NA, na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
 <span class='co'>## basejump_geom_label_repel ====</span>
