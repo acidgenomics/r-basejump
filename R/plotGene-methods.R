@@ -141,7 +141,7 @@ NULL
     ) {
         validObject(object)
         # Coercing to `SummarizedExperiment` for fast subsetting below.
-        object <- .asSummarizedExperiment(object)
+        object <- as.SummarizedExperiment(object)
         assert_is_character(genes)
         # Limit the number of genes that can be plotted at once.
         assert_all_are_in_closed_range(length(genes), lower = 1L, upper = 20L)

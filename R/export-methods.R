@@ -255,7 +255,7 @@ NULL
         name <- as.character(call[["x"]])
 
         # Primarily use SE method to export.
-        se <- .asSummarizedExperiment(x)
+        se <- as.SummarizedExperiment(x)
         assign(x = name, value = se)
         args <- matchArgsToDoCall()
         args[["x"]] <- as.name(name)
