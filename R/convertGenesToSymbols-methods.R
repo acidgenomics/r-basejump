@@ -1,16 +1,14 @@
+# FIXME Working example with devtools isn't capturing gene2symbol correctly.
+
+
+
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
 #' @name convertGenesToSymbols
 #' @family Identifier Mapping Functions
 #' @export
 #'
-#' @include makeGRanges.R
-#'
-#' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams general
-#' @param gene2symbol `Gene2Symbol` or `NULL`. Gene-to-symbol mappings. If set
-#'   `NULL`, the function will attempt to download the mappings from Ensembl
-#'   automatically.
 #'
 #' @return Object with gene IDs converted to names (symbols).
 #'
@@ -21,6 +19,7 @@
 #' g2s <- Gene2Symbol(object)
 #' print(g2s)
 #' genes <- head(g2s[["geneID"]])
+#' print(genes)
 #'
 #' ## character ====
 #' x <- convertGenesToSymbols(genes, gene2symbol = g2s)
@@ -50,44 +49,22 @@ NULL
 
 
 # convertGenesToSymbols ========================================================
+# Allowing duplicates here (unlike convertTranscriptsToGenes).
 .convertGenesToSymbols.character <-  # nolint
-    function(
-        object,
-        gene2symbol = NULL,
-        organism = NULL
-    ) {
-        # Allowing duplicates here (unlike convertTranscriptsToGenes).
+    function(object, gene2symbol) {
         assert_all_are_non_missing_nor_empty_character(object)
-        assert_is_any_of(gene2symbol, c("Gene2Symbol", "NULL"))
-        assertIsAStringOrNULL(organism)
-
-        # If no gene2symbol is provided, fall back to using Ensembl annotations.
-        if (is.null(gene2symbol)) {
-            message("Obtaining gene-to-symbol mappings from Ensembl.")
-            if (is.null(organism)) {
-                organism <- detectOrganism(object)
-            }
-            assert_is_a_string(organism)
-            message(paste(organism, "genes detected."))
-            gene2symbol <- do.call(
-                what = makeGene2SymbolFromEnsembl,
-                args = matchArgsToDoCall(
-                    args = list(organism = organism),
-                    removeFormals = c("object", "gene2symbol")
-                )
-            )
-        }
         assert_is_all_of(gene2symbol, "Gene2Symbol")
+        validObject(gene2symbol)
 
         # Arrange the gene2symbol to match the input.
         gene2symbol <- gene2symbol[
             match(x = object, table = gene2symbol[["geneID"]]),
             ,
             drop = FALSE
-            ]
+        ]
 
-        return <- gene2symbol[["geneName"]]
-        names(return) <- gene2symbol[["geneID"]]
+        out <- gene2symbol[["geneName"]]
+        names(out) <- gene2symbol[["geneID"]]
 
         missing <- setdiff(object, gene2symbol[["geneID"]])
         if (has_length(missing)) {
@@ -95,32 +72,26 @@ NULL
                 "Failed to match genes:", toString(missing)
             ), call. = FALSE)
             names(missing) <- missing
-            return <- c(return, missing)
+            out <- c(out, missing)
         }
 
-        return[object]
+        out[object]
     }
-f1 <- formals(.convertGenesToSymbols.character)
-f2 <- formals(makeGRangesFromEnsembl)
-f2 <- f2[setdiff(names(f2), c(names(f1), "level"))]
-f <- c(f1, f2)
-formals(.convertGenesToSymbols.character) <- f
 
 
 
 .convertGenesToSymbols.matrix <-  # nolint
-    function() {
+    function(object, gene2symbol) {
         g2s <- do.call(
             what = convertGenesToSymbols,
-            args = matchArgsToDoCall(
-                args = list(object = rownames(object))
+            args = list(
+                object = rownames(object),
+                gene2symbol = gene2symbol
             )
         )
         rownames(object) <- as.character(g2s)
         object
     }
-f <- formals(.convertGenesToSymbols.character)
-formals(.convertGenesToSymbols.matrix) <- f
 
 
 
