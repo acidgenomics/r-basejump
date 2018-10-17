@@ -25,6 +25,8 @@ extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 #' lanePattern
 lanePattern <- "_L([[:digit:]]{3})"
 
+level <- c("genes", "transcripts")
+
 # List item (following HTML convention).
 li <- "  -"
 
