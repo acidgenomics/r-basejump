@@ -209,9 +209,9 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
         object = makeGRangesFromEnsembl("Homo sapiens", build = "hg38"),
         regexp = "UCSC build ID detected."
     )
-    expect_warning(
+    expect_error(
         object = makeGRangesFromEnsembl("Homo sapiens", release = 86L),
-        regexp = "Switching to current release instead."
+        regexp = ">= 87"
     )
     expect_error(
         object = makeGRangesFromEnsembl(organism = "AAA", build = "BBB"),
@@ -265,19 +265,16 @@ with_parameters_test_that(
         expect_is(object, "Gene2Symbol")
         expect_identical(
             object = head(object, n = 2L),
-            expected = new(
-                "Gene2Symbol",
-                DataFrame(
-                    geneID = c(
-                        "ENSMUSG00000102693",
-                        "ENSMUSG00000064842"
-                    ),
-                    geneName = c(
-                        "4933401J01Rik",
-                        "Gm26206"
-                    )
+            expected = Gene2Symbol(DataFrame(
+                geneID = c(
+                    "ENSMUSG00000102693",
+                    "ENSMUSG00000064842"
+                ),
+                geneName = c(
+                    "4933401J01Rik",
+                    "Gm26206"
                 )
-            )
+            ))
         )
     },
     file = c("example.gtf", "example.gff3")
@@ -387,19 +384,16 @@ with_parameters_test_that(
         expect_is(object, "Tx2Gene")
         expect_identical(
             object = head(object, n = 2L),
-            expected = new(
-                Class = "Tx2Gene",
-                DataFrame(
-                    transcriptID = c(
-                        "ENSMUST00000193812",
-                        "ENSMUST00000082908"
-                    ),
-                    geneID = c(
-                        "ENSMUSG00000102693",
-                        "ENSMUSG00000064842"
-                    )
+            expected = Tx2Gene(DataFrame(
+                transcriptID = c(
+                    "ENSMUST00000193812",
+                    "ENSMUST00000082908"
+                ),
+                geneID = c(
+                    "ENSMUSG00000102693",
+                    "ENSMUSG00000064842"
                 )
-            )
+            ))
         )
     },
     file = c("example.gtf", "example.gff3")
@@ -546,14 +540,14 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 context("Annotations : Databases")
 
 # FIXME Add code coverage:
-# - ensembl2entrez
+# - Ensembl2Entrez
 # - geneSynonyms
-# - hgnc2ensembl
-# - mgi2ensembl
+# - HGNC2Ensembl
+# - MGI2Ensembl
 
-test_that("eggnog", {
+test_that("EggNOG", {
     expect_is(
-        object = eggnog(.test = TRUE),
+        object = EggNOG(.test = TRUE),
         class = "EggNOG"
     )
 })
@@ -567,9 +561,9 @@ test_that("geneSynonyms", {
 })
 
 with_parameters_test_that(
-    "panther", {
+    "PANTHER", {
         invisible(capture.output(
-            object <- panther(organism, .test = TRUE)
+            object <- PANTHER(organism, .test = TRUE)
         ))
         expect_is(object, "PANTHER")
     },
