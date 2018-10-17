@@ -16,7 +16,6 @@
 #' data(rse_small)
 #' matchInterestingGroups(rse_small)
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
-    assert_is_all_of(object, "SummarizedExperiment")
     if (is.null(interestingGroups)) {
         interestingGroups <- interestingGroups(object, check = FALSE)
         if (is.null(interestingGroups)) {
