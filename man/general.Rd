@@ -42,6 +42,8 @@ globally, use \code{options(bcbio.discrete.fill = scale_fill_viridis_d())}.}
 \item{flip}{\code{boolean}. Flip x and y axes. Recommended for quality control
 plots containing many samples.}
 
+\item{gene2symbol}{\code{Gene2Symbol}. Gene-to-symbol mappings.}
+
 \item{genes}{\code{character}. Gene identifiers.}
 
 \item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
@@ -71,6 +73,8 @@ the first item in the vector by default.}
 
 \item{trans}{\code{string}. Name of the axis scale transformation to apply. See
 \code{help("scale_x_continuous", "ggplot2")} for more information.}
+
+\item{tx2gene}{\code{Tx2Gene}. Transcript-to-gene mappings.}
 
 \item{url}{\code{string}. Uniform Resource Locator (URL). HTTP or FTP address.}
 

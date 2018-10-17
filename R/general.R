@@ -30,6 +30,7 @@
 #'   globally, use `options(bcbio.discrete.fill = scale_fill_viridis_d())`.
 #' @param flip `boolean`. Flip x and y axes. Recommended for quality control
 #'   plots containing many samples.
+#' @param gene2symbol `Gene2Symbol`. Gene-to-symbol mappings.
 #' @param genes `character`. Gene identifiers.
 #' @param headerLevel `scalar integer`. Markdown header level (1-7).
 #' @param interestingGroups `character`. Groups of interest.
@@ -47,6 +48,7 @@
 #' @param title `string`. Plot title.
 #' @param trans `string`. Name of the axis scale transformation to apply. See
 #'   `help("scale_x_continuous", "ggplot2")` for more information.
+#' @param tx2gene `Tx2Gene`. Transcript-to-gene mappings.
 #' @param url `string`. Uniform Resource Locator (URL). HTTP or FTP address.
 #' @param verbose `boolean`. Run the function with verbose messages? It is only
 #'   recommended to enable this when debugging.
