@@ -4,6 +4,7 @@
 #'
 #' @keywords internal
 #'
+#' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom BiocGenerics as.data.frame
@@ -76,8 +77,8 @@
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors %in% aggregate complete.cases cor head mcols mcols<-
-#'   metadata metadata<- na.omit SimpleList tail
+#' @importFrom S4Vectors %in% aggregate complete.cases cor head List mcols
+#'   mcols<- metadata metadata<- na.omit tail
 #' @importFrom sessioninfo session_info
 #' @importFrom SingleCellExperiment isSpike<- SingleCellExperiment reducedDims
 #'   reducedDimNames spikeNames
