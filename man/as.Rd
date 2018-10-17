@@ -24,6 +24,16 @@ coerceS4ToList(from)
 \arguments{
 \item{x}{Object.}
 
+\item{row.names}{
+    See \code{?base::\link[base]{as.data.frame}} for a description of
+    these arguments.
+  }
+
+\item{optional}{
+    See \code{?base::\link[base]{as.data.frame}} for a description of
+    these arguments.
+  }
+
 \item{...}{Additional arguments.}
 
 \item{from}{The classes between which the coerce methods
