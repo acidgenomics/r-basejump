@@ -78,7 +78,7 @@ assertAllAreNonExisting <- function(
 #' print(genes)
 #' assertAllAreUniqueGeneNames(object = object, genes = genes)
 assertAllAreUniqueGeneNames <- function(object, genes) {
-    assert_is_any_of(object, classes = c("Gene2Symbol", "SummarizedExperiment"))
+    stopifnot(isS4(object))
     assert_is_character(genes)
     # Get all of the gene names stashed in the object.
     if (is(object, "SummarizedExperiment")) {
@@ -351,8 +351,8 @@ assertFormalGene2Symbol <- function(
 #' assertFormalInterestingGroups(rse_small, "treatment")
 #' assertFormalInterestingGroups(rse_small, NULL)
 assertFormalInterestingGroups <- function(object, interestingGroups) {
-    # Always require SummarizedExperiment for object.
-    assert_is_all_of(object, classes = "SummarizedExperiment")
+    stopifnot(isS4(object))
+    sampleData <- sampleData(object)
 
     # Check `interestingGroups` argument.
     if (is.null(interestingGroups)) {
@@ -362,8 +362,6 @@ assertFormalInterestingGroups <- function(object, interestingGroups) {
         # Otherwise, require that `interestingGroups` is a character.
         assert_is_character(interestingGroups)
     }
-
-    sampleData <- sampleData(object)
 
     # Check intersection with sample data.
     assert_is_subset(interestingGroups, colnames(sampleData))
