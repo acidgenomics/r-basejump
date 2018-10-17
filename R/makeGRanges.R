@@ -54,6 +54,11 @@
 #' x <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
 #' summary(x)
 #'
+#' ## makeGRangesFromEnsDb ====
+#' library(EnsDb.Hsapiens.v75)
+#' grch37 <- makeGRangesFromEnsDb(EnsDb.Hsapiens.v75)
+#' summary(grch37)
+#'
 #' ## makeGRangesFromGFF ====
 #' file <- file.path(basejumpCacheURL, "example.gtf")
 #'
@@ -411,88 +416,6 @@ NULL
 
 
 
-#' Make GRanges from ensembldb EnsDb object.
-#' @noRd
-.makeGRangesFromEnsDb <- function(edb, level) {
-    userAttached <- .packages()
-    assert_is_all_of(edb, "EnsDb")
-    level <- match.arg(level)
-
-    # Get the genome build from the ensembldb metdata.
-    build <- metadata(edb) %>%
-        as_tibble() %>%
-        filter(!!sym("name") == "genome_build") %>%
-        pull("value")
-    assert_is_a_string(build)
-
-    # Ready to create our metadata list to stash inside the GRanges.
-    metadata <- list(
-        organism = organism(edb),
-        ensembldb = metadata(edb),
-        build = build,
-        release = ensemblVersion(edb),
-        level = level,
-        version = packageVersion("basejump"),
-        date = Sys.Date()
-    )
-
-    message(paste(
-        paste(li, "Organism:", metadata[["organism"]]),
-        paste(li, "Build:", metadata[["build"]]),
-        paste(li, "Release:", metadata[["release"]]),
-        paste(li, "Level:", metadata[["level"]]),
-        sep = "\n"
-    ))
-
-    if (level == "genes") {
-        gr <- genes(
-            x = edb,
-            order.by = "gene_id",
-            return.type = "GRanges"
-        )
-    } else if (level == "transcripts") {
-        tx <- transcripts(
-            x = edb,
-            order.by = "tx_id",
-            return.type = "GRanges"
-        )
-
-        # Get additional mcols of interest from gene annotations.
-        gene <- genes(
-            x = edb,
-            order.by = "gene_id",
-            return.type = "GRanges"
-        )
-
-        # Join the transcript- and gene-level annotations.
-        txData <- mcols(tx)
-        geneData <- mcols(gene)
-        # Use BiocTibble left_join DataFrame method here.
-        data <- left_join(
-            x = as_tibble(txData),
-            y = as_tibble(geneData),
-            by = "gene_id"
-        )
-        assert_are_identical(
-            x = txData[["tx_id"]],
-            y = data[["tx_id"]]
-        )
-
-        # Now we can slot back into the transcript mcols.
-        mcols(tx) <- as(data, "DataFrame")
-        gr <- tx
-    }
-
-    # Always stash the metadata.
-    metadata(gr) <- metadata
-
-    .forceDetach(keep = userAttached)
-    .makeGRanges(gr)
-}
-formals(.makeGRangesFromEnsDb)[["level"]] <- level
-
-
-
 #' @describeIn makeGRanges
 #' Quickly obtain gene and transcript annotations from
 #' [Ensembl](http://www.ensembl.org) using
@@ -537,11 +460,111 @@ makeGRangesFromEnsembl <- function(
         )
         edb <- .getEnsDbFromAnnotationHub(id = id)
     }
-    gr <- .makeGRangesFromEnsDb(edb = edb, level = level)
+    gr <- makeGRangesFromEnsDb(edb = edb, level = level)
     metadata(gr)[["id"]] <- id
     gr
 }
 formals(makeGRangesFromEnsembl)[["level"]] <- level
+
+
+
+#' @describeIn makeGRanges
+#' [annotable()] is a legacy convenience function that calls
+#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
+#' that `GRanges` can also be coercing using [as.data.frame()].
+#' @export
+annotable <-
+    function() {
+        gr <- do.call(
+            what = makeGRangesFromEnsembl,
+            args = matchArgsToDoCall()
+        )
+        as_tibble(gr, rownames = NULL)
+    }
+formals(annotable) <- formals(makeGRangesFromEnsembl)
+
+
+
+#' @describeIn makeGRanges Use specific `EnsDb` object as annotation source.
+#' @export
+makeGRangesFromEnsDb <- function(object, level) {
+    message("Making GRanges from EnsDb object.")
+    userAttached <- .packages()
+    assert_is_all_of(object, "EnsDb")
+    level <- match.arg(level)
+
+    # Get the genome build from the ensembldb metdata.
+    build <- metadata(object) %>%
+        as_tibble() %>%
+        filter(!!sym("name") == "genome_build") %>%
+        pull("value")
+    assert_is_a_string(build)
+
+    # Ready to create our metadata list to stash inside the GRanges.
+    metadata <- list(
+        organism = organism(object),
+        ensembldb = metadata(object),
+        build = build,
+        release = ensemblVersion(object),
+        level = level,
+        version = packageVersion("basejump"),
+        date = Sys.Date()
+    )
+
+    message(paste(
+        paste(li, "Organism:", metadata[["organism"]]),
+        paste(li, "Build:", metadata[["build"]]),
+        paste(li, "Release:", metadata[["release"]]),
+        paste(li, "Level:", metadata[["level"]]),
+        sep = "\n"
+    ))
+
+    if (level == "genes") {
+        gr <- genes(
+            x = object,
+            order.by = "gene_id",
+            return.type = "GRanges"
+        )
+    } else if (level == "transcripts") {
+        tx <- transcripts(
+            x = object,
+            order.by = "tx_id",
+            return.type = "GRanges"
+        )
+
+        # Get additional mcols of interest from gene annotations.
+        gene <- genes(
+            x = object,
+            order.by = "gene_id",
+            return.type = "GRanges"
+        )
+
+        # Join the transcript- and gene-level annotations.
+        txData <- mcols(tx)
+        geneData <- mcols(gene)
+        # Use BiocTibble left_join DataFrame method here.
+        data <- left_join(
+            x = as_tibble(txData),
+            y = as_tibble(geneData),
+            by = "gene_id"
+        )
+        assert_are_identical(
+            x = txData[["tx_id"]],
+            y = data[["tx_id"]]
+        )
+
+        # Now we can slot back into the transcript mcols.
+        mcols(tx) <- as(data, "DataFrame")
+        gr <- tx
+    }
+
+    # Always stash the metadata.
+    metadata(gr) <- metadata
+
+    .forceDetach(keep = userAttached)
+    .makeGRanges(gr)
+}
+formals(makeGRangesFromEnsDb)[["level"]] <- level
 
 
 
@@ -853,22 +876,3 @@ makeGRangesFromGFF <- function(
 #' @usage NULL
 #' @export
 makeGRangesFromGTF <- makeGRangesFromGFF
-
-
-
-# Legacy =======================================================================
-#' @describeIn makeGRanges
-#' [annotable()] is a legacy convenience function that calls
-#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
-#' that `GRanges` also support coercion to a basic `data.frame` using
-#' [as.data.frame()].
-#' @export
-annotable <-
-    function() {
-        gr <- do.call(
-            what = makeGRangesFromEnsembl,
-            args = matchArgsToDoCall()
-        )
-        as_tibble(gr, rownames = NULL)
-    }
-formals(annotable) <- formals(makeGRangesFromEnsembl)

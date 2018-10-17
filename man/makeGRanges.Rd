@@ -3,18 +3,21 @@
 \name{makeGRanges}
 \alias{makeGRanges}
 \alias{makeGRangesFromEnsembl}
+\alias{annotable}
+\alias{makeGRangesFromEnsDb}
 \alias{makeGRangesFromGFF}
 \alias{makeGRangesFromGTF}
-\alias{annotable}
 \title{Make Genomic Ranges}
 \usage{
 makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
   build = NULL, release = NULL)
 
-makeGRangesFromGFF(file, level = c("genes", "transcripts"))
-
 annotable(organism, level = c("genes", "transcripts"), build = NULL,
   release = NULL)
+
+makeGRangesFromEnsDb(object, level = c("genes", "transcripts"))
+
+makeGRangesFromGFF(file, level = c("genes", "transcripts"))
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
@@ -26,6 +29,8 @@ annotable(organism, level = c("genes", "transcripts"), build = NULL,
 
 \item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
 set \code{NULL}, defaults to the most recent release available.}
+
+\item{object}{Object.}
 
 \item{file}{\code{string}. File path.}
 }
@@ -54,6 +59,12 @@ back to version 87.
 Genome build: use "\code{GRCh38}" instead of "\code{hg38}" for the genome build, since
 we're querying Ensembl and not UCSC.
 
+\item \code{annotable}: \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
+\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
+that \code{GRanges} can also be coercing using \code{\link[=as.data.frame]{as.data.frame()}}.
+
+\item \code{makeGRangesFromEnsDb}: Use specific \code{EnsDb} object as annotation source.
+
 \item \code{makeGRangesFromGFF}: The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2. We recommend
@@ -63,11 +74,6 @@ The UCSC website has detailed conventions on the GFF3 format, including
 the metadata columns.
 
 Remote URLs and compressed files are supported.
-
-\item \code{annotable}: \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
-\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
-that \code{GRanges} also support coercion to a basic \code{data.frame} using
-\code{\link[=as.data.frame]{as.data.frame()}}.
 }}
 
 \section{Broad class definitions}{
@@ -106,6 +112,11 @@ summary(x)
 ## Transcripts
 x <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
 summary(x)
+
+## makeGRangesFromEnsDb ====
+library(EnsDb.Hsapiens.v75)
+grch37 <- makeGRangesFromEnsDb(EnsDb.Hsapiens.v75)
+summary(grch37)
 
 ## makeGRangesFromGFF ====
 file <- file.path(basejumpCacheURL, "example.gtf")
