@@ -138,8 +138,9 @@
     </tr>
     <tr>
       <th>assay</th>
-      <td><p><code>scalar</code>. Name or index of count matrix slotted in <code>assays()</code>.
-When passing in a <code>string</code>, the name must be defined in <code>assayNames()</code>.</p></td>
+      <td><p><code>scalar</code>. Name or index of count matrix slotted in
+<code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::assays()</a></code>. When passing in a <code>string</code>, the name must
+be defined in <code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::assayNames()</a></code>.</p></td>
     </tr>
     <tr>
       <th>check</th>
@@ -185,6 +186,10 @@ globally, use <code>options(bcbio.discrete.fill = scale_fill_viridis_d())</code>
 plots containing many samples.</p></td>
     </tr>
     <tr>
+      <th>gene2symbol</th>
+      <td><p><code>Gene2Symbol</code>. Gene-to-symbol mappings.</p></td>
+    </tr>
+    <tr>
       <th>genes</th>
       <td><p><code>character</code>. Gene identifiers.</p></td>
     </tr>
@@ -228,8 +233,8 @@ count matrix.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Object class to return. Uses <code>match.arg()</code> internally and picks
-the first item in the vector by default.</p></td>
+      <td><p>Object class to return. Uses <code><a href='http://www.rdocumentation.org/packages/base/topics/match.arg'>base::match.arg()</a></code> internally and
+picks the first item in the vector by default.</p></td>
     </tr>
     <tr>
       <th>title</th>
@@ -239,6 +244,10 @@ the first item in the vector by default.</p></td>
       <th>trans</th>
       <td><p><code>string</code>. Name of the axis scale transformation to apply. See
 <code>help("scale_x_continuous", "ggplot2")</code> for more information.</p></td>
+    </tr>
+    <tr>
+      <th>tx2gene</th>
+      <td><p><code>Tx2Gene</code>. Transcript-to-gene mappings.</p></td>
     </tr>
     <tr>
       <th>url</th>

@@ -24,6 +24,7 @@ topCellsPerSample(object, ...)
 Obtain the top cellular barcodes, based on counts.
 }
 \examples{
+data(sce_small)
 x <- topCellsPerSample(sce_small)
 lapply(x, head)
 }

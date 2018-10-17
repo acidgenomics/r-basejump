@@ -143,8 +143,9 @@
 
     <p>We're attempting to make this as strict as possible, requiring:</p><ul>
 <li><p>Rows (genes) across objects must be identical.</p></li>
-<li><p><code>rowRanges()</code> and/or <code>rowData()</code> metadata must be identical.</p></li>
-<li><p><code>colData()</code> must contain the same columns.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::rowRanges()</a></code> and/or
+<code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::rowData()</a></code> metadata must be identical.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code> must contain the same columns.</p></li>
 <li><p>Specific metadata must be identical (see <code>metadata</code> parameter).</p></li>
 </ul>
     
@@ -157,11 +158,9 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>)
-
-<span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
-<span class='fu'>colnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+    <pre class="examples"><div class='input'><span class='co'>## SummarizedExperiment ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>basejump</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/basejump/topics/rse_small'>rse_small</a></span>
+<span class='fu'>colnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;         genotype treatment
 #&gt;         &lt;factor&gt;  &lt;factor&gt;
 #&gt; sample1 wildtype   control
@@ -171,7 +170,7 @@
 <span class='co'>## Create a copy of our minimal example.</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
 <span class='fu'>colnames</span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>8L</span>))
-<span class='fu'>colnames</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "sample5" "sample6" "sample7" "sample8"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+<span class='fu'>colnames</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "sample5" "sample6" "sample7" "sample8"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;         genotype treatment
 #&gt;         &lt;factor&gt;  &lt;factor&gt;
 #&gt; sample5 wildtype   control
@@ -179,8 +178,7 @@
 #&gt; sample7 wildtype   treated
 #&gt; sample8 knockout   treated</div><div class='input'>
 <span class='co'>## Combine two SummarizedExperiment objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
-<span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 50 8 
 #&gt; metadata(6): interestingGroups version ... wd sessionInfo
 #&gt; assays(1): counts
@@ -188,7 +186,7 @@
 #&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
 #&gt; colnames(8): sample1 sample2 ... sample7 sample8
 #&gt; colData names(2): genotype treatment</div><div class='input'><span class='fu'>colnames</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4" "sample5" "sample6" "sample7"
-#&gt; [8] "sample8"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 2 columns
+#&gt; [8] "sample8"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 2 columns
 #&gt;         genotype treatment
 #&gt;         &lt;factor&gt;  &lt;factor&gt;
 #&gt; sample1 wildtype   control
@@ -200,7 +198,7 @@
 #&gt; sample7 wildtype   treated
 #&gt; sample8 knockout   treated</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce_small</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>basejump</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/basejump/topics/sce_small'>sce_small</a></span>
 <span class='fu'>head</span>(<span class='fu'>colnames</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
@@ -224,8 +222,7 @@
 #&gt; sample4     sample4           sample4
 #&gt; sample3     sample3           sample3</div><div class='input'>
 <span class='co'>## Combine two SingleCellExperiment objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
-<span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 200 2000 
 #&gt; metadata(4): combine date wd sessionInfo
 #&gt; assays(1): counts

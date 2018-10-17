@@ -35,8 +35,9 @@ plotCountsPerBroadClass(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
-When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in
+\code{\link[SummarizedExperiment:assays]{SummarizedExperiment::assays()}}. When passing in a \code{string}, the name must
+be defined in \code{\link[SummarizedExperiment:assayNames]{SummarizedExperiment::assayNames()}}.}
 
 \item{n}{\code{scalar integer}. Number to include.}
 

@@ -12,8 +12,9 @@
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
-When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in
+\code{\link[SummarizedExperiment:assays]{SummarizedExperiment::assays()}}. When passing in a \code{string}, the name must
+be defined in \code{\link[SummarizedExperiment:assayNames]{SummarizedExperiment::assayNames()}}.}
 
 \item{check}{\code{boolean}. Perform assert checks.}
 
@@ -66,8 +67,8 @@ count matrix.}
 
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
-\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
-the first item in the vector by default.}
+\item{return}{Object class to return. Uses \code{\link[base:match.arg]{base::match.arg()}} internally and
+picks the first item in the vector by default.}
 
 \item{title}{\code{string}. Plot title.}
 

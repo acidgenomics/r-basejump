@@ -38,8 +38,8 @@
 SummarizedExperiment::SummarizedExperiment() that provides automatic
 subsetting for row and column data, as well as automatic handling of
 transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the metadata()
-slot:" />
+constructor by slotting useful session information into the
+S4Vectors::metadata() slot:" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,8 +121,8 @@ slot:" />
 <code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::SummarizedExperiment()</a></code> that provides automatic
 subsetting for row and column data, as well as automatic handling of
 transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the <code>metadata()</code>
-slot:</p>
+constructor by slotting useful session information into the
+<code><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/Annotated-class'>S4Vectors::metadata()</a></code> slot:</p>
     
     </div>
 
@@ -197,11 +197,11 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::SummarizedExperiment()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/SingleCellExperiment/topics/SingleCellExperiment'>SingleCellExperiment::SingleCellExperiment()</a></code>.</p></li>
 <li><p><code>help("RangedSummarizedExperiment-class", "SummarizedExperiment")</code>.</p></li>
 <li><p><code>help("SummarizedExperiment-class", "SummarizedExperiment")</code>.</p></li>
 <li><p><code>help("SingleCellExperiment-class", "SingleCellExperiment")</code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::SummarizedExperiment()</a></code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/SingleCellExperiment/topics/SingleCellExperiment'>SingleCellExperiment::SingleCellExperiment()</a></code>.</p></li>
 </ul></div>
     <div class='dont-index'><p>Other SummarizedExperiment Functions: <code><a href='counts.html'>counts</a></code>,
   <code><a href='interestingGroups.html'>interestingGroups</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
@@ -237,9 +237,9 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 #&gt; gene3       4       8      12      16
 #&gt; </div><div class='input'>
 <span class='co'>## Row data (genomic ranges)</span>
-<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'>GRanges</span>(
+<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>GenomicRanges</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/GenomicRanges/topics/GRanges-class'>GRanges</a></span>(
     <span class='kw'>seqnames</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='st'>"1"</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>3L</span>),
-    <span class='kw'>ranges</span> <span class='kw'>=</span> <span class='fu'>IRanges</span>(
+    <span class='kw'>ranges</span> <span class='kw'>=</span> <span class='kw pkg'>IRanges</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/IRanges/topics/IRanges-constructor'>IRanges</a></span>(
         <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>201L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>100L</span>),
         <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>100L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>300L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>100L</span>)
     )
@@ -256,7 +256,7 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
 <span class='co'>## Column data</span>
-<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
+<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
     <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='st'>"wildtype"</span>, <span class='st'>"knockout"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>),
     <span class='kw'>age</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='fl'>3L</span>, <span class='fl'>6L</span>), <span class='fl'>2L</span>),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='no'>samples</span>
@@ -274,8 +274,7 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
     <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='no'>rowRanges</span>,
     <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>,
     <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='st'>"EGFP"</span>
-)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 4 4 
 #&gt; metadata(3): date wd sessionInfo
 #&gt; assays(1): counts

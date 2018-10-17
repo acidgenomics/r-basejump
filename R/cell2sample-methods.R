@@ -1,6 +1,6 @@
 #' Cell-to-Sample Mappings
 #'
-#' @note `sampleID` column must be defined in [colData()].
+#' @note `sampleID` column must be defined in [SummarizedExperiment::colData()].
 #'
 #' @name cell2sample
 #' @family SingleCellExperiment Functions

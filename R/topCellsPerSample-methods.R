@@ -11,6 +11,7 @@
 #' @return `list`. Top barcodes as `character`, split by `sampleID`.
 #'
 #' @examples
+#' data(sce_small)
 #' x <- topCellsPerSample(sce_small)
 #' lapply(x, head)
 NULL

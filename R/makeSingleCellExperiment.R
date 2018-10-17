@@ -9,12 +9,11 @@
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' data(sce_small)
-#' object <- sce_small
-#' assays <- assays(object)
-#' rowRanges <- rowRanges(object)
-#' colData <- colData(object)
-#' metadata <- metadata(object)
+#' object <- basejump::sce_small
+#' assays <- SummarizedExperiment::assays(object)
+#' rowRanges <- SummarizedExperiment::rowRanges(object)
+#' colData <- SummarizedExperiment::colData(object)
+#' metadata <- S4Vectors::metadata(object)
 #' x <- makeSingleCellExperiment(
 #'     assays = assays,
 #'     rowRanges = rowRanges,

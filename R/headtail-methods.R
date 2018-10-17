@@ -1,7 +1,7 @@
 #' Return the First and Last Part of an Object
 #'
-#' Inspired by the [print()] method for `DataFrame` class objects. Applies to
-#' both rows and columns, enabling quick inspection during interactive use.
+#' Inspired by the [base::print()] method for `DataFrame` class objects. Applies
+#' to both rows and columns, enabling quick inspection during interactive use.
 #'
 #' @name headtail
 #' @export
@@ -13,9 +13,8 @@
 #' @return None (invisible `NULL`).
 #'
 #' @seealso
-#' - [head()], [tail()], [cat()].
+#' - [utils::head()], [utils::tail()], [base::cat()].
 #' - `getMethod("show", "DataTable")`.
-#' - [S4Vectors::showAsCell].
 #'
 #' @examples
 #' data(rse_small, sce_small)
@@ -216,7 +215,7 @@ setMethod(
 
 
 
-#' @describeIn headtail Summarize the primary [assay()].
+#' @describeIn headtail Summarize the primary [SummarizedExperiment::assay()].
 #' @export
 setMethod(
     f = "headtail",

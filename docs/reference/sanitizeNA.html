@@ -135,9 +135,6 @@ returned unmodified.</p>
 <span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for tbl_df</span>
 <span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -164,7 +161,7 @@ returned unmodified.</p>
 <span class='fu'>print</span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; [1] "1"    "x"    ""     "NA"   "NULL"</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeNA</span>(<span class='no'>from</span>)
 <span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; [1] "1" "x" NA  NA  NA </div><div class='input'>
 <span class='co'>## DataFrame ====</span>
-<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
+<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'>DataFrame</span>(
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"c"</span>, <span class='st'>"d"</span>)

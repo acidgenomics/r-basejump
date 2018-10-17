@@ -4,31 +4,7 @@
 \name{reexports}
 \alias{reexports}
 \alias{as_tibble}
-\alias{GRanges}
-\alias{IRanges}
-\alias{seqnames}
-\alias{Matrix}
-\alias{DataFrame}
-\alias{mcols}
-\alias{mcols<-}
-\alias{metadata}
-\alias{metadata<-}
-\alias{assay}
-\alias{assay<-}
-\alias{assays}
-\alias{assays<-}
-\alias{colData}
-\alias{colData<-}
-\alias{rowData}
-\alias{rowData<-}
-\alias{rowRanges}
-\alias{rowRanges<-}
-\alias{SummarizedExperiment}
-\alias{pull}
 \alias{\%>\%}
-\alias{set_rownames}
-\alias{glimpse}
-\alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -36,22 +12,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{dplyr}{\code{\link[dplyr]{pull}}}
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 
-  \item{GenomeInfoDb}{\code{\link[GenomeInfoDb]{seqnames}}}
-
-  \item{GenomicRanges}{\code{\link[GenomicRanges]{GRanges}}}
-
-  \item{IRanges}{\code{\link[IRanges]{IRanges}}}
-
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}
-
-  \item{Matrix}{\code{\link[Matrix]{Matrix}}}
-
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}}
-
-  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assay<-}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}, \code{\link[SummarizedExperiment]{SummarizedExperiment}}}
-
-  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{as_tibble}}}
 }}
 

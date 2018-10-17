@@ -11,8 +11,8 @@ standardizeCall(which = sys.parent(n = 1L), return = c("call", "list"),
 \item{which}{the frame number if non-negative, the number of frames
     to go back if negative.}
 
-\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
-the first item in the vector by default.}
+\item{return}{Object class to return. Uses \code{\link[base:match.arg]{base::match.arg()}} internally and
+picks the first item in the vector by default.}
 
 \item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
 recommended to enable this when debugging.}
