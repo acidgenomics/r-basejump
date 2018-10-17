@@ -7,6 +7,8 @@
 \alias{combine,SingleCellExperiment,SingleCellExperiment-method}
 \title{Combine Multiple Objects}
 \usage{
+combine(x, y, ...)
+
 \S4method{combine}{SummarizedExperiment,SummarizedExperiment}(x, y)
 
 \S4method{combine}{SingleCellExperiment,SingleCellExperiment}(x, y)
@@ -15,6 +17,8 @@
 \item{x}{One of the values.}
 
 \item{y}{A second value.}
+
+\item{...}{Any other objects of the same class as \code{x} and \code{y}.}
 }
 \value{
 \code{SummarizedExperiment}.
