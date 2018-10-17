@@ -18,10 +18,18 @@ tpm <- SingleCellExperiment::tpm
 #' @return `matrix`.
 #'
 #' @examples
-#' \dontrun{
+#' se <- SummarizedExperiment::SummarizedExperiment(
+#'     assays = list(
+#'         tpm = matrix(
+#'             data = seq_len(4L),
+#'             nrow = 2L,
+#'             ncol = 2L,
+#'             byrow = TRUE
+#'         )
+#'     )
+#' )
 #' x <- tpm(se)
-#' summary(x)
-#' }
+#' class(x)
 NULL
 
 
