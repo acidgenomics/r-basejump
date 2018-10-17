@@ -1,8 +1,8 @@
 context("Import/Export")
 
 # TODO Need more complete `import()` / `export()` unit tests.
-
 data(rse_small, sce_small, envir = environment())
+seqnames <- GenomeInfoDb::seqnames
 
 
 

@@ -2,6 +2,9 @@ context("Data")
 
 data(rse_small, sce_small, envir = environment())
 
+seqnames <- GenomeInfoDb::seqnames
+`rowRanges<-` <- SummarizedExperiment::`rowRanges<-`
+
 
 
 # convertGenesToSymbols ========================================================
