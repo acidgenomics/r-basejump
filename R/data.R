@@ -6,7 +6,7 @@
 #' @family Minimal Example Data
 #'
 #' @examples
-#' print(basejump::rse_small)
+#' basejump::rse_small
 "rse_small"
 
 
@@ -18,7 +18,7 @@
 #' @seealso `scater::sc_example_counts`.
 #'
 #' @examples
-#' print(basejump::sce_small)
+#' basejump::sce_small
 "sce_small"
 
 
@@ -28,5 +28,5 @@
 #' @family Minimal Example Data
 #'
 #' @examples
-#' print(basejump::tx_se_small)
+#' basejump::tx_se_small
 "tx_se_small"
