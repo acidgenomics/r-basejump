@@ -17,6 +17,7 @@ checkClasses(object, expected, subset = FALSE)
 Check Classes
 }
 \examples{
+data(rse_small)
 checkClasses(
     object = metadata(rse_small),
     expected = list(
