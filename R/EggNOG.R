@@ -98,7 +98,7 @@ EggNOG <- function(.test = FALSE) {
     # Return -------------------------------------------------------------------
     out <- new(
         Class = "EggNOG",
-        SimpleList(
+        List(
             cogFunctionalCategories = categories,
             annotations = annotations
         )
