@@ -10,6 +10,7 @@
 #' @return `character`. Object names defined in the new `environment`.
 #'
 #' @examples
+#' data(rse_small, sce_small)
 #' multiassignAsEnvir(rse_small, sce_small, envirName = "example")
 #' class(example)
 #' ls(example)

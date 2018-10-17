@@ -21,6 +21,7 @@ new \code{environment}, specified by \code{envirName} argument.}
 Assign Multiple Objects as an Environment
 }
 \examples{
+data(rse_small, sce_small)
 multiassignAsEnvir(rse_small, sce_small, envirName = "example")
 class(example)
 ls(example)
