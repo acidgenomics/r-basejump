@@ -12,14 +12,12 @@
 \usage{
 convertTranscriptsToGenes(object, ...)
 
-\S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
-  organism = NULL, build = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{character}(object, tx2gene)
 
-\S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
-  organism = NULL, build = NULL, release = NULL, aggregate = TRUE)
+\S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene,
+  aggregate = TRUE)
 
-\S4method{convertTranscriptsToGenes}{sparseMatrix}(object,
-  tx2gene = NULL, organism = NULL, build = NULL, release = NULL,
+\S4method{convertTranscriptsToGenes}{sparseMatrix}(object, tx2gene,
   aggregate = TRUE)
 
 \S4method{convertTranscriptsToGenes}{SummarizedExperiment}(object)
@@ -28,18 +26,6 @@ convertTranscriptsToGenes(object, ...)
 \item{object}{Object.}
 
 \item{...}{Passthrough to \code{\link[=makeTx2geneFromEnsembl]{makeTx2geneFromEnsembl()}}.}
-
-\item{tx2gene}{\code{Tx2Gene} or \code{NULL}. Transcript-to-gene mappings. If set
-\code{NULL}, the function will attempt to download the mappings from Ensembl
-automatically.}
-
-\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
-
-\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
-"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
-
-\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
-set \code{NULL}, defaults to the most recent release available.}
 
 \item{aggregate}{\code{boolean}. For objects supporting \code{\link[=dim]{dim()}}, aggregate counts
 to gene level and collapse the matrix.}
@@ -92,7 +78,7 @@ x <- convertTranscriptsToGenes(object)
 print(x)
 }
 \seealso{
-\link{aggregateRows}.
+\code{\link[=aggregateRows]{aggregateRows()}}.
 
 Other Identifier Mapping Functions: \code{\link{Ensembl2Entrez}},
   \code{\link{Gene2Symbol}}, \code{\link{HGNC2Ensembl}},
