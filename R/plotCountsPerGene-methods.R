@@ -5,7 +5,6 @@
 #'
 #' @name plotCountsPerGene
 #' @family Plots
-#' @export
 #'
 #' @inheritParams meltCounts
 #' @inheritParams general

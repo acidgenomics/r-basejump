@@ -1,3 +1,10 @@
+#' @rdname tpm
+#' @importFrom SingleCellExperiment tpm
+#' @export
+tpm <- SingleCellExperiment::tpm
+
+
+
 #' Transcripts Per Million (TPM)
 #'
 #' @note Both gene- and transcript-level counts are supported, as long as they
@@ -5,8 +12,6 @@
 #'
 #' @name tpm
 #' @family SummarizedExperiment Functions
-#' @importFrom SingleCellExperiment tpm
-#' @export
 #'
 #' @inheritParams general
 #'

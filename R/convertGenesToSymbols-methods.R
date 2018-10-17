@@ -6,7 +6,6 @@
 #'
 #' @name convertGenesToSymbols
 #' @family Identifier Mapping Functions
-#' @export
 #'
 #' @inheritParams general
 #'

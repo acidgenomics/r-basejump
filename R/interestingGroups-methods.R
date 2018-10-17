@@ -3,7 +3,6 @@
 #' @name interestingGroups
 #' @family Metadata Functions
 #' @family SummarizedExperiment Functions
-#' @export
 #'
 #' @inheritParams general
 #'

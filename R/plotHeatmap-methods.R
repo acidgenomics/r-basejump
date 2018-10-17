@@ -11,7 +11,6 @@
 #' @name plotHeatmap
 #' @family Plots
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @export
 #'
 #' @inheritParams general
 #'

@@ -1,7 +1,6 @@
 #' Collapse to String
 #'
 #' @name collapseToString
-#' @export
 #'
 #' @inheritParams general
 #' @param sep `string`. Separator. Defaults to comma.
