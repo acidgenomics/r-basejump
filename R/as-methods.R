@@ -122,7 +122,7 @@ as.DataFrame.default <-  # nolint
 
 
 #' @rdname as
-#' @name coerce,GRanges,tbl_df-method
+#' @name coerce,tbl_df,DataFrame-method
 setAs(
     from = "tbl_df",
     to = "DataFrame",

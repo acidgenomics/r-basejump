@@ -27,6 +27,8 @@ convertTranscriptsToGenes(object, ...)
 
 \item{...}{Passthrough to \code{\link[=makeTx2geneFromEnsembl]{makeTx2geneFromEnsembl()}}.}
 
+\item{tx2gene}{\code{Tx2Gene}. Transcript-to-gene mappings.}
+
 \item{aggregate}{\code{boolean}. For objects supporting \code{\link[=dim]{dim()}}, aggregate counts
 to gene level and collapse the matrix.}
 }
@@ -41,8 +43,8 @@ collapsed to gene level by default (see \code{aggregate} argument).
 Convert Ensembl Transcripts to Genes
 }
 \note{
-For objects containing a count matrix, the object rows will be collapsed to
-gene level using \code{\link[=aggregateRows]{aggregateRows()}}. This applies to our
+For objects containing a count matrix, the object rows will be
+collapsed to gene level using \code{\link[=aggregateRows]{aggregateRows()}}. This applies to our
 \code{SummarizedExperiment} method.
 }
 \examples{

@@ -1,17 +1,16 @@
 #' Convert Ensembl Transcripts to Genes
 #'
-#' @note
-#' For objects containing a count matrix, the object rows will be collapsed to
-#' gene level using [aggregateRows()]. This applies to our
-#' `SummarizedExperiment` method.
+#' @note For objects containing a count matrix, the object rows will be
+#'   collapsed to gene level using [aggregateRows()]. This applies to our
+#'   `SummarizedExperiment` method.
 #'
 #' @name convertTranscriptsToGenes
 #' @family Identifier Mapping Functions
 #' @family Transcript-Level Functions
 #' @include makeTx2Gene.R
 #' @inherit convertGenesToSymbols
-#' @export
 #'
+#' @inheritParams general
 #' @param aggregate `boolean`. For objects supporting [dim()], aggregate counts
 #'   to gene level and collapse the matrix.
 #' @param ... Passthrough to [makeTx2geneFromEnsembl()].
