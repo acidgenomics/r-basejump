@@ -10,7 +10,6 @@
 #' @name metrics
 #' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @export
 #'
 #' @inheritParams general
 #' @param fun `string`. Mathematical function name to apply. Uses [match.arg()].

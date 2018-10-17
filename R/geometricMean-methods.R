@@ -9,7 +9,6 @@
 #'
 #' @name geometricMean
 #' @family Calculations
-#' @export
 #'
 #' @inheritParams general
 #' @inheritParams base::apply

@@ -1,7 +1,13 @@
+#' @rdname show
+#' @importFrom methods show
+#' @export
+show <- methods::show
+
+
+
 #' @inherit methods::show
 #' @importFrom methods show
 #' @name show
-#' @export
 #'
 #' @examples
 #' data(rse_small)

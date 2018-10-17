@@ -10,7 +10,6 @@
 #' @name sampleData
 #' @family Metadata Functions
 #' @family SummarizedExperiment Functions
-#' @export
 #'
 #' @inheritParams general
 #' @param blacklist `character`. Column names that should never be treated as

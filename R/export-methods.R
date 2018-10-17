@@ -16,7 +16,6 @@
 #'
 #' @name export
 #' @family Import/Export Functions
-#' @export
 #'
 #' @inheritParams general
 #' @inheritParams rio::export

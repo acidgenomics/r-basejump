@@ -10,7 +10,6 @@
 #'
 #' @name aggregateCellsToSamples
 #' @family SingleCellExperiment Functions
-#' @export
 #'
 #' @inheritParams general
 #' @inheritParams aggregate
