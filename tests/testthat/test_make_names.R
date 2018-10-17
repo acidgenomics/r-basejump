@@ -10,6 +10,8 @@ funs <- list(
     upperCamel = upperCamel
 )
 
+Matrix <- Matrix::Matrix
+
 
 
 # atomic =======================================================================
