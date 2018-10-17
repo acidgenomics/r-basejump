@@ -12,6 +12,8 @@
 \alias{show,Tx2Gene-method}
 \title{Show an Object}
 \usage{
+show(object)
+
 \S4method{show}{EggNOG}(object)
 
 \S4method{show}{Ensembl2Entrez}(object)
