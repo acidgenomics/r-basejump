@@ -1,6 +1,7 @@
 #' Make Genomic Ranges
 #'
 #' @name makeGRanges
+#' @include globals.R
 #' @family Annotation Functions
 #' @family Transcript-Level Functions
 #'
@@ -77,7 +78,7 @@ NULL
 #'   transcript annotations. `GRanges` is recommended.
 #'
 #' @return Named `factor` containing broad class definitions.
-.broadClass <- function(object) {
+.defineBroadClass <- function(object) {
     assert_is_all_of(object, "GRanges")
 
     names <- names(object)
@@ -196,11 +197,63 @@ NULL
 
 
 
-.getEnsDbFromAnnotationHub <- function(
+#' Connect to AnnotationHub
+#'
+#' On a fresh install this will print a txProgressBar to the console. We're
+#' using `capture.output()` here to suppress the console output, since it's not
+#' very informative and can cluster R Markdown reports.
+#'
+#' @noRd
+.annotationHub <- function() {
+    userAttached <- .packages()
+    invisible(capture.output(
+        ah <- suppressMessages(AnnotationHub())
+    ))
+    assert_is_all_of(ah, "AnnotationHub")
+    .forceDetach(keep = userAttached)
+    ah
+}
+
+
+
+#' Force Detach Packages
+#'
+#' ensembldb will attach unwanted packages into the NAMESPACE, which can
+#' conflict with tidyverse packages (e.g. dplyr).
+#'
+#' @noRd
+.forceDetach <- function(keep = NULL) {
+    detach <- setdiff(.packages(), keep)
+    if (has_length(detach)) {
+        invisible(lapply(
+            X = detach,
+            FUN = function(name) {
+                if (name %in% .packages()) {
+                    suppressWarnings(detach(
+                        name = paste0("package:", name),
+                        unload = TRUE,
+                        force = TRUE,
+                        character.only = TRUE
+                    ))
+                }
+            }
+        ))
+    }
+    assert_are_identical(.packages(), keep)
+}
+
+
+
+#' Get AnnotationHub ID
+#' @noRd
+#' @examples .getAnnotationHubID("Homo sapiens")
+.getAnnotationHubID <- function(
     organism,
     build = NULL,
-    release = NULL
+    release = NULL,
+    ah = NULL
 ) {
+    userAttached <- .packages()
     assert_is_a_string(organism)
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
@@ -226,33 +279,26 @@ NULL
         release <- as.integer(release)
     }
 
-    # AnnotationHub --------------------------------------------------------
-    # Connect to AnnotationHub. On a fresh install this will print a
-    # txProgressBar to the console. We're using `capture.output()` here
-    # to suppress the console output, since it's not very informative and
-    # can cluster R Markdown reports.
-    invisible(capture.output(
-        ah <- suppressMessages(AnnotationHub())
-    ))
+    # Error on request of unsupported legacy release.
+    if (!is.null(release) && release < 87L) {
+        stop(paste(
+            "ensembldb currently only supports Ensembl releases >= 87."
+        ))
+    }
+
+    # Get AnnotationHub if necessary.
+    if (is.null(ah)) {
+        ah <- .annotationHub()
+    }
+
+    # Matching EnsDb objects from ensembldb by default.
+    rdataclass <- "EnsDb"
 
     message(paste0(
-        "Making GRanges from Ensembl with AnnotationHub ",
+        "Matching ", rdataclass, " from AnnotationHub ",
         packageVersion("AnnotationHub"),
         " (", snapshotDate(ah), ")."
     ))
-
-    # Use ensembldb annotations by default.
-    rdataclass <- "EnsDb"
-
-    # For legacy release requests, switch to newest version available.
-    if (!is.null(release) && release < 87L) {
-        warning(paste(
-            "ensembldb currently only supports Ensembl releases >= 87.",
-            "Switching to current release instead.",
-            sep = "\n"
-        ))
-        release <- NULL
-    }
 
     # Query AnnotationHub.
     ahs <- query(
@@ -271,10 +317,7 @@ NULL
     mcols <- mcols(ahs)
 
     # Abort if there's no match and working offline.
-    if (
-        !isTRUE(has_internet()) &&
-        !nrow(mcols)
-    ) {
+    if (!isTRUE(has_internet()) && !nrow(mcols)) {
         # nocov start
         stop(
             "AnnotationHub requires an Internet connection for query.",
@@ -313,26 +356,47 @@ NULL
         ))
     }
 
-    mcols <- tail(mcols, 1L)
-    message(mcols[["title"]])
-    ahid <- rownames(mcols)
+    mcols <- tail(mcols, n = 1L)
+    id <- rownames(mcols)
+    assert_is_a_string(id)
+    assert_all_are_matching_regex(x = id, pattern = "^AH[[:digit:]]+$")
+    message(paste0(id, ": ", mcols[["title"]]))
+    .forceDetach(keep = userAttached)
+    id
+}
 
+
+
+#' Get EnsDb from AnnotationHub
+#' @noRd
+#' @examples .getEnsDbFromAnnotationHub("AH64923")
+.getEnsDbFromAnnotationHub <- function(id, ah = NULL) {
+    userAttached <- .packages()
+    # Get AnnotationHub if necessary.
+    if (is.null(ah)) {
+        ah <- .annotationHub()
+    }
+    assert_is_all_of(ah, "AnnotationHub")
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output.
     # Additionally, it attaches ensembldb and other Bioconductor dependency
     # packages, which will mask some tidyverse functions (e.g. `select()`).
     invisible(capture.output(
-        edb <- suppressMessages(ah[[ahid]])
+        edb <- suppressMessages(ah[[id]])
     ))
-
     assert_is_all_of(edb, "EnsDb")
+    .forceDetach(keep = userAttached)
     edb
 }
 
 
 
-#' Get EnsDb annotations from package.
+#' Get EnsDb from Package
+#' @noRd
+#' @examples .getEnsDbFromPackage("EnsDb.Hsapiens.v75")
 .getEnsDbFromPackage <- function(package) {
+    message(paste0("Getting EnsDb from ", package, "."))
+    userAttached <- .packages()
     assert_is_a_string(package)
     require(package, character.only = TRUE)
     edb <- get(
@@ -341,17 +405,16 @@ NULL
         inherits = FALSE
     )
     assert_is_all_of(edb, "EnsDb")
+    .forceDetach(keep = userAttached)
     edb
 }
 
 
 
 #' Make GRanges from ensembldb EnsDb object.
-#' FIXME This isn't working because it's split out...
-.makeGRangesFromEnsDb <- function(
-    edb,
-    level = c("genes", "transcripts")
-) {
+#' @noRd
+.makeGRangesFromEnsDb <- function(edb, level) {
+    userAttached <- .packages()
     assert_is_all_of(edb, "EnsDb")
     level <- match.arg(level)
 
@@ -420,31 +483,13 @@ NULL
         gr <- tx
     }
 
-    # Force detach -------------------------------------------------------------
-    # ensembldb will attach unwanted packages into the NAMESPACE, which can
-    # conflict with tidyverse.
-    fxnAttached <- setdiff(.packages(), userAttached)
-    invisible(lapply(
-        X = fxnAttached,
-        FUN = function(name) {
-            if (name %in% .packages()) {
-                suppressWarnings(detach(
-                    name = paste0("package:", name),
-                    unload = TRUE,
-                    force = TRUE,
-                    character.only = TRUE
-                ))
-            }
-        }
-    ))
-    assert_are_identical(.packages(), userAttached)
-
     # Always stash the metadata.
     metadata(gr) <- metadata
 
+    .forceDetach(keep = userAttached)
     .makeGRanges(gr)
 }
-# FIXME Automatically match the formals with makeGRangesFromEnsembl
+formals(.makeGRangesFromEnsDb)[["level"]] <- level
 
 
 
@@ -468,20 +513,13 @@ NULL
 #' @export
 makeGRangesFromEnsembl <- function(
     organism,
-    level = c("genes", "transcripts"),
+    level,
     build = NULL,
     release = NULL
 ) {
+    message("Making GRanges from Ensembl.")
     assert_is_a_string(organism)
     level <- match.arg(level)
-
-    # Ensure `select()` isn't masked by ensembldb and/or AnnotationDbi.
-    userAttached <- .packages()
-    # FIXME Need to improve the handling when we split out EnsDb functionality.
-
-    # Fetch annotations from AnnotationHub/ensembldb ---------------------------
-    # ah: AnnotationHub
-    # edb: Ensembl database
     if (
         identical(tolower(organism), "homo sapiens") &&
         (
@@ -489,18 +527,21 @@ makeGRangesFromEnsembl <- function(
             identical(release, 75L)
         )
     ) {
-        edb <- .getEnsDb(package = "EnsDb.Hsapiens.v75")
+        id <- "EnsDb.Hsapiens.v75"
+        edb <- .getEnsDb(package = id)
     } else {
-        edb <- .getEnsDbFromAnnotationHub(
+        id <- .getAnnotationHubID(
             organism = organism,
             build = build,
             release = release
         )
+        edb <- .getEnsDbFromAnnotationHub(id = id)
     }
-
-    .makeGRangesFromEnsDb(edb = edb, level = level)
+    gr <- .makeGRangesFromEnsDb(edb = edb, level = level)
+    metadata(gr)[["id"]] <- id
+    gr
 }
-# FIXME Slot AnnotationHub ID in metadata.
+formals(makeGRangesFromEnsembl)[["level"]] <- level
 
 
 
@@ -519,6 +560,7 @@ makeGRangesFromGFF <- function(
     file,
     level = c("genes", "transcripts")
 ) {
+    message("Making GRanges from GFF/GTF file.")
     # Note that `import()` has assert checks for file (see below).
     level <- match.arg(level)
 
@@ -760,7 +802,7 @@ makeGRangesFromGFF <- function(
     names(object) <- mcols(object)[[idCol]]
 
     # Ensure broad class definitions are included.
-    mcols(object)[["broadClass"]] <- .broadClass(object)
+    mcols(object)[["broadClass"]] <- .defineBroadClass(object)
 
     # Sort metadata columns alphabetically.
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
