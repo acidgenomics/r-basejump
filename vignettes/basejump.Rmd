@@ -87,7 +87,7 @@ By default, the function will use the latest release version available from [Ann
 ```{r}
 grch38 <- makeGRangesFromEnsembl("Homo sapiens")
 summary(grch38)
-glimpse(grch38)
+str(grch38)
 head(names(grch38))
 ```
 
@@ -115,7 +115,7 @@ Gene metadata is contained in the `mcols` slot of the object, using a `DataFrame
 
 ```{r}
 S4Vectors::mcols(grch38) %>% colnames()
-S4Vectors::mcols(grch38) %>% glimpse()
+S4Vectors::mcols(grch38) %>% str()
 ```
 
 Transcript-level annotations are also supported, using the `level = "transcripts"` argument.
@@ -126,7 +126,7 @@ transcripts <- makeGRangesFromEnsembl(
     level = "transcripts"
 )
 summary(transcripts)
-S4Vectors::mcols(transcripts) %>% glimpse()
+S4Vectors::mcols(transcripts) %>% str()
 ```
 
 ### Versioned releases
