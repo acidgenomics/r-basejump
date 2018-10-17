@@ -2,8 +2,6 @@
 #'
 #' @name organism
 #' @family Metadata Functions
-#' @importFrom BiocGenerics organism
-#' @export
 #'
 #' @inheritParams general
 #'
@@ -15,6 +13,13 @@
 #' data(rse_small)
 #' organism(rse_small)
 NULL
+
+
+
+#' @rdname organism
+#' @importFrom BiocGenerics organism
+#' @export
+organism <- BiocGenerics::organism
 
 
 
@@ -73,7 +78,7 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("sparseMatrix"),
-    definition = getMethod("organism", "matrix")
+    definition = .organism.matrix
 )
 
 
@@ -83,7 +88,7 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("data.frame"),
-    definition = getMethod("organism", "matrix")
+    definition = .organism.matrix
 )
 
 
@@ -93,7 +98,7 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("DataFrame"),
-    definition = getMethod("organism", "matrix")
+    definition = .organism.matrix
 )
 
 

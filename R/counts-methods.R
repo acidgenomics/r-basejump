@@ -7,8 +7,6 @@
 #'
 #' @name counts
 #' @family SummarizedExperiment Functions
-#' @importFrom BiocGenerics counts
-#' @export
 #'
 #' @inheritParams general
 #'
@@ -23,10 +21,14 @@ NULL
 
 
 #' @rdname counts
-#' @name counts<-
+#' @importFrom BiocGenerics counts
+#' @export
+counts <- BiocGenerics::counts
+
+#' @rdname counts
 #' @importFrom BiocGenerics counts<-
 #' @export
-NULL
+`counts<-` <- BiocGenerics::`counts<-`
 
 
 
