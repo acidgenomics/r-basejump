@@ -11,6 +11,19 @@
 \alias{Matrix}
 \alias{DataFrame}
 \alias{mcols}
+\alias{mcols<-}
+\alias{metadata}
+\alias{metadata<-}
+\alias{assay}
+\alias{assay<-}
+\alias{assays}
+\alias{assays<-}
+\alias{colData}
+\alias{colData<-}
+\alias{rowData}
+\alias{rowData<-}
+\alias{rowRanges}
+\alias{rowRanges<-}
 \alias{SummarizedExperiment}
 \alias{glimpse}
 \alias{tibble}
@@ -29,9 +42,9 @@ below to see their documentation.
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}}
 
-  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{SummarizedExperiment}}}
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assay<-}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}, \code{\link[SummarizedExperiment]{SummarizedExperiment}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{tibble}}}
 }}
