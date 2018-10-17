@@ -40,8 +40,8 @@ last items to include.}
 None (invisible \code{NULL}).
 }
 \description{
-Inspired by the \code{\link[=print]{print()}} method for \code{DataFrame} class objects. Applies to
-both rows and columns, enabling quick inspection during interactive use.
+Inspired by the \code{\link[base:print]{base::print()}} method for \code{DataFrame} class objects. Applies
+to both rows and columns, enabling quick inspection during interactive use.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -57,7 +57,7 @@ both rows and columns, enabling quick inspection during interactive use.
 
 \item \code{GRanges}: Summarize the ranges.
 
-\item \code{SummarizedExperiment}: Summarize the primary \code{\link[=assay]{assay()}}.
+\item \code{SummarizedExperiment}: Summarize the primary \code{\link[SummarizedExperiment:assay]{SummarizedExperiment::assay()}}.
 }}
 
 \examples{
@@ -75,8 +75,7 @@ headtail(sce_small)
 }
 \seealso{
 \itemize{
-\item \code{\link[=head]{head()}}, \code{\link[=tail]{tail()}}, \code{\link[=cat]{cat()}}.
+\item \code{\link[utils:head]{utils::head()}}, \code{\link[utils:tail]{utils::tail()}}, \code{\link[base:cat]{base::cat()}}.
 \item \code{getMethod("show", "DataTable")}.
-\item \link[S4Vectors:showAsCell]{S4Vectors::showAsCell}.
 }
 }

@@ -8,8 +8,9 @@
 #' @param x Object.
 #' @param ... Additional arguments.
 #'
-#' @param assay `scalar`. Name or index of count matrix slotted in [assays()].
-#'   When passing in a `string`, the name must be defined in [assayNames()].
+#' @param assay `scalar`. Name or index of count matrix slotted in
+#'   [SummarizedExperiment::assays()]. When passing in a `string`, the name must
+#'   be defined in [SummarizedExperiment::assayNames()].
 #' @param check `boolean`. Perform assert checks.
 #' @param color `ggproto`/`ScaleDiscrete` or `NULL`. Desired ggplot2 color
 #'   scale. Must supply discrete values. When set to `NULL`, the default ggplot2
@@ -43,8 +44,8 @@
 #' @param organism `string`. Full latin organism name (e.g. "`Homo sapiens`").
 #' @param perMillion `boolean`. Display as counts per million.
 #' @param plotlist `list` containing `ggplot` objects.
-#' @param return Object class to return. Uses [match.arg()] internally and picks
-#'   the first item in the vector by default.
+#' @param return Object class to return. Uses [base::match.arg()] internally and
+#'   picks the first item in the vector by default.
 #' @param title `string`. Plot title.
 #' @param trans `string`. Name of the axis scale transformation to apply. See
 #'   `help("scale_x_continuous", "ggplot2")` for more information.

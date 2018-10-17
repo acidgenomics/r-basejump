@@ -26,33 +26,32 @@ Combine Multiple Objects
 We're attempting to make this as strict as possible, requiring:
 \itemize{
 \item Rows (genes) across objects must be identical.
-\item \code{\link[=rowRanges]{rowRanges()}} and/or \code{\link[=rowData]{rowData()}} metadata must be identical.
-\item \code{\link[=colData]{colData()}} must contain the same columns.
+\item \code{\link[SummarizedExperiment:rowRanges]{SummarizedExperiment::rowRanges()}} and/or
+\code{\link[SummarizedExperiment:rowData]{SummarizedExperiment::rowData()}} metadata must be identical.
+\item \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}} must contain the same columns.
 \item Specific metadata must be identical (see \code{metadata} parameter).
 }
 }
 \examples{
-data(rse_small, sce_small)
-
 ## SummarizedExperiment ====
-x <- rse_small
+x <- basejump::rse_small
 colnames(x)
-colData(x)
+SummarizedExperiment::colData(x)
 
 ## Create a copy of our minimal example.
 y <- x
 colnames(y) <- paste0("sample", seq(from = 5L, to = 8L))
 colnames(y)
-colData(y)
+SummarizedExperiment::colData(y)
 
 ## Combine two SummarizedExperiment objects.
 c <- combine(x, y)
 print(c)
 colnames(c)
-colData(c)
+SummarizedExperiment::colData(c)
 
 ## SingleCellExperiment ====
-x <- sce_small
+x <- basejump::sce_small
 head(colnames(x))
 sampleData(x)
 

@@ -21,10 +21,13 @@ unique (non-amgibuous) symbols. It is designed to be used for gene plotting
 particularly when performing single-cell RNA-seq marker analysis.
 }
 \examples{
-data(rse_small)
-object <- rse_small
+object <- basejump::rse_small
 print(object)
-genes <- head(as.character(rowData(object)[["geneName"]]))
+genes <- object \%>\%
+    SummarizedExperiment::rowData(.) \%>\%
+    .[["geneName"]] \%>\%
+    as.character() \%>\%
+    head()
 print(genes)
 assertAllAreUniqueGeneNames(object = object, genes = genes)
 }

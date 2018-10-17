@@ -54,6 +54,12 @@
 #' x <- as(rse_small, Class = "list")
 #' class(x)
 #' names(x)
+#'
+#' ## DataFrame to tbl_df ====
+#' data <- SummarizedExperiment::colData(rse_small)
+#' print(data)
+#' x <- as(data, "tbl_df")
+#' print(x)
 NULL
 
 

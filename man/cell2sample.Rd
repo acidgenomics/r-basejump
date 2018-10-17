@@ -16,8 +16,8 @@ cell2sample(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
-the first item in the vector by default.}
+\item{return}{Object class to return. Uses \code{\link[base:match.arg]{base::match.arg()}} internally and
+picks the first item in the vector by default.}
 }
 \value{
 \itemize{
@@ -30,7 +30,7 @@ as the names.
 Cell-to-Sample Mappings
 }
 \note{
-\code{sampleID} column must be defined in \code{\link[=colData]{colData()}}.
+\code{sampleID} column must be defined in \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}}.
 }
 \examples{
 data(sce_small)

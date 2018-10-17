@@ -37,8 +37,8 @@ This function is a utility wrapper for
 \code{\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment::SummarizedExperiment()}} that provides automatic
 subsetting for row and column data, as well as automatic handling of
 transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the \code{\link[=metadata]{metadata()}}
-slot:
+constructor by slotting useful session information into the
+\code{\link[S4Vectors:metadata]{S4Vectors::metadata()}} slot:
 }
 \details{
 \itemize{
@@ -48,12 +48,11 @@ slot:
 }
 }
 \examples{
-data(sce_small)
-object <- sce_small
-assays <- assays(object)
-rowRanges <- rowRanges(object)
-colData <- colData(object)
-metadata <- metadata(object)
+object <- basejump::sce_small
+assays <- SummarizedExperiment::assays(object)
+rowRanges <- SummarizedExperiment::rowRanges(object)
+colData <- SummarizedExperiment::colData(object)
+metadata <- S4Vectors::metadata(object)
 x <- makeSingleCellExperiment(
     assays = assays,
     rowRanges = rowRanges,

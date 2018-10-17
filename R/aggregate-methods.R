@@ -17,9 +17,11 @@
 #' @param groupings `factor`. Defines the aggregation groupings. The new
 #'   aggregate names are defined as the `factor` `levels`, and the original,
 #'   unaggregated names are defined as the `names`.
-#' @param col `string`. Name of column in either `rowData` or `colData` that
+#' @param col `string`. Name of column in either
+#'   [SummarizedExperiment::rowData()] or [SummarizedExperiment::colData()] that
 #'   defines the desired aggregation groupings.
-#' @param fun `string`. Name of the aggregation function. Uses [match.arg()].
+#' @param fun `string`. Name of the aggregation function.
+#'   Uses [base::match.arg()].
 #'
 #' @return Modified object, with aggregated rows (features) or columns
 #'   (samples).
@@ -435,12 +437,14 @@ setMethod(
 
 
 
-#' @describeIn aggregate Aggregate rows or columns in [assays()] using an
+#' @describeIn aggregate Aggregate rows or columns in `assays` using an
 #'   automatically generated grouping `factor`, which is obtained from a
-#'   user-defined column (`col` argument) in either [rowData()] or [colData()].
-#'   Slot an `aggregate` column into [rowData()] for `aggregateRows()`, or into
-#'   [colData()] for [aggregateCols()]. This method will define the `groupings`
-#'   automatically and perform the aggregation.
+#'   user-defined column (`col` argument) in either
+#'   [SummarizedExperiment::rowData()] or [SummarizedExperiment::colData()].
+#'   Slot an `aggregate` column into [SummarizedExperiment::rowData()] for
+#'   [aggregateRows()], or into [SummarizedExperiment::colData()] for
+#'   [aggregateCols()]. This method will define the `groupings` automatically
+#'   and perform the aggregation.
 #' @export
 setMethod(
     f = "aggregateRows",
@@ -480,11 +484,12 @@ setMethod(
 
 
 
-#' @describeIn aggregate Aggregate [assays()] across cell-level groupings,
-#'   defined by a column in [colData()]. Inherits from `SummarizedExperiment`,
-#'   and still relies upon slotting an `aggregate` column into [colData()]. Note
-#'   that these groupings will map to cells, so care must be taken to properly
-#'   aggregate samples.
+#' @describeIn aggregate Aggregate [SummarizedExperiment::assays()] across
+#'   cell-level groupings, defined by a column in
+#'   [SummarizedExperiment::colData()]. Inherits from `SummarizedExperiment`,
+#'   and still relies upon slotting an `aggregate` column into
+#'   [SummarizedExperiment::colData()]. Note that these groupings will map to
+#'   cells, so care must be taken to properly aggregate samples.
 #' @export
 setMethod(
     f = "aggregateCols",

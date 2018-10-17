@@ -5,9 +5,9 @@
 #' @keywords internal
 #'
 #' @importClassesFrom IRanges SimpleDataFrameList
+#' @importClassesFrom S4Vectors DataFrame
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
-#' @importMethodsFrom BiocGenerics as.data.frame
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #'
@@ -77,8 +77,8 @@
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors %in% aggregate complete.cases cor head List mcols
-#'   mcols<- metadata metadata<- na.omit tail
+#' @importFrom S4Vectors %in% aggregate complete.cases cor DataFrame head List
+#'   mcols mcols<- metadata metadata<- na.omit tail
 #' @importFrom sessioninfo session_info
 #' @importFrom SingleCellExperiment isSpike<- SingleCellExperiment reducedDims
 #'   reducedDimNames spikeNames
@@ -87,7 +87,7 @@
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom SummarizedExperiment assay assayNames assays assays<- colData
 #'   colData<- rowData rowRanges SummarizedExperiment
-#' @importFrom tibble as_tibble column_to_rownames
+#' @importFrom tibble as_tibble column_to_rownames tibble
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
 #' @importFrom tools Rd_db

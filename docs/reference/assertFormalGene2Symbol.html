@@ -146,7 +146,7 @@ rownames must be defined here, otherwise the function will error.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
+    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>DataFrame</span>(
     <span class='st'>"sample1"</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='fl'>2L</span>),
     <span class='st'>"sample2"</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3L</span>, <span class='fl'>4L</span>),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gene1"</span>, <span class='st'>"gene2"</span>)
@@ -158,17 +158,21 @@ rownames must be defined here, otherwise the function will error.</p></td>
 #&gt; gene2         2         4</div><div class='input'>
 <span class='no'>gene2symbol</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(
     <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"Gene2Symbol"</span>,
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
+    <span class='fu'>DataFrame</span>(
         <span class='kw'>geneID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ENSG00000000003"</span>, <span class='st'>"ENSG00000000005"</span>),
         <span class='kw'>geneName</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"TSPAN6"</span>, <span class='st'>"TNMD"</span>),
         <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>rownames</span>(<span class='no'>object</span>)
     )
 )
-<span class='fu'>print</span>(<span class='no'>gene2symbol</span>)</div><div class='output co'>#&gt; Gene2Symbol with 2 rows and 2 columns
+<span class='fu'>print</span>(<span class='no'>gene2symbol</span>)</div><div class='output co'>#&gt; Gene2Symbol 
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 2 rows and 2 columns
 #&gt;                geneID    geneName
 #&gt;           &lt;character&gt; &lt;character&gt;
 #&gt; gene1 ENSG00000000003      TSPAN6
-#&gt; gene2 ENSG00000000005        TNMD</div><div class='input'>
+#&gt; gene2 ENSG00000000005        TNMD
+#&gt; 2 genes; 2 symbols</div><div class='input'>
 <span class='no'>geneIDs</span> <span class='kw'>&lt;-</span> <span class='no'>gene2symbol</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]]
 <span class='fu'>print</span>(<span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005"</div><div class='input'>
 <span class='no'>geneNames</span> <span class='kw'>&lt;-</span> <span class='no'>gene2symbol</span><span class='kw'>[[</span><span class='st'>"geneName"</span>]]

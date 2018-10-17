@@ -67,10 +67,13 @@ assertAllAreNonExisting <- function(
 #'   corresponding `SummarizedExperiment`.
 #'
 #' @examples
-#' data(rse_small)
-#' object <- rse_small
+#' object <- basejump::rse_small
 #' print(object)
-#' genes <- head(as.character(rowData(object)[["geneName"]]))
+#' genes <- object %>%
+#'     SummarizedExperiment::rowData(.) %>%
+#'     .[["geneName"]] %>%
+#'     as.character() %>%
+#'     head()
 #' print(genes)
 #' assertAllAreUniqueGeneNames(object = object, genes = genes)
 assertAllAreUniqueGeneNames <- function(object, genes) {

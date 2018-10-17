@@ -17,9 +17,10 @@ checkClasses(object, expected, subset = FALSE)
 Check Classes
 }
 \examples{
-data(rse_small)
+object <- basejump::rse_small
+metadata <- S4Vectors::metadata(object)
 checkClasses(
-    object = metadata(rse_small),
+    object = metadata,
     expected = list(
         version = c("package_version", "numeric_version"),
         date = "Date",

@@ -44,8 +44,8 @@ This function is a utility wrapper for
 \code{\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment::SummarizedExperiment()}} that provides automatic
 subsetting for row and column data, as well as automatic handling of
 transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the \code{\link[=metadata]{metadata()}}
-slot:
+constructor by slotting useful session information into the
+\code{\link[S4Vectors:metadata]{S4Vectors::metadata()}} slot:
 }
 \details{
 \itemize{
@@ -81,9 +81,9 @@ assays <- list(counts = counts)
 print(assays)
 
 ## Row data (genomic ranges)
-rowRanges <- GRanges(
+rowRanges <- GenomicRanges::GRanges(
     seqnames = rep("1", times = 3L),
-    ranges = IRanges(
+    ranges = IRanges::IRanges(
         start = seq(from = 1L, to = 201L, by = 100L),
         end = seq(from = 100L, to = 300L, by = 100L)
     )
@@ -94,7 +94,7 @@ names(rowRanges) <- paste0("gene", seq_len(3L))
 print(rowRanges)
 
 ## Column data
-colData <- DataFrame(
+colData <- S4Vectors::DataFrame(
     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
     age = rep(c(3L, 6L), 2L),
     row.names = samples
@@ -112,11 +112,11 @@ print(x)
 }
 \seealso{
 \itemize{
+\item \code{SummarizedExperiment::SummarizedExperiment()}.
+\item \code{SingleCellExperiment::SingleCellExperiment()}.
 \item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.
-\item \code{SummarizedExperiment::SummarizedExperiment()}.
-\item \code{SingleCellExperiment::SingleCellExperiment()}.
 }
 
 Other SummarizedExperiment Functions: \code{\link{counts}},

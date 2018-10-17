@@ -116,7 +116,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>coerceS4ToList</span>(<span class='no'>from</span>)
+    <pre class="usage"><span class='co'># S4 method for sparseMatrix</span>
+<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+
+<span class='fu'>coerceS4ToList</span>(<span class='no'>from</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>as.list</span>(<span class='no'>x</span>)</pre>
@@ -125,13 +129,27 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>x</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>row.names</th>
+      <td><p>See <code>?base::<a href='http://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></code> for a description of
+    these arguments.</p></td>
+    </tr>
+    <tr>
+      <th>optional</th>
+      <td><p>See <code>?base::<a href='http://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></code> for a description of
+    these arguments.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
       <th>from</th>
       <td><p>The classes between which the coerce methods
     <code>def</code> and <code>replace</code> perform coercion.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>Object.</p></td>
     </tr>
     </table>
     
@@ -139,12 +157,21 @@
 
     <p>Object of new class.</p>
     
+    <h2 class="hasAnchor" id="list"><a class="anchor" href="#list"></a>list</h2>
+
+    
+    <p>It is often useful to coerce an S4 object to a flat <code>list</code> for archival
+storage. Here we are providing the <code>coerceS4ToList()</code> function, which
+consistently coerces the slots in any S4 to a standard <code>list</code>. Additionally,
+here we have improved support for <code>SummarizedExperiment</code> to <code>list</code> coercion,
+returning the slots as a <code>list</code>.</p>
+    
     <h2 class="hasAnchor" id="tibble"><a class="anchor" href="#tibble"></a>tibble</h2>
 
     
     <p>Coerce an object to a <code>tibble</code> (<code>tbl_df</code>) data frame using either S3 or S4
 methods:</p><ul>
-<li><p>S3: <code><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble(x)</a></code> (or <code>as.tibble()</code> alias).</p></li>
+<li><p>S3: <code><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble(x)</a></code> (or <code><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble()</a></code> alias).</p></li>
 <li><p>S4: <code>as(object, Class = "tbl_df")</code>.</p></li>
 </ul>
     <p>Tibbles don't support row name assignment, so here we are ensuring they are
@@ -159,15 +186,6 @@ rownames automatically, if defined.</p>
 <code>as(tbl_df, Class = "DataFrame")</code> method looks for the <code>rowname</code> column and
 will attempt to move it back to <code>rownames()</code> automatically, unless there are
 duplicates present.</p>
-    
-    <h2 class="hasAnchor" id="list"><a class="anchor" href="#list"></a>list</h2>
-
-    
-    <p>It is often useful to coerce an S4 object to a flat <code>list</code> for archival
-storage. Here we are providing the <code>coerceS4ToList()</code> function, which
-consistently coerces the slots in any S4 to a standard <code>list</code>. Additionally,
-here we have improved support for <code>SummarizedExperiment</code> to <code>list</code> coercion,
-returning the slots as a <code>list</code>.</p>
     
     <h2 class="hasAnchor" id="description"><a class="anchor" href="#description"></a>Description</h2>
 
@@ -211,7 +229,6 @@ returning the slots as a <code>list</code>.</p>
 <li><p><code><a href='http://www.rdocumentation.org/packages/methods/topics/canCoerce'>methods::canCoerce()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/methods/topics/showMethods'>methods::showMethods()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/utils/topics/methods'>utils::methods()</a></code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>tibble::as_tibble()</a></code>.</p></li>
 <li><p><code>as.list()</code>.</p></li>
 </ul></div>
     
@@ -219,31 +236,26 @@ returning the slots as a <code>list</code>.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
 
-<span class='co'>## DataFrame to tbl_df ====</span>
-<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>colData</span>(<span class='no'>rse_small</span>)
-<span class='fu'>print</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;         genotype treatment
-#&gt;         &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1 wildtype   control
-#&gt; sample2 knockout   control
-#&gt; sample3 wildtype   treated
-#&gt; sample4 knockout   treated</div><div class='input'>
-<span class='co'>## Automatically move row names to `rowname` column by default.</span>
-<span class='no'>tbl_df</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>data</span>, <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"tbl_df"</span>)
-
-<span class='co'>## tbl_df to DataFrame ====</span>
-<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>tbl_df</span>, <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"DataFrame"</span>)
-<span class='fu'>print</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;         genotype treatment
-#&gt;         &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1 wildtype   control
-#&gt; sample2 knockout   control
-#&gt; sample3 wildtype   treated
-#&gt; sample4 knockout   treated</div><div class='input'>
 <span class='co'>## SummarizedExperiment to list ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>rse_small</span>, <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"list"</span>)
 <span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
-#&gt; [5] "elementMetadata" "metadata"       </div></pre>
+#&gt; [5] "elementMetadata" "metadata"       </div><div class='input'>
+<span class='co'>## DataFrame to tbl_df ====</span>
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>rse_small</span>)
+<span class='fu'>print</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+#&gt;         genotype treatment
+#&gt;         &lt;factor&gt;  &lt;factor&gt;
+#&gt; sample1 wildtype   control
+#&gt; sample2 knockout   control
+#&gt; sample3 wildtype   treated
+#&gt; sample4 knockout   treated</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>data</span>, <span class='st'>"tbl_df"</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;   rowname genotype treatment
+#&gt;   &lt;chr&gt;   &lt;fct&gt;    &lt;fct&gt;    
+#&gt; 1 sample1 wildtype control  
+#&gt; 2 sample2 knockout control  
+#&gt; 3 sample3 wildtype treated  
+#&gt; 4 sample4 knockout treated  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -252,9 +264,9 @@ returning the slots as a <code>list</code>.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#tibble">tibble</a></li>
-
       <li><a href="#list">list</a></li>
+
+      <li><a href="#tibble">tibble</a></li>
 
       <li><a href="#description">Description</a></li>
 
