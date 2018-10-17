@@ -11,13 +11,14 @@ show <- methods::show
 #'
 #' @examples
 #' data(rse_small)
+#' options(basejump.test = TRUE)
 #'
 #' ## Gene2Symbol ====
 #' x <- Gene2Symbol(rse_small)
 #' show(x)
 #'
 #' ## PANTHER ====
-#' x <- PANTHER("Homo sapiens", progress = FALSE, .test = TRUE)
+#' x <- PANTHER("Homo sapiens", progress = FALSE)
 #' show(x)
 NULL
 

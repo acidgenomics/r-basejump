@@ -5,11 +5,9 @@
 \alias{hgnc2ensembl}
 \title{HGNC-to-Ensembl Gene Identifier Mappings}
 \usage{
-HGNC2Ensembl(.test = FALSE)
+HGNC2Ensembl()
 }
 \arguments{
-\item{.test}{\code{boolean}. \emph{For unit testing only}.}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -19,7 +17,8 @@ HGNC2Ensembl(.test = FALSE)
 HGNC-to-Ensembl Gene Identifier Mappings
 }
 \examples{
-x <- HGNC2Ensembl(.test = TRUE)
+options(basejump.test = TRUE)
+x <- HGNC2Ensembl()
 print(x)
 }
 \seealso{

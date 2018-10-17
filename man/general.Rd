@@ -81,8 +81,6 @@ picks the first item in the vector by default.}
 
 \item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
 recommended to enable this when debugging.}
-
-\item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \description{
 General Arguments
