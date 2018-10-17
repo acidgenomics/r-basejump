@@ -29,8 +29,7 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends:
-    R (>= 3.5)
+Depends: R (>= 3.5), IRanges
 Imports:
     AnnotationHub,
     Biobase,
@@ -38,7 +37,6 @@ Imports:
     GenomeInfoDb,
     GenomicFeatures,
     GenomicRanges,
-    IRanges,
     Matrix,
     Matrix.utils,
     R.utils,
