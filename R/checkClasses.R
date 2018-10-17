@@ -6,7 +6,8 @@
 #' @export
 #'
 #' @examples
-#' object <- basejump::rse_small
+#' data(rse_small)
+#' object <- rse_small
 #' metadata <- S4Vectors::metadata(object)
 #' checkClasses(
 #'     object = metadata,

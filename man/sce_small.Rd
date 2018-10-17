@@ -12,7 +12,8 @@ sce_small
 Example Single-Cell RNA-Seq Data Set
 }
 \examples{
-basejump::sce_small
+data(sce_small)
+sce_small
 }
 \seealso{
 \code{scater::sc_example_counts}.
