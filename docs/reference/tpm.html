@@ -154,10 +154,18 @@ were imported using a tximport caller (e.g. salmon, kallisto).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment</a></span>(
+    <span class='kw'>assays</span> <span class='kw'>=</span> <span class='fu'>list</span>(
+        <span class='kw'>tpm</span> <span class='kw'>=</span> <span class='fu'>matrix</span>(
+            <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq_len</span>(<span class='fl'>4L</span>),
+            <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+            <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+            <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+        )
+    )
+)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>tpm</span>(<span class='no'>se</span>)
-<span class='fu'>summary</span>(<span class='no'>x</span>)
-<span class='co'># }</span></pre>
+<span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "matrix"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
