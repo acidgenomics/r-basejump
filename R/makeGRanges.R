@@ -451,7 +451,7 @@ makeGRangesFromEnsembl <- function(
         )
     ) {
         id <- "EnsDb.Hsapiens.v75"
-        edb <- .getEnsDb(package = id)
+        edb <- .getEnsDbFromPackage(package = id)
     } else {
         id <- .getAnnotationHubID(
             organism = organism,
