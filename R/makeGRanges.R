@@ -544,8 +544,8 @@ makeGRangesFromEnsDb <- function(object, level) {
         geneData <- mcols(gene)
         # Use BiocTibble left_join DataFrame method here.
         data <- left_join(
-            x = as_tibble(txData),
-            y = as_tibble(geneData),
+            x = as_tibble(txData, rownames = "rowname"),
+            y = as_tibble(geneData, rownames = NULL),
             by = "gene_id"
         )
         assert_are_identical(
