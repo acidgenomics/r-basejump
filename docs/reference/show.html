@@ -124,7 +124,9 @@ Formal methods for show will
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for EggNOG</span>
+    <pre class="usage"><span class='fu'>show</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for EggNOG</span>
 <span class='fu'>show</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for Ensembl2Entrez</span>
@@ -180,6 +182,7 @@ the discussion in <code>setIs</code> for the general concept.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>)
+<span class='fu'>options</span>(<span class='kw'>basejump.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'>## Gene2Symbol ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='no'>rse_small</span>)
@@ -202,7 +205,7 @@ the discussion in <code>setIs</code> for the general concept.</p>
 #&gt; gene50 ENSG00000004455         AK2
 #&gt; 50 genes; 50 symbols</div><div class='input'>
 <span class='co'>## PANTHER ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PANTHER.html'>PANTHER</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; PANTHER 0.99.0
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PANTHER.html'>PANTHER</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; PANTHER 0.99.0
 #&gt; https://steinbaugh.com/basejump
 #&gt; citation("basejump")
 #&gt; organism: Homo sapiens
