@@ -9,7 +9,8 @@
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' object <- basejump::sce_small
+#' data(sce_small)
+#' object <- sce_small
 #' assays <- SummarizedExperiment::assays(object)
 #' rowRanges <- SummarizedExperiment::rowRanges(object)
 #' colData <- SummarizedExperiment::colData(object)

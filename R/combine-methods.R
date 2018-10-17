@@ -26,8 +26,10 @@ combine <- BiocGenerics::combine
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
+#' data(rse_small, sce_small)
+#'
 #' ## SummarizedExperiment ====
-#' x <- basejump::rse_small
+#' x <- rse_small
 #' colnames(x)
 #' SummarizedExperiment::colData(x)
 #'
@@ -44,7 +46,7 @@ combine <- BiocGenerics::combine
 #' SummarizedExperiment::colData(c)
 #'
 #' ## SingleCellExperiment ====
-#' x <- basejump::sce_small
+#' x <- sce_small
 #' head(colnames(x))
 #' sampleData(x)
 #'

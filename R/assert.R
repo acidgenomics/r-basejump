@@ -67,7 +67,8 @@ assertAllAreNonExisting <- function(
 #'   corresponding `SummarizedExperiment`.
 #'
 #' @examples
-#' object <- basejump::rse_small
+#' data(rse_small)
+#' object <- rse_small
 #' print(object)
 #' genes <- object %>%
 #'     SummarizedExperiment::rowData(.) %>%

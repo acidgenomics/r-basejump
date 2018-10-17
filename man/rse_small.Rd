@@ -13,7 +13,8 @@ Generated with \code{DESeq2::makeExampleDESeqDataSet()}. Contains actual gene
 identifiers and Ensembl annotations.
 }
 \examples{
-basejump::rse_small
+data(rse_small)
+rse_small
 }
 \seealso{
 Other Minimal Example Data: \code{\link{sce_small}},

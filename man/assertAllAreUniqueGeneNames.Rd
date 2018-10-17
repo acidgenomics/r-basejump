@@ -21,7 +21,8 @@ unique (non-amgibuous) symbols. It is designed to be used for gene plotting
 particularly when performing single-cell RNA-seq marker analysis.
 }
 \examples{
-object <- basejump::rse_small
+data(rse_small)
+object <- rse_small
 print(object)
 genes <- object \%>\%
     SummarizedExperiment::rowData(.) \%>\%
