@@ -39,7 +39,6 @@ print(value)
 sampleNames(object) <- value
 x <- sampleNames(object)
 print(x)
-colData(object)$sampleName
 }
 \seealso{
 Other Metadata Functions: \code{\link{detectHPC}},

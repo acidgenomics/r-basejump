@@ -37,7 +37,6 @@ sampleNames <- Biobase::sampleNames
 #' sampleNames(object) <- value
 #' x <- sampleNames(object)
 #' print(x)
-#' colData(object)$sampleName
 NULL
 
 
