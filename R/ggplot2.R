@@ -65,7 +65,7 @@
 #'
 #' ## basejump_geom_label_average ====
 #' geom <- basejump_geom_label_average(
-#'     data = tibble(
+#'     data = tibble::tibble(
 #'         sampleName = rep(c("sample1", "sample2"), times = 4L),
 #'         counts = seq_len(8L)
 #'     ),

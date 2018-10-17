@@ -31,10 +31,16 @@
 #' rownames <- head(rownames(object))
 #' print(rownames)
 #'
-#' geneIDs <- head(rowData(object)[["geneID"]])
+#' geneIDs <- object %>%
+#'     SummarizedExperiment::rowData(.) %>%
+#'     .[["geneID"]] %>%
+#'     head()
 #' print(geneIDs)
 #'
-#' geneNames <- head(as.character(rowData(object)[["geneName"]]))
+#' geneNames <- object %>%
+#'     SummarizedExperiment::rowData(.) %>%
+#'     .[["geneName"]] %>%
+#'     head()
 #' print(geneNames)
 #'
 #' ## Row names,

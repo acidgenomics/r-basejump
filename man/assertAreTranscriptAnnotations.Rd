@@ -17,7 +17,7 @@ Must contain \code{transcriptID} and \code{transcriptName} columns. Does not nee
 contain rownames, so \code{tibble} class is supported.
 }
 \examples{
-object <- tibble(
+object <- tibble::tibble(
     transcriptID = "ENST00000000233",
     geneID = "ENSG00000004059"
 )
