@@ -17,7 +17,7 @@ Must contain \code{geneID} and \code{geneName} columns. Does not need to contain
 rownames, so \code{tibble} class is supported.
 }
 \examples{
-object <- tibble(
+object <- tibble::tibble(
     geneID = "ENSG00000000003",
     geneName = "TSPAN6"
 )

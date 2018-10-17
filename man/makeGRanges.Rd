@@ -3,21 +3,21 @@
 \name{makeGRanges}
 \alias{makeGRanges}
 \alias{makeGRangesFromEnsembl}
-\alias{annotable}
 \alias{makeGRangesFromEnsDb}
 \alias{makeGRangesFromGFF}
+\alias{annotable}
 \alias{makeGRangesFromGTF}
 \title{Make Genomic Ranges}
 \usage{
 makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
   build = NULL, release = NULL)
 
-annotable(organism, level = c("genes", "transcripts"), build = NULL,
-  release = NULL)
-
 makeGRangesFromEnsDb(object, level = c("genes", "transcripts"))
 
 makeGRangesFromGFF(file, level = c("genes", "transcripts"))
+
+annotable(organism, level = c("genes", "transcripts"), build = NULL,
+  release = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
@@ -59,10 +59,6 @@ back to version 87.
 Genome build: use "\code{GRCh38}" instead of "\code{hg38}" for the genome build, since
 we're querying Ensembl and not UCSC.
 
-\item \code{annotable}: \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
-\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
-that \code{GRanges} can also be coercing using \code{\link[=as.data.frame]{as.data.frame()}}.
-
 \item \code{makeGRangesFromEnsDb}: Use specific \code{EnsDb} object as annotation source.
 
 \item \code{makeGRangesFromGFF}: The GFF (General Feature Format) format consists of one line per feature,
@@ -74,6 +70,10 @@ The UCSC website has detailed conventions on the GFF3 format, including
 the metadata columns.
 
 Remote URLs and compressed files are supported.
+
+\item \code{annotable}: \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
+\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
+that \code{GRanges} can also be coercing using \code{\link[=as.data.frame]{as.data.frame()}}.
 }}
 
 \section{Broad class definitions}{

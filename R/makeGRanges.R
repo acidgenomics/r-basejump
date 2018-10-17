@@ -468,23 +468,6 @@ formals(makeGRangesFromEnsembl)[["level"]] <- level
 
 
 
-#' @describeIn makeGRanges
-#' [annotable()] is a legacy convenience function that calls
-#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
-#' that `GRanges` can also be coercing using [as.data.frame()].
-#' @export
-annotable <-
-    function() {
-        gr <- do.call(
-            what = makeGRangesFromEnsembl,
-            args = matchArgsToDoCall()
-        )
-        as_tibble(gr, rownames = NULL)
-    }
-formals(annotable) <- formals(makeGRangesFromEnsembl)
-
-
-
 #' @describeIn makeGRanges Use specific `EnsDb` object as annotation source.
 #' @export
 makeGRangesFromEnsDb <- function(object, level) {
@@ -868,6 +851,24 @@ makeGRangesFromGFF <- function(
         "GTF"
     }
 }
+
+
+
+# Legacy =======================================================================
+#' @describeIn makeGRanges
+#' [annotable()] is a legacy convenience function that calls
+#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
+#' that `GRanges` can also be coercing using [as.data.frame()].
+#' @export
+annotable <-
+    function() {
+        gr <- do.call(
+            what = makeGRangesFromEnsembl,
+            args = matchArgsToDoCall()
+        )
+        as_tibble(gr, rownames = NULL)
+    }
+formals(annotable) <- formals(makeGRangesFromEnsembl)
 
 
 
