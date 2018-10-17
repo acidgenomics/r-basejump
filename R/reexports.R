@@ -1,26 +1,22 @@
-# Only reexport functions needed for working examples and vignette
+# Only reexport functions needed for working examples and vignette.
 
 
 
-#' @importFrom dplyr pull
+#' @importFrom GenomicRanges GRanges
 #' @export
-dplyr::pull
+GenomicRanges::GRanges
+
+
+
+#' @importFrom IRanges IRanges
+#' @export
+IRanges::IRanges
 
 
 
 #' @importFrom GenomeInfoDb seqnames
 #' @export
 GenomeInfoDb::seqnames
-
-
-
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
-
-#' @importFrom magrittr set_rownames
-#' @export
-magrittr::set_rownames
 
 
 
@@ -95,6 +91,22 @@ SummarizedExperiment::`rowRanges<-`
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @export
 SummarizedExperiment::SummarizedExperiment
+
+
+
+#' @importFrom dplyr pull
+#' @export
+dplyr::pull
+
+
+
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
+#' @importFrom magrittr set_rownames
+#' @export
+magrittr::set_rownames
 
 
 

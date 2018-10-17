@@ -4,10 +4,9 @@
 \name{reexports}
 \alias{reexports}
 \alias{as_tibble}
-\alias{pull}
+\alias{GRanges}
+\alias{IRanges}
 \alias{seqnames}
-\alias{\%>\%}
-\alias{set_rownames}
 \alias{Matrix}
 \alias{DataFrame}
 \alias{mcols}
@@ -25,6 +24,9 @@
 \alias{rowRanges}
 \alias{rowRanges<-}
 \alias{SummarizedExperiment}
+\alias{pull}
+\alias{\%>\%}
+\alias{set_rownames}
 \alias{glimpse}
 \alias{tibble}
 \title{Objects exported from other packages}
@@ -37,6 +39,10 @@ below to see their documentation.
   \item{dplyr}{\code{\link[dplyr]{pull}}}
 
   \item{GenomeInfoDb}{\code{\link[GenomeInfoDb]{seqnames}}}
+
+  \item{GenomicRanges}{\code{\link[GenomicRanges]{GRanges}}}
+
+  \item{IRanges}{\code{\link[IRanges]{IRanges}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}
 
