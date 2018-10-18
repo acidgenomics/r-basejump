@@ -60,6 +60,7 @@ Genome build: use "\code{GRCh38}" instead of "\code{hg38}" for the genome build,
 we're querying Ensembl and not UCSC.
 
 \item \code{makeGRangesFromEnsDb}: Use specific \code{EnsDb} object as annotation source.
+Alternatively, can pass in an EnsDb package name as a \code{string}.
 
 \item \code{makeGRangesFromGFF}: The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The

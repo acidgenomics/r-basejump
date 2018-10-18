@@ -469,10 +469,24 @@ formals(makeGRangesFromEnsembl)[["level"]] <- level
 
 
 #' @describeIn makeGRanges Use specific `EnsDb` object as annotation source.
+#'   Alternatively, can pass in an EnsDb package name as a `string`.
 #' @export
 makeGRangesFromEnsDb <- function(object, level) {
     message("Making GRanges from EnsDb object.")
     userAttached <- .packages()
+
+    # Allow loading of EnsDb package, passed in as a character string.
+    if (is_a_string(object)) {
+        package <- object
+        requireNamespace(package = package)
+        object <- get(
+            x = package,
+            envir = asNamespace(package),
+            inherits = FALSE
+        )
+    }
+    stopifnot(is(object, "EnsDb"))
+
     assert_is_all_of(object, "EnsDb")
     level <- match.arg(level)
 
