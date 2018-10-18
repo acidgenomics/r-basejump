@@ -1,20 +1,29 @@
+# TODO Add row-level metrics calculations?
+# Could use `margin = 1, 2`.
+
+
+
 #' Metrics
 #'
-#' This function takes data stored in [colData()] and consistently returns a
-#' tibble grouped by sample, to be used for plotting with `ggplot2`.
+#' This function takes data stored in [SummarizedExperiment::colData()] and
+#' consistently returns a tibble grouped by sample by default (`sampleID`).
 #'
-#' @section SingleCellExperiment:
-#'
-#' Note that metrics are cell level but grouped by sample.
+#' [metrics()] always returns `sampleName` and `interestingGroups` columns, even
+#' when these columns are not defined in `colData`. This is designed to
+#' integrate with plotting functions that use ggplot2 internally.
 #'
 #' @name metrics
 #' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general
-#' @param fun `string`. Mathematical function name to apply. Uses [match.arg()].
+#' @param fun `string`. Mathematical function name to apply.
+#'   Uses [base::match.arg()].
 #'
-#' @return `grouped_df`. Grouped by `sampleID` column.
+#' @return
+#' - `"tbl_df"`: `grouped_df`. Grouped by `sampleID` column.
+#' - `"DataFrame"`: `DataFrame`. Rownames are identical to [base::colnames()],
+#'   of the object, like [SummarizedExperiment::colData()].
 #'
 #' @examples
 #' data(rse_small, sce_small)
@@ -34,29 +43,47 @@ NULL
 
 
 .metrics.SE <-  # nolint
-    function(object) {
+    function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
-        sampleData(object) %>%
+        return <- match.arg(return)
+        data <- sampleData(object) %>%
             as_tibble(rownames = "sampleID") %>%
             group_by(!!sym("sampleID"))
+        if (return == "tbl_df") {
+            data
+        } else {
+            data <- as(data, "DataFrame")
+            rownames(data) <- data[["sampleID"]]
+            data[["sampleID"]] <- NULL
+            data
+        }
     }
 
 
 
 .metrics.SCE <-  # nolint
-    function(object) {
+    function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
+        return <- match.arg(return)
         colData <- colData(object)
         assert_is_subset("sampleID", colnames(colData))
         if (!"sampleName" %in% colnames(colData)) {
             colData[["sampleName"]] <- colData[["sampleID"]]
         }
-        colData %>%
+        data <- colData %>%
             uniteInterestingGroups(
                 interestingGroups = matchInterestingGroups(object)
             ) %>%
             as_tibble(rownames = "cellID") %>%
             group_by(!!sym("sampleID"))
+        if (return == "tbl_df") {
+            data
+        } else {
+            data <- as(data, "DataFrame")
+            rownames(data) <- data[["cellID"]]
+            data[["cellID"]] <- NULL
+            data
+        }
     }
 
 
@@ -99,7 +126,8 @@ NULL
 
 
 
-#' @rdname metrics
+#' @describeIn metrics Metrics are sample level. `sampleID` column corresponds
+#'   to [base::colnames()].
 #' @export
 setMethod(
     f = "metrics",
@@ -109,7 +137,9 @@ setMethod(
 
 
 
-#' @rdname metrics
+#' @describeIn metrics Metrics are cell level. `cellID` column corresponds to
+#'   [base::colnames()]. Tibble is returned grouped by sample
+#'   (`sampleID` column).
 #' @export
 setMethod(
     f = "metrics",
