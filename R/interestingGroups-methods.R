@@ -48,6 +48,10 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
+        assertFormalInterestingGroups(
+            object = object,
+            interestingGroups = value
+        )
         metadata(object)[["interestingGroups"]] <- value
         validObject(object)
         object
