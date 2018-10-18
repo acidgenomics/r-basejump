@@ -13,9 +13,11 @@ metrics(object, ...)
 
 metricsPerSample(object, ...)
 
-\S4method{metrics}{SummarizedExperiment}(object)
+\S4method{metrics}{SummarizedExperiment}(object, return = c("tbl_df",
+  "DataFrame"))
 
-\S4method{metrics}{SingleCellExperiment}(object)
+\S4method{metrics}{SingleCellExperiment}(object, return = c("tbl_df",
+  "DataFrame"))
 
 \S4method{metricsPerSample}{SingleCellExperiment}(object, fun = c("mean",
   "median", "sum"))
@@ -25,20 +27,37 @@ metricsPerSample(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{fun}{\code{string}. Mathematical function name to apply. Uses \code{\link[=match.arg]{match.arg()}}.}
+\item{return}{Object class to return. Uses \code{\link[base:match.arg]{base::match.arg()}} internally and
+picks the first item in the vector by default.}
+
+\item{fun}{\code{string}. Mathematical function name to apply.
+Uses \code{\link[base:match.arg]{base::match.arg()}}.}
 }
 \value{
-\code{grouped_df}. Grouped by \code{sampleID} column.
+\itemize{
+\item \code{"tbl_df"}: \code{grouped_df}. Grouped by \code{sampleID} column.
+\item \code{"DataFrame"}: \code{DataFrame}. Rownames are identical to \code{\link[base:colnames]{base::colnames()}},
+of the object, like \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}}.
+}
 }
 \description{
-This function takes data stored in \code{\link[=colData]{colData()}} and consistently returns a
-tibble grouped by sample, to be used for plotting with \code{ggplot2}.
+This function takes data stored in \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}} and
+consistently returns a tibble grouped by sample by default (\code{sampleID}).
 }
-\section{SingleCellExperiment}{
-
-
-Note that metrics are cell level but grouped by sample.
+\details{
+\code{\link[=metrics]{metrics()}} always returns \code{sampleName} and \code{interestingGroups} columns, even
+when these columns are not defined in \code{colData}. This is designed to
+integrate with plotting functions that use ggplot2 internally.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{SummarizedExperiment}: Metrics are sample level. \code{sampleID} column corresponds
+to \code{\link[base:colnames]{base::colnames()}}.
+
+\item \code{SingleCellExperiment}: Metrics are cell level. \code{cellID} column corresponds to
+\code{\link[base:colnames]{base::colnames()}}. Tibble is returned grouped by sample
+(\code{sampleID} column).
+}}
 
 \examples{
 data(rse_small, sce_small)
