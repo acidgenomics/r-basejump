@@ -2,6 +2,9 @@ context("Data")
 
 data(rse_small, sce_small, envir = environment())
 
+colData <- SummarizedExperiment::colData
+`colData<-` <- SummarizedExperiment::`colData<-`
+DataFrame <- S4Vectors::DataFrame
 seqnames <- GenomeInfoDb::seqnames
 `rowRanges<-` <- SummarizedExperiment::`rowRanges<-`
 
