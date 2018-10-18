@@ -37,6 +37,8 @@ sample.}
 Subset Per Sample
 }
 \examples{
+data(sce_small)
+
 ## SingleCellExperiment ====
 object <- sce_small
 

@@ -17,6 +17,8 @@
 #' - `assignAndSave = TRUE`: Subset file paths.
 #'
 #' @examples
+#' data(sce_small)
+#'
 #' ## SingleCellExperiment ====
 #' object <- sce_small
 #'
