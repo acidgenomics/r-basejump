@@ -1,8 +1,3 @@
-# TODO Add row-level metrics calculations?
-# Could use `margin = 1, 2`.
-
-
-
 #' Metrics
 #'
 #' This function takes data stored in [SummarizedExperiment::colData()] and
