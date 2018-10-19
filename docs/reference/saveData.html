@@ -34,8 +34,8 @@
   
 <meta property="og:title" content="Save Data — saveData" />
 
-<meta property="og:description" content="Wrapper for save() supporting quick, interactive saving of object names
-passed as symbols." />
+<meta property="og:description" content="Wrapper for base::save() supporting quick, interactive saving of object
+names passed as symbols." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -113,8 +113,8 @@ passed as symbols." />
 
     <div class="ref-description">
     
-    <p>Wrapper for <code>save()</code> supporting quick, interactive saving of object names
-passed as symbols.</p>
+    <p>Wrapper for <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code> supporting quick, interactive saving of object
+names passed as symbols.</p>
     
     </div>
 
@@ -171,11 +171,11 @@ combining multiple objects into a single file.</p>
 
     <p>This function is desired for interactive use and interprets object
 names using non-standard evaluation. It will <strong>overwrite</strong> existing files
-on disk, following the same conventions as <code>save()</code>.</p>
+on disk, following the same conventions as <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>save, saveRDS.</p>
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>, <code><a href='http://www.rdocumentation.org/packages/base/topics/readRDS'>base::saveRDS()</a></code>.</p>
 <p>Other Import/Export Functions: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code>,
   <code><a href='export.html'>export</a></code>, <code><a href='import.html'>import</a></code>,
   <code><a href='loadDataAsName.html'>loadDataAsName</a></code>, <code><a href='loadData.html'>loadData</a></code>,
@@ -185,7 +185,7 @@ on disk, following the same conventions as <code>save()</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>)
-<span class='fu'>saveData</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rse_small.rds, sce_small.rds to /home/bioinfo/git/basejump-private/docs/reference/example.</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rse_small.rds" "sce_small.rds"</div><div class='input'>
+<span class='fu'>saveData</span>(<span class='no'>rse_small</span>, <span class='no'>sce_small</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rse_small.rds, sce_small.rds to /Users/mike/git/basejump-private/docs/reference/example.</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rse_small.rds" "sce_small.rds"</div><div class='input'>
 <span class='co'>## Clean up.</span>
 <span class='fu'>unlink</span>(<span class='st'>"example"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>

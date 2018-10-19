@@ -154,9 +154,9 @@ the call was standardized.</p></li>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><a href='http://www.rdocumentation.org/packages/base/topics/match.call'>base::match.call</a>.</p></li>
-<li><p><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.call</a>.</p></li>
-<li><p><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.parent</a>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/match.call'>base::match.call()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.call()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.parent()</a></code>.</p></li>
 </ul></div>
     
 
@@ -164,12 +164,12 @@ the call was standardized.</p></li>
     <pre class="examples"><div class='input'><span class='no'>aaa</span> <span class='kw'>&lt;-</span> <span class='st'>"AAA"</span>
 <span class='no'>bbb</span> <span class='kw'>&lt;-</span> <span class='st'>"BBB"</span>
 
-<span class='co'>## Standard function</span>
+<span class='co'>## Standard function.</span>
 <span class='no'>testing</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>a</span>, <span class='no'>b</span>) {
     <span class='fu'>standardizeCall</span>()
 }
 <span class='fu'>testing</span>(<span class='no'>aaa</span>, <span class='no'>bbb</span>)</div><div class='output co'>#&gt; testing(a = aaa, b = bbb)</div><div class='input'>
-<span class='co'>## Inside S4 method</span>
+<span class='co'>## Inside S4 method.</span>
 <span class='fu'>setGeneric</span>(
     <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"testing"</span>,
     <span class='kw'>def</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>...</span>) {
