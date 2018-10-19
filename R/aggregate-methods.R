@@ -217,7 +217,7 @@ formals(aggregateCols.sparseMatrix)[["fun"]] <- .aggregateFuns
 
 
 # SummarizedExperiment =========================================================
-aggregateRows.SE <-  # nolint
+aggregateRows.SummarizedExperiment <-  # nolint
     function(object, col = "aggregate", fun) {
         validObject(object)
         assertHasValidDimnames(object)
@@ -259,11 +259,11 @@ aggregateRows.SE <-  # nolint
         validObject(se)
         se
     }
-formals(aggregateRows.SE)[["fun"]] <- .aggregateFuns
+formals(aggregateRows.SummarizedExperiment)[["fun"]] <- .aggregateFuns
 
 
 
-aggregateCols.SE <-  # nolint
+aggregateCols.SummarizedExperiment <-  # nolint
     function(object, col = "aggregate", fun) {
         validObject(object)
         assertHasValidDimnames(object)
@@ -335,12 +335,12 @@ aggregateCols.SE <-  # nolint
         validObject(se)
         se
     }
-formals(aggregateCols.SE)[["fun"]] <- .aggregateFuns
+formals(aggregateCols.SummarizedExperiment)[["fun"]] <- .aggregateFuns
 
 
 
 # SingleCellExperiment =========================================================
-aggregateCols.SCE <-  # nolint
+aggregateCols.SingleCellExperiment <-  # nolint
     function(object, fun) {
         validObject(object)
         fun <- match.arg(fun)
@@ -413,7 +413,7 @@ aggregateCols.SCE <-  # nolint
         validObject(sce)
         sce
     }
-formals(aggregateCols.SCE)[["fun"]] <- .aggregateFuns
+formals(aggregateCols.SingleCellExperiment)[["fun"]] <- .aggregateFuns
 
 
 
@@ -450,7 +450,7 @@ setMethod(
 setMethod(
     f = "aggregateRows",
     signature = signature("SummarizedExperiment"),
-    definition = aggregateRows.SE
+    definition = aggregateRows.SummarizedExperiment
 )
 
 
@@ -480,7 +480,7 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("SummarizedExperiment"),
-    definition = aggregateCols.SE
+    definition = aggregateCols.SummarizedExperiment
 )
 
 
@@ -495,5 +495,5 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("SingleCellExperiment"),
-    definition = aggregateCols.SCE
+    definition = aggregateCols.SingleCellExperiment
 )

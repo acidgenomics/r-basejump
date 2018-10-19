@@ -88,7 +88,7 @@ NULL
 
 
 # SummarizedExperiment =========================================================
-.plotHeatmap.SE <-  # nolint
+.plotHeatmap.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -200,7 +200,7 @@ NULL
 
 
 
-.plotCorrelationHeatmap.SE <-  # nolint
+.plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -318,7 +318,7 @@ NULL
 
 
 
-.plotQuantileHeatmap.SE <-  # nolint
+.plotQuantileHeatmap.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -431,7 +431,7 @@ NULL
 
 
 # SingleCellExperiment =========================================================
-.plotHeatmap.SCE <-  # nolint
+.plotHeatmap.SingleCellExperiment <-  # nolint
     function(object) {
         agg <- aggregateCellsToSamples(
             object = object,
@@ -442,11 +442,11 @@ NULL
             args = matchArgsToDoCall(args = list(object = agg))
         )
     }
-formals(.plotHeatmap.SCE) <- formals(.plotHeatmap.SE)
+formals(.plotHeatmap.SingleCellExperiment) <- formals(.plotHeatmap.SummarizedExperiment)
 
 
 
-.plotCorrelationHeatmap.SCE <-  # nolint
+.plotCorrelationHeatmap.SingleCellExperiment <-  # nolint
     function(object) {
         agg <- aggregateCellsToSamples(
             object = object,
@@ -457,11 +457,11 @@ formals(.plotHeatmap.SCE) <- formals(.plotHeatmap.SE)
             args = matchArgsToDoCall(args = list(object = agg))
         )
     }
-formals(.plotCorrelationHeatmap.SCE) <- formals(.plotCorrelationHeatmap.SE)
+formals(.plotCorrelationHeatmap.SingleCellExperiment) <- formals(.plotCorrelationHeatmap.SummarizedExperiment)
 
 
 
-.plotQuantileHeatmap.SCE <-  # nolint
+.plotQuantileHeatmap.SingleCellExperiment <-  # nolint
     function(object) {
         agg <- aggregateCellsToSamples(
             object = object,
@@ -472,7 +472,7 @@ formals(.plotCorrelationHeatmap.SCE) <- formals(.plotCorrelationHeatmap.SE)
             args = matchArgsToDoCall(args = list(object = agg))
         )
     }
-formals(.plotQuantileHeatmap.SCE) <- formals(.plotQuantileHeatmap.SE)
+formals(.plotQuantileHeatmap.SingleCellExperiment) <- formals(.plotQuantileHeatmap.SummarizedExperiment)
 
 
 
@@ -482,7 +482,7 @@ formals(.plotQuantileHeatmap.SCE) <- formals(.plotQuantileHeatmap.SE)
 setMethod(
     f = "plotHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = .plotHeatmap.SE
+    definition = .plotHeatmap.SummarizedExperiment
 )
 
 
@@ -492,7 +492,7 @@ setMethod(
 setMethod(
     f = "plotHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = .plotHeatmap.SCE
+    definition = .plotHeatmap.SingleCellExperiment
 )
 
 
@@ -503,7 +503,7 @@ setMethod(
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = .plotCorrelationHeatmap.SE
+    definition = .plotCorrelationHeatmap.SummarizedExperiment
 )
 
 
@@ -513,7 +513,7 @@ setMethod(
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = .plotCorrelationHeatmap.SCE
+    definition = .plotCorrelationHeatmap.SingleCellExperiment
 )
 
 
@@ -523,7 +523,7 @@ setMethod(
 setMethod(
     f = "plotQuantileHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = .plotQuantileHeatmap.SE
+    definition = .plotQuantileHeatmap.SummarizedExperiment
 )
 
 
@@ -533,5 +533,5 @@ setMethod(
 setMethod(
     f = "plotQuantileHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = .plotQuantileHeatmap.SCE
+    definition = .plotQuantileHeatmap.SingleCellExperiment
 )

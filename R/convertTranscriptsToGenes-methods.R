@@ -107,7 +107,7 @@ NULL
 
 # Consider returning RSE here in a future update.
 # Need to add code that handles rowRanges.
-.convertTranscriptsToGenes.SE <-  # nolint
+.convertTranscriptsToGenes.SummarizedExperiment <-  # nolint
     function(object) {
         counts <- counts(object)
         t2g <- Tx2Gene(object)
@@ -166,5 +166,5 @@ setMethod(
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("SummarizedExperiment"),
-    definition = .convertTranscriptsToGenes.SE
+    definition = .convertTranscriptsToGenes.SummarizedExperiment
 )

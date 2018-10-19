@@ -45,7 +45,7 @@ NULL
 
 # SummarizedExperiment =========================================================
 # Don't run validity checks here.
-.sampleData.SE <-  # nolint
+.sampleData.SummarizedExperiment <-  # nolint
     function(object) {
         data <- colData(object)
         assertHasRownames(data)
@@ -64,7 +64,7 @@ NULL
 
 
 
-`.sampleData<-.SE` <-  # nolint
+`.sampleData<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
         # Don't allow blacklisted columns.
         value[["interestingGroups"]] <- NULL
@@ -83,7 +83,7 @@ NULL
 setMethod(
     f = "sampleData",
     signature = signature("SummarizedExperiment"),
-    definition = .sampleData.SE
+    definition = .sampleData.SummarizedExperiment
 )
 
 
@@ -96,14 +96,14 @@ setMethod(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
-    definition = `.sampleData<-.SE`
+    definition = `.sampleData<-.SummarizedExperiment`
 )
 
 
 
 # SingleCellExperiment =========================================================
 # Don't run validity checks here.
-.sampleData.SCE <-  # nolint
+.sampleData.SingleCellExperiment <-  # nolint
     function(
         object,
         blacklist = c(
@@ -208,7 +208,7 @@ setMethod(
 
 
 
-`.sampleData<-.SCE` <-  # nolint
+`.sampleData<-.SingleCellExperiment` <-  # nolint
     function(object, value) {
         assert_is_all_of(value, "DataFrame")
 
@@ -257,7 +257,7 @@ setMethod(
 setMethod(
     f = "sampleData",
     signature = signature("SingleCellExperiment"),
-    definition = .sampleData.SCE
+    definition = .sampleData.SingleCellExperiment
 )
 
 
@@ -270,5 +270,5 @@ setMethod(
         object = "SingleCellExperiment",
         value = "DataFrame"
     ),
-    definition = `.sampleData<-.SCE`
+    definition = `.sampleData<-.SingleCellExperiment`
 )

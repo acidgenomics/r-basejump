@@ -78,7 +78,7 @@ NULL
 
 
 
-.Gene2Symbol.SE <-  # nolint
+.Gene2Symbol.SummarizedExperiment <-  # nolint
     function(object) {
         object %>%
             rowData() %>%
@@ -123,5 +123,5 @@ setMethod(
 setMethod(
     f = "Gene2Symbol",
     signature = signature("SummarizedExperiment"),
-    definition = .Gene2Symbol.SE
+    definition = .Gene2Symbol.SummarizedExperiment
 )

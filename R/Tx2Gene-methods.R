@@ -71,7 +71,7 @@ NULL
 
 
 
-.Tx2Gene.SE <-  # nolint
+.Tx2Gene.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         object %>%
@@ -117,5 +117,5 @@ setMethod(
 setMethod(
     f = "Tx2Gene",
     signature = signature("SummarizedExperiment"),
-    definition = .Tx2Gene.SE
+    definition = .Tx2Gene.SummarizedExperiment
 )
