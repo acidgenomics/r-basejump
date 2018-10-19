@@ -27,18 +27,6 @@ Gene2Symbol.DataFrame <-  # nolint
     function(object) {
         assert_has_rows(object)
 
-        # Require genome annotation metadata to be defined.
-        metadata <- metadata(object)
-        mcols <- c("organism", "build", "release")
-        if (!all(mcols %in% names(metadata))) {
-            warning(paste0(
-                "Object does not contain genome information.\n",
-                "Requires: ", toString(mcols)
-            ))
-        }
-        metadata <- metadata[mcols]
-        metadata <- c(.prototypeMetadata, metadata)
-
         # Check for required columns.
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
@@ -59,7 +47,7 @@ Gene2Symbol.DataFrame <-  # nolint
             mutate(!!sym("geneName") := make.unique(!!sym("geneName"))) %>%
             as("DataFrame")
 
-        metadata(data) <- metadata
+        metadata(data) <- .genomeMetadata(object)
         new(Class = "Gene2Symbol", data)
     }
 

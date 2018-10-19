@@ -25,18 +25,6 @@ Tx2Gene.DataFrame <-  # nolint
     function(object) {
         assert_has_rows(object)
 
-        # Require genome annotation metadata to be defined.
-        metadata <- metadata(object)
-        mcols <- c("organism", "build", "release")
-        if (!all(mcols %in% names(metadata))) {
-            warning(paste0(
-                "Object does not contain genome information.\n",
-                "Requires: ", toString(mcols)
-            ))
-        }
-        metadata <- metadata[mcols]
-        metadata <- c(.prototypeMetadata, metadata)
-
         # Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
@@ -56,7 +44,7 @@ Tx2Gene.DataFrame <-  # nolint
             mutate_all(as.character) %>%
             as("DataFrame")
 
-        metadata(data) <- metadata
+        metadata(data) <- .genomeMetadata(object)
         new(Class = "Tx2Gene", data)
     }
 

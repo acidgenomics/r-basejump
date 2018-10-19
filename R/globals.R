@@ -18,6 +18,9 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 # Note optional matching of gzip.
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
+# Metadata stash slots containing genome information.
+genomeInfo <- c("organism", "genomeBuild", "ensemblRelease")
+
 #' Lane Grep Pattern
 #' @keywords internal
 #' @export
