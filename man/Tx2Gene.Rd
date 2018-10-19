@@ -3,15 +3,12 @@
 \docType{methods}
 \name{Tx2Gene}
 \alias{Tx2Gene}
-\alias{Tx2Gene,data.frame-method}
 \alias{Tx2Gene,DataFrame-method}
 \alias{Tx2Gene,GRanges-method}
 \alias{Tx2Gene,SummarizedExperiment-method}
 \title{Transcript-to-Gene Identifier Mappings}
 \usage{
 Tx2Gene(object, ...)
-
-\S4method{Tx2Gene}{data.frame}(object)
 
 \S4method{Tx2Gene}{DataFrame}(object)
 
