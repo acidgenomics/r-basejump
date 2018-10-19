@@ -28,7 +28,7 @@ print(x)
 The \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README file}
 contains additional useful reference information.
 
-Other S4 Classes: \code{\link{Ensembl2Entrez-class}},
+Other S4 classes: \code{\link{Ensembl2Entrez-class}},
   \code{\link{Gene2Symbol-class}},
   \code{\link{HGNC2Ensembl-class}},
   \code{\link{MGI2Ensembl-class}},

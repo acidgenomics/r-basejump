@@ -19,7 +19,7 @@ print(x)
 \seealso{
 \code{\link[=Ensembl2Entrez]{Ensembl2Entrez()}}.
 
-Other S4 Classes: \code{\link{EggNOG-class}},
+Other S4 classes: \code{\link{EggNOG-class}},
   \code{\link{Gene2Symbol-class}},
   \code{\link{HGNC2Ensembl-class}},
   \code{\link{MGI2Ensembl-class}},
@@ -28,4 +28,4 @@ Other S4 Classes: \code{\link{EggNOG-class}},
 \author{
 Michael Steinbaugh
 }
-\concept{S4 Classes}
+\concept{S4 classes}

@@ -3,7 +3,7 @@ authors:
     href: /
 
 reference:
-  - title: S4 Classes
+  - title: S4 classes
     contents:
     - starts_with("EggNOG")
     - starts_with("Ensembl2Entrez")
@@ -13,7 +13,7 @@ reference:
     - starts_with("PANTHER")
     - starts_with("Tx2Gene")
     - show
-  - title: Import/Export
+  - title: Import/export
     contents:
     - starts_with("assign")
     - export
@@ -22,14 +22,14 @@ reference:
     - starts_with("save")
     - transmit
     - starts_with("write")
-  - title: Genome Annotations
+  - title: Genome annotations
     contents:
     - emptyRanges
     - geneSynonyms
     - makeGRanges
     - makeGene2Symbol
     - makeTx2Gene
-  - title: Gene Identifier Mapping
+  - title: Gene identifier mapping
     contents:
     - starts_with("convert")
     - starts_with("mapGenes")
@@ -38,14 +38,14 @@ reference:
     - counts
     - meltCounts
     - tpm
-  - title: Sample-Level
+  - title: Sample-level
     contents:
     - makeSummarizedExperiment
     - metrics
     - minimalSampleData
     - starts_with("sample")
     - selectSamples
-  - title: Cell-Level
+  - title: Cell-level
     contents:
     - aggregateCellsToSamples
     - cell2sample
@@ -109,10 +109,10 @@ reference:
     - microplate
     - realpath
     - separator
-  - title: Assert Checks
+  - title: Assert checks
     desc: Readable check functions to ensure code integrity.
     contents:
     - starts_with("assert")
-  - title: Example Data Sets
+  - title: Example data
     contents:
     - ends_with("_small")

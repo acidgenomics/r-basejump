@@ -42,7 +42,7 @@ print(x)
 \seealso{
 \code{\link[=Tx2Gene]{Tx2Gene()}}, \link{makeTx2Gene}.
 
-Other S4 Classes: \code{\link{EggNOG-class}},
+Other S4 classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},
   \code{\link{Gene2Symbol-class}},
   \code{\link{HGNC2Ensembl-class}},
