@@ -1,3 +1,8 @@
+# FIXME Require genome annotation information for Gene2Symbol and Tx2Gene to
+# pass validity checks.
+
+
+
 .prototypeMetadata <- list(
     version = packageVersion("basejump"),
     date = Sys.Date()
