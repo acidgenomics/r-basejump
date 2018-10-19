@@ -60,7 +60,13 @@ NULL
 
 .Gene2Symbol.DataFrame <-  # nolint
     function(object) {
-        Gene2Symbol(as(object, "data.frame"))
+        assert_is_subset(
+            x = c("geneID", "geneName"),
+            y = colnames(object)
+        )
+        data <- object[, c("geneID", "geneName"), drop = FALSE]
+        data <- as.data.frame(data)
+        Gene2Symbol(data)
     }
 
 
