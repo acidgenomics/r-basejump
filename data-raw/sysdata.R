@@ -1,5 +1,5 @@
 # Internal package data (sysdata.rda)
-# 2018-10-08
+# 2018-10-18
 
 library(googlesheets)
 library(tidyverse)
@@ -41,7 +41,7 @@ organism_mappings <-
     )
 
 # Save =========================================================================
-devtools::use_data(
+usethis::use_data(
     gender_markers, organism_mappings,
     internal = TRUE, overwrite = TRUE, compress = "xz"
 )

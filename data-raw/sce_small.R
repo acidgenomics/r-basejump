@@ -15,8 +15,8 @@ release <- 92L
 # Use splatter to generate an example dataset with simulated counts.
 # Note: These DE params are natural log scale.
 params <- newSplatParams() %>%
-    setParam(name = "batchCells", value = 1000) %>%
-    setParam(name = "nGenes", value = 200) %>%
+    setParam(name = "batchCells", value = 100) %>%
+    setParam(name = "nGenes", value = 50) %>%
     setParam(name = "de.facLoc", value = 1) %>%
     setParam(name = "de.facScale", value = .25) %>%
     setParam(name = "dropout.type", value = "experiment") %>%
@@ -33,7 +33,7 @@ sce <- camel(sce, rownames = TRUE, colnames = TRUE)
 # Pad the dimnames so they sort correctly.
 rownames(sce) <- rownames(sce) %>%
     str_replace("gene", "") %>%
-    str_pad(width = 4, side = "left", pad = "0") %>%
+    str_pad(width = 2, side = "left", pad = "0") %>%
     paste0("gene", .)
 colnames(sce) <- colnames(sce) %>%
     str_replace("cell", "") %>%
