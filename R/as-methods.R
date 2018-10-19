@@ -47,7 +47,7 @@
 #' - [methods::canCoerce()].
 #' - [methods::showMethods()].
 #' - [utils::methods()].
-#' - [BiocGenerics::as.list()].
+#' - [S4Vectors::as.list()].
 #'
 #' @examples
 #' data(rse_small)
