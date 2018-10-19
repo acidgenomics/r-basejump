@@ -1,7 +1,3 @@
-# FIXME Add EnsDb function.
-
-
-
 #' Make Transcript-to-Gene Mappings
 #'
 #' @section GFF/GTF file:
@@ -22,6 +18,10 @@
 #' @examples
 #' ## makeTx2GeneFromEnsembl ====
 #' x <- makeTx2GeneFromEnsembl(organism = "Homo sapiens")
+#' print(x)
+#'
+#' ## makeTx2GeneFromEnsDb ====
+#' x <- makeTx2GeneFromEnsDb("EnsDb.Hsapiens.v75")
 #' print(x)
 #'
 #' ## makeTx2GeneFromGFF ====
@@ -51,6 +51,22 @@ makeTx2GeneFromEnsembl <-
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level", "metadata", "..."))]
 formals(makeTx2GeneFromEnsembl) <- f
+
+
+
+#' @rdname makeTx2Gene
+#' @export
+makeTx2GeneFromEnsDb <-
+    function() {
+        gr <- do.call(
+            what = makeGRangesFromEnsDb,
+            args = matchArgsToDoCall(args = list(level = "transcripts"))
+        )
+        Tx2Gene(gr)
+    }
+f <- formals(makeGRangesFromEnsDb)
+f <- f[setdiff(names(f), "level")]
+formals(makeTx2GeneFromEnsDb) <- f
 
 
 

@@ -3,11 +3,14 @@
 \name{makeGene2Symbol}
 \alias{makeGene2Symbol}
 \alias{makeGene2SymbolFromEnsembl}
+\alias{makeGene2SymbolFromEnsDb}
 \alias{makeGene2SymbolFromGFF}
 \alias{makeGene2SymbolFromGTF}
 \title{Make Gene-to-Symbol Mappings}
 \usage{
 makeGene2SymbolFromEnsembl(organism, build = NULL, release = NULL)
+
+makeGene2SymbolFromEnsDb(object)
 
 makeGene2SymbolFromGFF(file)
 }
@@ -19,6 +22,8 @@ makeGene2SymbolFromGFF(file)
 
 \item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
 set \code{NULL}, defaults to the most recent release available.}
+
+\item{object}{Object.}
 
 \item{file}{\code{string}. File path.}
 }
@@ -37,6 +42,10 @@ Remote URLs and compressed files are supported.
 \examples{
 ## makeGene2SymbolFromEnsembl ====
 x <- makeGene2SymbolFromEnsembl(organism = "Homo sapiens")
+print(x)
+
+## makeTx2GeneFromEnsDb ====
+x <- makeGene2SymbolFromEnsDb("EnsDb.Hsapiens.v75")
 print(x)
 
 ## makeGene2SymbolFromGFF ====

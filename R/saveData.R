@@ -1,7 +1,7 @@
 #' Save Data
 #'
-#' Wrapper for [save()] supporting quick, interactive saving of object names
-#' passed as symbols.
+#' Wrapper for [base::save()] supporting quick, interactive saving of object
+#' names passed as symbols.
 #'
 #' This function always saves each object into a separate file rather than
 #' combining multiple objects into a single file.
@@ -18,9 +18,9 @@
 #'
 #' @note This function is desired for interactive use and interprets object
 #'   names using non-standard evaluation. It will **overwrite** existing files
-#'   on disk, following the same conventions as [save()].
+#'   on disk, following the same conventions as [base::save()].
 #'
-#' @seealso [save], [saveRDS].
+#' @seealso [base::save()], [base::saveRDS()].
 #'
 #' @return Invisible named `character`. File paths.
 #'

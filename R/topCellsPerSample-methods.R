@@ -18,7 +18,7 @@ NULL
 
 
 
-.topCellsPerSample.SingleCellExperiment <-  # nolint
+topCellsPerSample.SingleCellExperiment <-  # nolint
     function(object, n = 100L) {
         validObject(object)
         assertIsAnImplicitInteger(n)
@@ -46,5 +46,5 @@ NULL
 setMethod(
     f = "topCellsPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = .topCellsPerSample.SingleCellExperiment
+    definition = topCellsPerSample.SingleCellExperiment
 )

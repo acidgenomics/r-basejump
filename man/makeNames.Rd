@@ -176,8 +176,8 @@ makeDimnames(object)
   strict = FALSE)
 }
 \arguments{
-\item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
-will be meaningful.}
+\item{object}{Character vector or an object for which \code{\link[base:names]{base::names()}}
+assignment will be meaningful.}
 
 \item{...}{Additional arguments.}
 
@@ -200,12 +200,12 @@ generally recommended by default.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
-\code{\link[=names]{names()}}, the underlying data returns unchanged.
+\code{\link[base:names]{base::names()}}, the underlying data returns unchanged.
 }
 \description{
 For \code{atomic} vectors, these functions will sanitize the values. Otherwise,
-they will set \code{\link[=names]{names()}}, \code{\link[=rownames]{rownames()}}, and/or \code{\link[=colnames]{colnames()}} without
-modification of the values.
+they will set \code{\link[base:names]{base::names()}}, \code{\link[base:rownames]{base::rownames()}}, and/or \code{\link[base:colnames]{base::colnames()}}
+without modification of the values.
 }
 \details{
 \code{\link[=makeNames]{makeNames()}} sanitizes names using underscores instead of dots, the
@@ -262,7 +262,7 @@ upperCamel(x) \%>\% names()
 }
 \seealso{
 \itemize{
-\item \code{\link[=make.names]{make.names()}}.
+\item \code{\link[base:make.names]{base::make.names()}}.
 \item \href{https://cran.r-project.org/package=janitor}{janitor} contains a number of
 useful functions that provide similar sanitization support, but isn't
 designed to work natively with \href{https://bioconductor.org}{Bioconductor} and

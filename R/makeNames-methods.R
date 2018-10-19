@@ -1,8 +1,8 @@
 #' Make Syntactically Valid Names
 #'
 #' For `atomic` vectors, these functions will sanitize the values. Otherwise,
-#' they will set [names()], [rownames()], and/or [colnames()] without
-#' modification of the values.
+#' they will set [base::names()], [base::rownames()], and/or [base::colnames()]
+#' without modification of the values.
 #'
 #' [makeNames()] sanitizes names using underscores instead of dots, the
 #' convention used by [base::make.names()].
@@ -14,8 +14,8 @@
 #' @name makeNames
 #'
 #' @inheritParams general
-#' @param object Character vector or an object for which [names()] assignment
-#'   will be meaningful.
+#' @param object Character vector or an object for which [base::names()]
+#'   assignment will be meaningful.
 #' @param rownames `boolean`. Apply sanitization on row names. This is not
 #'   recommended by default, since rownames commonly contain gene identifiers
 #'   that should not be modified.
@@ -26,10 +26,10 @@
 #'   "Rna", for example.
 #'
 #' @return Object with syntatically valid names. For objects supporting
-#'   [names()], the underlying data returns unchanged.
+#'   [base::names()], the underlying data returns unchanged.
 #'
 #' @seealso
-#' - [make.names()].
+#' - [base::make.names()].
 #' - [janitor](https://cran.r-project.org/package=janitor) contains a number of
 #'   useful functions that provide similar sanitization support, but isn't
 #'   designed to work natively with [Bioconductor](https://bioconductor.org) and
@@ -132,41 +132,41 @@ makeDimnames <- function(object) {
 
 
 # atomic =======================================================================
-.camel.atomic <-  # nolint
+camel.atomic <-  # nolint
     function(object, strict = FALSE) {
         if (has_names(object)) {
-            names(object) <- .camel.character(names(object), strict = strict)
+            names(object) <- camel.character(names(object), strict = strict)
         }
         object
     }
 
 
 
-.dotted.atomic <-  # nolint
+dotted.atomic <-  # nolint
     function(object) {
         if (has_names(object)) {
-            names(object) <- .dotted.character(names(object))
+            names(object) <- dotted.character(names(object))
         }
         object
     }
 
 
 
-.snake.atomic <-  # nolint
+snake.atomic <-  # nolint
     function(object) {
         if (has_names(object)) {
-            names(object) <- .snake.character(names(object))
+            names(object) <- snake.character(names(object))
         }
         object
     }
 
 
 
-.upperCamel.atomic <-  # nolint
+upperCamel.atomic <-  # nolint
     function(object, strict = FALSE) {
         if (has_names(object)) {
             names(object) <-
-                .upperCamel.character(names(object), strict = strict)
+                upperCamel.character(names(object), strict = strict)
         }
         object
     }
@@ -178,7 +178,7 @@ makeDimnames <- function(object) {
 setMethod(
     f = "camel",
     signature = signature("atomic"),
-    definition = .camel.atomic
+    definition = camel.atomic
 )
 
 
@@ -188,7 +188,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("atomic"),
-    definition = .dotted.atomic
+    definition = dotted.atomic
 )
 
 
@@ -198,7 +198,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("atomic"),
-    definition = .snake.atomic
+    definition = snake.atomic
 )
 
 
@@ -208,13 +208,13 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("atomic"),
-    definition = .upperCamel.atomic
+    definition = upperCamel.atomic
 )
 
 
 
 # character ====================================================================
-.camel.character <-  # nolint
+camel.character <-  # nolint
     function(
         object,
         format = c("lower", "upper"),
@@ -282,7 +282,7 @@ setMethod(
 
 
 # Dotted case is the internal method used by camel and snake.
-.dotted.character <-  # nolint
+dotted.character <-  # nolint
     function(object) {
         assert_is_atomic(object)
         object %>%
@@ -312,7 +312,7 @@ setMethod(
 
 
 
-.snake.character <-  # nolint
+snake.character <-  # nolint
     function(object) {
         assert_is_atomic(object)
         object %>%
@@ -323,9 +323,9 @@ setMethod(
 
 
 
-.upperCamel.character <-  # nolint
+upperCamel.character <-  # nolint
     function(object, strict = FALSE) {
-        .camel.character(object, format = "upper", strict = strict)
+        camel.character(object, format = "upper", strict = strict)
     }
 
 
@@ -337,11 +337,11 @@ setMethod(
     signature = signature("character"),
     definition = function(object, strict = FALSE) {
         if (has_names(object)) {
-            names <- .camel.character(names(object), strict = strict)
+            names <- camel.character(names(object), strict = strict)
         } else {
             names <- NULL
         }
-        object <- .camel.character(object, strict = strict)
+        object <- camel.character(object, strict = strict)
         names(object) <- names
         object
     }
@@ -356,11 +356,11 @@ setMethod(
     signature = signature("character"),
     definition = function(object) {
         if (has_names(object)) {
-            names <- .dotted.character(names(object))
+            names <- dotted.character(names(object))
         } else {
             names <- NULL
         }
-        object <- .dotted.character(object)
+        object <- dotted.character(object)
         names(object) <- names
         object
     }
@@ -375,11 +375,11 @@ setMethod(
     signature = signature("character"),
     definition = function(object) {
         if (has_names(object)) {
-            names <- .snake.character(names(object))
+            names <- snake.character(names(object))
         } else {
             names <- NULL
         }
-        object <- .snake.character(object)
+        object <- snake.character(object)
         names(object) <- names
         object
     }
@@ -394,11 +394,11 @@ setMethod(
     signature = signature("character"),
     definition = function(object, strict = FALSE) {
         if (has_names(object)) {
-            names <- .upperCamel.character(names(object), strict = strict)
+            names <- upperCamel.character(names(object), strict = strict)
         } else {
             names <- NULL
         }
-        object <- .upperCamel.character(object, strict = strict)
+        object <- upperCamel.character(object, strict = strict)
         names(object) <- names
         object
     }
@@ -407,7 +407,7 @@ setMethod(
 
 
 # factor =======================================================================
-.camel.factor <-  # nolint
+camel.factor <-  # nolint
     function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
@@ -420,7 +420,7 @@ setMethod(
 
 
 
-.dotted.factor <-  # nolint
+dotted.factor <-  # nolint
     function(object) {
         names <- names(object)
         object <- object %>%
@@ -433,7 +433,7 @@ setMethod(
 
 
 
-.snake.factor <-  # nolint
+snake.factor <-  # nolint
     function(object) {
         names <- names(object)
         object <- object %>%
@@ -446,7 +446,7 @@ setMethod(
 
 
 
-.upperCamel.factor <-  # nolint
+upperCamel.factor <-  # nolint
     function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
@@ -464,7 +464,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("factor"),
-    definition = .camel.factor
+    definition = camel.factor
 )
 
 
@@ -474,7 +474,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("factor"),
-    definition = .dotted.factor
+    definition = dotted.factor
 )
 
 
@@ -484,7 +484,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("factor"),
-    definition = .snake.factor
+    definition = snake.factor
 )
 
 
@@ -494,13 +494,13 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("factor"),
-    definition = .upperCamel.factor
+    definition = upperCamel.factor
 )
 
 
 
 # matrix =======================================================================
-.camel.matrix <-  # nolint
+camel.matrix <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -521,7 +521,7 @@ setMethod(
 
 
 
-.dotted.matrix <-  # nolint
+dotted.matrix <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -530,17 +530,17 @@ setMethod(
         assert_has_dimnames(object)
         assert_is_a_bool(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
-            rownames(object) <- .dotted.character(rownames(object))
+            rownames(object) <- dotted.character(rownames(object))
         }
         if (isTRUE(colnames) && has_colnames(object)) {
-            colnames(object) <- .dotted.character(colnames(object))
+            colnames(object) <- dotted.character(colnames(object))
         }
         object
     }
 
 
 
-.snake.matrix <-  # nolint
+snake.matrix <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -549,17 +549,17 @@ setMethod(
         assert_has_dimnames(object)
         assert_is_a_bool(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
-            rownames(object) <- .snake.character(rownames(object))
+            rownames(object) <- snake.character(rownames(object))
         }
         if (isTRUE(colnames) && has_colnames(object)) {
-            colnames(object) <- .snake.character(colnames(object))
+            colnames(object) <- snake.character(colnames(object))
         }
         object
     }
 
 
 
-.upperCamel.matrix <-  # nolint
+upperCamel.matrix <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -570,11 +570,11 @@ setMethod(
         assert_is_a_bool(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <-
-                .upperCamel.character(rownames(object), strict = strict)
+                upperCamel.character(rownames(object), strict = strict)
         }
         if (isTRUE(colnames) && has_colnames(object)) {
             colnames(object) <-
-                .upperCamel.character(colnames(object), strict = strict)
+                upperCamel.character(colnames(object), strict = strict)
         }
         object
     }
@@ -586,7 +586,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("matrix"),
-    definition = .camel.matrix
+    definition = camel.matrix
 )
 
 
@@ -596,7 +596,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("matrix"),
-    definition = .dotted.matrix
+    definition = dotted.matrix
 )
 
 
@@ -606,7 +606,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("matrix"),
-    definition = .snake.matrix
+    definition = snake.matrix
 )
 
 
@@ -616,7 +616,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("matrix"),
-    definition = .upperCamel.matrix
+    definition = upperCamel.matrix
 )
 
 
@@ -704,7 +704,7 @@ setMethod(
 
 
 # GRanges ======================================================================
-.camel.GRanges <-  # nolint
+camel.GRanges <-  # nolint
     function(object, strict = FALSE) {
         colnames(mcols(object)) <- camel(
             object = colnames(mcols(object)),
@@ -715,7 +715,7 @@ setMethod(
 
 
 
-.dotted.GRanges <-  # nolint
+dotted.GRanges <-  # nolint
     function(object) {
         colnames(mcols(object)) <- dotted(
             object = colnames(mcols(object))
@@ -725,7 +725,7 @@ setMethod(
 
 
 
-.snake.GRanges <-  # nolint
+snake.GRanges <-  # nolint
     function(object) {
         colnames(mcols(object)) <- snake(
             object = colnames(mcols(object))
@@ -735,7 +735,7 @@ setMethod(
 
 
 
-.upperCamel.GRanges <-  # nolint
+upperCamel.GRanges <-  # nolint
     function(object, strict = FALSE) {
         colnames(mcols(object)) <- upperCamel(
             object = colnames(mcols(object)),
@@ -751,7 +751,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("GRanges"),
-    definition = .camel.GRanges
+    definition = camel.GRanges
 )
 
 
@@ -761,7 +761,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("GRanges"),
-    definition = .dotted.GRanges
+    definition = dotted.GRanges
 )
 
 
@@ -771,7 +771,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("GRanges"),
-    definition = .snake.GRanges
+    definition = snake.GRanges
 )
 
 
@@ -781,7 +781,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("GRanges"),
-    definition = .upperCamel.GRanges
+    definition = upperCamel.GRanges
 )
 
 
@@ -951,7 +951,7 @@ setMethod(
 
 
 # ANY ==========================================================================
-.camel.ANY <-  # nolint
+camel.ANY <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -959,7 +959,7 @@ setMethod(
         strict = FALSE
     ) {
         if (!is.null(dimnames(object))) {
-            .camel.matrix(
+            camel.matrix(
                 object = object,
                 rownames = rownames,
                 colnames = colnames,
@@ -972,14 +972,14 @@ setMethod(
 
 
 
-.dotted.ANY <-  # nolint
+dotted.ANY <-  # nolint
     function(
         object,
         rownames = FALSE,
         colnames = TRUE
     ) {
         if (!is.null(dimnames(object))) {
-            .dotted.matrix(
+            dotted.matrix(
                 object = object,
                 rownames = rownames,
                 colnames = colnames
@@ -991,14 +991,14 @@ setMethod(
 
 
 
-.snake.ANY <-  # nolint
+snake.ANY <-  # nolint
     function(
         object,
         rownames = FALSE,
         colnames = TRUE
     ) {
         if (!is.null(dimnames(object))) {
-            .snake.matrix(
+            snake.matrix(
                 object = object,
                 rownames = rownames,
                 colnames = colnames
@@ -1010,7 +1010,7 @@ setMethod(
 
 
 
-.upperCamel.ANY <-  # nolint
+upperCamel.ANY <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -1018,7 +1018,7 @@ setMethod(
         strict = FALSE
     ) {
         if (!is.null(dimnames(object))) {
-            .upperCamel.matrix(
+            upperCamel.matrix(
                 object = object,
                 rownames = rownames,
                 colnames = colnames,
@@ -1036,7 +1036,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("ANY"),
-    definition = .camel.ANY
+    definition = camel.ANY
 )
 
 
@@ -1046,7 +1046,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("ANY"),
-    definition = .dotted.ANY
+    definition = dotted.ANY
 )
 
 
@@ -1056,7 +1056,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("ANY"),
-    definition = .snake.ANY
+    definition = snake.ANY
 )
 
 
@@ -1066,5 +1066,5 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("ANY"),
-    definition = .upperCamel.ANY
+    definition = upperCamel.ANY
 )

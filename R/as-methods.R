@@ -15,7 +15,7 @@
 #'
 #' @section tibble:
 #'
-#' Coerce an object to a `tibble` (`tbl_df`) data frame using either S3 or S4
+#' Coerce an object to a [tibble][] (`tbl_df`) data frame using either S3 or S4
 #' methods:
 #'
 #' - S3: `as_tibble(x)` (or `as_tibble()` alias).
@@ -35,6 +35,8 @@
 #' `as(tbl_df, Class = "DataFrame")` method looks for the `rowname` column and
 #' will attempt to move it back to [base::rownames()] automatically, unless
 #' there are duplicates present.
+#'
+#' [tibble]: https://tibble.tidyverse.org/
 #'
 #' @inheritParams general
 #'

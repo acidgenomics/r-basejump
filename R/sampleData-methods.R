@@ -2,10 +2,10 @@
 #'
 #' Metadata that describes the samples.
 #'
-#' This is a complement to the standard [colData()] function, but improves
-#' support for accessing sample metadata for datasets where multiple items in
-#' the columns map to a single sample (e.g. cells for a single-cell RNA-seq
-#' experiment).
+#' This is a complement to the standard [SummarizedExperiment::colData()]
+#' function, but improves support for accessing sample metadata for datasets
+#' where multiple items in the columns map to a single sample (e.g. cells for a
+#' single-cell RNA-seq experiment).
 #'
 #' @name sampleData
 #' @family Metadata Functions
@@ -15,7 +15,7 @@
 #' @param blacklist `character`. Column names that should never be treated as
 #'   sample-level metadata. Applies to objects where the columns don't map to
 #'   samples (e.g. `SingleCellExperiment`), and we need to collapse the
-#'   `colData()` dynamically.
+#'   `colData` dynamically.
 #'
 #' @return `DataFrame`.
 #'
@@ -45,7 +45,7 @@ NULL
 
 # SummarizedExperiment =========================================================
 # Don't run validity checks here.
-.sampleData.SummarizedExperiment <-  # nolint
+sampleData.SummarizedExperiment <-  # nolint
     function(object) {
         data <- colData(object)
         assertHasRownames(data)
@@ -64,7 +64,7 @@ NULL
 
 
 
-`.sampleData<-.SummarizedExperiment` <-  # nolint
+`sampleData<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
         # Don't allow blacklisted columns.
         value[["interestingGroups"]] <- NULL
@@ -83,7 +83,7 @@ NULL
 setMethod(
     f = "sampleData",
     signature = signature("SummarizedExperiment"),
-    definition = .sampleData.SummarizedExperiment
+    definition = sampleData.SummarizedExperiment
 )
 
 
@@ -96,14 +96,14 @@ setMethod(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
-    definition = `.sampleData<-.SummarizedExperiment`
+    definition = `sampleData<-.SummarizedExperiment`
 )
 
 
 
 # SingleCellExperiment =========================================================
 # Don't run validity checks here.
-.sampleData.SingleCellExperiment <-  # nolint
+sampleData.SingleCellExperiment <-  # nolint
     function(
         object,
         blacklist = c(
@@ -208,7 +208,7 @@ setMethod(
 
 
 
-`.sampleData<-.SingleCellExperiment` <-  # nolint
+`sampleData<-.SingleCellExperiment` <-  # nolint
     function(object, value) {
         assert_is_all_of(value, "DataFrame")
 
@@ -257,7 +257,7 @@ setMethod(
 setMethod(
     f = "sampleData",
     signature = signature("SingleCellExperiment"),
-    definition = .sampleData.SingleCellExperiment
+    definition = sampleData.SingleCellExperiment
 )
 
 
@@ -270,5 +270,5 @@ setMethod(
         object = "SingleCellExperiment",
         value = "DataFrame"
     ),
-    definition = `.sampleData<-.SingleCellExperiment`
+    definition = `sampleData<-.SingleCellExperiment`
 )

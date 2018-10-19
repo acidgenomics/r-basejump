@@ -21,7 +21,7 @@ matchArgsToDoCall(args = NULL, removeFormals = NULL,
 recommended to enable this when debugging.}
 }
 \value{
-\code{list}. Arguments to pass to \code{\link[=do.call]{do.call()}}.
+\code{list}. Arguments to pass to \code{\link[base:do.call]{base::do.call()}}.
 }
 \description{
 Match Arguments to Do Call
@@ -53,7 +53,7 @@ example(c("hello", "world"))
 }
 \seealso{
 \itemize{
-\item \link{standardizeCall}.
-\item \link[base:do.call]{base::do.call}.
+\item \code{\link[=standardizeCall]{standardizeCall()}}.
+\item \code{\link[base:do.call]{base::do.call()}}.
 }
 }

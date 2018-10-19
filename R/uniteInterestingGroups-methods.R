@@ -25,7 +25,7 @@ NULL
 
 
 
-.uniteInterestingGroups.data.frame <-  # nolint
+uniteInterestingGroups.data.frame <-  # nolint
     function(object, interestingGroups) {
         assert_is_character(interestingGroups)
         assert_is_subset(interestingGroups, colnames(object))
@@ -51,7 +51,7 @@ NULL
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("data.frame"),
-    definition = .uniteInterestingGroups.data.frame
+    definition = uniteInterestingGroups.data.frame
 )
 
 
@@ -61,8 +61,5 @@ setMethod(
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("DataFrame"),
-    definition = getMethod(
-        f = "uniteInterestingGroups",
-        signature = signature("data.frame")
-    )
+    definition = getMethod("uniteInterestingGroups", "data.frame")
 )

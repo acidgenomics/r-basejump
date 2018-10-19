@@ -1,7 +1,3 @@
-# FIXME Working example with devtools isn't capturing gene2symbol correctly.
-
-
-
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
 #' @name convertGenesToSymbols
@@ -49,7 +45,7 @@ NULL
 
 # convertGenesToSymbols ========================================================
 # Allowing duplicates here (unlike convertTranscriptsToGenes).
-.convertGenesToSymbols.character <-  # nolint
+convertGenesToSymbols.character <-  # nolint
     function(object, gene2symbol) {
         assert_all_are_non_missing_nor_empty_character(object)
         assert_is_all_of(gene2symbol, "Gene2Symbol")
@@ -79,7 +75,7 @@ NULL
 
 
 
-.convertGenesToSymbols.matrix <-  # nolint
+convertGenesToSymbols.matrix <-  # nolint
     function(object, gene2symbol) {
         g2s <- do.call(
             what = convertGenesToSymbols,
@@ -94,7 +90,7 @@ NULL
 
 
 
-.convertGenesToSymbols.SummarizedExperiment <-  # nolint
+convertGenesToSymbols.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -119,7 +115,7 @@ NULL
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("character"),
-    .convertGenesToSymbols.character
+    convertGenesToSymbols.character
 )
 
 
@@ -129,7 +125,7 @@ setMethod(
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("matrix"),
-    .convertGenesToSymbols.matrix
+    convertGenesToSymbols.matrix
 )
 
 
@@ -149,13 +145,13 @@ setMethod(
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    definition = .convertGenesToSymbols.SummarizedExperiment
+    definition = convertGenesToSymbols.SummarizedExperiment
 )
 
 
 
 # convertSymbolsToGenes ========================================================
-.convertSymbolsToGenes.SummarizedExperiment <-  # nolint
+convertSymbolsToGenes.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -175,5 +171,5 @@ setMethod(
 setMethod(
     f = "convertSymbolsToGenes",
     signature = signature("SummarizedExperiment"),
-    definition = .convertSymbolsToGenes.SummarizedExperiment
+    definition = convertSymbolsToGenes.SummarizedExperiment
 )

@@ -21,7 +21,7 @@ NULL
 
 
 
-.organism.matrix <-  # nolint
+organism.matrix <-  # nolint
     function(object) {
         # Assume gene identifiers are defined in the rownames.
         assertHasRownames(object)
@@ -30,7 +30,7 @@ NULL
 
 
 
-.organism.GRanges <-  # nolint
+organism.GRanges <-  # nolint
     function(object) {
         assert_has_names(object)
         detectOrganism(names(object))
@@ -41,7 +41,7 @@ NULL
 
 # Then attempt to check rowData.
 # Finally, check against the rownames.
-.organism.SummarizedExperiment <-  # nolint
+organism.SummarizedExperiment <-  # nolint
     function(object) {
         # Attempt to use metadata stash, if defined.
         organism <- metadata(object)[["organism"]]
@@ -66,7 +66,7 @@ NULL
 setMethod(
     f = "organism",
     signature = signature("matrix"),
-    definition = .organism.matrix
+    definition = organism.matrix
 )
 
 
@@ -76,7 +76,7 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("sparseMatrix"),
-    definition = .organism.matrix
+    definition = organism.matrix
 )
 
 
@@ -86,7 +86,7 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("data.frame"),
-    definition = .organism.matrix
+    definition = organism.matrix
 )
 
 
@@ -96,7 +96,7 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("DataFrame"),
-    definition = .organism.matrix
+    definition = organism.matrix
 )
 
 
@@ -106,7 +106,7 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("GRanges"),
-    definition = .organism.GRanges
+    definition = organism.GRanges
 )
 
 
@@ -116,5 +116,5 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("SummarizedExperiment"),
-    definition = .organism.SummarizedExperiment
+    definition = organism.SummarizedExperiment
 )

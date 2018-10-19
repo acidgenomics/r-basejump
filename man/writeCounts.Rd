@@ -25,9 +25,8 @@ with the sample barcodes ("\code{.colnames}"), and gene identifiers
 }
 \details{
 Automatic gzip compression is offered as a user-defined option. This setting
-is enabled by default to save disk space. Note that the
-\href{http://readr.tidyverse.org/}{readr} package, built into
-\href{https://www.rstudio.com/}{RStudio}, now natively supports compressed files.
+is enabled by default to save disk space. Note that the \href{http://readr.tidyverse.org/}{readr} package,
+built into \href{https://www.rstudio.com/}{RStudio}, now natively supports compressed files.
 }
 \note{
 This function is desired for interactive use and interprets object

@@ -31,7 +31,7 @@ NULL
 
 
 
-.headtail.atomic <-  # nolint
+headtail.atomic <-  # nolint
     function(x, n = 2L) {
         assert_is_atomic(x)
         assertIsAnImplicitInteger(n)
@@ -54,7 +54,7 @@ NULL
 
 
 
-.headtail.data.frame <-  # nolint
+headtail.data.frame <-  # nolint
     function(x, n = 2L) {
         assert_has_dims(x)
         assertIsAnImplicitInteger(n)
@@ -158,7 +158,7 @@ NULL
 setMethod(
     f = "headtail",
     signature = signature("atomic"),
-    definition = .headtail.atomic
+    definition = headtail.atomic
 )
 
 
@@ -168,7 +168,7 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("matrix"),
-    definition = .headtail.data.frame
+    definition = headtail.data.frame
 )
 
 

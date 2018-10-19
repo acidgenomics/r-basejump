@@ -5,8 +5,8 @@
 #' @inheritParams methods::selectMethod
 #'
 #' @return
-#' `methodFunction()`: `function`. Function sealed inside `MethodDefinition`.
-#' `methodFormals()`: `list`. Formal arguments.
+#' - [methodFormals()]: `list`. Extract the sealed formal arguments.
+#' - [methodDefinition()]: `function`. Extract the sealed function.
 #'
 #' @seealso Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #'

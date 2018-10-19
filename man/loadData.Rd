@@ -26,11 +26,11 @@ paths. Supports "\code{.rds}", "\code{.rda}", and "\code{.RData}" file extension
 }
 \details{
 \code{\link[=loadData]{loadData()}} is opinionated about the format of R data files it will accept.
-\code{\link[=save]{save()}} allows for the saving of multiple objects into a single R data file.
-This can later result in unexpected accidental replacement of an existing
-object in the current environment. Since an R data file internally stores the
-name of an object, if the file is later renamed the object name will no
-longer match.
+\code{\link[base:save]{base::save()}} allows for the saving of multiple objects into a single R data
+file. This can later result in unexpected accidental replacement of an
+existing object in the current environment. Since an R data file internally
+stores the name of an object, if the file is later renamed the object name
+will no longer match.
 
 To avoid any accidental replacements, \code{\link[=loadData]{loadData()}} will only load R data
 files that contain a single object, and the internal object name must match
@@ -45,7 +45,7 @@ names using non-standard evaluation.
 loadData(example, dir = system.file("extdata", package = "basejump"))
 }
 \seealso{
-\link{load}, \link{readRDS}.
+\code{\link[base:load]{base::load()}}, \code{\link[base:readRDS]{base::readRDS()}}.
 
 Other Import/Export Functions: \code{\link{assignAndSaveData}},
   \code{\link{export}}, \code{\link{import}},

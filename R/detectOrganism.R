@@ -18,10 +18,10 @@
 #' - *Rattus norvegicus* (rat)
 #' - *Saccharomyces cerevisiae* (yeast)
 #'
-#' @note [organism()] `character` method conflicts with annotate package, which
-#'   gets loaded into the namespace when DESeq2 is attached. Instead, we're
-#'   exporting the character method here as a separate function named
-#'   [detectOrganism()].
+#' @note [BiocGenerics::organism()] `character` method conflicts with annotate
+#'   package, which gets loaded into the namespace when DESeq2 is attached.
+#'   Instead, we're exporting the character method here as a separate function
+#'   named [detectOrganism()].
 #'
 #' @family Metadata Functions
 #' @export
@@ -30,7 +30,7 @@
 #'
 #' @return `string`. Full latin organism name. Stops on match failure.
 #'
-#' @seealso [organism()].
+#' @seealso [BiocGenerics::organism()].
 #'
 #' @examples
 #' ## Match by gene identifier.

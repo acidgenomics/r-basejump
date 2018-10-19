@@ -22,7 +22,7 @@ NULL
 
 
 
-.sanitizePercent.character <-  # nolint
+sanitizePercent.character <-  # nolint
     function(object) {
         if (all(grepl("%$", object))) {
             as.numeric(sub("%$", "", object)) / 100L
@@ -39,6 +39,7 @@ setMethod(
     f = "sanitizePercent",
     signature = signature("atomic"),
     definition = function(object) {
+        # Return unmodified.
         object
     }
 )
@@ -50,5 +51,5 @@ setMethod(
 setMethod(
     f = "sanitizePercent",
     signature = signature("character"),
-    definition = .sanitizePercent.character
+    definition = sanitizePercent.character
 )

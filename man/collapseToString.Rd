@@ -39,7 +39,7 @@ collapseToString(object, ...)
 \value{
 \itemize{
 \item \code{atomic}: \code{string}.
-\item \code{\link[=dim]{dim()}}: Object of same class, collapsed to a single row.
+\item \code{\link[base:dim]{base::dim()}}: Object of same class, collapsed to a single row.
 }
 }
 \description{

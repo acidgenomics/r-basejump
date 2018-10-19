@@ -7,9 +7,11 @@
 #' ("`.rownames`").
 #'
 #' Automatic gzip compression is offered as a user-defined option. This setting
-#' is enabled by default to save disk space. Note that the
-#' [readr](http://readr.tidyverse.org/) package, built into
-#' [RStudio](https://www.rstudio.com/), now natively supports compressed files.
+#' is enabled by default to save disk space. Note that the [readr][] package,
+#' built into [RStudio][], now natively supports compressed files.
+#'
+#' [readr]: http://readr.tidyverse.org/
+#' [RStudio]: https://www.rstudio.com/
 #'
 #' @note This function is desired for interactive use and interprets object
 #' names using non-standard evaluation.

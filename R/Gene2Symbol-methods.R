@@ -20,7 +20,7 @@ NULL
 
 
 
-.Gene2Symbol.data.frame <-  # nolint
+Gene2Symbol.data.frame <-  # nolint
     function(object) {
         assert_has_rows(object)
 
@@ -58,7 +58,7 @@ NULL
 
 
 
-.Gene2Symbol.DataFrame <-  # nolint
+Gene2Symbol.DataFrame <-  # nolint
     function(object) {
         assert_is_subset(
             x = c("geneID", "geneName"),
@@ -71,14 +71,14 @@ NULL
 
 
 
-.Gene2Symbol.GRanges <-  # nolint
+Gene2Symbol.GRanges <-  # nolint
     function(object) {
         Gene2Symbol(as(object, "DataFrame"))
     }
 
 
 
-.Gene2Symbol.SummarizedExperiment <-  # nolint
+Gene2Symbol.SummarizedExperiment <-  # nolint
     function(object) {
         object %>%
             rowData() %>%
@@ -93,7 +93,7 @@ NULL
 setMethod(
     f = "Gene2Symbol",
     signature = signature("data.frame"),
-    definition = .Gene2Symbol.data.frame
+    definition = Gene2Symbol.data.frame
 )
 
 
@@ -103,7 +103,7 @@ setMethod(
 setMethod(
     f = "Gene2Symbol",
     signature = signature("DataFrame"),
-    definition = .Gene2Symbol.DataFrame
+    definition = Gene2Symbol.DataFrame
 )
 
 
@@ -113,7 +113,7 @@ setMethod(
 setMethod(
     f = "Gene2Symbol",
     signature = signature("GRanges"),
-    definition = .Gene2Symbol.GRanges
+    definition = Gene2Symbol.GRanges
 )
 
 
@@ -123,5 +123,5 @@ setMethod(
 setMethod(
     f = "Gene2Symbol",
     signature = signature("SummarizedExperiment"),
-    definition = .Gene2Symbol.SummarizedExperiment
+    definition = Gene2Symbol.SummarizedExperiment
 )

@@ -108,7 +108,7 @@ NULL
 
 
 # mapGenesToRownames ===========================================================
-.mapGenesToRownames.Gene2Symbol <-  # nolint
+mapGenesToRownames.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -126,7 +126,7 @@ NULL
 
 
 
-.mapGenesToRownames.SummarizedExperiment <-  # nolint
+mapGenesToRownames.SummarizedExperiment <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -148,7 +148,7 @@ NULL
 setMethod(
     f = "mapGenesToRownames",
     signature = signature("Gene2Symbol"),
-    definition = .mapGenesToRownames.Gene2Symbol
+    definition = mapGenesToRownames.Gene2Symbol
 )
 
 
@@ -158,13 +158,13 @@ setMethod(
 setMethod(
     f = "mapGenesToRownames",
     signature = signature("SummarizedExperiment"),
-    definition = .mapGenesToRownames.SummarizedExperiment
+    definition = mapGenesToRownames.SummarizedExperiment
 )
 
 
 
 # mapGenesToIDs ================================================================
-.mapGenesToIDs.Gene2Symbol <-  # nolint
+mapGenesToIDs.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -183,7 +183,7 @@ setMethod(
 
 
 
-.mapGenesToIDs.SummarizedExperiment <-  # nolint
+mapGenesToIDs.SummarizedExperiment <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -205,7 +205,7 @@ setMethod(
 setMethod(
     f = "mapGenesToIDs",
     signature = signature("Gene2Symbol"),
-    definition = .mapGenesToIDs.Gene2Symbol
+    definition = mapGenesToIDs.Gene2Symbol
 )
 
 
@@ -215,13 +215,13 @@ setMethod(
 setMethod(
     f = "mapGenesToIDs",
     signature = signature("SummarizedExperiment"),
-    definition = .mapGenesToIDs.SummarizedExperiment
+    definition = mapGenesToIDs.SummarizedExperiment
 )
 
 
 
 # mapGenesToSymbols ============================================================
-.mapGenesToSymbols.Gene2Symbol <-  # nolint
+mapGenesToSymbols.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -240,7 +240,7 @@ setMethod(
 
 
 
-.mapGenesToSymbols.SummarizedExperiment <-  # nolint
+mapGenesToSymbols.SummarizedExperiment <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -262,7 +262,7 @@ setMethod(
 setMethod(
     f = "mapGenesToSymbols",
     signature = signature("Gene2Symbol"),
-    definition = .mapGenesToSymbols.Gene2Symbol
+    definition = mapGenesToSymbols.Gene2Symbol
 )
 
 
@@ -272,5 +272,5 @@ setMethod(
 setMethod(
     f = "mapGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    definition = .mapGenesToSymbols.SummarizedExperiment
+    definition = mapGenesToSymbols.SummarizedExperiment
 )

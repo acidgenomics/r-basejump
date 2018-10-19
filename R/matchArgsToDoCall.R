@@ -9,11 +9,11 @@
 #' @param removeFormals `character`. Names of formal arguments to remove from
 #'   `args` list before passing to `do.call()`.
 #'
-#' @return `list`. Arguments to pass to [do.call()].
+#' @return `list`. Arguments to pass to [base::do.call()].
 #'
 #' @seealso
-#' - [standardizeCall].
-#' - [base::do.call].
+#' - [standardizeCall()].
+#' - [base::do.call()].
 #'
 #' @examples
 #' example <- function(object, xxx, ...) {

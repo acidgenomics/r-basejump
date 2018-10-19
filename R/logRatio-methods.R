@@ -24,7 +24,7 @@ NULL
 
 
 # foldChangeToLogRatio =========================================================
-.foldChangeToLogRatio.numeric <-  # nolint
+foldChangeToLogRatio.numeric <-  # nolint
     function(object, base = 2L) {
         assertIsAnImplicitInteger(base)
         base <- as.integer(base)
@@ -41,13 +41,13 @@ NULL
 setMethod(
     f = "foldChangeToLogRatio",
     signature = signature("numeric"),
-    definition = .foldChangeToLogRatio.numeric
+    definition = foldChangeToLogRatio.numeric
 )
 
 
 
 # logRatioToFoldChange =========================================================
-.logRatioToFoldChange.numeric <-  # nolint
+logRatioToFoldChange.numeric <-  # nolint
     function(object, base = 2L) {
         assertIsAnImplicitInteger(base)
         base <- as.integer(base)
@@ -64,5 +64,5 @@ setMethod(
 setMethod(
     f = "logRatioToFoldChange",
     signature = signature("numeric"),
-    definition = .logRatioToFoldChange.numeric
+    definition = logRatioToFoldChange.numeric
 )

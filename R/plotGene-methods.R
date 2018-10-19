@@ -126,7 +126,7 @@ NULL
 
 
 
-.plotGene.SummarizedExperiment <-  # nolint
+plotGene.SummarizedExperiment <-  # nolint
     function(
         object,
         genes,
@@ -190,7 +190,7 @@ NULL
 setMethod(
     f = "plotGene",
     signature = signature("SummarizedExperiment"),
-    definition = .plotGene.SummarizedExperiment
+    definition = plotGene.SummarizedExperiment
 )
 
 

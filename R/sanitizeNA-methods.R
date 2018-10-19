@@ -38,6 +38,7 @@ setMethod(
     f = "sanitizeNA",
     signature = signature("atomic"),
     definition = function(object) {
+        # Return unmodified.
         object
     }
 )
@@ -46,7 +47,7 @@ setMethod(
 
 # character ====================================================================
 # Note that names will be kept here after the gsub call.
-.sanitizeNA.character <-  # nolint
+sanitizeNA.character <-  # nolint
     function(object) {
         patterns <- c(
             "^$",
@@ -69,13 +70,13 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("character"),
-    definition = .sanitizeNA.character
+    definition = sanitizeNA.character
 )
 
 
 
 # factor =======================================================================
-.sanitizeNA.factor <-  # nolint
+sanitizeNA.factor <-  # nolint
     function(object) {
         x <- sanitizeNA(as.character(object))
         levels(x) <- unique(sanitizeNA(levels(object)))
@@ -90,13 +91,13 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("factor"),
-    definition = .sanitizeNA.factor
+    definition = sanitizeNA.factor
 )
 
 
 
 # data.frame ===================================================================
-.sanitizeNA.data.frame <-  # nolint
+sanitizeNA.data.frame <-  # nolint
     function(object) {
         if (hasRownames(object)) {
             rownames <- rownames(object)
@@ -115,13 +116,13 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("data.frame"),
-    definition = .sanitizeNA.data.frame
+    definition = sanitizeNA.data.frame
 )
 
 
 
 # DataFrame ====================================================================
-.sanitizeNA.DataFrame <-  # nolint
+sanitizeNA.DataFrame <-  # nolint
     function(object) {
         rownames <- rownames(object)
         list <- lapply(
@@ -139,5 +140,5 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("DataFrame"),
-    definition = .sanitizeNA.DataFrame
+    definition = sanitizeNA.DataFrame
 )

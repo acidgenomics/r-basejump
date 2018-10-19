@@ -71,7 +71,7 @@ setMethod(
     ),
     definition = getMethod(
         f = "interestingGroups<-",
-        signature(
+        signature = signature(
             object = "SummarizedExperiment",
             value = "character"
         )

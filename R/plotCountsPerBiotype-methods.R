@@ -24,7 +24,7 @@ NULL
 
 
 
-.plotCountsPerBiotype.SummarizedExperiment <-  # nolint
+plotCountsPerBiotype.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -258,7 +258,7 @@ NULL
 setMethod(
     f = "plotCountsPerBiotype",
     signature = signature("SummarizedExperiment"),
-    definition = .plotCountsPerBiotype.SummarizedExperiment
+    definition = plotCountsPerBiotype.SummarizedExperiment
 )
 
 

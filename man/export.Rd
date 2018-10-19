@@ -35,9 +35,9 @@ directory.}
 
 \item{compress}{\code{boolean}. Apply gzip compression to all files.}
 
-\item{human}{\code{boolean}. Automatically convert gene IDs to
-gene symbols in the \code{\link[=rownames]{rownames()}} and sample IDs to sample names in the
-\code{\link[=colnames]{colnames()}}.}
+\item{human}{\code{boolean}. Automatically convert gene IDs to gene symbols in the
+\code{\link[base:rownames]{base::rownames()}} and sample IDs to sample names in the
+\code{\link[base:colnames]{base::colnames()}}.}
 }
 \value{
 Invisible \code{character}. File path(s).

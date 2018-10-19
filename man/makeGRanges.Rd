@@ -74,7 +74,7 @@ Remote URLs and compressed files are supported.
 
 \item \code{annotable}: \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
 \code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
-that \code{GRanges} can also be coercing using \code{\link[=as.data.frame]{as.data.frame()}}.
+that \code{GRanges} can also be coercing using \code{\link[BiocGenerics:as.data.frame]{BiocGenerics::as.data.frame()}}.
 }}
 
 \section{Broad class definitions}{

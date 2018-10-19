@@ -29,8 +29,8 @@ convertTranscriptsToGenes(object, ...)
 
 \item{tx2gene}{\code{Tx2Gene}. Transcript-to-gene mappings.}
 
-\item{aggregate}{\code{boolean}. For objects supporting \code{\link[=dim]{dim()}}, aggregate counts
-to gene level and collapse the matrix.}
+\item{aggregate}{\code{boolean}. For objects supporting \code{\link[base:dim]{base::dim()}}, aggregate
+counts to gene level and collapse the matrix.}
 }
 \value{
 \itemize{

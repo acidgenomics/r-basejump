@@ -15,7 +15,7 @@ BiocGenerics::`counts<-`
 #' Count matrix.
 #'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
-#'   defined in [assayNames()].
+#'   defined in [SummarizedExperiment::assayNames()].
 #'
 #' @name counts
 #' @family SummarizedExperiment Functions
@@ -32,7 +32,7 @@ NULL
 
 
 
-.counts.SummarizedExperiment <-  # nolint
+counts.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         assert_is_subset("counts", assayNames(object))
@@ -41,7 +41,7 @@ NULL
 
 
 
-`.counts<-.SummarizedExperiment` <-  # nolint
+`counts<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
         validObject(object)
         assays(object)[["counts"]] <- value
@@ -55,7 +55,7 @@ NULL
 setMethod(
     f = "counts",
     signature = signature("SummarizedExperiment"),
-    definition = .counts.SummarizedExperiment
+    definition = counts.SummarizedExperiment
 )
 
 
@@ -68,7 +68,7 @@ setMethod(
         object = "SummarizedExperiment",
         value = "ANY"
     ),
-    definition = `.counts<-.SummarizedExperiment`
+    definition = `counts<-.SummarizedExperiment`
 )
 
 
@@ -81,5 +81,5 @@ setMethod(
         object = "SummarizedExperiment",
         value = "matrix"
     ),
-    definition = `.counts<-.SummarizedExperiment`
+    definition = `counts<-.SummarizedExperiment`
 )
