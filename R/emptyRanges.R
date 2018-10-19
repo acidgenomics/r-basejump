@@ -3,7 +3,6 @@
 #' Utility function that provides support for creating internal `GRanges` for
 #' transgene and FASTA spike-in sequences.
 #'
-#' @family Annotation Functions
 #' @export
 #'
 #' @param names `character`. Gene or transcript names.

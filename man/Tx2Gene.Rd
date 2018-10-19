@@ -40,17 +40,12 @@ x <- Tx2Gene(tx_se_small)
 print(x)
 }
 \seealso{
-Other Identifier Mapping Functions: \code{\link{Ensembl2Entrez}},
-  \code{\link{Gene2Symbol}}, \code{\link{HGNC2Ensembl}},
-  \code{\link{MGI2Ensembl}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{mapGenes}}
+\code{\link[=Tx2Gene]{Tx2Gene()}}, \link{makeTx2Gene}.
 
-Other Transcript-Level Functions: \code{\link{convertTranscriptsToGenes}},
-  \code{\link{makeGRanges}}, \code{\link{makeTx2Gene}},
-  \code{\link{stripTranscriptVersions}}
+Other S4 Classes: \code{\link{EggNOG-class}},
+  \code{\link{Ensembl2Entrez-class}},
+  \code{\link{Gene2Symbol-class}},
+  \code{\link{HGNC2Ensembl-class}},
+  \code{\link{MGI2Ensembl-class}},
+  \code{\link{PANTHER-class}}
 }
-\concept{Identifier Mapping Functions}
-\concept{Transcript-Level Functions}

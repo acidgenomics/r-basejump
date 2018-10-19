@@ -5,7 +5,6 @@
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
 #' Use the [wormbase](https://steinbaugh.com/wormbase) package instead.
 #'
-#' @family Annotation Functions
 #' @export
 #'
 #' @inheritParams general

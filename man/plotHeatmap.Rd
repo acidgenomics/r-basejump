@@ -176,15 +176,7 @@ plotQuantileHeatmap(sce_small)
 \item \code{\link[stats:cor]{stats::cor()}}.
 \item \code{\link[stats:hclust]{stats::hclust()}}.
 }
-
-Other Plots: \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotCountsPerGene}},
-  \code{\link{plotGenderMarkers}},
-  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
-  \code{\link{plotQC}}, \code{\link{plotTotalCounts}},
-  \code{\link{plotZerosVsDepth}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Plots}

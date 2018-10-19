@@ -20,7 +20,4 @@ toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 }
 \seealso{
 \code{\link[base:toString]{base::toString()}}.
-
-Other Sanitization Functions: \code{\link{stripTranscriptVersions}}
 }
-\concept{Sanitization Functions}

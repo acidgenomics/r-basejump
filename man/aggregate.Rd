@@ -165,11 +165,7 @@ aggregateCols(se)
 \item \code{\link[S4Vectors:aggregate]{S4Vectors::aggregate()}}.
 \item \code{\link[Matrix.utils:aggregate.Matrix]{Matrix.utils::aggregate.Matrix()}}.
 }
-
-Other Calculations: \code{\link{geometricMean}},
-  \code{\link{logRatio}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Calculations}

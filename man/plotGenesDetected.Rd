@@ -55,12 +55,3 @@ data(rse_small, sce_small)
 plotGenesDetected(rse_small)
 plotGenesDetected(sce_small)
 }
-\seealso{
-Other Plots: \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotCountsPerGene}},
-  \code{\link{plotGenderMarkers}}, \code{\link{plotGene}},
-  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
-  \code{\link{plotTotalCounts}},
-  \code{\link{plotZerosVsDepth}}
-}
-\concept{Plots}

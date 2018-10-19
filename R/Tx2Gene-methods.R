@@ -3,8 +3,6 @@
 #' @note No attempt is made to arrange the rows by transcript identifier.
 #'
 #' @name Tx2Gene
-#' @family Identifier Mapping Functions
-#' @family Transcript-Level Functions
 #'
 #' @inheritParams general
 #'

@@ -85,7 +85,4 @@ p +
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
-
-Other ggplot2 Functions: \code{\link{ggplot2-geoms}}
 }
-\concept{ggplot2 Functions}

@@ -21,13 +21,3 @@ Detect Sequencing Lanes
 files <- c("sample1_L001.fastq.gz", "sample1_L002.fastq.gz")
 detectLanes(files)
 }
-\seealso{
-Other Metadata Functions: \code{\link{detectHPC}},
-  \code{\link{detectOrganism}},
-  \code{\link{interestingGroups}},
-  \code{\link{microplate}},
-  \code{\link{minimalSampleData}}, \code{\link{organism}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{uniteInterestingGroups}}
-}
-\concept{Metadata Functions}

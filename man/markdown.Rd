@@ -25,11 +25,3 @@ Markdown
 data(rse_small)
 markdown(rse_small)
 }
-\seealso{
-Other Markdown Functions: \code{\link{markdownHeader}},
-  \code{\link{markdownLink}}, \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}},
-  \code{\link{markdownTables}},
-  \code{\link{prepareTemplate}}
-}
-\concept{Markdown Functions}

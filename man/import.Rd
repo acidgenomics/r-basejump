@@ -130,11 +130,4 @@ colSums(x)
 \item \href{http://readxl.tidyverse.org}{readxl}.
 \item \href{https://cran.r-project.org/web/packages/Matrix/index.html}{Matrix}.
 }
-
-Other Import/Export Functions: \code{\link{assignAndSaveData}},
-  \code{\link{export}}, \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{saveData}}, \code{\link{transmit}},
-  \code{\link{writeCounts}}
 }
-\concept{Import/Export Functions}

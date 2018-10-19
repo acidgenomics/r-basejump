@@ -1,6 +1,5 @@
 #' @inherit EggNOG-class
 #'
-#' @family Annotation Functions
 #' @export
 #'
 #' @inheritParams general

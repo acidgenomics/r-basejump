@@ -12,7 +12,6 @@
 #'   identifiers for columns and gene identifiers for rows.
 #'
 #' @name selectSamples
-#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #' @param ... Selection arguments that map to the column names of

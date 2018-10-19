@@ -9,7 +9,6 @@
 #' or `clusterCols` to `FALSE`.
 #'
 #' @name plotHeatmap
-#' @family Plots
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general

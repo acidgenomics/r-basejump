@@ -39,12 +39,3 @@ to <- uniteInterestingGroups(
 )
 print(to)
 }
-\seealso{
-Other Metadata Functions: \code{\link{detectHPC}},
-  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
-  \code{\link{interestingGroups}},
-  \code{\link{microplate}},
-  \code{\link{minimalSampleData}}, \code{\link{organism}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}}
-}
-\concept{Metadata Functions}

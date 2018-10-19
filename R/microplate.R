@@ -1,6 +1,5 @@
 #' Microtiter Plate Well Identifiers
 #'
-#' @family Metadata Functions
 #' @export
 #'
 #' @param plates `scalar integer`. Number of plates.

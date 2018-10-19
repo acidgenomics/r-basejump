@@ -34,8 +34,3 @@ saveRdExamples(
 ## Clean up.
 unlink("example", recursive = TRUE)
 }
-\seealso{
-Other Documentation Functions: \code{\link{RdTags}},
-  \code{\link{parseRd}}
-}
-\concept{Documentation Functions}

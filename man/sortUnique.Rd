@@ -20,4 +20,3 @@ repetitive gene vector operations, for example.
 \examples{
 sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 }
-\concept{Sanitization}

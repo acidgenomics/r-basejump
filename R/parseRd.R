@@ -3,7 +3,6 @@
 #' Modified version of `tools:::.Rd_get_metadata()` that keeps whitespace and
 #' returns `character` instead of `matrix`.
 #'
-#' @family Documentation Functions
 #' @export
 #'
 #' @param object `Rd`. R documentation, returned from [tools::Rd_db()].

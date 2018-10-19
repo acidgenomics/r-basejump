@@ -137,16 +137,4 @@ summary(x)
 \item \code{\link[rtracklayer:import]{rtracklayer::import()}}.
 \item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
 }
-
-Other Annotation Functions: \code{\link{EggNOG}},
-  \code{\link{PANTHER}}, \code{\link{emptyRanges}},
-  \code{\link{geneSynonyms}},
-  \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}}
-
-Other Transcript-Level Functions: \code{\link{Tx2Gene}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{makeTx2Gene}},
-  \code{\link{stripTranscriptVersions}}
 }
-\concept{Annotation Functions}
-\concept{Transcript-Level Functions}

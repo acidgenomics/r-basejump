@@ -9,7 +9,6 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeGene2Symbol
-#' @family Annotation Functions
 #' @include makeGRanges.R
 #'
 #' @inheritParams makeGRanges

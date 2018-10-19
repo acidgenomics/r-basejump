@@ -23,7 +23,6 @@
 #'   Instead, we're exporting the character method here as a separate function
 #'   named [detectOrganism()].
 #'
-#' @family Metadata Functions
 #' @export
 #'
 #' @param object `character`.

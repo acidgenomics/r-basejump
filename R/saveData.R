@@ -6,7 +6,6 @@
 #' This function always saves each object into a separate file rather than
 #' combining multiple objects into a single file.
 #'
-#' @family Import/Export Functions
 #' @export
 #'
 #' @inheritParams loadData
@@ -96,7 +95,6 @@ saveData <- function(
 #' Assigns a new object by name to the current working environment then saves
 #' the newly assigned object, specified by the "`dir`" argument.
 #'
-#' @family Import/Export Functions
 #' @export
 #'
 #' @inheritParams saveData

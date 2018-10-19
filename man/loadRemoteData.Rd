@@ -29,11 +29,3 @@ print(url)
 x <- loadRemoteData(url)
 print(x)
 }
-\seealso{
-Other Import/Export Functions: \code{\link{assignAndSaveData}},
-  \code{\link{export}}, \code{\link{import}},
-  \code{\link{loadDataAsName}}, \code{\link{loadData}},
-  \code{\link{saveData}}, \code{\link{transmit}},
-  \code{\link{writeCounts}}
-}
-\concept{Import/Export Functions}

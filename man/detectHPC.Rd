@@ -27,13 +27,4 @@ detectHPC()
 \item \code{R.version}.
 \item \code{.Platform}.
 }
-
-Other Metadata Functions: \code{\link{detectLanes}},
-  \code{\link{detectOrganism}},
-  \code{\link{interestingGroups}},
-  \code{\link{microplate}},
-  \code{\link{minimalSampleData}}, \code{\link{organism}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{uniteInterestingGroups}}
 }
-\concept{Metadata Functions}

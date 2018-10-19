@@ -35,12 +35,3 @@ se <- SummarizedExperiment::SummarizedExperiment(
 x <- tpm(se)
 class(x)
 }
-\seealso{
-Other SummarizedExperiment Functions: \code{\link{counts}},
-  \code{\link{interestingGroups}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}}
-}
-\concept{SummarizedExperiment Functions}

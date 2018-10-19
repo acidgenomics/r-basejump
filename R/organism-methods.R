@@ -8,7 +8,6 @@ BiocGenerics::organism
 #' Organism Accessor
 #'
 #' @name organism
-#' @family Metadata Functions
 #'
 #' @inheritParams general
 #'

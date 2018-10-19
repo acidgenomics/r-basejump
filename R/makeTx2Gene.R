@@ -5,8 +5,6 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeTx2Gene
-#' @family Annotation Functions
-#' @family Transcript-Level Functions
 #' @include makeGRanges.R
 #'
 #' @inheritParams makeGRanges

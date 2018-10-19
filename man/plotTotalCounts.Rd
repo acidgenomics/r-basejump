@@ -51,12 +51,3 @@ data(rse_small, sce_small)
 plotTotalCounts(rse_small)
 plotTotalCounts(sce_small)
 }
-\seealso{
-Other Plots: \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotCountsPerGene}},
-  \code{\link{plotGenderMarkers}},
-  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
-  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
-  \code{\link{plotZerosVsDepth}}
-}
-\concept{Plots}

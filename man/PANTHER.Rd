@@ -31,9 +31,12 @@ x <- PANTHER("Homo sapiens", progress = FALSE)
 summary(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{EggNOG}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}
+\code{\link[=PANTHER]{PANTHER()}}.
+
+Other S4 Classes: \code{\link{EggNOG-class}},
+  \code{\link{Ensembl2Entrez-class}},
+  \code{\link{Gene2Symbol-class}},
+  \code{\link{HGNC2Ensembl-class}},
+  \code{\link{MGI2Ensembl-class}},
+  \code{\link{Tx2Gene-class}}
 }
-\concept{Annotation Functions}

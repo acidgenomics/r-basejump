@@ -39,11 +39,3 @@ file.exists(readme)
 ## Clean up.
 unlink("ensembl_readme.txt.gz")
 }
-\seealso{
-Other Import/Export Functions: \code{\link{assignAndSaveData}},
-  \code{\link{export}}, \code{\link{import}},
-  \code{\link{loadDataAsName}}, \code{\link{loadData}},
-  \code{\link{loadRemoteData}}, \code{\link{saveData}},
-  \code{\link{writeCounts}}
-}
-\concept{Import/Export Functions}

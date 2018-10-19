@@ -4,7 +4,6 @@
 #' can be used in an R Markdown report, separated by headers. Internally, the
 #' headers are generated with the [markdownHeader()] function.
 #'
-#' @family Markdown Functions
 #' @export
 #'
 #' @inheritParams general

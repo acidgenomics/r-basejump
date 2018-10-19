@@ -23,9 +23,14 @@ x <- EggNOG()
 print(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{PANTHER}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}
+\code{\link[=EggNOG]{EggNOG()}}.
+
+The \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README file}
+contains additional useful reference information.
+
+Other S4 Classes: \code{\link{Ensembl2Entrez-class}},
+  \code{\link{Gene2Symbol-class}},
+  \code{\link{HGNC2Ensembl-class}},
+  \code{\link{MGI2Ensembl-class}},
+  \code{\link{PANTHER-class}}, \code{\link{Tx2Gene-class}}
 }
-\concept{Annotation Functions}

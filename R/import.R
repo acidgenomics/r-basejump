@@ -59,7 +59,6 @@
 #' - `COLNAMES`: Sidecar file containing column names.
 #' - `ROWNAMES`: Sidecar file containing row names.
 #'
-#' @family Import/Export Functions
 #' @export
 #'
 #' @inheritParams general

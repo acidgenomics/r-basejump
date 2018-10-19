@@ -73,21 +73,3 @@ sampleData(x)[["batch"]] <- 1L
 ## `batch` column should be now defined.
 sampleData(x)
 }
-\seealso{
-Other Metadata Functions: \code{\link{detectHPC}},
-  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
-  \code{\link{interestingGroups}},
-  \code{\link{microplate}},
-  \code{\link{minimalSampleData}}, \code{\link{organism}},
-  \code{\link{sampleNames}},
-  \code{\link{uniteInterestingGroups}}
-
-Other SummarizedExperiment Functions: \code{\link{counts}},
-  \code{\link{interestingGroups}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}}
-}
-\concept{Metadata Functions}
-\concept{SummarizedExperiment Functions}

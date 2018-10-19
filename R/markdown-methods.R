@@ -1,7 +1,6 @@
 #' Markdown
 #'
 #' @name markdown
-#' @family Markdown Functions
 #'
 #' @inheritParams general
 #'

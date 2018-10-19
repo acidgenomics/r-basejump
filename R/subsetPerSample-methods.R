@@ -1,7 +1,6 @@
 #' Subset Per Sample
 #'
 #' @name subsetPerSample
-#' @family SingleCellExperiment Functions
 #'
 #' @inheritParams general
 #' @param minCells `scalar integer`. Minimum number of cells required per

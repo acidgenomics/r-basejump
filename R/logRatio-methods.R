@@ -1,7 +1,6 @@
 #' Interconvert Log Ratio and Fold Change Values
 #'
 #' @name logRatio
-#' @family Calculations
 #'
 #' @inheritParams general
 #' @param base `scalar integer`. Logarithm base. Defaults to `2`, for

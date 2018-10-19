@@ -35,13 +35,4 @@ organism(rse_small)
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.
-
-Other Metadata Functions: \code{\link{detectHPC}},
-  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
-  \code{\link{interestingGroups}},
-  \code{\link{microplate}},
-  \code{\link{minimalSampleData}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{uniteInterestingGroups}}
 }
-\concept{Metadata Functions}

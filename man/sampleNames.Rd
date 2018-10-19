@@ -35,21 +35,3 @@ sampleNames(object) <- value
 x <- sampleNames(object)
 print(x)
 }
-\seealso{
-Other Metadata Functions: \code{\link{detectHPC}},
-  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
-  \code{\link{interestingGroups}},
-  \code{\link{microplate}},
-  \code{\link{minimalSampleData}}, \code{\link{organism}},
-  \code{\link{sampleData}},
-  \code{\link{uniteInterestingGroups}}
-
-Other SummarizedExperiment Functions: \code{\link{counts}},
-  \code{\link{interestingGroups}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{selectSamples}}, \code{\link{tpm}}
-}
-\concept{Metadata Functions}
-\concept{SummarizedExperiment Functions}

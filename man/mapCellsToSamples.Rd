@@ -25,11 +25,3 @@ cells <- paste(samples, c("AAAAAAAA", "CCCCCCCC"), sep = "_")
 print(cells)
 mapCellsToSamples(cells, samples)
 }
-\seealso{
-Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{cell2sample}},
-  \code{\link{makeSingleCellExperiment}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}
-}
-\concept{SingleCellExperiment Functions}

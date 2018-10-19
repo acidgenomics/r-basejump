@@ -6,7 +6,6 @@
 #' - No attempt is made to arrange the rows by gene identifier.
 #'
 #' @name Gene2Symbol
-#' @family Identifier Mapping Functions
 #'
 #' @inheritParams general
 #'

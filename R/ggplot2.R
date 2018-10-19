@@ -29,7 +29,6 @@
 #' is required, simply use the ggrepel version instead.
 #'
 #' @name ggplot2-geoms
-#' @family ggplot2 Functions
 #'
 #' @inheritParams ggplot2::geom_label
 #' @param color `string`. Text color (e.g. `"orange"`).
@@ -271,7 +270,6 @@ basejump_geom_label_repel <- function(
 #' expression plots.
 #'
 #' @name ggplot2-themes
-#' @family ggplot2 Functions
 #'
 #' @param base_size `scalar numeric`. Base font size.
 #' @param base_family `string`. Base font family.

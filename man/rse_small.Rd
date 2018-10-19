@@ -16,9 +16,4 @@ identifiers and Ensembl annotations.
 data(rse_small)
 rse_small
 }
-\seealso{
-Other Minimal Example Data: \code{\link{sce_small}},
-  \code{\link{tx_se_small}}
-}
-\concept{Minimal Example Data}
 \keyword{datasets}

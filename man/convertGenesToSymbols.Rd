@@ -72,12 +72,3 @@ print(x)
 y <- convertSymbolsToGenes(x)
 print(y)
 }
-\seealso{
-Other Identifier Mapping Functions: \code{\link{Ensembl2Entrez}},
-  \code{\link{Gene2Symbol}}, \code{\link{HGNC2Ensembl}},
-  \code{\link{MGI2Ensembl}}, \code{\link{Tx2Gene}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{mapGenes}}
-}
-\concept{Identifier Mapping Functions}

@@ -34,12 +34,3 @@ data(rse_small)
 x <- counts(rse_small)
 summary(x)
 }
-\seealso{
-Other SummarizedExperiment Functions: \code{\link{interestingGroups}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{tpm}}
-}
-\concept{SummarizedExperiment Functions}

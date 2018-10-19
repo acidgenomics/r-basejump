@@ -2,7 +2,6 @@
 #'
 #' Modified version of the unexported `tools:::RdTags()` function.
 #'
-#' @family Documentation Functions
 #' @export
 #'
 #' @inheritParams parseRd

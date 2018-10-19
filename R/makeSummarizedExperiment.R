@@ -13,7 +13,6 @@
 #'
 #' @note Column and rows always return sorted alphabetically.
 #'
-#' @family SummarizedExperiment Functions
 #' @export
 #'
 #' @inheritParams general

@@ -35,10 +35,5 @@ markdownList(groceries, ordered = TRUE)
 markdownList(groceries, asis = TRUE)
 }
 \seealso{
-Other Markdown Functions: \code{\link{markdownHeader}},
-  \code{\link{markdownLink}},
-  \code{\link{markdownPlotlist}},
-  \code{\link{markdownTables}}, \code{\link{markdown}},
-  \code{\link{prepareTemplate}}
+\href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
 }
-\concept{Markdown Functions}

@@ -4,7 +4,6 @@
 #' matching.
 #'
 #' @name mapCellsToSamples
-#' @family SingleCellExperiment Functions
 #' @export
 #'
 #' @param cells `character`. Cell identifiers.

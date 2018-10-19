@@ -18,12 +18,11 @@ x <- MGI2Ensembl()
 print(x)
 }
 \seealso{
-Other Identifier Mapping Functions: \code{\link{Ensembl2Entrez}},
-  \code{\link{Gene2Symbol}}, \code{\link{HGNC2Ensembl}},
-  \code{\link{Tx2Gene}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{mapGenes}}
+\code{\link[=MGI2Ensembl]{MGI2Ensembl()}}.
+
+Other S4 Classes: \code{\link{EggNOG-class}},
+  \code{\link{Ensembl2Entrez-class}},
+  \code{\link{Gene2Symbol-class}},
+  \code{\link{HGNC2Ensembl-class}},
+  \code{\link{PANTHER-class}}, \code{\link{Tx2Gene-class}}
 }
-\concept{Identifier Mapping Functions}

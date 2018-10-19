@@ -1,7 +1,6 @@
 #' Melt Count Matrix to Long Format
 #'
 #' @name meltCounts
-#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #' @param nonzeroGenes `boolean`. Return only non-zero genes.

@@ -35,11 +35,3 @@ loadDataAsName(
 )
 class(renamed)
 }
-\seealso{
-Other Import/Export Functions: \code{\link{assignAndSaveData}},
-  \code{\link{export}}, \code{\link{import}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{saveData}}, \code{\link{transmit}},
-  \code{\link{writeCounts}}
-}
-\concept{Import/Export Functions}

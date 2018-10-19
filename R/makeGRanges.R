@@ -2,8 +2,6 @@
 #'
 #' @name makeGRanges
 #' @include globals.R
-#' @family Annotation Functions
-#' @family Transcript-Level Functions
 #'
 #' @section Broad class definitions:
 #'

@@ -3,7 +3,6 @@
 #' Calculate and visualize the dropout rate.
 #'
 #' @name plotZerosVsDepth
-#' @family Plots
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
 #' @inheritParams general

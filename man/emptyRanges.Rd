@@ -39,10 +39,4 @@ emptyRanges("ERCC", seqname = "spike")
 }
 \seealso{
 \code{help("seqinfo", "GenomeInfoDb")}.
-
-Other Annotation Functions: \code{\link{EggNOG}},
-  \code{\link{PANTHER}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}
 }
-\concept{Annotation Functions}

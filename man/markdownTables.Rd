@@ -31,10 +31,4 @@ markdownTables(
 \item \code{\link[knitr:kable]{knitr::kable()}}.
 \item \href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow post}.
 }
-
-Other Markdown Functions: \code{\link{markdownHeader}},
-  \code{\link{markdownLink}}, \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}}, \code{\link{markdown}},
-  \code{\link{prepareTemplate}}
 }
-\concept{Markdown Functions}

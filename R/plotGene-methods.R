@@ -1,7 +1,6 @@
 #' Plot Gene Expression
 #'
 #' @name plotGene
-#' @family Plots
 #'
 #' @inheritParams general
 #' @param countsAxisLabel `string`. Label to use for the counts axis.

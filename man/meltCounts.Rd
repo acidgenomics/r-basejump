@@ -40,12 +40,4 @@ print(x)
 }
 \seealso{
 \code{\link[reshape2:melt]{reshape2::melt()}}.
-
-Other SummarizedExperiment Functions: \code{\link{counts}},
-  \code{\link{interestingGroups}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{metrics}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}}
 }
-\concept{SummarizedExperiment Functions}

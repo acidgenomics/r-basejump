@@ -122,11 +122,4 @@ print(x)
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.
 }
-
-Other SummarizedExperiment Functions: \code{\link{counts}},
-  \code{\link{interestingGroups}}, \code{\link{mapGenes}},
-  \code{\link{meltCounts}}, \code{\link{metrics}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}}
 }
-\concept{SummarizedExperiment Functions}

@@ -17,8 +17,6 @@ Biobase::`sampleNames<-`
 #' the syntactically valid names defined as the rownames of [sampleData()].
 #'
 #' @name sampleNames
-#' @family Metadata Functions
-#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #'

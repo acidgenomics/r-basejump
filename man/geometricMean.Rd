@@ -71,8 +71,4 @@ geometricMean(sparse)
 \seealso{
 Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
 \href{https://stackoverflow.com/a/25555105}{code}.
-
-Other Calculations: \code{\link{aggregate}},
-  \code{\link{logRatio}}
 }
-\concept{Calculations}

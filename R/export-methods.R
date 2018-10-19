@@ -15,7 +15,6 @@
 #' column in the CSV export.
 #'
 #' @name export
-#' @family Import/Export Functions
 #'
 #' @inheritParams general
 #' @inheritParams rio::export

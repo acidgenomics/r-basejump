@@ -3,7 +3,6 @@
 #' Obtain the top cellular barcodes, based on counts.
 #'
 #' @name topCellsPerSample
-#' @family SingleCellExperiment Functions
 #'
 #' @inheritParams general
 #' @param n `scalar integer`. Number of barcodes to return per sample.

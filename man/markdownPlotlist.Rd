@@ -30,10 +30,4 @@ markdownPlotlist(plotlist)
 }
 \seealso{
 \code{\link[cowplot:plot_grid]{cowplot::plot_grid()}}.
-
-Other Markdown Functions: \code{\link{markdownHeader}},
-  \code{\link{markdownLink}}, \code{\link{markdownList}},
-  \code{\link{markdownTables}}, \code{\link{markdown}},
-  \code{\link{prepareTemplate}}
 }
-\concept{Markdown Functions}
