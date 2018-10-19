@@ -13,7 +13,7 @@
 #' @inheritParams general
 #' @param aggregate `boolean`. For objects supporting [dim()], aggregate counts
 #'   to gene level and collapse the matrix.
-#' @param ... Passthrough to [makeTx2geneFromEnsembl()].
+#' @param ... Passthrough to [makeTx2GeneFromEnsembl()].
 #'
 #' @return
 #' - `character`: `factor`. Genes in the values, transcripts in the names.
