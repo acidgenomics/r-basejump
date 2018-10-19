@@ -19,7 +19,7 @@ methodFunction(f, signature)
 \value{
 \itemize{
 \item \code{\link[=methodFormals]{methodFormals()}}: \code{list}. Extract the sealed formal arguments.
-\item \code{\link[=methodDefinition]{methodDefinition()}}: \code{function}. Extract the sealed function.
+\item \code{\link[=methodFunction]{methodFunction()}}: \code{function}. Extract the sealed function.
 }
 }
 \description{

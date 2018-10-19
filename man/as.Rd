@@ -144,6 +144,6 @@ Chambers, John M. (2016)
 \item \code{\link[methods:canCoerce]{methods::canCoerce()}}.
 \item \code{\link[methods:showMethods]{methods::showMethods()}}.
 \item \code{\link[utils:methods]{utils::methods()}}.
-\item \code{\link[BiocGenerics:as.list]{BiocGenerics::as.list()}}.
+\item \code{\link[S4Vectors:as.list]{S4Vectors::as.list()}}.
 }
 }

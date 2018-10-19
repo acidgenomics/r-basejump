@@ -6,7 +6,7 @@
 #'
 #' @return
 #' - [methodFormals()]: `list`. Extract the sealed formal arguments.
-#' - [methodDefinition()]: `function`. Extract the sealed function.
+#' - [methodFunction()]: `function`. Extract the sealed function.
 #'
 #' @seealso Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #'
