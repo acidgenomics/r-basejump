@@ -47,9 +47,11 @@ Tx2Gene.DataFrame <-  # nolint
         }
 
         data <- object %>%
+            # Perform this first, otherwise can get a non atomic error due to
+            # GRanges to DataFrame coercion containing "X" ranges column.
+            .[, cols, drop = FALSE] %>%
             as_tibble(rownames = NULL) %>%
-            select(!!!syms(cols)) %>%
-            # This is needed for processing GFF files.
+            # This step is needed for handling raw GFF annotations.
             unique() %>%
             mutate_all(as.character) %>%
             as("DataFrame")
