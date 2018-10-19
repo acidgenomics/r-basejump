@@ -46,10 +46,3 @@ prepareTemplate(package = "bcbioRNASeq")
 prepareTemplate(package = "bcbioSingleCell")
 }
 }
-\seealso{
-Other Markdown Functions: \code{\link{markdownHeader}},
-  \code{\link{markdownLink}}, \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}},
-  \code{\link{markdownTables}}, \code{\link{markdown}}
-}
-\concept{Markdown Functions}

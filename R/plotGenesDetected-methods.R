@@ -1,7 +1,6 @@
 #' Plot Genes Detected
 #'
 #' @name plotGenesDetected
-#' @family Plots
 #'
 #' @inheritParams general
 #'

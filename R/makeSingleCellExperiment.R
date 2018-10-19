@@ -1,6 +1,5 @@
 #' Make Single-Cell Experiment
 #'
-#' @family SingleCellExperiment Functions
 #' @inherit makeSummarizedExperiment
 #' @export
 #'

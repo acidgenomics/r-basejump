@@ -39,11 +39,3 @@ data(sce_small)
 x <- aggregateCellsToSamples(sce_small)
 print(x)
 }
-\seealso{
-Other SingleCellExperiment Functions: \code{\link{cell2sample}},
-  \code{\link{makeSingleCellExperiment}},
-  \code{\link{mapCellsToSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}
-}
-\concept{SingleCellExperiment Functions}

@@ -1,7 +1,6 @@
 #' Plot Quality Control
 #'
 #' @name plotQC
-#' @family Plots
 #'
 #' @inheritParams general
 #'

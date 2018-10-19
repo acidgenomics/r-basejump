@@ -17,9 +17,5 @@ sce_small
 }
 \seealso{
 \code{scater::sc_example_counts}.
-
-Other Minimal Example Data: \code{\link{rse_small}},
-  \code{\link{tx_se_small}}
 }
-\concept{Minimal Example Data}
 \keyword{datasets}

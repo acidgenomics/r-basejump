@@ -61,16 +61,4 @@ print(x)
 }
 \seealso{
 \link{makeGRanges}.
-
-Other Annotation Functions: \code{\link{EggNOG}},
-  \code{\link{PANTHER}}, \code{\link{emptyRanges}},
-  \code{\link{geneSynonyms}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2Symbol}}
-
-Other Transcript-Level Functions: \code{\link{Tx2Gene}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{makeGRanges}},
-  \code{\link{stripTranscriptVersions}}
 }
-\concept{Annotation Functions}
-\concept{Transcript-Level Functions}

@@ -37,8 +37,4 @@ print(examples)
 }
 \seealso{
 \code{\link[tools:Rd_db]{tools::Rd_db()}}.
-
-Other Documentation Functions: \code{\link{RdTags}},
-  \code{\link{saveRdExamples}}
 }
-\concept{Documentation Functions}

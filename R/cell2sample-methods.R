@@ -3,7 +3,6 @@
 #' @note `sampleID` column must be defined in [SummarizedExperiment::colData()].
 #'
 #' @name cell2sample
-#' @family SingleCellExperiment Functions
 #'
 #' @inheritParams general
 #'

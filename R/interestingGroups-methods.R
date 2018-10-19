@@ -1,8 +1,6 @@
 #' Interesting Groups
 #'
 #' @name interestingGroups
-#' @family Metadata Functions
-#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #'

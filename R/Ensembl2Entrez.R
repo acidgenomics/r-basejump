@@ -1,7 +1,6 @@
 #' @inherit Ensembl2Entrez-class
 #'
 #' @name Ensembl2Entrez
-#' @family Identifier Mapping Functions
 #' @export
 #'
 #' @inheritParams general

@@ -5,7 +5,6 @@
 #' single column, delimited by a colon.
 #'
 #' @name uniteInterestingGroups
-#' @family Metadata Functions
 #'
 #' @inheritParams general
 #' @param object Object containing column data that defines interesting groups.

@@ -6,7 +6,6 @@
 #' genomes are supported.
 #'
 #' @name plotGenderMarkers
-#' @family Plots
 #' @include plotGene-methods.R
 #'
 #' @inheritParams plotGene

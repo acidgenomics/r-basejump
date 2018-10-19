@@ -4,7 +4,6 @@
 #' script. Note that the `f` argument is parameterized and can handle multiple
 #' requests in a single call.
 #'
-#' @family Documentation Functions
 #' @export
 #'
 #' @inheritParams general

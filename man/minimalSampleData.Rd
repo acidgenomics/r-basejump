@@ -19,12 +19,3 @@ Minimal Sample Data
 x <- minimalSampleData(sample = c("sample 1", "sample 2"))
 print(x)
 }
-\seealso{
-Other Metadata Functions: \code{\link{detectHPC}},
-  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
-  \code{\link{interestingGroups}},
-  \code{\link{microplate}}, \code{\link{organism}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{uniteInterestingGroups}}
-}
-\concept{Metadata Functions}

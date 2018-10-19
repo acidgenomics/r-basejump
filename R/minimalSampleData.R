@@ -1,6 +1,5 @@
 #' Minimal Sample Data
 #'
-#' @family Metadata Functions
 #' @export
 #'
 #' @param sample `character`. Sample names (e.g. per-sample directory names).

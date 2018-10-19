@@ -1,6 +1,5 @@
 #' Detect Sequencing Lanes
 #'
-#' @family Metadata Functions
 #' @export
 #'
 #' @param object `character`. Sequencing file or directory paths.

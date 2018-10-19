@@ -26,12 +26,3 @@ Plot Quality Control
 data(rse_small)
 plotQC(rse_small)
 }
-\seealso{
-Other Plots: \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotCountsPerGene}},
-  \code{\link{plotGenderMarkers}},
-  \code{\link{plotGenesDetected}}, \code{\link{plotGene}},
-  \code{\link{plotHeatmap}}, \code{\link{plotTotalCounts}},
-  \code{\link{plotZerosVsDepth}}
-}
-\concept{Plots}

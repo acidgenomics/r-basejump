@@ -21,12 +21,3 @@ from <- c("hg19", "hg38")
 to <- convertUCSCBuildToEnsembl(from)
 print(to)
 }
-\seealso{
-Other Identifier Mapping Functions: \code{\link{Ensembl2Entrez}},
-  \code{\link{Gene2Symbol}}, \code{\link{HGNC2Ensembl}},
-  \code{\link{MGI2Ensembl}}, \code{\link{Tx2Gene}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{mapGenes}}
-}
-\concept{Identifier Mapping Functions}

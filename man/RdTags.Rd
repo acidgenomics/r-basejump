@@ -17,8 +17,3 @@ db <- tools::Rd_db("base")
 Rd <- db[["nrow.Rd"]]
 RdTags(Rd)
 }
-\seealso{
-Other Documentation Functions: \code{\link{parseRd}},
-  \code{\link{saveRdExamples}}
-}
-\concept{Documentation Functions}

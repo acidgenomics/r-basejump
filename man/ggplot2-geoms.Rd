@@ -114,7 +114,4 @@ geom
 \item \code{\link[ggplot2:geom_label]{ggplot2::geom_label()}}.
 \item \code{\link[ggrepel:geom_label_repel]{ggrepel::geom_label_repel()}}.
 }
-
-Other ggplot2 Functions: \code{\link{ggplot2-themes}}
 }
-\concept{ggplot2 Functions}

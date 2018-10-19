@@ -15,9 +15,4 @@ Example Transcript-Level Data Set
 data(tx_se_small)
 tx_se_small
 }
-\seealso{
-Other Minimal Example Data: \code{\link{rse_small}},
-  \code{\link{sce_small}}
-}
-\concept{Minimal Example Data}
 \keyword{datasets}

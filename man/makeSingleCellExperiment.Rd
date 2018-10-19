@@ -64,10 +64,11 @@ x <- makeSingleCellExperiment(
 print(x)
 }
 \seealso{
-Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{cell2sample}},
-  \code{\link{mapCellsToSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}
+\itemize{
+\item \code{SummarizedExperiment::SummarizedExperiment()}.
+\item \code{SingleCellExperiment::SingleCellExperiment()}.
+\item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
+\item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
+\item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.
 }
-\concept{SingleCellExperiment Functions}
+}

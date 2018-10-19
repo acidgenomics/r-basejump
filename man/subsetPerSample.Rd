@@ -58,11 +58,3 @@ list.files("subsetPerSample")
 ## Clean up.
 unlink("subsetPerSample", recursive = TRUE)
 }
-\seealso{
-Other SingleCellExperiment Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{cell2sample}},
-  \code{\link{makeSingleCellExperiment}},
-  \code{\link{mapCellsToSamples}},
-  \code{\link{topCellsPerSample}}
-}
-\concept{SingleCellExperiment Functions}

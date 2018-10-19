@@ -60,12 +60,4 @@ print(subset)
 \item \code{\link[=sampleData]{sampleData()}}.
 \item \code{\link[S4Vectors:split]{S4Vectors::split()}}.
 }
-
-Other SummarizedExperiment Functions: \code{\link{counts}},
-  \code{\link{interestingGroups}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{tpm}}
 }
-\concept{SummarizedExperiment Functions}

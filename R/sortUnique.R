@@ -4,7 +4,6 @@
 #' values unique. The function also strips `NA` values. This is useful for
 #' repetitive gene vector operations, for example.
 #'
-#' @family Sanitization
 #' @export
 #'
 #' @param object `atomic`.

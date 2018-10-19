@@ -1,7 +1,6 @@
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
 #' @name convertGenesToSymbols
-#' @family Identifier Mapping Functions
 #'
 #' @inheritParams general
 #'

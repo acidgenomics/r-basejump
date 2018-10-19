@@ -13,8 +13,6 @@
 #' that is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @family Identifier Mapping Functions
-#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #' @param strict `boolean`. Require all genes to match. Recommended by default.

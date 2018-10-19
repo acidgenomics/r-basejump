@@ -31,13 +31,8 @@ markdownLink(
 )
 }
 \seealso{
-Other Markdown Functions: \code{\link{markdownHeader}},
-  \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}},
-  \code{\link{markdownTables}}, \code{\link{markdown}},
-  \code{\link{prepareTemplate}}
+\href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
 }
 \author{
 Rory Kirchner, Michael Steinbaugh
 }
-\concept{Markdown Functions}

@@ -18,7 +18,6 @@
 #' @note This function is desired for interactive use and interprets object
 #'   names using non-standard evaluation.
 #'
-#' @family Import/Export Functions
 #' @export
 #'
 #' @inheritParams general
@@ -61,7 +60,6 @@ loadData <- function(
 #' @note This function is intended for interactive use and interprets object
 #'   names using non-standard evaluation.
 #'
-#' @family Import/Export Functions
 #' @export
 #'
 #' @inheritParams loadData
@@ -144,7 +142,6 @@ loadDataAsName <- function(
 #' Load a remote R binary file. This function is vectorized and supports
 #' multiple URLs in a single call.
 #'
-#' @family Import/Export Functions
 #' @export
 #'
 #' @inheritParams general

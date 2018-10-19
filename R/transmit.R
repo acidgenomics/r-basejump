@@ -3,7 +3,6 @@
 #' Utility function that supports easy file matching and download from a remote
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
-#' @family Import/Export Functions
 #' @export
 #'
 #' @inheritParams saveData

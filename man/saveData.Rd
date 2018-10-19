@@ -56,11 +56,4 @@ unlink("example", recursive = TRUE)
 }
 \seealso{
 \code{\link[base:save]{base::save()}}, \code{\link[base:saveRDS]{base::saveRDS()}}.
-
-Other Import/Export Functions: \code{\link{assignAndSaveData}},
-  \code{\link{export}}, \code{\link{import}},
-  \code{\link{loadDataAsName}}, \code{\link{loadData}},
-  \code{\link{loadRemoteData}}, \code{\link{transmit}},
-  \code{\link{writeCounts}}
 }
-\concept{Import/Export Functions}

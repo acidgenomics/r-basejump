@@ -4,8 +4,6 @@
 #'   beginning with "ENS".
 #'
 #' @name stripTranscriptVersions
-#' @family Sanitization Functions
-#' @family Transcript-Level Functions
 #'
 #' @inheritParams general
 #'

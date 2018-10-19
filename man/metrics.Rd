@@ -73,15 +73,6 @@ print(x)
 x <- metricsPerSample(sce_small, fun = "mean")
 print(x)
 }
-\seealso{
-Other SummarizedExperiment Functions: \code{\link{counts}},
-  \code{\link{interestingGroups}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenes}}, \code{\link{meltCounts}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}}
-}
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{SummarizedExperiment Functions}

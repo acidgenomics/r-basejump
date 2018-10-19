@@ -16,7 +16,6 @@
 #' - `bcbioRNASeq::prepareRNASeqTemplate()`.
 #' - `bcbioSingleCell::prepareSingleCellTemplate()`.
 #'
-#' @family Markdown Functions
 #' @export
 #'
 #' @inheritParams general

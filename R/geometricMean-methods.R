@@ -8,7 +8,6 @@
 #' `NaN`.
 #'
 #' @name geometricMean
-#' @family Calculations
 #'
 #' @inheritParams general
 #' @inheritParams base::apply

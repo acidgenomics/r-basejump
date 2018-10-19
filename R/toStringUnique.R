@@ -1,6 +1,5 @@
 #' Convert to a Unique Character String
 #'
-#' @family Sanitization Functions
 #' @export
 #'
 #' @param object `atomic`.

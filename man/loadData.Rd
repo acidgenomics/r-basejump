@@ -46,11 +46,4 @@ loadData(example, dir = system.file("extdata", package = "basejump"))
 }
 \seealso{
 \code{\link[base:load]{base::load()}}, \code{\link[base:readRDS]{base::readRDS()}}.
-
-Other Import/Export Functions: \code{\link{assignAndSaveData}},
-  \code{\link{export}}, \code{\link{import}},
-  \code{\link{loadDataAsName}},
-  \code{\link{loadRemoteData}}, \code{\link{saveData}},
-  \code{\link{transmit}}, \code{\link{writeCounts}}
 }
-\concept{Import/Export Functions}

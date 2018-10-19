@@ -8,7 +8,6 @@
 #' integrate with plotting functions that use ggplot2 internally.
 #'
 #' @name metrics
-#' @family SummarizedExperiment Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general

@@ -69,13 +69,3 @@ print(geneNames)
 plotGene(object, genes = geneIDs, style = "facet")
 plotGene(object, genes = geneNames, style = "wide")
 }
-\seealso{
-Other Plots: \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotCountsPerGene}},
-  \code{\link{plotGenderMarkers}},
-  \code{\link{plotGenesDetected}},
-  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
-  \code{\link{plotTotalCounts}},
-  \code{\link{plotZerosVsDepth}}
-}
-\concept{Plots}

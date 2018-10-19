@@ -8,8 +8,6 @@
 #' single-cell RNA-seq experiment).
 #'
 #' @name sampleData
-#' @family Metadata Functions
-#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #' @param blacklist `character`. Column names that should never be treated as

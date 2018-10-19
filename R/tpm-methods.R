@@ -11,7 +11,6 @@ SingleCellExperiment::tpm
 #'   were imported using a tximport caller (e.g. salmon, kallisto).
 #'
 #' @name tpm
-#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #'

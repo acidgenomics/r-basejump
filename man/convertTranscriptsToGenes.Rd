@@ -81,17 +81,4 @@ print(x)
 }
 \seealso{
 \code{\link[=aggregateRows]{aggregateRows()}}.
-
-Other Identifier Mapping Functions: \code{\link{Ensembl2Entrez}},
-  \code{\link{Gene2Symbol}}, \code{\link{HGNC2Ensembl}},
-  \code{\link{MGI2Ensembl}}, \code{\link{Tx2Gene}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{mapGenes}}
-
-Other Transcript-Level Functions: \code{\link{Tx2Gene}},
-  \code{\link{makeGRanges}}, \code{\link{makeTx2Gene}},
-  \code{\link{stripTranscriptVersions}}
 }
-\concept{Identifier Mapping Functions}
-\concept{Transcript-Level Functions}

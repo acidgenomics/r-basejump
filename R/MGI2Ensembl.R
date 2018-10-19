@@ -1,6 +1,5 @@
 #' @inherit MGI2Ensembl-class
 #'
-#' @family Identifier Mapping Functions
 #' @export
 #'
 #' @inheritParams general

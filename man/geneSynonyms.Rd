@@ -25,10 +25,3 @@ options(basejump.test = TRUE)
 x <- geneSynonyms(organism = "Homo sapiens")
 print(x)
 }
-\seealso{
-Other Annotation Functions: \code{\link{EggNOG}},
-  \code{\link{PANTHER}}, \code{\link{emptyRanges}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
-  \code{\link{makeTx2Gene}}
-}
-\concept{Annotation Functions}

@@ -44,8 +44,4 @@ Modified variants of:
 \item \code{gtools::foldchange2logratio()}.
 \item \code{gtools::logratio2foldchange()}.
 }
-
-Other Calculations: \code{\link{aggregate}},
-  \code{\link{geometricMean}}
 }
-\concept{Calculations}

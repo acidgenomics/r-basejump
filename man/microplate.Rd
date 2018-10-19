@@ -34,12 +34,3 @@ microplate(wells = 384L)
 ## 2 96-well plates with 6 control wells per plate.
 microplate(plates = 2L, wells = 96L, controls = 6L)
 }
-\seealso{
-Other Metadata Functions: \code{\link{detectHPC}},
-  \code{\link{detectLanes}}, \code{\link{detectOrganism}},
-  \code{\link{interestingGroups}},
-  \code{\link{minimalSampleData}}, \code{\link{organism}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{uniteInterestingGroups}}
-}
-\concept{Metadata Functions}

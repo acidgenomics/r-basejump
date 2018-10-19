@@ -1,7 +1,6 @@
 #' @inherit PANTHER-class
 #'
 #' @name PANTHER
-#' @family Annotation Functions
 #'
 #' @inheritParams general
 #' @param organism `string`. Full Latin organism name. Currently supported

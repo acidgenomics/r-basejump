@@ -1,6 +1,5 @@
 #' Convert UCSC Build to Ensembl
 #'
-#' @family Identifier Mapping Functions
 #' @export
 #'
 #' @inheritParams general

@@ -43,14 +43,6 @@ list.files("example")
 ## Clean up.
 unlink("example", recursive = TRUE)
 }
-\seealso{
-Other Import/Export Functions: \code{\link{assignAndSaveData}},
-  \code{\link{export}}, \code{\link{import}},
-  \code{\link{loadDataAsName}}, \code{\link{loadData}},
-  \code{\link{loadRemoteData}}, \code{\link{saveData}},
-  \code{\link{transmit}}
-}
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Import/Export Functions}

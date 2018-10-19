@@ -4,7 +4,6 @@
 #' unless the library sizes or total RNA expression are different.
 #'
 #' @name plotCountsPerGene
-#' @family Plots
 #'
 #' @inheritParams meltCounts
 #' @inheritParams general

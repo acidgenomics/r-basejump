@@ -54,11 +54,3 @@ file.exists("example.rds")
 rm(example)
 unlink("example.rds")
 }
-\seealso{
-Other Import/Export Functions: \code{\link{export}},
-  \code{\link{import}}, \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{saveData}}, \code{\link{transmit}},
-  \code{\link{writeCounts}}
-}
-\concept{Import/Export Functions}

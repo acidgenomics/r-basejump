@@ -99,20 +99,3 @@ mapGenesToSymbols(object, genes = rownames)
 mapGenesToSymbols(object, genes = geneIDs)
 mapGenesToSymbols(object, genes = geneNames)
 }
-\seealso{
-Other Identifier Mapping Functions: \code{\link{Ensembl2Entrez}},
-  \code{\link{Gene2Symbol}}, \code{\link{HGNC2Ensembl}},
-  \code{\link{MGI2Ensembl}}, \code{\link{Tx2Gene}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}}
-
-Other SummarizedExperiment Functions: \code{\link{counts}},
-  \code{\link{interestingGroups}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{meltCounts}}, \code{\link{metrics}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}}
-}
-\concept{Identifier Mapping Functions}
-\concept{SummarizedExperiment Functions}

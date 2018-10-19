@@ -1,7 +1,6 @@
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype
-#' @family Plots
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general

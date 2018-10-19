@@ -16,7 +16,6 @@
 #' @note This function is desired for interactive use and interprets object
 #' names using non-standard evaluation.
 #'
-#' @family Import/Export Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @export
 #'

@@ -18,7 +18,6 @@ BiocGenerics::`counts<-`
 #'   defined in [SummarizedExperiment::assayNames()].
 #'
 #' @name counts
-#' @family SummarizedExperiment Functions
 #'
 #' @inheritParams general
 #'

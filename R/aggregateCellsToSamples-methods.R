@@ -9,7 +9,6 @@
 #' performs aggregation with the [aggregateCols()] function.
 #'
 #' @name aggregateCellsToSamples
-#' @family SingleCellExperiment Functions
 #'
 #' @inheritParams general
 #' @inheritParams aggregate

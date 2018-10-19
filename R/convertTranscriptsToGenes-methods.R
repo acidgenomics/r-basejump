@@ -5,8 +5,6 @@
 #'   `SummarizedExperiment` method.
 #'
 #' @name convertTranscriptsToGenes
-#' @family Identifier Mapping Functions
-#' @family Transcript-Level Functions
 #' @include makeTx2Gene.R
 #' @inherit convertGenesToSymbols
 #'
