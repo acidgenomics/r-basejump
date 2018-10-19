@@ -44,7 +44,7 @@ NULL
 .subsetPerSample.SCE <-  # nolint
     function(
         object,
-        minCells = 100L,
+        minCells = 1L,
         assignAndSave = FALSE,
         envir = parent.frame(),
         dir = "."

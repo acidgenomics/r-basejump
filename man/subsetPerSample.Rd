@@ -8,7 +8,7 @@
 \usage{
 subsetPerSample(object, ...)
 
-\S4method{subsetPerSample}{SingleCellExperiment}(object, minCells = 100L,
+\S4method{subsetPerSample}{SingleCellExperiment}(object, minCells = 1L,
   assignAndSave = FALSE, envir = parent.frame(), dir = ".")
 }
 \arguments{
