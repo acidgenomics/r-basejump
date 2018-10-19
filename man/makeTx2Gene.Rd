@@ -35,11 +35,11 @@ Remote URLs and compressed files are supported.
 }
 
 \examples{
-## makeTx2geneFromEnsembl ====
+## makeTx2GeneFromEnsembl ====
 x <- makeTx2GeneFromEnsembl(organism = "Homo sapiens")
 print(x)
 
-## makeTx2geneFromGFF ====
+## makeTx2GeneFromGFF ====
 ## GTF
 file <- file.path(basejumpCacheURL, "example.gtf")
 x <- makeTx2GeneFromGFF(file)

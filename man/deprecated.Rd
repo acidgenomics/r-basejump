@@ -4,7 +4,6 @@
 \alias{deprecated}
 \alias{checkAnnotable}
 \alias{checkGene2symbol}
-\alias{checkTx2gene}
 \alias{assertFormalHeaderLevel}
 \alias{assertFormalColorFunction}
 \alias{assertIsAnnotable}
@@ -56,8 +55,6 @@
 checkAnnotable(...)
 
 checkGene2symbol(...)
-
-checkTx2gene(...)
 
 assertFormalHeaderLevel(...)
 

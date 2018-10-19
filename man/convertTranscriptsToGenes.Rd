@@ -25,7 +25,7 @@ convertTranscriptsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough to \code{\link[=makeTx2geneFromEnsembl]{makeTx2geneFromEnsembl()}}.}
+\item{...}{Passthrough to \code{\link[=makeTx2GeneFromEnsembl]{makeTx2GeneFromEnsembl()}}.}
 
 \item{tx2gene}{\code{Tx2Gene}. Transcript-to-gene mappings.}
 
