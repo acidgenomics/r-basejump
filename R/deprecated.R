@@ -80,11 +80,10 @@ checkGene2symbol <- function(...) {
     assertIsGene2symbol(...)
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 checkTx2gene <- function(...) {
-    .Deprecated("assertIsTx2gene")
-    assertIsTx2gene(...)
+    .Defunct()
 }
 
 
