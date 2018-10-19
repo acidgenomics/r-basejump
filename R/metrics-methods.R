@@ -60,12 +60,14 @@ NULL
     function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
-        colData <- colData(object)
-        assert_is_subset("sampleID", colnames(colData))
-        if (!"sampleName" %in% colnames(colData)) {
-            colData[["sampleName"]] <- colData[["sampleID"]]
+        data <- colData(object)
+        if (!"sampleID" %in% colnames(data)) {
+            data[["sampleID"]] <- factor("unknown")
         }
-        data <- colData %>%
+        if (!"sampleName" %in% colnames(data)) {
+            data[["sampleName"]] <- data[["sampleID"]]
+        }
+        data <- data %>%
             uniteInterestingGroups(
                 interestingGroups = matchInterestingGroups(object)
             ) %>%

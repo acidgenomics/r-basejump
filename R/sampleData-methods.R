@@ -49,11 +49,11 @@ NULL
     function(object) {
         data <- colData(object)
         assertHasRownames(data)
-        # Require `sampleName` column to be defined.
+        # Require `sampleName` column.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
         }
-        # Generate `interestingGroups` column.
+        # Require `interestingGroups` column.
         data[["interestingGroups"]] <- NULL
         data <- uniteInterestingGroups(
             object = data,
@@ -116,7 +116,6 @@ setMethod(
         )
     ) {
         assert_is_character(blacklist)
-
         data <- colData(object)
 
         # Require `sampleID` and `sampleName` columns.
@@ -124,9 +123,7 @@ setMethod(
         # the `sampleID` column, which are the `colnames` of the object.
         # `SingleCellExperiment` maps cells to `colnames` instead of samples.
         if (!"sampleID" %in% colnames(data)) {
-            stop(paste(
-                "`sampleID` column must be defined in `colData()` slot."
-            ), call. = FALSE)
+            data[["sampleID"]] <- factor("unknown")
         }
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- data[["sampleID"]]
