@@ -3,11 +3,14 @@
 \name{makeTx2Gene}
 \alias{makeTx2Gene}
 \alias{makeTx2GeneFromEnsembl}
+\alias{makeTx2GeneFromEnsDb}
 \alias{makeTx2GeneFromGFF}
 \alias{makeTx2GeneFromGTF}
 \title{Make Transcript-to-Gene Mappings}
 \usage{
 makeTx2GeneFromEnsembl(organism, build = NULL, release = NULL)
+
+makeTx2GeneFromEnsDb(object)
 
 makeTx2GeneFromGFF(file)
 }
@@ -19,6 +22,8 @@ makeTx2GeneFromGFF(file)
 
 \item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
 set \code{NULL}, defaults to the most recent release available.}
+
+\item{object}{Object.}
 
 \item{file}{\code{string}. File path.}
 }
@@ -37,6 +42,10 @@ Remote URLs and compressed files are supported.
 \examples{
 ## makeTx2GeneFromEnsembl ====
 x <- makeTx2GeneFromEnsembl(organism = "Homo sapiens")
+print(x)
+
+## makeTx2GeneFromEnsDb ====
+x <- makeTx2GeneFromEnsDb("EnsDb.Hsapiens.v75")
 print(x)
 
 ## makeTx2GeneFromGFF ====

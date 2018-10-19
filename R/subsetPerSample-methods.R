@@ -41,7 +41,7 @@ NULL
 
 
 
-.subsetPerSample.SingleCellExperiment <-  # nolint
+subsetPerSample.SingleCellExperiment <-  # nolint
     function(
         object,
         minCells = 1L,
@@ -102,5 +102,5 @@ NULL
 setMethod(
     f = "subsetPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = .subsetPerSample.SingleCellExperiment
+    definition = subsetPerSample.SingleCellExperiment
 )

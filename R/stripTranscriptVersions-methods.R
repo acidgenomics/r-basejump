@@ -26,7 +26,7 @@ NULL
 
 
 
-.stripTranscriptVersions.character <-  # nolint
+stripTranscriptVersions.character <-  # nolint
     function(object) {
         # Pattern matching against Ensembl transcript IDs.
         # http://www.ensembl.org/info/genome/stable_ids/index.html
@@ -44,7 +44,7 @@ NULL
 
 
 
-.stripTranscriptVersions.matrix <-  # nolint
+stripTranscriptVersions.matrix <-  # nolint
     function(object) {
         rownames <- rownames(object)
         rownames <- stripTranscriptVersions(rownames)
@@ -59,7 +59,7 @@ NULL
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("character"),
-    definition = .stripTranscriptVersions.character
+    definition = stripTranscriptVersions.character
 )
 
 
@@ -69,7 +69,7 @@ setMethod(
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("matrix"),
-    definition = .stripTranscriptVersions.matrix
+    definition = stripTranscriptVersions.matrix
 )
 
 

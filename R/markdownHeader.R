@@ -18,7 +18,7 @@
 #'
 #' @return
 #' - "`asis = TRUE`": [knitr::asis_output()].
-#' - "`asis = FALSE`": [writeLines()].
+#' - "`asis = FALSE`": [base::writeLines()].
 #'
 #' @examples
 #' markdownHeader("Header", level = 2L)

@@ -38,7 +38,7 @@ sampleData(object, ...) <- value
 \item{blacklist}{\code{character}. Column names that should never be treated as
 sample-level metadata. Applies to objects where the columns don't map to
 samples (e.g. \code{SingleCellExperiment}), and we need to collapse the
-\code{colData()} dynamically.}
+\code{colData} dynamically.}
 }
 \value{
 \code{DataFrame}.
@@ -47,10 +47,10 @@ samples (e.g. \code{SingleCellExperiment}), and we need to collapse the
 Metadata that describes the samples.
 }
 \details{
-This is a complement to the standard \code{\link[=colData]{colData()}} function, but improves
-support for accessing sample metadata for datasets where multiple items in
-the columns map to a single sample (e.g. cells for a single-cell RNA-seq
-experiment).
+This is a complement to the standard \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}}
+function, but improves support for accessing sample metadata for datasets
+where multiple items in the columns map to a single sample (e.g. cells for a
+single-cell RNA-seq experiment).
 }
 \examples{
 data(rse_small, sce_small)

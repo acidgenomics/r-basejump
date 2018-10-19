@@ -11,8 +11,8 @@
 #' @inherit convertGenesToSymbols
 #'
 #' @inheritParams general
-#' @param aggregate `boolean`. For objects supporting [dim()], aggregate counts
-#'   to gene level and collapse the matrix.
+#' @param aggregate `boolean`. For objects supporting [base::dim()], aggregate
+#'   counts to gene level and collapse the matrix.
 #' @param ... Passthrough to [makeTx2GeneFromEnsembl()].
 #'
 #' @return
@@ -57,7 +57,7 @@ NULL
 
 
 
-.convertTranscriptsToGenes.character <-  # nolint
+convertTranscriptsToGenes.character <-  # nolint
     function(object, tx2gene) {
         assert_all_are_non_missing_nor_empty_character(object)
         assert_has_no_duplicates(object)
@@ -85,7 +85,7 @@ NULL
 
 
 # Consider aggregating the matrix to gene level instead.
-.convertTranscriptsToGenes.matrix <-  # nolint
+convertTranscriptsToGenes.matrix <-  # nolint
     function(object, tx2gene, aggregate = TRUE) {
         assert_is_a_bool(aggregate)
         t2g <- do.call(
@@ -107,7 +107,7 @@ NULL
 
 # Consider returning RSE here in a future update.
 # Need to add code that handles rowRanges.
-.convertTranscriptsToGenes.SummarizedExperiment <-  # nolint
+convertTranscriptsToGenes.SummarizedExperiment <-  # nolint
     function(object) {
         counts <- counts(object)
         t2g <- Tx2Gene(object)
@@ -133,7 +133,7 @@ NULL
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("character"),
-    definition = .convertTranscriptsToGenes.character
+    definition = convertTranscriptsToGenes.character
 )
 
 
@@ -143,7 +143,7 @@ setMethod(
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("matrix"),
-    definition = .convertTranscriptsToGenes.matrix
+    definition = convertTranscriptsToGenes.matrix
 )
 
 
@@ -166,5 +166,5 @@ setMethod(
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("SummarizedExperiment"),
-    definition = .convertTranscriptsToGenes.SummarizedExperiment
+    definition = convertTranscriptsToGenes.SummarizedExperiment
 )

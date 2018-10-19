@@ -21,10 +21,10 @@ we can skip transgenes or spike-ins. The function fails after a maximum of 50
 unknowns, for speed.
 }
 \note{
-\code{\link[=organism]{organism()}} \code{character} method conflicts with annotate package, which
-gets loaded into the namespace when DESeq2 is attached. Instead, we're
-exporting the character method here as a separate function named
-\code{\link[=detectOrganism]{detectOrganism()}}.
+\code{\link[BiocGenerics:organism]{BiocGenerics::organism()}} \code{character} method conflicts with annotate
+package, which gets loaded into the namespace when DESeq2 is attached.
+Instead, we're exporting the character method here as a separate function
+named \code{\link[=detectOrganism]{detectOrganism()}}.
 }
 \section{Supported organisms}{
 
@@ -60,7 +60,7 @@ detectOrganism(c("EGFP", "TDTOMATO", "ENSG00000000003"))
 detectOrganism(c("ENSG00000000003", "ENSMUSG00000000001"))
 }
 \seealso{
-\code{\link[=organism]{organism()}}.
+\code{\link[BiocGenerics:organism]{BiocGenerics::organism()}}.
 
 Other Metadata Functions: \code{\link{detectHPC}},
   \code{\link{detectLanes}},

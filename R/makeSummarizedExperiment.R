@@ -47,9 +47,13 @@
 #' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.
 #'
 #' @examples
+#' library(IRanges)
+#' library(GenomicRanges)
+#' library(SummarizedExperiment)
+#'
 #' ## Rows (genes)
 #' genes <- c(
-#'     "EGFP",  # transgene (see below)
+#'     "EGFP",  # transgene
 #'     paste0("gene", seq_len(3L))
 #' )
 #' print(genes)
@@ -70,9 +74,9 @@
 #' print(assays)
 #'
 #' ## Row data (genomic ranges)
-#' rowRanges <- GenomicRanges::GRanges(
+#' rowRanges <- GRanges(
 #'     seqnames = rep("1", times = 3L),
-#'     ranges = IRanges::IRanges(
+#'     ranges = IRanges(
 #'         start = seq(from = 1L, to = 201L, by = 100L),
 #'         end = seq(from = 100L, to = 300L, by = 100L)
 #'     )
@@ -83,7 +87,7 @@
 #' print(rowRanges)
 #'
 #' ## Column data
-#' colData <- S4Vectors::DataFrame(
+#' colData <- DataFrame(
 #'     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
 #'     age = rep(c(3L, 6L), 2L),
 #'     row.names = samples

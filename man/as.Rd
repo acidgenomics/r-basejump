@@ -60,7 +60,7 @@ returning the slots as a \code{list}.
 \section{tibble}{
 
 
-Coerce an object to a \code{tibble} (\code{tbl_df}) data frame using either S3 or S4
+Coerce an object to a \href{https://tibble.tidyverse.org/}{tibble} (\code{tbl_df}) data frame using either S3 or S4
 methods:
 \itemize{
 \item S3: \code{as_tibble(x)} (or \code{as_tibble()} alias).
@@ -79,8 +79,8 @@ rownames automatically, if defined.
 
 Conversely, when coercing a \code{tibble} back to an S4 \code{DataFrame}, our
 \code{as(tbl_df, Class = "DataFrame")} method looks for the \code{rowname} column and
-will attempt to move it back to \code{\link[=rownames]{rownames()}} automatically, unless there are
-duplicates present.
+will attempt to move it back to \code{\link[base:rownames]{base::rownames()}} automatically, unless
+there are duplicates present.
 }
 
 \section{Description}{
@@ -144,6 +144,6 @@ Chambers, John M. (2016)
 \item \code{\link[methods:canCoerce]{methods::canCoerce()}}.
 \item \code{\link[methods:showMethods]{methods::showMethods()}}.
 \item \code{\link[utils:methods]{utils::methods()}}.
-\item \code{\link[=as.list]{as.list()}}.
+\item \code{\link[BiocGenerics:as.list]{BiocGenerics::as.list()}}.
 }
 }

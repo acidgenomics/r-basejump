@@ -205,8 +205,8 @@ NULL
 #' Connect to AnnotationHub
 #'
 #' On a fresh install this will print a txProgressBar to the console. We're
-#' using `capture.output()` here to suppress the console output, since it's not
-#' very informative and can cluster R Markdown reports.
+#' using [utils::capture.output()] here to suppress the console output, since
+#' it's not very informative and can cluster R Markdown reports.
 #'
 #' @noRd
 .annotationHub <- function() {
@@ -872,7 +872,7 @@ makeGRangesFromGFF <- function(
 #' @describeIn makeGRanges
 #' [annotable()] is a legacy convenience function that calls
 #' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
-#' that `GRanges` can also be coercing using [as.data.frame()].
+#' that `GRanges` can also be coercing using [BiocGenerics::as.data.frame()].
 #' @export
 annotable <-
     function() {

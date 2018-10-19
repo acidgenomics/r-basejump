@@ -10,7 +10,7 @@
 #'
 #' @return
 #' - `atomic`: `string`.
-#' - [dim()]: Object of same class, collapsed to a single row.
+#' - [base::dim()]: Object of same class, collapsed to a single row.
 #'
 #' @seealso [base::toString()].
 #'
@@ -46,7 +46,7 @@ NULL
 
 
 
-.collapseToString.atomic <-  # nolint
+collapseToString.atomic <-  # nolint
     function(
         object,
         sep = ", ",
@@ -90,7 +90,7 @@ NULL
 
 
 
-.collapseToString.matrix <-  # nolint
+collapseToString.matrix <-  # nolint
     function(
         object,
         sep = ", ",
@@ -126,7 +126,7 @@ NULL
 setMethod(
     f = "collapseToString",
     signature = signature("atomic"),
-    definition = .collapseToString.atomic
+    definition = collapseToString.atomic
 )
 
 
@@ -136,7 +136,7 @@ setMethod(
 setMethod(
     f = "collapseToString",
     signature = signature("matrix"),
-    definition = .collapseToString.matrix
+    definition = collapseToString.matrix
 )
 
 

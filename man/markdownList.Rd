@@ -20,7 +20,7 @@ loop or inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 \value{
 \itemize{
 \item "\code{asis = TRUE}": \code{\link[knitr:asis_output]{knitr::asis_output()}}.
-\item "\code{asis = FALSE}": \code{\link[=writeLines]{writeLines()}}.
+\item "\code{asis = FALSE}": \code{\link[base:writeLines]{base::writeLines()}}.
 }
 }
 \description{

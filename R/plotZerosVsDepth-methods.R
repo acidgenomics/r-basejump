@@ -18,7 +18,7 @@ NULL
 
 
 # zerosVsDepth =================================================================
-.zerosVsDepth.matrix <-  # nolint
+zerosVsDepth.matrix <-  # nolint
     function(object) {
         present <- object > 0L
         DataFrame(
@@ -32,7 +32,7 @@ NULL
 
 # Using a logical matrix is faster and more memory efficient.
 # Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
-.zerosVsDepth.sparseMatrix <-  # nolint
+zerosVsDepth.sparseMatrix <-  # nolint
     function(object) {
         stopifnot(is(object, "sparseMatrix"))
         stopifnot(!is(object, "lgCMatrix"))
@@ -48,7 +48,7 @@ NULL
 
 
 
-.zerosVsDepth.SummarizedExperiment <-  # nolint
+zerosVsDepth.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L
@@ -64,7 +64,7 @@ NULL
 
 
 
-.zerosVsDepth.SingleCellExperiment <-  # nolint
+zerosVsDepth.SingleCellExperiment <-  # nolint
     function(
         object,
         assay = 1L
@@ -97,7 +97,7 @@ NULL
 setMethod(
     f = "zerosVsDepth",
     signature = signature("matrix"),
-    definition = .zerosVsDepth.matrix
+    definition = zerosVsDepth.matrix
 )
 
 
@@ -105,7 +105,7 @@ setMethod(
 setMethod(
     f = "zerosVsDepth",
     signature = signature("sparseMatrix"),
-    definition = .zerosVsDepth.sparseMatrix
+    definition = zerosVsDepth.sparseMatrix
 )
 
 
@@ -113,7 +113,7 @@ setMethod(
 setMethod(
     f = "zerosVsDepth",
     signature = signature("SummarizedExperiment"),
-    definition = .zerosVsDepth.SummarizedExperiment
+    definition = zerosVsDepth.SummarizedExperiment
 )
 
 
@@ -121,13 +121,13 @@ setMethod(
 setMethod(
     f = "zerosVsDepth",
     signature = signature("SingleCellExperiment"),
-    definition = .zerosVsDepth.SingleCellExperiment
+    definition = zerosVsDepth.SingleCellExperiment
 )
 
 
 
 # plotZerosVsDepth =============================================================
-.plotZerosVsDepth.SummarizedExperiment <-  # nolint
+plotZerosVsDepth.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -189,5 +189,5 @@ setMethod(
 setMethod(
     f = "plotZerosVsDepth",
     signature = signature("SummarizedExperiment"),
-    definition = .plotZerosVsDepth.SummarizedExperiment
+    definition = plotZerosVsDepth.SummarizedExperiment
 )

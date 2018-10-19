@@ -20,9 +20,9 @@
 #' @inheritParams general
 #' @inheritParams rio::export
 #' @param compress `boolean`. Apply gzip compression to all files.
-#' @param human `boolean`. Automatically convert gene IDs to
-#'   gene symbols in the [rownames()] and sample IDs to sample names in the
-#'   [colnames()].
+#' @param human `boolean`. Automatically convert gene IDs to gene symbols in the
+#'   [base::rownames()] and sample IDs to sample names in the
+#'   [base::colnames()].
 #'
 #' @return Invisible `character`. File path(s).
 #'
@@ -54,7 +54,7 @@ NULL
 
 # Coerce to tibble in this method to always preserve rownames.
 # Note that `rio::export()` does not preserve rownames by default.
-.export.ANY <-  # nolint
+export.ANY <-  # nolint
     function(x, file, format, ...) {
         assert_is_non_empty(x)
         # Ensure rownames are automatically moved to `rowname` column.
@@ -91,7 +91,7 @@ NULL
 # Note that "file" is referring to the matrix file.
 # The correponding column and row sidecar files are generated automatically.
 # Consider adding HDF5 support in a future update.
-.export.sparseMatrix <-  # nolint
+export.sparseMatrix <-  # nolint
     function(x, file, format) {
         stopifnot(is(x, "sparseMatrix"))
         assert_is_non_empty(x)
@@ -161,7 +161,7 @@ NULL
 
 
 
-.export.SummarizedExperiment <-  # nolint
+export.SummarizedExperiment <-  # nolint
     function(
         x,
         dir = ".",
@@ -247,7 +247,7 @@ NULL
 
 
 
-.export.SingleCellExperiment <-  # nolint
+export.SingleCellExperiment <-  # nolint
     function(x) {
         assert_is_a_bool(compress)
         call <- standardizeCall()
@@ -291,7 +291,7 @@ NULL
         assert_has_names(files)
         invisible(files)
     }
-formals(.export.SingleCellExperiment) <- formals(.export.SummarizedExperiment)
+formals(export.SingleCellExperiment) <- formals(export.SummarizedExperiment)
 
 
 
@@ -300,7 +300,7 @@ formals(.export.SingleCellExperiment) <- formals(.export.SummarizedExperiment)
 setMethod(
     f = "export",
     signature = signature("ANY"),
-    definition = .export.ANY
+    definition = export.ANY
 )
 
 
@@ -310,7 +310,7 @@ setMethod(
 setMethod(
     f = "export",
     signature = signature("sparseMatrix"),
-    definition = .export.sparseMatrix
+    definition = export.sparseMatrix
 )
 
 
@@ -320,7 +320,7 @@ setMethod(
 setMethod(
     f = "export",
     signature = signature("SummarizedExperiment"),
-    definition = .export.SummarizedExperiment
+    definition = export.SummarizedExperiment
 )
 
 
@@ -330,5 +330,5 @@ setMethod(
 setMethod(
     f = "export",
     signature = signature("SingleCellExperiment"),
-    definition = .export.SingleCellExperiment
+    definition = export.SingleCellExperiment
 )

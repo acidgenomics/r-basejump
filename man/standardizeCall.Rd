@@ -32,13 +32,13 @@ identical to the generic, and use a nested \code{.local()} call.
 aaa <- "AAA"
 bbb <- "BBB"
 
-## Standard function
+## Standard function.
 testing <- function(a, b) {
     standardizeCall()
 }
 testing(aaa, bbb)
 
-## Inside S4 method
+## Inside S4 method.
 setGeneric(
     name = "testing",
     def = function(a, b, ...) {
@@ -57,8 +57,8 @@ testing(aaa, bbb)
 }
 \seealso{
 \itemize{
-\item \link[base:match.call]{base::match.call}.
-\item \link[base:sys.call]{base::sys.call}.
-\item \link[base:sys.parent]{base::sys.parent}.
+\item \code{\link[base:match.call]{base::match.call()}}.
+\item \code{\link[base:sys.call]{base::sys.call()}}.
+\item \code{\link[base:sys.parent]{base::sys.parent()}}.
 }
 }

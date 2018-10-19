@@ -16,7 +16,7 @@
 #'   Uses [base::match.arg()].
 #'
 #' @return
-#' - `"tbl_df"`: `grouped_df`. Grouped by `sampleID` column.
+#' - `"tibble"`: `grouped_df`. Grouped by `sampleID` column.
 #' - `"DataFrame"`: `DataFrame`. Rownames are identical to [base::colnames()],
 #'   of the object, like [SummarizedExperiment::colData()].
 #'
@@ -37,14 +37,14 @@ NULL
 
 
 
-.metrics.SummarizedExperiment <-  # nolint
-    function(object, return = c("tbl_df", "DataFrame")) {
+metrics.SummarizedExperiment <-  # nolint
+    function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
         data <- sampleData(object) %>%
             as_tibble(rownames = "sampleID") %>%
             group_by(!!sym("sampleID"))
-        if (return == "tbl_df") {
+        if (return == "tibble") {
             data
         } else {
             data <- as(data, "DataFrame")
@@ -56,8 +56,8 @@ NULL
 
 
 
-.metrics.SingleCellExperiment <-  # nolint
-    function(object, return = c("tbl_df", "DataFrame")) {
+metrics.SingleCellExperiment <-  # nolint
+    function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
         data <- colData(object)
@@ -73,7 +73,7 @@ NULL
             ) %>%
             as_tibble(rownames = "cellID") %>%
             group_by(!!sym("sampleID"))
-        if (return == "tbl_df") {
+        if (return == "tibble") {
             data
         } else {
             data <- as(data, "DataFrame")
@@ -129,7 +129,7 @@ NULL
 setMethod(
     f = "metrics",
     signature = signature("SummarizedExperiment"),
-    definition = .metrics.SummarizedExperiment
+    definition = metrics.SummarizedExperiment
 )
 
 
@@ -141,7 +141,7 @@ setMethod(
 setMethod(
     f = "metrics",
     signature = signature("SingleCellExperiment"),
-    definition = .metrics.SingleCellExperiment
+    definition = metrics.SingleCellExperiment
 )
 
 

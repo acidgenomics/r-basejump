@@ -19,7 +19,7 @@ NULL
 
 
 
-.Tx2Gene.data.frame <-  # nolint
+Tx2Gene.data.frame <-  # nolint
     function(object) {
         assert_has_rows(object)
 
@@ -57,21 +57,21 @@ NULL
 
 
 
-.Tx2Gene.DataFrame <-  # nolint
+Tx2Gene.DataFrame <-  # nolint
     function(object) {
         Tx2Gene(as(object, "data.frame"))
     }
 
 
 
-.Tx2Gene.GRanges <-  # nolint
+Tx2Gene.GRanges <-  # nolint
     function(object) {
         Tx2Gene(as(object, "DataFrame"))
     }
 
 
 
-.Tx2Gene.SummarizedExperiment <-  # nolint
+Tx2Gene.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         object %>%
@@ -87,7 +87,7 @@ NULL
 setMethod(
     f = "Tx2Gene",
     signature = signature("data.frame"),
-    definition = .Tx2Gene.data.frame
+    definition = Tx2Gene.data.frame
 )
 
 
@@ -97,7 +97,7 @@ setMethod(
 setMethod(
     f = "Tx2Gene",
     signature = signature("DataFrame"),
-    definition = .Tx2Gene.DataFrame
+    definition = Tx2Gene.DataFrame
 )
 
 
@@ -107,7 +107,7 @@ setMethod(
 setMethod(
     f = "Tx2Gene",
     signature = signature("GRanges"),
-    definition = .Tx2Gene.GRanges
+    definition = Tx2Gene.GRanges
 )
 
 
@@ -117,5 +117,5 @@ setMethod(
 setMethod(
     f = "Tx2Gene",
     signature = signature("SummarizedExperiment"),
-    definition = .Tx2Gene.SummarizedExperiment
+    definition = Tx2Gene.SummarizedExperiment
 )

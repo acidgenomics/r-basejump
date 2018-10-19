@@ -34,8 +34,8 @@ always the convention of \code{\link[=saveData]{saveData()}}, regardless of the 
 Invisible named \code{character}. File paths.
 }
 \description{
-Wrapper for \code{\link[=save]{save()}} supporting quick, interactive saving of object names
-passed as symbols.
+Wrapper for \code{\link[base:save]{base::save()}} supporting quick, interactive saving of object
+names passed as symbols.
 }
 \details{
 This function always saves each object into a separate file rather than
@@ -44,7 +44,7 @@ combining multiple objects into a single file.
 \note{
 This function is desired for interactive use and interprets object
 names using non-standard evaluation. It will \strong{overwrite} existing files
-on disk, following the same conventions as \code{\link[=save]{save()}}.
+on disk, following the same conventions as \code{\link[base:save]{base::save()}}.
 }
 \examples{
 data(rse_small, sce_small)
@@ -55,7 +55,7 @@ list.files("example")
 unlink("example", recursive = TRUE)
 }
 \seealso{
-\link{save}, \link{saveRDS}.
+\code{\link[base:save]{base::save()}}, \code{\link[base:saveRDS]{base::saveRDS()}}.
 
 Other Import/Export Functions: \code{\link{assignAndSaveData}},
   \code{\link{export}}, \code{\link{import}},

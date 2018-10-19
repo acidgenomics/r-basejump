@@ -1,9 +1,10 @@
 #' Check Classes
 #'
+#' @export
+#'
 #' @inheritParams general
 #' @param expected `list`. Named list of expected classes per slot.
 #' @param subset `boolean`. Only check a subset of slots in the object.
-#' @export
 #'
 #' @examples
 #' data(rse_small)

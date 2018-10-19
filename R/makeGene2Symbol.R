@@ -24,6 +24,10 @@
 #' x <- makeGene2SymbolFromEnsembl(organism = "Homo sapiens")
 #' print(x)
 #'
+#' ## makeTx2GeneFromEnsDb ====
+#' x <- makeGene2SymbolFromEnsDb("EnsDb.Hsapiens.v75")
+#' print(x)
+#'
 #' ## makeGene2SymbolFromGFF ====
 #' ## GTF
 #' file <- file.path(basejumpCacheURL, "example.gtf")
@@ -51,6 +55,22 @@ makeGene2SymbolFromEnsembl <-
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), "level")]
 formals(makeGene2SymbolFromEnsembl) <- f
+
+
+
+#' @rdname makeGene2Symbol
+#' @export
+makeGene2SymbolFromEnsDb <-
+    function() {
+        gr <- do.call(
+            what = makeGRangesFromEnsDb,
+            args = matchArgsToDoCall(args = list(level = "genes"))
+        )
+        Gene2Symbol(gr)
+    }
+f <- formals(makeGRangesFromEnsDb)
+f <- f[setdiff(names(f), "level")]
+formals(makeGene2SymbolFromEnsDb) <- f
 
 
 

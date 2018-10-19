@@ -27,7 +27,7 @@ Count matrix.
 }
 \note{
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
-defined in \code{\link[=assayNames]{assayNames()}}.
+defined in \code{\link[SummarizedExperiment:assayNames]{SummarizedExperiment::assayNames()}}.
 }
 \examples{
 data(rse_small)

@@ -17,8 +17,10 @@ methodFunction(f, signature)
     of \code{f}.  See the details below.}
 }
 \value{
-\code{methodFunction()}: \code{function}. Function sealed inside \code{MethodDefinition}.
-\code{methodFormals()}: \code{list}. Formal arguments.
+\itemize{
+\item \code{\link[=methodFormals]{methodFormals()}}: \code{list}. Extract the sealed formal arguments.
+\item \code{\link[=methodDefinition]{methodDefinition()}}: \code{function}. Extract the sealed function.
+}
 }
 \description{
 Access to the Data Inside an S4 Method Definition
