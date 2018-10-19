@@ -18,7 +18,10 @@
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
     if (is.null(interestingGroups)) {
         interestingGroups <- interestingGroups(object, check = FALSE)
-        if (is.null(interestingGroups)) {
+        if (
+            is.null(interestingGroups) ||
+            !all(interestingGroups %in% colnames(colData(object)))
+        ) {
             interestingGroups <- "sampleName"
         }
     } else {
