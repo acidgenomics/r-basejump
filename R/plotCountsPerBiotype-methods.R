@@ -45,6 +45,7 @@ NULL
         assert_is_a_string(countsAxisLabel)
 
         rowData <- rowData(object)
+        rownames(rowData) <- rownames(object)
 
         # Determine whether to use transcripts or genes automatically.
         if ("transcriptBiotype" %in% colnames(rowData)) {
@@ -87,7 +88,11 @@ NULL
         if (is(object, "SingleCellExperiment")) {
             c2s <- cell2sample(object, return = "tibble") %>%
                 rename(!!sym("colname") := !!sym("cellID"))
-            data <- left_join(data, c2s, by = "colname")
+            data <- left_join(
+                x = as_tibble(data),
+                y = as_tibble(c2s),
+                by = "colname"
+            )
         } else {
             data <- rename(data, !!sym("sampleID") := !!sym("colname"))
         }
@@ -97,12 +102,15 @@ NULL
             # Drop zero counts, which is useful when log scaling the axis.
             filter(!!sym("counts") > 0L) %>%
             left_join(
-                as_tibble(rowData, rownames = "rowname"),
+                y = as_tibble(rowData, rownames = "rowname"),
                 by = "rowname"
             ) %>%
             filter(!!sym(biotypeCol) %in% !!biotypes) %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID"))) %>%
-            left_join(sampleData, by = "sampleID") %>%
+            left_join(
+                y = as_tibble(sampleData),
+                by = "sampleID"
+            ) %>%
             select(!!!syms(c("counts", "interestingGroups", biotypeCol)))
 
         p <- ggplot(
@@ -156,6 +164,8 @@ NULL
         assert_is_a_string(countsAxisLabel)
 
         rowData <- rowData(object)
+        rownames(rowData) <- rownames(object)
+
         biotypeCol <- "broadClass"
         assert_is_subset(biotypeCol, colnames(rowData))
 
@@ -189,7 +199,11 @@ NULL
         if (is(object, "SingleCellExperiment")) {
             c2s <- cell2sample(object, return = "tibble") %>%
                 rename(!!sym("colname") := !!sym("cellID"))
-            data <- left_join(data, c2s, by = "colname")
+            data <- left_join(
+                x = as_tibble(data),
+                y = as_tibble(c2s),
+                by = "colname"
+            )
         } else {
             data <- rename(data, !!sym("sampleID") := !!sym("colname"))
         }
@@ -202,7 +216,10 @@ NULL
             ) %>%
             filter(!!sym(biotypeCol) %in% !!biotypes) %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID"))) %>%
-            left_join(sampleData, by = "sampleID")
+            left_join(
+                y = as_tibble(sampleData),
+                by = "sampleID"
+            )
 
         p <- ggplot(
             data = data,
