@@ -33,8 +33,8 @@
 #'
 #' Conversely, when coercing a `tibble` back to an S4 `DataFrame`, our
 #' `as(tbl_df, Class = "DataFrame")` method looks for the `rowname` column and
-#' will attempt to move it back to [rownames()] automatically, unless there are
-#' duplicates present.
+#' will attempt to move it back to [base::rownames()] automatically, unless
+#' there are duplicates present.
 #'
 #' @inheritParams general
 #'
@@ -45,7 +45,7 @@
 #' - [methods::canCoerce()].
 #' - [methods::showMethods()].
 #' - [utils::methods()].
-#' - [as.list()].
+#' - [BiocGenerics::as.list()].
 #'
 #' @examples
 #' data(rse_small)

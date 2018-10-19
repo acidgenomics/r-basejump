@@ -96,7 +96,3 @@
 #'   sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
-
-# Import this once tibble v1.4.99 is released.
-# Then safe to remove `setOldClass()` approach.
-# #' @importClassesFrom tibble tbl_df

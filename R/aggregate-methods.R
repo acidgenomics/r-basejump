@@ -100,6 +100,7 @@ NULL
 
 
 
+# Internals ====================================================================
 .aggregateFuns <- c("sum", "mean")
 
 
@@ -125,7 +126,7 @@ NULL
 
 
 # matrix =======================================================================
-.aggregateRows.matrix <-  # nolint
+aggregateRows.matrix <-  # nolint
     function(
         object,
         groupings,
@@ -146,11 +147,11 @@ NULL
             column_to_rownames() %>%
             as.matrix()
     }
-formals(.aggregateRows.matrix)[["fun"]] <- .aggregateFuns
+formals(aggregateRows.matrix)[["fun"]] <- .aggregateFuns
 
 
 
-.aggregateCols.matrix <-  # nolint
+aggregateCols.matrix <-  # nolint
     function(
         object,
         groupings,
@@ -166,12 +167,12 @@ formals(.aggregateRows.matrix)[["fun"]] <- .aggregateFuns
             ) %>%
             t()
     }
-formals(.aggregateCols.matrix)[["fun"]] <- .aggregateFuns
+formals(aggregateCols.matrix)[["fun"]] <- .aggregateFuns
 
 
 
 # sparseMatrix =================================================================
-.aggregateRows.sparseMatrix <-  # nolint
+aggregateRows.sparseMatrix <-  # nolint
     function(
         object,
         groupings,
@@ -191,11 +192,11 @@ formals(.aggregateCols.matrix)[["fun"]] <- .aggregateFuns
             fun = fun
         )
     }
-formals(.aggregateRows.sparseMatrix)[["fun"]] <- .aggregateFuns
+formals(aggregateRows.sparseMatrix)[["fun"]] <- .aggregateFuns
 
 
 
-.aggregateCols.sparseMatrix <-  # nolint
+aggregateCols.sparseMatrix <-  # nolint
     function(
         object,
         groupings,
@@ -211,12 +212,12 @@ formals(.aggregateRows.sparseMatrix)[["fun"]] <- .aggregateFuns
             ) %>%
             t()
     }
-formals(.aggregateCols.sparseMatrix)[["fun"]] <- .aggregateFuns
+formals(aggregateCols.sparseMatrix)[["fun"]] <- .aggregateFuns
 
 
 
 # SummarizedExperiment =========================================================
-.aggregateRows.SE <-  # nolint
+aggregateRows.SE <-  # nolint
     function(object, col = "aggregate", fun) {
         validObject(object)
         assertHasValidDimnames(object)
@@ -258,11 +259,11 @@ formals(.aggregateCols.sparseMatrix)[["fun"]] <- .aggregateFuns
         validObject(se)
         se
     }
-formals(.aggregateRows.SE)[["fun"]] <- .aggregateFuns
+formals(aggregateRows.SE)[["fun"]] <- .aggregateFuns
 
 
 
-.aggregateCols.SE <-  # nolint
+aggregateCols.SE <-  # nolint
     function(object, col = "aggregate", fun) {
         validObject(object)
         assertHasValidDimnames(object)
@@ -334,12 +335,12 @@ formals(.aggregateRows.SE)[["fun"]] <- .aggregateFuns
         validObject(se)
         se
     }
-formals(.aggregateCols.SE)[["fun"]] <- .aggregateFuns
+formals(aggregateCols.SE)[["fun"]] <- .aggregateFuns
 
 
 
 # SingleCellExperiment =========================================================
-.aggregateCols.SCE <-  # nolint
+aggregateCols.SCE <-  # nolint
     function(object, fun) {
         validObject(object)
         fun <- match.arg(fun)
@@ -412,7 +413,7 @@ formals(.aggregateCols.SE)[["fun"]] <- .aggregateFuns
         validObject(sce)
         sce
     }
-formals(.aggregateCols.SCE)[["fun"]] <- .aggregateFuns
+formals(aggregateCols.SCE)[["fun"]] <- .aggregateFuns
 
 
 
@@ -422,7 +423,7 @@ formals(.aggregateCols.SCE)[["fun"]] <- .aggregateFuns
 setMethod(
     f = "aggregateRows",
     signature = signature("matrix"),
-    definition = .aggregateRows.matrix
+    definition = aggregateRows.matrix
 )
 
 
@@ -432,7 +433,7 @@ setMethod(
 setMethod(
     f = "aggregateRows",
     signature = signature("sparseMatrix"),
-    definition = .aggregateRows.sparseMatrix
+    definition = aggregateRows.sparseMatrix
 )
 
 
@@ -449,7 +450,7 @@ setMethod(
 setMethod(
     f = "aggregateRows",
     signature = signature("SummarizedExperiment"),
-    definition = .aggregateRows.SE
+    definition = aggregateRows.SE
 )
 
 
@@ -459,7 +460,7 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("matrix"),
-    definition = .aggregateCols.matrix
+    definition = aggregateCols.matrix
 )
 
 
@@ -469,7 +470,7 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("sparseMatrix"),
-    definition = .aggregateCols.sparseMatrix
+    definition = aggregateCols.sparseMatrix
 )
 
 
@@ -479,7 +480,7 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("SummarizedExperiment"),
-    definition = .aggregateCols.SE
+    definition = aggregateCols.SE
 )
 
 
@@ -494,5 +495,5 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("SingleCellExperiment"),
-    definition = .aggregateCols.SCE
+    definition = aggregateCols.SCE
 )

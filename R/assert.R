@@ -13,13 +13,14 @@ NULL
 
 
 
+# Internals ====================================================================
 .hasAggregate <- function(object, stop = FALSE) {
     logical <- "aggregate" %in% colnames(object)
     if (
         identical(logical, FALSE) &&
         identical(stop, TRUE)
     ) {
-        stop("`aggregate` column is required")
+        stop("`aggregate` column is required.", call. = FALSE)
     }
     logical
 }

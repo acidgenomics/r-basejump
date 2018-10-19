@@ -36,8 +36,8 @@ setGeneric(
 #' @rdname cell2sample
 #' @export
 setGeneric(
-    "cell2sample",
-    function(object, ...) {
+    name = "cell2sample",
+    def = function(object, ...) {
         standardGeneric("cell2sample")
     }
 )
@@ -321,8 +321,8 @@ setGeneric(
 #' @rdname metrics
 #' @export
 setGeneric(
-    "metricsPerSample",
-    function(object, ...) {
+    name = "metricsPerSample",
+    def = function(object, ...) {
         standardGeneric("metricsPerSample")
     }
 )
@@ -560,8 +560,8 @@ setGeneric(
 #' @rdname subsetPerSample
 #' @export
 setGeneric(
-    "subsetPerSample",
-    function(object, ...) {
+    name = "subsetPerSample",
+    def = function(object, ...) {
         standardGeneric("subsetPerSample")
     }
 )
@@ -572,8 +572,8 @@ setGeneric(
 #' @rdname topCellsPerSample
 #' @export
 setGeneric(
-    "topCellsPerSample",
-    function(object, ...) {
+    name = "topCellsPerSample",
+    def = function(object, ...) {
         standardGeneric("topCellsPerSample")
     }
 )

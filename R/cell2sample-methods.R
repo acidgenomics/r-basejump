@@ -20,7 +20,7 @@ NULL
 
 
 
-.cell2sample.SCE <-  # nolint
+cell2sample.SingleCellExperiment <-  # nolint
     function(
         object,
         return = c("factor", "tibble")
@@ -51,5 +51,5 @@ NULL
 setMethod(
     f = "cell2sample",
     signature = signature("SingleCellExperiment"),
-    definition = .cell2sample.SCE
+    definition = cell2sample.SingleCellExperiment
 )
