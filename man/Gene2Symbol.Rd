@@ -3,15 +3,12 @@
 \docType{methods}
 \name{Gene2Symbol}
 \alias{Gene2Symbol}
-\alias{Gene2Symbol,data.frame-method}
 \alias{Gene2Symbol,DataFrame-method}
 \alias{Gene2Symbol,GRanges-method}
 \alias{Gene2Symbol,SummarizedExperiment-method}
 \title{Gene-to-Symbol Mappings}
 \usage{
 Gene2Symbol(object, ...)
-
-\S4method{Gene2Symbol}{data.frame}(object)
 
 \S4method{Gene2Symbol}{DataFrame}(object)
 
