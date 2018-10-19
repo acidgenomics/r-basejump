@@ -46,7 +46,7 @@ NULL
 
 
 
-.selectSamples.SE <-  # nolint
+.selectSamples.SummarizedExperiment <-  # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)
@@ -75,7 +75,7 @@ NULL
 
 
 
-.selectSamples.SCE <-  # nolint
+.selectSamples.SingleCellExperiment <-  # nolint
     function(object, ...) {
         validObject(object)
 
@@ -162,7 +162,7 @@ NULL
 setMethod(
     f = "selectSamples",
     signature = signature("SummarizedExperiment"),
-    definition = .selectSamples.SE
+    definition = .selectSamples.SummarizedExperiment
 )
 
 
@@ -172,5 +172,5 @@ setMethod(
 setMethod(
     f = "selectSamples",
     signature = signature("SingleCellExperiment"),
-    definition = .selectSamples.SCE
+    definition = .selectSamples.SingleCellExperiment
 )

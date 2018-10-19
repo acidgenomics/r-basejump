@@ -22,7 +22,7 @@ NULL
 
 
 
-.meltCounts.SE <-  # nolint
+.meltCounts.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -87,5 +87,5 @@ NULL
 setMethod(
     f = "meltCounts",
     signature = signature("SummarizedExperiment"),
-    definition = .meltCounts.SE
+    definition = .meltCounts.SummarizedExperiment
 )

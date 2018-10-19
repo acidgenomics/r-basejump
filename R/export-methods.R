@@ -161,7 +161,7 @@ NULL
 
 
 
-.export.SE <-  # nolint
+.export.SummarizedExperiment <-  # nolint
     function(
         x,
         dir = ".",
@@ -247,7 +247,7 @@ NULL
 
 
 
-.export.SCE <-  # nolint
+.export.SingleCellExperiment <-  # nolint
     function(x) {
         assert_is_a_bool(compress)
         call <- standardizeCall()
@@ -291,7 +291,7 @@ NULL
         assert_has_names(files)
         invisible(files)
     }
-formals(.export.SCE) <- formals(.export.SE)
+formals(.export.SingleCellExperiment) <- formals(.export.SummarizedExperiment)
 
 
 
@@ -320,7 +320,7 @@ setMethod(
 setMethod(
     f = "export",
     signature = signature("SummarizedExperiment"),
-    definition = .export.SE
+    definition = .export.SummarizedExperiment
 )
 
 
@@ -330,5 +330,5 @@ setMethod(
 setMethod(
     f = "export",
     signature = signature("SingleCellExperiment"),
-    definition = .export.SCE
+    definition = .export.SingleCellExperiment
 )

@@ -13,7 +13,7 @@ NULL
 
 
 
-.plotGenesDetected.SE <-  # nolint
+.plotGenesDetected.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -86,7 +86,7 @@ NULL
 
 
 
-.plotGenesDetected.SCE <-  # nolint
+.plotGenesDetected.SingleCellExperiment <-  # nolint
     function(object) {
         do.call(
             what = plotGenesDetected,
@@ -97,7 +97,7 @@ NULL
             )
         )
     }
-formals(.plotGenesDetected.SCE) <- formals(.plotGenesDetected.SE)
+formals(.plotGenesDetected.SingleCellExperiment) <- formals(.plotGenesDetected.SummarizedExperiment)
 
 
 
@@ -106,7 +106,7 @@ formals(.plotGenesDetected.SCE) <- formals(.plotGenesDetected.SE)
 setMethod(
     f = "plotGenesDetected",
     signature = signature("SummarizedExperiment"),
-    definition = .plotGenesDetected.SE
+    definition = .plotGenesDetected.SummarizedExperiment
 )
 
 
@@ -116,5 +116,5 @@ setMethod(
 setMethod(
     f = "plotGenesDetected",
     signature = signature("SingleCellExperiment"),
-    definition = .plotGenesDetected.SCE
+    definition = .plotGenesDetected.SingleCellExperiment
 )

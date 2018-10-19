@@ -12,7 +12,7 @@ NULL
 
 
 # Designed to work with `export(human = TRUE)` mode.
-.convertSampleIDsToNames.SE <-  # nolint
+.convertSampleIDsToNames.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         sampleNames <- sampleNames(object)
@@ -39,7 +39,7 @@ NULL
 setMethod(
     f = "convertSampleIDsToNames",
     signature = signature("SummarizedExperiment"),
-    definition = .convertSampleIDsToNames.SE
+    definition = .convertSampleIDsToNames.SummarizedExperiment
 )
 
 

@@ -30,7 +30,7 @@ NULL
 
 
 
-.plotQC.SE <-  # nolint
+.plotQC.SummarizedExperiment <-  # nolint
     function(object, assay = 1L) {
         validObject(object)
         assert_is_scalar(assay)
@@ -69,5 +69,5 @@ NULL
 setMethod(
     f = "plotQC",
     signature = signature("SummarizedExperiment"),
-    definition = .plotQC.SE
+    definition = .plotQC.SummarizedExperiment
 )

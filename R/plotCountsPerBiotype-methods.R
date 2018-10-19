@@ -24,7 +24,7 @@ NULL
 
 
 
-.plotCountsPerBiotype.SE <-  # nolint
+.plotCountsPerBiotype.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -145,7 +145,7 @@ NULL
 
 
 
-.plotCountsPerBroadClass.SE <-  # nolint
+.plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -258,7 +258,7 @@ NULL
 setMethod(
     f = "plotCountsPerBiotype",
     signature = signature("SummarizedExperiment"),
-    definition = .plotCountsPerBiotype.SE
+    definition = .plotCountsPerBiotype.SummarizedExperiment
 )
 
 
@@ -281,7 +281,7 @@ setMethod(
 setMethod(
     f = "plotCountsPerBroadClass",
     signature = signature("SummarizedExperiment"),
-    definition = .plotCountsPerBroadClass.SE
+    definition = .plotCountsPerBroadClass.SummarizedExperiment
 )
 
 

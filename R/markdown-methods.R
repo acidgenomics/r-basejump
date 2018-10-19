@@ -14,7 +14,7 @@ NULL
 
 
 
-.markdown.SE <-  # nolint
+.markdown.SummarizedExperiment <-  # nolint
     function(object) {
         sampleData(object) %>%
             as.data.frame() %>%
@@ -28,5 +28,5 @@ NULL
 setMethod(
     f = "markdown",
     signature = signature("SummarizedExperiment"),
-    definition = .markdown.SE
+    definition = .markdown.SummarizedExperiment
 )

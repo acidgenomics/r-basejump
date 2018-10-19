@@ -48,7 +48,7 @@ NULL
 
 
 
-.zerosVsDepth.SE <-  # nolint
+.zerosVsDepth.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L
@@ -64,7 +64,7 @@ NULL
 
 
 
-.zerosVsDepth.SCE <-  # nolint
+.zerosVsDepth.SingleCellExperiment <-  # nolint
     function(
         object,
         assay = 1L
@@ -113,7 +113,7 @@ setMethod(
 setMethod(
     f = "zerosVsDepth",
     signature = signature("SummarizedExperiment"),
-    definition = .zerosVsDepth.SE
+    definition = .zerosVsDepth.SummarizedExperiment
 )
 
 
@@ -121,13 +121,13 @@ setMethod(
 setMethod(
     f = "zerosVsDepth",
     signature = signature("SingleCellExperiment"),
-    definition = .zerosVsDepth.SCE
+    definition = .zerosVsDepth.SingleCellExperiment
 )
 
 
 
 # plotZerosVsDepth =============================================================
-.plotZerosVsDepth.SE <-  # nolint
+.plotZerosVsDepth.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -189,5 +189,5 @@ setMethod(
 setMethod(
     f = "plotZerosVsDepth",
     signature = signature("SummarizedExperiment"),
-    definition = .plotZerosVsDepth.SE
+    definition = .plotZerosVsDepth.SummarizedExperiment
 )

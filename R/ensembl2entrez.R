@@ -16,7 +16,7 @@ NULL
 
 
 
-.Ensembl2Entrez.SE <-  # nolint
+.Ensembl2Entrez.SummarizedExperiment <-  # nolint
     function(object) {
         rowData <- rowData(object)
         assert_is_subset(
@@ -53,5 +53,5 @@ NULL
 setMethod(
     f = "Ensembl2Entrez",
     signature = signature("SummarizedExperiment"),
-    definition = .Ensembl2Entrez.SE
+    definition = .Ensembl2Entrez.SummarizedExperiment
 )

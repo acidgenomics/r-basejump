@@ -94,7 +94,7 @@ NULL
 
 
 
-.convertGenesToSymbols.SE <-  # nolint
+.convertGenesToSymbols.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -149,13 +149,13 @@ setMethod(
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    definition = .convertGenesToSymbols.SE
+    definition = .convertGenesToSymbols.SummarizedExperiment
 )
 
 
 
 # convertSymbolsToGenes ========================================================
-.convertSymbolsToGenes.SE <-  # nolint
+.convertSymbolsToGenes.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -175,5 +175,5 @@ setMethod(
 setMethod(
     f = "convertSymbolsToGenes",
     signature = signature("SummarizedExperiment"),
-    definition = .convertSymbolsToGenes.SE
+    definition = .convertSymbolsToGenes.SummarizedExperiment
 )

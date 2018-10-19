@@ -41,7 +41,7 @@ NULL
 
 # Then attempt to check rowData.
 # Finally, check against the rownames.
-.organism.SE <-  # nolint
+.organism.SummarizedExperiment <-  # nolint
     function(object) {
         # Attempt to use metadata stash, if defined.
         organism <- metadata(object)[["organism"]]
@@ -116,5 +116,5 @@ setMethod(
 setMethod(
     f = "organism",
     signature = signature("SummarizedExperiment"),
-    definition = .organism.SE
+    definition = .organism.SummarizedExperiment
 )

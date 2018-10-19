@@ -13,7 +13,7 @@ NULL
 
 
 
-.plotTotalCounts.SE <-  # nolint
+.plotTotalCounts.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -82,7 +82,7 @@ NULL
 
 
 
-.plotTotalCounts.SCE <-  # nolint
+.plotTotalCounts.SingleCellExperiment <-  # nolint
     function(object) {
         do.call(
             what = plotTotalCounts,
@@ -93,7 +93,7 @@ NULL
             )
         )
     }
-formals(.plotTotalCounts.SCE) <- formals(.plotTotalCounts.SE)
+formals(.plotTotalCounts.SingleCellExperiment) <- formals(.plotTotalCounts.SummarizedExperiment)
 
 
 
@@ -102,7 +102,7 @@ formals(.plotTotalCounts.SCE) <- formals(.plotTotalCounts.SE)
 setMethod(
     f = "plotTotalCounts",
     signature = signature("SummarizedExperiment"),
-    definition = .plotTotalCounts.SE
+    definition = .plotTotalCounts.SummarizedExperiment
 )
 
 
@@ -112,5 +112,5 @@ setMethod(
 setMethod(
     f = "plotTotalCounts",
     signature = signature("SingleCellExperiment"),
-    definition = .plotTotalCounts.SCE
+    definition = .plotTotalCounts.SingleCellExperiment
 )

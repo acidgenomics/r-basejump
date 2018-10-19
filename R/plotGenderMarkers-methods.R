@@ -28,7 +28,7 @@ NULL
 
 
 
-.plotGenderMarkers.SE <-  # nolint
+.plotGenderMarkers.SummarizedExperiment <-  # nolint
     function() {
         validObject(object)
 
@@ -78,7 +78,7 @@ NULL
 f <- methodFormals(f = "plotGene", signature = "SummarizedExperiment")
 f <- f[setdiff(names(f), "genes")]
 f[["style"]] <- "wide"
-formals(.plotGenderMarkers.SE) <- f
+formals(.plotGenderMarkers.SummarizedExperiment) <- f
 
 
 
@@ -87,7 +87,7 @@ formals(.plotGenderMarkers.SE) <- f
 setMethod(
     "plotGenderMarkers",
     signature("SummarizedExperiment"),
-    definition = .plotGenderMarkers.SE
+    definition = .plotGenderMarkers.SummarizedExperiment
 )
 
 
