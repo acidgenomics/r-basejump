@@ -1,5 +1,5 @@
 # Transcript-level SummarizedExperiment example
-# 2018-10-08
+# 2018-10-18
 
 # Restrict to 1 MB.
 # Use `pryr::object_size()` instead of `utils::object.size()`.
@@ -56,4 +56,4 @@ stopifnot(object_size(se) < limit)
 stopifnot(validObject(se))
 
 tx_se_small <- se
-devtools::use_data(tx_se_small, compress = "xz", overwrite = TRUE)
+usethis::use_data(tx_se_small, compress = "xz", overwrite = TRUE)
