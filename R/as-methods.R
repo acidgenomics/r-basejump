@@ -47,7 +47,6 @@
 #' - [methods::canCoerce()].
 #' - [methods::showMethods()].
 #' - [utils::methods()].
-#' - [S4Vectors::as.list()].
 #'
 #' @examples
 #' data(rse_small)
