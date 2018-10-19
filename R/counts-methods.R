@@ -1,3 +1,15 @@
+#' @importFrom BiocGenerics counts
+#' @aliases NULL
+#' @export
+BiocGenerics::counts
+
+#' @importFrom BiocGenerics counts<-
+#' @aliases NULL
+#' @export
+BiocGenerics::`counts<-`
+
+
+
 #' Counts
 #'
 #' Count matrix.
@@ -7,7 +19,6 @@
 #'
 #' @name counts
 #' @family SummarizedExperiment Functions
-#' @importFrom BiocGenerics counts counts<-
 #'
 #' @inheritParams general
 #'
@@ -18,18 +29,6 @@
 #' x <- counts(rse_small)
 #' summary(x)
 NULL
-
-
-
-#' @importFrom BiocGenerics counts
-#' @aliases NULL
-#' @export
-BiocGenerics::counts
-
-#' @importFrom BiocGenerics counts<-
-#' @aliases NULL
-#' @export
-BiocGenerics::`counts<-`
 
 
 

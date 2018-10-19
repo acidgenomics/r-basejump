@@ -1,12 +1,12 @@
-#' @rdname sampleNames
 #' @importFrom Biobase sampleNames
+#' @aliases NULL
 #' @export
-sampleNames <- Biobase::sampleNames
+Biobase::sampleNames
 
-#' @rdname sampleNames
 #' @importFrom Biobase sampleNames<-
+#' @aliases NULL
 #' @export
-`sampleNames<-` <- Biobase::`sampleNames<-`
+Biobase::`sampleNames<-`
 
 
 

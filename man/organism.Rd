@@ -11,8 +11,6 @@
 \alias{organism,SummarizedExperiment-method}
 \title{Organism Accessor}
 \usage{
-organism(object)
-
 \S4method{organism}{matrix}(object)
 
 \S4method{organism}{sparseMatrix}(object)
@@ -36,10 +34,7 @@ data(rse_small)
 organism(rse_small)
 }
 \seealso{
-\itemize{
-\item \code{\link[BiocGenerics:organism]{BiocGenerics::organism()}}.
-\item \code{\link[=detectOrganism]{detectOrganism()}}.
-}
+\code{\link[=detectOrganism]{detectOrganism()}}.
 
 Other Metadata Functions: \code{\link{detectHPC}},
   \code{\link{detectLanes}}, \code{\link{detectOrganism}},
