@@ -489,18 +489,18 @@ makeGRangesFromEnsDb <- function(object, level) {
     level <- match.arg(level)
 
     # Get the genome build from the ensembldb metdata.
-    build <- metadata(object) %>%
+    genomeBuild <- metadata(object) %>%
         as_tibble() %>%
         filter(!!sym("name") == "genome_build") %>%
         pull("value")
-    assert_is_a_string(build)
+    assert_is_a_string(genomeBuild)
 
     # Ready to create our metadata list to stash inside the GRanges.
     metadata <- list(
         organism = organism(object),
+        genomeBuild = genomeBuild,
+        ensemblRelease = ensemblVersion(object),
         ensembldb = metadata(object),
-        build = build,
-        release = ensemblVersion(object),
         level = level,
         version = packageVersion("basejump"),
         date = Sys.Date()
@@ -508,8 +508,8 @@ makeGRangesFromEnsDb <- function(object, level) {
 
     message(paste(
         paste(li, "Organism:", metadata[["organism"]]),
-        paste(li, "Build:", metadata[["build"]]),
-        paste(li, "Release:", metadata[["release"]]),
+        paste(li, "Genome Build:", metadata[["genomeBuild"]]),
+        paste(li, "Ensembl Release:", metadata[["ensemblRelease"]]),
         paste(li, "Level:", metadata[["level"]]),
         sep = "\n"
     ))
