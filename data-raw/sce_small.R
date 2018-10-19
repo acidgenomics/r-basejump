@@ -1,14 +1,16 @@
 # Gene-level SingleCellExperiment example
-# 2018-10-09
+# 2018-10-18
+
+# Restrict to 1 MB.
+# Use `pryr::object_size()` instead of `utils::object.size()`.
+library(pryr)
+limit <- structure(1e6, class = "object_size")
 
 library(splatter)
 library(tidyverse)
 
 organism <- "Homo sapiens"
 release <- 92L
-
-# Restrict to 1 MB per file.
-limit <- structure(1e6, class = "object_size")
 
 # Use splatter to generate an example dataset with simulated counts.
 # Note: These DE params are natural log scale.
@@ -69,10 +71,11 @@ metadata(sce) <- list(date = Sys.Date())
 # Report the size of each slot in bytes.
 vapply(
     X = coerceS4ToList(sce),
-    FUN = object.size,
+    FUN = object_size,
     FUN.VALUE = numeric(1L)
 )
-stopifnot(object.size(sce) < limit)
+object_size(sce)
+stopifnot(object_size(sce) < limit)
 stopifnot(validObject(sce))
 
 sce_small <- sce

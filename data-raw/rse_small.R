@@ -1,5 +1,10 @@
 # Gene-level RangedSummarizedExperiment example
-# Last updated 2018-10-08
+# 2018-10-08
+
+# Restrict to 1 MB.
+# Use `pryr::object_size()` instead of `utils::object.size()`.
+library(pryr)
+limit <- structure(1e6, class = "object_size")
 
 library(DESeq2)
 library(tidyverse)
@@ -7,19 +12,18 @@ library(tidyverse)
 organism <- "Homo sapiens"
 release <- 92L
 
-# Restrict to 1 MB per file.
-limit <- structure(1e6, class = "object_size")
-
 # Generate example DESeqDataSet using DESeq2.
 # Note that we're using simulated counts here.
 dds <- makeExampleDESeqDataSet(n = 50L, m = 4L)
-stopifnot(object.size(dds) < limit)
+object_size(dds)
+stopifnot(object_size(dds) < limit)
 stopifnot(validObject(dds))
 
 # Coerce to RangedSummarizedExperiment.
 # Need to change rows to actual gene identifiers here, and slot colData.
 rse <- as(dds, "RangedSummarizedExperiment")
-stopifnot(object.size(rse) < limit)
+object_size(rse)
+stopifnot(object_size(rse) < limit)
 
 # Column data.
 # Note that `sampleName` column is generated for `sampleData()` return.
@@ -68,10 +72,11 @@ interestingGroups(rse) <- c("genotype", "treatment")
 # Size check.
 vapply(
     X = coerceS4ToList(rse),
-    FUN = object.size,
+    FUN = object_size,
     FUN.VALUE = numeric(1L)
 )
-stopifnot(object.size(rse) < limit)
+object_size(rse)
+stopifnot(object_size(rse) < limit)
 stopifnot(validObject(rse))
 
 rse_small <- rse

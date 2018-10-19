@@ -1,11 +1,13 @@
 # Transcript-level SummarizedExperiment example
 # 2018-10-08
 
+# Restrict to 1 MB.
+# Use `pryr::object_size()` instead of `utils::object.size()`.
+library(pryr)
+limit <- structure(1e6, class = "object_size")
+
 organism <- "Homo sapiens"
 release <- 92L
-
-# Restrict to 1 MB per file.
-limit <- structure(1e6, class = "object_size")
 
 tx2gene <- makeTx2GeneFromEnsembl(organism, release = release)
 print(tx2gene)
@@ -46,10 +48,11 @@ se <- SummarizedExperiment(
 # Size checks.
 vapply(
     X = coerceS4ToList(se),
-    FUN = object.size,
+    FUN = object_size,
     FUN.VALUE = numeric(1L)
 )
-stopifnot(object.size(se) < limit)
+object_size(se)
+stopifnot(object_size(se) < limit)
 stopifnot(validObject(se))
 
 tx_se_small <- se
