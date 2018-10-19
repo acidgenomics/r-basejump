@@ -5,7 +5,9 @@ data(rse_small, sce_small, envir = environment())
 colData <- SummarizedExperiment::colData
 `colData<-` <- SummarizedExperiment::`colData<-`
 DataFrame <- S4Vectors::DataFrame
+mcols <- S4Vectors::mcols
 seqnames <- GenomeInfoDb::seqnames
+rowRanges <- SummarizedExperiment::rowRanges
 `rowRanges<-` <- SummarizedExperiment::`rowRanges<-`
 
 
@@ -41,20 +43,20 @@ test_that("counts", {
 
 
 
-# gene2symbol ==================================================================
-test_that("gene2symbol", {
+# Gene2Symbol ==================================================================
+test_that("Gene2Symbol", {
     object <- Gene2Symbol(rse_small)
     expect_is(object, "DataFrame")
     expect_identical(colnames(object), c("geneID", "geneName"))
     expect_true(hasRownames(object))
 })
 
-test_that("gene2symbol : No mappings", {
+test_that("Gene2Symbol : No mappings", {
     object <- rse_small
     mcols(rowRanges(object))[["geneName"]] <- NULL
     expect_error(
         object = Gene2Symbol(object),
-        regexp = "Object does not contain gene-to-symbol mappings"
+        regexp = "geneName"
     )
 })
 
