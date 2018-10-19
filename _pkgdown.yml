@@ -5,41 +5,13 @@ authors:
 reference:
   - title: S4 Classes
     contents:
-    - ends_with("-class")
-  - title: S4 Generators
-    contents:
-    - EggNOG
-    - Ensembl2Entrez
-    - Gene2Symbol
-    - HGNC2Ensembl
-    - MGI2Ensembl
-    - PANTHER
-    - Tx2Gene
-  - title: Genome Annotations
-    contents:
-    - makeGRanges
-    - makeGene2Symbol
-    - makeTx2Gene
-    - geneSynonyms
-    - eggnog
-    - panther
-    - emptyRanges
-  - title: Gene Identifier Mapping
-    contents:
-    - starts_with("convert")
-    - starts_with("mapGenes")
-    - gene2symbol
-    - tx2gene
-    - ensembl2entrez
-    - hgnc2ensembl
-    - mgi2ensembl
-  - title: Generic Methods
-    contents:
-    - aggregate
-    - as
-    - combine
-    - markdown
-    - organism
+    - starts_with("EggNOG")
+    - starts_with("Ensembl2Entrez")
+    - starts_with("Gene2Symbol")
+    - starts_with("HGNC2Ensembl")
+    - starts_with("MGI2Ensembl")
+    - starts_with("PANTHER")
+    - starts_with("Tx2Gene")
     - show
   - title: Import/Export
     contents:
@@ -50,30 +22,30 @@ reference:
     - starts_with("save")
     - transmit
     - starts_with("write")
-  - title: Metadata
+  - title: Genome Annotations
     contents:
-    - detectHPC
-    - detectLanes
-    - detectOrganism
-    - interestingGroups
-    - microplate
-    - minimalSampleData
-    - organism
-    - starts_with("sample")
-    - uniteInterestingGroups
-  - title: SummarizedExperiment
+    - emptyRanges
+    - geneSynonyms
+    - makeGRanges
+    - makeGene2Symbol
+    - makeTx2Gene
+  - title: Gene Identifier Mapping
+    contents:
+    - starts_with("convert")
+    - starts_with("mapGenes")
+  - title: Counts
     contents:
     - counts
-    - interestingGroups
-    - makeSummarizedExperiment
-    - starts_with("mapGenes")
     - meltCounts
+    - tpm
+  - title: Sample-Level
+    contents:
+    - makeSummarizedExperiment
     - metrics
     - minimalSampleData
     - starts_with("sample")
     - selectSamples
-    - tpm
-  - title: SingleCellExperiment
+  - title: Cell-Level
     contents:
     - aggregateCellsToSamples
     - cell2sample
@@ -81,54 +53,66 @@ reference:
     - mapCellsToSamples
     - subsetPerSample
     - topCellsPerSample
+  - title: Metadata
+    contents:
+    - interestingGroups
+    - organism
+    - uniteInterestingGroups
+  - title: Sanitization
+    contents:
+    - makeNames
+    - collapseToString
+    - starts_with("remove")
+    - starts_with("sanitize")
+    - sortUnique
+    - starts_with("strip")
+    - toStringUnique
+  - title: Aggregation
+    contents:
+    - starts_with("aggregate")
+    - combine
+  - title: Math
+    contents:
+    - geometricMean
+    - logRatio
   - title: Plots
     contents:
     - starts_with("plot")
   - title: ggplot2
     contents:
     - starts_with("ggplot2-")
-  - title: Sanitization
-    contents:
-    - collapseToString
-    - makeNames
-    - starts_with("remove")
-    - starts_with("sanitize")
-    - sortUnique
-    - starts_with("strip")
-    - toStringUnique
-  - title: Calculations
-    contents:
-    - aggregate
-    - geometricMean
-    - logRatio
   - title: Markdown
     contents:
     - starts_with("markdown")
     - prepareTemplate
-  - title: Documentation
+  - title: Coercion
     contents:
-    - matches("Rd")
-  - title: Assert Checks
-    desc: Readable check functions to ensure code integrity.
-    contents:
-    - starts_with("assert")
-  - title: Miscellaneous
+    - as
+  - title: Developer
     contents:
     - checkClasses
-    - detectHPC
     - dots
-    - headtail
-    - starts_with("init")
     - localOrRemoteFile
     - matchArgsToDoCall
     - matchInterestingGroups
     - MethodDefinition
     - multiassignAsEnvir
     - printString
-    - realpath
-    - separator
+    - matches("Rd")
     - showSlotInfo
     - standardizeCall
+  - title: Miscellaneous
+    contents:
+    - starts_with("detect")
+    - headtail
+    - starts_with("init")
+    - microplate
+    - realpath
+    - separator
+  - title: Assert Checks
+    desc: Readable check functions to ensure code integrity.
+    contents:
+    - starts_with("assert")
   - title: Example Data Sets
     contents:
     - ends_with("_small")

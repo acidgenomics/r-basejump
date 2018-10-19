@@ -211,9 +211,13 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Rows (genes)</span>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>IRanges</span>)
+<span class='fu'>library</span>(<span class='no'>GenomicRanges</span>)
+<span class='fu'>library</span>(<span class='no'>SummarizedExperiment</span>)
+
+<span class='co'>## Rows (genes)</span>
 <span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(
-    <span class='st'>"EGFP"</span>,  <span class='co'># transgene (see below)</span>
+    <span class='st'>"EGFP"</span>,  <span class='co'># transgene</span>
     <span class='fu'>paste0</span>(<span class='st'>"gene"</span>, <span class='fu'>seq_len</span>(<span class='fl'>3L</span>))
 )
 <span class='fu'>print</span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; [1] "EGFP"  "gene1" "gene2" "gene3"</div><div class='input'>
@@ -237,9 +241,9 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 #&gt; gene3       4       8      12      16
 #&gt; </div><div class='input'>
 <span class='co'>## Row data (genomic ranges)</span>
-<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>GenomicRanges</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/GenomicRanges/topics/GRanges-class'>GRanges</a></span>(
+<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/GenomicRanges/topics/GRanges-class'>GRanges</a></span>(
     <span class='kw'>seqnames</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='st'>"1"</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>3L</span>),
-    <span class='kw'>ranges</span> <span class='kw'>=</span> <span class='kw pkg'>IRanges</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/IRanges/topics/IRanges-constructor'>IRanges</a></span>(
+    <span class='kw'>ranges</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/IRanges/topics/IRanges-constructor'>IRanges</a></span>(
         <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>201L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>100L</span>),
         <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>100L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>300L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>100L</span>)
     )
@@ -256,7 +260,7 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
 <span class='co'>## Column data</span>
-<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
+<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'>DataFrame</span>(
     <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='st'>"wildtype"</span>, <span class='st'>"knockout"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>),
     <span class='kw'>age</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='fl'>3L</span>, <span class='fl'>6L</span>), <span class='fl'>2L</span>),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='no'>samples</span>

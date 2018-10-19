@@ -169,7 +169,7 @@ returning the slots as a <code>list</code>.</p>
     <h2 class="hasAnchor" id="tibble"><a class="anchor" href="#tibble"></a>tibble</h2>
 
     
-    <p>Coerce an object to a <code>tibble</code> (<code>tbl_df</code>) data frame using either S3 or S4
+    <p>Coerce an object to a <a href='https://tibble.tidyverse.org/'>tibble</a> (<code>tbl_df</code>) data frame using either S3 or S4
 methods:</p><ul>
 <li><p>S3: <code><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble(x)</a></code> (or <code><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble()</a></code> alias).</p></li>
 <li><p>S4: <code>as(object, Class = "tbl_df")</code>.</p></li>
@@ -184,8 +184,8 @@ method doesn't support arguments, and therefore always attempts to move
 rownames automatically, if defined.</p>
 <p>Conversely, when coercing a <code>tibble</code> back to an S4 <code>DataFrame</code>, our
 <code>as(tbl_df, Class = "DataFrame")</code> method looks for the <code>rowname</code> column and
-will attempt to move it back to <code>rownames()</code> automatically, unless there are
-duplicates present.</p>
+will attempt to move it back to <code><a href='http://www.rdocumentation.org/packages/base/topics/colnames'>base::rownames()</a></code> automatically, unless
+there are duplicates present.</p>
     
     <h2 class="hasAnchor" id="description"><a class="anchor" href="#description"></a>Description</h2>
 
@@ -229,7 +229,7 @@ duplicates present.</p>
 <li><p><code><a href='http://www.rdocumentation.org/packages/methods/topics/canCoerce'>methods::canCoerce()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/methods/topics/showMethods'>methods::showMethods()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/utils/topics/methods'>utils::methods()</a></code>.</p></li>
-<li><p><code>as.list()</code>.</p></li>
+<li><p><code>S4Vectors::as.list()</code>.</p></li>
 </ul></div>
     
 

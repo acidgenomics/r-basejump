@@ -157,7 +157,7 @@
       <td><p><code>character</code>. Column names that should never be treated as
 sample-level metadata. Applies to objects where the columns don't map to
 samples (e.g. <code>SingleCellExperiment</code>), and we need to collapse the
-<code>colData()</code> dynamically.</p></td>
+<code>colData</code> dynamically.</p></td>
     </tr>
     </table>
     
@@ -167,10 +167,10 @@ samples (e.g. <code>SingleCellExperiment</code>), and we need to collapse the
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a complement to the standard <code>colData()</code> function, but improves
-support for accessing sample metadata for datasets where multiple items in
-the columns map to a single sample (e.g. cells for a single-cell RNA-seq
-experiment).</p>
+    <p>This is a complement to the standard <code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code>
+function, but improves support for accessing sample metadata for datasets
+where multiple items in the columns map to a single sample (e.g. cells for a
+single-cell RNA-seq experiment).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -216,16 +216,16 @@ experiment).</p>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample2    sample2           sample2
-#&gt; sample1    sample1           sample1</div><div class='input'>
+#&gt; sample1    sample1           sample1
+#&gt; sample2    sample2           sample2</div><div class='input'>
 <span class='co'>## Assignment support.</span>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"batch"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1L</span>
 <span class='co'>## `batch` column should be now defined.</span>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 3 columns
 #&gt;         sampleName     batch interestingGroups
 #&gt;           &lt;factor&gt; &lt;integer&gt;          &lt;factor&gt;
-#&gt; sample2    sample2         1           sample2
-#&gt; sample1    sample1         1           sample1</div></pre>
+#&gt; sample1    sample1         1           sample1
+#&gt; sample2    sample2         1           sample2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -118,6 +118,8 @@
 
     <pre class="usage"><span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
+<span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='no'>object</span>)
+
 <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -136,6 +138,10 @@
       <th>release</th>
       <td><p><code>scalar integer</code> or <code>NULL</code>. Release version (e.g. <code>90</code>). If
 set <code>NULL</code>, defaults to the most recent release available.</p></td>
+    </tr>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
       <th>file</th>
@@ -163,7 +169,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## makeGene2SymbolFromEnsembl ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.13.8 (2018-10-16).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.13.8 (2018-10-18).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
 #&gt; <span class='message'>  - Build: GRCh38</span>
 #&gt; <span class='message'>  - Release: 94</span>
 #&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
@@ -184,6 +190,28 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; 65686         LRG_998     CCND3.1
 #&gt; 65687         LRG_999       CIC.1
 #&gt; 65687 genes; 65687 symbols</div><div class='input'>
+<span class='co'>## makeTx2GeneFromEnsDb ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
+#&gt; <span class='message'>  - Build: GRCh37</span>
+#&gt; <span class='message'>  - Release: 75</span>
+#&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+#&gt; https://steinbaugh.com/basejump
+#&gt; citation("basejump")
+#&gt; DataFrame with 64102 rows and 2 columns
+#&gt;                geneID    geneName
+#&gt;           &lt;character&gt; &lt;character&gt;
+#&gt; 1     ENSG00000000003      TSPAN6
+#&gt; 2     ENSG00000000005        TNMD
+#&gt; 3     ENSG00000000419        DPM1
+#&gt; 4     ENSG00000000457       SCYL3
+#&gt; 5     ENSG00000000460    C1orf112
+#&gt; ...               ...         ...
+#&gt; 64098          LRG_94      LRG_94
+#&gt; 64099          LRG_96      LRG_96
+#&gt; 64100          LRG_97      LRG_97
+#&gt; 64101          LRG_98      LRG_98
+#&gt; 64102          LRG_99      LRG_99
+#&gt; 64102 genes; 64102 symbols</div><div class='input'>
 <span class='co'>## makeGene2SymbolFromGFF ====</span>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
