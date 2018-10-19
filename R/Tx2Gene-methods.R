@@ -1,3 +1,7 @@
+# FIXME Add documentation on where genome information must be stashed.
+
+
+
 #' @inherit Tx2Gene-class
 #'
 #' @note No attempt is made to arrange the rows by transcript identifier.
@@ -17,54 +21,50 @@ NULL
 
 
 
-Tx2Gene.data.frame <-  # nolint
+Tx2Gene.DataFrame <-  # nolint
     function(object) {
         assert_has_rows(object)
 
-        # Update legacy column names, if necessary.
-        colnames(object) <- sub(
-            pattern = "^enstxp|txID$",
-            replacement = "transcriptID",
-            x = colnames(object)
-        )
-        colnames(object) <- sub(
-            pattern = "^ensgene$",
-            replacement = "geneID",
-            x = colnames(object)
-        )
+        # Require genome annotation metadata to be defined.
+        metadata <- metadata(object)
+        mcols <- c("organism", "build", "release")
+        if (!all(mcols %in% names(metadata))) {
+            warning(paste0(
+                "Object does not contain genome information.\n",
+                "Requires: ", toString(mcols)
+            ))
+        }
+        metadata <- metadata[mcols]
+        metadata <- c(.prototypeMetadata, metadata)
 
-        # Check that required columns are present.
+        # Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
-            stop(paste0(
+            warning(paste0(
                 "Object does not contain transcript-to-gene mappings.\n",
-                "Column names: ", toString(colnames(object))
-            ), call. = FALSE)
+                "Requires: ", toString(cols)
+            ))
         }
 
-        out <- object %>%
-            select(!!!syms(c("transcriptID", "geneID"))) %>%
+        data <- object %>%
+            as_tibble(rownames = NULL) %>%
+            select(!!!syms(cols)) %>%
             # This is needed for processing GFF files.
             unique() %>%
             mutate_all(as.character) %>%
-            as("DataFrame") %>%
-            new(Class = "Tx2Gene", .)
-        metadata(out) <- .prototypeMetadata
-        out
-    }
+            as("DataFrame")
 
-
-
-Tx2Gene.DataFrame <-  # nolint
-    function(object) {
-        Tx2Gene(as(object, "data.frame"))
+        metadata(data) <- metadata
+        new(Class = "Tx2Gene", data)
     }
 
 
 
 Tx2Gene.GRanges <-  # nolint
     function(object) {
-        Tx2Gene(as(object, "DataFrame"))
+        data <- as(object, "DataFrame")
+        metadata(data) <- metadata(object)
+        Tx2Gene(data)
     }
 
 
@@ -72,21 +72,16 @@ Tx2Gene.GRanges <-  # nolint
 Tx2Gene.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
-        object %>%
-            rowData() %>%
-            Tx2Gene() %>%
-            set_rownames(rownames(object))
+        rownames <- rownames(object)
+        if (is(object, "RangedSummarizedExperiment")) {
+            data <- rowRanges(object)
+        } else {
+            data <- rowData(object)
+        }
+        out <- Tx2Gene(data)
+        rownames(out) <- rownames
+        out
     }
-
-
-
-#' @rdname Tx2Gene
-#' @export
-setMethod(
-    f = "Tx2Gene",
-    signature = signature("data.frame"),
-    definition = Tx2Gene.data.frame
-)
 
 
 

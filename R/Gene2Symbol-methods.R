@@ -1,3 +1,7 @@
+# FIXME Add documentation on where genome information must be stashed.
+
+
+
 #' @inherit Gene2Symbol-class
 #'
 #' @note
@@ -27,7 +31,7 @@ Gene2Symbol.DataFrame <-  # nolint
         metadata <- metadata(object)
         mcols <- c("organism", "build", "release")
         if (!all(mcols %in% names(metadata))) {
-            stop(paste0(
+            warning(paste0(
                 "Object does not contain genome information.\n",
                 "Requires: ", toString(mcols)
             ))
@@ -45,8 +49,8 @@ Gene2Symbol.DataFrame <-  # nolint
         }
 
         data <- object %>%
-            .[, cols, drop = FALSE] %>%
-            as_tibble(rownames = "rowname") %>%
+            as_tibble(rownames = NULL) %>%
+            select(!!!syms(cols)) %>%
             # This step is needed for handling raw GFF annotations.
             unique() %>%
             mutate_all(as.character) %>%
@@ -70,6 +74,7 @@ Gene2Symbol.GRanges <-  # nolint
 
 Gene2Symbol.SummarizedExperiment <-  # nolint
     function(object) {
+        validObject(object)
         rownames <- rownames(object)
         if (is(object, "RangedSummarizedExperiment")) {
             data <- rowRanges(object)
