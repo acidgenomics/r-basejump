@@ -380,42 +380,60 @@ kables <- function(...) {
 #' @export
 makeGene2symbolFromEnsembl <- function(...) {
     .Deprecated("makeGene2SymbolFromEnsembl")
-    makeGene2SymbolFromEnsembl(...)
+    do.call(
+        what = makeGene2SymbolFromEnsembl,
+        args = matchArgsToDoCall()
+    )
 }
 
 #' @rdname deprecated
 #' @export
 makeGene2symbolFromGFF <- function(...) {
     .Deprecated("makeGene2SymbolFromGFF")
-    makeGene2SymbolFromGFF(...)
+    do.call(
+        what = makeGene2SymbolFromGFF,
+        args = matchArgsToDoCall()
+    )
 }
 
 #' @rdname deprecated
 #' @export
 makeGene2symbolFromGTF <- function(...) {
     .Deprecated("makeGene2SymbolFromGTF")
-    makeGene2SymbolFromGTF(...)
+    do.call(
+        what = makeGene2SymbolFromGTF,
+        args = matchArgsToDoCall()
+    )
 }
 
 #' @rdname deprecated
 #' @export
 makeTx2geneFromEnsembl <- function(...) {
     .Deprecated("makeTx2GeneFromEnsembl")
-    makeTx2GeneFromEnsembl(...)
+    do.call(
+        what = makeTx2GeneFromEnsembl,
+        args = matchArgsToDoCall()
+    )
 }
 
 #' @rdname deprecated
 #' @export
 makeTx2geneFromGFF <- function(...) {
     .Deprecated("makeTx2GeneFromGFF")
-    makeTx2GeneFromGFF(...)
+    do.call(
+        what = makeTx2GeneFromGFF,
+        args = matchArgsToDoCall()
+    )
 }
 
 #' @rdname deprecated
 #' @export
 makeTx2geneFromGTF <- function(...) {
     .Deprecated("makeTx2GeneFromGTF")
-    makeTx2GeneFromGTF(...)
+    do.call(
+        what = makeTx2GeneFromGTF,
+        args = matchArgsToDoCall()
+    )
 }
 
 #' @rdname deprecated
