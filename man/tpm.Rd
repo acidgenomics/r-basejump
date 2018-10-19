@@ -6,14 +6,10 @@
 \alias{tpm,SummarizedExperiment-method}
 \title{Transcripts Per Million (TPM)}
 \usage{
-tpm(object, ...)
-
 \S4method{tpm}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{matrix}.

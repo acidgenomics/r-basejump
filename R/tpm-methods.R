@@ -1,7 +1,7 @@
-#' @rdname tpm
 #' @importFrom SingleCellExperiment tpm
+#' @aliases NULL
 #' @export
-tpm <- SingleCellExperiment::tpm
+SingleCellExperiment::tpm
 
 
 

@@ -1,7 +1,7 @@
-#' @rdname combine
 #' @importFrom BiocGenerics combine
+#' @aliases NULL
 #' @export
-combine <- BiocGenerics::combine
+BiocGenerics::combine
 
 
 

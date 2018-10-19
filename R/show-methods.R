@@ -1,12 +1,11 @@
-#' @rdname show
 #' @importFrom methods show
+#' @aliases NULL
 #' @export
-show <- methods::show
+methods::show
 
 
 
 #' @inherit methods::show
-#' @importFrom methods show
 #' @name show
 #'
 #' @examples

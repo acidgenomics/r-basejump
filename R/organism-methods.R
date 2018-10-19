@@ -1,3 +1,10 @@
+#' @importFrom BiocGenerics organism
+#' @aliases NULL
+#' @export
+BiocGenerics::organism
+
+
+
 #' Organism Accessor
 #'
 #' @name organism
@@ -5,21 +12,12 @@
 #'
 #' @inheritParams general
 #'
-#' @seealso
-#' - [BiocGenerics::organism()].
-#' - [detectOrganism()].
+#' @seealso [detectOrganism()].
 #'
 #' @examples
 #' data(rse_small)
 #' organism(rse_small)
 NULL
-
-
-
-#' @rdname organism
-#' @importFrom BiocGenerics organism
-#' @export
-organism <- BiocGenerics::organism
 
 
 
