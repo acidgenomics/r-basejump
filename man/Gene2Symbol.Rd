@@ -45,7 +45,7 @@ print(x)
 \seealso{
 \code{\link[=Gene2Symbol]{Gene2Symbol()}}, \link{makeGene2Symbol}.
 
-Other S4 Classes: \code{\link{EggNOG-class}},
+Other S4 classes: \code{\link{EggNOG-class}},
   \code{\link{Ensembl2Entrez-class}},
   \code{\link{HGNC2Ensembl-class}},
   \code{\link{MGI2Ensembl-class}},

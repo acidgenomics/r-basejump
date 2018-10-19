@@ -15,7 +15,7 @@
 #' **e**volutionary **g**enealogy of **g**enes: **N**on-supervised
 #' **O**rthologous **G**roups.
 #'
-#' @family S4 Classes
+#' @family S4 classes
 #' @author Michael Steinbaugh
 #' @inherit EggNOG
 #' @export
@@ -66,7 +66,7 @@ setValidity(
 #' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 #' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 #'
-#' @family S4 Classes
+#' @family S4 classes
 #' @author Michael Steinbaugh
 #' @inherit Ensembl2Entrez
 #' @export
@@ -98,7 +98,7 @@ setValidity(
 # Gene2Symbol ==================================================================
 #' Gene-to-Symbol Mappings
 #'
-#' @family S4 Classes
+#' @family S4 classes
 #' @author Michael Steinbaugh
 #' @inherit Gene2Symbol
 #' @export
@@ -130,7 +130,7 @@ setValidity(
 # HGNC2Ensembl =================================================================
 #' HGNC-to-Ensembl Gene Identifier Mappings
 #'
-#' @family S4 Classes
+#' @family S4 classes
 #' @author Michael Steinbaugh
 #' @inherit HGNC2Ensembl
 #' @export
@@ -163,7 +163,7 @@ setValidity(
 # MGI2Ensembl ==================================================================
 #' MGI-to-Ensembl Gene Identifier Mappings
 #'
-#' @family S4 Classes
+#' @family S4 classes
 #' @author Michael Steinbaugh
 #' @inherit MGI2Ensembl
 #' @export
@@ -192,7 +192,7 @@ setValidity(
 #' [PANTHER](http://www.pantherdb.org) gene ontology definitions. PANTHER stands
 #' for **P**rotein **AN**alysis **TH**rough **E**volutionary **R**elationships.
 #'
-#' @family S4 Classes
+#' @family S4 classes
 #' @author Michael Steinbaugh
 #' @inherit PANTHER
 #' @export
@@ -228,7 +228,7 @@ setValidity(
 # Tx2Gene ======================================================================
 #' Transcript-to-Gene Identifier Mappings
 #'
-#' @family S4 Classes
+#' @family S4 classes
 #' @author Michael Steinbaugh
 #' @inherit Tx2Gene
 #' @export
