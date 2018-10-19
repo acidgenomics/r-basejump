@@ -19,81 +19,67 @@ NULL
 
 
 
-Gene2Symbol.data.frame <-  # nolint
+Gene2Symbol.DataFrame <-  # nolint
     function(object) {
         assert_has_rows(object)
 
-        # Update legacy column names, if necessary.
-        colnames(object) <- sub(
-            pattern = "^ensgene$",
-            replacement = "geneID",
-            x = colnames(object)
-        )
-        colnames(object) <- sub(
-            pattern = "^symbol$",
-            replacement = "geneName",
-            x = colnames(object)
-        )
+        # Require genome annotation metadata to be defined.
+        metadata <- metadata(object)
+        mcols <- c("organism", "build", "release")
+        if (!all(mcols %in% names(metadata))) {
+            stop(paste0(
+                "Object does not contain genome information.\n",
+                "Requires: ", toString(mcols)
+            ))
+        }
+        metadata <- metadata[mcols]
+        metadata <- c(.prototypeMetadata, metadata)
 
+        # Check for required columns.
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
             stop(paste0(
                 "Object does not contain gene-to-symbol mappings.\n",
-                "Column names: ", toString(colnames(object))
-            ), call. = FALSE)
+                "Requires: ", toString(cols)
+            ))
         }
 
-        out <- object %>%
-            select(!!!syms(cols)) %>%
-            # This is needed for processing GFF files.
+        data <- object %>%
+            .[, cols, drop = FALSE] %>%
+            as_tibble(rownames = "rowname") %>%
+            # This step is needed for handling raw GFF annotations.
             unique() %>%
             mutate_all(as.character) %>%
             mutate(!!sym("geneName") := make.unique(!!sym("geneName"))) %>%
-            as("DataFrame") %>%
-             new(Class = "Gene2Symbol", .)
-        metadata(out) <- .prototypeMetadata
-        out
-    }
+            as("DataFrame")
 
-
-
-Gene2Symbol.DataFrame <-  # nolint
-    function(object) {
-        assert_is_subset(
-            x = c("geneID", "geneName"),
-            y = colnames(object)
-        )
-        data <- object[, c("geneID", "geneName"), drop = FALSE]
-        data <- as.data.frame(data)
-        Gene2Symbol(data)
+        metadata(data) <- metadata
+        new(Class = "Gene2Symbol", data)
     }
 
 
 
 Gene2Symbol.GRanges <-  # nolint
     function(object) {
-        Gene2Symbol(as(object, "DataFrame"))
+        data <- as(object, "DataFrame")
+        metadata(data) <- metadata(object)
+        Gene2Symbol(data)
     }
 
 
 
 Gene2Symbol.SummarizedExperiment <-  # nolint
     function(object) {
-        object %>%
-            rowData() %>%
-            Gene2Symbol() %>%
-            set_rownames(rownames(object))
+        rownames <- rownames(object)
+        if (is(object, "RangedSummarizedExperiment")) {
+            data <- rowRanges(object)
+        } else {
+            data <- rowData(object)
+        }
+        out <- Gene2Symbol(data)
+        rownames(out) <- rownames
+        out
     }
-
-
-
-#' @rdname Gene2Symbol
-#' @export
-setMethod(
-    f = "Gene2Symbol",
-    signature = signature("data.frame"),
-    definition = Gene2Symbol.data.frame
-)
 
 
 
