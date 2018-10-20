@@ -34,10 +34,9 @@ HGNC2Ensembl <- function() {
     data[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", data[["hgncID"]]))
     data <- data[order(data[["hgncID"]]), ]
     data <- as(data, "DataFrame")
+    metadata(data) <- .prototypeMetadata
 
-    out <- new(Class = "HGNC2Ensembl", data)
-    metadata(out) <- .prototypeMetadata
-    out
+    new(Class = "HGNC2Ensembl", data)
 }
 
 

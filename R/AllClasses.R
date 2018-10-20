@@ -43,22 +43,27 @@ setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
 setValidity(
     Class = "EggNOG",
     method = function(object) {
-        # assert_are_identical(
-        #     x = names(object),
-        #     y = c("cogFunctionalCategories", "annotations")
-        # )
-        # assert_are_identical(
-        #     x = colnames(object[["cogFunctionalCategories"]]),
-        #     y = c("letter", "description")
-        # )
-        # assert_are_identical(
-        #     x = colnames(object[["annotations"]]),
-        #     y = c(
-        #         "eggnogID",
-        #         "consensusFunctionalDescription",
-        #         "cogFunctionalCategory"
-        #     )
-        # )
+        assert_are_identical(
+            x = names(object),
+            y = c("cogFunctionalCategories", "annotations")
+        )
+        assert_are_identical(
+            x = colnames(object[["cogFunctionalCategories"]]),
+            y = c("letter", "description")
+        )
+        assert_are_identical(
+            x = colnames(object[["annotations"]]),
+            y = c(
+                "eggnogID",
+                "consensusFunctionalDescription",
+                "cogFunctionalCategory"
+            )
+        )
+        # Require simple metadata.
+        assert_are_identical(
+            x = names(metadata(object)),
+            y = names(.prototypeMetadata)
+        )
         TRUE
     }
 )
@@ -94,6 +99,11 @@ setValidity(
         )
         assert_has_no_duplicates(object[["geneID"]])
         assert_is_integer(object[["entrezID"]])
+        # Require genome metadata.
+        assert_is_subset(
+            x = genomeInfo,
+            y = names(metadata(object))
+        )
         TRUE
     }
 )
@@ -126,6 +136,11 @@ setValidity(
         # Assert that neither column has duplicates.
         invisible(lapply(object, assert_has_no_duplicates))
         stopifnot(all(complete.cases(object)))
+        # Require genome metadata.
+        assert_is_subset(
+            x = genomeInfo,
+            y = names(metadata(object))
+        )
         TRUE
     }
 )
@@ -158,6 +173,11 @@ setValidity(
         assert_are_identical(
             x = rownames(object),
             y = NULL
+        )
+        # Require simple metadata.
+        assert_are_identical(
+            x = names(metadata(object)),
+            y = names(.prototypeMetadata)
         )
         TRUE
     }
