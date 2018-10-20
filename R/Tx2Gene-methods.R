@@ -44,7 +44,7 @@ Tx2Gene.DataFrame <-  # nolint
             mutate_all(as.character) %>%
             as("DataFrame")
 
-        metadata(data) <- .genomeMetadata(object)
+        metadata(data) <- metadata(object)
         new(Class = "Tx2Gene", data)
     }
 

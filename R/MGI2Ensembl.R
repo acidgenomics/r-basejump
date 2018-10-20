@@ -34,10 +34,9 @@ MGI2Ensembl <- function() {
     colnames(data) <- c("mgiID", "geneID")
     data[["mgiID"]] <- as.integer(gsub("^MGI\\:", "", data[["mgiID"]]))
     data <- data[order(data[["mgiID"]]), , drop = FALSE]
+    metadata(data) <- .prototypeMetadata
 
-    out <- new(Class = "MGI2Ensembl", data)
-    metadata(out) <- .prototypeMetadata
-    out
+    new(Class = "MGI2Ensembl", data)
 }
 
 

@@ -1,15 +1,3 @@
-# FIXME Require genome annotation information for Gene2Symbol and Tx2Gene to
-# pass validity checks.
-
-
-
-.prototypeMetadata <- list(
-    version = packageVersion("basejump"),
-    date = Sys.Date()
-)
-
-
-
 # EggNOG =======================================================================
 #' EggNOG Database Annotations
 #'
@@ -59,11 +47,7 @@ setValidity(
                 "cogFunctionalCategory"
             )
         )
-        # Require simple metadata.
-        assert_are_identical(
-            x = names(metadata(object)),
-            y = names(.prototypeMetadata)
-        )
+        .assertHasPrototypeMetadata(object)
         TRUE
     }
 )
@@ -100,9 +84,10 @@ setValidity(
         assert_has_no_duplicates(object[["geneID"]])
         assert_is_integer(object[["entrezID"]])
         # Require genome metadata.
-        assert_is_subset(
-            x = genomeInfo,
-            y = names(metadata(object))
+        .assertHasGenomeInfo(object)
+        assert_are_identical(
+            x = metadata(object)[["level"]],
+            y = "genes"
         )
         TRUE
     }
@@ -137,9 +122,10 @@ setValidity(
         invisible(lapply(object, assert_has_no_duplicates))
         stopifnot(all(complete.cases(object)))
         # Require genome metadata.
-        assert_is_subset(
-            x = genomeInfo,
-            y = names(metadata(object))
+        .assertHasGenomeInfo(object)
+        assert_are_identical(
+            x = metadata(object)[["level"]],
+            y = "genes"
         )
         TRUE
     }
@@ -175,10 +161,7 @@ setValidity(
             y = NULL
         )
         # Require simple metadata.
-        assert_are_identical(
-            x = names(metadata(object)),
-            y = names(.prototypeMetadata)
-        )
+        .assertHasPrototypeMetadata(object)
         TRUE
     }
 )
@@ -205,6 +188,12 @@ setValidity(
             x = colnames(object),
             y = c("mgiID", "geneID")
         )
+        assert_are_identical(
+            x = rownames(object),
+            y = NULL
+        )
+        # Require simple metadata.
+        .assertHasPrototypeMetadata(object)
         TRUE
     }
 )
@@ -244,6 +233,11 @@ setValidity(
                 "pantherSubfamilyName"
             )
         )
+        .assertHasPrototypeMetadata(object)
+        assert_is_subset(
+            x = c("organism", "release"),
+            y = names(metadata(object))
+        )
         TRUE
     }
 )
@@ -276,6 +270,37 @@ setValidity(
         # Assert that there are no duplicate transcripts.
         assert_has_no_duplicates(object[["transcriptID"]])
         stopifnot(all(complete.cases(object)))
+        # Require genome metadata.
+        .assertHasGenomeInfo(object)
+        assert_are_identical(
+            x = metadata(object)[["level"]],
+            y = "transcripts"
+        )
         TRUE
     }
 )
+
+
+
+# Internal =====================================================================
+.prototypeMetadata <- list(
+    version = packageVersion("basejump"),
+    date = Sys.Date()
+)
+
+.assertHasPrototypeMetadata <- function(object) {
+    assert_is_subset(
+        x = names(.prototypeMetadata),
+        y = names(metadata(object))
+    )
+}
+
+.assertHasGenomeInfo <- function(object) {
+    if (!all(genomeInfo %in% names(metadata(object)))) {
+        stop(paste0(
+            "Object does not contain genome information.\n",
+            "Requires: ", toString(genomeInfo)
+        ))
+    }
+    .assertHasPrototypeMetadata(object)
+}
