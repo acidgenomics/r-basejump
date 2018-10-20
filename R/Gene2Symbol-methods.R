@@ -1,7 +1,3 @@
-# FIXME Add documentation on where genome information must be stashed.
-
-
-
 #' @inherit Gene2Symbol-class
 #'
 #' @note
