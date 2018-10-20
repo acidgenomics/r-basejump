@@ -95,13 +95,10 @@ EggNOG <- function() {
         as("DataFrame")
 
     # Return -------------------------------------------------------------------
-    out <- new(
-        Class = "EggNOG",
-        List(
-            cogFunctionalCategories = categories,
-            annotations = annotations
-        )
+    data <- List(
+        cogFunctionalCategories = categories,
+        annotations = annotations
     )
-    metadata(out) <- .prototypeMetadata
-    out
+    metadata(data) <- .prototypeMetadata
+    new(Class = "EggNOG", data)
 }
