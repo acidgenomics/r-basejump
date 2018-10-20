@@ -10,29 +10,31 @@
 \title{Make Genomic Ranges}
 \usage{
 makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
-  build = NULL, release = NULL)
+  genomeBuild = NULL, release = NULL)
 
 makeGRangesFromEnsDb(object, level = c("genes", "transcripts"))
 
 makeGRangesFromGFF(file, level = c("genes", "transcripts"))
 
-annotable(organism, level = c("genes", "transcripts"), build = NULL,
-  release = NULL)
+annotable(organism, level = c("genes", "transcripts"),
+  genomeBuild = NULL, release = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{level}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
-"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
-
-\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
-set \code{NULL}, defaults to the most recent release available.}
+\item{genomeBuild}{\code{string}. Genome build assembly name (e.g. "\code{GRCh38}"). If
+set \code{NULL}, defaults to the most recent build available when importing from
+Ensembl.}
 
 \item{object}{Object.}
 
 \item{file}{\code{string}. File path.}
+
+\item{ensemblRelease, release}{\code{scalar integer}. Ensembl release version (e.g.
+\code{90}). If set \code{NULL}, defaults to the most recent release available when
+importing from Ensembl.}
 }
 \value{
 \code{GRanges}.
