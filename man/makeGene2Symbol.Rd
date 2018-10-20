@@ -8,7 +8,8 @@
 \alias{makeGene2SymbolFromGTF}
 \title{Make Gene-to-Symbol Mappings}
 \usage{
-makeGene2SymbolFromEnsembl(organism, build = NULL, release = NULL)
+makeGene2SymbolFromEnsembl(organism, genomeBuild = NULL,
+  release = NULL)
 
 makeGene2SymbolFromEnsDb(object)
 
@@ -17,11 +18,12 @@ makeGene2SymbolFromGFF(file)
 \arguments{
 \item{organism}{\code{string}. Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
-"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
+\item{genomeBuild}{\code{string} or \code{NULL}. Ensembl genome build assembly name
+(e.g. \code{"GRCh38"}). If set \code{NULL}, defaults to the most recent build
+available. Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
 
-\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
-set \code{NULL}, defaults to the most recent release available.}
+\item{release}{\code{scalar integer} or \code{NULL}. Ensembl release version (e.g.
+\code{90}). If set \code{NULL}, defaults to the most recent release available.}
 
 \item{object}{Object.}
 

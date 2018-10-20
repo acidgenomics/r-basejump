@@ -28,6 +28,9 @@
 #' [EnsDb.Hsapiens.v75]: https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75
 #'
 #' @inheritParams general
+#' @param genomeBuild `string` or `NULL`. Ensembl genome build assembly name
+#'   (e.g. `"GRCh38"`). If set `NULL`, defaults to the most recent build
+#'   available. Note: don't pass in UCSC build IDs (e.g. `"hg38"`).
 #' @param release `scalar integer` or `NULL`. Ensembl release version (e.g.
 #'   `90`). If set `NULL`, defaults to the most recent release available.
 #'

@@ -1,7 +1,3 @@
-# FIXME Add EnsDb function.
-
-
-
 #' Make Gene-to-Symbol Mappings
 #'
 #' @section GFF/GTF file:
@@ -12,7 +8,6 @@
 #' @include makeGRanges.R
 #'
 #' @inheritParams makeGRanges
-#' @inheritParams gene2symbol
 #'
 #' @seealso [makeGRanges].
 #'
@@ -109,6 +104,12 @@ makeGene2SymbolFromGFF <- function(file) {
         }
     }
 
+    data <- as(data, "DataFrame")
+    metadata(data) <- list(
+        organism = detectOrganism(data[["geneID"]]),
+        genomeBuild = character(),
+        ensemblRelease = integer()
+    )
     Gene2Symbol(data)
 }
 

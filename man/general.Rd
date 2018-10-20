@@ -47,10 +47,6 @@ plots containing many samples.}
 
 \item{genes}{\code{character}. Gene identifiers.}
 
-\item{genomeBuild}{\code{string}. Genome build assembly name (e.g. "\code{GRCh38}"). If
-set \code{NULL}, defaults to the most recent build available when importing from
-Ensembl.}
-
 \item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
