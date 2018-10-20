@@ -47,7 +47,7 @@ Gene2Symbol.DataFrame <-  # nolint
             mutate(!!sym("geneName") := make.unique(!!sym("geneName"))) %>%
             as("DataFrame")
 
-        metadata(data) <- .genomeMetadata(object)
+        metadata(data) <- metadata(object)
         new(Class = "Gene2Symbol", data)
     }
 

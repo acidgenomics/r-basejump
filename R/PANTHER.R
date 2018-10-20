@@ -246,9 +246,9 @@ PANTHER <- function(  # nolint
         as("DataFrame") %>%
         set_rownames(.[["geneID"]])
 
-    out <- new("PANTHER", data)
-    metadata(out) <- .prototypeMetadata
-    metadata(out)[["organism"]] <- organism
-    metadata(out)[["release"]] <- release
-    out
+    metadata(data) <- .prototypeMetadata
+    metadata(data)[["organism"]] <- organism
+    metadata(data)[["release"]] <- release
+
+    new("PANTHER", data)
 }

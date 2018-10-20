@@ -71,22 +71,6 @@ NULL
 
 
 
-# Prototype metadata containing genome annotation information.
-.genomeMetadata <- function(object) {
-    metadata <- metadata(object)
-    if (!all(genomeInfo %in% names(metadata))) {
-        warning(paste0(
-            "Object does not contain genome information.\n",
-            "Requires: ", toString(genomeInfo)
-        ))
-    }
-    metadata <- metadata[genomeInfo]
-    metadata <- c(.prototypeMetadata, metadata)
-    metadata
-}
-
-
-
 #' Broad Class Definitions
 #'
 #' @author Rory Kirchner, Michael Steinbaugh
