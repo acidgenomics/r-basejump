@@ -1,5 +1,5 @@
 # Gene-level RangedSummarizedExperiment example
-# 2018-10-18
+# 2018-10-20
 
 # Restrict to 1 MB.
 # Use `pryr::object_size()` instead of `utils::object.size()`.
