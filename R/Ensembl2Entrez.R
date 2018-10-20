@@ -17,6 +17,7 @@ NULL
 
 Ensembl2Entrez.SummarizedExperiment <-  # nolint
     function(object) {
+        object <- as.SummarizedExperiment(object)
         rowData <- rowData(object)
         assert_is_subset(
             x = c("entrezID", "geneID"),
@@ -42,6 +43,7 @@ Ensembl2Entrez.SummarizedExperiment <-  # nolint
             entrezID = vec,
             row.names = names(vec)
         )
+        metadata(data) <- metadata(rowData)
         new(Class = "Ensembl2Entrez", data)
     }
 
