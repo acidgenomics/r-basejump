@@ -86,7 +86,7 @@
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom SummarizedExperiment assay assayNames assays assays<- colData
-#'   colData<- rowData rowRanges SummarizedExperiment
+#'   colData<- rowData rowData<- rowRanges rowRanges<- SummarizedExperiment
 #' @importFrom tibble as_tibble column_to_rownames tibble
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
