@@ -36,6 +36,7 @@
 #' @param headerLevel `scalar integer`. Markdown header level (1-7).
 #' @param interestingGroups `character`. Groups of interest.
 #' @param legend `boolean`. Show plot legend.
+#' @param level `string`. Return ranges as "`genes`" or "`transcripts`".
 #' @param limit `scalar numeric`. Threshold to denote on the plot, using a
 #'   dashed line.
 #' @param minCounts `scalar integer`. Minimum number of counts per gene in the
