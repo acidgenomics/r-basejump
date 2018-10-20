@@ -499,7 +499,7 @@ makeGRangesFromEnsDb <- function(object, level) {
     metadata <- list(
         organism = organism(object),
         genomeBuild = genomeBuild,
-        ensemblRelease = ensemblVersion(object),
+        ensemblRelease = as.integer(ensemblVersion(object)),
         ensembldb = metadata(object),
         level = level,
         version = packageVersion("basejump"),
