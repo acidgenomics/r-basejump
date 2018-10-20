@@ -763,12 +763,16 @@ makeGRangesFromGFF <- function(
     }
 
     # Metadata -----------------------------------------------------------------
+    organism <- tryCatch(
+        expr = organism(gr),
+        error = function(e) character()
+    )
     metadata(gr) <- c(
         .prototypeMetadata,
         list(
             file = file,
             level = level,
-            organism = organism(gr),
+            organism = organism,
             genomeBuild = character(),
             ensemblRelease = integer()
         )

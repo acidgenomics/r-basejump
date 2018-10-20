@@ -287,10 +287,13 @@ setValidity(
 
 
 
+# FIXME Attempt to detect using `detectOrganism` on geneID column.
+# Add tryCatch to return empty on failure.
+
 .genomeMetadata <- function(object) {
     metadata <- metadata(object)
     organism <- metadata[["organism"]]
-    assert_is_a_string(organism)
+    assert_is_character(organism)
     genomeBuild <- metadata[["genomeBuild"]]
     # Allowing empty character.
     assert_is_character(genomeBuild)

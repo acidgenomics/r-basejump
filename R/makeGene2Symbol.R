@@ -36,6 +36,7 @@ NULL
 
 
 
+# Ensembl ======================================================================
 #' @rdname makeGene2Symbol
 #' @export
 makeGene2SymbolFromEnsembl <-
@@ -65,6 +66,23 @@ makeGene2SymbolFromEnsDb <-
 f <- formals(makeGRangesFromEnsDb)
 f <- f[setdiff(names(f), "level")]
 formals(makeGene2SymbolFromEnsDb) <- f
+
+
+
+# GTF/GFF ======================================================================
+.genomeMetadataFromGFF <- function(object) {
+    assert_is_all_of(object, "DataFrame")
+    organism <- tryCatch(
+        expr = detectOrganism(object[["geneID"]]),
+        error = function(e) character()
+    )
+    metadata(object) <- list(
+        organism = organism,
+        genomeBuild = character(),
+        ensemblRelease = integer()
+    )
+    object
+}
 
 
 
@@ -105,11 +123,7 @@ makeGene2SymbolFromGFF <- function(file) {
     }
 
     data <- as(data, "DataFrame")
-    metadata(data) <- list(
-        organism = detectOrganism(data[["geneID"]]),
-        genomeBuild = character(),
-        ensemblRelease = integer()
-    )
+    metadata(data) <- .genomeMetadataFromGFF(data)
     Gene2Symbol(data)
 }
 
