@@ -40,7 +40,7 @@ env:
 warnings_are_errors: false
 
 # Temporarily enable when caching Bioconductor packages.
-# script: true
+script: true
 
 r_packages:
   - covr
