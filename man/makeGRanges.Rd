@@ -28,13 +28,12 @@ annotable(organism, level = c("genes", "transcripts"),
 set \code{NULL}, defaults to the most recent build available when importing from
 Ensembl.}
 
+\item{release}{\code{scalar integer} or \code{NULL}. Ensembl release version (e.g.
+\code{90}). If set \code{NULL}, defaults to the most recent release available.}
+
 \item{object}{Object.}
 
 \item{file}{\code{string}. File path.}
-
-\item{ensemblRelease, release}{\code{scalar integer}. Ensembl release version (e.g.
-\code{90}). If set \code{NULL}, defaults to the most recent release available when
-importing from Ensembl.}
 }
 \value{
 \code{GRanges}.

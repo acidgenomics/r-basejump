@@ -28,9 +28,8 @@
 #' [EnsDb.Hsapiens.v75]: https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75
 #'
 #' @inheritParams general
-#' @param ensemblRelease,release `scalar integer`. Ensembl release version (e.g.
-#'   `90`). If set `NULL`, defaults to the most recent release available when
-#'   importing from Ensembl.
+#' @param release `scalar integer` or `NULL`. Ensembl release version (e.g.
+#'   `90`). If set `NULL`, defaults to the most recent release available.
 #'
 #' @return `GRanges`.
 #'
