@@ -28,11 +28,12 @@
 #' [EnsDb.Hsapiens.v75]: https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75
 #'
 #' @inheritParams general
-#' @param level `string`. Return ranges as "`genes`" or "`transcripts`".
-#' @param build `string` or `NULL`. Genome build assembly name (e.g.
-#'   "`GRCh38`"). If set `NULL`, defaults to the most recent build available.
-#' @param release `scalar integer` or `NULL`. Release version (e.g. `90`). If
-#'   set `NULL`, defaults to the most recent release available.
+#' @param genomeBuild `string`. Genome build assembly name (e.g. "`GRCh38`"). If
+#'   set `NULL`, defaults to the most recent build available when importing from
+#'   Ensembl.
+#' @param ensemblRelease,release `scalar integer`. Ensembl release version (e.g.
+#'   `90`). If set `NULL`, defaults to the most recent release available when
+#'   importing from Ensembl.
 #'
 #' @return `GRanges`.
 #'
@@ -71,6 +72,7 @@ NULL
 
 
 
+# Broad class ==================================================================
 #' Broad Class Definitions
 #'
 #' @author Rory Kirchner, Michael Steinbaugh
@@ -200,6 +202,7 @@ NULL
 
 
 
+# AnnotationHub ================================================================
 #' Connect to AnnotationHub
 #'
 #' On a fresh install this will print a txProgressBar to the console. We're
@@ -252,38 +255,38 @@ NULL
 #' @examples .getAnnotationHubID("Homo sapiens")
 .getAnnotationHubID <- function(
     organism,
-    build = NULL,
-    release = NULL,
+    genomeBuild = NULL,
+    ensemblRelease = NULL,
     ah = NULL
 ) {
     userAttached <- .packages()
     assert_is_a_string(organism)
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
-    assertIsAStringOrNULL(build)
+    assertIsAStringOrNULL(genomeBuild)
     # Check for accidental UCSC input and stop, informing user.
-    if (is_a_string(build)) {
+    if (is_a_string(genomeBuild)) {
         ucscCheck <- tryCatch(
-            expr = convertUCSCBuildToEnsembl(build),
+            expr = convertUCSCBuildToEnsembl(genomeBuild),
             error = function(e) NULL
         )
         if (has_length(ucscCheck)) {
             stop(paste(
-                "UCSC build ID detected.",
+                "UCSC genome build ID detected.",
                 "Use Ensembl ID instead.\n",
                 printString(ucscCheck)
             ))
         }
     }
-    assertIsAnImplicitIntegerOrNULL(release)
-    if (isAnImplicitInteger(release)) {
+    assertIsAnImplicitIntegerOrNULL(ensemblRelease)
+    if (isAnImplicitInteger(ensemblRelease)) {
         # Note that ensembldb currently only supports >= 87.
-        assert_all_are_positive(release)
-        release <- as.integer(release)
+        assert_all_are_positive(ensemblRelease)
+        ensemblRelease <- as.integer(ensemblRelease)
     }
 
-    # Error on request of unsupported legacy release.
-    if (!is.null(release) && release < 87L) {
+    # Error on request of unsupported legacy Ensembl release.
+    if (!is.null(ensemblRelease) && ensemblRelease < 87L) {
         stop(paste(
             "ensembldb currently only supports Ensembl releases >= 87."
         ))
@@ -309,8 +312,8 @@ NULL
         pattern = c(
             "Ensembl",
             organism,
-            build,
-            release,
+            genomeBuild,
+            ensemblRelease,
             rdataclass
         ),
         ignore.case = TRUE
@@ -329,20 +332,20 @@ NULL
         # nocov end
     }
 
-    # Ensure build matches, if specified.
-    if (!is.null(build)) {
+    # Ensure genome build matches, if specified.
+    if (!is.null(genomeBuild)) {
         assert_is_subset("genome", colnames(mcols))
-        mcols <- mcols[mcols[["genome"]] %in% build, , drop = FALSE]
+        mcols <- mcols[mcols[["genome"]] %in% genomeBuild, , drop = FALSE]
     }
 
-    # Ensure release matches, or pick the latest one.
-    if (!is.null(release)) {
+    # Ensure Ensembl release matches, or pick the latest one.
+    if (!is.null(ensemblRelease)) {
         assert_is_subset("title", colnames(mcols))
         mcols <- mcols[
-            grepl(paste("Ensembl", release), mcols[["title"]]),
+            grepl(paste("Ensembl", ensemblRelease), mcols[["title"]]),
             ,
             drop = FALSE
-            ]
+        ]
         assert_is_of_length(nrow(mcols), 1L)
     }
 
@@ -353,8 +356,8 @@ NULL
                 packageVersion("AnnotationHub"), "."
             ),
             paste(li, "Organism:", deparse(organism)),
-            paste(li, "Build:", deparse(build)),
-            paste(li, "Release:", deparse(release)),
+            paste(li, "Build:", deparse(genomeBuild)),
+            paste(li, "Release:", deparse(ensemblRelease)),
             sep = "\n"
         ))
     }
@@ -370,6 +373,7 @@ NULL
 
 
 
+# Ensembl ======================================================================
 #' Get EnsDb from AnnotationHub
 #' @noRd
 #' @examples .getEnsDbFromAnnotationHub("AH64923")
@@ -435,7 +439,7 @@ NULL
 makeGRangesFromEnsembl <- function(
     organism,
     level,
-    build = NULL,
+    genomeBuild = NULL,
     release = NULL
 ) {
     message("Making GRanges from Ensembl.")
@@ -444,7 +448,7 @@ makeGRangesFromEnsembl <- function(
     if (
         identical(tolower(organism), "homo sapiens") &&
         (
-            identical(tolower(as.character(build)), "grch37") ||
+            identical(tolower(as.character(genomeBuild)), "grch37") ||
             identical(release, 75L)
         )
     ) {
@@ -453,8 +457,8 @@ makeGRangesFromEnsembl <- function(
     } else {
         id <- .getAnnotationHubID(
             organism = organism,
-            build = build,
-            release = release
+            genomeBuild = genomeBuild,
+            ensemblRelease = release
         )
         edb <- .getEnsDbFromAnnotationHub(id = id)
     }
@@ -495,15 +499,16 @@ makeGRangesFromEnsDb <- function(object, level) {
         pull("value")
     assert_is_a_string(genomeBuild)
 
-    # Ready to create our metadata list to stash inside the GRanges.
-    metadata <- list(
-        organism = organism(object),
-        genomeBuild = genomeBuild,
-        ensemblRelease = as.integer(ensemblVersion(object)),
-        ensembldb = metadata(object),
-        level = level,
-        version = packageVersion("basejump"),
-        date = Sys.Date()
+    # Define the metadata to return.
+    metadata <- c(
+        .prototypeMetadata,
+        list(
+            organism = organism(object),
+            genomeBuild = genomeBuild,
+            ensemblRelease = as.integer(ensemblVersion(object)),
+            ensembldb = metadata(object),
+            level = level
+        )
     )
 
     message(paste(
@@ -553,13 +558,47 @@ makeGRangesFromEnsDb <- function(object, level) {
         gr <- tx
     }
 
-    # Always stash the metadata.
     metadata(gr) <- metadata
-
     .forceDetach(keep = userAttached)
     .makeGRanges(gr)
 }
 formals(makeGRangesFromEnsDb)[["level"]] <- level
+
+
+
+# GTF/GFF ======================================================================
+# Report the source of the gene annotations.
+.gffSource <- function(gff) {
+    assert_is_subset("source", colnames(mcols(gff)))
+    if (
+        any(grepl("FlyBase", mcols(gff)[["source"]]))
+    ) {
+        "FlyBase"  # nocov
+    } else if (
+        any(grepl("WormBase", mcols(gff)[["source"]]))
+    ) {
+        "WormBase"  # nocov
+    } else if (
+        any(grepl("Ensembl", mcols(gff)[["source"]], ignore.case = TRUE))
+    ) {
+        "Ensembl"
+    } else {
+        stop("Unsupported GFF source.")  # nocov
+    }
+}
+
+
+
+# Determine if GFF or GTF.
+.gffType <- function(gff) {
+    stopifnot(is(gff, "GRanges"))
+    gff <- camel(gff)
+    if (all(c("id", "name") %in% colnames(mcols(gff)))) {
+        "GFF"
+    } else {
+        "GTF"
+    }
+}
 
 
 
@@ -582,16 +621,7 @@ makeGRangesFromGFF <- function(
     # Note that `import()` has assert checks for file (see below).
     level <- match.arg(level)
 
-    # Stash the formals used into a metadata list, which we'll slot into
-    # our GRanges at the end of the call.
-    metadata <- list(
-        file = file,
-        level = level,
-        version = packageVersion("basejump"),
-        date = Sys.Date()
-    )
-
-    # Read GFF -----------------------------------------------------------------
+    # Import -------------------------------------------------------------------
     file <- localOrRemoteFile(file)
     gff <- import(file)
     assert_is_all_of(gff, "GRanges")
@@ -733,14 +763,24 @@ makeGRangesFromGFF <- function(
         }
     }
 
-    # Stash our metadata into the GRanges.
-    metadata(gr) <- metadata
+    # Metadata -----------------------------------------------------------------
+    metadata(gr) <- c(
+        .prototypeMetadata,
+        list(
+            file = file,
+            level = level,
+            organism = organism(gr),
+            genomeBuild = character(),
+            ensemblRelease = integer()
+        )
+    )
 
     .makeGRanges(gr)
 }
 
 
 
+# Standardize return ===========================================================
 .makeGRanges <- function(object) {
     assert_is_all_of(object, "GRanges")
     assert_has_names(object)
@@ -835,38 +875,7 @@ makeGRangesFromGFF <- function(
 
 
 
-# Report the source of the gene annotations.
-.gffSource <- function(gff) {
-    assert_is_subset("source", colnames(mcols(gff)))
-    if (any(grepl("FlyBase", mcols(gff)[["source"]]))) {
-        "FlyBase"  # nocov
-    } else if (any(grepl("WormBase", mcols(gff)[["source"]]))) {
-        "WormBase"  # nocov
-    } else if (any(grepl(
-        "ensembl", mcols(gff)[["source"]], ignore.case = TRUE
-    ))) {
-        "Ensembl"
-    } else {
-        stop("Unsupported GFF source.")  # nocov
-    }
-}
-
-
-
-# Determine if GFF or GTF.
-.gffType <- function(gff) {
-    stopifnot(is(gff, "GRanges"))
-    gff <- camel(gff)
-    if (all(c("id", "name") %in% colnames(mcols(gff)))) {
-        "GFF"
-    } else {
-        "GTF"
-    }
-}
-
-
-
-# Legacy =======================================================================
+# Legacy functions =============================================================
 #' @describeIn makeGRanges
 #' [annotable()] is a legacy convenience function that calls
 #' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
