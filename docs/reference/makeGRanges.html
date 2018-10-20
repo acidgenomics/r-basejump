@@ -117,35 +117,36 @@
     </div>
 
     <pre class="usage"><span class='fu'>makeGRangesFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
-  <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>makeGRangesFromEnsDb</span>(<span class='no'>object</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>))
 
 <span class='fu'>makeGRangesFromGFF</span>(<span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>))
 
-<span class='fu'>annotable</span>(<span class='no'>organism</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>), <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>annotable</span>(<span class='no'>organism</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
+  <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>organism</th>
-      <td><p><code>string</code>. Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+      <td><p><code>string</code>. Full Latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
     </tr>
     <tr>
       <th>level</th>
       <td><p><code>string</code>. Return ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
     </tr>
     <tr>
-      <th>build</th>
-      <td><p><code>string</code> or <code>NULL</code>. Genome build assembly name (e.g.
-"<code>GRCh38</code>"). If set <code>NULL</code>, defaults to the most recent build available.</p></td>
+      <th>genomeBuild</th>
+      <td><p><code>string</code> or <code>NULL</code>. Ensembl genome build assembly name
+(e.g. <code>"GRCh38"</code>). If set <code>NULL</code>, defaults to the most recent build
+available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></td>
     </tr>
     <tr>
       <th>release</th>
-      <td><p><code>scalar integer</code> or <code>NULL</code>. Release version (e.g. <code>90</code>). If
-set <code>NULL</code>, defaults to the most recent release available.</p></td>
+      <td><p><code>scalar integer</code> or <code>NULL</code>. Ensembl release version (e.g.
+<code>90</code>). If set <code>NULL</code>, defaults to the most recent release available.</p></td>
     </tr>
     <tr>
       <th>object</th>
@@ -229,13 +230,13 @@ GENCODE or Ensembl.</p>
     <pre class="examples"><div class='input'><span class='co'>## makeGRangesFromEnsembl ====</span>
 <span class='co'>## Genes</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.13.8 (2018-10-18).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
-#&gt; <span class='message'>  - Build: GRCh38</span>
-#&gt; <span class='message'>  - Release: 94</span>
+#&gt; <span class='message'>  - Genome Build: GRCh38</span>
+#&gt; <span class='message'>  - Ensembl Release: 94</span>
 #&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 65687 ranges and 7 metadata columns"</div><div class='input'>
 <span class='co'>## Transcripts</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.13.8 (2018-10-18).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
-#&gt; <span class='message'>  - Build: GRCh38</span>
-#&gt; <span class='message'>  - Release: 94</span>
+#&gt; <span class='message'>  - Genome Build: GRCh38</span>
+#&gt; <span class='message'>  - Ensembl Release: 94</span>
 #&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 228432 ranges and 13 metadata columns"</div><div class='input'>
 <span class='co'>## makeGRangesFromEnsDb ====</span>
 <span class='fu'>library</span>(<span class='no'>EnsDb.Hsapiens.v75</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: ensembldb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicFeatures</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: AnnotationDbi</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
@@ -246,8 +247,8 @@ GENCODE or Ensembl.</p>
 #&gt; <span class='message'>Attaching package: 'ensembldb'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:stats':</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    filter</span></div><div class='input'><span class='no'>grch37</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsDb</span>(<span class='no'>EnsDb.Hsapiens.v75</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
-#&gt; <span class='message'>  - Build: GRCh37</span>
-#&gt; <span class='message'>  - Release: 75</span>
+#&gt; <span class='message'>  - Genome Build: GRCh37</span>
+#&gt; <span class='message'>  - Ensembl Release: 75</span>
 #&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>grch37</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 64102 ranges and 6 metadata columns"</div><div class='input'>
 <span class='co'>## makeGRangesFromGFF ====</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
