@@ -98,6 +98,12 @@ makeTx2GeneFromGFF <- function(file) {
         )
     }
 
+    data <- as(data, "DataFrame")
+    metadata(data) <- list(
+        organism = detectOrganism(data[["geneID"]]),
+        genomeBuild = character(),
+        ensemblRelease = integer()
+    )
     Tx2Gene(data)
 }
 

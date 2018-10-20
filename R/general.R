@@ -33,9 +33,6 @@
 #'   plots containing many samples.
 #' @param gene2symbol `Gene2Symbol`. Gene-to-symbol mappings.
 #' @param genes `character`. Gene identifiers.
-#' @param genomeBuild `string`. Genome build assembly name (e.g. "`GRCh38`"). If
-#'   set `NULL`, defaults to the most recent build available when importing from
-#'   Ensembl.
 #' @param headerLevel `scalar integer`. Markdown header level (1-7).
 #' @param interestingGroups `character`. Groups of interest.
 #' @param legend `boolean`. Show plot legend.
