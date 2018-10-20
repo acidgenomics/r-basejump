@@ -276,6 +276,8 @@ setValidity(
     date = Sys.Date()
 )
 
+
+
 .assertHasPrototypeMetadata <- function(object) {
     assert_is_subset(
         x = names(.prototypeMetadata),
@@ -290,9 +292,11 @@ setValidity(
     organism <- metadata[["organism"]]
     assert_is_a_string(organism)
     genomeBuild <- metadata[["genomeBuild"]]
-    assert_is_a_string(genomeBuild)
+    # Allowing empty character.
+    assert_is_character(genomeBuild)
     ensemblRelease <- metadata[["ensemblRelease"]]
-    assert_is_an_integer(ensemblRelease)
+    # Allowing empty integer.
+    assert_is_integer(ensemblRelease)
     metadata <- list(
         organism = organism,
         genomeBuild = genomeBuild,
@@ -300,6 +304,8 @@ setValidity(
     )
     c(.prototypeMetadata, metadata)
 }
+
+
 
 .assertHasGenomeMetadata <- function(object) {
     if (!all(genomeInfo %in% names(metadata(object)))) {
