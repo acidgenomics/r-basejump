@@ -188,13 +188,18 @@ as.SummarizedExperiment <-  # nolint
 
 
 
+# Note that our internal method keeps track of row annotation metadata.
 as.SummarizedExperiment.default <-  # nolint
     function(x) {
     assert_is_all_of(x, "SummarizedExperiment")
     if (is(x, "RangedSummarizedExperiment")) {
+        rowMeta <- metadata(rowRanges(x))
         x <- as(x, "RangedSummarizedExperiment")
+    } else {
+        rowMeta <- metadata(rowData(x))
     }
     x <- as(x, "SummarizedExperiment")
+    metadata(rowData(x)) <- rowMeta
     x
 }
 
