@@ -61,7 +61,7 @@ count matrix.}
 
 \item{n}{\code{scalar integer}. Number to include.}
 
-\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{perMillion}{\code{boolean}. Display as counts per million.}
 

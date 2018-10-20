@@ -38,7 +38,7 @@ rowData <- tx2gene %>%
         ),
         ,
         drop = FALSE
-        ]
+    ]
 se <- SummarizedExperiment(
     assays = list(counts = counts),
     rowData = rowData,

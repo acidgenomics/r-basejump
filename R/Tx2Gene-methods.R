@@ -24,16 +24,14 @@ NULL
 Tx2Gene.DataFrame <-  # nolint
     function(object) {
         assert_has_rows(object)
-
         # Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
-            warning(paste0(
+            stop(paste0(
                 "Object does not contain transcript-to-gene mappings.\n",
                 "Requires: ", toString(cols)
             ))
         }
-
         data <- object %>%
             # Perform this first, otherwise can get a non atomic error due to
             # GRanges to DataFrame coercion containing "X" ranges column.
@@ -43,8 +41,7 @@ Tx2Gene.DataFrame <-  # nolint
             unique() %>%
             mutate_all(as.character) %>%
             as("DataFrame")
-
-        metadata(data) <- metadata(object)
+        metadata(data) <- .genomeMetadata(object)
         new(Class = "Tx2Gene", data)
     }
 
