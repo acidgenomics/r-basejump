@@ -26,7 +26,6 @@ NULL
 Gene2Symbol.DataFrame <-  # nolint
     function(object) {
         assert_has_rows(object)
-
         # Check for required columns.
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
@@ -35,7 +34,6 @@ Gene2Symbol.DataFrame <-  # nolint
                 "Requires: ", toString(cols)
             ))
         }
-
         data <- object %>%
             # Perform this first, otherwise can get a non atomic error due to
             # GRanges to DataFrame coercion containing "X" ranges column.
@@ -46,8 +44,7 @@ Gene2Symbol.DataFrame <-  # nolint
             mutate_all(as.character) %>%
             mutate(!!sym("geneName") := make.unique(!!sym("geneName"))) %>%
             as("DataFrame")
-
-        metadata(data) <- metadata(object)
+        metadata(data) <- .genomeMetadata(object)
         new(Class = "Gene2Symbol", data)
     }
 

@@ -20,7 +20,7 @@ annotable(organism, level = c("genes", "transcripts"), build = NULL,
   release = NULL)
 }
 \arguments{
-\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{level}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
 

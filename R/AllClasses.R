@@ -84,11 +84,7 @@ setValidity(
         assert_has_no_duplicates(object[["geneID"]])
         assert_is_integer(object[["entrezID"]])
         # Require genome metadata.
-        .assertHasGenomeInfo(object)
-        assert_are_identical(
-            x = metadata(object)[["level"]],
-            y = "genes"
-        )
+        .assertHasGenomeMetadata(object)
         TRUE
     }
 )
@@ -122,11 +118,7 @@ setValidity(
         invisible(lapply(object, assert_has_no_duplicates))
         stopifnot(all(complete.cases(object)))
         # Require genome metadata.
-        .assertHasGenomeInfo(object)
-        assert_are_identical(
-            x = metadata(object)[["level"]],
-            y = "genes"
-        )
+        .assertHasGenomeMetadata(object)
         TRUE
     }
 )
@@ -271,11 +263,7 @@ setValidity(
         assert_has_no_duplicates(object[["transcriptID"]])
         stopifnot(all(complete.cases(object)))
         # Require genome metadata.
-        .assertHasGenomeInfo(object)
-        assert_are_identical(
-            x = metadata(object)[["level"]],
-            y = "transcripts"
-        )
+        .assertHasGenomeMetadata(object)
         TRUE
     }
 )
@@ -295,7 +283,25 @@ setValidity(
     )
 }
 
-.assertHasGenomeInfo <- function(object) {
+
+
+.genomeMetadata <- function(object) {
+    metadata <- metadata(object)
+    organism <- metadata[["organism"]]
+    assert_is_a_string(organism)
+    genomeBuild <- metadata[["genomeBuild"]]
+    assert_is_a_string(genomeBuild)
+    ensemblRelease <- metadata[["ensemblRelease"]]
+    assert_is_an_integer(ensemblRelease)
+    metadata <- list(
+        organism = organism,
+        genomeBuild = genomeBuild,
+        ensemblRelease = ensemblRelease
+    )
+    c(.prototypeMetadata, metadata)
+}
+
+.assertHasGenomeMetadata <- function(object) {
     if (!all(genomeInfo %in% names(metadata(object)))) {
         stop(paste0(
             "Object does not contain genome information.\n",

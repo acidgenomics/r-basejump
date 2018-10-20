@@ -15,7 +15,7 @@ makeTx2GeneFromEnsDb(object)
 makeTx2GeneFromGFF(file)
 }
 \arguments{
-\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
 "\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
