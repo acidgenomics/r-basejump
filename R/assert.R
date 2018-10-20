@@ -291,13 +291,11 @@ assertFormalCompress <- function(object) {
 #' )
 #' print(object)
 #'
-#' gene2symbol <- new(
-#'     Class = "Gene2Symbol",
-#'     DataFrame(
-#'         geneID = c("ENSG00000000003", "ENSG00000000005"),
-#'         geneName = c("TSPAN6", "TNMD"),
-#'         row.names = rownames(object)
-#'     )
+#' gene2symbol <- Gene2Symbol(
+#'     object = DataFrame(
+#'     geneID = c("ENSG00000000003", "ENSG00000000005"),
+#'     geneName = c("TSPAN6", "TNMD"),
+#'     row.names = rownames(object)
 #' )
 #' print(gene2symbol)
 #'

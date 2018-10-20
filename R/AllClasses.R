@@ -92,6 +92,8 @@ setValidity(
 
 
 # Gene2Symbol ==================================================================
+# TODO Add documentation on how genome information should be stashed.
+
 #' Gene-to-Symbol Mappings
 #'
 #' @family S4 classes
@@ -291,19 +293,11 @@ setValidity(
 # Add tryCatch to return empty on failure.
 
 .genomeMetadata <- function(object) {
-    metadata <- metadata(object)
-    organism <- metadata[["organism"]]
-    assert_is_character(organism)
-    genomeBuild <- metadata[["genomeBuild"]]
-    # Allowing empty character.
-    assert_is_character(genomeBuild)
-    ensemblRelease <- metadata[["ensemblRelease"]]
-    # Allowing empty integer.
-    assert_is_integer(ensemblRelease)
+    m <- metadata(object)
     metadata <- list(
-        organism = organism,
-        genomeBuild = genomeBuild,
-        ensemblRelease = ensemblRelease
+        organism = as.character(m[["organism"]]),
+        genomeBuild = as.character(m[["genomeBuild"]]),
+        ensemblRelease = as.integer(m[["ensemblRelease"]])
     )
     c(.prototypeMetadata, metadata)
 }
