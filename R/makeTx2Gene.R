@@ -54,53 +54,18 @@ formals(makeTx2GeneFromEnsembl) <- f
 
 #' @rdname makeTx2Gene
 #' @export
-makeTx2GeneFromEnsDb <-
-    function() {
-        gr <- do.call(
-            what = makeGRangesFromEnsDb,
-            args = matchArgsToDoCall(args = list(level = "transcripts"))
-        )
-        Tx2Gene(gr)
-    }
-f <- formals(makeGRangesFromEnsDb)
-f <- f[setdiff(names(f), "level")]
-formals(makeTx2GeneFromEnsDb) <- f
+makeTx2GeneFromEnsDb <- function(object) {
+    gr <- makeGRangesFromEnsDb(object, level = "transcripts")
+    Tx2Gene(gr)
+}
 
 
 
 #' @rdname makeTx2Gene
 #' @export
 makeTx2GeneFromGFF <- function(file) {
-    message("Making Tx2Gene from GFF.")
-    gff <- import(file)
-    assert_is_all_of(gff, "GRanges")
-
-    # Get information on the type of GFF file.
-    source <- .gffSource(gff)
-    type <- .gffType(gff)
-    message(paste(source, type, "detected."))
-
-    # Coerce GRanges to tibble.
-    data <- camel(as_tibble(gff))
-    assert_is_subset("transcriptID", colnames(data))
-
-    # Remove rows that don't contain transcript annotations.
-    data <- filter(data, !is.na(!!sym("transcriptID")))
-
-    if (type == "GFF") {
-        assert_is_subset("parent", colnames(data))
-        stopifnot(all(grepl("^gene:", data[["parent"]])))
-        data[["geneID"]] <- as.character(data[["parent"]])
-        data[["geneID"]] <- gsub(
-            pattern = "^gene:",
-            replacement = "",
-            x = data[["geneID"]]
-        )
-    }
-
-    data <- as(data, "DataFrame")
-    metadata(data) <- .genomeMetadataFromGFF(data)
-    Tx2Gene(data)
+    gr <- makeGRangesFromGFF(file, level = "transcripts")
+    Tx2Gene(gr)
 }
 
 

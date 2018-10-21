@@ -55,32 +55,9 @@ formals(makeGene2SymbolFromEnsembl) <- f
 
 #' @rdname makeGene2Symbol
 #' @export
-makeGene2SymbolFromEnsDb <-
-    function() {
-        gr <- do.call(
-            what = makeGRangesFromEnsDb,
-            args = matchArgsToDoCall(args = list(level = "genes"))
-        )
-        Gene2Symbol(gr)
-    }
-f <- formals(makeGRangesFromEnsDb)
-f <- f[setdiff(names(f), "level")]
-formals(makeGene2SymbolFromEnsDb) <- f
-
-
-
-# GTF/GFF ======================================================================
-.genomeMetadataFromGFF <- function(object) {
-    assert_is_all_of(object, "DataFrame")
-    organism <- tryCatch(
-        expr = detectOrganism(object[["geneID"]]),
-        error = function(e) character()
-    )
-    list(
-        organism = as.character(organism),
-        genomeBuild = character(),
-        ensemblRelease = integer()
-    )
+makeGene2SymbolFromEnsDb <- function(object) {
+    gr <- makeGRangesFromEnsDb(object)
+    Gene2Symbol(gr)
 }
 
 
@@ -88,42 +65,8 @@ formals(makeGene2SymbolFromEnsDb) <- f
 #' @rdname makeGene2Symbol
 #' @export
 makeGene2SymbolFromGFF <- function(file) {
-    message("Making Gene2Symbol from GFF.")
-    gff <- import(file)
-
-    source <- .gffSource(gff)
-    type <- .gffType(gff)
-    message(paste(source, type, "detected."))
-
-    # Coerce to tibble.
-    data <- camel(as_tibble(gff))
-
-    # Require `geneID` column.
-    assert_is_subset("geneID", colnames(data))
-
-    # Filter rows that don't contain gene annotations.
-    data <- filter(data, !is.na(!!sym("geneID")))
-
-    if (type == "GTF") {
-        if (
-            !"geneName" %in% colnames(data) &&
-            "geneSymbol" %in% colnames(data)
-        ) {
-            # Needed for FlyBase.
-            data[["geneName"]] <- data[["geneSymbol"]]  # nocov
-        }
-    } else if (type == "GFF") {
-        if (
-            !"geneName" %in% colnames(data) &&
-            "name" %in% colnames(data)
-        ) {
-            data[["geneName"]] <- data[["name"]]
-        }
-    }
-
-    data <- as(data, "DataFrame")
-    metadata(data) <- .genomeMetadataFromGFF(data)
-    Gene2Symbol(data)
+    gr <- makeGRangesFromGFF(file, level = "genes")
+    Gene2Symbol(gr)
 }
 
 
