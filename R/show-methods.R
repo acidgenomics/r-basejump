@@ -29,8 +29,7 @@ NULL
             class(object),
             metadata(object)[["version"]]
         )),
-        italic("https://steinbaugh.com/basejump"),
-        "citation(\"basejump\")"
+        italic("https://steinbaugh.com/basejump")
     ), sep = "\n")
 }
 
