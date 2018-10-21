@@ -190,7 +190,7 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         level = "genes",
-        build = "GRCh37"
+        genomeBuild = "GRCh37"
     )
     expect_is(object, "GRanges")
     expect_identical(length(object), 64102L)
@@ -200,7 +200,7 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         level = "transcripts",
-        build = "GRCh37"
+        genomeBuild = "GRCh37"
     )
     expect_is(object, "GRanges")
     expect_identical(length(object), 215647L)
@@ -209,15 +209,15 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
 
 test_that("makeGRangesFromEnsembl : Invalid parameters", {
     expect_error(
-        object = makeGRangesFromEnsembl("Homo sapiens", build = "hg38"),
-        regexp = "UCSC build ID detected."
+        object = makeGRangesFromEnsembl("Homo sapiens", genomeBuild = "hg38"),
+        regexp = "UCSC"
     )
     expect_error(
         object = makeGRangesFromEnsembl("Homo sapiens", release = 86L),
         regexp = ">= 87"
     )
     expect_error(
-        object = makeGRangesFromEnsembl(organism = "AAA", build = "BBB"),
+        object = makeGRangesFromEnsembl(organism = "AAA", genomeBuild = "BBB"),
         regexp = "No ID matched on AnnotationHub"
     )
     expect_error(
@@ -264,21 +264,7 @@ context("Annotations : GTF/GFF")
 
 with_parameters_test_that(
     "makeGene2SymbolFromGFF", {
-        object <- makeGene2SymbolFromGFF(file)
-        expect_is(object, "Gene2Symbol")
-        expect_identical(
-            object = head(object, n = 2L),
-            expected = Gene2Symbol(DataFrame(
-                geneID = c(
-                    "ENSMUSG00000102693",
-                    "ENSMUSG00000064842"
-                ),
-                geneName = c(
-                    "4933401J01Rik",
-                    "Gm26206"
-                )
-            ))
-        )
+        expect_is(makeGene2SymbolFromGFF(file), "Gene2Symbol")
     },
     file = c("example.gtf", "example.gff3")
 )
@@ -383,21 +369,7 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
 
 with_parameters_test_that(
     "makeTx2GeneFromGFF", {
-        object <- makeTx2GeneFromGFF(file)
-        expect_is(object, "Tx2Gene")
-        expect_identical(
-            object = head(object, n = 2L),
-            expected = Tx2Gene(DataFrame(
-                transcriptID = c(
-                    "ENSMUST00000193812",
-                    "ENSMUST00000082908"
-                ),
-                geneID = c(
-                    "ENSMUSG00000102693",
-                    "ENSMUSG00000064842"
-                )
-            ))
-        )
+        expect_is(makeTx2GeneFromGFF(file), "Tx2Gene")
     },
     file = c("example.gtf", "example.gff3")
 )
