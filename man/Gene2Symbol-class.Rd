@@ -10,6 +10,13 @@ Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 \description{
 Gene-to-Symbol Mappings
 }
+\section{Genome metadata}{
+
+
+We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
+\code{\link[S4Vectors:metadata]{S4Vectors::metadata()}}.
+}
+
 \examples{
 data(rse_small)
 x <- Gene2Symbol(rse_small)

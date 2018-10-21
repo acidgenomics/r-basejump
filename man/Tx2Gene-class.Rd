@@ -10,6 +10,13 @@ Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
 \description{
 Transcript-to-Gene Identifier Mappings
 }
+\section{Genome metadata}{
+
+
+We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
+\code{\link[S4Vectors:metadata]{S4Vectors::metadata()}}.
+}
+
 \examples{
 ## SummarizedExperiment ====
 data(tx_se_small)

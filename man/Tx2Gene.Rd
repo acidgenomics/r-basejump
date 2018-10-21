@@ -30,6 +30,13 @@ Transcript-to-Gene Identifier Mappings
 \note{
 No attempt is made to arrange the rows by transcript identifier.
 }
+\section{Genome metadata}{
+
+
+We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
+\code{\link[S4Vectors:metadata]{S4Vectors::metadata()}}.
+}
+
 \examples{
 ## SummarizedExperiment ====
 data(tx_se_small)
