@@ -171,7 +171,6 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 #&gt; <span class='message'>  - Ensembl Release: 94</span>
 #&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 228432 rows and 2 columns
 #&gt;           transcriptID          geneID
 #&gt;            &lt;character&gt;     &lt;character&gt;
@@ -193,7 +192,6 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 #&gt; <span class='message'>  - Ensembl Release: 75</span>
 #&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 215647 rows and 2 columns
 #&gt;           transcriptID          geneID
 #&gt;            &lt;character&gt;     &lt;character&gt;
@@ -212,43 +210,41 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 <span class='co'>## makeTx2GeneFromGFF ====</span>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Tx2Gene from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF/GTF file.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>20 transcript annotations detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 20 rows and 2 columns
 #&gt;           transcriptID             geneID
 #&gt;            &lt;character&gt;        &lt;character&gt;
-#&gt; 1   ENSMUST00000193812 ENSMUSG00000102693
+#&gt; 1   ENSMUST00000070533 ENSMUSG00000051951
 #&gt; 2   ENSMUST00000082908 ENSMUSG00000064842
-#&gt; 3   ENSMUST00000162897 ENSMUSG00000051951
+#&gt; 3   ENSMUST00000157708 ENSMUSG00000088333
 #&gt; 4   ENSMUST00000159265 ENSMUSG00000051951
-#&gt; 5   ENSMUST00000070533 ENSMUSG00000051951
+#&gt; 5   ENSMUST00000161581 ENSMUSG00000089699
 #&gt; ...                ...                ...
 #&gt; 16  ENSMUST00000194454 ENSMUSG00000102592
-#&gt; 17  ENSMUST00000157708 ENSMUSG00000088333
-#&gt; 18  ENSMUST00000194643 ENSMUSG00000102343
-#&gt; 19  ENSMUST00000192427 ENSMUSG00000102343
+#&gt; 17  ENSMUST00000194643 ENSMUSG00000102343
+#&gt; 18  ENSMUST00000195166 ENSMUSG00000103161
+#&gt; 19  ENSMUST00000195335 ENSMUSG00000103377
 #&gt; 20  ENSMUST00000208660 ENSMUSG00000025900
 #&gt; 20 transcripts; 17 genes</div><div class='input'>
 <span class='co'>## GFF3</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gff3"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Tx2Gene from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF/GTF file.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected.</span></div><div class='output co'>#&gt; <span class='message'>26 transcript annotations detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 26 rows and 2 columns
 #&gt;           transcriptID             geneID
 #&gt;            &lt;character&gt;        &lt;character&gt;
-#&gt; 1   ENSMUST00000193812 ENSMUSG00000102693
-#&gt; 2   ENSMUST00000082908 ENSMUSG00000064842
-#&gt; 3   ENSMUST00000162897 ENSMUSG00000051951
-#&gt; 4   ENSMUST00000159265 ENSMUSG00000051951
-#&gt; 5   ENSMUST00000070533 ENSMUSG00000051951
+#&gt; 1   ENSMUST00000027032 ENSMUSG00000025900
+#&gt; 2   ENSMUST00000027035 ENSMUSG00000025902
+#&gt; 3   ENSMUST00000070533 ENSMUSG00000051951
+#&gt; 4   ENSMUST00000082908 ENSMUSG00000064842
+#&gt; 5   ENSMUST00000157708 ENSMUSG00000088333
 #&gt; ...                ...                ...
-#&gt; 22  ENSMUST00000194992 ENSMUSG00000025900
-#&gt; 23  ENSMUST00000027032 ENSMUSG00000025900
+#&gt; 22  ENSMUST00000195166 ENSMUSG00000103161
+#&gt; 23  ENSMUST00000195335 ENSMUSG00000103377
 #&gt; 24  ENSMUST00000195384 ENSMUSG00000102948
-#&gt; 25  ENSMUST00000194382 ENSMUSG00000104123
-#&gt; 26  ENSMUST00000027035 ENSMUSG00000025902
+#&gt; 25  ENSMUST00000208660 ENSMUSG00000025900
+#&gt; 26  ENSMUST00000208793 ENSMUSG00000025900
 #&gt; 26 transcripts; 20 genes</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

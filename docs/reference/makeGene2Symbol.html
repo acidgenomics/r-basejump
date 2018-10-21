@@ -172,7 +172,6 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 #&gt; <span class='message'>  - Ensembl Release: 94</span>
 #&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 65687 rows and 2 columns
 #&gt;                geneID    geneName
 #&gt;           &lt;character&gt; &lt;character&gt;
@@ -189,12 +188,11 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 #&gt; 65687         LRG_999       CIC.1
 #&gt; 65687 genes; 65687 symbols</div><div class='input'>
 <span class='co'>## makeTx2GeneFromEnsDb ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: EnsDb.Hsapiens.v75</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
 #&gt; <span class='message'>  - Genome Build: GRCh37</span>
 #&gt; <span class='message'>  - Ensembl Release: 75</span>
 #&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 64102 rows and 2 columns
 #&gt;                geneID    geneName
 #&gt;           &lt;character&gt; &lt;character&gt;
@@ -213,43 +211,41 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 <span class='co'>## makeGene2SymbolFromGFF ====</span>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Gene2Symbol from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF/GTF file.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>17 gene annotations detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 17 rows and 2 columns
-#&gt;                 geneID      geneName
-#&gt;            &lt;character&gt;   &lt;character&gt;
-#&gt; 1   ENSMUSG00000102693 4933401J01Rik
-#&gt; 2   ENSMUSG00000064842       Gm26206
-#&gt; 3   ENSMUSG00000051951          Xkr4
-#&gt; 4   ENSMUSG00000102851       Gm18956
-#&gt; 5   ENSMUSG00000103377       Gm37180
-#&gt; ...                ...           ...
-#&gt; 13  ENSMUSG00000102348       Gm10568
-#&gt; 14  ENSMUSG00000102592       Gm38385
-#&gt; 15  ENSMUSG00000088333       Gm27396
-#&gt; 16  ENSMUSG00000102343       Gm37381
-#&gt; 17  ENSMUSG00000025900           Rp1
+#&gt;                 geneID    geneName
+#&gt;            &lt;character&gt; &lt;character&gt;
+#&gt; 1   ENSMUSG00000025900         Rp1
+#&gt; 2   ENSMUSG00000051951        Xkr4
+#&gt; 3   ENSMUSG00000064842     Gm26206
+#&gt; 4   ENSMUSG00000088333     Gm27396
+#&gt; 5   ENSMUSG00000089699      Gm1992
+#&gt; ...                ...         ...
+#&gt; 13  ENSMUSG00000103147      Gm7341
+#&gt; 14  ENSMUSG00000103161     Gm38148
+#&gt; 15  ENSMUSG00000103201     Gm37329
+#&gt; 16  ENSMUSG00000103377     Gm37180
+#&gt; 17  ENSMUSG00000104017     Gm37363
 #&gt; 17 genes; 17 symbols</div><div class='input'>
 <span class='co'>## GFF3</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gff3"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making Gene2Symbol from GFF.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF/GTF file.</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected.</span></div><div class='output co'>#&gt; <span class='message'>20 gene annotations detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 20 rows and 2 columns
-#&gt;                 geneID      geneName
-#&gt;            &lt;character&gt;   &lt;character&gt;
-#&gt; 1   ENSMUSG00000102693 4933401J01Rik
-#&gt; 2   ENSMUSG00000064842       Gm26206
-#&gt; 3   ENSMUSG00000051951          Xkr4
-#&gt; 4   ENSMUSG00000102851       Gm18956
-#&gt; 5   ENSMUSG00000103377       Gm37180
-#&gt; ...                ...           ...
-#&gt; 16  ENSMUSG00000102343       Gm37381
-#&gt; 17  ENSMUSG00000025900           Rp1
-#&gt; 18  ENSMUSG00000102948        Gm6101
-#&gt; 19  ENSMUSG00000104123       Gm37483
-#&gt; 20  ENSMUSG00000025902         Sox17
+#&gt;                 geneID    geneName
+#&gt;            &lt;character&gt; &lt;character&gt;
+#&gt; 1   ENSMUSG00000025900         Rp1
+#&gt; 2   ENSMUSG00000025902       Sox17
+#&gt; 3   ENSMUSG00000051951        Xkr4
+#&gt; 4   ENSMUSG00000064842     Gm26206
+#&gt; 5   ENSMUSG00000088333     Gm27396
+#&gt; ...                ...         ...
+#&gt; 16  ENSMUSG00000103161     Gm38148
+#&gt; 17  ENSMUSG00000103201     Gm37329
+#&gt; 18  ENSMUSG00000103377     Gm37180
+#&gt; 19  ENSMUSG00000104017     Gm37363
+#&gt; 20  ENSMUSG00000104123     Gm37483
 #&gt; 20 genes; 20 symbols</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
