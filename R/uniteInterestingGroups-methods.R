@@ -24,7 +24,7 @@ NULL
 
 
 
-uniteInterestingGroups.data.frame <-  # nolint
+uniteInterestingGroups.DataFrame <-  # nolint
     function(object, interestingGroups) {
         assert_is_character(interestingGroups)
         assert_is_subset(interestingGroups, colnames(object))
@@ -39,6 +39,7 @@ uniteInterestingGroups.data.frame <-  # nolint
             FUN = paste,
             collapse = ":"
         )
+        names(value) <- NULL
         object[["interestingGroups"]] <- as.factor(value)
         object
     }
@@ -49,16 +50,6 @@ uniteInterestingGroups.data.frame <-  # nolint
 #' @export
 setMethod(
     f = "uniteInterestingGroups",
-    signature = signature("data.frame"),
-    definition = uniteInterestingGroups.data.frame
-)
-
-
-
-#' @rdname uniteInterestingGroups
-#' @export
-setMethod(
-    f = "uniteInterestingGroups",
     signature = signature("DataFrame"),
-    definition = getMethod("uniteInterestingGroups", "data.frame")
+    definition = uniteInterestingGroups.DataFrame
 )
