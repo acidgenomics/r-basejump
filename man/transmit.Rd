@@ -28,14 +28,19 @@ FTP server. Also enables on-the-fly file renaming and compression.
 }
 \examples{
 readme <- transmit(
-    remoteDir = "ftp://ftp.ensembl.org/pub/release-90",
+    remoteDir = paste(
+        "ftp://ftp.pantherdb.org",
+        "sequence_classifications",
+        "current_release",
+        sep = "/"
+    ),
     pattern = "README",
-    rename = "ensembl_readme.txt",
+    rename = "panther_readme.txt",
     compress = TRUE
 )
 basename(readme)
 file.exists(readme)
 
 ## Clean up.
-unlink("ensembl_readme.txt.gz")
+unlink(readme)
 }
