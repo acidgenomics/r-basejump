@@ -293,9 +293,10 @@ assertFormalCompress <- function(object) {
 #'
 #' gene2symbol <- Gene2Symbol(
 #'     object = DataFrame(
-#'     geneID = c("ENSG00000000003", "ENSG00000000005"),
-#'     geneName = c("TSPAN6", "TNMD"),
-#'     row.names = rownames(object)
+#'         geneID = c("ENSG00000000003", "ENSG00000000005"),
+#'         geneName = c("TSPAN6", "TNMD"),
+#'         row.names = rownames(object)
+#'     )
 #' )
 #' print(gene2symbol)
 #'
@@ -322,12 +323,17 @@ assertFormalGene2Symbol <- function(
 ) {
     assertHasRownames(object)
     assert_is_character(genes)
+    assert_is_non_empty(genes)
     assert_is_all_of(gene2symbol, "Gene2Symbol")
-    # Require that all rownames of object are defined in gene2symbol.
-    assert_is_subset(rownames(object), rownames(gene2symbol))
-    # Check to ensure the user defined genes map to the rownames of the object.
+    assert_are_identical(
+        x = nrow(object),
+        y = nrow(gene2symbol)
+    )
+    if (is.null(rownames(gene2symbol))) {
+        rownames(gene2symbol) <- rownames(object)
+    }
+    # Map genes to object rownames, using gene2symbol.
     rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
-    assert_is_non_empty(rownames)
     assert_is_subset(rownames, rownames(object))
 }
 

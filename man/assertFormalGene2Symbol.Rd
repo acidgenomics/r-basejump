@@ -34,9 +34,10 @@ print(object)
 
 gene2symbol <- Gene2Symbol(
     object = DataFrame(
-    geneID = c("ENSG00000000003", "ENSG00000000005"),
-    geneName = c("TSPAN6", "TNMD"),
-    row.names = rownames(object)
+        geneID = c("ENSG00000000003", "ENSG00000000005"),
+        geneName = c("TSPAN6", "TNMD"),
+        row.names = rownames(object)
+    )
 )
 print(gene2symbol)
 
