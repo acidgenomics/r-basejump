@@ -1,7 +1,3 @@
-# FIXME Add documentation on where genome information must be stashed.
-
-
-
 #' @inherit Tx2Gene-class
 #'
 #' @note No attempt is made to arrange the rows by transcript identifier.
@@ -41,7 +37,11 @@ Tx2Gene.DataFrame <-  # nolint
             unique() %>%
             mutate_all(as.character) %>%
             as("DataFrame")
-        metadata(data) <- .genomeMetadata(object)
+        metadata <- metadata(object)
+        if (!has_length(metadata)) {
+            metadata <- .prototypeGenomeMetadata
+        }
+        metadata(data) <- metadata
         new(Class = "Tx2Gene", data)
     }
 
