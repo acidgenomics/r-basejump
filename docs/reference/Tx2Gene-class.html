@@ -121,6 +121,12 @@
 
     <p>Contains a <code>DataFrame</code> with <code>transcriptID</code> and <code>geneID</code> columns.</p>
     
+    <h2 class="hasAnchor" id="genome-metadata"><a class="anchor" href="#genome-metadata"></a>Genome metadata</h2>
+
+    
+    <p>We recommend slotting <code>organism</code>, <code>genomeBuild</code>, and <code>ensemblRelease</code> into
+<code><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/Annotated-class'>S4Vectors::metadata()</a></code>.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='Tx2Gene.html'>Tx2Gene()</a></code>, <a href='makeTx2Gene.html'>makeTx2Gene</a>.</p>
@@ -138,7 +144,6 @@
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Tx2Gene.html'>Tx2Gene</a></span>(<span class='no'>tx_se_small</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene 0.99.0
 #&gt; https://steinbaugh.com/basejump
-#&gt; citation("basejump")
 #&gt; DataFrame with 6 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
@@ -155,6 +160,8 @@
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#genome-metadata">Genome metadata</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

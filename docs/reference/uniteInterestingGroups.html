@@ -159,12 +159,18 @@ single column, delimited by a colon.</p>
     <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='fu'><a href='interestingGroups.html'>interestingGroups</a></span>(<span class='no'>object</span>)
 )
 <span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
-#&gt;         genotype treatment sampleName interestingGroups
-#&gt;         &lt;factor&gt;  &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample1 wildtype   control    sample1  wildtype:control
-#&gt; sample2 knockout   control    sample2  knockout:control
-#&gt; sample3 wildtype   treated    sample3  wildtype:treated
-#&gt; sample4 knockout   treated    sample4  knockout:treated</div></pre>
+#&gt;         genotype treatment sampleName
+#&gt;         &lt;factor&gt;  &lt;factor&gt;   &lt;factor&gt;
+#&gt; sample1 wildtype   control    sample1
+#&gt; sample2 knockout   control    sample2
+#&gt; sample3 wildtype   treated    sample3
+#&gt; sample4 knockout   treated    sample4
+#&gt;         interestingGroups
+#&gt;                  &lt;factor&gt;
+#&gt; sample1  wildtype:control
+#&gt; sample2  knockout:control
+#&gt; sample3  wildtype:treated
+#&gt; sample4  knockout:treated</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
