@@ -354,56 +354,25 @@ test_that("selectSamples : SingleCellExperiment", {
 
 
 # uniteInterestingGroups =======================================================
-test_that("uniteInterestingGroups : Single interesting group", {
-    object <- uniteInterestingGroups(
-        object = datasets::mtcars,
+test_that("uniteInterestingGroups", {
+    object <- as(datasets::mtcars, "DataFrame")
+
+    # Check that `interestingGroups` column gets defined as a factor correctly.
+    x <- uniteInterestingGroups(
+        object = object,
         interestingGroups = c("vs", "am", "gear")
     )
     expect_identical(
-        levels(object[["interestingGroups"]]),
+        levels(x[["interestingGroups"]]),
         c("0:0:3", "0:1:4", "0:1:5", "1:0:3", "1:0:4", "1:1:4", "1:1:5")
     )
-})
 
-test_that("uniteInterestingGroups : Two interesting groups", {
-    object <- uniteInterestingGroups(
-        object = datasets::mtcars,
-        interestingGroups = c("gear", "carb")
-    )
-    expect_identical(
-        head(object[["interestingGroups"]]),
-        factor(
-            c("4:4", "4:4", "4:1", "3:1", "3:2", "3:1"),
-            levels = c(
-                "3:1", "3:2", "3:3", "3:4",
-                "4:1", "4:2", "4:4",
-                "5:2", "5:4", "5:6", "5:8"
-            )
-        )
-    )
-})
-
-test_that("uniteInterestingGroups : tidy (tibble) mode", {
-    object <- uniteInterestingGroups(
-        object = dplyr::starwars,
-        interestingGroups = c("hair_color", "skin_color")
-    )
-    expect_is(object, "tbl_df")
-    expect_is(object[["interestingGroups"]], "factor")
-    expect_identical(
-        object[["interestingGroups"]] %>%
-            as.character() %>%
-            head(2L),
-        c("blond:fair", "NA:gold")
-    )
-})
-
-test_that("uniteInterestingGroups : Missing groups", {
+    # Error on missing groups.
     expect_error(
-        uniteInterestingGroups(
-            object = datasets::mtcars,
+        object = uniteInterestingGroups(
+            object = object,
             interestingGroups = c("XXX", "YYY")
         ),
-        "is_subset : The elements 'XXX', 'YYY' in interestingGroups"
+        regexp = "is_subset : The elements 'XXX', 'YYY' in interestingGroups"
     )
 })
