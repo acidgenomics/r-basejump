@@ -432,8 +432,13 @@ test_that("saveData : Invalid parameters", {
 
 
 # transmit =====================================================================
-# Note that `transmit()` currently only works for FTP.
-remoteDir <- "ftp://ftp.ensembl.org/pub/release-89"
+# Note that only FTP is currently supported.
+remoteDir <- paste(
+    "ftp://ftp.pantherdb.org",
+    "sequence_classifications",
+    "current_release",
+    sep = "/"
+)
 
 test_that("transmit", {
     object <- transmit(
@@ -462,13 +467,13 @@ test_that("transmit : Rename and compress", {
     object <- transmit(
         remoteDir = remoteDir,
         pattern = "README",
-        rename = "ensembl_readme.txt",
+        rename = "readme.txt",
         compress = TRUE
     )
-    expected <- file.path(getwd(), "ensembl_readme.txt.gz")
+    expected <- file.path(getwd(), "readme.txt.gz")
     names(expected) <- "README"
     expect_identical(object, expected)
-    unlink("ensembl_readme.txt.gz")
+    unlink("readme.txt.gz")
 })
 
 test_that("transmit : Invalid parameters", {
