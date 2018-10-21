@@ -37,11 +37,7 @@ Tx2Gene.DataFrame <-  # nolint
             unique() %>%
             mutate_all(as.character) %>%
             as("DataFrame")
-        metadata <- metadata(object)
-        if (!has_length(metadata)) {
-            metadata <- .prototypeGenomeMetadata
-        }
-        metadata(data) <- metadata
+        metadata(data) <- .genomeMetadata(object)
         new(Class = "Tx2Gene", data)
     }
 

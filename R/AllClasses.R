@@ -308,6 +308,15 @@ setValidity(
 
 
 
+.genomeMetadata <- function(object) {
+    metadata <- metadata(object)
+    prototypeMetadata <- .prototypeGenomeMetadata %>%
+        .[setdiff(names(.), names(metadata))]
+    c(prototypeMetadata, metadata)
+}
+
+
+
 .assertHasGenomeMetadata <- function(object) {
     if (!all(genomeInfo %in% names(metadata(object)))) {
         stop(paste0(
