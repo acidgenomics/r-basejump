@@ -92,9 +92,12 @@ setValidity(
 
 
 # Gene2Symbol ==================================================================
-# TODO Add documentation on how genome information should be stashed.
-
 #' Gene-to-Symbol Mappings
+#'
+#' @section Genome metadata:
+#'
+#' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
+#' [S4Vectors::metadata()].
 #'
 #' @family S4 classes
 #' @author Michael Steinbaugh
@@ -241,6 +244,11 @@ setValidity(
 # Tx2Gene ======================================================================
 #' Transcript-to-Gene Identifier Mappings
 #'
+#' @section Genome metadata:
+#'
+#' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
+#' [S4Vectors::metadata()].
+#'
 #' @family S4 classes
 #' @author Michael Steinbaugh
 #' @inherit Tx2Gene
@@ -288,9 +296,6 @@ setValidity(
 }
 
 
-
-# FIXME Attempt to detect using `detectOrganism` on geneID column.
-# Add tryCatch to return empty on failure.
 
 .genomeMetadata <- function(object) {
     m <- metadata(object)

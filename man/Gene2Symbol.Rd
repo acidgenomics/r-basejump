@@ -34,6 +34,13 @@ Gene-to-Symbol Mappings
 \item No attempt is made to arrange the rows by gene identifier.
 }
 }
+\section{Genome metadata}{
+
+
+We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
+\code{\link[S4Vectors:metadata]{S4Vectors::metadata()}}.
+}
+
 \examples{
 data(rse_small)
 x <- Gene2Symbol(rse_small)
