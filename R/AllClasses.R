@@ -297,15 +297,14 @@ setValidity(
 
 
 
-.genomeMetadata <- function(object) {
-    m <- metadata(object)
-    metadata <- list(
-        organism = as.character(m[["organism"]]),
-        genomeBuild = as.character(m[["genomeBuild"]]),
-        ensemblRelease = as.integer(m[["ensemblRelease"]])
+.prototypeGenomeMetadata <- c(
+    .prototypeMetadata,
+    list(
+        organism = character(),
+        genomeBuild = character(),
+        ensemblRelease = integer()
     )
-    c(.prototypeMetadata, metadata)
-}
+)
 
 
 
