@@ -4,13 +4,10 @@
 \docType{methods}
 \name{uniteInterestingGroups}
 \alias{uniteInterestingGroups}
-\alias{uniteInterestingGroups,data.frame-method}
 \alias{uniteInterestingGroups,DataFrame-method}
 \title{Unite Interesting Groups}
 \usage{
 uniteInterestingGroups(object, ...)
-
-\S4method{uniteInterestingGroups}{data.frame}(object, interestingGroups)
 
 \S4method{uniteInterestingGroups}{DataFrame}(object, interestingGroups)
 }
