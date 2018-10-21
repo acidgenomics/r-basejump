@@ -76,12 +76,11 @@ formals(makeGene2SymbolFromEnsDb) <- f
         expr = detectOrganism(object[["geneID"]]),
         error = function(e) character()
     )
-    metadata(object) <- list(
-        organism = organism,
+    list(
+        organism = as.character(organism),
         genomeBuild = character(),
         ensemblRelease = integer()
     )
-    object
 }
 
 
