@@ -127,9 +127,6 @@ assertHasValidDimnames <- function(object) {
 #' @rdname assertAllAreValidNames
 #' @export
 assertHasValidNames <- function(object) {
-    if (has_dims(object)) {
-        stop("Use `assertHasValidDimnames()` instead.")
-    }
     assert_has_names(object)
     invisible(lapply(names(object), assertAllAreValidNames))
 }
