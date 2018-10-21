@@ -43,7 +43,7 @@ Ensembl2Entrez.SummarizedExperiment <-  # nolint
             entrezID = vec,
             row.names = names(vec)
         )
-        metadata(data) <- .genomeMetadata(rowData)
+        metadata(data) <- metadata(rowData)
         new(Class = "Ensembl2Entrez", data)
     }
 
