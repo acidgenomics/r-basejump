@@ -1,12 +1,10 @@
 context("Assert Checks")
 
 data(rse_small, envir = environment())
-g2s <- new(
-    "Gene2Symbol",
-    DataFrame(
+g2s <- Gene2Symbol(
+    object = DataFrame(
         geneID = paste0("gene", seq_len(2L)),
-        geneName = paste0("symbol", seq_len(2L)),
-        row.names = paste0("gene", seq_len(2L))
+        geneName = paste0("symbol", seq_len(2L))
     )
 )
 
@@ -74,14 +72,13 @@ test_that("assertFormalGene2Symbol", {
     expect_silent(assertFormalGene2Symbol(object, genes, g2s))
     expect_error(
         object = assertFormalGene2Symbol(mtcars, genes, g2s),
-        regexp = "is_subset :"
+        regexp = "are_identical :"
     )
 })
 
 
 
 # assertFormalInterestingGroups ================================================
-# TODO Require interesting groups to be defined as factor columns.
 test_that("assertFormalInterestingGroups", {
     expect_silent(
         assertFormalInterestingGroups(
