@@ -11,12 +11,12 @@ data(rse_small, envir = environment())
 # Counts per biotype ===========================================================
 test_that("plotCountsPerBiotype", {
     p <- plotCountsPerBiotype(rse_small)
-    expect_is(p, "ggplot")
+    expect_s3_class(p, "ggplot")
 })
 
 test_that("plotCountsPerBroadClass", {
     p <- plotCountsPerBroadClass(rse_small)
-    expect_is(p, "ggplot")
+    expect_s3_class(p, "ggplot")
 })
 
 
