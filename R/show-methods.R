@@ -23,6 +23,7 @@ NULL
 
 
 
+# Internal =====================================================================
 .showHeader <- function(object) {
     cat(c(
         bold(paste(
@@ -35,20 +36,18 @@ NULL
 
 
 
-show.DataFrame <- function(object) {
-    .showHeader(object)
-    data <- as(object, "DataFrame")
-    show(data)
-}
+show.DataFrame <-  # nolint
+    function(object) {
+        .showHeader(object)
+        data <- as(object, "DataFrame")
+        show(data)
+    }
 
 
 
-#' @rdname show
-#' @export
-setMethod(
-    f = "show",
-    signature = signature("EggNOG"),
-    definition = function(object) {
+# EggNOG =======================================================================
+show.EggNOG <-  # nolint
+    function(object) {
         .showHeader(object)
         showSlotInfo(list(
             ids = object %>%
@@ -61,10 +60,20 @@ setMethod(
                 sort()
         ))
     }
+
+
+
+#' @rdname show
+#' @export
+setMethod(
+    f = "show",
+    signature = signature("EggNOG"),
+    definition = show.EggNOG
 )
 
 
 
+# Ensembl2Entrez ===============================================================
 #' @rdname show
 #' @export
 setMethod(
@@ -75,22 +84,29 @@ setMethod(
 
 
 
-#' @rdname show
-#' @export
-setMethod(
-    f = "show",
-    signature = signature("Gene2Symbol"),
-    definition = function(object) {
+# Gene2Symbol ==================================================================
+show.Gene2Symbol <-  # nolint
+    function(object) {
         show.DataFrame(object)
         cat(paste0(
             length(unique(object[["geneID"]])), " genes; ",
             length(unique(object[["geneName"]])), " symbols"
         ), sep = "\n")
     }
+
+
+
+#' @rdname show
+#' @export
+setMethod(
+    f = "show",
+    signature = signature("Gene2Symbol"),
+    definition = show.Gene2Symbol
 )
 
 
 
+# HGNC2Ensembl =================================================================
 #' @rdname show
 #' @export
 setMethod(
@@ -101,6 +117,7 @@ setMethod(
 
 
 
+# MGI2Ensembl ==================================================================
 #' @rdname show
 #' @export
 setMethod(
@@ -111,12 +128,9 @@ setMethod(
 
 
 
-#' @rdname show
-#' @export
-setMethod(
-    f = "show",
-    signature = signature("PANTHER"),
-    definition = function(object) {
+# PANTHER ======================================================================
+show.PANTHER <-  # nolint
+    function(object) {
         .showHeader(object)
         showSlotInfo(list(
             organism = metadata(object)[["organism"]],
@@ -124,7 +138,28 @@ setMethod(
             genes = object[["geneID"]]
         ))
     }
+
+
+
+#' @rdname show
+#' @export
+setMethod(
+    f = "show",
+    signature = signature("PANTHER"),
+    definition = show.PANTHER
 )
+
+
+
+# Tx2Gene ======================================================================
+show.Tx2Gene <-  # nolint
+    function(object) {
+        show.DataFrame(object)
+        cat(paste0(
+            length(unique(object[["transcriptID"]])), " transcripts; ",
+            length(unique(object[["geneID"]])), " genes"
+        ), sep = "\n")
+    }
 
 
 
@@ -133,11 +168,5 @@ setMethod(
 setMethod(
     f = "show",
     signature = signature("Tx2Gene"),
-    definition = function(object) {
-        show.DataFrame(object)
-        cat(paste0(
-            length(unique(object[["transcriptID"]])), " transcripts; ",
-            length(unique(object[["geneID"]])), " genes"
-        ), sep = "\n")
-    }
+    definition = show.Tx2Gene
 )

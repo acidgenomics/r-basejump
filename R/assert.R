@@ -13,7 +13,7 @@ NULL
 
 
 
-# Internals ====================================================================
+# Internal =====================================================================
 .hasAggregate <- function(object, stop = FALSE) {
     logical <- "aggregate" %in% colnames(object)
     if (
