@@ -1,7 +1,3 @@
-# TODO Consider limiting to console width per line.
-
-
-
 #' Show Slot Information
 #'
 #' @export
