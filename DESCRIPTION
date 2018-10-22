@@ -74,7 +74,7 @@ Imports:
     readr (>= 1.1),
     reshape2,
     rio (>= 0.5),
-    rlang (>= 0.2),
+    rlang (>= 0.3),
     rtracklayer,
     sessioninfo,
     stats,
