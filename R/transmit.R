@@ -17,13 +17,14 @@
 #' @return Invisible `character`. Local file paths.
 #'
 #' @examples
+#' remoteDir <- paste(
+#'     "ftp://ftp.pantherdb.org",
+#'     "sequence_classifications",
+#'     "current_release",
+#'     sep = "/"
+#' )
 #' readme <- transmit(
-#'     remoteDir = paste(
-#'         "ftp://ftp.pantherdb.org",
-#'         "sequence_classifications",
-#'         "current_release",
-#'         sep = "/"
-#'     ),
+#'     remoteDir = remoteDir,
 #'     pattern = "README",
 #'     rename = "panther_readme.txt",
 #'     compress = TRUE
@@ -53,23 +54,47 @@ transmit <- function(
     assert_is_any_of(rename, c("character", "NULL"))
     assert_is_a_bool(compress)
 
-    remoteList <- remoteDir %>%
-        getURL() %>%
-        read_lines()
-    assert_is_non_empty(remoteList)
+    # Error and inform the user if the FTP connection fails.
+    if (!isTRUE(url.exists(remoteDir))) {
+        match <- str_match(
+            string = remoteDir,
+            pattern = "^.*//([^/]+)/.*$"
+        )
+        server <- match[1L, 2L]
+        assert_is_a_string(server)
+        stop(paste("Connection to", server, "failed."))
+    }
+
+    remoteTxt <- getURL(remoteDir)
+    if(!isTRUE(is.character(remoteTxt) && has_length(remoteTxt))) {
+        stop("Failed to list directory contents.")
+    }
 
     # Match the `-` at begining for file.
     # `-rwxrwxr-x`: File
     # `drwxrwxr-x`: Directory
-    remoteFiles <- remoteList %>%
+    remoteFiles <- remoteTxt %>%
+        read_lines() %>%
         .[grepl("^-", .)] %>%
         # File name is at the end, not including a space.
         str_extract(pattern = "[^\\s]+$")
     assert_is_non_empty(remoteFiles)
 
+    message(paste(
+        "Files in directory:",
+        printString(remoteFiles),
+        sep = "\n"
+    ))
+
     # Apply pattern matching.
     match <- str_subset(remoteFiles, pattern)
     assert_is_non_empty(match)
+
+    message(paste(
+        "Files matching pattern:",
+        printString(match),
+        sep = "\n"
+    ))
 
     # Concatenate using paste but strip the trailing slash (see above).
     remotePaths <- paste(gsub("/$", "", remoteDir), match, sep = "/")
