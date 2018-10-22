@@ -2,6 +2,7 @@ context("Data")
 
 data(rse_small, sce_small, envir = environment())
 
+# nolint start
 colData <- SummarizedExperiment::colData
 `colData<-` <- SummarizedExperiment::`colData<-`
 DataFrame <- S4Vectors::DataFrame
@@ -9,6 +10,7 @@ mcols <- S4Vectors::mcols
 seqnames <- GenomeInfoDb::seqnames
 rowRanges <- SummarizedExperiment::rowRanges
 `rowRanges<-` <- SummarizedExperiment::`rowRanges<-`
+# nolint end
 
 
 
