@@ -31,6 +31,7 @@
 #'   is_scalar
 #' @importFrom assertive.sets assert_are_disjoint_sets
 #'   assert_are_intersecting_sets assert_are_set_equal assert_is_subset
+#'   is_subset
 #' @importFrom assertive.strings assert_all_are_matching_regex
 #'   assert_all_are_non_empty_character
 #'   assert_all_are_non_missing_nor_empty_character
