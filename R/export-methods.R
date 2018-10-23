@@ -76,6 +76,8 @@ export.ANY <-  # nolint
         } else if (missing(format)) {
             assert_is_a_string(file)
         }
+        # Ensure directory is created automatically.
+        initDir(dir = dirname(file))
         file <- suppressMessages(do.call(
             what = rio::export,
             args = list(x = x, file = file, ...)
