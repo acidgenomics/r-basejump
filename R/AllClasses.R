@@ -47,7 +47,6 @@ setValidity(
                 "cogFunctionalCategory"
             )
         )
-        .assertHasPrototypeMetadata(object)
         TRUE
     }
 )
@@ -83,8 +82,6 @@ setValidity(
         )
         assert_has_no_duplicates(object[["geneID"]])
         assert_is_integer(object[["entrezID"]])
-        # Require genome metadata.
-        .assertHasGenomeMetadata(object)
         TRUE
     }
 )
@@ -122,8 +119,6 @@ setValidity(
         # Assert that neither column has duplicates.
         invisible(lapply(object, assert_has_no_duplicates))
         stopifnot(all(complete.cases(object)))
-        # Require genome metadata.
-        .assertHasGenomeMetadata(object)
         TRUE
     }
 )
@@ -157,8 +152,6 @@ setValidity(
             x = rownames(object),
             y = NULL
         )
-        # Require simple metadata.
-        .assertHasPrototypeMetadata(object)
         TRUE
     }
 )
@@ -189,8 +182,6 @@ setValidity(
             x = rownames(object),
             y = NULL
         )
-        # Require simple metadata.
-        .assertHasPrototypeMetadata(object)
         TRUE
     }
 )
@@ -230,7 +221,6 @@ setValidity(
                 "pantherSubfamilyName"
             )
         )
-        .assertHasPrototypeMetadata(object)
         assert_is_subset(
             x = c("organism", "release"),
             y = names(metadata(object))
@@ -272,8 +262,6 @@ setValidity(
         # Assert that there are no duplicate transcripts.
         assert_has_no_duplicates(object[["transcriptID"]])
         stopifnot(all(complete.cases(object)))
-        # Require genome metadata.
-        .assertHasGenomeMetadata(object)
         TRUE
     }
 )
@@ -285,6 +273,15 @@ setValidity(
     version = packageVersion("basejump"),
     date = Sys.Date()
 )
+
+
+
+.hasPrototypeMetadata <- function(object) {
+    is_subset(
+        x = names(.prototypeMetadata),
+        y = names(metadata(object))
+    )
+}
 
 
 
@@ -317,8 +314,14 @@ setValidity(
 
 
 
+.hasGenomeMetadata <- function(object) {
+    all(genomeInfo %in% names(metadata(object)))
+}
+
+
+
 .assertHasGenomeMetadata <- function(object) {
-    if (!all(genomeInfo %in% names(metadata(object)))) {
+    if (!isTRUE(hasGenomeMetadata(object))) {
         stop(paste0(
             "Object does not contain genome information.\n",
             "Requires: ", toString(genomeInfo)
