@@ -45,7 +45,6 @@
 #' @importFrom BiocGenerics as.data.frame as.list do.call lapply match setdiff
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
-#' @importFrom crayon bold italic
 #' @importFrom dplyr arrange bind_rows case_when desc filter funs group_by
 #'   left_join mutate mutate_all mutate_at mutate_if n pull rename select
 #'   select_if slice summarize summarize_all top_n ungroup
