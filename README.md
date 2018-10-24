@@ -18,13 +18,7 @@ We recommend installing the package with [BiocManager][].
 if (!require("BiocManager")) {
     install.packages("BiocManager")
 }
-BiocManager::install(
-    pkgs = c(
-        "devtools",
-        "remotes",
-        "GenomeInfoDbData"
-    )
-)
+BiocManager::install("remotes")
 BiocManager::install("steinbaugh/basejump")
 ```
 
@@ -41,16 +35,16 @@ Configure [conda][] to use the [bioconda][] channels.
 
 ```bash
 conda config --add channels defaults
-conda config --add channels conda-forge
 conda config --add channels bioconda
+conda config --add channels conda-forge
 ```
 
 To avoid version issues, your `.condarc` file should only contain the following channels, in this order:
 
 ```
 channels:
-  - bioconda
   - conda-forge
+  - bioconda
   - defaults
 ```
 
