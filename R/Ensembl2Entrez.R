@@ -5,11 +5,10 @@
 #'
 #' @inheritParams general
 #' @param format `string`. Formatting method to apply:
-#' - `"1:1"`: Return with 1:1 mappings. For Ensembl genes that don't map 1:1
-#'   with Entrez, pick the oldest Entrez ID. Genes that don't map to Entrez
-#'   will contain `NA` in `entrezID` column.
+#' - `"1:1"`: *Recommended.* Return with 1:1 mappings. For Ensembl genes that
+#'   don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't map
+#'   to Entrez will contain `NA` in `entrezID` column.
 #' - `"long"`: Return 1:many in long format.
-#' - `"list"`: Return 1:many with `entrezID` as a `list` column.
 #'
 #' @return `Ensembl2Entrez`.
 #'
@@ -24,7 +23,7 @@ NULL
 Ensembl2Entrez.DataFrame <-  # nolint
     function(
         object,
-        format = c("1:1", "long", "list")
+        format = c("1:1", "long")
     ) {
         assert_has_rows(object)
         format <- match.arg(format)
@@ -39,8 +38,28 @@ Ensembl2Entrez.DataFrame <-  # nolint
 
         data <- object[, cols, drop = FALSE]
 
+        # Expand to long format.
+        data <- expand(data)
+
+        # Inform the user about genes that don't map to Entrez.
+        unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
+        stopifnot(!any(duplicated(unmapped)))
+        if (has_length(unmapped)) {
+            message(paste(length(unmapped), "genes don't map to Entrez."))
+        }
+
+        # Inform the user about how many genes multi-map to Entrez.
+        multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
+        if (has_length(multimapped)) {
+            message(paste(
+                length(multimapped), "genes map to multiple Entrez IDs."
+            ))
+        }
+
         if (format == "1:1") {
-            message("Returning with 1:1 mappings using oldest Entrez ID.")
+            message(paste(
+                "Returning with 1:1 mappings using oldest Entrez ID per gene."
+            ))
             entrez <- object[["entrezID"]]
             assert_is_list(entrez)
             names(entrez) <- object[["geneID"]]
@@ -58,18 +77,10 @@ Ensembl2Entrez.DataFrame <-  # nolint
             data <- DataFrame(
                 geneID = names(entrez),
                 entrezID = as.integer(entrez),
-                row.names = rownames(data)
+                row.names = rownames(object)
             )
         } else if (format == "long") {
             message("Returning 1:many in long format.")
-            data <- data %>%
-                as_tibble(rownames = NULL) %>%
-                unnest(!!sym("entrezID")) %>%
-                distinct() %>%
-                arrange(!!!syms(cols)) %>%
-                as("DataFrame")
-        } else if (format == "list") {
-            message("Returning 1:many using nested list column.")
         }
 
         metadata(data) <- metadata(object)
