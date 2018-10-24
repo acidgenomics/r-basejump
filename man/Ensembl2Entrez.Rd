@@ -3,17 +3,35 @@
 \docType{methods}
 \name{Ensembl2Entrez}
 \alias{Ensembl2Entrez}
+\alias{Ensembl2Entrez,DataFrame-method}
+\alias{Ensembl2Entrez,GRanges-method}
 \alias{Ensembl2Entrez,SummarizedExperiment-method}
 \title{Ensembl-to-Entrez Gene Identifier Mappings}
 \usage{
 Ensembl2Entrez(object, ...)
 
-\S4method{Ensembl2Entrez}{SummarizedExperiment}(object)
+\S4method{Ensembl2Entrez}{DataFrame}(object, format = c("1:1", "long",
+  "list"))
+
+\S4method{Ensembl2Entrez}{GRanges}(object, format = c("1:1", "long",
+  "list"))
+
+\S4method{Ensembl2Entrez}{SummarizedExperiment}(object, format = c("1:1",
+  "long", "list"))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{format}{\code{string}. Formatting method to apply:
+\itemize{
+\item \code{"1:1"}: Return with 1:1 mappings. For Ensembl genes that don't map 1:1
+with Entrez, pick the oldest Entrez ID. Genes that don't map to Entrez
+will contain \code{NA} in \code{entrezID} column.
+\item \code{"long"}: Return 1:many in long format.
+\item \code{"list"}: Return 1:many with \code{entrezID} as a \code{list} column.
+}}
 }
 \value{
 \code{Ensembl2Entrez}.
