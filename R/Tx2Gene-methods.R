@@ -20,6 +20,7 @@ NULL
 Tx2Gene.DataFrame <-  # nolint
     function(object) {
         assert_has_rows(object)
+
         # Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
@@ -28,6 +29,7 @@ Tx2Gene.DataFrame <-  # nolint
                 "Requires: ", toString(cols)
             ))
         }
+
         data <- object %>%
             # Perform this first, otherwise can get a non atomic error due to
             # GRanges to DataFrame coercion containing "X" ranges column.
@@ -36,7 +38,9 @@ Tx2Gene.DataFrame <-  # nolint
             # This step is needed for handling raw GFF annotations.
             unique() %>%
             mutate_all(as.character) %>%
+            arrange(!!!syms(cols)) %>%
             as("DataFrame")
+
         metadata(data) <- .genomeMetadata(object)
         new(Class = "Tx2Gene", data)
     }
