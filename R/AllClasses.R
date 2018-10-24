@@ -279,16 +279,12 @@ setValidity(
     date = Sys.Date()
 )
 
-
-
 .hasPrototypeMetadata <- function(object) {
     is_subset(
         x = names(.prototypeMetadata),
         y = names(metadata(object))
     )
 }
-
-
 
 .assertHasPrototypeMetadata <- function(object) {
     assert_is_subset(
@@ -308,8 +304,6 @@ setValidity(
     )
 )
 
-
-
 .genomeMetadata <- function(object) {
     metadata <- metadata(object)
     prototypeMetadata <- .prototypeGenomeMetadata %>%
@@ -317,16 +311,12 @@ setValidity(
     c(prototypeMetadata, metadata)
 }
 
-
-
 .hasGenomeMetadata <- function(object) {
     all(genomeInfo %in% names(metadata(object)))
 }
 
-
-
 .assertHasGenomeMetadata <- function(object) {
-    if (!isTRUE(hasGenomeMetadata(object))) {
+    if (!isTRUE(.hasGenomeMetadata(object))) {
         stop(paste0(
             "Object does not contain genome information.\n",
             "Requires: ", toString(genomeInfo)
