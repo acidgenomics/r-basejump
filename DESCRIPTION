@@ -55,7 +55,6 @@ Imports:
     assertive.strings,
     assertive.types,
     cowplot (>= 0.9),
-    crayon,
     curl,
     dendsort,
     dplyr (>= 0.7),
