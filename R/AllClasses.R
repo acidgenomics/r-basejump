@@ -76,12 +76,11 @@ setValidity(
             x = colnames(object),
             y = c("geneID", "entrezID")
         )
-        assert_are_identical(
-            x = rownames(object),
-            y = as.character(object[["geneID"]])
-        )
         assert_has_no_duplicates(object[["geneID"]])
-        assert_is_integer(object[["entrezID"]])
+        assert_is_any_of(
+            x = object[["entrezID"]],
+            classes = c("integer", "list")
+        )
         TRUE
     }
 )
