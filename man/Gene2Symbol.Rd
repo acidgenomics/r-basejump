@@ -13,9 +13,11 @@ Gene2Symbol(object, ...)
 \S4method{Gene2Symbol}{DataFrame}(object, sanitization = c("makeUnique",
   "1:1", "none"))
 
-\S4method{Gene2Symbol}{GRanges}(object)
+\S4method{Gene2Symbol}{GRanges}(object, sanitization = c("makeUnique",
+  "1:1", "none"))
 
-\S4method{Gene2Symbol}{SummarizedExperiment}(object)
+\S4method{Gene2Symbol}{SummarizedExperiment}(object,
+  sanitization = c("makeUnique", "1:1", "none"))
 }
 \arguments{
 \item{object}{Object.}

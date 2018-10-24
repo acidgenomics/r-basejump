@@ -95,16 +95,23 @@ Gene2Symbol.DataFrame <-  # nolint
 
 
 Gene2Symbol.GRanges <-  # nolint
-    function(object) {
+    function(object, sanitization) {
         data <- as(object, "DataFrame")
         metadata(data) <- metadata(object)
-        Gene2Symbol(data)
+        do.call(
+            what = Gene2Symbol,
+            args = list(
+                object = data,
+                sanitization = sanitization
+            )
+        )
     }
+formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
 
 
 
 Gene2Symbol.SummarizedExperiment <-  # nolint
-    function(object) {
+    function(object, sanitization) {
         validObject(object)
         rownames <- rownames(object)
         if (is(object, "RangedSummarizedExperiment")) {
@@ -112,8 +119,15 @@ Gene2Symbol.SummarizedExperiment <-  # nolint
         } else {
             data <- rowData(object)
         }
-        Gene2Symbol(data)
+        do.call(
+            what = Gene2Symbol,
+            args = list(
+                object = data,
+                sanitization = sanitization
+            )
+        )
     }
+formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
 
 
 
