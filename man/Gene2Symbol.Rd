@@ -10,7 +10,8 @@
 \usage{
 Gene2Symbol(object, ...)
 
-\S4method{Gene2Symbol}{DataFrame}(object)
+\S4method{Gene2Symbol}{DataFrame}(object, sanitization = c("makeUnique",
+  "1:1", "none"))
 
 \S4method{Gene2Symbol}{GRanges}(object)
 
@@ -20,6 +21,17 @@ Gene2Symbol(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{sanitization}{\code{string}. Sanitization method to apply:
+\itemize{
+\item \code{makeUnique}: Apply \code{\link[base:make.unique]{base::make.unique()}} to the \code{geneName} column.
+Gene symbols are made unique, while the gene IDs remain unmodified.
+\item \code{1:1}: For gene symbols that map to multiple gene IDs, select only
+the first annotated gene ID.
+\item \code{unmodified}: Return both the \code{geneID} and \code{geneName} columns unmodified.
+For some organisms (e.g. \emph{Homo sapiens} and \emph{Mus musculus}), gene names
+and gene symbols do not map 1:1, so this is not generally recommended.
+}}
 }
 \value{
 \code{Gene2Symbol}.
