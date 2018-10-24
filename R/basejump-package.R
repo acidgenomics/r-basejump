@@ -77,8 +77,8 @@
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors %in% aggregate complete.cases cor DataFrame head List
-#'   mcols mcols<- metadata metadata<- na.omit tail
+#' @importFrom S4Vectors %in% aggregate complete.cases cor DataFrame expand head
+#'   List mcols mcols<- metadata metadata<- na.omit tail
 #' @importFrom sessioninfo session_info
 #' @importFrom SingleCellExperiment isSpike<- SingleCellExperiment reducedDims
 #'   reducedDimNames spikeNames
