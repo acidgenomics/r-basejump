@@ -118,6 +118,11 @@ setValidity(
         invisible(lapply(object, assert_is_character))
         # Assert that neither column has duplicates.
         invisible(lapply(object, assert_has_no_duplicates))
+        # Check for empty strings or NA values.
+        invisible(lapply(
+            X = object,
+            FUN = assert_all_are_non_missing_nor_empty_character
+        ))
         stopifnot(all(complete.cases(object)))
         TRUE
     }
