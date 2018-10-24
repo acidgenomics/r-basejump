@@ -65,9 +65,7 @@ Tx2Gene.SummarizedExperiment <-  # nolint
         } else {
             data <- rowData(object)
         }
-        out <- Tx2Gene(data)
-        rownames(out) <- rownames
-        out
+        Tx2Gene(data)
     }
 
 

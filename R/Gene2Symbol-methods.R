@@ -112,9 +112,7 @@ Gene2Symbol.SummarizedExperiment <-  # nolint
         } else {
             data <- rowData(object)
         }
-        out <- Gene2Symbol(data)
-        rownames(out) <- rownames
-        out
+        Gene2Symbol(data)
     }
 
 
