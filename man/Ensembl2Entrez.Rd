@@ -10,14 +10,12 @@
 \usage{
 Ensembl2Entrez(object, ...)
 
-\S4method{Ensembl2Entrez}{DataFrame}(object, format = c("1:1", "long",
-  "list"))
+\S4method{Ensembl2Entrez}{DataFrame}(object, format = c("1:1", "long"))
 
-\S4method{Ensembl2Entrez}{GRanges}(object, format = c("1:1", "long",
-  "list"))
+\S4method{Ensembl2Entrez}{GRanges}(object, format = c("1:1", "long"))
 
 \S4method{Ensembl2Entrez}{SummarizedExperiment}(object, format = c("1:1",
-  "long", "list"))
+  "long"))
 }
 \arguments{
 \item{object}{Object.}
@@ -26,11 +24,10 @@ Ensembl2Entrez(object, ...)
 
 \item{format}{\code{string}. Formatting method to apply:
 \itemize{
-\item \code{"1:1"}: Return with 1:1 mappings. For Ensembl genes that don't map 1:1
-with Entrez, pick the oldest Entrez ID. Genes that don't map to Entrez
-will contain \code{NA} in \code{entrezID} column.
+\item \code{"1:1"}: \emph{Recommended.} Return with 1:1 mappings. For Ensembl genes that
+don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't map
+to Entrez will contain \code{NA} in \code{entrezID} column.
 \item \code{"long"}: Return 1:many in long format.
-\item \code{"list"}: Return 1:many with \code{entrezID} as a \code{list} column.
 }}
 }
 \value{

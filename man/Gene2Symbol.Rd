@@ -10,29 +10,28 @@
 \usage{
 Gene2Symbol(object, ...)
 
-\S4method{Gene2Symbol}{DataFrame}(object, sanitization = c("makeUnique",
-  "1:1", "none"))
+\S4method{Gene2Symbol}{DataFrame}(object, format = c("makeUnique", "1:1",
+  "long"))
 
-\S4method{Gene2Symbol}{GRanges}(object, sanitization = c("makeUnique",
-  "1:1", "none"))
+\S4method{Gene2Symbol}{GRanges}(object, format = c("makeUnique", "1:1",
+  "long"))
 
 \S4method{Gene2Symbol}{SummarizedExperiment}(object,
-  sanitization = c("makeUnique", "1:1", "none"))
+  format = c("makeUnique", "1:1", "long"))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
 
-\item{sanitization}{\code{string}. Sanitization method to apply:
+\item{format}{\code{string}. Formatting method to apply:
 \itemize{
-\item \code{makeUnique}: Apply \code{\link[base:make.unique]{base::make.unique()}} to the \code{geneName} column.
-Gene symbols are made unique, while the gene IDs remain unmodified.
-\item \code{1:1}: For gene symbols that map to multiple gene IDs, select only
-the first annotated gene ID.
-\item \code{unmodified}: Return both the \code{geneID} and \code{geneName} columns unmodified.
-For some organisms (e.g. \emph{Homo sapiens} and \emph{Mus musculus}), gene names
-and gene symbols do not map 1:1, so this is not generally recommended.
+\item \code{"makeUnique"}: \emph{Recommended.} Apply \code{\link[base:make.unique]{base::make.unique()}} to the
+\code{geneName} column. Gene symbols are made unique, while the gene IDs remain
+unmodified.
+\item \code{"1:1"}: For gene symbols that map to multiple gene IDs, select only the
+first annotated gene ID.
+\item \code{"long"}: Return \code{geneID} and \code{geneName} columns unmodified in long format.
 }}
 }
 \value{
@@ -42,11 +41,9 @@ and gene symbols do not map 1:1, so this is not generally recommended.
 Gene-to-Symbol Mappings
 }
 \note{
-\itemize{
-\item This function will make any duplicated symbols unique by applying
-\code{\link[base:make.unique]{base::make.unique()}}, which will add ".1" to the end of the gene name.
-\item No attempt is made to arrange the rows by gene identifier.
-}
+For some organisms, gene names and gene symbols do not map 1:1
+(e.g. \emph{Homo sapiens} and \emph{Mus musculus}). Refer to the \code{format} argument here
+in the documentation for approaches that deal with this issue.
 }
 \section{Genome metadata}{
 
