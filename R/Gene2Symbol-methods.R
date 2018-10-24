@@ -1,21 +1,19 @@
 #' @inherit Gene2Symbol-class
 #'
-#' @note
-#' - This function will make any duplicated symbols unique by applying
-#'   [base::make.unique()], which will add ".1" to the end of the gene name.
-#' - No attempt is made to arrange the rows by gene identifier.
+#' @note For some organisms, gene names and gene symbols do not map 1:1
+#' (e.g. *Homo sapiens* and *Mus musculus*). Refer to the `format` argument here
+#' in the documentation for approaches that deal with this issue.
 #'
 #' @name Gene2Symbol
 #'
 #' @inheritParams general
-#' @param sanitization `string`. Sanitization method to apply:
-#' - `makeUnique`: Apply [base::make.unique()] to the `geneName` column.
-#'   Gene symbols are made unique, while the gene IDs remain unmodified.
-#' - `1:1`: For gene symbols that map to multiple gene IDs, select only
-#'   the first annotated gene ID.
-#' - `unmodified`: Return both the `geneID` and `geneName` columns unmodified.
-#'   For some organisms (e.g. *Homo sapiens* and *Mus musculus*), gene names
-#'   and gene symbols do not map 1:1, so this is not generally recommended.
+#' @param format `string`. Formatting method to apply:
+#' - `"makeUnique"`: *Recommended.* Apply [base::make.unique()] to the
+#'   `geneName` column. Gene symbols are made unique, while the gene IDs remain
+#'   unmodified.
+#' - `"1:1"`: For gene symbols that map to multiple gene IDs, select only the
+#'   first annotated gene ID.
+#' - `"long"`: Return `geneID` and `geneName` columns unmodified in long format.
 #'
 #' @return `Gene2Symbol`.
 #'
@@ -30,10 +28,10 @@ NULL
 Gene2Symbol.DataFrame <-  # nolint
     function(
         object,
-        sanitization = c("makeUnique", "1:1", "none")
+        format = c("makeUnique", "1:1", "long")
     ) {
         assert_has_rows(object)
-        sanitization <- match.arg(sanitization)
+        format <- match.arg(format)
 
         # Check for required columns.
         cols <- c("geneID", "geneName")
@@ -44,65 +42,53 @@ Gene2Symbol.DataFrame <-  # nolint
             ))
         }
 
-        data <- object %>%
-            # Perform this first, otherwise can get a non atomic error due to
-            # GRanges to DataFrame coercion containing "X" ranges column.
-            .[, cols, drop = FALSE] %>%
-            as_tibble(rownames = NULL) %>%
-            # This step is needed for handling raw GFF annotations.
-            unique() %>%
-            mutate_all(as.character) %>%
-            arrange(!!!syms(cols))
+        data <- object[, cols, drop = FALSE]
 
+        # Inform the user about how many symbols multi-map.
         duplicated <- duplicated(data[["geneName"]])
         if (any(duplicated)) {
             dupes <- unique(data[["geneName"]][duplicated])
             message(paste(
                 length(dupes), "non-unique gene symbols detected."
             ))
-            if (sanitization == "makeUnique") {
-                message("Making gene symbols unique.")
-                data <- mutate(
-                    data,
-                    !!sym("geneName") := make.unique(!!sym("geneName"))
-                )
-            } else if (sanitization == "1:1") {
-                message("Making 1:1 using oldest gene ID.")
-                data <- data %>%
-                    arrange(!!!syms(cols)) %>%
-                    group_by(!!sym("geneName")) %>%
-                    slice(n = 1L) %>%
-                    ungroup() %>%
-                    arrange(!!!syms(cols))
-            } else {
-                # Warn if there are duplicates that won't be sanitized.
-                if (any(duplicated(object[["geneName"]]))) {
-                    warning(paste(
-                        "Object contains duplicate gene symbols.",
-                        "Sanitization is recommended.",
-                        sep = "\n"
-                    ))
-                }
-            }
+        }
+
+        if (format == "makeUnique") {
+            message("Returning 1:1 mappings with renamed gene symbols.")
+            data[["geneName"]] <- data[["geneName"]] %>%
+                as.character() %>%
+                make.unique()
+        } else if (format == "1:1") {
+            message("Returning 1:1 mappings using oldest gene ID per symbol.")
+            data <- data %>%
+                as_tibble(rownames = NULL) %>%
+                mutate_all(as.character) %>%
+                group_by(!!sym("geneName")) %>%
+                arrange(!!!sym("geneID"), .by_group = TRUE) %>%
+                slice(n = 1L) %>%
+                ungroup()
+        } else if (format == "long") {
+            message("Returning mappings in long format.")
         }
 
         data <- as(data, "DataFrame")
         metadata(data) <- .genomeMetadata(object)
-        metadata(data)[["sanitization"]] <- sanitization
+        metadata(data)[["format"]] <- format
         new(Class = "Gene2Symbol", data)
     }
 
 
 
 Gene2Symbol.GRanges <-  # nolint
-    function(object, sanitization) {
+    function(object, format) {
         data <- as(object, "DataFrame")
+        data <- unique(data)
         metadata(data) <- metadata(object)
         do.call(
             what = Gene2Symbol,
             args = list(
                 object = data,
-                sanitization = sanitization
+                format = format
             )
         )
     }
@@ -111,19 +97,13 @@ formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
 
 
 Gene2Symbol.SummarizedExperiment <-  # nolint
-    function(object, sanitization) {
-        validObject(object)
-        rownames <- rownames(object)
-        if (is(object, "RangedSummarizedExperiment")) {
-            data <- rowRanges(object)
-        } else {
-            data <- rowData(object)
-        }
+    function(object, format) {
+        object <- as.SummarizedExperiment(object)
         do.call(
             what = Gene2Symbol,
             args = list(
-                object = data,
-                sanitization = sanitization
+                object = rowData(object),
+                format = format
             )
         )
     }
