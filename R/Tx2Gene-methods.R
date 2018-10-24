@@ -31,14 +31,9 @@ Tx2Gene.DataFrame <-  # nolint
         }
 
         data <- object %>%
-            # Perform this first, otherwise can get a non atomic error due to
-            # GRanges to DataFrame coercion containing "X" ranges column.
             .[, cols, drop = FALSE] %>%
-            as_tibble(rownames = NULL) %>%
-            # This step is needed for handling raw GFF annotations.
-            unique() %>%
+            as("tbl_df") %>%
             mutate_all(as.character) %>%
-            arrange(!!!syms(cols)) %>%
             as("DataFrame")
 
         metadata(data) <- .genomeMetadata(object)
@@ -50,6 +45,8 @@ Tx2Gene.DataFrame <-  # nolint
 Tx2Gene.GRanges <-  # nolint
     function(object) {
         data <- as(object, "DataFrame")
+        # This step is needed for handling raw GFF annotations.
+        data <- unique(data)
         metadata(data) <- metadata(object)
         Tx2Gene(data)
     }
@@ -58,14 +55,13 @@ Tx2Gene.GRanges <-  # nolint
 
 Tx2Gene.SummarizedExperiment <-  # nolint
     function(object) {
-        validObject(object)
-        rownames <- rownames(object)
-        if (is(object, "RangedSummarizedExperiment")) {
-            data <- rowRanges(object)
-        } else {
-            data <- rowData(object)
-        }
-        Tx2Gene(data)
+        object <- as.SummarizedExperiment(object)
+        do.call(
+            what = Tx2Gene,
+            args = list(
+                object = rowData(object)
+            )
+        )
     }
 
 
