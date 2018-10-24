@@ -25,13 +25,7 @@ NULL
 
 # Internal =====================================================================
 .showHeader <- function(object) {
-    cat(c(
-        bold(paste(
-            class(object),
-            metadata(object)[["version"]]
-        )),
-        italic("https://steinbaugh.com/basejump")
-    ), sep = "\n")
+    cat(paste(class(object), metadata(object)[["version"]]), sep = "\n")
 }
 
 
