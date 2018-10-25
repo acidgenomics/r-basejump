@@ -29,7 +29,9 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends: R (>= 3.4), IRanges
+Depends:
+    R (>= 3.5),
+    IRanges
 Imports:
     AnnotationHub,
     Biobase,
@@ -42,7 +44,7 @@ Imports:
     R.utils,
     RColorBrewer,
     RCurl,
-    S4Vectors,
+    S4Vectors (>= 0.19.11),
     SingleCellExperiment,
     SummarizedExperiment,
     assertive.base,
