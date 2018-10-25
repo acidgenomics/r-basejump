@@ -23,7 +23,7 @@ matrix:
     - bioc-release
     - bioc-devel
   - os: osx
-    r: bioc-devel
+    r: bioc-release
     fortran: false
   fast_finish: true
 
