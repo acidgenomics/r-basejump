@@ -1,4 +1,5 @@
 # AppVeyor-CI configuration for Bioconductor packages
+# https://www.appveyor.com/docs/appveyor-yml/
 # https://github.com/krlmlr/r-appveyor
 
 # Download script file from GitHub.
@@ -12,10 +13,6 @@ install:
   ps: Bootstrap
 
 platform: x64
-
-# Cache size limit is currently too small for R packages.
-# cache:
-#   - C:\RLibrary
 
 environment:
   global:
@@ -57,3 +54,11 @@ artifacts:
 
   - path: '\*_*.zip'
     name: Bits
+
+notifications:
+  - provider: Email
+    to:
+      - mike@steinbaugh.com
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: true
