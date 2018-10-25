@@ -113,10 +113,11 @@ setValidity(
             y = c("geneID", "geneName")
         )
         assert_has_rows(object)
-        # Assert that all columns are character.
-        invisible(lapply(object, assert_is_character))
-        # Assert that neither column has duplicates.
-        invisible(lapply(object, assert_has_no_duplicates))
+        assert_is_character(object[["geneID"]])
+        assert_is_any_of(
+            x = object[["geneName"]],
+            classes = c("character", "factor")
+        )
         # Check for empty strings or NA values.
         invisible(lapply(
             X = object,
