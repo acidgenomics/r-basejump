@@ -1,6 +1,3 @@
-# Good example on how to set informative validity checks:
-# http://adv-r.had.co.nz/S4.html
-
 # EggNOG =======================================================================
 #' EggNOG Database Annotations
 #'
@@ -33,7 +30,7 @@ setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
 setValidity(
     Class = "EggNOG",
     method = function(object) {
-        valid <- list(
+        .valid(list(
             validate_that(identical(
                 x = names(object),
                 y = c("cogFunctionalCategories", "annotations")
@@ -50,13 +47,7 @@ setValidity(
                     "cogFunctionalCategory"
                 )
             ))
-        )
-        invalid <- Filter(f = Negate(isTRUE), valid)
-        if (has_length(invalid)) {
-            unlist(invalid)
-        } else {
-            TRUE
-        }
+        ))
     }
 )
 
@@ -80,16 +71,16 @@ setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 setValidity(
     Class = "Ensembl2Entrez",
     method = function(object) {
-        validate_that(identical(
-            x = colnames(object),
-            y = c("geneID", "entrezID")
+        .valid(list(
+            validate_that(identical(
+                x = colnames(object),
+                y = c("geneID", "entrezID")
+            )),
+            validate_that(!any(duplicated(object[["geneID"]]))),
+            validate_that(
+                class(object[["entrezID"]]) %in% c("integer", "list")
+            )
         ))
-        validate_that(!any(duplicated(object[["geneID"]])))
-        validate_that(
-            is.integer(object[["entrezID"]]) ||
-                is.list(object[["entrezID"]])
-        )
-        TRUE
     }
 )
 
@@ -115,32 +106,18 @@ setClass(Class = "Gene2Symbol", contains = "DataFrame")
 setValidity(
     Class = "Gene2Symbol",
     method = function(object) {
-        errors <- character()
-
-        validate_that(identical(
-            x = colnames(object),
-            y = c("geneID", "geneName")
+        .valid(list(
+            validate_that(identical(
+                x = colnames(object),
+                y = c("geneID", "geneName")
+            )),
+            validate_that(nrow(object) > 0L),
+            validate_that(is.character(object[["geneID"]])),
+            validate_that(
+                class(object[["geneName"]]) %in% c("character", "factor")
+            ),
+            validate_that(all(complete.cases(object)))
         ))
-        validate_that(nrow(object) > 0L)
-        validate_that(is.character(object[["geneID"]]))
-        validate_that(
-            is.character(object[["geneName"]]) ||
-                is.factor(object[["geneName"]])
-        )
-        assert_is_any_of(
-            x = object[["geneName"]],
-            classes = c("character", "factor")
-        )
-        # Check for empty strings or NA values.
-        invisible(lapply(
-            X = object,
-            FUN = function(x) {
-                x <- as.character(x)
-                assert_all_are_non_missing_nor_empty_character(x)
-            }
-        ))
-        validate_that(all(complete.cases(object)))
-        TRUE
     }
 )
 
@@ -158,22 +135,22 @@ setValidity(
 #'
 #' @seealso [HGNC2Ensembl()].
 setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
-
 setValidity(
     Class = "HGNC2Ensembl",
     method = function(object) {
-        assert_are_identical(
-            x = lapply(object, class),
-            y = list(
-                hgncID = "integer",
-                geneID = "character"
-            )
-        )
-        assert_are_identical(
-            x = rownames(object),
-            y = NULL
-        )
-        TRUE
+        .valid(list(
+            validate_that(identical(
+                x = lapply(object, class),
+                y = list(
+                    hgncID = "integer",
+                    geneID = "character"
+                )
+            )),
+            validate_that(identical(
+                x = rownames(object),
+                y = NULL
+            ))
+        ))
     }
 )
 
@@ -191,19 +168,16 @@ setValidity(
 #'
 #' @seealso [MGI2Ensembl()].
 setClass(Class = "MGI2Ensembl", contains = "DataFrame")
-
 setValidity(
     Class = "MGI2Ensembl",
     method = function(object) {
-        assert_are_identical(
-            x = colnames(object),
-            y = c("mgiID", "geneID")
-        )
-        assert_are_identical(
-            x = rownames(object),
-            y = NULL
-        )
-        TRUE
+        .valid(list(
+            identical(
+                x = colnames(object),
+                y = c("mgiID", "geneID")
+            ),
+            is.null(rownames(object))
+        ))
     }
 )
 
@@ -224,29 +198,26 @@ setValidity(
 #'
 #' @seealso [PANTHER()].
 setClass(Class = "PANTHER", contains = "DataFrame")
-
 setValidity(
     Class = "PANTHER",
     method = function(object) {
-        assert_are_identical(
-            x = colnames(object),
-            y = c(
-                "geneID",
-                "goBP",
-                "goCC",
-                "goMF",
-                "pantherClass",
-                "pantherFamilyName",
-                "pantherPathway",
-                "pantherSubfamilyID",
-                "pantherSubfamilyName"
-            )
-        )
-        assert_is_subset(
-            x = c("organism", "release"),
-            y = names(metadata(object))
-        )
-        TRUE
+        .valid(list(
+            identical(
+                x = colnames(object),
+                y = c(
+                    "geneID",
+                    "goBP",
+                    "goCC",
+                    "goMF",
+                    "pantherClass",
+                    "pantherFamilyName",
+                    "pantherPathway",
+                    "pantherSubfamilyID",
+                    "pantherSubfamilyName"
+                )
+            ),
+            all(c("organism", "release") %in% names(metadata(object)))
+        ))
     }
 )
 
@@ -269,27 +240,42 @@ setValidity(
 #'
 #' @seealso [Tx2Gene()], [makeTx2Gene].
 setClass(Class = "Tx2Gene", contains = "DataFrame")
-
 setValidity(
     Class = "Tx2Gene",
     method = function(object) {
-        assert_has_rows(object)
-        assert_are_identical(
-            x = colnames(object),
-            y = c("transcriptID", "geneID")
-        )
-        # Assert that all columns are character.
-        invisible(lapply(object, assert_is_character))
-        # Assert that there are no duplicate transcripts.
-        assert_has_no_duplicates(object[["transcriptID"]])
-        stopifnot(all(complete.cases(object)))
-        TRUE
+        .valid(list(
+            nrow(object) > 0L,
+            identical(
+                x = colnames(object),
+                y = c("transcriptID", "geneID")
+            ),
+            all(vapply(
+                X = object,
+                FUN = is.character,
+                FUN.VALUE = logical(1L)
+            )),
+            !any(duplicated(object[["transcriptID"]])),
+            all(complete.cases(object))
+        ))
     }
 )
 
 
 
 # Internal =====================================================================
+# Good example on how to set informative validity checks:
+# http://adv-r.had.co.nz/S4.html
+.valid <- function(list) {
+    invalid <- Filter(f = Negate(isTRUE), x = list)
+    if (has_length(invalid)) {
+        unlist(invalid)
+    } else {
+        TRUE
+    }
+}
+
+
+
 .prototypeMetadata <- list(
     version = packageVersion("basejump"),
     date = Sys.Date()
