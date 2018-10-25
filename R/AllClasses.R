@@ -33,7 +33,7 @@ setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
 setValidity(
     Class = "EggNOG",
     method = function(object) {
-        pass <- list(
+        valid <- list(
             validate_that(identical(
                 x = names(object),
                 y = c("cogFunctionalCategories", "annotations")
@@ -51,9 +51,9 @@ setValidity(
                 )
             ))
         )
-        fail <- Filter(f = Negate(isTRUE), pass)
-        if (has_length(fail)) {
-            unlist(fail)
+        invalid <- Filter(f = Negate(isTRUE), valid)
+        if (has_length(invalid)) {
+            unlist(invalid)
         } else {
             TRUE
         }
