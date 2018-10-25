@@ -1,28 +1,30 @@
 # Travis-CI configuration for Bioconductor packages
 # https://docs.travis-ci.com/user/languages/r
 
-language: R
-sudo: false
-dist: trusty
+language: r
 cache: packages
-latex: false
+sudo: false
+bioc_required: true
 
-# TODO Add a cache step here for Bioconductor packages.
+# latex: false
+# warnings_are_errors: false
+
+# Temporarily enable when caching package library.
+# script: true
+
+# TODO Add a cache step here instead using "jobs" for package library?
 # https://docs.travis-ci.com/user/caching/
 # https://docs.travis-ci.com/user/build-stages/warm-cache/
 
-# Temporarily enable when caching Bioconductor packages.
-# script: true
-
-jobs:
-  include:
-  - r: bioc-release
-  - r: bioc-devel
-    warnings_are_errors: false
-  - os: osx
-    fortran: false
-
 matrix:
+  include:
+  - os: linux
+    r:
+    - bioc-release
+    - bioc-devel
+  - os: osx
+    r: bioc-devel
+    fortran: false
   fast_finish: true
 
 # blocklist
