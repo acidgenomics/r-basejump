@@ -109,10 +109,12 @@ formals(Ensembl2Entrez.GRanges) <- formals(Ensembl2Entrez.DataFrame)
 Ensembl2Entrez.SummarizedExperiment <-  # nolint
     function(object) {
         object <- as.SummarizedExperiment(object)
+        data <- rowData(object)
+        rownames(data) <- rownames(object)
         do.call(
             what = Ensembl2Entrez,
             args = list(
-                object = rowData(object),
+                object = data,
                 format = format
             )
         )
