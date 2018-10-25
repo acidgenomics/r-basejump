@@ -25,6 +25,7 @@ NULL
 
 
 
+# DataFrame ====================================================================
 Gene2Symbol.DataFrame <-  # nolint
     function(
         object,
@@ -79,6 +80,17 @@ Gene2Symbol.DataFrame <-  # nolint
 
 
 
+#' @rdname Gene2Symbol
+#' @export
+setMethod(
+    f = "Gene2Symbol",
+    signature = signature("DataFrame"),
+    definition = Gene2Symbol.DataFrame
+)
+
+
+
+# GRanges ======================================================================
 Gene2Symbol.GRanges <-  # nolint
     function(object, format) {
         data <- as(object, "DataFrame")
@@ -96,31 +108,6 @@ formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
 
 
 
-Gene2Symbol.SummarizedExperiment <-  # nolint
-    function(object, format) {
-        object <- as.SummarizedExperiment(object)
-        do.call(
-            what = Gene2Symbol,
-            args = list(
-                object = rowData(object),
-                format = format
-            )
-        )
-    }
-formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
-
-
-
-#' @rdname Gene2Symbol
-#' @export
-setMethod(
-    f = "Gene2Symbol",
-    signature = signature("DataFrame"),
-    definition = Gene2Symbol.DataFrame
-)
-
-
-
 #' @rdname Gene2Symbol
 #' @export
 setMethod(
@@ -128,6 +115,24 @@ setMethod(
     signature = signature("GRanges"),
     definition = Gene2Symbol.GRanges
 )
+
+
+
+# SummarizedExperiment =========================================================
+Gene2Symbol.SummarizedExperiment <-  # nolint
+    function(object, format) {
+        object <- as.SummarizedExperiment(object)
+        data <- rowData(object)
+        rownames(data) <- rownames(object)
+        do.call(
+            what = Gene2Symbol,
+            args = list(
+                object = data,
+                format = format
+            )
+        )
+    }
+formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
 
 
 
