@@ -41,7 +41,7 @@
 #'     head()
 #' print(geneNames)
 #'
-#' ## Row names,
+#' ## Row names.
 #' mapGenesToRownames(object, genes = rownames)
 #' mapGenesToRownames(object, genes = geneIDs)
 #' mapGenesToRownames(object, genes = geneNames)
@@ -59,6 +59,7 @@ NULL
 
 
 
+# Internal =====================================================================
 .mapGenes <- function(object, genes, strict = TRUE) {
     assert_is_all_of(object, "Gene2Symbol")
     validObject(object)
@@ -124,10 +125,22 @@ mapGenesToRownames.Gene2Symbol <-  # nolint
 
 
 
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToRownames",
+    signature = signature("Gene2Symbol"),
+    definition = mapGenesToRownames.Gene2Symbol
+)
+
+
+
 mapGenesToRownames.SummarizedExperiment <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        g2s <- Gene2Symbol(object)
+        suppressMessages(
+            g2s <- Gene2Symbol(object)
+        )
         assert_are_identical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToRownames,
@@ -138,16 +151,6 @@ mapGenesToRownames.SummarizedExperiment <-  # nolint
             )
         )
     }
-
-
-
-#' @rdname mapGenes
-#' @export
-setMethod(
-    f = "mapGenesToRownames",
-    signature = signature("Gene2Symbol"),
-    definition = mapGenesToRownames.Gene2Symbol
-)
 
 
 
@@ -181,10 +184,22 @@ mapGenesToIDs.Gene2Symbol <-  # nolint
 
 
 
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToIDs",
+    signature = signature("Gene2Symbol"),
+    definition = mapGenesToIDs.Gene2Symbol
+)
+
+
+
 mapGenesToIDs.SummarizedExperiment <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        g2s <- Gene2Symbol(object)
+        suppressMessages(
+            g2s <- Gene2Symbol(object)
+        )
         assert_are_identical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToIDs,
@@ -195,16 +210,6 @@ mapGenesToIDs.SummarizedExperiment <-  # nolint
             )
         )
     }
-
-
-
-#' @rdname mapGenes
-#' @export
-setMethod(
-    f = "mapGenesToIDs",
-    signature = signature("Gene2Symbol"),
-    definition = mapGenesToIDs.Gene2Symbol
-)
 
 
 
@@ -238,10 +243,22 @@ mapGenesToSymbols.Gene2Symbol <-  # nolint
 
 
 
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToSymbols",
+    signature = signature("Gene2Symbol"),
+    definition = mapGenesToSymbols.Gene2Symbol
+)
+
+
+
 mapGenesToSymbols.SummarizedExperiment <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        g2s <- Gene2Symbol(object)
+        suppressMessages(
+            g2s <- Gene2Symbol(object)
+        )
         assert_are_identical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToSymbols,
@@ -252,16 +269,6 @@ mapGenesToSymbols.SummarizedExperiment <-  # nolint
             )
         )
     }
-
-
-
-#' @rdname mapGenes
-#' @export
-setMethod(
-    f = "mapGenesToSymbols",
-    signature = signature("Gene2Symbol"),
-    definition = mapGenesToSymbols.Gene2Symbol
-)
 
 
 

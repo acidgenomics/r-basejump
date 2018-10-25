@@ -84,7 +84,7 @@ geneNames <- object \%>\%
     head()
 print(geneNames)
 
-## Row names,
+## Row names.
 mapGenesToRownames(object, genes = rownames)
 mapGenesToRownames(object, genes = geneIDs)
 mapGenesToRownames(object, genes = geneNames)
