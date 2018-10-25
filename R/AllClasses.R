@@ -1,3 +1,6 @@
+# Good example on how to set informative validity checks:
+# http://adv-r.had.co.nz/S4.html
+
 # EggNOG =======================================================================
 #' EggNOG Database Annotations
 #'
@@ -27,27 +30,33 @@
 #' The [EggNOG README file](http://eggnogdb.embl.de/download/latest/README.txt)
 #' contains additional useful reference information.
 setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
-
 setValidity(
     Class = "EggNOG",
     method = function(object) {
-        assert_are_identical(
-            x = names(object),
-            y = c("cogFunctionalCategories", "annotations")
+        pass <- list(
+            validate_that(identical(
+                x = names(object),
+                y = c("cogFunctionalCategories", "annotations")
+            )),
+            validate_that(identical(
+                x = colnames(object[["cogFunctionalCategories"]]),
+                y = c("letter", "description")
+            )),
+            validate_that(identical(
+                x = colnames(object[["annotations"]]),
+                y = c(
+                    "eggnogID",
+                    "consensusFunctionalDescription",
+                    "cogFunctionalCategory"
+                )
+            ))
         )
-        assert_are_identical(
-            x = colnames(object[["cogFunctionalCategories"]]),
-            y = c("letter", "description")
-        )
-        assert_are_identical(
-            x = colnames(object[["annotations"]]),
-            y = c(
-                "eggnogID",
-                "consensusFunctionalDescription",
-                "cogFunctionalCategory"
-            )
-        )
-        TRUE
+        fail <- Filter(f = Negate(isTRUE), pass)
+        if (has_length(fail)) {
+            unlist(fail)
+        } else {
+            TRUE
+        }
     }
 )
 
@@ -68,18 +77,17 @@ setValidity(
 #'
 #' @seealso [Ensembl2Entrez()].
 setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
-
 setValidity(
     Class = "Ensembl2Entrez",
     method = function(object) {
-        assert_are_identical(
+        validate_that(identical(
             x = colnames(object),
             y = c("geneID", "entrezID")
-        )
-        assert_has_no_duplicates(object[["geneID"]])
-        assert_is_any_of(
-            x = object[["entrezID"]],
-            classes = c("integer", "list")
+        ))
+        validate_that(!any(duplicated(object[["geneID"]])))
+        validate_that(
+            is.integer(object[["entrezID"]]) ||
+                is.list(object[["entrezID"]])
         )
         TRUE
     }
@@ -104,16 +112,21 @@ setValidity(
 #'
 #' @seealso [Gene2Symbol()], [makeGene2Symbol].
 setClass(Class = "Gene2Symbol", contains = "DataFrame")
-
 setValidity(
     Class = "Gene2Symbol",
     method = function(object) {
-        assert_are_identical(
+        errors <- character()
+
+        validate_that(identical(
             x = colnames(object),
             y = c("geneID", "geneName")
+        ))
+        validate_that(nrow(object) > 0L)
+        validate_that(is.character(object[["geneID"]]))
+        validate_that(
+            is.character(object[["geneName"]]) ||
+                is.factor(object[["geneName"]])
         )
-        assert_has_rows(object)
-        assert_is_character(object[["geneID"]])
         assert_is_any_of(
             x = object[["geneName"]],
             classes = c("character", "factor")
@@ -121,9 +134,12 @@ setValidity(
         # Check for empty strings or NA values.
         invisible(lapply(
             X = object,
-            FUN = assert_all_are_non_missing_nor_empty_character
+            FUN = function(x) {
+                x <- as.character(x)
+                assert_all_are_non_missing_nor_empty_character(x)
+            }
         ))
-        stopifnot(all(complete.cases(object)))
+        validate_that(all(complete.cases(object)))
         TRUE
     }
 )
