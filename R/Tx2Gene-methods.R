@@ -17,6 +17,7 @@ NULL
 
 
 
+# DataFrame ====================================================================
 Tx2Gene.DataFrame <-  # nolint
     function(object) {
         assert_has_rows(object)
@@ -42,6 +43,17 @@ Tx2Gene.DataFrame <-  # nolint
 
 
 
+#' @rdname Tx2Gene
+#' @export
+setMethod(
+    f = "Tx2Gene",
+    signature = signature("DataFrame"),
+    definition = Tx2Gene.DataFrame
+)
+
+
+
+# GRanges ======================================================================
 Tx2Gene.GRanges <-  # nolint
     function(object) {
         data <- as(object, "DataFrame")
@@ -53,29 +65,6 @@ Tx2Gene.GRanges <-  # nolint
 
 
 
-Tx2Gene.SummarizedExperiment <-  # nolint
-    function(object) {
-        object <- as.SummarizedExperiment(object)
-        do.call(
-            what = Tx2Gene,
-            args = list(
-                object = rowData(object)
-            )
-        )
-    }
-
-
-
-#' @rdname Tx2Gene
-#' @export
-setMethod(
-    f = "Tx2Gene",
-    signature = signature("DataFrame"),
-    definition = Tx2Gene.DataFrame
-)
-
-
-
 #' @rdname Tx2Gene
 #' @export
 setMethod(
@@ -83,6 +72,20 @@ setMethod(
     signature = signature("GRanges"),
     definition = Tx2Gene.GRanges
 )
+
+
+
+# SummarizedExperiment =========================================================
+Tx2Gene.SummarizedExperiment <-  # nolint
+    function(object) {
+        object <- as.SummarizedExperiment(object)
+        data <- rowData(object)
+        rownames(data) <- rownames(object)
+        do.call(
+            what = Tx2Gene,
+            args = list(object = data)
+        )
+    }
 
 
 
