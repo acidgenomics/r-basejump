@@ -44,7 +44,7 @@ Imports:
     R.utils,
     RColorBrewer,
     RCurl,
-    S4Vectors (>= 0.19.11),
+    S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
     assertive.base,
