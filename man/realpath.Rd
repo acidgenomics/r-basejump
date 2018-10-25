@@ -63,5 +63,8 @@ realpath(".")
 normalizePath(".")
 }
 \seealso{
-\code{\link[base:normalizePath]{base::normalizePath()}}.
+\itemize{
+\item \code{\link[base:file.path]{base::file.path()}}.
+\item \code{\link[base:normalizePath]{base::normalizePath()}}.
+}
 }
