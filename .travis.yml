@@ -19,7 +19,7 @@ matrix:
     latex: false
     warnings_are_errors: false
   - os: osx
-    r: bioc-devel
+    r: bioc-release
     fortran: false
     latex: false
     warnings_are_errors: false
