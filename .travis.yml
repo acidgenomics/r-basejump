@@ -6,45 +6,30 @@ cache: packages
 sudo: false
 bioc_required: true
 
-# latex: false
-# warnings_are_errors: false
-
 # Temporarily enable when caching package library.
 # script: true
-
-# TODO Add a cache step here instead using "jobs" for package library?
-# https://docs.travis-ci.com/user/caching/
-# https://docs.travis-ci.com/user/build-stages/warm-cache/
 
 matrix:
   include:
   - os: linux
-    r:
-    - bioc-release
-    - bioc-devel
+    r: bioc-release
+    warnings_are_errors: true
+  - os: linux
+    r: bioc-devel
+    latex: false
+    warnings_are_errors: false
   - os: osx
     r: bioc-release
     fortran: false
+    latex: false
+    warnings_are_errors: false
   fast_finish: true
-
-# blocklist
-# branches:
-#   except:
-#   - develop
-
-# safelist
-# branches:
-#   only:
-#   - master
 
 env:
   global:
     - _R_CHECK_FORCE_SUGGESTS_=false
     - LINTR_COMMENT_BOT=true
     - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
-
-# r_build_args: "--no-build-vignettes"
-# r_check_args: "--no-vignettes"
 
 r_packages:
   - covr
@@ -53,6 +38,9 @@ bioc_packages:
   - EnsDb.Hsapiens.v75
 r_github_packages:
   - jimhester/lintr
+
+# r_build_args: "--no-build-vignettes"
+# r_check_args: "--no-vignettes"
 
 after_success:
   - Rscript -e 'lintr::lint_package()'
