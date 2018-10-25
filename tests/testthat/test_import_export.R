@@ -441,6 +441,7 @@ remoteDir <- paste(
 )
 
 test_that("transmit", {
+    skip_on_travis()
     object <- transmit(
         remoteDir = remoteDir,
         pattern = "README",
@@ -449,7 +450,6 @@ test_that("transmit", {
     expected <- file.path(getwd(), "README")
     names(expected) <- "README"
     expect_identical(object, expected)
-
     # Check that function skips on existing
     expect_message(
         object = transmit(
@@ -459,11 +459,11 @@ test_that("transmit", {
         ),
         regexp = "All files are already downloaded."
     )
-
     unlink("README")
 })
 
 test_that("transmit : Rename and compress", {
+    skip_on_travis()
     object <- transmit(
         remoteDir = remoteDir,
         pattern = "README",
@@ -477,6 +477,7 @@ test_that("transmit : Rename and compress", {
 })
 
 test_that("transmit : Invalid parameters", {
+    skip_on_travis()
     expect_error(
         object = transmit(
             remoteDir = "http://steinbaugh.com",
