@@ -17,22 +17,15 @@ cache:
 
 environment:
   global:
-    BIOC_USE_DEVEL: true
+    # BIOC_USE_DEVEL: true
     R_ARCH: x64
     USE_RTOOLS: true
     # WARNINGS_ARE_ERRORS: 1
 
-# 2018-10-25 Bioc 3.7
-# Error: package or namespace load failed for 'GenomicRanges':
-#   (converted from warning) no function found corresponding to methods exports
-#   from 'XVector' for: 'concatenateObjects'
-# Error : package 'GenomicRanges' could not be loaded
-
 build_script:
-  - travis-tool.sh install_github Bioconductor/GenomicRanges
   - travis-tool.sh install_bioc GenomeInfoDbData
   - travis-tool.sh install_bioc DelayedArray
-  - travis-tool.sh install_github jotsetung/ensembldb
+  - travis-tool.sh install_bioc ensembldb
   - travis-tool.sh install_bioc EnsDb.Hsapiens.v75
   - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_deps
