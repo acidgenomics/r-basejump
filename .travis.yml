@@ -1,21 +1,28 @@
 # Travis-CI configuration for Bioconductor packages
 # https://docs.travis-ci.com/user/languages/r
 
-language: r
+language: R
+sudo: false
+dist: trusty
 cache: packages
+latex: false
 
-r:
-  - bioc-release
-  - bioc-devel
+# TODO Add a cache step here for Bioconductor packages.
+# https://docs.travis-ci.com/user/caching/
+# https://docs.travis-ci.com/user/build-stages/warm-cache/
 
-os:
-  - linux
-  - osx
+# Temporarily enable when caching Bioconductor packages.
+# script: true
+
+jobs:
+  include:
+  - r: bioc-release
+  - r: bioc-devel
+    warnings_are_errors: false
+  - os: osx
 
 matrix:
-  exclude:
-  - os: osx
-    r: bioc-devel
+  fast_finish: true
 
 # blocklist
 # branches:
@@ -29,18 +36,12 @@ matrix:
 
 env:
   global:
+    - _R_CHECK_FORCE_SUGGESTS_=false
     - LINTR_COMMENT_BOT=true
+    - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
 
 # r_build_args: "--no-build-vignettes"
 # r_check_args: "--no-vignettes"
-
-# Set true before submission to Bioconductor.
-# Ignoring built with R 3.5.1 warnings.
-# Ignoring BiocInstaller deprecation warning.
-warnings_are_errors: false
-
-# Temporarily enable when caching Bioconductor packages.
-# script: true
 
 r_packages:
   - covr
