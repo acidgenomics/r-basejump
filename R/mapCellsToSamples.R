@@ -1,3 +1,7 @@
+# FIXME Make this a generic that works on SCE.
+
+
+
 #' Map Cells to Samples
 #'
 #' This function extracts `sampleID` from the `cellID` column using grep
