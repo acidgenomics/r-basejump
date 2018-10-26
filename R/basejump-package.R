@@ -4,8 +4,6 @@
 #'
 #' @keywords internal
 #'
-#' @importClassesFrom IRanges SimpleDataFrameList
-#' @importClassesFrom S4Vectors DataFrame
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom SingleCellExperiment coerce
