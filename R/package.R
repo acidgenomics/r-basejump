@@ -43,7 +43,6 @@
 #' @importFrom assertthat validate_that
 #' @importFrom BiocGenerics as.data.frame as.list do.call lapply match setdiff
 #' @importFrom cowplot plot_grid
-#' @importFrom curl has_internet
 #' @importFrom dplyr arrange bind_rows case_when desc filter funs group_by
 #'   left_join mutate mutate_all mutate_at mutate_if n pull rename select
 #'   select_if slice summarize summarize_all top_n ungroup
@@ -59,7 +58,6 @@
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom IRanges IRanges
-#' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
@@ -71,7 +69,6 @@
 #' @importFrom purrr map
 #' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
-#' @importFrom RCurl getURL url.exists
 #' @importFrom readr cols read_lines read_tsv write_csv write_lines
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
@@ -89,9 +86,7 @@
 #' @importFrom tibble as_tibble column_to_rownames tibble
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
-#' @importFrom tools Rd_db
 #' @importFrom utils capture.output download.file getFromNamespace
 #'   globalVariables installed.packages packageVersion read.delim read.table
 #'   sessionInfo
-#' @importFrom yaml yaml.load_file
 "_PACKAGE"
