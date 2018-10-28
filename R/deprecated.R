@@ -8,7 +8,7 @@
 #' @name deprecated
 #' @keywords internal
 #'
-#' @inheritParams general
+#' @inheritParams basejump.globals::params
 #'
 #' @return [.Deprecated()].
 NULL
@@ -20,7 +20,7 @@ NULL
 #' @name defunct
 #' @keywords internal
 #'
-#' @inheritParams general
+#' @inheritParams basejump.globals::params
 #'
 #' @return [.Defunct()].
 NULL

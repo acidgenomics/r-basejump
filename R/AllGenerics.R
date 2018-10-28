@@ -113,18 +113,6 @@ setGeneric(
 
 
 
-# export =======================================================================
-#' @rdname export
-#' @export
-setGeneric(
-    name = "export",
-    def = function(x, ...) {
-        standardGeneric("export")
-    }
-)
-
-
-
 # Gene2Symbol ==================================================================
 #' @rdname Gene2Symbol
 #' @export
