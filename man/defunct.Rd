@@ -2,16 +2,6 @@
 % Please edit documentation in R/deprecated.R
 \name{defunct}
 \alias{defunct}
-\alias{fc2lr}
-\alias{lr2fc}
-\alias{comp}
-\alias{revcomp}
-\alias{symbol2gene}
-\alias{checkTx2gene}
-\alias{assertIsGFF}
-\alias{parseGFFAttributes}
-\alias{dynamicPlotlist}
-\alias{synonyms}
 \alias{assertIsGene2symbol}
 \alias{assertIsTx2gene}
 \alias{broadClass}
@@ -19,26 +9,6 @@
 \alias{setArgsToDoCall}
 \title{Defunct Functions}
 \usage{
-fc2lr(...)
-
-lr2fc(...)
-
-comp(...)
-
-revcomp(...)
-
-symbol2gene(...)
-
-checkTx2gene(...)
-
-assertIsGFF(...)
-
-parseGFFAttributes(...)
-
-dynamicPlotlist(...)
-
-synonyms(...)
-
 assertIsGene2symbol(...)
 
 assertIsTx2gene(...)
