@@ -1,1 +1,0 @@
-options(basejump.test = TRUE)
