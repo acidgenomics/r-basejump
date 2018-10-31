@@ -49,6 +49,7 @@ Suggests:
     BiocStyle,
     SingleCellExperiment,
     SummarizedExperiment,
+    knitr,
     rmarkdown
 Remotes:
     steinbaugh/basejump.annotations,
