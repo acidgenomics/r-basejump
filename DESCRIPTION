@@ -1,7 +1,7 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.99.0
+Version: 0.99.1
 Date: 2018-10-29
 Authors@R: c(
     person(
@@ -31,19 +31,19 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    basejump.annotations,
-    basejump.assertions,
-    basejump.classes,
-    basejump.coercion,
-    basejump.data,
-    basejump.developer,
-    basejump.experiment,
-    basejump.generics,
-    basejump.globals,
-    basejump.io,
-    basejump.markdown,
-    basejump.plots,
-    basejump.sanitization,
+    basejump.annotations (>= 0.99.1),
+    basejump.assertions (>= 0.99.1),
+    basejump.classes (>= 0.99.1),
+    basejump.coercion (>= 0.99.1),
+    basejump.data (>= 0.99.1),
+    basejump.developer (>= 0.99.1),
+    basejump.experiment (>= 0.99.1),
+    basejump.generics (>= 0.99.1),
+    basejump.globals (>= 0.99.1),
+    basejump.io (>= 0.99.1),
+    basejump.markdown (>= 0.99.1),
+    basejump.plots (>= 0.99.1),
+    basejump.sanitization (>= 0.99.1),
     magrittr
 Suggests:
     BiocStyle,
