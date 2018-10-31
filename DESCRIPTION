@@ -47,10 +47,10 @@ Imports:
     magrittr
 Suggests:
     BiocStyle,
+    SingleCellExperiment,
+    SummarizedExperiment,
     rmarkdown
 biocViews:
     DataImport,
     Infrastructure
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
 VignetteBuilder: knitr
