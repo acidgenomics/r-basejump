@@ -50,6 +50,20 @@ Suggests:
     SingleCellExperiment,
     SummarizedExperiment,
     rmarkdown
+Remotes:
+    steinbaugh/basejump.annotations,
+    steinbaugh/basejump.assertions,
+    steinbaugh/basejump.classes,
+    steinbaugh/basejump.coercion,
+    steinbaugh/basejump.data,
+    steinbaugh/basejump.developer,
+    steinbaugh/basejump.experiment,
+    steinbaugh/basejump.generics,
+    steinbaugh/basejump.globals,
+    steinbaugh/basejump.io,
+    steinbaugh/basejump.markdown,
+    steinbaugh/basejump.plots,
+    steinbaugh/basejump.sanitization
 biocViews:
     DataImport,
     Infrastructure
