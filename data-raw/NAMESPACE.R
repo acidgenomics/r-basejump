@@ -18,6 +18,6 @@ ns <- sort(unique(as.character(ns)))
 
 con <- stdout()
 # con <- file("NAMESPACE")
-text <- paste0("export(", ns, ")")
+text <- paste0("export(\"", ns, "\")")
 writeLines(text = text, con = con)
 # close(con)
