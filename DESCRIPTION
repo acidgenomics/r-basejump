@@ -29,9 +29,7 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends:
-    R (>= 3.5),
-    IRanges
+Depends: R (>= 3.5)
 Imports:
     basejump.annotations,
     basejump.assertions,
@@ -45,7 +43,8 @@ Imports:
     basejump.io,
     basejump.markdown,
     basejump.plots,
-    basejump.sanitization
+    basejump.sanitization,
+    magrittr
 Suggests:
     BiocStyle,
     rmarkdown
