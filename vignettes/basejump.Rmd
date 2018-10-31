@@ -32,7 +32,7 @@ library(SummarizedExperiment)
 options(basejump.test = TRUE)
 ggplot2::theme_set(theme_paperwhite())
 knitr::opts_chunk$set(message = FALSE)
-data(rse_small)
+data(rse, package = "basejump.data")
 ```
 
 # Introduction
@@ -195,7 +195,7 @@ grch38_92 <- makeGRangesFromGFF(gff_file)
 Dealing with gene identifier to gene name (symbol) mapping in a non-destructive manner remains challenging for the bioinformatics community. [basejump][] provides `convertGenesToSymbols()` and `convertSymbolsToGenes()` generics that define methods for `SummarizedExperiment`, making interconversion between gene IDs and gene names easier. Internally, these mappings are handled by the `geneID` and `geneName` `mcols` columns inside of the `rowRanges` slot.
 
 ```{r}
-rse_symbols <- convertGenesToSymbols(rse_small)
+rse_symbols <- convertGenesToSymbols(rse)
 head(rownames(rse_symbols))
 ```
 
@@ -293,9 +293,9 @@ p + theme_midnight()
 Additional, the package provides support for easy heatmap generation, by wrapping the popular [pheatmap][] package. Here are providing `SummarizedExperiment` method support, so annotation column metadata is handled seamlessly.
 
 ```{r}
-plotHeatmap(rse_small)
-plotCorrelationHeatmap(rse_small)
-plotQuantileHeatmap(rse_small)
+plotHeatmap(rse)
+plotCorrelationHeatmap(rse)
+plotQuantileHeatmap(rse)
 ```
 
 # Sanitization functions
@@ -394,7 +394,7 @@ The papers and software cited in our workflows are available as a [shared librar
 [FlyBase]: http://flybase.org
 [GenomeInfoDb]: https://bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html
 [GFF]: https://useast.ensembl.org/info/website/upload/gff.html  "General Feature Format"
-[GTF]: http://mblab.wustl.edu/GTF22.html   "General Transfer Format"
+[GTF]: http://mblab.wustl.edu/GTF22.html  "General Transfer Format"
 [Gencode]: https://www.gencodegenes.org
 [GenomicRanges]: https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html
 [ggplot2]: https://ggplot2.tidyverse.org
