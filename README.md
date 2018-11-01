@@ -10,8 +10,6 @@ Base functions for bioinformatics and [R][] package development.
 
 ## Installation
 
-This is an [R][] package.
-
 ### [Bioconductor][]
 
 We recommend installing the package with [BiocManager][].
