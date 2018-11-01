@@ -18,13 +18,7 @@ We recommend installing the package with [BiocManager][].
 if (!require("BiocManager")) {
     install.packages("BiocManager")
 }
-BiocManager::install(
-    pkgs = c(
-        "devtools",
-        "remotes",
-        "GenomeInfoDbData"
-    )
-)
+BiocManager::install("remotes")
 BiocManager::install("steinbaugh/basejump")
 ```
 
