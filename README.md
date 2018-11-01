@@ -10,8 +10,6 @@ Base functions for bioinformatics and [R][] package development.
 
 ## Installation
 
-This is an [R][] package.
-
 ### [Bioconductor][]
 
 We recommend installing the package with [BiocManager][].
@@ -20,17 +18,8 @@ We recommend installing the package with [BiocManager][].
 if (!require("BiocManager")) {
     install.packages("BiocManager")
 }
-BiocManager::install(
-    pkgs = c(
-        "devtools",
-        "remotes",
-        "GenomeInfoDbData"
-    )
-)
-BiocManager::install(
-    pkgs = "steinbaugh/basejump",
-    dependencies = c("Depends", "Imports", "Suggests")
-)
+BiocManager::install("remotes")
+BiocManager::install("steinbaugh/basejump")
 ```
 
 For [R][] < 3.5, [BiocManager][] is not supported. Use `BiocInstaller::biocLite()` instead of `BiocManager::install()`. This requires sourcing the legacy [Bioconductor][] `biocLite.R` script.
@@ -46,16 +35,16 @@ Configure [conda][] to use the [bioconda][] channels.
 
 ```bash
 conda config --add channels defaults
-conda config --add channels conda-forge
 conda config --add channels bioconda
+conda config --add channels conda-forge
 ```
 
 To avoid version issues, your `.condarc` file should only contain the following channels, in this order:
 
 ```
 channels:
-  - bioconda
   - conda-forge
+  - bioconda
   - defaults
 ```
 
