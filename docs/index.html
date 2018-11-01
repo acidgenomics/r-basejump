@@ -76,39 +76,30 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>This is an <a href="https://www.r-project.org">R</a> package.</p>
-<div id="bioconductor" class="section level3">
+<div id="bioconductor-method" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bioconductor" class="anchor"></a><a href="https://bioconductor.org">Bioconductor</a>
-</h3>
+<a href="#bioconductor-method" class="anchor"></a><a href="https://bioconductor.org">Bioconductor</a> method</h3>
 <p>We recommend installing the package with <a href="https://cran.r-project.org/package=BiocManager">BiocManager</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"BiocManager"</span>)) {
     <span class="kw">install.packages</span>(<span class="st">"BiocManager"</span>)
 }
-BiocManager<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(
-    <span class="dt">pkgs =</span> <span class="kw">c</span>(
-        <span class="st">"devtools"</span>,
-        <span class="st">"remotes"</span>,
-        <span class="st">"GenomeInfoDbData"</span>
-    )
-)
+BiocManager<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"remotes"</span>)
 BiocManager<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"steinbaugh/basejump"</span>)</code></pre></div>
 <p>For <a href="https://www.r-project.org">R</a> &lt; 3.5, <a href="https://cran.r-project.org/package=BiocManager">BiocManager</a> is not supported. Use <code><a href="http://www.rdocumentation.org/packages/BiocInstaller/topics/biocLite">BiocInstaller::biocLite()</a></code> instead of <code><a href="http://www.rdocumentation.org/packages/BiocManager/topics/install">BiocManager::install()</a></code>. This requires sourcing the legacy <a href="https://bioconductor.org">Bioconductor</a> <code>biocLite.R</code> script.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># try http:// if https:// URLs are not supported</span>
 <span class="kw">source</span>(<span class="st">"https://bioconductor.org/biocLite.R"</span>)</code></pre></div>
 </div>
-<div id="conda" class="section level3">
+<div id="conda-method" class="section level3">
 <h3 class="hasAnchor">
-<a href="#conda" class="anchor"></a><a href="https://conda.io">conda</a>
-</h3>
+<a href="#conda-method" class="anchor"></a><a href="https://conda.io">conda</a> method</h3>
 <p>Configure <a href="https://conda.io">conda</a> to use the <a href="https://bioconda.github.io">bioconda</a> channels.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> config --add channels defaults
-<span class="ex">conda</span> config --add channels conda-forge
-<span class="ex">conda</span> config --add channels bioconda</code></pre></div>
+<span class="ex">conda</span> config --add channels bioconda
+<span class="ex">conda</span> config --add channels conda-forge</code></pre></div>
 <p>To avoid version issues, your <code>.condarc</code> file should only contain the following channels, in this order:</p>
 <pre><code>channels:
-  - bioconda
   - conda-forge
+  - bioconda
   - defaults</code></pre>
 <p>We recommend installing into a clean <a href="https://conda.io">conda</a> environment:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> create --name r
