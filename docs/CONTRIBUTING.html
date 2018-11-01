@@ -106,6 +106,7 @@
 
 <ul>
 <li>For all proposed changes, <strong>fork the repository</strong>, and then issue a pull request that will be reviewed.</li>
+<li>Merge external pull requests in the <code>develop</code> branch of the repository, rather than <code>master</code>, if possible.</li>
 <li>Pull requests must pass build checks on Travis CI.</li>
 <li>Support is only provided for the current release version.</li>
 </ul>
@@ -137,14 +138,14 @@
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/run_examples">run_examples</a></span>()
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/test">test</a></span>()
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/check">check</a></span>()
-BiocCheck<span class="op">::</span><span class="kw">BiocCheck</span>(<span class="kw">getwd</span>())
-lintr<span class="op">::</span><span class="kw">lint_package</span>()
-covr<span class="op">::</span><span class="kw">report</span>()</code></pre></div>
+BiocCheck<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/BiocCheck/topics/BiocCheck">BiocCheck</a></span>(<span class="kw">getwd</span>())
+lintr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/lintr/topics/lint_package">lint_package</a></span>()
+covr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/covr/topics/report">report</a></span>()</code></pre></div>
 <div id="rebuild-website" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rebuild-website" class="anchor"></a>Rebuild website</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlink</span>(<span class="st">"docs"</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)
-pkgdown<span class="op">::</span><span class="kw"><a href="http://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</code></pre></div>
+pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</code></pre></div>
 </div>
 </div>
 </div>

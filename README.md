@@ -10,7 +10,7 @@ Base functions for bioinformatics and [R][] package development.
 
 ## Installation
 
-### [Bioconductor][]
+### [Bioconductor][] method
 
 We recommend installing the package with [BiocManager][].
 
@@ -29,7 +29,7 @@ For [R][] < 3.5, [BiocManager][] is not supported. Use `BiocInstaller::biocLite(
 source("https://bioconductor.org/biocLite.R")
 ```
 
-### [conda][]
+### [conda][] method
 
 Configure [conda][] to use the [bioconda][] channels.
 
