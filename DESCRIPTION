@@ -29,12 +29,13 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends: R (>= 3.5)
+Depends:
+    R (>= 3.5),
+    basejump.classes (>= 0.99.1),
+    basejump.coercion (>= 0.99.1),
 Imports:
     basejump.annotations (>= 0.99.1),
     basejump.assertions (>= 0.99.1),
-    basejump.classes (>= 0.99.1),
-    basejump.coercion (>= 0.99.1),
     basejump.data (>= 0.99.1),
     basejump.developer (>= 0.99.1),
     basejump.experiment (>= 0.99.1),
@@ -69,3 +70,4 @@ biocViews:
     DataImport,
     Infrastructure
 VignetteBuilder: knitr
+RoxygenNote: 6.1.0
