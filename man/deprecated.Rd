@@ -2,10 +2,6 @@
 % Please edit documentation in R/deprecated.R
 \name{deprecated}
 \alias{deprecated}
-\alias{checkAnnotable}
-\alias{checkGene2symbol}
-\alias{assertFormalHeaderLevel}
-\alias{assertFormalColorFunction}
 \alias{assertIsAnnotable}
 \alias{ensembl}
 \alias{gene2symbolFromGFF}
@@ -23,8 +19,6 @@
 \alias{aggregateSamples}
 \alias{assertFormalGene2symbol}
 \alias{assertIsAHeaderLevel}
-\alias{assertIsCharacterOrNULL}
-\alias{assertIsDataFrameOrNULL}
 \alias{eggnog}
 \alias{ensembl2entrez}
 \alias{fixNA}
@@ -51,14 +45,6 @@
 \alias{tx2gene}
 \title{Deprecated Functions}
 \usage{
-checkAnnotable(...)
-
-checkGene2symbol(...)
-
-assertFormalHeaderLevel(...)
-
-assertFormalColorFunction(...)
-
 assertIsAnnotable(...)
 
 ensembl(...)
@@ -92,10 +78,6 @@ aggregateSamples(...)
 assertFormalGene2symbol(...)
 
 assertIsAHeaderLevel(...)
-
-assertIsCharacterOrNULL(object, ...)
-
-assertIsDataFrameOrNULL(object, ...)
 
 eggnog(...)
 
@@ -147,8 +129,6 @@ tx2gene(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
-
-\item{object}{Object.}
 }
 \value{
 [.Deprecated()].

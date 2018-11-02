@@ -67,7 +67,7 @@ The [basejump][] package defines generics and methods for object-oriented progra
 Here's the current list of S4 generics exported by the package:
 
 ```{r, include=FALSE}
-generics <- getGenerics(asNamespace("basejump"))
+generics <- getGenerics(asNamespace("basejump.generics"))
 links <- paste0("`", slot(generics, ".Data"), "()`")
 markdownList(links)
 ```
