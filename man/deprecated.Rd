@@ -28,7 +28,6 @@
 \alias{eggnog}
 \alias{ensembl2entrez}
 \alias{fixNA}
-\alias{flatFiles}
 \alias{gene2symbol}
 \alias{grepString}
 \alias{hgnc2gene}
@@ -103,8 +102,6 @@ eggnog(...)
 ensembl2entrez(...)
 
 fixNA(...)
-
-flatFiles(object)
 
 gene2symbol(...)
 

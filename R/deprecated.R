@@ -330,13 +330,6 @@ fixNA <- function(...) {
 
 #' @rdname deprecated
 #' @export
-flatFiles <- function(object) {
-    .Deprecated("coerceS4ToList(from), as(object, \"list\"), or as.list(x)")
-    coerceS4ToList(from = object)
-}
-
-#' @rdname deprecated
-#' @export
 gene2symbol <- function(...) {
     .Deprecated("Gene2Symbol")
     Gene2Symbol(...)
