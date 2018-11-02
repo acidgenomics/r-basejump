@@ -27,84 +27,6 @@ NULL
 
 
 
-# v0.1.6 ======================================================================
-#' @rdname defunct
-#' @export
-fc2lr <- function(...) {
-    .Defunct("foldChangeToLogRatio")
-}
-
-#' @rdname defunct
-#' @export
-lr2fc <- function(...) {
-    .Defunct("logRatioToFoldChange")
-}
-
-
-
-# v0.1.1 =======================================================================
-#' @rdname defunct
-#' @export
-comp <- function(...) {
-    .Defunct("Biostrings::complement")
-}
-
-#' @rdname defunct
-#' @export
-revcomp <- function(...) {
-    .Defunct("Biostrings::reverseComplement")
-}
-
-
-
-# v0.2.2 =======================================================================
-#' @rdname defunct
-symbol2gene <- function(...) {
-    .Defunct("convertSymbolsToGenes")
-}
-
-
-
-# v0.3.0 =======================================================================
-#' @rdname deprecated
-#' @export
-checkAnnotable <- function(...) {
-    .Deprecated("assertIsAnnotable")
-    assertIsAnnotable(...)
-}
-
-#' @rdname deprecated
-#' @export
-checkGene2symbol <- function(...) {
-    .Deprecated("assertIsGene2symbol")
-    assertIsGene2symbol(...)
-}
-
-#' @rdname defunct
-#' @export
-checkTx2gene <- function(...) {
-    .Defunct()
-}
-
-
-
-# v0.3.1 =======================================================================
-#' @rdname deprecated
-#' @export
-assertFormalHeaderLevel <- function(...) {
-    .Deprecated("assertIsAHeaderLevel")
-    assertIsAHeaderLevel(...)
-}
-
-#' @rdname deprecated
-#' @export
-assertFormalColorFunction <- function(...) {
-    .Deprecated("assertIsHexColorFunctionOrNULL")
-    assertIsHexColorFunctionOrNULL(...)
-}
-
-
-
 # v0.4.0 ======================================================================
 #' @rdname deprecated
 #' @export
@@ -267,15 +189,10 @@ assertIsAHeaderLevel <- function(...) {
     assertIsHeaderLevel(...)
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 assertIsCharacterOrNULL <- function(object, ...) {
-    .Deprecated("assert_is_any_of")
-    assert_is_any_of(
-        x = object,
-        classes = c("character", "NULL"),
-        ...
-    )
+    .Defunct()
 }
 
 #' @rdname defunct
@@ -290,15 +207,10 @@ assertIsTx2gene <- function(...) {
     .Defunct(msg = "Create `Tx2Gene` class object.")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 assertIsDataFrameOrNULL <- function(object, ...) {
-    .Deprecated("assert_is_any_of")
-    assert_is_any_of(
-        x = object,
-        classes = c("data.frame", "NULL"),
-        ...
-    )
+    .Deprecated()
 }
 
 #' @rdname defunct
