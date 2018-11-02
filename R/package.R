@@ -1,3 +1,8 @@
+# Refer to S4Vectors code for example of how to reexport classes and methods.
+# https://github.com/Bioconductor/S4Vectors/blob/master/NAMESPACE
+
+
+
 #' basejump
 #'
 #' Toolkit for bioinformatics and R package development.
