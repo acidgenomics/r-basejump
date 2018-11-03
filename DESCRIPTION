@@ -57,7 +57,8 @@ Suggests:
     ggplot2,
     knitr,
     rmarkdown,
-    sessioninfo
+    sessioninfo,
+    viridis
 Remotes:
     steinbaugh/basejump.annotations,
     steinbaugh/basejump.assertions,
