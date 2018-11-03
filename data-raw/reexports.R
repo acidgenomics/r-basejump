@@ -1,16 +1,34 @@
-# Need to quote functions containing `%>%`, `<-`.
+# Refer to S4Vectors code for example of how to reexport classes and methods.
+# https://github.com/Bioconductor/S4Vectors/blob/master/NAMESPACE
 
 # Export capitalized, upper camel functions first.
 Sys.setlocale("LC_COLLATE", "C")
 
+# Get a vector of the functions reexported in the packages.
+generics <- ls(getNamespaceInfo(ns = "basejump.generics", which = "exports"))
+reexports <- c("%>%", generics)
+
 ns <- getNamespaceInfo(ns = "basejump", which = "imports")
+ns$base <- NULL
 # Get only the named entries in list.
 ns <- ns[which(names(ns) != "")]
 # Remove `.__` entries.
 ns <- lapply(
     X = ns,
     FUN = function(x) {
-        x[!grepl("^.__", x)]
+        sort(as.character(x[!grepl("^.__", x)]))
+    }
+)
+# Filter the re-exported functions.
+ns <- mapply(
+    funs = ns,
+    pkg = names(ns),
+    FUN = function(funs, pkg) {
+        if (pkg %in% c("basejump.generics", "magrittr")) {
+            funs
+        } else {
+            funs[!funs %in% reexports]
+        }
     }
 )
 
@@ -43,13 +61,16 @@ roxygen <- mapply(
     SIMPLIFY = FALSE,
     USE.NAMES = FALSE
 )
-cat(unlist(roxygen), sep = "\n\n")
+roxygen %>%
+    unlist() %>%
+    paste(collaspe = "\n") %>%
+    write_lines("R/reexports.R")
 
 
 
 # Manual addition to NAMESPACE =================================================
 # This method is simple but won't add documentation.
-x <- unlist(ns)
-x <- sort(unique(as.character(x)))
-text <- paste0("export(\"", x, "\")")
-cat(text, sep = "\n")
+# x <- unlist(ns)
+# x <- sort(unique(as.character(x)))
+# text <- paste0("export(\"", x, "\")")
+# cat(text, sep = "\n")
