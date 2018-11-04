@@ -30,7 +30,7 @@ returning the slots as a \code{list}.
 
 
 
-Coerce an object to a \href{{https://tibble.tidyverse.org/}{tibble}} (\code{tbl_df}) data frame using either S3 or S4
+Coerce an object to a tibble (\code{tbl_df}, \code{data.frame}) using either S3 or S4
 methods:
 \itemize{
 \item S3: \code{as_tibble(x)} (or \code{as_tibble()} alias).
@@ -100,6 +100,7 @@ Chambers, John M. (2016)
 \item \code{methods::as()}.
 \item \code{methods::canCoerce()}.
 \item \code{methods::showMethods()}.
+\item \code{tibble::tibble()}.
 \item \code{utils::methods()}.
 }
 }

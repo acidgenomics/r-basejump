@@ -9,13 +9,13 @@
 #' These classes are imported from other packages.
 #' Follow the links below to see their documentation.
 #'
-#' - [basejump.classes::`EggNOG-class`].
-#' - [basejump.classes::`Ensembl2Entrez-class`].
-#' - [basejump.classes::`Gene2Symbol-class`].
-#' - [basejump.classes::`HGNC2Ensembl-class`].
-#' - [basejump.classes::`MGI2Ensembl-class`].
-#' - [basejump.classes::`PANTHER-class`].
-#' - [basejump.classes::`Tx2Gene-class`].
+#' - `help(topic = "EggNOG-class", package = "basejump.classes")`.
+#' - `help(topic = "Ensembl2Entrez-class", package = "basejump.classes")`.
+#' - `help(topic = "Gene2Symbol-class", package = "basejump.classes")`.
+#' - `help(topic = "HGNC2Ensembl-class", package = "basejump.classes")`.
+#' - `help(topic = "MGI2Ensembl-class", package = "basejump.classes")`.
+#' - `help(topic = "PANTHER-class", package = "basejump.classes")`.
+#' - `help(topic = "Tx2Gene-class", package = "basejump.classes")`.
 #'
 #' @name classes
 #' @docType import
