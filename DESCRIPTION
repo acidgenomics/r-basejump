@@ -45,7 +45,8 @@ Imports:
     basejump.markdown (>= 0.99.1),
     basejump.plots (>= 0.99.1),
     basejump.sanitization (>= 0.99.1),
-    magrittr
+    magrittr,
+    methods
 Suggests:
     BiocGenerics,
     BiocStyle,
