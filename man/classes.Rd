@@ -17,13 +17,13 @@ Follow the links below to see their documentation.
 }
 \details{
 \itemize{
-\item \link[basejump.classes:`EggNOG-class`]{basejump.classes::EggNOG-class}.
-\item \link[basejump.classes:`Ensembl2Entrez-class`]{basejump.classes::Ensembl2Entrez-class}.
-\item \link[basejump.classes:`Gene2Symbol-class`]{basejump.classes::Gene2Symbol-class}.
-\item \link[basejump.classes:`HGNC2Ensembl-class`]{basejump.classes::HGNC2Ensembl-class}.
-\item \link[basejump.classes:`MGI2Ensembl-class`]{basejump.classes::MGI2Ensembl-class}.
-\item \link[basejump.classes:`PANTHER-class`]{basejump.classes::PANTHER-class}.
-\item \link[basejump.classes:`Tx2Gene-class`]{basejump.classes::Tx2Gene-class}.
+\item \code{help(topic = "EggNOG-class", package = "basejump.classes")}.
+\item \code{help(topic = "Ensembl2Entrez-class", package = "basejump.classes")}.
+\item \code{help(topic = "Gene2Symbol-class", package = "basejump.classes")}.
+\item \code{help(topic = "HGNC2Ensembl-class", package = "basejump.classes")}.
+\item \code{help(topic = "MGI2Ensembl-class", package = "basejump.classes")}.
+\item \code{help(topic = "PANTHER-class", package = "basejump.classes")}.
+\item \code{help(topic = "Tx2Gene-class", package = "basejump.classes")}.
 }
 }
 \keyword{internal}

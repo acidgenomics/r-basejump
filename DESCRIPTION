@@ -1,7 +1,7 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.99.2
+Version: 0.8.0
 Date: 2018-11-04
 Authors@R: c(
     person(
@@ -29,22 +29,21 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends:
-    R (>= 3.5),
-    basejump.classes (>= 0.99.1)
+Depends: R (>= 3.5)
 Imports:
-    basejump.annotations (>= 0.99.1),
-    basejump.assertions (>= 0.99.1),
-    basejump.coercion (>= 0.99.1),
-    basejump.data (>= 0.99.1),
-    basejump.developer (>= 0.99.1),
-    basejump.experiment (>= 0.99.1),
-    basejump.generics (>= 0.99.1),
-    basejump.globals (>= 0.99.1),
-    basejump.io (>= 0.99.1),
-    basejump.markdown (>= 0.99.1),
-    basejump.plots (>= 0.99.1),
-    basejump.sanitization (>= 0.99.1),
+    basejump.annotations (>= 0.8),
+    basejump.assertions (>= 0.8),
+    basejump.classes (>= 0.8),
+    basejump.coercion (>= 0.8),
+    basejump.data (>= 0.8),
+    basejump.developer (>= 0.8),
+    basejump.experiment (>= 0.8),
+    basejump.generics (>= 0.8),
+    basejump.globals (>= 0.8),
+    basejump.io (>= 0.8),
+    basejump.markdown (>= 0.8),
+    basejump.plots (>= 0.8),
+    basejump.sanitization (>= 0.8),
     magrittr,
     methods
 Suggests:
@@ -79,5 +78,5 @@ biocViews:
     DataImport,
     Infrastructure
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.0.9000
 VignetteBuilder: knitr
