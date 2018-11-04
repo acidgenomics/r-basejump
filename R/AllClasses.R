@@ -1,4 +1,4 @@
-# Refer to basejump.classes/R/AllClasses.R for documentation.
+# Refer to basejump.classes for documentation.
 setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
 setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 setClass(Class = "Gene2Symbol", contains = "DataFrame")
