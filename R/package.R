@@ -9,4 +9,5 @@
 #'   basejump.coercion basejump.data basejump.developer basejump.experiment
 #'   basejump.generics basejump.globals basejump.io basejump.markdown
 #'   basejump.plots basejump.sanitization
+#' @importFrom methods setAs setClass
 "_PACKAGE"
