@@ -131,7 +131,7 @@ tx2gene(...)
 \item{...}{Additional arguments.}
 }
 \value{
-[.Deprecated()].
+\code{\link[=.Deprecated]{.Deprecated()}}.
 }
 \description{
 Deprecated Functions
