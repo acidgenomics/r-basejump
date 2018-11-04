@@ -2,32 +2,11 @@
 #'
 #' Toolkit for bioinformatics and R package development.
 #'
-#' @import basejump.annotations
-#' @import basejump.assertions
-#' @import basejump.classes
-#' @import basejump.coercion
-#' @import basejump.data
-#' @import basejump.developer
-#' @import basejump.experiment
-#' @import basejump.generics
-#' @import basejump.globals
-#' @import basejump.io
-#' @import basejump.markdown
-#' @import basejump.plots
-#' @import basejump.sanitization
-#'
-#' @exportMethod Ensembl2Entrez
-#' @exportMethod Gene2Symbol
-#' @exportMethod Tx2Gene
-#' @exportMethod as.data.frame
-#' @exportMethod coerce
-#' @exportMethod show
-#'
-#' @exportClass EggNOG
-#' @exportClass Ensembl2Entrez
-#' @exportClass Gene2Symbol
-#' @exportClass HGNC2Ensembl
-#' @exportClass MGI2Ensembl
-#' @exportClass PANTHER
-#' @exportClass Tx2Gene
+#' @exportClass EggNOG Ensembl2Entrez Gene2Symbol HGNC2Ensembl MGI2Ensembl
+#'   PANTHER Tx2Gene
+#' @exportMethod Ensembl2Entrez Gene2Symbol Tx2Gene as.data.frame coerce show
+#' @import basejump.annotations basejump.assertions basejump.classes
+#'   basejump.coercion basejump.data basejump.developer basejump.experiment
+#'   basejump.generics basejump.globals basejump.io basejump.markdown
+#'   basejump.plots basejump.sanitization
 "_PACKAGE"
