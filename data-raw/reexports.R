@@ -1,6 +1,8 @@
 # Refer to S4Vectors code for example of how to reexport classes and methods.
 # https://github.com/Bioconductor/S4Vectors/blob/master/NAMESPACE
 
+library(tidyverse)
+
 # Export capitalized, upper camel functions first.
 Sys.setlocale("LC_COLLATE", "C")
 
@@ -63,14 +65,5 @@ roxygen <- mapply(
 )
 roxygen %>%
     unlist() %>%
-    paste(collaspe = "\n") %>%
+    paste(collapse = "\n\n") %>%
     write_lines("R/reexports.R")
-
-
-
-# Manual addition to NAMESPACE =================================================
-# This method is simple but won't add documentation.
-# x <- unlist(ns)
-# x <- sort(unique(as.character(x)))
-# text <- paste0("export(\"", x, "\")")
-# cat(text, sep = "\n")
