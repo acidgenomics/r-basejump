@@ -270,6 +270,10 @@ basejump.developer::`RdTags`
 #' @export
 basejump.developer::`checkClasses`
 
+#' @importFrom basejump.developer cleanSystemLibrary
+#' @export
+basejump.developer::`cleanSystemLibrary`
+
 #' @importFrom basejump.developer detectHPC
 #' @export
 basejump.developer::`detectHPC`
@@ -310,6 +314,10 @@ basejump.developer::`parseRd`
 #' @export
 basejump.developer::`printString`
 
+#' @importFrom basejump.developer saveRdExamples
+#' @export
+basejump.developer::`saveRdExamples`
+
 #' @importFrom basejump.developer separator
 #' @export
 basejump.developer::`separator`
@@ -321,6 +329,10 @@ basejump.developer::`showSlotInfo`
 #' @importFrom basejump.developer standardizeCall
 #' @export
 basejump.developer::`standardizeCall`
+
+#' @importFrom basejump.developer tabular
+#' @export
+basejump.developer::`tabular`
 
 #' @importFrom basejump.experiment combine
 #' @export
@@ -1090,6 +1102,10 @@ basejump.developer::`RdTags`
 #' @export
 basejump.developer::`checkClasses`
 
+#' @importFrom basejump.developer cleanSystemLibrary
+#' @export
+basejump.developer::`cleanSystemLibrary`
+
 #' @importFrom basejump.developer detectHPC
 #' @export
 basejump.developer::`detectHPC`
@@ -1130,6 +1146,10 @@ basejump.developer::`parseRd`
 #' @export
 basejump.developer::`printString`
 
+#' @importFrom basejump.developer saveRdExamples
+#' @export
+basejump.developer::`saveRdExamples`
+
 #' @importFrom basejump.developer separator
 #' @export
 basejump.developer::`separator`
@@ -1141,6 +1161,10 @@ basejump.developer::`showSlotInfo`
 #' @importFrom basejump.developer standardizeCall
 #' @export
 basejump.developer::`standardizeCall`
+
+#' @importFrom basejump.developer tabular
+#' @export
+basejump.developer::`tabular`
 
 #' @importFrom basejump.experiment counts<-
 #' @export
@@ -1218,6 +1242,10 @@ basejump.generics::`aggregateCols`
 #' @export
 basejump.generics::`aggregateRows`
 
+#' @importFrom basejump.generics alphaSummary
+#' @export
+basejump.generics::`alphaSummary`
+
 #' @importFrom basejump.generics camel
 #' @export
 basejump.generics::`camel`
@@ -1229,6 +1257,10 @@ basejump.generics::`cell2sample`
 #' @importFrom basejump.generics collapseToString
 #' @export
 basejump.generics::`collapseToString`
+
+#' @importFrom basejump.generics contrastName
+#' @export
+basejump.generics::`contrastName`
 
 #' @importFrom basejump.generics convertGenesToSymbols
 #' @export
@@ -1302,6 +1334,10 @@ basejump.generics::`metrics`
 #' @export
 basejump.generics::`metricsPerSample`
 
+#' @importFrom basejump.generics plot5Prime3PrimeBias
+#' @export
+basejump.generics::`plot5Prime3PrimeBias`
+
 #' @importFrom basejump.generics plotCorrelationHeatmap
 #' @export
 basejump.generics::`plotCorrelationHeatmap`
@@ -1318,6 +1354,18 @@ basejump.generics::`plotCountsPerBroadClass`
 #' @export
 basejump.generics::`plotCountsPerGene`
 
+#' @importFrom basejump.generics plotDEGHeatmap
+#' @export
+basejump.generics::`plotDEGHeatmap`
+
+#' @importFrom basejump.generics plotDEGPCA
+#' @export
+basejump.generics::`plotDEGPCA`
+
+#' @importFrom basejump.generics plotExonicMappingRate
+#' @export
+basejump.generics::`plotExonicMappingRate`
+
 #' @importFrom basejump.generics plotGenderMarkers
 #' @export
 basejump.generics::`plotGenderMarkers`
@@ -1325,6 +1373,10 @@ basejump.generics::`plotGenderMarkers`
 #' @importFrom basejump.generics plotGene
 #' @export
 basejump.generics::`plotGene`
+
+#' @importFrom basejump.generics plotGeneSaturation
+#' @export
+basejump.generics::`plotGeneSaturation`
 
 #' @importFrom basejump.generics plotGenesDetected
 #' @export
@@ -1334,6 +1386,22 @@ basejump.generics::`plotGenesDetected`
 #' @export
 basejump.generics::`plotHeatmap`
 
+#' @importFrom basejump.generics plotIntronicMappingRate
+#' @export
+basejump.generics::`plotIntronicMappingRate`
+
+#' @importFrom basejump.generics plotMappedReads
+#' @export
+basejump.generics::`plotMappedReads`
+
+#' @importFrom basejump.generics plotMappingRate
+#' @export
+basejump.generics::`plotMappingRate`
+
+#' @importFrom basejump.generics plotMeanSD
+#' @export
+basejump.generics::`plotMeanSD`
+
 #' @importFrom basejump.generics plotQC
 #' @export
 basejump.generics::`plotQC`
@@ -1342,13 +1410,29 @@ basejump.generics::`plotQC`
 #' @export
 basejump.generics::`plotQuantileHeatmap`
 
+#' @importFrom basejump.generics plotRRNAMappingRate
+#' @export
+basejump.generics::`plotRRNAMappingRate`
+
 #' @importFrom basejump.generics plotTotalCounts
 #' @export
 basejump.generics::`plotTotalCounts`
 
+#' @importFrom basejump.generics plotTotalReads
+#' @export
+basejump.generics::`plotTotalReads`
+
+#' @importFrom basejump.generics plotVolcano
+#' @export
+basejump.generics::`plotVolcano`
+
 #' @importFrom basejump.generics plotZerosVsDepth
 #' @export
 basejump.generics::`plotZerosVsDepth`
+
+#' @importFrom basejump.generics relativeLogExpression
+#' @export
+basejump.generics::`relativeLogExpression`
 
 #' @importFrom basejump.generics removeNA
 #' @export
@@ -1382,9 +1466,17 @@ basejump.generics::`stripTranscriptVersions`
 #' @export
 basejump.generics::`subsetPerSample`
 
+#' @importFrom basejump.generics tmm
+#' @export
+basejump.generics::`tmm`
+
 #' @importFrom basejump.generics topCellsPerSample
 #' @export
 basejump.generics::`topCellsPerSample`
+
+#' @importFrom basejump.generics topTables
+#' @export
+basejump.generics::`topTables`
 
 #' @importFrom basejump.generics tpm
 #' @export
@@ -1433,6 +1525,10 @@ basejump.globals::`rdataExtPattern`
 #' @importFrom basejump.globals rdataLoadError
 #' @export
 basejump.globals::`rdataLoadError`
+
+#' @importFrom basejump.globals updateMessage
+#' @export
+basejump.globals::`updateMessage`
 
 #' @importFrom basejump.io assignAndSaveData
 #' @export
