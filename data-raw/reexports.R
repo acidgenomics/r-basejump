@@ -8,7 +8,12 @@ Sys.setlocale("LC_COLLATE", "C")
 
 # Get a vector of the functions reexported in the packages.
 generics <- ls(getNamespaceInfo(ns = "basejump.generics", which = "exports"))
-reexports <- c("%>%", generics)
+reexports <- c(
+    "%>%",
+    "setAs",
+    "setClass",
+    generics
+)
 
 ns <- getNamespaceInfo(ns = "basejump", which = "imports")
 ns$base <- NULL
@@ -49,7 +54,7 @@ roxygen <- mapply(
         vapply(
             X = fun,
             FUN = function(fun) {
-                # FIXME Improve backtick escape method here.
+                # TODO Improve backtick escape method here.
                 paste0(
                     "#' @importFrom ", package, " ", fun, "\n",
                     "#' @export\n",
@@ -63,7 +68,10 @@ roxygen <- mapply(
     SIMPLIFY = FALSE,
     USE.NAMES = FALSE
 )
+
 roxygen %>%
     unlist() %>%
     paste(collapse = "\n\n") %>%
     write_lines("R/reexports.R")
+
+devtools::document()
