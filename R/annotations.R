@@ -571,9 +571,9 @@ NULL
                 "No ID matched on AnnotationHub ",
                 packageVersion("AnnotationHub"), "."
             ),
-            paste(li, "Organism:", deparse(organism)),
-            paste(li, "Build:", deparse(genomeBuild)),
-            paste(li, "Release:", deparse(ensemblRelease)),
+            paste(.li, "Organism:", deparse(organism)),
+            paste(.li, "Build:", deparse(genomeBuild)),
+            paste(.li, "Release:", deparse(ensemblRelease)),
             sep = "\n"
         ))
     }
@@ -855,10 +855,10 @@ makeGRangesFromEnsDb <- function(object, level) {
     )
 
     message(paste(
-        paste(li, "Organism:", metadata[["organism"]]),
-        paste(li, "Genome Build:", metadata[["genomeBuild"]]),
-        paste(li, "Ensembl Release:", metadata[["ensemblRelease"]]),
-        paste(li, "Level:", metadata[["level"]]),
+        paste(.li, "Organism:", metadata[["organism"]]),
+        paste(.li, "Genome Build:", metadata[["genomeBuild"]]),
+        paste(.li, "Ensembl Release:", metadata[["ensemblRelease"]]),
+        paste(.li, "Level:", metadata[["level"]]),
         sep = "\n"
     ))
 
