@@ -1,6 +1,6 @@
 #' @name mapGenes
 #' @inherit basejump.generics::mapGenes
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param strict `boolean`. Require all genes to match. Recommended by default.
 #'   If set `FALSE`, instead will return a warning to the user, and subset the

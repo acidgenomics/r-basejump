@@ -49,7 +49,7 @@ dots <- function(..., character = FALSE) {
 #'
 #' @inheritParams standardizeCall
 #' @inheritParams base::do.call
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param removeFormals `character`. Names of formal arguments to remove from
 #'   `args` list before passing to `do.call()`.
 #'
@@ -190,7 +190,7 @@ matchArgsToDoCall <- function(
 #' @export
 #'
 #' @inheritParams base::sys.call
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return
 #' - `call`: `call`. Matched call.

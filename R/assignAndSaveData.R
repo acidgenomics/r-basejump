@@ -6,7 +6,7 @@
 #' @include saveData.R
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @inheritParams saveData
 #' @param name `string`. Desired variable name.
 #' @param envir `environment`. Environment to use for assignment. Defaults to

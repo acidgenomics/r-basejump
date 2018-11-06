@@ -1,7 +1,7 @@
 #' @name convertTranscriptsToGenes
 #' @inherit basejump.generics::convertTranscriptsToGenes
 #' @inherit convertGenesToSymbols
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @note For objects containing a count matrix, the object rows will be
 #'   collapsed to gene level using [aggregateRows()]. This applies to our

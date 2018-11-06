@@ -3,7 +3,7 @@
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `character`. Ensembl genome build as the value, UCSC build as the
 #'   name. Stops on match failure.
@@ -126,7 +126,7 @@ emptyRanges <- function(
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param organism `string`. Supported organisms: *Homo sapiens*,
 #'   *Mus musculus*, *Drosophila melanogaster*.
 #'
@@ -328,7 +328,7 @@ makeGene2SymbolFromGTF <- makeGene2SymbolFromGFF
 #'
 #' [EnsDb.Hsapiens.v75]: https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param genomeBuild `string` or `NULL`. Ensembl genome build assembly name
 #'   (e.g. `"GRCh38"`). If set `NULL`, defaults to the most recent build
 #'   available. Note: don't pass in UCSC build IDs (e.g. `"hg38"`).
@@ -395,7 +395,7 @@ NULL
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @noRd
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param object Object that can be coerced to `DataFrame`, containing gene or
 #'   transcript annotations. `GRanges` is recommended.
 #'

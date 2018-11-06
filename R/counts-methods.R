@@ -8,7 +8,7 @@
 #' @name counts
 #' @aliases counts<-
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return Matrix. Typically `matrix` or `sparseMatrix` class.
 #'

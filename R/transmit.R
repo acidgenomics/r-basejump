@@ -5,7 +5,7 @@
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @inheritParams saveData
 #' @param remoteDir `string`. Remote FTP directory path.
 #' @param localDir `string`. Directory where to save files locally.

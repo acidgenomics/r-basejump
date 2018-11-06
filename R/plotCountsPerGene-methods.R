@@ -1,6 +1,6 @@
 #' @name plotCountsPerGene
 #' @inherit basejump.generics::plotCountsPerGene
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param geom `string`. Type of ggplot2 geometric object to use.
 #'

@@ -1,6 +1,6 @@
 #' @name meltCounts
 #' @inherit basejump.generics::meltCounts
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param nonzeroGenes `boolean`. Return only non-zero genes.
 #' @param trans `string`. Apply a log transformation (e.g. `log2(x + 1L)`) to

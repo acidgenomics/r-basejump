@@ -1,6 +1,6 @@
 #' @name interestingGroups
 #' @inherit basejump.generics::interestingGroups
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @examples
 #' data(rse, package = "basejump.data")

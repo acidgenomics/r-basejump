@@ -1,6 +1,6 @@
 #' @name uniteInterestingGroups
 #' @inherit basejump.generics::uniteInterestingGroups
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @examples
 #' data(rse, package = "basejump.data")
 #' object <- rse
