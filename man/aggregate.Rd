@@ -6,10 +6,10 @@
 \alias{aggregateRows}
 \alias{aggregateCols}
 \alias{aggregateRows,matrix-method}
-\alias{aggregateCols,matrix-method}
 \alias{aggregateRows,sparseMatrix-method}
-\alias{aggregateCols,sparseMatrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}
+\alias{aggregateCols,matrix-method}
+\alias{aggregateCols,sparseMatrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
 \alias{aggregateCols,SingleCellExperiment-method}
 \title{Aggregate Rows or Columns}
@@ -21,17 +21,17 @@ aggregateCols(object, ...)
 \S4method{aggregateRows}{matrix}(object, groupings, fun = c("sum",
   "mean"))
 
-\S4method{aggregateCols}{matrix}(object, groupings, fun = c("sum",
-  "mean"))
-
 \S4method{aggregateRows}{sparseMatrix}(object, groupings, fun = c("sum",
-  "mean"))
-
-\S4method{aggregateCols}{sparseMatrix}(object, groupings, fun = c("sum",
   "mean"))
 
 \S4method{aggregateRows}{SummarizedExperiment}(object, col = "aggregate",
   fun = c("sum", "mean"))
+
+\S4method{aggregateCols}{matrix}(object, groupings, fun = c("sum",
+  "mean"))
+
+\S4method{aggregateCols}{sparseMatrix}(object, groupings, fun = c("sum",
+  "mean"))
 
 \S4method{aggregateCols}{SummarizedExperiment}(object, col = "aggregate",
   fun = c("sum", "mean"))
