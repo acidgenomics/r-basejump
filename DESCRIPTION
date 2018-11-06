@@ -1,10 +1,95 @@
 Package: basejump
-Title: TRAVIS BIOCONDUCTOR CACHE
-Description: TRAVIS BIOCONDUCTOR CACHE
-Version: 0.0.0.9000
+Title: Base Functions for Bioinformatics
+Description: Helper functions for bioinformatics, package development, and
+    R Markdown reports.
+Version: 0.7.2
+Date: 2018-08-23
+Authors@R: c(
+    person(
+        "Michael", "Steinbaugh",
+        email = "mike@steinbaugh.com",
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-2403-2221")
+    ),
+    person(
+        "Rory", "Kirchner",
+        email = "roryk@alum.mit.edu",
+        role = "ctb",
+        comment = c(ORCID = "0000-0003-4814-5885")
+    ),
+    person(
+        given = "Mary",
+        family = "Piper",
+        email = "mary.piper@gmail.com",
+        role = "ctb",
+        comment = c(ORCID = "0000-0003-2699-3840")
+    ))
+URL:
+    https://steinbaugh.com/basejump,
+    https://github.com/steinbaugh/basejump
+BugReports: https://github.com/steinbaugh/basejump/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: TRUE
 Depends:
-    R (>= 3.5)
+    R (>= 3.4),
+    SummarizedExperiment
 Imports:
-    SummarizedExperiment,
-    SingleCellExperiment,
-    ensembldb
+    AnnotationHub,
+    assertive.base,
+    assertive.code,
+    assertive.data,
+    assertive.files,
+    assertive.numbers,
+    assertive.properties,
+    assertive.sets,
+    assertive.strings,
+    assertive.types,
+    Biobase,
+    BiocGenerics,
+    cowplot (>= 0.9),
+    curl,
+    dendsort (>= 0.3),
+    dplyr (>= 0.7),
+    ensembldb,
+    GenomicFeatures,
+    GenomeInfoDb,
+    GenomicRanges,
+    ggplot2 (>= 3.0),
+    grDevices,
+    IRanges,
+    jsonlite (>= 1.5),
+    knitr (>= 1.20),
+    magrittr (>= 1.5),
+    Matrix (>= 1.2),
+    Matrix.utils (>= 0.9),
+    methods,
+    pbapply (>= 1.3),
+    pheatmap,
+    R.utils,
+    RColorBrewer,
+    RCurl (>= 1.95),
+    readr (>= 1.1),
+    rio (>= 0.5),
+    rlang (>= 0.2),
+    rtracklayer,
+    S4Vectors,
+    sessioninfo,
+    stats,
+    stringr (>= 1.3),
+    tibble (>= 1.4),
+    tidyr (>= 0.8),
+    utils,
+    viridis,
+    yaml (>= 2.1)
+Suggests:
+    BiocStyle,
+    EnsDb.Hsapiens.v75,
+    rmarkdown,
+    testthat (>= 2.0)
+biocViews:
+    DataImport,
+    Infrastructure
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0
+VignetteBuilder: knitr
