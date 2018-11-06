@@ -1,6 +1,3 @@
-# DO NOT CHANGE the "init" and "install" sections below
-
-# Download script file from GitHub
 init:
   ps: |
         $ErrorActionPreference = "Stop"
@@ -10,24 +7,22 @@ init:
 install:
   ps: Bootstrap
 
-cache:
-  # - C:\RLibrary
+platform: x64
 
-# Adapt as necessary starting from here
+cache:
+  - C:\RLibrary
 
 environment:
   global:
-    BIOC_USE_DEVEL: TRUE
     R_ARCH: x64
-    USE_RTOOLS: TRUE
-    # WARNINGS_ARE_ERRORS: 1
+    USE_RTOOLS: true
 
 build_script:
-  - Rscript -e "source('http://bioconductor.org/biocLite.R')"
   - travis-tool.sh install_bioc GenomeInfoDbData
   - travis-tool.sh install_bioc DelayedArray
-  - travis-tool.sh install_github jotsetung/ensembldb
+  - travis-tool.sh install_bioc ensembldb
   - travis-tool.sh install_bioc EnsDb.Hsapiens.v75
+  - travis-tool.sh install_github steinbaugh/basejump.data
   - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_deps
 
@@ -56,3 +51,11 @@ artifacts:
 
   - path: '\*_*.zip'
     name: Bits
+
+notifications:
+  - provider: Email
+    to:
+      - mike@steinbaugh.com
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: true
