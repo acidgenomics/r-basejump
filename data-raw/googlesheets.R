@@ -4,9 +4,6 @@
 library(googlesheets)
 library(tidyverse)
 
-naStrings <- basejump.globals::naStrings
-camel <- basejump.sanitization::camel
-
 # Must be interactive, requiring Google Sheets authentication.
 stopifnot(interactive())
 View(gs_ls())
