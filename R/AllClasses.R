@@ -4,7 +4,7 @@
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param expected `list`. Named list of expected classes per slot.
 #' @param subset `boolean`. Only check a subset of slots in the object.
 #'
@@ -120,7 +120,7 @@ setValidity(
 
 
 #' @inherit EggNOG-class
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @examples
 #' options(basejump.test = TRUE)
@@ -258,7 +258,7 @@ setValidity(
 
 #' @name Ensembl2Entrez
 #' @inherit Ensembl2Entrez-class
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param format `string`. Formatting method to apply:
 #' - `"1:1"`: *Recommended.* Return with 1:1 mappings. For Ensembl genes that
@@ -455,7 +455,7 @@ setValidity(
 
 #' @name Gene2Symbol
 #' @inherit Gene2Symbol-class
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param format `string`. Formatting method to apply:
 #' - `"makeUnique"`: *Recommended.* Apply [base::make.unique()] to the
@@ -626,7 +626,7 @@ setValidity(
 
 
 #' @inherit HGNC2Ensembl-class
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @examples
 #' options(basejump.test = TRUE)
@@ -704,7 +704,7 @@ setValidity(
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `MGI2Ensembl`.
 #'
@@ -793,7 +793,7 @@ setValidity(
 
 #' @name PANTHER
 #' @inherit PANTHER-class
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param organism `string`. Full Latin organism name. Currently supported
 #'   organisms: *Homo sapiens*, *Mus musculus*, *Caenorhabditis elegans*,
@@ -1085,7 +1085,7 @@ setValidity(
 
 #' @name Tx2Gene
 #' @inherit Tx2Gene-class
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @note No attempt is made to arrange the rows by transcript identifier.
 #' @examples
 #' ## SummarizedExperiment ====
