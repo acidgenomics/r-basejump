@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.8.0
-Date: 2018-11-04
+Date: 2018-11-06
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -31,19 +31,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    basejump.annotations (>= 0.8),
-    basejump.assertions (>= 0.8),
-    basejump.classes (>= 0.8),
-    basejump.coercion (>= 0.8),
-    basejump.data (>= 0.8),
-    basejump.developer (>= 0.8),
-    basejump.experiment (>= 0.8),
-    basejump.generics (>= 0.8),
-    basejump.globals (>= 0.8),
-    basejump.io (>= 0.8),
-    basejump.markdown (>= 0.8),
-    basejump.plots (>= 0.8),
-    basejump.sanitization (>= 0.8),
     magrittr,
     methods
 Suggests:
@@ -60,20 +47,6 @@ Suggests:
     rmarkdown,
     sessioninfo,
     viridis
-Remotes:
-    steinbaugh/basejump.annotations,
-    steinbaugh/basejump.assertions,
-    steinbaugh/basejump.classes,
-    steinbaugh/basejump.coercion,
-    steinbaugh/basejump.data,
-    steinbaugh/basejump.developer,
-    steinbaugh/basejump.experiment,
-    steinbaugh/basejump.generics,
-    steinbaugh/basejump.globals,
-    steinbaugh/basejump.io,
-    steinbaugh/basejump.markdown,
-    steinbaugh/basejump.plots,
-    steinbaugh/basejump.sanitization
 biocViews:
     DataImport,
     Infrastructure
