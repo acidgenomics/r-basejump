@@ -2,40 +2,33 @@
 #'
 #' Toolkit for bioinformatics and R package development.
 #'
-#' @importFrom methods setAs setClass
-"_PACKAGE"
-
-
-
-#' @importFrom methods setGeneric
-
+#' @importClassesFrom GenomicRanges GRanges GRangesList
+#' @importClassesFrom IRanges SimpleDataFrameList
+#' @importClassesFrom Matrix sparseMatrix
+#' @importClassesFrom S4Vectors DataFrame List
+#' @importClassesFrom SingleCellExperiment SingleCellExperiment
+#' @importClassesFrom SummarizedExperiment SummarizedExperiment
+#'
+#' @importMethodsFrom Matrix colSums
+#' @importMethodsFrom SingleCellExperiment coerce
+#' @importMethodsFrom SummarizedExperiment coerce
+#'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
+#' @importFrom BiocGenerics as.data.frame as.list do.call lapply match setdiff
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom IRanges IRanges
-#' @importFrom S4Vectors mcols mcols<- metadata metadata<- na.omit tail
-#' @importFrom assertive.base assert_are_identical
-#' @importFrom assertive.numbers assert_all_are_positive
-#' @importFrom assertive.properties assert_has_names assert_has_no_duplicates
-#'   assert_is_non_empty assert_is_of_length
-#' @importFrom assertive.sets assert_are_intersecting_sets assert_is_subset
-#' @importFrom assertive.strings assert_all_are_matching_regex
-#'   assert_all_are_non_missing_nor_empty_character
-#' @importFrom assertive.types assert_is_a_string assert_is_all_of
-#'   assert_is_any_of assert_is_character is_a_string
-#' @importFrom assertthat assert_that
-#' @importFrom curl has_internet
-#' @importFrom dplyr arrange case_when filter group_by left_join mutate pull
-#'   rename select
-#' @importFrom ensembldb ensemblVersion organism
-#' @importFrom methods as is
-#' @importFrom readr cols read_tsv
-#' @importFrom rlang !! !!! has_length sym syms
-#' @importFrom stringr str_extract str_replace_all
-#' @importFrom tibble tibble
-#' @importFrom utils capture.output globalVariables packageVersion
-NULL
-
+#' @importFrom Matrix colSums readMM rowMeans rowSums readMM t writeMM
+#' @importFrom Matrix.utils aggregate.Matrix
+#' @importFrom R.utils gzip
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom RCurl getURL url.exists
+#' @importFrom S4Vectors %in% DataFrame List aggregate complete.cases cor expand
+#'   head mcols mcols<- metadata metadata<- na.omit tail
+#' @importFrom SingleCellExperiment SingleCellExperiment isSpike<-
+#'   reducedDimNames reducedDims spikeNames
+#' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames assays
+#'   assays<- colData colData<- rowData rowData<- rowRanges rowRanges<-
 #' @importFrom assertive.base assert_all_are_not_na assert_all_are_true
 #'   assert_are_identical assert_is_identical_to_na is_not_na
 #' @importFrom assertive.code assert_all_are_existing is_existing
@@ -66,71 +59,13 @@ NULL
 #'   assert_is_environment assert_is_factor assert_is_function assert_is_integer
 #'   assert_is_list assert_is_matrix assert_is_name assert_is_numeric
 #'   assert_is_symbol assert_is_tbl_df is_a_number is_a_string
-#' @importFrom assertthat assert_that
-#' @importFrom methods is
-#' @importFrom utils globalVariables
-NULL
-
-#' @importClassesFrom GenomicRanges GRanges
-#' @importClassesFrom IRanges SimpleDataFrameList
-#' @importClassesFrom S4Vectors DataFrame
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
-#' @importFrom BiocGenerics as.data.frame
-#' @importFrom S4Vectors DataFrame expand List metadata metadata<-
-#' @importFrom SummarizedExperiment rowData
-#' @importFrom assertive.properties assert_has_no_duplicates assert_has_rows
-#' @importFrom assertive.sets assert_is_subset is_subset
-#' @importFrom assertive.types assert_is_a_bool assert_is_a_string
-#'   assert_is_function assert_is_list
 #' @importFrom assertthat assert_that validate_that
-#' @importFrom curl has_internet
-#' @importFrom dplyr arrange bind_rows everything filter group_by left_join
-#'   mutate mutate_all mutate_at rename select slice top_n ungroup
-#' @importFrom magrittr %>% set_colnames set_rownames
-#' @importFrom methods .hasSlot as is new setClass setMethod setValidity
-#'   signature slot slotNames
-#' @importFrom pbapply pblapply
-#' @importFrom readr cols read_lines read_tsv
-#' @importFrom rlang !! has_length sym syms
-#' @importFrom stringr str_extract str_match str_subset
-#' @importFrom tibble as_tibble
-#' @importFrom tidyr separate
-#' @importFrom utils globalVariables
-NULL
-
-#' @importClassesFrom GenomicRanges GRanges
-#' @importClassesFrom Matrix sparseMatrix
-#' @importClassesFrom S4Vectors DataFrame
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
-#' @importFrom S4Vectors metadata metadata<-
-#' @importFrom SummarizedExperiment rowData rowData<- rowRanges
-#' @importFrom methods .hasSlot as is setOldClass slotNames
-NULL
-
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
-#' @importMethodsFrom Matrix colSums
-#'
-#' @importFrom RColorBrewer brewer.pal
-#' @importFrom SummarizedExperiment assays assays<- colData rowData
-#' @importFrom assertive.base assert_are_identical
-#' @importFrom assertive.data assert_all_are_hex_colors
-#' @importFrom assertive.numbers assert_all_are_greater_than
-#'   assert_all_are_in_closed_range assert_all_are_in_range
-#'   assert_all_are_non_negative assert_all_are_positive is_positive
-#' @importFrom assertive.properties assert_has_names assert_has_no_duplicates
-#'   assert_is_scalar has_dims
-#' @importFrom assertive.sets assert_is_subset assert_are_disjoint_sets
-#'   assert_is_subset
-#' @importFrom assertive.types assert_is_a_bool assert_is_a_number
-#'   assert_is_a_string assert_is_all_of assert_is_an_integer
-#'   assert_is_character assert_is_factor assert_is_function assert_is_list
-#'   assert_is_matrix assert_is_tbl_df is_a_string
 #' @importFrom cowplot plot_grid
-#' @importFrom dplyr arrange desc filter group_by left_join mutate mutate_if n
-#'   pull rename select select_if summarise top_n
+#' @importFrom curl has_internet
+#' @importFrom dplyr arrange bind_rows case_when desc everything filter funs
+#'   group_by left_join mutate mutate_all mutate_at mutate_if n pull rename
+#'   select select_if slice summarise summarise_all top_n ungroup
+#' @importFrom ensembldb ensemblVersion organism
 #' @importFrom ggplot2 aes coord_flip element_blank element_line element_rect
 #'   element_text expand_limits facet_wrap geom_bar geom_boxplot geom_density
 #'   geom_hline geom_jitter geom_label geom_point geom_violin geom_vline ggplot
@@ -139,212 +74,38 @@ NULL
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
-#' @importFrom methods formalArgs is setMethod validObject
-#' @importFrom pheatmap pheatmap
-#' @importFrom rlang !! !!! := has_length sym syms UQ
-#' @importFrom stats aggregate as.formula cor quantile
-#' @importFrom tibble column_to_rownames tibble
-#' @importFrom tidyr gather
-#' @importFrom utils data globalVariables
-NULL
-
-#' @importClassesFrom GenomicRanges GRanges GRangesList
-#' @importClassesFrom Matrix sparseMatrix
-#' @importClassesFrom S4Vectors DataFrame List
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
-#' @importFrom BiocGenerics as.data.frame
-#' @importFrom S4Vectors DataFrame mcols mcols<-
-#' @importFrom assertive.base assert_all_are_not_na
-#' @importFrom assertive.properties assert_has_colnames assert_has_dimnames
-#'   assert_has_no_duplicates assert_has_rows assert_is_atomic
-#'   assert_is_non_empty has_colnames has_names is_scalar
-#' @importFrom assertive.sets assert_is_subset
-#' @importFrom assertive.strings assert_all_are_non_missing_nor_empty_character
-#' @importFrom assertive.types assert_is_a_bool assert_is_a_string
-#'   assert_is_any_of assert_is_character
-#' @importFrom dplyr funs mutate_all mutate_if summarise_all
-#' @importFrom methods as setGeneric setMethod signature validObject
-#' @importFrom stats na.omit
-#' @importFrom tibble as_tibble
-NULL
-
-# FIXME Getting a build check warning about AnnotationHub? Not sure why here.
-
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
-#' @importFrom assertive.base assert_all_are_not_na
-#' @importFrom assertive.files assert_all_are_dirs
-#' @importFrom assertive.properties assert_are_same_length assert_has_names
-#'   assert_is_atomic assert_is_non_empty
-#' @importFrom assertive.sets assert_is_subset
-#' @importFrom assertive.strings assert_all_are_non_missing_nor_empty_character
-#' @importFrom assertive.types assert_is_a_bool assert_is_a_string
-#'   assert_is_character assert_is_list
-#' @importFrom knitr asis_output kable opts_knit
-#' @importFrom methods show
-#' @importFrom stringr str_dup
-#' @importFrom utils globalVariables installed.packages
-NULL
-
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
-#' @importMethodsFrom basejump.coercion coerce
-#'
-#' @importFrom SummarizedExperiment assay
-#' @importFrom assertive.numbers assert_all_are_non_negative
-#'   assert_all_are_positive
-#' @importFrom assertive.properties assert_has_dims assert_has_names
-#'   assert_has_no_duplicates assert_is_atomic assert_is_non_empty has_names
-#' @importFrom assertive.sets assert_are_set_equal assert_is_subset
-#' @importFrom assertive.strings assert_all_are_non_missing_nor_empty_character
-#' @importFrom assertive.types assert_is_a_bool assert_is_a_number
-#'   assert_is_a_string assert_is_all_of assert_is_any_of assert_is_call
-#'   assert_is_character assert_is_environment assert_is_function assert_is_list
-#'   assert_is_name
-#' @importFrom assertthat assert_that
-#' @importFrom basejump.assertions assertIsAnImplicitInteger
-#' @importFrom basejump.coercion as.data.frame
-#' @importFrom magrittr %>%
-#' @importFrom methods as getGeneric is isGeneric selectMethod setMethod
-#'   signature slot
-#' @importFrom readr write_lines
-#' @importFrom rlang eval_bare has_length
-#' @importFrom tools Rd_db
-#' @importFrom utils capture.output globalVariables head installed.packages tail
-NULL
-
-#' @importClassesFrom SingleCellExperiment SingleCellExperiment
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
-#' @importFrom Matrix readMM writeMM
-#' @importFrom R.utils gzip
-#' @importFrom RCurl getURL url.exists
-#' @importFrom SingleCellExperiment reducedDimNames reducedDims
-#' @importFrom SummarizedExperiment assayNames assays colData rowData
-#' @importFrom assertive.base assert_are_identical
-#' @importFrom assertive.code assert_all_are_existing
-#' @importFrom assertive.files assert_all_are_dirs assert_all_are_existing_files
-#'   assert_all_are_existing_files
-#' @importFrom assertive.properties assert_are_same_length assert_has_cols
-#'   assert_has_names assert_has_no_duplicates assert_has_rows
-#'   assert_is_non_empty assert_is_not_null
-#' @importFrom assertive.sets assert_are_disjoint_sets assert_are_set_equal
-#'   assert_is_subset
-#' @importFrom assertive.strings assert_all_are_matching_regex
-#' @importFrom assertive.types assert_is_a_bool assert_is_a_string
-#'   assert_is_any_of assert_is_character assert_is_environment assert_is_list
-#'   assert_is_symbol is_a_string
-#' @importFrom assertthat assert_that
-#' @importFrom basejump.assertions assertAllAreNonExisting assertAllAreURL
-#'   assertFormalCompress assertIsAStringOrNULL hasRownames isURL
-#' @importFrom basejump.developer dots matchArgsToDoCall printString
-#'   standardizeCall
-#' @importFrom basejump.globals extPattern naStrings rdataExtPattern
-#'   rdataLoadError
-#' @importFrom curl has_internet
 #' @importFrom jsonlite read_json
-#' @importFrom methods as is setGeneric setMethod signature
-#' @importFrom readr read_lines read_tsv write_lines
-#' @importFrom rlang dots_list has_length
-#' @importFrom stats na.omit
-#' @importFrom stringr str_extract str_match str_subset
-#' @importFrom tibble as_tibble column_to_rownames
-#' @importFrom utils download.file globalVariables
-#' @importFrom yaml yaml.load_file
-NULL
-
-# FIXME See if we can reduce the imports...some code moved to basejump.plots.
-
-#' @importClassesFrom SingleCellExperiment SingleCellExperiment
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#' @importClassesFrom S4Vectors DataFrame
-#' @importClassesFrom basejump.classes Gene2Symbol
-#'
-#' @importMethodsFrom SingleCellExperiment coerce
-#' @importMethodsFrom SummarizedExperiment coerce
-#'
-#' @importFrom assertive.base assert_all_are_not_na assert_all_are_true
-#'   assert_are_identical assert_is_identical_to_na is_not_na
-#' @importFrom assertive.code assert_all_are_existing is_existing
-#' @importFrom assertive.data assert_all_are_hex_colors is_hex_color
-#' @importFrom assertive.files assert_all_are_dirs assert_all_are_existing_files
-#'   assert_all_are_non_empty_files
-#' @importFrom assertive.numbers assert_all_are_greater_than
-#'   assert_all_are_greater_than_or_equal_to assert_all_are_in_closed_range
-#'   assert_all_are_in_open_range assert_all_are_in_range
-#'   assert_all_are_non_negative assert_all_are_positive is_positive
-#' @importFrom assertive.properties assert_are_same_length assert_has_colnames
-#'   assert_has_dimnames assert_has_dims assert_has_names
-#'   assert_has_no_duplicates assert_has_rownames assert_has_rows
-#'   assert_is_atomic assert_is_empty assert_is_non_empty assert_is_not_null
-#'   assert_is_null assert_is_of_length assert_is_scalar assert_is_vector
-#'   has_colnames has_dimnames has_dims has_names has_rownames has_rows
-#'   is_scalar
-#' @importFrom assertive.sets assert_are_disjoint_sets
-#'   assert_are_intersecting_sets assert_are_set_equal assert_is_subset
-#'   is_subset
-#' @importFrom assertive.strings assert_all_are_matching_regex
-#'   assert_all_are_non_empty_character
-#'   assert_all_are_non_missing_nor_empty_character
-#'   assert_any_are_matching_regex
-#' @importFrom assertive.types assert_is_a_bool assert_is_a_number
-#'   assert_is_a_string assert_is_all_of assert_is_an_integer assert_is_any_of
-#'   assert_is_call assert_is_character assert_is_data.frame
-#'   assert_is_environment assert_is_factor assert_is_function assert_is_integer
-#'   assert_is_list assert_is_matrix assert_is_name assert_is_numeric
-#'   assert_is_symbol assert_is_tbl_df is_a_number is_a_string
-#' @importFrom assertthat assert_that validate_that
-#' @importFrom basejump.annotations emptyRanges
-#' @importFrom basejump.assertions assertAllAreValidNames
-#'   assertAllAreUniqueGeneNames assertFormalInterestingGroups assertHasRownames
-#'   assertHasValidDimnames assertIsAStringOrNULL assertIsAnImplicitInteger
-#'   assertIsColorScaleDiscreteOrNULL hasAggregateInfo
-#' @importFrom basejump.classes Gene2Symbol Tx2Gene
-#' @importFrom basejump.developer printString
-#' @importFrom basejump.globals barcodePattern lanePattern
-#' @importFrom basejump.io assignAndSaveData initDir realpath
-#' @importFrom basejump.sanitization camel makeNames
-#' @importFrom BiocGenerics as.data.frame as.list do.call lapply match setdiff
-#' @importFrom dplyr arrange bind_rows case_when desc filter funs group_by
-#'   left_join mutate mutate_all mutate_at mutate_if n pull rename select
-#'   select_if slice summarize summarize_all top_n ungroup
-#' @importFrom ggrepel geom_label_repel
-#' @importFrom grDevices colorRampPalette
-#' @importFrom grid arrow unit
-#' @importFrom IRanges IRanges
 #' @importFrom knitr asis_output kable opts_knit
-#' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
-#' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom magrittr set_colnames set_rownames
-#' @importFrom methods as formalArgs getGeneric getMethod is new selectMethod
-#'   setAs show slot slotNames validObject .hasSlot
+#' @importFrom magrittr %>% set_colnames set_rownames
+#' @importFrom methods as formalArgs getGeneric getMethod is isGeneric new
+#'   selectMethod setAs setClass setGeneric setMethod setOldClass setValidity
+#'   show signature slot slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
+#' @importFrom pheatmap pheatmap
 #' @importFrom purrr map
-#' @importFrom R.utils gzip
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom readr cols read_lines read_tsv write_csv write_lines
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors %in% aggregate complete.cases cor DataFrame expand head
-#'   List mcols mcols<- metadata metadata<- na.omit tail
 #' @importFrom sessioninfo session_info
-#' @importFrom SingleCellExperiment isSpike<- SingleCellExperiment reducedDims
-#'   reducedDimNames spikeNames
+#' @importFrom stats as.formula quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
-#' @importFrom SummarizedExperiment assay assayNames assays assays<- colData
-#'   colData<- rowData rowData<- rowRanges rowRanges<- SummarizedExperiment
-#' @importFrom tibble as_tibble column_to_rownames tibble
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
-#' @importFrom utils capture.output download.file getFromNamespace
+#' @importFrom tibble as_tibble column_to_rownames tibble
+#' @importFrom tools Rd_db
+#' @importFrom utils capture.output data download.file getFromNamespace
 #'   globalVariables installed.packages packageVersion read.delim read.table
 #'   sessionInfo
-NULL
+#' @importFrom yaml yaml.load_file
+"_PACKAGE"
+
+
 
 globalVariables(".")
+
+
 
 #' @importFrom magrittr %>%
 #' @export
