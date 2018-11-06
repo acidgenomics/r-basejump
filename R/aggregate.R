@@ -1,4 +1,3 @@
-# aggregate ====================================================================
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
@@ -106,8 +105,6 @@ NULL
 
 .aggregateFuns <- c("sum", "mean")
 
-
-
 # Don't message when aggregating a large factor.
 .aggregateMessage <- function(groupings, fun) {
     assert_is_factor(groupings)
@@ -128,6 +125,7 @@ NULL
 
 
 
+# aggregateRows ================================================================
 aggregateRows.matrix <-  # nolint
     function(
         object,
@@ -140,7 +138,7 @@ aggregateRows.matrix <-  # nolint
         assertAllAreValidNames(levels(groupings))
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
-        # stats::aggregate.data.frame S3 method.
+        # `stats::aggregate.data.frame` S3 method.
         aggregate(
             x = object,
             by = list(rowname = groupings),
@@ -149,9 +147,8 @@ aggregateRows.matrix <-  # nolint
             column_to_rownames() %>%
             as.matrix()
     }
+
 formals(aggregateRows.matrix)[["fun"]] <- .aggregateFuns
-
-
 
 #' @rdname aggregate
 #' @export
@@ -159,36 +156,6 @@ setMethod(
     f = "aggregateRows",
     signature = signature("matrix"),
     definition = aggregateRows.matrix
-)
-
-
-
-aggregateCols.matrix <-  # nolint
-    function(
-        object,
-        groupings,
-        fun
-    ) {
-        fun <- match.arg(fun)
-        object %>%
-            t() %>%
-            aggregateRows(
-                object = .,
-                groupings = groupings,
-                fun = fun
-            ) %>%
-            t()
-    }
-formals(aggregateCols.matrix)[["fun"]] <- .aggregateFuns
-
-
-
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateCols",
-    signature = signature("matrix"),
-    definition = aggregateCols.matrix
 )
 
 
@@ -206,16 +173,15 @@ aggregateRows.sparseMatrix <-  # nolint
         assertAllAreValidNames(levels(groupings))
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
-        # Matrix.utils::aggregate.Matrix S3 method.
+        # `Matrix.utils::aggregate.Matrix` S3 method.
         aggregate(
             x = object,
             groupings = groupings,
             fun = fun
         )
     }
+
 formals(aggregateRows.sparseMatrix)[["fun"]] <- .aggregateFuns
-
-
 
 #' @rdname aggregate
 #' @export
@@ -223,36 +189,6 @@ setMethod(
     f = "aggregateRows",
     signature = signature("sparseMatrix"),
     definition = aggregateRows.sparseMatrix
-)
-
-
-
-aggregateCols.sparseMatrix <-  # nolint
-    function(
-        object,
-        groupings,
-        fun
-    ) {
-        fun <- match.arg(fun)
-        object %>%
-            t() %>%
-            aggregateRows(
-                object = .,
-                groupings = groupings,
-                fun = fun
-            ) %>%
-            t()
-    }
-formals(aggregateCols.sparseMatrix)[["fun"]] <- .aggregateFuns
-
-
-
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateCols",
-    signature = signature("sparseMatrix"),
-    definition = aggregateCols.sparseMatrix
 )
 
 
@@ -299,9 +235,8 @@ aggregateRows.SummarizedExperiment <-  # nolint
         validObject(se)
         se
     }
+
 formals(aggregateRows.SummarizedExperiment)[["fun"]] <- .aggregateFuns
-
-
 
 #' @rdname aggregate
 #' @export
@@ -309,6 +244,65 @@ setMethod(
     f = "aggregateRows",
     signature = signature("SummarizedExperiment"),
     definition = aggregateRows.SummarizedExperiment
+)
+
+
+
+# aggregateCols ================================================================
+aggregateCols.matrix <-  # nolint
+    function(
+        object,
+        groupings,
+        fun
+    ) {
+        fun <- match.arg(fun)
+        object %>%
+            t() %>%
+            aggregateRows(
+                object = .,
+                groupings = groupings,
+                fun = fun
+            ) %>%
+            t()
+    }
+
+formals(aggregateCols.matrix)[["fun"]] <- .aggregateFuns
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateCols",
+    signature = signature("matrix"),
+    definition = aggregateCols.matrix
+)
+
+
+
+aggregateCols.sparseMatrix <-  # nolint
+    function(
+        object,
+        groupings,
+        fun
+    ) {
+        fun <- match.arg(fun)
+        object %>%
+            Matrix::t(.) %>%
+            aggregateRows(
+                object = .,
+                groupings = groupings,
+                fun = fun
+            ) %>%
+            Matrix::t(.)
+    }
+
+formals(aggregateCols.sparseMatrix)[["fun"]] <- .aggregateFuns
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateCols",
+    signature = signature("sparseMatrix"),
+    definition = aggregateCols.sparseMatrix
 )
 
 
@@ -385,9 +379,8 @@ aggregateCols.SummarizedExperiment <-  # nolint
         validObject(se)
         se
     }
+
 formals(aggregateCols.SummarizedExperiment)[["fun"]] <- .aggregateFuns
-
-
 
 #' @rdname aggregate
 #' @export
@@ -472,9 +465,8 @@ aggregateCols.SingleCellExperiment <-  # nolint
         validObject(sce)
         sce
     }
+
 formals(aggregateCols.SingleCellExperiment)[["fun"]] <- .aggregateFuns
-
-
 
 #' @rdname aggregate
 #' @export
@@ -495,8 +487,6 @@ setMethod(
 #' print(x)
 NULL
 
-
-
 aggregateCellsToSamples.SingleCellExperiment <-  # nolint
     function(object, fun) {
         validObject(object)
@@ -509,9 +499,8 @@ aggregateCellsToSamples.SingleCellExperiment <-  # nolint
             fun = fun
         )
     }
+
 formals(aggregateCellsToSamples.SingleCellExperiment)[["fun"]] <- .aggregateFuns
-
-
 
 #' @rdname aggregateCellsToSamples
 #' @export
