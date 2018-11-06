@@ -1,5 +1,7 @@
 context("Calculations")
 
+data(df, mat, sparse, envir = environment())
+
 
 
 # aggregateRows ================================================================
