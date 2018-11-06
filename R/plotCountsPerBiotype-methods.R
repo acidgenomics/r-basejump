@@ -1,7 +1,6 @@
 #' @name plotCountsPerBiotype
-#' @inherit basejump.generics::plotCountsPerBiotype
-#' @inheritParams params
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @inheritParams params
 #' @examples
 #' data(rse, sce)
 #'
@@ -13,20 +12,6 @@
 #' plotCountsPerBiotype(sce)
 #' plotCountsPerBroadClass(sce)
 NULL
-
-
-
-#' @importFrom basejump.generics plotCountsPerBiotype
-#' @aliases NULL
-#' @export
-basejump.generics::plotCountsPerBiotype
-
-
-
-#' @importFrom basejump.generics plotCountsPerBroadClass
-#' @aliases NULL
-#' @export
-basejump.generics::plotCountsPerBroadClass
 
 
 

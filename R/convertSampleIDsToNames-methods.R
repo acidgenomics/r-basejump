@@ -1,12 +1,4 @@
-#' @importFrom basejump.generics convertSampleIDsToNames
-#' @aliases NULL
-#' @export
-basejump.generics::convertSampleIDsToNames
-
-
-
 #' @name convertSampleIDsToNames
-#' @inherit basejump.generics::convertSampleIDsToNames
 #' @examples
 #' data(rse)
 #' convertSampleIDsToNames(rse)

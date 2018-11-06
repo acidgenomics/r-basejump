@@ -1,8 +1,7 @@
 #' @name metrics
-#' @inherit basejump.generics::metrics
-#' @inheritParams params
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
+#' @inheritParams params
 #' @param fun `string`. Mathematical function name to apply.
 #'   Uses [base::match.arg()].
 #'
@@ -25,20 +24,6 @@
 #' x <- metricsPerSample(sce, fun = "mean")
 #' print(x)
 NULL
-
-
-
-#' @importFrom basejump.generics metrics
-#' @aliases NULL
-#' @export
-basejump.generics::metrics
-
-
-
-#' @importFrom basejump.generics metricsPerSample
-#' @aliases NULL
-#' @export
-basejump.generics::metricsPerSample
 
 
 

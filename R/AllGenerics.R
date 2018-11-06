@@ -86,7 +86,8 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
-#' @return `SummarizedExperiment`, at sample-level instead of cell-level.
+#' @return `SummarizedExperiment`. Object with cell-level counts aggregated
+#'   to sample-level.
 setGeneric(
     name = "aggregateCellsToSamples",
     def = function(object, ...) {
@@ -621,10 +622,10 @@ setGeneric(
 #' Differentially Expressed Gene Heatmap
 #'
 #' @details
-#' This function is a simplified version of `basejump.plots::plotHeatmap()` that
-#' is optimized for automatic handling differentially expressed genes, rather
-#' than requiring manual input of a gene vector. All of the optional parameters
-#' for `plotHeatmap` are also available to this function.
+#' This function is a simplified version of `plotHeatmap()` that is optimized
+#' for automatic handling differentially expressed genes, rather than requiring
+#' manual input of a gene vector. All of the optional parameters for
+#' `plotHeatmap` are also available to this function.
 #'
 #' To adjust the annotation columns, modify the `colData` of the `counts`
 #' argument, which must contain/extend a `SummarizedExperiment`.

@@ -1,7 +1,6 @@
 #' @name geometricMean
-#' @inherit basejump.generics::geometricMean
-#' @inheritParams base::apply
 #'
+#' @inheritParams base::apply
 #' @param removeNA `boolean`. Remove `NA` values from calculations.
 #' @param zeroPropagate `boolean`. Allow propagation of zeroes.
 #'
@@ -33,13 +32,6 @@
 #' print(sparse)
 #' geometricMean(sparse)
 NULL
-
-
-
-#' @importFrom basejump.generics geometricMean
-#' @aliases NULL
-#' @export
-basejump.generics::geometricMean
 
 
 

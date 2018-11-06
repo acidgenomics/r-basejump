@@ -1,6 +1,4 @@
 #' @name plotHeatmap
-#' @inherit basejump.generics::plotHeatmap
-#' @inheritParams params
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @section Hierarchical clustering:
@@ -9,6 +7,7 @@
 #' the Ward method, but this behavior can be overrided by setting `clusterRows`
 #' or `clusterCols` to `FALSE`.
 #'
+#' @inheritParams params
 #' @param borderColor `string` or `NULL`. Border color. Disabled by default for
 #'   improved aesthetics.
 #' @param clusteringMethod `string`. Clustering method. Accepts the same values
@@ -79,27 +78,6 @@
 #' plotCorrelationHeatmap(sce)
 #' plotQuantileHeatmap(sce)
 NULL
-
-
-
-#' @importFrom basejump.generics plotHeatmap
-#' @aliases NULL
-#' @export
-basejump.generics::plotHeatmap
-
-
-
-#' @importFrom basejump.generics plotCorrelationHeatmap
-#' @aliases NULL
-#' @export
-basejump.generics::plotCorrelationHeatmap
-
-
-
-#' @importFrom basejump.generics plotQuantileHeatmap
-#' @aliases NULL
-#' @export
-basejump.generics::plotQuantileHeatmap
 
 
 

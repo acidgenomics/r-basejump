@@ -1,6 +1,5 @@
 # collapseToString =============================================================
 #' @name collapseToString
-#' @inherit basejump.generics::collapseToString
 #'
 #' @param sep `string`. Separator. Defaults to comma.
 #' @param unique `boolean`. Unique values.

@@ -3,8 +3,8 @@
 
 
 #' @name sampleData
-#' @inherit basejump.generics::sampleData
 #'
+#' @inheritParams params
 #' @param blacklist `character`. Column names that should never be treated as
 #'   sample-level metadata. Applies to objects where the columns don't map to
 #'   samples (e.g. `SingleCellExperiment`), and we need to collapse the
@@ -31,20 +31,6 @@
 #' ## `batch` column should be now defined.
 #' sampleData(x)
 NULL
-
-
-
-#' @importFrom basejump.generics sampleData
-#' @aliases NULL
-#' @export
-basejump.generics::sampleData
-
-
-
-#' @importFrom basejump.generics sampleData<-
-#' @aliases NULL
-#' @export
-basejump.generics::`sampleData<-`
 
 
 

@@ -37,7 +37,7 @@ mapply(
     },
     file = files,
     MoreArgs = list(
-        cacheURL = basejump.globals::basejumpCacheURL,
+        cacheURL = basejumpCacheURL,
         envir = environment()
     )
 )

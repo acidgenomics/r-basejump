@@ -1,17 +1,9 @@
 #' @name plotQC
-#' @inherit basejump.generics::plotQC
 #' @inheritParams params
 #' @examples
 #' data(rse)
 #' plotQC(rse)
 NULL
-
-
-
-#' @importFrom basejump.generics plotQC
-#' @aliases NULL
-#' @export
-basejump.generics::plotQC
 
 
 

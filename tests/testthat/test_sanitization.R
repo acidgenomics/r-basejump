@@ -7,7 +7,6 @@ mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
 
 # nolint start
 DataFrame <- S4Vectors::DataFrame
-hasRownames <- basejump.assertions::hasRownames
 rowRanges <- SummarizedExperiment::rowRanges
 tibble <- tibble::tibble
 # nolint end

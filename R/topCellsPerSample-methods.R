@@ -1,5 +1,4 @@
 #' @name topCellsPerSample
-#' @inherit basejump.generics::topCellsPerSample
 #'
 #' @param n `scalar integer`. Number of barcodes to return per sample.
 #'
@@ -8,13 +7,6 @@
 #' x <- topCellsPerSample(sce)
 #' lapply(x, head)
 NULL
-
-
-
-#' @importFrom basejump.generics topCellsPerSample
-#' @aliases NULL
-#' @export
-basejump.generics::topCellsPerSample
 
 
 

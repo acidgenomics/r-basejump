@@ -1,18 +1,10 @@
 #' @name plotTotalCounts
-#' @inherit basejump.generics::plotTotalCounts
 #' @inheritParams params
 #' @examples
 #' data(rse, sce)
 #' plotTotalCounts(rse)
 #' plotTotalCounts(sce)
 NULL
-
-
-
-#' @importFrom basejump.generics plotTotalCounts
-#' @aliases NULL
-#' @export
-basejump.generics::plotTotalCounts
 
 
 

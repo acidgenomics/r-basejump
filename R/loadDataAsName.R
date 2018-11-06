@@ -16,7 +16,7 @@
 #' @examples
 #' loadDataAsName(
 #'     renamed = example,
-#'     dir = system.file("extdata", package = "basejump.io")
+#'     dir = system.file("extdata", package = "basejump")
 #' )
 #' class(renamed)
 loadDataAsName <- function(

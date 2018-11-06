@@ -1,5 +1,4 @@
 #' @name logRatio
-#' @inherit basejump.generics::logRatio
 #'
 #' @param base `scalar integer`. Logarithm base. Defaults to `2`, for
 #'   compatibility with RNA-Seq differential expression output.
@@ -11,20 +10,6 @@
 #' ## Convert log ratio to fold change.
 #' logRatioToFoldChange(seq(-3, 3, 1))
 NULL
-
-
-
-#' @importFrom basejump.generics foldChangeToLogRatio
-#' @aliases NULL
-#' @export
-basejump.generics::foldChangeToLogRatio
-
-
-
-#' @importFrom basejump.generics logRatioToFoldChange
-#' @aliases NULL
-#' @export
-basejump.generics::logRatioToFoldChange
 
 
 

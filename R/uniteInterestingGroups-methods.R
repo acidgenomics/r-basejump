@@ -1,5 +1,4 @@
 #' @name uniteInterestingGroups
-#' @inherit basejump.generics::uniteInterestingGroups
 #' @inheritParams params
 #' @examples
 #' data(rse)
@@ -11,13 +10,6 @@
 #' )
 #' print(to)
 NULL
-
-
-
-#' @importFrom basejump.generics uniteInterestingGroups
-#' @aliases NULL
-#' @export
-basejump.generics::uniteInterestingGroups
 
 
 

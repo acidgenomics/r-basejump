@@ -1,7 +1,6 @@
 #' @name mapGenes
-#' @inherit basejump.generics::mapGenes
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param strict `boolean`. Require all genes to match. Recommended by default.
 #'   If set `FALSE`, instead will return a warning to the user, and subset the
 #'   genes vector to only include matches.
@@ -41,27 +40,6 @@
 #' mapGenesToSymbols(object, genes = geneIDs)
 #' mapGenesToSymbols(object, genes = geneNames)
 NULL
-
-
-
-#' @importFrom basejump.generics mapGenesToRownames
-#' @aliases NULL
-#' @export
-basejump.generics::mapGenesToRownames
-
-
-
-#' @importFrom basejump.generics mapGenesToIDs
-#' @aliases NULL
-#' @export
-basejump.generics::mapGenesToIDs
-
-
-
-#' @importFrom basejump.generics mapGenesToSymbols
-#' @aliases NULL
-#' @export
-basejump.generics::mapGenesToSymbols
 
 
 

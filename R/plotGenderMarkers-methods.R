@@ -1,20 +1,13 @@
 # TODO Create small working example with dimoprhic genes.
+# TODO Move this code to `plotGene-methods.R`?
 
 
 
 #' @name plotGenderMarkers
-#' @inherit basejump.generics::plotGenderMarkers
-#' @inheritParams params
 #' @inheritParams plotGene
+#' @inheritParams params
 #' @include plotGene-methods.R
 NULL
-
-
-
-#' @importFrom basejump.generics plotGenderMarkers
-#' @aliases NULL
-#' @export
-basejump.generics::plotGenderMarkers
 
 
 
@@ -25,12 +18,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
 
         # Load the relevant internal gender markers data.
         organism <- organism(object)
-        requireNamespace("basejump.data", quietly = TRUE)
-        data(
-            "gender_markers",
-            package = "basejump.data",
-            envir = environment()
-        )
+        data("gender_markers", package = "basejump", envir = environment())
         markers <- get("gender_markers", inherits = FALSE)
         assert_is_list(markers)
         # Error if the organism is not supported.

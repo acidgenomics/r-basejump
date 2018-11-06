@@ -1,5 +1,4 @@
 #' @name convertTranscriptsToGenes
-#' @inherit basejump.generics::convertTranscriptsToGenes
 #' @inherit convertGenesToSymbols
 #' @inheritParams params
 #'
@@ -22,7 +21,7 @@
 #' data(tx_se)
 #' object <- tx_se
 #'
-#' t2g <- basejump.classes::Tx2Gene(object)
+#' t2g <- Tx2Gene(object)
 #' print(t2g)
 #' transcripts <- rownames(object)
 #' print(transcripts)
@@ -50,13 +49,6 @@
 #' x <- convertTranscriptsToGenes(object)
 #' print(x)
 NULL
-
-
-
-#' @importFrom basejump.generics convertTranscriptsToGenes
-#' @aliases NULL
-#' @export
-basejump.generics::convertTranscriptsToGenes
 
 
 

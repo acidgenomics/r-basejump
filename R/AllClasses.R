@@ -426,7 +426,7 @@ setMethod(
 #' @inherit Gene2Symbol
 #' @export
 #'
-#' @seealso `help(topic = "makeGene2Symbol", package = "basejump.annotations")`.
+#' @seealso [makeGene2Symbol].
 #'
 #' @return `Gene2Symbol`. Contains a `DataFrame` with `geneID` and `geneName`
 #'   columns.
@@ -1054,7 +1054,7 @@ PANTHER <- function(  # nolint
 #' @inherit Tx2Gene
 #' @export
 #'
-#' @seealso `help(topic = "makeTx2Gene", package = "basejump.annotations")`.
+#' @seealso [makeTx2Gene].
 #'
 #' @return `Tx2Gene`. Contains a `DataFrame` with `transcriptID` and `geneID`
 #'   columns.

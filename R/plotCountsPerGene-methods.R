@@ -1,7 +1,6 @@
 #' @name plotCountsPerGene
-#' @inherit basejump.generics::plotCountsPerGene
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param geom `string`. Type of ggplot2 geometric object to use.
 #'
 #' @examples
@@ -14,13 +13,6 @@
 #' ## SingleCellExperiment ====
 #' plotCountsPerGene(sce)
 NULL
-
-
-
-#' @importFrom basejump.generics plotCountsPerGene
-#' @aliases NULL
-#' @export
-basejump.generics::plotCountsPerGene
 
 
 

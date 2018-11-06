@@ -30,7 +30,7 @@
 #' @seealso [base::load()], [base::readRDS()].
 #'
 #' @examples
-#' loadData(example, dir = system.file("extdata", package = "basejump.io"))
+#' loadData(example, dir = system.file("extdata", package = "basejump"))
 loadData <- function(
     ...,
     dir = ".",

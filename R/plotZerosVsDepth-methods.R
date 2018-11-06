@@ -1,17 +1,9 @@
 #' @name plotZerosVsDepth
-#' @inherit basejump.generics::plotZerosVsDepth
 #' @inheritParams params
 #' @examples
 #' data(sce)
 #' plotZerosVsDepth(sce)
 NULL
-
-
-
-#' @importFrom basejump.generics plotZerosVsDepth
-#' @aliases NULL
-#' @export
-basejump.generics::plotZerosVsDepth
 
 
 

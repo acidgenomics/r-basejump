@@ -1,18 +1,10 @@
 #' @name plotGenesDetected
-#' @inherit basejump.generics::plotGenesDetected
 #' @inheritParams params
 #' @examples
 #' data(rse, sce)
 #' plotGenesDetected(rse)
 #' plotGenesDetected(sce)
 NULL
-
-
-
-#' @importFrom basejump.generics plotGenesDetected
-#' @aliases NULL
-#' @export
-basejump.generics::plotGenesDetected
 
 
 
