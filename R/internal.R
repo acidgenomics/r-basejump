@@ -1,3 +1,15 @@
+# FIXME
+li <- "  - "
+
+
+
+.prototypeMetadata <- list(
+    version = packageVersion("basejump.annotations"),
+    date = Sys.Date()
+)
+
+
+
 # Validity checks ==============================================================
 # Good example on how to set informative validity checks:
 # http://adv-r.had.co.nz/S4.html
