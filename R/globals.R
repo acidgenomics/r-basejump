@@ -48,10 +48,6 @@ lanePattern <- "_L([[:digit:]]{3})"
 
 
 
-li <- "  - "
-
-
-
 #' NA Strings
 #' @export
 #' @examples
@@ -86,10 +82,3 @@ rdataExtPattern <- "\\.(rd[a|ata|s])$"
 #' @examples
 #' message(updateMessage)
 updateMessage <- "Run `updateObject()` to update your object."
-
-
-
-.prototypeMetadata <- list(
-    version = packageVersion("basejump.annotations"),
-    date = Sys.Date()
-)
