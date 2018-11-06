@@ -5,7 +5,7 @@
 #' @param geom `string`. Type of ggplot2 geometric object to use.
 #'
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #'
 #' ## SummarizedExperiment ====
 #' plotCountsPerGene(rse, geom = "boxplot")

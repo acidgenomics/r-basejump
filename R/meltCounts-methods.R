@@ -11,7 +11,7 @@
 #'   (e.g. gene ID).
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' x <- meltCounts(rse)
 #' print(x)
 NULL

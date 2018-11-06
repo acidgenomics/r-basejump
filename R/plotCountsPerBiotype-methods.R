@@ -3,7 +3,7 @@
 #' @inheritParams params
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #'
 #' ## SummarizedExperiment ====
 #' plotCountsPerBiotype(rse)

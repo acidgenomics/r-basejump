@@ -3,7 +3,7 @@
 #' @inheritParams params
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' object <- rse
 #'
 #' intgroup <- interestingGroups(object)

@@ -2,7 +2,7 @@
 #' @inherit basejump.generics::plotGenesDetected
 #' @inheritParams params
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #' plotGenesDetected(rse)
 #' plotGenesDetected(sce)
 NULL

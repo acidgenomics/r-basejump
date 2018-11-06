@@ -13,7 +13,7 @@
 #' @return `character`. Interesting groups.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' matchInterestingGroups(rse)
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
     if (is.null(interestingGroups)) {

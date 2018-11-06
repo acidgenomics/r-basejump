@@ -12,7 +12,7 @@
 #'   of the object, like [SummarizedExperiment::colData()].
 #'
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #'
 #' ## SummarizedExperiment ====
 #' x <- metrics(rse)

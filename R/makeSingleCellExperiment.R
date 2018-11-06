@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' library(SingleCellExperiment)
-#' data(sce, package = "basejump.data")
+#' data(sce)
 #' object <- sce
 #' assays <- assays(object)
 #' rowRanges <- rowRanges(object)

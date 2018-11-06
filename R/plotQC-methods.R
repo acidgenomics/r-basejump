@@ -2,7 +2,7 @@
 #' @inherit basejump.generics::plotQC
 #' @inheritParams params
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' plotQC(rse)
 NULL
 

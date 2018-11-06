@@ -1,6 +1,6 @@
 context("Import/Export")
 
-data(rse, sce, package = "basejump.data", envir = environment())
+data(rse, sce, envir = environment())
 
 assay <- SummarizedExperiment::assay
 mcols <- S4Vectors::mcols

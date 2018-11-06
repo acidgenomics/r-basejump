@@ -1,6 +1,6 @@
 context("Developer")
 
-data(rse, sce, package = "basejump.data", envir = environment())
+data(rse, sce, envir = environment())
 
 
 

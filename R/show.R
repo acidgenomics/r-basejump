@@ -7,7 +7,7 @@
 #' @param ascii `boolean`. Require separators to use ASCII instead of Unicode.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #'
 #' ## data.frame ====
 #' headtail(datasets::mtcars, ascii = TRUE)
@@ -324,7 +324,7 @@ methods::show
 #' @name show
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' options(basejump.test = TRUE)
 #'
 #' ## Gene2Symbol ====

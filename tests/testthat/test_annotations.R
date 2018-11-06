@@ -1,4 +1,4 @@
-data(mat, rse, package = "basejump.data", envir = environment())
+data(mat, rse, envir = environment())
 
 organism <- "Homo sapiens"
 release <- 87L

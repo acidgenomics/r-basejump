@@ -24,7 +24,7 @@
 #' @return Invisible named `character`. File paths.
 #'
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #' saveData(rse, sce, dir = "example")
 #' list.files("example")
 #'

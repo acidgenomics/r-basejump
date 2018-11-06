@@ -30,7 +30,7 @@
 #' @examples
 #' library(SummarizedExperiment)
 #' library(SingleCellExperiment)
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #'
 #' ## matrix ====
 #' rnaseq_counts <- assay(rse)

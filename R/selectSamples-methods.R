@@ -11,7 +11,7 @@
 #'   readability.
 #'
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #'
 #' ## SummarizedExperiment ====
 #' object <- rse

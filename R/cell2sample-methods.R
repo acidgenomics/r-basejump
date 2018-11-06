@@ -17,7 +17,7 @@ basejump.generics::cell2sample
 #' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
 #'
 #' @examples
-#' data(sce, package = "basejump.data")
+#' data(sce)
 #' x <- cell2sample(sce)
 #' table(x)
 NULL

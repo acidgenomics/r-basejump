@@ -12,7 +12,7 @@
 #' @return Named `character` vector of the sample names.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' object <- rse
 #' x <- sampleNames(object)
 #' print(x)

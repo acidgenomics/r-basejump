@@ -23,7 +23,7 @@ BiocGenerics::combine
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #'
 #' ## SummarizedExperiment ====
 #' x <- rse
