@@ -32,6 +32,9 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         assertIsAStringOrNULL(title)
 
         counts <- assays(object)[[assay]]
+        if (is(counts, "sparseMatrix")) {
+            colSums <- Matrix::colSums
+        }
         data <- sampleData(object) %>%
             as_tibble() %>%
             mutate(totalCounts = colSums(!!counts))
