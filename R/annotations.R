@@ -1,3 +1,305 @@
+# convertUCSCBuildToEnsembl ====================================================
+#' Convert UCSC Build to Ensembl
+#'
+#' @export
+#'
+#' @inheritParams basejump.globals::params
+#'
+#' @return `character`. Ensembl genome build as the value, UCSC build as the
+#'   name. Stops on match failure.
+#'
+#' @examples
+#' from <- c("hg19", "hg38")
+#' to <- convertUCSCBuildToEnsembl(from)
+#' print(to)
+convertUCSCBuildToEnsembl <- function(object) {
+    assert_is_character(object)
+    keys <- c(
+        # Homo sapiens (Human)
+        "GRCh37" = "hg19",
+        "GRCh38" = "hg38",
+        # Mus musculus (Mouse)
+        "GRCm38" = "mm10",
+        # Rattus norvegicus (Rat)
+        "Rnor_6.0" = "rn6",
+        # Drosophila melanogaster (Fruitfly)
+        "BDGP6" = "dm6",
+        # Caenorhabditis elegans (Worm)
+        "WBcel235" = "ce11",
+        # Saccharomyces cerevisiae (Yeast)
+        "R64-1-1" = "sacCer3"
+    )
+    match <- match(x = object, table = keys)
+    # Stop on match failure.
+    if (any(is.na(match))) {
+        stop(paste(
+            "Failed to match UCSC to Ensembl:",
+            toString(object[which(is.na(match))])
+        ))
+    }
+    return <- names(keys)[match]
+    names(return) <- keys[match]
+    return
+}
+
+
+
+# emptyRanges ==================================================================
+#' Generate Empty Genomic Ranges
+#'
+#' Utility function that provides support for creating internal `GRanges` for
+#' transgene and FASTA spike-in sequences.
+#'
+#' @export
+#'
+#' @param names `character`. Gene or transcript names.
+#' @param seqname `string` Name of the alternative chromosome to be defined in
+#'   [GenomeInfoDb::seqnames()] where these ranges will be grouped. Defaults to
+#'   "`unknown`" but "`transgene`" (transgenes) and "`spike`" (spike-ins) are
+#'   also supported.
+#' @param mcolsNames `character` or `NULL`. Metadata column names to be defined
+#'   in the [S4Vectors::mcols()] of the `GRanges` return. Normally this does not
+#'   need to be defined; useful when combining with another `GRanges` that
+#'   contains metadata.
+#'
+#' @return `GRanges`.
+#'
+#' @seealso `help("seqinfo", "GenomeInfoDb")`.
+#'
+#' @examples
+#' ## Unknown/dead genes.
+#' emptyRanges("ENSG00000000000", seqname = "unknown")
+#'
+#' ## Transgenes.
+#' emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
+#'
+#' ## Spike-ins.
+#' emptyRanges("ERCC", seqname = "spike")
+emptyRanges <- function(
+    names,
+    seqname = c("unknown", "transgene", "spike"),
+    mcolsNames = NULL
+) {
+    assert_is_character(names)
+    assert_all_are_non_missing_nor_empty_character(names)
+    seqname <- match.arg(seqname)
+    assert_is_any_of(mcolsNames, c("character", "NULL"))
+
+    gr <- GRanges(
+        seqnames = seqname,
+        ranges = IRanges(
+            start = (seq_len(length(names)) - 1L) * 100L + 1L,
+            width = 100L
+        )
+    )
+    names(gr) <- names
+
+    # Create the required empty metadata columns.
+    if (!has_length(mcolsNames)) {
+        ncol <- 0L
+    } else {
+        ncol <- length(mcolsNames)
+    }
+    mcols <- matrix(
+        nrow = length(names),
+        ncol = ncol,
+        dimnames = list(
+            names,
+            mcolsNames
+        )
+    )
+    mcols <- as(mcols, "DataFrame")
+    mcols(gr) <- mcols
+
+    gr
+}
+
+
+
+# geneSynonyms =================================================================
+#' Gene Synonyms
+#'
+#' Look up gene synonyms from NCBI.
+#'
+#' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
+#' Use the [wormbase](https://steinbaugh.com/wormbase) package instead.
+#'
+#' @export
+#'
+#' @inheritParams basejump.globals::params
+#' @param organism `string`. Supported organisms: *Homo sapiens*,
+#'   *Mus musculus*, *Drosophila melanogaster*.
+#'
+#' @return `grouped_df`. Grouped by `geneID` column.
+#'
+#' @examples
+#' options(basejump.test = TRUE)
+#' x <- geneSynonyms(organism = "Homo sapiens")
+#' print(x)
+geneSynonyms <- function(organism) {
+    assert_that(has_internet())
+    organism <- match.arg(
+        arg = organism,
+        choices = .geneSynonymsOrganisms
+    )
+
+    # NCBI uses underscore for species name
+    species <- gsub(" ", "_", organism)
+    if (species == "Drosophila_melanogaster") {
+        kingdom <- "Invertebrates"
+    } else {
+        kingdom <- "Mammalia"
+    }
+
+    genome <- c(kingdom = kingdom, species = species)
+
+    if (isTRUE(getOption("basejump.test"))) {
+        assert_that(organism == "Homo sapiens")
+        file <- file.path(
+            basejumpCacheURL,
+            paste0(snake(organism), ".gene_info.gz")
+        )
+    } else {
+        file <- paste(
+            "ftp://ftp.ncbi.nih.gov",
+            "gene",
+            "DATA",
+            "GENE_INFO",
+            genome[["kingdom"]],
+            paste0(genome[["species"]], ".gene_info.gz"),
+            sep = "/"
+        )
+    }
+
+    data <- read_tsv(
+        file = file,
+        col_types = cols(),
+        progress = FALSE
+    )
+    assert_is_non_empty(data)
+
+    data <- data %>%
+        camel() %>%
+        select(!!!syms(c("symbol", "synonyms", "dbXrefs"))) %>%
+        rename(geneName = !!sym("symbol")) %>%
+        filter(
+            !!sym("synonyms") != "-",
+            !!sym("dbXrefs") != "-"
+        ) %>%
+        mutate(synonyms = str_replace_all(!!sym("synonyms"), "\\|", ", "))
+
+    # Sanitize the identifiers.
+    if (organism == "Drosophila melanogaster") {
+        data <- mutate(
+            data,
+            geneID = str_extract(!!sym("dbXrefs"), "\\bFBgn[0-9]{7}\\b")
+        )
+    } else {
+        data <- mutate(
+            data,
+            geneID = str_extract(!!sym("dbXrefs"), "\\bENS[A-Z]+[0-9]{11}\\b")
+        )
+    }
+
+    data %>%
+        filter(!is.na(!!sym("geneID"))) %>%
+        select(!!!syms(c("geneID", "geneName", "synonyms"))) %>%
+        arrange(!!sym("geneID")) %>%
+        group_by(!!sym("geneID"))
+}
+
+
+
+# Using this for parameterized unit testing.
+.geneSynonymsOrganisms <- c(
+    "Homo sapiens",
+    "Mus musculus",
+    "Drosophila melanogaster"
+)
+
+
+
+# makeGene2Symbol ==============================================================
+#' Make Gene-to-Symbol Mappings
+#'
+#' @section GFF/GTF file:
+#'
+#' Remote URLs and compressed files are supported.
+#'
+#' @name makeGene2Symbol
+#' @inheritParams makeGRanges
+#'
+#' @seealso [makeGRanges].
+#'
+#' @return `Gene2Symbol`.
+#'
+#' @examples
+#' ## makeGene2SymbolFromEnsembl ====
+#' x <- makeGene2SymbolFromEnsembl(organism = "Homo sapiens")
+#' print(x)
+#'
+#' ## makeTx2GeneFromEnsDb ====
+#' x <- makeGene2SymbolFromEnsDb("EnsDb.Hsapiens.v75")
+#' print(x)
+#'
+#' ## makeGene2SymbolFromGFF ====
+#' cacheURL <- basejump.globals::basejumpCacheURL
+#'
+#' ## GTF
+#' file <- file.path(cacheURL, "example.gtf")
+#' x <- makeGene2SymbolFromGFF(file)
+#' print(x)
+#'
+#' ## GFF3
+#' file <- file.path(cacheURL, "example.gff3")
+#' x <- makeGene2SymbolFromGFF(file)
+#' print(x)
+NULL
+
+
+
+#' @rdname makeGene2Symbol
+#' @export
+makeGene2SymbolFromEnsembl <-
+    function() {
+        gr <- do.call(
+            what = makeGRangesFromEnsembl,
+            args = matchArgsToDoCall(args = list(level = "genes"))
+        )
+        Gene2Symbol(gr)
+    }
+f <- formals(makeGRangesFromEnsembl)
+f <- f[setdiff(names(f), "level")]
+formals(makeGene2SymbolFromEnsembl) <- f
+
+
+
+#' @rdname makeGene2Symbol
+#' @export
+makeGene2SymbolFromEnsDb <- function(object) {
+    gr <- makeGRangesFromEnsDb(object)
+    Gene2Symbol(gr)
+}
+
+
+
+#' @rdname makeGene2Symbol
+#' @export
+makeGene2SymbolFromGFF <- function(file) {
+    gr <- makeGRangesFromGFF(file, level = "genes")
+    Gene2Symbol(gr)
+}
+
+
+
+#' @rdname makeGene2Symbol
+#' @usage NULL
+#' @export
+makeGene2SymbolFromGTF <- makeGene2SymbolFromGFF
+
+
+
+# makeGRanges ==================================================================
 #' Make Genomic Ranges
 #'
 #' @name makeGRanges
@@ -69,11 +371,25 @@ NULL
 
 
 
-li <- "  - "
+#' Connect to AnnotationHub
+#'
+#' On a fresh install this will print a txProgressBar to the console. We're
+#' using [utils::capture.output()] here to suppress the console output, since
+#' it's not very informative and can cluster R Markdown reports.
+#'
+#' @noRd
+.annotationHub <- function() {
+    userAttached <- .packages()
+    invisible(capture.output(
+        ah <- suppressMessages(AnnotationHub())
+    ))
+    assert_is_all_of(ah, "AnnotationHub")
+    .forceDetach(keep = userAttached)
+    ah
+}
 
 
 
-# Broad class ==================================================================
 #' Broad Class Definitions
 #'
 #' @author Rory Kirchner, Michael Steinbaugh
@@ -84,7 +400,7 @@ li <- "  - "
 #'   transcript annotations. `GRanges` is recommended.
 #'
 #' @return Named `factor` containing broad class definitions.
-.defineBroadClass <- function(object) {
+.broadClass <- function(object) {
     assert_is_all_of(object, "GRanges")
 
     names <- names(object)
@@ -199,26 +515,6 @@ li <- "  - "
     broad <- as.factor(broad)
     names(broad) <- names
     broad
-}
-
-
-
-# AnnotationHub ================================================================
-#' Connect to AnnotationHub
-#'
-#' On a fresh install this will print a txProgressBar to the console. We're
-#' using [utils::capture.output()] here to suppress the console output, since
-#' it's not very informative and can cluster R Markdown reports.
-#'
-#' @noRd
-.annotationHub <- function() {
-    userAttached <- .packages()
-    invisible(capture.output(
-        ah <- suppressMessages(AnnotationHub())
-    ))
-    assert_is_all_of(ah, "AnnotationHub")
-    .forceDetach(keep = userAttached)
-    ah
 }
 
 
@@ -346,7 +642,7 @@ li <- "  - "
             grepl(paste("Ensembl", ensemblRelease), mcols[["title"]]),
             ,
             drop = FALSE
-        ]
+            ]
         assert_is_of_length(nrow(mcols), 1L)
     }
 
@@ -374,7 +670,6 @@ li <- "  - "
 
 
 
-# Ensembl ======================================================================
 #' Get EnsDb from AnnotationHub
 #' @noRd
 #' @examples .getEnsDbFromAnnotationHub("AH64923")
@@ -415,6 +710,135 @@ li <- "  - "
     assert_is_all_of(edb, "EnsDb")
     .forceDetach(keep = userAttached)
     edb
+}
+
+
+
+# Report the source of the gene annotations.
+.gffSource <- function(gff) {
+    assert_is_subset("source", colnames(mcols(gff)))
+    if (
+        any(grepl("FlyBase", mcols(gff)[["source"]]))
+    ) {
+        "FlyBase"  # nocov
+    } else if (
+        any(grepl("WormBase", mcols(gff)[["source"]]))
+    ) {
+        "WormBase"  # nocov
+    } else if (
+        any(grepl("Ensembl", mcols(gff)[["source"]], ignore.case = TRUE))
+    ) {
+        "Ensembl"
+    } else {
+        stop("Unsupported GFF source.")  # nocov
+    }
+}
+
+
+
+# Determine if GFF or GTF.
+.gffType <- function(gff) {
+    assert_that(is(gff, "GRanges"))
+    gff <- camel(gff)
+    if (all(c("id", "name") %in% colnames(mcols(gff)))) {
+        "GFF"
+    } else {
+        "GTF"
+    }
+}
+
+
+
+.makeGRanges <- function(object) {
+    assert_is_all_of(object, "GRanges")
+    assert_has_names(object)
+
+    # Standardize the metadata columns.
+    mcols <- mcols(object)
+    # Sanitize to camel case.
+    mcols <- camel(mcols)
+    # Ensure "ID" is always capitalized (e.g. "entrezid").
+    colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
+    # Use `transcript` instead of `tx` consistently.
+    colnames(mcols) <- gsub(
+        pattern = "^tx",
+        replacement = "transcript",
+        x = colnames(mcols)
+    )
+    # Remove columns that are all NA.
+    mcols <- removeNA(mcols)
+
+    # Missing `geneName`.
+    if (!"geneName" %in% colnames(mcols)) {
+        # nocov start
+        warning("`geneName` is missing. Using `geneID` instead.")
+        assert_is_subset("geneID", colnames(mcols))
+        mcols[["geneName"]] <- mcols[["geneID"]]
+        # nocov end
+    }
+
+    # Missing `transcriptName`.
+    if (
+        "transcriptID" %in% colnames(mcols) &&
+        !"transcriptName" %in% colnames(mcols)
+    ) {
+        # nocov start
+        warning("`transcriptName` is missing. Using `transcriptID` instead.")
+        mcols[["transcriptName"]] <- mcols[["transcriptID"]]
+        # nocov end
+    }
+
+    # Always use `geneName` instead of `symbol`.
+    if (all(c("geneName", "symbol") %in% colnames(mcols))) {
+        mcols[["symbol"]] <- NULL
+    } else if ("symbol" %in% colnames(mcols)) {
+        # nocov start
+        mcols[["geneName"]] <- mcols[["symbol"]]
+        mcols[["symbol"]] <- NULL
+        # nocov end
+    }
+
+    # Sanitize any character columns that have duplicates into factor.
+    mcols <- lapply(
+        X = mcols,
+        FUN = function(col) {
+            if (is.character(col) && any(duplicated(col))) {
+                as.factor(col)
+            } else {
+                # `I` inhibits reinterpretation and returns AsIs.
+                # Recommended in the DataFrame documentation.
+                I(col)
+            }
+        }
+    )
+    mcols <- as(mcols, "DataFrame")
+    mcols(object) <- mcols
+
+    # Require that names match the identifier column.
+    # Use `transcriptID` over `geneID` if defined.
+    assert_are_intersecting_sets(
+        x = c("geneID", "transcriptID"),
+        y = colnames(mcols(object))
+    )
+    if ("transcriptID" %in% colnames(mcols(object))) {
+        idCol <- "transcriptID"
+    } else {
+        idCol <- "geneID"
+    }
+    names(object) <- mcols(object)[[idCol]]
+
+    # Ensure broad class definitions are included.
+    mcols(object)[["broadClass"]] <- .broadClass(object)
+
+    # Sort metadata columns alphabetically.
+    mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
+
+    # Ensure GRanges is sorted by names.
+    message(paste0("Arranging by ", idCol, "."))
+    object <- object[sort(names(object))]
+
+    assert_is_all_of(object, "GRanges")
+    object
 }
 
 
@@ -564,42 +988,6 @@ makeGRangesFromEnsDb <- function(object, level) {
 }
 formals(makeGRangesFromEnsDb)[["level"]] <-
     formals(makeGRangesFromEnsembl)[["level"]]
-
-
-
-# GTF/GFF ======================================================================
-# Report the source of the gene annotations.
-.gffSource <- function(gff) {
-    assert_is_subset("source", colnames(mcols(gff)))
-    if (
-        any(grepl("FlyBase", mcols(gff)[["source"]]))
-    ) {
-        "FlyBase"  # nocov
-    } else if (
-        any(grepl("WormBase", mcols(gff)[["source"]]))
-    ) {
-        "WormBase"  # nocov
-    } else if (
-        any(grepl("Ensembl", mcols(gff)[["source"]], ignore.case = TRUE))
-    ) {
-        "Ensembl"
-    } else {
-        stop("Unsupported GFF source.")  # nocov
-    }
-}
-
-
-
-# Determine if GFF or GTF.
-.gffType <- function(gff) {
-    assert_that(is(gff, "GRanges"))
-    gff <- camel(gff)
-    if (all(c("id", "name") %in% colnames(mcols(gff)))) {
-        "GFF"
-    } else {
-        "GTF"
-    }
-}
 
 
 
@@ -785,102 +1173,13 @@ makeGRangesFromGFF <- function(
 
 
 
-# Standardize return ===========================================================
-.makeGRanges <- function(object) {
-    assert_is_all_of(object, "GRanges")
-    assert_has_names(object)
-
-    # Standardize the metadata columns.
-    mcols <- mcols(object)
-    # Sanitize to camel case.
-    mcols <- camel(mcols)
-    # Ensure "ID" is always capitalized (e.g. "entrezid").
-    colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
-    # Use `transcript` instead of `tx` consistently.
-    colnames(mcols) <- gsub(
-        pattern = "^tx",
-        replacement = "transcript",
-        x = colnames(mcols)
-    )
-    # Remove columns that are all NA.
-    mcols <- removeNA(mcols)
-
-    # Missing `geneName`.
-    if (!"geneName" %in% colnames(mcols)) {
-        # nocov start
-        warning("`geneName` is missing. Using `geneID` instead.")
-        assert_is_subset("geneID", colnames(mcols))
-        mcols[["geneName"]] <- mcols[["geneID"]]
-        # nocov end
-    }
-
-    # Missing `transcriptName`.
-    if (
-        "transcriptID" %in% colnames(mcols) &&
-        !"transcriptName" %in% colnames(mcols)
-    ) {
-        # nocov start
-        warning("`transcriptName` is missing. Using `transcriptID` instead.")
-        mcols[["transcriptName"]] <- mcols[["transcriptID"]]
-        # nocov end
-    }
-
-    # Always use `geneName` instead of `symbol`.
-    if (all(c("geneName", "symbol") %in% colnames(mcols))) {
-        mcols[["symbol"]] <- NULL
-    } else if ("symbol" %in% colnames(mcols)) {
-        # nocov start
-        mcols[["geneName"]] <- mcols[["symbol"]]
-        mcols[["symbol"]] <- NULL
-        # nocov end
-    }
-
-    # Sanitize any character columns that have duplicates into factor.
-    mcols <- lapply(
-        X = mcols,
-        FUN = function(col) {
-            if (is.character(col) && any(duplicated(col))) {
-                as.factor(col)
-            } else {
-                # `I` inhibits reinterpretation and returns AsIs.
-                # Recommended in the DataFrame documentation.
-                I(col)
-            }
-        }
-    )
-    mcols <- as(mcols, "DataFrame")
-    mcols(object) <- mcols
-
-    # Require that names match the identifier column.
-    # Use `transcriptID` over `geneID` if defined.
-    assert_are_intersecting_sets(
-        x = c("geneID", "transcriptID"),
-        y = colnames(mcols(object))
-    )
-    if ("transcriptID" %in% colnames(mcols(object))) {
-        idCol <- "transcriptID"
-    } else {
-        idCol <- "geneID"
-    }
-    names(object) <- mcols(object)[[idCol]]
-
-    # Ensure broad class definitions are included.
-    mcols(object)[["broadClass"]] <- .defineBroadClass(object)
-
-    # Sort metadata columns alphabetically.
-    mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
-
-    # Ensure GRanges is sorted by names.
-    message(paste0("Arranging by ", idCol, "."))
-    object <- object[sort(names(object))]
-
-    assert_is_all_of(object, "GRanges")
-    object
-}
+#' @rdname makeGRanges
+#' @usage NULL
+#' @export
+makeGRangesFromGTF <- makeGRangesFromGFF
 
 
 
-# Legacy functions =============================================================
 #' @describeIn makeGRanges
 #' [annotable()] is a legacy convenience function that calls
 #' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
@@ -898,8 +1197,80 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
 
 
 
-# Aliases ======================================================================
-#' @rdname makeGRanges
+# makeTx2Gene ==================================================================
+#' Make Transcript-to-Gene Mappings
+#'
+#' @section GFF/GTF file:
+#'
+#' Remote URLs and compressed files are supported.
+#'
+#' @name makeTx2Gene
+#' @inheritParams makeGRanges
+#'
+#' @seealso [makeGRanges].
+#'
+#' @return `Tx2Gene`.
+#'
+#' @examples
+#' ## makeTx2GeneFromEnsembl ====
+#' x <- makeTx2GeneFromEnsembl(organism = "Homo sapiens")
+#' print(x)
+#'
+#' ## makeTx2GeneFromEnsDb ====
+#' x <- makeTx2GeneFromEnsDb("EnsDb.Hsapiens.v75")
+#' print(x)
+#'
+#' ## makeTx2GeneFromGFF ====
+#' cacheURL <- basejump.globals::basejumpCacheURL
+#'
+#' ## GTF
+#' file <- file.path(cacheURL, "example.gtf")
+#' x <- makeTx2GeneFromGFF(file)
+#' print(x)
+#'
+#' ## GFF3
+#' file <- file.path(cacheURL, "example.gff3")
+#' x <- makeTx2GeneFromGFF(file)
+#' print(x)
+NULL
+
+
+
+#' @rdname makeTx2Gene
+#' @export
+makeTx2GeneFromEnsembl <-
+    function() {
+        gr <- do.call(
+            what = makeGRangesFromEnsembl,
+            args = matchArgsToDoCall(args = list(level = "transcripts"))
+        )
+        Tx2Gene(gr)
+    }
+f <- formals(makeGRangesFromEnsembl)
+f <- f[setdiff(names(f), c("level", "metadata", "..."))]
+formals(makeTx2GeneFromEnsembl) <- f
+
+
+
+#' @rdname makeTx2Gene
+#' @export
+makeTx2GeneFromEnsDb <- function(object) {
+    gr <- makeGRangesFromEnsDb(object, level = "transcripts")
+    Tx2Gene(gr)
+}
+
+
+
+#' @rdname makeTx2Gene
+#' @export
+makeTx2GeneFromGFF <- function(file) {
+    gr <- makeGRangesFromGFF(file, level = "transcripts")
+    Tx2Gene(gr)
+}
+
+
+
+#' @rdname makeTx2Gene
 #' @usage NULL
 #' @export
-makeGRangesFromGTF <- makeGRangesFromGFF
+makeTx2GeneFromGTF <- makeTx2GeneFromGFF
