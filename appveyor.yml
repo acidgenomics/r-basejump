@@ -1,8 +1,3 @@
-# AppVeyor-CI configuration for Bioconductor packages
-# https://www.appveyor.com/docs/appveyor-yml/
-# https://github.com/krlmlr/r-appveyor
-
-# Download script file from GitHub.
 init:
   ps: |
         $ErrorActionPreference = "Stop"
@@ -14,18 +9,20 @@ install:
 
 platform: x64
 
+cache:
+  - C:\RLibrary
+
 environment:
   global:
-    # BIOC_USE_DEVEL: true
     R_ARCH: x64
     USE_RTOOLS: true
-    # WARNINGS_ARE_ERRORS: 1
 
 build_script:
   - travis-tool.sh install_bioc GenomeInfoDbData
   - travis-tool.sh install_bioc DelayedArray
   - travis-tool.sh install_bioc ensembldb
   - travis-tool.sh install_bioc EnsDb.Hsapiens.v75
+  - travis-tool.sh install_github steinbaugh/basejump.data
   - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_deps
 
