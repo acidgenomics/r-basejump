@@ -1,12 +1,11 @@
 #' @name convertGenesToSymbols
-#' @inherit basejump.generics::convertGenesToSymbols
 #' @inheritParams params
 #'
 #' @examples
 #' data(rse)
 #' object <- rse
 #'
-#' g2s <- basejump.classes::Gene2Symbol(object)
+#' g2s <- Gene2Symbol(object)
 #' print(g2s)
 #' genes <- head(g2s[["geneID"]])
 #' print(genes)
@@ -35,20 +34,6 @@
 #' y <- convertSymbolsToGenes(x)
 #' print(y)
 NULL
-
-
-
-#' @importFrom basejump.generics convertGenesToSymbols
-#' @aliases NULL
-#' @export
-basejump.generics::convertGenesToSymbols
-
-
-
-#' @importFrom basejump.generics convertSymbolsToGenes
-#' @aliases NULL
-#' @export
-basejump.generics::convertSymbolsToGenes
 
 
 

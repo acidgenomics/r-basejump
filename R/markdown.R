@@ -1,6 +1,4 @@
 #' @name markdown
-#' @inherit basejump.generics::markdown
-#'
 #' @examples
 #' data(rse)
 #' markdown(rse)
@@ -217,9 +215,7 @@ mdList <- markdownList
 #' @seealso [cowplot::plot_grid()].
 #'
 #' @examples
-#' cacheURL <- basejump.globals::basejumpCacheURL
-#' url <- file.path(cacheURL, "plotlist.rda")
-#' basejump.io::loadRemoteData(url = url)
+#' loadRemoteData(url = file.path(basejumpCacheURL, "plotlist.rda"))
 #' names(plotlist)
 #' markdownPlotlist(plotlist)
 markdownPlotlist <- function(

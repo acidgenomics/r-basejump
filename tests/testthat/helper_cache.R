@@ -11,5 +11,5 @@ invisible(lapply(
             )
         }
     },
-    url = basejump.globals::basejumpCacheURL
+    url = basejumpCacheURL
 ))

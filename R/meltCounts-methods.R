@@ -1,7 +1,6 @@
 #' @name meltCounts
-#' @inherit basejump.generics::meltCounts
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param nonzeroGenes `boolean`. Return only non-zero genes.
 #' @param trans `string`. Apply a log transformation (e.g. `log2(x + 1L)`) to
 #'   the count matrix prior to melting, if desired. Use `"identity"` to return
@@ -15,13 +14,6 @@
 #' x <- meltCounts(rse)
 #' print(x)
 NULL
-
-
-
-#' @importFrom basejump.generics meltCounts
-#' @aliases NULL
-#' @export
-basejump.generics::meltCounts
 
 
 

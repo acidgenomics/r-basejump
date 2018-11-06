@@ -72,12 +72,7 @@ detectOrganism <- function(object) {
 .detectOrganism.string <-  # nolint
     function(object) {
         assert_is_a_string(object)
-        requireNamespace("basejump.data", quietly = TRUE)
-        data(
-            "organism_mappings",
-            package = "basejump.data",
-            envir = environment()
-        )
+        data("organism_mappings", package = "basejump", envir = environment())
         data <- get("organism_mappings", inherits = FALSE)
         assert_is_tbl_df(data)
         # Generate a logical matrix of grep matches.

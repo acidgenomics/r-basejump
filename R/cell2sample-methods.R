@@ -1,12 +1,4 @@
-#' @importFrom basejump.generics cell2sample
-#' @aliases NULL
-#' @export
-basejump.generics::cell2sample
-
-
-
 #' @name cell2sample
-#' @inherit basejump.generics::cell2sample
 #' @inheritParams params
 #'
 #' @note `sampleID` column must be defined in [SummarizedExperiment::colData()].

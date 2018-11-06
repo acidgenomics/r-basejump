@@ -1,5 +1,4 @@
 #' @name export
-#' @inherit basejump.generics::export
 #'
 #' @details
 #' This is a wrapper for `rio::export()` that adds support for additional S4
@@ -13,8 +12,6 @@
 #' contain gene identifiers in the rownames. Here we're performing any internal
 #' tibble coercion step to ensure rownames are always moved to a "`rowname`"
 #' column in the CSV export.
-#'
-#' @name export
 #'
 #' @inheritParams params
 #' @inheritParams rio::export
@@ -48,13 +45,6 @@
 #'     "single_cell_counts.mtx.rownames"
 #' ))
 NULL
-
-
-
-#' @importFrom basejump.generics export
-#' @aliases NULL
-#' @export
-basejump.generics::export
 
 
 
@@ -219,9 +209,8 @@ export.SummarizedExperiment <-  # nolint
         # Ensure colnames are converted to sample names.
         # Ensure rownames are converted to gene names (symbols).
         if (isTRUE(human)) {
-            requireNamespace("basejump.experiment", quietly = TRUE)
-            x <- basejump.experiment::convertGenesToSymbols(x)
-            x <- basejump.experiment::convertSampleIDsToNames(x)
+            x <- convertGenesToSymbols(x)
+            x <- convertSampleIDsToNames(x)
         }
 
         # Assays

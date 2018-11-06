@@ -1,5 +1,4 @@
 #' @name makeNames
-#' @inherit basejump.generics::makeNames
 #'
 #' @note [makeNames()] sanitizes names using underscores instead of dots, the
 #' convention used by [base::make.names()].
@@ -25,9 +24,7 @@
 #' - [snakecase](https://tazinho.github.io/snakecase).
 #'
 #' @examples
-#' cacheURL <- basejump.globals::basejumpCacheURL
-#' url <- file.path(cacheURL, "mn.rda")
-#' basejump.io::loadRemoteData(url)
+#' loadRemoteData(url = file.path(basejumpCacheURL, "mn.rda"))
 #'
 #' ## character ====
 #' x <- mn$character
@@ -71,24 +68,6 @@
 #' snake(x) %>% names()
 #' upperCamel(x) %>% names()
 NULL
-
-
-
-#' @importFrom basejump.generics camel
-#' @export
-basejump.generics::camel
-
-#' @importFrom basejump.generics dotted
-#' @export
-basejump.generics::dotted
-
-#' @importFrom basejump.generics snake
-#' @export
-basejump.generics::snake
-
-#' @importFrom basejump.generics upperCamel
-#' @export
-basejump.generics::upperCamel
 
 
 

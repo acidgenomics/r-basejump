@@ -1,5 +1,4 @@
 #' @name interestingGroups
-#' @inherit basejump.generics::interestingGroups
 #' @inheritParams params
 #'
 #' @examples
@@ -13,20 +12,6 @@
 #' interestingGroups(object) <- intgroup[[1L]]
 #' interestingGroups(object)
 NULL
-
-
-
-#' @importFrom basejump.generics interestingGroups
-#' @aliases NULL
-#' @export
-basejump.generics::interestingGroups
-
-
-
-#' @importFrom basejump.generics interestingGroups<-
-#' @aliases NULL
-#' @export
-basejump.generics::`interestingGroups<-`
 
 
 

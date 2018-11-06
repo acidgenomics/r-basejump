@@ -321,7 +321,6 @@ assertFormalCompress <- function(object) {
 #'
 #' @examples
 #' DataFrame <- S4Vectors::DataFrame
-#' Gene2Symbol <- basejump.classes::Gene2Symbol
 #'
 #' object <- DataFrame(
 #'     "sample1" = c(1L, 2L),
@@ -372,11 +371,7 @@ assertFormalGene2Symbol <- function(
         rownames(gene2symbol) <- rownames(object)
     }
     # Map genes to object rownames, using gene2symbol.
-    requireNamespace("basejump.experiment")
-    rownames <- basejump.experiment::mapGenesToRownames(
-        object = gene2symbol,
-        genes = genes
-    )
+    rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
     assert_is_subset(rownames, rownames(object))
     invisible()
 }
@@ -396,15 +391,12 @@ assertFormalGene2Symbol <- function(
 #' @param interestingGroups `character`. Interesting groups.
 #'
 #' @examples
-#' library(basejump.data)
 #' data(rse)
 #' assertFormalInterestingGroups(rse, "treatment")
 #' assertFormalInterestingGroups(rse, NULL)
 assertFormalInterestingGroups <- function(object, interestingGroups) {
     assert_that(isS4(object))
-
-    requireNamespace("basejump.experiment")
-    data <- basejump.experiment::sampleData(object)
+    data <- sampleData(object)
 
     # Check `interestingGroups` argument.
     if (is.null(interestingGroups)) {

@@ -14,13 +14,13 @@
 #'
 #' @examples
 #' ## Import a single file.
-#' file <- file.path(basejump.globals::basejumpCacheURL, "rnaseq_counts.csv.gz")
+#' file <- file.path(basejumpCacheURL, "rnaseq_counts.csv.gz")
 #' x <- localOrRemoteFile(file)
 #' basename(x)
 #'
 #' ## Import multiple files (vectorized).
 #' files <- file.path(
-#'     basejump.globals::basejumpCacheURL,
+#'     basejumpCacheURL,
 #'     c("rnaseq_counts.csv.gz", "single_cell_counts.mtx.gz")
 #' )
 #' x <- localOrRemoteFile(files)

@@ -1,4 +1,4 @@
-packageVersion <- packageVersion("basejump.globals")
+packageVersion <- packageVersion("basejump")
 
 
 

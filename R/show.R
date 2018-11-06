@@ -1,6 +1,5 @@
 # headtail =====================================================================
 #' @name headtail
-#' @inherit basejump.generics::headtail
 #'
 #' @param n `scalar integer`. Positive integer denoting the number of first and
 #'   last items to include.

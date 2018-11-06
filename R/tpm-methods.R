@@ -1,5 +1,4 @@
 #' @name tpm
-#' @inherit basejump.generics::tpm
 #'
 #' @note Both gene- and transcript-level counts are supported, as long as they
 #'   were imported using a tximport caller (e.g. salmon, kallisto).
@@ -18,13 +17,6 @@
 #' x <- tpm(se)
 #' class(x)
 NULL
-
-
-
-#' @importFrom basejump.generics tpm
-#' @aliases NULL
-#' @export
-basejump.generics::tpm
 
 
 

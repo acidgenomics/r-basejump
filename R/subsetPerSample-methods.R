@@ -1,5 +1,4 @@
 #' @name subsetPerSample
-#' @inherit basejump.generics::subsetPerSample
 #'
 #' @param minCells `scalar integer`. Minimum number of cells required per
 #'   sample.
@@ -35,13 +34,6 @@
 #' ## Clean up.
 #' unlink("subsetPerSample", recursive = TRUE)
 NULL
-
-
-
-#' @importFrom basejump.generics subsetPerSample
-#' @aliases NULL
-#' @export
-basejump.generics::subsetPerSample
 
 
 

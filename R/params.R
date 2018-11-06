@@ -30,8 +30,7 @@
 #' @param flip `boolean`. Flip x and y axes. Recommended for plots containing
 #'   many samples.
 #' @param gene2symbol `Gene2Symbol`. Gene-to-symbol mappings. Must contain
-#'   `geneID` and `geneName` columns. See `basejump.classes::Gene2Symbol()` for
-#'   more information.
+#'   `geneID` and `geneName` columns. See `Gene2Symbol()` for more information.
 #' @param genes `character`. Gene identifiers. It is considered better practice
 #'   to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
 #'   and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.

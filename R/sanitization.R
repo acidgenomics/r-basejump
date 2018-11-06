@@ -1,7 +1,5 @@
 # removeNA =====================================================================
 #' @name removeNA
-#' @inherit basejump.generics::removeNA
-#'
 #' @examples
 #' ## atomic ====
 #' removeNA(c("hello", "world", NA))
@@ -99,8 +97,6 @@ setMethod(
 
 # sanitizeNA ===================================================================
 #' @name sanitizeNA
-#' @inherit basejump.generics::sanitizeNA
-#'
 #' @examples
 #' ## character ====
 #' from <- as.character(c(1L, "x", "", "NA", "NULL"))
@@ -236,8 +232,6 @@ setMethod(
 
 # sanitizePercent ==============================================================
 #' @name sanitizePercent
-#' @inherit basejump.generics::sanitizePercent
-#'
 #' @examples
 #' object <- c("100%", "10.0%", "1%", "0.1%", "0.01%")
 #' class(object)
@@ -362,7 +356,7 @@ sanitizeRowData <- function(object) {
 #'
 #' @examples
 #' data(rse)
-#' from <- basejump.experiment::sampleData(rse)
+#' from <- sampleData(rse)
 #' print(from)
 #' to <- sanitizeSampleData(from)
 #' all(vapply(to, is.factor, logical(1L)))
@@ -419,8 +413,6 @@ sanitizeSampleData <- function(object) {
 
 # stripTranscriptVersions ======================================================
 #' @name stripTranscriptVersions
-#' @inherit basejump.generics::stripTranscriptVersions
-#'
 #' @examples
 #' ## Ensembl (modify; contains versions)
 #' stripTranscriptVersions(c(

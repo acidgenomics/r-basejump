@@ -488,12 +488,7 @@ setMethod(
 
 # aggregateCellsToSamples ======================================================
 #' @name aggregateCellsToSamples
-#' @inherit basejump.generics::aggregateCellsToSamples
 #' @inheritParams aggregate
-#'
-#' @return `SummarizedExperiment`. Object with cell-level counts aggregated
-#'   to sample-level.
-#'
 #' @examples
 #' data(sce)
 #' x <- aggregateCellsToSamples(sce)

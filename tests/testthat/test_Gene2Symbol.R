@@ -2,10 +2,10 @@ context("Gene2Symbol")
 
 # TODO Add coverage for `format` arguments.
 
-format <- basejump.developer::methodFormals(
+format <- methodFormals(
     f = "Gene2Symbol",
     signature = "SummarizedExperiment",
-    package = "basejump.classes"
+    package = "basejump"
 ) %>%
     .[["format"]] %>%
     eval()

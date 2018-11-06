@@ -1,5 +1,4 @@
 #' @name zerosVsDepth
-#' @inherit basejump.generics::zerosVsDepth
 #' @inheritParams params
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
@@ -9,13 +8,6 @@
 #' summary(x)
 #' colnames(x)
 NULL
-
-
-
-#' @importFrom basejump.generics zerosVsDepth
-#' @aliases NULL
-#' @export
-basejump.generics::zerosVsDepth
 
 
 

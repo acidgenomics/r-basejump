@@ -4,7 +4,6 @@ data(rse, tx_se, envir = environment())
 
 # nolint start
 DataFrame <- S4Vectors::DataFrame
-Gene2Symbol <- basejump.classes::Gene2Symbol
 as_tibble <- tibble::as_tibble
 rowData <- SummarizedExperiment::rowData
 rowRanges <- SummarizedExperiment::rowRanges

@@ -1,7 +1,6 @@
 #' @name plotGene
-#' @inherit basejump.generics::plotGene
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param countsAxisLabel `string`. Label to use for the counts axis.
 #' @param medianLine `boolean`. Include median line for each group. Disabled if
 #'   samples are colored by sample name.
@@ -18,7 +17,7 @@
 #'
 #' rownames <- head(rownames(object))
 #' print(rownames)
-#' g2s <- basejump.classes::Gene2Symbol(object)
+#' g2s <- Gene2Symbol(object)
 #' geneIDs <- head(g2s[["geneID"]])
 #' print(geneIDs)
 #' geneNames <- head(g2s[["geneName"]])
@@ -28,13 +27,6 @@
 #' plotGene(object, genes = geneIDs, style = "facet")
 #' plotGene(object, genes = geneNames, style = "wide")
 NULL
-
-
-
-#' @importFrom basejump.generics plotGene
-#' @aliases NULL
-#' @export
-basejump.generics::plotGene
 
 
 
