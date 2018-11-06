@@ -1,6 +1,6 @@
 #' @name convertGenesToSymbols
 #' @inherit basejump.generics::convertGenesToSymbols
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @examples
 #' data(rse, package = "basejump.data")

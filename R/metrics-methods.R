@@ -1,6 +1,6 @@
 #' @name metrics
 #' @inherit basejump.generics::metrics
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @param fun `string`. Mathematical function name to apply.

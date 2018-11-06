@@ -4,7 +4,7 @@
 
 #' @name plotGenderMarkers
 #' @inherit basejump.generics::plotGenderMarkers
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @inheritParams plotGene
 #' @include plotGene-methods.R
 NULL

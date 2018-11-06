@@ -3,7 +3,7 @@
 #' @inherit makeSummarizedExperiment
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `SingleCellExperiment`.
 #'

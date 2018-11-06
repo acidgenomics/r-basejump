@@ -1,6 +1,6 @@
 #' @name plotGene
 #' @inherit basejump.generics::plotGene
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param countsAxisLabel `string`. Label to use for the counts axis.
 #' @param medianLine `boolean`. Include median line for each group. Disabled if

@@ -2,7 +2,7 @@
 #'
 #' @name organism
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @seealso [detectOrganism()].
 #'

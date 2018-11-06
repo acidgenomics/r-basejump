@@ -34,7 +34,7 @@ setMethod(
 #' Generate a Markdown header (levels 1-7) in any R Markdown code block. When
 #' calling inside an `asis` chunk, set `asis = TRUE`.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @param text `string`. Header text.
@@ -210,7 +210,7 @@ mdList <- markdownList
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return Graphical output of plots, separated by Markdown headers.
 #'
@@ -324,7 +324,7 @@ markdownTables <- function(
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param package `string`. Name of package containing the R Markdown template.
 #' @param overwrite `boolean`. Should existing destination files be overwritten?

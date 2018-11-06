@@ -93,7 +93,7 @@ RdTags <- function(object) {  # nolint
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param Rd `character` or `NULL`. R documentation name(s) from which to parse
 #'   and save the working examples. If `NULL`, all documentation files
 #'   containing examples will be saved.

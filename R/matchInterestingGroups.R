@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param object `SummarizedExperiment`.
 #'
 #' @return `character`. Interesting groups.

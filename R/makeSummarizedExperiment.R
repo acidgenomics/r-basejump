@@ -15,7 +15,7 @@
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param assays `list`. RNA-seq count matrices, which must have matching
 #'   dimensions. Counts can be passed in either a dense matrix (`matrix`) or
 #'   sparse matrix (`sparseMatrix`).

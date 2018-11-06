@@ -1,6 +1,6 @@
 #' @name plotQC
 #' @inherit basejump.generics::plotQC
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @examples
 #' data(rse, package = "basejump.data")
 #' plotQC(rse)

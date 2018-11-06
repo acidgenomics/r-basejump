@@ -35,7 +35,7 @@
 #' will attempt to move it back to `base::rownames()` automatically, unless
 #' there are duplicates present.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return Object of new class.
 #'

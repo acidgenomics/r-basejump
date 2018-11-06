@@ -1,6 +1,6 @@
 #' @name plotGenesDetected
 #' @inherit basejump.generics::plotGenesDetected
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @examples
 #' data(rse, sce, package = "basejump.data")
 #' plotGenesDetected(rse)

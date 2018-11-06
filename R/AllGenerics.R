@@ -47,7 +47,7 @@ setGeneric(
 #' sample replicates.
 #'
 #' @name aggregate
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return Modified object, with aggregated rows (features) or columns
 #'   (samples).
@@ -84,7 +84,7 @@ setGeneric(
 #' Internally it automatically obtains the cell-to-sample groupings and then
 #' performs aggregation with the [aggregateCols()] function.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `SummarizedExperiment`, at sample-level instead of cell-level.
 setGeneric(
@@ -101,7 +101,7 @@ setGeneric(
 #'
 #' Quickly generate a summary table of various alpha level cutoffs.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return `integer matrix`.
@@ -116,7 +116,7 @@ setGeneric(
 
 # cell2sample ==================================================================
 #' Cell-to-Sample Mappings
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return Named `factor`. Sample IDs as the `levels` and cell IDs as the
 #'   `names`.
@@ -131,7 +131,7 @@ setGeneric(
 
 # collapseToString =============================================================
 #' Collapse to String
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @seealso [base::toString()].
 #' @export
 #' @return `string`.
@@ -147,7 +147,7 @@ setGeneric(
 # contrastName =================================================================
 #' Contrast Name
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return `string`. Contrast name.
@@ -164,7 +164,7 @@ setGeneric(
 #' Convert Genes to Symbols
 #'
 #' @name convertGenesToSymbols
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @return Varies, depending on the method.
 NULL
 
@@ -190,7 +190,7 @@ setGeneric(
 
 # convertSampleIDsToNames ======================================================
 #' Convert Sample Identifiers to Names
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return Varies, depending on the method.
 setGeneric(
@@ -204,7 +204,7 @@ setGeneric(
 
 # convertTranscriptsToGenes ====================================================
 #' Convert Transcripts to Genes
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return Varies, depending on the method.
 setGeneric(
@@ -233,7 +233,7 @@ setGeneric(
 #' tibble coercion step to ensure rownames are always moved to a "`rowname`"
 #' column in the CSV export.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @seealso `rio::export()`.
@@ -259,7 +259,7 @@ setGeneric(
 #' `NaN`.
 #'
 #' @name geometricMean
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return `numeric`.
@@ -279,7 +279,7 @@ setGeneric(
 #' to both rows and columns, enabling quick inspection during interactive use.
 #'
 #' @name headtail
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return None (invisible `NULL`).
@@ -300,7 +300,7 @@ setGeneric(
 #' Interesting Groups
 #'
 #' @name interestingGroups
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @return `character`.
 NULL
 
@@ -328,7 +328,7 @@ setGeneric(
 #' Interconvert Log Ratio and Fold Change Values
 #'
 #' @name logRatio
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @seealso
 #' - `gtools::foldchange2logratio()`.
@@ -369,7 +369,7 @@ setGeneric(
 #' `environment`, as that can introduce conflicts with base functions.
 #'
 #' @name makeNames
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @param object `character`, or object for which [base::names()] assignment
 #'   will be meaningful.
@@ -432,7 +432,7 @@ setGeneric(
 #' that is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `character`.
 NULL
@@ -468,7 +468,7 @@ setGeneric(
 
 # markdown =====================================================================
 #' Markdown
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return Markdown output.
 setGeneric(
@@ -482,7 +482,7 @@ setGeneric(
 
 # meltCounts ===================================================================
 #' Melt Count Matrix to Long Format
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @seealso `reshape2::melt()`.
 #' @export
 #' @return `tibble`, grouped by sample.
@@ -506,7 +506,7 @@ setGeneric(
 #' integrate with plotting functions that use ggplot2 internally.
 #'
 #' @name metrics
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `DataFrame`.
 NULL
@@ -557,7 +557,7 @@ setGeneric(
 #' - Median is calculated for the representative set of 1000 transcripts.
 #'
 #' @export
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `ggplot`.
 setGeneric(
@@ -573,7 +573,7 @@ setGeneric(
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `ggplot`.
 NULL
@@ -604,7 +604,7 @@ setGeneric(
 #' Generally, we expect similar count spreads for all genes between samples
 #' unless the library sizes or total RNA expression are different.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return `ggplot`.
@@ -632,7 +632,7 @@ setGeneric(
 #' @note Post hoc alpha level and LFC threshold cutoffs are not recommended.
 #'
 #' @inherit plotHeatmap
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 setGeneric(
     name = "plotDEGHeatmap",
@@ -645,7 +645,7 @@ setGeneric(
 
 # plotDEGPCA ===================================================================
 #' Plot DEG PCA
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -659,7 +659,7 @@ setGeneric(
 
 # plotExonicMappingRate ========================================================
 #' Plot Exonic Mapping Rate
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -681,7 +681,7 @@ setGeneric(
 #'
 #' Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @seealso [plotGene()].
@@ -699,7 +699,7 @@ setGeneric(
 # plotGene =====================================================================
 # TODO Rename to `plotGeneExpression()`? `plotGenes()`?
 #' Plot Gene Expression
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -718,7 +718,7 @@ setGeneric(
 #' number of mapped reads, which indicates that the sample input was not
 #' overloaded.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -732,7 +732,7 @@ setGeneric(
 
 # plotGenesDetected ============================================================
 #' Plot Genes Detected
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -750,7 +750,7 @@ setGeneric(
 #' Construct a simple heatmap.
 #'
 #' @name plotHeatmap
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @return `pheatmap`.
 NULL
 
@@ -788,7 +788,7 @@ setGeneric(
 #'
 #' The majority of reads should map to exons and not introns.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -805,7 +805,7 @@ setGeneric(
 #'
 #' The number of mapped reads should correspond to the number of total reads.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -824,7 +824,7 @@ setGeneric(
 #' reference genome. Low mapping rates are indicative of sample contamination,
 #' poor sequencing quality or other artifacts.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -838,7 +838,7 @@ setGeneric(
 
 # plotMeanSD ===================================================================
 #' Plot Row Standard Deviations vs. Row Means
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -852,7 +852,7 @@ setGeneric(
 
 # plotQC =======================================================================
 #' Plot Quality Control
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -873,7 +873,7 @@ setGeneric(
 #' reduce the number of biologically meaningful reads in the experiment and is
 #' best avoided.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -887,7 +887,7 @@ setGeneric(
 
 # plotTotalCounts ==============================================================
 #' Plot Total Counts
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -906,7 +906,7 @@ setGeneric(
 #' High quality RNA-seq samples ideally should have at least 10 million reads
 #' per sample.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -923,7 +923,7 @@ setGeneric(
 #'
 #' @note Don't apply post hoc alpha level or LFC threshold cutoffs.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -937,7 +937,7 @@ setGeneric(
 
 # plotZerosVsDepth =============================================================
 #' Plot Percentage of Zeros vs. Library Depth
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `ggplot`.
 setGeneric(
@@ -953,7 +953,7 @@ setGeneric(
 # TODO Improve citation link here.
 #' Relative Log Expression
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @seealso `edgeR::calcNormFactors()`.
@@ -972,7 +972,7 @@ setGeneric(
 
 # removeNA =====================================================================
 #' Remove Rows and Columns Containing Only NA Values
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return Sanitized object.
 setGeneric(
@@ -995,7 +995,7 @@ setGeneric(
 #' single-cell RNA-seq experiment).
 #'
 #' @name sampleData
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `DataFrame`.
 NULL
@@ -1027,7 +1027,7 @@ setGeneric(
 #' inside a character vector to `NA_character_`. Other `atomic` data types are
 #' returned unmodified.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return Object containing proper `NA` values.
@@ -1047,7 +1047,7 @@ setGeneric(
 #' `numeric` vector (e.g. `0.5`). This function is designed primarily to
 #' sanitize data imported from Microsoft Excel.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return `numeric`, if `character` and all items in the vector end with "%".
@@ -1075,7 +1075,7 @@ setGeneric(
 #'   objects but it's not intuitive. In this case, provide cellular barcode
 #'   identifiers for columns and gene identifiers for rows.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @param ... Selection arguments that map to the column names of
@@ -1103,7 +1103,7 @@ setGeneric(
 #' @note This by default method is strict, and will only strip Ensembl
 #'   transcript IDs beginning with "ENS".
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return Modified object, containing transcript identifiers without version
@@ -1119,7 +1119,7 @@ setGeneric(
 
 # subsetPerSample ==============================================================
 #' Subset Per Sample
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `SummarizedExperiment`, with selected samples.
 setGeneric(
@@ -1139,7 +1139,7 @@ setGeneric(
 #'
 #' @note Only recommended for gene-level counts.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @references Robinson and Oshlack (2010).
@@ -1163,7 +1163,7 @@ setGeneric(
 #'
 #' Obtain the top cellular barcodes, based on counts.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return `list`. Top barcodes as `character`, split by `sampleID`.
@@ -1178,7 +1178,7 @@ setGeneric(
 
 # topTables ====================================================================
 #' Top Tables of Differential Expression Results
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `kable`. Markdown tables.
 setGeneric(
@@ -1196,7 +1196,7 @@ setGeneric(
 #' @note Both gene- and transcript-level counts are supported, as long as they
 #'   were imported using a tximport caller (e.g. salmon, kallisto).
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @return `matrix`.
@@ -1216,7 +1216,7 @@ setGeneric(
 #' coloring in plots. When multiple interesting groups are present, unite into a
 #' single column, delimited by a colon.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #'
 #' @param object Object containing column data that defines interesting groups.
@@ -1236,7 +1236,7 @@ setGeneric(
 #'
 #' Calculate and visualize the dropout rate.
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @export
 #' @return `matrix`.
 setGeneric(

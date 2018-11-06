@@ -1,6 +1,6 @@
 #' @name plotHeatmap
 #' @inherit basejump.generics::plotHeatmap
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @section Hierarchical clustering:

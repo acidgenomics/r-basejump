@@ -7,7 +7,7 @@
 #' @name sampleNames
 #' @aliases sampleNames<-
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return Named `character` vector of the sample names.
 #'

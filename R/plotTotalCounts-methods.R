@@ -1,6 +1,6 @@
 #' @name plotTotalCounts
 #' @inherit basejump.generics::plotTotalCounts
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @examples
 #' data(rse, sce, package = "basejump.data")
 #' plotTotalCounts(rse)

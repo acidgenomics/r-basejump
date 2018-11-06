@@ -1,6 +1,5 @@
 # aggregate ====================================================================
 #' @name aggregate
-#' @inherit basejump.generics::aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @section Methods (by class):

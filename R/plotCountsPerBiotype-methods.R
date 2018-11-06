@@ -1,6 +1,6 @@
 #' @name plotCountsPerBiotype
 #' @inherit basejump.generics::plotCountsPerBiotype
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @examples
 #' data(rse, sce, package = "basejump.data")

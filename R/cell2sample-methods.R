@@ -7,7 +7,7 @@ basejump.generics::cell2sample
 
 #' @name cell2sample
 #' @inherit basejump.generics::cell2sample
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @note `sampleID` column must be defined in [SummarizedExperiment::colData()].
 #'

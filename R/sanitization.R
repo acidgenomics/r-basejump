@@ -298,7 +298,7 @@ setMethod(
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `DataFrame`. Contains only `character` and `factor` columns.
 #'
@@ -356,7 +356,7 @@ sanitizeRowData <- function(object) {
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return `DataFrame`.
 #'

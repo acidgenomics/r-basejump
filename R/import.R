@@ -61,7 +61,7 @@
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #'
 #' @return Varies, depending on the file extension:
 #'

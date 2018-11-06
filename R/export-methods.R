@@ -16,7 +16,7 @@
 #'
 #' @name export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @inheritParams rio::export
 #' @param compress `boolean`. Apply gzip compression to all files.
 #' @param human `boolean`. Automatically convert gene IDs to gene symbols in the

@@ -1,6 +1,6 @@
 #' @name zerosVsDepth
 #' @inherit basejump.generics::zerosVsDepth
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
 #' @examples

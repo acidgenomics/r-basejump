@@ -5,7 +5,7 @@
 #'
 #' @export
 #'
-#' @inheritParams basejump.globals::params
+#' @inheritParams params
 #' @param url `character`. Remote URL file path(s) to R data.
 #'
 #' @return Invisible named `character`. Local object name as the name, and the
