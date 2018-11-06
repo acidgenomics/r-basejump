@@ -3,8 +3,6 @@
 #' @note [makeNames()] sanitizes names using underscores instead of dots, the
 #' convention used by [base::make.names()].
 #'
-#' @param object Character vector or an object for which [base::names()]
-#'   assignment will be meaningful.
 #' @param rownames `boolean`. Apply sanitization on row names. This is not
 #'   recommended by default, since rownames commonly contain gene identifiers
 #'   that should not be modified.

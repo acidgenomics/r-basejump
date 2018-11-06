@@ -164,7 +164,7 @@ makeDimnames(object)
   strict = FALSE)
 }
 \arguments{
-\item{object}{\code{character}, or object for which \code{\link[base:names]{base::names()}} assignment
+\item{object}{\code{character} or object for which \code{\link[base:names]{base::names()}} assignment
 will be meaningful.}
 
 \item{...}{Additional arguments.}
@@ -185,9 +185,6 @@ that should not be modified.}
 
 \item{colnames}{\code{boolean}. Apply sanitization on column names. This is
 generally recommended by default.}
-
-\item{object}{Character vector or an object for which \code{\link[base:names]{base::names()}}
-assignment will be meaningful.}
 }
 \value{
 Object with syntatically valid names. For objects supporting

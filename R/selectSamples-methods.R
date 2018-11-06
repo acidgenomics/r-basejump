@@ -4,12 +4,6 @@
 #'   objects but it's not intuitive. In this case, provide cellular barcode
 #'   identifiers for columns and gene identifiers for rows.
 #'
-#' @inheritParams params
-#' @param ... Selection arguments that map to the column names of
-#'   [sampleData()]. `atomic` values are supported. Avoid using `logical` or
-#'   `numeric` indices (e.g. [base::which()] calls) here, for improved code
-#'   readability.
-#'
 #' @examples
 #' data(rse, sce)
 #'
