@@ -37,7 +37,13 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         assertIsAStringOrNULL(title)
 
         counts <- assays(object)[[assay]]
+
+        # Keep this calculation sparse, if necessary, for speed.
+        if (is(counts, "sparseMatrix")) {
+            colSums <- Matrix::colSums
+        }
         geneCount <- colSums(counts >= minCounts)
+
         data <- metrics(object) %>%
             as_tibble() %>%
             mutate(geneCount = !!geneCount)
