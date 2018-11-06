@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^.*\.gz$
+^.*\.pdf$
 ^CONTRIBUTING\.md$
 ^Meta$
 ^\.Rprofile$
