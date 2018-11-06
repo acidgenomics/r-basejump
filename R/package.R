@@ -14,6 +14,7 @@
 #' @importMethodsFrom SummarizedExperiment coerce
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
+#' @importFrom Biobase sampleNames sampleNames<-
 #' @importFrom BiocGenerics as.data.frame as.list do.call lapply match setdiff
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
