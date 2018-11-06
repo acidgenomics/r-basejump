@@ -12,9 +12,8 @@
 #'   remote URL as the value.
 #'
 #' @examples
-#' cacheURL <- basejump.globals::basejumpCacheURL
 #' url <- file.path(
-#'     cacheURL,
+#'     basejumpCacheURL,
 #'     paste0(c("rnaseq_counts", "single_cell_counts"), ".rds")
 #' )
 #' print(url)

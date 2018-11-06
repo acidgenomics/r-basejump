@@ -8,6 +8,7 @@ seqnames <- GenomeInfoDb::seqnames
 
 mat <- assay(rse)
 sparse <- assay(sce)
+url <- basejumpCacheURL
 
 
 
@@ -123,7 +124,7 @@ test_that("import : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
-    file <- paste(cacheURL, "example.xlsx", sep = "/")
+    file <- paste(url, "example.xlsx", sep = "/")
     object <- import(file = file)
     expect_is(object, "DataFrame")
 })
@@ -152,16 +153,16 @@ test_that("import : R script", {
 
 test_that("import : R Data", {
     # R data.
-    object <- import(paste(cacheURL, "example.rda", sep = "/"))
+    object <- import(paste(url, "example.rda", sep = "/"))
     expect_is(object, "DataFrame")
 
     # R data serialized.
-    object <- import(paste(cacheURL, "example.rds", sep = "/"))
+    object <- import(paste(url, "example.rds", sep = "/"))
     expect_is(object, "DataFrame")
 
     # Error on object containing multiple data.
     expect_error(
-        object = import(paste(cacheURL, "multi.rda", sep = "/")),
+        object = import(paste(url, "multi.rda", sep = "/")),
         regexp = "File does not contain a single object"
     )
 })
@@ -319,7 +320,7 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    url <- paste(cacheURL, "example.rds", sep = "/")
+    url <- paste(url, "example.rds", sep = "/")
     object <- loadRemoteData(url)
     # Character matrix of loaded files.
     expect_is(object, "character")
@@ -332,7 +333,7 @@ test_that("loadRemoteData : Already loaded", {
     example <- TRUE
     expect_error(
         object = loadRemoteData(
-            url = paste(cacheURL, "example.rda", sep = "/")
+            url = paste(url, "example.rda", sep = "/")
         ),
         regexp = "Already exists in environment: example"
     )
@@ -341,7 +342,7 @@ test_that("loadRemoteData : Already loaded", {
 test_that("loadRemoteData : Invalid arguments", {
     expect_error(
         object = loadRemoteData(
-            url = paste(cacheURL, "mmusculus.gtf", sep = "/")
+            url = paste(url, "mmusculus.gtf", sep = "/")
         ),
         regexp = rdataLoadError
     )
@@ -351,7 +352,7 @@ test_that("loadRemoteData : Invalid arguments", {
     )
     expect_error(
         object = loadRemoteData(
-            url = paste(paste(cacheURL, "example.rda", sep = "/")),
+            url = paste(paste(url, "example.rda", sep = "/")),
             envir = "XXX"
         ),
         regexp = "is_environment : envir"
@@ -362,7 +363,7 @@ test_that("loadRemoteData : Invalid arguments", {
 
 # localOrRemoteFile ============================================================
 test_that("localOrRemoteFile : Vectorized", {
-    urls <- paste(cacheURL, c("example.csv", "example.rda"), sep = "/")
+    urls <- paste(url, c("example.csv", "example.rda"), sep = "/")
     files <- localOrRemoteFile(urls)
     expect_is(files, "character")
     expect_identical(basename(urls), basename(files))
