@@ -303,7 +303,7 @@ setMethod(
 #' @return `DataFrame`. Contains only `character` and `factor` columns.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' from <- SummarizedExperiment::rowRanges(rse)
 #' colnames(S4Vectors::mcols(from))
 #' to <- sanitizeRowData(from)
@@ -361,7 +361,7 @@ sanitizeRowData <- function(object) {
 #' @return `DataFrame`.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' from <- basejump.experiment::sampleData(rse)
 #' print(from)
 #' to <- sanitizeSampleData(from)

@@ -47,7 +47,7 @@
 #' - `utils::methods()`.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #'
 #' ## DataFrame to tbl_df ====
 #' data <- SummarizedExperiment::colData(rse)
@@ -68,7 +68,7 @@
 #' colnames(x)
 #'
 #' ## sparseMatrix to data.frame ====
-#' data(sparse, package = "basejump.data")
+#' data(sparse)
 #'
 #' x <- as.data.frame(sparse)
 #' class(x)
@@ -93,7 +93,7 @@ NULL
 #' @seealso `methods::coerce`.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' list <- coerceS4ToList(rse)
 #' class(list)
 #' names(list)

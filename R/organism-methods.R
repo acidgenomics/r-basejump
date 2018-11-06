@@ -7,7 +7,7 @@
 #' @seealso [detectOrganism()].
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' organism(rse)
 NULL
 

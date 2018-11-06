@@ -97,7 +97,7 @@ detectHPC <- function() {
 #' @return `character`. Object names defined in the new `environment`.
 #'
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #' multiassignAsEnvir(rse, sce, envirName = "example")
 #' class(example)
 #' ls(example)

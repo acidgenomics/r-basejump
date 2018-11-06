@@ -56,7 +56,7 @@
 #' - [stats::hclust()].
 #'
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #'
 #' ## SummarizedExperiment ====
 #' plotHeatmap(rse)

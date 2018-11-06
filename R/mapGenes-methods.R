@@ -7,7 +7,7 @@
 #'   genes vector to only include matches.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' object <- rse
 #' print(object)
 #'

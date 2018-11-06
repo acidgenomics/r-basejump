@@ -1,6 +1,6 @@
 context("Coercion")
 
-data(rse, package = "basejump.data", envir = environment())
+data(rse, envir = environment())
 
 
 

@@ -495,7 +495,7 @@ setMethod(
 #'   to sample-level.
 #'
 #' @examples
-#' data(sce, package = "basejump.data")
+#' data(sce)
 #' x <- aggregateCellsToSamples(sce)
 #' print(x)
 NULL

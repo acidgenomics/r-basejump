@@ -13,7 +13,7 @@
 #' @return Matrix. Typically `matrix` or `sparseMatrix` class.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' x <- counts(rse)
 #' summary(x)
 NULL

@@ -19,7 +19,7 @@
 #' @seealso [aggregateRows()].
 #'
 #' @examples
-#' data(tx_se, package = "basejump.data")
+#' data(tx_se)
 #' object <- tx_se
 #'
 #' t2g <- basejump.classes::Tx2Gene(object)

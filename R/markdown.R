@@ -2,7 +2,7 @@
 #' @inherit basejump.generics::markdown
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' markdown(rse)
 NULL
 

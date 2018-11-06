@@ -17,7 +17,7 @@
 #' @note This function attempts to follow the same order as [base::assign()].
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' assignAndSaveData(name = "example", object = rse, ext = "rds")
 #' exists("example", inherits = FALSE)
 #' file.exists("example.rds")

@@ -3,7 +3,7 @@
 #' @inheritParams params
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' object <- rse
 #'
 #' g2s <- basejump.classes::Gene2Symbol(object)

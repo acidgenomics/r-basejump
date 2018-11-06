@@ -4,7 +4,7 @@
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
 #' @examples
-#' data(sce, package = "basejump.data")
+#' data(sce)
 #' x <- zerosVsDepth(sce)
 #' summary(x)
 #' colnames(x)

@@ -9,7 +9,7 @@
 #' @param subset `boolean`. Only check a subset of slots in the object.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' object <- rse
 #' metadata <- S4Vectors::metadata(object)
 #' checkClasses(
@@ -267,7 +267,7 @@ setValidity(
 #' - `"long"`: Return 1:many in long format.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' x <- Ensembl2Entrez(rse)
 #' print(x)
 NULL
@@ -466,7 +466,7 @@ setValidity(
 #' - `"long"`: Return `geneID` and `geneName` columns unmodified in long format.
 #'
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' x <- Gene2Symbol(rse)
 #' print(x)
 NULL
@@ -1089,7 +1089,7 @@ setValidity(
 #' @note No attempt is made to arrange the rows by transcript identifier.
 #' @examples
 #' ## SummarizedExperiment ====
-#' data(tx_se, package = "basejump.data")
+#' data(tx_se)
 #' x <- Tx2Gene(tx_se)
 #' print(x)
 NULL

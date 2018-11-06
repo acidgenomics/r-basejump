@@ -8,7 +8,7 @@ basejump.generics::convertSampleIDsToNames
 #' @name convertSampleIDsToNames
 #' @inherit basejump.generics::convertSampleIDsToNames
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' convertSampleIDsToNames(rse)
 NULL
 

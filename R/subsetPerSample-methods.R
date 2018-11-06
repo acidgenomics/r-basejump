@@ -14,7 +14,7 @@
 #' - `assignAndSave = TRUE`: Subset file paths.
 #'
 #' @examples
-#' data(sce, package = "basejump.data")
+#' data(sce)
 #'
 #' ## SingleCellExperiment ====
 #' object <- sce

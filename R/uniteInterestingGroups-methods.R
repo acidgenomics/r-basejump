@@ -2,7 +2,7 @@
 #' @inherit basejump.generics::uniteInterestingGroups
 #' @inheritParams params
 #' @examples
-#' data(rse, package = "basejump.data")
+#' data(rse)
 #' object <- rse
 #' from <- sampleData(object)
 #' to <- uniteInterestingGroups(

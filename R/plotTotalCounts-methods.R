@@ -2,7 +2,7 @@
 #' @inherit basejump.generics::plotTotalCounts
 #' @inheritParams params
 #' @examples
-#' data(rse, sce, package = "basejump.data")
+#' data(rse, sce)
 #' plotTotalCounts(rse)
 #' plotTotalCounts(sce)
 NULL

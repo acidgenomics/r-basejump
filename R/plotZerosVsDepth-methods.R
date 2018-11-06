@@ -2,7 +2,7 @@
 #' @inherit basejump.generics::plotZerosVsDepth
 #' @inheritParams params
 #' @examples
-#' data(sce, package = "basejump.data")
+#' data(sce)
 #' plotZerosVsDepth(sce)
 NULL
 

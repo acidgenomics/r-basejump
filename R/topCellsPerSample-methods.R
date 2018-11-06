@@ -4,7 +4,7 @@
 #' @param n `scalar integer`. Number of barcodes to return per sample.
 #'
 #' @examples
-#' data(sce, package = "basejump.data")
+#' data(sce)
 #' x <- topCellsPerSample(sce)
 #' lapply(x, head)
 NULL

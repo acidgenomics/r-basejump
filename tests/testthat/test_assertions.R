@@ -1,6 +1,6 @@
 context("Assertions")
 
-data(rse, tx_se, package = "basejump.data", envir = environment())
+data(rse, tx_se, envir = environment())
 
 # nolint start
 DataFrame <- S4Vectors::DataFrame
