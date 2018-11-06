@@ -87,6 +87,7 @@ Imports:
     yaml
 Suggests:
     BiocStyle,
+    EnsDb.Hsapiens.v75,
     GenomeInfoDb,
     datasets,
     patrick,

@@ -9,17 +9,17 @@
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
-#' @importMethodsFrom Matrix colSums
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom Biobase sampleNames sampleNames<-
-#' @importFrom BiocGenerics as.data.frame as.list do.call lapply match setdiff
+#' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
+#'   rowMeans rowSums setdiff t
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom IRanges IRanges
-#' @importFrom Matrix colSums readMM rowMeans rowSums readMM t writeMM
+#' @importFrom Matrix readMM readMM writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
@@ -106,6 +106,9 @@
 
 # Conflicts with rtracklayer:
 # @importFrom rio import
+
+# Conflicts with BiocGenerics:
+# @importMethodsFrom Matrix colSums rowMeans rowSums t
 
 
 
