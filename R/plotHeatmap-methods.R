@@ -133,7 +133,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             object <- convertGenesToSymbols(object)
         )
 
-        # Ensure we're using a dense matrix.
+        # Ensure we're always using a dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
         # Filter out any zero count rows when row scaling, otherwise hclust

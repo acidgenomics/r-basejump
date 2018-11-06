@@ -31,6 +31,7 @@ plotQC.SummarizedExperiment <-  # nolint
         validObject(object)
         assert_is_scalar(assay)
 
+        # Always coerce to dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
         # Total counts.
