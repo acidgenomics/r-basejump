@@ -44,6 +44,7 @@ zerosVsDepth.sparseMatrix <-  # nolint
         present <- object %>%
             as("dgCMatrix") %>%
             as("lgCMatrix")
+        colSums <- Matrix::colSums
         DataFrame(
             dropout = (nrow(present) - colSums(present)) / nrow(present),
             depth = colSums(object),
