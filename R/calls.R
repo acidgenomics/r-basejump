@@ -43,8 +43,6 @@ dots <- function(..., character = FALSE) {
 
 # matchArgsToDoCall ============================================================
 #' Match Arguments to Do Call
-#'
-#' @include standardizeCall.R
 #' @export
 #'
 #' @inheritParams standardizeCall
