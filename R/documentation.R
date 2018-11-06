@@ -1,0 +1,213 @@
+# parseRd ======================================================================
+#' Parse R Documentation
+#'
+#' Modified version of `tools:::.Rd_get_metadata()` that keeps whitespace and
+#' returns `character` instead of `matrix`.
+#'
+#' @export
+#'
+#' @param object `Rd`. R documentation, returned from [tools::Rd_db()].
+#' @param tag `string`. Desired metadata type. For example, these are supported:
+#'   - "`title`".
+#'   - "`description`".
+#'   - "`usage`".
+#'   - "`arguments`".
+#'   - "`value`".
+#'   - "`references`".
+#'   - "`seealso`".
+#'   - "`examples`".
+#'
+#' @seealso [tools::Rd_db()].
+#'
+#' @examples
+#' db <- tools::Rd_db("base")
+#' head(names(db))
+#' Rd <- db[["nrow.Rd"]]
+#' class(Rd)
+#' summary(Rd)
+#' RdTags(Rd)
+#' examples <- parseRd(Rd, tag = "examples")
+#' print(examples)
+parseRd <- function(object, tag) {
+    assert_is_all_of(object, "Rd")
+    assert_is_a_string(tag)
+
+    tags <- RdTags(object)
+    assert_is_subset(tag, tags)
+
+    # Get the metadata that matches the requested tag.
+    data <- object[tags == tag]
+
+    # Coerce to character, not a character matrix.
+    data <- as.character(sapply(data, as.character))
+
+    # Strip trailing newlines and superfluous whitespace.
+    data <- trimws(data, which = "right")
+
+    # Strip leading and trailing carriage returns, if present.
+    if (data[[1L]] == "") {
+        data <- data[-1L]
+    }
+    if (data[[length(data)]] == "") {
+        data <- data[-length(data)]
+    }
+
+    data
+}
+
+
+
+# RdTags =======================================================================
+#' R Documentation Tags
+#'
+#' Modified version of the unexported `tools:::RdTags()` function.
+#'
+#' @export
+#'
+#' @inheritParams parseRd
+#'
+#' @examples
+#' db <- tools::Rd_db("base")
+#' Rd <- db[["nrow.Rd"]]
+#' RdTags(Rd)
+RdTags <- function(object) {  # nolint
+    assert_is_all_of(object, "Rd")
+    tags <- sapply(object, attr, "Rd_tag")
+    if (!has_length(tags)) {
+        tags <- character()
+    } else {
+        # Remove the leading "\\" backslashes.
+        tags <- gsub("^\\\\", "", tags)
+    }
+    tags
+}
+
+
+
+# saveRdExamples ===============================================================
+#' Save R Documentation Examples
+#'
+#' Parse the documentation for a function and save the working examples to an R
+#' script. Note that the `f` argument is parameterized and can handle multiple
+#' requests in a single call.
+#'
+#' @export
+#'
+#' @inheritParams basejump.globals::params
+#' @param Rd `character` or `NULL`. R documentation name(s) from which to parse
+#'   and save the working examples. If `NULL`, all documentation files
+#'   containing examples will be saved.
+#' @param package `string`. Package name.
+#'
+#' @return Invisible `character`. File path(s).
+#'
+#' @examples
+#' saveRdExamples(
+#'     Rd = c("do.call", "droplevels"),
+#'     package = "base",
+#'     dir = "example"
+#' )
+#'
+#' ## Clean up.
+#' unlink("example", recursive = TRUE)
+saveRdExamples <- function(
+    Rd = NULL,  # nolint
+    package,
+    dir = "."
+) {
+    assert_is_any_of(Rd, c("character", "NULL"))
+    assert_is_a_string(package)
+    assert_is_a_string(dir)
+    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
+
+    # Get a database of the Rd files available in the requested package.
+    db <- Rd_db(package)
+    names(db) <- gsub("\\.Rd", "", names(db))
+
+    # If no Rd file is specified, save everything in package.
+    if (is.null(Rd)) {
+        Rd <- names(db)  # nolint
+    }
+
+    # Check that the requiested function(s) are valid.
+    assert_is_subset(Rd, names(db))
+
+    # Parse the Rd files and return the working examples as a character.
+    list <- mapply(
+        Rd = Rd,
+        MoreArgs = list(
+            package = package,
+            dir = dir
+        ),
+        FUN = function(Rd, package, dir) {  # nolint
+            x <- tryCatch(
+                expr = parseRd(db[[Rd]], tag = "examples"),
+                error = function(e) character()
+            )
+
+            # Early return if there are no examples.
+            if (length(x) == 0L) {
+                message(paste0("Skipped ", Rd, "."))
+                return(invisible())
+            }
+
+            # Save to an R script.
+            path <- file.path(dir, paste0(Rd, ".R"))
+            unlink(path)
+            write_lines(x = x, path = path)
+            path
+        },
+        SIMPLIFY = FALSE,
+        USE.NAMES = TRUE
+    )
+
+    # Coerce to character and remove NULL items.
+    paths <- Filter(Negate(is.null), list)
+    names <- names(paths)
+    paths <- as.character(paths)
+    names(paths) <- names
+
+    message(paste0(
+        "Saved ", length(paths), " Rd examples from ", package, " to ", dir, "."
+    ))
+
+    # Return file paths of saved R scripts.
+    invisible(paths)
+}
+
+
+
+# tabular ======================================================================
+#' R Documentation Table
+#'
+#' @param df `data.frame`.
+#'
+#' @return Console output.
+#' @export
+#'
+#' @seealso http://r-pkgs.had.co.nz/man.html
+tabular <- function(df) {
+    assert_that(is.data.frame(df))
+    align <- function(x) {
+        if (is.numeric(x)) {
+            "r"
+        } else {
+            "l"
+        }
+    }
+    col_align <- vapply(df, align, character(1))
+    cols <- lapply(df, format)
+    contents <- do.call(
+        what = "paste",
+        args = c(cols, list(sep = " \\tab ", collapse = "\\cr\n  "))
+    )
+    out <- paste(
+        "\\tabular{",
+        paste(col_align, collapse = ""),
+        "}{\n  ",
+        contents,
+        "\n}\n",
+        sep = ""
+    )
+    cat(out)
+}
