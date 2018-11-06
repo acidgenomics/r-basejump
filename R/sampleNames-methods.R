@@ -1,0 +1,95 @@
+#' Sample Names
+#'
+#' This function will return the human readable sample names if defined
+#' in the `sampleName` column of [sampleData()]. Otherwise it will return
+#' the syntactically valid names defined as the rownames of [sampleData()].
+#'
+#' @name sampleNames
+#' @aliases sampleNames<-
+#'
+#' @inheritParams basejump.globals::params
+#'
+#' @return Named `character` vector of the sample names.
+#'
+#' @examples
+#' data(rse, package = "basejump.data")
+#' object <- rse
+#' x <- sampleNames(object)
+#' print(x)
+#'
+#' ## Assignment support.
+#' value <- sampleNames(object)
+#' value <- toupper(value)
+#' print(value)
+#' sampleNames(object) <- value
+#' x <- sampleNames(object)
+#' print(x)
+NULL
+
+
+
+#' @importFrom Biobase sampleNames
+#' @aliases NULL
+#' @export
+Biobase::sampleNames
+
+#' @importFrom Biobase sampleNames<-
+#' @aliases NULL
+#' @export
+Biobase::`sampleNames<-`
+
+
+
+# SummarizedExperiment =========================================================
+sampleNames.SummarizedExperiment <-  # nolint
+    function(object) {
+        data <- sampleData(object)
+        assert_is_subset("sampleName", colnames(data))
+        data <- data[sort(rownames(data)), , drop = FALSE]
+        vec <- as.character(data[, "sampleName", drop = TRUE])
+        names(vec) <- rownames(data)
+        vec
+    }
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleNames",
+    signature = signature("SummarizedExperiment"),
+    definition = sampleNames.SummarizedExperiment
+)
+
+
+
+`sampleNames<-.SummarizedExperiment` <-  # nolint
+    function(object, value) {
+        assert_has_names(value)
+        # Note that these will correspond to columns for bulk RNA-seq but not
+        # single-cell RNA-seq samples, which map to cells.
+        ids <- names(sampleNames(object))
+        assert_is_non_empty(ids)
+        # Require the input to match the original IDs.
+        assert_are_set_equal(names(value), ids)
+        # Now safe to reorder the value vector to match.
+        value <- value[ids]
+        # Check that the slotting destination matches.
+        assert_are_identical(names(value), rownames(sampleData(object)))
+        sampleData(object)[["sampleName"]] <- value
+        validObject(object)
+        object
+    }
+
+
+
+#' @rdname sampleNames
+#' @export
+setMethod(
+    f = "sampleNames<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "character"
+    ),
+    definition = `sampleNames<-.SummarizedExperiment`
+)
