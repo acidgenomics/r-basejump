@@ -332,14 +332,14 @@ markdownTables <- function(
 #' @return Invisible `logical`. Was the file copied?.
 #'
 #' @examples
-#' ## RNA-seq template
+#' ## RNA-seq template.
 #' \dontrun{
-#' prepareTemplate(package = "bcbioRNASeq")
+#' # prepareTemplate(package = "bcbioRNASeq")
 #' }
 #'
-#' ## Single-cell RNA-seq template
+#' ## Single-cell RNA-seq template.
 #' \dontrun{
-#' prepareTemplate(package = "bcbioSingleCell")
+#' # prepareTemplate(package = "bcbioSingleCell")
 #' }
 prepareTemplate <- function(
     package,
