@@ -1,15 +1,43 @@
-invisible(lapply(
-    X = c(
-        "gr.rda",
-        "mn.rda"
-    ),
-    FUN = function(file, url) {
+files <- c(
+    "example.counts",
+    "example.csv",
+    "example.gtf",
+    "example.gff3",
+    "example.json",
+    "example.R",
+    "example.rda",
+    "example.rds",
+    "example.tsv",
+    "example.txt",
+    "example.yml",
+    "gr.rda",
+    "mn.rda",
+    "multi.rda",
+    "plotlist.rda",
+    "renamed.rda",
+    "rnaseq_counts.csv.gz",
+    "serialized.rds",
+    "single_cell_counts.mtx.gz",
+    "single_cell_counts.mtx.gz.colnames",
+    "single_cell_counts.mtx.gz.rownames"
+)
+mapply(
+    FUN = function(cacheURL, file, envir) {
         if (!file.exists(file)) {
             utils::download.file(
-                url = paste(url, file, sep = "/"),
+                url = paste(cacheURL, file, sep = "/"),
                 destfile = file
             )
         }
+        # Load R Data file
+        if (grepl("\\.rda$", file)) {
+            message(paste("Loading", file))
+            load(file, envir = envir)
+        }
     },
-    url = basejumpCacheURL
-))
+    file = files,
+    MoreArgs = list(
+        cacheURL = basejumpCacheURL,
+        envir = environment()
+    )
+)
