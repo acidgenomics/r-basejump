@@ -243,15 +243,13 @@ geneSynonyms <- function(organism) {
 #' print(x)
 #'
 #' ## makeGene2SymbolFromGFF ====
-#' cacheURL <- basejump.globals::basejumpCacheURL
-#'
 #' ## GTF
-#' file <- file.path(cacheURL, "example.gtf")
+#' file <- file.path(basejumpCacheURL, "example.gtf")
 #' x <- makeGene2SymbolFromGFF(file)
 #' print(x)
 #'
 #' ## GFF3
-#' file <- file.path(cacheURL, "example.gff3")
+#' file <- file.path(basejumpCacheURL, "example.gff3")
 #' x <- makeGene2SymbolFromGFF(file)
 #' print(x)
 NULL
@@ -357,8 +355,7 @@ makeGene2SymbolFromGTF <- makeGene2SymbolFromGFF
 #' x <- makeGRangesFromEnsDb("EnsDb.Hsapiens.v75")
 #'
 #' ## makeGRangesFromGFF ====
-#' cacheURL <- basejump.globals::basejumpCacheURL
-#' file <- file.path(cacheURL, "example.gtf")
+#' file <- file.path(basejumpCacheURL, "example.gtf")
 #'
 #' ## Genes
 #' x <- makeGRangesFromGFF(file = file, level = "genes")
@@ -1221,15 +1218,13 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
 #' print(x)
 #'
 #' ## makeTx2GeneFromGFF ====
-#' cacheURL <- basejump.globals::basejumpCacheURL
-#'
 #' ## GTF
-#' file <- file.path(cacheURL, "example.gtf")
+#' file <- file.path(basejumpCacheURL, "example.gtf")
 #' x <- makeTx2GeneFromGFF(file)
 #' print(x)
 #'
 #' ## GFF3
-#' file <- file.path(cacheURL, "example.gff3")
+#' file <- file.path(basejumpCacheURL, "example.gff3")
 #' x <- makeTx2GeneFromGFF(file)
 #' print(x)
 NULL

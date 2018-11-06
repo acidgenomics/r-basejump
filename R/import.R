@@ -80,34 +80,34 @@
 #' - [Matrix](https://cran.r-project.org/web/packages/Matrix/index.html).
 #'
 #' @examples
-#' cacheURL <- basejump.globals::basejumpCacheURL
+#' url <- basejumpCacheURL
 #'
 #' ## R Data
-#' x <- import(file = file.path(cacheURL, "rnaseq_counts.rda"))
+#' x <- import(file = file.path(url, "rnaseq_counts.rda"))
 #' class(x)
 #'
 #' ## Comma Separated Values
-#' x <- import(file = file.path(cacheURL, "example.csv"))
+#' x <- import(file = file.path(url, "example.csv"))
 #' print(x)
 #'
 #' ## Microsoft Excel Worksheet
-#' x <- import(file = file.path(cacheURL, "example.xlsx"))
+#' x <- import(file = file.path(url, "example.xlsx"))
 #' print(x)
 #'
 #' ## GTF/GFF
-#' x <- import(file = file.path(cacheURL, "example.gtf"))
+#' x <- import(file = file.path(url, "example.gtf"))
 #' summary(x)
 #'
 #' ## JSON
-#' x <- import(file = file.path(cacheURL, "example.json"))
+#' x <- import(file = file.path(url, "example.json"))
 #' names(x)
 #'
 #' ## YAML
-#' x <- import(file = file.path(cacheURL, "example.yml"))
+#' x <- import(file = file.path(url, "example.yml"))
 #' names(x)
 #'
 #' ## Counts Table (i.e. aligned counts from bcbio)
-#' x <- import(file = file.path(cacheURL, "example.counts"))
+#' x <- import(file = file.path(url, "example.counts"))
 #' colSums(x)
 import <- function(file, ...) {
     args <- list(file, ...)
