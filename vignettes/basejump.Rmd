@@ -32,7 +32,7 @@ library(SummarizedExperiment)
 options(basejump.test = TRUE)
 ggplot2::theme_set(theme_paperwhite())
 knitr::opts_chunk$set(message = FALSE)
-data(rse, package = "basejump.data")
+data(rse)
 ```
 
 # Introduction
@@ -67,7 +67,7 @@ The [basejump][] package defines generics and methods for object-oriented progra
 Here's the current list of S4 generics exported by the package:
 
 ```{r, include=FALSE}
-generics <- getGenerics(asNamespace("basejump.generics"))
+generics <- getGenerics(asNamespace("basejump"))
 links <- paste0("`", slot(generics, ".Data"), "()`")
 markdownList(links)
 ```
