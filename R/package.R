@@ -41,7 +41,7 @@
 #'   assert_all_are_in_open_range assert_all_are_in_range
 #'   assert_all_are_non_negative assert_all_are_positive is_positive
 #' @importFrom assertive.properties assert_are_same_length assert_has_colnames
-#'   assert_has_dimnames assert_has_dims assert_has_names
+#'   assert_has_cols assert_has_dimnames assert_has_dims assert_has_names
 #'   assert_has_no_duplicates assert_has_rownames assert_has_rows
 #'   assert_is_atomic assert_is_empty assert_is_non_empty assert_is_not_null
 #'   assert_is_null assert_is_of_length assert_is_scalar assert_is_vector
@@ -101,6 +101,11 @@
 #'   sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
+
+
+
+# Conflicts with rtracklayer:
+# @importFrom rio import
 
 
 

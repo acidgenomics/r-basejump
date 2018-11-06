@@ -73,6 +73,7 @@ Imports:
     purrr,
     readr,
     reshape2,
+    rio,
     rlang,
     rtracklayer,
     sessioninfo,
@@ -88,7 +89,9 @@ Suggests:
     BiocStyle,
     GenomeInfoDb,
     datasets,
+    patrick,
     rmarkdown,
+    testthat,
     viridis
 biocViews:
     DataImport,

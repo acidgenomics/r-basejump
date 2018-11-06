@@ -131,7 +131,7 @@ setMethod(
             as_tibble(rownames = "sampleID") %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))
         data %>%
-            summarize_all(FUN) %>%
+            summarise_all(FUN) %>%
             left_join(sampleData, by = "sampleID") %>%
             group_by(!!sym("sampleID"))
     }

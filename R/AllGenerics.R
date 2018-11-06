@@ -372,7 +372,7 @@ setGeneric(
 #' @name makeNames
 #' @inheritParams params
 #'
-#' @param object `character`, or object for which [base::names()] assignment
+#' @param object `character` or object for which [base::names()] assignment
 #'   will be meaningful.
 #'
 #' @return Object with syntatically valid names. For objects supporting

@@ -20,11 +20,6 @@ selectSamples(object, ...)
 \code{\link[=sampleData]{sampleData()}}. \code{atomic} values are supported. Avoid using \code{logical} or
 \code{numeric} indices (e.g. \code{\link[base:which]{base::which()}} calls) here, for improved code
 readability.}
-
-\item{...}{Selection arguments that map to the column names of
-\code{\link[=sampleData]{sampleData()}}. \code{atomic} values are supported. Avoid using \code{logical} or
-\code{numeric} indices (e.g. \code{\link[base:which]{base::which()}} calls) here, for improved code
-readability.}
 }
 \value{
 Modified object, with selected samples.
