@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.8.0
-Date: 2018-11-06
+Date: 2018-11-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -98,5 +98,5 @@ biocViews:
     DataImport,
     Infrastructure
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0.9000
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr
