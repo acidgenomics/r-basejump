@@ -4,7 +4,7 @@
 \alias{markdownTables}
 \title{Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
-markdownTables(list, captions, force = FALSE)
+markdownTables(list, captions = NULL, force = FALSE)
 }
 \arguments{
 \item{list}{\code{list} containing column data (e.g. \code{data.frame}, \code{matrix}).}

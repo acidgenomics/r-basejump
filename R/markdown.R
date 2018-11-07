@@ -272,10 +272,15 @@ mdPlotlist <- markdownPlotlist
 #' )
 markdownTables <- function(
     list,
-    captions,
+    captions = NULL,
     force = FALSE
 ) {
     assert_is_list(list)
+    assert_is_any_of(captions, classes = c("character", "NULL"))
+    if (is.null(captions)) {
+        assert_has_names(list)
+        captions <- names(list)
+    }
     assert_is_character(captions)
     assert_are_same_length(list, captions)
     assert_is_a_bool(force)
