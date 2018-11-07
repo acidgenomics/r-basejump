@@ -254,10 +254,11 @@ mdPlotlist <- markdownPlotlist
 #'
 #' @export
 #'
-#' @param list `list` containing column data (e.g. `data.frame`, `matrix`).
-#' @param captions `character`. Table captions.
-#' @param force `boolean`. Force knit output. Recommended for development and
-#'   unit testing only.
+#' @param list Named `list`. Column data that can be coerced to `data.frame`.
+#' @param captions `character` or `NULL`. Table captions. If `NULL`, the names
+#'   of the list will be used automatically as captions.
+#' @param force `boolean`. Force knit output using [knitr::asis_output()].
+#'   Recommended for development and unit testing only.
 #'
 #' @return `asis_output` if in a knit call or `list`.
 #'
@@ -266,10 +267,12 @@ mdPlotlist <- markdownPlotlist
 #' - [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples
-#' markdownTables(
-#'     list = list(head(ggplot2::mpg), head(datasets::mtcars)),
-#'     captions = c("mpg", "mtcars")
+#' list <- list(mpg = head(ggplot2::mpg), mtcars = head(datasets::mtcars))
+#' captions <- c(
+#'     mpg = "Miles per gallon",
+#'     mtcars = "Motor Trend car road tests"
 #' )
+#' markdownTables(list = list, captions = captions)
 markdownTables <- function(
     list,
     captions = NULL,
@@ -290,7 +293,7 @@ markdownTables <- function(
             x = list,
             caption = captions,
             FUN = function(x, caption) {
-                kable(x, caption = caption)
+                kable(x = as.data.frame(x), caption = caption)
             },
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
