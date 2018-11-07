@@ -1,3 +1,7 @@
+# FIXME Deprecate `markdownTables()` now that `knitr::kable()` supports list?
+
+
+
 #' @name markdown
 #' @examples
 #' data(rse)
