@@ -1,3 +1,7 @@
+# FIXME `import()` should return `data.frame` instead of `DataFrame`.
+
+
+
 #' Import
 #'
 #' Read file by extension into R.
