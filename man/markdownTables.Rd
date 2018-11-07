@@ -7,12 +7,13 @@
 markdownTables(list, captions = NULL, force = FALSE)
 }
 \arguments{
-\item{list}{\code{list} containing column data (e.g. \code{data.frame}, \code{matrix}).}
+\item{list}{Named \code{list}. Column data that can be coerced to \code{data.frame}.}
 
-\item{captions}{\code{character}. Table captions.}
+\item{captions}{\code{character} or \code{NULL}. Table captions. If \code{NULL}, the names
+of the list will be used automatically as captions.}
 
-\item{force}{\code{boolean}. Force knit output. Recommended for development and
-unit testing only.}
+\item{force}{\code{boolean}. Force knit output using \code{\link[knitr:asis_output]{knitr::asis_output()}}.
+Recommended for development and unit testing only.}
 }
 \value{
 \code{asis_output} if in a knit call or \code{list}.
@@ -21,10 +22,12 @@ unit testing only.}
 Knit multiple tables in a single R Markdown chunk.
 }
 \examples{
-markdownTables(
-    list = list(head(ggplot2::mpg), head(datasets::mtcars)),
-    captions = c("mpg", "mtcars")
+list <- list(mpg = head(ggplot2::mpg), mtcars = head(datasets::mtcars))
+captions <- c(
+    mpg = "Miles per gallon",
+    mtcars = "Motor Trend car road tests"
 )
+markdownTables(list = list, captions = captions)
 }
 \seealso{
 \itemize{
