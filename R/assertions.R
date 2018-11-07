@@ -1,3 +1,8 @@
+# TODO assertIsDir
+# TODO assertIsFile
+
+
+
 #' Assertions
 #'
 #' @name assertions
