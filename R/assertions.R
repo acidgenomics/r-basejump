@@ -108,7 +108,7 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
 assertAllAreURL <- function(object) {
     assert_is_character(object)
     assert_is_non_empty(object)
-    assert_all_are_true(isURL(object))
+    assert_that(isURL(object))
 }
 
 
@@ -154,7 +154,7 @@ assertAllAreValidNames <- function(object) {
     assert_is_non_empty(object)
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
-    assert_all_are_true(validNames(object))
+    assert_that(validNames(object))
 }
 
 
@@ -163,7 +163,7 @@ assertAllAreValidNames <- function(object) {
 #' @export
 assertHasValidDimnames <- function(object) {
     assert_has_dimnames(object)
-    assert_all_are_true(validDimnames(object))
+    assert_that(validDimnames(object))
 }
 
 
@@ -469,7 +469,7 @@ hasAggregateInfo <- function(object) {
 #' print(object)
 #' assertHasRownames(object)
 assertHasRownames <- function(object) {
-    assert_all_are_true(hasRownames(object))
+    assert_that(hasRownames(object))
     if (!is(object, "tbl_df")) {
         assert_are_disjoint_sets(
             x = rownames(object),
@@ -485,7 +485,12 @@ assertHasRownames <- function(object) {
 #' @rdname assertHasRownames
 #' @export
 hasRownames <- function(object) {
-    if (is(object, "tbl_df")) {
+    if (
+        is(object, "data.table") ||
+        is(object, "tbl_df")
+    ) {
+        # Check for rowname column for classes that inherit data.frame but
+        # don't allow rownames to be set.
         "rowname" %in% colnames(object)
     } else if (identical(
         x = as.character(rownames(object)),
@@ -750,7 +755,7 @@ NULL
 #' @examples
 #' assertIsAnImplicitInteger(1)
 assertIsAnImplicitInteger <- function(object) {
-    assert_all_are_true(isAnImplicitInteger(object))
+    assert_that(isAnImplicitInteger(object))
 }
 
 
@@ -761,7 +766,7 @@ assertIsAnImplicitInteger <- function(object) {
 #' assertIsAnImplicitIntegerOrNULL(1)
 #' assertIsAnImplicitIntegerOrNULL(NULL)
 assertIsAnImplicitIntegerOrNULL <- function(object) {
-    assert_all_are_true(any(isAnImplicitInteger(object), is.null(object)))
+    assert_that(any(isAnImplicitInteger(object), is.null(object)))
 }
 
 
@@ -771,7 +776,7 @@ assertIsAnImplicitIntegerOrNULL <- function(object) {
 #' @examples
 #' assertIsImplicitInteger(c(1, 2))
 assertIsImplicitInteger <- function(object) {
-    assert_all_are_true(isImplicitInteger(object))
+    assert_that(isImplicitInteger(object))
 }
 
 
@@ -782,7 +787,7 @@ assertIsImplicitInteger <- function(object) {
 #' assertIsImplicitIntegerOrNULL(c(1, 2))
 #' assertIsImplicitIntegerOrNULL(NULL)
 assertIsImplicitIntegerOrNULL <- function(object) {
-    assert_all_are_true(any(isImplicitInteger(object), is.null(object)))
+    assert_that(any(isImplicitInteger(object), is.null(object)))
 }
 
 
