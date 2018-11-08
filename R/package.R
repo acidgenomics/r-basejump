@@ -30,8 +30,8 @@
 #'   reducedDimNames reducedDims spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames assays
 #'   assays<- colData colData<- rowData rowData<- rowRanges rowRanges<-
-#' @importFrom assertive.base assert_all_are_not_na assert_are_identical
-#'   assert_is_identical_to_na is_not_na
+#' @importFrom assertive.base assert_all_are_not_na assert_all_are_true
+#'   assert_are_identical assert_is_identical_to_na is_not_na
 #' @importFrom assertive.code assert_all_are_existing is_existing
 #' @importFrom assertive.data assert_all_are_hex_colors is_hex_color
 #' @importFrom assertive.files assert_all_are_dirs assert_all_are_existing_files
@@ -63,7 +63,7 @@
 #' @importFrom assertthat assert_that validate_that
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
-#' @importFrom data.table fread
+#' @importFrom data.table as.data.table fread
 #' @importFrom dplyr arrange bind_rows case_when desc everything filter funs
 #'   group_by left_join mutate mutate_all mutate_at mutate_if n pull rename
 #'   select select_if slice summarise summarise_all top_n ungroup
