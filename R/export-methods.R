@@ -1,7 +1,3 @@
-# FIXME Add data.frame, DataFrame, and matrix methods.
-
-
-
 #' @name export
 #'
 #' @details
@@ -52,7 +48,6 @@ NULL
 
 
 
-# ANY ==========================================================================
 # Coerce to tibble in this method to always preserve rownames.
 # Note that `rio::export()` does not preserve rownames by default.
 export.ANY <-  # nolint
@@ -64,7 +59,13 @@ export.ANY <-  # nolint
             rownames <- NULL
         }
         # Coercing to tibble to provide consistent write support.
-        x <- as_tibble(x, rownames = rownames)
+        # TODO tibble is warning about rlang v0.3 soft deprecation of
+        # `list_len()` to `new_list()`, but this isn't updated in the CRAN
+        # version yet. Safe to remove the warning suppression here once this
+        # is resolved.
+        suppressWarnings(
+            x <- as_tibble(x, rownames = rownames)
+        )
         assert_has_rows(x)
         assert_has_cols(x)
         if (missing(file) && missing(format)) {
@@ -82,10 +83,12 @@ export.ANY <-  # nolint
         # Ensure directory is created automatically.
         initDir(dir = dirname(file))
         requireNamespace("rio")
-        file <- suppressMessages(do.call(
-            what = rio::export,
-            args = list(x = x, file = file, ...)
-        ))
+        suppressMessages(
+            file <- do.call(
+                what = rio::export,
+                args = list(x = x, file = file, ...)
+            )
+        )
         file <- realpath(file)
         message(paste0("Exported ", basename(file), "."))
         invisible(file)
@@ -103,13 +106,11 @@ setMethod(
 
 
 
-# sparseMatrix =================================================================
 # Note that "file" is referring to the matrix file.
 # The correponding column and row sidecar files are generated automatically.
 # Consider adding HDF5 support in a future update.
 export.sparseMatrix <-  # nolint
     function(x, file, format) {
-        assert_that(is(x, "sparseMatrix"))
         assert_is_non_empty(x)
         choices <- c("mtx", "mtx.gz")
 
@@ -187,7 +188,6 @@ setMethod(
 
 
 
-# SummarizedExperiment =========================================================
 export.SummarizedExperiment <-  # nolint
     function(
         x,
@@ -217,7 +217,7 @@ export.SummarizedExperiment <-  # nolint
             x <- convertSampleIDsToNames(x)
         }
 
-        # Assays
+        # Assays (count matrices).
         assayNames <- assayNames(x)
         assert_that(has_length(assayNames))
         message(paste("Exporting assays:", toString(assayNames)))
@@ -241,7 +241,7 @@ export.SummarizedExperiment <-  # nolint
         )
         names(files[["assays"]]) <- assayNames
 
-        # rowData
+        # Row annotations.
         rowData <- rowData(x)
         if (!is.null(rowData)) {
             rownames(rowData) <- rownames(x)
@@ -251,7 +251,7 @@ export.SummarizedExperiment <-  # nolint
             )
         }
 
-        # colData
+        # Column annotations.
         colData <- colData(x)
         if (!is.null(colData)) {
             files[["colData"]] <- export(
@@ -280,7 +280,6 @@ setMethod(
 
 
 
-# SingleCellExperiment =========================================================
 export.SingleCellExperiment <-  # nolint
     function(x) {
         assert_is_a_bool(compress)
@@ -326,6 +325,7 @@ export.SingleCellExperiment <-  # nolint
         assert_has_names(files)
         invisible(files)
     }
+
 formals(export.SingleCellExperiment) <- formals(export.SummarizedExperiment)
 
 
