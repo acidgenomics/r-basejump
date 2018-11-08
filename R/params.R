@@ -40,6 +40,8 @@
 #' @param i Indices specifying elements to extract or replace. Indices are
 #'   `numeric` or `character` vectors, empty (`missing`), or `NULL`. See
 #'   `help(topic = "Extract", package = "base")` for more information.
+#' @param inherits `boolean`. Should the enclosing frames of the `environment`
+#'   be searched?
 #' @param interestingGroups `character` or `NULL`. Groups of interest that
 #'   define the samples. If left unset, defaults to `sampleName`.
 #' @param label `boolean`. Superimpose sample text labels on the plot.
