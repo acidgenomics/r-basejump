@@ -1,5 +1,7 @@
 context("Gene2Symbol")
 
+data(rse, envir = environment())
+
 # TODO Add coverage for `format` arguments.
 
 format <- methodFormals(
