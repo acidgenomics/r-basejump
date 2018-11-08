@@ -1,17 +1,16 @@
-# TODO assertIsDir
-# TODO assertIsFile
-
-
-
 #' Assertions
 #'
 #' @name assertions
 #' @keywords internal
 #'
+#' @param genes `character`. Gene vector, to check against corresponding object.
+#' @param names `character`. Names (i.e. corresponding to rows or columns).
+#'   See [base::make.names()] for more information on valid names.
 #' @param object Object.
 #' @param envir `environment`.
 #' @param inherits `boolean`. Should the enclosing frames of the `environment`
 #'   be searched?
+#' @param url `character`. URL(s).
 #'
 #' @return Always stop on error.
 NULL
@@ -24,20 +23,20 @@ NULL
 #' @inherit assertions
 #' @export
 #'
-#' @param object `character`. Variable names to check in `environment`.
+#' @param names `character`. Object names to check against environment.
 #'
 #' @examples
 #' assertAllAreNonExisting(c("XXX", "YYY"))
 assertAllAreNonExisting <- function(
-    object,
+    names,
     envir = parent.frame(),
     inherits = FALSE
 ) {
-    exists <- is_existing(object, envir = envir, inherits = inherits)
+    exists <- is_existing(x = names, envir = envir, inherits = inherits)
     if (any(exists)) {
         stop(paste(
             "Already exists in environment:",
-            toString(object[exists])
+            toString(names[exists])
         ))
     }
 }
@@ -53,10 +52,6 @@ assertAllAreNonExisting <- function(
 #'
 #' @inherit assertions
 #' @export
-#'
-#' @param object `SummarizedExperiment`.
-#' @param genes `character`. Input vector to check against definitions in the
-#'   corresponding `SummarizedExperiment`.
 #'
 #' @examples
 #' data(rse)
@@ -97,24 +92,9 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
 # assertAllAreURL ==============================================================
 #' Assert All Are URL
 #'
+#' @name assertAllAreURL
 #' @inherit assertions
-#' @export
 #'
-#' @examples
-#' assertAllAreURL(c(
-#'     "https://www.r-project.org",
-#'     "ftp://r-project.org"
-#' ))
-assertAllAreURL <- function(object) {
-    assert_is_character(object)
-    assert_is_non_empty(object)
-    assert_all_are_true(isURL(object))
-}
-
-
-
-#' @rdname assertAllAreURL
-#' @export
 #' @examples
 #' isURL(c(
 #'     "http://www.r-project.org",
@@ -122,17 +102,27 @@ assertAllAreURL <- function(object) {
 #'     "ftp://r-project.org",
 #'     "r-project.org"
 #' ))
-isURL <- function(object) {
+#' assertAllAreURL(c(
+#'     "https://www.r-project.org",
+#'     "ftp://r-project.org"
+#' ))
+NULL
+
+
+
+#' @rdname assertAllAreURL
+#' @export
+isURL <- function(url) {
     if (
-        !is.character(object) ||
-        length(object) == 0L
+        !is.character(url) ||
+        length(url) == 0L
     ) {
         return(FALSE)
     }
     vapply(
-        X = object,
-        FUN = function(object) {
-            grepl("^(http(s)?|ftp)\\://.+", object)
+        X = url,
+        FUN = function(url) {
+            grepl("^(http(s)?|ftp)\\://.+", url)
         },
         FUN.VALUE = logical(1L),
         USE.NAMES = FALSE
@@ -141,34 +131,69 @@ isURL <- function(object) {
 
 
 
-# assertAllAreValidNames =======================================================
-#' Assert All Are Valid Names
-#'
-#' @inherit assertions
+#' @rdname assertAllAreURL
 #' @export
+assertAllAreURL <- function(url) {
+    assert_is_character(url)
+    assert_is_non_empty(url)
+    assert_all_are_true(isURL(url))
+}
+
+
+
+# assertAreValidNames ==========================================================
+#' Assert Are Valid Names
+#'
+#' @name assertAreValidNames
+#' @inherit assertions
 #'
 #' @examples
-#' assertAllAreValidNames(c("sample1", "sample2"))
-assertAllAreValidNames <- function(object) {
-    assert_is_character(object)
-    assert_is_non_empty(object)
-    assert_all_are_non_missing_nor_empty_character(object)
-    assert_has_no_duplicates(object)
-    assert_all_are_true(validNames(object))
-}
+#' data(rse)
+#' gr <- SummarizedExperiment::rowRanges(rse)
+#'
+#' # Dots (periods) and underscores are valid.
+#' validNames(c("sample.1", "sample_1"))
+#'
+#' # Can't begin with a number.
+#' validNames("293cells")
+#'
+#' # Spaces, dashes (hyphens), and other non-alphanumerics aren't valid.
+#' validNames("sample 1")
+#' validNames("cell-AAAAAAAA")
+#' validNames("GFP+")
+#'
+#' assertAreValidNames(c("sample1", "sample2"))
+#' assertHasValidNames(gr)
+#'
+#' # Check rows and columns (dimnames) in a single call.
+#' validDimnames(datasets::iris)    # TRUE
+#' validDimnames(datasets::mtcars)  # FALSE
+#' assertHasValidDimnames(rse)
+NULL
 
 
 
-#' @rdname assertAllAreValidNames
+#' @rdname assertAreValidNames
 #' @export
-assertHasValidDimnames <- function(object) {
-    assert_has_dimnames(object)
-    assert_all_are_true(validDimnames(object))
+validNames <- function(names) {
+    if (!is.character(names)) {
+        FALSE
+    } else {
+        identical(names, make.names(names, unique = TRUE))
+    }
 }
 
 
 
-#' @rdname assertAllAreValidNames
+#' @rdname assertAreValidNames
+#' @export
+assertAreValidNames <- function(names) {
+    assert_that(validNames(names))
+}
+
+
+
+#' @rdname assertAreValidNames
 #' @export
 assertHasValidNames <- function(object) {
     assert_has_names(object)
@@ -177,116 +202,43 @@ assertHasValidNames <- function(object) {
 
 
 
-#' @rdname assertAllAreValidNames
+#' @rdname assertAreValidNames
 #' @export
-#' @examples
-#' validDimnames(datasets::mtcars)
 validDimnames <- function(object) {
-    if (is.null(dim(object))) {
-        stop("Object does not support `dim()`.")
-    } else if (!has_dimnames(object)) {
-        c(TRUE, TRUE)
-    } else {
-        vapply(
-            X = lapply(
-                X = dimnames(object),
-                FUN = function(x) {
-                    # Return `FALSE` on duplicates.
-                    if (any(duplicated(x))) {
-                        FALSE
-                    } else {
-                        validNames(x)
-                    }
-                }
-            ),
-            FUN = all,
-            FUN.VALUE = logical(1L)
-        )
+    # Error if object doesn't support dim.
+    assert_that(!is.null(dim(object)))
+
+    # Return TRUE if there are no names.
+    if (!has_dimnames(object)) {
+        return(TRUE)
     }
-}
 
-
-
-#' @rdname assertAllAreValidNames
-#' @export
-#' @examples
-#' validNames(c(
-#'     "sample_1",
-#'     "gene_1",
-#'     "293cells",
-#'     "cell-AAAAAAAA",
-#'     "GFP+ sort"
-#' ))
-validNames <- function(object) {
-    if (!is.atomic(object)) {
-        FALSE
-    } else if (is.null(object)) {
-        TRUE
+    # Check rows.
+    if (hasRownames(object)) {
+        validRows <- validNames(rownames(object))
     } else {
-        vapply(
-            X = object,
-            FUN = function(object) {
-                # Note that we're enforcing unique values here.
-                identical(
-                    x = as.character(object),
-                    y = make.names(object, unique = TRUE)
-                )
-            },
-            FUN.VALUE = logical(1L),
-            USE.NAMES = FALSE
-        )
+        validRows <- TRUE
     }
+    assert_is_a_bool(validRows)
+
+    # Check columns.
+    if (has_colnames(object)) {
+        validCols <- validNames(colnames(object))
+    } else {
+        validCols <- TRUE
+    }
+    assert_is_a_bool(validCols)
+
+    all(c(validRows, validCols))
 }
 
 
 
-# assertAreGeneAnnotations =====================================================
-#' Assert Are Gene Annotations
-#'
-#' Must contain `geneID` and `geneName` columns. Does not need to contain
-#' rownames, so `tibble` class is supported.
-#'
-#' @inherit assertions
+#' @rdname assertAreValidNames
 #' @export
-#'
-#' @param object Object that can be coerced to `data.frame`.
-#'
-#' @examples
-#' object <- tibble::tibble(
-#'     geneID = "ENSG00000000003",
-#'     geneName = "TSPAN6"
-#' )
-#' assertAreGeneAnnotations(object)
-assertAreGeneAnnotations <- function(object) {
-    df <- as.data.frame(object)
-    assert_is_subset(c("geneID", "geneName"), colnames(df))
-    assert_is_non_empty(df)
-}
-
-
-
-# assertAreTranscriptAnnotations ===============================================
-#' Assert Are Ensembl Transcript Annotations
-#'
-#' Must contain `transcriptID` and `transcriptName` columns. Does not need to
-#' contain rownames, so `tibble` class is supported.
-#'
-#' @inherit assertions
-#' @export
-#'
-#' @param object Object that can be coerced to `data.frame`.
-#'
-#'
-#' @examples
-#' object <- tibble::tibble(
-#'     transcriptID = "ENST00000000233",
-#'     geneID = "ENSG00000004059"
-#' )
-#' assertAreTranscriptAnnotations(object)
-assertAreTranscriptAnnotations <- function(object) {
-    df <- as.data.frame(object)
-    assert_is_subset(c("transcriptID", "geneID"), colnames(df))
-    assert_is_non_empty(object)
+assertHasValidDimnames <- function(object) {
+    assert_has_dimnames(object)
+    assert_all_are_true(validDimnames(object))
 }
 
 
@@ -437,16 +389,16 @@ NULL
 
 #' @rdname assertHasAggregateInfo
 #' @export
-assertHasAggregateInfo <- function(object) {
-    assert_that(isTRUE(hasAggregateInfo))
+hasAggregateInfo <- function(object) {
+    "aggregate" %in% colnames(object)
 }
 
 
 
 #' @rdname assertHasAggregateInfo
 #' @export
-hasAggregateInfo <- function(object) {
-    "aggregate" %in% colnames(object)
+assertHasAggregateInfo <- function(object) {
+    assert_that(isTRUE(hasAggregateInfo))
 }
 
 
@@ -457,8 +409,8 @@ hasAggregateInfo <- function(object) {
 #' A stricter alternative to the assertive version that works properly with
 #' data frames.
 #'
+#' @name assertHasRownames
 #' @inherit assertions
-#' @export
 #'
 #' @examples
 #' object <- S4Vectors::DataFrame(
@@ -468,19 +420,11 @@ hasAggregateInfo <- function(object) {
 #' )
 #' print(object)
 #' assertHasRownames(object)
-assertHasRownames <- function(object) {
-    assert_that(hasRownames(object))
-    if (!is(object, "tbl_df")) {
-        assert_are_disjoint_sets(
-            x = rownames(object),
-            y = as.character(seq_len(nrow(object)))
-        )
-    }
-}
+NULL
 
 
 
-# `tibble::has_rownames()` may be more consistent than
+# `tibble::has_rownames()` appears to be more consistent than
 # `assertive.properties::has_rownames()` for `DataFrame` and `tbl_df` class.
 #' @rdname assertHasRownames
 #' @export
@@ -500,6 +444,20 @@ hasRownames <- function(object) {
         FALSE
     } else {
         has_rownames(object)
+    }
+}
+
+
+
+#' @rdname assertHasRownames
+#' @export
+assertHasRownames <- function(object) {
+    assert_that(hasRownames(object))
+    if (!is(object, "tbl_df")) {
+        assert_are_disjoint_sets(
+            x = rownames(object),
+            y = as.character(seq_len(nrow(object)))
+        )
     }
 }
 
@@ -633,7 +591,6 @@ assertIsColorScaleDiscreteOrNULL <- function(object) {
 #' Assert Is Directory
 #'
 #' @inherit assertions
-#'
 #' @export
 #'
 #' @examples
@@ -645,11 +602,25 @@ assertIsDir <- function(object) {
 
 
 
+# assertIsFile =================================================================
+#' Assert Is File
+#'
+#' @inherit assertions
+#' @export
+#'
+#' @examples
+#' assertIsFile(system.file("extdata/example.rds", package = "basejump"))
+assertIsFile <- function(object) {
+    assert_is_a_string(object)
+    assert_all_are_dirs(object)
+}
+
+
+
 # assertIsFillScaleContinuousOrNULL ============================================
 #' Assert Is Fill Palette Scale Continuous or NULL
 #'
 #' @inherit assertions
-#'
 #' @export
 #'
 #' @examples
@@ -674,7 +645,6 @@ assertIsFillScaleContinuousOrNULL <- function(object) {
 #' Assert Is Fill Palette Scale Discrete or NULL
 #'
 #' @inherit assertions
-#'
 #' @export
 #'
 #' @examples
@@ -746,72 +716,23 @@ assertIsHexColorFunctionOrNULL <- function(object) {
 #'
 #' @name assertIsImplicitInteger
 #' @inherit assertions
+#'
+#' @examples
+#' isImplicitInteger(list(1, 1L, 1.1, "XXX"))
+#' assertIsImplicitInteger(c(1, 2))
+#' assertIsImplicitIntegerOrNULL(c(1, 2))
+#' assertIsImplicitIntegerOrNULL(NULL)
+#'
+#' isAnImplicitInteger(1)
+#' assertIsAnImplicitInteger(1)
+#' assertIsAnImplicitIntegerOrNULL(1)
+#' assertIsAnImplicitIntegerOrNULL(NULL)
 NULL
 
 
 
 #' @rdname assertIsImplicitInteger
 #' @export
-#' @examples
-#' assertIsAnImplicitInteger(1)
-assertIsAnImplicitInteger <- function(object) {
-    assert_that(isAnImplicitInteger(object))
-}
-
-
-
-#' @rdname assertIsImplicitInteger
-#' @export
-#' @examples
-#' assertIsAnImplicitIntegerOrNULL(1)
-#' assertIsAnImplicitIntegerOrNULL(NULL)
-assertIsAnImplicitIntegerOrNULL <- function(object) {
-    assert_that(any(isAnImplicitInteger(object), is.null(object)))
-}
-
-
-
-#' @rdname assertIsImplicitInteger
-#' @export
-#' @examples
-#' assertIsImplicitInteger(c(1, 2))
-assertIsImplicitInteger <- function(object) {
-    assert_all_are_true(isImplicitInteger(object))
-}
-
-
-
-#' @rdname assertIsImplicitInteger
-#' @export
-#' @examples
-#' assertIsImplicitIntegerOrNULL(c(1, 2))
-#' assertIsImplicitIntegerOrNULL(NULL)
-assertIsImplicitIntegerOrNULL <- function(object) {
-    assert_any_are_true(c(
-        isImplicitInteger(object),
-        is.null(object)
-    ))
-}
-
-
-
-#' @rdname assertIsImplicitInteger
-#' @export
-#' @examples
-#' isAnImplicitInteger(1)
-isAnImplicitInteger <- function(object) {
-    if (!is_a_number(object)) {
-        return(FALSE)
-    }
-    isImplicitInteger(object)
-}
-
-
-
-#' @rdname assertIsImplicitInteger
-#' @export
-#' @examples
-#' isImplicitInteger(list(1, 1L, 1.1, "XXX"))
 isImplicitInteger <- function(object) {
     vapply(
         X = object,
@@ -830,4 +751,50 @@ isImplicitInteger <- function(object) {
         },
         FUN.VALUE = logical(1L)
     )
+}
+
+
+
+#' @rdname assertIsImplicitInteger
+#' @export
+assertIsImplicitInteger <- function(object) {
+    assert_all_are_true(isImplicitInteger(object))
+}
+
+
+
+#' @rdname assertIsImplicitInteger
+#' @export
+assertIsImplicitIntegerOrNULL <- function(object) {
+    assert_any_are_true(c(
+        isImplicitInteger(object),
+        is.null(object)
+    ))
+}
+
+
+
+#' @rdname assertIsImplicitInteger
+#' @export
+isAnImplicitInteger <- function(object) {
+    if (!is_a_number(object)) {
+        return(FALSE)
+    }
+    isImplicitInteger(object)
+}
+
+
+
+#' @rdname assertIsImplicitInteger
+#' @export
+assertIsAnImplicitInteger <- function(object) {
+    assert_that(isAnImplicitInteger(object))
+}
+
+
+
+#' @rdname assertIsImplicitInteger
+#' @export
+assertIsAnImplicitIntegerOrNULL <- function(object) {
+    assert_that(any(isAnImplicitInteger(object), is.null(object)))
 }
