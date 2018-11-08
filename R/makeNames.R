@@ -108,8 +108,20 @@ makeNames <- function(names, unique = TRUE) {
 #' @export
 makeDimnames <- function(object) {
     assert_has_dimnames(object)
-    rownames(object) <- makeNames(rownames(object), unique = TRUE)
-    colnames(object) <- makeNames(colnames(object), unique = TRUE)
+
+    # Row names.
+    if (
+        hasRownames(object) &&
+        !(is(object, "data.table") || is(object, "tbl_df"))
+    ) {
+        rownames(object) <- makeNames(rownames(object), unique = TRUE)
+    }
+
+    # Column names.
+    if (has_colnames(object)) {
+        colnames(object) <- makeNames(colnames(object), unique = TRUE)
+    }
+
     object
 }
 
