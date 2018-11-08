@@ -1,4 +1,5 @@
-# FIXME `import()` should return `data.frame` instead of `DataFrame`.
+# FIXME Excel files contaning integer column names (e.g. 1, 2, 3) will import
+# as 1.0, 2.0, 3.0. Need to fix this behavior.
 
 
 
@@ -66,6 +67,27 @@
 #' @export
 #'
 #' @inheritParams params
+#' @param dataFrame `string`. Data frame class to return. Can be set globally
+#'   using the `basejump.data.frame` option.
+#'
+#' Current recommendations (by priority):
+#'
+#' - `data.frame`: Base R default. Generally recommended.
+#'   - S3 class.
+#'   - Allows rownames, but they're required and can't be set `NULL`.
+#'   - See `help(topic = "data.frame", package = "base")` for details.
+#' - `DataFrame`: Recommended when working with Bioconductor packages.
+#'   - S4 class; inherits `DataTable` virtual class.
+#'   - Allows rownames, but they're optional and can be set `NULL`.
+#'   - See `help(topic = "DataFrame", package = "S4Vectors")` for details.
+#' - `tibble`: Recommended when working with tidyverse packages.
+#'   - S3 class (`tbl_df`); inherits `data.frame`.
+#'   - Does not allow rownames.
+#'   - See `help(topic = "tibble", package = "tibble")` for details.
+#' - `data.table`: Recommended when working with the data.table package.
+#'   - S3 class; inherits `data.frame`.
+#'   - Does not allow rownames.
+#'   - See `help(topic = "data.table", package = "data.table")` for details.
 #'
 #' @return Varies, depending on the file extension:
 #'
@@ -74,9 +96,6 @@
 #' - `GTF`/`GFF`: `GRanges`.
 #' - `JSON`/`YAML`: `list`.
 #' - Source code or log: `character`.
-#'
-#' Note that data frames are returned as S4 `DataFrame` class instead of
-#' `data.frame`, when applicable.
 #'
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
@@ -93,6 +112,9 @@
 #' ## Comma Separated Values
 #' x <- import(file = file.path(url, "example.csv"))
 #' print(x)
+#'
+#' ## Tab Separated Values
+#' x <- import(file = file.path(url, "example.tsv"))
 #'
 #' ## Microsoft Excel Worksheet
 #' x <- import(file = file.path(url, "example.xlsx"))
@@ -113,12 +135,18 @@
 #' ## Counts Table (i.e. aligned counts from bcbio)
 #' x <- import(file = file.path(url, "example.counts"))
 #' colSums(x)
-import <- function(file, ...) {
-    args <- list(file, ...)
-    assert_is_a_string(file)
+import <- function(
+    file,
+    ...,
+    dataFrame = getOption(
+        x = "basejump.data.frame",
+        default = c("data.frame", "DataFrame", "tibble", "data.table")
+    )
 
-    message(paste0("Reading ", basename(file), "."))
+) {
     file <- localOrRemoteFile(file)
+    dataFrame <- match.arg(dataFrame)
+    args <- list(file, ...)
 
     # Note that matching is case insensitive.
     ext <- basename(file) %>%
@@ -126,20 +154,43 @@ import <- function(file, ...) {
         .[1L, 2L] %>%
         toupper()
 
-    blacklist <- c("DOC", "DOCX", "PDF", "PPT", "PPTX", "TXT")
-    lines <- c("LOG", "MD", "PY", "R", "RMD", "SH")
-    unsupported <- paste("Unsupported extension", ":", deparse(ext))
+    # Error on blacklisted extension.
+    if (ext %in% c("DOC", "DOCX", "PDF", "PPT", "PPTX", "TXT")) {
+        stop(paste0(
+            "Import of ", basename(file), " failed.\n",
+            ext, " extension is not supported."
+        ))
+    }
 
-    if (ext %in% blacklist) {
-        stop(unsupported)
-    } else if (ext %in% lines) {
-        message("Importing using `read_lines()`.")
+    # How we declare NA strings depends on the file extension.
+    if (ext %in% c("CSV", "TSV")) {
+        message(paste(
+            "Importing", basename(file), "using data.table::fread()."
+        ))
+        args[["na.strings"]] <- naStrings
+        data <- do.call(what = fread, args = args)
+    } else if (ext %in% c("XLS", "XLSX")) {
+        message(paste(
+            "Importing", basename(file), "using readxl::read_excel()."
+        ))
+        args[["na"]] <- naStrings
+        data <- do.call(what = read_excel, args = args)
+    } else if (ext %in% c("LOG", "MD", "PY", "R", "RMD", "SH")) {
+        message(paste(
+            "Importing", basename(file), "using readr::read_lines()."
+        ))
         data <- do.call(what = read_lines, args = args)
     } else if (ext %in% c("COLNAMES", "ROWNAMES")) {
+        message(paste(
+            "Importing", basename(file), "using readr::read_lines()."
+        ))
         args[["na"]] <- naStrings
         data <- do.call(what = read_lines, args = args)
     } else if (ext == "COUNTS") {
-        # bcbio counts output.
+        # bcbio count matrix.
+        message(paste(
+            "Importing", basename(file), "using readr::read_tsv()."
+        ))
         args[["na"]] <- naStrings
         data <- do.call(what = read_tsv, args = args)
         assert_is_subset("id", colnames(data))
@@ -150,73 +201,12 @@ import <- function(file, ...) {
             column_to_rownames("id") %>%
             as.matrix()
     } else if (ext %in% c("GFF", "GFF3", "GTF")) {
-        data <- .import.GFF(file)
-    } else if (ext == "MTX") {
-        # MatrixMarket
-        # Require `.ROWNAMES` and `.COLNAMES` files.
-        data <- do.call(what = readMM, args = args)
-        rownames <- paste(file, "rownames", sep = ".") %>%
-            localOrRemoteFile() %>%
-            read_lines(na = naStrings)
-        colnames <- paste(file, "colnames", sep = ".") %>%
-            localOrRemoteFile() %>%
-            read_lines(na = naStrings)
-        rownames(data) <- rownames
-        colnames(data) <- colnames
-    } else if (ext %in% c("RDA", "RDATA")) {
-        safe <- new.env()
-        object <- load(file, envir = safe)
-        if (!has_length(safe, n = 1L)) {
-            stop("File does not contain a single object.")
-        }
-        data <- get(object, envir = safe, inherits = FALSE)
-    } else if (ext == "RDS") {
-        data <- readRDS(file)
-    } else if (ext == "JSON") {
-        data <- .import.JSON(file)
-    } else if (ext %in% c("YAML", "YML")) {
-        data <- .import.YAML(file)
-    } else {
-        # `rio::import`
-        # How we declare NA strings depends on the file extension.
-        if (ext %in% c("CSV", "TSV")) {
-            # `data.table::fread`
-            args[["na.strings"]] <- naStrings
-        } else if (ext %in% c("XLS", "XLSX")) {
-            # `readxl::read_excel`
-            args[["na"]] <- naStrings
-        }
-        requireNamespace("rio")
-        data <- do.call(what = rio::import, args = args)
-    }
-
-    # Return as `DataFrame` instead of `data.frame`.
-    if (is.data.frame(data)) {
-        data <- as(data, "DataFrame")
-        if ("rowname" %in% colnames(data)) {
-            rownames(data) <- data[["rowname"]]
-            data[["rowname"]] <- NULL
-        }
-        # Ensure that rownames assign correctly, if necessary.
-        assert_are_disjoint_sets("rowname", colnames(data))
-    }
-
-    data
-}
-
-
-
-.import.GFF <-  # nolint
-    function(file) {
-        assert_is_a_string(file)
-        assert_all_are_matching_regex(
-            x = toupper(basename(file)),
-            pattern = "\\.G(F|T)F([[:digit:]])?(\\.GZ)?$"
-        )
-        file <- localOrRemoteFile(file)
+        message(paste(
+            "Importing", basename(file), "using rtracklayer::import()."
+        ))
         requireNamespace("rtracklayer")
-        tryCatch(
-            rtracklayer::import(file),
+        data <- tryCatch(
+            expr = do.call(what = rtracklayer::import, args = args),
             error = function(e) {
                 stop("GFF file failed to load.")  # nocov
             },
@@ -224,30 +214,87 @@ import <- function(file, ...) {
                 stop("GFF file failed to load.")  # nocov
             }
         )
+    } else if (ext == "MTX") {
+        # MatrixMarket sparse matrix.
+        # Requires `.rownames` and `.colnames` files.
+        message(paste(
+            "Importing", basename(file), "using Matrix::readMM()."
+        ))
+        data <- do.call(what = readMM, args = args)
+
+        # Import the rownames using the sidecar file.
+        rownamesFile <- localOrRemoteFile(paste(file, "rownames", sep = "."))
+        message(paste(
+            "Importing", basename(rownamesFile), "using readr::read_lines()."
+        ))
+        rownames <- read_lines(file = rownamesFile, na = naStrings)
+
+        # Import the colnames using the sidecar file.
+        colnamesFile <- localOrRemoteFile(paste(file, "colnames", sep = "."))
+        message(paste(
+            "Importing", basename(colnamesFile), "using readr::read_lines()."
+        ))
+        colnames <- read_lines(file = colnamesFile, na = naStrings)
+
+        # Set the dimnames from the sidecar files.
+        rownames(data) <- rownames
+        colnames(data) <- colnames
+    } else if (ext %in% c("RDA", "RDATA")) {
+        message(paste(
+            "Importing", basename(file), "using base::load()."
+        ))
+        safe <- new.env()
+        args[["envir"]] <- safe
+        object <- do.call(what = load, args = args)
+        if (!has_length(safe, n = 1L)) {
+            stop("File does not contain a single object.")
+        }
+        data <- get(object, envir = safe, inherits = FALSE)
+    } else if (ext == "RDS") {
+        message(paste(
+            "Importing", basename(file), "using base::readRDS()."
+        ))
+        data <- do.call(what = readRDS, args = args)
+    } else if (ext == "JSON") {
+        message(paste(
+            "Importing", basename(file), "using jsonlite::read_json()."
+        ))
+        data <- do.call(what = read_json, args = args)
+    } else if (ext %in% c("YAML", "YML")) {
+        message(paste(
+            "Importing", basename(file), "using yaml::yaml.load_file()."
+        ))
+        data <- do.call(what = yaml.load_file, args = args)
+    } else {
+        message(paste(
+            "Importing", basename(file), "using rio::import()."
+        ))
+        requireNamespace("rio")
+        data <- do.call(what = rio::import, args = args)
     }
 
+    if (is.data.frame(data)) {
+        # Coerce data frame return, if necessary.
+        if (dataFrame == "data.frame") {
+            data <- as.data.frame(data)
+        } else if (dataFrame == "DataFrame") {
+            data <- as(data, "DataFrame")
+        } else if (dataFrame == "tibble") {
+            data <- as_tibble(data)
+        } else if (dataFrame == "data.table") {
+            data <- as.data.table(data)
+        }
 
-
-.import.JSON <-  # nolint
-    function(file) {
-        assert_is_a_string(file)
-        assert_all_are_matching_regex(
-            x = toupper(basename(file)),
-            pattern = "\\.JSON$"
-        )
-        file <- localOrRemoteFile(file)
-        read_json(file)
+        # Set rownames automatically, if supported.
+        if (
+            dataFrame %in% c("data.frame", "DataFrame") &&
+            "rowname" %in% colnames(data)
+        ) {
+            message("Setting rownames from `rowname` column.")
+            rownames(data) <- data[["rowname"]]
+            data[["rowname"]] <- NULL
+        }
     }
 
-
-
-.import.YAML <-  # nolint
-    function(file) {
-        assert_is_a_string(file)
-        assert_all_are_matching_regex(
-            x = toupper(basename(file)),
-            pattern = "\\.YA?ML$"
-        )
-        file <- localOrRemoteFile(file)
-        yaml.load_file(file)
-    }
+    data
+}
