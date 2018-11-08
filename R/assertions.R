@@ -108,7 +108,7 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
 assertAllAreURL <- function(object) {
     assert_is_character(object)
     assert_is_non_empty(object)
-    assert_that(isURL(object))
+    assert_all_are_true(isURL(object))
 }
 
 
@@ -154,7 +154,7 @@ assertAllAreValidNames <- function(object) {
     assert_is_non_empty(object)
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
-    assert_that(validNames(object))
+    assert_all_are_true(validNames(object))
 }
 
 
@@ -163,7 +163,7 @@ assertAllAreValidNames <- function(object) {
 #' @export
 assertHasValidDimnames <- function(object) {
     assert_has_dimnames(object)
-    assert_that(validDimnames(object))
+    assert_all_are_true(validDimnames(object))
 }
 
 
