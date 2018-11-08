@@ -776,7 +776,7 @@ assertIsAnImplicitIntegerOrNULL <- function(object) {
 #' @examples
 #' assertIsImplicitInteger(c(1, 2))
 assertIsImplicitInteger <- function(object) {
-    assert_that(isImplicitInteger(object))
+    assert_all_are_true(isImplicitInteger(object))
 }
 
 
@@ -787,7 +787,10 @@ assertIsImplicitInteger <- function(object) {
 #' assertIsImplicitIntegerOrNULL(c(1, 2))
 #' assertIsImplicitIntegerOrNULL(NULL)
 assertIsImplicitIntegerOrNULL <- function(object) {
-    assert_that(any(isImplicitInteger(object), is.null(object)))
+    assert_any_are_true(c(
+        isImplicitInteger(object),
+        is.null(object)
+    ))
 }
 
 
