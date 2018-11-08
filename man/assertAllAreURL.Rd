@@ -5,12 +5,13 @@
 \alias{isURL}
 \title{Assert All Are URL}
 \usage{
-assertAllAreURL(object)
+isURL(url)
 
-isURL(object)
+assertAllAreURL(url)
 }
 \arguments{
-\item{object}{Object.}
+\item{`url`}{\code{character}. Uniform Resource Locators (URLs). HTTP or FTP
+addresses.}
 }
 \value{
 Always stop on error.
@@ -19,14 +20,14 @@ Always stop on error.
 Assert All Are URL
 }
 \examples{
-assertAllAreURL(c(
-    "https://www.r-project.org",
-    "ftp://r-project.org"
-))
 isURL(c(
     "http://www.r-project.org",
     "https://www.r-project.org",
     "ftp://r-project.org",
     "r-project.org"
+))
+assertAllAreURL(c(
+    "https://www.r-project.org",
+    "ftp://r-project.org"
 ))
 }

@@ -4,13 +4,15 @@
 \alias{assertAllAreNonExisting}
 \title{Assert All Variables Are Non-Existing}
 \usage{
-assertAllAreNonExisting(object, envir = parent.frame(),
+assertAllAreNonExisting(names, envir = parent.frame(),
   inherits = FALSE)
 }
 \arguments{
-\item{object}{\code{character}. Variable names to check in \code{environment}.}
+\item{names}{\code{character}. Names (i.e. corresponding to rows or columns).
+See \code{\link[base:make.names]{base::make.names()}} for more information on valid names.}
 
-\item{envir}{\code{environment}.}
+\item{envir}{\code{environment} to use for assignment. Defaults to
+\code{parent.frame()}, which will assign into the calling environment.}
 
 \item{inherits}{\code{boolean}. Should the enclosing frames of the \code{environment}
 be searched?}

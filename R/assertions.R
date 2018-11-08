@@ -3,14 +3,9 @@
 #' @name assertions
 #' @keywords internal
 #'
-#' @param genes `character`. Gene vector, to check against corresponding object.
 #' @param names `character`. Names (i.e. corresponding to rows or columns).
 #'   See [base::make.names()] for more information on valid names.
 #' @param object Object.
-#' @param envir `environment`.
-#' @param inherits `boolean`. Should the enclosing frames of the `environment`
-#'   be searched?
-#' @param url `character`. URL(s).
 #'
 #' @return Always stop on error.
 NULL
@@ -21,9 +16,8 @@ NULL
 #' Assert All Variables Are Non-Existing
 #'
 #' @inherit assertions
+#' @inheritParams params
 #' @export
-#'
-#' @param names `character`. Object names to check against environment.
 #'
 #' @examples
 #' assertAllAreNonExisting(c("XXX", "YYY"))
@@ -51,6 +45,7 @@ assertAllAreNonExisting <- function(
 #' particularly when performing single-cell RNA-seq marker analysis.
 #'
 #' @inherit assertions
+#' @inheritParams params
 #' @export
 #'
 #' @examples
@@ -94,6 +89,8 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
 #'
 #' @name assertAllAreURL
 #' @inherit assertions
+#' @param `url` `character`. Uniform Resource Locators (URLs). HTTP or FTP
+#'   addresses.
 #'
 #' @examples
 #' isURL(c(
@@ -591,13 +588,14 @@ assertIsColorScaleDiscreteOrNULL <- function(object) {
 #' Assert Is Directory
 #'
 #' @inherit assertions
+#' @inheritParams params
 #' @export
 #'
 #' @examples
 #' assertIsDir("~")
-assertIsDir <- function(object) {
-    assert_is_a_string(object)
-    assert_all_are_dirs(object)
+assertIsDir <- function(dir) {
+    assert_is_a_string(dir)
+    assert_that(dir.exists(dir))
 }
 
 
@@ -606,13 +604,14 @@ assertIsDir <- function(object) {
 #' Assert Is File
 #'
 #' @inherit assertions
+#' @inheritParams params
 #' @export
 #'
 #' @examples
 #' assertIsFile(system.file("extdata/example.rds", package = "basejump"))
-assertIsFile <- function(object) {
-    assert_is_a_string(object)
-    assert_all_are_dirs(object)
+assertIsFile <- function(file) {
+    assert_is_a_string(file)
+    assert_that(file.exists(file))
 }
 
 

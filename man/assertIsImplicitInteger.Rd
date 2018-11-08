@@ -2,16 +2,14 @@
 % Please edit documentation in R/assertions.R
 \name{assertIsImplicitInteger}
 \alias{assertIsImplicitInteger}
-\alias{assertIsAnImplicitInteger}
-\alias{assertIsAnImplicitIntegerOrNULL}
+\alias{isImplicitInteger}
 \alias{assertIsImplicitIntegerOrNULL}
 \alias{isAnImplicitInteger}
-\alias{isImplicitInteger}
+\alias{assertIsAnImplicitInteger}
+\alias{assertIsAnImplicitIntegerOrNULL}
 \title{Assert Is Implicit Integer}
 \usage{
-assertIsAnImplicitInteger(object)
-
-assertIsAnImplicitIntegerOrNULL(object)
+isImplicitInteger(object)
 
 assertIsImplicitInteger(object)
 
@@ -19,7 +17,9 @@ assertIsImplicitIntegerOrNULL(object)
 
 isAnImplicitInteger(object)
 
-isImplicitInteger(object)
+assertIsAnImplicitInteger(object)
+
+assertIsAnImplicitIntegerOrNULL(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -31,12 +31,13 @@ Always stop on error.
 Assert Is Implicit Integer
 }
 \examples{
-assertIsAnImplicitInteger(1)
-assertIsAnImplicitIntegerOrNULL(1)
-assertIsAnImplicitIntegerOrNULL(NULL)
+isImplicitInteger(list(1, 1L, 1.1, "XXX"))
 assertIsImplicitInteger(c(1, 2))
 assertIsImplicitIntegerOrNULL(c(1, 2))
 assertIsImplicitIntegerOrNULL(NULL)
+
 isAnImplicitInteger(1)
-isImplicitInteger(list(1, 1L, 1.1, "XXX"))
+assertIsAnImplicitInteger(1)
+assertIsAnImplicitIntegerOrNULL(1)
+assertIsAnImplicitIntegerOrNULL(NULL)
 }

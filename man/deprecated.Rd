@@ -13,12 +13,13 @@
 \alias{geomean}
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
-\alias{assertIsURL}
 \alias{aggregateFeatures}
 \alias{aggregateReplicates}
 \alias{aggregateSamples}
+\alias{assertAllAreValidNames}
 \alias{assertFormalGene2symbol}
 \alias{assertIsAHeaderLevel}
+\alias{assertIsURL}
 \alias{eggnog}
 \alias{ensembl2entrez}
 \alias{fixNA}
@@ -67,17 +68,19 @@ midnightTheme(...)
 
 paperwhiteTheme(...)
 
-assertIsURL(...)
-
 aggregateFeatures(...)
 
 aggregateReplicates(...)
 
 aggregateSamples(...)
 
+assertAllAreValidNames(...)
+
 assertFormalGene2symbol(...)
 
 assertIsAHeaderLevel(...)
+
+assertIsURL(...)
 
 eggnog(...)
 

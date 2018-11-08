@@ -6,10 +6,12 @@
 \alias{parseGFFAttributes}
 \alias{dynamicPlotlist}
 \alias{synonyms}
+\alias{assertAreGeneAnnotations}
+\alias{assertAreTranscriptAnnotations}
 \alias{assertIsCharacterOrNULL}
+\alias{assertIsDataFrameOrNULL}
 \alias{assertIsGene2symbol}
 \alias{assertIsTx2gene}
-\alias{assertIsDataFrameOrNULL}
 \alias{broadClass}
 \alias{separatorBar}
 \alias{setArgsToDoCall}
@@ -23,13 +25,17 @@ dynamicPlotlist(...)
 
 synonyms(...)
 
+assertAreGeneAnnotations(...)
+
+assertAreTranscriptAnnotations(...)
+
 assertIsCharacterOrNULL(object, ...)
+
+assertIsDataFrameOrNULL(object, ...)
 
 assertIsGene2symbol(...)
 
 assertIsTx2gene(...)
-
-assertIsDataFrameOrNULL(object, ...)
 
 broadClass(object, ...)
 
