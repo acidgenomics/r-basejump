@@ -10,7 +10,7 @@ isURL(url)
 assertAllAreURL(url)
 }
 \arguments{
-\item{`url`}{\code{character}. Uniform Resource Locators (URLs). HTTP or FTP
+\item{url}{\code{character}. Uniform Resource Locators (URLs). HTTP or FTP
 addresses.}
 }
 \value{
