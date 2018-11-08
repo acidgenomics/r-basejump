@@ -4,12 +4,44 @@
 \alias{import}
 \title{Import}
 \usage{
-import(file, ...)
+import(file, ..., dataFrame = getOption(x = "basejump.data.frame",
+  default = "data.frame"))
 }
 \arguments{
 \item{file}{\code{string}. File path.}
 
 \item{...}{Additional arguments.}
+
+\item{dataFrame}{\code{string}. Data frame class to return. Can be set globally
+using the \code{basejump.data.frame} option.
+
+Current recommendations (by priority):
+\itemize{
+\item \code{data.frame}: Base R default. Generally recommended.
+\itemize{
+\item S3 class.
+\item Allows rownames, but they're required and can't be set \code{NULL}.
+\item See \code{help(topic = "data.frame", package = "base")} for details.
+}
+\item \code{DataFrame}: Recommended when working with Bioconductor packages.
+\itemize{
+\item S4 class; inherits \code{DataTable} virtual class.
+\item Allows rownames, but they're optional and can be set \code{NULL}.
+\item See \code{help(topic = "DataFrame", package = "S4Vectors")} for details.
+}
+\item \code{tibble}: Recommended when working with tidyverse packages.
+\itemize{
+\item S3 class (\code{tbl_df}); inherits \code{data.frame}.
+\item Does not allow rownames.
+\item See \code{help(topic = "tibble", package = "tibble")} for details.
+}
+\item \code{data.table}: Recommended when working with the data.table package.
+\itemize{
+\item S3 class; inherits \code{data.frame}.
+\item Does not allow rownames.
+\item See \code{help(topic = "data.table", package = "data.table")} for details.
+}
+}}
 }
 \value{
 Varies, depending on the file extension:
@@ -20,9 +52,6 @@ Varies, depending on the file extension:
 \item \code{JSON}/\code{YAML}: \code{list}.
 \item Source code or log: \code{character}.
 }
-
-Note that data frames are returned as S4 \code{DataFrame} class instead of
-\code{data.frame}, when applicable.
 }
 \description{
 Read file by extension into R.
@@ -105,6 +134,9 @@ class(x)
 ## Comma Separated Values
 x <- import(file = file.path(url, "example.csv"))
 print(x)
+
+## Tab Separated Values
+x <- import(file = file.path(url, "example.tsv"))
 
 ## Microsoft Excel Worksheet
 x <- import(file = file.path(url, "example.xlsx"))

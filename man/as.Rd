@@ -10,6 +10,7 @@
 \alias{coerce,sparseMatrix,DataFrame-method}
 \alias{coerce,tbl_df,DataFrame-method}
 \alias{as.SummarizedExperiment}
+\alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
 \title{Force an Object to Belong to a Class}
