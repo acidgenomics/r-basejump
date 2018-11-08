@@ -138,14 +138,13 @@
 import <- function(
     file,
     ...,
-    dataFrame = getOption(
-        x = "basejump.data.frame",
-        default = c("data.frame", "DataFrame", "tibble", "data.table")
-    )
-
+    dataFrame = getOption(x = "basejump.data.frame", default = "data.frame")
 ) {
     file <- localOrRemoteFile(file)
-    dataFrame <- match.arg(dataFrame)
+    dataFrame <- match.arg(
+        arg = dataFrame,
+        choices = c("data.frame", "DataFrame", "tibble", "data.table")
+    )
     args <- list(file, ...)
 
     # Note that matching is case insensitive.
