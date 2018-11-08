@@ -143,17 +143,7 @@ synonyms <- function(...) {
 
 
 
-# v0.7.3 =======================================================================
-#' @rdname deprecated
-#' @export
-assertIsURL <- function(...) {
-    .Deprecated("assertAllAreURL")
-    assertAllAreURL(...)
-}
-
-
-
-# v0.99.0 ======================================================================
+# v0.8.0 =======================================================================
 #' @rdname deprecated
 #' @export
 aggregateFeatures <- function(...) {
@@ -177,6 +167,25 @@ aggregateSamples <- function(...) {
 
 #' @rdname deprecated
 #' @export
+assertAllAreValidNames <- function(...) {
+    .Deprecated("assertAreValidNames")
+    assertAreValidNames(...)
+}
+
+#' @rdname defunct
+#' @export
+assertAreGeneAnnotations <- function(...) {
+    .Defunct(msg = "Create `Gene2Symbol` class object.")
+}
+
+#' @rdname defunct
+#' @export
+assertAreTranscriptAnnotations <- function(...) {
+    .Defunct(msg = "Create `Tx2Gene` class object.")
+}
+
+#' @rdname deprecated
+#' @export
 assertFormalGene2symbol <- function(...) {
     .Deprecated("assertFormalGene2Symbol")
     assertFormalGene2Symbol(...)
@@ -192,7 +201,13 @@ assertIsAHeaderLevel <- function(...) {
 #' @rdname defunct
 #' @export
 assertIsCharacterOrNULL <- function(object, ...) {
-    .Defunct()
+    .Defunct("assert_is_any_of")
+}
+
+#' @rdname defunct
+#' @export
+assertIsDataFrameOrNULL <- function(object, ...) {
+    .Defunct("assert_is_any_of")
 }
 
 #' @rdname defunct
@@ -207,10 +222,11 @@ assertIsTx2gene <- function(...) {
     .Defunct(msg = "Create `Tx2Gene` class object.")
 }
 
-#' @rdname defunct
+#' @rdname deprecated
 #' @export
-assertIsDataFrameOrNULL <- function(object, ...) {
-    .Deprecated()
+assertIsURL <- function(...) {
+    .Deprecated("assertAllAreURL")
+    assertAllAreURL(...)
 }
 
 #' @rdname defunct
