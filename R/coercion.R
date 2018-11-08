@@ -306,6 +306,16 @@ setOldClass(Classes = "tbl_df")
 
 
 #' @rdname as
+#' @name coerce,data.frame,tbl_df-method
+setAs(
+    from = "data.frame",
+    to = "tbl_df",
+    def = function(from) {
+        as_tibble(from)
+    }
+)
+
+#' @rdname as
 #' @name coerce,DataFrame,tbl_df-method
 setAs(
     from = "DataFrame",
