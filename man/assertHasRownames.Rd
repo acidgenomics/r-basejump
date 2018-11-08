@@ -5,9 +5,9 @@
 \alias{hasRownames}
 \title{Assert Has Rownames}
 \usage{
-assertHasRownames(object)
-
 hasRownames(object)
+
+assertHasRownames(object)
 }
 \arguments{
 \item{object}{Object.}

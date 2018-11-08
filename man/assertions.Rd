@@ -4,12 +4,10 @@
 \alias{assertions}
 \title{Assertions}
 \arguments{
+\item{names}{\code{character}. Names (i.e. corresponding to rows or columns).
+See \code{\link[base:make.names]{base::make.names()}} for more information on valid names.}
+
 \item{object}{Object.}
-
-\item{envir}{\code{environment}.}
-
-\item{inherits}{\code{boolean}. Should the enclosing frames of the \code{environment}
-be searched?}
 }
 \value{
 Always stop on error.

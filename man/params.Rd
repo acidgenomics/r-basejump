@@ -58,6 +58,9 @@ first argument in the \code{character} vector.}
 \code{numeric} or \code{character} vectors, empty (\code{missing}), or \code{NULL}. See
 \code{help(topic = "Extract", package = "base")} for more information.}
 
+\item{inherits}{\code{boolean}. Should the enclosing frames of the \code{environment}
+be searched?}
+
 \item{interestingGroups}{\code{character} or \code{NULL}. Groups of interest that
 define the samples. If left unset, defaults to \code{sampleName}.}
 

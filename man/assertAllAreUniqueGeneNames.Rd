@@ -7,10 +7,11 @@
 assertAllAreUniqueGeneNames(object, genes)
 }
 \arguments{
-\item{object}{\code{SummarizedExperiment}.}
+\item{object}{Object.}
 
-\item{genes}{\code{character}. Input vector to check against definitions in the
-corresponding \code{SummarizedExperiment}.}
+\item{genes}{\code{character}. Gene identifiers. It is considered better practice
+to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
+and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.}
 }
 \value{
 Always stop on error.

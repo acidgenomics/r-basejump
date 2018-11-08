@@ -5,9 +5,9 @@
 \alias{hasAggregateInfo}
 \title{Assert Has Aggregate Information}
 \usage{
-assertHasAggregateInfo(object)
-
 hasAggregateInfo(object)
+
+assertHasAggregateInfo(object)
 }
 \arguments{
 \item{object}{Object.}
