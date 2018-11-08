@@ -33,7 +33,7 @@
 #' loadData(example, dir = system.file("extdata", package = "basejump"))
 loadData <- function(
     ...,
-    dir = ".",
+    dir = getOption("basejump.load.dir", "."),
     envir = parent.frame()
 ) {
     assert_is_environment(envir)
@@ -51,6 +51,182 @@ loadData <- function(
         }
     )
     invisible(files)
+}
+
+
+
+#' Load Data as Name
+#'
+#' @note This function is intended for interactive use and interprets object
+#'   names using non-standard evaluation.
+#'
+#' @export
+#'
+#' @inheritParams loadData
+#' @param ... Key value pairs, defining the name mappings. For example,
+#'   `newName1` = `oldName1`, `newName2` = `oldName2`. Note that these
+#'   arguments are interpreted using non-standard evaluation, and *should not
+#'   be quoted*.
+#'
+#' @return Invisible named `character`. File paths.
+#'
+#' @examples
+#' loadDataAsName(
+#'     renamed = example,
+#'     dir = system.file("extdata", package = "basejump")
+#' )
+#' class(renamed)
+loadDataAsName <- function(
+    ...,
+    dir = getOption("basejump.load.dir", "."),
+    envir = parent.frame()
+) {
+    dots <- dots(..., character = TRUE)
+    assert_has_names(dots)
+    files <- .listRData(names = dots, dir = dir)
+    names(files) <- names(dots)
+    assert_is_environment(envir)
+
+    # Check to see if any of the new names already exist in environment
+    assertAllAreNonExisting(names(dots), envir = envir, inherits = FALSE)
+
+    if (any(grepl("\\.rds$", files))) {
+        # R data serialized: assign directly
+        invisible(mapply(
+            name = names(files),
+            file = files,
+            FUN = function(name, file, envir) {
+                data <- readRDS(file)
+                assign(
+                    x = name,
+                    value = data,
+                    envir = envir
+                )
+            },
+            MoreArgs = list(envir = envir)
+        ))
+    } else {
+        # R data: use safe loading
+        safe <- new.env()
+        invisible(mapply(
+            FUN = .safeLoad,
+            file = files,
+            MoreArgs = list(envir = safe)
+        ))
+        assert_are_set_equal(dots, ls(safe))
+
+        # Now assign to the desired object names
+        invisible(mapply(
+            FUN = function(from, to, safe, envir) {
+                assign(
+                    x = to,
+                    value = get(from, envir = safe, inherits = FALSE),
+                    envir = envir
+                )
+            },
+            from = dots,
+            to = names(dots),
+            MoreArgs = list(safe = safe, envir = envir),
+            SIMPLIFY = FALSE,
+            USE.NAMES = FALSE
+        ))
+    }
+
+    invisible(files)
+}
+
+
+
+#' Load Remote Data
+#'
+#' Load a remote R binary file. This function is vectorized and supports
+#' multiple URLs in a single call.
+#'
+#' @export
+#'
+#' @inheritParams params
+#' @param url `character`. Remote URL file path(s) to R data.
+#'
+#' @return Invisible named `character`. Local object name as the name, and the
+#'   remote URL as the value.
+#'
+#' @examples
+#' url <- file.path(
+#'     basejumpCacheURL,
+#'     paste0(c("rnaseq_counts", "single_cell_counts"), ".rds")
+#' )
+#' print(url)
+#' x <- loadRemoteData(url)
+#' print(x)
+loadRemoteData <- function(url, envir = parent.frame()) {
+    assert_that(has_internet())
+    assertAllAreURL(url)
+    if (!all(vapply(
+        X = url,
+        FUN = function(x) {
+            grepl(rdataExtPattern, x, ignore.case = TRUE)
+        },
+        FUN.VALUE = logical(1L)
+    ))) {
+        stop(rdataLoadError, call. = FALSE)
+    }
+    assert_is_environment(envir)
+    names <- gsub(rdataExtPattern, "", basename(url), ignore.case = TRUE)
+    names(url) <- names
+
+    # Check to make sure the objects don't already exist.
+    assertAllAreNonExisting(names, envir = envir, inherits = FALSE)
+
+    # Download the files to tempdir and return a character matrix of mappings.
+    invisible(mapply(
+        name = names,
+        url = url,
+        MoreArgs = list(envir = envir),
+        FUN = function(name, url, envir) {
+            data <- import(url)
+            assign(x = name, value = data, envir = envir)
+        }
+    ))
+
+    assert_all_are_existing(names, envir = envir, inherits = FALSE)
+    invisible(url)
+}
+
+
+
+.listRData <- function(names, dir = ".") {
+    assert_is_character(names)
+    assert_all_are_dirs(dir)
+    assert_is_a_string(dir)
+    dir <- realpath(dir)
+    files <- vapply(
+        X = names,
+        FUN = function(name) {
+            files <- list.files(
+                path = dir,
+                pattern = paste0("^", name, rdataExtPattern),
+                full.names = TRUE,
+                ignore.case = TRUE
+            )
+            # Add error checking here.
+            if (!has_length(files)) {
+                stop(paste0(
+                    name, " is missing.\n",
+                    rdataLoadError
+                ), call. = FALSE)
+            } else if (length(files) > 1L) {
+                stop(paste0(
+                    name, " is not unique on disk.\n",
+                    rdataLoadError
+                ), call. = FALSE)
+            }
+            files
+        },
+        FUN.VALUE = character(1L),
+        USE.NAMES = TRUE
+    )
+    message(paste("Loading", toString(basename(files)), "from", dir))
+    files
 }
 
 
