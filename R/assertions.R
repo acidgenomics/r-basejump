@@ -89,7 +89,7 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
 #'
 #' @name assertAllAreURL
 #' @inherit assertions
-#' @param `url` `character`. Uniform Resource Locators (URLs). HTTP or FTP
+#' @param url `character`. Uniform Resource Locators (URLs). HTTP or FTP
 #'   addresses.
 #'
 #' @examples
