@@ -54,7 +54,7 @@
 #' See `help(topic = "fread", package = "data.table")` for details.
 #'
 #' The `read_csv()` and `read_tsv()` functions of the [readr()] package
-#' are good alternatives, which return `tibble` data frames.
+#' are good alternatives, which return `tibble` data frames (`tbl_df`).
 #'
 #' [data.table]: https://cran.r-project.org/package=data.table
 #' [readr]: https://readr.tidyverse.org
@@ -104,8 +104,8 @@
 #'   - S4 class; inherits `DataTable` virtual class.
 #'   - Allows rownames, but they're optional and can be set `NULL`.
 #'   - See `help(topic = "DataFrame", package = "S4Vectors")` for details.
-#' - `tibble`: Recommended when working with tidyverse packages.
-#'   - S3 class (`tbl_df`); inherits `data.frame`.
+#' - `tbl_df` (`tibble`): Recommended when working with tidyverse packages.
+#'   - S3 class; inherits `data.frame`.
 #'   - Does not allow rownames.
 #'   - See `help(topic = "tibble", package = "tibble")` for details.
 #' - `data.table`: Recommended when working with the data.table package.
@@ -165,11 +165,8 @@ import <- function(
     dataFrame = getOption("basejump.data.frame", "data.frame")
 ) {
     file <- localOrRemoteFile(file)
-    dataFrame <- match.arg(
-        arg = dataFrame,
-        choices = c("data.frame", "DataFrame", "tibble", "data.table")
-    )
     args <- list(file, ...)
+    dataFrame <- match.arg(arg = dataFrame, choices = .dataFrameChoices)
 
     # Note that matching is case insensitive.
     ext <- basename(file) %>%
@@ -302,7 +299,7 @@ import <- function(
             data <- as.data.frame(data)
         } else if (dataFrame == "DataFrame") {
             data <- as(data, "DataFrame")
-        } else if (dataFrame == "tibble") {
+        } else if (dataFrame == "tbl_df") {
             data <- as_tibble(data)
         } else if (dataFrame == "data.table") {
             data <- as.data.table(data)

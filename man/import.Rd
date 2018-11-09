@@ -29,9 +29,9 @@ Current recommendations (by priority):
 \item Allows rownames, but they're optional and can be set \code{NULL}.
 \item See \code{help(topic = "DataFrame", package = "S4Vectors")} for details.
 }
-\item \code{tibble}: Recommended when working with tidyverse packages.
+\item \code{tbl_df} (\code{tibble}): Recommended when working with tidyverse packages.
 \itemize{
-\item S3 class (\code{tbl_df}); inherits \code{data.frame}.
+\item S3 class; inherits \code{data.frame}.
 \item Does not allow rownames.
 \item See \code{help(topic = "tibble", package = "tibble")} for details.
 }
@@ -114,7 +114,7 @@ is \code{numeric}, set \code{header = TRUE} here to force the column name.
 See \code{help(topic = "fread", package = "data.table")} for details.
 
 The \code{read_csv()} and \code{read_tsv()} functions of the \code{\link[=readr]{readr()}} package
-are good alternatives, which return \code{tibble} data frames.
+are good alternatives, which return \code{tibble} data frames (\code{tbl_df}).
 }
 
 \section{Matrix Market Exchange (MTX/MEX)}{
