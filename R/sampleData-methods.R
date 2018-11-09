@@ -34,7 +34,6 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
 # Don't run validity checks here.
 sampleData.SummarizedExperiment <-  # nolint
     function(object) {
@@ -65,34 +64,6 @@ setMethod(
 
 
 
-`sampleData<-.SummarizedExperiment` <-  # nolint
-    function(object, value) {
-        # Don't allow blacklisted columns.
-        value[["interestingGroups"]] <- NULL
-        value[["rowname"]] <- NULL
-        value[["sampleID"]] <- NULL
-        # Now safe to assign and return.
-        colData(object) <- value
-        validObject(object)
-        object
-    }
-
-
-
-#' @rdname sampleData
-#' @export
-setMethod(
-    f = "sampleData<-",
-    signature = signature(
-        object = "SummarizedExperiment",
-        value = "DataFrame"
-    ),
-    definition = `sampleData<-.SummarizedExperiment`
-)
-
-
-
-# SingleCellExperiment =========================================================
 # Don't run validity checks here.
 sampleData.SingleCellExperiment <-  # nolint
     function(
@@ -205,6 +176,33 @@ setMethod(
     f = "sampleData",
     signature = signature("SingleCellExperiment"),
     definition = sampleData.SingleCellExperiment
+)
+
+
+
+`sampleData<-.SummarizedExperiment` <-  # nolint
+    function(object, value) {
+        # Don't allow blacklisted columns.
+        value[["interestingGroups"]] <- NULL
+        value[["rowname"]] <- NULL
+        value[["sampleID"]] <- NULL
+        # Now safe to assign and return.
+        colData(object) <- value
+        validObject(object)
+        object
+    }
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleData<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "DataFrame"
+    ),
+    definition = `sampleData<-.SummarizedExperiment`
 )
 
 
