@@ -135,7 +135,7 @@ aggregateRows.matrix <-  # nolint
         assertHasValidDimnames(object)
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
-        assertAllAreValidNames(levels(groupings))
+        assertAreValidNames(levels(groupings))
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
         # `stats::aggregate.data.frame` S3 method.
@@ -170,7 +170,7 @@ aggregateRows.sparseMatrix <-  # nolint
         assertHasValidDimnames(object)
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
-        assertAllAreValidNames(levels(groupings))
+        assertAreValidNames(levels(groupings))
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
         # `Matrix.utils::aggregate.Matrix` S3 method.
@@ -204,7 +204,7 @@ aggregateRows.SummarizedExperiment <-  # nolint
         assert_is_subset(col, colnames(rowData(object)))
         groupings <- rowData(object)[[col]]
         assert_is_factor(groupings)
-        assertAllAreValidNames(levels(groupings))
+        assertAreValidNames(levels(groupings))
         names(groupings) <- rownames(object)
 
         # Assays ---------------------------------------------------------------
@@ -319,7 +319,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
         assert_is_subset(col, colnames(sampleData(object)))
         groupings <- colData(object)[[col]]
         assert_is_factor(groupings)
-        assertAllAreValidNames(levels(groupings))
+        assertAreValidNames(levels(groupings))
         names(groupings) <- colnames(object)
 
         # Assays ---------------------------------------------------------------
