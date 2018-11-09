@@ -6,10 +6,7 @@
 # https://github.com/Bioconductor/AnnotationHub/issues/1
 # https://github.com/r-dbi/RSQLite/issues/245
 
-
-
 # Switched to using run-length encoding (Rle) instead of factors in v0.8.
-# TODO Switch to using Rle instead of factor here.
 
 
 

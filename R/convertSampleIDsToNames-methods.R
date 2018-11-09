@@ -1,4 +1,10 @@
+#' Convert Sample Identifiers to Names
+#'
 #' @name convertSampleIDsToNames
+#' @inheritParams params
+#'
+#' @return Varies, depending on the method.
+#'
 #' @examples
 #' data(rse)
 #' convertSampleIDsToNames(rse)
@@ -6,7 +12,6 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
 # Designed to work with `export(human = TRUE)` mode.
 convertSampleIDsToNames.SummarizedExperiment <-  # nolint
     function(object) {
@@ -40,7 +45,6 @@ setMethod(
 
 
 
-# SingleCellExperiment =========================================================
 #' @rdname convertSampleIDsToNames
 #' @export
 setMethod(

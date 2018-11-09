@@ -1,5 +1,17 @@
+#' Aggregate Rows or Columns
+#'
+#' Aggregate gene/transcript features (rows) or sample replicates (columns).
+#'
+#' [aggregateRows()] works down the rows, and is designed to aggregate features
+#' (e.g. genes or transcripts). Most commonly, the [aggregateRows()] function
+#' can be used to aggregate counts from transcript-level to gene-level.
+#'
+#' [aggregateCols()] works across the columns, and is designed to aggregate
+#' sample replicates.
+#'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @inheritParams params
 #'
 #' @section Methods (by class):
 #'
@@ -33,6 +45,9 @@
 #' - [stats::aggregate()].
 #' - [S4Vectors::aggregate()].
 #' - [Matrix.utils::aggregate.Matrix()].
+#'
+#' @return Modified object, with aggregated rows (features) or columns
+#'   (samples).
 #'
 #' @examples
 #' ## Example data ====
@@ -479,13 +494,29 @@ setMethod(
 
 
 # aggregateCellsToSamples ======================================================
+#' Aggregate Cells to Samples
+#'
+#' Utilty function that factilites cell-to-sample aggregation. By default, this
+#' function will sum the counts across cells to sample level.
+#'
+#' This function is intended primarily for quality control analysis.
+#'
+#' Internally it automatically obtains the cell-to-sample groupings and then
+#' performs aggregation with the [aggregateCols()] function.
+#'
 #' @name aggregateCellsToSamples
-#' @inheritParams aggregate
+#' @inheritParams params
+#'
+#' @return `SummarizedExperiment`. Object with cell-level counts aggregated
+#'   to sample-level.
+#'
 #' @examples
 #' data(sce)
 #' x <- aggregateCellsToSamples(sce)
 #' print(x)
 NULL
+
+
 
 aggregateCellsToSamples.SingleCellExperiment <-  # nolint
     function(object, fun) {
@@ -501,6 +532,8 @@ aggregateCellsToSamples.SingleCellExperiment <-  # nolint
     }
 
 formals(aggregateCellsToSamples.SingleCellExperiment)[["fun"]] <- .aggregateFuns
+
+
 
 #' @rdname aggregateCellsToSamples
 #' @export

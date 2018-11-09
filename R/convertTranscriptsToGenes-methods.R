@@ -1,3 +1,5 @@
+#' Convert Transcripts to Genes
+#'
 #' @name convertTranscriptsToGenes
 #' @inherit convertGenesToSymbols
 #' @inheritParams params

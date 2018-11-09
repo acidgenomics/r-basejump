@@ -1,6 +1,7 @@
-#' @name export
+#' Export
 #'
-#' @details
+#' Export data out of R and write to disk.
+#'
 #' This is a wrapper for `rio::export()` that adds support for additional S4
 #' classes in Bioconductor.
 #'
@@ -12,6 +13,8 @@
 #' contain gene identifiers in the rownames. Here we're performing any internal
 #' tibble coercion step to ensure rownames are always moved to a "`rowname`"
 #' column in the CSV export.
+#'
+#' @name export
 #'
 #' @inheritParams params
 #' @inheritParams rio::export
@@ -144,7 +147,7 @@ export.sparseMatrix <-  # nolint
         # Create the recursive directory structure, if necessary.
         initDir(dirname(file))
 
-        # MatrixMarket file
+        # MatrixMarket file.
         writeMM(obj = x, file = file)
 
         if (isTRUE(gzip)) {

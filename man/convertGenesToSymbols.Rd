@@ -35,7 +35,7 @@ convertSymbolsToGenes(object, ...)
 \code{geneID} and \code{geneName} columns. See \code{Gene2Symbol()} for more information.}
 }
 \value{
-Varies, depending on the method.
+Modified object of same class.
 }
 \description{
 Convert Genes to Symbols

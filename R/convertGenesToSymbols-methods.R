@@ -1,5 +1,9 @@
+#' Convert Genes to Symbols
+#'
 #' @name convertGenesToSymbols
 #' @inheritParams params
+#'
+#' @return Modified object of same class.
 #'
 #' @examples
 #' data(rse)

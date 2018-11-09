@@ -16,7 +16,7 @@ sampleData(object, ...)
 
 sampleData(object, ...) <- value
 
-\S4method{sampleData}{SummarizedExperiment}(object)
+\S4method{sampleData}{SummarizedExperiment}(object, clean = FALSE)
 
 \S4method{sampleData}{SingleCellExperiment}(object,
   blacklist = c("^ident$", "^origIdent$", "^res[.0-9]+$", "^sScore$",
@@ -29,16 +29,17 @@ sampleData(object, ...) <- value
 \S4method{sampleNames}{SummarizedExperiment}(object)
 }
 \arguments{
-\item{object}{Object.}
+\item{object}{Object that inherits from \code{SummarizedExperiment} class.}
 
 \item{...}{Additional arguments.}
 
 \item{value}{Value to assign.}
 
+\item{clean}{\code{boolean}. Only return \code{factor} columns. Useful when working
+with objects that contain metrics in \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}}.}
+
 \item{blacklist}{\code{character}. Column names that should never be treated as
-sample-level metadata. Applies to objects where the columns don't map to
-samples (e.g. \code{SingleCellExperiment}), and we need to collapse the
-\code{colData} dynamically.}
+sample-level metadata. Applicable only to \code{SingleCellExperiment} objects.}
 }
 \value{
 \code{DataFrame}.

@@ -33,8 +33,6 @@ convertTranscriptsToGenes(object, ...)
 counts to gene level and collapse the matrix.}
 }
 \value{
-Varies, depending on the method.
-
 \itemize{
 \item \code{character}: \code{factor}. Genes in the values, transcripts in the names.
 \item \code{matrix}, \code{sparseMatrix}, \code{SummarizedExperiment}: Object containing counts

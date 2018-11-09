@@ -1,10 +1,3 @@
-#' @importFrom BiocGenerics combine
-#' @aliases NULL
-#' @export
-BiocGenerics::combine
-
-
-
 #' @name combine
 #' @inherit BiocGenerics::combine
 #'
@@ -70,7 +63,13 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
+#' @importFrom BiocGenerics combine
+#' @aliases NULL
+#' @export
+BiocGenerics::combine
+
+
+
 combine.SummarizedExperiment <-  # nolint
     function(x, y) {
         validObject(x)
@@ -172,7 +171,6 @@ setMethod(
 
 
 
-# SingleCellExperiment =========================================================
 combine.SingleCellExperiment <-  # nolint
     function(x, y) {
         validObject(x)

@@ -1,4 +1,14 @@
+#' Geometric Mean
+#'
+#' The geometric mean is the nth root of n products or e to the mean log of `x`.
+#' Useful for describing non-normal (i.e. geometric) distributions.
+#'
+#' This function should be fully zero- and `NA`-tolerant. This calculation is
+#' not particularly useful if there are elements that are <= 0 and will return
+#' `NaN`.
+#'
 #' @name geometricMean
+#' @inheritParams params
 #'
 #' @inheritParams base::apply
 #' @param removeNA `boolean`. Remove `NA` values from calculations.
@@ -7,6 +17,8 @@
 #' @seealso
 #' - `psych::geometric.mean()`.
 #' - [Paul McMurdie's code](https://stackoverflow.com/a/25555105).
+#'
+#' @return `numeric`.
 #'
 #' @examples
 #' ## numeric ====

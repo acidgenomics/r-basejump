@@ -1,14 +1,11 @@
-# FIXME Add support for `clean = TRUE`, which only returns factor columns.
-
-
-
 #' @name sampleData
 #'
 #' @inheritParams params
+#' @param object Object that inherits from `SummarizedExperiment` class.
+#' @param clean `boolean`. Only return `factor` columns. Useful when working
+#'   with objects that contain metrics in [SummarizedExperiment::colData()].
 #' @param blacklist `character`. Column names that should never be treated as
-#'   sample-level metadata. Applies to objects where the columns don't map to
-#'   samples (e.g. `SingleCellExperiment`), and we need to collapse the
-#'   `colData` dynamically.
+#'   sample-level metadata. Applicable only to `SingleCellExperiment` objects.
 #'
 #' @examples
 #' data(rse, sce)
@@ -36,7 +33,7 @@ NULL
 
 # Don't run validity checks here.
 sampleData.SummarizedExperiment <-  # nolint
-    function(object) {
+    function(object, clean = FALSE) {
         data <- colData(object)
         assertHasRownames(data)
         # Require `sampleName` column.
@@ -49,6 +46,9 @@ sampleData.SummarizedExperiment <-  # nolint
             object = data,
             interestingGroups = matchInterestingGroups(object)
         )
+
+        if (isTRUE(clean))
+
         data
     }
 

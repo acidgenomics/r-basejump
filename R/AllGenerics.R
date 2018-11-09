@@ -35,24 +35,6 @@ setGeneric(
 
 
 # aggregate ====================================================================
-#' Aggregate Rows or Columns
-#'
-#' Aggregate gene/transcript features (rows) or sample replicates (columns).
-#'
-#' [aggregateRows()] works down the rows, and is designed to aggregate features
-#' (e.g. genes or transcripts). Most commonly, the [aggregateRows()] function
-#' can be used to aggregate counts from transcript-level to gene-level.
-#'
-#' [aggregateCols()] works across the columns, and is designed to aggregate
-#' sample replicates.
-#'
-#' @name aggregate
-#' @inheritParams params
-#'
-#' @return Modified object, with aggregated rows (features) or columns
-#'   (samples).
-NULL
-
 #' @rdname aggregate
 #' @export
 setGeneric(
@@ -71,23 +53,8 @@ setGeneric(
     }
 )
 
-
-
-# aggregateCellsToSamples ======================================================
-#' Aggregate Cells to Samples
-#'
-#' Utilty function that factilites cell-to-sample aggregation. By default, this
-#' function will sum the counts across cells to sample level.
-#'
-#' This function is intended primarily for quality control analysis.
-#'
-#' Internally it automatically obtains the cell-to-sample groupings and then
-#' performs aggregation with the [aggregateCols()] function.
-#'
-#' @inheritParams params
+#' @rdname aggregateCellsToSamples
 #' @export
-#' @return `SummarizedExperiment`. Object with cell-level counts aggregated
-#'   to sample-level.
 setGeneric(
     name = "aggregateCellsToSamples",
     def = function(object, ...) {
@@ -116,11 +83,8 @@ setGeneric(
 
 
 # cell2sample ==================================================================
-#' Cell-to-Sample Mappings
-#' @inheritParams params
+#' @rdname cell2sample
 #' @export
-#' @return Named `factor`. Sample IDs as the `levels` and cell IDs as the
-#'   `names`.
 setGeneric(
     name = "cell2sample",
     def = function(object, ...) {
@@ -131,11 +95,8 @@ setGeneric(
 
 
 # collapseToString =============================================================
-#' Collapse to String
-#' @inheritParams params
-#' @seealso [base::toString()].
+#' @rdname collapseToString
 #' @export
-#' @return `string`.
 setGeneric(
     name = "collapseToString",
     def = function(object, ...) {
@@ -162,13 +123,6 @@ setGeneric(
 
 
 # convertGenesToSymbols ========================================================
-#' Convert Genes to Symbols
-#'
-#' @name convertGenesToSymbols
-#' @inheritParams params
-#' @return Varies, depending on the method.
-NULL
-
 #' @rdname convertGenesToSymbols
 #' @export
 setGeneric(
@@ -190,10 +144,8 @@ setGeneric(
 
 
 # convertSampleIDsToNames ======================================================
-#' Convert Sample Identifiers to Names
-#' @inheritParams params
+#' @rdname convertSampleIDsToNames
 #' @export
-#' @return Varies, depending on the method.
 setGeneric(
     name = "convertSampleIDsToNames",
     def = function(object, ...) {
@@ -204,10 +156,8 @@ setGeneric(
 
 
 # convertTranscriptsToGenes ====================================================
-#' Convert Transcripts to Genes
-#' @inheritParams params
+#' @rdname convertTranscriptsToGenes
 #' @export
-#' @return Varies, depending on the method.
 setGeneric(
     name = "convertTranscriptsToGenes",
     def = function(object, ...) {
@@ -218,28 +168,8 @@ setGeneric(
 
 
 # export =======================================================================
-#' Export
-#'
-#' Export data out of R and write to disk.
-#'
-#' This is a wrapper for `rio::export()` that adds support for additional S4
-#' classes in Bioconductor.
-#'
-#' @section Row names:
-#'
-#' The standard `rio::export()` call will drop rownames when exporting to CSV.
-#' The `readr::write_*()` family of functions also never write rownames. This is
-#' a *really poor* default setting for handling genomic data, which often
-#' contain gene identifiers in the rownames. Here we're performing any internal
-#' tibble coercion step to ensure rownames are always moved to a "`rowname`"
-#' column in the CSV export.
-#'
-#' @inheritParams params
+#' @rdname export
 #' @export
-#'
-#' @seealso `rio::export()`.
-#'
-#' @return Invisible `character`. File path(s).
 setGeneric(
     name = "export",
     def = function(x, ...) {
@@ -250,20 +180,8 @@ setGeneric(
 
 
 # geometricMean ================================================================
-#' Geometric Mean
-#'
-#' The geometric mean is the nth root of n products or e to the mean log of `x`.
-#' Useful for describing non-normal (i.e. geometric) distributions.
-#'
-#' This function should be fully zero- and `NA`-tolerant. This calculation is
-#' not particularly useful if there are elements that are <= 0 and will return
-#' `NaN`.
-#'
-#' @name geometricMean
-#' @inheritParams params
+#' @rdname geometricMean
 #' @export
-#'
-#' @return `numeric`.
 setGeneric(
     name = "geometricMean",
     def = function(object, ...) {
@@ -1214,13 +1132,8 @@ setGeneric(
 
 
 # zerosVsDepth =================================================================
-#' Percentage of Zeros vs. Library Depth
-#'
-#' Calculate and visualize the dropout rate.
-#'
-#' @inheritParams params
+#' @rdname zerosVsDepth
 #' @export
-#' @return `matrix`.
 setGeneric(
     name = "zerosVsDepth",
     def = function(object, ...) {
