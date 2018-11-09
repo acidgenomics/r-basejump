@@ -1,3 +1,7 @@
+.dataFrameChoices <- c("data.frame", "DataFrame", "tbl_df", "data.table")
+
+
+
 packageVersion <- packageVersion("basejump")
 
 
