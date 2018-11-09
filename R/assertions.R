@@ -194,7 +194,7 @@ assertAreValidNames <- function(names) {
 #' @export
 assertHasValidNames <- function(object) {
     assert_has_names(object)
-    invisible(lapply(names(object), assertAllAreValidNames))
+    invisible(lapply(names(object), assertAreValidNames))
 }
 
 
