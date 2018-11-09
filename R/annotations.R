@@ -1,3 +1,9 @@
+# TODO Can we suppress this warning consistently?
+# `Warning: call dbDisconnect() when finished working with a connection`
+# Still an issue with Bioconductor infrastructure.
+
+
+
 # convertUCSCBuildToEnsembl ====================================================
 #' Convert UCSC Build to Ensembl
 #'
