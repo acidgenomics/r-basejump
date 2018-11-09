@@ -1,3 +1,5 @@
+#' Transcripts per Million
+#'
 #' @name tpm
 #'
 #' @note Both gene- and transcript-level counts are supported, as long as they
@@ -17,6 +19,13 @@
 #' x <- tpm(se)
 #' class(x)
 NULL
+
+
+
+#' @importFrom SingleCellExperiment tpm
+#' @aliases NULL
+#' @export
+SingleCellExperiment::tpm
 
 
 
