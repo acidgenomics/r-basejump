@@ -1,6 +1,15 @@
-# TODO Can we suppress this warning consistently?
-# `Warning: call dbDisconnect() when finished working with a connection`
-# Still an issue with Bioconductor infrastructure.
+# Still intermittently getting the `dbDisconnect()` warning:
+#
+# Warning message:
+#     call dbDisconnect() when finished working with a connection
+#
+# https://github.com/Bioconductor/AnnotationHub/issues/1
+# https://github.com/r-dbi/RSQLite/issues/245
+
+
+
+# Switched to using run-length encoding (Rle) instead of factors in v0.8.
+# TODO Switch to using Rle instead of factor here.
 
 
 
@@ -324,7 +333,7 @@ NULL
 #' @param object Object that can be coerced to `DataFrame`, containing gene or
 #'   transcript annotations. `GRanges` is recommended.
 #'
-#' @return Named `factor` containing broad class definitions.
+#' @return Named `factor`.
 .broadClass <- function(object) {
     assert_is_all_of(object, "GRanges")
 
@@ -680,7 +689,6 @@ NULL
 
     # Standardize the metadata columns.
     mcols <- mcols(object)
-    # Sanitize to camel case.
     mcols <- camel(mcols)
     # Ensure "ID" is always capitalized (e.g. "entrezid").
     colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
@@ -723,16 +731,19 @@ NULL
         # nocov end
     }
 
-    # Sanitize any character columns that have duplicates into factor.
     mcols <- lapply(
         X = mcols,
         FUN = function(col) {
-            if (is.character(col) && any(duplicated(col))) {
-                as.factor(col)
-            } else {
-                # `I` inhibits reinterpretation and returns AsIs.
-                # Recommended in the DataFrame documentation.
+            if (!is.atomic(col) || isS4(col)) {
+                # `I()` inhibits reinterpretation and returns `AsIs` class.
+                # This keeps complex columns (e.g. Entrez list) intact.
+                # Recommended in the `DataFrame` documentation.
                 I(col)
+            } else {
+                # Use S4 run length encoding (Rle) for atomic metadata columns.
+                # Many of these elements are repetitive, and this makes
+                # operations faster.
+                Rle(col)
             }
         }
     )
@@ -753,7 +764,7 @@ NULL
     names(object) <- mcols(object)[[idCol]]
 
     # Ensure broad class definitions are included.
-    mcols(object)[["broadClass"]] <- .broadClass(object)
+    mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
 
     # Sort metadata columns alphabetically.
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
