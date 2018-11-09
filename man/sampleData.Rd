@@ -6,8 +6,8 @@
 \alias{sampleData}
 \alias{sampleData<-}
 \alias{sampleData,SummarizedExperiment-method}
-\alias{sampleData<-,SummarizedExperiment,DataFrame-method}
 \alias{sampleData,SingleCellExperiment-method}
+\alias{sampleData<-,SummarizedExperiment,DataFrame-method}
 \alias{sampleData<-,SingleCellExperiment,DataFrame-method}
 \alias{sampleNames,SummarizedExperiment-method}
 \title{Sample Data}
@@ -18,11 +18,11 @@ sampleData(object, ...) <- value
 
 \S4method{sampleData}{SummarizedExperiment}(object)
 
-\S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
-
 \S4method{sampleData}{SingleCellExperiment}(object,
   blacklist = c("^ident$", "^origIdent$", "^res[.0-9]+$", "^sScore$",
   "^g2mScore$", "^phase$"))
+
+\S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
 \S4method{sampleData}{SingleCellExperiment,DataFrame}(object) <- value
 
