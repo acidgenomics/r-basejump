@@ -30,30 +30,6 @@ test_that("assertAllAreNonExisting", {
 
 
 
-# assertAreGeneAnnotations =====================================================
-test_that("assertAreGeneAnnotations", {
-    object <- rowRanges(rse)
-    expect_silent(assertAreGeneAnnotations(object))
-    expect_error(
-        object = assertAreGeneAnnotations(mtcars),
-        regexp = "is_subset : "
-    )
-})
-
-
-
-# assertAreTranscriptAnnotations ===============================================
-test_that("assertAreTranscriptAnnotations", {
-    object <- rowData(tx_se)
-    expect_silent(assertAreTranscriptAnnotations(object))
-    expect_error(
-        object = assertAreTranscriptAnnotations(mtcars),
-        regexp = "is_subset : "
-    )
-})
-
-
-
 # assertFormalCompress =========================================================
 test_that("assertFormalCompress", {
     expect_error(
