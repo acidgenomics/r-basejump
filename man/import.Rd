@@ -66,6 +66,8 @@ This function supports automatic loading of common file types:
 Imported by \code{\link[data.table:fread]{data.table::fread()}}.
 \item \code{TSV} Tab Separated Values.\cr
 Imported by \code{\link[data.table:fread]{data.table::fread()}}.
+\item \code{TXT}: Text file. \emph{Ambiguous, not recommended}.\cr
+Imported by \code{\link[data.table:fread]{data.table::fread()}}.
 \item \code{XLSX}/\code{XLS}: Excel workbook.\cr
 Imported by \code{\link[readxl:read_excel]{readxl::read_excel()}}.
 \item \code{MTX}: MatrixMarket sparse matrix.\cr
@@ -90,7 +92,7 @@ These file formats will be imported as source code lines by
 \code{\link[readr:read_lines]{readr::read_lines()}}: \code{LOG}, \code{MD}, \code{PY}, \code{R}, \code{RMD}, \code{SH}.
 
 These file formats are blacklisted, and intentionally not supported:
-\code{DOC}, \code{DOCX}, \code{PDF}, \code{PPT}, \code{PPTX}, \code{TXT}.
+\code{DOC}, \code{DOCX}, \code{PDF}, \code{PPT}, \code{PPTX}.
 
 If a file format isn't supported natively (or blacklisted), the
 \href{https://cran.r-project.org/web/packages/rio/index.html}{rio} package will
