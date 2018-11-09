@@ -1191,25 +1191,6 @@ setGeneric(
 
 
 
-# tpm ==========================================================================
-#' Transcripts per Million
-#'
-#' @note Both gene- and transcript-level counts are supported, as long as they
-#'   were imported using a tximport caller (e.g. salmon, kallisto).
-#'
-#' @inheritParams params
-#' @export
-#'
-#' @return `matrix`.
-setGeneric(
-    name = "tpm",
-    def = function(object, ...) {
-        standardGeneric("tpm")
-    }
-)
-
-
-
 # uniteInterestingGroups =======================================================
 #' Unite Interesting Groups
 #'
