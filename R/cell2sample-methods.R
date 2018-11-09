@@ -1,9 +1,13 @@
+#' Cell-to-Sample Mappings
+#'
 #' @name cell2sample
 #' @inheritParams params
 #'
 #' @note `sampleID` column must be defined in [SummarizedExperiment::colData()].
 #'
-#' @return
+#' @return Named `factor`. Sample IDs as the `levels` and cell IDs as the
+#'   `names`.
+#'
 #' - `"factor"`: Named `factor` containing sample IDs as the levels and cell IDs
 #'   as the names.
 #' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.

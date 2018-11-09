@@ -1,6 +1,12 @@
+#' Percentage of Zeros vs. Library Depth
+#'
+#' Calculate and visualize the dropout rate.
+#'
 #' @name zerosVsDepth
-#' @inheritParams params
 #' @author Rory Kirchner, Michael Steinbaugh
+#' @inheritParams params
+#'
+#' @return `matrix`.
 #'
 #' @examples
 #' data(sce)
@@ -11,7 +17,6 @@ NULL
 
 
 
-# matrix =======================================================================
 zerosVsDepth.matrix <-  # nolint
     function(object) {
         present <- object > 0L
@@ -34,7 +39,6 @@ setMethod(
 
 
 
-# sparseMatrix =================================================================
 # Using a logical matrix is faster and more memory efficient.
 # Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
 zerosVsDepth.sparseMatrix <-  # nolint
@@ -64,12 +68,8 @@ setMethod(
 
 
 
-# SummarizedExperiment =========================================================
 zerosVsDepth.SummarizedExperiment <-  # nolint
-    function(
-        object,
-        assay = 1L
-    ) {
+    function(object, assay = 1L) {
         assert_is_scalar(assay)
         counts <- assays(object)[[assay]]
         data <- zerosVsDepth(counts)
@@ -91,12 +91,8 @@ setMethod(
 
 
 
-# SingleCellExperiment =========================================================
 zerosVsDepth.SingleCellExperiment <-  # nolint
-    function(
-        object,
-        assay = 1L
-    ) {
+    function(object, assay = 1L) {
         assert_is_scalar(assay)
         counts <- assays(object)[[assay]]
 

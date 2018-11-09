@@ -1,10 +1,15 @@
 # collapseToString =============================================================
+#' Collapse to String
+#'
 #' @name collapseToString
+#' @inheritParams params
 #'
 #' @param sep `string`. Separator. Defaults to comma.
 #' @param unique `boolean`. Unique values.
 #' @param sort `boolean`. Sort values.
 #' @param removeNA `boolean`. Remove NA values.
+#'
+#' @seealso [base::toString()].
 #'
 #' @return
 #' - `atomic`: `string`.

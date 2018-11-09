@@ -22,7 +22,6 @@ internally and defaults to the first argument in the \code{character} vector.}
 \value{
 Named \code{factor}. Sample IDs as the \code{levels} and cell IDs as the
 \code{names}.
-
 \itemize{
 \item \code{"factor"}: Named \code{factor} containing sample IDs as the levels and cell IDs
 as the names.
