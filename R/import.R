@@ -11,6 +11,8 @@
 #'   Imported by [data.table::fread()].
 #' - `TSV` Tab Separated Values.\cr
 #'   Imported by [data.table::fread()].
+#' - `TXT`: Text file. *Ambiguous, not recommended*.\cr
+#'   Imported by [data.table::fread()].
 #' - `XLSX`/`XLS`: Excel workbook.\cr
 #'   Imported by [readxl::read_excel()].
 #' - `MTX`: MatrixMarket sparse matrix.\cr
@@ -32,7 +34,7 @@
 #' [readr::read_lines()]: `LOG`, `MD`, `PY`, `R`, `RMD`, `SH`.
 #'
 #' These file formats are blacklisted, and intentionally not supported:
-#' `DOC`, `DOCX`, `PDF`, `PPT`, `PPTX`, `TXT`.
+#' `DOC`, `DOCX`, `PDF`, `PPT`, `PPTX`.
 #'
 #' If a file format isn't supported natively (or blacklisted), the
 #' [rio](https://cran.r-project.org/web/packages/rio/index.html) package will
@@ -176,7 +178,7 @@ import <- function(
         toupper()
 
     # Error on blacklisted extension.
-    if (ext %in% c("DOC", "DOCX", "PDF", "PPT", "PPTX", "TXT")) {
+    if (ext %in% c("DOC", "DOCX", "PDF", "PPT", "PPTX")) {
         stop(paste0(
             "Import of ", basename(file), " failed.\n",
             ext, " extension is not supported."
@@ -184,7 +186,7 @@ import <- function(
     }
 
     # How we declare NA strings depends on the file extension.
-    if (ext %in% c("CSV", "TSV")) {
+    if (ext %in% c("CSV", "TSV", "TXT")) {
         message(paste(
             "Importing", basename(file), "using data.table::fread()."
         ))
