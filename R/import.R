@@ -129,10 +129,6 @@
 #' @examples
 #' url <- basejumpCacheURL
 #'
-#' ## R Data
-#' x <- import(file = file.path(url, "rnaseq_counts.rda"))
-#' class(x)
-#'
 #' ## Comma Separated Values
 #' x <- import(file = file.path(url, "example.csv"))
 #' print(x)
@@ -144,21 +140,25 @@
 #' x <- import(file = file.path(url, "example.xlsx"))
 #' print(x)
 #'
+#' ## R Data
+#' x <- import(file = file.path(url, "rnaseq_counts.rda"))
+#' class(x)
+#'
 #' ## GTF/GFF
-#' x <- import(file = file.path(url, "example.gtf"))
-#' summary(x)
+#' # x <- import(file = file.path(url, "example.gtf"))
+#' # summary(x)
 #'
 #' ## JSON
-#' x <- import(file = file.path(url, "example.json"))
-#' names(x)
+#' # x <- import(file = file.path(url, "example.json"))
+#' # names(x)
 #'
 #' ## YAML
-#' x <- import(file = file.path(url, "example.yml"))
-#' names(x)
+#' # x <- import(file = file.path(url, "example.yml"))
+#' # names(x)
 #'
 #' ## Counts Table (i.e. aligned counts from bcbio)
-#' x <- import(file = file.path(url, "example.counts"))
-#' colSums(x)
+#' # x <- import(file = file.path(url, "example.counts"))
+#' # colSums(x)
 import <- function(
     file,
     ...,
