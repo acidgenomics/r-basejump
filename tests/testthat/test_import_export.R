@@ -17,6 +17,7 @@ test_that("assignAndSaveData", {
     object <- suppressMessages(assignAndSaveData(
         name = "XXX",
         object = rse,
+        dir = ".",
         ext = "rds"
     ))
     expect_identical(
@@ -29,9 +30,29 @@ test_that("assignAndSaveData", {
 
 
 # import =======================================================================
-test_that("import : Comma separated value file (.csv)", {
-    object <- import("example.csv")
-    expect_is(object, "DataFrame")
+with_parameters_test_that(
+    "import : Comma separated value file (.csv)", {
+        object <- import(file = "example.csv", dataFrame = dataFrame)
+        expect_is(object, dataFrame)
+    },
+    dataFrame = .dataFrameChoices
+)
+
+with_parameters_test_that(
+    "import : Tab separated values file (.tsv)", {
+        object <- import(file = "example.tsv", dataFrame = dataFrame)
+        expect_is(object, dataFrame)
+    },
+    dataFrame = .dataFrameChoices
+)
+
+test_that("import : Excel file (.xlsx)", {
+    # Use remote file to check Windows support. Excel files need to be written
+    # as binary on Windows to load properly. See `localOrRemoteFile()` for more
+    # information.
+    file <- paste(url, "example.xlsx", sep = "/")
+    object <- import(file = file, dataFrame = "data.frame")
+    expect_is(object, "data.frame")
 })
 
 test_that("import : GFF3", {
@@ -113,20 +134,6 @@ test_that("import : MatrixMarket file (.mtx)", {
 
     object <- import("single_cell_counts.mtx.gz.colnames")
     expect_is(object, "character")
-})
-
-test_that("import : Tab separated values file (.tsv)", {
-    object <- import("example.tsv")
-    expect_is(object, "DataFrame")
-})
-
-test_that("import : Excel file (.xlsx)", {
-    # Use remote file to check Windows support. Excel files need to be
-    # written as binary on Windows to load properly. See `localOrRemoteFile()`
-    # for more information.
-    file <- paste(url, "example.xlsx", sep = "/")
-    object <- import(file = file)
-    expect_is(object, "DataFrame")
 })
 
 test_that("import : Counts file (.counts)", {

@@ -47,6 +47,25 @@ test_that("dots", {
 
 
 
+# matchInterestingGroups =======================================================
+test_that("matchInterestingGroups", {
+    object <- rse
+    expect_identical(
+        object = matchInterestingGroups(object),
+        expected = interestingGroups(object)
+    )
+    expect_identical(
+        object = matchInterestingGroups(
+            object = object,
+            interestingGroups = interestingGroups(object)[[1L]]
+        ),
+        expected = interestingGroups(object)[[1L]]
+    )
+})
+
+
+
+
 # methodFormals ================================================================
 # This will also cover `methodFunction()`.
 test_that("methodFormals", {

@@ -1,1 +1,5 @@
-options(basejump.test = TRUE)
+options(
+    basejump.save.dir = ".",
+    basejump.save.ext = "rds",
+    basejump.test = TRUE
+)
