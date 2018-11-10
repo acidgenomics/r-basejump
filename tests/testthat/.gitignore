@@ -1,3 +1,6 @@
 example.*
 *.rda
 *.rds
+*.gz
+*.colnames
+*.rownames
