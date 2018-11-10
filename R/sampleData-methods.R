@@ -46,9 +46,15 @@ sampleData.SummarizedExperiment <-  # nolint
             object = data,
             interestingGroups = matchInterestingGroups(object)
         )
-
-        if (isTRUE(clean))
-
+        # Return only factor columns in clean mode.
+        if (isTRUE(clean)) {
+            keep <- vapply(
+                X = data,
+                FUN = is.factor,
+                FUN.VALUE = logical(1L)
+            )
+            data <- data[, keep, drop = FALSE]
+        }
         data
     }
 
