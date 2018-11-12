@@ -78,7 +78,8 @@
 #'   stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie assertAreNonExisting assertAreUniqueGeneNames
-#'   assertAreURLs
+#'   assertAreURLs assertAreValidNames assertFormalCompress assertHasRownames
+#'   assertIsANumberOrNULL assertIsStringOrNULL
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json

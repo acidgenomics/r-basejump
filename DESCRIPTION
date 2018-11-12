@@ -63,6 +63,7 @@ Imports:
     ensembldb,
     ggplot2,
     ggrepel,
+    goalie (>= 0.1),
     grDevices,
     grid,
     jsonlite,
@@ -96,6 +97,8 @@ Suggests:
     rmarkdown,
     testthat,
     viridis
+Remotes:
+    steinbaugh/goalie
 biocViews:
     DataImport,
     Infrastructure
