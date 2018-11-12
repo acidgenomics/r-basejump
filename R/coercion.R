@@ -242,6 +242,8 @@ tibble::as_tibble
 #' @export
 as_tibble.DataFrame <-  # nolint
     function(x, ..., rownames = "rowname") {
+        # Coerce to standard data frame.
+        x <- as(x, "data.frame")
         # Check for valid columns (atomic, list).
         valid <- vapply(
             X = x,
@@ -259,8 +261,6 @@ as_tibble.DataFrame <-  # nolint
                 "Invalid columns: ", toString(invalid)
             ), call. = FALSE)
         }
-        # Coerce to standard data frame.
-        x <- as(x, "data.frame")
         if (!hasRownames(x)) {
             rownames <- NULL
         }
