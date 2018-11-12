@@ -40,8 +40,8 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         trans <- match.arg(trans)
         assertIsFillScaleDiscreteOrNULL(fill)
         assert_is_a_bool(flip)
-        assertIsAStringOrNULL(countsAxisLabel)
-        assertIsAStringOrNULL(title)
+        assertIsStringOrNULL(countsAxisLabel)
+        assertIsStringOrNULL(title)
 
         data <- meltCounts(
             object = object,

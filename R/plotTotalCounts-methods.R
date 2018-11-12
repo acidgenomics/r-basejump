@@ -29,7 +29,7 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         assert_is_a_bool(perMillion)
         assertIsFillScaleDiscreteOrNULL(fill)
         assert_is_a_bool(flip)
-        assertIsAStringOrNULL(title)
+        assertIsStringOrNULL(title)
 
         counts <- assays(object)[[assay]]
         if (is(counts, "sparseMatrix")) {
