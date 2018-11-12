@@ -79,11 +79,13 @@
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie assertAreNonExisting assertAreUniqueGeneNames
 #'   assertAreURLs assertAreValidNames assertFormalCompress assertHasRownames
-#'   assertIsAlpha assertIsANumberOrNULL assertIsAnIntegerOrNULL
-#'   assertIsColorScaleContinuousOrNULL assertIsColorScaleDiscreteOrNULL
-#'   assertIsDir assertIsFile assertIsFillScaleContinuousOrNULL
-#'   assertIsFillScaleDiscreteOrNULL assertIsHeaderLevel
-#'   assertIsHexColorFunctionOrNULL assertIsImplicitInteger assertIsStringOrNULL
+#'   assertHasValidDimnames assertIsAlpha assertIsANumberOrNULL
+#'   assertIsAnImplicitInteger assertIsAnImplicitIntegerOrNULL
+#'   assertIsAnIntegerOrNULL assertIsColorScaleContinuousOrNULL
+#'   assertIsColorScaleDiscreteOrNULL assertIsDir assertIsFile
+#'   assertIsFillScaleContinuousOrNULL assertIsFillScaleDiscreteOrNULL
+#'   assertIsHeaderLevel assertIsHexColorFunctionOrNULL assertIsImplicitInteger
+#'   assertIsStringOrNULL hasRownames isAnImplicitInteger isURL
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
@@ -121,14 +123,6 @@
 
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
-
-
-
-globalVariables(".")
-
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
 
 
 
@@ -219,3 +213,11 @@ magrittr::`%>%`
 #'
 #' @return No value.
 NULL
+
+
+
+globalVariables(".")
+
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
