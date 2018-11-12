@@ -2,7 +2,6 @@
 % Please edit documentation in R/deprecated.R
 \name{deprecated}
 \alias{deprecated}
-\alias{assertIsAnnotable}
 \alias{ensembl}
 \alias{gene2symbolFromGFF}
 \alias{gene2symbolFromGTF}
@@ -16,10 +15,7 @@
 \alias{aggregateFeatures}
 \alias{aggregateReplicates}
 \alias{aggregateSamples}
-\alias{assertAllAreValidNames}
 \alias{assertFormalGene2symbol}
-\alias{assertIsAHeaderLevel}
-\alias{assertIsURL}
 \alias{eggnog}
 \alias{ensembl2entrez}
 \alias{fixNA}
@@ -46,8 +42,6 @@
 \alias{tx2gene}
 \title{Deprecated Functions}
 \usage{
-assertIsAnnotable(...)
-
 ensembl(...)
 
 gene2symbolFromGFF(...)
@@ -74,13 +68,7 @@ aggregateReplicates(...)
 
 aggregateSamples(...)
 
-assertAllAreValidNames(...)
-
 assertFormalGene2symbol(...)
-
-assertIsAHeaderLevel(...)
-
-assertIsURL(...)
 
 eggnog(...)
 
