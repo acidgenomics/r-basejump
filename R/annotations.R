@@ -491,7 +491,7 @@ NULL
     assert_is_a_string(organism)
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
-    assertIsAStringOrNULL(genomeBuild)
+    assertIsStringOrNULL(genomeBuild)
     # Check for accidental UCSC input and stop, informing user.
     if (is_a_string(genomeBuild)) {
         ucscCheck <- tryCatch(

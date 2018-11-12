@@ -24,7 +24,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
         )
         interestingGroups(object) <- interestingGroups
         assertIsColorScaleDiscreteOrNULL(color)
-        assertIsAStringOrNULL(title)
+        assertIsStringOrNULL(title)
 
         data <- zerosVsDepth(object, assay = assay)
         assert_is_all_of(data, "DataFrame")

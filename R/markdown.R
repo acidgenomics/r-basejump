@@ -125,7 +125,7 @@ markdownLink <- function(
 ) {
     assert_is_a_string(text)
     assert_is_a_string(url)
-    assertIsAStringOrNULL(title)
+    assertIsStringOrNULL(title)
     x <- paste0("[", text, "](", url, ")")
     if (!is.null(title)) {
         x <- paste0(x, ": ", title)
@@ -361,7 +361,7 @@ prepareTemplate <- function(
 ) {
     assert_is_a_string(package)
     assert_is_subset(package, rownames(installed.packages()))
-    assertIsAStringOrNULL(sourceDir)
+    assertIsStringOrNULL(sourceDir)
     assert_is_a_bool(overwrite)
 
     # Shared file source directory. Keeping the `sourceDir` argument because

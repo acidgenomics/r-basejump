@@ -239,7 +239,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     assert_is_a_string(file)
     assert_all_are_existing_files(file)
     file <- realpath(file)
-    assertIsAStringOrNULL(name)
+    assertIsStringOrNULL(name)
     assert_is_environment(envir)
 
     if (is.null(name)) {

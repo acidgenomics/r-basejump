@@ -119,11 +119,11 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         assert_is_a_number(treeheightRow)
         assert_is_a_number(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
-        assertIsAStringOrNULL(borderColor)
+        assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {
             borderColor <- NA
         }
-        assertIsAStringOrNULL(title)
+        assertIsStringOrNULL(title)
         if (!is_a_string(title)) {
             title <- NA
         }
@@ -231,7 +231,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         assert_is_a_number(treeheightRow)
         assert_is_a_number(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
-        assertIsAStringOrNULL(borderColor)
+        assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {
             borderColor <- NA
         }
@@ -349,11 +349,11 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         assert_is_a_bool(clusterCols)
         assert_is_a_bool(clusterRows)
         assert_is_a_bool(legend)
-        assertIsAStringOrNULL(borderColor)
+        assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {
             borderColor <- NA
         }
-        assertIsAStringOrNULL(title)
+        assertIsStringOrNULL(title)
         if (!is_a_string(title)) {
             title <- NA
         }

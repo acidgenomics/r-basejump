@@ -42,7 +42,7 @@ microplate <- function(
     assert_all_are_non_negative(controls)
     assert_is_subset(controls, 0L:12L)
     # Prefix
-    assertIsAStringOrNULL(prefix)
+    assertIsStringOrNULL(prefix)
 
     if (wells == 96L) {
         row <- 8L
