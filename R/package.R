@@ -79,7 +79,11 @@
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie assertAreNonExisting assertAreUniqueGeneNames
 #'   assertAreURLs assertAreValidNames assertFormalCompress assertHasRownames
-#'   assertIsANumberOrNULL assertIsStringOrNULL
+#'   assertIsAlpha assertIsANumberOrNULL assertIsAnIntegerOrNULL
+#'   assertIsColorScaleContinuousOrNULL assertIsColorScaleDiscreteOrNULL
+#'   assertIsDir assertIsFile assertIsFillScaleContinuousOrNULL
+#'   assertIsFillScaleDiscreteOrNULL assertIsHeaderLevel
+#'   assertIsHexColorFunctionOrNULL assertIsImplicitInteger assertIsStringOrNULL
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
