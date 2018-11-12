@@ -25,7 +25,6 @@ Check Gene-to-Symbol Mappings
 }
 \examples{
 DataFrame <- S4Vectors::DataFrame
-Gene2Symbol <- basejump::Gene2Symbol
 
 x <- DataFrame(
     "sample1" = c(1L, 2L),
@@ -35,7 +34,7 @@ x <- DataFrame(
 print(x)
 
 gene2symbol <- Gene2Symbol(
-    x = DataFrame(
+    object = DataFrame(
         geneID = c("ENSG00000000003", "ENSG00000000005"),
         geneName = c("TSPAN6", "TNMD"),
         row.names = rownames(x)
