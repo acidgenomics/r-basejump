@@ -505,6 +505,7 @@ setMethod(
 #' performs aggregation with the [aggregateCols()] function.
 #'
 #' @name aggregateCellsToSamples
+#' @inheritParams aggregate
 #' @inheritParams params
 #'
 #' @return `SummarizedExperiment`. Object with cell-level counts aggregated
