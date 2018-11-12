@@ -9,7 +9,6 @@
 #'
 #' @examples
 #' DataFrame <- S4Vectors::DataFrame
-#' Gene2Symbol <- basejump::Gene2Symbol
 #'
 #' x <- DataFrame(
 #'     "sample1" = c(1L, 2L),
@@ -19,7 +18,7 @@
 #' print(x)
 #'
 #' gene2symbol <- Gene2Symbol(
-#'     x = DataFrame(
+#'     object = DataFrame(
 #'         geneID = c("ENSG00000000003", "ENSG00000000005"),
 #'         geneName = c("TSPAN6", "TNMD"),
 #'         row.names = rownames(x)
@@ -43,28 +42,17 @@
 #'     genes = geneNames,
 #'     gene2symbol = gene2symbol
 #' )
-assertFormalGene2Symbol <- function(
-    x,
-    genes,
-    gene2symbol
-) {
-    requireNamespace("basejump", quietly = TRUE)
+assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
     assertHasRownames(x)
     assert_is_character(genes)
     assert_is_non_empty(genes)
     assert_is_all_of(gene2symbol, "Gene2Symbol")
-    assert_are_identical(
-        x = nrow(x),
-        y = nrow(gene2symbol)
-    )
+    assert_are_identical(x = nrow(x), y = nrow(gene2symbol))
     if (is.null(rownames(gene2symbol))) {
         rownames(gene2symbol) <- rownames(x)
     }
     # Map genes to x rownames, using gene2symbol.
-    rownames <- basejump::mapGenesToRownames(
-        x = gene2symbol,
-        genes = genes
-    )
+    rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
     assert_is_subset(rownames, rownames(x))
     invisible()
 }
@@ -88,9 +76,8 @@ assertFormalGene2Symbol <- function(
 #' assertFormalInterestingGroups(rse, "treatment")
 #' assertFormalInterestingGroups(rse, NULL)
 assertFormalInterestingGroups <- function(x, interestingGroups) {
-    requireNamespace("basejump", quietly = TRUE)
     assert_that(isS4(x))
-    data <- basejump::sampleData(x)
+    data <- sampleData(x)
 
     # Check `interestingGroups` argument.
     if (is.null(interestingGroups)) {
