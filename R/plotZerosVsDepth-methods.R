@@ -53,7 +53,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
 
         # Wrap samples by `aggregate` column, if defined.
         facets <- NULL
-        if (isTRUE(hasAggregateInfo(data))) {
+        if (isTRUE("aggregate" %in% colnames(data))) {
             facets <- "aggregate"
         }
         if (is.character(facets)) {
