@@ -160,7 +160,7 @@ loadDataAsName <- function(
 #' print(x)
 loadRemoteData <- function(url, envir = parent.frame()) {
     assert_that(has_internet())
-    assertAllAreURL(url)
+    assertAreURLs(url)
     if (!all(vapply(
         X = url,
         FUN = function(x) {
