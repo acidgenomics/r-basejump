@@ -2,40 +2,19 @@
 % Please edit documentation in R/deprecated.R
 \name{defunct}
 \alias{defunct}
-\alias{assertIsGFF}
 \alias{parseGFFAttributes}
 \alias{dynamicPlotlist}
 \alias{synonyms}
-\alias{assertAreGeneAnnotations}
-\alias{assertAreTranscriptAnnotations}
-\alias{assertIsCharacterOrNULL}
-\alias{assertIsDataFrameOrNULL}
-\alias{assertIsGene2symbol}
-\alias{assertIsTx2gene}
 \alias{broadClass}
 \alias{separatorBar}
 \alias{setArgsToDoCall}
 \title{Defunct Functions}
 \usage{
-assertIsGFF(...)
-
 parseGFFAttributes(...)
 
 dynamicPlotlist(...)
 
 synonyms(...)
-
-assertAreGeneAnnotations(...)
-
-assertAreTranscriptAnnotations(...)
-
-assertIsCharacterOrNULL(object, ...)
-
-assertIsDataFrameOrNULL(object, ...)
-
-assertIsGene2symbol(...)
-
-assertIsTx2gene(...)
 
 broadClass(object, ...)
 
