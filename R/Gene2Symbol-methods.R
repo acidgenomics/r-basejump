@@ -19,10 +19,7 @@ NULL
 
 
 Gene2Symbol.DataFrame <-  # nolint
-    function(
-        object,
-        format = c("makeUnique", "1:1", "long")
-    ) {
+    function(object, format = c("makeUnique", "1:1", "long")) {
         assert_has_rows(object)
         format <- match.arg(format)
 
@@ -35,9 +32,13 @@ Gene2Symbol.DataFrame <-  # nolint
             ))
         }
 
-        data <- object[, cols, drop = FALSE]
+        data <- object %>%
+            .[, cols, drop = FALSE] %>%
+            as_tibble(rownames = NULL)
 
         # Inform the user about how many symbols multi-map.
+        # Note that `duplicated()` doesn't work on Rle, so we have to coerce
+        # columns to character first (see `as_tibble()` call above).
         duplicated <- duplicated(data[["geneName"]])
         if (any(duplicated)) {
             dupes <- unique(data[["geneName"]][duplicated])
@@ -87,13 +88,7 @@ Gene2Symbol.GRanges <-  # nolint
         data <- as(object, "DataFrame")
         data <- unique(data)
         metadata(data) <- metadata(object)
-        do.call(
-            what = Gene2Symbol,
-            args = list(
-                object = data,
-                format = format
-            )
-        )
+        do.call(what = Gene2Symbol, args = list(object = data, format = format))
     }
 formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
 
@@ -114,13 +109,7 @@ Gene2Symbol.SummarizedExperiment <-  # nolint
         object <- as.SummarizedExperiment(object)
         data <- rowData(object)
         rownames(data) <- rownames(object)
-        do.call(
-            what = Gene2Symbol,
-            args = list(
-                object = data,
-                format = format
-            )
-        )
+        do.call(what = Gene2Symbol, args = list(object = data, format = format))
     }
 formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
 
