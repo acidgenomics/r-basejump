@@ -4,14 +4,8 @@
 #' @inherit params
 #' @export
 #'
-#' @param x x class supporting `rownames`. All rownames in this x
+#' @param x Object class supporting `rownames`. All rownames in this object
 #'   must intersect with the rownames defined in the `gene2symbol` argument.
-#' @param genes `character`. Gene identifiers. Note that gene names (symbols)
-#'   are also supported, but not recommended if the stable IDs can be easily
-#'   provided instead.
-#' @param gene2symbol `Gene2Symbol`. Gene-to-symbol mappings. Must contain
-#'   `geneID` and `geneName` columns, with rownames defined. All of the `x`
-#'   rownames must be defined here, otherwise the function will error.
 #'
 #' @examples
 #' DataFrame <- S4Vectors::DataFrame
