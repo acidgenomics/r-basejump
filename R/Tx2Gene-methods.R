@@ -26,6 +26,7 @@ Tx2Gene.DataFrame <-  # nolint
 
         data <- object %>%
             .[, cols, drop = FALSE] %>%
+            # This will handle rownames automatically, even if unset.
             as("tbl_df") %>%
             mutate_all(as.character) %>%
             as("DataFrame")
