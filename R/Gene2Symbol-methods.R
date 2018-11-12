@@ -34,7 +34,7 @@ Gene2Symbol.DataFrame <-  # nolint
 
         data <- object %>%
             .[, cols, drop = FALSE] %>%
-            as_tibble(rownames = NULL)
+            as.data.frame()
 
         # Inform the user about how many symbols multi-map.
         # Note that `duplicated()` doesn't work on Rle, so we have to coerce
