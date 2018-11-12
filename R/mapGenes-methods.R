@@ -55,7 +55,7 @@ NULL
     if (any(genes %in% rownames(object))) {
         table <- rownames(object)
     } else if (any(genes %in% object[["geneName"]])) {
-        assertAllAreUniqueGeneNames(object, genes)
+        assertAreUniqueGeneNames(object, genes)
         table <- object[["geneName"]]
     } else if (any(genes %in% object[["geneID"]])) {
         table <- object[["geneID"]]
