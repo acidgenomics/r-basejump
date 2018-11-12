@@ -88,7 +88,7 @@ loadDataAsName <- function(
     assert_is_environment(envir)
 
     # Check to see if any of the new names already exist in environment
-    assertAllAreNonExisting(names(dots), envir = envir, inherits = FALSE)
+    assertAreNonExisting(names(dots), envir = envir, inherits = FALSE)
 
     if (any(grepl("\\.rds$", files))) {
         # R data serialized: assign directly
@@ -175,7 +175,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     names(url) <- names
 
     # Check to make sure the objects don't already exist.
-    assertAllAreNonExisting(names, envir = envir, inherits = FALSE)
+    assertAreNonExisting(names, envir = envir, inherits = FALSE)
 
     # Download the files to tempdir and return a character matrix of mappings.
     invisible(mapply(
@@ -248,7 +248,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     }
 
     # Fail on attempt to load on top of an existing object.
-    assertAllAreNonExisting(name, envir = envir, inherits = FALSE)
+    assertAreNonExisting(name, envir = envir, inherits = FALSE)
 
     # Load into a temporary environment.
     tmpEnvir <- new.env()
@@ -302,7 +302,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     data <- readRDS(file)
 
     # Fail on attempt to load on top of an existing object.
-    assertAllAreNonExisting(name, envir = envir, inherits = FALSE)
+    assertAreNonExisting(name, envir = envir, inherits = FALSE)
 
     assign(x = name, value = data, envir = envir)
 

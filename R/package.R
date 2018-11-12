@@ -77,6 +77,7 @@
 #'   guides labs position_jitterdodge scale_x_continuous scale_y_continuous
 #'   stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
+#' @importFrom goalie assertAreNonExisting
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
