@@ -133,24 +133,63 @@ synonyms <- function(...) {
 # v0.8.0 =======================================================================
 #' @rdname deprecated
 #' @export
-aggregateFeatures <- function(...) {
-    .Deprecated("aggregateRows")
-    aggregateRows(...)
-}
+setGeneric(
+    name = "aggregateFeatures",
+    def = function(object, ...) {
+        standardGeneric("aggregateFeatures")
+    }
+)
 
 #' @rdname deprecated
 #' @export
-aggregateReplicates <- function(...) {
-    .Deprecated("aggregateCols")
-    aggregateCols(...)
-}
+setMethod(
+    f = "aggregateFeatures",
+    signature = signature("ANY"),
+    definition = function(object, ...) {
+        .Deprecated("aggregateRows")
+        aggregateRows(object, ...)
+    }
+)
 
 #' @rdname deprecated
 #' @export
-aggregateSamples <- function(...) {
-    .Deprecated("aggregateCols")
-    aggregateCols(...)
-}
+setGeneric(
+    name = "aggregateReplicates",
+    def = function(object, ...) {
+        standardGeneric("aggregateReplicates")
+    }
+)
+
+#' @rdname deprecated
+#' @export
+setMethod(
+    f = "aggregateReplicates",
+    signature = signature("ANY"),
+    definition = function(object, ...) {
+        .Deprecated("aggregateCols")
+        aggregateCols(object, ...)
+    }
+)
+
+#' @rdname deprecated
+#' @export
+setGeneric(
+    name = "aggregateSamples",
+    def = function(object, ...) {
+        standardGeneric("aggregateSamples")
+    }
+)
+
+#' @rdname deprecated
+#' @export
+setMethod(
+    f = "aggregateSamples",
+    signature = signature("ANY"),
+    definition = function(object, ...) {
+        .Deprecated("aggregateCols")
+        aggregateCols(object, ...)
+    }
+)
 
 #' @rdname deprecated
 #' @export
