@@ -30,6 +30,7 @@ coerceS4ToList <- function(from) {
 
 
 
+# Consider soft deprecating in favor of `coerceS4ToList()`.
 flatFiles.SummarizedExperiment <- function(object) {
     coerceS4ToList(object)
 }
