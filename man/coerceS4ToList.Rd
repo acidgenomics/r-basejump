@@ -14,6 +14,10 @@ coerceS4ToList(from)
 \S4method{flatFiles}{SummarizedExperiment}(object)
 }
 \arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+
 \item{from}{The classes between which the coerce methods
     \code{def} and \code{replace} perform coercion.
   }

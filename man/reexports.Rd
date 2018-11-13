@@ -61,6 +61,20 @@
 \alias{isURL}
 \alias{validDimnames}
 \alias{validNames}
+\alias{DataFrame}
+\alias{mcols}
+\alias{assay}
+\alias{assay<-}
+\alias{assays}
+\alias{assays<-}
+\alias{assayNames}
+\alias{assayNames<-}
+\alias{colData}
+\alias{colData<-}
+\alias{rowData}
+\alias{rowData<-}
+\alias{rowRanges}
+\alias{rowRanges<-}
 \alias{\%>\%}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -79,7 +93,11 @@ below to see their documentation.
 
   \item{methods}{\code{\link[methods]{show}}}
 
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}}
+
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
+
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assay<-}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assayNames<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}}
 }}
