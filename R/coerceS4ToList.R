@@ -1,6 +1,7 @@
 #' Coerce Any S4 Object to List
 #'
 #' @inheritParams methods::coerce
+#' @inheritParams params
 #' @export
 #'
 #' @seealso `methods::coerce`.
