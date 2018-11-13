@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.8.1
-Date: 2018-11-12
+Date: 2018-11-13
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -118,9 +118,9 @@ Collate:
     'Tx2Gene-methods.R'
     'aggregate-methods.R'
     'as-methods.R'
+    'assertions.R'
     'calls.R'
     'cell2sample-methods.R'
-    'checkClasses.R'
     'collapse-methods.R'
     'combine-methods.R'
     'convertGenesToSymbols-methods.R'
@@ -140,7 +140,6 @@ Collate:
     'geometricMean-methods.R'
     'ggplot2.R'
     'globals.R'
-    'goalie.R'
     'import.R'
     'initDir.R'
     'interestingGroups-methods.R'
