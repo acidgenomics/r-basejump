@@ -183,8 +183,8 @@ setGeneric(
 #' @rdname coerceS4ToList
 #' @export
 setGeneric(
-    "flatFiles",
-    function(object, ...) {
+    name = "flatFiles",
+    def = function(object, ...) {
         standardGeneric("flatFiles")
     }
 )
