@@ -1,8 +1,8 @@
 data(mat, rse, envir = environment())
 
+Rle <- structure("Rle", package = "S4Vectors")
 organism <- "Homo sapiens"
 release <- 87L
-
 seqnames <- GenomeInfoDb::seqnames
 
 
@@ -142,13 +142,13 @@ test_that("makeGRangesFromEnsembl : genes", {
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
-            broadClass = "factor",
-            description = "factor",
+            broadClass = Rle,
+            description = Rle,
             entrezID = "list",
-            geneBiotype = "factor",
-            geneID = "character",
-            geneName = "factor",
-            seqCoordSystem = "factor"
+            geneBiotype = Rle,
+            geneID = Rle,
+            geneName = Rle,
+            seqCoordSystem = Rle
         )
     )
 })
@@ -168,19 +168,19 @@ test_that("makeGRangesFromEnsembl : transcripts", {
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
-            broadClass = "factor",
-            description = "factor",
+            broadClass = Rle,
+            description = Rle,
             entrezID = "list",
-            geneBiotype = "factor",
-            geneID = "factor",
-            geneName = "factor",
-            seqCoordSystem = "factor",
-            transcriptBiotype = "factor",
-            transcriptCdsSeqEnd = "integer",
-            transcriptCdsSeqStart = "integer",
-            transcriptID = "character",
-            transcriptName = "character",
-            transcriptSupportLevel = "integer"
+            geneBiotype = Rle,
+            geneID = Rle,
+            geneName = Rle,
+            seqCoordSystem = Rle,
+            transcriptBiotype = Rle,
+            transcriptCdsSeqEnd = Rle,
+            transcriptCdsSeqStart = Rle,
+            transcriptID = Rle,
+            transcriptName = Rle,
+            transcriptSupportLevel = Rle
         )
     )
 })
@@ -278,14 +278,14 @@ test_that("makeGRangesFromGFF : Minimal GTF", {
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
-            broadClass = "factor",
-            geneBiotype = "factor",
-            geneID = "character",
-            geneName = "character",
-            geneSource = "factor",
-            geneVersion = "factor",
-            source = "factor",
-            type = "factor"
+            broadClass = Rle,
+            geneBiotype = Rle,
+            geneID = Rle,
+            geneName = Rle,
+            geneSource = Rle,
+            geneVersion = Rle,
+            source = Rle,
+            type = Rle
         )
     )
 
@@ -297,22 +297,22 @@ test_that("makeGRangesFromGFF : Minimal GTF", {
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
-            broadClass = "factor",
-            ccdsID = "factor",
-            geneBiotype = "factor",
-            geneID = "factor",
-            geneName = "factor",
-            geneSource = "factor",
-            geneVersion = "factor",
-            source = "factor",
-            tag = "factor",
-            transcriptBiotype = "factor",
-            transcriptID = "character",
-            transcriptName = "character",
-            transcriptSource = "factor",
-            transcriptSupportLevel = "factor",
-            transcriptVersion = "factor",
-            type = "factor"
+            broadClass = Rle,
+            ccdsID = Rle,
+            geneBiotype = Rle,
+            geneID = Rle,
+            geneName = Rle,
+            geneSource = Rle,
+            geneVersion = Rle,
+            source = Rle,
+            tag = Rle,
+            transcriptBiotype = Rle,
+            transcriptID = Rle,
+            transcriptName = Rle,
+            transcriptSource = Rle,
+            transcriptSupportLevel = Rle,
+            transcriptVersion = Rle,
+            type = Rle
         )
     )
 })
@@ -326,17 +326,17 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
-            broadClass = "factor",
-            description = "character",
-            geneBiotype = "factor",
-            geneID = "character",
-            geneName = "character",
-            havanaGene = "factor",
-            havanaVersion = "factor",
-            logicName = "factor",
-            source = "factor",
-            type = "factor",
-            version = "factor"
+            broadClass = Rle,
+            description = Rle,
+            geneBiotype = Rle,
+            geneID = Rle,
+            geneName = Rle,
+            havanaGene = Rle,
+            havanaVersion = Rle,
+            logicName = Rle,
+            source = Rle,
+            type = Rle,
+            version = Rle
         )
     )
 
@@ -348,21 +348,21 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
-            broadClass = "factor",
-            ccdsID = "factor",
-            geneBiotype = "factor",
-            geneID = "factor",
-            geneName = "factor",
-            havanaTranscript = "factor",
-            havanaVersion = "factor",
-            source = "factor",
-            tag = "factor",
-            transcriptBiotype = "factor",
-            transcriptID = "character",
-            transcriptName = "character",
-            transcriptSupportLevel = "factor",
-            type = "factor",
-            version = "factor"
+            broadClass = Rle,
+            ccdsID = Rle,
+            geneBiotype = Rle,
+            geneID = Rle,
+            geneName = Rle,
+            havanaTranscript = Rle,
+            havanaVersion = Rle,
+            source = Rle,
+            tag = Rle,
+            transcriptBiotype = Rle,
+            transcriptID = Rle,
+            transcriptName = Rle,
+            transcriptSupportLevel = Rle,
+            type = Rle,
+            version = Rle
         )
     )
 })
