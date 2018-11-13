@@ -140,6 +140,7 @@ Collate:
     'geometricMean-methods.R'
     'ggplot2.R'
     'globals.R'
+    'goalie.R'
     'import.R'
     'initDir.R'
     'interestingGroups-methods.R'
