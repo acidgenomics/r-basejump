@@ -84,40 +84,6 @@ NULL
 
 
 
-# coerceS4ToList ===============================================================
-#' Coerce Any S4 Object to List
-#'
-#' @inheritParams methods::coerce
-#' @export
-#'
-#' @seealso `methods::coerce`.
-#'
-#' @examples
-#' data(rse)
-#' list <- coerceS4ToList(rse)
-#' class(list)
-#' names(list)
-coerceS4ToList <- function(from) {
-    stopifnot(isS4(from))
-    to <- lapply(slotNames(from), function(slot) {
-        if (.hasSlot(from, slot)) {
-            slot(from, slot)
-        } else {
-            NULL  # nocov
-        }
-    })
-    names(to) <- slotNames(from)
-    to
-}
-
-
-
-#' @rdname coerceS4ToList
-#' @export
-flatFiles <- coerceS4ToList
-
-
-
 # data.frame : S4 ==============================================================
 #' @importFrom BiocGenerics as.data.frame
 #' @export

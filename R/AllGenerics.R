@@ -179,6 +179,18 @@ setGeneric(
 
 
 
+# flatFiles ====================================================================
+#' @rdname coerceS4ToList
+#' @export
+setGeneric(
+    "flatFiles",
+    function(object, ...) {
+        standardGeneric("flatFiles")
+    }
+)
+
+
+
 # geometricMean ================================================================
 #' @rdname geometricMean
 #' @export

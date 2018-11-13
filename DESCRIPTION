@@ -121,6 +121,7 @@ Collate:
     'assertions.R'
     'calls.R'
     'cell2sample-methods.R'
+    'coerceS4ToList.R'
     'collapse-methods.R'
     'combine-methods.R'
     'convertGenesToSymbols-methods.R'
