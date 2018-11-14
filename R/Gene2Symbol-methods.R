@@ -48,7 +48,8 @@ Gene2Symbol.DataFrame <-  # nolint
         }
 
         if (format == "makeUnique") {
-            message("Returning 1:1 mappings with renamed gene symbols.")
+            # This is the default, and message is too noisy in other functions.
+            # message("Returning 1:1 mappings with renamed gene symbols.")
             data[["geneName"]] <- data[["geneName"]] %>%
                 as.character() %>%
                 make.unique()
