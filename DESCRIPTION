@@ -166,6 +166,7 @@ Collate:
     'minimalSampleData.R'
     'organism-methods.R'
     'package.R'
+    'params.R'
     'plotCountsPerBiotype-methods.R'
     'plotCountsPerGene-methods.R'
     'plotGene-methods.R'
