@@ -1,4 +1,4 @@
-context("goalie")
+context("Assertions")
 
 data(rse, envir = environment())
 
@@ -20,7 +20,7 @@ test_that("assertFormalGene2Symbol", {
         "sample2" = c(3L, 4L),
         row.names = genes
     )
-    expect_null(
+    expect_true(
         assertFormalGene2Symbol(
             x = x,
             genes = genes,
@@ -41,7 +41,7 @@ test_that("assertFormalGene2Symbol", {
 
 # assertFormalInterestingGroups ================================================
 test_that("assertFormalInterestingGroups", {
-    expect_silent(
+    expect_true(
         assertFormalInterestingGroups(
             x = rse,
             interestingGroups = c("genotype", "treatment")
