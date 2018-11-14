@@ -98,7 +98,7 @@ Suggests:
     testthat,
     viridis
 Remotes:
-    steinbaugh/goalie
+    steinbaugh/goalie@develop
 biocViews:
     DataImport,
     Infrastructure
