@@ -11,8 +11,8 @@
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
-#' @importMethodsFrom S4Vectors as.data.frame as.list do.call lapply match
-#'   setdiff t
+#' @importMethodsFrom S4Vectors as.data.frame as.list coerce do.call lapply
+#'   match setdiff t
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #'
