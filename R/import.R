@@ -235,6 +235,7 @@ import <- function(
             }
         )
     } else if (ext == "MTX") {
+        # TODO Need to improve the error message here if sidecars are missing.
         # MatrixMarket sparse matrix.
         # Requires `.rownames` and `.colnames` files.
         message(paste(
