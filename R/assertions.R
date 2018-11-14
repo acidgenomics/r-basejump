@@ -104,10 +104,11 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
 
 #' Validate Classes
 #'
-#' Utility function to check multiple classes in a single call.
+#' Validity check capable of validating multiple slots in a single call.
 #'
 #' To be used inside S4 [methods::setValidity()] call or with
-#' [assertthat::validate_that()].
+#' [assertthat::validate_that()]. Particularly useful for checking multiple
+#' slotted objects inside [S4Vectors::metadata()] `list`.
 #'
 #' @export
 #'
@@ -122,10 +123,8 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
 #'
 #' @examples
 #' data(rse)
-#' object <- rse
-#' metadata <- S4Vectors::metadata(object)
 #' validateClasses(
-#'     object = metadata,
+#'     object = S4Vectors::metadata(rse),
 #'     expected = list(
 #'         version = c("package_version", "numeric_version"),
 #'         date = "Date",
@@ -163,12 +162,13 @@ validateClasses <- function(
         SIMPLIFY = TRUE,
         USE.NAMES = TRUE
     )
+    assert_is_logical(valid)
     ifelse(
         test = all(valid),
         yes = TRUE,
         no = paste(
             "Class checks failed:",
-            printString(valid),
+            printString(names(valid)[!valid]),
             sep = "\n"
         )
     )

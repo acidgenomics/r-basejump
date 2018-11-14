@@ -63,6 +63,9 @@
 \alias{validNames}
 \alias{DataFrame}
 \alias{mcols}
+\alias{mcols<-}
+\alias{metadata}
+\alias{metadata<-}
 \alias{assay}
 \alias{assay<-}
 \alias{assays}
@@ -93,7 +96,7 @@ below to see their documentation.
 
   \item{methods}{\code{\link[methods]{show}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}}
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
 
