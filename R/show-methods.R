@@ -1,8 +1,5 @@
-#' @inherit methods::show
 #' @name show
-#'
-#' @return Invisible `NULL`.
-#'
+#' @inherit methods::show
 #' @examples
 #' data(rse)
 #' options(basejump.test = TRUE)
@@ -31,7 +28,7 @@ methods::show
 
 
 
-# FIXME Need to improve the spacing for this.
+# TODO Need to improve the spacing for this.
 show.EggNOG <-  # nolint
     function(object) {
         .showHeader(object)
