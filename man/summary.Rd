@@ -4,12 +4,15 @@
 \name{summary}
 \alias{summary}
 \alias{summary,Gene2Symbol-method}
+\alias{summary,Tx2Gene-method}
 \title{Object Summaries}
 \usage{
 \S4method{summary}{Gene2Symbol}(object)
+
+\S4method{summary}{Tx2Gene}(object)
 }
 \arguments{
-\item{object}{an object for which a summary is desired.}
+\item{object}{Object.}
 }
 \value{
 Invisible \code{NULL}.
@@ -19,16 +22,6 @@ Invisible \code{NULL}.
   of the results of various model fitting functions.  The function
   invokes particular \code{\link{methods}} which depend on the
   \code{\link{class}} of the first argument.
-}
-\details{
-For \code{\link{factor}}s, the frequency of the first \code{maxsum - 1}
-    most frequent levels is shown, and the less frequent levels are
-    summarized in \code{"(Others)"} (resulting in at most \code{maxsum}
-    frequencies).
-
-    The functions \code{summary.lm} and \code{summary.glm} are examples
-    of particular methods which summarize the results produced by
-    \code{\link{lm}} and \code{\link{glm}}.
 }
 \examples{
 data(rse, tx_se)
@@ -45,9 +38,4 @@ summary(x)
 Chambers, J. M. and Hastie, T. J. (1992)
   \emph{Statistical Models in S}.
   Wadsworth & Brooks/Cole.
-}
-\seealso{
-\code{\link{anova}},
-  \code{\link{summary.glm}},
-  \code{\link{summary.lm}}.
 }

@@ -1,5 +1,8 @@
 #' @name summary
-#' @inherit base::summary
+#' @inherit base::summary title description references
+#' @importFrom S4Vectors summary
+#'
+#' @inheritParams params
 #'
 #' @return Invisible `NULL`.
 #'
@@ -14,13 +17,6 @@
 #' x <- Tx2Gene(tx_se)
 #' summary(x)
 NULL
-
-
-
-#' @importFrom S4Vectors summary
-#' @aliases NULL
-#' @export
-S4Vectors::summary
 
 
 
