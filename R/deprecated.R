@@ -206,6 +206,13 @@ broadClass <- function(object, ...) {
 
 #' @rdname deprecated
 #' @export
+checkClasses <- function(...) {
+    .Deprecated("validateClasses")
+    validateClasses(...)
+}
+
+#' @rdname deprecated
+#' @export
 eggnog <- function(...) {
     .Deprecated("EggNOG")
     EggNOG(...)

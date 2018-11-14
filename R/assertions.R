@@ -54,7 +54,7 @@ assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
     # Map genes to x rownames, using gene2symbol.
     rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
     assert_is_subset(rownames, rownames(x))
-    invisible()
+    TRUE
 }
 
 
@@ -96,23 +96,35 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
         X = data[, interestingGroups, drop = FALSE],
         FUN = assert_is_factor
     ))
+
+    TRUE
 }
 
 
 
-# Consider deprecating this in a future release.
-#' Check Classes
+#' Validate Classes
+#'
+#' Utility function to check multiple classes in a single call.
+#'
+#' To be used inside S4 [methods::setValidity()] call or with
+#' [assertthat::validate_that()].
+#'
 #' @export
 #'
 #' @inheritParams params
 #' @param expected `list`. Named list of expected classes per slot.
 #' @param subset `boolean`. Only check a subset of slots in the object.
 #'
+#' @seealso [assertthat::validate_that()].
+#'
+#' @return `boolean` (TRUE) on sucess or `string` containing informative
+#'   message on failure.
+#'
 #' @examples
 #' data(rse)
 #' object <- rse
 #' metadata <- S4Vectors::metadata(object)
-#' checkClasses(
+#' validateClasses(
 #'     object = metadata,
 #'     expected = list(
 #'         version = c("package_version", "numeric_version"),
@@ -120,7 +132,7 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
 #'         interestingGroups = "character"
 #'     )
 #' )
-checkClasses <- function(
+validateClasses <- function(
     object,
     expected,
     subset = FALSE
@@ -151,13 +163,13 @@ checkClasses <- function(
         SIMPLIFY = TRUE,
         USE.NAMES = TRUE
     )
-    if (!all(valid)) {
-        stop(paste(
-            "Class checks failed.",
-            "Run `updateObject()` to update your object.",
+    ifelse(
+        test = all(valid),
+        yes = TRUE,
+        no = paste(
+            "Class checks failed:",
             printString(valid),
             sep = "\n"
-        ))
-    }
-    TRUE
+        )
+    )
 }
