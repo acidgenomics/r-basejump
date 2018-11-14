@@ -18,18 +18,17 @@ validateClasses(object, expected, subset = FALSE)
 message on failure.
 }
 \description{
-Utility function to check multiple classes in a single call.
+Validity check capable of validating multiple slots in a single call.
 }
 \details{
 To be used inside S4 \code{\link[methods:setValidity]{methods::setValidity()}} call or with
-\code{\link[assertthat:validate_that]{assertthat::validate_that()}}.
+\code{\link[assertthat:validate_that]{assertthat::validate_that()}}. Particularly useful for checking multiple
+slotted objects inside \code{\link[S4Vectors:metadata]{S4Vectors::metadata()}} \code{list}.
 }
 \examples{
 data(rse)
-object <- rse
-metadata <- S4Vectors::metadata(object)
 validateClasses(
-    object = metadata,
+    object = S4Vectors::metadata(rse),
     expected = list(
         version = c("package_version", "numeric_version"),
         date = "Date",

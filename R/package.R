@@ -61,8 +61,8 @@
 #'   assert_is_a_string assert_is_all_of assert_is_an_integer assert_is_any_of
 #'   assert_is_call assert_is_character assert_is_data.frame
 #'   assert_is_environment assert_is_factor assert_is_function assert_is_integer
-#'   assert_is_list assert_is_matrix assert_is_name assert_is_numeric
-#'   assert_is_symbol assert_is_tbl_df is_a_number is_a_string
+#'   assert_is_list assert_is_logical assert_is_matrix assert_is_name
+#'   assert_is_numeric assert_is_symbol assert_is_tbl_df is_a_number is_a_string
 #' @importFrom assertthat assert_that validate_that
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
@@ -225,6 +225,18 @@ S4Vectors::DataFrame
 #' @importFrom S4Vectors mcols
 #' @export
 S4Vectors::mcols
+
+#' @importFrom S4Vectors mcols<-
+#' @export
+S4Vectors::`mcols<-`
+
+#' @importFrom S4Vectors metadata
+#' @export
+S4Vectors::metadata
+
+#' @importFrom S4Vectors metadata<-
+#' @export
+S4Vectors::`metadata<-`
 
 #' @importFrom SummarizedExperiment assay
 #' @export
