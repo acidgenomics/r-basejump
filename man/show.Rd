@@ -4,33 +4,18 @@
 \name{show}
 \alias{show}
 \alias{show,EggNOG-method}
-\alias{show,Ensembl2Entrez-method}
-\alias{show,Gene2Symbol-method}
-\alias{show,HGNC2Ensembl-method}
-\alias{show,MGI2Ensembl-method}
 \alias{show,PANTHER-method}
-\alias{show,Tx2Gene-method}
 \title{Show an Object}
 \usage{
 \S4method{show}{EggNOG}(object)
 
-\S4method{show}{Ensembl2Entrez}(object)
-
-\S4method{show}{Gene2Symbol}(object)
-
-\S4method{show}{HGNC2Ensembl}(object)
-
-\S4method{show}{MGI2Ensembl}(object)
-
 \S4method{show}{PANTHER}(object)
-
-\S4method{show}{Tx2Gene}(object)
 }
 \arguments{
 \item{object}{Any R object}
 }
 \value{
-\code{show} returns an invisible \code{NULL}.
+Invisible \code{NULL}.
 }
 \description{
 Display the object, by printing, plotting or whatever suits its
@@ -58,8 +43,8 @@ the discussion in \code{\link{setIs}} for the general concept.
 data(rse)
 options(basejump.test = TRUE)
 
-## Gene2Symbol ====
-x <- Gene2Symbol(rse)
+## EggNOG ====
+x <- EggNOG()
 show(x)
 
 ## PANTHER ====
