@@ -11,6 +11,8 @@
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
+#' @importMethodsFrom S4Vectors as.data.frame as.list do.call lapply match
+#'   setdiff t
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #'
@@ -27,7 +29,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL url.exists
 #' @importFrom S4Vectors %in% DataFrame List Rle aggregate complete.cases cor
-#'   expand head mcols mcols<- metadata metadata<- na.omit tail
+#'   decode expand head mcols mcols<- metadata metadata<- na.omit tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<-
 #'   reducedDimNames reducedDims spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames assays
