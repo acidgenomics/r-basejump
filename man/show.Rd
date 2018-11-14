@@ -15,7 +15,7 @@
 \item{object}{Any R object}
 }
 \value{
-Invisible \code{NULL}.
+\code{show} returns an invisible \code{NULL}.
 }
 \description{
 Display the object, by printing, plotting or whatever suits its
