@@ -9,13 +9,13 @@
 #' @param assay `scalar`. Name or index of count matrix slotted in
 #'   `SummarizedExperiment::assays()`. When passing in a `string`, the name must
 #'   be defined in `SummarizedExperiment::assayNames()`.
-#' @param bpparam `bpparamClass`. [BiocParallel][] parameter specifying the
-#'   back-end to be used for computations. See `BiocParallel::bpparam()` for
-#'   details. We recommend one of the following:
+#' @param bpparam `bpparamClass`. BiocParallel parameter specifying the back-end
+#'   to be used for computations. See `BiocParallel::bpparam()` for details.
+#'
+#'   We recommend one of the following:
 #'   - `BiocParallel::bpparam()`.
 #'   - `BiocParallel::SerialParam()`.
 #'   - `BiocParallel::MulticoreParam()`.
-#' [BiocParallel]: https://doi.org/doi:10.18129/B9.bioc.BiocParallel
 #' @param check `boolean`. Perform assert checks.
 #' @param color `ggproto`/`ScaleDiscrete` or `NULL`. Desired ggplot2 color
 #'   scale. Must supply discrete values. When set to `NULL`, the default ggplot2

@@ -13,14 +13,14 @@ If left \code{NULL}, will use the cutoff defined in the object.}
 \code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
 be defined in \code{SummarizedExperiment::assayNames()}.}
 
-\item{bpparam}{\code{bpparamClass}. \link{BiocParallel} parameter specifying the
-back-end to be used for computations. See \code{BiocParallel::bpparam()} for
-details. We recommend one of the following:
+\item{bpparam}{\code{bpparamClass}. BiocParallel parameter specifying the back-end
+to be used for computations. See \code{BiocParallel::bpparam()} for details.
+
+We recommend one of the following:
 \itemize{
 \item \code{BiocParallel::bpparam()}.
 \item \code{BiocParallel::SerialParam()}.
 \item \code{BiocParallel::MulticoreParam()}.
-\link{BiocParallel}: https://doi.org/doi:10.18129/B9.bioc.BiocParallel
 }}
 
 \item{check}{\code{boolean}. Perform assert checks.}
