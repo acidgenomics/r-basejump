@@ -10,8 +10,8 @@
 
 # Temporarily enable `script: true` when caching package library.
 # https://gist.github.com/mjsteinbaugh/47d9a7aecdd8c3c1962a3247d791635f
-
 # script: true
+
 # r_build_args: "--no-build-vignettes"
 # r_check_args: "--no-vignettes"
 
@@ -24,17 +24,14 @@ matrix:
   include:
   - os: osx
     r: bioc-release
-    script: false
     fortran: false
     latex: false
     warnings_are_errors: true
   - os: linux
     r: bioc-release
-    script: false
     warnings_are_errors: true
   # - os: linux
   #   r: bioc-devel
-  #   script: false
   #   latex: false
   #   warnings_are_errors: true
   fast_finish: true
