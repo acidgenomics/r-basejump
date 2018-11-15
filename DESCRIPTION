@@ -115,6 +115,7 @@ Collate:
     'MGI2Ensembl.R'
     'MethodDefinition.R'
     'PANTHER.R'
+    'Rle-methods.R'
     'Tx2Gene-methods.R'
     'aggregate-methods.R'
     'as-methods.R'

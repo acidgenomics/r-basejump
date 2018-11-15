@@ -1,8 +1,6 @@
 # Still intermittently getting the `dbDisconnect()` warning:
-#
 # Warning message:
 #     call dbDisconnect() when finished working with a connection
-#
 # https://github.com/Bioconductor/AnnotationHub/issues/1
 # https://github.com/r-dbi/RSQLite/issues/245
 
@@ -899,10 +897,10 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 #' @export
 annotable <-
     function() {
-        gr <- do.call(
-            what = makeGRangesFromEnsembl,
-            args = matchArgsToDoCall()
-        )
+        gr <- do.call(what = makeGRangesFromEnsembl, args = matchArgsToDoCall())
+        # Decode run-length encoding in mcols before coercing to tibble.
+        # Otherwise Windows users won't get expected atomic columns.
+        mcols(gr) <- decode(mcols(gr))
         as_tibble(gr, rownames = NULL)
     }
 formals(annotable) <- formals(makeGRangesFromEnsembl)
