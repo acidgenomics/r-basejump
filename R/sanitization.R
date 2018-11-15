@@ -28,9 +28,10 @@ NULL
 
 
 
-removeNA.atomic <- function(object) {
-    na.omit(object)
-}
+removeNA.atomic <-  # nolint
+    function(object) {
+        na.omit(object)
+    }
 
 
 

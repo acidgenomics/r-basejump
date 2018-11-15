@@ -1,6 +1,6 @@
 data(mat, rse, envir = environment())
 
-Rle <- structure("Rle", package = "S4Vectors")
+Rle <- structure("Rle", package = "S4Vectors")  # nolint
 organism <- "Homo sapiens"
 release <- 87L
 seqnames <- GenomeInfoDb::seqnames

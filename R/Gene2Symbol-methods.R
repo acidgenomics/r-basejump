@@ -50,8 +50,9 @@ Gene2Symbol.DataFrame <-  # nolint
         }
 
         if (format == "makeUnique") {
-            # This is the default, and message is too noisy in other functions.
-            # message("Returning 1:1 mappings with renamed gene symbols.")
+            # Returning 1:1 mappings with renamed gene symbols.
+            # This is the default, and including a message is too noisy, since
+            # it is used heavily in other functions.
             data[["geneName"]] <- make.unique(data[["geneName"]])
         } else if (format == "1:1") {
             message("Returning 1:1 mappings using oldest gene ID per symbol.")
