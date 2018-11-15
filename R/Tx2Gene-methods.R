@@ -24,12 +24,11 @@ Tx2Gene.DataFrame <-  # nolint
             ))
         }
 
-        data <- object %>%
-            .[, cols, drop = FALSE] %>%
-            # This will handle rownames automatically, even if unset.
-            as("tbl_df") %>%
-            mutate_all(as.character) %>%
-            as("DataFrame")
+        data <- DataFrame(
+            transcriptID = as.character(decode(object[["transcriptID"]])),
+            geneID = as.character(decode(object[["geneID"]])),
+            row.names = rownames(object)
+        )
 
         metadata(data) <- .genomeMetadata(object)
         new(Class = "Tx2Gene", data)
@@ -73,10 +72,7 @@ Tx2Gene.SummarizedExperiment <-  # nolint
         object <- as.SummarizedExperiment(object)
         data <- rowData(object)
         rownames(data) <- rownames(object)
-        do.call(
-            what = Tx2Gene,
-            args = list(object = data)
-        )
+        do.call(what = Tx2Gene, args = list(object = data))
     }
 
 
