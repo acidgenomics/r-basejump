@@ -82,6 +82,20 @@ setGeneric(
 
 
 
+# barcodeRanksPerSample ========================================================
+#' Barcode Ranks per Sample
+#' @inheritParams params
+#' @export
+#' @return `list`.
+setGeneric(
+    name = "barcodeRanksPerSample",
+    def = function(object, ...) {
+        standardGeneric("barcodeRanksPerSample")
+    }
+)
+
+
+
 # cell2sample ==================================================================
 #' @rdname cell2sample
 #' @export
