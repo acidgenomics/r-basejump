@@ -19,24 +19,25 @@ S4Vectors::decode
 
 
 
-decode.DataFrame <- function(x) {
-    DataFrame(lapply(
-        X = x,
-        FUN = function(x) {
-            if (is(x, "Rle")) {
-                x <- decode(x)
-                if (is.factor(x)) {
-                    x <- droplevels(x)
+decode.DataFrame <-  # nolint
+    function(x) {
+        DataFrame(lapply(
+            X = x,
+            FUN = function(x) {
+                if (is(x, "Rle")) {
+                    x <- decode(x)
+                    if (is.factor(x)) {
+                        x <- droplevels(x)
+                    }
+                    x
+                } else if (!is.atomic(x)) {
+                    I(x)
+                } else {
+                    x
                 }
-                x
-            } else if (!is.atomic(x)) {
-                I(x)
-            } else {
-                x
             }
-        }
-    ))
-}
+        ))
+    }
 
 
 

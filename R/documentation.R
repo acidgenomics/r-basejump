@@ -195,7 +195,7 @@ tabular <- function(df) {
             "l"
         }
     }
-    col_align <- vapply(df, align, character(1))
+    align <- vapply(df, align, character(1L))
     cols <- lapply(df, format)
     contents <- do.call(
         what = "paste",
@@ -203,7 +203,7 @@ tabular <- function(df) {
     )
     out <- paste(
         "\\tabular{",
-        paste(col_align, collapse = ""),
+        paste(align, collapse = ""),
         "}{\n  ",
         contents,
         "\n}\n",

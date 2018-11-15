@@ -230,7 +230,6 @@ test_that("loadData : Standard evaluation", {
 test_that("loadData : Already exists", {
     # Avoid accidental overwrites in the current environment.
     gr <- TRUE
-    # TODO Improve the error message in goalie.
     expect_error(loadData(gr))
 })
 
@@ -277,7 +276,6 @@ test_that("loadDataAsName : Non-standard evaluation", {
     expect_true(exists("data_2", inherits = FALSE))
     # Now that the objects are loaded, let's check to make sure we can't
     # accidentally overwrite in the current environment.
-    # TODO Improve the error message in goalie.
     expect_error(loadDataAsName(data_1 = gr, data_2 = mn))
 })
 
@@ -334,7 +332,6 @@ test_that("loadRemoteData", {
 
 test_that("loadRemoteData : Already loaded", {
     example <- TRUE
-    # TODO Improve the error message in goalie.
     expect_error(
         object = loadRemoteData(url = paste(url, "example.rda", sep = "/"))
     )
