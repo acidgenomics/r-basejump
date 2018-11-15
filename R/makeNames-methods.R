@@ -1,8 +1,21 @@
-#' @name makeNames
+#' Make Syntactically Valid Names
+#'
+#' For `atomic` vectors, these functions will sanitize the values. Otherwise,
+#' they will set [base::names()], [base::rownames()], and/or [base::colnames()]
+#' without modification of the values.
+#'
+#' `dotted.case` support is provided for matching against base R parameters.
+#' However, it is recommended to avoid using it for variable assignments into an
+#' `environment`, as that can introduce conflicts with base functions.
 #'
 #' @note [makeNames()] sanitizes names using underscores instead of dots, the
 #' convention used by [base::make.names()].
 #'
+#' @name makeNames
+#' @inheritParams params
+#'
+#' @param object `character` or object for which [base::names()] assignment
+#'   will be meaningful.
 #' @param rownames `boolean`. Apply sanitization on row names. This is not
 #'   recommended by default, since rownames commonly contain gene identifiers
 #'   that should not be modified.
@@ -11,6 +24,9 @@
 #' @param strict `boolean`. Enforce strict name sanitization. When `TRUE`, this
 #'   does not allow the return of any capitalized acronyms. "RNA" will become
 #'   "Rna", for example.
+#'
+#' @return Object with syntatically valid names. For objects supporting
+#'   [base::names()], the underlying data returns unchanged.
 #'
 #' @seealso
 #' - [base::make.names()].

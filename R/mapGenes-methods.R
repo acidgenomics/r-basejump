@@ -1,9 +1,25 @@
-#' @name mapGenes
+#' Map Genes
 #'
+#' Take a user-defined gene vector and dynamically map the input to either the
+#' object rownames or the gene names (symbols). These functions are useful for
+#' writing code that needs to handle either gene identifier or gene name input
+#' dynamically (e.g. for single-cell RNA-seq marker analysis).
+#'
+#' @section Ambiguous gene names:
+#'
+#' Some genomes (e.g. Homo sapiens, Mus musculus) contain duplicated gene names
+#' for multiple gene identifiers. Normally we handle these ambiguous gene names
+#' by sanitizing them with [base::make.names()]. If a user requests a gene name
+#' that is duplicated, these functions will return a warning.
+#'
+#' @name mapGenes
 #' @inheritParams params
+#'
 #' @param strict `boolean`. Require all genes to match. Recommended by default.
 #'   If set `FALSE`, instead will return a warning to the user, and subset the
 #'   genes vector to only include matches.
+#'
+#' @return `character`.
 #'
 #' @examples
 #' data(rse)

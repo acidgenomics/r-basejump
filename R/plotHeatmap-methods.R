@@ -1,5 +1,6 @@
-#' @name plotHeatmap
-#' @author Michael Steinbaugh, Rory Kirchner
+#' Plot Heatmap
+#'
+#' Construct a simple heatmap.
 #'
 #' @section Hierarchical clustering:
 #'
@@ -7,7 +8,10 @@
 #' the Ward method, but this behavior can be overrided by setting `clusterRows`
 #' or `clusterCols` to `FALSE`.
 #'
+#' @name plotHeatmap
+#' @author Michael Steinbaugh, Rory Kirchner
 #' @inheritParams params
+#'
 #' @param borderColor `string` or `NULL`. Border color. Disabled by default for
 #'   improved aesthetics.
 #' @param clusteringMethod `string`. Clustering method. Accepts the same values

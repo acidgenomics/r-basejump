@@ -1,6 +1,11 @@
+#' Plot Counts per Biotype
+#'
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inheritParams params
+#'
+#' @return `ggplot`.
+#'
 #' @examples
 #' data(rse, sce)
 #'

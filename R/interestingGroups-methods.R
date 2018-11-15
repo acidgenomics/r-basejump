@@ -6,8 +6,12 @@
 
 
 
+#' Interesting Groups
+#'
 #' @name interestingGroups
 #' @inheritParams params
+#'
+#' @return `character`.
 #'
 #' @examples
 #' data(rse)
@@ -23,7 +27,6 @@ NULL
 
 
 
-# interestingGroups ============================================================
 #' @rdname interestingGroups
 #' @export
 setMethod(
@@ -41,7 +44,6 @@ setMethod(
 
 
 
-# interestingGroups assignment =================================================
 #' @rdname interestingGroups
 #' @export
 setMethod(
@@ -60,7 +62,6 @@ setMethod(
 
 
 
-# Started allowing `NULL` assignment in v0.99.
 #' @rdname interestingGroups
 #' @export
 setMethod(
