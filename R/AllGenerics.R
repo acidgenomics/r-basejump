@@ -167,6 +167,18 @@ setGeneric(
 
 
 
+# encode =======================================================================
+#' @rdname encode
+#' @export
+setGeneric(
+    name = "encode",
+    def = function(x, ...) {
+        standardGeneric("encode")
+    }
+)
+
+
+
 # export =======================================================================
 #' @rdname export
 #' @export
