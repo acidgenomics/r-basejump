@@ -191,6 +191,20 @@ setGeneric(
 
 
 
+# filterCells ==================================================================
+#' Filter Cells
+#' @inheritParams params
+#' @export
+#' @return `SingleCellExperiment`.
+setGeneric(
+    name = "filterCells",
+    def = function(object, ...) {
+        standardGeneric("filterCells")
+    }
+)
+
+
+
 # flatFiles ====================================================================
 #' @rdname coerceS4ToList
 #' @export
@@ -216,20 +230,8 @@ setGeneric(
 
 
 # headtail =====================================================================
-#' Return the First and Last Part of an Object
-#'
-#' Inspired by the [base::print()] method for `DataFrame` class objects. Applies
-#' to both rows and columns, enabling quick inspection during interactive use.
-#'
-#' @name headtail
-#' @inheritParams params
+#' @rdname headtail
 #' @export
-#'
-#' @return None (invisible `NULL`).
-#'
-#' @seealso
-#' - [utils::head()], [utils::tail()], [base::cat()].
-#' - `getMethod("show", "DataTable")`.
 setGeneric(
     name = "headtail",
     def = function(x, ...) {
@@ -240,13 +242,6 @@ setGeneric(
 
 
 # interestingGroups ============================================================
-#' Interesting Groups
-#'
-#' @name interestingGroups
-#' @inheritParams params
-#' @return `character`.
-NULL
-
 #' @rdname interestingGroups
 #' @export
 setGeneric(
@@ -268,18 +263,6 @@ setGeneric(
 
 
 # logRatio =====================================================================
-#' Interconvert Log Ratio and Fold Change Values
-#'
-#' @name logRatio
-#' @inheritParams params
-#'
-#' @seealso
-#' - `gtools::foldchange2logratio()`.
-#' - `gtools::logratio2foldchange()`.
-#'
-#' @return `numeric`.
-NULL
-
 #' @rdname logRatio
 #' @export
 setGeneric(
@@ -301,26 +284,6 @@ setGeneric(
 
 
 # makeNames ====================================================================
-#' Make Syntactically Valid Names
-#'
-#' For `atomic` vectors, these functions will sanitize the values. Otherwise,
-#' they will set [base::names()], [base::rownames()], and/or [base::colnames()]
-#' without modification of the values.
-#'
-#' `dotted.case` support is provided for matching against base R parameters.
-#' However, it is recommended to avoid using it for variable assignments into an
-#' `environment`, as that can introduce conflicts with base functions.
-#'
-#' @name makeNames
-#' @inheritParams params
-#'
-#' @param object `character` or object for which [base::names()] assignment
-#'   will be meaningful.
-#'
-#' @return Object with syntatically valid names. For objects supporting
-#'   [base::names()], the underlying data returns unchanged.
-NULL
-
 #' @rdname makeNames
 #' @export
 setGeneric(
@@ -360,26 +323,6 @@ setGeneric(
 
 
 # mapGenes =====================================================================
-#' Map Genes
-#'
-#' Take a user-defined gene vector and dynamically map the input to either the
-#' object rownames or the gene names (symbols). These functions are useful for
-#' writing code that needs to handle either gene identifier or gene name input
-#' dynamically (e.g. for single-cell RNA-seq marker analysis).
-#'
-#' @section Ambiguous gene names:
-#'
-#' Some genomes (e.g. Homo sapiens, Mus musculus) contain duplicated gene names
-#' for multiple gene identifiers. Normally we handle these ambiguous gene names
-#' by sanitizing them with [base::make.names()]. If a user requests a gene name
-#' that is duplicated, these functions will return a warning.
-#'
-#' @name mapGenes
-#' @inheritParams params
-#'
-#' @return `character`.
-NULL
-
 #' @rdname mapGenes
 #' @export
 setGeneric(
@@ -439,21 +382,6 @@ setGeneric(
 
 
 # metrics ======================================================================
-#' Metrics
-#'
-#' This function takes data stored in `SummarizedExperiment::colData()` and
-#' consistently returns a tibble grouped by sample by default (`sampleID`).
-#'
-#' [metrics()] always returns `sampleName` and `interestingGroups` columns, even
-#' when these columns are not defined in `colData`. This is designed to
-#' integrate with plotting functions that use ggplot2 internally.
-#'
-#' @name metrics
-#' @inheritParams params
-#'
-#' @return `DataFrame`.
-NULL
-
 #' @rdname metrics
 #' @export
 setGeneric(
@@ -512,15 +440,35 @@ setGeneric(
 
 
 
-# plotCountsPerBiotype =========================================================
-#' Plot Counts per Biotype
-#'
-#' @name plotCountsPerBiotype
+# plotBarcodeRanks =============================================================
+#' Plot Barcode Ranks
 #' @inheritParams params
-#'
-#' @return `ggplot`.
-NULL
+#' @export
+#' @return `ggplot` grid.
+setGeneric(
+    name = "plotBarcodeRanks",
+    def = function(object, ...) {
+        standardGeneric("plotBarcodeRanks")
+    }
+)
 
+
+
+# plotCellCounts ===============================================================
+#' Plot Cell Counts
+#' @inheritParams params
+#' @export
+#' @return `ggplot`.
+setGeneric(
+    name = "plotCellCounts",
+    def = function(object, ...) {
+        standardGeneric("plotCellCounts")
+    }
+)
+
+
+
+# plotCountsPerBiotype =========================================================
 #' @rdname plotCountsPerBiotype
 #' @export
 setGeneric(
@@ -673,6 +621,20 @@ setGeneric(
 
 
 
+# plotGenesPerCell =============================================================
+#' Plot Genes per Cell
+#' @inheritParams params
+#' @export
+#' @return `ggplot`.
+setGeneric(
+    name = "plotGenesPerCell",
+    def = function(object, ...) {
+        standardGeneric("plotGenesPerCell")
+    }
+)
+
+
+
 # plotGenesDetected ============================================================
 #' Plot Genes Detected
 #' @inheritParams params
@@ -688,15 +650,6 @@ setGeneric(
 
 
 # plotHeatmap ==================================================================
-#' Plot Heatmap
-#'
-#' Construct a simple heatmap.
-#'
-#' @name plotHeatmap
-#' @inheritParams params
-#' @return `pheatmap`.
-NULL
-
 #' @rdname plotHeatmap
 #' @export
 setGeneric(
@@ -793,6 +746,52 @@ setGeneric(
 
 
 
+# plotMitoRatio ================================================================
+#' Plot Mitochondrial Transcript Abundance
+#' @inheritParams params
+#' @export
+#' @return `ggplot`.
+setGeneric(
+    name = "plotMitoRatio",
+    def = function(object, ...) {
+        standardGeneric("plotMitoRatio")
+    }
+)
+
+
+
+# plotMitoVsCoding =============================================================
+#' Plot Mitochondrial vs. Coding Counts
+#' @inheritParams params
+#' @export
+#' @return `ggplot`.
+setGeneric(
+    name = "plotMitoVsCoding",
+    def = function(object, ...) {
+        standardGeneric("plotMitoVsCoding")
+    }
+)
+
+
+
+# plotNovelty ==================================================================
+#' Plot Novelty Score
+#'
+#' "Novelty" refers to log10 genes detected per count.
+#'
+#' @inheritParams params
+#' @export
+#'
+#' @return `ggplot`.
+setGeneric(
+    name = "plotNovelty",
+    def = function(object, ...) {
+        standardGeneric("plotNovelty")
+    }
+)
+
+
+
 # plotQC =======================================================================
 #' Plot Quality Control
 #' @inheritParams params
@@ -828,6 +827,24 @@ setGeneric(
 
 
 
+# plotReadsPerCell =============================================================
+#' Plot Read Counts per Cell
+#'
+#' Plot the distribution of read counts for all unfiltered cellular barcodes.
+#'
+#' @inheritParams params
+#' @export
+#'
+#' @return `ggplot`.
+setGeneric(
+    name = "plotReadsPerCell",
+    def = function(object, ...) {
+        standardGeneric("plotReadsPerCell")
+    }
+)
+
+
+
 # plotTotalCounts ==============================================================
 #' Plot Total Counts
 #' @inheritParams params
@@ -856,6 +873,40 @@ setGeneric(
     name = "plotTotalReads",
     def = function(object, ...) {
         standardGeneric("plotTotalReads")
+    }
+)
+
+
+
+# plotUMIsPerCell ==============================================================
+#' Plot UMIs per Cell
+#'
+#' Plot the universal molecular identifiers (UMIs) per cell.
+#'
+#' @inheritParams params
+#' @export
+#'
+#' @return `ggplot`.
+setGeneric(
+    name = "plotUMIsPerCell",
+    def = function(object, ...) {
+        standardGeneric("plotUMIsPerCell")
+    }
+)
+
+
+
+# plotUMIsVsGenes ==============================================================
+#' Plot UMI and Gene Correlation
+#'
+#' @inheritParams params
+#' @export
+#'
+#' @return `ggplot`.
+setGeneric(
+    name = "plotUMIsVsGenes",
+    def = function(object, ...) {
+        standardGeneric("plotUMIsVsGenes")
     }
 )
 
@@ -914,10 +965,8 @@ setGeneric(
 
 
 # removeNA =====================================================================
-#' Remove Rows and Columns Containing Only NA Values
-#' @inheritParams params
+#' @rdname removeNA
 #' @export
-#' @return Sanitized object.
 setGeneric(
     name = "removeNA",
     def = function(object, ...) {
@@ -928,21 +977,6 @@ setGeneric(
 
 
 # sampleData ===================================================================
-#' Sample Data
-#'
-#' Metadata that describes the samples.
-#'
-#' This is a complement to the standard `SummarizedExperiment::colData()`
-#' function, but improves support for accessing sample metadata for datasets
-#' where multiple items in the columns map to a single sample (e.g. cells for a
-#' single-cell RNA-seq experiment).
-#'
-#' @name sampleData
-#' @inheritParams params
-#'
-#' @return `DataFrame`.
-NULL
-
 #' @rdname sampleData
 #' @export
 setGeneric(
@@ -964,16 +998,8 @@ setGeneric(
 
 
 # sanitizeNA ===================================================================
-#' Sanitize NA Values
-#'
-#' Standardize empty strings (`""`), character NAs (`"NA"`), and `NULL` values
-#' inside a character vector to `NA_character_`. Other `atomic` data types are
-#' returned unmodified.
-#'
-#' @inheritParams params
+#' @rdname sanitizeNA
 #' @export
-#'
-#' @return Object containing proper `NA` values.
 setGeneric(
     name = "sanitizeNA",
     def = function(object, ...) {
@@ -984,17 +1010,8 @@ setGeneric(
 
 
 # sanitizePercent ==============================================================
-#' Sanitize Percent
-#'
-#' Take a `character` vector of percentages (e.g. `"50%"`) and convert it to a
-#' `numeric` vector (e.g. `0.5`). This function is designed primarily to
-#' sanitize data imported from Microsoft Excel.
-#'
-#' @inheritParams params
+#' @rdname sanitizePercent
 #' @export
-#'
-#' @return `numeric`, if `character` and all items in the vector end with "%".
-#'   Otherwise, returns the original object unmodified.
 setGeneric(
     name = "sanitizePercent",
     def = function(object, ...) {
@@ -1005,32 +1022,8 @@ setGeneric(
 
 
 # selectSamples ================================================================
-#' Select Samples
-#'
-#' Utility function that enables quick an easy sample selection in Bioconductor
-#' contains that don't correspond to samples in the columns
-#' (e.g. `SingleCellExperiment`).
-#'
-#' Internally, pattern matching against sample and file names is applied using
-#' logical grep matching.
-#'
-#' @note Bracket based subsetting with `[` also works on `SingleCellExperiment`
-#'   objects but it's not intuitive. In this case, provide cellular barcode
-#'   identifiers for columns and gene identifiers for rows.
-#'
-#' @inheritParams params
+#' @rdname selectSamples
 #' @export
-#'
-#' @param ... Selection arguments that map to the column names of
-#'   [sampleData()]. `atomic` values are supported. Avoid using `logical` or
-#'   `numeric` indices (e.g. [base::which()] calls) here, for improved code
-#'   readability.
-#'
-#' @seealso
-#' - [sampleData()].
-#' - [S4Vectors::split()].
-#'
-#' @return Modified object, with selected samples.
 setGeneric(
     name = "selectSamples",
     def = function(object, ...) {
@@ -1041,16 +1034,8 @@ setGeneric(
 
 
 # stripTranscriptVersions ======================================================
-#' Strip Transcript Versions
-#'
-#' @note This by default method is strict, and will only strip Ensembl
-#'   transcript IDs beginning with "ENS".
-#'
-#' @inheritParams params
+#' @rdname stripTranscriptVersions
 #' @export
-#'
-#' @return Modified object, containing transcript identifiers without version
-#'   numbers.
 setGeneric(
     name = "stripTranscriptVersions",
     def = function(object, ...) {
@@ -1061,10 +1046,8 @@ setGeneric(
 
 
 # subsetPerSample ==============================================================
-#' Subset Per Sample
-#' @inheritParams params
+#' @rdname subsetPerSample
 #' @export
-#' @return `SummarizedExperiment`, with selected samples.
 setGeneric(
     name = "subsetPerSample",
     def = function(object, ...) {
@@ -1134,18 +1117,8 @@ setGeneric(
 
 
 # uniteInterestingGroups =======================================================
-#' Unite Interesting Groups
-#'
-#' Create a single interesting groups column (`interestingGroups`) used for
-#' coloring in plots. When multiple interesting groups are present, unite into a
-#' single column, delimited by a colon.
-#'
-#' @inheritParams params
+#' @rdname uniteInterestingGroups
 #' @export
-#'
-#' @param object Object containing column data that defines interesting groups.
-#'
-#' @return Modified object, containing an `interestingGroups` column.
 setGeneric(
     name = "uniteInterestingGroups",
     def = function(object, ...) {
