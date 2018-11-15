@@ -189,7 +189,7 @@ test_that("import : No extension", {
     file.create("example")
     expect_error(
         object = import("example"),
-        regexp = "is_matching_regex :"
+        regexp = "file extension"
     )
     unlink("example")
 })
