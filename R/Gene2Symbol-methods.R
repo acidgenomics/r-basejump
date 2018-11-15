@@ -32,9 +32,11 @@ Gene2Symbol.DataFrame <-  # nolint
             ))
         }
 
-        data <- object %>%
-            .[, cols, drop = FALSE] %>%
-            as.data.frame()
+        data <- DataFrame(
+            geneID = as.character(decode(object[["geneID"]])),
+            geneName = as.character(decode(object[["geneName"]])),
+            row.names = rownames(object)
+        )
 
         # Inform the user about how many symbols multi-map.
         # Note that `duplicated()` doesn't work on Rle, so we have to coerce
@@ -48,15 +50,13 @@ Gene2Symbol.DataFrame <-  # nolint
         }
 
         if (format == "makeUnique") {
-            message("Returning 1:1 mappings with renamed gene symbols.")
-            data[["geneName"]] <- data[["geneName"]] %>%
-                as.character() %>%
-                make.unique()
+            # This is the default, and message is too noisy in other functions.
+            # message("Returning 1:1 mappings with renamed gene symbols.")
+            data[["geneName"]] <- make.unique(data[["geneName"]])
         } else if (format == "1:1") {
             message("Returning 1:1 mappings using oldest gene ID per symbol.")
             data <- data %>%
                 as_tibble(rownames = NULL) %>%
-                mutate_all(as.character) %>%
                 group_by(!!sym("geneName")) %>%
                 arrange(!!!sym("geneID"), .by_group = TRUE) %>%
                 slice(n = 1L) %>%

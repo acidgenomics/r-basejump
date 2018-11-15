@@ -1,3 +1,11 @@
+# FIXME Attempt to improve this error message to make it more informative.
+# test_seurat_sce.R:72: failure: interestingGroups<-
+#     `interestingGroups(object) <- "orig.ident"` threw an error with unexpected message.
+# Expected match: "sampleData"
+# Actual message: "is_subset : The element 'orig.ident' in interestingGroups is not in colnames(data)."
+
+
+
 #' @name interestingGroups
 #' @inheritParams params
 #'
