@@ -1,3 +1,5 @@
+# FIXME Resave example object with Rle columns in mcols.
+
 # Gene-level RangedSummarizedExperiment example
 # 2018-10-20
 

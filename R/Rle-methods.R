@@ -2,6 +2,12 @@
 #' @name decode
 #' @inherit S4Vectors::decode title description return
 #' @inheritParams params
+#' @examples
+#' data(rse)
+#' mcols <- S4Vectors::mcols(rse)
+#' lapply(mcols, class)
+#' x <- decode(mcols)
+#' lapply(x, class)
 NULL
 
 
@@ -23,8 +29,10 @@ decode.DataFrame <- function(x) {
                     x <- droplevels(x)
                 }
                 x
-            } else {
+            } else if (!is.atomic(x)) {
                 I(x)
+            } else {
+                x
             }
         }
     ))
@@ -42,7 +50,7 @@ setMethod(
 
 
 
-# Encode =======================================================================
+# encode =======================================================================
 #' Encode Column Data Using Run-Length Encoding
 #'
 #' @name encode
@@ -51,6 +59,16 @@ setMethod(
 #' @seealso [S4Vectors::Rle()].
 #'
 #' @return Modified object, with `atomic` columns converted to `Rle`.
+#'
+#' @examples
+#' binary <- seq(from = 0L, to = 1L)
+#' df <- S4Vectors::DataFrame(
+#'     a = rep(x = binary, times = 50L),
+#'     b = rep(x = binary, each = 50L)
+#' )
+#' lapply(df, class)
+#' x <- encode(df)
+#' lapply(x, class)
 NULL
 
 
@@ -60,12 +78,16 @@ encode.DataFrame <-  # nolint
         DataFrame(lapply(
             X = x,
             FUN = function(x) {
-                message("Hello there.")
+                # Decode Rle, if necessary.
                 if (is(x, "Rle")) {
                     x <- decode(x)
-                    if (is.factor(x)) {
-                        x <- droplevels(x)
-                    }
+                }
+                # Adjust (drop) factor levels, if necessary.
+                if (is.factor(x)) {
+                    x <- droplevels(x)
+                }
+                # Use run-length encoding on atomics.
+                if (is.atomic(x)) {
                     Rle(x)
                 } else {
                     I(x)
