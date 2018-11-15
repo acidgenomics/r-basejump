@@ -27,13 +27,15 @@
 #' basename(x)
 localOrRemoteFile <- function(file) {
     assert_is_character(file)
+    if (!all(grepl(pattern = extPattern, x = file))) {
+        stop(paste(deparse(file), "does not end with file extension."))
+    }
     local <- mapply(
         file = file,
         FUN = function(file) {
             # Remote file mode.
             if (isURL(file)) {
                 assert_that(has_internet())
-                assert_all_are_matching_regex(file, extPattern)
                 ext <- str_match(basename(file), extPattern) %>%
                     .[1L, 2L:3L] %>%
                     na.omit() %>%
@@ -68,6 +70,5 @@ localOrRemoteFile <- function(file) {
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE
     )
-    assert_all_are_matching_regex(local, extPattern)
     realpath(local)
 }
