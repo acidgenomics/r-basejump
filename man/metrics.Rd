@@ -34,8 +34,6 @@ internally and defaults to the first argument in the \code{character} vector.}
 Uses \code{\link[base:match.arg]{base::match.arg()}}.}
 }
 \value{
-\code{DataFrame}.
-
 \itemize{
 \item \code{"tibble"}: \code{grouped_df}. Grouped by \code{sampleID} column.
 \item \code{"DataFrame"}: \code{DataFrame}. Rownames are identical to \code{\link[base:colnames]{base::colnames()}},

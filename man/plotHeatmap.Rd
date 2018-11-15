@@ -122,8 +122,6 @@ as \code{\link[stats:hclust]{stats::hclust()}}.}
 }
 \value{
 \code{pheatmap}.
-
-\code{pheatmap}.
 }
 \description{
 Construct a simple heatmap.
