@@ -235,31 +235,54 @@ import <- function(
             }
         )
     } else if (ext == "MTX") {
-        # TODO Need to improve the error message here if sidecars are missing.
-        # MatrixMarket sparse matrix.
-        # Requires `.rownames` and `.colnames` files.
+        # Sparse matrix. Note that we're warning the user if row and column
+        # name sidecar files don't exist.
         message(paste(
             "Importing", basename(file), "using Matrix::readMM()."
         ))
         data <- do.call(what = readMM, args = args)
 
-        # Import the rownames using the sidecar file.
-        rownamesFile <- localOrRemoteFile(paste(file, "rownames", sep = "."))
-        message(paste(
-            "Importing", basename(rownamesFile), "using readr::read_lines()."
-        ))
-        rownames <- read_lines(file = rownamesFile, na = naStrings)
+        # Add the rownames automatically using `.rownames` sidecar file.
+        rownamesFile <- paste(file, "rownames", sep = ".")
+        rownamesFile <- tryCatch(
+            expr = localOrRemoteFile(rownamesFile),
+            error = function(e) {
+                warning(paste0(
+                    basename(rownamesFile), " does not exist.\n",
+                    "  Row names will not be added to sparse matrix."
+                ), call. = FALSE)
+                NULL
+            }
+        )
+        if (!is.null(rownamesFile)) {
+            message(paste(
+                "Importing", basename(rownamesFile),
+                "using readr::read_lines()."
+            ))
+            rownames <- read_lines(file = rownamesFile, na = naStrings)
+            rownames(data) <- rownames
+        }
 
-        # Import the colnames using the sidecar file.
-        colnamesFile <- localOrRemoteFile(paste(file, "colnames", sep = "."))
-        message(paste(
-            "Importing", basename(colnamesFile), "using readr::read_lines()."
-        ))
-        colnames <- read_lines(file = colnamesFile, na = naStrings)
-
-        # Set the dimnames from the sidecar files.
-        rownames(data) <- rownames
-        colnames(data) <- colnames
+        # Add the colnames automatically using `.colnames` sidecar file.
+        colnamesFile <- paste(file, "colnames", sep = ".")
+        colnamesFile <- tryCatch(
+            expr = localOrRemoteFile(colnamesFile),
+            error = function(e) {
+                warning(paste0(
+                    basename(colnamesFile), " does not exist.\n",
+                    "  Column names will not be added to sparse matrix."
+                ), call. = FALSE)
+                NULL
+            }
+        )
+        if (!is.null(colnamesFile)) {
+            message(paste(
+                "Importing", basename(colnamesFile),
+                "using readr::read_lines()."
+            ))
+            colnames <- read_lines(file = colnamesFile, na = naStrings)
+            colnames(data) <- colnames
+        }
     } else if (ext %in% c("RDA", "RDATA")) {
         message(paste(
             "Importing", basename(file), "using base::load()."
