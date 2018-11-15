@@ -16,3 +16,10 @@ The Rle class is a general container for storing an atomic vector
   that is stored in a run-length encoding format. It is based on the
   \code{\link[base]{rle}} function from the base package.
 }
+\examples{
+data(rse)
+mcols <- S4Vectors::mcols(rse)
+lapply(mcols, class)
+x <- decode(mcols)
+lapply(x, class)
+}

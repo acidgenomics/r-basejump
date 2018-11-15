@@ -21,6 +21,16 @@ Modified object, with \code{atomic} columns converted to \code{Rle}.
 \description{
 Encode Column Data Using Run-Length Encoding
 }
+\examples{
+binary <- seq(from = 0L, to = 1L)
+df <- S4Vectors::DataFrame(
+    a = rep(x = binary, times = 50L),
+    b = rep(x = binary, each = 50L)
+)
+lapply(df, class)
+x <- encode(df)
+lapply(x, class)
+}
 \seealso{
 \code{\link[S4Vectors:Rle]{S4Vectors::Rle()}}.
 }
