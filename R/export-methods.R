@@ -62,7 +62,7 @@ export.ANY <-  # nolint
             rownames <- NULL
         }
         # Coercing to tibble to provide consistent write support.
-        # TODO tibble is warning about rlang v0.3 soft deprecation of
+        # Note that tibble is warning about rlang v0.3 soft deprecation of
         # `list_len()` to `new_list()`, but this isn't updated in the CRAN
         # version yet. Safe to remove the warning suppression here once this
         # is resolved.
