@@ -1,4 +1,14 @@
+#' Strip Transcript Versions
+#'
+#' @note This by default method is strict, and will only strip Ensembl
+#'   transcript IDs beginning with "ENS".
+#'
 #' @name stripTranscriptVersions
+#' @inheritParams params
+#'
+#' @return Modified object, containing transcript identifiers without version
+#'   numbers.
+#'
 #' @examples
 #' ## Ensembl (modify; contains versions)
 #' stripTranscriptVersions(c(

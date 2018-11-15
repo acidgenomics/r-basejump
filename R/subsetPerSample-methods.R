@@ -1,4 +1,7 @@
+#' Subset Per Sample
+#'
 #' @name subsetPerSample
+#' @inheritParams params
 #'
 #' @param minCells `scalar integer`. Minimum number of cells required per
 #'   sample.

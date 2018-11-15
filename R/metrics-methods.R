@@ -1,7 +1,16 @@
+#' Metrics
+#'
+#' This function takes data stored in `SummarizedExperiment::colData()` and
+#' consistently returns a tibble grouped by sample by default (`sampleID`).
+#'
+#' [metrics()] always returns `sampleName` and `interestingGroups` columns, even
+#' when these columns are not defined in `colData`. This is designed to
+#' integrate with plotting functions that use ggplot2 internally.
+#'
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
-#'
 #' @inheritParams params
+#'
 #' @param fun `string`. Mathematical function name to apply.
 #'   Uses [base::match.arg()].
 #'
@@ -27,7 +36,6 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
 metrics.SummarizedExperiment <-  # nolint
     function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
@@ -58,7 +66,6 @@ setMethod(
 
 
 
-# SingleCellExperiment =========================================================
 metrics.SingleCellExperiment <-  # nolint
     function(object, return = c("tibble", "DataFrame")) {
         validObject(object)

@@ -1,5 +1,16 @@
+#' Unite Interesting Groups
+#'
+#' Create a single interesting groups column (`interestingGroups`) used for
+#' coloring in plots. When multiple interesting groups are present, unite into a
+#' single column, delimited by a colon.
+#'
 #' @name uniteInterestingGroups
 #' @inheritParams params
+#'
+#' @param object Object containing column data that defines interesting groups.
+#'
+#' @return Modified object, containing an `interestingGroups` column.
+#'
 #' @examples
 #' data(rse)
 #' object <- rse
