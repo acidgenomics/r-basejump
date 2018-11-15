@@ -264,6 +264,10 @@ setGeneric(
 
 # logRatio =====================================================================
 #' @rdname logRatio
+#' @name logRatio
+NULL
+
+#' @rdname logRatio
 #' @export
 setGeneric(
     name = "foldChangeToLogRatio",
@@ -284,6 +288,10 @@ setGeneric(
 
 
 # makeNames ====================================================================
+#' @rdname makeNames
+#' @name makeNames
+NULL
+
 #' @rdname makeNames
 #' @export
 setGeneric(
@@ -323,6 +331,10 @@ setGeneric(
 
 
 # mapGenes =====================================================================
+#' @rdname mapGenes
+#' @name mapGenes
+NULL
+
 #' @rdname mapGenes
 #' @export
 setGeneric(

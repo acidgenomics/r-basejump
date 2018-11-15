@@ -39,8 +39,6 @@ last items to include.}
 \item{ascii}{\code{boolean}. Require separators to use ASCII instead of Unicode.}
 }
 \value{
-None (invisible \code{NULL}).
-
 Invisible \code{NULL}.
 }
 \description{

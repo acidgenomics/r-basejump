@@ -37,10 +37,6 @@ logical grep matching.
 Bracket based subsetting with \code{[} also works on \code{SingleCellExperiment}
 objects but it's not intuitive. In this case, provide cellular barcode
 identifiers for columns and gene identifiers for rows.
-
-Bracket based subsetting with \code{[} also works on \code{SingleCellExperiment}
-objects but it's not intuitive. In this case, provide cellular barcode
-identifiers for columns and gene identifiers for rows.
 }
 \examples{
 data(rse, sce)

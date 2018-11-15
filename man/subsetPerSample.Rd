@@ -28,8 +28,6 @@ sample.}
 \code{assignAndSave = TRUE}.}
 }
 \value{
-\code{SummarizedExperiment}, with selected samples.
-
 \itemize{
 \item \code{assignAndSave = FALSE}: Per sample objects in a \code{list}.
 \item \code{assignAndSave = TRUE}: Subset file paths.
