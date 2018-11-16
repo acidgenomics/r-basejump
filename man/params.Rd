@@ -144,6 +144,8 @@ dots (\code{FALSE}).}
 \item{return}{\code{string}. Return type. Uses \code{base::match.arg()}
 internally and defaults to the first argument in the \code{character} vector.}
 
+\item{rowRanges}{\code{GRanges}. Genomic ranges (e.g. genome annotations).}
+
 \item{samples}{\code{character} or \code{NULL}. Samples to include.}
 
 \item{sigPointColor}{\code{character}. Color names for labeling upregulated and
