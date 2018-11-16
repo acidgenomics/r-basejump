@@ -15,9 +15,6 @@
 \alias{coerce,GRanges,tbl_df-method}
 \title{Force an Object to Belong to a Class}
 \usage{
-\S4method{as.data.frame}{sparseMatrix}(x, row.names = NULL,
-  optional = FALSE, ...)
-
 as.DataFrame(x)
 
 as.SummarizedExperiment(x)
@@ -25,9 +22,15 @@ as.SummarizedExperiment(x)
 \arguments{
 \item{x}{Object.}
 
-\item{row.names}{See \code{base::as.data.frame} for details.}
+\item{row.names}{
+    See \code{?base::\link[base]{as.data.frame}} for a description of
+    these arguments.
+  }
 
-\item{optional}{See \code{base::as.data.frame} for details.}
+\item{optional}{
+    See \code{?base::\link[base]{as.data.frame}} for a description of
+    these arguments.
+  }
 
 \item{...}{Additional arguments.}
 }
@@ -83,7 +86,7 @@ print(data)
 x <- as(data, "tbl_df")
 print(x)
 
-x <- as_tibble(data)
+x <- tibble::as_tibble(data)
 print(x)
 
 ## GRanges to tbl_df ====
@@ -91,21 +94,20 @@ data <- SummarizedExperiment::rowRanges(rse)
 
 x <- as(data, "tbl_df")
 
-x <- as_tibble(data)
+x <- tibble::as_tibble(data)
 colnames(x)
 
 ## sparseMatrix to data.frame ====
 data(sparse)
 
-x <- as.data.frame(sparse)
+x <- BiocGenerics::as.data.frame(sparse)
 class(x)
 
 x <- as(sparse, "data.frame")
 class(x)
 
 ## tbl_df to DataFrame ====
-data <- as_tibble(datasets::iris)
-
+data <- tibble::as_tibble(datasets::iris)
 x <- as(data, "DataFrame")
 }
 \references{

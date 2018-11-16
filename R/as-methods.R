@@ -56,7 +56,7 @@
 #' x <- as(data, "tbl_df")
 #' print(x)
 #'
-#' x <- as_tibble(data)
+#' x <- tibble::as_tibble(data)
 #' print(x)
 #'
 #' ## GRanges to tbl_df ====
@@ -64,21 +64,20 @@
 #'
 #' x <- as(data, "tbl_df")
 #'
-#' x <- as_tibble(data)
+#' x <- tibble::as_tibble(data)
 #' colnames(x)
 #'
 #' ## sparseMatrix to data.frame ====
 #' data(sparse)
 #'
-#' x <- as.data.frame(sparse)
+#' x <- BiocGenerics::as.data.frame(sparse)
 #' class(x)
 #'
 #' x <- as(sparse, "data.frame")
 #' class(x)
 #'
 #' ## tbl_df to DataFrame ====
-#' data <- as_tibble(datasets::iris)
-#'
+#' data <- tibble::as_tibble(datasets::iris)
 #' x <- as(data, "DataFrame")
 NULL
 
@@ -91,9 +90,10 @@ BiocGenerics::as.data.frame
 
 
 
+# If we include this in usage it breaks pkgdown.
 #' @rdname as
-#' @param row.names See `base::as.data.frame` for details.
-#' @param optional  See `base::as.data.frame` for details.
+#' @usage NULL
+#' @inheritParams BiocGenerics::as.data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
