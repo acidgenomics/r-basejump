@@ -51,6 +51,7 @@ BiocGenerics::plotPCA
 plotPCA.SummarizedExperiment <-  # nolint
     function(
         object,
+        assay = 1L,
         interestingGroups = NULL,
         ntop = 500L,
         label = getOption("basejump.label", FALSE),
@@ -78,6 +79,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         # nocov end
 
         validObject(object)
+        assert_is_scalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
@@ -98,7 +100,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         message(paste("Plotting PCA using", nGene, "genes."))
 
         # Using a modified version of DESeq2 DESeqTransform method here.
-        counts <- counts(object)
+        counts <- assays(object)[[assay]]
         rv <- rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
         pca <- prcomp(t(counts[select, , drop = FALSE]))
