@@ -92,6 +92,7 @@
 #'   [reducedDims()]. Includes TNSE, UMAP, PCA, for example.
 #' @param return `string`. Return type. Uses `base::match.arg()`
 #'   internally and defaults to the first argument in the `character` vector.
+#' @param rowRanges `GRanges`. Genomic ranges (e.g. genome annotations).
 #' @param samples `character` or `NULL`. Samples to include.
 #' @param sigPointColor `character`. Color names for labeling upregulated and
 #'   downregulated genes. Also supports a character string for labeling DEGs
