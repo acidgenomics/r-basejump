@@ -105,7 +105,7 @@
 #' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom sessioninfo session_info
-#' @importFrom stats as.formula quantile
+#' @importFrom stats as.formula prcomp quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom tidyr gather separate unite
