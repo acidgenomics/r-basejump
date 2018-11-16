@@ -13,12 +13,14 @@ reference:
     - starts_with("PANTHER")
     - starts_with("Tx2Gene")
     - show
+    - summary
   - title: Import/export
     contents:
     - starts_with("assign")
     - export
     - import
     - starts_with("load")
+    - localOrRemoteFile
     - starts_with("save")
     - transmit
     - starts_with("write")
@@ -40,6 +42,7 @@ reference:
     - tpm
   - title: Sample-level
     contents:
+    - makeSampleData
     - makeSummarizedExperiment
     - metrics
     - minimalSampleData
@@ -75,6 +78,7 @@ reference:
     contents:
     - geometricMean
     - logRatio
+    - zerosVsDepth
   - title: Plots
     contents:
     - starts_with("plot")
@@ -88,19 +92,28 @@ reference:
   - title: Coercion
     contents:
     - as
+    - coerceS4ToList
+  - title: Run-length encoding
+    contents:
+    - decode
+    - encode
+  - title: Documentation
+    contents:
+    - matches("Rd")
+    - tabular
   - title: Developer
     contents:
     - checkClasses
+    - cleanSystemLibrary
     - dots
-    - localOrRemoteFile
     - matchArgsToDoCall
     - matchInterestingGroups
     - MethodDefinition
     - multiassignAsEnvir
     - printString
-    - matches("Rd")
     - showSlotInfo
     - standardizeCall
+    - validateClasses
   - title: Miscellaneous
     contents:
     - starts_with("detect")
@@ -113,6 +126,32 @@ reference:
     desc: Readable check functions to ensure code integrity.
     contents:
     - starts_with("assert")
+  - title: S4 generics without methods
+    contents:
+    - alphaSummary
+    - barcodePattern
+    - barcodeRanksPerSample
+    - contrastName
+    - filterCells
+    - relativeLogExpression
+    - tmm
+    - topTables
+  - title: Globals
+    contents:
+    - extPattern
+    - genomeMetadataNames
+    - lanePattern
+    - naStrings
+    - rdataExtPattern
+    - rdataLoadError
   - title: Example data
     contents:
-    - ends_with("_small")
+    - df
+    - gender_markers
+    - mat
+    - organism_mappings
+    - rse
+    - sce
+    - sparse
+    - tbl
+    - tx_se
