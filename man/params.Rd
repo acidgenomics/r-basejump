@@ -52,7 +52,7 @@ calculations. Defaults the first and second dimensions.}
 \item{envir}{\code{environment} to use for assignment. Defaults to
 \code{parent.frame()}, which will assign into the calling environment.}
 
-\item{expression}{\code{string}. Calculation to apply. Uses \code{\link[base:match.arg]{base::match.arg()}}
+\item{expression}{\code{string}. Calculation to apply. Uses \code{base::match.arg()}
 and defaults to the first argument in the \code{character} vector.}
 
 \item{file}{\code{string}. File path.}
@@ -139,7 +139,8 @@ dots (\code{FALSE}).}
 \item{progress}{\code{boolean}. Show progress, using progress bars.}
 
 \item{reducedDim}{\code{string}. Name of reduced dimension matrix slotted in
-\code{\link[=reducedDims]{reducedDims()}}. Includes TNSE, UMAP, PCA, for example.}
+\code{SingleCellExperiment::reducedDims()}. Includes TNSE, UMAP, PCA, for
+example.}
 
 \item{return}{\code{string}. Return type. Uses \code{base::match.arg()}
 internally and defaults to the first argument in the \code{character} vector.}
