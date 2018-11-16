@@ -6,7 +6,7 @@
 \alias{plotPCA,SummarizedExperiment-method}
 \title{Plot PCA}
 \usage{
-\S4method{plotPCA}{SummarizedExperiment}(object,
+\S4method{plotPCA}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, ntop = 500L,
   label = getOption("basejump.label", FALSE),
   pointColor = getOption("basejump.color.discrete", NULL),
@@ -15,6 +15,10 @@
 }
 \arguments{
 \item{object}{Object.}
+
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in
+\code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
+be defined in \code{SummarizedExperiment::assayNames()}.}
 
 \item{interestingGroups}{\code{character} or \code{NULL}. Groups of interest that
 define the samples. If left unset, defaults to \code{sampleName}.}
