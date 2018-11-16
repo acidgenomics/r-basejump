@@ -35,7 +35,7 @@
 #' @param ensemblRelease `scalar integer`. Ensembl release version (e.g. `90`).
 #' @param envir `environment` to use for assignment. Defaults to
 #'   `parent.frame()`, which will assign into the calling environment.
-#' @param expression `string`. Calculation to apply. Uses [base::match.arg()]
+#' @param expression `string`. Calculation to apply. Uses `base::match.arg()`
 #'   and defaults to the first argument in the `character` vector.
 #' @param file `string`. File path.
 #' @param fill `ggproto`/`ScaleDiscrete` or `NULL`. Desired ggplot2 fill scale.
@@ -89,7 +89,8 @@
 #' @param prefilter `boolean`. Apply prefiltering to remove zero count genes.
 #' @param progress `boolean`. Show progress, using progress bars.
 #' @param reducedDim `string`. Name of reduced dimension matrix slotted in
-#'   [reducedDims()]. Includes TNSE, UMAP, PCA, for example.
+#'   `SingleCellExperiment::reducedDims()`. Includes TNSE, UMAP, PCA, for
+#'   example.
 #' @param return `string`. Return type. Uses `base::match.arg()`
 #'   internally and defaults to the first argument in the `character` vector.
 #' @param rowRanges `GRanges`. Genomic ranges (e.g. genome annotations).
