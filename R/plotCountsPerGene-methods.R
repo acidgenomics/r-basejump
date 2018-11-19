@@ -23,9 +23,9 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         interestingGroups = NULL,
         geom = c("boxplot", "density", "violin"),
         trans = c("identity", "log2", "log10"),
-        color = getOption("basejump.discrete.color", NULL),
-        fill = getOption("basejump.discrete.fill", NULL),
-        flip = getOption("basejump.flip", TRUE),
+        color,
+        fill,
+        flip,
         countsAxisLabel = "counts",
         title = "counts per gene"
     ) {
@@ -123,6 +123,12 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         p
     }
 
+formals(plotCountsPerGene.SummarizedExperiment)[["color"]] <-
+    formals[["color.discrete"]]
+formals(plotCountsPerGene.SummarizedExperiment)[["fill"]] <-
+    formals[["fill.discrete"]]
+formals(plotCountsPerGene.SummarizedExperiment)[["flip"]] <-
+    formals[["flip"]]
 
 
 plotCountsPerGene.SingleCellExperiment <-  # nolint
