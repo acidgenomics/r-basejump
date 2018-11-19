@@ -4,13 +4,11 @@
 \alias{import}
 \title{Import}
 \usage{
-import(file, ..., dataFrame = getOption("basejump.data.frame",
-  "data.frame"))
+import(file, dataFrame = getOption("basejump.data.frame", "data.frame"),
+  ...)
 }
 \arguments{
 \item{file}{\code{string}. File path.}
-
-\item{...}{Additional arguments.}
 
 \item{dataFrame}{\code{string}. Data frame class to return. Can be set globally
 using the \code{basejump.data.frame} option.
@@ -42,6 +40,8 @@ Current recommendations (by priority):
 \item See \code{help(topic = "data.table", package = "data.table")} for details.
 }
 }}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Varies, depending on the file extension:
