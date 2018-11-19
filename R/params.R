@@ -82,6 +82,8 @@
 #' @param plotlist `list` containing `ggplot` objects.
 #' @param pointAlpha `scalar numeric` (`0`-`1`). Alpha transparency level.
 #'   Useful when there many cells in the dataset, and some cells can be masked.
+#' @param pointColor `string`. Default point color for the plot.
+#' @param pointScalar `scalar integer`. Default point size for the plot.
 #' @param pointsAsNumbers `boolean`. Plot the points as numbers (`TRUE`) or
 #'   dots (`FALSE`).
 #' @param pointSize `scalar numeric`. Cell point size.

@@ -127,6 +127,10 @@ count matrix.}
 \item{pointAlpha}{\code{scalar numeric} (\code{0}-\code{1}). Alpha transparency level.
 Useful when there many cells in the dataset, and some cells can be masked.}
 
+\item{pointColor}{\code{string}. Default point color for the plot.}
+
+\item{pointScalar}{\code{scalar integer}. Default point size for the plot.}
+
 \item{pointsAsNumbers}{\code{boolean}. Plot the points as numbers (\code{TRUE}) or
 dots (\code{FALSE}).}
 
