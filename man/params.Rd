@@ -30,7 +30,7 @@ scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
 recommend using \code{ggplot2::scale_color_manual()}. To set the discrete color
 palette globally, use
-\code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
+\code{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())}.}
 
 \item{counts}{\code{matrix}. Count matrix. Normalized counts are recommended.}
 
@@ -61,7 +61,7 @@ and defaults to the first argument in the \code{character} vector.}
 Must supply discrete values. When set to \code{NULL}, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
 using \code{ggplot2::scale_fill_manual()}. To set the discrete fill palette
-globally, use \code{options(bcbio.discrete.fill = scale_fill_viridis_d())}.}
+globally, use \code{options(basejump.fill.discrete = scale_fill_viridis_d())}.}
 
 \item{flip}{\code{boolean}. Flip x and y axes. Recommended for plots containing
 many samples.}
@@ -129,8 +129,6 @@ Useful when there many cells in the dataset, and some cells can be masked.}
 
 \item{pointsAsNumbers}{\code{boolean}. Plot the points as numbers (\code{TRUE}) or
 dots (\code{FALSE}).}
-
-\item{pointColor}{\code{string}. Default point color for the plot.}
 
 \item{pointSize}{\code{scalar numeric}. Cell point size.}
 

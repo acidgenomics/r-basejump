@@ -4,8 +4,7 @@
 \alias{loadDataAsName}
 \title{Load Data as Name}
 \usage{
-loadDataAsName(..., dir = getOption("basejump.load.dir", "."),
-  envir = parent.frame())
+loadDataAsName(..., dir, envir = parent.frame())
 }
 \arguments{
 \item{...}{Key value pairs, defining the name mappings. For example,
