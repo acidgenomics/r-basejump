@@ -31,11 +31,7 @@
 #'
 #' @examples
 #' loadData(example, dir = system.file("extdata", package = "basejump"))
-loadData <- function(
-    ...,
-    dir = getOption("basejump.load.dir", "."),
-    envir = parent.frame()
-) {
+loadData <- function(..., dir, envir = parent.frame()) {
     assert_is_environment(envir)
     names <- dots(..., character = TRUE)
     files <- .listRData(names = names, dir = dir)
@@ -52,6 +48,8 @@ loadData <- function(
     )
     invisible(files)
 }
+
+formals(loadData)[["dir"]] <- formals[["load.dir"]]
 
 
 
@@ -76,11 +74,7 @@ loadData <- function(
 #'     dir = system.file("extdata", package = "basejump")
 #' )
 #' class(renamed)
-loadDataAsName <- function(
-    ...,
-    dir = getOption("basejump.load.dir", "."),
-    envir = parent.frame()
-) {
+loadDataAsName <- function(..., dir, envir = parent.frame()) {
     dots <- dots(..., character = TRUE)
     assert_has_names(dots)
     files <- .listRData(names = dots, dir = dir)
@@ -134,6 +128,8 @@ loadDataAsName <- function(
 
     invisible(files)
 }
+
+formals(loadData)[["dir"]] <- formals[["load.dir"]]
 
 
 
@@ -194,7 +190,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 
 
 
-.listRData <- function(names, dir = ".") {
+.listRData <- function(names, dir) {
     assert_is_character(names)
     assert_all_are_dirs(dir)
     assert_is_a_string(dir)
@@ -231,11 +227,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 
 
 
-.safeLoad <- function(
-    file,
-    name = NULL,
-    envir = parent.frame()
-) {
+.safeLoad <- function(file, name = NULL, envir = parent.frame()) {
     assert_is_a_string(file)
     assert_all_are_existing_files(file)
     file <- realpath(file)
