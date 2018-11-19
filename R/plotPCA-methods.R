@@ -47,16 +47,15 @@ BiocGenerics::plotPCA
 
 
 
-# FIXME Set color and label here globally.
 plotPCA.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
         interestingGroups = NULL,
         ntop = 500L,
-        label = getOption("basejump.label", FALSE),
-        pointColor = getOption("basejump.color.discrete", NULL),
-        pointSize = getOption("basejump.point.size", 4L),
+        label,
+        color,
+        pointSize,
         title = "PCA",
         subtitle = NULL,
         return = c("ggplot", "DataFrame"),
@@ -86,7 +85,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         )
         interestingGroups(object) <- interestingGroups
         assert_is_a_number(ntop)
-        assertIsColorScaleDiscreteOrNULL(pointColor)
+        assertIsColorScaleDiscreteOrNULL(color)
         assertIsAnImplicitInteger(pointSize)
         assert_is_a_bool(label)
         assertIsStringOrNULL(title)
@@ -141,8 +140,8 @@ plotPCA.SummarizedExperiment <-  # nolint
                 color = paste(interestingGroups, collapse = ":\n")
             )
 
-        if (is(pointColor, "ScaleDiscrete")) {
-            p <- p + pointColor
+        if (is(color, "ScaleDiscrete")) {
+            p <- p + color
         }
 
         if (isTRUE(label)) {
@@ -153,6 +152,13 @@ plotPCA.SummarizedExperiment <-  # nolint
 
         p
     }
+
+formals(plotPCA.SummarizedExperiment)[["color"]] <-
+    formalsList[["color.discrete"]]
+formals(plotPCA.SummarizedExperiment)[["label"]] <-
+    formalsList[["label"]]
+formals(plotPCA.SummarizedExperiment)[["pointSize"]] <-
+    formalsList[["point.size"]]
 
 
 

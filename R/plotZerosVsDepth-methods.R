@@ -63,7 +63,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
     }
 
 formals(plotZerosVsDepth.SummarizedExperiment)[["color"]] <-
-    formals[["color.discrete"]]
+    formalsList[["color.discrete"]]
 
 
 

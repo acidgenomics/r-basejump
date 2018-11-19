@@ -124,11 +124,11 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
     }
 
 formals(plotCountsPerGene.SummarizedExperiment)[["color"]] <-
-    formals[["color.discrete"]]
+    formalsList[["color.discrete"]]
 formals(plotCountsPerGene.SummarizedExperiment)[["fill"]] <-
-    formals[["fill.discrete"]]
+    formalsList[["fill.discrete"]]
 formals(plotCountsPerGene.SummarizedExperiment)[["flip"]] <-
-    formals[["flip"]]
+    formalsList[["flip"]]
 
 
 plotCountsPerGene.SingleCellExperiment <-  # nolint
