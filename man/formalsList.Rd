@@ -5,7 +5,7 @@
 \alias{formalsList}
 \title{Formals List
 Formals that the user can set globally with \code{base::getOption()}.}
-\format{An object of class \code{list} of length 13.}
+\format{An object of class \code{list} of length 14.}
 \usage{
 formalsList
 }
