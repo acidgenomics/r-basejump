@@ -3,20 +3,6 @@
 
 
 
-# Validity checks ==============================================================
-# Good example on how to set informative validity checks:
-# http://adv-r.had.co.nz/S4.html
-.valid <- function(list) {
-    invalid <- Filter(f = Negate(isTRUE), x = list)
-    if (has_length(invalid)) {
-        unlist(invalid)
-    } else {
-        TRUE
-    }
-}
-
-
-
 # Prototype metadata ===========================================================
 .prototypeMetadata <- list(
     version = packageVersion("basejump"),
