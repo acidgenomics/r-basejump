@@ -1,13 +1,15 @@
 # Gene-level SingleCellExperiment example
 # 2018-11-19
 
+# https://github.com/mikelove/zinbwave-deseq2/blob/master/zinbwave-deseq2.knit.md
+
 library(pryr)
 library(splatter)
 library(tidyverse)
 
-# Restrict to 1 MB.
+# Restrict to 2 MB.
 # Use `pryr::object_size()` instead of `utils::object.size()`.
-limit <- structure(1e6, class = "object_size")
+limit <- structure(2e6, class = "object_size")
 
 organism <- "Homo sapiens"
 release <- 92L
@@ -15,15 +17,16 @@ release <- 92L
 # Use splatter to generate an example dataset with simulated counts.
 # Note: These DE params are natural log scale.
 params <- newSplatParams() %>%
-    setParam(name = "batchCells", value = 100) %>%
-    setParam(name = "nGenes", value = 50) %>%
-    setParam(name = "de.facLoc", value = 1) %>%
-    setParam(name = "de.facScale", value = .25) %>%
+    setParam(name = "batchCells", value = 100L) %>%
+    setParam(name = "nGenes", value = 1000L) %>%
+    setParam(name = "de.facLoc", value = 1L) %>%
+    setParam(name = "de.facScale", value = 0.25) %>%
+    # Add more dropout (to test zinbwave weights and DE).
     setParam(name = "dropout.type", value = "experiment") %>%
-    setParam(name = "dropout.mid", value = 3)
+    setParam(name = "dropout.mid", value = 3L)
 sce <- splatSimulate(
     params = params,
-    group.prob = c(.5, .5),
+    group.prob = c(0.5, 0.5),
     method = "groups"
 )
 
@@ -33,11 +36,11 @@ sce <- camel(sce, rownames = TRUE, colnames = TRUE)
 # Pad the dimnames so they sort correctly.
 rownames(sce) <- rownames(sce) %>%
     str_replace("gene", "") %>%
-    str_pad(width = 2, side = "left", pad = "0") %>%
+    str_pad(width = 4L, side = "left", pad = "0") %>%
     paste0("gene", .)
 colnames(sce) <- colnames(sce) %>%
     str_replace("cell", "") %>%
-    str_pad(width = 3, side = "left", pad = "0") %>%
+    str_pad(width = 4L, side = "left", pad = "0") %>%
     paste0("cell", .)
 
 # Prepare column data.
