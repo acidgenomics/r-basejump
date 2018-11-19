@@ -31,9 +31,9 @@ rownames(rse) <- rownames(rse) %>%
     str_pad(width = 4L, side = "left", pad = "0") %>%
     paste0("gene", .)
 colnames(rse) <- colnames(rse) %>%
-    str_replace("cell", "") %>%
+    str_replace("sample", "") %>%
     str_pad(width = 2L, side = "left", pad = "0") %>%
-    paste0("cell", .)
+    paste0("sample", .)
 
 # Column data.
 # Note that `sampleName` column is generated for `sampleData()` return.
