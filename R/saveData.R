@@ -8,9 +8,9 @@
 #' combining multiple objects into a single file.
 #'
 #' @export
-#'
 #' @inheritParams loadData
 #' @inheritParams base::save
+#'
 #' @param overwrite `boolean`. Overwrite existing file.
 #' @param ext `string`. R data serialized (RDS; "`rds`") or R data ("`rda`",
 #'   "`RData`"). RDS is preferred when saving single objects per file, which is
@@ -31,13 +31,7 @@
 #'
 #' ## Clean up.
 #' unlink("example", recursive = TRUE)
-saveData <- function(
-    ...,
-    dir = getOption("basejump.save.dir", "."),
-    ext = getOption("basejump.save.ext", "rds"),
-    overwrite = getOption("basejump.save.overwrite", TRUE),
-    compress = getOption("basejump.save.compress", TRUE)
-) {
+saveData <- function(..., dir, ext, overwrite, compress) {
     objects <- list(...)
     names(objects) <- dots(..., character = TRUE)
     dir <- initDir(dir)
@@ -89,6 +83,11 @@ saveData <- function(
     invisible(files)
 }
 
+formals(saveData)[["compress"]] <- formals[["save.compress"]]
+formals(saveData)[["dir"]] <- formals[["save.data"]]
+formals(saveData)[["ext"]] <- formals[["save.ext"]]
+formals(saveData)[["overwrite"]] <- formals[["save.overwrite"]]
+
 
 
 # assignAndSaveData ============================================================
@@ -98,9 +97,9 @@ saveData <- function(
 #' the newly assigned object, specified by the "`dir`" argument.
 #'
 #' @export
-#'
 #' @inheritParams params
 #' @inheritParams saveData
+
 #' @param name `string`. Desired variable name.
 #' @param envir `environment`. Environment to use for assignment. Defaults to
 #'   [parent.frame()], the calling environment.
@@ -118,11 +117,7 @@ saveData <- function(
 #' ## Clean up.
 #' rm(example)
 #' unlink("example.rds")
-assignAndSaveData <- function(
-    name,
-    object,
-    envir = parent.frame()
-) {
+assignAndSaveData <- function(name, object, envir = parent.frame()) {
     assert_is_a_string(name)
     assert_is_not_null(object)
     dir <- initDir(dir)
@@ -146,7 +141,6 @@ assignAndSaveData <- function(
     invisible(file)
 }
 
-# Assign the formals.
 f1 <- formals(assignAndSaveData)
 f2 <- formals(saveData)
 f2 <- f2[setdiff(names(f2), "...")]

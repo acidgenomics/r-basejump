@@ -7,13 +7,12 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
 plotZerosVsDepth.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
         interestingGroups = NULL,
-        color = getOption("basejump.discrete.color", NULL),
+        color,
         title = "zeros vs. depth"
     ) {
         validObject(object)
@@ -62,6 +61,9 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
 
         p
     }
+
+formals(plotZerosVsDepth.SummarizedExperiment)[["color"]] <-
+    formals[["color.discrete"]]
 
 
 
