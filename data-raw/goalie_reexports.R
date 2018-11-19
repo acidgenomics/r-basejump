@@ -30,9 +30,4 @@ roxygen <- lapply(
 roxygen %>%
     unlist() %>%
     paste(collapse = "\n\n") %>%
-    readr::write_lines(
-        x = .,
-        path = file.path("R", paste0(pkg, ".R"))
-    )
-
-devtools::document()
+    readr::write_lines(x = ., path = file.path("R", paste0(pkg, ".R")))

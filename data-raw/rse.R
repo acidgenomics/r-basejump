@@ -1,15 +1,13 @@
-# FIXME Resave example object with Rle columns in mcols.
-
 # Gene-level RangedSummarizedExperiment example
-# 2018-10-20
+# 2018-11-19
+
+library(pryr)
+library(DESeq2)
+library(tidyverse)
 
 # Restrict to 1 MB.
 # Use `pryr::object_size()` instead of `utils::object.size()`.
-library(pryr)
 limit <- structure(1e6, class = "object_size")
-
-library(DESeq2)
-library(tidyverse)
 
 organism <- "Homo sapiens"
 release <- 92L

@@ -1,13 +1,13 @@
 # Gene-level SingleCellExperiment example
-# 2018-10-20
+# 2018-11-19
+
+library(pryr)
+library(splatter)
+library(tidyverse)
 
 # Restrict to 1 MB.
 # Use `pryr::object_size()` instead of `utils::object.size()`.
-library(pryr)
 limit <- structure(1e6, class = "object_size")
-
-library(splatter)
-library(tidyverse)
 
 organism <- "Homo sapiens"
 release <- 92L
