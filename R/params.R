@@ -81,12 +81,13 @@
 #' @param perSample `boolean`. Visualize the distributions per sample.
 #' @param plotlist `list` containing `ggplot` objects.
 #' @param pointAlpha `scalar numeric` (`0`-`1`). Alpha transparency level.
-#'   Useful when there many cells in the dataset, and some cells can be masked.
+#'   Useful when there many points in the dataset (e.g. single-cell data), and
+#'   some points can be masked.
 #' @param pointColor `string`. Default point color for the plot.
 #' @param pointScalar `scalar integer`. Default point size for the plot.
 #' @param pointsAsNumbers `boolean`. Plot the points as numbers (`TRUE`) or
 #'   dots (`FALSE`).
-#' @param pointSize `scalar numeric`. Cell point size.
+#' @param pointSize `scalar numeric`. Point size for dots in the plot.
 #' @param prefilter `boolean`. Apply prefiltering to remove zero count genes.
 #' @param progress `boolean`. Show progress, using progress bars.
 #' @param reducedDim `string`. Name of reduced dimension matrix slotted in
