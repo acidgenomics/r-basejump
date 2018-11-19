@@ -48,11 +48,11 @@ This vignette focuses on the most common user-facing functions that fall into th
 
 There are additional function families whose functionality lie outside the scope of this vignette. Consult the [basejump][] website or package documentation for more information of these types of functions, which are more technical in nature and predominantly developer-facing:
 
-- R Markdown functions.
-- Atomic vector functions.
-- Coercion methods.
-- Developer functions.
-- Assert check functions.
+- R Markdown functions
+- Atomic vector functions
+- Coercion methods
+- Developer functions
+- Assert check functions
 
 # The S4 object system
 
