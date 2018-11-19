@@ -73,11 +73,11 @@
 #'   group_by left_join mutate mutate_all mutate_at mutate_if n pull rename
 #'   select select_if slice summarise summarise_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
-#' @importFrom ggplot2 aes coord_flip element_blank element_line element_rect
-#'   element_text expand_limits facet_wrap geom_bar geom_boxplot geom_density
-#'   geom_hline geom_jitter geom_label geom_point geom_violin geom_vline ggplot
-#'   guides labs position_jitterdodge scale_x_continuous scale_y_continuous
-#'   stat_ecdf stat_summary theme theme_linedraw
+#' @importFrom ggplot2 aes coord_fixed coord_flip element_blank element_line
+#'   element_rect element_text expand_limits facet_wrap geom_bar geom_boxplot
+#'   geom_density geom_hline geom_jitter geom_label geom_point geom_violin
+#'   geom_vline ggplot guides labs position_jitterdodge scale_x_continuous
+#'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie assertAreNonExisting assertAreUniqueGeneNames
 #'   assertAreURLs assertAreValidNames assertFormalCompress assertHasRownames
@@ -93,6 +93,7 @@
 #' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
+#' @importFrom matrixStats rowVars
 #' @importFrom methods as formalArgs getGeneric getMethod is isGeneric new
 #'   selectMethod setAs setClass setGeneric setMethod setOldClass setValidity
 #'   show signature slot slotNames validObject .hasSlot
