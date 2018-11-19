@@ -1,9 +1,10 @@
 # Transcript-level SummarizedExperiment example
-# 2018-10-20
+# 2018-11-19
+
+library(pryr)
 
 # Restrict to 1 MB.
 # Use `pryr::object_size()` instead of `utils::object.size()`.
-library(pryr)
 limit <- structure(1e6, class = "object_size")
 
 organism <- "Homo sapiens"

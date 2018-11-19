@@ -16,7 +16,4 @@ mat <- matrix(
 sparse <- Matrix::Matrix(mat, sparse = TRUE)
 df <- S4Vectors::DataFrame(mat)
 tbl <- tibble::as_tibble(mat, rownames = "rowname")
-usethis::use_data(
-    mat, sparse, df, tbl,
-    overwrite = TRUE, compress = "xz"
-)
+usethis::use_data(mat, sparse, df, tbl, overwrite = TRUE, compress = "xz")
