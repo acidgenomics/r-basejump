@@ -7,14 +7,14 @@ library(tidyverse)
 
 # Restrict to 1 MB.
 # Use `pryr::object_size()` instead of `utils::object.size()`.
-limit <- structure(1e6, class = "object_size")
+limit <- structure(2e6, class = "object_size")
 
 organism <- "Homo sapiens"
 release <- 92L
 
 # Generate example DESeqDataSet using DESeq2.
 # Note that we're using simulated counts here.
-dds <- makeExampleDESeqDataSet(n = 50L, m = 4L)
+dds <- makeExampleDESeqDataSet()
 object_size(dds)
 stopifnot(object_size(dds) < limit)
 stopifnot(validObject(dds))
@@ -29,11 +29,11 @@ stopifnot(object_size(rse) < limit)
 # Note that `sampleName` column is generated for `sampleData()` return.
 colData(rse) <- DataFrame(
     genotype = factor(
-        rep(c("wildtype", "knockout"), times = 2L),
+        rep(c("wildtype", "knockout"), times = ncol(rse) / 2L),
         levels = c("wildtype", "knockout")
     ),
     treatment = factor(
-        rep(c("control", "treated"), each = 2L),
+        rep(c("control", "treated"), each = ncol(rse) / 2L),
         levels = c("control", "treated")
     ),
     row.names = colnames(rse)
