@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Changelog" />
 
 
@@ -137,12 +139,12 @@
 <li>
 <code>sampleNames</code> now supports assignment for <code>SummarizedExperiment</code> method.</li>
 <li>Now exporting <code>lanePattern</code> regular expression pattern as a global, which was previously defined in the <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package.</li>
-<li>Bug fix for <code>as</code> coercion method support. Need to ensure <code>exportMethods(coerce)</code> is included in <code>NAMESPACE</code> file, otherwise <code>tibble</code> coercion using <code>as(x, "tbl_df")</code> won’t work when called from an Rscript without the package library loaded. Thanks <a href='http://github.com/roryk'>@roryk</a> for noticing this.</li>
+<li>Bug fix for <code>as</code> coercion method support. Need to ensure <code>exportMethods(coerce)</code> is included in <code>NAMESPACE</code> file, otherwise <code>tibble</code> coercion using <code><a href="../reference/as.html">as(x, "tbl_df")</a></code> won’t work when called from an Rscript without the package library loaded. Thanks <a href='http://github.com/roryk'>@roryk</a> for noticing this.</li>
 <li>Updated <code>gene2symbol</code> generic to use <code>...</code>, since we’ve added the <code>unique = TRUE</code> argument in this release.</li>
 <li>
 <code>annotable</code>: Moved to <code>makeGRanges.R</code> file, and improved the internal code to export supported formals also used in <code>makeGRangesFromEnsembl</code>. The function should work exactly the same as previous releases, but now with clearer supported arguments in the documentation.</li>
 <li>Skipping code coverage for <code>cleanSystemLibrary</code>, since <a href="https://travis-ci.com">Travis CI</a> installs packages into the system library, and causes this check to return <code>FALSE</code>.</li>
-<li>Consistently using <code>as(from, "tbl_df")</code> for internal tibble coercion in all functions.</li>
+<li>Consistently using <code><a href="../reference/as.html">as(from, "tbl_df")</a></code> for internal tibble coercion in all functions.</li>
 <li>
 <code>geneSynonyms</code> and <code>panther</code>: <code>organism</code> argument matching no longer suggests a default. The current list of supported organisms is in the documentation, and described in the internal <code>match.arg</code> call.</li>
 <li>All <code>SummarizedExperiment</code> methods use <code>validObject</code> validity checks, where applicable.</li>
@@ -560,7 +562,7 @@
 <ul>
 <li>Added new <code>convertUCSCBuildToEnsembl</code> function, for easy remapping of <a href="https://genome.ucsc.edu">UCSC</a> to <a href="https://www.ensembl.org">Ensembl</a> genome build names (e.g. <code>hg38</code> to <code>GRCh38</code>).</li>
 <li>Migrated matrix methods for <code>plotCorrelationHeatmap</code> here from <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq">bcbioRNASeq</a>, for improved consistency with other heatmap functions.</li>
-<li>Exporting <code>makeNames</code> variant of <code><a href="http://www.rdocumentation.org/packages/base/topics/make.names">base::make.names</a></code> that sanitizes using underscores (“_“) rather than dots (”.“).</li>
+<li>Exporting <code>makeNames</code> variant of <code><a href="http://www.rdocumentation.org/packages/base/topics/make.names">base::make.names</a></code> that sanitizes using underscores ("_“) rather than dots (”.").</li>
 <li>Converted <code>readYAML</code> from a generic to standard function.</li>
 <li>Added support for <a href="https://ci.appveyor.com">AppVeyor CI</a> code testing on <a href="https://www.microsoft.com/en-us/windows">Windows</a>.</li>
 <li>Made <a href="https://travis-ci.com">Travis CI</a> build checks stricter, adding support for <code>BiocCheck</code>.</li>
@@ -714,7 +716,7 @@
 <li>
 <code>loadData</code> and <code>loadDataAsName</code> now default to <code>replace = TRUE</code>. If an object with the same name exists in the destination environment, then a warning is generated.</li>
 <li>
-<code>collapseToString</code> only attempts to dynamically return the original object class on objects that aren’t class <code>data.frame</code>. I updated this code to behave more nicely with grouped tibbles (<code>grouped_df</code>), which are a virtual class of <code>data.frame</code> and therefore can’t be coerced using <code>as(object, "grouped_df")</code>.</li>
+<code>collapseToString</code> only attempts to dynamically return the original object class on objects that aren’t class <code>data.frame</code>. I updated this code to behave more nicely with grouped tibbles (<code>grouped_df</code>), which are a virtual class of <code>data.frame</code> and therefore can’t be coerced using <code><a href="../reference/as.html">as(object, "grouped_df")</a></code>.</li>
 <li>DNA sequence utility functions <code>comp</code> and <code>revcomp</code> now return <code>NULL</code> for integers and numerics.</li>
 <li>For <code>prepareSummarizedExperiment</code>, added support for dropping <code>NULL</code> objects in assays list. This is useful for handling output from <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq">bcbioRNASeq</a> when <code>transformLimit</code> is reached. In this case, the <code>rlog</code> and <code>vst</code> matrices aren’t generated and set <code>NULL</code> in the assays list. Using <code>Filter(Negate(is.null), assays)</code> we can drop these <code>NULL</code> objects and prevent a downstream dimension mismatch in the <code><a href="http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class">SummarizedExperiment::SummarizedExperiment</a></code> call.</li>
 <li>Improved support for multiplexed files in <code>readSampleMetadataFile</code>. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the <code>revcomp</code> column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger">Cell Ranger</a> single-cell RNA-seq samples.</li>
@@ -740,7 +742,7 @@
 <ul>
 <li>Added overwrite support for <code>saveData</code>. Now will skip on existing files when <code>overwrite = FALSE</code>.</li>
 <li>Bug fix for <code>readDataVersions</code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
-<li>Improved key value pair method for <code>loadDataAsName</code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 =   "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
+<li>Improved key value pair method for <code>loadDataAsName</code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 = "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
 <li>
 <a href="https://www.ensembl.org">Ensembl</a> release version now defaults to <code>NULL</code> instead of <code>current</code> for <code>annotable</code>, <code>gene2symbol</code>, <code>symbol2gene</code> and <code>tx2gene</code> functions.</li>
 <li>Allow <code>rowData</code> to be left unset in <code>prepareSummarizedExperiment</code>. This is useful for setting up objects that don’t contain gene annotations.</li>
@@ -789,7 +791,7 @@
 <li>Moved all <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a> documentation to <code>methods-*.R</code> files where applicable.</li>
 <li>Now using <code>assays</code> in <code>prepareSummarizedExperiment</code> generic definition as primary object.</li>
 <li>Improved <code>assignAndSaveData</code> to add silent return of file path.</li>
-<li>Now consistently using clear function definitions (`<code>) in chain   operations with magrittr pipe (</code>%&gt;%`).</li>
+<li>Now consistently using clear function definitions (`<code>) in chain operations with magrittr pipe (</code>%&gt;%`).</li>
 <li>Added <code>.prepareSampleMetadata</code> utility function, for use with loading sample metadata from an external CSV, <a href="https://products.office.com/en-us/excel">Excel</a>, or YAML file.</li>
 <li>Added <code>loadData</code> functionality back to the package.</li>
 <li>Initial commit of <code>loadDataAsName</code> function.</li>
@@ -801,7 +803,7 @@
 <li>Added release support for <code>tx2gene</code> functions.</li>
 <li>Reduced the number of reexported functions (for documentation) down to the <a href="https://magrittr.tidyverse.org">magrittr</a> pipe (<code>%&gt;%</code>), <code>Matrix</code>, <code>DataFrame</code>, and <code>tibble</code>.</li>
 <li>Added silent return of file path to <code>saveData</code> function.</li>
-<li>Improved documentation for <a href="https://tibble.tidyverse.org">tibble</a> coercion using <code>as(object, "tibble")</code>
+<li>Improved documentation for <a href="https://tibble.tidyverse.org">tibble</a> coercion using <code><a href="../reference/as.html">as(object, "tibble")</a></code>
 </li>
 <li>Renamed <code>collapse</code> function to <code>collapseToString</code>, to avoid NAMESPACE collisions with tidyverse packages (<a href="http://dplyr.tidyverse.org">dplyr</a>, <a href="https://glue.tidyverse.org">glue</a>).</li>
 </ul>

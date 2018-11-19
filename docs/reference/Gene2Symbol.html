@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Gene-to-Symbol Mappings — Gene2Symbol" />
 
 <meta property="og:description" content="Gene-to-Symbol Mappings" />
@@ -171,20 +173,20 @@ columns.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>Gene2Symbol</span>(<span class='no'>rse</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 50 rows and 2 columns
-#&gt;                 geneID    geneName
-#&gt;            &lt;character&gt; &lt;character&gt;
-#&gt; gene1  ENSG00000000003      TSPAN6
-#&gt; gene2  ENSG00000000005        TNMD
-#&gt; gene3  ENSG00000000419        DPM1
-#&gt; gene4  ENSG00000000457       SCYL3
-#&gt; gene5  ENSG00000000460    C1orf112
-#&gt; ...                ...         ...
-#&gt; gene46 ENSG00000004059        ARF5
-#&gt; gene47 ENSG00000004139       SARM1
-#&gt; gene48 ENSG00000004142     POLDIP2
-#&gt; gene49 ENSG00000004399      PLXND1
-#&gt; gene50 ENSG00000004455         AK2</div></pre>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 500 rows and 2 columns
+#&gt;                  geneID    geneName
+#&gt;             &lt;character&gt; &lt;character&gt;
+#&gt; gene001 ENSG00000000003      TSPAN6
+#&gt; gene002 ENSG00000000005        TNMD
+#&gt; gene003 ENSG00000000419        DPM1
+#&gt; gene004 ENSG00000000457       SCYL3
+#&gt; gene005 ENSG00000000460    C1orf112
+#&gt; ...                 ...         ...
+#&gt; gene496 ENSG00000032742       IFT88
+#&gt; gene497 ENSG00000033011        ALG1
+#&gt; gene498 ENSG00000033030      ZCCHC8
+#&gt; gene499 ENSG00000033050       ABCF2
+#&gt; gene500 ENSG00000033100       CHPF2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

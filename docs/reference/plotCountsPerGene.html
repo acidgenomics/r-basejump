@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Plot Counts Per Gene — plotCountsPerGene" />
 
 <meta property="og:description" content="Generally, we expect similar count spreads for all genes between samples
@@ -122,8 +124,8 @@ unless the library sizes or total RNA expression are different.</p>
 <span class='fu'>plotCountsPerGene</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"boxplot"</span>, <span class='st'>"density"</span>, <span class='st'>"violin"</span>),
   <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>),
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.discrete.color"</span>, <span class='kw'>NULL</span>),
-  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.discrete.fill"</span>, <span class='kw'>NULL</span>),
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.color.discrete"</span>, <span class='kw'>NULL</span>),
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.fill.discrete"</span>, <span class='kw'>NULL</span>),
   <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.flip"</span>, <span class='fl'>TRUE</span>), <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"counts per gene"</span>)
 
@@ -131,8 +133,8 @@ unless the library sizes or total RNA expression are different.</p>
 <span class='fu'>plotCountsPerGene</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"boxplot"</span>, <span class='st'>"density"</span>, <span class='st'>"violin"</span>),
   <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>),
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.discrete.color"</span>, <span class='kw'>NULL</span>),
-  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.discrete.fill"</span>, <span class='kw'>NULL</span>),
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.color.discrete"</span>, <span class='kw'>NULL</span>),
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.fill.discrete"</span>, <span class='kw'>NULL</span>),
   <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.flip"</span>, <span class='fl'>TRUE</span>), <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"counts per gene"</span>)</pre>
     
@@ -174,7 +176,7 @@ scale. Must supply discrete values. When set to <code>NULL</code>, the default g
 color palette will be used. If manual color definitions are desired, we
 recommend using <code><a href='ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>. To set the discrete color
 palette globally, use
-<code>options(basejump.discrete.color = ggplot2::scale_color_viridis_d())</code>.</p></td>
+<code>options(basejump.color.discrete = ggplot2::scale_color_viridis_d())</code>.</p></td>
     </tr>
     <tr>
       <th>fill</th>
@@ -182,7 +184,7 @@ palette globally, use
 Must supply discrete values. When set to <code>NULL</code>, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
 using <code><a href='ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>. To set the discrete fill palette
-globally, use <code>options(bcbio.discrete.fill = scale_fill_viridis_d())</code>.</p></td>
+globally, use <code>options(basejump.fill.discrete = scale_fill_viridis_d())</code>.</p></td>
     </tr>
     <tr>
       <th>flip</th>
@@ -208,9 +210,9 @@ many samples.</p></td>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse</span>, <span class='no'>sce</span>)
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>plotCountsPerGene</span>(<span class='no'>rse</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"boxplot"</span>)</div><div class='output co'>#&gt; <span class='message'>50 non-zero genes detected.</span></div><div class='img'><img src='plotCountsPerGene-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotCountsPerGene</span>(<span class='no'>rse</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"density"</span>)</div><div class='output co'>#&gt; <span class='message'>50 non-zero genes detected.</span></div><div class='img'><img src='plotCountsPerGene-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>plotCountsPerGene</span>(<span class='no'>rse</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"boxplot"</span>)</div><div class='output co'>#&gt; <span class='message'>500 non-zero genes detected.</span></div><div class='img'><img src='plotCountsPerGene-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotCountsPerGene</span>(<span class='no'>rse</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"density"</span>)</div><div class='output co'>#&gt; <span class='message'>500 non-zero genes detected.</span></div><div class='img'><img src='plotCountsPerGene-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='fu'>plotCountsPerGene</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`.</span></div><div class='output co'>#&gt; <span class='message'>50 non-zero genes detected.</span></div><div class='img'><img src='plotCountsPerGene-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotCountsPerGene</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`.</span></div><div class='output co'>#&gt; <span class='message'>477 non-zero genes detected.</span></div><div class='img'><img src='plotCountsPerGene-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

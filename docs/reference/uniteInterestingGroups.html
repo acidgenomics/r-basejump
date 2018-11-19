@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Unite Interesting Groups — uniteInterestingGroups" />
 
 <meta property="og:description" content="Create a single interesting groups column (interestingGroups) used for
@@ -154,13 +156,20 @@ define the samples. If left unset, defaults to <code>sampleName</code>.</p></td>
     <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>from</span>,
     <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='fu'><a href='interestingGroups.html'>interestingGroups</a></span>(<span class='no'>object</span>)
 )
-<span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
-#&gt;         genotype treatment sampleName interestingGroups
-#&gt;         &lt;factor&gt;  &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample1 wildtype   control    sample1  wildtype:control
-#&gt; sample2 knockout   control    sample2  knockout:control
-#&gt; sample3 wildtype   treated    sample3  wildtype:treated
-#&gt; sample4 knockout   treated    sample4  knockout:treated</div></pre>
+<span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 3 columns
+#&gt;          condition sampleName interestingGroups
+#&gt;           &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
+#&gt; sample01         A   sample01                 A
+#&gt; sample02         A   sample02                 A
+#&gt; sample03         A   sample03                 A
+#&gt; sample04         A   sample04                 A
+#&gt; sample05         A   sample05                 A
+#&gt; ...            ...        ...               ...
+#&gt; sample08         B   sample08                 B
+#&gt; sample09         B   sample09                 B
+#&gt; sample10         B   sample10                 B
+#&gt; sample11         B   sample11                 B
+#&gt; sample12         B   sample12                 B</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

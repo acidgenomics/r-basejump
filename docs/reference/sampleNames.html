@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Sample Names — sampleNames" />
 
 <meta property="og:description" content="This function will return the human readable sample names if defined
@@ -143,16 +145,22 @@ the syntactically valid names defined as the rownames of <code><a href='sampleDa
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse</span>)
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4 
-#&gt; "sample1" "sample2" "sample3" "sample4" </div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
+#&gt; "sample01" "sample02" "sample03" "sample04" "sample05" "sample06" "sample07" 
+#&gt;   sample08   sample09   sample10   sample11   sample12 
+#&gt; "sample08" "sample09" "sample10" "sample11" "sample12" </div><div class='input'>
 <span class='co'>## Assignment support.</span>
 <span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
 <span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'>toupper</span>(<span class='no'>value</span>)
-<span class='fu'>print</span>(<span class='no'>value</span>)</div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4 
-#&gt; "SAMPLE1" "SAMPLE2" "SAMPLE3" "SAMPLE4" </div><div class='input'><span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+<span class='fu'>print</span>(<span class='no'>value</span>)</div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
+#&gt; "SAMPLE01" "SAMPLE02" "SAMPLE03" "SAMPLE04" "SAMPLE05" "SAMPLE06" "SAMPLE07" 
+#&gt;   sample08   sample09   sample10   sample11   sample12 
+#&gt; "SAMPLE08" "SAMPLE09" "SAMPLE10" "SAMPLE11" "SAMPLE12" </div><div class='input'><span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4 
-#&gt; "SAMPLE1" "SAMPLE2" "SAMPLE3" "SAMPLE4" </div></pre>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
+#&gt; "SAMPLE01" "SAMPLE02" "SAMPLE03" "SAMPLE04" "SAMPLE05" "SAMPLE06" "SAMPLE07" 
+#&gt;   sample08   sample09   sample10   sample11   sample12 
+#&gt; "SAMPLE08" "SAMPLE09" "SAMPLE10" "SAMPLE11" "SAMPLE12" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Sanitize Row Data — sanitizeRowData" />
 
 <meta property="og:description" content="Coerce gene annotations to DataFrame, and keep only atomic columns.
@@ -143,33 +145,33 @@ Complex columns (e.g. Entrez ID <code>list</code>) will fail to write to disk as
 <span class='fu'>vapply</span>(<span class='no'>to</span>, <span class='no'>is.atomic</span>, <span class='fu'>logical</span>(<span class='fl'>1L</span>))</div><div class='output co'>#&gt;    seqnames       start         end       width      strand      geneID 
 #&gt;        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
 #&gt;    geneName geneBiotype  broadClass 
-#&gt;        TRUE        TRUE        TRUE </div><div class='input'><span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 50 rows and 9 columns
-#&gt;        seqnames     start       end     width   strand          geneID
-#&gt;        &lt;factor&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;factor&gt;     &lt;character&gt;
-#&gt; gene1         X 100627109 100639991     12883        - ENSG00000000003
-#&gt; gene2         X 100584802 100599885     15084        + ENSG00000000005
-#&gt; gene3        20  50934867  50958555     23689        - ENSG00000000419
-#&gt; gene4         1 169849631 169894267     44637        - ENSG00000000457
-#&gt; gene5         1 169662007 169854080    192074        + ENSG00000000460
-#&gt; ...         ...       ...       ...       ...      ...             ...
-#&gt; gene46        7 127588345 127591705      3361        + ENSG00000004059
-#&gt; gene47       17  28364356  28404049     39694        + ENSG00000004139
-#&gt; gene48       17  28347177  28357522     10346        - ENSG00000004142
-#&gt; gene49        3 129555175 129606818     51644        - ENSG00000004399
-#&gt; gene50        1  33007940  33080996     73057        - ENSG00000004455
-#&gt;           geneName    geneBiotype  broadClass
-#&gt;        &lt;character&gt;    &lt;character&gt; &lt;character&gt;
-#&gt; gene1       TSPAN6 protein_coding      coding
-#&gt; gene2         TNMD protein_coding      coding
-#&gt; gene3         DPM1 protein_coding      coding
-#&gt; gene4        SCYL3 protein_coding      coding
-#&gt; gene5     C1orf112 protein_coding      coding
-#&gt; ...            ...            ...         ...
-#&gt; gene46        ARF5 protein_coding      coding
-#&gt; gene47       SARM1 protein_coding      coding
-#&gt; gene48     POLDIP2 protein_coding      coding
-#&gt; gene49      PLXND1 protein_coding      coding
-#&gt; gene50         AK2 protein_coding      coding</div></pre>
+#&gt;        TRUE        TRUE        TRUE </div><div class='input'><span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 500 rows and 9 columns
+#&gt;         seqnames     start       end     width   strand          geneID
+#&gt;         &lt;factor&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;factor&gt;     &lt;character&gt;
+#&gt; gene001        X 100627109 100639991     12883        - ENSG00000000003
+#&gt; gene002        X 100584802 100599885     15084        + ENSG00000000005
+#&gt; gene003       20  50934867  50958555     23689        - ENSG00000000419
+#&gt; gene004        1 169849631 169894267     44637        - ENSG00000000457
+#&gt; gene005        1 169662007 169854080    192074        + ENSG00000000460
+#&gt; ...          ...       ...       ...       ...      ...             ...
+#&gt; gene496       13  20567069  20691437    124369        + ENSG00000032742
+#&gt; gene497       16   5033960   5087379     53420        + ENSG00000033011
+#&gt; gene498       12 122471600 122501073     29474        - ENSG00000033030
+#&gt; gene499        7 151212490 151227230     14741        - ENSG00000033050
+#&gt; gene500        7 151232489 151238827      6339        + ENSG00000033100
+#&gt;            geneName    geneBiotype  broadClass
+#&gt;         &lt;character&gt;    &lt;character&gt; &lt;character&gt;
+#&gt; gene001      TSPAN6 protein_coding      coding
+#&gt; gene002        TNMD protein_coding      coding
+#&gt; gene003        DPM1 protein_coding      coding
+#&gt; gene004       SCYL3 protein_coding      coding
+#&gt; gene005    C1orf112 protein_coding      coding
+#&gt; ...             ...            ...         ...
+#&gt; gene496       IFT88 protein_coding      coding
+#&gt; gene497        ALG1 protein_coding      coding
+#&gt; gene498      ZCCHC8 protein_coding      coding
+#&gt; gene499       ABCF2 protein_coding      coding
+#&gt; gene500       CHPF2 protein_coding      coding</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

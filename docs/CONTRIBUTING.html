@@ -30,6 +30,8 @@
 
 
 
+  <link href="extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Contributing to development" />
 
 
@@ -135,18 +137,18 @@
 <h2 class="hasAnchor">
 <a href="#required-checks" class="anchor"></a>Required checks</h2>
 <p>Run these commands prior to a pull request:</p>
-<pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">document</span>()
-devtools::<span class="kw">run_examples</span>()
-devtools::<span class="kw">test</span>()
-devtools::<span class="kw">check</span>()
-BiocCheck::<span class="kw">BiocCheck</span>(<span class="kw">getwd</span>())
-lintr::<span class="kw">lint_package</span>()
-covr::<span class="kw">report</span>()</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/document">document</a></span>()</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/run_examples">run_examples</a></span>()</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/test">test</a></span>()</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/check">check</a></span>()</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">BiocCheck<span class="op">::</span><span class="kw">BiocCheck</span>(<span class="kw">getwd</span>())</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">lintr<span class="op">::</span><span class="kw">lint_package</span>()</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">covr<span class="op">::</span><span class="kw">report</span>()</a></code></pre></div>
 <div id="rebuild-website" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rebuild-website" class="anchor"></a>Rebuild website</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlink</span>(<span class="st">"docs"</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)
-pkgdown::<span class="kw">build_site</span>()</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">unlink</span>(<span class="st">"docs"</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">pkgdown<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/pkgdown/topics/build_site">build_site</a></span>()</a></code></pre></div>
 </div>
 </div>
 </div>

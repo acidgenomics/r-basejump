@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Example RNA-Seq Data Set — rse" />
 
 <meta property="og:description" content="Generated with DESeq2::makeExampleDESeqDataSet(). Contains actual gene
@@ -120,19 +122,19 @@ identifiers and Ensembl annotations.</p>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>RangedSummarizedExperiment</code> with 50 rows and 4 columns.</p>
+    <p>An object of class <code>RangedSummarizedExperiment</code> with 500 rows and 12 columns.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse</span>)
 <span class='no'>rse</span></div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
-#&gt; dim: 50 4 
+#&gt; dim: 500 12 
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts
-#&gt; rownames(50): gene1 gene2 ... gene49 gene50
+#&gt; rownames(500): gene001 gene002 ... gene499 gene500
 #&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
-#&gt; colnames(4): sample1 sample2 sample3 sample4
-#&gt; colData names(2): genotype treatment</div></pre>
+#&gt; colnames(12): sample01 sample02 ... sample11 sample12
+#&gt; colData names(1): condition</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

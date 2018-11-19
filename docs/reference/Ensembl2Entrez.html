@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Ensembl-to-Entrez Gene Identifier Mappings — Ensembl2Entrez" />
 
 <meta property="og:description" content="Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
@@ -158,20 +160,20 @@ columns.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>Ensembl2Entrez</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>1 genes don't map to Entrez.</span></div><div class='output co'>#&gt; <span class='message'>Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Ensembl2Entrez with 50 rows and 2 columns
-#&gt;                 geneID  entrezID
-#&gt;            &lt;character&gt; &lt;integer&gt;
-#&gt; gene1  ENSG00000000003      7105
-#&gt; gene2  ENSG00000000005     64102
-#&gt; gene3  ENSG00000000419      8813
-#&gt; gene4  ENSG00000000457     57147
-#&gt; gene5  ENSG00000000460     55732
-#&gt; ...                ...       ...
-#&gt; gene46 ENSG00000004059       381
-#&gt; gene47 ENSG00000004139     23098
-#&gt; gene48 ENSG00000004142     26073
-#&gt; gene49 ENSG00000004399     23129
-#&gt; gene50 ENSG00000004455       204</div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>Ensembl2Entrez</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>4 genes don't map to Entrez.</span></div><div class='output co'>#&gt; <span class='message'>2 genes map to multiple Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'>Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Ensembl2Entrez with 500 rows and 2 columns
+#&gt;                  geneID  entrezID
+#&gt;             &lt;character&gt; &lt;integer&gt;
+#&gt; gene001 ENSG00000000003      7105
+#&gt; gene002 ENSG00000000005     64102
+#&gt; gene003 ENSG00000000419      8813
+#&gt; gene004 ENSG00000000457     57147
+#&gt; gene005 ENSG00000000460     55732
+#&gt; ...                 ...       ...
+#&gt; gene496 ENSG00000032742      8100
+#&gt; gene497 ENSG00000033011     56052
+#&gt; gene498 ENSG00000033030     55596
+#&gt; gene499 ENSG00000033050     10061
+#&gt; gene500 ENSG00000033100     54480</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
