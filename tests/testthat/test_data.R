@@ -331,7 +331,7 @@ test_that("sampleNames", {
 
 
 # selectSamples ================================================================
-# FIXME Add metadata (e.g. genotype) that we can test here.
+# TODO Add metadata (e.g. genotype) that we can test here.
 test_that("selectSamples : SummarizedExperiment", {
     object <- selectSamples(rse, sampleName = "sample1")
     expect_s4_class(object, class = "SummarizedExperiment")
