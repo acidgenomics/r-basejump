@@ -35,22 +35,7 @@ colnames(rse) <- colnames(rse) %>%
     str_pad(width = 2L, side = "left", pad = "0") %>%
     paste0("sample", .)
 
-# Column data.
-# Note that `sampleName` column is generated for `sampleData()` return.
-colData(rse) <- DataFrame(
-    genotype = factor(
-        rep(c("wildtype", "knockout"), times = ncol(rse) / 2L),
-        levels = c("wildtype", "knockout")
-    ),
-    treatment = factor(
-        rep(c("control", "treated"), each = ncol(rse) / 2L),
-        levels = c("control", "treated")
-    ),
-    row.names = colnames(rse)
-)
-
-# Row data.
-# Include real `geneID`, `geneName` columns to test mapping functions.
+# Row data. Include real `geneID`, `geneName` columns to test mapping functions.
 rowRanges <- makeGRangesFromEnsembl(organism, release = release)
 # Subset to match the number of rows in the example.
 rowRanges <- rowRanges[seq_len(nrow(rse))]
@@ -77,7 +62,7 @@ rowRanges(rse) <- rowRanges
 # Stash the date.
 metadata(rse)[["date"]] <- Sys.Date()
 # Define the interesting groups.
-interestingGroups(rse) <- c("genotype", "treatment")
+interestingGroups(rse) <- "condition"
 
 # Size check.
 vapply(
