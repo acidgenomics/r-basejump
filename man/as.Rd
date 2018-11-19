@@ -22,16 +22,6 @@ as.SummarizedExperiment(x)
 \arguments{
 \item{x}{Object.}
 
-\item{row.names}{
-    See \code{?base::\link[base]{as.data.frame}} for a description of
-    these arguments.
-  }
-
-\item{optional}{
-    See \code{?base::\link[base]{as.data.frame}} for a description of
-    these arguments.
-  }
-
 \item{...}{Additional arguments.}
 }
 \value{

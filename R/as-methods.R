@@ -91,9 +91,9 @@ BiocGenerics::as.data.frame
 
 
 # If we include this in usage it breaks pkgdown.
+# @inheritParams BiocGenerics::as.data.frame
 #' @rdname as
 #' @usage NULL
-#' @inheritParams BiocGenerics::as.data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
