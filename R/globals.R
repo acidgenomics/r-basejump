@@ -36,6 +36,14 @@ extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
 
 
+formals <- list(
+    color.discrete = quote(getOption("basejump.color.discrete", NULL)),
+    fill.discrete = quote(getOption("basejump.fill.discrete", NULL)),
+    flip = quote(getOption("basejump.flip", TRUE))
+)
+
+
+
 #' Slot Names in Metadata Containing Genome Information
 #' @export
 #' @examples
