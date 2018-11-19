@@ -129,7 +129,7 @@ loadDataAsName <- function(..., dir, envir = parent.frame()) {
     invisible(files)
 }
 
-formals(loadData)[["dir"]] <- formalsList[["load.dir"]]
+formals(loadDataAsName)[["dir"]] <- formalsList[["load.dir"]]
 
 
 
