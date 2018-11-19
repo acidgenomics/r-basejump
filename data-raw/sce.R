@@ -18,7 +18,7 @@ release <- 92L
 # Note: These DE params are natural log scale.
 params <- newSplatParams() %>%
     setParam(name = "batchCells", value = 100L) %>%
-    setParam(name = "nGenes", value = 1000L) %>%
+    setParam(name = "nGenes", value = 500L) %>%
     setParam(name = "de.facLoc", value = 1L) %>%
     setParam(name = "de.facScale", value = 0.25) %>%
     # Add more dropout (to test zinbwave weights and DE).
@@ -36,7 +36,7 @@ sce <- camel(sce, rownames = TRUE, colnames = TRUE)
 # Pad the dimnames so they sort correctly.
 rownames(sce) <- rownames(sce) %>%
     str_replace("gene", "") %>%
-    str_pad(width = 4L, side = "left", pad = "0") %>%
+    str_pad(width = 3L, side = "left", pad = "0") %>%
     paste0("gene", .)
 colnames(sce) <- colnames(sce) %>%
     str_replace("cell", "") %>%

@@ -14,7 +14,7 @@ release <- 92L
 
 # Generate example DESeqDataSet using DESeq2.
 # Note that we're using simulated counts here.
-dds <- makeExampleDESeqDataSet()
+dds <- makeExampleDESeqDataSet(n = 500L, m = 12L, betaSD = 1L)
 object_size(dds)
 stopifnot(object_size(dds) < limit)
 stopifnot(validObject(dds))
@@ -28,7 +28,7 @@ stopifnot(object_size(rse) < limit)
 # Pad the dimnames so they sort correctly.
 rownames(rse) <- rownames(rse) %>%
     str_replace("gene", "") %>%
-    str_pad(width = 4L, side = "left", pad = "0") %>%
+    str_pad(width = 3L, side = "left", pad = "0") %>%
     paste0("gene", .)
 colnames(rse) <- colnames(rse) %>%
     str_replace("sample", "") %>%
