@@ -4,7 +4,7 @@
 \name{sce}
 \alias{sce}
 \title{Example Single-Cell RNA-Seq Data Set}
-\format{An object of class \code{SingleCellExperiment} with 50 rows and 100 columns.}
+\format{An object of class \code{SingleCellExperiment} with 500 rows and 100 columns.}
 \usage{
 sce
 }
