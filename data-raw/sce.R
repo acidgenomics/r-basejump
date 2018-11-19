@@ -81,5 +81,4 @@ object_size(sce)
 stopifnot(object_size(sce) < limit)
 stopifnot(validObject(sce))
 
-sce <- sce
 usethis::use_data(sce, compress = "xz", overwrite = TRUE)
