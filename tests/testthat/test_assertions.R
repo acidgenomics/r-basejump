@@ -44,7 +44,7 @@ test_that("assertFormalInterestingGroups", {
     expect_true(
         assertFormalInterestingGroups(
             x = rse,
-            interestingGroups = c("genotype", "treatment")
+            interestingGroups = "condition"
         )
     )
 

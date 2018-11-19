@@ -35,7 +35,7 @@
 #' @examples
 #' data(rse)
 #' plotPCA(rse, label = FALSE)
-#' plotPCA(rse, interestingGroups = "genotype", label = TRUE)
+#' plotPCA(rse, label = TRUE)
 NULL
 
 

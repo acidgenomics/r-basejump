@@ -68,7 +68,7 @@ test_that("Gene2Symbol : No mappings", {
 test_that("interestingGroups : SummarizedExperiment", {
     expect_identical(
         object = interestingGroups(rse),
-        expected = c("genotype", "treatment")
+        expected = "condition"
     )
 
     # Check object with no metadata
@@ -301,7 +301,7 @@ test_that("sampleData : SummarizedExperiment", {
         expected = c("sampleName", "interestingGroups")
     )
     expect_identical(
-        object = sampleData(object)[, colnames(colData(object))],
+        object = sampleData(object)[, colnames(colData(object)), drop = FALSE],
         expected = colData(object)
     )
 
@@ -331,13 +331,12 @@ test_that("sampleNames", {
 
 
 # selectSamples ================================================================
-# TODO Add metadata (e.g. genotype) that we can test here.
 test_that("selectSamples : SummarizedExperiment", {
-    object <- selectSamples(rse, sampleName = "sample1")
+    object <- selectSamples(rse, condition = "A")
     expect_s4_class(object, class = "SummarizedExperiment")
     expect_identical(
         object = colnames(object),
-        expected = "sample1"
+        expected = paste0("sample0", seq_len(6L))
     )
 })
 
