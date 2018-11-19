@@ -27,24 +27,24 @@ setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
 setValidity(
     Class = "EggNOG",
     method = function(object) {
-        .valid(list(
-            validate_that(identical(
+        validate_that(
+            identical(
                 x = names(object),
                 y = c("cogFunctionalCategories", "annotations")
-            )),
-            validate_that(identical(
+            ),
+            identical(
                 x = colnames(object[["cogFunctionalCategories"]]),
                 y = c("letter", "description")
-            )),
-            validate_that(identical(
+            ),
+            identical(
                 x = colnames(object[["annotations"]]),
                 y = c(
                     "eggnogID",
                     "consensusFunctionalDescription",
                     "cogFunctionalCategory"
                 )
-            ))
-        ))
+            )
+        )
     }
 )
 
@@ -65,16 +65,14 @@ setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 setValidity(
     Class = "Ensembl2Entrez",
     method = function(object) {
-        .valid(list(
-            validate_that(identical(
+        validate_that(
+            identical(
                 x = colnames(object),
                 y = c("geneID", "entrezID")
-            )),
-            validate_that(!any(duplicated(object[["geneID"]]))),
-            validate_that(
-                class(object[["entrezID"]]) %in% c("integer", "list")
-            )
-        ))
+            ),
+            !any(duplicated(object[["geneID"]])),
+            class(object[["entrezID"]]) %in% c("integer", "list")
+        )
     }
 )
 
@@ -103,17 +101,15 @@ setClass(Class = "Gene2Symbol", contains = "DataFrame")
 setValidity(
     Class = "Gene2Symbol",
     method = function(object) {
-        .valid(list(
-            validate_that(identical(
+        validate_that(
+            identical(
                 x = colnames(object),
                 y = c("geneID", "geneName")
-            )),
-            validate_that(nrow(object) > 0L),
-            validate_that(is.character(object[["geneID"]])),
-            validate_that(
-                class(object[["geneName"]]) %in% c("character", "factor")
-            )
-        ))
+            ),
+            nrow(object) > 0L,
+            is.character(object[["geneID"]]),
+            class(object[["geneName"]]) %in% c("character", "factor")
+        )
     }
 )
 
@@ -131,19 +127,19 @@ setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
 setValidity(
     Class = "HGNC2Ensembl",
     method = function(object) {
-        .valid(list(
-            validate_that(identical(
+        validate_that(
+            identical(
                 x = lapply(object, class),
                 y = list(
                     hgncID = "integer",
                     geneID = "character"
                 )
-            )),
-            validate_that(identical(
+            ),
+            identical(
                 x = rownames(object),
                 y = NULL
-            ))
-        ))
+            )
+        )
     }
 )
 
@@ -161,13 +157,13 @@ setClass(Class = "MGI2Ensembl", contains = "DataFrame")
 setValidity(
     Class = "MGI2Ensembl",
     method = function(object) {
-        .valid(list(
-            validate_that(identical(
+        validate_that(
+            identical(
                 x = colnames(object),
                 y = c("mgiID", "geneID")
-            )),
-            validate_that(is.null(rownames(object)))
-        ))
+            ),
+            is.null(rownames(object))
+        )
     }
 )
 
@@ -187,8 +183,8 @@ setClass(Class = "PANTHER", contains = "DataFrame")
 setValidity(
     Class = "PANTHER",
     method = function(object) {
-        .valid(list(
-            validate_that(identical(
+        validate_that(
+            identical(
                 x = colnames(object),
                 y = c(
                     "geneID",
@@ -201,11 +197,9 @@ setValidity(
                     "pantherSubfamilyID",
                     "pantherSubfamilyName"
                 )
-            )),
-            validate_that(
-                all(c("organism", "release") %in% names(metadata(object)))
-            )
-        ))
+            ),
+            all(c("organism", "release") %in% names(metadata(object)))
+        )
     }
 )
 
@@ -230,18 +224,18 @@ setClass(Class = "Tx2Gene", contains = "DataFrame")
 setValidity(
     Class = "Tx2Gene",
     method = function(object) {
-        .valid(list(
-            validate_that(nrow(object) > 0L),
-            validate_that(identical(
+        validate_that(
+            nrow(object) > 0L,
+            identical(
                 x = colnames(object),
                 y = c("transcriptID", "geneID")
-            )),
-            validate_that(all(vapply(
+            ),
+            all(vapply(
                 X = object,
                 FUN = is.character,
                 FUN.VALUE = logical(1L)
-            ))),
-            validate_that(!any(duplicated(object[["transcriptID"]])))
-        ))
+            )),
+            !any(duplicated(object[["transcriptID"]]))
+        )
     }
 )
