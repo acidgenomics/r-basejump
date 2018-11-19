@@ -125,7 +125,8 @@ count matrix.}
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
 \item{pointAlpha}{\code{scalar numeric} (\code{0}-\code{1}). Alpha transparency level.
-Useful when there many cells in the dataset, and some cells can be masked.}
+Useful when there many points in the dataset (e.g. single-cell data), and
+some points can be masked.}
 
 \item{pointColor}{\code{string}. Default point color for the plot.}
 
@@ -134,7 +135,7 @@ Useful when there many cells in the dataset, and some cells can be masked.}
 \item{pointsAsNumbers}{\code{boolean}. Plot the points as numbers (\code{TRUE}) or
 dots (\code{FALSE}).}
 
-\item{pointSize}{\code{scalar numeric}. Cell point size.}
+\item{pointSize}{\code{scalar numeric}. Point size for dots in the plot.}
 
 \item{prefilter}{\code{boolean}. Apply prefiltering to remove zero count genes.}
 
