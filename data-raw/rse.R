@@ -25,6 +25,16 @@ rse <- as(dds, "RangedSummarizedExperiment")
 object_size(rse)
 stopifnot(object_size(rse) < limit)
 
+# Pad the dimnames so they sort correctly.
+rownames(rse) <- rownames(rse) %>%
+    str_replace("gene", "") %>%
+    str_pad(width = 4L, side = "left", pad = "0") %>%
+    paste0("gene", .)
+colnames(rse) <- colnames(rse) %>%
+    str_replace("cell", "") %>%
+    str_pad(width = 2L, side = "left", pad = "0") %>%
+    paste0("cell", .)
+
 # Column data.
 # Note that `sampleName` column is generated for `sampleData()` return.
 colData(rse) <- DataFrame(
@@ -79,5 +89,4 @@ object_size(rse)
 stopifnot(object_size(rse) < limit)
 stopifnot(validObject(rse))
 
-rse <- rse
 usethis::use_data(rse, compress = "xz", overwrite = TRUE)
