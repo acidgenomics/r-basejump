@@ -83,10 +83,10 @@ saveData <- function(..., dir, ext, overwrite, compress) {
     invisible(files)
 }
 
-formals(saveData)[["compress"]] <- formals[["save.compress"]]
-formals(saveData)[["dir"]] <- formals[["save.data"]]
-formals(saveData)[["ext"]] <- formals[["save.ext"]]
-formals(saveData)[["overwrite"]] <- formals[["save.overwrite"]]
+formals(saveData)[["compress"]] <- formalsList[["save.compress"]]
+formals(saveData)[["dir"]] <- formalsList[["save.data"]]
+formals(saveData)[["ext"]] <- formalsList[["save.ext"]]
+formals(saveData)[["overwrite"]] <- formalsList[["save.overwrite"]]
 
 
 

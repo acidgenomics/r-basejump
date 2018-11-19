@@ -25,7 +25,6 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
 plotQC.SummarizedExperiment <-  # nolint
     function(object, assay = 1L) {
         validObject(object)

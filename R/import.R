@@ -339,4 +339,4 @@ import <- function(file, dataFrame, ...) {
     data
 }
 
-formals(import)[["dataFrame"]] <- formals[["data.frame"]]
+formals(import)[["dataFrame"]] <- formalsList[["data.frame"]]

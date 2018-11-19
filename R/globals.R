@@ -36,15 +36,22 @@ extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
 
 
-# Formals that the user can set globally with `getOption()`.
-formals <- list(
+
+#' Formals List
+#' Formals that the user can set globally with `base::getOption()`.
+#' @export
+#' @examples
+#' formalsList
+formalsList <- list(
     color.continuous = quote(getOption("basejump.color.continuous", NULL)),
     color.discrete = quote(getOption("basejump.color.discrete", NULL)),
     data.frame = quote(getOption("basejump.data.frame", "data.frame")),
     fill.continuous = quote(getOption("basejump.fill.continuous", NULL)),
     fill.discrete = quote(getOption("basejump.fill.discrete", NULL)),
     flip = quote(getOption("basejump.flip", TRUE)),
+    label = quote(getOption("basejump.label", FALSE)),
     load.dir = quote(getOption("basejump.load.dir", ".")),
+    point.size = quote(getOption("basejump.point.size", 3L)),
     save.dir = quote(getOption("basejump.save.dir", ".")),
     save.ext = quote(getOption("basejump.save.ext", "rds")),
     save.overwrite = quote(getOption("basejump.save.overwrite", TRUE)),

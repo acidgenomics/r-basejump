@@ -8,15 +8,14 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
 plotTotalCounts.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
         interestingGroups = NULL,
         perMillion = FALSE,
-        fill = getOption("basejump.discrete.fill", NULL),
-        flip = getOption("basejump.flip", TRUE),
+        fill,
+        flip,
         title = "total counts"
     ) {
         validObject(object)
@@ -79,20 +78,23 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         p
     }
 
+formals(plotTotalCounts.SummarizedExperiment)[["fill"]] <-
+    formalsList[["fill.discrete"]]
+formals(plotTotalCounts.SummarizedExperiment)[["flip"]] <-
+    formalsList[["flip"]]
 
 
-# SingleCellExperiment =========================================================
+
 plotTotalCounts.SingleCellExperiment <-  # nolint
     function(object) {
         do.call(
             what = plotTotalCounts,
             args = matchArgsToDoCall(
-                args = list(
-                    object = aggregateCellsToSamples(object)
-                )
+                args = list(object = aggregateCellsToSamples(object))
             )
         )
     }
+
 formals(plotTotalCounts.SingleCellExperiment) <-
     formals(plotTotalCounts.SummarizedExperiment)
 

@@ -22,7 +22,7 @@
 #'   color palette will be used. If manual color definitions are desired, we
 #'   recommend using `ggplot2::scale_color_manual()`. To set the discrete color
 #'   palette globally, use
-#'   `options(basejump.discrete.color = ggplot2::scale_color_viridis_d())`.
+#'   `options(basejump.color.discrete = ggplot2::scale_color_viridis_d())`.
 #' @param counts `matrix`. Count matrix. Normalized counts are recommended.
 #' @param countsAxisLabel `string`. Counts axis label.
 #' @param dark `boolean`. Plot against a dark background using
@@ -42,7 +42,7 @@
 #'   Must supply discrete values. When set to `NULL`, the default ggplot2 color
 #'   palette will be used. If manual color definitions are desired, we recommend
 #'   using `ggplot2::scale_fill_manual()`. To set the discrete fill palette
-#'   globally, use `options(bcbio.discrete.fill = scale_fill_viridis_d())`.
+#'   globally, use `options(basejump.fill.discrete = scale_fill_viridis_d())`.
 #' @param flip `boolean`. Flip x and y axes. Recommended for plots containing
 #'   many samples.
 #' @param gene2symbol `Gene2Symbol`. Gene-to-symbol mappings. Must contain
@@ -84,7 +84,6 @@
 #'   Useful when there many cells in the dataset, and some cells can be masked.
 #' @param pointsAsNumbers `boolean`. Plot the points as numbers (`TRUE`) or
 #'   dots (`FALSE`).
-#' @param pointColor `string`. Default point color for the plot.
 #' @param pointSize `scalar numeric`. Cell point size.
 #' @param prefilter `boolean`. Apply prefiltering to remove zero count genes.
 #' @param progress `boolean`. Show progress, using progress bars.
