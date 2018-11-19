@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Parameters — params" />
 
 <meta property="og:description" content="Parameters" />
@@ -154,7 +156,7 @@ scale. Must supply discrete values. When set to <code>NULL</code>, the default g
 color palette will be used. If manual color definitions are desired, we
 recommend using <code><a href='ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>. To set the discrete color
 palette globally, use
-<code>options(basejump.discrete.color = ggplot2::scale_color_viridis_d())</code>.</p></td>
+<code>options(basejump.color.discrete = ggplot2::scale_color_viridis_d())</code>.</p></td>
     </tr>
     <tr>
       <th>counts</th>
@@ -207,7 +209,7 @@ and defaults to the first argument in the <code>character</code> vector.</p></td
 Must supply discrete values. When set to <code>NULL</code>, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
 using <code><a href='ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>. To set the discrete fill palette
-globally, use <code>options(bcbio.discrete.fill = scale_fill_viridis_d())</code>.</p></td>
+globally, use <code>options(basejump.fill.discrete = scale_fill_viridis_d())</code>.</p></td>
     </tr>
     <tr>
       <th>flip</th>
@@ -321,7 +323,16 @@ count matrix.</p></td>
     <tr>
       <th>pointAlpha</th>
       <td><p><code>scalar numeric</code> (<code>0</code>-<code>1</code>). Alpha transparency level.
-Useful when there many cells in the dataset, and some cells can be masked.</p></td>
+Useful when there many points in the dataset (e.g. single-cell data), and
+some points can be masked.</p></td>
+    </tr>
+    <tr>
+      <th>pointColor</th>
+      <td><p><code>string</code>. Default point color for the plot.</p></td>
+    </tr>
+    <tr>
+      <th>pointScalar</th>
+      <td><p><code>scalar integer</code>. Default point size for the plot.</p></td>
     </tr>
     <tr>
       <th>pointsAsNumbers</th>
@@ -329,12 +340,8 @@ Useful when there many cells in the dataset, and some cells can be masked.</p></
 dots (<code>FALSE</code>).</p></td>
     </tr>
     <tr>
-      <th>pointColor</th>
-      <td><p><code>string</code>. Default point color for the plot.</p></td>
-    </tr>
-    <tr>
       <th>pointSize</th>
-      <td><p><code>scalar numeric</code>. Cell point size.</p></td>
+      <td><p><code>scalar numeric</code>. Point size for dots in the plot.</p></td>
     </tr>
     <tr>
       <th>prefilter</th>

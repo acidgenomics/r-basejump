@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Combining or merging different Bioconductor data structures — combine" />
 
 <meta property="og:description" content="The combine generic function handles methods for combining
@@ -215,47 +217,68 @@
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
-<span class='fu'>colnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;         genotype treatment
-#&gt;         &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1 wildtype   control
-#&gt; sample2 knockout   control
-#&gt; sample3 wildtype   treated
-#&gt; sample4 knockout   treated</div><div class='input'>
+<span class='fu'>colnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
+#&gt;  [7] "sample07" "sample08" "sample09" "sample10" "sample11" "sample12"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 1 column
+#&gt;          condition
+#&gt;           &lt;factor&gt;
+#&gt; sample01         A
+#&gt; sample02         A
+#&gt; sample03         A
+#&gt; sample04         A
+#&gt; sample05         A
+#&gt; ...            ...
+#&gt; sample08         B
+#&gt; sample09         B
+#&gt; sample10         B
+#&gt; sample11         B
+#&gt; sample12         B</div><div class='input'>
 <span class='co'>## Create a copy of our minimal example.</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
-<span class='fu'>colnames</span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>8L</span>))
-<span class='fu'>colnames</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "sample5" "sample6" "sample7" "sample8"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;         genotype treatment
-#&gt;         &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample5 wildtype   control
-#&gt; sample6 knockout   control
-#&gt; sample7 wildtype   treated
-#&gt; sample8 knockout   treated</div><div class='input'>
+<span class='fu'>colnames</span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'>ncol</span>(<span class='no'>y</span>) + <span class='fl'>1L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'>ncol</span>(<span class='no'>y</span>) * <span class='fl'>2L</span>))
+<span class='fu'>colnames</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt;  [1] "sample13" "sample14" "sample15" "sample16" "sample17" "sample18"
+#&gt;  [7] "sample19" "sample20" "sample21" "sample22" "sample23" "sample24"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 1 column
+#&gt;          condition
+#&gt;           &lt;factor&gt;
+#&gt; sample13         A
+#&gt; sample14         A
+#&gt; sample15         A
+#&gt; sample16         A
+#&gt; sample17         A
+#&gt; ...            ...
+#&gt; sample20         B
+#&gt; sample21         B
+#&gt; sample22         B
+#&gt; sample23         B
+#&gt; sample24         B</div><div class='input'>
 <span class='co'>## Combine two SummarizedExperiment objects.</span>
 <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 <span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
-#&gt; dim: 50 8 
+#&gt; dim: 500 24 
 #&gt; metadata(6): interestingGroups version ... wd sessionInfo
 #&gt; assays(1): counts
-#&gt; rownames(50): gene1 gene10 ... gene8 gene9
+#&gt; rownames(500): gene001 gene002 ... gene499 gene500
 #&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
-#&gt; colnames(8): sample1 sample2 ... sample7 sample8
-#&gt; colData names(2): genotype treatment</div><div class='input'><span class='fu'>colnames</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4" "sample5" "sample6" "sample7"
-#&gt; [8] "sample8"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 2 columns
-#&gt;         genotype treatment
-#&gt;         &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1 wildtype   control
-#&gt; sample2 knockout   control
-#&gt; sample3 wildtype   treated
-#&gt; sample4 knockout   treated
-#&gt; sample5 wildtype   control
-#&gt; sample6 knockout   control
-#&gt; sample7 wildtype   treated
-#&gt; sample8 knockout   treated</div><div class='input'>
+#&gt; colnames(24): sample01 sample02 ... sample23 sample24
+#&gt; colData names(1): condition</div><div class='input'><span class='fu'>colnames</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt;  [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
+#&gt;  [7] "sample07" "sample08" "sample09" "sample10" "sample11" "sample12"
+#&gt; [13] "sample13" "sample14" "sample15" "sample16" "sample17" "sample18"
+#&gt; [19] "sample19" "sample20" "sample21" "sample22" "sample23" "sample24"</div><div class='input'><span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 24 rows and 1 column
+#&gt;          condition
+#&gt;           &lt;factor&gt;
+#&gt; sample01         A
+#&gt; sample02         A
+#&gt; sample03         A
+#&gt; sample04         A
+#&gt; sample05         A
+#&gt; ...            ...
+#&gt; sample20         B
+#&gt; sample21         B
+#&gt; sample22         B
+#&gt; sample23         B
+#&gt; sample24         B</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-<span class='fu'>head</span>(<span class='fu'>colnames</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='fu'>head</span>(<span class='fu'>colnames</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell0001" "cell0002" "cell0003" "cell0004" "cell0005" "cell0006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1
@@ -280,13 +303,13 @@
 <span class='co'>## Combine two SingleCellExperiment objects.</span>
 <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 <span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
-#&gt; dim: 50 200 
+#&gt; dim: 500 200 
 #&gt; metadata(4): combine date wd sessionInfo
 #&gt; assays(1): counts
-#&gt; rownames(50): ENSG00000000003 ENSG00000000005 ... ENSG00000004399
-#&gt;   ENSG00000004455
+#&gt; rownames(500): ENSG00000000003 ENSG00000000005 ... ENSG00000033050
+#&gt;   ENSG00000033100
 #&gt; rowData names(4): geneID geneName geneBiotype broadClass
-#&gt; colnames(200): cell001 cell002 ... cell199 cell200
+#&gt; colnames(200): cell0001 cell0002 ... cell199 cell200
 #&gt; colData names(2): expLibSize sampleID
 #&gt; reducedDimNames(0):
 #&gt; spikeNames(0):</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns

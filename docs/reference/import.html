@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Import — import" />
 
 <meta property="og:description" content="Read file by extension into R." />
@@ -114,8 +116,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>import</span>(<span class='no'>file</span>, <span class='no'>...</span>, <span class='kw'>dataFrame</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.data.frame"</span>,
-  <span class='st'>"data.frame"</span>))</pre>
+    <pre class="usage"><span class='fu'>import</span>(<span class='no'>file</span>, <span class='kw'>dataFrame</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.data.frame"</span>, <span class='st'>"data.frame"</span>),
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -123,10 +125,6 @@
     <tr>
       <th>file</th>
       <td><p><code>string</code>. File path.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>dataFrame</th>
@@ -154,6 +152,10 @@ using the <code>basejump.data.frame</code> option.</p>
 <li><p>See <code>help(topic = "data.table", package = "data.table")</code> for details.</p></li>
 </ul></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     

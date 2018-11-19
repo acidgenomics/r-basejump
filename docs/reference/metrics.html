@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Metrics — metrics" />
 
 <meta property="og:description" content="This function takes data stored in SummarizedExperiment::colData() and
@@ -187,37 +189,45 @@ to <code><a href='http://www.rdocumentation.org/packages/base/topics/colnames'>b
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>rse</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 5
-#&gt; # Groups:   sampleID [4]
-#&gt;   sampleID genotype treatment sampleName interestingGroups
-#&gt;   &lt;chr&gt;    &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;      &lt;fct&gt;            
-#&gt; 1 sample1  wildtype control   sample1    wildtype:control 
-#&gt; 2 sample2  knockout control   sample2    knockout:control 
-#&gt; 3 sample3  wildtype treated   sample3    wildtype:treated 
-#&gt; 4 sample4  knockout treated   sample4    knockout:treated </div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 12 x 4
+#&gt; # Groups:   sampleID [12]
+#&gt;    sampleID condition sampleName interestingGroups
+#&gt;    &lt;chr&gt;    &lt;fct&gt;     &lt;fct&gt;      &lt;fct&gt;            
+#&gt;  1 sample01 A         sample01   A                
+#&gt;  2 sample02 A         sample02   A                
+#&gt;  3 sample03 A         sample03   A                
+#&gt;  4 sample04 A         sample04   A                
+#&gt;  5 sample05 A         sample05   A                
+#&gt;  6 sample06 A         sample06   A                
+#&gt;  7 sample07 B         sample07   B                
+#&gt;  8 sample08 B         sample08   B                
+#&gt;  9 sample09 B         sample09   B                
+#&gt; 10 sample10 B         sample10   B                
+#&gt; 11 sample11 B         sample11   B                
+#&gt; 12 sample12 B         sample12   B                </div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>sce</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 5
 #&gt; # Groups:   sampleID [2]
-#&gt;    cellID  expLibSize sampleID sampleName interestingGroups
-#&gt;    &lt;chr&gt;        &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;            
-#&gt;  1 cell001     88945. sample1  sample1    sample1          
-#&gt;  2 cell002     57918. sample1  sample1    sample1          
-#&gt;  3 cell003     65452. sample1  sample1    sample1          
-#&gt;  4 cell004     62181. sample1  sample1    sample1          
-#&gt;  5 cell005     42330. sample1  sample1    sample1          
-#&gt;  6 cell006     68645. sample1  sample1    sample1          
-#&gt;  7 cell007     67151. sample1  sample1    sample1          
-#&gt;  8 cell008     51519. sample1  sample1    sample1          
-#&gt;  9 cell009     64443. sample2  sample2    sample2          
-#&gt; 10 cell010    109938. sample1  sample1    sample1          
+#&gt;    cellID   expLibSize sampleID sampleName interestingGroups
+#&gt;    &lt;chr&gt;         &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;            
+#&gt;  1 cell0001     68327. sample1  sample1    sample1          
+#&gt;  2 cell0002     72783. sample1  sample1    sample1          
+#&gt;  3 cell0003     58920. sample1  sample1    sample1          
+#&gt;  4 cell0004     55373. sample2  sample2    sample2          
+#&gt;  5 cell0005     42294. sample2  sample2    sample2          
+#&gt;  6 cell0006     72045. sample1  sample1    sample1          
+#&gt;  7 cell0007     53577. sample2  sample2    sample2          
+#&gt;  8 cell0008     53608. sample2  sample2    sample2          
+#&gt;  9 cell0009     50082. sample1  sample1    sample1          
+#&gt; 10 cell0010     77327. sample2  sample2    sample2          
 #&gt; # ... with 90 more rows</div><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metricsPerSample</span>(<span class='no'>sce</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating mean per sample.</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
 #&gt; # Groups:   sampleID [2]
 #&gt;   sampleID expLibSize sampleName interestingGroups
 #&gt;   &lt;fct&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt;            
-#&gt; 1 sample1      64741. sample1    sample1          
-#&gt; 2 sample2      65720. sample2    sample2          </div></pre>
+#&gt; 1 sample1      60666. sample1    sample1          
+#&gt; 2 sample2      58694. sample2    sample2          </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

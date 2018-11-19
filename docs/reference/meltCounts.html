@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Melt Count Matrix to Long Format — meltCounts" />
 
 <meta property="og:description" content="Melt Count Matrix to Long Format" />
@@ -163,21 +165,21 @@ unmodified (default).</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>rse</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>meltCounts</span>(<span class='no'>rse</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 200 x 7
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 6,000 x 6
 #&gt; # Groups:   colname, rowname [?]
-#&gt;    rowname colname counts genotype treatment sampleName interestingGroups
-#&gt;    &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;      &lt;fct&gt;            
-#&gt;  1 gene1   sample1    144 wildtype control   sample1    wildtype:control 
-#&gt;  2 gene2   sample1     19 wildtype control   sample1    wildtype:control 
-#&gt;  3 gene3   sample1     15 wildtype control   sample1    wildtype:control 
-#&gt;  4 gene4   sample1     36 wildtype control   sample1    wildtype:control 
-#&gt;  5 gene5   sample1     24 wildtype control   sample1    wildtype:control 
-#&gt;  6 gene6   sample1      0 wildtype control   sample1    wildtype:control 
-#&gt;  7 gene7   sample1      2 wildtype control   sample1    wildtype:control 
-#&gt;  8 gene8   sample1     18 wildtype control   sample1    wildtype:control 
-#&gt;  9 gene9   sample1      6 wildtype control   sample1    wildtype:control 
-#&gt; 10 gene10  sample1      5 wildtype control   sample1    wildtype:control 
-#&gt; # ... with 190 more rows</div></pre>
+#&gt;    rowname colname  counts condition sampleName interestingGroups
+#&gt;    &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;     &lt;fct&gt;      &lt;fct&gt;            
+#&gt;  1 gene001 sample01     24 A         sample01   A                
+#&gt;  2 gene002 sample01     58 A         sample01   A                
+#&gt;  3 gene003 sample01     59 A         sample01   A                
+#&gt;  4 gene004 sample01      1 A         sample01   A                
+#&gt;  5 gene005 sample01      0 A         sample01   A                
+#&gt;  6 gene006 sample01      7 A         sample01   A                
+#&gt;  7 gene007 sample01      9 A         sample01   A                
+#&gt;  8 gene008 sample01      5 A         sample01   A                
+#&gt;  9 gene009 sample01    183 A         sample01   A                
+#&gt; 10 gene010 sample01     50 A         sample01   A                
+#&gt; # ... with 5,990 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Return the First and Last Part of an Object — headtail" />
 
 <meta property="og:description" content="Inspired by the base::print() method for DataFrame class objects. Applies
@@ -201,11 +203,12 @@ last items to include.</p></td>
 #&gt; 3 Captain Phasma   &lt;NA&gt; │       &lt;&gt;        &lt;&gt;
 #&gt; 4  Padmé Amidala    165 │       &lt;&gt;        &lt;&gt;</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>headtail</span>(<span class='no'>rse</span>, <span class='kw'>ascii</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Object can't be split into quadrants.</span></div><div class='output co'>#&gt;       sample1 sample2 sample3 sample4
-#&gt; gene1     144      67     143     116
-#&gt; gene2      19      16       4      10
-#&gt; gene3      15      16      17       6
-#&gt; gene4      36       8      21      80</div></pre>
+<span class='fu'>headtail</span>(<span class='no'>rse</span>, <span class='kw'>ascii</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;         sample01 sample02 ... sample11 sample12
+#&gt; gene001       24       38 ...        7        7
+#&gt; gene002       58       49 ...       38       12
+#&gt; ...          ...      ... ...      ...      ...
+#&gt; gene499       89       62 ...       36       55
+#&gt; gene500       30       79 ...        4        7</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

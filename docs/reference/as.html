@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Force an Object to Belong to a Class — as" />
 
 <meta property="og:description" content="Coerce an object to a given class." />
@@ -126,16 +128,6 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>row.names</th>
-      <td><p>See <code>?base::<a href='http://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></code> for a description of
-    these arguments.</p></td>
-    </tr>
-    <tr>
-      <th>optional</th>
-      <td><p>See <code>?base::<a href='http://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></code> for a description of
-    these arguments.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
@@ -198,29 +190,52 @@ there are duplicates present.</p>
 
 <span class='co'>## DataFrame to tbl_df ====</span>
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>rse</span>)
-<span class='fu'>print</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;         genotype treatment
-#&gt;         &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1 wildtype   control
-#&gt; sample2 knockout   control
-#&gt; sample3 wildtype   treated
-#&gt; sample4 knockout   treated</div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 1 column
+#&gt;          condition
+#&gt;           &lt;factor&gt;
+#&gt; sample01         A
+#&gt; sample02         A
+#&gt; sample03         A
+#&gt; sample04         A
+#&gt; sample05         A
+#&gt; ...            ...
+#&gt; sample08         B
+#&gt; sample09         B
+#&gt; sample10         B
+#&gt; sample11         B
+#&gt; sample12         B</div><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>data</span>, <span class='st'>"tbl_df"</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
-#&gt;   rowname genotype treatment
-#&gt;   &lt;chr&gt;   &lt;fct&gt;    &lt;fct&gt;    
-#&gt; 1 sample1 wildtype control  
-#&gt; 2 sample2 knockout control  
-#&gt; 3 sample3 wildtype treated  
-#&gt; 4 sample4 knockout treated  </div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 12 x 2
+#&gt;    rowname  condition
+#&gt;    &lt;chr&gt;    &lt;fct&gt;    
+#&gt;  1 sample01 A        
+#&gt;  2 sample02 A        
+#&gt;  3 sample03 A        
+#&gt;  4 sample04 A        
+#&gt;  5 sample05 A        
+#&gt;  6 sample06 A        
+#&gt;  7 sample07 B        
+#&gt;  8 sample08 B        
+#&gt;  9 sample09 B        
+#&gt; 10 sample10 B        
+#&gt; 11 sample11 B        
+#&gt; 12 sample12 B        </div><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble</a></span>(<span class='no'>data</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
-#&gt;   rowname genotype treatment
-#&gt;   &lt;chr&gt;   &lt;fct&gt;    &lt;fct&gt;    
-#&gt; 1 sample1 wildtype control  
-#&gt; 2 sample2 knockout control  
-#&gt; 3 sample3 wildtype treated  
-#&gt; 4 sample4 knockout treated  </div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 12 x 2
+#&gt;    rowname  condition
+#&gt;    &lt;chr&gt;    &lt;fct&gt;    
+#&gt;  1 sample01 A        
+#&gt;  2 sample02 A        
+#&gt;  3 sample03 A        
+#&gt;  4 sample04 A        
+#&gt;  5 sample05 A        
+#&gt;  6 sample06 A        
+#&gt;  7 sample07 B        
+#&gt;  8 sample08 B        
+#&gt;  9 sample09 B        
+#&gt; 10 sample10 B        
+#&gt; 11 sample11 B        
+#&gt; 12 sample12 B        </div><div class='input'>
 <span class='co'>## GRanges to tbl_df ====</span>
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>rse</span>)
 
