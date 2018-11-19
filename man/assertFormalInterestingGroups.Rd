@@ -20,6 +20,6 @@ is requested by the user.
 }
 \examples{
 data(rse, package = "basejump")
-assertFormalInterestingGroups(rse, "treatment")
+assertFormalInterestingGroups(rse, "condition")
 assertFormalInterestingGroups(rse, NULL)
 }

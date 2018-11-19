@@ -93,7 +93,7 @@ SummarizedExperiment::colData(x)
 
 ## Create a copy of our minimal example.
 y <- x
-colnames(y) <- paste0("sample", seq(from = 5L, to = 8L))
+colnames(y) <- paste0("sample", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
 colnames(y)
 SummarizedExperiment::colData(y)
 

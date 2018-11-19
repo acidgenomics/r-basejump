@@ -66,7 +66,7 @@ a way to look at how samples are clustering.
 \examples{
 data(rse)
 plotPCA(rse, label = FALSE)
-plotPCA(rse, interestingGroups = "genotype", label = TRUE)
+plotPCA(rse, label = TRUE)
 }
 \references{
 Jolliffe, et al., 2002.

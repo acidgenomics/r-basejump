@@ -73,7 +73,7 @@ assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
 #'
 #' @examples
 #' data(rse, package = "basejump")
-#' assertFormalInterestingGroups(rse, "treatment")
+#' assertFormalInterestingGroups(rse, "condition")
 #' assertFormalInterestingGroups(rse, NULL)
 assertFormalInterestingGroups <- function(x, interestingGroups) {
     assert_that(isS4(x))
