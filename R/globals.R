@@ -41,8 +41,17 @@ formals <- list(
     data.frame = quote(getOption("basejump.data.frame", "data.frame")),
     fill.discrete = quote(getOption("basejump.fill.discrete", NULL)),
     flip = quote(getOption("basejump.flip", TRUE)),
-    load.dir = quote(getOption("basejump.load.dir", "."))
+    load.dir = quote(getOption("basejump.load.dir", ".")),
+    save.dir = quote(getOption("basejump.save.dir", ".")),
+    save.ext = quote(getOption("basejump.save.ext", "rds")),
+    save.overwrite = quote(getOption("basejump.save.overwrite", TRUE)),
+    save.compress = quote(getOption("basejump.save.compress", TRUE))
 )
+
+formals(saveData)[["dir"]] <- formals[["save.data"]]
+formals(saveData)[["ext"]] <- formals[["save.ext"]]
+formals(saveData)[["overwrite"]] <- formals[["save.overwrite"]]
+compress = getOption("basejump.save.compress", TRUE)
 
 
 
