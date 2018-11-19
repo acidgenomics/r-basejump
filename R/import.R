@@ -159,11 +159,7 @@
 #' ## Counts Table (i.e. aligned counts from bcbio)
 #' # x <- import(file = file.path(url, "example.counts"))
 #' # colSums(x)
-import <- function(
-    file,
-    ...,
-    dataFrame = getOption("basejump.data.frame", "data.frame")
-) {
+import <- function(file, dataFrame, ...) {
     file <- localOrRemoteFile(file)
     args <- list(file, ...)
     dataFrame <- match.arg(arg = dataFrame, choices = .dataFrameChoices)
@@ -342,3 +338,5 @@ import <- function(
 
     data
 }
+
+formals(import)[["dataFrame"]] <- formals[["data.frame"]]
