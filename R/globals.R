@@ -50,6 +50,7 @@ formalsList <- list(
     fill.discrete = quote(getOption("basejump.fill.discrete", NULL)),
     flip = quote(getOption("basejump.flip", TRUE)),
     label = quote(getOption("basejump.label", FALSE)),
+    legend = quote(getOption("basejump.legend", TRUE)),
     load.dir = quote(getOption("basejump.load.dir", ".")),
     point.size = quote(getOption("basejump.point.size", 3L)),
     save.dir = quote(getOption("basejump.save.dir", ".")),
