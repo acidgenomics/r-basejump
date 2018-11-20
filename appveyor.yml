@@ -1,3 +1,6 @@
+# AppVeyor-CI configuration for Bioconductor packages
+# https://github.com/krlmlr/r-appveyor
+
 init:
   ps: |
         $ErrorActionPreference = "Stop"
