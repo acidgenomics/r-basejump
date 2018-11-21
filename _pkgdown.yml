@@ -106,6 +106,7 @@ reference:
     - checkClasses
     - cleanSystemLibrary
     - dots
+    - formalsList
     - matchArgsToDoCall
     - matchInterestingGroups
     - MethodDefinition
