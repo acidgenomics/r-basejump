@@ -80,12 +80,6 @@ transmit <- function(
         str_extract(pattern = "[^\\s]+$")
     assert_is_non_empty(remoteFiles)
 
-    message(paste(
-        "Files in directory:",
-        printString(remoteFiles),
-        sep = "\n"
-    ))
-
     # Apply pattern matching.
     match <- str_subset(remoteFiles, pattern)
     assert_is_non_empty(match)
