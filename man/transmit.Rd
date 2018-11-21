@@ -27,21 +27,21 @@ Utility function that supports easy file matching and download from a remote
 FTP server. Also enables on-the-fly file renaming and compression.
 }
 \examples{
-# remoteDir <- paste(
-#     "ftp://ftp.pantherdb.org",
-#     "sequence_classifications",
-#     "current_release",
-#     sep = "/"
-# )
-# readme <- transmit(
-#     remoteDir = remoteDir,
-#     pattern = "README",
-#     rename = "panther_readme.txt",
-#     compress = TRUE
-# )
-# basename(readme)
-# file.exists(readme)
-#
-# ## Clean up.
-# unlink(readme)
+remoteDir <- paste(
+    "ftp://ftp.pantherdb.org",
+    "sequence_classifications",
+    "current_release",
+    sep = "/"
+)
+readme <- transmit(
+    remoteDir = remoteDir,
+    pattern = "README",
+    rename = "panther_readme.txt",
+    compress = TRUE
+)
+basename(readme)
+file.exists(readme)
+
+## Clean up.
+unlink(readme)
 }
