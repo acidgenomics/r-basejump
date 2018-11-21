@@ -146,7 +146,7 @@ setMethod(
     f = "aggregateFeatures",
     signature = signature("ANY"),
     definition = function(object, ...) {
-        .Deprecated("aggregateRows")
+        # .Deprecated("aggregateRows")
         aggregateRows(object, ...)
     }
 )
@@ -166,7 +166,7 @@ setMethod(
     f = "aggregateReplicates",
     signature = signature("ANY"),
     definition = function(object, ...) {
-        .Deprecated("aggregateCols")
+        # .Deprecated("aggregateCols")
         aggregateCols(object, ...)
     }
 )
@@ -186,7 +186,7 @@ setMethod(
     f = "aggregateSamples",
     signature = signature("ANY"),
     definition = function(object, ...) {
-        .Deprecated("aggregateCols")
+        # .Deprecated("aggregateCols")
         aggregateCols(object, ...)
     }
 )
@@ -194,7 +194,7 @@ setMethod(
 #' @rdname deprecated
 #' @export
 assertFormalGene2symbol <- function(...) {
-    .Deprecated("assertFormalGene2Symbol")
+    # .Deprecated("assertFormalGene2Symbol")
     assertFormalGene2Symbol(...)
 }
 
@@ -207,35 +207,35 @@ broadClass <- function(object, ...) {
 #' @rdname deprecated
 #' @export
 checkClasses <- function(...) {
-    .Deprecated("validateClasses")
+    # .Deprecated("validateClasses")
     validateClasses(...)
 }
 
 #' @rdname deprecated
 #' @export
 eggnog <- function(...) {
-    .Deprecated("EggNOG")
+    # .Deprecated("EggNOG")
     EggNOG(...)
 }
 
 #' @rdname deprecated
 #' @export
 ensembl2entrez <- function(...) {
-    .Deprecated("Ensembl2Entrez")
+    # .Deprecated("Ensembl2Entrez")
     Ensembl2Entrez(...)
 }
 
 #' @rdname deprecated
 #' @export
 fixNA <- function(...) {
-    # Soft deprecated.
+    # .Deprecated("sanitizeNA")
     sanitizeNA(...)
 }
 
 #' @rdname deprecated
 #' @export
 gene2symbol <- function(...) {
-    .Deprecated("Gene2Symbol")
+    # .Deprecated("Gene2Symbol")
     Gene2Symbol(...)
 }
 
@@ -248,35 +248,35 @@ grepString <- function(...) {
 #' @rdname deprecated
 #' @export
 hgnc2gene <- function(...) {
-    .Deprecated("HGNC2Ensembl")
+    # .Deprecated("HGNC2Ensembl")
     HGNC2Ensembl(...)
 }
 
 #' @rdname deprecated
 #' @export
 hgnc2ensembl <- function(...) {
-    .Deprecated("HGNC2Ensembl")
+    # .Deprecated("HGNC2Ensembl")
     HGNC2Ensembl(...)
 }
 
 #' @rdname deprecated
 #' @export
 initializeDirectory <- function(...) {
-    .Deprecated("initDir")
+    # .Deprecated("initDir")
     initDir(...)
 }
 
 #' @rdname deprecated
 #' @export
 kables <- function(...) {
-    .Deprecated("markdownTables")
+    # .Deprecated("markdownTables")
     markdownTables(...)
 }
 
 #' @rdname deprecated
 #' @export
 makeGene2symbolFromEnsembl <- function(...) {
-    .Deprecated("makeGene2SymbolFromEnsembl")
+    # .Deprecated("makeGene2SymbolFromEnsembl")
     do.call(
         what = makeGene2SymbolFromEnsembl,
         args = matchArgsToDoCall()
@@ -286,7 +286,7 @@ makeGene2symbolFromEnsembl <- function(...) {
 #' @rdname deprecated
 #' @export
 makeGene2symbolFromGFF <- function(...) {
-    .Deprecated("makeGene2SymbolFromGFF")
+    # .Deprecated("makeGene2SymbolFromGFF")
     do.call(
         what = makeGene2SymbolFromGFF,
         args = matchArgsToDoCall()
@@ -296,7 +296,7 @@ makeGene2symbolFromGFF <- function(...) {
 #' @rdname deprecated
 #' @export
 makeGene2symbolFromGTF <- function(...) {
-    .Deprecated("makeGene2SymbolFromGTF")
+    # .Deprecated("makeGene2SymbolFromGTF")
     do.call(
         what = makeGene2SymbolFromGTF,
         args = matchArgsToDoCall()
@@ -306,7 +306,7 @@ makeGene2symbolFromGTF <- function(...) {
 #' @rdname deprecated
 #' @export
 makeTx2geneFromEnsembl <- function(...) {
-    .Deprecated("makeTx2GeneFromEnsembl")
+    # .Deprecated("makeTx2GeneFromEnsembl")
     do.call(
         what = makeTx2GeneFromEnsembl,
         args = matchArgsToDoCall()
@@ -316,7 +316,7 @@ makeTx2geneFromEnsembl <- function(...) {
 #' @rdname deprecated
 #' @export
 makeTx2geneFromGFF <- function(...) {
-    .Deprecated("makeTx2GeneFromGFF")
+    # .Deprecated("makeTx2GeneFromGFF")
     do.call(
         what = makeTx2GeneFromGFF,
         args = matchArgsToDoCall()
@@ -326,7 +326,7 @@ makeTx2geneFromGFF <- function(...) {
 #' @rdname deprecated
 #' @export
 makeTx2geneFromGTF <- function(...) {
-    .Deprecated("makeTx2GeneFromGTF")
+    # .Deprecated("makeTx2GeneFromGTF")
     do.call(
         what = makeTx2GeneFromGTF,
         args = matchArgsToDoCall()
@@ -336,56 +336,56 @@ makeTx2geneFromGTF <- function(...) {
 #' @rdname deprecated
 #' @export
 mgi2gene <- function(...) {
-    .Deprecated("mgi2ensembl")
+    # .Deprecated("mgi2ensembl")
     mgi2ensembl(...)
 }
 
 #' @rdname deprecated
 #' @export
 mgi2ensembl <- function(...) {
-    .Deprecated("MGI2Ensembl")
+    # .Deprecated("MGI2Ensembl")
     MGI2Ensembl(...)
 }
 
 #' @rdname deprecated
 #' @export
 panther <- function(...) {
-    .Deprecated("PANTHER")
+    # .Deprecated("PANTHER")
     PANTHER(...)
 }
 
 #' @rdname deprecated
 #' @export
 readFileByExtension <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")
     import(...)
 }
 
 #' @rdname deprecated
 #' @export
 readGFF <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")
     import(...)
 }
 
 #' @rdname deprecated
 #' @export
 readGTF <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")
     import(...)
 }
 
 #' @rdname deprecated
 #' @export
 readJSON <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")
     import(...)
 }
 
 #' @rdname deprecated
 #' @export
 readYAML <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")
     import(...)
 }
 
@@ -404,7 +404,7 @@ setArgsToDoCall <- function(...) {
 #' @rdname deprecated
 #' @export
 tx2gene <- function(...) {
-    .Deprecated("Tx2Gene")
+    # .Deprecated("Tx2Gene")
     Tx2Gene(...)
 }
 
