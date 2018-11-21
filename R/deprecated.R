@@ -228,7 +228,7 @@ ensembl2entrez <- function(...) {
 #' @rdname deprecated
 #' @export
 fixNA <- function(...) {
-    .Deprecated("sanitizeNA")
+    # Soft deprecated.
     sanitizeNA(...)
 }
 
