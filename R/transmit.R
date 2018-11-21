@@ -54,15 +54,16 @@ transmit <- function(
     assert_is_any_of(rename, c("character", "NULL"))
     assert_is_a_bool(compress)
 
+    # Get the name of the server.
+    server <- str_match(string = remoteDir, pattern = "^.*//([^/]+)/.*$") %>%
+        .[1L, 2L]
+    assert_is_a_string(server)
+
     # Error and inform the user if the FTP connection fails.
     if (!isTRUE(url.exists(remoteDir))) {
-        match <- str_match(
-            string = remoteDir,
-            pattern = "^.*//([^/]+)/.*$"
-        )
-        server <- match[1L, 2L]
-        assert_is_a_string(server)
         stop(paste("Connection to", server, "failed."))
+    } else {
+        message(paste("Transmitting files from", server))
     }
 
     remoteTxt <- getURL(remoteDir)
