@@ -126,15 +126,3 @@
 
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
-
-
-
-globalVariables(".")
-
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
-
-#' @importFrom tibble glimpse
-#' @export
-tibble::glimpse
