@@ -63,6 +63,7 @@
 \alias{validDimnames}
 \alias{validNames}
 \alias{\%>\%}
+\alias{glimpse}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -84,6 +85,6 @@ below to see their documentation.
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
 
-  \item{tibble}{\code{\link[tibble]{as_tibble}}}
+  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}}
 }}
 
