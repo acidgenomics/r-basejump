@@ -28,13 +28,14 @@ NULL
 
 
 
-.splitTerms <- function(vec, progress = FALSE) {
+.splitTerms <- function(x, progress = FALSE) {
     if (isTRUE(progress)) {
-        message(deparse(substitute(vec)))
+        message(deparse(substitute(x)))
         lapply <- pblapply
     }
-    lapply(vec, function(x) {
+    lapply(x, function(x) {
         x <- x %>%
+            as.character() %>%
             strsplit(split = ";") %>%
             unlist() %>%
             unique() %>%
