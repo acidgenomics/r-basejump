@@ -1,10 +1,6 @@
-.dataFrameChoices <- c("data.frame", "DataFrame", "tbl_df", "data.table")
-
-
+globalVariables(".")
 
 packageVersion <- packageVersion("basejump")
-
-
 
 #' Basejump Cache URL
 #' @keywords internal
@@ -16,8 +12,6 @@ basejumpCacheURL <- paste0(
     "v", packageVersion$major, ".", packageVersion$minor  # nolint
 )
 
-
-
 #' Single-Cell Barcode Pattern
 #' Trailing number is to match cellranger output.
 #' @export
@@ -25,17 +19,12 @@ basejumpCacheURL <- paste0(
 #' barcodePattern
 barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 
-
-
 #' File Extension Pattern
 #' Note optional matching of gzip.
 #' @export
 #' @examples
 #' extPattern
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
-
-
-
 
 #' Formals List
 #' Formals that the user can set globally with `base::getOption()`.
@@ -59,15 +48,11 @@ formalsList <- list(
     save.compress = quote(getOption("basejump.save.compress", TRUE))
 )
 
-
-
 #' Slot Names in Metadata Containing Genome Information
 #' @export
 #' @examples
 #' genomeMetadataNames
 genomeMetadataNames <- c("organism", "genomeBuild", "ensemblRelease")
-
-
 
 #' Sequencing Lane Grep Pattern
 #' @export
@@ -75,15 +60,11 @@ genomeMetadataNames <- c("organism", "genomeBuild", "ensemblRelease")
 #' lanePattern
 lanePattern <- "_L([[:digit:]]{3})"
 
-
-
 #' NA Strings
 #' @export
 #' @examples
 #' naStrings
 naStrings <- c("", "NA", "#N/A", "NULL", "null")
-
-
 
 #' R Data Load Error
 #' @export
@@ -95,15 +76,11 @@ rdataLoadError <- paste(
     sep = "\n"
 )
 
-
-
 #' R Data Extension Pattern
 #' @export
 #' @examples
 #' rdataExtPattern
 rdataExtPattern <- "\\.(rd[a|ata|s])$"
-
-
 
 #' Update Message
 #' @keywords internal
@@ -111,3 +88,5 @@ rdataExtPattern <- "\\.(rd[a|ata|s])$"
 #' @examples
 #' message(updateMessage)
 updateMessage <- "Run `updateObject()` to update your object."
+
+.dataFrameChoices <- c("data.frame", "DataFrame", "tbl_df", "data.table")
