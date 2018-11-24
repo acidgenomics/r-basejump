@@ -32,7 +32,7 @@ NULL
 setMethod(
     f = "interestingGroups",
     signature = signature("SummarizedExperiment"),
-    definition = function(object, check = TRUE) {
+    definition = function(object, check = FALSE) {
         assert_is_a_bool(check)
         value <- metadata(object)[["interestingGroups"]]
         if (isTRUE(check)) {

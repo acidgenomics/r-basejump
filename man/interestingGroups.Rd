@@ -13,7 +13,7 @@ interestingGroups(object, ...)
 
 interestingGroups(object, ...) <- value
 
-\S4method{interestingGroups}{SummarizedExperiment}(object, check = TRUE)
+\S4method{interestingGroups}{SummarizedExperiment}(object, check = FALSE)
 
 
   \S4method{interestingGroups}{SummarizedExperiment,character}(object) <- value
