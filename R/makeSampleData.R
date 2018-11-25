@@ -33,11 +33,19 @@
 #'     row.names = paste0("GSM000000", seq_len(4L))
 #' )
 makeSampleData <- function(object) {
+    # FIXME Check for trailing "Id" and error.
+    # FIXME Check for trailing "name" and error.
+    # blacklist = c("interestingGroups", "sampleID")
     assert_has_dims(object)
-    assert_is_subset("sampleName", colnames(object))
+    assert_is_subset(
+        x = "sampleName",
+        y = colnames(object)
+    )
     assert_are_disjoint_sets(
         x = c(
             "filename",
+            "id",
+            "interestingGroups",
             "rowname",
             "sample",
             "samplename"
@@ -46,10 +54,12 @@ makeSampleData <- function(object) {
     )
     assertHasRownames(object)
     assertAreValidNames(rownames(object))
-    object %>%
+    data <- object %>%
         as_tibble(rownames = "rowname") %>%
         mutate_all(as.factor) %>%
         mutate_all(droplevels) %>%
         select(!!sym("sampleName"), everything()) %>%
         as("DataFrame")
+    assertHasRownames(data)
+    data
 }
