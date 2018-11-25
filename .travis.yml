@@ -35,9 +35,7 @@ matrix:
 
 env:
   global:
-    - _R_CHECK_FORCE_SUGGESTS_=false
     - LINTR_COMMENT_BOT=true
-    - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
 
 r_packages:
   - covr
