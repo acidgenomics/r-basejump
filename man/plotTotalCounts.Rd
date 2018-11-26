@@ -28,13 +28,13 @@ plotTotalCounts(object, ...)
 \code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
 be defined in \code{SummarizedExperiment::assayNames()}.}
 
-\item{interestingGroups}{\code{character} or \code{NULL}. Groups of interest that
+\item{interestingGroups}{\code{character}. Groups of interest that
 define the samples. If left unset, defaults to \code{sampleName}.}
 
 \item{perMillion}{\code{boolean}. Display as counts per million.}
 
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 fill scale.
-Must supply discrete values. When set to \code{NULL}, the default ggplot2 color
+\item{fill}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 fill scale. Must
+supply discrete values. When set to \code{NULL}, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
 using \code{ggplot2::scale_fill_manual()}. To set the discrete fill palette
 globally, use \code{options(basejump.fill.discrete = scale_fill_viridis_d())}.}
@@ -42,7 +42,7 @@ globally, use \code{options(basejump.fill.discrete = scale_fill_viridis_d())}.}
 \item{flip}{\code{boolean}. Flip x and y axes. Recommended for plots containing
 many samples.}
 
-\item{title}{\code{string} or \code{NULL}. Plot title.}
+\item{title}{\code{string}. Plot title.}
 }
 \value{
 \code{ggplot}.

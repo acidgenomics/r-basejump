@@ -16,23 +16,6 @@
 #' @export
 #'
 #' @inheritParams params
-#' @param assays `list`. RNA-seq count matrices, which must have matching
-#'   dimensions. Counts can be passed in either a dense matrix (`matrix`) or
-#'   sparse matrix (`sparseMatrix`).
-#' @param rowRanges `GRanges` or `NULL`. *Recommended*. Metadata describing the
-#'   assay rows. If defined, must contain genomic ranges. Can be left `NULL` if
-#'   the genome is poorly annotated and/or ranges aren't available from
-#'   AnnotationHub.
-#' @param rowData `DataFrame` or `NULL`. *Not recommended*. Metadata describing
-#'   the assay rows, if genomic ranges are not available.
-#' @param colData `DataFrame` `data.frame`, or `matrix`. Metadata
-#'   describing the assay columns. For bulk RNA-seq, this data describes the
-#'   samples. For single-cell RNA-seq, this data describes the cells.
-#' @param metadata `list` or `NULL`. Metadata.
-#' @param transgeneNames `character` or `NULL`. Vector indicating which
-#'   [assay()] rows denote transgenes (e.g. EGFP, TDTOMATO).
-#' @param spikeNames `character` or `NULL`. Vector indicating which [assay()]
-#'   rows denote spike-in sequences (e.g. ERCCs).
 #'
 #' @return
 #' - Providing `rowRanges`: `RangedSummarizedExperiment`.

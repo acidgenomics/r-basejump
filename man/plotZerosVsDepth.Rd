@@ -22,17 +22,17 @@ plotZerosVsDepth(object, ...)
 \code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
 be defined in \code{SummarizedExperiment::assayNames()}.}
 
-\item{interestingGroups}{\code{character} or \code{NULL}. Groups of interest that
+\item{interestingGroups}{\code{character}. Groups of interest that
 define the samples. If left unset, defaults to \code{sampleName}.}
 
-\item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
+\item{color}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 color
 scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
 recommend using \code{ggplot2::scale_color_manual()}. To set the discrete color
 palette globally, use
 \code{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())}.}
 
-\item{title}{\code{string} or \code{NULL}. Plot title.}
+\item{title}{\code{string}. Plot title.}
 }
 \value{
 \code{ggplot}.

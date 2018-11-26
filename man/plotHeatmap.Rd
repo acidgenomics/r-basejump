@@ -71,7 +71,7 @@ arguments should be formatted in camel case, not snake case.}
 \code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
 be defined in \code{SummarizedExperiment::assayNames()}.}
 
-\item{interestingGroups}{\code{character} or \code{NULL}. Groups of interest that
+\item{interestingGroups}{\code{character}. Groups of interest that
 define the samples. If left unset, defaults to \code{sampleName}.}
 
 \item{scale}{\code{string}. Whether the values should be centered and scaled in
