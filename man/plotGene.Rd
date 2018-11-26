@@ -52,7 +52,7 @@ palette globally, use
 
 \itemize{
 \item \code{style = "facet"}: \code{ggplot} grouped by \code{sampleName}, with
-\code{\link[ggplot2:facet_wrap]{ggplot2::facet_wrap()}} applied to panel the samples.
+\code{ggplot2::facet_wrap()} applied to panel the samples.
 \item \code{style = "wide"}: \code{ggplot} in wide format, with genes on the x-axis.
 }
 }
