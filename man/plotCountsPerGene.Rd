@@ -34,7 +34,7 @@ plotCountsPerGene(object, ...)
 \code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
 be defined in \code{SummarizedExperiment::assayNames()}.}
 
-\item{interestingGroups}{\code{character} or \code{NULL}. Groups of interest that
+\item{interestingGroups}{\code{character}. Groups of interest that
 define the samples. If left unset, defaults to \code{sampleName}.}
 
 \item{geom}{\code{string}. Type of ggplot2 geometric object to use.}
@@ -42,15 +42,15 @@ define the samples. If left unset, defaults to \code{sampleName}.}
 \item{trans}{\code{string}. Name of the axis scale transformation to apply. See
 \code{help("scale_x_continuous", "ggplot2")} for more information.}
 
-\item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
+\item{color}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 color
 scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
 recommend using \code{ggplot2::scale_color_manual()}. To set the discrete color
 palette globally, use
 \code{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())}.}
 
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 fill scale.
-Must supply discrete values. When set to \code{NULL}, the default ggplot2 color
+\item{fill}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 fill scale. Must
+supply discrete values. When set to \code{NULL}, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
 using \code{ggplot2::scale_fill_manual()}. To set the discrete fill palette
 globally, use \code{options(basejump.fill.discrete = scale_fill_viridis_d())}.}
@@ -60,7 +60,7 @@ many samples.}
 
 \item{countsAxisLabel}{\code{string}. Counts axis label.}
 
-\item{title}{\code{string} or \code{NULL}. Plot title.}
+\item{title}{\code{string}. Plot title.}
 }
 \value{
 \code{ggplot}.

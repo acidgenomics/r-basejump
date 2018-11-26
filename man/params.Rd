@@ -4,7 +4,7 @@
 \alias{params}
 \title{Parameters}
 \arguments{
-\item{alpha}{\code{scalar numeric} or \code{NULL}. Adjusted P value ("alpha") cutoff.
+\item{alpha}{\code{scalar numeric}. Adjusted P value ("alpha") cutoff.
 If left \code{NULL}, will use the cutoff defined in the object.}
 
 \item{aspectRatio}{\code{scalar integer}. Aspect ratio.}
@@ -12,6 +12,10 @@ If left \code{NULL}, will use the cutoff defined in the object.}
 \item{assay}{\code{scalar}. Name or index of count matrix slotted in
 \code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
 be defined in \code{SummarizedExperiment::assayNames()}.}
+
+\item{assays}{\code{list}. Count matrices, which must have matching dimensions.
+Counts can be passed in as either a dense matrix (\code{matrix}) or sparse
+matrix (\code{sparseMatrix}).}
 
 \item{bpparam}{\code{bpparamClass}. BiocParallel parameter specifying the back-end
 to be used for computations. See \code{BiocParallel::bpparam()} for details.
@@ -23,9 +27,15 @@ We recommend one of the following:
 \item \code{BiocParallel::MulticoreParam()}.
 }}
 
+\item{censorSamples}{\code{character}. Specify a subset of samples to censor.}
+
 \item{check}{\code{boolean}. Perform assert checks.}
 
-\item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
+\item{colData}{\code{DataFrame}. Metadata describing the assay columns. For bulk
+RNA-seq, this data describes the samples. For single-cell RNA-seq, this
+data describes the cells.}
+
+\item{color}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 color
 scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
 recommend using \code{ggplot2::scale_color_manual()}. To set the discrete color
@@ -47,7 +57,11 @@ calculations. Defaults the first and second dimensions.}
 
 \item{direction}{\code{string}. Plot "\code{both}", "\code{up}", or "\code{down}" directions.}
 
-\item{ensemblRelease}{\code{scalar integer}. Ensembl release version (e.g. \code{90}).}
+\item{ensemblRelease}{\code{scalar integer}. Ensembl release version (e.g. \code{90}).
+We recommend setting this value if possible, for improved reproducibility.
+When left unset, the latest release available via AnnotationHub/ensembldb
+is used. Note that the latest version available can vary, depending on the
+versions of AnnotationHub and ensembldb in use.}
 
 \item{envir}{\code{environment} to use for assignment. Defaults to
 \code{parent.frame()}, which will assign into the calling environment.}
@@ -57,8 +71,8 @@ and defaults to the first argument in the \code{character} vector.}
 
 \item{file}{\code{string}. File path.}
 
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 fill scale.
-Must supply discrete values. When set to \code{NULL}, the default ggplot2 color
+\item{fill}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 fill scale. Must
+supply discrete values. When set to \code{NULL}, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
 using \code{ggplot2::scale_fill_manual()}. To set the discrete fill palette
 globally, use \code{options(basejump.fill.discrete = scale_fill_viridis_d())}.}
@@ -76,6 +90,10 @@ and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.}
 \item{geom}{\code{string}. Plot type. Uses \code{base::match.arg()} and defaults to the
 first argument in the \code{character} vector.}
 
+\item{gffFile}{\code{string}. GFF/GTF (General Feature Format) file.
+Generally, we recommend using a GTF (GFFv2) instead of a GFFv3 file if
+possible.}
+
 \item{headerLevel}{\code{scalar integer} (\code{1}-\code{7}). Markdown header level.}
 
 \item{i}{Indices specifying elements to extract or replace. Indices are
@@ -85,14 +103,14 @@ first argument in the \code{character} vector.}
 \item{inherits}{\code{boolean}. Should the enclosing frames of the \code{environment}
 be searched?}
 
-\item{interestingGroups}{\code{character} or \code{NULL}. Groups of interest that
+\item{interestingGroups}{\code{character}. Groups of interest that
 define the samples. If left unset, defaults to \code{sampleName}.}
 
 \item{label}{\code{boolean}. Superimpose sample text labels on the plot.}
 
 \item{labelSize}{\code{scalar integer}. Size of the text label.}
 
-\item{lfcThreshold}{\code{scalar numeric} or \code{NULL}. Log fold change ratio (base
+\item{lfcThreshold}{\code{scalar numeric}. Log fold change ratio (base
 2) cutoff threshold. If left \code{NULL}, will use the cutoff defined in the
 object.}
 
@@ -104,6 +122,8 @@ object.}
 dashed line.}
 
 \item{max}{\code{scalar numeric}. Recommended maximum value cutoff.}
+
+\item{metadata}{\code{list}. Metadata.}
 
 \item{min}{\code{scalar numeric}. Recommended minimum value cutoff.}
 
@@ -148,20 +168,34 @@ example.}
 \item{return}{\code{string}. Return type. Uses \code{base::match.arg()}
 internally and defaults to the first argument in the \code{character} vector.}
 
-\item{rowRanges}{\code{GRanges}. Genomic ranges (e.g. genome annotations).}
+\item{rowData}{\code{DataFrame}. \emph{Use rowRanges (GRanges) instead, if possible}.
+Metadata describing the assay rows, if genomic ranges are not available.}
 
-\item{samples}{\code{character} or \code{NULL}. Samples to include.}
+\item{rowRanges}{\code{GRanges}. Genomic ranges (e.g. genome annotations).
+Metadata describing the assay rows.}
+
+\item{sampleMetadataFile}{\code{string}. Sample metadata file path. CSV
+or TSV is preferred, but Excel worksheets are also supported. Check the
+documentation for conventions and required columns.}
+
+\item{samples}{\code{character}. Specify a subset of samples to include.}
 
 \item{sigPointColor}{\code{character}. Color names for labeling upregulated and
 downregulated genes. Also supports a character string for labeling DEGs
 with the same color, regardless of direction.}
 
-\item{subtitle}{\code{string} or \code{NULL}. Plot subtitle.}
+\item{spikeNames}{\code{character}. Vector indicating which assay rows denote
+spike-in sequences (e.g. ERCCs).}
 
-\item{title}{\code{string} or \code{NULL}. Plot title.}
+\item{subtitle}{\code{string}. Plot subtitle.}
+
+\item{title}{\code{string}. Plot title.}
 
 \item{trans}{\code{string}. Name of the axis scale transformation to apply. See
 \code{help("scale_x_continuous", "ggplot2")} for more information.}
+
+\item{transgeneNames}{\code{character}. Vector indicating which assay
+rows denote transgenes (e.g. EGFP, TDTOMATO).}
 
 \item{trendline}{\code{boolean}. Include trendline on plot.}
 
