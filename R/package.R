@@ -112,7 +112,7 @@
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
 #' @importFrom tibble as_tibble column_to_rownames tibble
-#' @importFrom tools Rd_db
+#' @importFrom tools Rd_db file_path_sans_ext
 #' @importFrom utils capture.output data download.file getFromNamespace
 #'   globalVariables installed.packages packageVersion read.delim read.table
 #'   sessionInfo

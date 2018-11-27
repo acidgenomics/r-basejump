@@ -117,6 +117,7 @@ reference:
     - validateClasses
   - title: Miscellaneous
     contents:
+    - basenameSansExt
     - starts_with("detect")
     - headtail
     - starts_with("init")
