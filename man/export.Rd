@@ -30,6 +30,9 @@ export(x, ...)
 
 \item{format}{An optional character string containing the file format, which can be used to override the format inferred from \code{file} or, in lieu of specifying \code{file}, a file with the symbol name of \code{x} and the specified file extension will be created. Must specify \code{file} and/or \code{format}. Shortcuts include: \dQuote{,} (for comma-separated values), \dQuote{;} (for semicolon-separated values), \dQuote{|} (for pipe-separated values), and \dQuote{dump} for \code{\link[base]{dump}}.}
 
+\item{name}{\code{string}. Name to use on disk. If left \code{NULL}, will use the name
+of the object instead.}
+
 \item{dir}{\code{string}. Directory path.}
 
 \item{compress}{\code{boolean}. Apply gzip compression to all files.}
