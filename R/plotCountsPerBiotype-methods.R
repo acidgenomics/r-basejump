@@ -1,3 +1,21 @@
+# FIXME Return with warning if required column is missing.
+
+# TODO Consider creating an assert check in goalie named `hasVariation()`.
+
+# if ("geneBiotype" %in% colnames(rowData(object))) {
+#     plotCountsPerBiotype(object)
+# } else {
+#     warning("Biotypes are not defined in `rowData()`.")
+# }
+
+# if (!"broadClass" %in% colnames(rowData(object))) {
+# plotCountsPerBroadClass(object)
+# } else {
+#     warning("Broad class biotypes are not defined in `rowData()`.")
+# }
+
+
+
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype

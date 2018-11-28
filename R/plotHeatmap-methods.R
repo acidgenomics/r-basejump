@@ -1,3 +1,8 @@
+# FIXME Warn and skip if samples are identical.
+# warning("Samples are identical. Skipping correlation heatmap.")
+
+
+
 #' Plot Heatmap
 #'
 #' Construct a simple heatmap.
