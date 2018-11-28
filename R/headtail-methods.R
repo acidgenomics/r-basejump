@@ -1,6 +1,6 @@
 #' Return the First and Last Part of an Object
 #'
-#' Inspired by the [base::print()] method for `DataFrame` class objects. Applies
+#' Inspired by the `print()` method for `DataFrame` class objects. Applies
 #' to both rows and columns, enabling quick inspection during interactive use.
 #'
 #' @name headtail
@@ -13,7 +13,7 @@
 #' @return Invisible `NULL`.
 #'
 #' @seealso
-#' - [utils::head()], [utils::tail()], [base::cat()].
+#' - `utils::head()`, `utils::tail()`, `base::cat()`.
 #' - `getMethod("show", "DataTable")`.
 #'
 #' @examples
@@ -34,8 +34,8 @@ headtail.atomic <-  # nolint
         assert_is_atomic(x)
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
-        if (length(x) <= n) {
-            out <- x
+        if (length(x) <= n * 2L) {
+            out <- paste(x, collapse = " ")
         } else {
             out <- paste(
                 c(
@@ -46,7 +46,7 @@ headtail.atomic <-  # nolint
                 collapse = " "
             )
         }
-        cat(out)
+        cat(out, sep = "\n")
         invisible()
     }
 
@@ -229,6 +229,7 @@ headtail.GRanges <-  # nolint
             ascii = ascii
         )
     }
+
 formals(headtail.GRanges) <- formals(headtail.matrix)
 
 
@@ -251,6 +252,7 @@ headtail.SummarizedExperiment <-  # nolint
             ascii = ascii
         )
     }
+
 formals(headtail.SummarizedExperiment) <- formals(headtail.matrix)
 
 
