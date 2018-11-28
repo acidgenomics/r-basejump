@@ -53,7 +53,7 @@
 #'
 #' See `help(topic = "fread", package = "data.table")` for details.
 #'
-#' The `read_csv()` and `read_tsv()` functions of the [readr()] package
+#' The `read_csv()` and `read_tsv()` functions of the [readr][] package
 #' are good alternatives, which return `tibble` data frames (`tbl_df`).
 #'
 #' [data.table]: https://cran.r-project.org/package=data.table
