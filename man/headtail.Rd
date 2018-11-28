@@ -59,7 +59,7 @@ to both rows and columns, enabling quick inspection during interactive use.
 
 \item \code{GRanges}: Summarize the ranges.
 
-\item \code{SummarizedExperiment}: Summarize the primary \code{\link[SummarizedExperiment:assay]{SummarizedExperiment::assay()}}.
+\item \code{SummarizedExperiment}: Summarize the primary \code{assay()}.
 }}
 
 \examples{

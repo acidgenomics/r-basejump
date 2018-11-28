@@ -257,7 +257,7 @@ formals(headtail.SummarizedExperiment) <- formals(headtail.matrix)
 
 
 
-#' @describeIn headtail Summarize the primary [SummarizedExperiment::assay()].
+#' @describeIn headtail Summarize the primary `assay()`.
 #' @export
 setMethod(
     f = "headtail",
