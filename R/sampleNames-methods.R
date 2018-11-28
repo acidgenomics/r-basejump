@@ -40,7 +40,6 @@ Biobase::`sampleNames<-`
 
 
 
-# SummarizedExperiment =========================================================
 sampleNames.SummarizedExperiment <-  # nolint
     function(object) {
         data <- sampleData(object)
