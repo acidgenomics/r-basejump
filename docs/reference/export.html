@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -127,12 +127,12 @@
 <span class='fu'>export</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='no'>format</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>human</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>human</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>human</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>human</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,8 +164,7 @@
     <tr>
       <th>human</th>
       <td><p><code>boolean</code>. Automatically convert gene IDs to gene symbols in the
-<code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>base::rownames()</a></code> and sample IDs to sample names in the
-<code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>base::colnames()</a></code>.</p></td>
+<code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames()</a></code> and sample IDs to sample names in the <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames()</a></code>.</p></td>
     </tr>
     </table>
     

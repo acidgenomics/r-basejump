@@ -66,7 +66,7 @@ FTP server. Also enables on-the-fly file renaming and compression." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -155,24 +155,21 @@ if desired.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># remoteDir <- paste(
-#     "ftp://ftp.pantherdb.org",
-#     "sequence_classifications",
-#     "current_release",
-#     sep = "/"
-# )
-# readme <- transmit(
-#     remoteDir = remoteDir,
-#     pattern = "README",
-#     rename = "panther_readme.txt",
-#     compress = TRUE
-# )
-# basename(readme)
-# file.exists(readme)
-#
-# ## Clean up.
-# unlink(readme)
-</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>remoteDir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(
+    <span class='st'>"ftp://ftp.pantherdb.org"</span>,
+    <span class='st'>"sequence_classifications"</span>,
+    <span class='st'>"current_release"</span>,
+    <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"/"</span>
+)
+<span class='no'>readme</span> <span class='kw'>&lt;-</span> <span class='fu'>transmit</span>(
+    <span class='kw'>remoteDir</span> <span class='kw'>=</span> <span class='no'>remoteDir</span>,
+    <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"README"</span>,
+    <span class='kw'>rename</span> <span class='kw'>=</span> <span class='st'>"panther_readme.txt"</span>,
+    <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</div><div class='output co'>#&gt; <span class='message'>Transmitting files from ftp.pantherdb.org.</span></div><div class='output co'>#&gt; <span class='message'>Files matching pattern:</span>
+#&gt; <span class='message'>[1] "README"</span></div><div class='output co'>#&gt; <span class='message'>Downloading panther_readme.txt.gz.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/basename'>basename</a></span>(<span class='no'>readme</span>)</div><div class='output co'>#&gt; [1] "panther_readme.txt.gz"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/files'>file.exists</a></span>(<span class='no'>readme</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='co'>## Clean up.</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlink'>unlink</a></span>(<span class='no'>readme</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

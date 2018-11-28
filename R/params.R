@@ -121,6 +121,7 @@
 #' @param sigPointColor `character`. Color names for labeling upregulated and
 #'   downregulated genes. Also supports a character string for labeling DEGs
 #'   with the same color, regardless of direction.
+#' @param sort `boolean`. Resort using `sort()`.
 #' @param spikeNames `character`. Vector indicating which assay rows denote
 #'   spike-in sequences (e.g. ERCCs).
 #' @param subtitle `string`. Plot subtitle.

@@ -66,7 +66,7 @@ returns character instead of matrix." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -151,8 +151,8 @@ returns <code>character</code> instead of <code>matrix</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>db</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/tools/topics/Rdutils'>Rd_db</a></span>(<span class='st'>"base"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>db</span>))</div><div class='output co'>#&gt; [1] "abbreviate.Rd" "agrep.Rd"      "all.equal.Rd"  "all.Rd"       
-#&gt; [5] "allnames.Rd"   "any.Rd"       </div><div class='input'><span class='no'>Rd</span> <span class='kw'>&lt;-</span> <span class='no'>db</span><span class='kw'>[[</span><span class='st'>"nrow.Rd"</span>]]
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>db</span>))</div><div class='output co'>#&gt; [1] "Arithmetic.Rd"   "AsIs.Rd"         "Bessel.Rd"       "CallExternal.Rd"
+#&gt; [5] "Colon.Rd"        "Comparison.Rd"  </div><div class='input'><span class='no'>Rd</span> <span class='kw'>&lt;-</span> <span class='no'>db</span><span class='kw'>[[</span><span class='st'>"nrow.Rd"</span>]]
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt; [1] "Rd"</div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;       Length Class  Mode
 #&gt;  [1,]  1     -none- list
 #&gt;  [2,]  1     -none- list

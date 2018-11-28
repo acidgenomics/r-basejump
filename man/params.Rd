@@ -184,6 +184,8 @@ documentation for conventions and required columns.}
 downregulated genes. Also supports a character string for labeling DEGs
 with the same color, regardless of direction.}
 
+\item{sort}{\code{boolean}. Resort using \code{sort()}.}
+
 \item{spikeNames}{\code{character}. Vector indicating which assay rows denote
 spike-in sequences (e.g. ERCCs).}
 

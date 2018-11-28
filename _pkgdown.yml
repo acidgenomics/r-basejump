@@ -104,7 +104,6 @@ reference:
     - tabular
   - title: Developer
     contents:
-    - checkClasses
     - cleanSystemLibrary
     - dots
     - formalsList
