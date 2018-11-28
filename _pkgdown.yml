@@ -63,6 +63,7 @@ reference:
     - uniteInterestingGroups
   - title: Sanitization
     contents:
+    - autopadZeros
     - makeNames
     - collapseToString
     - starts_with("remove")
