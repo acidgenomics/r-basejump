@@ -1,11 +1,3 @@
-# FIXME Attempt to improve this error message to make it more informative.
-# test_seurat_sce.R:72: failure: interestingGroups<-
-#     `interestingGroups(object) <- "orig.ident"` threw an error with unexpected message.
-# Expected match: "sampleData"
-# Actual message: "is_subset : The element 'orig.ident' in interestingGroups is not in colnames(data)."
-
-
-
 #' Interesting Groups
 #'
 #' @name interestingGroups
@@ -32,12 +24,10 @@ NULL
 setMethod(
     f = "interestingGroups",
     signature = signature("SummarizedExperiment"),
-    definition = function(object, check = FALSE) {
+    definition = function(object) {
         assert_is_a_bool(check)
         value <- metadata(object)[["interestingGroups"]]
-        if (isTRUE(check)) {
-            assertFormalInterestingGroups(object, value)
-        }
+        assertFormalInterestingGroups(object, value)
         value
     }
 )
@@ -53,7 +43,7 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
-        assertFormalInterestingGroups(x = object, interestingGroups = value)
+        assertFormalInterestingGroups(object, value)
         metadata(object)[["interestingGroups"]] <- value
         validObject(object)
         object
