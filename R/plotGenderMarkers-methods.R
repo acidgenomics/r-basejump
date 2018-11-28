@@ -69,8 +69,8 @@ formals(plotGenderMarkers.SummarizedExperiment) <- f
 #' @rdname plotGenderMarkers
 #' @export
 setMethod(
-    "plotGenderMarkers",
-    signature("SummarizedExperiment"),
+    f = "plotGenderMarkers",
+    signature = signature("SummarizedExperiment"),
     definition = plotGenderMarkers.SummarizedExperiment
 )
 
@@ -80,8 +80,8 @@ setMethod(
 #' @usage NULL
 #' @export
 setMethod(
-    "plotGenderMarkers",
-    signature("SingleCellExperiment"),
+    f = "plotGenderMarkers",
+    signature = signature("SingleCellExperiment"),
     definition = function(object, ...) {
         stop("SingleCellExperiment is not currently supported.")
     }

@@ -32,5 +32,5 @@ x <- encode(df)
 lapply(x, class)
 }
 \seealso{
-\code{\link[S4Vectors:Rle]{S4Vectors::Rle()}}.
+\code{S4Vectors::Rle()}.
 }

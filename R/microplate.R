@@ -61,9 +61,9 @@ microplate <- function(
     df <- expand.grid(plates, row, col)
     vector <- sort(paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]))
 
-    # Prepare control wells
+    # Prepare control wells.
     if (controls > 0L) {
-        # Create a grep string matching the control wells
+        # Create a grep string matching the control wells.
         grep <- str_pad(
             1L:controls,
             width = max(str_length(col)),
@@ -71,11 +71,11 @@ microplate <- function(
         ) %>%
             paste(collapse = "|") %>%
             paste0("A(", ., ")$")
-        # Remove the control wells using `grepl()`:
+        # Remove the control wells using `grepl()`.
         vector <- vector[!grepl(grep, vector)]
     }
 
-    # Add a prefix, if desired:
+    # Add a prefix, if desired.
     if (is_a_string(prefix)) {
         vector <- paste0(prefix, "-", vector)
     }

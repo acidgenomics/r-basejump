@@ -9,8 +9,8 @@
 #'
 #' @name geometricMean
 #' @inheritParams params
-#'
 #' @inheritParams base::apply
+#'
 #' @param removeNA `boolean`. Remove `NA` values from calculations.
 #' @param zeroPropagate `boolean`. Allow propagation of zeroes.
 #'
@@ -47,7 +47,6 @@ NULL
 
 
 
-# numeric ======================================================================
 geometricMean.numeric <-  # nolint
     function(
         object,
@@ -87,7 +86,6 @@ setMethod(
 
 
 
-# matrix =======================================================================
 geometricMean.matrix <-  # nolint
     function(object, MARGIN = 2L) {  # nolint
         invisible(lapply(
@@ -113,7 +111,6 @@ setMethod(
 
 
 
-# sparseMatrix =================================================================
 geometricMean.sparseMatrix <-  # nolint
     geometricMean.matrix
 

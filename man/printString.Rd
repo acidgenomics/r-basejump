@@ -15,12 +15,12 @@ printString(x, max = 100L)
 \code{string}.
 }
 \description{
-Capture \code{\link[base:print]{base::print()}} output of an \code{atomic} vector. Useful for returning
+Capture \code{print()} output of an \code{atomic} vector. Useful for returning
 informative messages inside a function.
 }
 \examples{
 printString(c("hello", "world"))
 }
 \seealso{
-\code{\link[base:cat]{base::cat()}}.
+\code{cat()}.
 }

@@ -1,4 +1,5 @@
 # FIXME Deprecate `markdownTables()` now that `knitr::kable()` supports list?
+# TODO Rename `markdownPlotlist()` to `markdownPlots()`?
 
 
 
@@ -49,8 +50,8 @@ setMethod(
 #' [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
 #'
 #' @return
-#' - "`asis = TRUE`": [knitr::asis_output()].
-#' - "`asis = FALSE`": [base::writeLines()].
+#' - "`asis = TRUE`": `knitr::asis_output()`.
+#' - "`asis = FALSE`": `writeLines()`.
 #'
 #' @examples
 #' markdownHeader("Header", level = 2L)
@@ -208,7 +209,7 @@ mdList <- markdownList
 #'
 #' Supports using a named `list` containing multiple `ggplot` objects, which
 #' can be used in an R Markdown report, separated by headers. Internally, the
-#' headers are generated with the [markdownHeader()] function.
+#' headers are generated with the `markdownHeader()` function.
 #'
 #' @export
 #'
@@ -216,7 +217,7 @@ mdList <- markdownList
 #'
 #' @return Graphical output of plots, separated by Markdown headers.
 #'
-#' @seealso [cowplot::plot_grid()].
+#' @seealso `cowplot::plot_grid()`.
 #'
 #' @examples
 #' loadRemoteData(url = file.path(basejumpCacheURL, "plotlist.rda"))
@@ -261,13 +262,13 @@ mdPlotlist <- markdownPlotlist
 #' @param list Named `list`. Column data that can be coerced to `data.frame`.
 #' @param captions `character` or `NULL`. Table captions. If `NULL`, the names
 #'   of the list will be used automatically as captions.
-#' @param force `boolean`. Force knit output using [knitr::asis_output()].
+#' @param force `boolean`. Force knit output using `knitr::asis_output()`.
 #'   Recommended for development and unit testing only.
 #'
 #' @return `asis_output` if in a knit call or `list`.
 #'
 #' @seealso
-#' - [knitr::kable()].
+#' - `knitr::kable()`.
 #' - [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples
@@ -322,7 +323,7 @@ markdownTables <- function(
 #' If the required template dependency files aren't present, copy them from the
 #' requested package. Existing files are not overwritten by default. This
 #' function will copy dependency files from a requested package inside the
-#' `rmarkdown/shared` directory. If a package doesn't contain this
+#' `rmarkdown/shared/` directory. If a package doesn't contain this
 #' subdirectory, the function will return an error.
 #'
 #' This code is used internally by:

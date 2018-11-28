@@ -106,9 +106,9 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
 #'
 #' Validity check capable of validating multiple slots in a single call.
 #'
-#' To be used inside S4 [methods::setValidity()] call or with
-#' [assertthat::validate_that()]. Particularly useful for checking multiple
-#' slotted objects inside [S4Vectors::metadata()] `list`.
+#' To be used inside S4 `methods::setValidity()` call or with
+#' `assertthat::validate_that()`. Particularly useful for checking multiple
+#' slotted objects inside `metadata()`.
 #'
 #' @export
 #'
@@ -116,7 +116,7 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
 #' @param expected `list`. Named list of expected classes per slot.
 #' @param subset `boolean`. Only check a subset of slots in the object.
 #'
-#' @seealso [assertthat::validate_that()].
+#' @seealso `assertthat::validate_that()`.
 #'
 #' @return `boolean` (TRUE) on sucess or `string` containing informative
 #'   message on failure.

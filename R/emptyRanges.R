@@ -7,13 +7,13 @@
 #'
 #' @param names `character`. Gene or transcript names.
 #' @param seqname `string` Name of the alternative chromosome to be defined in
-#'   [GenomeInfoDb::seqnames()] where these ranges will be grouped. Defaults to
-#'   "`unknown`" but "`transgene`" (transgenes) and "`spike`" (spike-ins) are
-#'   also supported.
+#'   `seqnames()` where these ranges will be grouped. Defaults to "`unknown`"
+#'   but "`transgene`" (transgenes) and "`spike`" (spike-ins) are also
+#'   supported.
 #' @param mcolsNames `character` or `NULL`. Metadata column names to be defined
-#'   in the [S4Vectors::mcols()] of the `GRanges` return. Normally this does not
-#'   need to be defined; useful when combining with another `GRanges` that
-#'   contains metadata.
+#'   in the `mcols()` of the `GRanges` return. Normally this does not need to be
+#'   defined; useful when combining with another `GRanges` that contains
+#'   metadata.
 #'
 #' @return `GRanges`.
 #'

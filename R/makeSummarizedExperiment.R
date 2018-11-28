@@ -1,15 +1,15 @@
 #' Make Summarized Experiment
 #'
 #' This function is a utility wrapper for
-#' [SummarizedExperiment::SummarizedExperiment()] that provides automatic
+#' `SummarizedExperiment::SummarizedExperiment()` that provides automatic
 #' subsetting for row and column data, as well as automatic handling of
 #' transgenes and spike-ins. Additionally, it improves upon the standard
-#' constructor by slotting useful session information into the
-#' [S4Vectors::metadata()] slot:
+#' constructor by slotting useful session information into the `metadata()`
+#' slot:
 #'
-#' - `date`: Today's date, returned from [base::Sys.Date()].
-#' - `wd`: Working directory, returned from [base::getwd()].
-#' - `sessionInfo`: [sessioninfo::session_info()] return.
+#' - `date`: Today's date, returned from `Sys.Date()`.
+#' - `wd`: Working directory, returned from `getwd()`.
+#' - `sessionInfo`: `sessioninfo::session_info()` return.
 #'
 #' @note Column and rows always return sorted alphabetically.
 #'

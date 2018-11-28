@@ -1,3 +1,8 @@
+# FIXME Need to improve export to include `geneID` and `geneName` column.
+# FIXME Need to offer option of "name" parameter here I think...
+
+
+
 #' Export
 #'
 #' Export data out of R and write to disk.
@@ -20,8 +25,7 @@
 #' @inheritParams rio::export
 #' @param compress `boolean`. Apply gzip compression to all files.
 #' @param human `boolean`. Automatically convert gene IDs to gene symbols in the
-#'   [base::rownames()] and sample IDs to sample names in the
-#'   [base::colnames()].
+#'   `rownames()` and sample IDs to sample names in the `colnames()`.
 #'
 #' @return Invisible `character`. File path(s).
 #'

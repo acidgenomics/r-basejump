@@ -8,7 +8,7 @@
 #'
 #' The following conventions are enforced:
 #'
-#' - Column names will be converted to camel case, using [camel()].
+#' - Column names will be converted to camel case, using `camel()`.
 #' - Required columns: `sampleName`.
 #' - Blacklisted columns: `interestingGroups`, `sampleID`. These columns are
 #'   generated internally, and should not be user defined.

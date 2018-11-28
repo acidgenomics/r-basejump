@@ -9,11 +9,11 @@
 #' @param sort `boolean`. Sort values.
 #' @param removeNA `boolean`. Remove NA values.
 #'
-#' @seealso [base::toString()].
+#' @seealso `toString()`.
 #'
 #' @return
 #' - `atomic`: `string`.
-#' - [base::dim()]: Object of same class, collapsed to a single row.
+#' - `dim()`: Object of same class, collapsed to a single row.
 #'
 #' @examples
 #' ## character ====
@@ -197,7 +197,7 @@ sortUnique <- function(object) {
 #'
 #' @param object `atomic`.
 #'
-#' @seealso [base::toString()].
+#' @seealso `toString()`.
 #'
 #' @return `string`.
 #'

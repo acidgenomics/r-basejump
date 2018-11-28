@@ -1,6 +1,13 @@
+#' Top Cells per Sample
+#'
+#' Obtain the top cellular barcodes, based on counts.
+#'
 #' @name topCellsPerSample
+#' @inheritParams params
 #'
 #' @param n `scalar integer`. Number of barcodes to return per sample.
+#'
+#' @return `list`. Top barcodes as `character`, split by `sampleID`.
 #'
 #' @examples
 #' data(sce)

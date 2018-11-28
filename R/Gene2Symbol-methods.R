@@ -3,6 +3,7 @@
 #' @inheritParams params
 #'
 #' @param format `string`. Formatting method to apply:
+#'
 #' - `"makeUnique"`: *Recommended.* Apply [base::make.unique()] to the
 #'   `geneName` column. Gene symbols are made unique, while the gene IDs remain
 #'   unmodified.
@@ -91,6 +92,7 @@ Gene2Symbol.GRanges <-  # nolint
         metadata(data) <- metadata(object)
         do.call(what = Gene2Symbol, args = list(object = data, format = format))
     }
+
 formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
 
 
@@ -112,6 +114,7 @@ Gene2Symbol.SummarizedExperiment <-  # nolint
         rownames(data) <- rownames(object)
         do.call(what = Gene2Symbol, args = list(object = data, format = format))
     }
+
 formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
 
 

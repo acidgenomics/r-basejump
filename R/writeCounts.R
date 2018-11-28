@@ -17,10 +17,10 @@
 #' names using non-standard evaluation.
 #'
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @export
-#'
 #' @inheritParams dots
 #' @inheritParams saveData
+#' @export
+#'
 #' @param ... Count matrices, passed in as dots.
 #' @param dir `string`. Output directory.
 #' @param compress `boolean`. Compress the files using gzip.

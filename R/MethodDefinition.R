@@ -7,13 +7,14 @@
 #' @param package `string`. Package name.
 #'
 #' @return
-#' - [methodFormals()]: `list`. Extract the sealed formal arguments.
-#' - [methodFunction()]: `function`. Extract the sealed function.
+#' - `methodFormals()`: `list`. Extract the sealed formal arguments.
+#' - `methodFunction()`: `function`. Extract the sealed function.
 #'
 #' @seealso
 #' - Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #' - `help(topic = "MethodDefinition-class", package = "methods")`.
-#' - [methods::selectMethod()], [methods::setMethod()].
+#' - `methods::selectMethod()`.
+#' - `methods::setMethod()`.
 #'
 #' @examples
 #' library(methods)

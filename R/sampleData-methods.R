@@ -12,7 +12,7 @@
 #'
 #' @param object Object that inherits from `SummarizedExperiment` class.
 #' @param clean `boolean`. Only return `factor` columns. Useful when working
-#'   with objects that contain metrics in [SummarizedExperiment::colData()].
+#'   with objects that contain metrics in `colData()`.
 #' @param blacklist `character`. Column names that should never be treated as
 #'   sample-level metadata. Applicable only to `SingleCellExperiment` objects.
 #'

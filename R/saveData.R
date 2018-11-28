@@ -1,8 +1,8 @@
 # saveData =====================================================================
 #' Save Data
 #'
-#' Wrapper for [base::save()] supporting quick, interactive saving of object
-#' names passed as symbols.
+#' Wrapper for `save()` supporting quick, interactive saving of object names
+#' passed as symbols.
 #'
 #' This function always saves each object into a separate file rather than
 #' combining multiple objects into a single file.
@@ -14,13 +14,13 @@
 #' @param overwrite `boolean`. Overwrite existing file.
 #' @param ext `string`. R data serialized (RDS; "`rds`") or R data ("`rda`",
 #'   "`RData`"). RDS is preferred when saving single objects per file, which is
-#'   always the convention of [saveData()], regardless of the extension used.
+#'   always the convention of `saveData()`, regardless of the extension used.
 #'
 #' @note This function is desired for interactive use and interprets object
 #'   names using non-standard evaluation. It will **overwrite** existing files
-#'   on disk, following the same conventions as [base::save()].
+#'   on disk, following the same conventions as `save()`.
 #'
-#' @seealso [base::save()], [base::saveRDS()].
+#' @seealso `save()`, `saveRDS()`.
 #'
 #' @return Invisible named `character`. File paths.
 #'
@@ -102,11 +102,11 @@ formals(saveData)[["overwrite"]] <- formalsList[["save.overwrite"]]
 
 #' @param name `string`. Desired variable name.
 #' @param envir `environment`. Environment to use for assignment. Defaults to
-#'   [parent.frame()], the calling environment.
+#'   `parent.frame()`, the calling environment.
 #'
 #' @return Invisible named `string`. File path.
 #'
-#' @note This function attempts to follow the same order as [base::assign()].
+#' @note This function attempts to follow the same order as `assign()`.
 #'
 #' @examples
 #' data(rse)

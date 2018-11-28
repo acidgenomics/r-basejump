@@ -8,7 +8,7 @@
 #' @include makeGRanges-methods.R
 #' @inheritParams makeGRanges
 #'
-#' @seealso [makeGRanges].
+#' @seealso `makeGRanges`.
 #'
 #' @return `Gene2Symbol`.
 #'
@@ -45,6 +45,7 @@ makeGene2SymbolFromEnsembl <-
         )
         Gene2Symbol(gr)
     }
+
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), "level")]
 formals(makeGene2SymbolFromEnsembl) <- f

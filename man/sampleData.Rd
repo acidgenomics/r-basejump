@@ -36,7 +36,7 @@ sampleData(object, ...) <- value
 \item{value}{Value to assign.}
 
 \item{clean}{\code{boolean}. Only return \code{factor} columns. Useful when working
-with objects that contain metrics in \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}}.}
+with objects that contain metrics in \code{colData()}.}
 
 \item{blacklist}{\code{character}. Column names that should never be treated as
 sample-level metadata. Applicable only to \code{SingleCellExperiment} objects.}

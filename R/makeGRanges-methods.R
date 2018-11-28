@@ -30,12 +30,12 @@
 #'
 #' @section GRCh37 (hg19) legacy annotations:
 #'
-#' [makeGRangesFromEnsembl()] supports the legacy *Homo sapiens* GRCh37 (release
+#' `makeGRangesFromEnsembl()` supports the legacy *Homo sapiens* GRCh37 (release
 #' 75) build by internally querying the [EnsDb.Hsapiens.v75][] package.
 #' Alternatively, the corresponding GTF/GFF file can be loaded directly from
 #' GENCODE or Ensembl.
 #'
-#' [EnsDb.Hsapiens.v75]: https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75
+#' [EnsDb.Hsapiens.v75]: https://bioconductor.org/packages/EnsDb.Hsapiens.v75/
 #'
 #' @inheritParams params
 #' @param genomeBuild `string` or `NULL`. Ensembl genome build assembly name
@@ -47,10 +47,10 @@
 #' @return `GRanges`.
 #'
 #' @seealso
-#' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
-#' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
-#' - [rtracklayer::import()].
-#' - [GenomicFeatures::makeTxDbFromGFF()].
+#' - [AnnotationHub](https://bioconductor.org/packages/AnnotationHub/).
+#' - [ensembldb](https://bioconductor.org/packages/ensembldb/).
+#' - `rtracklayer::import()`.
+#' - `GenomicFeatures::makeTxDbFromGFF()`.
 #'
 #' @examples
 #' ## makeGRangesFromEnsembl ====
@@ -82,7 +82,7 @@ NULL
 #' Connect to AnnotationHub
 #'
 #' On a fresh install this will print a txProgressBar to the console. We're
-#' using [utils::capture.output()] here to suppress the console output, since
+#' using `utils::capture.output()` here to suppress the console output, since
 #' it's not very informative and can cluster R Markdown reports.
 #'
 #' @noRd
@@ -555,9 +555,9 @@ NULL
 
 #' @describeIn makeGRanges
 #' Quickly obtain gene and transcript annotations from
-#' [Ensembl](http://www.ensembl.org) using
-#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub) and
-#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
+#' [Ensembl](https://www.ensembl.org/) using
+#' [AnnotationHub](https://bioconductor.org/packages/AnnotationHub/) and
+#' [ensembldb](https://bioconductor.org/packages/ensembldb/).
 #'
 #' Simply specify the desired organism, using the full latin name. For example,
 #' we can obtain human annotations with `Homo sapiens`. Optionally, specific
@@ -696,6 +696,7 @@ makeGRangesFromEnsDb <- function(object, level) {
     .forceDetach(keep = userAttached)
     .makeGRanges(gr)
 }
+
 formals(makeGRangesFromEnsDb)[["level"]] <-
     formals(makeGRangesFromEnsembl)[["level"]]
 
@@ -891,9 +892,9 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 
 
 #' @describeIn makeGRanges
-#' [annotable()] is a legacy convenience function that calls
-#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
-#' that `GRanges` can also be coercing using [BiocGenerics::as.data.frame()].
+#' `annotable()` is a legacy convenience function that calls
+#' `makeGRangesFromEnsembl()` and returns a `tibble` instead of `GRanges`. Note
+#' that `GRanges` can also be coercing using `BiocGenerics::as.data.frame()`.
 #' @export
 annotable <-
     function() {
@@ -903,4 +904,5 @@ annotable <-
         mcols(gr) <- decode(mcols(gr))
         as_tibble(gr, rownames = NULL)
     }
+
 formals(annotable) <- formals(makeGRangesFromEnsembl)
