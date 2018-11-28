@@ -475,7 +475,7 @@ NULL
     # Remove columns that are all NA.
     mcols <- removeNA(mcols)
 
-    # Missing `geneName`.
+    # Handle missing `geneName`.
     if (!"geneName" %in% colnames(mcols)) {
         # nocov start
         warning("`geneName` is missing. Using `geneID` instead.")
@@ -484,7 +484,7 @@ NULL
         # nocov end
     }
 
-    # Missing `transcriptName`.
+    # Handle missing `transcriptName`.
     if (
         "transcriptID" %in% colnames(mcols) &&
         !"transcriptName" %in% colnames(mcols)
@@ -497,9 +497,11 @@ NULL
 
     # Always use `geneName` instead of `symbol`.
     if (all(c("geneName", "symbol") %in% colnames(mcols))) {
+        message("Using `geneName` column instead of `symbol`.")
         mcols[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(mcols)) {
         # nocov start
+        message("Renaming `symbol` column to `geneName`.")
         mcols[["geneName"]] <- mcols[["symbol"]]
         mcols[["symbol"]] <- NULL
         # nocov end
@@ -514,6 +516,11 @@ NULL
                 # Recommended in the `DataFrame` documentation.
                 I(col)
             } else {
+                # Check to see if any character columns containing repeated
+                # values should be coerced to factor first (e.g. geneBiotype).
+                if (is.character(col) && any(duplicated(col))) {
+                    col <- as.factor(col)
+                }
                 # Use S4 run length encoding (Rle) for atomic metadata columns.
                 # Many of these elements are repetitive, and this makes
                 # operations faster.
