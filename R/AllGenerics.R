@@ -82,6 +82,18 @@ setGeneric(
 
 
 
+# autopadZeros =================================================================
+#' @rdname autopadZeros
+#' @export
+setGeneric(
+    name = "autopadZeros",
+    def = function(object, ...) {
+        standardGeneric("autopadZeros")
+    }
+)
+
+
+
 # barcodeRanksPerSample ========================================================
 #' Barcode Ranks per Sample
 #' @inheritParams params
@@ -589,10 +601,9 @@ setGeneric(
 
 
 # plotGenderMarkers ============================================================
-# TODO Move this into `plotGene()` documentation?
 #' Plot Sexually Dimorphic Gender Marker Genes
 #'
-#' This is a convenience function that wraps [plotGene()] to quickly plot known
+#' This is a convenience function that wraps `plotGene()` to quickly plot known
 #' sexually dimorphic genes, and overall gene experssion for the X and Y
 #' chromosomes.
 #'
@@ -601,7 +612,7 @@ setGeneric(
 #' @inheritParams params
 #' @export
 #'
-#' @seealso [plotGene()].
+#' @seealso `plotGene()`.
 #'
 #' @return `ggplot`.
 setGeneric(
@@ -614,7 +625,6 @@ setGeneric(
 
 
 # plotGene =====================================================================
-# TODO Rename to `plotGeneExpression()`? `plotGenes()`?
 #' Plot Gene Expression
 #' @inheritParams params
 #' @export
