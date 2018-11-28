@@ -15,11 +15,11 @@ Transcript-to-Gene Identifier Mappings
 
 
 We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
-\code{S4Vectors::metadata()}.
+\code{metadata()}.
 }
 
 \seealso{
-\link{makeTx2Gene}.
+\code{makeTx2Gene}.
 }
 \author{
 Michael Steinbaugh

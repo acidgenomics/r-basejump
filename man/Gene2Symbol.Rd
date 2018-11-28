@@ -54,5 +54,5 @@ x <- Gene2Symbol(rse)
 print(x)
 }
 \seealso{
-\link{makeGene2Symbol}.
+\code{makeGene2Symbol}.
 }
