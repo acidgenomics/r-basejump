@@ -21,6 +21,8 @@
 #' @param compress `boolean`. Apply gzip compression to all files.
 #' @param human `boolean`. Automatically convert gene IDs to gene symbols in the
 #'   `rownames()` and sample IDs to sample names in the `colnames()`.
+#' @param name `string`. Name to use on disk. If left `NULL`, will use the name
+#'   of the object instead.
 #'
 #' @return Invisible `character`. File path(s).
 #'
