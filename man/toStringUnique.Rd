@@ -19,5 +19,5 @@ Convert to a Unique Character String
 toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 }
 \seealso{
-\code{\link[base:toString]{base::toString()}}.
+\code{toString()}.
 }

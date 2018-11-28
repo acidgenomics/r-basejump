@@ -28,7 +28,7 @@ setArgsToDoCall(...)
 \item{object}{Object.}
 }
 \value{
-\code{\link[=.Defunct]{.Defunct()}}.
+\code{.Defunct()}.
 }
 \description{
 Defunct Functions

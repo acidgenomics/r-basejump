@@ -7,7 +7,7 @@
 parseRd(object, tag)
 }
 \arguments{
-\item{object}{\code{Rd}. R documentation, returned from \code{\link[tools:Rd_db]{tools::Rd_db()}}.}
+\item{object}{\code{Rd}. R documentation, returned from \code{tools::Rd_db()}.}
 
 \item{tag}{\code{string}. Desired metadata type. For example, these are supported:
 \itemize{
@@ -36,5 +36,5 @@ examples <- parseRd(Rd, tag = "examples")
 print(examples)
 }
 \seealso{
-\code{\link[tools:Rd_db]{tools::Rd_db()}}.
+\code{tools::Rd_db()}.
 }

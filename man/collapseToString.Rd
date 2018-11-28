@@ -39,7 +39,7 @@ collapseToString(object, ...)
 \value{
 \itemize{
 \item \code{atomic}: \code{string}.
-\item \code{\link[base:dim]{base::dim()}}: Object of same class, collapsed to a single row.
+\item \code{dim()}: Object of same class, collapsed to a single row.
 }
 }
 \description{
@@ -75,5 +75,5 @@ datasets::iris \%>\%
     t()
 }
 \seealso{
-\code{\link[base:toString]{base::toString()}}.
+\code{toString()}.
 }

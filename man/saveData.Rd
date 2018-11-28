@@ -18,7 +18,7 @@ using non-standard evaluation for convenience during interactive use, and
 
 \item{ext}{\code{string}. R data serialized (RDS; "\code{rds}") or R data ("\code{rda}",
 "\code{RData}"). RDS is preferred when saving single objects per file, which is
-always the convention of \code{\link[=saveData]{saveData()}}, regardless of the extension used.}
+always the convention of \code{saveData()}, regardless of the extension used.}
 
 \item{overwrite}{\code{boolean}. Overwrite existing file.}
 
@@ -33,8 +33,8 @@ always the convention of \code{\link[=saveData]{saveData()}}, regardless of the 
 Invisible named \code{character}. File paths.
 }
 \description{
-Wrapper for \code{\link[base:save]{base::save()}} supporting quick, interactive saving of object
-names passed as symbols.
+Wrapper for \code{save()} supporting quick, interactive saving of object names
+passed as symbols.
 }
 \details{
 This function always saves each object into a separate file rather than
@@ -43,7 +43,7 @@ combining multiple objects into a single file.
 \note{
 This function is desired for interactive use and interprets object
 names using non-standard evaluation. It will \strong{overwrite} existing files
-on disk, following the same conventions as \code{\link[base:save]{base::save()}}.
+on disk, following the same conventions as \code{save()}.
 }
 \examples{
 data(rse, sce)
@@ -54,5 +54,5 @@ list.files("example")
 unlink("example", recursive = TRUE)
 }
 \seealso{
-\code{\link[base:save]{base::save()}}, \code{\link[base:saveRDS]{base::saveRDS()}}.
+\code{save()}, \code{saveRDS()}.
 }

@@ -21,9 +21,9 @@ message on failure.
 Validity check capable of validating multiple slots in a single call.
 }
 \details{
-To be used inside S4 \code{\link[methods:setValidity]{methods::setValidity()}} call or with
-\code{\link[assertthat:validate_that]{assertthat::validate_that()}}. Particularly useful for checking multiple
-slotted objects inside \code{\link[S4Vectors:metadata]{S4Vectors::metadata()}} \code{list}.
+To be used inside S4 \code{methods::setValidity()} call or with
+\code{assertthat::validate_that()}. Particularly useful for checking multiple
+slotted objects inside \code{metadata()}.
 }
 \examples{
 data(rse)
@@ -37,5 +37,5 @@ validateClasses(
 )
 }
 \seealso{
-\code{\link[assertthat:validate_that]{assertthat::validate_that()}}.
+\code{assertthat::validate_that()}.
 }

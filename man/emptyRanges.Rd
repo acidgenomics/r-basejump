@@ -11,14 +11,14 @@ emptyRanges(names, seqname = c("unknown", "transgene", "spike"),
 \item{names}{\code{character}. Gene or transcript names.}
 
 \item{seqname}{\code{string} Name of the alternative chromosome to be defined in
-\code{\link[GenomeInfoDb:seqnames]{GenomeInfoDb::seqnames()}} where these ranges will be grouped. Defaults to
-"\code{unknown}" but "\code{transgene}" (transgenes) and "\code{spike}" (spike-ins) are
-also supported.}
+\code{seqnames()} where these ranges will be grouped. Defaults to "\code{unknown}"
+but "\code{transgene}" (transgenes) and "\code{spike}" (spike-ins) are also
+supported.}
 
 \item{mcolsNames}{\code{character} or \code{NULL}. Metadata column names to be defined
-in the \code{\link[S4Vectors:mcols]{S4Vectors::mcols()}} of the \code{GRanges} return. Normally this does not
-need to be defined; useful when combining with another \code{GRanges} that
-contains metadata.}
+in the \code{mcols()} of the \code{GRanges} return. Normally this does not need to be
+defined; useful when combining with another \code{GRanges} that contains
+metadata.}
 }
 \value{
 \code{GRanges}.
