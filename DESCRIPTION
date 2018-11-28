@@ -63,7 +63,7 @@ Imports:
     ensembldb,
     ggplot2,
     ggrepel,
-    goalie (>= 0.1),
+    goalie (>= 0.1.1),
     grDevices,
     grid,
     jsonlite,
