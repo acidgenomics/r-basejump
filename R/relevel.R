@@ -8,11 +8,11 @@
 #' @examples
 #' data(rse)
 #'
-#' rowRanges <- rowRanges(rse)
+#' rowRanges <- SummarizedExperiment::rowRanges(rse)
 #' x <- relevelRowRanges(rowRanges)
 #' summary(x)
 #'
-#' colData <- colData(rse)
+#' colData <- SummarizedExperiment::colData(rse)
 #' x <- relevelColData(colData)
 #' summary(x)
 NULL
