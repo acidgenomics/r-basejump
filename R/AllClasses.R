@@ -93,7 +93,7 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @seealso [makeGene2Symbol].
+#' @seealso `makeGene2Symbol`.
 #'
 #' @return `Gene2Symbol`. Contains a `DataFrame` with `geneID` and `geneName`
 #'   columns.
@@ -211,12 +211,12 @@ setValidity(
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
-#' `S4Vectors::metadata()`.
+#' `metadata()`.
 #'
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @seealso [makeTx2Gene].
+#' @seealso `makeTx2Gene`.
 #'
 #' @return `Tx2Gene`. Contains a `DataFrame` with `transcriptID` and `geneID`
 #'   columns.
