@@ -42,7 +42,7 @@ last items to include.}
 Invisible \code{NULL}.
 }
 \description{
-Inspired by the \code{\link[base:print]{base::print()}} method for \code{DataFrame} class objects. Applies
+Inspired by the \code{print()} method for \code{DataFrame} class objects. Applies
 to both rows and columns, enabling quick inspection during interactive use.
 }
 \section{Methods (by class)}{
@@ -74,7 +74,7 @@ headtail(rse, ascii = TRUE)
 }
 \seealso{
 \itemize{
-\item \code{\link[utils:head]{utils::head()}}, \code{\link[utils:tail]{utils::tail()}}, \code{\link[base:cat]{base::cat()}}.
+\item \code{utils::head()}, \code{utils::tail()}, \code{base::cat()}.
 \item \code{getMethod("show", "DataTable")}.
 }
 }

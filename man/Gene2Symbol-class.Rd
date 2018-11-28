@@ -24,7 +24,7 @@ We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRele
 }
 
 \seealso{
-\link{makeGene2Symbol}.
+\code{makeGene2Symbol}.
 }
 \author{
 Michael Steinbaugh

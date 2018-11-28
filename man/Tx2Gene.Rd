@@ -35,7 +35,7 @@ No attempt is made to arrange the rows by transcript identifier.
 
 
 We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
-\code{S4Vectors::metadata()}.
+\code{metadata()}.
 }
 
 \examples{
@@ -45,5 +45,5 @@ x <- Tx2Gene(tx_se)
 print(x)
 }
 \seealso{
-\link{makeTx2Gene}.
+\code{makeTx2Gene}.
 }
