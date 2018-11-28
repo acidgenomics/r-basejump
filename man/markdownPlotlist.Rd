@@ -20,7 +20,7 @@ Graphical output of plots, separated by Markdown headers.
 \description{
 Supports using a named \code{list} containing multiple \code{ggplot} objects, which
 can be used in an R Markdown report, separated by headers. Internally, the
-headers are generated with the \code{\link[=markdownHeader]{markdownHeader()}} function.
+headers are generated with the \code{markdownHeader()} function.
 }
 \examples{
 loadRemoteData(url = file.path(basejumpCacheURL, "plotlist.rda"))
@@ -28,5 +28,5 @@ names(plotlist)
 markdownPlotlist(plotlist)
 }
 \seealso{
-\code{\link[cowplot:plot_grid]{cowplot::plot_grid()}}.
+\code{cowplot::plot_grid()}.
 }

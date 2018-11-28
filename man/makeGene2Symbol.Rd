@@ -62,5 +62,5 @@ x <- makeGene2SymbolFromGFF(file)
 print(x)
 }
 \seealso{
-\link{makeGRanges}.
+\code{makeGRanges}.
 }

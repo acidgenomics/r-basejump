@@ -13,7 +13,7 @@ interestingGroups(object, ...)
 
 interestingGroups(object, ...) <- value
 
-\S4method{interestingGroups}{SummarizedExperiment}(object)
+\S4method{interestingGroups}{SummarizedExperiment}(object, check = TRUE)
 
 
   \S4method{interestingGroups}{SummarizedExperiment,character}(object) <- value
@@ -27,6 +27,8 @@ interestingGroups(object, ...) <- value
 \item{...}{Additional arguments.}
 
 \item{value}{Value to assign.}
+
+\item{check}{\code{boolean}. Perform assert checks.}
 }
 \value{
 \code{character}.

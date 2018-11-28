@@ -12,7 +12,7 @@ markdownTables(list, captions = NULL, force = FALSE)
 \item{captions}{\code{character} or \code{NULL}. Table captions. If \code{NULL}, the names
 of the list will be used automatically as captions.}
 
-\item{force}{\code{boolean}. Force knit output using \code{\link[knitr:asis_output]{knitr::asis_output()}}.
+\item{force}{\code{boolean}. Force knit output using \code{knitr::asis_output()}.
 Recommended for development and unit testing only.}
 }
 \value{
@@ -31,7 +31,7 @@ markdownTables(list = list, captions = captions)
 }
 \seealso{
 \itemize{
-\item \code{\link[knitr:kable]{knitr::kable()}}.
+\item \code{knitr::kable()}.
 \item \href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow post}.
 }
 }
