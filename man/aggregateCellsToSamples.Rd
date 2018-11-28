@@ -30,7 +30,7 @@ function will sum the counts across cells to sample level.
 This function is intended primarily for quality control analysis.
 
 Internally it automatically obtains the cell-to-sample groupings and then
-performs aggregation with the \code{\link[=aggregateCols]{aggregateCols()}} function.
+performs aggregation with the \code{aggregateCols()} function.
 }
 \examples{
 data(sce)

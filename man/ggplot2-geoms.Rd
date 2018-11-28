@@ -62,7 +62,7 @@ Horizontal or vertical cutoff line.
 \section{basejump_geom_label}{
 
 
-Modified version of \code{\link[ggplot2:geom_label]{ggplot2::geom_label()}}.
+Modified version of \code{ggplot2::geom_label()}.
 }
 
 \section{basejump_geom_label_average}{
@@ -76,7 +76,7 @@ mean values are always calculated per sample (\code{sampleName}).
 
 
 Repulsive textual annotations. Modified basejump version of
-\code{\link[ggrepel:geom_label_repel]{ggrepel::geom_label_repel()}}. If advanced customization of the text labels
+\code{ggrepel::geom_label_repel()}. If advanced customization of the text labels
 is required, simply use the ggrepel version instead.
 }
 
@@ -111,7 +111,7 @@ geom
 }
 \seealso{
 \itemize{
-\item \code{\link[ggplot2:geom_label]{ggplot2::geom_label()}}.
-\item \code{\link[ggrepel:geom_label_repel]{ggrepel::geom_label_repel()}}.
+\item \code{ggplot2::geom_label()}.
+\item \code{ggrepel::geom_label_repel()}.
 }
 }

@@ -137,7 +137,7 @@ tx2gene(...)
 \item{object}{Object.}
 }
 \value{
-\code{\link[=.Deprecated]{.Deprecated()}}.
+\code{.Deprecated()}.
 }
 \description{
 Deprecated Functions

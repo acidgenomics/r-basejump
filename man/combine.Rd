@@ -44,9 +44,8 @@ There are two basic combine strategies. One is an intersection
 We're attempting to make this as strict as possible, requiring:
 \itemize{
 \item Rows (genes) across objects must be identical.
-\item \code{\link[SummarizedExperiment:rowRanges]{SummarizedExperiment::rowRanges()}} and/or
-\code{\link[SummarizedExperiment:rowData]{SummarizedExperiment::rowData()}} metadata must be identical.
-\item \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}} must contain the same columns.
+\item \code{rowRanges()} and/or \code{rowData()} metadata must be identical.
+\item \code{colData()} must contain the same columns.
 \item Specific metadata must be identical (see \code{metadata} parameter).
 }
 }
@@ -130,7 +129,7 @@ sampleData(c)
 }
 \seealso{
 \itemize{
-\item \code{\link[BiocGenerics:combine]{BiocGenerics::combine()}}.
+\item \code{BiocGenerics::combine()}.
 \item \code{help("merge.Matrix", "Matrix.utils")}.
 }
 }

@@ -32,7 +32,7 @@ as the names.
 Cell-to-Sample Mappings
 }
 \note{
-\code{sampleID} column must be defined in \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}}.
+\code{sampleID} column must be defined in \code{colData()}.
 }
 \examples{
 data(sce)

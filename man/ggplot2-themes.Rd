@@ -42,7 +42,7 @@ panel borders.}
 Complete \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
 \details{
-All themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_linedraw()}}, but with
+All themes are based off of \code{ggplot2::theme_linedraw()}, but with
 modifications and extra user-definable parameters.
 }
 \section{Paperwhite}{
@@ -84,5 +84,5 @@ p +
     theme_midnight(legend_position = "none")
 }
 \seealso{
-\code{\link[ggplot2:theme]{ggplot2::theme()}}.
+\code{ggplot2::theme()}.
 }

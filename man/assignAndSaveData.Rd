@@ -16,13 +16,13 @@ assignAndSaveData(name, object, envir = parent.frame(),
 \item{object}{Object.}
 
 \item{envir}{\code{environment}. Environment to use for assignment. Defaults to
-\code{\link[=parent.frame]{parent.frame()}}, the calling environment.}
+\code{parent.frame()}, the calling environment.}
 
 \item{dir}{\code{string}. Directory path.}
 
 \item{ext}{\code{string}. R data serialized (RDS; "\code{rds}") or R data ("\code{rda}",
 "\code{RData}"). RDS is preferred when saving single objects per file, which is
-always the convention of \code{\link[=saveData]{saveData()}}, regardless of the extension used.}
+always the convention of \code{saveData()}, regardless of the extension used.}
 
 \item{overwrite}{\code{boolean}. Overwrite existing file.}
 
@@ -41,7 +41,7 @@ Assigns a new object by name to the current working environment then saves
 the newly assigned object, specified by the "\code{dir}" argument.
 }
 \note{
-This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.
+This function attempts to follow the same order as \code{assign()}.
 }
 \examples{
 data(rse)
