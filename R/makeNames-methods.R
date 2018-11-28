@@ -17,8 +17,8 @@
 #' @param object `character` or object for which `names()` assignment will be
 #'   meaningful.
 #' @param rownames `boolean`. Apply sanitization on row names. This is not
-#'   recommended by default, since rownames commonly contain gene identifiers
-#'   that should not be modified.
+#'   generally recommended by default, since rownames commonly contain gene
+#'   identifiers that should not be modified.
 #' @param colnames `boolean`. Apply sanitization on column names. This is
 #'   generally recommended by default.
 #' @param strict `boolean`. Enforce strict name sanitization. When `TRUE`, this

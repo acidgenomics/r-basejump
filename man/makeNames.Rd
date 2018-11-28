@@ -180,8 +180,8 @@ does not allow the return of any capitalized acronyms. "RNA" will become
 "Rna", for example.}
 
 \item{rownames}{\code{boolean}. Apply sanitization on row names. This is not
-recommended by default, since rownames commonly contain gene identifiers
-that should not be modified.}
+generally recommended by default, since rownames commonly contain gene
+identifiers that should not be modified.}
 
 \item{colnames}{\code{boolean}. Apply sanitization on column names. This is
 generally recommended by default.}

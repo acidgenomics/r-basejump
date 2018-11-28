@@ -1,3 +1,7 @@
+# TODO Call `autopadZeros()` and resort columns if necessary.
+
+
+
 #' Make Summarized Experiment
 #'
 #' This function is a utility wrapper for

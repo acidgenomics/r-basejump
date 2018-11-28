@@ -15,11 +15,11 @@ export(x, ...)
 
 \S4method{export}{sparseMatrix}(x, file, format)
 
-\S4method{export}{SummarizedExperiment}(x, dir = ".", compress = FALSE,
-  human = FALSE)
+\S4method{export}{SummarizedExperiment}(x, name = NULL, dir = ".",
+  compress = FALSE, human = FALSE)
 
-\S4method{export}{SingleCellExperiment}(x, dir = ".", compress = FALSE,
-  human = FALSE)
+\S4method{export}{SingleCellExperiment}(x, name = NULL, dir = ".",
+  compress = FALSE, human = FALSE)
 }
 \arguments{
 \item{x}{Object.}

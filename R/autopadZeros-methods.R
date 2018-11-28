@@ -6,7 +6,7 @@
 #'
 #' @name autopadZeros
 #' @inheritParams params
-#' @export
+#' @inheritParams makeNames
 #'
 #' @return `character`.
 #'
@@ -53,7 +53,7 @@ setMethod(
 
 autopadZeros.matrix <- function(
     object,
-    rownames = TRUE,
+    rownames = FALSE,
     colnames = TRUE
 ) {
     assert_is_a_bool(rownames)
@@ -79,15 +79,10 @@ setMethod(
 
 
 
-autopadZeros.SummarizedExperiment <- autopadZeros.matrix
-formals(autopadZeros.SummarizedExperiment)[["rownames"]] <- FALSE
-
-
-
 #' @rdname autopadZeros
 #' @export
 setMethod(
     f = "autopadZeros",
     signature = signature("SummarizedExperiment"),
-    definition = autopadZeros.SummarizedExperiment
+    definition = autopadZeros.matrix
 )

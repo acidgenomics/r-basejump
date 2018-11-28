@@ -12,7 +12,7 @@ autopadZeros(object, ...)
 
 \S4method{autopadZeros}{character}(object)
 
-\S4method{autopadZeros}{matrix}(object, rownames = TRUE,
+\S4method{autopadZeros}{matrix}(object, rownames = FALSE,
   colnames = TRUE)
 
 \S4method{autopadZeros}{SummarizedExperiment}(object, rownames = FALSE,
@@ -22,6 +22,13 @@ autopadZeros(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{rownames}{\code{boolean}. Apply sanitization on row names. This is not
+generally recommended by default, since rownames commonly contain gene
+identifiers that should not be modified.}
+
+\item{colnames}{\code{boolean}. Apply sanitization on column names. This is
+generally recommended by default.}
 }
 \value{
 \code{character}.
