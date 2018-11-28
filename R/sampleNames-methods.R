@@ -3,7 +3,7 @@
 
 
 
-# FIXME This will break:
+# TODO Unit test this.
 # sampleNames(rse) <- sampleNames(rse)
 
 
