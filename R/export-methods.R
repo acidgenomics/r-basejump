@@ -198,12 +198,16 @@ setMethod(
 export.SummarizedExperiment <-  # nolint
     function(
         x,
+        name = NULL,
         dir = ".",
         compress = FALSE,
         human = FALSE
     ) {
         call <- standardizeCall()
-        name <- as.character(call[["x"]])
+        assertIsStringOrNULL(name)
+        if (is.null(name)) {
+            name <- as.character(call[["x"]])
+        }
         dir <- initDir(file.path(dir, name))
         assert_is_a_bool(compress)
         assert_is_a_bool(human)
