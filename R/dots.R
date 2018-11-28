@@ -7,7 +7,7 @@
 #'
 #' @return
 #' - "`character = FALSE`": `list`. Objects as `name` class. Can return the
-#'   object from the `name` with [eval()].
+#'   object from the `name` with `eval()`.
 #' - "`character = TRUE`": `character`. Names of the dots.
 #'
 #' @seealso

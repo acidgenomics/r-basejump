@@ -113,7 +113,7 @@ is \code{numeric}, set \code{header = TRUE} here to force the column name.
 
 See \code{help(topic = "fread", package = "data.table")} for details.
 
-The \code{read_csv()} and \code{read_tsv()} functions of the \code{\link[=readr]{readr()}} package
+The \code{read_csv()} and \code{read_tsv()} functions of the \href{https://readr.tidyverse.org}{readr} package
 are good alternatives, which return \code{tibble} data frames (\code{tbl_df}).
 }
 
