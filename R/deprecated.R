@@ -10,7 +10,7 @@
 #'
 #' @inheritParams params
 #'
-#' @return [.Deprecated()].
+#' @return `.Deprecated()`.
 NULL
 
 
@@ -22,7 +22,7 @@ NULL
 #'
 #' @inheritParams params
 #'
-#' @return [.Defunct()].
+#' @return `.Defunct()`.
 NULL
 
 
