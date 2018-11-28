@@ -1,3 +1,13 @@
+# FIXME Need to fix assignment if `sampleName` column isn't actually defined
+# in colData.
+
+
+
+# FIXME This will break:
+# sampleNames(rse) <- sampleNames(rse)
+
+
+
 #' Sample Names
 #'
 #' This function will return the human readable sample names if defined
@@ -44,10 +54,9 @@ sampleNames.SummarizedExperiment <-  # nolint
     function(object) {
         data <- sampleData(object)
         assert_is_subset("sampleName", colnames(data))
-        data <- data[sort(rownames(data)), , drop = FALSE]
-        vec <- as.character(data[, "sampleName", drop = TRUE])
-        names(vec) <- rownames(data)
-        vec
+        out <- as.character(data[["sampleName"]])
+        names(out) <- rownames(data)
+        out
     }
 
 
