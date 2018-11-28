@@ -6,8 +6,6 @@
 \title{Markdown Plotlist}
 \usage{
 markdownPlotlist(plotlist, headerLevel = 2L)
-
-mdPlotlist(plotlist, headerLevel = 2L)
 }
 \arguments{
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}

@@ -6,8 +6,6 @@
 \title{Markdown Header}
 \usage{
 markdownHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
-
-mdHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
 }
 \arguments{
 \item{text}{\code{string}. Header text.}

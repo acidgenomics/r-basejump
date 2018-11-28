@@ -6,19 +6,12 @@
 \alias{coerce}
 \alias{as.data.frame,sparseMatrix-method}
 \alias{coerce,sparseMatrix,data.frame-method}
-\alias{as.DataFrame}
 \alias{coerce,sparseMatrix,DataFrame-method}
 \alias{coerce,tbl_df,DataFrame-method}
-\alias{as.SummarizedExperiment}
 \alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
 \title{Force an Object to Belong to a Class}
-\usage{
-as.DataFrame(x)
-
-as.SummarizedExperiment(x)
-}
 \arguments{
 \item{x}{Object.}
 
