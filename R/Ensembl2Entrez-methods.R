@@ -18,10 +18,7 @@ NULL
 
 
 Ensembl2Entrez.DataFrame <-  # nolint
-    function(
-        object,
-        format = c("1:1", "long")
-    ) {
+    function(object, format = c("1:1", "long")) {
         assert_has_rows(object)
         format <- match.arg(format)
 
@@ -33,7 +30,11 @@ Ensembl2Entrez.DataFrame <-  # nolint
             ))
         }
 
-        data <- object[, cols, drop = FALSE]
+        data <- DataFrame(
+            geneID = as.character(decode(object[["geneID"]])),
+            entrezID = I(object[["entrezID"]]),
+            row.names = rownames(object)
+        )
 
         # Expand to long format.
         data <- expand(data)
@@ -77,7 +78,7 @@ Ensembl2Entrez.DataFrame <-  # nolint
                 row.names = rownames(object)
             )
         } else if (format == "long") {
-            message("Returning 1:many in long format.")
+            message("Returning 1:many in long format (not recommended).")
         }
 
         metadata(data) <- metadata(object)

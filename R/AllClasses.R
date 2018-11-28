@@ -70,8 +70,7 @@ setValidity(
                 x = colnames(object),
                 y = c("geneID", "entrezID")
             ),
-            !any(duplicated(object[["geneID"]])),
-            class(object[["entrezID"]]) %in% c("integer", "list")
+            is.integer(object[["entrezID"]])
         )
     }
 )
