@@ -9,7 +9,7 @@ plotDEGHeatmap(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}. The names of the
+\item{...}{Passthrough arguments to \code{pheatmap::pheatmap()}. The names of the
 arguments should be formatted in camel case, not snake case.}
 }
 \value{
@@ -64,13 +64,13 @@ plotQuantileHeatmap(sce)
 }
 \seealso{
 \itemize{
-\item \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
-\item \code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}.
+\item \code{pheatmap::pheatmap()}.
+\item \code{RColorBrewer::brewer.pal()}.
 }
 
 \itemize{
-\item \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
-\item \code{\link[stats:cor]{stats::cor()}}.
-\item \code{\link[stats:hclust]{stats::hclust()}}.
+\item \code{pheatmap::pheatmap()}.
+\item \code{stats::cor()}.
+\item \code{stats::hclust()}.
 }
 }
