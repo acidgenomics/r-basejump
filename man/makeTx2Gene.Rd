@@ -61,5 +61,5 @@ x <- makeTx2GeneFromGFF(file)
 print(x)
 }
 \seealso{
-\link{makeGRanges}.
+\code{makeGRanges}.
 }

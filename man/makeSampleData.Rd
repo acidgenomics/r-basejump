@@ -13,14 +13,13 @@ makeSampleData(object)
 \code{DataFrame}.
 }
 \description{
-Utility function that prepares metadata to be slotted into
-\code{SummarizedExperiment::colData()}.
+Utility function that prepares metadata to be slotted into \code{colData()}.
 }
 \details{
 This function adheres to the following conventions:
 \itemize{
 \item All column names will be converted to lower camel case
-(see \code{\link[=camel]{camel()}} for details).
+(see \code{camel()} for details).
 \item Required columns:
 \itemize{
 \item \code{sampleName}: Human readable sample names. Note that this column is
@@ -46,5 +45,5 @@ object <- data.frame(
 )
 }
 \seealso{
-\link{makeNames}.
+\code{makeNames}.
 }

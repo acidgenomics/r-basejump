@@ -15,7 +15,7 @@ organisms: \emph{Homo sapiens}, \emph{Mus musculus}, \emph{Caenorhabditis elegan
 defaults to current release. Consult the PANTHER website for a list of
 release versions available from the FTP server (e.g. \code{"13.0"}).}
 
-\item{progress}{\code{boolean}. Use \code{\link[pbapply:pblapply]{pbapply::pblapply()}} internally to show
+\item{progress}{\code{boolean}. Call \code{pbapply::pblapply()} internally to show
 progress.}
 }
 \value{

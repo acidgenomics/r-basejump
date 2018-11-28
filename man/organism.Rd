@@ -34,5 +34,5 @@ data(rse)
 organism(rse)
 }
 \seealso{
-\code{\link[=detectOrganism]{detectOrganism()}}.
+\code{detectOrganism()}.
 }

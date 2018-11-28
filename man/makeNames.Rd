@@ -164,8 +164,8 @@ makeDimnames(object)
   strict = FALSE)
 }
 \arguments{
-\item{object}{\code{character} or object for which \code{\link[base:names]{base::names()}} assignment
-will be meaningful.}
+\item{object}{\code{character} or object for which \code{names()} assignment will be
+meaningful.}
 
 \item{...}{Additional arguments.}
 
@@ -188,12 +188,12 @@ generally recommended by default.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
-\code{\link[base:names]{base::names()}}, the underlying data returns unchanged.
+\code{names()}, the underlying data returns unchanged.
 }
 \description{
 For \code{atomic} vectors, these functions will sanitize the values. Otherwise,
-they will set \code{\link[base:names]{base::names()}}, \code{\link[base:rownames]{base::rownames()}}, and/or \code{\link[base:colnames]{base::colnames()}}
-without modification of the values.
+they will set \code{names()}, \code{rownames()}, and/or \code{colnames()} without
+modification of the values.
 }
 \details{
 \code{dotted.case} support is provided for matching against base R parameters.
@@ -201,8 +201,8 @@ However, it is recommended to avoid using it for variable assignments into an
 \code{environment}, as that can introduce conflicts with base functions.
 }
 \note{
-\code{\link[=makeNames]{makeNames()}} sanitizes names using underscores instead of dots, the
-convention used by \code{\link[base:make.names]{base::make.names()}}.
+\code{makeNames()} sanitizes names using underscores instead of dots, the
+convention used by \code{make.names()}.
 }
 \examples{
 loadRemoteData(url = file.path(basejumpCacheURL, "mn.rda"))
@@ -251,7 +251,7 @@ upperCamel(x) \%>\% names()
 }
 \seealso{
 \itemize{
-\item \code{\link[base:make.names]{base::make.names()}}.
+\item \code{make.names()}.
 \item \href{https://cran.r-project.org/package=janitor}{janitor} contains a number of
 useful functions that provide similar sanitization support, but isn't
 designed to work natively with \href{https://bioconductor.org}{Bioconductor} and

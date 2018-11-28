@@ -34,5 +34,5 @@ x <- localOrRemoteFile(files)
 basename(x)
 }
 \seealso{
-\code{\link[base:tempdir]{base::tempdir()}}.
+\code{tempdir()}.
 }

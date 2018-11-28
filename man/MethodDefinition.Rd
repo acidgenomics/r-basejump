@@ -35,8 +35,8 @@ extractLocal(definition)
 }
 \value{
 \itemize{
-\item \code{\link[=methodFormals]{methodFormals()}}: \code{list}. Extract the sealed formal arguments.
-\item \code{\link[=methodFunction]{methodFunction()}}: \code{function}. Extract the sealed function.
+\item \code{methodFormals()}: \code{list}. Extract the sealed formal arguments.
+\item \code{methodFunction()}: \code{function}. Extract the sealed function.
 }
 }
 \description{
@@ -63,6 +63,7 @@ print(x)
 \itemize{
 \item Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
 \item \code{help(topic = "MethodDefinition-class", package = "methods")}.
-\item \code{\link[methods:selectMethod]{methods::selectMethod()}}, \code{\link[methods:setMethod]{methods::setMethod()}}.
+\item \code{methods::selectMethod()}.
+\item \code{methods::setMethod()}.
 }
 }

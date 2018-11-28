@@ -44,9 +44,9 @@ Make Genomic Ranges
 \section{Functions}{
 \itemize{
 \item \code{makeGRangesFromEnsembl}: Quickly obtain gene and transcript annotations from
-\href{http://www.ensembl.org}{Ensembl} using
-\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub} and
-\href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
+\href{https://www.ensembl.org/}{Ensembl} using
+\href{https://bioconductor.org/packages/AnnotationHub/}{AnnotationHub} and
+\href{https://bioconductor.org/packages/ensembldb/}{ensembldb}.
 
 Simply specify the desired organism, using the full latin name. For example,
 we can obtain human annotations with \code{Homo sapiens}. Optionally, specific
@@ -73,9 +73,9 @@ the metadata columns.
 
 Remote URLs and compressed files are supported.
 
-\item \code{annotable}: \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
-\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
-that \code{GRanges} can also be coercing using \code{\link[BiocGenerics:as.data.frame]{BiocGenerics::as.data.frame()}}.
+\item \code{annotable}: \code{annotable()} is a legacy convenience function that calls
+\code{makeGRangesFromEnsembl()} and returns a \code{tibble} instead of \code{GRanges}. Note
+that \code{GRanges} can also be coercing using \code{BiocGenerics::as.data.frame()}.
 }}
 
 \section{Broad class definitions}{
@@ -99,8 +99,8 @@ groups:
 \section{GRCh37 (hg19) legacy annotations}{
 
 
-\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} supports the legacy \emph{Homo sapiens} GRCh37 (release
-75) build by internally querying the \href{https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75}{EnsDb.Hsapiens.v75} package.
+\code{makeGRangesFromEnsembl()} supports the legacy \emph{Homo sapiens} GRCh37 (release
+75) build by internally querying the \href{https://bioconductor.org/packages/EnsDb.Hsapiens.v75/}{EnsDb.Hsapiens.v75} package.
 Alternatively, the corresponding GTF/GFF file can be loaded directly from
 GENCODE or Ensembl.
 }
@@ -131,9 +131,9 @@ summary(x)
 }
 \seealso{
 \itemize{
-\item \href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
-\item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
-\item \code{\link[rtracklayer:import]{rtracklayer::import()}}.
-\item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
+\item \href{https://bioconductor.org/packages/AnnotationHub/}{AnnotationHub}.
+\item \href{https://bioconductor.org/packages/ensembldb/}{ensembldb}.
+\item \code{rtracklayer::import()}.
+\item \code{GenomicFeatures::makeTxDbFromGFF()}.
 }
 }

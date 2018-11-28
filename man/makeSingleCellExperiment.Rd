@@ -32,17 +32,17 @@ spike-in sequences (e.g. ERCCs).}
 }
 \description{
 This function is a utility wrapper for
-\code{\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment::SummarizedExperiment()}} that provides automatic
+\code{SummarizedExperiment::SummarizedExperiment()} that provides automatic
 subsetting for row and column data, as well as automatic handling of
 transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the
-\code{\link[S4Vectors:metadata]{S4Vectors::metadata()}} slot:
+constructor by slotting useful session information into the \code{metadata()}
+slot:
 }
 \details{
 \itemize{
-\item \code{date}: Today's date, returned from \code{\link[base:Sys.Date]{base::Sys.Date()}}.
-\item \code{wd}: Working directory, returned from \code{\link[base:getwd]{base::getwd()}}.
-\item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
+\item \code{date}: Today's date, returned from \code{Sys.Date()}.
+\item \code{wd}: Working directory, returned from \code{getwd()}.
+\item \code{sessionInfo}: \code{sessioninfo::session_info()} return.
 }
 }
 \examples{

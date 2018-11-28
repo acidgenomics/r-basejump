@@ -19,7 +19,7 @@ define the samples. If left unset, defaults to \code{sampleName}.}
 Match the user-defined interesting groups to the values slotted within a
 \code{SummarizedExperiment} object, and check that they are valid. Otherwise
 supports a missing \code{interestingGroups} argument, which will then use the
-\code{\link[=interestingGroups]{interestingGroups()}} accessor function internally.
+\code{interestingGroups()} accessor function internally.
 }
 \examples{
 data(rse)

@@ -62,8 +62,8 @@ dynamically (e.g. for single-cell RNA-seq marker analysis).
 
 Some genomes (e.g. Homo sapiens, Mus musculus) contain duplicated gene names
 for multiple gene identifiers. Normally we handle these ambiguous gene names
-by sanitizing them with \code{\link[base:make.names]{base::make.names()}}. If a user requests a gene name
-that is duplicated, these functions will return a warning.
+by sanitizing them with \code{make.names()}. If a user requests a gene name that
+is duplicated, these functions will return a warning.
 }
 
 \examples{

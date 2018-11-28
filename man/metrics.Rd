@@ -30,33 +30,31 @@ metricsPerSample(object, ...)
 \item{return}{\code{string}. Return type. Uses \code{base::match.arg()}
 internally and defaults to the first argument in the \code{character} vector.}
 
-\item{fun}{\code{string}. Mathematical function name to apply.
-Uses \code{\link[base:match.arg]{base::match.arg()}}.}
+\item{fun}{\code{string}. Mathematical function name to apply. Uses \code{match.arg()}.}
 }
 \value{
 \itemize{
 \item \code{"tibble"}: \code{grouped_df}. Grouped by \code{sampleID} column.
-\item \code{"DataFrame"}: \code{DataFrame}. Rownames are identical to \code{\link[base:colnames]{base::colnames()}},
-of the object, like \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}}.
+\item \code{"DataFrame"}: \code{DataFrame}. Rownames are identical to the \code{colnames()}, of
+the object, like \code{colData()}.
 }
 }
 \description{
-This function takes data stored in \code{SummarizedExperiment::colData()} and
-consistently returns a tibble grouped by sample by default (\code{sampleID}).
+This function takes data stored in \code{colData()} and consistently returns a
+tibble grouped by sample by default (\code{sampleID}).
 }
 \details{
-\code{\link[=metrics]{metrics()}} always returns \code{sampleName} and \code{interestingGroups} columns, even
+\code{metrics()} always returns \code{sampleName} and \code{interestingGroups} columns, even
 when these columns are not defined in \code{colData}. This is designed to
 integrate with plotting functions that use ggplot2 internally.
 }
 \section{Methods (by class)}{
 \itemize{
 \item \code{SummarizedExperiment}: Metrics are sample level. \code{sampleID} column corresponds
-to \code{\link[base:colnames]{base::colnames()}}.
+to \code{colnames()}.
 
 \item \code{SingleCellExperiment}: Metrics are cell level. \code{cellID} column corresponds to
-\code{\link[base:colnames]{base::colnames()}}. Tibble is returned grouped by sample
-(\code{sampleID} column).
+\code{colnames()}. Tibble is returned grouped by sample (\code{sampleID} column).
 }}
 
 \examples{
