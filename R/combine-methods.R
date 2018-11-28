@@ -1,3 +1,7 @@
+# TODO Improve support for combining > 2 objects in a single call.
+
+
+
 #' @name combine
 #' @inherit BiocGenerics::combine
 #'
