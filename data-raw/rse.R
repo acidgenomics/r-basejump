@@ -1,5 +1,5 @@
 # Gene-level RangedSummarizedExperiment example
-# 2018-11-19
+# 2018-11-28
 
 library(pryr)
 library(DESeq2)
@@ -26,36 +26,20 @@ object_size(rse)
 stopifnot(object_size(rse) < limit)
 
 # Pad the dimnames so they sort correctly.
-rownames(rse) <- rownames(rse) %>%
-    str_replace("gene", "") %>%
-    str_pad(width = 3L, side = "left", pad = "0") %>%
-    paste0("gene", .)
-colnames(rse) <- colnames(rse) %>%
-    str_replace("sample", "") %>%
-    str_pad(width = 2L, side = "left", pad = "0") %>%
-    paste0("sample", .)
+rse <- autopadZeros(rse, rownames = TRUE)
 
 # Row data. Include real `geneID`, `geneName` columns to test mapping functions.
-rowRanges <- makeGRangesFromEnsembl(organism, release = release)
+rowRanges <- makeGRangesFromEnsembl(organism = organism, release = release)
 # Subset to match the number of rows in the example.
-rowRanges <- rowRanges[seq_len(nrow(rse))]
+rowRanges <- rowRanges[
+    seq_len(nrow(rse)),
+    c("geneID", "geneName", "geneBiotype", "broadClass", "entrezID")
+]
+# Relevel the factor columns, to save disk space.
+rowRanges <- relevelRowRanges(rowRanges)
 # Note that we're keeping the original rownames from dds_small, and they won't
 # match the `geneID` column in rowRanges. This is intentional, for unit testing.
 names(rowRanges) <- rownames(rse)
-# Select only `geneID` and `geneName` columns, to keep example small.
-# If factor, make sure we use `droplevels()` here to keep object small.
-mcols(rowRanges) <- mcols(rowRanges) %>%
-    as("tbl_df") %>%
-    select(
-        rowname,
-        geneID,
-        geneName,
-        geneBiotype,
-        broadClass,
-        entrezID
-    ) %>%
-    mutate_if(is.factor, as.character) %>%
-    as("DataFrame")
 rowRanges(rse) <- rowRanges
 
 # Metadata.
