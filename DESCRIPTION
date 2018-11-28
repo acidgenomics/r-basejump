@@ -189,6 +189,7 @@ Collate:
     'printString.R'
     'realpath.R'
     'reexports.R'
+    'relevel.R'
     'removeNA-methods.R'
     'sampleData-methods.R'
     'sampleNames-methods.R'
