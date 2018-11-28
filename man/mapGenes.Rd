@@ -74,16 +74,11 @@ print(object)
 rownames <- head(rownames(object))
 print(rownames)
 
-geneIDs <- object \%>\%
-    SummarizedExperiment::rowData(.) \%>\%
-    .[["geneID"]] \%>\%
-    head()
+g2s <- Gene2Symbol(object)
+geneIDs <- head(g2s[["geneID"]])
 print(geneIDs)
 
-geneNames <- object \%>\%
-    SummarizedExperiment::rowData(.) \%>\%
-    .[["geneName"]] \%>\%
-    head()
+geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 ## Row names.
