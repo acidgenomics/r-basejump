@@ -26,9 +26,8 @@ Gene2Symbol(object, ...)
 
 \item{format}{\code{string}. Formatting method to apply:
 \itemize{
-\item \code{"makeUnique"}: \emph{Recommended.} Apply \code{\link[base:make.unique]{base::make.unique()}} to the
-\code{geneName} column. Gene symbols are made unique, while the gene IDs remain
-unmodified.
+\item \code{"makeUnique"}: \emph{Recommended.} Apply \code{make.unique()} to the \code{geneName}
+column. Gene symbols are made unique, while the gene IDs remain unmodified.
 \item \code{"1:1"}: For gene symbols that map to multiple gene IDs, select only the
 first annotated gene ID.
 \item \code{"long"}: Return \code{geneID} and \code{geneName} columns unmodified in long format.
