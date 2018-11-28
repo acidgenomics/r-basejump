@@ -63,7 +63,7 @@ Gene2Symbol.DataFrame <-  # nolint
                 slice(n = 1L) %>%
                 ungroup()
         } else if (format == "long") {
-            message("Returning mappings in long format.")
+            message("Returning 1:many in long format (not recommended).")
         }
 
         data <- as(data, "DataFrame")
