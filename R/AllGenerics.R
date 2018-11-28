@@ -1121,14 +1121,8 @@ setGeneric(
 
 
 # topCellsPerSample ============================================================
-#' Top Cells per Sample
-#'
-#' Obtain the top cellular barcodes, based on counts.
-#'
-#' @inheritParams params
+#' @rdname topCellsPerSample
 #' @export
-#'
-#' @return `list`. Top barcodes as `character`, split by `sampleID`.
 setGeneric(
     name = "topCellsPerSample",
     def = function(object, ...) {

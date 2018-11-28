@@ -3,7 +3,7 @@
 #' Count matrix.
 #'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
-#'   defined in [SummarizedExperiment::assayNames()].
+#'   defined in `assayNames()`.
 #'
 #' @name counts
 #' @aliases counts<-
@@ -32,7 +32,6 @@ BiocGenerics::`counts<-`
 
 
 
-# counts =======================================================================
 counts.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
@@ -52,7 +51,6 @@ setMethod(
 
 
 
-# counts<- =====================================================================
 `counts<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
         validObject(object)

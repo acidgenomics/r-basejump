@@ -3,7 +3,7 @@
 #' Look up gene synonyms from NCBI.
 #'
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
-#' Use the [wormbase](https://steinbaugh.com/wormbase) package instead.
+#' Use the [wormbase](https://steinbaugh.com/wormbase/) package instead.
 #'
 #' @export
 #'
@@ -19,10 +19,7 @@
 #' print(x)
 geneSynonyms <- function(organism) {
     assert_that(has_internet())
-    organism <- match.arg(
-        arg = organism,
-        choices = .geneSynonymsOrganisms
-    )
+    organism <- match.arg(arg = organism, choices = .geneSynonymsOrganisms)
 
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
@@ -52,11 +49,7 @@ geneSynonyms <- function(organism) {
         )
     }
 
-    data <- read_tsv(
-        file = file,
-        col_types = cols(),
-        progress = FALSE
-    )
+    data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
     assert_is_non_empty(data)
 
     data <- data %>%

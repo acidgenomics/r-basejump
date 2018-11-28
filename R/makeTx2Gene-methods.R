@@ -8,7 +8,7 @@
 #' @include makeGRanges-methods.R
 #' @inheritParams makeGRanges
 #'
-#' @seealso [makeGRanges].
+#' @seealso `makeGRanges`.
 #'
 #' @return `Tx2Gene`.
 #'
@@ -45,6 +45,7 @@ makeTx2GeneFromEnsembl <-
         )
         Tx2Gene(gr)
     }
+
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level", "metadata", "..."))]
 formals(makeTx2GeneFromEnsembl) <- f

@@ -15,15 +15,15 @@
 #' @inheritParams params
 #'
 #' @param ... Selection arguments that map to the column names of
-#'   [sampleData()]. `atomic` values are supported. Avoid using `logical` or
-#'   `numeric` indices (e.g. [base::which()] calls) here, for improved code
+#'   `sampleData()`. `atomic` values are supported. Avoid using `logical` or
+#'   `numeric` indices (e.g. `which()` calls) here, for improved code
 #'   readability.
 #'
 #' @return Modified object, with selected samples.
 #'
 #' @seealso
-#' - [sampleData()].
-#' - [S4Vectors::split()].
+#' - `sampleData()`.
+#' - `S4Vectors::split()`.
 #'
 #' @examples
 #' data(rse, sce)

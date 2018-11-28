@@ -8,7 +8,6 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
 plotGenesDetected.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -16,8 +15,8 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         interestingGroups = NULL,
         limit = 0L,
         minCounts = 1L,
-        fill = getOption("basejump.discrete.fill", NULL),
-        flip = getOption("basejump.flip", TRUE),
+        fill,
+        flip,
         title = "genes detected"
     ) {
         validObject(object)
@@ -86,6 +85,11 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         p
     }
 
+formals(plotGenesDetected.SummarizedExperiment)[["fill"]] <-
+    formalsList[["fill.discrete"]]
+formals(plotGenesDetected.SummarizedExperiment)[["flip"]] <-
+    formalsList[["flip"]]
+
 
 
 #' @rdname plotGenesDetected
@@ -98,7 +102,6 @@ setMethod(
 
 
 
-# SingleCellExperiment =========================================================
 plotGenesDetected.SingleCellExperiment <-  # nolint
     function(object) {
         do.call(
@@ -110,6 +113,7 @@ plotGenesDetected.SingleCellExperiment <-  # nolint
             )
         )
     }
+
 formals(plotGenesDetected.SingleCellExperiment) <-
     formals(plotGenesDetected.SummarizedExperiment)
 

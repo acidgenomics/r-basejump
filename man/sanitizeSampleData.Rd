@@ -18,7 +18,7 @@ This function will standardize sample metadata.
 \details{
 The following conventions are enforced:
 \itemize{
-\item Column names will be converted to camel case, using \code{\link[=camel]{camel()}}.
+\item Column names will be converted to camel case, using \code{camel()}.
 \item Required columns: \code{sampleName}.
 \item Blacklisted columns: \code{interestingGroups}, \code{sampleID}. These columns are
 generated internally, and should not be user defined.

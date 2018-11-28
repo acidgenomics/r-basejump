@@ -6,8 +6,9 @@
 #'
 #' @export
 #'
-#' @param object `Rd`. R documentation, returned from [tools::Rd_db()].
+#' @param object `Rd`. R documentation, returned from `tools::Rd_db()`.
 #' @param tag `string`. Desired metadata type. For example, these are supported:
+#'
 #'   - "`title`".
 #'   - "`description`".
 #'   - "`usage`".
@@ -17,7 +18,7 @@
 #'   - "`seealso`".
 #'   - "`examples`".
 #'
-#' @seealso [tools::Rd_db()].
+#' @seealso `tools::Rd_db()`.
 #'
 #' @examples
 #' db <- tools::Rd_db("base")

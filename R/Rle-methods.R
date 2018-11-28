@@ -57,7 +57,7 @@ setMethod(
 #' @name encode
 #' @inheritParams params
 #'
-#' @seealso [S4Vectors::Rle()].
+#' @seealso `S4Vectors::Rle()`.
 #'
 #' @return Modified object, with `atomic` columns converted to `Rle`.
 #'

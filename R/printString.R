@@ -1,6 +1,6 @@
 #' Print String
 #'
-#' Capture [base::print()] output of an `atomic` vector. Useful for returning
+#' Capture `print()` output of an `atomic` vector. Useful for returning
 #' informative messages inside a function.
 #'
 #' @export
@@ -10,7 +10,7 @@
 #'
 #' @return `string`.
 #'
-#' @seealso [base::cat()].
+#' @seealso `cat()`.
 #'
 #' @examples
 #' printString(c("hello", "world"))

@@ -1,11 +1,7 @@
 #' Organism
-#'
 #' @name organism
-#'
 #' @inheritParams params
-#'
-#' @seealso [detectOrganism()].
-#'
+#' @seealso `detectOrganism()`.
 #' @examples
 #' data(rse)
 #' organism(rse)
@@ -20,7 +16,6 @@ BiocGenerics::organism
 
 
 
-# matrix =======================================================================
 organism.matrix <-  # nolint
     function(object) {
         # Assume gene identifiers are defined in the rownames.
@@ -40,9 +35,10 @@ setMethod(
 
 
 
-# sparseMatrix =================================================================
 organism.sparseMatrix <-  # nolint
     organism.matrix
+
+
 
 #' @rdname organism
 #' @export
@@ -54,9 +50,10 @@ setMethod(
 
 
 
-# data.frame ===================================================================
 organism.data.frame <-  # nolint
     organism.matrix
+
+
 
 #' @rdname organism
 #' @export
@@ -68,9 +65,10 @@ setMethod(
 
 
 
-# DataFrame ====================================================================
 organism.DataFrame <-  # nolint
     organism.data.frame
+
+
 
 #' @rdname organism
 #' @export
@@ -82,7 +80,6 @@ setMethod(
 
 
 
-# GRanges ======================================================================
 organism.GRanges <-  # nolint
     function(object) {
         assert_has_names(object)
@@ -101,9 +98,6 @@ setMethod(
 
 
 
-# SummarizedExperiment =========================================================
-# Then attempt to check rowData.
-# Finally, check against the rownames.
 organism.SummarizedExperiment <-  # nolint
     function(object) {
         # Attempt to use metadata stash, if defined.

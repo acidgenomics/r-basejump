@@ -15,7 +15,7 @@
 #'
 #' @section basejump_geom_label:
 #'
-#' Modified version of [ggplot2::geom_label()].
+#' Modified version of `ggplot2::geom_label()`.
 #'
 #' @section basejump_geom_label_average:
 #'
@@ -25,7 +25,7 @@
 #' @section basejump_geom_label_repel:
 #'
 #' Repulsive textual annotations. Modified basejump version of
-#' [ggrepel::geom_label_repel()]. If advanced customization of the text labels
+#' `ggrepel::geom_label_repel()`. If advanced customization of the text labels
 #' is required, simply use the ggrepel version instead.
 #'
 #' @name ggplot2-geoms
@@ -43,8 +43,8 @@
 #'   to rounded.
 #'
 #' @seealso
-#' - [ggplot2::geom_label()].
-#' - [ggrepel::geom_label_repel()].
+#' - `ggplot2::geom_label()`.
+#' - `ggrepel::geom_label_repel()`.
 #'
 #' @return `ggproto`.
 #'
@@ -254,7 +254,7 @@ basejump_geom_label_repel <- function(
 #'
 #' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
-#' All themes are based off of [ggplot2::theme_linedraw()], but with
+#' All themes are based off of `ggplot2::theme_linedraw()`, but with
 #' modifications and extra user-definable parameters.
 #'
 #' @section Paperwhite:
@@ -287,7 +287,7 @@ basejump_geom_label_repel <- function(
 #'
 #' @return `theme`.
 #'
-#' @seealso [ggplot2::theme()].
+#' @seealso `ggplot2::theme()`.
 #'
 #' @examples
 #' library(ggplot2)

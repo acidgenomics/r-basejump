@@ -1,12 +1,16 @@
+# TODO Check for trailing "Id" and error.
+# TODO Check for trailing "name" and error.
+
+
+
 #' Make Sample Data
 #'
-#' Utility function that prepares metadata to be slotted into
-#' `SummarizedExperiment::colData()`.
+#' Utility function that prepares metadata to be slotted into `colData()`.
 #'
 #' This function adheres to the following conventions:
 #'
 #' - All column names will be converted to lower camel case
-#'   (see [camel()] for details).
+#'   (see `camel()` for details).
 #' - Required columns:
 #'   - `sampleName`: Human readable sample names. Note that this column is
 #'     useful for plots and doesn't have to match the column names of a
@@ -23,7 +27,7 @@
 #'
 #' @return `DataFrame`.
 #'
-#' @seealso [makeNames].
+#' @seealso `makeNames`.
 #'
 #' @examples
 #' object <- data.frame(
@@ -33,8 +37,6 @@
 #'     row.names = paste0("GSM000000", seq_len(4L))
 #' )
 makeSampleData <- function(object) {
-    # FIXME Check for trailing "Id" and error.
-    # FIXME Check for trailing "name" and error.
     # blacklist = c("interestingGroups", "sampleID")
     assert_has_dims(object)
     assert_is_subset(

@@ -10,7 +10,7 @@
 #'
 #' @return `character`. Local file paths. Stops on a missing file.
 #'
-#' @seealso [base::tempdir()].
+#' @seealso `tempdir()`.
 #'
 #' @examples
 #' ## Import a single file.

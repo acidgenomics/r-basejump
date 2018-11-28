@@ -1,8 +1,8 @@
 #' Assign Multiple Objects as an Environment
 #'
+#' @inheritParams dots
 #' @export
 #'
-#' @inheritParams dots
 #' @param envirName `string`. Name of the new `environment` to create.
 #' @param parentFrame `environment`. Parent `environment` where to assign the
 #'   new `environment`, specified by `envirName` argument.

@@ -9,8 +9,8 @@
 #'
 #' Some genomes (e.g. Homo sapiens, Mus musculus) contain duplicated gene names
 #' for multiple gene identifiers. Normally we handle these ambiguous gene names
-#' by sanitizing them with [base::make.names()]. If a user requests a gene name
-#' that is duplicated, these functions will return a warning.
+#' by sanitizing them with `make.names()`. If a user requests a gene name that
+#' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
 #' @inheritParams params

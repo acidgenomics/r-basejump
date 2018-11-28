@@ -8,7 +8,7 @@
 #' @param release `string` or `NULL`. PANTHER release version. If set `NULL`,
 #'   defaults to current release. Consult the PANTHER website for a list of
 #'   release versions available from the FTP server (e.g. `"13.0"`).
-#' @param progress `boolean`. Use [pbapply::pblapply()] internally to show
+#' @param progress `boolean`. Call `pbapply::pblapply()` internally to show
 #'   progress.
 #'
 #' @examples
