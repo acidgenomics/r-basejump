@@ -15,8 +15,7 @@ autopadZeros(object, ...)
 \S4method{autopadZeros}{matrix}(object, rownames = FALSE,
   colnames = TRUE, sort = TRUE)
 
-\S4method{autopadZeros}{SummarizedExperiment}(object, rownames = FALSE,
-  colnames = TRUE, sort = TRUE)
+\S4method{autopadZeros}{SummarizedExperiment}(object, rownames = FALSE)
 }
 \arguments{
 \item{object}{Object.}
