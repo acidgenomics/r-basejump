@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -169,13 +169,11 @@ unaggregated names are defined as the <code>names</code>.</p></td>
     </tr>
     <tr>
       <th>fun</th>
-      <td><p><code>string</code>. Name of the aggregation function.
-Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>base::match.arg()</a></code>.</p></td>
+      <td><p><code>string</code>. Name of the aggregation function. Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a></code>.</p></td>
     </tr>
     <tr>
       <th>col</th>
-      <td><p><code>string</code>. Name of column in either
-<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::rowData()</a></code> or <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code> that
+      <td><p><code>string</code>. Name of column in either <code>rowData()</code> or <code>colData()</code> that
 defines the desired aggregation groupings.</p></td>
     </tr>
     </table>
@@ -201,18 +199,15 @@ sample replicates.</p>
 <code>factor</code>.</p></li>
 <li><p><code>SummarizedExperiment</code>: Aggregate rows or columns in <code>assays</code> using an
 automatically generated grouping <code>factor</code>, which is obtained from a
-user-defined column (<code>col</code> argument) in either
-<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::rowData()</a></code> or <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code>.
-Slot an <code>aggregate</code> column into <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::rowData()</a></code> for
-<code>aggregateRows()</code>, or into <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code> for
-<code>aggregateCols()</code>. This method will define the <code>groupings</code> automatically
-and perform the aggregation.</p></li>
-<li><p><code>SingleCellExperiment</code>: Aggregate <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::assays()</a></code> across
-cell-level groupings, defined by a column in
-<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code>. Inherits from <code>SummarizedExperiment</code>,
-and still relies upon slotting an <code>aggregate</code> column into
-<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code>. Note that these groupings will map to
-cells, so care must be taken to properly aggregate samples.</p></li>
+user-defined column (<code>col</code> argument) in either <code>rowData()</code> or <code>colData()</code>.
+Slot an <code>aggregate</code> column into <code>rowData()</code> for <code>aggregateRows()</code>, or into
+<code>colData()</code> for <code>aggregateCols()</code>. This method will define the <code>groupings</code>
+automatically and perform the aggregation.</p></li>
+<li><p><code>SingleCellExperiment</code>: Aggregate <code>assays()</code> across cell-level groupings,
+defined by a column in <code>colData()</code>. Inherits from <code>SummarizedExperiment</code>,
+and still relies upon slotting an <code>aggregate</code> column into <code>colData()</code>.
+Note that these groupings will map to cells, so care must be taken to
+properly aggregate samples.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

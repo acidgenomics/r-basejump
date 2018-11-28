@@ -35,8 +35,8 @@
 <meta property="og:title" content="Make Syntactically Valid Names — makeNames" />
 
 <meta property="og:description" content="For atomic vectors, these functions will sanitize the values. Otherwise,
-they will set base::names(), base::rownames(), and/or base::colnames()
-without modification of the values." />
+they will set names(), rownames(), and/or colnames() without
+modification of the values." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +67,7 @@ without modification of the values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -117,8 +117,8 @@ without modification of the values." />
     <div class="ref-description">
     
     <p>For <code>atomic</code> vectors, these functions will sanitize the values. Otherwise,
-they will set <code><a href='https://www.rdocumentation.org/packages/base/topics/names'>base::names()</a></code>, <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>base::rownames()</a></code>, and/or <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>base::colnames()</a></code>
-without modification of the values.</p>
+they will set <code><a href='https://www.rdocumentation.org/packages/base/topics/names'>names()</a></code>, <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames()</a></code>, and/or <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames()</a></code> without
+modification of the values.</p>
     
     </div>
 
@@ -280,8 +280,8 @@ without modification of the values.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p><code>character</code> or object for which <code><a href='https://www.rdocumentation.org/packages/base/topics/names'>base::names()</a></code> assignment
-will be meaningful.</p></td>
+      <td><p><code>character</code> or object for which <code><a href='https://www.rdocumentation.org/packages/base/topics/names'>names()</a></code> assignment will be
+meaningful.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -306,8 +306,8 @@ does not allow the return of any capitalized acronyms. "RNA" will become
     <tr>
       <th>rownames</th>
       <td><p><code>boolean</code>. Apply sanitization on row names. This is not
-recommended by default, since rownames commonly contain gene identifiers
-that should not be modified.</p></td>
+generally recommended by default, since rownames commonly contain gene
+identifiers that should not be modified.</p></td>
     </tr>
     <tr>
       <th>colnames</th>
@@ -319,7 +319,7 @@ generally recommended by default.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Object with syntatically valid names. For objects supporting
-<code><a href='https://www.rdocumentation.org/packages/base/topics/names'>base::names()</a></code>, the underlying data returns unchanged.</p>
+<code><a href='https://www.rdocumentation.org/packages/base/topics/names'>names()</a></code>, the underlying data returns unchanged.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -330,12 +330,12 @@ However, it is recommended to avoid using it for variable assignments into an
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p><code>makeNames()</code> sanitizes names using underscores instead of dots, the
-convention used by <code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>base::make.names()</a></code>.</p>
+convention used by <code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>make.names()</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>base::make.names()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>make.names()</a></code>.</p></li>
 <li><p><a href='https://cran.r-project.org/package=janitor'>janitor</a> contains a number of
 useful functions that provide similar sanitization support, but isn't
 designed to work natively with <a href='https://bioconductor.org'>Bioconductor</a> and

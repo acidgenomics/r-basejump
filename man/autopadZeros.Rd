@@ -13,10 +13,10 @@ autopadZeros(object, ...)
 \S4method{autopadZeros}{character}(object)
 
 \S4method{autopadZeros}{matrix}(object, rownames = FALSE,
-  colnames = TRUE)
+  colnames = TRUE, sort = TRUE)
 
 \S4method{autopadZeros}{SummarizedExperiment}(object, rownames = FALSE,
-  colnames = TRUE)
+  colnames = TRUE, sort = TRUE)
 }
 \arguments{
 \item{object}{Object.}
@@ -29,12 +29,19 @@ identifiers that should not be modified.}
 
 \item{colnames}{\code{boolean}. Apply sanitization on column names. This is
 generally recommended by default.}
+
+\item{sort}{\code{boolean}. Resort using \code{sort()}.}
 }
 \value{
 \code{character}.
 }
 \description{
 Autopad Zeros in Vector
+}
+\note{
+For methods on objects supporting \code{dim()} (e.g. \code{matrix} or
+\code{SummarizedExperiment}), the object will be returned with the rows and/or
+columns resorted by default. This does not apply to the \code{character} method.
 }
 \examples{
 data(rse)

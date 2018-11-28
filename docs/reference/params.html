@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -124,7 +124,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>alpha</th>
-      <td><p><code>scalar numeric</code> or <code>NULL</code>. Adjusted P value ("alpha") cutoff.
+      <td><p><code>scalar numeric</code>. Adjusted P value ("alpha") cutoff.
 If left <code>NULL</code>, will use the cutoff defined in the object.</p></td>
     </tr>
     <tr>
@@ -138,6 +138,12 @@ If left <code>NULL</code>, will use the cutoff defined in the object.</p></td>
 be defined in <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::assayNames()</a></code>.</p></td>
     </tr>
     <tr>
+      <th>assays</th>
+      <td><p><code>list</code>. Count matrices, which must have matching dimensions.
+Counts can be passed in as either a dense matrix (<code>matrix</code>) or sparse
+matrix (<code>sparseMatrix</code>).</p></td>
+    </tr>
+    <tr>
       <th>bpparam</th>
       <td><p><code>bpparamClass</code>. BiocParallel parameter specifying the back-end
 to be used for computations. See <code><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/register'>BiocParallel::bpparam()</a></code> for details.</p>
@@ -148,12 +154,22 @@ to be used for computations. See <code><a href='https://www.rdocumentation.org/p
 </ul></td>
     </tr>
     <tr>
+      <th>censorSamples</th>
+      <td><p><code>character</code>. Specify a subset of samples to censor.</p></td>
+    </tr>
+    <tr>
       <th>check</th>
       <td><p><code>boolean</code>. Perform assert checks.</p></td>
     </tr>
     <tr>
+      <th>colData</th>
+      <td><p><code>DataFrame</code>. Metadata describing the assay columns. For bulk
+RNA-seq, this data describes the samples. For single-cell RNA-seq, this
+data describes the cells.</p></td>
+    </tr>
+    <tr>
       <th>color</th>
-      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code> or <code>NULL</code>. Desired ggplot2 color
+      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code>. Desired ggplot2 color
 scale. Must supply discrete values. When set to <code>NULL</code>, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
 recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>. To set the discrete color
@@ -189,7 +205,11 @@ calculations. Defaults the first and second dimensions.</p></td>
     </tr>
     <tr>
       <th>ensemblRelease</th>
-      <td><p><code>scalar integer</code>. Ensembl release version (e.g. <code>90</code>).</p></td>
+      <td><p><code>scalar integer</code>. Ensembl release version (e.g. <code>90</code>).
+We recommend setting this value if possible, for improved reproducibility.
+When left unset, the latest release available via AnnotationHub/ensembldb
+is used. Note that the latest version available can vary, depending on the
+versions of AnnotationHub and ensembldb in use.</p></td>
     </tr>
     <tr>
       <th>envir</th>
@@ -207,8 +227,8 @@ and defaults to the first argument in the <code>character</code> vector.</p></td
     </tr>
     <tr>
       <th>fill</th>
-      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code> or <code>NULL</code>. Desired ggplot2 fill scale.
-Must supply discrete values. When set to <code>NULL</code>, the default ggplot2 color
+      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code>. Desired ggplot2 fill scale. Must
+supply discrete values. When set to <code>NULL</code>, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
 using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>. To set the discrete fill palette
 globally, use <code><a href='https://www.rdocumentation.org/packages/base/topics/options'>options(basejump.fill.discrete = scale_fill_viridis_d())</a></code>.</p></td>
@@ -235,6 +255,12 @@ and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.</p></td>
 first argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
+      <th>gffFile</th>
+      <td><p><code>string</code>. GFF/GTF (General Feature Format) file.
+Generally, we recommend using a GTF (GFFv2) instead of a GFFv3 file if
+possible.</p></td>
+    </tr>
+    <tr>
       <th>headerLevel</th>
       <td><p><code>scalar integer</code> (<code>1</code>-<code>7</code>). Markdown header level.</p></td>
     </tr>
@@ -251,7 +277,7 @@ be searched?</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
-      <td><p><code>character</code> or <code>NULL</code>. Groups of interest that
+      <td><p><code>character</code>. Groups of interest that
 define the samples. If left unset, defaults to <code>sampleName</code>.</p></td>
     </tr>
     <tr>
@@ -264,7 +290,7 @@ define the samples. If left unset, defaults to <code>sampleName</code>.</p></td>
     </tr>
     <tr>
       <th>lfcThreshold</th>
-      <td><p><code>scalar numeric</code> or <code>NULL</code>. Log fold change ratio (base
+      <td><p><code>scalar numeric</code>. Log fold change ratio (base
 2) cutoff threshold. If left <code>NULL</code>, will use the cutoff defined in the
 object.</p></td>
     </tr>
@@ -284,6 +310,10 @@ dashed line.</p></td>
     <tr>
       <th>max</th>
       <td><p><code>scalar numeric</code>. Recommended maximum value cutoff.</p></td>
+    </tr>
+    <tr>
+      <th>metadata</th>
+      <td><p><code>list</code>. Metadata.</p></td>
     </tr>
     <tr>
       <th>min</th>
@@ -365,12 +395,24 @@ example.</p></td>
 internally and defaults to the first argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
+      <th>rowData</th>
+      <td><p><code>DataFrame</code>. <em>Use rowRanges (GRanges) instead, if possible</em>.
+Metadata describing the assay rows, if genomic ranges are not available.</p></td>
+    </tr>
+    <tr>
       <th>rowRanges</th>
-      <td><p><code>GRanges</code>. Genomic ranges (e.g. genome annotations).</p></td>
+      <td><p><code>GRanges</code>. Genomic ranges (e.g. genome annotations).
+Metadata describing the assay rows.</p></td>
+    </tr>
+    <tr>
+      <th>sampleMetadataFile</th>
+      <td><p><code>string</code>. Sample metadata file path. CSV
+or TSV is preferred, but Excel worksheets are also supported. Check the
+documentation for conventions and required columns.</p></td>
     </tr>
     <tr>
       <th>samples</th>
-      <td><p><code>character</code> or <code>NULL</code>. Samples to include.</p></td>
+      <td><p><code>character</code>. Specify a subset of samples to include.</p></td>
     </tr>
     <tr>
       <th>sigPointColor</th>
@@ -379,17 +421,31 @@ downregulated genes. Also supports a character string for labeling DEGs
 with the same color, regardless of direction.</p></td>
     </tr>
     <tr>
+      <th>sort</th>
+      <td><p><code>boolean</code>. Resort using <code><a href='https://www.rdocumentation.org/packages/base/topics/sort'>sort()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>spikeNames</th>
+      <td><p><code>character</code>. Vector indicating which assay rows denote
+spike-in sequences (e.g. ERCCs).</p></td>
+    </tr>
+    <tr>
       <th>subtitle</th>
-      <td><p><code>string</code> or <code>NULL</code>. Plot subtitle.</p></td>
+      <td><p><code>string</code>. Plot subtitle.</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p><code>string</code> or <code>NULL</code>. Plot title.</p></td>
+      <td><p><code>string</code>. Plot title.</p></td>
     </tr>
     <tr>
       <th>trans</th>
       <td><p><code>string</code>. Name of the axis scale transformation to apply. See
 <code><a href='https://www.rdocumentation.org/packages/utils/topics/help'>help("scale_x_continuous", "ggplot2")</a></code> for more information.</p></td>
+    </tr>
+    <tr>
+      <th>transgeneNames</th>
+      <td><p><code>character</code>. Vector indicating which assay
+rows denote transgenes (e.g. EGFP, TDTOMATO).</p></td>
     </tr>
     <tr>
       <th>trendline</th>

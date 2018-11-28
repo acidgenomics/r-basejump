@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -170,9 +170,8 @@
 
     <p>We're attempting to make this as strict as possible, requiring:</p><ul>
 <li><p>Rows (genes) across objects must be identical.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::rowRanges()</a></code> and/or
-<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::rowData()</a></code> metadata must be identical.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code> must contain the same columns.</p></li>
+<li><p><code>rowRanges()</code> and/or <code>rowData()</code> metadata must be identical.</p></li>
+<li><p><code>colData()</code> must contain the same columns.</p></li>
 <li><p>Specific metadata must be identical (see <code>metadata</code> parameter).</p></li>
 </ul>
     

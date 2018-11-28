@@ -66,7 +66,7 @@ paths. Supports &quot;.rds&quot;, &quot;.rda&quot;, and &quot;.RData&quot; file 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -150,11 +150,11 @@ using non-standard evaluation for convenience during interactive use, and
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>loadData()</code> is opinionated about the format of R data files it will accept.
-<code><a href='https://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code> allows for the saving of multiple objects into a single R data
-file. This can later result in unexpected accidental replacement of an
-existing object in the current environment. Since an R data file internally
-stores the name of an object, if the file is later renamed the object name
-will no longer match.</p>
+<code><a href='https://www.rdocumentation.org/packages/base/topics/save'>save()</a></code> allows for the saving of multiple objects into a single R data file.
+This can later result in unexpected accidental replacement of an existing
+object in the current environment. Since an R data file internally stores the
+name of an object, if the file is later renamed the object name will no
+longer match.</p>
 <p>To avoid any accidental replacements, <code>loadData()</code> will only load R data
 files that contain a single object, and the internal object name must match
 the file name exactly. Additionally, <code>loadData()</code> will intentionally error if
@@ -167,11 +167,11 @@ names using non-standard evaluation.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/base/topics/load'>base::load()</a></code>, <code><a href='https://www.rdocumentation.org/packages/base/topics/readRDS'>base::readRDS()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/base/topics/load'>load()</a></code>, <code><a href='https://www.rdocumentation.org/packages/base/topics/readRDS'>readRDS()</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>loadData</span>(<span class='no'>example</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading example.rds from /home/ubuntu/git/basejump/inst/extdata</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>loadData</span>(<span class='no'>example</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading example.rds from /data01/git/basejump/inst/extdata</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -1,8 +1,3 @@
-# FIXME Need to improve export to include `geneID` and `geneName` column.
-# FIXME Need to offer option of "name" parameter here I think...
-
-
-
 #' Export
 #'
 #' Export data out of R and write to disk.

@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -164,7 +164,7 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='makeGRanges.html'>makeGRanges</a>.</p></div>
+    <div class='dont-index'><p><code>makeGRanges</code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -187,7 +187,10 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 #&gt; LRG_998                 LRG_998     CCND3.1
 #&gt; LRG_999                 LRG_999       CIC.1</div><div class='input'>
 <span class='co'>## makeTx2GeneFromEnsDb ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: EnsDb.Hsapiens.v75</span></div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called 'EnsDb.Hsapiens.v75'</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 65687 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
+#&gt; <span class='message'>  - Genome Build: GRCh37</span>
+#&gt; <span class='message'>  - Ensembl Release: 75</span>
+#&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>3075 non-unique gene symbol(s) detected.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 64102 rows and 2 columns
 #&gt;                          geneID    geneName
 #&gt;                     &lt;character&gt; &lt;character&gt;
 #&gt; ENSG00000000003 ENSG00000000003      TSPAN6
@@ -196,11 +199,11 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 #&gt; ENSG00000000457 ENSG00000000457       SCYL3
 #&gt; ENSG00000000460 ENSG00000000460    C1orf112
 #&gt; ...                         ...         ...
-#&gt; LRG_995                 LRG_995     FUBP1.1
-#&gt; LRG_996                 LRG_996     ERBB3.1
-#&gt; LRG_997                 LRG_997      ROS1.1
-#&gt; LRG_998                 LRG_998     CCND3.1
-#&gt; LRG_999                 LRG_999       CIC.1</div><div class='input'>
+#&gt; LRG_94                   LRG_94      LRG_94
+#&gt; LRG_96                   LRG_96      LRG_96
+#&gt; LRG_97                   LRG_97      LRG_97
+#&gt; LRG_98                   LRG_98      LRG_98
+#&gt; LRG_99                   LRG_99      LRG_99</div><div class='input'>
 <span class='co'>## makeGene2SymbolFromGFF ====</span>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
