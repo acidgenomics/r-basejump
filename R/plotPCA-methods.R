@@ -1,3 +1,9 @@
+# FIXME Check for identical samples and warn.
+# See `bcbioRNASeq::plotDispEsts()` for details.
+# warning("Samples are identical. Skipping PCA.")
+
+
+
 #' Plot PCA
 #'
 #' Principal component analysis (PCA) plot.
