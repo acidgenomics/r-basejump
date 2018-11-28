@@ -83,7 +83,7 @@ NULL
 
 
 
-# data.frame : S4 ==============================================================
+# as.data.frame : S4 ===========================================================
 #' @importFrom BiocGenerics as.data.frame
 #' @export
 BiocGenerics::as.data.frame
@@ -115,9 +115,7 @@ setAs(
 
 
 
-# DataFrame : S3 ===============================================================
-#' @rdname as
-#' @export
+# DataFrame : S3 (internal) ====================================================
 as.DataFrame <-  # nolint
     function(x) {
         UseMethod("as.DataFrame")
@@ -125,9 +123,7 @@ as.DataFrame <-  # nolint
 
 
 
-#' @method as.DataFrame tbl_df
-#' @export
-as.DataFrame.tbl_df <- function(x) {
+as.DataFrame.default <- function(x) {
     to <- as.data.frame(x, stringsAsFactors = FALSE)
     to <- as(to, "DataFrame")
     rownames <- as.character(to[["rowname"]])
@@ -166,9 +162,7 @@ setAs(
 
 
 
-# SummarizedExperiment : S3 ====================================================
-#' @rdname as
-#' @export
+# SummarizedExperiment : S3 (internal) =========================================
 as.SummarizedExperiment <-  # nolint
     function(x) {
         UseMethod("as.SummarizedExperiment")
@@ -179,8 +173,6 @@ as.SummarizedExperiment <-  # nolint
 # Note that our method here keeps track of `rowData` when coercing an object
 # that extends RangedSummarizedExperiment to SummarizedExperiment. This bug
 # needs to be fixed in the SummarizedExperiment package.
-#' @method as.SummarizedExperiment default
-#' @export
 as.SummarizedExperiment.default <-  # nolint
     function(x) {
         stopifnot(is(x, "SummarizedExperiment"))
