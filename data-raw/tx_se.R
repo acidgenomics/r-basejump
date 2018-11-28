@@ -1,5 +1,5 @@
 # Transcript-level SummarizedExperiment example
-# 2018-11-19
+# 2018-11-28
 
 library(pryr)
 

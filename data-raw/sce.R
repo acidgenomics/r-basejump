@@ -1,6 +1,7 @@
 # Gene-level SingleCellExperiment example
-# 2018-11-19
+# 2018-11-28
 
+# Splatter params are derived from:
 # https://github.com/mikelove/zinbwave-deseq2/blob/master/zinbwave-deseq2.knit.md
 
 library(pryr)
@@ -33,16 +34,6 @@ sce <- splatSimulate(
 # Sanitize the dimnames into camel case.
 sce <- camel(sce, rownames = TRUE, colnames = TRUE)
 
-# Pad the dimnames so they sort correctly.
-rownames(sce) <- rownames(sce) %>%
-    str_replace("gene", "") %>%
-    str_pad(width = 3L, side = "left", pad = "0") %>%
-    paste0("gene", .)
-colnames(sce) <- colnames(sce) %>%
-    str_replace("cell", "") %>%
-    str_pad(width = 4L, side = "left", pad = "0") %>%
-    paste0("cell", .)
-
 # Prepare column data.
 colData(sce) <- camel(colData(sce))
 # Add `sampleID` column. Note that `sampleName` is recommended, but if it is
@@ -52,6 +43,11 @@ sce$batch <- NULL
 sce$cell <- NULL
 sce$group <- NULL
 
+# Pad the zeros in rows and columns.
+# Note that this needs to come after setting up `colData()`, otherwise will
+# error because `sampleID` column is not defined.
+sce <- autopadZeros(sce)
+
 # Just slot the raw counts, as a sparse matrix.
 counts <- counts(sce)
 counts <- as(counts, "sparseMatrix")
@@ -59,13 +55,15 @@ assays(sce) <- list(counts = counts)
 
 # Prepare row data.
 rowRanges <- makeGRangesFromEnsembl(organism, release = release)
-rowRanges <- rowRanges[seq_len(nrow(sce))]
-# Include only minimal columns.
-mcols(rowRanges) <- mcols(rowRanges) %>%
-    as("tbl_df") %>%
-    select(rowname, geneID, geneName, geneBiotype, broadClass) %>%
-    mutate_if(is.factor, droplevels) %>%
-    as("DataFrame")
+rowRanges <- rowRanges[
+    i = seq_len(nrow(sce)),
+    j = c("geneID", "geneName", "geneBiotype", "broadClass", "entrezID")
+]
+# Relevel the factor columns, to save disk space.
+rowRanges <- relevelRowRanges(rowRanges)
+# Note that we're keeping the original rownames from dds_small, and they won't
+# match the `geneID` column in rowRanges. This is intentional, for unit testing.
+names(rowRanges) <- rownames(sce)
 rowRanges(sce) <- rowRanges
 
 # Stash minimal metadata.

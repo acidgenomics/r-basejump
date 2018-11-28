@@ -32,8 +32,8 @@ rse <- autopadZeros(rse, rownames = TRUE)
 rowRanges <- makeGRangesFromEnsembl(organism = organism, release = release)
 # Subset to match the number of rows in the example.
 rowRanges <- rowRanges[
-    seq_len(nrow(rse)),
-    c("geneID", "geneName", "geneBiotype", "broadClass", "entrezID")
+    i = seq_len(nrow(rse)),
+    j = c("geneID", "geneName", "geneBiotype", "broadClass", "entrezID")
 ]
 # Relevel the factor columns, to save disk space.
 rowRanges <- relevelRowRanges(rowRanges)
