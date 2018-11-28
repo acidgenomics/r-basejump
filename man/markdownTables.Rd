@@ -2,6 +2,7 @@
 % Please edit documentation in R/markdown.R
 \name{markdownTables}
 \alias{markdownTables}
+\alias{mdTables}
 \title{Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
 markdownTables(list, captions = NULL, force = FALSE)
