@@ -11,12 +11,12 @@ plotGenesDetected(object, ...)
 
 \S4method{plotGenesDetected}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
-  fill = getOption("basejump.discrete.fill", NULL),
+  fill = getOption("basejump.fill.discrete", NULL),
   flip = getOption("basejump.flip", TRUE), title = "genes detected")
 
 \S4method{plotGenesDetected}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
-  fill = getOption("basejump.discrete.fill", NULL),
+  fill = getOption("basejump.fill.discrete", NULL),
   flip = getOption("basejump.flip", TRUE), title = "genes detected")
 }
 \arguments{
