@@ -45,6 +45,8 @@
 \alias{readJSON}
 \alias{readYAML}
 \alias{tx2gene}
+\alias{markdownPlotlist}
+\alias{mdPlotlist}
 \title{Deprecated Functions}
 \usage{
 ensembl(...)
@@ -130,11 +132,17 @@ readJSON(...)
 readYAML(...)
 
 tx2gene(...)
+
+markdownPlotlist(plotlist, ...)
+
+mdPlotlist(plotlist, ...)
 }
 \arguments{
 \item{...}{Additional arguments.}
 
 \item{object}{Object.}
+
+\item{plotlist}{\code{list} containing \code{ggplot} objects.}
 }
 \value{
 \code{.Deprecated()}.
