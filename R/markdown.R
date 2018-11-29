@@ -207,16 +207,15 @@ mdList <- markdownList
 
 
 
-# markdownPlotlist =============================================================
-#' Markdown Plotlist
+# markdownPlots ================================================================
+#' Markdown Plots
 #'
 #' Supports using a named `list` containing multiple `ggplot` objects, which
 #' can be used in an R Markdown report, separated by headers. Internally, the
 #' headers are generated with the `markdownHeader()` function.
 #'
-#' @export
-#'
 #' @inheritParams params
+#' @export
 #'
 #' @return Graphical output of plots, separated by Markdown headers.
 #'
@@ -225,17 +224,14 @@ mdList <- markdownList
 #' @examples
 #' loadRemoteData(url = file.path(basejumpCacheURL, "plotlist.rda"))
 #' names(plotlist)
-#' markdownPlotlist(plotlist)
-markdownPlotlist <- function(
-    plotlist,
-    headerLevel = 2L
-) {
-    assert_is_list(plotlist)
-    assert_has_names(plotlist)
+#' markdownPlots(list = plotlist)
+markdownPlots <- function(list, headerLevel = 2L) {
+    assert_is_list(list)
+    assert_has_names(list)
     assertIsHeaderLevel(headerLevel)
     invisible(mapply(
-        name = names(plotlist),
-        plot = plotlist,
+        name = names(list),
+        plot = list,
         MoreArgs = list(headerLevel = headerLevel),
         FUN = function(name, plot, headerLevel) {
             assert_is_a_string(name)
@@ -249,10 +245,10 @@ markdownPlotlist <- function(
 
 
 
-#' @rdname markdownPlotlist
+#' @rdname markdownPlots
 #' @usage NULL
 #' @export
-mdPlotlist <- markdownPlotlist
+mdPlots <- markdownPlots
 
 
 
