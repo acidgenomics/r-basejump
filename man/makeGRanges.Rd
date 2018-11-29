@@ -24,12 +24,12 @@ annotable(organism, level = c("genes", "transcripts"),
 
 \item{level}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{genomeBuild}{\code{string} or \code{NULL}. Ensembl genome build assembly name
-(e.g. \code{"GRCh38"}). If set \code{NULL}, defaults to the most recent build
-available. Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
+\item{genomeBuild}{\code{string}. Ensembl genome build assembly nam (e.g.
+\code{"GRCh38"}). If set \code{NULL}, defaults to the most recent build available.
+Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
 
-\item{release}{\code{scalar integer} or \code{NULL}. Ensembl release version (e.g.
-\code{90}). If set \code{NULL}, defaults to the most recent release available.}
+\item{release}{\code{scalar integer}. Ensembl release version (e.g. \code{90}). If set
+\code{NULL}, defaults to the most recent release available.}
 
 \item{object}{Object.}
 

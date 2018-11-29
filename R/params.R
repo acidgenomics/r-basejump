@@ -61,6 +61,9 @@
 #' @param genes `character`. Gene identifiers. It is considered better practice
 #'   to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
 #'   and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.
+#' @param genomeBuild `string`. Ensembl genome build assembly nam (e.g.
+#'   `"GRCh38"`). If set `NULL`, defaults to the most recent build available.
+#'   Note: don't pass in UCSC build IDs (e.g. `"hg38"`).
 #' @param geom `string`. Plot type. Uses `base::match.arg()` and defaults to the
 #'   first argument in the `character` vector.
 #' @param gffFile `string`. GFF/GTF (General Feature Format) file.
