@@ -88,7 +88,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         assertIsStringOrNULL(title)
         return <- match.arg(return)
         # Warn and early return if any samples are duplicated.
-        if (!areSamplesUnique(object)) {
+        if (!hasUniqueCols(object)) {
             warning("Duplicate samples detected. Skipping plot.")
             return(invisible())
         }
