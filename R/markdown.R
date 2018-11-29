@@ -1,8 +1,3 @@
-# FIXME Deprecate `markdownTables()` now that `knitr::kable()` supports list?
-# TODO Rename `markdownPlotlist()` to `markdownPlots()`?
-
-
-
 #' @name markdown
 #' @examples
 #' data(rse)
