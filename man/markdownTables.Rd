@@ -22,8 +22,16 @@ Recommended for development and unit testing only.}
 \description{
 Knit multiple tables in a single R Markdown chunk.
 }
+\note{
+\code{knitr::kable()} now supports multiple tables as a \code{list} for the \code{x}
+argument, but it still only supports a single caption. \code{markdownTables()}
+extends this functionality, but supporting captions for each table.
+}
 \examples{
-list <- list(mpg = head(ggplot2::mpg), mtcars = head(datasets::mtcars))
+list <- list(
+    mpg = head(ggplot2::mpg),
+    mtcars = head(datasets::mtcars)
+)
 captions <- c(
     mpg = "Miles per gallon",
     mtcars = "Motor Trend car road tests"

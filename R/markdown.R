@@ -261,6 +261,10 @@ mdPlotlist <- markdownPlotlist
 #'
 #' Knit multiple tables in a single R Markdown chunk.
 #'
+#' @note `knitr::kable()` now supports multiple tables as a `list` for the `x`
+#'   argument, but it still only supports a single caption. `markdownTables()`
+#'   extends this functionality, but supporting captions for each table.
+#'
 #' @export
 #'
 #' @param list Named `list`. Column data that can be coerced to `data.frame`.
@@ -276,7 +280,10 @@ mdPlotlist <- markdownPlotlist
 #' - [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples
-#' list <- list(mpg = head(ggplot2::mpg), mtcars = head(datasets::mtcars))
+#' list <- list(
+#'     mpg = head(ggplot2::mpg),
+#'     mtcars = head(datasets::mtcars)
+#' )
 #' captions <- c(
 #'     mpg = "Miles per gallon",
 #'     mtcars = "Motor Trend car road tests"
