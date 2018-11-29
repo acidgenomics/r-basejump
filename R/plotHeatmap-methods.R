@@ -128,7 +128,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             title <- NA
         }
         # Warn and early return if any samples are duplicated.
-        if (!areSamplesUnique(object)) {
+        if (!hasUniqueCols(object)) {
             warning("Duplicate samples detected. Skipping plot.")
             return(invisible())
         }
@@ -283,7 +283,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             title <- NA
         }
         # Warn and early return if any samples are duplicated.
-        if (!areSamplesUnique(object)) {
+        if (!hasUniqueCols(object)) {
             warning("Duplicate samples detected. Skipping plot.")
             return(invisible())
         }
@@ -443,7 +443,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             title <- NA
         }
         # Warn and early return if any samples are duplicated.
-        if (!areSamplesUnique(object)) {
+        if (!hasUniqueCols(object)) {
             warning("Duplicate samples detected. Skipping plot.")
             return(invisible())
         }
