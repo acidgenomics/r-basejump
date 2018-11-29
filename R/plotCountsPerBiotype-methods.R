@@ -1,21 +1,3 @@
-# FIXME Return with warning if required column is missing.
-
-# TODO Consider creating an assert check in goalie named `hasVariation()`.
-
-# if ("geneBiotype" %in% colnames(rowData(object))) {
-#     plotCountsPerBiotype(object)
-# } else {
-#     warning("Biotypes are not defined in `rowData()`.")
-# }
-
-# if (!"broadClass" %in% colnames(rowData(object))) {
-# plotCountsPerBroadClass(object)
-# } else {
-#     warning("Broad class biotypes are not defined in `rowData()`.")
-# }
-
-
-
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype
@@ -38,7 +20,6 @@ NULL
 
 
 
-# plotCountsPerBiotype =========================================================
 plotCountsPerBiotype.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -51,10 +32,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         validObject(object)
         assert_is_scalar(assay)
         assertIsAnImplicitInteger(n)
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
-        )
+        interestingGroups <- matchInterestingGroups(object, interestingGroups)
         interestingGroups(object) <- interestingGroups
         assert_is_a_string(trans)
         assert_is_a_string(countsAxisLabel)
@@ -68,7 +46,15 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         } else {
             biotypeCol <- "geneBiotype"
         }
-        assert_is_subset(biotypeCol, colnames(rowData))
+
+        # Warn and early return if the biotypes are not defined in rowData.
+        if (!biotypeCol %in% colnames(rowData)) {
+            warning(paste(
+                "rowData() does not contain biotypes defined in",
+                biotypeCol, "column."
+            ))
+            return(invisible())
+        }
 
         # Get the top biotypes from the row data.
         biotypes <- rowData %>%
@@ -170,17 +156,6 @@ setMethod(
 
 
 
-#' @rdname plotCountsPerBiotype
-#' @export
-setMethod(
-    f = "plotCountsPerBiotype",
-    signature = signature("SingleCellExperiment"),
-    definition = plotCountsPerBiotype.SummarizedExperiment
-)
-
-
-
-# plotCountsPerBroadClass ======================================================
 plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -191,10 +166,7 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
     ) {
         validObject(object)
         assert_is_scalar(assay)
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
-        )
+        interestingGroups <- matchInterestingGroups(object, interestingGroups)
         interestingGroups(object) <- interestingGroups
         assert_is_a_string(trans)
         assert_is_a_string(countsAxisLabel)
@@ -203,7 +175,14 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
         rownames(rowData) <- rownames(object)
 
         biotypeCol <- "broadClass"
-        assert_is_subset(biotypeCol, colnames(rowData))
+        # Warn and early return if the biotypes are not defined in rowData.
+        if (!biotypeCol %in% colnames(rowData)) {
+            warning(paste(
+                "rowData() does not contain biotypes defined in",
+                biotypeCol, "column."
+            ))
+            return(invisible())
+        }
 
         biotypes <- rowData %>%
             as_tibble() %>%
@@ -294,15 +273,5 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
 setMethod(
     f = "plotCountsPerBroadClass",
     signature = signature("SummarizedExperiment"),
-    definition = plotCountsPerBroadClass.SummarizedExperiment
-)
-
-
-
-#' @rdname plotCountsPerBiotype
-#' @export
-setMethod(
-    f = "plotCountsPerBroadClass",
-    signature = signature("SingleCellExperiment"),
     definition = plotCountsPerBroadClass.SummarizedExperiment
 )
