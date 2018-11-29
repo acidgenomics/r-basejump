@@ -99,7 +99,7 @@ Suggests:
     testthat,
     viridis
 Remotes:
-    steinbaugh/goalie@develop
+    steinbaugh/goalie
 biocViews:
     DataImport,
     Infrastructure
