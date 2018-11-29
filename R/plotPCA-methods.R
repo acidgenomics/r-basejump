@@ -1,9 +1,3 @@
-# FIXME Check for identical samples and warn.
-# See `bcbioRNASeq::plotDispEsts()` for details.
-# warning("Samples are identical. Skipping PCA.")
-
-
-
 #' Plot PCA
 #'
 #' Principal component analysis (PCA) plot.
@@ -93,6 +87,11 @@ plotPCA.SummarizedExperiment <-  # nolint
         assert_is_a_bool(label)
         assertIsStringOrNULL(title)
         return <- match.arg(return)
+        # Warn and early return if any samples are duplicated.
+        if (!areSamplesUnique(object)) {
+            warning("Duplicate samples detected. Skipping plot.")
+            return(invisible())
+        }
 
         if (identical(ntop, Inf)) {
             nGene <- nrow(object)

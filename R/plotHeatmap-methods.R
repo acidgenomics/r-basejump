@@ -1,8 +1,3 @@
-# FIXME Warn and skip if samples are identical.
-# warning("Samples are identical. Skipping correlation heatmap.")
-
-
-
 #' Plot Heatmap
 #'
 #' Construct a simple heatmap.
@@ -90,7 +85,6 @@ NULL
 
 
 
-# SummarizedExperiment =========================================================
 plotHeatmap.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -113,10 +107,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
         assert_is_scalar(assay)
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
-        )
+        interestingGroups <- matchInterestingGroups(object, interestingGroups)
         if (has_length(interestingGroups)) {
             interestingGroups(object) <- interestingGroups
         }
@@ -135,6 +126,11 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         assertIsStringOrNULL(title)
         if (!is_a_string(title)) {
             title <- NA
+        }
+        # Warn and early return if any samples are duplicated.
+        if (!areSamplesUnique(object)) {
+            warning("Duplicate samples detected. Skipping plot.")
+            return(invisible())
         }
 
         # Convert the SE object to use symbols in the rownames, for pheatmap.
@@ -205,6 +201,43 @@ plotHeatmap.SummarizedExperiment <-  # nolint
 
 
 
+#' @rdname plotHeatmap
+#' @export
+setMethod(
+    f = "plotHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = plotHeatmap.SummarizedExperiment
+)
+
+
+
+plotHeatmap.SingleCellExperiment <-  # nolint
+    function(object) {
+        agg <- aggregateCellsToSamples(
+            object = object,
+            fun = "mean"
+        )
+        do.call(
+            what = plotHeatmap,
+            args = matchArgsToDoCall(args = list(object = agg))
+        )
+    }
+
+formals(plotHeatmap.SingleCellExperiment) <-
+    formals(plotHeatmap.SummarizedExperiment)
+
+
+
+#' @rdname plotHeatmap
+#' @export
+setMethod(
+    f = "plotHeatmap",
+    signature = signature("SingleCellExperiment"),
+    definition = plotHeatmap.SingleCellExperiment
+)
+
+
+
 plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -249,8 +282,13 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         } else if (!is_a_string(title)) {
             title <- NA
         }
+        # Warn and early return if any samples are duplicated.
+        if (!areSamplesUnique(object)) {
+            warning("Duplicate samples detected. Skipping plot.")
+            return(invisible())
+        }
 
-        # Correlation matrix
+        # Correlation matrix.
         mat <- as.matrix(assays(object)[[assay]])
         mat <- cor(mat, method = method)
 
@@ -313,6 +351,44 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
 
 
 
+#' @describeIn plotHeatmap Construct a correlation heatmap comparing the columns
+#'   of the matrix.
+#' @export
+setMethod(
+    f = "plotCorrelationHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = plotCorrelationHeatmap.SummarizedExperiment
+)
+
+
+
+plotCorrelationHeatmap.SingleCellExperiment <-  # nolint
+    function(object) {
+        agg <- aggregateCellsToSamples(
+            object = object,
+            fun = "mean"
+        )
+        do.call(
+            what = plotCorrelationHeatmap,
+            args = matchArgsToDoCall(args = list(object = agg))
+        )
+    }
+
+formals(plotCorrelationHeatmap.SingleCellExperiment) <-
+    formals(plotCorrelationHeatmap.SummarizedExperiment)
+
+
+
+#' @rdname plotHeatmap
+#' @export
+setMethod(
+    f = "plotCorrelationHeatmap",
+    signature = signature("SingleCellExperiment"),
+    definition = plotCorrelationHeatmap.SingleCellExperiment
+)
+
+
+
 .quantileBreaks <- function(object, n = 10L) {
     assert_is_matrix(object)
     assert_is_an_integer(n)
@@ -365,6 +441,11 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         assertIsStringOrNULL(title)
         if (!is_a_string(title)) {
             title <- NA
+        }
+        # Warn and early return if any samples are duplicated.
+        if (!areSamplesUnique(object)) {
+            warning("Duplicate samples detected. Skipping plot.")
+            return(invisible())
         }
 
         # Convert the SE object to use symbols in the rownames, for pheatmap.
@@ -437,36 +518,13 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
 
 
 
-# SingleCellExperiment =========================================================
-plotHeatmap.SingleCellExperiment <-  # nolint
-    function(object) {
-        agg <- aggregateCellsToSamples(
-            object = object,
-            fun = "mean"
-        )
-        do.call(
-            what = plotHeatmap,
-            args = matchArgsToDoCall(args = list(object = agg))
-        )
-    }
-formals(plotHeatmap.SingleCellExperiment) <-
-    formals(plotHeatmap.SummarizedExperiment)
-
-
-
-plotCorrelationHeatmap.SingleCellExperiment <-  # nolint
-    function(object) {
-        agg <- aggregateCellsToSamples(
-            object = object,
-            fun = "mean"
-        )
-        do.call(
-            what = plotCorrelationHeatmap,
-            args = matchArgsToDoCall(args = list(object = agg))
-        )
-    }
-formals(plotCorrelationHeatmap.SingleCellExperiment) <-
-    formals(plotCorrelationHeatmap.SummarizedExperiment)
+#' @describeIn plotHeatmap Scale the heatmap by applying quantile breaks.
+#' @export
+setMethod(
+    f = "plotQuantileHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = plotQuantileHeatmap.SummarizedExperiment
+)
 
 
 
@@ -481,60 +539,9 @@ plotQuantileHeatmap.SingleCellExperiment <-  # nolint
             args = matchArgsToDoCall(args = list(object = agg))
         )
     }
+
 formals(plotQuantileHeatmap.SingleCellExperiment) <-
     formals(plotQuantileHeatmap.SummarizedExperiment)
-
-
-
-# Methods ======================================================================
-#' @rdname plotHeatmap
-#' @export
-setMethod(
-    f = "plotHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = plotHeatmap.SummarizedExperiment
-)
-
-
-
-#' @rdname plotHeatmap
-#' @export
-setMethod(
-    f = "plotHeatmap",
-    signature = signature("SingleCellExperiment"),
-    definition = plotHeatmap.SingleCellExperiment
-)
-
-
-
-#' @describeIn plotHeatmap Construct a correlation heatmap comparing the columns
-#'   of the matrix.
-#' @export
-setMethod(
-    f = "plotCorrelationHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = plotCorrelationHeatmap.SummarizedExperiment
-)
-
-
-
-#' @rdname plotHeatmap
-#' @export
-setMethod(
-    f = "plotCorrelationHeatmap",
-    signature = signature("SingleCellExperiment"),
-    definition = plotCorrelationHeatmap.SingleCellExperiment
-)
-
-
-
-#' @describeIn plotHeatmap Scale the heatmap by applying quantile breaks.
-#' @export
-setMethod(
-    f = "plotQuantileHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = plotQuantileHeatmap.SummarizedExperiment
-)
 
 
 
@@ -548,7 +555,6 @@ setMethod(
 
 
 
-# pheatmap =====================================================================
 .emptyPheatmapAnnotations <- list(
     annotationCol = NA,
     annotationColors = NA
