@@ -410,5 +410,19 @@ tx2gene <- function(...) {
 
 
 
+# v0.8.5 =======================================================================
+#' @rdname deprecated
+#' @export
+markdownPlotlist <- function(plotlist, ...) {
+    .Deprecated("markdownPlots")
+    markdownPlots(list = plotlist, ...)
+}
+
+#' @rdname deprecated
+#' @export
+mdPlotlist <- markdownPlotlist
+
+
+
 # nolint end
 # nocov end
