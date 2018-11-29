@@ -212,6 +212,8 @@ mdList <- markdownList
 #' @inheritParams params
 #' @export
 #'
+#' @param list `list`. Named list containing `ggplot` objects.
+#'
 #' @return Graphical output of plots, separated by Markdown headers.
 #'
 #' @seealso `cowplot::plot_grid()`.
