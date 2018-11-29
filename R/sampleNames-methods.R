@@ -1,13 +1,3 @@
-# FIXME Need to fix assignment if `sampleName` column isn't actually defined
-# in colData.
-
-
-
-# TODO Unit test this.
-# sampleNames(rse) <- sampleNames(rse)
-
-
-
 #' Sample Names
 #'
 #' This function will return the human readable sample names if defined
