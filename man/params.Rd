@@ -87,6 +87,10 @@ many samples.}
 to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
 and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.}
 
+\item{genomeBuild}{\code{string}. Ensembl genome build assembly nam (e.g.
+\code{"GRCh38"}). If set \code{NULL}, defaults to the most recent build available.
+Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
+
 \item{geom}{\code{string}. Plot type. Uses \code{base::match.arg()} and defaults to the
 first argument in the \code{character} vector.}
 
