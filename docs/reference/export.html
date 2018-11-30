@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
       </span>
     </div>
 
@@ -152,6 +152,11 @@
     <tr>
       <th>format</th>
       <td><p>An optional character string containing the file format, which can be used to override the format inferred from <code>file</code> or, in lieu of specifying <code>file</code>, a file with the symbol name of <code>x</code> and the specified file extension will be created. Must specify <code>file</code> and/or <code>format</code>. Shortcuts include: &#8220;,&#8221; (for comma-separated values), &#8220;;&#8221; (for semicolon-separated values), &#8220;|&#8221; (for pipe-separated values), and &#8220;dump&#8221; for <code><a href='https://www.rdocumentation.org/packages/base/topics/dump'>dump</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p><code>string</code>. Name to use on disk. If left <code>NULL</code>, will use the name
+of the object instead.</p></td>
     </tr>
     <tr>
       <th>dir</th>

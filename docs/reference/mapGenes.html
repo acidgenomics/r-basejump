@@ -68,7 +68,7 @@ dynamically (e.g. for single-cell RNA-seq marker analysis)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
       </span>
     </div>
 
@@ -202,16 +202,11 @@ is duplicated, these functions will return a warning.</p>
 #&gt; colData names(1): condition</div><div class='input'>
 <span class='no'>rownames</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames</a></span>(<span class='no'>object</span>))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>rownames</span>)</div><div class='output co'>#&gt; [1] "gene001" "gene002" "gene003" "gene004" "gene005" "gene006"</div><div class='input'>
-<span class='no'>geneIDs</span> <span class='kw'>&lt;-</span> <span class='no'>object</span> <span class='kw'>%&gt;%</span>
-    <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData</a></span>(<span class='no'>.</span>) <span class='kw'>%&gt;%</span>
-    <span class='no'>.</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]] <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>()
+<span class='no'>g2s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='no'>object</span>)
+<span class='no'>geneIDs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>g2s</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]])
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 #&gt; [5] "ENSG00000000460" "ENSG00000000938"</div><div class='input'>
-<span class='no'>geneNames</span> <span class='kw'>&lt;-</span> <span class='no'>object</span> <span class='kw'>%&gt;%</span>
-    <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData</a></span>(<span class='no'>.</span>) <span class='kw'>%&gt;%</span>
-    <span class='no'>.</span><span class='kw'>[[</span><span class='st'>"geneName"</span>]] <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>()
+<span class='no'>geneNames</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>g2s</span><span class='kw'>[[</span><span class='st'>"geneName"</span>]])
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>geneNames</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div><div class='input'>
 <span class='co'>## Row names.</span>
 <span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>rownames</span>)</div><div class='output co'>#&gt;   gene001   gene002   gene003   gene004   gene005   gene006 

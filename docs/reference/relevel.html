@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>File Extension Pattern
-Note optional matching of gzip. — extPattern • basejump</title>
+<title>Relevel Row or Column Data — relevel • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -33,11 +32,9 @@ Note optional matching of gzip. — extPattern • basejump</title>
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="File Extension Pattern
-Note optional matching of gzip. — extPattern" />
+<meta property="og:title" content="Relevel Row or Column Data — relevel" />
 
-<meta property="og:description" content="File Extension Pattern
-Note optional matching of gzip." />
+<meta property="og:description" content="Relevel Row or Column Data" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,34 +107,57 @@ Note optional matching of gzip." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>File Extension Pattern
-Note optional matching of gzip.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/globals.R'><code>R/globals.R</code></a></small>
-    <div class="hidden name"><code>extPattern.Rd</code></div>
+    <h1>Relevel Row or Column Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/relevel.R'><code>R/relevel.R</code></a></small>
+    <div class="hidden name"><code>relevel.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>File Extension Pattern
-Note optional matching of gzip.</p>
+    <p>Relevel Row or Column Data</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>extPattern</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>relevelRowRanges</span>(<span class='no'>rowRanges</span>)
 
-    <p>An object of class <code>character</code> of length 1.</p>
+<span class='fu'>relevelColData</span>(<span class='no'>colData</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>rowRanges</th>
+      <td><p><code>GRanges</code>. Genomic ranges (e.g. genome annotations).
+Metadata describing the assay rows.</p></td>
+    </tr>
+    <tr>
+      <th>colData</th>
+      <td><p><code>DataFrame</code>. Metadata describing the assay columns. For bulk
+RNA-seq, this data describes the samples. For single-cell RNA-seq, this
+data describes the cells.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Modified object, with factor levels adjusted.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>extPattern</span></div><div class='output co'>#&gt; [1] "\\.([a-zA-Z0-9]+)(\\.gz)?$"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>)
+
+<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>rse</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevelRowRanges</span>(<span class='no'>rowRanges</span>)</div><div class='output co'>#&gt; <span class='message'>Releveling factors in rowRanges.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 500 ranges and 5 metadata columns"</div><div class='input'>
+<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>rse</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevelColData</span>(<span class='no'>colData</span>)</div><div class='output co'>#&gt; <span class='message'>Releveling factors in colData.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    Length     Class      Mode 
+#&gt;         1 DataFrame        S4 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

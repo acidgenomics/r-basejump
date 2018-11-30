@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
       </span>
     </div>
 
@@ -279,7 +279,7 @@
 #&gt; sample24         B</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell0001" "cell0002" "cell0003" "cell0004" "cell0005" "cell0006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1
@@ -307,10 +307,9 @@
 #&gt; dim: 500 200 
 #&gt; metadata(4): combine date wd sessionInfo
 #&gt; assays(1): counts
-#&gt; rownames(500): ENSG00000000003 ENSG00000000005 ... ENSG00000033050
-#&gt;   ENSG00000033100
-#&gt; rowData names(4): geneID geneName geneBiotype broadClass
-#&gt; colnames(200): cell0001 cell0002 ... cell199 cell200
+#&gt; rownames(500): gene1 gene10 ... gene98 gene99
+#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
+#&gt; colnames(200): cell001 cell002 ... cell199 cell200
 #&gt; colData names(2): expLibSize sampleID
 #&gt; reducedDimNames(0):
 #&gt; spikeNames(0):</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns

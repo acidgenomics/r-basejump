@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
       </span>
     </div>
 
@@ -139,31 +139,39 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>)
 <span class='no'>mcols</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class'>mcols</a></span>(<span class='no'>rse</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>mcols</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $geneID
-#&gt; [1] "character"
+#&gt; [1] "Rle"
+#&gt; attr(,"package")
+#&gt; [1] "S4Vectors"
 #&gt; 
 #&gt; $geneName
-#&gt; [1] "character"
+#&gt; [1] "Rle"
+#&gt; attr(,"package")
+#&gt; [1] "S4Vectors"
 #&gt; 
 #&gt; $geneBiotype
-#&gt; [1] "character"
+#&gt; [1] "Rle"
+#&gt; attr(,"package")
+#&gt; [1] "S4Vectors"
 #&gt; 
 #&gt; $broadClass
-#&gt; [1] "character"
+#&gt; [1] "Rle"
+#&gt; attr(,"package")
+#&gt; [1] "S4Vectors"
 #&gt; 
 #&gt; $entrezID
-#&gt; [1] "AsIs"
+#&gt; [1] "list"
 #&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>decode</span>(<span class='no'>mcols</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $geneID
 #&gt; [1] "character"
 #&gt; 
 #&gt; $geneName
-#&gt; [1] "character"
+#&gt; [1] "factor"
 #&gt; 
 #&gt; $geneBiotype
-#&gt; [1] "character"
+#&gt; [1] "factor"
 #&gt; 
 #&gt; $broadClass
-#&gt; [1] "character"
+#&gt; [1] "factor"
 #&gt; 
 #&gt; $entrezID
 #&gt; [1] "list"
