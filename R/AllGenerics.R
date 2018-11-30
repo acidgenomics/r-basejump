@@ -267,6 +267,18 @@ setGeneric(
 
 
 
+# humanize =====================================================================
+#' @rdname humanize
+#' @export
+setGeneric(
+    name = "humanize",
+    def = function(x, ...) {
+        standardGeneric("humanize")
+    }
+)
+
+
+
 # interestingGroups ============================================================
 #' @rdname interestingGroups
 #' @export

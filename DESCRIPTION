@@ -148,6 +148,7 @@ Collate:
     'globals.R'
     'goalie.R'
     'headtail-methods.R'
+    'humanize-methods.R'
     'import.R'
     'initDir.R'
     'interestingGroups-methods.R'
