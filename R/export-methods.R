@@ -18,15 +18,12 @@
 #' @inheritParams params
 #' @inheritParams rio::export
 #'
-#' @param assays `boolean`. Write `assays()` to disk. All assays in object
-#'   will be written into an `assays/` subdirectory.
-#' @param colData `boolean`. Write `colData()` to disk.
 #' @param compress `boolean`. Apply gzip compression to all files.
 #' @param human `boolean`. Automatically convert gene IDs to gene symbols in the
 #'   `rownames()` and sample IDs to sample names in the `colnames()`.
 #' @param name `string`. Name to use on disk. If left `NULL`, will use the name
 #'   of the object instead.
-#' @param rowData `boolean`. Write `rowData()` to disk.
+#' @param slotNames `character`. Names of slots to include when writing to disk.
 #'
 #' @return Invisible `character`. File path(s).
 #'
@@ -203,9 +200,7 @@ export.SummarizedExperiment <-  # nolint
         dir = ".",
         compress = FALSE,
         human = FALSE,
-        assays = TRUE,
-        rowData = TRUE,
-        colData = TRUE
+        slotNames = c("assays", "colData", "rowData")
     ) {
         call <- standardizeCall()
         assertIsStringOrNULL(name)
@@ -219,7 +214,9 @@ export.SummarizedExperiment <-  # nolint
         assert_is_a_bool(rowData)
         assert_is_a_bool(colData)
         # Require at least 1 of the slots to be exported.
-        stopifnot(any(assays, rowData, colData))
+        # Note that we're not using `match.arg()` here.
+        assert_is_character(slotNames)
+        assert_is_subset(slotNames, c("assays", "rowData", "colData"))
 
         files <- list()
 
@@ -237,7 +234,7 @@ export.SummarizedExperiment <-  # nolint
         }
 
         # Assays (count matrices).
-        if (isTRUE(assays)) {
+        if ("assays" %in% slotNames) {
             assayNames <- assayNames(x)
             assert_that(has_length(assayNames))
             message(paste("Exporting assays:", toString(assayNames)))
@@ -263,7 +260,7 @@ export.SummarizedExperiment <-  # nolint
         }
 
         # Row annotations.
-        if (isTRUE(rowData)) {
+        if ("rowData" %in% slotNames) {
             rowData <- rowData(x)
             if (!is.null(rowData)) {
                 rownames(rowData) <- rownames(x)
@@ -275,7 +272,7 @@ export.SummarizedExperiment <-  # nolint
         }
 
         # Column annotations.
-        if (isTRUE(colData)) {
+        if ("colData" %in% slotNames) {
             colData <- colData(x)
             if (!is.null(colData)) {
                 files[["colData"]] <- export(
