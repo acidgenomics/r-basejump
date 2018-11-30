@@ -64,6 +64,7 @@ reference:
   - title: Sanitization
     contents:
     - autopadZeros
+    - relevel
     - makeNames
     - collapseToString
     - starts_with("remove")
