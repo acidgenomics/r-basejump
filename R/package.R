@@ -32,8 +32,9 @@
 #'   decode expand head mcols mcols<- metadata metadata<- na.omit tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<-
 #'   reducedDimNames reducedDims spikeNames
-#' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames assays
-#'   assays<- colData colData<- rowData rowData<- rowRanges rowRanges<-
+#' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
+#'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
+#'   rowRanges<-
 #' @importFrom assertive.base assert_all_are_not_na assert_all_are_true
 #'   assert_any_are_true assert_are_identical assert_is_identical_to_na
 #'   is_not_na
