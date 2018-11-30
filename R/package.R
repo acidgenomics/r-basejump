@@ -119,7 +119,9 @@
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
-
+# FIXME R is caching this in heatmap methods and I can't figure out why...
+#' @importFrom goalie areSamplesUnique
+NULL
 
 # Conflicts with rtracklayer:
 # @importFrom rio import
