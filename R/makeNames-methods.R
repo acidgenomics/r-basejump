@@ -86,21 +86,45 @@ NULL
 
 
 # Constructors =================================================================
+# `stringr::str_replace_all()` is an alternate approach that uses `regex()`.
+# https://stringr.tidyverse.org/articles/regular-expressions.html
 .sanitizeAcronyms <- function(object) {
     assert_is_atomic(object)
     object %>%
         as.character() %>%
-        # Ensure "id" is always "ID".
-        gsub("\\b(id)\\b", "ID", ., ignore.case = TRUE) %>%
-        # Sanitize plurarlized acronyms.
-        gsub("\\b([A-Z0-9]+)s\\b", "\\1S", .) %>%
-        # Sanitize mixed case scientific acronyms.
-        gsub("\\b(mRNA)\\b", "MRNA", .) %>%
-        gsub("\\b(miRNA)\\b", "MIRNA", .) %>%
-        gsub("\\b(ncRNA)\\b", "NCRNA", .) %>%
-        gsub("\\b(piRNA)\\b", "PIRNA", .) %>%
-        gsub("\\b(rRNA)\\b", "RRNA", .) %>%
-        gsub("\\b(RNAi)\\b", "RNAI", .)
+        # Sanitize "id" variants (e.g. "Id" to "ID").
+        gsub(
+            pattern = "\\b(id)\\b",
+            replacement = "ID",
+            x = .,
+            ignore.case = TRUE
+        ) %>%
+        # Sanitize plurarlized acronyms (e.g. "UMIs" to "UMIS").
+        gsub(
+            pattern = "\\b([A-Z0-9]+)s\\b",
+            replacement = "\\1S",
+            x = .
+        ) %>%
+        # Sanitize mixed case concentrations (e.g. "10nM" to "10NM").
+        gsub(
+            pattern = "\\b([[:digit:]]+?[mnu]M)\\b",
+            replacement = "\\U\\1",
+            x = .,
+            perl = TRUE
+        ) %>%
+        # Sanitize mixed case RNA types.
+        gsub(
+            pattern = "\\b([mi|nc|pi|r]RNA)\\b",
+            replacement = "\\U\\1",
+            x = .,
+            perl = TRUE
+        ) %>%
+        # Handle RNA interference.
+        gsub(
+            pattern = "\\b(RNAi)\\b",
+            replacement = "RNAI",
+            x = .
+        )
 }
 
 
@@ -318,6 +342,8 @@ dotted.character <-  # nolint
         assert_is_atomic(object)
         object %>%
             as.character() %>%
+            # Handle "+" as a special case. Spell out as "plus".
+            gsub("\\+", ".plus.", .) %>%
             # Handle "%" as a special case. Spell out as "percent".
             gsub("%", "percent", .) %>%
             # Strip comma delims in between numbers (e.g. 1,000,000).
