@@ -85,6 +85,12 @@ file.remove(c(
     "single_cell_counts.mtx.colnames",
     "single_cell_counts.mtx.rownames"
 ))
+
+## SummarizedExperiment ====
+export(rse, dir = tempdir())
+
+## SingleCellExperiment ====
+export(sce, dir = tempdir())
 }
 \seealso{
 \code{rio::export()}.

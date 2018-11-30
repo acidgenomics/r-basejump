@@ -49,6 +49,12 @@
 #'     "single_cell_counts.mtx.colnames",
 #'     "single_cell_counts.mtx.rownames"
 #' ))
+#'
+#' ## SummarizedExperiment ====
+#' export(rse, dir = tempdir())
+#'
+#' ## SingleCellExperiment ====
+#' export(sce, dir = tempdir())
 NULL
 
 
@@ -210,7 +216,7 @@ export.SummarizedExperiment <-  # nolint
         dir <- initDir(file.path(dir, name))
         assert_is_a_bool(compress)
         assert_is_a_bool(human)
-        # Require at least 1 of the slots to be exported.
+        # Require at least 1 of the slotNames to be defined for export.
         # Note that we're not using `match.arg()` here.
         assert_is_character(slotNames)
         assert_is_subset(slotNames, c("assays", "rowData", "colData"))
@@ -232,8 +238,15 @@ export.SummarizedExperiment <-  # nolint
 
         # Assays (count matrices).
         if ("assays" %in% slotNames) {
+            # Note that valid SE objects don't have to contain named assays
+            # (e.g. DESeqTransform). In the event that an SE object contains a
+            # single, unnamed assay, we make sure to rename it internally to
+            # "assay" before exporting.
+            if (is.null(assayNames(x))) {
+                assayNames(x) <- "assay"
+            }
             assayNames <- assayNames(x)
-            assert_that(has_length(assayNames))
+            assert_is_character(assayNames)
             message(paste("Exporting assays:", toString(assayNames)))
             files[["assays"]] <- lapply(
                 X = assayNames,
