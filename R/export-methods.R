@@ -210,9 +210,6 @@ export.SummarizedExperiment <-  # nolint
         dir <- initDir(file.path(dir, name))
         assert_is_a_bool(compress)
         assert_is_a_bool(human)
-        assert_is_a_bool(assays)
-        assert_is_a_bool(rowData)
-        assert_is_a_bool(colData)
         # Require at least 1 of the slots to be exported.
         # Note that we're not using `match.arg()` here.
         assert_is_character(slotNames)
