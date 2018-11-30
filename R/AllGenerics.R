@@ -272,7 +272,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "humanize",
-    def = function(x, ...) {
+    def = function(object, ...) {
         standardGeneric("humanize")
     }
 )
