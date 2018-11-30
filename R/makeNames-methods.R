@@ -286,31 +286,22 @@ camel.character <-  # nolint
             )
         }
 
-        # Check for the presence of delimited numbers (e.g. 100.00).
-        pattern <- "([0-9])\\.([0-9])"
-        if (isTRUE(strict)) {
-            if (format == "lower") {
-                replacement <- "x"
-            } else if (format == "upper") {
-                replacement <- "X"
-            }
-        } else {
-            replacement <- "."
-        }
-        replacement <- paste0("\\1", replacement, "\\2")
-        if (any(grepl(pattern, object))) {
-            object <- object %>%
-                # Escape number separators (useful for keeping decimals, etc.).
-                gsub(pattern, replacement, .) %>%
-                # Have to run twice here otherwise it will miss some matches.
-                gsub(pattern, replacement, .)
-        }
-
         # Remove dots in between numbers following a letter.
         object <- gsub("([[:alpha:]])\\.([[:digit:]])", "\\1\\2", object)
 
         # First letter of second word must be capitalized.
         object <- gsub("\\.([[:alpha:]])", "\\U\\1", object, perl = TRUE)
+
+        # Remaining dots should be sanitized with "X" character.
+        pattern <- "\\."
+        if (any(grepl(pattern, object))) {
+            if (format == "lower") {
+                replacement <- "x"
+            } else if (format == "upper") {
+                replacement <- "X"
+            }
+            object <- gsub(pattern, replacement, object)
+        }
 
         object
     }

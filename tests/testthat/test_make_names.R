@@ -59,7 +59,7 @@ with_parameters_test_that(
             "mazdaRX4",
             "percentGC",
             "x5prime",
-            "x5.3Bias",
+            "x5x3Bias",
             "x123",
             NA
         ),
@@ -107,7 +107,7 @@ with_parameters_test_that(
             "MazdaRX4",
             "PercentGC",
             "X5prime",
-            "X5.3Bias",
+            "X5X3Bias",
             "X123",
             NA
         )
@@ -146,9 +146,9 @@ with_parameters_test_that(
     expected = list(
         camel_normal = c(
             "x1000000",
-            "x0.01",
-            "x2018.01.01",
-            "res0.1"
+            "x0x01",
+            "x2018x01x01",
+            "res0x1"
         ),
         camel_strict = c(
             "x1000000",
