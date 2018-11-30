@@ -13,13 +13,16 @@
 #' @examples
 #' data(rse, sce)
 #'
-#' ## SummarizedExperiment
-#' dimnames(rse)
+#' ## SummarizedExperiment ====
+#' lapply(dimnames(rse), head)
 #' x <- humanize(rse)
+#' lapply(dimnames(x), head)
 #'
-#' ## SingleCellExperiment
-#' dimnames(sce)
+#'
+#' ## SingleCellExperiment ====
+#' lapply(dimnames(sce), head)
 #' x <- humanize(sce)
+#' lapply(dimnames(x), head)
 NULL
 
 
