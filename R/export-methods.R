@@ -15,14 +15,18 @@
 #' column in the CSV export.
 #'
 #' @name export
-#'
 #' @inheritParams params
 #' @inheritParams rio::export
+#'
+#' @param assays `boolean`. Write `assays()` to disk. All assays in object
+#'   will be written into an `assays/` subdirectory.
+#' @param colData `boolean`. Write `colData()` to disk.
 #' @param compress `boolean`. Apply gzip compression to all files.
 #' @param human `boolean`. Automatically convert gene IDs to gene symbols in the
 #'   `rownames()` and sample IDs to sample names in the `colnames()`.
 #' @param name `string`. Name to use on disk. If left `NULL`, will use the name
 #'   of the object instead.
+#' @param rowData `boolean`. Write `rowData()` to disk.
 #'
 #' @return Invisible `character`. File path(s).
 #'
@@ -198,7 +202,10 @@ export.SummarizedExperiment <-  # nolint
         name = NULL,
         dir = ".",
         compress = FALSE,
-        human = FALSE
+        human = FALSE,
+        assays = TRUE,
+        rowData = TRUE,
+        colData = TRUE
     ) {
         call <- standardizeCall()
         assertIsStringOrNULL(name)
@@ -208,6 +215,11 @@ export.SummarizedExperiment <-  # nolint
         dir <- initDir(file.path(dir, name))
         assert_is_a_bool(compress)
         assert_is_a_bool(human)
+        assert_is_a_bool(assays)
+        assert_is_a_bool(rowData)
+        assert_is_a_bool(colData)
+        # Require at least 1 of the slots to be exported.
+        stopifnot(any(assays, rowData, colData))
 
         files <- list()
 
@@ -225,46 +237,52 @@ export.SummarizedExperiment <-  # nolint
         }
 
         # Assays (count matrices).
-        assayNames <- assayNames(x)
-        assert_that(has_length(assayNames))
-        message(paste("Exporting assays:", toString(assayNames)))
-        files[["assays"]] <- lapply(
-            X = assayNames,
-            FUN = function(name, dir) {
-                file <- file.path(dir, name)
-                assay <- assays(x)[[name]]
-                if (is(assay, "matrix")) {
-                    format <- "csv"
-                } else if (is(assay, "sparseMatrix")) {
-                    format <- "mtx"
-                }
-                if (isTRUE(compress)) {
-                    format <- paste0(format, ".gz")
-                }
-                file <- paste0(file, ".", format)
-                export(assay, file = file)
-            },
-            dir = initDir(file.path(dir, "assays"))
-        )
-        names(files[["assays"]]) <- assayNames
+        if (isTRUE(assays)) {
+            assayNames <- assayNames(x)
+            assert_that(has_length(assayNames))
+            message(paste("Exporting assays:", toString(assayNames)))
+            files[["assays"]] <- lapply(
+                X = assayNames,
+                FUN = function(name, dir) {
+                    file <- file.path(dir, name)
+                    assay <- assays(x)[[name]]
+                    if (is(assay, "matrix")) {
+                        format <- "csv"
+                    } else if (is(assay, "sparseMatrix")) {
+                        format <- "mtx"
+                    }
+                    if (isTRUE(compress)) {
+                        format <- paste0(format, ".gz")
+                    }
+                    file <- paste0(file, ".", format)
+                    export(assay, file = file)
+                },
+                dir = initDir(file.path(dir, "assays"))
+            )
+            names(files[["assays"]]) <- assayNames
+        }
 
         # Row annotations.
-        rowData <- rowData(x)
-        if (!is.null(rowData)) {
-            rownames(rowData) <- rownames(x)
-            files[["rowData"]] <- export(
-                x = rowData,
-                file = file.path(dir, paste0("rowData", ext))
-            )
+        if (isTRUE(rowData)) {
+            rowData <- rowData(x)
+            if (!is.null(rowData)) {
+                rownames(rowData) <- rownames(x)
+                files[["rowData"]] <- export(
+                    x = rowData,
+                    file = file.path(dir, paste0("rowData", ext))
+                )
+            }
         }
 
         # Column annotations.
-        colData <- colData(x)
-        if (!is.null(colData)) {
-            files[["colData"]] <- export(
-                x = colData,
-                file = file.path(dir, paste0("colData", ext))
-            )
+        if (isTRUE(colData)) {
+            colData <- colData(x)
+            if (!is.null(colData)) {
+                files[["colData"]] <- export(
+                    x = colData,
+                    file = file.path(dir, paste0("colData", ext))
+                )
+            }
         }
 
         message(paste0("Exported ", name, " to ", dir, "."))

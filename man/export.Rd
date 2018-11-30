@@ -16,10 +16,12 @@ export(x, ...)
 \S4method{export}{sparseMatrix}(x, file, format)
 
 \S4method{export}{SummarizedExperiment}(x, name = NULL, dir = ".",
-  compress = FALSE, human = FALSE)
+  compress = FALSE, human = FALSE, assays = TRUE, rowData = TRUE,
+  colData = TRUE)
 
 \S4method{export}{SingleCellExperiment}(x, name = NULL, dir = ".",
-  compress = FALSE, human = FALSE)
+  compress = FALSE, human = FALSE, assays = TRUE, rowData = TRUE,
+  colData = TRUE)
 }
 \arguments{
 \item{x}{Object.}
@@ -39,6 +41,13 @@ of the object instead.}
 
 \item{human}{\code{boolean}. Automatically convert gene IDs to gene symbols in the
 \code{rownames()} and sample IDs to sample names in the \code{colnames()}.}
+
+\item{assays}{\code{boolean}. Write \code{assays()} to disk. All assays in object
+will be written into an \code{assays/} subdirectory.}
+
+\item{rowData}{\code{boolean}. Write \code{rowData()} to disk.}
+
+\item{colData}{\code{boolean}. Write \code{colData()} to disk.}
 }
 \value{
 Invisible \code{character}. File path(s).
