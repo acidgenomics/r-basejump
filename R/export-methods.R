@@ -221,8 +221,7 @@ export.SummarizedExperiment <-  # nolint
         # Ensure colnames are converted to sample names.
         # Ensure rownames are converted to gene names (symbols).
         if (isTRUE(human)) {
-            x <- convertGenesToSymbols(x)
-            x <- convertSampleIDsToNames(x)
+            x <- humanize(x)
         }
 
         # Assays (count matrices).
