@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
       </span>
     </div>
 
@@ -133,14 +133,14 @@
     </tr>
     <tr>
       <th>genomeBuild</th>
-      <td><p><code>string</code> or <code>NULL</code>. Ensembl genome build assembly name
-(e.g. <code>"GRCh38"</code>). If set <code>NULL</code>, defaults to the most recent build
-available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></td>
+      <td><p><code>string</code>. Ensembl genome build assembly nam (e.g.
+<code>"GRCh38"</code>). If set <code>NULL</code>, defaults to the most recent build available.
+Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></td>
     </tr>
     <tr>
       <th>release</th>
-      <td><p><code>scalar integer</code> or <code>NULL</code>. Ensembl release version (e.g.
-<code>90</code>). If set <code>NULL</code>, defaults to the most recent release available.</p></td>
+      <td><p><code>scalar integer</code>. Ensembl release version (e.g. <code>90</code>). If set
+<code>NULL</code>, defaults to the most recent release available.</p></td>
     </tr>
     <tr>
       <th>object</th>
@@ -171,7 +171,7 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.14.1 (2018-10-24).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
 #&gt; <span class='message'>  - Genome Build: GRCh38</span>
 #&gt; <span class='message'>  - Ensembl Release: 94</span>
-#&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 228432 rows and 2 columns
+#&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Using `geneName` column instead of `symbol`.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 228432 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000000233 ENST00000000233 ENSG00000004059
@@ -189,7 +189,7 @@ available. Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></t
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
 #&gt; <span class='message'>  - Genome Build: GRCh37</span>
 #&gt; <span class='message'>  - Ensembl Release: 75</span>
-#&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 215647 rows and 2 columns
+#&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Using `geneName` column instead of `symbol`.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 215647 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000000233 ENST00000000233 ENSG00000004059
