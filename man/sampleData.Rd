@@ -19,8 +19,8 @@ sampleData(object, ...) <- value
 \S4method{sampleData}{SummarizedExperiment}(object, clean = FALSE)
 
 \S4method{sampleData}{SingleCellExperiment}(object,
-  blacklist = c("^ident$", "^origIdent$", "^res[.0-9]+$", "^sScore$",
-  "^g2mScore$", "^phase$"))
+  blacklist = c("^G2M.Score$", "^Phase$", "^S.Score$", "^ident$",
+  "^old.ident$", "^orig.ident$", "^res[.0-9]+$"))
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
