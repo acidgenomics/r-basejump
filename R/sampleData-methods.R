@@ -86,12 +86,13 @@ sampleData.SingleCellExperiment <-  # nolint
     function(
         object,
         blacklist = c(
+            "^G2M.Score$",
+            "^Phase$",
+            "^S.Score$",
             "^ident$",
-            "^origIdent$",
-            "^res[.0-9]+$",
-            "^sScore$",
-            "^g2mScore$",
-            "^phase$"
+            "^old.ident$",
+            "^orig.ident$",
+            "^res[.0-9]+$"
         )
     ) {
         assert_is_character(blacklist)
@@ -115,7 +116,7 @@ sampleData.SingleCellExperiment <-  # nolint
         # Drop any blacklisted columns.
         keep <- !grepl(
             pattern = paste(blacklist, collapse = "|"),
-            x = camel(colnames(data))
+            x = colnames(data)
         )
         data <- data[, keep, drop = FALSE]
 
