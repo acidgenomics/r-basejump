@@ -151,8 +151,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             novar <- rowVars(mat) == 0L
             if (any(novar)) {
                 message(paste(
-                    "Dropping", sum(novar), "row(s) that have no variation",
-                    "prior to scaling."
+                    "Dropping", sum(novar, na.rm = TRUE), "row(s)",
+                    "that have no variation prior to scaling."
                 ))
                 keep <- !novar
                 stopifnot(length(keep) > 1L)
@@ -163,8 +163,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             novar <- colVars(mat) == 0L
             if (any(novar)) {
                 message(paste(
-                    "Dropping", sum(novar), "column(s) that have no variation",
-                    "prior to scaling."
+                    "Dropping", sum(novar, na.rm = TRUE), "column(s)",
+                    "that have no variation prior to scaling."
                 ))
                 keep <- !novar
                 stopifnot(length(keep) > 1L)
