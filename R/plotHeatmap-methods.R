@@ -1,3 +1,8 @@
+# DESeqAnalysis `plotDEGHeatmap()` can still result in hclust NA...
+# https://stackoverflow.com/questions/20438019
+
+
+
 #' Plot Heatmap
 #'
 #' Construct a simple heatmap.
@@ -142,13 +147,15 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         mat <- as.matrix(assays(object)[[assay]])
 
         # Drop rows or columns without variation when scaling is requested.
-        # Inform the number about the number dropped as a message.
-        # Alternately, can attempt to drop zero count rows/columns when scaling
-        # using `rowSums()` or `colSums()` but using the variation detection
-        # approach here is less error prone.
+        # Inform the number about the number dropped as a message. Alternately,
+        # can attempt to drop zero count rows/columns when scaling using
+        # `rowSums()` or `colSums()` but using the variation detection approach
+        # here is less error prone. Note that setting the threshold equal to
+        # zero can still generate `hclust()` NA errors.
+        varThreshold <- 1E-10
         if (scale == "row") {
             message("Scaling per row.")
-            novar <- rowVars(mat) == 0L
+            novar <- rowVars(mat) < varThreshold
             if (any(novar)) {
                 message(paste(
                     "Dropping", sum(novar, na.rm = TRUE), "row(s)",
@@ -160,7 +167,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             }
         } else if (scale == "column") {
             message("Scaling per column.")
-            novar <- colVars(mat) == 0L
+            novar <- colVars(mat) < varThreshold
             if (any(novar)) {
                 message(paste(
                     "Dropping", sum(novar, na.rm = TRUE), "column(s)",
@@ -173,10 +180,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         }
 
         # Get annotation columns and colors automatically.
-        x <- .pheatmapAnnotations(
-            object = object,
-            legendColor = legendColor
-        )
+        x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
         assert_is_list(x)
         assert_are_identical(
             x = names(x),
