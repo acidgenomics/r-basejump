@@ -141,10 +141,35 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # Ensure we're always using a dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
-        # Filter out any zero count rows when row scaling, otherwise hclust
-        # calculation will error.
+        # Drop rows or columns without variation when scaling is requested.
+        # Inform the number about the number dropped as a message.
+        # Alternately, can attempt to drop zero count rows/columns when scaling
+        # using `rowSums()` or `colSums()` but using the variation detection
+        # approach here is less error prone.
         if (scale == "row") {
-            mat <- mat[rowSums(mat) > 0L, , drop = FALSE]
+            message("Scaling per row.")
+            novar <- rowVars(mat) == 0L
+            if (any(novar)) {
+                message(paste(
+                    "Dropping", sum(novar), "row(s) that have no variation",
+                    "prior to scaling."
+                ))
+                keep <- !novar
+                stopifnot(length(keep) > 1L)
+                mat <- mat[keep, , drop = FALSE]
+            }
+        } else if (scale == "column") {
+            message("Scaling per column.")
+            novar <- colVars(mat) == 0L
+            if (any(novar)) {
+                message(paste(
+                    "Dropping", sum(novar), "column(s) that have no variation",
+                    "prior to scaling."
+                ))
+                keep <- !novar
+                stopifnot(length(keep) > 1L)
+                keep <- mat[, keep, drop = FALSE]
+            }
         }
 
         # Get annotation columns and colors automatically.
