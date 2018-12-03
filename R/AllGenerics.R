@@ -193,6 +193,20 @@ setGeneric(
 
 
 
+# deg ==========================================================================
+#' Differentially Expressed Genes
+#' @inheritParams params
+#' @export
+#' @return `character`. Gene identifiers.
+setGeneric(
+    name = "deg",
+    def = function(object, ...) {
+        standardGeneric("deg")
+    }
+)
+
+
+
 # encode =======================================================================
 #' @rdname encode
 #' @export
