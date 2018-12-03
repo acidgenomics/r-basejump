@@ -94,7 +94,7 @@
 #' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
-#' @importFrom matrixStats rowVars
+#' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs getGeneric getMethod is isGeneric new
 #'   selectMethod setAs setClass setGeneric setMethod setOldClass setValidity
 #'   show signature slot slotNames validObject .hasSlot
