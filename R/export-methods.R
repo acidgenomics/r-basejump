@@ -221,6 +221,17 @@ export.SummarizedExperiment <-  # nolint
         assert_is_character(slotNames)
         assert_is_subset(slotNames, c("assays", "rowData", "colData"))
 
+        # Note that valid SE objects don't have to contain named assays
+        # (e.g. DESeqTransform). In the event that an SE object contains a
+        # single, unnamed assay, we make sure to rename it internally to
+        # "assay" before exporting.
+        if (is.null(assayNames(x))) {
+            # Be sure to run this step before attempting `humanize()` call for
+            # `human = TRUE`, because the dimnames won't necessarily be valid,
+            # and the `assayNames<-()` function is strict.
+            assayNames(x) <- "assay"
+        }
+
         files <- list()
 
         format <- "csv"
@@ -232,19 +243,14 @@ export.SummarizedExperiment <-  # nolint
         # Human readable data mode.
         # Ensure colnames are converted to sample names.
         # Ensure rownames are converted to gene names (symbols).
+        # Run this step last on SE objects because the dimnames will no longer
+        # be valid, and this can cause other SE methods to error.
         if (isTRUE(human)) {
             x <- humanize(x)
         }
 
         # Assays (count matrices).
         if ("assays" %in% slotNames) {
-            # Note that valid SE objects don't have to contain named assays
-            # (e.g. DESeqTransform). In the event that an SE object contains a
-            # single, unnamed assay, we make sure to rename it internally to
-            # "assay" before exporting.
-            if (is.null(assayNames(x))) {
-                assayNames(x) <- "assay"
-            }
             assayNames <- assayNames(x)
             assert_is_character(assayNames)
             message(paste("Exporting assays:", toString(assayNames)))
