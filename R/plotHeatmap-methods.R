@@ -1,16 +1,3 @@
-# FIXME
-# loadData(se, dir = "~")
-# plotHeatmap(se, scale = "row", clusterRows = TRUE)
-# Error in hclust(d, method = method) :
-# NA/NaN/Inf in foreign function call (arg 11)
-
-# https://github.com/raivokolde/pheatmap/blob/master/R/pheatmap.r
-# For hclust, I think we need to scale the matrix first and then calcualte.
-#
-# Correct. We need to "pre-process" (i.e. scale) the matrix before attempting
-# to calculate distance matrix.
-#
-# kmeans_pheatmap
 # Look into kmeans approach with `kmeans_k`.
 
 
