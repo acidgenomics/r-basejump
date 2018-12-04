@@ -1,7 +1,3 @@
-# Look into kmeans approach with `kmeans_k`.
-
-
-
 #' Plot Heatmap
 #'
 #' Construct a simple heatmap.
