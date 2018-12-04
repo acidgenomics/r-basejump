@@ -19,6 +19,24 @@
 #'
 #' Construct a simple heatmap.
 #'
+#' @section Scaling:
+#'
+#' Here we're scaling simply by calculating the standard score (z-score).
+#'
+#' - mu: mean.
+#' - sigma: standard deviation.
+#' - x: raw score (e.g. count matrix).
+#' - z: standard score (z-score).
+#'
+#' ```
+#' z = (x - mu) / sigma
+#' ```
+#'
+#' See also:
+#'
+#' - `pheatmap:::scale_rows()`.
+#' - `base::scale()` for additional scaling approaches.
+#'
 #' @section Hierarchical clustering:
 #'
 #' Row- and column-wise hierarchical clustering is performed when `clusterRows`
@@ -122,7 +140,33 @@ NULL
 
 
 
-# Modified version of `pheatmap:::scale_rows()`.
+# Consider moving this to the goalie package in a future update.
+.assertIsNonZero <- function(object) {
+    # We're not supporting sparseMatrix here because they have zero inflation.
+    assert_is_matrix(object)
+    # Inform the user if any rows or columns contain all zeros. It's good
+    # practice to remove them before attempting to plot a heatmap.
+    zeroRows <- rowSums(object) == 0L
+    if (any(zeroRows)) {
+        stop(paste0(
+            sum(zeroRows, na.rm = TRUE),
+            " rows containing all zeros detected.\n",
+            printString(rownames(object)[which(zeroRows)], max = 10L)
+        ))
+    }
+    zeroCols <- colSums(object) == 0L
+    if (any(zeroCols)) {
+        stop(paste0(
+            sum(zeroCols, na.rm = TRUE),
+            " columns containing all zeros detected.\n",
+            printString(colnames(object)[which(zeroCols)], max = 10L)
+        ))
+    }
+    TRUE
+}
+
+
+
 .scaleRows <- function(object) {
     mean <- apply(object, MARGIN = 1L, FUN = mean, na.rm = TRUE)
     sd <- apply(object, MARGIN = 1L, FUN = sd, na.rm = TRUE)
@@ -136,7 +180,33 @@ NULL
     assert_is_matrix(object)
     scale <- match.arg(scale)
     if (scale != "none") {
-        message(paste0("Scaling matrix by ", scale, "."))
+        message(paste0("Scaling matrix per ", scale, "."))
+    }
+    # Assert checks to look for sufficient variance when the user is attempting
+    # to apply scaling (z-score).
+    varThreshold <- 0L
+    if (scale == "row") {
+        pass <- rowVars(object) > varThreshold
+        if (!all(pass)) {
+            fail <- !pass
+            stop(paste0(
+                "Rows cannot be scaled.\n",
+                sum(fail, na.rm = TRUE),
+                " rows(s) don't have enough variance.\n",
+                printString(rownames(object)[which(fail)], max = 10L)
+            ))
+        }
+    } else if (scale == "column") {
+        pass <- colVars(object) > varThreshold
+        if (!all(pass)) {
+            fail <- !pass
+            stop(paste(
+                "Columns cannot be scaled.\n",
+                sum(fail, na.rm = TRUE),
+                " column(s) don't have enough variance.\n",
+                printString(colnames(object)[which(fail)], max = 10L)
+            ))
+        }
     }
     switch(
         EXPR = scale,
@@ -205,53 +275,9 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # Ensure we're always using a dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
-        # Inform the user if any rows or columns contain all zeros. It's good
-        # practice to remove them before attempting to plot a heatmap.
-        zeroRows <- rowSums(mat) == 0L
-        if (any(zeroRows)) {
-            stop(paste0(
-                sum(zeroRows, na.rm = TRUE),
-                " row(s) containing all zeros detected:\n",
-                printString(rownames(mat)[which(zeroRows)], max = 10L), "\n"
-            ))
-        }
-        zeroCols <- colSums(mat) == 0L
-        if (any(zeroCols)) {
-            stop(paste0(
-                sum(zeroCols, na.rm = TRUE),
-                " column(s) containing all zeros detected:\n",
-                printString(colnames(mat)[which(zeroCols)], max = 10L)
-            ))
-        }
-
-        # Require sufficient variation per row or column when the user is
-        # attempting to apply scaling (z-score).
-        varThreshold <- 0L
-        if (scale == "row") {
-            message("Scaling per row.")
-            pass <- rowVars(mat) > varThreshold
-            if (!all(pass)) {
-                fail <- !pass
-                stop(paste0(
-                    "Rows cannot be scaled.\n",
-                    sum(fail, na.rm = TRUE),
-                    " rows(s) don't have enough variance.\n",
-                    printString(rownames(mat)[which(fail)], max = 10L)
-                ))
-            }
-        } else if (scale == "column") {
-            message("Scaling per column.")
-            pass <- colVars(mat) > varThreshold
-            if (!all(pass)) {
-                fail <- !pass
-                stop(paste(
-                    "Columns cannot be scaled.\n",
-                    sum(fail, na.rm = TRUE),
-                    " column(s) don't have enough variance.\n",
-                    printString(colnames(mat)[which(fail)], max = 10L)
-                ))
-            }
-        }
+        # Ensure the user isn't passing in a matrix with any rows or columns
+        # containing all zeros.
+        .assertIsNonZero(mat)
 
         # Pre-process the matrix by applying row/column scaling, if desired.
         # Run this step before hierarchical clustering (i.e. calculating the
@@ -265,7 +291,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # performing hclust calculations on own here.
         if (isTRUE(clusterRows) || isTRUE(clusterCols)) {
             message(paste0(
-                "Performing hierarchical clustering with ",
+                "Applying hierarchical clustering with ",
                 "stats::hclust(method = ", deparse(clusteringMethod), ")."
             ))
             if (isTRUE(clusterRows)) {
