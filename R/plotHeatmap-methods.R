@@ -152,7 +152,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # `rowSums()` or `colSums()` but using the variation detection approach
         # here is less error prone. Note that setting the threshold equal to
         # zero can still generate `hclust()` NA errors.
-        varThreshold <- 1E-10
+        varThreshold <- 1E-1
         if (scale == "row") {
             message("Scaling per row.")
             novar <- rowVars(mat) < varThreshold
