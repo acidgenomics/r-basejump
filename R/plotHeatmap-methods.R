@@ -1,17 +1,32 @@
-# DESeqAnalysis `plotDEGHeatmap()` can still result in hclust NA...
-# https://stackoverflow.com/questions/20438019
-
-
-
 #' Plot Heatmap
 #'
 #' Construct a simple heatmap.
 #'
 #' @section Hierarchical clustering:
 #'
-#' By default, row- and column-wise hierarchical clustering is performed using
-#' the Ward method, but this behavior can be overrided by setting `clusterRows`
-#' or `clusterCols` to `FALSE`.
+#' Row- and column-wise hierarchical clustering is performed when `clusterRows`
+#' and/or `clusterCols` are set to `TRUE`. Internally, this calls `hclust()`,
+#' and defaults to the Ward method.
+#'
+#' Automatic hierarchical clustering of rows and/or columns can error for some
+#' datasets. When this occurs, you'll likely see this error:
+#'
+#' ```
+#' Error in hclust(d, method = method) :
+#' NA/NaN/Inf in foreign function call
+#' ```
+#'
+#' In this case, either set `clusterRows` and/or `clusterCols` to `FALSE`, or
+#' you can attempt to pass an `hclust` object to these arguments. This is
+#' recommended as an alternate approach to be used with `pheatmap::pheatmap()`,
+#' which is called internally by our plotting code. Here's how this can be
+#' accomplished:
+#'
+#' ```
+#' mat <- assay(mat)
+#' dist <- dist(mat)
+#' hclust <- hclust(dist, method = "ward.D2")
+#' ```
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
@@ -96,8 +111,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         assay = 1L,
         interestingGroups = NULL,
         scale = c("none", "row", "column"),
-        clusterRows = TRUE,
-        clusterCols = TRUE,
+        clusterRows = FALSE,
+        clusterCols = FALSE,
         showRownames = FALSE,
         showColnames = TRUE,
         treeheightRow = 0L,
@@ -146,36 +161,52 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # Ensure we're always using a dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
-        # Drop rows or columns without variation when scaling is requested.
-        # Inform the number about the number dropped as a message. Alternately,
-        # can attempt to drop zero count rows/columns when scaling using
-        # `rowSums()` or `colSums()` but using the variation detection approach
-        # here is less error prone. Note that setting the threshold equal to
-        # zero can still generate `hclust()` NA errors.
-        varThreshold <- 1E-1
+        # Always error if any rows or columns contain all zeros. It's good
+        # practice to remove them before attempting to plot a heatmap.
+        zeroRows <- rowSums(mat) == 0L
+        if (any(zeroRows)) {
+            stop(paste0(
+                sum(zeroRows, na.rm = TRUE),
+                " row(s) containing all zeros detected:\n",
+                printString(rownames(mat)[which(zeroRows)], max = 10L)
+            ))
+        }
+        zeroCols <- colSums(mat) == 0L
+        if (any(zeroCols)) {
+            stop(paste0(
+                sum(zeroCols, na.rm = TRUE),
+                " column(s) containing all zeros detected:\n",
+                printString(colnames(mat)[which(zeroCols)], max = 10L)
+            ))
+        }
+
+        # Check for sufficient variation per row or column when the user is
+        # attempting to apply scaling (z-score).
+        # FIXME Attempt to calculate the distance matrix and ensure that everything is kosher...
+        varThreshold <- 0L
         if (scale == "row") {
             message("Scaling per row.")
-            novar <- rowVars(mat) < varThreshold
-            if (any(novar)) {
-                message(paste(
-                    "Dropping", sum(novar, na.rm = TRUE), "row(s)",
-                    "that have no variation prior to scaling."
+            pass <- rowVars(mat) > varThreshold
+            if (!all(pass)) {
+                fail <- !pass
+                stop(paste0(
+                    "Rows cannot be scaled.\n",
+                    sum(fail, na.rm = TRUE),
+                    " rows(s) don't have enough variance.\n",
+                    printString(rownames(mat)[which(fail)], max = 10L)
                 ))
-                keep <- !novar
-                stopifnot(length(keep) > 1L)
-                mat <- mat[keep, , drop = FALSE]
             }
         } else if (scale == "column") {
             message("Scaling per column.")
-            novar <- colVars(mat) < varThreshold
-            if (any(novar)) {
-                message(paste(
-                    "Dropping", sum(novar, na.rm = TRUE), "column(s)",
-                    "that have no variation prior to scaling."
+            pass <- colVars(mat) > varThreshold
+            if (!all(pass)) {
+                fail <- !pass
+                stop(paste(
+                    "Columns cannot be scaled.\n",
+                    sum(fail, na.rm = TRUE),
+                    " column(s) don't have enough variance.\n",
+                    printString(colnames(mat)[which(fail)], max = 10L)
                 ))
-                keep <- !novar
-                stopifnot(length(keep) > 1L)
-                keep <- mat[, keep, drop = FALSE]
             }
         }
 
@@ -188,7 +219,6 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         )
         annotationCol <- x[["annotationCol"]]
         annotationColors <- x[["annotationColors"]]
-        rm(x)
 
         color <- .pheatmapColorPalette(color)
 
