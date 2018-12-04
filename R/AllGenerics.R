@@ -575,18 +575,15 @@ setGeneric(
 # plotDEGHeatmap ===============================================================
 #' Differentially Expressed Gene Heatmap
 #'
-#' @details
-#' This function is a simplified version of `plotHeatmap()` that is optimized
+#' This function is an extension of `plotHeatmap()` that is optimized
 #' for automatic handling differentially expressed genes, rather than requiring
 #' manual input of a gene vector. All of the optional parameters for
-#' `plotHeatmap` are also available to this function.
+#' `plotHeatmap()` are also supported by this function.
 #'
 #' To adjust the annotation columns, modify the `colData` of the `counts`
 #' argument, which must contain/extend a `SummarizedExperiment`.
 #'
-#' @note Post hoc alpha level and LFC threshold cutoffs are not recommended.
-#'
-#' @inherit plotHeatmap
+#' @inherit plotHeatmap params return
 #' @inheritParams params
 #' @export
 setGeneric(
@@ -600,9 +597,18 @@ setGeneric(
 
 # plotDEGPCA ===================================================================
 #' Plot DEG PCA
+#'
+#' This function is an extension of `plotPCA()` that is optimized for automatic
+#' handling of differentially expressed genes, rather than requiring manual
+#' input of a gene vector or subset object. All of the optional parameters for
+#' `plotPCA()` are also supported by this function.
+#'
+#' To adjust the annotation columns, modify the `colData` of the `counts`
+#' argument, which must contain/extend a `SummarizedExperiment`.
+#'
+#' @inherit plotPCA params return
 #' @inheritParams params
 #' @export
-#' @return `ggplot`.
 setGeneric(
     name = "plotDEGPCA",
     def = function(object, ...) {

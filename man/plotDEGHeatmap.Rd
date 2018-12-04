@@ -16,75 +16,12 @@ arguments should be formatted in camel case, not snake case.}
 \code{pheatmap}.
 }
 \description{
-Construct a simple heatmap.
-}
-\details{
-This function is a simplified version of \code{plotHeatmap()} that is optimized
+This function is an extension of \code{plotHeatmap()} that is optimized
 for automatic handling differentially expressed genes, rather than requiring
 manual input of a gene vector. All of the optional parameters for
-\code{plotHeatmap} are also available to this function.
-
+\code{plotHeatmap()} are also supported by this function.
+}
+\details{
 To adjust the annotation columns, modify the \code{colData} of the \code{counts}
 argument, which must contain/extend a \code{SummarizedExperiment}.
-}
-\note{
-Post hoc alpha level and LFC threshold cutoffs are not recommended.
-}
-\section{Hierarchical clustering}{
-
-
-Row- and column-wise hierarchical clustering is performed when \code{clusterRows}
-and/or \code{clusterCols} are set to \code{TRUE}. Internally, this calls \code{hclust()},
-and defaults to the Ward method.
-
-Automatic hierarchical clustering of rows and/or columns can error for some
-datasets. When this occurs, you'll likely see this error:\preformatted{Error in hclust(d, method = method) :
-NA/NaN/Inf in foreign function call
-}
-
-In this case, either set \code{clusterRows} and/or \code{clusterCols} to \code{FALSE}, or
-you can attempt to pass an \code{hclust} object to these arguments. This is
-recommended as an alternate approach to be used with \code{pheatmap::pheatmap()},
-which is called internally by our plotting code. Here's how this can be
-accomplished:\preformatted{mat <- assay(mat)
-dist <- dist(mat)
-hclust <- hclust(dist, method = "ward.D2")
-}
-}
-
-\examples{
-data(rse, sce)
-
-## SummarizedExperiment ====
-plotHeatmap(rse)
-plotCorrelationHeatmap(rse)
-plotQuantileHeatmap(rse)
-
-## Disable column clustering.
-plotHeatmap(rse, clusterCols = FALSE)
-
-## Using pheatmap default colors.
-plotHeatmap(rse, color = NULL, legendColor = NULL)
-
-## Using hexadecimal color input.
-library(RColorBrewer)
-purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-plotHeatmap(rse, color = purple_orange)
-
-## SingleCellExperiment ====
-plotHeatmap(sce)
-plotCorrelationHeatmap(sce)
-plotQuantileHeatmap(sce)
-}
-\seealso{
-\itemize{
-\item \code{pheatmap::pheatmap()}.
-\item \code{RColorBrewer::brewer.pal()}.
-}
-
-\itemize{
-\item \code{pheatmap::pheatmap()}.
-\item \code{stats::cor()}.
-\item \code{stats::hclust()}.
-}
 }
