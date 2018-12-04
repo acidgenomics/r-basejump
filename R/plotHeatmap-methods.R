@@ -1,3 +1,11 @@
+# FIXME
+# loadData(se, dir = "~")
+# plotHeatmap(se, scale = "row", clusterRows = TRUE)
+# Error in hclust(d, method = method) :
+# NA/NaN/Inf in foreign function call (arg 11)
+
+
+
 #' Plot Heatmap
 #'
 #' Construct a simple heatmap.
@@ -111,6 +119,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         assay = 1L,
         interestingGroups = NULL,
         scale = c("none", "row", "column"),
+        clusteringMethod = "ward.D2",
         clusterRows = FALSE,
         clusterCols = FALSE,
         showRownames = FALSE,
@@ -160,6 +169,39 @@ plotHeatmap.SummarizedExperiment <-  # nolint
 
         # Ensure we're always using a dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
+
+        # Generate `hclust` object for hierarchical clustering.
+        # Note that `pheatmap()` doesn't always handle this perfectly, so we're
+        # calculating on our own here instead.
+        if (isTRUE(clusterRows) || isTRUE(clusterCols)) {
+            message(paste0(
+                "Performing hierarchical clustering with ",
+                "stats::hclust(method = ", deparse(clusteringMethod), ")."
+            ))
+            if (isTRUE(clusterRows)) {
+                clusterRows <- tryCatch(
+                    expr = hclust(
+                        d = dist(mat),
+                        method = clusteringMethod
+                    ),
+                    error = function(e) {
+                        stop("hclust() row calculation failed.")
+                    }
+                )
+            }
+            if (isTRUE(clusterCols)) {
+                clusterCols <- tryCatch(
+                    expr = hclust(
+                        # Note the use of `t()` here.
+                        d = dist(t(mat)),
+                        method = clusteringMethod
+                    ),
+                    error = function(e) {
+                        stop("hclust() column calculation failed.")
+                    }
+                )
+            }
+        }
 
         # Always error if any rows or columns contain all zeros. It's good
         # practice to remove them before attempting to plot a heatmap.
