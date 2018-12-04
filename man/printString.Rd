@@ -9,7 +9,8 @@ printString(x, max = 100L)
 \arguments{
 \item{x}{\code{atomic}.}
 
-\item{max}{\code{scalar integer}. Maximum length of vector.}
+\item{max}{\code{scalar integer}. Maximum length of vector. Works like
+\code{getOption("max.print")} without having to set globally.}
 }
 \value{
 \code{string}.
