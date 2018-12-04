@@ -21,22 +21,25 @@ S4Vectors::decode
 
 decode.DataFrame <-  # nolint
     function(x) {
-        DataFrame(lapply(
-            X = x,
-            FUN = function(x) {
-                if (is(x, "Rle")) {
-                    x <- decode(x)
-                    if (is.factor(x)) {
-                        x <- droplevels(x)
+        DataFrame(
+            lapply(
+                X = x,
+                FUN = function(x) {
+                    if (is(x, "Rle")) {
+                        x <- decode(x)
+                        if (is.factor(x)) {
+                            x <- droplevels(x)
+                        }
+                        x
+                    } else if (!is.atomic(x)) {
+                        I(x)
+                    } else {
+                        x
                     }
-                    x
-                } else if (!is.atomic(x)) {
-                    I(x)
-                } else {
-                    x
                 }
-            }
-        ))
+            ),
+            row.names = rownames(x)
+        )
     }
 
 
@@ -76,25 +79,28 @@ NULL
 
 encode.DataFrame <-  # nolint
     function(x) {
-        DataFrame(lapply(
-            X = x,
-            FUN = function(x) {
-                # Decode Rle, if necessary.
-                if (is(x, "Rle")) {
-                    x <- decode(x)
+        DataFrame(
+            lapply(
+                X = x,
+                FUN = function(x) {
+                    # Decode Rle, if necessary.
+                    if (is(x, "Rle")) {
+                        x <- decode(x)
+                    }
+                    # Adjust (drop) factor levels, if necessary.
+                    if (is.factor(x)) {
+                        x <- droplevels(x)
+                    }
+                    # Use run-length encoding on atomics.
+                    if (is.atomic(x)) {
+                        Rle(x)
+                    } else {
+                        I(x)
+                    }
                 }
-                # Adjust (drop) factor levels, if necessary.
-                if (is.factor(x)) {
-                    x <- droplevels(x)
-                }
-                # Use run-length encoding on atomics.
-                if (is.atomic(x)) {
-                    Rle(x)
-                } else {
-                    I(x)
-                }
-            }
-        ))
+            ),
+            row.names = rownames(x)
+        )
     }
 
 
