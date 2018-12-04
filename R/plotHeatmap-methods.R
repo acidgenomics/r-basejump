@@ -140,9 +140,9 @@ NULL
     }
     switch(
         EXPR = scale,
-        none = mat,
-        row = .scaleRows(mat),
-        column = t(.scaleRows(t(mat)))
+        none = object,
+        row = .scaleRows(object),
+        column = t(.scaleRows(t(object)))
     )
 }
 
