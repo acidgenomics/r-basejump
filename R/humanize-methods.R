@@ -28,6 +28,7 @@ NULL
 
 
 humanize.SummarizedExperiment <- function(object) {
+    message("Making the rownames and colnames human readable.")
     object %>%
         convertGenesToSymbols() %>%
         convertSampleIDsToNames()
