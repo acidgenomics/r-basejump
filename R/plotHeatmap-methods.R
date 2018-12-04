@@ -167,7 +167,7 @@ NULL
     assert_is_matrix(object)
     scale <- match.arg(scale)
     if (scale != "none") {
-        message(paste0("Scaling matrix per ", scale, "."))
+        message(paste0("Scaling matrix per ", scale, " (z-score)."))
     }
     # Assert checks to look for sufficient variance when the user is attempting
     # to apply scaling (z-score).
@@ -212,8 +212,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         interestingGroups = NULL,
         scale = c("none", "row", "column"),
         clusteringMethod = "ward.D2",
-        clusterRows = FALSE,
-        clusterCols = FALSE,
+        clusterRows = TRUE,
+        clusterCols = TRUE,
         showRownames = FALSE,
         showColnames = TRUE,
         treeheightRow = 50L,  # set to `0L` to disable.
@@ -278,21 +278,27 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # performing hclust calculations on own here.
         if (isTRUE(clusterRows) || isTRUE(clusterCols)) {
             message(paste0(
-                "Applying hierarchical clustering with ",
-                "stats::hclust(method = ", deparse(clusteringMethod), ")."
+                "Performing hierarchical clustering.\n",
+                "Using stats::hclust(method = ", deparse(clusteringMethod), ")."
             ))
             if (isTRUE(clusterRows)) {
+                message("Arranging rows using hclust.")
                 clusterRows <- tryCatch(
                     expr = hclust(
                         d = dist(mat),
                         method = clusteringMethod
                     ),
                     error = function(e) {
-                        stop("hclust() row calculation failed.")
+                        warning(
+                            "hclust() row calculation failed. Skipping.",
+                            call. = FALSE
+                        )
+                        FALSE
                     }
                 )
             }
             if (isTRUE(clusterCols)) {
+                message("Arranging columns using hclust.")
                 clusterCols <- tryCatch(
                     expr = hclust(
                         # Note the use of `t()` here.
@@ -300,7 +306,11 @@ plotHeatmap.SummarizedExperiment <-  # nolint
                         method = clusteringMethod
                     ),
                     error = function(e) {
-                        stop("hclust() column calculation failed.")
+                        warning(
+                            "hclust() column calculation failed. Skipping.",
+                            call. = FALSE
+                        )
+                        FALSE
                     }
                 )
             }
