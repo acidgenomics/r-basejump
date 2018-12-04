@@ -1,3 +1,10 @@
+# TODO Add automatic `gene2symbol` and `tx2gene` CSV export support for
+# SummarizedExperiment, when possible.
+
+# FIXME Ensure we're handling Rle columns properly here.
+
+
+
 #' Export
 #'
 #' Export data out of R and write to disk.
