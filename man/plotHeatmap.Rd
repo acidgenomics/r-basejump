@@ -21,17 +21,19 @@ plotQuantileHeatmap(object, ...)
 
 \S4method{plotHeatmap}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
-  clusterRows = FALSE, clusterCols = FALSE, showRownames = FALSE,
-  showColnames = TRUE, treeheightRow = 50L, treeheightCol = 50L,
-  color = viridis::viridis, legendColor = viridis::viridis,
-  borderColor = NULL, title = NULL, ...)
+  clusteringMethod = "ward.D2", clusterRows = FALSE,
+  clusterCols = FALSE, showRownames = FALSE, showColnames = TRUE,
+  treeheightRow = 50L, treeheightCol = 50L, color = viridis::viridis,
+  legendColor = viridis::viridis, borderColor = NULL, title = NULL,
+  ...)
 
 \S4method{plotHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
-  clusterRows = FALSE, clusterCols = FALSE, showRownames = FALSE,
-  showColnames = TRUE, treeheightRow = 50L, treeheightCol = 50L,
-  color = viridis::viridis, legendColor = viridis::viridis,
-  borderColor = NULL, title = NULL, ...)
+  clusteringMethod = "ward.D2", clusterRows = FALSE,
+  clusterCols = FALSE, showRownames = FALSE, showColnames = TRUE,
+  treeheightRow = 50L, treeheightCol = 50L, color = viridis::viridis,
+  legendColor = viridis::viridis, borderColor = NULL, title = NULL,
+  ...)
 
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
@@ -78,6 +80,9 @@ define the samples. If left unset, defaults to \code{sampleName}.}
 either the row or column direction ("\code{row}", "\code{column}"), or remain
 unscaled ("\code{none}").}
 
+\item{clusteringMethod}{\code{string}. Clustering method. Accepts the same values
+as \code{stats::hclust()}.}
+
 \item{clusterRows, clusterCols}{\code{boolean}. Arrange with hierarchical
 clustering.}
 
@@ -112,9 +117,6 @@ improved aesthetics.}
 \item{method}{\code{string}. Correlation coefficient (or covariance) method to be
 computed. Defaults to "\code{pearson}" but "\code{spearman}" can also be used.
 Consult the \code{stats::cor()} documentation for more information.}
-
-\item{clusteringMethod}{\code{string}. Clustering method. Accepts the same values
-as \code{stats::hclust()}.}
 
 \item{n}{\code{scalar integer}. The number of quantile breaks to create.}
 
