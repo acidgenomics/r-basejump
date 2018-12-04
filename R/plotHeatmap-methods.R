@@ -4,6 +4,15 @@
 # Error in hclust(d, method = method) :
 # NA/NaN/Inf in foreign function call (arg 11)
 
+# https://github.com/raivokolde/pheatmap/blob/master/R/pheatmap.r
+# For hclust, I think we need to scale the matrix first and then calcualte.
+#
+# Correct. We need to "pre-process" (i.e. scale) the matrix before attempting
+# to calculate distance matrix.
+#
+# kmeans_pheatmap
+# Look into kmeans approach with `kmeans_k`.
+
 
 
 #' Plot Heatmap
@@ -113,6 +122,32 @@ NULL
 
 
 
+# Modified version of `pheatmap:::scale_rows()`.
+.scaleRows <- function(object) {
+    mean <- apply(object, MARGIN = 1L, FUN = mean, na.rm = TRUE)
+    sd <- apply(object, MARGIN = 1L, FUN = sd, na.rm = TRUE)
+    (object - mean) / sd
+}
+
+
+
+# Modified version of `pheatmap:::scale_mat()`.
+.scaleMatrix <- function(object, scale = c("none", "row", "column")) {
+    assert_is_matrix(object)
+    scale <- match.arg(scale)
+    if (scale != "none") {
+        message(paste0("Scaling matrix by ", scale, "."))
+    }
+    switch(
+        EXPR = scale,
+        none = mat,
+        row = .scaleRows(mat),
+        column = t(.scaleRows(t(mat)))
+    )
+}
+
+
+
 plotHeatmap.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -170,9 +205,64 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # Ensure we're always using a dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
-        # Generate `hclust` object for hierarchical clustering.
-        # Note that `pheatmap()` doesn't always handle this perfectly, so we're
-        # calculating on our own here instead.
+        # Inform the user if any rows or columns contain all zeros. It's good
+        # practice to remove them before attempting to plot a heatmap.
+        zeroRows <- rowSums(mat) == 0L
+        if (any(zeroRows)) {
+            stop(paste0(
+                sum(zeroRows, na.rm = TRUE),
+                " row(s) containing all zeros detected:\n",
+                printString(rownames(mat)[which(zeroRows)], max = 10L), "\n"
+            ))
+        }
+        zeroCols <- colSums(mat) == 0L
+        if (any(zeroCols)) {
+            stop(paste0(
+                sum(zeroCols, na.rm = TRUE),
+                " column(s) containing all zeros detected:\n",
+                printString(colnames(mat)[which(zeroCols)], max = 10L)
+            ))
+        }
+
+        # Require sufficient variation per row or column when the user is
+        # attempting to apply scaling (z-score).
+        varThreshold <- 0L
+        if (scale == "row") {
+            message("Scaling per row.")
+            pass <- rowVars(mat) > varThreshold
+            if (!all(pass)) {
+                fail <- !pass
+                stop(paste0(
+                    "Rows cannot be scaled.\n",
+                    sum(fail, na.rm = TRUE),
+                    " rows(s) don't have enough variance.\n",
+                    printString(rownames(mat)[which(fail)], max = 10L)
+                ))
+            }
+        } else if (scale == "column") {
+            message("Scaling per column.")
+            pass <- colVars(mat) > varThreshold
+            if (!all(pass)) {
+                fail <- !pass
+                stop(paste(
+                    "Columns cannot be scaled.\n",
+                    sum(fail, na.rm = TRUE),
+                    " column(s) don't have enough variance.\n",
+                    printString(colnames(mat)[which(fail)], max = 10L)
+                ))
+            }
+        }
+
+        # Pre-process the matrix by applying row/column scaling, if desired.
+        # Run this step before hierarchical clustering (i.e. calculating the
+        # distance matrix).
+        mat <- .scaleMatrix(mat, scale = scale)
+
+        # Now we're ready to perform hierarchical clustering. Generate `hclust`
+        # objects for rows and columns that we'll pass to pheatmap. Note that
+        # pheatmap supports `clusterRows = TRUE` and `clusterCols = TRUE`, but
+        # these have been found to error for some datasets. Therefore, we're
+        # performing hclust calculations on own here.
         if (isTRUE(clusterRows) || isTRUE(clusterCols)) {
             message(paste0(
                 "Performing hierarchical clustering with ",
@@ -200,55 +290,6 @@ plotHeatmap.SummarizedExperiment <-  # nolint
                         stop("hclust() column calculation failed.")
                     }
                 )
-            }
-        }
-
-        # Always error if any rows or columns contain all zeros. It's good
-        # practice to remove them before attempting to plot a heatmap.
-        zeroRows <- rowSums(mat) == 0L
-        if (any(zeroRows)) {
-            stop(paste0(
-                sum(zeroRows, na.rm = TRUE),
-                " row(s) containing all zeros detected:\n",
-                printString(rownames(mat)[which(zeroRows)], max = 10L)
-            ))
-        }
-        zeroCols <- colSums(mat) == 0L
-        if (any(zeroCols)) {
-            stop(paste0(
-                sum(zeroCols, na.rm = TRUE),
-                " column(s) containing all zeros detected:\n",
-                printString(colnames(mat)[which(zeroCols)], max = 10L)
-            ))
-        }
-
-        # Check for sufficient variation per row or column when the user is
-        # attempting to apply scaling (z-score).
-        # FIXME Attempt to calculate the distance matrix and ensure that everything is kosher...
-        varThreshold <- 0L
-        if (scale == "row") {
-            message("Scaling per row.")
-            pass <- rowVars(mat) > varThreshold
-            if (!all(pass)) {
-                fail <- !pass
-                stop(paste0(
-                    "Rows cannot be scaled.\n",
-                    sum(fail, na.rm = TRUE),
-                    " rows(s) don't have enough variance.\n",
-                    printString(rownames(mat)[which(fail)], max = 10L)
-                ))
-            }
-        } else if (scale == "column") {
-            message("Scaling per column.")
-            pass <- colVars(mat) > varThreshold
-            if (!all(pass)) {
-                fail <- !pass
-                stop(paste(
-                    "Columns cannot be scaled.\n",
-                    sum(fail, na.rm = TRUE),
-                    " column(s) don't have enough variance.\n",
-                    printString(colnames(mat)[which(fail)], max = 10L)
-                ))
             }
         }
 
@@ -289,7 +330,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             clusterRows = clusterRows,
             color = color,
             main = title,
-            scale = scale,
+            # We're already applied scaling (see above).
+            scale = "none",
             showColnames = showColnames,
             showRownames = showRownames,
             treeheightCol = treeheightCol,
