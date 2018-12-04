@@ -22,14 +22,14 @@ plotQuantileHeatmap(object, ...)
 \S4method{plotHeatmap}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusterRows = FALSE, clusterCols = FALSE, showRownames = FALSE,
-  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
+  showColnames = TRUE, treeheightRow = 50L, treeheightCol = 50L,
   color = viridis::viridis, legendColor = viridis::viridis,
   borderColor = NULL, title = NULL, ...)
 
 \S4method{plotHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusterRows = FALSE, clusterCols = FALSE, showRownames = FALSE,
-  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
+  showColnames = TRUE, treeheightRow = 50L, treeheightCol = 50L,
   color = viridis::viridis, legendColor = viridis::viridis,
   borderColor = NULL, title = NULL, ...)
 

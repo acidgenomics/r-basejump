@@ -115,8 +115,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         clusterCols = FALSE,
         showRownames = FALSE,
         showColnames = TRUE,
-        treeheightRow = 0L,
-        treeheightCol = 50L,
+        treeheightRow = 50L,  # set to `0L` to disable.
+        treeheightCol = 50L,  # set to `0L` to disable.
         color = viridis::viridis,
         legendColor = viridis::viridis,
         borderColor = NULL,
