@@ -26,8 +26,8 @@
 #' @inheritParams rio::export
 #'
 #' @param compress `boolean`. Apply gzip compression to all files.
-#' @param human `boolean`. Automatically convert gene IDs to gene symbols in the
-#'   `rownames()` and sample IDs to sample names in the `colnames()`.
+#' @param humanize `boolean`. Automatically convert gene IDs to gene symbols in
+#'   the `rownames()` and sample IDs to sample names in the `colnames()`.
 #' @param name `string`. Name to use on disk. If left `NULL`, will use the name
 #'   of the object instead.
 #' @param slotNames `character`. Names of slots to include when writing to disk.
@@ -66,6 +66,7 @@ NULL
 
 
 
+# ANY : matrix, data.frame, DataFrame, etc. ====================================
 # Coerce to tibble in this method to always preserve rownames.
 # Note that `rio::export()` does not preserve rownames by default.
 export.ANY <-  # nolint
@@ -124,6 +125,7 @@ setMethod(
 
 
 
+# sparseMatrix =================================================================
 # Note that "file" is referring to the matrix file.
 # The correponding column and row sidecar files are generated automatically.
 # Consider adding HDF5 support in a future update.
@@ -206,14 +208,123 @@ setMethod(
 
 
 
+# SummarizedExperiment =========================================================
+.export.assays <- function(
+    x,
+    name,
+    dir,
+    compress,
+    humanize
+) {
+    assayNames <- assayNames(x)
+    assert_is_character(assayNames)
+    message(paste("Exporting assays:", toString(assayNames)))
+    if (isTRUE(humanize)) {
+        g2s <- Gene2Symbol(x)
+    } else {
+        g2s <- NULL
+    }
+    out <- lapply(
+        X = assayNames,
+        FUN = function(name, dir, g2s) {
+            file <- file.path(dir, name)
+            assay <- assays(x)[[name]]
+
+            # For humanize mode, coerce to data frame and cbind the
+            # gene-to-symbol mappings to the left side.
+            if (!is.null(g2s)) {
+                message("Adding `geneID` and `geneName` columns.")
+                assay <- as(assay, "DataFrame")
+                assert_are_identical(rownames(assay), rownames(g2s))
+                assert_are_disjoint_sets(colnames(assay), colnames(g2s))
+                assay <- cbind(g2s, assay)
+                rownames(assay) <- NULL
+            }
+
+            # Dynamically set the file name based on the assay type.
+            if (is(assay, "sparseMatrix")) {
+                format <- "mtx"
+            } else {
+                format <- "csv"
+            }
+            if (isTRUE(compress)) {
+                format <- paste0(format, ".gz")
+            }
+            file <- paste0(file, ".", format)
+
+            export(assay, file = file)
+        },
+        dir = initDir(file.path(dir, "assays")),
+        g2s = g2s
+    )
+    names(out) <- assayNames
+    out
+}
+
+
+
+# FIXME This step will break if `rowData()` doesn't contain `entrezID`.
+.export.Ensembl2Entrez <- function(x, ext, dir) {
+    export(
+        x = Ensembl2Entrez(x),
+        file = file.path(dir, paste0("Ensembl2Entrez", ext))
+    )
+}
+
+
+
+.export.Gene2Symbol <- function(x, ext, dir) {
+    export(
+        x = Gene2Symbol(x),
+        file = file.path(dir, paste0("Gene2Symbol", ext))
+    )
+}
+
+
+
+.export.colData <- function(x, ext, dir) {
+    export(
+        x = sanitizeColData(colData(x)),
+        file = file.path(dir, paste0("colData", ext))
+    )
+}
+
+
+
+# NOTE: The standard `rowData()` output is okay but doesn't include genomic
+# ranges coordinates. That's why we're coercing from `rowRanges()` for RSE.
+.export.rowData <- function(x, ext, dir) {
+    if (is(x, "RangedSummarizedExperiment")) {
+        data <- rowRanges(x)
+    } else {
+        data <- rowData(x)
+    }
+    data <- sanitizeRowData(data)
+    assert_are_identical(rownames(data), rownames(x))
+    export(x = data, file = file.path(dir, paste0("rowData", ext)))
+}
+
+
+
+# Note that for humanize mode, we're outputting both the `geneID` and `geneName`
+# columns per matrix. This requires gene-to-symbol mappings to be defined in
+# `rowData()`, otherwise the function will intentionally error. In this case,
+# we're also consistently not using a "rowname" column in the output.
+# TODO Include 1:1 Ensembl2Entrez mappings in output.
 export.SummarizedExperiment <-  # nolint
     function(
         x,
         name = NULL,
         dir = ".",
         compress = FALSE,
-        human = FALSE,
-        slotNames = c("assays", "colData", "rowData")
+        humanize = FALSE,
+        slotNames = c(
+            "assays",
+            "colData",
+            "rowData",
+            "Gene2Symbol",
+            "Ensembl2Entrez"
+        )
     ) {
         call <- standardizeCall()
         assertIsStringOrNULL(name)
@@ -222,87 +333,89 @@ export.SummarizedExperiment <-  # nolint
         }
         dir <- initDir(file.path(dir, name))
         assert_is_a_bool(compress)
-        assert_is_a_bool(human)
-        # Require at least 1 of the slotNames to be defined for export.
-        # Note that we're not using `match.arg()` here.
-        assert_is_character(slotNames)
-        assert_is_subset(slotNames, c("assays", "rowData", "colData"))
+        assert_is_a_bool(humanize)
+        assert_that(
+            is.character(slotNames),
+            # Require at least 1 of the slotNames to be defined for export.
+            # Note that we're not using `match.arg()` here.
+            all(slotNames %in% eval(formals()[["slotNames"]]))
+        )
 
-        # Note that valid SE objects don't have to contain named assays
-        # (e.g. DESeqTransform). In the event that an SE object contains a
-        # single, unnamed assay, we make sure to rename it internally to
-        # "assay" before exporting.
-        if (is.null(assayNames(x))) {
-            # Be sure to run this step before attempting `humanize()` call for
-            # `human = TRUE`, because the dimnames won't necessarily be valid,
-            # and the `assayNames<-()` function is strict.
-            assayNames(x) <- "assay"
-        }
-
+        # Return the file paths back to the user as a named list.
         files <- list()
 
+        # Set the desired output extension, depending on whether we need to
+        # enable compression. Always output consistently in CSV format.
         format <- "csv"
         if (isTRUE(compress)) {
             format <- paste0(format, ".gz")
         }
         ext <- paste0(".", format)
 
-        # Human readable data mode.
+        # Ensure the assays list is always named. Note that valid SE objects
+        # don't have to contain named assays (e.g. DESeqTransform). In the event
+        # that an SE object contains a single, unnamed assay, we make sure to
+        # rename it internally to "assay" before exporting.
+        if (is.null(assayNames(x))) {
+            # Be sure to run this step before attempting `humanize()` call for
+            # `humanize = TRUE`, because the dimnames won't necessarily be
+            # valid, and the `assayNames<-()` function is strict.
+            assayNames(x) <- "assay"
+        }
+
+        # Human readable data mode (humanize).
         # Ensure colnames are converted to sample names.
         # Ensure rownames are converted to gene names (symbols).
         # Run this step last on SE objects because the dimnames will no longer
         # be valid, and this can cause other SE methods to error.
-        if (isTRUE(human)) {
+        if (isTRUE(humanize)) {
             x <- humanize(x)
         }
 
-        # Assays (count matrices).
+        # Assays (count matrices). Note that for humanize mode, we're coercing
+        # to a data frame and ensuring that both geneID and geneName columns
+        # are defined at the beginning. This makes re-import of the data a
+        # little more tricky because we no longer have a single rowname column,
+        # but it is a lot easier for non-bioinformaticians to work with.
         if ("assays" %in% slotNames) {
-            assayNames <- assayNames(x)
-            assert_is_character(assayNames)
-            message(paste("Exporting assays:", toString(assayNames)))
-            files[["assays"]] <- lapply(
-                X = assayNames,
-                FUN = function(name, dir) {
-                    file <- file.path(dir, name)
-                    assay <- assays(x)[[name]]
-                    if (is(assay, "matrix")) {
-                        format <- "csv"
-                    } else if (is(assay, "sparseMatrix")) {
-                        format <- "mtx"
-                    }
-                    if (isTRUE(compress)) {
-                        format <- paste0(format, ".gz")
-                    }
-                    file <- paste0(file, ".", format)
-                    export(assay, file = file)
-                },
-                dir = initDir(file.path(dir, "assays"))
-            )
-            names(files[["assays"]]) <- assayNames
-        }
-
-        # Row annotations.
-        if ("rowData" %in% slotNames) {
-            rowData <- rowData(x)
-            if (!is.null(rowData)) {
-                rownames(rowData) <- rownames(x)
-                files[["rowData"]] <- export(
-                    x = rowData,
-                    file = file.path(dir, paste0("rowData", ext))
+            files[["assays"]] <-
+                .export.assays(
+                    x = x,
+                    name = name,
+                    dir = dir,
+                    compress = compress,
+                    humanize = humanize
                 )
-            }
         }
 
         # Column annotations.
         if ("colData" %in% slotNames) {
-            colData <- colData(x)
-            if (!is.null(colData)) {
-                files[["colData"]] <- export(
-                    x = colData,
-                    file = file.path(dir, paste0("colData", ext))
-                )
-            }
+            files[["colData"]] <-
+                .export.colData(x = x, ext = ext, dir = dir)
+        }
+
+        # Row annotations.
+        if ("rowData" %in% slotNames) {
+            files[["rowData"]] <-
+                .export.rowData(x = x, ext = ext, dir = dir)
+        }
+        if ("Gene2Symbol" %in% slotNames) {
+            files[["Gene2Symbol"]] <- tryCatch(
+                expr = .export.Gene2Symbol(x = x, ext = ext, dir = dir),
+                error = function(e) {
+                    warning("Failed to export gene-to-symbol mappings.")
+                }
+            )
+        }
+        if ("Ensembl2Entrez" %in% slotNames) {
+            # Objects generated using GFF/GTF won't contain this.
+            files[["Ensembl2Entrez"]] <- tryCatch(
+                expr = .export.Ensembl2Entrez(x = x, ext = ext, dir = dir),
+                error = function(e) {
+                    warning("Failed to export Ensembl-to-Entrez mappings.")
+                    NULL
+                }
+            )
         }
 
         message(paste0("Exported ", name, " to ", dir, "."))
@@ -325,6 +438,7 @@ setMethod(
 
 
 
+# FIXME Need to define an export sampleData function here.
 export.SingleCellExperiment <-  # nolint
     function(x) {
         assert_is_a_bool(compress)
@@ -341,7 +455,7 @@ export.SingleCellExperiment <-  # nolint
         print(files)
 
         # Note that we don't have to worry about sanizing reduced dims when
-        # human mode is enabled, because the rownames map to cells, and the
+        # humanize mode is enabled, because the rownames map to cells, and the
         # colnames map to the dimensions of interest.
         reducedDimNames <- reducedDimNames(x)
         if (has_length(reducedDimNames)) {
