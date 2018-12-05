@@ -142,6 +142,7 @@ Collate:
     'dots.R'
     'emptyRanges.R'
     'export-methods.R'
+    'geneNames-methods.R'
     'geneSynonyms.R'
     'geometricMean-methods.R'
     'ggplot2.R'

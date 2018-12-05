@@ -257,6 +257,18 @@ setGeneric(
 
 
 
+# geneNames ====================================================================
+#' @rdname geneNames
+#' @export
+setGeneric(
+    name = "geneNames",
+    def = function(object, ...) {
+        standardGeneric("geneNames")
+    }
+)
+
+
+
 # geometricMean ================================================================
 #' @rdname geometricMean
 #' @export
