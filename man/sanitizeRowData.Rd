@@ -2,28 +2,36 @@
 % Please edit documentation in R/sanitizeRowData.R
 \name{sanitizeRowData}
 \alias{sanitizeRowData}
+\alias{sanitizeRowRanges}
 \title{Sanitize Row Data}
 \usage{
 sanitizeRowData(object)
+
+sanitizeRowRanges(object)
 }
 \arguments{
-\item{object}{Object.}
+\item{object}{\code{DataFrame} or \code{GRanges}.}
 }
 \value{
-\code{DataFrame}. Contains only \code{character} and \code{factor} columns.
+\code{DataFrame}. Contains only \code{atomic} columns.
 }
 \description{
-Coerce gene annotations to \code{DataFrame}, and keep only \code{atomic} columns.
-Complex columns (e.g. Entrez ID \code{list}) will fail to write to disk as CSVs.
-}
-\note{
-Supports \code{GRanges} and \code{DataFrame} class objects.
+Coerce row annotations (e.g. genes or transcripts) to \code{DataFrame}, and keep
+only \code{atomic} columns. Complex columns (e.g. Entrez ID \code{list}) will fail to
+write to disk as CSVs.
 }
 \examples{
 data(rse)
-from <- SummarizedExperiment::rowRanges(rse)
-colnames(S4Vectors::mcols(from))
-to <- sanitizeRowData(from)
-vapply(to, is.atomic, logical(1L))
-print(to)
+
+## rowData.
+x <- SummarizedExperiment::rowData(rse)
+x <- sanitizeRowData(x)
+vapply(x, is.atomic, logical(1L))
+print(x)
+
+## rowRanges.
+x <- SummarizedExperiment::rowRanges(rse)
+x <- sanitizeRowRanges(x)
+vapply(x, is.atomic, logical(1L))
+print(x)
 }
