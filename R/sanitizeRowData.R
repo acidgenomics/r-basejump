@@ -1,43 +1,36 @@
 #' Sanitize Row Data
 #'
-#' Coerce gene annotations to `DataFrame`, and keep only `atomic` columns.
-#' Complex columns (e.g. Entrez ID `list`) will fail to write to disk as CSVs.
+#' Coerce row annotations (e.g. genes or transcripts) to `DataFrame`, and keep
+#' only `atomic` columns. Complex columns (e.g. Entrez ID `list`) will fail to
+#' write to disk as CSVs.
 #'
-#' @note Supports `GRanges` and `DataFrame` class objects.
-#'
-#' @inheritParams params
 #' @export
 #'
-#' @return `DataFrame`. Contains only `character` and `factor` columns.
+#' @param object `DataFrame` or `GRanges`.
+#'
+#' @return `DataFrame`. Contains only `atomic` columns.
 #'
 #' @examples
 #' data(rse)
-#' from <- SummarizedExperiment::rowRanges(rse)
-#' colnames(S4Vectors::mcols(from))
-#' to <- sanitizeRowData(from)
-#' vapply(to, is.atomic, logical(1L))
-#' print(to)
+#'
+#' ## rowData.
+#' x <- SummarizedExperiment::rowData(rse)
+#' x <- sanitizeRowData(x)
+#' vapply(x, is.atomic, logical(1L))
+#' print(x)
+#'
+#' ## rowRanges.
+#' x <- SummarizedExperiment::rowRanges(rse)
+#' x <- sanitizeRowRanges(x)
+#' vapply(x, is.atomic, logical(1L))
+#' print(x)
 sanitizeRowData <- function(object) {
-    assert_is_any_of(object, classes = c("GRanges", "DataFrame"))
-    validObject(object)
-
-    # Coerce to S3 data frame.
-    # This step helps coerce nested S4 data to atomic columns.
-    data <- as.data.frame(object)
-
-    # Enforce camel case.
-    data <- camel(data)
-
-    # Keep only atomic columns. Complex columns won't write to disk as CSVs
-    # or work with R Markdown functions.
-    keep <- vapply(
-        X = data,
-        FUN = is.atomic,
-        FUN.VALUE = logical(1L)
-    )
-    data <- data[, keep, drop = FALSE]
-    assert_is_non_empty(data)
-
-    # Return.
-    as(data, "DataFrame")
+    assert_that(any(is2(object, class = c("GRanges", "DataFrame"))))
+    .atomicDataFrame(object)
 }
+
+
+
+#' @rdname sanitizeRowData
+#' @export
+sanitizeRowRanges <- sanitizeRowData
