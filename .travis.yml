@@ -45,7 +45,7 @@ bioc_packages:
   - BiocCheck
   - EnsDb.Hsapiens.v75
 github_packages:
-  - jimhester/lintr
+  - mjsteinbaugh/lintr
 
 after_success:
   - Rscript -e 'lintr::lint_package()'
