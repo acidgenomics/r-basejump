@@ -44,7 +44,7 @@
 #' )
 assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
     assertHasRownames(x)
-    assert_is_character(genes)
+    assertCharacter(genes)
     assert_is_non_empty(genes)
     assert_is_all_of(gene2symbol, "Gene2Symbol")
     assertIdentical(x = nrow(x), y = nrow(gene2symbol))
@@ -85,7 +85,7 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
         return(invisible())
     } else {
         # Otherwise, require that `interestingGroups` is a character.
-        assert_is_character(interestingGroups)
+        assertCharacter(interestingGroups)
     }
 
     # Check intersection with sample data.

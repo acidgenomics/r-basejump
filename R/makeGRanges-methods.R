@@ -109,7 +109,7 @@ NULL
     assert_is_all_of(object, "GRanges")
 
     names <- names(object)
-    assert_is_character(names)
+    assertCharacter(names)
     assert_is_non_empty(names)
 
     data <- as_tibble(object)

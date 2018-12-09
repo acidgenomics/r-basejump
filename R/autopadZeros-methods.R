@@ -28,7 +28,7 @@ NULL
 
 
 autopadZeros.character <- function(object) {
-    assert_is_character(object)
+    assertCharacter(object)
     names <- names(object)
     object <- as.character(object)
     assertAreValidNames(object)

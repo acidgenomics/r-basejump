@@ -58,7 +58,7 @@ NULL
 .mapGenes <- function(object, genes, strict = TRUE) {
     assert_is_all_of(object, "Gene2Symbol")
     validObject(object)
-    assert_is_character(genes)
+    assertCharacter(genes)
     assert_is_non_empty(genes)
     assertFlag(strict)
 

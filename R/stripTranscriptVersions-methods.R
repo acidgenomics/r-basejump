@@ -28,7 +28,7 @@ stripTranscriptVersions.character <-  # nolint
         # Pattern matching against Ensembl transcript IDs.
         # http://www.ensembl.org/info/genome/stable_ids/index.html
         # Examples: ENST (human); ENSMUST (mouse).
-        assert_is_character(object)
+        assertCharacter(object)
         assert_all_are_not_na(object)
         assert_all_are_non_missing_nor_empty_character(object)
         # punct will match `-` or `_` here.

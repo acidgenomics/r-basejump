@@ -10,7 +10,7 @@
 #' x <- minimalSampleData(sample = c("sample 1", "sample 2"))
 #' print(x)
 minimalSampleData <- function(sample) {
-    assert_is_character(sample)
+    assertCharacter(sample)
     assert_has_no_duplicates(sample)
     sample <- as.factor(sample)
     DataFrame(sampleName = sample, row.names = makeNames(sample))

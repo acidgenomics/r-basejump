@@ -27,7 +27,7 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
     } else {
         interestingGroups(object) <- interestingGroups
     }
-    assert_is_character(interestingGroups)
+    assertCharacter(interestingGroups)
     assert_is_non_empty(interestingGroups)
     interestingGroups
 }

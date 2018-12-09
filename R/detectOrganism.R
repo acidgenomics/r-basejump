@@ -49,7 +49,7 @@
 #' ## But it only returns the first match, if there are multiple genomes.
 #' detectOrganism(c("ENSG00000000003", "ENSMUSG00000000001"))
 detectOrganism <- function(object) {
-    assert_is_character(object)
+    assertCharacter(object)
     # Parse the character vector until we get a match.
     x <- NA_character_
     i <- 1L
