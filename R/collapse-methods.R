@@ -182,7 +182,7 @@ setMethod(
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 sortUnique <- function(object) {
-    assert_is_atomic(object)
+    assertAtomic(object)
     object %>%
         sort(na.last = TRUE) %>%
         unique()
@@ -204,7 +204,7 @@ sortUnique <- function(object) {
 #' @examples
 #' toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 toStringUnique <- function(object) {
-    assert_is_atomic(object)
+    assertAtomic(object)
     object %>%
         as.character() %>%
         na.omit() %>%

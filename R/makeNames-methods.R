@@ -89,7 +89,7 @@ NULL
 # `stringr::str_replace_all()` is an alternate approach that uses `regex()`.
 # https://stringr.tidyverse.org/articles/regular-expressions.html
 .sanitizeAcronyms <- function(object) {
-    assert_is_atomic(object)
+    assertAtomic(object)
     object %>%
         as.character() %>%
         # Sanitize "id" variants (e.g. "Id" to "ID").
@@ -134,7 +134,7 @@ NULL
 #' @inheritParams base::make.names
 #' @export
 makeNames <- function(names, unique = TRUE) {
-    assert_is_atomic(names)
+    assertAtomic(names)
     assertFlag(unique)
     names <- as.character(names)
     names <- make.names(names, unique = unique)
@@ -330,7 +330,7 @@ setMethod(
 # Dotted case is the internal method used by camel and snake.
 dotted.character <-  # nolint
     function(object) {
-        assert_is_atomic(object)
+        assertAtomic(object)
         object %>%
             as.character() %>%
             # Handle "+" as a special case. Spell out as "plus".
@@ -381,7 +381,7 @@ setMethod(
 
 snake.character <-  # nolint
     function(object) {
-        assert_is_atomic(object)
+        assertAtomic(object)
         object %>%
             dotted() %>%
             tolower() %>%
