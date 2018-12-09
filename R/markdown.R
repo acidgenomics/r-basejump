@@ -288,7 +288,7 @@ markdownTables <- function(
     force = FALSE
 ) {
     assert_is_list(list)
-    assert_is_any_of(captions, classes = c("character", "NULL"))
+    assertAnyClass(captions, classes = c("character", "NULL"))
     if (is.null(captions)) {
         assert_has_names(list)
         captions <- names(list)

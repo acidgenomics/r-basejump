@@ -44,14 +44,14 @@ matchArgsToDoCall <- function(
     which = sys.parent(n = 1L),
     verbose = FALSE
 ) {
-    assert_is_any_of(args, c("list", "NULL"))
+    assertAnyClass(args, c("list", "NULL"))
     if (is.list(args)) {
         assertHasLength(args)
         assert_has_names(args)
     } else {
         args <- list()
     }
-    assert_is_any_of(removeFormals, c("character", "NULL"))
+    assertAnyClass(removeFormals, c("character", "NULL"))
     assert_is_a_number(which)
     if (which < 1L) {
         which <- 1L
