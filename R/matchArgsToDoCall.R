@@ -44,14 +44,14 @@ matchArgsToDoCall <- function(
     which = sys.parent(n = 1L),
     verbose = FALSE
 ) {
-    assertAnyClass(args, c("list", "NULL"))
+    assertMultiClass(args, c("list", "NULL"))
     if (is.list(args)) {
         assertHasLength(args)
         assert_has_names(args)
     } else {
         args <- list()
     }
-    assertAnyClass(removeFormals, c("character", "NULL"))
+    assertMultiClass(removeFormals, c("character", "NULL"))
     assert_is_a_number(which)
     if (which < 1L) {
         which <- 1L
@@ -63,7 +63,7 @@ matchArgsToDoCall <- function(
         return = "list",
         verbose = verbose
     )
-    assert_is_list(list)
+    assertList(list)
     definition <- list[["definition"]]
     assert_is_function(definition)
     call <- list[["match.call"]]
@@ -121,7 +121,7 @@ matchArgsToDoCall <- function(
     }
 
     assert_all_are_non_missing_nor_empty_character(names(args))
-    assert_has_no_duplicates(names(args))
+    assertHasNoDuplicates(names(args))
     invisible(lapply(
         X = args,
         FUN = function(x) {

@@ -778,7 +778,7 @@ makeGRangesFromGFF <- function(
         mcols(gn)[["id"]] <- NULL
         mcols(gn)[["parent"]] <- NULL
     }
-    assert_has_no_duplicates(mcols(gn)[["geneID"]])
+    assertHasNoDuplicates(mcols(gn)[["geneID"]])
     names(gn) <- mcols(gn)[["geneID"]]
     gn <- gn[sort(names(gn))]
 
@@ -831,7 +831,7 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["id"]] <- NULL
             mcols(tx)[["parent"]] <- NULL
         }
-        assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
+        assertHasNoDuplicates(mcols(tx)[["transcriptID"]])
         names(tx) <- mcols(tx)[["transcriptID"]]
         tx <- tx[sort(names(tx))]
 

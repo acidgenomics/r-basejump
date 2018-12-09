@@ -210,7 +210,7 @@ import <- function(file, dataFrame, ...) {
         args[["na"]] <- naStrings
         data <- do.call(what = read_tsv, args = args)
         assertSubset("id", colnames(data))
-        assert_has_no_duplicates(data[["id"]])
+        assertHasNoDuplicates(data[["id"]])
         # Coerce to matrix.
         data <- data %>%
             as.data.frame() %>%

@@ -122,7 +122,7 @@ assignAndSaveData <- function(name, object, envir = parent.frame()) {
     assert_is_not_null(object)
     dir <- initDir(dir)
     assertFormalCompress(compress)
-    assert_is_environment(envir)
+    assertEnvironment(envir)
 
     # Assign data.
     assign(x = name, value = object, envir = envir)

@@ -125,7 +125,7 @@ convertGenesToSymbols.SummarizedExperiment <-  # nolint
         validObject(object)
         g2s <- Gene2Symbol(object)
         symbols <- g2s[["geneName"]]
-        assert_has_no_duplicates(symbols)
+        assertHasNoDuplicates(symbols)
         # Update the object rownames.
         rownames(object) <- as.character(symbols)
         # Ensure all names get updated correctly.
@@ -159,7 +159,7 @@ convertSymbolsToGenes.SummarizedExperiment <-  # nolint
             x = rownames(object),
             y = g2s[["geneName"]]
         )
-        assert_has_no_duplicates(g2s[["geneID"]])
+        assertHasNoDuplicates(g2s[["geneID"]])
         rownames(object) <- as.character(g2s[["geneID"]])
         object
     }

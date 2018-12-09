@@ -116,7 +116,7 @@ saveRdExamples <- function(
     package,
     dir = "."
 ) {
-    assertAnyClass(Rd, c("character", "NULL"))
+    assertMultiClass(Rd, c("character", "NULL"))
     assertString(package)
     assertString(dir)
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)

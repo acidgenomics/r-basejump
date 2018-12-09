@@ -18,7 +18,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
         organism <- organism(object)
         data("gender_markers", package = "basejump", envir = environment())
         markers <- get("gender_markers", inherits = FALSE)
-        assert_is_list(markers)
+        assertList(markers)
         # Error if the organism is not supported.
         # Convert from camel case back to full Latin.
         supportedOrganisms <- names(markers) %>%
