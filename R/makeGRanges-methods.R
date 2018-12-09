@@ -88,7 +88,7 @@ NULL
     invisible(capture.output(
         ah <- suppressMessages(AnnotationHub())
     ))
-    assert_is_all_of(ah, "AnnotationHub")
+    assertClass(ah, "AnnotationHub")
     .forceDetach(keep = userAttached)
     ah
 }
@@ -106,7 +106,7 @@ NULL
 #'
 #' @return Named `factor`.
 .broadClass <- function(object) {
-    assert_is_all_of(object, "GRanges")
+    assertClass(object, "GRanges")
 
     names <- names(object)
     assertCharacter(names)
@@ -384,7 +384,7 @@ NULL
     if (is.null(ah)) {
         ah <- .annotationHub()
     }
-    assert_is_all_of(ah, "AnnotationHub")
+    assertClass(ah, "AnnotationHub")
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output.
     # Additionally, it attaches ensembldb and other Bioconductor dependency
@@ -392,7 +392,7 @@ NULL
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
     ))
-    assert_is_all_of(edb, "EnsDb")
+    assertClass(edb, "EnsDb")
     .forceDetach(keep = userAttached)
     edb
 }
@@ -412,7 +412,7 @@ NULL
         envir = asNamespace(package),
         inherits = FALSE
     )
-    assert_is_all_of(edb, "EnsDb")
+    assertClass(edb, "EnsDb")
     .forceDetach(keep = userAttached)
     edb
 }
@@ -455,7 +455,7 @@ NULL
 
 
 .makeGRanges <- function(object) {
-    assert_is_all_of(object, "GRanges")
+    assertClass(object, "GRanges")
     assert_has_names(object)
 
     # Standardize the metadata columns.
@@ -551,7 +551,7 @@ NULL
     message(paste0("Arranging by ", idCol, "."))
     object <- object[sort(names(object))]
 
-    assert_is_all_of(object, "GRanges")
+    assertClass(object, "GRanges")
     object
 }
 
@@ -627,7 +627,7 @@ makeGRangesFromEnsDb <- function(object, level) {
     }
     assert(is(object, "EnsDb"))
 
-    assert_is_all_of(object, "EnsDb")
+    assertClass(object, "EnsDb")
     level <- match.arg(level)
 
     # Get the genome build from the ensembldb metdata.
@@ -728,7 +728,7 @@ makeGRangesFromGFF <- function(
     # Import -------------------------------------------------------------------
     file <- localOrRemoteFile(file)
     gff <- import(file)
-    assert_is_all_of(gff, "GRanges")
+    assertClass(gff, "GRanges")
     gff <- camel(gff)
 
     source <- .gffSource(gff)

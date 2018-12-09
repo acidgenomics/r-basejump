@@ -227,7 +227,7 @@ setMethod(
 
 `sampleData<-.SingleCellExperiment` <-  # nolint
     function(object, value) {
-        assert_is_all_of(value, "DataFrame")
+        assertClass(value, "DataFrame")
 
         # Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {

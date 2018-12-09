@@ -451,7 +451,7 @@ aggregateCols.SingleCellExperiment <-  # nolint
             object = as(object, "RangedSummarizedExperiment"),
             fun = fun
         )
-        assert_is_all_of(rse, "RangedSummarizedExperiment")
+        assertClass(rse, "RangedSummarizedExperiment")
 
         # Update the sample data.
         colData <- colData(rse)

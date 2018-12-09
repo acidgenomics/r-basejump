@@ -30,7 +30,7 @@
 #' examples <- parseRd(Rd, tag = "examples")
 #' print(examples)
 parseRd <- function(object, tag) {
-    assert_is_all_of(object, "Rd")
+    assertClass(object, "Rd")
     assertString(tag)
 
     tags <- RdTags(object)
@@ -72,7 +72,7 @@ parseRd <- function(object, tag) {
 #' Rd <- db[["nrow.Rd"]]
 #' RdTags(Rd)
 RdTags <- function(object) {  # nolint
-    assert_is_all_of(object, "Rd")
+    assertClass(object, "Rd")
     tags <- sapply(object, attr, "Rd_tag")
     if (!has_length(tags)) {
         tags <- character()

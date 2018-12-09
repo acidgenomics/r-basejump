@@ -58,7 +58,7 @@ convertTranscriptsToGenes.character <-  # nolint
     function(object, tx2gene) {
         assert_all_are_non_missing_nor_empty_character(object)
         assert_has_no_duplicates(object)
-        assert_is_all_of(tx2gene, "Tx2Gene")
+        assertClass(tx2gene, "Tx2Gene")
         validObject(tx2gene)
 
         missing <- setdiff(object, tx2gene[["transcriptID"]])
