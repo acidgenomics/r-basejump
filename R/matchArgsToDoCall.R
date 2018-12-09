@@ -52,7 +52,7 @@ matchArgsToDoCall <- function(
         args <- list()
     }
     assertMultiClass(removeFormals, c("character", "NULL"))
-    assert_is_a_number(which)
+    assertNumber(which)
     if (which < 1L) {
         which <- 1L
     }

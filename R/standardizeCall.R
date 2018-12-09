@@ -49,7 +49,7 @@ standardizeCall <- function(
     return = c("call", "list"),
     verbose = FALSE
 ) {
-    assert_is_a_number(which)
+    assertNumber(which)
     assert_all_are_non_negative(which)
     if (which < 1L) {
         which <- 1L

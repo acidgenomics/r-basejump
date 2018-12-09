@@ -81,7 +81,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         assertScalar(assay)
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
         interestingGroups(object) <- interestingGroups
-        assert_is_a_number(ntop)
+        assertNumber(ntop)
         assertIsColorScaleDiscreteOrNULL(color)
         assertIsAnImplicitInteger(pointSize)
         assertFlag(label)

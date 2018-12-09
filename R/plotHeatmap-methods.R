@@ -233,8 +233,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         assertFlag(clusterRows)
         assertFlag(showColnames)
         assertFlag(showRownames)
-        assert_is_a_number(treeheightRow)
-        assert_is_a_number(treeheightCol)
+        assertNumber(treeheightRow)
+        assertNumber(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
         assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {
@@ -432,8 +432,8 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         assertString(clusteringMethod)
         assertFlag(showColnames)
         assertFlag(showRownames)
-        assert_is_a_number(treeheightRow)
-        assert_is_a_number(treeheightCol)
+        assertNumber(treeheightRow)
+        assertNumber(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
         assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {

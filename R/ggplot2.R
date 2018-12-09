@@ -325,7 +325,7 @@ theme_paperwhite <- function(
     grid = FALSE,
     minimal = FALSE
 ) {
-    assert_is_a_number(base_size)
+    assertNumber(base_size)
     assertString(base_family)
     face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
@@ -386,7 +386,7 @@ theme_paperwhite <- function(
 #' @rdname ggplot2-themes
 #' @export
 theme_midnight <- function() {
-    assert_is_a_number(base_size)
+    assertNumber(base_size)
     assertString(base_family)
     face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
