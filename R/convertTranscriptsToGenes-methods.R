@@ -149,7 +149,7 @@ convertTranscriptsToGenes.SummarizedExperiment <-  # nolint
             assays = list(counts = counts),
             colData = colData(object)
         )
-        assert_are_identical(
+        assertIdentical(
             x = colSums(counts(object)),
             y = colSums(counts(se))
         )

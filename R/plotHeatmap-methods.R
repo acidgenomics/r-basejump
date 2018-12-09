@@ -315,7 +315,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
         assert_is_list(x)
-        assert_are_identical(
+        assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
         )
@@ -460,7 +460,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             legendColor = legendColor
         )
         assert_is_list(x)
-        assert_are_identical(
+        assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
         )
@@ -627,7 +627,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             legendColor = legendColor
         )
         assert_is_list(x)
-        assert_are_identical(
+        assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
         )

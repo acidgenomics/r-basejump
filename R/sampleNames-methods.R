@@ -73,7 +73,7 @@ setMethod(
         # Now safe to reorder the value vector to match.
         value <- value[ids]
         # Check that the slotting destination matches.
-        assert_are_identical(names(value), rownames(sampleData(object)))
+        assertIdentical(names(value), rownames(sampleData(object)))
         sampleData(object)[["sampleName"]] <- value
         validObject(object)
         object

@@ -264,7 +264,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
             "This can lead to accidental replacement."
         ))
     }
-    assert_are_identical(name, loaded)
+    assertIdentical(name, loaded)
 
     # Now we're ready to assign into the target environment.
     assign(

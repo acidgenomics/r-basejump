@@ -54,6 +54,6 @@ mapCellsToSamples <- function(cells, samples) {
     })
 
     cell2sample <- unlist(list)
-    assert_are_identical(length(cells), length(cell2sample))
+    assertIdentical(length(cells), length(cell2sample))
     as.factor(cell2sample)
 }

@@ -24,7 +24,7 @@ topCellsPerSample.SingleCellExperiment <-  # nolint
 
         cell2sample <- cell2sample(object)
         colSums <- Matrix::colSums(counts(object))
-        assert_are_identical(names(cell2sample), names(colSums))
+        assertIdentical(names(cell2sample), names(colSums))
 
         tibble(
             cellID = names(cell2sample),

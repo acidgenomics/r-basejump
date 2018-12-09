@@ -120,7 +120,7 @@ makeSummarizedExperiment <- function(
     }
     # Require the primary assay to be named "counts". This helps ensure
     # consistency with the conventions for `SingleCellExperiment`.
-    assert_are_identical(names(assays)[[1L]], "counts")
+    assertIdentical(names(assays)[[1L]], "counts")
     assay <- assays[[1L]]
     # Require valid names for both columns (samples) and rows (genes).
     # Note that values beginning with a number or containing invalid characters
