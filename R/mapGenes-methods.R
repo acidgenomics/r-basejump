@@ -60,7 +60,7 @@ NULL
     validObject(object)
     assert_is_character(genes)
     assert_is_non_empty(genes)
-    assert_is_a_bool(strict)
+    assertFlag(strict)
 
     # Prepare the match table.
     if (any(genes %in% rownames(object))) {

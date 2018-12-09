@@ -67,7 +67,7 @@ headtail.matrix <-  # nolint
         assert_has_dims(x)
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
-        assert_is_a_bool(ascii)
+        assertFlag(ascii)
 
         if (nrow(x) <= n * 2L || ncol(x) <= n * 2L) {
             message("Object can't be split into quadrants.")

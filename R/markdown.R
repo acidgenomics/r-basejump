@@ -61,8 +61,8 @@ markdownHeader <- function(
     assertString(text)
     assert_all_are_non_missing_nor_empty_character(text)
     assertIsHeaderLevel(level)
-    assert_is_a_bool(tabset)
-    assert_is_a_bool(asis)
+    assertFlag(tabset)
+    assertFlag(asis)
 
     # Add the header level
     header <- paste(str_dup("#", level), text)
@@ -165,8 +165,8 @@ markdownList <- function(
     text <- as.character(text)
     assert_all_are_not_na(text)
     assert_all_are_non_missing_nor_empty_character(text)
-    assert_is_a_bool(ordered)
-    assert_is_a_bool(asis)
+    assertFlag(ordered)
+    assertFlag(asis)
 
     list <- vapply(
         X = seq_along(text),
@@ -295,7 +295,7 @@ markdownTables <- function(
     }
     assert_is_character(captions)
     assert_are_same_length(list, captions)
-    assert_is_a_bool(force)
+    assertFlag(force)
     output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
     if (!is.null(output) || isTRUE(force)) {
         tables <- mapply(

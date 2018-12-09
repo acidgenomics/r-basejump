@@ -25,9 +25,9 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
             interestingGroups = interestingGroups
         )
         interestingGroups(object) <- interestingGroups
-        assert_is_a_bool(perMillion)
+        assertFlag(perMillion)
         assertIsFillScaleDiscreteOrNULL(fill)
-        assert_is_a_bool(flip)
+        assertFlag(flip)
         assertIsStringOrNULL(title)
 
         counts <- assays(object)[[assay]]

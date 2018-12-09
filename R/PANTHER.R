@@ -148,7 +148,7 @@ PANTHER <- function(  # nolint
         release <- "current_release"
     }
     assertString(release)
-    assert_is_a_bool(progress)
+    assertFlag(progress)
 
     message(paste0(
         "Downloading PANTHER annotations for ",

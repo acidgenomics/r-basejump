@@ -32,7 +32,7 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         assert_all_are_in_range(minCounts, lower = 1L, upper = Inf)
         assert_all_are_non_negative(minCounts)
         assertIsFillScaleDiscreteOrNULL(fill)
-        assert_is_a_bool(flip)
+        assertFlag(flip)
         assertIsStringOrNULL(title)
 
         counts <- assays(object)[[assay]]

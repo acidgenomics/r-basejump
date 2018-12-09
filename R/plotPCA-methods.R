@@ -84,7 +84,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         assert_is_a_number(ntop)
         assertIsColorScaleDiscreteOrNULL(color)
         assertIsAnImplicitInteger(pointSize)
-        assert_is_a_bool(label)
+        assertFlag(label)
         assertIsStringOrNULL(title)
         return <- match.arg(return)
         # Warn and early return if any samples are duplicated.
