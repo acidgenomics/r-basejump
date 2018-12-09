@@ -59,7 +59,7 @@ NULL
     assert_is_all_of(object, "Gene2Symbol")
     validObject(object)
     assertCharacter(genes)
-    assert_is_non_empty(genes)
+    assertHasLength(genes)
     assertFlag(strict)
 
     # Prepare the match table.
@@ -95,7 +95,7 @@ NULL
 
     # Return the identifiers that map to rownames.
     mapped <- na.omit(match)
-    assert_is_non_empty(mapped)
+    assertHasLength(mapped)
     mapped
 }
 

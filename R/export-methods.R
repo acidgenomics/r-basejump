@@ -85,7 +85,7 @@ export.ANY <-  # nolint
         suppressWarnings(
             x <- as_tibble(x, rownames = rownames)
         )
-        assert_has_rows(x)
+        assertHasRows(x)
         assert_has_cols(x)
         if (missing(file) && missing(format)) {
             stop("Must specify `file` and/or `format`.", call. = FALSE)
@@ -131,7 +131,7 @@ setMethod(
 # Consider adding HDF5 support in a future update.
 export.sparseMatrix <-  # nolint
     function(x, file, format) {
-        assert_is_non_empty(x)
+        assertHasLength(x)
         choices <- c("mtx", "mtx.gz")
 
         if (missing(file) && missing(format)) {

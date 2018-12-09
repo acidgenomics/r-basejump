@@ -131,7 +131,7 @@ setMethod(
             # Summarize all numeric columns.
             data <- select_if(metrics, is.numeric)
         }
-        assert_is_non_empty(data)
+        assertHasLength(data)
         sampleData <- sampleData(object) %>%
             as_tibble(rownames = "sampleID") %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))

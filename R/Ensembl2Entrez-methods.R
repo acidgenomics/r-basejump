@@ -19,7 +19,7 @@ NULL
 
 Ensembl2Entrez.DataFrame <-  # nolint
     function(object, format = c("1:1", "long")) {
-        assert_has_rows(object)
+        assertHasRows(object)
         format <- match.arg(format)
 
         cols <- c("geneID", "entrezID")

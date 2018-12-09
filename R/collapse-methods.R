@@ -113,7 +113,7 @@ collapseToString.matrix <-  # nolint
         unique = FALSE
     ) {
         # Passthrough to atomic method: sep, unique, sort.
-        assert_is_non_empty(object)
+        assertHasLength(object)
 
         # Coerce to tibble to perform the collapse.
         collapse <- object %>%

@@ -64,7 +64,7 @@ prepareTemplate <- function(
 
     # Get vector of all shared files.
     files <- list.files(sourceDir, full.names = TRUE)
-    assert_is_non_empty(files)
+    assertHasLength(files)
 
     # Copy files to working directory.
     copied <- vapply(

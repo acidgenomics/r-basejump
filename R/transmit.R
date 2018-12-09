@@ -79,11 +79,11 @@ transmit <- function(
         .[grepl("^-", .)] %>%
         # File name is at the end, not including a space.
         str_extract(pattern = "[^\\s]+$")
-    assert_is_non_empty(remoteFiles)
+    assertHasLength(remoteFiles)
 
     # Apply pattern matching.
     match <- str_subset(remoteFiles, pattern)
-    assert_is_non_empty(match)
+    assertHasLength(match)
 
     message(paste(
         "Files matching pattern:",

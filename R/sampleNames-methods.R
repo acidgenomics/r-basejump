@@ -67,7 +67,7 @@ setMethod(
         # Note that these will correspond to columns for bulk RNA-seq but not
         # single-cell RNA-seq samples, which map to cells.
         ids <- names(sampleNames(object))
-        assert_is_non_empty(ids)
+        assertHasLength(ids)
         # Require the input to match the original IDs.
         assert_are_set_equal(names(value), ids)
         # Now safe to reorder the value vector to match.

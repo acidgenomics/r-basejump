@@ -110,7 +110,7 @@ NULL
 
     names <- names(object)
     assertCharacter(names)
-    assert_is_non_empty(names)
+    assertHasLength(names)
 
     data <- as_tibble(object)
 
