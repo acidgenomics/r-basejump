@@ -116,7 +116,7 @@ setMethod(
         FUN <- get(fun, inherits = TRUE)  # nolint
         assert_is_function(FUN)
         metrics <- metrics(object)
-        assert_is_all_of(metrics, "grouped_df")
+        assertClass(metrics, "grouped_df")
         if (fun == "sum") {
             pattern <- "^n[A-Z0-9]"
             if (!any(grepl(pattern, colnames(metrics)))) {

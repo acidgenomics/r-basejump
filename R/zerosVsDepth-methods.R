@@ -102,8 +102,8 @@ zerosVsDepth.SingleCellExperiment <-  # nolint
         sampleData <- sampleData(object)
         sampleData[["sampleID"]] <- as.factor(rownames(sampleData))
 
-        assert_is_all_of(data, "DataFrame")
-        assert_is_all_of(sampleData, "DataFrame")
+        assertClass(data, "DataFrame")
+        assertClass(sampleData, "DataFrame")
 
         # Use BiocTibble left_join DataFrame method here.
         join <- left_join(

@@ -56,7 +56,7 @@ NULL
 
 # Internal =====================================================================
 .mapGenes <- function(object, genes, strict = TRUE) {
-    assert_is_all_of(object, "Gene2Symbol")
+    assertClass(object, "Gene2Symbol")
     validObject(object)
     assertCharacter(genes)
     assertHasLength(genes)

@@ -41,7 +41,7 @@ NULL
     color = NULL,
     legend = TRUE
 ) {
-    assert_is_all_of(object, "SummarizedExperiment")
+    assertClass(object, "SummarizedExperiment")
     interestingGroups <- interestingGroups(object)
 
     # Coerce the data to a melted tibble.
@@ -90,7 +90,7 @@ NULL
     color = NULL,
     legend = TRUE
 ) {
-    assert_is_all_of(object, "SummarizedExperiment")
+    assertClass(object, "SummarizedExperiment")
     interestingGroups <- interestingGroups(object)
 
     # Coerce the data to a melted tibble.

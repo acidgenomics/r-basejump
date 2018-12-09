@@ -46,7 +46,7 @@ NULL
 convertGenesToSymbols.character <-  # nolint
     function(object, gene2symbol) {
         assert_all_are_non_missing_nor_empty_character(object)
-        assert_is_all_of(gene2symbol, "Gene2Symbol")
+        assertClass(gene2symbol, "Gene2Symbol")
         validObject(gene2symbol)
 
         # Arrange the gene2symbol to match the input.

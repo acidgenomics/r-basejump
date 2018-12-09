@@ -151,7 +151,7 @@ selectSamples.SingleCellExperiment <-  # nolint
 
         # Use the metrics `data.frame` to match the cellular barcodes
         metrics <- metrics(object)
-        assert_is_all_of(metrics, "grouped_df")
+        assertClass(metrics, "grouped_df")
         assertSubset(c("cellID", "sampleID"), colnames(metrics))
         # Note that we don't need to sort here.
         cells <- metrics %>%
