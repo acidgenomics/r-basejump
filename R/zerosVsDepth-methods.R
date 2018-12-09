@@ -74,7 +74,7 @@ zerosVsDepth.SummarizedExperiment <-  # nolint
         counts <- assays(object)[[assay]]
         data <- zerosVsDepth(counts)
         sampleData <- sampleData(object)
-        assert_are_identical(rownames(data), rownames(sampleData))
+        assertIdentical(rownames(data), rownames(sampleData))
         assert_are_disjoint_sets(colnames(data), colnames(sampleData))
         cbind(data, sampleData)
     }

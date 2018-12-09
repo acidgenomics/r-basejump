@@ -130,7 +130,7 @@ convertGenesToSymbols.SummarizedExperiment <-  # nolint
         rownames(object) <- as.character(symbols)
         # Ensure all names get updated correctly.
         if (is(object, "RangedSummarizedExperiment")) {
-            assert_are_identical(
+            assertIdentical(
                 x = rownames(object),
                 y = names(rowRanges(object))
             )
@@ -155,7 +155,7 @@ convertSymbolsToGenes.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         g2s <- Gene2Symbol(object)
-        assert_are_identical(
+        assertIdentical(
             x = rownames(object),
             y = g2s[["geneName"]]
         )

@@ -47,7 +47,7 @@ assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
     assert_is_character(genes)
     assert_is_non_empty(genes)
     assert_is_all_of(gene2symbol, "Gene2Symbol")
-    assert_are_identical(x = nrow(x), y = nrow(gene2symbol))
+    assertIdentical(x = nrow(x), y = nrow(gene2symbol))
     if (is.null(rownames(gene2symbol))) {
         rownames(gene2symbol) <- rownames(x)
     }

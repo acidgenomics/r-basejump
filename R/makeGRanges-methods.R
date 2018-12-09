@@ -247,7 +247,7 @@ NULL
             }
         ))
     }
-    assert_are_identical(.packages(), keep)
+    assertIdentical(.packages(), keep)
 }
 
 
@@ -686,7 +686,7 @@ makeGRangesFromEnsDb <- function(object, level) {
             y = as_tibble(geneData, rownames = NULL),
             by = "gene_id"
         )
-        assert_are_identical(
+        assertIdentical(
             x = txData[["tx_id"]],
             y = data[["tx_id"]]
         )
@@ -783,7 +783,7 @@ makeGRangesFromGFF <- function(
     gn <- gn[sort(names(gn))]
 
     # Stop on missing genes.
-    assert_are_identical(
+    assertIdentical(
         x = names(gn),
         y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
     )
@@ -836,7 +836,7 @@ makeGRangesFromGFF <- function(
         tx <- tx[sort(names(tx))]
 
         # Stop on missing transcripts.
-        assert_are_identical(
+        assertIdentical(
             x = names(tx),
             y = sort(unique(na.omit(mcols(gff)[["transcriptID"]])))
         )
@@ -859,7 +859,7 @@ makeGRangesFromGFF <- function(
             )
             rownames(merge) <- merge[["transcriptID"]]
             merge <- merge[sort(rownames(merge)), ]
-            assert_are_identical(
+            assertIdentical(
                 x = mcols(gr)[["transcriptID"]],
                 y = merge[["transcriptID"]]
             )

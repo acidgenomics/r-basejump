@@ -235,7 +235,7 @@ setMethod(
             if (!is.null(g2s)) {
                 message("Adding `geneID` and `geneName` columns.")
                 assay <- as(assay, "DataFrame")
-                assert_are_identical(rownames(assay), rownames(g2s))
+                assertIdentical(rownames(assay), rownames(g2s))
                 assert_are_disjoint_sets(colnames(assay), colnames(g2s))
                 assay <- cbind(g2s, assay)
                 rownames(assay) <- NULL
@@ -300,7 +300,7 @@ setMethod(
         data <- rowData(x)
     }
     data <- sanitizeRowData(data)
-    assert_are_identical(rownames(data), rownames(x))
+    assertIdentical(rownames(data), rownames(x))
     export(x = data, file = file.path(dir, paste0("rowData", ext)))
 }
 

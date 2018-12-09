@@ -136,7 +136,7 @@ mapGenesToRownames.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assert_are_identical(rownames(g2s), rownames(object))
+        assertIdentical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToRownames,
             args = list(
@@ -195,7 +195,7 @@ mapGenesToIDs.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assert_are_identical(rownames(g2s), rownames(object))
+        assertIdentical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToIDs,
             args = list(
@@ -254,7 +254,7 @@ mapGenesToSymbols.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assert_are_identical(rownames(g2s), rownames(object))
+        assertIdentical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToSymbols,
             args = list(
