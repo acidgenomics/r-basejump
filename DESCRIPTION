@@ -47,7 +47,6 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     cowplot,
-    curl,
     data.table,
     dplyr,
     ensembldb,

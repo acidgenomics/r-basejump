@@ -155,7 +155,7 @@ formals(loadDataAsName)[["dir"]] <- formalsList[["load.dir"]]
 #' x <- loadRemoteData(url)
 #' print(x)
 loadRemoteData <- function(url, envir = parent.frame()) {
-    assert(has_internet())
+    assertHasInternet()
     assertAreURLs(url)
     if (!all(vapply(
         X = url,
