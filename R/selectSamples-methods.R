@@ -49,7 +49,7 @@ selectSamples.SummarizedExperiment <-  # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)
-        invisible(lapply(args, assert_is_atomic))
+        invisible(lapply(args, assertAtomic))
 
         # Match the arguments against the sample metadata.
         sampleData <- sampleData(object)

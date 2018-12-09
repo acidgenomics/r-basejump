@@ -31,7 +31,7 @@ NULL
 
 headtail.atomic <-  # nolint
     function(x, n = 2L) {
-        assert_is_atomic(x)
+        assertAtomic(x)
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
         if (length(x) <= n * 2L) {

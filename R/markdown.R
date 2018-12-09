@@ -161,7 +161,7 @@ markdownList <- function(
     ordered = FALSE,
     asis = FALSE
 ) {
-    assert_is_atomic(text)
+    assertAtomic(text)
     text <- as.character(text)
     assert_all_are_not_na(text)
     assert_all_are_non_missing_nor_empty_character(text)
