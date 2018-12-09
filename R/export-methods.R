@@ -94,10 +94,10 @@ export.ANY <-  # nolint
             sym <- call[["x"]]
             assert_is_symbol(sym)
             name <- as.character(sym)
-            assert_is_a_string(format)
+            assertString(format)
             file <- paste0(name, ".", format)
         } else if (missing(format)) {
-            assert_is_a_string(file)
+            assertString(file)
         }
         # Ensure directory is created automatically.
         initDir(dir = dirname(file))
@@ -144,7 +144,7 @@ export.sparseMatrix <-  # nolint
             format <- match.arg(format, choices)
             file <- paste0(name, ".", format)
         } else if (missing(format)) {
-            assert_is_a_string(file)
+            assertString(file)
             # Require a valid extension.
             grepChoices <- paste0("\\.", choices, "$")
             assert_that(any(vapply(

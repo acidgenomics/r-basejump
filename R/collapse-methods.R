@@ -59,7 +59,7 @@ collapseToString.atomic <-  # nolint
             x = object,
             classes = c("character", "factor", "vector")
         )
-        assert_is_a_string(sep)
+        assertString(sep)
         assert_is_a_bool(unique)
         assert_is_a_bool(sort)
 

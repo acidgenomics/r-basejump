@@ -31,7 +31,7 @@
 #' print(examples)
 parseRd <- function(object, tag) {
     assert_is_all_of(object, "Rd")
-    assert_is_a_string(tag)
+    assertString(tag)
 
     tags <- RdTags(object)
     assert_is_subset(tag, tags)
@@ -117,8 +117,8 @@ saveRdExamples <- function(
     dir = "."
 ) {
     assert_is_any_of(Rd, c("character", "NULL"))
-    assert_is_a_string(package)
-    assert_is_a_string(dir)
+    assertString(package)
+    assertString(dir)
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
 
     # Get a database of the Rd files available in the requested package.

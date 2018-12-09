@@ -42,7 +42,7 @@ transmit <- function(
     compress = FALSE
 ) {
     assert_that(has_internet())
-    assert_is_a_string(remoteDir)
+    assertString(remoteDir)
     # Check for public FTP protocol.
     assert_all_are_matching_regex(remoteDir, "^ftp\\://")
     # `RCurl::getURL()` requires a trailing slash.
@@ -50,14 +50,14 @@ transmit <- function(
         remoteDir <- paste0(remoteDir, "/")
     }
     localDir <- initDir(localDir)
-    assert_is_a_string(pattern)
+    assertString(pattern)
     assert_is_any_of(rename, c("character", "NULL"))
     assert_is_a_bool(compress)
 
     # Get the name of the server.
     server <- str_match(string = remoteDir, pattern = "^.*//([^/]+)/.*$") %>%
         .[1L, 2L]
-    assert_is_a_string(server)
+    assertString(server)
 
     # Error and inform the user if the FTP connection fails.
     if (!isTRUE(url.exists(remoteDir))) {

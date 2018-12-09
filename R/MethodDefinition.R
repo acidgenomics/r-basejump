@@ -42,7 +42,7 @@ methodFunction <- function(f, signature, package) {
     if (missing(package) || is.null(package)) {
         envir <- NULL
     } else {
-        assert_is_a_string(package)
+        assertString(package)
         envir <- asNamespace(package)
     }
 

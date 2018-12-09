@@ -429,7 +429,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             interestingGroups(object) <- interestingGroups
         }
         method <- match.arg(method)
-        assert_is_a_string(clusteringMethod)
+        assertString(clusteringMethod)
         assert_is_a_bool(showColnames)
         assert_is_a_bool(showRownames)
         assert_is_a_number(treeheightRow)

@@ -262,7 +262,7 @@ NULL
     ah = NULL
 ) {
     userAttached <- .packages()
-    assert_is_a_string(organism)
+    assertString(organism)
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
     assertIsStringOrNULL(genomeBuild)
@@ -366,7 +366,7 @@ NULL
 
     mcols <- tail(mcols, n = 1L)
     id <- rownames(mcols)
-    assert_is_a_string(id)
+    assertString(id)
     assert_all_are_matching_regex(x = id, pattern = "^AH[[:digit:]]+$")
     message(paste0(id, ": ", mcols[["title"]]))
     .forceDetach(keep = userAttached)
@@ -405,7 +405,7 @@ NULL
 .getEnsDbFromPackage <- function(package) {
     message(paste0("Getting EnsDb from ", package, "."))
     userAttached <- .packages()
-    assert_is_a_string(package)
+    assertString(package)
     require(package, character.only = TRUE)
     edb <- get(
         x = package,
@@ -582,7 +582,7 @@ makeGRangesFromEnsembl <- function(
     release = NULL
 ) {
     message("Making GRanges from Ensembl.")
-    assert_is_a_string(organism)
+    assertString(organism)
     level <- match.arg(level)
     if (
         identical(tolower(organism), "homo sapiens") &&
@@ -635,7 +635,7 @@ makeGRangesFromEnsDb <- function(object, level) {
         as_tibble() %>%
         filter(!!sym("name") == "genome_build") %>%
         pull("value")
-    assert_is_a_string(genomeBuild)
+    assertString(genomeBuild)
 
     # Define the metadata to return.
     metadata <- c(
