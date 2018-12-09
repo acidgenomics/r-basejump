@@ -229,10 +229,10 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             interestingGroups(object) <- interestingGroups
         }
         scale <- match.arg(scale)
-        assert_is_a_bool(clusterCols)
-        assert_is_a_bool(clusterRows)
-        assert_is_a_bool(showColnames)
-        assert_is_a_bool(showRownames)
+        assertFlag(clusterCols)
+        assertFlag(clusterRows)
+        assertFlag(showColnames)
+        assertFlag(showRownames)
         assert_is_a_number(treeheightRow)
         assert_is_a_number(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
@@ -430,8 +430,8 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         }
         method <- match.arg(method)
         assertString(clusteringMethod)
-        assert_is_a_bool(showColnames)
-        assert_is_a_bool(showRownames)
+        assertFlag(showColnames)
+        assertFlag(showRownames)
         assert_is_a_number(treeheightRow)
         assert_is_a_number(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
@@ -593,9 +593,9 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         }
         assertIsAnImplicitInteger(n)
         n <- as.integer(n)
-        assert_is_a_bool(clusterCols)
-        assert_is_a_bool(clusterRows)
-        assert_is_a_bool(legend)
+        assertFlag(clusterCols)
+        assertFlag(clusterRows)
+        assertFlag(legend)
         assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {
             borderColor <- NA

@@ -26,7 +26,7 @@ meltCounts.SummarizedExperiment <-  # nolint
     ) {
         validObject(object)
         assert_is_scalar(assay)
-        assert_is_a_bool(nonzeroGenes)
+        assertFlag(nonzeroGenes)
         trans <- match.arg(trans)
 
         # Prepare the count matrix.

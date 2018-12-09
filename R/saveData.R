@@ -36,7 +36,7 @@ saveData <- function(..., dir, ext, overwrite, compress) {
     names(objects) <- dots(..., character = TRUE)
     dir <- initDir(dir)
     ext <- match.arg(arg = ext, choices = c("rds", "rda", "RData"))
-    assert_is_a_bool(overwrite)
+    assertFlag(overwrite)
     assertFormalCompress(compress)
 
     files <- file.path(dir, paste(names(objects), ext, sep = "."))

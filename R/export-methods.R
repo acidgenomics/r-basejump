@@ -332,8 +332,8 @@ export.SummarizedExperiment <-  # nolint
             name <- as.character(call[["x"]])
         }
         dir <- initDir(file.path(dir, name))
-        assert_is_a_bool(compress)
-        assert_is_a_bool(humanize)
+        assertFlag(compress)
+        assertFlag(humanize)
         assert_that(
             is.character(slotNames),
             # Require at least 1 of the slotNames to be defined for export.
@@ -441,7 +441,7 @@ setMethod(
 # FIXME Need to define an export sampleData function here.
 export.SingleCellExperiment <-  # nolint
     function(x) {
-        assert_is_a_bool(compress)
+        assertFlag(compress)
         call <- standardizeCall()
         name <- as.character(call[["x"]])
 

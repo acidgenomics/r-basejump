@@ -48,7 +48,7 @@ prepareTemplate <- function(
     assertString(package)
     assert_is_subset(package, rownames(installed.packages()))
     assertIsStringOrNULL(sourceDir)
-    assert_is_a_bool(overwrite)
+    assertFlag(overwrite)
 
     # Shared file source directory. Keeping the `sourceDir` argument because
     # devtools attempts to intercept `system.file`, and this can cause path

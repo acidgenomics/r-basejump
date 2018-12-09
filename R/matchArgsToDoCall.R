@@ -56,7 +56,7 @@ matchArgsToDoCall <- function(
     if (which < 1L) {
         which <- 1L
     }
-    assert_is_a_bool(verbose)
+    assertFlag(verbose)
 
     list <- standardizeCall(
         which = which,

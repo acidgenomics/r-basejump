@@ -135,7 +135,7 @@ NULL
 #' @export
 makeNames <- function(names, unique = TRUE) {
     assert_is_atomic(names)
-    assert_is_a_bool(unique)
+    assertFlag(unique)
     names <- as.character(names)
     names <- make.names(names, unique = unique)
     names <- gsub("\\.", "_", names)
@@ -258,7 +258,7 @@ camel.character <-  # nolint
     ) {
         object <- dotted(object)
         format <- match.arg(format)
-        assert_is_a_bool(strict)
+        assertFlag(strict)
 
         # Simplify mixed case acronyms in strict mode.
         if (isTRUE(strict)) {
@@ -631,7 +631,7 @@ camel.matrix <-  # nolint
         strict = FALSE
     ) {
         assert_has_dimnames(object)
-        assert_is_a_bool(rownames)
+        assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- camel(rownames(object), strict = strict)
         }
@@ -661,7 +661,7 @@ dotted.matrix <-  # nolint
         colnames = TRUE
     ) {
         assert_has_dimnames(object)
-        assert_is_a_bool(rownames)
+        assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- dotted.character(rownames(object))
         }
@@ -690,7 +690,7 @@ snake.matrix <-  # nolint
         colnames = TRUE
     ) {
         assert_has_dimnames(object)
-        assert_is_a_bool(rownames)
+        assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- snake.character(rownames(object))
         }
@@ -720,7 +720,7 @@ upperCamel.matrix <-  # nolint
         strict = FALSE
     ) {
         assert_has_dimnames(object)
-        assert_is_a_bool(rownames)
+        assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <-
                 upperCamel.character(rownames(object), strict = strict)

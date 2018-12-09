@@ -60,8 +60,8 @@ collapseToString.atomic <-  # nolint
             classes = c("character", "factor", "vector")
         )
         assertString(sep)
-        assert_is_a_bool(unique)
-        assert_is_a_bool(sort)
+        assertFlag(unique)
+        assertFlag(sort)
 
         # Early return unmodified if scalar.
         if (is_scalar(object)) {

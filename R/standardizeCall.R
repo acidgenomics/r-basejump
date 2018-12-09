@@ -55,7 +55,7 @@ standardizeCall <- function(
         which <- 1L
     }
     return <- match.arg(return)
-    assert_is_a_bool(verbose)
+    assertFlag(verbose)
 
     # Determine where the call is in the stack that we want to standardize.
     # Note that this differs for S4 methods containing a nested `.local()`.

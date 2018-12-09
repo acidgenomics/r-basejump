@@ -39,7 +39,7 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         geom <- match.arg(geom)
         trans <- match.arg(trans)
         assertIsFillScaleDiscreteOrNULL(fill)
-        assert_is_a_bool(flip)
+        assertFlag(flip)
         assertIsStringOrNULL(countsAxisLabel)
         assertIsStringOrNULL(title)
 

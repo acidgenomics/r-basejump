@@ -93,7 +93,7 @@ setMethod(
 # Consider aggregating the matrix to gene level instead.
 convertTranscriptsToGenes.matrix <-  # nolint
     function(object, tx2gene, aggregate = TRUE) {
-        assert_is_a_bool(aggregate)
+        assertFlag(aggregate)
         t2g <- do.call(
             what = convertTranscriptsToGenes,
             args = list(

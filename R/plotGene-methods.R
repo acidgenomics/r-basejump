@@ -152,9 +152,9 @@ plotGene.SummarizedExperiment <-  # nolint
             interestingGroups = interestingGroups
         )
         interestingGroups(object) <- interestingGroups
-        assert_is_a_bool(medianLine)
+        assertFlag(medianLine)
         assertIsColorScaleDiscreteOrNULL(color)
-        assert_is_a_bool(legend)
+        assertFlag(legend)
         style <- match.arg(style)
 
         # Minimize the SE object only contain the assay of our choice.

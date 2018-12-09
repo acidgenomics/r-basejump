@@ -67,9 +67,9 @@ autopadZeros.matrix <- function(
     sort = TRUE
 ) {
     assertHasValidDimnames(object)
-    assert_is_a_bool(rownames)
-    assert_is_a_bool(colnames)
-    assert_is_a_bool(sort)
+    assertFlag(rownames)
+    assertFlag(colnames)
+    assertFlag(sort)
     if (isTRUE(rownames)) {
         rownames(object) <- autopadZeros(rownames(object))
         if (isTRUE(sort)) {

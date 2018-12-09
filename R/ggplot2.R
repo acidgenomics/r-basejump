@@ -330,8 +330,8 @@ theme_paperwhite <- function(
     face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)
-    assert_is_a_bool(grid)
-    assert_is_a_bool(minimal)
+    assertFlag(grid)
+    assertFlag(minimal)
 
     gray <- "gray95"
 
@@ -391,7 +391,7 @@ theme_midnight <- function() {
     face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)
-    assert_is_a_bool(grid)
+    assertFlag(grid)
 
     gray <- "gray10"
 

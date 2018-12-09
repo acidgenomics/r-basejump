@@ -52,7 +52,7 @@ transmit <- function(
     localDir <- initDir(localDir)
     assertString(pattern)
     assert_is_any_of(rename, c("character", "NULL"))
-    assert_is_a_bool(compress)
+    assertFlag(compress)
 
     # Get the name of the server.
     server <- str_match(string = remoteDir, pattern = "^.*//([^/]+)/.*$") %>%
