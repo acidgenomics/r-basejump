@@ -70,7 +70,7 @@ setMethod(
 
 zerosVsDepth.SummarizedExperiment <-  # nolint
     function(object, assay = 1L) {
-        assert_is_scalar(assay)
+        assertScalar(assay)
         counts <- assays(object)[[assay]]
         data <- zerosVsDepth(counts)
         sampleData <- sampleData(object)
@@ -93,7 +93,7 @@ setMethod(
 
 zerosVsDepth.SingleCellExperiment <-  # nolint
     function(object, assay = 1L) {
-        assert_is_scalar(assay)
+        assertScalar(assay)
         counts <- assays(object)[[assay]]
 
         data <- zerosVsDepth(counts)

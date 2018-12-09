@@ -28,7 +28,7 @@ NULL
 plotQC.SummarizedExperiment <-  # nolint
     function(object, assay = 1L) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
 
         # Always coerce to dense matrix.
         mat <- as.matrix(assays(object)[[assay]])

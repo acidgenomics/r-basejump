@@ -19,7 +19,7 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         title = "total counts"
     ) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups

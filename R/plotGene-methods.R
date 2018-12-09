@@ -146,7 +146,7 @@ plotGene.SummarizedExperiment <-  # nolint
         # Limit the number of genes that can be plotted at once.
         assert_all_are_in_closed_range(length(genes), lower = 1L, upper = 20L)
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups

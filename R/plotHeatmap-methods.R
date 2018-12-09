@@ -223,7 +223,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
         if (has_length(interestingGroups)) {
             interestingGroups(object) <- interestingGroups
@@ -418,7 +418,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         ...
     ) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
         interestingGroups <- matchInterestingGroups(
@@ -583,7 +583,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups

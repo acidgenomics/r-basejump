@@ -25,7 +25,7 @@ meltCounts.SummarizedExperiment <-  # nolint
         trans = c("identity", "log2", "log10")
     ) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         assertFlag(nonzeroGenes)
         trans <- match.arg(trans)
 

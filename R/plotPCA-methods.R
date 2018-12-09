@@ -78,7 +78,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         # nocov end
 
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
         interestingGroups(object) <- interestingGroups
         assert_is_a_number(ntop)

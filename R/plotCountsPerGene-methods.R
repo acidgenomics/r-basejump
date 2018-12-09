@@ -30,7 +30,7 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         title = "counts per gene"
     ) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
