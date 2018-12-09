@@ -422,7 +422,7 @@ export.SummarizedExperiment <-  # nolint
 
         # Return named character of file paths.
         files <- Filter(Negate(is.null), files)
-        assert_has_names(files)
+        assertHasNames(files)
         invisible(files)
     }
 
@@ -481,7 +481,7 @@ export.SingleCellExperiment <-  # nolint
             names(files[["reducedDims"]]) <- reducedDimNames
         }
 
-        assert_has_names(files)
+        assertHasNames(files)
         invisible(files)
     }
 

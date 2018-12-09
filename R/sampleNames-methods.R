@@ -63,7 +63,7 @@ setMethod(
 
 `sampleNames<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
-        assert_has_names(value)
+        assertHasNames(value)
         # Note that these will correspond to columns for bulk RNA-seq but not
         # single-cell RNA-seq samples, which map to cells.
         ids <- names(sampleNames(object))
