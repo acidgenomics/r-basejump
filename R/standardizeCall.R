@@ -82,7 +82,7 @@ standardizeCall <- function(
 
     # Extract the definition from `.local()`, if necessary.
     if (isTRUE(.local)) {
-        assert_that(!isTRUE(.isLocalCall(call)))
+        assert(!isTRUE(.isLocalCall(call)))
         # Update definition.
         if (is(definition, "MethodDefinition")) {
             # Pull the ".local()" function out, which has the formals we need to
@@ -128,6 +128,6 @@ standardizeCall <- function(
 
 
 .isLocalCall <- function(call) {
-    assert_that(is(call, "call"))
+    assert(is(call, "call"))
     identical(call[[1L]], as.symbol(".local"))
 }

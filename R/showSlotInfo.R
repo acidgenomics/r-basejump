@@ -14,7 +14,7 @@
 #' ))
 showSlotInfo <- function(list) {
     assert_is_list(list)
-    assert_that(all(vapply(
+    assert(all(vapply(
         X = list,
         FUN = is.atomic,
         FUN.VALUE = logical(1L)

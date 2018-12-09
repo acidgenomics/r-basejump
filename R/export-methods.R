@@ -147,7 +147,7 @@ export.sparseMatrix <-  # nolint
             assertString(file)
             # Require a valid extension.
             grepChoices <- paste0("\\.", choices, "$")
-            assert_that(any(vapply(
+            assert(any(vapply(
                 X = grepChoices,
                 FUN = grepl,
                 FUN.VALUE = logical(1L),
@@ -334,7 +334,7 @@ export.SummarizedExperiment <-  # nolint
         dir <- initDir(file.path(dir, name))
         assertFlag(compress)
         assertFlag(humanize)
-        assert_that(
+        assert(
             is.character(slotNames),
             # Require at least 1 of the slotNames to be defined for export.
             # Note that we're not using `match.arg()` here.

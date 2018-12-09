@@ -41,7 +41,7 @@ Ensembl2Entrez.DataFrame <-  # nolint
 
         # Inform the user about genes that don't map to Entrez.
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
-        assert_that(!any(duplicated(unmapped)))
+        assert(!any(duplicated(unmapped)))
         if (has_length(unmapped)) {
             message(paste(length(unmapped), "genes don't map to Entrez."))
         }

@@ -137,7 +137,7 @@ PANTHER <- function(  # nolint
     release = NULL,
     progress = FALSE
 ) {
-    assert_that(has_internet())
+    assert(has_internet())
     organism <- match.arg(
         arg = organism,
         choices = names(.pantherMappings)
