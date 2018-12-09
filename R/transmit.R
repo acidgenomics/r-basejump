@@ -51,7 +51,7 @@ transmit <- function(
     }
     localDir <- initDir(localDir)
     assertString(pattern)
-    assert_is_any_of(rename, c("character", "NULL"))
+    assertAnyClass(rename, c("character", "NULL"))
     assertFlag(compress)
 
     # Get the name of the server.

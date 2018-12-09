@@ -55,7 +55,7 @@ collapseToString.atomic <-  # nolint
         removeNA = FALSE,
         unique = FALSE
     ) {
-        assert_is_any_of(
+        assertAnyClass(
             x = object,
             classes = c("character", "factor", "vector")
         )

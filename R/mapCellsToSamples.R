@@ -24,7 +24,7 @@
 mapCellsToSamples <- function(cells, samples) {
     assertCharacter(cells)
     assert_has_no_duplicates(cells)
-    assert_is_any_of(samples, c("character", "factor"))
+    assertAnyClass(samples, c("character", "factor"))
     samples <- unique(as.character(samples))
 
     # Early return if `cells` don't have a separator and `samples` is a string.

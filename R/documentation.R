@@ -116,7 +116,7 @@ saveRdExamples <- function(
     package,
     dir = "."
 ) {
-    assert_is_any_of(Rd, c("character", "NULL"))
+    assertAnyClass(Rd, c("character", "NULL"))
     assertString(package)
     assertString(dir)
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
