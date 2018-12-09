@@ -14,7 +14,7 @@ detectLanes <- function(
     object,
     pattern = lanePattern
 ) {
-    assert_is_character(object)
+    assertCharacter(object)
     assertString(lanePattern)
     object <- basename(object)
     if (any(grepl(pattern, object))) {

@@ -22,7 +22,7 @@
 #' print(cells)
 #' mapCellsToSamples(cells, samples)
 mapCellsToSamples <- function(cells, samples) {
-    assert_is_character(cells)
+    assertCharacter(cells)
     assert_has_no_duplicates(cells)
     assert_is_any_of(samples, c("character", "factor"))
     samples <- unique(as.character(samples))

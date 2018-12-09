@@ -33,7 +33,7 @@ emptyRanges <- function(
     seqname = c("unknown", "transgene", "spike"),
     mcolsNames = NULL
 ) {
-    assert_is_character(names)
+    assertCharacter(names)
     assert_all_are_non_missing_nor_empty_character(names)
     seqname <- match.arg(seqname)
     assert_is_any_of(mcolsNames, c("character", "NULL"))

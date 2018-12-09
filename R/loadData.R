@@ -191,7 +191,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 
 
 .listRData <- function(names, dir) {
-    assert_is_character(names)
+    assertCharacter(names)
     assert_all_are_dirs(dir)
     assertString(dir)
     dir <- realpath(dir)

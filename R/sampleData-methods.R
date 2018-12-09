@@ -95,7 +95,7 @@ sampleData.SingleCellExperiment <-  # nolint
             "^res[.0-9]+$"
         )
     ) {
-        assert_is_character(blacklist)
+        assertCharacter(blacklist)
         data <- colData(object)
 
         # Require `sampleID` and `sampleName` columns.

@@ -293,7 +293,7 @@ markdownTables <- function(
         assert_has_names(list)
         captions <- names(list)
     }
-    assert_is_character(captions)
+    assertCharacter(captions)
     assert_are_same_length(list, captions)
     assertFlag(force)
     output <- opts_knit[["get"]]("rmarkdown.pandoc.to")

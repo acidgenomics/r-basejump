@@ -732,7 +732,7 @@ setMethod(
     legendColor
 ) {
     validObject(object)
-    assert_is_character(blacklist)
+    assertCharacter(blacklist)
     assertIsHexColorFunctionOrNULL(legendColor)
 
     # Annotation columns -------------------------------------------------------

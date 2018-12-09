@@ -22,7 +22,7 @@ multiassignAsEnvir <- function(
     dots <- dots(...)
     assert_is_list(dots)
     names <- dots(..., character = TRUE)
-    assert_is_character(names)
+    assertCharacter(names)
     assertString(envirName)
     assert_is_environment(parentFrame)
 

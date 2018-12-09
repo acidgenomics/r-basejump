@@ -217,7 +217,7 @@ setMethod(
     humanize
 ) {
     assayNames <- assayNames(x)
-    assert_is_character(assayNames)
+    assertCharacter(assayNames)
     message(paste("Exporting assays:", toString(assayNames)))
     if (isTRUE(humanize)) {
         g2s <- Gene2Symbol(x)
