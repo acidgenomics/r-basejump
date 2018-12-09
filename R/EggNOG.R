@@ -7,7 +7,7 @@
 #' print(x)
 EggNOG <-  # nolint
     function() {
-        assert(has_internet())
+        assertHasInternet()
         if (isTRUE(getOption("basejump.test"))) {
             categoriesFile <- file.path(basejumpCacheURL, "cog.txt")
             eunogFile <- file.path(basejumpCacheURL, "eunog.tsv.gz")

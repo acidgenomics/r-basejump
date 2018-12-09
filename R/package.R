@@ -36,7 +36,6 @@
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
 #'   rowRanges<-
 #' @importFrom cowplot plot_grid
-#' @importFrom curl has_internet
 #' @importFrom data.table as.data.table fread
 #' @importFrom dplyr arrange bind_rows case_when desc everything filter funs
 #'   group_by left_join mutate mutate_all mutate_at mutate_if n pull rename

@@ -325,7 +325,7 @@ NULL
     mcols <- mcols(ahs)
 
     # Abort if there's no match and working offline.
-    if (!isTRUE(has_internet()) && !nrow(mcols)) {
+    if (!isTRUE(testHasInternet()) && !nrow(mcols)) {
         # nocov start
         stop(
             "AnnotationHub requires an Internet connection for query.",

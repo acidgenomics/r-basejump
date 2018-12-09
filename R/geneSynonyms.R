@@ -18,7 +18,7 @@
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
 geneSynonyms <- function(organism) {
-    assert(has_internet())
+    assertHasInternet()
     organism <- match.arg(arg = organism, choices = .geneSynonymsOrganisms)
 
     # NCBI uses underscore for species name
