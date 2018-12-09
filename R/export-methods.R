@@ -236,7 +236,7 @@ setMethod(
                 message("Adding `geneID` and `geneName` columns.")
                 assay <- as(assay, "DataFrame")
                 assertIdentical(rownames(assay), rownames(g2s))
-                assert_are_disjoint_sets(colnames(assay), colnames(g2s))
+                assertAreDisjointSets(colnames(assay), colnames(g2s))
                 assay <- cbind(g2s, assay)
                 rownames(assay) <- NULL
             }

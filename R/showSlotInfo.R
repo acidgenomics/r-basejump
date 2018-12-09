@@ -13,7 +13,7 @@
 #'     filtered = TRUE
 #' ))
 showSlotInfo <- function(list) {
-    assert_is_list(list)
+    assertList(list)
     assert(all(vapply(
         X = list,
         FUN = is.atomic,

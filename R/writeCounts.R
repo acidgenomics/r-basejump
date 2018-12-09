@@ -47,7 +47,7 @@ writeCounts <- function(..., dir = ".", compress = FALSE) {
     }
 
     dots <- dots_list(...)
-    assert_is_list(dots)
+    assertList(dots)
     names <- dots(..., character = TRUE)
     dir <- initDir(dir)
     assertFlag(compress)

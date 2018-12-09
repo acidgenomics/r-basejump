@@ -314,7 +314,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
 
         # Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
-        assert_is_list(x)
+        assertList(x)
         assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
@@ -459,7 +459,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             object = object,
             legendColor = legendColor
         )
-        assert_is_list(x)
+        assertList(x)
         assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
@@ -504,7 +504,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             ...
         )
         args <- .pheatmapArgs(args)
-        assert_are_disjoint_sets(
+        assertAreDisjointSets(
             x = names(args),
             y = "scale"
         )
@@ -626,7 +626,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             object = object,
             legendColor = legendColor
         )
-        assert_is_list(x)
+        assertList(x)
         assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
@@ -813,7 +813,7 @@ setMethod(
 # Sanitize formals into snake case and abort on duplicates.
 # Duplicates may arise if user is mixing and matching camel/snake case.
 .pheatmapArgs <- function(args) {
-    assert_is_list(args)
+    assertList(args)
     assert_has_names(args)
     # Abort on snake case formatted formalArgs
     invalidNames <- grep("[._]", names(args), value = TRUE)
@@ -825,7 +825,7 @@ setMethod(
     }
     names(args) <- snake(names(args))
     assertSubset(names(args), formalArgs(pheatmap))
-    assert_has_no_duplicates(names(args))
+    assertHasNoDuplicates(names(args))
     args
 }
 

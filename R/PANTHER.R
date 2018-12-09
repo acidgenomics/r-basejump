@@ -221,7 +221,7 @@ PANTHER <- function(  # nolint
         top_n(n = 1L, wt = !!sym("pantherSubfamilyID")) %>%
         ungroup() %>%
         arrange(!!sym("geneID"))
-    assert_has_no_duplicates(data[["geneID"]])
+    assertHasNoDuplicates(data[["geneID"]])
 
     message("Splitting and sorting the GO terms.")
     data <- data %>%

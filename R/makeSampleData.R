@@ -43,7 +43,7 @@ makeSampleData <- function(object) {
         x = "sampleName",
         y = colnames(object)
     )
-    assert_are_disjoint_sets(
+    assertAreDisjointSets(
         x = c(
             "filename",
             "id",

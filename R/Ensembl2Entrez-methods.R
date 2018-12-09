@@ -59,7 +59,7 @@ Ensembl2Entrez.DataFrame <-  # nolint
                 "Returning with 1:1 mappings using oldest Entrez ID per gene."
             ))
             entrez <- object[["entrezID"]]
-            assert_is_list(entrez)
+            assertList(entrez)
             names(entrez) <- object[["geneID"]]
             map <- lapply(
                 X = entrez,

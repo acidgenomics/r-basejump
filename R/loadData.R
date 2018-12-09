@@ -32,7 +32,7 @@
 #' @examples
 #' loadData(example, dir = system.file("extdata", package = "basejump"))
 loadData <- function(..., dir, envir = parent.frame()) {
-    assert_is_environment(envir)
+    assertEnvironment(envir)
     names <- dots(..., character = TRUE)
     files <- .listRData(names = names, dir = dir)
     lapply(
@@ -79,7 +79,7 @@ loadDataAsName <- function(..., dir, envir = parent.frame()) {
     assert_has_names(dots)
     files <- .listRData(names = dots, dir = dir)
     names(files) <- names(dots)
-    assert_is_environment(envir)
+    assertEnvironment(envir)
 
     # Check to see if any of the new names already exist in environment
     assertAreNonExisting(names(dots), envir = envir, inherits = FALSE)
@@ -107,7 +107,7 @@ loadDataAsName <- function(..., dir, envir = parent.frame()) {
             file = files,
             MoreArgs = list(envir = safe)
         ))
-        assert_are_set_equal(dots, ls(safe))
+        assertSetEqual(dots, ls(safe))
 
         # Now assign to the desired object names
         invisible(mapply(
@@ -166,7 +166,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     ))) {
         stop(rdataLoadError, call. = FALSE)
     }
-    assert_is_environment(envir)
+    assertEnvironment(envir)
     names <- gsub(rdataExtPattern, "", basename(url), ignore.case = TRUE)
     names(url) <- names
 
@@ -232,7 +232,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     assert_all_are_existing_files(file)
     file <- realpath(file)
     assertIsStringOrNULL(name)
-    assert_is_environment(envir)
+    assertEnvironment(envir)
 
     if (is.null(name)) {
         assert(grepl(rdataExtPattern, file, ignore.case = TRUE))
@@ -288,7 +288,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 .safeLoadRDS <- function(file, envir = parent.frame()) {
     assertString(file)
     file <- realpath(file)
-    assert_is_environment(envir)
+    assertEnvironment(envir)
 
     name <- gsub("\\.rds", "", basename(file), ignore.case = TRUE)
     data <- readRDS(file)

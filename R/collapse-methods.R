@@ -55,7 +55,7 @@ collapseToString.atomic <-  # nolint
         removeNA = FALSE,
         unique = FALSE
     ) {
-        assertAnyClass(
+        assertMultiClass(
             x = object,
             classes = c("character", "factor", "vector")
         )

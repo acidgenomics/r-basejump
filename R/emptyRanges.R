@@ -36,7 +36,7 @@ emptyRanges <- function(
     assertCharacter(names)
     assert_all_are_non_missing_nor_empty_character(names)
     seqname <- match.arg(seqname)
-    assertAnyClass(mcolsNames, c("character", "NULL"))
+    assertMultiClass(mcolsNames, c("character", "NULL"))
 
     gr <- GRanges(
         seqnames = seqname,

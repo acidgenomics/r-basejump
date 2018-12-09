@@ -23,8 +23,8 @@
 #' mapCellsToSamples(cells, samples)
 mapCellsToSamples <- function(cells, samples) {
     assertCharacter(cells)
-    assert_has_no_duplicates(cells)
-    assertAnyClass(samples, c("character", "factor"))
+    assertHasNoDuplicates(cells)
+    assertMultiClass(samples, c("character", "factor"))
     samples <- unique(as.character(samples))
 
     # Early return if `cells` don't have a separator and `samples` is a string.

@@ -98,20 +98,20 @@ makeSummarizedExperiment <- function(
     spikeNames = NULL
 ) {
     # Assert checks ------------------------------------------------------------
-    assertAnyClass(
+    assertMultiClass(
         x = assays,
         classes = c("list", "ShallowSimpleListAssays", "SimpleList")
     )
-    assertAnyClass(rowRanges, classes = c("GRanges", "NULL"))
-    assertAnyClass(rowData, classes = c("DataFrame", "NULL"))
+    assertMultiClass(rowRanges, classes = c("GRanges", "NULL"))
+    assertMultiClass(rowData, classes = c("DataFrame", "NULL"))
     # Only allow `rowData` if `rowRanges` are `NULL`.
     if (!is.null(rowRanges)) {
         assert_is_null(rowData)
     }
-    assertAnyClass(colData, classes = c("DataFrame", "NULL"))
-    assertAnyClass(metadata, classes = c("list", "NULL"))
-    assertAnyClass(transgeneNames, classes = c("character", "NULL"))
-    assertAnyClass(spikeNames, classes = c("character", "NULL"))
+    assertMultiClass(colData, classes = c("DataFrame", "NULL"))
+    assertMultiClass(metadata, classes = c("list", "NULL"))
+    assertMultiClass(transgeneNames, classes = c("character", "NULL"))
+    assertMultiClass(spikeNames, classes = c("character", "NULL"))
 
     # Assays -------------------------------------------------------------------
     # Drop any `NULL` items in assays.

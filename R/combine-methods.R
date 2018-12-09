@@ -93,7 +93,7 @@ combine.SummarizedExperiment <-  # nolint
         assertIdentical(rownames(x), rownames(y))
 
         # Require that there are no duplicate cells.
-        assert_are_disjoint_sets(colnames(x), colnames(y))
+        assertAreDisjointSets(colnames(x), colnames(y))
 
         # Require specific metadata to be identical, if defined.
         metadata <- c(
@@ -133,7 +133,7 @@ combine.SummarizedExperiment <-  # nolint
         }
 
         # Column data ----------------------------------------------------------
-        assert_are_set_equal(colnames(colData(x)), colnames(colData(y)))
+        assertSetEqual(colnames(colData(x)), colnames(colData(y)))
         cols <- intersect(colnames(colData(x)), colnames(colData(y)))
         colData <- rbind(
             colData(x)[, cols, drop = FALSE],
