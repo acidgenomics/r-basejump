@@ -553,7 +553,7 @@ setMethod(
 
 .quantileBreaks <- function(object, n = 10L) {
     assert_is_matrix(object)
-    assert_is_an_integer(n)
+    assertInt(n)
     assert_all_are_positive(n)
     breaks <- quantile(object, probs = seq(0L, 1L, length.out = n))
     breaks[!duplicated(breaks)]
@@ -836,7 +836,7 @@ setMethod(
     if (is.character(color)) {
         # Hexadecimal color palette
         # (e.g. RColorBrewer palettes)
-        assert_all_are_hex_colors(color)
+        assertHexColors(color)
         color
     } else if (is.function(color)) {
         # Hexadecimal color function

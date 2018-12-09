@@ -207,7 +207,7 @@ PANTHER <- function(  # nolint
 
     # Using organism-specific internal return functions here.
     fun <- get(paste("", "PANTHER", camel(organism), sep = "."))
-    assert_is_function(fun)
+    assertFunction(fun)
     data <- fun(data)
     assertHasRows(data)
 

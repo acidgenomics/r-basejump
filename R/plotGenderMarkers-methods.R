@@ -33,7 +33,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
             ))
         }
         markers <- markers[[camel(organism)]]
-        assert_is_tbl_df(markers)
+        assertTibble(markers)
 
         # Message the user instead of erroring, since many datasets don't
         # contain the dimorphic gender markers.

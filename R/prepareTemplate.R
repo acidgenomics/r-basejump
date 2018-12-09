@@ -60,7 +60,7 @@ prepareTemplate <- function(
             mustWork = TRUE
         )
     }
-    assert_all_are_dirs(sourceDir)
+    assertDirectoryExists(sourceDir)
 
     # Get vector of all shared files.
     files <- list.files(sourceDir, full.names = TRUE)
