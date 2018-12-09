@@ -155,7 +155,7 @@ formals(loadDataAsName)[["dir"]] <- formalsList[["load.dir"]]
 #' x <- loadRemoteData(url)
 #' print(x)
 loadRemoteData <- function(url, envir = parent.frame()) {
-    assert_that(has_internet())
+    assert(has_internet())
     assertAreURLs(url)
     if (!all(vapply(
         X = url,
@@ -235,7 +235,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     assert_is_environment(envir)
 
     if (is.null(name)) {
-        assert_that(grepl(rdataExtPattern, file, ignore.case = TRUE))
+        assert(grepl(rdataExtPattern, file, ignore.case = TRUE))
         name <- gsub(rdataExtPattern, "", basename(file))
     }
 

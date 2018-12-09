@@ -43,8 +43,8 @@ setMethod(
 # Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
 zerosVsDepth.sparseMatrix <-  # nolint
     function(object) {
-        assert_that(is(object, "sparseMatrix"))
-        assert_that(!is(object, "lgCMatrix"))
+        assert(is(object, "sparseMatrix"))
+        assert(!is(object, "lgCMatrix"))
         present <- object %>%
             as("dgCMatrix") %>%
             as("lgCMatrix")

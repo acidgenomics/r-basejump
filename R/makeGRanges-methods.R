@@ -443,7 +443,7 @@ NULL
 
 # Determine if GFF or GTF.
 .gffType <- function(gff) {
-    assert_that(is(gff, "GRanges"))
+    assert(is(gff, "GRanges"))
     gff <- camel(gff)
     if (all(c("id", "name") %in% colnames(mcols(gff)))) {
         "GFF"
@@ -625,7 +625,7 @@ makeGRangesFromEnsDb <- function(object, level) {
             inherits = FALSE
         )
     }
-    assert_that(is(object, "EnsDb"))
+    assert(is(object, "EnsDb"))
 
     assert_is_all_of(object, "EnsDb")
     level <- match.arg(level)
@@ -819,7 +819,7 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["biotype"]] <- NULL
             # geneID
             assertSubset("parent", colnames(mcols(tx)))
-            assert_that(all(grepl("^gene:", mcols(tx)[["parent"]])))
+            assert(all(grepl("^gene:", mcols(tx)[["parent"]])))
             mcols(tx)[["geneID"]] <- as.character(mcols(tx)[["parent"]])
             mcols(tx)[["geneID"]] <- gsub(
                 pattern = "^gene:",

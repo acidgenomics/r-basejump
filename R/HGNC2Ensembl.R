@@ -7,7 +7,7 @@
 #' print(x)
 HGNC2Ensembl <-  # nolint
     function() {
-        assert_that(has_internet())
+        assert(has_internet())
 
         if (isTRUE(getOption("basejump.test"))) {
             file <- file.path(basejumpCacheURL, "hgnc.txt.gz")

@@ -178,7 +178,7 @@ makeSummarizedExperiment <- function(
     } else if (is(rowData, "DataFrame")) {
         data <- rowData
     }
-    assert_that(is(data, "DataFrame"))
+    assert(is(data, "DataFrame"))
     setdiff <- setdiff(rownames(assay), rownames(data))
     if (has_length(setdiff)) {
         stop(paste0(
