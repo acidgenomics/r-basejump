@@ -122,7 +122,7 @@ NULL
     }
 
     # Gene name (required).
-    assert_is_subset("geneName", colnames(data))
+    assertSubset("geneName", colnames(data))
     geneName <- data[["geneName"]]
 
     # Biotype (optional).
@@ -336,13 +336,13 @@ NULL
 
     # Ensure genome build matches, if specified.
     if (!is.null(genomeBuild)) {
-        assert_is_subset("genome", colnames(mcols))
+        assertSubset("genome", colnames(mcols))
         mcols <- mcols[mcols[["genome"]] %in% genomeBuild, , drop = FALSE]
     }
 
     # Ensure Ensembl release matches, or pick the latest one.
     if (!is.null(ensemblRelease)) {
-        assert_is_subset("title", colnames(mcols))
+        assertSubset("title", colnames(mcols))
         mcols <- mcols[
             grepl(paste("Ensembl", ensemblRelease), mcols[["title"]]),
             ,
@@ -421,7 +421,7 @@ NULL
 
 # Report the source of the gene annotations.
 .gffSource <- function(gff) {
-    assert_is_subset("source", colnames(mcols(gff)))
+    assertSubset("source", colnames(mcols(gff)))
     if (
         any(grepl("FlyBase", mcols(gff)[["source"]]))
     ) {
@@ -476,7 +476,7 @@ NULL
     if (!"geneName" %in% colnames(mcols)) {
         # nocov start
         warning("`geneName` is missing. Using `geneID` instead.")
-        assert_is_subset("geneID", colnames(mcols))
+        assertSubset("geneID", colnames(mcols))
         mcols[["geneName"]] <- mcols[["geneID"]]
         # nocov end
     }
@@ -747,7 +747,7 @@ makeGRangesFromGFF <- function(
     # nocov end
 
     # Always require `geneID` and `transcriptID` columns in file.
-    assert_is_subset(
+    assertSubset(
         x = c("geneID", "transcriptID"),
         y = colnames(mcols(gff))
     )
@@ -766,11 +766,11 @@ makeGRangesFromGFF <- function(
     gn <- gn[is.na(mcols(gn)[["transcriptID"]])]
     if (type == "GFF") {
         # geneName
-        assert_is_subset("name", colnames(mcols(gn)))
+        assertSubset("name", colnames(mcols(gn)))
         mcols(gn)[["geneName"]] <- mcols(gn)[["name"]]
         mcols(gn)[["name"]] <- NULL
         # geneBiotype
-        assert_is_subset("biotype", colnames(mcols(gn)))
+        assertSubset("biotype", colnames(mcols(gn)))
         mcols(gn)[["geneBiotype"]] <- mcols(gn)[["biotype"]]
         mcols(gn)[["biotype"]] <- NULL
         # Remove extra columns.
@@ -810,15 +810,15 @@ makeGRangesFromGFF <- function(
             )]
         } else if (type == "GFF") {
             # transcriptName
-            assert_is_subset("name", colnames(mcols(tx)))
+            assertSubset("name", colnames(mcols(tx)))
             mcols(tx)[["transcriptName"]] <- mcols(tx)[["name"]]
             mcols(tx)[["name"]] <- NULL
             # transcriptBiotype
-            assert_is_subset("biotype", colnames(mcols(tx)))
+            assertSubset("biotype", colnames(mcols(tx)))
             mcols(tx)[["transcriptBiotype"]] <- mcols(tx)[["biotype"]]
             mcols(tx)[["biotype"]] <- NULL
             # geneID
-            assert_is_subset("parent", colnames(mcols(tx)))
+            assertSubset("parent", colnames(mcols(tx)))
             assert_that(all(grepl("^gene:", mcols(tx)[["parent"]])))
             mcols(tx)[["geneID"]] <- as.character(mcols(tx)[["parent"]])
             mcols(tx)[["geneID"]] <- gsub(

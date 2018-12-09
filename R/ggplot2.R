@@ -175,7 +175,7 @@ basejump_geom_label_average <- function(
 ) {
     data <- as.data.frame(data)
     assertString(col)
-    assert_is_subset(col, colnames(data))
+    assertSubset(col, colnames(data))
     assert_is_an_integer(digits)
     fun <- match.arg(fun)
     fun <- get(fun)

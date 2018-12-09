@@ -323,8 +323,8 @@ aggregateCols.SummarizedExperiment <-  # nolint
         fun <- match.arg(fun)
 
         # Groupings ------------------------------------------------------------
-        assert_is_subset(col, colnames(colData(object)))
-        assert_is_subset(col, colnames(sampleData(object)))
+        assertSubset(col, colnames(colData(object)))
+        assertSubset(col, colnames(sampleData(object)))
         groupings <- colData(object)[[col]]
         assert_is_factor(groupings)
         assertAreValidNames(levels(groupings))
@@ -407,7 +407,7 @@ aggregateCols.SingleCellExperiment <-  # nolint
 
         # Remap cellular barcode groupings -------------------------------------
         colData <- colData(object)
-        assert_is_subset(c("sampleID", "aggregate"), colnames(colData))
+        assertSubset(c("sampleID", "aggregate"), colnames(colData))
         assert_is_factor(colData[["aggregate"]])
 
         message(paste(

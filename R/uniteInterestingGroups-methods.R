@@ -27,7 +27,7 @@ NULL
 uniteInterestingGroups.DataFrame <-  # nolint
     function(object, interestingGroups) {
         assert_is_character(interestingGroups)
-        assert_is_subset(interestingGroups, colnames(object))
+        assertSubset(interestingGroups, colnames(object))
         # Subset to get only the columns of interest.
         data <- object[, interestingGroups, drop = FALSE]
         assert_is_non_empty(data)

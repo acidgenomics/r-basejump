@@ -43,7 +43,7 @@ Biobase::`sampleNames<-`
 sampleNames.SummarizedExperiment <-  # nolint
     function(object) {
         data <- sampleData(object)
-        assert_is_subset("sampleName", colnames(data))
+        assertSubset("sampleName", colnames(data))
         out <- as.character(data[["sampleName"]])
         names(out) <- rownames(data)
         out

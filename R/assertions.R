@@ -53,7 +53,7 @@ assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
     }
     # Map genes to x rownames, using gene2symbol.
     rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
-    assert_is_subset(rownames, rownames(x))
+    assertSubset(rownames, rownames(x))
     TRUE
 }
 
@@ -89,7 +89,7 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
     }
 
     # Check intersection with sample data.
-    assert_is_subset(interestingGroups, colnames(data))
+    assertSubset(interestingGroups, colnames(data))
 
     # Check that interesting groups columns are factors.
     invisible(lapply(
