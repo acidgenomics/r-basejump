@@ -94,7 +94,7 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
     # Check that interesting groups columns are factors.
     invisible(lapply(
         X = data[, interestingGroups, drop = FALSE],
-        FUN = assert_is_factor
+        FUN = assertFactor
     ))
 
     TRUE

@@ -326,7 +326,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
         assertSubset(col, colnames(colData(object)))
         assertSubset(col, colnames(sampleData(object)))
         groupings <- colData(object)[[col]]
-        assert_is_factor(groupings)
+        assertFactor(groupings)
         assertAreValidNames(levels(groupings))
         names(groupings) <- colnames(object)
 
@@ -346,7 +346,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
         # Column data ----------------------------------------------------------
         # Reslot with minimal sample-level data only.
         sampleNames <- sampleData(object)[["aggregate"]]
-        assert_is_factor(sampleNames)
+        assertFactor(sampleNames)
         sampleNames <- levels(sampleNames)
         sampleData <- DataFrame(
             sampleName = sampleNames,
@@ -408,7 +408,7 @@ aggregateCols.SingleCellExperiment <-  # nolint
         # Remap cellular barcode groupings -------------------------------------
         colData <- colData(object)
         assertSubset(c("sampleID", "aggregate"), colnames(colData))
-        assert_is_factor(colData[["aggregate"]])
+        assertFactor(colData[["aggregate"]])
 
         message(paste(
             "Remapping cells to aggregate samples:",

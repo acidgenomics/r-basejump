@@ -790,7 +790,7 @@ setMethod(
         colors <- lapply(
             X = data,
             FUN = function(x) {
-                assert_is_factor(x)
+                assertFactor(x)
                 levels <- levels(x)
                 colors <- legendColor(length(levels))
                 names(colors) <- levels
