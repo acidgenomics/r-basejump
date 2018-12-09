@@ -33,7 +33,7 @@ cell2sample.SingleCellExperiment <-  # nolint
 
         if (return == "factor") {
             sample <- colData[["sampleID"]]
-            assert_is_factor(sample)
+            assertFactor(sample)
             cell <- colnames(object)
             names(sample) <- cell
             sample
