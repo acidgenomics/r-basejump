@@ -64,7 +64,7 @@ setMethod(
 
 headtail.matrix <-  # nolint
     function(x, n = 2L, ascii = FALSE) {
-        assert_has_dims(x)
+        assertHasDims(x)
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
         assertFlag(ascii)

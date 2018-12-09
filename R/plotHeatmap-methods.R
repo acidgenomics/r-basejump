@@ -126,7 +126,7 @@ NULL
 # Consider moving this to the goalie package in a future update.
 .assertIsNonZero <- function(object) {
     # We're not supporting sparseMatrix here because they have zero inflation.
-    assert_is_matrix(object)
+    assertMatrix(object)
     # Inform the user if any rows or columns contain all zeros. It's good
     # practice to remove them before attempting to plot a heatmap.
     zeroRows <- rowSums(object) == 0L
@@ -160,7 +160,7 @@ NULL
 
 # Modified version of `pheatmap:::scale_mat()`.
 .scaleMatrix <- function(object, scale = c("none", "row", "column")) {
-    assert_is_matrix(object)
+    assertMatrix(object)
     scale <- match.arg(scale)
     if (scale != "none") {
         message(paste0("Scaling matrix per ", scale, " (z-score)."))
@@ -552,7 +552,7 @@ setMethod(
 
 
 .quantileBreaks <- function(object, n = 10L) {
-    assert_is_matrix(object)
+    assertMatrix(object)
     assertInt(n)
     assert_all_are_positive(n)
     breaks <- quantile(object, probs = seq(0L, 1L, length.out = n))

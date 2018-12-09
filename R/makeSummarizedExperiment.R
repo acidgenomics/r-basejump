@@ -106,7 +106,7 @@ makeSummarizedExperiment <- function(
     assertMultiClass(rowData, classes = c("DataFrame", "NULL"))
     # Only allow `rowData` if `rowRanges` are `NULL`.
     if (!is.null(rowRanges)) {
-        assert_is_null(rowData)
+        assertNull(rowData)
     }
     assertMultiClass(colData, classes = c("DataFrame", "NULL"))
     assertMultiClass(metadata, classes = c("list", "NULL"))

@@ -147,7 +147,7 @@ makeNames <- function(names, unique = TRUE) {
 #' @rdname makeNames
 #' @export
 makeDimnames <- function(object) {
-    assert_has_dimnames(object)
+    assertHasDimnames(object)
 
     # Row names.
     if (
@@ -630,13 +630,13 @@ camel.matrix <-  # nolint
         colnames = TRUE,
         strict = FALSE
     ) {
-        assert_has_dimnames(object)
+        assertHasDimnames(object)
         assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- camel(rownames(object), strict = strict)
         }
         if (isTRUE(colnames) && has_colnames(object)) {
-            assert_has_colnames(object)
+            assertHasColnames(object)
             colnames(object) <- camel(colnames(object), strict = strict)
         }
         object
@@ -660,7 +660,7 @@ dotted.matrix <-  # nolint
         rownames = FALSE,
         colnames = TRUE
     ) {
-        assert_has_dimnames(object)
+        assertHasDimnames(object)
         assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- dotted.character(rownames(object))
@@ -689,7 +689,7 @@ snake.matrix <-  # nolint
         rownames = FALSE,
         colnames = TRUE
     ) {
-        assert_has_dimnames(object)
+        assertHasDimnames(object)
         assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- snake.character(rownames(object))
@@ -719,7 +719,7 @@ upperCamel.matrix <-  # nolint
         colnames = TRUE,
         strict = FALSE
     ) {
-        assert_has_dimnames(object)
+        assertHasDimnames(object)
         assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <-
