@@ -8,7 +8,7 @@
 #' normalizePath(".")
 realpath <- function(path) {
     assertCharacter(path)
-    assert_all_are_existing_files(path)
+    assertFileExists(path)
     # Ensure we're matching the platform conventions.
     # For example, AppVeyor CI tests on Windows but uses "/" instead of "\\".
     normalizePath(

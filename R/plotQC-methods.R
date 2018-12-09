@@ -9,7 +9,7 @@ NULL
 
 # Consider exporting this as a method?
 .plotSumsECDF <- function(object, fun) {
-    assert_is_function(fun)
+    assertFunction(fun)
     data <- tibble(x = fun(object))
     ggplot(
         data = data,

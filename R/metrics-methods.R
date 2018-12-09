@@ -114,7 +114,7 @@ setMethod(
         message(paste("Calculating", fun, "per sample."))
         # Consider using `getFromNamespace()` here instead.
         FUN <- get(fun, inherits = TRUE)  # nolint
-        assert_is_function(FUN)
+        assertFunction(FUN)
         metrics <- metrics(object)
         assertClass(metrics, "grouped_df")
         if (fun == "sum") {

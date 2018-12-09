@@ -74,7 +74,7 @@ detectOrganism <- function(object) {
         assertString(object)
         data("organism_mappings", package = "basejump", envir = environment())
         data <- get("organism_mappings", inherits = FALSE)
-        assert_is_tbl_df(data)
+        assertTibble(data)
         # Generate a logical matrix of grep matches.
         hits <- apply(
             X = data,

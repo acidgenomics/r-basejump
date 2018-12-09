@@ -50,7 +50,7 @@ meltCounts.SummarizedExperiment <-  # nolint
                 envir = asNamespace("base"),
                 inherits = FALSE
             )
-            assert_is_function(fun)
+            assertFunction(fun)
             counts <- fun(counts + 1L)
         }
 

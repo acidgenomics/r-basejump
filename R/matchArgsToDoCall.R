@@ -65,7 +65,7 @@ matchArgsToDoCall <- function(
     )
     assertList(list)
     definition <- list[["definition"]]
-    assert_is_function(definition)
+    assertFunction(definition)
     call <- list[["match.call"]]
     assert_is_call(call)
 

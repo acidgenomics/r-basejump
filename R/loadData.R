@@ -192,7 +192,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 
 .listRData <- function(names, dir) {
     assertCharacter(names)
-    assert_all_are_dirs(dir)
+    assertDirectoryExists(dir)
     assertString(dir)
     dir <- realpath(dir)
     files <- vapply(
@@ -229,7 +229,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 
 .safeLoad <- function(file, name = NULL, envir = parent.frame()) {
     assertString(file)
-    assert_all_are_existing_files(file)
+    assertFileExists(file)
     file <- realpath(file)
     assertIsStringOrNULL(name)
     assertEnvironment(envir)
