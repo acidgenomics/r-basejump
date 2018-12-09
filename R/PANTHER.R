@@ -209,7 +209,7 @@ PANTHER <- function(  # nolint
     fun <- get(paste("", "PANTHER", camel(organism), sep = "."))
     assert_is_function(fun)
     data <- fun(data)
-    assert_has_rows(data)
+    assertHasRows(data)
 
     data <- data %>%
         select(-!!sym("keys")) %>%

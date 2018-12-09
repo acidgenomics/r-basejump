@@ -28,6 +28,6 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
         interestingGroups(object) <- interestingGroups
     }
     assertCharacter(interestingGroups)
-    assert_is_non_empty(interestingGroups)
+    assertHasLength(interestingGroups)
     interestingGroups
 }

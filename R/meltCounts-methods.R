@@ -31,7 +31,7 @@ meltCounts.SummarizedExperiment <-  # nolint
 
         # Prepare the count matrix.
         counts <- assays(object)[[assay]]
-        assert_is_non_empty(counts)
+        assertHasLength(counts)
         # Coerce to dense matrix.
         counts <- as.matrix(counts)
 

@@ -40,7 +40,7 @@ localOrRemoteFile <- function(file) {
                     .[1L, 2L:3L] %>%
                     na.omit() %>%
                     paste(collapse = "")
-                assert_is_non_empty(ext)
+                assertHasLength(ext)
                 # Fix for binary files (typically on Windows).
                 # https://github.com/tidyverse/readxl/issues/374
                 binary <- c(

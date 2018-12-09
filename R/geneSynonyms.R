@@ -50,7 +50,7 @@ geneSynonyms <- function(organism) {
     }
 
     data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
-    assert_is_non_empty(data)
+    assertHasLength(data)
 
     data <- data %>%
         camel() %>%

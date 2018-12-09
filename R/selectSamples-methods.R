@@ -67,7 +67,7 @@ selectSamples.SummarizedExperiment <-  # nolint
             USE.NAMES = TRUE
         )
         samples <- sort(as.character(Reduce(f = intersect, x = list)))
-        assert_is_non_empty(samples)
+        assertHasLength(samples)
 
         object[, samples]
     }
@@ -133,7 +133,7 @@ selectSamples.SingleCellExperiment <-  # nolint
             USE.NAMES = TRUE
         )
         samples <- Reduce(f = intersect, x = matches)
-        assert_is_non_empty(samples)
+        assertHasLength(samples)
 
         # Output to the user which samples matched, using the `sampleName`
         # metadata column, which is more descriptive than `sampleID`

@@ -46,7 +46,7 @@ matchArgsToDoCall <- function(
 ) {
     assert_is_any_of(args, c("list", "NULL"))
     if (is.list(args)) {
-        assert_is_non_empty(args)
+        assertHasLength(args)
         assert_has_names(args)
     } else {
         args <- list()
