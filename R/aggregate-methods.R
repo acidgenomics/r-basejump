@@ -319,7 +319,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
     function(object, col = "aggregate", fun) {
         validObject(object)
         assertHasValidDimnames(object)
-        assert_is_a_string(col)
+        assertString(col)
         fun <- match.arg(fun)
 
         # Groupings ------------------------------------------------------------

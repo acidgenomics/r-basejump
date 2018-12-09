@@ -58,7 +58,7 @@ markdownHeader <- function(
     tabset = FALSE,
     asis = FALSE
 ) {
-    assert_is_a_string(text)
+    assertString(text)
     assert_all_are_non_missing_nor_empty_character(text)
     assertIsHeaderLevel(level)
     assert_is_a_bool(tabset)
@@ -120,8 +120,8 @@ markdownLink <- function(
     url,
     title = NULL
 ) {
-    assert_is_a_string(text)
-    assert_is_a_string(url)
+    assertString(text)
+    assertString(url)
     assertIsStringOrNULL(title)
     x <- paste0("[", text, "](", url, ")")
     if (!is.null(title)) {
@@ -231,7 +231,7 @@ markdownPlots <- function(list, headerLevel = 2L) {
         plot = list,
         MoreArgs = list(headerLevel = headerLevel),
         FUN = function(name, plot, headerLevel) {
-            assert_is_a_string(name)
+            assertString(name)
             markdownHeader(name, level = headerLevel, asis = TRUE)
             show(plot)
             plot

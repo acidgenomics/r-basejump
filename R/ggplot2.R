@@ -174,7 +174,7 @@ basejump_geom_label_average <- function(
     ...
 ) {
     data <- as.data.frame(data)
-    assert_is_a_string(col)
+    assertString(col)
     assert_is_subset(col, colnames(data))
     assert_is_an_integer(digits)
     fun <- match.arg(fun)
@@ -326,7 +326,7 @@ theme_paperwhite <- function(
     minimal = FALSE
 ) {
     assert_is_a_number(base_size)
-    assert_is_a_string(base_family)
+    assertString(base_family)
     face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)
@@ -387,7 +387,7 @@ theme_paperwhite <- function(
 #' @export
 theme_midnight <- function() {
     assert_is_a_number(base_size)
-    assert_is_a_string(base_family)
+    assertString(base_family)
     face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)

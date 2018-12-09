@@ -143,11 +143,11 @@ PANTHER <- function(  # nolint
         choices = names(.pantherMappings)
     )
     pantherName <-  .pantherMappings[[organism]]
-    assert_is_a_string(pantherName)
+    assertString(pantherName)
     if (is.null(release)) {
         release <- "current_release"
     }
-    assert_is_a_string(release)
+    assertString(release)
     assert_is_a_bool(progress)
 
     message(paste0(
@@ -175,7 +175,7 @@ PANTHER <- function(  # nolint
             localDir = tempdir()
         )
     }
-    assert_is_a_string(file)
+    assertString(file)
 
     data <- read_tsv(
         file = file,

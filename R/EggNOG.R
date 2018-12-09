@@ -39,9 +39,9 @@ EggNOG <-  # nolint
                 sep = "/"
             )
         }
-        assert_is_a_string(categoriesFile)
-        assert_is_a_string(eunogFile)
-        assert_is_a_string(nogFile)
+        assertString(categoriesFile)
+        assertString(eunogFile)
+        assertString(nogFile)
 
         # Categories -----------------------------------------------------------
         pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"

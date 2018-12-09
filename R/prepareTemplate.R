@@ -45,7 +45,7 @@ prepareTemplate <- function(
     sourceDir = NULL,
     ...
 ) {
-    assert_is_a_string(package)
+    assertString(package)
     assert_is_subset(package, rownames(installed.packages()))
     assertIsStringOrNULL(sourceDir)
     assert_is_a_bool(overwrite)
