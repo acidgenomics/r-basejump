@@ -117,11 +117,9 @@ NULL
 
 # Don't message when aggregating a large factor.
 .aggregateMessage <- function(groupings, fun) {
-    assert_is_factor(groupings)
-    assert_is_a_string(fun)
-    msg <- paste0(
-        "Aggregating counts using `", fun, "()`."
-    )
+    assertFactor(groupings)
+    assertString(fun)
+    msg <- paste0("Aggregating counts using `", fun, "()`.")
     if (length(groupings) <= 20L) {
         msg <- paste(
             msg,
@@ -143,9 +141,9 @@ aggregateRows.matrix <-  # nolint
         fun
     ) {
         assertHasValidDimnames(object)
-        assert_is_factor(groupings)
-        assert_are_identical(rownames(object), names(groupings))
-        assertAreValidNames(levels(groupings))
+        assertFactor(groupings)
+        assertIdentical(rownames(object), names(groupings))
+        assertValidNames(levels(groupings))
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
         # `stats::aggregate.data.frame` S3 method.
@@ -178,9 +176,9 @@ aggregateRows.sparseMatrix <-  # nolint
     ) {
         validObject(object)
         assertHasValidDimnames(object)
-        assert_is_factor(groupings)
-        assert_are_identical(rownames(object), names(groupings))
-        assertAreValidNames(levels(groupings))
+        assertFactor(groupings)
+        assertIdentical(rownames(object), names(groupings))
+        assertValidNames(levels(groupings))
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
         # `Matrix.utils::aggregate.Matrix` S3 method.
@@ -207,13 +205,13 @@ aggregateRows.SummarizedExperiment <-  # nolint
     function(object, col = "aggregate", fun) {
         validObject(object)
         assertHasValidDimnames(object)
-        assert_is_a_string(col)
+        assertString(col)
         fun <- match.arg(fun)
 
         # Groupings ------------------------------------------------------------
-        assert_is_subset(col, colnames(rowData(object)))
+        assertSubset(col, colnames(rowData(object)))
         groupings <- rowData(object)[[col]]
-        assert_is_factor(groupings)
+        assertFactor(groupings)
         assertAreValidNames(levels(groupings))
         names(groupings) <- rownames(object)
 
@@ -224,7 +222,7 @@ aggregateRows.SummarizedExperiment <-  # nolint
             fun = fun
         )
         if (fun == "sum") {
-            assert_are_identical(
+            assertIdentical(
                 x = sum(counts),
                 y = sum(counts(object))
             )
@@ -339,7 +337,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
             fun = fun
         )
         if (fun == "sum") {
-            assert_are_identical(
+            assertIdentical(
                 x = sum(counts),
                 y = sum(counts(object))
             )
@@ -354,7 +352,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
             sampleName = sampleNames,
             row.names = makeNames(sampleNames)
         )
-        assert_are_identical(
+        assertIdentical(
             x = rownames(sampleData),
             y = colnames(counts)
         )
@@ -444,7 +442,7 @@ aggregateCols.SingleCellExperiment <-  # nolint
         names(cell2sample) <- as.character(groupings)
 
         # Reslot the `aggregate` column using these groupings.
-        assert_are_identical(names(groupings), colnames(object))
+        assertIdentical(names(groupings), colnames(object))
         colData(object)[["aggregate"]] <- groupings
 
         # Generate SingleCellExperiment ----------------------------------------
