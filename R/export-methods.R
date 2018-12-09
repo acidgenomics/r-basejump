@@ -86,7 +86,7 @@ export.ANY <-  # nolint
             x <- as_tibble(x, rownames = rownames)
         )
         assertHasRows(x)
-        assert_has_cols(x)
+        assertHasCols(x)
         if (missing(file) && missing(format)) {
             stop("Must specify `file` and/or `format`.", call. = FALSE)
         } else if (missing(file)) {
