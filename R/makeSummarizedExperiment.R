@@ -197,7 +197,7 @@ makeSummarizedExperiment <- function(
 
     # Automatically arrange the rows to match the main assay.
     if (is(rowRanges, "GRanges")) {
-        assert_has_names(rowRanges)
+        assertHasNames(rowRanges)
         assertSubset(rownames(assay), names(rowRanges))
         rowRanges <- rowRanges[rownames(assay)]
     } else if (is(rowData, "DataFrame")) {

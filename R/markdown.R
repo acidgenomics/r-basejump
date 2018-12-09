@@ -224,7 +224,7 @@ mdList <- markdownList
 #' markdownPlots(list = plotlist)
 markdownPlots <- function(list, headerLevel = 2L) {
     assertList(list)
-    assert_has_names(list)
+    assertHasNames(list)
     assertIsHeaderLevel(headerLevel)
     invisible(mapply(
         name = names(list),
@@ -290,7 +290,7 @@ markdownTables <- function(
     assertList(list)
     assertMultiClass(captions, classes = c("character", "NULL"))
     if (is.null(captions)) {
-        assert_has_names(list)
+        assertHasNames(list)
         captions <- names(list)
     }
     assertCharacter(captions)

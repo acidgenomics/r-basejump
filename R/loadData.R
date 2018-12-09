@@ -76,7 +76,7 @@ formals(loadData)[["dir"]] <- formalsList[["load.dir"]]
 #' class(renamed)
 loadDataAsName <- function(..., dir, envir = parent.frame()) {
     dots <- dots(..., character = TRUE)
-    assert_has_names(dots)
+    assertHasNames(dots)
     files <- .listRData(names = dots, dir = dir)
     names(files) <- names(dots)
     assertEnvironment(envir)

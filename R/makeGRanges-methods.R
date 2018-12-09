@@ -456,7 +456,7 @@ NULL
 
 .makeGRanges <- function(object) {
     assertClass(object, "GRanges")
-    assert_has_names(object)
+    assertHasNames(object)
 
     # Standardize the metadata columns.
     mcols <- mcols(object)

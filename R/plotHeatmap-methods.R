@@ -814,7 +814,7 @@ setMethod(
 # Duplicates may arise if user is mixing and matching camel/snake case.
 .pheatmapArgs <- function(args) {
     assertList(args)
-    assert_has_names(args)
+    assertHasNames(args)
     # Abort on snake case formatted formalArgs
     invalidNames <- grep("[._]", names(args), value = TRUE)
     if (has_length(invalidNames)) {

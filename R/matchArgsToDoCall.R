@@ -47,7 +47,7 @@ matchArgsToDoCall <- function(
     assertMultiClass(args, c("list", "NULL"))
     if (is.list(args)) {
         assertHasLength(args)
-        assert_has_names(args)
+        assertHasNames(args)
     } else {
         args <- list()
     }
