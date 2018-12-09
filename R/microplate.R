@@ -35,12 +35,12 @@ microplate <- function(
     assertIsAnImplicitInteger(wells)
     wells <- as.integer(wells)
     assert_all_are_positive(wells)
-    assert_is_subset(wells, c(96L, 384L))
+    assertSubset(wells, c(96L, 384L))
     # Controls
     assertIsAnImplicitInteger(controls)
     controls <- as.integer(controls)
     assert_all_are_non_negative(controls)
-    assert_is_subset(controls, 0L:12L)
+    assertSubset(controls, 0L:12L)
     # Prefix
     assertIsStringOrNULL(prefix)
 

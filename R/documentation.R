@@ -34,7 +34,7 @@ parseRd <- function(object, tag) {
     assertString(tag)
 
     tags <- RdTags(object)
-    assert_is_subset(tag, tags)
+    assertSubset(tag, tags)
 
     # Get the metadata that matches the requested tag.
     data <- object[tags == tag]
@@ -131,7 +131,7 @@ saveRdExamples <- function(
     }
 
     # Check that the requiested function(s) are valid.
-    assert_is_subset(Rd, names(db))
+    assertSubset(Rd, names(db))
 
     # Parse the Rd files and return the working examples as a character.
     list <- mapply(

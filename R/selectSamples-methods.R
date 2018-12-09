@@ -53,7 +53,7 @@ selectSamples.SummarizedExperiment <-  # nolint
 
         # Match the arguments against the sample metadata.
         sampleData <- sampleData(object)
-        assert_is_subset(names(args), colnames(sampleData))
+        assertSubset(names(args), colnames(sampleData))
 
         # Obtain the sample identifiers.
         list <- mapply(
@@ -152,7 +152,7 @@ selectSamples.SingleCellExperiment <-  # nolint
         # Use the metrics `data.frame` to match the cellular barcodes
         metrics <- metrics(object)
         assert_is_all_of(metrics, "grouped_df")
-        assert_is_subset(c("cellID", "sampleID"), colnames(metrics))
+        assertSubset(c("cellID", "sampleID"), colnames(metrics))
         # Note that we don't need to sort here.
         cells <- metrics %>%
             filter(!!sym("sampleID") %in% !!samples) %>%

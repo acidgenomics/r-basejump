@@ -46,7 +46,7 @@ prepareTemplate <- function(
     ...
 ) {
     assertString(package)
-    assert_is_subset(package, rownames(installed.packages()))
+    assertSubset(package, rownames(installed.packages()))
     assertIsStringOrNULL(sourceDir)
     assertFlag(overwrite)
 

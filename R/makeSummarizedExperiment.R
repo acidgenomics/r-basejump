@@ -144,7 +144,7 @@ makeSummarizedExperiment <- function(
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         # Transgenes
         if (has_length(setdiff) && has_length(transgeneNames)) {
-            assert_is_subset(transgeneNames, setdiff)
+            assertSubset(transgeneNames, setdiff)
             transgeneRanges <- emptyRanges(
                 names = transgeneNames,
                 seqname = "transgene",
@@ -155,7 +155,7 @@ makeSummarizedExperiment <- function(
         }
         # FASTA spike-ins
         if (has_length(setdiff) && has_length(spikeNames)) {
-            assert_is_subset(spikeNames, setdiff)
+            assertSubset(spikeNames, setdiff)
             spikeRanges <- emptyRanges(
                 names = spikeNames,
                 seqname = "spike",
@@ -165,7 +165,7 @@ makeSummarizedExperiment <- function(
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
     } else if (is(rowData, "DataFrame")) {
-        assert_is_subset(rownames(assay), rownames(rowData))
+        assertSubset(rownames(assay), rownames(rowData))
         rowData <- rowData[rownames(assay), , drop = FALSE]
     } else {
         message("Slotting empty ranges.")
@@ -198,11 +198,11 @@ makeSummarizedExperiment <- function(
     # Automatically arrange the rows to match the main assay.
     if (is(rowRanges, "GRanges")) {
         assert_has_names(rowRanges)
-        assert_is_subset(rownames(assay), names(rowRanges))
+        assertSubset(rownames(assay), names(rowRanges))
         rowRanges <- rowRanges[rownames(assay)]
     } else if (is(rowData, "DataFrame")) {
         assertHasRownames(rowData)
-        assert_is_subset(rownames(assay), rownames(rowData))
+        assertSubset(rownames(assay), rownames(rowData))
         rowData <- rowData[rownames(assay), , drop = FALSE]
     }
 
@@ -210,7 +210,7 @@ makeSummarizedExperiment <- function(
     if (is.null(colData)) {
         colData <- DataFrame(row.names = colnames(assay))
     }
-    assert_is_subset(colnames(assay), rownames(colData))
+    assertSubset(colnames(assay), rownames(colData))
     colData <- colData[colnames(assay), , drop = FALSE]
 
     # Metadata -----------------------------------------------------------------

@@ -39,7 +39,7 @@
 makeSampleData <- function(object) {
     # blacklist = c("interestingGroups", "sampleID")
     assert_has_dims(object)
-    assert_is_subset(
+    assertSubset(
         x = "sampleName",
         y = colnames(object)
     )

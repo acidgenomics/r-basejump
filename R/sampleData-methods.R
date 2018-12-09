@@ -246,7 +246,7 @@ setMethod(
 
         # Update colData slot.
         colData <- colData(object)
-        assert_is_subset("sampleID", colnames(colData))
+        assertSubset("sampleID", colnames(colData))
         colData <- colData[
             ,
             c("sampleID", setdiff(colnames(colData), colnames(value))),
