@@ -174,12 +174,14 @@ basejump_geom_label_average <- function(
     ...
 ) {
     data <- as.data.frame(data)
-    assertString(col)
-    assertSubset(col, colnames(data))
-    assertInt(digits)
+    assert(
+        isString(col),
+        isSubset(col, colnames(data)),
+        isInt(digits)
+    )
     fun <- match.arg(fun)
     fun <- get(fun)
-    assertFunction(fun)
+    assert(is.function(fun))
 
     aggdata <- aggregate(
         formula = as.formula(paste(col, "sampleName", sep = " ~ ")),
@@ -325,13 +327,17 @@ theme_paperwhite <- function(
     grid = FALSE,
     minimal = FALSE
 ) {
-    assertNumber(base_size)
-    assertString(base_family)
+    assert(
+        isNumber(base_size),
+        isString(base_family)
+    )
     face <- match.arg(face)
-    assertIsANumberOrNULL(aspect_ratio)
+    assert(isNumber(aspect_ratio) || is.null(aspect_ratio))
     legend_position <- match.arg(legend_position)
-    assertFlag(grid)
-    assertFlag(minimal)
+    assert(
+        isFlag(grid),
+        isFlag(minimal)
+    )
 
     gray <- "gray95"
 
@@ -386,12 +392,14 @@ theme_paperwhite <- function(
 #' @rdname ggplot2-themes
 #' @export
 theme_midnight <- function() {
-    assertNumber(base_size)
-    assertString(base_family)
+    assert(
+        isNumber(base_size),
+        isString(base_family)
+    )
     face <- match.arg(face)
-    assertIsANumberOrNULL(aspect_ratio)
+    assert(isNumber(aspect_ratio) || is.null(aspect_ratio))
     legend_position <- match.arg(legend_position)
-    assertFlag(grid)
+    assert(isFlag(grid))
 
     gray <- "gray10"
 
