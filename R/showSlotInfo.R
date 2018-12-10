@@ -17,10 +17,8 @@
 #'     filtered = TRUE
 #' ))
 showSlotInfo <- function(list) {
-    assert(
-        is(list, "list"),
-        allAreAtomic(list)
-    )
+    assert(is.list(list))
+    # TODO Consider checking for all atomic here.
     list <- Filter(f = Negate(is.null), x = list)
     list <- Filter(f = hasLength, x = list)
     # Standardize to Bioconductor `show()` conventions.
