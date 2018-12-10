@@ -16,7 +16,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
         title = "zeros vs. depth"
     ) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
@@ -26,7 +26,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
         assertIsStringOrNULL(title)
 
         data <- zerosVsDepth(object, assay = assay)
-        assert_is_all_of(data, "DataFrame")
+        assertClass(data, "DataFrame")
 
         p <- ggplot(
             data = as_tibble(data),

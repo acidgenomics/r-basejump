@@ -98,20 +98,20 @@ makeSummarizedExperiment <- function(
     spikeNames = NULL
 ) {
     # Assert checks ------------------------------------------------------------
-    assert_is_any_of(
+    assertMultiClass(
         x = assays,
         classes = c("list", "ShallowSimpleListAssays", "SimpleList")
     )
-    assert_is_any_of(rowRanges, classes = c("GRanges", "NULL"))
-    assert_is_any_of(rowData, classes = c("DataFrame", "NULL"))
+    assertMultiClass(rowRanges, classes = c("GRanges", "NULL"))
+    assertMultiClass(rowData, classes = c("DataFrame", "NULL"))
     # Only allow `rowData` if `rowRanges` are `NULL`.
     if (!is.null(rowRanges)) {
-        assert_is_null(rowData)
+        assertNull(rowData)
     }
-    assert_is_any_of(colData, classes = c("DataFrame", "NULL"))
-    assert_is_any_of(metadata, classes = c("list", "NULL"))
-    assert_is_any_of(transgeneNames, classes = c("character", "NULL"))
-    assert_is_any_of(spikeNames, classes = c("character", "NULL"))
+    assertMultiClass(colData, classes = c("DataFrame", "NULL"))
+    assertMultiClass(metadata, classes = c("list", "NULL"))
+    assertMultiClass(transgeneNames, classes = c("character", "NULL"))
+    assertMultiClass(spikeNames, classes = c("character", "NULL"))
 
     # Assays -------------------------------------------------------------------
     # Drop any `NULL` items in assays.
@@ -120,7 +120,7 @@ makeSummarizedExperiment <- function(
     }
     # Require the primary assay to be named "counts". This helps ensure
     # consistency with the conventions for `SingleCellExperiment`.
-    assert_are_identical(names(assays)[[1L]], "counts")
+    assertIdentical(names(assays)[[1L]], "counts")
     assay <- assays[[1L]]
     # Require valid names for both columns (samples) and rows (genes).
     # Note that values beginning with a number or containing invalid characters
@@ -147,7 +147,7 @@ makeSummarizedExperiment <- function(
             length(setdiff) == 0L &&
             length(transgeneNames) == 0L
         ) {
-            assert_is_subset(transgeneNames, setdiff)
+            assert(isSubset(x = transgeneNames, y = setdiff))
             transgeneRanges <- emptyRanges(
                 names = transgeneNames,
                 seqname = "transgene",
@@ -161,7 +161,7 @@ makeSummarizedExperiment <- function(
             length(setdiff) == 0L &&
             length(spikeNames) == 0L
         ) {
-            assert_is_subset(spikeNames, setdiff)
+            assert(isSubset(x = spikeNames, y = setdiff))
             spikeRanges <- emptyRanges(
                 names = spikeNames,
                 seqname = "spike",
@@ -171,7 +171,7 @@ makeSummarizedExperiment <- function(
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
     } else if (is(rowData, "DataFrame")) {
-        assert_is_subset(rownames(assay), rownames(rowData))
+        assertSubset(rownames(assay), rownames(rowData))
         rowData <- rowData[rownames(assay), , drop = FALSE]
     } else {
         message("Slotting empty ranges.")
@@ -203,12 +203,12 @@ makeSummarizedExperiment <- function(
 
     # Automatically arrange the rows to match the main assay.
     if (is(rowRanges, "GRanges")) {
-        assert_has_names(rowRanges)
-        assert_is_subset(rownames(assay), names(rowRanges))
+        assertHasNames(rowRanges)
+        assertSubset(rownames(assay), names(rowRanges))
         rowRanges <- rowRanges[rownames(assay)]
     } else if (is(rowData, "DataFrame")) {
         assertHasRownames(rowData)
-        assert_is_subset(rownames(assay), rownames(rowData))
+        assertSubset(rownames(assay), rownames(rowData))
         rowData <- rowData[rownames(assay), , drop = FALSE]
     }
 
@@ -216,7 +216,7 @@ makeSummarizedExperiment <- function(
     if (is.null(colData)) {
         colData <- DataFrame(row.names = colnames(assay))
     }
-    assert_is_subset(colnames(assay), rownames(colData))
+    assertSubset(colnames(assay), rownames(colData))
     colData <- colData[colnames(assay), , drop = FALSE]
 
     # Metadata -----------------------------------------------------------------

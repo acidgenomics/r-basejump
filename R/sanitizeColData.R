@@ -70,7 +70,7 @@ sanitizeSampleData <- function(object) {
     # or work with R Markdown functions.
     keep <- vapply(X = object, FUN = is.atomic, FUN.VALUE = logical(1L))
     object <- object[, keep, drop = FALSE]
-    assert_is_non_empty(object)
+    assertHasLength(object)
     # Return.
     as(object, "DataFrame")
 }

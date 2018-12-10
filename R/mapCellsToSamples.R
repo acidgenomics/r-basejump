@@ -22,9 +22,9 @@
 #' print(cells)
 #' mapCellsToSamples(cells, samples)
 mapCellsToSamples <- function(cells, samples) {
-    assert_is_character(cells)
-    assert_has_no_duplicates(cells)
-    assert_is_any_of(samples, c("character", "factor"))
+    assertCharacter(cells)
+    assertHasNoDuplicates(cells)
+    assertMultiClass(samples, c("character", "factor"))
     samples <- unique(as.character(samples))
 
     # Early return if `cells` don't have a separator and `samples` is a string.
@@ -54,6 +54,6 @@ mapCellsToSamples <- function(cells, samples) {
     })
 
     cell2sample <- unlist(list)
-    assert_are_identical(length(cells), length(cell2sample))
+    assertIdentical(length(cells), length(cell2sample))
     as.factor(cell2sample)
 }

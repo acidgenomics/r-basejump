@@ -121,9 +121,7 @@ NULL
         is(groupings, "factor"),
         isString(fun)
     )
-    msg <- paste0(
-        "Aggregating counts using `", fun, "()`."
-    )
+    msg <- paste0("Aggregating counts using `", fun, "()`.")
     if (length(groupings) <= 20L) {
         msg <- paste(
             msg,
@@ -327,6 +325,7 @@ setMethod(
 aggregateCols.SummarizedExperiment <-  # nolint
     function(object, col = "aggregate", fun) {
         validObject(object)
+<<<<<<< HEAD
         assert(
             validDimnames(object),
             isString(col)

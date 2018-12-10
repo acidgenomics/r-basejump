@@ -49,7 +49,7 @@
 #' ## But it only returns the first match, if there are multiple genomes.
 #' detectOrganism(c("ENSG00000000003", "ENSMUSG00000000001"))
 detectOrganism <- function(object) {
-    assert_is_character(object)
+    assertCharacter(object)
     # Parse the character vector until we get a match.
     x <- NA_character_
     i <- 1L
@@ -71,10 +71,10 @@ detectOrganism <- function(object) {
 
 .detectOrganism.string <-  # nolint
     function(object) {
-        assert_is_a_string(object)
+        assertString(object)
         data("organism_mappings", package = "basejump", envir = environment())
         data <- get("organism_mappings", inherits = FALSE)
-        assert_is_tbl_df(data)
+        assertTibble(data)
         # Generate a logical matrix of grep matches.
         hits <- apply(
             X = data,

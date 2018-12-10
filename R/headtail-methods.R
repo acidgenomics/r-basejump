@@ -31,7 +31,7 @@ NULL
 
 headtail.atomic <-  # nolint
     function(x, n = 2L) {
-        assert_is_atomic(x)
+        assertAtomic(x)
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
         if (length(x) <= n * 2L) {
@@ -64,10 +64,10 @@ setMethod(
 
 headtail.matrix <-  # nolint
     function(x, n = 2L, ascii = FALSE) {
-        assert_has_dims(x)
+        assertHasDims(x)
         assertIsAnImplicitInteger(n)
         assert_all_are_positive(n)
-        assert_is_a_bool(ascii)
+        assertFlag(ascii)
 
         if (nrow(x) <= n * 2L || ncol(x) <= n * 2L) {
             message("Object can't be split into quadrants.")

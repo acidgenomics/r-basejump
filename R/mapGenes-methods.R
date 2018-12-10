@@ -56,11 +56,11 @@ NULL
 
 # Internal =====================================================================
 .mapGenes <- function(object, genes, strict = TRUE) {
-    assert_is_all_of(object, "Gene2Symbol")
+    assertClass(object, "Gene2Symbol")
     validObject(object)
-    assert_is_character(genes)
-    assert_is_non_empty(genes)
-    assert_is_a_bool(strict)
+    assertCharacter(genes)
+    assertHasLength(genes)
+    assertFlag(strict)
 
     # Prepare the match table.
     if (any(genes %in% rownames(object))) {
@@ -95,7 +95,7 @@ NULL
 
     # Return the identifiers that map to rownames.
     mapped <- na.omit(match)
-    assert_is_non_empty(mapped)
+    assertHasLength(mapped)
     mapped
 }
 
@@ -136,7 +136,7 @@ mapGenesToRownames.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assert_are_identical(rownames(g2s), rownames(object))
+        assertIdentical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToRownames,
             args = list(
@@ -195,7 +195,7 @@ mapGenesToIDs.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assert_are_identical(rownames(g2s), rownames(object))
+        assertIdentical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToIDs,
             args = list(
@@ -254,7 +254,7 @@ mapGenesToSymbols.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assert_are_identical(rownames(g2s), rownames(object))
+        assertIdentical(rownames(g2s), rownames(object))
         do.call(
             what = mapGenesToSymbols,
             args = list(

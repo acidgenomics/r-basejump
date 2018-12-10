@@ -56,9 +56,9 @@ NULL
 
 convertTranscriptsToGenes.character <-  # nolint
     function(object, tx2gene) {
-        assert_all_are_non_missing_nor_empty_character(object)
-        assert_has_no_duplicates(object)
-        assert_is_all_of(tx2gene, "Tx2Gene")
+        assertAllAreNonMissingNorEmptyCharacter(object)
+        assertHasNoDuplicates(object)
+        assertClass(tx2gene, "Tx2Gene")
         validObject(tx2gene)
 
         missing <- setdiff(object, tx2gene[["transcriptID"]])
@@ -93,7 +93,7 @@ setMethod(
 # Consider aggregating the matrix to gene level instead.
 convertTranscriptsToGenes.matrix <-  # nolint
     function(object, tx2gene, aggregate = TRUE) {
-        assert_is_a_bool(aggregate)
+        assertFlag(aggregate)
         t2g <- do.call(
             what = convertTranscriptsToGenes,
             args = list(
@@ -149,7 +149,7 @@ convertTranscriptsToGenes.SummarizedExperiment <-  # nolint
             assays = list(counts = counts),
             colData = colData(object)
         )
-        assert_are_identical(
+        assertIdentical(
             x = colSums(counts(object)),
             y = colSums(counts(se))
         )

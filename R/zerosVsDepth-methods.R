@@ -70,12 +70,12 @@ setMethod(
 
 zerosVsDepth.SummarizedExperiment <-  # nolint
     function(object, assay = 1L) {
-        assert_is_scalar(assay)
+        assertScalar(assay)
         counts <- assays(object)[[assay]]
         data <- zerosVsDepth(counts)
         sampleData <- sampleData(object)
-        assert_are_identical(rownames(data), rownames(sampleData))
-        assert_are_disjoint_sets(colnames(data), colnames(sampleData))
+        assertIdentical(rownames(data), rownames(sampleData))
+        assertAreDisjointSets(colnames(data), colnames(sampleData))
         cbind(data, sampleData)
     }
 
@@ -93,7 +93,7 @@ setMethod(
 
 zerosVsDepth.SingleCellExperiment <-  # nolint
     function(object, assay = 1L) {
-        assert_is_scalar(assay)
+        assertScalar(assay)
         counts <- assays(object)[[assay]]
 
         data <- zerosVsDepth(counts)
@@ -102,8 +102,8 @@ zerosVsDepth.SingleCellExperiment <-  # nolint
         sampleData <- sampleData(object)
         sampleData[["sampleID"]] <- as.factor(rownames(sampleData))
 
-        assert_is_all_of(data, "DataFrame")
-        assert_is_all_of(sampleData, "DataFrame")
+        assertClass(data, "DataFrame")
+        assertClass(sampleData, "DataFrame")
 
         # Use BiocTibble left_join DataFrame method here.
         join <- left_join(

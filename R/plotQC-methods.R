@@ -9,7 +9,7 @@ NULL
 
 # Consider exporting this as a method?
 .plotSumsECDF <- function(object, fun) {
-    assert_is_function(fun)
+    assertFunction(fun)
     data <- tibble(x = fun(object))
     ggplot(
         data = data,
@@ -28,7 +28,7 @@ NULL
 plotQC.SummarizedExperiment <-  # nolint
     function(object, assay = 1L) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
 
         # Always coerce to dense matrix.
         mat <- as.matrix(assays(object)[[assay]])

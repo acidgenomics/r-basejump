@@ -38,12 +38,12 @@
 #' )
 makeSampleData <- function(object) {
     # blacklist = c("interestingGroups", "sampleID")
-    assert_has_dims(object)
-    assert_is_subset(
+    assertHasDims(object)
+    assertSubset(
         x = "sampleName",
         y = colnames(object)
     )
-    assert_are_disjoint_sets(
+    assertAreDisjointSets(
         x = c(
             "filename",
             "id",

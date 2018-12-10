@@ -19,7 +19,7 @@ NULL
 
 Ensembl2Entrez.DataFrame <-  # nolint
     function(object, format = c("1:1", "long")) {
-        assert_has_rows(object)
+        assertHasRows(object)
         format <- match.arg(format)
 
         cols <- c("geneID", "entrezID")
@@ -59,7 +59,7 @@ Ensembl2Entrez.DataFrame <-  # nolint
                 "Returning with 1:1 mappings using oldest Entrez ID per gene."
             ))
             entrez <- object[["entrezID"]]
-            assert_is_list(entrez)
+            assertList(entrez)
             names(entrez) <- object[["geneID"]]
             map <- lapply(
                 X = entrez,
