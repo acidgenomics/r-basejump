@@ -10,14 +10,7 @@
 )
 
 .hasPrototypeMetadata <- function(object) {
-    is_subset(
-        x = names(.prototypeMetadata),
-        y = names(metadata(object))
-    )
-}
-
-.assertHasPrototypeMetadata <- function(object) {
-    assertSubset(
+    isSubset(
         x = names(.prototypeMetadata),
         y = names(metadata(object))
     )
@@ -53,5 +46,5 @@
             "Requires: ", toString(genomeMetadataNames)
         ))
     }
-    .assertHasPrototypeMetadata(object)
+    assert(.hasPrototypeMetadata(object))
 }
