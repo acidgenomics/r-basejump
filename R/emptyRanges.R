@@ -33,10 +33,11 @@ emptyRanges <- function(
     seqname = c("unknown", "transgene", "spike"),
     mcolsNames = NULL
 ) {
-    assertCharacter(names)
-    assertAllAreNonMissingNorEmptyCharacter(names)
+    assert(
+        isCharacter(names),
+        isAny(mcolsNames, c("character", "NULL"))
+    )
     seqname <- match.arg(seqname)
-    assertMultiClass(mcolsNames, c("character", "NULL"))
 
     gr <- GRanges(
         seqnames = seqname,
@@ -56,10 +57,7 @@ emptyRanges <- function(
     mcols <- matrix(
         nrow = length(names),
         ncol = ncol,
-        dimnames = list(
-            names,
-            mcolsNames
-        )
+        dimnames = list(names, mcolsNames)
     )
     mcols <- as(mcols, "DataFrame")
     mcols(gr) <- mcols
