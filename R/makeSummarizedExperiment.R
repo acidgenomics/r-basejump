@@ -1,4 +1,5 @@
-# TODO Call `autopadZeros()` and resort columns if necessary.
+# TODO Consider calling `autopadZeros()` and resorting the columns
+# automatically if necessary.
 
 
 
@@ -91,27 +92,48 @@
 makeSummarizedExperiment <- function(
     assays,
     rowRanges = NULL,  # recommended
-    rowData = NULL,    # not recommended
+    rowData = NULL,    # legacy
     colData = NULL,
     metadata = NULL,
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
     # Assert checks ------------------------------------------------------------
-    assertMultiClass(
-        x = assays,
-        classes = c("list", "ShallowSimpleListAssays", "SimpleList")
+    assert(
+        isAny(
+            x = assays,
+            classes = c("list", "ShallowSimpleListAssays", "SimpleList")
+        ),
+        isAny(
+            x = rowRanges,
+            classes = c("GRanges", "NULL")
+        ),
+        isAny(
+            x = rowData,
+            classes = c("DataFrame", "NULL")
+        ),
+        isAny(
+            x = colData,
+            classes = c("DataFrame", "NULL")
+        ),
+        isAny(
+            x = metadata,
+            classes = c("list", "NULL")
+        ),
+        isAny(
+            x = transgeneNames,
+            classes = c("character", "NULL")
+        ),
+        isAny(
+            x = spikeNames,
+            classes = c("character", "NULL")
+        )
     )
-    assertMultiClass(rowRanges, classes = c("GRanges", "NULL"))
-    assertMultiClass(rowData, classes = c("DataFrame", "NULL"))
-    # Only allow `rowData` if `rowRanges` are `NULL`.
+
+    # Only allow `rowData` when `rowRanges` are `NULL`.
     if (!is.null(rowRanges)) {
-        assertNull(rowData)
+        assert(is.null(rowData))
     }
-    assertMultiClass(colData, classes = c("DataFrame", "NULL"))
-    assertMultiClass(metadata, classes = c("list", "NULL"))
-    assertMultiClass(transgeneNames, classes = c("character", "NULL"))
-    assertMultiClass(spikeNames, classes = c("character", "NULL"))
 
     # Assays -------------------------------------------------------------------
     # Drop any `NULL` items in assays.
@@ -120,12 +142,12 @@ makeSummarizedExperiment <- function(
     }
     # Require the primary assay to be named "counts". This helps ensure
     # consistency with the conventions for `SingleCellExperiment`.
-    assertIdentical(names(assays)[[1L]], "counts")
+    assert(identical(names(assays)[[1L]], "counts"))
     assay <- assays[[1L]]
     # Require valid names for both columns (samples) and rows (genes).
     # Note that values beginning with a number or containing invalid characters
     # (e.g. spaces, dashes) will error here.
-    assertHasValidDimnames(assay)
+    assert(hasValidDimnames(assay))
     # We're going to require that the assay names be sorted, but will perform
     # this step after generating the `SummarizedExperiment` object (see below).
     # The `SummarizedExperiment()` constructor checks to ensure that all assays
@@ -139,7 +161,7 @@ makeSummarizedExperiment <- function(
         # Transgenes should contain `transgene` seqname.
         # Spike-ins should contain `spike` seqname.
         # Otherwise, unannotated genes will be given `unknown` seqname.
-        assert_are_intersecting_sets(rownames(assay), names(rowRanges))
+        assert(areIntersectingSets(rownames(assay), names(rowRanges)))
         mcolsNames <- names(mcols(rowRanges))
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         # Transgenes
@@ -171,7 +193,7 @@ makeSummarizedExperiment <- function(
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
     } else if (is(rowData, "DataFrame")) {
-        assertSubset(rownames(assay), rownames(rowData))
+        assert(isSubset(rownames(assay), rownames(rowData)))
         rowData <- rowData[rownames(assay), , drop = FALSE]
     } else {
         message("Slotting empty ranges.")
@@ -203,12 +225,12 @@ makeSummarizedExperiment <- function(
 
     # Automatically arrange the rows to match the main assay.
     if (is(rowRanges, "GRanges")) {
-        assertHasNames(rowRanges)
-        assertSubset(rownames(assay), names(rowRanges))
+        assert(hasNames(rowRanges))
+        assert(isSubset(rownames(assay), names(rowRanges)))
         rowRanges <- rowRanges[rownames(assay)]
     } else if (is(rowData, "DataFrame")) {
-        assertHasRownames(rowData)
-        assertSubset(rownames(assay), rownames(rowData))
+        assert(hasRownames(rowData))
+        assert(isSubset(rownames(assay), rownames(rowData)))
         rowData <- rowData[rownames(assay), , drop = FALSE]
     }
 
@@ -216,7 +238,7 @@ makeSummarizedExperiment <- function(
     if (is.null(colData)) {
         colData <- DataFrame(row.names = colnames(assay))
     }
-    assertSubset(colnames(assay), rownames(colData))
+    assert(isSubset(colnames(assay), rownames(colData)))
     colData <- colData[colnames(assay), , drop = FALSE]
 
     # Metadata -----------------------------------------------------------------
