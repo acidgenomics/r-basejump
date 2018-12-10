@@ -133,7 +133,7 @@ NULL
         ignore.case = TRUE,
         value = TRUE
     )
-    if (has_length(biotypeCol)) {
+    if (length(biotypeCol) == 0L) {
         biotypeCol <- biotypeCol[[1L]]
         biotype <- data[[biotypeCol]]
     } else {
@@ -150,7 +150,7 @@ NULL
         ignore.case = TRUE,
         value = TRUE
     )
-    if (has_length(seqnameCol)) {
+    if (length(seqnameCol) == 0L) {
         seqnameCol <- seqnameCol[[1L]]
         seqname <- data[[seqnameCol]]
     } else {
@@ -232,7 +232,7 @@ NULL
 #' @noRd
 .forceDetach <- function(keep = NULL) {
     detach <- setdiff(.packages(), keep)
-    if (has_length(detach)) {
+    if (length(detach) > 0L) {
         invisible(lapply(
             X = detach,
             FUN = function(name) {
@@ -272,7 +272,7 @@ NULL
             expr = convertUCSCBuildToEnsembl(genomeBuild),
             error = function(e) NULL
         )
-        if (has_length(ucscCheck)) {
+        if (length(ucscCheck) > 0L) {
             stop(paste(
                 "UCSC genome build ID detected.",
                 "Use Ensembl ID instead.\n",
@@ -443,7 +443,7 @@ NULL
 
 # Determine if GFF or GTF.
 .gffType <- function(gff) {
-    assert_that(is(gff, "GRanges"))
+    assert(is(gff, "GRanges"))
     gff <- camel(gff)
     if (all(c("id", "name") %in% colnames(mcols(gff)))) {
         "GFF"
@@ -625,7 +625,7 @@ makeGRangesFromEnsDb <- function(object, level) {
             inherits = FALSE
         )
     }
-    assert_that(is(object, "EnsDb"))
+    assert(is(object, "EnsDb"))
 
     assert_is_all_of(object, "EnsDb")
     level <- match.arg(level)
@@ -819,7 +819,7 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["biotype"]] <- NULL
             # geneID
             assert_is_subset("parent", colnames(mcols(tx)))
-            assert_that(all(grepl("^gene:", mcols(tx)[["parent"]])))
+            assert(all(grepl("^gene:", mcols(tx)[["parent"]])))
             mcols(tx)[["geneID"]] <- as.character(mcols(tx)[["parent"]])
             mcols(tx)[["geneID"]] <- gsub(
                 pattern = "^gene:",
@@ -849,7 +849,7 @@ makeGRangesFromGFF <- function(
             x = colnames(mcols(gn)),
             y = colnames(mcols(gr))
         )
-        if (has_length(geneCols)) {
+        if (length(geneCols) > 0L) {
             geneCols <- c("geneID", geneCols)
             merge <- merge(
                 x = mcols(gr),

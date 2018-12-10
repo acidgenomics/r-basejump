@@ -14,20 +14,22 @@
 #' ))
 showSlotInfo <- function(list) {
     assert_is_list(list)
-    assert_that(all(vapply(
+    assert(all(vapply(
         X = list,
         FUN = is.atomic,
         FUN.VALUE = logical(1L)
     )))
     list <- Filter(f = Negate(is.null), x = list)
-    list <- Filter(f = has_length, x = list)
+    # FIXME Rethink this approach...doesn't work well with some S4 classes.
+    # FIXME Consider exporting `hasLength()` variant in goalie.
+    list <- Filter(f = rlang::has_length, x = list)
     # Standardize to Bioconductor `show()` conventions.
     # Refer to SummarizedExperiment method for example.
     out <- mapply(
         name = names(list),
         x = list,
         FUN = function(name, x) {
-            if (has_length(x, n = 1L)) {
+            if (length(x) == 1L) {
                 paste0(name, ": ", x)
             } else {
                 if (has_names(x) && length(x) <= 4L) {

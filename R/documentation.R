@@ -74,7 +74,7 @@ parseRd <- function(object, tag) {
 RdTags <- function(object) {  # nolint
     assert_is_all_of(object, "Rd")
     tags <- sapply(object, attr, "Rd_tag")
-    if (!has_length(tags)) {
+    if (length(tags) == 0L) {
         tags <- character()
     } else {
         # Remove the leading "\\" backslashes.
@@ -188,7 +188,7 @@ saveRdExamples <- function(
 #'
 #' @seealso http://r-pkgs.had.co.nz/man.html
 tabular <- function(df) {
-    assert_that(is.data.frame(df))
+    assert(is.data.frame(df))
     align <- function(x) {
         if (is.numeric(x)) {
             "r"

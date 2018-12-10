@@ -41,14 +41,14 @@ Ensembl2Entrez.DataFrame <-  # nolint
 
         # Inform the user about genes that don't map to Entrez.
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
-        assert_that(!any(duplicated(unmapped)))
-        if (has_length(unmapped)) {
+        assert(!any(duplicated(unmapped)))
+        if (length(unmapped) > 0L) {
             message(paste(length(unmapped), "genes don't map to Entrez."))
         }
 
         # Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
-        if (has_length(multimapped)) {
+        if (length(multimapped) > 0L) {
             message(paste(
                 length(multimapped), "genes map to multiple Entrez IDs."
             ))

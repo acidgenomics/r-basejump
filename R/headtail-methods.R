@@ -118,8 +118,8 @@ headtail.matrix <-  # nolint
             )
 
             # Check that we have square dimensions.
-            assert_that(nrow(square) == n * 2L)
-            assert_that(ncol(square) == n * 2L)
+            assert(nrow(square) == n * 2L)
+            assert(ncol(square) == n * 2L)
 
             # Split into quadrants, so we can add vertical separators.
             # upper/lower, left/right.

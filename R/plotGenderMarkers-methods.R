@@ -47,7 +47,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
                 character()
             }
         )
-        if (!has_length(genes)) {
+        if (length(genes) == 0L) {
             return(invisible())
         }
 

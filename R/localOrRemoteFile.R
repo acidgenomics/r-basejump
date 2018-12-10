@@ -35,7 +35,7 @@ localOrRemoteFile <- function(file) {
         FUN = function(file) {
             # Remote file mode.
             if (isURL(file)) {
-                assert_that(has_internet())
+                assert(has_internet())
                 ext <- str_match(basename(file), extPattern) %>%
                     .[1L, 2L:3L] %>%
                     na.omit() %>%

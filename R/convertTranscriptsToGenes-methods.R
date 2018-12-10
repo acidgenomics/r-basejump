@@ -62,7 +62,7 @@ convertTranscriptsToGenes.character <-  # nolint
         validObject(tx2gene)
 
         missing <- setdiff(object, tx2gene[["transcriptID"]])
-        if (has_length(missing)) {
+        if (length(missing) > 0L) {
             stop(paste(
                 "Failed to match transcripts:", toString(missing)
             ), call. = FALSE)

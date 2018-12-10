@@ -41,7 +41,7 @@ transmit <- function(
     rename = NULL,
     compress = FALSE
 ) {
-    assert_that(has_internet())
+    assert(has_internet())
     assert_is_a_string(remoteDir)
     # Check for public FTP protocol.
     assert_all_are_matching_regex(remoteDir, "^ftp\\://")
@@ -67,7 +67,10 @@ transmit <- function(
     }
 
     remoteTxt <- getURL(remoteDir)
-    if (!isTRUE(is.character(remoteTxt) && has_length(remoteTxt))) {
+    if (!isTRUE(
+        is.character(remoteTxt) &&
+        length(remoteTxt) > 0L
+    )) {
         stop("Failed to list directory contents.")
     }
 
@@ -119,7 +122,7 @@ transmit <- function(
     }
 
     # Early return if all files exist.
-    if (!has_length(localPaths)) {
+    if (length(localPaths) == 0L) {
         message("All files are already downloaded.")
         files <- realpath(files)
         names(files) <- match

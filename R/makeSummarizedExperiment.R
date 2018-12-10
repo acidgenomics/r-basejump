@@ -143,7 +143,10 @@ makeSummarizedExperiment <- function(
         mcolsNames <- names(mcols(rowRanges))
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         # Transgenes
-        if (has_length(setdiff) && has_length(transgeneNames)) {
+        if (
+            length(setdiff) == 0L &&
+            length(transgeneNames) == 0L
+        ) {
             assert_is_subset(transgeneNames, setdiff)
             transgeneRanges <- emptyRanges(
                 names = transgeneNames,
@@ -154,7 +157,10 @@ makeSummarizedExperiment <- function(
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
         # FASTA spike-ins
-        if (has_length(setdiff) && has_length(spikeNames)) {
+        if (
+            length(setdiff) == 0L &&
+            length(spikeNames) == 0L
+        ) {
             assert_is_subset(spikeNames, setdiff)
             spikeRanges <- emptyRanges(
                 names = spikeNames,
@@ -178,9 +184,9 @@ makeSummarizedExperiment <- function(
     } else if (is(rowData, "DataFrame")) {
         data <- rowData
     }
-    assert_that(is(data, "DataFrame"))
+    assert(is(data, "DataFrame"))
     setdiff <- setdiff(rownames(assay), rownames(data))
-    if (has_length(setdiff)) {
+    if (length(setdiff) > 0L) {
         stop(paste0(
             "Unannotated rows (", length(setdiff), "): ",
             str_trunc(
