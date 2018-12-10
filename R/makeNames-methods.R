@@ -89,7 +89,7 @@ NULL
 # `stringr::str_replace_all()` is an alternate approach that uses `regex()`.
 # https://stringr.tidyverse.org/articles/regular-expressions.html
 .sanitizeAcronyms <- function(object) {
-    assertAtomic(object)
+    assert(is.atomic(object))
     object %>%
         as.character() %>%
         # Sanitize "id" variants (e.g. "Id" to "ID").
@@ -134,8 +134,10 @@ NULL
 #' @inheritParams base::make.names
 #' @export
 makeNames <- function(names, unique = TRUE) {
-    assertAtomic(names)
-    assertFlag(unique)
+    assert(
+        is.atomic(names),
+        isFlag(unique)
+    )
     names <- as.character(names)
     names <- make.names(names, unique = unique)
     names <- gsub("\\.", "_", names)
@@ -147,105 +149,17 @@ makeNames <- function(names, unique = TRUE) {
 #' @rdname makeNames
 #' @export
 makeDimnames <- function(object) {
-    assertHasDimnames(object)
-
+    assert(hasDimnames(object))
     # Row names.
-    if (
-        hasRownames(object) &&
-        !(is(object, "data.table") || is(object, "tbl_df"))
-    ) {
+    if (hasRownames(object)) {
         rownames(object) <- makeNames(rownames(object), unique = TRUE)
     }
-
     # Column names.
-    if (has_colnames(object)) {
+    if (hasColnames(object)) {
         colnames(object) <- makeNames(colnames(object), unique = TRUE)
     }
-
     object
 }
-
-
-
-# atomic =======================================================================
-camel.atomic <-  # nolint
-    function(object, strict = FALSE) {
-        if (has_names(object)) {
-            names(object) <- camel.character(names(object), strict = strict)
-        }
-        object
-    }
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "camel",
-    signature = signature("atomic"),
-    definition = camel.atomic
-)
-
-
-
-dotted.atomic <-  # nolint
-    function(object) {
-        if (has_names(object)) {
-            names(object) <- dotted.character(names(object))
-        }
-        object
-    }
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "dotted",
-    signature = signature("atomic"),
-    definition = dotted.atomic
-)
-
-
-
-snake.atomic <-  # nolint
-    function(object) {
-        if (has_names(object)) {
-            names(object) <- snake.character(names(object))
-        }
-        object
-    }
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "snake",
-    signature = signature("atomic"),
-    definition = snake.atomic
-)
-
-
-
-upperCamel.atomic <-  # nolint
-    function(object, strict = FALSE) {
-        if (has_names(object)) {
-            names(object) <-
-                upperCamel.character(names(object), strict = strict)
-        }
-        object
-    }
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "upperCamel",
-    signature = signature("atomic"),
-    definition = upperCamel.atomic
-)
 
 
 
@@ -258,7 +172,7 @@ camel.character <-  # nolint
     ) {
         object <- dotted(object)
         format <- match.arg(format)
-        assertFlag(strict)
+        assert(isFlag(strict))
 
         # Simplify mixed case acronyms in strict mode.
         if (isTRUE(strict)) {
@@ -314,7 +228,7 @@ setMethod(
     f = "camel",
     signature = signature("character"),
     definition = function(object, strict = FALSE) {
-        if (has_names(object)) {
+        if (hasNames(object)) {
             names <- camel.character(names(object), strict = strict)
         } else {
             names <- NULL
@@ -330,7 +244,6 @@ setMethod(
 # Dotted case is the internal method used by camel and snake.
 dotted.character <-  # nolint
     function(object) {
-        assertAtomic(object)
         object %>%
             as.character() %>%
             # Handle "+" as a special case. Spell out as "plus".
@@ -366,7 +279,7 @@ setMethod(
     f = "dotted",
     signature = signature("character"),
     definition = function(object) {
-        if (has_names(object)) {
+        if (hasNames(object)) {
             names <- dotted.character(names(object))
         } else {
             names <- NULL
@@ -381,7 +294,6 @@ setMethod(
 
 snake.character <-  # nolint
     function(object) {
-        assertAtomic(object)
         object %>%
             dotted() %>%
             tolower() %>%
@@ -396,7 +308,7 @@ setMethod(
     f = "snake",
     signature = signature("character"),
     definition = function(object) {
-        if (has_names(object)) {
+        if (hasNames(object)) {
             names <- snake.character(names(object))
         } else {
             names <- NULL
@@ -422,7 +334,7 @@ setMethod(
     f = "upperCamel",
     signature = signature("character"),
     definition = function(object, strict = FALSE) {
-        if (has_names(object)) {
+        if (hasNames(object)) {
             names <- upperCamel.character(names(object), strict = strict)
         } else {
             names <- NULL
@@ -524,6 +436,88 @@ setMethod(
     f = "upperCamel",
     signature = signature("factor"),
     definition = upperCamel.factor
+)
+
+
+
+# atomic =======================================================================
+camel.atomic <-  # nolint
+    function(object, strict = FALSE) {
+        if (hasNames(object)) {
+            names(object) <- camel.character(names(object), strict = strict)
+        }
+        object
+    }
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "camel",
+    signature = signature("atomic"),
+    definition = camel.atomic
+)
+
+
+
+dotted.atomic <-  # nolint
+    function(object) {
+        if (hasNames(object)) {
+            names(object) <- dotted.character(names(object))
+        }
+        object
+    }
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "dotted",
+    signature = signature("atomic"),
+    definition = dotted.atomic
+)
+
+
+
+snake.atomic <-  # nolint
+    function(object) {
+        if (hasNames(object)) {
+            names(object) <- snake.character(names(object))
+        }
+        object
+    }
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "snake",
+    signature = signature("atomic"),
+    definition = snake.atomic
+)
+
+
+
+upperCamel.atomic <-  # nolint
+    function(object, strict = FALSE) {
+        if (hasNames(object)) {
+            names(object) <-
+                upperCamel.character(names(object), strict = strict)
+        }
+        object
+    }
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "upperCamel",
+    signature = signature("atomic"),
+    definition = upperCamel.atomic
 )
 
 
@@ -630,12 +624,14 @@ camel.matrix <-  # nolint
         colnames = TRUE,
         strict = FALSE
     ) {
-        assertHasDimnames(object)
-        assertFlag(rownames)
+        assert(
+            hasDimnames(object),
+            isFlag(rownames)
+        )
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- camel(rownames(object), strict = strict)
         }
-        if (isTRUE(colnames) && has_colnames(object)) {
+        if (isTRUE(colnames) && hasColnames(object)) {
             assertHasColnames(object)
             colnames(object) <- camel(colnames(object), strict = strict)
         }
@@ -660,12 +656,14 @@ dotted.matrix <-  # nolint
         rownames = FALSE,
         colnames = TRUE
     ) {
-        assertHasDimnames(object)
-        assertFlag(rownames)
+        assert(
+            hasDimnames(object),
+            isFlag(rownames)
+        )
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- dotted.character(rownames(object))
         }
-        if (isTRUE(colnames) && has_colnames(object)) {
+        if (isTRUE(colnames) && hasColnames(object)) {
             colnames(object) <- dotted.character(colnames(object))
         }
         object
@@ -689,12 +687,14 @@ snake.matrix <-  # nolint
         rownames = FALSE,
         colnames = TRUE
     ) {
-        assertHasDimnames(object)
-        assertFlag(rownames)
+        assert(
+            hasDimnames(object),
+            isFlag(rownames)
+        )
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- snake.character(rownames(object))
         }
-        if (isTRUE(colnames) && has_colnames(object)) {
+        if (isTRUE(colnames) && hasColnames(object)) {
             colnames(object) <- snake.character(colnames(object))
         }
         object
@@ -719,13 +719,15 @@ upperCamel.matrix <-  # nolint
         colnames = TRUE,
         strict = FALSE
     ) {
-        assertHasDimnames(object)
-        assertFlag(rownames)
+        assert(
+            hasDimnames(object),
+            isFlag(rownames)
+        )
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <-
                 upperCamel.character(rownames(object), strict = strict)
         }
-        if (isTRUE(colnames) && has_colnames(object)) {
+        if (isTRUE(colnames) && hasColnames(object)) {
             colnames(object) <-
                 upperCamel.character(colnames(object), strict = strict)
         }
