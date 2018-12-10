@@ -27,7 +27,6 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
     } else {
         interestingGroups(object) <- interestingGroups
     }
-    assertCharacter(interestingGroups)
-    assertHasLength(interestingGroups)
+    assert(isCharacter(interestingGroups))
     interestingGroups
 }
