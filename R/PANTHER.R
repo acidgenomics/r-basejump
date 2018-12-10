@@ -1,3 +1,7 @@
+# FIXME Now seeing some parsing errors with PANTHER 1.3 Homo sapiens...
+
+
+
 #' @name PANTHER
 #' @inherit PANTHER-class
 #' @inheritParams params
@@ -140,12 +144,14 @@ PANTHER <- function(  # nolint
     assert(hasInternet())
     organism <- match.arg(arg = organism, choices = names(.pantherMappings))
     pantherName <-  .pantherMappings[[organism]]
-    assertString(pantherName)
+    assert(isString(pantherName))
     if (is.null(release)) {
         release <- "current_release"
     }
-    assertString(release)
-    assertFlag(progress)
+    assert(
+        isString(release),
+        isFlag(progress)
+    )
 
     message(paste0(
         "Downloading PANTHER annotations for ",
@@ -154,25 +160,26 @@ PANTHER <- function(  # nolint
     ))
 
     if (isTRUE(getOption("basejump.test"))) {
-        file <- file.path(
+        file <- url(
             basejumpCacheURL,
-            paste0("PTHR13.1_", pantherName, ".gz")
+            paste0("PTHR13.1_", pantherName, ".gz"),
+            protocol = "none"
         )
     } else {
         file <- transmit(
-            remoteDir = paste(
-                "ftp://ftp.pantherdb.org",
+            remoteDir = url(
+                "ftp.pantherdb.org",
                 "sequence_classifications",
                 release,
                 "PANTHER_Sequence_Classification_files",
-                sep = "/"
+                protocol = "ftp"
             ),
             pattern = pantherName,
             compress = TRUE,
             localDir = tempdir()
         )
     }
-    assertString(file)
+    assert(isString(file))
 
     data <- read_tsv(
         file = file,
@@ -204,9 +211,9 @@ PANTHER <- function(  # nolint
 
     # Using organism-specific internal return functions here.
     fun <- get(paste("", "PANTHER", camel(organism), sep = "."))
-    assertFunction(fun)
+    assert(is.function(fun))
     data <- fun(data)
-    assertHasRows(data)
+    assert(hasRows(data))
 
     data <- data %>%
         select(-!!sym("keys")) %>%
@@ -218,7 +225,7 @@ PANTHER <- function(  # nolint
         top_n(n = 1L, wt = !!sym("pantherSubfamilyID")) %>%
         ungroup() %>%
         arrange(!!sym("geneID"))
-    assertHasNoDuplicates(data[["geneID"]])
+    assert(hasNoDuplicates(data[["geneID"]]))
 
     message("Splitting and sorting the GO terms.")
     data <- data %>%
