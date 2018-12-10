@@ -175,7 +175,6 @@ as.SummarizedExperiment <-  # nolint
 # needs to be fixed in the SummarizedExperiment package.
 as.SummarizedExperiment.default <-  # nolint
     function(x) {
-        assert(is(x, "SummarizedExperiment"))
         if (is(x, "RangedSummarizedExperiment")) {
             rowMeta <- metadata(rowRanges(x))
             x <- as(x, "RangedSummarizedExperiment")

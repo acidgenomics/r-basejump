@@ -27,7 +27,7 @@ setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
 setValidity(
     Class = "EggNOG",
     method = function(object) {
-        validate_that(
+        validate(
             identical(
                 x = names(object),
                 y = c("cogFunctionalCategories", "annotations")
@@ -65,7 +65,7 @@ setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 setValidity(
     Class = "Ensembl2Entrez",
     method = function(object) {
-        validate_that(
+        validate(
             identical(
                 x = colnames(object),
                 y = c("geneID", "entrezID")
@@ -100,7 +100,7 @@ setClass(Class = "Gene2Symbol", contains = "DataFrame")
 setValidity(
     Class = "Gene2Symbol",
     method = function(object) {
-        validate_that(
+        validate(
             identical(
                 x = colnames(object),
                 y = c("geneID", "geneName")
@@ -126,7 +126,7 @@ setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
 setValidity(
     Class = "HGNC2Ensembl",
     method = function(object) {
-        validate_that(
+        validate(
             identical(
                 x = lapply(object, class),
                 y = list(
@@ -156,7 +156,7 @@ setClass(Class = "MGI2Ensembl", contains = "DataFrame")
 setValidity(
     Class = "MGI2Ensembl",
     method = function(object) {
-        validate_that(
+        validate(
             identical(
                 x = colnames(object),
                 y = c("mgiID", "geneID")
@@ -182,7 +182,7 @@ setClass(Class = "PANTHER", contains = "DataFrame")
 setValidity(
     Class = "PANTHER",
     method = function(object) {
-        validate_that(
+        validate(
             identical(
                 x = colnames(object),
                 y = c(
@@ -223,7 +223,7 @@ setClass(Class = "Tx2Gene", contains = "DataFrame")
 setValidity(
     Class = "Tx2Gene",
     method = function(object) {
-        validate_that(
+        validate(
             nrow(object) > 0L,
             identical(
                 x = colnames(object),

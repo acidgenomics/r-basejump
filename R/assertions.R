@@ -42,16 +42,18 @@
 #'     gene2symbol = gene2symbol
 #' )
 assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
-    assertHasRownames(x)
-    assertCharacter(genes)
-    assertClass(gene2symbol, "Gene2Symbol")
-    assertIdentical(x = nrow(x), y = nrow(gene2symbol))
+    assert(
+        hasRownames(x),
+        is.character(genes),
+        is(gene2symbol, "Gene2Symbol"),
+        identical(x = nrow(x), y = nrow(gene2symbol))
+    )
     if (is.null(rownames(gene2symbol))) {
         rownames(gene2symbol) <- rownames(x)
     }
     # Map genes to x rownames, using gene2symbol.
     rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
-    assertSubset(rownames, rownames(x))
+    assert(isSubset(rownames, rownames(x)))
     TRUE
 }
 
@@ -82,11 +84,11 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
         return(invisible())
     } else {
         # Otherwise, require that `interestingGroups` is a character.
-        assertCharacter(interestingGroups)
+        assert(is.character(interestingGroups))
     }
 
     # Check intersection with sample data.
-    assertSubset(interestingGroups, colnames(data))
+    assert(isSubset(interestingGroups, colnames(data)))
 
     # Check that interesting groups columns are factors.
     invisible(lapply(
