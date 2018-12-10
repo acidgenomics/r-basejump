@@ -33,24 +33,25 @@ geneSynonyms <- function(organism) {
 
     if (isTRUE(getOption("basejump.test"))) {
         assert(organism == "Homo sapiens")
-        file <- file.path(
+        file <- url(
             basejumpCacheURL,
-            paste0(snake(organism), ".gene_info.gz")
+            paste0(snake(organism), ".gene_info.gz"),
+            protocol = "none"
         )
     } else {
-        file <- paste(
-            "ftp://ftp.ncbi.nih.gov",
+        file <- url(
+            "ftp.ncbi.nih.gov",
             "gene",
             "DATA",
             "GENE_INFO",
             genome[["kingdom"]],
             paste0(genome[["species"]], ".gene_info.gz"),
-            sep = "/"
+            protocol = "ftp"
         )
     }
 
     data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
-    assertHasLength(data)
+    assert(hasLength(data))
 
     data <- data %>%
         camel() %>%
