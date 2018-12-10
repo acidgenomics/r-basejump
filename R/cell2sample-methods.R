@@ -26,14 +26,12 @@ cell2sample.SingleCellExperiment <-  # nolint
         return = c("factor", "tibble")
     ) {
         validObject(object)
-        assertSubset("sampleID", colnames(colData(object)))
+        assert(isSubset("sampleID", colnames(colData(object))))
         return <- match.arg(return)
-
         colData <- colData(object)
-
         if (return == "factor") {
             sample <- colData[["sampleID"]]
-            assertFactor(sample)
+            assert(is.factor(sample))
             cell <- colnames(object)
             names(sample) <- cell
             sample
