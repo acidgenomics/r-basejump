@@ -684,7 +684,7 @@ makeGRangesFromEnsDb <- function(object, level) {
             y = as_tibble(geneData, rownames = NULL),
             by = "gene_id"
         )
-        assert(identical(x = txData[["tx_id"]], y = data[["tx_id"]])
+        assert(identical(x = txData[["tx_id"]], y = data[["tx_id"]]))
 
         # Now we can slot back into the transcript mcols.
         mcols(tx) <- as(data, "DataFrame")
