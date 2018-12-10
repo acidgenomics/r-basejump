@@ -5,7 +5,7 @@
 \title{Load Data as Name}
 \usage{
 loadDataAsName(..., dir = getOption("basejump.load.dir", "."),
-  envir = parent.frame())
+  envir = globalenv())
 }
 \arguments{
 \item{...}{Key value pairs, defining the name mappings. For example,

@@ -5,7 +5,7 @@
 \title{Load Data}
 \usage{
 loadData(..., dir = getOption("basejump.load.dir", "."),
-  envir = parent.frame())
+  envir = globalenv())
 }
 \arguments{
 \item{...}{Object names. Note that these arguments are interpreted as symbols

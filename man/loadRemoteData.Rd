@@ -4,7 +4,7 @@
 \alias{loadRemoteData}
 \title{Load Remote Data}
 \usage{
-loadRemoteData(url, envir = parent.frame())
+loadRemoteData(url, envir = globalenv())
 }
 \arguments{
 \item{url}{\code{character}. Remote URL file path(s) to R data.}
@@ -21,9 +21,10 @@ Load a remote R binary file. This function is vectorized and supports
 multiple URLs in a single call.
 }
 \examples{
-url <- file.path(
+url <- url(
     basejumpCacheURL,
-    paste0(c("rnaseq_counts", "single_cell_counts"), ".rds")
+    paste0(c("rnaseq_counts", "single_cell_counts"), ".rds"),
+    protocol = "none"
 )
 print(url)
 x <- loadRemoteData(url)
