@@ -30,7 +30,7 @@ stripTranscriptVersions.character <-  # nolint
         # Examples: ENST (human); ENSMUST (mouse).
         assertCharacter(object)
         assert_all_are_not_na(object)
-        assert_all_are_non_missing_nor_empty_character(object)
+        assertAllAreNonMissingNorEmptyCharacter(object)
         # punct will match `-` or `_` here.
         gsub(
             pattern = "^(ENS.*[GT][[:digit:]]{11})[[:punct:]][[:digit:]]+$",

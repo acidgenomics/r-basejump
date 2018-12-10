@@ -56,7 +56,7 @@ NULL
 
 convertTranscriptsToGenes.character <-  # nolint
     function(object, tx2gene) {
-        assert_all_are_non_missing_nor_empty_character(object)
+        assertAllAreNonMissingNorEmptyCharacter(object)
         assertHasNoDuplicates(object)
         assertClass(tx2gene, "Tx2Gene")
         validObject(tx2gene)

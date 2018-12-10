@@ -116,7 +116,7 @@ standardizeCall <- function(
 
     # Require that all arguments are named before returning.
     # This check is especially important for S4 methods containing `.local()`.
-    assert_all_are_non_missing_nor_empty_character(names(as.list(call)[-1L]))
+    assertAllAreNonMissingNorEmptyCharacter(names(as.list(call)[-1L]))
 
     if (return == "list") {
         list

@@ -90,7 +90,7 @@ geometricMean.matrix <-  # nolint
     function(object, MARGIN = 2L) {  # nolint
         invisible(lapply(
             X = object,
-            FUN = assert_is_numeric
+            FUN = assertNumeric
         ))
         apply(
             X = object,

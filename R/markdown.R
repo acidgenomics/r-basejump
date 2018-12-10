@@ -59,7 +59,7 @@ markdownHeader <- function(
     asis = FALSE
 ) {
     assertString(text)
-    assert_all_are_non_missing_nor_empty_character(text)
+    assertAllAreNonMissingNorEmptyCharacter(text)
     assertIsHeaderLevel(level)
     assertFlag(tabset)
     assertFlag(asis)
@@ -164,7 +164,7 @@ markdownList <- function(
     assertAtomic(text)
     text <- as.character(text)
     assert_all_are_not_na(text)
-    assert_all_are_non_missing_nor_empty_character(text)
+    assertAllAreNonMissingNorEmptyCharacter(text)
     assertFlag(ordered)
     assertFlag(asis)
 
@@ -294,7 +294,7 @@ markdownTables <- function(
         captions <- names(list)
     }
     assertCharacter(captions)
-    assert_are_same_length(list, captions)
+    assertAreSameLength(list, captions)
     assertFlag(force)
     output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
     if (!is.null(output) || isTRUE(force)) {

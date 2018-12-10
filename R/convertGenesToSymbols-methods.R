@@ -45,7 +45,7 @@ NULL
 # Allowing duplicates here (unlike convertTranscriptsToGenes).
 convertGenesToSymbols.character <-  # nolint
     function(object, gene2symbol) {
-        assert_all_are_non_missing_nor_empty_character(object)
+        assertAllAreNonMissingNorEmptyCharacter(object)
         assertClass(gene2symbol, "Gene2Symbol")
         validObject(gene2symbol)
 

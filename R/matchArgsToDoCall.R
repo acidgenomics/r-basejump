@@ -120,7 +120,7 @@ matchArgsToDoCall <- function(
         ))
     }
 
-    assert_all_are_non_missing_nor_empty_character(names(args))
+    assertAllAreNonMissingNorEmptyCharacter(names(args))
     assertHasNoDuplicates(names(args))
     invisible(lapply(
         X = args,
