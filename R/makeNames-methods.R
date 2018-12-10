@@ -632,7 +632,6 @@ camel.matrix <-  # nolint
             rownames(object) <- camel(rownames(object), strict = strict)
         }
         if (isTRUE(colnames) && hasColnames(object)) {
-            assertHasColnames(object)
             colnames(object) <- camel(colnames(object), strict = strict)
         }
         object
