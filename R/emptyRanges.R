@@ -34,7 +34,7 @@ emptyRanges <- function(
     mcolsNames = NULL
 ) {
     assertCharacter(names)
-    assert_all_are_non_missing_nor_empty_character(names)
+    assertAllAreNonMissingNorEmptyCharacter(names)
     seqname <- match.arg(seqname)
     assertMultiClass(mcolsNames, c("character", "NULL"))
 

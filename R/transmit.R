@@ -44,7 +44,7 @@ transmit <- function(
     assertHasInternet()
     assertString(remoteDir)
     # Check for public FTP protocol.
-    assert_all_are_matching_regex(remoteDir, "^ftp\\://")
+    assertAllAreMatchingRegex(remoteDir, "^ftp\\://")
     # `RCurl::getURL()` requires a trailing slash.
     if (!grepl("/$", remoteDir)) {
         remoteDir <- paste0(remoteDir, "/")
@@ -96,7 +96,7 @@ transmit <- function(
 
     # Rename files, if desired.
     if (is.character(rename)) {
-        assert_are_same_length(match, rename)
+        assertAreSameLength(match, rename)
         name <- rename
     } else {
         name <- match

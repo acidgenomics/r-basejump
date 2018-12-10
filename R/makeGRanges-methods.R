@@ -367,7 +367,7 @@ NULL
     mcols <- tail(mcols, n = 1L)
     id <- rownames(mcols)
     assertString(id)
-    assert_all_are_matching_regex(x = id, pattern = "^AH[[:digit:]]+$")
+    assertAllAreMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$")
     message(paste0(id, ": ", mcols[["title"]]))
     .forceDetach(keep = userAttached)
     id
