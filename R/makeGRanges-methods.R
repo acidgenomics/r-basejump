@@ -88,7 +88,7 @@ NULL
     invisible(capture.output(
         ah <- suppressMessages(AnnotationHub())
     ))
-    assertClass(ah, "AnnotationHub")
+    assert(is(ah, "AnnotationHub"))
     .forceDetach(keep = userAttached)
     ah
 }
@@ -106,11 +106,10 @@ NULL
 #'
 #' @return Named `factor`.
 .broadClass <- function(object) {
-    assertClass(object, "GRanges")
+    assert(is(object, "GRanges"))
 
     names <- names(object)
-    assertCharacter(names)
-    assertHasLength(names)
+    assert(isCharacter(names))
 
     data <- as_tibble(object)
 
@@ -122,7 +121,7 @@ NULL
     }
 
     # Gene name (required).
-    assertSubset("geneName", colnames(data))
+    assert(isSubset("geneName", colnames(data)))
     geneName <- data[["geneName"]]
 
     # Biotype (optional).
@@ -247,7 +246,7 @@ NULL
             }
         ))
     }
-    assertIdentical(.packages(), keep)
+    assert(identical(.packages(), keep))
 }
 
 
@@ -262,10 +261,10 @@ NULL
     ah = NULL
 ) {
     userAttached <- .packages()
-    assertString(organism)
+    assert(isString(organism))
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
-    assertIsStringOrNULL(genomeBuild)
+    assert(isString(genomeBuild) || is.null(genomeBuild))
     # Check for accidental UCSC input and stop, informing user.
     if (is_a_string(genomeBuild)) {
         ucscCheck <- tryCatch(
@@ -280,18 +279,17 @@ NULL
             ))
         }
     }
-    assertIsAnImplicitIntegerOrNULL(ensemblRelease)
-    if (isAnImplicitInteger(ensemblRelease)) {
-        # Note that ensembldb currently only supports >= 87.
-        assert_all_are_positive(ensemblRelease)
+    assert(isInt(ensemblRelease) || is.null(ensemblRelease))
+    if (isInt(ensemblRelease)) {
         ensemblRelease <- as.integer(ensemblRelease)
     }
 
     # Error on request of unsupported legacy Ensembl release.
-    if (!is.null(ensemblRelease) && ensemblRelease < 87L) {
-        stop(paste(
-            "ensembldb currently only supports Ensembl releases >= 87."
-        ))
+    if (
+        is.integer(ensemblRelease) &&
+        ensemblRelease < 87L
+    ) {
+        stop("ensembldb currently only supports Ensembl releases >= 87.")
     }
 
     # Get AnnotationHub if necessary.
@@ -336,19 +334,19 @@ NULL
 
     # Ensure genome build matches, if specified.
     if (!is.null(genomeBuild)) {
-        assertSubset("genome", colnames(mcols))
+        assert(isSubset("genome", colnames(mcols)))
         mcols <- mcols[mcols[["genome"]] %in% genomeBuild, , drop = FALSE]
     }
 
     # Ensure Ensembl release matches, or pick the latest one.
     if (!is.null(ensemblRelease)) {
-        assertSubset("title", colnames(mcols))
+        assert(isSubset("title", colnames(mcols)))
         mcols <- mcols[
             grepl(paste("Ensembl", ensemblRelease), mcols[["title"]]),
             ,
             drop = FALSE
-            ]
-        assert_is_of_length(nrow(mcols), 1L)
+        ]
+        assert(hasLength(nrow(mcols), n = 1L))
     }
 
     if (!nrow(mcols)) {
@@ -366,8 +364,8 @@ NULL
 
     mcols <- tail(mcols, n = 1L)
     id <- rownames(mcols)
-    assertString(id)
-    assertAllAreMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$")
+    assert(isString(id))
+    assert(isMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$"))
     message(paste0(id, ": ", mcols[["title"]]))
     .forceDetach(keep = userAttached)
     id
@@ -384,7 +382,7 @@ NULL
     if (is.null(ah)) {
         ah <- .annotationHub()
     }
-    assertClass(ah, "AnnotationHub")
+    assert(is(ah, "AnnotationHub"))
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output.
     # Additionally, it attaches ensembldb and other Bioconductor dependency
@@ -392,7 +390,7 @@ NULL
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
     ))
-    assertClass(edb, "EnsDb")
+    assert(is(edb, "EnsDb"))
     .forceDetach(keep = userAttached)
     edb
 }
@@ -405,14 +403,14 @@ NULL
 .getEnsDbFromPackage <- function(package) {
     message(paste0("Getting EnsDb from ", package, "."))
     userAttached <- .packages()
-    assertString(package)
+    assert(isString(package))
     require(package, character.only = TRUE)
     edb <- get(
         x = package,
         envir = asNamespace(package),
         inherits = FALSE
     )
-    assertClass(edb, "EnsDb")
+    assert(is(edb, "EnsDb"))
     .forceDetach(keep = userAttached)
     edb
 }
@@ -421,7 +419,7 @@ NULL
 
 # Report the source of the gene annotations.
 .gffSource <- function(gff) {
-    assertSubset("source", colnames(mcols(gff)))
+    assert(isSubset("source", colnames(mcols(gff))))
     if (
         any(grepl("FlyBase", mcols(gff)[["source"]]))
     ) {
@@ -455,8 +453,10 @@ NULL
 
 
 .makeGRanges <- function(object) {
-    assertClass(object, "GRanges")
-    assertHasNames(object)
+    assert(
+        is(object, "GRanges"),
+        hasNames(object)
+    )
 
     # Standardize the metadata columns.
     mcols <- mcols(object)
@@ -476,7 +476,7 @@ NULL
     if (!"geneName" %in% colnames(mcols)) {
         # nocov start
         warning("`geneName` is missing. Using `geneID` instead.")
-        assertSubset("geneID", colnames(mcols))
+        assert(isSubset("geneID", colnames(mcols)))
         mcols[["geneName"]] <- mcols[["geneID"]]
         # nocov end
     }
@@ -530,10 +530,9 @@ NULL
 
     # Require that names match the identifier column.
     # Use `transcriptID` over `geneID` if defined.
-    assert_are_intersecting_sets(
-        x = c("geneID", "transcriptID"),
-        y = colnames(mcols(object))
-    )
+    assert(areIntersectingSets(
+        x = c("geneID", "transcriptID"), y = colnames(mcols(object))
+    ))
     if ("transcriptID" %in% colnames(mcols(object))) {
         idCol <- "transcriptID"
     } else {
@@ -551,7 +550,7 @@ NULL
     message(paste0("Arranging by ", idCol, "."))
     object <- object[sort(names(object))]
 
-    assertClass(object, "GRanges")
+    assert(is(object, "GRanges"))
     object
 }
 
@@ -582,7 +581,7 @@ makeGRangesFromEnsembl <- function(
     release = NULL
 ) {
     message("Making GRanges from Ensembl.")
-    assertString(organism)
+    assert(isString(organism))
     level <- match.arg(level)
     if (
         identical(tolower(organism), "homo sapiens") &&
@@ -612,6 +611,8 @@ makeGRangesFromEnsembl <- function(
 #'   Alternatively, can pass in an EnsDb package name as a `string`.
 #' @export
 makeGRangesFromEnsDb <- function(object, level) {
+    level <- match.arg(level)
+
     message("Making GRanges from EnsDb object.")
     userAttached <- .packages()
 
@@ -627,15 +628,12 @@ makeGRangesFromEnsDb <- function(object, level) {
     }
     assert(is(object, "EnsDb"))
 
-    assertClass(object, "EnsDb")
-    level <- match.arg(level)
-
     # Get the genome build from the ensembldb metdata.
     genomeBuild <- metadata(object) %>%
         as_tibble() %>%
         filter(!!sym("name") == "genome_build") %>%
         pull("value")
-    assertString(genomeBuild)
+    assert(isString(genomeBuild))
 
     # Define the metadata to return.
     metadata <- c(
@@ -686,10 +684,7 @@ makeGRangesFromEnsDb <- function(object, level) {
             y = as_tibble(geneData, rownames = NULL),
             by = "gene_id"
         )
-        assertIdentical(
-            x = txData[["tx_id"]],
-            y = data[["tx_id"]]
-        )
+        assert(identical(x = txData[["tx_id"]], y = data[["tx_id"]])
 
         # Now we can slot back into the transcript mcols.
         mcols(tx) <- as(data, "DataFrame")
@@ -728,7 +723,7 @@ makeGRangesFromGFF <- function(
     # Import -------------------------------------------------------------------
     file <- localOrRemoteFile(file)
     gff <- import(file)
-    assertClass(gff, "GRanges")
+    assert(is(gff, "GRanges"))
     gff <- camel(gff)
 
     source <- .gffSource(gff)
@@ -747,10 +742,7 @@ makeGRangesFromGFF <- function(
     # nocov end
 
     # Always require `geneID` and `transcriptID` columns in file.
-    assertSubset(
-        x = c("geneID", "transcriptID"),
-        y = colnames(mcols(gff))
-    )
+    assert(isSubset(x = c("geneID", "transcriptID"), y = colnames(mcols(gff))))
 
     # Rename `geneSymbol` to `geneName`.
     # This applies to FlyBase and WormBase annotations.
@@ -766,11 +758,11 @@ makeGRangesFromGFF <- function(
     gn <- gn[is.na(mcols(gn)[["transcriptID"]])]
     if (type == "GFF") {
         # geneName
-        assertSubset("name", colnames(mcols(gn)))
+        assert(isSubset("name", colnames(mcols(gn))))
         mcols(gn)[["geneName"]] <- mcols(gn)[["name"]]
         mcols(gn)[["name"]] <- NULL
         # geneBiotype
-        assertSubset("biotype", colnames(mcols(gn)))
+        assert(isSubset("biotype", colnames(mcols(gn))))
         mcols(gn)[["geneBiotype"]] <- mcols(gn)[["biotype"]]
         mcols(gn)[["biotype"]] <- NULL
         # Remove extra columns.
@@ -778,15 +770,15 @@ makeGRangesFromGFF <- function(
         mcols(gn)[["id"]] <- NULL
         mcols(gn)[["parent"]] <- NULL
     }
-    assertHasNoDuplicates(mcols(gn)[["geneID"]])
+    assert(hasNoDuplicates(mcols(gn)[["geneID"]]))
     names(gn) <- mcols(gn)[["geneID"]]
     gn <- gn[sort(names(gn))]
 
     # Stop on missing genes.
-    assertIdentical(
+    assert(identical(
         x = names(gn),
         y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
-    )
+    ))
 
     if (level == "genes") {
         message(paste(length(gn), "gene annotations detected."))
@@ -810,11 +802,11 @@ makeGRangesFromGFF <- function(
             )]
         } else if (type == "GFF") {
             # transcriptName
-            assertSubset("name", colnames(mcols(tx)))
+            assert(isSubset("name", colnames(mcols(tx))))
             mcols(tx)[["transcriptName"]] <- mcols(tx)[["name"]]
             mcols(tx)[["name"]] <- NULL
             # transcriptBiotype
-            assertSubset("biotype", colnames(mcols(tx)))
+            assert(isSubset("biotype", colnames(mcols(tx))))
             mcols(tx)[["transcriptBiotype"]] <- mcols(tx)[["biotype"]]
             mcols(tx)[["biotype"]] <- NULL
             # geneID
