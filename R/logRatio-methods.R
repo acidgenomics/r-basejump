@@ -25,9 +25,8 @@ NULL
 # foldChangeToLogRatio =========================================================
 foldChangeToLogRatio.numeric <-  # nolint
     function(object, base = 2L) {
-        assertIsAnImplicitInteger(base)
+        assert(isInt(base), isPositive(base))
         base <- as.integer(base)
-        assert_all_are_positive(base)
         object <- ifelse(object < 0L, 1L / -object, object)
         object <- log(object, base)
         object
@@ -48,9 +47,8 @@ setMethod(
 # logRatioToFoldChange =========================================================
 logRatioToFoldChange.numeric <-  # nolint
     function(object, base = 2L) {
-        assertIsAnImplicitInteger(base)
+        assert(isInt(base), isPositive(base))
         base <- as.integer(base)
-        assert_all_are_positive(base)
         object <- base ^ object
         object <- ifelse(object < 1L, -1L / object, object)
         object
