@@ -8,10 +8,6 @@
 \alias{snake}
 \alias{upperCamel}
 \alias{makeDimnames}
-\alias{camel,atomic-method}
-\alias{dotted,atomic-method}
-\alias{snake,atomic-method}
-\alias{upperCamel,atomic-method}
 \alias{camel,character-method}
 \alias{dotted,character-method}
 \alias{snake,character-method}
@@ -20,6 +16,10 @@
 \alias{dotted,factor-method}
 \alias{snake,factor-method}
 \alias{upperCamel,factor-method}
+\alias{camel,atomic-method}
+\alias{dotted,atomic-method}
+\alias{snake,atomic-method}
+\alias{upperCamel,atomic-method}
 \alias{camel,list-method}
 \alias{dotted,list-method}
 \alias{snake,list-method}
@@ -66,14 +66,6 @@ makeNames(names, unique = TRUE)
 
 makeDimnames(object)
 
-\S4method{camel}{atomic}(object, strict = FALSE)
-
-\S4method{dotted}{atomic}(object)
-
-\S4method{snake}{atomic}(object)
-
-\S4method{upperCamel}{atomic}(object, strict = FALSE)
-
 \S4method{camel}{character}(object, strict = FALSE)
 
 \S4method{dotted}{character}(object)
@@ -89,6 +81,14 @@ makeDimnames(object)
 \S4method{snake}{factor}(object)
 
 \S4method{upperCamel}{factor}(object, strict = FALSE)
+
+\S4method{camel}{atomic}(object, strict = FALSE)
+
+\S4method{dotted}{atomic}(object)
+
+\S4method{snake}{atomic}(object)
+
+\S4method{upperCamel}{atomic}(object, strict = FALSE)
 
 \S4method{camel}{list}(object, strict = FALSE)
 
