@@ -35,7 +35,6 @@ HGNC2Ensembl <-  # nolint
             col_types = cols(),
             progress = FALSE
         )
-        # TODO Consider reworking using dplyr here.
         data <- camel(data)
         data <- data[, c("hgncID", "ensemblGeneID")]
         colnames(data)[[2L]] <- "geneID"
