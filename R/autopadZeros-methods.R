@@ -2,7 +2,7 @@
 
 
 
-#' Autopad Zeros in Vector
+#' Autopad Zeros
 #'
 #' @note For methods on objects supporting `dim()` (e.g. `matrix` or
 #' `SummarizedExperiment`), the object will be returned with the rows and/or
