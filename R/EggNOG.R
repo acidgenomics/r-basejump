@@ -9,39 +9,54 @@ EggNOG <-  # nolint
     function() {
         assert(hasInternet())
         if (isTRUE(getOption("basejump.test"))) {
-            categoriesFile <- file.path(basejumpCacheURL, "cog.txt")
-            eunogFile <- file.path(basejumpCacheURL, "eunog.tsv.gz")
-            nogFile <- file.path(basejumpCacheURL, "nog.tsv.gz")
+            categoriesFile <- url(
+                basejumpCacheURL,
+                "cog.txt",
+                protocol = "none"
+            )
+            eunogFile <- url(
+                basejumpCacheURL,
+                "eunog.tsv.gz",
+                protocol = "none"
+            )
+            nogFile <- url(
+                basejumpCacheURL,
+                "nog.tsv.gz",
+                protocol = "none"
+            )
         } else {
-            url <- paste(
-                "http://eggnogdb.embl.de",
+            # EggNOG database doesn't support HTTPS currently.
+            url <- url(
+                "eggnog5.embl.de",
                 "download",
                 "latest",
-                sep = "/"
+                protocol = "http"
             )
-            categoriesFile <- paste(
+            categoriesFile <- url(
                 url,
                 "COG_functional_categories.txt",
-                sep = "/"
+                protocol = "none"
             )
-            eunogFile <- paste(
+            eunogFile <- url(
                 url,
                 "data",
                 "euNOG",
                 "euNOG.annotations.tsv.gz",
-                sep = "/"
+                protocol = "none"
             )
-            nogFile <- paste(
+            nogFile <- url(
                 url,
                 "data",
                 "NOG",
                 "NOG.annotations.tsv.gz",
-                sep = "/"
+                protocol = "none"
             )
         }
-        assertString(categoriesFile)
-        assertString(eunogFile)
-        assertString(nogFile)
+        assert(
+            isString(categoriesFile),
+            isString(eunogFile),
+            isString(nogFile)
+        )
 
         # Categories -----------------------------------------------------------
         pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
