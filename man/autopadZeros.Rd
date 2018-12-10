@@ -6,7 +6,7 @@
 \alias{autopadZeros,character-method}
 \alias{autopadZeros,matrix-method}
 \alias{autopadZeros,SummarizedExperiment-method}
-\title{Autopad Zeros in Vector}
+\title{Autopad Zeros}
 \usage{
 autopadZeros(object, ...)
 
@@ -35,7 +35,7 @@ generally recommended by default.}
 \code{character}.
 }
 \description{
-Autopad Zeros in Vector
+Autopad Zeros
 }
 \note{
 For methods on objects supporting \code{dim()} (e.g. \code{matrix} or

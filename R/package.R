@@ -52,7 +52,7 @@
 #'   hasInternet hasLength hasNames hasNoDuplicates hasRows hasRownames
 #'   hasValidDimnames isADirectory isAFile isAny isCharacter isDirectory
 #'   isExisting isFile isFlag isInt isMatchingRegex isNumber isPositive isString
-#'   isSubset validNames validate
+#'   isSubset isSuperset validNames validate
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
