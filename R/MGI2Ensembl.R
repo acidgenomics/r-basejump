@@ -9,14 +9,14 @@ MGI2Ensembl <- function() {  # nolint
     assert(hasInternet())
 
     if (isTRUE(getOption("basejump.test"))) {
-        file <- file.path(basejumpCacheURL, "mgi.rpt.gz")
+        file <- url(basejumpCacheURL, "mgi.rpt.gz", protocol = "none")
     } else {
-        file <- paste(
-            "http://www.informatics.jax.org",
+        file <- url(
+            "www.informatics.jax.org",
             "downloads",
             "reports",
             "MGI_Gene_Model_Coord.rpt",
-            sep = "/"
+            protocol = "http"
         )
     }
 
