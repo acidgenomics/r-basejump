@@ -26,7 +26,7 @@
 #' x <- localOrRemoteFile(files)
 #' basename(x)
 localOrRemoteFile <- function(file) {
-    assert_is_character(file)
+    assertCharacter(file)
     if (!all(grepl(pattern = extPattern, x = file))) {
         stop(paste(deparse(file), "does not end with file extension."))
     }
@@ -34,13 +34,13 @@ localOrRemoteFile <- function(file) {
         file = file,
         FUN = function(file) {
             # Remote file mode.
-            if (isURL(file)) {
-                assert(has_internet())
+            if (isTRUE(containsURL(file))) {
+                assert(hasInternet())
                 ext <- str_match(basename(file), extPattern) %>%
                     .[1L, 2L:3L] %>%
                     na.omit() %>%
                     paste(collapse = "")
-                assert_is_non_empty(ext)
+                assertHasLength(ext)
                 # Fix for binary files (typically on Windows).
                 # https://github.com/tidyverse/readxl/issues/374
                 binary <- c(

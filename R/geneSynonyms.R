@@ -18,7 +18,7 @@
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
 geneSynonyms <- function(organism) {
-    assert(has_internet())
+    assert(hasInternet())
     organism <- match.arg(arg = organism, choices = .geneSynonymsOrganisms)
 
     # NCBI uses underscore for species name
@@ -50,7 +50,7 @@ geneSynonyms <- function(organism) {
     }
 
     data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
-    assert_is_non_empty(data)
+    assertHasLength(data)
 
     data <- data %>%
         camel() %>%

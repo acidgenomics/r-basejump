@@ -137,18 +137,15 @@ PANTHER <- function(  # nolint
     release = NULL,
     progress = FALSE
 ) {
-    assert(has_internet())
-    organism <- match.arg(
-        arg = organism,
-        choices = names(.pantherMappings)
-    )
+    assert(hasInternet())
+    organism <- match.arg(arg = organism, choices = names(.pantherMappings))
     pantherName <-  .pantherMappings[[organism]]
-    assert_is_a_string(pantherName)
+    assertString(pantherName)
     if (is.null(release)) {
         release <- "current_release"
     }
-    assert_is_a_string(release)
-    assert_is_a_bool(progress)
+    assertString(release)
+    assertFlag(progress)
 
     message(paste0(
         "Downloading PANTHER annotations for ",
@@ -175,7 +172,7 @@ PANTHER <- function(  # nolint
             localDir = tempdir()
         )
     }
-    assert_is_a_string(file)
+    assertString(file)
 
     data <- read_tsv(
         file = file,
@@ -207,9 +204,9 @@ PANTHER <- function(  # nolint
 
     # Using organism-specific internal return functions here.
     fun <- get(paste("", "PANTHER", camel(organism), sep = "."))
-    assert_is_function(fun)
+    assertFunction(fun)
     data <- fun(data)
-    assert_has_rows(data)
+    assertHasRows(data)
 
     data <- data %>%
         select(-!!sym("keys")) %>%
@@ -221,7 +218,7 @@ PANTHER <- function(  # nolint
         top_n(n = 1L, wt = !!sym("pantherSubfamilyID")) %>%
         ungroup() %>%
         arrange(!!sym("geneID"))
-    assert_has_no_duplicates(data[["geneID"]])
+    assertHasNoDuplicates(data[["geneID"]])
 
     message("Splitting and sorting the GO terms.")
     data <- data %>%

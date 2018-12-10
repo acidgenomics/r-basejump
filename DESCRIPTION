@@ -47,7 +47,6 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     cowplot,
-    curl,
     data.table,
     dplyr,
     ensembldb,
@@ -137,7 +136,6 @@ Collate:
     'geometricMean-methods.R'
     'ggplot2.R'
     'globals.R'
-    'goalie.R'
     'headtail-methods.R'
     'humanize-methods.R'
     'import.R'

@@ -36,7 +36,7 @@ saveData <- function(..., dir, ext, overwrite, compress) {
     names(objects) <- dots(..., character = TRUE)
     dir <- initDir(dir)
     ext <- match.arg(arg = ext, choices = c("rds", "rda", "RData"))
-    assert_is_a_bool(overwrite)
+    assertFlag(overwrite)
     assertFormalCompress(compress)
 
     files <- file.path(dir, paste(names(objects), ext, sep = "."))
@@ -118,11 +118,11 @@ formals(saveData)[["overwrite"]] <- formalsList[["save.overwrite"]]
 #' rm(example)
 #' unlink("example.rds")
 assignAndSaveData <- function(name, object, envir = parent.frame()) {
-    assert_is_a_string(name)
+    assertString(name)
     assert_is_not_null(object)
     dir <- initDir(dir)
     assertFormalCompress(compress)
-    assert_is_environment(envir)
+    assertEnvironment(envir)
 
     # Assign data.
     assign(x = name, value = object, envir = envir)

@@ -36,7 +36,6 @@
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
 #'   rowRanges<-
 #' @importFrom cowplot plot_grid
-#' @importFrom curl has_internet
 #' @importFrom data.table as.data.table fread
 #' @importFrom dplyr arrange bind_rows case_when desc everything filter funs
 #'   group_by left_join mutate mutate_all mutate_at mutate_if n pull rename
@@ -48,15 +47,7 @@
 #'   geom_vline ggplot guides labs position_jitterdodge scale_x_continuous
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
-#' @importFrom goalie assert assertAreNonExisting assertAreUniqueGeneNames
-#'   assertAreURLs assertAreValidNames assertFormalCompress assertHasRownames
-#'   assertHasValidDimnames assertIsAlpha assertIsANumberOrNULL
-#'   assertIsAnImplicitInteger assertIsAnImplicitIntegerOrNULL
-#'   assertIsAnIntegerOrNULL assertIsColorScaleContinuousOrNULL
-#'   assertIsColorScaleDiscreteOrNULL assertIsDir assertIsFile
-#'   assertIsFillScaleContinuousOrNULL assertIsFillScaleDiscreteOrNULL
-#'   assertIsHeaderLevel assertIsHexColorFunctionOrNULL assertIsImplicitInteger
-#'   assertIsStringOrNULL hasRownames hasUniqueCols isAnImplicitInteger isURL
+#' @importFrom goalie containsURL hasInternet hasLength hasNames
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
@@ -87,10 +78,6 @@
 #'   sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
-
-# FIXME R is caching this in heatmap methods and I can't figure out why...
-#' @importFrom goalie areSamplesUnique
-NULL
 
 # Conflicts with rtracklayer:
 # @importFrom rio import

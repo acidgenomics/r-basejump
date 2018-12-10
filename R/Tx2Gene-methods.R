@@ -13,7 +13,7 @@ NULL
 
 Tx2Gene.DataFrame <-  # nolint
     function(object) {
-        assert_has_rows(object)
+        assertHasRows(object)
 
         # Check for required columns.
         cols <- c("transcriptID", "geneID")

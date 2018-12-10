@@ -45,8 +45,8 @@ NULL
 # Allowing duplicates here (unlike convertTranscriptsToGenes).
 convertGenesToSymbols.character <-  # nolint
     function(object, gene2symbol) {
-        assert_all_are_non_missing_nor_empty_character(object)
-        assert_is_all_of(gene2symbol, "Gene2Symbol")
+        assertAllAreNonMissingNorEmptyCharacter(object)
+        assertClass(gene2symbol, "Gene2Symbol")
         validObject(gene2symbol)
 
         # Arrange the gene2symbol to match the input.
@@ -125,12 +125,12 @@ convertGenesToSymbols.SummarizedExperiment <-  # nolint
         validObject(object)
         g2s <- Gene2Symbol(object)
         symbols <- g2s[["geneName"]]
-        assert_has_no_duplicates(symbols)
+        assertHasNoDuplicates(symbols)
         # Update the object rownames.
         rownames(object) <- as.character(symbols)
         # Ensure all names get updated correctly.
         if (is(object, "RangedSummarizedExperiment")) {
-            assert_are_identical(
+            assertIdentical(
                 x = rownames(object),
                 y = names(rowRanges(object))
             )
@@ -155,11 +155,11 @@ convertSymbolsToGenes.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
         g2s <- Gene2Symbol(object)
-        assert_are_identical(
+        assertIdentical(
             x = rownames(object),
             y = g2s[["geneName"]]
         )
-        assert_has_no_duplicates(g2s[["geneID"]])
+        assertHasNoDuplicates(g2s[["geneID"]])
         rownames(object) <- as.character(g2s[["geneID"]])
         object
     }

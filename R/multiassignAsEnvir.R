@@ -20,11 +20,11 @@ multiassignAsEnvir <- function(
     parentFrame = parent.frame()
 ) {
     dots <- dots(...)
-    assert_is_list(dots)
+    assertList(dots)
     names <- dots(..., character = TRUE)
-    assert_is_character(names)
-    assert_is_a_string(envirName)
-    assert_is_environment(parentFrame)
+    assertCharacter(names)
+    assertString(envirName)
+    assertEnvironment(parentFrame)
 
     envir <- new.env(parent = parentFrame)
     invisible(lapply(

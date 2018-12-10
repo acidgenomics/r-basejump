@@ -6,7 +6,7 @@
 #' x <- MGI2Ensembl()
 #' print(x)
 MGI2Ensembl <- function() {  # nolint
-    assert(has_internet())
+    assert(hasInternet())
 
     if (isTRUE(getOption("basejump.test"))) {
         file <- file.path(basejumpCacheURL, "mgi.rpt.gz")

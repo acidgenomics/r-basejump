@@ -30,11 +30,11 @@
 #' examples <- parseRd(Rd, tag = "examples")
 #' print(examples)
 parseRd <- function(object, tag) {
-    assert_is_all_of(object, "Rd")
-    assert_is_a_string(tag)
+    assertClass(object, "Rd")
+    assertString(tag)
 
     tags <- RdTags(object)
-    assert_is_subset(tag, tags)
+    assertSubset(tag, tags)
 
     # Get the metadata that matches the requested tag.
     data <- object[tags == tag]
@@ -72,7 +72,7 @@ parseRd <- function(object, tag) {
 #' Rd <- db[["nrow.Rd"]]
 #' RdTags(Rd)
 RdTags <- function(object) {  # nolint
-    assert_is_all_of(object, "Rd")
+    assertClass(object, "Rd")
     tags <- sapply(object, attr, "Rd_tag")
     if (length(tags) == 0L) {
         tags <- character()
@@ -116,9 +116,9 @@ saveRdExamples <- function(
     package,
     dir = "."
 ) {
-    assert_is_any_of(Rd, c("character", "NULL"))
-    assert_is_a_string(package)
-    assert_is_a_string(dir)
+    assertMultiClass(Rd, c("character", "NULL"))
+    assertString(package)
+    assertString(dir)
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
 
     # Get a database of the Rd files available in the requested package.
@@ -131,7 +131,7 @@ saveRdExamples <- function(
     }
 
     # Check that the requiested function(s) are valid.
-    assert_is_subset(Rd, names(db))
+    assertSubset(Rd, names(db))
 
     # Parse the Rd files and return the working examples as a character.
     list <- mapply(

@@ -25,7 +25,7 @@ setMethod(
     f = "interestingGroups",
     signature = signature("SummarizedExperiment"),
     definition = function(object, check = TRUE) {
-        assert_is_a_bool(check)
+        assertFlag(check)
         value <- metadata(object)[["interestingGroups"]]
         if (isTRUE(check)) {
             assertFormalInterestingGroups(object, value)

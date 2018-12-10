@@ -43,7 +43,7 @@ Biobase::`sampleNames<-`
 sampleNames.SummarizedExperiment <-  # nolint
     function(object) {
         data <- sampleData(object)
-        assert_is_subset("sampleName", colnames(data))
+        assertSubset("sampleName", colnames(data))
         out <- as.character(data[["sampleName"]])
         names(out) <- rownames(data)
         out
@@ -63,17 +63,17 @@ setMethod(
 
 `sampleNames<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
-        assert_has_names(value)
+        assertHasNames(value)
         # Note that these will correspond to columns for bulk RNA-seq but not
         # single-cell RNA-seq samples, which map to cells.
         ids <- names(sampleNames(object))
-        assert_is_non_empty(ids)
+        assertHasLength(ids)
         # Require the input to match the original IDs.
-        assert_are_set_equal(names(value), ids)
+        assertSetEqual(names(value), ids)
         # Now safe to reorder the value vector to match.
         value <- value[ids]
         # Check that the slotting destination matches.
-        assert_are_identical(names(value), rownames(sampleData(object)))
+        assertIdentical(names(value), rownames(sampleData(object)))
         sampleData(object)[["sampleName"]] <- value
         validObject(object)
         object

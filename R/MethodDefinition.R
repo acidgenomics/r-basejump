@@ -42,7 +42,7 @@ methodFunction <- function(f, signature, package) {
     if (missing(package) || is.null(package)) {
         envir <- NULL
     } else {
-        assert_is_a_string(package)
+        assertString(package)
         envir <- asNamespace(package)
     }
 
@@ -93,7 +93,7 @@ methodFunction <- function(f, signature, package) {
     } else {
         fun <- slot(definition, ".Data")
     }
-    assert_is_function(fun)
+    assertFunction(fun)
 
     fun
 }
@@ -119,8 +119,10 @@ methodFormals <- function(f, signature, package) {
 #' @rdname MethodDefinition
 #' @export
 hasLocal <- function(definition) {
-    assert(is(definition, "MethodDefinition"))
-    assert_is_function(definition)
+    assert(
+        is(definition, "MethodDefinition"),
+        is(definition, "function")
+    )
     body <- body(definition)
     if (!is(body, "{")) {
         return(FALSE)
@@ -142,6 +144,6 @@ extractLocal <- function(definition) {
     assert(hasLocal(definition))
     body <- body(definition)
     local <- eval(body[[2L]][[3L]])
-    assert_is_function(local)
+    assertFunction(local)
     local
 }
