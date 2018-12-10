@@ -28,10 +28,10 @@ NULL
 
 
 autopadZeros.character <- function(object) {
-    assertCharacter(object)
+    assert(is.character(object))
     names <- names(object)
     object <- as.character(object)
-    assertAreValidNames(object)
+    assert(validNames(object))
     pattern <- "(.*[A-Za-z])([[:digit:]]+)$"
     # Early return if no padding is necessary.
     if (!all(grepl(pattern = pattern, x = object))) {
@@ -66,10 +66,12 @@ autopadZeros.matrix <- function(
     colnames = TRUE,
     sort = TRUE
 ) {
-    assertHasValidDimnames(object)
-    assertFlag(rownames)
-    assertFlag(colnames)
-    assertFlag(sort)
+    assert(
+        hasValidDimnames(object),
+        isFlag(rownames),
+        isFlag(colnames),
+        isFlag(sort)
+    )
     if (isTRUE(rownames)) {
         rownames(object) <- autopadZeros(rownames(object))
         if (isTRUE(sort)) {
