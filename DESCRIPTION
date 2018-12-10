@@ -200,5 +200,6 @@ Collate:
     'tpm-methods.R'
     'transmit.R'
     'uniteInterestingGroups-methods.R'
+    'url.R'
     'writeCounts.R'
     'zerosVsDepth-methods.R'
