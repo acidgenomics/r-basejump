@@ -31,9 +31,11 @@ NULL
 
 headtail.atomic <-  # nolint
     function(x, n = 2L) {
-        assertAtomic(x)
-        assertIsAnImplicitInteger(n)
-        assert_all_are_positive(n)
+        assert(
+            is.atomic(x),
+            isInt(n),
+            isPositive(n)
+        )
         if (length(x) <= n * 2L) {
             out <- paste(x, collapse = " ")
         } else {
@@ -64,10 +66,12 @@ setMethod(
 
 headtail.matrix <-  # nolint
     function(x, n = 2L, ascii = FALSE) {
-        assertHasDims(x)
-        assertIsAnImplicitInteger(n)
-        assert_all_are_positive(n)
-        assertFlag(ascii)
+        assert(
+            hasDims(x),
+            isInt(n),
+            isPositive(n),
+            isFlag(ascii)
+        )
 
         if (nrow(x) <= n * 2L || ncol(x) <= n * 2L) {
             message("Object can't be split into quadrants.")
@@ -118,8 +122,10 @@ headtail.matrix <-  # nolint
             )
 
             # Check that we have square dimensions.
-            assert(nrow(square) == n * 2L)
-            assert(ncol(square) == n * 2L)
+            assert(
+                nrow(square) == n * 2L,
+                ncol(square) == n * 2L
+            )
 
             # Split into quadrants, so we can add vertical separators.
             # upper/lower, left/right.
