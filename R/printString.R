@@ -16,8 +16,7 @@
 #' @examples
 #' printString(c("hello", "world"))
 printString <- function(x, max = 100L) {
-    assertAtomic(x)
-    assertIsAnImplicitInteger(max)
+    assert(is.atomic(x), isInt(max))
     x <- capture.output(print(x))
     # Limit the number of lines returned, like `max.print` option.
     x <- head(x, n = max)
