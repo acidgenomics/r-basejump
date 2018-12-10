@@ -7,7 +7,7 @@
 #' print(x)
 EggNOG <-  # nolint
     function() {
-        assert_that(has_internet())
+        assert(hasInternet())
         if (isTRUE(getOption("basejump.test"))) {
             categoriesFile <- file.path(basejumpCacheURL, "cog.txt")
             eunogFile <- file.path(basejumpCacheURL, "eunog.tsv.gz")
@@ -39,9 +39,9 @@ EggNOG <-  # nolint
                 sep = "/"
             )
         }
-        assert_is_a_string(categoriesFile)
-        assert_is_a_string(eunogFile)
-        assert_is_a_string(nogFile)
+        assertString(categoriesFile)
+        assertString(eunogFile)
+        assertString(nogFile)
 
         # Categories -----------------------------------------------------------
         pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"

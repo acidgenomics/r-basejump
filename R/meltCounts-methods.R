@@ -25,13 +25,13 @@ meltCounts.SummarizedExperiment <-  # nolint
         trans = c("identity", "log2", "log10")
     ) {
         validObject(object)
-        assert_is_scalar(assay)
-        assert_is_a_bool(nonzeroGenes)
+        assertScalar(assay)
+        assertFlag(nonzeroGenes)
         trans <- match.arg(trans)
 
         # Prepare the count matrix.
         counts <- assays(object)[[assay]]
-        assert_is_non_empty(counts)
+        assertHasLength(counts)
         # Coerce to dense matrix.
         counts <- as.matrix(counts)
 
@@ -50,7 +50,7 @@ meltCounts.SummarizedExperiment <-  # nolint
                 envir = asNamespace("base"),
                 inherits = FALSE
             )
-            assert_is_function(fun)
+            assertFunction(fun)
             counts <- fun(counts + 1L)
         }
 

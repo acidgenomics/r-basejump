@@ -1,6 +1,4 @@
-# TODO Add automatic `gene2symbol` and `tx2gene` CSV export support for
-# SummarizedExperiment, when possible.
-
+# TODO Add automatic Tx2Gene file export for SE, if necessary.
 # FIXME Ensure we're handling Rle columns properly here.
 
 
@@ -85,8 +83,8 @@ export.ANY <-  # nolint
         suppressWarnings(
             x <- as_tibble(x, rownames = rownames)
         )
-        assert_has_rows(x)
-        assert_has_cols(x)
+        assertHasRows(x)
+        assertHasCols(x)
         if (missing(file) && missing(format)) {
             stop("Must specify `file` and/or `format`.", call. = FALSE)
         } else if (missing(file)) {
@@ -94,10 +92,10 @@ export.ANY <-  # nolint
             sym <- call[["x"]]
             assert_is_symbol(sym)
             name <- as.character(sym)
-            assert_is_a_string(format)
+            assertString(format)
             file <- paste0(name, ".", format)
         } else if (missing(format)) {
-            assert_is_a_string(file)
+            assertString(file)
         }
         # Ensure directory is created automatically.
         initDir(dir = dirname(file))
@@ -131,7 +129,7 @@ setMethod(
 # Consider adding HDF5 support in a future update.
 export.sparseMatrix <-  # nolint
     function(x, file, format) {
-        assert_is_non_empty(x)
+        assertHasLength(x)
         choices <- c("mtx", "mtx.gz")
 
         if (missing(file) && missing(format)) {
@@ -144,10 +142,10 @@ export.sparseMatrix <-  # nolint
             format <- match.arg(format, choices)
             file <- paste0(name, ".", format)
         } else if (missing(format)) {
-            assert_is_a_string(file)
+            assertString(file)
             # Require a valid extension.
             grepChoices <- paste0("\\.", choices, "$")
-            assert_that(any(vapply(
+            assert(any(vapply(
                 X = grepChoices,
                 FUN = grepl,
                 FUN.VALUE = logical(1L),
@@ -217,7 +215,7 @@ setMethod(
     humanize
 ) {
     assayNames <- assayNames(x)
-    assert_is_character(assayNames)
+    assertCharacter(assayNames)
     message(paste("Exporting assays:", toString(assayNames)))
     if (isTRUE(humanize)) {
         g2s <- Gene2Symbol(x)
@@ -235,8 +233,8 @@ setMethod(
             if (!is.null(g2s)) {
                 message("Adding `geneID` and `geneName` columns.")
                 assay <- as(assay, "DataFrame")
-                assert_are_identical(rownames(assay), rownames(g2s))
-                assert_are_disjoint_sets(colnames(assay), colnames(g2s))
+                assertIdentical(rownames(assay), rownames(g2s))
+                assertAreDisjointSets(colnames(assay), colnames(g2s))
                 assay <- cbind(g2s, assay)
                 rownames(assay) <- NULL
             }
@@ -300,7 +298,7 @@ setMethod(
         data <- rowData(x)
     }
     data <- sanitizeRowData(data)
-    assert_are_identical(rownames(data), rownames(x))
+    assertIdentical(rownames(data), rownames(x))
     export(x = data, file = file.path(dir, paste0("rowData", ext)))
 }
 
@@ -332,9 +330,9 @@ export.SummarizedExperiment <-  # nolint
             name <- as.character(call[["x"]])
         }
         dir <- initDir(file.path(dir, name))
-        assert_is_a_bool(compress)
-        assert_is_a_bool(humanize)
-        assert_that(
+        assert(
+            isFlag(compress),
+            isFlag(humanize),
             is.character(slotNames),
             # Require at least 1 of the slotNames to be defined for export.
             # Note that we're not using `match.arg()` here.
@@ -422,7 +420,7 @@ export.SummarizedExperiment <-  # nolint
 
         # Return named character of file paths.
         files <- Filter(Negate(is.null), files)
-        assert_has_names(files)
+        assertHasNames(files)
         invisible(files)
     }
 
@@ -441,7 +439,7 @@ setMethod(
 # FIXME Need to define an export sampleData function here.
 export.SingleCellExperiment <-  # nolint
     function(x) {
-        assert_is_a_bool(compress)
+        assertFlag(compress)
         call <- standardizeCall()
         name <- as.character(call[["x"]])
 
@@ -458,7 +456,7 @@ export.SingleCellExperiment <-  # nolint
         # humanize mode is enabled, because the rownames map to cells, and the
         # colnames map to the dimensions of interest.
         reducedDimNames <- reducedDimNames(x)
-        if (has_length(reducedDimNames)) {
+        if (length(reducedDimNames) == 0L) {
             message(paste("Exporting reducedDims:", toString(reducedDimNames)))
             files[["reducedDims"]] <- lapply(
                 X = reducedDimNames,
@@ -481,7 +479,7 @@ export.SingleCellExperiment <-  # nolint
             names(files[["reducedDims"]]) <- reducedDimNames
         }
 
-        assert_has_names(files)
+        assertHasNames(files)
         invisible(files)
     }
 

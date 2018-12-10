@@ -82,7 +82,7 @@ setMethod(
 
 organism.GRanges <-  # nolint
     function(object) {
-        assert_has_names(object)
+        assertHasNames(object)
         detectOrganism(names(object))
     }
 

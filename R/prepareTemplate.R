@@ -45,10 +45,10 @@ prepareTemplate <- function(
     sourceDir = NULL,
     ...
 ) {
-    assert_is_a_string(package)
-    assert_is_subset(package, rownames(installed.packages()))
+    assertString(package)
+    assertSubset(package, rownames(installed.packages()))
     assertIsStringOrNULL(sourceDir)
-    assert_is_a_bool(overwrite)
+    assertFlag(overwrite)
 
     # Shared file source directory. Keeping the `sourceDir` argument because
     # devtools attempts to intercept `system.file`, and this can cause path
@@ -60,11 +60,11 @@ prepareTemplate <- function(
             mustWork = TRUE
         )
     }
-    assert_all_are_dirs(sourceDir)
+    assertDirectoryExists(sourceDir)
 
     # Get vector of all shared files.
     files <- list.files(sourceDir, full.names = TRUE)
-    assert_is_non_empty(files)
+    assertHasLength(files)
 
     # Copy files to working directory.
     copied <- vapply(

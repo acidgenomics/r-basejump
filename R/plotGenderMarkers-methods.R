@@ -18,7 +18,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
         organism <- organism(object)
         data("gender_markers", package = "basejump", envir = environment())
         markers <- get("gender_markers", inherits = FALSE)
-        assert_is_list(markers)
+        assertList(markers)
         # Error if the organism is not supported.
         # Convert from camel case back to full Latin.
         supportedOrganisms <- names(markers) %>%
@@ -33,7 +33,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
             ))
         }
         markers <- markers[[camel(organism)]]
-        assert_is_tbl_df(markers)
+        assertTibble(markers)
 
         # Message the user instead of erroring, since many datasets don't
         # contain the dimorphic gender markers.
@@ -47,7 +47,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
                 character()
             }
         )
-        if (!has_length(genes)) {
+        if (length(genes) == 0L) {
             return(invisible())
         }
 

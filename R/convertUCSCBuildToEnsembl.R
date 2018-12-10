@@ -12,7 +12,7 @@
 #' to <- convertUCSCBuildToEnsembl(from)
 #' print(to)
 convertUCSCBuildToEnsembl <- function(object) {
-    assert_is_character(object)
+    assertCharacter(object)
     keys <- c(
         # Homo sapiens (Human)
         "GRCh37" = "hg19",

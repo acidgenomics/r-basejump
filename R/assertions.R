@@ -60,16 +60,15 @@ assertFormalCompress <- function(x) {
 #' )
 assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
     assertHasRownames(x)
-    assert_is_character(genes)
-    assert_is_non_empty(genes)
-    assert_is_all_of(gene2symbol, "Gene2Symbol")
-    assert_are_identical(x = nrow(x), y = nrow(gene2symbol))
+    assertCharacter(genes)
+    assertClass(gene2symbol, "Gene2Symbol")
+    assertIdentical(x = nrow(x), y = nrow(gene2symbol))
     if (is.null(rownames(gene2symbol))) {
         rownames(gene2symbol) <- rownames(x)
     }
     # Map genes to x rownames, using gene2symbol.
     rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
-    assert_is_subset(rownames, rownames(x))
+    assertSubset(rownames, rownames(x))
     TRUE
 }
 
@@ -91,7 +90,7 @@ assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
 #' assertFormalInterestingGroups(rse, "condition")
 #' assertFormalInterestingGroups(rse, NULL)
 assertFormalInterestingGroups <- function(x, interestingGroups) {
-    assert_that(isS4(x))
+    assert(isS4(x))
     data <- sampleData(x)
 
     # Check `interestingGroups` argument.
@@ -100,16 +99,16 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
         return(invisible())
     } else {
         # Otherwise, require that `interestingGroups` is a character.
-        assert_is_character(interestingGroups)
+        assertCharacter(interestingGroups)
     }
 
     # Check intersection with sample data.
-    assert_is_subset(interestingGroups, colnames(data))
+    assertSubset(interestingGroups, colnames(data))
 
     # Check that interesting groups columns are factors.
     invisible(lapply(
         X = data[, interestingGroups, drop = FALSE],
-        FUN = assert_is_factor
+        FUN = assertFactor
     ))
 
     TRUE

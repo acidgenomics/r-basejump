@@ -209,8 +209,8 @@ import <- function(file, dataFrame, ...) {
         ))
         args[["na"]] <- naStrings
         data <- do.call(what = read_tsv, args = args)
-        assert_is_subset("id", colnames(data))
-        assert_has_no_duplicates(data[["id"]])
+        assertSubset("id", colnames(data))
+        assertHasNoDuplicates(data[["id"]])
         # Coerce to matrix.
         data <- data %>%
             as.data.frame() %>%
@@ -286,7 +286,7 @@ import <- function(file, dataFrame, ...) {
         safe <- new.env()
         args[["envir"]] <- safe
         object <- do.call(what = load, args = args)
-        if (!has_length(safe, n = 1L)) {
+        if (length(safe) != 1L) {
             stop("File does not contain a single object.")
         }
         data <- get(object, envir = safe, inherits = FALSE)

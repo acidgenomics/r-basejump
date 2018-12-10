@@ -35,7 +35,7 @@ BiocGenerics::`counts<-`
 counts.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
-        assert_is_subset("counts", assayNames(object))
+        assertSubset("counts", assayNames(object))
         assays(object)[["counts"]]
     }
 

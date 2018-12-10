@@ -95,7 +95,7 @@ sampleData.SingleCellExperiment <-  # nolint
             "^res[.0-9]+$"
         )
     ) {
-        assert_is_character(blacklist)
+        assertCharacter(blacklist)
         data <- colData(object)
 
         # Require `sampleID` and `sampleName` columns.
@@ -227,7 +227,7 @@ setMethod(
 
 `sampleData<-.SingleCellExperiment` <-  # nolint
     function(object, value) {
-        assert_is_all_of(value, "DataFrame")
+        assertClass(value, "DataFrame")
 
         # Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {
@@ -246,7 +246,7 @@ setMethod(
 
         # Update colData slot.
         colData <- colData(object)
-        assert_is_subset("sampleID", colnames(colData))
+        assertSubset("sampleID", colnames(colData))
         colData <- colData[
             ,
             c("sampleID", setdiff(colnames(colData), colnames(value))),

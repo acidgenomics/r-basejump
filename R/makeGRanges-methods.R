@@ -88,7 +88,7 @@ NULL
     invisible(capture.output(
         ah <- suppressMessages(AnnotationHub())
     ))
-    assert_is_all_of(ah, "AnnotationHub")
+    assertClass(ah, "AnnotationHub")
     .forceDetach(keep = userAttached)
     ah
 }
@@ -106,11 +106,11 @@ NULL
 #'
 #' @return Named `factor`.
 .broadClass <- function(object) {
-    assert_is_all_of(object, "GRanges")
+    assertClass(object, "GRanges")
 
     names <- names(object)
-    assert_is_character(names)
-    assert_is_non_empty(names)
+    assertCharacter(names)
+    assertHasLength(names)
 
     data <- as_tibble(object)
 
@@ -122,7 +122,7 @@ NULL
     }
 
     # Gene name (required).
-    assert_is_subset("geneName", colnames(data))
+    assertSubset("geneName", colnames(data))
     geneName <- data[["geneName"]]
 
     # Biotype (optional).
@@ -133,7 +133,7 @@ NULL
         ignore.case = TRUE,
         value = TRUE
     )
-    if (has_length(biotypeCol)) {
+    if (length(biotypeCol) == 0L) {
         biotypeCol <- biotypeCol[[1L]]
         biotype <- data[[biotypeCol]]
     } else {
@@ -150,7 +150,7 @@ NULL
         ignore.case = TRUE,
         value = TRUE
     )
-    if (has_length(seqnameCol)) {
+    if (length(seqnameCol) == 0L) {
         seqnameCol <- seqnameCol[[1L]]
         seqname <- data[[seqnameCol]]
     } else {
@@ -232,7 +232,7 @@ NULL
 #' @noRd
 .forceDetach <- function(keep = NULL) {
     detach <- setdiff(.packages(), keep)
-    if (has_length(detach)) {
+    if (length(detach) > 0L) {
         invisible(lapply(
             X = detach,
             FUN = function(name) {
@@ -247,7 +247,7 @@ NULL
             }
         ))
     }
-    assert_are_identical(.packages(), keep)
+    assertIdentical(.packages(), keep)
 }
 
 
@@ -262,7 +262,7 @@ NULL
     ah = NULL
 ) {
     userAttached <- .packages()
-    assert_is_a_string(organism)
+    assertString(organism)
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
     assertIsStringOrNULL(genomeBuild)
@@ -272,7 +272,7 @@ NULL
             expr = convertUCSCBuildToEnsembl(genomeBuild),
             error = function(e) NULL
         )
-        if (has_length(ucscCheck)) {
+        if (length(ucscCheck) > 0L) {
             stop(paste(
                 "UCSC genome build ID detected.",
                 "Use Ensembl ID instead.\n",
@@ -325,7 +325,7 @@ NULL
     mcols <- mcols(ahs)
 
     # Abort if there's no match and working offline.
-    if (!isTRUE(has_internet()) && !nrow(mcols)) {
+    if (!isTRUE(testHasInternet()) && !nrow(mcols)) {
         # nocov start
         stop(
             "AnnotationHub requires an Internet connection for query.",
@@ -336,13 +336,13 @@ NULL
 
     # Ensure genome build matches, if specified.
     if (!is.null(genomeBuild)) {
-        assert_is_subset("genome", colnames(mcols))
+        assertSubset("genome", colnames(mcols))
         mcols <- mcols[mcols[["genome"]] %in% genomeBuild, , drop = FALSE]
     }
 
     # Ensure Ensembl release matches, or pick the latest one.
     if (!is.null(ensemblRelease)) {
-        assert_is_subset("title", colnames(mcols))
+        assertSubset("title", colnames(mcols))
         mcols <- mcols[
             grepl(paste("Ensembl", ensemblRelease), mcols[["title"]]),
             ,
@@ -366,8 +366,8 @@ NULL
 
     mcols <- tail(mcols, n = 1L)
     id <- rownames(mcols)
-    assert_is_a_string(id)
-    assert_all_are_matching_regex(x = id, pattern = "^AH[[:digit:]]+$")
+    assertString(id)
+    assertAllAreMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$")
     message(paste0(id, ": ", mcols[["title"]]))
     .forceDetach(keep = userAttached)
     id
@@ -384,7 +384,7 @@ NULL
     if (is.null(ah)) {
         ah <- .annotationHub()
     }
-    assert_is_all_of(ah, "AnnotationHub")
+    assertClass(ah, "AnnotationHub")
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output.
     # Additionally, it attaches ensembldb and other Bioconductor dependency
@@ -392,7 +392,7 @@ NULL
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
     ))
-    assert_is_all_of(edb, "EnsDb")
+    assertClass(edb, "EnsDb")
     .forceDetach(keep = userAttached)
     edb
 }
@@ -405,14 +405,14 @@ NULL
 .getEnsDbFromPackage <- function(package) {
     message(paste0("Getting EnsDb from ", package, "."))
     userAttached <- .packages()
-    assert_is_a_string(package)
+    assertString(package)
     require(package, character.only = TRUE)
     edb <- get(
         x = package,
         envir = asNamespace(package),
         inherits = FALSE
     )
-    assert_is_all_of(edb, "EnsDb")
+    assertClass(edb, "EnsDb")
     .forceDetach(keep = userAttached)
     edb
 }
@@ -421,7 +421,7 @@ NULL
 
 # Report the source of the gene annotations.
 .gffSource <- function(gff) {
-    assert_is_subset("source", colnames(mcols(gff)))
+    assertSubset("source", colnames(mcols(gff)))
     if (
         any(grepl("FlyBase", mcols(gff)[["source"]]))
     ) {
@@ -443,7 +443,7 @@ NULL
 
 # Determine if GFF or GTF.
 .gffType <- function(gff) {
-    assert_that(is(gff, "GRanges"))
+    assert(is(gff, "GRanges"))
     gff <- camel(gff)
     if (all(c("id", "name") %in% colnames(mcols(gff)))) {
         "GFF"
@@ -455,8 +455,8 @@ NULL
 
 
 .makeGRanges <- function(object) {
-    assert_is_all_of(object, "GRanges")
-    assert_has_names(object)
+    assertClass(object, "GRanges")
+    assertHasNames(object)
 
     # Standardize the metadata columns.
     mcols <- mcols(object)
@@ -476,7 +476,7 @@ NULL
     if (!"geneName" %in% colnames(mcols)) {
         # nocov start
         warning("`geneName` is missing. Using `geneID` instead.")
-        assert_is_subset("geneID", colnames(mcols))
+        assertSubset("geneID", colnames(mcols))
         mcols[["geneName"]] <- mcols[["geneID"]]
         # nocov end
     }
@@ -551,7 +551,7 @@ NULL
     message(paste0("Arranging by ", idCol, "."))
     object <- object[sort(names(object))]
 
-    assert_is_all_of(object, "GRanges")
+    assertClass(object, "GRanges")
     object
 }
 
@@ -582,7 +582,7 @@ makeGRangesFromEnsembl <- function(
     release = NULL
 ) {
     message("Making GRanges from Ensembl.")
-    assert_is_a_string(organism)
+    assertString(organism)
     level <- match.arg(level)
     if (
         identical(tolower(organism), "homo sapiens") &&
@@ -625,9 +625,9 @@ makeGRangesFromEnsDb <- function(object, level) {
             inherits = FALSE
         )
     }
-    assert_that(is(object, "EnsDb"))
+    assert(is(object, "EnsDb"))
 
-    assert_is_all_of(object, "EnsDb")
+    assertClass(object, "EnsDb")
     level <- match.arg(level)
 
     # Get the genome build from the ensembldb metdata.
@@ -635,7 +635,7 @@ makeGRangesFromEnsDb <- function(object, level) {
         as_tibble() %>%
         filter(!!sym("name") == "genome_build") %>%
         pull("value")
-    assert_is_a_string(genomeBuild)
+    assertString(genomeBuild)
 
     # Define the metadata to return.
     metadata <- c(
@@ -686,7 +686,7 @@ makeGRangesFromEnsDb <- function(object, level) {
             y = as_tibble(geneData, rownames = NULL),
             by = "gene_id"
         )
-        assert_are_identical(
+        assertIdentical(
             x = txData[["tx_id"]],
             y = data[["tx_id"]]
         )
@@ -728,7 +728,7 @@ makeGRangesFromGFF <- function(
     # Import -------------------------------------------------------------------
     file <- localOrRemoteFile(file)
     gff <- import(file)
-    assert_is_all_of(gff, "GRanges")
+    assertClass(gff, "GRanges")
     gff <- camel(gff)
 
     source <- .gffSource(gff)
@@ -747,7 +747,7 @@ makeGRangesFromGFF <- function(
     # nocov end
 
     # Always require `geneID` and `transcriptID` columns in file.
-    assert_is_subset(
+    assertSubset(
         x = c("geneID", "transcriptID"),
         y = colnames(mcols(gff))
     )
@@ -766,11 +766,11 @@ makeGRangesFromGFF <- function(
     gn <- gn[is.na(mcols(gn)[["transcriptID"]])]
     if (type == "GFF") {
         # geneName
-        assert_is_subset("name", colnames(mcols(gn)))
+        assertSubset("name", colnames(mcols(gn)))
         mcols(gn)[["geneName"]] <- mcols(gn)[["name"]]
         mcols(gn)[["name"]] <- NULL
         # geneBiotype
-        assert_is_subset("biotype", colnames(mcols(gn)))
+        assertSubset("biotype", colnames(mcols(gn)))
         mcols(gn)[["geneBiotype"]] <- mcols(gn)[["biotype"]]
         mcols(gn)[["biotype"]] <- NULL
         # Remove extra columns.
@@ -778,12 +778,12 @@ makeGRangesFromGFF <- function(
         mcols(gn)[["id"]] <- NULL
         mcols(gn)[["parent"]] <- NULL
     }
-    assert_has_no_duplicates(mcols(gn)[["geneID"]])
+    assertHasNoDuplicates(mcols(gn)[["geneID"]])
     names(gn) <- mcols(gn)[["geneID"]]
     gn <- gn[sort(names(gn))]
 
     # Stop on missing genes.
-    assert_are_identical(
+    assertIdentical(
         x = names(gn),
         y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
     )
@@ -810,16 +810,18 @@ makeGRangesFromGFF <- function(
             )]
         } else if (type == "GFF") {
             # transcriptName
-            assert_is_subset("name", colnames(mcols(tx)))
+            assertSubset("name", colnames(mcols(tx)))
             mcols(tx)[["transcriptName"]] <- mcols(tx)[["name"]]
             mcols(tx)[["name"]] <- NULL
             # transcriptBiotype
-            assert_is_subset("biotype", colnames(mcols(tx)))
+            assertSubset("biotype", colnames(mcols(tx)))
             mcols(tx)[["transcriptBiotype"]] <- mcols(tx)[["biotype"]]
             mcols(tx)[["biotype"]] <- NULL
             # geneID
-            assert_is_subset("parent", colnames(mcols(tx)))
-            assert_that(all(grepl("^gene:", mcols(tx)[["parent"]])))
+            assert(
+                isSubset("parent", colnames(mcols(tx))),
+                all(grepl("^gene:", mcols(tx)[["parent"]]))
+            )
             mcols(tx)[["geneID"]] <- as.character(mcols(tx)[["parent"]])
             mcols(tx)[["geneID"]] <- gsub(
                 pattern = "^gene:",
@@ -831,15 +833,15 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["id"]] <- NULL
             mcols(tx)[["parent"]] <- NULL
         }
-        assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
+        assert(hasNoDuplicates(mcols(tx)[["transcriptID"]])
         names(tx) <- mcols(tx)[["transcriptID"]]
         tx <- tx[sort(names(tx))]
 
         # Stop on missing transcripts.
-        assert_are_identical(
+        assert(identical(
             x = names(tx),
             y = sort(unique(na.omit(mcols(gff)[["transcriptID"]])))
-        )
+        ))
 
         message(paste(length(tx), "transcript annotations detected."))
         gr <- tx
@@ -849,7 +851,7 @@ makeGRangesFromGFF <- function(
             x = colnames(mcols(gn)),
             y = colnames(mcols(gr))
         )
-        if (has_length(geneCols)) {
+        if (length(geneCols) > 0L) {
             geneCols <- c("geneID", geneCols)
             merge <- merge(
                 x = mcols(gr),
@@ -859,10 +861,10 @@ makeGRangesFromGFF <- function(
             )
             rownames(merge) <- merge[["transcriptID"]]
             merge <- merge[sort(rownames(merge)), ]
-            assert_are_identical(
+            assert(identical(
                 x = mcols(gr)[["transcriptID"]],
                 y = merge[["transcriptID"]]
-            )
+            ))
             mcols(gr) <- merge
         }
     }

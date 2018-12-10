@@ -49,11 +49,11 @@ selectSamples.SummarizedExperiment <-  # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)
-        invisible(lapply(args, assert_is_atomic))
+        invisible(lapply(args, assertAtomic))
 
         # Match the arguments against the sample metadata.
         sampleData <- sampleData(object)
-        assert_is_subset(names(args), colnames(sampleData))
+        assertSubset(names(args), colnames(sampleData))
 
         # Obtain the sample identifiers.
         list <- mapply(
@@ -67,7 +67,7 @@ selectSamples.SummarizedExperiment <-  # nolint
             USE.NAMES = TRUE
         )
         samples <- sort(as.character(Reduce(f = intersect, x = list)))
-        assert_is_non_empty(samples)
+        assertHasLength(samples)
 
         object[, samples]
     }
@@ -133,7 +133,7 @@ selectSamples.SingleCellExperiment <-  # nolint
             USE.NAMES = TRUE
         )
         samples <- Reduce(f = intersect, x = matches)
-        assert_is_non_empty(samples)
+        assertHasLength(samples)
 
         # Output to the user which samples matched, using the `sampleName`
         # metadata column, which is more descriptive than `sampleID`
@@ -151,8 +151,8 @@ selectSamples.SingleCellExperiment <-  # nolint
 
         # Use the metrics `data.frame` to match the cellular barcodes
         metrics <- metrics(object)
-        assert_is_all_of(metrics, "grouped_df")
-        assert_is_subset(c("cellID", "sampleID"), colnames(metrics))
+        assertClass(metrics, "grouped_df")
+        assertSubset(c("cellID", "sampleID"), colnames(metrics))
         # Note that we don't need to sort here.
         cells <- metrics %>%
             filter(!!sym("sampleID") %in% !!samples) %>%
