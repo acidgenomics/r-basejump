@@ -20,7 +20,7 @@ NULL
 
 Gene2Symbol.DataFrame <-  # nolint
     function(object, format = c("makeUnique", "1:1", "long")) {
-        assertHasRows(object)
+        assert(hasRows(object))
         format <- match.arg(format)
 
         # Check for required columns.
