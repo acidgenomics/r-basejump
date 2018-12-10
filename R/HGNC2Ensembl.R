@@ -10,17 +10,21 @@ HGNC2Ensembl <-  # nolint
         assert(hasInternet())
 
         if (isTRUE(getOption("basejump.test"))) {
-            file <- file.path(basejumpCacheURL, "hgnc.txt.gz")
+            file <- url(
+                basejumpCacheURL,
+                "hgnc.txt.gz",
+                protocol = "none"
+            )
         } else {
-            file <- paste(
-                "ftp://ftp.ebi.ac.uk",
+            file <- url(
+                "ftp.ebi.ac.uk",
                 "pub",
                 "databases",
                 "genenames",
                 "new",
                 "tsv",
                 "hgnc_complete_set.txt",
-                sep = "/"
+                protocol = "ftp"
             )
         }
 
@@ -31,12 +35,13 @@ HGNC2Ensembl <-  # nolint
             col_types = cols(),
             progress = FALSE
         )
+        # TODO Consider reworking using dplyr here.
         data <- camel(data)
         data <- data[, c("hgncID", "ensemblGeneID")]
         colnames(data)[[2L]] <- "geneID"
-        data <- data[!is.na(data[["geneID"]]), ]
+        data <- data[!is.na(data[["geneID"]]), , drop = FALSE]
         data[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", data[["hgncID"]]))
-        data <- data[order(data[["hgncID"]]), ]
+        data <- data[order(data[["hgncID"]]), , drop = FALSE]
         data <- as(data, "DataFrame")
         metadata(data) <- .prototypeMetadata
 
