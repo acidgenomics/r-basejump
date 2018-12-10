@@ -18,9 +18,9 @@
 #' @note This function is desired for interactive use and interprets object
 #'   names using non-standard evaluation.
 #'
-#' @export
-#'
 #' @inheritParams params
+#' @export
+
 #' @param ... Object names. Note that these arguments are interpreted as symbols
 #'   using non-standard evaluation for convenience during interactive use, and
 #'   *must not be quoted*.
@@ -31,21 +31,31 @@
 #'
 #' @examples
 #' loadData(example, dir = system.file("extdata", package = "basejump"))
-loadData <- function(..., dir, envir = parent.frame()) {
-    assertEnvironment(envir)
+loadData <- function(..., dir, envir = globalenv()) {
     names <- dots(..., character = TRUE)
-    files <- .listRData(names = names, dir = dir)
-    lapply(
-        X = files,
-        FUN = function(file) {
-            if (grepl("\\.rds$", file)) {
-                fun <- .safeLoadRDS
-            } else {
-                fun <- .safeLoad
-            }
-            fun(file, envir = envir)
-        }
-    )
+    files <- .listData(names = names, dir = dir)
+    assert(is.environment(envir))
+    if (all(grepl(
+        pattern = "\\.rds$",
+        x = files,
+        ignore.case = TRUE
+    ))) {
+        fun <- .safeLoadRDS
+    } else if (all(grepl(
+        pattern = "\\.rd[a|ata]$",
+        x = files,
+        ignore.case = TRUE
+    ))) {
+        fun <- .safeLoadRDA
+    } else {
+        stop(paste(
+            "File extension error:",
+            toString(basename(files))
+        ))
+    }
+    lapply(X = files, FUN = fun, envir = envir)
+    # FIXME Use `areExisting()` from goalie instead.
+    assert(all(isExisting(names, envir = envir, inherits = FALSE)))
     invisible(files)
 }
 
@@ -74,42 +84,40 @@ formals(loadData)[["dir"]] <- formalsList[["load.dir"]]
 #'     dir = system.file("extdata", package = "basejump")
 #' )
 #' class(renamed)
-loadDataAsName <- function(..., dir, envir = parent.frame()) {
+loadDataAsName <- function(..., dir, envir = globalenv()) {
     dots <- dots(..., character = TRUE)
-    assertHasNames(dots)
-    files <- .listRData(names = dots, dir = dir)
+    assert(hasNames(dots))
+    files <- .listData(names = dots, dir = dir)
     names(files) <- names(dots)
-    assertEnvironment(envir)
+    assert(is.environment(envir))
 
-    # Check to see if any of the new names already exist in environment
-    assertAreNonExisting(names(dots), envir = envir, inherits = FALSE)
+    # Check to see if any of the new names already exist in environment.
+    assert(areNonExisting(names(dots), envir = envir, inherits = FALSE))
 
+    # Note that we can skip safe loading here because we have already checked
+    # for existing names in environment outside of the loop call.
     if (any(grepl("\\.rds$", files))) {
-        # R data serialized: assign directly
+        # R data serialized: assign directly.
         invisible(mapply(
             name = names(files),
             file = files,
             FUN = function(name, file, envir) {
                 data <- readRDS(file)
-                assign(
-                    x = name,
-                    value = data,
-                    envir = envir
-                )
+                assign(x = name, value = data, envir = envir)
             },
             MoreArgs = list(envir = envir)
         ))
     } else {
-        # R data: use safe loading
+        # R data: use safe loading.
         safe <- new.env()
         invisible(mapply(
-            FUN = .safeLoad,
+            FUN = .safeLoadRDA,
             file = files,
             MoreArgs = list(envir = safe)
         ))
-        assertSetEqual(dots, ls(safe))
+        assert(isSetEqual(dots, ls(safe)))
 
-        # Now assign to the desired object names
+        # Now assign to the desired object names.
         invisible(mapply(
             FUN = function(from, to, safe, envir) {
                 assign(
@@ -147,14 +155,15 @@ formals(loadDataAsName)[["dir"]] <- formalsList[["load.dir"]]
 #'   remote URL as the value.
 #'
 #' @examples
-#' url <- file.path(
+#' url <- url(
 #'     basejumpCacheURL,
-#'     paste0(c("rnaseq_counts", "single_cell_counts"), ".rds")
+#'     paste0(c("rnaseq_counts", "single_cell_counts"), ".rds"),
+#'     protocol = "none"
 #' )
 #' print(url)
 #' x <- loadRemoteData(url)
 #' print(x)
-loadRemoteData <- function(url, envir = parent.frame()) {
+loadRemoteData <- function(url, envir = globalenv()) {
     assert(
         hasInternet(),
         all(containsURL(url)),
@@ -173,7 +182,6 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     names(url) <- names
 
     # Check to make sure the objects don't already exist.
-    # FIXME Rethink `areNonExisting()` approach here?
     assert(areNonExisting(names, envir = envir, inherits = FALSE))
 
     # Download the files to tempdir and return a character matrix of mappings.
@@ -187,18 +195,15 @@ loadRemoteData <- function(url, envir = parent.frame()) {
         }
     ))
 
-    # FIXME Rethink this approach...
-    assert(allAreExisting(names, envir = envir, inherits = FALSE))
+    # FIXME Use `areExisting()` instead in goalie?
+    assert(all(isExisting(names, envir = envir, inherits = FALSE)))
     invisible(url)
 }
 
 
 
-.listRData <- function(names, dir) {
-    assert(
-        is(names, "character"),
-        isDir(dir)
-    )
+.listData <- function(names, dir) {
+    assert(isCharacter(names))
     dir <- realpath(dir)
     files <- vapply(
         X = names,
@@ -232,24 +237,50 @@ loadRemoteData <- function(url, envir = parent.frame()) {
 
 
 
-.safeLoad <- function(file, name = NULL, envir = parent.frame()) {
-    assert(
-        isFile(file),
-        isString(name) || is.null(name),
-        is(envir, "environment")
-    )
+.safeLoadRDS <- function(file, envir) {
     file <- realpath(file)
+    assert(
+        isAFile(file),
+        # Allowing RDS only here.
+        grepl("\\.rds$", file, ignore.case = TRUE),
+        is.environment(envir)
+    )
+    name <- basenameSansExt(file)
+    data <- readRDS(file)
+    # Always error if the object is already assigned in environment.
+    if (exists(x = name, envir = envir, inherits = FALSE)) {
+        stop(paste(
+            deparse(name), "exists in environment"
+        ), call. = FALSE)
+    }
+    assign(x = name, value = data, envir = envir)
+    assert(exists(x = name, envir = envir, inherits = FALSE))
+    invisible(file)
+}
 
+
+
+.safeLoadRDA <- function(file, name = NULL, envir) {
+    file <- realpath(file)
+    assert(
+        isAFile(file),
+        # Allowing RDA or RDATA here.
+        assert(grepl("\\.rd[a|ata]$", file, ignore.case = TRUE)),
+        isString(name) || is.null(name),
+        is.environment(envir)
+    )
     if (is.null(name)) {
-        assert(grepl(rdataExtPattern, file, ignore.case = TRUE))
-        name <- gsub(rdataExtPattern, "", basename(file))
+        name <- basenameSansExt(file)
+    }
+    # Always error if the object is already assigned in environment.
+    if (exists(x = name, envir = envir, inherits = FALSE)) {
+        stop(paste(
+            deparse(name), "exists in environment"
+        ), call. = FALSE)
     }
 
-    # Fail on attempt to load on top of an existing object.
-    # FIXME Rethink this assert approach.
-    assert(areNonExisting(name, envir = envir, inherits = FALSE))
-
-    # Load into a temporary environment.
+    # Loading into a temporary environment, so we can evaluate the integrity
+    # of the objects before assigning into the destination environment.
     tmpEnvir <- new.env()
     loaded <- load(file, envir = tmpEnvir)
 
@@ -280,36 +311,8 @@ loadRemoteData <- function(url, envir = parent.frame()) {
         envir = envir
     )
 
-    # Ensure that assign worked.
-    # FIXME Rethink this assert approach.
-    assert(allAreExisting(
-        x = name,
-        envir = envir,
-        inherits = FALSE
-    ))
-
-    file
-}
-
-
-
-.safeLoadRDS <- function(file, envir = parent.frame()) {
-    assert(
-        isString(file),
-        is(envir, "environment")
-    )
-    file <- realpath(file)
-
-    name <- gsub("\\.rds", "", basename(file), ignore.case = TRUE)
-    data <- readRDS(file)
-
-    # Fail on attempt to load on top of an existing object.
-    assert(areNonExisting(name, envir = envir, inherits = FALSE))
-
-    assign(x = name, value = data, envir = envir)
-
-    # Ensure that assign worked.
-    assert(allAreExisting(x = name, envir = envir, inherits = FALSE))
+    # Ensure that assignment worked.
+    assert(exists(x = name, envir = envir, inherits = FALSE))
 
     file
 }
