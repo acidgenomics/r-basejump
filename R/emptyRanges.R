@@ -33,10 +33,10 @@ emptyRanges <- function(
     seqname = c("unknown", "transgene", "spike"),
     mcolsNames = NULL
 ) {
-    assert_is_character(names)
-    assert_all_are_non_missing_nor_empty_character(names)
+    assertCharacter(names)
+    assertAllAreNonMissingNorEmptyCharacter(names)
     seqname <- match.arg(seqname)
-    assert_is_any_of(mcolsNames, c("character", "NULL"))
+    assertMultiClass(mcolsNames, c("character", "NULL"))
 
     gr <- GRanges(
         seqnames = seqname,
@@ -48,7 +48,7 @@ emptyRanges <- function(
     names(gr) <- names
 
     # Create the required empty metadata columns.
-    if (!has_length(mcolsNames)) {
+    if (length(mcolsNames) == 0L) {
         ncol <- 0L
     } else {
         ncol <- length(mcolsNames)

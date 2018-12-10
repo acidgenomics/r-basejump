@@ -30,12 +30,12 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         countsAxisLabel = "counts"
     ) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         assertIsAnImplicitInteger(n)
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
         interestingGroups(object) <- interestingGroups
-        assert_is_a_string(trans)
-        assert_is_a_string(countsAxisLabel)
+        assertString(trans)
+        assertString(countsAxisLabel)
 
         rowData <- rowData(object)
         rownames(rowData) <- rownames(object)
@@ -165,11 +165,11 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
         countsAxisLabel = "counts"
     ) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
         interestingGroups(object) <- interestingGroups
-        assert_is_a_string(trans)
-        assert_is_a_string(countsAxisLabel)
+        assertString(trans)
+        assertString(countsAxisLabel)
 
         rowData <- rowData(object)
         rownames(rowData) <- rownames(object)

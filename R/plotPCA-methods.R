@@ -78,13 +78,13 @@ plotPCA.SummarizedExperiment <-  # nolint
         # nocov end
 
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
         interestingGroups(object) <- interestingGroups
-        assert_is_a_number(ntop)
+        assertNumber(ntop)
         assertIsColorScaleDiscreteOrNULL(color)
         assertIsAnImplicitInteger(pointSize)
-        assert_is_a_bool(label)
+        assertFlag(label)
         assertIsStringOrNULL(title)
         return <- match.arg(return)
         # Warn and early return if any samples are duplicated.

@@ -20,7 +20,7 @@ release <- 92L
 dds <- makeExampleDESeqDataSet(n = 500L, m = 12L, betaSD = 1L)
 object_size(dds)
 stopifnot(object_size(dds) < limit)
-stopifnot(validObject(dds))
+validObject(dds)
 
 # Coerce to RangedSummarizedExperiment.
 # Need to change rows to actual gene identifiers here, and slot colData.
@@ -59,6 +59,6 @@ vapply(
 )
 object_size(rse)
 stopifnot(object_size(rse) < limit)
-stopifnot(validObject(rse))
+validObject(rse)
 
 usethis::use_data(rse, compress = "xz", overwrite = TRUE)

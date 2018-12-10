@@ -19,7 +19,7 @@ NULL
 
 Ensembl2Entrez.DataFrame <-  # nolint
     function(object, format = c("1:1", "long")) {
-        assert_has_rows(object)
+        assertHasRows(object)
         format <- match.arg(format)
 
         cols <- c("geneID", "entrezID")
@@ -41,14 +41,14 @@ Ensembl2Entrez.DataFrame <-  # nolint
 
         # Inform the user about genes that don't map to Entrez.
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
-        assert_that(!any(duplicated(unmapped)))
-        if (has_length(unmapped)) {
+        assert(!any(duplicated(unmapped)))
+        if (length(unmapped) > 0L) {
             message(paste(length(unmapped), "genes don't map to Entrez."))
         }
 
         # Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
-        if (has_length(multimapped)) {
+        if (length(multimapped) > 0L) {
             message(paste(
                 length(multimapped), "genes map to multiple Entrez IDs."
             ))
@@ -59,7 +59,7 @@ Ensembl2Entrez.DataFrame <-  # nolint
                 "Returning with 1:1 mappings using oldest Entrez ID per gene."
             ))
             entrez <- object[["entrezID"]]
-            assert_is_list(entrez)
+            assertList(entrez)
             names(entrez) <- object[["geneID"]]
             map <- lapply(
                 X = entrez,

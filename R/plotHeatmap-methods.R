@@ -126,7 +126,7 @@ NULL
 # Consider moving this to the goalie package in a future update.
 .assertIsNonZero <- function(object) {
     # We're not supporting sparseMatrix here because they have zero inflation.
-    assert_is_matrix(object)
+    assertMatrix(object)
     # Inform the user if any rows or columns contain all zeros. It's good
     # practice to remove them before attempting to plot a heatmap.
     zeroRows <- rowSums(object) == 0L
@@ -160,7 +160,7 @@ NULL
 
 # Modified version of `pheatmap:::scale_mat()`.
 .scaleMatrix <- function(object, scale = c("none", "row", "column")) {
-    assert_is_matrix(object)
+    assertMatrix(object)
     scale <- match.arg(scale)
     if (scale != "none") {
         message(paste0("Scaling matrix per ", scale, " (z-score)."))
@@ -223,18 +223,18 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
-        if (has_length(interestingGroups)) {
+        if (length(interestingGroups) > 0L) {
             interestingGroups(object) <- interestingGroups
         }
         scale <- match.arg(scale)
-        assert_is_a_bool(clusterCols)
-        assert_is_a_bool(clusterRows)
-        assert_is_a_bool(showColnames)
-        assert_is_a_bool(showRownames)
-        assert_is_a_number(treeheightRow)
-        assert_is_a_number(treeheightCol)
+        assertFlag(clusterCols)
+        assertFlag(clusterRows)
+        assertFlag(showColnames)
+        assertFlag(showRownames)
+        assertNumber(treeheightRow)
+        assertNumber(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
         assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {
@@ -314,8 +314,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
 
         # Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
-        assert_is_list(x)
-        assert_are_identical(
+        assertList(x)
+        assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
         )
@@ -329,10 +329,10 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (has_length(sampleNames)) {
+        if (length(sampleNames) > 0L) {
             colnames(mat) <- sampleNames
             if (
-                has_length(annotationCol) &&
+                length(annotationCol) > 0L &&
                 !is.na(annotationCol)
             ) {
                 rownames(annotationCol) <- sampleNames
@@ -418,22 +418,22 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         ...
     ) {
         validObject(object)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
         )
-        if (has_length(interestingGroups)) {
+        if (length(interestingGroups) > 0L) {
             interestingGroups(object) <- interestingGroups
         }
         method <- match.arg(method)
-        assert_is_a_string(clusteringMethod)
-        assert_is_a_bool(showColnames)
-        assert_is_a_bool(showRownames)
-        assert_is_a_number(treeheightRow)
-        assert_is_a_number(treeheightCol)
+        assertString(clusteringMethod)
+        assertFlag(showColnames)
+        assertFlag(showRownames)
+        assertNumber(treeheightRow)
+        assertNumber(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
         assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {
@@ -459,8 +459,8 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             object = object,
             legendColor = legendColor
         )
-        assert_is_list(x)
-        assert_are_identical(
+        assertList(x)
+        assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
         )
@@ -475,11 +475,11 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (has_length(sampleNames)) {
+        if (length(sampleNames) > 0L) {
             rownames(mat) <- sampleNames
             colnames(mat) <- sampleNames
             if (
-                has_length(annotationCol) &&
+                length(annotationCol) > 0L &&
                 !is.na(annotationCol)
             ) {
                 rownames(annotationCol) <- sampleNames
@@ -504,7 +504,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             ...
         )
         args <- .pheatmapArgs(args)
-        assert_are_disjoint_sets(
+        assertAreDisjointSets(
             x = names(args),
             y = "scale"
         )
@@ -552,8 +552,8 @@ setMethod(
 
 
 .quantileBreaks <- function(object, n = 10L) {
-    assert_is_matrix(object)
-    assert_is_an_integer(n)
+    assertMatrix(object)
+    assertInt(n)
     assert_all_are_positive(n)
     breaks <- quantile(object, probs = seq(0L, 1L, length.out = n))
     breaks[!duplicated(breaks)]
@@ -583,19 +583,19 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
-        assert_is_scalar(assay)
+        assertScalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
         )
-        if (has_length(interestingGroups)) {
+        if (length(interestingGroups) > 0L) {
             interestingGroups(object) <- interestingGroups
         }
         assertIsAnImplicitInteger(n)
         n <- as.integer(n)
-        assert_is_a_bool(clusterCols)
-        assert_is_a_bool(clusterRows)
-        assert_is_a_bool(legend)
+        assertFlag(clusterCols)
+        assertFlag(clusterRows)
+        assertFlag(legend)
         assertIsStringOrNULL(borderColor)
         if (!is_a_string(borderColor)) {
             borderColor <- NA
@@ -626,8 +626,8 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             object = object,
             legendColor = legendColor
         )
-        assert_is_list(x)
-        assert_are_identical(
+        assertList(x)
+        assertIdentical(
             x = names(x),
             y = c("annotationCol", "annotationColors")
         )
@@ -643,10 +643,10 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (has_length(sampleNames)) {
+        if (length(sampleNames) > 0L) {
             colnames(mat) <- sampleNames
             if (
-                has_length(annotationCol) &&
+                length(annotationCol) > 0L &&
                 !is.na(annotationCol)
             ) {
                 rownames(annotationCol) <- sampleNames
@@ -732,7 +732,7 @@ setMethod(
     legendColor
 ) {
     validObject(object)
-    assert_is_character(blacklist)
+    assertCharacter(blacklist)
     assertIsHexColorFunctionOrNULL(legendColor)
 
     # Annotation columns -------------------------------------------------------
@@ -740,9 +740,10 @@ setMethod(
     interestingGroups <- interestingGroups(object)
 
     # pheatmap requires `NA` if empty.
+    # FIXME Consider usage of `has_dims()` here...
     if (
         !has_dims(data) ||
-        !has_length(interestingGroups) ||
+        length(interestingGroups) == 0L ||
         identical(interestingGroups, "sampleName")
     ) {
         return(.emptyPheatmapAnnotations)
@@ -776,7 +777,7 @@ setMethod(
     )
 
     # Return empty if there are no useful factor columns.
-    if (!has_length(hasLevels)) {
+    if (length(hasLevels) == 0L) {
         return(.emptyPheatmapAnnotations)  # nocov
     }
 
@@ -790,7 +791,7 @@ setMethod(
         colors <- lapply(
             X = data,
             FUN = function(x) {
-                assert_is_factor(x)
+                assertFactor(x)
                 levels <- levels(x)
                 colors <- legendColor(length(levels))
                 names(colors) <- levels
@@ -813,19 +814,19 @@ setMethod(
 # Sanitize formals into snake case and abort on duplicates.
 # Duplicates may arise if user is mixing and matching camel/snake case.
 .pheatmapArgs <- function(args) {
-    assert_is_list(args)
-    assert_has_names(args)
+    assertList(args)
+    assertHasNames(args)
     # Abort on snake case formatted formalArgs
     invalidNames <- grep("[._]", names(args), value = TRUE)
-    if (has_length(invalidNames)) {
+    if (length(invalidNames) > 0L) {
         stop(paste(
             "Specify arguments in camel case:",
             toString(invalidNames)
         ))
     }
     names(args) <- snake(names(args))
-    assert_is_subset(names(args), formalArgs(pheatmap))
-    assert_has_no_duplicates(names(args))
+    assertSubset(names(args), formalArgs(pheatmap))
+    assertHasNoDuplicates(names(args))
     args
 }
 
@@ -836,7 +837,7 @@ setMethod(
     if (is.character(color)) {
         # Hexadecimal color palette
         # (e.g. RColorBrewer palettes)
-        assert_all_are_hex_colors(color)
+        assertHexColors(color)
         color
     } else if (is.function(color)) {
         # Hexadecimal color function

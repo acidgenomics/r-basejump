@@ -89,7 +89,7 @@ NULL
 # `stringr::str_replace_all()` is an alternate approach that uses `regex()`.
 # https://stringr.tidyverse.org/articles/regular-expressions.html
 .sanitizeAcronyms <- function(object) {
-    assert_is_atomic(object)
+    assertAtomic(object)
     object %>%
         as.character() %>%
         # Sanitize "id" variants (e.g. "Id" to "ID").
@@ -134,8 +134,8 @@ NULL
 #' @inheritParams base::make.names
 #' @export
 makeNames <- function(names, unique = TRUE) {
-    assert_is_atomic(names)
-    assert_is_a_bool(unique)
+    assertAtomic(names)
+    assertFlag(unique)
     names <- as.character(names)
     names <- make.names(names, unique = unique)
     names <- gsub("\\.", "_", names)
@@ -147,7 +147,7 @@ makeNames <- function(names, unique = TRUE) {
 #' @rdname makeNames
 #' @export
 makeDimnames <- function(object) {
-    assert_has_dimnames(object)
+    assertHasDimnames(object)
 
     # Row names.
     if (
@@ -258,7 +258,7 @@ camel.character <-  # nolint
     ) {
         object <- dotted(object)
         format <- match.arg(format)
-        assert_is_a_bool(strict)
+        assertFlag(strict)
 
         # Simplify mixed case acronyms in strict mode.
         if (isTRUE(strict)) {
@@ -330,7 +330,7 @@ setMethod(
 # Dotted case is the internal method used by camel and snake.
 dotted.character <-  # nolint
     function(object) {
-        assert_is_atomic(object)
+        assertAtomic(object)
         object %>%
             as.character() %>%
             # Handle "+" as a special case. Spell out as "plus".
@@ -381,7 +381,7 @@ setMethod(
 
 snake.character <-  # nolint
     function(object) {
-        assert_is_atomic(object)
+        assertAtomic(object)
         object %>%
             dotted() %>%
             tolower() %>%
@@ -630,13 +630,13 @@ camel.matrix <-  # nolint
         colnames = TRUE,
         strict = FALSE
     ) {
-        assert_has_dimnames(object)
-        assert_is_a_bool(rownames)
+        assertHasDimnames(object)
+        assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- camel(rownames(object), strict = strict)
         }
         if (isTRUE(colnames) && has_colnames(object)) {
-            assert_has_colnames(object)
+            assertHasColnames(object)
             colnames(object) <- camel(colnames(object), strict = strict)
         }
         object
@@ -660,8 +660,8 @@ dotted.matrix <-  # nolint
         rownames = FALSE,
         colnames = TRUE
     ) {
-        assert_has_dimnames(object)
-        assert_is_a_bool(rownames)
+        assertHasDimnames(object)
+        assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- dotted.character(rownames(object))
         }
@@ -689,8 +689,8 @@ snake.matrix <-  # nolint
         rownames = FALSE,
         colnames = TRUE
     ) {
-        assert_has_dimnames(object)
-        assert_is_a_bool(rownames)
+        assertHasDimnames(object)
+        assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- snake.character(rownames(object))
         }
@@ -719,8 +719,8 @@ upperCamel.matrix <-  # nolint
         colnames = TRUE,
         strict = FALSE
     ) {
-        assert_has_dimnames(object)
-        assert_is_a_bool(rownames)
+        assertHasDimnames(object)
+        assertFlag(rownames)
         if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <-
                 upperCamel.character(rownames(object), strict = strict)

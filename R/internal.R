@@ -17,7 +17,7 @@
 }
 
 .assertHasPrototypeMetadata <- function(object) {
-    assert_is_subset(
+    assertSubset(
         x = names(.prototypeMetadata),
         y = names(metadata(object))
     )

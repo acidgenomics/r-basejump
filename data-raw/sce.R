@@ -77,6 +77,6 @@ vapply(
 )
 object_size(sce)
 stopifnot(object_size(sce) < limit)
-stopifnot(validObject(sce))
+validObject(sce)
 
 usethis::use_data(sce, compress = "xz", overwrite = TRUE)

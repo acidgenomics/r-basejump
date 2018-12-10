@@ -53,8 +53,8 @@ geometricMean.numeric <-  # nolint
         removeNA = TRUE,
         zeroPropagate = FALSE
     ) {
-        assert_is_a_bool(removeNA)
-        assert_is_a_bool(zeroPropagate)
+        assertFlag(removeNA)
+        assertFlag(zeroPropagate)
 
         # Check for any negative numbers and return `NaN`
         if (any(object < 0L, na.rm = TRUE)) {
@@ -90,7 +90,7 @@ geometricMean.matrix <-  # nolint
     function(object, MARGIN = 2L) {  # nolint
         invisible(lapply(
             X = object,
-            FUN = assert_is_numeric
+            FUN = assertNumeric
         ))
         apply(
             X = object,

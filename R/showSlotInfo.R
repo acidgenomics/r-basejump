@@ -1,3 +1,7 @@
+# FIXME Update imports for `hasLength` and `hasNames`
+
+
+
 #' Show Slot Information
 #'
 #' @param list `list`. Named list containing slot metadata.
@@ -13,24 +17,22 @@
 #'     filtered = TRUE
 #' ))
 showSlotInfo <- function(list) {
-    assert_is_list(list)
-    assert_that(all(vapply(
-        X = list,
-        FUN = is.atomic,
-        FUN.VALUE = logical(1L)
-    )))
+    assert(
+        is(list, "list"),
+        allAreAtomic(list)
+    )
     list <- Filter(f = Negate(is.null), x = list)
-    list <- Filter(f = has_length, x = list)
+    list <- Filter(f = hasLength, x = list)
     # Standardize to Bioconductor `show()` conventions.
     # Refer to SummarizedExperiment method for example.
     out <- mapply(
         name = names(list),
         x = list,
         FUN = function(name, x) {
-            if (has_length(x, n = 1L)) {
+            if (length(x) == 1L) {
                 paste0(name, ": ", x)
             } else {
-                if (has_names(x) && length(x) <= 4L) {
+                if (hasNames(x) && length(x) <= 4L) {
                     prefix <- paste0("[", names(x), "]")
                     info <- paste(prefix, x, sep = " ", collapse = "; ")
                 } else {

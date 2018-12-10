@@ -18,7 +18,7 @@
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
 geneSynonyms <- function(organism) {
-    assert_that(has_internet())
+    assert(hasInternet())
     organism <- match.arg(arg = organism, choices = .geneSynonymsOrganisms)
 
     # NCBI uses underscore for species name
@@ -32,7 +32,7 @@ geneSynonyms <- function(organism) {
     genome <- c(kingdom = kingdom, species = species)
 
     if (isTRUE(getOption("basejump.test"))) {
-        assert_that(organism == "Homo sapiens")
+        assert(organism == "Homo sapiens")
         file <- file.path(
             basejumpCacheURL,
             paste0(snake(organism), ".gene_info.gz")
@@ -50,7 +50,7 @@ geneSynonyms <- function(organism) {
     }
 
     data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
-    assert_is_non_empty(data)
+    assertHasLength(data)
 
     data <- data %>%
         camel() %>%

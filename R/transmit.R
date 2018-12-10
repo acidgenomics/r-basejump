@@ -41,23 +41,27 @@ transmit <- function(
     rename = NULL,
     compress = FALSE
 ) {
-    assert_that(has_internet())
-    assert_is_a_string(remoteDir)
-    # Check for public FTP protocol.
-    assert_all_are_matching_regex(remoteDir, "^ftp\\://")
+    assert(
+        hasInternet(),
+        isString(remoteDir),
+        # Check for public FTP protocol.
+        allAreMatchingRegex(remoteDir, "^ftp\\://")
+    )
     # `RCurl::getURL()` requires a trailing slash.
     if (!grepl("/$", remoteDir)) {
         remoteDir <- paste0(remoteDir, "/")
     }
     localDir <- initDir(localDir)
-    assert_is_a_string(pattern)
-    assert_is_any_of(rename, c("character", "NULL"))
-    assert_is_a_bool(compress)
+    assert(
+        isString(pattern),
+        anyClass(rename, classes = c("character", "NULL")),
+        isFlag(compress)
+    )
 
     # Get the name of the server.
     server <- str_match(string = remoteDir, pattern = "^.*//([^/]+)/.*$") %>%
         .[1L, 2L]
-    assert_is_a_string(server)
+    assertString(server)
 
     # Error and inform the user if the FTP connection fails.
     if (!isTRUE(url.exists(remoteDir))) {
@@ -67,7 +71,10 @@ transmit <- function(
     }
 
     remoteTxt <- getURL(remoteDir)
-    if (!isTRUE(is.character(remoteTxt) && has_length(remoteTxt))) {
+    if (!isTRUE(
+        is.character(remoteTxt) &&
+        length(remoteTxt) > 0L
+    )) {
         stop("Failed to list directory contents.")
     }
 
@@ -79,11 +86,11 @@ transmit <- function(
         .[grepl("^-", .)] %>%
         # File name is at the end, not including a space.
         str_extract(pattern = "[^\\s]+$")
-    assert_is_non_empty(remoteFiles)
+    assertHasLength(remoteFiles)
 
     # Apply pattern matching.
     match <- str_subset(remoteFiles, pattern)
-    assert_is_non_empty(match)
+    assertHasLength(match)
 
     message(paste(
         "Files matching pattern:",
@@ -96,7 +103,7 @@ transmit <- function(
 
     # Rename files, if desired.
     if (is.character(rename)) {
-        assert_are_same_length(match, rename)
+        assertAreSameLength(match, rename)
         name <- rename
     } else {
         name <- match
@@ -119,7 +126,7 @@ transmit <- function(
     }
 
     # Early return if all files exist.
-    if (!has_length(localPaths)) {
+    if (length(localPaths) == 0L) {
         message("All files are already downloaded.")
         files <- realpath(files)
         names(files) <- match

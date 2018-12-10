@@ -174,12 +174,12 @@ basejump_geom_label_average <- function(
     ...
 ) {
     data <- as.data.frame(data)
-    assert_is_a_string(col)
-    assert_is_subset(col, colnames(data))
-    assert_is_an_integer(digits)
+    assertString(col)
+    assertSubset(col, colnames(data))
+    assertInt(digits)
     fun <- match.arg(fun)
     fun <- get(fun)
-    assert_is_function(fun)
+    assertFunction(fun)
 
     aggdata <- aggregate(
         formula = as.formula(paste(col, "sampleName", sep = " ~ ")),
@@ -325,13 +325,13 @@ theme_paperwhite <- function(
     grid = FALSE,
     minimal = FALSE
 ) {
-    assert_is_a_number(base_size)
-    assert_is_a_string(base_family)
+    assertNumber(base_size)
+    assertString(base_family)
     face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)
-    assert_is_a_bool(grid)
-    assert_is_a_bool(minimal)
+    assertFlag(grid)
+    assertFlag(minimal)
 
     gray <- "gray95"
 
@@ -386,12 +386,12 @@ theme_paperwhite <- function(
 #' @rdname ggplot2-themes
 #' @export
 theme_midnight <- function() {
-    assert_is_a_number(base_size)
-    assert_is_a_string(base_family)
+    assertNumber(base_size)
+    assertString(base_family)
     face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)
-    assert_is_a_bool(grid)
+    assertFlag(grid)
 
     gray <- "gray10"
 

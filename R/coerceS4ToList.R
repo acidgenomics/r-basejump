@@ -17,7 +17,7 @@
 #' class(x)
 #' names(x)
 coerceS4ToList <- function(from) {
-    stopifnot(isS4(from))
+    assert(isS4(from))
     to <- lapply(slotNames(from), function(slot) {
         if (.hasSlot(from, slot)) {
             slot(from, slot)
