@@ -37,25 +37,24 @@
 #'     row.names = paste0("GSM000000", seq_len(4L))
 #' )
 makeSampleData <- function(object) {
-    # blacklist = c("interestingGroups", "sampleID")
-    assertHasDims(object)
-    assertSubset(
-        x = "sampleName",
-        y = colnames(object)
-    )
-    assertAreDisjointSets(
-        x = c(
-            "filename",
-            "id",
-            "interestingGroups",
-            "rowname",
-            "sample",
-            "samplename"
+    assert(
+        hasValidDimnames(object),
+        isSuperset(
+            x = colnames(object),
+            y = "sampleName"
         ),
-        y = colnames(object)
+        areDisjointSets(
+            x = c(
+                "filename",
+                "id",
+                "interestingGroups",
+                "rowname",
+                "sample",
+                "samplename"
+            ),
+            y = colnames(object)
+        )
     )
-    assertHasRownames(object)
-    assertAreValidNames(rownames(object))
     data <- object %>%
         as_tibble(rownames = "rowname") %>%
         mutate_all(as.factor) %>%
