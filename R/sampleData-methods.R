@@ -46,7 +46,7 @@ NULL
 sampleData.SummarizedExperiment <-  # nolint
     function(object, clean = FALSE) {
         data <- colData(object)
-        assertHasRownames(data)
+        assert(hasRownames(data))
         # Require `sampleName` column.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
@@ -95,7 +95,7 @@ sampleData.SingleCellExperiment <-  # nolint
             "^res[.0-9]+$"
         )
     ) {
-        assertCharacter(blacklist)
+        assert(isCharacter(blacklist))
         data <- colData(object)
 
         # Require `sampleID` and `sampleName` columns.
@@ -111,7 +111,7 @@ sampleData.SingleCellExperiment <-  # nolint
 
         # Sample-level columns -------------------------------------------------
         nSamples <- length(unique(data[["sampleID"]]))
-        assert_all_are_positive(nSamples)
+        assert(all(isPositive(nSamples)))
 
         # Drop any blacklisted columns.
         keep <- !grepl(
@@ -227,7 +227,7 @@ setMethod(
 
 `sampleData<-.SingleCellExperiment` <-  # nolint
     function(object, value) {
-        assertClass(value, "DataFrame")
+        assert(is(value, "DataFrame"))
 
         # Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {
@@ -241,12 +241,12 @@ setMethod(
         value[["sampleID"]] <- NULL
 
         # Generate `sampleID` column.
-        assertHasRownames(value)
+        assert(hasRownames(value))
         value[["sampleID"]] <- as.factor(rownames(value))
 
         # Update colData slot.
         colData <- colData(object)
-        assertSubset("sampleID", colnames(colData))
+        assert(isSubset("sampleID", colnames(colData)))
         colData <- colData[
             ,
             c("sampleID", setdiff(colnames(colData), colnames(value))),
@@ -261,7 +261,7 @@ setMethod(
             by = "sampleID"
         )
         value <- as(join, "DataFrame")
-        assertHasRownames(value)
+        assert(hasRownames(value))
         colData(object) <- value
 
         object
