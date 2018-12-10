@@ -833,7 +833,7 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["id"]] <- NULL
             mcols(tx)[["parent"]] <- NULL
         }
-        assert(hasNoDuplicates(mcols(tx)[["transcriptID"]])
+        assert(hasNoDuplicates(mcols(tx)[["transcriptID"]]))
         names(tx) <- mcols(tx)[["transcriptID"]]
         tx <- tx[sort(names(tx))]
 
