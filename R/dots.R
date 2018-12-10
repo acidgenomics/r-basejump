@@ -22,15 +22,23 @@
 #' dots(a, b, c, character = TRUE)
 dots <- function(..., character = FALSE) {
     dots <- eval_bare(substitute(alist(...)))
-    assertList(dots)
-    assertHasLength(dots)
-    assertHasNoDuplicates(dots)
-    invisible(lapply(dots, assert_is_name))
-
+    assert(
+        is.list(dots),
+        hasLength(dots),
+        hasNoDuplicates(dots),
+        all(vapply(
+            X = dots,
+            FUN = is.symbol,
+            FUN.VALUE = logical(1L)
+        ))
+    )
     # Convert names (symbols) to character.
-    names <- vapply(dots, as.character, character(1L))
-    assertHasNoDuplicates(names)
-
+    names <- vapply(
+        X = dots,
+        FUN = as.character,
+        FUN.VALUE = character(1L)
+    )
+    assert(hasNoDuplicates(names))
     if (isTRUE(character)) {
         names
     } else {
