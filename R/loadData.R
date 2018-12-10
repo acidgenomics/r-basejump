@@ -54,7 +54,7 @@ loadData <- function(..., dir, envir = globalenv()) {
         ))
     }
     lapply(X = files, FUN = fun, envir = envir)
-    # FIXME Use `areExisting()` from goalie instead.
+    # TODO Use `areExisting()` from goalie instead.
     assert(all(isExisting(names, envir = envir, inherits = FALSE)))
     invisible(files)
 }
@@ -195,7 +195,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
         }
     ))
 
-    # FIXME Use `areExisting()` instead in goalie?
+    # TODO Use `areExisting()` instead in goalie?
     assert(all(isExisting(names, envir = envir, inherits = FALSE)))
     invisible(url)
 }

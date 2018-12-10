@@ -26,7 +26,7 @@
 #' x <- localOrRemoteFile(files)
 #' basename(x)
 localOrRemoteFile <- function(file) {
-    assertCharacter(file)
+    assert(isCharacter(file))
     if (!all(grepl(pattern = extPattern, x = file))) {
         stop(paste(deparse(file), "does not end with file extension."))
     }
@@ -40,7 +40,7 @@ localOrRemoteFile <- function(file) {
                     .[1L, 2L:3L] %>%
                     na.omit() %>%
                     paste(collapse = "")
-                assertHasLength(ext)
+                assert(hasLength(ext))
                 # Fix for binary files (typically on Windows).
                 # https://github.com/tidyverse/readxl/issues/374
                 binary <- c(
