@@ -83,19 +83,18 @@ export.ANY <-  # nolint
         suppressWarnings(
             x <- as_tibble(x, rownames = rownames)
         )
-        assertHasRows(x)
-        assertHasCols(x)
+        assert(hasRows(x), hasCols(x))
         if (missing(file) && missing(format)) {
             stop("Must specify `file` and/or `format`.", call. = FALSE)
         } else if (missing(file)) {
             call <- standardizeCall()
             sym <- call[["x"]]
-            assert_is_symbol(sym)
+            assert(is.symbol(sym))
             name <- as.character(sym)
-            assertString(format)
+            assert(isString(format))
             file <- paste0(name, ".", format)
         } else if (missing(format)) {
-            assertString(file)
+            assert(isString(file))
         }
         # Ensure directory is created automatically.
         initDir(dir = dirname(file))
@@ -129,7 +128,7 @@ setMethod(
 # Consider adding HDF5 support in a future update.
 export.sparseMatrix <-  # nolint
     function(x, file, format) {
-        assertHasLength(x)
+        assert(hasLength(x))
         choices <- c("mtx", "mtx.gz")
 
         if (missing(file) && missing(format)) {
@@ -137,12 +136,12 @@ export.sparseMatrix <-  # nolint
         } else if (missing(file)) {
             call <- standardizeCall()
             sym <- call[["x"]]
-            assert_is_symbol(sym)
+            assert(is.symbol(sym))
             name <- as.character(sym)
             format <- match.arg(format, choices)
             file <- paste0(name, ".", format)
         } else if (missing(format)) {
-            assertString(file)
+            assert(isString(file))
             # Require a valid extension.
             grepChoices <- paste0("\\.", choices, "$")
             assert(any(vapply(
@@ -215,7 +214,7 @@ setMethod(
     humanize
 ) {
     assayNames <- assayNames(x)
-    assertCharacter(assayNames)
+    assert(isCharacter(assayNames))
     message(paste("Exporting assays:", toString(assayNames)))
     if (isTRUE(humanize)) {
         g2s <- Gene2Symbol(x)
@@ -233,8 +232,10 @@ setMethod(
             if (!is.null(g2s)) {
                 message("Adding `geneID` and `geneName` columns.")
                 assay <- as(assay, "DataFrame")
-                assertIdentical(rownames(assay), rownames(g2s))
-                assertAreDisjointSets(colnames(assay), colnames(g2s))
+                assert(
+                    identical(rownames(assay), rownames(g2s)),
+                    areDisjointSets(colnames(assay), colnames(g2s))
+                )
                 assay <- cbind(g2s, assay)
                 rownames(assay) <- NULL
             }
@@ -261,7 +262,7 @@ setMethod(
 
 
 
-# FIXME This step will break if `rowData()` doesn't contain `entrezID`.
+# NOTE This step will break if `rowData()` doesn't contain `entrezID`.
 .export.Ensembl2Entrez <- function(x, ext, dir) {
     export(
         x = Ensembl2Entrez(x),
@@ -298,7 +299,7 @@ setMethod(
         data <- rowData(x)
     }
     data <- sanitizeRowData(data)
-    assertIdentical(rownames(data), rownames(x))
+    assert(identical(rownames(data), rownames(x)))
     export(x = data, file = file.path(dir, paste0("rowData", ext)))
 }
 
@@ -325,7 +326,7 @@ export.SummarizedExperiment <-  # nolint
         )
     ) {
         call <- standardizeCall()
-        assertIsStringOrNULL(name)
+        assert(isString(name) || is.null(name))
         if (is.null(name)) {
             name <- as.character(call[["x"]])
         }
@@ -333,10 +334,10 @@ export.SummarizedExperiment <-  # nolint
         assert(
             isFlag(compress),
             isFlag(humanize),
-            is.character(slotNames),
+            isCharacter(slotNames),
             # Require at least 1 of the slotNames to be defined for export.
             # Note that we're not using `match.arg()` here.
-            all(slotNames %in% eval(formals()[["slotNames"]]))
+            isSubset(x = slotNames, y = eval(formals()[["slotNames"]]))
         )
 
         # Return the file paths back to the user as a named list.
@@ -420,7 +421,7 @@ export.SummarizedExperiment <-  # nolint
 
         # Return named character of file paths.
         files <- Filter(Negate(is.null), files)
-        assertHasNames(files)
+        assert(hasNames(files))
         invisible(files)
     }
 
@@ -439,7 +440,7 @@ setMethod(
 # FIXME Need to define an export sampleData function here.
 export.SingleCellExperiment <-  # nolint
     function(x) {
-        assertFlag(compress)
+        assert(isFlag(compress))
         call <- standardizeCall()
         name <- as.character(call[["x"]])
 
@@ -479,7 +480,7 @@ export.SingleCellExperiment <-  # nolint
             names(files[["reducedDims"]]) <- reducedDimNames
         }
 
-        assertHasNames(files)
+        assert(hasNames(files))
         invisible(files)
     }
 
