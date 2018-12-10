@@ -209,8 +209,10 @@ import <- function(file, dataFrame, ...) {
         ))
         args[["na"]] <- naStrings
         data <- do.call(what = read_tsv, args = args)
-        assertSubset("id", colnames(data))
-        assertHasNoDuplicates(data[["id"]])
+        assert(
+            isSubset("id", colnames(data)),
+            hasNoDuplicates(data[["id"]])
+        )
         # Coerce to matrix.
         data <- data %>%
             as.data.frame() %>%
