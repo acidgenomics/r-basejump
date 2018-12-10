@@ -18,7 +18,7 @@
 #' ## Clean up.
 #' unlink("testdir", recursive = TRUE)
 initDir <- function(dir) {
-    assertString(dir)
+    assert(isString(dir))
     if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     }
