@@ -55,16 +55,15 @@ collapseToString.atomic <-  # nolint
         removeNA = FALSE,
         unique = FALSE
     ) {
-        assertMultiClass(
-            x = object,
-            classes = c("character", "factor", "vector")
+        assert(
+            isAny(object, classes = c("character", "factor", "vector")),
+            isString(sep),
+            isFlag(unique),
+            isFlag(sort)
         )
-        assertString(sep)
-        assertFlag(unique)
-        assertFlag(sort)
 
         # Early return unmodified if scalar.
-        if (is_scalar(object)) {
+        if (isScalar(object)) {
             return(object)
         }
 
@@ -113,7 +112,7 @@ collapseToString.matrix <-  # nolint
         unique = FALSE
     ) {
         # Passthrough to atomic method: sep, unique, sort.
-        assertHasLength(object)
+        assert(hasLength(object))
 
         # Coerce to tibble to perform the collapse.
         collapse <- object %>%
@@ -182,7 +181,7 @@ setMethod(
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 sortUnique <- function(object) {
-    assertAtomic(object)
+    assert(is.atomic(object))
     object %>%
         sort(na.last = TRUE) %>%
         unique()
@@ -204,7 +203,7 @@ sortUnique <- function(object) {
 #' @examples
 #' toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 toStringUnique <- function(object) {
-    assertAtomic(object)
+    assert(is.atomic(object))
     object %>%
         as.character() %>%
         na.omit() %>%

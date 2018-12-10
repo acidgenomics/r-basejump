@@ -1,7 +1,3 @@
-# TODO Improve support for combining > 2 objects in a single call.
-
-
-
 #' @name combine
 #' @inherit BiocGenerics::combine
 #'
@@ -79,7 +75,7 @@ combine.SummarizedExperiment <-  # nolint
         validObject(y)
         # Coerce the objects to SummarizedExperiment.
         # Keep as RSE if the data is ranged.
-        assertIdentical(class(x), class(y))
+        assert(identical(class(x), class(y)))
         if (is(x, "RangedSummarizedExperiment")) {
             Class <- "RangedSummarizedExperiment"  # nolint
         } else {
@@ -90,10 +86,10 @@ combine.SummarizedExperiment <-  # nolint
 
         # Currently we're being strict and requiring that the rows (features)
         # are identical, otherwise zero counts may be misleading.
-        assertIdentical(rownames(x), rownames(y))
+        assert(identical(rownames(x), rownames(y)))
 
         # Require that there are no duplicate cells.
-        assertAreDisjointSets(colnames(x), colnames(y))
+        assert(areDisjointSets(colnames(x), colnames(y)))
 
         # Require specific metadata to be identical, if defined.
         metadata <- c(
@@ -107,34 +103,40 @@ combine.SummarizedExperiment <-  # nolint
             "umiType",
             "version"
         )
-        assertIdentical(
+        assert(identical(
             x = metadata(x)[metadata],
             y = metadata(y)[metadata]
-        )
+        ))
 
         # Counts ---------------------------------------------------------------
         # Check that count matrices are identical format, then combine.
-        assertIdentical(
+        assert(identical(
             x = class(counts(x)),
             y = class(counts(y))
-        )
+        ))
         counts <- cbind(counts(x), counts(y))
 
         # Row data -------------------------------------------------------------
         # Require that the gene annotations are identical.
         if (is(x, "RangedSummarizedExperiment")) {
-            assertIdentical(rowRanges(x), rowRanges(y))
+            assert(identical(rowRanges(x), rowRanges(y)))
             rowRanges <- rowRanges(x)
             rowData <- NULL
         } else {
-            assertIdentical(rowData(x), rowData(y))
+            assert(identical(rowData(x), rowData(y)))
             rowData <- rowData(x)
             rowRanges <- NULL
         }
 
         # Column data ----------------------------------------------------------
-        assertSetEqual(colnames(colData(x)), colnames(colData(y)))
-        cols <- intersect(colnames(colData(x)), colnames(colData(y)))
+        assert(areSetEqual(
+            x = colnames(colData(x)),
+            y = colnames(colData(y))
+        ))
+        cols <- intersect(
+            x = colnames(colData(x)),
+            y = colnames(colData(y))
+        )
         colData <- rbind(
             colData(x)[, cols, drop = FALSE],
             colData(y)[, cols, drop = FALSE]
