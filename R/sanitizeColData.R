@@ -29,7 +29,7 @@
 #' all(vapply(to, is.factor, logical(1L)))
 #' print(to)
 sanitizeColData <- function(object) {
-    stopifnot(
+    assert(
         is(object, "DataFrame"),
         is_non_empty(object),
         hasRownames(object),
@@ -42,7 +42,7 @@ sanitizeColData <- function(object) {
 
 
 sanitizeSampleData <- function(object) {
-    stopifnot(
+    assert(
         # Require `sampleName` column.
         "sampleName" %in% colnames(object),
         # Check for any duplicate rows.

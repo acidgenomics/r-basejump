@@ -51,7 +51,7 @@ saveData <- function(..., dir, ext, overwrite, compress) {
             "Skipped ", toString(basename(skip)), "."
         ), call. = FALSE)
         files <- files[!file.exists(files)]
-        if (!has_length(files)) {
+        if (length(files) == 0L) {
             warning("No files were saved.")
             return(invisible())
         }

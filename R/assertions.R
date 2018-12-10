@@ -76,7 +76,7 @@ assertFormalGene2Symbol <- function(x, genes, gene2symbol) {
 #' assertFormalInterestingGroups(rse, "condition")
 #' assertFormalInterestingGroups(rse, NULL)
 assertFormalInterestingGroups <- function(x, interestingGroups) {
-    assert_that(isS4(x))
+    assert(isS4(x))
     data <- sampleData(x)
 
     # Check `interestingGroups` argument.
@@ -153,7 +153,7 @@ validateClasses <- function(
                 x = classes,
                 y = class(object[[slot]])
             )
-            if (!has_length(intersect)) {
+            if (length(intersect) == 0L) {
                 FALSE
             } else {
                 TRUE

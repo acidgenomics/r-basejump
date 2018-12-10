@@ -286,7 +286,7 @@ import <- function(file, dataFrame, ...) {
         safe <- new.env()
         args[["envir"]] <- safe
         object <- do.call(what = load, args = args)
-        if (!has_length(safe, n = 1L)) {
+        if (length(safe) != 1L) {
             stop("File does not contain a single object.")
         }
         data <- get(object, envir = safe, inherits = FALSE)

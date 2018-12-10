@@ -54,7 +54,7 @@ vapply(
 )
 object_size(se)
 stopifnot(object_size(se) < limit)
-stopifnot(validObject(se))
+validObject(se)
 
 tx_se <- se
 usethis::use_data(tx_se, compress = "xz", overwrite = TRUE)

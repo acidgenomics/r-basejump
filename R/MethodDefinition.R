@@ -65,7 +65,7 @@ methodFunction <- function(f, signature, package) {
         }
     )
     # Assert that we're getting an S4 generic.
-    assert_that(isS4(generic))
+    assert(isS4(generic))
     args <- Filter(
         f = Negate(is.null),
         x = list(
@@ -74,7 +74,7 @@ methodFunction <- function(f, signature, package) {
             getName = FALSE
         )
     )
-    assert_that(do.call(what = isGeneric, args = args))
+    assert(do.call(what = isGeneric, args = args))
 
     # Now select the method from the generic.
     definition <- selectMethod(
@@ -83,7 +83,7 @@ methodFunction <- function(f, signature, package) {
         useInherited = TRUE,
         doCache = FALSE
     )
-    assert_that(is(definition, "MethodDefinition"))
+    assert(is(definition, "MethodDefinition"))
 
     # S4 dispatch will nest `.local()` function inside the method definition
     # when the formals aren't identical to the generic. Otherwise it will be
@@ -119,7 +119,7 @@ methodFormals <- function(f, signature, package) {
 #' @rdname MethodDefinition
 #' @export
 hasLocal <- function(definition) {
-    assert_that(is(definition, "MethodDefinition"))
+    assert(is(definition, "MethodDefinition"))
     assert_is_function(definition)
     body <- body(definition)
     if (!is(body, "{")) {
@@ -139,7 +139,7 @@ hasLocal <- function(definition) {
 #' @rdname MethodDefinition
 #' @export
 extractLocal <- function(definition) {
-    assert_that(hasLocal(definition))
+    assert(hasLocal(definition))
     body <- body(definition)
     local <- eval(body[[2L]][[3L]])
     assert_is_function(local)

@@ -42,7 +42,7 @@ NULL
             sort() %>%
             gsub("#([A-Z0-9:]+)", " [\\1]", .) %>%
             gsub(">", " > ", .)
-        if (has_length(x)) {
+        if (length(x) > 0L) {
             x
         } else {
             NULL
@@ -137,7 +137,7 @@ PANTHER <- function(  # nolint
     release = NULL,
     progress = FALSE
 ) {
-    assert_that(has_internet())
+    assert(has_internet())
     organism <- match.arg(
         arg = organism,
         choices = names(.pantherMappings)

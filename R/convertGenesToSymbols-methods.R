@@ -60,7 +60,7 @@ convertGenesToSymbols.character <-  # nolint
         names(out) <- gene2symbol[["geneID"]]
 
         missing <- setdiff(object, gene2symbol[["geneID"]])
-        if (has_length(missing)) {
+        if (length(missing) > 0L) {
             warning(paste(
                 "Failed to match genes:", toString(missing)
             ), call. = FALSE)

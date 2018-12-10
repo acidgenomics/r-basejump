@@ -125,9 +125,9 @@ matchArgsToDoCall <- function(
     invisible(lapply(
         X = args,
         FUN = function(x) {
-            assert_that(!is.call(x))
-            assert_that(!is.name(x))
-            assert_that(!is.symbol(x))
+            assert(!is.call(x))
+            assert(!is.name(x))
+            assert(!is.symbol(x))
         }
     ))
 

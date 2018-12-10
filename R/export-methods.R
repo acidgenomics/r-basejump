@@ -147,7 +147,7 @@ export.sparseMatrix <-  # nolint
             assert_is_a_string(file)
             # Require a valid extension.
             grepChoices <- paste0("\\.", choices, "$")
-            assert_that(any(vapply(
+            assert(any(vapply(
                 X = grepChoices,
                 FUN = grepl,
                 FUN.VALUE = logical(1L),
@@ -334,7 +334,7 @@ export.SummarizedExperiment <-  # nolint
         dir <- initDir(file.path(dir, name))
         assert_is_a_bool(compress)
         assert_is_a_bool(humanize)
-        assert_that(
+        assert(
             is.character(slotNames),
             # Require at least 1 of the slotNames to be defined for export.
             # Note that we're not using `match.arg()` here.
@@ -458,7 +458,7 @@ export.SingleCellExperiment <-  # nolint
         # humanize mode is enabled, because the rownames map to cells, and the
         # colnames map to the dimensions of interest.
         reducedDimNames <- reducedDimNames(x)
-        if (has_length(reducedDimNames)) {
+        if (length(reducedDimNames) == 0L) {
             message(paste("Exporting reducedDims:", toString(reducedDimNames)))
             files[["reducedDims"]] <- lapply(
                 X = reducedDimNames,

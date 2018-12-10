@@ -225,7 +225,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         assert_all_are_greater_than(ncol(object), 1L)
         assert_is_scalar(assay)
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
-        if (has_length(interestingGroups)) {
+        if (length(interestingGroups) > 0L) {
             interestingGroups(object) <- interestingGroups
         }
         scale <- match.arg(scale)
@@ -329,10 +329,10 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (has_length(sampleNames)) {
+        if (length(sampleNames) > 0L) {
             colnames(mat) <- sampleNames
             if (
-                has_length(annotationCol) &&
+                length(annotationCol) > 0L &&
                 !is.na(annotationCol)
             ) {
                 rownames(annotationCol) <- sampleNames
@@ -425,7 +425,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             object = object,
             interestingGroups = interestingGroups
         )
-        if (has_length(interestingGroups)) {
+        if (length(interestingGroups) > 0L) {
             interestingGroups(object) <- interestingGroups
         }
         method <- match.arg(method)
@@ -475,11 +475,11 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (has_length(sampleNames)) {
+        if (length(sampleNames) > 0L) {
             rownames(mat) <- sampleNames
             colnames(mat) <- sampleNames
             if (
-                has_length(annotationCol) &&
+                length(annotationCol) > 0L &&
                 !is.na(annotationCol)
             ) {
                 rownames(annotationCol) <- sampleNames
@@ -588,7 +588,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             object = object,
             interestingGroups = interestingGroups
         )
-        if (has_length(interestingGroups)) {
+        if (length(interestingGroups) > 0L) {
             interestingGroups(object) <- interestingGroups
         }
         assertIsAnImplicitInteger(n)
@@ -643,10 +643,10 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (has_length(sampleNames)) {
+        if (length(sampleNames) > 0L) {
             colnames(mat) <- sampleNames
             if (
-                has_length(annotationCol) &&
+                length(annotationCol) > 0L &&
                 !is.na(annotationCol)
             ) {
                 rownames(annotationCol) <- sampleNames
@@ -740,9 +740,10 @@ setMethod(
     interestingGroups <- interestingGroups(object)
 
     # pheatmap requires `NA` if empty.
+    # FIXME Consider usage of `has_dims()` here...
     if (
         !has_dims(data) ||
-        !has_length(interestingGroups) ||
+        length(interestingGroups) == 0L ||
         identical(interestingGroups, "sampleName")
     ) {
         return(.emptyPheatmapAnnotations)
@@ -776,7 +777,7 @@ setMethod(
     )
 
     # Return empty if there are no useful factor columns.
-    if (!has_length(hasLevels)) {
+    if (length(hasLevels) == 0L) {
         return(.emptyPheatmapAnnotations)  # nocov
     }
 
@@ -817,7 +818,7 @@ setMethod(
     assert_has_names(args)
     # Abort on snake case formatted formalArgs
     invalidNames <- grep("[._]", names(args), value = TRUE)
-    if (has_length(invalidNames)) {
+    if (length(invalidNames) > 0L) {
         stop(paste(
             "Specify arguments in camel case:",
             toString(invalidNames)
