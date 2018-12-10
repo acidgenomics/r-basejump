@@ -26,11 +26,11 @@ NULL
 
 uniteInterestingGroups.DataFrame <-  # nolint
     function(object, interestingGroups) {
-        assertCharacter(interestingGroups)
-        assertSubset(interestingGroups, colnames(object))
+        assert(isCharacter(interestingGroups))
+        assert(isSubset(interestingGroups, colnames(object)))
         # Subset to get only the columns of interest.
         data <- object[, interestingGroups, drop = FALSE]
-        assertHasLength(data)
+        assert(hasLength(data))
         # This approach will return numerics for `DataFrame` class, so
         # coercing columns to data.frame.
         value <- apply(
