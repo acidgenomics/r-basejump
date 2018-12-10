@@ -24,7 +24,7 @@ convertSampleIDsToNames.SummarizedExperiment <-  # nolint
             message("Returning with the sample names unmodified.")
         } else {
             colnames <- as.character(sampleNames)
-            assertHasNoDuplicates(colnames)
+            assert(hasNoDuplicates(colnames))
             colnames(object) <- colnames
             colData(object)[["sampleName"]] <- NULL
         }
