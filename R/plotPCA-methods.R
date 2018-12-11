@@ -78,18 +78,23 @@ plotPCA.SummarizedExperiment <-  # nolint
         # nocov end
 
         validObject(object)
-        assertScalar(assay)
-        interestingGroups <- matchInterestingGroups(object, interestingGroups)
-        interestingGroups(object) <- interestingGroups
-        assertNumber(ntop)
-        assertIsColorScaleDiscreteOrNULL(color)
-        assertIsAnImplicitInteger(pointSize)
-        assertFlag(label)
-        assertIsStringOrNULL(title)
+        assert(
+            isScalar(assay),
+            isInt(ntop),
+            isFlag(label),
+            isGGScale(color, scale = "discrete", aes = "colour") ||
+                is.null(color),
+            isInt(pointSize),
+            isPositive(pointSize),
+            isString(title) || is.null(title)
+        )
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
         return <- match.arg(return)
+
         # Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
-            warning("Duplicate samples detected. Skipping plot.")
+            warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
         }
 
@@ -98,6 +103,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         } else {
             nGene <- ntop
         }
+
         message(paste("Plotting PCA using", nGene, "genes."))
 
         # Using a modified version of DESeq2 DESeqTransform method here.
@@ -112,6 +118,7 @@ plotPCA.SummarizedExperiment <-  # nolint
             PC2 = pca[["x"]][, 2L],
             sampleData(object)
         )
+
         # Note that we're assigning the percent variation values used
         # for the axes into the object attributes.
         attr(data, "percentVar") <- percentVar[1L:2L]
