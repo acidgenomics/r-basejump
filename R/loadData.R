@@ -166,7 +166,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
     assert(
         hasInternet(),
         all(containsURL(url)),
-        is(envir, "environment")
+        is.environment(envir)
     )
     if (!all(vapply(
         X = url,
