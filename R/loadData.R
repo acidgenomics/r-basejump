@@ -155,11 +155,7 @@ formals(loadDataAsName)[["dir"]] <- formalsList[["load.dir"]]
 #'   remote URL as the value.
 #'
 #' @examples
-#' url <- url(
-#'     basejumpCacheURL,
-#'     paste0(c("rnaseq_counts", "single_cell_counts"), ".rds"),
-#'     protocol = "none"
-#' )
+#' url <- url(basejumpCacheURL, "rnaseq_counts.rds", protocol = "none")
 #' print(url)
 #' x <- loadRemoteData(url)
 #' print(x)
