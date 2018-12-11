@@ -10,6 +10,24 @@
 \alias{as_tibble}
 \alias{\%>\%}
 \alias{DataFrame}
+\alias{isSpike}
+\alias{isSpike<-}
+\alias{reducedDimNames}
+\alias{reducedDims}
+\alias{spikeNames}
+\alias{assay}
+\alias{colData}
+\alias{colData<-}
+\alias{mcols}
+\alias{rowRanges}
+\alias{rowRanges<-}
+\alias{seqnames}
+\alias{assayNames}
+\alias{assayNames<-}
+\alias{assays}
+\alias{assays<-}
+\alias{rowData}
+\alias{rowData<-}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -27,7 +45,9 @@ below to see their documentation.
 
   \item{S4Vectors}{\code{\link[S4Vectors]{decode}}, \code{\link[S4Vectors]{DataFrame}}}
 
-  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
+  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{isSpike}}, \code{\link[SingleCellExperiment]{isSpike<-}}, \code{\link[SingleCellExperiment]{reducedDimNames}}, \code{\link[SingleCellExperiment]{reducedDims}}, \code{\link[SingleCellExperiment]{spikeNames}}, \code{\link[SingleCellExperiment]{tpm}}}
+
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{mcols}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}, \code{\link[SummarizedExperiment]{seqnames}}, \code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assayNames<-}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}}
 }}
