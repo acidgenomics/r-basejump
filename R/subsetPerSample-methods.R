@@ -48,10 +48,12 @@ subsetPerSample.SingleCellExperiment <-  # nolint
         envir = parent.frame(),
         dir = "."
     ) {
-        assertIsAnImplicitInteger(minCells)
-        assert_all_are_positive(minCells)
-        assertFlag(assignAndSave)
-        assertEnvironment(envir)
+        assert(
+            isInt(minCells),
+            isPositive(minCells),
+            isFlag(assignAndSave),
+            is.environment(envir)
+        )
         dir <- initDir(dir)
 
         # Return objects or file paths.

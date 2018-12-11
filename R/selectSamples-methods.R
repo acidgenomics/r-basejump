@@ -49,11 +49,18 @@ selectSamples.SummarizedExperiment <-  # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)
-        invisible(lapply(args, assertAtomic))
+        
+        # Check that all arguments are atomic.
+        if(!all(vapply(
+            X = args,
+            FUN = is.atomic,
+            FUN.VALUE = logical(1L)
+        ))) {
+        }
 
         # Match the arguments against the sample metadata.
         sampleData <- sampleData(object)
-        assertSubset(names(args), colnames(sampleData))
+        assert(isSubset(names(args), colnames(sampleData)))
 
         # Obtain the sample identifiers.
         list <- mapply(
@@ -67,9 +74,9 @@ selectSamples.SummarizedExperiment <-  # nolint
             USE.NAMES = TRUE
         )
         samples <- sort(as.character(Reduce(f = intersect, x = list)))
-        assertHasLength(samples)
+        assert(hasLength(samples))
 
-        object[, samples]
+        object[, samples, drop = FALSE]
     }
 
 
@@ -93,6 +100,7 @@ selectSamples.SingleCellExperiment <-  # nolint
         # arguments should be a string that can be used for logical grep
         # matching here internally.
         args <- list(...)
+        
         if (!all(vapply(
             X = args,
             FUN = is.atomic,
@@ -102,7 +110,8 @@ selectSamples.SingleCellExperiment <-  # nolint
         }
 
         # Match the arguments against the sample metadata.
-        sampleData <- as_tibble(sampleData(object), rownames = "sampleID")
+        sampleData <- sampleData(object) %>%
+            as_tibble(rownames = "sampleID")
 
         matches <- mapply(
             col = names(args),
@@ -133,7 +142,7 @@ selectSamples.SingleCellExperiment <-  # nolint
             USE.NAMES = TRUE
         )
         samples <- Reduce(f = intersect, x = matches)
-        assertHasLength(samples)
+        assert(hasLength(samples))
 
         # Output to the user which samples matched, using the `sampleName`
         # metadata column, which is more descriptive than `sampleID`
@@ -151,16 +160,20 @@ selectSamples.SingleCellExperiment <-  # nolint
 
         # Use the metrics `data.frame` to match the cellular barcodes
         metrics <- metrics(object)
-        assertClass(metrics, "grouped_df")
-        assertSubset(c("cellID", "sampleID"), colnames(metrics))
+        assert(
+            is(metrics, "grouped_df"),
+            isSubset(c("cellID", "sampleID"), colnames(metrics))
+        )
+        
         # Note that we don't need to sort here.
         cells <- metrics %>%
             filter(!!sym("sampleID") %in% !!samples) %>%
             pull("cellID")
         message(paste(length(cells), "cells matched."))
-
-        object <- object[, cells]
+        
+        object <- object[, cells, drop = FALSE]
         metadata(object)[["selectSamples"]] <- TRUE
+        
         object
     }
 

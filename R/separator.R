@@ -19,6 +19,6 @@ separator <- function(
     times = min(c(getOption("width", 72L), 72L))
 ) {
     sep <- match.arg(sep)
-    assertIsAnImplicitInteger(times)
+    assert(isInt(times))
     paste0(rep(x = sep, times = times), collapse = "")
 }
