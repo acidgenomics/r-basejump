@@ -48,7 +48,7 @@
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie areDisjointSets areIntersectingSets areNonExisting
-#'   areSameLength assert containsAURL containsHexColors containsURL
+#'   areSameLength areSetEqual assert containsAURL containsHexColors containsURL
 #'   formalCompress hasAccess hasColnames hasDimnames hasDims hasInternet
 #'   hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows
 #'   hasRownames hasUniqueCols hasValidDimnames isADirectory isAFile isAny
