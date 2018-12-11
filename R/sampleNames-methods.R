@@ -69,7 +69,7 @@ setMethod(
         ids <- names(sampleNames(object))
         assert(hasLength(ids))
         # Require the input to match the original IDs.
-        assert(setEqual(names(value), ids))
+        assert(areSetEqual(names(value), ids))
         # Now safe to reorder the value vector to match.
         value <- value[ids]
         # Check that the slotting destination matches.
