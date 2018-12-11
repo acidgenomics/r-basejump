@@ -45,26 +45,26 @@ prepareTemplate <- function(
     sourceDir = NULL,
     ...
 ) {
-    assertString(package)
-    assertSubset(package, rownames(installed.packages()))
-    assertIsStringOrNULL(sourceDir)
-    assertFlag(overwrite)
+    assert(
+        isString(package),
+        isSubset(package, rownames(installed.packages())),
+        isString(sourceDir) || is.null(sourceDir),
+        isFlag(overwrite)
+    )
 
     # Shared file source directory. Keeping the `sourceDir` argument because
     # devtools attempts to intercept `system.file`, and this can cause path
     # issues during development.
     if (is.null(sourceDir)) {
         sourceDir <- system.file(
-            "rmarkdown/shared",
-            package = package,
-            mustWork = TRUE
+            "rmarkdown/shared", package = package, mustWork = TRUE
         )
     }
-    assertDirectoryExists(sourceDir)
+    assert(isADirectory(sourceDir))
 
     # Get vector of all shared files.
     files <- list.files(sourceDir, full.names = TRUE)
-    assertHasLength(files)
+    assert(hasLength(files))
 
     # Copy files to working directory.
     copied <- vapply(
