@@ -41,18 +41,9 @@ test_that("matchesGene2Symbol", {
 # assertFormalInterestingGroups ================================================
 test_that("assertFormalInterestingGroups", {
     expect_true(
-        assertFormalInterestingGroups(
-            x = rse,
-            interestingGroups = "condition"
-        )
+        matchesInterestingGroups(x = rse, interestingGroups = "condition")
     )
-
-    # Must exist as columns in sampleData.
-    expect_error(
-        object = assertFormalInterestingGroups(
-            x = rse,
-            interestingGroups = "XXX"
-        ),
-        regexp = "is_subset : The element 'XXX'"
+    expect_false(
+        matchesInterestingGroups(x = rse, interestingGroups = "XXX")
     )
 })
