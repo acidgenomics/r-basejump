@@ -222,7 +222,7 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
     )
     expect_error(
         object = makeGRangesFromEnsembl(c("Homo sapiens", "Mus musculus")),
-        regexp = "is_a_string : "
+        regexp = "isString"
     )
     expect_error(
         object = makeGRangesFromEnsembl("Homo sapiens", level = "XXX"),
@@ -237,20 +237,15 @@ test_that("annotable", {
     expect_identical(object[["geneID"]][[1L]], "ENSG00000000003")
 })
 
-gene2symbol <- makeGene2SymbolFromEnsembl(
-    organism = organism,
-    release = release
-)
+gene2symbol <-
+    makeGene2SymbolFromEnsembl(organism = organism, release = release)
 
 test_that("makeGene2SymbolFromEnsembl", {
     expect_is(gene2symbol, "Gene2Symbol")
     expect_identical(nrow(gene2symbol), 63970L)
 })
 
-tx2gene <- makeTx2GeneFromEnsembl(
-    organism = organism,
-    release = release
-)
+tx2gene <- makeTx2GeneFromEnsembl(organism = organism, release = release)
 
 test_that("makeTx2GeneFromEnsembl", {
     expect_is(tx2gene, "Tx2Gene")
@@ -429,16 +424,19 @@ test_that("convertGenesToSymbols : FASTA spike-in support", {
 
 test_that("convertGenesToSymbols : Invalid identifiers", {
     expect_warning(
-        convertGenesToSymbols("ENSG00000000000", gene2symbol = gene2symbol),
-        "Failed to match genes: ENSG00000000000"
+        object = convertGenesToSymbols(
+            object = "ENSG00000000000",
+            gene2symbol = gene2symbol
+        ),
+        regexp = "Failed to match genes: ENSG00000000000"
     )
     expect_error(
-        convertGenesToSymbols(c("ENSG00000000003", NA)),
-        "is_non_missing_nor_empty_character :"
+        object = convertGenesToSymbols(c("ENSG00000000003", NA)),
+        regexp = "isCharacter"
     )
     expect_error(
-        convertGenesToSymbols(c("ENSG00000000003", "")),
-        "is_non_missing_nor_empty_character :"
+        object = convertGenesToSymbols(c("ENSG00000000003", "")),
+        regexp = "isCharacter"
     )
 })
 
@@ -501,11 +499,11 @@ test_that("convertTranscriptsToGenes : Invalid params", {
     )
     expect_error(
         object = convertTranscriptsToGenes(c("ENST00000000233", NA)),
-        regexp = "is_non_missing_nor_empty_character :"
+        regexp = "isCharacter"
     )
     expect_error(
         object = convertTranscriptsToGenes(c("ENST00000000233", "")),
-        regexp = "is_non_missing_nor_empty_character :"
+        regexp = "isCharacter"
     )
 })
 
@@ -521,10 +519,7 @@ context("Annotations : Databases")
 # - MGI2Ensembl
 
 test_that("EggNOG", {
-    expect_is(
-        object = EggNOG(),
-        class = "EggNOG"
-    )
+    expect_is(object = EggNOG(), class = "EggNOG")
 })
 
 # TODO Add coverage for all supported organisms.
