@@ -25,13 +25,28 @@ dots <- function(..., character = FALSE) {
     assert(
         is.list(dots),
         hasLength(dots),
-        hasNoDuplicates(dots),
-        all(vapply(
-            X = dots,
-            FUN = is.symbol,
-            FUN.VALUE = logical(1L)
-        ))
+        hasNoDuplicates(dots)
     )
+
+    # Provide an informative error message when a user attempts to accidentally
+    # use standard evaluation with quotation.
+    if (!all(vapply(
+        X = dots,
+        FUN = is.symbol,
+        FUN.VALUE = logical(1L)
+    ))) {
+        stop(paste(
+            "This function uses non-standard evaluation (NSE).",
+            "Dot objects must be unquoted.",
+            "",
+            "More details on NSE:",
+            "- https://cran.r-project.org/package=lazyeval",
+            "- https://dplyr.tidyverse.org/articles/programming.html",
+            "- http://adv-r.had.co.nz/Computing-on-the-language.html",
+            sep = "\n"
+        ), call. = FALSE)
+    }
+
     # Convert names (symbols) to character.
     names <- vapply(
         X = dots,
