@@ -19,7 +19,6 @@
 \alias{aggregateReplicates,ANY-method}
 \alias{aggregateSamples}
 \alias{aggregateSamples,ANY-method}
-\alias{assertFormalGene2symbol}
 \alias{checkClasses}
 \alias{eggnog}
 \alias{ensembl2entrez}
@@ -80,8 +79,6 @@ aggregateReplicates(object, ...)
 aggregateSamples(object, ...)
 
 \S4method{aggregateSamples}{ANY}(object, ...)
-
-assertFormalGene2symbol(...)
 
 checkClasses(...)
 
