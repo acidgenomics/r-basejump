@@ -20,7 +20,7 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
     ) {
         validObject(object)
         assert(
-            is.scalar(assay),
+            isScalar(assay),
             isFlag(perMillion),
             isGGScale(fill, scale = "discrete", aes = "fill") || is.null(fill),
             isFlag(flip),
