@@ -77,18 +77,6 @@ sanitizeSampleData <- function(object) {
 
 
 
-# TODO Export this in goalie.
-# Simply use `areAtomic()`?
-allAreAtomic <- function(x) {
-    all(vapply(
-        X = object,
-        FUN = is.atomic,
-        FUN.VALUE = logical(1L)
-    ))
-}
-
-
-
 # TODO Consider exporting this.
 # See `encode()` for Rle approach.
 .factorize <- function(object) {
