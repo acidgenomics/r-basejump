@@ -49,13 +49,15 @@ standardizeCall <- function(
     return = c("call", "list"),
     verbose = FALSE
 ) {
-    assertNumber(which)
-    assert_all_are_non_negative(which)
+    assert(
+        isInt(which),
+        isNonNegative(which),
+        isFlag(verbose)
+    )
     if (which < 1L) {
         which <- 1L
     }
     return <- match.arg(return)
-    assertFlag(verbose)
 
     # Determine where the call is in the stack that we want to standardize.
     # Note that this differs for S4 methods containing a nested `.local()`.
@@ -116,18 +118,18 @@ standardizeCall <- function(
 
     # Require that all arguments are named before returning.
     # This check is especially important for S4 methods containing `.local()`.
-    assertAllAreNonMissingNorEmptyCharacter(names(as.list(call)[-1L]))
+    assert(isCharacter(names(as.list(call)[-1L])))
 
-    if (return == "list") {
-        list
-    } else {
-        call
-    }
+    switch(
+        EXPR = return,
+        call = call,
+        list = list
+    )
 }
 
 
 
 .isLocalCall <- function(call) {
-    assert(is(call, "call"))
+    assert(is.call(call))
     identical(call[[1L]], as.symbol(".local"))
 }
