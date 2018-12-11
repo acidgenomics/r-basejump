@@ -113,10 +113,11 @@ setMethod(
         fun <- match.arg(fun)
         message(paste("Calculating", fun, "per sample."))
         # Consider using `getFromNamespace()` here instead.
+        # Note that we're using uppercase here, because `fun` is matched arg.
         FUN <- get(fun, inherits = TRUE)  # nolint
-        assertFunction(FUN)
+        assert(is.function(FUN))
         metrics <- metrics(object)
-        assertClass(metrics, "grouped_df")
+        assert(is(metrics, "grouped_df"))
         if (fun == "sum") {
             pattern <- "^n[A-Z0-9]"
             if (!any(grepl(pattern, colnames(metrics)))) {
@@ -131,7 +132,7 @@ setMethod(
             # Summarize all numeric columns.
             data <- select_if(metrics, is.numeric)
         }
-        assertHasLength(data)
+        assert(hasLength(data))
         sampleData <- sampleData(object) %>%
             as_tibble(rownames = "sampleID") %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))

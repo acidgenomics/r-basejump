@@ -266,7 +266,7 @@ NULL
     organism <- gsub("_", " ", makeNames(organism))
     assert(isString(genomeBuild) || is.null(genomeBuild))
     # Check for accidental UCSC input and stop, informing user.
-    if (is_a_string(genomeBuild)) {
+    if (isString(genomeBuild)) {
         ucscCheck <- tryCatch(
             expr = convertUCSCBuildToEnsembl(genomeBuild),
             error = function(e) NULL
@@ -617,7 +617,7 @@ makeGRangesFromEnsDb <- function(object, level) {
     userAttached <- .packages()
 
     # Allow loading of EnsDb package, passed in as a character string.
-    if (is_a_string(object)) {
+    if (isString(object)) {
         package <- object
         requireNamespace(package = package)
         object <- get(

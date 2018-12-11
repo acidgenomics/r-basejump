@@ -20,20 +20,16 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         title = "genes detected"
     ) {
         validObject(object)
-        assertScalar(assay)
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
+        assert(
+            isScalar(assay),
+            isInt(limit) && isNonNegative(limit),
+            isInt(minCounts) && isNonNegative(minCounts),
+            isGGScale(fill, scale = "discrete", aes = "fill") || is.null(fill),
+            isFlag(flip),
+            isString(title) || is.null(title)
         )
-        interestingGroups(object) <- interestingGroups
-        assertIsAnImplicitInteger(limit)
-        assert_all_are_non_negative(limit)
-        assertIsAnImplicitInteger(minCounts)
-        assert_all_are_in_range(minCounts, lower = 1L, upper = Inf)
-        assert_all_are_non_negative(minCounts)
-        assertIsFillScaleDiscreteOrNULL(fill)
-        assertFlag(flip)
-        assertIsStringOrNULL(title)
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
 
         counts <- assays(object)[[assay]]
 
@@ -66,7 +62,7 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
                 fill = paste(interestingGroups, collapse = ":\n")
             )
 
-        if (is_positive(limit)) {
+        if (isPositive(limit)) {
             p <- p + basejump_geom_abline(yintercept = limit)
         }
 
@@ -107,9 +103,7 @@ plotGenesDetected.SingleCellExperiment <-  # nolint
         do.call(
             what = plotGenesDetected,
             args = matchArgsToDoCall(
-                args = list(
-                    object = aggregateCellsToSamples(object)
-                )
+                args = list(object = aggregateCellsToSamples(object))
             )
         )
     }
