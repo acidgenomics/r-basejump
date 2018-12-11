@@ -2,16 +2,6 @@ context("Data")
 
 data(rse, sce, envir = environment())
 
-# nolint start
-colData <- SummarizedExperiment::colData
-`colData<-` <- SummarizedExperiment::`colData<-`
-DataFrame <- S4Vectors::DataFrame
-mcols <- S4Vectors::mcols
-seqnames <- GenomeInfoDb::seqnames
-rowRanges <- SummarizedExperiment::rowRanges
-`rowRanges<-` <- SummarizedExperiment::`rowRanges<-`
-# nolint end
-
 
 
 # convertGenesToSymbols ========================================================
@@ -87,7 +77,7 @@ test_that("interestingGroups : Assignment method", {
     )
     expect_error(
         object = interestingGroups(object) <- "XXX",
-        regexp = "is_subset : The element 'XXX' in interestingGroups"
+        regexp = "matchesInterestingGroups"
     )
 })
 
@@ -220,7 +210,7 @@ test_that("makeSummarizedExperiment : Duplicate names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "validDimnames"
+        regexp = "hasValidDimnames"
     )
     matDupeCols <- mat
     colnames(matDupeCols) <- paste0("sample", rep(seq_len(2L), each = 2L))
@@ -230,7 +220,7 @@ test_that("makeSummarizedExperiment : Duplicate names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "validDimnames"
+        regexp = "hasValidDimnames"
     )
 })
 
@@ -242,7 +232,7 @@ test_that("makeSummarizedExperiment : Column data failure", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "has_dimnames :"
+        regexp = "hasValidDimnames"
     )
     expect_error(
         object = makeSummarizedExperiment(
@@ -250,7 +240,7 @@ test_that("makeSummarizedExperiment : Column data failure", {
             rowRanges = rr,
             colData = c(xxx = "yyy")
         ),
-        regexp = "is2 : colData"
+        regexp = "isAny.*colData"
     )
     expect_error(
         object = makeSummarizedExperiment(
@@ -258,7 +248,7 @@ test_that("makeSummarizedExperiment : Column data failure", {
             rowRanges = c(xxx = "yyy"),
             colData = cd
         ),
-        regexp = "is2 : rowRanges"
+        regexp = "isAny.*rowRanges"
     )
 })
 
@@ -270,7 +260,7 @@ test_that("makeSummarizedExperiment : Invalid metadata", {
             colData = cd,
             metadata = Sys.Date()
         ),
-        regexp = "is2 : metadata"
+        regexp = "isAny.*metadata"
     )
 })
 
@@ -374,6 +364,6 @@ test_that("uniteInterestingGroups", {
             object = object,
             interestingGroups = c("XXX", "YYY")
         ),
-        regexp = "is_subset : The elements 'XXX', 'YYY' in interestingGroups"
+        regexp = "isSubset.*interestingGroups"
     )
 })

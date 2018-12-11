@@ -34,11 +34,11 @@ test_that("aggregateRows", {
     # Invalid groupings
     expect_error(
         object = aggregateRows(mat, groupings = "XXX"),
-        regexp = "is_factor :"
+        regexp = "is.factor"
     )
     expect_error(
         object = aggregateRows(mat, groupings = factor(c("XXX", "YYY"))),
-        regexp = "are_identical :"
+        regexp = "identical"
     )
 })
 
@@ -72,11 +72,11 @@ test_that("aggregateCols", {
     # Invalid groupings
     expect_error(
         object = aggregateCols(mat, groupings = "XXX"),
-        regexp = "is_factor :"
+        regexp = "is.factor"
     )
     expect_error(
         object = aggregateCols(mat, groupings = factor(c("XXX", "YYY"))),
-        regexp = "are_identical :"
+        regexp = "identical"
     )
 })
 
@@ -144,12 +144,12 @@ test_that("logRatio", {
     expect_equal(foldChangeToLogRatio(fc), lr)
     expect_equal(logRatioToFoldChange(lr), fc)
     expect_error(
-        foldChangeToLogRatio(lr, base = 0L),
-        "is_positive : base"
+        object = foldChangeToLogRatio(lr, base = 0L),
+        regexp = "isPositive"
     )
     expect_error(
-        logRatioToFoldChange(lr, base = 0L),
-        "is_positive : base"
+        object = logRatioToFoldChange(lr, base = 0L),
+        regexp = "isPositive"
     )
 })
 
@@ -181,14 +181,12 @@ test_that("microplate : 384-well plate format", {
 
 test_that("microplate : Multiple plates", {
     expect_identical(
-        microplate(plates = 2L, wells = 96L) %>%
-            length(),
-        192L
+        object = length(microplate(plates = 2L, wells = 96L)),
+        expected = 192L
     )
     expect_identical(
-        microplate(plates = 2L, wells = 384L) %>%
-            length(),
-        768L
+        object = length(microplate(plates = 2L, wells = 384L)),
+        expected = 768L
     )
 })
 
@@ -204,19 +202,19 @@ test_that("microplate : Prefix", {
 
 test_that("microplate : Invalid parameters", {
     expect_error(
-        microplate(plates = -1L),
-        "is_positive : plates"
+        object = microplate(plates = -1L),
+        regexp = "isPositive"
     )
     expect_error(
-        microplate(wells = 4L),
-        "is_subset : The element '4' in wells is not in c\\(96L, 384L\\)."
+        object = microplate(wells = 4L),
+        regexp = "isSubset"
     )
     expect_error(
-        microplate(controls = -1L),
-        "is_non_negative : controls"
+        object = microplate(controls = -1L),
+        regexp = "isInRange"
     )
     expect_error(
-        microplate(prefix = c("a", "b")),
-        "is_a_string :"
+        object = microplate(prefix = c("a", "b")),
+        regexp = "isString"
     )
 })
