@@ -1,8 +1,5 @@
-# FIXME Update working example to not contain rows with all zeros.
-# Ensure we're testing our `plotHeatmap()` code to look for this.
-
 # Gene-level RangedSummarizedExperiment example
-# 2018-11-28
+# 2018-12-11
 
 library(pryr)
 library(DESeq2)
