@@ -1,10 +1,15 @@
-# Still intermittently getting the `dbDisconnect()` warning:
+# NOTE Switched to using run-length encoding (Rle) instead of factors in v0.8.
+#
+# NOTE Still intermittently getting the `dbDisconnect()` warning:
+#
+# ```
 # Warning message:
 #     call dbDisconnect() when finished working with a connection
-# https://github.com/Bioconductor/AnnotationHub/issues/1
-# https://github.com/r-dbi/RSQLite/issues/245
-
-# Switched to using run-length encoding (Rle) instead of factors in v0.8.
+# ```
+#
+# Relevant links:
+# - https://github.com/Bioconductor/AnnotationHub/issues/1
+# - https://github.com/r-dbi/RSQLite/issues/245
 
 
 
@@ -132,12 +137,13 @@ NULL
         ignore.case = TRUE,
         value = TRUE
     )
-    if (length(biotypeCol) == 0L) {
+    if (length(biotypeCol) > 0L) {
         biotypeCol <- biotypeCol[[1L]]
         biotype <- data[[biotypeCol]]
     } else {
         # nocov start
         warning("Biotype column is missing.", call. = FALSE)
+        biotypeCol <- NULL
         biotype <- NA
         # nocov end
     }
@@ -149,12 +155,13 @@ NULL
         ignore.case = TRUE,
         value = TRUE
     )
-    if (length(seqnameCol) == 0L) {
+    if (length(seqnameCol) > 0L) {
         seqnameCol <- seqnameCol[[1L]]
         seqname <- data[[seqnameCol]]
     } else {
         # nocov start
-        warning("`seqname` column is missing.", call. = FALSE)
+        warning("Seqname (chromosome) column is missing.", call. = FALSE)
+        seqnameCol <- NULL
         seqname <- NA
         # nocov end
     }
@@ -323,7 +330,7 @@ NULL
     mcols <- mcols(ahs)
 
     # Abort if there's no match and working offline.
-    if (!isTRUE(testHasInternet()) && !nrow(mcols)) {
+    if (!isTRUE(hasInternet()) && !nrow(mcols)) {
         # nocov start
         stop(
             "AnnotationHub requires an Internet connection for query.",
