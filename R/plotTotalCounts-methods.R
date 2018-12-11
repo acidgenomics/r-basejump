@@ -19,16 +19,15 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         title = "total counts"
     ) {
         validObject(object)
-        assertScalar(assay)
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
+        assert(
+            is.scalar(assay),
+            isFlag(perMillion),
+            isGGScale(fill, scale = "discrete", aes = "fill") || is.null(fill),
+            isFlag(flip),
+            isString(title) || is.null(title)
         )
-        interestingGroups(object) <- interestingGroups
-        assertFlag(perMillion)
-        assertIsFillScaleDiscreteOrNULL(fill)
-        assertFlag(flip)
-        assertIsStringOrNULL(title)
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
 
         counts <- assays(object)[[assay]]
         if (is(counts, "sparseMatrix")) {
