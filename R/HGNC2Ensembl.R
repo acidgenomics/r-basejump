@@ -10,13 +10,13 @@ HGNC2Ensembl <-  # nolint
         assert(hasInternet())
 
         if (isTRUE(getOption("basejump.test"))) {
-            file <- url(
+            file <- pasteURL(
                 basejumpCacheURL,
                 "hgnc.txt.gz",
                 protocol = "none"
             )
         } else {
-            file <- url(
+            file <- pasteURL(
                 "ftp.ebi.ac.uk",
                 "pub",
                 "databases",

@@ -160,14 +160,14 @@ PANTHER <- function(  # nolint
     ))
 
     if (isTRUE(getOption("basejump.test"))) {
-        file <- url(
+        file <- pasteURL(
             basejumpCacheURL,
             paste0("PTHR13.1_", pantherName, ".gz"),
             protocol = "none"
         )
     } else {
         file <- transmit(
-            remoteDir = url(
+            remoteDir = pasteURL(
                 "ftp.pantherdb.org",
                 "sequence_classifications",
                 release,

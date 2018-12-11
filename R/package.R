@@ -48,14 +48,14 @@
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie areDisjointSets areIntersectingSets areNonExisting
-#'   areSameLength areSetEqual assert containsAURL containsHexColors containsURL
-#'   formalCompress hasAccess hasColnames hasDimnames hasCols hasDims
-#'   hasInternet hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols
-#'   hasRows hasRownames hasUniqueCols hasValidDimnames isADirectory isAFile
-#'   isAny isCharacter isDirectory isExisting isFile isFlag isGGScale
-#'   isHexColorFunction isInt isMatchingRegex isNonEmpty isNonNegative isNumber
-#'   isPositive isScalar isString isSubset isSuperset matchesUniqueGeneNames
-#'   validNames validate
+#'   areSameLength areSetEqual assert containsAURL containsHeaderLevel
+#'   containsHexColors containsURL formalCompress hasAccess hasColnames
+#'   hasDimnames hasCols hasDims hasInternet hasLength hasNames hasNoDuplicates
+#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
+#'   isADirectory isAFile isAny isCharacter isDirectory isExisting isFile isFlag
+#'   isGGScale isHexColorFunction isInt isMatchingRegex isNonEmpty isNonNegative
+#'   isNumber isPositive isScalar isString isSubset isSuperset
+#'   matchesUniqueGeneNames validNames validate
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
