@@ -53,7 +53,7 @@
 #'   isExisting isFile isFlag isGGScale isHexColorFunction isInClosedRange
 #'   isInRange isInt isMatchingRegex isNonEmpty isNonNegative isNumber
 #'   isPositive isScalar isString isSubset isSuperset makeTestFunction
-#'   matchesUniqueGeneNames validNames validate
+#'   matchesUniqueGeneNames validNames validate validateClasses
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
@@ -72,7 +72,7 @@
 #' @importFrom rlang !! !!! := dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom sessioninfo session_info
-#' @importFrom stats as.formula prcomp quantile
+#' @importFrom stats as.formula dist hclust prcomp quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom tidyr gather separate unite
