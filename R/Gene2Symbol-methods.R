@@ -67,7 +67,7 @@ Gene2Symbol.DataFrame <-  # nolint
         }
 
         data <- as(data, "DataFrame")
-        metadata(data) <- .genomeMetadata(object)
+        metadata(data) <- .slotGenomeMetadata(object)
         metadata(data)[["format"]] <- format
         new(Class = "Gene2Symbol", data)
     }

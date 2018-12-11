@@ -30,7 +30,7 @@ Tx2Gene.DataFrame <-  # nolint
             row.names = rownames(object)
         )
 
-        metadata(data) <- .genomeMetadata(object)
+        metadata(data) <- .slotGenomeMetadata(object)
         new(Class = "Tx2Gene", data)
     }
 
