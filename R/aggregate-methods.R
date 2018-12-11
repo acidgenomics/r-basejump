@@ -206,7 +206,7 @@ aggregateRows.SummarizedExperiment <-  # nolint
         fun <- match.arg(fun)
 
         # Groupings ------------------------------------------------------------
-        assert(isSubset(x = col, y = colnames(rowData(object))))
+        assert(isSubset(col, colnames(rowData(object))))
         groupings <- rowData(object)[[col]]
         assert(
             is.factor(groupings),
@@ -321,10 +321,14 @@ aggregateCols.SummarizedExperiment <-  # nolint
         fun <- match.arg(fun)
 
         # Groupings ------------------------------------------------------------
-        assert(
+        if (!all(
             isSubset(col, colnames(colData(object))),
             isSubset(col, colnames(sampleData(object)))
-        )
+        )) {
+            stop(paste(
+                deparse(col), "column not defined in colData()."
+            ))
+        }
         groupings <- colData(object)[[col]]
         assert(
             is.factor(groupings),
@@ -516,11 +520,7 @@ aggregateCellsToSamples.SingleCellExperiment <-  # nolint
         fun <- match.arg(fun)
         rse <- as(object, "RangedSummarizedExperiment")
         colData(rse)[["aggregate"]] <- cell2sample(object)
-        aggregateCols(
-            object = rse,
-            col = "aggregate",
-            fun = fun
-        )
+        aggregateCols(object = rse, col = "aggregate", fun = fun)
     }
 
 formals(aggregateCellsToSamples.SingleCellExperiment)[["fun"]] <- .aggregateFuns
