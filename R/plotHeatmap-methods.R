@@ -234,8 +234,10 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         mat <- as.matrix(assays(object)[[assay]])
 
         # Ensure the user isn't passing in a matrix with any rows or columns
-        # containing all zeros.
-        assert(hasNonZeroRowsAndCols(mat))
+        # containing all zeros when we're attempting to z-scale.
+        if (scale != "none") {
+            assert(hasNonZeroRowsAndCols(mat))
+        }
 
         # Pre-process the matrix by applying row/column scaling, if desired.
         # Run this step before hierarchical clustering (i.e. calculating the
@@ -354,7 +356,9 @@ plotHeatmap.SingleCellExperiment <-  # nolint
         agg <- aggregateCellsToSamples(object, fun = "mean")
         do.call(
             what = plotHeatmap,
-            args = matchArgsToDoCall(args = list(object = agg))
+            args = matchArgsToDoCall(
+                args = list(object = agg)
+            )
         )
     }
 
@@ -492,7 +496,9 @@ plotCorrelationHeatmap.SingleCellExperiment <-  # nolint
         agg <- aggregateCellsToSamples(object, fun = "mean")
         do.call(
             what = plotCorrelationHeatmap,
-            args = matchArgsToDoCall(args = list(object = agg))
+            args = matchArgsToDoCall(
+                args = list(object = agg)
+            )
         )
     }
 
@@ -652,7 +658,9 @@ plotQuantileHeatmap.SingleCellExperiment <-  # nolint
         agg <- aggregateCellsToSamples(object, fun = "mean")
         do.call(
             what = plotQuantileHeatmap,
-            args = matchArgsToDoCall(args = list(object = agg))
+            args = matchArgsToDoCall(
+                args = list(object = agg)
+            )
         )
     }
 

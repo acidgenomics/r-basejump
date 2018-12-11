@@ -50,10 +50,10 @@
 #' @importFrom goalie areDisjointSets areNonExisting areSameLength assert
 #'   containsAURL containsHexColors containsURL hasAccess hasColnames
 #'   hasDimnames hasDims hasInternet hasLength hasNames hasNoDuplicates
-#'   hasNonZeroRowsAndCols hasRows hasRownames hasValidDimnames isADirectory
-#'   isAFile isAny isCharacter isDirectory isExisting isFile isFlag
-#'   isHexColorFunction isInt isMatchingRegex isNumber isPositive isString
-#'   isSubset isSuperset validNames validate
+#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
+#'   isADirectory isAFile isAny isCharacter isDirectory isExisting isFile isFlag
+#'   isGGScale isHexColorFunction isInt isMatchingRegex isNonNegative isNumber
+#'   isPositive isScalar isString isSubset isSuperset validNames validate
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json

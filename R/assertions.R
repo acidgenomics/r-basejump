@@ -91,10 +91,11 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
     assert(isSubset(interestingGroups, colnames(data)))
 
     # Check that interesting groups columns are factors.
-    invisible(lapply(
+    assert(all(vapply(
         X = data[, interestingGroups, drop = FALSE],
-        FUN = assertFactor
-    ))
+        FUN = is.factor,
+        FUN.VALUE = logical(1L)
+    )))
 
     TRUE
 }

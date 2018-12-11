@@ -52,8 +52,10 @@ standardizeCall <- function(
     assert(
         isInt(which),
         isNonNegative(which),
+        which < length(sys.calls()),
         isFlag(verbose)
     )
+
     if (which < 1L) {
         which <- 1L
     }
@@ -120,11 +122,7 @@ standardizeCall <- function(
     # This check is especially important for S4 methods containing `.local()`.
     assert(isCharacter(names(as.list(call)[-1L])))
 
-    switch(
-        EXPR = return,
-        call = call,
-        list = list
-    )
+    switch(EXPR = return, call = call, list = list)
 }
 
 
