@@ -7,8 +7,6 @@
 #'   must intersect with the rownames defined in the `gene2symbol` argument.
 #'
 #' @examples
-#' DataFrame <- S4Vectors::DataFrame
-#'
 #' x <- DataFrame(
 #'     "sample1" = c(1L, 2L),
 #'     "sample2" = c(3L, 4L),
@@ -16,48 +14,62 @@
 #' )
 #' print(x)
 #'
-#' gene2symbol <- Gene2Symbol(
+#' g2s <- Gene2Symbol(
 #'     object = DataFrame(
 #'         geneID = c("ENSG00000000003", "ENSG00000000005"),
 #'         geneName = c("TSPAN6", "TNMD"),
 #'         row.names = rownames(x)
 #'     )
 #' )
-#' print(gene2symbol)
+#' print(g2s)
 #'
-#' geneIDs <- gene2symbol[["geneID"]]
+#' geneIDs <- g2s[["geneID"]]
 #' print(geneIDs)
 #'
-#' geneNames <- gene2symbol[["geneName"]]
+#' geneNames <- g2s[["geneName"]]
 #' print(geneNames)
 #'
-#' matchesGene2Symbol(
-#'     x = x,
-#'     genes = geneIDs,
-#'     gene2symbol = gene2symbol
-#' )
-#' matchesGene2Symbol(
-#'     x = x,
-#'     genes = geneNames,
-#'     gene2symbol = gene2symbol
-#' )
+#' matchesGene2Symbol(x = x, genes = geneIDs, gene2symbol = g2s)
+#' matchesGene2Symbol(x = x, genes = geneNames, gene2symbol = g2s)
 NULL
 
 
 
 .matchesGene2Symbol <- function(x, genes, gene2symbol) {
-    assert(
-        hasRownames(x),
-        is.character(genes),
-        is(gene2symbol, "Gene2Symbol"),
-        identical(x = nrow(x), y = nrow(gene2symbol))
-    )
-    if (is.null(rownames(gene2symbol))) {
+    ok <- hasRownames(x)
+    if (!isTRUE(ok)) {
+        return("x doesn't have rownmaes.")
+    }
+
+    ok <- isCharacter(genes)
+    if (!isTRUE(ok)) {
+        return("genes must be non-empty character.")
+    }
+
+    ok <- is(gene2symbol, "Gene2Symbol")
+    if (!isTRUE(ok)) {
+        return("gene2symbol must be Gene2Symbol S4 class.")
+    }
+
+    ok <- identical(nrow(x), nrow(gene2symbol))
+    if (!isTRUE(ok)) {
+        return("Row mismatch between x and gene2symbol detected.")
+    }
+
+    ok <- is.null(rownames(gene2symbol))
+    if (!isTRUE(ok)) {
         rownames(gene2symbol) <- rownames(x)
     }
+
     # Map genes to x rownames, using gene2symbol.
-    rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
-    assert(isSubset(rownames, rownames(x)))
+    ok <- isSubset(
+        x = mapGenesToRownames(object = gene2symbol, genes = genes),
+        y = rownames(x)
+    )
+    if (!isTRUE(ok)) {
+        return("Failed to map genes to rownames in x.")
+    }
+
     TRUE
 }
 
