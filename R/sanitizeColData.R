@@ -31,10 +31,10 @@
 sanitizeColData <- function(object) {
     assert(
         is(object, "DataFrame"),
-        is_non_empty(object),
+        isNonEmpty(object),
         hasRownames(object),
-        has_colnames(object),
-        validDimnames(object)
+        hasColnames(object),
+        hasValidDimnames(object)
     )
     .atomicDataFrame(object)
 }

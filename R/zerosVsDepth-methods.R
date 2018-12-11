@@ -70,12 +70,14 @@ setMethod(
 
 zerosVsDepth.SummarizedExperiment <-  # nolint
     function(object, assay = 1L) {
-        assertScalar(assay)
+        assert(isScalar(assay))
         counts <- assays(object)[[assay]]
         data <- zerosVsDepth(counts)
         sampleData <- sampleData(object)
-        assertIdentical(rownames(data), rownames(sampleData))
-        assertAreDisjointSets(colnames(data), colnames(sampleData))
+        assert(
+            identical(rownames(data), rownames(sampleData)),
+            areDisjointSets(colnames(data), colnames(sampleData))
+        )
         cbind(data, sampleData)
     }
 
@@ -102,15 +104,17 @@ zerosVsDepth.SingleCellExperiment <-  # nolint
         sampleData <- sampleData(object)
         sampleData[["sampleID"]] <- as.factor(rownames(sampleData))
 
-        assertClass(data, "DataFrame")
-        assertClass(sampleData, "DataFrame")
-
-        # Use BiocTibble left_join DataFrame method here.
+        assert(
+            is(data, "DataFrame"),
+            is(sampleData, "DataFrame")
+        )
+        # Consider using BiocTibble approach here in a future update.
         join <- left_join(
             x = as_tibble(data, rownames = "rowname"),
             y = as_tibble(sampleData, rownames = NULL),
             by = "sampleID"
         )
+        
         out <- as(join, "DataFrame")
         assertHasRownames(out)
         out

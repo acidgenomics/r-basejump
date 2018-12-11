@@ -194,7 +194,7 @@ setMethod(
 #' @rdname deprecated
 #' @export
 assertFormalGene2symbol <- function(...) {
-    # .Deprecated("assertFormalGene2Symbol")
+    .Deprecated("assertFormalGene2Symbol")
     assertFormalGene2Symbol(...)
 }
 

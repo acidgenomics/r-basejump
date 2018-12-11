@@ -30,18 +30,17 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         title = "counts per gene"
     ) {
         validObject(object)
-        assertScalar(assay)
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
+        assert(
+            isScalar(assay),
+            isGGScale(fill, scale = "discrete", aes = "fill") || is.null(fill),
+            isFlag(flip),
+            isString(countsAxisLabel) || is.null(countsAxisLabel),
+            isString(title) || is.null(title)
         )
-        interestingGroups(object) <- interestingGroups
         geom <- match.arg(geom)
         trans <- match.arg(trans)
-        assertIsFillScaleDiscreteOrNULL(fill)
-        assertFlag(flip)
-        assertIsStringOrNULL(countsAxisLabel)
-        assertIsStringOrNULL(title)
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
 
         data <- meltCounts(
             object = object,
@@ -51,7 +50,7 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         )
 
         # Subtitle
-        if (is_a_string(title)) {
+        if (isString(title)) {
             count <- length(unique(data[["rowname"]]))
             subtitle <- paste(count, "non-zero genes")
         } else {

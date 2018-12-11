@@ -28,21 +28,26 @@ microplate <- function(
     prefix = NULL
 ) {
     # Plates
-    assertIsAnImplicitInteger(plates)
+    assert(
+        isInt(plates),
+        isPositive(plates)
+    )
     plates <- as.integer(plates)
-    assert_all_are_positive(plates)
     # Wells
-    assertIsAnImplicitInteger(wells)
+    assert(
+        isInt(wells),
+        isPositive(wells)
+    )
     wells <- as.integer(wells)
-    assert_all_are_positive(wells)
-    assertSubset(wells, c(96L, 384L))
+    assert(isSubset(x = wells, y = c(96L, 384L)))
     # Controls
-    assertIsAnImplicitInteger(controls)
+    assert(
+        isInt(controls),
+        isInRange(x = controls, lower = 0L, upper = 12L)
+    )
     controls <- as.integer(controls)
-    assert_all_are_non_negative(controls)
-    assertSubset(controls, 0L:12L)
     # Prefix
-    assertIsStringOrNULL(prefix)
+    assert(isString(prefix) || is.null(prefix))
 
     if (wells == 96L) {
         row <- 8L
@@ -76,7 +81,7 @@ microplate <- function(
     }
 
     # Add a prefix, if desired.
-    if (is_a_string(prefix)) {
+    if (isString(prefix)) {
         vector <- paste0(prefix, "-", vector)
     }
 

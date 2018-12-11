@@ -18,8 +18,8 @@ BiocGenerics::organism
 
 organism.matrix <-  # nolint
     function(object) {
-        # Assume gene identifiers are defined in the rownames.
-        assertHasRownames(object)
+        # Assuming gene identifiers are defined in the rownames.
+        assert(hasRownames(object))
         detectOrganism(rownames(object))
     }
 
@@ -82,7 +82,7 @@ setMethod(
 
 organism.GRanges <-  # nolint
     function(object) {
-        assertHasNames(object)
+        assert(hasNames(object))
         detectOrganism(names(object))
     }
 
@@ -102,7 +102,7 @@ organism.SummarizedExperiment <-  # nolint
     function(object) {
         # Attempt to use metadata stash, if defined.
         organism <- metadata(object)[["organism"]]
-        if (is_a_string(organism)) {
+        if (isString(organism)) {
             return(organism)
         }
 

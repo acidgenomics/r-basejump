@@ -58,11 +58,12 @@ markdownHeader <- function(
     tabset = FALSE,
     asis = FALSE
 ) {
-    assertString(text)
-    assertAllAreNonMissingNorEmptyCharacter(text)
-    assertIsHeaderLevel(level)
-    assertFlag(tabset)
-    assertFlag(asis)
+    assert(
+        isString(text),
+        containsHeaderLevel(level),
+        isFlag(tabset),
+        isFlag(asis)
+    )
 
     # Add the header level
     header <- paste(str_dup("#", level), text)
@@ -120,9 +121,11 @@ markdownLink <- function(
     url,
     title = NULL
 ) {
-    assertString(text)
-    assertString(url)
-    assertIsStringOrNULL(title)
+    assert(
+        isString(text),
+        isString(url),
+        isString(title) || is.null(title)
+    )
     x <- paste0("[", text, "](", url, ")")
     if (!is.null(title)) {
         x <- paste0(x, ": ", title)
@@ -161,12 +164,12 @@ markdownList <- function(
     ordered = FALSE,
     asis = FALSE
 ) {
-    assertAtomic(text)
     text <- as.character(text)
-    assert_all_are_not_na(text)
-    assertAllAreNonMissingNorEmptyCharacter(text)
-    assertFlag(ordered)
-    assertFlag(asis)
+    assert(
+        isCharacter(text),
+        isFlag(ordered),
+        isFlag(asis)
+    )
 
     list <- vapply(
         X = seq_along(text),
@@ -223,15 +226,17 @@ mdList <- markdownList
 #' names(plotlist)
 #' markdownPlots(list = plotlist)
 markdownPlots <- function(list, headerLevel = 2L) {
-    assertList(list)
-    assertHasNames(list)
-    assertIsHeaderLevel(headerLevel)
+    assert(
+        is.list(list),
+        hasNames(list),
+        containsHeaderLevel(headerLevel)
+    )
     invisible(mapply(
         name = names(list),
         plot = list,
         MoreArgs = list(headerLevel = headerLevel),
         FUN = function(name, plot, headerLevel) {
-            assertString(name)
+            assert(isString(name))
             markdownHeader(name, level = headerLevel, asis = TRUE)
             show(plot)
             plot
@@ -287,15 +292,19 @@ markdownTables <- function(
     captions = NULL,
     force = FALSE
 ) {
-    assertList(list)
-    assertMultiClass(captions, classes = c("character", "NULL"))
+    assert(
+        is.list(list),
+        isAny(captions, classes = c("character", "NULL"))
+    )
     if (is.null(captions)) {
-        assertHasNames(list)
+        assert(hasNames(list))
         captions <- names(list)
     }
-    assertCharacter(captions)
-    assertAreSameLength(list, captions)
-    assertFlag(force)
+    assert(
+        isCharacter(captions),
+        areSameLength(list, captions),
+        isFlag(force)
+    )
     output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
     if (!is.null(output) || isTRUE(force)) {
         tables <- mapply(

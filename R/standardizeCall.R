@@ -112,7 +112,7 @@ standardizeCall <- function(
     }
 
     # Check call integrity before returning.
-    assert_is_call(call)
+    assert(is.call(call))
 
     # Require that all arguments are named before returning.
     # This check is especially important for S4 methods containing `.local()`.

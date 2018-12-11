@@ -30,14 +30,19 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         countsAxisLabel = "counts"
     ) {
         validObject(object)
-        assertScalar(assay)
-        assertIsAnImplicitInteger(n)
-        interestingGroups <- matchInterestingGroups(object, interestingGroups)
-        interestingGroups(object) <- interestingGroups
-        assertString(trans)
-        assertString(countsAxisLabel)
+        assert(
+            isScalar(assay),
+            isInt(n),
+            isString(trans),
+            isString(countsAxisLabel)
+        )
+        
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
 
         rowData <- rowData(object)
+        # Ensure row names are defined, which isn't always the case for
+        # row data derived from SE (non-ranged).
         rownames(rowData) <- rownames(object)
 
         # Determine whether to use transcripts or genes automatically.
@@ -165,11 +170,14 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
         countsAxisLabel = "counts"
     ) {
         validObject(object)
-        assertScalar(assay)
-        interestingGroups <- matchInterestingGroups(object, interestingGroups)
-        interestingGroups(object) <- interestingGroups
-        assertString(trans)
-        assertString(countsAxisLabel)
+        assert(
+            isScalar(assay),
+            isString(trans),
+            isString(countsAxisLabel)
+        )
+        
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
 
         rowData <- rowData(object)
         rownames(rowData) <- rownames(object)
