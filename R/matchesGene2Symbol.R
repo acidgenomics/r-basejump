@@ -56,8 +56,8 @@ NULL
         return("Row mismatch between x and gene2symbol detected.")
     }
 
-    ok <- is.null(rownames(gene2symbol))
-    if (!isTRUE(ok)) {
+    # Consider tightening up this step.
+    if (is.null(rownames(gene2symbol))) {
         rownames(gene2symbol) <- rownames(x)
     }
 
