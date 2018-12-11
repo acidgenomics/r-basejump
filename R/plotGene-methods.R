@@ -41,7 +41,7 @@ NULL
     color = NULL,
     legend = TRUE
 ) {
-    assertClass(object, "SummarizedExperiment")
+    assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
 
     # Coerce the data to a melted tibble.
@@ -90,7 +90,7 @@ NULL
     color = NULL,
     legend = TRUE
 ) {
-    assertClass(object, "SummarizedExperiment")
+    assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
 
     # Coerce the data to a melted tibble.
@@ -140,21 +140,22 @@ plotGene.SummarizedExperiment <-  # nolint
         style = c("facet", "wide")
     ) {
         validObject(object)
+        assert(
+            isCharacter(genes),
+            # Limit the number of genes that can be plotted at once.
+            all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
+            isScalar(assay),
+            isFlag(medianLine),
+            isGGScale(color, scale = "discrete", aes = "colour") ||
+                is.null(color),
+            isFlag(legend)
+        )
+        
         # Coercing to `SummarizedExperiment` for fast subsetting below.
         object <- as.SummarizedExperiment(object)
-        assertCharacter(genes)
-        # Limit the number of genes that can be plotted at once.
-        assert_all_are_in_closed_range(length(genes), lower = 1L, upper = 20L)
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
-        assertScalar(assay)
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
-        )
-        interestingGroups(object) <- interestingGroups
-        assertFlag(medianLine)
-        assertIsColorScaleDiscreteOrNULL(color)
-        assertFlag(legend)
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
         style <- match.arg(style)
 
         # Minimize the SE object only contain the assay of our choice.

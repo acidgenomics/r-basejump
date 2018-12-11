@@ -22,14 +22,14 @@
 #' print(cells)
 #' mapCellsToSamples(cells, samples)
 mapCellsToSamples <- function(cells, samples) {
-    assertCharacter(cells)
-    assertHasNoDuplicates(cells)
-    assertMultiClass(samples, c("character", "factor"))
+    assert(isCharacter(cells))
+    assert(hasNoDuplicates(cells))
+    assert(isAny(samples, classes = c("character", "factor")))
     samples <- unique(as.character(samples))
 
     # Early return if `cells` don't have a separator and `samples` is a string.
     # Shouldn't happen normally but is necessary for some seurat objects.
-    if (!any(grepl("[_-]", cells)) && is_a_string(samples)) {
+    if (!any(grepl("[_-]", cells)) && isString(samples)) {
         cell2sample <- factor(replicate(n = length(cells), expr = samples))
         names(cell2sample) <- cells
         return(cell2sample)
@@ -54,6 +54,6 @@ mapCellsToSamples <- function(cells, samples) {
     })
 
     cell2sample <- unlist(list)
-    assertIdentical(length(cells), length(cell2sample))
+    assert(identical(length(cells), length(cell2sample)))
     as.factor(cell2sample)
 }

@@ -237,11 +237,11 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         assertNumber(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
         assertIsStringOrNULL(borderColor)
-        if (!is_a_string(borderColor)) {
+        if (!isString(borderColor)) {
             borderColor <- NA
         }
         assertIsStringOrNULL(title)
-        if (!is_a_string(title)) {
+        if (!isString(title)) {
             title <- NA
         }
         # Warn and early return if any samples are duplicated.
@@ -436,12 +436,12 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         assertNumber(treeheightCol)
         assert_all_are_non_negative(treeheightRow, treeheightCol)
         assertIsStringOrNULL(borderColor)
-        if (!is_a_string(borderColor)) {
+        if (!isString(borderColor)) {
             borderColor <- NA
         }
         if (isTRUE(title)) {
             title <- paste(method, "correlation")
-        } else if (!is_a_string(title)) {
+        } else if (!isString(title)) {
             title <- NA
         }
         # Warn and early return if any samples are duplicated.
@@ -597,11 +597,11 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         assertFlag(clusterRows)
         assertFlag(legend)
         assertIsStringOrNULL(borderColor)
-        if (!is_a_string(borderColor)) {
+        if (!isString(borderColor)) {
             borderColor <- NA
         }
         assertIsStringOrNULL(title)
-        if (!is_a_string(title)) {
+        if (!isString(title)) {
             title <- NA
         }
         # Warn and early return if any samples are duplicated.

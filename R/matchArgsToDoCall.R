@@ -44,30 +44,33 @@ matchArgsToDoCall <- function(
     which = sys.parent(n = 1L),
     verbose = FALSE
 ) {
-    assertMultiClass(args, c("list", "NULL"))
+    assert(
+        isAny(args, classes = c("list", "NULL"),
+        isAny(removeFormals, classes = c("character", "NULL")),
+        isInt(which),
+        isFlag(verbose)
+    )
+    
     if (is.list(args)) {
-        assertHasLength(args)
-        assertHasNames(args)
+        assert(hasLength(args), hasNames(args))
     } else {
         args <- list()
     }
-    assertMultiClass(removeFormals, c("character", "NULL"))
-    assertNumber(which)
+    
     if (which < 1L) {
         which <- 1L
     }
-    assertFlag(verbose)
 
     list <- standardizeCall(
         which = which,
         return = "list",
         verbose = verbose
     )
-    assertList(list)
+    assert(is.list(list))
     definition <- list[["definition"]]
-    assertFunction(definition)
+    assert(is.function(definition))
     call <- list[["match.call"]]
-    assert_is_call(call)
+    assert(is.call(call))
 
     # Prepare the `args` list.
     callArgs <- as.list(call)[-1L] %>%
@@ -120,14 +123,14 @@ matchArgsToDoCall <- function(
         ))
     }
 
-    assertAllAreNonMissingNorEmptyCharacter(names(args))
-    assertHasNoDuplicates(names(args))
+    assert(
+        hasNames(args),
+        hasNoDuplicates(names(args))
+    )
     invisible(lapply(
         X = args,
         FUN = function(x) {
-            assert(!is.call(x))
-            assert(!is.name(x))
-            assert(!is.symbol(x))
+            assert(!isAny(x, classes = c("call", "name", "symbol"))
         }
     ))
 

@@ -25,14 +25,16 @@ meltCounts.SummarizedExperiment <-  # nolint
         trans = c("identity", "log2", "log10")
     ) {
         validObject(object)
-        assertScalar(assay)
-        assertFlag(nonzeroGenes)
+        assert(
+            isScalar(assay),
+            isFlag(nonzeroGenes)
+        )
         trans <- match.arg(trans)
 
         # Prepare the count matrix.
         counts <- assays(object)[[assay]]
-        assertHasLength(counts)
-        # Coerce to dense matrix.
+        assert(hasLength(counts))
+        # Always coerce to dense matrix prior to melting.
         counts <- as.matrix(counts)
 
         # Remove genes with all zero counts.
@@ -50,7 +52,7 @@ meltCounts.SummarizedExperiment <-  # nolint
                 envir = asNamespace("base"),
                 inherits = FALSE
             )
-            assertFunction(fun)
+            assert(is.function(fun))
             counts <- fun(counts + 1L)
         }
 
