@@ -19,12 +19,13 @@ NULL
 
 
 
+# Keep `check` disabled by default.
 #' @rdname interestingGroups
 #' @export
 setMethod(
     f = "interestingGroups",
     signature = signature("SummarizedExperiment"),
-    definition = function(object, check = TRUE) {
+    definition = function(object, check = FALSE) {
         assert(isFlag(check))
         value <- metadata(object)[["interestingGroups"]]
         if (isTRUE(check)) {
@@ -36,6 +37,7 @@ setMethod(
 
 
 
+# We're always checking assignment validity here.
 #' @rdname interestingGroups
 #' @export
 setMethod(
