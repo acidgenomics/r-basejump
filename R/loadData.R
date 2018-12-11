@@ -233,6 +233,16 @@ loadRemoteData <- function(url, envir = globalenv()) {
 
 
 
+.safeLoadExistsMsg <- function(name) {
+    paste0(
+        deparse(name), " exists in environment.\n",
+        "The basejump load functions do not allow reassignment.\n",
+        "We recommending either adding a rm() step or using readRDS()."
+    )
+}
+
+
+
 .safeLoadRDS <- function(file, envir) {
     file <- realpath(file)
     assert(
@@ -245,9 +255,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
     data <- readRDS(file)
     # Always error if the object is already assigned in environment.
     if (exists(x = name, envir = envir, inherits = FALSE)) {
-        stop(paste(
-            deparse(name), "exists in environment"
-        ), call. = FALSE)
+        stop(.safeLoadExistsMsg(name))
     }
     assign(x = name, value = data, envir = envir)
     assert(exists(x = name, envir = envir, inherits = FALSE))
@@ -261,7 +269,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
     assert(
         isAFile(file),
         # Allowing RDA or RDATA here.
-        assert(grepl("\\.rd[a|ata]$", file, ignore.case = TRUE)),
+        grepl("\\.rd[a|ata]$", file, ignore.case = TRUE),
         isString(name) || is.null(name),
         is.environment(envir)
     )
@@ -270,9 +278,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
     }
     # Always error if the object is already assigned in environment.
     if (exists(x = name, envir = envir, inherits = FALSE)) {
-        stop(paste(
-            deparse(name), "exists in environment"
-        ), call. = FALSE)
+        stop(.safeLoadExistsMsg(name))
     }
 
     # Loading into a temporary environment, so we can evaluate the integrity
