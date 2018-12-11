@@ -56,24 +56,23 @@ NULL
 
 # Internal =====================================================================
 .mapGenes <- function(object, genes, strict = TRUE) {
-    assertClass(object, "Gene2Symbol")
     validObject(object)
-    assertCharacter(genes)
-    assertHasLength(genes)
-    assertFlag(strict)
+    assert(
+        is(object, "Gene2Symbol"),
+        isCharacter(genes),
+        hasFlag(strict)
+    )
 
     # Prepare the match table.
     if (any(genes %in% rownames(object))) {
         table <- rownames(object)
     } else if (any(genes %in% object[["geneName"]])) {
-        assertAreUniqueGeneNames(object, genes)
+        assert(matchesUniqueGeneNames(object, genes))
         table <- object[["geneName"]]
     } else if (any(genes %in% object[["geneID"]])) {
         table <- object[["geneID"]]
     } else {
-        stop(paste(
-            "All genes failed to map:", toString(head(genes))
-        ), call. = FALSE)
+        stop(paste("All genes failed to map:", toString(head(genes))))
     }
 
     # Match the user input `genes` vector to the table.
@@ -95,7 +94,7 @@ NULL
 
     # Return the identifiers that map to rownames.
     mapped <- na.omit(match)
-    assertHasLength(mapped)
+    assert(hasLength(mapped))
     mapped
 }
 
@@ -136,7 +135,7 @@ mapGenesToRownames.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assertIdentical(rownames(g2s), rownames(object))
+        assert(identical(rownames(g2s), rownames(object)))
         do.call(
             what = mapGenesToRownames,
             args = list(
@@ -195,7 +194,7 @@ mapGenesToIDs.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assertIdentical(rownames(g2s), rownames(object))
+        assert(identical(rownames(g2s), rownames(object)))
         do.call(
             what = mapGenesToIDs,
             args = list(
@@ -254,7 +253,7 @@ mapGenesToSymbols.SummarizedExperiment <-  # nolint
         suppressMessages(
             g2s <- Gene2Symbol(object)
         )
-        assertIdentical(rownames(g2s), rownames(object))
+        assert(identical(rownames(g2s), rownames(object)))
         do.call(
             what = mapGenesToSymbols,
             args = list(
