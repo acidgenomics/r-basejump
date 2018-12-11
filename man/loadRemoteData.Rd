@@ -21,11 +21,7 @@ Load a remote R binary file. This function is vectorized and supports
 multiple URLs in a single call.
 }
 \examples{
-url <- url(
-    basejumpCacheURL,
-    paste0(c("rnaseq_counts", "single_cell_counts"), ".rds"),
-    protocol = "none"
-)
+url <- url(basejumpCacheURL, "rnaseq_counts.rds", protocol = "none")
 print(url)
 x <- loadRemoteData(url)
 print(x)

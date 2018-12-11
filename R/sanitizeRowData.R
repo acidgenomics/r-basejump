@@ -25,7 +25,7 @@
 #' vapply(x, is.atomic, logical(1L))
 #' print(x)
 sanitizeRowData <- function(object) {
-    assert(any(is2(object, class = c("GRanges", "DataFrame"))))
+    assert(isAny(object, classes = c("GRanges", "DataFrame")))
     .atomicDataFrame(object)
 }
 

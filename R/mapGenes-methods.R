@@ -60,7 +60,7 @@ NULL
     assert(
         is(object, "Gene2Symbol"),
         isCharacter(genes),
-        hasFlag(strict)
+        isFlag(strict)
     )
 
     # Prepare the match table.
