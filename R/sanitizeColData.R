@@ -41,6 +41,8 @@ sanitizeColData <- function(object) {
 
 
 
+#' @rdname sanitizeColData
+#' @export
 sanitizeSampleData <- function(object) {
     assert(
         # Require `sampleName` column.

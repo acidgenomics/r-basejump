@@ -2,9 +2,12 @@
 % Please edit documentation in R/sanitizeColData.R
 \name{sanitizeColData}
 \alias{sanitizeColData}
+\alias{sanitizeSampleData}
 \title{Sanitize Column Data}
 \usage{
 sanitizeColData(object)
+
+sanitizeSampleData(object)
 }
 \arguments{
 \item{object}{\code{DataFrame}.}
