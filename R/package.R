@@ -28,13 +28,10 @@
 #' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL url.exists
-#' @importFrom S4Vectors %in% DataFrame List Rle aggregate complete.cases cor
-#'   decode expand head mcols mcols<- metadata metadata<- na.omit tail
-#' @importFrom SingleCellExperiment SingleCellExperiment isSpike<-
-#'   reducedDimNames reducedDims spikeNames
-#' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
-#'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
-#'   rowRanges<-
+#' @importFrom S4Vectors %in% List Rle aggregate complete.cases cor decode
+#'   expand head mcols mcols<- metadata metadata<- na.omit tail
+#' @importFrom SummarizedExperiment SummarizedExperiment
+#' @importFrom SingleCellExperiment SingleCellExperiment
 #' @importFrom cowplot plot_grid
 #' @importFrom data.table as.data.table fread
 #' @importFrom dplyr arrange bind_rows case_when desc everything filter funs
@@ -61,7 +58,7 @@
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
-#' @importFrom magrittr %>% set_colnames set_rownames
+#' @importFrom magrittr set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs getGeneric getMethod is isGeneric new
 #'   selectMethod setAs setClass setGeneric setMethod setOldClass setValidity
@@ -101,3 +98,91 @@ magrittr::`%>%`
 #' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
+
+#' @importFrom SingleCellExperiment isSpike
+#' @export
+SingleCellExperiment::isSpike
+
+#' @importFrom SingleCellExperiment isSpike<-
+#' @export
+SingleCellExperiment::`isSpike<-`
+
+#' @importFrom SingleCellExperiment reducedDimNames
+#' @export
+SingleCellExperiment::reducedDimNames
+
+#' @importFrom SingleCellExperiment reducedDims
+#' @export
+SingleCellExperiment::reducedDims
+
+#' @importFrom SingleCellExperiment spikeNames
+#' @export
+SingleCellExperiment::spikeNames
+
+#' @importFrom SummarizedExperiment assay
+#' @export
+SummarizedExperiment::assay
+
+#' @importFrom SummarizedExperiment colData
+#' @export
+SummarizedExperiment::colData
+
+#' @importFrom SummarizedExperiment colData<-
+#' @export
+SummarizedExperiment::`colData<-`
+
+#' @importFrom SummarizedExperiment mcols
+#' @export
+SummarizedExperiment::mcols
+
+#' @importFrom SummarizedExperiment rowRanges
+#' @export
+SummarizedExperiment::rowRanges
+
+#' @importFrom SummarizedExperiment rowRanges<-
+#' @export
+SummarizedExperiment::`rowRanges<-`
+
+#' @importFrom SummarizedExperiment seqnames
+#' @export
+SummarizedExperiment::seqnames
+
+#' @importFrom SummarizedExperiment assayNames
+#' @export
+SummarizedExperiment::assayNames
+
+#' @importFrom SummarizedExperiment assayNames<-
+#' @export
+SummarizedExperiment::`assayNames<-`
+
+#' @importFrom SummarizedExperiment assays
+#' @export
+SummarizedExperiment::assays
+
+#' @importFrom SummarizedExperiment assays<-
+#' @export
+SummarizedExperiment::`assays<-`
+
+#' @importFrom SummarizedExperiment colData
+#' @export
+SummarizedExperiment::colData
+
+#' @importFrom SummarizedExperiment colData<-
+#' @export
+SummarizedExperiment::`colData<-`
+
+#' @importFrom SummarizedExperiment rowData
+#' @export
+SummarizedExperiment::rowData
+
+#' @importFrom SummarizedExperiment rowData<-
+#' @export
+SummarizedExperiment::`rowData<-`
+
+#' @importFrom SummarizedExperiment rowRanges
+#' @export
+SummarizedExperiment::rowRanges
+
+#' @importFrom SummarizedExperiment rowRanges<-
+#' @export
+SummarizedExperiment::`rowRanges<-`
