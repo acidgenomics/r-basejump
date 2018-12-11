@@ -31,12 +31,12 @@
 #' geneNames <- gene2symbol[["geneName"]]
 #' print(geneNames)
 #'
-#' assertFormalGene2Symbol(
+#' matchesGene2Symbol(
 #'     x = x,
 #'     genes = geneIDs,
 #'     gene2symbol = gene2symbol
 #' )
-#' assertFormalGene2Symbol(
+#' matchesGene2Symbol(
 #'     x = x,
 #'     genes = geneNames,
 #'     gene2symbol = gene2symbol
