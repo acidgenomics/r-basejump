@@ -47,13 +47,14 @@
 #'   geom_vline ggplot guides labs position_jitterdodge scale_x_continuous
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
-#' @importFrom goalie areDisjointSets areNonExisting areSameLength assert
-#'   containsAURL containsHexColors containsURL hasAccess hasColnames
-#'   hasDimnames hasDims hasInternet hasLength hasNames hasNoDuplicates
-#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
-#'   isADirectory isAFile isAny isCharacter isDirectory isExisting isFile isFlag
-#'   isGGScale isHexColorFunction isInt isMatchingRegex isNonNegative isNumber
-#'   isPositive isScalar isString isSubset isSuperset validNames validate
+#' @importFrom goalie areDisjointSets areIntersectingSets areNonExisting
+#'   areSameLength assert containsAURL containsHexColors containsURL hasAccess
+#'   hasColnames hasDimnames hasDims hasInternet hasLength hasNames
+#'   hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols
+#'   hasValidDimnames isADirectory isAFile isAny isCharacter isDirectory
+#'   isExisting isFile isFlag isGGScale isHexColorFunction isInt isMatchingRegex
+#'   isNonNegative isNumber isPositive isScalar isString isSubset isSuperset
+#'   validNames validate
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
