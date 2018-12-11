@@ -11,8 +11,8 @@ gene2symbol <- Gene2Symbol(
 
 
 
-# assertFormalGene2Symbol ======================================================
-test_that("assertFormalGene2Symbol", {
+# matchesGene2Symbol ===========================================================
+test_that("matchesGene2Symbol", {
     genes <- gene2symbol[["geneID"]]
     expect_true(is.character(genes))
     x <- DataFrame(
@@ -21,19 +21,18 @@ test_that("assertFormalGene2Symbol", {
         row.names = genes
     )
     expect_true(
-        assertFormalGene2Symbol(
+        matchesGene2Symbol(
             x = x,
             genes = genes,
             gene2symbol = gene2symbol
         )
     )
-    expect_error(
-        object = assertFormalGene2Symbol(
+    expect_false(
+        matchesGene2Symbol(
             x = datasets::mtcars,
             genes = genes,
             gene2symbol = gene2symbol
-        ),
-        regexp = "are_identical :"
+        )
     )
 })
 
