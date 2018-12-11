@@ -166,8 +166,8 @@ makeSummarizedExperiment <- function(
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         # Transgenes
         if (
-            length(setdiff) == 0L &&
-            length(transgeneNames) == 0L
+            length(setdiff) > 0L &&
+            length(transgeneNames) > 0L
         ) {
             assert(isSubset(x = transgeneNames, y = setdiff))
             transgeneRanges <- emptyRanges(
@@ -180,8 +180,8 @@ makeSummarizedExperiment <- function(
         }
         # FASTA spike-ins
         if (
-            length(setdiff) == 0L &&
-            length(spikeNames) == 0L
+            length(setdiff) > 0L &&
+            length(spikeNames) > 0L
         ) {
             assert(isSubset(x = spikeNames, y = setdiff))
             spikeRanges <- emptyRanges(
