@@ -3,8 +3,8 @@
 #' Prevent unwanted downstream behavior when a missing interesting group
 #' is requested by the user.
 #'
+#' @name matchesInterestingGroups
 #' @inherit params
-#' @export
 #'
 #' @param x S4 class x.
 #' @param interestingGroups `character`. Interesting groups.
@@ -18,7 +18,11 @@
 #'
 #' ## Currently allowing `NULL` to pass.
 #' matchesInterestingGroups(rse, NULL)
-matchesInterestingGroups <- function(x, interestingGroups) {
+NULL
+
+
+
+.matchesInterestingGroups <- function(x, interestingGroups) {
     ok <- isS4(x)
     if (!isTRUE(ok)) {
         return("x must be S4 class.")
@@ -56,3 +60,9 @@ matchesInterestingGroups <- function(x, interestingGroups) {
 
     TRUE
 }
+
+
+
+#' @rdname matchesInterestingGroups
+#' @export
+matchesInterestingGroups <- makeTestFunction(.matchesInterestingGroups)
