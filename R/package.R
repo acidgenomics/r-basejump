@@ -17,27 +17,22 @@
 #' @importMethodsFrom SummarizedExperiment coerce
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
-#' @importFrom Biobase sampleNames sampleNames<-
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
 #'   rowMeans rowSums setdiff t
 #' @importFrom GenomicFeatures genes transcripts
-#' @importFrom GenomicRanges GRanges
-#' @importFrom IRanges IRanges
 #' @importFrom Matrix readMM readMM writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL url.exists
-#' @importFrom S4Vectors %in% List Rle aggregate complete.cases cor decode
+#' @importFrom S4Vectors %in% aggregate complete.cases cor decode
 #'   expand head mcols mcols<- metadata metadata<- na.omit tail
-#' @importFrom SummarizedExperiment SummarizedExperiment
-#' @importFrom SingleCellExperiment SingleCellExperiment
 #' @importFrom cowplot plot_grid
 #' @importFrom data.table as.data.table fread
 #' @importFrom dplyr arrange bind_rows case_when desc everything filter funs
 #'   group_by left_join mutate mutate_all mutate_at mutate_if n pull rename
 #'   select select_if slice summarise summarise_all top_n ungroup
-#' @importFrom ensembldb ensemblVersion organism
+#' @importFrom ensembldb ensemblVersion
 #' @importFrom ggplot2 aes coord_fixed coord_flip element_blank element_line
 #'   element_rect element_text expand_limits facet_wrap geom_bar geom_boxplot
 #'   geom_density geom_hline geom_jitter geom_label geom_point geom_violin
@@ -77,7 +72,7 @@
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
-#' @importFrom tibble as_tibble column_to_rownames tibble
+#' @importFrom tibble column_to_rownames
 #' @importFrom tools Rd_db file_path_sans_ext
 #' @importFrom utils capture.output data download.file getFromNamespace
 #'   globalVariables installed.packages packageVersion read.delim read.table
@@ -91,13 +86,49 @@
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
 
-#' @importFrom magrittr %>%
+#' @importFrom IRanges DataFrameList
 #' @export
-magrittr::`%>%`
+IRanges::DataFrameList
+
+#' @importFrom IRanges IRanges
+#' @export
+IRanges::IRanges
+
+#' @importFrom GenomeInfoDb seqnames
+#' @export
+GenomeInfoDb::seqnames
+
+#' @importFrom GenomicRanges GRanges
+#' @export
+GenomicRanges::GRanges
+
+#' @importFrom GenomicRanges GRangesList
+#' @export
+GenomicRanges::GRangesList
+
+#' @importFrom Matrix sparseMatrix
+#' @export
+Matrix::sparseMatrix
 
 #' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
+
+#' @importFrom S4Vectors List
+#' @export
+S4Vectors::List
+
+#' @importFrom S4Vectors Rle
+#' @export
+S4Vectors::Rle
+
+#' @importFrom S4Vectors mcols
+#' @export
+S4Vectors::mcols
+
+#' @importFrom SingleCellExperiment SingleCellExperiment
+#' @export
+SingleCellExperiment::SingleCellExperiment
 
 #' @importFrom SingleCellExperiment isSpike
 #' @export
@@ -119,6 +150,10 @@ SingleCellExperiment::reducedDims
 #' @export
 SingleCellExperiment::spikeNames
 
+#' @importFrom SummarizedExperiment SummarizedExperiment
+#' @export
+SummarizedExperiment::SummarizedExperiment
+
 #' @importFrom SummarizedExperiment assay
 #' @export
 SummarizedExperiment::assay
@@ -131,10 +166,6 @@ SummarizedExperiment::colData
 #' @export
 SummarizedExperiment::`colData<-`
 
-#' @importFrom SummarizedExperiment mcols
-#' @export
-SummarizedExperiment::mcols
-
 #' @importFrom SummarizedExperiment rowRanges
 #' @export
 SummarizedExperiment::rowRanges
@@ -142,10 +173,6 @@ SummarizedExperiment::rowRanges
 #' @importFrom SummarizedExperiment rowRanges<-
 #' @export
 SummarizedExperiment::`rowRanges<-`
-
-#' @importFrom SummarizedExperiment seqnames
-#' @export
-SummarizedExperiment::seqnames
 
 #' @importFrom SummarizedExperiment assayNames
 #' @export
@@ -186,3 +213,11 @@ SummarizedExperiment::rowRanges
 #' @importFrom SummarizedExperiment rowRanges<-
 #' @export
 SummarizedExperiment::`rowRanges<-`
+
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
+#' @importFrom tibble tibble
+#' @export
+tibble::tibble
