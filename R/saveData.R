@@ -1,4 +1,3 @@
-# saveData =====================================================================
 #' Save Data
 #'
 #' Wrapper for `save()` supporting quick, interactive saving of object names
@@ -36,8 +35,10 @@ saveData <- function(..., dir, ext, overwrite, compress) {
     names(objects) <- dots(..., character = TRUE)
     dir <- initDir(dir)
     ext <- match.arg(arg = ext, choices = c("rds", "rda", "RData"))
-    assertFlag(overwrite)
-    assertFormalCompress(compress)
+    assert(
+        isFlag(overwrite),
+        formalCompress(compress)
+    )
 
     files <- file.path(dir, paste(names(objects), ext, sep = "."))
     names(files) <- names(objects)
@@ -64,9 +65,7 @@ saveData <- function(..., dir, ext, overwrite, compress) {
             FUN = saveRDS,
             object = objects,
             file = files,
-            MoreArgs = list(
-                compress = compress
-            )
+            MoreArgs = list(compress = compress)
         )
     } else {
         mapply(
@@ -90,7 +89,6 @@ formals(saveData)[["overwrite"]] <- formalsList[["save.overwrite"]]
 
 
 
-# assignAndSaveData ============================================================
 #' Assign and Save Data
 #'
 #' Assigns a new object by name to the current working environment then saves
@@ -121,8 +119,10 @@ assignAndSaveData <- function(name, object, envir = parent.frame()) {
     assertString(name)
     assert_is_not_null(object)
     dir <- initDir(dir)
-    assertFormalCompress(compress)
-    assertEnvironment(envir)
+    assert(
+        formalCompress(compress),
+        is.environment(envir)
+    )
 
     # Assign data.
     assign(x = name, value = object, envir = envir)

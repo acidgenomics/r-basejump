@@ -61,6 +61,7 @@ sanitizeSampleData <- function(object) {
 
 
 
+# Consider exporting this.
 .atomicDataFrame <- function(object) {
     # First, coerce to S3 data frame.
     # This step helps coerce nested S4 data to atomic columns.
@@ -70,14 +71,13 @@ sanitizeSampleData <- function(object) {
     # or work with R Markdown functions.
     keep <- vapply(X = object, FUN = is.atomic, FUN.VALUE = logical(1L))
     object <- object[, keep, drop = FALSE]
-    assertHasLength(object)
-    # Return.
+    assert(hasLength(object))
     as(object, "DataFrame")
 }
 
 
 
-# TODO Consider exporting this.
+# Consider exporting this.
 # See `encode()` for Rle approach.
 .factorize <- function(object) {
     out <- lapply(

@@ -16,17 +16,17 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
         title = "zeros vs. depth"
     ) {
         validObject(object)
-        assertScalar(assay)
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
+        assert(
+            isScalar(assay),
+            isGGScale(color, scale = "discrete", aes = "colour") ||
+                is.null(color),
+            isString(title) || is.null(title)
         )
-        interestingGroups(object) <- interestingGroups
-        assertIsColorScaleDiscreteOrNULL(color)
-        assertIsStringOrNULL(title)
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
 
         data <- zerosVsDepth(object, assay = assay)
-        assertClass(data, "DataFrame")
+        assert(is(data, "DataFrame"))
 
         p <- ggplot(
             data = as_tibble(data),
