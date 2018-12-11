@@ -45,18 +45,18 @@ matchArgsToDoCall <- function(
     verbose = FALSE
 ) {
     assert(
-        isAny(args, classes = c("list", "NULL"),
+        isAny(args, classes = c("list", "NULL")),
         isAny(removeFormals, classes = c("character", "NULL")),
         isInt(which),
         isFlag(verbose)
     )
-    
+
     if (is.list(args)) {
         assert(hasLength(args), hasNames(args))
     } else {
         args <- list()
     }
-    
+
     if (which < 1L) {
         which <- 1L
     }
@@ -130,7 +130,7 @@ matchArgsToDoCall <- function(
     invisible(lapply(
         X = args,
         FUN = function(x) {
-            assert(!isAny(x, classes = c("call", "name", "symbol"))
+            assert(!isAny(x, classes = c("call", "name", "symbol")))
         }
     ))
 
