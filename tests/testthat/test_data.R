@@ -187,7 +187,7 @@ test_that("makeSummarizedExperiment : Strict names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "validDimnames"
+        regexp = "hasValidDimnames"
     )
     matBadCols <- mat
     colnames(matBadCols) <- paste0(colnames(matBadCols), "-XXX")
@@ -197,7 +197,7 @@ test_that("makeSummarizedExperiment : Strict names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "validDimnames"
+        regexp = "hasValidDimnames"
     )
 })
 
