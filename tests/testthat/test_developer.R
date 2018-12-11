@@ -37,11 +37,11 @@ test_that("dots", {
     )
     expect_error(
         object = dots(a, a, b, c),
-        regexp = "has_no_duplicates : dots has a duplicate at position 2"
+        regexp = "hasNoDuplicates"
     )
     expect_error(
         object = dots(),
-        regexp = "is_non_empty : dots has length 0"
+        regexp = "hasLength"
     )
 })
 
@@ -96,7 +96,7 @@ test_that("multiassignAsEnvir", {
     )
     expect_error(
         object = multiassignAsEnvir(rse, envirName = parent.frame()),
-        regexp = "is_a_string : envirName"
+        regexp = "isString.*envirName"
     )
 })
 

@@ -2,10 +2,6 @@ context("Import/Export")
 
 data(rse, sce, envir = environment())
 
-assay <- SummarizedExperiment::assay
-mcols <- S4Vectors::mcols
-seqnames <- GenomeInfoDb::seqnames
-
 mat <- assay(rse)
 sparse <- assay(sce)
 url <- basejumpCacheURL
@@ -203,6 +199,8 @@ test_that("loadData", {
         object = loadData(gr),
         expected = c(gr = realpath("gr.rda"))
     )
+    # We're defaulting to global environment.
+    expect_true(exists("gr", envir = globalenv(), inherits = FALSE))
 
     # R data serialized.
     expect_identical(
@@ -213,24 +211,28 @@ test_that("loadData", {
     )
 })
 
+# Don't allow RDS/RDA soup.
 test_that("loadData : Mixed extensions", {
-    expect_identical(
+    expect_error(
         object = loadData(gr, serialized) %>% basename(),
-        expected = c("gr.rda", "serialized.rds")
+        regexp = "RDS/RDA/RDATA"
     )
 })
 
 test_that("loadData : Standard evaluation", {
     expect_error(
         object = loadData("gr.rda"),
-        regexp = "is_name :"
+        regexp = "non-standard evaluation"
     )
 })
 
+# Avoid accidental reassignment in the current environment.
 test_that("loadData : Already exists", {
-    # Avoid accidental overwrites in the current environment.
     gr <- TRUE
-    expect_error(loadData(gr))
+    expect_error(
+        object = loadData(gr),
+        regexp = "reassignment"
+    )
 })
 
 test_that("loadData : Multiple objects in single file", {
@@ -257,11 +259,11 @@ test_that("loadData : Duplicate RDA and RDS files", {
 test_that("loadData : Invalid arguments", {
     expect_error(
         object = loadData(gr, dir = "XXX"),
-        regexp = "is_dir :"
+        regexp = "hasAccess"
     )
     expect_error(
         object = loadData(gr, envir = "XXX"),
-        regexp = "is_environment : envir"
+        regexp = "is.environment"
     )
 })
 
@@ -272,23 +274,29 @@ test_that("loadDataAsName : Non-standard evaluation", {
     object <- loadDataAsName(data_1 = gr, data_2 = mn)
     expect_is(object, "character")
     expect_identical(names(object), c("data_1", "data_2"))
-    expect_true(exists("data_1", inherits = FALSE))
-    expect_true(exists("data_2", inherits = FALSE))
+    # We're defaulting to global environment.
+    expect_true(exists("data_1", envir = globalenv(), inherits = FALSE))
+    expect_true(exists("data_2", envir = globalenv(), inherits = FALSE))
     # Now that the objects are loaded, let's check to make sure we can't
     # accidentally overwrite in the current environment.
-    expect_error(loadDataAsName(data_1 = gr, data_2 = mn))
+    expect_error(
+        object = loadDataAsName(data_1 = gr, data_2 = mn),
+        regexp = "reassignment"
+    )
 })
+
 
 test_that("loadDataAsName : Serialized", {
     object <- loadDataAsName(new = serialized)
     expect_identical(names(object), "new")
-    expect_true(exists("new", inherits = FALSE))
+    # We're defaulting to global environment.
+    expect_true(exists("new", envir = globalenv(), inherits = FALSE))
 })
 
 test_that("loadData : Standard evaluation", {
     expect_error(
         object = loadDataAsName(data = "gr.rda"),
-        regexp = "is_name :"
+        regexp = "non-standard evaluation"
     )
 })
 
@@ -309,11 +317,11 @@ test_that("loadDataAsName : Multiple objects in single file", {
 test_that("loadDataAsName : Invalid arguments", {
     expect_error(
         object = loadDataAsName(data = gr, dir = "XXX"),
-        regexp = "is_dir : "
+        regexp = "hasAccess"
     )
     expect_error(
         object = loadDataAsName(data = gr, envir = "XXX"),
-        regexp = "is_environment : envir"
+        regexp = "is.environment"
     )
 })
 
@@ -351,7 +359,7 @@ test_that("loadRemoteData : Invalid arguments", {
             url = paste(paste(url, "example.rda", sep = "/")),
             envir = "XXX"
         ),
-        regexp = "is_environment : envir"
+        regexp = "is.environment"
     )
 })
 
@@ -368,7 +376,7 @@ test_that("localOrRemoteFile : Vectorized", {
 test_that("localOrRemoteFile : Missing file", {
     expect_error(
         object = localOrRemoteFile("XXX.csv"),
-        regexp = "is_existing_file :"
+        regexp = "hasAccess"
     )
 })
 
@@ -424,11 +432,11 @@ test_that("saveData : Invalid parameters", {
     )
     expect_error(
         object = saveData("example"),
-        regexp = "is_name : X"
+        regexp = "non-standard evaluation"
     )
     expect_error(
         object = saveData(rse, dir = NULL),
-        regexp = "is_a_string : dir"
+        regexp = "isString"
     )
 })
 
@@ -484,6 +492,7 @@ test_that("transmit : Rename and compress", {
     unlink("readme.txt.gz")
 })
 
+# TODO Improve the error messages for these.
 test_that("transmit : Invalid parameters", {
     skip_on_travis()
     expect_error(
@@ -491,21 +500,21 @@ test_that("transmit : Invalid parameters", {
             remoteDir = "http://steinbaugh.com",
             pattern = "README"
         ),
-        regexp = "is_matching_regex : remoteDir"
+        regexp = "ftp"
     )
     expect_error(
         object = transmit(
             remoteDir = "ftp://ftp.wormbase.org/pub/",
             pattern = "README"
         ),
-        regexp = "is_non_empty : remoteFiles"
+        regexp = "remoteFiles"
     )
     expect_error(
         object = transmit(
             remoteDir = remoteDir,
             pattern = "XXX"
         ),
-        regexp = "is_non_empty : match"
+        regexp = "match"
     )
     expect_error(
         object = transmit(
@@ -513,7 +522,7 @@ test_that("transmit : Invalid parameters", {
             pattern = "README",
             rename = c("XXX", "YYY")
         ),
-        regexp = "are_same_length : match has length 1 but rename has length 2."
+        regexp = "areSameLength"
     )
 })
 
