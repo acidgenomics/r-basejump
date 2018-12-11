@@ -48,7 +48,7 @@ sanitizeSampleData <- function(object) {
         # Require `sampleName` column.
         "sampleName" %in% colnames(object),
         # Check for any duplicate rows.
-        !anyDuplicated(object[["sampleName"]])
+        hasNoDuplicates(object[["sampleName"]])
     )
     # Drop blacklisted columns.
     blacklist <- c("interestingGroups", "sampleID")
