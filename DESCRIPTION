@@ -35,6 +35,7 @@ Imports:
     AnnotationHub,
     Biobase,
     BiocGenerics,
+    GenomeInfoDb,
     GenomicFeatures,
     GenomicRanges,
     IRanges,
@@ -81,7 +82,6 @@ Imports:
 Suggests:
     BiocStyle,
     EnsDb.Hsapiens.v75,
-    GenomeInfoDb,
     datasets,
     patrick,
     rmarkdown,
