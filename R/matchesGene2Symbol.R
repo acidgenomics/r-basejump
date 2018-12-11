@@ -1,7 +1,7 @@
 #' Check Gene-to-Symbol Value Matching
 #'
+#' @name matchesGene2Symbol
 #' @inherit params
-#' @export
 #'
 #' @param x Object class supporting `rownames`. All rownames in this object
 #'   must intersect with the rownames defined in the `gene2symbol` argument.
@@ -41,7 +41,11 @@
 #'     genes = geneNames,
 #'     gene2symbol = gene2symbol
 #' )
-matchesGene2Symbol <- function(x, genes, gene2symbol) {
+NULL
+
+
+
+.matchesGene2Symbol <- function(x, genes, gene2symbol) {
     assert(
         hasRownames(x),
         is.character(genes),
@@ -56,3 +60,9 @@ matchesGene2Symbol <- function(x, genes, gene2symbol) {
     assert(isSubset(rownames, rownames(x)))
     TRUE
 }
+
+
+
+#' @rdname matchesGene2Symbol
+#' @export
+matchesGene2Symbol <- makeTestFunction(.matchesGene2Symbol)

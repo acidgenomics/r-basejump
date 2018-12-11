@@ -55,7 +55,8 @@
 #'   isADirectory isAFile isAny isCharacter isDirectory isExisting isFile isFlag
 #'   isGGScale isHexColorFunction isInClosedRange isInRange isInt
 #'   isMatchingRegex isNonEmpty isNonNegative isNumber isPositive isScalar
-#'   isString isSubset isSuperset matchesUniqueGeneNames validNames validate
+#'   isString isSubset isSuperset makeTestFunction matchesUniqueGeneNames
+#'   validNames validate
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
