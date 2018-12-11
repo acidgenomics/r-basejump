@@ -48,10 +48,11 @@
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie areDisjointSets areNonExisting areSameLength assert
-#'   containsAURL containsURL hasAccess hasColnames hasDimnames hasDims
-#'   hasInternet hasLength hasNames hasNoDuplicates hasRows hasRownames
-#'   hasValidDimnames isADirectory isAFile isAny isCharacter isDirectory
-#'   isExisting isFile isFlag isInt isMatchingRegex isNumber isPositive isString
+#'   containsAURL containsHexColors containsURL hasAccess hasColnames
+#'   hasDimnames hasDims hasInternet hasLength hasNames hasNoDuplicates
+#'   hasNonZeroRowsAndCols hasRows hasRownames hasValidDimnames isADirectory
+#'   isAFile isAny isCharacter isDirectory isExisting isFile isFlag
+#'   isHexColorFunction isInt isMatchingRegex isNumber isPositive isString
 #'   isSubset isSuperset validNames validate
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
