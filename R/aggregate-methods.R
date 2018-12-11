@@ -118,7 +118,7 @@ NULL
 # Don't message when aggregating a large factor.
 .aggregateMessage <- function(groupings, fun) {
     assert(
-        is.factor(groups),
+        is.factor(groupings),
         isString(fun)
     )
     msg <- paste0("Aggregating counts using `", fun, "()`.")
