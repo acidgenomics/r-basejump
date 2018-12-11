@@ -93,3 +93,11 @@
 
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
+
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
+#' @importFrom S4Vectors DataFrame
+#' @export
+S4Vectors::DataFrame
