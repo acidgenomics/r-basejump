@@ -42,7 +42,7 @@ methodFunction <- function(f, signature, package) {
     if (missing(package) || is.null(package)) {
         envir <- NULL
     } else {
-        assertString(package)
+        assert(isString(package))
         envir <- asNamespace(package)
     }
 
@@ -93,7 +93,7 @@ methodFunction <- function(f, signature, package) {
     } else {
         fun <- slot(definition, ".Data")
     }
-    assertFunction(fun)
+    assert(is.function(fun))
 
     fun
 }
@@ -144,6 +144,6 @@ extractLocal <- function(definition) {
     assert(hasLocal(definition))
     body <- body(definition)
     local <- eval(body[[2L]][[3L]])
-    assertFunction(local)
+    assert(is.function(local))
     local
 }

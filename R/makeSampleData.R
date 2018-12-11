@@ -61,6 +61,6 @@ makeSampleData <- function(object) {
         mutate_all(droplevels) %>%
         select(!!sym("sampleName"), everything()) %>%
         as("DataFrame")
-    assertHasRownames(data)
+    assert(hasRownames(data))
     data
 }
