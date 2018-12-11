@@ -20,11 +20,15 @@ NULL
 topCellsPerSample.SingleCellExperiment <-  # nolint
     function(object, n = 100L) {
         validObject(object)
-        assertIsAnImplicitInteger(n)
+        assert(isInt(n))
 
         cell2sample <- cell2sample(object)
-        colSums <- Matrix::colSums(counts(object))
-        assertIdentical(names(cell2sample), names(colSums))
+        counts <- counts(object)
+        if (is(counts, "sparseMatrix")) {
+            colSums <- Matrix::colSums
+        }
+        colSums <- colSums(counts)
+        assert(identical(names(cell2sample), names(colSums)))
 
         tibble(
             cellID = names(cell2sample),

@@ -191,13 +191,6 @@ setMethod(
     }
 )
 
-#' @rdname deprecated
-#' @export
-assertFormalGene2symbol <- function(...) {
-    .Deprecated("assertFormalGene2Symbol")
-    assertFormalGene2Symbol(...)
-}
-
 #' @rdname defunct
 #' @export
 broadClass <- function(object, ...) {

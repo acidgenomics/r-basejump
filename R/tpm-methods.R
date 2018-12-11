@@ -37,7 +37,7 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(object) {
         validObject(object)
-        assertSubset("tpm", assayNames(object))
+        assert(isSubset("tpm", assayNames(object)))
         assays(object)[["tpm"]]
     }
 )

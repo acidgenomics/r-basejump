@@ -95,7 +95,7 @@ setMethod(
 
 zerosVsDepth.SingleCellExperiment <-  # nolint
     function(object, assay = 1L) {
-        assertScalar(assay)
+        assert(isScalar(assay))
         counts <- assays(object)[[assay]]
 
         data <- zerosVsDepth(counts)
@@ -116,7 +116,7 @@ zerosVsDepth.SingleCellExperiment <-  # nolint
         )
         
         out <- as(join, "DataFrame")
-        assertHasRownames(out)
+        assert(hasRownames(out))
         out
     }
 

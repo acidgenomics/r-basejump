@@ -28,7 +28,7 @@ setMethod(
         assert(isFlag(check))
         value <- metadata(object)[["interestingGroups"]]
         if (isTRUE(check)) {
-            assertFormalInterestingGroups(object, value)
+            assert(matchesInterestingGroups(object, value))
         }
         value
     }
@@ -45,7 +45,7 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
-        assertFormalInterestingGroups(object, value)
+        assert(matchesInterestingGroups(object, value))
         metadata(object)[["interestingGroups"]] <- value
         validObject(object)
         object
