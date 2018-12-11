@@ -116,13 +116,15 @@ formals(saveData)[["overwrite"]] <- formalsList[["save.overwrite"]]
 #' rm(example)
 #' unlink("example.rds")
 assignAndSaveData <- function(name, object, envir = parent.frame()) {
-    assertString(name)
-    assert_is_not_null(object)
-    dir <- initDir(dir)
     assert(
+        isString(name),
+        !is.null(object),
         formalCompress(compress),
         is.environment(envir)
     )
+
+    # Create destination directory automatically.
+    dir <- initDir(dir)
 
     # Assign data.
     assign(x = name, value = object, envir = envir)
