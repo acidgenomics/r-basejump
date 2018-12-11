@@ -590,10 +590,9 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
 
         # Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
-        assertList(x)
-        assertIdentical(
-            x = names(x),
-            y = c("annotationCol", "annotationColors")
+        assert(
+            is.list(x),
+            identical(names(x), c("annotationCol", "annotationColors"))
         )
         annotationCol <- x[["annotationCol"]]
         annotationColors <- x[["annotationColors"]]
