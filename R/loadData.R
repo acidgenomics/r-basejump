@@ -48,14 +48,14 @@ loadData <- function(..., dir, envir = globalenv()) {
     ))) {
         fun <- .safeLoadRDA
     } else {
-        stop(paste(
-            "File extension error:",
-            toString(basename(files))
+        stop(paste0 (
+            "File extension error: ",
+            toString(basename(files)), "\n",
+            "Don't mix RDS/RDA/RDATA files in a single directory."
         ))
     }
     lapply(X = files, FUN = fun, envir = envir)
-    # TODO Use `areExisting()` from goalie instead.
-    assert(all(isExisting(names, envir = envir, inherits = FALSE)))
+    assert(areExisting(names, envir = envir, inherits = FALSE))
     invisible(files)
 }
 
@@ -92,7 +92,10 @@ loadDataAsName <- function(..., dir, envir = globalenv()) {
     assert(is.environment(envir))
 
     # Check to see if any of the new names already exist in environment.
-    assert(areNonExisting(names(dots), envir = envir, inherits = FALSE))
+    names <- names(dots)
+    if (!isTRUE(areNonExisting(names, envir = envir, inherits = FALSE))) {
+        .safeLoadExistsError(names)
+    }
 
     # Note that we can skip safe loading here because we have already checked
     # for existing names in environment outside of the loop call.
@@ -115,7 +118,7 @@ loadDataAsName <- function(..., dir, envir = globalenv()) {
             file = files,
             MoreArgs = list(envir = safe)
         ))
-        assert(isSetEqual(dots, ls(safe)))
+        assert(areSetEqual(dots, ls(safe)))
 
         # Now assign to the desired object names.
         invisible(mapply(
@@ -178,7 +181,9 @@ loadRemoteData <- function(url, envir = globalenv()) {
     names(url) <- names
 
     # Check to make sure the objects don't already exist.
-    assert(areNonExisting(names, envir = envir, inherits = FALSE))
+    if (!isTRUE(areNonExisting(names, envir = envir, inherits = FALSE))) {
+        .safeLoadExistsError(names)
+    }
 
     # Download the files to tempdir and return a character matrix of mappings.
     invisible(mapply(
@@ -191,8 +196,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
         }
     ))
 
-    # TODO Use `areExisting()` instead in goalie?
-    assert(all(isExisting(names, envir = envir, inherits = FALSE)))
+    assert(areExisting(names, envir = envir, inherits = FALSE))
     invisible(url)
 }
 
@@ -233,12 +237,12 @@ loadRemoteData <- function(url, envir = globalenv()) {
 
 
 
-.safeLoadExistsMsg <- function(name) {
-    paste0(
+.safeLoadExistsError <- function(name) {
+    stop(paste0(
         deparse(name), " exists in environment.\n",
         "The basejump load functions do not allow reassignment.\n",
         "We recommending either adding a rm() step or using readRDS()."
-    )
+    ), call. = FALSE)
 }
 
 
@@ -255,7 +259,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
     data <- readRDS(file)
     # Always error if the object is already assigned in environment.
     if (exists(x = name, envir = envir, inherits = FALSE)) {
-        stop(.safeLoadExistsMsg(name))
+        .safeLoadExistsError(name)
     }
     assign(x = name, value = data, envir = envir)
     assert(exists(x = name, envir = envir, inherits = FALSE))
@@ -278,7 +282,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
     }
     # Always error if the object is already assigned in environment.
     if (exists(x = name, envir = envir, inherits = FALSE)) {
-        stop(.safeLoadExistsMsg(name))
+        .safeLoadExistsError(name)
     }
 
     # Loading into a temporary environment, so we can evaluate the integrity
