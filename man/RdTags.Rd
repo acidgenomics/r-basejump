@@ -7,10 +7,10 @@
 RdTags(object)
 }
 \arguments{
-\item{object}{\code{Rd}. R documentation, returned from \code{tools::Rd_db()}.}
+\item{object}{\code{Rd}. R documentation, returned from \code{tools::Rd_db}.}
 }
 \description{
-Modified version of the unexported \code{tools:::RdTags()} function.
+Modified version of the unexported \code{tools:::RdTags} function.
 }
 \examples{
 db <- tools::Rd_db("base")

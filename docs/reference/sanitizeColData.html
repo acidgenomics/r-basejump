@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Transmit Files from a Remote FTP Server — transmit • basejump</title>
+<title>Sanitize Column Data — sanitizeColData • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,10 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Transmit Files from a Remote FTP Server — transmit" />
+<meta property="og:title" content="Sanitize Column Data — sanitizeColData" />
 
-<meta property="og:description" content="Utility function that supports easy file matching and download from a remote
-FTP server. Also enables on-the-fly file renaming and compression." />
+<meta property="og:description" content="Standardize data describing the colummns (e.g. samples or cells), keeping
+only atomic columns." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,68 +108,83 @@ FTP server. Also enables on-the-fly file renaming and compression." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Transmit Files from a Remote FTP Server</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/transmit.R'><code>R/transmit.R</code></a></small>
-    <div class="hidden name"><code>transmit.Rd</code></div>
+    <h1>Sanitize Column Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/sanitizeColData.R'><code>R/sanitizeColData.R</code></a></small>
+    <div class="hidden name"><code>sanitizeColData.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Utility function that supports easy file matching and download from a remote
-FTP server. Also enables on-the-fly file renaming and compression.</p>
+    <p>Standardize data describing the colummns (e.g. samples or cells), keeping
+only <code>atomic</code> columns.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>transmit</span>(<span class='no'>remoteDir</span>, <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='no'>pattern</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>sanitizeColData</span>(<span class='no'>object</span>)
+
+<span class='fu'>sanitizeSampleData</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>remoteDir</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Remote FTP directory path.</p></td>
-    </tr>
-    <tr>
-      <th>localDir</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Directory where to save files locally.</p></td>
-    </tr>
-    <tr>
-      <th>pattern</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Pattern to match against remote file names.</p></td>
-    </tr>
-    <tr>
-      <th>rename</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>. Rename the local files (including suffix),
-if desired.</p></td>
-    </tr>
-    <tr>
-      <th>compress</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. gzip compress the files after download.</p></td>
+      <th>object</th>
+      <td><p><code>DataFrame</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible <code>character</code>. Local file paths.</p>
+    <p><code>DataFrame</code>. Contains only <code>atomic</code> columns.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Always applied:</p><ul>
+<li><p>Non-<code>atomic</code> columns will be flattened to <code>atomic</code> if possible, and
+otherwise dropped.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="sample-data"><a class="anchor" href="#sample-data"></a>Sample data</h2>
+
+    
+    <p>The following conventions are enforced:</p><ul>
+<li><p>Required columns: <code>sampleName</code>.</p></li>
+<li><p>Blacklisted columns: <code>interestingGroups</code>, <code>sampleID</code>.</p></li>
+<li><p>All columns get coerced to <code>factor</code> and <code>droplevels</code> is applied.</p></li>
+</ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>remoteDir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(
-    <span class='st'>"ftp://ftp.pantherdb.org"</span>,
-    <span class='st'>"sequence_classifications"</span>,
-    <span class='st'>"current_release"</span>,
-    <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"/"</span>
-)
-<span class='no'>readme</span> <span class='kw'>&lt;-</span> <span class='fu'>transmit</span>(
-    <span class='kw'>remoteDir</span> <span class='kw'>=</span> <span class='no'>remoteDir</span>,
-    <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"README"</span>,
-    <span class='kw'>rename</span> <span class='kw'>=</span> <span class='st'>"panther_readme.txt"</span>,
-    <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</div><div class='output co'>#&gt; <span class='message'>Transmitting files from ftp.pantherdb.org.</span></div><div class='output co'>#&gt; <span class='message'>Files matching pattern:</span>
-#&gt; <span class='message'>[1] "README"</span></div><div class='output co'>#&gt; <span class='message'>Downloading panther_readme.txt.gz.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/basename'>basename</a></span>(<span class='no'>readme</span>)</div><div class='output co'>#&gt; [1] "panther_readme.txt.gz"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/files'>file.exists</a></span>(<span class='no'>readme</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='co'>## Clean up.</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlink'>unlink</a></span>(<span class='no'>readme</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>)
+<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>rse</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 3 columns
+#&gt;          condition sampleName interestingGroups
+#&gt;           &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
+#&gt; sample01         A   sample01                 A
+#&gt; sample02         A   sample02                 A
+#&gt; sample03         A   sample03                 A
+#&gt; sample04         A   sample04                 A
+#&gt; sample05         A   sample05                 A
+#&gt; ...            ...        ...               ...
+#&gt; sample08         B   sample08                 B
+#&gt; sample09         B   sample09                 B
+#&gt; sample10         B   sample10                 B
+#&gt; sample11         B   sample11                 B
+#&gt; sample12         B   sample12                 B</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeSampleData</span>(<span class='no'>from</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/all'>all</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>vapply</a></span>(<span class='no'>to</span>, <span class='no'>is.factor</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical</a></span>(<span class='fl'>1L</span>)))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 2 columns
+#&gt;          condition sampleName
+#&gt;           &lt;factor&gt;   &lt;factor&gt;
+#&gt; sample01         A   sample01
+#&gt; sample02         A   sample02
+#&gt; sample03         A   sample03
+#&gt; sample04         A   sample04
+#&gt; sample05         A   sample05
+#&gt; ...            ...        ...
+#&gt; sample08         B   sample08
+#&gt; sample09         B   sample09
+#&gt; sample10         B   sample10
+#&gt; sample11         B   sample11
+#&gt; sample12         B   sample12</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -177,6 +192,10 @@ if desired.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#sample-data">Sample data</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

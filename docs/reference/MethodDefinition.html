@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -140,7 +140,7 @@
     </tr>
     <tr>
       <th>package</th>
-      <td><p><code>string</code>. Package name.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Package name.</p></td>
     </tr>
     <tr>
       <th>definition</th>
@@ -158,8 +158,8 @@
 
     
 <ul>
-<li><p><code>methodFormals()</code>: <code>list</code>. Extract the sealed formal arguments.</p></li>
-<li><p><code>methodFunction()</code>: <code>function</code>. Extract the sealed function.</p></li>
+<li><p><code>methodFormals</code>: <code>list</code>. Extract the sealed formal arguments.</p></li>
+<li><p><code>methodFunction</code>: <code>function</code>. Extract the sealed function.</p></li>
 </ul>
 
     
@@ -168,8 +168,8 @@
     <div class='dont-index'><ul>
 <li><p>Modified version of <a href='https://goo.gl/ymX571'>John Chambers' code</a>.</p></li>
 <li><p><code><a href='https://www.rdocumentation.org/packages/utils/topics/help'>help(topic = "MethodDefinition-class", package = "methods")</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/methods/topics/getMethod'>methods::selectMethod()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/methods/topics/setMethod'>methods::setMethod()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/methods/topics/getMethod'>methods::selectMethod</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/methods/topics/setMethod'>methods::setMethod</a></code>.</p></li>
 </ul></div>
     
 
@@ -194,7 +194,7 @@
 <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='st'>"as.data.frame"</span>
 <span class='no'>signature</span> <span class='kw'>&lt;-</span> <span class='st'>"ANY"</span>
 
-<span class='co'>## Function.</span>
+<span class='co'>## Function</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>methodFunction</span>(<span class='kw'>f</span> <span class='kw'>=</span> <span class='no'>f</span>, <span class='kw'>signature</span> <span class='kw'>=</span> <span class='no'>signature</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "function"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/formals'>formals</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; $x
 #&gt; 
@@ -208,7 +208,7 @@
 #&gt; $...
 #&gt; 
 #&gt; </div><div class='input'>
-<span class='co'>## Formals.</span>
+<span class='co'>## Formals</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>methodFormals</span>(<span class='kw'>f</span> <span class='kw'>=</span> <span class='no'>f</span>, <span class='kw'>signature</span> <span class='kw'>=</span> <span class='no'>signature</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "pairlist"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; $x
 #&gt; 
@@ -244,7 +244,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

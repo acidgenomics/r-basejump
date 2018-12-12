@@ -9,19 +9,19 @@ writeCounts(..., dir = ".", compress = FALSE)
 \arguments{
 \item{...}{Count matrices, passed in as dots.}
 
-\item{dir}{\code{string}. Output directory.}
+\item{dir}{\code{character(1)}. Output directory.}
 
-\item{compress}{\code{boolean}. Compress the files using gzip.}
+\item{compress}{\code{logical(1)}. Compress the files using gzip.}
 }
 \value{
 Invisible \code{list}. File paths.
 }
 \description{
 Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq
-counts are written to disk as comma separated values ("\code{.csv}"). Single-cell
-RNA-seq counts are written to disk in MatrixMarket format ("\code{.mtx}"), along
-with the sample barcodes ("\code{.colnames}"), and gene identifiers
-("\code{.rownames}").
+counts are written to disk as comma separated values ("\code{.CSV}"). Single-cell
+RNA-seq counts are written to disk in MatrixMarket format ("\code{.MTX}"), along
+with the sample barcodes ("\code{.COLNAMES}"), and gene identifiers
+("\code{.ROWNAMES}").
 }
 \details{
 Automatic gzip compression is offered as a user-defined option. This setting
@@ -35,9 +35,11 @@ names using non-standard evaluation.
 \examples{
 library(SummarizedExperiment)
 library(SingleCellExperiment)
+
 data(rse, sce)
-rnaseq_counts <- assay(rse)
-single_cell_counts <- assay(sce)
+
+rnaseq_counts <- SummarizedExperiment::assay(rse)
+single_cell_counts <- SummarizedExperiment::assay(sce)
 
 writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
 list.files("example")

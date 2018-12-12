@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>string</code>. Full latin organism name. Stops on match failure.</p>
+    <p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Full latin organism name. Stops on match failure.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -141,10 +141,10 @@ unknowns, for speed.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p><code><a href='https://www.rdocumentation.org/packages/BiocGenerics/topics/organism_species'>BiocGenerics::organism()</a></code> <code>character</code> method conflicts with annotate
+    <p><code><a href='https://www.rdocumentation.org/packages/BiocGenerics/topics/organism_species'>BiocGenerics::organism</a></code> <code>character</code> method conflicts with annotate
 package, which gets loaded into the namespace when DESeq2 is attached.
 Instead, we're exporting the character method here as a separate function
-named <code>detectOrganism()</code>.</p>
+named <code>detectOrganism</code>.</p>
     
     <h2 class="hasAnchor" id="supported-organisms"><a class="anchor" href="#supported-organisms"></a>Supported organisms</h2>
 
@@ -163,7 +163,7 @@ named <code>detectOrganism()</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/BiocGenerics/topics/organism_species'>BiocGenerics::organism()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/BiocGenerics/topics/organism_species'>BiocGenerics::organism</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -205,7 +205,7 @@ named <code>detectOrganism()</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

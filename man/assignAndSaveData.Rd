@@ -11,20 +11,20 @@ assignAndSaveData(name, object, envir = parent.frame(),
   compress = getOption("basejump.save.compress", TRUE))
 }
 \arguments{
-\item{name}{\code{string}. Desired variable name.}
+\item{name}{\code{character(1)}. Desired variable name.}
 
 \item{object}{Object.}
 
 \item{envir}{\code{environment}. Environment to use for assignment. Defaults to
-\code{parent.frame()}, the calling environment.}
+\code{parent.frame}, the calling environment.}
 
-\item{dir}{\code{string}. Directory path.}
+\item{dir}{\code{character(1)}. Directory path.}
 
-\item{ext}{\code{string}. R data serialized (RDS; "\code{rds}") or R data ("\code{rda}",
+\item{ext}{\code{character(1)}. R data serialized (RDS; "\code{rds}") or R data ("\code{rda}",
 "\code{RData}"). RDS is preferred when saving single objects per file, which is
-always the convention of \code{saveData()}, regardless of the extension used.}
+always the convention of \code{saveData}, regardless of the extension used.}
 
-\item{overwrite}{\code{boolean}. Overwrite existing file.}
+\item{overwrite}{\code{logical(1)}. Overwrite existing file.}
 
 \item{compress}{logical or character string specifying whether saving
     to a named file is to use compression.  \code{TRUE} corresponds to
@@ -34,14 +34,14 @@ always the convention of \code{saveData()}, regardless of the extension used.}
     for workspace format version 1.}
 }
 \value{
-Invisible named \code{string}. File path.
+Invisible named \code{character(1)}. File path.
 }
 \description{
 Assigns a new object by name to the current working environment then saves
 the newly assigned object, specified by the "\code{dir}" argument.
 }
 \note{
-This function attempts to follow the same order as \code{assign()}.
+This function attempts to follow the same order as \code{assign}.
 }
 \examples{
 data(rse)

@@ -15,7 +15,7 @@ to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
 and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.}
 
 \item{gene2symbol}{\code{Gene2Symbol}. Gene-to-symbol mappings. Must contain
-\code{geneID} and \code{geneName} columns. See \code{Gene2Symbol()} for more information.}
+\code{geneID} and \code{geneName} columns. See \code{Gene2Symbol} for more information.}
 }
 \value{
 No value.

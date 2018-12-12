@@ -11,9 +11,9 @@ saveRdExamples(Rd = NULL, package, dir = ".")
 and save the working examples. If \code{NULL}, all documentation files
 containing examples will be saved.}
 
-\item{package}{\code{string}. Package name.}
+\item{package}{\code{character(1)}. Package name.}
 
-\item{dir}{\code{string}. Directory path.}
+\item{dir}{\code{character(1)}. Directory path.}
 }
 \value{
 Invisible \code{character}. File path(s).

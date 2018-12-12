@@ -12,16 +12,16 @@ matchArgsToDoCall(args = NULL, removeFormals = NULL,
     \code{names} attribute of \code{args} gives the argument names.}
 
 \item{removeFormals}{\code{character}. Names of formal arguments to remove from
-\code{args} list before passing to \code{do.call()}.}
+\code{args} list before passing to \code{do.call}.}
 
 \item{which}{the frame number if non-negative, the number of frames
     to go back if negative.}
 
-\item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
-recommended to enable this when debugging.}
+\item{verbose}{\code{logical(1)}. Run the function with verbose messages?
+\emph{It is only recommended to enable this when debugging.}}
 }
 \value{
-\code{list}. Arguments to pass to \code{do.call()}.
+\code{list}. Arguments to pass to \code{do.call}.
 }
 \description{
 Match Arguments to Do Call
@@ -53,7 +53,7 @@ example(c("hello", "world"))
 }
 \seealso{
 \itemize{
-\item \code{standardizeCall()}.
-\item \code{do.call()}.
+\item \code{standardizeCall}.
+\item \code{do.call}.
 }
 }

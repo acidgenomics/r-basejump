@@ -142,7 +142,7 @@ mdPlotlist(plotlist, ...)
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 }
 \value{
-\code{.Deprecated()}.
+\code{.Deprecated}.
 }
 \description{
 Deprecated Functions

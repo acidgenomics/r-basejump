@@ -40,7 +40,7 @@ logRatioToFoldChange(seq(-3, 3, 1))
 }
 \seealso{
 \itemize{
-\item \code{gtools::foldchange2logratio()}.
-\item \code{gtools::logratio2foldchange()}.
+\item \code{gtools::foldchange2logratio}.
+\item \code{gtools::logratio2foldchange}.
 }
 }

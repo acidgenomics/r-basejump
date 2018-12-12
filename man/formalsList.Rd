@@ -4,14 +4,14 @@
 \name{formalsList}
 \alias{formalsList}
 \title{Formals List
-Formals that the user can set globally with \code{base::getOption()}.}
+Formals that the user can set globally with \code{base::getOption}.}
 \format{An object of class \code{list} of length 14.}
 \usage{
 formalsList
 }
 \description{
 Formals List
-Formals that the user can set globally with \code{base::getOption()}.
+Formals that the user can set globally with \code{base::getOption}.
 }
 \examples{
 formalsList

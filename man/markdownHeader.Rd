@@ -8,19 +8,19 @@
 markdownHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
 }
 \arguments{
-\item{text}{\code{string}. Header text.}
+\item{text}{\code{character(1)}. Header text.}
 
 \item{level}{\code{scalar integer}. Header level (1-7).}
 
-\item{tabset}{\code{boolean}. Include tabset marker.}
+\item{tabset}{\code{logical(1)}. Include tabset marker.}
 
-\item{asis}{\code{boolean}. Set this to \code{TRUE} when using the function inside a
+\item{asis}{\code{logical(1)}. Set this to \code{TRUE} when using the function inside a
 loop or inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
-\item "\code{asis = TRUE}": \code{knitr::asis_output()}.
-\item "\code{asis = FALSE}": \code{writeLines()}.
+\item "\code{asis = TRUE}": \code{knitr::asis_output}.
+\item "\code{asis = FALSE}": \code{writeLines}.
 }
 }
 \description{

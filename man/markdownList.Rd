@@ -8,17 +8,17 @@
 markdownList(text, ordered = FALSE, asis = FALSE)
 }
 \arguments{
-\item{text}{\code{string}. Header text.}
+\item{text}{\code{character(1)}. Header text.}
 
-\item{ordered}{\code{boolean}. Ordered ("\code{TRUE}") or unordered ("\code{FALSE}").}
+\item{ordered}{\code{logical(1)}. Ordered ("\code{TRUE}") or unordered ("\code{FALSE}").}
 
-\item{asis}{\code{boolean}. Set this to \code{TRUE} when using the function inside a
+\item{asis}{\code{logical(1)}. Set this to \code{TRUE} when using the function inside a
 loop or inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
-\item "\code{asis = TRUE}": \code{knitr::asis_output()}.
-\item "\code{asis = FALSE}": \code{writeLines()}.
+\item "\code{asis = TRUE}": \code{knitr::asis_output}.
+\item "\code{asis = FALSE}": \code{writeLines}.
 }
 }
 \description{

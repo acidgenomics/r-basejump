@@ -11,11 +11,11 @@ standardizeCall(which = sys.parent(n = 1L), return = c("call", "list"),
 \item{which}{the frame number if non-negative, the number of frames
     to go back if negative.}
 
-\item{return}{\code{string}. Return type. Uses \code{base::match.arg()}
-internally and defaults to the first argument in the \code{character} vector.}
+\item{return}{\code{character(1)}. Return type. Uses \code{match.arg} internally and
+defaults to the first argument in the \code{character} vector.}
 
-\item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
-recommended to enable this when debugging.}
+\item{verbose}{\code{logical(1)}. Run the function with verbose messages?
+\emph{It is only recommended to enable this when debugging.}}
 }
 \value{
 \itemize{
@@ -26,7 +26,7 @@ the call was standardized.
 }
 \description{
 This function adds matching support for S4 methods with formals that aren't
-identical to the generic, and use a nested \code{.local()} call.
+identical to the generic, and use a nested \code{.local} call.
 }
 \examples{
 aaa <- "AAA"
@@ -57,8 +57,8 @@ testing(aaa, bbb)
 }
 \seealso{
 \itemize{
-\item \code{match.call()}.
-\item \code{sys.call()}.
-\item \code{sys.parent()}.
+\item \code{match.call}.
+\item \code{sys.call}.
+\item \code{sys.parent}.
 }
 }

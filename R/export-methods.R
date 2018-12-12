@@ -12,22 +12,28 @@
 #'
 #' @section Row names:
 #'
-#' The standard `rio::export` call will drop rownames when exporting to CSV.
-#' The `readr::write_*` family of functions also never write rownames. This is
-#' a *really poor* default setting for handling genomic data, which often
-#' contain gene identifiers in the rownames. Here we're performing any internal
-#' tibble coercion step to ensure rownames are always moved to a "`rowname`"
-#' column in the CSV export.
+#' The standard `rio::export` call will drop rownames when exporting to CSV. The
+#' readr family of functions also never write rownames. This is a *really poor*
+#' default setting for handling genomic data, which often contain gene
+#' identifiers in the rownames. Here we're performing any internal tibble
+#' coercion step to ensure rownames are always moved to a "`rowname`" column in
+#' the CSV export.
 #'
 #' @name export
 #' @inheritParams params
-#' @inheritParams rio::export
+#'
+#' @param x An object supporting `dim` to be written to disk.
+#' @param file `character(1)`. File path. Specify `file` or `format` but not
+#'   both.
+#' @param format `character(1)`. An optional character string containing the
+#'   file format, which can be used to override the format inferred from `file`,
+#'   or in lieu of specifying `file`.
 #'
 #' @param compress `logical(1)`. Apply gzip compression to all files.
-#' @param humanize `logical(1)`. Automatically convert gene IDs to gene symbols in
-#'   the `rownames` and sample IDs to sample names in the `colnames`.
-#' @param name `character(1)`. Name to use on disk. If left `NULL`, will use the name
-#'   of the object instead.
+#' @param humanize `logical(1)`. Automatically convert gene IDs to gene symbols
+#'   in the `rownames` and sample IDs to sample names in the `colnames`.
+#' @param name `character(1)`. Name to use on disk. If left `NULL`, will use the
+#'   name of the object instead.
 #' @param slotNames `character`. Names of slots to include when writing to disk.
 #'
 #' @return Invisible `character`. File path(s).
@@ -40,11 +46,11 @@
 #' data(rse, sce)
 #'
 #' ## matrix ====
-#' rnaseq_counts <- assay(rse)
+#' rnaseq_counts <- SummarizedExperiment::assay(rse)
 #' export(rnaseq_counts, format = "csv")
 #'
 #' ## sparseMatrix ====
-#' single_cell_counts <- assay(sce)
+#' single_cell_counts <- SummarizedExperiment::assay(sce)
 #' export(single_cell_counts, format = "mtx")
 #'
 #' ## Clean up.
@@ -56,10 +62,10 @@
 #' ))
 #'
 #' ## SummarizedExperiment ====
-#' export(rse, dir = tempdir())
+#' export(rse, dir = "example")
 #'
 #' ## SingleCellExperiment ====
-#' export(sce, dir = tempdir())
+#' export(sce, dir = "example")
 NULL
 
 

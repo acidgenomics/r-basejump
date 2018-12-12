@@ -24,23 +24,26 @@ export(x, ...)
   "colData", "rowData", "Gene2Symbol", "Ensembl2Entrez"))
 }
 \arguments{
-\item{x}{Object.}
+\item{x}{An object supporting \code{dim} to be written to disk.}
 
 \item{...}{Additional arguments.}
 
-\item{file}{\code{string}. File path.}
+\item{file}{\code{character(1)}. File path. Specify \code{file} or \code{format} but not
+both.}
 
-\item{format}{An optional character string containing the file format, which can be used to override the format inferred from \code{file} or, in lieu of specifying \code{file}, a file with the symbol name of \code{x} and the specified file extension will be created. Must specify \code{file} and/or \code{format}. Shortcuts include: \dQuote{,} (for comma-separated values), \dQuote{;} (for semicolon-separated values), \dQuote{|} (for pipe-separated values), and \dQuote{dump} for \code{\link[base]{dump}}.}
+\item{format}{\code{character(1)}. An optional character string containing the
+file format, which can be used to override the format inferred from \code{file},
+or in lieu of specifying \code{file}.}
 
-\item{name}{\code{string}. Name to use on disk. If left \code{NULL}, will use the name
-of the object instead.}
+\item{name}{\code{character(1)}. Name to use on disk. If left \code{NULL}, will use the
+name of the object instead.}
 
-\item{dir}{\code{string}. Directory path.}
+\item{dir}{\code{character(1)}. Directory path.}
 
-\item{compress}{\code{boolean}. Apply gzip compression to all files.}
+\item{compress}{\code{logical(1)}. Apply gzip compression to all files.}
 
-\item{humanize}{\code{boolean}. Automatically convert gene IDs to gene symbols in
-the \code{rownames()} and sample IDs to sample names in the \code{colnames()}.}
+\item{humanize}{\code{logical(1)}. Automatically convert gene IDs to gene symbols
+in the \code{rownames} and sample IDs to sample names in the \code{colnames}.}
 
 \item{slotNames}{\code{character}. Names of slots to include when writing to disk.}
 }
@@ -51,18 +54,18 @@ Invisible \code{character}. File path(s).
 Export data out of R and write to disk.
 }
 \details{
-This is a wrapper for \code{rio::export()} that adds support for additional S4
+This is a wrapper for \code{rio::export} that adds support for additional S4
 classes in Bioconductor.
 }
 \section{Row names}{
 
 
-The standard \code{rio::export()} call will drop rownames when exporting to CSV.
-The \code{readr::write_*()} family of functions also never write rownames. This is
-a \emph{really poor} default setting for handling genomic data, which often
-contain gene identifiers in the rownames. Here we're performing any internal
-tibble coercion step to ensure rownames are always moved to a "\code{rowname}"
-column in the CSV export.
+The standard \code{rio::export} call will drop rownames when exporting to CSV. The
+readr family of functions also never write rownames. This is a \emph{really poor}
+default setting for handling genomic data, which often contain gene
+identifiers in the rownames. Here we're performing any internal tibble
+coercion step to ensure rownames are always moved to a "\code{rowname}" column in
+the CSV export.
 }
 
 \examples{
@@ -71,11 +74,11 @@ library(SingleCellExperiment)
 data(rse, sce)
 
 ## matrix ====
-rnaseq_counts <- assay(rse)
+rnaseq_counts <- SummarizedExperiment::assay(rse)
 export(rnaseq_counts, format = "csv")
 
 ## sparseMatrix ====
-single_cell_counts <- assay(sce)
+single_cell_counts <- SummarizedExperiment::assay(sce)
 export(single_cell_counts, format = "mtx")
 
 ## Clean up.
@@ -87,11 +90,11 @@ file.remove(c(
 ))
 
 ## SummarizedExperiment ====
-export(rse, dir = tempdir())
+export(rse, dir = "example")
 
 ## SingleCellExperiment ====
-export(sce, dir = tempdir())
+export(sce, dir = "example")
 }
 \seealso{
-\code{rio::export()}.
+\code{rio::export}.
 }

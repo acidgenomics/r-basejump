@@ -66,7 +66,7 @@ function will sum the counts across cells to sample level." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -139,7 +139,8 @@ function will sum the counts across cells to sample level.</p>
     </tr>
     <tr>
       <th>fun</th>
-      <td><p><code>string</code>. Name of the aggregation function. Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a></code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Name of the aggregation function. Uses
+<code>match.arg</code>.</p></td>
     </tr>
     </table>
     
@@ -152,12 +153,12 @@ to sample-level.</p>
 
     <p>This function is intended primarily for quality control analysis.</p>
 <p>Internally it automatically obtains the cell-to-sample groupings and then
-performs aggregation with the <code><a href='aggregate.html'>aggregateCols()</a></code> function.</p>
+performs aggregation with the <code>aggregateCols</code> function.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>sce</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 2 
 #&gt; metadata(1): aggregate
 #&gt; assays(1): counts
@@ -187,7 +188,7 @@ performs aggregation with the <code><a href='aggregate.html'>aggregateCols()</a>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

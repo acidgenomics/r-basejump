@@ -8,12 +8,12 @@ separator(sep = c("─", "=", "-", "+"),
   times = min(c(getOption("width", 72L), 72L)))
 }
 \arguments{
-\item{sep}{\code{string} of length 1. Separator character.}
+\item{sep}{\code{character(1)} of length 1. Separator character.}
 
 \item{times}{\code{scalar integer}. Number of times to repeat.}
 }
 \value{
-\code{string}.
+\code{character(1)}.
 }
 \description{
 Maximum of 72 characters wide.

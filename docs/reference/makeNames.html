@@ -35,7 +35,7 @@
 <meta property="og:title" content="Make Syntactically Valid Names — makeNames" />
 
 <meta property="og:description" content="For atomic vectors, these functions will sanitize the values. Otherwise,
-they will set names(), rownames(), and/or colnames() without
+they will set names, rownames, and/or colnames without
 modification of the values." />
 <meta name="twitter:card" content="summary" />
 
@@ -67,7 +67,7 @@ modification of the values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@ modification of the values." />
     <div class="ref-description">
     
     <p>For <code>atomic</code> vectors, these functions will sanitize the values. Otherwise,
-they will set <code><a href='https://www.rdocumentation.org/packages/base/topics/names'>names()</a></code>, <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames()</a></code>, and/or <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames()</a></code> without
+they will set <code>names</code>, <code>rownames</code>, and/or <code>colnames</code> without
 modification of the values.</p>
     
     </div>
@@ -134,18 +134,6 @@ modification of the values.</p>
 
 <span class='fu'>makeDimnames</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for atomic</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for atomic</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for atomic</span>
-<span class='fu'>snake</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for atomic</span>
-<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
 <span class='co'># S4 method for character</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
@@ -168,6 +156,18 @@ modification of the values.</p>
 <span class='fu'>snake</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for factor</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for atomic</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for atomic</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for atomic</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for atomic</span>
 <span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for list</span>
@@ -280,7 +280,7 @@ modification of the values.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p><code>character</code> or object for which <code><a href='https://www.rdocumentation.org/packages/base/topics/names'>names()</a></code> assignment will be
+      <td><p><code>character</code> or object for which <code>names</code> assignment will be
 meaningful.</p></td>
     </tr>
     <tr>
@@ -299,19 +299,19 @@ meaningful.</p></td>
     </tr>
     <tr>
       <th>strict</th>
-      <td><p><code>boolean</code>. Enforce strict name sanitization. When <code>TRUE</code>, this
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Enforce strict name sanitization. When <code>TRUE</code>, this
 does not allow the return of any capitalized acronyms. "RNA" will become
 "Rna", for example.</p></td>
     </tr>
     <tr>
       <th>rownames</th>
-      <td><p><code>boolean</code>. Apply sanitization on row names. This is not
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Apply sanitization on row names. This is not
 generally recommended by default, since rownames commonly contain gene
 identifiers that should not be modified.</p></td>
     </tr>
     <tr>
       <th>colnames</th>
-      <td><p><code>boolean</code>. Apply sanitization on column names. This is
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Apply sanitization on column names. This is
 generally recommended by default.</p></td>
     </tr>
     </table>
@@ -319,7 +319,7 @@ generally recommended by default.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Object with syntatically valid names. For objects supporting
-<code><a href='https://www.rdocumentation.org/packages/base/topics/names'>names()</a></code>, the underlying data returns unchanged.</p>
+<code>names</code>, the underlying data returns unchanged.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -329,13 +329,13 @@ However, it is recommended to avoid using it for variable assignments into an
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p><code>makeNames()</code> sanitizes names using underscores instead of dots, the
-convention used by <code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>make.names()</a></code>.</p>
+    <p><code>makeNames</code> sanitizes names using underscores instead of dots, the
+convention used by <code>make.names</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>make.names()</a></code>.</p></li>
+<li><p><code>make.names</code>.</p></li>
 <li><p><a href='https://cran.r-project.org/package=janitor'>janitor</a> contains a number of
 useful functions that provide similar sanitization support, but isn't
 designed to work natively with <a href='https://bioconductor.org'>Bioconductor</a> and
@@ -354,7 +354,7 @@ S4 object classes.</p></li>
 #&gt;  [9] "Mazda RX4"       "%GC"             "5prime"          "5'-3' bias"     
 #&gt; [13] "123"             NA               </div><div class='input'><span class='fu'>camel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "helloWorld"      "helloWORLD"      "rnaiClones"      "nCount"         
 #&gt;  [5] "tx2gene"         "tx2GeneID"       "g2mScore"        "worfdbHTMLRemap"
-#&gt;  [9] "mazdaRX4"        "percentGC"       "x5prime"         "x5.3Bias"       
+#&gt;  [9] "mazdaRX4"        "percentGC"       "x5prime"         "x5x3Bias"       
 #&gt; [13] "x123"            NA               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "hello.world"       "HELLO.WORLD"       "RNAI.clones"      
 #&gt;  [4] "n.Count"           "tx2gene"           "TX2.Gene.ID"      
 #&gt;  [7] "G2M.Score"         "worfdb.HTML.Remap" "Mazda.RX4"        
@@ -365,7 +365,7 @@ S4 object classes.</p></li>
 #&gt; [10] "percent_gc"        "x5prime"           "x5_3_bias"        
 #&gt; [13] "x123"              NA                 </div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "HelloWorld"      "HELLOWORLD"      "RNAIClones"      "NCount"         
 #&gt;  [5] "Tx2gene"         "TX2GeneID"       "G2MScore"        "WorfdbHTMLRemap"
-#&gt;  [9] "MazdaRX4"        "PercentGC"       "X5prime"         "X5.3Bias"       
+#&gt;  [9] "MazdaRX4"        "PercentGC"       "X5prime"         "X5X3Bias"       
 #&gt; [13] "X123"            NA               </div><div class='input'><span class='fu'>makeNames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "hello_world"     "HELLO_WORLD"     "RNAi_clones"     "nCount"         
 #&gt;  [5] "tx2gene"         "TX2GeneID"       "G2M_Score"       "worfdbHTMLRemap"
 #&gt;  [9] "Mazda_RX4"       "X_GC"            "X5prime"         "X5__3__bias"    
@@ -512,7 +512,7 @@ S4 object classes.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

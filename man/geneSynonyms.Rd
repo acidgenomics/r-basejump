@@ -7,7 +7,7 @@
 geneSynonyms(organism)
 }
 \arguments{
-\item{organism}{\code{string}. Supported organisms: \emph{Homo sapiens},
+\item{organism}{\code{character(1)}. Supported organisms: \emph{Homo sapiens},
 \emph{Mus musculus}, \emph{Drosophila melanogaster}.}
 }
 \value{

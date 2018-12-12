@@ -21,8 +21,8 @@ data describes the cells.}
 
 \item{metadata}{\code{list}. Metadata.}
 
-\item{transgeneNames}{\code{character}. Vector indicating which assay
-rows denote transgenes (e.g. EGFP, TDTOMATO).}
+\item{transgeneNames}{\code{character}. Vector indicating which assay rows denote
+transgenes (e.g. EGFP, TDTOMATO).}
 
 \item{spikeNames}{\code{character}. Vector indicating which assay rows denote
 spike-in sequences (e.g. ERCCs).}
@@ -32,27 +32,28 @@ spike-in sequences (e.g. ERCCs).}
 }
 \description{
 This function is a utility wrapper for
-\code{SummarizedExperiment::SummarizedExperiment()} that provides automatic
+\code{SummarizedExperiment::SummarizedExperiment} that provides automatic
 subsetting for row and column data, as well as automatic handling of
 transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the \code{metadata()}
+constructor by slotting useful session information into the \code{metadata}
 slot:
 }
 \details{
 \itemize{
-\item \code{date}: Today's date, returned from \code{Sys.Date()}.
-\item \code{wd}: Working directory, returned from \code{getwd()}.
-\item \code{sessionInfo}: \code{sessioninfo::session_info()} return.
+\item \code{date}: Today's date, returned from \code{Sys.Date}.
+\item \code{wd}: Working directory, returned from \code{getwd}.
+\item \code{sessionInfo}: \code{sessioninfo::session_info} return.
 }
 }
 \examples{
-library(SingleCellExperiment)
 data(sce)
 object <- sce
-assays <- assays(object)
-rowRanges <- rowRanges(object)
-colData <- colData(object)
-metadata <- metadata(object)
+
+assays <- SummarizedExperiment::assays(object)
+rowRanges <- SummarizedExperiment::rowRanges(object)
+colData <- SummarizedExperiment::colData(object)
+metadata <- S4Vectors::metadata(object)
+
 x <- makeSingleCellExperiment(
     assays = assays,
     rowRanges = rowRanges,
@@ -63,8 +64,8 @@ print(x)
 }
 \seealso{
 \itemize{
-\item \code{SummarizedExperiment::SummarizedExperiment()}.
-\item \code{SingleCellExperiment::SingleCellExperiment()}.
+\item \code{SummarizedExperiment::SummarizedExperiment}.
+\item \code{SingleCellExperiment::SingleCellExperiment}.
 \item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.

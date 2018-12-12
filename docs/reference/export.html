@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -128,18 +128,20 @@
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>human</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>humanize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>slotNames</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"assays"</span>,
+  <span class='st'>"colData"</span>, <span class='st'>"rowData"</span>, <span class='st'>"Gene2Symbol"</span>, <span class='st'>"Ensembl2Entrez"</span>))
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>export</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>human</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>humanize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>slotNames</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"assays"</span>,
+  <span class='st'>"colData"</span>, <span class='st'>"rowData"</span>, <span class='st'>"Gene2Symbol"</span>, <span class='st'>"Ensembl2Entrez"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Object.</p></td>
+      <td><p>An object supporting <code>dim</code> to be written to disk.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -147,29 +149,36 @@
     </tr>
     <tr>
       <th>file</th>
-      <td><p><code>string</code>. File path.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. File path. Specify <code>file</code> or <code>format</code> but not
+both.</p></td>
     </tr>
     <tr>
       <th>format</th>
-      <td><p>An optional character string containing the file format, which can be used to override the format inferred from <code>file</code> or, in lieu of specifying <code>file</code>, a file with the symbol name of <code>x</code> and the specified file extension will be created. Must specify <code>file</code> and/or <code>format</code>. Shortcuts include: &#8220;,&#8221; (for comma-separated values), &#8220;;&#8221; (for semicolon-separated values), &#8220;|&#8221; (for pipe-separated values), and &#8220;dump&#8221; for <code><a href='https://www.rdocumentation.org/packages/base/topics/dump'>dump</a></code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. An optional character string containing the
+file format, which can be used to override the format inferred from <code>file</code>,
+or in lieu of specifying <code>file</code>.</p></td>
     </tr>
     <tr>
       <th>name</th>
-      <td><p><code>string</code>. Name to use on disk. If left <code>NULL</code>, will use the name
-of the object instead.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Name to use on disk. If left <code>NULL</code>, will use the
+name of the object instead.</p></td>
     </tr>
     <tr>
       <th>dir</th>
-      <td><p><code>string</code>. Directory path.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Directory path.</p></td>
     </tr>
     <tr>
       <th>compress</th>
-      <td><p><code>boolean</code>. Apply gzip compression to all files.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Apply gzip compression to all files.</p></td>
     </tr>
     <tr>
-      <th>human</th>
-      <td><p><code>boolean</code>. Automatically convert gene IDs to gene symbols in the
-<code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames()</a></code> and sample IDs to sample names in the <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames()</a></code>.</p></td>
+      <th>humanize</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Automatically convert gene IDs to gene symbols
+in the <code>rownames</code> and sample IDs to sample names in the <code>colnames</code>.</p></td>
+    </tr>
+    <tr>
+      <th>slotNames</th>
+      <td><p><code>character</code>. Names of slots to include when writing to disk.</p></td>
     </tr>
     </table>
     
@@ -179,22 +188,22 @@ of the object instead.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a wrapper for <code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export()</a></code> that adds support for additional S4
+    <p>This is a wrapper for <code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export</a></code> that adds support for additional S4
 classes in Bioconductor.</p>
     
     <h2 class="hasAnchor" id="row-names"><a class="anchor" href="#row-names"></a>Row names</h2>
 
     
-    <p>The standard <code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export()</a></code> call will drop rownames when exporting to CSV.
-The <code>readr::write_*()</code> family of functions also never write rownames. This is
-a <em>really poor</em> default setting for handling genomic data, which often
-contain gene identifiers in the rownames. Here we're performing any internal
-tibble coercion step to ensure rownames are always moved to a "<code>rowname</code>"
-column in the CSV export.</p>
+    <p>The standard <code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export</a></code> call will drop rownames when exporting to CSV. The
+readr family of functions also never write rownames. This is a <em>really poor</em>
+default setting for handling genomic data, which often contain gene
+identifiers in the rownames. Here we're performing any internal tibble
+coercion step to ensure rownames are always moved to a "<code>rowname</code>" column in
+the CSV export.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -208,7 +217,9 @@ column in the CSV export.</p>
 #&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: DelayedArray</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: matrixStats</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: 'matrixStats'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:Biobase':</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyMissing, rowMedians</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocParallel</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>    anyMissing, rowMedians</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:basejump':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    rowRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocParallel</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: 'DelayedArray'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:matrixStats':</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
@@ -217,10 +228,10 @@ column in the CSV export.</p>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>)
 
 <span class='co'>## matrix ====</span>
-<span class='no'>rnaseq_counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assay</a></span>(<span class='no'>rse</span>)
+<span class='no'>rnaseq_counts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assay</a></span>(<span class='no'>rse</span>)
 <span class='fu'>export</span>(<span class='no'>rnaseq_counts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Exported rnaseq_counts.csv.</span></div><div class='input'>
 <span class='co'>## sparseMatrix ====</span>
-<span class='no'>single_cell_counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assay</a></span>(<span class='no'>sce</span>)
+<span class='no'>single_cell_counts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assay</a></span>(<span class='no'>sce</span>)
 <span class='fu'>export</span>(<span class='no'>single_cell_counts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"mtx"</span>)</div><div class='output co'>#&gt; <span class='message'>Exported single_cell_counts.mtx, single_cell_counts.mtx.colnames, single_cell_counts.mtx.rownames.</span></div><div class='input'>
 <span class='co'>## Clean up.</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/files'>file.remove</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(
@@ -228,7 +239,32 @@ column in the CSV export.</p>
     <span class='st'>"single_cell_counts.mtx"</span>,
     <span class='st'>"single_cell_counts.mtx.colnames"</span>,
     <span class='st'>"single_cell_counts.mtx.rownames"</span>
-))</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE</div></pre>
+))</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE</div><div class='input'>
+<span class='co'>## SummarizedExperiment ====</span>
+<span class='fu'>export</span>(<span class='no'>rse</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Exporting assays: counts</span></div><div class='output co'>#&gt; <span class='message'>Exported counts.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported colData.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported rowData.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported Gene2Symbol.csv.</span></div><div class='output co'>#&gt; <span class='message'>4 genes don't map to Entrez.</span></div><div class='output co'>#&gt; <span class='message'>2 genes map to multiple Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'>Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='output co'>#&gt; <span class='message'>Exported Ensembl2Entrez.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported rse to /data01/git/basejump/docs/reference/example/rse.</span></div><div class='input'>
+<span class='co'>## SingleCellExperiment ====</span>
+<span class='fu'>export</span>(<span class='no'>sce</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Exporting assays: counts</span></div><div class='output co'>#&gt; <span class='message'>Exported counts.mtx, counts.mtx.colnames, counts.mtx.rownames.</span></div><div class='output co'>#&gt; <span class='message'>Exported colData.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported rowData.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported Gene2Symbol.csv.</span></div><div class='output co'>#&gt; <span class='message'>4 genes don't map to Entrez.</span></div><div class='output co'>#&gt; <span class='message'>2 genes map to multiple Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'>Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='output co'>#&gt; <span class='message'>Exported Ensembl2Entrez.csv.</span></div><div class='output co'>#&gt; <span class='message'>Exported sce to /data01/git/basejump/docs/reference/example/sce.</span></div><div class='output co'>#&gt; $assays
+#&gt; $assays$counts
+#&gt;                                                                       matrix 
+#&gt;          "/data01/git/basejump/docs/reference/example/sce/assays/counts.mtx" 
+#&gt;                                                                     barcodes 
+#&gt; "/data01/git/basejump/docs/reference/example/sce/assays/counts.mtx.colnames" 
+#&gt;                                                                        genes 
+#&gt; "/data01/git/basejump/docs/reference/example/sce/assays/counts.mtx.rownames" 
+#&gt; 
+#&gt; 
+#&gt; $colData
+#&gt; [1] "/data01/git/basejump/docs/reference/example/sce/colData.csv"
+#&gt; 
+#&gt; $rowData
+#&gt; [1] "/data01/git/basejump/docs/reference/example/sce/rowData.csv"
+#&gt; 
+#&gt; $Gene2Symbol
+#&gt; [1] "/data01/git/basejump/docs/reference/example/sce/Gene2Symbol.csv"
+#&gt; 
+#&gt; $Ensembl2Entrez
+#&gt; [1] "/data01/git/basejump/docs/reference/example/sce/Ensembl2Entrez.csv"
+#&gt; </div><div class='output co'>#&gt; <span class='message'>Exporting reducedDims: </span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -255,7 +291,7 @@ column in the CSV export.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

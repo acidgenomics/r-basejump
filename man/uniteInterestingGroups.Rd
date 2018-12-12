@@ -16,8 +16,8 @@ uniteInterestingGroups(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that
-define the samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}. Groups of interest that define the
+samples. If left unset, defaults to \code{sampleName}.}
 }
 \value{
 Modified object, containing an \code{interestingGroups} column.

@@ -13,10 +13,10 @@ loadDataAsName(..., dir = getOption("basejump.load.dir", "."),
 arguments are interpreted using non-standard evaluation, and \emph{should not
 be quoted}.}
 
-\item{dir}{\code{string}. Directory path.}
+\item{dir}{\code{character(1)}. Directory path.}
 
-\item{envir}{\code{environment} to use for assignment. Defaults to
-\code{parent.frame()}, which will assign into the calling environment.}
+\item{envir}{\code{environment} to use for assignment. Defaults to \code{parent.frame},
+which will assign into the calling environment.}
 }
 \value{
 Invisible named \code{character}. File paths.

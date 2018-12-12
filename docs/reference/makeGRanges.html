@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -133,15 +133,16 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>organism</th>
-      <td><p><code>string</code>. Full Latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Full Latin organism name
+(e.g. "<code>Homo sapiens</code>").</p></td>
     </tr>
     <tr>
       <th>level</th>
-      <td><p><code>string</code>. Return ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Return ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
     </tr>
     <tr>
       <th>genomeBuild</th>
-      <td><p><code>string</code>. Ensembl genome build assembly nam (e.g.
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Ensembl genome build assembly name (e.g.
 <code>"GRCh38"</code>). If set <code>NULL</code>, defaults to the most recent build available.
 Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></td>
     </tr>
@@ -156,7 +157,7 @@ Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></td>
     </tr>
     <tr>
       <th>file</th>
-      <td><p><code>string</code>. File path.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. File path.</p></td>
     </tr>
     </table>
     
@@ -181,7 +182,7 @@ back to version 87.</p>
 <p>Genome build: use "<code>GRCh38</code>" instead of "<code>hg38</code>" for the genome build, since
 we're querying Ensembl and not UCSC.</p></li>
 <li><p><code>makeGRangesFromEnsDb</code>: Use specific <code>EnsDb</code> object as annotation source.
-Alternatively, can pass in an EnsDb package name as a <code>string</code>.</p></li>
+Alternatively, can pass in an EnsDb package name as a <code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.</p></li>
 <li><p><code>makeGRangesFromGFF</code>: The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2. We recommend
@@ -189,9 +190,9 @@ using a GTF file instead of a GFF3 file, if possible.</p>
 <p>The UCSC website has detailed conventions on the GFF3 format, including
 the metadata columns.</p>
 <p>Remote URLs and compressed files are supported.</p></li>
-<li><p><code>annotable</code>: <code>annotable()</code> is a legacy convenience function that calls
-<code>makeGRangesFromEnsembl()</code> and returns a <code>tibble</code> instead of <code>GRanges</code>. Note
-that <code>GRanges</code> can also be coercing using <code><a href='https://www.rdocumentation.org/packages/BiocGenerics/topics/as.data.frame'>BiocGenerics::as.data.frame()</a></code>.</p></li>
+<li><p><code>annotable</code>: <code>annotable</code> is a legacy convenience function that calls
+<code>makeGRangesFromEnsembl</code> and returns a <code>tibble</code> instead of <code>GRanges</code>. Note
+that <code>GRanges</code> can also be coercing using <code><a href='https://www.rdocumentation.org/packages/BiocGenerics/topics/as.data.frame'>BiocGenerics::as.data.frame</a></code>.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="broad-class-definitions"><a class="anchor" href="#broad-class-definitions"></a>Broad class definitions</h2>
@@ -213,7 +214,7 @@ groups:</p><ul>
     <h2 class="hasAnchor" id="grch-hg-legacy-annotations"><a class="anchor" href="#grch-hg-legacy-annotations"></a>GRCh37 (hg19) legacy annotations</h2>
 
     
-    <p><code>makeGRangesFromEnsembl()</code> supports the legacy <em>Homo sapiens</em> GRCh37 (release
+    <p><code>makeGRangesFromEnsembl</code> supports the legacy <em>Homo sapiens</em> GRCh37 (release
 75) build by internally querying the <a href='https://bioconductor.org/packages/EnsDb.Hsapiens.v75/'>EnsDb.Hsapiens.v75</a> package.
 Alternatively, the corresponding GTF/GFF file can be loaded directly from
 GENCODE or Ensembl.</p>
@@ -223,20 +224,20 @@ GENCODE or Ensembl.</p>
     <div class='dont-index'><ul>
 <li><p><a href='https://bioconductor.org/packages/AnnotationHub/'>AnnotationHub</a>.</p></li>
 <li><p><a href='https://bioconductor.org/packages/ensembldb/'>ensembldb</a>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/rtracklayer/topics/export'>rtracklayer::import()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/GenomicFeatures/topics/makeTxDbFromGFF'>GenomicFeatures::makeTxDbFromGFF()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/rtracklayer/topics/export'>rtracklayer::import</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/GenomicFeatures/topics/makeTxDbFromGFF'>GenomicFeatures::makeTxDbFromGFF</a></code>.</p></li>
 </ul></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## makeGRangesFromEnsembl ====</span>
 <span class='co'>## Genes</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.14.1 (2018-10-24).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.14.2 (2018-10-24).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
 #&gt; <span class='message'>  - Genome Build: GRCh38</span>
 #&gt; <span class='message'>  - Ensembl Release: 94</span>
 #&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Using `geneName` column instead of `symbol`.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 65687 ranges and 7 metadata columns"</div><div class='input'>
 <span class='co'>## Transcripts</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.14.1 (2018-10-24).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.14.2 (2018-10-24).</span></div><div class='output co'>#&gt; <span class='message'>AH64923: Ensembl 94 EnsDb for Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
 #&gt; <span class='message'>  - Genome Build: GRCh38</span>
 #&gt; <span class='message'>  - Ensembl Release: 94</span>
 #&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Using `geneName` column instead of `symbol`.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 228432 ranges and 13 metadata columns"</div><div class='input'>
@@ -280,7 +281,7 @@ GENCODE or Ensembl.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

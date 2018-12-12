@@ -7,9 +7,9 @@
 parseRd(object, tag)
 }
 \arguments{
-\item{object}{\code{Rd}. R documentation, returned from \code{tools::Rd_db()}.}
+\item{object}{\code{Rd}. R documentation, returned from \code{tools::Rd_db}.}
 
-\item{tag}{\code{string}. Desired metadata type. For example, these are supported:
+\item{tag}{\code{character(1)}. Desired metadata type. For example, these are supported:
 \itemize{
 \item "\code{title}".
 \item "\code{description}".
@@ -22,7 +22,7 @@ parseRd(object, tag)
 }}
 }
 \description{
-Modified version of \code{tools:::.Rd_get_metadata()} that keeps whitespace and
+Modified version of \code{tools:::.Rd_get_metadata} that keeps whitespace and
 returns \code{character} instead of \code{matrix}.
 }
 \examples{
@@ -36,5 +36,5 @@ examples <- parseRd(Rd, tag = "examples")
 print(examples)
 }
 \seealso{
-\code{tools::Rd_db()}.
+\code{tools::Rd_db}.
 }

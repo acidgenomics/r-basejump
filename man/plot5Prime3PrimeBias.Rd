@@ -19,10 +19,10 @@ RNA-seq data can have specific biases at either the 5’ or 3’ end of sequence
 fragments.
 }
 \details{
-It is common to see a small amount of bias, especially if polyA
-enrichment was performed, or if there is any sample degradation. If a large
-amount of bias is observed here, be sure to analyze the samples with a
-Bioanalyzer and check the RIN scores.
+It is common to see a small amount of bias, especially if polyA enrichment
+was performed, or if there is any sample degradation. If a large amount of
+bias is observed here, be sure to analyze the samples with a Bioanalyzer and
+check the RIN scores.
 
 5' (3') bias is generally calculated as the median of the following ratio:\preformatted{[mean expression of 5' (3')] / [mean expression of whole transcript]
 }

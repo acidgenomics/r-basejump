@@ -22,7 +22,7 @@ extractLocal(definition)
 \item{signature}{the signature of classes to match to the arguments
     of \code{f}.  See the details below.}
 
-\item{package}{\code{string}. Package name.}
+\item{package}{\code{character(1)}. Package name.}
 
 \item{definition}{ A function definition, which will become the method
     called when the arguments in a call to \code{f} match the
@@ -35,8 +35,8 @@ extractLocal(definition)
 }
 \value{
 \itemize{
-\item \code{methodFormals()}: \code{list}. Extract the sealed formal arguments.
-\item \code{methodFunction()}: \code{function}. Extract the sealed function.
+\item \code{methodFormals}: \code{list}. Extract the sealed formal arguments.
+\item \code{methodFunction}: \code{function}. Extract the sealed function.
 }
 }
 \description{
@@ -49,12 +49,12 @@ library(BiocGenerics)
 f <- "as.data.frame"
 signature <- "ANY"
 
-## Function.
+## Function
 x <- methodFunction(f = f, signature = signature)
 class(x)
 formals(x)
 
-## Formals.
+## Formals
 x <- methodFormals(f = f, signature = signature)
 class(x)
 print(x)
@@ -63,7 +63,7 @@ print(x)
 \itemize{
 \item Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
 \item \code{help(topic = "MethodDefinition-class", package = "methods")}.
-\item \code{methods::selectMethod()}.
-\item \code{methods::setMethod()}.
+\item \code{methods::selectMethod}.
+\item \code{methods::setMethod}.
 }
 }

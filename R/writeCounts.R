@@ -1,10 +1,10 @@
 #' Write Counts
 #'
 #' Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq
-#' counts are written to disk as comma separated values ("`.csv`"). Single-cell
-#' RNA-seq counts are written to disk in MatrixMarket format ("`.mtx`"), along
-#' with the sample barcodes ("`.colnames`"), and gene identifiers
-#' ("`.rownames`").
+#' counts are written to disk as comma separated values ("`.CSV`"). Single-cell
+#' RNA-seq counts are written to disk in MatrixMarket format ("`.MTX`"), along
+#' with the sample barcodes ("`.COLNAMES`"), and gene identifiers
+#' ("`.ROWNAMES`").
 #'
 #' Automatic gzip compression is offered as a user-defined option. This setting
 #' is enabled by default to save disk space. Note that the [readr][] package,
@@ -30,9 +30,11 @@
 #' @examples
 #' library(SummarizedExperiment)
 #' library(SingleCellExperiment)
+#'
 #' data(rse, sce)
-#' rnaseq_counts <- assay(rse)
-#' single_cell_counts <- assay(sce)
+#'
+#' rnaseq_counts <- SummarizedExperiment::assay(rse)
+#' single_cell_counts <- SummarizedExperiment::assay(sce)
 #'
 #' writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
 #' list.files("example")

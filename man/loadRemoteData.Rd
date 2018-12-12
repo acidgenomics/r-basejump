@@ -9,8 +9,8 @@ loadRemoteData(url, envir = globalenv())
 \arguments{
 \item{url}{\code{character}. Remote URL file path(s) to R data.}
 
-\item{envir}{\code{environment} to use for assignment. Defaults to
-\code{parent.frame()}, which will assign into the calling environment.}
+\item{envir}{\code{environment} to use for assignment. Defaults to \code{parent.frame},
+which will assign into the calling environment.}
 }
 \value{
 Invisible named \code{character}. Local object name as the name, and the

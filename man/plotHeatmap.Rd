@@ -66,27 +66,26 @@ plotQuantileHeatmap(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough arguments to \code{pheatmap::pheatmap()}. The names of the
+\item{...}{Passthrough arguments to \code{pheatmap::pheatmap}. The names of the
 arguments should be formatted in camel case, not snake case.}
 
-\item{assay}{\code{scalar}. Name or index of count matrix slotted in
-\code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
-be defined in \code{SummarizedExperiment::assayNames()}.}
+\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
+When passing in a string, the name must be defined in \code{assayNames}.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that
-define the samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}. Groups of interest that define the
+samples. If left unset, defaults to \code{sampleName}.}
 
-\item{scale}{\code{string}. Whether the values should be centered and scaled in
+\item{scale}{\code{character(1)}. Whether the values should be centered and scaled in
 either the row or column direction ("\code{row}", "\code{column}"), or remain
 unscaled ("\code{none}").}
 
-\item{clusteringMethod}{\code{string}. Clustering method. Accepts the same values
-as \code{stats::hclust()}.}
+\item{clusteringMethod}{\code{character(1)}. Clustering method. Accepts the same values
+as \code{stats::hclust}.}
 
-\item{clusterRows, clusterCols}{\code{boolean}. Arrange with hierarchical
+\item{clusterRows, clusterCols}{\code{logical(1)}. Arrange with hierarchical
 clustering.}
 
-\item{showRownames, showColnames}{\code{boolean}. Show row or column names.}
+\item{showRownames, showColnames}{\code{logical(1)}. Show row or column names.}
 
 \item{treeheightRow, treeheightCol}{\code{scalar integer}. Size of the row and
 column dendrograms. Use \code{0} to disable.}
@@ -95,10 +94,10 @@ column dendrograms. Use \code{0} to disable.}
 or values to use for plot. We generally recommend these hexadecimal
 functions from the viridis package:
 \itemize{
-\item \code{viridis::viridis()} (\emph{default}).
-\item \code{viridis::inferno()}.
-\item \code{viridis::magma()}.
-\item \code{viridis::plasma()}.
+\item \code{viridis::viridis} (\emph{default}).
+\item \code{viridis::inferno}.
+\item \code{viridis::magma}.
+\item \code{viridis::plasma}.
 Alternatively, colors can be defined manually using hexadecimal values
 (e.g. \code{c("#FF0000", "#0000FF")}), but this is not generally recommended.
 Refer to the RColorBrewer package for hexadecimal color palettes that may
@@ -109,18 +108,18 @@ be suitable. If set \code{NULL}, will use the default pheatmap colors.
 for legend labels. Note that hexadecimal values are not supported. If set
 \code{NULL}, will use the default pheatmap colors.}
 
-\item{borderColor}{\code{string} or \code{NULL}. Border color. Disabled by default for
+\item{borderColor}{\code{character(1)} or \code{NULL}. Border color. Disabled by default for
 improved aesthetics.}
 
-\item{title}{\code{string} or \code{NULL}. Plot title.}
+\item{title}{\code{character(1)} or \code{NULL}. Plot title.}
 
-\item{method}{\code{string}. Correlation coefficient (or covariance) method to be
+\item{method}{\code{character(1)}. Correlation coefficient (or covariance) method to be
 computed. Defaults to "\code{pearson}" but "\code{spearman}" can also be used.
-Consult the \code{stats::cor()} documentation for more information.}
+Consult the \code{stats::cor} documentation for more information.}
 
 \item{n}{\code{scalar integer}. The number of quantile breaks to create.}
 
-\item{legend}{\code{boolean}. Show the color legend.}
+\item{legend}{\code{logical(1)}. Show the color legend.}
 }
 \value{
 \code{pheatmap}.
@@ -150,8 +149,8 @@ Here we're scaling simply by calculating the standard score (z-score).
 
 See also:
 \itemize{
-\item \code{pheatmap:::scale_rows()}.
-\item \code{base::scale()} for additional scaling approaches.
+\item \code{pheatmap:::scale_rows}.
+\item \code{base::scale} for additional scaling approaches.
 }
 }
 
@@ -159,7 +158,7 @@ See also:
 
 
 Row- and column-wise hierarchical clustering is performed when \code{clusterRows}
-and/or \code{clusterCols} are set to \code{TRUE}. Internally, this calls \code{hclust()},
+and/or \code{clusterCols} are set to \code{TRUE}. Internally, this calls \code{hclust},
 and defaults to the Ward method.
 
 Automatic hierarchical clustering of rows and/or columns can error for some
@@ -169,7 +168,7 @@ NA/NaN/Inf in foreign function call
 
 In this case, either set \code{clusterRows} and/or \code{clusterCols} to \code{FALSE}, or
 you can attempt to pass an \code{hclust} object to these arguments. This is
-recommended as an alternate approach to be used with \code{pheatmap::pheatmap()},
+recommended as an alternate approach to be used with \code{pheatmap::pheatmap},
 which is called internally by our plotting code. Here's how this can be
 accomplished:\preformatted{mat <- assay(mat)
 dist <- dist(mat)
@@ -203,14 +202,14 @@ plotQuantileHeatmap(sce)
 }
 \seealso{
 \itemize{
-\item \code{pheatmap::pheatmap()}.
-\item \code{RColorBrewer::brewer.pal()}.
+\item \code{pheatmap::pheatmap}.
+\item \code{RColorBrewer::brewer.pal}.
 }
 
 \itemize{
-\item \code{pheatmap::pheatmap()}.
-\item \code{stats::cor()}.
-\item \code{stats::hclust()}.
+\item \code{pheatmap::pheatmap}.
+\item \code{stats::cor}.
+\item \code{stats::hclust}.
 }
 }
 \author{

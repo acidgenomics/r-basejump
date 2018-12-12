@@ -9,12 +9,12 @@ dots(..., character = FALSE)
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{character}{\code{boolean}. Return dots (\code{...}) as \code{character}.}
+\item{character}{\code{logical(1)}. Return dots (\code{...}) as \code{character}.}
 }
 \value{
 \itemize{
 \item "\code{character = FALSE}": \code{list}. Objects as \code{name} class. Can return the
-object from the \code{name} with \code{eval()}.
+object from the \code{name} with \code{eval}.
 \item "\code{character = TRUE}": \code{character}. Names of the dots.
 }
 }

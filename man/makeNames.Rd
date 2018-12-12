@@ -164,7 +164,7 @@ makeDimnames(object)
   strict = FALSE)
 }
 \arguments{
-\item{object}{\code{character} or object for which \code{names()} assignment will be
+\item{object}{\code{character} or object for which \code{names} assignment will be
 meaningful.}
 
 \item{...}{Additional arguments.}
@@ -175,24 +175,24 @@ meaningful.}
 \item{unique}{logical; if \code{TRUE}, the resulting elements are
      unique.  This may be desired for, e.g., column names.}
 
-\item{strict}{\code{boolean}. Enforce strict name sanitization. When \code{TRUE}, this
+\item{strict}{\code{logical(1)}. Enforce strict name sanitization. When \code{TRUE}, this
 does not allow the return of any capitalized acronyms. "RNA" will become
 "Rna", for example.}
 
-\item{rownames}{\code{boolean}. Apply sanitization on row names. This is not
+\item{rownames}{\code{logical(1)}. Apply sanitization on row names. This is not
 generally recommended by default, since rownames commonly contain gene
 identifiers that should not be modified.}
 
-\item{colnames}{\code{boolean}. Apply sanitization on column names. This is
+\item{colnames}{\code{logical(1)}. Apply sanitization on column names. This is
 generally recommended by default.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
-\code{names()}, the underlying data returns unchanged.
+\code{names}, the underlying data returns unchanged.
 }
 \description{
 For \code{atomic} vectors, these functions will sanitize the values. Otherwise,
-they will set \code{names()}, \code{rownames()}, and/or \code{colnames()} without
+they will set \code{names}, \code{rownames}, and/or \code{colnames} without
 modification of the values.
 }
 \details{
@@ -201,8 +201,8 @@ However, it is recommended to avoid using it for variable assignments into an
 \code{environment}, as that can introduce conflicts with base functions.
 }
 \note{
-\code{makeNames()} sanitizes names using underscores instead of dots, the
-convention used by \code{make.names()}.
+\code{makeNames} sanitizes names using underscores instead of dots, the
+convention used by \code{make.names}.
 }
 \examples{
 loadRemoteData(url = file.path(basejumpCacheURL, "mn.rda"))
@@ -251,7 +251,7 @@ upperCamel(x) \%>\% names()
 }
 \seealso{
 \itemize{
-\item \code{make.names()}.
+\item \code{make.names}.
 \item \href{https://cran.r-project.org/package=janitor}{janitor} contains a number of
 useful functions that provide similar sanitization support, but isn't
 designed to work natively with \href{https://bioconductor.org}{Bioconductor} and

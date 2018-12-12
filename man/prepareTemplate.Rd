@@ -7,14 +7,14 @@
 prepareTemplate(package, overwrite = FALSE, sourceDir = NULL, ...)
 }
 \arguments{
-\item{package}{\code{string}. Name of package containing the R Markdown template.}
+\item{package}{\code{character(1)}. Name of package containing the R Markdown template.}
 
-\item{overwrite}{\code{boolean}. Should existing destination files be overwritten?}
+\item{overwrite}{\code{logical(1)}. Should existing destination files be overwritten?}
 
-\item{sourceDir}{\code{string}. File path to shared source file directory.
+\item{sourceDir}{\code{character(1)}. File path to shared source file directory.
 Normally this can be left \code{NULL} when working in a standard interactive
 session, but is necessary when developing code in a devtools package
-environment loaded with \code{devtools::load_all()}.}
+environment loaded with \code{devtools::load_all}.}
 
 \item{...}{Additional arguments.}
 }
@@ -31,8 +31,8 @@ subdirectory, the function will return an error.
 \details{
 This code is used internally by:
 \itemize{
-\item \code{bcbioRNASeq::prepareRNASeqTemplate()}.
-\item \code{bcbioSingleCell::prepareSingleCellTemplate()}.
+\item \code{bcbioRNASeq::prepareRNASeqTemplate}.
+\item \code{bcbioSingleCell::prepareSingleCellTemplate}.
 }
 }
 \examples{

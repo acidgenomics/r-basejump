@@ -25,7 +25,7 @@ Count matrix.
 }
 \note{
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
-defined in \code{assayNames()}.
+defined in \code{assayNames}.
 }
 \examples{
 data(rse)

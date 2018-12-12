@@ -22,7 +22,7 @@ Ensembl2Entrez(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{format}{\code{string}. Formatting method to apply:
+\item{format}{\code{character(1)}. Formatting method to apply:
 \itemize{
 \item \code{"1:1"}: \emph{Recommended.} Return with 1:1 mappings. For Ensembl genes that
 don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't map

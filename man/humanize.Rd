@@ -24,7 +24,7 @@ sample IDs).
 Humanize an R Object
 }
 \note{
-This can make dimnames invalid (see \code{make.names()}) and should only
+This can make dimnames invalid (see \code{make.names}) and should only
 be called prior to writing files to disk.
 }
 \examples{
