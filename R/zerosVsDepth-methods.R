@@ -114,7 +114,7 @@ zerosVsDepth.SingleCellExperiment <-  # nolint
             y = as_tibble(sampleData, rownames = NULL),
             by = "sampleID"
         )
-        
+
         out <- as(join, "DataFrame")
         assert(hasRownames(out))
         out

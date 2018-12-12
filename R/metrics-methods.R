@@ -1,9 +1,9 @@
 #' Metrics
 #'
-#' This function takes data stored in `colData()` and consistently returns a
+#' This function takes data stored in `colData` and consistently returns a
 #' tibble grouped by sample by default (`sampleID`).
 #'
-#' `metrics()` always returns `sampleName` and `interestingGroups` columns, even
+#' `metrics` always returns `sampleName` and `interestingGroups` columns, even
 #' when these columns are not defined in `colData`. This is designed to
 #' integrate with plotting functions that use ggplot2 internally.
 #'
@@ -11,12 +11,12 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inheritParams params
 #'
-#' @param fun `string`. Mathematical function name to apply. Uses `match.arg()`.
+#' @param fun `character(1)`. Mathematical function name to apply. Uses `match.arg`.
 #'
 #' @return
 #' - `"tibble"`: `grouped_df`. Grouped by `sampleID` column.
-#' - `"DataFrame"`: `DataFrame`. Rownames are identical to the `colnames()`, of
-#'   the object, like `colData()`.
+#' - `"DataFrame"`: `DataFrame`. Rownames are identical to the `colnames`, of
+#'   the object, like `colData`.
 #'
 #' @examples
 #' data(rse, sce)
@@ -55,7 +55,7 @@ metrics.SummarizedExperiment <-  # nolint
 
 
 #' @describeIn metrics Metrics are sample level. `sampleID` column corresponds
-#'   to `colnames()`.
+#'   to `colnames`.
 #' @export
 setMethod(
     f = "metrics",
@@ -95,7 +95,7 @@ metrics.SingleCellExperiment <-  # nolint
 
 
 #' @describeIn metrics Metrics are cell level. `cellID` column corresponds to
-#'   `colnames()`. Tibble is returned grouped by sample (`sampleID` column).
+#'   `colnames`. Tibble is returned grouped by sample (`sampleID` column).
 #' @export
 setMethod(
     f = "metrics",
@@ -112,7 +112,7 @@ setMethod(
     ) {
         fun <- match.arg(fun)
         message(paste("Calculating", fun, "per sample."))
-        # Consider using `getFromNamespace()` here instead.
+        # Consider using `getFromNamespace` here instead.
         # Note that we're using uppercase here, because `fun` is matched arg.
         FUN <- get(fun, inherits = TRUE)  # nolint
         assert(is.function(FUN))

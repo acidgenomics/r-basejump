@@ -5,7 +5,7 @@
 #' @param plates `scalar integer`. Number of plates.
 #' @param wells `scalar integer`. Number of wells (`96`, `384`).
 #' @param controls `scalar integer`. Number of control wells.
-#' @param prefix `string` or `NULL`. Plate name prefix.
+#' @param prefix `character(1)` or `NULL`. Plate name prefix.
 #'
 #' @return `character`. Well identifiers.
 #'
@@ -76,7 +76,7 @@ microplate <- function(
         ) %>%
             paste(collapse = "|") %>%
             paste0("A(", ., ")$")
-        # Remove the control wells using `grepl()`.
+        # Remove the control wells using `grepl`.
         vector <- vector[!grepl(grep, vector)]
     }
 

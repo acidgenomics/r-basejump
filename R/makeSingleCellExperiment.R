@@ -42,7 +42,7 @@ makeSingleCellExperiment <- function(
     )
 
     # Then coerce to SingleCellExperiment.
-    # Note that `as()` method isn't currently returning valid.
+    # Note that `as` method isn't currently returning valid.
     sce <- SingleCellExperiment(
         assays = assays(rse),
         rowRanges = rowRanges(rse),

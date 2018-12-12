@@ -22,8 +22,8 @@
 #' @export
 #'
 #' @param ... Count matrices, passed in as dots.
-#' @param dir `string`. Output directory.
-#' @param compress `boolean`. Compress the files using gzip.
+#' @param dir `character(1)`. Output directory.
+#' @param compress `logical(1)`. Compress the files using gzip.
 #'
 #' @return Invisible `list`. File paths.
 #'

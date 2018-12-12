@@ -13,19 +13,19 @@
 #'
 #' This code is used internally by:
 #'
-#' - `bcbioRNASeq::prepareRNASeqTemplate()`.
-#' - `bcbioSingleCell::prepareSingleCellTemplate()`.
+#' - `bcbioRNASeq::prepareRNASeqTemplate`.
+#' - `bcbioSingleCell::prepareSingleCellTemplate`.
 #'
 #' @export
 #'
 #' @inheritParams params
 #'
-#' @param package `string`. Name of package containing the R Markdown template.
-#' @param overwrite `boolean`. Should existing destination files be overwritten?
-#' @param sourceDir `string`. File path to shared source file directory.
+#' @param package `character(1)`. Name of package containing the R Markdown template.
+#' @param overwrite `logical(1)`. Should existing destination files be overwritten?
+#' @param sourceDir `character(1)`. File path to shared source file directory.
 #'   Normally this can be left `NULL` when working in a standard interactive
 #'   session, but is necessary when developing code in a devtools package
-#'   environment loaded with `devtools::load_all()`.
+#'   environment loaded with `devtools::load_all`.
 #'
 #' @return Invisible `logical`. Was the file copied?.
 #'

@@ -1,6 +1,6 @@
 #' Humanize an R Object
 #'
-#' @note This can make dimnames invalid (see `make.names()`) and should only
+#' @note This can make dimnames invalid (see `make.names`) and should only
 #' be called prior to writing files to disk.
 #'
 #' @name humanize
@@ -27,12 +27,13 @@ NULL
 
 
 
-humanize.SummarizedExperiment <- function(object) {
-    message("Making the rownames and colnames human readable.")
-    object %>%
-        convertGenesToSymbols() %>%
-        convertSampleIDsToNames()
-}
+humanize.SummarizedExperiment <-  # nolint
+    function(object) {
+        message("Making the rownames and colnames human readable.")
+        object %>%
+            convertGenesToSymbols() %>%
+            convertSampleIDsToNames()
+    }
 
 
 

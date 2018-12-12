@@ -7,9 +7,9 @@
 #'
 #' @export
 #'
-#' @param dir `string`. Directory path.
+#' @param dir `character(1)`. Directory path.
 #'
-#' @return `string`. Directory path.
+#' @return `character(1)`. Directory path.
 #'
 #' @examples
 #' initDir("testdir")

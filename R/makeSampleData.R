@@ -5,12 +5,12 @@
 
 #' Make Sample Data
 #'
-#' Utility function that prepares metadata to be slotted into `colData()`.
+#' Utility function that prepares metadata to be slotted into `colData`.
 #'
 #' This function adheres to the following conventions:
 #'
 #' - All column names will be converted to lower camel case
-#'   (see `camel()` for details).
+#'   (see `camel` for details).
 #' - Required columns:
 #'   - `sampleName`: Human readable sample names. Note that this column is
 #'     useful for plots and doesn't have to match the column names of a

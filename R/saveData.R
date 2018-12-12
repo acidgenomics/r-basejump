@@ -1,6 +1,6 @@
 #' Save Data
 #'
-#' Wrapper for `save()` supporting quick, interactive saving of object names
+#' Wrapper for `save` supporting quick, interactive saving of object names
 #' passed as symbols.
 #'
 #' This function always saves each object into a separate file rather than
@@ -10,16 +10,16 @@
 #' @inheritParams loadData
 #' @inheritParams base::save
 #'
-#' @param overwrite `boolean`. Overwrite existing file.
-#' @param ext `string`. R data serialized (RDS; "`rds`") or R data ("`rda`",
+#' @param overwrite `logical(1)`. Overwrite existing file.
+#' @param ext `character(1)`. R data serialized (RDS; "`rds`") or R data ("`rda`",
 #'   "`RData`"). RDS is preferred when saving single objects per file, which is
-#'   always the convention of `saveData()`, regardless of the extension used.
+#'   always the convention of `saveData`, regardless of the extension used.
 #'
 #' @note This function is desired for interactive use and interprets object
 #'   names using non-standard evaluation. It will **overwrite** existing files
-#'   on disk, following the same conventions as `save()`.
+#'   on disk, following the same conventions as `save`.
 #'
-#' @seealso `save()`, `saveRDS()`.
+#' @seealso `save`, `saveRDS`.
 #'
 #' @return Invisible named `character`. File paths.
 #'
@@ -98,13 +98,13 @@ formals(saveData)[["overwrite"]] <- formalsList[["save.overwrite"]]
 #' @inheritParams params
 #' @inheritParams saveData
 
-#' @param name `string`. Desired variable name.
+#' @param name `character(1)`. Desired variable name.
 #' @param envir `environment`. Environment to use for assignment. Defaults to
-#'   `parent.frame()`, the calling environment.
+#'   `parent.frame`, the calling environment.
 #'
-#' @return Invisible named `string`. File path.
+#' @return Invisible named `character(1)`. File path.
 #'
-#' @note This function attempts to follow the same order as `assign()`.
+#' @note This function attempts to follow the same order as `assign`.
 #'
 #' @examples
 #' data(rse)

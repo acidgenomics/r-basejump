@@ -1,7 +1,7 @@
 #' @name plotCountsPerGene
 #'
 #' @inheritParams params
-#' @param geom `string`. Type of ggplot2 geometric object to use.
+#' @param geom `character(1)`. Type of ggplot2 geometric object to use.
 #'
 #' @examples
 #' data(rse, sce)

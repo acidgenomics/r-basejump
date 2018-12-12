@@ -1,8 +1,8 @@
 #' @inherit base::normalizePath
 #' @export
 #' @seealso
-#' - `file.path()`.
-#' - `normalizePath()`.
+#' - `file.path`.
+#' - `normalizePath`.
 #' @examples
 #' realpath(".")
 #' normalizePath(".")

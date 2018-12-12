@@ -6,13 +6,13 @@
 #' @export
 #'
 #' @param removeFormals `character`. Names of formal arguments to remove from
-#'   `args` list before passing to `do.call()`.
+#'   `args` list before passing to `do.call`.
 #'
-#' @return `list`. Arguments to pass to `do.call()`.
+#' @return `list`. Arguments to pass to `do.call`.
 #'
 #' @seealso
-#' - `standardizeCall()`.
-#' - `do.call()`.
+#' - `standardizeCall`.
+#' - `do.call`.
 #'
 #' @examples
 #' example <- function(object, xxx, ...) {

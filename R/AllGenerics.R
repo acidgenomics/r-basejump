@@ -140,7 +140,7 @@ setGeneric(
 #' @inheritParams params
 #' @export
 #'
-#' @return `string`. Contrast name.
+#' @return `character(1)`. Contrast name.
 setGeneric(
     name = "contrastName",
     def = function(object, ...) {

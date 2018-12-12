@@ -2,9 +2,9 @@
 #' @inherit Gene2Symbol-class
 #' @inheritParams params
 #'
-#' @param format `string`. Formatting method to apply:
+#' @param format `character(1)`. Formatting method to apply:
 #'
-#' - `"makeUnique"`: *Recommended.* Apply `make.unique()` to the `geneName`
+#' - `"makeUnique"`: *Recommended.* Apply `make.unique` to the `geneName`
 #'   column. Gene symbols are made unique, while the gene IDs remain unmodified.
 #' - `"1:1"`: For gene symbols that map to multiple gene IDs, select only the
 #'   first annotated gene ID.
@@ -39,8 +39,8 @@ Gene2Symbol.DataFrame <-  # nolint
         )
 
         # Inform the user about how many symbols multi-map.
-        # Note that `duplicated()` doesn't work on Rle, so we have to coerce
-        # columns to character first (see `as_tibble()` call above).
+        # Note that `duplicated` doesn't work on Rle, so we have to coerce
+        # columns to character first (see `as_tibble` call above).
         duplicated <- duplicated(data[["geneName"]])
         if (any(duplicated)) {
             dupes <- unique(data[["geneName"]][duplicated])

@@ -1,6 +1,6 @@
 #' @inherit base::basename
 #' @export
-#' @seealso `basename()`.
+#' @seealso `basename`.
 #' @examples
 #' basenameSansExt("dir/file.txt")
 #' basenameSansExt("dir/archive.tar.gz")

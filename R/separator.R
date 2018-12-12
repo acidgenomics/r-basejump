@@ -7,10 +7,10 @@
 #'
 #' @export
 #'
-#' @param sep `string` of length 1. Separator character.
+#' @param sep `character(1)` of length 1. Separator character.
 #' @param times `scalar integer`. Number of times to repeat.
 #'
-#' @return `string`.
+#' @return `character(1)`.
 #'
 #' @examples
 #' cat(separator(sep = "=", times = 10L))

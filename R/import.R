@@ -8,41 +8,41 @@
 #' This function supports automatic loading of common file types:
 #'
 #' - `CSV`: Comma Separated Values.\cr
-#'   Imported by `data.table::fread()`.
+#'   Imported by `data.table::fread`.
 #' - `TSV` Tab Separated Values.\cr
-#'   Imported by `data.table::fread()`.
+#'   Imported by `data.table::fread`.
 #' - `TXT`: Text file. *Ambiguous, not recommended*.\cr
-#'   Imported by `data.table::fread()`.
+#'   Imported by `data.table::fread`.
 #' - `XLSX`/`XLS`: Excel workbook.\cr
-#'   Imported by `readxl::read_excel()`.
+#'   Imported by `readxl::read_excel`.
 #' - `MTX`: MatrixMarket sparse matrix.\cr
-#'   Imported by `Matrix::readMM()`.
+#'   Imported by `Matrix::readMM`.
 #' - `GTF`/`GFF`/`GFF3`: General Feature Format.\cr
-#'   Imported by `rtracklayer::import()`.
+#'   Imported by `rtracklayer::import`.
 #' - `JSON`: JSON.
-#'   Imported by `jsonlite::read_json()`.
+#'   Imported by `jsonlite::read_json`.
 #' - `YAML`/`YML`: YAML.
-#'   Imported by `yaml::yaml.load_file()`
+#'   Imported by `yaml::yaml.load_file`
 #' - `RDA`/`RDATA`: R Data.
-#'     - Imported by `load()`.
+#'     - Imported by `load`.
 #'     - Must contain a single object.
-#'     - Doesn't require internal object name to match, unlike `loadData()`.
+#'     - Doesn't require internal object name to match, unlike `loadData`.
 #' - `RDS`: R Data Serialized.\cr
-#'   Imported by `readRDS()`.
+#'   Imported by `readRDS`.
 #'
 #' These file formats will be imported as source code lines by
-#' `readr::read_lines()`: `LOG`, `MD`, `PY`, `R`, `RMD`, `SH`.
+#' `readr::read_lines`: `LOG`, `MD`, `PY`, `R`, `RMD`, `SH`.
 #'
 #' These file formats are blacklisted, and intentionally not supported:
 #' `DOC`, `DOCX`, `PDF`, `PPT`, `PPTX`.
 #'
 #' If a file format isn't supported natively (or blacklisted), the
 #' [rio](https://cran.r-project.org/web/packages/rio/index.html) package will
-#' be used as a fallback attempt. See `rio::import()` for details.
+#' be used as a fallback attempt. See `rio::import` for details.
 #'
 #' @section Delimited Files (CSV/TSV):
 #'
-#' `import()` uses the `fread()` function of the  [data.table][] package to
+#' `import` uses the `fread` function of the  [data.table][] package to
 #' import standard CSV and TSV files. This should work automatically for most
 #' files without issue.
 #'
@@ -53,7 +53,7 @@
 #'
 #' See `help(topic = "fread", package = "data.table")` for details.
 #'
-#' The `read_csv()` and `read_tsv()` functions of the [readr][] package
+#' The `read_csv` and `read_tsv` functions of the [readr][] package
 #' are good alternatives, which return `tibble` data frames (`tbl_df`).
 #'
 #' [data.table]: https://cran.r-project.org/package=data.table
@@ -62,7 +62,7 @@
 #' @section Matrix Market Exchange (MTX/MEX):
 #'
 #' Reading a Matrix Market Exchange (`MTX`) file now requires `COLNAMES` and
-#' `ROWNAMES` sidecar files containing the `colnames()` and `rownames()` of
+#' `ROWNAMES` sidecar files containing the `colnames` and `rownames` of
 #' the sparse matrix. Legacy support for manual loading of these sidecar files
 #' is provided.
 #'
@@ -91,8 +91,8 @@
 #' @export
 #'
 #' @inheritParams params
-#' @param dataFrame `string`. Data frame class to return. Can be set globally
-#'   using the `basejump.data.frame` option.
+#' @param dataFrame `character(1)`. Data frame class to return. Can be set
+#'   globally using the `basejump.data.frame` option.
 #'
 #' Current recommendations (by priority):
 #'

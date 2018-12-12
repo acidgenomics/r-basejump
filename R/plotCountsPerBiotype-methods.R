@@ -36,7 +36,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             isString(trans),
             isString(countsAxisLabel)
         )
-        
+
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
 
@@ -175,7 +175,7 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
             isString(trans),
             isString(countsAxisLabel)
         )
-        
+
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
 

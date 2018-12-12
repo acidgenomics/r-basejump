@@ -1,8 +1,8 @@
 #' Sample Names
 #'
 #' This function will return the human readable sample names if defined
-#' in the `sampleName` column of `sampleData()`. Otherwise it will return
-#' the syntactically valid names defined as the rownames of `sampleData()`.
+#' in the `sampleName` column of `sampleData`. Otherwise it will return
+#' the syntactically valid names defined as the rownames of `sampleData`.
 #'
 #' @name sampleNames
 #' @aliases sampleNames<-

@@ -7,8 +7,8 @@
 #'   compatibility with RNA-Seq differential expression output.
 #'
 #' @seealso
-#' - `gtools::foldchange2logratio()`.
-#' - `gtools::logratio2foldchange()`.
+#' - `gtools::foldchange2logratio`.
+#' - `gtools::logratio2foldchange`.
 #'
 #' @return `numeric`.
 #'

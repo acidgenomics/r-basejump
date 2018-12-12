@@ -1,4 +1,4 @@
-# TODO Consider calling `autopadZeros()` and resorting the columns
+# TODO Consider calling `autopadZeros` and resorting the columns
 # automatically if necessary.
 
 
@@ -6,15 +6,15 @@
 #' Make Summarized Experiment
 #'
 #' This function is a utility wrapper for
-#' `SummarizedExperiment::SummarizedExperiment()` that provides automatic
+#' `SummarizedExperiment::SummarizedExperiment` that provides automatic
 #' subsetting for row and column data, as well as automatic handling of
 #' transgenes and spike-ins. Additionally, it improves upon the standard
-#' constructor by slotting useful session information into the `metadata()`
+#' constructor by slotting useful session information into the `metadata`
 #' slot:
 #'
-#' - `date`: Today's date, returned from `Sys.Date()`.
-#' - `wd`: Working directory, returned from `getwd()`.
-#' - `sessionInfo`: `sessioninfo::session_info()` return.
+#' - `date`: Today's date, returned from `Sys.Date`.
+#' - `wd`: Working directory, returned from `getwd`.
+#' - `sessionInfo`: `sessioninfo::session_info` return.
 #'
 #' @note Column and rows always return sorted alphabetically.
 #'
@@ -27,8 +27,8 @@
 #' - Providing `rowData`: `SummarizedExperiment`.
 #'
 #' @seealso
-#' - `SummarizedExperiment::SummarizedExperiment()`.
-#' - `SingleCellExperiment::SingleCellExperiment()`.
+#' - `SummarizedExperiment::SummarizedExperiment`.
+#' - `SingleCellExperiment::SingleCellExperiment`.
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.
@@ -150,7 +150,7 @@ makeSummarizedExperiment <- function(
     assert(hasValidDimnames(assay))
     # We're going to require that the assay names be sorted, but will perform
     # this step after generating the `SummarizedExperiment` object (see below).
-    # The `SummarizedExperiment()` constructor checks to ensure that all assays
+    # The `SummarizedExperiment` constructor checks to ensure that all assays
     # have matching dimnames, so we can skip that check.
 
     # Row data -----------------------------------------------------------------
@@ -256,7 +256,7 @@ makeSummarizedExperiment <- function(
         colData = colData,
         metadata = metadata
     )
-    # Ensure we're not passing any `NULL` arguments to `do.call()`.
+    # Ensure we're not passing any `NULL` arguments to `do.call`.
     # This step will dynamically handle `rowRanges` and/or `rowData`.
     args <- Filter(Negate(is.null), args)
     se <- do.call(what = SummarizedExperiment, args = args)

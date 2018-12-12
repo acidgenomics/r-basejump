@@ -11,11 +11,11 @@
 #' @inheritParams params
 #' @inheritParams base::apply
 #'
-#' @param removeNA `boolean`. Remove `NA` values from calculations.
-#' @param zeroPropagate `boolean`. Allow propagation of zeroes.
+#' @param removeNA `logical(1)`. Remove `NA` values from calculations.
+#' @param zeroPropagate `logical(1)`. Allow propagation of zeroes.
 #'
 #' @seealso
-#' - `psych::geometric.mean()`.
+#' - `psych::geometric.mean`.
 #' - [Paul McMurdie's code](https://stackoverflow.com/a/25555105).
 #'
 #' @return `numeric`.

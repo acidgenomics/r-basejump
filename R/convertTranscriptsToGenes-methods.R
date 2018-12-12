@@ -5,19 +5,19 @@
 #' @inheritParams params
 #'
 #' @note For objects containing a count matrix, the object rows will be
-#'   collapsed to gene level using `aggregateRows()`. This applies to our
+#'   collapsed to gene level using `aggregateRows`. This applies to our
 #'   `SummarizedExperiment` method.
 #'
-#' @param aggregate `boolean`. For objects supporting `dim()`, aggregate counts
+#' @param aggregate `logical(1)`. For objects supporting `dim`, aggregate counts
 #'   to gene level and collapse the matrix.
-#' @param ... Passthrough to `makeTx2GeneFromEnsembl()`.
+#' @param ... Passthrough to `makeTx2GeneFromEnsembl`.
 #'
 #' @return
 #' - `character`: `factor`. Genes in the values, transcripts in the names.
 #' - `matrix`, `sparseMatrix`, `SummarizedExperiment`: Object containing counts
 #'   collapsed to gene level by default (see `aggregate` argument).
 #'
-#' @seealso `aggregateRows()`.
+#' @seealso `aggregateRows`.
 #'
 #' @examples
 #' data(tx_se)

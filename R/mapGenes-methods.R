@@ -9,13 +9,13 @@
 #'
 #' Some genomes (e.g. Homo sapiens, Mus musculus) contain duplicated gene names
 #' for multiple gene identifiers. Normally we handle these ambiguous gene names
-#' by sanitizing them with `make.names()`. If a user requests a gene name that
+#' by sanitizing them with `make.names`. If a user requests a gene name that
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
 #' @inheritParams params
 #'
-#' @param strict `boolean`. Require all genes to match. Recommended by default.
+#' @param strict `logical(1)`. Require all genes to match. Recommended by default.
 #'   If set `FALSE`, instead will return a warning to the user, and subset the
 #'   genes vector to only include matches.
 #'

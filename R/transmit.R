@@ -9,12 +9,12 @@
 #' @inheritParams saveData
 #' @export
 #'
-#' @param remoteDir `string`. Remote FTP directory path.
-#' @param localDir `string`. Directory where to save files locally.
-#' @param pattern `string`. Pattern to match against remote file names.
-#' @param rename `string` or `NULL`. Rename the local files (including suffix),
+#' @param remoteDir `character(1)`. Remote FTP directory path.
+#' @param localDir `character(1)`. Directory where to save files locally.
+#' @param pattern `character(1)`. Pattern to match against remote file names.
+#' @param rename `character(1)` or `NULL`. Rename the local files (including suffix),
 #'   if desired.
-#' @param compress `boolean`. gzip compress the files after download.
+#' @param compress `logical(1)`. gzip compress the files after download.
 #'
 #' @return Invisible `character`. Local file paths.
 #'
@@ -49,7 +49,7 @@ transmit <- function(
         # Check for public FTP protocol.
         isMatchingRegex(remoteDir, "^ftp\\://")
     )
-    # `RCurl::getURL()` requires a trailing slash.
+    # `RCurl::getURL` requires a trailing slash.
     if (!grepl("/$", remoteDir)) {
         remoteDir <- paste0(remoteDir, "/")
     }

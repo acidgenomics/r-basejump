@@ -1,35 +1,35 @@
 #' Make Syntactically Valid Names
 #'
 #' For `atomic` vectors, these functions will sanitize the values. Otherwise,
-#' they will set `names()`, `rownames()`, and/or `colnames()` without
+#' they will set `names`, `rownames`, and/or `colnames` without
 #' modification of the values.
 #'
 #' `dotted.case` support is provided for matching against base R parameters.
 #' However, it is recommended to avoid using it for variable assignments into an
 #' `environment`, as that can introduce conflicts with base functions.
 #'
-#' @note `makeNames()` sanitizes names using underscores instead of dots, the
-#' convention used by `make.names()`.
+#' @note `makeNames` sanitizes names using underscores instead of dots, the
+#' convention used by `make.names`.
 #'
 #' @name makeNames
 #' @inheritParams params
 #'
-#' @param object `character` or object for which `names()` assignment will be
+#' @param object `character` or object for which `names` assignment will be
 #'   meaningful.
-#' @param rownames `boolean`. Apply sanitization on row names. This is not
+#' @param rownames `logical(1)`. Apply sanitization on row names. This is not
 #'   generally recommended by default, since rownames commonly contain gene
 #'   identifiers that should not be modified.
-#' @param colnames `boolean`. Apply sanitization on column names. This is
+#' @param colnames `logical(1)`. Apply sanitization on column names. This is
 #'   generally recommended by default.
-#' @param strict `boolean`. Enforce strict name sanitization. When `TRUE`, this
+#' @param strict `logical(1)`. Enforce strict name sanitization. When `TRUE`, this
 #'   does not allow the return of any capitalized acronyms. "RNA" will become
 #'   "Rna", for example.
 #'
 #' @return Object with syntatically valid names. For objects supporting
-#'   `names()`, the underlying data returns unchanged.
+#'   `names`, the underlying data returns unchanged.
 #'
 #' @seealso
-#' - `make.names()`.
+#' - `make.names`.
 #' - [janitor](https://cran.r-project.org/package=janitor) contains a number of
 #'   useful functions that provide similar sanitization support, but isn't
 #'   designed to work natively with [Bioconductor](https://bioconductor.org) and
@@ -86,7 +86,7 @@ NULL
 
 
 # Constructors =================================================================
-# `stringr::str_replace_all()` is an alternate approach that uses `regex()`.
+# `stringr::str_replace_all` is an alternate approach that uses `regex`.
 # https://stringr.tidyverse.org/articles/regular-expressions.html
 .sanitizeAcronyms <- function(object) {
     assert(is.atomic(object))
@@ -259,7 +259,7 @@ dotted.character <-  # nolint
             gsub("[\\.]+", ".", .) %>%
             # Strip leading or trailing dots.
             gsub("(^\\.|\\.$)", "", .) %>%
-            # Coerce `"NA"` back to `NA` after `make.names()`.
+            # Coerce `"NA"` back to `NA` after `make.names`.
             sanitizeNA() %>%
             # Standardize any mixed case acronyms.
             .sanitizeAcronyms() %>%

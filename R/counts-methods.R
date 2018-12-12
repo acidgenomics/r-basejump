@@ -3,7 +3,7 @@
 #' Count matrix.
 #'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
-#'   defined in `assayNames()`.
+#'   defined in `assayNames`.
 #'
 #' @name counts
 #' @aliases counts<-
