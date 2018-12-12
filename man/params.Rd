@@ -4,173 +4,177 @@
 \alias{params}
 \title{Parameters}
 \arguments{
-\item{alpha}{\code{scalar numeric}. Adjusted P value ("alpha") cutoff.
-If left \code{NULL}, will use the cutoff defined in the object.}
+\item{alpha}{\code{numeric(1)}. Adjusted P value ("alpha") cutoff. If left \code{NULL},
+will use the cutoff defined in the object.}
 
-\item{aspectRatio}{\code{scalar integer}. Aspect ratio.}
+\item{aspectRatio}{\code{integer(1)}. Aspect ratio.}
 
-\item{assay}{\code{scalar}. Name or index of count matrix slotted in
-\code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
-be defined in \code{SummarizedExperiment::assayNames()}.}
+\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
+When passing in a string, the name must be defined in \code{assayNames}.}
 
 \item{assays}{\code{list}. Count matrices, which must have matching dimensions.
 Counts can be passed in as either a dense matrix (\code{matrix}) or sparse
 matrix (\code{sparseMatrix}).}
 
 \item{bpparam}{\code{bpparamClass}. BiocParallel parameter specifying the back-end
-to be used for computations. See \code{BiocParallel::bpparam()} for details.
+to be used for computations.
 
-We recommend one of the following:
+We recommend using one of the following:
 \itemize{
-\item \code{BiocParallel::bpparam()}.
-\item \code{BiocParallel::SerialParam()}.
-\item \code{BiocParallel::MulticoreParam()}.
+\item \code{BiocParallel::bpparam}.
+\item \code{BiocParallel::SerialParam}.
+\item \code{BiocParallel::MulticoreParam}.
 }}
 
 \item{censorSamples}{\code{character}. Specify a subset of samples to censor.}
 
-\item{check}{\code{boolean}. Perform assert checks.}
+\item{check}{\code{logical(1)}. Perform assert checks.}
 
 \item{colData}{\code{DataFrame}. Metadata describing the assay columns. For bulk
 RNA-seq, this data describes the samples. For single-cell RNA-seq, this
 data describes the cells.}
 
-\item{color}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 color
-scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
-color palette will be used. If manual color definitions are desired, we
-recommend using \code{ggplot2::scale_color_manual()}. To set the discrete color
-palette globally, use
-\code{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())}.}
+\item{color}{\code{ScaleDiscrete}. Desired ggplot2 color scale. Must supply
+discrete values. When set to \code{NULL}, the default ggplot2 color palette will
+be used. If manual color definitions are desired, we recommend using
+\code{ggplot2::scale_color_manual}.
+
+To set the discrete color palette globally, use:\preformatted{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
+}}
 
 \item{counts}{\code{matrix}. Count matrix. Normalized counts are recommended.}
 
-\item{countsAxisLabel}{\code{string}. Counts axis label.}
+\item{countsAxisLabel}{\code{character(1)}. Counts axis label.}
 
-\item{dark}{\code{boolean}. Plot against a dark background using
-\code{basejump::theme_midnight()} ggplot2 theme.}
+\item{dark}{\code{logical(1)}. Plot against a dark background using
+\code{basejump::theme_midnight} ggplot2 theme.}
 
 \item{dimsUse}{\code{integer}. Vector of length 2 that denotes the columns from
 the reduced dimension matrix to use for \code{centerX} and \code{centerY} column
 calculations. Defaults the first and second dimensions.}
 
-\item{dir}{\code{string}. Directory path.}
+\item{dir}{\code{character(1)}. Directory path.}
 
-\item{direction}{\code{string}. Plot "\code{both}", "\code{up}", or "\code{down}" directions.}
+\item{direction}{\code{character(1)}. Plot "\code{both}", "\code{up}", or "\code{down}"
+directions.}
 
-\item{ensemblRelease}{\code{scalar integer}. Ensembl release version (e.g. \code{90}).
+\item{ensemblRelease}{\code{integer(1)}. Ensembl release version (e.g. \code{90}).
 We recommend setting this value if possible, for improved reproducibility.
 When left unset, the latest release available via AnnotationHub/ensembldb
 is used. Note that the latest version available can vary, depending on the
 versions of AnnotationHub and ensembldb in use.}
 
-\item{envir}{\code{environment} to use for assignment. Defaults to
-\code{parent.frame()}, which will assign into the calling environment.}
+\item{envir}{\code{environment} to use for assignment. Defaults to \code{parent.frame},
+which will assign into the calling environment.}
 
-\item{expression}{\code{string}. Calculation to apply. Uses \code{base::match.arg()}
-and defaults to the first argument in the \code{character} vector.}
+\item{expression}{\code{character(1)}. Calculation to apply. Uses \code{match.arg} and
+defaults to the first argument in the \code{character} vector.}
 
-\item{file}{\code{string}. File path.}
+\item{file}{\code{character(1)}. File path.}
 
 \item{fill}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 fill scale. Must
 supply discrete values. When set to \code{NULL}, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
-using \code{ggplot2::scale_fill_manual()}. To set the discrete fill palette
-globally, use \code{options(basejump.fill.discrete = scale_fill_viridis_d())}.}
+using \code{ggplot2::scale_fill_manual}.
 
-\item{flip}{\code{boolean}. Flip x and y axes. Recommended for plots containing
+To set the discrete fill palette globally, use:\preformatted{options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
+}}
+
+\item{flip}{\code{logical(1)}. Flip x and y axes. Recommended for plots containing
 many samples.}
 
 \item{gene2symbol}{\code{Gene2Symbol}. Gene-to-symbol mappings. Must contain
-\code{geneID} and \code{geneName} columns. See \code{Gene2Symbol()} for more information.}
+\code{geneID} and \code{geneName} columns. See \code{Gene2Symbol} for more information.}
 
 \item{genes}{\code{character}. Gene identifiers. It is considered better practice
 to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
 and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.}
 
-\item{genomeBuild}{\code{string}. Ensembl genome build assembly nam (e.g.
+\item{genomeBuild}{\code{character(1)}. Ensembl genome build assembly name (e.g.
 \code{"GRCh38"}). If set \code{NULL}, defaults to the most recent build available.
 Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
 
-\item{geom}{\code{string}. Plot type. Uses \code{base::match.arg()} and defaults to the
+\item{geom}{\code{character(1)}. Plot type. Uses \code{match.arg} and defaults to the
 first argument in the \code{character} vector.}
 
-\item{gffFile}{\code{string}. GFF/GTF (General Feature Format) file.
+\item{gffFile}{\code{character(1)}. GFF/GTF (General Feature Format) file.
 Generally, we recommend using a GTF (GFFv2) instead of a GFFv3 file if
 possible.}
 
-\item{headerLevel}{\code{scalar integer} (\code{1}-\code{7}). Markdown header level.}
+\item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}). Markdown header level.}
 
 \item{i}{Indices specifying elements to extract or replace. Indices are
-\code{numeric} or \code{character} vectors, empty (\code{missing}), or \code{NULL}. See
-\code{help(topic = "Extract", package = "base")} for more information.}
+\code{numeric} or \code{character} vectors, empty (\code{missing}), or \code{NULL}.
 
-\item{inherits}{\code{boolean}. Should the enclosing frames of the \code{environment}
-be searched?}
+For more information:\preformatted{help(topic = "Extract", package = "base")
+}}
 
-\item{interestingGroups}{\code{character}. Groups of interest that
-define the samples. If left unset, defaults to \code{sampleName}.}
+\item{inherits}{\code{logical(1)}. Should the enclosing frames of the
+\code{environment} be searched?}
 
-\item{label}{\code{boolean}. Superimpose sample text labels on the plot.}
+\item{interestingGroups}{\code{character}. Groups of interest that define the
+samples. If left unset, defaults to \code{sampleName}.}
 
-\item{labelSize}{\code{scalar integer}. Size of the text label.}
+\item{label}{\code{logical(1)}. Superimpose sample text labels on the plot.}
 
-\item{lfcThreshold}{\code{scalar numeric}. Log fold change ratio (base
-2) cutoff threshold. If left \code{NULL}, will use the cutoff defined in the
-object.}
+\item{labelSize}{\code{integer(1)}. Size of the text label.}
 
-\item{legend}{\code{boolean}. Show plot legend.}
+\item{lfcThreshold}{\code{numeric(1)}. Log fold change ratio (base 2) cutoff
+threshold. If left \code{NULL}, will use the cutoff defined in the object.}
 
-\item{level}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
+\item{legend}{\code{logical(1)}. Show plot legend.}
 
-\item{limit}{\code{scalar numeric}. Threshold to denote on the plot, using a
-dashed line.}
+\item{level}{\code{character(1)}. Return ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{max}{\code{scalar numeric}. Recommended maximum value cutoff.}
+\item{limit}{\code{numeric(1)}. Threshold to denote on the plot, using a dashed
+line.}
+
+\item{max}{\code{numeric(1)}. Recommended maximum value cutoff.}
 
 \item{metadata}{\code{list}. Metadata.}
 
-\item{min}{\code{scalar numeric}. Recommended minimum value cutoff.}
+\item{min}{\code{numeric(1)}. Recommended minimum value cutoff.}
 
-\item{minCounts}{\code{scalar integer}. Minimum number of counts per gene in the
+\item{minCounts}{\code{integer(1)}. Minimum number of counts per gene in the
 count matrix.}
 
-\item{n}{\code{scalar integer}. Number to include.}
+\item{n}{\code{integer(1)}. Number to include.}
 
-\item{ntop}{\code{scalar integer}. Number of top genes to label.}
+\item{ntop}{\code{integer(1)}. Number of top genes to label.}
 
 \item{object}{Object.}
 
-\item{organism}{\code{string}. Full Latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{character(1)}. Full Latin organism name
+(e.g. "\code{Homo sapiens}").}
 
-\item{perMillion}{\code{boolean}. Display as counts per million.}
+\item{perMillion}{\code{logical(1)}. Display as counts per million.}
 
-\item{perSample}{\code{boolean}. Visualize the distributions per sample.}
+\item{perSample}{\code{logical(1)}. Visualize the distributions per sample.}
 
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
-\item{pointAlpha}{\code{scalar numeric} (\code{0}-\code{1}). Alpha transparency level.
+\item{pointAlpha}{\code{numeric(1)} (\code{0}-\code{1}). Alpha transparency level.
 Useful when there many points in the dataset (e.g. single-cell data), and
 some points can be masked.}
 
-\item{pointColor}{\code{string}. Default point color for the plot.}
+\item{pointColor}{\code{character(1)}. Default point color for the plot.}
 
-\item{pointScalar}{\code{scalar integer}. Default point size for the plot.}
+\item{pointScalar}{\code{integer(1)}. Default point size for the plot.}
 
-\item{pointsAsNumbers}{\code{boolean}. Plot the points as numbers (\code{TRUE}) or
+\item{pointsAsNumbers}{\code{logical(1)}. Plot the points as numbers (\code{TRUE}) or
 dots (\code{FALSE}).}
 
-\item{pointSize}{\code{scalar numeric}. Point size for dots in the plot.}
+\item{pointSize}{\code{numeric(1)}. Point size for dots in the plot.}
 
-\item{prefilter}{\code{boolean}. Apply prefiltering to remove zero count genes.}
+\item{prefilter}{\code{logical(1)}. Apply prefiltering to remove zero count genes.}
 
-\item{progress}{\code{boolean}. Show progress, using progress bars.}
+\item{progress}{\code{logical(1)}. Show progress, using progress bars.}
 
-\item{reducedDim}{\code{string}. Name of reduced dimension matrix slotted in
-\code{SingleCellExperiment::reducedDims()}. Includes TNSE, UMAP, PCA, for
-example.}
+\item{reducedDim}{\code{character(1)}. Name of reduced dimension matrix slotted in
+\code{reducedDims}. Includes TNSE, UMAP, PCA, for example.}
 
-\item{return}{\code{string}. Return type. Uses \code{base::match.arg()}
-internally and defaults to the first argument in the \code{character} vector.}
+\item{return}{\code{character(1)}. Return type. Uses \code{match.arg} internally and
+defaults to the first argument in the \code{character} vector.}
 
 \item{rowData}{\code{DataFrame}. \emph{Use rowRanges (GRanges) instead, if possible}.
 Metadata describing the assay rows, if genomic ranges are not available.}
@@ -178,7 +182,7 @@ Metadata describing the assay rows, if genomic ranges are not available.}
 \item{rowRanges}{\code{GRanges}. Genomic ranges (e.g. genome annotations).
 Metadata describing the assay rows.}
 
-\item{sampleMetadataFile}{\code{string}. Sample metadata file path. CSV
+\item{sampleMetadataFile}{\code{character(1)}. Sample metadata file path. CSV
 or TSV is preferred, but Excel worksheets are also supported. Check the
 documentation for conventions and required columns.}
 
@@ -188,31 +192,34 @@ documentation for conventions and required columns.}
 downregulated genes. Also supports a character string for labeling DEGs
 with the same color, regardless of direction.}
 
-\item{sort}{\code{boolean}. Resort using \code{sort()}.}
+\item{sort}{\code{logical(1)}. Resort using \code{sort}.}
 
 \item{spikeNames}{\code{character}. Vector indicating which assay rows denote
 spike-in sequences (e.g. ERCCs).}
 
-\item{subtitle}{\code{string}. Plot subtitle.}
+\item{subtitle}{\code{character(1)}. Plot subtitle.}
 
-\item{title}{\code{string}. Plot title.}
+\item{title}{\code{character(1)}. Plot title.}
 
-\item{trans}{\code{string}. Name of the axis scale transformation to apply. See
-\code{help("scale_x_continuous", "ggplot2")} for more information.}
+\item{trans}{\code{character(1)}. Name of the axis scale transformation to apply.
 
-\item{transgeneNames}{\code{character}. Vector indicating which assay
-rows denote transgenes (e.g. EGFP, TDTOMATO).}
+For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
+}}
 
-\item{trendline}{\code{boolean}. Include trendline on plot.}
+\item{transgeneNames}{\code{character}. Vector indicating which assay rows denote
+transgenes (e.g. EGFP, TDTOMATO).}
+
+\item{trendline}{\code{logical(1)}. Include trendline on plot.}
 
 \item{tx2gene}{\code{Tx2Gene}. Transcript-to-gene mappings.}
 
-\item{url}{\code{string}. Uniform Resource Locator (URL). HTTP or FTP address.}
+\item{url}{\code{character(1)}. Uniform Resource Locator (URL). HTTP or FTP
+address.}
 
 \item{value}{Value to assign.}
 
-\item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
-recommended to enable this when debugging.}
+\item{verbose}{\code{logical(1)}. Run the function with verbose messages?
+\emph{It is only recommended to enable this when debugging.}}
 
 \item{x}{Object.}
 

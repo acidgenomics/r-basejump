@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Transmit Files from a Remote FTP Server — transmit • basejump</title>
+<title>Gene Names — geneNames • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,10 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Transmit Files from a Remote FTP Server — transmit" />
+<meta property="og:title" content="Gene Names — geneNames" />
 
-<meta property="og:description" content="Utility function that supports easy file matching and download from a remote
-FTP server. Also enables on-the-fly file renaming and compression." />
+<meta property="og:description" content="Convenience function for quickly returning unique gene symbols that map to
+the stable gene IDs that are defined in the row names." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,68 +108,49 @@ FTP server. Also enables on-the-fly file renaming and compression." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Transmit Files from a Remote FTP Server</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/transmit.R'><code>R/transmit.R</code></a></small>
-    <div class="hidden name"><code>transmit.Rd</code></div>
+    <h1>Gene Names</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/geneNames-methods.R'><code>R/geneNames-methods.R</code></a></small>
+    <div class="hidden name"><code>geneNames.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Utility function that supports easy file matching and download from a remote
-FTP server. Also enables on-the-fly file renaming and compression.</p>
+    <p>Convenience function for quickly returning unique gene symbols that map to
+the stable gene IDs that are defined in the row names.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>transmit</span>(<span class='no'>remoteDir</span>, <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='no'>pattern</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>geneNames</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for GRanges</span>
+<span class='fu'>geneNames</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>geneNames</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>remoteDir</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Remote FTP directory path.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>localDir</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Directory where to save files locally.</p></td>
-    </tr>
-    <tr>
-      <th>pattern</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Pattern to match against remote file names.</p></td>
-    </tr>
-    <tr>
-      <th>rename</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>. Rename the local files (including suffix),
-if desired.</p></td>
-    </tr>
-    <tr>
-      <th>compress</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. gzip compress the files after download.</p></td>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible <code>character</code>. Local file paths.</p>
+    <p><code>character</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>remoteDir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(
-    <span class='st'>"ftp://ftp.pantherdb.org"</span>,
-    <span class='st'>"sequence_classifications"</span>,
-    <span class='st'>"current_release"</span>,
-    <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"/"</span>
-)
-<span class='no'>readme</span> <span class='kw'>&lt;-</span> <span class='fu'>transmit</span>(
-    <span class='kw'>remoteDir</span> <span class='kw'>=</span> <span class='no'>remoteDir</span>,
-    <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"README"</span>,
-    <span class='kw'>rename</span> <span class='kw'>=</span> <span class='st'>"panther_readme.txt"</span>,
-    <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</div><div class='output co'>#&gt; <span class='message'>Transmitting files from ftp.pantherdb.org.</span></div><div class='output co'>#&gt; <span class='message'>Files matching pattern:</span>
-#&gt; <span class='message'>[1] "README"</span></div><div class='output co'>#&gt; <span class='message'>Downloading panther_readme.txt.gz.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/basename'>basename</a></span>(<span class='no'>readme</span>)</div><div class='output co'>#&gt; [1] "panther_readme.txt.gz"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/files'>file.exists</a></span>(<span class='no'>readme</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='co'>## Clean up.</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlink'>unlink</a></span>(<span class='no'>readme</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>)
+
+<span class='co'>## SummarizedExperiment ====</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'>geneNames</span>(<span class='no'>rse</span>))</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

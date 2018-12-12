@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -145,35 +145,35 @@
     </tr>
     <tr>
       <th>assay</th>
-      <td><p><code>scalar</code>. Name or index of count matrix slotted in
-<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::assays()</a></code>. When passing in a <code>string</code>, the name must
-be defined in <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::assayNames()</a></code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>. Name or index of count matrix slotted in <code>assays</code>.
+When passing in a string, the name must be defined in <code>assayNames</code>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
-      <td><p><code>character</code>. Groups of interest that
-define the samples. If left unset, defaults to <code>sampleName</code>.</p></td>
+      <td><p><code>character</code>. Groups of interest that define the
+samples. If left unset, defaults to <code>sampleName</code>.</p></td>
     </tr>
     <tr>
       <th>perMillion</th>
-      <td><p><code>boolean</code>. Display as counts per million.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Display as counts per million.</p></td>
     </tr>
     <tr>
       <th>fill</th>
       <td><p><code>ggproto</code>/<code>ScaleDiscrete</code>. Desired ggplot2 fill scale. Must
 supply discrete values. When set to <code>NULL</code>, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
-using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>. To set the discrete fill palette
-globally, use <code><a href='https://www.rdocumentation.org/packages/base/topics/options'>options(basejump.fill.discrete = scale_fill_viridis_d())</a></code>.</p></td>
+using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual</a></code>.</p>
+<p>To set the discrete fill palette globally, use:</p><pre>options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
+</pre></td>
     </tr>
     <tr>
       <th>flip</th>
-      <td><p><code>boolean</code>. Flip x and y axes. Recommended for plots containing
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Flip x and y axes. Recommended for plots containing
 many samples.</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p><code>string</code>. Plot title.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Plot title.</p></td>
     </tr>
     </table>
     
@@ -184,7 +184,7 @@ many samples.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>)
-<span class='fu'>plotTotalCounts</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotTotalCounts-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotTotalCounts</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`.</span></div><div class='img'><img src='plotTotalCounts-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotTotalCounts</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotTotalCounts-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotTotalCounts</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span></div><div class='img'><img src='plotTotalCounts-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -205,7 +205,7 @@ many samples.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -126,12 +126,12 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file</th>
-      <td><p><code>string</code>. File path.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. File path.</p></td>
     </tr>
     <tr>
       <th>dataFrame</th>
-      <td><p><code>string</code>. Data frame class to return. Can be set globally
-using the <code>basejump.data.frame</code> option.</p>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Data frame class to return. Can be set
+globally using the <code>basejump.data.frame</code> option.</p>
 <p>Current recommendations (by priority):</p><ul>
 <li><p><code>data.frame</code>: Base R default. Generally recommended.</p><ul>
 <li><p>S3 class.</p></li>
@@ -178,41 +178,41 @@ using the <code>basejump.data.frame</code> option.</p>
 insensitive.</p>
 <p>This function supports automatic loading of common file types:</p><ul>
 <li><p><code>CSV</code>: Comma Separated Values.<br />
-Imported by <code><a href='https://www.rdocumentation.org/packages/data.table/topics/fread'>data.table::fread()</a></code>.</p></li>
+Imported by <code><a href='https://www.rdocumentation.org/packages/data.table/topics/fread'>data.table::fread</a></code>.</p></li>
 <li><p><code>TSV</code> Tab Separated Values.<br />
-Imported by <code><a href='https://www.rdocumentation.org/packages/data.table/topics/fread'>data.table::fread()</a></code>.</p></li>
+Imported by <code><a href='https://www.rdocumentation.org/packages/data.table/topics/fread'>data.table::fread</a></code>.</p></li>
 <li><p><code>TXT</code>: Text file. <em>Ambiguous, not recommended</em>.<br />
-Imported by <code><a href='https://www.rdocumentation.org/packages/data.table/topics/fread'>data.table::fread()</a></code>.</p></li>
+Imported by <code><a href='https://www.rdocumentation.org/packages/data.table/topics/fread'>data.table::fread</a></code>.</p></li>
 <li><p><code>XLSX</code>/<code>XLS</code>: Excel workbook.<br />
-Imported by <code><a href='https://www.rdocumentation.org/packages/readxl/topics/read_excel'>readxl::read_excel()</a></code>.</p></li>
+Imported by <code><a href='https://readxl.tidyverse.org/reference/read_excel.html'>readxl::read_excel</a></code>.</p></li>
 <li><p><code>MTX</code>: MatrixMarket sparse matrix.<br />
-Imported by <code><a href='https://www.rdocumentation.org/packages/Matrix/topics/externalFormats'>Matrix::readMM()</a></code>.</p></li>
+Imported by <code><a href='https://www.rdocumentation.org/packages/Matrix/topics/externalFormats'>Matrix::readMM</a></code>.</p></li>
 <li><p><code>GTF</code>/<code>GFF</code>/<code>GFF3</code>: General Feature Format.<br />
-Imported by <code><a href='https://www.rdocumentation.org/packages/rtracklayer/topics/export'>rtracklayer::import()</a></code>.</p></li>
+Imported by <code><a href='https://www.rdocumentation.org/packages/rtracklayer/topics/export'>rtracklayer::import</a></code>.</p></li>
 <li><p><code>JSON</code>: JSON.
-Imported by <code><a href='https://www.rdocumentation.org/packages/jsonlite/topics/read_json'>jsonlite::read_json()</a></code>.</p></li>
+Imported by <code><a href='https://www.rdocumentation.org/packages/jsonlite/topics/read_json'>jsonlite::read_json</a></code>.</p></li>
 <li><p><code>YAML</code>/<code>YML</code>: YAML.
-Imported by <code><a href='https://www.rdocumentation.org/packages/yaml/topics/yaml.load'>yaml::yaml.load_file()</a></code></p></li>
+Imported by <code><a href='https://www.rdocumentation.org/packages/yaml/topics/yaml.load'>yaml::yaml.load_file</a></code></p></li>
 <li><p><code>RDA</code>/<code>RDATA</code>: R Data.</p><ul>
-<li><p>Imported by <code><a href='https://www.rdocumentation.org/packages/base/topics/load'>load()</a></code>.</p></li>
+<li><p>Imported by <code>load</code>.</p></li>
 <li><p>Must contain a single object.</p></li>
-<li><p>Doesn't require internal object name to match, unlike <code><a href='loadData.html'>loadData()</a></code>.</p></li>
+<li><p>Doesn't require internal object name to match, unlike <code>loadData</code>.</p></li>
 </ul></li>
 <li><p><code>RDS</code>: R Data Serialized.<br />
-Imported by <code><a href='https://www.rdocumentation.org/packages/base/topics/readRDS'>readRDS()</a></code>.</p></li>
+Imported by <code>readRDS</code>.</p></li>
 </ul>
     <p>These file formats will be imported as source code lines by
-<code><a href='https://readr.tidyverse.org/reference/read_lines.html'>readr::read_lines()</a></code>: <code>LOG</code>, <code>MD</code>, <code>PY</code>, <code>R</code>, <code>RMD</code>, <code>SH</code>.</p>
+<code><a href='https://readr.tidyverse.org/reference/read_lines.html'>readr::read_lines</a></code>: <code>LOG</code>, <code>MD</code>, <code>PY</code>, <code>R</code>, <code>RMD</code>, <code>SH</code>.</p>
 <p>These file formats are blacklisted, and intentionally not supported:
 <code>DOC</code>, <code>DOCX</code>, <code>PDF</code>, <code>PPT</code>, <code>PPTX</code>.</p>
 <p>If a file format isn't supported natively (or blacklisted), the
 <a href='https://cran.r-project.org/web/packages/rio/index.html'>rio</a> package will
-be used as a fallback attempt. See <code><a href='https://www.rdocumentation.org/packages/rio/topics/import'>rio::import()</a></code> for details.</p>
+be used as a fallback attempt. See <code><a href='https://www.rdocumentation.org/packages/rio/topics/import'>rio::import</a></code> for details.</p>
     
     <h2 class="hasAnchor" id="delimited-files-csv-tsv-"><a class="anchor" href="#delimited-files-csv-tsv-"></a>Delimited Files (CSV/TSV)</h2>
 
     
-    <p><code>import()</code> uses the <code>fread()</code> function of the  <a href='https://cran.r-project.org/package=data.table'>data.table</a> package to
+    <p><code>import</code> uses the <code>fread</code> function of the  <a href='https://cran.r-project.org/package=data.table'>data.table</a> package to
 import standard CSV and TSV files. This should work automatically for most
 files without issue.</p>
 <p>Here are some notable exceptions:</p><ul>
@@ -220,14 +220,14 @@ files without issue.</p>
 is <code>numeric</code>, set <code>header = TRUE</code> here to force the column name.</p></li>
 </ul>
     <p>See <code><a href='https://www.rdocumentation.org/packages/utils/topics/help'>help(topic = "fread", package = "data.table")</a></code> for details.</p>
-<p>The <code>read_csv()</code> and <code>read_tsv()</code> functions of the <a href='https://readr.tidyverse.org'>readr</a> package
+<p>The <code>read_csv</code> and <code>read_tsv</code> functions of the <a href='https://readr.tidyverse.org'>readr</a> package
 are good alternatives, which return <code>tibble</code> data frames (<code>tbl_df</code>).</p>
     
     <h2 class="hasAnchor" id="matrix-market-exchange-mtx-mex-"><a class="anchor" href="#matrix-market-exchange-mtx-mex-"></a>Matrix Market Exchange (MTX/MEX)</h2>
 
     
     <p>Reading a Matrix Market Exchange (<code>MTX</code>) file now requires <code>COLNAMES</code> and
-<code>ROWNAMES</code> sidecar files containing the <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames()</a></code> and <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames()</a></code> of
+<code>ROWNAMES</code> sidecar files containing the <code>colnames</code> and <code>rownames</code> of
 the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.</p>
     
@@ -329,7 +329,7 @@ Additional information:</p><ul>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

@@ -15,7 +15,7 @@ Transcript-to-Gene Identifier Mappings
 
 
 We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
-\code{metadata()}.
+\code{metadata}.
 }
 
 \seealso{

@@ -16,13 +16,12 @@ meltCounts(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of count matrix slotted in
-\code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
-be defined in \code{SummarizedExperiment::assayNames()}.}
+\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
+When passing in a string, the name must be defined in \code{assayNames}.}
 
-\item{nonzeroGenes}{\code{boolean}. Return only non-zero genes.}
+\item{nonzeroGenes}{\code{logical(1)}. Return only non-zero genes.}
 
-\item{trans}{\code{string}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
+\item{trans}{\code{character(1)}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
 the count matrix prior to melting, if desired. Use \code{"identity"} to return
 unmodified (default).}
 }
@@ -41,5 +40,5 @@ x <- meltCounts(rse)
 print(x)
 }
 \seealso{
-\code{reshape2::melt()}.
+\code{reshape2::melt}.
 }

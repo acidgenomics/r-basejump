@@ -17,22 +17,22 @@ theme_midnight(base_size = 14L, base_family = "", face = c("bold",
 \arguments{
 \item{base_size}{\code{scalar numeric}. Base font size.}
 
-\item{base_family}{\code{string}. Base font family.}
+\item{base_family}{\code{character(1)}. Base font family.}
 
-\item{face}{\code{string}. Font face ("\code{bold}", "\code{plain}").}
+\item{face}{\code{character(1)}. Font face ("\code{bold}", "\code{plain}").}
 
 \item{aspect_ratio}{\code{scalar numeric}. Aspect ratio, specifying the plot
 proportions. Use \code{1} for a perfectly square plot (including the axis
 labels).}
 
-\item{legend_position}{\code{string}. Legend key position. We're being a little
+\item{legend_position}{\code{character(1)}. Legend key position. We're being a little
 more restrictive here, only allowing "\code{bottom}", "\code{right}", or "\code{none}".
 Including the legend at the top or the left side of the plot rarely makes
 sense and is discouraged.}
 
-\item{grid}{\code{boolean}. Label the major panel grids with a gray accent.}
+\item{grid}{\code{logical(1)}. Label the major panel grids with a gray accent.}
 
-\item{minimal}{\code{boolean}. Remove all axis lines, axis ticks, and
+\item{minimal}{\code{logical(1)}. Remove all axis lines, axis ticks, and
 panel borders.}
 }
 \value{
@@ -42,7 +42,7 @@ panel borders.}
 Complete \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
 \details{
-All themes are based off of \code{ggplot2::theme_linedraw()}, but with
+All themes are based off of \code{ggplot2::theme_linedraw}, but with
 modifications and extra user-definable parameters.
 }
 \section{Paperwhite}{
@@ -56,7 +56,7 @@ scientific manuscripts and website tutorials.
 
 
 Blackout theme that sets the plot background as black, with white text.
-Inspired by \code{Seurat::DarkTheme()}, with some color modifications. Useful
+Inspired by \code{Seurat::DarkTheme}, with some color modifications. Useful
 for visualizing many points with a high dynamic color range, such as t-SNE
 expression plots.
 }
@@ -84,5 +84,5 @@ p +
     theme_midnight(legend_position = "none")
 }
 \seealso{
-\code{ggplot2::theme()}.
+\code{ggplot2::theme}.
 }

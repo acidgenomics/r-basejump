@@ -16,7 +16,8 @@ aggregateCellsToSamples(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{fun}{\code{string}. Name of the aggregation function. Uses \code{match.arg()}.}
+\item{fun}{\code{character(1)}. Name of the aggregation function. Uses
+\code{match.arg}.}
 }
 \value{
 \code{SummarizedExperiment}. Object with cell-level counts aggregated
@@ -30,7 +31,7 @@ function will sum the counts across cells to sample level.
 This function is intended primarily for quality control analysis.
 
 Internally it automatically obtains the cell-to-sample groupings and then
-performs aggregation with the \code{aggregateCols()} function.
+performs aggregation with the \code{aggregateCols} function.
 }
 \examples{
 data(sce)

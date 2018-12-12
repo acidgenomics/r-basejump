@@ -34,7 +34,7 @@
   
 <meta property="og:title" content="Metrics — metrics" />
 
-<meta property="og:description" content="This function takes data stored in colData() and consistently returns a
+<meta property="og:description" content="This function takes data stored in colData and consistently returns a
 tibble grouped by sample by default (sampleID)." />
 <meta name="twitter:card" content="summary" />
 
@@ -66,7 +66,7 @@ tibble grouped by sample by default (sampleID)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -115,7 +115,7 @@ tibble grouped by sample by default (sampleID)." />
 
     <div class="ref-description">
     
-    <p>This function takes data stored in <code>colData()</code> and consistently returns a
+    <p>This function takes data stored in <code>colData</code> and consistently returns a
 tibble grouped by sample by default (<code>sampleID</code>).</p>
     
     </div>
@@ -149,12 +149,12 @@ tibble grouped by sample by default (<code>sampleID</code>).</p>
     </tr>
     <tr>
       <th>return</th>
-      <td><p><code>string</code>. Return type. Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>base::match.arg()</a></code>
-internally and defaults to the first argument in the <code>character</code> vector.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Return type. Uses <code>match.arg</code> internally and
+defaults to the first argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
       <th>fun</th>
-      <td><p><code>string</code>. Mathematical function name to apply. Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a></code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Mathematical function name to apply. Uses <code>match.arg</code>.</p></td>
     </tr>
     </table>
     
@@ -163,14 +163,14 @@ internally and defaults to the first argument in the <code>character</code> vect
     
 <ul>
 <li><p><code>"tibble"</code>: <code>grouped_df</code>. Grouped by <code>sampleID</code> column.</p></li>
-<li><p><code>"DataFrame"</code>: <code>DataFrame</code>. Rownames are identical to the <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames()</a></code>, of
-the object, like <code>colData()</code>.</p></li>
+<li><p><code>"DataFrame"</code>: <code>DataFrame</code>. Rownames are identical to the <code>colnames</code>, of
+the object, like <code>colData</code>.</p></li>
 </ul>
 
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>metrics()</code> always returns <code>sampleName</code> and <code>interestingGroups</code> columns, even
+    <p><code>metrics</code> always returns <code>sampleName</code> and <code>interestingGroups</code> columns, even
 when these columns are not defined in <code>colData</code>. This is designed to
 integrate with plotting functions that use ggplot2 internally.</p>
     
@@ -178,9 +178,9 @@ integrate with plotting functions that use ggplot2 internally.</p>
 
     <ul>
 <li><p><code>SummarizedExperiment</code>: Metrics are sample level. <code>sampleID</code> column corresponds
-to <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames()</a></code>.</p></li>
+to <code>colnames</code>.</p></li>
 <li><p><code>SingleCellExperiment</code>: Metrics are cell level. <code>cellID</code> column corresponds to
-<code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames()</a></code>. Tibble is returned grouped by sample (<code>sampleID</code> column).</p></li>
+<code>colnames</code>. Tibble is returned grouped by sample (<code>sampleID</code> column).</p></li>
 </ul>
     
 
@@ -254,7 +254,7 @@ to <code><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

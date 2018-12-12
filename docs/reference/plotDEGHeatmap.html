@@ -34,7 +34,10 @@
   
 <meta property="og:title" content="Differentially Expressed Gene Heatmap — plotDEGHeatmap" />
 
-<meta property="og:description" content="Construct a simple heatmap." />
+<meta property="og:description" content="This function is an extension of plotHeatmap that is optimized
+for automatic handling differentially expressed genes, rather than requiring
+manual input of a gene vector. All of the optional parameters for
+plotHeatmap are also supported by this function." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -114,7 +117,10 @@
 
     <div class="ref-description">
     
-    <p>Construct a simple heatmap.</p>
+    <p>This function is an extension of <code>plotHeatmap</code> that is optimized
+for automatic handling differentially expressed genes, rather than requiring
+manual input of a gene vector. All of the optional parameters for
+<code>plotHeatmap</code> are also supported by this function.</p>
     
     </div>
 
@@ -129,7 +135,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passthrough arguments to <code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>. The names of the
+      <td><p>Passthrough arguments to <code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap</a></code>. The names of the
 arguments should be formatted in camel case, not snake case.</p></td>
     </tr>
     </table>
@@ -140,52 +146,10 @@ arguments should be formatted in camel case, not snake case.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is a simplified version of <code><a href='plotHeatmap.html'>plotHeatmap()</a></code> that is optimized
-for automatic handling differentially expressed genes, rather than requiring
-manual input of a gene vector. All of the optional parameters for
-<code>plotHeatmap</code> are also available to this function.</p>
-<p>To adjust the annotation columns, modify the <code>colData</code> of the <code>counts</code>
+    <p>To adjust the annotation columns, modify the <code>colData</code> of the <code>counts</code>
 argument, which must contain/extend a <code>SummarizedExperiment</code>.</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Post hoc alpha level and LFC threshold cutoffs are not recommended.</p>
-    
-    <h2 class="hasAnchor" id="hierarchical-clustering"><a class="anchor" href="#hierarchical-clustering"></a>Hierarchical clustering</h2>
-
-    
-    <p>By default, row- and column-wise hierarchical clustering is performed using
-the Ward method, but this behavior can be overrided by setting <code>clusterRows</code>
-or <code>clusterCols</code> to <code>FALSE</code>.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/RColorBrewer/topics/ColorBrewer'>RColorBrewer::brewer.pal()</a></code>.</p></li>
-</ul></div>
-    <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/stats/topics/cor'>stats::cor()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>.</p></li>
-</ul></div>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>)
-
-<span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'><a href='plotHeatmap.html'>plotHeatmap</a></span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotDEGHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='plotHeatmap.html'>plotCorrelationHeatmap</a></span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotDEGHeatmap-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='plotHeatmap.html'>plotQuantileHeatmap</a></span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotDEGHeatmap-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Disable column clustering.</span>
-<span class='fu'><a href='plotHeatmap.html'>plotHeatmap</a></span>(<span class='no'>rse</span>, <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='plotDEGHeatmap-4.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Using pheatmap default colors.</span>
-<span class='fu'><a href='plotHeatmap.html'>plotHeatmap</a></span>(<span class='no'>rse</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='img'><img src='plotDEGHeatmap-5.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Using hexadecimal color input.</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>RColorBrewer</span>)
-<span class='no'>purple_orange</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/colorRamp'>colorRampPalette</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/RColorBrewer/topics/ColorBrewer'>brewer.pal</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>11L</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"PuOr"</span>))(<span class='fl'>256L</span>)
-<span class='fu'><a href='plotHeatmap.html'>plotHeatmap</a></span>(<span class='no'>rse</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>purple_orange</span>)</div><div class='img'><img src='plotDEGHeatmap-6.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## SingleCellExperiment ====</span>
-<span class='fu'><a href='plotHeatmap.html'>plotHeatmap</a></span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `mean()`.</span></div><div class='img'><img src='plotDEGHeatmap-7.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='plotHeatmap.html'>plotCorrelationHeatmap</a></span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `mean()`.</span></div><div class='img'><img src='plotDEGHeatmap-8.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='plotHeatmap.html'>plotQuantileHeatmap</a></span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `mean()`.</span></div><div class='img'><img src='plotDEGHeatmap-9.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -195,15 +159,7 @@ or <code>clusterCols</code> to <code>FALSE</code>.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#hierarchical-clustering">Hierarchical clustering</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>
@@ -214,7 +170,7 @@ or <code>clusterCols</code> to <code>FALSE</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

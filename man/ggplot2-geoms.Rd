@@ -34,15 +34,15 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 
-\item{col}{\code{string}. Column name.}
+\item{col}{\code{character(1)}. Column name.}
 
-\item{fun}{\code{string}. Function name to use for average calculation. Currently
+\item{fun}{\code{character(1)}. Function name to use for average calculation. Currently
 supports "\code{mean}" or "\code{median}".}
 
 \item{digits}{\code{scalar integer}. Number of significant digits to use. Defaults
 to rounded.}
 
-\item{color}{\code{string}. Text color (e.g. \code{"orange"}).}
+\item{color}{\code{character(1)}. Text color (e.g. \code{"orange"}).}
 
 \item{size}{\code{scalar integer}. Font size.}
 }
@@ -62,7 +62,7 @@ Horizontal or vertical cutoff line.
 \section{basejump_geom_label}{
 
 
-Modified version of \code{ggplot2::geom_label()}.
+Modified version of \code{ggplot2::geom_label}.
 }
 
 \section{basejump_geom_label_average}{
@@ -76,7 +76,7 @@ mean values are always calculated per sample (\code{sampleName}).
 
 
 Repulsive textual annotations. Modified basejump version of
-\code{ggrepel::geom_label_repel()}. If advanced customization of the text labels
+\code{ggrepel::geom_label_repel}. If advanced customization of the text labels
 is required, simply use the ggrepel version instead.
 }
 
@@ -111,7 +111,7 @@ geom
 }
 \seealso{
 \itemize{
-\item \code{ggplot2::geom_label()}.
-\item \code{ggrepel::geom_label_repel()}.
+\item \code{ggplot2::geom_label}.
+\item \code{ggrepel::geom_label_repel}.
 }
 }

@@ -9,7 +9,7 @@ detectLanes(object, pattern = lanePattern)
 \arguments{
 \item{object}{\code{character}. Sequencing file or directory paths.}
 
-\item{pattern}{\code{string}. Grep pattern. Default pattern checks for \code{"_LXXX"}.}
+\item{pattern}{\code{character(1)}. Grep pattern. Default pattern checks for \code{"_LXXX"}.}
 }
 \value{
 \code{integer}. Lane number.

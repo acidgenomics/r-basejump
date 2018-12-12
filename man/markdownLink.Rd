@@ -8,11 +8,11 @@
 markdownLink(text, url, title = NULL)
 }
 \arguments{
-\item{text}{\code{string}. Header text.}
+\item{text}{\code{character(1)}. Header text.}
 
-\item{url}{\code{string}. URL.}
+\item{url}{\code{character(1)}. URL.}
 
-\item{title}{\code{string} or \code{NULL}. Link title attribute. This will appear in a
+\item{title}{\code{character(1)} or \code{NULL}. Link title attribute. This will appear in a
 mouse-over pop-up box.}
 }
 \value{

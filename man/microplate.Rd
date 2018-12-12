@@ -13,7 +13,7 @@ microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 
 \item{controls}{\code{scalar integer}. Number of control wells.}
 
-\item{prefix}{\code{string} or \code{NULL}. Plate name prefix.}
+\item{prefix}{\code{character(1)} or \code{NULL}. Plate name prefix.}
 }
 \value{
 \code{character}. Well identifiers.

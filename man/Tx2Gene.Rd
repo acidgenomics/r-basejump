@@ -35,7 +35,7 @@ No attempt is made to arrange the rows by transcript identifier.
 
 
 We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
-\code{metadata()}.
+\code{metadata}.
 }
 
 \examples{

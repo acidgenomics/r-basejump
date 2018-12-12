@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -127,8 +127,8 @@
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>sampleData</span>(<span class='no'>object</span>,
-  <span class='kw'>blacklist</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"^ident$"</span>, <span class='st'>"^origIdent$"</span>, <span class='st'>"^res[.0-9]+$"</span>, <span class='st'>"^sScore$"</span>,
-  <span class='st'>"^g2mScore$"</span>, <span class='st'>"^phase$"</span>))
+  <span class='kw'>blacklist</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"^G2M.Score$"</span>, <span class='st'>"^Phase$"</span>, <span class='st'>"^S.Score$"</span>, <span class='st'>"^ident$"</span>,
+  <span class='st'>"^old.ident$"</span>, <span class='st'>"^orig.ident$"</span>, <span class='st'>"^res[.0-9]+$"</span>))
 
 <span class='co'># S4 method for SummarizedExperiment,DataFrame</span>
 <span class='fu'>sampleData</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
@@ -156,8 +156,8 @@
     </tr>
     <tr>
       <th>clean</th>
-      <td><p><code>boolean</code>. Only return <code>factor</code> columns. Useful when working
-with objects that contain metrics in <code>colData()</code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Only return <code>factor</code> columns. Useful when working
+with objects that contain metrics in <code>colData</code>.</p></td>
     </tr>
     <tr>
       <th>blacklist</th>
@@ -172,7 +172,7 @@ sample-level metadata. Applicable only to <code>SingleCellExperiment</code> obje
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a complement to the standard <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code>
+    <p>This is a complement to the standard <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData</a></code>
 function, but improves support for accessing sample metadata for datasets
 where multiple items in the columns map to a single sample (e.g. cells for a
 single-cell RNA-seq experiment).</p>
@@ -251,7 +251,7 @@ single-cell RNA-seq experiment).</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

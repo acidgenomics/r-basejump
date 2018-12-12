@@ -16,9 +16,10 @@ makeGene2SymbolFromEnsDb(object)
 makeGene2SymbolFromGFF(file)
 }
 \arguments{
-\item{organism}{\code{string}. Full Latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{character(1)}. Full Latin organism name
+(e.g. "\code{Homo sapiens}").}
 
-\item{genomeBuild}{\code{string}. Ensembl genome build assembly nam (e.g.
+\item{genomeBuild}{\code{character(1)}. Ensembl genome build assembly name (e.g.
 \code{"GRCh38"}). If set \code{NULL}, defaults to the most recent build available.
 Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
 
@@ -27,7 +28,7 @@ Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
 
 \item{object}{Object.}
 
-\item{file}{\code{string}. File path.}
+\item{file}{\code{character(1)}. File path.}
 }
 \value{
 \code{Gene2Symbol}.

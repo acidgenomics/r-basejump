@@ -7,7 +7,7 @@
 localOrRemoteFile(file)
 }
 \arguments{
-\item{file}{\code{string}. Local file paths or remote URLs.}
+\item{file}{\code{character(1)}. Local file paths or remote URLs.}
 }
 \value{
 \code{character}. Local file paths. Stops on a missing file.
@@ -34,5 +34,5 @@ x <- localOrRemoteFile(files)
 basename(x)
 }
 \seealso{
-\code{tempdir()}.
+\code{tempdir}.
 }

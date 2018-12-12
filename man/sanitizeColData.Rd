@@ -33,7 +33,7 @@ The following conventions are enforced:
 \itemize{
 \item Required columns: \code{sampleName}.
 \item Blacklisted columns: \code{interestingGroups}, \code{sampleID}.
-\item All columns get coerced to \code{factor} and \code{droplevels()} is applied.
+\item All columns get coerced to \code{factor} and \code{droplevels} is applied.
 }
 }
 

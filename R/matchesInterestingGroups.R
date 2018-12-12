@@ -13,7 +13,6 @@
 #' data(rse)
 #'
 #' ## Checks that columns are defined in `colData`.
-#' colnames(colData(rse))
 #' matchesInterestingGroups(rse, "condition")
 #'
 #' ## Currently allowing `NULL` to pass.

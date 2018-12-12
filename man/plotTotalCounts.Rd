@@ -24,25 +24,26 @@ plotTotalCounts(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of count matrix slotted in
-\code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
-be defined in \code{SummarizedExperiment::assayNames()}.}
+\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
+When passing in a string, the name must be defined in \code{assayNames}.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that
-define the samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}. Groups of interest that define the
+samples. If left unset, defaults to \code{sampleName}.}
 
-\item{perMillion}{\code{boolean}. Display as counts per million.}
+\item{perMillion}{\code{logical(1)}. Display as counts per million.}
 
 \item{fill}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 fill scale. Must
 supply discrete values. When set to \code{NULL}, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
-using \code{ggplot2::scale_fill_manual()}. To set the discrete fill palette
-globally, use \code{options(basejump.fill.discrete = scale_fill_viridis_d())}.}
+using \code{ggplot2::scale_fill_manual}.
 
-\item{flip}{\code{boolean}. Flip x and y axes. Recommended for plots containing
+To set the discrete fill palette globally, use:\preformatted{options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
+}}
+
+\item{flip}{\code{logical(1)}. Flip x and y axes. Recommended for plots containing
 many samples.}
 
-\item{title}{\code{string}. Plot title.}
+\item{title}{\code{character(1)}. Plot title.}
 }
 \value{
 \code{ggplot}.

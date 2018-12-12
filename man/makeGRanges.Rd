@@ -20,11 +20,12 @@ annotable(organism, level = c("genes", "transcripts"),
   genomeBuild = NULL, release = NULL)
 }
 \arguments{
-\item{organism}{\code{string}. Full Latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{character(1)}. Full Latin organism name
+(e.g. "\code{Homo sapiens}").}
 
-\item{level}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
+\item{level}{\code{character(1)}. Return ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{genomeBuild}{\code{string}. Ensembl genome build assembly nam (e.g.
+\item{genomeBuild}{\code{character(1)}. Ensembl genome build assembly name (e.g.
 \code{"GRCh38"}). If set \code{NULL}, defaults to the most recent build available.
 Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
 
@@ -33,7 +34,7 @@ Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
 
 \item{object}{Object.}
 
-\item{file}{\code{string}. File path.}
+\item{file}{\code{character(1)}. File path.}
 }
 \value{
 \code{GRanges}.
@@ -61,7 +62,7 @@ Genome build: use "\code{GRCh38}" instead of "\code{hg38}" for the genome build,
 we're querying Ensembl and not UCSC.
 
 \item \code{makeGRangesFromEnsDb}: Use specific \code{EnsDb} object as annotation source.
-Alternatively, can pass in an EnsDb package name as a \code{string}.
+Alternatively, can pass in an EnsDb package name as a \code{character(1)}.
 
 \item \code{makeGRangesFromGFF}: The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
@@ -73,9 +74,9 @@ the metadata columns.
 
 Remote URLs and compressed files are supported.
 
-\item \code{annotable}: \code{annotable()} is a legacy convenience function that calls
-\code{makeGRangesFromEnsembl()} and returns a \code{tibble} instead of \code{GRanges}. Note
-that \code{GRanges} can also be coercing using \code{BiocGenerics::as.data.frame()}.
+\item \code{annotable}: \code{annotable} is a legacy convenience function that calls
+\code{makeGRangesFromEnsembl} and returns a \code{tibble} instead of \code{GRanges}. Note
+that \code{GRanges} can also be coercing using \code{BiocGenerics::as.data.frame}.
 }}
 
 \section{Broad class definitions}{
@@ -99,7 +100,7 @@ groups:
 \section{GRCh37 (hg19) legacy annotations}{
 
 
-\code{makeGRangesFromEnsembl()} supports the legacy \emph{Homo sapiens} GRCh37 (release
+\code{makeGRangesFromEnsembl} supports the legacy \emph{Homo sapiens} GRCh37 (release
 75) build by internally querying the \href{https://bioconductor.org/packages/EnsDb.Hsapiens.v75/}{EnsDb.Hsapiens.v75} package.
 Alternatively, the corresponding GTF/GFF file can be loaded directly from
 GENCODE or Ensembl.
@@ -133,7 +134,7 @@ summary(x)
 \itemize{
 \item \href{https://bioconductor.org/packages/AnnotationHub/}{AnnotationHub}.
 \item \href{https://bioconductor.org/packages/ensembldb/}{ensembldb}.
-\item \code{rtracklayer::import()}.
-\item \code{GenomicFeatures::makeTxDbFromGFF()}.
+\item \code{rtracklayer::import}.
+\item \code{GenomicFeatures::makeTxDbFromGFF}.
 }
 }

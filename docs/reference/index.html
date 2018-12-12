@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -527,7 +527,7 @@
         <td>
           <p><code><a href="autopadZeros.html">autopadZeros()</a></code> </p>
         </td>
-        <td><p>Autopad Zeros in Vector</p></td>
+        <td><p>Autopad Zeros</p></td>
       </tr><tr>
         
         <td>
@@ -555,6 +555,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="sanitizeColData.html">sanitizeColData()</a></code> <code><a href="sanitizeColData.html">sanitizeSampleData()</a></code> </p>
+        </td>
+        <td><p>Sanitize Column Data</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="sanitizeNA.html">sanitizeNA()</a></code> </p>
         </td>
         <td><p>Sanitize NA Values</p></td>
@@ -567,15 +573,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> </p>
+          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> <code><a href="sanitizeRowData.html">sanitizeRowRanges()</a></code> </p>
         </td>
         <td><p>Sanitize Row Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sanitizeSampleData.html">sanitizeSampleData()</a></code> </p>
-        </td>
-        <td><p>Sanitize Sample Data</p></td>
       </tr><tr>
         
         <td>
@@ -1008,7 +1008,7 @@
           <p><code><a href="formalsList.html">formalsList</a></code> </p>
         </td>
         <td><p>Formals List
-Formals that the user can set globally with <code>base::getOption()</code>.</p></td>
+Formals that the user can set globally with <code>base::getOption</code>.</p></td>
       </tr><tr>
         
         <td>
@@ -1051,12 +1051,6 @@ Formals that the user can set globally with <code>base::getOption()</code>.</p><
           <p><code><a href="standardizeCall.html">standardizeCall()</a></code> </p>
         </td>
         <td><p>Standardize Call</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validateClasses.html">validateClasses()</a></code> </p>
-        </td>
-        <td><p>Validate Classes</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -1071,6 +1065,12 @@ Formals that the user can set globally with <code>base::getOption()</code>.</p><
           <p><code><a href="basenameSansExt.html">basenameSansExt()</a></code> </p>
         </td>
         <td><p>Manipulate File Paths</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="deg.html">deg()</a></code> </p>
+        </td>
+        <td><p>Differentially Expressed Genes</p></td>
       </tr><tr>
         
         <td>
@@ -1092,9 +1092,21 @@ Formals that the user can set globally with <code>base::getOption()</code>.</p><
       </tr><tr>
         
         <td>
+          <p><code><a href="geneNames.html">geneNames()</a></code> </p>
+        </td>
+        <td><p>Gene Names</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="headtail.html">headtail()</a></code> </p>
         </td>
         <td><p>Return the First and Last Part of an Object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="humanize.html">humanize()</a></code> </p>
+        </td>
+        <td><p>Humanize an R Object</p></td>
       </tr><tr>
         
         <td>
@@ -1104,9 +1116,27 @@ Formals that the user can set globally with <code>base::getOption()</code>.</p><
       </tr><tr>
         
         <td>
+          <p><code><a href="matchesGene2Symbol.html">matchesGene2Symbol()</a></code> </p>
+        </td>
+        <td><p>Check Gene-to-Symbol Value Matching</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchesInterestingGroups.html">matchesInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Check Interesting Groups Value Matching</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="microplate.html">microplate()</a></code> </p>
         </td>
         <td><p>Microtiter Plate Well Identifiers</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pasteURL.html">pasteURL()</a></code> </p>
+        </td>
+        <td><p>Concatenate Strings to Form a URL</p></td>
       </tr><tr>
         
         <td>
@@ -1130,15 +1160,1014 @@ Formals that the user can set globally with <code>base::getOption()</code>.</p><
       <tr>
         
         <td>
-          <p><code><a href="assertFormalGene2Symbol.html">assertFormalGene2Symbol()</a></code> </p>
+          <p><code><a href="EggNOG-class.html">EggNOG-class</a></code> </p>
         </td>
-        <td><p>Check Gene-to-Symbol Mappings</p></td>
+        <td><p>EggNOG Database Annotations</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="assertFormalInterestingGroups.html">assertFormalInterestingGroups()</a></code> </p>
+          <p><code><a href="EggNOG.html">EggNOG()</a></code> </p>
         </td>
-        <td><p>Check Interesting Groups</p></td>
+        <td><p>EggNOG Database Annotations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Ensembl2Entrez-class.html">Ensembl2Entrez-class</a></code> </p>
+        </td>
+        <td><p>Ensembl-to-Entrez Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Ensembl2Entrez.html">Ensembl2Entrez()</a></code> </p>
+        </td>
+        <td><p>Ensembl-to-Entrez Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Gene2Symbol-class.html">Gene2Symbol-class</a></code> </p>
+        </td>
+        <td><p>Gene-to-Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Gene2Symbol.html">Gene2Symbol()</a></code> </p>
+        </td>
+        <td><p>Gene-to-Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="HGNC2Ensembl-class.html">HGNC2Ensembl-class</a></code> </p>
+        </td>
+        <td><p>HGNC-to-Ensembl Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="HGNC2Ensembl.html">HGNC2Ensembl()</a></code> </p>
+        </td>
+        <td><p>HGNC-to-Ensembl Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="MGI2Ensembl-class.html">MGI2Ensembl-class</a></code> </p>
+        </td>
+        <td><p>MGI-to-Ensembl Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="MGI2Ensembl.html">MGI2Ensembl()</a></code> </p>
+        </td>
+        <td><p>MGI-to-Ensembl Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="MethodDefinition.html">methodFunction()</a></code> <code><a href="MethodDefinition.html">methodFormals()</a></code> <code><a href="MethodDefinition.html">hasLocal()</a></code> <code><a href="MethodDefinition.html">extractLocal()</a></code> </p>
+        </td>
+        <td><p>Access to the Data Inside an S4 Method Definition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PANTHER-class.html">PANTHER-class</a></code> </p>
+        </td>
+        <td><p>PANTHER Database Annotations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PANTHER.html">PANTHER()</a></code> </p>
+        </td>
+        <td><p>PANTHER Database Annotations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="RdTags.html">RdTags()</a></code> </p>
+        </td>
+        <td><p>R Documentation Tags</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Tx2Gene-class.html">Tx2Gene-class</a></code> </p>
+        </td>
+        <td><p>Transcript-to-Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Tx2Gene.html">Tx2Gene()</a></code> </p>
+        </td>
+        <td><p>Transcript-to-Gene Identifier Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aggregate.html">aggregateRows()</a></code> <code><a href="aggregate.html">aggregateCols()</a></code> </p>
+        </td>
+        <td><p>Aggregate Rows or Columns</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aggregateCellsToSamples.html">aggregateCellsToSamples()</a></code> </p>
+        </td>
+        <td><p>Aggregate Cells to Samples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="alphaSummary.html">alphaSummary()</a></code> </p>
+        </td>
+        <td><p>Alpha Level Cutoff Summary Statistics</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="as.html">as</a></code> </p>
+        </td>
+        <td><p>Force an Object to Belong to a Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assignAndSaveData.html">assignAndSaveData()</a></code> </p>
+        </td>
+        <td><p>Assign and Save Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="autopadZeros.html">autopadZeros()</a></code> </p>
+        </td>
+        <td><p>Autopad Zeros</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="barcodePattern.html">barcodePattern</a></code> </p>
+        </td>
+        <td><p>Single-Cell Barcode Pattern
+Trailing number is to match cellranger output.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="barcodeRanksPerSample.html">barcodeRanksPerSample()</a></code> </p>
+        </td>
+        <td><p>Barcode Ranks per Sample</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="basenameSansExt.html">basenameSansExt()</a></code> </p>
+        </td>
+        <td><p>Manipulate File Paths</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cell2sample.html">cell2sample()</a></code> </p>
+        </td>
+        <td><p>Cell-to-Sample Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cleanSystemLibrary.html">cleanSystemLibrary()</a></code> </p>
+        </td>
+        <td><p>Check for Clean System Library</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="coerceS4ToList.html">flatFiles()</a></code> <code><a href="coerceS4ToList.html">coerceS4ToList()</a></code> </p>
+        </td>
+        <td><p>Coerce Any S4 Object to List</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="collapseToString.html">collapseToString()</a></code> </p>
+        </td>
+        <td><p>Collapse to String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="combine.html">combine(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="combine.html">combine(<i>&lt;SingleCellExperiment&gt;</i>,<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Combining or merging different Bioconductor data structures</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="contrastName.html">contrastName()</a></code> </p>
+        </td>
+        <td><p>Contrast Name</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertGenesToSymbols.html">convertGenesToSymbols()</a></code> <code><a href="convertGenesToSymbols.html">convertSymbolsToGenes()</a></code> </p>
+        </td>
+        <td><p>Convert Genes to Symbols</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertSampleIDsToNames.html">convertSampleIDsToNames()</a></code> </p>
+        </td>
+        <td><p>Convert Sample Identifiers to Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> </p>
+        </td>
+        <td><p>Convert Transcripts to Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertUCSCBuildToEnsembl.html">convertUCSCBuildToEnsembl()</a></code> </p>
+        </td>
+        <td><p>Convert UCSC Build to Ensembl</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Counts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="decode.html">decode(<i>&lt;DataFrame&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Rle objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="deg.html">deg()</a></code> </p>
+        </td>
+        <td><p>Differentially Expressed Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="detectHPC.html">detectHPC()</a></code> </p>
+        </td>
+        <td><p>Detect HPC Environment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="detectLanes.html">detectLanes()</a></code> </p>
+        </td>
+        <td><p>Detect Sequencing Lanes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="detectOrganism.html">detectOrganism()</a></code> </p>
+        </td>
+        <td><p>Detect Organism</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="df.html">df</a></code> </p>
+        </td>
+        <td><p>Example S4 DataFrame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dots.html">dots()</a></code> </p>
+        </td>
+        <td><p>Extract Dots from Function</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="emptyRanges.html">emptyRanges()</a></code> </p>
+        </td>
+        <td><p>Generate Empty Genomic Ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="encode.html">encode()</a></code> </p>
+        </td>
+        <td><p>Encode Column Data Using Run-Length Encoding</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="export.html">export()</a></code> </p>
+        </td>
+        <td><p>Export</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="extPattern.html">extPattern</a></code> </p>
+        </td>
+        <td><p>File Extension Pattern
+Note optional matching of gzip.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filterCells.html">filterCells()</a></code> </p>
+        </td>
+        <td><p>Filter Cells</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="formalsList.html">formalsList</a></code> </p>
+        </td>
+        <td><p>Formals List
+Formals that the user can set globally with <code>base::getOption</code>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gender_markers.html">gender_markers</a></code> </p>
+        </td>
+        <td><p>Sexually Dimorphic Gender Marker Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geneNames.html">geneNames()</a></code> </p>
+        </td>
+        <td><p>Gene Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geneSynonyms.html">geneSynonyms()</a></code> </p>
+        </td>
+        <td><p>Gene Synonyms</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="genomeMetadataNames.html">genomeMetadataNames</a></code> </p>
+        </td>
+        <td><p>Slot Names in Metadata Containing Genome Information</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geometricMean.html">geometricMean()</a></code> </p>
+        </td>
+        <td><p>Geometric Mean</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ggplot2-geoms.html">basejump_geom_abline()</a></code> <code><a href="ggplot2-geoms.html">basejump_geom_label()</a></code> <code><a href="ggplot2-geoms.html">basejump_geom_label_average()</a></code> <code><a href="ggplot2-geoms.html">basejump_geom_label_repel()</a></code> </p>
+        </td>
+        <td><p>ggplot2 Geometric Objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ggplot2-themes.html">theme_paperwhite()</a></code> <code><a href="ggplot2-themes.html">theme_midnight()</a></code> </p>
+        </td>
+        <td><p>ggplot2 Themes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="headtail.html">headtail()</a></code> </p>
+        </td>
+        <td><p>Return the First and Last Part of an Object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="humanize.html">humanize()</a></code> </p>
+        </td>
+        <td><p>Humanize an R Object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="import.html">import()</a></code> </p>
+        </td>
+        <td><p>Import</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="initDir.html">initDir()</a></code> </p>
+        </td>
+        <td><p>Initialize Directory</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="interestingGroups.html">interestingGroups()</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`()</a></code> </p>
+        </td>
+        <td><p>Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lanePattern.html">lanePattern</a></code> </p>
+        </td>
+        <td><p>Sequencing Lane Grep Pattern</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="loadData.html">loadData()</a></code> </p>
+        </td>
+        <td><p>Load Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="loadDataAsName.html">loadDataAsName()</a></code> </p>
+        </td>
+        <td><p>Load Data as Name</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="loadRemoteData.html">loadRemoteData()</a></code> </p>
+        </td>
+        <td><p>Load Remote Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="localOrRemoteFile.html">localOrRemoteFile()</a></code> </p>
+        </td>
+        <td><p>Dynamically Handle a Local or Remote File Path</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="logRatio.html">foldChangeToLogRatio()</a></code> <code><a href="logRatio.html">logRatioToFoldChange()</a></code> </p>
+        </td>
+        <td><p>Interconvert Log Ratio and Fold Change Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromEnsDb()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
+        </td>
+        <td><p>Make Genomic Ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGene2Symbol.html">makeGene2SymbolFromEnsembl()</a></code> <code><a href="makeGene2Symbol.html">makeGene2SymbolFromEnsDb()</a></code> <code><a href="makeGene2Symbol.html">makeGene2SymbolFromGFF()</a></code> </p>
+        </td>
+        <td><p>Make Gene-to-Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> <code><a href="makeNames.html">makeDimnames()</a></code> </p>
+        </td>
+        <td><p>Make Syntactically Valid Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeSampleData.html">makeSampleData()</a></code> </p>
+        </td>
+        <td><p>Make Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeSingleCellExperiment.html">makeSingleCellExperiment()</a></code> </p>
+        </td>
+        <td><p>Make Single-Cell Experiment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeSummarizedExperiment.html">makeSummarizedExperiment()</a></code> </p>
+        </td>
+        <td><p>Make Summarized Experiment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeTx2Gene.html">makeTx2GeneFromEnsembl()</a></code> <code><a href="makeTx2Gene.html">makeTx2GeneFromEnsDb()</a></code> <code><a href="makeTx2Gene.html">makeTx2GeneFromGFF()</a></code> </p>
+        </td>
+        <td><p>Make Transcript-to-Gene Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mapCellsToSamples.html">mapCellsToSamples()</a></code> </p>
+        </td>
+        <td><p>Map Cells to Samples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mapGenes.html">mapGenesToRownames()</a></code> <code><a href="mapGenes.html">mapGenesToIDs()</a></code> <code><a href="mapGenes.html">mapGenesToSymbols()</a></code> </p>
+        </td>
+        <td><p>Map Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdown.html">markdown()</a></code> </p>
+        </td>
+        <td><p>Markdown</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownHeader.html">markdownHeader()</a></code> </p>
+        </td>
+        <td><p>Markdown Header</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownLink.html">markdownLink()</a></code> </p>
+        </td>
+        <td><p>Markdown Hyperlink</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownList.html">markdownList()</a></code> </p>
+        </td>
+        <td><p>Markdown List</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownPlots.html">markdownPlots()</a></code> </p>
+        </td>
+        <td><p>Markdown Plots</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownTables.html">markdownTables()</a></code> </p>
+        </td>
+        <td><p>Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mat.html">mat</a></code> </p>
+        </td>
+        <td><p>Example Dense Matrix</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchArgsToDoCall.html">matchArgsToDoCall()</a></code> </p>
+        </td>
+        <td><p>Match Arguments to Do Call</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchInterestingGroups.html">matchInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Match Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchesGene2Symbol.html">matchesGene2Symbol()</a></code> </p>
+        </td>
+        <td><p>Check Gene-to-Symbol Value Matching</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchesInterestingGroups.html">matchesInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Check Interesting Groups Value Matching</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="meltCounts.html">meltCounts()</a></code> </p>
+        </td>
+        <td><p>Melt Count Matrix to Long Format</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="metrics.html">metrics()</a></code> <code><a href="metrics.html">metricsPerSample()</a></code> </p>
+        </td>
+        <td><p>Metrics</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="microplate.html">microplate()</a></code> </p>
+        </td>
+        <td><p>Microtiter Plate Well Identifiers</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="minimalSampleData.html">minimalSampleData()</a></code> </p>
+        </td>
+        <td><p>Minimal Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="multiassignAsEnvir.html">multiassignAsEnvir()</a></code> </p>
+        </td>
+        <td><p>Assign Multiple Objects as an Environment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="naStrings.html">naStrings</a></code> </p>
+        </td>
+        <td><p>NA Strings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Organism</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="organism_mappings.html">organism_mappings</a></code> </p>
+        </td>
+        <td><p>Organism Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="parseRd.html">parseRd()</a></code> </p>
+        </td>
+        <td><p>Parse R Documentation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pasteURL.html">pasteURL()</a></code> </p>
+        </td>
+        <td><p>Concatenate Strings to Form a URL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot5Prime3PrimeBias.html">plot5Prime3PrimeBias()</a></code> </p>
+        </td>
+        <td><p>Plot 5'-&gt;3' Bias</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotBarcodeRanks.html">plotBarcodeRanks()</a></code> </p>
+        </td>
+        <td><p>Plot Barcode Ranks</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotCellCounts.html">plotCellCounts()</a></code> </p>
+        </td>
+        <td><p>Plot Cell Counts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotCountsPerBiotype.html">plotCountsPerBiotype()</a></code> <code><a href="plotCountsPerBiotype.html">plotCountsPerBroadClass()</a></code> </p>
+        </td>
+        <td><p>Plot Counts per Biotype</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotCountsPerGene.html">plotCountsPerGene()</a></code> </p>
+        </td>
+        <td><p>Plot Counts Per Gene</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotDEGHeatmap.html">plotDEGHeatmap()</a></code> </p>
+        </td>
+        <td><p>Differentially Expressed Gene Heatmap</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotDEGPCA.html">plotDEGPCA()</a></code> </p>
+        </td>
+        <td><p>Plot DEG PCA</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotExonicMappingRate.html">plotExonicMappingRate()</a></code> </p>
+        </td>
+        <td><p>Plot Exonic Mapping Rate</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGenderMarkers.html">plotGenderMarkers()</a></code> </p>
+        </td>
+        <td><p>Plot Sexually Dimorphic Gender Marker Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGene.html">plotGene()</a></code> </p>
+        </td>
+        <td><p>Plot Gene Expression</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGeneSaturation.html">plotGeneSaturation()</a></code> </p>
+        </td>
+        <td><p>Plot Gene Detection Saturation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGenesDetected.html">plotGenesDetected()</a></code> </p>
+        </td>
+        <td><p>Plot Genes Detected</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGenesPerCell.html">plotGenesPerCell()</a></code> </p>
+        </td>
+        <td><p>Plot Genes per Cell</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotHeatmap.html">plotHeatmap()</a></code> <code><a href="plotHeatmap.html">plotCorrelationHeatmap()</a></code> <code><a href="plotHeatmap.html">plotQuantileHeatmap()</a></code> </p>
+        </td>
+        <td><p>Plot Heatmap</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotIntronicMappingRate.html">plotIntronicMappingRate()</a></code> </p>
+        </td>
+        <td><p>Plot Intronic Mapping Rate</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotMappedReads.html">plotMappedReads()</a></code> </p>
+        </td>
+        <td><p>Plot Mapped Reads</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotMappingRate.html">plotMappingRate()</a></code> </p>
+        </td>
+        <td><p>Plot Mapping Rate</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotMeanSD.html">plotMeanSD()</a></code> </p>
+        </td>
+        <td><p>Plot Row Standard Deviations vs. Row Means</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotMitoRatio.html">plotMitoRatio()</a></code> </p>
+        </td>
+        <td><p>Plot Mitochondrial Transcript Abundance</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotMitoVsCoding.html">plotMitoVsCoding()</a></code> </p>
+        </td>
+        <td><p>Plot Mitochondrial vs. Coding Counts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotNovelty.html">plotNovelty()</a></code> </p>
+        </td>
+        <td><p>Plot Novelty Score</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotPCA.html">plotPCA(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot PCA</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotQC.html">plotQC()</a></code> </p>
+        </td>
+        <td><p>Plot Quality Control</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotRRNAMappingRate.html">plotRRNAMappingRate()</a></code> </p>
+        </td>
+        <td><p>Plot Ribosomal RNA (rRNA) Mapping Rate</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotReadsPerCell.html">plotReadsPerCell()</a></code> </p>
+        </td>
+        <td><p>Plot Read Counts per Cell</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotTotalCounts.html">plotTotalCounts()</a></code> </p>
+        </td>
+        <td><p>Plot Total Counts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotTotalReads.html">plotTotalReads()</a></code> </p>
+        </td>
+        <td><p>Plot Total Reads</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotUMIsPerCell.html">plotUMIsPerCell()</a></code> </p>
+        </td>
+        <td><p>Plot UMIs per Cell</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotUMIsVsGenes.html">plotUMIsVsGenes()</a></code> </p>
+        </td>
+        <td><p>Plot UMI and Gene Correlation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotVolcano.html">plotVolcano()</a></code> </p>
+        </td>
+        <td><p>Plot Volcano</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotZerosVsDepth.html">plotZerosVsDepth()</a></code> </p>
+        </td>
+        <td><p>Plot Percentage of Zeros vs. Library Depth</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="prepareTemplate.html">prepareTemplate()</a></code> </p>
+        </td>
+        <td><p>Prepare R Markdown Template File</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="printString.html">printString()</a></code> </p>
+        </td>
+        <td><p>Print String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="rdataExtPattern.html">rdataExtPattern</a></code> </p>
+        </td>
+        <td><p>R Data Extension Pattern</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="rdataLoadError.html">rdataLoadError</a></code> </p>
+        </td>
+        <td><p>R Data Load Error</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="realpath.html">realpath()</a></code> </p>
+        </td>
+        <td><p>Express File Paths in Canonical Form</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="relativeLogExpression.html">relativeLogExpression()</a></code> </p>
+        </td>
+        <td><p>Relative Log Expression</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="relevel.html">relevelRowRanges()</a></code> <code><a href="relevel.html">relevelColData()</a></code> </p>
+        </td>
+        <td><p>Relevel Row or Column Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeNA.html">removeNA()</a></code> </p>
+        </td>
+        <td><p>Remove Rows and Columns Containing Only NA Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="rse.html">rse</a></code> </p>
+        </td>
+        <td><p>Example RNA-Seq Data Set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sampleData.html">sampleData()</a></code> <code><a href="sampleData.html">`sampleData<-`()</a></code> <code><a href="sampleData.html">sampleNames(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sampleNames.html">`sampleNames<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;character&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Sample Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeColData.html">sanitizeColData()</a></code> <code><a href="sanitizeColData.html">sanitizeSampleData()</a></code> </p>
+        </td>
+        <td><p>Sanitize Column Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeNA.html">sanitizeNA()</a></code> </p>
+        </td>
+        <td><p>Sanitize NA Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizePercent.html">sanitizePercent()</a></code> </p>
+        </td>
+        <td><p>Sanitize Percent</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> <code><a href="sanitizeRowData.html">sanitizeRowRanges()</a></code> </p>
+        </td>
+        <td><p>Sanitize Row Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="saveData.html">saveData()</a></code> </p>
+        </td>
+        <td><p>Save Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="saveRdExamples.html">saveRdExamples()</a></code> </p>
+        </td>
+        <td><p>Save R Documentation Examples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sce.html">sce</a></code> </p>
+        </td>
+        <td><p>Example Single-Cell RNA-Seq Data Set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="selectSamples.html">selectSamples()</a></code> </p>
+        </td>
+        <td><p>Select Samples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="separator.html">separator()</a></code> </p>
+        </td>
+        <td><p>Separator Bar</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="show.html">show(<i>&lt;EggNOG&gt;</i>)</a></code> <code><a href="show.html">show(<i>&lt;PANTHER&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Show an Object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="showSlotInfo.html">showSlotInfo()</a></code> </p>
+        </td>
+        <td><p>Show Slot Information</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sortUnique.html">sortUnique()</a></code> </p>
+        </td>
+        <td><p>Sort and Make Unique</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sparse.html">sparse</a></code> </p>
+        </td>
+        <td><p>Example Sparse Matrix</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="standardizeCall.html">standardizeCall()</a></code> </p>
+        </td>
+        <td><p>Standardize Call</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
+        </td>
+        <td><p>Strip Transcript Versions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="subsetPerSample.html">subsetPerSample()</a></code> </p>
+        </td>
+        <td><p>Subset Per Sample</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="summary.html">summary(<i>&lt;Gene2Symbol&gt;</i>)</a></code> <code><a href="summary.html">summary(<i>&lt;Tx2Gene&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Object Summaries</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tabular.html">tabular()</a></code> </p>
+        </td>
+        <td><p>R Documentation Table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tbl.html">tbl</a></code> </p>
+        </td>
+        <td><p>Example Tibble</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tmm.html">tmm()</a></code> </p>
+        </td>
+        <td><p>Trimmed Mean of M-Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="toStringUnique.html">toStringUnique()</a></code> </p>
+        </td>
+        <td><p>Convert to a Unique Character String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="topCellsPerSample.html">topCellsPerSample()</a></code> </p>
+        </td>
+        <td><p>Top Cells per Sample</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="topTables.html">topTables()</a></code> </p>
+        </td>
+        <td><p>Top Tables of Differential Expression Results</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tpm.html">tpm(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Transcripts per Million</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="transmit.html">transmit()</a></code> </p>
+        </td>
+        <td><p>Transmit Files from a Remote FTP Server</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tx_se.html">tx_se</a></code> </p>
+        </td>
+        <td><p>Example Transcript-Level Data Set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="uniteInterestingGroups.html">uniteInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Unite Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="writeCounts.html">writeCounts()</a></code> </p>
+        </td>
+        <td><p>Write Counts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="zerosVsDepth.html">zerosVsDepth()</a></code> </p>
+        </td>
+        <td><p>Percentage of Zeros vs. Library Depth</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -1344,7 +2373,7 @@ Note optional matching of gzip.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

@@ -52,5 +52,5 @@ basenameSansExt("dir/file.txt")
 basenameSansExt("dir/archive.tar.gz")
 }
 \seealso{
-\code{basename()}.
+\code{basename}.
 }

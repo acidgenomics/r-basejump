@@ -7,16 +7,15 @@
 PANTHER(organism, release = NULL, progress = FALSE)
 }
 \arguments{
-\item{organism}{\code{string}. Full Latin organism name. Currently supported
+\item{organism}{\code{character(1)}. Full Latin organism name. Currently supported
 organisms: \emph{Homo sapiens}, \emph{Mus musculus}, \emph{Caenorhabditis elegans},
 \emph{Drosophila melanogaster}.}
 
-\item{release}{\code{string} or \code{NULL}. PANTHER release version. If set \code{NULL},
+\item{release}{\code{character(1)} or \code{NULL}. PANTHER release version. If \code{NULL},
 defaults to current release. Consult the PANTHER website for a list of
 release versions available from the FTP server (e.g. \code{"13.0"}).}
 
-\item{progress}{\code{boolean}. Call \code{pbapply::pblapply()} internally to show
-progress.}
+\item{progress}{\code{logical(1)}. Use \code{pbapply::pblapply} to show progress.}
 }
 \value{
 \code{PANTHER}. Contains a \code{DataFrame}.

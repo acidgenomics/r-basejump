@@ -25,11 +25,11 @@ convertTranscriptsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough to \code{makeTx2GeneFromEnsembl()}.}
+\item{...}{Passthrough to \code{makeTx2GeneFromEnsembl}.}
 
 \item{tx2gene}{\code{Tx2Gene}. Transcript-to-gene mappings.}
 
-\item{aggregate}{\code{boolean}. For objects supporting \code{dim()}, aggregate counts
+\item{aggregate}{\code{logical(1)}. For objects supporting \code{dim}, aggregate counts
 to gene level and collapse the matrix.}
 }
 \value{
@@ -44,7 +44,7 @@ Convert Transcripts to Genes
 }
 \note{
 For objects containing a count matrix, the object rows will be
-collapsed to gene level using \code{aggregateRows()}. This applies to our
+collapsed to gene level using \code{aggregateRows}. This applies to our
 \code{SummarizedExperiment} method.
 }
 \examples{
@@ -80,5 +80,5 @@ x <- convertTranscriptsToGenes(object)
 print(x)
 }
 \seealso{
-\code{aggregateRows()}.
+\code{aggregateRows}.
 }

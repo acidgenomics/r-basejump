@@ -12,10 +12,10 @@ loadData(..., dir = getOption("basejump.load.dir", "."),
 using non-standard evaluation for convenience during interactive use, and
 \emph{must not be quoted}.}
 
-\item{dir}{\code{string}. Directory path.}
+\item{dir}{\code{character(1)}. Directory path.}
 
-\item{envir}{\code{environment} to use for assignment. Defaults to
-\code{parent.frame()}, which will assign into the calling environment.}
+\item{envir}{\code{environment} to use for assignment. Defaults to \code{parent.frame},
+which will assign into the calling environment.}
 }
 \value{
 Invisible \code{character}. File paths.
@@ -25,16 +25,16 @@ Load R data files from a directory using symbols rather than complete file
 paths. Supports "\code{.rds}", "\code{.rda}", and "\code{.RData}" file extensions.
 }
 \details{
-\code{loadData()} is opinionated about the format of R data files it will accept.
-\code{save()} allows for the saving of multiple objects into a single R data file.
+\code{loadData} is opinionated about the format of R data files it will accept.
+\code{save} allows for the saving of multiple objects into a single R data file.
 This can later result in unexpected accidental replacement of an existing
 object in the current environment. Since an R data file internally stores the
 name of an object, if the file is later renamed the object name will no
 longer match.
 
-To avoid any accidental replacements, \code{loadData()} will only load R data
+To avoid any accidental replacements, \code{loadData} will only load R data
 files that contain a single object, and the internal object name must match
-the file name exactly. Additionally, \code{loadData()} will intentionally error if
+the file name exactly. Additionally, \code{loadData} will intentionally error if
 an object with the same name already exists in the destination \code{environment}.
 }
 \note{
@@ -45,5 +45,5 @@ names using non-standard evaluation.
 loadData(example, dir = system.file("extdata", package = "basejump"))
 }
 \seealso{
-\code{load()}, \code{readRDS()}.
+\code{load}, \code{readRDS}.
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Validate Classes — validateClasses • basejump</title>
+<title>Concatenate Strings to Form a URL — pasteURL • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Validate Classes — validateClasses" />
+<meta property="og:title" content="Concatenate Strings to Form a URL — pasteURL" />
 
-<meta property="og:description" content="Validity check capable of validating multiple slots in a single call." />
+<meta property="og:description" content="Concatenate Strings to Form a URL" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -107,74 +107,61 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Validate Classes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assertions.R'><code>R/assertions.R</code></a></small>
-    <div class="hidden name"><code>validateClasses.Rd</code></div>
+    <h1>Concatenate Strings to Form a URL</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/pasteURL.R'><code>R/pasteURL.R</code></a></small>
+    <div class="hidden name"><code>pasteURL.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Validity check capable of validating multiple slots in a single call.</p>
+    <p>Concatenate Strings to Form a URL</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>validateClasses</span>(<span class='no'>object</span>, <span class='no'>expected</span>, <span class='kw'>subset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>pasteURL</span>(<span class='no'>...</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"https"</span>, <span class='st'>"http"</span>, <span class='st'>"ftp"</span>, <span class='st'>"none"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>...</th>
+      <td><p>one or more <span style="R">R</span> objects, to be converted to character vectors.</p></td>
     </tr>
     <tr>
-      <th>expected</th>
-      <td><p><code>list</code>. Named list of expected classes per slot.</p></td>
-    </tr>
-    <tr>
-      <th>subset</th>
-      <td><p><code>boolean</code>. Only check a subset of slots in the object.</p></td>
+      <th>protocol</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Desired protocol to use. Defaults to HTTPS
+but HTTP and FTP are also supported. Use <code>"none"</code> if you want to prepare
+a URL that already contains a protocol in the first element of the dots.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>boolean</code> (TRUE) on sucess or <code>string</code> containing informative
-message on failure.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>To be used inside S4 <code><a href='https://www.rdocumentation.org/packages/methods/topics/validObject'>methods::setValidity()</a></code> call or with
-<code><a href='https://www.rdocumentation.org/packages/assertthat/topics/validate_that'>assertthat::validate_that()</a></code>. Particularly useful for checking multiple
-slotted objects inside <code>metadata()</code>.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/assertthat/topics/validate_that'>assertthat::validate_that()</a></code>.</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>)
-<span class='fu'>validateClasses</span>(
-    <span class='kw'>object</span> <span class='kw'>=</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/Annotated-class'>metadata</a></span>(<span class='no'>rse</span>),
-    <span class='kw'>expected</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
-        <span class='kw'>version</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"package_version"</span>, <span class='st'>"numeric_version"</span>),
-        <span class='kw'>date</span> <span class='kw'>=</span> <span class='st'>"Date"</span>,
-        <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='st'>"character"</span>
-    )
-)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## HTTPS</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>pasteURL</span>(
+    <span class='st'>"steinbaugh.com"</span>,
+    <span class='st'>"basejump"</span>,
+    <span class='st'>"reference"</span>,
+    <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"https"</span>
+)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "https://steinbaugh.com/basejump/reference"</div><div class='input'>
+<span class='co'>## FTP</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>pasteURL</span>(
+    <span class='st'>"ftp.ensembl.org"</span>,
+    <span class='st'>"pub"</span>,
+    <span class='st'>"release-94"</span>,
+    <span class='st'>"gtf"</span>,
+    <span class='st'>"homo_sapiens"</span>,
+    <span class='st'>"Homo_sapiens.GRCh38.94.gtf.gz"</span>,
+    <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ftp"</span>
+)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "ftp://ftp.ensembl.org/pub/release-94/gtf/homo_sapiens/Homo_sapiens.GRCh38.94.gtf.gz"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -187,7 +174,7 @@ slotted objects inside <code>metadata()</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

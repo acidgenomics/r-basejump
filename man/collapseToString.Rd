@@ -28,18 +28,18 @@ collapseToString(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{sep}{\code{string}. Separator. Defaults to comma.}
+\item{sep}{\code{character(1)}. Separator. Defaults to comma.}
 
-\item{sort}{\code{boolean}. Sort values.}
+\item{sort}{\code{logical(1)}. Sort values.}
 
-\item{removeNA}{\code{boolean}. Remove NA values.}
+\item{removeNA}{\code{logical(1)}. Remove NA values.}
 
-\item{unique}{\code{boolean}. Unique values.}
+\item{unique}{\code{logical(1)}. Unique values.}
 }
 \value{
 \itemize{
-\item \code{atomic}: \code{string}.
-\item \code{dim()}: Object of same class, collapsed to a single row.
+\item \code{atomic}: \code{character(1)}.
+\item \code{dim}: Object of same class, collapsed to a single row.
 }
 }
 \description{
@@ -75,5 +75,5 @@ datasets::iris \%>\%
     t()
 }
 \seealso{
-\code{toString()}.
+\code{toString}.
 }

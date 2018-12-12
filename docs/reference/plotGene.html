@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -146,40 +146,39 @@ and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.</p></td>
     </tr>
     <tr>
       <th>assay</th>
-      <td><p><code>scalar</code>. Name or index of count matrix slotted in
-<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::assays()</a></code>. When passing in a <code>string</code>, the name must
-be defined in <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::assayNames()</a></code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>. Name or index of count matrix slotted in <code>assays</code>.
+When passing in a string, the name must be defined in <code>assayNames</code>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
-      <td><p><code>character</code>. Groups of interest that
-define the samples. If left unset, defaults to <code>sampleName</code>.</p></td>
+      <td><p><code>character</code>. Groups of interest that define the
+samples. If left unset, defaults to <code>sampleName</code>.</p></td>
     </tr>
     <tr>
       <th>countsAxisLabel</th>
-      <td><p><code>string</code>. Label to use for the counts axis.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Label to use for the counts axis.</p></td>
     </tr>
     <tr>
       <th>medianLine</th>
-      <td><p><code>boolean</code>. Include median line for each group. Disabled if
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Include median line for each group. Disabled if
 samples are colored by sample name.</p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code>. Desired ggplot2 color
-scale. Must supply discrete values. When set to <code>NULL</code>, the default ggplot2
-color palette will be used. If manual color definitions are desired, we
-recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>. To set the discrete color
-palette globally, use
-<code><a href='https://www.rdocumentation.org/packages/base/topics/options'>options(basejump.color.discrete = ggplot2::scale_color_viridis_d())</a></code>.</p></td>
+      <td><p><code>ScaleDiscrete</code>. Desired ggplot2 color scale. Must supply
+discrete values. When set to <code>NULL</code>, the default ggplot2 color palette will
+be used. If manual color definitions are desired, we recommend using
+<code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual</a></code>.</p>
+<p>To set the discrete color palette globally, use:</p><pre>options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
+</pre></td>
     </tr>
     <tr>
       <th>legend</th>
-      <td><p><code>boolean</code>. Show plot legend.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Show plot legend.</p></td>
     </tr>
     <tr>
       <th>style</th>
-      <td><p><code>string</code>. Plot style.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Plot style.</p></td>
     </tr>
     </table>
     
@@ -188,7 +187,7 @@ palette globally, use
     <p><code>ggplot</code>.</p>
 <ul>
 <li><p><code>style = "facet"</code>: <code>ggplot</code> grouped by <code>sampleName</code>, with
-<code><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>ggplot2::facet_wrap()</a></code> applied to panel the samples.</p></li>
+<code><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>ggplot2::facet_wrap</a></code> applied to panel the samples.</p></li>
 <li><p><code>style = "wide"</code>: <code>ggplot</code> in wide format, with genes on the x-axis.</p></li>
 </ul>
 
@@ -226,7 +225,7 @@ palette globally, use
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

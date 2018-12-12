@@ -8,10 +8,10 @@ import(file, dataFrame = getOption("basejump.data.frame", "data.frame"),
   ...)
 }
 \arguments{
-\item{file}{\code{string}. File path.}
+\item{file}{\code{character(1)}. File path.}
 
-\item{dataFrame}{\code{string}. Data frame class to return. Can be set globally
-using the \code{basejump.data.frame} option.
+\item{dataFrame}{\code{character(1)}. Data frame class to return. Can be set
+globally using the \code{basejump.data.frame} option.
 
 Current recommendations (by priority):
 \itemize{
@@ -63,45 +63,45 @@ insensitive.
 This function supports automatic loading of common file types:
 \itemize{
 \item \code{CSV}: Comma Separated Values.\cr
-Imported by \code{data.table::fread()}.
+Imported by \code{data.table::fread}.
 \item \code{TSV} Tab Separated Values.\cr
-Imported by \code{data.table::fread()}.
+Imported by \code{data.table::fread}.
 \item \code{TXT}: Text file. \emph{Ambiguous, not recommended}.\cr
-Imported by \code{data.table::fread()}.
+Imported by \code{data.table::fread}.
 \item \code{XLSX}/\code{XLS}: Excel workbook.\cr
-Imported by \code{readxl::read_excel()}.
+Imported by \code{readxl::read_excel}.
 \item \code{MTX}: MatrixMarket sparse matrix.\cr
-Imported by \code{Matrix::readMM()}.
+Imported by \code{Matrix::readMM}.
 \item \code{GTF}/\code{GFF}/\code{GFF3}: General Feature Format.\cr
-Imported by \code{rtracklayer::import()}.
+Imported by \code{rtracklayer::import}.
 \item \code{JSON}: JSON.
-Imported by \code{jsonlite::read_json()}.
+Imported by \code{jsonlite::read_json}.
 \item \code{YAML}/\code{YML}: YAML.
-Imported by \code{yaml::yaml.load_file()}
+Imported by \code{yaml::yaml.load_file}
 \item \code{RDA}/\code{RDATA}: R Data.
 \itemize{
-\item Imported by \code{load()}.
+\item Imported by \code{load}.
 \item Must contain a single object.
-\item Doesn't require internal object name to match, unlike \code{loadData()}.
+\item Doesn't require internal object name to match, unlike \code{loadData}.
 }
 \item \code{RDS}: R Data Serialized.\cr
-Imported by \code{readRDS()}.
+Imported by \code{readRDS}.
 }
 
 These file formats will be imported as source code lines by
-\code{readr::read_lines()}: \code{LOG}, \code{MD}, \code{PY}, \code{R}, \code{RMD}, \code{SH}.
+\code{readr::read_lines}: \code{LOG}, \code{MD}, \code{PY}, \code{R}, \code{RMD}, \code{SH}.
 
 These file formats are blacklisted, and intentionally not supported:
 \code{DOC}, \code{DOCX}, \code{PDF}, \code{PPT}, \code{PPTX}.
 
 If a file format isn't supported natively (or blacklisted), the
 \href{https://cran.r-project.org/web/packages/rio/index.html}{rio} package will
-be used as a fallback attempt. See \code{rio::import()} for details.
+be used as a fallback attempt. See \code{rio::import} for details.
 }
 \section{Delimited Files (CSV/TSV)}{
 
 
-\code{import()} uses the \code{fread()} function of the  \href{https://cran.r-project.org/package=data.table}{data.table} package to
+\code{import} uses the \code{fread} function of the  \href{https://cran.r-project.org/package=data.table}{data.table} package to
 import standard CSV and TSV files. This should work automatically for most
 files without issue.
 
@@ -113,7 +113,7 @@ is \code{numeric}, set \code{header = TRUE} here to force the column name.
 
 See \code{help(topic = "fread", package = "data.table")} for details.
 
-The \code{read_csv()} and \code{read_tsv()} functions of the \href{https://readr.tidyverse.org}{readr} package
+The \code{read_csv} and \code{read_tsv} functions of the \href{https://readr.tidyverse.org}{readr} package
 are good alternatives, which return \code{tibble} data frames (\code{tbl_df}).
 }
 
@@ -121,7 +121,7 @@ are good alternatives, which return \code{tibble} data frames (\code{tbl_df}).
 
 
 Reading a Matrix Market Exchange (\code{MTX}) file now requires \code{COLNAMES} and
-\code{ROWNAMES} sidecar files containing the \code{colnames()} and \code{rownames()} of
+\code{ROWNAMES} sidecar files containing the \code{colnames} and \code{rownames} of
 the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.
 }

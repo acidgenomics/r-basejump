@@ -22,14 +22,14 @@ autopadZeros(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{rownames}{\code{boolean}. Apply sanitization on row names. This is not
+\item{rownames}{\code{logical(1)}. Apply sanitization on row names. This is not
 generally recommended by default, since rownames commonly contain gene
 identifiers that should not be modified.}
 
-\item{colnames}{\code{boolean}. Apply sanitization on column names. This is
+\item{colnames}{\code{logical(1)}. Apply sanitization on column names. This is
 generally recommended by default.}
 
-\item{sort}{\code{boolean}. Resort using \code{sort()}.}
+\item{sort}{\code{logical(1)}. Resort using \code{sort}.}
 }
 \value{
 \code{character}.
@@ -38,9 +38,9 @@ generally recommended by default.}
 Autopad Zeros
 }
 \note{
-For methods on objects supporting \code{dim()} (e.g. \code{matrix} or
-\code{SummarizedExperiment}), the object will be returned with the rows and/or
-columns resorted by default. This does not apply to the \code{character} method.
+For methods on objects supporting \code{dim} (e.g. \code{matrix}), the object
+will be returned with the rows and/or columns resorted by default. This does
+not apply to the \code{character} method.
 }
 \examples{
 data(rse)

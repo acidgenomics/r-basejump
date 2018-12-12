@@ -35,8 +35,8 @@ sampleData(object, ...) <- value
 
 \item{value}{Value to assign.}
 
-\item{clean}{\code{boolean}. Only return \code{factor} columns. Useful when working
-with objects that contain metrics in \code{colData()}.}
+\item{clean}{\code{logical(1)}. Only return \code{factor} columns. Useful when working
+with objects that contain metrics in \code{colData}.}
 
 \item{blacklist}{\code{character}. Column names that should never be treated as
 sample-level metadata. Applicable only to \code{SingleCellExperiment} objects.}
@@ -48,7 +48,7 @@ sample-level metadata. Applicable only to \code{SingleCellExperiment} objects.}
 Metadata that describes the samples.
 }
 \details{
-This is a complement to the standard \code{SummarizedExperiment::colData()}
+This is a complement to the standard \code{SummarizedExperiment::colData}
 function, but improves support for accessing sample metadata for datasets
 where multiple items in the columns map to a single sample (e.g. cells for a
 single-cell RNA-seq experiment).

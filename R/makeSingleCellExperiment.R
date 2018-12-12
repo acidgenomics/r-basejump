@@ -8,13 +8,14 @@
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' library(SingleCellExperiment)
 #' data(sce)
 #' object <- sce
-#' assays <- assays(object)
-#' rowRanges <- rowRanges(object)
-#' colData <- colData(object)
-#' metadata <- metadata(object)
+#'
+#' assays <- SummarizedExperiment::assays(object)
+#' rowRanges <- SummarizedExperiment::rowRanges(object)
+#' colData <- SummarizedExperiment::colData(object)
+#' metadata <- S4Vectors::metadata(object)
+#'
 #' x <- makeSingleCellExperiment(
 #'     assays = assays,
 #'     rowRanges = rowRanges,

@@ -24,9 +24,8 @@ zerosVsDepth(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of count matrix slotted in
-\code{SummarizedExperiment::assays()}. When passing in a \code{string}, the name must
-be defined in \code{SummarizedExperiment::assayNames()}.}
+\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
+When passing in a string, the name must be defined in \code{assayNames}.}
 }
 \value{
 \code{matrix}.

@@ -28,7 +28,7 @@ setArgsToDoCall(...)
 \item{object}{Object.}
 }
 \value{
-\code{.Defunct()}.
+\code{.Defunct}.
 }
 \description{
 Defunct Functions

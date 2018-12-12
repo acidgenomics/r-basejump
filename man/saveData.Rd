@@ -14,13 +14,13 @@ saveData(..., dir = getOption("basejump.save.dir", "."),
 using non-standard evaluation for convenience during interactive use, and
 \emph{must not be quoted}.}
 
-\item{dir}{\code{string}. Directory path.}
+\item{dir}{\code{character(1)}. Directory path.}
 
-\item{ext}{\code{string}. R data serialized (RDS; "\code{rds}") or R data ("\code{rda}",
+\item{ext}{\code{character(1)}. R data serialized (RDS; "\code{rds}") or R data ("\code{rda}",
 "\code{RData}"). RDS is preferred when saving single objects per file, which is
-always the convention of \code{saveData()}, regardless of the extension used.}
+always the convention of \code{saveData}, regardless of the extension used.}
 
-\item{overwrite}{\code{boolean}. Overwrite existing file.}
+\item{overwrite}{\code{logical(1)}. Overwrite existing file.}
 
 \item{compress}{logical or character string specifying whether saving
     to a named file is to use compression.  \code{TRUE} corresponds to
@@ -33,7 +33,7 @@ always the convention of \code{saveData()}, regardless of the extension used.}
 Invisible named \code{character}. File paths.
 }
 \description{
-Wrapper for \code{save()} supporting quick, interactive saving of object names
+Wrapper for \code{save} supporting quick, interactive saving of object names
 passed as symbols.
 }
 \details{
@@ -43,7 +43,7 @@ combining multiple objects into a single file.
 \note{
 This function is desired for interactive use and interprets object
 names using non-standard evaluation. It will \strong{overwrite} existing files
-on disk, following the same conventions as \code{save()}.
+on disk, following the same conventions as \code{save}.
 }
 \examples{
 data(rse, sce)
@@ -54,5 +54,5 @@ list.files("example")
 unlink("example", recursive = TRUE)
 }
 \seealso{
-\code{save()}, \code{saveRDS()}.
+\code{save}, \code{saveRDS}.
 }

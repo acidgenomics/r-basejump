@@ -9,17 +9,17 @@ plotDEGHeatmap(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough arguments to \code{pheatmap::pheatmap()}. The names of the
+\item{...}{Passthrough arguments to \code{pheatmap::pheatmap}. The names of the
 arguments should be formatted in camel case, not snake case.}
 }
 \value{
 \code{pheatmap}.
 }
 \description{
-This function is an extension of \code{plotHeatmap()} that is optimized
+This function is an extension of \code{plotHeatmap} that is optimized
 for automatic handling differentially expressed genes, rather than requiring
 manual input of a gene vector. All of the optional parameters for
-\code{plotHeatmap()} are also supported by this function.
+\code{plotHeatmap} are also supported by this function.
 }
 \details{
 To adjust the annotation columns, modify the \code{colData} of the \code{counts}

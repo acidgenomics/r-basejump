@@ -36,18 +36,18 @@ headtail(x, ...)
 \item{n}{\code{scalar integer}. Positive integer denoting the number of first and
 last items to include.}
 
-\item{ascii}{\code{boolean}. Require separators to use ASCII instead of Unicode.}
+\item{ascii}{\code{logical(1)}. Require separators to use ASCII instead of Unicode.}
 }
 \value{
 Invisible \code{NULL}.
 }
 \description{
-Inspired by the \code{print()} method for \code{DataFrame} class objects. Applies
+Inspired by the \code{print} method for \code{DataFrame} class objects. Applies
 to both rows and columns, enabling quick inspection during interactive use.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{atomic}: Paste collapse to a \code{string}.
+\item \code{atomic}: Paste collapse to a \code{character(1)}.
 
 \item \code{matrix}: Show first and last rows.
 
@@ -59,7 +59,7 @@ to both rows and columns, enabling quick inspection during interactive use.
 
 \item \code{GRanges}: Summarize the ranges.
 
-\item \code{SummarizedExperiment}: Summarize the primary \code{assay()}.
+\item \code{SummarizedExperiment}: Summarize the primary \code{assay}.
 }}
 
 \examples{
@@ -74,7 +74,7 @@ headtail(rse, ascii = TRUE)
 }
 \seealso{
 \itemize{
-\item \code{utils::head()}, \code{utils::tail()}, \code{base::cat()}.
+\item \code{utils::head}, \code{utils::tail}, \code{base::cat}.
 \item \code{getMethod("show", "DataTable")}.
 }
 }

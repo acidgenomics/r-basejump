@@ -13,15 +13,15 @@ printString(x, max = 100L)
 \code{getOption("max.print")} without having to set globally.}
 }
 \value{
-\code{string}.
+\code{character(1)}.
 }
 \description{
-Capture \code{print()} output of an \code{atomic} vector. Useful for returning
+Capture \code{print} output of an \code{atomic} vector. Useful for returning
 informative messages inside a function.
 }
 \examples{
 printString(c("hello", "world"))
 }
 \seealso{
-\code{cat()}.
+\code{cat}.
 }

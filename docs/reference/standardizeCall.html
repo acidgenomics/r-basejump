@@ -35,7 +35,7 @@
 <meta property="og:title" content="Standardize Call — standardizeCall" />
 
 <meta property="og:description" content="This function adds matching support for S4 methods with formals that aren't
-identical to the generic, and use a nested .local() call." />
+identical to the generic, and use a nested .local call." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +66,7 @@ identical to the generic, and use a nested .local() call." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@ identical to the generic, and use a nested .local() call." />
     <div class="ref-description">
     
     <p>This function adds matching support for S4 methods with formals that aren't
-identical to the generic, and use a nested <code>.local()</code> call.</p>
+identical to the generic, and use a nested <code>.local</code> call.</p>
     
     </div>
 
@@ -133,13 +133,13 @@ identical to the generic, and use a nested <code>.local()</code> call.</p>
     </tr>
     <tr>
       <th>return</th>
-      <td><p><code>string</code>. Return type. Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>base::match.arg()</a></code>
-internally and defaults to the first argument in the <code>character</code> vector.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Return type. Uses <code>match.arg</code> internally and
+defaults to the first argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p><code>boolean</code>. Run the function with verbose messages? It is only
-recommended to enable this when debugging.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Run the function with verbose messages?
+<em>It is only recommended to enable this when debugging.</em></p></td>
     </tr>
     </table>
     
@@ -156,9 +156,9 @@ the call was standardized.</p></li>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/base/topics/match.call'>match.call()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/base/topics/sys.parent'>sys.call()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/base/topics/sys.parent'>sys.parent()</a></code>.</p></li>
+<li><p><code>match.call</code>.</p></li>
+<li><p><code>sys.call</code>.</p></li>
+<li><p><code>sys.parent</code>.</p></li>
 </ul></div>
     
 
@@ -208,7 +208,7 @@ the call was standardized.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

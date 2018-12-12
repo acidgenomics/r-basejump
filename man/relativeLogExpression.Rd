@@ -21,5 +21,5 @@ Relative Log Expression
 Anders and Huber (2010).
 }
 \seealso{
-\code{edgeR::calcNormFactors()}.
+\code{edgeR::calcNormFactors}.
 }

@@ -10,7 +10,7 @@ toStringUnique(object)
 \item{object}{\code{atomic}.}
 }
 \value{
-\code{string}.
+\code{character(1)}.
 }
 \description{
 Convert to a Unique Character String
@@ -19,5 +19,5 @@ Convert to a Unique Character String
 toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 }
 \seealso{
-\code{toString()}.
+\code{toString}.
 }

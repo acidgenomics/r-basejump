@@ -17,8 +17,8 @@ selectSamples(object, ...)
 \item{object}{Object.}
 
 \item{...}{Selection arguments that map to the column names of
-\code{sampleData()}. \code{atomic} values are supported. Avoid using \code{logical} or
-\code{numeric} indices (e.g. \code{which()} calls) here, for improved code
+\code{sampleData}. \code{atomic} values are supported. Avoid using \code{logical} or
+\code{numeric} indices (e.g. \code{which} calls) here, for improved code
 readability.}
 }
 \value{
@@ -57,7 +57,7 @@ print(subset)
 }
 \seealso{
 \itemize{
-\item \code{sampleData()}.
-\item \code{S4Vectors::split()}.
+\item \code{sampleData}.
+\item \code{S4Vectors::split}.
 }
 }

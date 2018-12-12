@@ -44,7 +44,7 @@ mapGenesToSymbols(object, ...)
 to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
 and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.}
 
-\item{strict}{\code{boolean}. Require all genes to match. Recommended by default.
+\item{strict}{\code{logical(1)}. Require all genes to match. Recommended by default.
 If set \code{FALSE}, instead will return a warning to the user, and subset the
 genes vector to only include matches.}
 }
@@ -62,7 +62,7 @@ dynamically (e.g. for single-cell RNA-seq marker analysis).
 
 Some genomes (e.g. Homo sapiens, Mus musculus) contain duplicated gene names
 for multiple gene identifiers. Normally we handle these ambiguous gene names
-by sanitizing them with \code{make.names()}. If a user requests a gene name that
+by sanitizing them with \code{make.names}. If a user requests a gene name that
 is duplicated, these functions will return a warning.
 }
 

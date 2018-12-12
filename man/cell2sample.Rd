@@ -16,8 +16,8 @@ cell2sample(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{return}{\code{string}. Return type. Uses \code{base::match.arg()}
-internally and defaults to the first argument in the \code{character} vector.}
+\item{return}{\code{character(1)}. Return type. Uses \code{match.arg} internally and
+defaults to the first argument in the \code{character} vector.}
 }
 \value{
 Named \code{factor}. Sample IDs as the \code{levels} and cell IDs as the
@@ -32,7 +32,7 @@ as the names.
 Cell-to-Sample Mappings
 }
 \note{
-\code{sampleID} column must be defined in \code{colData()}.
+\code{sampleID} column must be defined in \code{colData}.
 }
 \examples{
 data(sce)
