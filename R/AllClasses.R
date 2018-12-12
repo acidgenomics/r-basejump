@@ -87,7 +87,7 @@ setValidity(
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
-#' `S4Vectors::metadata()`.
+#' `metadata`.
 #'
 #' @author Michael Steinbaugh
 #' @export
@@ -210,7 +210,7 @@ setValidity(
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
-#' `metadata()`.
+#' `metadata`.
 #'
 #' @author Michael Steinbaugh
 #' @export

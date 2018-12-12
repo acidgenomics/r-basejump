@@ -3,7 +3,7 @@
 #' @name cell2sample
 #' @inheritParams params
 #'
-#' @note `sampleID` column must be defined in `colData()`.
+#' @note `sampleID` column must be defined in `colData`.
 #'
 #' @return Named `factor`. Sample IDs as the `levels` and cell IDs as the
 #'   `names`.
