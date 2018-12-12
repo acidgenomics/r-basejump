@@ -12,7 +12,7 @@
 #' @examples
 #' data(rse)
 #'
-#' ## Checks that columns are defined in `colData()`.
+#' ## Checks that columns are defined in `colData`.
 #' colnames(colData(rse))
 #' matchesInterestingGroups(rse, "condition")
 #'

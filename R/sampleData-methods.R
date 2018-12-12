@@ -2,7 +2,7 @@
 #'
 #' Metadata that describes the samples.
 #'
-#' This is a complement to the standard `SummarizedExperiment::colData()`
+#' This is a complement to the standard `SummarizedExperiment::colData`
 #' function, but improves support for accessing sample metadata for datasets
 #' where multiple items in the columns map to a single sample (e.g. cells for a
 #' single-cell RNA-seq experiment).
@@ -11,8 +11,8 @@
 #' @inheritParams params
 #'
 #' @param object Object that inherits from `SummarizedExperiment` class.
-#' @param clean `boolean`. Only return `factor` columns. Useful when working
-#'   with objects that contain metrics in `colData()`.
+#' @param clean `logical(1)`. Only return `factor` columns. Useful when working
+#'   with objects that contain metrics in `colData`.
 #' @param blacklist `character`. Column names that should never be treated as
 #'   sample-level metadata. Applicable only to `SingleCellExperiment` objects.
 #'
@@ -167,7 +167,7 @@ sampleData.SingleCellExperiment <-  # nolint
             any(duplicated(data[["sampleID"]]))
         ) {
             stop(paste(
-                "Failed to collapse `colData()` to sample level.",
+                "Failed to collapse `colData` to sample level.",
                 "Check these columns:", toString(colnames(data))
             ))
         }
@@ -231,7 +231,7 @@ setMethod(
 
         # Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {
-            message("Removed legacy `sampleData` in `metadata()` slot.")
+            message("Removed legacy sampleData in metadata() slot.")
             metadata(object)[["sampleData"]] <- NULL
         }
 

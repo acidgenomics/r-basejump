@@ -4,16 +4,16 @@
 #' @name collapseToString
 #' @inheritParams params
 #'
-#' @param sep `string`. Separator. Defaults to comma.
-#' @param unique `boolean`. Unique values.
-#' @param sort `boolean`. Sort values.
-#' @param removeNA `boolean`. Remove NA values.
+#' @param sep `character(1)`. Separator. Defaults to comma.
+#' @param unique `logical(1)`. Unique values.
+#' @param sort `logical(1)`. Sort values.
+#' @param removeNA `logical(1)`. Remove NA values.
 #'
-#' @seealso `toString()`.
+#' @seealso `toString`.
 #'
 #' @return
-#' - `atomic`: `string`.
-#' - `dim()`: Object of same class, collapsed to a single row.
+#' - `atomic`: `character(1)`.
+#' - `dim`: Object of same class, collapsed to a single row.
 #'
 #' @examples
 #' ## character ====
@@ -196,9 +196,9 @@ sortUnique <- function(object) {
 #'
 #' @param object `atomic`.
 #'
-#' @seealso `toString()`.
+#' @seealso `toString`.
 #'
-#' @return `string`.
+#' @return `character(1)`.
 #'
 #' @examples
 #' toStringUnique(c("hello", "world", NA, "hello", "world", NA))

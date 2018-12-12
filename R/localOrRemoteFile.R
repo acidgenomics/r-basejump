@@ -6,11 +6,11 @@
 #'
 #' @export
 #'
-#' @param file `string`. Local file paths or remote URLs.
+#' @param file `character(1)`. Local file paths or remote URLs.
 #'
 #' @return `character`. Local file paths. Stops on a missing file.
 #'
-#' @seealso `tempdir()`.
+#' @seealso `tempdir`.
 #'
 #' @examples
 #' ## Import a single file.

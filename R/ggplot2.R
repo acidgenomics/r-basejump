@@ -15,7 +15,7 @@
 #'
 #' @section basejump_geom_label:
 #'
-#' Modified version of `ggplot2::geom_label()`.
+#' Modified version of `ggplot2::geom_label`.
 #'
 #' @section basejump_geom_label_average:
 #'
@@ -25,26 +25,26 @@
 #' @section basejump_geom_label_repel:
 #'
 #' Repulsive textual annotations. Modified basejump version of
-#' `ggrepel::geom_label_repel()`. If advanced customization of the text labels
+#' `ggrepel::geom_label_repel`. If advanced customization of the text labels
 #' is required, simply use the ggrepel version instead.
 #'
 #' @name ggplot2-geoms
 #'
 #' @inheritParams ggplot2::geom_label
-#' @param color `string`. Text color (e.g. `"orange"`).
+#' @param color `character(1)`. Text color (e.g. `"orange"`).
 #' @param size `scalar integer`. Font size.
 #' @param xintercept,yintercept `scalar numeric` denoting x- or y-axis cutoff.
 #'   Specify one but not both.
 #' @param data `data.frame`. Data.
-#' @param col `string`. Column name.
-#' @param fun `string`. Function name to use for average calculation. Currently
+#' @param col `character(1)`. Column name.
+#' @param fun `character(1)`. Function name to use for average calculation. Currently
 #'   supports "`mean`" or "`median`".
 #' @param digits `scalar integer`. Number of significant digits to use. Defaults
 #'   to rounded.
 #'
 #' @seealso
-#' - `ggplot2::geom_label()`.
-#' - `ggrepel::geom_label_repel()`.
+#' - `ggplot2::geom_label`.
+#' - `ggrepel::geom_label_repel`.
 #'
 #' @return `ggproto`.
 #'
@@ -256,7 +256,7 @@ basejump_geom_label_repel <- function(
 #'
 #' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
-#' All themes are based off of `ggplot2::theme_linedraw()`, but with
+#' All themes are based off of `ggplot2::theme_linedraw`, but with
 #' modifications and extra user-definable parameters.
 #'
 #' @section Paperwhite:
@@ -267,29 +267,29 @@ basejump_geom_label_repel <- function(
 #' @section Midnight:
 #'
 #' Blackout theme that sets the plot background as black, with white text.
-#' Inspired by `Seurat::DarkTheme()`, with some color modifications. Useful
+#' Inspired by `Seurat::DarkTheme`, with some color modifications. Useful
 #' for visualizing many points with a high dynamic color range, such as t-SNE
 #' expression plots.
 #'
 #' @name ggplot2-themes
 #'
 #' @param base_size `scalar numeric`. Base font size.
-#' @param base_family `string`. Base font family.
-#' @param face `string`. Font face ("`bold`", "`plain`").
+#' @param base_family `character(1)`. Base font family.
+#' @param face `character(1)`. Font face ("`bold`", "`plain`").
 #' @param aspect_ratio `scalar numeric`. Aspect ratio, specifying the plot
 #'   proportions. Use `1` for a perfectly square plot (including the axis
 #'   labels).
-#' @param legend_position `string`. Legend key position. We're being a little
+#' @param legend_position `character(1)`. Legend key position. We're being a little
 #'   more restrictive here, only allowing "`bottom`", "`right`", or "`none`".
 #'   Including the legend at the top or the left side of the plot rarely makes
 #'   sense and is discouraged.
-#' @param grid `boolean`. Label the major panel grids with a gray accent.
-#' @param minimal `boolean`. Remove all axis lines, axis ticks, and
+#' @param grid `logical(1)`. Label the major panel grids with a gray accent.
+#' @param minimal `logical(1)`. Remove all axis lines, axis ticks, and
 #'   panel borders.
 #'
 #' @return `theme`.
 #'
-#' @seealso `ggplot2::theme()`.
+#' @seealso `ggplot2::theme`.
 #'
 #' @examples
 #' library(ggplot2)

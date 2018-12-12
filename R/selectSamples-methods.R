@@ -15,15 +15,15 @@
 #' @inheritParams params
 #'
 #' @param ... Selection arguments that map to the column names of
-#'   `sampleData()`. `atomic` values are supported. Avoid using `logical` or
-#'   `numeric` indices (e.g. `which()` calls) here, for improved code
+#'   `sampleData`. `atomic` values are supported. Avoid using `logical` or
+#'   `numeric` indices (e.g. `which` calls) here, for improved code
 #'   readability.
 #'
 #' @return Modified object, with selected samples.
 #'
 #' @seealso
-#' - `sampleData()`.
-#' - `S4Vectors::split()`.
+#' - `sampleData`.
+#' - `S4Vectors::split`.
 #'
 #' @examples
 #' data(rse, sce)
@@ -49,13 +49,14 @@ selectSamples.SummarizedExperiment <-  # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)
-        
+
         # Check that all arguments are atomic.
-        if(!all(vapply(
+        if (!all(vapply(
             X = args,
             FUN = is.atomic,
             FUN.VALUE = logical(1L)
         ))) {
+            stop("Arguments must be atomic.")
         }
 
         # Match the arguments against the sample metadata.
@@ -100,7 +101,7 @@ selectSamples.SingleCellExperiment <-  # nolint
         # arguments should be a string that can be used for logical grep
         # matching here internally.
         args <- list(...)
-        
+
         if (!all(vapply(
             X = args,
             FUN = is.atomic,
@@ -164,16 +165,16 @@ selectSamples.SingleCellExperiment <-  # nolint
             is(metrics, "grouped_df"),
             isSubset(c("cellID", "sampleID"), colnames(metrics))
         )
-        
+
         # Note that we don't need to sort here.
         cells <- metrics %>%
             filter(!!sym("sampleID") %in% !!samples) %>%
             pull("cellID")
         message(paste(length(cells), "cells matched."))
-        
+
         object <- object[, cells, drop = FALSE]
         metadata(object)[["selectSamples"]] <- TRUE
-        
+
         object
     }
 

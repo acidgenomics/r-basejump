@@ -4,17 +4,17 @@
 #'
 #' @inheritParams methods::selectMethod
 #' @inheritParams methods::setMethod
-#' @param package `string`. Package name.
+#' @param package `character(1)`. Package name.
 #'
 #' @return
-#' - `methodFormals()`: `list`. Extract the sealed formal arguments.
-#' - `methodFunction()`: `function`. Extract the sealed function.
+#' - `methodFormals`: `list`. Extract the sealed formal arguments.
+#' - `methodFunction`: `function`. Extract the sealed function.
 #'
 #' @seealso
 #' - Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #' - `help(topic = "MethodDefinition-class", package = "methods")`.
-#' - `methods::selectMethod()`.
-#' - `methods::setMethod()`.
+#' - `methods::selectMethod`.
+#' - `methods::setMethod`.
 #'
 #' @examples
 #' library(methods)
@@ -23,12 +23,12 @@
 #' f <- "as.data.frame"
 #' signature <- "ANY"
 #'
-#' ## Function.
+#' ## Function
 #' x <- methodFunction(f = f, signature = signature)
 #' class(x)
 #' formals(x)
 #'
-#' ## Formals.
+#' ## Formals
 #' x <- methodFormals(f = f, signature = signature)
 #' class(x)
 #' print(x)
@@ -48,7 +48,7 @@ methodFunction <- function(f, signature, package) {
 
     # Locate the S4 generic. We're opting to get either the `standardGeneric` or
     # the `nonstandardGenericFunction` instead of requiring `standardGeneric`
-    # via `getGeneric()` here, since it's more flexible with re-exported generic
+    # via `getGeneric` here, since it's more flexible with re-exported generic
     # functions.
     args <- Filter(
         f = Negate(is.null),
@@ -85,9 +85,9 @@ methodFunction <- function(f, signature, package) {
     )
     assert(is(definition, "MethodDefinition"))
 
-    # S4 dispatch will nest `.local()` function inside the method definition
-    # when the formals aren't identical to the generic. Otherwise it will be
-    # slotted in ".Data".
+    # S4 dispatch will nest `.local` function inside the method definition when
+    # the formals aren't identical to the generic. Otherwise it will be slotted
+    # in ".Data".
     if (isTRUE(hasLocal(definition))) {
         fun <- extractLocal(definition)
     } else {

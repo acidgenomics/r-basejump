@@ -5,10 +5,10 @@
 #'
 #' @param minCells `scalar integer`. Minimum number of cells required per
 #'   sample.
-#' @param assignAndSave `boolean`. Assign and save the individual datasets.
+#' @param assignAndSave `logical(1)`. Assign and save the individual datasets.
 #' @param envir `environment`. Where to assign the subsets. Only applicable when
 #'   `assignAndSave = TRUE`.
-#' @param dir `string`. Output directory. Only applicable when
+#' @param dir `character(1)`. Output directory. Only applicable when
 #'   `assignAndSave = TRUE`.
 #'
 #' @return

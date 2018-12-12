@@ -1,6 +1,6 @@
 # NOTE Switched to using run-length encoding (Rle) instead of factors in v0.8.
 #
-# NOTE Still intermittently getting the `dbDisconnect()` warning:
+# NOTE Still intermittently getting the `dbDisconnect` warning:
 #
 # ```
 # Warning message:
@@ -36,7 +36,7 @@
 #'
 #' @section GRCh37 (hg19) legacy annotations:
 #'
-#' `makeGRangesFromEnsembl()` supports the legacy *Homo sapiens* GRCh37 (release
+#' `makeGRangesFromEnsembl` supports the legacy *Homo sapiens* GRCh37 (release
 #' 75) build by internally querying the [EnsDb.Hsapiens.v75][] package.
 #' Alternatively, the corresponding GTF/GFF file can be loaded directly from
 #' GENCODE or Ensembl.
@@ -51,8 +51,8 @@
 #' @seealso
 #' - [AnnotationHub](https://bioconductor.org/packages/AnnotationHub/).
 #' - [ensembldb](https://bioconductor.org/packages/ensembldb/).
-#' - `rtracklayer::import()`.
-#' - `GenomicFeatures::makeTxDbFromGFF()`.
+#' - `rtracklayer::import`.
+#' - `GenomicFeatures::makeTxDbFromGFF`.
 #'
 #' @examples
 #' ## makeGRangesFromEnsembl ====
@@ -84,7 +84,7 @@ NULL
 #' Connect to AnnotationHub
 #'
 #' On a fresh install this will print a txProgressBar to the console. We're
-#' using `utils::capture.output()` here to suppress the console output, since
+#' using `utils::capture.output` here to suppress the console output, since
 #' it's not very informative and can cluster R Markdown reports.
 #'
 #' @noRd
@@ -390,10 +390,10 @@ NULL
         ah <- .annotationHub()
     }
     assert(is(ah, "AnnotationHub"))
-    # This step will also output `txProgressBar()` on a fresh install. Using
-    # `capture.output()` here again to suppress console output.
+    # This step will also output `txProgressBar` on a fresh install. Using
+    # `capture.output` here again to suppress console output.
     # Additionally, it attaches ensembldb and other Bioconductor dependency
-    # packages, which will mask some tidyverse functions (e.g. `select()`).
+    # packages, which will mask some tidyverse functions (e.g. `select`).
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
     ))
@@ -515,7 +515,7 @@ NULL
         X = mcols,
         FUN = function(col) {
             if (!is.atomic(col) || isS4(col)) {
-                # `I()` inhibits reinterpretation and returns `AsIs` class.
+                # `I` inhibits reinterpretation and returns `AsIs` class.
                 # This keeps complex columns (e.g. Entrez list) intact.
                 # Recommended in the `DataFrame` documentation.
                 I(col)
@@ -615,7 +615,7 @@ makeGRangesFromEnsembl <- function(
 
 
 #' @describeIn makeGRanges Use specific `EnsDb` object as annotation source.
-#'   Alternatively, can pass in an EnsDb package name as a `string`.
+#'   Alternatively, can pass in an EnsDb package name as a `character(1)`.
 #' @export
 makeGRangesFromEnsDb <- function(object, level) {
     level <- match.arg(level)
@@ -724,7 +724,7 @@ makeGRangesFromGFF <- function(
     level = c("genes", "transcripts")
 ) {
     message("Making GRanges from GFF/GTF file.")
-    # Note that `import()` has assert checks for file (see below).
+    # Note that `import` has assert checks for file (see below).
     level <- match.arg(level)
 
     # Import -------------------------------------------------------------------
@@ -897,9 +897,9 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 
 
 #' @describeIn makeGRanges
-#' `annotable()` is a legacy convenience function that calls
-#' `makeGRangesFromEnsembl()` and returns a `tibble` instead of `GRanges`. Note
-#' that `GRanges` can also be coercing using `BiocGenerics::as.data.frame()`.
+#' `annotable` is a legacy convenience function that calls
+#' `makeGRangesFromEnsembl` and returns a `tibble` instead of `GRanges`. Note
+#' that `GRanges` can also be coercing using `BiocGenerics::as.data.frame`.
 #' @export
 annotable <-
     function() {

@@ -1,7 +1,7 @@
 #' Organism
 #' @name organism
 #' @inheritParams params
-#' @seealso `detectOrganism()`.
+#' @seealso `detectOrganism`.
 #' @examples
 #' data(rse)
 #' organism(rse)

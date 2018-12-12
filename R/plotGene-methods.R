@@ -1,18 +1,18 @@
-# TODO Export `plotGeneExpression()` instead or define as an alias?
+# TODO Export `plotGeneExpression` instead or define as an alias?
 
 
 
 #' @name plotGene
 #'
 #' @inheritParams params
-#' @param countsAxisLabel `string`. Label to use for the counts axis.
-#' @param medianLine `boolean`. Include median line for each group. Disabled if
+#' @param countsAxisLabel `character(1)`. Label to use for the counts axis.
+#' @param medianLine `logical(1)`. Include median line for each group. Disabled if
 #'   samples are colored by sample name.
-#' @param style `string`. Plot style.
+#' @param style `character(1)`. Plot style.
 #'
 #' @return
 #' - `style = "facet"`: `ggplot` grouped by `sampleName`, with
-#'   `ggplot2::facet_wrap()` applied to panel the samples.
+#'   `ggplot2::facet_wrap` applied to panel the samples.
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
@@ -150,7 +150,7 @@ plotGene.SummarizedExperiment <-  # nolint
                 is.null(color),
             isFlag(legend)
         )
-        
+
         # Coercing to `SummarizedExperiment` for fast subsetting below.
         object <- as.SummarizedExperiment(object)
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)

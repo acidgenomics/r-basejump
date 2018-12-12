@@ -3,7 +3,7 @@
 #' @export
 #'
 #' @param object `character`. Sequencing file or directory paths.
-#' @param pattern `string`. Grep pattern. Default pattern checks for `"_LXXX"`.
+#' @param pattern `character(1)`. Grep pattern. Default pattern checks for `"_LXXX"`.
 #'
 #' @return `integer`. Lane number.
 #'

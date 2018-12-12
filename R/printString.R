@@ -1,6 +1,6 @@
 #' Print String
 #'
-#' Capture `print()` output of an `atomic` vector. Useful for returning
+#' Capture `print` output of an `atomic` vector. Useful for returning
 #' informative messages inside a function.
 #'
 #' @export
@@ -9,9 +9,9 @@
 #' @param max `scalar integer`. Maximum length of vector. Works like
 #'   `getOption("max.print")` without having to set globally.
 #'
-#' @return `string`.
+#' @return `character(1)`.
 #'
-#' @seealso `cat()`.
+#' @seealso `cat`.
 #'
 #' @examples
 #' printString(c("hello", "world"))

@@ -3,7 +3,7 @@
 #' @inheritParams dots
 #' @export
 #'
-#' @param envirName `string`. Name of the new `environment` to create.
+#' @param envirName `character(1)`. Name of the new `environment` to create.
 #' @param parentFrame `environment`. Parent `environment` where to assign the
 #'   new `environment`, specified by `envirName` argument.
 #'

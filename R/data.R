@@ -32,7 +32,7 @@
 
 #' Example RNA-Seq Data Set
 #'
-#' Generated with `DESeq2::makeExampleDESeqDataSet()`. Contains actual gene
+#' Generated with `DESeq2::makeExampleDESeqDataSet`. Contains actual gene
 #' identifiers and Ensembl annotations.
 #'
 #' @examples

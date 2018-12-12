@@ -3,7 +3,7 @@
 #' Match the user-defined interesting groups to the values slotted within a
 #' `SummarizedExperiment` object, and check that they are valid. Otherwise
 #' supports a missing `interestingGroups` argument, which will then use the
-#' `interestingGroups()` accessor function internally.
+#' `interestingGroups` accessor function internally.
 #'
 #' @export
 #'

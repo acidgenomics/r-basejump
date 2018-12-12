@@ -1,7 +1,7 @@
 #' Standardize Call
 #'
 #' This function adds matching support for S4 methods with formals that aren't
-#' identical to the generic, and use a nested `.local()` call.
+#' identical to the generic, and use a nested `.local` call.
 #'
 #' @export
 #'
@@ -14,9 +14,9 @@
 #'   the call was standardized.
 #'
 #' @seealso
-#' - `match.call()`.
-#' - `sys.call()`.
-#' - `sys.parent()`.
+#' - `match.call`.
+#' - `sys.call`.
+#' - `sys.parent`.
 #'
 #' @examples
 #' aaa <- "AAA"
@@ -62,7 +62,7 @@ standardizeCall <- function(
     return <- match.arg(return)
 
     # Determine where the call is in the stack that we want to standardize.
-    # Note that this differs for S4 methods containing a nested `.local()`.
+    # Note that this differs for S4 methods containing a nested `.local`.
     .local <- .isLocalCall(sys.call(which = which))
     if (isTRUE(.local) && which > 1L) {
         which <- which - 1L
@@ -84,13 +84,13 @@ standardizeCall <- function(
         envir = envir
     )
 
-    # Extract the definition from `.local()`, if necessary.
+    # Extract the definition from `.local`, if necessary.
     if (isTRUE(.local)) {
         assert(!isTRUE(.isLocalCall(call)))
         # Update definition.
         if (is(definition, "MethodDefinition")) {
             # Pull the ".local()" function out, which has the formals we need to
-            # match against in `match.call()` below.
+            # match against in `match.call` below.
             definition <- extractLocal(definition)
             list[["definition"]] <- definition
         }
@@ -101,7 +101,7 @@ standardizeCall <- function(
     }
 
     # Now ready to match (expand) the call.
-    # @seealso `pryr::standardise_call()`.
+    # @seealso `pryr::standardise_call`.
     # Note that we need to use the `envir` argument to properly match.
     call <- match.call(
         definition = definition,
@@ -119,7 +119,7 @@ standardizeCall <- function(
     assert(is.call(call))
 
     # Require that all arguments are named before returning.
-    # This check is especially important for S4 methods containing `.local()`.
+    # This check is especially important for S4 methods containing `.local`.
     assert(isCharacter(names(as.list(call)[-1L])))
 
     switch(EXPR = return, call = call, list = list)

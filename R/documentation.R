@@ -1,13 +1,13 @@
 # parseRd ======================================================================
 #' Parse R Documentation
 #'
-#' Modified version of `tools:::.Rd_get_metadata()` that keeps whitespace and
+#' Modified version of `tools:::.Rd_get_metadata` that keeps whitespace and
 #' returns `character` instead of `matrix`.
 #'
 #' @export
 #'
-#' @param object `Rd`. R documentation, returned from `tools::Rd_db()`.
-#' @param tag `string`. Desired metadata type. For example, these are supported:
+#' @param object `Rd`. R documentation, returned from `tools::Rd_db`.
+#' @param tag `character(1)`. Desired metadata type. For example, these are supported:
 #'
 #'   - "`title`".
 #'   - "`description`".
@@ -18,7 +18,7 @@
 #'   - "`seealso`".
 #'   - "`examples`".
 #'
-#' @seealso `tools::Rd_db()`.
+#' @seealso `tools::Rd_db`.
 #'
 #' @examples
 #' db <- tools::Rd_db("base")
@@ -63,7 +63,7 @@ parseRd <- function(object, tag) {
 # RdTags =======================================================================
 #' R Documentation Tags
 #'
-#' Modified version of the unexported `tools:::RdTags()` function.
+#' Modified version of the unexported `tools:::RdTags` function.
 #'
 #' @export
 #'
@@ -100,7 +100,7 @@ RdTags <- function(object) {  # nolint
 #' @param Rd `character` or `NULL`. R documentation name(s) from which to parse
 #'   and save the working examples. If `NULL`, all documentation files
 #'   containing examples will be saved.
-#' @param package `string`. Package name.
+#' @param package `character(1)`. Package name.
 #'
 #' @return Invisible `character`. File path(s).
 #'

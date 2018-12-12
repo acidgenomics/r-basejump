@@ -14,7 +14,7 @@
 #'
 #' - Required columns: `sampleName`.
 #' - Blacklisted columns: `interestingGroups`, `sampleID`.
-#' - All columns get coerced to `factor` and `droplevels()` is applied.
+#' - All columns get coerced to `factor` and `droplevels` is applied.
 #'
 #' @param object `DataFrame`.
 #' @export
@@ -80,7 +80,7 @@ sanitizeSampleData <- function(object) {
 
 
 # Consider exporting this.
-# See `encode()` for Rle approach.
+# See `encode` for Rle approach.
 .factorize <- function(object) {
     out <- lapply(
         X = object,

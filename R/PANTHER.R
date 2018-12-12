@@ -6,14 +6,13 @@
 #' @inherit PANTHER-class
 #' @inheritParams params
 #'
-#' @param organism `string`. Full Latin organism name. Currently supported
+#' @param organism `character(1)`. Full Latin organism name. Currently supported
 #'   organisms: *Homo sapiens*, *Mus musculus*, *Caenorhabditis elegans*,
 #'   *Drosophila melanogaster*.
-#' @param release `string` or `NULL`. PANTHER release version. If set `NULL`,
+#' @param release `character(1)` or `NULL`. PANTHER release version. If `NULL`,
 #'   defaults to current release. Consult the PANTHER website for a list of
 #'   release versions available from the FTP server (e.g. `"13.0"`).
-#' @param progress `boolean`. Call `pbapply::pblapply()` internally to show
-#'   progress.
+#' @param progress `logical(1)`. Use `pbapply::pblapply` to show progress.
 #'
 #' @examples
 #' options(basejump.test = TRUE)

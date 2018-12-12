@@ -4,12 +4,12 @@
 #' @note We're attempting to make this as strict as possible, requiring:
 #'
 #' - Rows (genes) across objects must be identical.
-#' - `rowRanges()` and/or `rowData()` metadata must be identical.
-#' - `colData()` must contain the same columns.
+#' - `rowRanges` and/or `rowData` metadata must be identical.
+#' - `colData` must contain the same columns.
 #' - Specific metadata must be identical (see `metadata` parameter).
 #'
 #' @seealso
-#' - `BiocGenerics::combine()`.
+#' - `BiocGenerics::combine`.
 #' - `help("merge.Matrix", "Matrix.utils")`.
 #'
 #' @return `SummarizedExperiment`.
@@ -188,7 +188,7 @@ combine.SingleCellExperiment <-  # nolint
         )
         validObject(rse)
         # Make SCE from RSE.
-        # Note that standard SCE `as()` coercion method doesn't return valid.
+        # Note that standard SCE `as` coercion method doesn't return valid.
         sce <- makeSingleCellExperiment(
             assays = assays(rse),
             rowRanges = rowRanges(rse),

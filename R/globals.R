@@ -27,7 +27,7 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
 #' Formals List
-#' Formals that the user can set globally with `base::getOption()`.
+#' Formals that the user can set globally with `base::getOption`.
 #' @export
 #' @examples
 #' formalsList
@@ -87,6 +87,6 @@ rdataExtPattern <- "\\.(rd[a|ata|s])$"
 #' @export
 #' @examples
 #' message(updateMessage)
-updateMessage <- "Run `updateObject()` to update your object."
+updateMessage <- "Run `updateObject` to update your object."
 
 .dataFrameChoices <- c("data.frame", "DataFrame", "tbl_df", "data.table")

@@ -1,8 +1,8 @@
 #' @name meltCounts
 #'
 #' @inheritParams params
-#' @param nonzeroGenes `boolean`. Return only non-zero genes.
-#' @param trans `string`. Apply a log transformation (e.g. `log2(x + 1L)`) to
+#' @param nonzeroGenes `logical(1)`. Return only non-zero genes.
+#' @param trans `character(1)`. Apply a log transformation (e.g. `log2(x + 1L)`) to
 #'   the count matrix prior to melting, if desired. Use `"identity"` to return
 #'   unmodified (default).
 #'

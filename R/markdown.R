@@ -35,18 +35,18 @@ setMethod(
 #' @inheritParams params
 #' @export
 #'
-#' @param text `string`. Header text.
+#' @param text `character(1)`. Header text.
 #' @param level `scalar integer`. Header level (1-7).
-#' @param tabset `boolean`. Include tabset marker.
-#' @param asis `boolean`. Set this to `TRUE` when using the function inside a
+#' @param tabset `logical(1)`. Include tabset marker.
+#' @param asis `logical(1)`. Set this to `TRUE` when using the function inside a
 #'   loop or inside an R Markdown chunk with '`results = "asis"`' enabled.
 #'
 #' @seealso
 #' [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
 #'
 #' @return
-#' - "`asis = TRUE`": `knitr::asis_output()`.
-#' - "`asis = FALSE`": `writeLines()`.
+#' - "`asis = TRUE`": `knitr::asis_output`.
+#' - "`asis = FALSE`": `writeLines`.
 #'
 #' @examples
 #' markdownHeader("Header", level = 2L)
@@ -104,8 +104,8 @@ mdHeader <- markdownHeader
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @export
 #'
-#' @param url `string`. URL.
-#' @param title `string` or `NULL`. Link title attribute. This will appear in a
+#' @param url `character(1)`. URL.
+#' @param title `character(1)` or `NULL`. Link title attribute. This will appear in a
 #'   mouse-over pop-up box.
 #'
 #' @return Markdown-formatted link.
@@ -152,7 +152,7 @@ mdLink <- markdownLink
 #' @inherit markdownHeader
 #' @export
 #'
-#' @param ordered `boolean`. Ordered ("`TRUE`") or unordered ("`FALSE`").
+#' @param ordered `logical(1)`. Ordered ("`TRUE`") or unordered ("`FALSE`").
 #'
 #' @examples
 #' groceries <- c("milk", "eggs")
@@ -210,7 +210,7 @@ mdList <- markdownList
 #'
 #' Supports using a named `list` containing multiple `ggplot` objects, which
 #' can be used in an R Markdown report, separated by headers. Internally, the
-#' headers are generated with the `markdownHeader()` function.
+#' headers are generated with the `markdownHeader` function.
 #'
 #' @inheritParams params
 #' @export
@@ -219,7 +219,7 @@ mdList <- markdownList
 #'
 #' @return Graphical output of plots, separated by Markdown headers.
 #'
-#' @seealso `cowplot::plot_grid()`.
+#' @seealso `cowplot::plot_grid`.
 #'
 #' @examples
 #' loadRemoteData(url = file.path(basejumpCacheURL, "plotlist.rda"))
@@ -259,8 +259,8 @@ mdPlots <- markdownPlots
 #'
 #' Knit multiple tables in a single R Markdown chunk.
 #'
-#' @note `knitr::kable()` now supports multiple tables as a `list` for the `x`
-#'   argument, but it still only supports a single caption. `markdownTables()`
+#' @note `knitr::kable` now supports multiple tables as a `list` for the `x`
+#'   argument, but it still only supports a single caption. `markdownTables`
 #'   extends this functionality, but supporting captions for each table.
 #'
 #' @export
@@ -268,13 +268,13 @@ mdPlots <- markdownPlots
 #' @param list Named `list`. Column data that can be coerced to `data.frame`.
 #' @param captions `character` or `NULL`. Table captions. If `NULL`, the names
 #'   of the list will be used automatically as captions.
-#' @param force `boolean`. Force knit output using `knitr::asis_output()`.
+#' @param force `logical(1)`. Force knit output using `knitr::asis_output`.
 #'   Recommended for development and unit testing only.
 #'
 #' @return `asis_output` if in a knit call or `list`.
 #'
 #' @seealso
-#' - `knitr::kable()`.
+#' - `knitr::kable`.
 #' - [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples

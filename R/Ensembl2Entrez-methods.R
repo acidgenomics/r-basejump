@@ -2,7 +2,7 @@
 #' @inherit Ensembl2Entrez-class
 #' @inheritParams params
 #'
-#' @param format `string`. Formatting method to apply:
+#' @param format `character(1)`. Formatting method to apply:
 #'
 #' - `"1:1"`: *Recommended.* Return with 1:1 mappings. For Ensembl genes that
 #'   don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't map
