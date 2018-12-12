@@ -143,7 +143,7 @@ remote URL as the value.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pasteURL.html'>pasteURL</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"rnaseq_counts.rds"</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"none"</span>)
+    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>pasteURL</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"rnaseq_counts.rds"</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"none"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; [1] "http://basejump.seq.cloud/v0.9/rnaseq_counts.rds"</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>loadRemoteData</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Importing rnaseq_counts.rds using base::readRDS().</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                                      rnaseq_counts 
 #&gt; "http://basejump.seq.cloud/v0.9/rnaseq_counts.rds" </div></pre>
   </div>

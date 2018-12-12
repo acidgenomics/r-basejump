@@ -267,7 +267,7 @@ aggregate samples.</p></li>
 #&gt;            sample1            sample1            sample2            sample2 
 #&gt; Levels: sample1 sample2</div><div class='input'>
 <span class='co'>## matrix</span>
-<span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.html'>as</a></span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
+<span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  0                  1                  1
 #&gt; transcript2                  1                  0                  1
@@ -279,7 +279,7 @@ aggregate samples.</p></li>
 #&gt; transcript3                  1
 #&gt; transcript4                  0</div><div class='input'>
 <span class='co'>## sparseMatrix</span>
-<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.html'>as</a></span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
+<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
 #&gt; attr(,"package")
 #&gt; [1] "Matrix"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 4 x 4 sparse Matrix of class "dgCMatrix"
