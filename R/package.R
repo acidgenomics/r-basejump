@@ -19,14 +19,22 @@
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
 #'   rowMeans rowSums setdiff t
+#' @importFrom GenomeInfoDb seqnames
 #' @importFrom GenomicFeatures genes transcripts
+#' @importFrom GenomicRanges GRanges
+#' @importFrom IRanges IRanges
 #' @importFrom Matrix readMM readMM writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL url.exists
-#' @importFrom S4Vectors %in% aggregate complete.cases cor decode
-#'   expand head mcols mcols<- metadata metadata<- na.omit tail
+#' @importFrom S4Vectors DataFrame List Rle %in% aggregate complete.cases cor
+#'   decode expand head mcols mcols<- metadata metadata<- na.omit tail
+#' @importFrom SingleCellExperiment SingleCellExperiment isSpike<-
+#'   reducedDimNames reducedDims spikeNames
+#' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
+#'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
+#'   rowRanges<-
 #' @importFrom cowplot plot_grid
 #' @importFrom data.table as.data.table fread
 #' @importFrom dplyr arrange bind_rows case_when desc everything filter funs
@@ -53,7 +61,7 @@
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
-#' @importFrom magrittr set_colnames set_rownames
+#' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs getGeneric getMethod is isGeneric new
 #'   selectMethod setAs setClass setGeneric setMethod setOldClass setValidity
@@ -72,7 +80,7 @@
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
-#' @importFrom tibble column_to_rownames
+#' @importFrom tibble as_tibble column_to_rownames tibble
 #' @importFrom tools Rd_db file_path_sans_ext
 #' @importFrom utils capture.output data download.file getFromNamespace
 #'   globalVariables installed.packages packageVersion read.delim read.table
@@ -86,138 +94,6 @@
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
 
-#' @importFrom IRanges DataFrameList
-#' @export
-IRanges::DataFrameList
-
-#' @importFrom IRanges IRanges
-#' @export
-IRanges::IRanges
-
-#' @importFrom GenomeInfoDb seqnames
-#' @export
-GenomeInfoDb::seqnames
-
-#' @importFrom GenomicRanges GRanges
-#' @export
-GenomicRanges::GRanges
-
-#' @importFrom GenomicRanges GRangesList
-#' @export
-GenomicRanges::GRangesList
-
-#' @importFrom Matrix sparseMatrix
-#' @export
-Matrix::sparseMatrix
-
-#' @importFrom S4Vectors DataFrame
-#' @export
-S4Vectors::DataFrame
-
-#' @importFrom S4Vectors List
-#' @export
-S4Vectors::List
-
-#' @importFrom S4Vectors Rle
-#' @export
-S4Vectors::Rle
-
-#' @importFrom S4Vectors mcols
-#' @export
-S4Vectors::mcols
-
-#' @importFrom SingleCellExperiment SingleCellExperiment
-#' @export
-SingleCellExperiment::SingleCellExperiment
-
-#' @importFrom SingleCellExperiment isSpike
-#' @export
-SingleCellExperiment::isSpike
-
-#' @importFrom SingleCellExperiment isSpike<-
-#' @export
-SingleCellExperiment::`isSpike<-`
-
-#' @importFrom SingleCellExperiment reducedDimNames
-#' @export
-SingleCellExperiment::reducedDimNames
-
-#' @importFrom SingleCellExperiment reducedDims
-#' @export
-SingleCellExperiment::reducedDims
-
-#' @importFrom SingleCellExperiment spikeNames
-#' @export
-SingleCellExperiment::spikeNames
-
-#' @importFrom SummarizedExperiment SummarizedExperiment
-#' @export
-SummarizedExperiment::SummarizedExperiment
-
-#' @importFrom SummarizedExperiment assay
-#' @export
-SummarizedExperiment::assay
-
-#' @importFrom SummarizedExperiment colData
-#' @export
-SummarizedExperiment::colData
-
-#' @importFrom SummarizedExperiment colData<-
-#' @export
-SummarizedExperiment::`colData<-`
-
-#' @importFrom SummarizedExperiment rowRanges
-#' @export
-SummarizedExperiment::rowRanges
-
-#' @importFrom SummarizedExperiment rowRanges<-
-#' @export
-SummarizedExperiment::`rowRanges<-`
-
-#' @importFrom SummarizedExperiment assayNames
-#' @export
-SummarizedExperiment::assayNames
-
-#' @importFrom SummarizedExperiment assayNames<-
-#' @export
-SummarizedExperiment::`assayNames<-`
-
-#' @importFrom SummarizedExperiment assays
-#' @export
-SummarizedExperiment::assays
-
-#' @importFrom SummarizedExperiment assays<-
-#' @export
-SummarizedExperiment::`assays<-`
-
-#' @importFrom SummarizedExperiment colData
-#' @export
-SummarizedExperiment::colData
-
-#' @importFrom SummarizedExperiment colData<-
-#' @export
-SummarizedExperiment::`colData<-`
-
-#' @importFrom SummarizedExperiment rowData
-#' @export
-SummarizedExperiment::rowData
-
-#' @importFrom SummarizedExperiment rowData<-
-#' @export
-SummarizedExperiment::`rowData<-`
-
-#' @importFrom SummarizedExperiment rowRanges
-#' @export
-SummarizedExperiment::rowRanges
-
-#' @importFrom SummarizedExperiment rowRanges<-
-#' @export
-SummarizedExperiment::`rowRanges<-`
-
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
-
-#' @importFrom tibble tibble
-#' @export
-tibble::tibble

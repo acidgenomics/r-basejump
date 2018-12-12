@@ -8,36 +8,7 @@
 \alias{reexports}
 \alias{as.data.frame}
 \alias{as_tibble}
-\alias{DataFrameList}
-\alias{IRanges}
-\alias{seqnames}
-\alias{GRanges}
-\alias{GRangesList}
-\alias{sparseMatrix}
-\alias{DataFrame}
-\alias{List}
-\alias{Rle}
-\alias{mcols}
-\alias{SingleCellExperiment}
-\alias{isSpike}
-\alias{isSpike<-}
-\alias{reducedDimNames}
-\alias{reducedDims}
-\alias{spikeNames}
-\alias{SummarizedExperiment}
-\alias{assay}
-\alias{colData}
-\alias{colData<-}
-\alias{rowRanges}
-\alias{rowRanges<-}
-\alias{assayNames}
-\alias{assayNames<-}
-\alias{assays}
-\alias{assays<-}
-\alias{rowData}
-\alias{rowData<-}
 \alias{\%>\%}
-\alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -49,24 +20,14 @@ below to see their documentation.
 
   \item{BiocGenerics}{\code{\link[BiocGenerics]{as.data.frame}}, \code{\link[BiocGenerics]{combine}}, \code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{counts<-}}, \code{\link[BiocGenerics]{organism}}, \code{\link[BiocGenerics]{plotPCA}}}
 
-  \item{GenomeInfoDb}{\code{\link[GenomeInfoDb]{seqnames}}}
-
-  \item{GenomicRanges}{\code{\link[GenomicRanges]{GRanges}}, \code{\link[GenomicRanges]{GRangesList}}}
-
-  \item{IRanges}{\code{\link[IRanges]{DataFrameList}}, \code{\link[IRanges]{IRanges}}}
-
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
-
-  \item{Matrix}{\code{\link[Matrix]{sparseMatrix}}}
 
   \item{methods}{\code{\link[methods]{show}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{decode}}, \code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{List}}, \code{\link[S4Vectors]{Rle}}, \code{\link[S4Vectors]{mcols}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{decode}}}
 
-  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{SingleCellExperiment}}, \code{\link[SingleCellExperiment]{isSpike}}, \code{\link[SingleCellExperiment]{isSpike<-}}, \code{\link[SingleCellExperiment]{reducedDimNames}}, \code{\link[SingleCellExperiment]{reducedDims}}, \code{\link[SingleCellExperiment]{spikeNames}}, \code{\link[SingleCellExperiment]{tpm}}}
+  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
 
-  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{SummarizedExperiment}}, \code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}, \code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assayNames<-}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}}
-
-  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{as_tibble}}}
 }}
 
