@@ -96,8 +96,10 @@ setGeneric(
 
 # barcodeRanksPerSample ========================================================
 #' Barcode Ranks per Sample
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `list`.
 setGeneric(
     name = "barcodeRanksPerSample",
@@ -195,8 +197,10 @@ setGeneric(
 
 # deg ==========================================================================
 #' Differentially Expressed Genes
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `character`. Gene identifiers.
 setGeneric(
     name = "deg",
@@ -233,8 +237,10 @@ setGeneric(
 
 # filterCells ==================================================================
 #' Filter Cells
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `SingleCellExperiment`.
 setGeneric(
     name = "filterCells",
@@ -430,8 +436,10 @@ setGeneric(
 
 # markdown =====================================================================
 #' Markdown
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return Markdown output.
 setGeneric(
     name = "markdown",
@@ -444,9 +452,12 @@ setGeneric(
 
 # meltCounts ===================================================================
 #' Melt Count Matrix to Long Format
+#'
 #' @inheritParams params
-#' @seealso `reshape2::melt()`.
 #' @export
+#'
+#' @seealso `reshape2::melt`.
+#'
 #' @return `tibble`, grouped by sample.
 setGeneric(
     name = "meltCounts",
@@ -484,10 +495,10 @@ setGeneric(
 #' RNA-seq data can have specific biases at either the 5’ or 3’ end of sequenced
 #' fragments.
 #'
-#' It is common to see a small amount of bias, especially if polyA
-#' enrichment was performed, or if there is any sample degradation. If a large
-#' amount of bias is observed here, be sure to analyze the samples with a
-#' Bioanalyzer and check the RIN scores.
+#' It is common to see a small amount of bias, especially if polyA enrichment
+#' was performed, or if there is any sample degradation. If a large amount of
+#' bias is observed here, be sure to analyze the samples with a Bioanalyzer and
+#' check the RIN scores.
 #'
 #' 5' (3') bias is generally calculated as the median of the following ratio:
 #'
@@ -503,8 +514,8 @@ setGeneric(
 #'   transcript.
 #' - Median is calculated for the representative set of 1000 transcripts.
 #'
-#' @export
 #' @inheritParams params
+#' @export
 #'
 #' @return `ggplot`.
 setGeneric(
@@ -518,8 +529,10 @@ setGeneric(
 
 # plotBarcodeRanks =============================================================
 #' Plot Barcode Ranks
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot` grid.
 setGeneric(
     name = "plotBarcodeRanks",
@@ -532,8 +545,10 @@ setGeneric(
 
 # plotCellCounts ===============================================================
 #' Plot Cell Counts
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotCellCounts",
@@ -587,10 +602,10 @@ setGeneric(
 # plotDEGHeatmap ===============================================================
 #' Differentially Expressed Gene Heatmap
 #'
-#' This function is an extension of `plotHeatmap()` that is optimized
+#' This function is an extension of `plotHeatmap` that is optimized
 #' for automatic handling differentially expressed genes, rather than requiring
 #' manual input of a gene vector. All of the optional parameters for
-#' `plotHeatmap()` are also supported by this function.
+#' `plotHeatmap` are also supported by this function.
 #'
 #' To adjust the annotation columns, modify the `colData` of the `counts`
 #' argument, which must contain/extend a `SummarizedExperiment`.
@@ -610,10 +625,10 @@ setGeneric(
 # plotDEGPCA ===================================================================
 #' Plot DEG PCA
 #'
-#' This function is an extension of `plotPCA()` that is optimized for automatic
+#' This function is an extension of `plotPCA` that is optimized for automatic
 #' handling of differentially expressed genes, rather than requiring manual
 #' input of a gene vector or subset object. All of the optional parameters for
-#' `plotPCA()` are also supported by this function.
+#' `plotPCA` are also supported by this function.
 #'
 #' To adjust the annotation columns, modify the `colData` of the `counts`
 #' argument, which must contain/extend a `SummarizedExperiment`.
@@ -632,8 +647,10 @@ setGeneric(
 
 # plotExonicMappingRate ========================================================
 #' Plot Exonic Mapping Rate
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotExonicMappingRate",
@@ -647,7 +664,7 @@ setGeneric(
 # plotGenderMarkers ============================================================
 #' Plot Sexually Dimorphic Gender Marker Genes
 #'
-#' This is a convenience function that wraps `plotGene()` to quickly plot known
+#' This is a convenience function that wraps `plotGene` to quickly plot known
 #' sexually dimorphic genes, and overall gene experssion for the X and Y
 #' chromosomes.
 #'
@@ -656,7 +673,7 @@ setGeneric(
 #' @inheritParams params
 #' @export
 #'
-#' @seealso `plotGene()`.
+#' @seealso `plotGene`.
 #'
 #' @return `ggplot`.
 setGeneric(
@@ -670,8 +687,10 @@ setGeneric(
 
 # plotGene =====================================================================
 #' Plot Gene Expression
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotGene",
@@ -691,6 +710,7 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotGeneSaturation",
@@ -703,8 +723,10 @@ setGeneric(
 
 # plotGenesPerCell =============================================================
 #' Plot Genes per Cell
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotGenesPerCell",
@@ -717,8 +739,10 @@ setGeneric(
 
 # plotGenesDetected ============================================================
 #' Plot Genes Detected
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotGenesDetected",
@@ -766,6 +790,7 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotIntronicMappingRate",
@@ -783,6 +808,7 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotMappedReads",
@@ -802,6 +828,7 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotMappingRate",
@@ -814,8 +841,10 @@ setGeneric(
 
 # plotMeanSD ===================================================================
 #' Plot Row Standard Deviations vs. Row Means
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotMeanSD",
@@ -828,8 +857,10 @@ setGeneric(
 
 # plotMitoRatio ================================================================
 #' Plot Mitochondrial Transcript Abundance
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotMitoRatio",
@@ -842,8 +873,10 @@ setGeneric(
 
 # plotMitoVsCoding =============================================================
 #' Plot Mitochondrial vs. Coding Counts
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotMitoVsCoding",
@@ -874,8 +907,10 @@ setGeneric(
 
 # plotQC =======================================================================
 #' Plot Quality Control
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotQC",
@@ -897,6 +932,7 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotRRNAMappingRate",
@@ -927,8 +963,10 @@ setGeneric(
 
 # plotTotalCounts ==============================================================
 #' Plot Total Counts
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotTotalCounts",
@@ -940,7 +978,6 @@ setGeneric(
 
 
 # plotTotalReads ===============================================================
-# TODO Need to clarify difference between "total counts" and "total reads".
 #' Plot Total Reads
 #'
 #' High quality RNA-seq samples ideally should have at least 10 million reads
@@ -948,6 +985,7 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotTotalReads",
@@ -999,6 +1037,7 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotVolcano",
@@ -1011,8 +1050,10 @@ setGeneric(
 
 # plotZerosVsDepth =============================================================
 #' Plot Percentage of Zeros vs. Library Depth
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `ggplot`.
 setGeneric(
     name = "plotZerosVsDepth",
@@ -1024,15 +1065,14 @@ setGeneric(
 
 
 # relativeLogExpression ========================================================
-# TODO Improve citation link here.
 #' Relative Log Expression
 #'
 #' @inheritParams params
 #' @export
 #'
-#' @seealso `edgeR::calcNormFactors()`.
-#'
 #' @references Anders and Huber (2010).
+#'
+#' @seealso `edgeR::calcNormFactors`.
 #'
 #' @return `matrix`.
 setGeneric(
@@ -1151,8 +1191,8 @@ setGeneric(
 #' @references Robinson and Oshlack (2010).
 #'
 #' @seealso
-#' - `edgeR::calcNormFactors()`.
-#' - `edgeR::cpm()`.
+#' - `edgeR::calcNormFactors`.
+#' - `edgeR::cpm`.
 #'
 #' @return `matrix`.
 setGeneric(
@@ -1178,8 +1218,10 @@ setGeneric(
 
 # topTables ====================================================================
 #' Top Tables of Differential Expression Results
+#'
 #' @inheritParams params
 #' @export
+#'
 #' @return `kable`. Markdown tables.
 setGeneric(
     name = "topTables",
