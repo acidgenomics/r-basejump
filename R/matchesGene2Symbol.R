@@ -7,7 +7,7 @@
 #'   must intersect with the rownames defined in the `gene2symbol` argument.
 #'
 #' @examples
-#' x <- DataFrame(
+#' x <- S4Vectors::DataFrame(
 #'     "sample1" = c(1L, 2L),
 #'     "sample2" = c(3L, 4L),
 #'     row.names = c("gene1", "gene2")
@@ -15,7 +15,7 @@
 #' print(x)
 #'
 #' g2s <- Gene2Symbol(
-#'     object = DataFrame(
+#'     object = S4Vectors::DataFrame(
 #'         geneID = c("ENSG00000000003", "ENSG00000000005"),
 #'         geneName = c("TSPAN6", "TNMD"),
 #'         row.names = rownames(x)
