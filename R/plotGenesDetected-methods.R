@@ -1,5 +1,10 @@
+#' Plot Genes Detected
+#'
 #' @name plotGenesDetected
 #' @inheritParams params
+#'
+#' @return `ggplot`.
+#'
 #' @examples
 #' data(rse, sce)
 #' plotGenesDetected(rse)

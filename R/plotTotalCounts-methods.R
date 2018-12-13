@@ -1,5 +1,10 @@
+#' Plot Total Counts
+#'
 #' @name plotTotalCounts
 #' @inheritParams params
+#'
+#' @return `ggplot`.
+#'
 #' @examples
 #' data(rse, sce)
 #' plotTotalCounts(rse)

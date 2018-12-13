@@ -1,4 +1,10 @@
+#' Markdown
+#'
 #' @name markdown
+#' @inheritParams params
+#'
+#' @return Markdown output.
+#'
 #' @examples
 #' data(rse)
 #' markdown(rse)

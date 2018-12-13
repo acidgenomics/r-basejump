@@ -1,5 +1,10 @@
+#' Plot Quality Control
+#'
 #' @name plotQC
 #' @inheritParams params
+#'
+#' @return `ggplot`.
+#'
 #' @examples
 #' data(rse)
 #' plotQC(rse)

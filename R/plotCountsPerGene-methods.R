@@ -1,8 +1,15 @@
-#' @name plotCountsPerGene
+#' Plot Counts Per Gene
 #'
+#' Generally, we expect similar count spreads for all genes between samples
+#' unless the library sizes or total RNA expression are different.
+#'
+#' @name plotCountsPerGene
 #' @inheritParams params
+#'
 #' @param geom `character(1)`.
 #'   Type of ggplot2 geometric object to use.
+#'
+#' @return `ggplot`.
 #'
 #' @examples
 #' data(rse, sce)
