@@ -22,8 +22,9 @@ logRatioToFoldChange(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{base}{\code{scalar integer}. Logarithm base. Defaults to \code{2}, for
-compatibility with RNA-Seq differential expression output.}
+\item{base}{\code{integer(1)}.
+Logarithm base. Defaults to \code{2}, for compatibility with RNA-Seq
+differential expression output.}
 }
 \value{
 \code{numeric}.

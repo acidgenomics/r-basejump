@@ -2,13 +2,16 @@
 #' @inherit Gene2Symbol-class
 #' @inheritParams params
 #'
-#' @param format `character(1)`. Formatting method to apply:
+#' @param format `character(1)`.
+#'   Formatting method to apply:
 #'
-#' - `"makeUnique"`: *Recommended.* Apply `make.unique` to the `geneName`
-#'   column. Gene symbols are made unique, while the gene IDs remain unmodified.
-#' - `"1:1"`: For gene symbols that map to multiple gene IDs, select only the
-#'   first annotated gene ID.
-#' - `"long"`: Return `geneID` and `geneName` columns unmodified in long format.
+#'   - `"makeUnique"`: *Recommended.* Apply `make.unique` to the `geneName`
+#'     column. Gene symbols are made unique, while the gene IDs remain
+#'     unmodified.
+#'   - `"1:1"`: For gene symbols that map to multiple gene IDs, select only the
+#'     first annotated gene ID.
+#'   - `"long"`: Return `geneID` and `geneName` columns unmodified in long
+#'     format.
 #'
 #' @examples
 #' data(rse)

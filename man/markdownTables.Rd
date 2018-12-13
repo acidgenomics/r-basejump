@@ -8,16 +8,22 @@
 markdownTables(list, captions = NULL, force = FALSE)
 }
 \arguments{
-\item{list}{Named \code{list}. Column data that can be coerced to \code{data.frame}.}
+\item{list}{Named \code{list}.
+Column data that can be coerced to \code{data.frame}.}
 
-\item{captions}{\code{character} or \code{NULL}. Table captions. If \code{NULL}, the names
-of the list will be used automatically as captions.}
+\item{captions}{\code{character} or \code{NULL}.
+Table captions. If \code{NULL}, the names of the list will be used automatically
+as captions.}
 
-\item{force}{\code{logical(1)}. Force knit output using \code{knitr::asis_output}.
-Recommended for development and unit testing only.}
+\item{force}{\code{logical(1)}.
+Force knit output using \code{knitr::asis_output}.
+\emph{Recommended for development and unit testing only.}}
 }
 \value{
-\code{asis_output} if in a knit call or \code{list}.
+\itemize{
+\item knit call: \code{asis_output}
+\item Otherwise: \code{list}.
+}
 }
 \description{
 Knit multiple tables in a single R Markdown chunk.

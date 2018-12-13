@@ -8,24 +8,27 @@ makeSingleCellExperiment(assays, rowRanges, colData, metadata,
   transgeneNames = NULL, spikeNames = NULL)
 }
 \arguments{
-\item{assays}{\code{list}. Count matrices, which must have matching dimensions.
-Counts can be passed in as either a dense matrix (\code{matrix}) or sparse
-matrix (\code{sparseMatrix}).}
+\item{assays}{\code{list}.
+Count matrices, which must have matching dimensions. Counts can be passed
+in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
 
-\item{rowRanges}{\code{GRanges}. Genomic ranges (e.g. genome annotations).
-Metadata describing the assay rows.}
+\item{rowRanges}{\code{GRanges}.
+Genomic ranges (e.g. genome annotations). Metadata describing the assay
+rows.}
 
-\item{colData}{\code{DataFrame}. Metadata describing the assay columns. For bulk
-RNA-seq, this data describes the samples. For single-cell RNA-seq, this
-data describes the cells.}
+\item{colData}{\code{DataFrame}.
+Metadata describing the assay columns. For bulk RNA-seq, this data
+describes the samples. For single-cell RNA-seq, this data describes the
+cells.}
 
-\item{metadata}{\code{list}. Metadata.}
+\item{metadata}{\code{list}.
+Metadata.}
 
-\item{transgeneNames}{\code{character}. Vector indicating which assay rows denote
-transgenes (e.g. EGFP, TDTOMATO).}
+\item{transgeneNames}{\code{character}.
+Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
 
-\item{spikeNames}{\code{character}. Vector indicating which assay rows denote
-spike-in sequences (e.g. ERCCs).}
+\item{spikeNames}{\code{character}.
+Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
 }
 \value{
 \code{SingleCellExperiment}.

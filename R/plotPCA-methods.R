@@ -14,12 +14,14 @@
 #' @name plotPCA
 #' @inheritParams params
 #'
-#' @param ntop `scalar integer` or `Inf`. Number of most variable genes to plot.
+#' @param ntop `integer(1)` or `Inf`.
+#'   Number of most variable genes to plot.
 #'   Use `Inf` to include all genes (*not recommended*).
 #'
 #' @references Jolliffe, et al., 2002.
 #'
 #' @seealso `DESeq2::plotPCA`.
+#'
 #' We're using a modified version of the `DESeqTransform` method here.
 #'
 #' ```

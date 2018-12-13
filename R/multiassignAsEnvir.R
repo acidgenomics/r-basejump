@@ -3,11 +3,14 @@
 #' @inheritParams dots
 #' @export
 #'
-#' @param envirName `character(1)`. Name of the new `environment` to create.
-#' @param parentFrame `environment`. Parent `environment` where to assign the
-#'   new `environment`, specified by `envirName` argument.
+#' @param envirName `character(1)`.
+#'   Name of the new `environment` to create.
+#' @param parentFrame `environment`.
+#'   Parent `environment` where to assign the new `environment`, specified by
+#'   `envirName` argument.
 #'
-#' @return `character`. Object names defined in the new `environment`.
+#' @return `character`.
+#' Object names defined in the new `environment`.
 #'
 #' @examples
 #' data(rse, sce)

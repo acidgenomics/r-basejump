@@ -53,40 +53,50 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inheritParams params
 #'
-#' @param borderColor `character(1)` or `NULL`. Border color. Disabled by default for
-#'   improved aesthetics.
-#' @param clusteringMethod `character(1)`. Clustering method. Accepts the same values
-#'   as `stats::hclust`.
-#' @param clusterRows,clusterCols `logical(1)`. Arrange with hierarchical
-#'   clustering.
-#' @param color `function`, `character`, or `NULL`. Hexadecimal color function
-#'   or values to use for plot. We generally recommend these hexadecimal
-#'   functions from the viridis package:
+#' @param borderColor `character(1)` or `NULL`.
+#'   Border color. Disabled by default for improved aesthetics.
+#' @param clusteringMethod `character(1)`.
+#'   Clustering method. Accepts the same values as `stats::hclust`.
+#' @param clusterRows,clusterCols `logical(1)`.
+#'   Arrange with hierarchical clustering.
+#' @param color `function`, `character`, or `NULL`.
+#'   Hexadecimal color function or values to use for plot.
+#'
+#'   We generally recommend these hexadecimal functions from the viridis
+#'   package:
+#'
 #'   - `viridis::viridis` (*default*).
 #'   - `viridis::inferno`.
 #'   - `viridis::magma`.
 #'   - `viridis::plasma`.
+#'
 #'   Alternatively, colors can be defined manually using hexadecimal values
 #'   (e.g. `c("#FF0000", "#0000FF")`), but this is not generally recommended.
 #'   Refer to the RColorBrewer package for hexadecimal color palettes that may
 #'   be suitable. If set `NULL`, will use the default pheatmap colors.
-#' @param legend `logical(1)`. Show the color legend.
-#' @param legendColor `function` or `NULL`. Hexadecimal color function to use
-#'   for legend labels. Note that hexadecimal values are not supported. If set
-#'   `NULL`, will use the default pheatmap colors.
-#' @param method `character(1)`. Correlation coefficient (or covariance) method to be
-#'   computed. Defaults to "`pearson`" but "`spearman`" can also be used.
-#'   Consult the `stats::cor` documentation for more information.
-#' @param n `scalar integer`. The number of quantile breaks to create.
-#' @param scale `character(1)`. Whether the values should be centered and scaled in
-#'   either the row or column direction ("`row`", "`column`"), or remain
-#'   unscaled ("`none`").
-#' @param showRownames,showColnames `logical(1)`. Show row or column names.
-#' @param treeheightRow,treeheightCol `scalar integer`. Size of the row and
-#'   column dendrograms. Use `0` to disable.
-#' @param title `character(1)` or `NULL`. Plot title.
-#' @param ... Passthrough arguments to `pheatmap::pheatmap`. The names of the
-#'   arguments should be formatted in camel case, not snake case.
+#' @param legend `logical(1)`.
+#'   Show the color legend.
+#' @param legendColor `function` or `NULL`.
+#'   Hexadecimal color function to use for legend labels. Note that hexadecimal
+#'   values are not supported. If set `NULL`, will use the default pheatmap
+#'   colors.
+#' @param method `character(1)`.
+#'   Correlation coefficient (or covariance) method to be computed. Defaults to
+#'   "`pearson`" but "`spearman`" can also be used. Consult the `stats::cor`
+#'   documentation for more information.
+#' @param n `integer(1)`.
+#'   The number of quantile breaks to create.
+#' @param scale `character(1)`.
+#'   Whether the values should be centered and scaled in either the row or
+#'   column direction ("`row`", "`column`"), or remain unscaled ("`none`").
+#' @param showRownames,showColnames `logical(1)`.
+#'   Show row or column names.
+#' @param treeheightRow,treeheightCol `integer(1)`.
+#'   Size of the row and column dendrograms. Use `0` to disable.
+#' @param title `character(1)` or `NULL`.
+#'   Plot title.
+#' @param ... Passthrough arguments to `pheatmap::pheatmap`.
+#'   The argument names must be formatted in camel case, not snake case.
 #'
 #' @seealso
 #' - `pheatmap::pheatmap`.

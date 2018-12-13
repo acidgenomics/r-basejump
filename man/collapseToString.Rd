@@ -28,13 +28,17 @@ collapseToString(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{sep}{\code{character(1)}. Separator. Defaults to comma.}
+\item{sep}{\code{character(1)}.
+Separator. Defaults to comma.}
 
-\item{sort}{\code{logical(1)}. Sort values.}
+\item{sort}{\code{logical(1)}.
+Sort values.}
 
-\item{removeNA}{\code{logical(1)}. Remove NA values.}
+\item{removeNA}{\code{logical(1)}.
+Remove NA values.}
 
-\item{unique}{\code{logical(1)}. Unique values.}
+\item{unique}{\code{logical(1)}.
+Unique values.}
 }
 \value{
 \itemize{

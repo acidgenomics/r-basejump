@@ -141,7 +141,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An object supporting <code>dim</code> to be written to disk.</p></td>
+      <td><p><code>ANY</code>.
+An object supporting <code>dim</code> to be written to disk.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -149,42 +150,48 @@
     </tr>
     <tr>
       <th>file</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. File path. Specify <code>file</code> or <code>format</code> but not
-both.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+File path. Specify <code>file</code> or <code>format</code> but not both.</p></td>
     </tr>
     <tr>
       <th>format</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. An optional character string containing the
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+An optional character string containing the
 file format, which can be used to override the format inferred from <code>file</code>,
 or in lieu of specifying <code>file</code>.</p></td>
     </tr>
     <tr>
       <th>name</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Name to use on disk. If left <code>NULL</code>, will use the
-name of the object instead.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Name to use on disk. If <code>NULL</code>, will use the name of the object instead.</p></td>
     </tr>
     <tr>
       <th>dir</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Directory path.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Directory path.</p></td>
     </tr>
     <tr>
       <th>compress</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Apply gzip compression to all files.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Apply gzip compression to all files.</p></td>
     </tr>
     <tr>
       <th>humanize</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Automatically convert gene IDs to gene symbols
-in the <code>rownames</code> and sample IDs to sample names in the <code>colnames</code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Automatically convert gene IDs to gene symbols in the <code>rownames</code> and sample
+IDs to sample names in the <code>colnames</code>.</p></td>
     </tr>
     <tr>
       <th>slotNames</th>
-      <td><p><code>character</code>. Names of slots to include when writing to disk.</p></td>
+      <td><p><code>character</code>.
+Names of slots to include when writing to disk.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible <code>character</code>. File path(s).</p>
+    <p>Invisible <code>character</code>.
+File path(s).</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 

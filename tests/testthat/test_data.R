@@ -225,7 +225,7 @@ test_that("makeSummarizedExperiment : Duplicate names", {
 })
 
 test_that("makeSummarizedExperiment : Column data failure", {
-    # Bad pass-in of objects not supporting `dimnames()`.
+    # Bad pass-in of objects not supporting `dimnames`.
     expect_error(
         object = makeSummarizedExperiment(
             assays = list(counts = "yyy"),
@@ -295,7 +295,7 @@ test_that("sampleData : SummarizedExperiment", {
         expected = colData(object)
     )
 
-    # Empty `colData()` is supported. Changed in v0.99.
+    # Empty `colData` is supported. Changed in v0.99.
     object <- rse
     colData(object) <- DataFrame(row.names = colnames(object))
     interestingGroups(object) <- NULL

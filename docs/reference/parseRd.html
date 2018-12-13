@@ -127,11 +127,14 @@ returns <code>character</code> instead of <code>matrix</code>.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p><code>Rd</code>. R documentation, returned from <code><a href='https://www.rdocumentation.org/packages/tools/topics/Rdutils'>tools::Rd_db</a></code>.</p></td>
+      <td><p><code>Rd</code>.
+R documentation, returned from <code><a href='https://www.rdocumentation.org/packages/tools/topics/Rdutils'>tools::Rd_db</a></code>.</p></td>
     </tr>
     <tr>
       <th>tag</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Desired metadata type. For example, these are supported:</p><ul>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Desired metadata type.</p>
+<p>These types are supported:</p><ul>
 <li><p>"<code>title</code>".</p></li>
 <li><p>"<code>description</code>".</p></li>
 <li><p>"<code>usage</code>".</p></li>
@@ -153,7 +156,7 @@ returns <code>character</code> instead of <code>matrix</code>.</p>
     <pre class="examples"><div class='input'><span class='no'>db</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/tools/topics/Rdutils'>Rd_db</a></span>(<span class='st'>"base"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>db</span>))</div><div class='output co'>#&gt; [1] "Arithmetic.Rd"   "AsIs.Rd"         "Bessel.Rd"       "CallExternal.Rd"
 #&gt; [5] "Colon.Rd"        "Comparison.Rd"  </div><div class='input'><span class='no'>Rd</span> <span class='kw'>&lt;-</span> <span class='no'>db</span><span class='kw'>[[</span><span class='st'>"nrow.Rd"</span>]]
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt; [1] "Rd"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;       Length Class  Mode
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt; [1] "Rd"</div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;       Length Class  Mode
 #&gt;  [1,]  1     -none- list
 #&gt;  [2,]  1     -none- list
 #&gt;  [3,]  1     -none- list
@@ -167,7 +170,7 @@ returns <code>character</code> instead of <code>matrix</code>.</p>
 #&gt; [11,]  5     -none- list
 #&gt; [12,] 10     -none- list
 #&gt; [13,] 11     -none- list
-#&gt; [14,]  8     -none- list</div><div class='input'><span class='fu'>RdTags</span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;  [1] "title"       "name"        "alias"       "alias"       "alias"      
+#&gt; [14,]  8     -none- list</div><div class='input'><span class='fu'><a href='RdTags.html'>RdTags</a></span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;  [1] "title"       "name"        "alias"       "alias"       "alias"      
 #&gt;  [6] "alias"       "keyword"     "description" "usage"       "arguments"  
 #&gt; [11] "value"       "references"  "seealso"     "examples"   </div><div class='input'><span class='no'>examples</span> <span class='kw'>&lt;-</span> <span class='fu'>parseRd</span>(<span class='no'>Rd</span>, <span class='kw'>tag</span> <span class='kw'>=</span> <span class='st'>"examples"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>examples</span>)</div><div class='output co'>#&gt; [1] "ma &lt;- matrix(1:12, 3, 4)"                              

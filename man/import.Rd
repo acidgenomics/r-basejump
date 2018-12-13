@@ -8,7 +8,8 @@ import(file, dataFrame = getOption("basejump.data.frame", "data.frame"),
   ...)
 }
 \arguments{
-\item{file}{\code{character(1)}. File path.}
+\item{file}{\code{character(1)}.
+File path.}
 
 \item{dataFrame}{\code{character(1)}. Data frame class to return. Can be set
 globally using the \code{basejump.data.frame} option.

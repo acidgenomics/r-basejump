@@ -3,7 +3,8 @@
 #' @name relevel
 #' @inheritParams params
 #'
-#' @return Modified object, with factor levels adjusted.
+#' @return Modified object.
+#' Factor levels will be readjusted (i.e. superfluous levels are dropped).
 #'
 #' @examples
 #' data(rse)

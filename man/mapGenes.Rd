@@ -40,13 +40,15 @@ mapGenesToSymbols(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{genes}{\code{character}. Gene identifiers. It is considered better practice
-to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
-and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.}
+\item{genes}{\code{character}.
+Gene identifiers. It is considered better practice to input the stable gene
+identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
+symbols (e.g. "TSPN6"), if possible.}
 
-\item{strict}{\code{logical(1)}. Require all genes to match. Recommended by default.
-If set \code{FALSE}, instead will return a warning to the user, and subset the
-genes vector to only include matches.}
+\item{strict}{\code{logical(1)}.
+Require all genes to match. Recommended by default. If set \code{FALSE}, instead
+will return a warning to the user, and subset the genes vector to only
+include matches.}
 }
 \value{
 \code{character}.

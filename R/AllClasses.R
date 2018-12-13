@@ -12,7 +12,8 @@
 #' @inherit EggNOG
 #' @export
 #'
-#' @return `EggNOG`. This class extends `list` and contains:
+#' @return `EggNOG`.
+#' This class extends `list` and contains:
 #'
 #' 1. "`cogFunctionalCategories`": **C**luster of **O**rthologous **G**roups
 #'    (COG) functional category information.
@@ -59,17 +60,14 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `Ensembl2Entrez`. Contains a `DataFrame` with `geneID` and `entrezID`
-#'   columns.
+#' @return `Ensembl2Entrez`.
+#' Contains a `DataFrame` with `geneID` and `entrezID` columns.
 setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
 setValidity(
     Class = "Ensembl2Entrez",
     method = function(object) {
         validate(
-            identical(
-                x = colnames(object),
-                y = c("geneID", "entrezID")
-            ),
+            identical(colnames(object), c("geneID", "entrezID")),
             is.integer(object[["entrezID"]])
         )
     }
@@ -94,17 +92,14 @@ setValidity(
 #'
 #' @seealso `makeGene2Symbol`.
 #'
-#' @return `Gene2Symbol`. Contains a `DataFrame` with `geneID` and `geneName`
-#'   columns.
+#' @return `Gene2Symbol`.
+#' Contains a `DataFrame` with `geneID` and `geneName` columns.
 setClass(Class = "Gene2Symbol", contains = "DataFrame")
 setValidity(
     Class = "Gene2Symbol",
     method = function(object) {
         validate(
-            identical(
-                x = colnames(object),
-                y = c("geneID", "geneName")
-            ),
+            identical(colnames(object), c("geneID", "geneName")),
             nrow(object) > 0L,
             is.character(object[["geneID"]]),
             class(object[["geneName"]]) %in% c("character", "factor")
@@ -120,8 +115,8 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `HGNC2Ensembl`. Contains a `DataFrame` with `hgncID` and `geneID`
-#'   columns.
+#' @return `HGNC2Ensembl`.
+#' Contains a `DataFrame` with `hgncID` and `geneID` columns.
 setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
 setValidity(
     Class = "HGNC2Ensembl",
@@ -134,10 +129,7 @@ setValidity(
                     geneID = "character"
                 )
             ),
-            identical(
-                x = rownames(object),
-                y = NULL
-            )
+            is.null(rownames(object))
         )
     }
 )
@@ -150,17 +142,14 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `MGI2Ensembl`. Contains a `DataFrame` with `mgiID` and `geneID`
-#'   columns.
+#' @return `MGI2Ensembl`.
+#' Contains a `DataFrame` with `mgiID` and `geneID` columns.
 setClass(Class = "MGI2Ensembl", contains = "DataFrame")
 setValidity(
     Class = "MGI2Ensembl",
     method = function(object) {
         validate(
-            identical(
-                x = colnames(object),
-                y = c("mgiID", "geneID")
-            ),
+            identical(colnames(object), c("mgiID", "geneID")),
             is.null(rownames(object))
         )
     }
@@ -225,10 +214,7 @@ setValidity(
     method = function(object) {
         validate(
             nrow(object) > 0L,
-            identical(
-                x = colnames(object),
-                y = c("transcriptID", "geneID")
-            ),
+            identical(colnames(object), c("transcriptID", "geneID")),
             all(vapply(
                 X = object,
                 FUN = is.character,

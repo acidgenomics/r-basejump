@@ -10,7 +10,8 @@ detectOrganism(object)
 \item{object}{\code{character}.}
 }
 \value{
-\code{character(1)}. Full latin organism name. Stops on match failure.
+\code{character(1)}.
+Full latin organism name. Stops on match failure.
 }
 \description{
 Supports organism detection from Ensembl identifier or genome build.

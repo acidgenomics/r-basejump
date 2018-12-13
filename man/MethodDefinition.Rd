@@ -22,7 +22,8 @@ extractLocal(definition)
 \item{signature}{the signature of classes to match to the arguments
     of \code{f}.  See the details below.}
 
-\item{package}{\code{character(1)}. Package name.}
+\item{package}{\code{character(1)}.
+Package name.}
 
 \item{definition}{ A function definition, which will become the method
     called when the arguments in a call to \code{f} match the

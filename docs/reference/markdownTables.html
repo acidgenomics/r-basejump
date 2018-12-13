@@ -125,23 +125,31 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>list</th>
-      <td><p>Named <code>list</code>. Column data that can be coerced to <code>data.frame</code>.</p></td>
+      <td><p>Named <code>list</code>.
+Column data that can be coerced to <code>data.frame</code>.</p></td>
     </tr>
     <tr>
       <th>captions</th>
-      <td><p><code>character</code> or <code>NULL</code>. Table captions. If <code>NULL</code>, the names
-of the list will be used automatically as captions.</p></td>
+      <td><p><code>character</code> or <code>NULL</code>.
+Table captions. If <code>NULL</code>, the names of the list will be used automatically
+as captions.</p></td>
     </tr>
     <tr>
       <th>force</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Force knit output using <code><a href='https://www.rdocumentation.org/packages/knitr/topics/asis_output'>knitr::asis_output</a></code>.
-Recommended for development and unit testing only.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Force knit output using <code><a href='https://www.rdocumentation.org/packages/knitr/topics/asis_output'>knitr::asis_output</a></code>.
+<em>Recommended for development and unit testing only.</em></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>asis_output</code> if in a knit call or <code>list</code>.</p>
+    
+<ul>
+<li><p>knit call: <code>asis_output</code></p></li>
+<li><p>Otherwise: <code>list</code>.</p></li>
+</ul>
+
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 

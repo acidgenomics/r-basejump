@@ -145,10 +145,11 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
     </tr>
     <tr>
       <th>format</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Formatting method to apply:</p><ul>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Formatting method to apply:</p><ul>
 <li><p><code>"1:1"</code>: <em>Recommended.</em> Return with 1:1 mappings. For Ensembl genes that
-don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't map
-to Entrez will contain <code>NA</code> in <code>entrezID</code> column.</p></li>
+don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't
+map to Entrez will contain <code>NA</code> in <code>entrezID</code> column.</p></li>
 <li><p><code>"long"</code>: Return 1:many in long format.</p></li>
 </ul></td>
     </tr>
@@ -156,8 +157,8 @@ to Entrez will contain <code>NA</code> in <code>entrezID</code> column.</p></li>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>Ensembl2Entrez</code>. Contains a <code>DataFrame</code> with <code>geneID</code> and <code>entrezID</code>
-columns.</p>
+    <p><code>Ensembl2Entrez</code>.
+Contains a <code>DataFrame</code> with <code>geneID</code> and <code>entrezID</code> columns.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

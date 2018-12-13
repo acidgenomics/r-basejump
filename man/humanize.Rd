@@ -16,9 +16,9 @@ humanize(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Modified object, with human-friendly rownames (e.g. gene symbols
-instead of stable gene IDs) and colnames (e.g. sample names instead of
-sample IDs).
+Modified object.
+Contains human-friendly rownames (e.g. gene symbols instead of stable gene
+IDs) and colnames (e.g. sample names instead of sample IDs).
 }
 \description{
 Humanize an R Object

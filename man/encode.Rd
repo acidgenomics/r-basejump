@@ -16,7 +16,8 @@ encode(x, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Modified object, with \code{atomic} columns converted to \code{Rle}.
+Modified object.
+All \code{atomic} columns will be encoded to \code{Rle} S4 class.
 }
 \description{
 Encode Column Data Using Run-Length Encoding

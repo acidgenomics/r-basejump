@@ -7,8 +7,9 @@
 detectHPC()
 }
 \value{
-\code{character(1)} or \code{logical(1)}. Workload manager (scheduler) name if
-HPC is detected (e.g. \code{"SLURM"} or \code{"LSF"}), otherwise \code{FALSE}.
+\code{character(1)} or \code{logical(1)}.
+Workload manager (scheduler) name if HPC is detected (e.g. \code{"SLURM"} or
+\code{"LSF"}), otherwise \code{FALSE}.
 }
 \description{
 Detect if R is running on a high-performance computing (HPC) cluster.

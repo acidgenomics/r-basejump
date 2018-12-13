@@ -280,8 +280,7 @@ modification of the values.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p><code>character</code> or object for which <code>names</code> assignment will be
-meaningful.</p></td>
+      <td><p><code>character</code> or class supporting <code>names</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -299,27 +298,30 @@ meaningful.</p></td>
     </tr>
     <tr>
       <th>strict</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Enforce strict name sanitization. When <code>TRUE</code>, this
-does not allow the return of any capitalized acronyms. "RNA" will become
-"Rna", for example.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Enforce strict name sanitization. When <code>TRUE</code>, this does not allow the
+return of any capitalized acronyms. "RNA" will become "Rna", for example.</p></td>
     </tr>
     <tr>
       <th>rownames</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Apply sanitization on row names. This is not
-generally recommended by default, since rownames commonly contain gene
-identifiers that should not be modified.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Apply sanitization on row names. This is not generally recommended by
+default, since rownames commonly contain gene identifiers that should not
+be modified.</p></td>
     </tr>
     <tr>
       <th>colnames</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Apply sanitization on column names. This is
-generally recommended by default.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Apply sanitization on column names. This is generally recommended by
+default.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object with syntatically valid names. For objects supporting
-<code>names</code>, the underlying data returns unchanged.</p>
+    <p>Modified object.
+Contains syntatically valid names. For objects supporting <code>names</code>, the
+underlying data returns unchanged.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -346,7 +348,7 @@ S4 object classes.</p></li>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>loadRemoteData</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"mn.rda"</span>))</div><div class='output co'>#&gt; <span class='message'>Importing mn.rda using base::load().</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"mn.rda"</span>))</div><div class='output co'>#&gt; <span class='message'>Importing mn.rda using base::load().</span></div><div class='input'>
 <span class='co'>## character ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>character</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "nCount"         

@@ -7,7 +7,8 @@
 showSlotInfo(list)
 }
 \arguments{
-\item{list}{\code{list}. Named list containing slot metadata.}
+\item{list}{\code{list}.
+Named list containing slot metadata.}
 }
 \value{
 Invisible \code{NULL}.

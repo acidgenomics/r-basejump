@@ -10,7 +10,8 @@
 #' @inheritParams params
 #' @param object `SummarizedExperiment`.
 #'
-#' @return `character`. Interesting groups.
+#' @return `character`.
+#' Interesting groups.
 #'
 #' @examples
 #' data(rse)

@@ -5,8 +5,8 @@
 \alias{Gene2Symbol-class}
 \title{Gene-to-Symbol Mappings}
 \value{
-\code{Gene2Symbol}. Contains a \code{DataFrame} with \code{geneID} and \code{geneName}
-columns.
+\code{Gene2Symbol}.
+Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 }
 \description{
 Gene-to-Symbol Mappings

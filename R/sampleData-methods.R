@@ -10,11 +10,13 @@
 #' @name sampleData
 #' @inheritParams params
 #'
-#' @param object Object that inherits from `SummarizedExperiment` class.
-#' @param clean `logical(1)`. Only return `factor` columns. Useful when working
-#'   with objects that contain metrics in `colData`.
-#' @param blacklist `character`. Column names that should never be treated as
-#'   sample-level metadata. Applicable only to `SingleCellExperiment` objects.
+#' @param object Object class that inherits `SummarizedExperiment`.
+#' @param clean `logical(1)`.
+#'   Only return `factor` columns. Useful when working with objects that contain
+#'   metrics in `colData`.
+#' @param blacklist `character`.
+#'   Column names that should never be treated as sample-level metadata.
+#'   Applicable only to `SingleCellExperiment` objects.
 #'
 #' @return `DataFrame`.
 #'

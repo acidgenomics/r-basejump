@@ -27,10 +27,12 @@ convertTranscriptsToGenes(object, ...)
 
 \item{...}{Passthrough to \code{makeTx2GeneFromEnsembl}.}
 
-\item{tx2gene}{\code{Tx2Gene}. Transcript-to-gene mappings.}
+\item{tx2gene}{\code{Tx2Gene}.
+Transcript-to-gene mappings.}
 
-\item{aggregate}{\code{logical(1)}. For objects supporting \code{dim}, aggregate counts
-to gene level and collapse the matrix.}
+\item{aggregate}{\code{logical(1)}.
+For objects supporting \code{dim}, aggregate counts to gene level and collapse
+the matrix.}
 }
 \value{
 \itemize{

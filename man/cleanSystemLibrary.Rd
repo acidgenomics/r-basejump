@@ -7,7 +7,8 @@
 cleanSystemLibrary()
 }
 \value{
-\code{logical}. Is system library clean?
+\code{logical(1)}.
+Is the system library clean?
 }
 \description{
 Determine whether a user has installed packages into the system library.

@@ -4,22 +4,18 @@
 \alias{prepareTemplate}
 \title{Prepare R Markdown Template File}
 \usage{
-prepareTemplate(package, overwrite = FALSE, sourceDir = NULL, ...)
+prepareTemplate(package, overwrite = FALSE)
 }
 \arguments{
-\item{package}{\code{character(1)}. Name of package containing the R Markdown template.}
+\item{package}{\code{character(1)}.
+Name of package containing the R Markdown template.}
 
-\item{overwrite}{\code{logical(1)}. Should existing destination files be overwritten?}
-
-\item{sourceDir}{\code{character(1)}. File path to shared source file directory.
-Normally this can be left \code{NULL} when working in a standard interactive
-session, but is necessary when developing code in a devtools package
-environment loaded with \code{devtools::load_all}.}
-
-\item{...}{Additional arguments.}
+\item{overwrite}{\code{logical(1)}.
+Should existing destination files be overwritten?}
 }
 \value{
-Invisible \code{logical}. Was the file copied?.
+Invisible \code{logical}.
+Was the file copied?.
 }
 \description{
 If the required template dependency files aren't present, copy them from the

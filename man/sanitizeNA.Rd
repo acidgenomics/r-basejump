@@ -28,7 +28,8 @@ sanitizeNA(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Object containing proper \code{NA} values.
+Modified object.
+Sanitized to contain proper \code{NA} values.
 }
 \description{
 Standardize empty strings (\code{""}), character NAs (\code{"NA"}), and \code{NULL} values

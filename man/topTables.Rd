@@ -12,7 +12,8 @@ topTables(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{kable}. Markdown tables.
+\code{kable}.
+Markdown tables.
 }
 \description{
 Top Tables of Differential Expression Results

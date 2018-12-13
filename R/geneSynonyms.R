@@ -8,10 +8,15 @@
 #' @export
 #'
 #' @inheritParams params
-#' @param organism `character(1)`. Supported organisms: *Homo sapiens*,
-#'   *Mus musculus*, *Drosophila melanogaster*.
+#' @param organism `character(1)`.
+#'   Supported organisms:
 #'
-#' @return `grouped_df`. Grouped by `geneID` column.
+#'   - *Homo sapiens*
+#'   - *Mus musculus*,
+#'   - *Drosophila melanogaster*.
+#'
+#' @return `grouped_df`.
+#' Grouped by `geneID` column.
 #'
 #' @examples
 #' options(basejump.test = TRUE)

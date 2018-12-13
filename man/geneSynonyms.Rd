@@ -7,11 +7,17 @@
 geneSynonyms(organism)
 }
 \arguments{
-\item{organism}{\code{character(1)}. Supported organisms: \emph{Homo sapiens},
-\emph{Mus musculus}, \emph{Drosophila melanogaster}.}
+\item{organism}{\code{character(1)}.
+Supported organisms:
+\itemize{
+\item \emph{Homo sapiens}
+\item \emph{Mus musculus},
+\item \emph{Drosophila melanogaster}.
+}}
 }
 \value{
-\code{grouped_df}. Grouped by \code{geneID} column.
+\code{grouped_df}.
+Grouped by \code{geneID} column.
 }
 \description{
 Look up gene synonyms from NCBI.

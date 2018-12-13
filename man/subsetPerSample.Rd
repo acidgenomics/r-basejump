@@ -16,16 +16,19 @@ subsetPerSample(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{minCells}{\code{scalar integer}. Minimum number of cells required per
-sample.}
+\item{minCells}{\code{integer(1)}.
+Minimum number of cells required per sample.}
 
-\item{assignAndSave}{\code{logical(1)}. Assign and save the individual datasets.}
+\item{assignAndSave}{\code{logical(1)}.
+Assign and save the individual datasets.}
 
-\item{envir}{\code{environment}. Where to assign the subsets. Only applicable when
-\code{assignAndSave = TRUE}.}
+\item{envir}{\code{environment}.
+Where to assign the subsets.
+Only applicable when \code{assignAndSave = TRUE}.}
 
-\item{dir}{\code{character(1)}. Output directory. Only applicable when
-\code{assignAndSave = TRUE}.}
+\item{dir}{\code{character(1)}.
+Output directory.
+Only applicable when \code{assignAndSave = TRUE}.}
 }
 \value{
 \itemize{

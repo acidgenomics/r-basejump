@@ -21,11 +21,15 @@
 #' @inheritParams saveData
 #' @export
 #'
-#' @param ... Count matrices, passed in as dots.
-#' @param dir `character(1)`. Output directory.
-#' @param compress `logical(1)`. Compress the files using gzip.
+#' @param ... Symbols.
+#'   Unquoted object names containing count matrices.
+#' @param dir `character(1)`.
+#'   Output directory.
+#' @param compress `logical(1)`.
+#'   Compress the files using gzip.
 #'
-#' @return Invisible `list`. File paths.
+#' @return Invisible `list`.
+#' File paths.
 #'
 #' @examples
 #' library(SummarizedExperiment)
