@@ -183,87 +183,97 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passthrough arguments to <code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap</a></code>. The names of the
-arguments should be formatted in camel case, not snake case.</p></td>
+      <td><p>Passthrough arguments to <code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap</a></code>.
+The argument names must be formatted in camel case, not snake case.</p></td>
     </tr>
     <tr>
       <th>assay</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>. Name or index of count matrix slotted in <code>assays</code>.
-When passing in a string, the name must be defined in <code>assayNames</code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>.
+Name or index of count matrix slotted in <code>assays</code>. When passing in a
+string, the name must be defined in <code>assayNames</code>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
-      <td><p><code>character</code>. Groups of interest that define the
-samples. If left unset, defaults to <code>sampleName</code>.</p></td>
+      <td><p><code>character</code>.
+Groups of interest that define the samples. If left unset, defaults to
+<code>sampleName</code>.</p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Whether the values should be centered and scaled in
-either the row or column direction ("<code>row</code>", "<code>column</code>"), or remain
-unscaled ("<code>none</code>").</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Whether the values should be centered and scaled in either the row or
+column direction ("<code>row</code>", "<code>column</code>"), or remain unscaled ("<code>none</code>").</p></td>
     </tr>
     <tr>
       <th>clusteringMethod</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Clustering method. Accepts the same values
-as <code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust</a></code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Clustering method. Accepts the same values as <code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust</a></code>.</p></td>
     </tr>
     <tr>
       <th>clusterRows, clusterCols</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Arrange with hierarchical
-clustering.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Arrange with hierarchical clustering.</p></td>
     </tr>
     <tr>
       <th>showRownames, showColnames</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Show row or column names.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Show row or column names.</p></td>
     </tr>
     <tr>
       <th>treeheightRow, treeheightCol</th>
-      <td><p><code>scalar integer</code>. Size of the row and
-column dendrograms. Use <code>0</code> to disable.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
+Size of the row and column dendrograms. Use <code>0</code> to disable.</p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p><code>function</code>, <code>character</code>, or <code>NULL</code>. Hexadecimal color function
-or values to use for plot. We generally recommend these hexadecimal
-functions from the viridis package:</p><ul>
+      <td><p><code>function</code>, <code>character</code>, or <code>NULL</code>.
+Hexadecimal color function or values to use for plot.</p>
+<p>We generally recommend these hexadecimal functions from the viridis
+package:</p><ul>
 <li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::viridis</a></code> (<em>default</em>).</p></li>
 <li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::inferno</a></code>.</p></li>
 <li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::magma</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::plasma</a></code>.
-Alternatively, colors can be defined manually using hexadecimal values
+<li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::plasma</a></code>.</p></li>
+</ul>
+
+<p>Alternatively, colors can be defined manually using hexadecimal values
 (e.g. <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c("#FF0000", "#0000FF")</a></code>), but this is not generally recommended.
 Refer to the RColorBrewer package for hexadecimal color palettes that may
-be suitable. If set <code>NULL</code>, will use the default pheatmap colors.</p></li>
-</ul></td>
+be suitable. If set <code>NULL</code>, will use the default pheatmap colors.</p></td>
     </tr>
     <tr>
       <th>legendColor</th>
-      <td><p><code>function</code> or <code>NULL</code>. Hexadecimal color function to use
-for legend labels. Note that hexadecimal values are not supported. If set
-<code>NULL</code>, will use the default pheatmap colors.</p></td>
+      <td><p><code>function</code> or <code>NULL</code>.
+Hexadecimal color function to use for legend labels. Note that hexadecimal
+values are not supported. If set <code>NULL</code>, will use the default pheatmap
+colors.</p></td>
     </tr>
     <tr>
       <th>borderColor</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>. Border color. Disabled by default for
-improved aesthetics.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>.
+Border color. Disabled by default for improved aesthetics.</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>. Plot title.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>.
+Plot title.</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Correlation coefficient (or covariance) method to be
-computed. Defaults to "<code>pearson</code>" but "<code>spearman</code>" can also be used.
-Consult the <code><a href='https://www.rdocumentation.org/packages/stats/topics/cor'>stats::cor</a></code> documentation for more information.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Correlation coefficient (or covariance) method to be computed. Defaults to
+"<code>pearson</code>" but "<code>spearman</code>" can also be used. Consult the <code><a href='https://www.rdocumentation.org/packages/stats/topics/cor'>stats::cor</a></code>
+documentation for more information.</p></td>
     </tr>
     <tr>
       <th>n</th>
-      <td><p><code>scalar integer</code>. The number of quantile breaks to create.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
+The number of quantile breaks to create.</p></td>
     </tr>
     <tr>
       <th>legend</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Show the color legend.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Show the color legend.</p></td>
     </tr>
     </table>
     

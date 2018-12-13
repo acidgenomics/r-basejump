@@ -279,7 +279,7 @@
 #&gt; sample24         B</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1
@@ -296,7 +296,7 @@
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>y</span>))</div><div class='output co'>#&gt; [1] "cell101" "cell102" "cell103" "cell104" "cell105" "cell106"</div><div class='input'><span class='co'>## Increase the sample ID numbers.</span>
 <span class='no'>y</span>$<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/grep'>gsub</a></span>(<span class='st'>"1$"</span>, <span class='st'>"3"</span>, <span class='no'>y</span>$<span class='no'>sampleID</span>)
 <span class='no'>y</span>$<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/grep'>gsub</a></span>(<span class='st'>"2$"</span>, <span class='st'>"4"</span>, <span class='no'>y</span>$<span class='no'>sampleID</span>)
-<span class='fu'>sampleData</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;          sampleName interestingGroups
 #&gt;         &lt;character&gt;          &lt;factor&gt;
 #&gt; sample3     sample3           sample3
@@ -312,7 +312,7 @@
 #&gt; colnames(200): cell001 cell002 ... cell199 cell200
 #&gt; colData names(2): expLibSize sampleID
 #&gt; reducedDimNames(0):
-#&gt; spikeNames(0):</div><div class='input'><span class='fu'>sampleData</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+#&gt; spikeNames(0):</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1

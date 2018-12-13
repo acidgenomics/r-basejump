@@ -137,26 +137,29 @@
     </tr>
     <tr>
       <th>assay</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>. Name or index of count matrix slotted in <code>assays</code>.
-When passing in a string, the name must be defined in <code>assayNames</code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>.
+Name or index of count matrix slotted in <code>assays</code>. When passing in a
+string, the name must be defined in <code>assayNames</code>.</p></td>
     </tr>
     <tr>
       <th>nonzeroGenes</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Return only non-zero genes.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Return only non-zero genes.</p></td>
     </tr>
     <tr>
       <th>trans</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Apply a log transformation (e.g. <code><a href='https://www.rdocumentation.org/packages/base/topics/Log'>log2(x + 1L)</a></code>) to
-the count matrix prior to melting, if desired. Use <code>"identity"</code> to return
-unmodified (default).</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Apply a log transformation (e.g. <code><a href='https://www.rdocumentation.org/packages/base/topics/Log'>log2(x + 1L)</a></code>) to the count matrix prior
+to melting, if desired. Use <code>"identity"</code> to return unmodified (default).</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>tibble</code>, grouped by sample.</p>
-<p><code>grouped_df</code>, grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code>
-(e.g. gene ID).</p>
+    <p><code>tibble</code>.
+Grouped by sample.</p>
+<p><code>grouped_df</code>.
+Grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code> (e.g. gene ID).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

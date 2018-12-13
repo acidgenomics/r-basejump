@@ -137,39 +137,43 @@ slot:</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>assays</th>
-      <td><p><code>list</code>. Count matrices, which must have matching dimensions.
-Counts can be passed in as either a dense matrix (<code>matrix</code>) or sparse
-matrix (<code>sparseMatrix</code>).</p></td>
+      <td><p><code>list</code>.
+Count matrices, which must have matching dimensions. Counts can be passed
+in as either a dense matrix (<code>matrix</code>) or sparse matrix (<code>sparseMatrix</code>).</p></td>
     </tr>
     <tr>
       <th>rowRanges</th>
-      <td><p><code>GRanges</code>. Genomic ranges (e.g. genome annotations).
-Metadata describing the assay rows.</p></td>
+      <td><p><code>GRanges</code>.
+Genomic ranges (e.g. genome annotations). Metadata describing the assay
+rows.</p></td>
     </tr>
     <tr>
       <th>rowData</th>
-      <td><p><code>DataFrame</code>. <em>Use rowRanges (GRanges) instead, if possible</em>.
-Metadata describing the assay rows, if genomic ranges are not available.</p></td>
+      <td><p><code>DataFrame</code>.
+Metadata describing the assay rows, if genomic ranges are not available.
+<em>Use rowRanges (GRanges) instead, if possible</em>.</p></td>
     </tr>
     <tr>
       <th>colData</th>
-      <td><p><code>DataFrame</code>. Metadata describing the assay columns. For bulk
-RNA-seq, this data describes the samples. For single-cell RNA-seq, this
-data describes the cells.</p></td>
+      <td><p><code>DataFrame</code>.
+Metadata describing the assay columns. For bulk RNA-seq, this data
+describes the samples. For single-cell RNA-seq, this data describes the
+cells.</p></td>
     </tr>
     <tr>
       <th>metadata</th>
-      <td><p><code>list</code>. Metadata.</p></td>
+      <td><p><code>list</code>.
+Metadata.</p></td>
     </tr>
     <tr>
       <th>transgeneNames</th>
-      <td><p><code>character</code>. Vector indicating which assay rows denote
-transgenes (e.g. EGFP, TDTOMATO).</p></td>
+      <td><p><code>character</code>.
+Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).</p></td>
     </tr>
     <tr>
       <th>spikeNames</th>
-      <td><p><code>character</code>. Vector indicating which assay rows denote
-spike-in sequences (e.g. ERCCs).</p></td>
+      <td><p><code>character</code>.
+Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></td>
     </tr>
     </table>
     
