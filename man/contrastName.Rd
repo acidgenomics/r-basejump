@@ -18,3 +18,9 @@ Contrast name.
 \description{
 Contrast Name
 }
+\examples{
+isS4(contrastName)
+}
+\seealso{
+DESeqAnalysis.
+}

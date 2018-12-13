@@ -17,3 +17,12 @@ plotNovelty(object, ...)
 \description{
 "Novelty" refers to log10 genes detected per count.
 }
+\examples{
+isS4(plotNovelty)
+}
+\seealso{
+\itemize{
+\item bcbioSingleCell.
+\item Chromium.
+}
+}

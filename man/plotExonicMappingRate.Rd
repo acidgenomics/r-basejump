@@ -17,3 +17,9 @@ plotExonicMappingRate(object, ...)
 \description{
 Plot Exonic Mapping Rate
 }
+\examples{
+isS4(plotExonicMappingRate)
+}
+\seealso{
+bcbioRNASeq.
+}

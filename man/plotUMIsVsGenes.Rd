@@ -17,3 +17,12 @@ plotUMIsVsGenes(object, ...)
 \description{
 Plot UMI and Gene Correlation
 }
+\examples{
+isS4(plotUMIsVsGenes)
+}
+\seealso{
+\itemize{
+\item bcbioSingleCell.
+\item Chromium.
+}
+}

@@ -25,3 +25,9 @@ manual input of a gene vector. All of the optional parameters for
 To adjust the annotation columns, modify the \code{colData} of the \code{counts}
 argument, which must contain/extend a \code{SummarizedExperiment}.
 }
+\examples{
+isS4(plotDEGHeatmap)
+}
+\seealso{
+DESeqAnalysis.
+}

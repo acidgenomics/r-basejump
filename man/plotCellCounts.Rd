@@ -17,3 +17,9 @@ plotCellCounts(object, ...)
 \description{
 Plot Cell Counts
 }
+\examples{
+isS4(plotCellCounts)
+}
+\seealso{
+bcbioRNASeq.
+}

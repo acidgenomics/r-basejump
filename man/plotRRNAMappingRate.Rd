@@ -21,3 +21,9 @@ protocol not having removed all ribosomal RNA (rRNA) transcripts. This will
 reduce the number of biologically meaningful reads in the experiment and is
 best avoided.
 }
+\examples{
+isS4(plotRRNAMappingRate)
+}
+\seealso{
+bcbioRNASeq.
+}

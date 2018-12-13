@@ -17,3 +17,12 @@ plotGenesPerCell(object, ...)
 \description{
 Plot Genes per Cell
 }
+\examples{
+isS4(plotGenesPerCell)
+}
+\seealso{
+\itemize{
+\item bcbioSingleCell.
+\item Chromium.
+}
+}

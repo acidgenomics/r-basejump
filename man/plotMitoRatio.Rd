@@ -17,3 +17,12 @@ plotMitoRatio(object, ...)
 \description{
 Plot Mitochondrial Transcript Abundance
 }
+\examples{
+isS4(plotMitoRatio)
+}
+\seealso{
+\itemize{
+\item bcbioSingleCell.
+\item Chromium.
+}
+}

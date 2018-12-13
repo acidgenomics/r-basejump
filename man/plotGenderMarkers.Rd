@@ -28,7 +28,7 @@ Groups of interest that define the samples. If left unset, defaults to
 \code{sampleName}.}
 
 \item{countsAxisLabel}{\code{character(1)}.
-Counts axis label.}
+Label to use for the counts axis.}
 
 \item{medianLine}{\code{logical(1)}.
 Include median line for each group. Disabled if samples are colored by

@@ -20,3 +20,9 @@ Plot Volcano
 \note{
 Don't apply post hoc alpha level or LFC threshold cutoffs.
 }
+\examples{
+isS4(plotVolcano)
+}
+\seealso{
+DESeqAnalysis.
+}

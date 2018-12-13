@@ -19,3 +19,9 @@ We should observe a linear trend in the number of genes detected with the
 number of mapped reads, which indicates that the sample input was not
 overloaded.
 }
+\examples{
+isS4(plotGeneSaturation)
+}
+\seealso{
+bcbioRNASeq.
+}

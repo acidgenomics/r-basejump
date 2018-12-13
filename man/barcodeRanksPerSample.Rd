@@ -17,3 +17,14 @@ barcodeRanksPerSample(object, ...)
 \description{
 Barcode Ranks per Sample
 }
+\examples{
+isS4(barcodeRanksPerSample)
+}
+\seealso{
+\itemize{
+\item DropletUtils.
+\item SingleCellExperiment.
+\item bcbioSingleCell.
+\item Chromium.
+}
+}

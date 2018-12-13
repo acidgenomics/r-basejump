@@ -17,3 +17,12 @@ plotMitoVsCoding(object, ...)
 \description{
 Plot Mitochondrial vs. Coding Counts
 }
+\examples{
+isS4(plotMitoVsCoding)
+}
+\seealso{
+\itemize{
+\item bcbioSingleCell.
+\item Chromium.
+}
+}
