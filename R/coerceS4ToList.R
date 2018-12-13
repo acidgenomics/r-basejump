@@ -6,6 +6,8 @@
 #'
 #' @seealso `methods::coerce`.
 #'
+#' @return `list`.
+#'
 #' @examples
 #' data(rse)
 #'
