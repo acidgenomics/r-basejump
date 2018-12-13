@@ -5,8 +5,8 @@
 \alias{HGNC2Ensembl-class}
 \title{HGNC-to-Ensembl Gene Identifier Mappings}
 \value{
-\code{HGNC2Ensembl}. Contains a \code{DataFrame} with \code{hgncID} and \code{geneID}
-columns.
+\code{HGNC2Ensembl}.
+Contains a \code{DataFrame} with \code{hgncID} and \code{geneID} columns.
 }
 \description{
 HGNC-to-Ensembl Gene Identifier Mappings

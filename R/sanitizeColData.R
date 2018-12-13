@@ -19,7 +19,8 @@
 #' @param object `DataFrame`.
 #' @export
 #'
-#' @return `DataFrame`. Contains only `atomic` columns.
+#' @return `DataFrame`.
+#' Contains only `atomic` columns.
 #'
 #' @examples
 #' data(rse)

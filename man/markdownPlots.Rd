@@ -8,12 +8,15 @@
 markdownPlots(list, headerLevel = 2L)
 }
 \arguments{
-\item{list}{\code{list}. Named list containing \code{ggplot} objects.}
+\item{list}{\code{list}.
+Named list containing \code{ggplot} objects.}
 
-\item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}). Markdown header level.}
+\item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}).
+Markdown header level.}
 }
 \value{
-Graphical output of plots, separated by Markdown headers.
+Graphical output of plots.
+Separated by Markdown headers.
 }
 \description{
 Supports using a named \code{list} containing multiple \code{ggplot} objects, which

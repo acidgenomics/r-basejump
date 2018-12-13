@@ -6,8 +6,8 @@
 #' @name stripTranscriptVersions
 #' @inheritParams params
 #'
-#' @return Modified object, containing transcript identifiers without version
-#'   numbers.
+#' @return Modified object.
+#' Contains transcript identifiers without version numbers.
 #'
 #' @examples
 #' ## Ensembl (modify; contains versions)

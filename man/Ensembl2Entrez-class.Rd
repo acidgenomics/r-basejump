@@ -5,8 +5,8 @@
 \alias{Ensembl2Entrez-class}
 \title{Ensembl-to-Entrez Gene Identifier Mappings}
 \value{
-\code{Ensembl2Entrez}. Contains a \code{DataFrame} with \code{geneID} and \code{entrezID}
-columns.
+\code{Ensembl2Entrez}.
+Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns.
 }
 \description{
 Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest

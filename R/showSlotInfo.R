@@ -4,7 +4,8 @@
 
 #' Show Slot Information
 #'
-#' @param list `list`. Named list containing slot metadata.
+#' @param list `list`.
+#'   Named list containing slot metadata.
 #'
 #' @export
 #'

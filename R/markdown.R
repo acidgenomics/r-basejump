@@ -35,11 +35,15 @@ setMethod(
 #' @inheritParams params
 #' @export
 #'
-#' @param text `character(1)`. Header text.
-#' @param level `scalar integer`. Header level (1-7).
-#' @param tabset `logical(1)`. Include tabset marker.
-#' @param asis `logical(1)`. Set this to `TRUE` when using the function inside a
-#'   loop or inside an R Markdown chunk with '`results = "asis"`' enabled.
+#' @param text `character(1)`.
+#'   Header text.
+#' @param level `integer(1)`.
+#'   Header level (1-7).
+#' @param tabset `logical(1)`.
+#'   Include tabset marker.
+#' @param asis `logical(1)`.
+#'   Set this to `TRUE` when using the function inside a loop or inside an R
+#'   Markdown chunk with '`results = "asis"`' enabled.
 #'
 #' @seealso
 #' [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
@@ -104,9 +108,10 @@ mdHeader <- markdownHeader
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @export
 #'
-#' @param url `character(1)`. URL.
-#' @param title `character(1)` or `NULL`. Link title attribute. This will appear in a
-#'   mouse-over pop-up box.
+#' @param url `character(1)`.
+#'   URL.
+#' @param title `character(1)` or `NULL`.
+#'   Link title attribute. This will appear in a mouse-over pop-up box.
 #'
 #' @return Markdown-formatted link.
 #'
@@ -152,7 +157,8 @@ mdLink <- markdownLink
 #' @inherit markdownHeader
 #' @export
 #'
-#' @param ordered `logical(1)`. Ordered ("`TRUE`") or unordered ("`FALSE`").
+#' @param ordered `logical(1)`.
+#'   Ordered ("`TRUE`") or unordered ("`FALSE`").
 #'
 #' @examples
 #' groceries <- c("milk", "eggs")
@@ -215,9 +221,11 @@ mdList <- markdownList
 #' @inheritParams params
 #' @export
 #'
-#' @param list `list`. Named list containing `ggplot` objects.
+#' @param list `list`.
+#'   Named list containing `ggplot` objects.
 #'
-#' @return Graphical output of plots, separated by Markdown headers.
+#' @return Graphical output of plots.
+#' Separated by Markdown headers.
 #'
 #' @seealso `cowplot::plot_grid`.
 #'
@@ -265,13 +273,18 @@ mdPlots <- markdownPlots
 #'
 #' @export
 #'
-#' @param list Named `list`. Column data that can be coerced to `data.frame`.
-#' @param captions `character` or `NULL`. Table captions. If `NULL`, the names
-#'   of the list will be used automatically as captions.
-#' @param force `logical(1)`. Force knit output using `knitr::asis_output`.
-#'   Recommended for development and unit testing only.
+#' @param list Named `list`.
+#'   Column data that can be coerced to `data.frame`.
+#' @param captions `character` or `NULL`.
+#'   Table captions. If `NULL`, the names of the list will be used automatically
+#'   as captions.
+#' @param force `logical(1)`.
+#'   Force knit output using `knitr::asis_output`.
+#'   *Recommended for development and unit testing only.*
 #'
-#' @return `asis_output` if in a knit call or `list`.
+#' @return
+#' - knit call: `asis_output`
+#' - Otherwise: `list`.
 #'
 #' @seealso
 #' - `knitr::kable`.

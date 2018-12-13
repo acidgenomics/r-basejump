@@ -10,7 +10,8 @@
 #'
 #' @inheritParams params
 #'
-#' @return Matrix. Typically `matrix` or `sparseMatrix` class.
+#' @return Matrix.
+#' Typically `matrix` or `sparseMatrix` class.
 #'
 #' @examples
 #' data(rse)

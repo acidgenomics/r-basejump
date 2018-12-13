@@ -15,10 +15,12 @@ topCellsPerSample(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{n}{\code{scalar integer}. Number of barcodes to return per sample.}
+\item{n}{\code{integer(1)}.
+Number of barcodes to return per sample.}
 }
 \value{
-\code{list}. Top barcodes as \code{character}, split by \code{sampleID}.
+\code{list}.
+Top barcodes as \code{character}, split by \code{sampleID}.
 }
 \description{
 Obtain the top cellular barcodes, based on counts.

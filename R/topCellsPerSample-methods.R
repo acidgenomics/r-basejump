@@ -5,9 +5,11 @@
 #' @name topCellsPerSample
 #' @inheritParams params
 #'
-#' @param n `scalar integer`. Number of barcodes to return per sample.
+#' @param n `integer(1)`.
+#'   Number of barcodes to return per sample.
 #'
-#' @return `list`. Top barcodes as `character`, split by `sampleID`.
+#' @return `list`.
+#' Top barcodes as `character`, split by `sampleID`.
 #'
 #' @examples
 #' data(sce)

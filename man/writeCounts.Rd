@@ -7,14 +7,18 @@
 writeCounts(..., dir = ".", compress = FALSE)
 }
 \arguments{
-\item{...}{Count matrices, passed in as dots.}
+\item{...}{Symbols.
+Unquoted object names containing count matrices.}
 
-\item{dir}{\code{character(1)}. Output directory.}
+\item{dir}{\code{character(1)}.
+Output directory.}
 
-\item{compress}{\code{logical(1)}. Compress the files using gzip.}
+\item{compress}{\code{logical(1)}.
+Compress the files using gzip.}
 }
 \value{
-Invisible \code{list}. File paths.
+Invisible \code{list}.
+File paths.
 }
 \description{
 Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq

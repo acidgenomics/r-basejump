@@ -3,8 +3,9 @@
 #' @name matchesGene2Symbol
 #' @inherit params
 #'
-#' @param x Object class supporting `rownames`. All rownames in this object
-#'   must intersect with the rownames defined in the `gene2symbol` argument.
+#' @param x Object class supporting `rownames`.
+#'   All rownames in this object must intersect with the rownames defined in the
+#'   `gene2symbol` argument.
 #'
 #' @examples
 #' x <- S4Vectors::DataFrame(

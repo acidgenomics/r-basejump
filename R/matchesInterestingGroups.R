@@ -6,8 +6,9 @@
 #' @name matchesInterestingGroups
 #' @inherit params
 #'
-#' @param x S4 class x.
-#' @param interestingGroups `character`. Interesting groups.
+#' @param x S4 class.
+#' @param interestingGroups `character`.
+#'   Interesting groups.
 #'
 #' @examples
 #' data(rse)

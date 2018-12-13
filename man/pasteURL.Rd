@@ -9,9 +9,10 @@ pasteURL(..., protocol = c("https", "http", "ftp", "none"))
 \arguments{
 \item{...}{one or more \R objects, to be converted to character vectors.}
 
-\item{protocol}{\code{character(1)}. Desired protocol to use. Defaults to HTTPS
-but HTTP and FTP are also supported. Use \code{"none"} if you want to prepare
-a URL that already contains a protocol in the first element of the dots.}
+\item{protocol}{\code{character(1)}.
+Desired protocol to use. Defaults to HTTPS but HTTP and FTP are also
+supported. Use \code{"none"} if you want to prepare a URL that already contains
+a protocol in the first element of the dots.}
 }
 \description{
 Concatenate Strings to Form a URL

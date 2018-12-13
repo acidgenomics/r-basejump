@@ -24,18 +24,21 @@ Gene2Symbol(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{format}{\code{character(1)}. Formatting method to apply:
+\item{format}{\code{character(1)}.
+Formatting method to apply:
 \itemize{
 \item \code{"makeUnique"}: \emph{Recommended.} Apply \code{make.unique} to the \code{geneName}
-column. Gene symbols are made unique, while the gene IDs remain unmodified.
+column. Gene symbols are made unique, while the gene IDs remain
+unmodified.
 \item \code{"1:1"}: For gene symbols that map to multiple gene IDs, select only the
 first annotated gene ID.
-\item \code{"long"}: Return \code{geneID} and \code{geneName} columns unmodified in long format.
+\item \code{"long"}: Return \code{geneID} and \code{geneName} columns unmodified in long
+format.
 }}
 }
 \value{
-\code{Gene2Symbol}. Contains a \code{DataFrame} with \code{geneID} and \code{geneName}
-columns.
+\code{Gene2Symbol}.
+Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 }
 \description{
 Gene-to-Symbol Mappings

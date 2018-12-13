@@ -6,8 +6,9 @@
 #' @export
 #'
 #' @param x `atomic`.
-#' @param max `scalar integer`. Maximum length of vector. Works like
-#'   `getOption("max.print")` without having to set globally.
+#' @param max `integer(1)`.
+#'   Maximum length of vector. Works like `getOption("max.print")` without
+#'   having to set globally.
 #'
 #' @return `character(1)`.
 #'

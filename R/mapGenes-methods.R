@@ -15,9 +15,10 @@
 #' @name mapGenes
 #' @inheritParams params
 #'
-#' @param strict `logical(1)`. Require all genes to match. Recommended by default.
-#'   If set `FALSE`, instead will return a warning to the user, and subset the
-#'   genes vector to only include matches.
+#' @param strict `logical(1)`.
+#'   Require all genes to match. Recommended by default. If set `FALSE`, instead
+#'   will return a warning to the user, and subset the genes vector to only
+#'   include matches.
 #'
 #' @return `character`.
 #'

@@ -15,7 +15,7 @@
 \item{value}{Value to assign.}
 }
 \value{
-Named \code{character} vector of the sample names.
+Named \code{character}.
 }
 \description{
 This function will return the human readable sample names if defined

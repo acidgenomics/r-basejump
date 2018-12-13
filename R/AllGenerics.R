@@ -140,7 +140,8 @@ setGeneric(
 #' @inheritParams params
 #' @export
 #'
-#' @return `character(1)`. Contrast name.
+#' @return `character(1)`.
+#' Contrast name.
 setGeneric(
     name = "contrastName",
     def = function(object, ...) {
@@ -201,7 +202,8 @@ setGeneric(
 #' @inheritParams params
 #' @export
 #'
-#' @return `character`. Gene identifiers.
+#' @return `character`.
+#' Gene identifiers.
 setGeneric(
     name = "deg",
     def = function(object, ...) {
@@ -458,7 +460,8 @@ setGeneric(
 #'
 #' @seealso `reshape2::melt`.
 #'
-#' @return `tibble`, grouped by sample.
+#' @return `tibble`.
+#' Grouped by sample.
 setGeneric(
     name = "meltCounts",
     def = function(object, ...) {
@@ -1222,7 +1225,8 @@ setGeneric(
 #' @inheritParams params
 #' @export
 #'
-#' @return `kable`. Markdown tables.
+#' @return `kable`.
+#' Markdown tables.
 setGeneric(
     name = "topTables",
     def = function(object, ...) {

@@ -114,7 +114,7 @@ test_that("collapseToString : scalar early return", {
 
 
 # removeNA =====================================================================
-# Support for vectors (using `stats::na.omit()`).
+# Support for vectors (using `stats::na.omit`).
 # This will return structure attributes about original size, with class omit.
 with_parameters_test_that(
     "removeNA", {

@@ -7,16 +7,19 @@
 saveRdExamples(Rd = NULL, package, dir = ".")
 }
 \arguments{
-\item{Rd}{\code{character} or \code{NULL}. R documentation name(s) from which to parse
-and save the working examples. If \code{NULL}, all documentation files
-containing examples will be saved.}
+\item{Rd}{\code{character} or \code{NULL}.
+R documentation name(s) from which to parse and save the working examples.
+If \code{NULL}, all documentation files containing examples will be saved.}
 
-\item{package}{\code{character(1)}. Package name.}
+\item{package}{\code{character(1)}.
+Package name.}
 
-\item{dir}{\code{character(1)}. Directory path.}
+\item{dir}{\code{character(1)}.
+Directory path.}
 }
 \value{
-Invisible \code{character}. File path(s).
+Invisible \code{character}.
+File path(s).
 }
 \description{
 Parse the documentation for a function and save the working examples to an R

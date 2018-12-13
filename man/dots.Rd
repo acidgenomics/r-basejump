@@ -9,7 +9,8 @@ dots(..., character = FALSE)
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{character}{\code{logical(1)}. Return dots (\code{...}) as \code{character}.}
+\item{character}{\code{logical(1)}.
+Return dots (\code{...}) as \code{character}.}
 }
 \value{
 \itemize{
@@ -20,6 +21,9 @@ object from the \code{name} with \code{eval}.
 }
 \description{
 Extract Dots from Function
+}
+\note{
+This function uses non-standard evaluation.
 }
 \examples{
 dots(a, b, c, character = FALSE)

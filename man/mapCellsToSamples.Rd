@@ -7,12 +7,15 @@
 mapCellsToSamples(cells, samples)
 }
 \arguments{
-\item{cells}{\code{character}. Cell identifiers.}
+\item{cells}{\code{character}.
+Cell identifiers.}
 
-\item{samples}{\code{character}. Sample identifiers.}
+\item{samples}{\code{character}.
+Sample identifiers.}
 }
 \value{
-\code{factor}. Cells as the names and samples as the levels.
+\code{factor}.
+Cells as the names and samples as the levels.
 }
 \description{
 This function extracts \code{sampleID} from the \code{cellID} column using grep

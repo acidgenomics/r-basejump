@@ -6,18 +6,20 @@
 #' This function always saves each object into a separate file rather than
 #' combining multiple objects into a single file.
 #'
+#' @note This function is desired for interactive use and interprets object
+#'   names using non-standard evaluation. It will **overwrite** existing files
+#'   on disk, following the same conventions as `save`.
+#'
 #' @export
 #' @inheritParams loadData
 #' @inheritParams base::save
 #'
-#' @param overwrite `logical(1)`. Overwrite existing file.
-#' @param ext `character(1)`. R data serialized (RDS; "`rds`") or R data ("`rda`",
-#'   "`RData`"). RDS is preferred when saving single objects per file, which is
-#'   always the convention of `saveData`, regardless of the extension used.
-#'
-#' @note This function is desired for interactive use and interprets object
-#'   names using non-standard evaluation. It will **overwrite** existing files
-#'   on disk, following the same conventions as `save`.
+#' @param overwrite `logical(1)`.
+#'   Overwrite existing file.
+#' @param ext `character(1)`.
+#'   R data serialized (RDS; "`rds`") or R data ("`rda`", "`RData`"). RDS is
+#'   preferred when saving single objects per file, which is always the
+#'   convention of `saveData`, regardless of the extension used.
 #'
 #' @seealso `save`, `saveRDS`.
 #'

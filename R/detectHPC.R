@@ -6,8 +6,9 @@
 #'
 #' @export
 #'
-#' @return `character(1)` or `logical(1)`. Workload manager (scheduler) name if
-#'   HPC is detected (e.g. `"SLURM"` or `"LSF"`), otherwise `FALSE`.
+#' @return `character(1)` or `logical(1)`.
+#'   Workload manager (scheduler) name if HPC is detected (e.g. `"SLURM"` or
+#'   `"LSF"`), otherwise `FALSE`.
 #'
 #' @seealso
 #' - `Sys.getenv`.

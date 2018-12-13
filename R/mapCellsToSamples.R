@@ -10,10 +10,13 @@
 #' @name mapCellsToSamples
 #' @export
 #'
-#' @param cells `character`. Cell identifiers.
-#' @param samples `character`. Sample identifiers.
+#' @param cells `character`.
+#'   Cell identifiers.
+#' @param samples `character`.
+#'   Sample identifiers.
 #'
-#' @return `factor`. Cells as the names and samples as the levels.
+#' @return `factor`.
+#' Cells as the names and samples as the levels.
 #'
 #' @examples
 #' samples <- paste0("sample", seq_len(2L))

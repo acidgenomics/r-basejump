@@ -16,33 +16,41 @@
 \arguments{
 \item{object}{Object.}
 
-\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
-When passing in a string, the name must be defined in \code{assayNames}.}
+\item{assay}{\code{vector(1)}.
+Name or index of count matrix slotted in \code{assays}. When passing in a
+string, the name must be defined in \code{assayNames}.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that define the
-samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}.
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 
-\item{ntop}{\code{scalar integer} or \code{Inf}. Number of most variable genes to plot.
+\item{ntop}{\code{integer(1)} or \code{Inf}.
+Number of most variable genes to plot.
 Use \code{Inf} to include all genes (\emph{not recommended}).}
 
-\item{label}{\code{logical(1)}. Superimpose sample text labels on the plot.}
+\item{label}{\code{logical(1)}.
+Superimpose sample text labels on the plot.}
 
-\item{color}{\code{ScaleDiscrete}. Desired ggplot2 color scale. Must supply
-discrete values. When set to \code{NULL}, the default ggplot2 color palette will
-be used. If manual color definitions are desired, we recommend using
-\code{ggplot2::scale_color_manual}.
+\item{color}{\code{ScaleDiscrete}.
+Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
+the default ggplot2 color palette will be used. If manual color definitions
+are desired, we recommend using \code{ggplot2::scale_color_manual}.
 
 To set the discrete color palette globally, use:\preformatted{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 }}
 
-\item{pointSize}{\code{numeric(1)}. Point size for dots in the plot.}
+\item{pointSize}{\code{numeric(1)}.
+Point size for dots in the plot.}
 
-\item{title}{\code{character(1)}. Plot title.}
+\item{title}{\code{character(1)}.
+Plot title.}
 
-\item{subtitle}{\code{character(1)}. Plot subtitle.}
+\item{subtitle}{\code{character(1)}.
+Plot subtitle.}
 
-\item{return}{\code{character(1)}. Return type. Uses \code{match.arg} internally and
-defaults to the first argument in the \code{character} vector.}
+\item{return}{\code{character(1)}.
+Return type. Uses \code{match.arg} internally and defaults to the first argument
+in the \code{character} vector.}
 
 \item{...}{Additional arguments.}
 }
@@ -73,6 +81,7 @@ Jolliffe, et al., 2002.
 }
 \seealso{
 \code{DESeq2::plotPCA}.
+
 We're using a modified version of the \code{DESeqTransform} method here.\preformatted{methodFunction(
     f = "plotPCA",
     signature = "DESeqTransform",

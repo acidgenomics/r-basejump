@@ -12,7 +12,8 @@ deg(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{character}. Gene identifiers.
+\code{character}.
+Gene identifiers.
 }
 \description{
 Differentially Expressed Genes

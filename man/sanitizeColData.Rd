@@ -13,7 +13,8 @@ sanitizeSampleData(object)
 \item{object}{\code{DataFrame}.}
 }
 \value{
-\code{DataFrame}. Contains only \code{atomic} columns.
+\code{DataFrame}.
+Contains only \code{atomic} columns.
 }
 \description{
 Standardize data describing the colummns (e.g. samples or cells), keeping
