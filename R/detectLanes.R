@@ -2,10 +2,13 @@
 #'
 #' @export
 #'
-#' @param object `character`. Sequencing file or directory paths.
-#' @param pattern `character(1)`. Grep pattern. Default pattern checks for `"_LXXX"`.
+#' @param object `character`.
+#'   Sequencing file or directory paths.
+#' @param pattern `character(1)`.
+#'   Grep pattern. Default pattern checks for `"_LXXX"`.
 #'
-#' @return `integer`. Lane number.
+#' @return `integer`.
+#' Lane number.
 #'
 #' @examples
 #' files <- c("sample1_L001.fastq.gz", "sample1_L002.fastq.gz")

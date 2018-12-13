@@ -7,10 +7,12 @@
 initDir(dir)
 }
 \arguments{
-\item{dir}{\code{character(1)}. Directory path.}
+\item{dir}{\code{character(1)}.
+Directory path.}
 }
 \value{
-\code{character(1)}. Directory path.
+\code{character(1)}.
+Directory path.
 }
 \description{
 Checks and creates a directory recursively automatically.

@@ -4,10 +4,14 @@
 #' @name collapseToString
 #' @inheritParams params
 #'
-#' @param sep `character(1)`. Separator. Defaults to comma.
-#' @param unique `logical(1)`. Unique values.
-#' @param sort `logical(1)`. Sort values.
-#' @param removeNA `logical(1)`. Remove NA values.
+#' @param sep `character(1)`.
+#'   Separator. Defaults to comma.
+#' @param unique `logical(1)`.
+#'   Unique values.
+#' @param sort `logical(1)`.
+#'   Sort values.
+#' @param removeNA `logical(1)`.
+#'   Remove NA values.
 #'
 #' @seealso `toString`.
 #'

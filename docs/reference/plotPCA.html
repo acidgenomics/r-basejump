@@ -135,48 +135,56 @@
     </tr>
     <tr>
       <th>assay</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>. Name or index of count matrix slotted in <code>assays</code>.
-When passing in a string, the name must be defined in <code>assayNames</code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>.
+Name or index of count matrix slotted in <code>assays</code>. When passing in a
+string, the name must be defined in <code>assayNames</code>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
-      <td><p><code>character</code>. Groups of interest that define the
-samples. If left unset, defaults to <code>sampleName</code>.</p></td>
+      <td><p><code>character</code>.
+Groups of interest that define the samples. If left unset, defaults to
+<code>sampleName</code>.</p></td>
     </tr>
     <tr>
       <th>ntop</th>
-      <td><p><code>scalar integer</code> or <code>Inf</code>. Number of most variable genes to plot.
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code> or <code>Inf</code>.
+Number of most variable genes to plot.
 Use <code>Inf</code> to include all genes (<em>not recommended</em>).</p></td>
     </tr>
     <tr>
       <th>label</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Superimpose sample text labels on the plot.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Superimpose sample text labels on the plot.</p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p><code>ScaleDiscrete</code>. Desired ggplot2 color scale. Must supply
-discrete values. When set to <code>NULL</code>, the default ggplot2 color palette will
-be used. If manual color definitions are desired, we recommend using
-<code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual</a></code>.</p>
+      <td><p><code>ScaleDiscrete</code>.
+Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
+the default ggplot2 color palette will be used. If manual color definitions
+are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual</a></code>.</p>
 <p>To set the discrete color palette globally, use:</p><pre>options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 </pre></td>
     </tr>
     <tr>
       <th>pointSize</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/numeric'>numeric(1)</a></code>. Point size for dots in the plot.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/numeric'>numeric(1)</a></code>.
+Point size for dots in the plot.</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Plot title.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Plot title.</p></td>
     </tr>
     <tr>
       <th>subtitle</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Plot subtitle.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Plot subtitle.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>. Return type. Uses <code>match.arg</code> internally and
-defaults to the first argument in the <code>character</code> vector.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Return type. Uses <code>match.arg</code> internally and defaults to the first argument
+in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -204,8 +212,8 @@ a way to look at how samples are clustering.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/DESeq2/topics/plotPCA'>DESeq2::plotPCA</a></code>.
-We're using a modified version of the <code>DESeqTransform</code> method here.</p><pre>methodFunction(
+    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/DESeq2/topics/plotPCA'>DESeq2::plotPCA</a></code>.</p>
+<p>We're using a modified version of the <code>DESeqTransform</code> method here.</p><pre>methodFunction(
     f = "plotPCA",
     signature = "DESeqTransform",
     package = "DESeq2"

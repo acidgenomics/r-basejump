@@ -7,9 +7,8 @@
 #' @name uniteInterestingGroups
 #' @inheritParams params
 #'
-#' @param object Object containing column data that defines interesting groups.
-#'
-#' @return Modified object, containing an `interestingGroups` column.
+#' @return Modified object.
+#' Now contains an `interestingGroups` column.
 #'
 #' @examples
 #' data(rse)

@@ -12,15 +12,17 @@ uniteInterestingGroups(object, ...)
 \S4method{uniteInterestingGroups}{DataFrame}(object, interestingGroups)
 }
 \arguments{
-\item{object}{Object containing column data that defines interesting groups.}
+\item{object}{Object.}
 
 \item{...}{Additional arguments.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that define the
-samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}.
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 }
 \value{
-Modified object, containing an \code{interestingGroups} column.
+Modified object.
+Now contains an \code{interestingGroups} column.
 }
 \description{
 Create a single interesting groups column (\code{interestingGroups}) used for

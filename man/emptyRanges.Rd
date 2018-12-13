@@ -8,17 +8,18 @@ emptyRanges(names, seqname = c("unknown", "transgene", "spike"),
   mcolsNames = NULL)
 }
 \arguments{
-\item{names}{\code{character}. Gene or transcript names.}
+\item{names}{\code{character}.
+Gene or transcript names.}
 
-\item{seqname}{\code{character(1)} Name of the alternative chromosome to be defined in
-\code{seqnames} where these ranges will be grouped. Defaults to "\code{unknown}"
-but "\code{transgene}" (transgenes) and "\code{spike}" (spike-ins) are also
-supported.}
+\item{seqname}{\code{character(1)}.
+Name of the alternative chromosome to be defined in \code{seqnames} where these
+ranges will be grouped. Defaults to "\code{unknown}" but "\code{transgene}"
+(transgenes) and "\code{spike}" (spike-ins) are also supported.}
 
-\item{mcolsNames}{\code{character} or \code{NULL}. Metadata column names to be defined
-in the \code{mcols} of the \code{GRanges} return. Normally this does not need to be
-defined; useful when combining with another \code{GRanges} that contains
-metadata.}
+\item{mcolsNames}{\code{character} or \code{NULL}.
+Metadata column names to be defined in the \code{mcols} of the \code{GRanges} return.
+Normally this does not need to be defined; useful when combining with
+another \code{GRanges} that contains metadata.}
 }
 \value{
 \code{GRanges}.

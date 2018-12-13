@@ -5,7 +5,8 @@
 #'
 #' @seealso `S4Vectors::Rle`.
 #'
-#' @return Modified object, with `atomic` columns converted to `Rle`.
+#' @return Modified object.
+#' All `atomic` columns will be encoded to `Rle` S4 class.
 #'
 #' @examples
 #' binary <- seq(from = 0L, to = 1L)

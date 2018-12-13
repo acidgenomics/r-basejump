@@ -14,19 +14,21 @@
 #' @name makeNames
 #' @inheritParams params
 #'
-#' @param object `character` or object for which `names` assignment will be
-#'   meaningful.
-#' @param rownames `logical(1)`. Apply sanitization on row names. This is not
-#'   generally recommended by default, since rownames commonly contain gene
-#'   identifiers that should not be modified.
-#' @param colnames `logical(1)`. Apply sanitization on column names. This is
-#'   generally recommended by default.
-#' @param strict `logical(1)`. Enforce strict name sanitization. When `TRUE`, this
-#'   does not allow the return of any capitalized acronyms. "RNA" will become
-#'   "Rna", for example.
+#' @param object `character` or class supporting `names`.
+#' @param rownames `logical(1)`.
+#'   Apply sanitization on row names. This is not generally recommended by
+#'   default, since rownames commonly contain gene identifiers that should not
+#'   be modified.
+#' @param colnames `logical(1)`.
+#'   Apply sanitization on column names. This is generally recommended by
+#'   default.
+#' @param strict `logical(1)`.
+#'   Enforce strict name sanitization. When `TRUE`, this does not allow the
+#'   return of any capitalized acronyms. "RNA" will become "Rna", for example.
 #'
-#' @return Object with syntatically valid names. For objects supporting
-#'   `names`, the underlying data returns unchanged.
+#' @return Modified object.
+#' Contains syntatically valid names. For objects supporting `names`, the
+#' underlying data returns unchanged.
 #'
 #' @seealso
 #' - `make.names`.

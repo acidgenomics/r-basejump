@@ -9,7 +9,7 @@ library(splatter)
 library(tidyverse)
 
 # Restrict to 2 MB.
-# Use `pryr::object_size()` instead of `utils::object.size()`.
+# Use `pryr::object_size` instead of `utils::object.size`.
 limit <- structure(2e6, class = "object_size")
 
 organism <- "Homo sapiens"
@@ -44,7 +44,7 @@ sce$cell <- NULL
 sce$group <- NULL
 
 # Pad the zeros in rows and columns.
-# Note that this needs to come after setting up `colData()`, otherwise will
+# Note that this needs to come after setting up `colData`, otherwise will
 # error because `sampleID` column is not defined.
 sce <- autopadZeros(sce)
 

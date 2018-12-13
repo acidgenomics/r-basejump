@@ -7,7 +7,8 @@
 EggNOG()
 }
 \value{
-\code{EggNOG}. This class extends \code{list} and contains:
+\code{EggNOG}.
+This class extends \code{list} and contains:
 \enumerate{
 \item "\code{cogFunctionalCategories}": \strong{C}luster of \strong{O}rthologous \strong{G}roups
 (COG) functional category information.

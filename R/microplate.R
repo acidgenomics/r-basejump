@@ -2,12 +2,17 @@
 #'
 #' @export
 #'
-#' @param plates `scalar integer`. Number of plates.
-#' @param wells `scalar integer`. Number of wells (`96`, `384`).
-#' @param controls `scalar integer`. Number of control wells.
-#' @param prefix `character(1)` or `NULL`. Plate name prefix.
+#' @param plates `integer(1)`.
+#'   Number of plates.
+#' @param wells `integer(1)`.
+#'   Number of wells (`96`, `384`).
+#' @param controls `integer(1)`.
+#'   Number of control wells.
+#' @param prefix `character(1)` or `NULL`.
+#'   Plate name prefix.
 #'
-#' @return `character`. Well identifiers.
+#' @return `character`.
+#' Well identifiers.
 #'
 #' @examples
 #' ## Single 96-well plate.

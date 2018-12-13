@@ -13,7 +13,8 @@ sanitizeRowRanges(object)
 \item{object}{\code{DataFrame} or \code{GRanges}.}
 }
 \value{
-\code{DataFrame}. Contains only \code{atomic} columns.
+\code{DataFrame}.
+Contains only \code{atomic} columns.
 }
 \description{
 Coerce row annotations (e.g. genes or transcripts) to \code{DataFrame}, and keep

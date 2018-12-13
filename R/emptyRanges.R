@@ -5,15 +5,16 @@
 #'
 #' @export
 #'
-#' @param names `character`. Gene or transcript names.
-#' @param seqname `character(1)` Name of the alternative chromosome to be defined in
-#'   `seqnames` where these ranges will be grouped. Defaults to "`unknown`"
-#'   but "`transgene`" (transgenes) and "`spike`" (spike-ins) are also
-#'   supported.
-#' @param mcolsNames `character` or `NULL`. Metadata column names to be defined
-#'   in the `mcols` of the `GRanges` return. Normally this does not need to be
-#'   defined; useful when combining with another `GRanges` that contains
-#'   metadata.
+#' @param names `character`.
+#'   Gene or transcript names.
+#' @param seqname `character(1)`.
+#'   Name of the alternative chromosome to be defined in `seqnames` where these
+#'   ranges will be grouped. Defaults to "`unknown`" but "`transgene`"
+#'   (transgenes) and "`spike`" (spike-ins) are also supported.
+#' @param mcolsNames `character` or `NULL`.
+#'   Metadata column names to be defined in the `mcols` of the `GRanges` return.
+#'   Normally this does not need to be defined; useful when combining with
+#'   another `GRanges` that contains metadata.
 #'
 #' @return `GRanges`.
 #'

@@ -44,15 +44,17 @@ aggregateCols(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{groupings}{\code{factor}. Defines the aggregation groupings. The new
-aggregate names are defined as the \code{factor} \code{levels}, and the original,
-unaggregated names are defined as the \code{names}.}
+\item{groupings}{\code{factor}.
+Defines the aggregation groupings. The new aggregate names are defined as
+the \code{factor} \code{levels}, and the original, unaggregated names are defined as
+the \code{names}.}
 
-\item{fun}{\code{character(1)}. Name of the aggregation function. Uses
-\code{match.arg}.}
+\item{fun}{\code{character(1)}.
+Name of the aggregation function. Uses \code{match.arg}.}
 
-\item{col}{\code{character(1)}. Name of column in either \code{rowData} or \code{colData}
-that defines the desired aggregation groupings.}
+\item{col}{\code{character(1)}.
+Name of column in either \code{rowData} or \code{colData} that defines the desired
+aggregation groupings.}
 }
 \value{
 Modified object, with aggregated rows (features) or columns

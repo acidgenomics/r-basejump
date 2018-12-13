@@ -31,16 +31,21 @@
 #' @name ggplot2-geoms
 #'
 #' @inheritParams ggplot2::geom_label
-#' @param color `character(1)`. Text color (e.g. `"orange"`).
-#' @param size `scalar integer`. Font size.
-#' @param xintercept,yintercept `scalar numeric` denoting x- or y-axis cutoff.
-#'   Specify one but not both.
-#' @param data `data.frame`. Data.
-#' @param col `character(1)`. Column name.
-#' @param fun `character(1)`. Function name to use for average calculation. Currently
-#'   supports "`mean`" or "`median`".
-#' @param digits `scalar integer`. Number of significant digits to use. Defaults
-#'   to rounded.
+#' @param color `character(1)`.
+#'   Text color (e.g. `"orange"`).
+#' @param size `integer(1)`.
+#'   Font size.
+#' @param xintercept,yintercept `numeric(1)`.
+#'   Value denoting x- or y-axis cutoff. Specify one but not both.
+#' @param data `data.frame`.
+#'   Data.
+#' @param col `character(1)`.
+#'   Column name.
+#' @param fun `character(1)`.
+#'   Function name to use for average calculation. Currently supports "`mean`"
+#'   or "`median`".
+#' @param digits `integer(1)`.
+#'   Number of significant digits to use. Defaults to rounded.
 #'
 #' @seealso
 #' - `ggplot2::geom_label`.
@@ -273,10 +278,10 @@ basejump_geom_label_repel <- function(
 #'
 #' @name ggplot2-themes
 #'
-#' @param base_size `scalar numeric`. Base font size.
+#' @param base_size `numeric(1)`. Base font size.
 #' @param base_family `character(1)`. Base font family.
 #' @param face `character(1)`. Font face ("`bold`", "`plain`").
-#' @param aspect_ratio `scalar numeric`. Aspect ratio, specifying the plot
+#' @param aspect_ratio `numeric(1)`. Aspect ratio, specifying the plot
 #'   proportions. Use `1` for a perfectly square plot (including the axis
 #'   labels).
 #' @param legend_position `character(1)`. Legend key position. We're being a little

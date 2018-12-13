@@ -7,16 +7,21 @@
 microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 }
 \arguments{
-\item{plates}{\code{scalar integer}. Number of plates.}
+\item{plates}{\code{integer(1)}.
+Number of plates.}
 
-\item{wells}{\code{scalar integer}. Number of wells (\code{96}, \code{384}).}
+\item{wells}{\code{integer(1)}.
+Number of wells (\code{96}, \code{384}).}
 
-\item{controls}{\code{scalar integer}. Number of control wells.}
+\item{controls}{\code{integer(1)}.
+Number of control wells.}
 
-\item{prefix}{\code{character(1)} or \code{NULL}. Plate name prefix.}
+\item{prefix}{\code{character(1)} or \code{NULL}.
+Plate name prefix.}
 }
 \value{
-\code{character}. Well identifiers.
+\code{character}.
+Well identifiers.
 }
 \description{
 Microtiter Plate Well Identifiers

@@ -22,7 +22,8 @@ selectSamples(object, ...)
 readability.}
 }
 \value{
-Modified object, with selected samples.
+Modified object.
+Subset (extraction) containing the desired samples.
 }
 \description{
 Utility function that enables quick an easy sample selection in Bioconductor

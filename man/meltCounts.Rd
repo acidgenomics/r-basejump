@@ -16,20 +16,23 @@ meltCounts(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
-When passing in a string, the name must be defined in \code{assayNames}.}
+\item{assay}{\code{vector(1)}.
+Name or index of count matrix slotted in \code{assays}. When passing in a
+string, the name must be defined in \code{assayNames}.}
 
-\item{nonzeroGenes}{\code{logical(1)}. Return only non-zero genes.}
+\item{nonzeroGenes}{\code{logical(1)}.
+Return only non-zero genes.}
 
-\item{trans}{\code{character(1)}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
-the count matrix prior to melting, if desired. Use \code{"identity"} to return
-unmodified (default).}
+\item{trans}{\code{character(1)}.
+Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
+to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 }
 \value{
-\code{tibble}, grouped by sample.
+\code{tibble}.
+Grouped by sample.
 
-\code{grouped_df}, grouped by \code{colname} (e.g. sample ID) and \code{rowname}
-(e.g. gene ID).
+\code{grouped_df}.
+Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
 }
 \description{
 Melt Count Matrix to Long Format

@@ -33,10 +33,11 @@ headtail(x, ...)
 
 \item{...}{Additional arguments.}
 
-\item{n}{\code{scalar integer}. Positive integer denoting the number of first and
-last items to include.}
+\item{n}{\code{integer(1)}.
+Positive integer denoting the number of first and last items to include.}
 
-\item{ascii}{\code{logical(1)}. Require separators to use ASCII instead of Unicode.}
+\item{ascii}{\code{logical(1)}.
+Require separators to use ASCII instead of Unicode.}
 }
 \value{
 Invisible \code{NULL}.

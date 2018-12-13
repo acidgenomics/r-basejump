@@ -7,9 +7,13 @@
 parseRd(object, tag)
 }
 \arguments{
-\item{object}{\code{Rd}. R documentation, returned from \code{tools::Rd_db}.}
+\item{object}{\code{Rd}.
+R documentation, returned from \code{tools::Rd_db}.}
 
-\item{tag}{\code{character(1)}. Desired metadata type. For example, these are supported:
+\item{tag}{\code{character(1)}.
+Desired metadata type.
+
+These types are supported:
 \itemize{
 \item "\code{title}".
 \item "\code{description}".

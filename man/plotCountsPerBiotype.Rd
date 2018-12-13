@@ -25,20 +25,25 @@ plotCountsPerBroadClass(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
-When passing in a string, the name must be defined in \code{assayNames}.}
+\item{assay}{\code{vector(1)}.
+Name or index of count matrix slotted in \code{assays}. When passing in a
+string, the name must be defined in \code{assayNames}.}
 
-\item{n}{\code{integer(1)}. Number to include.}
+\item{n}{\code{integer(1)}.
+Number to include.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that define the
-samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}.
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 
-\item{trans}{\code{character(1)}. Name of the axis scale transformation to apply.
+\item{trans}{\code{character(1)}.
+Name of the axis scale transformation to apply.
 
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
-\item{countsAxisLabel}{\code{character(1)}. Counts axis label.}
+\item{countsAxisLabel}{\code{character(1)}.
+Counts axis label.}
 }
 \value{
 \code{ggplot}.

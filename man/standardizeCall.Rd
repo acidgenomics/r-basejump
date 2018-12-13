@@ -11,10 +11,12 @@ standardizeCall(which = sys.parent(n = 1L), return = c("call", "list"),
 \item{which}{the frame number if non-negative, the number of frames
     to go back if negative.}
 
-\item{return}{\code{character(1)}. Return type. Uses \code{match.arg} internally and
-defaults to the first argument in the \code{character} vector.}
+\item{return}{\code{character(1)}.
+Return type. Uses \code{match.arg} internally and defaults to the first argument
+in the \code{character} vector.}
 
-\item{verbose}{\code{logical(1)}. Run the function with verbose messages?
+\item{verbose}{\code{logical(1)}.
+Run the function with verbose messages?
 \emph{It is only recommended to enable this when debugging.}}
 }
 \value{

@@ -5,10 +5,13 @@
 #' @name plotGene
 #'
 #' @inheritParams params
-#' @param countsAxisLabel `character(1)`. Label to use for the counts axis.
-#' @param medianLine `logical(1)`. Include median line for each group. Disabled if
-#'   samples are colored by sample name.
-#' @param style `character(1)`. Plot style.
+#' @param countsAxisLabel `character(1)`.
+#'   Label to use for the counts axis.
+#' @param medianLine `logical(1)`.
+#'   Include median line for each group. Disabled if samples are colored by
+#'   sample name.
+#' @param style `character(1)`.
+#'   Plot style.
 #'
 #' @return
 #' - `style = "facet"`: `ggplot` grouped by `sampleName`, with

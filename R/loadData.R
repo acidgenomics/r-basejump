@@ -21,11 +21,13 @@
 #' @inheritParams params
 #' @export
 
-#' @param ... Object names. Note that these arguments are interpreted as symbols
-#'   using non-standard evaluation for convenience during interactive use, and
-#'   *must not be quoted*.
+#' @param ... Object names.
+#'   Note that these arguments are interpreted as symbols using non-standard
+#'   evaluation for convenience during interactive use, and *must not be
+#'   quoted*.
 #'
-#' @return Invisible `character`. File paths.
+#' @return Invisible `character`.
+#' File paths.
 #'
 #' @seealso `load`, `readRDS`.
 #'

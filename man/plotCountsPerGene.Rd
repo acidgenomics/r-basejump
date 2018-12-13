@@ -30,41 +30,47 @@ plotCountsPerGene(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
-When passing in a string, the name must be defined in \code{assayNames}.}
+\item{assay}{\code{vector(1)}.
+Name or index of count matrix slotted in \code{assays}. When passing in a
+string, the name must be defined in \code{assayNames}.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that define the
-samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}.
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 
-\item{geom}{\code{character(1)}. Type of ggplot2 geometric object to use.}
+\item{geom}{\code{character(1)}.
+Type of ggplot2 geometric object to use.}
 
-\item{trans}{\code{character(1)}. Name of the axis scale transformation to apply.
+\item{trans}{\code{character(1)}.
+Name of the axis scale transformation to apply.
 
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
-\item{color}{\code{ScaleDiscrete}. Desired ggplot2 color scale. Must supply
-discrete values. When set to \code{NULL}, the default ggplot2 color palette will
-be used. If manual color definitions are desired, we recommend using
-\code{ggplot2::scale_color_manual}.
+\item{color}{\code{ScaleDiscrete}.
+Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
+the default ggplot2 color palette will be used. If manual color definitions
+are desired, we recommend using \code{ggplot2::scale_color_manual}.
 
 To set the discrete color palette globally, use:\preformatted{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 }}
 
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}. Desired ggplot2 fill scale. Must
-supply discrete values. When set to \code{NULL}, the default ggplot2 color
-palette will be used. If manual color definitions are desired, we recommend
-using \code{ggplot2::scale_fill_manual}.
+\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
+Desired ggplot2 fill scale. Must supply discrete values. When set to
+\code{NULL}, the default ggplot2 color palette will be used. If manual color
+definitions are desired, we recommend using \code{ggplot2::scale_fill_manual}.
 
 To set the discrete fill palette globally, use:\preformatted{options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
-\item{flip}{\code{logical(1)}. Flip x and y axes. Recommended for plots containing
-many samples.}
+\item{flip}{\code{logical(1)}.
+Flip x and y axes. Recommended for plots containing many samples.}
 
-\item{countsAxisLabel}{\code{character(1)}. Counts axis label.}
+\item{countsAxisLabel}{\code{character(1)}.
+Counts axis label.}
 
-\item{title}{\code{character(1)}. Plot title.}
+\item{title}{\code{character(1)}.
+Plot title.}
 }
 \value{
 \code{ggplot}.

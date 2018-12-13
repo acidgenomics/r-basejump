@@ -9,14 +9,19 @@
 #' @inheritParams saveData
 #' @export
 #'
-#' @param remoteDir `character(1)`. Remote FTP directory path.
-#' @param localDir `character(1)`. Directory where to save files locally.
-#' @param pattern `character(1)`. Pattern to match against remote file names.
-#' @param rename `character(1)` or `NULL`. Rename the local files (including suffix),
-#'   if desired.
-#' @param compress `logical(1)`. gzip compress the files after download.
+#' @param remoteDir `character(1)`.
+#'   Remote FTP directory path.
+#' @param localDir `character(1)`.
+#'   Directory where to save files locally.
+#' @param pattern `character(1)`.
+#'   Pattern to match against remote file names.
+#' @param rename `character(1)` or `NULL`.
+#'   Rename the local files (including suffix), if desired.
+#' @param compress `logical(1)`.
+#'   gzip compress the files after download.
 #'
-#' @return Invisible `character`. Local file paths.
+#' @return Invisible `character`.
+#' Local file paths.
 #'
 #' @examples
 #' remoteDir <- paste(

@@ -118,7 +118,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dots'>dots</a></span>(<span class='no'>...</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>dots</span>(<span class='no'>...</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -129,7 +129,8 @@
     </tr>
     <tr>
       <th>character</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>. Return dots (<code>...</code>) as <code>character</code>.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Return dots (<code>...</code>) as <code>character</code>.</p></td>
     </tr>
     </table>
     
@@ -142,6 +143,10 @@ object from the <code>name</code> with <code>eval</code>.</p></li>
 <li><p>"<code>character = TRUE</code>": <code>character</code>. Names of the dots.</p></li>
 </ul>
 
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This function uses non-standard evaluation.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -156,7 +161,7 @@ object from the <code>name</code> with <code>eval</code>.</p></li>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dots'>dots</a></span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
+    <pre class="examples"><div class='input'><span class='fu'>dots</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; a
 #&gt; 
 #&gt; [[2]]
@@ -164,7 +169,7 @@ object from the <code>name</code> with <code>eval</code>.</p></li>
 #&gt; 
 #&gt; [[3]]
 #&gt; c
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dots'>dots</a></span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "a" "b" "c"</div></pre>
+#&gt; </div><div class='input'><span class='fu'>dots</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "a" "b" "c"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -172,6 +177,8 @@ object from the <code>name</code> with <code>eval</code>.</p></li>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

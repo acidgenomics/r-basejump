@@ -7,7 +7,8 @@
 minimalSampleData(sample)
 }
 \arguments{
-\item{sample}{\code{character}. Sample names (e.g. per-sample directory names).}
+\item{sample}{\code{character}.
+Sample names (e.g. per-sample directory names).}
 }
 \value{
 \code{DataFrame}.

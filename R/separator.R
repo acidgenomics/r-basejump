@@ -7,8 +7,10 @@
 #'
 #' @export
 #'
-#' @param sep `character(1)` of length 1. Separator character.
-#' @param times `scalar integer`. Number of times to repeat.
+#' @param sep `character(1)`.
+#'   Separator character.
+#' @param times `integer(1)`.
+#'   Number of times to repeat.
 #'
 #' @return `character(1)`.
 #'

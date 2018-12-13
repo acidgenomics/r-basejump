@@ -29,13 +29,15 @@
 #'   that these groupings will map to cells, so care must be taken to properly
 #'   aggregate samples.
 #'
-#' @param groupings `factor`. Defines the aggregation groupings. The new
-#'   aggregate names are defined as the `factor` `levels`, and the original,
-#'   unaggregated names are defined as the `names`.
-#' @param col `character(1)`. Name of column in either `rowData` or `colData`
-#'   that defines the desired aggregation groupings.
-#' @param fun `character(1)`. Name of the aggregation function. Uses
-#'   `match.arg`.
+#' @param groupings `factor`.
+#'   Defines the aggregation groupings. The new aggregate names are defined as
+#'   the `factor` `levels`, and the original, unaggregated names are defined as
+#'   the `names`.
+#' @param col `character(1)`.
+#'   Name of column in either `rowData` or `colData` that defines the desired
+#'   aggregation groupings.
+#' @param fun `character(1)`.
+#'   Name of the aggregation function. Uses `match.arg`.
 #'
 #' @seealso
 #' - `stats::aggregate`.

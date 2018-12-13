@@ -20,14 +20,13 @@
 #'
 #' @inheritParams params
 #'
-#' @param package `character(1)`. Name of package containing the R Markdown template.
-#' @param overwrite `logical(1)`. Should existing destination files be overwritten?
-#' @param sourceDir `character(1)`. File path to shared source file directory.
-#'   Normally this can be left `NULL` when working in a standard interactive
-#'   session, but is necessary when developing code in a devtools package
-#'   environment loaded with `devtools::load_all`.
+#' @param package `character(1)`.
+#'   Name of package containing the R Markdown template.
+#' @param overwrite `logical(1)`.
+#'   Should existing destination files be overwritten?
 #'
-#' @return Invisible `logical`. Was the file copied?.
+#' @return Invisible `logical`.
+#'   Was the file copied?.
 #'
 #' @examples
 #' ## RNA-seq template.
@@ -39,48 +38,45 @@
 #' \dontrun{
 #' # prepareTemplate(package = "bcbioSingleCell")
 #' }
-prepareTemplate <- function(
-    package,
-    overwrite = FALSE,
-    sourceDir = NULL,
-    ...
-) {
+prepareTemplate <- function(package, overwrite = FALSE) {
     assert(
         isString(package),
         isSubset(package, rownames(installed.packages())),
-        isString(sourceDir) || is.null(sourceDir),
         isFlag(overwrite)
     )
 
-    # Shared file source directory. Keeping the `sourceDir` argument because
-    # devtools attempts to intercept `system.file`, and this can cause path
-    # issues during development.
-    if (is.null(sourceDir)) {
-        sourceDir <- system.file(
-            "rmarkdown/shared", package = package, mustWork = TRUE
+    copySharedFiles <- function(sourceDir, overwrite) {
+        assert(isADirectory(sourceDir))
+        files <- list.files(sourceDir, full.names = TRUE)
+        assert(hasLength(files))
+        copied <- vapply(
+            X = files,
+            FUN = function(file) {
+                file.copy(
+                    from = file,
+                    to = basename(file),
+                    overwrite = overwrite
+                )
+            },
+            FUN.VALUE = logical(1L)
         )
+        names(copied) <- basename(files)
+        copied
     }
-    assert(isADirectory(sourceDir))
 
-    # Get vector of all shared files.
-    files <- list.files(sourceDir, full.names = TRUE)
-    assert(hasLength(files))
+    files <- character()
 
-    # Copy files to working directory.
-    copied <- vapply(
-        X = files,
-        FUN = function(file) {
-            file.copy(
-                from = file,
-                to = basename(file),
-                overwrite = overwrite
-            )
-        },
-        FUN.VALUE = logical(1L)
-    )
-    names(copied) <- basename(files)
+    # Copy the shared files from the requested package.
+    sourceDir <-
+        system.file("rmarkdown/shared", package = package, mustWork = TRUE)
+    files1 <- copySharedFiles(sourceDir, overwrite = overwrite)
 
-    invisible(copied)
+    # Copy the shared files from basejump.
+    sourceDir <-
+        system.file("rmarkdown/shared", package = "basejump", mustWork = TRUE)
+    files2 <- copySharedFiles(sourceDir, overwrite = overwrite)
+
+    invisible(c(files1, files2))
 }
 
 

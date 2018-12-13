@@ -6,9 +6,10 @@
 #' @name headtail
 #' @inheritParams params
 #'
-#' @param n `scalar integer`. Positive integer denoting the number of first and
-#'   last items to include.
-#' @param ascii `logical(1)`. Require separators to use ASCII instead of Unicode.
+#' @param n `integer(1)`.
+#'   Positive integer denoting the number of first and last items to include.
+#' @param ascii `logical(1)`.
+#'   Require separators to use ASCII instead of Unicode.
 #'
 #' @return Invisible `NULL`.
 #'

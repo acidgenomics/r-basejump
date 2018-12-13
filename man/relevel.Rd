@@ -11,15 +11,18 @@ relevelRowRanges(rowRanges)
 relevelColData(colData)
 }
 \arguments{
-\item{rowRanges}{\code{GRanges}. Genomic ranges (e.g. genome annotations).
-Metadata describing the assay rows.}
+\item{rowRanges}{\code{GRanges}.
+Genomic ranges (e.g. genome annotations). Metadata describing the assay
+rows.}
 
-\item{colData}{\code{DataFrame}. Metadata describing the assay columns. For bulk
-RNA-seq, this data describes the samples. For single-cell RNA-seq, this
-data describes the cells.}
+\item{colData}{\code{DataFrame}.
+Metadata describing the assay columns. For bulk RNA-seq, this data
+describes the samples. For single-cell RNA-seq, this data describes the
+cells.}
 }
 \value{
-Modified object, with factor levels adjusted.
+Modified object.
+Factor levels will be readjusted (i.e. superfluous levels are dropped).
 }
 \description{
 Relevel Row or Column Data
