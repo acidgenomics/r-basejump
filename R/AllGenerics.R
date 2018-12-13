@@ -73,6 +73,11 @@ setGeneric(
 #' @export
 #'
 #' @return `integer matrix`.
+#'
+#' @seealso DESeqAnalysis.
+#'
+#' @examples
+#' isS4(alphaSummary)
 setGeneric(
     name = "alphaSummary",
     def = function(object, ...) {
@@ -101,6 +106,15 @@ setGeneric(
 #' @export
 #'
 #' @return `list`.
+#'
+#' @seealso
+#' - DropletUtils.
+#' - SingleCellExperiment.
+#' - bcbioSingleCell.
+#' - Chromium.
+#'
+#' @examples
+#' isS4(barcodeRanksPerSample)
 setGeneric(
     name = "barcodeRanksPerSample",
     def = function(object, ...) {
@@ -142,6 +156,11 @@ setGeneric(
 #'
 #' @return `character(1)`.
 #' Contrast name.
+#'
+#' @seealso DESeqAnalysis.
+#'
+#' @examples
+#' isS4(contrastName)
 setGeneric(
     name = "contrastName",
     def = function(object, ...) {
@@ -204,6 +223,11 @@ setGeneric(
 #'
 #' @return `character`.
 #' Gene identifiers.
+#'
+#' @seealso DESeqAnalysis.
+#'
+#' @examples
+#' isS4(deg)
 setGeneric(
     name = "deg",
     def = function(object, ...) {
@@ -244,6 +268,13 @@ setGeneric(
 #' @export
 #'
 #' @return `SingleCellExperiment`.
+#'
+#' @seealso
+#' - bcbioSingleCell.
+#' - Chromium.
+#'
+#' @examples
+#' isS4(filterCells)
 setGeneric(
     name = "filterCells",
     def = function(object, ...) {
@@ -437,12 +468,8 @@ setGeneric(
 
 
 # markdown =====================================================================
-#' Markdown
-#'
-#' @inheritParams params
+#' @rdname markdown
 #' @export
-#'
-#' @return Markdown output.
 setGeneric(
     name = "markdown",
     def = function(object, ...) {
@@ -453,15 +480,8 @@ setGeneric(
 
 
 # meltCounts ===================================================================
-#' Melt Count Matrix to Long Format
-#'
-#' @inheritParams params
+#' @rdname meltCounts
 #' @export
-#'
-#' @seealso `reshape2::melt`.
-#'
-#' @return `tibble`.
-#' Grouped by sample.
 setGeneric(
     name = "meltCounts",
     def = function(object, ...) {
@@ -521,6 +541,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plot5Prime3PrimeBias)
 setGeneric(
     name = "plot5Prime3PrimeBias",
     def = function(object, ...) {
@@ -537,6 +562,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot` grid.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotBarcodeRanks)
 setGeneric(
     name = "plotBarcodeRanks",
     def = function(object, ...) {
@@ -553,6 +583,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotCellCounts)
 setGeneric(
     name = "plotCellCounts",
     def = function(object, ...) {
@@ -584,15 +619,8 @@ setGeneric(
 
 
 # plotCountsPerGene ============================================================
-#' Plot Counts Per Gene
-#'
-#' Generally, we expect similar count spreads for all genes between samples
-#' unless the library sizes or total RNA expression are different.
-#'
-#' @inheritParams params
+#' @rdname plotCountsPerGene
 #' @export
-#'
-#' @return `ggplot`.
 setGeneric(
     name = "plotCountsPerGene",
     def = function(object, ...) {
@@ -616,6 +644,11 @@ setGeneric(
 #' @inherit plotHeatmap params return
 #' @inheritParams params
 #' @export
+#'
+#' @seealso DESeqAnalysis.
+#'
+#' @examples
+#' isS4(plotDEGHeatmap)
 setGeneric(
     name = "plotDEGHeatmap",
     def = function(object, ...) {
@@ -639,6 +672,11 @@ setGeneric(
 #' @inherit plotPCA params return
 #' @inheritParams params
 #' @export
+#'
+#' @seealso DESeqAnalysis.
+#'
+#' @examples
+#' isS4(plotDEGPCA)
 setGeneric(
     name = "plotDEGPCA",
     def = function(object, ...) {
@@ -655,6 +693,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotExonicMappingRate)
 setGeneric(
     name = "plotExonicMappingRate",
     def = function(object, ...) {
@@ -665,20 +708,8 @@ setGeneric(
 
 
 # plotGenderMarkers ============================================================
-#' Plot Sexually Dimorphic Gender Marker Genes
-#'
-#' This is a convenience function that wraps `plotGene` to quickly plot known
-#' sexually dimorphic genes, and overall gene experssion for the X and Y
-#' chromosomes.
-#'
-#' Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
-#'
-#' @inheritParams params
+#' @rdname plotGenderMarkers
 #' @export
-#'
-#' @seealso `plotGene`.
-#'
-#' @return `ggplot`.
 setGeneric(
     name = "plotGenderMarkers",
     def = function(object, ...) {
@@ -689,12 +720,8 @@ setGeneric(
 
 
 # plotGene =====================================================================
-#' Plot Gene Expression
-#'
-#' @inheritParams params
+#' @rdname plotGene
 #' @export
-#'
-#' @return `ggplot`.
 setGeneric(
     name = "plotGene",
     def = function(object, ...) {
@@ -715,6 +742,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotGeneSaturation)
 setGeneric(
     name = "plotGeneSaturation",
     def = function(object, ...) {
@@ -731,6 +763,13 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso
+#' - bcbioSingleCell.
+#' - Chromium.
+#'
+#' @examples
+#' isS4(plotGenesPerCell)
 setGeneric(
     name = "plotGenesPerCell",
     def = function(object, ...) {
@@ -741,12 +780,8 @@ setGeneric(
 
 
 # plotGenesDetected ============================================================
-#' Plot Genes Detected
-#'
-#' @inheritParams params
+#' @rdname plotGenesDetected
 #' @export
-#'
-#' @return `ggplot`.
 setGeneric(
     name = "plotGenesDetected",
     def = function(object, ...) {
@@ -795,6 +830,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotIntronicMappingRate)
 setGeneric(
     name = "plotIntronicMappingRate",
     def = function(object, ...) {
@@ -813,6 +853,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotMappedReads)
 setGeneric(
     name = "plotMappedReads",
     def = function(object, ...) {
@@ -833,6 +878,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotMappingRate)
 setGeneric(
     name = "plotMappingRate",
     def = function(object, ...) {
@@ -849,6 +899,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso DESeqAnalysis.
+#'
+#' @examples
+#' isS4(plotMeanSD)
 setGeneric(
     name = "plotMeanSD",
     def = function(object, ...) {
@@ -865,6 +920,13 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso
+#' - bcbioSingleCell.
+#' - Chromium.
+#'
+#' @examples
+#' isS4(plotMitoRatio)
 setGeneric(
     name = "plotMitoRatio",
     def = function(object, ...) {
@@ -881,6 +943,13 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso
+#' - bcbioSingleCell.
+#' - Chromium.
+#'
+#' @examples
+#' isS4(plotMitoVsCoding)
 setGeneric(
     name = "plotMitoVsCoding",
     def = function(object, ...) {
@@ -899,6 +968,13 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso
+#' - bcbioSingleCell.
+#' - Chromium.
+#'
+#' @examples
+#' isS4(plotNovelty)
 setGeneric(
     name = "plotNovelty",
     def = function(object, ...) {
@@ -909,12 +985,8 @@ setGeneric(
 
 
 # plotQC =======================================================================
-#' Plot Quality Control
-#'
-#' @inheritParams params
+#' @rdname plotQC
 #' @export
-#'
-#' @return `ggplot`.
 setGeneric(
     name = "plotQC",
     def = function(object, ...) {
@@ -937,6 +1009,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotRRNAMappingRate)
 setGeneric(
     name = "plotRRNAMappingRate",
     def = function(object, ...) {
@@ -955,6 +1032,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioSingleCell.
+#'
+#' @examples
+#' isS4(plotReadsPerCell)
 setGeneric(
     name = "plotReadsPerCell",
     def = function(object, ...) {
@@ -965,12 +1047,8 @@ setGeneric(
 
 
 # plotTotalCounts ==============================================================
-#' Plot Total Counts
-#'
-#' @inheritParams params
+#' @rdname plotTotalCounts
 #' @export
-#'
-#' @return `ggplot`.
 setGeneric(
     name = "plotTotalCounts",
     def = function(object, ...) {
@@ -990,6 +1068,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso bcbioRNASeq.
+#'
+#' @examples
+#' isS4(plotUMIsVsGenes)
 setGeneric(
     name = "plotTotalReads",
     def = function(object, ...) {
@@ -1008,6 +1091,13 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso
+#' - bcbioSingleCell.
+#' - Chromium.
+#'
+#' @examples
+#' isS4(plotUMIsVsGenes)
 setGeneric(
     name = "plotUMIsPerCell",
     def = function(object, ...) {
@@ -1024,6 +1114,13 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso
+#' - bcbioSingleCell.
+#' - Chromium.
+#'
+#' @examples
+#' isS4(plotUMIsVsGenes)
 setGeneric(
     name = "plotUMIsVsGenes",
     def = function(object, ...) {
@@ -1042,6 +1139,11 @@ setGeneric(
 #' @export
 #'
 #' @return `ggplot`.
+#'
+#' @seealso DESeqAnalysis.
+#'
+#' @examples
+#' isS4(plotVolcano)
 setGeneric(
     name = "plotVolcano",
     def = function(object, ...) {
@@ -1052,12 +1154,8 @@ setGeneric(
 
 
 # plotZerosVsDepth =============================================================
-#' Plot Percentage of Zeros vs. Library Depth
-#'
-#' @inheritParams params
+#' @rdname plotZerosVsDepth
 #' @export
-#'
-#' @return `ggplot`.
 setGeneric(
     name = "plotZerosVsDepth",
     def = function(object, ...) {
@@ -1075,7 +1173,9 @@ setGeneric(
 #'
 #' @references Anders and Huber (2010).
 #'
-#' @seealso `edgeR::calcNormFactors`.
+#' @seealso
+#' - `edgeR::calcNormFactors`.
+#' - bcbioRNASeq.
 #'
 #' @return `matrix`.
 setGeneric(
@@ -1196,6 +1296,7 @@ setGeneric(
 #' @seealso
 #' - `edgeR::calcNormFactors`.
 #' - `edgeR::cpm`.
+#' - bcbioRNASeq.
 #'
 #' @return `matrix`.
 setGeneric(
@@ -1224,6 +1325,8 @@ setGeneric(
 #'
 #' @inheritParams params
 #' @export
+#'
+#' @seealso DESeqAnalysis.
 #'
 #' @return `kable`.
 #' Markdown tables.
