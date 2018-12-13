@@ -7,7 +7,10 @@
 #' @export
 #'
 #' @param object `Rd`. R documentation, returned from `tools::Rd_db`.
-#' @param tag `character(1)`. Desired metadata type. For example, these are supported:
+#' @param tag `character(1)`.
+#' Desired metadata type.
+#'
+#' For example, these are supported:
 #'
 #'   - "`title`".
 #'   - "`description`".
@@ -42,6 +45,7 @@ parseRd <- function(object, tag) {
     data <- object[tags == tag]
 
     # Coerce to character, not a character matrix.
+    # FIXME Don't use `sapply()`
     data <- as.character(sapply(data, as.character))
 
     # Strip trailing newlines and superfluous whitespace.
