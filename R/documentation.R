@@ -1,4 +1,3 @@
-# parseRd ======================================================================
 #' Parse R Documentation
 #'
 #' Modified version of `tools:::.Rd_get_metadata` that keeps whitespace and
@@ -44,10 +43,7 @@ parseRd <- function(object, tag) {
 
     # Get the metadata that matches the requested tag.
     data <- object[tags == tag]
-
-    # Coerce to character, not a character matrix.
-    # FIXME Don't use `sapply()`
-    data <- as.character(sapply(data, as.character))
+    data <- unlist(data)
 
     # Strip trailing newlines and superfluous whitespace.
     data <- trimws(data, which = "right")
@@ -65,7 +61,6 @@ parseRd <- function(object, tag) {
 
 
 
-# RdTags =======================================================================
 #' R Documentation Tags
 #'
 #' Modified version of the unexported `tools:::RdTags` function.
@@ -80,7 +75,12 @@ parseRd <- function(object, tag) {
 #' RdTags(Rd)
 RdTags <- function(object) {  # nolint
     assert(is(object, "Rd"))
-    tags <- sapply(object, attr, "Rd_tag")
+    tags <- vapply(
+        X = object,
+        FUN = attr,
+        FUN.VALUE = character(1),
+        "Rd_tag"
+    )
     if (length(tags) == 0L) {
         tags <- character()
     } else {
@@ -92,7 +92,6 @@ RdTags <- function(object) {  # nolint
 
 
 
-# saveRdExamples ===============================================================
 #' Save R Documentation Examples
 #'
 #' Parse the documentation for a function and save the working examples to an R
@@ -188,7 +187,6 @@ saveRdExamples <- function(
 
 
 
-# tabular ======================================================================
 #' R Documentation Table
 #'
 #' @param df `data.frame`.
