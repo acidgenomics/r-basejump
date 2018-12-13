@@ -1,3 +1,6 @@
+# TODO Improve support for ordering columns and/or rows manually.
+
+
 #' Plot Heatmap
 #'
 #' Construct a simple heatmap.
@@ -181,8 +184,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         interestingGroups = NULL,
         scale = c("none", "row", "column"),
         clusteringMethod = "ward.D2",
-        clusterRows = TRUE,
-        clusterCols = TRUE,
+        clusterRows = FALSE,
+        clusterCols = FALSE,
         showRownames = FALSE,
         showColnames = TRUE,
         treeheightRow = 50L,  # set to `0L` to disable.
