@@ -17,3 +17,12 @@ plotUMIsPerCell(object, ...)
 \description{
 Plot the universal molecular identifiers (UMIs) per cell.
 }
+\examples{
+isS4(plotUMIsVsGenes)
+}
+\seealso{
+\itemize{
+\item bcbioSingleCell.
+\item Chromium.
+}
+}

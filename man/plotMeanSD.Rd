@@ -17,3 +17,9 @@ plotMeanSD(object, ...)
 \description{
 Plot Row Standard Deviations vs. Row Means
 }
+\examples{
+isS4(plotMeanSD)
+}
+\seealso{
+DESeqAnalysis.
+}

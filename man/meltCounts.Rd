@@ -28,9 +28,6 @@ Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 }
 \value{
-\code{tibble}.
-Grouped by sample.
-
 \code{grouped_df}.
 Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
 }

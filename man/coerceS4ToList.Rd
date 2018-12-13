@@ -22,6 +22,9 @@ coerceS4ToList(from)
     \code{def} and \code{replace} perform coercion.
   }
 }
+\value{
+\code{list}.
+}
 \description{
 Coerce Any S4 Object to List
 }

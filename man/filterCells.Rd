@@ -17,3 +17,12 @@ filterCells(object, ...)
 \description{
 Filter Cells
 }
+\examples{
+isS4(filterCells)
+}
+\seealso{
+\itemize{
+\item bcbioSingleCell.
+\item Chromium.
+}
+}

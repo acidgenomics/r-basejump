@@ -18,3 +18,9 @@ Gene identifiers.
 \description{
 Differentially Expressed Genes
 }
+\examples{
+isS4(deg)
+}
+\seealso{
+DESeqAnalysis.
+}

@@ -36,3 +36,9 @@ transcript.
 \item Median is calculated for the representative set of 1000 transcripts.
 }
 }
+\examples{
+isS4(plot5Prime3PrimeBias)
+}
+\seealso{
+bcbioRNASeq.
+}

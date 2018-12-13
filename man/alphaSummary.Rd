@@ -17,3 +17,9 @@ alphaSummary(object, ...)
 \description{
 Quickly generate a summary table of various alpha level cutoffs.
 }
+\examples{
+isS4(alphaSummary)
+}
+\seealso{
+DESeqAnalysis.
+}

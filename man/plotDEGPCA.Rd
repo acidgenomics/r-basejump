@@ -24,3 +24,9 @@ input of a gene vector or subset object. All of the optional parameters for
 To adjust the annotation columns, modify the \code{colData} of the \code{counts}
 argument, which must contain/extend a \code{SummarizedExperiment}.
 }
+\examples{
+isS4(plotDEGPCA)
+}
+\seealso{
+DESeqAnalysis.
+}

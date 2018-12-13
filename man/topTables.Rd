@@ -18,3 +18,6 @@ Markdown tables.
 \description{
 Top Tables of Differential Expression Results
 }
+\seealso{
+DESeqAnalysis.
+}

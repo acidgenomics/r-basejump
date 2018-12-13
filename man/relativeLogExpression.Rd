@@ -21,5 +21,8 @@ Relative Log Expression
 Anders and Huber (2010).
 }
 \seealso{
-\code{edgeR::calcNormFactors}.
+\itemize{
+\item \code{edgeR::calcNormFactors}.
+\item bcbioRNASeq.
+}
 }

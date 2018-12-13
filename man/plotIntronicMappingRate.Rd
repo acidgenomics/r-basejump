@@ -17,3 +17,9 @@ plotIntronicMappingRate(object, ...)
 \description{
 The majority of reads should map to exons and not introns.
 }
+\examples{
+isS4(plotIntronicMappingRate)
+}
+\seealso{
+bcbioRNASeq.
+}

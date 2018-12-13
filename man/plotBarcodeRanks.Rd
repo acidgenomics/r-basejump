@@ -17,3 +17,9 @@ plotBarcodeRanks(object, ...)
 \description{
 Plot Barcode Ranks
 }
+\examples{
+isS4(plotBarcodeRanks)
+}
+\seealso{
+bcbioRNASeq.
+}
