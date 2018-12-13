@@ -1,11 +1,15 @@
-#' @name meltCounts
+#' Melt Count Matrix to Long Format
 #'
+#' @name meltCounts
 #' @inheritParams params
+#'
 #' @param nonzeroGenes `logical(1)`.
 #'   Return only non-zero genes.
 #' @param trans `character(1)`.
 #'   Apply a log transformation (e.g. `log2(x + 1L)`) to the count matrix prior
 #'   to melting, if desired. Use `"identity"` to return unmodified (default).
+#'
+#' @seealso `reshape2::melt`.
 #'
 #' @return `grouped_df`.
 #' Grouped by `colname` (e.g. sample ID) and `rowname` (e.g. gene ID).

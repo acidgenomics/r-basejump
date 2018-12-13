@@ -1,5 +1,10 @@
+#' Plot Percentage of Zeros vs. Library Depth
+#'
 #' @name plotZerosVsDepth
 #' @inheritParams params
+#'
+#' @return `ggplot`.
+#'
 #' @examples
 #' data(sce)
 #' plotZerosVsDepth(sce)
