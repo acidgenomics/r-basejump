@@ -5,10 +5,12 @@
 #' @inheritParams params
 #' @export
 #'
-#' @param removeFormals `character`. Names of formal arguments to remove from
-#'   `args` list before passing to `do.call`.
+#' @param removeFormals `character`.
+#'   Names of formal arguments to remove from `args` list before passing to
+#'   `do.call`.
 #'
-#' @return `list`. Arguments to pass to `do.call`.
+#' @return `list`.
+#' Arguments to pass to `do.call`.
 #'
 #' @seealso
 #' - `standardizeCall`.

@@ -22,21 +22,26 @@
 #' @name export
 #' @inheritParams params
 #'
-#' @param x An object supporting `dim` to be written to disk.
-#' @param file `character(1)`. File path. Specify `file` or `format` but not
-#'   both.
-#' @param format `character(1)`. An optional character string containing the
+#' @param x `ANY`.
+#'   An object supporting `dim` to be written to disk.
+#' @param file `character(1)`.
+#'   File path. Specify `file` or `format` but not both.
+#' @param format `character(1)`.
+#'   An optional character string containing the
 #'   file format, which can be used to override the format inferred from `file`,
 #'   or in lieu of specifying `file`.
+#' @param compress `logical(1)`.
+#'   Apply gzip compression to all files.
+#' @param humanize `logical(1)`.
+#'   Automatically convert gene IDs to gene symbols in the `rownames` and sample
+#'   IDs to sample names in the `colnames`.
+#' @param name `character(1)`.
+#'   Name to use on disk. If `NULL`, will use the name of the object instead.
+#' @param slotNames `character`.
+#'   Names of slots to include when writing to disk.
 #'
-#' @param compress `logical(1)`. Apply gzip compression to all files.
-#' @param humanize `logical(1)`. Automatically convert gene IDs to gene symbols
-#'   in the `rownames` and sample IDs to sample names in the `colnames`.
-#' @param name `character(1)`. Name to use on disk. If left `NULL`, will use the
-#'   name of the object instead.
-#' @param slotNames `character`. Names of slots to include when writing to disk.
-#'
-#' @return Invisible `character`. File path(s).
+#' @return Invisible `character`.
+#' File path(s).
 #'
 #' @seealso `rio::export`.
 #'

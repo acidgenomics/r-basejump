@@ -3,8 +3,9 @@
 #' @name logRatio
 #' @inheritParams params
 #'
-#' @param base `scalar integer`. Logarithm base. Defaults to `2`, for
-#'   compatibility with RNA-Seq differential expression output.
+#' @param base `integer(1)`.
+#'   Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
+#'   differential expression output.
 #'
 #' @seealso
 #' - `gtools::foldchange2logratio`.

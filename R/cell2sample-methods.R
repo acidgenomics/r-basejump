@@ -5,8 +5,8 @@
 #'
 #' @note `sampleID` column must be defined in `colData`.
 #'
-#' @return Named `factor`. Sample IDs as the `levels` and cell IDs as the
-#'   `names`.
+#' @return Named `factor`.
+#' Sample IDs as the `levels` and cell IDs as the `names`.
 #'
 #' - `"factor"`: Named `factor` containing sample IDs as the levels and cell IDs
 #'   as the names.

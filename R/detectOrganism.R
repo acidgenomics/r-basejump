@@ -27,7 +27,8 @@
 #'
 #' @param object `character`.
 #'
-#' @return `character(1)`. Full latin organism name. Stops on match failure.
+#' @return `character(1)`.
+#' Full latin organism name. Stops on match failure.
 #'
 #' @seealso `BiocGenerics::organism`.
 #'

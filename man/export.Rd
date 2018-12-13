@@ -24,31 +24,38 @@ export(x, ...)
   "colData", "rowData", "Gene2Symbol", "Ensembl2Entrez"))
 }
 \arguments{
-\item{x}{An object supporting \code{dim} to be written to disk.}
+\item{x}{\code{ANY}.
+An object supporting \code{dim} to be written to disk.}
 
 \item{...}{Additional arguments.}
 
-\item{file}{\code{character(1)}. File path. Specify \code{file} or \code{format} but not
-both.}
+\item{file}{\code{character(1)}.
+File path. Specify \code{file} or \code{format} but not both.}
 
-\item{format}{\code{character(1)}. An optional character string containing the
+\item{format}{\code{character(1)}.
+An optional character string containing the
 file format, which can be used to override the format inferred from \code{file},
 or in lieu of specifying \code{file}.}
 
-\item{name}{\code{character(1)}. Name to use on disk. If left \code{NULL}, will use the
-name of the object instead.}
+\item{name}{\code{character(1)}.
+Name to use on disk. If \code{NULL}, will use the name of the object instead.}
 
-\item{dir}{\code{character(1)}. Directory path.}
+\item{dir}{\code{character(1)}.
+Directory path.}
 
-\item{compress}{\code{logical(1)}. Apply gzip compression to all files.}
+\item{compress}{\code{logical(1)}.
+Apply gzip compression to all files.}
 
-\item{humanize}{\code{logical(1)}. Automatically convert gene IDs to gene symbols
-in the \code{rownames} and sample IDs to sample names in the \code{colnames}.}
+\item{humanize}{\code{logical(1)}.
+Automatically convert gene IDs to gene symbols in the \code{rownames} and sample
+IDs to sample names in the \code{colnames}.}
 
-\item{slotNames}{\code{character}. Names of slots to include when writing to disk.}
+\item{slotNames}{\code{character}.
+Names of slots to include when writing to disk.}
 }
 \value{
-Invisible \code{character}. File path(s).
+Invisible \code{character}.
+File path(s).
 }
 \description{
 Export data out of R and write to disk.

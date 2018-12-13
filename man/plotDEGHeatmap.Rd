@@ -9,8 +9,8 @@ plotDEGHeatmap(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough arguments to \code{pheatmap::pheatmap}. The names of the
-arguments should be formatted in camel case, not snake case.}
+\item{...}{Passthrough arguments to \code{pheatmap::pheatmap}.
+The argument names must be formatted in camel case, not snake case.}
 }
 \value{
 \code{pheatmap}.

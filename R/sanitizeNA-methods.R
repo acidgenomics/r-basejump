@@ -8,7 +8,8 @@
 #' @inheritParams params
 #' @export
 #'
-#' @return Object containing proper `NA` values.
+#' @return Modified object.
+#' Sanitized to contain proper `NA` values.
 #'
 #' @examples
 #' ## character ====

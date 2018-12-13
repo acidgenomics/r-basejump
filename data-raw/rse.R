@@ -6,7 +6,7 @@ library(DESeq2)
 library(tidyverse)
 
 # Restrict to 1 MB.
-# Use `pryr::object_size()` instead of `utils::object.size()`.
+# Use `pryr::object_size` instead of `utils::object.size`.
 limit <- structure(2e6, class = "object_size")
 
 organism <- "Homo sapiens"

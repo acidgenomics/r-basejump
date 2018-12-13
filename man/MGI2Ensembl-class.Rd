@@ -5,8 +5,8 @@
 \alias{MGI2Ensembl-class}
 \title{MGI-to-Ensembl Gene Identifier Mappings}
 \value{
-\code{MGI2Ensembl}. Contains a \code{DataFrame} with \code{mgiID} and \code{geneID}
-columns.
+\code{MGI2Ensembl}.
+Contains a \code{DataFrame} with \code{mgiID} and \code{geneID} columns.
 }
 \description{
 MGI-to-Ensembl Gene Identifier Mappings

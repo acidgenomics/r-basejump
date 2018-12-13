@@ -1,13 +1,14 @@
 #' @name meltCounts
 #'
 #' @inheritParams params
-#' @param nonzeroGenes `logical(1)`. Return only non-zero genes.
-#' @param trans `character(1)`. Apply a log transformation (e.g. `log2(x + 1L)`) to
-#'   the count matrix prior to melting, if desired. Use `"identity"` to return
-#'   unmodified (default).
+#' @param nonzeroGenes `logical(1)`.
+#'   Return only non-zero genes.
+#' @param trans `character(1)`.
+#'   Apply a log transformation (e.g. `log2(x + 1L)`) to the count matrix prior
+#'   to melting, if desired. Use `"identity"` to return unmodified (default).
 #'
-#' @return `grouped_df`, grouped by `colname` (e.g. sample ID) and `rowname`
-#'   (e.g. gene ID).
+#' @return `grouped_df`.
+#' Grouped by `colname` (e.g. sample ID) and `rowname` (e.g. gene ID).
 #'
 #' @examples
 #' data(rse)

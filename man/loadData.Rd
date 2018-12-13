@@ -8,17 +8,21 @@ loadData(..., dir = getOption("basejump.load.dir", "."),
   envir = globalenv())
 }
 \arguments{
-\item{...}{Object names. Note that these arguments are interpreted as symbols
-using non-standard evaluation for convenience during interactive use, and
-\emph{must not be quoted}.}
+\item{...}{Object names.
+Note that these arguments are interpreted as symbols using non-standard
+evaluation for convenience during interactive use, and \emph{must not be
+quoted}.}
 
-\item{dir}{\code{character(1)}. Directory path.}
+\item{dir}{\code{character(1)}.
+Directory path.}
 
-\item{envir}{\code{environment} to use for assignment. Defaults to \code{parent.frame},
-which will assign into the calling environment.}
+\item{envir}{\code{environment}.
+Environment to use for assignment. Defaults to \code{parent.frame}, which will
+assign into the calling environment.}
 }
 \value{
-Invisible \code{character}. File paths.
+Invisible \code{character}.
+File paths.
 }
 \description{
 Load R data files from a directory using symbols rather than complete file

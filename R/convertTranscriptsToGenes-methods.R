@@ -8,8 +8,9 @@
 #'   collapsed to gene level using `aggregateRows`. This applies to our
 #'   `SummarizedExperiment` method.
 #'
-#' @param aggregate `logical(1)`. For objects supporting `dim`, aggregate counts
-#'   to gene level and collapse the matrix.
+#' @param aggregate `logical(1)`.
+#'   For objects supporting `dim`, aggregate counts to gene level and collapse
+#'   the matrix.
 #' @param ... Passthrough to `makeTx2GeneFromEnsembl`.
 #'
 #' @return

@@ -9,7 +9,7 @@
 #'
 #' @inheritParams params
 #'
-#' @return Named `character` vector of the sample names.
+#' @return Named `character`.
 #'
 #' @examples
 #' data(rse)

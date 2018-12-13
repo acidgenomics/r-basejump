@@ -19,7 +19,8 @@
 #'   `numeric` indices (e.g. `which` calls) here, for improved code
 #'   readability.
 #'
-#' @return Modified object, with selected samples.
+#' @return Modified object.
+#' Subset (extraction) containing the desired samples.
 #'
 #' @seealso
 #' - `sampleData`.

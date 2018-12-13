@@ -22,14 +22,17 @@ autopadZeros(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{rownames}{\code{logical(1)}. Apply sanitization on row names. This is not
-generally recommended by default, since rownames commonly contain gene
-identifiers that should not be modified.}
+\item{rownames}{\code{logical(1)}.
+Apply sanitization on row names. This is not generally recommended by
+default, since rownames commonly contain gene identifiers that should not
+be modified.}
 
-\item{colnames}{\code{logical(1)}. Apply sanitization on column names. This is
-generally recommended by default.}
+\item{colnames}{\code{logical(1)}.
+Apply sanitization on column names. This is generally recommended by
+default.}
 
-\item{sort}{\code{logical(1)}. Resort using \code{sort}.}
+\item{sort}{\code{logical(1)}.
+Resort using \code{sort}.}
 }
 \value{
 \code{character}.

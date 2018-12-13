@@ -66,60 +66,71 @@ plotQuantileHeatmap(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough arguments to \code{pheatmap::pheatmap}. The names of the
-arguments should be formatted in camel case, not snake case.}
+\item{...}{Passthrough arguments to \code{pheatmap::pheatmap}.
+The argument names must be formatted in camel case, not snake case.}
 
-\item{assay}{\code{vector(1)}. Name or index of count matrix slotted in \code{assays}.
-When passing in a string, the name must be defined in \code{assayNames}.}
+\item{assay}{\code{vector(1)}.
+Name or index of count matrix slotted in \code{assays}. When passing in a
+string, the name must be defined in \code{assayNames}.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that define the
-samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}.
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 
-\item{scale}{\code{character(1)}. Whether the values should be centered and scaled in
-either the row or column direction ("\code{row}", "\code{column}"), or remain
-unscaled ("\code{none}").}
+\item{scale}{\code{character(1)}.
+Whether the values should be centered and scaled in either the row or
+column direction ("\code{row}", "\code{column}"), or remain unscaled ("\code{none}").}
 
-\item{clusteringMethod}{\code{character(1)}. Clustering method. Accepts the same values
-as \code{stats::hclust}.}
+\item{clusteringMethod}{\code{character(1)}.
+Clustering method. Accepts the same values as \code{stats::hclust}.}
 
-\item{clusterRows, clusterCols}{\code{logical(1)}. Arrange with hierarchical
-clustering.}
+\item{clusterRows, clusterCols}{\code{logical(1)}.
+Arrange with hierarchical clustering.}
 
-\item{showRownames, showColnames}{\code{logical(1)}. Show row or column names.}
+\item{showRownames, showColnames}{\code{logical(1)}.
+Show row or column names.}
 
-\item{treeheightRow, treeheightCol}{\code{scalar integer}. Size of the row and
-column dendrograms. Use \code{0} to disable.}
+\item{treeheightRow, treeheightCol}{\code{integer(1)}.
+Size of the row and column dendrograms. Use \code{0} to disable.}
 
-\item{color}{\code{function}, \code{character}, or \code{NULL}. Hexadecimal color function
-or values to use for plot. We generally recommend these hexadecimal
-functions from the viridis package:
+\item{color}{\code{function}, \code{character}, or \code{NULL}.
+Hexadecimal color function or values to use for plot.
+
+We generally recommend these hexadecimal functions from the viridis
+package:
 \itemize{
 \item \code{viridis::viridis} (\emph{default}).
 \item \code{viridis::inferno}.
 \item \code{viridis::magma}.
 \item \code{viridis::plasma}.
+}
+
 Alternatively, colors can be defined manually using hexadecimal values
 (e.g. \code{c("#FF0000", "#0000FF")}), but this is not generally recommended.
 Refer to the RColorBrewer package for hexadecimal color palettes that may
-be suitable. If set \code{NULL}, will use the default pheatmap colors.
-}}
+be suitable. If set \code{NULL}, will use the default pheatmap colors.}
 
-\item{legendColor}{\code{function} or \code{NULL}. Hexadecimal color function to use
-for legend labels. Note that hexadecimal values are not supported. If set
-\code{NULL}, will use the default pheatmap colors.}
+\item{legendColor}{\code{function} or \code{NULL}.
+Hexadecimal color function to use for legend labels. Note that hexadecimal
+values are not supported. If set \code{NULL}, will use the default pheatmap
+colors.}
 
-\item{borderColor}{\code{character(1)} or \code{NULL}. Border color. Disabled by default for
-improved aesthetics.}
+\item{borderColor}{\code{character(1)} or \code{NULL}.
+Border color. Disabled by default for improved aesthetics.}
 
-\item{title}{\code{character(1)} or \code{NULL}. Plot title.}
+\item{title}{\code{character(1)} or \code{NULL}.
+Plot title.}
 
-\item{method}{\code{character(1)}. Correlation coefficient (or covariance) method to be
-computed. Defaults to "\code{pearson}" but "\code{spearman}" can also be used.
-Consult the \code{stats::cor} documentation for more information.}
+\item{method}{\code{character(1)}.
+Correlation coefficient (or covariance) method to be computed. Defaults to
+"\code{pearson}" but "\code{spearman}" can also be used. Consult the \code{stats::cor}
+documentation for more information.}
 
-\item{n}{\code{scalar integer}. The number of quantile breaks to create.}
+\item{n}{\code{integer(1)}.
+The number of quantile breaks to create.}
 
-\item{legend}{\code{logical(1)}. Show the color legend.}
+\item{legend}{\code{logical(1)}.
+Show the color legend.}
 }
 \value{
 \code{pheatmap}.

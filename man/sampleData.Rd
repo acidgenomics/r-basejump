@@ -29,17 +29,19 @@ sampleData(object, ...) <- value
 \S4method{sampleNames}{SummarizedExperiment}(object)
 }
 \arguments{
-\item{object}{Object that inherits from \code{SummarizedExperiment} class.}
+\item{object}{Object class that inherits \code{SummarizedExperiment}.}
 
 \item{...}{Additional arguments.}
 
 \item{value}{Value to assign.}
 
-\item{clean}{\code{logical(1)}. Only return \code{factor} columns. Useful when working
-with objects that contain metrics in \code{colData}.}
+\item{clean}{\code{logical(1)}.
+Only return \code{factor} columns. Useful when working with objects that contain
+metrics in \code{colData}.}
 
-\item{blacklist}{\code{character}. Column names that should never be treated as
-sample-level metadata. Applicable only to \code{SingleCellExperiment} objects.}
+\item{blacklist}{\code{character}.
+Column names that should never be treated as sample-level metadata.
+Applicable only to \code{SingleCellExperiment} objects.}
 }
 \value{
 \code{DataFrame}.

@@ -7,9 +7,10 @@
 matchesInterestingGroups(x, interestingGroups)
 }
 \arguments{
-\item{x}{S4 class x.}
+\item{x}{S4 class.}
 
-\item{interestingGroups}{\code{character}. Interesting groups.}
+\item{interestingGroups}{\code{character}.
+Interesting groups.}
 }
 \value{
 No value.

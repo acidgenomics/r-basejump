@@ -7,15 +7,18 @@
 matchesGene2Symbol(x, genes, gene2symbol)
 }
 \arguments{
-\item{x}{Object class supporting \code{rownames}. All rownames in this object
-must intersect with the rownames defined in the \code{gene2symbol} argument.}
+\item{x}{Object class supporting \code{rownames}.
+All rownames in this object must intersect with the rownames defined in the
+\code{gene2symbol} argument.}
 
-\item{genes}{\code{character}. Gene identifiers. It is considered better practice
-to input the stable gene identifiers from Ensembl (e.g. "ENSG00000000003")
-and not the (HGNC) gene symbols (e.g. "TSPN6"), if possible.}
+\item{genes}{\code{character}.
+Gene identifiers. It is considered better practice to input the stable gene
+identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
+symbols (e.g. "TSPN6"), if possible.}
 
-\item{gene2symbol}{\code{Gene2Symbol}. Gene-to-symbol mappings. Must contain
-\code{geneID} and \code{geneName} columns. See \code{Gene2Symbol} for more information.}
+\item{gene2symbol}{\code{Gene2Symbol}.
+Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
+\code{Gene2Symbol} for more information.}
 }
 \value{
 No value.

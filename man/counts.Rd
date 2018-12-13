@@ -18,7 +18,8 @@
 \item{value}{Value to assign.}
 }
 \value{
-Matrix. Typically \code{matrix} or \code{sparseMatrix} class.
+Matrix.
+Typically \code{matrix} or \code{sparseMatrix} class.
 }
 \description{
 Count matrix.

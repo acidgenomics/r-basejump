@@ -3,13 +3,16 @@
 #' @name subsetPerSample
 #' @inheritParams params
 #'
-#' @param minCells `scalar integer`. Minimum number of cells required per
-#'   sample.
-#' @param assignAndSave `logical(1)`. Assign and save the individual datasets.
-#' @param envir `environment`. Where to assign the subsets. Only applicable when
-#'   `assignAndSave = TRUE`.
-#' @param dir `character(1)`. Output directory. Only applicable when
-#'   `assignAndSave = TRUE`.
+#' @param minCells `integer(1)`.
+#'   Minimum number of cells required per sample.
+#' @param assignAndSave `logical(1)`.
+#'   Assign and save the individual datasets.
+#' @param envir `environment`.
+#'   Where to assign the subsets.
+#'   Only applicable when `assignAndSave = TRUE`.
+#' @param dir `character(1)`.
+#'   Output directory.
+#'   Only applicable when `assignAndSave = TRUE`.
 #'
 #' @return
 #' - `assignAndSave = FALSE`: Per sample objects in a `list`.

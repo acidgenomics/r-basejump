@@ -9,13 +9,16 @@ multiassignAsEnvir(..., envirName, parentFrame = parent.frame())
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{envirName}{\code{character(1)}. Name of the new \code{environment} to create.}
+\item{envirName}{\code{character(1)}.
+Name of the new \code{environment} to create.}
 
-\item{parentFrame}{\code{environment}. Parent \code{environment} where to assign the
-new \code{environment}, specified by \code{envirName} argument.}
+\item{parentFrame}{\code{environment}.
+Parent \code{environment} where to assign the new \code{environment}, specified by
+\code{envirName} argument.}
 }
 \value{
-\code{character}. Object names defined in the new \code{environment}.
+\code{character}.
+Object names defined in the new \code{environment}.
 }
 \description{
 Assign Multiple Objects as an Environment

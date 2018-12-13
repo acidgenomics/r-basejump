@@ -43,8 +43,9 @@
 #'
 #' [EnsDb.Hsapiens.v75]: https://bioconductor.org/packages/EnsDb.Hsapiens.v75/
 #'
-#' @param release `scalar integer`. Ensembl release version (e.g. `90`). If set
-#'   `NULL`, defaults to the most recent release available.
+#' @param release `integer(1)`.
+#'   Ensembl release version (e.g. `90`). If set `NULL`, defaults to the most
+#'   recent release available.
 #'
 #' @return `GRanges`.
 #'

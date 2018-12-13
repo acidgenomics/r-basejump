@@ -11,7 +11,8 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inheritParams params
 #'
-#' @param fun `character(1)`. Mathematical function name to apply. Uses `match.arg`.
+#' @param fun `character(1)`.
+#'   Mathematical function name to apply. Uses `match.arg`.
 #'
 #' @return
 #' - `"tibble"`: `grouped_df`. Grouped by `sampleID` column.

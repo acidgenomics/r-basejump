@@ -7,10 +7,12 @@
 localOrRemoteFile(file)
 }
 \arguments{
-\item{file}{\code{character(1)}. Local file paths or remote URLs.}
+\item{file}{\code{character(1)}.
+Local file paths or remote URLs.}
 }
 \value{
-\code{character}. Local file paths. Stops on a missing file.
+\code{character}.
+Local file paths. Stops on a missing file.
 }
 \description{
 Dynamically Handle a Local or Remote File Path

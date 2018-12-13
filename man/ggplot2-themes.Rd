@@ -15,13 +15,13 @@ theme_midnight(base_size = 14L, base_family = "", face = c("bold",
   "top", "none"), grid = FALSE, minimal = FALSE)
 }
 \arguments{
-\item{base_size}{\code{scalar numeric}. Base font size.}
+\item{base_size}{\code{numeric(1)}. Base font size.}
 
 \item{base_family}{\code{character(1)}. Base font family.}
 
 \item{face}{\code{character(1)}. Font face ("\code{bold}", "\code{plain}").}
 
-\item{aspect_ratio}{\code{scalar numeric}. Aspect ratio, specifying the plot
+\item{aspect_ratio}{\code{numeric(1)}. Aspect ratio, specifying the plot
 proportions. Use \code{1} for a perfectly square plot (including the axis
 labels).}
 

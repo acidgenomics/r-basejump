@@ -1,9 +1,12 @@
 #' Extract Dots from Function
 #'
+#' @note This function uses non-standard evaluation.
+#'
 #' @export
 #'
 #' @param ... Objects as dots.
-#' @param character `logical(1)`. Return dots (`...`) as `character`.
+#' @param character `logical(1)`.
+#'   Return dots (`...`) as `character`.
 #'
 #' @return
 #' - "`character = FALSE`": `list`. Objects as `name` class. Can return the

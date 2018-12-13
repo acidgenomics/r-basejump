@@ -67,7 +67,7 @@ test_that("matchInterestingGroups", {
 
 
 # methodFormals ================================================================
-# This will also cover `methodFunction()`.
+# This will also cover `methodFunction`.
 test_that("methodFormals", {
     library(SummarizedExperiment)
     expect_identical(

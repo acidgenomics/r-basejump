@@ -164,8 +164,7 @@ makeDimnames(object)
   strict = FALSE)
 }
 \arguments{
-\item{object}{\code{character} or object for which \code{names} assignment will be
-meaningful.}
+\item{object}{\code{character} or class supporting \code{names}.}
 
 \item{...}{Additional arguments.}
 
@@ -175,20 +174,23 @@ meaningful.}
 \item{unique}{logical; if \code{TRUE}, the resulting elements are
      unique.  This may be desired for, e.g., column names.}
 
-\item{strict}{\code{logical(1)}. Enforce strict name sanitization. When \code{TRUE}, this
-does not allow the return of any capitalized acronyms. "RNA" will become
-"Rna", for example.}
+\item{strict}{\code{logical(1)}.
+Enforce strict name sanitization. When \code{TRUE}, this does not allow the
+return of any capitalized acronyms. "RNA" will become "Rna", for example.}
 
-\item{rownames}{\code{logical(1)}. Apply sanitization on row names. This is not
-generally recommended by default, since rownames commonly contain gene
-identifiers that should not be modified.}
+\item{rownames}{\code{logical(1)}.
+Apply sanitization on row names. This is not generally recommended by
+default, since rownames commonly contain gene identifiers that should not
+be modified.}
 
-\item{colnames}{\code{logical(1)}. Apply sanitization on column names. This is
-generally recommended by default.}
+\item{colnames}{\code{logical(1)}.
+Apply sanitization on column names. This is generally recommended by
+default.}
 }
 \value{
-Object with syntatically valid names. For objects supporting
-\code{names}, the underlying data returns unchanged.
+Modified object.
+Contains syntatically valid names. For objects supporting \code{names}, the
+underlying data returns unchanged.
 }
 \description{
 For \code{atomic} vectors, these functions will sanitize the values. Otherwise,

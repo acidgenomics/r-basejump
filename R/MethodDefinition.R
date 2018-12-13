@@ -4,7 +4,9 @@
 #'
 #' @inheritParams methods::selectMethod
 #' @inheritParams methods::setMethod
-#' @param package `character(1)`. Package name.
+#'
+#' @param package `character(1)`.
+#'   Package name.
 #'
 #' @return
 #' - `methodFormals`: `list`. Extract the sealed formal arguments.

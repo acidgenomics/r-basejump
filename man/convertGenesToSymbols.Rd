@@ -31,8 +31,9 @@ convertSymbolsToGenes(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{gene2symbol}{\code{Gene2Symbol}. Gene-to-symbol mappings. Must contain
-\code{geneID} and \code{geneName} columns. See \code{Gene2Symbol} for more information.}
+\item{gene2symbol}{\code{Gene2Symbol}.
+Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
+\code{Gene2Symbol} for more information.}
 }
 \value{
 Modified object of same class.

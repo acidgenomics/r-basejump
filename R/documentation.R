@@ -6,8 +6,12 @@
 #'
 #' @export
 #'
-#' @param object `Rd`. R documentation, returned from `tools::Rd_db`.
-#' @param tag `character(1)`. Desired metadata type. For example, these are supported:
+#' @param object `Rd`.
+#'   R documentation, returned from `tools::Rd_db`.
+#' @param tag `character(1)`.
+#'   Desired metadata type.
+#'
+#'   These types are supported:
 #'
 #'   - "`title`".
 #'   - "`description`".
@@ -97,12 +101,14 @@ RdTags <- function(object) {  # nolint
 #' @export
 #'
 #' @inheritParams params
-#' @param Rd `character` or `NULL`. R documentation name(s) from which to parse
-#'   and save the working examples. If `NULL`, all documentation files
-#'   containing examples will be saved.
-#' @param package `character(1)`. Package name.
+#' @param Rd `character` or `NULL`.
+#'   R documentation name(s) from which to parse and save the working examples.
+#'   If `NULL`, all documentation files containing examples will be saved.
+#' @param package `character(1)`.
+#'   Package name.
 #'
-#' @return Invisible `character`. File path(s).
+#' @return Invisible `character`.
+#' File path(s).
 #'
 #' @examples
 #' saveRdExamples(

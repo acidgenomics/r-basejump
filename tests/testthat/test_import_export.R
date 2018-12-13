@@ -44,7 +44,7 @@ with_parameters_test_that(
 
 test_that("import : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be written
-    # as binary on Windows to load properly. See `localOrRemoteFile()` for more
+    # as binary on Windows to load properly. See `localOrRemoteFile` for more
     # information.
     file <- paste(url, "example.xlsx", sep = "/")
     object <- import(file = file, dataFrame = "data.frame")
@@ -549,7 +549,7 @@ test_that("writeCounts", {
         object = writeCounts(mtcars),
         regexp = "mtcars is not a matrix"
     )
-    # Check that `eval_bare()` call errors on missing object.
+    # Check that `eval_bare` call errors on missing object.
     expect_error(
         object = writeCounts(XXX),
         regexp = "object 'XXX' not found"

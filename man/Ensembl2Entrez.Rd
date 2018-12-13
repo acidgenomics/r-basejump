@@ -22,17 +22,18 @@ Ensembl2Entrez(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{format}{\code{character(1)}. Formatting method to apply:
+\item{format}{\code{character(1)}.
+Formatting method to apply:
 \itemize{
 \item \code{"1:1"}: \emph{Recommended.} Return with 1:1 mappings. For Ensembl genes that
-don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't map
-to Entrez will contain \code{NA} in \code{entrezID} column.
+don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't
+map to Entrez will contain \code{NA} in \code{entrezID} column.
 \item \code{"long"}: Return 1:many in long format.
 }}
 }
 \value{
-\code{Ensembl2Entrez}. Contains a \code{DataFrame} with \code{geneID} and \code{entrezID}
-columns.
+\code{Ensembl2Entrez}.
+Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns.
 }
 \description{
 Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest

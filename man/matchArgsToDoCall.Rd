@@ -11,17 +11,20 @@ matchArgsToDoCall(args = NULL, removeFormals = NULL,
 \item{args}{a \emph{list} of arguments to the function call.  The
     \code{names} attribute of \code{args} gives the argument names.}
 
-\item{removeFormals}{\code{character}. Names of formal arguments to remove from
-\code{args} list before passing to \code{do.call}.}
+\item{removeFormals}{\code{character}.
+Names of formal arguments to remove from \code{args} list before passing to
+\code{do.call}.}
 
 \item{which}{the frame number if non-negative, the number of frames
     to go back if negative.}
 
-\item{verbose}{\code{logical(1)}. Run the function with verbose messages?
+\item{verbose}{\code{logical(1)}.
+Run the function with verbose messages?
 \emph{It is only recommended to enable this when debugging.}}
 }
 \value{
-\code{list}. Arguments to pass to \code{do.call}.
+\code{list}.
+Arguments to pass to \code{do.call}.
 }
 \description{
 Match Arguments to Do Call

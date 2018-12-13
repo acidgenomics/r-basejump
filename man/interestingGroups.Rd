@@ -28,7 +28,8 @@ interestingGroups(object, ...) <- value
 
 \item{value}{Value to assign.}
 
-\item{check}{\code{logical(1)}. Perform assert checks.}
+\item{check}{\code{logical(1)}.
+Perform assert checks.}
 }
 \value{
 \code{character}.

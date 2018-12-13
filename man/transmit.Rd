@@ -8,19 +8,24 @@ transmit(remoteDir, localDir = ".", pattern, rename = NULL,
   compress = FALSE)
 }
 \arguments{
-\item{remoteDir}{\code{character(1)}. Remote FTP directory path.}
+\item{remoteDir}{\code{character(1)}.
+Remote FTP directory path.}
 
-\item{localDir}{\code{character(1)}. Directory where to save files locally.}
+\item{localDir}{\code{character(1)}.
+Directory where to save files locally.}
 
-\item{pattern}{\code{character(1)}. Pattern to match against remote file names.}
+\item{pattern}{\code{character(1)}.
+Pattern to match against remote file names.}
 
-\item{rename}{\code{character(1)} or \code{NULL}. Rename the local files (including suffix),
-if desired.}
+\item{rename}{\code{character(1)} or \code{NULL}.
+Rename the local files (including suffix), if desired.}
 
-\item{compress}{\code{logical(1)}. gzip compress the files after download.}
+\item{compress}{\code{logical(1)}.
+gzip compress the files after download.}
 }
 \value{
-Invisible \code{character}. Local file paths.
+Invisible \code{character}.
+Local file paths.
 }
 \description{
 Utility function that supports easy file matching and download from a remote

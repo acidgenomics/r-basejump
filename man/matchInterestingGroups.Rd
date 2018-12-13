@@ -9,11 +9,13 @@ matchInterestingGroups(object, interestingGroups = NULL)
 \arguments{
 \item{object}{\code{SummarizedExperiment}.}
 
-\item{interestingGroups}{\code{character}. Groups of interest that define the
-samples. If left unset, defaults to \code{sampleName}.}
+\item{interestingGroups}{\code{character}.
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 }
 \value{
-\code{character}. Interesting groups.
+\code{character}.
+Interesting groups.
 }
 \description{
 Match the user-defined interesting groups to the values slotted within a
