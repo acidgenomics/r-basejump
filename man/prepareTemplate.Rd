@@ -4,11 +4,12 @@
 \alias{prepareTemplate}
 \title{Prepare R Markdown Template File}
 \usage{
-prepareTemplate(package, overwrite = FALSE)
+prepareTemplate(package = NULL, overwrite = FALSE)
 }
 \arguments{
-\item{package}{\code{character(1)}.
-Name of package containing the R Markdown template.}
+\item{package}{\code{character(1)} or \code{NULL}.
+Name of package containing the R Markdown template. If \code{NULL}, only the
+basic shared files defined in the basejump package will be copied.}
 
 \item{overwrite}{\code{logical(1)}.
 Should existing destination files be overwritten?}

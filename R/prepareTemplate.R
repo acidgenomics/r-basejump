@@ -20,8 +20,9 @@
 #'
 #' @inheritParams params
 #'
-#' @param package `character(1)`.
-#'   Name of package containing the R Markdown template.
+#' @param package `character(1)` or `NULL`.
+#'   Name of package containing the R Markdown template. If `NULL`, only the
+#'   basic shared files defined in the basejump package will be copied.
 #' @param overwrite `logical(1)`.
 #'   Should existing destination files be overwritten?
 #'
@@ -38,12 +39,12 @@
 #' \dontrun{
 #' # prepareTemplate(package = "bcbioSingleCell")
 #' }
-prepareTemplate <- function(package, overwrite = FALSE) {
+prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     assert(
-        isString(package),
-        isSubset(package, rownames(installed.packages())),
+        isString(package) || is.null(package),
         isFlag(overwrite)
     )
+    files <- character()
 
     copySharedFiles <- function(sourceDir, overwrite) {
         assert(isADirectory(sourceDir))
@@ -64,19 +65,25 @@ prepareTemplate <- function(package, overwrite = FALSE) {
         copied
     }
 
-    files <- character()
-
-    # Copy the shared files from the requested package.
-    sourceDir <-
-        system.file("rmarkdown/shared", package = package, mustWork = TRUE)
-    files1 <- copySharedFiles(sourceDir, overwrite = overwrite)
+    # Copy the shared files from the requested package, if necessary.
+    if (!is.null(package)) {
+        assert(isSubset(package, rownames(installed.packages())))
+        sourceDir <-
+            system.file("rmarkdown/shared", package = package, mustWork = TRUE)
+        copied <- copySharedFiles(sourceDir, overwrite = overwrite)
+        files <- c(files, copied)
+    }
 
     # Copy the shared files from basejump.
+    # Define this step second in case there are files in the desired package
+    # that are duplicated in basejump, and which we don't necessarily want to
+    # overwrite by default.
     sourceDir <-
         system.file("rmarkdown/shared", package = "basejump", mustWork = TRUE)
-    files2 <- copySharedFiles(sourceDir, overwrite = overwrite)
+    copied <- copySharedFiles(sourceDir, overwrite = overwrite)
+    files <- c(files, copied)
 
-    invisible(c(files1, files2))
+    invisible(files)
 }
 
 
