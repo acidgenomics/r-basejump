@@ -9,6 +9,7 @@
 \alias{as.data.frame}
 \alias{as_tibble}
 \alias{capitalize}
+\alias{gzip}
 \alias{\%>\%}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -25,7 +26,7 @@ below to see their documentation.
 
   \item{methods}{\code{\link[methods]{show}}}
 
-  \item{R.utils}{\code{\link[R.utils]{capitalize}}}
+  \item{R.utils}{\code{\link[R.utils]{capitalize}}, \code{\link[R.utils]{gzip}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{decode}}}
 

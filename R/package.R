@@ -54,8 +54,8 @@
 #'   hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols
 #'   hasValidDimnames isADirectory isAFile isAny isCharacter isDirectory
 #'   isExisting isFile isFlag isGGScale isHexColorFunction isInClosedRange
-#'   isInRange isInt isMatchingRegex isNonEmpty isNonNegative isNumber
-#'   isPositive isScalar isString isSubset isSuperset makeTestFunction
+#'   isInRange isInt isMatchingRegex isNonEmpty isNonNegative isNotMatchingRegex
+#'   isNumber isPositive isScalar isString isSubset isSuperset makeTestFunction
 #'   matchesUniqueGeneNames validNames validate validateClasses
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
@@ -93,6 +93,14 @@
 
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
+
+#' @importFrom R.utils capitalize
+#' @export
+R.utils::capitalize
+
+#' @importFrom R.utils gzip
+#' @export
+R.utils::gzip
 
 #' @importFrom magrittr %>%
 #' @export
