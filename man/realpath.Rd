@@ -2,7 +2,7 @@
 % Please edit documentation in R/realpath.R
 \name{realpath}
 \alias{realpath}
-\title{Express File Paths in Canonical Form}
+\title{Express file paths in canonical form}
 \usage{
 realpath(path)
 }
@@ -64,7 +64,7 @@ normalizePath(".")
 }
 \seealso{
 \itemize{
-\item \code{file.path}.
-\item \code{normalizePath}.
+\item \code{\link[base:file.path]{base::file.path()}}.
+\item \code{\link[base:normalizePath]{base::normalizePath()}}.
 }
 }

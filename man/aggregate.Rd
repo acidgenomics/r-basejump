@@ -12,7 +12,7 @@
 \alias{aggregateCols,sparseMatrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
 \alias{aggregateCols,SingleCellExperiment-method}
-\title{Aggregate Rows or Columns}
+\title{Aggregate rows or columns}
 \usage{
 aggregateRows(object, ...)
 

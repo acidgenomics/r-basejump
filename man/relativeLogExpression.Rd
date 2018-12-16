@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{relativeLogExpression}
 \alias{relativeLogExpression}
-\title{Relative Log Expression}
+\title{Relative log expression}
 \usage{
 relativeLogExpression(object, ...)
 }
@@ -15,7 +15,7 @@ relativeLogExpression(object, ...)
 \code{matrix}.
 }
 \description{
-Relative Log Expression
+Relative log expression
 }
 \references{
 Anders and Huber (2010).

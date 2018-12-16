@@ -1,6 +1,6 @@
 # TODO Need to improve error messages here rather than simply using asserts.
 
-#' Transmit Files from a Remote FTP Server
+#' Transmit files from a remote FTP server
 #'
 #' Utility function that supports easy file matching and download from a remote
 #' FTP server. Also enables on-the-fly file renaming and compression.

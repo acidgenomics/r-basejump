@@ -3,7 +3,7 @@
 \docType{class}
 \name{Ensembl2Entrez-class}
 \alias{Ensembl2Entrez-class}
-\title{Ensembl-to-Entrez Gene Identifier Mappings}
+\title{Ensembl-to-Entrez gene identifier mappings}
 \value{
 \code{Ensembl2Entrez}.
 Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns.

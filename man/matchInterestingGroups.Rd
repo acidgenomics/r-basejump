@@ -2,7 +2,7 @@
 % Please edit documentation in R/matchInterestingGroups.R
 \name{matchInterestingGroups}
 \alias{matchInterestingGroups}
-\title{Match Interesting Groups}
+\title{Match interesting groups}
 \usage{
 matchInterestingGroups(object, interestingGroups = NULL)
 }

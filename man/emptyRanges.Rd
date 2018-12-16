@@ -2,7 +2,7 @@
 % Please edit documentation in R/emptyRanges.R
 \name{emptyRanges}
 \alias{emptyRanges}
-\title{Generate Empty Genomic Ranges}
+\title{Generate empty genomic ranges}
 \usage{
 emptyRanges(names, seqname = c("unknown", "transgene", "spike"),
   mcolsNames = NULL)

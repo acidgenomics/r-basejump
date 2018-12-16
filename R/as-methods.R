@@ -1,6 +1,7 @@
+#' Force an object to belong to a class
 #' @name as
 #' @aliases coerce
-#' @inherit methods::as title description references
+#' @inherit methods::as description references
 #' @importFrom methods coerce
 #' @exportMethod coerce
 #'

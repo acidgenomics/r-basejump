@@ -5,7 +5,7 @@
 \alias{sampleNames}
 \alias{sampleNames<-}
 \alias{sampleNames<-,SummarizedExperiment,character-method}
-\title{Sample Names}
+\title{Sample names}
 \usage{
 \S4method{sampleNames}{SummarizedExperiment,character}(object) <- value
 }

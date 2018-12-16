@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotGenesPerCell}
 \alias{plotGenesPerCell}
-\title{Plot Genes per Cell}
+\title{Plot genes per cell}
 \usage{
 plotGenesPerCell(object, ...)
 }
@@ -15,7 +15,7 @@ plotGenesPerCell(object, ...)
 \code{ggplot}.
 }
 \description{
-Plot Genes per Cell
+Plot genes per cell
 }
 \examples{
 isS4(plotGenesPerCell)

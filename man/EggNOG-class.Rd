@@ -3,7 +3,7 @@
 \docType{class}
 \name{EggNOG-class}
 \alias{EggNOG-class}
-\title{EggNOG Database Annotations}
+\title{EggNOG database annotations}
 \value{
 \code{EggNOG}.
 This class extends \code{list} and contains:

@@ -1,4 +1,4 @@
-#' Detect HPC Environment
+#' Detect HPC environment
 #'
 #' Detect if R is running on a high-performance computing (HPC) cluster.
 #'

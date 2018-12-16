@@ -1,4 +1,4 @@
-#' Print String
+#' Print string
 #'
 #' Capture `print` output of an `atomic` vector. Useful for returning
 #' informative messages inside a function.

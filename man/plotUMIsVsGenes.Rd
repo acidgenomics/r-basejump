@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotUMIsVsGenes}
 \alias{plotUMIsVsGenes}
-\title{Plot UMI and Gene Correlation}
+\title{Plot UMI and gene correlation}
 \usage{
 plotUMIsVsGenes(object, ...)
 }
@@ -15,7 +15,7 @@ plotUMIsVsGenes(object, ...)
 \code{ggplot}.
 }
 \description{
-Plot UMI and Gene Correlation
+Plot UMI and gene correlation
 }
 \examples{
 isS4(plotUMIsVsGenes)

@@ -1,4 +1,4 @@
-#' Sample Names
+#' Sample names
 #'
 #' This function will return the human readable sample names if defined
 #' in the `sampleName` column of `sampleData`. Otherwise it will return

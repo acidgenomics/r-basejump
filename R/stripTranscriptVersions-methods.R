@@ -1,4 +1,4 @@
-#' Strip Transcript Versions
+#' Strip transcript versions
 #'
 #' @note This by default method is strict, and will only strip Ensembl
 #'   transcript IDs beginning with "ENS".

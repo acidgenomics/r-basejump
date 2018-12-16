@@ -2,7 +2,7 @@
 % Please edit documentation in R/transmit.R
 \name{transmit}
 \alias{transmit}
-\title{Transmit Files from a Remote FTP Server}
+\title{Transmit files from a remote FTP server}
 \usage{
 transmit(remoteDir, localDir = ".", pattern, rename = NULL,
   compress = FALSE)

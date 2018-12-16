@@ -1,4 +1,4 @@
-#' Make Single-Cell Experiment
+#' Make a `SingleCellExperiment` object
 #'
 #' @inherit makeSummarizedExperiment
 #' @export

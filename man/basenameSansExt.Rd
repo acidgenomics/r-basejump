@@ -2,7 +2,7 @@
 % Please edit documentation in R/basenameSansExt.R
 \name{basenameSansExt}
 \alias{basenameSansExt}
-\title{Manipulate File Paths}
+\title{Manipulate file paths}
 \usage{
 basenameSansExt(path)
 }

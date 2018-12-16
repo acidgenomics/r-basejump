@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotVolcano}
 \alias{plotVolcano}
-\title{Plot Volcano}
+\title{Volcano plot}
 \usage{
 plotVolcano(object, ...)
 }
@@ -15,7 +15,7 @@ plotVolcano(object, ...)
 \code{ggplot}.
 }
 \description{
-Plot Volcano
+Volcano plot
 }
 \note{
 Don't apply post hoc alpha level or LFC threshold cutoffs.

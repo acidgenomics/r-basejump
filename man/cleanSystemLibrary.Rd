@@ -2,7 +2,7 @@
 % Please edit documentation in R/cleanSystemLibrary.R
 \name{cleanSystemLibrary}
 \alias{cleanSystemLibrary}
-\title{Check for Clean System Library}
+\title{Check for clean system library}
 \usage{
 cleanSystemLibrary()
 }

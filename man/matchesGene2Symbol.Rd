@@ -2,7 +2,7 @@
 % Please edit documentation in R/matchesGene2Symbol.R
 \name{matchesGene2Symbol}
 \alias{matchesGene2Symbol}
-\title{Check Gene-to-Symbol Value Matching}
+\title{Check that user-defined gene input matches expected values}
 \usage{
 matchesGene2Symbol(x, genes, gene2symbol)
 }
@@ -24,7 +24,7 @@ Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns.
 No value.
 }
 \description{
-Check Gene-to-Symbol Value Matching
+Check that user-defined gene input matches expected values
 }
 \examples{
 x <- S4Vectors::DataFrame(

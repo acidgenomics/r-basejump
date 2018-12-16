@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotGeneSaturation}
 \alias{plotGeneSaturation}
-\title{Plot Gene Detection Saturation}
+\title{Plot gene detection saturation}
 \usage{
 plotGeneSaturation(object, ...)
 }

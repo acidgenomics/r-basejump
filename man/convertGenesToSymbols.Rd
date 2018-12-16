@@ -10,7 +10,7 @@
 \alias{convertGenesToSymbols,sparseMatrix-method}
 \alias{convertGenesToSymbols,SummarizedExperiment-method}
 \alias{convertSymbolsToGenes,SummarizedExperiment-method}
-\title{Convert Genes to Symbols}
+\title{Convert genes to symbols}
 \usage{
 convertGenesToSymbols(object, ...)
 
@@ -39,7 +39,7 @@ Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns.
 Modified object of same class.
 }
 \description{
-Convert Genes to Symbols
+Convert genes to symbols
 }
 \examples{
 data(rse)

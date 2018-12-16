@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotMappedReads}
 \alias{plotMappedReads}
-\title{Plot Mapped Reads}
+\title{Plot mapped reads}
 \usage{
 plotMappedReads(object, ...)
 }

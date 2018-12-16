@@ -3,7 +3,7 @@
 \docType{class}
 \name{PANTHER-class}
 \alias{PANTHER-class}
-\title{PANTHER Database Annotations}
+\title{PANTHER database annotations}
 \value{
 \code{PANTHER}. Contains a \code{DataFrame}.
 }

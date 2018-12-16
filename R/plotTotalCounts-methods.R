@@ -1,4 +1,4 @@
-#' Plot Total Counts
+#' Plot total counts
 #'
 #' @name plotTotalCounts
 #' @inheritParams params

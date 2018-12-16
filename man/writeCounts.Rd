@@ -2,7 +2,7 @@
 % Please edit documentation in R/writeCounts.R
 \name{writeCounts}
 \alias{writeCounts}
-\title{Write Counts}
+\title{Write counts}
 \usage{
 writeCounts(..., dir = ".", compress = FALSE)
 }

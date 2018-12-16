@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plot5Prime3PrimeBias}
 \alias{plot5Prime3PrimeBias}
-\title{Plot 5'->3' Bias}
+\title{Plot 5' to 3' bias}
 \usage{
 plot5Prime3PrimeBias(object, ...)
 }

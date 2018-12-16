@@ -2,7 +2,7 @@
 % Please edit documentation in R/dots.R
 \name{dots}
 \alias{dots}
-\title{Extract Dots from Function}
+\title{Extract dots from function}
 \usage{
 dots(..., character = FALSE)
 }
@@ -20,7 +20,7 @@ object from the \code{name} with \code{eval}.
 }
 }
 \description{
-Extract Dots from Function
+Extract dots from function
 }
 \note{
 This function uses non-standard evaluation.

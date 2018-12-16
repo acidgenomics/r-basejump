@@ -1,4 +1,4 @@
-#' Load Data
+#' Load data
 #'
 #' Load R data files from a directory using symbols rather than complete file
 #' paths. Supports "`.rds`", "`.rda`", and "`.RData`" file extensions.

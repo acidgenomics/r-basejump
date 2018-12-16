@@ -4,7 +4,7 @@
 \name{meltCounts}
 \alias{meltCounts}
 \alias{meltCounts,SummarizedExperiment-method}
-\title{Melt Count Matrix to Long Format}
+\title{Melt count matrix into long format}
 \usage{
 meltCounts(object, ...)
 
@@ -32,7 +32,7 @@ to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
 }
 \description{
-Melt Count Matrix to Long Format
+Melt count matrix into long format
 }
 \examples{
 data(rse)

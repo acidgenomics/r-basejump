@@ -4,7 +4,7 @@
 \name{tpm}
 \alias{tpm}
 \alias{tpm,SummarizedExperiment-method}
-\title{Transcripts per Million}
+\title{Transcripts per million}
 \usage{
 \S4method{tpm}{SummarizedExperiment}(object)
 }
@@ -12,7 +12,7 @@
 \item{object}{Object.}
 }
 \description{
-Transcripts per Million
+Transcripts per million
 }
 \note{
 Both gene- and transcript-level counts are supported, as long as they

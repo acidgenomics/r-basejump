@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeSingleCellExperiment.R
 \name{makeSingleCellExperiment}
 \alias{makeSingleCellExperiment}
-\title{Make Single-Cell Experiment}
+\title{Make a \code{SingleCellExperiment} object}
 \usage{
 makeSingleCellExperiment(assays, rowRanges, colData, metadata,
   transgeneNames = NULL, spikeNames = NULL)
@@ -34,12 +34,10 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
 \code{SingleCellExperiment}.
 }
 \description{
-This function is a utility wrapper for
-\code{SummarizedExperiment::SummarizedExperiment} that provides automatic
-subsetting for row and column data, as well as automatic handling of
-transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the \code{metadata}
-slot:
+This function is a utility wrapper for \code{SummarizedExperiment} that provides
+automatic subsetting for row and column data, as well as automatic handling
+of transgenes and spike-ins. Additionally, it improves upon the standard
+constructor by slotting useful session information into the \code{metadata} slot:
 }
 \details{
 \itemize{

@@ -1,4 +1,4 @@
-#' Make Syntactically Valid Names
+#' Make syntactically valid names
 #'
 #' For `atomic` vectors, these functions will sanitize the values. Otherwise,
 #' they will set `names`, `rownames`, and/or `colnames` without

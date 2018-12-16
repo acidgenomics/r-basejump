@@ -4,7 +4,7 @@
 \name{aggregateCellsToSamples}
 \alias{aggregateCellsToSamples}
 \alias{aggregateCellsToSamples,SingleCellExperiment-method}
-\title{Aggregate Cells to Samples}
+\title{Aggregate cells to samples}
 \usage{
 aggregateCellsToSamples(object, ...)
 

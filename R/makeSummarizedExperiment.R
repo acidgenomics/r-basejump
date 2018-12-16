@@ -1,16 +1,9 @@
-# TODO Consider calling `autopadZeros` and resorting the columns
-# automatically if necessary.
-
-
-
-#' Make Summarized Experiment
+#' Make a `SummarizedExperiment` object
 #'
-#' This function is a utility wrapper for
-#' `SummarizedExperiment::SummarizedExperiment` that provides automatic
-#' subsetting for row and column data, as well as automatic handling of
-#' transgenes and spike-ins. Additionally, it improves upon the standard
-#' constructor by slotting useful session information into the `metadata`
-#' slot:
+#' This function is a utility wrapper for `SummarizedExperiment` that provides
+#' automatic subsetting for row and column data, as well as automatic handling
+#' of transgenes and spike-ins. Additionally, it improves upon the standard
+#' constructor by slotting useful session information into the `metadata` slot:
 #'
 #' - `date`: Today's date, returned from `Sys.Date`.
 #' - `wd`: Working directory, returned from `getwd`.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotCellCounts}
 \alias{plotCellCounts}
-\title{Plot Cell Counts}
+\title{Plot cell counts}
 \usage{
 plotCellCounts(object, ...)
 }
@@ -15,7 +15,7 @@ plotCellCounts(object, ...)
 \code{ggplot}.
 }
 \description{
-Plot Cell Counts
+Plot cell counts
 }
 \examples{
 isS4(plotCellCounts)

@@ -6,7 +6,7 @@
 \alias{Tx2Gene,DataFrame-method}
 \alias{Tx2Gene,GRanges-method}
 \alias{Tx2Gene,SummarizedExperiment-method}
-\title{Transcript-to-Gene Identifier Mappings}
+\title{Transcript-to-gene identifier mappings}
 \usage{
 Tx2Gene(object, ...)
 
@@ -26,7 +26,7 @@ Tx2Gene(object, ...)
 columns.
 }
 \description{
-Transcript-to-Gene Identifier Mappings
+Transcript-to-gene identifier mappings
 }
 \note{
 No attempt is made to arrange the rows by transcript identifier.

@@ -3,13 +3,13 @@
 \docType{data}
 \name{rdataExtPattern}
 \alias{rdataExtPattern}
-\title{R Data Extension Pattern}
+\title{R data extension pattern}
 \format{An object of class \code{character} of length 1.}
 \usage{
 rdataExtPattern
 }
 \description{
-R Data Extension Pattern
+R data extension pattern
 }
 \examples{
 rdataExtPattern

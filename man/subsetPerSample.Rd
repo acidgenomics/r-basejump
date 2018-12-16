@@ -4,7 +4,7 @@
 \name{subsetPerSample}
 \alias{subsetPerSample}
 \alias{subsetPerSample,SingleCellExperiment-method}
-\title{Subset Per Sample}
+\title{Subset per sample}
 \usage{
 subsetPerSample(object, ...)
 
@@ -37,7 +37,7 @@ Only applicable when \code{assignAndSave = TRUE}.}
 }
 }
 \description{
-Subset Per Sample
+Subset per sample
 }
 \examples{
 data(sce)

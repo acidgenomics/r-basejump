@@ -1,4 +1,4 @@
-#' Remove Rows and Columns Containing Only NA Values
+#' Remove rows and columns containing only `NA` values
 #'
 #' @name removeNA
 #' @inheritParams params

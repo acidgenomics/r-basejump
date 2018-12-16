@@ -6,7 +6,7 @@
 \alias{Gene2Symbol,DataFrame-method}
 \alias{Gene2Symbol,GRanges-method}
 \alias{Gene2Symbol,SummarizedExperiment-method}
-\title{Gene-to-Symbol Mappings}
+\title{Gene-to-symbol mappings}
 \usage{
 Gene2Symbol(object, ...)
 
@@ -41,7 +41,7 @@ format.
 Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 }
 \description{
-Gene-to-Symbol Mappings
+Gene-to-symbol mappings
 }
 \section{Genome metadata}{
 

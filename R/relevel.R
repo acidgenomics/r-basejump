@@ -1,4 +1,4 @@
-#' Relevel Row or Column Data
+#' Relevel row or column data
 #'
 #' @name relevel
 #' @inheritParams params

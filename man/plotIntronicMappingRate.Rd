@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotIntronicMappingRate}
 \alias{plotIntronicMappingRate}
-\title{Plot Intronic Mapping Rate}
+\title{Plot intronic mapping rate}
 \usage{
 plotIntronicMappingRate(object, ...)
 }

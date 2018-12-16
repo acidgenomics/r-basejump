@@ -5,7 +5,7 @@
 \alias{summary}
 \alias{summary,Gene2Symbol-method}
 \alias{summary,Tx2Gene-method}
-\title{Object Summaries}
+\title{Object summaries}
 \usage{
 \S4method{summary}{Gene2Symbol}(object)
 

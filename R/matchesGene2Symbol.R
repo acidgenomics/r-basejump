@@ -1,4 +1,4 @@
-#' Check Gene-to-Symbol Value Matching
+#' Check that user-defined gene input matches expected values
 #'
 #' @name matchesGene2Symbol
 #' @inherit params

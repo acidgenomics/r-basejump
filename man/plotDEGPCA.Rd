@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotDEGPCA}
 \alias{plotDEGPCA}
-\title{Plot DEG PCA}
+\title{Plot differentially expressed gene principal component analysis}
 \usage{
 plotDEGPCA(object, ...)
 }

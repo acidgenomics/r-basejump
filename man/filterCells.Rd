@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{filterCells}
 \alias{filterCells}
-\title{Filter Cells}
+\title{Filter cells}
 \usage{
 filterCells(object, ...)
 }
@@ -15,7 +15,7 @@ filterCells(object, ...)
 \code{SingleCellExperiment}.
 }
 \description{
-Filter Cells
+Filter cells
 }
 \examples{
 isS4(filterCells)

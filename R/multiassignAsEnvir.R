@@ -1,4 +1,4 @@
-#' Assign Multiple Objects as an Environment
+#' Assign multiple objects into a new environment
 #'
 #' @inheritParams dots
 #' @export

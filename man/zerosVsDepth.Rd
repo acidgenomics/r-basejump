@@ -7,7 +7,7 @@
 \alias{zerosVsDepth,sparseMatrix-method}
 \alias{zerosVsDepth,SummarizedExperiment-method}
 \alias{zerosVsDepth,SingleCellExperiment-method}
-\title{Percentage of Zeros vs. Library Depth}
+\title{Percentage of zeros vs. library depth}
 \usage{
 zerosVsDepth(object, ...)
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/printString.R
 \name{printString}
 \alias{printString}
-\title{Print String}
+\title{Print string}
 \usage{
 printString(x, max = 100L)
 }

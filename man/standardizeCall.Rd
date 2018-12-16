@@ -2,7 +2,7 @@
 % Please edit documentation in R/standardizeCall.R
 \name{standardizeCall}
 \alias{standardizeCall}
-\title{Standardize Call}
+\title{Standardize call}
 \usage{
 standardizeCall(which = sys.parent(n = 1L), return = c("call", "list"),
   verbose = FALSE)

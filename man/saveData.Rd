@@ -2,7 +2,7 @@
 % Please edit documentation in R/saveData.R
 \name{saveData}
 \alias{saveData}
-\title{Save Data}
+\title{Save data}
 \usage{
 saveData(..., dir = getOption("basejump.save.dir", "."),
   ext = getOption("basejump.save.ext", "rds"),

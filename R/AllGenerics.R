@@ -65,7 +65,7 @@ setGeneric(
 
 
 # alphaSummary =================================================================
-#' Alpha Level Cutoff Summary Statistics
+#' Alpha level cutoff summary statistics
 #'
 #' Quickly generate a summary table of various alpha level cutoffs.
 #'
@@ -100,7 +100,7 @@ setGeneric(
 
 
 # barcodeRanksPerSample ========================================================
-#' Barcode Ranks per Sample
+#' Barcode ranks per sample
 #'
 #' @inheritParams params
 #' @export
@@ -149,7 +149,7 @@ setGeneric(
 
 
 # contrastName =================================================================
-#' Contrast Name
+#' Contrast name
 #'
 #' @inheritParams params
 #' @export
@@ -216,7 +216,7 @@ setGeneric(
 
 
 # deg ==========================================================================
-#' Differentially Expressed Genes
+#' Differentially expressed genes
 #'
 #' @inheritParams params
 #' @export
@@ -262,7 +262,7 @@ setGeneric(
 
 
 # filterCells ==================================================================
-#' Filter Cells
+#' Filter cells
 #'
 #' @inheritParams params
 #' @export
@@ -513,7 +513,7 @@ setGeneric(
 
 
 # plot5Prime3PrimeBias =========================================================
-#' Plot 5'->3' Bias
+#' Plot 5' to 3' bias
 #'
 #' RNA-seq data can have specific biases at either the 5’ or 3’ end of sequenced
 #' fragments.
@@ -556,7 +556,7 @@ setGeneric(
 
 
 # plotBarcodeRanks =============================================================
-#' Plot Barcode Ranks
+#' Plot barcode ranks
 #'
 #' @inheritParams params
 #' @export
@@ -577,7 +577,7 @@ setGeneric(
 
 
 # plotCellCounts ===============================================================
-#' Plot Cell Counts
+#' Plot cell counts
 #'
 #' @inheritParams params
 #' @export
@@ -631,7 +631,7 @@ setGeneric(
 
 
 # plotDEGHeatmap ===============================================================
-#' Differentially Expressed Gene Heatmap
+#' Differentially expressed gene heatmap
 #'
 #' This function is an extension of `plotHeatmap` that is optimized
 #' for automatic handling differentially expressed genes, rather than requiring
@@ -659,7 +659,7 @@ setGeneric(
 
 
 # plotDEGPCA ===================================================================
-#' Plot DEG PCA
+#' Plot differentially expressed gene principal component analysis
 #'
 #' This function is an extension of `plotPCA` that is optimized for automatic
 #' handling of differentially expressed genes, rather than requiring manual
@@ -687,7 +687,7 @@ setGeneric(
 
 
 # plotExonicMappingRate ========================================================
-#' Plot Exonic Mapping Rate
+#' Plot exonic mapping rate
 #'
 #' @inheritParams params
 #' @export
@@ -732,7 +732,7 @@ setGeneric(
 
 
 # plotGeneSaturation ===========================================================
-#' Plot Gene Detection Saturation
+#' Plot gene detection saturation
 #'
 #' We should observe a linear trend in the number of genes detected with the
 #' number of mapped reads, which indicates that the sample input was not
@@ -757,7 +757,7 @@ setGeneric(
 
 
 # plotGenesPerCell =============================================================
-#' Plot Genes per Cell
+#' Plot genes per cell
 #'
 #' @inheritParams params
 #' @export
@@ -822,7 +822,7 @@ setGeneric(
 
 
 # plotIntronicMappingRate ======================================================
-#' Plot Intronic Mapping Rate
+#' Plot intronic mapping rate
 #'
 #' The majority of reads should map to exons and not introns.
 #'
@@ -845,7 +845,7 @@ setGeneric(
 
 
 # plotMappedReads ==============================================================
-#' Plot Mapped Reads
+#' Plot mapped reads
 #'
 #' The number of mapped reads should correspond to the number of total reads.
 #'
@@ -868,7 +868,7 @@ setGeneric(
 
 
 # plotMappingRate ==============================================================
-#' Plot Mapping Rate
+#' Plot mapping rate
 #'
 #' The genomic mapping rate represents the percentage of reads mapping to the
 #' reference genome. Low mapping rates are indicative of sample contamination,
@@ -893,7 +893,7 @@ setGeneric(
 
 
 # plotMeanSD ===================================================================
-#' Plot Row Standard Deviations vs. Row Means
+#' Plot row standard deviations vs. row means
 #'
 #' @inheritParams params
 #' @export
@@ -914,7 +914,7 @@ setGeneric(
 
 
 # plotMitoRatio ================================================================
-#' Plot Mitochondrial Transcript Abundance
+#' Plot mitochondrial transcript abundance
 #'
 #' @inheritParams params
 #' @export
@@ -937,7 +937,7 @@ setGeneric(
 
 
 # plotMitoVsCoding =============================================================
-#' Plot Mitochondrial vs. Coding Counts
+#' Plot mitochondrial vs. coding counts
 #'
 #' @inheritParams params
 #' @export
@@ -960,7 +960,7 @@ setGeneric(
 
 
 # plotNovelty ==================================================================
-#' Plot Novelty Score
+#' Plot novelty score
 #'
 #' "Novelty" refers to log10 genes detected per count.
 #'
@@ -997,7 +997,7 @@ setGeneric(
 
 
 # plotRRNAMappingRate ==========================================================
-#' Plot Ribosomal RNA (rRNA) Mapping Rate
+#' Plot ribosomal RNA (rRNA) mapping rate
 #'
 #' Clean, high-quality samples should have an rRNA mapping rate below 10%.
 #' Higher rates are likely indicative of the polyA enrichment or ribo depletion
@@ -1024,7 +1024,7 @@ setGeneric(
 
 
 # plotReadsPerCell =============================================================
-#' Plot Read Counts per Cell
+#' Plot read counts per cell
 #'
 #' Plot the distribution of read counts for all unfiltered cellular barcodes.
 #'
@@ -1059,7 +1059,7 @@ setGeneric(
 
 
 # plotTotalReads ===============================================================
-#' Plot Total Reads
+#' Plot total reads
 #'
 #' High quality RNA-seq samples ideally should have at least 10 million reads
 #' per sample.
@@ -1083,7 +1083,7 @@ setGeneric(
 
 
 # plotUMIsPerCell ==============================================================
-#' Plot UMIs per Cell
+#' Plot UMIs per cell
 #'
 #' Plot the universal molecular identifiers (UMIs) per cell.
 #'
@@ -1108,7 +1108,7 @@ setGeneric(
 
 
 # plotUMIsVsGenes ==============================================================
-#' Plot UMI and Gene Correlation
+#' Plot UMI and gene correlation
 #'
 #' @inheritParams params
 #' @export
@@ -1131,7 +1131,7 @@ setGeneric(
 
 
 # plotVolcano ==================================================================
-#' Plot Volcano
+#' Volcano plot
 #'
 #' @note Don't apply post hoc alpha level or LFC threshold cutoffs.
 #'
@@ -1166,7 +1166,7 @@ setGeneric(
 
 
 # relativeLogExpression ========================================================
-#' Relative Log Expression
+#' Relative log expression
 #'
 #' @inheritParams params
 #' @export
@@ -1281,7 +1281,7 @@ setGeneric(
 
 
 # tmm ==========================================================================
-#' Trimmed Mean of M-Values
+#' Trimmed mean of M-values
 #'
 #' TMM normalization is recommended for RNA-seq data generally when the majority
 #' of genes are not differentially expressed.
@@ -1321,7 +1321,7 @@ setGeneric(
 
 
 # topTables ====================================================================
-#' Top Tables of Differential Expression Results
+#' Top tables of differentially expressed genes
 #'
 #' @inheritParams params
 #' @export

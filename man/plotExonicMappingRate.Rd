@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotExonicMappingRate}
 \alias{plotExonicMappingRate}
-\title{Plot Exonic Mapping Rate}
+\title{Plot exonic mapping rate}
 \usage{
 plotExonicMappingRate(object, ...)
 }
@@ -15,7 +15,7 @@ plotExonicMappingRate(object, ...)
 \code{ggplot}.
 }
 \description{
-Plot Exonic Mapping Rate
+Plot exonic mapping rate
 }
 \examples{
 isS4(plotExonicMappingRate)

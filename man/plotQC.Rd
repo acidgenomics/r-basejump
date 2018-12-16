@@ -4,7 +4,7 @@
 \name{plotQC}
 \alias{plotQC}
 \alias{plotQC,SummarizedExperiment-method}
-\title{Plot Quality Control}
+\title{Plot quality control metrics}
 \usage{
 plotQC(object, ...)
 
@@ -23,7 +23,7 @@ string, the name must be defined in \code{assayNames}.}
 \code{ggplot}.
 }
 \description{
-Plot Quality Control
+Plot quality control metrics
 }
 \examples{
 data(rse)

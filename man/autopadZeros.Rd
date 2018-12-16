@@ -6,7 +6,7 @@
 \alias{autopadZeros,character-method}
 \alias{autopadZeros,matrix-method}
 \alias{autopadZeros,SummarizedExperiment-method}
-\title{Autopad Zeros}
+\title{Autopad zeros}
 \usage{
 autopadZeros(object, ...)
 
@@ -38,7 +38,7 @@ Resort using \code{sort}.}
 \code{character}.
 }
 \description{
-Autopad Zeros
+Autopad zeros
 }
 \note{
 For methods on objects supporting \code{dim} (e.g. \code{matrix}), the object

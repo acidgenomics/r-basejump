@@ -1,4 +1,4 @@
-#' Extract Dots from Function
+#' Extract dots from function
 #'
 #' @note This function uses non-standard evaluation.
 #'

@@ -1,4 +1,4 @@
-#' Gene Synonyms
+#' Gene synonyms
 #'
 #' Look up gene synonyms from NCBI.
 #'

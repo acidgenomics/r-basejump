@@ -5,7 +5,7 @@
 \alias{plotGene}
 \alias{plotGene,SummarizedExperiment-method}
 \alias{plotGene,SingleCellExperiment-method}
-\title{Plot Gene Expression}
+\title{Plot gene expression}
 \usage{
 plotGene(object, ...)
 
@@ -62,7 +62,7 @@ Plot style.}
 }
 }
 \description{
-Plot Gene Expression
+Plot gene expression
 }
 \examples{
 data(rse)

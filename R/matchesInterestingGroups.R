@@ -1,4 +1,4 @@
-#' Check Interesting Groups Value Matching
+#' Check that interesting groups match a defined value
 #'
 #' Prevent unwanted downstream behavior when a missing interesting group
 #' is requested by the user.

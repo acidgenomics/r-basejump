@@ -11,7 +11,7 @@
 \alias{plotCorrelationHeatmap,SingleCellExperiment-method}
 \alias{plotQuantileHeatmap,SummarizedExperiment-method}
 \alias{plotQuantileHeatmap,SingleCellExperiment-method}
-\title{Plot Heatmap}
+\title{Heatmap}
 \usage{
 plotHeatmap(object, ...)
 

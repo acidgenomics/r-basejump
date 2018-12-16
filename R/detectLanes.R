@@ -1,4 +1,4 @@
-#' Detect Sequencing Lanes
+#' Detect sequencing lanes
 #'
 #' @export
 #'

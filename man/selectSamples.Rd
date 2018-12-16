@@ -5,7 +5,7 @@
 \alias{selectSamples}
 \alias{selectSamples,SummarizedExperiment-method}
 \alias{selectSamples,SingleCellExperiment-method}
-\title{Select Samples}
+\title{Select samples}
 \usage{
 selectSamples(object, ...)
 

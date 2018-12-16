@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotTotalReads}
 \alias{plotTotalReads}
-\title{Plot Total Reads}
+\title{Plot total reads}
 \usage{
 plotTotalReads(object, ...)
 }

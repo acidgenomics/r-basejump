@@ -2,7 +2,7 @@
 % Please edit documentation in R/documentation.R
 \name{parseRd}
 \alias{parseRd}
-\title{Parse R Documentation}
+\title{Parse R documentation}
 \usage{
 parseRd(object, tag)
 }

@@ -4,7 +4,7 @@
 \name{decode}
 \alias{decode}
 \alias{decode,DataFrame-method}
-\title{Rle objects}
+\title{Decode column data that uses run-length encoding}
 \usage{
 \S4method{decode}{DataFrame}(x)
 }
@@ -22,4 +22,7 @@ mcols <- S4Vectors::mcols(rse)
 lapply(mcols, class)
 x <- decode(mcols)
 lapply(x, class)
+}
+\seealso{
+\code{S4Vectors::decode}.
 }

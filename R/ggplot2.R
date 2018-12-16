@@ -4,7 +4,7 @@
 
 
 # geoms ========================================================================
-#' ggplot2 Geometric Objects
+#' ggplot2 geometric objects
 #'
 #' Convenience functions with modified defaults for
 #' [ggplot2](http://ggplot2.org).
@@ -257,7 +257,7 @@ basejump_geom_label_repel <- function(
 
 
 # themes =======================================================================
-#' ggplot2 Themes
+#' ggplot2 themes
 #'
 #' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
@@ -284,10 +284,10 @@ basejump_geom_label_repel <- function(
 #' @param aspect_ratio `numeric(1)`. Aspect ratio, specifying the plot
 #'   proportions. Use `1` for a perfectly square plot (including the axis
 #'   labels).
-#' @param legend_position `character(1)`. Legend key position. We're being a little
-#'   more restrictive here, only allowing "`bottom`", "`right`", or "`none`".
-#'   Including the legend at the top or the left side of the plot rarely makes
-#'   sense and is discouraged.
+#' @param legend_position `character(1)`. Legend key position. We're being a
+#'   little more restrictive here, only allowing "`bottom`", "`right`", or
+#'   "`none`". Including the legend at the top or the left side of the plot
+#'   rarely makes sense and is discouraged.
 #' @param grid `logical(1)`. Label the major panel grids with a gray accent.
 #' @param minimal `logical(1)`. Remove all axis lines, axis ticks, and
 #'   panel borders.

@@ -3,13 +3,13 @@
 \docType{class}
 \name{Tx2Gene-class}
 \alias{Tx2Gene-class}
-\title{Transcript-to-Gene Identifier Mappings}
+\title{Transcript-to-gene identifier mappings}
 \value{
 \code{Tx2Gene}. Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID}
 columns.
 }
 \description{
-Transcript-to-Gene Identifier Mappings
+Transcript-to-gene identifier mappings
 }
 \section{Genome metadata}{
 

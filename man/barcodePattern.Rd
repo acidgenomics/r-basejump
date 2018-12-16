@@ -3,14 +3,14 @@
 \docType{data}
 \name{barcodePattern}
 \alias{barcodePattern}
-\title{Single-Cell Barcode Pattern
+\title{Single-sell barcode pattern
 Trailing number is to match cellranger output.}
 \format{An object of class \code{character} of length 1.}
 \usage{
 barcodePattern
 }
 \description{
-Single-Cell Barcode Pattern
+Single-sell barcode pattern
 Trailing number is to match cellranger output.
 }
 \examples{

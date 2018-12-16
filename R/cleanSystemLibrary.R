@@ -4,7 +4,7 @@
 
 
 
-#' Check for Clean System Library
+#' Check for clean system library
 #'
 #' Determine whether a user has installed packages into the system library.
 #'

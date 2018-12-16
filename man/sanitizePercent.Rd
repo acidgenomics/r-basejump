@@ -5,7 +5,7 @@
 \alias{sanitizePercent}
 \alias{sanitizePercent,atomic-method}
 \alias{sanitizePercent,character-method}
-\title{Sanitize Percent}
+\title{Sanitize percentage}
 \usage{
 sanitizePercent(object, ...)
 

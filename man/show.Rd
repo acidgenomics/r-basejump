@@ -5,7 +5,7 @@
 \alias{show}
 \alias{show,EggNOG-method}
 \alias{show,PANTHER-method}
-\title{Show an Object}
+\title{Show an object}
 \usage{
 \S4method{show}{EggNOG}(object)
 

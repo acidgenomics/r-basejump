@@ -7,7 +7,7 @@
 \alias{logRatioToFoldChange}
 \alias{foldChangeToLogRatio,numeric-method}
 \alias{logRatioToFoldChange,numeric-method}
-\title{Interconvert Log Ratio and Fold Change Values}
+\title{Interconvert log ratio and fold change values}
 \usage{
 foldChangeToLogRatio(object, ...)
 
@@ -30,7 +30,7 @@ differential expression output.}
 \code{numeric}.
 }
 \description{
-Interconvert Log Ratio and Fold Change Values
+Interconvert log ratio and fold change values
 }
 \examples{
 ## Convert fold change to log ratio.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotBarcodeRanks}
 \alias{plotBarcodeRanks}
-\title{Plot Barcode Ranks}
+\title{Plot barcode ranks}
 \usage{
 plotBarcodeRanks(object, ...)
 }
@@ -15,7 +15,7 @@ plotBarcodeRanks(object, ...)
 \code{ggplot} grid.
 }
 \description{
-Plot Barcode Ranks
+Plot barcode ranks
 }
 \examples{
 isS4(plotBarcodeRanks)

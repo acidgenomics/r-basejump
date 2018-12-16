@@ -2,7 +2,7 @@
 % Please edit documentation in R/geneSynonyms.R
 \name{geneSynonyms}
 \alias{geneSynonyms}
-\title{Gene Synonyms}
+\title{Gene synonyms}
 \usage{
 geneSynonyms(organism)
 }

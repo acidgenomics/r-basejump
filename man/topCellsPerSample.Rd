@@ -4,7 +4,7 @@
 \name{topCellsPerSample}
 \alias{topCellsPerSample}
 \alias{topCellsPerSample,SingleCellExperiment-method}
-\title{Top Cells per Sample}
+\title{Top cells per sample}
 \usage{
 topCellsPerSample(object, ...)
 

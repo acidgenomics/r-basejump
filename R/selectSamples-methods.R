@@ -1,4 +1,4 @@
-#' Select Samples
+#' Select samples
 #'
 #' Utility function that enables quick an easy sample selection in Bioconductor
 #' contains that don't correspond to samples in the columns

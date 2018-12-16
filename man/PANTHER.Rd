@@ -2,7 +2,7 @@
 % Please edit documentation in R/PANTHER.R
 \name{PANTHER}
 \alias{PANTHER}
-\title{PANTHER Database Annotations}
+\title{PANTHER database annotations}
 \usage{
 PANTHER(organism, release = NULL, progress = FALSE)
 }

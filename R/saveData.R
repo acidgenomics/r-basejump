@@ -1,4 +1,4 @@
-#' Save Data
+#' Save data
 #'
 #' Wrapper for `save` supporting quick, interactive saving of object names
 #' passed as symbols.

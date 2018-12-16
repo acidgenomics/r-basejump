@@ -1,4 +1,4 @@
-#' Plot Percentage of Zeros vs. Library Depth
+#' Plot percentage of zeros vs. library depth
 #'
 #' @name plotZerosVsDepth
 #' @inheritParams params

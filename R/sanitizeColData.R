@@ -1,4 +1,4 @@
-#' Sanitize Column Data
+#' Sanitize column data
 #'
 #' Standardize data describing the colummns (e.g. samples or cells), keeping
 #' only `atomic` columns.

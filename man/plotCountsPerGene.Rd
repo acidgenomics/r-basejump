@@ -5,7 +5,7 @@
 \alias{plotCountsPerGene}
 \alias{plotCountsPerGene,SummarizedExperiment-method}
 \alias{plotCountsPerGene,SingleCellExperiment-method}
-\title{Plot Counts Per Gene}
+\title{Plot counts per gene}
 \usage{
 plotCountsPerGene(object, ...)
 

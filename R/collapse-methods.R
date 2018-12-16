@@ -1,5 +1,4 @@
-# collapseToString =============================================================
-#' Collapse to String
+#' Collapse to string
 #'
 #' @name collapseToString
 #' @inheritParams params
@@ -169,7 +168,6 @@ setMethod(
 
 
 
-# sortUnique ===================================================================
 #' Sort and Make Unique
 #'
 #' This is a convenience function to quickly sort and atomic vector and make the
@@ -193,7 +191,6 @@ sortUnique <- function(object) {
 
 
 
-# toStringUnique ===============================================================
 #' Convert to a Unique Character String
 #'
 #' @export

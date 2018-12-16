@@ -1,8 +1,12 @@
 globalVariables(".")
 
+
+
 packageVersion <- packageVersion("basejump")
 
-#' Basejump Cache URL
+
+
+#' Basejump cache URL
 #' @keywords internal
 #' @export
 #' @examples
@@ -12,21 +16,27 @@ basejumpCacheURL <- paste0(
     "v", packageVersion$major, ".", packageVersion$minor  # nolint
 )
 
-#' Single-Cell Barcode Pattern
+
+
+#' Single-sell barcode pattern
 #' Trailing number is to match cellranger output.
 #' @export
 #' @examples
 #' barcodePattern
 barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 
-#' File Extension Pattern
+
+
+#' File extension pattern
 #' Note optional matching of gzip.
 #' @export
 #' @examples
 #' extPattern
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
-#' Formals List
+
+
+#' Formals list
 #' Formals that the user can set globally with `base::getOption`.
 #' @export
 #' @examples
@@ -48,25 +58,33 @@ formalsList <- list(
     save.compress = quote(getOption("basejump.save.compress", TRUE))
 )
 
-#' Slot Names in Metadata Containing Genome Information
+
+
+#' Slot names in metadata containing genome information
 #' @export
 #' @examples
 #' genomeMetadataNames
 genomeMetadataNames <- c("organism", "genomeBuild", "ensemblRelease")
 
-#' Sequencing Lane Grep Pattern
+
+
+#' Sequencing lane grep pattern
 #' @export
 #' @examples
 #' lanePattern
 lanePattern <- "_L([[:digit:]]{3})"
 
-#' NA Strings
+
+
+#' `NA` strings
 #' @export
 #' @examples
 #' naStrings
 naStrings <- c("", "NA", "#N/A", "NULL", "null")
 
-#' R Data Load Error
+
+
+#' R data load error
 #' @export
 #' @examples
 #' message(rdataLoadError)
@@ -76,17 +94,23 @@ rdataLoadError <- paste(
     sep = "\n"
 )
 
-#' R Data Extension Pattern
+
+
+#' R data extension pattern
 #' @export
 #' @examples
 #' rdataExtPattern
 rdataExtPattern <- "\\.(rd[a|ata|s])$"
 
-#' Update Message
+
+
+#' Update message
 #' @keywords internal
 #' @export
 #' @examples
 #' message(updateMessage)
 updateMessage <- "Run `updateObject` to update your object."
+
+
 
 .dataFrameChoices <- c("data.frame", "DataFrame", "tbl_df", "data.table")

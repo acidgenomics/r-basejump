@@ -1,4 +1,4 @@
-#' Sample Data
+#' Sample data
 #'
 #' Metadata that describes the samples.
 #'

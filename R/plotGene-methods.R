@@ -2,7 +2,7 @@
 
 
 
-#' Plot Gene Expression
+#' Plot gene expression
 #'
 #' @name plotGene
 #' @inheritParams params

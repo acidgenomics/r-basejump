@@ -2,7 +2,7 @@
 % Please edit documentation in R/separator.R
 \name{separator}
 \alias{separator}
-\title{Separator Bar}
+\title{Separator bar}
 \usage{
 separator(sep = c("─", "=", "-", "+"),
   times = min(c(getOption("width", 72L), 72L)))

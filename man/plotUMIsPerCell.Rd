@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotUMIsPerCell}
 \alias{plotUMIsPerCell}
-\title{Plot UMIs per Cell}
+\title{Plot UMIs per cell}
 \usage{
 plotUMIsPerCell(object, ...)
 }

@@ -2,7 +2,7 @@
 
 
 
-#' Show Slot Information
+#' Show slot information
 #'
 #' @param list `list`.
 #'   Named list containing slot metadata.

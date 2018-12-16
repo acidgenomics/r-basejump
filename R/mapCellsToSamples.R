@@ -1,8 +1,4 @@
-# TODO Make this a generic that works on SCE.
-
-
-
-#' Map Cells to Samples
+#' Map cells to samples
 #'
 #' This function extracts `sampleID` from the `cellID` column using grep
 #' matching.
@@ -25,9 +21,11 @@
 #' print(cells)
 #' mapCellsToSamples(cells, samples)
 mapCellsToSamples <- function(cells, samples) {
-    assert(isCharacter(cells))
-    assert(hasNoDuplicates(cells))
-    assert(isAny(samples, classes = c("character", "factor")))
+    assert(
+        isCharacter(cells),
+        hasNoDuplicates(cells),
+        isAny(samples, classes = c("character", "factor"))
+    )
     samples <- unique(as.character(samples))
 
     # Early return if `cells` don't have a separator and `samples` is a string.
@@ -46,7 +44,8 @@ mapCellsToSamples <- function(cells, samples) {
                 "cellID",
                 "sampleID",
                 "cellularBarcode",
-                # Trailing number is for matching cellranger.
+                # Trailing number is for matching Cell Ranger output.
+                # This gets used in the Chromium package.
                 "trailingNumber"
             )) %>%
             .[, c("cellID", "sampleID")] %>%

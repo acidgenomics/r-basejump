@@ -5,7 +5,7 @@
 \name{uniteInterestingGroups}
 \alias{uniteInterestingGroups}
 \alias{uniteInterestingGroups,DataFrame-method}
-\title{Unite Interesting Groups}
+\title{Unite interesting groups into a single column}
 \usage{
 uniteInterestingGroups(object, ...)
 

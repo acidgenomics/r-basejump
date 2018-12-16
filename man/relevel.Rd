@@ -4,7 +4,7 @@
 \alias{relevel}
 \alias{relevelRowRanges}
 \alias{relevelColData}
-\title{Relevel Row or Column Data}
+\title{Relevel row or column data}
 \usage{
 relevelRowRanges(rowRanges)
 
@@ -25,7 +25,7 @@ Modified object.
 Factor levels will be readjusted (i.e. superfluous levels are dropped).
 }
 \description{
-Relevel Row or Column Data
+Relevel row or column data
 }
 \examples{
 data(rse)

@@ -6,7 +6,7 @@
 \alias{geometricMean,numeric-method}
 \alias{geometricMean,matrix-method}
 \alias{geometricMean,sparseMatrix-method}
-\title{Geometric Mean}
+\title{Geometric mean}
 \usage{
 geometricMean(object, ...)
 

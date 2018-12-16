@@ -1,4 +1,4 @@
-#' Write Counts
+#' Write counts
 #'
 #' Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq
 #' counts are written to disk as comma separated values ("`.CSV`"). Single-cell
