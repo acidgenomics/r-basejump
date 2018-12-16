@@ -1,6 +1,11 @@
+#' Decode column data that uses run-length encoding
+#'
 #' @name decode
-#' @inherit S4Vectors::decode title description return
+#' @inherit S4Vectors::decode description return
 #' @inheritParams params
+#'
+#' @seealso `S4Vectors::decode`.
+#'
 #' @examples
 #' data(rse)
 #' mcols <- S4Vectors::mcols(rse)

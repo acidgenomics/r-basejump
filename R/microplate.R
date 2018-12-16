@@ -1,4 +1,9 @@
-#' Microtiter Plate Well Identifiers
+#' Microtiter plate well identifiers
+#'
+#' Quickly generate identifiers (with optional prefixes) for 96 and 384 well
+#' plates.
+#'
+#' These plate formats are frequently used for high-throughput screening assays.
 #'
 #' @export
 #'

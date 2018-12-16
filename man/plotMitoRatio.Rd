@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotMitoRatio}
 \alias{plotMitoRatio}
-\title{Plot Mitochondrial Transcript Abundance}
+\title{Plot mitochondrial transcript abundance}
 \usage{
 plotMitoRatio(object, ...)
 }
@@ -15,7 +15,7 @@ plotMitoRatio(object, ...)
 \code{ggplot}.
 }
 \description{
-Plot Mitochondrial Transcript Abundance
+Plot mitochondrial transcript abundance
 }
 \examples{
 isS4(plotMitoRatio)

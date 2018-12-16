@@ -4,7 +4,7 @@
 \name{cell2sample}
 \alias{cell2sample}
 \alias{cell2sample,SingleCellExperiment-method}
-\title{Cell-to-Sample Mappings}
+\title{Cell-to-sample mappings}
 \usage{
 cell2sample(object, ...)
 
@@ -30,7 +30,7 @@ as the names.
 }
 }
 \description{
-Cell-to-Sample Mappings
+Cell-to-sample mappings
 }
 \note{
 \code{sampleID} column must be defined in \code{colData}.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/HGNC2Ensembl.R
 \name{HGNC2Ensembl}
 \alias{HGNC2Ensembl}
-\title{HGNC-to-Ensembl Gene Identifier Mappings}
+\title{HGNC-to-Ensembl gene identifier mappings}
 \usage{
 HGNC2Ensembl()
 }
@@ -11,7 +11,7 @@ HGNC2Ensembl()
 Contains a \code{DataFrame} with \code{hgncID} and \code{geneID} columns.
 }
 \description{
-HGNC-to-Ensembl Gene Identifier Mappings
+HGNC-to-Ensembl gene identifier mappings
 }
 \examples{
 options(basejump.test = TRUE)

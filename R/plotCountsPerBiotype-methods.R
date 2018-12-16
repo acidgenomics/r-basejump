@@ -1,4 +1,4 @@
-#' Plot Counts per Biotype
+#' Plot counts per biotype
 #'
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner

@@ -2,7 +2,7 @@
 % Please edit documentation in R/pasteURL.R
 \name{pasteURL}
 \alias{pasteURL}
-\title{Concatenate Strings to Form a URL}
+\title{Concatenate strings to form a URL}
 \usage{
 pasteURL(..., protocol = c("https", "http", "ftp", "none"))
 }
@@ -15,7 +15,7 @@ supported. Use \code{"none"} if you want to prepare a URL that already contains
 a protocol in the first element of the dots.}
 }
 \description{
-Concatenate Strings to Form a URL
+Concatenate strings to form a URL
 }
 \examples{
 ## HTTPS

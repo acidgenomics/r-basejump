@@ -6,7 +6,7 @@
 \alias{methodFormals}
 \alias{hasLocal}
 \alias{extractLocal}
-\title{Access to the Data Inside an S4 Method Definition}
+\title{Access the data inside an S4 method definition}
 \usage{
 methodFunction(f, signature, package)
 
@@ -41,7 +41,7 @@ Package name.}
 }
 }
 \description{
-Access to the Data Inside an S4 Method Definition
+Access the data inside an S4 method definition
 }
 \examples{
 library(methods)

@@ -1,4 +1,4 @@
-#' Convert Transcripts to Genes
+#' Convert transcripts to genes
 #'
 #' @name convertTranscriptsToGenes
 #' @inherit convertGenesToSymbols

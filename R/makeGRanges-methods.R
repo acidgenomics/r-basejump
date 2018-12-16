@@ -13,8 +13,7 @@
 
 
 
-# makeGRanges ==================================================================
-#' Make Genomic Ranges
+#' Make a `GenomicRanges` object
 #'
 #' @name makeGRanges
 #' @inheritParams params

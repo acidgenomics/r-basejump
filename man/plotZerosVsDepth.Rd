@@ -4,7 +4,7 @@
 \name{plotZerosVsDepth}
 \alias{plotZerosVsDepth}
 \alias{plotZerosVsDepth,SummarizedExperiment-method}
-\title{Plot Percentage of Zeros vs. Library Depth}
+\title{Plot percentage of zeros vs. library depth}
 \usage{
 plotZerosVsDepth(object, ...)
 
@@ -41,7 +41,7 @@ Plot title.}
 \code{ggplot}.
 }
 \description{
-Plot Percentage of Zeros vs. Library Depth
+Plot percentage of zeros vs. library depth
 }
 \examples{
 data(sce)

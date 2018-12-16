@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotMitoVsCoding}
 \alias{plotMitoVsCoding}
-\title{Plot Mitochondrial vs. Coding Counts}
+\title{Plot mitochondrial vs. coding counts}
 \usage{
 plotMitoVsCoding(object, ...)
 }
@@ -15,7 +15,7 @@ plotMitoVsCoding(object, ...)
 \code{ggplot}.
 }
 \description{
-Plot Mitochondrial vs. Coding Counts
+Plot mitochondrial vs. coding counts
 }
 \examples{
 isS4(plotMitoVsCoding)

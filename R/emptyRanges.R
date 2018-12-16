@@ -1,4 +1,4 @@
-#' Generate Empty Genomic Ranges
+#' Generate empty genomic ranges
 #'
 #' Utility function that provides support for creating internal `GRanges` for
 #' transgene and FASTA spike-in sequences.

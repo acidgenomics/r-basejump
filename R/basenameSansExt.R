@@ -1,3 +1,4 @@
+#' Manipulate file paths
 #' @inherit base::basename
 #' @export
 #' @seealso `basename`.

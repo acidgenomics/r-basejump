@@ -6,7 +6,7 @@
 \alias{basejump_geom_label}
 \alias{basejump_geom_label_average}
 \alias{basejump_geom_label_repel}
-\title{ggplot2 Geometric Objects}
+\title{ggplot2 geometric objects}
 \usage{
 basejump_geom_abline(xintercept = NULL, yintercept = NULL)
 

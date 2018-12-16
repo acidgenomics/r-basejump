@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{contrastName}
 \alias{contrastName}
-\title{Contrast Name}
+\title{Contrast name}
 \usage{
 contrastName(object, ...)
 }
@@ -16,7 +16,7 @@ contrastName(object, ...)
 Contrast name.
 }
 \description{
-Contrast Name
+Contrast name
 }
 \examples{
 isS4(contrastName)

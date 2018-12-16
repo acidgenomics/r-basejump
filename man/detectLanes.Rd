@@ -2,7 +2,7 @@
 % Please edit documentation in R/detectLanes.R
 \name{detectLanes}
 \alias{detectLanes}
-\title{Detect Sequencing Lanes}
+\title{Detect sequencing lanes}
 \usage{
 detectLanes(object, pattern = lanePattern)
 }
@@ -18,7 +18,7 @@ Grep pattern. Default pattern checks for \code{"_LXXX"}.}
 Lane number.
 }
 \description{
-Detect Sequencing Lanes
+Detect sequencing lanes
 }
 \examples{
 files <- c("sample1_L001.fastq.gz", "sample1_L002.fastq.gz")

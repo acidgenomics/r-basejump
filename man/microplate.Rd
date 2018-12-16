@@ -2,7 +2,7 @@
 % Please edit documentation in R/microplate.R
 \name{microplate}
 \alias{microplate}
-\title{Microtiter Plate Well Identifiers}
+\title{Microtiter plate well identifiers}
 \usage{
 microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 }
@@ -24,7 +24,11 @@ Plate name prefix.}
 Well identifiers.
 }
 \description{
-Microtiter Plate Well Identifiers
+Quickly generate identifiers (with optional prefixes) for 96 and 384 well
+plates.
+}
+\details{
+These plate formats are frequently used for high-throughput screening assays.
 }
 \examples{
 ## Single 96-well plate.

@@ -1,6 +1,4 @@
-#' Plot PCA
-#'
-#' Principal component analysis (PCA) plot.
+#' Principal component analysis plot
 #'
 #' @section Principal component analysis:
 #'

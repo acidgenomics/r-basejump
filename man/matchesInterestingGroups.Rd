@@ -2,7 +2,7 @@
 % Please edit documentation in R/matchesInterestingGroups.R
 \name{matchesInterestingGroups}
 \alias{matchesInterestingGroups}
-\title{Check Interesting Groups Value Matching}
+\title{Check that interesting groups match a defined value}
 \usage{
 matchesInterestingGroups(x, interestingGroups)
 }

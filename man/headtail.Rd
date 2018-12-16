@@ -10,7 +10,7 @@
 \alias{headtail,DataFrame-method}
 \alias{headtail,GRanges-method}
 \alias{headtail,SummarizedExperiment-method}
-\title{Return the First and Last Part of an Object}
+\title{Return the first and last parts of an object}
 \usage{
 headtail(x, ...)
 

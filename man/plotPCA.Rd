@@ -4,7 +4,7 @@
 \name{plotPCA}
 \alias{plotPCA}
 \alias{plotPCA,SummarizedExperiment-method}
-\title{Plot PCA}
+\title{Principal component analysis plot}
 \usage{
 \S4method{plotPCA}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, ntop = 500L,
@@ -58,7 +58,7 @@ in the \code{character} vector.}
 \code{ggplot} or \code{DataFrame}.
 }
 \description{
-Principal component analysis (PCA) plot.
+Principal component analysis plot
 }
 \section{Principal component analysis}{
 

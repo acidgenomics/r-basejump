@@ -3,13 +3,13 @@
 \docType{class}
 \name{Gene2Symbol-class}
 \alias{Gene2Symbol-class}
-\title{Gene-to-Symbol Mappings}
+\title{Gene-to-symbol mappings}
 \value{
 \code{Gene2Symbol}.
 Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 }
 \description{
-Gene-to-Symbol Mappings
+Gene-to-symbol mappings
 }
 \note{
 For some organisms, gene names and gene symbols do not map 1:1

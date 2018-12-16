@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{deg}
 \alias{deg}
-\title{Differentially Expressed Genes}
+\title{Differentially expressed genes}
 \usage{
 deg(object, ...)
 }
@@ -16,7 +16,7 @@ deg(object, ...)
 Gene identifiers.
 }
 \description{
-Differentially Expressed Genes
+Differentially expressed genes
 }
 \examples{
 isS4(deg)

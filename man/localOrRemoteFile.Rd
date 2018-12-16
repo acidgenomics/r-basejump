@@ -2,7 +2,7 @@
 % Please edit documentation in R/localOrRemoteFile.R
 \name{localOrRemoteFile}
 \alias{localOrRemoteFile}
-\title{Dynamically Handle a Local or Remote File Path}
+\title{Dynamically handle a local or remote file path}
 \usage{
 localOrRemoteFile(file)
 }
@@ -15,7 +15,7 @@ Local file paths or remote URLs.}
 Local file paths. Stops on a missing file.
 }
 \description{
-Dynamically Handle a Local or Remote File Path
+Dynamically handle a local or remote file path
 }
 \note{
 This function is vectorized and supports mixed local and remote paths. Remote

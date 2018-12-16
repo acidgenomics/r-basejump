@@ -2,7 +2,7 @@
 % Please edit documentation in R/detectOrganism.R
 \name{detectOrganism}
 \alias{detectOrganism}
-\title{Detect Organism}
+\title{Detect organism}
 \usage{
 detectOrganism(object)
 }

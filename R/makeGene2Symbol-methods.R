@@ -1,4 +1,4 @@
-#' Make Gene-to-Symbol Mappings
+#' Make a `Gene2Symbol` object
 #'
 #' @section GFF/GTF file:
 #'

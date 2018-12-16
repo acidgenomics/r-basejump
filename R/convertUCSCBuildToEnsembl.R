@@ -1,4 +1,4 @@
-#' Convert UCSC Build to Ensembl
+#' Convert UCSC build to Ensembl
 #'
 #' @export
 #'

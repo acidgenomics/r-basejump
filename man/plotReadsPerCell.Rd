@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotReadsPerCell}
 \alias{plotReadsPerCell}
-\title{Plot Read Counts per Cell}
+\title{Plot read counts per cell}
 \usage{
 plotReadsPerCell(object, ...)
 }

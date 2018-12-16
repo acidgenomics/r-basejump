@@ -6,7 +6,7 @@
 \alias{makeGene2SymbolFromEnsDb}
 \alias{makeGene2SymbolFromGFF}
 \alias{makeGene2SymbolFromGTF}
-\title{Make Gene-to-Symbol Mappings}
+\title{Make a \code{Gene2Symbol} object}
 \usage{
 makeGene2SymbolFromEnsembl(organism, genomeBuild = NULL,
   release = NULL)
@@ -37,7 +37,7 @@ File path.}
 \code{Gene2Symbol}.
 }
 \description{
-Make Gene-to-Symbol Mappings
+Make a \code{Gene2Symbol} object
 }
 \section{GFF/GTF file}{
 

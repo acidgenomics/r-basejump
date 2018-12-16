@@ -1,9 +1,4 @@
-# TODO Consider adding SCE method support that works on `sampleData`.
-# TODO Add method support for autopadding from left side?
-
-
-
-#' Autopad Zeros
+#' Autopad zeros
 #'
 #' @note For methods on objects supporting `dim` (e.g. `matrix`), the object
 #' will be returned with the rows and/or columns resorted by default. This does

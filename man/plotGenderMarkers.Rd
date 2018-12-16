@@ -5,7 +5,7 @@
 \alias{plotGenderMarkers}
 \alias{plotGenderMarkers,SummarizedExperiment-method}
 \alias{plotGenderMarkers,SingleCellExperiment-method}
-\title{Plot Sexually Dimorphic Gender Marker Genes}
+\title{Plot sexually dimorphic gender marker genes}
 \usage{
 plotGenderMarkers(object, ...)
 

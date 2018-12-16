@@ -5,7 +5,7 @@
 \alias{plotTotalCounts}
 \alias{plotTotalCounts,SummarizedExperiment-method}
 \alias{plotTotalCounts,SingleCellExperiment-method}
-\title{Plot Total Counts}
+\title{Plot total counts}
 \usage{
 plotTotalCounts(object, ...)
 
@@ -53,7 +53,7 @@ Plot title.}
 \code{ggplot}.
 }
 \description{
-Plot Total Counts
+Plot total counts
 }
 \examples{
 data(rse, sce)

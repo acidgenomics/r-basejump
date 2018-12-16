@@ -1,4 +1,4 @@
-#' Aggregate Rows or Columns
+#' Aggregate rows or columns
 #'
 #' Aggregate gene/transcript features (rows) or sample replicates (columns).
 #'
@@ -492,7 +492,7 @@ setMethod(
 
 
 # aggregateCellsToSamples ======================================================
-#' Aggregate Cells to Samples
+#' Aggregate cells to samples
 #'
 #' Utilty function that factilites cell-to-sample aggregation. By default, this
 #' function will sum the counts across cells to sample level.

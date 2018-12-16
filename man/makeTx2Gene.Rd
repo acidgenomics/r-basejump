@@ -6,7 +6,7 @@
 \alias{makeTx2GeneFromEnsDb}
 \alias{makeTx2GeneFromGFF}
 \alias{makeTx2GeneFromGTF}
-\title{Make Transcript-to-Gene Mappings}
+\title{Make a \code{Tx2Gene} object}
 \usage{
 makeTx2GeneFromEnsembl(organism, genomeBuild = NULL, release = NULL)
 
@@ -36,7 +36,7 @@ File path.}
 \code{Tx2Gene}.
 }
 \description{
-Make Transcript-to-Gene Mappings
+Make a \code{Tx2Gene} object
 }
 \section{GFF/GTF file}{
 

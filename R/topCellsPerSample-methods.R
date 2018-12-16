@@ -1,4 +1,4 @@
-#' Top Cells per Sample
+#' Top cells per sample
 #'
 #' Obtain the top cellular barcodes, based on counts.
 #'

@@ -1,4 +1,4 @@
-#' Encode Column Data Using Run-Length Encoding
+#' Encode column data using run-length encoding
 #'
 #' @name encode
 #' @inheritParams params

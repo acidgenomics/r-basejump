@@ -1,4 +1,4 @@
-#' Plot Quality Control
+#' Plot quality control metrics
 #'
 #' @name plotQC
 #' @inheritParams params

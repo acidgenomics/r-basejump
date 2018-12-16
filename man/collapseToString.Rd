@@ -7,7 +7,7 @@
 \alias{collapseToString,matrix-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
-\title{Collapse to String}
+\title{Collapse to string}
 \usage{
 collapseToString(object, ...)
 
@@ -47,7 +47,7 @@ Unique values.}
 }
 }
 \description{
-Collapse to String
+Collapse to string
 }
 \examples{
 ## character ====

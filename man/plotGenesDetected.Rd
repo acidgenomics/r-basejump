@@ -5,7 +5,7 @@
 \alias{plotGenesDetected}
 \alias{plotGenesDetected,SummarizedExperiment-method}
 \alias{plotGenesDetected,SingleCellExperiment-method}
-\title{Plot Genes Detected}
+\title{Plot genes detected}
 \usage{
 plotGenesDetected(object, ...)
 
@@ -56,7 +56,7 @@ Plot title.}
 \code{ggplot}.
 }
 \description{
-Plot Genes Detected
+Plot genes detected
 }
 \examples{
 data(rse, sce)

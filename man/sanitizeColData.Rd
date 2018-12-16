@@ -3,7 +3,7 @@
 \name{sanitizeColData}
 \alias{sanitizeColData}
 \alias{sanitizeSampleData}
-\title{Sanitize Column Data}
+\title{Sanitize column data}
 \usage{
 sanitizeColData(object)
 

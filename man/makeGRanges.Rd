@@ -7,7 +7,7 @@
 \alias{makeGRangesFromGFF}
 \alias{makeGRangesFromGTF}
 \alias{annotable}
-\title{Make Genomic Ranges}
+\title{Make a \code{GenomicRanges} object}
 \usage{
 makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
   genomeBuild = NULL, release = NULL)
@@ -44,7 +44,7 @@ File path.}
 \code{GRanges}.
 }
 \description{
-Make Genomic Ranges
+Make a \code{GenomicRanges} object
 }
 \section{Functions}{
 \itemize{

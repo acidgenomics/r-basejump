@@ -1,4 +1,4 @@
-#' Unite Interesting Groups
+#' Unite interesting groups into a single column
 #'
 #' Create a single interesting groups column (`interestingGroups`) used for
 #' coloring in plots. When multiple interesting groups are present, unite into a

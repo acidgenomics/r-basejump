@@ -11,7 +11,7 @@
 \alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
-\title{Force an Object to Belong to a Class}
+\title{Force an object to belong to a class}
 \arguments{
 \item{x}{Object.}
 

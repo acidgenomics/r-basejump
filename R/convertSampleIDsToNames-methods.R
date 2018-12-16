@@ -1,4 +1,4 @@
-#' Convert Sample Identifiers to Names
+#' Convert sample identifiers to names
 #'
 #' @name convertSampleIDsToNames
 #' @inheritParams params

@@ -2,7 +2,7 @@
 % Please edit documentation in R/MGI2Ensembl.R
 \name{MGI2Ensembl}
 \alias{MGI2Ensembl}
-\title{MGI-to-Ensembl Gene Identifier Mappings}
+\title{MGI-to-Ensembl gene identifier mappings}
 \usage{
 MGI2Ensembl()
 }
@@ -11,7 +11,7 @@ MGI2Ensembl()
 Contains a \code{DataFrame} with \code{mgiID} and \code{geneID} columns.
 }
 \description{
-MGI-to-Ensembl Gene Identifier Mappings
+MGI-to-Ensembl gene identifier mappings
 }
 \examples{
 options(basejump.test = TRUE)

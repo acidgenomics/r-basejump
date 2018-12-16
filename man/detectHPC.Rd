@@ -2,7 +2,7 @@
 % Please edit documentation in R/detectHPC.R
 \name{detectHPC}
 \alias{detectHPC}
-\title{Detect HPC Environment}
+\title{Detect HPC environment}
 \usage{
 detectHPC()
 }

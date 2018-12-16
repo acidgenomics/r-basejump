@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapCellsToSamples.R
 \name{mapCellsToSamples}
 \alias{mapCellsToSamples}
-\title{Map Cells to Samples}
+\title{Map cells to samples}
 \usage{
 mapCellsToSamples(cells, samples)
 }

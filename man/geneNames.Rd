@@ -5,7 +5,7 @@
 \alias{geneNames}
 \alias{geneNames,GRanges-method}
 \alias{geneNames,SummarizedExperiment-method}
-\title{Gene Names}
+\title{Gene names}
 \usage{
 geneNames(object, ...)
 

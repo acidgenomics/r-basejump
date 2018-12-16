@@ -1,4 +1,4 @@
-#' Interconvert Log Ratio and Fold Change Values
+#' Interconvert log ratio and fold change values
 #'
 #' @name logRatio
 #' @inheritParams params

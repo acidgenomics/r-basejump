@@ -2,7 +2,7 @@
 % Please edit documentation in R/EggNOG.R
 \name{EggNOG}
 \alias{EggNOG}
-\title{EggNOG Database Annotations}
+\title{EggNOG database annotations}
 \usage{
 EggNOG()
 }

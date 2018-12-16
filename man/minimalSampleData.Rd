@@ -2,7 +2,7 @@
 % Please edit documentation in R/minimalSampleData.R
 \name{minimalSampleData}
 \alias{minimalSampleData}
-\title{Minimal Sample Data}
+\title{Minimal sample data}
 \usage{
 minimalSampleData(sample)
 }
@@ -14,7 +14,7 @@ Sample names (e.g. per-sample directory names).}
 \code{DataFrame}.
 }
 \description{
-Minimal Sample Data
+Minimal sample data
 }
 \examples{
 x <- minimalSampleData(sample = c("sample 1", "sample 2"))

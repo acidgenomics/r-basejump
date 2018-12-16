@@ -1,7 +1,8 @@
-# TODO Improve support for ordering columns and/or rows manually.
+# FIXME Improve support for ordering columns and/or rows manually.
 
 
-#' Plot Heatmap
+
+#' Heatmap
 #'
 #' Construct a simple heatmap.
 #'

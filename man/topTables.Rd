@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{topTables}
 \alias{topTables}
-\title{Top Tables of Differential Expression Results}
+\title{Top tables of differentially expressed genes}
 \usage{
 topTables(object, ...)
 }
@@ -16,7 +16,7 @@ topTables(object, ...)
 Markdown tables.
 }
 \description{
-Top Tables of Differential Expression Results
+Top tables of differentially expressed genes
 }
 \seealso{
 DESeqAnalysis.

@@ -6,7 +6,7 @@
 \alias{convertSampleIDsToNames}
 \alias{convertSampleIDsToNames,SummarizedExperiment-method}
 \alias{convertSampleIDsToNames,SingleCellExperiment-method}
-\title{Convert Sample Identifiers to Names}
+\title{Convert sample identifiers to names}
 \usage{
 convertSampleIDsToNames(object, ...)
 
@@ -23,7 +23,7 @@ convertSampleIDsToNames(object, ...)
 Varies, depending on the method.
 }
 \description{
-Convert Sample Identifiers to Names
+Convert sample identifiers to names
 }
 \examples{
 data(rse)

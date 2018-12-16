@@ -2,7 +2,7 @@
 % Please edit documentation in R/multiassignAsEnvir.R
 \name{multiassignAsEnvir}
 \alias{multiassignAsEnvir}
-\title{Assign Multiple Objects as an Environment}
+\title{Assign multiple objects into a new environment}
 \usage{
 multiassignAsEnvir(..., envirName, parentFrame = parent.frame())
 }
@@ -21,7 +21,7 @@ Parent \code{environment} where to assign the new \code{environment}, specified 
 Object names defined in the new \code{environment}.
 }
 \description{
-Assign Multiple Objects as an Environment
+Assign multiple objects into a new environment
 }
 \examples{
 data(rse, sce)

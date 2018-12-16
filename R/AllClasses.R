@@ -1,5 +1,5 @@
 # EggNOG =======================================================================
-#' EggNOG Database Annotations
+#' EggNOG database annotations
 #'
 #' [EggNOG](http://eggnogdb.embl.de) is a database of biological information
 #' hosted by the EMBL. It is based on the original idea of COGs (**c**lusters of
@@ -52,7 +52,7 @@ setValidity(
 
 
 # Ensembl2Entrez ===============================================================
-#' Ensembl-to-Entrez Gene Identifier Mappings
+#' Ensembl-to-Entrez gene identifier mappings
 #'
 #' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 #' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
@@ -76,7 +76,7 @@ setValidity(
 
 
 # Gene2Symbol ==================================================================
-#' Gene-to-Symbol Mappings
+#' Gene-to-symbol mappings
 #'
 #' @note For some organisms, gene names and gene symbols do not map 1:1
 #' (e.g. *Homo sapiens* and *Mus musculus*). Refer to the `format` argument here
@@ -110,7 +110,7 @@ setValidity(
 
 
 # HGNC2Ensembl =================================================================
-#' HGNC-to-Ensembl Gene Identifier Mappings
+#' HGNC-to-Ensembl gene identifier mappings
 #'
 #' @author Michael Steinbaugh
 #' @export
@@ -137,7 +137,7 @@ setValidity(
 
 
 # MGI2Ensembl ==================================================================
-#' MGI-to-Ensembl Gene Identifier Mappings
+#' MGI-to-Ensembl gene identifier mappings
 #'
 #' @author Michael Steinbaugh
 #' @export
@@ -158,7 +158,7 @@ setValidity(
 
 
 # PANTHER ======================================================================
-#' PANTHER Database Annotations
+#' PANTHER database annotations
 #'
 #' [PANTHER](http://www.pantherdb.org) gene ontology definitions. PANTHER stands
 #' for **P**rotein **AN**alysis **TH**rough **E**volutionary **R**elationships.
@@ -194,7 +194,7 @@ setValidity(
 
 
 # Tx2Gene ======================================================================
-#' Transcript-to-Gene Identifier Mappings
+#' Transcript-to-gene identifier mappings
 #'
 #' @section Genome metadata:
 #'

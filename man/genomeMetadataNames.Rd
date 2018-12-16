@@ -3,13 +3,13 @@
 \docType{data}
 \name{genomeMetadataNames}
 \alias{genomeMetadataNames}
-\title{Slot Names in Metadata Containing Genome Information}
+\title{Slot names in metadata containing genome information}
 \format{An object of class \code{character} of length 3.}
 \usage{
 genomeMetadataNames
 }
 \description{
-Slot Names in Metadata Containing Genome Information
+Slot names in metadata containing genome information
 }
 \examples{
 genomeMetadataNames

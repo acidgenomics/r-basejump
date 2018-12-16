@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotDEGHeatmap}
 \alias{plotDEGHeatmap}
-\title{Differentially Expressed Gene Heatmap}
+\title{Differentially expressed gene heatmap}
 \usage{
 plotDEGHeatmap(object, ...)
 }

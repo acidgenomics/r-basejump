@@ -3,13 +3,13 @@
 \docType{data}
 \name{rdataLoadError}
 \alias{rdataLoadError}
-\title{R Data Load Error}
+\title{R data load error}
 \format{An object of class \code{character} of length 1.}
 \usage{
 rdataLoadError
 }
 \description{
-R Data Load Error
+R data load error
 }
 \examples{
 message(rdataLoadError)

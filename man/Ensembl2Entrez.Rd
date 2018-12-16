@@ -6,7 +6,7 @@
 \alias{Ensembl2Entrez,DataFrame-method}
 \alias{Ensembl2Entrez,GRanges-method}
 \alias{Ensembl2Entrez,SummarizedExperiment-method}
-\title{Ensembl-to-Entrez Gene Identifier Mappings}
+\title{Ensembl-to-Entrez gene identifier mappings}
 \usage{
 Ensembl2Entrez(object, ...)
 

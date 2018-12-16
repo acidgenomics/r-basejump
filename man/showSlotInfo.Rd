@@ -2,7 +2,7 @@
 % Please edit documentation in R/showSlotInfo.R
 \name{showSlotInfo}
 \alias{showSlotInfo}
-\title{Show Slot Information}
+\title{Show slot information}
 \usage{
 showSlotInfo(list)
 }
@@ -14,7 +14,7 @@ Named list containing slot metadata.}
 Invisible \code{NULL}.
 }
 \description{
-Show Slot Information
+Show slot information
 }
 \examples{
 showSlotInfo(list(

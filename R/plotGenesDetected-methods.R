@@ -1,4 +1,4 @@
-#' Plot Genes Detected
+#' Plot genes detected
 #'
 #' @name plotGenesDetected
 #' @inheritParams params

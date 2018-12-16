@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotMappingRate}
 \alias{plotMappingRate}
-\title{Plot Mapping Rate}
+\title{Plot mapping rate}
 \usage{
 plotMappingRate(object, ...)
 }

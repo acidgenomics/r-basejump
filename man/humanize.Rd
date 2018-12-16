@@ -4,7 +4,7 @@
 \name{humanize}
 \alias{humanize}
 \alias{humanize,SummarizedExperiment-method}
-\title{Humanize an R Object}
+\title{Humanize an R object}
 \usage{
 humanize(object, ...)
 
@@ -21,7 +21,7 @@ Contains human-friendly rownames (e.g. gene symbols instead of stable gene
 IDs) and colnames (e.g. sample names instead of sample IDs).
 }
 \description{
-Humanize an R Object
+Humanize an R object
 }
 \note{
 This can make dimnames invalid (see \code{make.names}) and should only

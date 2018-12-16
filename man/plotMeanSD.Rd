@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotMeanSD}
 \alias{plotMeanSD}
-\title{Plot Row Standard Deviations vs. Row Means}
+\title{Plot row standard deviations vs. row means}
 \usage{
 plotMeanSD(object, ...)
 }
@@ -15,7 +15,7 @@ plotMeanSD(object, ...)
 \code{ggplot}.
 }
 \description{
-Plot Row Standard Deviations vs. Row Means
+Plot row standard deviations vs. row means
 }
 \examples{
 isS4(plotMeanSD)

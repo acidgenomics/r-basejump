@@ -1,4 +1,4 @@
-#' Dynamically Handle a Local or Remote File Path
+#' Dynamically handle a local or remote file path
 #'
 #' @note
 #' This function is vectorized and supports mixed local and remote paths. Remote

@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotNovelty}
 \alias{plotNovelty}
-\title{Plot Novelty Score}
+\title{Plot novelty score}
 \usage{
 plotNovelty(object, ...)
 }

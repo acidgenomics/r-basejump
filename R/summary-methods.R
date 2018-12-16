@@ -1,5 +1,6 @@
+#' Object summaries
 #' @name summary
-#' @inherit base::summary title description references
+#' @inherit base::summary description references
 #' @importFrom S4Vectors summary
 #'
 #' @inheritParams params

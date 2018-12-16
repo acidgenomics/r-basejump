@@ -1,4 +1,4 @@
-#' Percentage of Zeros vs. Library Depth
+#' Percentage of zeros vs. library depth
 #'
 #' Calculate and visualize the dropout rate.
 #'

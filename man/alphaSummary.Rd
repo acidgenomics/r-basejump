@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{alphaSummary}
 \alias{alphaSummary}
-\title{Alpha Level Cutoff Summary Statistics}
+\title{Alpha level cutoff summary statistics}
 \usage{
 alphaSummary(object, ...)
 }

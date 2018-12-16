@@ -4,7 +4,7 @@
 \name{encode}
 \alias{encode}
 \alias{encode,DataFrame-method}
-\title{Encode Column Data Using Run-Length Encoding}
+\title{Encode column data using run-length encoding}
 \usage{
 encode(x, ...)
 
@@ -20,7 +20,7 @@ Modified object.
 All \code{atomic} columns will be encoded to \code{Rle} S4 class.
 }
 \description{
-Encode Column Data Using Run-Length Encoding
+Encode column data using run-length encoding
 }
 \examples{
 binary <- seq(from = 0L, to = 1L)

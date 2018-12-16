@@ -8,7 +8,7 @@
 \alias{convertTranscriptsToGenes,matrix-method}
 \alias{convertTranscriptsToGenes,sparseMatrix-method}
 \alias{convertTranscriptsToGenes,SummarizedExperiment-method}
-\title{Convert Transcripts to Genes}
+\title{Convert transcripts to genes}
 \usage{
 convertTranscriptsToGenes(object, ...)
 
@@ -42,7 +42,7 @@ collapsed to gene level by default (see \code{aggregate} argument).
 }
 }
 \description{
-Convert Transcripts to Genes
+Convert transcripts to genes
 }
 \note{
 For objects containing a count matrix, the object rows will be

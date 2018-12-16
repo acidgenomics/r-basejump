@@ -1,4 +1,4 @@
-#' Melt Count Matrix to Long Format
+#' Melt count matrix into long format
 #'
 #' @name meltCounts
 #' @inheritParams params

@@ -1,4 +1,4 @@
-#' Detect Organism
+#' Detect organism
 #'
 #' Supports organism detection from Ensembl identifier or genome build.
 #'

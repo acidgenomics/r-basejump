@@ -1,4 +1,4 @@
-#' Plot Counts Per Gene
+#' Plot counts per gene
 #'
 #' Generally, we expect similar count spreads for all genes between samples
 #' unless the library sizes or total RNA expression are different.

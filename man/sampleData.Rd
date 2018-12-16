@@ -10,7 +10,7 @@
 \alias{sampleData<-,SummarizedExperiment,DataFrame-method}
 \alias{sampleData<-,SingleCellExperiment,DataFrame-method}
 \alias{sampleNames,SummarizedExperiment-method}
-\title{Sample Data}
+\title{Sample data}
 \usage{
 sampleData(object, ...)
 

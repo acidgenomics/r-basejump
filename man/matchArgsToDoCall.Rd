@@ -2,7 +2,7 @@
 % Please edit documentation in R/matchArgsToDoCall.R
 \name{matchArgsToDoCall}
 \alias{matchArgsToDoCall}
-\title{Match Arguments to Do Call}
+\title{Match arguments to \code{do.call}}
 \usage{
 matchArgsToDoCall(args = NULL, removeFormals = NULL,
   which = sys.parent(n = 1L), verbose = FALSE)
@@ -27,7 +27,7 @@ Run the function with verbose messages?
 Arguments to pass to \code{do.call}.
 }
 \description{
-Match Arguments to Do Call
+Match arguments to \code{do.call}
 }
 \examples{
 example <- function(object, xxx, ...) {

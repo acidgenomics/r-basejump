@@ -5,7 +5,7 @@
 \alias{flatFiles}
 \alias{coerceS4ToList}
 \alias{flatFiles,SummarizedExperiment-method}
-\title{Coerce Any S4 Object to List}
+\title{Coerce any S4 object to a list}
 \usage{
 flatFiles(object, ...)
 
@@ -26,7 +26,7 @@ coerceS4ToList(from)
 \code{list}.
 }
 \description{
-Coerce Any S4 Object to List
+Coerce any S4 object to a list
 }
 \examples{
 data(rse)

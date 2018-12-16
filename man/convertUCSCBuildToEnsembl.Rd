@@ -2,7 +2,7 @@
 % Please edit documentation in R/convertUCSCBuildToEnsembl.R
 \name{convertUCSCBuildToEnsembl}
 \alias{convertUCSCBuildToEnsembl}
-\title{Convert UCSC Build to Ensembl}
+\title{Convert UCSC build to Ensembl}
 \usage{
 convertUCSCBuildToEnsembl(object)
 }
@@ -14,7 +14,7 @@ convertUCSCBuildToEnsembl(object)
 name. Stops on match failure.
 }
 \description{
-Convert UCSC Build to Ensembl
+Convert UCSC build to Ensembl
 }
 \examples{
 from <- c("hg19", "hg38")

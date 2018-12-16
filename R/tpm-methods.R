@@ -1,4 +1,4 @@
-#' Transcripts per Million
+#' Transcripts per million
 #'
 #' @name tpm
 #' @inheritParams params

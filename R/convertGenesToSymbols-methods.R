@@ -1,4 +1,4 @@
-#' Convert Genes to Symbols
+#' Convert genes to symbols
 #'
 #' @name convertGenesToSymbols
 #' @inheritParams params

@@ -3,7 +3,7 @@
 \name{sanitizeRowData}
 \alias{sanitizeRowData}
 \alias{sanitizeRowRanges}
-\title{Sanitize Row Data}
+\title{Sanitize row data}
 \usage{
 sanitizeRowData(object)
 

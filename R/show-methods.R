@@ -1,3 +1,4 @@
+#' Show an object
 #' @name show
 #' @inherit methods::show
 #' @examples

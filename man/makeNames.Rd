@@ -52,7 +52,7 @@
 \alias{dotted,ANY-method}
 \alias{snake,ANY-method}
 \alias{upperCamel,ANY-method}
-\title{Make Syntactically Valid Names}
+\title{Make syntactically valid names}
 \usage{
 camel(object, ...)
 

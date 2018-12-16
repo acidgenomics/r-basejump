@@ -6,7 +6,7 @@
 \alias{plotCountsPerBroadClass}
 \alias{plotCountsPerBiotype,SummarizedExperiment-method}
 \alias{plotCountsPerBroadClass,SummarizedExperiment-method}
-\title{Plot Counts per Biotype}
+\title{Plot counts per biotype}
 \usage{
 plotCountsPerBiotype(object, ...)
 
@@ -49,7 +49,7 @@ Counts axis label.}
 \code{ggplot}.
 }
 \description{
-Plot Counts per Biotype
+Plot counts per biotype
 }
 \examples{
 data(rse, sce)

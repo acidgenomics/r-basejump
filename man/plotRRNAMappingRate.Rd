@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{plotRRNAMappingRate}
 \alias{plotRRNAMappingRate}
-\title{Plot Ribosomal RNA (rRNA) Mapping Rate}
+\title{Plot ribosomal RNA (rRNA) mapping rate}
 \usage{
 plotRRNAMappingRate(object, ...)
 }

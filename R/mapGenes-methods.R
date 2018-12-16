@@ -1,4 +1,4 @@
-#' Map Genes
+#' Map genes
 #'
 #' Take a user-defined gene vector and dynamically map the input to either the
 #' object rownames or the gene names (symbols). These functions are useful for

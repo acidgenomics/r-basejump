@@ -12,7 +12,7 @@
 \alias{mapGenesToIDs,SummarizedExperiment-method}
 \alias{mapGenesToSymbols,Gene2Symbol-method}
 \alias{mapGenesToSymbols,SummarizedExperiment-method}
-\title{Map Genes}
+\title{Map genes}
 \usage{
 mapGenesToRownames(object, ...)
 

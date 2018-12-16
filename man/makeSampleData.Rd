@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeSampleData.R
 \name{makeSampleData}
 \alias{makeSampleData}
-\title{Make Sample Data}
+\title{Make sample data}
 \usage{
 makeSampleData(object)
 }

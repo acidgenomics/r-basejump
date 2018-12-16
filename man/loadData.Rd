@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadData.R
 \name{loadData}
 \alias{loadData}
-\title{Load Data}
+\title{Load data}
 \usage{
 loadData(..., dir = getOption("basejump.load.dir", "."),
   envir = globalenv())

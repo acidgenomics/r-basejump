@@ -8,7 +8,7 @@
 \alias{sanitizeNA,factor-method}
 \alias{sanitizeNA,data.frame-method}
 \alias{sanitizeNA,DataFrame-method}
-\title{Sanitize NA Values}
+\title{Sanitize \code{NA} values}
 \usage{
 sanitizeNA(object, ...)
 

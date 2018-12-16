@@ -1,8 +1,9 @@
+#' Express file paths in canonical form
 #' @inherit base::normalizePath
 #' @export
 #' @seealso
-#' - `file.path`.
-#' - `normalizePath`.
+#' - [base::file.path()].
+#' - [base::normalizePath()].
 #' @examples
 #' realpath(".")
 #' normalizePath(".")

@@ -3,13 +3,13 @@
 \docType{data}
 \name{lanePattern}
 \alias{lanePattern}
-\title{Sequencing Lane Grep Pattern}
+\title{Sequencing lane grep pattern}
 \format{An object of class \code{character} of length 1.}
 \usage{
 lanePattern
 }
 \description{
-Sequencing Lane Grep Pattern
+Sequencing lane grep pattern
 }
 \examples{
 lanePattern

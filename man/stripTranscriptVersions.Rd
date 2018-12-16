@@ -8,7 +8,7 @@
 \alias{stripTranscriptVersions,matrix-method}
 \alias{stripTranscriptVersions,sparseMatrix-method}
 \alias{stripTranscriptVersions,SummarizedExperiment-method}
-\title{Strip Transcript Versions}
+\title{Strip transcript versions}
 \usage{
 stripTranscriptVersions(object, ...)
 
@@ -30,7 +30,7 @@ Modified object.
 Contains transcript identifiers without version numbers.
 }
 \description{
-Strip Transcript Versions
+Strip transcript versions
 }
 \note{
 This by default method is strict, and will only strip Ensembl

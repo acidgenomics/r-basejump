@@ -1,4 +1,4 @@
-#' Sanitize Row Data
+#' Sanitize row data
 #'
 #' Coerce row annotations (e.g. genes or transcripts) to `DataFrame`, and keep
 #' only `atomic` columns. Complex columns (e.g. Entrez ID `list`) will fail to

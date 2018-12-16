@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{tmm}
 \alias{tmm}
-\title{Trimmed Mean of M-Values}
+\title{Trimmed mean of M-values}
 \usage{
 tmm(object, ...)
 }

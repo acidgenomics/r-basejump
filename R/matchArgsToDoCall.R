@@ -1,4 +1,4 @@
-#' Match Arguments to Do Call
+#' Match arguments to `do.call`
 #'
 #' @inheritParams standardizeCall
 #' @inheritParams base::do.call

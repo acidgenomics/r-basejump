@@ -1,4 +1,4 @@
-#' Minimal Sample Data
+#' Minimal sample data
 #'
 #' @export
 #'

@@ -1,4 +1,4 @@
-#' Match Interesting Groups
+#' Match interesting groups
 #'
 #' Match the user-defined interesting groups to the values slotted within a
 #' `SummarizedExperiment` object, and check that they are valid. Otherwise

@@ -4,7 +4,7 @@
 \alias{ggplot2-themes}
 \alias{theme_paperwhite}
 \alias{theme_midnight}
-\title{ggplot2 Themes}
+\title{ggplot2 themes}
 \usage{
 theme_paperwhite(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
@@ -25,10 +25,10 @@ theme_midnight(base_size = 14L, base_family = "", face = c("bold",
 proportions. Use \code{1} for a perfectly square plot (including the axis
 labels).}
 
-\item{legend_position}{\code{character(1)}. Legend key position. We're being a little
-more restrictive here, only allowing "\code{bottom}", "\code{right}", or "\code{none}".
-Including the legend at the top or the left side of the plot rarely makes
-sense and is discouraged.}
+\item{legend_position}{\code{character(1)}. Legend key position. We're being a
+little more restrictive here, only allowing "\code{bottom}", "\code{right}", or
+"\code{none}". Including the legend at the top or the left side of the plot
+rarely makes sense and is discouraged.}
 
 \item{grid}{\code{logical(1)}. Label the major panel grids with a gray accent.}
 

@@ -1,4 +1,4 @@
-#' Cell-to-Sample Mappings
+#' Cell-to-sample mappings
 #'
 #' @name cell2sample
 #' @inheritParams params

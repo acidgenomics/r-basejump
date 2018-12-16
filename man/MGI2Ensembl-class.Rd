@@ -3,13 +3,13 @@
 \docType{class}
 \name{MGI2Ensembl-class}
 \alias{MGI2Ensembl-class}
-\title{MGI-to-Ensembl Gene Identifier Mappings}
+\title{MGI-to-Ensembl gene identifier mappings}
 \value{
 \code{MGI2Ensembl}.
 Contains a \code{DataFrame} with \code{mgiID} and \code{geneID} columns.
 }
 \description{
-MGI-to-Ensembl Gene Identifier Mappings
+MGI-to-Ensembl gene identifier mappings
 }
 \author{
 Michael Steinbaugh

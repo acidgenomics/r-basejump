@@ -1,4 +1,4 @@
-#' Subset Per Sample
+#' Subset per sample
 #'
 #' @name subsetPerSample
 #' @inheritParams params

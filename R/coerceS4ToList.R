@@ -1,4 +1,4 @@
-#' Coerce Any S4 Object to List
+#' Coerce any S4 object to a list
 #'
 #' @inheritParams methods::coerce
 #' @inheritParams params

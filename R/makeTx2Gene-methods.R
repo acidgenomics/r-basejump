@@ -1,4 +1,4 @@
-#' Make Transcript-to-Gene Mappings
+#' Make a `Tx2Gene` object
 #'
 #' @section GFF/GTF file:
 #'

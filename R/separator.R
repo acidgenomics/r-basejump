@@ -1,4 +1,4 @@
-#' Separator Bar
+#' Separator bar
 #'
 #' Maximum of 72 characters wide.
 #'

@@ -3,7 +3,7 @@
 
 
 
-#' Concatenate Strings to Form a URL
+#' Concatenate strings to form a URL
 #'
 #' @inheritParams base::paste
 #' @export

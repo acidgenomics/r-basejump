@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeSummarizedExperiment.R
 \name{makeSummarizedExperiment}
 \alias{makeSummarizedExperiment}
-\title{Make Summarized Experiment}
+\title{Make a \code{SummarizedExperiment} object}
 \usage{
 makeSummarizedExperiment(assays, rowRanges = NULL, rowData = NULL,
   colData = NULL, metadata = NULL, transgeneNames = NULL,
@@ -42,12 +42,10 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
 }
 }
 \description{
-This function is a utility wrapper for
-\code{SummarizedExperiment::SummarizedExperiment} that provides automatic
-subsetting for row and column data, as well as automatic handling of
-transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the \code{metadata}
-slot:
+This function is a utility wrapper for \code{SummarizedExperiment} that provides
+automatic subsetting for row and column data, as well as automatic handling
+of transgenes and spike-ins. Additionally, it improves upon the standard
+constructor by slotting useful session information into the \code{metadata} slot:
 }
 \details{
 \itemize{

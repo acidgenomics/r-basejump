@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{barcodeRanksPerSample}
 \alias{barcodeRanksPerSample}
-\title{Barcode Ranks per Sample}
+\title{Barcode ranks per sample}
 \usage{
 barcodeRanksPerSample(object, ...)
 }
@@ -15,7 +15,7 @@ barcodeRanksPerSample(object, ...)
 \code{list}.
 }
 \description{
-Barcode Ranks per Sample
+Barcode ranks per sample
 }
 \examples{
 isS4(barcodeRanksPerSample)

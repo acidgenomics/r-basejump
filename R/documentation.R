@@ -1,4 +1,4 @@
-#' Parse R Documentation
+#' Parse R documentation
 #'
 #' Modified version of `tools:::.Rd_get_metadata` that keeps whitespace and
 #' returns `character` instead of `matrix`.

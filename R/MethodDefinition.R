@@ -1,4 +1,4 @@
-#' Access to the Data Inside an S4 Method Definition
+#' Access the data inside an S4 method definition
 #'
 #' @name MethodDefinition
 #'
