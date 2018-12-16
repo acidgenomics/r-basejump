@@ -3,13 +3,12 @@
 #' @name cell2sample
 #' @inheritParams params
 #'
-#' @note `sampleID` column must be defined in `colData`.
+#' @note `sampleID` column must be defined in
+#' [colData][SummarizedExperiment::colData].
 #'
-#' @return Named `factor`.
-#' Sample IDs as the `levels` and cell IDs as the `names`.
-#'
-#' - `"factor"`: Named `factor` containing sample IDs as the levels and cell IDs
-#'   as the names.
+#' @return
+#' - `"factor"`: Named `factor` containing as the [levels][base::levels] and
+#'   cell IDs as the [names][base::names].
 #' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
 #'
 #' @examples
@@ -21,10 +20,7 @@ NULL
 
 
 cell2sample.SingleCellExperiment <-  # nolint
-    function(
-        object,
-        return = c("factor", "tibble")
-    ) {
+    function(object, return = c("factor", "tibble")) {
         validObject(object)
         assert(isSubset("sampleID", colnames(colData(object))))
         return <- match.arg(return)

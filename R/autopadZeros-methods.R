@@ -1,8 +1,8 @@
 #' Autopad zeros
 #'
-#' @note For methods on objects supporting `dim` (e.g. `matrix`), the object
-#' will be returned with the rows and/or columns resorted by default. This does
-#' not apply to the `character` method.
+#' @note For methods on objects supporting [dim][base::dim] (e.g. `matrix`), the
+#' object will be returned with the rows and/or columns resorted by default.
+#' This does not apply to the `character` method.
 #'
 #' @name autopadZeros
 #' @inheritParams params

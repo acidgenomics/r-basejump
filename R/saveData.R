@@ -91,7 +91,7 @@ formals(saveData)[["overwrite"]] <- formalsList[["save.overwrite"]]
 
 
 
-#' Assign and Save Data
+#' Assign and save data
 #'
 #' Assigns a new object by name to the current working environment then saves
 #' the newly assigned object, specified by the "`dir`" argument.

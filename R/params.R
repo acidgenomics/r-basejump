@@ -9,8 +9,9 @@
 #' @param aspectRatio `integer(1)`.
 #'   Aspect ratio.
 #' @param assay `vector(1)`.
-#'   Name or index of count matrix slotted in `assays`. When passing in a
-#'   string, the name must be defined in `assayNames`.
+#'   Name or index of count matrix slotted in
+#'   [assays][SummarizedExperiment::assays]. When passing in a string, the name
+#'   must be defined in [assayNames][SummarizedExperiment::assayNames].
 #' @param assays `list`.
 #'   Count matrices, which must have matching dimensions. Counts can be passed
 #'   in as either a dense matrix (`matrix`) or sparse matrix (`sparseMatrix`).
@@ -19,9 +20,9 @@
 #'
 #'   We recommend using one of the following:
 #'
-#'   - `BiocParallel::bpparam`.
-#'   - `BiocParallel::SerialParam`.
-#'   - `BiocParallel::MulticoreParam`.
+#'   - [bpparam][BiocParallel::bpparam].
+#'   - [SerialParam][BiocParallel::SerialParam].
+#'   - [MulticoreParam][BiocParallel::MulticoreParam].
 #' @param censorSamples `character`.
 #'   Specify a subset of samples to censor.
 #' @param check `logical(1)`.
@@ -33,7 +34,7 @@
 #' @param color `ScaleDiscrete`.
 #'   Desired ggplot2 color scale. Must supply discrete values. When set `NULL`,
 #'   the default ggplot2 color palette will be used. If manual color definitions
-#'   are desired, we recommend using `ggplot2::scale_color_manual`.
+#'   are desired, we recommend using [ggplot2::scale_color_manual()].
 #'
 #'   To set the discrete color palette globally, use:
 #'
@@ -45,7 +46,8 @@
 #' @param countsAxisLabel `character(1)`.
 #'   Counts axis label.
 #' @param dark `logical(1)`.
-#'   Plot against a dark background using `basejump::theme_midnight` theme.
+#'   Plot against a dark background using the [basejump::theme_midnight()]
+#'   ggplot2 theme.
 #' @param dimsUse `integer`.
 #'   Vector of length 2 that denotes the columns from the reduced dimension
 #'   matrix to use for `centerX` and `centerY` column calculations. Defaults the
@@ -61,17 +63,19 @@
 #'   available can vary, depending on the versions of AnnotationHub and
 #'   ensembldb in use.
 #' @param envir `environment`.
-#'   Environment to use for assignment. Defaults to `parent.frame`, which will
-#'   assign into the calling environment.
+#'   Environment to use for assignment. Defaults to
+#'   [parent.frame()][base::parent.frame], which will assign into the calling
+#'   environment.
 #' @param expression `character(1)`.
-#'   Calculation to apply. Uses `match.arg` and defaults to the first argument
-#'   in the `character` vector.
+#'   Calculation to apply.
+#'   Uses [match.arg()][base::match.arg] internally and defaults to the first
+#'   argument in the `character` vector.
 #' @param file `character(1)`.
 #'   File path.
 #' @param fill `ggproto`/`ScaleDiscrete`.
 #'   Desired ggplot2 fill scale. Must supply discrete values. When set to
 #'   `NULL`, the default ggplot2 color palette will be used. If manual color
-#'   definitions are desired, we recommend using `ggplot2::scale_fill_manual`.
+#'   definitions are desired, we recommend using [ggplot2::scale_fill_manual()].
 #'
 #'   To set the discrete fill palette globally, use:
 #'
@@ -92,8 +96,9 @@
 #'   defaults to the most recent build available. Note: don't pass in UCSC build
 #'   IDs (e.g. `"hg38"`).
 #' @param geom `character(1)`.
-#'   Plot type. Uses `match.arg` and defaults to the first argument in the
-#'   `character` vector.
+#'   Plot type.
+#'   Uses [match.arg()][base::match.arg] internally and defaults to the first
+#'   argument in the `character` vector.
 #' @param gffFile `character(1)`.
 #'   GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
 #'   (GFFv2) instead of a GFFv3 file if possible.
@@ -163,11 +168,13 @@
 #' @param progress `logical(1)`.
 #'   Show progress, using progress bars.
 #' @param reducedDim `character(1)`.
-#'   Name of reduced dimension matrix slotted in `reducedDims`. Includes TNSE,
-#'   UMAP, PCA, for example.
+#'   Name of reduced dimension matrix slotted in
+#'   [reducedDims][SingleCellExperiment::reducedDims]. Includes TNSE, UMAP, PCA,
+#'   for example.
 #' @param return `character(1)`.
-#'   Return type. Uses `match.arg` internally and defaults to the first argument
-#'   in the `character` vector.
+#'   Return type.
+#'   Uses [match.arg()][base::match.arg] internally and defaults to the first
+#'   argument in the `character` vector.
 #' @param rowData `DataFrame`.
 #'   Metadata describing the assay rows, if genomic ranges are not available.
 #'   *Use rowRanges (GRanges) instead, if possible*.

@@ -1,4 +1,4 @@
-#' Example S4 DataFrame
+#' Example `DataFrame`
 #' @examples
 #' data(df)
 #' df
@@ -6,7 +6,7 @@
 
 
 
-#' Sexually Dimorphic Gender Marker Genes
+#' Sexually dimorphic gender marker genes
 #' @examples
 #' data(gender_markers)
 #' gender_markers
@@ -14,7 +14,7 @@
 
 
 
-#' Example Dense Matrix
+#' Example `matrix`
 #' @examples
 #' data(mat)
 #' mat
@@ -22,7 +22,7 @@
 
 
 
-#' Organism Mappings
+#' Organism mappings
 #' @examples
 #' data(organism_mappings)
 #' organism_mappings
@@ -30,7 +30,9 @@
 
 
 
-#' Example RNA-Seq Data Set
+#' Example `SummarizedExperiment`
+#'
+#' Gene-level RNA-seq data set.
 #'
 #' Generated with `DESeq2::makeExampleDESeqDataSet`. Contains actual gene
 #' identifiers and Ensembl annotations.
@@ -42,7 +44,10 @@
 
 
 
-#' Example Single-Cell RNA-Seq Data Set
+#' Example `SingleCellExperiment`
+#'
+#' Gene-level single-cell RNA-seq data set.
+#'
 #' @seealso `scater::sc_example_counts`.
 #' @examples
 #' data(sce)
@@ -51,7 +56,7 @@
 
 
 
-#' Example Sparse Matrix
+#' Example `sparseMatrix`
 #' @examples
 #' data(sparse)
 #' sparse
@@ -59,7 +64,7 @@
 
 
 
-#' Example Tibble
+#' Example `tibble` (`tbl_df`)
 #' @examples
 #' data(tbl)
 #' tbl
@@ -67,7 +72,10 @@
 
 
 
-#' Example Transcript-Level Data Set
+#' Example transcript-level `SummarizedExperiment`
+#'
+#' Transcript-level RNA-seq data set.
+#'
 #' @examples
 #' data(tx_se)
 #' tx_se

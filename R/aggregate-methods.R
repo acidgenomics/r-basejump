@@ -2,12 +2,12 @@
 #'
 #' Aggregate gene/transcript features (rows) or sample replicates (columns).
 #'
-#' `aggregateRows` works down the rows, and is designed to aggregate features
-#' (e.g. genes or transcripts). Most commonly, the `aggregateRows` function can
-#' be used to aggregate counts from transcript-level to gene-level.
+#' [aggregateRows()] works down the rows, and is designed to aggregate features
+#' (e.g. genes or transcripts). Most commonly, the [aggregateRows()] function
+#' can be used to aggregate counts from transcript-level to gene-level.
 #'
-#' `aggregateCols` works across the columns, and is designed to aggregate sample
-#' replicates.
+#' [aggregateCols()] works across the columns, and is designed to aggregate
+#' sample replicates.
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
@@ -17,27 +17,34 @@
 #'
 #' - `matrix`, `sparseMatrix`: Aggregate rows or columns using a grouping
 #'   `factor`.
-#' - `SummarizedExperiment`: Aggregate rows or columns in `assays` using an
-#'   automatically generated grouping `factor`, which is obtained from a
-#'   user-defined column (`col` argument) in either `rowData` or `colData`.
-#'   Slot an `aggregate` column into `rowData` for `aggregateRows`, or into
-#'   `colData` for `aggregateCols`. This method will define the `groupings`
-#'   automatically and perform the aggregation.
-#' - `SingleCellExperiment`: Aggregate `assays` across cell-level groupings,
-#'   defined by a column in `colData`. Inherits from `SummarizedExperiment`,
-#'   and still relies upon slotting an `aggregate` column into `colData`. Note
-#'   that these groupings will map to cells, so care must be taken to properly
-#'   aggregate samples.
+#' - `SummarizedExperiment`: Aggregate rows or columns of data slotted in
+#'   [assays][SummarizedExperiment::assays] using an automatically generated
+#'   grouping `factor`, which is obtained from a user-defined column (`col`
+#'   argument) in either the [rowData][SummarizedExperiment::rowData] or
+#'   [colData][SummarizedExperiment::colData] of the object.
+#'   Slot an `aggregate` column into [rowData][SummarizedExperiment::rowData]
+#'   for [aggregateRows()], or into [colData][SummarizedExperiment::colData]
+#'   for [aggregateCols()]. This method will define the `groupings`
+#'   automatically, and perform the aggregation.
+#' - `SingleCellExperiment`: Aggregate [assays][SummarizedExperiment::assays]
+#'   across cell-level groupings, defined by a column in
+#'   [colData][SummarizedExperiment::colData]. Inherits from
+#'   `SummarizedExperiment`, and still relies upon slotting an `aggregate`
+#'   column into [colData][SummarizedExperiment::colData]. Note that these
+#'   groupings will map to cells, so care must be taken to properly aggregate
+#'   samples.
 #'
 #' @param groupings `factor`.
 #'   Defines the aggregation groupings. The new aggregate names are defined as
-#'   the `factor` `levels`, and the original, unaggregated names are defined as
-#'   the `names`.
+#'   the `factor` [levels][base::levels], and the original, unaggregated names
+#'   are defined as the `names`.
 #' @param col `character(1)`.
-#'   Name of column in either `rowData` or `colData` that defines the desired
+#'   Name of column in either [rowData][SummarizedExperiment::rowData] or
+#'   [colData][SummarizedExperiment::colData] that defines the desired
 #'   aggregation groupings.
 #' @param fun `character(1)`.
-#'   Name of the aggregation function. Uses `match.arg`.
+#'   Name of the aggregation function.
+#'   Uses [match.arg()][base::match.arg] internally.
 #'
 #' @seealso
 #' - `stats::aggregate`.

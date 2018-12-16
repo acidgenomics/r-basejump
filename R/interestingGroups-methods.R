@@ -1,4 +1,4 @@
-#' Interesting Groups
+#' Interesting groups
 #'
 #' @name interestingGroups
 #' @inheritParams params
