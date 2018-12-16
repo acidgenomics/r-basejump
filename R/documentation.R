@@ -61,7 +61,7 @@ parseRd <- function(object, tag) {
 
 
 
-#' R Documentation Tags
+#' R documentation tags
 #'
 #' Modified version of the unexported `tools:::RdTags` function.
 #'
@@ -92,7 +92,7 @@ RdTags <- function(object) {  # nolint
 
 
 
-#' Save R Documentation Examples
+#' Save R documentation examples
 #'
 #' Parse the documentation for a function and save the working examples to an R
 #' script. Note that the `f` argument is parameterized and can handle multiple
@@ -187,7 +187,7 @@ saveRdExamples <- function(
 
 
 
-#' R Documentation Table
+#' R documentation table
 #'
 #' @param df `data.frame`.
 #'

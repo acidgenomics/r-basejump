@@ -1,7 +1,7 @@
-#' Manipulate file paths
+#' Get the base name without the file extension
 #' @inherit base::basename
 #' @export
-#' @seealso `basename`.
+#' @seealso [basename][base::basename].
 #' @examples
 #' basenameSansExt("dir/file.txt")
 #' basenameSansExt("dir/archive.tar.gz")

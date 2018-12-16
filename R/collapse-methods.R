@@ -168,7 +168,7 @@ setMethod(
 
 
 
-#' Sort and Make Unique
+#' Sort and make unique
 #'
 #' This is a convenience function to quickly sort and atomic vector and make the
 #' values unique. The function also strips `NA` values. This is useful for
@@ -191,7 +191,7 @@ sortUnique <- function(object) {
 
 
 
-#' Convert to a Unique Character String
+#' Convert to a unique character string
 #'
 #' @export
 #'

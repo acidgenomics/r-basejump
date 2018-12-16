@@ -22,7 +22,7 @@
 #'    and **N**on-supervised **O**rthologous **G**roups (NOG) protein
 #'    identifiers.
 #'
-#' The [EggNOG README file](http://eggnogdb.embl.de/download/latest/README.txt)
+#' The [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt)
 #' contains additional useful reference information.
 setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
 setValidity(
@@ -85,7 +85,7 @@ setValidity(
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
-#' `metadata`.
+#' [metadata][S4Vectors::metadata].
 #'
 #' @author Michael Steinbaugh
 #' @export

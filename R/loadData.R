@@ -65,7 +65,7 @@ formals(loadData)[["dir"]] <- formalsList[["load.dir"]]
 
 
 
-#' Load Data as Name
+#' Load data as name
 #'
 #' @note This function is intended for interactive use and interprets object
 #'   names using non-standard evaluation.
@@ -146,7 +146,7 @@ formals(loadDataAsName)[["dir"]] <- formalsList[["load.dir"]]
 
 
 
-#' Load Remote Data
+#' Load remote data
 #'
 #' Load a remote R binary file. This function is vectorized and supports
 #' multiple URLs in a single call.

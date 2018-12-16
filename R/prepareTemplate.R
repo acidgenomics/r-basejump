@@ -3,7 +3,7 @@
 
 
 
-#' Prepare R Markdown template file
+#' Prepare R Markdown template
 #'
 #' If the required template dependency files aren't present, copy them from the
 #' requested package. Existing files are not overwritten by default. This

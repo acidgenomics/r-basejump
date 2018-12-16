@@ -74,7 +74,7 @@ setGeneric(
 #'
 #' @return `integer matrix`.
 #'
-#' @seealso DESeqAnalysis.
+#' @seealso [DESeqAnalysis](https://steinbaugh.com/DESeqAnalysis/).
 #'
 #' @examples
 #' isS4(alphaSummary)
@@ -108,10 +108,10 @@ setGeneric(
 #' @return `list`.
 #'
 #' @seealso
-#' - DropletUtils.
-#' - SingleCellExperiment.
-#' - bcbioSingleCell.
-#' - Chromium.
+#' - [DropletUtils](https://bioconductor.org/packages/DropletUtils/).
+#' - [SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment/).
+#' - [bcbioSingleCell](http://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
+#' - [Chromium](https://github.com/steinbaugh/Chromium/).
 #'
 #' @examples
 #' isS4(barcodeRanksPerSample)
@@ -157,7 +157,7 @@ setGeneric(
 #' @return `character(1)`.
 #' Contrast name.
 #'
-#' @seealso DESeqAnalysis.
+#' @seealso [DESeqAnalysis](https://steinbaugh.com/DESeqAnalysis/).
 #'
 #' @examples
 #' isS4(contrastName)
@@ -224,7 +224,7 @@ setGeneric(
 #' @return `character`.
 #' Gene identifiers.
 #'
-#' @seealso DESeqAnalysis.
+#' @seealso [DESeqAnalysis](https://steinbaugh.com/DESeqAnalysis/).
 #'
 #' @examples
 #' isS4(deg)
@@ -270,8 +270,8 @@ setGeneric(
 #' @return `SingleCellExperiment`.
 #'
 #' @seealso
-#' - bcbioSingleCell.
-#' - Chromium.
+#' - [bcbioSingleCell](http://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
+#' - [Chromium](https://github.com/steinbaugh/Chromium/).
 #'
 #' @examples
 #' isS4(filterCells)
@@ -542,7 +542,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plot5Prime3PrimeBias)
@@ -563,7 +563,7 @@ setGeneric(
 #'
 #' @return `ggplot` grid.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plotBarcodeRanks)
@@ -584,7 +584,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plotCellCounts)
@@ -638,14 +638,15 @@ setGeneric(
 #' manual input of a gene vector. All of the optional parameters for
 #' `plotHeatmap` are also supported by this function.
 #'
-#' To adjust the annotation columns, modify the `colData` of the `counts`
-#' argument, which must contain/extend a `SummarizedExperiment`.
+#' To adjust the annotation columns, modify the
+#' [colData][SummarizedExperiment::colData] of the `counts` argument, which must
+#' contain a `SummarizedExperiment`.
 #'
 #' @inherit plotHeatmap params return
 #' @inheritParams params
 #' @export
 #'
-#' @seealso DESeqAnalysis.
+#' @seealso [DESeqAnalysis](https://steinbaugh.com/DESeqAnalysis/).
 #'
 #' @examples
 #' isS4(plotDEGHeatmap)
@@ -661,19 +662,20 @@ setGeneric(
 # plotDEGPCA ===================================================================
 #' Plot differentially expressed gene principal component analysis
 #'
-#' This function is an extension of `plotPCA` that is optimized for automatic
+#' This function is an extension of [plotPCA()] that is optimized for automatic
 #' handling of differentially expressed genes, rather than requiring manual
 #' input of a gene vector or subset object. All of the optional parameters for
-#' `plotPCA` are also supported by this function.
+#' [plotPCA()] are also supported by this function.
 #'
-#' To adjust the annotation columns, modify the `colData` of the `counts`
-#' argument, which must contain/extend a `SummarizedExperiment`.
+#' To adjust the annotation columns, modify the
+#' [colData][SummarizedExperiment::colData] of the `counts` argument, which must
+#' contain/extend a `SummarizedExperiment`.
 #'
 #' @inherit plotPCA params return
 #' @inheritParams params
 #' @export
 #'
-#' @seealso DESeqAnalysis.
+#' @seealso [DESeqAnalysis](https://steinbaugh.com/DESeqAnalysis/).
 #'
 #' @examples
 #' isS4(plotDEGPCA)
@@ -694,7 +696,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/)
 #'
 #' @examples
 #' isS4(plotExonicMappingRate)
@@ -743,7 +745,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plotGeneSaturation)
@@ -765,8 +767,8 @@ setGeneric(
 #' @return `ggplot`.
 #'
 #' @seealso
-#' - bcbioSingleCell.
-#' - Chromium.
+#' - [bcbioSingleCell](http://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
+#' - [Chromium](https://github.com/steinbaugh/Chromium/).
 #'
 #' @examples
 #' isS4(plotGenesPerCell)
@@ -831,7 +833,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plotIntronicMappingRate)
@@ -854,7 +856,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plotMappedReads)
@@ -879,7 +881,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plotMappingRate)
@@ -900,7 +902,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso DESeqAnalysis.
+#' @seealso [DESeqAnalysis](https://steinbaugh.com/DESeqAnalysis/).
 #'
 #' @examples
 #' isS4(plotMeanSD)
@@ -922,8 +924,8 @@ setGeneric(
 #' @return `ggplot`.
 #'
 #' @seealso
-#' - bcbioSingleCell.
-#' - Chromium.
+#' - [bcbioSingleCell](http://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
+#' - [Chromium](https://github.com/steinbaugh/Chromium/).
 #'
 #' @examples
 #' isS4(plotMitoRatio)
@@ -945,8 +947,8 @@ setGeneric(
 #' @return `ggplot`.
 #'
 #' @seealso
-#' - bcbioSingleCell.
-#' - Chromium.
+#' - [bcbioSingleCell](http://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
+#' - [Chromium](https://github.com/steinbaugh/Chromium/).
 #'
 #' @examples
 #' isS4(plotMitoVsCoding)
@@ -970,8 +972,8 @@ setGeneric(
 #' @return `ggplot`.
 #'
 #' @seealso
-#' - bcbioSingleCell.
-#' - Chromium.
+#' - [bcbioSingleCell](http://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
+#' - [Chromium](https://github.com/steinbaugh/Chromium/).
 #'
 #' @examples
 #' isS4(plotNovelty)
@@ -1010,7 +1012,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plotRRNAMappingRate)
@@ -1033,7 +1035,8 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioSingleCell.
+#' @seealso
+#' [bcbioSingleCell](https://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
 #'
 #' @examples
 #' isS4(plotReadsPerCell)
@@ -1069,7 +1072,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso bcbioRNASeq.
+#' @seealso [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @examples
 #' isS4(plotUMIsVsGenes)
@@ -1093,8 +1096,8 @@ setGeneric(
 #' @return `ggplot`.
 #'
 #' @seealso
-#' - bcbioSingleCell.
-#' - Chromium.
+#' - [bcbioSingleCell](http://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
+#' - [Chromium](https://github.com/steinbaugh/Chromium/).
 #'
 #' @examples
 #' isS4(plotUMIsVsGenes)
@@ -1116,8 +1119,8 @@ setGeneric(
 #' @return `ggplot`.
 #'
 #' @seealso
-#' - bcbioSingleCell.
-#' - Chromium.
+#' - [bcbioSingleCell](http://bioinformatics.sph.harvard.edu/bcbioSingleCell/).
+#' - [Chromium](https://github.com/steinbaugh/Chromium/).
 #'
 #' @examples
 #' isS4(plotUMIsVsGenes)
@@ -1140,7 +1143,7 @@ setGeneric(
 #'
 #' @return `ggplot`.
 #'
-#' @seealso DESeqAnalysis.
+#' @seealso [DESeqAnalysis](https://steinbaugh.com/DESeqAnalysis/).
 #'
 #' @examples
 #' isS4(plotVolcano)
@@ -1175,7 +1178,7 @@ setGeneric(
 #'
 #' @seealso
 #' - `edgeR::calcNormFactors`.
-#' - bcbioRNASeq.
+#' - [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @return `matrix`.
 setGeneric(
@@ -1296,7 +1299,7 @@ setGeneric(
 #' @seealso
 #' - `edgeR::calcNormFactors`.
 #' - `edgeR::cpm`.
-#' - bcbioRNASeq.
+#' - [bcbioRNASeq](https://bioinformatics.sph.harvard.edu/bcbioRNASeq/).
 #'
 #' @return `matrix`.
 setGeneric(
@@ -1326,7 +1329,7 @@ setGeneric(
 #' @inheritParams params
 #' @export
 #'
-#' @seealso DESeqAnalysis.
+#' @seealso [DESeqAnalysis](https://steinbaugh.com/DESeqAnalysis/).
 #'
 #' @return `kable`.
 #' Markdown tables.

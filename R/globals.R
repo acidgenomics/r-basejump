@@ -19,7 +19,9 @@ basejumpCacheURL <- paste0(
 
 
 #' Single-sell barcode pattern
+#'
 #' Trailing number is to match cellranger output.
+#'
 #' @export
 #' @examples
 #' barcodePattern
@@ -28,7 +30,9 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 
 
 #' File extension pattern
+#'
 #' Note optional matching of gzip.
+#'
 #' @export
 #' @examples
 #' extPattern
@@ -37,7 +41,9 @@ extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
 
 #' Formals list
+#'
 #' Formals that the user can set globally with `base::getOption`.
+#'
 #' @export
 #' @examples
 #' formalsList

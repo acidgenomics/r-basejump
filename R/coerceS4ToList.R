@@ -1,13 +1,9 @@
 #' Coerce any S4 object to a list
-#'
+#' @export
 #' @inheritParams methods::coerce
 #' @inheritParams params
-#' @export
-#'
 #' @seealso `methods::coerce`.
-#'
 #' @return `list`.
-#'
 #' @examples
 #' data(rse)
 #'
