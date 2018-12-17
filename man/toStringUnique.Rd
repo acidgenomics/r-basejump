@@ -2,7 +2,7 @@
 % Please edit documentation in R/collapse-methods.R
 \name{toStringUnique}
 \alias{toStringUnique}
-\title{Convert to a Unique Character String}
+\title{Convert to a unique character string}
 \usage{
 toStringUnique(object)
 }
@@ -13,7 +13,7 @@ toStringUnique(object)
 \code{character(1)}.
 }
 \description{
-Convert to a Unique Character String
+Convert to a unique character string
 }
 \examples{
 toStringUnique(c("hello", "world", NA, "hello", "world", NA))

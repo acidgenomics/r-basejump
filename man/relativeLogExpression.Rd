@@ -23,6 +23,6 @@ Anders and Huber (2010).
 \seealso{
 \itemize{
 \item \code{edgeR::calcNormFactors}.
-\item bcbioRNASeq.
+\item \href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }
 }

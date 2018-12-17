@@ -28,8 +28,9 @@ metricsPerSample(object, ...)
 \item{...}{Additional arguments.}
 
 \item{return}{\code{character(1)}.
-Return type. Uses \code{match.arg} internally and defaults to the first argument
-in the \code{character} vector.}
+Return type.
+Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
+argument in the \code{character} vector.}
 
 \item{fun}{\code{character(1)}.
 Mathematical function name to apply. Uses \code{match.arg}.}

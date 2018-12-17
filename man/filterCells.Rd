@@ -22,7 +22,7 @@ isS4(filterCells)
 }
 \seealso{
 \itemize{
-\item bcbioSingleCell.
-\item Chromium.
+\item \href{http://bioinformatics.sph.harvard.edu/bcbioSingleCell/}{bcbioSingleCell}.
+\item \href{https://github.com/steinbaugh/Chromium/}{Chromium}.
 }
 }

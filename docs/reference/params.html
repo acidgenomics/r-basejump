@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -76,9 +76,6 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -136,8 +133,9 @@ Aspect ratio.</p></td>
     <tr>
       <th>assay</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>.
-Name or index of count matrix slotted in <code>assays</code>. When passing in a
-string, the name must be defined in <code>assayNames</code>.</p></td>
+Name or index of count matrix slotted in
+<a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a>. When passing in a string, the name
+must be defined in <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assayNames</a>.</p></td>
     </tr>
     <tr>
       <th>assays</th>
@@ -150,9 +148,9 @@ in as either a dense matrix (<code>matrix</code>) or sparse matrix (<code>sparse
       <td><p><code>bpparamClass</code>.
 BiocParallel parameter specifying the back-end to be used for computations.</p>
 <p>We recommend using one of the following:</p><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/register'>BiocParallel::bpparam</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/SerialParam-class'>BiocParallel::SerialParam</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/MulticoreParam-class'>BiocParallel::MulticoreParam</a></code>.</p></li>
+<li><p><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/register'>bpparam</a>.</p></li>
+<li><p><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/SerialParam-class'>SerialParam</a>.</p></li>
+<li><p><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/MulticoreParam-class'>MulticoreParam</a>.</p></li>
 </ul></td>
     </tr>
     <tr>
@@ -177,7 +175,7 @@ cells.</p></td>
       <td><p><code>ScaleDiscrete</code>.
 Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
 the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual</a></code>.</p>
+are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>.</p>
 <p>To set the discrete color palette globally, use:</p><pre>options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 </pre></td>
     </tr>
@@ -194,7 +192,8 @@ Counts axis label.</p></td>
     <tr>
       <th>dark</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
-Plot against a dark background using <code><a href='ggplot2-themes.html'>basejump::theme_midnight</a></code> theme.</p></td>
+Plot against a dark background using the <code><a href='ggplot2-themes.html'>basejump::theme_midnight()</a></code>
+ggplot2 theme.</p></td>
     </tr>
     <tr>
       <th>dimsUse</th>
@@ -225,14 +224,16 @@ ensembldb in use.</p></td>
     <tr>
       <th>envir</th>
       <td><p><code>environment</code>.
-Environment to use for assignment. Defaults to <code>parent.frame</code>, which will
-assign into the calling environment.</p></td>
+Environment to use for assignment. Defaults to
+<a href='https://www.rdocumentation.org/packages/base/topics/sys.parent'>parent.frame()</a>, which will assign into the calling
+environment.</p></td>
     </tr>
     <tr>
       <th>expression</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Calculation to apply. Uses <code>match.arg</code> and defaults to the first argument
-in the <code>character</code> vector.</p></td>
+Calculation to apply.
+Uses <a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a> internally and defaults to the first
+argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
       <th>file</th>
@@ -244,7 +245,7 @@ File path.</p></td>
       <td><p><code>ggproto</code>/<code>ScaleDiscrete</code>.
 Desired ggplot2 fill scale. Must supply discrete values. When set to
 <code>NULL</code>, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual</a></code>.</p>
+definitions are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>.</p>
 <p>To set the discrete fill palette globally, use:</p><pre>options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
 </pre></td>
     </tr>
@@ -276,8 +277,9 @@ IDs (e.g. <code>"hg38"</code>).</p></td>
     <tr>
       <th>geom</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Plot type. Uses <code>match.arg</code> and defaults to the first argument in the
-<code>character</code> vector.</p></td>
+Plot type.
+Uses <a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a> internally and defaults to the first
+argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
       <th>gffFile</th>
@@ -432,14 +434,16 @@ Show progress, using progress bars.</p></td>
     <tr>
       <th>reducedDim</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Name of reduced dimension matrix slotted in <code>reducedDims</code>. Includes TNSE,
-UMAP, PCA, for example.</p></td>
+Name of reduced dimension matrix slotted in
+<a href='https://www.rdocumentation.org/packages/SingleCellExperiment/topics/SCE-reducedDims'>reducedDims</a>. Includes TNSE, UMAP, PCA,
+for example.</p></td>
     </tr>
     <tr>
       <th>return</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Return type. Uses <code>match.arg</code> internally and defaults to the first argument
-in the <code>character</code> vector.</p></td>
+Return type.
+Uses <a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a> internally and defaults to the first
+argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
       <th>rowData</th>

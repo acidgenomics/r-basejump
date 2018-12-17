@@ -16,8 +16,9 @@ plotQC(object, ...)
 \item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in \code{assays}. When passing in a
-string, the name must be defined in \code{assayNames}.}
+Name or index of count matrix slotted in
+\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
+must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
 }
 \value{
 \code{ggplot}.

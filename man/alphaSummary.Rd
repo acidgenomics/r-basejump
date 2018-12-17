@@ -21,5 +21,5 @@ Quickly generate a summary table of various alpha level cutoffs.
 isS4(alphaSummary)
 }
 \seealso{
-DESeqAnalysis.
+\href{https://steinbaugh.com/DESeqAnalysis/}{DESeqAnalysis}.
 }

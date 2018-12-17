@@ -21,5 +21,5 @@ The number of mapped reads should correspond to the number of total reads.
 isS4(plotMappedReads)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

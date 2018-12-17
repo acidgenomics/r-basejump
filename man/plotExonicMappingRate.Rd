@@ -21,5 +21,5 @@ Plot exonic mapping rate
 isS4(plotExonicMappingRate)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}
 }

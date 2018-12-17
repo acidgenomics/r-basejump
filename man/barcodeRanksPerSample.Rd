@@ -22,9 +22,9 @@ isS4(barcodeRanksPerSample)
 }
 \seealso{
 \itemize{
-\item DropletUtils.
-\item SingleCellExperiment.
-\item bcbioSingleCell.
-\item Chromium.
+\item \href{https://bioconductor.org/packages/DropletUtils/}{DropletUtils}.
+\item \href{https://bioconductor.org/packages/SingleCellExperiment/}{SingleCellExperiment}.
+\item \href{http://bioinformatics.sph.harvard.edu/bcbioSingleCell/}{bcbioSingleCell}.
+\item \href{https://github.com/steinbaugh/Chromium/}{Chromium}.
 }
 }

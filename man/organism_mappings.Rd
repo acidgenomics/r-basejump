@@ -3,13 +3,13 @@
 \docType{data}
 \name{organism_mappings}
 \alias{organism_mappings}
-\title{Organism Mappings}
+\title{Organism mappings}
 \format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 9 rows and 6 columns.}
 \usage{
 organism_mappings
 }
 \description{
-Organism Mappings
+Organism mappings
 }
 \examples{
 data(organism_mappings)

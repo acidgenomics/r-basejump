@@ -17,8 +17,9 @@ quoted}.}
 Directory path.}
 
 \item{envir}{\code{environment}.
-Environment to use for assignment. Defaults to \code{parent.frame}, which will
-assign into the calling environment.}
+Environment to use for assignment. Defaults to
+\link[base:parent.frame]{parent.frame()}, which will assign into the calling
+environment.}
 }
 \value{
 Invisible \code{character}.

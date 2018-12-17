@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prepare R Markdown Template File — prepareTemplate • basejump</title>
+<title>Prepare R Markdown template — prepareTemplate • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Prepare R Markdown Template File — prepareTemplate" />
+<meta property="og:title" content="Prepare R Markdown template — prepareTemplate" />
 
 <meta property="og:description" content="If the required template dependency files aren't present, copy them from the
 requested package. Existing files are not overwritten by default. This
@@ -69,7 +69,7 @@ subdirectory, the function will return an error." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -80,9 +80,6 @@ subdirectory, the function will return an error." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -111,7 +108,7 @@ subdirectory, the function will return an error." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Prepare R Markdown Template File</h1>
+    <h1>Prepare R Markdown template</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/prepareTemplate.R'><code>R/prepareTemplate.R</code></a></small>
     <div class="hidden name"><code>prepareTemplate.Rd</code></div>
     </div>
@@ -126,15 +123,16 @@ subdirectory, the function will return an error.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>prepareTemplate</span>(<span class='no'>package</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>prepareTemplate</span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>package</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Name of package containing the R Markdown template.</p></td>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>.
+Name of package containing the R Markdown template. If <code>NULL</code>, only the
+basic shared files defined in the basejump package will be copied.</p></td>
     </tr>
     <tr>
       <th>overwrite</th>

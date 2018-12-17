@@ -21,5 +21,5 @@ The majority of reads should map to exons and not introns.
 isS4(plotIntronicMappingRate)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

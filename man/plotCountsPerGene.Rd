@@ -31,8 +31,9 @@ plotCountsPerGene(object, ...)
 \item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in \code{assays}. When passing in a
-string, the name must be defined in \code{assayNames}.}
+Name or index of count matrix slotted in
+\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
+must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
@@ -50,7 +51,7 @@ For more information:\preformatted{help(topic = "scale_x_continuous", package = 
 \item{color}{\code{ScaleDiscrete}.
 Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
 the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{ggplot2::scale_color_manual}.
+are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
 
 To set the discrete color palette globally, use:\preformatted{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 }}
@@ -58,7 +59,7 @@ To set the discrete color palette globally, use:\preformatted{options(basejump.c
 \item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
 Desired ggplot2 fill scale. Must supply discrete values. When set to
 \code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual}.
+definitions are desired, we recommend using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}.
 
 To set the discrete fill palette globally, use:\preformatted{options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}

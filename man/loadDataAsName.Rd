@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadData.R
 \name{loadDataAsName}
 \alias{loadDataAsName}
-\title{Load Data as Name}
+\title{Load data as name}
 \usage{
 loadDataAsName(..., dir = getOption("basejump.load.dir", "."),
   envir = globalenv())
@@ -17,14 +17,15 @@ be quoted}.}
 Directory path.}
 
 \item{envir}{\code{environment}.
-Environment to use for assignment. Defaults to \code{parent.frame}, which will
-assign into the calling environment.}
+Environment to use for assignment. Defaults to
+\link[base:parent.frame]{parent.frame()}, which will assign into the calling
+environment.}
 }
 \value{
 Invisible named \code{character}. File paths.
 }
 \description{
-Load Data as Name
+Load data as name
 }
 \note{
 This function is intended for interactive use and interprets object

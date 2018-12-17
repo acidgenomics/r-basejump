@@ -47,7 +47,7 @@ Gene-to-symbol mappings
 
 
 We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
-\code{metadata}.
+\link[S4Vectors:metadata]{metadata}.
 }
 
 \examples{

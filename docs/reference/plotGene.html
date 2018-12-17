@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot Gene Expression — plotGene • basejump</title>
+<title>Plot gene expression — plotGene • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Plot Gene Expression — plotGene" />
+<meta property="og:title" content="Plot gene expression — plotGene" />
 
-<meta property="og:description" content="Plot Gene Expression" />
+<meta property="og:description" content="Plot gene expression" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -76,9 +76,6 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -107,14 +104,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot Gene Expression</h1>
+    <h1>Plot gene expression</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotGene-methods.R'><code>R/plotGene-methods.R</code></a></small>
     <div class="hidden name"><code>plotGene.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plot Gene Expression</p>
+    <p>Plot gene expression</p>
     
     </div>
 
@@ -148,8 +145,9 @@ symbols (e.g. "TSPN6"), if possible.</p></td>
     <tr>
       <th>assay</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>.
-Name or index of count matrix slotted in <code>assays</code>. When passing in a
-string, the name must be defined in <code>assayNames</code>.</p></td>
+Name or index of count matrix slotted in
+<a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a>. When passing in a string, the name
+must be defined in <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assayNames</a>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
@@ -173,7 +171,7 @@ sample name.</p></td>
       <td><p><code>ScaleDiscrete</code>.
 Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
 the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual</a></code>.</p>
+are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>.</p>
 <p>To set the discrete color palette globally, use:</p><pre>options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 </pre></td>
     </tr>
@@ -191,7 +189,7 @@ Plot style.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>ggplot</code>.</p>
+    
 <ul>
 <li><p><code>style = "facet"</code>: <code>ggplot</code> grouped by <code>sampleName</code>, with
 <code><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>ggplot2::facet_wrap</a></code> applied to panel the samples.</p></li>

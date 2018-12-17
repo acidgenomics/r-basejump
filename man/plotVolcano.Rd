@@ -24,5 +24,5 @@ Don't apply post hoc alpha level or LFC threshold cutoffs.
 isS4(plotVolcano)
 }
 \seealso{
-DESeqAnalysis.
+\href{https://steinbaugh.com/DESeqAnalysis/}{DESeqAnalysis}.
 }

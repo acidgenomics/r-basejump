@@ -3,13 +3,13 @@
 \docType{data}
 \name{sparse}
 \alias{sparse}
-\title{Example Sparse Matrix}
+\title{Example \code{sparseMatrix}}
 \format{An object of class \code{dgCMatrix} with 4 rows and 4 columns.}
 \usage{
 sparse
 }
 \description{
-Example Sparse Matrix
+Example \code{sparseMatrix}
 }
 \examples{
 data(sparse)

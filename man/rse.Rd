@@ -3,12 +3,15 @@
 \docType{data}
 \name{rse}
 \alias{rse}
-\title{Example RNA-Seq Data Set}
+\title{Example \code{SummarizedExperiment}}
 \format{An object of class \code{RangedSummarizedExperiment} with 500 rows and 12 columns.}
 \usage{
 rse
 }
 \description{
+Gene-level RNA-seq data set.
+}
+\details{
 Generated with \code{DESeq2::makeExampleDESeqDataSet}. Contains actual gene
 identifiers and Ensembl annotations.
 }

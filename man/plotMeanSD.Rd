@@ -21,5 +21,5 @@ Plot row standard deviations vs. row means
 isS4(plotMeanSD)
 }
 \seealso{
-DESeqAnalysis.
+\href{https://steinbaugh.com/DESeqAnalysis/}{DESeqAnalysis}.
 }

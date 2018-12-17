@@ -2,7 +2,7 @@
 % Please edit documentation in R/collapse-methods.R
 \name{sortUnique}
 \alias{sortUnique}
-\title{Sort and Make Unique}
+\title{Sort and make unique}
 \usage{
 sortUnique(object)
 }

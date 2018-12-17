@@ -2,7 +2,7 @@
 % Please edit documentation in R/basenameSansExt.R
 \name{basenameSansExt}
 \alias{basenameSansExt}
-\title{Manipulate file paths}
+\title{Get the base name without the file extension}
 \usage{
 basenameSansExt(path)
 }
@@ -52,5 +52,5 @@ basenameSansExt("dir/file.txt")
 basenameSansExt("dir/archive.tar.gz")
 }
 \seealso{
-\code{basename}.
+\link[base:basename]{basename}.
 }

@@ -21,5 +21,5 @@ Plot barcode ranks
 isS4(plotBarcodeRanks)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

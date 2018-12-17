@@ -17,15 +17,14 @@ cell2sample(object, ...)
 \item{...}{Additional arguments.}
 
 \item{return}{\code{character(1)}.
-Return type. Uses \code{match.arg} internally and defaults to the first argument
-in the \code{character} vector.}
+Return type.
+Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
+argument in the \code{character} vector.}
 }
 \value{
-Named \code{factor}.
-Sample IDs as the \code{levels} and cell IDs as the \code{names}.
 \itemize{
-\item \code{"factor"}: Named \code{factor} containing sample IDs as the levels and cell IDs
-as the names.
+\item \code{"factor"}: Named \code{factor} containing as the \link[base:levels]{levels} and
+cell IDs as the \link[base:names]{names}.
 \item \code{"tibble"}: \code{tbl_df} containing \code{cellID} and \code{sampleID} columns.
 }
 }
@@ -33,7 +32,8 @@ as the names.
 Cell-to-sample mappings
 }
 \note{
-\code{sampleID} column must be defined in \code{colData}.
+\code{sampleID} column must be defined in
+\link[SummarizedExperiment:colData]{colData}.
 }
 \examples{
 data(sce)

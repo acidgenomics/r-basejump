@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Force an Object to Belong to a Class — as • basejump</title>
+<title>Force an object to belong to a class — as • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Force an Object to Belong to a Class — as" />
+<meta property="og:title" content="Force an object to belong to a class — as" />
 
 <meta property="og:description" content="Coerce an object to a given class." />
 <meta name="twitter:card" content="summary" />
@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -76,9 +76,6 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -107,7 +104,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Force an Object to Belong to a Class</h1>
+    <h1>Force an object to belong to a class</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/as-methods.R'><code>R/as-methods.R</code></a></small>
     <div class="hidden name"><code>as.Rd</code></div>
     </div>
@@ -140,7 +137,7 @@
 
     
     <p>It is often useful to coerce an S4 object to a flat <code>list</code> for archival
-storage. Here we are providing the <code>coerceS4ToList</code> function, which
+storage. Here we are providing the <code><a href='coerceS4ToList.html'>coerceS4ToList()</a></code> function, which
 consistently coerces the slots in any S4 to a standard <code>list</code>. Additionally,
 here we have improved support for <code>SummarizedExperiment</code> to <code>list</code> coercion,
 returning the slots as a <code>list</code>.</p>
@@ -148,20 +145,21 @@ returning the slots as a <code>list</code>.</p>
     <h2 class="hasAnchor" id="tibble"><a class="anchor" href="#tibble"></a>tibble</h2>
 
     
-    <p>Coerce an object to a tibble (<code>tbl_df</code>, <code>data.frame</code>) using either S3 or S4
-methods:</p><ul>
+    <p>Coerce an object to a <a href='https://tibble.tidyverse.org/'>tibble</a> (<code>tbl_df</code>, <code>data.frame</code>) using either S3 or
+S4 methods:</p><ul>
 <li><p>S3: <code><a href='https://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble(x)</a></code> (or <code>as_tibble</code> alias).</p></li>
 <li><p>S4: <code>as(object, Class = "tbl_df")</code>.</p></li>
 </ul>
     <p>Tibbles don't support row name assignment, so here we are ensuring they are
 kept by moving them to a column named <code>rowname</code> by default. This helps avoid
-downstream unexpected data loss when using the dplyr chain of single table
-verbs, such as <code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>dplyr::arrange</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter</a></code>, or <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate</a></code>.</p>
+downstream unexpected data loss when using the <a href='https://dplyr.tidyverse.org/'>dplyr</a> chain of single
+table verbs, such as <a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange()</a>, <a href='http://dplyr.tidyverse.org/reference/filter.html'>filter()</a>,
+or <a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate()</a>.</p>
 <p>This behavior can be overriden in the S3 method by setting <code>rowname = NULL</code>
 instead, which is the current default in the tibble package. The S4 coercion
 method doesn't support arguments, and therefore always attempts to move
 rownames automatically, if defined.</p>
-<p>Conversely, when coercing a <code>tibble</code> back to an S4 <code>DataFrame</code>, our <code>as</code>
+<p>Conversely, when coercing a <a href='https://tibble.tidyverse.org/'>tibble</a> back to an S4 <code>DataFrame</code>, our <code>as()</code>
 method looks for the <code>rowname</code> column and will attempt to move it back as
 row names automatically, unless there are duplicates present.</p>
     

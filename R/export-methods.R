@@ -7,23 +7,25 @@
 #'
 #' Export data out of R and write to disk.
 #'
-#' This is a wrapper for `rio::export` that adds support for additional S4
+#' This is a wrapper for [rio::export()] that adds support for additional S4
 #' classes in Bioconductor.
 #'
 #' @section Row names:
 #'
-#' The standard `rio::export` call will drop rownames when exporting to CSV. The
-#' readr family of functions also never write rownames. This is a *really poor*
-#' default setting for handling genomic data, which often contain gene
-#' identifiers in the rownames. Here we're performing any internal tibble
-#' coercion step to ensure rownames are always moved to a "`rowname`" column in
-#' the CSV export.
+#' Some export utilities in R have a tendency to drop row names when writing to
+#' disk in CSV format. For example, the [readr][] family of functions never
+#' write row names by design. This is a *really poor* default setting for
+#' handling genomic data, which often contain gene identifiers in the row names.
+#' Here we're performing any internal tibble coercion step to ensure row names
+#' are always moved to a "`rowname`" column in the CSV export.
+#'
+#' [readr]: https://readr.tidyverse.org/
 #'
 #' @name export
 #' @inheritParams params
 #'
 #' @param x `ANY`.
-#'   An object supporting `dim` to be written to disk.
+#'   An object supporting [dim][base::dim] to be written to disk.
 #' @param file `character(1)`.
 #'   File path. Specify `file` or `format` but not both.
 #' @param format `character(1)`.
@@ -33,8 +35,8 @@
 #' @param compress `logical(1)`.
 #'   Apply gzip compression to all files.
 #' @param humanize `logical(1)`.
-#'   Automatically convert gene IDs to gene symbols in the `rownames` and sample
-#'   IDs to sample names in the `colnames`.
+#'   Automatically convert gene IDs to gene symbols in the row names and sample
+#'   IDs to sample names in the column names.
 #' @param name `character(1)`.
 #'   Name to use on disk. If `NULL`, will use the name of the object instead.
 #' @param slotNames `character`.

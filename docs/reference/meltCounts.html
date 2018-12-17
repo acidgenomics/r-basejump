@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Melt Count Matrix to Long Format — meltCounts • basejump</title>
+<title>Melt count matrix into long format — meltCounts • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Melt Count Matrix to Long Format — meltCounts" />
+<meta property="og:title" content="Melt count matrix into long format — meltCounts" />
 
-<meta property="og:description" content="Melt Count Matrix to Long Format" />
+<meta property="og:description" content="Melt count matrix into long format" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -76,9 +76,6 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -107,14 +104,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Melt Count Matrix to Long Format</h1>
+    <h1>Melt count matrix into long format</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/meltCounts-methods.R'><code>R/meltCounts-methods.R</code></a></small>
     <div class="hidden name"><code>meltCounts.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Melt Count Matrix to Long Format</p>
+    <p>Melt count matrix into long format</p>
     
     </div>
 
@@ -138,8 +135,9 @@
     <tr>
       <th>assay</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>.
-Name or index of count matrix slotted in <code>assays</code>. When passing in a
-string, the name must be defined in <code>assayNames</code>.</p></td>
+Name or index of count matrix slotted in
+<a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a>. When passing in a string, the name
+must be defined in <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assayNames</a>.</p></td>
     </tr>
     <tr>
       <th>nonzeroGenes</th>
@@ -156,9 +154,7 @@ to melting, if desired. Use <code>"identity"</code> to return unmodified (defaul
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>tibble</code>.
-Grouped by sample.</p>
-<p><code>grouped_df</code>.
+    <p><code>grouped_df</code>.
 Grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code> (e.g. gene ID).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

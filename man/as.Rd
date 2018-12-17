@@ -27,7 +27,7 @@ Coerce an object to a given class.
 
 
 It is often useful to coerce an S4 object to a flat \code{list} for archival
-storage. Here we are providing the \code{coerceS4ToList} function, which
+storage. Here we are providing the \code{\link[=coerceS4ToList]{coerceS4ToList()}} function, which
 consistently coerces the slots in any S4 to a standard \code{list}. Additionally,
 here we have improved support for \code{SummarizedExperiment} to \code{list} coercion,
 returning the slots as a \code{list}.
@@ -36,8 +36,8 @@ returning the slots as a \code{list}.
 \section{tibble}{
 
 
-Coerce an object to a tibble (\code{tbl_df}, \code{data.frame}) using either S3 or S4
-methods:
+Coerce an object to a \href{https://tibble.tidyverse.org/}{tibble} (\code{tbl_df}, \code{data.frame}) using either S3 or
+S4 methods:
 \itemize{
 \item S3: \code{as_tibble(x)} (or \code{as_tibble} alias).
 \item S4: \code{as(object, Class = "tbl_df")}.
@@ -45,15 +45,16 @@ methods:
 
 Tibbles don't support row name assignment, so here we are ensuring they are
 kept by moving them to a column named \code{rowname} by default. This helps avoid
-downstream unexpected data loss when using the dplyr chain of single table
-verbs, such as \code{dplyr::arrange}, \code{dplyr::filter}, or \code{dplyr::mutate}.
+downstream unexpected data loss when using the \href{https://dplyr.tidyverse.org/}{dplyr} chain of single
+table verbs, such as \link[dplyr:arrange]{arrange()}, \link[dplyr:filter]{filter()},
+or \link[dplyr:mutate]{mutate()}.
 
 This behavior can be overriden in the S3 method by setting \code{rowname = NULL}
 instead, which is the current default in the tibble package. The S4 coercion
 method doesn't support arguments, and therefore always attempts to move
 rownames automatically, if defined.
 
-Conversely, when coercing a \code{tibble} back to an S4 \code{DataFrame}, our \code{as}
+Conversely, when coercing a \href{https://tibble.tidyverse.org/}{tibble} back to an S4 \code{DataFrame}, our \code{\link[=as]{as()}}
 method looks for the \code{rowname} column and will attempt to move it back as
 row names automatically, unless there are duplicates present.
 }

@@ -17,8 +17,9 @@
 \item{object}{Object.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in \code{assays}. When passing in a
-string, the name must be defined in \code{assayNames}.}
+Name or index of count matrix slotted in
+\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
+must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
@@ -34,7 +35,7 @@ Superimpose sample text labels on the plot.}
 \item{color}{\code{ScaleDiscrete}.
 Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
 the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{ggplot2::scale_color_manual}.
+are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
 
 To set the discrete color palette globally, use:\preformatted{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 }}
@@ -49,8 +50,9 @@ Plot title.}
 Plot subtitle.}
 
 \item{return}{\code{character(1)}.
-Return type. Uses \code{match.arg} internally and defaults to the first argument
-in the \code{character} vector.}
+Return type.
+Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
+argument in the \code{character} vector.}
 
 \item{...}{Additional arguments.}
 }

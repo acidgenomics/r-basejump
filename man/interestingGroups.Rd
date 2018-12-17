@@ -7,7 +7,7 @@
 \alias{interestingGroups,SummarizedExperiment-method}
 \alias{interestingGroups<-,SummarizedExperiment,character-method}
 \alias{interestingGroups<-,SummarizedExperiment,NULL-method}
-\title{Interesting Groups}
+\title{Interesting groups}
 \usage{
 interestingGroups(object, ...)
 
@@ -35,7 +35,7 @@ Perform assert checks.}
 \code{character}.
 }
 \description{
-Interesting Groups
+Interesting groups
 }
 \examples{
 data(rse)

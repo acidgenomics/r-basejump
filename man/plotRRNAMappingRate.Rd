@@ -25,5 +25,5 @@ best avoided.
 isS4(plotRRNAMappingRate)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

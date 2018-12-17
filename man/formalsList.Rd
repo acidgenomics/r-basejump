@@ -3,14 +3,12 @@
 \docType{data}
 \name{formalsList}
 \alias{formalsList}
-\title{Formals list
-Formals that the user can set globally with \code{base::getOption}.}
+\title{Formals list}
 \format{An object of class \code{list} of length 14.}
 \usage{
 formalsList
 }
 \description{
-Formals list
 Formals that the user can set globally with \code{base::getOption}.
 }
 \examples{

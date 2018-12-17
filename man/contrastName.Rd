@@ -22,5 +22,5 @@ Contrast name
 isS4(contrastName)
 }
 \seealso{
-DESeqAnalysis.
+\href{https://steinbaugh.com/DESeqAnalysis/}{DESeqAnalysis}.
 }

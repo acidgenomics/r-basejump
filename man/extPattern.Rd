@@ -3,14 +3,12 @@
 \docType{data}
 \name{extPattern}
 \alias{extPattern}
-\title{File extension pattern
-Note optional matching of gzip.}
+\title{File extension pattern}
 \format{An object of class \code{character} of length 1.}
 \usage{
 extPattern
 }
 \description{
-File extension pattern
 Note optional matching of gzip.
 }
 \examples{

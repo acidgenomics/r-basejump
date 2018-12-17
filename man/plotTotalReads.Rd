@@ -22,5 +22,5 @@ per sample.
 isS4(plotUMIsVsGenes)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

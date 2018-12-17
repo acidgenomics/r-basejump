@@ -19,5 +19,5 @@ Markdown tables.
 Top tables of differentially expressed genes
 }
 \seealso{
-DESeqAnalysis.
+\href{https://steinbaugh.com/DESeqAnalysis/}{DESeqAnalysis}.
 }
