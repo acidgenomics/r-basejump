@@ -111,7 +111,7 @@ export.ANY <-  # nolint
         }
         # Ensure directory is created automatically.
         initDir(dir = dirname(file))
-        requireNamespace("rio")
+        requireNamespace("rio", quietly = TRUE)
         suppressMessages(
             file <- do.call(
                 what = rio::export,
