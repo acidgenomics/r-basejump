@@ -17,7 +17,8 @@ aggregateCellsToSamples(object, ...)
 \item{...}{Additional arguments.}
 
 \item{fun}{\code{character(1)}.
-Name of the aggregation function. Uses \code{match.arg}.}
+Name of the aggregation function.
+Uses \link[base:match.arg]{match.arg()} internally.}
 }
 \value{
 \code{SummarizedExperiment}. Object with cell-level counts aggregated

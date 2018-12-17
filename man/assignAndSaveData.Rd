@@ -2,7 +2,7 @@
 % Please edit documentation in R/saveData.R
 \name{assignAndSaveData}
 \alias{assignAndSaveData}
-\title{Assign and Save Data}
+\title{Assign and save data}
 \usage{
 assignAndSaveData(name, object, envir = parent.frame(),
   dir = getOption("basejump.save.dir", "."),

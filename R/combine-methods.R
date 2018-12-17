@@ -4,8 +4,10 @@
 #' @note We're attempting to make this as strict as possible, requiring:
 #'
 #' - Rows (genes) across objects must be identical.
-#' - `rowRanges` and/or `rowData` metadata must be identical.
-#' - `colData` must contain the same columns.
+#' - [rowRanges][SummarizedExperiment::rowRanes] and/or
+#'   [rowData][SummarizedExperiment::rowData]
+#'   [metadata][S4Vectors::metadata] must be identical.
+#' - [colData][SummarizedExperiment::colData] must contain the same columns.
 #' - Specific metadata must be identical (see `metadata` parameter).
 #'
 #' @seealso
@@ -15,24 +17,25 @@
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
+#' library(SummarizedExperiment)
 #' data(rse, sce)
 #'
 #' ## SummarizedExperiment ====
 #' x <- rse
 #' colnames(x)
-#' SummarizedExperiment::colData(x)
+#' colData(x)
 #'
 #' ## Create a copy of our minimal example.
 #' y <- x
 #' colnames(y) <- paste0("sample", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
 #' colnames(y)
-#' SummarizedExperiment::colData(y)
+#' colData(y)
 #'
 #' ## Combine two SummarizedExperiment objects.
 #' c <- combine(x, y)
 #' print(c)
 #' colnames(c)
-#' SummarizedExperiment::colData(c)
+#' colData(c)
 #'
 #' ## SingleCellExperiment ====
 #' x <- sce

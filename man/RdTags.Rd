@@ -2,7 +2,7 @@
 % Please edit documentation in R/documentation.R
 \name{RdTags}
 \alias{RdTags}
-\title{R Documentation Tags}
+\title{R documentation tags}
 \usage{
 RdTags(object)
 }

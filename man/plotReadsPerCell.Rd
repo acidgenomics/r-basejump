@@ -21,5 +21,5 @@ Plot the distribution of read counts for all unfiltered cellular barcodes.
 isS4(plotReadsPerCell)
 }
 \seealso{
-bcbioSingleCell.
+\href{https://bioinformatics.sph.harvard.edu/bcbioSingleCell/}{bcbioSingleCell}.
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText — markdownTables • basejump</title>
+<title>Multiple Markdown tables — markdownTables • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText — markdownTables" />
+<meta property="og:title" content="Multiple Markdown tables — markdownTables" />
 
 <meta property="og:description" content="Knit multiple tables in a single R Markdown chunk." />
 <meta name="twitter:card" content="summary" />
@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -76,9 +76,6 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -107,8 +104,8 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/markdown.R'><code>R/markdown.R</code></a></small>
+    <h1>Multiple Markdown tables</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/markdownTables.R'><code>R/markdownTables.R</code></a></small>
     <div class="hidden name"><code>markdownTables.Rd</code></div>
     </div>
 
@@ -176,14 +173,14 @@ extends this functionality, but supporting captions for each table.</p>
 )
 <span class='fu'>markdownTables</span>(<span class='kw'>list</span> <span class='kw'>=</span> <span class='no'>list</span>, <span class='kw'>captions</span> <span class='kw'>=</span> <span class='no'>captions</span>)</div><div class='output co'>#&gt; $mpg
 #&gt; <span style='color: #949494;'># A tibble: 6 x 11</span><span>
-#&gt;   manufacturer model displ  year   cyl trans     drv     cty   hwy fl    class 
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> audi         a4      1.8  </span><span style='text-decoration: underline;'>1</span><span>999     4 auto(l5)  f        18    29 p     compa…
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> audi         a4      1.8  </span><span style='text-decoration: underline;'>1</span><span>999     4 manual(m… f        21    29 p     compa…
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> audi         a4      2    </span><span style='text-decoration: underline;'>2</span><span>008     4 manual(m… f        20    31 p     compa…
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> audi         a4      2    </span><span style='text-decoration: underline;'>2</span><span>008     4 auto(av)  f        21    30 p     compa…
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> audi         a4      2.8  </span><span style='text-decoration: underline;'>1</span><span>999     6 auto(l5)  f        16    26 p     compa…
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> audi         a4      2.8  </span><span style='text-decoration: underline;'>1</span><span>999     6 manual(m… f        18    26 p     compa…
+#&gt;   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> audi         a4      1.8  </span><span style='text-decoration: underline;'>1</span><span>999     4 auto(l5)   f        18    29 p     compa…
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> audi         a4      1.8  </span><span style='text-decoration: underline;'>1</span><span>999     4 manual(m5) f        21    29 p     compa…
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> audi         a4      2    </span><span style='text-decoration: underline;'>2</span><span>008     4 manual(m6) f        20    31 p     compa…
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> audi         a4      2    </span><span style='text-decoration: underline;'>2</span><span>008     4 auto(av)   f        21    30 p     compa…
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> audi         a4      2.8  </span><span style='text-decoration: underline;'>1</span><span>999     6 auto(l5)   f        16    26 p     compa…
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> audi         a4      2.8  </span><span style='text-decoration: underline;'>1</span><span>999     6 manual(m5) f        18    26 p     compa…
 #&gt; 
 #&gt; $mtcars
 #&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb

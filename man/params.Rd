@@ -12,8 +12,9 @@ defined in the object.}
 Aspect ratio.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in \code{assays}. When passing in a
-string, the name must be defined in \code{assayNames}.}
+Name or index of count matrix slotted in
+\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
+must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
 
 \item{assays}{\code{list}.
 Count matrices, which must have matching dimensions. Counts can be passed
@@ -24,9 +25,9 @@ BiocParallel parameter specifying the back-end to be used for computations.
 
 We recommend using one of the following:
 \itemize{
-\item \code{BiocParallel::bpparam}.
-\item \code{BiocParallel::SerialParam}.
-\item \code{BiocParallel::MulticoreParam}.
+\item \link[BiocParallel:bpparam]{bpparam}.
+\item \link[BiocParallel:SerialParam]{SerialParam}.
+\item \link[BiocParallel:MulticoreParam]{MulticoreParam}.
 }}
 
 \item{censorSamples}{\code{character}.
@@ -43,7 +44,7 @@ cells.}
 \item{color}{\code{ScaleDiscrete}.
 Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
 the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{ggplot2::scale_color_manual}.
+are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
 
 To set the discrete color palette globally, use:\preformatted{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 }}
@@ -55,7 +56,8 @@ Count matrix. Normalized counts are recommended.}
 Counts axis label.}
 
 \item{dark}{\code{logical(1)}.
-Plot against a dark background using \code{basejump::theme_midnight} theme.}
+Plot against a dark background using the \code{\link[basejump:theme_midnight]{basejump::theme_midnight()}}
+ggplot2 theme.}
 
 \item{dimsUse}{\code{integer}.
 Vector of length 2 that denotes the columns from the reduced dimension
@@ -76,12 +78,14 @@ available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.}
 
 \item{envir}{\code{environment}.
-Environment to use for assignment. Defaults to \code{parent.frame}, which will
-assign into the calling environment.}
+Environment to use for assignment. Defaults to
+\link[base:parent.frame]{parent.frame()}, which will assign into the calling
+environment.}
 
 \item{expression}{\code{character(1)}.
-Calculation to apply. Uses \code{match.arg} and defaults to the first argument
-in the \code{character} vector.}
+Calculation to apply.
+Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
+argument in the \code{character} vector.}
 
 \item{file}{\code{character(1)}.
 File path.}
@@ -89,7 +93,7 @@ File path.}
 \item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
 Desired ggplot2 fill scale. Must supply discrete values. When set to
 \code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual}.
+definitions are desired, we recommend using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}.
 
 To set the discrete fill palette globally, use:\preformatted{options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
@@ -112,8 +116,9 @@ defaults to the most recent build available. Note: don't pass in UCSC build
 IDs (e.g. \code{"hg38"}).}
 
 \item{geom}{\code{character(1)}.
-Plot type. Uses \code{match.arg} and defaults to the first argument in the
-\code{character} vector.}
+Plot type.
+Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
+argument in the \code{character} vector.}
 
 \item{gffFile}{\code{character(1)}.
 GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
@@ -209,12 +214,14 @@ Apply prefiltering to remove zero count genes.}
 Show progress, using progress bars.}
 
 \item{reducedDim}{\code{character(1)}.
-Name of reduced dimension matrix slotted in \code{reducedDims}. Includes TNSE,
-UMAP, PCA, for example.}
+Name of reduced dimension matrix slotted in
+\link[SingleCellExperiment:reducedDims]{reducedDims}. Includes TNSE, UMAP, PCA,
+for example.}
 
 \item{return}{\code{character(1)}.
-Return type. Uses \code{match.arg} internally and defaults to the first argument
-in the \code{character} vector.}
+Return type.
+Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
+argument in the \code{character} vector.}
 
 \item{rowData}{\code{DataFrame}.
 Metadata describing the assay rows, if genomic ranges are not available.

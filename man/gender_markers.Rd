@@ -3,13 +3,13 @@
 \docType{data}
 \name{gender_markers}
 \alias{gender_markers}
-\title{Sexually Dimorphic Gender Marker Genes}
+\title{Sexually dimorphic gender marker genes}
 \format{An object of class \code{list} of length 2.}
 \usage{
 gender_markers
 }
 \description{
-Sexually Dimorphic Gender Marker Genes
+Sexually dimorphic gender marker genes
 }
 \examples{
 data(gender_markers)

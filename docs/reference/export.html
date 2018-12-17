@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -76,9 +76,6 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -142,7 +139,7 @@
     <tr>
       <th>x</th>
       <td><p><code>ANY</code>.
-An object supporting <code>dim</code> to be written to disk.</p></td>
+An object supporting <a href='https://www.rdocumentation.org/packages/base/topics/dim'>dim</a> to be written to disk.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -178,8 +175,8 @@ Apply gzip compression to all files.</p></td>
     <tr>
       <th>humanize</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
-Automatically convert gene IDs to gene symbols in the <code>rownames</code> and sample
-IDs to sample names in the <code>colnames</code>.</p></td>
+Automatically convert gene IDs to gene symbols in the row names and sample
+IDs to sample names in the column names.</p></td>
     </tr>
     <tr>
       <th>slotNames</th>
@@ -195,18 +192,18 @@ File path(s).</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a wrapper for <code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export</a></code> that adds support for additional S4
+    <p>This is a wrapper for <code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export()</a></code> that adds support for additional S4
 classes in Bioconductor.</p>
     
     <h2 class="hasAnchor" id="row-names"><a class="anchor" href="#row-names"></a>Row names</h2>
 
     
-    <p>The standard <code><a href='https://www.rdocumentation.org/packages/rio/topics/export'>rio::export</a></code> call will drop rownames when exporting to CSV. The
-readr family of functions also never write rownames. This is a <em>really poor</em>
-default setting for handling genomic data, which often contain gene
-identifiers in the rownames. Here we're performing any internal tibble
-coercion step to ensure rownames are always moved to a "<code>rowname</code>" column in
-the CSV export.</p>
+    <p>Some export utilities in R have a tendency to drop row names when writing to
+disk in CSV format. For example, the <a href='https://readr.tidyverse.org/'>readr</a> family of functions never
+write row names by design. This is a <em>really poor</em> default setting for
+handling genomic data, which often contain gene identifiers in the row names.
+Here we're performing any internal tibble coercion step to ensure row names
+are always moved to a "<code>rowname</code>" column in the CSV export.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -214,22 +211,8 @@ the CSV export.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>SummarizedExperiment</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'S4Vectors'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    Vignettes contain introductory material; view with</span>
-#&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
-#&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: DelayedArray</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: matrixStats</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'matrixStats'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:Biobase':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyMissing, rowMedians</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocParallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'DelayedArray'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:matrixStats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    aperm, apply</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>SingleCellExperiment</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>SummarizedExperiment</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>SingleCellExperiment</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>)
 
 <span class='co'>## matrix ====</span>

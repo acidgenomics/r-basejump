@@ -2,7 +2,7 @@
 % Please edit documentation in R/documentation.R
 \name{saveRdExamples}
 \alias{saveRdExamples}
-\title{Save R Documentation Examples}
+\title{Save R documentation examples}
 \usage{
 saveRdExamples(Rd = NULL, package, dir = ".")
 }

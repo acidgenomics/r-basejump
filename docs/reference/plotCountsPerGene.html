@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot Counts Per Gene — plotCountsPerGene • basejump</title>
+<title>Plot counts per gene — plotCountsPerGene • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Plot Counts Per Gene — plotCountsPerGene" />
+<meta property="og:title" content="Plot counts per gene — plotCountsPerGene" />
 
 <meta property="og:description" content="Generally, we expect similar count spreads for all genes between samples
 unless the library sizes or total RNA expression are different." />
@@ -66,7 +66,7 @@ unless the library sizes or total RNA expression are different." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -77,9 +77,6 @@ unless the library sizes or total RNA expression are different." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -108,7 +105,7 @@ unless the library sizes or total RNA expression are different." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot Counts Per Gene</h1>
+    <h1>Plot counts per gene</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotCountsPerGene-methods.R'><code>R/plotCountsPerGene-methods.R</code></a></small>
     <div class="hidden name"><code>plotCountsPerGene.Rd</code></div>
     </div>
@@ -154,8 +151,9 @@ unless the library sizes or total RNA expression are different.</p>
     <tr>
       <th>assay</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>.
-Name or index of count matrix slotted in <code>assays</code>. When passing in a
-string, the name must be defined in <code>assayNames</code>.</p></td>
+Name or index of count matrix slotted in
+<a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a>. When passing in a string, the name
+must be defined in <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assayNames</a>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
@@ -180,7 +178,7 @@ Name of the axis scale transformation to apply.</p>
       <td><p><code>ScaleDiscrete</code>.
 Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
 the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual</a></code>.</p>
+are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>.</p>
 <p>To set the discrete color palette globally, use:</p><pre>options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
 </pre></td>
     </tr>
@@ -189,7 +187,7 @@ are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/ref
       <td><p><code>ggproto</code>/<code>ScaleDiscrete</code>.
 Desired ggplot2 fill scale. Must supply discrete values. When set to
 <code>NULL</code>, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual</a></code>.</p>
+definitions are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>.</p>
 <p>To set the discrete fill palette globally, use:</p><pre>options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
 </pre></td>
     </tr>

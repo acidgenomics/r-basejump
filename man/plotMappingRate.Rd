@@ -23,5 +23,5 @@ poor sequencing quality or other artifacts.
 isS4(plotMappingRate)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

@@ -22,5 +22,5 @@ Differentially expressed genes
 isS4(deg)
 }
 \seealso{
-DESeqAnalysis.
+\href{https://steinbaugh.com/DESeqAnalysis/}{DESeqAnalysis}.
 }

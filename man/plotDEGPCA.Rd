@@ -15,18 +15,19 @@ plotDEGPCA(object, ...)
 \code{ggplot} or \code{DataFrame}.
 }
 \description{
-This function is an extension of \code{plotPCA} that is optimized for automatic
+This function is an extension of \code{\link[=plotPCA]{plotPCA()}} that is optimized for automatic
 handling of differentially expressed genes, rather than requiring manual
 input of a gene vector or subset object. All of the optional parameters for
-\code{plotPCA} are also supported by this function.
+\code{\link[=plotPCA]{plotPCA()}} are also supported by this function.
 }
 \details{
-To adjust the annotation columns, modify the \code{colData} of the \code{counts}
-argument, which must contain/extend a \code{SummarizedExperiment}.
+To adjust the annotation columns, modify the
+\link[SummarizedExperiment:colData]{colData} of the \code{counts} argument, which must
+contain/extend a \code{SummarizedExperiment}.
 }
 \examples{
 isS4(plotDEGPCA)
 }
 \seealso{
-DESeqAnalysis.
+\href{https://steinbaugh.com/DESeqAnalysis/}{DESeqAnalysis}.
 }

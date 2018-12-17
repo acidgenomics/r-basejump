@@ -18,7 +18,7 @@ and \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (NOG) protein
 identifiers.
 }
 
-The \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README file}
+The \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}
 contains additional useful reference information.
 }
 \description{

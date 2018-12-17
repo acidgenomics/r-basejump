@@ -28,6 +28,6 @@ Robinson and Oshlack (2010).
 \itemize{
 \item \code{edgeR::calcNormFactors}.
 \item \code{edgeR::cpm}.
-\item bcbioRNASeq.
+\item \href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }
 }

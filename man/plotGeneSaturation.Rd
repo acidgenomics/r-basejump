@@ -23,5 +23,5 @@ overloaded.
 isS4(plotGeneSaturation)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

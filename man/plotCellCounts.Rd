@@ -21,5 +21,5 @@ Plot cell counts
 isS4(plotCellCounts)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

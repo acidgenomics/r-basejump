@@ -3,13 +3,13 @@
 \docType{data}
 \name{tx_se}
 \alias{tx_se}
-\title{Example Transcript-Level Data Set}
+\title{Example transcript-level \code{SummarizedExperiment}}
 \format{An object of class \code{SummarizedExperiment} with 6 rows and 4 columns.}
 \usage{
 tx_se
 }
 \description{
-Example Transcript-Level Data Set
+Transcript-level RNA-seq data set.
 }
 \examples{
 data(tx_se)

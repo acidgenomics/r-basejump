@@ -40,5 +40,5 @@ transcript.
 isS4(plot5Prime3PrimeBias)
 }
 \seealso{
-bcbioRNASeq.
+\href{https://bioinformatics.sph.harvard.edu/bcbioRNASeq/}{bcbioRNASeq}.
 }

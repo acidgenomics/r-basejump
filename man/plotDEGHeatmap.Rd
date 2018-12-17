@@ -22,12 +22,13 @@ manual input of a gene vector. All of the optional parameters for
 \code{plotHeatmap} are also supported by this function.
 }
 \details{
-To adjust the annotation columns, modify the \code{colData} of the \code{counts}
-argument, which must contain/extend a \code{SummarizedExperiment}.
+To adjust the annotation columns, modify the
+\link[SummarizedExperiment:colData]{colData} of the \code{counts} argument, which must
+contain a \code{SummarizedExperiment}.
 }
 \examples{
 isS4(plotDEGHeatmap)
 }
 \seealso{
-DESeqAnalysis.
+\href{https://steinbaugh.com/DESeqAnalysis/}{DESeqAnalysis}.
 }

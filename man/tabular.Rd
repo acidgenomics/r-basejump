@@ -2,7 +2,7 @@
 % Please edit documentation in R/documentation.R
 \name{tabular}
 \alias{tabular}
-\title{R Documentation Table}
+\title{R documentation table}
 \usage{
 tabular(df)
 }
@@ -13,7 +13,7 @@ tabular(df)
 Console output.
 }
 \description{
-R Documentation Table
+R documentation table
 }
 \seealso{
 http://r-pkgs.had.co.nz/man.html

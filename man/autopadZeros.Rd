@@ -41,9 +41,9 @@ Resort using \code{sort}.}
 Autopad zeros
 }
 \note{
-For methods on objects supporting \code{dim} (e.g. \code{matrix}), the object
-will be returned with the rows and/or columns resorted by default. This does
-not apply to the \code{character} method.
+For methods on objects supporting \link[base:dim]{dim} (e.g. \code{matrix}), the
+object will be returned with the rows and/or columns resorted by default.
+This does not apply to the \code{character} method.
 }
 \examples{
 data(rse)

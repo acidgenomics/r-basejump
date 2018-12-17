@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadData.R
 \name{loadRemoteData}
 \alias{loadRemoteData}
-\title{Load Remote Data}
+\title{Load remote data}
 \usage{
 loadRemoteData(url, envir = globalenv())
 }
@@ -10,8 +10,9 @@ loadRemoteData(url, envir = globalenv())
 \item{url}{\code{character}. Remote URL file path(s) to R data.}
 
 \item{envir}{\code{environment}.
-Environment to use for assignment. Defaults to \code{parent.frame}, which will
-assign into the calling environment.}
+Environment to use for assignment. Defaults to
+\link[base:parent.frame]{parent.frame()}, which will assign into the calling
+environment.}
 }
 \value{
 Invisible named \code{character}. Local object name as the name, and the

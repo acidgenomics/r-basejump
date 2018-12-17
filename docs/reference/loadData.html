@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Load Data — loadData • basejump</title>
+<title>Load data — loadData • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Load Data — loadData" />
+<meta property="og:title" content="Load data — loadData" />
 
 <meta property="og:description" content="Load R data files from a directory using symbols rather than complete file
 paths. Supports &quot;.rds&quot;, &quot;.rda&quot;, and &quot;.RData&quot; file extensions." />
@@ -66,7 +66,7 @@ paths. Supports &quot;.rds&quot;, &quot;.rda&quot;, and &quot;.RData&quot; file 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -77,9 +77,6 @@ paths. Supports &quot;.rds&quot;, &quot;.rda&quot;, and &quot;.RData&quot; file 
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -108,7 +105,7 @@ paths. Supports &quot;.rds&quot;, &quot;.rda&quot;, and &quot;.RData&quot; file 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Load Data</h1>
+    <h1>Load data</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/loadData.R'><code>R/loadData.R</code></a></small>
     <div class="hidden name"><code>loadData.Rd</code></div>
     </div>
@@ -141,8 +138,9 @@ Directory path.</p></td>
     <tr>
       <th>envir</th>
       <td><p><code>environment</code>.
-Environment to use for assignment. Defaults to <code>parent.frame</code>, which will
-assign into the calling environment.</p></td>
+Environment to use for assignment. Defaults to
+<a href='https://www.rdocumentation.org/packages/base/topics/sys.parent'>parent.frame()</a>, which will assign into the calling
+environment.</p></td>
     </tr>
     </table>
     

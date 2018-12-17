@@ -44,8 +44,10 @@ There are two basic combine strategies. One is an intersection
 We're attempting to make this as strict as possible, requiring:
 \itemize{
 \item Rows (genes) across objects must be identical.
-\item \code{rowRanges} and/or \code{rowData} metadata must be identical.
-\item \code{colData} must contain the same columns.
+\item \link[SummarizedExperiment:rowRanes]{rowRanges} and/or
+\link[SummarizedExperiment:rowData]{rowData}
+\link[S4Vectors:metadata]{metadata} must be identical.
+\item \link[SummarizedExperiment:colData]{colData} must contain the same columns.
 \item Specific metadata must be identical (see \code{metadata} parameter).
 }
 }
@@ -83,24 +85,25 @@ We're attempting to make this as strict as possible, requiring:
 }
 
 \examples{
+library(SummarizedExperiment)
 data(rse, sce)
 
 ## SummarizedExperiment ====
 x <- rse
 colnames(x)
-SummarizedExperiment::colData(x)
+colData(x)
 
 ## Create a copy of our minimal example.
 y <- x
 colnames(y) <- paste0("sample", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
 colnames(y)
-SummarizedExperiment::colData(y)
+colData(y)
 
 ## Combine two SummarizedExperiment objects.
 c <- combine(x, y)
 print(c)
 colnames(c)
-SummarizedExperiment::colData(c)
+colData(c)
 
 ## SingleCellExperiment ====
 x <- sce

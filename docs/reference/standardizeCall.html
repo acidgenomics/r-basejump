@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Standardize Call — standardizeCall • basejump</title>
+<title>Standardize call — standardizeCall • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Standardize Call — standardizeCall" />
+<meta property="og:title" content="Standardize call — standardizeCall" />
 
 <meta property="og:description" content="This function adds matching support for S4 methods with formals that aren't
 identical to the generic, and use a nested .local call." />
@@ -66,7 +66,7 @@ identical to the generic, and use a nested .local call." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
       </span>
     </div>
 
@@ -77,9 +77,6 @@ identical to the generic, and use a nested .local call." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -108,7 +105,7 @@ identical to the generic, and use a nested .local call." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Standardize Call</h1>
+    <h1>Standardize call</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/standardizeCall.R'><code>R/standardizeCall.R</code></a></small>
     <div class="hidden name"><code>standardizeCall.Rd</code></div>
     </div>
@@ -134,8 +131,9 @@ identical to the generic, and use a nested <code>.local</code> call.</p>
     <tr>
       <th>return</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Return type. Uses <code>match.arg</code> internally and defaults to the first argument
-in the <code>character</code> vector.</p></td>
+Return type.
+Uses <a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a> internally and defaults to the first
+argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
       <th>verbose</th>

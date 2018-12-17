@@ -3,13 +3,13 @@
 \docType{data}
 \name{mat}
 \alias{mat}
-\title{Example Dense Matrix}
+\title{Example \code{matrix}}
 \format{An object of class \code{matrix} with 4 rows and 4 columns.}
 \usage{
 mat
 }
 \description{
-Example Dense Matrix
+Example \code{matrix}
 }
 \examples{
 data(mat)

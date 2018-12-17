@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepareTemplate.R
 \name{prepareTemplate}
 \alias{prepareTemplate}
-\title{Prepare R Markdown template file}
+\title{Prepare R Markdown template}
 \usage{
 prepareTemplate(package = NULL, overwrite = FALSE)
 }
