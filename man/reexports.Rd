@@ -9,7 +9,6 @@
 \alias{as.data.frame}
 \alias{as_tibble}
 \alias{capitalize}
-\alias{gzip}
 \alias{\%>\%}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -22,11 +21,11 @@ below to see their documentation.
 
   \item{BiocGenerics}{\code{\link[BiocGenerics]{as.data.frame}}, \code{\link[BiocGenerics]{combine}}, \code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{counts<-}}, \code{\link[BiocGenerics]{organism}}, \code{\link[BiocGenerics]{plotPCA}}}
 
+  \item{goalie}{\code{\link[goalie]{capitalize}}}
+
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 
   \item{methods}{\code{\link[methods]{show}}}
-
-  \item{R.utils}{\code{\link[R.utils]{capitalize}}, \code{\link[R.utils]{gzip}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{decode}}}
 
