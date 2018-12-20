@@ -1,14 +1,17 @@
-#' Plot percentage of zeros vs. library depth
-#'
 #' @name plotZerosVsDepth
+#' @inherit bioverbs::plotZerosVsDepth
 #' @inheritParams params
-#'
-#' @return `ggplot`.
-#'
 #' @examples
 #' data(sce)
 #' plotZerosVsDepth(sce)
 NULL
+
+
+
+#' @importFrom bioverbs plotZerosVsDepth
+#' @aliases NULL
+#' @export
+bioverbs::plotZerosVsDepth
 
 
 

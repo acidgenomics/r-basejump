@@ -1,24 +1,13 @@
-#' Sample data
-#'
-#' Metadata that describes the samples.
-#'
-#' This is a complement to the standard `SummarizedExperiment::colData`
-#' function, but improves support for accessing sample metadata for datasets
-#' where multiple items in the columns map to a single sample (e.g. cells for a
-#' single-cell RNA-seq experiment).
-#'
 #' @name sampleData
+#' @inherit bioverbs::sampleData
 #' @inheritParams params
 #'
-#' @param object Object class that inherits `SummarizedExperiment`.
 #' @param clean `logical(1)`.
 #'   Only return `factor` columns. Useful when working with objects that contain
 #'   metrics in `colData`.
 #' @param blacklist `character`.
 #'   Column names that should never be treated as sample-level metadata.
 #'   Applicable only to `SingleCellExperiment` objects.
-#'
-#' @return `DataFrame`.
 #'
 #' @examples
 #' data(rse, sce)
@@ -41,6 +30,18 @@
 #' ## `batch` column should be now defined.
 #' sampleData(x)
 NULL
+
+
+
+#' @importFrom bioverbs sampleData
+#' @aliases NULL
+#' @export
+bioverbs::sampleData
+
+#' @importFrom bioverbs sampleData<-
+#' @aliases NULL
+#' @export
+bioverbs::`sampleData<-`
 
 
 

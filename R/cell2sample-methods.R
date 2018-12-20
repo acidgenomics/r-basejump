@@ -1,6 +1,5 @@
-#' Cell-to-sample mappings
-#'
 #' @name cell2sample
+#' @inherit bioverbs::cell2sample
 #' @inheritParams params
 #'
 #' @note `sampleID` column must be defined in
@@ -16,6 +15,13 @@
 #' x <- cell2sample(sce)
 #' table(x)
 NULL
+
+
+
+#' @importFrom bioverbs cell2sample
+#' @aliases NULL
+#' @export
+bioverbs::cell2sample
 
 
 

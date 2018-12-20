@@ -1,10 +1,6 @@
-#' Interesting groups
-#'
 #' @name interestingGroups
+#' @inherit bioverbs::interestingGroups
 #' @inheritParams params
-#'
-#' @return `character`.
-#'
 #' @examples
 #' data(rse)
 #' object <- rse
@@ -16,6 +12,18 @@
 #' interestingGroups(object) <- intgroup[[1L]]
 #' interestingGroups(object)
 NULL
+
+
+
+#' @importFrom bioverbs interestingGroups
+#' @aliases NULL
+#' @export
+bioverbs::interestingGroups
+
+#' @importFrom bioverbs interestingGroups<-
+#' @aliases NULL
+#' @export
+bioverbs::`interestingGroups<-`
 
 
 

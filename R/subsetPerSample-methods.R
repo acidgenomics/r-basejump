@@ -1,6 +1,5 @@
-#' Subset per sample
-#'
 #' @name subsetPerSample
+#' @inherit bioverbs::subsetPerSample
 #' @inheritParams params
 #'
 #' @param minCells `integer(1)`.
@@ -40,6 +39,13 @@
 #' ## Clean up.
 #' unlink("subsetPerSample", recursive = TRUE)
 NULL
+
+
+
+#' @importFrom bioverbs subsetPerSample
+#' @aliases NULL
+#' @export
+bioverbs::subsetPerSample
 
 
 

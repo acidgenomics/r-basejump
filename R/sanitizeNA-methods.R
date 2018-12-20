@@ -1,16 +1,7 @@
-#' Sanitize `NA` values
-#'
-#' Standardize empty strings (`""`), character NAs (`"NA"`), and `NULL` values
-#' inside a character vector to `NA_character_`. Other `atomic` data types are
-#' returned unmodified.
-#'
 #' @name sanitizeNA
+#' @inherit bioverbs::sanitizeNA
 #' @inheritParams params
 #' @export
-#'
-#' @return Modified object.
-#' Sanitized to contain proper `NA` values.
-#'
 #' @examples
 #' ## character ====
 #' from <- as.character(c(1L, "x", "", "NA", "NULL"))
@@ -28,6 +19,13 @@
 #' to <- sanitizeNA(from)
 #' print(to)
 NULL
+
+
+
+#' @importFrom bioverbs sanitizeNA
+#' @aliases NULL
+#' @export
+bioverbs::sanitizeNA
 
 
 

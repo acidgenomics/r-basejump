@@ -35,7 +35,7 @@ markdownHeader <- function(
 ) {
     assert(
         isString(text),
-        containsHeaderLevel(level),
+        isHeaderLevel(level),
         isFlag(tabset),
         isFlag(asis)
     )

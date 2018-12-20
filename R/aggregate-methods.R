@@ -123,6 +123,18 @@ NULL
 
 
 
+#' @importFrom bioverbs aggregateRows
+#' @aliases NULL
+#' @export
+bioverbs::aggregateRows
+
+#' @importFrom bioverbs aggregateCols
+#' @aliases NULL
+#' @export
+bioverbs::aggregateCols
+
+
+
 .aggregateFuns <- c("sum", "mean")
 
 # Don't message when aggregating a large factor.
@@ -494,53 +506,4 @@ setMethod(
     f = "aggregateCols",
     signature = signature("SingleCellExperiment"),
     definition = aggregateCols.SingleCellExperiment
-)
-
-
-
-# aggregateCellsToSamples ======================================================
-#' Aggregate cells to samples
-#'
-#' Utilty function that factilites cell-to-sample aggregation. By default, this
-#' function will sum the counts across cells to sample level.
-#'
-#' This function is intended primarily for quality control analysis.
-#'
-#' Internally it automatically obtains the cell-to-sample groupings and then
-#' performs aggregation with the `aggregateCols` function.
-#'
-#' @name aggregateCellsToSamples
-#' @inheritParams aggregate
-#' @inheritParams params
-#'
-#' @return `SummarizedExperiment`. Object with cell-level counts aggregated
-#'   to sample-level.
-#'
-#' @examples
-#' data(sce)
-#' x <- aggregateCellsToSamples(sce)
-#' print(x)
-NULL
-
-
-
-aggregateCellsToSamples.SingleCellExperiment <-  # nolint
-    function(object, fun) {
-        validObject(object)
-        fun <- match.arg(fun)
-        rse <- as(object, "RangedSummarizedExperiment")
-        colData(rse)[["aggregate"]] <- cell2sample(object)
-        aggregateCols(object = rse, col = "aggregate", fun = fun)
-    }
-
-formals(aggregateCellsToSamples.SingleCellExperiment)[["fun"]] <- .aggregateFuns
-
-
-
-#' @rdname aggregateCellsToSamples
-#' @export
-setMethod(
-    f = "aggregateCellsToSamples",
-    signature = signature("SingleCellExperiment"),
-    definition = aggregateCellsToSamples.SingleCellExperiment
 )

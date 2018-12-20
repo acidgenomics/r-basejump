@@ -1,12 +1,11 @@
-#' Autopad zeros
+#' @name autopadZeros
+#' @inherit bioverbs::autopadZeros
+#' @inheritParams params
+#' @inheritParams makeNames
 #'
 #' @note For methods on objects supporting [dim][base::dim] (e.g. `matrix`), the
 #' object will be returned with the rows and/or columns resorted by default.
 #' This does not apply to the `character` method.
-#'
-#' @name autopadZeros
-#' @inheritParams params
-#' @inheritParams makeNames
 #'
 #' @return `character`.
 #'
@@ -20,6 +19,13 @@
 #' ## SummarizedExperiment ====
 #' autopadZeros(rse)
 NULL
+
+
+
+#' @importFrom bioverbs autopadZeros
+#' @aliases NULL
+#' @export
+bioverbs::autopadZeros
 
 
 

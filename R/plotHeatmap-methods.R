@@ -1,4 +1,4 @@
-# FIXME Improve support for ordering columns and/or rows manually.
+# TODO Improve support for ordering columns and/or rows manually.
 
 
 
@@ -21,14 +21,14 @@
 #'
 #' See also:
 #'
-#' - `pheatmap:::scale_rows`.
-#' - `base::scale` for additional scaling approaches.
+#' - `pheatmap:::scale_rows()`.
+#' - `scale()` for additional scaling approaches.
 #'
 #' @section Hierarchical clustering:
 #'
 #' Row- and column-wise hierarchical clustering is performed when `clusterRows`
-#' and/or `clusterCols` are set to `TRUE`. Internally, this calls `hclust`,
-#' and defaults to the Ward method.
+#' and/or `clusterCols` are set to `TRUE`. Internally, this calls
+#' [stats::hclust()], and defaults to the Ward method.
 #'
 #' Automatic hierarchical clustering of rows and/or columns can error for some
 #' datasets. When this occurs, you'll likely see this error:
@@ -40,7 +40,7 @@
 #'
 #' In this case, either set `clusterRows` and/or `clusterCols` to `FALSE`, or
 #' you can attempt to pass an `hclust` object to these arguments. This is
-#' recommended as an alternate approach to be used with `pheatmap::pheatmap`,
+#' recommended as an alternate approach to be used with [pheatmap::pheatmap()],
 #' which is called internally by our plotting code. Here's how this can be
 #' accomplished:
 #'
@@ -66,10 +66,10 @@
 #'   We generally recommend these hexadecimal functions from the viridis
 #'   package:
 #'
-#'   - `viridis::viridis` (*default*).
-#'   - `viridis::inferno`.
-#'   - `viridis::magma`.
-#'   - `viridis::plasma`.
+#'   - `viridis::viridis()` (*default*).
+#'   - `viridis::inferno()`.
+#'   - `viridis::magma()`.
+#'   - `viridis::plasma()`.
 #'
 #'   Alternatively, colors can be defined manually using hexadecimal values
 #'   (e.g. `c("#FF0000", "#0000FF")`), but this is not generally recommended.
@@ -83,7 +83,7 @@
 #'   colors.
 #' @param method `character(1)`.
 #'   Correlation coefficient (or covariance) method to be computed. Defaults to
-#'   "`pearson`" but "`spearman`" can also be used. Consult the `stats::cor`
+#'   "`pearson`" but "`spearman`" can also be used. Consult the [stats::cor()]
 #'   documentation for more information.
 #' @param n `integer(1)`.
 #'   The number of quantile breaks to create.
@@ -96,19 +96,16 @@
 #'   Size of the row and column dendrograms. Use `0` to disable.
 #' @param title `character(1)` or `NULL`.
 #'   Plot title.
-#' @param ... Passthrough arguments to `pheatmap::pheatmap`.
+#' @param ... Passthrough arguments to [pheatmap::pheatmap()].
 #'   The argument names must be formatted in camel case, not snake case.
 #'
 #' @seealso
-#' - `pheatmap::pheatmap`.
-#' - `RColorBrewer::brewer.pal`.
+#' - `pheatmap::pheatmap()`.
+#' - `RColorBrewer::brewer.pal()`.
+#' - `stats::cor()`.
+#' - `stats::hclust()`.
 #'
 #' @return `pheatmap`.
-#'
-#' @seealso
-#' - `pheatmap::pheatmap`.
-#' - `stats::cor`.
-#' - `stats::hclust`.
 #'
 #' @examples
 #' data(rse, sce)
@@ -134,6 +131,23 @@
 #' plotCorrelationHeatmap(sce)
 #' plotQuantileHeatmap(sce)
 NULL
+
+
+
+#' @importFrom bioverbs plotHeatmap
+#' @aliases NULL
+#' @export
+bioverbs::plotHeatmap
+
+#' @importFrom bioverbs plotCorrelationHeatmap
+#' @aliases NULL
+#' @export
+bioverbs::plotCorrelationHeatmap
+
+#' @importFrom bioverbs plotQuantileHeatmap
+#' @aliases NULL
+#' @export
+bioverbs::plotQuantileHeatmap
 
 
 
@@ -814,7 +828,7 @@ setMethod(
 .pheatmapColorPalette <- function(color = NULL, n = 256L) {
     if (is.character(color)) {
         # Hexadecimal color palette (e.g. RColorBrewer, viridis return).
-        assert(containsHexColors(color))
+        assert(allAreHexColors(color))
         color
     } else if (is.function(color)) {
         # Hexadecimal color function (e.g. viridis functions).

@@ -1,23 +1,23 @@
-#' Metrics
-#'
-#' This function takes data stored in `colData` and consistently returns a
-#' tibble grouped by sample by default (`sampleID`).
-#'
-#' `metrics` always returns `sampleName` and `interestingGroups` columns, even
-#' when these columns are not defined in `colData`. This is designed to
-#' integrate with plotting functions that use ggplot2 internally.
-#'
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @inherit bioverbs::metrics
 #' @inheritParams params
 #'
+#' @details
+#' [metrics()] takes data stored in [`colData()`][SummarizedExperiment::colData]
+#' and consistently returns a tibble grouped by sample by default (`sampleID`).
+#' It always returns `sampleName` and `interestingGroups` columns, even when
+#' these columns are not defined in `colData`. This is designed to integrate
+#' with plotting functions that use ggplot2 internally.
+#'
 #' @param fun `character(1)`.
-#'   Mathematical function name to apply. Uses `match.arg`.
+#'   Mathematical function name to apply.
+#'   Uses [`match.arg()`][base::match.arg] internally.
 #'
 #' @return
 #' - `"tibble"`: `grouped_df`. Grouped by `sampleID` column.
-#' - `"DataFrame"`: `DataFrame`. Rownames are identical to the `colnames`, of
-#'   the object, like `colData`.
+#' - `"DataFrame"`: `DataFrame`. Row names are identical to the column names of
+#'   the object, like [`colData()`][SummarizedExperiment::colData].
 #'
 #' @examples
 #' data(rse, sce)
@@ -33,6 +33,18 @@
 #' x <- metricsPerSample(sce, fun = "mean")
 #' print(x)
 NULL
+
+
+
+#' @importFrom bioverbs metrics
+#' @aliases NULL
+#' @export
+bioverbs::metrics
+
+#' @importFrom bioverbs metricsPerSample
+#' @aliases NULL
+#' @export
+bioverbs::metricsPerSample
 
 
 

@@ -36,7 +36,7 @@ localOrRemoteFile <- function(file) {
         file = file,
         FUN = function(file) {
             # Remote file mode.
-            if (isTRUE(containsURL(file))) {
+            if (isTRUE(isAURL(file))) {
                 assert(hasInternet())
                 ext <- str_match(basename(file), extPattern) %>%
                     .[1L, 2L:3L] %>%

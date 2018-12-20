@@ -1,11 +1,7 @@
-#' Plot counts per biotype
-#'
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @inherit bioverbs::plotCountsPerBiotype
 #' @inheritParams params
-#'
-#' @return `ggplot`.
-#'
 #' @examples
 #' data(rse, sce)
 #'
@@ -17,6 +13,18 @@
 #' plotCountsPerBiotype(sce)
 #' plotCountsPerBroadClass(sce)
 NULL
+
+
+
+#' @importFrom bioverbs plotCountsPerBiotype
+#' @aliases NULL
+#' @export
+bioverbs::plotCountsPerBiotype
+
+#' @importFrom bioverbs plotCountsPerBroadClass
+#' @aliases NULL
+#' @export
+bioverbs::plotCountsPerBroadClass
 
 
 
