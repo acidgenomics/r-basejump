@@ -88,6 +88,7 @@ Suggests:
     testthat,
     viridis
 Remotes:
+    steinbaugh/bioverbs@develop,
     steinbaugh/goalie@develop
 biocViews:
     DataImport,
@@ -108,6 +109,7 @@ Collate:
     'PANTHER.R'
     'Tx2Gene-methods.R'
     'aggregate-methods.R'
+    'aggregateCellsToSamples-methods.R'
     'as-methods.R'
     'autopadZeros-methods.R'
     'basenameSansExt.R'
@@ -115,6 +117,7 @@ Collate:
     'cleanSystemLibrary.R'
     'coerceS4ToList.R'
     'collapse-methods.R'
+    'collapseToString-methods.R'
     'combine-methods.R'
     'convertGenesToSymbols-methods.R'
     'convertSampleIDsToNames-methods.R'
