@@ -1,9 +1,5 @@
-#' Humanize an R object
-#'
-#' @note This can make dimnames invalid (see `make.names`) and should only
-#' be called prior to writing files to disk.
-#'
 #' @name humanize
+#' @inherit bioverbs::humanize
 #' @inheritParams params
 #'
 #' @return Modified object.
@@ -24,6 +20,13 @@
 #' x <- humanize(sce)
 #' lapply(dimnames(x), head)
 NULL
+
+
+
+#' @importFrom bioverbs humanize
+#' @aliases NULL
+#' @export
+bioverbs::humanize
 
 
 

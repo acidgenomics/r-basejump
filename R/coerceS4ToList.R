@@ -29,6 +29,13 @@ coerceS4ToList <- function(from) {
 
 
 
+#' @importFrom bioverbs flatFiles
+#' @aliases NULL
+#' @export
+bioverbs::flatFiles
+
+
+
 # Consider soft deprecating in favor of `coerceS4ToList`.
 flatFiles.SummarizedExperiment <-  # nolint
     function(object) {

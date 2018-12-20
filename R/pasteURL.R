@@ -41,6 +41,6 @@ pasteURL <- function(..., protocol = c("https", "http", "ftp", "none")) {
     if (protocol != "none") {
         url <- paste0(protocol, "://", url)
     }
-    assert(containsAURL(url))
+    assert(isAURL(url))
     url
 }

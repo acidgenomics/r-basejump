@@ -1,15 +1,18 @@
-#' Plot total counts
-#'
 #' @name plotTotalCounts
+#' @inherit bioverbs::plotTotalCounts
 #' @inheritParams params
-#'
-#' @return `ggplot`.
-#'
 #' @examples
 #' data(rse, sce)
 #' plotTotalCounts(rse)
 #' plotTotalCounts(sce)
 NULL
+
+
+
+#' @importFrom bioverbs plotTotalCounts
+#' @aliases NULL
+#' @export
+bioverbs::plotTotalCounts
 
 
 

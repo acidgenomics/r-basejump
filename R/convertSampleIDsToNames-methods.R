@@ -1,6 +1,5 @@
-#' Convert sample identifiers to names
-#'
 #' @name convertSampleIDsToNames
+#' @inherit bioverbs::convertSampleIDsToNames
 #' @inheritParams params
 #'
 #' @return Varies, depending on the method.
@@ -9,6 +8,13 @@
 #' data(rse)
 #' convertSampleIDsToNames(rse)
 NULL
+
+
+
+#' @importFrom bioverbs convertSampleIDsToNames
+#' @aliases NULL
+#' @export
+bioverbs::convertSampleIDsToNames
 
 
 

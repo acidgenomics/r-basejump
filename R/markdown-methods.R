@@ -1,14 +1,17 @@
-#' Markdown
-#'
 #' @name markdown
+#' @inherit bioverbs::markdown
 #' @inheritParams params
-#'
-#' @return Markdown output.
-#'
 #' @examples
 #' data(rse)
 #' markdown(rse)
 NULL
+
+
+
+#' @importFrom bioverbs markdown
+#' @aliases NULL
+#' @export
+bioverbs::markdown
 
 
 

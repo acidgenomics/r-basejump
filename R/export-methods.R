@@ -1,14 +1,6 @@
-# TODO Add automatic Tx2Gene file export for SE, if necessary.
-# FIXME Ensure we're handling Rle columns properly here.
-
-
-
-#' Export
-#'
-#' Export data out of R and write to disk.
-#'
-#' This is a wrapper for [rio::export()] that adds support for additional S4
-#' classes in Bioconductor.
+#' @name export
+#' @inherit bioverbs::export
+#' @inheritParams params
 #'
 #' @section Row names:
 #'
@@ -20,9 +12,6 @@
 #' are always moved to a "`rowname`" column in the CSV export.
 #'
 #' [readr]: https://readr.tidyverse.org/
-#'
-#' @name export
-#' @inheritParams params
 #'
 #' @param x `ANY`.
 #'   An object supporting [dim][base::dim] to be written to disk.
@@ -74,6 +63,13 @@
 #' ## SingleCellExperiment ====
 #' export(sce, dir = "example")
 NULL
+
+
+
+#' @importFrom bioverbs export
+#' @aliases NULL
+#' @export
+bioverbs::export
 
 
 

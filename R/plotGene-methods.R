@@ -1,10 +1,5 @@
-# TODO Export `plotGeneExpression` instead or define as an alias?
-
-
-
-#' Plot gene expression
-#'
 #' @name plotGene
+#' @inherit bioverbs::plotGene
 #' @inheritParams params
 #'
 #' @param countsAxisLabel `character(1)`.
@@ -36,6 +31,13 @@
 #' plotGene(object, genes = geneIDs, style = "facet")
 #' plotGene(object, genes = geneNames, style = "wide")
 NULL
+
+
+
+#' @importFrom bioverbs plotGene
+#' @aliases NULL
+#' @export
+bioverbs::plotGene
 
 
 

@@ -1,19 +1,20 @@
-#' Percentage of zeros vs. library depth
-#'
-#' Calculate and visualize the dropout rate.
-#'
 #' @name zerosVsDepth
 #' @author Rory Kirchner, Michael Steinbaugh
+#' @inherit bioverbs::zerosVsDepth
 #' @inheritParams params
-#'
-#' @return `matrix`.
-#'
 #' @examples
 #' data(sce)
 #' x <- zerosVsDepth(sce)
 #' summary(x)
 #' colnames(x)
 NULL
+
+
+
+#' @importFrom bioverbs zerosVsDepth
+#' @aliases NULL
+#' @export
+bioverbs::zerosVsDepth
 
 
 

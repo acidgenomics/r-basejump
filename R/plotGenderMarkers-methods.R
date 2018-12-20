@@ -1,22 +1,23 @@
 # TODO Create small working example with dimoprhic genes.
 
-#' Plot sexually dimorphic gender marker genes
-#'
-#' This is a convenience function that wraps `plotGene` to quickly plot known
-#' sexually dimorphic genes, and overall gene experssion for the X and Y
-#' chromosomes.
-#'
-#' Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
-#'
-#' @name plotGenderMarkers
 #' @include plotGene-methods.R
+
+
+
+#' @name plotGenderMarkers
+#' @inherit bioverbs::plotGenderMarkers
 #' @inheritParams plotGene
 #' @inheritParams params
 #'
-#' @return `ggplot`.
-#'
-#' @seealso `plotGene`.
+#' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
 NULL
+
+
+
+#' @importFrom bioverbs plotGenderMarkers
+#' @aliases NULL
+#' @export
+bioverbs::plotGenderMarkers
 
 
 

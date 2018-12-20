@@ -1,7 +1,5 @@
-#' Convert transcripts to genes
-#'
 #' @name convertTranscriptsToGenes
-#' @inherit convertGenesToSymbols
+#' @inherit bioverbs::convertTranscriptsToGenes
 #' @inheritParams params
 #'
 #' @note For objects containing a count matrix, the object rows will be
@@ -52,6 +50,13 @@
 #' x <- convertTranscriptsToGenes(object)
 #' print(x)
 NULL
+
+
+
+#' @importFrom bioverbs convertTranscriptsToGenes
+#' @aliases NULL
+#' @export
+bioverbs::convertTranscriptsToGenes
 
 
 
