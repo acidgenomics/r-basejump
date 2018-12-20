@@ -49,14 +49,15 @@
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie areDisjointSets areExisting areIntersectingSets
 #'   areNonExisting areSameLength areSetEqual assert capitalize containsAURL
-#'   containsHeaderLevel containsHexColors containsURL formalCompress hasAccess
-#'   hasColnames hasDimnames hasCols hasDims hasInternet hasLength hasNames
-#'   hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols
-#'   hasValidDimnames isADirectory isAFile isAny isCharacter isDirectory
-#'   isExisting isFile isFlag isGGScale isHexColorFunction isInClosedRange
-#'   isInRange isInt isMatchingRegex isNonEmpty isNonNegative isNotMatchingRegex
-#'   isNumber isPositive isScalar isString isSubset isSuperset
-#'   matchesUniqueGeneNames validNames validate validateClasses
+#'   containsHeaderLevel containsHexColors containsURL false formalCompress
+#'   getNameInParent hasAccess hasColnames hasDimnames hasCols hasDims
+#'   hasInternet hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols
+#'   hasRows hasRownames hasUniqueCols hasValidDimnames isADirectory isAFile
+#'   isAny isCharacter isDirectory isExisting isFile isFlag isGGScale
+#'   isHexColorFunction isInClosedRange isInRange isInt isMatchingRegex
+#'   isNonEmpty isNonNegative isNotMatchingRegex isNumber isPositive isScalar
+#'   isString isSubset isSuperset matchesUniqueGeneNames validNames validate
+#'   validateClasses
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom jsonlite read_json

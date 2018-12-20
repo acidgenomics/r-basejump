@@ -4,13 +4,16 @@
 \alias{matchesInterestingGroups}
 \title{Check that interesting groups match a defined value}
 \usage{
-matchesInterestingGroups(x, interestingGroups)
+matchesInterestingGroups(x, interestingGroups,
+  .xname = getNameInParent(x))
 }
 \arguments{
 \item{x}{S4 class.}
 
 \item{interestingGroups}{\code{character}.
 Interesting groups.}
+
+\item{.xname}{\emph{Not intended to be used directly.}}
 }
 \value{
 No value.
