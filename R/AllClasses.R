@@ -24,10 +24,10 @@
 #'
 #' The [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt)
 #' contains additional useful reference information.
-setClass(Class = "EggNOG", contains = "SimpleDataFrameList")
-setValidity(
+setClass(
     Class = "EggNOG",
-    method = function(object) {
+    contains = "SimpleDataFrameList",
+    validity = function(object) {
         validate(
             identical(
                 x = names(object),
@@ -62,10 +62,10 @@ setValidity(
 #'
 #' @return `Ensembl2Entrez`.
 #' Contains a `DataFrame` with `geneID` and `entrezID` columns.
-setClass(Class = "Ensembl2Entrez", contains = "DataFrame")
-setValidity(
+setClass(
     Class = "Ensembl2Entrez",
-    method = function(object) {
+    contains = "DataFrame",
+    validity = function(object) {
         validate(
             identical(colnames(object), c("geneID", "entrezID")),
             is.integer(object[["entrezID"]])
@@ -94,10 +94,10 @@ setValidity(
 #'
 #' @return `Gene2Symbol`.
 #' Contains a `DataFrame` with `geneID` and `geneName` columns.
-setClass(Class = "Gene2Symbol", contains = "DataFrame")
-setValidity(
+setClass(
     Class = "Gene2Symbol",
-    method = function(object) {
+    contains = "DataFrame",
+    validity = function(object) {
         validate(
             identical(colnames(object), c("geneID", "geneName")),
             nrow(object) > 0L,
@@ -117,10 +117,10 @@ setValidity(
 #'
 #' @return `HGNC2Ensembl`.
 #' Contains a `DataFrame` with `hgncID` and `geneID` columns.
-setClass(Class = "HGNC2Ensembl", contains = "DataFrame")
-setValidity(
+setClass(
     Class = "HGNC2Ensembl",
-    method = function(object) {
+    contains = "DataFrame",
+    validity = function(object) {
         validate(
             identical(
                 x = lapply(object, class),
@@ -144,10 +144,10 @@ setValidity(
 #'
 #' @return `MGI2Ensembl`.
 #' Contains a `DataFrame` with `mgiID` and `geneID` columns.
-setClass(Class = "MGI2Ensembl", contains = "DataFrame")
-setValidity(
+setClass(
     Class = "MGI2Ensembl",
-    method = function(object) {
+    contains = "DataFrame",
+    validity = function(object) {
         validate(
             identical(colnames(object), c("mgiID", "geneID")),
             is.null(rownames(object))
@@ -167,10 +167,10 @@ setValidity(
 #' @export
 #'
 #' @return `PANTHER`. Contains a `DataFrame`.
-setClass(Class = "PANTHER", contains = "DataFrame")
-setValidity(
+setClass(
     Class = "PANTHER",
-    method = function(object) {
+    contains = "DataFrame",
+    validity = function(object) {
         validate(
             identical(
                 x = colnames(object),
@@ -208,10 +208,10 @@ setValidity(
 #'
 #' @return `Tx2Gene`. Contains a `DataFrame` with `transcriptID` and `geneID`
 #'   columns.
-setClass(Class = "Tx2Gene", contains = "DataFrame")
-setValidity(
+setClass(
     Class = "Tx2Gene",
-    method = function(object) {
+    contains = "DataFrame",
+    validity = function(object) {
         validate(
             nrow(object) > 0L,
             identical(colnames(object), c("transcriptID", "geneID")),

@@ -64,8 +64,8 @@
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs getGeneric getMethod is isGeneric new
-#'   selectMethod setAs setClass setGeneric setMethod setOldClass setValidity
-#'   show signature slot slotNames validObject .hasSlot
+#'   selectMethod setAs setClass setGeneric setMethod setOldClass show signature
+#'   slot slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom purrr map
