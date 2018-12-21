@@ -118,7 +118,6 @@ reference:
   - title: Miscellaneous
     contents:
     - basenameSansExt
-    - deg
     - starts_with("detect")
     - geneNames
     - headtail
@@ -130,22 +129,9 @@ reference:
     - pasteURL
     - realpath
     - separator
-  - title: Assert checks
-    desc: Readable check functions to ensure code integrity.
+  - title: Global variables
     contents:
-    - starts_with("assert")
-  - title: S4 generics without methods
-    contents:
-    - alphaSummary
     - barcodePattern
-    - barcodeRanksPerSample
-    - contrastName
-    - filterCells
-    - relativeLogExpression
-    - tmm
-    - topTables
-  - title: Globals
-    contents:
     - extPattern
     - genomeMetadataNames
     - lanePattern
