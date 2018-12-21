@@ -1,6 +1,5 @@
-#' Convert genes to symbols
-#'
 #' @name convertGenesToSymbols
+#' @inherit bioverbs::convertGenesToSymbols
 #' @inheritParams params
 #'
 #' @return Modified object of same class.
@@ -38,6 +37,18 @@
 #' y <- convertSymbolsToGenes(x)
 #' print(y)
 NULL
+
+
+
+#' @importFrom bioverbs convertGenesToSymbols
+#' @aliases NULL
+#' @export
+bioverbs::convertGenesToSymbols
+
+#' @importFrom bioverbs convertSymbolsToGenes
+#' @aliases NULL
+#' @export
+bioverbs::convertSymbolsToGenes
 
 
 

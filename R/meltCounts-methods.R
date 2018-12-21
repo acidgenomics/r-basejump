@@ -1,6 +1,5 @@
-#' Melt count matrix into long format
-#'
 #' @name meltCounts
+#' @inherit bioverbs::meltCounts
 #' @inheritParams params
 #'
 #' @param nonzeroGenes `logical(1)`.
@@ -9,16 +8,18 @@
 #'   Apply a log transformation (e.g. `log2(x + 1L)`) to the count matrix prior
 #'   to melting, if desired. Use `"identity"` to return unmodified (default).
 #'
-#' @seealso `reshape2::melt`.
-#'
-#' @return `grouped_df`.
-#' Grouped by `colname` (e.g. sample ID) and `rowname` (e.g. gene ID).
-#'
 #' @examples
 #' data(rse)
 #' x <- meltCounts(rse)
 #' print(x)
 NULL
+
+
+
+#' @importFrom bioverbs meltCounts
+#' @aliases NULL
+#' @export
+bioverbs::meltCounts
 
 
 

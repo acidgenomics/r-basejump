@@ -1,9 +1,8 @@
-#' Encode column data using run-length encoding
-#'
 #' @name encode
+#' @inherit bioverbs::encode
 #' @inheritParams params
 #'
-#' @seealso `S4Vectors::Rle`.
+#' @seealso `S4Vectors::Rle()`.
 #'
 #' @return Modified object.
 #' All `atomic` columns will be encoded to `Rle` S4 class.
@@ -18,6 +17,13 @@
 #' x <- encode(df)
 #' lapply(x, class)
 NULL
+
+
+
+#' @importFrom bioverbs encode
+#' @aliases NULL
+#' @export
+bioverbs::encode
 
 
 

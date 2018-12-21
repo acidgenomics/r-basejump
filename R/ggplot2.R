@@ -334,7 +334,9 @@ theme_paperwhite <- function(
 ) {
     assert(
         isNumber(base_size),
-        isString(base_family)
+        # Don't use `isString()` check on `base_family`, since empty string is
+        # allowed by ggplot2.
+        is.character(base_family) && length(base_family) == 1L
     )
     face <- match.arg(face)
     assert(isNumber(aspect_ratio) || is.null(aspect_ratio))
@@ -399,7 +401,9 @@ theme_paperwhite <- function(
 theme_midnight <- function() {
     assert(
         isNumber(base_size),
-        isString(base_family)
+        # Don't use `isString()` check on `base_family`, since empty string is
+        # allowed by ggplot2.
+        is.character(base_family) && length(base_family) == 1L
     )
     face <- match.arg(face)
     assert(isNumber(aspect_ratio) || is.null(aspect_ratio))

@@ -57,7 +57,7 @@ loadData <- function(..., dir, envir = globalenv()) {
         ))
     }
     lapply(X = files, FUN = fun, envir = envir)
-    assert(areExisting(names, envir = envir, inherits = FALSE))
+    assert(allAreExisting(names, envir = envir, inherits = FALSE))
     invisible(files)
 }
 
@@ -95,7 +95,7 @@ loadDataAsName <- function(..., dir, envir = globalenv()) {
 
     # Check to see if any of the new names already exist in environment.
     names <- names(dots)
-    if (!isTRUE(areNonExisting(names, envir = envir, inherits = FALSE))) {
+    if (!isTRUE(allAreNonExisting(names, envir = envir, inherits = FALSE))) {
         .safeLoadExistsError(names)
     }
 
@@ -167,7 +167,8 @@ formals(loadDataAsName)[["dir"]] <- formalsList[["load.dir"]]
 loadRemoteData <- function(url, envir = globalenv()) {
     assert(
         hasInternet(),
-        all(containsURL(url)),
+        # TODO Add `allAreURLs()` to goalie.
+        all(isURL(url)),
         is.environment(envir)
     )
     if (!all(vapply(
@@ -183,7 +184,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
     names(url) <- names
 
     # Check to make sure the objects don't already exist.
-    if (!isTRUE(areNonExisting(names, envir = envir, inherits = FALSE))) {
+    if (!isTRUE(allAreNonExisting(names, envir = envir, inherits = FALSE))) {
         .safeLoadExistsError(names)
     }
 
@@ -198,7 +199,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
         }
     ))
 
-    assert(areExisting(names, envir = envir, inherits = FALSE))
+    assert(allAreExisting(names, envir = envir, inherits = FALSE))
     invisible(url)
 }
 

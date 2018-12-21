@@ -3,9 +3,10 @@
 #' Prevent unwanted downstream behavior when a missing interesting group
 #' is requested by the user.
 #'
-#' @name matchesInterestingGroups
+#' @export
 #' @inherit params
 #'
+#' @inheritParams goalie::params
 #' @param x S4 class.
 #' @param interestingGroups `character`.
 #'   Interesting groups.
@@ -18,14 +19,14 @@
 #'
 #' ## Currently allowing `NULL` to pass.
 #' matchesInterestingGroups(rse, NULL)
-NULL
-
-
-
-.matchesInterestingGroups <- function(x, interestingGroups) {
+matchesInterestingGroups <- function(
+    x,
+    interestingGroups,
+    .xname = getNameInParent(x)
+) {
     ok <- isS4(x)
     if (!isTRUE(ok)) {
-        return("x must be S4 class.")
+        return(false("%s is not S4 class.", .xname))
     }
 
     # Early return on `NULL` interesting groups (e.g. example DESeqDataSet).
@@ -37,7 +38,7 @@ NULL
     # Otherwise, require that `interestingGroups` is a character.
     ok <- isCharacter(interestingGroups)
     if (!isTRUE(ok)) {
-        return("interestingGroups must contain non-empty character.")
+        return(false("interestingGroups is not non-empty character."))
     }
 
     data <- sampleData(x)
@@ -45,7 +46,7 @@ NULL
     # Check intersection with sample data.
     ok <- isSubset(interestingGroups, colnames(data))
     if (!isTRUE(ok)) {
-        return("Interesting groups are not defined in sampleData().")
+        return(false("Interesting groups are not defined in sampleData()."))
     }
 
     # Check that interesting groups columns are factors.
@@ -55,14 +56,8 @@ NULL
         FUN.VALUE = logical(1L)
     ))
     if (!isTRUE(ok)) {
-        return("Interesting group columns are not all factor.")
+        return(false("Interesting group columns are not all factor."))
     }
 
     TRUE
 }
-
-
-
-#' @rdname matchesInterestingGroups
-#' @export
-matchesInterestingGroups <- makeTestFunction(.matchesInterestingGroups)

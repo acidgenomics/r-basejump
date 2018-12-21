@@ -1,15 +1,9 @@
-#' Plot counts per gene
-#'
-#' Generally, we expect similar count spreads for all genes between samples
-#' unless the library sizes or total RNA expression are different.
-#'
 #' @name plotCountsPerGene
+#' @inherit bioverbs::plotCountsPerGene
 #' @inheritParams params
 #'
 #' @param geom `character(1)`.
 #'   Type of ggplot2 geometric object to use.
-#'
-#' @return `ggplot`.
 #'
 #' @examples
 #' data(rse, sce)
@@ -21,6 +15,13 @@
 #' ## SingleCellExperiment ====
 #' plotCountsPerGene(sce)
 NULL
+
+
+
+#' @importFrom bioverbs plotCountsPerGene
+#' @aliases NULL
+#' @export
+bioverbs::plotCountsPerGene
 
 
 

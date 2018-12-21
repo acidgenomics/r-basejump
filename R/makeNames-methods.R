@@ -1,3 +1,7 @@
+# FIXME Export `capitalize()` methods here.
+
+
+
 #' Make syntactically valid names
 #'
 #' For `atomic` vectors, these functions will sanitize the values. Otherwise,
@@ -84,6 +88,28 @@
 #' snake(x) %>% names()
 #' upperCamel(x) %>% names()
 NULL
+
+
+
+#' @importFrom bioverbs camel
+#' @aliases NULL
+#' @export
+bioverbs::camel
+
+#' @importFrom bioverbs dotted
+#' @aliases NULL
+#' @export
+bioverbs::dotted
+
+#' @importFrom bioverbs snake
+#' @aliases NULL
+#' @export
+bioverbs::snake
+
+#' @importFrom bioverbs upperCamel
+#' @aliases NULL
+#' @export
+bioverbs::upperCamel
 
 
 

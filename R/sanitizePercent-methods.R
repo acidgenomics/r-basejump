@@ -1,15 +1,6 @@
-#' Sanitize percentage
-#'
-#' Take a `character` vector of percentages (e.g. `"50%"`) and convert it to a
-#' `numeric` vector (e.g. `0.5`). This function is designed primarily to
-#' sanitize data imported from Microsoft Excel.
-#'
 #' @name sanitizePercent
+#' @inherit bioverbs::sanitizePercent
 #' @inheritParams params
-#'
-#' @return `numeric`, if `character` and all items in the vector end with "%".
-#'   Otherwise, returns the original object unmodified.
-#'
 #' @examples
 #' object <- c("100%", "10.0%", "1%", "0.1%", "0.01%")
 #' class(object)
@@ -18,6 +9,13 @@
 #' class(x)
 #' print(x)
 NULL
+
+
+
+#' @importFrom bioverbs sanitizePercent
+#' @aliases NULL
+#' @export
+bioverbs::sanitizePercent
 
 
 

@@ -1,15 +1,18 @@
-#' Plot genes detected
-#'
 #' @name plotGenesDetected
+#' @inherit bioverbs::plotGenesDetected
 #' @inheritParams params
-#'
-#' @return `ggplot`.
-#'
 #' @examples
 #' data(rse, sce)
 #' plotGenesDetected(rse)
 #' plotGenesDetected(sce)
 NULL
+
+
+
+#' @importFrom bioverbs plotGenesDetected
+#' @aliases NULL
+#' @export
+bioverbs::plotGenesDetected
 
 
 

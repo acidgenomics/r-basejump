@@ -1,10 +1,6 @@
-#' Remove rows and columns containing only `NA` values
-#'
 #' @name removeNA
+#' @inherit bioverbs::removeNA
 #' @inheritParams params
-#'
-#' @return Sanitized object.
-#'
 #' @examples
 #' ## atomic ====
 #' removeNA(c("hello", "world", NA))
@@ -30,6 +26,13 @@
 #' to <- removeNA(from)
 #' print(to)
 NULL
+
+
+
+#' @importFrom bioverbs removeNA
+#' @aliases NULL
+#' @export
+bioverbs::removeNA
 
 
 

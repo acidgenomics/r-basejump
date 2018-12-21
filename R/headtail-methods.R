@@ -1,21 +1,11 @@
-#' Return the first and last parts of an object
-#'
-#' Inspired by the `print` method for `DataFrame` class objects. Applies
-#' to both rows and columns, enabling quick inspection during interactive use.
-#'
 #' @name headtail
+#' @inherit bioverbs::headtail
 #' @inheritParams params
 #'
 #' @param n `integer(1)`.
 #'   Positive integer denoting the number of first and last items to include.
 #' @param ascii `logical(1)`.
 #'   Require separators to use ASCII instead of Unicode.
-#'
-#' @return Invisible `NULL`.
-#'
-#' @seealso
-#' - `utils::head`, `utils::tail`, `base::cat`.
-#' - `getMethod("show", "DataTable")`.
 #'
 #' @examples
 #' data(rse)
@@ -27,6 +17,13 @@
 #' ## SummarizedExperiment ====
 #' headtail(rse, ascii = TRUE)
 NULL
+
+
+
+#' @importFrom bioverbs headtail
+#' @aliases NULL
+#' @export
+bioverbs::headtail
 
 
 

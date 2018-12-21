@@ -1,31 +1,6 @@
-#' Select samples
-#'
-#' Utility function that enables quick an easy sample selection in Bioconductor
-#' contains that don't correspond to samples in the columns
-#' (e.g. `SingleCellExperiment`).
-#'
-#' Internally, pattern matching against sample and file names is applied using
-#' logical grep matching.
-#'
-#' @note Bracket based subsetting with `[` also works on `SingleCellExperiment`
-#'   objects but it's not intuitive. In this case, provide cellular barcode
-#'   identifiers for columns and gene identifiers for rows.
-#'
 #' @name selectSamples
+#' @inherit bioverbs::selectSamples
 #' @inheritParams params
-#'
-#' @param ... Selection arguments that map to the column names of
-#'   `sampleData`. `atomic` values are supported. Avoid using `logical` or
-#'   `numeric` indices (e.g. `which` calls) here, for improved code
-#'   readability.
-#'
-#' @return Modified object.
-#' Subset (extraction) containing the desired samples.
-#'
-#' @seealso
-#' - `sampleData`.
-#' - `S4Vectors::split`.
-#'
 #' @examples
 #' data(rse, sce)
 #'
@@ -43,6 +18,13 @@
 #' subset <- selectSamples(object, sampleName = sample)
 #' print(subset)
 NULL
+
+
+
+#' @importFrom bioverbs selectSamples
+#' @aliases NULL
+#' @export
+bioverbs::selectSamples
 
 
 

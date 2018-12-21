@@ -4,7 +4,7 @@
 #' @note We're attempting to make this as strict as possible, requiring:
 #'
 #' - Rows (genes) across objects must be identical.
-#' - [rowRanges][SummarizedExperiment::rowRanes] and/or
+#' - [rowRanges][SummarizedExperiment::rowRanges] and/or
 #'   [rowData][SummarizedExperiment::rowData]
 #'   [metadata][S4Vectors::metadata] must be identical.
 #' - [colData][SummarizedExperiment::colData] must contain the same columns.

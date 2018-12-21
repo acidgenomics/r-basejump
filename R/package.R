@@ -47,15 +47,15 @@
 #'   geom_vline ggplot guides labs position_jitterdodge scale_x_continuous
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
-#' @importFrom goalie areDisjointSets areExisting areIntersectingSets
-#'   areNonExisting areSameLength areSetEqual assert containsAURL
-#'   containsHeaderLevel containsHexColors containsURL formalCompress hasAccess
-#'   hasColnames hasDimnames hasCols hasDims hasInternet hasLength hasNames
-#'   hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols
-#'   hasValidDimnames isADirectory isAFile isAny isCharacter isDirectory
-#'   isExisting isFile isFlag isGGScale isHexColorFunction isInClosedRange
-#'   isInRange isInt isMatchingRegex isNonEmpty isNonNegative isNotMatchingRegex
-#'   isNumber isPositive isScalar isString isSubset isSuperset makeTestFunction
+#' @importFrom goalie allAreExisting allAreHexColors allAreNonExisting
+#'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert
+#'   capitalize false formalCompress getNameInParent hasAccess hasColnames
+#'   hasDimnames hasCols hasDims hasInternet hasLength hasNames hasNoDuplicates
+#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
+#'   isADirectory isAFile isAURL isAny isCharacter isDirectory isExisting isFile
+#'   isFlag isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange
+#'   isInt isMatchingRegex isNonEmpty isNonNegative isNotMatchingRegex isNumber
+#'   isPositive isScalar isString isSubset isSuperset isURL
 #'   matchesUniqueGeneNames validNames validate validateClasses
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
@@ -94,13 +94,9 @@
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
 
-#' @importFrom R.utils capitalize
+#' @importFrom goalie capitalize
 #' @export
-R.utils::capitalize
-
-#' @importFrom R.utils gzip
-#' @export
-R.utils::gzip
+goalie::capitalize
 
 #' @importFrom magrittr %>%
 #' @export
