@@ -30,7 +30,7 @@
   `tibble` coercion using `as(x, "tbl_df")` won't work when called from an
   Rscript without the package library loaded. Thanks @roryk for noticing this.
 - Updated `gene2symbol` generic to use `...`, since we've added the
-`unique = TRUE` argument in this release.
+  `unique = TRUE` argument in this release.
 - `annotable`: Moved to `makeGRanges.R` file, and improved the internal code
   to export supported formals also used in `makeGRangesFromEnsembl`. The
   function should work exactly the same as previous releases, but now with
@@ -881,59 +881,59 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Initial draft release.
 
 
-[AnnotationHub]: https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html
-[annotables]: https://github.com/stephenturner/annotables
-[AppVeyor CI]: https://ci.appveyor.com
+[AnnotationHub]: https://bioconductor.org/packages/AnnotationHub/
+[annotables]: https://github.com/stephenturner/annotables/
+[AppVeyor CI]: https://ci.appveyor.com/
 [assertive]: https://cran.r-project.org/package=assertive
-[basejump]: https://steinbaugh.com/basejump
-[bcbio]: https://github.com/chapmanb/bcbio-nextgen
-[bcbioBase]: http://bioinformatics.sph.harvard.edu/bcbioBase
-[bcbioRNASeq]: http://bioinformatics.sph.harvard.edu/bcbioRNASeq
-[bcbioSingleCell]: http://bioinformatics.sph.harvard.edu/bcbioSingleCell
-[BiocInstaller]: https://doi.org/doi:10.18129/B9.bioc.BiocInstaller
+[basejump]: https://steinbaugh.com/basejump/
+[bcbio]: https://github.com/bcbio/bcbio-nextgen/
+[bcbioBase]: http://bioinformatics.sph.harvard.edu/bcbioBase/
+[bcbioRNASeq]: http://bioinformatics.sph.harvard.edu/bcbioRNASeq/
+[bcbioSingleCell]: http://bioinformatics.sph.harvard.edu/bcbioSingleCell/
+[BiocInstaller]: https://bioconductor.org/packages/BiocInstaller/
 [BiocManager]: https://cran.r-project.org/package=BiocManager
-[Bioconductor]: https://bioconductor.org
-[Biostrings]: http://bioconductor.org/packages/release/bioc/html/Biostrings.html
-[brightworm]: https://steinbaugh.com/brightworm
+[Bioconductor]: https://bioconductor.org/
+[Biostrings]: https://bioconductor.org/packages/Biostrings/
+[brightworm]: https://steinbaugh.com/brightworm/
 [Cell Ranger]: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger
-[conda]: https://conda.io
+[conda]: https://conda.io/
 [covr]: https://cran.r-project.org/package=covr
-[devtools]: https://github.com/hadley/devtools
-[dplyr]: http://dplyr.tidyverse.org
-[EggNOG]: http://eggnogdb.embl.de
-[Ensembl]: https://www.ensembl.org
-[ensembldb]: http://bioconductor.org/packages/release/bioc/html/ensembldb.html
+[devtools]: https://cran.r-project.org/package=devtools
+[dplyr]: http://dplyr.tidyverse.org/
+[EggNOG]: http://eggnogdb.embl.de/
+[Ensembl]: https://www.ensembl.org/
+[ensembldb]: https://bioconductor.org/packages/ensembldb/
 [Entrez]: https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html
-[Excel]: https://products.office.com/en-us/excel
-[GenomeInfoDb]: https://doi.org/doi:10.18129/B9.bioc.GenomeInfoDb
-[GenomeInfoDbData]: https://doi.org/doi:10.18129/B9.bioc.GenomeInfoDbData
-[ggplot2]: http://ggplot2.tidyverse.org
-[GitHub]: https://github.com
-[glue]: https://glue.tidyverse.org
-[GRCh37]: https://grch37.ensembl.org
-[HGNC]: https://www.genenames.org
-[HMS RC]: https://rc.hms.harvard.edu
-[LibreOffice]: https://www.libreoffice.org
-[lintr]: https://github.com/jimhester/lintr
-[macOS]: https://www.apple.com/macos
-[magrittr]: https://magrittr.tidyverse.org
-[Markdown]: https://daringfireball.net/projects/markdown
-[MGI]: http://www.informatics.jax.org
-[NIH]: https://www.nih.gov
-[PANTHER]: http://pantherdb.org
-[pointillism]: https://steinbaugh.com/pointillism
-[R]: https://www.r-project.org
-[readr]: http://readr.tidyverse.org
+[Excel]: https://products.office.com/en-us/excel/
+[GenomeInfoDb]: https://bioconductor.org/packages/GenomeInfoDb/
+[GenomeInfoDbData]: https://bioconductor.org/packages/GenomeInfoDbData/
+[ggplot2]: http://ggplot2.tidyverse.org/
+[GitHub]: https://github.com/
+[glue]: https://glue.tidyverse.org/
+[GRCh37]: https://grch37.ensembl.org/
+[HGNC]: https://www.genenames.org/
+[HMS RC]: https://rc.hms.harvard.edu/
+[LibreOffice]: https://www.libreoffice.org/
+[lintr]: https://github.com/jimhester/lintr/
+[macOS]: https://www.apple.com/macos/
+[magrittr]: https://magrittr.tidyverse.org/
+[Markdown]: https://daringfireball.net/projects/markdown/
+[MGI]: http://www.informatics.jax.org/
+[NIH]: https://www.nih.gov/
+[PANTHER]: http://pantherdb.org/
+[pointillism]: https://steinbaugh.com/pointillism/
+[R]: https://www.r-project.org/
+[readr]: http://readr.tidyverse.org/
 [rio]: https://cran.r-project.org/package=rio
-[rlang]: http://rlang.tidyverse.org
+[rlang]: http://rlang.tidyverse.org/
 [roxygen2]: https://cran.r-project.org/package=roxygen2
-[SummarizedExperiment]: https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
-[testthat]: https://github.com/hadley/testthat
-[tibble]: https://tibble.tidyverse.org
-[tidyr]: http://tidyr.tidyverse.org
-[tidyverse]: http://www.tidyverse.org
-[Travis CI]: https://travis-ci.com
-[UCSC]: https://genome.ucsc.edu
-[r-wormbase]: https://steinbaugh.com/wormbase
-[Windows]: https://www.microsoft.com/en-us/windows
-[WormBase]: http://www.wormbase.org
+[SummarizedExperiment]: https://bioconductor.org/packages/SummarizedExperiment/
+[testthat]: https://cran.r-project.org/package=testthat
+[tibble]: https://tibble.tidyverse.org/
+[tidyr]: http://tidyr.tidyverse.org/
+[tidyverse]: http://www.tidyverse.org/
+[Travis CI]: https://travis-ci.com/
+[UCSC]: https://genome.ucsc.edu/
+[r-wormbase]: https://steinbaugh.com/wormbase/
+[Windows]: https://www.microsoft.com/en-us/windows/
+[WormBase]: http://www.wormbase.org/
