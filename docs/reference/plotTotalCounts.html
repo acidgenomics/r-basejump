@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot total counts — plotTotalCounts • basejump</title>
+<title>Plot total read counts — plotTotalCounts • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Plot total counts — plotTotalCounts" />
+<meta property="og:title" content="Plot total read counts — plotTotalCounts" />
 
-<meta property="og:description" content="Plot total counts" />
+<meta property="og:description" content="Plot total read counts" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -104,20 +104,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot total counts</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotTotalCounts-methods.R'><code>R/plotTotalCounts-methods.R</code></a></small>
+    <h1>Plot total read counts</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotTotalCounts-methods.R'><code>R/plotTotalCounts-methods.R</code></a></small>
     <div class="hidden name"><code>plotTotalCounts.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plot total counts</p>
+    <p>Plot total read counts</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plotTotalCounts</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
+    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>plotTotalCounts</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>perMillion</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"basejump.fill.discrete"</span>, <span class='kw'>NULL</span>),
@@ -135,10 +133,6 @@
     <tr>
       <th>object</th>
       <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>assay</th>

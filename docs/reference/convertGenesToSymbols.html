@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert genes to symbols</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertGenesToSymbols-methods.R'><code>R/convertGenesToSymbols-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertGenesToSymbols-methods.R'><code>R/convertGenesToSymbols-methods.R</code></a></small>
     <div class="hidden name"><code>convertGenesToSymbols.Rd</code></div>
     </div>
 
@@ -115,11 +115,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>convertSymbolsToGenes</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
+    <pre class="usage"><span class='co'># S4 method for character</span>
 <span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>gene2symbol</span>)
 
 <span class='co'># S4 method for matrix</span>
@@ -142,10 +138,6 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
       <th>gene2symbol</th>
       <td><p><code>Gene2Symbol</code>.
 Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</code> columns. See
@@ -162,7 +154,7 @@ Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</co
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>)
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
 
-<span class='no'>g2s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='no'>object</span>)
+<span class='no'>g2s</span> <span class='kw'>&lt;-</span> <span class='fu'>Gene2Symbol</span>(<span class='no'>object</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>g2s</span>)</div><div class='output co'>#&gt; Gene2Symbol with 500 rows and 2 columns
 #&gt;                  geneID    geneName
 #&gt;             &lt;character&gt; &lt;character&gt;

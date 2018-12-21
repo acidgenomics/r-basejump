@@ -167,7 +167,7 @@
 
     <p>We're attempting to make this as strict as possible, requiring:</p><ul>
 <li><p>Rows (genes) across objects must be identical.</p></li>
-<li><p>rowRanges and/or
+<li><p><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a> and/or
 <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData</a>
 <a href='https://www.rdocumentation.org/packages/S4Vectors/topics/Annotated-class'>metadata</a> must be identical.</p></li>
 <li><p><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a> must contain the same columns.</p></li>
@@ -213,22 +213,7 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>SummarizedExperiment</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocGenerics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: parallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'BiocGenerics'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:parallel':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span>
-#&gt; <span class='message'>    clusterExport, clusterMap, parApply, parCapply, parLapply,</span>
-#&gt; <span class='message'>    parLapplyLB, parRapply, parSapply, parSapplyLB</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    IQR, mad, sd, var, xtabs</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyDuplicated, append, as.data.frame, basename, cbind, colMeans,</span>
-#&gt; <span class='message'>    colnames, colSums, dirname, do.call, duplicated, eval, evalq,</span>
-#&gt; <span class='message'>    Filter, Find, get, grep, grepl, intersect, is.unsorted, lapply,</span>
-#&gt; <span class='message'>    lengths, Map, mapply, match, mget, order, paste, pmax, pmax.int,</span>
-#&gt; <span class='message'>    pmin, pmin.int, Position, rank, rbind, Reduce, rowMeans, rownames,</span>
-#&gt; <span class='message'>    rowSums, sapply, setdiff, sort, table, tapply, union, unique,</span>
-#&gt; <span class='message'>    unsplit, which, which.max, which.min</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>SummarizedExperiment</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: 'S4Vectors'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:base':</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
@@ -308,7 +293,7 @@
 #&gt; sample24         B</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1
@@ -325,7 +310,7 @@
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>y</span>))</div><div class='output co'>#&gt; [1] "cell101" "cell102" "cell103" "cell104" "cell105" "cell106"</div><div class='input'><span class='co'>## Increase the sample ID numbers.</span>
 <span class='no'>y</span>$<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/grep'>gsub</a></span>(<span class='st'>"1$"</span>, <span class='st'>"3"</span>, <span class='no'>y</span>$<span class='no'>sampleID</span>)
 <span class='no'>y</span>$<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/grep'>gsub</a></span>(<span class='st'>"2$"</span>, <span class='st'>"4"</span>, <span class='no'>y</span>$<span class='no'>sampleID</span>)
-<span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='fu'>sampleData</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;          sampleName interestingGroups
 #&gt;         &lt;character&gt;          &lt;factor&gt;
 #&gt; sample3     sample3           sample3
@@ -341,7 +326,7 @@
 #&gt; colnames(200): cell001 cell002 ... cell199 cell200
 #&gt; colData names(2): expLibSize sampleID
 #&gt; reducedDimNames(0):
-#&gt; spikeNames(0):</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+#&gt; spikeNames(0):</div><div class='input'><span class='fu'>sampleData</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1

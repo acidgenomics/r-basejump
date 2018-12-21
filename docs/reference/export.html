@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Export</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/export-methods.R'><code>R/export-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/export-methods.R'><code>R/export-methods.R</code></a></small>
     <div class="hidden name"><code>export.Rd</code></div>
     </div>
 
@@ -115,9 +115,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>export</span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for ANY</span>
+    <pre class="usage"><span class='co'># S4 method for ANY</span>
 <span class='fu'>export</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='no'>format</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for sparseMatrix</span>
@@ -142,10 +140,6 @@
 An object supporting <a href='https://www.rdocumentation.org/packages/base/topics/dim'>dim</a> to be written to disk.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
       <th>file</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 File path. Specify <code>file</code> or <code>format</code> but not both.</p></td>
@@ -156,6 +150,10 @@ File path. Specify <code>file</code> or <code>format</code> but not both.</p></t
 An optional character string containing the
 file format, which can be used to override the format inferred from <code>file</code>,
 or in lieu of specifying <code>file</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>name</th>

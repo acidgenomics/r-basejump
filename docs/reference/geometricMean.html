@@ -106,7 +106,7 @@ Useful for describing non-normal (i.e. geometric) distributions." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Geometric mean</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/geometricMean-methods.R'><code>R/geometricMean-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/geometricMean-methods.R'><code>R/geometricMean-methods.R</code></a></small>
     <div class="hidden name"><code>geometricMean.Rd</code></div>
     </div>
 
@@ -117,9 +117,7 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for numeric</span>
+    <pre class="usage"><span class='co'># S4 method for numeric</span>
 <span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>zeroPropagate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
@@ -135,10 +133,6 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
     <tr>
       <th>object</th>
       <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>removeNA</th>
@@ -164,17 +158,17 @@ Allow propagation of zeroes.</p></td>
 
     <p><code>numeric</code>.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>This function should be fully zero- and <code>NA</code>-tolerant. This calculation is
-not particularly useful if there are elements that are &lt;= 0 and will return
-<code>NaN</code>.</p>
+    <p>This function should be fully zero- and <code>NA</code>-tolerant. This calculation
+is not particularly useful if there are elements that are &lt;= 0 and will
+return <code>NaN</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/psych/topics/geometric.mean'>psych::geometric.mean</a></code>.</p></li>
 <li><p><a href='https://stackoverflow.com/a/25555105'>Paul McMurdie's code</a>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/psych/topics/geometric.mean'>psych::geometric.mean()</a></code>.</p></li>
 </ul></div>
     
 
@@ -197,7 +191,7 @@ not particularly useful if there are elements that are &lt;= 0 and will return
 #&gt; [4,]    4   16
 #&gt; [5,]    5   25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div><div class='input'>
 <span class='co'>## sparseMatrix ====</span>
-<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.html'>as</a></span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
+<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 5 x 2 sparse Matrix of class "dgCMatrix"
 #&gt;          
 #&gt; [1,] 1  1
@@ -213,7 +207,7 @@ not particularly useful if there are elements that are &lt;= 0 and will return
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

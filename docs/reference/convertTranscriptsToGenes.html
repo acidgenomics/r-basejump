@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert transcripts to genes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertTranscriptsToGenes-methods.R'><code>R/convertTranscriptsToGenes-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertTranscriptsToGenes-methods.R'><code>R/convertTranscriptsToGenes-methods.R</code></a></small>
     <div class="hidden name"><code>convertTranscriptsToGenes.Rd</code></div>
     </div>
 
@@ -115,9 +115,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
+    <pre class="usage"><span class='co'># S4 method for character</span>
 <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>tx2gene</span>)
 
 <span class='co'># S4 method for matrix</span>
@@ -139,10 +137,6 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Passthrough to <code>makeTx2GeneFromEnsembl</code>.</p></td>
-    </tr>
-    <tr>
       <th>tx2gene</th>
       <td><p><code>Tx2Gene</code>.
 Transcript-to-gene mappings.</p></td>
@@ -152,6 +146,10 @@ Transcript-to-gene mappings.</p></td>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
 For objects supporting <code>dim</code>, aggregate counts to gene level and collapse
 the matrix.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Passthrough to <code>makeTx2GeneFromEnsembl</code>.</p></td>
     </tr>
     </table>
     
@@ -180,7 +178,7 @@ collapsed to gene level using <code>aggregateRows</code>. This applies to our
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>tx_se</span>)
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>tx_se</span>
 
-<span class='no'>t2g</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Tx2Gene.html'>Tx2Gene</a></span>(<span class='no'>object</span>)
+<span class='no'>t2g</span> <span class='kw'>&lt;-</span> <span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>t2g</span>)</div><div class='output co'>#&gt; Tx2Gene with 6 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
@@ -203,7 +201,7 @@ collapsed to gene level using <code>aggregateRows</code>. This applies to our
 #&gt;  - attr(*, "names")= chr [1:6] "ENST00000494424" "ENST00000496771" "ENST00000612152" "ENST00000371584" ...</div><div class='input'>
 <span class='co'>## matrix ====</span>
 <span class='co'>## Note that transcript IDs currently must be in the rows.</span>
-<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>object</span>)
+<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'>counts</span>(<span class='no'>object</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;                 sample1 sample2 sample3 sample4
 #&gt; ENST00000494424       1       2       3       4
 #&gt; ENST00000496771       5       6       7       8

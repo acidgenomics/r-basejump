@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Humanize an R object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/humanize-methods.R'><code>R/humanize-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/humanize-methods.R'><code>R/humanize-methods.R</code></a></small>
     <div class="hidden name"><code>humanize.Rd</code></div>
     </div>
 
@@ -115,9 +115,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>humanize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
+    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>humanize</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -127,10 +125,6 @@
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -139,10 +133,10 @@
 Contains human-friendly rownames (e.g. gene symbols instead of stable gene
 IDs) and colnames (e.g. sample names instead of sample IDs).</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This can make dimnames invalid (see <code>make.names</code>) and should only
-be called prior to writing files to disk.</p>
+    <p>This can make dimnames invalid (see <code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>make.names()</a></code>) and should only be called
+prior to writing files to disk.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -181,7 +175,7 @@ be called prior to writing files to disk.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#note">Note</a></li>
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
