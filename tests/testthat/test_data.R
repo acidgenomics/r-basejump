@@ -232,7 +232,7 @@ test_that("makeSummarizedExperiment : Column data failure", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "hasValidDimnames"
+        regexp = "areIntersectingSets"
     )
     expect_error(
         object = makeSummarizedExperiment(
