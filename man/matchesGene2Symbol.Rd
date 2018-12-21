@@ -4,7 +4,7 @@
 \alias{matchesGene2Symbol}
 \title{Check that user-defined gene input matches expected values}
 \usage{
-matchesGene2Symbol(x, genes, gene2symbol)
+matchesGene2Symbol(x, genes, gene2symbol, .xname = getNameInParent(x))
 }
 \arguments{
 \item{x}{Object class supporting \code{rownames}.
@@ -19,6 +19,8 @@ symbols (e.g. "TSPN6"), if possible.}
 \item{gene2symbol}{\code{Gene2Symbol}.
 Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
 \code{Gene2Symbol} for more information.}
+
+\item{.xname}{\emph{Not intended to be used directly.}}
 }
 \value{
 No value.

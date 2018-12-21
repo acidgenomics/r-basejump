@@ -1,8 +1,9 @@
 #' Check that user-defined gene input matches expected values
 #'
-#' @name matchesGene2Symbol
+#' @export
 #' @inherit params
 #'
+#' @inheritParams goalie::params
 #' @param x Object class supporting `rownames`.
 #'   All rownames in this object must intersect with the rownames defined in the
 #'   `gene2symbol` argument.
@@ -32,29 +33,33 @@
 #'
 #' matchesGene2Symbol(x = x, genes = geneIDs, gene2symbol = g2s)
 #' matchesGene2Symbol(x = x, genes = geneNames, gene2symbol = g2s)
-NULL
-
-
-
-.matchesGene2Symbol <- function(x, genes, gene2symbol) {
+matchesGene2Symbol <- function(
+    x,
+    genes,
+    gene2symbol,
+    .xname = getNameInParent(x)
+) {
     ok <- hasRownames(x)
     if (!isTRUE(ok)) {
-        return("x doesn't have rownmaes.")
+        return(false("%s doesn't have row names.", .xname))
     }
 
     ok <- isCharacter(genes)
     if (!isTRUE(ok)) {
-        return("genes must be non-empty character.")
+        return(false(
+            "genes is not non-empty character: %s",
+            toString(genes)
+        ))
     }
 
     ok <- is(gene2symbol, "Gene2Symbol")
     if (!isTRUE(ok)) {
-        return("gene2symbol must be Gene2Symbol S4 class.")
+        return(false("gene2symbol must be Gene2Symbol S4 class."))
     }
 
     ok <- identical(nrow(x), nrow(gene2symbol))
     if (!isTRUE(ok)) {
-        return("Row mismatch between x and gene2symbol detected.")
+        return(false("Row mismatch between x and gene2symbol."))
     }
 
     # Consider tightening up this step.
@@ -68,14 +73,8 @@ NULL
         y = rownames(x)
     )
     if (!isTRUE(ok)) {
-        return("Failed to map genes to rownames in x.")
+        return(false("Failed to map genes to rownames in %s.", .xname))
     }
 
     TRUE
 }
-
-
-
-#' @rdname matchesGene2Symbol
-#' @export
-matchesGene2Symbol <- makeTestFunction(.matchesGene2Symbol)

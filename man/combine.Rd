@@ -44,7 +44,7 @@ There are two basic combine strategies. One is an intersection
 We're attempting to make this as strict as possible, requiring:
 \itemize{
 \item Rows (genes) across objects must be identical.
-\item \link[SummarizedExperiment:rowRanes]{rowRanges} and/or
+\item \link[SummarizedExperiment:rowRanges]{rowRanges} and/or
 \link[SummarizedExperiment:rowData]{rowData}
 \link[S4Vectors:metadata]{metadata} must be identical.
 \item \link[SummarizedExperiment:colData]{colData} must contain the same columns.

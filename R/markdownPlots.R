@@ -23,7 +23,7 @@ markdownPlots <- function(list, headerLevel = 2L) {
     assert(
         is.list(list),
         hasNames(list),
-        containsHeaderLevel(headerLevel)
+        isHeaderLevel(headerLevel)
     )
     invisible(mapply(
         name = names(list),

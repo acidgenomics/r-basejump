@@ -1,13 +1,5 @@
-#' Geometric mean
-#'
-#' The geometric mean is the nth root of n products or e to the mean log of `x`.
-#' Useful for describing non-normal (i.e. geometric) distributions.
-#'
-#' This function should be fully zero- and `NA`-tolerant. This calculation is
-#' not particularly useful if there are elements that are <= 0 and will return
-#' `NaN`.
-#'
 #' @name geometricMean
+#' @inherit bioverbs::geometricMean
 #' @inheritParams params
 #' @inheritParams base::apply
 #'
@@ -16,9 +8,13 @@
 #' @param zeroPropagate `logical(1)`.
 #'   Allow propagation of zeroes.
 #'
+#' @note This function should be fully zero- and `NA`-tolerant. This calculation
+#'   is not particularly useful if there are elements that are <= 0 and will
+#'   return `NaN`.
+#'
 #' @seealso
-#' - `psych::geometric.mean`.
 #' - [Paul McMurdie's code](https://stackoverflow.com/a/25555105).
+#' - `psych::geometric.mean()`.
 #'
 #' @return `numeric`.
 #'
@@ -46,6 +42,13 @@
 #' print(sparse)
 #' geometricMean(sparse)
 NULL
+
+
+
+#' @importFrom bioverbs geometricMean
+#' @aliases NULL
+#' @export
+bioverbs::geometricMean
 
 
 

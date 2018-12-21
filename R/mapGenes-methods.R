@@ -55,7 +55,23 @@ NULL
 
 
 
-# Internal =====================================================================
+#' @importFrom bioverbs mapGenesToRownames
+#' @aliases NULL
+#' @export
+bioverbs::mapGenesToRownames
+
+#' @importFrom bioverbs mapGenesToIDs
+#' @aliases NULL
+#' @export
+bioverbs::mapGenesToIDs
+
+#' @importFrom bioverbs mapGenesToSymbols
+#' @aliases NULL
+#' @export
+bioverbs::mapGenesToSymbols
+
+
+
 .mapGenes <- function(object, genes, strict = TRUE) {
     validObject(object)
     assert(

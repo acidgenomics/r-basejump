@@ -1,14 +1,17 @@
-#' Plot quality control metrics
-#'
 #' @name plotQC
+#' @inherit bioverbs::plotQC
 #' @inheritParams params
-#'
-#' @return `ggplot`.
-#'
 #' @examples
 #' data(rse)
 #' plotQC(rse)
 NULL
+
+
+
+#' @importFrom bioverbs plotQC
+#' @aliases NULL
+#' @export
+bioverbs::plotQC
 
 
 

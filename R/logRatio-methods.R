@@ -8,8 +8,8 @@
 #'   differential expression output.
 #'
 #' @seealso
-#' - `gtools::foldchange2logratio`.
-#' - `gtools::logratio2foldchange`.
+#' - `gtools::foldchange2logratio()`.
+#' - `gtools::logratio2foldchange()`.
 #'
 #' @return `numeric`.
 #'
@@ -20,6 +20,18 @@
 #' ## Convert log ratio to fold change.
 #' logRatioToFoldChange(seq(-3, 3, 1))
 NULL
+
+
+
+#' @importFrom bioverbs foldChangeToLogRatio
+#' @aliases NULL
+#' @export
+bioverbs::foldChangeToLogRatio
+
+#' @importFrom bioverbs logRatioToFoldChange
+#' @aliases NULL
+#' @export
+bioverbs::logRatioToFoldChange
 
 
 

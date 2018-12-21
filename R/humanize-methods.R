@@ -1,15 +1,6 @@
-#' Humanize an R object
-#'
-#' @note This can make dimnames invalid (see `make.names`) and should only
-#' be called prior to writing files to disk.
-#'
 #' @name humanize
+#' @inherit bioverbs::humanize
 #' @inheritParams params
-#'
-#' @return Modified object.
-#' Contains human-friendly rownames (e.g. gene symbols instead of stable gene
-#' IDs) and colnames (e.g. sample names instead of sample IDs).
-#'
 #' @examples
 #' data(rse, sce)
 #'
@@ -24,6 +15,13 @@
 #' x <- humanize(sce)
 #' lapply(dimnames(x), head)
 NULL
+
+
+
+#' @importFrom bioverbs humanize
+#' @aliases NULL
+#' @export
+bioverbs::humanize
 
 
 

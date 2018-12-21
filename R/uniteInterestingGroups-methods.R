@@ -1,15 +1,6 @@
-#' Unite interesting groups into a single column
-#'
-#' Create a single interesting groups column (`interestingGroups`) used for
-#' coloring in plots. When multiple interesting groups are present, unite into a
-#' single column, delimited by a colon.
-#'
 #' @name uniteInterestingGroups
+#' @inherit bioverbs::uniteInterestingGroups
 #' @inheritParams params
-#'
-#' @return Modified object.
-#' Now contains an `interestingGroups` column.
-#'
 #' @examples
 #' data(rse)
 #' object <- rse
@@ -20,6 +11,13 @@
 #' )
 #' print(to)
 NULL
+
+
+
+#' @importFrom bioverbs uniteInterestingGroups
+#' @aliases NULL
+#' @export
+bioverbs::uniteInterestingGroups
 
 
 

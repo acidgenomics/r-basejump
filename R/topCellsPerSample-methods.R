@@ -1,21 +1,22 @@
-#' Top cells per sample
-#'
-#' Obtain the top cellular barcodes, based on counts.
-#'
 #' @name topCellsPerSample
+#' @inherit bioverbs::topCellsPerSample
 #' @inheritParams params
 #'
 #' @param n `integer(1)`.
 #'   Number of barcodes to return per sample.
-#'
-#' @return `list`.
-#' Top barcodes as `character`, split by `sampleID`.
 #'
 #' @examples
 #' data(sce)
 #' x <- topCellsPerSample(sce)
 #' lapply(x, head)
 NULL
+
+
+
+#' @importFrom bioverbs topCellsPerSample
+#' @aliases NULL
+#' @export
+bioverbs::topCellsPerSample
 
 
 
