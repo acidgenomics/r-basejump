@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aggregate rows or columns — aggregateRows • basejump</title>
+<title>Aggregate rows or columns — aggregate • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Aggregate rows or columns — aggregateRows" />
+<meta property="og:title" content="Aggregate rows or columns — aggregate" />
 
 <meta property="og:description" content="Aggregate gene/transcript features (rows) or sample replicates (columns)." />
 <meta name="twitter:card" content="summary" />
@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Aggregate rows or columns</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/aggregate-methods.R'><code>R/aggregate-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/aggregate-methods.R'><code>R/aggregate-methods.R</code></a></small>
     <div class="hidden name"><code>aggregate.Rd</code></div>
     </div>
 
@@ -115,11 +115,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for matrix</span>
+    <pre class="usage"><span class='co'># S4 method for matrix</span>
 <span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sum"</span>,
   <span class='st'>"mean"</span>))
 
@@ -153,10 +149,6 @@
     <tr>
       <th>object</th>
       <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>groupings</th>
@@ -273,7 +265,7 @@ samples.</p></li>
 #&gt;            sample1            sample1            sample2            sample2 
 #&gt; Levels: sample1 sample2</div><div class='input'>
 <span class='co'>## matrix</span>
-<span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.html'>as</a></span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
+<span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  0                  1                  1
 #&gt; transcript2                  1                  0                  1
@@ -285,7 +277,7 @@ samples.</p></li>
 #&gt; transcript3                  1
 #&gt; transcript4                  0</div><div class='input'>
 <span class='co'>## sparseMatrix</span>
-<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.html'>as</a></span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
+<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
 #&gt; attr(,"package")
 #&gt; [1] "Matrix"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 4 x 4 sparse Matrix of class "dgCMatrix"

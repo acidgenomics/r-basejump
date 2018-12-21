@@ -107,7 +107,7 @@ sanitize data imported from Microsoft Excel." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sanitize percentage</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/sanitizePercent-methods.R'><code>R/sanitizePercent-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/sanitizePercent-methods.R'><code>R/sanitizePercent-methods.R</code></a></small>
     <div class="hidden name"><code>sanitizePercent.Rd</code></div>
     </div>
 
@@ -119,9 +119,7 @@ sanitize data imported from Microsoft Excel.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>sanitizePercent</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for atomic</span>
+    <pre class="usage"><span class='co'># S4 method for atomic</span>
 <span class='fu'>sanitizePercent</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for character</span>
@@ -134,16 +132,12 @@ sanitize data imported from Microsoft Excel.</p>
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code>, if <code>character</code> and all items in the vector end with "<!-- %". -->
-Otherwise, returns the original object unmodified.</p>
+    <p>Modified object, with all percentage strings containing <code>"%"</code> (e.g.
+<code>"50%"</code>) converted to numeric proportions (e.g. <code>0.5</code>).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

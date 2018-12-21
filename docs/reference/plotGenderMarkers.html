@@ -34,7 +34,7 @@
   
 <meta property="og:title" content="Plot sexually dimorphic gender marker genes — plotGenderMarkers" />
 
-<meta property="og:description" content="This is a convenience function that wraps plotGene to quickly plot known
+<meta property="og:description" content="This is a convenience function that wraps plotGene() to quickly plot known
 sexually dimorphic genes, and overall gene experssion for the X and Y
 chromosomes." />
 <meta name="twitter:card" content="summary" />
@@ -107,21 +107,19 @@ chromosomes." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot sexually dimorphic gender marker genes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotGenderMarkers-methods.R'><code>R/plotGenderMarkers-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotGenderMarkers-methods.R'><code>R/plotGenderMarkers-methods.R</code></a></small>
     <div class="hidden name"><code>plotGenderMarkers.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This is a convenience function that wraps <code>plotGene</code> to quickly plot known
+    <p>This is a convenience function that wraps <code>plotGene()</code> to quickly plot known
 sexually dimorphic genes, and overall gene experssion for the X and Y
 chromosomes.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
+    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,
   <span class='kw'>medianLine</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"basejump.discrete.color"</span>,
@@ -133,10 +131,6 @@ chromosomes.</p>
     <tr>
       <th>object</th>
       <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>assay</th>
@@ -181,19 +175,23 @@ Show plot legend.</p></td>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Plot style.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>ggplot</code>.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Currently only <em>Homo sapiens</em> and <em>Mus musculus</em> genomes are supported.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>plotGene</code>.</p></div>
+    <div class='dont-index'><p><code>plotGene()</code>.</p></div>
     
 
   </div>
@@ -204,7 +202,7 @@ Plot style.</p></td>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
           </ul>

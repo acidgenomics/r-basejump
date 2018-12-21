@@ -137,7 +137,7 @@
 
     
     <p>It is often useful to coerce an S4 object to a flat <code>list</code> for archival
-storage. Here we are providing the <code><a href='coerceS4ToList.html'>coerceS4ToList()</a></code> function, which
+storage. Here we are providing the <code>coerceS4ToList()</code> function, which
 consistently coerces the slots in any S4 to a standard <code>list</code>. Additionally,
 here we have improved support for <code>SummarizedExperiment</code> to <code>list</code> coercion,
 returning the slots as a <code>list</code>.</p>
@@ -147,7 +147,7 @@ returning the slots as a <code>list</code>.</p>
     
     <p>Coerce an object to a <a href='https://tibble.tidyverse.org/'>tibble</a> (<code>tbl_df</code>, <code>data.frame</code>) using either S3 or
 S4 methods:</p><ul>
-<li><p>S3: <code><a href='https://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble(x)</a></code> (or <code>as_tibble</code> alias).</p></li>
+<li><p>S3: <code>as_tibble(x)</code> (or <code>as_tibble</code> alias).</p></li>
 <li><p>S4: <code>as(object, Class = "tbl_df")</code>.</p></li>
 </ul>
     <p>Tibbles don't support row name assignment, so here we are ensuring they are
