@@ -47,6 +47,7 @@ Imports:
     S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
+    bioverbs (>= 0.1),
     cowplot,
     data.table,
     dplyr,
