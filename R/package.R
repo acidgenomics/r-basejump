@@ -48,9 +48,9 @@
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie allAreExisting allAreHexColors allAreNonExisting
-#'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert
-#'   capitalize false formalCompress getNameInParent hasAccess hasColnames
-#'   hasDimnames hasCols hasDims hasInternet hasLength hasNames hasNoDuplicates
+#'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert false
+#'   formalCompress getNameInParent hasAccess hasColnames hasDimnames hasCols
+#'   hasDims hasInternet hasLength hasNames hasNoDuplicates
 #'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
 #'   isADirectory isAFile isAURL isAny isCharacter isDirectory isExisting isFile
 #'   isFlag isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange
