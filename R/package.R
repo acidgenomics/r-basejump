@@ -94,10 +94,6 @@
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
 
-#' @importFrom goalie capitalize
-#' @export
-goalie::capitalize
-
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
