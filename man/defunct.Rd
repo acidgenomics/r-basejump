@@ -8,7 +8,7 @@
 \alias{broadClass}
 \alias{separatorBar}
 \alias{setArgsToDoCall}
-\title{Defunct Functions}
+\title{Defunct functions}
 \usage{
 parseGFFAttributes(...)
 
@@ -31,6 +31,6 @@ setArgsToDoCall(...)
 \code{.Defunct}.
 }
 \description{
-Defunct Functions
+Defunct functions
 }
 \keyword{internal}

@@ -46,7 +46,7 @@
 \alias{tx2gene}
 \alias{markdownPlotlist}
 \alias{mdPlotlist}
-\title{Deprecated Functions}
+\title{Deprecated functions}
 \usage{
 ensembl(...)
 
@@ -146,6 +146,6 @@ List containing \code{ggplot} objects.}
 \code{.Deprecated}.
 }
 \description{
-Deprecated Functions
+Deprecated functions
 }
 \keyword{internal}
