@@ -167,8 +167,7 @@ formals(loadDataAsName)[["dir"]] <- formalsList[["load.dir"]]
 loadRemoteData <- function(url, envir = globalenv()) {
     assert(
         hasInternet(),
-        # TODO Add `allAreURLs()` to goalie.
-        all(isURL(url)),
+        allAreURLs(url),
         is.environment(envir)
     )
     if (!all(vapply(

@@ -78,7 +78,7 @@ RdTags <- function(object) {  # nolint
     tags <- vapply(
         X = object,
         FUN = attr,
-        FUN.VALUE = character(1),
+        FUN.VALUE = character(1L),
         "Rd_tag"
     )
     if (length(tags) == 0L) {
