@@ -57,7 +57,7 @@ microplate <- function(
     )
     controls <- as.integer(controls)
     # Prefix
-    assert(isString(prefix) || is.null(prefix))
+    assert(isString(prefix, nullOK = TRUE))
 
     if (wells == 96L) {
         row <- 8L

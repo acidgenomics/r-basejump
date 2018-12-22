@@ -276,7 +276,7 @@ loadRemoteData <- function(url, envir = globalenv()) {
         isAFile(file),
         # Allowing RDA or RDATA here.
         grepl("\\.rd[a|ata]$", file, ignore.case = TRUE),
-        isString(name) || is.null(name),
+        isString(name, nullOK = TRUE),
         is.environment(envir)
     )
     if (is.null(name)) {

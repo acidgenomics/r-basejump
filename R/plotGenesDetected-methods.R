@@ -32,9 +32,9 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
             isScalar(assay),
             isInt(limit) && isNonNegative(limit),
             isInt(minCounts) && isNonNegative(minCounts),
-            isGGScale(fill, scale = "discrete", aes = "fill") || is.null(fill),
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
-            isString(title) || is.null(title)
+            isString(title, nullOK = TRUE)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

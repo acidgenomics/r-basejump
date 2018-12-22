@@ -30,9 +30,9 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         assert(
             isScalar(assay),
             isFlag(perMillion),
-            isGGScale(fill, scale = "discrete", aes = "fill") || is.null(fill),
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
-            isString(title) || is.null(title)
+            isString(title, nullOK = TRUE)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

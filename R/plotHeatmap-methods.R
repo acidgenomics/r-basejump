@@ -232,8 +232,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             isFlag(showColnames),
             isInt(treeheightRow),
             isInt(treeheightCol),
-            isString(borderColor) || is.null(borderColor),
-            isString(title) || is.null(title)
+            isString(borderColor, nullOK = TRUE),
+            isString(title, nullOK = TRUE)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -432,7 +432,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             isFlag(showColnames),
             isInt(treeheightRow),
             isInt(treeheightCol),
-            isString(borderColor) || is.null(borderColor)
+            isString(borderColor, nullOK = TRUE)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -585,8 +585,8 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             isFlag(clusterCols),
             isFlag(clusterRows),
             isFlag(legend),
-            isString(borderColor) || is.null(borderColor),
-            isString(title) || is.null(title)
+            isString(borderColor, nullOK = TRUE),
+            isString(title, nullOK = TRUE)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -723,7 +723,7 @@ setMethod(
     validObject(object)
     assert(
         isCharacter(blacklist),
-        isHexColorFunction(legendColor) || is.null(legendColor)
+        isHexColorFunction(legendColor, nullOK = TRUE)
     )
 
     # Annotation columns -------------------------------------------------------
