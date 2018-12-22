@@ -3,7 +3,7 @@
 
 
 
-#' Deprecated Functions
+#' Deprecated functions
 #'
 #' @name deprecated
 #' @keywords internal
@@ -15,7 +15,7 @@ NULL
 
 
 
-#' Defunct Functions
+#' Defunct functions
 #'
 #' @name defunct
 #' @keywords internal

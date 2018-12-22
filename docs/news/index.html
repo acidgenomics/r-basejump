@@ -105,6 +105,46 @@
       <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="basejump-0-9-1-2018-12-22" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-9-1-2018-12-22" class="anchor"></a>basejump 0.9.1 (2018-12-22)</h2>
+</div>
+    <div id="basejump-0-9-0-2018-12-12" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-9-0-2018-12-12" class="anchor"></a>basejump 0.9.0 (2018-12-12)</h2>
+</div>
+    <div id="basejump-0-8-8-2018-12-03" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-8-8-2018-12-03" class="anchor"></a>basejump 0.8.8 (2018-12-03)</h2>
+</div>
+    <div id="basejump-0-8-6-2018-11-30" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-8-6-2018-11-30" class="anchor"></a>basejump 0.8.6 (2018-11-30)</h2>
+</div>
+    <div id="basejump-0-8-5-2018-11-29" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-8-5-2018-11-29" class="anchor"></a>basejump 0.8.5 (2018-11-29)</h2>
+</div>
+    <div id="basejump-0-8-4-2018-11-28" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-8-4-2018-11-28" class="anchor"></a>basejump 0.8.4 (2018-11-28)</h2>
+</div>
+    <div id="basejump-0-8-3-2018-11-25" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-8-3-2018-11-25" class="anchor"></a>basejump 0.8.3 (2018-11-25)</h2>
+</div>
+    <div id="basejump-0-8-2-2018-11-19" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-8-2-2018-11-19" class="anchor"></a>basejump 0.8.2 (2018-11-19)</h2>
+</div>
+    <div id="basejump-0-8-1-2018-11-15" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-8-1-2018-11-15" class="anchor"></a>basejump 0.8.1 (2018-11-15)</h2>
+</div>
+    <div id="basejump-0-8-0-2018-11-11" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-8-0-2018-11-11" class="anchor"></a>basejump 0.8.0 (2018-11-11)</h2>
+</div>
     <div id="basejump-0-7-2-2018-08-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-2-2018-08-29" class="anchor"></a>basejump 0.7.2 (2018-08-29)</h2>
@@ -138,12 +178,12 @@
 <li>
 <code>sampleNames</code> now supports assignment for <code>SummarizedExperiment</code> method.</li>
 <li>Now exporting <code>lanePattern</code> regular expression pattern as a global, which was previously defined in the <a href="http://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package.</li>
-<li>Bug fix for <code>as</code> coercion method support. Need to ensure <code>exportMethods(coerce)</code> is included in <code>NAMESPACE</code> file, otherwise <code>tibble</code> coercion using <code>as(x, "tbl_df")</code> won’t work when called from an Rscript without the package library loaded. Thanks <a href='https://github.com/roryk'>@roryk</a> for noticing this.</li>
+<li>Bug fix for <code>as</code> coercion method support. Need to ensure <code>exportMethods(coerce)</code> is included in <code>NAMESPACE</code> file, otherwise <code>tibble</code> coercion using <code><a href="../reference/as.html">as(x, "tbl_df")</a></code> won’t work when called from an Rscript without the package library loaded. Thanks <a href='https://github.com/roryk'>@roryk</a> for noticing this.</li>
 <li>Updated <code>gene2symbol</code> generic to use <code>...</code>, since we’ve added the <code>unique = TRUE</code> argument in this release.</li>
 <li>
 <code>annotable</code>: Moved to <code>makeGRanges.R</code> file, and improved the internal code to export supported formals also used in <code>makeGRangesFromEnsembl</code>. The function should work exactly the same as previous releases, but now with clearer supported arguments in the documentation.</li>
 <li>Skipping code coverage for <code>cleanSystemLibrary</code>, since <a href="https://travis-ci.com/">Travis CI</a> installs packages into the system library, and causes this check to return <code>FALSE</code>.</li>
-<li>Consistently using <code>as(from, "tbl_df")</code> for internal tibble coercion in all functions.</li>
+<li>Consistently using <code><a href="../reference/as.html">as(from, "tbl_df")</a></code> for internal tibble coercion in all functions.</li>
 <li>
 <code>geneSynonyms</code> and <code>panther</code>: <code>organism</code> argument matching no longer suggests a default. The current list of supported organisms is in the documentation, and described in the internal <code>match.arg</code> call.</li>
 <li>All <code>SummarizedExperiment</code> methods use <code>validObject</code> validity checks, where applicable.</li>
@@ -466,7 +506,7 @@
 <li>Added message during <code>hgnc2gene</code> call.</li>
 <li>Miscellaneous documentation fixes.</li>
 <li>Moved internal constructors into the S4 method definitions, where applicable.</li>
-<li>Simplified default parameter definition for <code>panther(organism = "XXX")</code>.</li>
+<li>Simplified default parameter definition for <code><a href="../reference/deprecated.html">panther(organism = "XXX")</a></code>.</li>
 <li>Improved code coverage, using <code>nocov</code> where appropriate.</li>
 </ul>
 </div>
@@ -715,7 +755,7 @@
 <li>
 <code>loadData</code> and <code>loadDataAsName</code> now default to <code>replace = TRUE</code>. If an object with the same name exists in the destination environment, then a warning is generated.</li>
 <li>
-<code>collapseToString</code> only attempts to dynamically return the original object class on objects that aren’t class <code>data.frame</code>. I updated this code to behave more nicely with grouped tibbles (<code>grouped_df</code>), which are a virtual class of <code>data.frame</code> and therefore can’t be coerced using <code>as(object, "grouped_df")</code>.</li>
+<code>collapseToString</code> only attempts to dynamically return the original object class on objects that aren’t class <code>data.frame</code>. I updated this code to behave more nicely with grouped tibbles (<code>grouped_df</code>), which are a virtual class of <code>data.frame</code> and therefore can’t be coerced using <code><a href="../reference/as.html">as(object, "grouped_df")</a></code>.</li>
 <li>DNA sequence utility functions <code>comp</code> and <code>revcomp</code> now return <code>NULL</code> for integers and numerics.</li>
 <li>For <code>prepareSummarizedExperiment</code>, added support for dropping <code>NULL</code> objects in assays list. This is useful for handling output from <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a> when <code>transformLimit</code> is reached. In this case, the <code>rlog</code> and <code>vst</code> matrices aren’t generated and set <code>NULL</code> in the assays list. Using <code><a href="https://www.rdocumentation.org/packages/base/topics/funprog">Filter(Negate(is.null), assays)</a></code> we can drop these <code>NULL</code> objects and prevent a downstream dimension mismatch in the <code><a href="https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class">SummarizedExperiment::SummarizedExperiment</a></code> call.</li>
 <li>Improved support for multiplexed files in <code>readSampleMetadataFile</code>. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the <code>revcomp</code> column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger">Cell Ranger</a> single-cell RNA-seq samples.</li>
@@ -802,7 +842,7 @@
 <li>Added release support for <code>tx2gene</code> functions.</li>
 <li>Reduced the number of reexported functions (for documentation) down to the <a href="https://magrittr.tidyverse.org/">magrittr</a> pipe (<code>%&gt;%</code>), <code>Matrix</code>, <code>DataFrame</code>, and <code>tibble</code>.</li>
 <li>Added silent return of file path to <code>saveData</code> function.</li>
-<li>Improved documentation for <a href="https://tibble.tidyverse.org/">tibble</a> coercion using <code>as(object, "tibble")</code>
+<li>Improved documentation for <a href="https://tibble.tidyverse.org/">tibble</a> coercion using <code><a href="../reference/as.html">as(object, "tibble")</a></code>
 </li>
 <li>Renamed <code>collapse</code> function to <code>collapseToString</code>, to avoid NAMESPACE collisions with tidyverse packages (<a href="http://dplyr.tidyverse.org/">dplyr</a>, <a href="https://glue.tidyverse.org/">glue</a>).</li>
 </ul>
@@ -1003,6 +1043,16 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-9-1-2018-12-22">0.9.1</a></li>
+        <li><a href="#basejump-0-9-0-2018-12-12">0.9.0</a></li>
+        <li><a href="#basejump-0-8-8-2018-12-03">0.8.8</a></li>
+        <li><a href="#basejump-0-8-6-2018-11-30">0.8.6</a></li>
+        <li><a href="#basejump-0-8-5-2018-11-29">0.8.5</a></li>
+        <li><a href="#basejump-0-8-4-2018-11-28">0.8.4</a></li>
+        <li><a href="#basejump-0-8-3-2018-11-25">0.8.3</a></li>
+        <li><a href="#basejump-0-8-2-2018-11-19">0.8.2</a></li>
+        <li><a href="#basejump-0-8-1-2018-11-15">0.8.1</a></li>
+        <li><a href="#basejump-0-8-0-2018-11-11">0.8.0</a></li>
         <li><a href="#basejump-0-7-2-2018-08-29">0.7.2</a></li>
         <li><a href="#basejump-0-7-1-2018-08-18">0.7.1</a></li>
         <li><a href="#basejump-0-7-0-2018-08-07">0.7.0</a></li>
