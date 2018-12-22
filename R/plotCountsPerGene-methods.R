@@ -41,10 +41,10 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         validObject(object)
         assert(
             isScalar(assay),
-            isGGScale(fill, scale = "discrete", aes = "fill") || is.null(fill),
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
-            isString(countsAxisLabel) || is.null(countsAxisLabel),
-            isString(title) || is.null(title)
+            isString(countsAxisLabel, nullOK = TRUE),
+            isString(title, nullOK = TRUE)
         )
         geom <- match.arg(geom)
         trans <- match.arg(trans)

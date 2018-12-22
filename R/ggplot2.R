@@ -339,7 +339,7 @@ theme_paperwhite <- function(
         is.character(base_family) && length(base_family) == 1L
     )
     face <- match.arg(face)
-    assert(isNumber(aspect_ratio) || is.null(aspect_ratio))
+    assert(isNumber(aspect_ratio, nullOK = TRUE))
     legend_position <- match.arg(legend_position)
     assert(
         isFlag(grid),
@@ -406,7 +406,7 @@ theme_midnight <- function() {
         is.character(base_family) && length(base_family) == 1L
     )
     face <- match.arg(face)
-    assert(isNumber(aspect_ratio) || is.null(aspect_ratio))
+    assert(isNumber(aspect_ratio, nullOK = TRUE))
     legend_position <- match.arg(legend_position)
     assert(isFlag(grid))
 

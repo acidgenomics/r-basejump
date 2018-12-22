@@ -153,8 +153,7 @@ plotGene.SummarizedExperiment <-  # nolint
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
             isFlag(medianLine),
-            isGGScale(color, scale = "discrete", aes = "colour") ||
-                is.null(color),
+            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
             isFlag(legend)
         )
 

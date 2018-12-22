@@ -82,11 +82,10 @@ plotPCA.SummarizedExperiment <-  # nolint
             isScalar(assay),
             isInt(ntop),
             isFlag(label),
-            isGGScale(color, scale = "discrete", aes = "colour") ||
-                is.null(color),
+            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
             isInt(pointSize),
             isPositive(pointSize),
-            isString(title) || is.null(title)
+            isString(title, nullOK = TRUE)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

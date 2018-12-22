@@ -41,7 +41,7 @@
 #' }
 prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     assert(
-        isString(package) || is.null(package),
+        isString(package, nullOK = TRUE),
         isFlag(overwrite)
     )
     files <- character()

@@ -271,7 +271,7 @@ NULL
     assert(isString(organism))
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
-    assert(isString(genomeBuild) || is.null(genomeBuild))
+    assert(isString(genomeBuild, nullOK = TRUE))
     # Check for accidental UCSC input and stop, informing user.
     if (isString(genomeBuild)) {
         ucscCheck <- tryCatch(
@@ -286,7 +286,7 @@ NULL
             ))
         }
     }
-    assert(isInt(ensemblRelease) || is.null(ensemblRelease))
+    assert(isInt(ensemblRelease, nullOK = TRUE))
     if (isInt(ensemblRelease)) {
         ensemblRelease <- as.integer(ensemblRelease)
     }
