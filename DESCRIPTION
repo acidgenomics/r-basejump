@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.9.1
-Date: 2018-12-22
+Date: 2018-12-24
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -48,6 +48,7 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     bioverbs (>= 0.1),
+    brio (>= 0.1),
     cowplot,
     data.table,
     dplyr,
@@ -90,6 +91,7 @@ Suggests:
     viridis
 Remotes:
     steinbaugh/bioverbs@develop,
+    steinbaugh/brio@develop,
     steinbaugh/goalie@develop
 biocViews:
     DataImport,
@@ -106,14 +108,12 @@ Collate:
     'Gene2Symbol-methods.R'
     'HGNC2Ensembl.R'
     'MGI2Ensembl.R'
-    'MethodDefinition.R'
     'PANTHER.R'
     'Tx2Gene-methods.R'
     'aggregate-methods.R'
     'aggregateCellsToSamples-methods.R'
     'as-methods.R'
     'autopadZeros-methods.R'
-    'basenameSansExt.R'
     'cell2sample-methods.R'
     'cleanSystemLibrary.R'
     'coerceS4ToList.R'
@@ -131,10 +131,8 @@ Collate:
     'detectLanes.R'
     'detectOrganism.R'
     'documentation.R'
-    'dots.R'
     'emptyRanges.R'
     'encode-methods.R'
-    'export-methods.R'
     'geneNames-methods.R'
     'geneSynonyms.R'
     'geometricMean-methods.R'
@@ -142,12 +140,8 @@ Collate:
     'globals.R'
     'headtail-methods.R'
     'humanize-methods.R'
-    'import.R'
-    'initDir.R'
     'interestingGroups-methods.R'
     'internal.R'
-    'loadData.R'
-    'localOrRemoteFile.R'
     'logRatio-methods.R'
     'makeGRanges-methods.R'
     'makeGene2Symbol-methods.R'
@@ -164,7 +158,6 @@ Collate:
     'markdownList.R'
     'markdownPlots.R'
     'markdownTables.R'
-    'matchArgsToDoCall.R'
     'matchInterestingGroups.R'
     'matchesGene2Symbol.R'
     'matchesInterestingGroups.R'
@@ -176,7 +169,6 @@ Collate:
     'organism-methods.R'
     'package.R'
     'params.R'
-    'pasteURL.R'
     'plotCountsPerBiotype-methods.R'
     'plotCountsPerGene-methods.R'
     'plotGene-methods.R'
@@ -189,28 +181,22 @@ Collate:
     'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
     'printString.R'
-    'realpath.R'
     'relevel.R'
     'removeNA-methods.R'
     'sampleData-methods.R'
     'sampleNames-methods.R'
-    'sanitizeColData.R'
     'sanitizeNA-methods.R'
     'sanitizePercent-methods.R'
-    'sanitizeRowData.R'
-    'saveData.R'
+    'sanitizeSampleData.R'
     'selectSamples-methods.R'
     'separator.R'
     'show-methods.R'
     'showSlotInfo.R'
-    'standardizeCall.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
     'summary-methods.R'
     'topCellsPerSample-methods.R'
     'tpm-methods.R'
-    'transmit.R'
     'unique.R'
     'uniteInterestingGroups-methods.R'
-    'writeCounts.R'
     'zerosVsDepth-methods.R'
