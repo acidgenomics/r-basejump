@@ -99,7 +99,6 @@ brio::dots
 
 #' @importFrom brio export
 #' @export
-#' @exportMethod export
 brio::export
 
 #' @importFrom brio import
