@@ -72,8 +72,7 @@
 #' @importFrom readr cols read_lines read_tsv write_csv write_lines
 #' @importFrom readxl read_excel
 #' @importFrom reshape2 melt
-#' @importFrom rlang !! !!! := dots_list eval_bare sym syms UQ
-#' @importFrom rtracklayer import
+#' @importFrom rlang !! !!! := sym syms UQ
 #' @importFrom sessioninfo session_info
 #' @importFrom stats as.formula dist hclust prcomp quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
@@ -94,9 +93,110 @@
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
 
+#' @importFrom brio assignAndSaveData
+#' @export
+brio::assignAndSaveData
+
+#' @importFrom brio basenameSansExt
+#' @export
+brio::basenameSansExt
+
 #' @importFrom brio dots
 #' @export
 brio::dots
+
+#' @importFrom brio export
+#' @export
+#' @exportMethod export
+brio::export
+
+#' @importFrom brio import
+#' @export
+brio::import
+
+#' @importFrom brio initDir
+#' @export
+brio::initDir
+
+#' @importFrom brio loadData
+#' @export
+brio::loadData
+
+#' @importFrom brio loadDataAsName
+#' @export
+brio::loadDataAsName
+
+#' @importFrom brio loadRemoteData
+#' @export
+brio::loadRemoteData
+
+#' @importFrom brio localOrRemoteFile
+#' @export
+brio::localOrRemoteFile
+
+#' @importFrom brio pasteURL
+#' @export
+brio::pasteURL
+
+#' @importFrom brio rdataExtPattern
+#' @export
+brio::rdataExtPattern
+
+#' @importFrom brio rdataLoadError
+#' @export
+brio::rdataLoadError
+
+#' @importFrom brio realpath
+#' @export
+brio::realpath
+
+#' @importFrom brio sanitizeColData
+#' @export
+brio::sanitizeColData
+
+#' @importFrom brio sanitizeRowData
+#' @export
+brio::sanitizeRowData
+
+#' @importFrom brio sanitizeRowRanges
+#' @export
+brio::sanitizeRowRanges
+
+#' @importFrom brio saveData
+#' @export
+brio::saveData
+
+#' @importFrom brio transmit
+#' @export
+brio::transmit
+
+#' @importFrom brio writeCounts
+#' @export
+brio::writeCounts
+
+#' @importFrom goalie extractLocal
+#' @export
+goalie::extractLocal
+
+#' @importFrom goalie hasLocal
+#' @export
+goalie::hasLocal
+
+#' @importFrom goalie matchArgsToDoCall
+#' @export
+goalie::matchArgsToDoCall
+
+#' @importFrom goalie methodFormals
+#' @export
+goalie::methodFormals
+
+#' @importFrom goalie methodFunction
+#' @export
+goalie::methodFunction
+
+#' @importFrom goalie standardizeCall
+#' @export
+goalie::standardizeCall
 
 #' @importFrom magrittr %>%
 #' @export
