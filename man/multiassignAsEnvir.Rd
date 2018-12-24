@@ -7,8 +7,6 @@
 multiassignAsEnvir(..., envirName, parentFrame = parent.frame())
 }
 \arguments{
-\item{...}{Objects as dots.}
-
 \item{envirName}{\code{character(1)}.
 Name of the new \code{environment} to create.}
 
