@@ -39,11 +39,9 @@ Imports:
     GenomicFeatures,
     GenomicRanges,
     IRanges,
-    Matrix,
-    Matrix.utils,
-    R.utils,
+    Matrix (>= 1.2),
+    Matrix.utils (>= 0.9),
     RColorBrewer,
-    RCurl,
     S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
@@ -57,7 +55,6 @@ Imports:
     goalie (>= 0.2.1),
     grDevices,
     grid,
-    jsonlite,
     knitr,
     magrittr,
     matrixStats,
@@ -74,8 +71,7 @@ Imports:
     tidyselect,
     tibble,
     tools,
-    utils,
-    yaml
+    utils
 Suggests:
     BiocStyle,
     EnsDb.Hsapiens.v75,

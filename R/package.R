@@ -23,11 +23,8 @@
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom IRanges IRanges
-#' @importFrom Matrix readMM readMM writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
-#' @importFrom RCurl getURL url.exists
 #' @importFrom S4Vectors DataFrame List Rle %in% aggregate complete.cases cor
 #'   decode expand head mcols mcols<- metadata metadata<- na.omit tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<-
@@ -36,7 +33,6 @@
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
 #'   rowRanges<-
 #' @importFrom cowplot plot_grid
-#' @importFrom data.table as.data.table fread
 #' @importFrom dplyr arrange bind_rows case_when desc everything filter funs
 #'   group_by left_join mutate mutate_all mutate_at mutate_if n pull rename
 #'   select select_if slice summarise summarise_all top_n ungroup
@@ -59,7 +55,6 @@
 #'   isSuperset isURL matchesUniqueGeneNames validNames validate validateClasses
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
-#' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
@@ -69,8 +64,7 @@
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom purrr map
-#' @importFrom readr cols read_lines read_tsv write_csv write_lines
-#' @importFrom readxl read_excel
+#' @importFrom readr cols read_tsv write_lines
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := sym syms UQ
 #' @importFrom sessioninfo session_info
@@ -80,11 +74,9 @@
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
 #' @importFrom tibble as_tibble column_to_rownames tibble
-#' @importFrom tools Rd_db file_path_sans_ext
-#' @importFrom utils capture.output data download.file getFromNamespace
-#'   globalVariables installed.packages packageVersion read.delim read.table
-#'   sessionInfo
-#' @importFrom yaml yaml.load_file
+#' @importFrom tools Rd_db
+#' @importFrom utils capture.output data getFromNamespace globalVariables
+#'   installed.packages packageVersion sessionInfo
 "_PACKAGE"
 
 # Conflicts with rtracklayer:
