@@ -1,6 +1,6 @@
 #' Assign multiple objects into a new environment
 #'
-#' @inheritParams dots
+#' @inheritParams brio::dots
 #' @export
 #'
 #' @param envirName `character(1)`.
