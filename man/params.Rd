@@ -219,8 +219,9 @@ Name of reduced dimension matrix slotted in
 for example.}
 
 \item{return}{\code{character(1)}.
-Return type. Uses \link[base:match.arg]{match.arg()} internally and defaults to
-the first argument in the \code{character} vector.}
+Return type.
+Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
+argument in the \code{character} vector.}
 
 \item{rowData}{\code{DataFrame}.
 Metadata describing the assay rows, if genomic ranges are not available.
@@ -274,6 +275,10 @@ Transcript-to-gene mappings.}
 Uniform Resource Locator (URL). HTTP or FTP address.}
 
 \item{value}{Value to assign.}
+
+\item{verbose}{\code{logical(1)}.
+Run the function with verbose messages?
+\emph{It is only recommended to enable this when debugging.}}
 
 \item{x}{Object.}
 
