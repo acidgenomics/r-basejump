@@ -4,3 +4,9 @@ example.*
 *.gz
 *.colnames
 *.rownames
+*.tsv
+*.txt
+*.xlsx
+*.yaml
+*.yml
+*/
