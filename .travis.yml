@@ -4,7 +4,7 @@
 # How Travis builds R packages:
 # https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb
 
-# Can we use build stages to cache the Bioconductor package library?
+# Can we use build stages to warm the Bioconductor library cache?
 # https://docs.travis-ci.com/user/build-stages
 # https://docs.travis-ci.com/user/build-stages/warm-cache/
 
