@@ -3,8 +3,8 @@
 #' Generate a Markdown header (levels 1-7) in any R Markdown code block. When
 #' calling inside an `asis` chunk, set `asis = TRUE`.
 #'
-#' @inheritParams params
 #' @export
+#' @inheritParams params
 #'
 #' @param text `character(1)`.
 #'   Header text.

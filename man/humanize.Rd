@@ -20,8 +20,8 @@ IDs) and colnames (e.g. sample names instead of sample IDs).
 Humanize an R object
 }
 \details{
-This can make dimnames invalid (see \code{make.names()}) and should only be called
-prior to writing files to disk.
+This can make dimnames invalid (see \code{\link[base:make.names]{make.names()}}) and
+should only be called prior to writing files to disk.
 }
 \examples{
 data(rse, sce)

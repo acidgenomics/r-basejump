@@ -35,6 +35,8 @@ Allow propagation of zeroes.}
 }
 \description{
 The geometric mean is the nth root of n products or e to the mean log of \code{x}.
+}
+\details{
 Useful for describing non-normal (i.e. geometric) distributions.
 }
 \note{

@@ -22,8 +22,8 @@
 #'   - `samplename` (use `sampleName`),
 #' - `sampleName` column is always placed first.
 #'
-#' @inheritParams params
 #' @export
+#' @inheritParams params
 #'
 #' @return `DataFrame`.
 #'

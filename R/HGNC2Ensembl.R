@@ -1,6 +1,6 @@
 #' @inherit HGNC2Ensembl-class
-#' @inheritParams params
 #' @export
+#' @inheritParams params
 #' @examples
 #' options(basejump.test = TRUE)
 #' x <- HGNC2Ensembl()
