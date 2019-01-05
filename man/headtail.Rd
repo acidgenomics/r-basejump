@@ -39,8 +39,12 @@ Require separators to use ASCII instead of Unicode.}
 Invisible \code{NULL}.
 }
 \description{
-Inspired by the \code{print} method for \code{DataFrame} class objects. Applies to both
-rows and columns, enabling quick inspection during interactive use.
+Applies to both rows and columns, enabling quick inspection during
+interactive use.
+}
+\details{
+Inspired by the \code{\link[base:print]{print()}} method for \code{DataFrame} class
+objects.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -71,7 +75,8 @@ headtail(rse, ascii = TRUE)
 }
 \seealso{
 \itemize{
-\item \code{utils::head()}, \code{utils::tail()}, \code{cat()}.
+\item \code{utils::head()}, \code{utils::tail()}.
+\item \code{cat()}.
 \item \code{getMethod("show", "DataTable")}.
 }
 }

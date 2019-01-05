@@ -17,8 +17,8 @@ Name of the aggregation function.
 Uses \link[base:match.arg]{match.arg()} internally.}
 }
 \value{
-\code{SummarizedExperiment}. Object with cell-level counts aggregated
-to sample-level.
+\code{SummarizedExperiment}.
+Object with cell-level counts aggregated to sample-level.
 }
 \description{
 Utilty function that factilites cell-to-sample aggregation. By default, this

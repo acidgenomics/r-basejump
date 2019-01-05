@@ -14,28 +14,46 @@
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Selection arguments that map to the column names of
-\code{sampleData()}. \code{atomic} values are supported. Avoid using \code{logical} or
-\code{numeric} indices (e.g. \code{which()} calls) here, for improved code
-readability.}
+\item{...}{Selection arguments:
+\itemize{
+\item Key value pairs that must map to the column names of \code{\link[=sampleData]{sampleData()}}.
+\item \code{atomic} values are supported.
+\item Avoid using \code{logical} or \code{numeric} indices
+(e.g. \code{\link[base:which]{which()}} return), thereby making your code more
+human readable, and easier to interpret.
+}}
 }
 \value{
 Modified object.
 Subset (extraction) containing the desired samples.
 }
 \description{
-Utility function that enables quick an easy sample selection in Bioconductor
-contains that don't correspond to samples in the columns
-(e.g. \code{SingleCellExperiment}).
+Utility function that enables quick and easy sample selection.
 }
 \details{
 Internally, pattern matching against sample and file names is applied using
 logical grep matching.
+}
+\section{Intended usage}{
 
-Bracket based subsetting with \code{[} also works on \code{SingleCellExperiment}
+
+
+This function is intended to be used for sample extraction from Bioconductor
+container classes where the column names don't correspond to samples (e.g.
+\code{SingleCellExperiment}).
+
+}
+
+\section{Bracket-based subsetting}{
+
+
+
+Bracket-based subsetting with \code{[} also works on \code{SingleCellExperiment}
 objects but it's not intuitive. In this case, provide cellular barcode
 identifiers for columns and gene identifiers for rows.
+
 }
+
 \examples{
 data(rse, sce)
 

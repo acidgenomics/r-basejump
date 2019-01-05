@@ -1,7 +1,7 @@
 #' @name sanitizeNA
 #' @inherit bioverbs::sanitizeNA
-#' @inheritParams params
 #' @export
+#' @inheritParams params
 #' @examples
 #' ## character ====
 #' from <- as.character(c(1L, "x", "", "NA", "NULL"))

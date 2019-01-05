@@ -4,8 +4,8 @@
 #' can be used in an R Markdown report, separated by headers. Internally, the
 #' headers are generated with the `markdownHeader` function.
 #'
-#' @inheritParams params
 #' @export
+#' @inheritParams params
 #'
 #' @param list `list`.
 #'   Named list containing `ggplot` objects.

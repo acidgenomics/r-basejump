@@ -18,8 +18,8 @@
 \code{character}.
 }
 \description{
-Convenience function for quickly returning unique gene symbols
-that map to the stable gene IDs.
+Convenience function for quickly returning unique gene symbols that map to
+the stable gene IDs.
 }
 \examples{
 data(rse)
