@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.9.2
-Date: 2019-01-02
+Date: 2019-01-05
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -45,14 +45,14 @@ Imports:
     S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
-    bioverbs (>= 0.1),
-    brio (>= 0.1),
+    bioverbs (>= 0.1.2),
+    brio (>= 0.1.1),
     cowplot,
     dplyr,
     ensembldb,
     ggplot2,
     ggrepel,
-    goalie (>= 0.2.1),
+    goalie (>= 0.2.3),
     grDevices,
     grid,
     knitr,
@@ -81,9 +81,9 @@ Suggests:
     testthat,
     viridis
 Remotes:
-    steinbaugh/bioverbs@develop,
-    steinbaugh/brio@develop,
-    steinbaugh/goalie@develop
+    steinbaugh/bioverbs,
+    steinbaugh/brio,
+    steinbaugh/goalie
 biocViews:
     DataImport,
     Infrastructure,
