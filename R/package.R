@@ -86,13 +86,25 @@
 #' @export
 S4Transformer::as.data.frame
 
+#' @importFrom S4Transformer as.SummarizedExperiment
+#' @export
+S4Transformer::as.SummarizedExperiment
+
 #' @importFrom S4Transformer as_tibble
 #' @export
 S4Transformer::as_tibble
 
+#' @importFrom S4Transformer atomize
+#' @export
+S4Transformer::atomize
+
 #' @importFrom S4Transformer coerceS4ToList
 #' @export
 S4Transformer::coerceS4ToList
+
+#' @importFrom S4Transformer factorize
+#' @export
+S4Transformer::factorize
 
 #' @importFrom S4Transformer flatFiles
 #' @export

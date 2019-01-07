@@ -36,6 +36,7 @@ Imports:
     bioverbs (>= 0.1.2),
     brio (>= 0.1.1),
     goalie (>= 0.2.3),
+    syntactic (>= 0.1.2),
     AnnotationHub (>= 2.12),
     Biobase (>= 2.40),
     BiocGenerics (>= 0.26),
