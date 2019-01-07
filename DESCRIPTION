@@ -30,9 +30,10 @@ BugReports: https://github.com/steinbaugh/basejump/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false
-Depends: R (>= 3.5)
+Depends:
+    R (>= 3.5),
+    S4Transformer (>= 0.1)
 Imports:
-    S4Transformer (>= 0.1),
     bioverbs (>= 0.1.2),
     brio (>= 0.1.1),
     goalie (>= 0.2.3),
