@@ -21,7 +21,7 @@ sanitizeSampleData <- function(object) {
     # This will flatten the S4 columns if possible and drop non-atomic.
     object <- sanitizeColData(object)
     # Ensure all columns are factors, with up-to-date levels.
-    object <- .factorize(object)
+    object <- factorize(object)
     # Return.
     object
 }
