@@ -64,7 +64,7 @@
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom purrr map
-#' @importFrom readr cols read_tsv write_lines
+#' @importFrom readr cols read_lines read_tsv
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := sym syms UQ
 #' @importFrom sessioninfo session_info
@@ -79,11 +79,24 @@
 #'   installed.packages packageVersion sessionInfo
 "_PACKAGE"
 
-# Conflicts with rtracklayer:
-# @importFrom rio import
-
 # Conflicts with BiocGenerics:
 # @importMethodsFrom Matrix colSums rowMeans rowSums t
+
+#' @importFrom S4Transformer as.data.frame
+#' @export
+S4Transformer::as.data.frame
+
+#' @importFrom S4Transformer as_tibble
+#' @export
+S4Transformer::as_tibble
+
+#' @importFrom S4Transformer coerceS4ToList
+#' @export
+S4Transformer::coerceS4ToList
+
+#' @importFrom S4Transformer flatFiles
+#' @export
+S4Transformer::flatFiles
 
 #' @importFrom brio assignAndSaveData
 #' @export
@@ -192,3 +205,27 @@ goalie::standardizeCall
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
+
+#' @importFrom syntactic camel
+#' @export
+syntactic::camel
+
+#' @importFrom syntactic dotted
+#' @export
+syntactic::dotted
+
+#' @importFrom syntactic makeDimnames
+#' @export
+syntactic::makeDimnames
+
+#' @importFrom syntactic makeNames
+#' @export
+syntactic::makeNames
+
+#' @importFrom syntactic snake
+#' @export
+syntactic::snake
+
+#' @importFrom syntactic upperCamel
+#' @export
+syntactic::upperCamel
