@@ -52,7 +52,7 @@ Imports:
     SummarizedExperiment (>= 1.10),
     ensembldb (>= 2.4),
     cowplot (>= 0.9),
-    dplyr (>= 0.8),
+    dplyr (>= 0.7),
     ggplot2 (>= 3.1),
     ggrepel (>= 0.8),
     knitr (>= 1.21),
@@ -83,8 +83,7 @@ Remotes:
     steinbaugh/bioverbs,
     steinbaugh/brio,
     steinbaugh/goalie,
-    steinbaugh/syntactic,
-    tidyverse/dplyr
+    steinbaugh/syntactic
 biocViews:
     DataImport,
     Infrastructure,
