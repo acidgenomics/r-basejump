@@ -31,6 +31,7 @@
 #'   Metadata describing the assay columns. For bulk RNA-seq, this data
 #'   describes the samples. For single-cell RNA-seq, this data describes the
 #'   cells.
+#' @param colnames `logical(1)`. Apply to column names.
 #' @param color `ScaleDiscrete`.
 #'   Desired ggplot2 color scale. Must supply discrete values. When set `NULL`,
 #'   the default ggplot2 color palette will be used. If manual color definitions
@@ -181,6 +182,7 @@
 #' @param rowRanges `GRanges`.
 #'   Genomic ranges (e.g. genome annotations). Metadata describing the assay
 #'   rows.
+#' @param rownames `logical(1)`. Apply to row names.
 #' @param sampleMetadataFile `character(1)`.
 #'   Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
 #'   are also supported. Check the documentation for conventions and required
