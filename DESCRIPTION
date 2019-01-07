@@ -83,6 +83,7 @@ Remotes:
     steinbaugh/bioverbs,
     steinbaugh/brio,
     steinbaugh/goalie,
+    steinbaugh/syntactic,
     tidyverse/dplyr
 biocViews:
     DataImport,
