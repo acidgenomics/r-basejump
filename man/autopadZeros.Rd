@@ -18,14 +18,9 @@
 \arguments{
 \item{object}{Object.}
 
-\item{rownames}{\code{logical(1)}.
-Apply sanitization on row names. This is not generally recommended by
-default, since rownames commonly contain gene identifiers that should not
-be modified.}
+\item{rownames}{\code{logical(1)}. Apply to row names.}
 
-\item{colnames}{\code{logical(1)}.
-Apply sanitization on column names. This is generally recommended by
-default.}
+\item{colnames}{\code{logical(1)}. Apply to column names.}
 
 \item{sort}{\code{logical(1)}.
 Resort using \code{sort}.}
@@ -37,8 +32,8 @@ Resort using \code{sort}.}
 Autopad zeros
 }
 \note{
-For methods on objects supporting \link[base:dim]{dim} (e.g. \code{matrix}), the
-object will be returned with the rows and/or columns resorted by default.
+For methods on objects supporting \code{\link[base:dim]{dim()}} (e.g. \code{matrix}),
+the object will be returned with the rows and/or columns resorted by default.
 This does not apply to the \code{character} method.
 }
 \examples{

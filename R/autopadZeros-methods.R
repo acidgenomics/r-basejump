@@ -1,10 +1,9 @@
 #' @name autopadZeros
 #' @inherit bioverbs::autopadZeros
 #' @inheritParams params
-#' @inheritParams makeNames
 #'
-#' @note For methods on objects supporting [dim][base::dim] (e.g. `matrix`), the
-#' object will be returned with the rows and/or columns resorted by default.
+#' @note For methods on objects supporting [`dim()`][base::dim] (e.g. `matrix`),
+#' the object will be returned with the rows and/or columns resorted by default.
 #' This does not apply to the `character` method.
 #'
 #' @return `character`.
