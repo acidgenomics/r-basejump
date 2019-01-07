@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.9.2
-Date: 2019-01-05
+Date: 2019-01-06
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -32,10 +32,10 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 3.5)
 Imports:
+    S4Transformer (>= 0.1),
     bioverbs (>= 0.1.2),
     brio (>= 0.1.1),
     goalie (>= 0.2.3),
-    
     AnnotationHub (>= 2.12),
     Biobase (>= 2.40),
     BiocGenerics (>= 0.26),
@@ -50,7 +50,6 @@ Imports:
     SingleCellExperiment (>= 1.2),
     SummarizedExperiment (>= 1.10),
     ensembldb (>= 2.4),
-
     cowplot (>= 0.9),
     dplyr (>= 0.8),
     ggplot2 (>= 3.1),
@@ -69,13 +68,7 @@ Imports:
     tidyr (>= 0.8),
     tidyselect (>= 0.2),
     tibble (>= 2.0),
-    
-    grDevices,
-    grid,
-    methods,
-    stats,
-    tools,
-    utils
+    grDevices, grid, methods, stats, tools, utils
 Suggests:
     BiocStyle (>= 2.8),
     EnsDb.Hsapiens.v75,
@@ -85,6 +78,7 @@ Suggests:
     testthat (>= 2.0),
     viridis (>= 0.5)
 Remotes:
+    steinbaugh/S4Transformer,
     steinbaugh/bioverbs,
     steinbaugh/brio,
     steinbaugh/goalie,
@@ -108,11 +102,8 @@ Collate:
     'Tx2Gene-methods.R'
     'aggregate-methods.R'
     'aggregateCellsToSamples-methods.R'
-    'as-methods.R'
     'autopadZeros-methods.R'
     'cell2sample-methods.R'
-    'cleanSystemLibrary.R'
-    'coerceS4ToList.R'
     'collapseToString-methods.R'
     'combine-methods.R'
     'convertGenesToSymbols-methods.R'
@@ -140,7 +131,6 @@ Collate:
     'logRatio-methods.R'
     'makeGRanges-methods.R'
     'makeGene2Symbol-methods.R'
-    'makeNames-methods.R'
     'makeSampleData.R'
     'makeSingleCellExperiment.R'
     'makeSummarizedExperiment.R'
