@@ -29,12 +29,11 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 
 
 
-#' @importFrom brio extPattern
+#' Shared list of optional default formals
+#'
 #' @export
-brio::extPattern
-
-
-
+#' @examples
+#' formalsList
 formalsList <- list(
     color.continuous = quote(getOption("basejump.color.continuous", NULL)),
     color.discrete = quote(getOption("basejump.color.discrete", NULL)),
@@ -61,12 +60,6 @@ genomeMetadataNames <- c("organism", "genomeBuild", "ensemblRelease")
 #' @examples
 #' lanePattern
 lanePattern <- "_L([[:digit:]]{3})"
-
-
-
-#' @importFrom brio naStrings
-#' @export
-brio::naStrings
 
 
 
