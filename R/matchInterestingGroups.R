@@ -1,33 +1,33 @@
-# Work on using match.call method here instead
-
-
-
-#' Match Interesting Groups
+#' Match interesting groups
 #'
-#' @author Michael Steinbaugh
-#' @family Developer Functions
+#' Match the user-defined interesting groups to the values slotted within a
+#' `SummarizedExperiment` object, and check that they are valid. Otherwise
+#' supports a missing `interestingGroups` argument, which will then use the
+#' `interestingGroups` accessor function internally.
 #'
-#' @inheritParams general
-#'
-#' @return `character`.
 #' @export
 #'
+#' @inheritParams params
+#' @param object `SummarizedExperiment`.
+#'
+#' @return `character`.
+#' Interesting groups.
+#'
 #' @examples
-#' matchInterestingGroups(rse_bcb)
-#' matchInterestingGroups(rse_bcb, interestingGroups = NULL)
-#' matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
-matchInterestingGroups <- function(object, interestingGroups, ...) {
-    if (missing(interestingGroups)) {
-        interestingGroups <- basejump::interestingGroups(object)
-        if (is.null(interestingGroups)) {
-            interestingGroups <- "sampleName"  # nocov
+#' data(rse)
+#' matchInterestingGroups(rse)
+matchInterestingGroups <- function(object, interestingGroups = NULL) {
+    if (is.null(interestingGroups)) {
+        interestingGroups <- interestingGroups(object, check = FALSE)
+        if (
+            is.null(interestingGroups) ||
+            !all(interestingGroups %in% colnames(colData(object)))
+        ) {
+            interestingGroups <- "sampleName"
         }
-    } else if (is.null(interestingGroups)) {
-        interestingGroups <- "sampleName"
     } else {
         interestingGroups(object) <- interestingGroups
     }
-    assert_is_character(interestingGroups)
-    assert_is_non_empty(interestingGroups)
+    assert(isCharacter(interestingGroups))
     interestingGroups
 }

@@ -3,90 +3,149 @@ authors:
     href: /
 
 reference:
-  - title: Package Information
+  - title: S4 classes
     contents:
-    - basejump-package
-  - title: Annotation Functions
-    contents:
-    - annotable
-    - broadClass
-    - starts_with("convert")
-    - eggnog
-    - emptyRanges
-    - hgnc2gene
-    - starts_with("makeGene2symbol")
-    - starts_with("makeGRanges")
-    - starts_with("makeTx2gene")
-    - mgi2gene
-    - starts_with("parse")
-    - starts_with("strip")
-    - panther
-  - title: Read/Write Functions
+    - starts_with("EggNOG")
+    - starts_with("Ensembl2Entrez")
+    - starts_with("Gene2Symbol")
+    - starts_with("HGNC2Ensembl")
+    - starts_with("MGI2Ensembl")
+    - starts_with("PANTHER")
+    - starts_with("Tx2Gene")
+    - show
+    - summary
+  - title: Import/export
     contents:
     - starts_with("assign")
+    - export
+    - import
     - starts_with("load")
-    - starts_with("read")
+    - localOrRemoteFile
     - starts_with("save")
     - transmit
     - starts_with("write")
-  - title: Data Functions
+  - title: Genome annotations
+    contents:
+    - emptyRanges
+    - geneSynonyms
+    - makeGRanges
+    - makeGene2Symbol
+    - makeTx2Gene
+  - title: Gene identifier mapping
+    contents:
+    - starts_with("convert")
+    - starts_with("mapGenes")
+  - title: Counts
+    contents:
+    - counts
+    - meltCounts
+    - tpm
+  - title: Sample-level
+    contents:
+    - makeSampleData
+    - makeSummarizedExperiment
+    - metrics
+    - minimalSampleData
+    - starts_with("sample")
+    - selectSamples
+  - title: Cell-level
+    contents:
+    - aggregateCellsToSamples
+    - cell2sample
+    - makeSingleCellExperiment
+    - mapCellsToSamples
+    - subsetPerSample
+    - topCellsPerSample
+  - title: Metadata
+    contents:
+    - interestingGroups
+    - organism
+    - uniteInterestingGroups
+  - title: Sanitization
+    contents:
+    - autopadZeros
+    - relevel
+    - makeNames
+    - collapseToString
+    - starts_with("remove")
+    - starts_with("sanitize")
+    - sortUnique
+    - starts_with("strip")
+    - toStringUnique
+  - title: Aggregation
     contents:
     - starts_with("aggregate")
-    - counts
-    - gene2symbol
-    - interestingGroups
-    - makeSummarizedExperiment
-    - sampleData
-    - sampleNames
-    - selectSamples
-  - title: Sanitization Functions
+    - combine
+  - title: Math
     contents:
-    - fixNA
-    - makeNames
-    - removeNA
-    - starts_with("sanitize")
-  - title: Plot Functions
+    - geometricMean
+    - logRatio
+    - zerosVsDepth
+  - title: Plots
     contents:
     - starts_with("plot")
-    - starts_with("theme_")
-  - title: Math and Science Functions
+  - title: ggplot2
     contents:
-    - matches("Change")
-    - matches("Mean")
-    - microplate
-  - title: R Markdown Functions
+    - starts_with("ggplot2-")
+  - title: Markdown
     contents:
-    - kables
     - starts_with("markdown")
     - prepareTemplate
-  - title: Atomic Vector Functions
+  - title: Coercion
     contents:
-    - collapseToString
-    - grepString
-    - sortUnique
-    - toStringUnique
-  - title: Coercion Methods
+    - as
+    - coerceS4ToList
+  - title: Run-length encoding
     contents:
-    - starts_with("coerce")
-  - title: Developer Functions
+    - decode
+    - encode
+  - title: Documentation
+    contents:
+    - matches("Rd")
+    - tabular
+  - title: Developer
     contents:
     - cleanSystemLibrary
-    - starts_with("detect")
     - dots
-    - flatFiles
-    - starts_with("initialize")
-    - localOrRemoteFile
+    - formalsList
+    - matchArgsToDoCall
     - matchInterestingGroups
-    - methodFormals
+    - MethodDefinition
     - multiassignAsEnvir
     - printString
-    - uniteInterestingGroups
-  - title: Assert Check Functions
-    desc: Readable check functions to ensure code integrity.
+    - showSlotInfo
+    - standardizeCall
+  - title: Miscellaneous
     contents:
-    - starts_with("assert")
-  - title: Example Datasets
+    - basenameSansExt
+    - starts_with("detect")
+    - geneNames
+    - headtail
+    - humanize
+    - starts_with("init")
+    - matchesGene2Symbol
+    - matchesInterestingGroups
+    - microplate
+    - pasteURL
+    - realpath
+    - separator
+  - title: Global variables
     contents:
-    - rnaseq_counts
-    - starts_with("rse_")
-    - single_cell_counts
+    - barcodePattern
+    - extPattern
+    - genomeMetadataNames
+    - lanePattern
+    - naStrings
+    - rdataExtPattern
+    - rdataLoadError
+  - title: Example data
+    contents:
+    - df
+    - gender_markers
+    - mat
+    - organism_mappings
+    - rse
+    - sce
+    - sparse
+    - tbl
+    - tx_se

@@ -1,58 +1,73 @@
-#' Strip Transcript Versions
+#' @name stripTranscriptVersions
+#' @inherit bioverbs::stripTranscriptVersions
+#' @inheritParams params
 #'
-#' @note This function is strict, and will only strip Ensembl transcript IDs
+#' @note This method is strict, and will only strip Ensembl transcript IDs
 #'   beginning with "ENS".
 #'
-#' @name stripTranscriptVersions
-#' @family Annotation Functions
-#' @author Michael Steinbaugh
-#'
-#' @inheritParams general
-#'
-#' @return Object containing transcript identifiers without version numbers.
-#'
 #' @examples
-#' # Ensembl
-#' stripTranscriptVersions("ENSMUST00000000001.1")
-#' stripTranscriptVersions("ENSMUST00000000001-1")
-#' stripTranscriptVersions("ENSMUST00000000001_1")
+#' ## Ensembl (modify; contains versions)
+#' stripTranscriptVersions(c(
+#'     "ENSMUST00000000001.1",
+#'     "ENSMUST00000000001-1",
+#'     "ENSMUST00000000001_1"
+#' ))
 #'
-#' # WormBase (unmodified)
+#' ## WormBase (keep; doesn't contain versions)
 #'stripTranscriptVersions("cTel79B.1")
 NULL
 
 
 
+#' @importFrom bioverbs stripTranscriptVersions
+#' @aliases NULL
+#' @export
+bioverbs::stripTranscriptVersions
+
+
+
+stripTranscriptVersions.character <-  # nolint
+    function(object) {
+        # Pattern matching against Ensembl transcript IDs.
+        # http://www.ensembl.org/info/genome/stable_ids/index.html
+        # Examples: ENST (human); ENSMUST (mouse).
+        assert(isCharacter(object))
+        # punct will match `-` or `_` here.
+        gsub(
+            pattern = "^(ENS.*[GT][[:digit:]]{11})[[:punct:]][[:digit:]]+$",
+            replacement = "\\1",
+            x = object
+        )
+    }
+
+
+
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(
-    "stripTranscriptVersions",
-    signature("character"),
-    function(object) {
-        # Pattern matching against Ensembl transcript IDs
-        # http://www.ensembl.org/info/genome/stable_ids/index.html
-        # Examples: ENST (human); ENSMUST (mouse)
-        assert_is_character(object)
-        assert_all_are_not_na(object)
-        assert_all_are_non_missing_nor_empty_character(object)
-        # punct will match `-` or `_` here
-        gsub("^(ENS.*T\\d{11})[[:punct:]]\\d+$", "\\1", object)
-    }
+    f = "stripTranscriptVersions",
+    signature = signature("character"),
+    definition = stripTranscriptVersions.character
 )
 
 
 
-#' @rdname stripTranscriptVersions
-#' @export
-setMethod(
-    "stripTranscriptVersions",
-    signature("matrix"),
+stripTranscriptVersions.matrix <-  # nolint
     function(object) {
         rownames <- rownames(object)
         rownames <- stripTranscriptVersions(rownames)
         rownames(object) <- rownames
         object
     }
+
+
+
+#' @rdname stripTranscriptVersions
+#' @export
+setMethod(
+    f = "stripTranscriptVersions",
+    signature = signature("matrix"),
+    definition = stripTranscriptVersions.matrix
 )
 
 
@@ -60,7 +75,17 @@ setMethod(
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(
-    "stripTranscriptVersions",
-    signature("dgCMatrix"),
-    getMethod("stripTranscriptVersions", "matrix")
+    f = "stripTranscriptVersions",
+    signature = signature("sparseMatrix"),
+    definition = stripTranscriptVersions.matrix
+)
+
+
+
+#' @rdname stripTranscriptVersions
+#' @export
+setMethod(
+    f = "stripTranscriptVersions",
+    signature = signature("SummarizedExperiment"),
+    definition = stripTranscriptVersions.matrix
 )

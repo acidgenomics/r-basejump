@@ -1,13 +1,14 @@
-#' Markdown List
+#' Markdown list
 #'
-#' @family R Markdown Functions
-#' @author Michael Steinbaugh
+#' Include a Markdown-formatted list, either ordered or unordered. This function
+#' works in any R Markdown code block. When calling from inside an `asis` chunk,
+#' set `asis = TRUE`.
 #'
 #' @inherit markdownHeader
-#'
-#' @param ordered `boolean`. Ordered ("`TRUE`") or unordered ("`FALSE`").
-#'
 #' @export
+#'
+#' @param ordered `logical(1)`.
+#'   Ordered ("`TRUE`") or unordered ("`FALSE`").
 #'
 #' @examples
 #' groceries <- c("milk", "eggs")
@@ -19,12 +20,12 @@ markdownList <- function(
     ordered = FALSE,
     asis = FALSE
 ) {
-    assert_is_atomic(text)
     text <- as.character(text)
-    assert_all_are_not_na(text)
-    assert_all_are_non_missing_nor_empty_character(text)
-    assert_is_a_bool(ordered)
-    assert_is_a_bool(asis)
+    assert(
+        isCharacter(text),
+        isFlag(ordered),
+        isFlag(asis)
+    )
 
     list <- vapply(
         X = seq_along(text),
@@ -56,4 +57,4 @@ markdownList <- function(
 #' @rdname markdownList
 #' @usage NULL
 #' @export
-markdownList -> mdList
+mdList <- markdownList

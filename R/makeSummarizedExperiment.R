@@ -1,160 +1,168 @@
-#' Make Summarized Experiment
+#' Make a `SummarizedExperiment` object
 #'
-#' This function is a utility wrapper for
-#' [SummarizedExperiment::SummarizedExperiment()] that provides automatic
-#' subsetting for row and column data, as well as automatic handling of
-#' transgenes and spike-ins. Additionally, it improves upon the standard
-#' constructor by slotting useful session information into the [metadata()]
-#' slot:
+#' This function is a utility wrapper for `SummarizedExperiment` that provides
+#' automatic subsetting for row and column data, as well as automatic handling
+#' of transgenes and spike-ins. Additionally, it improves upon the standard
+#' constructor by slotting useful session information into the `metadata` slot:
 #'
-#' - `date`: Today's date, returned from [base::Sys.Date()].
-#' - `wd`: Working directory, returned from [base::getwd()].
-#' - `utilsSessionInfo`: [utils::sessionInfo()].
-#' - `devtoolsSessionInfo`: [sessioninfo::session_info()].
+#' - `date`: Today's date, returned from `Sys.Date`.
+#' - `wd`: Working directory, returned from `getwd`.
+#' - `sessionInfo`: `sessioninfo::session_info` return.
 #'
-#' @family Data Functions
-#' @author Michael Steinbaugh
+#' @note Column and rows always return sorted alphabetically.
 #'
-#' @inheritParams general
-#' @param assays `list`. RNA-seq count matrices, which must have matching
-#'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
-#'   (`dgCMatrix`, `dgTMatrix`) format.
-#' @param rowRanges `GRanges` or `NULL`. Metadata describing the
-#'   assay rows. If defined, must contain genomic ranges. Can be left `NULL` if
-#'   the genome is poorly annotated and/or ranges aren't available from
-#'   AnnotationHub.
-#' @param colData `DataFrame` `data.frame`, or `matrix`. Metadata
-#'   describing the assay columns. For bulk RNA-seq, this data describes the
-#'   samples. For single-cell RNA-seq, this data describes the cells.
-#' @param metadata `list` or `NULL`. Metadata.
-#' @param transgeneNames `character` or `NULL`. Vector indicating which
-#'   [assay()] rows denote transgenes (e.g. EGFP, TDTOMATO).
-#' @param spikeNames `character` or `NULL`. Vector indicating which [assay()]
-#'   rows denote spike-in sequences (e.g. ERCCs).
-#'
-#' @return `RangedSummarizedExperiment`.
 #' @export
 #'
+#' @inheritParams params
+#'
+#' @return
+#' - Providing `rowRanges`: `RangedSummarizedExperiment`.
+#' - Providing `rowData`: `SummarizedExperiment`.
+#'
 #' @seealso
+#' - `SummarizedExperiment::SummarizedExperiment`.
+#' - `SingleCellExperiment::SingleCellExperiment`.
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.
-#' - `SummarizedExperiment::SummarizedExperiment()`.
-#' - `SingleCellExperiment::SingleCellExperiment()`.
 #'
 #' @examples
+#' library(IRanges)
+#' library(GenomicRanges)
+#' library(SummarizedExperiment)
+#'
+#' ## Rows (genes)
 #' genes <- c(
 #'     "EGFP",  # transgene
-#'     "gene1",
-#'     "gene2",
-#'     "gene3"
+#'     paste0("gene", seq_len(3L))
 #' )
-#' samples <- c(
-#'     "sample1",
-#'     "sample2",
-#'     "sample3",
-#'     "sample4"
-#' )
+#' print(genes)
 #'
-#' # Example matrix
-#' mat <- matrix(
-#'     seq(1L:16L),
+#' ## Columns (samples)
+#' samples <- paste0("sample", seq_len(4L))
+#' print(samples)
+#'
+#' ## Counts (assay)
+#' counts <- matrix(
+#'     data = seq_len(16L),
 #'     nrow = 4L,
 #'     ncol = 4L,
 #'     dimnames = list(genes, samples)
 #' )
+#' ## Primary assay must be named "counts".
+#' assays <- list(counts = counts)
+#' print(assays)
 #'
-#' # Primary assay must be named "counts"
-#' assays = list(counts = mat)
-#'
-#' # rowRanges won't contain transgenes or spike-ins
+#' ## Row data (genomic ranges)
 #' rowRanges <- GRanges(
-#'     seqnames = c("1", "1", "1"),
+#'     seqnames = rep("1", times = 3L),
 #'     ranges = IRanges(
-#'         start = c(1L, 101L, 201L),
-#'         end = c(100L, 200L, 300L)
+#'         start = seq(from = 1L, to = 201L, by = 100L),
+#'         end = seq(from = 100L, to = 300L, by = 100L)
 #'     )
 #' )
-#' names(rowRanges) <- c("gene1", "gene2", "gene3")
+#' ## Note that we haven't defined the transgene here.
+#' ## It will be handled automatically in the function call.
+#' names(rowRanges) <- paste0("gene", seq_len(3L))
+#' print(rowRanges)
 #'
-#' colData <- data.frame(
-#'     genotype = c(
-#'         "wildtype",
-#'         "wildtype",
-#'         "knockout",
-#'         "knockout"
-#'     ),
-#'     age = c(3L, 6L, 3L, 6L),
+#' ## Column data
+#' colData <- DataFrame(
+#'     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
+#'     age = rep(c(3L, 6L), 2L),
 #'     row.names = samples
 #' )
+#' print(colData)
 #'
-#' makeSummarizedExperiment(
+#' ## Note that this returns with the dimnames sorted.
+#' x <- makeSummarizedExperiment(
 #'     assays = assays,
 #'     rowRanges = rowRanges,
 #'     colData = colData,
 #'     transgeneNames = "EGFP"
 #' )
+#' print(x)
 makeSummarizedExperiment <- function(
     assays,
-    rowRanges = NULL,
+    rowRanges = NULL,  # recommended
+    rowData = NULL,    # legacy
     colData = NULL,
     metadata = NULL,
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
-    # Legacy arguments ---------------------------------------------------------
-    # nocov start
-    call <- match.call()
-    if ("isSpike" %in% names(call)) {
-        warning("Use `spikeNames` instead of `isSpike`")
-        spikeNames <- call[["isSpike"]]
-    }
-    # nocov end
-
     # Assert checks ------------------------------------------------------------
-    assert_is_any_of(assays, c("list", "ShallowSimpleListAssays", "SimpleList"))
-    assert_is_any_of(rowRanges, c("GRanges", "NULL"))
-    assert_is_any_of(colData, c("DataFrame", "data.frame", "NULL"))
-    assert_is_any_of(metadata, c("list", "NULL"))
-    assert_is_any_of(transgeneNames, c("character", "NULL"))
-    assert_is_any_of(spikeNames, c("character", "NULL"))
+    assert(
+        isAny(
+            x = assays,
+            classes = c("list", "ShallowSimpleListAssays", "SimpleList")
+        ),
+        isAny(
+            x = rowRanges,
+            classes = c("GRanges", "NULL")
+        ),
+        isAny(
+            x = rowData,
+            classes = c("DataFrame", "NULL")
+        ),
+        isAny(
+            x = colData,
+            classes = c("DataFrame", "NULL")
+        ),
+        isAny(
+            x = metadata,
+            classes = c("list", "NULL")
+        ),
+        isAny(
+            x = transgeneNames,
+            classes = c("character", "NULL")
+        ),
+        isAny(
+            x = spikeNames,
+            classes = c("character", "NULL")
+        )
+    )
+
+    # Only allow `rowData` when `rowRanges` are `NULL`.
+    if (!is.null(rowRanges)) {
+        assert(is.null(rowData))
+    }
 
     # Assays -------------------------------------------------------------------
-    # Require the primary assay matrix to be named counts. This helps ensure
-    # consistency with the conventions for SingleCellExperiment.
-    assert_are_identical(names(assays)[[1L]], "counts")
+    # Drop any `NULL` items in assays.
     if (is.list(assays)) {
         assays <- Filter(Negate(is.null), assays)
     }
+    # Require the primary assay to be named "counts". This helps ensure
+    # consistency with the conventions for `SingleCellExperiment`.
+    assert(identical(names(assays)[[1L]], "counts"))
     assay <- assays[[1L]]
-    assert_has_dimnames(assay)
-    assert_has_rownames(assay)
-    assert_has_colnames(assay)
-    assert_has_no_duplicates(rownames(assay))
-    assert_has_no_duplicates(colnames(assay))
-    assert_are_identical(
-        x = makeNames(rownames(assay), unique = TRUE),
-        y = rownames(assay)
-    )
-    assert_are_identical(
-        x = makeNames(colnames(assay), unique = TRUE),
-        y = colnames(assay)
-    )
+    # Require valid names for both columns (samples) and rows (genes).
+    # Note that values beginning with a number or containing invalid characters
+    # (e.g. spaces, dashes) will error here.
+    assert(hasValidDimnames(assay))
+    # We're going to require that the assay names be sorted, but will perform
+    # this step after generating the `SummarizedExperiment` object (see below).
+    # The `SummarizedExperiment` constructor checks to ensure that all assays
+    # have matching dimnames, so we can skip that check.
 
-    # Row ranges ---------------------------------------------------------------
-    # Detect rows that don't contain annotations.
-    # Transgenes should contain `transgene` seqname
-    # Spike-ins should contain `spike` seqname
-    # Otherwise, unannotated genes will be given `unknown` seqname
-    setdiff <- setdiff(rownames(assay), names(rowRanges))
-
+    # Row data -----------------------------------------------------------------
+    mcolsNames <- NULL
+    # Dynamically allow input of rowRanges (recommended) or rowData (fallback).
     if (is(rowRanges, "GRanges")) {
-        assert_are_intersecting_sets(rownames(assay), names(rowRanges))
+        # Detect rows that don't contain annotations.
+        # Transgenes should contain `transgene` seqname.
+        # Spike-ins should contain `spike` seqname.
+        # Otherwise, unannotated genes will be given `unknown` seqname.
+        assert(areIntersectingSets(rownames(assay), names(rowRanges)))
         mcolsNames <- names(mcols(rowRanges))
-
+        setdiff <- setdiff(rownames(assay), names(rowRanges))
         # Transgenes
-        if (length(setdiff) && length(transgeneNames)) {
-            assert_is_subset(transgeneNames, setdiff)
+        if (
+            length(setdiff) > 0L &&
+            length(transgeneNames) > 0L
+        ) {
+            assert(isSubset(x = transgeneNames, y = setdiff))
             transgeneRanges <- emptyRanges(
                 names = transgeneNames,
                 seqname = "transgene",
@@ -163,10 +171,12 @@ makeSummarizedExperiment <- function(
             rowRanges <- suppressWarnings(c(transgeneRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
-
         # FASTA spike-ins
-        if (length(setdiff) && length(spikeNames)) {
-            assert_is_subset(spikeNames, setdiff)
+        if (
+            length(setdiff) > 0L &&
+            length(spikeNames) > 0L
+        ) {
+            assert(isSubset(x = spikeNames, y = setdiff))
             spikeRanges <- emptyRanges(
                 names = spikeNames,
                 seqname = "spike",
@@ -175,54 +185,76 @@ makeSummarizedExperiment <- function(
             rowRanges <- suppressWarnings(c(spikeRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
+    } else if (is(rowData, "DataFrame")) {
+        assert(isSubset(rownames(assay), rownames(rowData)))
+        rowData <- rowData[rownames(assay), , drop = FALSE]
     } else {
-        rowRanges <- GRanges()
-        mcolsNames <- NULL
+        message("Slotting empty ranges.")
+        rowRanges <- emptyRanges(names = rownames(assay))
     }
 
-    # Label any unannotated genes with `unknown` seqname
-    if (length(setdiff)) {
-        warning(paste(
-            paste(
-                "Unannotated rows detected",
-                paste0("(", length(setdiff), "):")
-            ),
-            str_trunc(toString(setdiff), width = 80L),
-            sep = "\n"
+    # Error on user-defined row annotation mismatch (strict).
+    if (is(rowRanges, "GRanges")) {
+        data <- as(rowRanges, "DataFrame")
+    } else if (is(rowData, "DataFrame")) {
+        data <- rowData
+    }
+    assert(is(data, "DataFrame"))
+    setdiff <- setdiff(rownames(assay), rownames(data))
+    if (length(setdiff) > 0L) {
+        stop(paste0(
+            "Unannotated rows (", length(setdiff), "): ",
+            str_trunc(
+                string = toString(setdiff),
+                width = getOption("width") - 24L
+            ), "\n",
+            "Check that your genome build and Ensembl release are correct.\n",
+            "Consider using a GTF/GFF file.\n",
+            "Define transgenes with `transgeneNames`",
+            "and spike-ins with `spikeNames`."
         ))
-        unknownRanges <- emptyRanges(
-            names = setdiff,
-            seqname = "unknown",
-            mcolsNames = mcolsNames
-        )
-        rowRanges <- suppressWarnings(c(unknownRanges, rowRanges))
     }
+    rm(data)
 
-    # Sort the rowRanges to match assay
-    assert_is_subset(rownames(assay), names(rowRanges))
-    rowRanges <- rowRanges[rownames(assay)]
+    # Automatically arrange the rows to match the main assay.
+    if (is(rowRanges, "GRanges")) {
+        assert(hasNames(rowRanges))
+        assert(isSubset(rownames(assay), names(rowRanges)))
+        rowRanges <- rowRanges[rownames(assay)]
+    } else if (is(rowData, "DataFrame")) {
+        assert(hasRownames(rowData))
+        assert(isSubset(rownames(assay), rownames(rowData)))
+        rowData <- rowData[rownames(assay), , drop = FALSE]
+    }
 
     # Column data --------------------------------------------------------------
     if (is.null(colData)) {
         colData <- DataFrame(row.names = colnames(assay))
-    } else {
-        assert_are_identical(colnames(assay), rownames(colData))
-        colData <- as(colData, "DataFrame")
     }
+    assert(isSubset(colnames(assay), rownames(colData)))
+    colData <- colData[colnames(assay), , drop = FALSE]
 
     # Metadata -----------------------------------------------------------------
     metadata <- as.list(metadata)
     metadata[["date"]] <- Sys.Date()
-    metadata[["wd"]] <- normalizePath(".", winslash = "/", mustWork = TRUE)
-    metadata[["utilsSessionInfo"]] <- sessionInfo()
-    metadata[["devtoolsSessionInfo"]] <- session_info(include_base = TRUE)
-    metadata <- Filter(Negate(is.null), metadata)
+    metadata[["wd"]] <- realpath(".")
+    metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
+    metadata <- Filter(f = Negate(is.null), x = metadata)
 
     # Return -------------------------------------------------------------------
-    SummarizedExperiment(
+    args <- list(
         assays = assays,
         rowRanges = rowRanges,
+        rowData = rowData,
         colData = colData,
         metadata = metadata
     )
+    # Ensure we're not passing any `NULL` arguments to `do.call`.
+    # This step will dynamically handle `rowRanges` and/or `rowData`.
+    args <- Filter(Negate(is.null), args)
+    se <- do.call(what = SummarizedExperiment, args = args)
+    # Always return with sorted rows and columns.
+    se <- se[sort(rownames(se)), sort(colnames(se))]
+    validObject(se)
+    se
 }

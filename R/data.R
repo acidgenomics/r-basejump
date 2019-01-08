@@ -1,40 +1,82 @@
-#' Example RNA-Seq Counts
+#' Example `DataFrame`
+#' @examples
+#' data(df)
+#' df
+"df"
+
+
+
+#' Sexually dimorphic gender marker genes
+#' @examples
+#' data(gender_markers)
+#' gender_markers
+"gender_markers"
+
+
+
+#' Example `matrix`
+#' @examples
+#' data(mat)
+#' mat
+"mat"
+
+
+
+#' Organism mappings
+#' @examples
+#' data(organism_mappings)
+#' organism_mappings
+"organism_mappings"
+
+
+
+#' Example `SummarizedExperiment`
 #'
-#' Generated with `DESeq2::makeExampleDESeqDataSet()`.
+#' Gene-level RNA-seq data set.
 #'
-#' @aliases rnaseqCounts
-#' @author Michael Steinbaugh
+#' Generated with `DESeq2::makeExampleDESeqDataSet`. Contains actual gene
+#' identifiers and Ensembl annotations.
 #'
 #' @examples
-#' summary(rnaseq_counts)
-"rnaseq_counts"
+#' data(rse)
+#' rse
+"rse"
 
 
 
-#' `RangedSummarizedExperiment` Coerced from `bcbioRNASeq`
+#' Example `SingleCellExperiment`
 #'
-#' @family Minimal Example Data
-#' @author Michael Steinbaugh
-"rse_bcb"
-
-
-
-#' `RangedSummarizedExperiment` Coerced from `DESeqDataSet`
+#' Gene-level single-cell RNA-seq data set.
 #'
-#' @family Minimal Example Data
-#' @author Michael Steinbaugh
-"rse_dds"
+#' @seealso `scater::sc_example_counts`.
+#' @examples
+#' data(sce)
+#' sce
+"sce"
 
 
 
-#' Example Single-Cell RNA-Seq Counts
+#' Example `sparseMatrix`
+#' @examples
+#' data(sparse)
+#' sparse
+"sparse"
+
+
+
+#' Example `tibble` (`tbl_df`)
+#' @examples
+#' data(tbl)
+#' tbl
+"tbl"
+
+
+
+#' Example transcript-level `SummarizedExperiment`
 #'
-#' Modified version of `scater::sc_example_counts`, with dimnames formatted
-#' in camel case for package consistency.
-#'
-#' @aliases singleCellCounts
-#' @author Michael Steinbaugh
+#' Transcript-level RNA-seq data set.
 #'
 #' @examples
-#' summary(single_cell_counts)
-"single_cell_counts"
+#' data(tx_se)
+#' tx_se
+"tx_se"

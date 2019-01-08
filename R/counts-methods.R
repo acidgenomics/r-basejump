@@ -1,29 +1,73 @@
 #' Counts
 #'
+#' Count matrix.
+#'
+#' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
+#'   defined in `assayNames`.
+#'
 #' @name counts
-#' @family Data Functions
+#' @aliases counts<-
 #'
-#' @importFrom BiocGenerics counts
+#' @inheritParams params
 #'
-#' @inheritParams general
-#'
-#' @return `matrix`.
+#' @return Matrix.
+#' Typically `matrix` or `sparseMatrix` class.
 #'
 #' @examples
-#' # SummarizedExperiment ====
-#' x <- counts(rse_dds)
+#' data(rse)
+#' x <- counts(rse)
 #' summary(x)
 NULL
+
+
+
+#' @importFrom BiocGenerics counts
+#' @aliases NULL
+#' @export
+BiocGenerics::counts
+
+#' @importFrom BiocGenerics counts<-
+#' @aliases NULL
+#' @export
+BiocGenerics::`counts<-`
+
+
+
+counts.SummarizedExperiment <-  # nolint
+    function(object) {
+        validObject(object)
+        assert("counts" %in% assayNames(object))
+        assays(object)[["counts"]]
+    }
 
 
 
 #' @rdname counts
 #' @export
 setMethod(
-    "counts",
-    "SummarizedExperiment",
-    function(object) {
-        stopifnot("counts" %in% names(assays(object)))
-        assays(object)[["counts"]]
+    f = "counts",
+    signature = signature("SummarizedExperiment"),
+    definition = counts.SummarizedExperiment
+)
+
+
+
+`counts<-.SummarizedExperiment` <-  # nolint
+    function(object, value) {
+        validObject(object)
+        assays(object)[["counts"]] <- value
+        object
     }
+
+
+
+#' @rdname counts
+#' @export
+setMethod(
+    f = "counts<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "ANY"
+    ),
+    definition = `counts<-.SummarizedExperiment`
 )

@@ -1,39 +1,50 @@
-#' Assign Multiple Objects as an Environment
+#' Assign multiple objects into a new environment
 #'
-#' @family Developer Functions
-#' @author Michael Steinbaugh
-#'
-#' @inheritParams dots
-#' @param envirName `string`. Name of the new `environment` to create.
-#' @param parentEnvir `environment`. Parent `environment` where to assign the
-#'   new `environment`, specified by `envirName` argument.
-#'
-#' @return `character` vector of object names in the new `environment`.
+#' @inheritParams brio::dots
 #' @export
 #'
+#' @param envirName `character(1)`.
+#'   Name of the new `environment` to create.
+#' @param parentFrame `environment`.
+#'   Parent `environment` where to assign the new `environment`, specified by
+#'   `envirName` argument.
+#'
+#' @return `character`.
+#' Object names defined in the new `environment`.
+#'
 #' @examples
-#' multiassignAsEnvir(rnaseq_counts, single_cell_counts, envirName = "example")
+#' data(rse, sce)
+#' multiassignAsEnvir(rse, sce, envirName = "example")
 #' class(example)
 #' ls(example)
 multiassignAsEnvir <- function(
     ...,
     envirName,
-    parentEnvir = parent.frame()
+    parentFrame = parent.frame()
 ) {
     dots <- dots(...)
-    assert_is_list(dots)
-    dotsNames <- dots(..., character = TRUE)
-    assert_is_character(dotsNames)
-    assert_is_a_string(envirName)
-    assert_is_environment(parentEnvir)
+    assert(is.list(dots))
+    names <- dots(..., character = TRUE)
+    assert(
+        isCharacter(names),
+        isString(envirName),
+        is.environment(parentFrame)
+    )
 
-    envir <- new.env(parent = parentEnvir)
-    invisible(lapply(seq_along(dots), function(a) {
-        assign(dotsNames[[a]], eval(dots[[a]]), envir = envir)
-    }))
+    envir <- new.env(parent = parentFrame)
+    invisible(lapply(
+        X = seq_along(dots),
+        FUN = function(a) {
+            assign(
+                x = names[[a]],
+                value = eval(expr = dots[[a]], envir = parentFrame),
+                envir = envir
+            )
+        }
+    ))
 
-    message(paste("Assigning", toString(dotsNames), "as", envirName))
-    assign(envirName, value = envir, envir = parentEnvir)
+    message(paste0("Assigning ", toString(names), " as ", envirName, "."))
+    assign(envirName, value = envir, envir = parentFrame)
 
     invisible(objects(envir))
 }

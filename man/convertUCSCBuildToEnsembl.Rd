@@ -2,7 +2,7 @@
 % Please edit documentation in R/convertUCSCBuildToEnsembl.R
 \name{convertUCSCBuildToEnsembl}
 \alias{convertUCSCBuildToEnsembl}
-\title{Convert UCSC Build to Ensembl}
+\title{Convert UCSC build to Ensembl}
 \usage{
 convertUCSCBuildToEnsembl(object)
 }
@@ -10,33 +10,14 @@ convertUCSCBuildToEnsembl(object)
 \item{object}{Object.}
 }
 \value{
-\code{character} containing Ensembl genome build as the value, UCSC build
-as the name. Returns \code{NULL} on match failure.
+\code{character}. Ensembl genome build as the value, UCSC build as the
+name. Stops on match failure.
 }
 \description{
-Convert UCSC Build to Ensembl
+Convert UCSC build to Ensembl
 }
 \examples{
-convertUCSCBuildToEnsembl(c("hg19", "hg38"))
+from <- c("hg19", "hg38")
+to <- convertUCSCBuildToEnsembl(from)
+print(to)
 }
-\seealso{
-Other Annotation Functions: \code{\link{annotable}},
-  \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}}, \code{\link{eggnog}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2gene}},
-  \code{\link{makeGRangesFromEnsembl}},
-  \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeGene2symbolFromEnsembl}},
-  \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Annotation Functions}

@@ -2,23 +2,24 @@
 % Please edit documentation in R/emptyRanges.R
 \name{emptyRanges}
 \alias{emptyRanges}
-\title{Generate Empty Genomic Ranges}
+\title{Generate empty genomic ranges}
 \usage{
 emptyRanges(names, seqname = c("unknown", "transgene", "spike"),
   mcolsNames = NULL)
 }
 \arguments{
-\item{names}{\code{character}. Gene or transcript names.}
+\item{names}{\code{character}.
+Gene or transcript names.}
 
-\item{seqname}{\code{string} Name of the alternative chromosome to be defined in
-\code{\link[GenomeInfoDb:seqnames]{GenomeInfoDb::seqnames()}} where these ranges will be grouped. Defaults to
-"\code{unknown}" but "\code{transgene}" (transgenes) and "\code{spike}" (spike-ins) are
-also supported.}
+\item{seqname}{\code{character(1)}.
+Name of the alternative chromosome to be defined in \code{seqnames} where these
+ranges will be grouped. Defaults to "\code{unknown}" but "\code{transgene}"
+(transgenes) and "\code{spike}" (spike-ins) are also supported.}
 
-\item{mcolsNames}{\code{character} or \code{NULL}. Metadata column names to be defined
-in the \code{\link[S4Vectors:mcols]{S4Vectors::mcols()}} of the \code{GRanges} return. Normally this does not
-need to be defined; useful when combining with another \code{GRanges} that
-contains metadata.}
+\item{mcolsNames}{\code{character} or \code{NULL}.
+Metadata column names to be defined in the \code{mcols} of the \code{GRanges} return.
+Normally this does not need to be defined; useful when combining with
+another \code{GRanges} that contains metadata.}
 }
 \value{
 \code{GRanges}.
@@ -28,38 +29,15 @@ Utility function that provides support for creating internal \code{GRanges} for
 transgene and FASTA spike-in sequences.
 }
 \examples{
-# Unknown/dead genes
+## Unknown/dead genes.
 emptyRanges("ENSG00000000000", seqname = "unknown")
 
-# Transgenes
+## Transgenes.
 emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
 
-# Spike-ins
+## Spike-ins.
 emptyRanges("ERCC", seqname = "spike")
 }
 \seealso{
-\itemize{
-\item \code{help("seqinfo", "GenomeInfoDb")}.
-\item \code{DESeq2::makeExampleDESeqDataSet()}.
+\code{help("seqinfo", "GenomeInfoDb")}.
 }
-
-Other Annotation Functions: \code{\link{annotable}},
-  \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}}, \code{\link{eggnog}},
-  \code{\link{geneSynonyms}}, \code{\link{hgnc2gene}},
-  \code{\link{makeGRangesFromEnsembl}},
-  \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeGene2symbolFromEnsembl}},
-  \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Annotation Functions}

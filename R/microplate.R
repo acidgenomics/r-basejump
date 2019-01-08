@@ -1,27 +1,35 @@
-#' Microtiter Plate Well Identifiers
+#' Microtiter plate well identifiers
 #'
-#' @family Math and Science Functions
-#' @author Michael Steinbaugh
+#' Quickly generate identifiers (with optional prefixes) for 96 and 384 well
+#' plates.
 #'
-#' @param plates `scalar integer`. Number of plates.
-#' @param wells `scalar integer`. Number of wells (`96`, `384`).
-#' @param controls `scalar integer`. Number of control wells.
-#' @param prefix `string` or `NULL`. Plate name prefix.
+#' These plate formats are frequently used for high-throughput screening assays.
 #'
-#' @return Character vector containing well identifiers.
 #' @export
 #'
+#' @param plates `integer(1)`.
+#'   Number of plates.
+#' @param wells `integer(1)`.
+#'   Number of wells (`96`, `384`).
+#' @param controls `integer(1)`.
+#'   Number of control wells.
+#' @param prefix `character(1)` or `NULL`.
+#'   Plate name prefix.
+#'
+#' @return `character`.
+#' Well identifiers.
+#'
 #' @examples
-#' # Single 96-well plate
+#' ## Single 96-well plate.
 #' microplate(wells = 96L)
 #'
-#' # 2 96-well plates
+#' ## 2 96-well plates.
 #' microplate(plates = 2L, wells = 96L)
 #'
-#' # Single 384-well plate
+#' ## Single 384-well plate.
 #' microplate(wells = 384L)
 #'
-#' # 2 96-well plates with 6 control wells per plate
+#' ## 2 96-well plates with 6 control wells per plate.
 #' microplate(plates = 2L, wells = 96L, controls = 6L)
 microplate <- function(
     plates = 1L,
@@ -29,22 +37,27 @@ microplate <- function(
     controls = 0L,
     prefix = NULL
 ) {
-    # plates
-    assertIsAnImplicitInteger(plates)
+    # Plates
+    assert(
+        isInt(plates),
+        isPositive(plates)
+    )
     plates <- as.integer(plates)
-    assert_all_are_positive(plates)
-    # wells
-    assertIsAnImplicitInteger(wells)
+    # Wells
+    assert(
+        isInt(wells),
+        isPositive(wells)
+    )
     wells <- as.integer(wells)
-    assert_all_are_positive(wells)
-    assert_is_subset(wells, c(96L, 384L))
-    # controls
-    assertIsAnImplicitInteger(controls)
+    assert(isSubset(x = wells, y = c(96L, 384L)))
+    # Controls
+    assert(
+        isInt(controls),
+        isInRange(x = controls, lower = 0L, upper = 12L)
+    )
     controls <- as.integer(controls)
-    assert_all_are_non_negative(controls)
-    assert_is_subset(controls, 0L:12L)
-    # prefix
-    assertIsAStringOrNULL(prefix)
+    # Prefix
+    assert(isString(prefix, nullOK = TRUE))
 
     if (wells == 96L) {
         row <- 8L
@@ -63,9 +76,9 @@ microplate <- function(
     df <- expand.grid(plates, row, col)
     vector <- sort(paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]))
 
-    # Prepare control wells
+    # Prepare control wells.
     if (controls > 0L) {
-        # Create a grep string matching the control wells
+        # Create a grep string matching the control wells.
         grep <- str_pad(
             1L:controls,
             width = max(str_length(col)),
@@ -73,12 +86,12 @@ microplate <- function(
         ) %>%
             paste(collapse = "|") %>%
             paste0("A(", ., ")$")
-        # Remove the control wells using `grepl()`:
+        # Remove the control wells using `grepl`.
         vector <- vector[!grepl(grep, vector)]
     }
 
-    # Add a prefix, if desired:
-    if (is_a_string(prefix)) {
+    # Add a prefix, if desired.
+    if (isString(prefix)) {
         vector <- paste0(prefix, "-", vector)
     }
 

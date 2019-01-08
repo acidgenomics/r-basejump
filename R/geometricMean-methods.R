@@ -1,55 +1,67 @@
-#' Geometric Mean
-#'
-#' The geometric mean is the nth root of n products or e to the mean log of `x`.
-#' Useful for describing non-normal (i.e. geometric) distributions.
-#'
-#' This function should be fully zero- and `NA`-tolerant. This calculation is
-#' not particularly useful if there are elements that are <= 0 and will return
-#' `NaN`.
-#'
 #' @name geometricMean
-#' @family Math and Science Functions
-#' @author Michael Steinbaugh
+#' @inherit bioverbs::geometricMean
+#' @inheritParams params
+#' @inheritParams base::apply
 #'
-#' @inheritParams general
-#' @param removeNA `boolean`. Remove `NA` values from calculations.
-#' @param zeroPropagate `boolean`. Allow propagation of zeroes.
+#' @param removeNA `logical(1)`.
+#'   Remove `NA` values from calculations.
+#' @param zeroPropagate `logical(1)`.
+#'   Allow propagation of zeroes.
 #'
-#' @return `numeric` containing geometric means.
+#' @note This function should be fully zero- and `NA`-tolerant. This calculation
+#'   is not particularly useful if there are elements that are <= 0 and will
+#'   return `NaN`.
 #'
-#' @seealso Modified version of `psych::geometric.mean()` and Paul McMurdie's
-#'   [code](https://stackoverflow.com/a/25555105).
+#' @seealso
+#' - [Paul McMurdie's code](https://stackoverflow.com/a/25555105).
+#' - `psych::geometric.mean()`.
+#'
+#' @return `numeric`.
 #'
 #' @examples
-#' # numeric ====
-#' vec <- seq(1L, 5L, 1L)
-#' geometricMean(vec)
-#' vec2 <- vec ^ 2L
+#' ## numeric ====
+#' vec1 <- seq(1L, 5L, 1L)
+#' print(vec1)
+#' geometricMean(vec1)
+#'
+#' vec2 <- vec1 ^ 2L
+#' print(vec2)
 #' geometricMean(vec2)
 #'
-#' # data.frame ====
-#' df <- data.frame(vec, vec2)
-#' geometricMean(df)
+#' ## matrix ====
+#' matrix <- matrix(
+#'     data = c(vec1, vec2),
+#'     ncol = 2L,
+#'     byrow = FALSE
+#' )
+#' print(matrix)
+#' geometricMean(matrix)
 #'
-#' # matrix ====
-#' mat <- as.matrix(df)
-#' geometricMean(mat)
+#' ## sparseMatrix ====
+#' sparse <- as(matrix, "sparseMatrix")
+#' print(sparse)
+#' geometricMean(sparse)
 NULL
 
 
 
-#' @rdname geometricMean
+#' @importFrom bioverbs geometricMean
+#' @aliases NULL
 #' @export
-setMethod(
-    "geometricMean",
-    signature("numeric"),
+bioverbs::geometricMean
+
+
+
+geometricMean.numeric <-  # nolint
     function(
         object,
         removeNA = TRUE,
         zeroPropagate = FALSE
     ) {
-        assert_is_a_bool(removeNA)
-        assert_is_a_bool(zeroPropagate)
+        assert(
+            isFlag(removeNA),
+            isFlag(zeroPropagate)
+        )
 
         # Check for any negative numbers and return `NaN`
         if (any(object < 0L, na.rm = TRUE)) {
@@ -68,31 +80,47 @@ setMethod(
             )
         }
     }
-)
 
 
 
 #' @rdname geometricMean
 #' @export
 setMethod(
-    "geometricMean",
-    signature("matrix"),
-    function(object) {
-        invisible(lapply(object, assert_is_numeric))
+    f = "geometricMean",
+    signature = signature("numeric"),
+    definition = geometricMean.numeric
+)
+
+
+
+geometricMean.matrix <-  # nolint
+    function(object, MARGIN = 2L) {  # nolint
         apply(
             X = object,
-            MARGIN = 2L,
+            MARGIN = MARGIN,
             FUN = geometricMean
         )
     }
-)
 
 
 
 #' @rdname geometricMean
 #' @export
 setMethod(
-    "geometricMean",
-    signature("data.frame"),
-    getMethod("geometricMean", "matrix")
+    f = "geometricMean",
+    signature = signature("matrix"),
+    definition = geometricMean.matrix
+)
+
+
+
+geometricMean.sparseMatrix <-  # nolint
+    geometricMean.matrix
+
+#' @rdname geometricMean
+#' @export
+setMethod(
+    f = "geometricMean",
+    signature = signature("sparseMatrix"),
+    definition = geometricMean.sparseMatrix
 )

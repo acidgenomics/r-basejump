@@ -1,177 +1,33 @@
 # nocov start
+# nolint start
 
 
 
-#' Deprecated Functions
+#' Deprecated functions
 #'
 #' @name deprecated
-#' @author Michael Steinbaugh
 #' @keywords internal
 #'
-#' @inheritParams general
+#' @inheritParams params
 #'
-#' @return [.Deprecated()].
+#' @return `.Deprecated`.
 NULL
 
 
 
-#' Defunct Functions
+#' Defunct functions
 #'
 #' @name defunct
-#' @author Michael Steinbaugh
 #' @keywords internal
 #'
-#' @inheritParams general
+#' @inheritParams params
 #'
-#' @return [.Defunct()].
+#' @return `.Defunct`.
 NULL
 
 
 
-# Legacy =======================================================================
-#' @rdname defunct
-#' @export
-summarizeRows <- function(...) {
-    .Defunct("collapseToString")
-}
-
-#' @rdname defunct
-#' @export
-wash <- function(...) {
-    .Defunct()
-}
-
-
-
-# v0.0.23 ======================================================================
-#' @rdname defunct
-#' @export
-packageSE <- function(...) {
-    .Defunct("bcbioBase::prepareSummarizedExperiment")
-}
-
-
-
-#' @rdname defunct
-#' @export
-prepareSE <- function(...) {
-    .Defunct("bcbioBase::prepareSummarizedExperiment")
-}
-
-
-
-# v0.0.24 ======================================================================
-#' @rdname defunct
-#' @export
-metadataTable <- function(...) {
-    .Defunct("bcbioBase::sampleData")
-}
-
-
-
-# v0.0.25 ======================================================================
-#' @rdname defunct
-#' @export
-pct <- function(...) {
-    .Defunct("scales::percent")
-}
-
-
-
-# v0.1.6 ======================================================================
-#' @rdname defunct
-#' @export
-fc2lr <- function(...) {
-    .Defunct("foldChangeToLogRatio")
-}
-
-#' @rdname defunct
-#' @export
-lr2fc <- function(...) {
-    .Defunct("logRatioToFoldChange")
-}
-
-
-
-# v0.1.1 =======================================================================
-#' @rdname defunct
-#' @export
-comp <- function() {
-    .Defunct("Biostrings::complement")
-}
-
-#' @rdname defunct
-#' @export
-revcomp <- function() {
-    .Defunct("Biostrings::reverseComplement")
-}
-
-
-
-# v0.2.2 =======================================================================
-#' @rdname defunct
-symbol2gene <- function() {
-    .Defunct()
-}
-
-
-
-# v0.3.0 =======================================================================
-#' @rdname deprecated
-#' @export
-checkAnnotable <- function(...) {
-    .Deprecated("assertIsAnnotable")
-    assertIsAnnotable(...)
-}
-
-#' @rdname deprecated
-#' @export
-checkGene2symbol <- function(...) {
-    .Deprecated("assertIsGene2symbol")
-    assertIsGene2symbol(...)
-}
-
-#' @rdname deprecated
-#' @export
-checkTx2gene <- function(...) {
-    .Deprecated("assertIsTx2gene")
-    assertIsTx2gene(...)
-}
-
-
-
-# v0.3.1 =======================================================================
-#' @rdname deprecated
-#' @export
-assertFormalHeaderLevel <- function(...) {
-    .Deprecated("assertIsAHeaderLevel")
-    assertIsAHeaderLevel(...)
-}
-
-#' @rdname deprecated
-#' @export
- assertFormalColorFunction <- function(...) {
-    .Deprecated("assertIsHexColorFunctionOrNULL")
-    assertIsHexColorFunctionOrNULL(...)
-}
-
-#' @rdname deprecated
-#' @export
-initializeDir <- function(...) {
-    .Deprecated("initializeDirectory")
-    initializeDirectory(...)
-}
-
-
-
- # v0.4.0 ======================================================================
-#' @rdname deprecated
-#' @export
-assertIsAnnotable <- function(...) {
-     .Deprecated("assertAreGeneAnnotations")
-     assertAreGeneAnnotations(...)
-}
-
+# v0.4.0 ======================================================================
 #' @rdname deprecated
 #' @export
 ensembl <- function(...) {
@@ -197,17 +53,11 @@ sanitizeAnnotable <- function(...) {
     sanitizeRowData(...)
 }
 
-#' @rdname defunct
-#' @export
-tx2gene <- function(...) {
-    .Defunct("makeTx2geneFromGFF or bcbioBase::readTx2gene")
-}
-
 #' @rdname deprecated
 #' @export
 tx2geneFromGFF <- function(...) {
-    .Deprecated("makeTx2geneFromGFF")
-    makeTx2geneFromGFF(...)
+    .Deprecated("makeTx2GeneFromGFF")
+    makeTx2GeneFromGFF(...)
 }
 
 #' @rdname deprecated
@@ -239,12 +89,6 @@ geomean <- function(...) {
 # v0.5.4 =======================================================================
 #' @rdname defunct
 #' @export
-assertIsGFF <- function(...) {
-    .Defunct()
-}
-
-#' @rdname defunct
-#' @export
 parseGFFAttributes <- function(...) {
     .Defunct("readGFF")
 }
@@ -268,39 +112,12 @@ midnightTheme <- function(...) {
     theme_midnight(...)
 }
 
-
-
 #' @rdname deprecated
 #' @export
 paperwhiteTheme <- function(...) {
     .Deprecated("theme_paperwhite")
     theme_paperwhite(...)
 }
-
-
-
-# v0.6.2 =======================================================================
-#' @rdname defunct
-#' @export
-setMethod(
-    "broadClass",
-    signature("data.frame"),
-    function(object) {
-        .Defunct(
-            msg = "`broadClass()` now requires a `GRanges` class object"
-        )
-    }
-)
-
-
-
-#' @rdname defunct
-#' @export
-setMethod(
-    "broadClass",
-    signature("DataFrame"),
-    getMethod("broadClass", "data.frame")
-)
 
 
 
@@ -313,4 +130,292 @@ synonyms <- function(...) {
 
 
 
+# v0.8.0 =======================================================================
+#' @rdname deprecated
+#' @export
+setGeneric(
+    name = "aggregateFeatures",
+    def = function(object, ...) {
+        standardGeneric("aggregateFeatures")
+    }
+)
+
+#' @rdname deprecated
+#' @export
+setMethod(
+    f = "aggregateFeatures",
+    signature = signature("ANY"),
+    definition = function(object, ...) {
+        # .Deprecated("aggregateRows")
+        aggregateRows(object, ...)
+    }
+)
+
+#' @rdname deprecated
+#' @export
+setGeneric(
+    name = "aggregateReplicates",
+    def = function(object, ...) {
+        standardGeneric("aggregateReplicates")
+    }
+)
+
+#' @rdname deprecated
+#' @export
+setMethod(
+    f = "aggregateReplicates",
+    signature = signature("ANY"),
+    definition = function(object, ...) {
+        # .Deprecated("aggregateCols")
+        aggregateCols(object, ...)
+    }
+)
+
+#' @rdname deprecated
+#' @export
+setGeneric(
+    name = "aggregateSamples",
+    def = function(object, ...) {
+        standardGeneric("aggregateSamples")
+    }
+)
+
+#' @rdname deprecated
+#' @export
+setMethod(
+    f = "aggregateSamples",
+    signature = signature("ANY"),
+    definition = function(object, ...) {
+        # .Deprecated("aggregateCols")
+        aggregateCols(object, ...)
+    }
+)
+
+#' @rdname defunct
+#' @export
+broadClass <- function(object, ...) {
+    .Defunct("makeGRanges")
+}
+
+#' @rdname deprecated
+#' @export
+checkClasses <- function(...) {
+    # .Deprecated("validateClasses")
+    validateClasses(...)
+}
+
+#' @rdname deprecated
+#' @export
+eggnog <- function(...) {
+    # .Deprecated("EggNOG")
+    EggNOG(...)
+}
+
+#' @rdname deprecated
+#' @export
+ensembl2entrez <- function(...) {
+    # .Deprecated("Ensembl2Entrez")
+    Ensembl2Entrez(...)
+}
+
+#' @rdname deprecated
+#' @export
+fixNA <- function(...) {
+    # .Deprecated("sanitizeNA")
+    sanitizeNA(...)
+}
+
+#' @rdname deprecated
+#' @export
+gene2symbol <- function(...) {
+    # .Deprecated("Gene2Symbol")
+    Gene2Symbol(...)
+}
+
+#' @rdname deprecated
+#' @export
+grepString <- function(...) {
+    .Defunct()
+}
+
+#' @rdname deprecated
+#' @export
+hgnc2gene <- function(...) {
+    # .Deprecated("HGNC2Ensembl")
+    HGNC2Ensembl(...)
+}
+
+#' @rdname deprecated
+#' @export
+hgnc2ensembl <- function(...) {
+    # .Deprecated("HGNC2Ensembl")
+    HGNC2Ensembl(...)
+}
+
+#' @rdname deprecated
+#' @export
+initializeDirectory <- function(...) {
+    # .Deprecated("initDir")
+    initDir(...)
+}
+
+#' @rdname deprecated
+#' @export
+kables <- function(...) {
+    # .Deprecated("markdownTables")
+    markdownTables(...)
+}
+
+#' @rdname deprecated
+#' @export
+makeGene2symbolFromEnsembl <- function(...) {
+    # .Deprecated("makeGene2SymbolFromEnsembl")
+    do.call(
+        what = makeGene2SymbolFromEnsembl,
+        args = matchArgsToDoCall()
+    )
+}
+
+#' @rdname deprecated
+#' @export
+makeGene2symbolFromGFF <- function(...) {
+    # .Deprecated("makeGene2SymbolFromGFF")
+    do.call(
+        what = makeGene2SymbolFromGFF,
+        args = matchArgsToDoCall()
+    )
+}
+
+#' @rdname deprecated
+#' @export
+makeGene2symbolFromGTF <- function(...) {
+    # .Deprecated("makeGene2SymbolFromGTF")
+    do.call(
+        what = makeGene2SymbolFromGTF,
+        args = matchArgsToDoCall()
+    )
+}
+
+#' @rdname deprecated
+#' @export
+makeTx2geneFromEnsembl <- function(...) {
+    # .Deprecated("makeTx2GeneFromEnsembl")
+    do.call(
+        what = makeTx2GeneFromEnsembl,
+        args = matchArgsToDoCall()
+    )
+}
+
+#' @rdname deprecated
+#' @export
+makeTx2geneFromGFF <- function(...) {
+    # .Deprecated("makeTx2GeneFromGFF")
+    do.call(
+        what = makeTx2GeneFromGFF,
+        args = matchArgsToDoCall()
+    )
+}
+
+#' @rdname deprecated
+#' @export
+makeTx2geneFromGTF <- function(...) {
+    # .Deprecated("makeTx2GeneFromGTF")
+    do.call(
+        what = makeTx2GeneFromGTF,
+        args = matchArgsToDoCall()
+    )
+}
+
+#' @rdname deprecated
+#' @export
+mgi2gene <- function(...) {
+    # .Deprecated("mgi2ensembl")
+    mgi2ensembl(...)
+}
+
+#' @rdname deprecated
+#' @export
+mgi2ensembl <- function(...) {
+    # .Deprecated("MGI2Ensembl")
+    MGI2Ensembl(...)
+}
+
+#' @rdname deprecated
+#' @export
+panther <- function(...) {
+    # .Deprecated("PANTHER")
+    PANTHER(...)
+}
+
+#' @rdname deprecated
+#' @export
+readFileByExtension <- function(...) {
+    # .Deprecated("import")
+    import(...)
+}
+
+#' @rdname deprecated
+#' @export
+readGFF <- function(...) {
+    # .Deprecated("import")
+    import(...)
+}
+
+#' @rdname deprecated
+#' @export
+readGTF <- function(...) {
+    # .Deprecated("import")
+    import(...)
+}
+
+#' @rdname deprecated
+#' @export
+readJSON <- function(...) {
+    # .Deprecated("import")
+    import(...)
+}
+
+#' @rdname deprecated
+#' @export
+readYAML <- function(...) {
+    # .Deprecated("import")
+    import(...)
+}
+
+#' @rdname defunct
+#' @export
+separatorBar <- function(...) {
+    .Defunct("separator")
+}
+
+#' @rdname defunct
+#' @export
+setArgsToDoCall <- function(...) {
+    .Defunct("matchArgsToDoCall")
+}
+
+#' @rdname deprecated
+#' @export
+tx2gene <- function(...) {
+    # .Deprecated("Tx2Gene")
+    Tx2Gene(...)
+}
+
+
+
+# v0.8.5 =======================================================================
+#' @rdname deprecated
+#' @export
+markdownPlotlist <- function(plotlist, ...) {
+    .Deprecated("markdownPlots")
+    markdownPlots(list = plotlist, ...)
+}
+
+#' @rdname deprecated
+#' @export
+mdPlotlist <- markdownPlotlist
+
+
+
+# nolint end
 # nocov end

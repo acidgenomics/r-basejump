@@ -2,47 +2,21 @@
 % Please edit documentation in R/sanitizeSampleData.R
 \name{sanitizeSampleData}
 \alias{sanitizeSampleData}
-\title{Sanitize Sample Data}
+\title{Sanitize sample data}
 \usage{
 sanitizeSampleData(object)
 }
 \arguments{
 \item{object}{Object.}
 }
-\value{
-Data frame.
-}
 \description{
-Sanitize Sample Data
+Sanitize sample data
 }
 \examples{
-# DataFrame ====
-from <- DataFrame(
-    genotype = c("wt", "ko", "wt", "ko"),
-    batch = c(1L, 1L, 2L, 2L),
-    row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
-)
-glimpse(from)
+data(rse)
+from <- sampleData(rse)
+print(from)
 to <- sanitizeSampleData(from)
-glimpse(to)
-
-# data.frame ====
-from <- data.frame(
-    genotype = c("wt", "ko", "wt", "ko"),
-    batch = c(1L, 1L, 2L, 2L),
-    row.names = c("sample_1", "sample_2", "sample_3", "sample_4"),
-    stringsAsFactors = FALSE
-)
-glimpse(from)
-to <- sanitizeSampleData(from)
-glimpse(to)
+all(vapply(to, is.factor, logical(1L)))
+print(to)
 }
-\seealso{
-Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{collapseToString}}, \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeRowData}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Sanitization Functions}

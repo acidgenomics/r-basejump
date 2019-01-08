@@ -4,13 +4,15 @@
 # How Travis builds R packages:
 # https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb
 
-# Can we use build stages to cache the Bioconductor package library?
+# Can we use build stages to warm the Bioconductor library cache?
 # https://docs.travis-ci.com/user/build-stages
 # https://docs.travis-ci.com/user/build-stages/warm-cache/
 
 # Temporarily enable when caching package library.
-# https://gist.github.com/mjsteinbaugh/47d9a7aecdd8c3c1962a3247d791635f
-script: true
+# script: true
+
+# r_build_args: "--no-build-vignettes"
+# r_check_args: "--no-vignettes"
 
 language: r
 cache: packages
@@ -22,16 +24,11 @@ matrix:
   - os: linux
     r: bioc-release
     warnings_are_errors: true
-  - os: linux
-    r: bioc-devel
-    latex: false
-    warnings_are_errors: true
   - os: osx
     r: bioc-release
     fortran: false
     latex: false
     warnings_are_errors: true
-  fast_finish: true
 
 env:
   global:
@@ -42,8 +39,8 @@ r_packages:
 bioc_packages:
   - BiocCheck
   - EnsDb.Hsapiens.v75
-r_github_packages:
-  - jimhester/lintr
+github_packages:
+  - mjsteinbaugh/lintr
 
 after_success:
   - Rscript -e 'lintr::lint_package()'

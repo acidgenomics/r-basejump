@@ -2,39 +2,27 @@
 % Please edit documentation in R/printString.R
 \name{printString}
 \alias{printString}
-\title{Print String}
+\title{Print string}
 \usage{
 printString(x, max = 100L)
 }
 \arguments{
 \item{x}{\code{atomic}.}
 
-\item{max}{\code{scalar integer}. Maximum length of vector.}
+\item{max}{\code{integer(1)}.
+Maximum length of vector. Works like \code{getOption("max.print")} without
+having to set globally.}
 }
 \value{
-\code{string}.
+\code{character(1)}.
 }
 \description{
-Capture \code{\link[base:print]{base::print()}} output of an \code{atomic} vector. Useful for returning
+Capture \code{print} output of an \code{atomic} vector. Useful for returning
 informative messages inside a function.
 }
 \examples{
 printString(c("hello", "world"))
 }
 \seealso{
-\code{\link[base:cat]{base::cat()}}.
-
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{uniteInterestingGroups}}
+\code{cat}.
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Developer Functions}

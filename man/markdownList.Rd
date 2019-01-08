@@ -3,26 +3,31 @@
 \name{markdownList}
 \alias{markdownList}
 \alias{mdList}
-\title{Markdown List}
+\title{Markdown list}
 \usage{
 markdownList(text, ordered = FALSE, asis = FALSE)
 }
 \arguments{
-\item{text}{\code{string}. Header text.}
+\item{text}{\code{character(1)}.
+Header text.}
 
-\item{ordered}{\code{boolean}. Ordered ("\code{TRUE}") or unordered ("\code{FALSE}").}
+\item{ordered}{\code{logical(1)}.
+Ordered ("\code{TRUE}") or unordered ("\code{FALSE}").}
 
-\item{asis}{\code{boolean}. Set this to \code{TRUE} when using the function inside a
-loop or inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
+\item{asis}{\code{logical(1)}.
+Set this to \code{TRUE} when using the function inside a loop or inside an R
+Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
-\item "\code{asis = TRUE}": \code{\link[knitr:asis_output]{knitr::asis_output()}}.
-\item "\code{asis = FALSE}": \code{\link[=writeLines]{writeLines()}}.
+\item "\code{asis = TRUE}": \code{knitr::asis_output}.
+\item "\code{asis = FALSE}": \code{writeLines}.
 }
 }
 \description{
-Markdown List
+Include a Markdown-formatted list, either ordered or unordered. This function
+works in any R Markdown code block. When calling from inside an \code{asis} chunk,
+set \code{asis = TRUE}.
 }
 \examples{
 groceries <- c("milk", "eggs")
@@ -31,11 +36,5 @@ markdownList(groceries, ordered = TRUE)
 markdownList(groceries, asis = TRUE)
 }
 \seealso{
-Other R Markdown Functions: \code{\link{kables}},
-  \code{\link{markdownHeader}}, \code{\link{markdownLink}},
-  \code{\link{markdownPlotlist}}
+\href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
 }
-\author{
-Michael Steinbaugh
-}
-\concept{R Markdown Functions}

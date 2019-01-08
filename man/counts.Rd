@@ -3,31 +3,33 @@
 \docType{methods}
 \name{counts}
 \alias{counts}
+\alias{counts<-}
 \alias{counts,SummarizedExperiment-method}
+\alias{counts<-,SummarizedExperiment-method}
 \title{Counts}
 \usage{
 \S4method{counts}{SummarizedExperiment}(object)
+
+\S4method{counts}{SummarizedExperiment}(object) <- value
 }
 \arguments{
 \item{object}{Object.}
+
+\item{value}{Value to assign.}
 }
 \value{
-\code{matrix}.
+Matrix.
+Typically \code{matrix} or \code{sparseMatrix} class.
 }
 \description{
-Counts
+Count matrix.
+}
+\note{
+For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
+defined in \code{assayNames}.
 }
 \examples{
-# SummarizedExperiment ====
-x <- counts(rse_dds)
+data(rse)
+x <- counts(rse)
 summary(x)
 }
-\seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}},
-  \code{\link{gene2symbol}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}
-}
-\concept{Data Functions}

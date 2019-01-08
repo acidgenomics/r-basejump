@@ -2,23 +2,26 @@
 % Please edit documentation in R/markdownLink.R
 \name{markdownLink}
 \alias{markdownLink}
-\title{Markdown Link}
+\alias{mdLink}
+\title{Markdown hyperlink}
 \usage{
 markdownLink(text, url, title = NULL)
 }
 \arguments{
-\item{text}{\code{string}. Header text.}
+\item{text}{\code{character(1)}.
+Header text.}
 
-\item{url}{\code{string}. URL.}
+\item{url}{\code{character(1)}.
+URL.}
 
-\item{title}{\code{string} or \code{NULL}. Link title attribute. This will appear in a
-mouse-over pop-up box.}
+\item{title}{\code{character(1)} or \code{NULL}.
+Link title attribute. This will appear in a mouse-over pop-up box.}
 }
 \value{
 Markdown-formatted link.
 }
 \description{
-For use in 'asis' blocks only.
+For use in \code{asis} blocks only.
 }
 \examples{
 markdownLink(
@@ -28,11 +31,8 @@ markdownLink(
 )
 }
 \seealso{
-Other R Markdown Functions: \code{\link{kables}},
-  \code{\link{markdownHeader}}, \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}}
+\href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
 }
 \author{
 Rory Kirchner, Michael Steinbaugh
 }
-\concept{R Markdown Functions}

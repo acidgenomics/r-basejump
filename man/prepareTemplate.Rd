@@ -2,51 +2,44 @@
 % Please edit documentation in R/prepareTemplate.R
 \name{prepareTemplate}
 \alias{prepareTemplate}
-\title{Prepare R Markdown Template File}
+\title{Prepare R Markdown template}
 \usage{
-prepareTemplate(package, overwrite = FALSE, sourceDir = NULL, ...)
+prepareTemplate(package = NULL, overwrite = FALSE)
 }
 \arguments{
-\item{package}{\code{string}. Name of package containing the R Markdown template.}
+\item{package}{\code{character(1)} or \code{NULL}.
+Name of package containing the R Markdown template. If \code{NULL}, only the
+basic shared files defined in the basejump package will be copied.}
 
-\item{overwrite}{\code{boolean}. Should existing destination files be overwritten?}
-
-\item{sourceDir}{\code{string}. File path to shared source file directory.
-Normally this can be left \code{NULL} when working in a standard interactive
-session, but is necessary when developing code in a devtools package
-environment loaded with \code{devtools::load_all()}.}
-
-\item{...}{Additional arguments.}
+\item{overwrite}{\code{logical(1)}.
+Should existing destination files be overwritten?}
 }
 \value{
-Invisible \code{logical} indicating which files were copied.
+Invisible \code{logical}.
+Was the file copied?.
 }
 \description{
 If the required template dependency files aren't present, copy them from the
 requested package. Existing files are not overwritten by default. This
 function will copy dependency files from a requested package inside the
-\code{rmarkdown/shared} directory. If a package doesn't contain this
+\code{rmarkdown/shared/} directory. If a package doesn't contain this
 subdirectory, the function will return an error.
 }
 \details{
 This code is used internally by:
 \itemize{
-\item \code{bcbioRNASeq::prepareRNASeqTemplate()}.
-\item \code{bcbioSingleCell::prepareSingleCellTemplate()}.
+\item \code{bcbioRNASeq::prepareRNASeqTemplate}.
+\item \code{bcbioSingleCell::prepareSingleCellTemplate}.
 }
 }
 \examples{
-# RNA-seq template
+## RNA-seq template.
 \dontrun{
-prepareTemplate(package = "bcbioRNASeq")
+# prepareTemplate(package = "bcbioRNASeq")
 }
 
-# Single-cell RNA-seq template
+## Single-cell RNA-seq template.
 \dontrun{
-prepareTemplate(package = "bcbioSingleCell")
+# prepareTemplate(package = "bcbioSingleCell")
 }
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Prepare Functions}

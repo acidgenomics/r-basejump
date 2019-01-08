@@ -1,75 +1,284 @@
-#' Sample Data
-#'
-#' Return the sample metadata. Columns are always sanitized to factor.
-#'
-#' @note This is a complement to the standard [colData()] function, but improves
-#'   support for accessing sample metadata for datasets where multiple items in
-#'   the columns map to a single sample (e.g. cells for a single-cell RNA-seq
-#'   experiment).
-#'
 #' @name sampleData
-#' @family Data Functions
-#' @author Michael Steinbaugh
+#' @inherit bioverbs::sampleData
+#' @inheritParams params
 #'
-#' @inheritParams general
-#'
-#' @return `DataFrame` containing metadata that describes the samples.
+#' @param clean `logical(1)`.
+#'   Only return `factor` columns. Useful when working with objects that contain
+#'   metrics in `colData`.
+#' @param blacklist `character`.
+#'   Column names that should never be treated as sample-level metadata.
+#'   Applicable only to `SingleCellExperiment` objects.
 #'
 #' @examples
-#' # SummarizedExperiment ====
-#' sampleData(rse_bcb) %>% glimpse()
+#' data(rse, sce)
 #'
-#' # Assignment support
-#' x <- rse_dds
-#' sampleData(x)[["test"]] <- seq_len(ncol(x))
-#' # `test` column should be now defined
-#' glimpse(sampleData(x))
+#' ## SummarizedExperiment ====
+#' x <- rse
+#' sampleData(x)
+#'
+#' ## Assignment support
+#' sampleData(x)[["batch"]] <- 1L
+#' ## `batch` column should be now defined.
+#' sampleData(x)
+#'
+#' ## SingleCellExperiment ====
+#' x <- sce
+#' sampleData(x)
+#'
+#' ## Assignment support.
+#' sampleData(x)[["batch"]] <- 1L
+#' ## `batch` column should be now defined.
+#' sampleData(x)
 NULL
 
 
 
+#' @importFrom bioverbs sampleData
+#' @aliases NULL
+#' @export
+bioverbs::sampleData
+
+#' @importFrom bioverbs sampleData<-
+#' @aliases NULL
+#' @export
+bioverbs::`sampleData<-`
+
+
+
+# Don't run validity checks here.
+sampleData.SummarizedExperiment <-  # nolint
+    function(object, clean = FALSE) {
+        data <- colData(object)
+        assert(hasRownames(data))
+        # Require `sampleName` column.
+        if (!"sampleName" %in% colnames(data)) {
+            data[["sampleName"]] <- as.factor(rownames(data))
+        }
+        # Require `interestingGroups` column.
+        data[["interestingGroups"]] <- NULL
+        data <- uniteInterestingGroups(
+            object = data,
+            interestingGroups = matchInterestingGroups(object)
+        )
+        # Return only factor columns in clean mode.
+        if (isTRUE(clean)) {
+            keep <- vapply(
+                X = data,
+                FUN = is.factor,
+                FUN.VALUE = logical(1L)
+            )
+            data <- data[, keep, drop = FALSE]
+        }
+        data
+    }
+
+
+
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleData",
-    signature("SummarizedExperiment"),
-    function(object, ...) {
-        # Legacy arguments -----------------------------------------------------
-        # nocov start
-        call <- match.call(expand.dots = TRUE)
-        # clean
-        if (isTRUE(call[["clean"]])) {
-            warning(paste(
-                "`clean` argument is deprecated for `SummarizedExperiment`.",
-                "Improved `bcbioRNASeq` method is provided in v0.2.6."
-            ))
-        }
-        # return
-        if ("return" %in% names(call)) {
-            stop(paste(
-                "`return` argument is defunct.",
-                "Use a separation coercion call after the return instead",
-                "(e.g. `as.data.frame()`)."
-            ))
-        }
-        # nocov end
-
-        colData(object)
-    }
+    f = "sampleData",
+    signature = signature("SummarizedExperiment"),
+    definition = sampleData.SummarizedExperiment
 )
 
 
 
+# Don't run validity checks here.
+sampleData.SingleCellExperiment <-  # nolint
+    function(
+        object,
+        blacklist = c(
+            "^G2M.Score$",
+            "^Phase$",
+            "^S.Score$",
+            "^ident$",
+            "^old.ident$",
+            "^orig.ident$",
+            "^res[.0-9]+$"
+        )
+    ) {
+        assert(isCharacter(blacklist))
+        data <- colData(object)
+
+        # Require `sampleID` and `sampleName` columns.
+        # Note that `SummarizedExperiment` method differs but not requiring
+        # the `sampleID` column, which are the `colnames` of the object.
+        # `SingleCellExperiment` maps cells to `colnames` instead of samples.
+        if (!"sampleID" %in% colnames(data)) {
+            data[["sampleID"]] <- factor("unknown")
+        }
+        if (!"sampleName" %in% colnames(data)) {
+            data[["sampleName"]] <- data[["sampleID"]]
+        }
+
+        # Sample-level columns -------------------------------------------------
+        nSamples <- length(unique(data[["sampleID"]]))
+        assert(all(isPositive(nSamples)))
+
+        # Drop any blacklisted columns.
+        keep <- !grepl(
+            pattern = paste(blacklist, collapse = "|"),
+            x = colnames(data)
+        )
+        data <- data[, keep, drop = FALSE]
+
+        # Keep columns that have fewer uniques than the number of samples.
+        keep <- vapply(
+            X = data,
+            FUN = function(x) {
+                length(unique(x)) <= nSamples
+            },
+            FUN.VALUE = logical(1L)
+        )
+        data <- data[, keep, drop = FALSE]
+
+        # For columns that have the same number of uniques, they need to match
+        # our `sampleID` column factor levels exactly. Create a factor integer
+        # table to check for this.
+        subset <- data[
+            ,
+            vapply(
+                X = data,
+                FUN = function(x) {
+                    length(unique(x)) == nSamples
+                },
+                FUN.VALUE = logical(1L)
+            ),
+            drop = FALSE
+            ]
+        # Make the factor integer table.
+        factortbl <- subset %>%
+            as_tibble(rownames = NULL) %>%
+            mutate_all(as.factor) %>%
+            mutate_all(as.integer)
+        trash <- !vapply(
+            X = factortbl,
+            FUN = function(x) {
+                identical(x, factortbl[["sampleID"]])
+            },
+            FUN.VALUE = logical(1L)
+        )
+        keep <- setdiff(colnames(data), names(trash[trash]))
+        data <- data[, keep, drop = FALSE]
+
+        # Collapse and set the rownames to `sampleID`.
+        rownames(data) <- NULL
+        data <- unique(data)
+        if (
+            nrow(data) > nSamples ||
+            any(duplicated(data[["sampleID"]]))
+        ) {
+            stop(paste(
+                "Failed to collapse `colData` to sample level.",
+                "Check these columns:", toString(colnames(data))
+            ))
+        }
+        rownames(data) <- data[["sampleID"]]
+        data[["sampleID"]] <- NULL
+        # Return sorted by `sampleID`.
+        data <- data[rownames(data), , drop = FALSE]
+
+        # Generate `interestingGroups` column.
+        data[["interestingGroups"]] <- NULL
+        data <- uniteInterestingGroups(
+            object = data,
+            interestingGroups = matchInterestingGroups(object)
+        )
+
+        data
+    }
+
+
+
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleData<-",
-    signature(
+    f = "sampleData",
+    signature = signature("SingleCellExperiment"),
+    definition = sampleData.SingleCellExperiment
+)
+
+
+
+`sampleData<-.SummarizedExperiment` <-  # nolint
+    function(object, value) {
+        # Don't allow blacklisted columns.
+        value[["interestingGroups"]] <- NULL
+        value[["rowname"]] <- NULL
+        value[["sampleID"]] <- NULL
+        # Now safe to assign and return.
+        colData(object) <- value
+        validObject(object)
+        object
+    }
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleData<-",
+    signature = signature(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
+    definition = `sampleData<-.SummarizedExperiment`
+)
+
+
+
+`sampleData<-.SingleCellExperiment` <-  # nolint
     function(object, value) {
+        assert(is(value, "DataFrame"))
+
+        # Remove legacy `sampleData` in metadata, if defined.
+        if (!is.null(metadata(object)[["sampleData"]])) {
+            message("Removed legacy sampleData in metadata() slot.")
+            metadata(object)[["sampleData"]] <- NULL
+        }
+
+        # Don't allow blacklisted columns.
+        value[["interestingGroups"]] <- NULL
+        value[["rowname"]] <- NULL
+        value[["sampleID"]] <- NULL
+
+        # Generate `sampleID` column.
+        assert(hasRownames(value))
+        value[["sampleID"]] <- as.factor(rownames(value))
+
+        # Update colData slot.
+        colData <- colData(object)
+        assert(isSubset("sampleID", colnames(colData)))
+        colData <- colData[
+            ,
+            c("sampleID", setdiff(colnames(colData), colnames(value))),
+            drop = FALSE
+        ]
+
+        # Join the sample-level metadata into cell-level colData.
+        # Use BiocTibble left_join DataFrame method here.
+        join <- left_join(
+            x = as_tibble(colData, rownames = "rowname"),
+            y = as_tibble(value, rownames = NULL),
+            by = "sampleID"
+        )
+        value <- as(join, "DataFrame")
+        assert(hasRownames(value))
         colData(object) <- value
+
         object
     }
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleData<-",
+    signature = signature(
+        object = "SingleCellExperiment",
+        value = "DataFrame"
+    ),
+    definition = `sampleData<-.SingleCellExperiment`
 )

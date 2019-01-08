@@ -1,76 +1,75 @@
-#' Remove Rows and Columns Containing Only `NA` Values
-#'
 #' @name removeNA
-#' @family Sanitization Functions
-#' @author Michael Steinbaugh
-#'
-#' @inheritParams general
-#'
-#' @return Sanitized object.
-#'
+#' @inherit bioverbs::removeNA
+#' @inheritParams params
 #' @examples
-#' # matrix ====
-#' x <- matrix(
+#' ## atomic ====
+#' removeNA(c("hello", "world", NA))
+#' removeNA(c(1, 2, NA))
+#'
+#' ## matrix ====
+#' from <- matrix(
 #'     data = c(1, NA, 3, NA, NA, NA, 2, NA, 4),
 #'     nrow = 3,
 #'     ncol = 3
 #' )
-#' print(x)
-#' removeNA(x)
+#' print(from)
+#' to <- removeNA(from)
+#' print(to)
 #'
-#' # data.frame ====
-#' x <- data.frame(
+#' ## DataFrame ====
+#' from <- S4Vectors::DataFrame(
 #'     a = c("A", NA, "C"),
 #'     b = c(NA, NA, NA),
-#'     c = c("B", NA, "D"),
-#'     stringsAsFactors = FALSE
+#'     c = c("B", NA, "D")
 #' )
-#' print(x)
-#' removeNA(x)
-#'
-#' # atomic ====
-#' removeNA(c("hello", "world", NA))
-#' removeNA(c(1, 2, NA))
+#' print(from)
+#' to <- removeNA(from)
+#' print(to)
 NULL
 
 
 
-#' @rdname removeNA
+#' @importFrom bioverbs removeNA
+#' @aliases NULL
 #' @export
-setMethod(
-    "removeNA",
-    signature("ANY"),
-    function(object) {
-        object  # nocov
-    }
-)
+bioverbs::removeNA
 
 
 
-#' @rdname removeNA
-#' @export
-setMethod(
-    "removeNA",
-    signature("atomic"),
+removeNA.atomic <-  # nolint
     function(object) {
         na.omit(object)
     }
-)
 
 
 
 #' @rdname removeNA
 #' @export
 setMethod(
-    "removeNA",
-    signature("matrix"),
+    f = "removeNA",
+    signature = signature("atomic"),
+    definition = removeNA.atomic
+)
+
+
+
+removeNA.matrix <-  # nolint
     function(object) {
         object %>%
-            # Drop rows that are all `NA`
+            # Drop rows that are all `NA`.
             .[apply(., 1L, function(a) !all(is.na(a))), , drop = FALSE] %>%
-            # Drop columns that are all `NA`
+            # Drop columns that are all `NA`.
             .[, apply(., 2L, function(a) !all(is.na(a))), drop = FALSE]
     }
+
+
+
+#' @rdname removeNA
+#' @export
+setMethod(
+    f = "removeNA",
+    signature = signature("matrix"),
+    definition = removeNA.matrix
 )
 
 
@@ -78,9 +77,9 @@ setMethod(
 #' @rdname removeNA
 #' @export
 setMethod(
-    "removeNA",
-    signature("data.frame"),
-    getMethod("removeNA", "matrix")
+    f = "removeNA",
+    signature = signature("sparseMatrix"),
+    definition = removeNA.matrix
 )
 
 
@@ -88,7 +87,17 @@ setMethod(
 #' @rdname removeNA
 #' @export
 setMethod(
-    "removeNA",
-    signature("DataFrame"),
-    getMethod("removeNA", "matrix")
+    f = "removeNA",
+    signature = signature("data.frame"),
+    definition = removeNA.matrix
+)
+
+
+
+#' @rdname removeNA
+#' @export
+setMethod(
+    f = "removeNA",
+    signature = signature("DataFrame"),
+    definition = removeNA.matrix
 )

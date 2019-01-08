@@ -2,40 +2,28 @@
 % Please edit documentation in R/matchInterestingGroups.R
 \name{matchInterestingGroups}
 \alias{matchInterestingGroups}
-\title{Match Interesting Groups}
+\title{Match interesting groups}
 \usage{
-matchInterestingGroups(object, interestingGroups, ...)
+matchInterestingGroups(object, interestingGroups = NULL)
 }
 \arguments{
-\item{object}{Object.}
+\item{object}{\code{SummarizedExperiment}.}
 
-\item{interestingGroups}{\code{character}. Groups of interest.}
-
-\item{...}{Additional arguments.}
+\item{interestingGroups}{\code{character}.
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 }
 \value{
 \code{character}.
+Interesting groups.
 }
 \description{
-Match Interesting Groups
+Match the user-defined interesting groups to the values slotted within a
+\code{SummarizedExperiment} object, and check that they are valid. Otherwise
+supports a missing \code{interestingGroups} argument, which will then use the
+\code{interestingGroups} accessor function internally.
 }
 \examples{
-matchInterestingGroups(rse_bcb)
-matchInterestingGroups(rse_bcb, interestingGroups = NULL)
-matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
+data(rse)
+matchInterestingGroups(rse)
 }
-\seealso{
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{methodFormals}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}},
-  \code{\link{uniteInterestingGroups}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Developer Functions}

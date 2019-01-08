@@ -1,20 +1,18 @@
-#' Detect HPC Environment
+#' Detect HPC environment
 #'
 #' Detect if R is running on a high-performance computing (HPC) cluster.
 #'
-#' @family Developer Functions
-#' @author Michael Steinbaugh
+#' @note Currently supports detection of Slurm or LSF.
 #'
-#' @note Currently supports detection of
-#'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
-#'
-#' @return Scheduler name `string` if HPC is detected (e.g. LSF, SLURM),
-#'   otherwise `FALSE`.
 #' @export
 #'
+#' @return `character(1)` or `logical(1)`.
+#'   Workload manager (scheduler) name if HPC is detected (e.g. `"SLURM"` or
+#'   `"LSF"`), otherwise `FALSE`.
+#'
 #' @seealso
-#' - `Sys.getenv()`.
-#' - `Sys.info()`.
+#' - `Sys.getenv`.
+#' - `Sys.info`.
 #' - `R.version`.
 #' - `.Platform`.
 #'
