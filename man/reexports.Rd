@@ -26,7 +26,6 @@
 \alias{as.SummarizedExperiment}
 \alias{as_tibble}
 \alias{atomize}
-\alias{coerce}
 \alias{coerceS4ToList}
 \alias{factorize}
 \alias{flatFiles}
@@ -86,7 +85,7 @@ below to see their documentation.
 
   \item{methods}{\code{\link[methods]{show}}}
 
-  \item{S4Transformer}{\code{\link[S4Transformer]{as.data.frame}}, \code{\link[S4Transformer]{as.SummarizedExperiment}}, \code{\link[S4Transformer]{as_tibble}}, \code{\link[S4Transformer]{atomize}}, \code{\link[S4Transformer]{coerce}}, \code{\link[S4Transformer]{coerceS4ToList}}, \code{\link[S4Transformer]{factorize}}, \code{\link[S4Transformer]{flatFiles}}}
+  \item{S4Transformer}{\code{\link[S4Transformer]{as.data.frame}}, \code{\link[S4Transformer]{as.SummarizedExperiment}}, \code{\link[S4Transformer]{as_tibble}}, \code{\link[S4Transformer]{atomize}}, \code{\link[S4Transformer]{coerceS4ToList}}, \code{\link[S4Transformer]{factorize}}, \code{\link[S4Transformer]{flatFiles}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{decode}}}
 

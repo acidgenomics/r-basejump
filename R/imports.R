@@ -96,9 +96,11 @@ S4Transformer::as_tibble
 #' @export
 S4Transformer::atomize
 
+#' @name coerce
 #' @importFrom S4Transformer coerce
 #' @export
-S4Transformer::coerce
+#' @noRd
+NULL
 
 #' @importFrom S4Transformer coerceS4ToList
 #' @export
