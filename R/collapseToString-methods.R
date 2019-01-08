@@ -1,24 +1,24 @@
-#' Collapse to String
-#'
 #' @name collapseToString
-#' @family Sanitization Functions
-#' @author Michael Steinbaugh
+#' @inherit bioverbs::collapseToString
+#' @inheritParams params
 #'
-#' @inheritParams general
-#' @param sep `string`. Separator. Defaults to comma.
-#' @param unique `boolean`. Unique values.
-#' @param sort `boolean`. Sort values.
-#' @param removeNA `boolean`. Remove NA values.
+#' @param sep `character(1)`.
+#'   Separator. Defaults to comma.
+#' @param unique `logical(1)`.
+#'   Unique values.
+#' @param sort `logical(1)`.
+#'   Sort values.
+#' @param removeNA `logical(1)`.
+#'   Remove NA values.
+#'
+#' @seealso `toString`.
 #'
 #' @return
-#' - For `atomic`: `string`.
-#' - For column data: Object collapsed to a single row.
-#'
-#' @seealso
-#' - [base::toString()].
+#' - `atomic`: `character(1)`.
+#' - `dim`: Object of same class, collapsed to a single row.
 #'
 #' @examples
-#' # character ====
+#' ## character ====
 #' groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 #' collapseToString(
 #'     groceries,
@@ -33,16 +33,15 @@
 #'     removeNA = FALSE
 #' )
 #'
-#' # numeric ====
+#' ## numeric ====
 #' collapseToString(seq(1:5))
 #'
-#' # logical ====
+#' ## logical ====
 #' collapseToString(c(TRUE, FALSE))
 #' collapseToString(c(NA, NaN))
 #'
-#' # data.frame ====
-#' # Objects supporting `dim` function similarly
-#' ggplot2::mpg %>%
+#' ## data.frame ====
+#' datasets::iris %>%
 #'     head() %>%
 #'     collapseToString(sort = TRUE, unique = TRUE) %>%
 #'     t()
@@ -50,93 +49,107 @@ NULL
 
 
 
-.collapseToString <- function(
-    object,
-    sep = ", ",
-    sort = FALSE,
-    removeNA = FALSE,
-    unique = FALSE
-) {
-    assert_is_any_of(object, c("factor", "vector"))
-    # Early return unmodified if scalar
-    if (is_scalar(object)) {
-        return(object)
-    }
-    assert_is_a_string(sep)
-    assert_is_a_bool(unique)
-    assert_is_a_bool(sort)
+#' @importFrom bioverbs collapseToString
+#' @aliases NULL
+#' @export
+bioverbs::collapseToString
 
-    # Sort, if desired
-    if (isTRUE(sort)) {
-        object <- sort(object, na.last = TRUE)
-    }
 
-    # Remove NA values, if desired
-    if (!all(is.na(object))) {
-        if (isTRUE(removeNA)) {
-            object <- na.omit(object)
-        } else {
-            object <- str_replace_na(object)
+
+collapseToString.atomic <-  # nolint
+    function(
+        object,
+        sep = ", ",
+        sort = FALSE,
+        removeNA = FALSE,
+        unique = FALSE
+    ) {
+        assert(
+            isAny(object, classes = c("character", "factor", "vector")),
+            isString(sep),
+            isFlag(unique),
+            isFlag(sort)
+        )
+
+        # Early return unmodified if scalar.
+        if (isScalar(object)) {
+            return(object)
         }
+
+        # Sort, if desired.
+        if (isTRUE(sort)) {
+            object <- sort(object, na.last = TRUE)
+        }
+
+        # Remove NA values, if desired.
+        if (!all(is.na(object))) {
+            if (isTRUE(removeNA)) {
+                object <- removeNA(object)
+            } else {
+                object <- sanitizeNA(object)
+            }
+        }
+
+        # Make unique, if desired.
+        if (isTRUE(unique)) {
+            object <- unique(object)
+        }
+
+        object %>%
+            as.character() %>%
+            paste(collapse = sep)
     }
-
-    # Make unique, if desired
-    if (isTRUE(unique)) {
-        object <- unique(object)
-    }
-
-    object %>%
-        as.character() %>%
-        paste(collapse = sep)
-}
-
-
-
-.collapseToString.dim <- function(  # nolint
-    object,
-    sep = ", ",
-    sort = FALSE,
-    removeNA = FALSE,
-    unique = FALSE
-) {
-    # Passthrough: sep, unique, sort
-    assert_has_dims(object)
-
-    # Stash original class and coerce to data.frame, if necessary
-    if (!is.data.frame(object)) {
-        class <- class(object)[[1L]]
-        object <- as.data.frame(object)
-    } else {
-        class <- NULL
-    }
-
-    collapse <- object %>%
-        mutate_all(funs(fixNA)) %>%
-        summarize_all(funs(
-            .collapseToString(
-                object = .,
-                sep = sep,
-                sort = sort,
-                removeNA = removeNA,
-                unique = unique
-            )
-        ))
-
-    if (!is.null(class)) {
-        as(collapse, class)
-    } else {
-        collapse
-    }
-}
 
 
 
 #' @rdname collapseToString
 #' @export
 setMethod(
-    "collapseToString",
-    signature("atomic"),
-    .collapseToString
+    f = "collapseToString",
+    signature = signature("atomic"),
+    definition = collapseToString.atomic
+)
+
+
+
+collapseToString.matrix <-  # nolint
+    function(
+        object,
+        sep = ", ",
+        sort = FALSE,
+        removeNA = FALSE,
+        unique = FALSE
+    ) {
+        # Passthrough to atomic method: sep, unique, sort.
+        assert(hasLength(object))
+
+        # Coerce to tibble to perform the collapse.
+        collapse <- object %>%
+            as.data.frame() %>%
+            as_tibble(rownames = NULL) %>%
+            mutate_all(funs(sanitizeNA)) %>%
+            summarise_all(funs(
+                collapseToString(
+                    object = .,
+                    sep = sep,
+                    sort = sort,
+                    removeNA = removeNA,
+                    unique = unique
+                )
+            ))
+
+        # Coerce collapsed tibble back to original object class.
+        as(object = collapse, Class = class(object)[[1L]])
+    }
+
+
+
+#' @rdname collapseToString
+#' @export
+setMethod(
+    f = "collapseToString",
+    signature = signature("matrix"),
+    definition = collapseToString.matrix
 )
 
 
@@ -144,9 +157,9 @@ setMethod(
 #' @rdname collapseToString
 #' @export
 setMethod(
-    "collapseToString",
-    signature("data.frame"),
-    .collapseToString.dim
+    f = "collapseToString",
+    signature = signature("data.frame"),
+    definition = collapseToString.matrix
 )
 
 
@@ -154,17 +167,7 @@ setMethod(
 #' @rdname collapseToString
 #' @export
 setMethod(
-    "collapseToString",
-    signature("DataFrame"),
-    .collapseToString.dim
-)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("matrix"),
-    .collapseToString.dim
+    f = "collapseToString",
+    signature = signature("DataFrame"),
+    definition = collapseToString.matrix
 )

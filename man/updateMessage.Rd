@@ -3,13 +3,13 @@
 \docType{data}
 \name{updateMessage}
 \alias{updateMessage}
-\title{Update Message}
+\title{Update message}
 \format{An object of class \code{character} of length 1.}
 \usage{
 updateMessage
 }
 \description{
-Update Message
+Update message
 }
 \examples{
 message(updateMessage)

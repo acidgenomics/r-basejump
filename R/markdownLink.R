@@ -1,18 +1,17 @@
-#' Markdown Link
+#' Markdown hyperlink
 #'
-#' For use in 'asis' blocks only.
-#'
-#' @family R Markdown Functions
-#' @author Rory Kirchner, Michael Steinbaugh
+#' For use in `asis` blocks only.
 #'
 #' @inherit markdownHeader
+#' @author Rory Kirchner, Michael Steinbaugh
+#' @export
 #'
-#' @param url `string`. URL.
-#' @param title `string` or `NULL`. Link title attribute. This will appear in a
-#'   mouse-over pop-up box.
+#' @param url `character(1)`.
+#'   URL.
+#' @param title `character(1)` or `NULL`.
+#'   Link title attribute. This will appear in a mouse-over pop-up box.
 #'
 #' @return Markdown-formatted link.
-#' @export
 #'
 #' @examples
 #' markdownLink(
@@ -25,9 +24,11 @@ markdownLink <- function(
     url,
     title = NULL
 ) {
-    assert_is_a_string(text)
-    assert_is_a_string(url)
-    assertIsAStringOrNULL(title)
+    assert(
+        isString(text),
+        isString(url),
+        isString(title, nullOK = TRUE)
+    )
     x <- paste0("[", text, "](", url, ")")
     if (!is.null(title)) {
         x <- paste0(x, ": ", title)
@@ -37,7 +38,7 @@ markdownLink <- function(
 
 
 
-#' @rdname markdownHeader
+#' @rdname markdownLink
 #' @usage NULL
 #' @export
-markdownLink -> mdLink
+mdLink <- markdownLink

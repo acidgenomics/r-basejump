@@ -1,31 +1,30 @@
-#' Gene Synonyms
+#' Gene synonyms
 #'
 #' Look up gene synonyms from NCBI.
 #'
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
-#' Use the wormbase package instead.
+#' Use the [wormbase](https://steinbaugh.com/wormbase/) package instead.
 #'
-#' @author Michael Steinbaugh
-#' @family Annotation Functions
-#'
-#' @param organism `string`. Spported organisms: *Homo sapiens*, *Mus musculus*,
-#'   *Drosophila melanogaster*.
-#'
-#' @return `grouped_df`, grouped by `geneID` column.
 #' @export
 #'
+#' @inheritParams params
+#' @param organism `character(1)`.
+#'   Supported organisms:
+#'
+#'   - *Homo sapiens*
+#'   - *Mus musculus*,
+#'   - *Drosophila melanogaster*.
+#'
+#' @return `grouped_df`.
+#' Grouped by `geneID` column.
+#'
 #' @examples
+#' options(basejump.test = TRUE)
 #' x <- geneSynonyms(organism = "Homo sapiens")
-#' glimpse(x)
-geneSynonyms <- function(
-    organism = c(
-        "Homo sapiens",
-        "Mus musculus",
-        "Drosophila melanogaster"
-    )
-) {
-    stopifnot(has_internet())
-    organism <- match.arg(organism)
+#' print(x)
+geneSynonyms <- function(organism) {
+    assert(hasInternet())
+    organism <- match.arg(arg = organism, choices = .geneSynonymsOrganisms)
 
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
@@ -37,18 +36,27 @@ geneSynonyms <- function(
 
     genome <- c(kingdom = kingdom, species = species)
 
-    data <- read_tsv(
-        file = paste(
-            "ftp://ftp.ncbi.nih.gov",
+    if (isTRUE(getOption("basejump.test"))) {
+        assert(organism == "Homo sapiens")
+        file <- pasteURL(
+            basejumpCacheURL,
+            paste0(snake(organism), ".gene_info.gz"),
+            protocol = "none"
+        )
+    } else {
+        file <- pasteURL(
+            "ftp.ncbi.nih.gov",
             "gene",
             "DATA",
             "GENE_INFO",
             genome[["kingdom"]],
             paste0(genome[["species"]], ".gene_info.gz"),
-            sep = "/"
+            protocol = "ftp"
         )
-    )
-    assert_is_non_empty(data)
+    }
+
+    data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
+    assert(hasLength(data))
 
     data <- data %>%
         camel() %>%
@@ -60,7 +68,7 @@ geneSynonyms <- function(
         ) %>%
         mutate(synonyms = str_replace_all(!!sym("synonyms"), "\\|", ", "))
 
-    # Sanitize the identifiers
+    # Sanitize the identifiers.
     if (organism == "Drosophila melanogaster") {
         data <- mutate(
             data,
@@ -79,3 +87,12 @@ geneSynonyms <- function(
         arrange(!!sym("geneID")) %>%
         group_by(!!sym("geneID"))
 }
+
+
+
+# Using this for parameterized unit testing.
+.geneSynonymsOrganisms <- c(
+    "Homo sapiens",
+    "Mus musculus",
+    "Drosophila melanogaster"
+)

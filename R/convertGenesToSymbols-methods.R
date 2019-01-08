@@ -1,175 +1,184 @@
-#' Convert Ensembl Identifiers to Gene Symbols
-#'
 #' @name convertGenesToSymbols
-#' @family Annotation Functions
-#' @author Michael Steinbaugh
+#' @inherit bioverbs::convertGenesToSymbols
+#' @inheritParams params
 #'
-#' @inheritParams makeGRangesFromEnsembl
-#' @inheritParams general
-#' @param gene2symbol `data.frame` or `NULL`. Gene-to-symbol mappings. If set
-#'   `NULL`, the function will attempt to download the mappings from Ensembl
-#'   automatically.
-#' @param ... Passthrough to [makeGene2symbolFromEnsembl()].
-#'
-#' @return Same class as original object.
+#' @return Modified object of same class.
 #'
 #' @examples
-#' # character ====
-#' x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-#' convertGenesToSymbols(x)
+#' data(rse)
+#' object <- rse
 #'
-#' # matrix ====
-#' mat <- matrix(
-#'     data = seq(1L:4L),
-#'     byrow = TRUE,
-#'     nrow = 2L,
-#'     ncol = 2L,
-#'     dimnames = list(
-#'         c("ENSMUSG00000000001", "ENSMUSG00000000003"),
-#'         c("sample_1", "sample_2")
-#'     )
-#' )
-#' print(mat)
-#' mat <- convertGenesToSymbols(mat)
-#' print(mat)
-#' rownames(mat)
+#' g2s <- Gene2Symbol(object)
+#' print(g2s)
+#' genes <- head(g2s[["geneID"]])
+#' print(genes)
 #'
-#' # SummarizedExperiment ====
-#' x <- convertGenesToSymbols(rse_bcb)
+#' ## character ====
+#' x <- convertGenesToSymbols(genes, gene2symbol = g2s)
 #' print(x)
 #'
+#' ## matrix ====
+#' samples <- head(colnames(object))
+#' counts <- matrix(
+#'     data = seq_len(length(genes) * length(samples)),
+#'     byrow = TRUE,
+#'     nrow = length(genes),
+#'     ncol = length(samples),
+#'     dimnames = list(genes, samples)
+#' )
+#' print(counts)
+#' x <- convertGenesToSymbols(counts, gene2symbol = g2s)
+#' print(x)
+#'
+#' ## SummarizedExperiment ====
+#' x <- convertGenesToSymbols(rse)
+#' print(x)
+#' ## Interconvert back to gene IDs.
 #' y <- convertSymbolsToGenes(x)
 #' print(y)
 NULL
 
 
 
-#' @rdname convertGenesToSymbols
+#' @importFrom bioverbs convertGenesToSymbols
+#' @aliases NULL
 #' @export
-setMethod(
-    "convertGenesToSymbols",
-    signature("character"),
-    function(
-        object,
-        gene2symbol = NULL,
-        ...
-    ) {
-        # Allowing duplicates here (unlike convertTranscriptsToGenes)
-        assert_all_are_non_missing_nor_empty_character(object)
-        assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
-        args <- list(...)
-        organism <- args[["organism"]]
+bioverbs::convertGenesToSymbols
 
-        # If no gene2symbol is provided, fall back to using Ensembl annotations
-        if (is.null(gene2symbol)) {
-            message("Obtaining gene-to-symbol mappings from Ensembl")
-            if (is.null(organism)) {
-                organism <- detectOrganism(object, unique = TRUE)
-            }
-            assert_is_a_string(organism)
-            message(paste(organism, "genes detected"))
-            args[["organism"]] <- organism
-            gene2symbol <- do.call(
-                what = makeGene2symbolFromEnsembl,
-                args = args
-            )
-        }
-        assertIsGene2symbol(gene2symbol)
+#' @importFrom bioverbs convertSymbolsToGenes
+#' @aliases NULL
+#' @export
+bioverbs::convertSymbolsToGenes
 
+
+
+# convertGenesToSymbols ========================================================
+# Allowing duplicates here (unlike convertTranscriptsToGenes).
+convertGenesToSymbols.character <-  # nolint
+    function(object, gene2symbol) {
+        assert(
+            isCharacter(object),
+            is(gene2symbol, "Gene2Symbol")
+        )
+        validObject(gene2symbol)
+
+        # Arrange the gene2symbol to match the input.
         gene2symbol <- gene2symbol[
-            match(object, gene2symbol[["geneID"]]),
+            match(x = object, table = gene2symbol[["geneID"]]),
             ,
             drop = FALSE
         ]
 
-        return <- gene2symbol[["geneName"]]
-        names(return) <- gene2symbol[["geneID"]]
+        out <- gene2symbol[["geneName"]]
+        names(out) <- gene2symbol[["geneID"]]
 
         missing <- setdiff(object, gene2symbol[["geneID"]])
-        if (length(missing)) {
-            warning(paste("Failed to match genes:", toString(missing)))
+        if (length(missing) > 0L) {
+            warning(paste(
+                "Failed to match genes:", toString(missing)
+            ), call. = FALSE)
             names(missing) <- missing
-            return <- c(return, missing)
+            out <- c(out, missing)
         }
 
-        return[object]
+        out[object]
     }
-)
 
 
 
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("matrix"),
-    function(object, ...) {
-        rownames <- convertGenesToSymbols(rownames(object), ...)
-        rownames(object) <- rownames
+    f = "convertGenesToSymbols",
+    signature = signature("character"),
+    convertGenesToSymbols.character
+)
+
+
+
+convertGenesToSymbols.matrix <-  # nolint
+    function(object, gene2symbol) {
+        g2s <- do.call(
+            what = convertGenesToSymbols,
+            args = list(
+                object = rownames(object),
+                gene2symbol = gene2symbol
+            )
+        )
+        rownames(object) <- as.character(g2s)
         object
     }
-)
 
 
 
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("data.frame"),
-    getMethod("convertGenesToSymbols", "matrix")
+    f = "convertGenesToSymbols",
+    signature = signature("matrix"),
+    definition = convertGenesToSymbols.matrix
 )
 
 
+convertGenesToSymbols.sparseMatrix <-  # nolint
+    convertGenesToSymbols.matrix
 
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("DataFrame"),
-    getMethod("convertGenesToSymbols", "matrix")
+    f = "convertGenesToSymbols",
+    signature = signature("sparseMatrix"),
+    definition = convertGenesToSymbols.sparseMatrix
 )
 
 
 
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    "convertGenesToSymbols",
-    signature("dgCMatrix"),
-    getMethod("convertGenesToSymbols", "matrix")
-)
-
-
-
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    "convertGenesToSymbols",
-    signature("dgTMatrix"),
-    getMethod("convertGenesToSymbols", "matrix")
-)
-
-
-
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    "convertGenesToSymbols",
-    signature("SummarizedExperiment"),
+convertGenesToSymbols.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
-        gene2symbol <- gene2symbol(object)
-        if (is.null(gene2symbol)) {
-            return(object)
+        g2s <- Gene2Symbol(object)
+        symbols <- g2s[["geneName"]]
+        assert(hasNoDuplicates(symbols))
+        # Update the object rownames.
+        rownames(object) <- as.character(symbols)
+        # Ensure all names get updated correctly.
+        if (is(object, "RangedSummarizedExperiment")) {
+            assert(identical(rownames(object), names(rowRanges(object))))
         }
-        # Ensure factors get coerced to character.
-        # Note that ".1" will be added here for duplicate gene symbols.
-        symbols <- gene2symbol %>%
-            .[, "geneName", drop = TRUE] %>%
-            as.character() %>%
-            make.unique()
-        rownames(object) <- symbols
         object
     }
+
+
+
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertGenesToSymbols",
+    signature = signature("SummarizedExperiment"),
+    definition = convertGenesToSymbols.SummarizedExperiment
+)
+
+
+
+# convertSymbolsToGenes ========================================================
+convertSymbolsToGenes.SummarizedExperiment <-  # nolint
+    function(object) {
+        validObject(object)
+        g2s <- Gene2Symbol(object)
+        assert(
+            identical(rownames(object), g2s[["geneName"]]),
+            hasNoDuplicates(g2s[["geneID"]])
+        )
+        rownames(object) <- as.character(g2s[["geneID"]])
+        object
+    }
+
+
+
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertSymbolsToGenes",
+    signature = signature("SummarizedExperiment"),
+    definition = convertSymbolsToGenes.SummarizedExperiment
 )

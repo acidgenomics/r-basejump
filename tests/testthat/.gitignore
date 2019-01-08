@@ -1,16 +1,8 @@
-_*.R
-*.bib
-*.colnames
-*.counts
-*.csv
-*.gff3
-*.gtf
-*.gz
-*.json
-*.mtx
+example.*
 *.rda
 *.rds
-*.Rmd
+*.gz
+*.colnames
 *.rownames
 *.tsv
 *.txt
@@ -18,4 +10,3 @@ _*.R
 *.yaml
 *.yml
 */
-example.*

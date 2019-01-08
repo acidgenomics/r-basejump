@@ -2,40 +2,30 @@
 % Please edit documentation in R/multiassignAsEnvir.R
 \name{multiassignAsEnvir}
 \alias{multiassignAsEnvir}
-\title{Assign Multiple Objects as an Environment}
+\title{Assign multiple objects into a new environment}
 \usage{
-multiassignAsEnvir(..., envirName, parentEnvir = parent.frame())
+multiassignAsEnvir(..., envirName, parentFrame = parent.frame())
 }
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{envirName}{\code{string}. Name of the new \code{environment} to create.}
+\item{envirName}{\code{character(1)}.
+Name of the new \code{environment} to create.}
 
-\item{parentEnvir}{\code{environment}. Parent \code{environment} where to assign the
-new \code{environment}, specified by \code{envirName} argument.}
+\item{parentFrame}{\code{environment}.
+Parent \code{environment} where to assign the new \code{environment}, specified by
+\code{envirName} argument.}
 }
 \value{
-\code{character} vector of object names in the new \code{environment}.
+\code{character}.
+Object names defined in the new \code{environment}.
 }
 \description{
-Assign Multiple Objects as an Environment
+Assign multiple objects into a new environment
 }
 \examples{
-multiassignAsEnvir(rnaseq_counts, single_cell_counts, envirName = "example")
+data(rse, sce)
+multiassignAsEnvir(rse, sce, envirName = "example")
 class(example)
 ls(example)
 }
-\seealso{
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}}, \code{\link{printString}},
-  \code{\link{uniteInterestingGroups}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Developer Functions}

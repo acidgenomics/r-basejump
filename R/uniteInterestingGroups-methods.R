@@ -1,80 +1,52 @@
-#' Unite Interesting Groups
-#'
-#' Create a single interesting groups column ("`interestingGroups`") used for
-#' coloring in plots. When multiple interesting groups are present, unite into a
-#' single column, delimited by a colon.
-#'
 #' @name uniteInterestingGroups
-#' @family Developer Functions
-#' @author Michael Steinbaugh
-#'
-#' @inheritParams general
-#' @param object Object containing multiple interesting groups.
-#'
-#' @return Data frame containing an `interestingGroups` column.
-#' @export
-#'
+#' @inherit bioverbs::uniteInterestingGroups
+#' @inheritParams params
 #' @examples
-#' x <- sampleData(rse_bcb)
-#' y <- uniteInterestingGroups(x, interestingGroups = c("treatment", "day"))
-#' y[["interestingGroups"]]
+#' data(rse)
+#' object <- rse
+#' from <- sampleData(object)
+#' to <- uniteInterestingGroups(
+#'     object = from,
+#'     interestingGroups = interestingGroups(object)
+#' )
+#' print(to)
 NULL
 
 
 
-#' @rdname uniteInterestingGroups
+#' @importFrom bioverbs uniteInterestingGroups
+#' @aliases NULL
 #' @export
-setMethod(
-    "uniteInterestingGroups",
-    signature("data.frame"),
+bioverbs::uniteInterestingGroups
+
+
+
+uniteInterestingGroups.DataFrame <-  # nolint
     function(object, interestingGroups) {
-        assert_is_character(interestingGroups)
-        assert_is_subset(interestingGroups, colnames(object))
-        # This approach will return numerics for DataFrame class, so
-        # coercing columns to data.frame
-        data <- as.data.frame(object[, interestingGroups, drop = FALSE])
+        assert(isCharacter(interestingGroups))
+        assert(isSubset(interestingGroups, colnames(object)))
+        # Subset to get only the columns of interest.
+        data <- object[, interestingGroups, drop = FALSE]
+        assert(hasLength(data))
+        # This approach will return numerics for `DataFrame` class, so
+        # coercing columns to data.frame.
         value <- apply(
-            X = data,
+            X = as.data.frame(data),
             MARGIN = 1L,
             FUN = paste,
             collapse = ":"
         )
+        names(value) <- NULL
         object[["interestingGroups"]] <- as.factor(value)
         object
     }
-)
 
 
 
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
-    "uniteInterestingGroups",
-    signature("DataFrame"),
-    getMethod("uniteInterestingGroups", "data.frame")
-)
-
-
-
-
-#' @rdname uniteInterestingGroups
-#' @export
-setMethod(
-    "uniteInterestingGroups",
-    signature("tbl_df"),
-    function(object, interestingGroups) {
-        assert_is_character(interestingGroups)
-        assert_is_subset(interestingGroups, colnames(object))
-        object[["interestingGroups"]] <- NULL
-        object <- unite(
-            data = object,
-            col = interestingGroups,
-            !!interestingGroups,
-            sep = ":",
-            remove = FALSE
-        )
-        object[["interestingGroups"]] <-
-            as.factor(object[["interestingGroups"]])
-        object
-    }
+    f = "uniteInterestingGroups",
+    signature = signature("DataFrame"),
+    definition = uniteInterestingGroups.DataFrame
 )

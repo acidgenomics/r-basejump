@@ -1,3 +1,6 @@
+# AppVeyor-CI configuration for Bioconductor packages
+# https://github.com/krlmlr/r-appveyor
+
 init:
   ps: |
         $ErrorActionPreference = "Stop"
@@ -22,7 +25,6 @@ build_script:
   - travis-tool.sh install_bioc DelayedArray
   - travis-tool.sh install_bioc ensembldb
   - travis-tool.sh install_bioc EnsDb.Hsapiens.v75
-  - travis-tool.sh install_github steinbaugh/basejump.data
   - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_deps
 

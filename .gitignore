@@ -1,3 +1,5 @@
+Meta
+doc
 .RData
 .Rhistory
 .Rproj.user
@@ -9,4 +11,5 @@ docs/reference/*.R
 docs/reference/*.Rmd
 docs/reference/*.yaml
 inst/doc/
+.httr-oauth
 *.pdf

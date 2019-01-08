@@ -2,43 +2,44 @@
 % Please edit documentation in R/microplate.R
 \name{microplate}
 \alias{microplate}
-\title{Microtiter Plate Well Identifiers}
+\title{Microtiter plate well identifiers}
 \usage{
 microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 }
 \arguments{
-\item{plates}{\code{scalar integer}. Number of plates.}
+\item{plates}{\code{integer(1)}.
+Number of plates.}
 
-\item{wells}{\code{scalar integer}. Number of wells (\code{96}, \code{384}).}
+\item{wells}{\code{integer(1)}.
+Number of wells (\code{96}, \code{384}).}
 
-\item{controls}{\code{scalar integer}. Number of control wells.}
+\item{controls}{\code{integer(1)}.
+Number of control wells.}
 
-\item{prefix}{\code{string} or \code{NULL}. Plate name prefix.}
+\item{prefix}{\code{character(1)} or \code{NULL}.
+Plate name prefix.}
 }
 \value{
-Character vector containing well identifiers.
+\code{character}.
+Well identifiers.
 }
 \description{
-Microtiter Plate Well Identifiers
+Quickly generate identifiers (with optional prefixes) for 96 and 384 well
+plates.
+}
+\details{
+These plate formats are frequently used for high-throughput screening assays.
 }
 \examples{
-# Single 96-well plate
+## Single 96-well plate.
 microplate(wells = 96L)
 
-# 2 96-well plates
+## 2 96-well plates.
 microplate(plates = 2L, wells = 96L)
 
-# Single 384-well plate
+## Single 384-well plate.
 microplate(wells = 384L)
 
-# 2 96-well plates with 6 control wells per plate
+## 2 96-well plates with 6 control wells per plate.
 microplate(plates = 2L, wells = 96L, controls = 6L)
 }
-\seealso{
-Other Math and Science Functions: \code{\link{foldChangeToLogRatio}},
-  \code{\link{geometricMean}}
-}
-\author{
-Michael Steinbaugh
-}
-\concept{Math and Science Functions}

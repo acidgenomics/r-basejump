@@ -19,7 +19,7 @@ if (!require("BiocManager")) {
     install.packages("BiocManager")
 }
 BiocManager::install("remotes")
-BiocManager::install("steinbaugh/basejump", ref = "v0.7.2")
+BiocManager::install("steinbaugh/basejump")
 ```
 
 For [R][] < 3.5, [BiocManager][] is not supported. Use `BiocInstaller::biocLite()` instead of `BiocManager::install()`. This requires sourcing the legacy [Bioconductor][] `biocLite.R` script.
@@ -60,7 +60,7 @@ Launch [R][] and check that it is set up correctly with the `capabilities()` fun
 Now you're ready to install `r-basejump`.
 
 ```bash
-conda install -c bioconda r-basejump=0.7.2
+conda install -c bioconda r-basejump
 ```
 
 ## References

@@ -1,0 +1,63 @@
+#' Make a `SingleCellExperiment` object
+#'
+#' @inherit makeSummarizedExperiment
+#' @export
+#'
+#' @inheritParams params
+#'
+#' @return `SingleCellExperiment`.
+#'
+#' @examples
+#' data(sce)
+#' object <- sce
+#'
+#' assays <- SummarizedExperiment::assays(object)
+#' rowRanges <- SummarizedExperiment::rowRanges(object)
+#' colData <- SummarizedExperiment::colData(object)
+#' metadata <- S4Vectors::metadata(object)
+#'
+#' x <- makeSingleCellExperiment(
+#'     assays = assays,
+#'     rowRanges = rowRanges,
+#'     colData = colData,
+#'     metadata = metadata
+#' )
+#' print(x)
+makeSingleCellExperiment <- function(
+    assays,
+    rowRanges,
+    colData,
+    metadata,
+    transgeneNames = NULL,
+    spikeNames = NULL
+) {
+    # Make RangedSummarizedExperiment first.
+    # Supports automatic resizing of rowRanges and helps slot FASTA spike-ins.
+    rse <- makeSummarizedExperiment(
+        assays = assays,
+        rowRanges = rowRanges,
+        colData = colData,
+        metadata = metadata,
+        transgeneNames = transgeneNames,
+        spikeNames = spikeNames
+    )
+
+    # Then coerce to SingleCellExperiment.
+    # Note that `as` method isn't currently returning valid.
+    sce <- SingleCellExperiment(
+        assays = assays(rse),
+        rowRanges = rowRanges(rse),
+        colData = colData(rse),
+        metadata = metadata(rse)
+    )
+
+    # Optionally, use `isSpike` internally to define the `spikeNames`.
+    if (is.character(spikeNames)) {
+        for (i in seq_along(spikeNames)) {
+            isSpike(sce, spikeNames[[i]]) <- spikeNames[[i]]
+        }
+    }
+
+    validObject(sce)
+    sce
+}

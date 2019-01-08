@@ -2,43 +2,29 @@
 % Please edit documentation in R/detectHPC.R
 \name{detectHPC}
 \alias{detectHPC}
-\title{Detect HPC Environment}
+\title{Detect HPC environment}
 \usage{
 detectHPC()
 }
 \value{
-Scheduler name \code{string} if HPC is detected (e.g. LSF, SLURM),
-otherwise \code{FALSE}.
+\code{character(1)} or \code{logical(1)}.
+Workload manager (scheduler) name if HPC is detected (e.g. \code{"SLURM"} or
+\code{"LSF"}), otherwise \code{FALSE}.
 }
 \description{
 Detect if R is running on a high-performance computing (HPC) cluster.
 }
 \note{
-Currently supports detection of
-\href{https://rc.hms.harvard.edu/#orchestra}{HMS Orchestra}.
+Currently supports detection of Slurm or LSF.
 }
 \examples{
 detectHPC()
 }
 \seealso{
 \itemize{
-\item \code{Sys.getenv()}.
-\item \code{Sys.info()}.
+\item \code{Sys.getenv}.
+\item \code{Sys.info}.
 \item \code{R.version}.
 \item \code{.Platform}.
 }
-
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{dots}}, \code{\link{flatFiles}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}},
-  \code{\link{uniteInterestingGroups}}
 }
-\author{
-Michael Steinbaugh
-}
-\concept{Developer Functions}

@@ -1,31 +1,64 @@
-#' Interesting Groups
-#'
 #' @name interestingGroups
-#' @author Michael Steinbaugh
-#'
-#' @inheritParams general
-#'
-#' @return `character`.
-#'
+#' @inherit bioverbs::interestingGroups
+#' @inheritParams params
 #' @examples
-#' # SummarizedExperiment ====
-#' interestingGroups(rse_dds)
-#' colnames(colData(rse_dds))
-#' interestingGroups(rse_dds) <- colnames(colData(rse_dds))[[1L]]
-#' interestingGroups(rse_dds)
+#' data(rse)
+#' object <- rse
+#'
+#' intgroup <- interestingGroups(object)
+#' print(intgroup)
+#'
+#' ## Assignment support.
+#' interestingGroups(object) <- intgroup[[1L]]
+#' interestingGroups(object)
 NULL
 
 
 
+#' @importFrom bioverbs interestingGroups
+#' @aliases NULL
+#' @export
+bioverbs::interestingGroups
+
+#' @importFrom bioverbs interestingGroups<-
+#' @aliases NULL
+#' @export
+bioverbs::`interestingGroups<-`
+
+
+
+# Keep `check` disabled by default.
 #' @rdname interestingGroups
 #' @export
 setMethod(
-    "interestingGroups",
-    signature("SummarizedExperiment"),
-    function(object) {
+    f = "interestingGroups",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object, check = FALSE) {
+        assert(isFlag(check))
         value <- metadata(object)[["interestingGroups"]]
-        assertFormalInterestingGroups(object, value)
+        if (isTRUE(check)) {
+            assert(matchesInterestingGroups(object, value))
+        }
         value
+    }
+)
+
+
+
+# We're always checking assignment validity here.
+#' @rdname interestingGroups
+#' @export
+setMethod(
+    f = "interestingGroups<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "character"
+    ),
+    definition = function(object, value) {
+        assert(matchesInterestingGroups(object, value))
+        metadata(object)[["interestingGroups"]] <- value
+        validObject(object)
+        object
     }
 )
 
@@ -34,14 +67,14 @@ setMethod(
 #' @rdname interestingGroups
 #' @export
 setMethod(
-    "interestingGroups<-",
-    signature(
+    f = "interestingGroups<-",
+    signature = signature(
         object = "SummarizedExperiment",
-        value = "character"
+        value = "NULL"
     ),
-    function(object, value) {
-        assertFormalInterestingGroups(object, value)
-        metadata(object)[["interestingGroups"]] <- value
+    definition = function(object, value) {
+        metadata(object)[["interestingGroups"]] <- NULL
+        validObject(object)
         object
     }
 )

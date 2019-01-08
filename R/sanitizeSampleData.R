@@ -1,58 +1,27 @@
-#' Sanitize Sample Data
-#'
-#' @family Sanitization Functions
-#' @author Michael Steinbaugh
-#'
-#' @inheritParams general
-#'
-#' @return Data frame.
+#' Sanitize sample data
 #' @export
-#'
+#' @inheritParams params
 #' @examples
-#' # DataFrame ====
-#' from <- DataFrame(
-#'     genotype = c("wt", "ko", "wt", "ko"),
-#'     batch = c(1L, 1L, 2L, 2L),
-#'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
-#' )
-#' glimpse(from)
+#' data(rse)
+#' from <- sampleData(rse)
+#' print(from)
 #' to <- sanitizeSampleData(from)
-#' glimpse(to)
-#'
-#' # data.frame ====
-#' from <- data.frame(
-#'     genotype = c("wt", "ko", "wt", "ko"),
-#'     batch = c(1L, 1L, 2L, 2L),
-#'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4"),
-#'     stringsAsFactors = FALSE
-#' )
-#' glimpse(from)
-#' to <- sanitizeSampleData(from)
-#' glimpse(to)
+#' all(vapply(to, is.factor, logical(1L)))
+#' print(to)
 sanitizeSampleData <- function(object) {
-    assert_is_any_of(object, c("data.frame", "DataFrame"))
-    assert_is_non_empty(object)
-    assert_has_colnames(object)
-    class <- class(object)[[1L]]
-
-    object <- as(object, "DataFrame")
-    object <- camel(object)
-
-    list <- lapply(
-        X = object,
-        FUN = function(x) {
-            droplevels(as.factor(x))
-        }
+    assert(
+        # Require `sampleName` column.
+        "sampleName" %in% colnames(object),
+        # Check for any duplicate rows.
+        hasNoDuplicates(object[["sampleName"]])
     )
-
-    # DataFrame class supports coercion from list; data.frame does not
-    data <- as(list, "DataFrame")
-
-    # Don't allow manual definition of automatic columns
+    # Drop blacklisted columns.
     blacklist <- c("interestingGroups", "sampleID")
-    data <- data[, setdiff(colnames(data), blacklist), drop = FALSE]
-
-    data <- as(data, class)
-    rownames(data) <- rownames(object)
-    data
+    object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
+    # This will flatten the S4 columns if possible and drop non-atomic.
+    object <- sanitizeColData(object)
+    # Ensure all columns are factors, with up-to-date levels.
+    object <- factorize(object)
+    # Return.
+    object
 }
