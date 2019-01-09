@@ -15,6 +15,10 @@ platform: x64
 # cache:
 #   - C:\RLibrary
 
+branches:
+  only:
+    - master
+
 environment:
   global:
     R_ARCH: x64
