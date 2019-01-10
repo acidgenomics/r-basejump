@@ -34,8 +34,8 @@
   
 <meta property="og:title" content="Return the first and last parts of an object — headtail" />
 
-<meta property="og:description" content="Inspired by the print method for DataFrame class objects. Applies to both
-rows and columns, enabling quick inspection during interactive use." />
+<meta property="og:description" content="Applies to both rows and columns, enabling quick inspection during
+interactive use." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +66,7 @@ rows and columns, enabling quick inspection during interactive use." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
       </span>
     </div>
 
@@ -112,8 +112,8 @@ rows and columns, enabling quick inspection during interactive use." />
 
     <div class="ref-description">
     
-    <p>Inspired by the <code>print</code> method for <code>DataFrame</code> class objects. Applies to both
-rows and columns, enabling quick inspection during interactive use.</p>
+    <p>Applies to both rows and columns, enabling quick inspection during
+interactive use.</p>
     
     </div>
 
@@ -161,6 +161,11 @@ Require separators to use ASCII instead of Unicode.</p></td>
 
     <p>Invisible <code>NULL</code>.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Inspired by the <code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print()</a></code> method for <code>DataFrame</code> class
+objects.</p>
+    
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
     <ul>
@@ -176,7 +181,8 @@ Require separators to use ASCII instead of Unicode.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/utils/topics/head'>utils::head()</a></code>, <code><a href='https://www.rdocumentation.org/packages/utils/topics/head'>utils::tail()</a></code>, <code><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/utils/topics/head'>utils::head()</a></code>, <code><a href='https://www.rdocumentation.org/packages/utils/topics/head'>utils::tail()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat()</a></code>.</p></li>
 <li><p><code>getMethod("show", "DataTable")</code>.</p></li>
 </ul></div>
     
@@ -190,7 +196,7 @@ Require separators to use ASCII instead of Unicode.</p></td>
 #&gt; Mazda RX4 Wag   21   6 ...    4    4
 #&gt; ...            ... ... ...  ...  ...
 #&gt; Maserati Bora   15   8 ...    5    8
-#&gt; Volvo 142E    21.4   4 ...    4    2</div><div class='input'><span class='fu'>headtail</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='no'><a href='http://dplyr.tidyverse.org/reference/starwars.html'>starwars</a></span>)</div><div class='output co'>#&gt;             name height │ vehicles starships
+#&gt; Volvo 142E    21.4   4 ...    4    2</div><div class='input'><span class='fu'>headtail</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='no'><a href='https://dplyr.tidyverse.org/reference/starwars.html'>starwars</a></span>)</div><div class='output co'>#&gt;             name height │ vehicles starships
 #&gt; 1 Luke Skywalker    172 │       &lt;&gt;        &lt;&gt;
 #&gt; 2          C-3PO    167 │       &lt;&gt;        &lt;&gt;
 #&gt; ─              ─      ─ ┼        ─         ─
@@ -210,6 +216,8 @@ Require separators to use ASCII instead of Unicode.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#methods-by-class-">Methods (by class)</a></li>
 

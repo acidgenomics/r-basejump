@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
       </span>
     </div>
 
@@ -135,15 +135,12 @@
     <tr>
       <th>rownames</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
-Apply sanitization on row names. This is not generally recommended by
-default, since rownames commonly contain gene identifiers that should not
-be modified.</p></td>
+Apply to row names.</p></td>
     </tr>
     <tr>
       <th>colnames</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
-Apply sanitization on column names. This is generally recommended by
-default.</p></td>
+Apply to column names.</p></td>
     </tr>
     <tr>
       <th>sort</th>
@@ -158,8 +155,8 @@ Resort using <code>sort</code>.</p></td>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>For methods on objects supporting <a href='https://www.rdocumentation.org/packages/base/topics/dim'>dim</a> (e.g. <code>matrix</code>), the
-object will be returned with the rows and/or columns resorted by default.
+    <p>For methods on objects supporting <code><a href='https://www.rdocumentation.org/packages/base/topics/dim'>dim()</a></code> (e.g. <code>matrix</code>),
+the object will be returned with the rows and/or columns resorted by default.
 This does not apply to the <code>character</code> method.</p>
     
 

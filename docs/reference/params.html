@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
       </span>
     </div>
 
@@ -171,6 +171,11 @@ describes the samples. For single-cell RNA-seq, this data describes the
 cells.</p></td>
     </tr>
     <tr>
+      <th>colnames</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Apply to column names.</p></td>
+    </tr>
+    <tr>
       <th>color</th>
       <td><p><code>ScaleDiscrete</code>.
 Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
@@ -192,7 +197,7 @@ Counts axis label.</p></td>
     <tr>
       <th>dark</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
-Plot against a dark background using the <code>basejump::theme_midnight()</code>
+Plot against a dark background using the <code><a href='ggplot2-themes.html'>basejump::theme_midnight()</a></code>
 ggplot2 theme.</p></td>
     </tr>
     <tr>
@@ -456,6 +461,11 @@ Metadata describing the assay rows, if genomic ranges are not available.
       <td><p><code>GRanges</code>.
 Genomic ranges (e.g. genome annotations). Metadata describing the assay
 rows.</p></td>
+    </tr>
+    <tr>
+      <th>rownames</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Apply to row names.</p></td>
     </tr>
     <tr>
       <th>sampleMetadataFile</th>

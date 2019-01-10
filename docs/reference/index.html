@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
       </span>
     </div>
 
@@ -219,80 +219,6 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-import-export" class="hasAnchor"><a href="#section-import-export" class="anchor"></a>Import/export</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="assignAndSaveData.html">assignAndSaveData()</a></code> </p>
-        </td>
-        <td><p>Assign and save data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="export.html">export(<i>&lt;ANY&gt;</i>)</a></code> <code><a href="export.html">export(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="export.html">export(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="export.html">export(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Export</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="import.html">import()</a></code> </p>
-        </td>
-        <td><p>Import</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="loadData.html">loadData()</a></code> </p>
-        </td>
-        <td><p>Load data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="loadDataAsName.html">loadDataAsName()</a></code> </p>
-        </td>
-        <td><p>Load data as name</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="loadRemoteData.html">loadRemoteData()</a></code> </p>
-        </td>
-        <td><p>Load remote data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="localOrRemoteFile.html">localOrRemoteFile()</a></code> </p>
-        </td>
-        <td><p>Dynamically handle a local or remote file path</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="saveData.html">saveData()</a></code> </p>
-        </td>
-        <td><p>Save data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="saveRdExamples.html">saveRdExamples()</a></code> </p>
-        </td>
-        <td><p>Save R documentation examples</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="transmit.html">transmit()</a></code> </p>
-        </td>
-        <td><p>Transmit files from a remote FTP server</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="writeCounts.html">writeCounts()</a></code> </p>
-        </td>
-        <td><p>Write counts</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-genome-annotations" class="hasAnchor"><a href="#section-genome-annotations" class="anchor"></a>Genome annotations</h2>
           <p class="section-desc"></p>
         </th>
@@ -395,7 +321,33 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-sample-level" class="hasAnchor"><a href="#section-sample-level" class="anchor"></a>Sample-level</h2>
+          <h2 id="section-metadata" class="hasAnchor"><a href="#section-metadata" class="anchor"></a>Metadata</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="interestingGroups.html">interestingGroups(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Interesting groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Organism</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="uniteInterestingGroups.html">uniteInterestingGroups(<i>&lt;DataFrame&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Unite interesting groups into a single column</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-sample-level-metadata" class="hasAnchor"><a href="#section-sample-level-metadata" class="anchor"></a>Sample-level metadata</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -445,7 +397,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-cell-level" class="hasAnchor"><a href="#section-cell-level" class="anchor"></a>Cell-level</h2>
+          <h2 id="section-cell-level-metadata" class="hasAnchor"><a href="#section-cell-level-metadata" class="anchor"></a>Cell-level metadata</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -489,32 +441,6 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-metadata" class="hasAnchor"><a href="#section-metadata" class="anchor"></a>Metadata</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="interestingGroups.html">interestingGroups(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Interesting groups</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Organism</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="uniteInterestingGroups.html">uniteInterestingGroups(<i>&lt;DataFrame&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Unite interesting groups into a single column</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-sanitization" class="hasAnchor"><a href="#section-sanitization" class="anchor"></a>Sanitization</h2>
           <p class="section-desc"></p>
         </th>
@@ -528,33 +454,21 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="relevel.html">relevelRowRanges()</a></code> <code><a href="relevel.html">relevelColData()</a></code> </p>
-        </td>
-        <td><p>Relevel row or column data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeNames.html">makeNames()</a></code> <code><a href="makeNames.html">makeDimnames()</a></code> <code><a href="makeNames.html">camel(<i>&lt;character&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;character&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;character&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;character&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;factor&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;factor&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;factor&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;factor&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;atomic&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;atomic&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;atomic&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;atomic&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;list&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;list&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;list&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;list&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;List&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;List&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;List&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;List&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;GRangesList&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;GRangesList&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;GRangesList&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;GRangesList&gt;</i>)</a></code> <code><a href="makeNames.html">camel(<i>&lt;ANY&gt;</i>)</a></code> <code><a href="makeNames.html">dotted(<i>&lt;ANY&gt;</i>)</a></code> <code><a href="makeNames.html">snake(<i>&lt;ANY&gt;</i>)</a></code> <code><a href="makeNames.html">upperCamel(<i>&lt;ANY&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Make syntactically valid names</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="collapseToString.html">collapseToString(<i>&lt;atomic&gt;</i>)</a></code> <code><a href="collapseToString.html">collapseToString(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="collapseToString.html">collapseToString(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="collapseToString.html">collapseToString(<i>&lt;DataFrame&gt;</i>)</a></code> </p>
         </td>
         <td><p>Collapse to string</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="removeNA.html">removeNA(<i>&lt;atomic&gt;</i>)</a></code> <code><a href="removeNA.html">removeNA(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="removeNA.html">removeNA(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="removeNA.html">removeNA(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="removeNA.html">removeNA(<i>&lt;DataFrame&gt;</i>)</a></code> </p>
+          <p><code><a href="relevel.html">relevelRowRanges()</a></code> <code><a href="relevel.html">relevelColData()</a></code> </p>
         </td>
-        <td><p>Remove rows and columns containing only <code>NA</code> values</p></td>
+        <td><p>Relevel row or column data</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sanitizeColData.html">sanitizeColData()</a></code> <code><a href="sanitizeColData.html">sanitizeSampleData()</a></code> </p>
+          <p><code><a href="removeNA.html">removeNA(<i>&lt;atomic&gt;</i>)</a></code> <code><a href="removeNA.html">removeNA(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="removeNA.html">removeNA(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="removeNA.html">removeNA(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="removeNA.html">removeNA(<i>&lt;DataFrame&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Sanitize column data</p></td>
+        <td><p>Remove rows and columns containing only <code>NA</code> values</p></td>
       </tr><tr>
         
         <td>
@@ -570,9 +484,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> <code><a href="sanitizeRowData.html">sanitizeRowRanges()</a></code> </p>
+          <p><code><a href="sanitizeSampleData.html">sanitizeSampleData()</a></code> </p>
         </td>
-        <td><p>Sanitize row data</p></td>
+        <td><p>Sanitize sample data</p></td>
       </tr><tr>
         
         <td>
@@ -785,26 +699,6 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-coercion" class="hasAnchor"><a href="#section-coercion" class="anchor"></a>Coercion</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="as.html">as</a></code> </p>
-        </td>
-        <td><p>Force an object to belong to a class</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="coerceS4ToList.html">coerceS4ToList()</a></code> <code><a href="coerceS4ToList.html">flatFiles(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Coerce any S4 object to a list</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-run-length-encoding" class="hasAnchor"><a href="#section-run-length-encoding" class="anchor"></a>Run-length encoding</h2>
           <p class="section-desc"></p>
         </th>
@@ -825,38 +719,6 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-documentation" class="hasAnchor"><a href="#section-documentation" class="anchor"></a>Documentation</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="RdTags.html">RdTags()</a></code> </p>
-        </td>
-        <td><p>R documentation tags</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="parseRd.html">parseRd()</a></code> </p>
-        </td>
-        <td><p>Parse R documentation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="saveRdExamples.html">saveRdExamples()</a></code> </p>
-        </td>
-        <td><p>Save R documentation examples</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tabular.html">tabular()</a></code> </p>
-        </td>
-        <td><p>R documentation table</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-developer" class="hasAnchor"><a href="#section-developer" class="anchor"></a>Developer</h2>
           <p class="section-desc"></p>
         </th>
@@ -864,39 +726,15 @@
       <tr>
         
         <td>
-          <p><code><a href="cleanSystemLibrary.html">cleanSystemLibrary()</a></code> </p>
-        </td>
-        <td><p>Check for clean system library</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dots.html">dots()</a></code> </p>
-        </td>
-        <td><p>Extract dots from function</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="formalsList.html">formalsList</a></code> </p>
         </td>
-        <td><p>Formals list</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="matchArgsToDoCall.html">matchArgsToDoCall()</a></code> </p>
-        </td>
-        <td><p>Match arguments to <code>do.call</code></p></td>
+        <td><p>Shared list of optional default formals</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="matchInterestingGroups.html">matchInterestingGroups()</a></code> </p>
         </td>
         <td><p>Match interesting groups</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="MethodDefinition.html">methodFunction()</a></code> <code><a href="MethodDefinition.html">methodFormals()</a></code> <code><a href="MethodDefinition.html">hasLocal()</a></code> <code><a href="MethodDefinition.html">extractLocal()</a></code> </p>
-        </td>
-        <td><p>Access the data inside an S4 method definition</p></td>
       </tr><tr>
         
         <td>
@@ -915,12 +753,6 @@
           <p><code><a href="showSlotInfo.html">showSlotInfo()</a></code> </p>
         </td>
         <td><p>Show slot information</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="standardizeCall.html">standardizeCall()</a></code> </p>
-        </td>
-        <td><p>Standardize call</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -930,12 +762,6 @@
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="basenameSansExt.html">basenameSansExt()</a></code> </p>
-        </td>
-        <td><p>Get the base name without the file extension</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="detectHPC.html">detectHPC()</a></code> </p>
@@ -974,12 +800,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="initDir.html">initDir()</a></code> </p>
-        </td>
-        <td><p>Initialize Directory</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="matchesGene2Symbol.html">matchesGene2Symbol()</a></code> </p>
         </td>
         <td><p>Check that user-defined gene input matches expected values</p></td>
@@ -995,18 +815,6 @@
           <p><code><a href="microplate.html">microplate()</a></code> </p>
         </td>
         <td><p>Microtiter plate well identifiers</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pasteURL.html">pasteURL()</a></code> </p>
-        </td>
-        <td><p>Concatenate strings to form a URL</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="realpath.html">realpath()</a></code> </p>
-        </td>
-        <td><p>Express file paths in canonical form</p></td>
       </tr><tr>
         
         <td>
@@ -1030,12 +838,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="extPattern.html">extPattern</a></code> </p>
-        </td>
-        <td><p>File extension pattern</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="genomeMetadataNames.html">genomeMetadataNames</a></code> </p>
         </td>
         <td><p>Slot names in metadata containing genome information</p></td>
@@ -1045,24 +847,6 @@
           <p><code><a href="lanePattern.html">lanePattern</a></code> </p>
         </td>
         <td><p>Sequencing lane grep pattern</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="naStrings.html">naStrings</a></code> </p>
-        </td>
-        <td><p><code>NA</code> strings</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rdataExtPattern.html">rdataExtPattern</a></code> </p>
-        </td>
-        <td><p>R data extension pattern</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rdataLoadError.html">rdataLoadError</a></code> </p>
-        </td>
-        <td><p>R data load error</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -1134,22 +918,19 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-s-classes">S4 classes</a></li>
-      <li><a href="#section-import-export">Import/export</a></li>
       <li><a href="#section-genome-annotations">Genome annotations</a></li>
       <li><a href="#section-gene-identifier-mapping">Gene identifier mapping</a></li>
       <li><a href="#section-counts">Counts</a></li>
-      <li><a href="#section-sample-level">Sample-level</a></li>
-      <li><a href="#section-cell-level">Cell-level</a></li>
       <li><a href="#section-metadata">Metadata</a></li>
+      <li><a href="#section-sample-level-metadata">Sample-level metadata</a></li>
+      <li><a href="#section-cell-level-metadata">Cell-level metadata</a></li>
       <li><a href="#section-sanitization">Sanitization</a></li>
       <li><a href="#section-aggregation">Aggregation</a></li>
       <li><a href="#section-math">Math</a></li>
       <li><a href="#section-plots">Plots</a></li>
       <li><a href="#section-ggplot-">ggplot2</a></li>
       <li><a href="#section-markdown">Markdown</a></li>
-      <li><a href="#section-coercion">Coercion</a></li>
       <li><a href="#section-run-length-encoding">Run-length encoding</a></li>
-      <li><a href="#section-documentation">Documentation</a></li>
       <li><a href="#section-developer">Developer</a></li>
       <li><a href="#section-miscellaneous">Miscellaneous</a></li>
       <li><a href="#section-global-variables">Global variables</a></li>

@@ -30,9 +30,11 @@ BugReports: https://github.com/steinbaugh/basejump/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false
-Depends: R (>= 3.4), S4Transformer (>= 0.1)
+Depends:
+    R (>= 3.4),
+    S4Transformer (>= 0.1)
 Imports:
-    bioverbs (>= 0.1.2), brio (>= 0.1.1), goalie (>= 0.2.3),
+    bioverbs (>= 0.1.2), brio (>= 0.1.1), goalie (>= 0.2.4),
         syntactic (>= 0.1.2),
     AnnotationHub, Biobase, BiocGenerics, GenomeInfoDb, GenomicFeatures,
         GenomicRanges, IRanges, Matrix, Matrix.utils, RColorBrewer, S4Vectors,
@@ -44,9 +46,9 @@ Imports:
         tibble (>= 2.0), tidyr (>= 0.8), tidyselect (>= 0.2),
     grDevices, grid, methods, stats, tools, utils
 Suggests:
-    datasets,
     BiocStyle, EnsDb.Hsapiens.v75,
-    patrick, rmarkdown, testthat (>= 2.0), viridis
+    patrick, rmarkdown, testthat, viridis,
+    datasets
 Remotes:
     steinbaugh/S4Transformer,
     steinbaugh/bioverbs,

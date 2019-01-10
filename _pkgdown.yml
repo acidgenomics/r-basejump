@@ -14,16 +14,6 @@ reference:
     - starts_with("Tx2Gene")
     - show
     - summary
-  - title: Import/export
-    contents:
-    - starts_with("assign")
-    - export
-    - import
-    - starts_with("load")
-    - localOrRemoteFile
-    - starts_with("save")
-    - transmit
-    - starts_with("write")
   - title: Genome annotations
     contents:
     - emptyRanges
@@ -40,7 +30,12 @@ reference:
     - counts
     - meltCounts
     - tpm
-  - title: Sample-level
+  - title: Metadata
+    contents:
+    - interestingGroups
+    - organism
+    - uniteInterestingGroups
+  - title: Sample-level metadata
     contents:
     - makeSampleData
     - makeSummarizedExperiment
@@ -48,7 +43,7 @@ reference:
     - minimalSampleData
     - starts_with("sample")
     - selectSamples
-  - title: Cell-level
+  - title: Cell-level metadata
     contents:
     - aggregateCellsToSamples
     - cell2sample
@@ -56,17 +51,11 @@ reference:
     - mapCellsToSamples
     - subsetPerSample
     - topCellsPerSample
-  - title: Metadata
-    contents:
-    - interestingGroups
-    - organism
-    - uniteInterestingGroups
   - title: Sanitization
     contents:
     - autopadZeros
-    - relevel
-    - makeNames
     - collapseToString
+    - relevel
     - starts_with("remove")
     - starts_with("sanitize")
     - sortUnique
@@ -91,53 +80,32 @@ reference:
     contents:
     - starts_with("markdown")
     - prepareTemplate
-  - title: Coercion
-    contents:
-    - as
-    - coerceS4ToList
   - title: Run-length encoding
     contents:
     - decode
     - encode
-  - title: Documentation
-    contents:
-    - matches("Rd")
-    - tabular
   - title: Developer
     contents:
-    - cleanSystemLibrary
-    - dots
     - formalsList
-    - matchArgsToDoCall
     - matchInterestingGroups
-    - MethodDefinition
     - multiassignAsEnvir
     - printString
     - showSlotInfo
-    - standardizeCall
   - title: Miscellaneous
     contents:
-    - basenameSansExt
     - starts_with("detect")
     - geneNames
     - headtail
     - humanize
-    - starts_with("init")
     - matchesGene2Symbol
     - matchesInterestingGroups
     - microplate
-    - pasteURL
-    - realpath
     - separator
   - title: Global variables
     contents:
     - barcodePattern
-    - extPattern
     - genomeMetadataNames
     - lanePattern
-    - naStrings
-    - rdataExtPattern
-    - rdataLoadError
   - title: Example data
     contents:
     - df
