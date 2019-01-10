@@ -19,7 +19,7 @@
 #'   - `filename` (use `fileName`).
 #'   - `rowname`.
 #'   - `sample`. Too vague. Does this represent an ID or human readable name?
-#'   - `samplename` (use `sampleName`),
+#'   - `samplename` (use `sampleName`).
 #' - `sampleName` column is always placed first.
 #'
 #' @export
