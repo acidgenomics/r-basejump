@@ -34,9 +34,7 @@
   
 <meta property="og:title" content="Select samples — selectSamples" />
 
-<meta property="og:description" content="Utility function that enables quick an easy sample selection in Bioconductor
-contains that don't correspond to samples in the columns
-(e.g. SingleCellExperiment)." />
+<meta property="og:description" content="Utility function that enables quick and easy sample selection." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +65,7 @@ contains that don't correspond to samples in the columns
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
       </span>
     </div>
 
@@ -113,9 +111,7 @@ contains that don't correspond to samples in the columns
 
     <div class="ref-description">
     
-    <p>Utility function that enables quick an easy sample selection in Bioconductor
-contains that don't correspond to samples in the columns
-(e.g. <code>SingleCellExperiment</code>).</p>
+    <p>Utility function that enables quick and easy sample selection.</p>
     
     </div>
 
@@ -134,10 +130,13 @@ contains that don't correspond to samples in the columns
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Selection arguments that map to the column names of
-<code>sampleData()</code>. <code>atomic</code> values are supported. Avoid using <code>logical</code> or
-<code>numeric</code> indices (e.g. <code><a href='https://www.rdocumentation.org/packages/base/topics/which'>which()</a></code> calls) here, for improved code
-readability.</p></td>
+      <td><p>Selection arguments:</p><ul>
+<li><p>Key value pairs that must map to the column names of <code><a href='sampleData.html'>sampleData()</a></code>.</p></li>
+<li><p><code>atomic</code> values are supported.</p></li>
+<li><p>Avoid using <code>logical</code> or <code>numeric</code> indices
+(e.g. <code><a href='https://www.rdocumentation.org/packages/base/topics/which'>which()</a></code> return), thereby making your code more
+human readable, and easier to interpret.</p></li>
+</ul></td>
     </tr>
     </table>
     
@@ -150,14 +149,25 @@ Subset (extraction) containing the desired samples.</p>
 
     <p>Internally, pattern matching against sample and file names is applied using
 logical grep matching.</p>
-<p>Bracket based subsetting with <code>[</code> also works on <code>SingleCellExperiment</code>
+    
+    <h2 class="hasAnchor" id="intended-usage"><a class="anchor" href="#intended-usage"></a>Intended usage</h2>
+
+    
+    <p>This function is intended to be used for sample extraction from Bioconductor
+container classes where the column names don't correspond to samples (e.g.
+<code>SingleCellExperiment</code>).</p>
+    
+    <h2 class="hasAnchor" id="bracket-based-subsetting"><a class="anchor" href="#bracket-based-subsetting"></a>Bracket-based subsetting</h2>
+
+    
+    <p>Bracket-based subsetting with <code>[</code> also works on <code>SingleCellExperiment</code>
 objects but it's not intuitive. In this case, provide cellular barcode
 identifiers for columns and gene identifiers for rows.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><code>sampleData()</code>.</p></li>
+<li><p><code><a href='sampleData.html'>sampleData()</a></code>.</p></li>
 <li><p><code><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/split-methods'>S4Vectors::split()</a></code>.</p></li>
 </ul></div>
     
@@ -167,7 +177,7 @@ identifiers for columns and gene identifiers for rows.</p>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
-<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fl'>1L</span>)
+<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fl'>1L</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>sample</span>)</div><div class='output co'>#&gt;   sample01 
 #&gt; "sample01" </div><div class='input'><span class='no'>subset</span> <span class='kw'>&lt;-</span> <span class='fu'>selectSamples</span>(<span class='no'>object</span>, <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='no'>sample</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>subset</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
@@ -180,7 +190,7 @@ identifiers for columns and gene identifiers for rows.</p>
 #&gt; colData names(1): condition</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fl'>1L</span>)
+<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fl'>1L</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>sample</span>)</div><div class='output co'>#&gt;   sample1 
 #&gt; "sample1" </div><div class='input'><span class='no'>subset</span> <span class='kw'>&lt;-</span> <span class='fu'>selectSamples</span>(<span class='no'>object</span>, <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='no'>sample</span>)</div><div class='output co'>#&gt; <span class='message'>1 sample(s) matched: sample1</span></div><div class='output co'>#&gt; <span class='message'>41 cells matched.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>subset</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 500 41 
@@ -201,6 +211,10 @@ identifiers for columns and gene identifiers for rows.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#intended-usage">Intended usage</a></li>
+
+      <li><a href="#bracket-based-subsetting">Bracket-based subsetting</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
