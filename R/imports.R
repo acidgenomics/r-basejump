@@ -14,6 +14,7 @@
 #'   match setdiff t
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
+#' @importMethodsFrom transformer coerce
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
@@ -57,9 +58,9 @@
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
-#' @importFrom methods as formalArgs getGeneric getMethod is isGeneric new
-#'   selectMethod setAs setClass setGeneric setMethod setOldClass show signature
-#'   slot slotNames validObject .hasSlot
+#' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
+#'   new selectMethod setAs setClass setGeneric setMethod setOldClass show
+#'   signature slot slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom purrr map
@@ -243,12 +244,6 @@ transformer::as_tibble
 #' @importFrom transformer atomize
 #' @export
 transformer::atomize
-
-#' @name coerce
-#' @importFrom transformer coerce
-#' @export
-#' @noRd
-NULL
 
 #' @importFrom transformer coerceS4ToList
 #' @export
