@@ -43,8 +43,8 @@ NULL
     # This step is CPU intensive, so optionally enable progress bar.
     # Alternatively, consider switching to BiocParallel bpparam usage here.
     if (isTRUE(progress)) {
-        requireNamespace("pblapply", quietly = TRUE)
         message(deparse(substitute(x)))
+        requireNamespace("pbapply", quietly = TRUE)
         lapply <- pbapply::pblapply
     }
     lapply(x, function(x) {
