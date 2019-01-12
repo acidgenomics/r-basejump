@@ -16,8 +16,6 @@
 
 language: r
 cache: packages
-sudo: false
-bioc_required: true
 
 matrix:
   include:
@@ -29,6 +27,16 @@ matrix:
     fortran: false
     latex: false
     warnings_are_errors: true
+
+# blocklist
+# branches:
+#   except:
+#   - develop
+
+# safelist
+branches:
+  only:
+  - master
 
 env:
   global:
