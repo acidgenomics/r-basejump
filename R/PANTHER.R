@@ -20,7 +20,7 @@
 #'   the PANTHER website for a list of release versions available from the FTP
 #'   server (e.g. `"13.0"`).
 #' @param progress `logical(1)`.
-#'   Use `pbapply::pblapply` to show progress.
+#'   Use [pbapply::pblapply()] to show progress.
 #'
 #' @examples
 #' options(basejump.test = TRUE)
@@ -40,9 +40,12 @@ NULL
 
 
 .splitTerms <- function(x, progress = FALSE) {
+    # This step is CPU intensive, so optionally enable progress bar.
+    # Alternatively, consider switching to BiocParallel bpparam usage here.
     if (isTRUE(progress)) {
+        requireNamespace("pblapply", quietly = TRUE)
         message(deparse(substitute(x)))
-        lapply <- pblapply
+        lapply <- pbapply::pblapply
     }
     lapply(x, function(x) {
         x <- x %>%
