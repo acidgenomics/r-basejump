@@ -171,8 +171,8 @@
 #'   Show progress, using progress bars.
 #' @param reducedDim `character(1)`.
 #'   Name of reduced dimension matrix slotted in
-#'   [reducedDims][SingleCellExperiment::reducedDims]. Includes TNSE, UMAP, PCA,
-#'   for example.
+#'   [`reducedDims()`][SingleCellExperiment::reducedDims].
+#'   Includes TNSE, UMAP, PCA, for example.
 #' @param return `character(1)`.
 #'   Return type.
 #'   Uses [match.arg()][base::match.arg] internally and defaults to the first
