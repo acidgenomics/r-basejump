@@ -24,7 +24,7 @@ the PANTHER website for a list of release versions available from the FTP
 server (e.g. \code{"13.0"}).}
 
 \item{progress}{\code{logical(1)}.
-Use \code{pbapply::pblapply} to show progress.}
+Use \code{\link[pbapply:pblapply]{pbapply::pblapply()}} to show progress.}
 }
 \value{
 \code{PANTHER}. Contains a \code{DataFrame}.

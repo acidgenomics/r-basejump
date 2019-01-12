@@ -40,7 +40,7 @@ to <- sanitizeNA(from)
 print(to)
 
 ## DataFrame ====
-from <- S4Vectors::DataFrame(
+from <- DataFrame(
     a = c("foo", ""),
     b = c(NA, "bar"),
     row.names = c("c", "d")
