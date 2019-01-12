@@ -80,42 +80,6 @@ NULL
 
 
 
-#' @importFrom S4Transformer as.data.frame
-#' @export
-S4Transformer::as.data.frame
-
-#' @importFrom S4Transformer as.SummarizedExperiment
-#' @export
-S4Transformer::as.SummarizedExperiment
-
-#' @importFrom S4Transformer as_tibble
-#' @export
-S4Transformer::as_tibble
-
-#' @importFrom S4Transformer atomize
-#' @export
-S4Transformer::atomize
-
-#' @name coerce
-#' @importFrom S4Transformer coerce
-#' @export
-#' @noRd
-NULL
-
-#' @importFrom S4Transformer coerceS4ToList
-#' @export
-S4Transformer::coerceS4ToList
-
-#' @importFrom S4Transformer factorize
-#' @export
-S4Transformer::factorize
-
-#' @importFrom S4Transformer flatFiles
-#' @export
-S4Transformer::flatFiles
-
-
-
 #' @importFrom brio assignAndSaveData
 #' @export
 brio::assignAndSaveData
@@ -261,3 +225,39 @@ syntactic::snake
 #' @importFrom syntactic upperCamel
 #' @export
 syntactic::upperCamel
+
+
+
+#' @importFrom transformer as.data.frame
+#' @export
+transformer::as.data.frame
+
+#' @importFrom transformer as.SummarizedExperiment
+#' @export
+transformer::as.SummarizedExperiment
+
+#' @importFrom transformer as_tibble
+#' @export
+transformer::as_tibble
+
+#' @importFrom transformer atomize
+#' @export
+transformer::atomize
+
+#' @name coerce
+#' @importFrom transformer coerce
+#' @export
+#' @noRd
+NULL
+
+#' @importFrom transformer coerceS4ToList
+#' @export
+transformer::coerceS4ToList
+
+#' @importFrom transformer factorize
+#' @export
+transformer::factorize
+
+#' @importFrom transformer flatFiles
+#' @export
+transformer::flatFiles
