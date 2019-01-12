@@ -4,12 +4,12 @@
 #' @inherit params
 #'
 #' @inheritParams goalie::params
-#' @param x Object class supporting `rownames`.
+#' @param x Object class supporting [`rownames()`][base::rownames].
 #'   All rownames in this object must intersect with the rownames defined in the
 #'   `gene2symbol` argument.
 #'
 #' @examples
-#' x <- S4Vectors::DataFrame(
+#' x <- DataFrame(
 #'     "sample1" = c(1L, 2L),
 #'     "sample2" = c(3L, 4L),
 #'     row.names = c("gene1", "gene2")
@@ -17,7 +17,7 @@
 #' print(x)
 #'
 #' g2s <- Gene2Symbol(
-#'     object = S4Vectors::DataFrame(
+#'     object = DataFrame(
 #'         geneID = c("ENSG00000000003", "ENSG00000000005"),
 #'         geneName = c("TSPAN6", "TNMD"),
 #'         row.names = rownames(x)

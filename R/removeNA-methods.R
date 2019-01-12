@@ -17,7 +17,7 @@
 #' print(to)
 #'
 #' ## DataFrame ====
-#' from <- S4Vectors::DataFrame(
+#' from <- DataFrame(
 #'     a = c("A", NA, "C"),
 #'     b = c(NA, NA, NA),
 #'     c = c("B", NA, "D")

@@ -75,11 +75,6 @@ NULL
 
 
 
-# FIXME set in enhances
-# @importFrom pbapply pblapply
-
-
-
 #' @importFrom brio assignAndSaveData
 #' @export
 brio::assignAndSaveData

@@ -100,13 +100,13 @@
 #' print(sparse)
 #'
 #' ## SummarizedExperiment
-#' se <- SummarizedExperiment::SummarizedExperiment(
+#' se <- SummarizedExperiment(
 #'     assay = list(counts = sparse),
-#'     colData = S4Vectors::DataFrame(
+#'     colData = DataFrame(
 #'         sampleName = names(samples),
 #'         aggregate = samples
 #'     ),
-#'     rowData = S4Vectors::DataFrame(aggregate = genes)
+#'     rowData = DataFrame(aggregate = genes)
 #' )
 #' print(se)
 #'
