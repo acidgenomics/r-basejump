@@ -1,7 +1,13 @@
 #' Organism
+#'
 #' @name organism
 #' @inheritParams params
-#' @seealso `detectOrganism`.
+#'
+#' @return `character(1)`.
+#' Latin organism name (e.g. *Homo sapiens*).
+#'
+#' @seealso `detectOrganism()`.
+#'
 #' @examples
 #' data(rse)
 #' organism(rse)

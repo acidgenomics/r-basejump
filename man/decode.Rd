@@ -11,6 +11,10 @@
 \arguments{
 \item{x}{Object.}
 }
+\value{
+Modified object.
+Columns will be decoded and no longer \code{Rle} class.
+}
 \description{
 The Rle class is a general container for storing an atomic vector
   that is stored in a run-length encoding format. It is based on the

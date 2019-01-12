@@ -48,7 +48,8 @@
 #'   hasRownames hasUniqueCols hasValidDimnames isADirectory  isAny isCharacter
 #'   isFlag isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange
 #'   isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
-#'   isScalar isString isSubset isSuperset validNames validate validateClasses
+#'   isScalar isString isSubset isSuperset matchesUniqueGeneNames validNames
+#'   validate validateClasses
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom knitr asis_output kable opts_knit

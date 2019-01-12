@@ -11,6 +11,9 @@
 \arguments{
 \item{object}{Object.}
 }
+\value{
+\code{matrix}.
+}
 \description{
 Transcripts per million
 }
