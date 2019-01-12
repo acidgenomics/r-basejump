@@ -14,7 +14,7 @@
 
 \item{fun}{\code{character(1)}.
 Name of the aggregation function.
-Uses \link[base:match.arg]{match.arg()} internally.}
+Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 }
 \value{
 \code{SummarizedExperiment}.
