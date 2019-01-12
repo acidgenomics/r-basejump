@@ -85,7 +85,7 @@ setClass(
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
-#' [metadata][S4Vectors::metadata].
+#' [`metadata()`][S4Vectors::metadata].
 #'
 #' @author Michael Steinbaugh
 #' @export

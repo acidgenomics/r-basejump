@@ -10,8 +10,9 @@
 #'   Aspect ratio.
 #' @param assay `vector(1)`.
 #'   Name or index of count matrix slotted in
-#'   [assays][SummarizedExperiment::assays]. When passing in a string, the name
-#'   must be defined in [assayNames][SummarizedExperiment::assayNames].
+#'   [`assays()`][SummarizedExperiment::assays]. When passing in a string, the
+#'   name must be defined in
+#'   [`assayNames()`][SummarizedExperiment::assayNames].
 #' @param assays `list`.
 #'   Count matrices, which must have matching dimensions. Counts can be passed
 #'   in as either a dense matrix (`matrix`) or sparse matrix (`sparseMatrix`).
@@ -66,11 +67,11 @@
 #'   ensembldb in use.
 #' @param envir `environment`.
 #'   Environment to use for assignment. Defaults to
-#'   [parent.frame()][base::parent.frame], which will assign into the calling
+#'   [`parent.frame()`][base::parent.frame], which will assign into the calling
 #'   environment.
 #' @param expression `character(1)`.
 #'   Calculation to apply.
-#'   Uses [match.arg()][base::match.arg] internally and defaults to the first
+#'   Uses [`match.arg()`][base::match.arg] internally and defaults to the first
 #'   argument in the `character` vector.
 #' @param file `character(1)`.
 #'   File path.
@@ -98,9 +99,8 @@
 #'   defaults to the most recent build available. Note: don't pass in UCSC build
 #'   IDs (e.g. `"hg38"`).
 #' @param geom `character(1)`.
-#'   Plot type.
-#'   Uses [match.arg()][base::match.arg] internally and defaults to the first
-#'   argument in the `character` vector.
+#'   Plot type. Uses [`match.arg()`][base::match.arg] internally and defaults to
+#'   the first argument in the `character` vector.
 #' @param gffFile `character(1)`.
 #'   GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
 #'   (GFFv2) instead of a GFFv3 file if possible.
@@ -174,9 +174,8 @@
 #'   [`reducedDims()`][SingleCellExperiment::reducedDims].
 #'   Includes TNSE, UMAP, PCA, for example.
 #' @param return `character(1)`.
-#'   Return type.
-#'   Uses [match.arg()][base::match.arg] internally and defaults to the first
-#'   argument in the `character` vector.
+#'   Return type. Uses [`match.arg()`][base::match.arg] internally and defaults
+#'   to the first argument in the `character` vector.
 #' @param rowData `DataFrame`.
 #'   Metadata describing the assay rows, if genomic ranges are not available.
 #'   *Use rowRanges (GRanges) instead, if possible*.

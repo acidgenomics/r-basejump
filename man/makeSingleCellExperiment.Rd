@@ -43,30 +43,24 @@ constructor by slotting useful session information into the \code{metadata} slot
 \itemize{
 \item \code{date}: Today's date, returned from \code{Sys.Date}.
 \item \code{wd}: Working directory, returned from \code{getwd}.
-\item \code{sessionInfo}: \code{sessioninfo::session_info} return.
+\item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
 }
 }
 \examples{
 data(sce)
 object <- sce
-
-assays <- SummarizedExperiment::assays(object)
-rowRanges <- SummarizedExperiment::rowRanges(object)
-colData <- SummarizedExperiment::colData(object)
-metadata <- S4Vectors::metadata(object)
-
 x <- makeSingleCellExperiment(
-    assays = assays,
-    rowRanges = rowRanges,
-    colData = colData,
-    metadata = metadata
+    assays = assays(object),
+    rowRanges = rowRanges(object),
+    colData = colData(object),
+    metadata = metadata(object)
 )
 print(x)
 }
 \seealso{
 \itemize{
-\item \code{SummarizedExperiment::SummarizedExperiment}.
-\item \code{SingleCellExperiment::SingleCellExperiment}.
+\item \code{SummarizedExperiment::SummarizedExperiment()}.
+\item \code{SingleCellExperiment::SingleCellExperiment()}.
 \item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.

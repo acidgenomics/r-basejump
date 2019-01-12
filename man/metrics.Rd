@@ -21,9 +21,8 @@
 \item{object}{Object.}
 
 \item{return}{\code{character(1)}.
-Return type.
-Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
-argument in the \code{character} vector.}
+Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
+to the first argument in the \code{character} vector.}
 
 \item{fun}{\code{character(1)}.
 Mathematical function name to apply.
@@ -31,9 +30,11 @@ Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 }
 \value{
 \itemize{
-\item \code{"tibble"}: \code{grouped_df}. Grouped by \code{sampleID} column.
-\item \code{"DataFrame"}: \code{DataFrame}. Row names are identical to the column names of
-the object, like \code{\link[SummarizedExperiment:colData]{colData()}}.
+\item \code{"tibble"}: \code{grouped_df}.
+Grouped by \code{sampleID} column.
+\item \code{"DataFrame"}: \code{DataFrame}.
+Row names are identical to the column names of the object, like
+\code{\link[SummarizedExperiment:colData]{colData()}}.
 }
 }
 \description{

@@ -4,7 +4,7 @@
 #' @inherit S4Vectors::decode description return
 #' @inheritParams params
 #'
-#' @seealso `S4Vectors::decode`.
+#' @seealso `S4Vectors::decode()`.
 #'
 #' @examples
 #' data(rse)

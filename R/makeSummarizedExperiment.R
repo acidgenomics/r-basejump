@@ -7,7 +7,7 @@
 #'
 #' - `date`: Today's date, returned from `Sys.Date`.
 #' - `wd`: Working directory, returned from `getwd`.
-#' - `sessionInfo`: `sessioninfo::session_info` return.
+#' - `sessionInfo`: [sessioninfo::session_info()] return.
 #'
 #' @note Column and rows always return sorted alphabetically.
 #'
@@ -20,8 +20,8 @@
 #' - Providing `rowData`: `SummarizedExperiment`.
 #'
 #' @seealso
-#' - `SummarizedExperiment::SummarizedExperiment`.
-#' - `SingleCellExperiment::SingleCellExperiment`.
+#' - `SummarizedExperiment::SummarizedExperiment()`.
+#' - `SingleCellExperiment::SingleCellExperiment()`.
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.

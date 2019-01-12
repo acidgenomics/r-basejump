@@ -15,9 +15,11 @@
 #'   Uses [`match.arg()`][base::match.arg] internally.
 #'
 #' @return
-#' - `"tibble"`: `grouped_df`. Grouped by `sampleID` column.
-#' - `"DataFrame"`: `DataFrame`. Row names are identical to the column names of
-#'   the object, like [`colData()`][SummarizedExperiment::colData].
+#' - `"tibble"`: `grouped_df`.
+#'     Grouped by `sampleID` column.
+#' - `"DataFrame"`: `DataFrame`.
+#'     Row names are identical to the column names of the object, like
+#'     [`colData()`][SummarizedExperiment::colData].
 #'
 #' @examples
 #' data(rse, sce)

@@ -26,16 +26,18 @@
 Transcript-to-gene mappings.}
 
 \item{aggregate}{\code{logical(1)}.
-For objects supporting \code{dim}, aggregate counts to gene level and collapse
-the matrix.}
+For objects supporting \link[base:dim]{dim}, aggregate counts to gene level and
+collapse the matrix.}
 
-\item{...}{Passthrough to \code{makeTx2GeneFromEnsembl}.}
+\item{...}{Passthrough to \link{makeTx2GeneFromEnsembl}.}
 }
 \value{
 \itemize{
-\item \code{character}: \code{factor}. Genes in the values, transcripts in the names.
-\item \code{matrix}, \code{sparseMatrix}, \code{SummarizedExperiment}: Object containing counts
-collapsed to gene level by default (see \code{aggregate} argument).
+\item \code{character}: \code{factor}.
+Genes in the values, transcripts in the names.
+\item \code{matrix}, \code{sparseMatrix}, \code{SummarizedExperiment}:
+Object containing counts collapsed to gene level by default
+(see \code{aggregate} argument).
 }
 }
 \description{
@@ -79,5 +81,5 @@ x <- convertTranscriptsToGenes(object)
 print(x)
 }
 \seealso{
-\code{aggregateRows}.
+\code{aggregateRows()}.
 }

@@ -18,7 +18,7 @@
 #'
 #' @references Jolliffe, et al., 2002.
 #'
-#' @seealso `DESeq2::plotPCA`.
+#' @seealso `DESeq2::plotPCA()`.
 #'
 #' We're using a modified version of the `DESeqTransform` method here.
 #'

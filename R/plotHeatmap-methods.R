@@ -57,7 +57,7 @@
 #' @param borderColor `character(1)` or `NULL`.
 #'   Border color. Disabled by default for improved aesthetics.
 #' @param clusteringMethod `character(1)`.
-#'   Clustering method. Accepts the same values as `stats::hclust`.
+#'   Clustering method. Accepts the same values as [stats::hclust()].
 #' @param clusterRows,clusterCols `logical(1)`.
 #'   Arrange with hierarchical clustering.
 #' @param color `function`, `character`, or `NULL`.
@@ -159,7 +159,7 @@ bioverbs::plotQuantileHeatmap
 
 
 
-# Modified version of `pheatmap:::scale_mat`.
+# Modified version of `pheatmap:::scale_mat()`.
 .scaleMatrix <- function(object, scale = c("none", "row", "column")) {
     assert(is.matrix(object))
     scale <- match.arg(scale)

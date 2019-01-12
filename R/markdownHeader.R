@@ -20,8 +20,8 @@
 #' [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
 #'
 #' @return
-#' - "`asis = TRUE`": `knitr::asis_output`.
-#' - "`asis = FALSE`": `writeLines`.
+#' - "`asis = TRUE`": [knitr::asis_output()] return.
+#' - "`asis = FALSE`": [`writeLines()`][base::writeLines] return.
 #'
 #' @examples
 #' markdownHeader("Header", level = 2L)
