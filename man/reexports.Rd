@@ -22,13 +22,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{as.data.frame}
-\alias{as.SummarizedExperiment}
-\alias{as_tibble}
-\alias{atomize}
-\alias{coerceS4ToList}
-\alias{factorize}
-\alias{flatFiles}
 \alias{assignAndSaveData}
 \alias{basenameSansExt}
 \alias{dots}
@@ -64,6 +57,13 @@
 \alias{makeNames}
 \alias{snake}
 \alias{upperCamel}
+\alias{as.data.frame}
+\alias{as.SummarizedExperiment}
+\alias{as_tibble}
+\alias{atomize}
+\alias{coerceS4ToList}
+\alias{factorize}
+\alias{flatFiles}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -85,12 +85,12 @@ below to see their documentation.
 
   \item{methods}{\code{\link[methods]{show}}}
 
-  \item{S4Transformer}{\code{\link[S4Transformer]{as.data.frame}}, \code{\link[S4Transformer]{as.SummarizedExperiment}}, \code{\link[S4Transformer]{as_tibble}}, \code{\link[S4Transformer]{atomize}}, \code{\link[S4Transformer]{coerceS4ToList}}, \code{\link[S4Transformer]{factorize}}, \code{\link[S4Transformer]{flatFiles}}}
-
   \item{S4Vectors}{\code{\link[S4Vectors]{decode}}}
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
 
   \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
+
+  \item{transformer}{\code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}}
 }}
 
