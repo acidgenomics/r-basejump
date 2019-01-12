@@ -57,8 +57,8 @@
 \alias{makeNames}
 \alias{snake}
 \alias{upperCamel}
-\alias{as.data.frame}
 \alias{as.SummarizedExperiment}
+\alias{as.data.frame}
 \alias{as_tibble}
 \alias{atomize}
 \alias{coerceS4ToList}
@@ -91,6 +91,6 @@ below to see their documentation.
 
   \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
-  \item{transformer}{\code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}}
+  \item{transformer}{\code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}}
 }}
 

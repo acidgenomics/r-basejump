@@ -229,13 +229,13 @@ syntactic::upperCamel
 
 
 
-#' @importFrom transformer as.data.frame
-#' @export
-transformer::as.data.frame
-
 #' @importFrom transformer as.SummarizedExperiment
 #' @export
 transformer::as.SummarizedExperiment
+
+#' @importFrom transformer as.data.frame
+#' @export
+transformer::as.data.frame
 
 #' @importFrom transformer as_tibble
 #' @export
@@ -256,3 +256,85 @@ transformer::factorize
 #' @importFrom transformer flatFiles
 #' @export
 transformer::flatFiles
+
+# Re-export the S4 coercion methods in transformer.
+#' @exportMethod coerce
+NULL
+
+setAs(
+    from = "DataFrame",
+    to = "tbl_df",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "DataFrame",
+            to = "tbl_df"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "data.frame",
+    to = "tbl_df",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "data.frame",
+            to = "tbl_df"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "sparseMatrix",
+    to = "DataFrame",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "sparseMatrix",
+            to = "DataFrame"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "sparseMatrix",
+    to = "data.frame",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "sparseMatrix",
+            to = "data.frame"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "tbl_df",
+    to = "DataFrame",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "tbl_df",
+            to = "DataFrame"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "GRanges",
+    to = "tbl_df",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "GRanges",
+            to = "tbl_df"
+        ),
+        where = "transformer"
+    )
+)
