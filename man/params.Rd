@@ -218,8 +218,8 @@ Show progress, using progress bars.}
 
 \item{reducedDim}{\code{character(1)}.
 Name of reduced dimension matrix slotted in
-\link[SingleCellExperiment:reducedDims]{reducedDims}. Includes TNSE, UMAP, PCA,
-for example.}
+\code{\link[SingleCellExperiment:reducedDims]{reducedDims()}}.
+Includes TNSE, UMAP, PCA, for example.}
 
 \item{return}{\code{character(1)}.
 Return type.

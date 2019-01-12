@@ -7,7 +7,7 @@
 matchesGene2Symbol(x, genes, gene2symbol, .xname = getNameInParent(x))
 }
 \arguments{
-\item{x}{Object class supporting \code{rownames}.
+\item{x}{Object class supporting \code{\link[base:rownames]{rownames()}}.
 All rownames in this object must intersect with the rownames defined in the
 \code{gene2symbol} argument.}
 
@@ -29,7 +29,7 @@ No value.
 Check that user-defined gene input matches expected values
 }
 \examples{
-x <- S4Vectors::DataFrame(
+x <- DataFrame(
     "sample1" = c(1L, 2L),
     "sample2" = c(3L, 4L),
     row.names = c("gene1", "gene2")
@@ -37,7 +37,7 @@ x <- S4Vectors::DataFrame(
 print(x)
 
 g2s <- Gene2Symbol(
-    object = S4Vectors::DataFrame(
+    object = DataFrame(
         geneID = c("ENSG00000000003", "ENSG00000000005"),
         geneName = c("TSPAN6", "TNMD"),
         row.names = rownames(x)
