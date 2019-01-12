@@ -16,7 +16,7 @@ Table captions. If \code{NULL}, the names of the list will be used automatically
 as captions.}
 
 \item{force}{\code{logical(1)}.
-Force knit output using \code{knitr::asis_output}.
+Force knit output using \code{\link[knitr:asis_output]{knitr::asis_output()}}.
 \emph{Recommended for development and unit testing only.}}
 }
 \value{
@@ -29,7 +29,7 @@ Force knit output using \code{knitr::asis_output}.
 Knit multiple tables in a single R Markdown chunk.
 }
 \note{
-\code{knitr::kable} now supports multiple tables as a \code{list} for the \code{x}
+\code{\link[knitr:kable]{knitr::kable()}} now supports multiple tables as a \code{list} for the \code{x}
 argument, but it still only supports a single caption. \code{markdownTables}
 extends this functionality, but supporting captions for each table.
 }

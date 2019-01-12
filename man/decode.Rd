@@ -24,5 +24,5 @@ x <- decode(mcols)
 lapply(x, class)
 }
 \seealso{
-\code{S4Vectors::decode}.
+\code{S4Vectors::decode()}.
 }

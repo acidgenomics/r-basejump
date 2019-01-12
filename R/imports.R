@@ -14,7 +14,7 @@
 #'   match setdiff t
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom transformer coerce
+#' @importMethodsFrom transformer as.data.frame coerce
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
@@ -69,9 +69,42 @@
 #' @importFrom tidyr gather separate
 #' @importFrom tidyselect everything matches
 #' @importFrom tibble as_tibble column_to_rownames tibble
+#' @importFrom transformer as_tibble
 #' @importFrom utils capture.output data getFromNamespace globalVariables
 #'   installed.packages packageVersion
 NULL
+
+
+
+#' @export
+BiocGenerics::as.data.frame
+
+#' @export
+SummarizedExperiment::assay
+
+#' @export
+SummarizedExperiment::assayNames
+
+#' @export
+SummarizedExperiment::assays
+
+#' @export
+SummarizedExperiment::colData
+
+#' @export
+SummarizedExperiment::rowData
+
+#' @export
+SummarizedExperiment::rowRanges
+
+#' @export
+magrittr::`%>%`
+
+#' @export
+tibble::as_tibble
+
+#' @export
+tibble::tibble
 
 
 
@@ -191,12 +224,6 @@ goalie::standardizeCall
 
 
 
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
-
-
-
 #' @importFrom syntactic camel
 #' @export
 syntactic::camel
@@ -227,14 +254,6 @@ syntactic::upperCamel
 #' @export
 transformer::as.SummarizedExperiment
 
-#' @importFrom transformer as.data.frame
-#' @export
-transformer::as.data.frame
-
-#' @importFrom transformer as_tibble
-#' @export
-transformer::as_tibble
-
 #' @importFrom transformer atomize
 #' @export
 transformer::atomize
@@ -251,7 +270,6 @@ transformer::factorize
 #' @export
 transformer::flatFiles
 
-# Re-export the S4 coercion methods in transformer.
 #' @exportMethod coerce
 NULL
 

@@ -8,10 +8,10 @@
 #'   [rowData][SummarizedExperiment::rowData]
 #'   [metadata][S4Vectors::metadata] must be identical.
 #' - [colData][SummarizedExperiment::colData] must contain the same columns.
-#' - Specific metadata must be identical (see `metadata` parameter).
+#' - Specific metadata must be identical (see `metadata` argument).
 #'
 #' @seealso
-#' - `BiocGenerics::combine`.
+#' - `BiocGenerics::combine()`.
 #' - `help("merge.Matrix", "Matrix.utils")`.
 #'
 #' @return `SummarizedExperiment`.

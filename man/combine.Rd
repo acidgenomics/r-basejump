@@ -48,7 +48,7 @@ We're attempting to make this as strict as possible, requiring:
 \link[SummarizedExperiment:rowData]{rowData}
 \link[S4Vectors:metadata]{metadata} must be identical.
 \item \link[SummarizedExperiment:colData]{colData} must contain the same columns.
-\item Specific metadata must be identical (see \code{metadata} parameter).
+\item Specific metadata must be identical (see \code{metadata} argument).
 }
 }
 \section{Methods}{
@@ -132,7 +132,7 @@ sampleData(c)
 }
 \seealso{
 \itemize{
-\item \code{BiocGenerics::combine}.
+\item \code{BiocGenerics::combine()}.
 \item \code{help("merge.Matrix", "Matrix.utils")}.
 }
 }

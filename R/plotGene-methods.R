@@ -11,9 +11,11 @@
 #'   Plot style.
 #'
 #' @return
-#' - `style = "facet"`: `ggplot` grouped by `sampleName`, with
-#'   `ggplot2::facet_wrap` applied to panel the samples.
-#' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
+#' - `style = "facet"`:
+#'     `ggplot` grouped by `sampleName`, with
+#'     [ggplot2::facet_wrap()] applied to panel the samples.
+#' - `style = "wide"`:
+#'     `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
 #' data(rse)

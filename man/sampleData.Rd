@@ -27,7 +27,7 @@
 
 \item{clean}{\code{logical(1)}.
 Only return \code{factor} columns. Useful when working with objects that contain
-metrics in \code{colData}.}
+metrics in \code{\link[SummarizedExperiment:colData]{colData()}}.}
 
 \item{blacklist}{\code{character}.
 Column names that should never be treated as sample-level metadata.

@@ -23,8 +23,9 @@ symbols (e.g. "TSPN6"), if possible.}
 
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
-\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
-must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
+\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
+name must be defined in
+\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
@@ -55,9 +56,11 @@ Plot style.}
 }
 \value{
 \itemize{
-\item \code{style = "facet"}: \code{ggplot} grouped by \code{sampleName}, with
-\code{ggplot2::facet_wrap} applied to panel the samples.
-\item \code{style = "wide"}: \code{ggplot} in wide format, with genes on the x-axis.
+\item \code{style = "facet"}:
+\code{ggplot} grouped by \code{sampleName}, with
+\code{\link[ggplot2:facet_wrap]{ggplot2::facet_wrap()}} applied to panel the samples.
+\item \code{style = "wide"}:
+\code{ggplot} in wide format, with genes on the x-axis.
 }
 }
 \description{

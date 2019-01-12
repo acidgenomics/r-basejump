@@ -3,7 +3,7 @@
 #' @inheritParams params
 #'
 #' @note `sampleID` column must be defined in
-#' [colData][SummarizedExperiment::colData].
+#' [`colData()`][SummarizedExperiment::colData].
 #'
 #' @return
 #' - `"factor"`: Named `factor` containing as the [levels][base::levels] and
