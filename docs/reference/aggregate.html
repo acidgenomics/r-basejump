@@ -155,19 +155,19 @@
       <td><p><code>factor</code>.
 Defines the aggregation groupings. The new aggregate names are defined as
 the <code>factor</code> <a href='https://www.rdocumentation.org/packages/base/topics/levels'>levels</a>, and the original, unaggregated names
-are defined as the <code>names</code>.</p></td>
+are defined as the <a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a>.</p></td>
     </tr>
     <tr>
       <th>fun</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Name of the aggregation function.
-Uses <a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a> internally.</p></td>
+Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a></code> internally.</p></td>
     </tr>
     <tr>
       <th>col</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Name of column in either <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData</a> or
-<a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a> that defines the desired
+Name of column in either <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData()</a></code> or
+<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData()</a></code> that defines the desired
 aggregation groupings.</p></td>
     </tr>
     </table>
@@ -189,22 +189,26 @@ sample replicates.</p>
 
     
     <ul>
-<li><p><code>matrix</code>, <code>sparseMatrix</code>: Aggregate rows or columns using a grouping
-<code>factor</code>.</p></li>
-<li><p><code>SummarizedExperiment</code>: Aggregate rows or columns of data slotted in
-<a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a> using an automatically generated
-grouping <code>factor</code>, which is obtained from a user-defined column (<code>col</code>
-argument) in either the <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData</a> or
-<a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a> of the object.
-Slot an <code>aggregate</code> column into <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData</a>
-for <code>aggregateRows()</code>, or into <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a>
-for <code>aggregateCols()</code>. This method will define the <code>groupings</code>
-automatically, and perform the aggregation.</p></li>
-<li><p><code>SingleCellExperiment</code>: Aggregate <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a>
-across cell-level groupings, defined by a column in
-<a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a>. Inherits from
+<li><p><code>matrix</code>, <code>sparseMatrix</code>:
+Aggregate rows or columns using a grouping <code>factor</code>.</p></li>
+<li><p><code>SummarizedExperiment</code>:
+Aggregate rows or columns of data slotted in
+<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays()</a></code> using an automatically
+generated grouping <code>factor</code>, which is obtained from a user-defined column
+(<code>col</code> argument) in either the
+<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData()</a></code> or
+<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData()</a></code> of the object. Slot an
+<code>aggregate</code> column into <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData()</a></code>
+for <code>aggregateRows()</code>, or into
+<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData()</a></code> for <code>aggregateCols()</code>. This
+method will define the <code>groupings</code> automatically, and perform the
+aggregation.</p></li>
+<li><p><code>SingleCellExperiment</code>:
+Aggregate <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays()</a></code> across cell-level
+groupings, defined by a column in
+<code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData()</a></code>. Inherits from
 <code>SummarizedExperiment</code>, and still relies upon slotting an <code>aggregate</code>
-column into <a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a>. Note that these
+column into <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData()</a></code>. Note that these
 groupings will map to cells, so care must be taken to properly aggregate
 samples.</p></li>
 </ul>
@@ -212,9 +216,9 @@ samples.</p></li>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/stats/topics/aggregate'>stats::aggregate</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/aggregate-methods'>S4Vectors::aggregate</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/Matrix.utils/topics/aggregate.Matrix'>Matrix.utils::aggregate.Matrix</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/stats/topics/aggregate'>stats::aggregate()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/aggregate-methods'>S4Vectors::aggregate()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/Matrix.utils/topics/aggregate.Matrix'>Matrix.utils::aggregate.Matrix()</a></code>.</p></li>
 </ul></div>
     
 
@@ -292,23 +296,14 @@ samples.</p></li>
 #&gt; transcript3                  1
 #&gt; transcript4                  .</div><div class='input'>
 <span class='co'>## SummarizedExperiment</span>
-<span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment</a></span>(
+<span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='fu'>SummarizedExperiment</span>(
     <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>counts</span> <span class='kw'>=</span> <span class='no'>sparse</span>),
-    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
+    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'>DataFrame</span>(
         <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>samples</span>),
         <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>samples</span>
     ),
-    <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(<span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>genes</span>)
-)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 4 4 
-#&gt; metadata(0):
-#&gt; assays(1): counts
-#&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
-#&gt; rowData names(1): aggregate
-#&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
-#&gt;   sample2_replicate2
-#&gt; colData names(2): sampleName aggregate</div><div class='input'>
+    <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='fu'>DataFrame</span>(<span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>genes</span>)
+)</div><div class='output co'>#&gt; <span class='error'>Error in SummarizedExperiment(assay = list(counts = sparse), colData = DataFrame(sampleName = names(samples),     aggregate = samples), rowData = DataFrame(aggregate = genes)): could not find function "SummarizedExperiment"</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(se): object 'se' not found</span></div><div class='input'>
 <span class='co'>## aggregateRows ====</span>
 <span class='fu'>aggregateRows</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
 #&gt; <span class='message'>Groupings:</span>
@@ -329,19 +324,7 @@ samples.</p></li>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
-#&gt; <span class='message'>Groupings:</span>
-#&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
-#&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
-#&gt; <span class='message'>Levels: gene1 gene2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 2 4 
-#&gt; metadata(0):
-#&gt; assays(1): counts
-#&gt; rownames(2): gene1 gene2
-#&gt; rowData names(0):
-#&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
-#&gt;   sample2_replicate2
-#&gt; colData names(2): sampleName aggregate</div><div class='input'>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='error'>Error in aggregateRows(se): object 'se' not found</span></div><div class='input'>
 <span class='co'>## aggregateCols ====</span>
 <span class='fu'>aggregateCols</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
 #&gt; <span class='message'>Groupings:</span>
@@ -360,18 +343,7 @@ samples.</p></li>
 #&gt; transcript1       1       2
 #&gt; transcript2       1       2
 #&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
-#&gt; <span class='message'>Groupings:</span>
-#&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
-#&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
-#&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 4 2 
-#&gt; metadata(1): aggregate
-#&gt; assays(1): counts
-#&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
-#&gt; rowData names(1): aggregate
-#&gt; colnames(2): sample1 sample2
-#&gt; colData names(1): sampleName</div></pre>
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='error'>Error in aggregateCols(se): object 'se' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
