@@ -22,11 +22,15 @@ Gene2Symbol(object, ...)
   format = c("makeUnique", "1:1", "long"))
 }
 \arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+
 \item{format}{\code{character(1)}.
 Formatting method to apply:
 \itemize{
 \item \code{"makeUnique"}: \emph{Recommended.}
-Apply \code{\link[base:make.unite]{make.unique()}} to the \code{geneName}
+Apply \code{\link[base:make.unique]{make.unique()}} to the \code{geneName}
 column. Gene symbols are made unique, while the gene IDs remain
 unmodified.
 \item \code{"1:1"}:

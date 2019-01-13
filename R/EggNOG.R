@@ -1,5 +1,6 @@
 #' @rdname EggNOG-class
 #' @export
+#' @inheritParams params
 #' @examples
 #' options(basejump.test = TRUE)
 #' x <- EggNOG()
