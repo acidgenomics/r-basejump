@@ -1,11 +1,12 @@
 #' @rdname Gene2Symbol-class
 #' @name Gene2Symbol
+#' @inheritParams params
 #'
 #' @param format `character(1)`.
 #'   Formatting method to apply:
 #'
 #'   - `"makeUnique"`: *Recommended.*
-#'       Apply [`make.unique()`][base::make.unite] to the `geneName`
+#'       Apply [`make.unique()`][base::make.unique] to the `geneName`
 #'       column. Gene symbols are made unique, while the gene IDs remain
 #'       unmodified.
 #'   - `"1:1"`:

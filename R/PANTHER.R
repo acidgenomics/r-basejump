@@ -1,5 +1,6 @@
 #' @rdname PANTHER-class
 #' @name PANTHER
+#' @inheritParams params
 #'
 #' @param organism `character(1)`.
 #'   Full Latin organism name.

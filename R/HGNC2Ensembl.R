@@ -1,5 +1,6 @@
 #' @rdname HGNC2Ensembl-class
 #' @export
+#' @inheritParams params
 #' @examples
 #' options(basejump.test = TRUE)
 #' x <- HGNC2Ensembl()
