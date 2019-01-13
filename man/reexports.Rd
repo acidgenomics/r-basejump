@@ -6,14 +6,14 @@
 %   R/convertSampleIDsToNames-methods.R, R/convertTranscriptsToGenes-methods.R,
 %   R/counts-methods.R, R/decode-methods.R, R/encode-methods.R,
 %   R/geneNames-methods.R, R/geometricMean-methods.R, R/headtail-methods.R,
-%   R/humanize-methods.R, R/imports.R, R/interestingGroups-methods.R,
+%   R/humanize-methods.R, R/interestingGroups-methods.R,
 %   R/logRatio-methods.R, R/mapGenes-methods.R, R/markdown-methods.R,
 %   R/meltCounts-methods.R, R/metrics-methods.R, R/organism-methods.R,
 %   R/plotCountsPerBiotype-methods.R, R/plotCountsPerGene-methods.R,
 %   R/plotGene-methods.R, R/plotGenderMarkers-methods.R,
 %   R/plotGenesDetected-methods.R, R/plotHeatmap-methods.R,
 %   R/plotPCA-methods.R, R/plotQC-methods.R, R/plotTotalCounts-methods.R,
-%   R/plotZerosVsDepth-methods.R, R/removeNA-methods.R,
+%   R/plotZerosVsDepth-methods.R, R/reexports.R, R/removeNA-methods.R,
 %   R/sampleData-methods.R, R/sampleNames-methods.R, R/sanitizeNA-methods.R,
 %   R/sanitizePercent-methods.R, R/selectSamples-methods.R,
 %   R/show-methods.R, R/stripTranscriptVersions-methods.R,
@@ -22,16 +22,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{as.data.frame}
-\alias{assay}
-\alias{assayNames}
-\alias{assays}
-\alias{colData}
-\alias{rowData}
-\alias{rowRanges}
-\alias{\%>\%}
-\alias{as_tibble}
-\alias{tibble}
 \alias{assignAndSaveData}
 \alias{basenameSansExt}
 \alias{dots}
@@ -60,12 +50,15 @@
 \alias{methodFormals}
 \alias{methodFunction}
 \alias{standardizeCall}
+\alias{\%>\%}
 \alias{camel}
 \alias{dotted}
 \alias{makeDimnames}
 \alias{makeNames}
 \alias{snake}
 \alias{upperCamel}
+\alias{as_tibble}
+\alias{tibble}
 \alias{as.SummarizedExperiment}
 \alias{atomize}
 \alias{coerceS4ToList}
@@ -80,7 +73,7 @@ below to see their documentation.
 \describe{
   \item{Biobase}{\code{\link[Biobase]{sampleNames}}, \code{\link[Biobase]{sampleNames<-}}}
 
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{combine}}, \code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{counts<-}}, \code{\link[BiocGenerics]{as.data.frame}}, \code{\link[BiocGenerics]{organism}}, \code{\link[BiocGenerics]{plotPCA}}}
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{combine}}, \code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{counts<-}}, \code{\link[BiocGenerics]{organism}}, \code{\link[BiocGenerics]{plotPCA}}}
 
   \item{bioverbs}{\code{\link[bioverbs]{aggregateRows}}, \code{\link[bioverbs]{aggregateCols}}, \code{\link[bioverbs]{aggregateCellsToSamples}}, \code{\link[bioverbs]{autopadZeros}}, \code{\link[bioverbs]{cell2sample}}, \code{\link[bioverbs]{collapseToString}}, \code{\link[bioverbs]{convertGenesToSymbols}}, \code{\link[bioverbs]{convertSymbolsToGenes}}, \code{\link[bioverbs]{convertSampleIDsToNames}}, \code{\link[bioverbs]{convertTranscriptsToGenes}}, \code{\link[bioverbs]{encode}}, \code{\link[bioverbs]{geneNames}}, \code{\link[bioverbs]{geometricMean}}, \code{\link[bioverbs]{headtail}}, \code{\link[bioverbs]{humanize}}, \code{\link[bioverbs]{interestingGroups}}, \code{\link[bioverbs]{interestingGroups<-}}, \code{\link[bioverbs]{foldChangeToLogRatio}}, \code{\link[bioverbs]{logRatioToFoldChange}}, \code{\link[bioverbs]{mapGenesToRownames}}, \code{\link[bioverbs]{mapGenesToIDs}}, \code{\link[bioverbs]{mapGenesToSymbols}}, \code{\link[bioverbs]{markdown}}, \code{\link[bioverbs]{meltCounts}}, \code{\link[bioverbs]{metrics}}, \code{\link[bioverbs]{metricsPerSample}}, \code{\link[bioverbs]{plotCountsPerBiotype}}, \code{\link[bioverbs]{plotCountsPerBroadClass}}, \code{\link[bioverbs]{plotCountsPerGene}}, \code{\link[bioverbs]{plotGene}}, \code{\link[bioverbs]{plotGenderMarkers}}, \code{\link[bioverbs]{plotGenesDetected}}, \code{\link[bioverbs]{plotHeatmap}}, \code{\link[bioverbs]{plotCorrelationHeatmap}}, \code{\link[bioverbs]{plotQuantileHeatmap}}, \code{\link[bioverbs]{plotQC}}, \code{\link[bioverbs]{plotTotalCounts}}, \code{\link[bioverbs]{plotZerosVsDepth}}, \code{\link[bioverbs]{removeNA}}, \code{\link[bioverbs]{sampleData}}, \code{\link[bioverbs]{sampleData<-}}, \code{\link[bioverbs]{sanitizeNA}}, \code{\link[bioverbs]{sanitizePercent}}, \code{\link[bioverbs]{selectSamples}}, \code{\link[bioverbs]{stripTranscriptVersions}}, \code{\link[bioverbs]{subsetPerSample}}, \code{\link[bioverbs]{topCellsPerSample}}, \code{\link[bioverbs]{uniteInterestingGroups}}, \code{\link[bioverbs]{zerosVsDepth}}}
 
@@ -95,8 +88,6 @@ below to see their documentation.
   \item{S4Vectors}{\code{\link[S4Vectors]{decode}}}
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
-
-  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowRanges}}}
 
   \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
