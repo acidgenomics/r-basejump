@@ -1,34 +1,51 @@
 # If we use re-exports approach here, these will break pkgdown links.
 
-#' @name colData
-#' @importFrom SummarizedExperiment colData
-#' @export
-#' @noRd
-NULL
-
+#' @rdname reexports
 #' @name DataFrame
 #' @importFrom S4Vectors DataFrame
 #' @export
-#' @noRd
 NULL
 
-
-#' @name rowRanges
-#' @importFrom SummarizedExperiment rowRanges
-#' @export
-#' @noRd
-NULL
-
+#' @rdname reexports
 #' @name SummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @export
-#' @noRd
 NULL
 
-#' @name tibble
-#' @importFrom tibble as_tibble
+#' @rdname reexports
+#' @name as.data.frame
+#' @importFrom BiocGenerics as.data.frame
 #' @export
-#' @noRd
+NULL
+
+#' @rdname reexports
+#' @name assays
+#' @importFrom SummarizedExperiment assays
+#' @export
+NULL
+
+#' @rdname reexports
+#' @name colData
+#' @importFrom SummarizedExperiment colData
+#' @export
+NULL
+
+#' @rdname reexports
+#' @name metadata
+#' @importFrom S4Vectors metadata
+#' @export
+NULL
+
+#' @rdname reexports
+#' @name rowRanges
+#' @importFrom SummarizedExperiment rowRanges
+#' @export
+NULL
+
+#' @rdname reexports
+#' @name tibble
+#' @importFrom tibble tibble
+#' @export
 NULL
 
 
