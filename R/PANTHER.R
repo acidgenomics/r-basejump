@@ -1,4 +1,5 @@
-# FIXME Now seeing some parsing errors with PANTHER 1.3 Homo sapiens...
+# FIXME Now seeing some parsing errors with PANTHER 13 Homo sapiens...
+# PANTHER 14: Warning: 5075 parsing failures.
 
 
 
