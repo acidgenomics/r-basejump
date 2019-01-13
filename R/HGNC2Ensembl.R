@@ -11,8 +11,7 @@ HGNC2Ensembl <-  # nolint
 
         if (isTRUE(getOption("basejump.test"))) {
             file <- pasteURL(
-                basejumpCacheURL,
-                "hgnc.txt.gz",
+                basejumpCacheURL, "hgnc.txt.gz",
                 protocol = "none"
             )
         } else {

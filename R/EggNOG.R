@@ -10,45 +10,33 @@ EggNOG <-  # nolint
         assert(hasInternet())
         if (isTRUE(getOption("basejump.test"))) {
             categoriesFile <- pasteURL(
-                basejumpCacheURL,
-                "cog.txt",
+                basejumpCacheURL, "cog.txt",
                 protocol = "none"
             )
             eunogFile <- pasteURL(
-                basejumpCacheURL,
-                "eunog.tsv.gz",
+                basejumpCacheURL, "eunog.tsv.gz",
                 protocol = "none"
             )
             nogFile <- pasteURL(
-                basejumpCacheURL,
-                "nog.tsv.gz",
+                basejumpCacheURL, "nog.tsv.gz",
                 protocol = "none"
             )
         } else {
             # EggNOG database doesn't support HTTPS currently.
             url <- pasteURL(
-                "eggnog5.embl.de",
-                "download",
-                "latest",
+                "eggnog5.embl.de", "download", "latest",
                 protocol = "http"
             )
             categoriesFile <- pasteURL(
-                url,
-                "COG_functional_categories.txt",
+                url, "COG_functional_categories.txt",
                 protocol = "none"
             )
             eunogFile <- pasteURL(
-                url,
-                "data",
-                "euNOG",
-                "euNOG.annotations.tsv.gz",
+                url, "data", "euNOG", "euNOG.annotations.tsv.gz",
                 protocol = "none"
             )
             nogFile <- pasteURL(
-                url,
-                "data",
-                "NOG",
-                "NOG.annotations.tsv.gz",
+                url, "data", "NOG", "NOG.annotations.tsv.gz",
                 protocol = "none"
             )
         }
