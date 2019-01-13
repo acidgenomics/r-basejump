@@ -4,9 +4,7 @@ globalVariables(".")
 
 packageVersion <- packageVersion("basejump")
 
-
-
-#' Basejump cache URL
+#' basejump package cache URL
 #' @keywords internal
 #' @export
 #' @examples
