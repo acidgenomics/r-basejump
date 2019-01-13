@@ -5,13 +5,7 @@ authors:
 reference:
   - title: S4 classes
     contents:
-    - starts_with("EggNOG")
-    - starts_with("Ensembl2Entrez")
-    - starts_with("Gene2Symbol")
-    - starts_with("HGNC2Ensembl")
-    - starts_with("MGI2Ensembl")
-    - starts_with("PANTHER")
-    - starts_with("Tx2Gene")
+    - ends_with("-class")
     - show
     - summary
   - title: Genome annotations

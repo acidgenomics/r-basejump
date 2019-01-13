@@ -21,14 +21,6 @@
 %   R/uniteInterestingGroups-methods.R, R/zerosVsDepth-methods.R
 \docType{import}
 \name{reexports}
-\alias{DataFrame}
-\alias{SummarizedExperiment}
-\alias{as.data.frame}
-\alias{assays}
-\alias{colData}
-\alias{metadata}
-\alias{rowRanges}
-\alias{tibble}
 \alias{reexports}
 \alias{assignAndSaveData}
 \alias{basenameSansExt}
@@ -66,6 +58,7 @@
 \alias{snake}
 \alias{upperCamel}
 \alias{as_tibble}
+\alias{tibble}
 \alias{as.SummarizedExperiment}
 \alias{atomize}
 \alias{coerceS4ToList}

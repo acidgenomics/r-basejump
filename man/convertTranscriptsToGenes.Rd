@@ -29,7 +29,7 @@ Transcript-to-gene mappings.}
 For objects supporting \link[base:dim]{dim}, aggregate counts to gene level and
 collapse the matrix.}
 
-\item{...}{Passthrough to \link{makeTx2GeneFromEnsembl}.}
+\item{...}{Passthrough to \code{\link[=makeTx2GeneFromEnsembl]{makeTx2GeneFromEnsembl()}}.}
 }
 \value{
 \itemize{

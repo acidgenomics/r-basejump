@@ -22,7 +22,7 @@ Both gene- and transcript-level counts are supported, as long as they
 were imported using a tximport caller (e.g. salmon, kallisto).
 }
 \examples{
-se <- SummarizedExperiment(
+se <- SummarizedExperiment::SummarizedExperiment(
     assays = list(
         tpm = matrix(
             data = seq_len(4L),

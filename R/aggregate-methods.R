@@ -104,13 +104,13 @@
 #' print(sparse)
 #'
 #' ## SummarizedExperiment
-#' se <- SummarizedExperiment(
+#' se <- SummarizedExperiment::SummarizedExperiment(
 #'     assay = list(counts = sparse),
-#'     colData = DataFrame(
+#'     colData = S4Vectors::DataFrame(
 #'         sampleName = names(samples),
 #'         aggregate = samples
 #'     ),
-#'     rowData = DataFrame(aggregate = genes)
+#'     rowData = S4Vectors::DataFrame(aggregate = genes)
 #' )
 #' print(se)
 #'
@@ -488,15 +488,15 @@ aggregateCols.SingleCellExperiment <-  # nolint
 
         # Now ready to generate aggregated SCE.
         sce <- makeSingleCellExperiment(
-            assays = assays(rse),
-            rowRanges = rowRanges(object),
-            colData = colData(rse),
+            assays = SummarizedExperiment::assays(rse),
+            rowRanges = SummarizedExperiment::rowRanges(object),
+            colData = SummarizedExperiment::colData(rse),
             metadata = list(
                 aggregate = TRUE,
                 aggregateCols = groupings,
                 interestingGroups = interestingGroups(object)
             ),
-            spikeNames = spikeNames(object)
+            spikeNames = SingleCellExperiment::spikeNames(object)
         )
         validObject(sce)
         sce

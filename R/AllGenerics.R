@@ -1,4 +1,4 @@
-#' @rdname Ensembl2Entrez
+#' @rdname Ensembl2Entrez-class
 #' @export
 setGeneric(
     name = "Ensembl2Entrez",
@@ -9,7 +9,7 @@ setGeneric(
 
 
 
-#' @rdname Gene2Symbol
+#' @rdname Gene2Symbol-class
 #' @export
 setGeneric(
     name = "Gene2Symbol",
@@ -20,7 +20,7 @@ setGeneric(
 
 
 
-#' @rdname Tx2Gene
+#' @rdname Tx2Gene-class
 #' @export
 setGeneric(
     name = "Tx2Gene",

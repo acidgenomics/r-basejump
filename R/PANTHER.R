@@ -1,6 +1,5 @@
+#' @rdname PANTHER-class
 #' @name PANTHER
-#' @inherit PANTHER-class
-#' @inheritParams params
 #'
 #' @param organism `character(1)`.
 #'   Full Latin organism name.
@@ -140,7 +139,7 @@ NULL
 
 
 
-#' @rdname PANTHER
+#' @rdname PANTHER-class
 #' @export
 PANTHER <- function(  # nolint
     organism,

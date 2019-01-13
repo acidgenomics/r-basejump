@@ -9,7 +9,7 @@
 #' @return `matrix`.
 #'
 #' @examples
-#' se <- SummarizedExperiment(
+#' se <- SummarizedExperiment::SummarizedExperiment(
 #'     assays = list(
 #'         tpm = matrix(
 #'             data = seq_len(4L),

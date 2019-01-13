@@ -45,7 +45,7 @@ to <- removeNA(from)
 print(to)
 
 ## DataFrame ====
-from <- DataFrame(
+from <- S4Vectors::DataFrame(
     a = c("A", NA, "C"),
     b = c(NA, NA, NA),
     c = c("B", NA, "D")

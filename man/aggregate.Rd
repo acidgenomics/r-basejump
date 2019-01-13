@@ -139,13 +139,13 @@ class(sparse)
 print(sparse)
 
 ## SummarizedExperiment
-se <- SummarizedExperiment(
+se <- SummarizedExperiment::SummarizedExperiment(
     assay = list(counts = sparse),
-    colData = DataFrame(
+    colData = S4Vectors::DataFrame(
         sampleName = names(samples),
         aggregate = samples
     ),
-    rowData = DataFrame(aggregate = genes)
+    rowData = S4Vectors::DataFrame(aggregate = genes)
 )
 print(se)
 
