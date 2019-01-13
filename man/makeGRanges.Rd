@@ -78,9 +78,10 @@ the metadata columns.
 
 Remote URLs and compressed files are supported.
 
-\item \code{annotable}: \code{annotable} is a legacy convenience function that calls
-\code{makeGRangesFromEnsembl} and returns a \code{tibble} instead of \code{GRanges}. Note
-that \code{GRanges} can also be coercing using \code{BiocGenerics::as.data.frame}.
+\item \code{annotable}: \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
+\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
+that \code{GRanges} can also be coercing using
+\code{\link[BiocGenerics:as.data.frame]{as.data.frame()}}.
 }}
 
 \section{Broad class definitions}{
@@ -138,7 +139,7 @@ summary(x)
 \itemize{
 \item \href{https://bioconductor.org/packages/AnnotationHub/}{AnnotationHub}.
 \item \href{https://bioconductor.org/packages/ensembldb/}{ensembldb}.
-\item \code{rtracklayer::import}.
-\item \code{GenomicFeatures::makeTxDbFromGFF}.
+\item \code{rtracklayer::import()}.
+\item \code{GenomicFeatures::makeTxDbFromGFF()}.
 }
 }

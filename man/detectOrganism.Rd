@@ -22,7 +22,7 @@ we can skip transgenes or spike-ins. The function fails after a maximum of 50
 unknowns, for speed.
 }
 \note{
-\code{BiocGenerics::organism} \code{character} method conflicts with annotate
+\code{\link[BiocGenerics:organism]{BiocGenerics::organism()}} \code{character} method conflicts with annotate
 package, which gets loaded into the namespace when DESeq2 is attached.
 Instead, we're exporting the character method here as a separate function
 named \code{detectOrganism}.
@@ -61,5 +61,5 @@ detectOrganism(c("EGFP", "TDTOMATO", "ENSG00000000003"))
 detectOrganism(c("ENSG00000000003", "ENSMUSG00000000001"))
 }
 \seealso{
-\code{BiocGenerics::organism}.
+\code{BiocGenerics::organism()}.
 }

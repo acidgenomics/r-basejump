@@ -1,9 +1,5 @@
-# FIXME Now seeing some parsing errors with PANTHER 1.3 Homo sapiens...
-
-
-
+#' @rdname PANTHER-class
 #' @name PANTHER
-#' @inherit PANTHER-class
 #' @inheritParams params
 #'
 #' @param organism `character(1)`.
@@ -20,7 +16,7 @@
 #'   the PANTHER website for a list of release versions available from the FTP
 #'   server (e.g. `"13.0"`).
 #' @param progress `logical(1)`.
-#'   Use `pbapply::pblapply` to show progress.
+#'   Use [pbapply::pblapply()] to show progress.
 #'
 #' @examples
 #' options(basejump.test = TRUE)
@@ -40,9 +36,12 @@ NULL
 
 
 .splitTerms <- function(x, progress = FALSE) {
+    # This step is CPU intensive, so optionally enable progress bar.
+    # Alternatively, consider switching to BiocParallel bpparam usage here.
     if (isTRUE(progress)) {
         message(deparse(substitute(x)))
-        lapply <- pblapply
+        requireNamespace("pbapply", quietly = TRUE)
+        lapply <- pbapply::pblapply
     }
     lapply(x, function(x) {
         x <- x %>%
@@ -141,7 +140,7 @@ NULL
 
 
 
-#' @rdname PANTHER
+#' @rdname PANTHER-class
 #' @export
 PANTHER <- function(  # nolint
     organism,
@@ -168,8 +167,7 @@ PANTHER <- function(  # nolint
 
     if (isTRUE(getOption("basejump.test"))) {
         file <- pasteURL(
-            basejumpCacheURL,
-            paste0("PTHR13.1_", pantherName, ".gz"),
+            basejumpCacheURL, paste0("PTHR13.1_", pantherName, ".gz"),
             protocol = "none"
         )
     } else {

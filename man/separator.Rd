@@ -4,8 +4,7 @@
 \alias{separator}
 \title{Separator bar}
 \usage{
-separator(sep = c("─", "=", "-", "+"),
-  times = min(c(getOption("width", 72L), 72L)))
+separator(sep = "=", times = min(c(getOption("width", 72L), 72L)))
 }
 \arguments{
 \item{sep}{\code{character(1)}.

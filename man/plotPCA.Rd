@@ -18,8 +18,9 @@
 
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
-\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
-must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
+\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
+name must be defined in
+\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
@@ -50,9 +51,8 @@ Plot title.}
 Plot subtitle.}
 
 \item{return}{\code{character(1)}.
-Return type.
-Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
-argument in the \code{character} vector.}
+Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
+to the first argument in the \code{character} vector.}
 
 \item{...}{Additional arguments.}
 }
@@ -82,7 +82,7 @@ plotPCA(rse, label = TRUE)
 Jolliffe, et al., 2002.
 }
 \seealso{
-\code{DESeq2::plotPCA}.
+\code{DESeq2::plotPCA()}.
 
 We're using a modified version of the \code{DESeqTransform} method here.\preformatted{methodFunction(
     f = "plotPCA",

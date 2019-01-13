@@ -31,7 +31,7 @@ useful for plots and doesn't have to match the column names of a
 \item \code{filename} (use \code{fileName}).
 \item \code{rowname}.
 \item \code{sample}. Too vague. Does this represent an ID or human readable name?
-\item \code{samplename} (use \code{sampleName}),
+\item \code{samplename} (use \code{sampleName}).
 }
 \item \code{sampleName} column is always placed first.
 }

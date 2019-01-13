@@ -13,8 +13,9 @@ Aspect ratio.}
 
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
-\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
-must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
+\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
+name must be defined in
+\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
 \item{assays}{\code{list}.
 Count matrices, which must have matching dimensions. Counts can be passed
@@ -82,12 +83,12 @@ ensembldb in use.}
 
 \item{envir}{\code{environment}.
 Environment to use for assignment. Defaults to
-\link[base:parent.frame]{parent.frame()}, which will assign into the calling
+\code{\link[base:parent.frame]{parent.frame()}}, which will assign into the calling
 environment.}
 
 \item{expression}{\code{character(1)}.
 Calculation to apply.
-Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
+Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to the first
 argument in the \code{character} vector.}
 
 \item{file}{\code{character(1)}.
@@ -119,9 +120,8 @@ defaults to the most recent build available. Note: don't pass in UCSC build
 IDs (e.g. \code{"hg38"}).}
 
 \item{geom}{\code{character(1)}.
-Plot type.
-Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
-argument in the \code{character} vector.}
+Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
+the first argument in the \code{character} vector.}
 
 \item{gffFile}{\code{character(1)}.
 GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
@@ -218,13 +218,12 @@ Show progress, using progress bars.}
 
 \item{reducedDim}{\code{character(1)}.
 Name of reduced dimension matrix slotted in
-\link[SingleCellExperiment:reducedDims]{reducedDims}. Includes TNSE, UMAP, PCA,
-for example.}
+\code{\link[SingleCellExperiment:reducedDims]{reducedDims()}}.
+Includes TNSE, UMAP, PCA, for example.}
 
 \item{return}{\code{character(1)}.
-Return type.
-Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
-argument in the \code{character} vector.}
+Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
+to the first argument in the \code{character} vector.}
 
 \item{rowData}{\code{DataFrame}.
 Metadata describing the assay rows, if genomic ranges are not available.

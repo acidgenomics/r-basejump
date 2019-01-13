@@ -9,9 +9,24 @@ sanitizeSampleData(object)
 \arguments{
 \item{object}{Object.}
 }
+\value{
+\code{DataFrame}.
+Sanitized data frame containing only non-blacklisted columns and all
+\code{character} columns coerced to \code{factor} (i.e. \code{stringsAsFactors}).
+}
 \description{
 Sanitize sample data
 }
+\section{Blacklist}{
+
+
+Here's the current column blacklist:
+\itemize{
+\item interestingGroups.
+\item sampleID.
+}
+}
+
 \examples{
 data(rse)
 from <- sampleData(rse)

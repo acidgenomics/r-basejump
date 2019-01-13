@@ -10,17 +10,11 @@
 #' @examples
 #' data(sce)
 #' object <- sce
-#'
-#' assays <- SummarizedExperiment::assays(object)
-#' rowRanges <- SummarizedExperiment::rowRanges(object)
-#' colData <- SummarizedExperiment::colData(object)
-#' metadata <- S4Vectors::metadata(object)
-#'
 #' x <- makeSingleCellExperiment(
-#'     assays = assays,
-#'     rowRanges = rowRanges,
-#'     colData = colData,
-#'     metadata = metadata
+#'     assays = SummarizedExperiment::assays(object),
+#'     rowRanges = SummarizedExperiment::rowRanges(object),
+#'     colData = SummarizedExperiment::colData(object),
+#'     metadata = S4Vectors::metadata(object)
 #' )
 #' print(x)
 makeSingleCellExperiment <- function(

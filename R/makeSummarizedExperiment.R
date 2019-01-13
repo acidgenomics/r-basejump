@@ -7,7 +7,7 @@
 #'
 #' - `date`: Today's date, returned from `Sys.Date`.
 #' - `wd`: Working directory, returned from `getwd`.
-#' - `sessionInfo`: `sessioninfo::session_info` return.
+#' - `sessionInfo`: [sessioninfo::session_info()] return.
 #'
 #' @note Column and rows always return sorted alphabetically.
 #'
@@ -20,8 +20,8 @@
 #' - Providing `rowData`: `SummarizedExperiment`.
 #'
 #' @seealso
-#' - `SummarizedExperiment::SummarizedExperiment`.
-#' - `SingleCellExperiment::SingleCellExperiment`.
+#' - `SummarizedExperiment::SummarizedExperiment()`.
+#' - `SingleCellExperiment::SingleCellExperiment()`.
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.
@@ -67,7 +67,7 @@
 #' print(rowRanges)
 #'
 #' ## Column data
-#' colData <- DataFrame(
+#' colData <- S4Vectors::DataFrame(
 #'     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
 #'     age = rep(c(3L, 6L), 2L),
 #'     row.names = samples

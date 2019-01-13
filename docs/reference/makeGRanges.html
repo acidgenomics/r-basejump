@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.4</span>
       </span>
     </div>
 
@@ -191,9 +191,10 @@ using a GTF file instead of a GFF3 file, if possible.</p>
 <p>The UCSC website has detailed conventions on the GFF3 format, including
 the metadata columns.</p>
 <p>Remote URLs and compressed files are supported.</p></li>
-<li><p><code>annotable</code>: <code>annotable</code> is a legacy convenience function that calls
-<code>makeGRangesFromEnsembl</code> and returns a <code>tibble</code> instead of <code>GRanges</code>. Note
-that <code>GRanges</code> can also be coercing using <code><a href='https://www.rdocumentation.org/packages/BiocGenerics/topics/as.data.frame'>BiocGenerics::as.data.frame</a></code>.</p></li>
+<li><p><code>annotable</code>: <code>annotable()</code> is a legacy convenience function that calls
+<code>makeGRangesFromEnsembl()</code> and returns a <code>tibble</code> instead of <code>GRanges</code>. Note
+that <code>GRanges</code> can also be coercing using
+<code><a href='https://www.rdocumentation.org/packages/BiocGenerics/topics/as.data.frame'>as.data.frame()</a></code>.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="broad-class-definitions"><a class="anchor" href="#broad-class-definitions"></a>Broad class definitions</h2>
@@ -225,8 +226,8 @@ GENCODE or Ensembl.</p>
     <div class='dont-index'><ul>
 <li><p><a href='https://bioconductor.org/packages/AnnotationHub/'>AnnotationHub</a>.</p></li>
 <li><p><a href='https://bioconductor.org/packages/ensembldb/'>ensembldb</a>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/rtracklayer/topics/export'>rtracklayer::import</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/GenomicFeatures/topics/makeTxDbFromGFF'>GenomicFeatures::makeTxDbFromGFF</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/rtracklayer/topics/export'>rtracklayer::import()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/GenomicFeatures/topics/makeTxDbFromGFF'>GenomicFeatures::makeTxDbFromGFF()</a></code>.</p></li>
 </ul></div>
     
 

@@ -15,41 +15,45 @@
 #'
 #' @section Methods (by class):
 #'
-#' - `matrix`, `sparseMatrix`: Aggregate rows or columns using a grouping
-#'   `factor`.
-#' - `SummarizedExperiment`: Aggregate rows or columns of data slotted in
-#'   [assays][SummarizedExperiment::assays] using an automatically generated
-#'   grouping `factor`, which is obtained from a user-defined column (`col`
-#'   argument) in either the [rowData][SummarizedExperiment::rowData] or
-#'   [colData][SummarizedExperiment::colData] of the object.
-#'   Slot an `aggregate` column into [rowData][SummarizedExperiment::rowData]
-#'   for [aggregateRows()], or into [colData][SummarizedExperiment::colData]
-#'   for [aggregateCols()]. This method will define the `groupings`
-#'   automatically, and perform the aggregation.
-#' - `SingleCellExperiment`: Aggregate [assays][SummarizedExperiment::assays]
-#'   across cell-level groupings, defined by a column in
-#'   [colData][SummarizedExperiment::colData]. Inherits from
-#'   `SummarizedExperiment`, and still relies upon slotting an `aggregate`
-#'   column into [colData][SummarizedExperiment::colData]. Note that these
-#'   groupings will map to cells, so care must be taken to properly aggregate
-#'   samples.
+#' - `matrix`, `sparseMatrix`:
+#'     Aggregate rows or columns using a grouping `factor`.
+#' - `SummarizedExperiment`:
+#'     Aggregate rows or columns of data slotted in
+#'     [`assays()`][SummarizedExperiment::assays] using an automatically
+#'     generated grouping `factor`, which is obtained from a user-defined column
+#'     (`col` argument) in either the
+#'     [`rowData()`][SummarizedExperiment::rowData] or
+#'     [`colData()`][SummarizedExperiment::colData] of the object. Slot an
+#'     `aggregate` column into [`rowData()`][SummarizedExperiment::rowData]
+#'     for [aggregateRows()], or into
+#'     [`colData()`][SummarizedExperiment::colData] for [aggregateCols()]. This
+#'     method will define the `groupings` automatically, and perform the
+#'     aggregation.
+#' - `SingleCellExperiment`:
+#'     Aggregate [`assays()`][SummarizedExperiment::assays] across cell-level
+#'     groupings, defined by a column in
+#'     [`colData()`][SummarizedExperiment::colData]. Inherits from
+#'     `SummarizedExperiment`, and still relies upon slotting an `aggregate`
+#'     column into [`colData()`][SummarizedExperiment::colData]. Note that these
+#'     groupings will map to cells, so care must be taken to properly aggregate
+#'     samples.
 #'
 #' @param groupings `factor`.
 #'   Defines the aggregation groupings. The new aggregate names are defined as
 #'   the `factor` [levels][base::levels], and the original, unaggregated names
-#'   are defined as the `names`.
+#'   are defined as the [names][base::names].
 #' @param col `character(1)`.
-#'   Name of column in either [rowData][SummarizedExperiment::rowData] or
-#'   [colData][SummarizedExperiment::colData] that defines the desired
+#'   Name of column in either [`rowData()`][SummarizedExperiment::rowData] or
+#'   [`colData()`][SummarizedExperiment::colData] that defines the desired
 #'   aggregation groupings.
 #' @param fun `character(1)`.
 #'   Name of the aggregation function.
-#'   Uses [match.arg()][base::match.arg] internally.
+#'   Uses [`match.arg()`][base::match.arg] internally.
 #'
 #' @seealso
-#' - `stats::aggregate`.
-#' - `S4Vectors::aggregate`.
-#' - `Matrix.utils::aggregate.Matrix`.
+#' - `stats::aggregate()`.
+#' - `S4Vectors::aggregate()`.
+#' - `Matrix.utils::aggregate.Matrix()`.
 #'
 #' @return Modified object, with aggregated rows (features) or columns
 #'   (samples).
@@ -484,15 +488,15 @@ aggregateCols.SingleCellExperiment <-  # nolint
 
         # Now ready to generate aggregated SCE.
         sce <- makeSingleCellExperiment(
-            assays = assays(rse),
-            rowRanges = rowRanges(object),
-            colData = colData(rse),
+            assays = SummarizedExperiment::assays(rse),
+            rowRanges = SummarizedExperiment::rowRanges(object),
+            colData = SummarizedExperiment::colData(rse),
             metadata = list(
                 aggregate = TRUE,
                 aggregateCols = groupings,
                 interestingGroups = interestingGroups(object)
             ),
-            spikeNames = spikeNames(object)
+            spikeNames = SingleCellExperiment::spikeNames(object)
         )
         validObject(sce)
         sce

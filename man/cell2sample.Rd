@@ -13,9 +13,8 @@
 \item{object}{Object.}
 
 \item{return}{\code{character(1)}.
-Return type.
-Uses \link[base:match.arg]{match.arg()} internally and defaults to the first
-argument in the \code{character} vector.}
+Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
+to the first argument in the \code{character} vector.}
 }
 \value{
 \itemize{
@@ -29,7 +28,7 @@ Cell-to-sample mappings
 }
 \note{
 \code{sampleID} column must be defined in
-\link[SummarizedExperiment:colData]{colData}.
+\code{\link[SummarizedExperiment:colData]{colData()}}.
 }
 \examples{
 data(sce)

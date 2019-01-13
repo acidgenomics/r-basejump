@@ -60,8 +60,9 @@
 
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
-\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
-must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
+\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
+name must be defined in
+\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
@@ -72,7 +73,7 @@ Whether the values should be centered and scaled in either the row or
 column direction ("\code{row}", "\code{column}"), or remain unscaled ("\code{none}").}
 
 \item{clusteringMethod}{\code{character(1)}.
-Clustering method. Accepts the same values as \code{stats::hclust}.}
+Clustering method. Accepts the same values as \code{\link[stats:hclust]{stats::hclust()}}.}
 
 \item{clusterRows, clusterCols}{\code{logical(1)}.
 Arrange with hierarchical clustering.}

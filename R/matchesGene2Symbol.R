@@ -4,7 +4,7 @@
 #' @inherit params
 #'
 #' @inheritParams goalie::params
-#' @param x Object class supporting `rownames`.
+#' @param x Object class supporting [`rownames()`][base::rownames].
 #'   All rownames in this object must intersect with the rownames defined in the
 #'   `gene2symbol` argument.
 #'
