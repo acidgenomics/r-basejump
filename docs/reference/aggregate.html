@@ -303,7 +303,16 @@ samples.</p></li>
         <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>samples</span>
     ),
     <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='fu'>DataFrame</span>(<span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>genes</span>)
-)</div><div class='output co'>#&gt; <span class='error'>Error in SummarizedExperiment(assay = list(counts = sparse), colData = DataFrame(sampleName = names(samples),     aggregate = samples), rowData = DataFrame(aggregate = genes)): could not find function "SummarizedExperiment"</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(se): object 'se' not found</span></div><div class='input'>
+)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 4 4 
+#&gt; metadata(0):
+#&gt; assays(1): counts
+#&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
+#&gt; rowData names(1): aggregate
+#&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
+#&gt;   sample2_replicate2
+#&gt; colData names(2): sampleName aggregate</div><div class='input'>
 <span class='co'>## aggregateRows ====</span>
 <span class='fu'>aggregateRows</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
 #&gt; <span class='message'>Groupings:</span>
@@ -324,7 +333,19 @@ samples.</p></li>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='error'>Error in aggregateRows(se): object 'se' not found</span></div><div class='input'>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+#&gt; <span class='message'>Groupings:</span>
+#&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
+#&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
+#&gt; <span class='message'>Levels: gene1 gene2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 2 4 
+#&gt; metadata(0):
+#&gt; assays(1): counts
+#&gt; rownames(2): gene1 gene2
+#&gt; rowData names(0):
+#&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
+#&gt;   sample2_replicate2
+#&gt; colData names(2): sampleName aggregate</div><div class='input'>
 <span class='co'>## aggregateCols ====</span>
 <span class='fu'>aggregateCols</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
 #&gt; <span class='message'>Groupings:</span>
@@ -343,7 +364,18 @@ samples.</p></li>
 #&gt; transcript1       1       2
 #&gt; transcript2       1       2
 #&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='error'>Error in aggregateCols(se): object 'se' not found</span></div></pre>
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+#&gt; <span class='message'>Groupings:</span>
+#&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
+#&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
+#&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 4 2 
+#&gt; metadata(1): aggregate
+#&gt; assays(1): counts
+#&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
+#&gt; rowData names(1): aggregate
+#&gt; colnames(2): sample1 sample2
+#&gt; colData names(1): sampleName</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
