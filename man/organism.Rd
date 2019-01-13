@@ -26,6 +26,10 @@
 \arguments{
 \item{object}{Object.}
 }
+\value{
+\code{character(1)}.
+Latin organism name (e.g. \emph{Homo sapiens}).
+}
 \description{
 Organism
 }
@@ -34,5 +38,5 @@ data(rse)
 organism(rse)
 }
 \seealso{
-\code{detectOrganism}.
+\code{detectOrganism()}.
 }

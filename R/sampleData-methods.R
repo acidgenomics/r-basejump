@@ -4,7 +4,7 @@
 #'
 #' @param clean `logical(1)`.
 #'   Only return `factor` columns. Useful when working with objects that contain
-#'   metrics in `colData`.
+#'   metrics in [`colData()`][SummarizedExperiment::colData].
 #' @param blacklist `character`.
 #'   Column names that should never be treated as sample-level metadata.
 #'   Applicable only to `SingleCellExperiment` objects.

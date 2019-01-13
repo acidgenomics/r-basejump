@@ -16,11 +16,10 @@
 #'
 #' @examples
 #' cat(separator(sep = "=", times = 10L))
-separator <- function(
-    sep = c("\u2500", "=", "-", "+"),
-    times = min(c(getOption("width", 72L), 72L))
-) {
-    sep <- match.arg(sep)
-    assert(isInt(times))
+separator <- function(sep = "=", times = min(c(getOption("width", 72L), 72L))) {
+    assert(
+        isString(sep), nchar(sep) == 1L,
+        isInt(times)
+    )
     paste0(rep(x = sep, times = times), collapse = "")
 }

@@ -68,7 +68,7 @@ constructor by slotting useful session information into the metadata slot:" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.4</span>
       </span>
     </div>
 
@@ -172,14 +172,14 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></
     <ul>
 <li><p><code>date</code>: Today's date, returned from <code>Sys.Date</code>.</p></li>
 <li><p><code>wd</code>: Working directory, returned from <code>getwd</code>.</p></li>
-<li><p><code>sessionInfo</code>: <code><a href='https://www.rdocumentation.org/packages/sessioninfo/topics/session_info'>sessioninfo::session_info</a></code> return.</p></li>
+<li><p><code>sessionInfo</code>: <code><a href='https://www.rdocumentation.org/packages/sessioninfo/topics/session_info'>sessioninfo::session_info()</a></code> return.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::SummarizedExperiment</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/SingleCellExperiment/topics/SingleCellExperiment'>SingleCellExperiment::SingleCellExperiment</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::SummarizedExperiment()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/SingleCellExperiment/topics/SingleCellExperiment'>SingleCellExperiment::SingleCellExperiment()</a></code>.</p></li>
 <li><p><code><a href='https://www.rdocumentation.org/packages/utils/topics/help'>help("RangedSummarizedExperiment-class", "SummarizedExperiment")</a></code>.</p></li>
 <li><p><code><a href='https://www.rdocumentation.org/packages/utils/topics/help'>help("SummarizedExperiment-class", "SummarizedExperiment")</a></code>.</p></li>
 <li><p><code><a href='https://www.rdocumentation.org/packages/utils/topics/help'>help("SingleCellExperiment-class", "SingleCellExperiment")</a></code>.</p></li>
@@ -189,17 +189,11 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>sce</span>)
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-
-<span class='no'>assays</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a></span>(<span class='no'>object</span>)
-<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>object</span>)
-<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>object</span>)
-<span class='no'>metadata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/Annotated-class'>metadata</a></span>(<span class='no'>object</span>)
-
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeSingleCellExperiment</span>(
-    <span class='kw'>assays</span> <span class='kw'>=</span> <span class='no'>assays</span>,
-    <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='no'>rowRanges</span>,
-    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>,
-    <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='no'>metadata</span>
+    <span class='kw'>assays</span> <span class='kw'>=</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a></span>(<span class='no'>object</span>),
+    <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>object</span>),
+    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>object</span>),
+    <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/Annotated-class'>metadata</a></span>(<span class='no'>object</span>)
 )
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 500 100 

@@ -12,7 +12,7 @@ rse
 Gene-level RNA-seq data set.
 }
 \details{
-Generated with \code{DESeq2::makeExampleDESeqDataSet}. Contains actual gene
+Generated with \code{DESeq2::makeExampleDESeqDataSet()}. Contains actual gene
 identifiers and Ensembl annotations.
 }
 \examples{

@@ -14,8 +14,9 @@
 
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
-\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
-must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
+\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
+name must be defined in
+\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
 \item{nonzeroGenes}{\code{logical(1)}.
 Return only non-zero genes.}

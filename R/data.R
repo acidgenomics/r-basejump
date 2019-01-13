@@ -34,7 +34,7 @@
 #'
 #' Gene-level RNA-seq data set.
 #'
-#' Generated with `DESeq2::makeExampleDESeqDataSet`. Contains actual gene
+#' Generated with `DESeq2::makeExampleDESeqDataSet()`. Contains actual gene
 #' identifiers and Ensembl annotations.
 #'
 #' @examples

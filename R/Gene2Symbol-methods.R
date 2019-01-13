@@ -1,17 +1,21 @@
+#' @rdname Gene2Symbol-class
 #' @name Gene2Symbol
-#' @inherit Gene2Symbol-class
 #' @inheritParams params
 #'
 #' @param format `character(1)`.
 #'   Formatting method to apply:
 #'
-#'   - `"makeUnique"`: *Recommended.* Apply `make.unique` to the `geneName`
-#'     column. Gene symbols are made unique, while the gene IDs remain
-#'     unmodified.
-#'   - `"1:1"`: For gene symbols that map to multiple gene IDs, select only the
-#'     first annotated gene ID.
-#'   - `"long"`: Return `geneID` and `geneName` columns unmodified in long
-#'     format.
+#'   - `"makeUnique"`: *Recommended.*
+#'       Apply [`make.unique()`][base::make.unique] to the `geneName`
+#'       column. Gene symbols are made unique, while the gene IDs remain
+#'       unmodified.
+#'   - `"1:1"`:
+#'       For gene symbols that map to multiple gene IDs, select only the
+#'       first annotated gene ID.
+#'   - `"long"`:
+#'       Return `geneID` and `geneName` columns unmodified in long format.
+#'
+#' @seealso `makeGene2Symbol()`.
 #'
 #' @examples
 #' data(rse)
@@ -77,7 +81,7 @@ Gene2Symbol.DataFrame <-  # nolint
 
 
 
-#' @rdname Gene2Symbol
+#' @rdname Gene2Symbol-class
 #' @export
 setMethod(
     f = "Gene2Symbol",
@@ -99,7 +103,7 @@ formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
 
 
 
-#' @rdname Gene2Symbol
+#' @rdname Gene2Symbol-class
 #' @export
 setMethod(
     f = "Gene2Symbol",
@@ -121,7 +125,7 @@ formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
 
 
 
-#' @rdname Gene2Symbol
+#' @rdname Gene2Symbol-class
 #' @export
 setMethod(
     f = "Gene2Symbol",

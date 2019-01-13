@@ -42,7 +42,7 @@ panel borders.}
 Complete \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
 \details{
-All themes are based off of \code{ggplot2::theme_linedraw}, but with
+All themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_linedraw()}}, but with
 modifications and extra user-definable parameters.
 }
 \section{Paperwhite}{
@@ -56,7 +56,7 @@ scientific manuscripts and website tutorials.
 
 
 Blackout theme that sets the plot background as black, with white text.
-Inspired by \code{Seurat::DarkTheme}, with some color modifications. Useful
+Inspired by \code{Seurat::DarkTheme()}, with some color modifications. Useful
 for visualizing many points with a high dynamic color range, such as t-SNE
 expression plots.
 }
@@ -84,5 +84,5 @@ p +
     theme_midnight(legend_position = "none")
 }
 \seealso{
-\code{ggplot2::theme}.
+\code{ggplot2::theme()}.
 }

@@ -6,14 +6,14 @@
 %   R/convertSampleIDsToNames-methods.R, R/convertTranscriptsToGenes-methods.R,
 %   R/counts-methods.R, R/decode-methods.R, R/encode-methods.R,
 %   R/geneNames-methods.R, R/geometricMean-methods.R, R/headtail-methods.R,
-%   R/humanize-methods.R, R/imports.R, R/interestingGroups-methods.R,
+%   R/humanize-methods.R, R/interestingGroups-methods.R,
 %   R/logRatio-methods.R, R/mapGenes-methods.R, R/markdown-methods.R,
 %   R/meltCounts-methods.R, R/metrics-methods.R, R/organism-methods.R,
 %   R/plotCountsPerBiotype-methods.R, R/plotCountsPerGene-methods.R,
 %   R/plotGene-methods.R, R/plotGenderMarkers-methods.R,
 %   R/plotGenesDetected-methods.R, R/plotHeatmap-methods.R,
 %   R/plotPCA-methods.R, R/plotQC-methods.R, R/plotTotalCounts-methods.R,
-%   R/plotZerosVsDepth-methods.R, R/removeNA-methods.R,
+%   R/plotZerosVsDepth-methods.R, R/reexports.R, R/removeNA-methods.R,
 %   R/sampleData-methods.R, R/sampleNames-methods.R, R/sanitizeNA-methods.R,
 %   R/sanitizePercent-methods.R, R/selectSamples-methods.R,
 %   R/show-methods.R, R/stripTranscriptVersions-methods.R,
@@ -22,13 +22,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{as.data.frame}
-\alias{as.SummarizedExperiment}
-\alias{as_tibble}
-\alias{atomize}
-\alias{coerceS4ToList}
-\alias{factorize}
-\alias{flatFiles}
 \alias{assignAndSaveData}
 \alias{basenameSansExt}
 \alias{dots}
@@ -64,6 +57,13 @@
 \alias{makeNames}
 \alias{snake}
 \alias{upperCamel}
+\alias{as_tibble}
+\alias{tibble}
+\alias{as.SummarizedExperiment}
+\alias{atomize}
+\alias{coerceS4ToList}
+\alias{factorize}
+\alias{flatFiles}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -85,12 +85,14 @@ below to see their documentation.
 
   \item{methods}{\code{\link[methods]{show}}}
 
-  \item{S4Transformer}{\code{\link[S4Transformer]{as.data.frame}}, \code{\link[S4Transformer]{as.SummarizedExperiment}}, \code{\link[S4Transformer]{as_tibble}}, \code{\link[S4Transformer]{atomize}}, \code{\link[S4Transformer]{coerceS4ToList}}, \code{\link[S4Transformer]{factorize}}, \code{\link[S4Transformer]{flatFiles}}}
-
   \item{S4Vectors}{\code{\link[S4Vectors]{decode}}}
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
 
   \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
+
+  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
+
+  \item{transformer}{\code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}}
 }}
 

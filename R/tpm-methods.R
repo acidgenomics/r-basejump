@@ -1,10 +1,12 @@
 #' Transcripts per million
 #'
+#' @note Both gene- and transcript-level counts are supported, as long as they
+#'   were imported using a tximport caller (e.g. salmon, kallisto).
+#'
 #' @name tpm
 #' @inheritParams params
 #'
-#' @note Both gene- and transcript-level counts are supported, as long as they
-#'   were imported using a tximport caller (e.g. salmon, kallisto).
+#' @return `matrix`.
 #'
 #' @examples
 #' se <- SummarizedExperiment::SummarizedExperiment(

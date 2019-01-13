@@ -4,7 +4,10 @@
 #' @inherit S4Vectors::decode description return
 #' @inheritParams params
 #'
-#' @seealso `S4Vectors::decode`.
+#' @return Modified object.
+#' Columns will be decoded and no longer `Rle` class.
+#'
+#' @seealso `S4Vectors::decode()`.
 #'
 #' @examples
 #' data(rse)

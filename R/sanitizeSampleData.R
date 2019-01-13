@@ -1,6 +1,19 @@
 #' Sanitize sample data
+#'
+#' @section Blacklist:
+#'
+#' Here's the current column blacklist:
+#'
+#' - interestingGroups.
+#' - sampleID.
+#'
 #' @export
 #' @inheritParams params
+#'
+#' @return `DataFrame`.
+#' Sanitized data frame containing only non-blacklisted columns and all
+#' `character` columns coerced to `factor` (i.e. `stringsAsFactors`).
+#'
 #' @examples
 #' data(rse)
 #' from <- sampleData(rse)

@@ -7,7 +7,7 @@
 matchesGene2Symbol(x, genes, gene2symbol, .xname = getNameInParent(x))
 }
 \arguments{
-\item{x}{Object class supporting \code{rownames}.
+\item{x}{Object class supporting \code{\link[base:rownames]{rownames()}}.
 All rownames in this object must intersect with the rownames defined in the
 \code{gene2symbol} argument.}
 

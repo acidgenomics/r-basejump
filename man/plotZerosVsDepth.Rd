@@ -16,8 +16,9 @@
 
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
-\link[SummarizedExperiment:assays]{assays}. When passing in a string, the name
-must be defined in \link[SummarizedExperiment:assayNames]{assayNames}.}
+\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
+name must be defined in
+\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to

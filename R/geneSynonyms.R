@@ -39,8 +39,7 @@ geneSynonyms <- function(organism) {
     if (isTRUE(getOption("basejump.test"))) {
         assert(organism == "Homo sapiens")
         file <- pasteURL(
-            basejumpCacheURL,
-            paste0(snake(organism), ".gene_info.gz"),
+            basejumpCacheURL, paste0(snake(organism), ".gene_info.gz"),
             protocol = "none"
         )
     } else {

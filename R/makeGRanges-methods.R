@@ -51,8 +51,8 @@
 #' @seealso
 #' - [AnnotationHub](https://bioconductor.org/packages/AnnotationHub/).
 #' - [ensembldb](https://bioconductor.org/packages/ensembldb/).
-#' - `rtracklayer::import`.
-#' - `GenomicFeatures::makeTxDbFromGFF`.
+#' - `rtracklayer::import()`.
+#' - `GenomicFeatures::makeTxDbFromGFF()`.
 #'
 #' @examples
 #' ## makeGRangesFromEnsembl ====
@@ -84,7 +84,7 @@ NULL
 #' Connect to AnnotationHub
 #'
 #' On a fresh install this will print a txProgressBar to the console. We're
-#' using `utils::capture.output` here to suppress the console output, since
+#' using [utils::capture.output()] here to suppress the console output, since
 #' it's not very informative and can cluster R Markdown reports.
 #'
 #' @noRd
@@ -897,9 +897,10 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 
 
 #' @describeIn makeGRanges
-#' `annotable` is a legacy convenience function that calls
-#' `makeGRangesFromEnsembl` and returns a `tibble` instead of `GRanges`. Note
-#' that `GRanges` can also be coercing using `BiocGenerics::as.data.frame`.
+#' [annotable()] is a legacy convenience function that calls
+#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
+#' that `GRanges` can also be coercing using
+#' [`as.data.frame()`][BiocGenerics::as.data.frame].
 #' @export
 annotable <-
     function() {

@@ -51,7 +51,7 @@ constructor by slotting useful session information into the \code{metadata} slot
 \itemize{
 \item \code{date}: Today's date, returned from \code{Sys.Date}.
 \item \code{wd}: Working directory, returned from \code{getwd}.
-\item \code{sessionInfo}: \code{sessioninfo::session_info} return.
+\item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
 }
 }
 \note{
@@ -98,7 +98,7 @@ names(rowRanges) <- paste0("gene", seq_len(3L))
 print(rowRanges)
 
 ## Column data
-colData <- DataFrame(
+colData <- S4Vectors::DataFrame(
     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
     age = rep(c(3L, 6L), 2L),
     row.names = samples
@@ -116,8 +116,8 @@ print(x)
 }
 \seealso{
 \itemize{
-\item \code{SummarizedExperiment::SummarizedExperiment}.
-\item \code{SingleCellExperiment::SingleCellExperiment}.
+\item \code{SummarizedExperiment::SummarizedExperiment()}.
+\item \code{SingleCellExperiment::SingleCellExperiment()}.
 \item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.
