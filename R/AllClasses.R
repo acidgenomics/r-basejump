@@ -9,7 +9,6 @@
 #' **O**rthologous **G**roups.
 #'
 #' @author Michael Steinbaugh
-#' @inherit EggNOG
 #' @export
 #'
 #' @return `EggNOG`.
@@ -89,8 +88,6 @@ setClass(
 #'
 #' @author Michael Steinbaugh
 #' @export
-#'
-#' @seealso `makeGene2Symbol`.
 #'
 #' @return `Gene2Symbol`.
 #' Contains a `DataFrame` with `geneID` and `geneName` columns.
@@ -204,10 +201,8 @@ setClass(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @seealso `makeTx2Gene`.
-#'
-#' @return `Tx2Gene`. Contains a `DataFrame` with `transcriptID` and `geneID`
-#'   columns.
+#' @return `Tx2Gene`.
+#' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 setClass(
     Class = "Tx2Gene",
     contains = "DataFrame",

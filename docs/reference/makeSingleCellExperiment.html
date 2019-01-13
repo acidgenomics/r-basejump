@@ -68,7 +68,7 @@ constructor by slotting useful session information into the metadata slot:" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.4</span>
       </span>
     </div>
 
@@ -190,10 +190,10 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>sce</span>)
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeSingleCellExperiment</span>(
-    <span class='kw'>assays</span> <span class='kw'>=</span> <span class='fu'>assays</span>(<span class='no'>object</span>),
-    <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'>rowRanges</span>(<span class='no'>object</span>),
-    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'>colData</span>(<span class='no'>object</span>),
-    <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'>metadata</span>(<span class='no'>object</span>)
+    <span class='kw'>assays</span> <span class='kw'>=</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assays</a></span>(<span class='no'>object</span>),
+    <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>object</span>),
+    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>object</span>),
+    <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/Annotated-class'>metadata</a></span>(<span class='no'>object</span>)
 )
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 500 100 

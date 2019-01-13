@@ -98,7 +98,7 @@ names(rowRanges) <- paste0("gene", seq_len(3L))
 print(rowRanges)
 
 ## Column data
-colData <- DataFrame(
+colData <- S4Vectors::DataFrame(
     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
     age = rep(c(3L, 6L), 2L),
     row.names = samples

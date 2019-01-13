@@ -20,7 +20,7 @@ Encode using run-length encoding
 }
 \examples{
 binary <- seq(from = 0L, to = 1L)
-df <- DataFrame(
+df <- S4Vectors::DataFrame(
     a = rep(x = binary, times = 50L),
     b = rep(x = binary, each = 50L)
 )

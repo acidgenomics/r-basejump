@@ -1,55 +1,3 @@
-# If we use re-exports approach here, these will break pkgdown links.
-
-#' @rdname reexports
-#' @name DataFrame
-#' @importFrom S4Vectors DataFrame
-#' @export
-NULL
-
-#' @rdname reexports
-#' @name SummarizedExperiment
-#' @importFrom SummarizedExperiment SummarizedExperiment
-#' @export
-NULL
-
-#' @rdname reexports
-#' @name as.data.frame
-#' @importFrom BiocGenerics as.data.frame
-#' @export
-NULL
-
-#' @rdname reexports
-#' @name assays
-#' @importFrom SummarizedExperiment assays
-#' @export
-NULL
-
-#' @rdname reexports
-#' @name colData
-#' @importFrom SummarizedExperiment colData
-#' @export
-NULL
-
-#' @rdname reexports
-#' @name metadata
-#' @importFrom S4Vectors metadata
-#' @export
-NULL
-
-#' @rdname reexports
-#' @name rowRanges
-#' @importFrom SummarizedExperiment rowRanges
-#' @export
-NULL
-
-#' @rdname reexports
-#' @name tibble
-#' @importFrom tibble tibble
-#' @export
-NULL
-
-
-
 #' @importFrom brio assignAndSaveData
 #' @export
 brio::assignAndSaveData
@@ -198,9 +146,11 @@ syntactic::upperCamel
 
 
 
+#' @importFrom tibble as_tibble
 #' @export
 tibble::as_tibble
 
+#' @importFrom tibble tibble
 #' @export
 tibble::tibble
 

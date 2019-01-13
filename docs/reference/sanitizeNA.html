@@ -67,7 +67,7 @@ returned unmodified." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.4</span>
       </span>
     </div>
 
@@ -155,7 +155,7 @@ Sanitized to contain proper <code>NA</code> values.</p>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; [1] "1"    "x"    ""     "NA"   "NULL"</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeNA</span>(<span class='no'>from</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; [1] "1" "x" NA  NA  NA </div><div class='input'>
 <span class='co'>## DataFrame ====</span>
-<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'>DataFrame</span>(
+<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"c"</span>, <span class='st'>"d"</span>)

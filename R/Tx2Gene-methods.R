@@ -1,7 +1,7 @@
+#' @rdname Tx2Gene-class
 #' @name Tx2Gene
-#' @inherit Tx2Gene-class
-#' @inheritParams params
 #' @note No attempt is made to arrange the rows by transcript identifier.
+#' @seealso `makeTx2Gene()`.
 #' @examples
 #' ## SummarizedExperiment ====
 #' data(tx_se)
@@ -36,7 +36,7 @@ Tx2Gene.DataFrame <-  # nolint
 
 
 
-#' @rdname Tx2Gene
+#' @rdname Tx2Gene-class
 #' @export
 setMethod(
     f = "Tx2Gene",
@@ -57,7 +57,7 @@ Tx2Gene.GRanges <-  # nolint
 
 
 
-#' @rdname Tx2Gene
+#' @rdname Tx2Gene-class
 #' @export
 setMethod(
     f = "Tx2Gene",
@@ -77,7 +77,7 @@ Tx2Gene.SummarizedExperiment <-  # nolint
 
 
 
-#' @rdname Tx2Gene
+#' @rdname Tx2Gene-class
 #' @export
 setMethod(
     f = "Tx2Gene",

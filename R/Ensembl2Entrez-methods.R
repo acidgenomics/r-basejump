@@ -1,14 +1,15 @@
+#' @rdname Ensembl2Entrez-class
 #' @name Ensembl2Entrez
-#' @inherit Ensembl2Entrez-class
-#' @inheritParams params
 #'
 #' @param format `character(1)`.
 #'   Formatting method to apply:
 #'
-#'   - `"1:1"`: *Recommended.* Return with 1:1 mappings. For Ensembl genes that
-#'     don't map 1:1 with Entrez, pick the oldest Entrez ID. Genes that don't
-#'     map to Entrez will contain `NA` in `entrezID` column.
-#'   - `"long"`: Return 1:many in long format.
+#'   - `"1:1"`: *Recommended.*
+#'       Return with 1:1 mappings. For Ensembl genes that don't map 1:1 with
+#'       Entrez, pick the oldest Entrez ID. Genes that don't map to Entrez will
+#'       contain `NA` in `entrezID` column.
+#'   - `"long"`:
+#'       Return 1:many in long format.
 #'
 #' @examples
 #' data(rse)
@@ -125,7 +126,7 @@ formals(Ensembl2Entrez.SummarizedExperiment) <-
 
 
 
-#' @rdname Ensembl2Entrez
+#' @rdname Ensembl2Entrez-class
 #' @export
 setMethod(
     f = "Ensembl2Entrez",
@@ -135,7 +136,7 @@ setMethod(
 
 
 
-#' @rdname Ensembl2Entrez
+#' @rdname Ensembl2Entrez-class
 #' @export
 setMethod(
     f = "Ensembl2Entrez",
@@ -145,7 +146,7 @@ setMethod(
 
 
 
-#' @rdname Ensembl2Entrez
+#' @rdname Ensembl2Entrez-class
 #' @export
 setMethod(
     f = "Ensembl2Entrez",

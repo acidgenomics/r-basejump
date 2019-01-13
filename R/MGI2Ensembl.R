@@ -1,6 +1,5 @@
-#' @inherit MGI2Ensembl-class
+#' @rdname MGI2Ensembl-class
 #' @export
-#' @inheritParams params
 #' @examples
 #' options(basejump.test = TRUE)
 #' x <- MGI2Ensembl()
