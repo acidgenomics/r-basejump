@@ -21,12 +21,9 @@ matrix:
   include:
   - os: linux
     r: bioc-release
-    warnings_are_errors: true
-  - os: osx
-    r: bioc-release
-    fortran: false
-    latex: false
-    warnings_are_errors: true
+  # Diabled until binary release of data.table gets updated.
+  # - os: osx
+  #   r: bioc-release
 
 # blocklist
 # branches:
