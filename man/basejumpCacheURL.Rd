@@ -3,13 +3,13 @@
 \docType{data}
 \name{basejumpCacheURL}
 \alias{basejumpCacheURL}
-\title{Basejump cache URL}
+\title{basejump package cache URL}
 \format{An object of class \code{character} of length 1.}
 \usage{
 basejumpCacheURL
 }
 \description{
-Basejump cache URL
+basejump package cache URL
 }
 \examples{
 basejumpCacheURL
