@@ -29,7 +29,6 @@ methods::show
 
 
 
-# TODO Need to improve the spacing for this.
 show.EggNOG <-  # nolint
     function(object) {
         .showHeader(object)
