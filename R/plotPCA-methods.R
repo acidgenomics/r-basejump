@@ -89,6 +89,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
         return <- match.arg(return)
 
         # Warn and early return if any samples are duplicated.

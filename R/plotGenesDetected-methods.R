@@ -38,6 +38,7 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
 
         counts <- assays(object)[[assay]]
 

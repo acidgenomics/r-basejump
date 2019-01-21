@@ -50,6 +50,7 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         trans <- match.arg(trans)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
 
         data <- meltCounts(
             object = object,
