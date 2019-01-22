@@ -83,7 +83,7 @@ test_that("aggregateCols", {
 
 
 # geometricMean ================================================================
-# TODO Parameterize this test.
+# FIXME Parameterize this test.
 test_that("geometricMean", {
     int <- seq(from = 1L, to = 5L, by = 1L)
     num <- int ^ 2L

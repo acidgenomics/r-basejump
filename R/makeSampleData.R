@@ -1,8 +1,3 @@
-# TODO Check for trailing "Id" and error.
-# TODO Check for trailing "name" and error.
-
-
-
 #' Make sample data
 #'
 #' Utility function that prepares metadata to be slotted into `colData`.
