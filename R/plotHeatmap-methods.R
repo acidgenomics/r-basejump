@@ -726,7 +726,7 @@ setMethod(
     data <- colData(object)
     interestingGroups <- interestingGroups(object)
 
-    # pheatmap requires `NA` if empty.
+    # pheatmap requires `NA` if annotations are empty.
     if (
         !hasDims(data) ||
         length(interestingGroups) == 0L ||
@@ -735,7 +735,10 @@ setMethod(
         return(.emptyPheatmapAnnotations)
     }
 
-    assert(hasRownames(data))
+    assert(
+        hasRownames(data),
+        isSubset(interestingGroups, colnames(data))
+    )
     data <- data[, interestingGroups, drop = FALSE]
 
     # Prepare the blacklist, always excluding sample names from labeling in
@@ -748,26 +751,31 @@ setMethod(
         .[, setdiff(colnames(.), blacklist), drop = FALSE] %>%
         # Ensure all strings are factors.
         mutate_if(is.character, as.factor) %>%
-        # Ensure unwanted columns like `sizeFactor` are dropped.
+        # Ensure unwanted numeric columns (e.g. sizeFactor) are dropped.
         select_if(is.factor) %>%
         as.data.frame() %>%
         column_to_rownames("rowname")
 
-    # Drop any remaining factor columns that contain a single level.
-    hasLevels <- vapply(
+    # Drop any remaining factor columns that contain a single value.
+    # Note that we don't want to necessarily use `levels()` in place of
+    # `unique()` here, in case we have a situation where we're comparing a value
+    # against `NA`. Here this will a level of 1, even though we have 2 unique
+    # values.
+    hasMultiple <- vapply(
         X = data,
         FUN = function(x) {
-            length(levels(x)) > 1L
+            # This handles NA values better than using `levels()`.
+            length(unique(x)) > 1L
         },
         FUN.VALUE = logical(1L)
     )
 
     # Return empty if there are no useful factor columns.
-    if (length(hasLevels) == 0L) {
+    if (length(hasMultiple) == 0L) {
         return(.emptyPheatmapAnnotations)  # nocov
+    } else {
+        data <- data[, hasMultiple, drop = FALSE]
     }
-
-    data <- data[, hasLevels, drop = FALSE]
 
     # Colors -------------------------------------------------------------------
     if (
