@@ -24,7 +24,7 @@ test_that("Ensembl2Entrez", {
 
 context("Gene2Symbol")
 
-# TODO Add coverage for `format` arguments.
+# FIXME Add coverage for `format` arguments.
 
 format <- methodFormals(
     f = "Gene2Symbol",

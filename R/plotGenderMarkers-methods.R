@@ -1,5 +1,3 @@
-# TODO Create small working example with dimoprhic genes.
-
 #' @include plotGene-methods.R
 
 

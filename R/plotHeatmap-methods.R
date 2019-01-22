@@ -1,7 +1,3 @@
-# TODO Improve support for ordering columns and/or rows manually.
-
-
-
 #' Heatmap
 #'
 #' Construct a simple heatmap.

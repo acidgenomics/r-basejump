@@ -47,6 +47,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
 
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
 
         rowData <- rowData(object)
         # Ensure row names are defined, which isn't always the case for

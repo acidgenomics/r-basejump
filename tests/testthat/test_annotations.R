@@ -512,7 +512,7 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 # Databases ====================================================================
 context("Annotations : Databases")
 
-# TODO Add code coverage:
+# FIXME Add code coverage:
 # - Ensembl2Entrez
 # - geneSynonyms
 # - HGNC2Ensembl
@@ -522,7 +522,7 @@ test_that("EggNOG", {
     expect_is(object = EggNOG(), class = "EggNOG")
 })
 
-# TODO Add coverage for all supported organisms.
+# FIXME Add coverage for all supported organisms.
 test_that("geneSynonyms", {
     expect_is(
         object = geneSynonyms(organism = "Homo sapiens"),

@@ -1,7 +1,3 @@
-# FIXME Update imports for `hasLength` and `hasNames`
-
-
-
 #' Show slot information
 #'
 #' @param list `list`.

@@ -31,6 +31,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
 
         data <- zerosVsDepth(object, assay = assay)
         assert(is(data, "DataFrame"))
