@@ -49,8 +49,8 @@ gene2symbolFromGFF -> gene2symbolFromGTF
 #' @rdname deprecated
 #' @export
 sanitizeAnnotable <- function(...) {
-    .Deprecated("sanitizeRowData")
-    sanitizeRowData(...)
+    .Deprecated("atomize")
+    atomize(...)
 }
 
 #' @rdname deprecated
