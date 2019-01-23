@@ -131,7 +131,6 @@ Collate:
     'plotTotalCounts-methods.R'
     'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
-    'printString.R'
     'reexports.R'
     'relevel.R'
     'removeNA-methods.R'
