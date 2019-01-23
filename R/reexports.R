@@ -2,6 +2,10 @@
 #' @export
 brio::assignAndSaveData
 
+#' @importFrom brio atomize
+#' @export
+brio::atomize
+
 #' @importFrom brio basenameSansExt
 #' @export
 brio::basenameSansExt
@@ -17,6 +21,10 @@ brio::export
 #' @importFrom brio extPattern
 #' @export
 brio::extPattern
+
+#' @importFrom brio factorize
+#' @export
+brio::factorize
 
 #' @importFrom brio import
 #' @export
@@ -61,18 +69,6 @@ brio::rdataLoadError
 #' @importFrom brio realpath
 #' @export
 brio::realpath
-
-#' @importFrom brio sanitizeColData
-#' @export
-brio::sanitizeColData
-
-#' @importFrom brio sanitizeRowData
-#' @export
-brio::sanitizeRowData
-
-#' @importFrom brio sanitizeRowRanges
-#' @export
-brio::sanitizeRowRanges
 
 #' @importFrom brio saveData
 #' @export
@@ -160,17 +156,9 @@ tibble::tibble
 #' @export
 transformer::as.SummarizedExperiment
 
-#' @importFrom transformer atomize
-#' @export
-transformer::atomize
-
 #' @importFrom transformer coerceS4ToList
 #' @export
 transformer::coerceS4ToList
-
-#' @importFrom transformer factorize
-#' @export
-transformer::factorize
 
 #' @importFrom transformer flatFiles
 #' @export
