@@ -23,18 +23,24 @@
 #' print(to)
 sanitizeSampleData <- function(object) {
     assert(
+        is(object, "DataFrame"),
         # Require `sampleName` column.
         "sampleName" %in% colnames(object),
         # Check for any duplicate rows.
-        hasNoDuplicates(object[["sampleName"]])
+        hasNoDuplicates(object[["sampleName"]]),
+        hasRownames(object)
     )
     # Drop blacklisted columns.
     blacklist <- c("interestingGroups", "sampleID")
     object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
     # This will flatten the S4 columns if possible and drop non-atomic.
-    object <- sanitizeColData(object)
+    object <- atomize(object)
     # Ensure all columns are factors, with up-to-date levels.
     object <- factorize(object)
+    assert(
+        is(object, "DataFrame"),
+        hasRownames(object)
+    )
     # Return.
     object
 }
