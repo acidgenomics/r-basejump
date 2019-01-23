@@ -112,6 +112,10 @@ goalie::methodFormals
 #' @export
 goalie::methodFunction
 
+#' @importFrom goalie printString
+#' @export
+goalie::printString
+
 #' @importFrom goalie standardizeCall
 #' @export
 goalie::standardizeCall

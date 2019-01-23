@@ -74,16 +74,11 @@ reference:
     contents:
     - starts_with("markdown")
     - prepareTemplate
-  - title: Run-length encoding
-    contents:
-    - decode
-    - encode
   - title: Developer
     contents:
     - formalsList
     - matchInterestingGroups
     - multiassignAsEnvir
-    - printString
     - showSlotInfo
   - title: Miscellaneous
     contents:
