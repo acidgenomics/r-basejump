@@ -10,9 +10,17 @@ brio::atomize
 #' @export
 brio::basenameSansExt
 
+#' @importFrom brio decode
+#' @export
+brio::decode
+
 #' @importFrom brio dots
 #' @export
 brio::dots
+
+#' @importFrom brio encode
+#' @export
+brio::encode
 
 #' @importFrom brio export
 #' @export
