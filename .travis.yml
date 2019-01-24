@@ -21,9 +21,8 @@ matrix:
   include:
   - os: linux
     r: bioc-release
-  # Diabled until binary release of data.table gets updated.
-  # - os: osx
-  #   r: bioc-release
+  - os: osx
+    r: bioc-release
 
 # blocklist
 # branches:
