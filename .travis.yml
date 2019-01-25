@@ -19,21 +19,20 @@ cache: packages
 
 matrix:
   include:
-  - os: linux
-    r: bioc-release
-  # Diabled until binary release of data.table gets updated.
-  # - os: osx
-  #   r: bioc-release
-
-# blocklist
-# branches:
-#   except:
-#   - develop
+    - os: linux
+      r: bioc-release
+    - os: osx
+      r: bioc-release
 
 # safelist
 branches:
   only:
-  - master
+    - master
+
+# blocklist
+# branches:
+#   except:
+#     - develop
 
 env:
   global:
@@ -45,7 +44,7 @@ bioc_packages:
   - BiocCheck
   - EnsDb.Hsapiens.v75
 github_packages:
-  - mjsteinbaugh/lintr
+  - steinbaugh/lintr
 
 after_success:
   - Rscript -e 'lintr::lint_package()'
@@ -57,4 +56,4 @@ notifications:
     recipients:
       - mike@steinbaugh.com
     on_success: change
-    on_failure: always
+    on_failure: change
