@@ -92,6 +92,10 @@ brio::writeCounts
 
 
 
+#' @importFrom goalie assert
+#' @export
+goalie::assert
+
 #' @importFrom goalie extractLocal
 #' @export
 goalie::extractLocal
