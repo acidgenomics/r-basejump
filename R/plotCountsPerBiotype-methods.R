@@ -50,6 +50,8 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         interestingGroups <- interestingGroups(object)
 
         rowData <- rowData(object)
+        # Ensure Rle columns get decoded.
+        rowData <- decode(rowData)
         # Ensure row names are defined, which isn't always the case for
         # row data derived from SE (non-ranged).
         rownames(rowData) <- rownames(object)
@@ -189,6 +191,8 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
             matchInterestingGroups(object, interestingGroups)
 
         rowData <- rowData(object)
+        # Ensure Rle columns get decoded.
+        rowData <- decode(rowData)
         rownames(rowData) <- rownames(object)
 
         biotypeCol <- "broadClass"

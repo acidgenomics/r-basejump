@@ -2,13 +2,25 @@
 #' @export
 brio::assignAndSaveData
 
+#' @importFrom brio atomize
+#' @export
+brio::atomize
+
 #' @importFrom brio basenameSansExt
 #' @export
 brio::basenameSansExt
 
+#' @importFrom brio decode
+#' @export
+brio::decode
+
 #' @importFrom brio dots
 #' @export
 brio::dots
+
+#' @importFrom brio encode
+#' @export
+brio::encode
 
 #' @importFrom brio export
 #' @export
@@ -17,6 +29,10 @@ brio::export
 #' @importFrom brio extPattern
 #' @export
 brio::extPattern
+
+#' @importFrom brio factorize
+#' @export
+brio::factorize
 
 #' @importFrom brio import
 #' @export
@@ -76,6 +92,10 @@ brio::writeCounts
 
 
 
+#' @importFrom goalie assert
+#' @export
+goalie::assert
+
 #' @importFrom goalie extractLocal
 #' @export
 goalie::extractLocal
@@ -95,6 +115,10 @@ goalie::methodFormals
 #' @importFrom goalie methodFunction
 #' @export
 goalie::methodFunction
+
+#' @importFrom goalie printString
+#' @export
+goalie::printString
 
 #' @importFrom goalie standardizeCall
 #' @export
@@ -148,17 +172,9 @@ tibble::tibble
 #' @export
 transformer::as.SummarizedExperiment
 
-#' @importFrom transformer atomize
-#' @export
-transformer::atomize
-
 #' @importFrom transformer coerceS4ToList
 #' @export
 transformer::coerceS4ToList
-
-#' @importFrom transformer factorize
-#' @export
-transformer::factorize
 
 #' @importFrom transformer flatFiles
 #' @export
