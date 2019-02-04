@@ -32,7 +32,7 @@ sanitizeSampleData <- function(object) {
     blacklist <- c("interestingGroups", "sampleID")
     object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
     # This will flatten the S4 columns if possible and drop non-atomic.
-    object <- sanitizeColData(object)
+    object <- atomize(object)
     # Ensure all columns are factors, with up-to-date levels.
     object <- factorize(object)
     # Return.

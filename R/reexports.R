@@ -62,18 +62,6 @@ brio::rdataLoadError
 #' @export
 brio::realpath
 
-#' @importFrom brio sanitizeColData
-#' @export
-brio::sanitizeColData
-
-#' @importFrom brio sanitizeRowData
-#' @export
-brio::sanitizeRowData
-
-#' @importFrom brio sanitizeRowRanges
-#' @export
-brio::sanitizeRowRanges
-
 #' @importFrom brio saveData
 #' @export
 brio::saveData
