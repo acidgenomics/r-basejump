@@ -52,6 +52,7 @@
 \alias{methodFunction}
 \alias{printString}
 \alias{standardizeCall}
+\alias{\%<>\%}
 \alias{\%>\%}
 \alias{camel}
 \alias{dotted}
@@ -81,7 +82,7 @@ below to see their documentation.
 
   \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%>\%}}}
 
   \item{methods}{\code{\link[methods]{show}}}
 
