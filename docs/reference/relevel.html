@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.8</span>
       </span>
     </div>
 
@@ -147,9 +147,9 @@ Factor levels will be readjusted (i.e. superfluous levels are dropped).</p>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>)
 
 <span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>rse</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevelRowRanges</span>(<span class='no'>rowRanges</span>)</div><div class='output co'>#&gt; <span class='message'>Releveling factors in rowRanges.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 500 ranges and 5 metadata columns"</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevelRowRanges</span>(<span class='no'>rowRanges</span>)</div><div class='output co'>#&gt; <span class='message'>Releveling factors in rowRanges.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 500 ranges and 5 metadata columns"</div><div class='input'>
 <span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>rse</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevelColData</span>(<span class='no'>colData</span>)</div><div class='output co'>#&gt; <span class='message'>Releveling factors in colData.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    Length     Class      Mode 
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevelColData</span>(<span class='no'>colData</span>)</div><div class='output co'>#&gt; <span class='message'>Releveling factors in colData.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    Length     Class      Mode 
 #&gt;         1 DataFrame        S4 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

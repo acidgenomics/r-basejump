@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.8</span>
       </span>
     </div>
 
@@ -136,18 +136,18 @@
 <h2 class="hasAnchor">
 <a href="#required-checks" class="anchor"></a>Required checks</h2>
 <p>Run these commands prior to a pull request:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/document">document</a></span>()
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/run_examples">run_examples</a></span>()
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/test">test</a></span>()
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/check">check</a></span>()
-BiocCheck<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocCheck/topics/BiocCheck">BiocCheck</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/getwd">getwd</a></span>())
-lintr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/lintr/topics/lint_package">lint_package</a></span>()
-covr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/covr/topics/report">report</a></span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">document</span>()
+devtools::<span class="kw">run_examples</span>()
+devtools::<span class="kw">test</span>()
+devtools::<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/PkgUtils">check</a></span>()
+BiocCheck::<span class="kw">BiocCheck</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/getwd">getwd</a></span>())
+lintr::<span class="kw">lint_package</span>()
+covr::<span class="kw">report</span>()</code></pre>
 <div id="rebuild-website" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rebuild-website" class="anchor"></a>Rebuild website</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unlink">unlink</a></span>(<span class="st">"docs"</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)
-pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unlink">unlink</a></span>(<span class="st">"docs"</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)
+pkgdown::<span class="kw">build_site</span>()</code></pre>
 </div>
 </div>
 </div>
