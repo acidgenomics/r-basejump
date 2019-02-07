@@ -1,5 +1,5 @@
-#' @name plotGene
-#' @inherit bioverbs::plotGene
+#' @name plotCounts
+#' @inherit bioverbs::plotCounts
 #' @inheritParams params
 #'
 #' @param countsAxisLabel `character(1)`.
@@ -30,20 +30,20 @@
 #' print(geneNames)
 #'
 #' ## Rownames, gene IDs, and gene names (symbols) are supported.
-#' plotGene(object, genes = geneIDs, style = "facet")
-#' plotGene(object, genes = geneNames, style = "wide")
+#' plotCounts(object, genes = geneIDs, style = "facet")
+#' plotCounts(object, genes = geneNames, style = "wide")
 NULL
 
 
 
-#' @importFrom bioverbs plotGene
+#' @importFrom bioverbs plotCounts
 #' @aliases NULL
 #' @export
-bioverbs::plotGene
+bioverbs::plotCounts
 
 
 
-.plotGeneFacet <- function(
+.plotCountsFacet <- function(
     object,
     countsAxisLabel = "counts",
     medianLine = TRUE,
@@ -92,7 +92,7 @@ bioverbs::plotGene
 
 
 
-.plotGeneWide <- function(
+.plotCountsWide <- function(
     object,
     countsAxisLabel = "counts",
     medianLine = TRUE,
@@ -136,7 +136,7 @@ bioverbs::plotGene
 
 
 
-plotGene.SummarizedExperiment <-  # nolint
+plotCounts.SummarizedExperiment <-  # nolint
     function(
         object,
         genes,
@@ -179,9 +179,9 @@ plotGene.SummarizedExperiment <-  # nolint
 
         # Plot style.
         if (style == "facet") {
-            what <- .plotGeneFacet
+            what <- .plotCountsFacet
         } else if (style == "wide") {
-            what <- .plotGeneWide
+            what <- .plotCountsWide
         }
         do.call(
             what = what,
@@ -197,23 +197,23 @@ plotGene.SummarizedExperiment <-  # nolint
 
 
 
-#' @rdname plotGene
+#' @rdname plotCounts
 #' @export
 setMethod(
-    f = "plotGene",
+    f = "plotCounts",
     signature = signature("SummarizedExperiment"),
-    definition = plotGene.SummarizedExperiment
+    definition = plotCounts.SummarizedExperiment
 )
 
 
 
-#' @rdname plotGene
+#' @rdname plotCounts
 #' @usage NULL
 #' @export
 setMethod(
-    f = "plotGene",
+    f = "plotCounts",
     signature = signature("SingleCellExperiment"),
     definition = function(object, ...) {
-        .Deprecated("pointillism::plotGene")
+        .Deprecated("pointillism::plotCounts")
     }
 )

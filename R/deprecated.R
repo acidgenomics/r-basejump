@@ -417,5 +417,10 @@ mdPlotlist <- markdownPlotlist
 
 
 
+# v0.9.7 =======================================================================
+# plotGene to plotCounts
+
+
+
 # nolint end
 # nocov end

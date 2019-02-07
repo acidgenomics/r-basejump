@@ -1,10 +1,10 @@
-#' @include plotGene-methods.R
+#' @include plotCounts-methods.R
 
 
 
 #' @name plotGenderMarkers
 #' @inherit bioverbs::plotGenderMarkers
-#' @inheritParams plotGene
+#' @inheritParams plotCounts
 #' @inheritParams params
 #'
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
@@ -61,14 +61,14 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
         }
 
         do.call(
-            what = plotGene,
+            what = plotCounts,
             args = matchArgsToDoCall(
                 args = list(genes = genes)
             )
         )
     }
 
-f <- formals(plotGene.SummarizedExperiment)
+f <- formals(plotCounts.SummarizedExperiment)
 f <- f[setdiff(names(f), "genes")]
 f[["style"]] <- "wide"
 formals(plotGenderMarkers.SummarizedExperiment) <- f
