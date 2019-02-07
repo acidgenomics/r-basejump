@@ -92,6 +92,10 @@ brio::writeCounts
 
 
 
+#' @importFrom goalie assert
+#' @export
+goalie::assert
+
 #' @importFrom goalie extractLocal
 #' @export
 goalie::extractLocal
@@ -122,9 +126,23 @@ goalie::standardizeCall
 
 
 
+# Assignment pipe
+#' @importFrom magrittr %<>%
+#' @export
+magrittr::`%<>%`
+
+# Exposition pipe
+#' @importFrom magrittr %$%
+magrittr::`%$%`
+
+# Pipe
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
+
+# Tee pipe
+#' @importFrom magrittr %T>%
+magrittr::`%T>%`
 
 
 

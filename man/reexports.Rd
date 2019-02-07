@@ -44,6 +44,7 @@
 \alias{saveData}
 \alias{transmit}
 \alias{writeCounts}
+\alias{assert}
 \alias{extractLocal}
 \alias{hasLocal}
 \alias{matchArgsToDoCall}
@@ -51,7 +52,10 @@
 \alias{methodFunction}
 \alias{printString}
 \alias{standardizeCall}
+\alias{\%<>\%}
+\alias{\%$\%}
 \alias{\%>\%}
+\alias{\%T>\%}
 \alias{camel}
 \alias{dotted}
 \alias{makeDimnames}
@@ -78,9 +82,9 @@ below to see their documentation.
 
   \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{atomize}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}}
 
-  \item{goalie}{\code{\link[goalie]{extractLocal}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}}
+  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}}
 
   \item{methods}{\code{\link[methods]{show}}}
 
