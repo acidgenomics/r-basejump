@@ -34,7 +34,7 @@ Depends:
     R (>= 3.4),
     bioverbs (>= 0.1.4),
     transformer (>= 0.1.3),
-    syntactic (>= 0.1.3),
+    syntactic (>= 0.1.4),
     brio (>= 0.1.4)
 Imports:
     goalie (>= 0.2.6),
@@ -135,6 +135,10 @@ Collate:
     'plotTotalCounts-methods.R'
     'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
+    'reexports-brio.R'
+    'reexports-goalie.R'
+    'reexports-syntactic.R'
+    'reexports-transformer.R'
     'reexports.R'
     'relevel.R'
     'removeNA-methods.R'

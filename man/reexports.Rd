@@ -5,14 +5,15 @@
 %   R/convertGenesToSymbols-methods.R, R/convertSampleIDsToNames-methods.R,
 %   R/convertTranscriptsToGenes-methods.R, R/counts-methods.R,
 %   R/geneNames-methods.R, R/geometricMean-methods.R, R/headtail-methods.R,
-%   R/humanize-methods.R, R/interestingGroups-methods.R,
-%   R/logRatio-methods.R, R/mapGenes-methods.R, R/markdown-methods.R,
-%   R/meltCounts-methods.R, R/metrics-methods.R, R/organism-methods.R,
-%   R/plotCounts-methods.R, R/plotCountsPerBiotype-methods.R,
-%   R/plotCountsPerGene-methods.R, R/plotGenderMarkers-methods.R,
-%   R/plotGenesDetected-methods.R, R/plotHeatmap-methods.R,
-%   R/plotPCA-methods.R, R/plotQC-methods.R, R/plotTotalCounts-methods.R,
-%   R/plotZerosVsDepth-methods.R, R/reexports.R, R/removeNA-methods.R,
+%   R/humanize-methods.R, R/interestingGroups-methods.R, R/logRatio-methods.R,
+%   R/mapGenes-methods.R, R/markdown-methods.R, R/meltCounts-methods.R,
+%   R/metrics-methods.R, R/organism-methods.R, R/plotCounts-methods.R,
+%   R/plotCountsPerBiotype-methods.R, R/plotCountsPerGene-methods.R,
+%   R/plotGenderMarkers-methods.R, R/plotGenesDetected-methods.R,
+%   R/plotHeatmap-methods.R, R/plotPCA-methods.R, R/plotQC-methods.R,
+%   R/plotTotalCounts-methods.R, R/plotZerosVsDepth-methods.R,
+%   R/reexports-brio.R, R/reexports-goalie.R, R/reexports-syntactic.R,
+%   R/reexports-transformer.R, R/reexports.R, R/removeNA-methods.R,
 %   R/sampleData-methods.R, R/sampleNames-methods.R, R/sanitizeNA-methods.R,
 %   R/sanitizePercent-methods.R, R/selectSamples-methods.R,
 %   R/show-methods.R, R/stripTranscriptVersions-methods.R,
@@ -52,21 +53,23 @@
 \alias{methodFunction}
 \alias{printString}
 \alias{standardizeCall}
-\alias{\%<>\%}
-\alias{\%$\%}
-\alias{\%>\%}
-\alias{\%T>\%}
+\alias{validate}
 \alias{camel}
+\alias{capitalize}
 \alias{dotted}
 \alias{makeDimnames}
 \alias{makeNames}
 \alias{snake}
 \alias{upperCamel}
-\alias{as_tibble}
-\alias{tibble}
 \alias{as.SummarizedExperiment}
 \alias{coerceS4ToList}
 \alias{flatFiles}
+\alias{\%<>\%}
+\alias{\%$\%}
+\alias{\%>\%}
+\alias{\%T>\%}
+\alias{as_tibble}
+\alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -82,7 +85,7 @@ below to see their documentation.
 
   \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{atomize}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}}
 
-  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}}
+  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{validate}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}}
 
@@ -90,7 +93,7 @@ below to see their documentation.
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
 
-  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
+  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
 
