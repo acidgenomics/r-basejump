@@ -1,3 +1,10 @@
+# NB: Don't use `NULL` assignment method to remove columns on a DataFrame if
+# we're providing support for BioC releases prior to 3.8. This will result in a
+# metadata problem that returns as a cryptic `S4Vectors::V_recycle` error.
+# This will pop up: 'NROW(value)' is greater than 'length(x)'.
+
+
+
 #' @name sampleData
 #' @inherit bioverbs::sampleData
 #' @inheritParams params
@@ -45,17 +52,36 @@ bioverbs::`sampleData<-`
 
 
 
+# Checking for illegal user metadata in colData.
+# Don't blacklist `sampleID` here because it's allowed for SCE method.
+.stopOnSampleDataBlacklist <- function(object) {
+    assert(
+        is(object, "DataFrame"),
+        hasRownames(object)
+    )
+    # Check for user stash of `interestingGroups` column.
+    if (isSubset("interestingGroups", colnames(object))) {
+        stop(paste(
+            "The `interestingGroups` column should not be manually defined",
+            "in `colData()`. This column gets generated automatically."
+        ))
+    }
+    TRUE
+}
+
+
+
 # Don't run validity checks here.
 sampleData.SummarizedExperiment <-  # nolint
     function(object, clean = FALSE) {
         data <- colData(object)
-        assert(hasRownames(data))
+        .stopOnSampleDataBlacklist(data)
+
         # Require `sampleName` column.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
         }
-        # Require `interestingGroups` column.
-        data[["interestingGroups"]] <- NULL
+
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = matchInterestingGroups(object)
@@ -69,6 +95,7 @@ sampleData.SummarizedExperiment <-  # nolint
             )
             data <- data[, keep, drop = FALSE]
         }
+
         data
     }
 
@@ -98,8 +125,9 @@ sampleData.SingleCellExperiment <-  # nolint
             "^res[.0-9]+$"
         )
     ) {
-        assert(isCharacter(blacklist))
         data <- colData(object)
+        .stopOnSampleDataBlacklist(data)
+        assert(isCharacter(blacklist))
 
         # Require `sampleID` and `sampleName` columns.
         # Note that `SummarizedExperiment` method differs but not requiring
@@ -175,12 +203,18 @@ sampleData.SingleCellExperiment <-  # nolint
             ))
         }
         rownames(data) <- data[["sampleID"]]
-        data[["sampleID"]] <- NULL
-        # Return sorted by `sampleID`.
-        data <- data[rownames(data), , drop = FALSE]
 
-        # Generate `interestingGroups` column.
-        data[["interestingGroups"]] <- NULL
+
+        # Returning arranged by `sampleID`.
+        # Use `setdiff()` approach instead of `NULL` assignment on `sampleID`
+        # column to maintain backwards compatibility prior to BioC 3.8.
+        data <- data[
+            rownames(data),
+            setdiff(colnames(data), "sampleID"),
+            drop = FALSE
+        ]
+
+        # Ensure `interestingGroups` column is generated.
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = matchInterestingGroups(object)
@@ -204,9 +238,18 @@ setMethod(
 `sampleData<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
         # Don't allow blacklisted columns.
-        value[["interestingGroups"]] <- NULL
-        value[["rowname"]] <- NULL
-        value[["sampleID"]] <- NULL
+        # Note that attempting to use `NULL` to remove columns on a DataFrame
+        # will result in `S4Vectors::V_recycle()` errors, prior to BioC 3.8.
+        # https://stat.ethz.ch/pipermail/bioc-devel/2017-November/012343.html
+        blacklist <- c(
+            "interestingGroups",
+            "rowname",
+            "sampleID"
+        )
+        keep <- setdiff(colnames(value), blacklist)
+        assert(hasLength(keep))
+        # Be sure to include `drop` here in case we have only 1 column left.
+        value <- value[, keep, drop = FALSE]
         # Now safe to assign and return.
         colData(object) <- value
         validObject(object)
