@@ -23,8 +23,10 @@ bioverbs::uniteInterestingGroups
 
 uniteInterestingGroups.DataFrame <-  # nolint
     function(object, interestingGroups) {
-        assert(isCharacter(interestingGroups))
-        assert(isSubset(interestingGroups, colnames(object)))
+        assert(
+            isCharacter(interestingGroups),
+            isSubset(interestingGroups, colnames(object))
+        )
         # Subset to get only the columns of interest.
         data <- object[, interestingGroups, drop = FALSE]
         assert(hasLength(data))
@@ -36,8 +38,9 @@ uniteInterestingGroups.DataFrame <-  # nolint
             FUN = paste,
             collapse = ":"
         )
-        names(value) <- NULL
-        object[["interestingGroups"]] <- as.factor(value)
+        value <- as.factor(value)
+        assert(identical(rownames(object), names(value)))
+        object[["interestingGroups"]] <- value
         object
     }
 
