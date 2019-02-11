@@ -371,8 +371,10 @@ NULL
 
     mcols <- tail(mcols, n = 1L)
     id <- rownames(mcols)
-    assert(isString(id))
-    assert(isMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$"))
+    assert(
+        isString(id),
+        unname(isMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$"))
+    )
     message(paste0(id, ": ", mcols[["title"]]))
     .forceDetach(keep = userAttached)
     id
@@ -501,7 +503,6 @@ NULL
 
     # Always use `geneName` instead of `symbol`.
     if (all(c("geneName", "symbol") %in% colnames(mcols))) {
-        message("Using `geneName` column instead of `symbol`.")
         mcols[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(mcols)) {
         # nocov start
