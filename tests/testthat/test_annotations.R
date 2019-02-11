@@ -134,6 +134,7 @@ test_that("makeGRangesFromEnsembl : genes", {
         release = release
     )
     expect_s4_class(object, "GRanges")
+
     expect_identical(length(object), 63970L)
     expect_identical(
         object = head(names(object), 3L),
@@ -151,7 +152,6 @@ test_that("makeGRangesFromEnsembl : genes", {
     } else {
         entrezID <- "list"
     }
-
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
@@ -173,17 +173,27 @@ test_that("makeGRangesFromEnsembl : transcripts", {
         release = release
     )
     expect_s4_class(object, "GRanges")
+
     expect_identical(length(object), 216741L)
     expect_identical(
         object = head(names(object), 3L),
         expected = c("ENST00000000233", "ENST00000000412", "ENST00000000442")
     )
+
+    if (
+        packageVersion("GenomicRanges") < "1.31" &&
+        is(mcols(object)[["entrezID"]], "AsIs")
+    ) {
+        entrezID <- "AsIs"
+    } else {
+        entrezID <- "list"
+    }
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
             broadClass = Rle,
             description = Rle,
-            entrezID = "list",
+            entrezID = entrezID,
             geneBiotype = Rle,
             geneID = Rle,
             geneName = Rle,
