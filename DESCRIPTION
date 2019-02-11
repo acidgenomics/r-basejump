@@ -33,10 +33,10 @@ LazyData: false
 Depends:
     R (>= 3.4),
     bioverbs (>= 0.1.6),
-    goalie (>= 0.2.6),
+    goalie (>= 0.2.8),
     transformer (>= 0.1.4),
     syntactic (>= 0.1.4),
-    brio (>= 0.1.4)
+    brio (>= 0.1.5)
 Imports:
     AnnotationHub, Biobase, BiocGenerics, GenomeInfoDb, GenomicFeatures,
         GenomicRanges, IRanges, Matrix, Matrix.utils, RColorBrewer, S4Vectors,
