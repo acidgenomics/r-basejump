@@ -139,12 +139,25 @@ test_that("makeGRangesFromEnsembl : genes", {
         object = head(names(object), 3L),
         expected = c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
     )
+
+    # R 3.4.1/BioC 3.6 is returning `entrezID` column as `AsIs` class intead of
+    # `list` in the `mcols()`.
+    # https://www.bioconductor.org/packages/3.6/bioc/html/GenomicRanges.html
+    if (
+        packageVersion("GenomicRanges") < "1.31" &&
+        is(mcols(object)[["entrezID"]], "AsIs")
+    ) {
+        entrezID <- "AsIs"
+    } else {
+        entrezID <- "list"
+    }
+
     expect_identical(
         object = lapply(mcols(object), class),
         expected = list(
             broadClass = Rle,
             description = Rle,
-            entrezID = "list",
+            entrezID = entrezID,
             geneBiotype = Rle,
             geneID = Rle,
             geneName = Rle,
