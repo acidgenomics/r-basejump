@@ -40,7 +40,15 @@ uniteInterestingGroups.DataFrame <-  # nolint
         )
         value <- as.factor(value)
         assert(identical(rownames(object), names(value)))
-        object[["interestingGroups"]] <- value
+        # Here we're using `uname()` to unname the factor, since `DataFrame`
+        # stores this metadata internally differently than standard data.frame.
+        # Otherwise, unit tests can return this error:
+        # Attributes: <
+        #   Component "listData":
+        #   Component "interestingGroups":
+        #   names for target but not for current
+        # >
+        object[["interestingGroups"]] <- unname(value)
         object
     }
 
