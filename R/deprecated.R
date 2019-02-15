@@ -28,60 +28,54 @@ NULL
 
 
 # v0.4.0 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 ensembl <- function(...) {
-    .Deprecated("makeGRangesFromEnsembl")
-    makeGRangesFromEnsembl(...)
+    .Defunct("makeGRangesFromEnsembl")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 gene2symbolFromGFF <- function(...) {
-    .Deprecated("makeGene2symbolFromGFF")
-    makeGene2symbolFromGFF(...)
+    .Defunct("makeGene2symbolFromGFF")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 gene2symbolFromGFF -> gene2symbolFromGTF
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 sanitizeAnnotable <- function(...) {
-    .Deprecated("atomize")
-    atomize(...)
+    .Defunct("atomize")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 tx2geneFromGFF <- function(...) {
-    .Deprecated("makeTx2GeneFromGFF")
-    makeTx2GeneFromGFF(...)
+    .Defunct("makeTx2GeneFromGFF")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 tx2geneFromGFF -> tx2geneFromGTF
 
 
 
 # v0.5.0 =======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 multiassignAsNewEnvir <- function(...) {
-    .Deprecated("multiassignAsEnvir")
-    multiassignAsEnvir(...)
+    .Defunct("multiassignAsEnvir")
 }
 
 
 
 # v0.5.2 =======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 geomean <- function(...) {
-    .Deprecated("geometricMean")
-    geometricMean(...)
+    .Defunct("geometricMean")
 }
 
 
@@ -105,18 +99,26 @@ dynamicPlotlist <- function(...) {
 
 
 # v0.5.11 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 midnightTheme <- function(...) {
-    .Deprecated("theme_midnight")
-    theme_midnight(...)
+    .Defunct(msg = paste0(
+        "'midnightTheme' is defunct.\n",
+        "Requiring snake case format for ggplot2 functions.\n",
+        "Use 'theme_midnight' instead.\n",
+        "See help(\"Defunct\")"
+    ))
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 paperwhiteTheme <- function(...) {
-    .Deprecated("theme_paperwhite")
-    theme_paperwhite(...)
+    .Defunct(msg = paste0(
+        "'paperwhiteTheme' is defunct.\n",
+        "Requiring snake case format for ggplot2 functions.\n",
+        "Use 'theme_paperwhite' instead.\n",
+        "See help(\"Defunct\")"
+    ))
 }
 
 
@@ -498,6 +500,11 @@ assertIsTx2gene <- function(x) {
         ))
     )
 }
+
+# In use by bcbioRNASeq v0.2.9.
+#' @importFrom bioverbs plotDEGHeatmap
+#' @export
+bioverbs::plotDEGHeatmap
 
 # Now recommending `plotCounts()` instead of `plotGene()`.
 # Still in use by some revdeps, so keep re-exported.
