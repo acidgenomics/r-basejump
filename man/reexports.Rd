@@ -3,15 +3,16 @@
 %   R/aggregateCellsToSamples-methods.R, R/autopadZeros-methods.R,
 %   R/cell2sample-methods.R, R/collapseToString-methods.R, R/combine-methods.R,
 %   R/convertGenesToSymbols-methods.R, R/convertSampleIDsToNames-methods.R,
-%   R/convertTranscriptsToGenes-methods.R, R/counts-methods.R, R/deprecated.R,
+%   R/convertTranscriptsToGenes-methods.R, R/counts-methods.R,
 %   R/geneNames-methods.R, R/geometricMean-methods.R, R/headtail-methods.R,
-%   R/humanize-methods.R, R/interestingGroups-methods.R, R/logRatio-methods.R,
-%   R/mapGenes-methods.R, R/markdown-methods.R, R/meltCounts-methods.R,
-%   R/metrics-methods.R, R/organism-methods.R, R/plotCounts-methods.R,
-%   R/plotCountsPerBiotype-methods.R, R/plotCountsPerGene-methods.R,
-%   R/plotGenderMarkers-methods.R, R/plotGenesDetected-methods.R,
-%   R/plotHeatmap-methods.R, R/plotPCA-methods.R, R/plotQC-methods.R,
-%   R/plotTotalCounts-methods.R, R/plotZerosVsDepth-methods.R,
+%   R/humanize-methods.R, R/interestingGroups-methods.R,
+%   R/logRatio-methods.R, R/mapGenes-methods.R, R/markdown-methods.R,
+%   R/meltCounts-methods.R, R/metrics-methods.R, R/organism-methods.R,
+%   R/plotCounts-methods.R, R/plotCountsPerBiotype-methods.R,
+%   R/plotCountsPerGene-methods.R, R/plotGenderMarkers-methods.R,
+%   R/plotGenesDetected-methods.R, R/plotHeatmap-methods.R,
+%   R/plotPCA-methods.R, R/plotQC-methods.R, R/plotTotalCounts-methods.R,
+%   R/plotZerosVsDepth-methods.R, R/reexports-bioverbs.R,
 %   R/reexports-brio.R, R/reexports-goalie.R, R/reexports-syntactic.R,
 %   R/reexports-transformer.R, R/reexports.R, R/removeNA-methods.R,
 %   R/sampleData-methods.R, R/sampleNames-methods.R, R/sanitizeNA-methods.R,
@@ -47,10 +48,14 @@
 \alias{saveData}
 \alias{transmit}
 \alias{writeCounts}
+\alias{sanitizeColData}
+\alias{sanitizeRowData}
+\alias{sanitizeRowRanges}
 \alias{assert}
 \alias{bapply}
 \alias{extractLocal}
 \alias{hasLocal}
+\alias{hasRownames}
 \alias{matchArgsToDoCall}
 \alias{methodFormals}
 \alias{methodFunction}
@@ -84,11 +89,11 @@ below to see their documentation.
 
   \item{BiocGenerics}{\code{\link[BiocGenerics]{combine}}, \code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{counts<-}}, \code{\link[BiocGenerics]{organism}}, \code{\link[BiocGenerics]{plotPCA}}}
 
-  \item{bioverbs}{\code{\link[bioverbs]{aggregateRows}}, \code{\link[bioverbs]{aggregateCols}}, \code{\link[bioverbs]{aggregateCellsToSamples}}, \code{\link[bioverbs]{autopadZeros}}, \code{\link[bioverbs]{cell2sample}}, \code{\link[bioverbs]{collapseToString}}, \code{\link[bioverbs]{convertGenesToSymbols}}, \code{\link[bioverbs]{convertSymbolsToGenes}}, \code{\link[bioverbs]{convertSampleIDsToNames}}, \code{\link[bioverbs]{convertTranscriptsToGenes}}, \code{\link[bioverbs]{plotDEGHeatmap}}, \code{\link[bioverbs]{plotGene}}, \code{\link[bioverbs]{geneNames}}, \code{\link[bioverbs]{geometricMean}}, \code{\link[bioverbs]{headtail}}, \code{\link[bioverbs]{humanize}}, \code{\link[bioverbs]{interestingGroups}}, \code{\link[bioverbs]{interestingGroups<-}}, \code{\link[bioverbs]{foldChangeToLogRatio}}, \code{\link[bioverbs]{logRatioToFoldChange}}, \code{\link[bioverbs]{mapGenesToRownames}}, \code{\link[bioverbs]{mapGenesToIDs}}, \code{\link[bioverbs]{mapGenesToSymbols}}, \code{\link[bioverbs]{markdown}}, \code{\link[bioverbs]{meltCounts}}, \code{\link[bioverbs]{metrics}}, \code{\link[bioverbs]{metricsPerSample}}, \code{\link[bioverbs]{plotCounts}}, \code{\link[bioverbs]{plotCountsPerBiotype}}, \code{\link[bioverbs]{plotCountsPerBroadClass}}, \code{\link[bioverbs]{plotCountsPerGene}}, \code{\link[bioverbs]{plotGenderMarkers}}, \code{\link[bioverbs]{plotGenesDetected}}, \code{\link[bioverbs]{plotHeatmap}}, \code{\link[bioverbs]{plotCorrelationHeatmap}}, \code{\link[bioverbs]{plotQuantileHeatmap}}, \code{\link[bioverbs]{plotQC}}, \code{\link[bioverbs]{plotTotalCounts}}, \code{\link[bioverbs]{plotZerosVsDepth}}, \code{\link[bioverbs]{removeNA}}, \code{\link[bioverbs]{sampleData}}, \code{\link[bioverbs]{sampleData<-}}, \code{\link[bioverbs]{sanitizeNA}}, \code{\link[bioverbs]{sanitizePercent}}, \code{\link[bioverbs]{selectSamples}}, \code{\link[bioverbs]{stripTranscriptVersions}}, \code{\link[bioverbs]{subsetPerSample}}, \code{\link[bioverbs]{topCellsPerSample}}, \code{\link[bioverbs]{uniteInterestingGroups}}, \code{\link[bioverbs]{zerosVsDepth}}}
+  \item{bioverbs}{\code{\link[bioverbs]{aggregateRows}}, \code{\link[bioverbs]{aggregateCols}}, \code{\link[bioverbs]{aggregateCellsToSamples}}, \code{\link[bioverbs]{autopadZeros}}, \code{\link[bioverbs]{cell2sample}}, \code{\link[bioverbs]{collapseToString}}, \code{\link[bioverbs]{convertGenesToSymbols}}, \code{\link[bioverbs]{convertSymbolsToGenes}}, \code{\link[bioverbs]{convertSampleIDsToNames}}, \code{\link[bioverbs]{convertTranscriptsToGenes}}, \code{\link[bioverbs]{geneNames}}, \code{\link[bioverbs]{geometricMean}}, \code{\link[bioverbs]{headtail}}, \code{\link[bioverbs]{humanize}}, \code{\link[bioverbs]{interestingGroups}}, \code{\link[bioverbs]{interestingGroups<-}}, \code{\link[bioverbs]{foldChangeToLogRatio}}, \code{\link[bioverbs]{logRatioToFoldChange}}, \code{\link[bioverbs]{mapGenesToRownames}}, \code{\link[bioverbs]{mapGenesToIDs}}, \code{\link[bioverbs]{mapGenesToSymbols}}, \code{\link[bioverbs]{markdown}}, \code{\link[bioverbs]{meltCounts}}, \code{\link[bioverbs]{metrics}}, \code{\link[bioverbs]{metricsPerSample}}, \code{\link[bioverbs]{plotCounts}}, \code{\link[bioverbs]{plotCountsPerBiotype}}, \code{\link[bioverbs]{plotCountsPerBroadClass}}, \code{\link[bioverbs]{plotCountsPerGene}}, \code{\link[bioverbs]{plotGenderMarkers}}, \code{\link[bioverbs]{plotGenesDetected}}, \code{\link[bioverbs]{plotHeatmap}}, \code{\link[bioverbs]{plotCorrelationHeatmap}}, \code{\link[bioverbs]{plotQuantileHeatmap}}, \code{\link[bioverbs]{plotQC}}, \code{\link[bioverbs]{plotTotalCounts}}, \code{\link[bioverbs]{plotZerosVsDepth}}, \code{\link[bioverbs]{plotDEGHeatmap}}, \code{\link[bioverbs]{plotGene}}, \code{\link[bioverbs]{removeNA}}, \code{\link[bioverbs]{sampleData}}, \code{\link[bioverbs]{sampleData<-}}, \code{\link[bioverbs]{sanitizeNA}}, \code{\link[bioverbs]{sanitizePercent}}, \code{\link[bioverbs]{selectSamples}}, \code{\link[bioverbs]{stripTranscriptVersions}}, \code{\link[bioverbs]{subsetPerSample}}, \code{\link[bioverbs]{topCellsPerSample}}, \code{\link[bioverbs]{uniteInterestingGroups}}, \code{\link[bioverbs]{zerosVsDepth}}}
 
-  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{atomize}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}}
+  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{atomize}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}}
 
-  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{bapply}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{validate}}}
+  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{bapply}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{hasRownames}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{validate}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}}
 
