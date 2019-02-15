@@ -2,6 +2,10 @@
 #' @export
 goalie::assert
 
+#' @importFrom goalie bapply
+#' @export
+goalie::bapply
+
 #' @importFrom goalie extractLocal
 #' @export
 goalie::extractLocal

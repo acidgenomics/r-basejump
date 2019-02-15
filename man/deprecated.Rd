@@ -46,6 +46,9 @@
 \alias{tx2gene}
 \alias{markdownPlotlist}
 \alias{mdPlotlist}
+\alias{assertFormalInterestingGroups}
+\alias{assertIsAnImplicitInteger}
+\alias{assertIsTx2gene}
 \title{Deprecated functions}
 \usage{
 ensembl(...)
@@ -133,6 +136,12 @@ tx2gene(...)
 markdownPlotlist(plotlist, ...)
 
 mdPlotlist(plotlist, ...)
+
+assertFormalInterestingGroups(x, interestingGroups)
+
+assertIsAnImplicitInteger(x)
+
+assertIsTx2gene(x)
 }
 \arguments{
 \item{...}{Additional arguments.}
@@ -141,6 +150,12 @@ mdPlotlist(plotlist, ...)
 
 \item{plotlist}{\code{list}.
 List containing \code{ggplot} objects.}
+
+\item{x}{Object.}
+
+\item{interestingGroups}{\code{character}.
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 }
 \value{
 \code{.Deprecated}.
