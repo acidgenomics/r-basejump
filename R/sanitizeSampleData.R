@@ -30,6 +30,8 @@ sanitizeSampleData <- function(object) {
         legacy <- TRUE
         class <- class(object)[[1L]]
         object <- as(object, "DataFrame")
+    } else {
+        legacy <- FALSE
     }
 
     assert(
