@@ -417,8 +417,87 @@ mdPlotlist <- markdownPlotlist
 
 
 
-# v0.9.7 =======================================================================
-# plotGene to plotCounts
+# v0.9.10 ======================================================================
+# Legacy functions still in use by bcbio R packages that were previously defined
+# in v0.7.2 release. Keep these functions soft deprecated, so a bunch of
+# warnings don't pop up during assert checks in the older package versions.
+
+# Source code is defined here primarily:
+# https://github.com/steinbaugh/basejump/blob/v0.7.2/R/assert.R
+
+#' @rdname deprecated
+#' @export
+assertFormalInterestingGroups <- function(x, interestingGroups) {
+    # Early return on `NULL` interesting groups (e.g. DESeqDataSet).
+    if (is.null(interestingGroups)) {
+        return(TRUE)
+    }
+
+    assert(isCharacter(interestingGroups))
+
+    # Obtain column data, if S4 object is passed in.
+    if (isS4(x)) {
+        x <- colData(x)
+    }
+    x <- as(x, "DataFrame")
+
+    # Check that interesting groups are slotted into sampleData
+    if (!isTRUE(isSubset(interestingGroups, colnames(x)))) {
+        stop(paste(
+            "The interesting groups",
+            deparse(toString(setdiff(interestingGroups, colnames(x)))),
+            "are not defined as columns in `sampleData()`."
+        ))
+    }
+
+    # Check that interesting groups are factors
+    isFactor <- vapply(
+        X = x[, interestingGroups, drop = FALSE],
+        FUN = is.factor,
+        FUN.VALUE = logical(1L),
+        USE.NAMES = TRUE
+    )
+    if (!all(isFactor)) {
+        invalid <- names(isFactor)[which(!isFactor)]
+        stop(paste(
+            "The interesting groups",
+            deparse(toString(invalid)),
+            "are not factor."
+        ))
+    }
+
+    TRUE
+}
+
+#' @rdname deprecated
+#' @export
+assertIsAnImplicitInteger <- function(x) {
+    assert(isInt(x))
+}
+
+# Note that we don't want to check for `Tx2Gene` S4 class here. Older versions
+# of bcbio R packages don't slot transcript-to-gene mappings as our new and
+# improved Tx2Gene class.
+
+#' @rdname deprecated
+#' @export
+assertIsTx2gene <- function(x) {
+    assert(is.data.frame(x))
+    # Rename `txID` to `transcriptID`, if necessary.
+    # Note that in newer code that uses `Tx2Gene` class, this is stricter.
+    if ("txID" %in% colnames(x)) {
+        colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
+    }
+    assert(
+        identical(colnames(x), c("transcriptID", "geneID")),
+        hasRows(x),
+        # Require that all columns are character.
+        all(bapply(
+            X = x,
+            FUN = is.character
+        ))
+    )
+}
 
 
 
