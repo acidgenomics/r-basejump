@@ -2,6 +2,12 @@
 #' @inherit bioverbs::plotQuantileHeatmap
 #' @inheritParams plotHeatmap
 #' @inheritParams params
+#'
+#' @param legend `logical(1)`.
+#'   Show the color legend.
+#' @param n `integer(1)`.
+#'   The number of quantile breaks to create.
+#'
 #' @return `pheatmap`.
 #' @examples
 #' data(rse, sce)

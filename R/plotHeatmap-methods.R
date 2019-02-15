@@ -71,18 +71,11 @@
 #'   (e.g. `c("#FF0000", "#0000FF")`), but this is not generally recommended.
 #'   Refer to the RColorBrewer package for hexadecimal color palettes that may
 #'   be suitable. If set `NULL`, will use the default pheatmap colors.
-#' @param legend `logical(1)`.
-#'   Show the color legend.
+
 #' @param legendColor `function` or `NULL`.
 #'   Hexadecimal color function to use for legend labels. Note that hexadecimal
 #'   values are not supported. If set `NULL`, will use the default pheatmap
 #'   colors.
-#' @param method `character(1)`.
-#'   Correlation coefficient (or covariance) method to be computed. Defaults to
-#'   "`pearson`" but "`spearman`" can also be used. Consult the [stats::cor()]
-#'   documentation for more information.
-#' @param n `integer(1)`.
-#'   The number of quantile breaks to create.
 #' @param scale `character(1)`.
 #'   Whether the values should be centered and scaled in either the row or
 #'   column direction ("`row`", "`column`"), or remain unscaled ("`none`").

@@ -82,17 +82,6 @@ Plot title.}
 
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
 The argument names must be formatted in camel case, not snake case.}
-
-\item{legend}{\code{logical(1)}.
-Show the color legend.}
-
-\item{method}{\code{character(1)}.
-Correlation coefficient (or covariance) method to be computed. Defaults to
-"\code{pearson}" but "\code{spearman}" can also be used. Consult the \code{\link[stats:cor]{stats::cor()}}
-documentation for more information.}
-
-\item{n}{\code{integer(1)}.
-The number of quantile breaks to create.}
 }
 \value{
 \code{pheatmap}.
