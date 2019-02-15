@@ -89,3 +89,19 @@ brio::transmit
 #' @importFrom brio writeCounts
 #' @export
 brio::writeCounts
+
+
+
+# These are now deprecated but still in use by the bcbio R packages.
+
+#' @importFrom brio sanitizeColData
+#' @export
+brio::sanitizeColData
+
+#' @importFrom brio sanitizeRowData
+#' @export
+brio::sanitizeRowData
+
+#' @importFrom brio sanitizeRowRanges
+#' @export
+brio::sanitizeRowRanges

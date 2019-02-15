@@ -131,6 +131,7 @@ Collate:
     'plotTotalCounts-methods.R'
     'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
+    'reexports-bioverbs.R'
     'reexports-brio.R'
     'reexports-goalie.R'
     'reexports-syntactic.R'

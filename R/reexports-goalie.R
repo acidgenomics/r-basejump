@@ -13,7 +13,12 @@ goalie::extractLocal
 #' @importFrom goalie hasLocal
 #' @export
 goalie::hasLocal
-c
+
+# Still in use by bcbioRNASeq v0.2.9.
+#' @importFrom goalie hasRownames
+#' @export
+goalie::hasRownames
+
 #' @importFrom goalie matchArgsToDoCall
 #' @export
 goalie::matchArgsToDoCall
