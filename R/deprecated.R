@@ -427,6 +427,36 @@ mdPlotlist <- markdownPlotlist
 # Source code is defined here primarily:
 # https://github.com/steinbaugh/basejump/blob/v0.7.2/R/assert.R
 
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertAreGeneAnnotations <- function(x) {
+    x <- as.data.frame(x)
+    assert(
+        isSubset(c("geneID", "geneName"), colnames(x)),
+        hasRows(x)
+    )
+    TRUE
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertFormalGene2symbol <- function(x, genes, gene2symbol) {
+    assert(
+        hasRownames(x),
+        isCharacter(genes, nullOK = TRUE),
+        isAny(gene2symbol, classes = c("data.frame", "NULL"))
+    )
+    if (is.data.frame(gene2symbol)) {
+        # Note that this function will be deprecated.
+        assertIsGene2symbol(gene2symbol)
+        assert(isSubset(rownames(x), gene2symbol[["geneID"]]))
+    }
+    TRUE
+}
+
+# Imported by bcbioBase 0.4.2.
 #' @rdname deprecated
 #' @export
 assertFormalInterestingGroups <- function(x, interestingGroups) {
@@ -471,16 +501,99 @@ assertFormalInterestingGroups <- function(x, interestingGroups) {
     TRUE
 }
 
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsAHeaderLevel <- function(x) {
+    assert(isHeaderLevel(x))
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsAStringOrNULL <- function(x) {
+    assert(isString(x, nullOK = TRUE))
+}
+
+# Imported by bcbioBase 0.4.2.
 #' @rdname deprecated
 #' @export
 assertIsAnImplicitInteger <- function(x) {
+    assert(isInt(x, nullOK = FALSE))
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsAnImplicitIntegerOrNULL <- function(x) {
+    assert(isInt(x, nullOK = TRUE))
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsColorScaleDiscreteOrNULL <- function(x) {
+    assert(
+        isGGScale(
+            x = x,
+            scale = "discrete",
+            aes = "colour",
+            nullOK = TRUE
+        )
+    )
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsFillScaleDiscreteOrNULL <- function(x) {
+    assert(
+        isGGScale(
+            x = x,
+            scale = "discrete",
+            aes = "fill",
+            nullOK = TRUE
+        )
+    )
+}
+
+# Imported by bcbioBase 0.4.2.
+# Note that we don't want to check for `Gene2Symbol` S4 class here.
+# Older versions of bcbio R packages don't slot gene-to-symbol mappings as our
+# new and improved Gene2Symbol class.
+#' @rdname deprecated
+#' @export
+assertIsGene2symbol <- function(x) {
+    assert(
+        is.data.frame(x),
+        identical(colnames(x), c("geneID", "geneName")),
+        hasRows(x),
+        # Require that all columns are character.
+        all(bapply(
+            X = x,
+            FUN = is.character
+        ))
+    )
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsHexColorFunctionOrNULL <- function(x) {
+    assert(isHexColorFunction(x, nullOK = TRUE))
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsImplicitInteger <- function(x) {
     assert(isInt(x))
 }
 
+# Imported by bcbioBase 0.4.2.
 # Note that we don't want to check for `Tx2Gene` S4 class here. Older versions
 # of bcbio R packages don't slot transcript-to-gene mappings as our new and
 # improved Tx2Gene class.
-
 #' @rdname deprecated
 #' @export
 assertIsTx2gene <- function(x) {
