@@ -386,16 +386,11 @@ readYAML <- function(...) {
 
 #' @rdname defunct
 #' @export
-separatorBar <- function(...) {
-    .Defunct("separator")
-}
-
-#' @rdname defunct
-#' @export
 setArgsToDoCall <- function(...) {
     .Defunct("matchArgsToDoCall")
 }
 
+# Soft deprecated until we update bcbio R packages.
 #' @rdname deprecated
 #' @export
 tx2gene <- function(...) {
