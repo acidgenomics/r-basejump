@@ -8,7 +8,7 @@
 \alias{interestingGroups<-,SummarizedExperiment,NULL-method}
 \title{Interesting groups}
 \usage{
-\S4method{interestingGroups}{SummarizedExperiment}(object, check = FALSE)
+\S4method{interestingGroups}{SummarizedExperiment}(object)
 
 
   \S4method{interestingGroups}{SummarizedExperiment,character}(object) <- value
@@ -18,9 +18,6 @@
 }
 \arguments{
 \item{object}{Object.}
-
-\item{check}{\code{logical(1)}.
-Perform assert checks.}
 
 \item{value}{Value.}
 }

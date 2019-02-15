@@ -27,19 +27,13 @@ bioverbs::`interestingGroups<-`
 
 
 
-# Keep `check` disabled by default.
 #' @rdname interestingGroups
 #' @export
 setMethod(
     f = "interestingGroups",
     signature = signature("SummarizedExperiment"),
-    definition = function(object, check = FALSE) {
-        assert(isFlag(check))
-        value <- metadata(object)[["interestingGroups"]]
-        if (isTRUE(check)) {
-            assert(matchesInterestingGroups(object, value))
-        }
-        value
+    definition = function(object) {
+        metadata(object)[["interestingGroups"]]
     }
 )
 
@@ -55,9 +49,8 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
-        assert(matchesInterestingGroups(object, value))
+        assert(isSubset(value, colnames(colData(object))))
         metadata(object)[["interestingGroups"]] <- value
-        validObject(object)
         object
     }
 )
@@ -74,7 +67,6 @@ setMethod(
     ),
     definition = function(object, value) {
         metadata(object)[["interestingGroups"]] <- NULL
-        validObject(object)
         object
     }
 )
