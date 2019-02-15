@@ -7,7 +7,8 @@
 sanitizeSampleData(object)
 }
 \arguments{
-\item{object}{Object.}
+\item{object}{\code{DataFrame} (recommended) or \code{data.frame} (legacy).
+Note that legacy \code{data.frame} support will be removed in a future update.}
 }
 \value{
 \code{DataFrame}.
