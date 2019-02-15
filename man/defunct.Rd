@@ -16,7 +16,6 @@
 \alias{paperwhiteTheme}
 \alias{synonyms}
 \alias{broadClass}
-\alias{separatorBar}
 \alias{setArgsToDoCall}
 \title{Defunct functions}
 \usage{
@@ -47,8 +46,6 @@ paperwhiteTheme(...)
 synonyms(...)
 
 broadClass(object, ...)
-
-separatorBar(...)
 
 setArgsToDoCall(...)
 }
