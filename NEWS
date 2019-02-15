@@ -6,6 +6,8 @@
   compatible with bcbioBase v0.4.1 and bcbioRNASeq v0.2.8 release series.
 - Now reexporting `goalie::bapply()` and additional useful pipes from magrittr
   package.
+- Keeping the now deprecated `plotGene()` generic reexported, while encouring
+  users to update their code to use `plotCounts()` instead.
 
 
 ## basejump 0.9.9 (2019-02-12)
