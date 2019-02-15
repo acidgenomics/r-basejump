@@ -3,16 +3,6 @@
 \docType{methods}
 \name{deprecated}
 \alias{deprecated}
-\alias{ensembl}
-\alias{gene2symbolFromGFF}
-\alias{gene2symbolFromGTF}
-\alias{sanitizeAnnotable}
-\alias{tx2geneFromGFF}
-\alias{tx2geneFromGTF}
-\alias{multiassignAsNewEnvir}
-\alias{geomean}
-\alias{midnightTheme}
-\alias{paperwhiteTheme}
 \alias{aggregateFeatures}
 \alias{aggregateFeatures,ANY-method}
 \alias{aggregateReplicates}
@@ -51,26 +41,6 @@
 \alias{assertIsTx2gene}
 \title{Deprecated functions}
 \usage{
-ensembl(...)
-
-gene2symbolFromGFF(...)
-
-gene2symbolFromGTF(...)
-
-sanitizeAnnotable(...)
-
-tx2geneFromGFF(...)
-
-tx2geneFromGTF(...)
-
-multiassignAsNewEnvir(...)
-
-geomean(...)
-
-midnightTheme(...)
-
-paperwhiteTheme(...)
-
 aggregateFeatures(object, ...)
 
 \S4method{aggregateFeatures}{ANY}(object, ...)
@@ -144,9 +114,9 @@ assertIsAnImplicitInteger(x)
 assertIsTx2gene(x)
 }
 \arguments{
-\item{...}{Additional arguments.}
-
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 
 \item{plotlist}{\code{list}.
 List containing \code{ggplot} objects.}
