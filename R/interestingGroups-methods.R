@@ -39,7 +39,6 @@ setMethod(
 
 
 
-# We're always checking assignment validity here.
 #' @rdname interestingGroups
 #' @export
 setMethod(
@@ -49,7 +48,12 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
-        assert(isSubset(value, colnames(colData(object))))
+        if (!isSubset(value, colnames(colData(object)))) {
+            stop(
+                "Interesting groups must be columns in `colData()`.",
+                call. = FALSE
+            )
+        }
         metadata(object)[["interestingGroups"]] <- value
         object
     }
