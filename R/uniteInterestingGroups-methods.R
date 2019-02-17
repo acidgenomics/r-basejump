@@ -61,3 +61,20 @@ setMethod(
     signature = signature("DataFrame"),
     definition = uniteInterestingGroups.DataFrame
 )
+
+
+
+# Legacy method support for bcbio R packages.
+# Safe to deprecate/remove once bcbio v0.3 release series is on hbc.
+uniteInterestingGroups.data.frame <-  # nolint
+    uniteInterestingGroups.DataFrame
+
+
+
+#' @rdname uniteInterestingGroups
+#' @export
+setMethod(
+    f = "uniteInterestingGroups",
+    signature = signature("data.frame"),
+    definition = uniteInterestingGroups.data.frame
+)
