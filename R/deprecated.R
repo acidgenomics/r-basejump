@@ -441,7 +441,8 @@ assertFormalGene2symbol <- function(x, genes, gene2symbol) {
     assert(
         hasRownames(x),
         isCharacter(genes, nullOK = TRUE),
-        isAny(gene2symbol, classes = c("data.frame", "NULL"))
+        # [2019-02-17] Note that we've added `Gene2Symbol` here.
+        isAny(gene2symbol, classes = c("Gene2Symbol", "data.frame", "NULL"))
     )
     if (is.data.frame(gene2symbol)) {
         # Note that this function will be deprecated.
