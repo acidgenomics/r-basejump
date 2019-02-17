@@ -4,11 +4,11 @@
 
 - Working on making the current basejump code base completely backward
   compatible with bcbioBase v0.4.1 and bcbioRNASeq v0.2.8 release series.
-- Now reexporting `goalie::bapply()` and additional useful pipes from magrittr
+- Now reexporting `goalie::bapply` and additional useful pipes from magrittr
   package.
-- Keeping the now deprecated `plotGene()` generic reexported, while encouring
-  users to update their code to use `plotCounts()` instead.
-- `interestingGroups()`: Simplified internal assert checks, removing
+- Keeping the now deprecated `plotGene` generic reexported, while encouring
+  users to update their code to use `plotCounts` instead.
+- `interestingGroups`: Simplified internal assert checks, removing
   `matchesInterestingGroups`, which can become circular.
 
 
@@ -24,7 +24,7 @@
 
 ### Minor changes
 
-- Reexporting `assert()` from goalie package.
+- Reexporting `assert` from goalie package.
 
 
 ## basejump 0.9.7 (2019-01-23)

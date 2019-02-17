@@ -52,13 +52,12 @@ Plot style.}
 \code{ggplot}.
 }
 \description{
-This is a convenience function that wraps \code{\link[=plotGene]{plotGene()}} to quickly plot known
-sexually dimorphic genes, and overall gene experssion for the X and Y
-chromosomes.
+This is a convenience function that quickly plots known sexually dimorphic
+genes, and overall gene experssion for the X and Y chromosomes.
 }
 \note{
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 }
 \seealso{
-\code{plotGene()}.
+\code{plotCounts()}.
 }

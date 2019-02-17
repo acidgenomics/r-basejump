@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.10</span>
       </span>
     </div>
 
@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Deprecated functions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/separator.R'><code>R/separator.R</code></a></small>
     <div class="hidden name"><code>deprecated.Rd</code></div>
     </div>
 
@@ -115,27 +115,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ensembl</span>(<span class='no'>...</span>)
-
-<span class='fu'>gene2symbolFromGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>gene2symbolFromGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>sanitizeAnnotable</span>(<span class='no'>...</span>)
-
-<span class='fu'>tx2geneFromGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>tx2geneFromGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>multiassignAsNewEnvir</span>(<span class='no'>...</span>)
-
-<span class='fu'>geomean</span>(<span class='no'>...</span>)
-
-<span class='fu'>midnightTheme</span>(<span class='no'>...</span>)
-
-<span class='fu'>paperwhiteTheme</span>(<span class='no'>...</span>)
-
-<span class='fu'>aggregateFeatures</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>aggregateFeatures</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>
 <span class='fu'>aggregateFeatures</span>(<span class='no'>object</span>, <span class='no'>...</span>)
@@ -202,25 +182,80 @@
 
 <span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>, <span class='no'>...</span>)
 
-<span class='fu'>mdPlotlist</span>(<span class='no'>plotlist</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>mdPlotlist</span>(<span class='no'>plotlist</span>, <span class='no'>...</span>)
+
+<span class='fu'>assertAreGeneAnnotations</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertFormalGene2symbol</span>(<span class='no'>x</span>, <span class='no'>genes</span>, <span class='no'>gene2symbol</span>)
+
+<span class='fu'>assertFormalInterestingGroups</span>(<span class='no'>x</span>, <span class='no'>interestingGroups</span>)
+
+<span class='fu'>assertIsAHeaderLevel</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsAStringOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsAnImplicitInteger</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsAnImplicitIntegerOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsColorScaleDiscreteOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsFillScaleDiscreteOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsGene2symbol</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsHexColorFunctionOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsImplicitInteger</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsTx2gene</span>(<span class='no'>x</span>)
+
+<span class='no'>separatorBar</span></pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
       <th>object</th>
       <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>plotlist</th>
       <td><p><code>list</code>.
 List containing <code>ggplot</code> objects.</p></td>
     </tr>
+    <tr>
+      <th>x</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>genes</th>
+      <td><p><code>character</code>.
+Gene identifiers. It is considered better practice to input the stable gene
+identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
+symbols (e.g. "TSPN6"), if possible.</p></td>
+    </tr>
+    <tr>
+      <th>gene2symbol</th>
+      <td><p><code>Gene2Symbol</code>.
+Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</code> columns. See
+<code>Gene2Symbol</code> for more information.</p></td>
+    </tr>
+    <tr>
+      <th>interestingGroups</th>
+      <td><p><code>character</code>.
+Groups of interest that define the samples. If left unset, defaults to
+<code>sampleName</code>.</p></td>
+    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>character</code> of length 1.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -233,6 +268,8 @@ List containing <code>ggplot</code> objects.</p></td>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#format">Format</a></li>
+
       <li><a href="#value">Value</a></li>
           </ul>
 
