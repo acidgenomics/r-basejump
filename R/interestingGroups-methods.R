@@ -48,7 +48,12 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
-        if (!isSubset(value, colnames(colData(object)))) {
+        # Note that we're always allowing `sampleName` to be slotted, even if
+        # that column isn't defined in `colData()`.
+        if (
+            !isSubset(value, colnames(colData(object))) &&
+            !identical(value, "sampleName")
+        ) {
             stop(
                 "Interesting groups must be columns in `colData()`.",
                 call. = FALSE
