@@ -123,6 +123,7 @@ Collate:
     'plotCorrelationHeatmap-methods.R'
     'plotCounts-methods.R'
     'plotCountsPerBiotype-methods.R'
+    'plotCountsPerBroadClass-methods.R'
     'plotCountsPerGene-methods.R'
     'plotGenderMarkers-methods.R'
     'plotGenesDetected-methods.R'
