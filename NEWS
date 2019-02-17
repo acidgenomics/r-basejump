@@ -1,4 +1,4 @@
-## basejump 0.9.10 (2019-02-15)
+## basejump 0.9.10 (2019-02-17)
 
 ### Minor changes
 
@@ -8,6 +8,8 @@
   package.
 - Keeping the now deprecated `plotGene()` generic reexported, while encouring
   users to update their code to use `plotCounts()` instead.
+- `interestingGroups()`: Simplified internal assert checks, removing
+  `matchesInterestingGroups`, which can become circular.
 
 
 ## basejump 0.9.9 (2019-02-11)
