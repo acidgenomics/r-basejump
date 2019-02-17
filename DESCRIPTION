@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.9.10
-Date: 2019-02-12
+Date: 2019-02-17
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -32,7 +32,7 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 3.4)
 Imports:
-    bioverbs (>= 0.1.6), brio (>= 0.1.5), goalie (>= 0.2.8),
+    bioverbs (>= 0.1.7), brio (>= 0.1.6), goalie (>= 0.2.8),
         syntactic (>= 0.1.4), transformer (>= 0.1.4),
     AnnotationHub, Biobase, BiocGenerics, GenomeInfoDb, GenomicFeatures,
         GenomicRanges, IRanges, Matrix, Matrix.utils, RColorBrewer, S4Vectors,
