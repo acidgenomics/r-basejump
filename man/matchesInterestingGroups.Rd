@@ -25,7 +25,7 @@ is requested by the user.
 \examples{
 data(rse)
 
-## Checks that columns are defined in `colData`.
+## Checks that columns are defined in `colData()`.
 matchesInterestingGroups(rse, "condition")
 
 ## Currently allowing `NULL` to pass.

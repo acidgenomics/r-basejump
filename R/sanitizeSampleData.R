@@ -9,6 +9,8 @@
 #'
 #' @export
 #' @inheritParams params
+#' @param object `DataFrame` (recommended) or `data.frame` (legacy).
+#'   Note that legacy `data.frame` support will be removed in a future update.
 #'
 #' @return `DataFrame`.
 #' Sanitized data frame containing only non-blacklisted columns and all
@@ -22,6 +24,16 @@
 #' all(vapply(to, is.factor, logical(1L)))
 #' print(to)
 sanitizeSampleData <- function(object) {
+    # Still allowing standard `data.frame`, to support bcbioRNASeq v0.2.9.
+    # Require stricter `DataFrame` input in a future update.
+    if (is.data.frame(object)) {
+        legacy <- TRUE
+        class <- class(object)[[1L]]
+        object <- as(object, "DataFrame")
+    } else {
+        legacy <- FALSE
+    }
+
     assert(
         is(object, "DataFrame"),
         # Require `sampleName` column.
@@ -30,6 +42,7 @@ sanitizeSampleData <- function(object) {
         hasNoDuplicates(object[["sampleName"]]),
         hasRownames(object)
     )
+
     # Drop blacklisted columns.
     blacklist <- c("interestingGroups", "sampleID")
     object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
@@ -41,6 +54,12 @@ sanitizeSampleData <- function(object) {
         is(object, "DataFrame"),
         hasRownames(object)
     )
+
+    # Remove this step in a future update.
+    if (isTRUE(legacy)) {
+        object <- as(object, class)
+    }
+
     # Return.
     object
 }

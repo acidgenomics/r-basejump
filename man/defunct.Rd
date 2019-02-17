@@ -2,23 +2,50 @@
 % Please edit documentation in R/deprecated.R
 \name{defunct}
 \alias{defunct}
+\alias{ensembl}
+\alias{gene2symbolFromGFF}
+\alias{gene2symbolFromGTF}
+\alias{sanitizeAnnotable}
+\alias{tx2geneFromGFF}
+\alias{tx2geneFromGTF}
+\alias{multiassignAsNewEnvir}
+\alias{geomean}
 \alias{parseGFFAttributes}
 \alias{dynamicPlotlist}
+\alias{midnightTheme}
+\alias{paperwhiteTheme}
 \alias{synonyms}
 \alias{broadClass}
-\alias{separatorBar}
 \alias{setArgsToDoCall}
 \title{Defunct functions}
 \usage{
+ensembl(...)
+
+gene2symbolFromGFF(...)
+
+gene2symbolFromGTF(...)
+
+sanitizeAnnotable(...)
+
+tx2geneFromGFF(...)
+
+tx2geneFromGTF(...)
+
+multiassignAsNewEnvir(...)
+
+geomean(...)
+
 parseGFFAttributes(...)
 
 dynamicPlotlist(...)
 
+midnightTheme(...)
+
+paperwhiteTheme(...)
+
 synonyms(...)
 
 broadClass(object, ...)
-
-separatorBar(...)
 
 setArgsToDoCall(...)
 }

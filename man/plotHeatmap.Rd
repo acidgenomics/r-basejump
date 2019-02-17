@@ -5,10 +5,6 @@
 \alias{plotHeatmap}
 \alias{plotHeatmap,SummarizedExperiment-method}
 \alias{plotHeatmap,SingleCellExperiment-method}
-\alias{plotCorrelationHeatmap,SummarizedExperiment-method}
-\alias{plotCorrelationHeatmap,SingleCellExperiment-method}
-\alias{plotQuantileHeatmap,SummarizedExperiment-method}
-\alias{plotQuantileHeatmap,SingleCellExperiment-method}
 \title{Heatmap}
 \usage{
 \S4method{plotHeatmap}{SummarizedExperiment}(object, assay = 1L,
@@ -26,34 +22,6 @@
   treeheightRow = 50L, treeheightCol = 50L, color = viridis::viridis,
   legendColor = viridis::viridis, borderColor = NULL, title = NULL,
   ...)
-
-\S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
-  assay = 1L, interestingGroups = NULL, method = c("pearson",
-  "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
-  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
-  color = viridis::viridis, legendColor = viridis::viridis,
-  borderColor = NULL, title = TRUE, ...)
-
-\S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object,
-  assay = 1L, interestingGroups = NULL, method = c("pearson",
-  "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
-  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
-  color = viridis::viridis, legendColor = viridis::viridis,
-  borderColor = NULL, title = TRUE, ...)
-
-\S4method{plotQuantileHeatmap}{SummarizedExperiment}(object, assay = 1L,
-  interestingGroups = NULL, n = 10L, clusterRows = TRUE,
-  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
-  legendColor = viridis::viridis, legend = FALSE, borderColor = NULL,
-  title = NULL, ...)
-
-\S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, assay = 1L,
-  interestingGroups = NULL, n = 10L, clusterRows = TRUE,
-  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
-  legendColor = viridis::viridis, legend = FALSE, borderColor = NULL,
-  title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -114,17 +82,6 @@ Plot title.}
 
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
 The argument names must be formatted in camel case, not snake case.}
-
-\item{method}{\code{character(1)}.
-Correlation coefficient (or covariance) method to be computed. Defaults to
-"\code{pearson}" but "\code{spearman}" can also be used. Consult the \code{\link[stats:cor]{stats::cor()}}
-documentation for more information.}
-
-\item{n}{\code{integer(1)}.
-The number of quantile breaks to create.}
-
-\item{legend}{\code{logical(1)}.
-Show the color legend.}
 }
 \value{
 \code{pheatmap}.
@@ -132,14 +89,6 @@ Show the color legend.}
 \description{
 Construct a simple heatmap.
 }
-\section{Methods (by class)}{
-\itemize{
-\item \code{SummarizedExperiment}: Construct a correlation heatmap comparing the columns
-of the matrix.
-
-\item \code{SummarizedExperiment}: Scale the heatmap by applying quantile breaks.
-}}
-
 \section{Scaling}{
 
 
@@ -186,8 +135,6 @@ data(rse, sce)
 
 ## SummarizedExperiment ====
 plotHeatmap(rse)
-plotCorrelationHeatmap(rse)
-plotQuantileHeatmap(rse)
 
 ## Disable column clustering.
 plotHeatmap(rse, clusterCols = FALSE)
@@ -202,8 +149,6 @@ plotHeatmap(rse, color = purple_orange)
 
 ## SingleCellExperiment ====
 plotHeatmap(sce)
-plotCorrelationHeatmap(sce)
-plotQuantileHeatmap(sce)
 }
 \seealso{
 \itemize{
