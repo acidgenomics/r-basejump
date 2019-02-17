@@ -2,6 +2,7 @@
 #
 # See also:
 # - https://docs.travis-ci.com/user/languages/r
+# - https://docs.travis-ci.com/user/environment-variables/
 # - https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb
 # - https://jef.works/blog/2019/02/17/automate-testing-of-your-R-package/
 
