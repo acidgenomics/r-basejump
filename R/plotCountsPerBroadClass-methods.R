@@ -1,31 +1,30 @@
-#' @name plotCountsPerBiotype
+#' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::plotCountsPerBiotype
+#' @inherit bioverbs::plotCountsPerBroadClass
 #' @inheritParams params
 #' @examples
 #' data(rse, sce)
 #'
 #' ## SummarizedExperiment ====
-#' plotCountsPerBiotype(rse)
+#' plotCountsPerBroadClass(rse)
 #'
 #' ## SingleCellExperiment ====
-#' plotCountsPerBiotype(sce)
+#' plotCountsPerBroadClass(sce)
 NULL
 
 
 
-#' @importFrom bioverbs plotCountsPerBiotype
+#' @importFrom bioverbs plotCountsPerBroadClass
 #' @aliases NULL
 #' @export
-bioverbs::plotCountsPerBiotype
+bioverbs::plotCountsPerBroadClass
 
 
 
-plotCountsPerBiotype.SummarizedExperiment <-  # nolint
+plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
-        n = 9L,
         interestingGroups = NULL,
         trans = "log2",
         countsAxisLabel = "counts"
@@ -33,29 +32,19 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         validObject(object)
         assert(
             isScalar(assay),
-            isInt(n),
             isString(trans),
             isString(countsAxisLabel)
         )
 
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
-        interestingGroups <- interestingGroups(object)
 
         rowData <- rowData(object)
         # Ensure Rle columns get decoded.
         rowData <- decode(rowData)
-        # Ensure row names are defined, which isn't always the case for
-        # row data derived from SE (non-ranged).
         rownames(rowData) <- rownames(object)
 
-        # Determine whether to use transcripts or genes automatically.
-        if ("transcriptBiotype" %in% colnames(rowData)) {
-            biotypeCol <- "transcriptBiotype"
-        } else {
-            biotypeCol <- "geneBiotype"
-        }
-
+        biotypeCol <- "broadClass"
         # Warn and early return if the biotypes are not defined in rowData.
         if (!biotypeCol %in% colnames(rowData)) {
             warning(paste(
@@ -65,7 +54,6 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             return(invisible())
         }
 
-        # Get the top biotypes from the row data.
         biotypes <- rowData %>%
             as_tibble() %>%
             select(!!sym(biotypeCol)) %>%
@@ -74,7 +62,6 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             # Require at least 10 genes.
             filter(!!sym("n") >= 10L) %>%
             arrange(desc(!!sym("n"))) %>%
-            top_n(n = n, wt = !!sym("n")) %>%
             pull(!!sym(biotypeCol)) %>%
             as.character()
 
@@ -83,7 +70,6 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             as_tibble(rownames = "sampleID") %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))
 
-        # Gather the counts into a long tibble.
         data <- assays(object)[[assay]] %>%
             # Ensure sparse matrix is coerced to dense.
             as.matrix() %>%
@@ -107,12 +93,10 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             data <- rename(data, !!sym("sampleID") := !!sym("colname"))
         }
 
-        # Prepare the minimal tibble required for plotting.
         data <- data %>%
-            # Drop zero counts, which is useful when log scaling the axis.
             filter(!!sym("counts") > 0L) %>%
             left_join(
-                y = as_tibble(rowData, rownames = "rowname"),
+                as_tibble(rowData, rownames = "rowname"),
                 by = "rowname"
             ) %>%
             filter(!!sym(biotypeCol) %in% !!biotypes) %>%
@@ -120,8 +104,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             left_join(
                 y = as_tibble(sampleData),
                 by = "sampleID"
-            ) %>%
-            select(!!!syms(c("counts", "interestingGroups", biotypeCol)))
+            )
 
         p <- ggplot(
             data = data,
@@ -139,7 +122,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             scale_y_continuous(trans = trans) +
             facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(
-                title = "counts per biotype",
+                title = "counts per broad class",
                 x = NULL,
                 y = countsAxisLabel,
                 fill = paste(interestingGroups, collapse = ":\n")
@@ -158,7 +141,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
 #' @rdname plotCountsPerBiotype
 #' @export
 setMethod(
-    f = "plotCountsPerBiotype",
+    f = "plotCountsPerBroadClass",
     signature = signature("SummarizedExperiment"),
-    definition = plotCountsPerBiotype.SummarizedExperiment
+    definition = plotCountsPerBroadClass.SummarizedExperiment
 )
