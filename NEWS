@@ -1,12 +1,30 @@
+## basejump 0.9.10 (2019-02-17)
+
+### Minor changes
+
+- Working on making the current basejump code base completely backward
+  compatible with bcbioBase v0.4.1 and bcbioRNASeq v0.2.8 release series.
+- Now reexporting `goalie::bapply` and additional useful pipes from magrittr
+  package.
+- Keeping the now deprecated `plotGene` generic reexported, while encouring
+  users to update their code to use `plotCounts` instead.
+- `interestingGroups`: Simplified internal assert checks, removing
+  `matchesInterestingGroups`, which can become circular.
+
+
 ## basejump 0.9.9 (2019-02-11)
 
+### Minor changes
+
+- Code fixes to provide backward compatibility support for R 3.4. Tested using
+  R 3.4.1 with Bioconductor 3.6 release.
 
 
 ## basejump 0.9.8 (2019-02-08)
 
 ### Minor changes
 
-- Reexporting `assert()` from goalie package.
+- Reexporting `assert` from goalie package.
 
 
 ## basejump 0.9.7 (2019-01-23)

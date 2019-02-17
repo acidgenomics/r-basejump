@@ -28,60 +28,54 @@ NULL
 
 
 # v0.4.0 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 ensembl <- function(...) {
-    .Deprecated("makeGRangesFromEnsembl")
-    makeGRangesFromEnsembl(...)
+    .Defunct("makeGRangesFromEnsembl")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 gene2symbolFromGFF <- function(...) {
-    .Deprecated("makeGene2symbolFromGFF")
-    makeGene2symbolFromGFF(...)
+    .Defunct("makeGene2symbolFromGFF")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 gene2symbolFromGFF -> gene2symbolFromGTF
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 sanitizeAnnotable <- function(...) {
-    .Deprecated("atomize")
-    atomize(...)
+    .Defunct("atomize")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 tx2geneFromGFF <- function(...) {
-    .Deprecated("makeTx2GeneFromGFF")
-    makeTx2GeneFromGFF(...)
+    .Defunct("makeTx2GeneFromGFF")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 tx2geneFromGFF -> tx2geneFromGTF
 
 
 
 # v0.5.0 =======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 multiassignAsNewEnvir <- function(...) {
-    .Deprecated("multiassignAsEnvir")
-    multiassignAsEnvir(...)
+    .Defunct("multiassignAsEnvir")
 }
 
 
 
 # v0.5.2 =======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 geomean <- function(...) {
-    .Deprecated("geometricMean")
-    geometricMean(...)
+    .Defunct("geometricMean")
 }
 
 
@@ -105,18 +99,26 @@ dynamicPlotlist <- function(...) {
 
 
 # v0.5.11 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 midnightTheme <- function(...) {
-    .Deprecated("theme_midnight")
-    theme_midnight(...)
+    .Defunct(msg = paste0(
+        "'midnightTheme' is defunct.\n",
+        "Requiring snake case format for ggplot2 functions.\n",
+        "Use 'theme_midnight' instead.\n",
+        "See help(\"Defunct\")"
+    ))
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 paperwhiteTheme <- function(...) {
-    .Deprecated("theme_paperwhite")
-    theme_paperwhite(...)
+    .Defunct(msg = paste0(
+        "'paperwhiteTheme' is defunct.\n",
+        "Requiring snake case format for ggplot2 functions.\n",
+        "Use 'theme_paperwhite' instead.\n",
+        "See help(\"Defunct\")"
+    ))
 }
 
 
@@ -384,16 +386,11 @@ readYAML <- function(...) {
 
 #' @rdname defunct
 #' @export
-separatorBar <- function(...) {
-    .Defunct("separator")
-}
-
-#' @rdname defunct
-#' @export
 setArgsToDoCall <- function(...) {
     .Defunct("matchArgsToDoCall")
 }
 
+# Soft deprecated until we update bcbio R packages.
 #' @rdname deprecated
 #' @export
 tx2gene <- function(...) {
@@ -417,8 +414,200 @@ mdPlotlist <- markdownPlotlist
 
 
 
-# v0.9.7 =======================================================================
-# plotGene to plotCounts
+# v0.9.10 ======================================================================
+# Legacy functions still in use by bcbio R packages that were previously defined
+# in v0.7.2 release. Keep these functions soft deprecated, so a bunch of
+# warnings don't pop up during assert checks in the older package versions.
+
+# Source code is defined here primarily:
+# https://github.com/steinbaugh/basejump/blob/v0.7.2/R/assert.R
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertAreGeneAnnotations <- function(x) {
+    x <- as.data.frame(x)
+    assert(
+        isSubset(c("geneID", "geneName"), colnames(x)),
+        hasRows(x)
+    )
+    TRUE
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertFormalGene2symbol <- function(x, genes, gene2symbol) {
+    assert(
+        hasRownames(x),
+        isCharacter(genes, nullOK = TRUE),
+        isAny(gene2symbol, classes = c("data.frame", "NULL"))
+    )
+    if (is.data.frame(gene2symbol)) {
+        # Note that this function will be deprecated.
+        assertIsGene2symbol(gene2symbol)
+        assert(isSubset(rownames(x), gene2symbol[["geneID"]]))
+    }
+    TRUE
+}
+
+# Imported by bcbioBase 0.4.2.
+#' @rdname deprecated
+#' @export
+assertFormalInterestingGroups <- function(x, interestingGroups) {
+    # Early return on `NULL` interesting groups (e.g. DESeqDataSet).
+    if (is.null(interestingGroups)) {
+        return(TRUE)
+    }
+
+    assert(isCharacter(interestingGroups))
+
+    # Obtain column data, if S4 object is passed in.
+    if (isS4(x)) {
+        x <- colData(x)
+    }
+    x <- as(x, "DataFrame")
+
+    # Check that interesting groups are slotted into sampleData
+    if (!isTRUE(isSubset(interestingGroups, colnames(x)))) {
+        stop(paste(
+            "The interesting groups",
+            deparse(toString(setdiff(interestingGroups, colnames(x)))),
+            "are not defined as columns in `sampleData()`."
+        ))
+    }
+
+    # Check that interesting groups are factors
+    isFactor <- vapply(
+        X = x[, interestingGroups, drop = FALSE],
+        FUN = is.factor,
+        FUN.VALUE = logical(1L),
+        USE.NAMES = TRUE
+    )
+    if (!all(isFactor)) {
+        invalid <- names(isFactor)[which(!isFactor)]
+        stop(paste(
+            "The interesting groups",
+            deparse(toString(invalid)),
+            "are not factor."
+        ))
+    }
+
+    TRUE
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsAHeaderLevel <- function(x) {
+    assert(isHeaderLevel(x))
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsAStringOrNULL <- function(x) {
+    assert(isString(x, nullOK = TRUE))
+}
+
+# Imported by bcbioBase 0.4.2.
+#' @rdname deprecated
+#' @export
+assertIsAnImplicitInteger <- function(x) {
+    assert(isInt(x, nullOK = FALSE))
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsAnImplicitIntegerOrNULL <- function(x) {
+    assert(isInt(x, nullOK = TRUE))
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsColorScaleDiscreteOrNULL <- function(x) {
+    assert(
+        isGGScale(
+            x = x,
+            scale = "discrete",
+            aes = "colour",
+            nullOK = TRUE
+        )
+    )
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsFillScaleDiscreteOrNULL <- function(x) {
+    assert(
+        isGGScale(
+            x = x,
+            scale = "discrete",
+            aes = "fill",
+            nullOK = TRUE
+        )
+    )
+}
+
+# Imported by bcbioBase 0.4.2.
+# Note that we don't want to check for `Gene2Symbol` S4 class here.
+# Older versions of bcbio R packages don't slot gene-to-symbol mappings as our
+# new and improved Gene2Symbol class.
+#' @rdname deprecated
+#' @export
+assertIsGene2symbol <- function(x) {
+    assert(
+        is.data.frame(x),
+        identical(colnames(x), c("geneID", "geneName")),
+        hasRows(x),
+        # Require that all columns are character.
+        all(bapply(
+            X = x,
+            FUN = is.character
+        ))
+    )
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsHexColorFunctionOrNULL <- function(x) {
+    assert(isHexColorFunction(x, nullOK = TRUE))
+}
+
+# Imported by bcbioRNASeq 0.2.9.
+#' @rdname deprecated
+#' @export
+assertIsImplicitInteger <- function(x) {
+    assert(isInt(x))
+}
+
+# Imported by bcbioBase 0.4.2.
+# Note that we don't want to check for `Tx2Gene` S4 class here. Older versions
+# of bcbio R packages don't slot transcript-to-gene mappings as our new and
+# improved Tx2Gene class.
+#' @rdname deprecated
+#' @export
+assertIsTx2gene <- function(x) {
+    assert(is.data.frame(x))
+    # Rename `txID` to `transcriptID`, if necessary.
+    # Note that in newer code that uses `Tx2Gene` class, this is stricter.
+    if ("txID" %in% colnames(x)) {
+        colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
+    }
+    assert(
+        identical(colnames(x), c("transcriptID", "geneID")),
+        hasRows(x),
+        # Require that all columns are character.
+        all(bapply(
+            X = x,
+            FUN = is.character
+        ))
+    )
+}
 
 
 

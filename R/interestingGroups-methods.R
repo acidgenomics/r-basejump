@@ -27,25 +27,18 @@ bioverbs::`interestingGroups<-`
 
 
 
-# Keep `check` disabled by default.
 #' @rdname interestingGroups
 #' @export
 setMethod(
     f = "interestingGroups",
     signature = signature("SummarizedExperiment"),
-    definition = function(object, check = FALSE) {
-        assert(isFlag(check))
-        value <- metadata(object)[["interestingGroups"]]
-        if (isTRUE(check)) {
-            assert(matchesInterestingGroups(object, value))
-        }
-        value
+    definition = function(object) {
+        metadata(object)[["interestingGroups"]]
     }
 )
 
 
 
-# We're always checking assignment validity here.
 #' @rdname interestingGroups
 #' @export
 setMethod(
@@ -55,9 +48,18 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
-        assert(matchesInterestingGroups(object, value))
+        # Note that we're always allowing `sampleName` to be slotted, even if
+        # that column isn't defined in `colData()`.
+        if (
+            !isSubset(value, colnames(colData(object))) &&
+            !identical(value, "sampleName")
+        ) {
+            stop(
+                "Interesting groups must be columns in `colData()`.",
+                call. = FALSE
+            )
+        }
         metadata(object)[["interestingGroups"]] <- value
-        validObject(object)
         object
     }
 )
@@ -74,7 +76,6 @@ setMethod(
     ),
     definition = function(object, value) {
         metadata(object)[["interestingGroups"]] <- NULL
-        validObject(object)
         object
     }
 )

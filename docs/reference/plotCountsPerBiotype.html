@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.10</span>
       </span>
     </div>
 
@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot counts per biotype</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotCountsPerBiotype-methods.R'><code>R/plotCountsPerBiotype-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotCountsPerBiotype-methods.R'><code>R/plotCountsPerBiotype-methods.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotCountsPerBroadClass-methods.R'><code>R/plotCountsPerBroadClass-methods.R</code></a></small>
     <div class="hidden name"><code>plotCountsPerBiotype.Rd</code></div>
     </div>
 
@@ -121,7 +121,7 @@
   <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotCountsPerBroadClass</span>(<span class='no'>object</span>,
+<span class='fu'><a href='plotCountsPerBroadClass.html'>plotCountsPerBroadClass</a></span>(<span class='no'>object</span>,
   <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"log2"</span>,
   <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>)</pre>
     
@@ -174,9 +174,9 @@ Counts axis label.</p></td>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>)
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>plotCountsPerBiotype</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotCountsPerBiotype-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotCountsPerBroadClass</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotCountsPerBiotype-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>plotCountsPerBiotype</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotCountsPerBiotype-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='fu'>plotCountsPerBiotype</span>(<span class='no'>sce</span>)</div><div class='img'><img src='plotCountsPerBiotype-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotCountsPerBroadClass</span>(<span class='no'>sce</span>)</div><div class='img'><img src='plotCountsPerBiotype-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotCountsPerBiotype</span>(<span class='no'>sce</span>)</div><div class='img'><img src='plotCountsPerBiotype-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

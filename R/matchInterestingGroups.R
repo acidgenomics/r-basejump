@@ -16,17 +16,24 @@
 #' @examples
 #' data(rse)
 #' matchInterestingGroups(rse)
+#'
+#' matchInterestingGroups(rse, interestingGroups = NULL)
+#' matchInterestingGroups(rse, interestingGroups = substitute())
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
-    if (is.null(interestingGroups)) {
-        interestingGroups <- interestingGroups(object, check = FALSE)
-        if (
-            is.null(interestingGroups) ||
-            !all(interestingGroups %in% colnames(colData(object)))
-        ) {
-            interestingGroups <- "sampleName"
-        }
-    } else {
-        interestingGroups(object) <- interestingGroups
+    # Legacy support for bcbio R packages, which pass missing through.
+    if (
+        missing(interestingGroups) ||
+        !is.character(interestingGroups)
+    ) {
+        interestingGroups <- NULL
+    }
+    interestingGroups <- interestingGroups(object)
+    # Return `sampleName` by default, if necessary.
+    if (
+        is.null(interestingGroups) ||
+        !all(interestingGroups %in% colnames(colData(object)))
+    ) {
+        interestingGroups <- "sampleName"
     }
     assert(isCharacter(interestingGroups))
     interestingGroups
