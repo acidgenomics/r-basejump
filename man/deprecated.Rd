@@ -49,6 +49,7 @@
 \alias{assertIsHexColorFunctionOrNULL}
 \alias{assertIsImplicitInteger}
 \alias{assertIsTx2gene}
+\alias{plotGene,SummarizedExperiment-method}
 \alias{separatorBar}
 \title{Deprecated functions}
 \format{An object of class \code{character} of length 1.}
@@ -144,6 +145,8 @@ assertIsHexColorFunctionOrNULL(x)
 assertIsImplicitInteger(x)
 
 assertIsTx2gene(x)
+
+\S4method{plotGene}{SummarizedExperiment}(object, ...)
 
 separatorBar
 }
