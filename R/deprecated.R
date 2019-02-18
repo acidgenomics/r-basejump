@@ -611,6 +611,7 @@ assertIsTx2gene <- function(x) {
 }
 
 #' @rdname defunct
+#' @usage NULL
 #' @export
 setMethod(
     f = "plotCounts",
@@ -621,6 +622,7 @@ setMethod(
 )
 
 #' @rdname deprecated
+#' @usage NULL
 #' @export
 setMethod(
     f = "plotGene",

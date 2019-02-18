@@ -4,12 +4,9 @@
 \name{uniteInterestingGroups}
 \alias{uniteInterestingGroups}
 \alias{uniteInterestingGroups,DataFrame-method}
-\alias{uniteInterestingGroups,data.frame-method}
 \title{Unite interesting groups into a single column}
 \usage{
 \S4method{uniteInterestingGroups}{DataFrame}(object, interestingGroups)
-
-\S4method{uniteInterestingGroups}{data.frame}(object, interestingGroups)
 }
 \arguments{
 \item{object}{Object.}
