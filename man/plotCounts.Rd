@@ -4,7 +4,6 @@
 \name{plotCounts}
 \alias{plotCounts}
 \alias{plotCounts,SummarizedExperiment-method}
-\alias{plotCounts,SingleCellExperiment-method}
 \title{Plot counts}
 \usage{
 \S4method{plotCounts}{SummarizedExperiment}(object, genes, assay = 1L,
@@ -51,8 +50,6 @@ Show plot legend.}
 
 \item{style}{\code{character(1)}.
 Plot style.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \itemize{
