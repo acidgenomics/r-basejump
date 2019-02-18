@@ -50,8 +50,6 @@ synonyms(...)
 broadClass(object, ...)
 
 setArgsToDoCall(...)
-
-\S4method{plotCounts}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{...}{Additional arguments.}

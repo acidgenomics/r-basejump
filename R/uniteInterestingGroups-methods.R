@@ -64,14 +64,15 @@ setMethod(
 
 
 
-# Legacy method support for bcbio R packages.
+# Deprecated legacy method support for bcbio R packages.
 # Safe to deprecate/remove once bcbio v0.3 release series is on hbc.
 uniteInterestingGroups.data.frame <-  # nolint
     uniteInterestingGroups.DataFrame
 
 
 
-#' @rdname uniteInterestingGroups
+#' @rdname deprecated
+#' @usage NULL
 #' @export
 setMethod(
     f = "uniteInterestingGroups",
