@@ -148,6 +148,11 @@ plotCounts.SummarizedExperiment <-  # nolint
         legend = getOption("basejump.legend", TRUE),
         style = c("facet", "wide")
     ) {
+        # Check for accidental masking of DESeq2, which doesn't currently use
+        # generic for `plotCounts()`.
+        if (is(object, "DESeqDataSet")) {
+            stop("Use `DESeq2::plotCounts()` for DESeqDataSet.")
+        }
         validObject(object)
         assert(
             isCharacter(genes),
@@ -203,17 +208,4 @@ setMethod(
     f = "plotCounts",
     signature = signature("SummarizedExperiment"),
     definition = plotCounts.SummarizedExperiment
-)
-
-
-
-#' @rdname plotCounts
-#' @usage NULL
-#' @export
-setMethod(
-    f = "plotCounts",
-    signature = signature("SingleCellExperiment"),
-    definition = function(object, ...) {
-        .Deprecated("pointillism::plotCounts")
-    }
 )

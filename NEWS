@@ -1,13 +1,16 @@
-## basejump 0.9.10 (2019-02-15)
+## basejump 0.9.10 (2019-02-17)
 
 ### Minor changes
 
 - Working on making the current basejump code base completely backward
   compatible with bcbioBase v0.4.1 and bcbioRNASeq v0.2.8 release series.
-- Now reexporting `goalie::bapply()` and additional useful pipes from magrittr
+- Now reexporting `goalie::bapply` and additional useful pipes from magrittr
   package.
-- Keeping the now deprecated `plotGene()` generic reexported, while encouring
-  users to update their code to use `plotCounts()` instead.
+- Keeping the now deprecated `plotGene` generic reexported, while encouring
+  users to update their code to use `plotCounts` instead.
+- `interestingGroups`: Simplified internal assert checks, removing
+  `matchesInterestingGroups`, which can become circular.
+
 
 
 ## basejump 0.9.9 (2019-02-11)
@@ -18,59 +21,238 @@
   R 3.4.1 with Bioconductor 3.6 release.
 
 
+
 ## basejump 0.9.8 (2019-02-08)
 
 ### Minor changes
 
-- Reexporting `assert()` from goalie package.
+- Reexporting `assert` from goalie package.
+
 
 
 ## basejump 0.9.7 (2019-01-23)
 
 
+
 ## basejump 0.9.6 (2019-01-22)
+
 
 
 ## basejump 0.9.5 (2019-01-22)
 
 
+
 ## basejump 0.9.4 (2019-01-12)
+
 
 
 ## basejump 0.9.3 (2019-01-08)
 
 
+
 ## basejump 0.9.2 (2019-01-07)
+
 
 
 ## basejump 0.9.1 (2018-12-22)
 
 
+
 ## basejump 0.9.0 (2018-12-12)
 
+### Major changes
 
-## basejump 0.8.8 (2018-12-03)
-
-
-## basejump 0.8.6 (2018-11-30)
-
-
-## basejump 0.8.5 (2018-11-29)
+- Now using [goalie][] package instead of [assertive][] for internal assert
+  checks. The new `goalie::assert` function is more flexible in many cases.
+  Similarly, `goalie::validate` is now being used in place of
+  `assertthat::validate_that`.
 
 
-## basejump 0.8.4 (2018-11-28)
+
+## basejump 0.8.8-alpha (2018-12-03)
+
+### New functions
+
+- `deg`: Utility function to quickly obtain differentially expressed gene
+  (DEG) identifiers as a character vector.
+
+### Major changes
+
+- `plotHeatmap`: Now defining row scaling internally, rather than relying on the
+  functionality defined in `pheatmap`.
 
 
-## basejump 0.8.3 (2018-11-25)
+
+## basejump 0.8.7-alpha (2018-12-01)
+
+### New functions
+
+- `humanize`. New generic that enables easy conversion to human-friendly column
+  and/or row names. Useful for CSV file export in particular.
+
+### Minor changes
+
+- `export`: Added `humanize` argument support.
+- Improved grep pattern matching inside `makeNames` functions
+  (e.g. `.sanitizeAcronyms`).
+- `sampleData`: Improved blacklist pattern matching against `Seurat` objects
+  for `SingleCellExperiment` method.
 
 
-## basejump 0.8.2 (2018-11-19)
+
+## basejump 0.8.6-alpha (2018-11-30)
+
+### Minor changes
+
+- Now importing `hasUniqueCols` from goalie. Switched from previous approach
+  using `areSamplesUnique`.
+- Documentation improvement for `genomeBuild`, used in `makeGRanges` functions.
+- Miscellaneous documentation improvements to pass build checks.
 
 
-## basejump 0.8.1 (2018-11-15)
+
+## basejump 0.8.5-alpha (2018-11-29)
+
+### New functions
+
+- `relevelRowRanges`, `relevelColData`.
+
+### Deprecations
+
+- `markdownPlotlist`. Renamed to `markdownPlots`.
+
+### Minor changes
+
+- `autopadZeros`: Improved internal code to keep track of names for `character`
+  method. Also added method support for `SummarizedExperiment`, which works on
+  the column names (e.g. sample names) only by default.
+- `Ensembl2Entrez`: Simplify validity check to require `integer` in `entrezID`
+  column. Also reworked and improved internal code that supports run-length
+  encoding (Rle) using `decode`.
+- `export`: Improved documentation for `name` argument.
+- `makeGRangesFromEnsembl`: Improved messages to user.
+- `plotCountsPerBiotype`: Improved error messages for when the biotype isn't
+  defined.
+- `plotPCA`: Add support for unique sample detection with `areSamplesUnique`,
+  similar to the approach used in the bcbioRNASeq quality control R Markdown.
+- `sampleNames`: Simplified `sampleName` extraction, using `[[` internally.
+- Miscellaneous documentation fixes.
+- Updated unit test for `sanitizeRowData`.
 
 
-## basejump 0.8.0 (2018-11-11)
+
+## basejump 0.8.4-alpha (2018-11-28)
+
+### New functions
+
+- `autopadZeros`. Useful for padding zeros inside of a character vector.
+- `basenameSansExt`. Quickly get the basename without the file extension for
+  desired file path(s). Surprisingly, this isn't defined in the tools package
+  so I wrote my own.
+- `cleanSystemLibrary`. I ran into some shared library configuration issues
+  on the Azure infrastructure, so this utility function is useful for checking
+  wheter an R installation has a clean library.
+- `plotGenderMarkers`: Migrated the `SummarizedExperiment` method from
+  bcbioRNASeq package.
+
+### Minor changes
+
+- Split out call functions defined in `calls.R` into separate R files.
+  Refer to `dots`, for example.
+- Split out `environment.R` into separate R files. See `detectHPC` for example.
+- Miscellaneous documentation improvements.
+  
+
+
+## basejump 0.8.3-alpha (2018-11-25)
+
+### Minor changes
+
+- Improved usage of `assertthat::validate_that` in S4 class validity checks.
+  Removed former approach using internal `.valid` function.
+- Temporarily soft deprecated some functions that will be formally deprecated
+  in a future release. See `deprecated.R` file.
+- `interestingGroups` doesn't attempt validity check using `validObject` by
+  default, which can be enabled instead using `check = TRUE`.
+- `sampleData`: Tightened up internal assert checks.
+- `PANTHER`: Minor tweaks to internal variable names inside `.splitTerms`.
+- `transmit`: Improved messages. Temporarily disabled working example, since it
+  consistently fails on [Travis CI][].
+
+
+
+## basejump 0.8.2-alpha (2018-11-19)
+
+### Major changes
+
+Migrating some additional base code that can be dispatched on either
+`SummarizedExperiment` or `SingleCellExperiment` from the bcbio R packages.
+We're going to split out some of the single-cell RNA-seq functionality into
+separate packages, since a lot of my work moving forward deals with the 10X
+Genomics Cell Ranger platform, rather than the bcbio-supported inDrops platform.
+
+In particular:
+
+- `barcodeRanksPerSample`.
+- `filterCells`.
+- `plotBarcodeRanks`.
+- `plotCellCounts`.
+- `plotGenesPerCell`.
+- `plotMitoRatio`.
+- `plotMitoVsCoding`.
+- `plotNovelty`.
+- `plotReadsPerCell`.
+- `plotUMIsPerCell`.
+- `plotUMIsVsGenes`.
+
+### Minor changes
+
+- Migrated some `plotHeatmap` and `plotPCA` code from bcbio R packages.
+- Added new `formalsList` global variable, which stashes `getOption` defaults
+  used in some functions, namely the save/load functions and some plotting
+  functions.
+- Switched to using `formalsList` along with `formals` declaration internally
+  to make the parameters more consistent across functions.
+- Miscellaneous fixes to working examples and documentation.
+- Split out sanitization functions into separate R files (e.g. `removeNA`).
+
+
+
+## basejump 0.8.1-alpha (2018-11-15)
+
+### Major changes
+
+The split-out sub-package approach isn't working quite right, so the code base
+has been consolidated back into a single basejump package. Development toward
+splitting the package will continue, but a conceptual re-imagining of how to
+organize the functions is needed.
+
+
+
+## basejump 0.8.0-alpha (2018-11-11)
+
+### Major changes
+
+This release is the beginning of an attempt to rework the basejump codebase a
+bit and make the package easier to unit test on [Travis CI][]. bcbio R packages
+will be pinned to v0.7.2 during this development period.
+
+Here we are working to split out the functionality of basejump into
+several, smaller sub-packages:
+
+- basejump.annotations
+- basejump.assertions
+- basejump.classes
+- basejump.coercion
+- basejump.developer
+- basejump.experiment
+- basejump.generics
+- basejump.globals
+- basejump.io
+- basejump.markdown
+- basejump.plots
+- basejump.sanitization
+
 
 
 ## basejump 0.7.2 (2018-08-29)
@@ -132,6 +314,7 @@
 - Updated contribution guidelines in `CONTRIBUTING.md` file.
 
 
+
 ## basejump 0.7.1 (2018-08-18)
 
 ### New functions
@@ -153,6 +336,7 @@
   specified package. Currently in use for [bcbioRNASeq][], [bcbioSingleCell][],
   and the new [pointillism][] clustering package.
 - Made [Ensembl][] release matching stricter, based on the metadata columns.
+
 
 
 ## basejump 0.7.0 (2018-08-07)
@@ -178,6 +362,7 @@ simplicity and stability.
   an unstructured `list`. This is the method used internally for `flatFiles`.
 
 
+
 ## basejump 0.6.4 (2018-08-03)
 
 ### New functions
@@ -187,6 +372,7 @@ simplicity and stability.
   [bcbio][] infrastructure packges.
 
 
+
 ## basejump 0.6.3 (2018-08-01)
 
 ### Minor changes
@@ -194,6 +380,7 @@ simplicity and stability.
 - Migrated `separatorBar` and `updateMessage` global export from [bcbioBase][].
   Improved `separatorBar` appeareance to automatically scale to current session
   width, using `getOption("width")`.
+
 
 
 ## basejump 0.6.2 (2018-07-31)
@@ -229,6 +416,7 @@ simplicity and stability.
 - `toStringUnique` now uses `x` instead of `atomic` as primary argument.
 
 
+
 ## basejump 0.6.1 (2018-07-21)
 
 ### Minor changes
@@ -238,6 +426,7 @@ simplicity and stability.
   This issue has been fixed by ensuring that the symbols provided in `geneName`
   are coerced to a character vector.
 - Improved [conda][] installation instructions.
+
 
 
 ## basejump 0.6.0 (2018-07-17)
@@ -272,6 +461,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - `geometricMean` generic was not exported correctly.
 
 
+
 ## basejump 0.5.11 (2018-07-09)
 
 ### Minor changes
@@ -286,6 +476,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Updated internal gene synonyms data from [NIH][].
 
 
+
 ## basejump 0.5.10 (2018-06-28)
 
 ### Minor changes
@@ -298,12 +489,14 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - [AppVeyor CI][] updates to work with [Bioconductor][] 3.8 devel.
 
 
+
 ## basejump 0.5.9 (2018-06-12)
 
 ### Minor changes
 
 - Markdown function consistency improvements. Now all relevant [Markdown][]
   functions use `text` as the primary argument, instead of `object`.
+
 
 
 ## basejump 0.5.8 (2018-06-05)
@@ -326,11 +519,13 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Reorganized documentation of deprecated and defunct functions.
 
 
+
 ## basejump 0.5.7 (2018-05-24)
 
 ### Minor changes
 
 - Tweaked gray color accents for `theme_midnight` and `theme_paperwhite`.
+
 
 
 ## basejump 0.5.6 (2018-05-19)
@@ -340,6 +535,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Fixed NAMESPACE issue with `GenomeInfoDb::seqnames`.
 - Improved `readGFF` working example to reflect switch to `GRanges` return.
 - Added [macOS][] bioc-release image to [Travis CI][] build checks.
+
 
 
 ## basejump 0.5.5 (2018-05-15)
@@ -356,10 +552,12 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   `makeGene2symbolFromGFF`, and `makeTx2geneFromGFF`.
 
 
+
 ## basejump 0.5.4 (2018-05-08)
 
 - Migrated `sanitizeSampleData` to [bcbioBase][] package.
 - Updated [Bioconductor][] install method for 3.7.
+
 
 
 ## basejump 0.5.3 (2018-04-30)
@@ -371,6 +569,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   Now using British spelling internally for ggplot code.
 - Improved `strip.background` for `theme_paperwhite`, removing the black box
   around the labels when facet wrapping is enabled.
+
 
 
 ## basejump 0.5.2 (2018-04-26)
@@ -387,6 +586,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Improved code coverage, using `nocov` where appropriate.
 
 
+
 ## basejump 0.5.1 (2018-04-16)
 
 ### Minor changes
@@ -396,6 +596,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Removed legacy `.assignCamelArgs` and `.assignCamelFormals` internal
   functions.
 - Improved internal handling of XLSX files in `localOrRemoteFile`.
+
 
 
 ## basejump 0.5.0 (2018-04-13)
@@ -446,6 +647,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Migrated `assertFormalAnnotationCol` to [bcbioBase][] package.
 
 
+
 ## basejump 0.4.0 (2018-03-22)
 
 ### Major changes
@@ -488,6 +690,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   `metadataTable`, `comp`, `revcomp`, `symbol2gene`.
 
 
+
 ## basejump 0.3.1 (2018-02-19)
 
 - Now exporting all assert checks in camel case instead of snake case, to
@@ -504,6 +707,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added [ggplot2][] color palette assert checks:
   `assertColorScaleContinuousOrNULL`, `assertColorScaleDiscreteOrNULL`,
   `assertFillScaleContinuousOrNULL`, `assertFillScaleDiscreteOrNULL`.
+
 
 
 ## basejump 0.3.0 (2018-02-16)
@@ -523,6 +727,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Renamed `md*` functions to `markdown*`.
 
 
+
 ## basejump 0.2.1 (2018-02-07)
 
 - Added `convertGenesToSymbols` and `convertTranscriptsToGenes`
@@ -538,6 +743,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   aliases.
 - `geomean` has been renamed to `geometricMean`.
 - Miscellaneous improvements to error messages and warnings.
+
 
 
 ## basejump 0.2.0 (2018-01-28)
@@ -589,6 +795,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   where applicable.
 
 
+
 ## basejump 0.1.10 (2017-12-20)
 
 - Bug fix for multiplexed sample input into `readSampleMetadataFile`. We
@@ -596,6 +803,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   against `sequence` column.
 - Added `dynamicPlotlist` and `mdPlotlist` plotting utilities.
 - Added `uniqueSymbols` parameter to `annotable` function.
+
 
 
 ## basejump 0.1.9 (2017-12-18)
@@ -606,6 +814,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added matrix method support for `plotHeatmap`.
 - Added matrix method support for `plotQuantileHeatmap`, which works
   similarly as `plotHeatmap`.
+
 
 
 ## basejump 0.1.8 (2017-12-14)
@@ -627,6 +836,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   sets `""`, `NA`, and `#N/A` strings as `NA` correctly.
 
 
+
 ## basejump 0.1.7 (2017-12-11)
 
 - Renamed `fc2lr` to `foldChangeToLogRatio` and `lr2fc` and
@@ -635,10 +845,12 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added internal [GRCh37][] gene annotations.
 
 
+
 ## basejump 0.1.6 (2017-12-06)
 
 - Moved `microplate` code from the [wormbase][r-wormbase] package here, since
   it's of general interest.
+
 
 
 ## basejump 0.1.5 (2017-12-05)
@@ -646,6 +858,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added `checkAnnotable`, `checkGene2symbol`, `checkTx2gene`, and
   `sanitizeAnnotable` utility functions that will be used in the bcbio R
   packages.
+
 
 
 ## basejump 0.1.4 (2017-12-04)
@@ -657,6 +870,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   dark gray axes without white axis lines.
 - Improve NAMESPACE imports to include `stats::formula` and
   `utils::capture.output`.
+
 
 
 ## basejump 0.1.3 (2017-12-01)
@@ -687,6 +901,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   `entrez` column. This is useful for downstream functional analysis.
 
 
+
 ## basejump 0.1.2 (2017-11-30)
 
 - Added [bcbio][] `plotQC` generic.
@@ -701,6 +916,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Updated [PANTHER][] annotation scripts.
 - Bug fix for `detectOrganism`. Now allowing `NULL` return for unsupported
   organism, with a warning.
+
 
 
 ## basejump 0.1.1 (2017-11-11)
@@ -721,6 +937,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Removed sample selection by pattern matching (`pattern`, `patternCol`
   arguments) in `readSampleMetadata`. This feature wasn't fully baked and
   doesn't offer enough functionality to the user.
+
 
 
 ## basejump 0.1.0 (2017-10-23)
@@ -746,11 +963,13 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Switched `str_` to base `grep` and `gsub` in internal functions.
 
 
+
 ## basejump 0.0.25 (2017-10-13)
 
 - Improved consistency of `setMethod` calls using `signature`.
 - Converted `loadRemoteData` to a standard function instead of using S4
   dispatch, allowing the `envir` argument to be set properly.
+
 
 
 ## basejump 0.0.24 (2017-10-10)
@@ -801,10 +1020,12 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   collisions with tidyverse packages ([dplyr][], [glue][]).
 
 
+
 ## basejump 0.0.23 (2017-09-14)
 
 - Upgraded `annotable` function to query [Ensembl][] using the [ensembldb][]
   package rather than [annotables][].
+
 
 
 ## basejump 0.0.22 (2017-09-08)
@@ -814,6 +1035,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   column name handling in the function. It now outputs more helpful diagnostic
   messages on error.
 - Reworked and simplified `detectHPC` function to allow for unit testing.
+
 
 
 ## basejump 0.0.21 (2017-09-01)
@@ -837,6 +1059,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   `readYAML` functions.
 
 
+
 ## basejump 0.0.20 (2017-08-16)
 
 - Offloaded [devtools][] functions to personal package.
@@ -849,15 +1072,18 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added unit testing for [annotables][] functions.
 
 
+
 ## basejump 0.0.19 (2017-07-24)
 
 - Improved documentation and consistency with [bcbio][] packages.
 - Improved integration of gene annotation calls using [annotables][] package.
 
 
+
 ## basejump 0.0.18 (2017-07-24)
 
 - Initial support for [SummarizedExperiment][] creation with `packageSE`.
+
 
 
 ## basejump 0.0.17 (2017-07-11)
@@ -868,11 +1094,13 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Initial commit of `assign_data` for use in [bcbioSingleCell][] sample loops.
 
 
+
 ## basejump 0.0.16 (2017-06-28)
 
 - Minor NAMESPACE updates while working on [bcbio][] packages.
 - Tweaks for [tidyverse][] S4 generic verbs. In particular, `as_tibble` now
   provides better consistency for rowname conversion.
+
 
 
 ## basejump 0.0.15 (2017-06-18)
@@ -881,9 +1109,11 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added S4 generic for `as_tibble`.
 
 
+
 ## basejump 0.0.14 (2017-06-13)
 
 - [dplyr][] 0.7 NAMESPACE fixes and function tweaks.
+
 
 
 ## basejump 0.0.13 (2017-06-12)
@@ -892,9 +1122,11 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
   using `signature("data.frame").
 
 
+
 ## basejump 0.0.12 (2017-05-25)
 
 - Updated exports based on [wormbase][r-wormbase] package.
+
 
 
 ## basejump 0.0.11 (2017-05-18)
@@ -904,10 +1136,12 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added `removeNA` utility function.
 
 
+
 ## basejump 0.0.10 (2017-05-14)
 
 - Added NAMESPACE utilities to deal with [tidyverse][] generic verbs.
 - Switched package documentation method to use [roxygen2][] with pkgapi.
+
 
 
 ## basejump 0.0.9 (2017-05-13)
@@ -915,9 +1149,11 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added snake case function variants.
 
 
+
 ## basejump 0.0.8 (2017-05-13)
 
 - Added back `saveData` utility functions.
+
 
 
 ## basejump 0.0.7 (2017-0422)
@@ -925,9 +1161,11 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Bug fixes for [dplyr][] 0.6.0 update and improved kable handling.
 
 
+
 ## basejump 0.0.6 (2017-04-14)
 
 - Dependency fix for successful compilation on the [HMS RC][] Orchestra cluster.
+
 
 
 ## basejump 0.0.5 (2017-04-12)
@@ -935,14 +1173,17 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Consolidated functions in the documentation.
 
 
+
 ## basejump 0.0.4 (2017-04-07)
 
 - Improved documentation.
 
 
+
 ## basejump 0.0.3 (2017-03-22)
 
 - Removed dependencies and transfer functions to [bcbioRNASeq][].
+
 
 
 ## basejump 0.0.2 (2017-03-22)
@@ -951,9 +1192,11 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Added [ggplot2][] wrapper functions for quality control.
 
 
+
 ## basejump 0.0.1 (2017-03-17)
 
 - Initial draft release.
+
 
 
 [AnnotationHub]: https://bioconductor.org/packages/AnnotationHub/

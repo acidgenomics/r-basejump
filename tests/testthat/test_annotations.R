@@ -208,27 +208,30 @@ test_that("makeGRangesFromEnsembl : transcripts", {
     )
 })
 
-test_that("makeGRangesFromEnsembl : GRCh37", {
-    # Genes
-    object <- makeGRangesFromEnsembl(
-        organism = "Homo sapiens",
-        level = "genes",
-        genomeBuild = "GRCh37"
-    )
-    expect_is(object, "GRanges")
-    expect_identical(length(object), 64102L)
-    expect_identical(head(names(object), 1L), "ENSG00000000003")
+# Conditionally test if optional EnsDb.Hsapiens.v75 package is installed.
+if ("EnsDb.Hsapiens.v75" %in% rownames(installed.packages())) {
+    test_that("makeGRangesFromEnsembl : GRCh37", {
+        # Genes
+        object <- makeGRangesFromEnsembl(
+            organism = "Homo sapiens",
+            level = "genes",
+            genomeBuild = "GRCh37"
+        )
+        expect_is(object, "GRanges")
+        expect_identical(length(object), 64102L)
+        expect_identical(head(names(object), 1L), "ENSG00000000003")
 
-    # Transcripts
-    object <- makeGRangesFromEnsembl(
-        organism = "Homo sapiens",
-        level = "transcripts",
-        genomeBuild = "GRCh37"
-    )
-    expect_is(object, "GRanges")
-    expect_identical(length(object), 215647L)
-    expect_identical(head(names(object), 1L), "ENST00000000233")
-})
+        # Transcripts
+        object <- makeGRangesFromEnsembl(
+            organism = "Homo sapiens",
+            level = "transcripts",
+            genomeBuild = "GRCh37"
+        )
+        expect_is(object, "GRanges")
+        expect_identical(length(object), 215647L)
+        expect_identical(head(names(object), 1L), "ENST00000000233")
+    })
+}
 
 test_that("makeGRangesFromEnsembl : Invalid parameters", {
     expect_error(

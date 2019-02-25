@@ -34,6 +34,10 @@ brio::extPattern
 #' @export
 brio::factorize
 
+#' @importFrom brio fileExt
+#' @export
+brio::fileExt
+
 #' @importFrom brio import
 #' @export
 brio::import

@@ -1,3 +1,7 @@
+# Consider deprecating this function in a future release?
+
+
+
 #' Check that interesting groups match a defined value
 #'
 #' Prevent unwanted downstream behavior when a missing interesting group
@@ -35,12 +39,13 @@ matchesInterestingGroups <- function(
         return(TRUE)
     }
 
-    # Otherwise, require that `interestingGroups` is a character.
+    # Otherwise, require a character vector.
     ok <- isCharacter(interestingGroups)
     if (!isTRUE(ok)) {
         return(false("interestingGroups is not non-empty character."))
     }
 
+    # Using `sampleData()` to check against `interestingGroups` column.
     data <- sampleData(x)
 
     # Check intersection with sample data.
