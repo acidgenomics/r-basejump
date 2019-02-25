@@ -1,10 +1,6 @@
 # AppVeyor-CI configuration for Bioconductor packages
 # https://github.com/krlmlr/r-appveyor
 
-# If you see `contrib.url()` error, this is due to recent Bioconductor pull
-# request merge.
-# https://github.com/krlmlr/r-appveyor/pull/125
-
 init:
   ps: |
         $ErrorActionPreference = "Stop"
@@ -34,6 +30,12 @@ environment:
     R_ARCH: x64
     # Need to enable when installing GitHub dependency packages.
     USE_RTOOLS: true
+  # Set the build matrix to use R-devel, otherwise Bioconductor checks will fail
+  # because the image now expects BioC 3.9 on R 3.6.
+  # https://github.com/krlmlr/r-appveyor/issues/144
+  matrix:
+    - R_VERSION: devel
+      GCC_PATH: mingw_64
 
 build_script:
   - travis-tool.sh install_bioc_deps
