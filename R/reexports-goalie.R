@@ -1,7 +1,3 @@
-#' @importFrom goalie assert
-#' @export
-goalie::assert
-
 #' @importFrom goalie bapply
 #' @export
 goalie::bapply
@@ -9,15 +5,6 @@ goalie::bapply
 #' @importFrom goalie extractLocal
 #' @export
 goalie::extractLocal
-
-#' @importFrom goalie hasLocal
-#' @export
-goalie::hasLocal
-
-# Still in use by bcbioRNASeq v0.2.9.
-#' @importFrom goalie hasRownames
-#' @export
-goalie::hasRownames
 
 #' @importFrom goalie matchArgsToDoCall
 #' @export
@@ -39,6 +26,15 @@ goalie::printString
 #' @export
 goalie::standardizeCall
 
-#' @importFrom goalie validate
+
+
+# Remove these assert reexports in a future update.
+
+#' @importFrom goalie hasLocal
 #' @export
-goalie::validate
+goalie::hasLocal
+
+# Still in use by bcbioRNASeq v0.2.9.
+#' @importFrom goalie hasRownames
+#' @export
+goalie::hasRownames
