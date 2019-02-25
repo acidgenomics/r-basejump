@@ -96,7 +96,7 @@ brio::writeCounts
 
 
 
-# These are now deprecated but still in use by the bcbio R packages.
+# Deprecated but still in use by the bcbio R packages.
 
 #' @importFrom brio sanitizeColData
 #' @export
@@ -109,3 +109,47 @@ brio::sanitizeRowData
 #' @importFrom brio sanitizeRowRanges
 #' @export
 brio::sanitizeRowRanges
+
+
+
+# Useful reexports from R.utils and utils.
+
+#' @importFrom brio bunzip2
+#' @export
+brio::bunzip2
+
+#' @importFrom brio bzip2
+#' @export
+brio::bzip2
+
+#' @importFrom brio compressFile
+#' @export
+brio::compressFile
+
+#' @importFrom brio decompressFile
+#' @export
+brio::decompressFile
+
+#' @importFrom brio gunzip
+#' @export
+brio::gunzip
+
+#' @importFrom brio gzip
+#' @export
+brio::gzip
+
+#' @importFrom brio tar
+#' @export
+brio::tar
+
+#' @importFrom brio untar
+#' @export
+brio::untar
+
+#' @importFrom brio unzip
+#' @export
+brio::unzip
+
+#' @importFrom brio zip
+#' @export
+brio::zip

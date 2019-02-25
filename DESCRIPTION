@@ -32,8 +32,8 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 3.4)
 Imports:
-    bioverbs (>= 0.1.7), brio (>= 0.1.6), goalie (>= 0.2.8),
-        syntactic (>= 0.1.4), transformer (>= 0.1.4),
+    bioverbs (>= 0.1.8), brio (>= 0.1.8), goalie (>= 0.2.9),
+        syntactic (>= 0.1.5), transformer (>= 0.1.6),
     AnnotationHub, Biobase, BiocGenerics, GenomeInfoDb, GenomicFeatures,
         GenomicRanges, IRanges, Matrix, Matrix.utils, RColorBrewer, S4Vectors,
         SingleCellExperiment, SummarizedExperiment, ensembldb,
