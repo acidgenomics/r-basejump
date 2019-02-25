@@ -1,3 +1,9 @@
+#' @importFrom goalie assert
+#' @export
+goalie::assert
+
+
+
 #' @importFrom goalie bapply
 #' @export
 goalie::bapply
@@ -28,7 +34,7 @@ goalie::standardizeCall
 
 
 
-# Remove these assert reexports in a future update.
+# Remove these asserts in a future update.
 
 #' @importFrom goalie hasLocal
 #' @export

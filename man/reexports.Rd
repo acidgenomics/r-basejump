@@ -55,17 +55,26 @@
 \alias{sanitizeColData}
 \alias{sanitizeRowData}
 \alias{sanitizeRowRanges}
+\alias{bunzip2}
+\alias{bzip2}
+\alias{compressFile}
+\alias{decompressFile}
+\alias{gunzip}
+\alias{gzip}
+\alias{tar}
+\alias{untar}
+\alias{unzip}
+\alias{zip}
 \alias{assert}
 \alias{bapply}
 \alias{extractLocal}
-\alias{hasLocal}
-\alias{hasRownames}
 \alias{matchArgsToDoCall}
 \alias{methodFormals}
 \alias{methodFunction}
 \alias{printString}
 \alias{standardizeCall}
-\alias{validate}
+\alias{hasLocal}
+\alias{hasRownames}
 \alias{camel}
 \alias{capitalize}
 \alias{dotted}
@@ -95,9 +104,9 @@ below to see their documentation.
 
   \item{bioverbs}{\code{\link[bioverbs]{aggregateRows}}, \code{\link[bioverbs]{aggregateCols}}, \code{\link[bioverbs]{aggregateCellsToSamples}}, \code{\link[bioverbs]{autopadZeros}}, \code{\link[bioverbs]{cell2sample}}, \code{\link[bioverbs]{collapseToString}}, \code{\link[bioverbs]{convertGenesToSymbols}}, \code{\link[bioverbs]{convertSymbolsToGenes}}, \code{\link[bioverbs]{convertSampleIDsToNames}}, \code{\link[bioverbs]{convertTranscriptsToGenes}}, \code{\link[bioverbs]{geneNames}}, \code{\link[bioverbs]{geometricMean}}, \code{\link[bioverbs]{headtail}}, \code{\link[bioverbs]{humanize}}, \code{\link[bioverbs]{interestingGroups}}, \code{\link[bioverbs]{interestingGroups<-}}, \code{\link[bioverbs]{foldChangeToLogRatio}}, \code{\link[bioverbs]{logRatioToFoldChange}}, \code{\link[bioverbs]{mapGenesToRownames}}, \code{\link[bioverbs]{mapGenesToIDs}}, \code{\link[bioverbs]{mapGenesToSymbols}}, \code{\link[bioverbs]{markdown}}, \code{\link[bioverbs]{meltCounts}}, \code{\link[bioverbs]{metrics}}, \code{\link[bioverbs]{metricsPerSample}}, \code{\link[bioverbs]{plotCorrelationHeatmap}}, \code{\link[bioverbs]{plotCounts}}, \code{\link[bioverbs]{plotCountsPerBiotype}}, \code{\link[bioverbs]{plotCountsPerBroadClass}}, \code{\link[bioverbs]{plotCountsPerGene}}, \code{\link[bioverbs]{plotGenderMarkers}}, \code{\link[bioverbs]{plotGenesDetected}}, \code{\link[bioverbs]{plotHeatmap}}, \code{\link[bioverbs]{plotQC}}, \code{\link[bioverbs]{plotQuantileHeatmap}}, \code{\link[bioverbs]{plotTotalCounts}}, \code{\link[bioverbs]{plotZerosVsDepth}}, \code{\link[bioverbs]{plotDEGHeatmap}}, \code{\link[bioverbs]{plotDEGPCA}}, \code{\link[bioverbs]{plotGene}}, \code{\link[bioverbs]{removeNA}}, \code{\link[bioverbs]{sampleData}}, \code{\link[bioverbs]{sampleData<-}}, \code{\link[bioverbs]{sanitizeNA}}, \code{\link[bioverbs]{sanitizePercent}}, \code{\link[bioverbs]{selectSamples}}, \code{\link[bioverbs]{stripTranscriptVersions}}, \code{\link[bioverbs]{subsetPerSample}}, \code{\link[bioverbs]{topCellsPerSample}}, \code{\link[bioverbs]{uniteInterestingGroups}}, \code{\link[bioverbs]{zerosVsDepth}}}
 
-  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{atomize}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}}
+  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{atomize}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{tar}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{zip}}}
 
-  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{bapply}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{hasRownames}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{validate}}}
+  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{bapply}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{hasRownames}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}}
 
