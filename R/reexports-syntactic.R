@@ -10,6 +10,10 @@ syntactic::capitalize
 #' @export
 syntactic::dotted
 
+#' @importFrom syntactic kebab
+#' @export
+syntactic::kebab
+
 #' @importFrom syntactic makeDimnames
 #' @export
 syntactic::makeDimnames

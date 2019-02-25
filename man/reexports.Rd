@@ -78,6 +78,7 @@
 \alias{camel}
 \alias{capitalize}
 \alias{dotted}
+\alias{kebab}
 \alias{makeDimnames}
 \alias{makeNames}
 \alias{snake}
@@ -114,7 +115,7 @@ below to see their documentation.
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{tpm}}}
 
-  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
+  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
 
