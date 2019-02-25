@@ -83,14 +83,17 @@
 \alias{makeNames}
 \alias{snake}
 \alias{upperCamel}
-\alias{as.SummarizedExperiment}
 \alias{coerceS4ToList}
 \alias{flatFiles}
+\alias{as.DataFrame}
+\alias{as.SummarizedExperiment}
+\alias{as.data.frame}
+\alias{as.data.table}
+\alias{as_tibble}
 \alias{\%<>\%}
 \alias{\%$\%}
 \alias{\%>\%}
 \alias{\%T>\%}
-\alias{as_tibble}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -119,6 +122,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{flatFiles}}}
+  \item{transformer}{\code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{as.DataFrame}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}}
 }}
 
