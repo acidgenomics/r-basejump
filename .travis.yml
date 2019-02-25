@@ -1,14 +1,13 @@
 # Travis-CI configuration for Bioconductor packages
-# https://docs.travis-ci.com/user/languages/r
-
-# How Travis builds R packages:
-# https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb
+#
+# See also:
+# - https://docs.travis-ci.com/user/languages/r
+# - https://docs.travis-ci.com/user/environment-variables/
+# - https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb
+# - https://jef.works/blog/2019/02/17/automate-testing-of-your-R-package/
 
 # Temporarily enable when caching package library.
 # script: true
-
-# r_build_args: "--no-build-vignettes"
-# r_check_args: "--no-vignettes"
 
 language: r
 cache: packages
@@ -20,19 +19,23 @@ matrix:
   - os: osx
     r: bioc-release
 
-# blocklist
-# branches:
-#   except:
-#   - develop
-
-# safelist
+# Safelist (only these branches)
 branches:
   only:
   - master
 
+# Blocklist (everything but these branches)
+# branches:
+#   except:
+#   - develop
+
 env:
   global:
     - LINTR_COMMENT_BOT=true
+
+# Skipping vignettes, which can cause the build to time out.
+r_build_args: "--no-build-vignettes --no-manual"
+r_check_args: "--no-build-vignettes --no-manual --timings"
 
 r_packages:
   - covr
@@ -40,12 +43,13 @@ bioc_packages:
   - BiocCheck
   - EnsDb.Hsapiens.v75
 github_packages:
-  - mjsteinbaugh/lintr
+  - steinbaugh/lintr
 
 after_success:
-  - Rscript -e 'lintr::lint_package()'
-  - Rscript -e 'covr::codecov()'
   - R CMD BiocCheck .
+  # Only check lints and coverage against linux bioc-release.
+  - test $TRAVIS_OS_NAME = 'linux' && $TRAVIS_R_VERSION_STRING = 'bioc-release' && Rscript -e 'lintr::lint_package()'
+  - test $TRAVIS_OS_NAME = 'linux' && $TRAVIS_R_VERSION_STRING = 'bioc-release' && Rscript -e 'covr::codecov()'
 
 notifications:
   email:

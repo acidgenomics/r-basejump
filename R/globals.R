@@ -66,4 +66,4 @@ lanePattern <- "_L([[:digit:]]{3})"
 #' @export
 #' @examples
 #' message(updateMessage)
-updateMessage <- "Run `updateObject` to update your object."
+updateMessage <- "Run updateObject() to update your object."

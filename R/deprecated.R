@@ -441,7 +441,8 @@ assertFormalGene2symbol <- function(x, genes, gene2symbol) {
     assert(
         hasRownames(x),
         isCharacter(genes, nullOK = TRUE),
-        isAny(gene2symbol, classes = c("data.frame", "NULL"))
+        # [2019-02-17] Note that we've added `Gene2Symbol` here.
+        isAny(gene2symbol, classes = c("Gene2Symbol", "data.frame", "NULL"))
     )
     if (is.data.frame(gene2symbol)) {
         # Note that this function will be deprecated.
@@ -608,6 +609,29 @@ assertIsTx2gene <- function(x) {
         ))
     )
 }
+
+#' @rdname defunct
+#' @usage NULL
+#' @export
+setMethod(
+    f = "plotCounts",
+    signature = signature("SingleCellExperiment"),
+    definition = function(object, ...) {
+        .Defunct(msg = "Use method defined in pointillism.")
+    }
+)
+
+#' @rdname deprecated
+#' @usage NULL
+#' @export
+setMethod(
+    f = "plotGene",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object, ...) {
+        .Deprecated("plotCounts")
+        plotCounts(object, ...)
+    }
+)
 
 
 
