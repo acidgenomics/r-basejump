@@ -44,21 +44,12 @@ Currently \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}} supports these
 \item FlyBase (GTF only)
 \item WormBase (GTF only)
 }
+
+I generally recommend using Ensembl over RefSeq, if possible.
+It's better supported in R and generally used by most NGS vendors.
 }
 
-\section{Commonly used GFF/GTF files}{
-
-\itemize{
-\item Ensembl GTF:\cr
-ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-\item Ensembl GFF3:\cr
-ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
-\item RefSeq:\cr
-ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-}
-}
-
-\section{Metadata column names}{
+\section{Ensembl}{
 Ensembl GTF (preferred)
 \itemize{
 \item source
@@ -112,6 +103,51 @@ Ensembl GTF (preferred)
 }
 }
 
+\section{RefSeq}{
+RefSeq GFF 3
+\itemize{
+\item source
+\item type
+\item score
+\item phase
+\item ID
+\item Dbxref
+\item Name
+\item chromosome
+\item gbkey
+\item genome
+\item mol_type
+\item description
+\item gene
+\item gene_biotype
+\item pseudo
+\item Parent
+\item product
+\item transcript_id
+\item gene_synonym
+\item model_evidence
+\item protein_id
+}
+
+Current RefSeq GFF3 spec:
+ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt
+}
+
+\section{Commonly used GFF/GTF files}{
+
+\itemize{
+\item Ensembl GTF:\cr
+ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
+\item Ensembl GFF3:\cr
+ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
+\item RefSeq:\cr
+ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
+ftp://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_rna.gbff.gz
+ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_rna.gbff.gz
+ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
+}
+}
+
 \examples{
 file <- file.path(basejumpCacheURL, "example.gtf")
 
@@ -127,5 +163,6 @@ summary(x)
 \itemize{
 \item \code{rtracklayer::import()}.
 \item \code{GenomicFeatures::makeTxDbFromGFF()}.
+\item \code{GenomicFeatures::makeTxDbFromGRanges()}.
 }
 }

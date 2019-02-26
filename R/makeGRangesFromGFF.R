@@ -21,16 +21,10 @@
 #' - FlyBase (GTF only)
 #' - WormBase (GTF only)
 #'
-#' @section Commonly used GFF/GTF files:
+#' I generally recommend using Ensembl over RefSeq, if possible.
+#' It's better supported in R and generally used by most NGS vendors.
 #'
-#' - Ensembl GTF:\cr
-#'   ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-#' - Ensembl GFF3:\cr
-#'   ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
-#' - RefSeq:\cr
-#'   ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-#'
-#' @section Metadata column names:
+#' @section Ensembl:
 #'
 #' ## Ensembl GTF (preferred)
 #'
@@ -84,12 +78,54 @@
 #' - "protein_id"
 #' - "ccdsid"
 #'
+#' @section RefSeq:
+#'
+#' ## RefSeq GFF 3
+#'
+#' - source
+#' - type
+#' - score
+#' - phase
+#' - ID
+#' - Dbxref
+#' - Name
+#' - chromosome
+#' - gbkey
+#' - genome
+#' - mol_type
+#' - description
+#' - gene
+#' - gene_biotype
+#' - pseudo
+#' - Parent
+#' - product
+#' - transcript_id
+#' - gene_synonym
+#' - model_evidence
+#' - protein_id
+#'
+#' Current RefSeq GFF3 spec:
+#' ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt
+#'
+#' @section Commonly used GFF/GTF files:
+#'
+#' - Ensembl GTF:\cr
+#'   ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
+#' - Ensembl GFF3:\cr
+#'   ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
+#' - RefSeq:\cr
+#'   ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
+#'   ftp://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_rna.gbff.gz
+#'   ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_rna.gbff.gz
+#'   ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
+#'
 #' @inheritParams params
 #' @export
 #'
 #' @seealso
 #' - `rtracklayer::import()`.
 #' - `GenomicFeatures::makeTxDbFromGFF()`.
+#' - `GenomicFeatures::makeTxDbFromGRanges()`.
 #'
 #' @examples
 #' file <- file.path(basejumpCacheURL, "example.gtf")
@@ -167,7 +203,10 @@ makeGRangesFromGFF <- function(
     # Standardization ----------------------------------------------------------
     # Rename `gene_symbol` to `gene_name`, if necessary.
     # This applies to FlyBase and WormBase annotations.
-    if (source %in% c("FlyBase", "WormBase")) {
+    if (
+        type == "GTF" &&
+        source %in% c("FlyBase", "WormBase")
+    ) {
         colnames(mcols(gff)) <- gsub(
             pattern = "_symbol$",
             replacement = "_name",
@@ -193,7 +232,7 @@ makeGRangesFromGFF <- function(
     gn <- gff
     gn <- gn[!is.na(mcols(gn)[["gene_id"]])]
     gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
-    if (type == "GFF") {
+    if (source == "Ensembl" && type == "GFF") {
         # Assign `gene_name` column.
         assert(isSubset("Name", colnames(mcols(gn))))
         mcols(gn)[["gene_name"]] <- mcols(gn)[["Name"]]
@@ -250,7 +289,7 @@ makeGRangesFromGFF <- function(
                 x = mcols(tx)[["type"]],
                 ignore.case = TRUE
             )]
-        } else if (type == "GFF") {
+        } else if (source == "Ensembl" && type == "GFF") {
             # Assign `transcript_name`.
             assert(isSubset("Name", colnames(mcols(tx))))
             mcols(tx)[["transcript_name"]] <- mcols(tx)[["Name"]]
