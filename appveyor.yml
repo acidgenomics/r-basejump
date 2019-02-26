@@ -25,7 +25,8 @@ environment:
     # specifically request binary packages.
     # https://github.com/krlmlr/r-appveyor/issues/133
     # https://github.com/krlmlr/r-appveyor/issues/138
-    PKGTYPE: win.binary
+    # Note that enabling this can cause R-devel builds to fail.
+    # PKGTYPE: win.binary
     # Note that the more powerful `x64` image is now default over `i386`.
     R_ARCH: x64
     # Need to enable when installing GitHub dependency packages.
