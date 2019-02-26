@@ -33,6 +33,19 @@ Remote URLs and compressed files are supported.
 Runs the same internal code as \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}}.
 }}
 
+\section{Supported sources}{
+
+
+Currently \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}} supports these sources:
+\itemize{
+\item Ensembl (GTF, GFF3)
+\item GENCODE, which inherits from Ensembl
+\item RefSeq (GFF3)
+\item FlyBase (GTF only)
+\item WormBase (GTF only)
+}
+}
+
 \section{Commonly used GFF/GTF files}{
 
 \itemize{
@@ -42,6 +55,60 @@ ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf
 ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
 \item RefSeq:\cr
 ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
+}
+}
+
+\section{Metadata column names}{
+Ensembl GTF (preferred)
+\itemize{
+\item source
+\item type
+\item score
+\item phase
+\item gene_id
+\item gene_version
+\item gene_name
+\item gene_source
+\item gene_biotype
+\item transcript_id
+\item transcript_version
+\item transcript_name
+\item transcript_source
+\item transcript_biotype
+\item tag
+\item transcript_support_level
+\item exon_number
+\item exon_id
+\item exon_version
+\item protein_id
+\item protein_version
+\item ccds_id
+}Ensembl GFF3
+\itemize{
+\item "source"
+\item "type"
+\item "score"
+\item "phase"
+\item "ID"
+\item "Alias"
+\item "external_name"
+\item "logic_name"
+\item "Name"
+\item "biotype"
+\item "description"
+\item "gene_id"
+\item "version"
+\item "Parent"
+\item "tag"
+\item "transcript_id"
+\item "transcript_support_level"
+\item "constitutive"
+\item "ensembl_end_phase"
+\item "ensembl_phase"
+\item "exon_id"
+\item "rank"
+\item "protein_id"
+\item "ccdsid"
 }
 }
 
