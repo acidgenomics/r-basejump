@@ -120,7 +120,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             colnames(mat) <- sampleNames
             if (
                 length(annotationCol) > 0L &&
-                !is.na(annotationCol)
+                !any(is.na(annotationCol))
             ) {
                 rownames(annotationCol) <- sampleNames
             }
