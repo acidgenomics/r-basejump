@@ -5,8 +5,8 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeGene2Symbol
-#' @include makeGRanges-methods.R
-#' @inheritParams makeGRanges
+#' @include makeGRangesFromEnsembl.R
+#' @inheritParams makeFromEnsembl
 #'
 #' @seealso `makeGRanges`.
 #'
