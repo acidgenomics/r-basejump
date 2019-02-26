@@ -1,6 +1,18 @@
-#' @describeIn makeGRanges Use specific `EnsDb` object as annotation source.
-#'   Alternatively, can pass in an EnsDb package name as a `character(1)`.
+#' Make `GRanges` from `EnsDb` object
+#'
+#' @details
+#' Use specific `EnsDb` object as annotation source.
+#' Alternatively, can pass in an EnsDb package name as a `character(1)`.
+#'
+#' @include makeGRangesFromEnsembl.R
+#'
+#' @inheritParams params
 #' @export
+#'
+#' @examples
+#' if ("EnsDb.Hsapiens.v75" %in% rownames(installed.packages())) {
+#'     x <- makeGRangesFromEnsDb("EnsDb.Hsapiens.v75")
+#' }
 makeGRangesFromEnsDb <- function(object, level) {
     level <- match.arg(level)
 

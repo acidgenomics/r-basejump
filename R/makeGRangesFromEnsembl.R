@@ -1,6 +1,23 @@
 #' Make `GRanges` from Ensembl
 #'
-#' @name makeGRanges
+#' Quickly obtain gene and transcript annotations from
+#' [Ensembl](https://www.ensembl.org/) using
+#' [AnnotationHub](https://bioconductor.org/packages/AnnotationHub/) and
+#' [ensembldb](https://bioconductor.org/packages/ensembldb/).
+#'
+#' Simply specify the desired organism, using the full latin name. For example,
+#' we can obtain human annotations with `Homo sapiens`. Optionally, specific
+#' Ensembl genome builds (e.g. `GRCh38`) and release versions (e.g. `87`) are
+#' supported.
+#'
+#' Under the hood, this function fetches annotations from AnnotationHub using
+#' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
+#' back to version 87.
+#'
+#' Genome build: use "`GRCh38`" instead of "`hg38`" for the genome build, since
+#' we're querying Ensembl and not UCSC.
+#'
+#' @export
 #' @inheritParams params
 #'
 #' @section Broad class definitions:
@@ -38,7 +55,6 @@
 #' - [ensembldb](https://bioconductor.org/packages/ensembldb/).
 #'
 #' @examples
-#' ## makeGRangesFromEnsembl ====
 #' ## Genes
 #' x <- makeGRangesFromEnsembl("Homo sapiens", level = "genes")
 #' summary(x)
@@ -46,31 +62,6 @@
 #' ## Transcripts
 #' x <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
 #' summary(x)
-#'
-#' ## makeGRangesFromEnsDb ====
-#' x <- makeGRangesFromEnsDb("EnsDb.Hsapiens.v75")
-NULL
-
-
-
-#' @describeIn makeGRanges
-#' Quickly obtain gene and transcript annotations from
-#' [Ensembl](https://www.ensembl.org/) using
-#' [AnnotationHub](https://bioconductor.org/packages/AnnotationHub/) and
-#' [ensembldb](https://bioconductor.org/packages/ensembldb/).
-#'
-#' Simply specify the desired organism, using the full latin name. For example,
-#' we can obtain human annotations with `Homo sapiens`. Optionally, specific
-#' Ensembl genome builds (e.g. `GRCh38`) and release versions (e.g. `87`) are
-#' supported.
-#'
-#' Under the hood, this function fetches annotations from AnnotationHub using
-#' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
-#' back to version 87.
-#'
-#' Genome build: use "`GRCh38`" instead of "`hg38`" for the genome build, since
-#' we're querying Ensembl and not UCSC.
-#' @export
 makeGRangesFromEnsembl <- function(
     organism,
     level = c("genes", "transcripts"),
@@ -104,11 +95,10 @@ makeGRangesFromEnsembl <- function(
 
 
 
-#' @describeIn makeGRanges
-#' [annotable()] is a legacy convenience function that calls
-#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
-#' that `GRanges` can also be coercing using
-#' [`as.data.frame()`][BiocGenerics::as.data.frame].
+#' @describeIn makeGRangesFromEnsembl
+#' Legacy convenience function that calls [makeGRangesFromEnsembl()] and
+#' returns a `tibble` instead of `GRanges`. Note that `GRanges` can also be
+#' coercing using [`as.data.frame()`][BiocGenerics::as.data.frame].
 #' @export
 annotable <-
     function() {

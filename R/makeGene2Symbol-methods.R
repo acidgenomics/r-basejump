@@ -6,7 +6,7 @@
 #'
 #' @name makeGene2Symbol
 #' @include makeGRangesFromEnsembl.R
-#' @inheritParams makeFromEnsembl
+#' @inheritParams makeGRangesFromEnsembl
 #'
 #' @seealso `makeGRanges`.
 #'
