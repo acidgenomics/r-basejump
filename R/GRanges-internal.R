@@ -345,21 +345,33 @@
 
 # Report the source of the gene annotations.
 .gffSource <- function(gff) {
-    assert(isSubset("source", colnames(mcols(gff))))
+    assert(is(gff, "GRanges"))
     if (
         any(grepl("FlyBase", mcols(gff)[["source"]]))
     ) {
-        "FlyBase"  # nocov
+        "FlyBase"
     } else if (
         any(grepl("WormBase", mcols(gff)[["source"]]))
     ) {
-        "WormBase"  # nocov
+        "WormBase"
     } else if (
         any(grepl("Ensembl", mcols(gff)[["source"]], ignore.case = TRUE))
     ) {
         "Ensembl"
+    } else if (
+        any(grepl("RefSeq", mcols(gff)[["source"]], ignore.case = TRUE))
+    ) {
+        "RefSeq"
     } else {
-        stop("Unsupported GFF source.")  # nocov
+        stop(paste(
+            "Failed to detect supported GFF/GTF source.",
+            "Currently supported in basejump:",
+            "  - Ensembl",
+            "  - RefSeq",
+            "  - FlyBase",
+            "  - WormBase",
+            sep = "\n"
+        ))
     }
 }
 
@@ -386,6 +398,7 @@
 
     # Standardize the metadata columns.
     mcols <- mcols(object)
+    # Always return using camel case, even though GFF/GTF files use snake.
     mcols <- camel(mcols)
     # Ensure "ID" is always capitalized (e.g. "entrezid").
     colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
