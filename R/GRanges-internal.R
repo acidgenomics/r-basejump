@@ -347,26 +347,57 @@
 .gffSource <- function(gff) {
     assert(is(gff, "GRanges"))
     if (
-        any(grepl("FlyBase", mcols(gff)[["source"]]))
+        any(grepl(
+            pattern = "FlyBase",
+            x = mcols(gff)[["source"]],
+            ignore.case = FALSE
+        ))
     ) {
         "FlyBase"
     } else if (
-        any(grepl("WormBase", mcols(gff)[["source"]]))
+        any(grepl(
+            pattern = "WormBase",
+            x = mcols(gff)[["source"]],
+            ignore.case = FALSE
+        ))
     ) {
         "WormBase"
     } else if (
-        any(grepl("Ensembl", mcols(gff)[["source"]], ignore.case = TRUE))
-    ) {
-        "Ensembl"
-    } else if (
-        any(grepl("RefSeq", mcols(gff)[["source"]], ignore.case = TRUE))
+        any(grepl(
+            pattern = "RefSeq",
+            x = mcols(gff)[["source"]],
+            ignore.case = FALSE
+        ))
     ) {
         "RefSeq"
+    } else if (
+        # e.g. hg38_knownGene
+        any(grepl(
+            pattern = "_knownGene$",
+            x = mcols(gff)[["source"]],
+            ignore.case = FALSE
+        ))
+    ) {
+        stop(paste(
+            "UCSC is intentionally not supported.",
+            "Use a pre-built TxDb package instead.",
+            "(e.g. TxDb.Hsapiens.UCSC.hg38.knownGene)",
+            sep = "\n"
+        ))
+    } else if (
+        any(grepl(
+            pattern = "Ensembl",
+            x = mcols(gff)[["source"]],
+            ignore.case = TRUE
+        ))
+    ) {
+        "Ensembl"
     } else {
         stop(paste(
             "Failed to detect supported GFF/GTF source.",
             "Currently supported in basejump:",
             "  - Ensembl",
+            "  - GENCODE",
             "  - RefSeq",
             "  - FlyBase",
             "  - WormBase",
