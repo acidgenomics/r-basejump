@@ -3,7 +3,7 @@
 \name{makeGRangesFromGFF}
 \alias{makeGRangesFromGFF}
 \alias{makeGRangesFromGTF}
-\title{Make \code{GRanges} from GFF/GTF file}
+\title{Make \code{GRanges} from a GFF/GTF file}
 \usage{
 makeGRangesFromGFF(file, level = c("genes", "transcripts"))
 
@@ -17,14 +17,9 @@ File path.}
 Return ranges as "\code{genes}" or "\code{transcripts}".}
 }
 \description{
-The GFF (General Feature Format) format consists of one line per feature,
-each containing 9 columns of data, plus optional track definition lines. The
-GTF (General Transfer Format) is identical to GFF version 2. We recommend
-using a GTF file instead of a GFF3 file, if possible.
-
-The UCSC website has detailed conventions on the GFF3 format, including
-the metadata columns.
-
+Make \code{GRanges} from a GFF/GTF file
+}
+\details{
 Remote URLs and compressed files are supported.
 }
 \section{Functions}{
@@ -33,24 +28,54 @@ Remote URLs and compressed files are supported.
 Runs the same internal code as \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}}.
 }}
 
+\section{Recommendations}{
+
+
+\strong{GTF over GFF3.} We recommend using a GTF file instead of a GFF3 file,
+when possible. The file format is more compact and easier to parse.
+
+\strong{Ensembl over RefSeq.} We generally recommend using Ensembl over RefSeq,
+if possible. It's better supported in R and generally used by most NGS
+vendors.
+}
+
+\section{GFF/GTF specification}{
+
+
+The GFF (General Feature Format) format consists of one line per feature,
+each containing 9 columns of data, plus optional track definition lines.
+
+The GTF (General Transfer Format) format is identical to GFF version 2.
+
+The UCSC website has detailed conventions on the GFF3 format, including
+the metadata columns.
+}
+
 \section{Supported sources}{
 
 
-Currently \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}} supports these sources:
+Currently \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}} supports genomes from these sources:
 \itemize{
-\item Ensembl (GTF, GFF3)
-\item GENCODE, which inherits from Ensembl
-\item RefSeq (GFF3)
-\item FlyBase (GTF only)
-\item WormBase (GTF only)
+\item Ensembl (GTF, GFF3).
+\item GENCODE, which inherits from Ensembl (GTF, GFF3).
+\item RefSeq (GFF3).
+\item FlyBase (GTF).
+\item WormBase (GTF).
 }
 
-I generally recommend using Ensembl over RefSeq, if possible.
-It's better supported in R and generally used by most NGS vendors.
+UCSC support will be added in a future release.
 }
 
 \section{Ensembl}{
-Ensembl GTF (preferred)
+
+
+Note that \code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} offers native support for Ensembl genome
+builds and returns additional useful metadata that isn't defined inside a
+GFF/GTF file.
+
+If you must load a GFF/GTF file directly, then use \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}}.
+
+GTF key-value pairs:
 \itemize{
 \item source
 \item type
@@ -74,7 +99,9 @@ Ensembl GTF (preferred)
 \item protein_id
 \item protein_version
 \item ccds_id
-}Ensembl GFF3
+}
+
+GFF key-value pairs:
 \itemize{
 \item "source"
 \item "type"
@@ -103,8 +130,36 @@ Ensembl GTF (preferred)
 }
 }
 
+\section{GENCODE vs. Ensembl}{
+
+
+Annotations available from Ensembl and GENCODE are very similar.
+
+The GENCODE annotation is made by merging the manual gene annotation produced
+by the Ensembl-Havana team and the Ensembl-genebuild automated gene
+annotation. The GENCODE annotation is the default gene annotation displayed
+in the Ensembl browser. The GENCODE releases coincide with the Ensembl
+releases, although GENCODE can skip an Ensembl release if there is no update
+to the annotation with respect to the previous release. In practical terms,
+the GENCODE annotation is essentially identical to the Ensembl annotation.
+
+However, GENCODE handles pseudoautosomal regions (PAR) differently than
+Ensembl. The Ensembl GTF file only includes this annotation once, for
+chromosome X. However, GENCODE GTF/GFF3 files include the annotation in the
+PAR regions of both chromosomes.
+
+The \href{https://www.gencodegenes.org/pages/faq.html}{GENCODE FAQ} has additional
+details.
+}
+
 \section{RefSeq}{
-RefSeq GFF 3
+
+
+Refer to the
+\href{ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt}{Current RefSeq GFF3 spec}
+for additional details.
+
+GFF key-value pairs:
 \itemize{
 \item source
 \item type
@@ -128,28 +183,60 @@ RefSeq GFF 3
 \item model_evidence
 \item protein_id
 }
-
-Current RefSeq GFF3 spec:
-ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt
 }
 
-\section{Commonly used GFF/GTF files}{
+\section{UCSC (not supported)}{
+
+
+Loading UCSC genome annotations from a GFF/GTF file are
+\emph{intentionally not supported} by this function.
+
+Use a pre-built TxDb package instead
+(e.g. TxDb.Hsapiens.UCSC.hg38.knownGene).
+
+Note that UCSC doesn't provide direct GFF/GTF file downloads.
+Use of the \href{https://genome.ucsc.edu/cgi-bin/hgTables}{hgTables} table
+browser is required in a web browser.
+
+Select the following options to download hg38:
+\itemize{
+\item clade: Mammal
+\item genome: Human
+\item assembly: Dec. 2013 (GRCh38/hg38)
+\item group: Genes and Gene Predictions
+\item track: GENCODE v29
+\item table: knownGene
+\item region: genome.
+\item output format: GTF - gene transfer format
+\item output file: enter a file name
+}
+
+Relevant URLs:
+\itemize{
+\item http://genome.ucsc.edu/cgi-bin/hgTables
+\item http://hgdownload.soe.ucsc.edu/downloads.html
+\item ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/
+}
+}
+
+\section{Homo sapiens URLs}{
 
 \itemize{
-\item Ensembl GTF:\cr
+\item Ensembl GTF:
 ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-\item Ensembl GFF3:\cr
+\item Ensembl GFF:
 ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
-\item RefSeq:\cr
+\item GENCODE GTF:
+ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz
+\item GENCODE GFF:
+ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
+\item RefSeq GFF:
 ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-ftp://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_rna.gbff.gz
-ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_rna.gbff.gz
-ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
 }
 }
 
 \examples{
-file <- file.path(basejumpCacheURL, "example.gtf")
+file <- file.path(basejumpCacheURL, "ensembl.gtf")
 
 ## Genes
 x <- makeGRangesFromGFF(file = file, level = "genes")
