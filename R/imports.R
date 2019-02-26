@@ -24,7 +24,7 @@
 #'   rowSums setdiff t
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom GenomicFeatures genes makeTxDbFromGRanges transcripts
-#' @importFrom GenomicRanges GRanges
+#' @importFrom GenomicRanges GRanges ranges
 #' @importFrom IRanges IRanges
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom RColorBrewer brewer.pal

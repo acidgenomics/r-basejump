@@ -11,6 +11,16 @@
 #'
 #' Remote URLs and compressed files are supported.
 #'
+#' @section Supported sources:
+#'
+#' Currently [makeGRangesFromGFF()] supports these sources:
+#'
+#' - Ensembl (GTF, GFF3)
+#' - GENCODE, which inherits from Ensembl
+#' - RefSeq (GFF3)
+#' - FlyBase (GTF only)
+#' - WormBase (GTF only)
+#'
 #' @section Commonly used GFF/GTF files:
 #'
 #' - Ensembl GTF:\cr
@@ -20,6 +30,59 @@
 #' - RefSeq:\cr
 #'   ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
 #'
+#' @section Metadata column names:
+#'
+#' ## Ensembl GTF (preferred)
+#'
+#' - source
+#' - type
+#' - score
+#' - phase
+#' - gene_id
+#' - gene_version
+#' - gene_name
+#' - gene_source
+#' - gene_biotype
+#' - transcript_id
+#' - transcript_version
+#' - transcript_name
+#' - transcript_source
+#' - transcript_biotype
+#' - tag
+#' - transcript_support_level
+#' - exon_number
+#' - exon_id
+#' - exon_version
+#' - protein_id
+#' - protein_version
+#' - ccds_id
+#'
+#' ## Ensembl GFF3
+#'
+#' - "source"
+#' - "type"
+#' - "score"
+#' - "phase"
+#' - "ID"
+#' - "Alias"
+#' - "external_name"
+#' - "logic_name"
+#' - "Name"
+#' - "biotype"
+#' - "description"
+#' - "gene_id"
+#' - "version"
+#' - "Parent"
+#' - "tag"
+#' - "transcript_id"
+#' - "transcript_support_level"
+#' - "constitutive"
+#' - "ensembl_end_phase"
+#' - "ensembl_phase"
+#' - "exon_id"
+#' - "rank"
+#' - "protein_id"
+#' - "ccdsid"
 #'
 #' @inheritParams params
 #' @export
@@ -58,6 +121,7 @@ makeGRangesFromGFF <- function(
     # Pre-flight checks --------------------------------------------------------
     # nocov start
     # Not currently allowing FlyBase or WormBase GFF files.
+    # They're too complicated to parse, and they offer GTF files instead anyway.
     if (
         source %in% c("FlyBase", "WormBase") &&
         type == "GFF"
@@ -78,20 +142,27 @@ makeGRangesFromGFF <- function(
     # metadata columns in `mcols()`.
     #
     # Expecting this warning, which is safe to suppress:
-    #
-    #     The "phase" metadata column contains non-NA values for
-    #     features of type stop_codon. This information was ignored.
+    # The "phase" metadata column contains non-NA values for
+    # features of type stop_codon. This information was ignored.
     #
     # `makeTxDbFromGFF()` drops orphan exons/CDS in Ensembl GFF3:
     # - The following orphan exon were dropped
     # - The following orphan CDS were dropped
     #
-    # FIXME Ensembl Homo sapiens GFF3:
+    # `makeTxDbFromGRanges()` currently errors on Ensembl GFF3:
     # some exons are linked to transcripts not found in the file
     message("Making TxDb using GenomicFeatures::makeTxDbFromGRanges().")
-    suppressWarnings(
-        txdb <- makeTxDbFromGRanges(gff)
+    txdb <- tryCatch(
+        expr = suppressWarnings(makeTxDbFromGRanges(gff)),
+        error = function(e) NULL
     )
+    if (!is(txdb, "TxDb")) {
+        warning(paste(
+            "GenomicFeatures failed to make TxDb from GRanges.",
+            "Skipping downstream checks using TxDb.",
+            sep = "\n"
+        ))
+    }
 
     # Standardization ----------------------------------------------------------
     # Rename `gene_symbol` to `gene_name`, if necessary.
@@ -124,17 +195,17 @@ makeGRangesFromGFF <- function(
     gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
     if (type == "GFF") {
         # Assign `gene_name` column.
-        assert(isSubset("name", colnames(mcols(gn))))
-        mcols(gn)[["gene_name"]] <- mcols(gn)[["name"]]
-        mcols(gn)[["name"]] <- NULL
+        assert(isSubset("Name", colnames(mcols(gn))))
+        mcols(gn)[["gene_name"]] <- mcols(gn)[["Name"]]
+        mcols(gn)[["Name"]] <- NULL
         # Assign `gene_biotype` column.
         assert(isSubset("biotype", colnames(mcols(gn))))
         mcols(gn)[["gene_biotype"]] <- mcols(gn)[["biotype"]]
         mcols(gn)[["biotype"]] <- NULL
         # Remove extra columns.
-        mcols(gn)[["alias"]] <- NULL
-        mcols(gn)[["id"]] <- NULL
-        mcols(gn)[["parent"]] <- NULL
+        mcols(gn)[["Alias"]] <- NULL
+        mcols(gn)[["ID"]] <- NULL
+        mcols(gn)[["Parent"]] <- NULL
     }
     assert(hasNoDuplicates(mcols(gn)[["gene_id"]]))
     names(gn) <- mcols(gn)[["gene_id"]]
@@ -147,14 +218,16 @@ makeGRangesFromGFF <- function(
     ))
 
     # Ensure that the ranges match GenomicFeatures output.
-    message("Checking gene metadata in TxDb.")
-    gnFromTxDb <- genes(txdb)
-    assert(
-        identical(names(gn), names(gnFromTxDb)),
-        identical(mcols(gn)[["gene_id"]], mcols(gnFromTxDb)[["gene_id"]]),
-        identical(ranges(gn), ranges(gnFromTxDb)),
-        identical(seqnames(gn), seqnames(gnFromTxDb))
-    )
+    if (is(txdb, "TxDb")) {
+        message("Checking gene metadata in TxDb.")
+        gnFromTxDb <- genes(txdb)
+        assert(
+            identical(names(gn), names(gnFromTxDb)),
+            identical(mcols(gn)[["gene_id"]], mcols(gnFromTxDb)[["gene_id"]]),
+            identical(ranges(gn), ranges(gnFromTxDb)),
+            identical(seqnames(gn), seqnames(gnFromTxDb))
+        )
+    }
 
     # Return the number of genes.
     if (level == "genes") {
@@ -179,28 +252,28 @@ makeGRangesFromGFF <- function(
             )]
         } else if (type == "GFF") {
             # Assign `transcript_name`.
-            assert(isSubset("name", colnames(mcols(tx))))
-            mcols(tx)[["transcript_name"]] <- mcols(tx)[["name"]]
-            mcols(tx)[["name"]] <- NULL
+            assert(isSubset("Name", colnames(mcols(tx))))
+            mcols(tx)[["transcript_name"]] <- mcols(tx)[["Name"]]
+            mcols(tx)[["Name"]] <- NULL
             # Assign `transcript_biotype`.
             assert(isSubset("biotype", colnames(mcols(tx))))
             mcols(tx)[["transcript_biotype"]] <- mcols(tx)[["biotype"]]
             mcols(tx)[["biotype"]] <- NULL
-            # Assign `gene_id`.
+            # Assign `gene_id` from `Parent`.
             assert(
-                isSubset("parent", colnames(mcols(tx))),
-                all(grepl("^gene:", mcols(tx)[["parent"]]))
+                isSubset("Parent", colnames(mcols(tx))),
+                all(grepl("^gene:", mcols(tx)[["Parent"]]))
             )
-            mcols(tx)[["gene_id"]] <- as.character(mcols(tx)[["parent"]])
+            mcols(tx)[["gene_id"]] <- as.character(mcols(tx)[["Parent"]])
             mcols(tx)[["gene_id"]] <- gsub(
                 pattern = "^gene:",
                 replacement = "",
                 x = mcols(tx)[["gene_id"]]
             )
             # Remove extra columns.
-            mcols(tx)[["alias"]] <- NULL
-            mcols(tx)[["id"]] <- NULL
-            mcols(tx)[["parent"]] <- NULL
+            mcols(tx)[["Alias"]] <- NULL
+            mcols(tx)[["ID"]] <- NULL
+            mcols(tx)[["Parent"]] <- NULL
         }
         assert(hasNoDuplicates(mcols(tx)[["transcript_id"]]))
         names(tx) <- mcols(tx)[["transcript_id"]]
@@ -214,15 +287,17 @@ makeGRangesFromGFF <- function(
 
         # Ensure that the ranges match GenomicFeatures output.
         # Note that this currently returns unnamed, so we need to name and sort.
-        message("Checking transcript metadata in TxDb.")
-        txFromTxDb <- transcripts(txdb)
-        names(txFromTxDb) <- mcols(txFromTxDb)[["tx_name"]]
-        txFromTxDb <- txFromTxDb[sort(names(txFromTxDb))]
-        assert(
-            identical(names(tx), names(txFromTxDb)),
-            identical(ranges(tx), ranges(txFromTxDb)),
-            identical(seqnames(tx), seqnames(txFromTxDb))
-        )
+        if (is(txdb, "TxDb")) {
+            message("Checking transcript metadata in TxDb.")
+            txFromTxDb <- transcripts(txdb)
+            names(txFromTxDb) <- mcols(txFromTxDb)[["tx_name"]]
+            txFromTxDb <- txFromTxDb[sort(names(txFromTxDb))]
+            assert(
+                identical(names(tx), names(txFromTxDb)),
+                identical(ranges(tx), ranges(txFromTxDb)),
+                identical(seqnames(tx), seqnames(txFromTxDb))
+            )
+        }
 
         message(paste(length(tx), "transcript annotations detected."))
         gr <- tx
