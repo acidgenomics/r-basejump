@@ -29,9 +29,21 @@ Remote URLs and compressed files are supported.
 }
 \section{Functions}{
 \itemize{
-\item \code{makeGRangesFromGTF}: File format alias.
+\item \code{makeGRangesFromGTF}: GTF file extension alias.
 Runs the same internal code as \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}}.
 }}
+
+\section{Commonly used GFF/GTF files}{
+
+\itemize{
+\item Ensembl GTF:\cr
+ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
+\item Ensembl GFF3:\cr
+ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
+\item RefSeq:\cr
+ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
+}
+}
 
 \examples{
 file <- file.path(basejumpCacheURL, "example.gtf")

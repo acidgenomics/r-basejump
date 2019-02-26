@@ -23,7 +23,7 @@
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
 #'   rowSums setdiff t
 #' @importFrom GenomeInfoDb seqnames
-#' @importFrom GenomicFeatures genes transcripts
+#' @importFrom GenomicFeatures genes makeTxDbFromGRanges transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom IRanges IRanges
 #' @importFrom Matrix.utils aggregate.Matrix
