@@ -39,6 +39,12 @@ environment:
       GCC_PATH: mingw_64
 
 build_script:
+  # `install_bioc_deps` will fail due to AnnotationHub unless we run these commands.
+  - travis-tool.sh install_bioc GenomeInfoDbData
+  - travis-tool.sh install_bioc DelayedArray
+  - travis-tool.sh install_bioc ensembldb
+  - travis-tool.sh install_bioc EnsDb.Hsapiens.v75
+  # Now the Bioconductor dependencies will install.
   - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_deps
 
