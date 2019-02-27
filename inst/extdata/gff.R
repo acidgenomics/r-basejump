@@ -3,7 +3,7 @@
 # Note that these commands are memory hungry and don't always work well on a
 # low power virtual machine.
 
-setwd("data-raw")
+# Refer to koopa `download-gtf.sh` for URLs.
 
 
 
@@ -21,7 +21,7 @@ download.file(
     destfile = "ensembl.gtf.gz"
 )
 gunzip("ensembl.gtf.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 ensembl.gtf > ensembl_head.gtf")
+system("head -n 50 ensembl.gtf > ensembl_head.gtf")
 file.rename("ensembl_head.gtf", "ensembl.gtf")
 gzip("ensembl.gtf", overwrite = TRUE)
 
@@ -41,7 +41,7 @@ download.file(
     destfile = "ensembl.gff3.gz"
 )
 gunzip("ensembl.gff3.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 ensembl.gff3 > ensembl_head.gff3")
+system("head -n 50 ensembl.gff3 > ensembl_head.gff3")
 file.rename("ensembl_head.gff3", "ensembl.gff3")
 gzip("ensembl.gff3", overwrite = TRUE)
 
@@ -62,7 +62,7 @@ download.file(
     destfile = "gencode.gtf.gz"
 )
 gunzip("gencode.gtf.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 gencode.gtf > gencode_head.gtf")
+system("head -n 50 gencode.gtf > gencode_head.gtf")
 file.rename("gencode_head.gtf", "gencode.gtf")
 gzip("gencode.gtf", overwrite = TRUE)
 
@@ -83,7 +83,7 @@ download.file(
     destfile = "gencode.gff3.gz"
 )
 gunzip("gencode.gff3.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 gencode.gff3 > gencode_head.gff3")
+system("head -n 50 gencode.gff3 > gencode_head.gff3")
 file.rename("gencode_head.gff3", "gencode.gff3")
 gzip("gencode.gff3", overwrite = TRUE)
 
@@ -106,28 +106,32 @@ download.file(
     destfile = "refseq.gff.gz"
 )
 gunzip("refseq.gff.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 refseq.gff > refseq_head.gff")
+system("head -n 50 refseq.gff > refseq_head.gff")
 file.rename("refseq_head.gff", "refseq.gff")
 gzip("refseq.gff", overwrite = TRUE)
 
 
 
-# UCSC GRCh38 (hg38) GENCODE GTF
-# Use hgTables web portal to download.
-# http://genome.ucsc.edu/cgi-bin/hgTables
-gunzip("ucsc.gtf.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 ucsc.gtf > ucsc_head.gtf")
-file.rename("ucsc_head.gtf", "ucsc.gtf")
-gzip("ucsc.gtf", overwrite = TRUE)
-
-
-
 # FlyBase GTF
+download.file(
+    url = pasteURL(
+        "ftp.flybase.net",
+        "releases",
+        "FB2018_05",
+        "dmel_r6.24",
+        "gtf",
+        "dmel-all-r6.24.gtf.gz",
+        protocol = "ftp"
+    ),
+    destfile = "flybase.gtf.gz"
+)
 
 
 
 # WormBase GTF
-
-
-
-setwd("..")
+download.file(
+    url = pasteURL(
+        "ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz",
+        protocol = "ftp"
+    )
+)
