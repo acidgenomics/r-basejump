@@ -148,6 +148,11 @@
 #' - model_evidence
 #' - protein_id
 #'
+#' See also:
+#'
+#' - [RefSeq FAQ](https://www.ncbi.nlm.nih.gov/books/NBK50679/)
+#' - ftp://ftp.ncbi.nih.gov/gene/DATA/gene2refseq.gz
+#'
 #' @section UCSC (not supported):
 #'
 #' Loading UCSC genome annotations from a GFF/GTF file are
@@ -172,7 +177,7 @@
 #' - output format: GTF - gene transfer format
 #' - output file: enter a file name
 #'
-#' Relevant URLs:
+#' See also:
 #'
 #' - http://genome.ucsc.edu/cgi-bin/hgTables
 #' - http://hgdownload.soe.ucsc.edu/downloads.html

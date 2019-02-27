@@ -183,6 +183,12 @@ GFF key-value pairs:
 \item model_evidence
 \item protein_id
 }
+
+See also:
+\itemize{
+\item \href{https://www.ncbi.nlm.nih.gov/books/NBK50679/}{RefSeq FAQ}
+\item ftp://ftp.ncbi.nih.gov/gene/DATA/gene2refseq.gz
+}
 }
 
 \section{UCSC (not supported)}{
@@ -211,7 +217,7 @@ Select the following options to download hg38:
 \item output file: enter a file name
 }
 
-Relevant URLs:
+See also:
 \itemize{
 \item http://genome.ucsc.edu/cgi-bin/hgTables
 \item http://hgdownload.soe.ucsc.edu/downloads.html
