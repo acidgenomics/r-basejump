@@ -202,9 +202,12 @@
 #' @param strict `logical(1)`.
 #'   Strict mode. Generate an internal `TxDb` using
 #'   [GenomicFeatures::makeTxDbFromGRanges()] and check that the
-#'   [`ranges()`][IRanges::ranges], [`seqnames()`][GenomeInfoDb::seqnames],
-#'   and identifiers defined in [`names()`][base::names] are identical. May not
-#'   work for all GFF/GTF files, but is recommended by default.
+#'   [`ranges()`][IRanges::ranges], [`seqnames()`][GenomeInfoDb::seqnames], and
+#'   identifiers defined in [`names()`][base::names] are identical. Doesn't work
+#'   for all GFF/GTF files due to some current limitations in the
+#'   GenomicFeatures package, so this is disabled by default. Generally,
+#'   GenomicFeatures parses GTF files better than GFF files. However, it's a
+#'   useful sanity check and should be enabled if possible.
 #'
 #' @seealso
 #' - `rtracklayer::import()`.
@@ -224,7 +227,7 @@
 makeGRangesFromGFF <- function(
     file,
     level = c("genes", "transcripts"),
-    strict = TRUE
+    strict = FALSE
 ) {
     message("Making GRanges from GFF/GTF file.")
     # Note that `import` has assert checks for file (see below).
@@ -241,8 +244,8 @@ makeGRangesFromGFF <- function(
 
     # Pre-flight checks --------------------------------------------------------
     # nocov start
-    # Not currently allowing FlyBase or WormBase GFF files.
-    # They're too complicated to parse, and they offer GTF files instead anyway.
+    # Not currently allowing FlyBase or WormBase GFF files. They're too
+    # complicated to parse, and the sites offer GTF files instead anyway.
     if (
         source %in% c("FlyBase", "WormBase") &&
         type == "GFF"
@@ -254,7 +257,7 @@ makeGRangesFromGFF <- function(
     # nocov end
 
     # TxDb (GenomicFeatures) ---------------------------------------------------
-    # We're now using the TxDb object for GRanges sanity checks.
+    # We're now using the TxDb object for GRanges strict mode sanity checks.
     #
     # TxDb doesn't return enough useful metadata from the original GFF/GTF file,
     # so we're parsing the return manually here instead.
@@ -272,8 +275,8 @@ makeGRangesFromGFF <- function(
     #
     # `makeTxDbFromGRanges()` currently errors on Ensembl GFF3:
     # some exons are linked to transcripts not found in the file
-
     if (isTRUE(strict)) {
+        message("Strict mode enabled.")
         message("Making TxDb using GenomicFeatures::makeTxDbFromGRanges().")
         txdb <- tryCatch(
             expr = suppressWarnings(makeTxDbFromGRanges(gff)),
@@ -282,7 +285,7 @@ makeGRangesFromGFF <- function(
                     "Failed to make TxDb from GRanges using ",
                     "GenomicFeatures::makeTxDbFromGRanges().\n",
                     "Set `strict = FALSE` to disable TxDb checks."
-                ))
+                ), call. = FALSE)
             }
         )
         assert(is(txdb, "TxDb"))
@@ -304,8 +307,8 @@ makeGRangesFromGFF <- function(
 
     # RefSeq GFF files require column name sanitization.
     if (source == "RefSeq") {
-        stop("NOT SUPPORTED YET")
-        colnames(mcols(gff))
+        # FIXME
+        stop("RefSeq isn't supported yet. Working on it!")
     }
 
     # Always require `gene_id` and `transcript_id` columns in file.
@@ -316,7 +319,8 @@ makeGRangesFromGFF <- function(
 
     # Genes --------------------------------------------------------------------
     # Note that this function always returns gene-level metadata, even when
-    # transcripts are requested.
+    # transcripts are requested. We'll merge this into the transcript-level
+    # GRanges below, if necessary.
     gn <- gff
     gn <- gn[!is.na(mcols(gn)[["gene_id"]])]
     gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
@@ -552,6 +556,7 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 
 
 
+# FIXME Improve this step to check against more columns.
 # Determine if GFF or GTF.
 
 # Ensembl GTF:
@@ -567,12 +572,23 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 # [19] "exon_version"             "protein_id"
 # [21] "protein_version"          "ccds_id"
 
-# FIXME Improve this step to check against more columns.
+# Ensembl GFF:
+#  [1] "source"                   "type"
+#  [3] "score"                    "phase"
+#  [5] "ID"                       "Alias"
+#  [7] "external_name"            "logic_name"
+#  [9] "Name"                     "biotype"
+# [11] "description"              "gene_id"
+# [13] "version"                  "Parent"
+# [15] "tag"                      "transcript_id"
+# [17] "transcript_support_level" "constitutive"
+# [19] "ensembl_end_phase"        "ensembl_phase"
+# [21] "exon_id"                  "rank"
+# [23] "protein_id"               "ccdsid"
 
 .detectGFFType <- function(gff) {
     assert(is(gff, "GRanges"))
-    gff <- camel(gff)
-    if (all(c("id", "name") %in% colnames(mcols(gff)))) {
+    if (all(c("ID", "Name") %in% colnames(mcols(gff)))) {
         "GFF"
     } else {
         "GTF"
