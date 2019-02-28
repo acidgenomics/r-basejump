@@ -5,9 +5,11 @@
 \alias{makeGRangesFromGTF}
 \title{Make \code{GRanges} from a GFF/GTF file}
 \usage{
-makeGRangesFromGFF(file, level = c("genes", "transcripts"))
+makeGRangesFromGFF(file, level = c("genes", "transcripts"),
+  strict = FALSE)
 
-makeGRangesFromGTF(file, level = c("genes", "transcripts"))
+makeGRangesFromGTF(file, level = c("genes", "transcripts"),
+  strict = FALSE)
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -15,6 +17,16 @@ File path.}
 
 \item{level}{\code{character(1)}.
 Return ranges as "\code{genes}" or "\code{transcripts}".}
+
+\item{strict}{\code{logical(1)}.
+Strict mode. Generate an internal \code{TxDb} using
+\code{\link[GenomicFeatures:makeTxDbFromGRanges]{GenomicFeatures::makeTxDbFromGRanges()}} and check that the
+\code{\link[IRanges:ranges]{ranges()}}, \code{\link[GenomeInfoDb:seqnames]{seqnames()}}, and
+identifiers defined in \code{\link[base:names]{names()}} are identical. Doesn't work
+for all GFF/GTF files due to some current limitations in the
+GenomicFeatures package, so this is disabled by default. Generally,
+GenomicFeatures parses GTF files better than GFF files. However, it's a
+useful sanity check and should be enabled if possible.}
 }
 \description{
 Make \code{GRanges} from a GFF/GTF file
@@ -228,21 +240,21 @@ See also:
 \section{Homo sapiens URLs}{
 
 \itemize{
-\item Ensembl GTF:
+\item Ensembl GTF:\cr
 ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-\item Ensembl GFF:
+\item Ensembl GFF:\cr
 ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
-\item GENCODE GTF:
+\item GENCODE GTF:\cr
 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz
-\item GENCODE GFF:
+\item GENCODE GFF:\cr
 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
-\item RefSeq GFF:
+\item RefSeq GFF:\cr
 ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
 }
 }
 
 \examples{
-file <- file.path(basejumpCacheURL, "ensembl.gtf")
+file <- system.file("extdata/ensembl.gtf.gz", package = "basejump")
 
 ## Genes
 x <- makeGRangesFromGFF(file = file, level = "genes")
@@ -255,7 +267,7 @@ summary(x)
 \seealso{
 \itemize{
 \item \code{rtracklayer::import()}.
-\item \code{GenomicFeatures::makeTxDbFromGFF()}.
 \item \code{GenomicFeatures::makeTxDbFromGRanges()}.
+\item \code{GenomicFeatures::makeTxDbFromGFF()}.
 }
 }
