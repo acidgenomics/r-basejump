@@ -243,7 +243,6 @@ makeGRangesFromGFF <- function(
     message(paste(source, type, "detected."))
 
     # Pre-flight checks --------------------------------------------------------
-    # nocov start
     # Not currently allowing FlyBase or WormBase GFF files. They're too
     # complicated to parse, and the sites offer GTF files instead anyway.
     if (
@@ -254,7 +253,6 @@ makeGRangesFromGFF <- function(
             "Only GTF files are currently supported from ", source, "."
         ))
     }
-    # nocov end
 
     # TxDb (GenomicFeatures) ---------------------------------------------------
     # We're now using the TxDb object for GRanges strict mode sanity checks.
@@ -308,7 +306,7 @@ makeGRangesFromGFF <- function(
     # RefSeq GFF files require column name sanitization.
     if (source == "RefSeq") {
         # FIXME
-        stop("RefSeq isn't supported yet. Working on it!")
+        stop("RefSeq isn't supported yet. Working on add this.")
     }
 
     # Always require `gene_id` and `transcript_id` columns in file.
@@ -585,6 +583,31 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 # [19] "ensembl_end_phase"        "ensembl_phase"
 # [21] "exon_id"                  "rank"
 # [23] "protein_id"               "ccdsid"
+
+# GENCODE GTF
+#  [1] "source"                   "type"
+#  [3] "score"                    "phase"
+#  [5] "gene_id"                  "gene_type"
+#  [7] "gene_name"                "level"
+#  [9] "havana_gene"              "transcript_id"
+# [11] "transcript_type"          "transcript_name"
+# [13] "transcript_support_level" "tag"
+# [15] "havana_transcript"        "exon_number"
+# [17] "exon_id"                  "ont"
+# [19] "protein_id"               "ccdsid"
+
+# GENCODE GFF
+#  [1] "source"                   "type"
+#  [3] "score"                    "phase"
+#  [5] "ID"                       "gene_id"
+#  [7] "gene_type"                "gene_name"
+#  [9] "level"                    "havana_gene"
+# [11] "Parent"                   "transcript_id"
+# [13] "transcript_type"          "transcript_name"
+# [15] "transcript_support_level" "tag"
+# [17] "havana_transcript"        "exon_number"
+# [19] "exon_id"                  "ont"
+# [21] "protein_id"               "ccdsid"
 
 .detectGFFType <- function(gff) {
     assert(is(gff, "GRanges"))
