@@ -170,7 +170,7 @@ makeGRangesFromGFF <- function(
     # complicated to parse, and the sites offer GTF files instead anyway.
     if (
         source %in% c("FlyBase", "WormBase") &&
-        type == "GFF"
+        type != "GTF"
     ) {
         stop(paste0(
             "Only GTF files are currently supported from ", source, "."
@@ -213,12 +213,15 @@ makeGRangesFromGFF <- function(
     }
 
     # Standardization ----------------------------------------------------------
-    # Rename `gene_symbol` to `gene_name`, if necessary.
-    # This applies to FlyBase and WormBase annotations.
     if (
         type == "GTF" &&
-        source %in% c("FlyBase", "WormBase")
+        any(grepl(pattern = "_symbol", x = colnames(mcols(gff))))
     ) {
+        # FIXME Double check this...
+
+        # Rename `gene_symbol` to `gene_name` and `transcript_symbol` to
+        # `transcript_name`, if necessary, to standardize with Ensembl GTF spec.
+        # This applies to current FlyBase GTF spec.
         colnames(mcols(gff)) <- gsub(
             pattern = "_symbol$",
             replacement = "_name",
