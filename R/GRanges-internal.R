@@ -23,79 +23,98 @@
 #' @noRd
 #'
 #' @inheritParams params
-#' @param object Object that can be coerced to `DataFrame`, containing gene or
-#'   transcript annotations. `GRanges` is recommended.
+#' @param object `GRanges`.
 #'
 #' @return Named `factor`.
 .broadClass <- function(object) {
     assert(is(object, "GRanges"))
 
-    names <- names(object)
-    assert(isCharacter(names))
+    # This step ensures `mcols()` are formatted in camel case.
+    object <- camel(object)
 
-    data <- as_tibble(object)
-
-    # Early return if already defined.
-    if ("broadClass" %in% colnames(data)) {
-        broad <- data[["broadClass"]]
-        names(broad) <- names
-        return(broad)
+    # Early return if already defined in `mcols()`.
+    if ("broadClass" %in% colnames(mcols(object))) {
+        out <- mcols(object)[["broadClass"]]
+        names(out) <- names(object)
+        return(out)
     }
 
-    # Gene name (required).
-    assert(isSubset("geneName", colnames(data)))
-    geneName <- data[["geneName"]]
+    # This step coerces the GRanges to a tibble, which will now contain
+    # seqnames, start, end, width, and strand as columns.
+    data <- as_tibble(object, rownames = NULL)
 
-    # Biotype (optional).
-    # Prioritize transcript over gene, if present.
-    biotypeCol <- grep(
-        pattern = "biotype$",
-        x = colnames(data),
-        ignore.case = TRUE,
-        value = TRUE
-    )
-    if (length(biotypeCol) > 0L) {
-        biotypeCol <- biotypeCol[[1L]]
-        biotype <- data[[biotypeCol]]
+    # Biotypes -----------------------------------------------------------------
+    # Prioritizing transcript biotype over gene, if defined. This only applies
+    # for transcript-level GRanges. For gene-level GRanges, the gene biotypes
+    # will be used, as expected.
+    if ("transcriptBiotype" %in% colnames(data)) {
+        biotypeCol <- "transcriptBiotype"
+        biotypeData <- data[[biotypeCol]]
+    } else if ("geneBiotype" %in% colnames(data)) {
+        biotypeCol <- "geneBiotype"
+        biotypeData <- data[[biotypeCol]]
     } else {
-        # nocov start
-        warning("Biotype column is missing.", call. = FALSE)
+        warning("GRanges does not contain biotype in mcols().")
         biotypeCol <- NULL
-        biotype <- NA
-        # nocov end
+        biotypeData <- NA
     }
 
-    # Seqname (optional; aka chromosome).
-    seqnameCol <- grep(
-        pattern = "seqname",
-        x = colnames(data),
-        ignore.case = TRUE,
-        value = TRUE
-    )
-    if (length(seqnameCol) > 0L) {
-        seqnameCol <- seqnameCol[[1L]]
-        seqname <- data[[seqnameCol]]
+    # Gene names ---------------------------------------------------------------
+    if ("geneName" %in% colnames(data)) {
+        geneNameCol <- "geneName"
+        geneNameData <- data[[geneNameCol]]
     } else {
-        # nocov start
-        warning("Seqname (chromosome) column is missing.", call. = FALSE)
-        seqnameCol <- NULL
-        seqname <- NA
-        # nocov end
+        warning("GRanges does not contain gene names in mcols().")
+        geneNameCol <- NULL
+        geneNameData <- NA
     }
 
+    # Seqnames -----------------------------------------------------------------
+    # This refers to the chromosome name.
+    # Note that `as_tibble()` coercion will define `seqnames` column from the
+    # `GRanges` object (see above).
+    if ("seqnames" %in% colnames(data)) {
+        seqnamesCol <- "seqnames"
+        seqnamesData <- data[[seqnames]]
+    } else {
+        # Don't think this is currently possible to hit, but keep just in case.
+        warning("GRanges does not contain seqnames.")
+        seqnamesCol <- NULL
+        seqnamesData <- NA
+    }
+
+    # If/else chain ------------------------------------------------------------
     message(paste(
         "Defining broadClass using:",
-        toString(c("geneName", biotypeCol, seqnameCol))
+        # Note that `c()` call here effectively removes `NULL` definitions.
+        toString(c(biotypeCol, geneNameCol, seqnamesCol))
     ))
-
     data <- tibble(
-        geneName = geneName,
-        biotype = biotype,
-        seqname = seqname
+        biotype = biotypeData,
+        geneName = geneNameData,
+        # Using singular "seqname" instead of "seqnames" in if/else stack.
+        seqname = seqnamesData
     )
 
-    broad <- case_when(
-        data[["seqname"]] == "MT" ~ "mito",
+    # Mitochondrial gene matching depends on the genome.
+    # This is important in particular for single-cell RNA-seq.
+    #
+    # - *H. sapiens*: "MT-" gene name.
+    # - *M. musculus*: "mt-" gene name.
+    # - *D. melanogaster*: "mt:" gene name.
+    # - *C. elegans*: Can't match by gene name. Match by "MtDNA" chromosome.
+    #
+    # Note that this might not be perfect for other genomes, so consider
+    # atttempting to improve support here in a future update.
+
+    # This step uses `dplyr::case_when()`, which allows for a rowwise vectorized
+    # if/else call stack.
+    out <- case_when(
+        grepl(
+            pattern = "^MT",
+            x = data[["seqname"]],
+            ignore.case = TRUE
+        ) ~ "mito",
         grepl(
             pattern = "^mt[\\:\\-]",
             x = data[["geneName"]],
@@ -109,7 +128,8 @@
         ) ~ "noncoding",
         grepl(
             pattern = "pseudo",
-            x = data[["biotype"]]
+            x = data[["biotype"]],
+            ignore.case = TRUE
         ) ~ "pseudo",
         data[["biotype"]] %in% c(
             "miRNA",
@@ -136,13 +156,15 @@
             x = data[["biotype"]],
             ignore.case = TRUE
         ) ~ "tcr",
-        # Consider using `NA_character_` here instead.
+        # Alternatively, can `NA_character_` here instead. Keeping this as
+        # "other", to main consistency with previous data sets. Also note that
+        # `NA` can behave inconsistently in plotting engines.
         TRUE ~ "other"
     )
 
-    broad <- as.factor(broad)
-    names(broad) <- names
-    broad
+    out <- as.factor(out)
+    names(out) <- names(object)
+    out
 }
 
 
@@ -361,45 +383,36 @@
         replacement = "transcript",
         x = colnames(mcols)
     )
-    # Remove columns that are all NA.
+    # Remove columns that are all `NA`. This step will remove all
+    # transcript-level columns from gene-level ranges.
     mcols <- removeNA(mcols)
 
-    # Handle missing `geneName`.
+    # Warn on missing name (symbol) columns.
     if (!"geneName" %in% colnames(mcols)) {
-        # nocov start
-        warning("`geneName` is missing. Using `geneID` instead.")
-        assert(isSubset("geneID", colnames(mcols)))
-        mcols[["geneName"]] <- mcols[["geneID"]]
-        # nocov end
+        warning("GRanges does not contain `geneName` in mcols().")
     }
-
-    # Handle missing `transcriptName`.
     if (
         "transcriptID" %in% colnames(mcols) &&
         !"transcriptName" %in% colnames(mcols)
     ) {
-        # nocov start
-        warning("`transcriptName` is missing. Using `transcriptID` instead.")
-        mcols[["transcriptName"]] <- mcols[["transcriptID"]]
-        # nocov end
+        warning("GRanges does not contain `transcriptName` in mcols().")
     }
 
     # Always use `geneName` instead of `symbol`.
+    # Note that ensembldb output duplicates these.
     if (all(c("geneName", "symbol") %in% colnames(mcols))) {
         mcols[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(mcols)) {
-        # nocov start
-        message("Renaming `symbol` column to `geneName`.")
+        message("Renaming `symbol` column to `geneName` in mcols().")
         mcols[["geneName"]] <- mcols[["symbol"]]
         mcols[["symbol"]] <- NULL
-        # nocov end
     }
 
     mcols <- lapply(
         X = mcols,
         FUN = function(col) {
             if (!is.atomic(col) || isS4(col)) {
-                # `I` inhibits reinterpretation and returns `AsIs` class.
+                # `I()` inhibits reinterpretation and returns `AsIs` class.
                 # This keeps complex columns (e.g. Entrez list) intact.
                 # Recommended in the `DataFrame` documentation.
                 I(col)
@@ -422,7 +435,8 @@
     # Require that names match the identifier column.
     # Use `transcriptID` over `geneID` if defined.
     assert(areIntersectingSets(
-        x = c("geneID", "transcriptID"), y = colnames(mcols(object))
+        x = c("geneID", "transcriptID"),
+        y = colnames(mcols(object))
     ))
     if ("transcriptID" %in% colnames(mcols(object))) {
         idCol <- "transcriptID"
