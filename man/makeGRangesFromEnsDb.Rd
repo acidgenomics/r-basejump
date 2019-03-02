@@ -10,7 +10,7 @@ makeGRangesFromEnsDb(object, level = c("genes", "transcripts"))
 \item{object}{Object.}
 
 \item{level}{\code{character(1)}.
-Return ranges as "\code{genes}" or "\code{transcripts}".}
+Return as genes or transcripts.}
 }
 \description{
 Make \code{GRanges} from \code{EnsDb} object

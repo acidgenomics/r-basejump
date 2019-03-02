@@ -16,7 +16,7 @@ annotable(organism, level = c("genes", "transcripts"),
 Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{level}{\code{character(1)}.
-Return ranges as "\code{genes}" or "\code{transcripts}".}
+Return as genes or transcripts.}
 
 \item{genomeBuild}{\code{character(1)}.
 Ensembl genome build assembly name (e.g. \code{"GRCh38"}). If set \code{NULL},

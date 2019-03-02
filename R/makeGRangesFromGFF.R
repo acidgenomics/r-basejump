@@ -1,7 +1,3 @@
-# FIXME Add UCSC support.
-
-
-
 #' Make `GRanges` from a GFF/GTF file
 #'
 #' @details
@@ -9,12 +5,11 @@
 #'
 #' @section Recommendations:
 #'
-#' **GTF over GFF3.** We recommend using a GTF file instead of a GFF3 file,
-#' when possible. The file format is more compact and easier to parse.
-#'
-#' **Ensembl over RefSeq.** We generally recommend using Ensembl over RefSeq,
-#' if possible. It's better supported in R and generally used by most NGS
-#' vendors.
+#' - **Use GTF over GFF3.** We recommend using a GTF file instead of a GFF3
+#'   file, when possible. The file format is more compact and easier to parse.
+#' - **Use Ensembl over RefSeq.** We generally recommend using Ensembl over
+#'   RefSeq, if possible. It's better supported in R and generally used by most
+#'   NGS vendors.
 #'
 #' @section GFF/GTF specification:
 #'
@@ -30,11 +25,11 @@
 #'
 #' Currently [makeGRangesFromGFF()] supports genomes from these sources:
 #'
-#' - Ensembl (GTF, GFF3).
-#' - GENCODE, which inherits from Ensembl (GTF, GFF3).
-#' - RefSeq (GFF3).
-#' - FlyBase (GTF).
-#' - WormBase (GTF).
+#' - Ensembl: GTF, GFF3.
+#' - GENCODE: GTF, GFF3.
+#' - RefSeq: GFF3.
+#' - FlyBase: GTF. GFF3 not supported.
+#' - WormBase: GTF. GFF3 not supported.
 #'
 #' UCSC support will be added in a future release.
 #'
@@ -45,58 +40,6 @@
 #' GFF/GTF file.
 #'
 #' If you must load a GFF/GTF file directly, then use [makeGRangesFromGFF()].
-#'
-#' GTF key-value pairs:
-#'
-#' - source
-#' - type
-#' - score
-#' - phase
-#' - gene_id
-#' - gene_version
-#' - gene_name
-#' - gene_source
-#' - gene_biotype
-#' - transcript_id
-#' - transcript_version
-#' - transcript_name
-#' - transcript_source
-#' - transcript_biotype
-#' - tag
-#' - transcript_support_level
-#' - exon_number
-#' - exon_id
-#' - exon_version
-#' - protein_id
-#' - protein_version
-#' - ccds_id
-#'
-#' GFF key-value pairs:
-#'
-#' - "source"
-#' - "type"
-#' - "score"
-#' - "phase"
-#' - "ID"
-#' - "Alias"
-#' - "external_name"
-#' - "logic_name"
-#' - "Name"
-#' - "biotype"
-#' - "description"
-#' - "gene_id"
-#' - "version"
-#' - "Parent"
-#' - "tag"
-#' - "transcript_id"
-#' - "transcript_support_level"
-#' - "constitutive"
-#' - "ensembl_end_phase"
-#' - "ensembl_phase"
-#' - "exon_id"
-#' - "rank"
-#' - "protein_id"
-#' - "ccdsid"
 #'
 #' @section GENCODE vs. Ensembl:
 #'
@@ -121,47 +64,23 @@
 #' @section RefSeq:
 #'
 #' Refer to the
-#' [Current RefSeq GFF3 spec](ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt)
-#' for additional details.
-#'
-#' GFF key-value pairs:
-#'
-#' - source
-#' - type
-#' - score
-#' - phase
-#' - ID
-#' - Dbxref
-#' - Name
-#' - chromosome
-#' - gbkey
-#' - genome
-#' - mol_type
-#' - description
-#' - gene
-#' - gene_biotype
-#' - pseudo
-#' - Parent
-#' - product
-#' - transcript_id
-#' - gene_synonym
-#' - model_evidence
-#' - protein_id
+#' [current RefSeq GFF3 spec](ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt)
+#' for details.
 #'
 #' See also:
 #'
 #' - [RefSeq FAQ](https://www.ncbi.nlm.nih.gov/books/NBK50679/)
 #' - ftp://ftp.ncbi.nih.gov/gene/DATA/gene2refseq.gz
 #'
-#' @section UCSC (not supported):
+#' @section UCSC:
 #'
 #' Loading UCSC genome annotations from a GFF/GTF file are
 #' *intentionally not supported* by this function.
 #'
-#' Use a pre-built TxDb package instead
-#' (e.g. TxDb.Hsapiens.UCSC.hg38.knownGene).
+#' We recommend using a pre-built `TxDb` package from Bioconductor instead.
+#' For example, load `TxDb.Hsapiens.UCSC.hg38.knownGene` for hg38.
 #'
-#' Note that UCSC doesn't provide direct GFF/GTF file downloads.
+#' For reference, note that UCSC doesn't provide direct GFF/GTF file downloads.
 #' Use of the [hgTables](https://genome.ucsc.edu/cgi-bin/hgTables) table
 #' browser is required in a web browser.
 #'
@@ -173,9 +92,9 @@
 #' - group: Genes and Gene Predictions
 #' - track: GENCODE v29
 #' - table: knownGene
-#' - region: genome.
+#' - region: genome
 #' - output format: GTF - gene transfer format
-#' - output file: enter a file name
+#' - output file: Enter a file name
 #'
 #' See also:
 #'
@@ -183,7 +102,7 @@
 #' - http://hgdownload.soe.ucsc.edu/downloads.html
 #' - ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/
 #'
-#' @section Homo sapiens URLs:
+#' @section Example URLs:
 #'
 #' - Ensembl GTF:\cr
 #'   ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
@@ -195,6 +114,10 @@
 #'   ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
 #' - RefSeq GFF:\cr
 #'   ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
+#' - WormBase GTF:\cr
+#'   ftp://ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz
+#' - FlyBase GTF:\cr
+#'   ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
 #'
 #' @export
 #' @inheritParams params
@@ -210,9 +133,9 @@
 #'   useful sanity check and should be enabled if possible.
 #'
 #' @seealso
-#' - `rtracklayer::import()`.
-#' - `GenomicFeatures::makeTxDbFromGRanges()`.
-#' - `GenomicFeatures::makeTxDbFromGFF()`.
+#' - [rtracklayer::import()].
+#' - [GenomicFeatures::makeTxDbFromGRanges()].
+#' - [GenomicFeatures::makeTxDbFromGFF()].
 #'
 #' @examples
 #' file <- system.file("extdata/ensembl.gtf.gz", package = "basejump")
