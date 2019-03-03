@@ -53,7 +53,7 @@
     # `GRanges` object (see above).
     if ("seqnames" %in% colnames(data)) {
         seqnamesCol <- "seqnames"
-        seqnamesData <- data[[seqnames]]
+        seqnamesData <- data[[seqnamesCol]]
     } else {
         # Don't think this is currently possible to hit, but keep just in case.
         warning("GRanges does not contain seqnames.")
