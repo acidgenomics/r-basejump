@@ -1,22 +1,3 @@
-#' Connect to AnnotationHub
-#'
-#' On a fresh install this will print a txProgressBar to the console. We're
-#' using [utils::capture.output()] here to suppress the console output, since
-#' it's not very informative and can cluster R Markdown reports.
-#'
-#' @noRd
-.annotationHub <- function() {
-    userAttached <- .packages()
-    invisible(capture.output(
-        ah <- suppressMessages(AnnotationHub())
-    ))
-    assert(is(ah, "AnnotationHub"))
-    .forceDetach(keep = userAttached)
-    ah
-}
-
-
-
 #' Broad Class Definitions
 #'
 #' @author Rory Kirchner, Michael Steinbaugh
@@ -28,9 +9,6 @@
 #' @return Named `factor`.
 .broadClass <- function(object) {
     assert(is(object, "GRanges"))
-
-    # This step ensures `mcols()` are formatted in camel case.
-    object <- camel(object)
 
     # Early return if already defined in `mcols()`.
     if ("broadClass" %in% colnames(mcols(object))) {
@@ -91,9 +69,8 @@
     ))
     data <- tibble(
         biotype = biotypeData,
-        geneName = geneNameData,
-        # Using singular "seqname" instead of "seqnames" in if/else stack.
-        seqname = seqnamesData
+        chromosome = seqnamesData,
+        geneName = geneNameData
     )
 
     # Mitochondrial gene matching depends on the genome.
@@ -112,7 +89,7 @@
     out <- case_when(
         grepl(
             pattern = "^MT",
-            x = data[["seqname"]],
+            x = data[["chromosome"]],
             ignore.case = TRUE
         ) ~ "mito",
         grepl(
@@ -165,202 +142,6 @@
     out <- as.factor(out)
     names(out) <- names(object)
     out
-}
-
-
-
-#' Force Detach Packages
-#'
-#' ensembldb will attach unwanted packages into the NAMESPACE, which can
-#' conflict with tidyverse packages (e.g. dplyr).
-#'
-#' @noRd
-.forceDetach <- function(keep = NULL) {
-    detach <- setdiff(.packages(), keep)
-    if (length(detach) > 0L) {
-        invisible(lapply(
-            X = detach,
-            FUN = function(name) {
-                if (name %in% .packages()) {
-                    suppressWarnings(detach(
-                        name = paste0("package:", name),
-                        unload = TRUE,
-                        force = TRUE,
-                        character.only = TRUE
-                    ))
-                }
-            }
-        ))
-    }
-    assert(identical(.packages(), keep))
-}
-
-
-
-#' Get AnnotationHub ID
-#' @noRd
-#' @examples .getAnnotationHubID("Homo sapiens")
-.getAnnotationHubID <- function(
-    organism,
-    genomeBuild = NULL,
-    ensemblRelease = NULL,
-    ah = NULL
-) {
-    userAttached <- .packages()
-    assert(isString(organism))
-    # Standardize organism name, if necessary.
-    organism <- gsub("_", " ", makeNames(organism))
-    assert(isString(genomeBuild, nullOK = TRUE))
-    # Check for accidental UCSC input and stop, informing user.
-    if (isString(genomeBuild)) {
-        ucscCheck <- tryCatch(
-            expr = convertUCSCBuildToEnsembl(genomeBuild),
-            error = function(e) NULL
-        )
-        if (length(ucscCheck) > 0L) {
-            stop(paste(
-                "UCSC genome build ID detected.",
-                "Use Ensembl ID instead.\n",
-                printString(ucscCheck)
-            ))
-        }
-    }
-    assert(isInt(ensemblRelease, nullOK = TRUE))
-    if (isInt(ensemblRelease)) {
-        ensemblRelease <- as.integer(ensemblRelease)
-    }
-
-    # Error on request of unsupported legacy Ensembl release.
-    if (
-        is.integer(ensemblRelease) &&
-        ensemblRelease < 87L
-    ) {
-        stop("ensembldb currently only supports Ensembl releases >= 87.")
-    }
-
-    # Get AnnotationHub if necessary.
-    if (is.null(ah)) {
-        ah <- .annotationHub()
-    }
-
-    # Matching EnsDb objects from ensembldb by default.
-    rdataclass <- "EnsDb"
-
-    message(paste0(
-        "Matching ", rdataclass, " from AnnotationHub ",
-        packageVersion("AnnotationHub"),
-        " (", snapshotDate(ah), ")."
-    ))
-
-    # Query AnnotationHub.
-    ahs <- query(
-        x = ah,
-        pattern = c(
-            "Ensembl",
-            organism,
-            genomeBuild,
-            ensemblRelease,
-            rdataclass
-        ),
-        ignore.case = TRUE
-    )
-
-    # Get the AnnotationHub from the metadata columns.
-    mcols <- mcols(ahs)
-
-    # Abort if there's no match and working offline.
-    if (!isTRUE(hasInternet()) && !nrow(mcols)) {
-        # nocov start
-        stop(
-            "AnnotationHub requires an Internet connection for query.",
-            call. = FALSE
-        )
-        # nocov end
-    }
-
-    # Ensure genome build matches, if specified.
-    if (!is.null(genomeBuild)) {
-        assert(isSubset("genome", colnames(mcols)))
-        mcols <- mcols[mcols[["genome"]] %in% genomeBuild, , drop = FALSE]
-    }
-
-    # Ensure Ensembl release matches, or pick the latest one.
-    if (!is.null(ensemblRelease)) {
-        assert(isSubset("title", colnames(mcols)))
-        mcols <- mcols[
-            grepl(paste("Ensembl", ensemblRelease), mcols[["title"]]),
-            ,
-            drop = FALSE
-        ]
-        assert(hasLength(nrow(mcols), n = 1L))
-    }
-
-    if (!nrow(mcols)) {
-        stop(paste(
-            paste0(
-                "No ID matched on AnnotationHub ",
-                packageVersion("AnnotationHub"), "."
-            ),
-            paste(.li, "Organism:", deparse(organism)),
-            paste(.li, "Build:", deparse(genomeBuild)),
-            paste(.li, "Release:", deparse(ensemblRelease)),
-            sep = "\n"
-        ))
-    }
-
-    mcols <- tail(mcols, n = 1L)
-    id <- rownames(mcols)
-    assert(
-        isString(id),
-        unname(isMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$"))
-    )
-    message(paste0(id, ": ", mcols[["title"]]))
-    .forceDetach(keep = userAttached)
-    id
-}
-
-
-
-#' Get EnsDb from AnnotationHub
-#' @noRd
-#' @examples .getEnsDbFromAnnotationHub("AH64923")
-.getEnsDbFromAnnotationHub <- function(id, ah = NULL) {
-    userAttached <- .packages()
-    # Get AnnotationHub if necessary.
-    if (is.null(ah)) {
-        ah <- .annotationHub()
-    }
-    assert(is(ah, "AnnotationHub"))
-    # This step will also output `txProgressBar` on a fresh install. Using
-    # `capture.output` here again to suppress console output.
-    # Additionally, it attaches ensembldb and other Bioconductor dependency
-    # packages, which will mask some tidyverse functions (e.g. `select`).
-    invisible(capture.output(
-        edb <- suppressMessages(ah[[id]])
-    ))
-    assert(is(edb, "EnsDb"))
-    .forceDetach(keep = userAttached)
-    edb
-}
-
-
-
-#' Get EnsDb from Package
-#' @noRd
-#' @examples .getEnsDbFromPackage("EnsDb.Hsapiens.v75")
-.getEnsDbFromPackage <- function(package) {
-    message(paste0("Getting EnsDb from ", package, "."))
-    userAttached <- .packages()
-    assert(isString(package))
-    require(package, character.only = TRUE)
-    edb <- get(
-        x = package,
-        envir = asNamespace(package),
-        inherits = FALSE
-    )
-    assert(is(edb, "EnsDb"))
-    .forceDetach(keep = userAttached)
-    edb
 }
 
 
