@@ -32,9 +32,15 @@
         biotypeCol <- "geneBiotype"
         biotypeData <- data[[biotypeCol]]
     } else {
-        warning("GRanges does not contain biotype in mcols().")
-        biotypeCol <- NULL
-        biotypeData <- NA
+        # FlyBase GTF will hit this step.
+        # Note that we're early returning without calculations in this case.
+        warning(paste(
+            "GRanges does not contain biotype in mcols().",
+            "Returning without broad class definitions.",
+            sep = "\n"
+        ))
+        # Early `NA` return works successfully in `mcols()` construction.
+        return(NA)
     }
 
     # Gene names ---------------------------------------------------------------
