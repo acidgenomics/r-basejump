@@ -1,3 +1,7 @@
+# TODO Add support for exons, CDS.
+
+
+
 #' Make `GRanges` from a GFF/GTF file
 #'
 #' @details
@@ -152,8 +156,8 @@ makeGRangesFromGFF <- function(
     level = c("genes", "transcripts"),
     strict = FALSE
 ) {
-    message("Making GRanges from GFF/GTF file.")
-    # Note that `import` has assert checks for file (see below).
+    message("Making GRanges from GFF file.")
+    # Note that `import()` step has assert checks for file (see below).
     level <- match.arg(level)
 
     # Import -------------------------------------------------------------------
@@ -242,13 +246,20 @@ makeGRangesFromGFF <- function(
     ))
 
     # Genes --------------------------------------------------------------------
-    # Note that this function always returns gene-level metadata, even when
-    # transcripts are requested. We'll merge this into the transcript-level
-    # GRanges below, if necessary.
+    # This function always returns gene-level metadata, even when transcripts
+    # are requested. We'll merge this into the transcript-level GRanges below,
+    # if necessary. Note that empty columns in `mcols()` will get dropped
+    # automatically in the final `.makeGRanges()` return call.
     gn <- gff
-    gn <- gn[!is.na(mcols(gn)[["gene_id"]])]
-    gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
-    if (source == "Ensembl" && type == "GFF") {
+
+    # FIXME Rethinking this step...
+    # gn <- gn[!is.na(mcols(gn)[["gene_id"]])]
+    # gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
+
+    if (type == "GTF") {
+        # This step is easy for GTF. Simply subset using the `type` column.
+        gn <- gn[mcols(gn)[["type"]] == "gene"]
+    } else if (type == "GFF" && source == "Ensembl") {
         # Assign `gene_name` column.
         assert(isSubset("Name", colnames(mcols(gn))))
         mcols(gn)[["gene_name"]] <- mcols(gn)[["Name"]]
@@ -261,12 +272,14 @@ makeGRangesFromGFF <- function(
         mcols(gn)[["Alias"]] <- NULL
         mcols(gn)[["ID"]] <- NULL
         mcols(gn)[["Parent"]] <- NULL
+    } else {
+        stop("Unsupported file.")
     }
+
+    # Ensure the ranges are sorted by gene identifier.
     assert(hasNoDuplicates(mcols(gn)[["gene_id"]]))
     names(gn) <- mcols(gn)[["gene_id"]]
     gn <- gn[sort(names(gn))]
-
-    # Stop on missing genes.
     assert(identical(
         x = names(gn),
         y = sort(unique(na.omit(mcols(gff)[["gene_id"]])))
@@ -294,18 +307,20 @@ makeGRangesFromGFF <- function(
     # Transcripts --------------------------------------------------------------
     if (level == "transcripts") {
         tx <- gff
-        tx <- tx[!is.na(mcols(tx)[["transcript_id"]])]
+        # FIXME Rethink if we need this step.
+        # tx <- tx[!is.na(mcols(tx)[["transcript_id"]])]
         if (type == "GTF") {
-            types <- c(
-                "pseudogene",
-                "rna",
-                "transcript"
-            )
-            tx <- tx[grepl(
-                pattern = paste(types, collapse = "|"),
-                x = mcols(tx)[["type"]],
-                ignore.case = TRUE
-            )]
+            # Subset using the `type` column.
+            tx <- tx[mcols(tx)[["type"]] == "transcript"]
+
+            # FIXME Is this necessary for FlyBase?
+            # Why did I add pseudo gene and rna again?
+            # types <- c("pseudogene", "rna", "transcript")
+            # tx <- tx[grepl(
+            #     pattern = paste(types, collapse = "|"),
+            #     x = mcols(tx)[["type"]],
+            #     ignore.case = TRUE
+            # )]
         } else if (source == "Ensembl" && type == "GFF") {
             # Assign `transcript_name`.
             assert(isSubset("Name", colnames(mcols(tx))))
@@ -331,20 +346,20 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["ID"]] <- NULL
             mcols(tx)[["Parent"]] <- NULL
         }
+
+        # Ensure the ranges are sorted by transcript identifier.
         assert(hasNoDuplicates(mcols(tx)[["transcript_id"]]))
         names(tx) <- mcols(tx)[["transcript_id"]]
         tx <- tx[sort(names(tx))]
-
-        # Stop on missing transcripts.
         assert(identical(
             x = names(tx),
             y = sort(unique(na.omit(mcols(gff)[["transcript_id"]])))
         ))
 
         # Ensure that the ranges match GenomicFeatures output.
-        # Note that this currently returns unnamed, so we need to name and sort.
         if (isTRUE(strict)) {
             message("Checking transcript metadata in TxDb.")
+            # Note that this currently returns unnamed. Need to name and sort.
             txFromTxDb <- transcripts(txdb)
             names(txFromTxDb) <- mcols(txFromTxDb)[["tx_name"]]
             txFromTxDb <- txFromTxDb[sort(names(txFromTxDb))]
@@ -384,6 +399,8 @@ makeGRangesFromGFF <- function(
     }
 
     # Metadata -----------------------------------------------------------------
+    # Using `tryCatch()` here to suppress detection error and return empty
+    # character. This step should work for most genomes.
     organism <- tryCatch(
         expr = organism(gr),
         error = function(e) character()
