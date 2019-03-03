@@ -1,7 +1,3 @@
-# TODO Add support for exons, CDS.
-
-
-
 #' Make `GRanges` from a GFF/GTF file
 #'
 #' @details
