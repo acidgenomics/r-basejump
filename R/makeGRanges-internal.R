@@ -79,7 +79,10 @@
     # - *H. sapiens*: "MT-" gene name.
     # - *M. musculus*: "mt-" gene name.
     # - *D. melanogaster*: "mt:" gene name.
-    # - *C. elegans*: Can't match by gene name. Match by "MtDNA" chromosome.
+    # - *C. elegans*: Can't match by gene name.
+    #   Match by "MtDNA" chromosome.
+    #   Alternatively, can match using "MTCE" sequence name (parent clone).
+    #   https://www.wormbase.org/species/c_elegans/clone/MTCE
     #
     # Note that this might not be perfect for other genomes, so consider
     # atttempting to improve support here in a future update.
