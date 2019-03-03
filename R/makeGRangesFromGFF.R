@@ -253,11 +253,11 @@ makeGRangesFromGFF <- function(
     # if necessary. Note that empty columns in `mcols()` will get dropped
     # automatically in the final `.makeGRanges()` return call.
     gn <- gff
+    gn <- gn[!is.na(mcols(gn)[["gene_id"]])]
+    gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
     if (type == "GTF") {
         gn <- gn[mcols(gn)[["type"]] == "gene"]
     } else if (source == "Ensembl" && type == "GFF") {
-        gn <- gn[!is.na(mcols(gn)[["gene_id"]])]
-        gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
         # Note that "gene" type alone doesn't return all expected identifiers
         # for Ensembl GFF3, but it works for Ensembl GTF.
         keep <- grepl(
@@ -327,6 +327,7 @@ makeGRangesFromGFF <- function(
     # Transcripts --------------------------------------------------------------
     if (level == "transcripts") {
         tx <- gff
+        tx <- tx[!is.na(mcols(tx)[["transcript_id"]])]
         if (source == "FlyBase" && type == "GTF") {
             # Note that FlyBase uses non-standard transcript types.
             keep <- grepl(
@@ -339,7 +340,7 @@ makeGRangesFromGFF <- function(
             # Subset using the `type` column.
             tx <- tx[mcols(tx)[["type"]] == "transcript"]
         } else if (source == "Ensembl" && type == "GFF") {
-            # Assign `transcript_name`.
+            # Assign `transcript_name` from `Name` column.
             assert(isSubset("Name", colnames(mcols(tx))))
             mcols(tx)[["transcript_name"]] <- mcols(tx)[["Name"]]
             mcols(tx)[["Name"]] <- NULL
@@ -458,6 +459,8 @@ makeGRangesFromGTF <- makeGRangesFromGFF
     message(paste("Checking", level, "in TxDb."))
 
     # Convert the TxDb to GRanges using either `genes()` or `transcripts()`.
+    # Note that GenomicFeatures currently returns with "tx_" instead of
+    # "transcript_" for transcript-level annotations.
     grTxDb <- fun(txdb)
     assert(is(grTxDb, "GRanges"))
 
@@ -468,24 +471,52 @@ makeGRangesFromGTF <- makeGRangesFromGFF
             y = mcols(grTxDb)[["gene_id"]]
         ))
     ) {
-        # Note that GFF3 currently returns with gene symbols as the names, so
-        # ensure we're setting the GRanges from GFF to match.
+        # GenomicFeatures currently returns GFF3 input with gene symbols as the
+        # names, so ensure we're setting the GRanges from GFF to match.
         message(paste(
             "TxDb returns gene names as identifiers for GFF3.",
             "Setting names on GRanges from GFF to match.",
             sep = "\n"
         ))
         names(gr) <- mcols(gr)[["gene_name"]]
-        gr <- gr[sort(names(gr))]
-    } else if (level == "transcripts") {
+    } else if (
+        level == "transcripts" &&
+        hasLength(intersect(
+            x = names(gr),
+            y = mcols(grTxDb)[["tx_name"]]
+        ))
+    ) {
         # `GenomicFeatures::transcripts()` returns numbers instead of correct
         # transcript IDs, so fix that before checks. Note that this return maps
         # the correct identifiers to `tx_name` column in `mcols()`.
-        assert(isSubset("tx_name", colnames(mcols(grTxDb))))
         names(grTxDb) <- mcols(grTxDb)[["tx_name"]]
+    } else if (
+        level == "transcripts" &&
+        !hasLength(intersect(
+            x = names(gr),
+            y = mcols(grTxDb)[["tx_name"]]
+        )) &&
+        hasLength(intersect(
+            x = mcols(gr)[["transcript_name"]],
+            y = mcols(grTxDb)[["tx_name"]]
+        ))
+    ) {
+        # GenomicFeatures currently returns GFF3 input with transcript names
+        # only, so ensure we're setting both GRanges accordingly.
+        message(paste(
+            "TxDb returns gene names as identifiers for GFF3.",
+            "Setting names on GRanges from GFF to match.",
+            sep = "\n"
+        ))
+        names(gr) <- mcols(gr)[["transcript_name"]]
+        names(grTxDb) <- mcols(grTxDb)[["tx_name"]]
+    } else {
+        stop("Unexpected failure.")
     }
     assert(hasNames(grTxDb))
-    # Now ensure the TxDb output is arranged by identifier.
+
+    # Ensure both GRanges are sorted by names.
+    gr <- gr[sort(names(gr))]
     grTxDb <- grTxDb[sort(names(grTxDb))]
 
     # Length and names ---------------------------------------------------------
