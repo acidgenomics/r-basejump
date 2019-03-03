@@ -188,10 +188,6 @@ makeGRangesFromGFF <- function(
     # Note that this step must be called before we attempt to sanitize any
     # metadata columns in `mcols()`.
     #
-    # Expecting this warning, which is safe to suppress:
-    # The "phase" metadata column contains non-NA values for
-    # features of type stop_codon. This information was ignored.
-    #
     # `makeTxDbFromGFF()` drops orphan exons/CDS in Ensembl GFF3:
     # - The following orphan exon were dropped
     # - The following orphan CDS were dropped
@@ -201,16 +197,29 @@ makeGRangesFromGFF <- function(
     if (isTRUE(strict)) {
         message("Strict mode enabled.")
         message("Making TxDb using GenomicFeatures::makeTxDbFromGRanges().")
-        txdb <- tryCatch(
-            expr = makeTxDbFromGRanges(gff),
-            error = function(e) {
-                stop(paste0(
-                    "Failed to make TxDb from GRanges using ",
-                    "GenomicFeatures::makeTxDbFromGRanges().\n",
-                    "Set `strict = FALSE` to disable the TxDb checks."
-                ), call. = FALSE)
+        txdb <- withCallingHandlers(expr = {
+            # Using `tryCatch()` here to change error message, if necessary.
+            tryCatch(
+                expr = makeTxDbFromGRanges(gff),
+                error = function(e) {
+                    stop(paste0(
+                        "Failed to make TxDb from GRanges using ",
+                        "GenomicFeatures::makeTxDbFromGRanges().\n",
+                        "Set `strict = FALSE` to disable the TxDb checks."
+                    ), call. = FALSE)
+                }
+            )
+        }, warning = function(w) {
+            # Specifically suppressing this expected warning:
+            # The "phase" metadata column contains non-NA values for
+            # features of type stop_codon. This information was ignored.
+            # See also:
+            # - https://stackoverflow.com/questions/38603668
+            # - https://stackoverflow.com/questions/16517795
+            if (grepl(pattern = "stop_codon", x = conditionMessage(w))) {
+                invokeRestart("muffleWarning")
             }
-        )
+        })
         assert(is(txdb, "TxDb"))
     }
 
