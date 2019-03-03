@@ -179,37 +179,44 @@ makeGRangesFromGFF <- function(
 
     # TxDb (GenomicFeatures) ---------------------------------------------------
     # We're now using the TxDb object for GRanges strict mode sanity checks.
-    #
-    # Note that `makeTxDbFromGRanges()` frequently returns warnings.
-    #
     # TxDb doesn't return enough useful metadata from the original GFF/GTF file,
-    # so we're parsing the return manually here using custom code instead.
+    # so we're parsing the return manually here using custom code instead. Note
+    # that this step must be called before we attempt to sanitize any metadata
+    # columns in `mcols()`.
     #
-    # Note that this step must be called before we attempt to sanitize any
-    # metadata columns in `mcols()`.
-    #
-    # `makeTxDbFromGFF()` drops orphan exons/CDS in Ensembl GFF3:
-    # - The following orphan exon were dropped
-    # - The following orphan CDS were dropped
-    #
-    # `makeTxDbFromGRanges()` currently errors on Ensembl GFF3:
-    # some exons are linked to transcripts not found in the file
+    # Ensembl GFF3 currently fails this check.
+    # File an issue to request a fix for this in GenomicFeatures.
+    # - `makeTxDbFromGRanges()`:
+    #   some exons are linked to transcripts not found in the file
+    # - `makeTxDbFromGFF()` works but warns:
+    #   The following orphan exon were dropped
+    #   The following orphan CDS were dropped
     if (isTRUE(strict)) {
-        message("Strict mode enabled.")
-        message("Making TxDb using GenomicFeatures::makeTxDbFromGRanges().")
+        message("Strict mode enabled. Checking against TxDb.")
         txdb <- withCallingHandlers(expr = {
             # Using `tryCatch()` here to change error message, if necessary.
             tryCatch(
-                expr = makeTxDbFromGRanges(gff),
+                expr = if (type == "GFF") {
+                    # `makeTxDbFromGRanges()` often chokes on GRanges from GFF3,
+                    # imported via `rtracklayer::import()`, so switch to using
+                    # `makeTxDbFromGFF()` instead, which always works.
+                    message("Making TxDb using makeTxDbFromGFF().")
+                    makeTxDbFromGFF(file)
+                } else if (type == "GTF") {
+                    message("Making TxDb using makeTxDbFromGRanges().")
+                    makeTxDbFromGRanges(gff)
+                },
                 error = function(e) {
                     stop(paste0(
-                        "Failed to make TxDb from GRanges using ",
+                        "Failed to make TxDb using ",
                         "GenomicFeatures::makeTxDbFromGRanges().\n",
-                        "Set `strict = FALSE` to disable the TxDb checks."
-                    ), call. = FALSE)
+                        "Set `strict = FALSE` to disable TxDb checks.\n",
+                        conditionMessage(e)
+                    ))
                 }
             )
         }, warning = function(w) {
+            # Note that `makeTxDbFromGRanges()` frequently returns warnings.
             # Specifically suppressing this expected warning:
             # The "phase" metadata column contains non-NA values for
             # features of type stop_codon. This information was ignored.
@@ -247,10 +254,27 @@ makeGRangesFromGFF <- function(
     # automatically in the final `.makeGRanges()` return call.
     gn <- gff
     if (type == "GTF") {
-        # This step is easy for GTF. Simply subset using the `type` column.
         gn <- gn[mcols(gn)[["type"]] == "gene"]
     } else if (source == "Ensembl" && type == "GFF") {
-        # Assign `gene_name` column.
+        gn <- gn[!is.na(mcols(gn)[["gene_id"]])]
+        gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
+        # Note that "gene" type alone doesn't return all expected identifiers
+        # for Ensembl GFF3, but it works for Ensembl GTF.
+        keep <- grepl(
+            pattern = paste(
+                c(
+                    "^gene$",
+                    "^pseudogene$",
+                    "_gene$",
+                    "bidirectional_promoter_lncRNA"  # e.g. ENSG00000176236
+                ),
+                collapse = "|"
+            ),
+            x = mcols(gn)[["type"]],
+            ignore.case = TRUE
+        )
+        gn <- gn[keep]
+        # Assign `gene_name` column using `Name` column.
         assert(isSubset("Name", colnames(mcols(gn))))
         mcols(gn)[["gene_name"]] <- mcols(gn)[["Name"]]
         mcols(gn)[["Name"]] <- NULL
@@ -437,10 +461,26 @@ makeGRangesFromGTF <- makeGRangesFromGFF
     grTxDb <- fun(txdb)
     assert(is(grTxDb, "GRanges"))
 
-    # `GenomicFeatures::transcripts()` returns numbers instead of correct
-    # transcript IDs, so fix that before checks. Note that this return maps
-    # the correct identifiers to `tx_name` column in `mcols()`.
-    if (level == "transcripts") {
+    if (
+        level == "genes" &&
+        hasLength(intersect(
+            x = mcols(gr)[["gene_name"]],
+            y = mcols(grTxDb)[["gene_id"]]
+        ))
+    ) {
+        # Note that GFF3 currently returns with gene symbols as the names, so
+        # ensure we're setting the GRanges from GFF to match.
+        message(paste(
+            "TxDb returns gene names as identifiers for GFF3.",
+            "Setting names on GRanges from GFF to match.",
+            sep = "\n"
+        ))
+        names(gr) <- mcols(gr)[["gene_name"]]
+        gr <- gr[sort(names(gr))]
+    } else if (level == "transcripts") {
+        # `GenomicFeatures::transcripts()` returns numbers instead of correct
+        # transcript IDs, so fix that before checks. Note that this return maps
+        # the correct identifiers to `tx_name` column in `mcols()`.
         assert(isSubset("tx_name", colnames(mcols(grTxDb))))
         names(grTxDb) <- mcols(grTxDb)[["tx_name"]]
     }
@@ -464,7 +504,7 @@ makeGRangesFromGTF <- makeGRangesFromGFF
                 ),
                 n
             ),
-            " from GFF to make TxDb.\n",
+            " from file to make TxDb.\n",
             "Missing in TxDb: ",
             toString(c(head(setdiff(names(gr), names(grTxDb))), "..."))
         ))

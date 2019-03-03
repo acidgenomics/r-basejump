@@ -155,6 +155,8 @@
 
 
 
+# FIXME Need to ensure the levels get dropped on mcols here...
+# This isn't returning correctly for `makeGRangesFromGFF()`.
 .makeGRanges <- function(object) {
     assert(
         is(object, "GRanges"),
