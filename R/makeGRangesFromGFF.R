@@ -184,8 +184,10 @@ makeGRangesFromGFF <- function(
     # TxDb (GenomicFeatures) ---------------------------------------------------
     # We're now using the TxDb object for GRanges strict mode sanity checks.
     #
+    # Note that `makeTxDbFromGRanges()` frequently returns warnings.
+    #
     # TxDb doesn't return enough useful metadata from the original GFF/GTF file,
-    # so we're parsing the return manually here instead.
+    # so we're parsing the return manually here using custom code instead.
     #
     # Note that this step must be called before we attempt to sanitize any
     # metadata columns in `mcols()`.
@@ -204,12 +206,12 @@ makeGRangesFromGFF <- function(
         message("Strict mode enabled.")
         message("Making TxDb using GenomicFeatures::makeTxDbFromGRanges().")
         txdb <- tryCatch(
-            expr = suppressWarnings(makeTxDbFromGRanges(gff)),
+            expr = makeTxDbFromGRanges(gff),
             error = function(e) {
                 stop(paste0(
                     "Failed to make TxDb from GRanges using ",
                     "GenomicFeatures::makeTxDbFromGRanges().\n",
-                    "Set `strict = FALSE` to disable TxDb checks."
+                    "Set `strict = FALSE` to disable the TxDb checks."
                 ), call. = FALSE)
             }
         )
@@ -217,33 +219,21 @@ makeGRangesFromGFF <- function(
     }
 
     # Standardization ----------------------------------------------------------
-    if (
-        type == "GTF" &&
-        any(grepl(pattern = "_symbol", x = colnames(mcols(gff))))
-    ) {
-        # FIXME Double check this...
-
-        # Rename `gene_symbol` to `gene_name` and `transcript_symbol` to
-        # `transcript_name`, if necessary, to standardize with Ensembl GTF spec.
-        # This applies to current FlyBase GTF spec.
+    if (source == "FlyBase" && type == "GTF") {
+        # Rename `gene_symbol`, `transcript_symbol` to use `*_name` instead,
+        # matching Ensembl GTF spec.
         colnames(mcols(gff)) <- gsub(
             pattern = "_symbol$",
             replacement = "_name",
             x = colnames(mcols(gff))
         )
-    }
-
-    # RefSeq GFF files require column name sanitization.
-    if (source == "RefSeq") {
-        # FIXME
+    } else if (source == "WormBase" && type == "GTF") {
+    } else if (source == "RefSeq") {
         stop("RefSeq isn't supported yet. Working on add this.")
     }
 
     # Always require `gene_id` and `transcript_id` columns in file.
-    assert(isSubset(
-        x = c("gene_id", "transcript_id"),
-        y = colnames(mcols(gff))
-    ))
+    assert(isSubset(c("gene_id", "transcript_id"), colnames(mcols(gff))))
 
     # Genes --------------------------------------------------------------------
     # This function always returns gene-level metadata, even when transcripts
@@ -251,15 +241,10 @@ makeGRangesFromGFF <- function(
     # if necessary. Note that empty columns in `mcols()` will get dropped
     # automatically in the final `.makeGRanges()` return call.
     gn <- gff
-
-    # FIXME Rethinking this step...
-    # gn <- gn[!is.na(mcols(gn)[["gene_id"]])]
-    # gn <- gn[is.na(mcols(gn)[["transcript_id"]])]
-
     if (type == "GTF") {
         # This step is easy for GTF. Simply subset using the `type` column.
         gn <- gn[mcols(gn)[["type"]] == "gene"]
-    } else if (type == "GFF" && source == "Ensembl") {
+    } else if (source == "Ensembl" && type == "GFF") {
         # Assign `gene_name` column.
         assert(isSubset("Name", colnames(mcols(gn))))
         mcols(gn)[["gene_name"]] <- mcols(gn)[["Name"]]
@@ -277,25 +262,31 @@ makeGRangesFromGFF <- function(
     }
 
     # Ensure the ranges are sorted by gene identifier.
-    assert(hasNoDuplicates(mcols(gn)[["gene_id"]]))
+    assert(
+        hasLength(gn),
+        !any(is.na(mcols(gn)[["gene_id"]])),
+        hasNoDuplicates(mcols(gn)[["gene_id"]])
+    )
     names(gn) <- mcols(gn)[["gene_id"]]
     gn <- gn[sort(names(gn))]
-    assert(identical(
-        x = names(gn),
-        y = sort(unique(na.omit(mcols(gff)[["gene_id"]])))
-    ))
 
     # Ensure that the ranges match GenomicFeatures output.
     if (isTRUE(strict)) {
-        message("Checking gene metadata in TxDb.")
-        gnFromTxDb <- genes(txdb)
-        assert(
-            identical(length(gn), length(gnFromTxDb)),
-            identical(names(gn), names(gnFromTxDb)),
-            identical(seqnames(gn), seqnames(gnFromTxDb)),
-            identical(ranges(gn), ranges(gnFromTxDb))
+        .checkGRangesAgainstTxDb(
+            gr = gn,
+            txdb = txdb,
+            level = "genes"
         )
-        message("All checks passed.")
+    }
+
+    # WormBase identifier fix. WormBase GTF currently imports somewhat
+    # malformed, and the gene identifiers require additional sanitization to
+    # return correctly. Some garbage rows containing "Gene:" or "Transcript:"
+    # will remain. We need to drop these before proceeding.
+    if (
+        source == "WormBase" && type == "GTF") {
+        keep <- !grepl(pattern = ":", x = mcols(gn)[["gene_id"]])
+        gn <- gn[keep]
     }
 
     # Return the number of genes.
@@ -307,20 +298,17 @@ makeGRangesFromGFF <- function(
     # Transcripts --------------------------------------------------------------
     if (level == "transcripts") {
         tx <- gff
-        # FIXME Rethink if we need this step.
-        # tx <- tx[!is.na(mcols(tx)[["transcript_id"]])]
-        if (type == "GTF") {
+        if (source == "FlyBase" && type == "GTF") {
+            # Note that FlyBase uses non-standard transcript types.
+            keep <- grepl(
+                pattern = paste(c("^pseudogene$", "RNA$"), collapse = "|"),
+                x = mcols(tx)[["type"]],
+                ignore.case = TRUE
+            )
+            tx <- tx[keep]
+        } else if (type == "GTF") {
             # Subset using the `type` column.
             tx <- tx[mcols(tx)[["type"]] == "transcript"]
-
-            # FIXME Is this necessary for FlyBase?
-            # Why did I add pseudo gene and rna again?
-            # types <- c("pseudogene", "rna", "transcript")
-            # tx <- tx[grepl(
-            #     pattern = paste(types, collapse = "|"),
-            #     x = mcols(tx)[["type"]],
-            #     ignore.case = TRUE
-            # )]
         } else if (source == "Ensembl" && type == "GFF") {
             # Assign `transcript_name`.
             assert(isSubset("Name", colnames(mcols(tx))))
@@ -346,30 +334,22 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["ID"]] <- NULL
             mcols(tx)[["Parent"]] <- NULL
         }
-
         # Ensure the ranges are sorted by transcript identifier.
-        assert(hasNoDuplicates(mcols(tx)[["transcript_id"]]))
+        assert(
+            hasLength(tx),
+            !any(is.na(mcols(tx)[["transcript_id"]])),
+            hasNoDuplicates(mcols(tx)[["transcript_id"]])
+        )
         names(tx) <- mcols(tx)[["transcript_id"]]
         tx <- tx[sort(names(tx))]
-        assert(identical(
-            x = names(tx),
-            y = sort(unique(na.omit(mcols(gff)[["transcript_id"]])))
-        ))
 
         # Ensure that the ranges match GenomicFeatures output.
         if (isTRUE(strict)) {
-            message("Checking transcript metadata in TxDb.")
-            # Note that this currently returns unnamed. Need to name and sort.
-            txFromTxDb <- transcripts(txdb)
-            names(txFromTxDb) <- mcols(txFromTxDb)[["tx_name"]]
-            txFromTxDb <- txFromTxDb[sort(names(txFromTxDb))]
-            assert(
-                identical(length(tx), length(txFromTxDb)),
-                identical(names(tx), names(txFromTxDb)),
-                identical(seqnames(tx), seqnames(txFromTxDb)),
-                identical(ranges(tx), ranges(txFromTxDb))
+            .checkGRangesAgainstTxDb(
+                gr = tx,
+                txdb = txdb,
+                level = "transcripts"
             )
-            message("All checks passed.")
         }
 
         message(paste(length(tx), "transcript annotations detected."))
@@ -432,6 +412,102 @@ makeGRangesFromGTF <- makeGRangesFromGFF
 
 
 # Internal GFF utilites ========================================================
+# Check GRanges from GFF loaded with rtracklayer against GenomicFeatures TxDb.
+# Consider adding support for exons, CDS, in a future update.
+#
+# Expected warnings/failures:
+# - FlyBase genes from GTF: FBgn0013687. Visual inspection confirms that ranges
+#   from GFF are correct, but TxDb reports 258 mismatches (those are incorrect).
+.checkGRangesAgainstTxDb <- function(
+    gr,
+    txdb,
+    level = c("genes", "transcripts")
+) {
+    level <- match.arg(level)
+    fun <- get(level)
+    assert(is.function(fun))
+    message(paste("Checking", level, "in TxDb."))
+
+    # Convert the TxDb to GRanges using either `genes()` or `transcripts()`.
+    grTxDb <- fun(txdb)
+    assert(is(grTxDb, "GRanges"))
+
+    # `GenomicFeatures::transcripts()` returns numbers instead of correct
+    # transcript IDs, so fix that before checks. Note that this return maps
+    # the correct identifiers to `tx_name` column in `mcols()`.
+    if (level == "transcripts") {
+        assert(isSubset("tx_name", colnames(mcols(grTxDb))))
+        names(grTxDb) <- mcols(grTxDb)[["tx_name"]]
+    }
+    assert(hasNames(grTxDb))
+    # Now ensure the TxDb output is arranged by identifier.
+    grTxDb <- grTxDb[sort(names(grTxDb))]
+
+    # Length and names ---------------------------------------------------------
+    # Warn if GenomicFeatures has dropped ranges from GFF.
+    # This can happen for some GFF3 files and FlyBase GTF.
+    if (length(gr) > length(grTxDb)) {
+        assert(isSubset(names(grTxDb), names(gr)))
+        n <- length(gr) - length(grTxDb)
+        warning(paste0(
+            "GenomicFeatures dropped ",
+            sprintf(
+                fmt = ngettext(
+                    n = n,
+                    msg1 = "%s identifier",
+                    msg2 = "%s identifiers"
+                ),
+                n
+            ),
+            " from GFF to make TxDb.\n",
+            "Missing in TxDb: ",
+            toString(c(head(setdiff(names(gr), names(grTxDb))), "..."))
+        ))
+        # Subset the GRanges from GFF to match TxDb for additional checks.
+        gr <- gr[names(grTxDb)]
+    }
+    assert(
+        identical(length(gr), length(grTxDb)),
+        identical(names(gr), names(grTxDb))
+    )
+
+    # Ranges and seqnames ------------------------------------------------------
+    # Compare the ranges and inform the user about mismatches.
+    # help(topic = "IPosRanges-comparison", package = "IRanges")
+    # vignette(topic = "IRangesOverview", package = "IRanges")
+    r1 <- ranges(gr)
+    r2 <- ranges(grTxDb)
+    diff <- r1 != r2
+    if (any(diff)) {
+        warning(paste(
+            sum(diff, na.rm = TRUE),
+            "range mismatches detected in TxDb."
+        ))
+        which <- head(which(diff), n = 10L)
+        cat(
+            "Showing GRanges mismatch comparison (first 10).",
+            "",
+            "(1) GFF, via rtracklayer::import():",
+            printString(r1[which]),
+            "",
+            "(2) TxDb, via GenomicFeatures::makeTxDbFromGRanges():",
+            printString(r2[which]),
+            "",
+            "If the ranges in (1) are incorrect, please file an issue here:",
+            "https://github.com/steinbaugh/basejump/issues",
+            "",
+            "If the ranges in (2) are incorrect, please file an issue here:",
+            "https://github.com/Bioconductor/GenomicFeatures/issues",
+            sep = "\n"
+        )
+    }
+    assert(identical(seqnames(gr), seqnames(grTxDb)))
+
+    invisible(TRUE)
+}
+
+
+
 # Report the source of the gene annotations.
 .detectGFFSource <- function(gff) {
     assert(is(gff, "GRanges"))
