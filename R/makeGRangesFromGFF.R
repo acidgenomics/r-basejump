@@ -152,11 +152,11 @@ makeGRangesFromGFF <- function(
     level = c("genes", "transcripts"),
     strict = FALSE
 ) {
-   assert(
-       isString(file),
-       isFlag(strict)
-   )
-     level <- match.arg(level)
+    assert(
+        isString(file),
+        isFlag(strict)
+    )
+    level <- match.arg(level)
     message("Making GRanges from GFF file.")
 
     # Import -------------------------------------------------------------------
@@ -165,7 +165,6 @@ makeGRangesFromGFF <- function(
     # Slot the file path into metadata. Note that this may be a useful addition
     # to `brio::import()` in a future update.
     metadata(object)[["file"]] <- file
-    metadata(object)[["level"]] <- level
     # Slot the source (e.g. Ensembl) and type (e.g. GTF) into `metadata()`.
     object <- .slotGFFDetectInfo(object)
     assert(is(object, "GRanges"))
@@ -203,18 +202,23 @@ makeGRangesFromGFF <- function(
     assert(isSubset(c("gene_id", "transcript_id"), colnames(mcols(object))))
 
     # Genes --------------------------------------------------------------------
-    # This function always returns gene-level metadata, even when transcripts
-    # are requested. We'll merge this into the transcript-level GRanges below,
-    # if necessary.
-    genes <- .makeGenesFromGFF(object = object, txdb = txdb)
+    # `makeGRangesFromGFF()` attempts to always returns gene-level metadata,
+    # even when transcripts are requested. We'll merge this object into the
+    # transcript-level GRanges below, if necessary.
+    genes <- .makeGenesFromGFF(object)
+    metadata(genes)[["level"]] <- "genes"
     if (level == "genes") {
         out <- genes
     }
 
     # Transcripts --------------------------------------------------------------
     if (level == "transcripts") {
-        transcripts <- .makeTranscriptsFromGFF(object = object, txdb = txdb)
+        transcripts <- .makeTranscriptsFromGFF(object)
+        metadata(transcripts)[["level"]] <- "transcripts"
         if (source == "RefSeq") {
+            message(
+                "Skipping gene-level metadata merge for RefSeq transcripts."
+            )
             # Skip gene-level metadata merge for RefSeq transcripts.
             # This feature isn't supported yet, because RefSeq doesn't return
             # ranges 1:1 nicely for genes and transcripts.
@@ -230,11 +234,19 @@ makeGRangesFromGFF <- function(
         }
     }
 
-    # Metadata -----------------------------------------------------------------
+    # Post-flight checks -------------------------------------------------------
+    # Double check that our slotted metadata wasn't dropped.
     assert(isSubset(
         x = c("detect", "file", "level"),
         y = names(metadata(out))
     ))
+
+    # Ensure that the ranges match GenomicFeatures output, if desired.
+    # Note that this step will error out for WormBase currently. Need to think
+    # of a reworked approach that avoids this.
+    if (is(out, "GRanges") && is(txdb, "TxDb")) {
+        .checkGRangesAgainstTxDb(gr = out, txdb = txdb)
+    }
 
     # Return -------------------------------------------------------------------
     # Return with same formatting conventions for `makeGRangesFromEnsembl()`.
@@ -248,10 +260,9 @@ makeGRangesFromGFF <- function(
 # Main parse utilites ==========================================================
 # This is the main constructor function for gene-level GRanges from GFF/GTF.
 # Including txdb passthrough here for strict mode checks.
-.makeGenesFromGFF <- function(object, txdb = NULL) {
+.makeGenesFromGFF <- function(object) {
     assert(
         is(object, "GRanges"),
-        isAny(txdb, c("TxDb", "NULL")),
         isSubset("detect", names(metadata(object))),
         isSubset(c("gene_id", "transcript_id"), colnames(mcols(object)))
     )
@@ -278,16 +289,6 @@ makeGRangesFromGFF <- function(
         hasLength(object),
         !any(is.na(mcols(object)[["gene_id"]]))
     )
-
-    # Ensure that the ranges match GenomicFeatures output, if desired.
-    # Note that this step will error out for WormBase currently. Need to think
-    # of a reworked approach that avoids this.
-    if (
-        is(object, "GRanges") &&
-        is(txdb, "TxDb")
-    ) {
-        .checkGRangesAgainstTxDb(gr = object, txdb = txdb)
-    }
 
     # Split into GRangesList, if necessary.
     if (hasDuplicates(mcols(object)[["gene_id"]])) {
@@ -322,10 +323,9 @@ makeGRangesFromGFF <- function(
 
 
 # This is the main transcript-level GRanges generator.
-.makeTranscriptsFromGFF <- function(object, txdb = NULL) {
+.makeTranscriptsFromGFF <- function(object) {
     assert(
         is(object, "GRanges"),
-        isAny(txdb, c("TxDb", "NULL")),
         isSubset("detect", names(metadata(object))),
         isSubset("transcript_id", colnames(mcols(object)))
     )
@@ -352,14 +352,6 @@ makeGRangesFromGFF <- function(
         hasLength(object),
         !any(is.na(mcols(object)[["transcript_id"]]))
     )
-
-    # Ensure that the ranges match GenomicFeatures output.
-    if (
-        is(object, "GRanges") &&
-        is(txdb, "TxDb")
-    ) {
-        .checkGRangesAgainstTxDb(gr = object, txdb = txdb)
-    }
 
     # Split into GRangesList, if necessary.
     if (hasDuplicates(mcols(object)[["transcript_id"]])) {
@@ -840,7 +832,7 @@ makeGRangesFromGFF <- function(
 
 
 
-# TxDb =========================================================================
+# TxDb checks ==================================================================
 # Check GRanges from GFF loaded with rtracklayer against GenomicFeatures TxDb.
 # Consider adding support for exons, CDS, in a future update.
 #
@@ -850,13 +842,14 @@ makeGRangesFromGFF <- function(
 .checkGRangesAgainstTxDb <- function(gr, txdb) {
     assert(
         is(gr, "GRanges"),
-        is(txdb, "TxDb")
+        is(txdb, "TxDb"),
+        hasNames(gr)
     )
     level <- match.arg(
         arg = metadata(gr)[["level"]],
         choices = c("genes", "transcripts")
     )
-    fun <- get(level)
+    fun <- get(x = level, envir = asNamespace("basejump"), inherits = TRUE)
     assert(is.function(fun))
     message(paste("Checking", level, "in TxDb."))
     gr1 <- gr; rm(gr)
@@ -913,7 +906,10 @@ makeGRangesFromGFF <- function(
         ))
         names(gr1) <- mcols(gr1)[["transcript_name"]]
         names(gr2) <- mcols(gr2)[["tx_name"]]
+    } else {
+        stop("Unknown error.")
     }
+    # FIXME This assert is failing...why?
     assert(hasNames(gr2))
 
     # Ensure both GRanges are sorted by names.

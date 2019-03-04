@@ -97,7 +97,7 @@
     message(paste(
         "Defining broadClass using:",
         # Note that `c()` call here effectively removes `NULL` definitions.
-        toString(c(biotypeCol, geneNameCol, seqnamesCol))
+        toString(sort(c(biotypeCol, geneNameCol, seqnamesCol)))
     ))
     data <- tibble(
         biotype = biotypeData,
