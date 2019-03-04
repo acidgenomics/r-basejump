@@ -3,14 +3,20 @@
 .makeGRanges <- function(object) {
     assert(
         is(object, "GRanges"),
-        hasNames(object)
+        hasNames(object),
+        hasLength(object)
     )
+
+    # Stash object length to ensure no dropping is occurring.
+    length <- length(object)
 
     # Minimize the object, removing unnecessary metadata columns.
     object <- .minimizeGRanges(object)
+    assert(identical(length(object), length))
 
     # Now we're ready to standardize into basejump conventions.
     object <- .standardizeGRanges(object)
+    assert(identical(length(object), length))
 
     # Prepare the metadata.
     # Slot organism into metadata.
@@ -18,7 +24,37 @@
     # Ensure object contains prototype metadata.
     metadata(object) <- c(.prototypeMetadata, metadata(object))
 
-    assert(is(object, "GRanges"))
+    idCol <- .detectGRangesIDs(object)
+    assert(isSubset(idCol, colnames(mcols(object))))
+    names <- as.character(mcols(object)[[idCol]])
+    assert(!any(is.na(names)))
+
+    # Split into GRangesList if object contains multiple ranges per feature.
+    if (hasDuplicates(names)) {
+        warning(paste0(
+            "GRanges contains multiple ranges per ", idCol, ".\n",
+            "Splitting into GRangesList.",
+            sep = "\n"
+        ))
+        # Metadata will get dropped during `split()` call; stash and reassign.
+        metadata <- metadata(object)
+        object <- split(x = object, f = as.factor(names))
+        metadata(object) <- metadata
+        rm(metadata)
+    } else {
+        names(object) <- names
+    }
+
+    # Ensure the ranges are sorted by gene identifier.
+    object <- object[sort(names(object))]
+
+    # Inform the user about the number of features returned.
+    level <- match.arg(
+        arg = metadata(object)[["level"]],
+        choices = c("genes", "transcripts")
+    )
+    message(paste(length(object), level, "detected."))
+
     object
 }
 
@@ -35,6 +71,7 @@
 #' @return Named `factor`.
 .broadClass <- function(object) {
     assert(is(object, "GRanges"))
+    object <- camel(object)
 
     # Early return if already defined in `mcols()`.
     if ("broadClass" %in% colnames(mcols(object))) {
@@ -42,6 +79,11 @@
         names(out) <- names(object)
         return(out)
     }
+
+    # Need to strip the names on the object here, otherwise data.frame coercion
+    # will error if the object contains duplicate names, which can happen with
+    # GRanges that need to be split to GRangesList.
+    names(object) <- NULL
 
     # This step coerces the GRanges to a tibble, which will now contain
     # seqnames, start, end, width, and strand as columns.
@@ -183,12 +225,19 @@
 
 # Note that this intentionally prioritizes transcripts over genes.
 .detectGRangesIDs <- function(object) {
+    if (is(object, "GRangesList")) {
+        object <- object[[1L]]
+    }
     assert(is(object, "GRanges"))
     mcolnames <- colnames(mcols(object))
     if ("transcriptID" %in% mcolnames) {
         "transcriptID"
+    } else if ("transcript_id" %in% mcolnames) {
+        "transcript_id"
     } else if ("geneID" %in% mcolnames) {
         "geneID"
+    } else if ("gene_id" %in% mcolnames) {
+        "gene_id"
     } else {
         stop("Failed to detect ID column.")
     }
@@ -277,15 +326,16 @@
         mcols[["symbol"]] <- NULL
     }
 
-    # Sort the metadata columns alphabetically.
-    mcols <- mcols[, sort(colnames(mcols)), drop = FALSE]
-
-    # Re-slot updated mcols back into object before calculation broad class
+    # Re-slot updated mcols back into object before calculating broad class
     # biotype and/or assigning names.
     mcols(object) <- mcols
 
     # Ensure broad class definitions are included, using run-length encoding.
     mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
+
+    # Finally, sort the metadata columns alphabetically.
+    mcols(object) <-
+        mcols(object)[, sort(colnames(mcols(object))), drop = FALSE]
 
     # Ensure the ranges are sorted by identifier.
     idCol <- .detectGRangesIDs(object)
