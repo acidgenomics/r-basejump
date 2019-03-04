@@ -51,3 +51,16 @@
     proto <- proto[setdiff(names(proto), names(metadata))]
     c(proto, metadata)
 }
+
+
+
+# Slot organism into `metadata()`, if necessary.
+.slotOrganism <- function(object) {
+    if (is.null(metadata(object)[["organism"]])) {
+        metadata(object)[["organism"]] <- tryCatch(
+            expr = organism(object),
+            error = function(e) character()
+        )
+    }
+    object
+}

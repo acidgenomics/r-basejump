@@ -155,8 +155,6 @@
 
 
 
-# FIXME Need to ensure the levels get dropped on mcols here...
-# This isn't returning correctly for `makeGRangesFromGFF()`.
 .makeGRanges <- function(object) {
     assert(
         is(object, "GRanges"),
@@ -214,6 +212,10 @@
                 if (is.character(col) && any(duplicated(col))) {
                     col <- as.factor(col)
                 }
+                # Ensure factor levels get correctly reset, to save memory.
+                if (is.factor(col)) {
+                    col <- droplevels(col)
+                }
                 # Use S4 run length encoding (Rle) for atomic metadata columns.
                 # Many of these elements are repetitive, and this makes
                 # operations faster.
@@ -238,10 +240,14 @@
     names(object) <- mcols(object)[[idCol]]
 
     # Ensure broad class definitions are included.
-    mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
+    broadClass <- .broadClass(object)
+    # Apply S4 run-length encoding.
+    broadClass <- Rle(broadClass)
+    mcols(object)[["broadClass"]] <- broadClass
 
     # Sort metadata columns alphabetically.
-    mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
+    mcols(object) <-
+        mcols(object)[, sort(colnames(mcols(object))), drop = FALSE]
 
     # Ensure GRanges is sorted by names.
     message(paste0("Arranging by ", idCol, "."))
@@ -254,18 +260,5 @@
     metadata(object) <- c(.prototypeMetadata, metadata(object))
 
     assert(is(object, "GRanges"))
-    object
-}
-
-
-
-# Slot organism into `metadata()`, if necessary.
-.slotOrganism <- function(object) {
-    if (is.null(metadata(object)[["organism"]])) {
-        metadata(object)[["organism"]] <- tryCatch(
-            expr = organism(object),
-            error = function(e) character()
-        )
-    }
     object
 }
