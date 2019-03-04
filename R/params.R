@@ -130,7 +130,7 @@
 #' @param legend `logical(1)`.
 #'   Show plot legend.
 #' @param level `character(1)`.
-#'   Return ranges as "`genes`" or "`transcripts`".
+#'   Return as genes or transcripts.
 #' @param limit `numeric(1)`.
 #'   Threshold to denote on the plot, using a dashed line.
 #' @param max `numeric(1)`.
