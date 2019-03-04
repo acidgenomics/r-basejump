@@ -162,6 +162,7 @@ makeGRangesFromGFF <- function(
     # Slot the file path into metadata. Note that this may be a useful addition
     # to `brio::import()` in a future update.
     metadata(object)[["file"]] <- file
+    metadata(object)[["level"]] <- level
     # Slot the source (e.g. Ensembl) and type (e.g. GTF) into `metadata()`.
     object <- .slotGFFDetectInfo(object)
     assert(is(object, "GRanges"))
@@ -185,6 +186,8 @@ makeGRangesFromGFF <- function(
     if (isTRUE(strict)) {
         message("Strict mode enabled. Checking against TxDb.")
         txdb <- .makeTxDbFromGFF(object)
+    } else {
+        txdb <- NULL
     }
 
     # Sanitization/standardization ---------------------------------------------
@@ -213,8 +216,10 @@ makeGRangesFromGFF <- function(
     # Transcripts --------------------------------------------------------------
     if (level == "transcripts") {
         transcripts <- .makeTranscriptsFromGFF(object = object, txdb = txdb)
-        if (source == "RefSeq") {
+        if (is(transcripts, "GRangesList")) {
             # Skip gene-level metadata merge for RefSeq transcripts.
+            # This feature isn't supported yet, because RefSeq doesn't return
+            # ranges 1:1 nicely for genes and transcripts.
             out <- transcripts
         } else {
             # Merge the gene-level annotations into the transcript-level ones.
@@ -226,13 +231,10 @@ makeGRangesFromGFF <- function(
     }
 
     # Metadata -----------------------------------------------------------------
-    # FIXME Attempt to conlidate metadata definitions in `.makeGRanges()`.
-    # Using `tryCatch()` here to suppress detection error and return empty
-    # character. This step should work for most genomes.
-    metadata(out) <- c(
-        .prototypeMetadata,
-        list(file = file, level = level)
-    )
+    assert(isSubset(
+        x = c("detect", "file", "level"),
+        y = names(metadata(out))
+    ))
 
     # Return with same formatting conventions for `makeGRangesFromEnsembl()`.
     # This returns with `mcols()` renamed in camel case. Empty columns in
