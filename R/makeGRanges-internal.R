@@ -251,10 +251,7 @@
     # Slot organism into metadata.
     object <- .slotOrganism(object)
     # Ensure object contains prototype metadata.
-    metadata(object) <- c(
-        .prototypeMetadata,
-        metadata(object)
-    )
+    metadata(object) <- c(.prototypeMetadata, metadata(object))
 
     assert(is(object, "GRanges"))
     object
