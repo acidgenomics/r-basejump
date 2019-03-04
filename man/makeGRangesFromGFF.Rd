@@ -16,7 +16,7 @@ makeGRangesFromGTF(file, level = c("genes", "transcripts"),
 File path.}
 
 \item{level}{\code{character(1)}.
-Return ranges as "\code{genes}" or "\code{transcripts}".}
+Return as genes or transcripts.}
 
 \item{strict}{\code{logical(1)}.
 Strict mode. Generate an internal \code{TxDb} using
@@ -42,13 +42,13 @@ Runs the same internal code as \code{\link[=makeGRangesFromGFF]{makeGRangesFromG
 
 \section{Recommendations}{
 
-
-\strong{GTF over GFF3.} We recommend using a GTF file instead of a GFF3 file,
-when possible. The file format is more compact and easier to parse.
-
-\strong{Ensembl over RefSeq.} We generally recommend using Ensembl over RefSeq,
-if possible. It's better supported in R and generally used by most NGS
-vendors.
+\itemize{
+\item \strong{Use GTF over GFF3.} We recommend using a GTF file instead of a GFF3
+file, when possible. The file format is more compact and easier to parse.
+\item \strong{Use Ensembl over RefSeq.} We generally recommend using Ensembl over
+RefSeq, if possible. It's better supported in R and generally used by most
+NGS vendors.
+}
 }
 
 \section{GFF/GTF specification}{
@@ -68,11 +68,11 @@ the metadata columns.
 
 Currently \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}} supports genomes from these sources:
 \itemize{
-\item Ensembl (GTF, GFF3).
-\item GENCODE, which inherits from Ensembl (GTF, GFF3).
-\item RefSeq (GFF3).
-\item FlyBase (GTF).
-\item WormBase (GTF).
+\item Ensembl: GTF, GFF3.
+\item GENCODE: GTF, GFF3.
+\item RefSeq: GFF3.
+\item FlyBase: GTF. GFF3 not supported.
+\item WormBase: GTF. GFF3 not supported.
 }
 
 UCSC support will be added in a future release.
@@ -86,60 +86,6 @@ builds and returns additional useful metadata that isn't defined inside a
 GFF/GTF file.
 
 If you must load a GFF/GTF file directly, then use \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}}.
-
-GTF key-value pairs:
-\itemize{
-\item source
-\item type
-\item score
-\item phase
-\item gene_id
-\item gene_version
-\item gene_name
-\item gene_source
-\item gene_biotype
-\item transcript_id
-\item transcript_version
-\item transcript_name
-\item transcript_source
-\item transcript_biotype
-\item tag
-\item transcript_support_level
-\item exon_number
-\item exon_id
-\item exon_version
-\item protein_id
-\item protein_version
-\item ccds_id
-}
-
-GFF key-value pairs:
-\itemize{
-\item "source"
-\item "type"
-\item "score"
-\item "phase"
-\item "ID"
-\item "Alias"
-\item "external_name"
-\item "logic_name"
-\item "Name"
-\item "biotype"
-\item "description"
-\item "gene_id"
-\item "version"
-\item "Parent"
-\item "tag"
-\item "transcript_id"
-\item "transcript_support_level"
-\item "constitutive"
-\item "ensembl_end_phase"
-\item "ensembl_phase"
-\item "exon_id"
-\item "rank"
-\item "protein_id"
-\item "ccdsid"
-}
 }
 
 \section{GENCODE vs. Ensembl}{
@@ -168,33 +114,8 @@ details.
 
 
 Refer to the
-\href{ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt}{Current RefSeq GFF3 spec}
-for additional details.
-
-GFF key-value pairs:
-\itemize{
-\item source
-\item type
-\item score
-\item phase
-\item ID
-\item Dbxref
-\item Name
-\item chromosome
-\item gbkey
-\item genome
-\item mol_type
-\item description
-\item gene
-\item gene_biotype
-\item pseudo
-\item Parent
-\item product
-\item transcript_id
-\item gene_synonym
-\item model_evidence
-\item protein_id
-}
+\href{ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt}{current RefSeq GFF3 spec}
+for details.
 
 See also:
 \itemize{
@@ -203,16 +124,16 @@ See also:
 }
 }
 
-\section{UCSC (not supported)}{
+\section{UCSC}{
 
 
 Loading UCSC genome annotations from a GFF/GTF file are
 \emph{intentionally not supported} by this function.
 
-Use a pre-built TxDb package instead
-(e.g. TxDb.Hsapiens.UCSC.hg38.knownGene).
+We recommend using a pre-built \code{TxDb} package from Bioconductor instead.
+For example, load \code{TxDb.Hsapiens.UCSC.hg38.knownGene} for hg38.
 
-Note that UCSC doesn't provide direct GFF/GTF file downloads.
+For reference, note that UCSC doesn't provide direct GFF/GTF file downloads.
 Use of the \href{https://genome.ucsc.edu/cgi-bin/hgTables}{hgTables} table
 browser is required in a web browser.
 
@@ -224,9 +145,9 @@ Select the following options to download hg38:
 \item group: Genes and Gene Predictions
 \item track: GENCODE v29
 \item table: knownGene
-\item region: genome.
+\item region: genome
 \item output format: GTF - gene transfer format
-\item output file: enter a file name
+\item output file: Enter a file name
 }
 
 See also:
@@ -237,7 +158,7 @@ See also:
 }
 }
 
-\section{Homo sapiens URLs}{
+\section{Example URLs}{
 
 \itemize{
 \item Ensembl GTF:\cr
@@ -250,6 +171,10 @@ ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.a
 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
 \item RefSeq GFF:\cr
 ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
+\item WormBase GTF:\cr
+ftp://ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz
+\item FlyBase GTF:\cr
+ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
 }
 }
 
@@ -266,8 +191,8 @@ summary(x)
 }
 \seealso{
 \itemize{
-\item \code{rtracklayer::import()}.
-\item \code{GenomicFeatures::makeTxDbFromGRanges()}.
-\item \code{GenomicFeatures::makeTxDbFromGFF()}.
+\item \code{\link[rtracklayer:import]{rtracklayer::import()}}.
+\item \code{\link[GenomicFeatures:makeTxDbFromGRanges]{GenomicFeatures::makeTxDbFromGRanges()}}.
+\item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
 }
 }

@@ -157,7 +157,7 @@ the cutoff defined in the object.}
 Show plot legend.}
 
 \item{level}{\code{character(1)}.
-Return ranges as "\code{genes}" or "\code{transcripts}".}
+Return as genes or transcripts.}
 
 \item{limit}{\code{numeric(1)}.
 Threshold to denote on the plot, using a dashed line.}
