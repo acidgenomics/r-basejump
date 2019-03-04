@@ -30,7 +30,7 @@
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom S4Vectors DataFrame List Rle %in% aggregate cor decode expand
-#'   head mcols mcols<- metadata metadata<- na.omit tail
+#'   head mcols mcols<- metadata metadata<- na.omit split tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
