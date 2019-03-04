@@ -206,9 +206,9 @@ makeGRangesFromGFF <- function(
     # even when transcripts are requested. We'll merge this object into the
     # transcript-level GRanges below, if necessary.
     genes <- .makeGenesFromGFF(object)
-    metadata(genes)[["level"]] <- "genes"
     if (level == "genes") {
         out <- genes
+        metadata(out)[["level"]] <- "genes"
     }
 
     # Transcripts --------------------------------------------------------------
@@ -235,7 +235,7 @@ makeGRangesFromGFF <- function(
     }
 
     # Post-flight checks -------------------------------------------------------
-    # Double check that our slotted metadata wasn't dropped.
+    # Double check that our slotted metadata hasn't been dropped.
     assert(isSubset(
         x = c("detect", "file", "level"),
         y = names(metadata(out))
@@ -906,10 +906,7 @@ makeGRangesFromGFF <- function(
         ))
         names(gr1) <- mcols(gr1)[["transcript_name"]]
         names(gr2) <- mcols(gr2)[["tx_name"]]
-    } else {
-        stop("Unknown error.")
     }
-    # FIXME This assert is failing...why?
     assert(hasNames(gr2))
 
     # Ensure both GRanges are sorted by names.
