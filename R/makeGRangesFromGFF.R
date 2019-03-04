@@ -295,7 +295,7 @@ makeGRangesFromGFF <- function(
 
     # Split into GRangesList, if necessary.
     if (hasDuplicates(mcols(object)[["gene_id"]])) {
-        message(paste(
+        warning(paste(
             "GRanges contains multiple ranges per gene.",
             "Splitting into GRangesList.",
             sep = "\n"
@@ -371,7 +371,7 @@ makeGRangesFromGFF <- function(
 
     # Split into GRangesList, if necessary.
     if (hasDuplicates(mcols(object)[["transcript_id"]])) {
-        message(paste(
+        warning(paste(
             "GRanges contains multiple ranges per transcript.",
             "Splitting into GRangesList.",
             sep = "\n"
@@ -746,6 +746,10 @@ makeGRangesFromGFF <- function(
 
 
 # RefSeq =======================================================================
+# Types that map to `gene_id`:
+# [1] "enhancer"             "gene"
+# [2] "promoter"             "pseudogene"
+# [5] "recombination_region" "sequence_feature"
 .makeGenesFromRefSeqGFF <- function(object) {
     object <- .sanitizeRefSeqGFF(object)
 
@@ -759,10 +763,6 @@ makeGRangesFromGFF <- function(
     )
     object <- object[keep]
 
-    # Here's the types that return for Homo sapiens:
-    # [1] "enhancer"             "gene"
-    # [2] "promoter"             "pseudogene"
-    # [5] "recombination_region" "sequence_feature"
     keep <- grepl(
         pattern = paste(c("^gene$", "^pseudogene$"), collapse = "|"),
         x = mcols(object)[["type"]],
@@ -790,6 +790,15 @@ makeGRangesFromGFF <- function(
 
 
 
+# Types that map to `transcript_id`:
+#  [1] "antisense_RNA"      "exon"
+#  [3] "guide_RNA"          "lnc_RNA"
+#  [5] "mRNA"               "primary_transcript"
+#  [7] "RNase_MRP_RNA"      "RNase_P_RNA"
+#  [9] "rRNA"               "scRNA"
+# [11] "snoRNA"             "snRNA"
+# [13] "telomerase_RNA"     "transcript"
+# [15] "vault_RNA"          "Y_RNA"
 .makeTranscriptsFromRefSeqGFF <- function(object) {
     object <- .sanitizeRefSeqGFF(object)
 
@@ -805,27 +814,6 @@ makeGRangesFromGFF <- function(
     mcols(object)[["ID"]] <- NULL
     mcols(object)[["Parent"]] <- NULL
 
-    # Here are the types that map to `transcript_id`:
-    #  [1] "antisense_RNA"      "exon"
-    #  [3] "guide_RNA"          "lnc_RNA"
-    #  [5] "mRNA"               "primary_transcript"
-    #  [7] "RNase_MRP_RNA"      "RNase_P_RNA"
-    #  [9] "rRNA"               "scRNA"
-    # [11] "snoRNA"             "snRNA"
-    # [13] "telomerase_RNA"     "transcript"
-    # [15] "vault_RNA"          "Y_RNA"
-
-    if (any(duplicated(mcols(object)[["transcript_id"]]))) {
-        message(paste(
-            "RefSeq contains multiple ranges per transcript.",
-            "Splitting into GRangesList.",
-            sep = "\n"
-        ))
-        object <- split(x = object, f = mcols(object)[["transcript_id"]])
-    }
-
-    # FIXME Need to early return this as GRangesList.
-    # Need to call `.makeGRanges()` before `split()` step.
     object
 }
 
@@ -867,29 +855,31 @@ makeGRangesFromGFF <- function(
 # Expected warnings/failures:
 # - FlyBase genes from GTF: FBgn0013687. Visual inspection confirms that ranges
 #   from GFF are correct, but TxDb reports 258 mismatches (those are incorrect).
-.checkGRangesAgainstTxDb <- function(
-    gr,
-    txdb,
-    level = c("genes", "transcripts")
-) {
-    # FIXME Store the level in GRanges metadata, so we don't have to pass
-    # through the formal here.
-    level <- match.arg(level)
+.checkGRangesAgainstTxDb <- function(gr, txdb) {
+    assert(
+        is(gr, "GRanges"),
+        is(txdb, "TxDb")
+    )
+    level <- match.arg(
+        arg = metadata(gr)[["level"]],
+        choices = c("genes", "transcripts")
+    )
     fun <- get(level)
     assert(is.function(fun))
     message(paste("Checking", level, "in TxDb."))
+    gr1 <- gr; rm(gr)
 
     # Convert the TxDb to GRanges using either `genes()` or `transcripts()`.
     # Note that GenomicFeatures currently returns with "tx_" instead of
     # "transcript_" for transcript-level annotations.
-    grTxDb <- fun(txdb)
-    assert(is(grTxDb, "GRanges"))
+    gr2 <- fun(txdb)
+    assert(is(gr2, "GRanges"))
 
     if (
         level == "genes" &&
         hasLength(intersect(
-            x = mcols(gr)[["gene_name"]],
-            y = mcols(grTxDb)[["gene_id"]]
+            x = mcols(gr1)[["gene_name"]],
+            y = mcols(gr2)[["gene_id"]]
         ))
     ) {
         # GenomicFeatures currently returns GFF3 input with gene symbols as the
@@ -899,27 +889,27 @@ makeGRangesFromGFF <- function(
             "Setting names on GRanges from GFF to match.",
             sep = "\n"
         ))
-        names(gr) <- mcols(gr)[["gene_name"]]
+        names(gr1) <- mcols(gr1)[["gene_name"]]
     } else if (
         level == "transcripts" &&
         hasLength(intersect(
-            x = names(gr),
-            y = mcols(grTxDb)[["tx_name"]]
+            x = names(gr1),
+            y = mcols(gr2)[["tx_name"]]
         ))
     ) {
         # `GenomicFeatures::transcripts()` returns numbers instead of correct
         # transcript IDs, so fix that before checks. Note that this return maps
         # the correct identifiers to `tx_name` column in `mcols()`.
-        names(grTxDb) <- mcols(grTxDb)[["tx_name"]]
+        names(gr2) <- mcols(gr2)[["tx_name"]]
     } else if (
         level == "transcripts" &&
         !hasLength(intersect(
-            x = names(gr),
-            y = mcols(grTxDb)[["tx_name"]]
+            x = names(gr1),
+            y = mcols(gr2)[["tx_name"]]
         )) &&
         hasLength(intersect(
-            x = mcols(gr)[["transcript_name"]],
-            y = mcols(grTxDb)[["tx_name"]]
+            x = mcols(gr1)[["transcript_name"]],
+            y = mcols(gr2)[["tx_name"]]
         ))
     ) {
         # GenomicFeatures currently returns GFF3 input with transcript names
@@ -929,21 +919,21 @@ makeGRangesFromGFF <- function(
             "Setting names on GRanges from GFF to match.",
             sep = "\n"
         ))
-        names(gr) <- mcols(gr)[["transcript_name"]]
-        names(grTxDb) <- mcols(grTxDb)[["tx_name"]]
+        names(gr1) <- mcols(gr1)[["transcript_name"]]
+        names(gr2) <- mcols(gr2)[["tx_name"]]
     }
-    assert(hasNames(grTxDb))
+    assert(hasNames(gr2))
 
     # Ensure both GRanges are sorted by names.
-    gr <- gr[sort(names(gr))]
-    grTxDb <- grTxDb[sort(names(grTxDb))]
+    gr1 <- gr1[sort(names(gr1))]
+    gr2 <- gr2[sort(names(gr2))]
 
     # Length and names ---------------------------------------------------------
     # Warn if GenomicFeatures has dropped ranges from GFF.
     # This can happen for some GFF3 files and FlyBase GTF.
-    if (length(gr) > length(grTxDb)) {
-        assert(isSubset(names(grTxDb), names(gr)))
-        n <- length(gr) - length(grTxDb)
+    if (length(gr1) > length(gr2)) {
+        assert(isSubset(names(gr2), names(gr1)))
+        n <- length(gr1) - length(gr2)
         warning(paste0(
             "GenomicFeatures dropped ",
             sprintf(
@@ -956,22 +946,22 @@ makeGRangesFromGFF <- function(
             ),
             " from file to make TxDb.\n",
             "Missing in TxDb: ",
-            toString(c(head(setdiff(names(gr), names(grTxDb))), "..."))
+            toString(c(head(setdiff(names(gr1), names(gr2))), "..."))
         ))
         # Subset the GRanges from GFF to match TxDb for additional checks.
-        gr <- gr[names(grTxDb)]
+        gr1 <- gr1[names(gr2)]
     }
     assert(
-        identical(length(gr), length(grTxDb)),
-        identical(names(gr), names(grTxDb))
+        identical(length(gr1), length(gr2)),
+        identical(names(gr1), names(gr2))
     )
 
     # Ranges and seqnames ------------------------------------------------------
     # Compare the ranges and inform the user about mismatches.
     # help(topic = "IPosRanges-comparison", package = "IRanges")
     # vignette(topic = "IRangesOverview", package = "IRanges")
-    r1 <- ranges(gr)
-    r2 <- ranges(grTxDb)
+    r1 <- ranges(gr1)
+    r2 <- ranges(gr2)
     diff <- r1 != r2
     if (any(diff)) {
         warning(paste(
@@ -996,7 +986,7 @@ makeGRangesFromGFF <- function(
             sep = "\n"
         )
     }
-    assert(identical(seqnames(gr), seqnames(grTxDb)))
+    assert(identical(seqnames(gr1), seqnames(gr2)))
 
     invisible(TRUE)
 }
