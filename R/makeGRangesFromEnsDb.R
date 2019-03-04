@@ -39,15 +39,12 @@ makeGRangesFromEnsDb <- function(object, level) {
     assert(isString(genomeBuild))
 
     # Define the metadata to return.
-    metadata <- c(
-        .prototypeMetadata,
-        list(
-            organism = organism(object),
-            genomeBuild = genomeBuild,
-            ensemblRelease = as.integer(ensemblVersion(object)),
-            ensembldb = metadata(object),
-            level = level
-        )
+    metadata <- list(
+        organism = organism(object),
+        genomeBuild = genomeBuild,
+        ensemblRelease = as.integer(ensemblVersion(object)),
+        ensembldb = metadata(object),
+        level = level
     )
 
     message(paste(

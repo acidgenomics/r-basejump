@@ -247,8 +247,14 @@
     message(paste0("Arranging by ", idCol, "."))
     object <- object[sort(names(object))]
 
+    # Prepare the metadata.
     # Slot organism into metadata.
     object <- .slotOrganism(object)
+    # Ensure object contains prototype metadata.
+    metadata(object) <- c(
+        .prototypeMetadata,
+        metadata(object)
+    )
 
     assert(is(object, "GRanges"))
     object
