@@ -247,6 +247,22 @@
     message(paste0("Arranging by ", idCol, "."))
     object <- object[sort(names(object))]
 
+    # Slot organism into metadata.
+    object <- .slotOrganism(object)
+
     assert(is(object, "GRanges"))
+    object
+}
+
+
+
+# Slot organism into `metadata()`, if necessary.
+.slotOrganism <- function(object) {
+    if (is.null(metadata(object)[["organism"]])) {
+        metadata(object)[["organism"]] <- tryCatch(
+            expr = organism(object),
+            error = function(e) character()
+        )
+    }
     object
 }
