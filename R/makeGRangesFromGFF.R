@@ -286,11 +286,7 @@ makeGRangesFromGFF <- function(
         is(object, "GRanges") &&
         is(txdb, "TxDb")
     ) {
-        .checkGRangesAgainstTxDb(
-            gr = object,
-            txdb = txdb,
-            level = "genes"
-        )
+        .checkGRangesAgainstTxDb(gr = object, txdb = txdb)
     }
 
     # Split into GRangesList, if necessary.
@@ -362,11 +358,7 @@ makeGRangesFromGFF <- function(
         is(object, "GRanges") &&
         is(txdb, "TxDb")
     ) {
-        .checkGRangesAgainstTxDb(
-            gr = object,
-            txdb = txdb,
-            level = "transcripts"
-        )
+        .checkGRangesAgainstTxDb(gr = object, txdb = txdb)
     }
 
     # Split into GRangesList, if necessary.
