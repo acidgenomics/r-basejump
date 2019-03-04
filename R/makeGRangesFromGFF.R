@@ -311,7 +311,7 @@ makeGRangesFromGFF <- function(
     object <- object[sort(names(object))]
 
     # Ensure that the ranges match GenomicFeatures output.
-    if (isTRUE(strict) && is(object, "GRanges")) {
+    if (is(object, "GRanges") && is(txdb, "TxDb")) {
         .checkGRangesAgainstTxDb(gr = object, txdb = txdb, level = "genes")
     }
 
@@ -491,7 +491,7 @@ makeGRangesFromGFF <- function(
     object <- object[sort(names(object))]
 
     # Ensure that the ranges match GenomicFeatures output.
-    if (isTRUE(strict) && is(object, "GRanges")) {
+    if (is(object, "GRanges") && is(txdb, "TxDb")) {
         .checkGRangesAgainstTxDb(
             gr = object,
             txdb = txdb,
@@ -821,6 +821,7 @@ makeGRangesFromGFF <- function(
 # Merge the gene-level annotations (`geneName`, `geneBiotype`) into a
 # transcript-level GRanges object.
 .mergeGenesIntoTranscripts <- function(transcripts, genes) {
+    message("Merging gene-level annotations into transcript-level object.")
     assert(
         is(transcripts, "GRanges"),
         is(genes, "GRanges")
