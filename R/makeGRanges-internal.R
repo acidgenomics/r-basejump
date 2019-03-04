@@ -7,7 +7,7 @@
     )
 
     # Minimize the object, removing unnecessary metadata columns.
-    object <- .minimzeGRanges(object)
+    object <- .minimizeGRanges(object)
 
     # Now we're ready to standardize into basejump conventions.
     object <- .standardizeGRanges(object)
@@ -277,22 +277,20 @@
         mcols[["symbol"]] <- NULL
     }
 
-    # Require that names match the identifier column.
+    # Sort the metadata columns alphabetically.
+    mcols <- mcols[, sort(colnames(mcols)), drop = FALSE]
+
+    # Re-slot updated mcols back into object before calculation broad class
+    # biotype and/or assigning names.
+    mcols(object) <- mcols
+
+    # Ensure broad class definitions are included, using run-length encoding.
+    mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
+
+    # Ensure the ranges are sorted by identifier.
     idCol <- .detectGRangesIDs(object)
-    names(object) <- mcols(object)[[idCol]]
-
-    # Ensure broad class definitions are included.
-    broadClass <- .broadClass(object)
-    # Apply S4 run-length encoding.
-    broadClass <- Rle(broadClass)
-    mcols(object)[["broadClass"]] <- broadClass
-
-    # Sort metadata columns alphabetically.
-    mcols(object) <-
-        mcols(object)[, sort(colnames(mcols(object))), drop = FALSE]
-
-    # Ensure GRanges is sorted by names.
     message(paste0("Arranging by ", idCol, "."))
+    names(object) <- mcols(object)[[idCol]]
     object <- object[sort(names(object))]
 
     object

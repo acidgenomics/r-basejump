@@ -47,13 +47,14 @@
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie allAreHexColors areDisjointSets areIntersectingSets
-#'   areSameLength areSetEqual assert false getNameInParent hasDims hasInternet
-#'   hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows
-#'   hasRownames hasUniqueCols hasValidDimnames isADirectory  isAny isCharacter
-#'   isFlag isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange
-#'   isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
-#'   isScalar isString isSubset isSuperset matchesUniqueGeneNames validNames
-#'   validate validateClasses
+#'   areSameLength areSetEqual assert false getNameInParent hasDims
+#'   hasDuplicates hasInternet hasLength hasNames hasNoDuplicates
+#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
+#'   isADirectory  isAny isCharacter isFlag isGGScale isHeaderLevel
+#'   isHexColorFunction isInClosedRange isInRange isInt isMatchingRegex
+#'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
+#'   isSubset isSuperset matchesUniqueGeneNames validNames validate
+#'   validateClasses
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom knitr asis_output kable opts_knit
