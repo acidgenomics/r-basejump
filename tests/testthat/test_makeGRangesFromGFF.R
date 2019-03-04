@@ -3,7 +3,7 @@ context("makeGRangesFromGFF")
 
 
 test_that("Minimal example GFF import (CI enabled)", {
-
+    message("FIXME")
 })
 
 
@@ -17,17 +17,27 @@ test_that("Full GFF import (local only)", {
 
     # Note that setting level to "transcripts" also runs the gene-level code.
 
-    # Ensembl GTF
+    # Ensembl GTF --------------------------------------------------------------
+    file <- pasteURL(
+        "ftp.ensembl.org",
+        "pub",
+        "release-95",
+        "gtf",
+        "homo_sapiens",
+        "Homo_sapiens.GRCh38.95.gtf.gz",
+        protocol = "ftp"
+    )
+
     object <- makeGRangesFromGFF(
-        file = pasteURL(
-            "ftp.ensembl.org",
-            "pub",
-            "release-95",
-            "gtf",
-            "homo_sapiens",
-            "Homo_sapiens.GRCh38.95.gtf.gz",
-            protocol = "ftp"
-        ),
+        file = file,
+        level = "genes",
+        strict = TRUE
+    )
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 58735L)
+
+    object <- makeGRangesFromGFF(
+        file = file,
         level = "transcripts",
         strict = TRUE
     )
