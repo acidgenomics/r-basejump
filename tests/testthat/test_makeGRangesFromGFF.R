@@ -1,112 +1,118 @@
-context("makeGRangesFromGFF")
+levels <- c("genes", "transcripts")
 
 
 
-test_that("Minimal example GFF import (CI enabled)", {
-    message("FIXME")
-})
+# Minimal ======================================================================
+context("Minimal GFF/GTF file checks")
 
 
 
-test_that("Full GFF import (local only)", {
-    # Run more thorough unit tests when checking locally. These take too long to
-    # run on CI and can time out. The full checks on GFF3 files are particularly
-    # memory intensive, and should be run on a machine with at least 16 GB RAM.
-    skip_on_appveyor()
-    skip_on_travis()
-    skip_on_bioc()
+# CPU-intensive ================================================================
+context("Remote GFF/GTF file checks (local only)")
 
-    # Ensembl GTF --------------------------------------------------------------
-    # Wrapping with `localOrRemoteFile()` call here so we don't download the
-    # file repeatedly from the remote server.
-    file <- localOrRemoteFile(pasteURL(
-        "ftp.ensembl.org",
-        "pub",
-        "release-95",
-        "gtf",
-        "homo_sapiens",
-        "Homo_sapiens.GRCh38.95.gtf.gz",
-        protocol = "ftp"
-    ))
+# Run more thorough unit tests when checking locally. These take too long to
+# run on CI and can time out. The full checks on GFF3 files are particularly
+# memory intensive, and should be run on a machine with at least 16 GB RAM.
 
-    object <- makeGRangesFromGFF(
-        file = file,
-        level = "genes",
-        .checkAgainstTxDb = TRUE
-    )
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 58735L)
+# Wrapping with `localOrRemoteFile()` calls here so we don't download the
+# file repeatedly from the remote server.
 
-    object <- makeGRangesFromGFF(
-        file = file,
-        level = "transcripts",
-        .checkAgainstTxDb = TRUE
-    )
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 206601L)
+skip_on_appveyor()
+skip_on_bioc()
+skip_on_travis()
 
-    # Ensembl GFF --------------------------------------------------------------
-    # Note that GenomicRanges chokes on this file, so warnings in strict mode
-    # are expected.
-    file <- localOrRemoteFile(pasteURL(
-        "ftp.ensembl.org",
-        "pub",
-        "release-95",
-        "gff3",
-        "homo_sapiens",
-        "Homo_sapiens.GRCh38.95.gff3.gz",
-        protocol = "ftp"
-    ))
 
-    suppressWarnings(
+
+ensembl_gtf_file <- localOrRemoteFile(pasteURL(
+    "ftp.ensembl.org",
+    "pub",
+    "release-95",
+    "gtf",
+    "homo_sapiens",
+    "Homo_sapiens.GRCh38.95.gtf.gz",
+    protocol = "ftp"
+))
+
+with_parameters_test_that(
+    "Ensembl GTF", {
         object <- makeGRangesFromGFF(
-            file = file,
-            level = "genes",
+            file = ensembl_gtf_file,
+            level = level,
             .checkAgainstTxDb = TRUE
         )
-    )
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 58735L)
+        expect_s4_class(object, "GRanges")
+        expect_identical(length(object), length)
+    },
+    level = levels,
+    length = c(58735L, 206601L)
+)
 
-    suppressWarnings(
+
+
+ensembl_gff3_file <- localOrRemoteFile(pasteURL(
+    "ftp.ensembl.org",
+    "pub",
+    "release-95",
+    "gff3",
+    "homo_sapiens",
+    "Homo_sapiens.GRCh38.95.gff3.gz",
+    protocol = "ftp"
+))
+
+# Note that GenomicRanges chokes on Ensembl GFF3 file, so warnings in strict
+# mode here are expected.
+with_parameters_test_that(
+    "Ensembl GFF3", {
+        # FIXME The warning suppression method using `muffleRestart` breaks down here.
+        # FIXME Assert check error:
+        # assert(isSubset(names(gr2), names(gr1)))
+        # .checkGRangesAgainstTxDb makeGRangesFromGFF.R:260
+        # assert(isSubset(names(gr2), names(gr1)))
+        # makeGRangesFromGFF.R:949
         object <- makeGRangesFromGFF(
-            file = file,
-            level = "transcripts",
+            file = ensembl_gff3_file,
+            level = level,
             .checkAgainstTxDb = TRUE
         )
-    )
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 206601L)
+        expect_s4_class(object, "GRanges")
+        expect_identical(length(object), length)
+    },
+    level = levels,
+    # This should match GTF (see above).
+    length = c(58735L, 206601L)
+)
 
-    # GENCODE GTF --------------------------------------------------------------
-    file = localOrRemoteFile(pasteURL(
-        "ftp.ebi.ac.uk",
-        "pub",
-        "databases",
-        "gencode",
-        "Gencode_human",
-        "release_29",
-        "gencode.v29.annotation.gtf.gz",
-        protocol = "ftp"
-    ))
 
-    object <- makeGRangesFromGFF(
-        file = file,
-        level = "genes",
-        .checkAgainstTxDb = TRUE
-    )
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 58721L)
 
-    object <- makeGRangesFromGFF(
-        file = file,
-        level = "transcripts",
-        .checkAgainstTxDb = TRUE
-    )
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 206694L)
+gencode_gtf_file <- localOrRemoteFile(pasteURL(
+    "ftp.ebi.ac.uk",
+    "pub",
+    "databases",
+    "gencode",
+    "Gencode_human",
+    "release_29",
+    "gencode.v29.annotation.gtf.gz",
+    protocol = "ftp"
+))
 
-    # GENCODE GFF --------------------------------------------------------------
+# FIXME What are the gene/transcript differences between Ensembl and GENCODE?
+with_parameters_test_that(
+    "GENCODE GTF", {
+        object <- makeGRangesFromGFF(
+            file = ensembl_gtf_file,
+            level = level,
+            .checkAgainstTxDb = TRUE
+        )
+        expect_s4_class(object, "GRanges")
+        expect_identical(length(object), length)
+    },
+    level = levels,
+    length = c(58721L, 206694L)
+)
+
+
+
+test_that("GENCODE GFF3", {
     file = localOrRemoteFile(pasteURL(
         "ftp.ebi.ac.uk",
         "pub",
@@ -136,8 +142,11 @@ test_that("Full GFF import (local only)", {
         level = "transcripts",
         .checkAgainstTxDb = TRUE
     )
+})
 
-    # RefSeq GFF ---------------------------------------------------------------
+
+
+test_that("RefSeq GFF3", {
     file <- localOrRemoteFile(pasteURL(
         "ftp.ncbi.nlm.nih.gov",
         "genomes",

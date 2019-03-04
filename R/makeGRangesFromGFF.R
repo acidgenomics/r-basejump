@@ -868,7 +868,10 @@ makeGRangesFromGFF <- function(
 # - FlyBase genes from GTF: FBgn0013687. Visual inspection confirms that ranges
 #   from GFF are correct, but TxDb reports 258 mismatches (those are incorrect).
 .checkGRangesAgainstTxDb <- function(gr, txdb) {
-    assert(is(gr, "GRanges"), is(txdb, "TxDb"))
+    assert(
+        is(gr, "GRanges"),
+        is(txdb, "TxDb")
+    )
     level <- match.arg(
         arg = metadata(gr)[["level"]],
         choices = c("genes", "transcripts")
@@ -879,21 +882,25 @@ makeGRangesFromGFF <- function(
     gr1 <- gr
     rm(gr)
 
+    # Convert the TxDb to GRanges using either `genes()` or `transcripts()`.
+    # Note that GenomicFeatures currently returns with "tx" instead of
+    # "transcript" for transcript-level annotations.
+    gr2 <- fun(txdb)
+    assert(is(gr2, "GRanges"))
+
+    # Ensure both ranges are camel case formatted.
+    gr1 <- camel(gr1)
+    gr2 <- camel(gr2)
+
     # Always set the names on GRanges from GFF.
     idCol <- .detectGRangesIDs(gr1)
     names(gr1) <- mcols(gr1)[[idCol]]
 
-    # Convert the TxDb to GRanges using either `genes()` or `transcripts()`.
-    # Note that GenomicFeatures currently returns with "tx_" instead of
-    # "transcript_" for transcript-level annotations.
-    gr2 <- fun(txdb)
-    assert(is(gr2, "GRanges"))
-
     if (
         level == "genes" &&
         hasLength(intersect(
-            x = mcols(gr1)[["gene_name"]],
-            y = mcols(gr2)[["gene_id"]]
+            x = mcols(gr1)[["geneName"]],
+            y = mcols(gr2)[["geneID"]]
         ))
     ) {
         # GenomicFeatures currently returns GFF3 input with gene symbols as the
@@ -903,27 +910,27 @@ makeGRangesFromGFF <- function(
             "Setting names on GRanges from GFF to match.",
             sep = "\n"
         ))
-        names(gr1) <- mcols(gr1)[["gene_name"]]
+        names(gr1) <- mcols(gr1)[["geneName"]]
     } else if (
         level == "transcripts" &&
         hasLength(intersect(
             x = names(gr1),
-            y = mcols(gr2)[["tx_name"]]
+            y = mcols(gr2)[["txName"]]
         ))
     ) {
         # `GenomicFeatures::transcripts()` returns numbers instead of correct
         # transcript IDs, so fix that before checks. Note that this return maps
-        # the correct identifiers to `tx_name` column in `mcols()`.
-        names(gr2) <- mcols(gr2)[["tx_name"]]
+        # the correct identifiers to `txName` column in `mcols()`.
+        names(gr2) <- mcols(gr2)[["txName"]]
     } else if (
         level == "transcripts" &&
         !hasLength(intersect(
             x = names(gr1),
-            y = mcols(gr2)[["tx_name"]]
+            y = mcols(gr2)[["txName"]]
         )) &&
         hasLength(intersect(
-            x = mcols(gr1)[["transcript_name"]],
-            y = mcols(gr2)[["tx_name"]]
+            x = mcols(gr1)[["transcriptName"]],
+            y = mcols(gr2)[["txName"]]
         ))
     ) {
         # GenomicFeatures currently returns GFF3 input with transcript names
@@ -933,12 +940,12 @@ makeGRangesFromGFF <- function(
             "Setting names on GRanges from GFF to match.",
             sep = "\n"
         ))
-        names(gr1) <- mcols(gr1)[["transcript_name"]]
-        names(gr2) <- mcols(gr2)[["tx_name"]]
+        names(gr1) <- mcols(gr1)[["transcriptName"]]
+        names(gr2) <- mcols(gr2)[["txName"]]
     }
-    assert(hasNames(gr2))
 
     # Ensure both GRanges are sorted by names.
+    assert(hasNames(gr1), hasNames(gr2))
     gr1 <- gr1[sort(names(gr1))]
     gr2 <- gr2[sort(names(gr2))]
 
@@ -980,7 +987,8 @@ makeGRangesFromGFF <- function(
     if (any(diff)) {
         which <- head(which(diff), n = 10L)
         warning(paste0(
-            sum(diff, na.rm = TRUE), "range mismatches detected in TxDb.", "\n",
+            sum(diff, na.rm = TRUE),
+            " range mismatches detected in TxDb.", "\n",
             "Showing GRanges mismatch comparison (first 10).", "\n\n",
             "(1) GFF, via rtracklayer::import():", "\n",
             printString(r1[which]), "\n\n",
@@ -1056,9 +1064,9 @@ makeGRangesFromGFF <- function(
         )
     }, warning = function(w) {
         # Note that `makeTxDbFromGRanges()` frequently returns warnings.
-        # Specifically suppressing this expected warning:
-        # The "phase" metadata column contains non-NA values for
-        # features of type stop_codon. This information was ignored.
+        # Specifically, we're suppressing this expected warning:
+        #   The "phase" metadata column contains non-NA values for
+        #   features of type stop_codon. This information was ignored.
         # See also:
         # - https://stackoverflow.com/questions/38603668
         # - https://stackoverflow.com/questions/16517795
