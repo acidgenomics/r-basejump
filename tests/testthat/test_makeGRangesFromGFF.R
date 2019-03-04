@@ -47,22 +47,10 @@ with_parameters_test_that(
         expect_identical(length(object), length)
     },
     level = levels,
-    length = c(58735L, 206601L)
+    # Note that we're dropping PAR dupes on genes and transcripts.
+    length = c(58676L, 206534L)
 )
 
-
-
-# FIXME Another fun unit test error...
-# Error: Test failed: 'Ensembl GFF3 '
-# * Assert failure.
-# identical(x = mcols(transcripts)[["transcript_id"]], y = merge[["transcript_id"]]) is not TRUE.
-# 1: rlang::eval_tidy(code, args)
-# 2: suppressWarnings(object <- makeGRangesFromGFF(file = ensembl_gff3_file,
-#                                                  level = level, .checkAgainstTxDb = TRUE)) at :3
-# 3: withCallingHandlers(expr, warning = function(w) invokeRestart("muffleWarning"))
-# 4: makeGRangesFromGFF(file = ensembl_gff3_file, level = level, .checkAgainstTxDb = TRUE)
-# 5: .mergeGenesIntoTranscripts(transcripts = transcripts, genes = genes) at /data00/home/michael.steinbaugh/git/packages/basejump/R/makeGRangesFromGFF.R:241
-# 6: assert(identical(x = mcols(transcripts)[["transcript_id"]], y = merge[["transcript_id"]])) at /data00/home/michael.steinbaugh#/git/packages/basejump/R/makeGRangesFromGFF.R:378
 
 
 ensembl_gff3_file <- localOrRemoteFile(pasteURL(
@@ -90,13 +78,13 @@ with_parameters_test_that(
         expect_identical(length(object), length)
     },
     level = levels,
-    # This should match GTF (see above).
-    length = c(58735L, 206601L)
+    # Note that we're dropping PAR dupes.
+    length = c(58676L, 206601L)
 )
 
 
 
-# FIXME What are the gene/transcript differences between Ensembl and GENCODE?
+# FIXME Document the gene/transcript differences between Ensembl and GENCODE.
 
 gencode_gtf_file <- localOrRemoteFile(pasteURL(
     "ftp.ebi.ac.uk",
@@ -120,6 +108,7 @@ with_parameters_test_that(
         expect_identical(length(object), length)
     },
     level = levels,
+    # FIXME We need to resolve the PAR genes more clearly here.
     length = c(58721L, 206694L)
 )
 
@@ -136,6 +125,13 @@ gencode_gff3_file = localOrRemoteFile(pasteURL(
     protocol = "ftp"
 ))
 
+# FIXME Unit test failure.
+# Error: Test failed: 'GENCODE GFF3 '
+# * `object` inherits from `CompressedGRangesList/GRangesList/GenomicRangesList/CompressedRangesList/GenomicRanges_OR_GRangesList/RangesList/CompressedList/GenomicRanges_OR_GenomicRangesList/List/Vector/list_OR_List/Annotated` not `GRanges`.
+# * length(object) not identical to `length`.
+# 1/1 mismatches
+# [1] 58676 - 58721 == -45
+
 with_parameters_test_that(
     "GENCODE GFF3", {
         object <- makeGRangesFromGFF(
@@ -143,15 +139,12 @@ with_parameters_test_that(
             level = level,
             .checkAgainstTxDb = TRUE
         )
-
-        # FIXME
-        print(length(object)
-
         expect_s4_class(object, "GRanges")
-        # expect_identical(length(object), length)
+        expect_identical(length(object), length)
     },
-    level = levels
-    # length = c(58721L, 206694L)
+    level = levels,
+    # Difference in count is due to the PAR genes.
+    length = c(58676L, 206694L)
 )
 
 
