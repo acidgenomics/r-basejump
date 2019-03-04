@@ -9,16 +9,17 @@ test_that("Minimal example GFF import (CI enabled)", {
 
 
 test_that("Full GFF import (local only)", {
-    # Run more thorough unit tests when checking locally.
-    # These take too long to run on CI and can time out.
+    # Run more thorough unit tests when checking locally. These take too long to
+    # run on CI and can time out. The full checks on GFF3 files are particularly
+    # memory intensive, and should be run on a machine with at least 16 GB RAM.
     skip_on_appveyor()
     skip_on_travis()
     skip_on_bioc()
 
-    # Note that setting level to "transcripts" also runs the gene-level code.
-
     # Ensembl GTF --------------------------------------------------------------
-    file <- pasteURL(
+    # Wrapping with `localOrRemoteFile()` call here so we don't download the
+    # file repeatedly from the remote server.
+    file <- localOrRemoteFile(pasteURL(
         "ftp.ensembl.org",
         "pub",
         "release-95",
@@ -26,12 +27,12 @@ test_that("Full GFF import (local only)", {
         "homo_sapiens",
         "Homo_sapiens.GRCh38.95.gtf.gz",
         protocol = "ftp"
-    )
+    ))
 
     object <- makeGRangesFromGFF(
         file = file,
         level = "genes",
-        strict = TRUE
+        .checkAgainstTxDb = TRUE
     )
     expect_s4_class(object, "GRanges")
     expect_identical(length(object), 58735L)
@@ -39,83 +40,126 @@ test_that("Full GFF import (local only)", {
     object <- makeGRangesFromGFF(
         file = file,
         level = "transcripts",
-        strict = TRUE
+        .checkAgainstTxDb = TRUE
     )
     expect_s4_class(object, "GRanges")
     expect_identical(length(object), 206601L)
 
-    # Ensembl GFF
-    # Note that GenomicRanges chokes on this file, so strict mode will fail.
-    object <- makeGRangesFromGFF(
-        file = pasteURL(
-            "ftp.ensembl.org",
-            "pub",
-            "release-95",
-            "gff3",
-            "homo_sapiens",
-            "Homo_sapiens.GRCh38.95.gff3.gz",
-            protocol = "ftp"
-        ),
-        level = "transcripts",
-        strict = FALSE
+    # Ensembl GFF --------------------------------------------------------------
+    # Note that GenomicRanges chokes on this file, so warnings in strict mode
+    # are expected.
+    file <- localOrRemoteFile(pasteURL(
+        "ftp.ensembl.org",
+        "pub",
+        "release-95",
+        "gff3",
+        "homo_sapiens",
+        "Homo_sapiens.GRCh38.95.gff3.gz",
+        protocol = "ftp"
+    ))
+
+    suppressWarnings(
+        object <- makeGRangesFromGFF(
+            file = file,
+            level = "genes",
+            .checkAgainstTxDb = TRUE
+        )
+    )
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 58735L)
+
+    suppressWarnings(
+        object <- makeGRangesFromGFF(
+            file = file,
+            level = "transcripts",
+            .checkAgainstTxDb = TRUE
+        )
     )
     expect_s4_class(object, "GRanges")
     expect_identical(length(object), 206601L)
 
-    # GENCODE GTF
+    # GENCODE GTF --------------------------------------------------------------
+    file = localOrRemoteFile(pasteURL(
+        "ftp.ebi.ac.uk",
+        "pub",
+        "databases",
+        "gencode",
+        "Gencode_human",
+        "release_29",
+        "gencode.v29.annotation.gtf.gz",
+        protocol = "ftp"
+    ))
+
     object <- makeGRangesFromGFF(
-        file = pasteURL(
-            "ftp.ebi.ac.uk",
-            "pub",
-            "databases",
-            "gencode",
-            "Gencode_human",
-            "release_29",
-            "gencode.v29.annotation.gtf.gz",
-            protocol = "ftp"
-        ),
+        file = file,
+        level = "genes",
+        .checkAgainstTxDb = TRUE
+    )
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 58721L)
+
+    object <- makeGRangesFromGFF(
+        file = file,
         level = "transcripts",
-        strict = TRUE
+        .checkAgainstTxDb = TRUE
     )
     expect_s4_class(object, "GRanges")
     expect_identical(length(object), 206694L)
 
-    # GENCODE GFF
+    # GENCODE GFF --------------------------------------------------------------
+    file = localOrRemoteFile(pasteURL(
+        "ftp.ebi.ac.uk",
+        "pub",
+        "databases",
+        "gencode",
+        "Gencode_human",
+        "release_29",
+        "gencode.v29.annotation.gff3.gz",
+        protocol = "ftp"
+    ))
 
-    # FIXME Assert check failure.
-    # Error in makeGRangesFromGFF(file = pasteURL("ftp.ebi.ac.uk", "pub", "databases",  :
-    #   Assert failure.
-    # hasNoDuplicates(mcols(gn)[["gene_id"]]) is not TRUE.
+    # GRanges or GRangesList?
+    # FIXME This step is breaking
+    # Error in .checkGRangesAgainstTxDb(gr = out, txdb = txdb) :
+    # Assert failure.
+    # hasNames(gr) is not TRUE.
     # Cause of failure:
-    # mcols(gn)[["gene_id"]] has duplicates at positions 58122, 58123, 58124, 58125, 58126, 58127, 58128, 58129, # 58130, 58131, 58132, 58133, 58134, 58135.....
-    # Calls: makeGRangesFromGFF -> assert
+    #     The names of gr are NULL.
     object <- makeGRangesFromGFF(
-        file = pasteURL(
-            "ftp.ebi.ac.uk",
-            "pub",
-            "databases",
-            "gencode",
-            "Gencode_human",
-            "release_29",
-            "gencode.v29.annotation.gff3.gz",
-            protocol = "ftp"
-        ),
-        level = "transcripts",
-        strict = TRUE
+        file = file,
+        level = "genes",
+        .checkAgainstTxDb = TRUE
     )
 
-    # RefSeq GFF
     object <- makeGRangesFromGFF(
-        file = pasteURL(
-            "ftp.ncbi.nlm.nih.gov",
-            "genomes",
-            "refseq",
-            "vertebrate_mammalian",
-            "Homo_sapiens",
-            "reference",
-            "GCF_000001405.38_GRCh38.p12",
-            "GCF_000001405.38_GRCh38.p12_genomic.gff.gz",
-            protocol = "ftp"
-        )
+        file = file,
+        level = "transcripts",
+        .checkAgainstTxDb = TRUE
+    )
+
+    # RefSeq GFF ---------------------------------------------------------------
+    file <- localOrRemoteFile(pasteURL(
+        "ftp.ncbi.nlm.nih.gov",
+        "genomes",
+        "refseq",
+        "vertebrate_mammalian",
+        "Homo_sapiens",
+        "reference",
+        "GCF_000001405.38_GRCh38.p12",
+        "GCF_000001405.38_GRCh38.p12_genomic.gff.gz",
+        protocol = "ftp"
+    ))
+
+    # GRanges or GRangesList?
+    object <- makeGRangesFromGFF(
+        file = file,
+        level = "genes",
+        .checkAgainstTxDb = TRUE
+    )
+
+    object <- makeGRangesFromGFF(
+        file = file,
+        level = "transcripts",
+        .checkAgainstTxDb = TRUE
     )
 })

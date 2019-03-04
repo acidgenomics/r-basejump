@@ -6,10 +6,10 @@
 \title{Make \code{GRanges} from a GFF/GTF file}
 \usage{
 makeGRangesFromGFF(file, level = c("genes", "transcripts"),
-  strict = FALSE)
+  .checkAgainstTxDb = FALSE)
 
 makeGRangesFromGTF(file, level = c("genes", "transcripts"),
-  strict = FALSE)
+  .checkAgainstTxDb = FALSE)
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -18,15 +18,16 @@ File path.}
 \item{level}{\code{character(1)}.
 Return as genes or transcripts.}
 
-\item{strict}{\code{logical(1)}.
-Strict mode. Generate an internal \code{TxDb} using
-\code{\link[GenomicFeatures:makeTxDbFromGRanges]{GenomicFeatures::makeTxDbFromGRanges()}} and check that the
-\code{\link[IRanges:ranges]{ranges()}}, \code{\link[GenomeInfoDb:seqnames]{seqnames()}}, and
-identifiers defined in \code{\link[base:names]{names()}} are identical. Doesn't work
-for all GFF/GTF files due to some current limitations in the
-GenomicFeatures package, so this is disabled by default. Generally,
-GenomicFeatures parses GTF files better than GFF files. However, it's a
-useful sanity check and should be enabled if possible.}
+\item{.checkAgainstTxDb}{\code{logical(1)}.
+Enable strict mode, intended for development and unit testing only.
+Generate an internal \code{TxDb} using \code{\link[GenomicFeatures:makeTxDbFromGRanges]{GenomicFeatures::makeTxDbFromGRanges()}}
+and check that the \code{\link[IRanges:ranges]{ranges()}},
+\code{\link[GenomeInfoDb:seqnames]{seqnames()}}, and identifiers defined in
+\code{\link[base:names]{names()}} are identical. Doesn't work for all GFF/GTF files
+due to some current limitations in the GenomicFeatures package, so this is
+disabled by default. Generally, GenomicFeatures parses GTF files better
+than GFF files. However, it's a useful sanity check and should be enabled
+if possible.}
 }
 \description{
 Make \code{GRanges} from a GFF/GTF file
@@ -104,7 +105,12 @@ the GENCODE annotation is essentially identical to the Ensembl annotation.
 However, GENCODE handles pseudoautosomal regions (PAR) differently than
 Ensembl. The Ensembl GTF file only includes this annotation once, for
 chromosome X. However, GENCODE GTF/GFF3 files include the annotation in the
-PAR regions of both chromosomes.
+PAR regions of both chromosomes. You'll see these genes contain a "_PAR_Y"
+suffix.
+
+Additionally, GENCODE GFF/GTF files import with a gene identifier containing
+a suffix, which differs slightly from the Ensembl GFF/GTF spec
+(e.g. GENCODE: ENSG00000000003.14; Ensembl: ENSG00000000003).
 
 The \href{https://www.gencodegenes.org/pages/faq.html}{GENCODE FAQ} has additional
 details.
