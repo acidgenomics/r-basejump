@@ -1,5 +1,11 @@
 ## basejump 0.9.12
 
+### Major changes
+
+- `makeGRangesFromGFF`: Reworked internal code, making it more modular. Added
+  initial support for RefSeq GFF3 files. Also improved sanitization and special
+  handling of files from FlyBase and WormBase.
+
 ### Minor changes
 
 - `plotHeatmap` family: Bug fix needed for internal `is.na` call on

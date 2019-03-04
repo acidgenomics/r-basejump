@@ -1,3 +1,29 @@
+# This is the main GRanges final return generator, used by
+# `makeGRangesFromEnsembl()` and `makeGRangesFromGFF()`.
+.makeGRanges <- function(object) {
+    assert(
+        is(object, "GRanges"),
+        hasNames(object)
+    )
+
+    # Minimize the object, removing unnecessary metadata columns.
+    object <- .minimzeGRanges(object)
+
+    # Now we're ready to standardize into basejump conventions.
+    object <- .standardizeGRanges(object)
+
+    # Prepare the metadata.
+    # Slot organism into metadata.
+    object <- .slotOrganism(object)
+    # Ensure object contains prototype metadata.
+    metadata(object) <- c(.prototypeMetadata, metadata(object))
+
+    assert(is(object, "GRanges"))
+    object
+}
+
+
+
 #' Broad Class Definitions
 #'
 #' @author Rory Kirchner, Michael Steinbaugh
@@ -155,49 +181,29 @@
 
 
 
-.makeGRanges <- function(object) {
-    assert(
-        is(object, "GRanges"),
-        hasNames(object)
-    )
+# Note that this intentionally prioritizes transcripts over genes.
+.detectGRangesIDs <- function(object) {
+    assert(is(object, "GRanges"))
+    mcolnames <- colnames(mcols(object))
+    if ("transcriptID" %in% mcolnames) {
+        "transcriptID"
+    } else if ("geneID" %in% mcolnames) {
+        "geneID"
+    } else {
+        stop("Failed to detect ID column.")
+    }
+}
 
-    # Standardize the metadata columns.
+
+
+# This step drops extra columns in `mcols()` and ensures that factor levels get
+# dropped, to reduce memory overhead.
+.minimizeGRanges <- function(object) {
+    assert(is(object, "GRanges"))
     mcols <- mcols(object)
-    # Always return using camel case, even though GFF/GTF files use snake.
-    mcols <- camel(mcols)
-    # Ensure "ID" is always capitalized (e.g. "entrezid").
-    colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
-    # Use `transcript` instead of `tx` consistently.
-    colnames(mcols) <- gsub(
-        pattern = "^tx",
-        replacement = "transcript",
-        x = colnames(mcols)
-    )
     # Remove columns that are all `NA`. This step will remove all
     # transcript-level columns from gene-level ranges.
     mcols <- removeNA(mcols)
-
-    # Warn on missing name (symbol) columns.
-    if (!"geneName" %in% colnames(mcols)) {
-        warning("GRanges does not contain `geneName` in mcols().")
-    }
-    if (
-        "transcriptID" %in% colnames(mcols) &&
-        !"transcriptName" %in% colnames(mcols)
-    ) {
-        warning("GRanges does not contain `transcriptName` in mcols().")
-    }
-
-    # Always use `geneName` instead of `symbol`.
-    # Note that ensembldb output duplicates these.
-    if (all(c("geneName", "symbol") %in% colnames(mcols))) {
-        mcols[["symbol"]] <- NULL
-    } else if ("symbol" %in% colnames(mcols)) {
-        message("Renaming `symbol` column to `geneName` in mcols().")
-        mcols[["geneName"]] <- mcols[["symbol"]]
-        mcols[["symbol"]] <- NULL
-    }
-
     mcols <- lapply(
         X = mcols,
         FUN = function(col) {
@@ -223,20 +229,56 @@
             }
         }
     )
+    # `lapply()` will return as list, so we need to coerce back to DataFrame.
     mcols <- as(mcols, "DataFrame")
     mcols(object) <- mcols
+    object
+}
+
+
+
+# Standardize the GRanges into desired conventions used in basejump package.
+# Note that this step makes GRanges imported via `rtracklayer::import()`
+# incompatible with `GenomicFeatures::makeTxDbFromGRanges()`.
+.standardizeGRanges <- function(object) {
+    assert(is(object, "GRanges"))
+
+    # Standardize the metadata columns.
+    mcols <- mcols(object)
+    # Always return using camel case, even though GFF/GTF files use snake.
+    mcols <- camel(mcols)
+    # Ensure "ID" is always capitalized (e.g. "entrezid").
+    colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
+    # Use `transcript` instead of `tx` consistently.
+    colnames(mcols) <- gsub(
+        pattern = "^tx",
+        replacement = "transcript",
+        x = colnames(mcols)
+    )
+
+    # Warn on missing name (symbol) columns.
+    if (!"geneName" %in% colnames(mcols)) {
+        warning("GRanges does not contain `geneName` in mcols().")
+    }
+    if (
+        "transcriptID" %in% colnames(mcols) &&
+        !"transcriptName" %in% colnames(mcols)
+    ) {
+        warning("GRanges does not contain `transcriptName` in mcols().")
+    }
+
+    # Always use `geneName` instead of `symbol`.
+    # Note that ensembldb output duplicates these.
+    if (all(c("geneName", "symbol") %in% colnames(mcols))) {
+        mcols[["symbol"]] <- NULL
+    } else if ("symbol" %in% colnames(mcols)) {
+        message("Renaming `symbol` column to `geneName` in mcols().")
+        mcols[["geneName"]] <- mcols[["symbol"]]
+        mcols[["symbol"]] <- NULL
+    }
 
     # Require that names match the identifier column.
-    # Use `transcriptID` over `geneID` if defined.
-    assert(areIntersectingSets(
-        x = c("geneID", "transcriptID"),
-        y = colnames(mcols(object))
-    ))
-    if ("transcriptID" %in% colnames(mcols(object))) {
-        idCol <- "transcriptID"
-    } else {
-        idCol <- "geneID"
-    }
+    idCol <- .detectGRangesIDs(object)
     names(object) <- mcols(object)[[idCol]]
 
     # Ensure broad class definitions are included.
@@ -253,12 +295,5 @@
     message(paste0("Arranging by ", idCol, "."))
     object <- object[sort(names(object))]
 
-    # Prepare the metadata.
-    # Slot organism into metadata.
-    object <- .slotOrganism(object)
-    # Ensure object contains prototype metadata.
-    metadata(object) <- c(.prototypeMetadata, metadata(object))
-
-    assert(is(object, "GRanges"))
     object
 }
