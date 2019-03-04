@@ -5,6 +5,9 @@ levels <- c("genes", "transcripts")
 # Minimal ======================================================================
 context("Minimal GFF/GTF file checks")
 
+# Don't run `.checkAgainstTxDb = TRUE` here because it is intended to work only
+# with complete GFF/GTF files.
+
 
 
 # CPU-intensive ================================================================
@@ -49,6 +52,19 @@ with_parameters_test_that(
 
 
 
+# FIXME Another fun unit test error...
+# Error: Test failed: 'Ensembl GFF3 '
+# * Assert failure.
+# identical(x = mcols(transcripts)[["transcript_id"]], y = merge[["transcript_id"]]) is not TRUE.
+# 1: rlang::eval_tidy(code, args)
+# 2: suppressWarnings(object <- makeGRangesFromGFF(file = ensembl_gff3_file,
+#                                                  level = level, .checkAgainstTxDb = TRUE)) at :3
+# 3: withCallingHandlers(expr, warning = function(w) invokeRestart("muffleWarning"))
+# 4: makeGRangesFromGFF(file = ensembl_gff3_file, level = level, .checkAgainstTxDb = TRUE)
+# 5: .mergeGenesIntoTranscripts(transcripts = transcripts, genes = genes) at /data00/home/michael.steinbaugh/git/packages/basejump/R/makeGRangesFromGFF.R:241
+# 6: assert(identical(x = mcols(transcripts)[["transcript_id"]], y = merge[["transcript_id"]])) at /data00/home/michael.steinbaugh#/git/packages/basejump/R/makeGRangesFromGFF.R:378
+
+
 ensembl_gff3_file <- localOrRemoteFile(pasteURL(
     "ftp.ensembl.org",
     "pub",
@@ -63,16 +79,12 @@ ensembl_gff3_file <- localOrRemoteFile(pasteURL(
 # mode here are expected.
 with_parameters_test_that(
     "Ensembl GFF3", {
-        # FIXME The warning suppression method using `muffleRestart` breaks down here.
-        # FIXME Assert check error:
-        # assert(isSubset(names(gr2), names(gr1)))
-        # .checkGRangesAgainstTxDb makeGRangesFromGFF.R:260
-        # assert(isSubset(names(gr2), names(gr1)))
-        # makeGRangesFromGFF.R:949
-        object <- makeGRangesFromGFF(
-            file = ensembl_gff3_file,
-            level = level,
-            .checkAgainstTxDb = TRUE
+        suppressWarnings(
+            object <- makeGRangesFromGFF(
+                file = ensembl_gff3_file,
+                level = level,
+                .checkAgainstTxDb = TRUE
+            )
         )
         expect_s4_class(object, "GRanges")
         expect_identical(length(object), length)
@@ -83,6 +95,8 @@ with_parameters_test_that(
 )
 
 
+
+# FIXME What are the gene/transcript differences between Ensembl and GENCODE?
 
 gencode_gtf_file <- localOrRemoteFile(pasteURL(
     "ftp.ebi.ac.uk",
@@ -95,11 +109,10 @@ gencode_gtf_file <- localOrRemoteFile(pasteURL(
     protocol = "ftp"
 ))
 
-# FIXME What are the gene/transcript differences between Ensembl and GENCODE?
 with_parameters_test_that(
     "GENCODE GTF", {
         object <- makeGRangesFromGFF(
-            file = ensembl_gtf_file,
+            file = gencode_gtf_file,
             level = level,
             .checkAgainstTxDb = TRUE
         )
@@ -112,63 +125,62 @@ with_parameters_test_that(
 
 
 
-test_that("GENCODE GFF3", {
-    file = localOrRemoteFile(pasteURL(
-        "ftp.ebi.ac.uk",
-        "pub",
-        "databases",
-        "gencode",
-        "Gencode_human",
-        "release_29",
-        "gencode.v29.annotation.gff3.gz",
-        protocol = "ftp"
-    ))
+gencode_gff3_file = localOrRemoteFile(pasteURL(
+    "ftp.ebi.ac.uk",
+    "pub",
+    "databases",
+    "gencode",
+    "Gencode_human",
+    "release_29",
+    "gencode.v29.annotation.gff3.gz",
+    protocol = "ftp"
+))
 
-    # GRanges or GRangesList?
-    # FIXME This step is breaking
-    # Error in .checkGRangesAgainstTxDb(gr = out, txdb = txdb) :
-    # Assert failure.
-    # hasNames(gr) is not TRUE.
-    # Cause of failure:
-    #     The names of gr are NULL.
-    object <- makeGRangesFromGFF(
-        file = file,
-        level = "genes",
-        .checkAgainstTxDb = TRUE
-    )
+with_parameters_test_that(
+    "GENCODE GFF3", {
+        object <- makeGRangesFromGFF(
+            file = gencode_gff3_file,
+            level = level,
+            .checkAgainstTxDb = TRUE
+        )
 
-    object <- makeGRangesFromGFF(
-        file = file,
-        level = "transcripts",
-        .checkAgainstTxDb = TRUE
-    )
-})
+        # FIXME
+        print(length(object)
+
+        expect_s4_class(object, "GRanges")
+        # expect_identical(length(object), length)
+    },
+    level = levels
+    # length = c(58721L, 206694L)
+)
 
 
 
-test_that("RefSeq GFF3", {
-    file <- localOrRemoteFile(pasteURL(
-        "ftp.ncbi.nlm.nih.gov",
-        "genomes",
-        "refseq",
-        "vertebrate_mammalian",
-        "Homo_sapiens",
-        "reference",
-        "GCF_000001405.38_GRCh38.p12",
-        "GCF_000001405.38_GRCh38.p12_genomic.gff.gz",
-        protocol = "ftp"
-    ))
+refseq_gff3_file <- localOrRemoteFile(pasteURL(
+    "ftp.ncbi.nlm.nih.gov",
+    "genomes",
+    "refseq",
+    "vertebrate_mammalian",
+    "Homo_sapiens",
+    "reference",
+    "GCF_000001405.38_GRCh38.p12",
+    "GCF_000001405.38_GRCh38.p12_genomic.gff.gz",
+    protocol = "ftp"
+))
 
-    # GRanges or GRangesList?
-    object <- makeGRangesFromGFF(
-        file = file,
-        level = "genes",
-        .checkAgainstTxDb = TRUE
-    )
+with_parameters_test_that(
+    "RefSeq GFF3", {
+        object <- makeGRangesFromGFF(
+            file = refseq_gff3_file,
+            level = level,
+            .checkAgainstTxDb = TRUE
+        )
+        expect_s4_class(object, "GRanges")
 
-    object <- makeGRangesFromGFF(
-        file = file,
-        level = "transcripts",
-        .checkAgainstTxDb = TRUE
-    )
-})
+        print(length(object))
+        # expect_identical(length(object), length)
+    },
+    level = levels,
+    # FIXME
+    # length = c(58721L, 206694L)
+)

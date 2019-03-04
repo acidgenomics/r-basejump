@@ -1,3 +1,8 @@
+# Note that case sensitivity in `mcols()` is useful for initial checks, so
+# don't immediately apply `camel()` after `import()` call.
+
+
+
 #' Make `GRanges` from a GFF/GTF file
 #'
 #' @details
@@ -353,18 +358,26 @@ makeGRangesFromGFF <- function(
 
 
 # FIXME Can we consolidate this with `makeGRangesFromEnsembl()`?
+# FIXME I think this step may mess up from the ensembldb output, which is camel?
 # Merge the gene-level annotations (`geneName`, `geneBiotype`) into a
 # transcript-level GRanges object.
 .mergeGenesIntoTranscripts <- function(transcripts, genes) {
     message("Merging gene-level annotations into transcript-level object.")
     assert(
         is(transcripts, "GRanges"),
-        is(genes, "GRanges")
+        is(genes, "GRanges"),
+        hasNames(transcripts),
+        isSubset("transcript_id", colnames(mcols(transcripts))),
+        # Don't proceed unless we have `gene_id` column to use for merge.
+        isSubset("gene_id", colnames(mcols(transcripts))),
+        isSubset("gene_id", colnames(mcols(genes)))
     )
     geneCols <- setdiff(
         x = colnames(mcols(genes)),
         y = colnames(mcols(transcripts))
     )
+    # Only attempt the merge if there's useful additional metadata to include.
+    # Note that base `merge()` can reorder rows, so be careful here.
     if (length(geneCols) > 0L) {
         geneCols <- c("gene_id", geneCols)
         merge <- merge(
@@ -373,8 +386,13 @@ makeGRangesFromGFF <- function(
             all.x = TRUE,
             by = "gene_id"
         )
+        # Ensure that we're calling `S4Vectors::merge()`, not `base::merge()`.
+        assert(is(merge, "DataFrame"))
+        # The merge step will drop row names, so we need to reassign.
         rownames(merge) <- merge[["transcript_id"]]
-        merge <- merge[sort(rownames(merge)), , drop = FALSE]
+        # Reorder to match the original transcripts object.
+        # Don't assume this is alphabetically sorted.
+        merge <- merge[names(transcripts), , drop = FALSE]
         assert(identical(
             x = mcols(transcripts)[["transcript_id"]],
             y = merge[["transcript_id"]]
@@ -990,14 +1008,14 @@ makeGRangesFromGFF <- function(
             sum(diff, na.rm = TRUE),
             " range mismatches detected in TxDb.", "\n",
             "Showing GRanges mismatch comparison (first 10).", "\n\n",
-            "(1) GFF, via rtracklayer::import():", "\n",
+            "(1) basejump:", "\n",
             printString(r1[which]), "\n\n",
-            "(2) TxDb, via GenomicFeatures::makeTxDbFromGRanges():", "\n",
+            "(2) GenomicFeatures:", "\n",
             printString(r2[which]), "\n\n",
             "If the ranges in (1) are incorrect, please file an issue:", "\n",
-            "https://github.com/steinbaugh/basejump/issues", "\n\n",
+            "  https://github.com/steinbaugh/basejump/issues", "\n",
             "If the ranges in (2) are incorrect, please file an issue:", "\n",
-            "https://github.com/Bioconductor/GenomicFeatures/issues"
+            "  https://github.com/Bioconductor/GenomicFeatures/issues"
         ))
     }
     if (!identical(seqnames(gr1), seqnames(gr2))) {
