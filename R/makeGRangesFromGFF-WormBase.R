@@ -9,23 +9,36 @@
 
 
 
+# WormBase identifier fix may be needed. WormBase GTF currently imports somewhat
+# malformed, and the gene identifiers require additional sanitization to return
+# correctly. Some garbage rows containing "Gene:" or "Transcript:" will remain.
+# Currently, we're warning the user when this occurs, and not removing.
+.detectWormBaseGTFGarbage <- function(object) {
+    genes <- mcols(object)[["gene_id"]]
+    garbage <- grep(pattern = ":", x = genes, value = TRUE)
+    if (hasLength(garbage)) {
+        warning(paste(
+            length(garbage), "malformed identifiers:",
+            toString(sort(garbage), width = 200L)
+        ))
+    }
+    invisible()
+}
+
+
+
 .makeGenesFromWormBaseGTF <- function(object) {
     assert(is(object, "GRanges"))
     object <- .makeGenesFromEnsemblGTF(object)
-
-    # WormBase identifier fix. WormBase GTF currently imports somewhat
-    # malformed, and the gene identifiers require additional sanitization to
-    # return correctly. Some garbage rows containing "Gene:" or "Transcript:"
-    # will remain. We need to drop these before proceeding.
-    keep <- !grepl(pattern = ":", x = mcols(object)[["gene_id"]])
-    object <- object[keep]
-
+    .detectWormBaseGTFGarbage(object)
     object
 }
 
 
 
-# Note that this will contain garbage "Gene:" and "Transcript:" rows in the
-# "gene_id" column, but "transcript_id" is unique. So keeping them currently.
-# Might need to reevaluate this step. Check against corresponding ensembldb.
-.makeTranscriptsFromWormBaseGTF <- .makeTranscriptsFromEnsemblGTF
+.makeTranscriptsFromWormBaseGTF <- function(object) {
+    assert(is(object, "GRanges"))
+    object <- .makeTranscriptsFromEnsemblGTF(object)
+    .detectWormBaseGTFGarbage(object)
+    object
+}
