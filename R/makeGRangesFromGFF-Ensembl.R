@@ -29,37 +29,10 @@
 
 
 
-# FIXME Rethink the Parent, biotype approach here. Make it more general.
+# Note that call upstream in `.makeGenesFromGFF()` will prepare the rows
+# properly already, by filtering aganist `gene_id` and `transcript_id`.
 .makeGenesFromEnsemblGFF3 <- function(object) {
     assert(is(object, "GRanges"))
-
-    # FIXME I think this step is unnecessary.
-    # Drop rows that contain a parent element.
-    keep <- vapply(
-        X = mcols(object)[["Parent"]],
-        FUN = function(x) {
-            identical(x, character(0))
-        },
-        FUN.VALUE = logical(1L)
-    )
-    object <- object[keep]
-
-    # Note that "gene" type alone doesn't return all expected identifiers
-    # for Ensembl GFF3, but it works for Ensembl GTF.
-    keep <- grepl(
-        pattern = paste(
-            c(
-                "^gene$",
-                "^pseudogene$",
-                "_gene$",
-                "^bidirectional_promoter_lncRNA$"  # e.g. ENSG00000176236
-            ),
-            collapse = "|"
-        ),
-        x = mcols(object)[["type"]],
-        ignore.case = TRUE
-    )
-    object <- object[keep]
 
     # Assign `gene_name` from `Name` column.
     assert(
