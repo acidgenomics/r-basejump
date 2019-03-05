@@ -173,9 +173,6 @@ makeGRangesFromGFF <- function(
     # Import -------------------------------------------------------------------
     # This step uses `rtracklayer::import()` internally.
     object <- import(file)
-    # Slot the file path into metadata.
-    # FIXME Update brio to do this automatically.
-    # Then this line is safe to remove.
     metadata(object)[["file"]] <- file
     # Slot the source (e.g. Ensembl) and type (e.g. GTF) into `metadata()`.
     object <- .slotGFFDetectInfo(object)
@@ -288,8 +285,11 @@ makeGRangesFromGFF <- function(
     } else if (
         any(grepl(pattern = "RefSeq", x = source, ignore.case = FALSE))
     ) {
-        # FIXME Remove this once we've added enough unit testing.
-        warning("RefSeq support is still experimental.")
+        warning(paste(
+            "RefSeq support is experimental.",
+            "Bioconductor has tighter integration and support for Ensembl.",
+            sep = "\n"
+        ))
         "RefSeq"
     } else if (
         # e.g. hg38_knownGene
