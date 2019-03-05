@@ -30,13 +30,15 @@
 #'
 #' Currently [makeGRangesFromGFF()] supports genomes from these sources:
 #'
-#' - Ensembl: GTF, GFF3.
-#' - GENCODE: GTF, GFF3.
-#' - RefSeq: GFF3.
-#' - FlyBase: GTF. GFF3 not supported.
-#' - WormBase: GTF. GFF3 not supported.
-#'
-#' UCSC support will be added in a future release.
+#' \tabular{lrrl}{
+#'            \tab   GTF \tab  GFF3 \tab                                     \cr
+#'   Ensembl  \tab  TRUE \tab  TRUE \tab Also available via ensembldb.       \cr
+#'   GENCODE  \tab  TRUE \tab  TRUE \tab Similar to Ensembl; duplicate PAR_Y.\cr
+#'   RefSeq   \tab    NA \tab  TRUE \tab Experimental support.               \cr
+#'   UCSC     \tab FALSE \tab FALSE \tab Use pre-built Bioconductor packages.\cr
+#'   FlyBase  \tab  TRUE \tab FALSE \tab Newer than Ensembl.                 \cr
+#'   WormBase \tab  TRUE \tab FALSE \tab Very similar to Ensembl.            \cr
+#' }
 #'
 #' @section Ensembl:
 #'
