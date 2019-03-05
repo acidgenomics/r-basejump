@@ -337,16 +337,21 @@ wormbase_gtf_file <- localOrRemoteFile(pasteURL(
     "pub",
     "wormbase",
     "releases",
-    "WS267",
+    "WS268",
     "species",
     "c_elegans",
     "PRJNA13758",
-    "c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz",
+    "c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz",
     protocol = "ftp"
 ))
-wormbase_lengths <- c(47169L, 0L)
+wormbase_lengths <- c(47169L, 61388L)
 
 # Expecting warnings about broad class and GenomicFeatures dropping transcripts.
+
+# FIXME There seems to be an issue with WormBase GTF.
+# GRanges does not contain `geneName` in mcols().
+# GRanges does not contain `transcriptName` in mcols().
+# Is this due to the merge step failing because of identifier garbage?
 with_parameters_test_that(
     "Wormbase GTF", {
         suppressWarnings(

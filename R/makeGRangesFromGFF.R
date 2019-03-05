@@ -396,7 +396,9 @@ makeGRangesFromGFF <- function(
     assert(
         is(transcripts, "GRanges"),
         is(genes, "GRanges"),
+        # Note that `hasValidNames()` will error on WormBase transcripts.
         hasNames(transcripts),
+        hasNames(genes),
         isSubset("transcript_id", colnames(mcols(transcripts))),
         identical(names(transcripts), mcols(transcripts)[["transcript_id"]]),
         # Don't proceed unless we have `gene_id` column to use for merge.
