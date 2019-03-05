@@ -124,7 +124,7 @@
 #' - FlyBase GTF:\cr
 #'   ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
 #' - WormBase GTF:\cr
-#'   ftp://ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz
+#'   ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz
 #'
 #' @export
 #' @inheritParams params
@@ -172,7 +172,6 @@ makeGRangesFromGFF <- function(
     object <- import(file)
     # Slot the source (e.g. Ensembl) and type (e.g. GTF) into `metadata()`.
     object <- .slotGFFDetectInfo(object)
-
     # Pull detection strings from GRanges `metadata()`.
     detect <- metadata(object)[["detect"]]
     assert(is.character(detect))
@@ -219,15 +218,67 @@ makeGRangesFromGFF <- function(
     # Genes --------------------------------------------------------------------
     # `makeGRangesFromGFF()` attempts to always returns gene-level metadata,
     # even when transcripts are requested. We'll merge this object into the
-    # transcript-level GRanges below, if necessary.
-    genes <- .makeGenesFromGFF(object)
+    # transcript-level GRanges below, when possible.
+    genes <- object
+
+    # Drop any rows that aren't gene specific.
+    genes <- genes[!is.na(mcols(genes)[["gene_id"]])]
+    genes <- genes[is.na(mcols(genes)[["transcript_id"]])]
+    assert(hasLength(genes))
+
+    if (source == "Ensembl" && type == "GFF") {
+        genes <- .makeGenesFromEnsemblGFF3(genes)
+    } else if (source == "Ensembl" && type == "GTF") {
+        genes <- .makeGenesFromEnsemblGTF(genes)
+    } else if (source == "FlyBase" && type == "GTF") {
+        genes <- .makeGenesFromFlyBaseGTF(genes)
+    } else if (source == "GENCODE" && type == "GFF") {
+        genes <- .makeGenesFromGencodeGFF3(genes)
+    } else if (source == "GENCODE" && type == "GTF") {
+        genes <- .makeGenesFromGencodeGTF(genes)
+    } else if (source == "RefSeq" && type == "GFF") {
+        genes <- .makeGenesFromRefSeqGFF3(genes)
+    } else if (source == "WormBase" && type == "GTF") {
+        genes <- .makeGenesFromWormBaseGTF(genes)
+    } else {
+        stop("Unsupported GFF file format.")
+    }
+
+    names(genes) <- mcols(genes)[["gene_id"]]
+    metadata(genes)[["level"]] <- "genes"
+
     if (level == "genes") {
         out <- genes
     }
 
     # Transcripts --------------------------------------------------------------
     if (level == "transcripts") {
-        transcripts <- .makeTranscriptsFromGFF(object)
+        transcripts <- object
+        transcripts <-
+            transcripts[!is.na(mcols(transcripts)[["transcript_id"]])]
+        assert(hasLength(transcripts))
+
+        if (source == "Ensembl" && type == "GFF") {
+            transcripts <- .makeTranscriptsFromEnsemblGFF3(transcripts)
+        } else if (source == "Ensembl" && type == "GTF") {
+            transcripts <- .makeTranscriptsFromEnsemblGTF(transcripts)
+        } else if (source == "FlyBase" && type == "GTF") {
+            transcripts <- .makeTranscriptsFromFlyBaseGTF(transcripts)
+        } else if (source == "GENCODE" && type == "GFF") {
+            transcripts <- .makeTranscriptsFromGencodeGFF3(transcripts)
+        } else if (source == "GENCODE" && type == "GTF") {
+            transcripts <- .makeTranscriptsFromGencodeGTF(transcripts)
+        } else if (source == "RefSeq" && type == "GFF") {
+            transcripts <- .makeTranscriptsFromRefSeqGFF3(transcripts)
+        } else if (source == "WormBase" && type == "GTF") {
+            transcripts <- .makeTranscriptsFromWormBaseGTF(transcripts)
+        } else {
+            stop("Unsupported GFF file format.")
+        }
+
+        names(transcripts) <- mcols(transcripts)[["transcript_id"]]
+        metadata(transcripts)[["level"]] <- "transcripts"
+
         if (source == "RefSeq") {
             message("Skipping gene metadata merge for RefSeq transcripts.")
             # Skip gene-level metadata merge for RefSeq transcripts.
@@ -338,121 +389,6 @@ makeGRangesFromGFF <- function(
 
 
 
-# Remove uninformative metadata columns from GFF3 before return.
-.minimizeGFF3 <- function(object) {
-    assert(is(object, "GRanges"))
-    mcols <- mcols(object)
-    mcolnames <- colnames(mcols)
-    blacklist <- c(
-        "Alias",
-        "ID",
-        "Name",
-        "Parent",
-        "biotype"
-    )
-    mcolnames <- setdiff(mcolnames, blacklist)
-    mcols <- mcols[, mcolnames, drop = FALSE]
-    mcols(object) <- mcols
-    object
-}
-
-
-
-.slotGFFDetectInfo <- function(object) {
-    source <- .detectGFFSource(object)
-    type <- .detectGFFType(object)
-    message(paste(source, type, "detected."))
-    metadata(object)[["detect"]] <- c(
-        source = source,
-        type = type
-    )
-    object
-}
-
-
-
-# Parser pass-through ==========================================================
-# This is the main constructor function for gene-level GRanges from GFF/GTF.
-# Including txdb passthrough here for strict mode checks.
-.makeGenesFromGFF <- function(object) {
-    assert(
-        is(object, "GRanges"),
-        isSubset("detect", names(metadata(object))),
-        isSubset(c("gene_id", "transcript_id"), colnames(mcols(object)))
-    )
-    type <- metadata(object)[["detect"]][["type"]]
-    source <- metadata(object)[["detect"]][["source"]]
-
-    # Drop any rows that aren't gene specific.
-    object <- object[!is.na(mcols(object)[["gene_id"]])]
-    object <- object[is.na(mcols(object)[["transcript_id"]])]
-    assert(hasLength(object))
-
-    if (source == "Ensembl" && type == "GFF") {
-        object <- .makeGenesFromEnsemblGFF3(object)
-    } else if (source == "Ensembl" && type == "GTF") {
-        object <- .makeGenesFromEnsemblGTF(object)
-    } else if (source == "FlyBase" && type == "GTF") {
-        object <- .makeGenesFromFlyBaseGTF(object)
-    } else if (source == "GENCODE" && type == "GFF") {
-        object <- .makeGenesFromGencodeGFF3(object)
-    } else if (source == "GENCODE" && type == "GTF") {
-        object <- .makeGenesFromGencodeGTF(object)
-    } else if (source == "RefSeq" && type == "GFF") {
-        object <- .makeGenesFromRefSeqGFF3(object)
-    } else if (source == "WormBase" && type == "GTF") {
-        object <- .makeGenesFromWormBaseGTF(object)
-    } else {
-        stop("Unsupported GFF file format.")
-    }
-
-    names(object) <- mcols(object)[["gene_id"]]
-    metadata(object)[["level"]] <- "genes"
-
-    object
-}
-
-
-
-# This is the main transcript-level GRanges generator.
-.makeTranscriptsFromGFF <- function(object) {
-    assert(
-        is(object, "GRanges"),
-        isSubset("detect", names(metadata(object))),
-        isSubset("transcript_id", colnames(mcols(object)))
-    )
-    type <- metadata(object)[["detect"]][["type"]]
-    source <- metadata(object)[["detect"]][["source"]]
-
-    object <- object[!is.na(mcols(object)[["transcript_id"]])]
-    assert(hasLength(object))
-
-    if (source == "Ensembl" && type == "GFF") {
-        object <- .makeTranscriptsFromEnsemblGFF3(object)
-    } else if (source == "Ensembl" && type == "GTF") {
-        object <- .makeTranscriptsFromEnsemblGTF(object)
-    } else if (source == "FlyBase" && type == "GTF") {
-        object <- .makeTranscriptsFromFlyBaseGTF(object)
-    } else if (source == "GENCODE" && type == "GFF") {
-        object <- .makeTranscriptsFromGencodeGFF3(object)
-    } else if (source == "GENCODE" && type == "GTF") {
-        object <- .makeTranscriptsFromGencodeGTF(object)
-    } else if (source == "RefSeq" && type == "GFF") {
-        object <- .makeTranscriptsFromRefSeqGFF3(object)
-    } else if (source == "WormBase" && type == "GTF") {
-        object <- .makeTranscriptsFromWormBaseGTF(object)
-    } else {
-        stop("Unsupported GFF file format.")
-    }
-
-    names(object) <- mcols(object)[["transcript_id"]]
-    metadata(object)[["level"]] <- "transcripts"
-
-    object
-}
-
-
-
 # Merge the gene-level annotations (`geneName`, `geneBiotype`) into a
 # transcript-level GRanges object.
 .mergeGenesIntoTranscripts <- function(transcripts, genes) {
@@ -495,6 +431,39 @@ makeGRangesFromGFF <- function(
         mcols(transcripts) <- merge
     }
     transcripts
+}
+
+
+
+# Remove uninformative metadata columns from GFF3 before return.
+.minimizeGFF3 <- function(object) {
+    assert(is(object, "GRanges"))
+    mcols <- mcols(object)
+    mcolnames <- colnames(mcols)
+    blacklist <- c(
+        "Alias",
+        "ID",
+        "Name",
+        "Parent",
+        "biotype"
+    )
+    mcolnames <- setdiff(mcolnames, blacklist)
+    mcols <- mcols[, mcolnames, drop = FALSE]
+    mcols(object) <- mcols
+    object
+}
+
+
+
+.slotGFFDetectInfo <- function(object) {
+    source <- .detectGFFSource(object)
+    type <- .detectGFFType(object)
+    message(paste(source, type, "detected."))
+    metadata(object)[["detect"]] <- c(
+        source = source,
+        type = type
+    )
+    object
 }
 
 
@@ -683,10 +652,7 @@ makeGRangesFromGFF <- function(
 .makeTxDbFromGFF <- function(object) {
     assert(
         is(object, "GRanges"),
-        isSubset(
-            x = c("detect", "file"),
-            y = names(metadata(object))
-        )
+        isSubset("detect", names(metadata(object)))
     )
 
     # Get stashed metadata values.
