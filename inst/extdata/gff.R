@@ -24,7 +24,7 @@ download.file(
 )
 gunzip("ensembl.gtf.gz", remove = FALSE, overwrite = TRUE)
 # Note that this manual cutoff can create issues with TxDb checks.
-system("head -n 100 ensembl.gtf > ensembl_head.gtf")
+system("head -n 1000 ensembl.gtf > ensembl_head.gtf")
 file.rename("ensembl_head.gtf", "ensembl.gtf")
 gzip("ensembl.gtf", overwrite = TRUE)
 
@@ -44,7 +44,7 @@ download.file(
     destfile = "ensembl.gff3.gz"
 )
 gunzip("ensembl.gff3.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 ensembl.gff3 > ensembl_head.gff3")
+system("head -n 1000 ensembl.gff3 > ensembl_head.gff3")
 file.rename("ensembl_head.gff3", "ensembl.gff3")
 gzip("ensembl.gff3", overwrite = TRUE)
 
@@ -65,7 +65,7 @@ download.file(
     destfile = "gencode.gtf.gz"
 )
 gunzip("gencode.gtf.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 gencode.gtf > gencode_head.gtf")
+system("head -n 1000 gencode.gtf > gencode_head.gtf")
 file.rename("gencode_head.gtf", "gencode.gtf")
 gzip("gencode.gtf", overwrite = TRUE)
 
@@ -86,7 +86,7 @@ download.file(
     destfile = "gencode.gff3.gz"
 )
 gunzip("gencode.gff3.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 gencode.gff3 > gencode_head.gff3")
+system("head -n 1000 gencode.gff3 > gencode_head.gff3")
 file.rename("gencode_head.gff3", "gencode.gff3")
 gzip("gencode.gff3", overwrite = TRUE)
 
@@ -109,7 +109,7 @@ download.file(
     destfile = "refseq.gff.gz"
 )
 gunzip("refseq.gff.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 refseq.gff > refseq_head.gff")
+system("head -n 1000 refseq.gff > refseq_head.gff")
 file.rename("refseq_head.gff", "refseq.gff")
 gzip("refseq.gff", overwrite = TRUE)
 
@@ -129,7 +129,7 @@ download.file(
     destfile = "flybase.gtf.gz"
 )
 gunzip("flybase.gtf.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 flybase.gtf > flybase_head.gtf")
+system("head -n 1000 flybase.gtf > flybase_head.gtf")
 file.rename("flybase_head.gtf", "flybase.gtf")
 gzip("flybase.gtf", overwrite = TRUE)
 
@@ -152,6 +152,6 @@ download.file(
     destfile = "wormbase.gtf.gz"
 )
 gunzip("wormbase.gtf.gz", remove = FALSE, overwrite = TRUE)
-system("head -n 100 wormbase.gtf > wormbase_head.gtf")
+system("head -n 1000 wormbase.gtf > wormbase_head.gtf")
 file.rename("wormbase_head.gtf", "wormbase.gtf")
 gzip("wormbase.gtf", overwrite = TRUE)
