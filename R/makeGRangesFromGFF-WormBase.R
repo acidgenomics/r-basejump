@@ -13,16 +13,20 @@
 # malformed, and the gene identifiers require additional sanitization to return
 # correctly. Some garbage rows containing "Gene:" or "Transcript:" will remain.
 # Currently, we're warning the user when this occurs, and not removing.
-.detectWormBaseGTFGarbage <- function(object) {
-    genes <- mcols(object)[["gene_id"]]
-    garbage <- grep(pattern = ":", x = genes, value = TRUE)
-    if (hasLength(garbage)) {
-        warning(paste(
-            length(garbage), "malformed identifiers:",
-            toString(sort(garbage), width = 200L)
+.removeWormBaseGTFGarbage <- function(object, idCol) {
+    idCol <- match.arg(idCol, choices = c("gene_id", "transcript_id"))
+    ids <- mcols(object)[[idCol]]
+    drop <- grepl(pattern = ":", x = ids)
+    if (any(drop)) {
+        garbage <- ids[which(drop)]
+        warning(paste0(
+            "Removed ", length(garbage), " malformed ", idCol, ": ",
+            toString(sort(garbage), width = 300L)
         ))
+        keep <- !drop
+        object <- object[keep]
     }
-    invisible()
+    object
 }
 
 
@@ -30,7 +34,7 @@
 .makeGenesFromWormBaseGTF <- function(object) {
     assert(is(object, "GRanges"))
     object <- .makeGenesFromEnsemblGTF(object)
-    .detectWormBaseGTFGarbage(object)
+    object <- .removeWormBaseGTFGarbage(object, idCol = "gene_id")
     object
 }
 
@@ -39,6 +43,6 @@
 .makeTranscriptsFromWormBaseGTF <- function(object) {
     assert(is(object, "GRanges"))
     object <- .makeTranscriptsFromEnsemblGTF(object)
-    .detectWormBaseGTFGarbage(object)
+    object <- .removeWormBaseGTFGarbage(object, idCol = "transcript_id")
     object
 }

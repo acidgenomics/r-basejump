@@ -50,7 +50,7 @@
 #'   areSameLength areSetEqual assert false getNameInParent hasDims
 #'   hasDuplicates hasInternet hasLength hasNames hasNoDuplicates
 #'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
-#'   isADirectory  isAny isCharacter isFlag isGGScale isHeaderLevel
+#'   hasValidNames isADirectory isAny isCharacter isFlag isGGScale isHeaderLevel
 #'   isHexColorFunction isInClosedRange isInRange isInt isMatchingRegex
 #'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
 #'   isSubset isSuperset matchesUniqueGeneNames validNames validate
