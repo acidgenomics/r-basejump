@@ -1,5 +1,6 @@
-# Note that case sensitivity in `mcols()` is useful for initial checks, so
-# don't immediately apply `camel()` after `import()` call.
+# Take care to not convert column names into camel case until the final
+# `.makeGRanges()` return call. Many GFF parsing utilites, including
+# GenomicFeatures, expect column names to be unmodified.
 
 
 
@@ -289,7 +290,7 @@ makeGRangesFromGFF <- function(
     ) {
         warning(paste(
             "RefSeq support is experimental.",
-            "Bioconductor has tighter integration and support for Ensembl.",
+            "Bioconductor has tighter integration with Ensembl.",
             sep = "\n"
         ))
         "RefSeq"
@@ -801,8 +802,53 @@ makeGRangesFromGFF <- function(
 
 # FIXME Inform the user about number of PAR genes detected.
 .makeTranscriptsFromGencodeGFF3 <- function(object, singlePAR = TRUE) {
-    # FIXME
+    # FIXME Remove this once we're good
     stop("NOT SUPPORTED YET.")
+
+    # Remove duplicate PARs on Y chromosome.
+    if (isTRUE(singlePAR)) {
+        object <- .singlePAR(object, idCol = "transcript_id")
+    }
+
+
+
+
+    assert(is(object, "GRanges"))
+
+    # Assign `transcript_name` from `Name` column.
+    assert(
+        isSubset("Name", colnames(mcols(object))),
+        areDisjointSets("transcript_name", colnames(mcols(object)))
+    )
+    mcols(object)[["transcript_name"]] <- mcols(object)[["Name"]]
+    mcols(object)[["Name"]] <- NULL
+
+    # Assign `transcript_biotype`.
+    assert(
+        isSubset("biotype", colnames(mcols(object))),
+        areDisjointSets("transcript_biotype", colnames(mcols(object)))
+    )
+    mcols(object)[["transcript_biotype"]] <- mcols(object)[["biotype"]]
+    mcols(object)[["biotype"]] <- NULL
+
+    # Assign `gene_id` from `Parent`.
+    assert(
+        isSubset("Parent", colnames(mcols(object))),
+        all(grepl("^gene:", mcols(object)[["Parent"]]))
+    )
+    mcols(object)[["gene_id"]] <- as.character(mcols(object)[["Parent"]])
+    mcols(object)[["gene_id"]] <- gsub(
+        pattern = "^gene:",
+        replacement = "",
+        x = mcols(object)[["gene_id"]]
+    )
+
+    # Remove extra columns.
+    mcols(object)[["Alias"]] <- NULL
+    mcols(object)[["ID"]] <- NULL
+    mcols(object)[["Parent"]] <- NULL
+
+    object
 }
 
 
