@@ -1,4 +1,11 @@
 # WormBase
+#
+# GTF
+#>  [1] "source"             "type"               "score"
+#>  [4] "phase"              "gene_id"            "gene_source"
+#>  [7] "gene_biotype"       "transcript_id"      "transcript_source"
+#> [10] "transcript_biotype" "exon_number"        "exon_id"
+#> [13] "protein_id"
 
 
 

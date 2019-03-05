@@ -198,7 +198,9 @@ makeGRangesFromGFF <- function(
 
     # Standardize --------------------------------------------------------------
     # Run this step after TxDb generation. Ensembl, GENCODE, and WormBase files
-    # follow expected (Ensembl-like) naming conventions.
+    # follow expected (Ensembl-like) naming conventions. Note that this step
+    # needs to be run prior to `.makeGenesFromGFF()` and/or
+    # `.makeTranscriptsFromGFF()` calls (see below).
     if (source == "FlyBase") {
         object <- .standardizeFlyBaseToEnsembl(object)
     } else if (source == "GENCODE") {
@@ -209,6 +211,7 @@ makeGRangesFromGFF <- function(
     mcolnames <- colnames(mcols(object))
     assert(
         isSubset(c("gene_id", "transcript_id"), mcolnames),
+        # This should be renamed to `gene_biotype`, if defined.
         areDisjointSets("gene_type", mcolnames)
     )
     rm(mcolnames)
@@ -335,22 +338,21 @@ makeGRangesFromGFF <- function(
 
 
 
+# Remove uninformative metadata columns from GFF3 before return.
 .minimizeGFF3 <- function(object) {
     assert(is(object, "GRanges"))
     mcols <- mcols(object)
     mcolnames <- colnames(mcols)
-
-    # Prior to return, remove columns starting with a capital letter.
-    # This includes Alias, ID, Name, Parent.
-    keep <- !grepl(pattern = "^[A-Z]", x = mcolnames, ignore.case = FALSE)
-
-    # Remove general "biotype" column, if it exists. Applies to Ensembl GFF3.
-    keep <- setdiff(keep, "biotype")
-
-    # Drop crufty columns and reassign back into object.
-    mcols <- mcols[, keep, drop = FALSE]
+    blacklist <- c(
+        "Alias",
+        "ID",
+        "Name",
+        "Parent",
+        "biotype"
+    )
+    mcolnames <- setdiff(mcolnames, blacklist)
+    mcols <- mcols[, mcolnames, drop = FALSE]
     mcols(object) <- mcols
-
     object
 }
 
@@ -450,8 +452,6 @@ makeGRangesFromGFF <- function(
 }
 
 
-
-# FIXME Can we consolidate this with `makeGRangesFromEnsembl()`?
 
 # Merge the gene-level annotations (`geneName`, `geneBiotype`) into a
 # transcript-level GRanges object.

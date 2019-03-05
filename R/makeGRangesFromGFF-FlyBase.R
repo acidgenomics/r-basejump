@@ -1,4 +1,9 @@
 # FlyBase
+#
+# GTF
+#> [1] "source"            "type"              "score"
+#> [4] "phase"             "gene_id"           "gene_symbol"
+#> [7] "transcript_id"     "transcript_symbol" "#"
 
 
 
