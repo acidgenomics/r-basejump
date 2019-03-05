@@ -5,9 +5,11 @@
 
 # Refer to koopa `download-gtf.sh` for URLs.
 
+# Set the working directory to script path.
 
 
-# Ensembl GRCh38 GTF
+
+# Ensembl GRCh38 GTF ====
 download.file(
     url = pasteURL(
         "ftp.ensembl.org",
@@ -28,7 +30,7 @@ gzip("ensembl.gtf", overwrite = TRUE)
 
 
 
-# Ensembl GRCh38 GFF
+# Ensembl GRCh38 GFF3 ====
 download.file(
     url = pasteURL(
         "ftp.ensembl.org",
@@ -48,7 +50,7 @@ gzip("ensembl.gff3", overwrite = TRUE)
 
 
 
-# GENCODE GRCh38 GTF
+# GENCODE GRCh38 GTF ====
 download.file(
     url = pasteURL(
         "ftp.ebi.ac.uk",
@@ -69,7 +71,7 @@ gzip("gencode.gtf", overwrite = TRUE)
 
 
 
-# GENCODE GRCh38 GFF
+# GENCODE GRCh38 GFF3 ====
 download.file(
     url = pasteURL(
         "ftp.ebi.ac.uk",
@@ -91,7 +93,7 @@ gzip("gencode.gff3", overwrite = TRUE)
 
 
 
-# RefSeq GRCh38 GFF
+# RefSeq GRCh38 GFF3 ====
 download.file(
     url = pasteURL(
         "ftp.ncbi.nlm.nih.gov",
@@ -113,7 +115,7 @@ gzip("refseq.gff", overwrite = TRUE)
 
 
 
-# FlyBase GTF
+# FlyBase GTF ====
 download.file(
     url = pasteURL(
         "ftp.flybase.net",
@@ -133,7 +135,7 @@ gzip("flybase.gtf", overwrite = TRUE)
 
 
 
-# WormBase GTF
+# WormBase GTF ====
 download.file(
     url = pasteURL(
         "ftp.wormbase.org",
