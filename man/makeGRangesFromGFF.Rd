@@ -121,7 +121,7 @@ details.
 
 
 Refer to the
-\href{ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt}{current RefSeq GFF3 spec}
+\href{ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt}{current RefSeq spec}
 for details.
 
 See also:
@@ -178,10 +178,10 @@ ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.a
 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
 \item RefSeq GFF:\cr
 ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-\item WormBase GTF:\cr
-ftp://ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz
 \item FlyBase GTF:\cr
 ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
+\item WormBase GTF:\cr
+ftp://ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz
 }
 }
 

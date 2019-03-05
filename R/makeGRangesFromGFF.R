@@ -126,10 +126,10 @@
 #'   ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
 #' - RefSeq GFF:\cr
 #'   ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-#' - WormBase GTF:\cr
-#'   ftp://ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz
 #' - FlyBase GTF:\cr
 #'   ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
+#' - WormBase GTF:\cr
+#'   ftp://ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz
 #'
 #' @export
 #' @inheritParams params
@@ -956,12 +956,9 @@ makeGRangesFromGFF <- function(
 
 
 
-# FIXME Note that before we
-# return gene-level ranges from WormBase, we need to drop some additional
-# malformed rows. Refer to `.makeGenesFromGFF()`.
 .makeGenesFromWormBaseGTF <- function(object) {
     assert(is(object, "GRanges"))
-    object <- .makeGenesFromGTF(object)
+    object <- .makeGenesFromEnsemblGTF(object)
     keep <- !grepl(pattern = ":", x = mcols(object)[["gene_id"]])
     object <- object[keep]
     object
@@ -969,7 +966,9 @@ makeGRangesFromGFF <- function(
 
 
 
-# FIXME Does this get rid of "Transcript:" rows properly?
+# FIXME Note that this will contain garbage "Gene:" and "Transcript:" rows in
+# the "gene_id" column, but "transcript_id" is unique. So keeping currently.
+# Might need to reevaluate this step. Check against corresponding ensembldb.
 .makeTranscriptsFromWormBaseGTF <- .makeTranscriptsFromEnsemblGTF
 
 
