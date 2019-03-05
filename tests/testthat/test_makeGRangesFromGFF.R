@@ -97,12 +97,15 @@ gencode_gtf_file <- localOrRemoteFile(pasteURL(
 # Note that we're dropping PAR Y chromosome dupes on genes and transcripts.
 gencode_lengths <- c(58676L, 206534L)
 
+# Expecting warning about PAR genes mismatch in strict mode.
 with_parameters_test_that(
     "GENCODE GTF", {
-        object <- makeGRangesFromGFF(
-            file = gencode_gtf_file,
-            level = level,
-            .checkAgainstTxDb = TRUE
+        suppressWarnings(
+            object <- makeGRangesFromGFF(
+                file = gencode_gtf_file,
+                level = level,
+                .checkAgainstTxDb = TRUE
+            )
         )
         expect_s4_class(object, "GRanges")
         expect_identical(length(object), length)
@@ -110,15 +113,6 @@ with_parameters_test_that(
     level = levels,
     length = gencode_lengths
 )
-
-# Transcript assert failure
-# Error: Test failed: 'GENCODE GTF '
-# * Assert failure.
-# identical(length(gr1), length(gr2)) is not TRUE.
-# 1: rlang::eval_tidy(code, args)
-# 2: makeGRangesFromGFF(file = gencode_gtf_file, level = level, .checkAgainstTxDb = TRUE) at :3
-# 3: .checkGRangesAgainstTxDb(gr = out, txdb = txdb) at /Users/mike/git/basejump/R/makeGRangesFromGFF.R:266
-# 4: assert(identical(length(gr1), length(gr2)), identical(names(gr1), names(gr2))) at /Users/mike/git/basejump/R/makeGRangesFromGFF.R:1086
 
 
 

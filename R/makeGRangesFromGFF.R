@@ -76,7 +76,7 @@
 #' @section RefSeq:
 #'
 #' Refer to the
-#' [current RefSeq GFF3 spec](ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt)
+#' [current RefSeq spec](ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt)
 #' for details.
 #'
 #' See also:
