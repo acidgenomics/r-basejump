@@ -146,15 +146,15 @@ browser is required in a web browser.
 
 Select the following options to download hg38:
 \itemize{
-\item clade: Mammal
-\item genome: Human
-\item assembly: Dec. 2013 (GRCh38/hg38)
-\item group: Genes and Gene Predictions
-\item track: GENCODE v29
-\item table: knownGene
-\item region: genome
-\item output format: GTF - gene transfer format
-\item output file: Enter a file name
+\item clade: \code{Mammal}
+\item genome: \code{Human}
+\item assembly: \code{Dec. 2013 (GRCh38/hg38)}
+\item group: \code{Genes and Gene Predictions}
+\item track: \code{GENCODE v29}
+\item table: \code{knownGene}
+\item region: \code{genome}
+\item output format: \code{GTF - gene transfer format}
+\item output file: \code{<Enter a file name>}
 }
 
 See also:
@@ -170,13 +170,13 @@ See also:
 \itemize{
 \item Ensembl GTF:\cr
 ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-\item Ensembl GFF:\cr
+\item Ensembl GFF3:\cr
 ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
 \item GENCODE GTF:\cr
 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz
-\item GENCODE GFF:\cr
+\item GENCODE GFF3:\cr
 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
-\item RefSeq GFF:\cr
+\item RefSeq GFF3:\cr
 ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
 \item FlyBase GTF:\cr
 ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
