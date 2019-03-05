@@ -121,10 +121,12 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "GENCODE GFF3", {
-        object <- makeGRangesFromGFF(
-            file = gencode_gff3_file,
-            level = level,
-            .checkAgainstTxDb = TRUE
+        suppressWarnings(
+            object <- makeGRangesFromGFF(
+                file = gencode_gff3_file,
+                level = level,
+                .checkAgainstTxDb = TRUE
+            )
         )
         expect_s4_class(object, "GRanges")
         expect_identical(length(object), length)
@@ -165,4 +167,67 @@ with_parameters_test_that(
     },
     level = levels,
     length = refseq_lengths
+)
+
+
+
+flybase_lengths <- c(17772L, 35307L)
+flybase_gtf_file <- localOrRemoteFile(pasteURL(
+    "ftp.flybase.net",
+    "releases",
+    "FB2018_05",
+    "dmel_r6.24",
+    "gtf",
+    "dmel-all-r6.24.gtf.gz",
+    protocol = "ftp"
+))
+
+# Expecting warnings about broad class and GenomicFeatures dropping transcripts.
+with_parameters_test_that(
+    "FlyBase GTF", {
+        suppressWarnings(
+            object <- makeGRangesFromGFF(
+                file = flybase_gtf_file,
+                level = level,
+                .checkAgainstTxDb = TRUE
+            )
+        )
+        expect_s4_class(object, "GRanges")
+        expect_identical(length(object), length)
+    },
+    level = levels,
+    length = flybase_lengths
+)
+
+
+
+wormbase_lengths <- c(0L, 0L)
+wormbase_gtf_file <- localOrRemoteFile(pasteURL(
+    "ftp.wormbase.org",
+    "pub",
+    "wormbase",
+    "releases",
+    "WS268",
+    "species",
+    "c_elegans",
+    "PRJNA13758",
+    "c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz",
+    protocol = "ftp"
+))
+
+# Expecting warnings about broad class and GenomicFeatures dropping transcripts.
+with_parameters_test_that(
+    "Wormbase GTF", {
+        suppressWarnings(
+            object <- makeGRangesFromGFF(
+                file = wormbase_gtf_file,
+                level = level,
+                .checkAgainstTxDb = TRUE
+            )
+        )
+        expect_s4_class(object, "GRanges")
+        expect_identical(length(object), length)
+    },
+    level = levels,
+    length = wormbase_lengths
 )
