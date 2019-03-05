@@ -21,8 +21,11 @@ skip_on_appveyor(); skip_on_bioc(); skip_on_travis()
 # Wrapping with `localOrRemoteFile()` calls here so we don't download the
 # file repeatedly from the remote server.
 
+# FIXME Document the gene/transcript differences between Ensembl and GENCODE.
 
 
+
+ensembl_lengths <- c(58735L, 206601L)
 ensembl_gtf_file <- localOrRemoteFile(pasteURL(
     "ftp.ensembl.org",
     "pub",
@@ -32,8 +35,15 @@ ensembl_gtf_file <- localOrRemoteFile(pasteURL(
     "Homo_sapiens.GRCh38.95.gtf.gz",
     protocol = "ftp"
 ))
-
-ensembl_lengths <- c(58735L, 206601L)
+ensembl_gff3_file <- localOrRemoteFile(pasteURL(
+    "ftp.ensembl.org",
+    "pub",
+    "release-95",
+    "gff3",
+    "homo_sapiens",
+    "Homo_sapiens.GRCh38.95.gff3.gz",
+    protocol = "ftp"
+))
 
 with_parameters_test_that(
     "Ensembl GTF", {
@@ -48,18 +58,6 @@ with_parameters_test_that(
     level = levels,
     length = ensembl_lengths
 )
-
-
-
-ensembl_gff3_file <- localOrRemoteFile(pasteURL(
-    "ftp.ensembl.org",
-    "pub",
-    "release-95",
-    "gff3",
-    "homo_sapiens",
-    "Homo_sapiens.GRCh38.95.gff3.gz",
-    protocol = "ftp"
-))
 
 # Note that GenomicRanges chokes on Ensembl GFF3 file, so warnings in strict
 # mode here are expected.
@@ -81,8 +79,8 @@ with_parameters_test_that(
 
 
 
-# FIXME Document the gene/transcript differences between Ensembl and GENCODE.
-
+# Note that we're dropping PAR Y chromosome dupes on genes and transcripts.
+gencode_lengths <- c(58676L, 206534L)
 gencode_gtf_file <- localOrRemoteFile(pasteURL(
     "ftp.ebi.ac.uk",
     "pub",
@@ -93,9 +91,16 @@ gencode_gtf_file <- localOrRemoteFile(pasteURL(
     "gencode.v29.annotation.gtf.gz",
     protocol = "ftp"
 ))
-
-# Note that we're dropping PAR Y chromosome dupes on genes and transcripts.
-gencode_lengths <- c(58676L, 206534L)
+gencode_gff3_file = localOrRemoteFile(pasteURL(
+    "ftp.ebi.ac.uk",
+    "pub",
+    "databases",
+    "gencode",
+    "Gencode_human",
+    "release_29",
+    "gencode.v29.annotation.gff3.gz",
+    protocol = "ftp"
+))
 
 # Expecting warning about PAR genes mismatch in strict mode.
 with_parameters_test_that(
@@ -114,19 +119,6 @@ with_parameters_test_that(
     length = gencode_lengths
 )
 
-
-
-gencode_gff3_file = localOrRemoteFile(pasteURL(
-    "ftp.ebi.ac.uk",
-    "pub",
-    "databases",
-    "gencode",
-    "Gencode_human",
-    "release_29",
-    "gencode.v29.annotation.gff3.gz",
-    protocol = "ftp"
-))
-
 with_parameters_test_that(
     "GENCODE GFF3", {
         object <- makeGRangesFromGFF(
@@ -138,12 +130,14 @@ with_parameters_test_that(
         expect_identical(length(object), length)
     },
     level = levels,
-    # Difference in count is due to the PAR genes.
     length = gencode_lengths
 )
 
 
 
+# FIXME Can we return with a better identifier than the gene/transcript symbol?
+# FIXME Can we get this to return as GRanges instead?
+refseq_lengths <- c(54613L, 0L)
 refseq_gff3_file <- localOrRemoteFile(pasteURL(
     "ftp.ncbi.nlm.nih.gov",
     "genomes",
@@ -156,19 +150,19 @@ refseq_gff3_file <- localOrRemoteFile(pasteURL(
     protocol = "ftp"
 ))
 
+# Expecting GenomicFeatures warnings in strict mode.
 with_parameters_test_that(
     "RefSeq GFF3", {
-        object <- makeGRangesFromGFF(
-            file = refseq_gff3_file,
-            level = level,
-            .checkAgainstTxDb = TRUE
+        suppressWarnings(
+            object <- makeGRangesFromGFF(
+                file = refseq_gff3_file,
+                level = level,
+                .checkAgainstTxDb = TRUE
+            )
         )
-        expect_s4_class(object, "GRanges")
-
-        print(length(object))
-        # expect_identical(length(object), length)
+        expect_s4_class(object, "GRangesList")
+        expect_identical(length(object), length)
     },
     level = levels,
-    # FIXME
-    # length = c(58721L, 206694L)
+    length = refseq_lengths
 )
