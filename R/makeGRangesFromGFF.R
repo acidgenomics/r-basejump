@@ -1,17 +1,3 @@
-# FIXME Can we load GENCODE GFF3 using `makeTxDbFromGRanges()`?
-# Doesn't work for Ensembl GFF3 but may be fine for GENCODE?
-
-# FIXME Can we get RefSeq to return genes/transcripts as `GRanges` instead of
-# `GRangesList`?
-
-
-
-# Take care to not convert column names into camel case until the final
-# `.makeGRanges()` return call. Many GFF parsing utilites, including
-# GenomicFeatures, expect column names to be unmodified.
-
-
-
 #' Make `GRanges` from a GFF/GTF file
 #'
 #' @details
