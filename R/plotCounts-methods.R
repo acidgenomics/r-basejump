@@ -11,11 +11,9 @@
 #'   Plot style.
 #'
 #' @return
-#' - `style = "facet"`:
-#'     `ggplot` grouped by `sampleName`, with
-#'     [ggplot2::facet_wrap()] applied to panel the samples.
-#' - `style = "wide"`:
-#'     `ggplot` in wide format, with genes on the x-axis.
+#' - `style = "facet"`: `ggplot` grouped by `sampleName`, with
+#'   [ggplot2::facet_wrap()] applied to panel the samples.
+#' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
 #' data(rse)
@@ -151,8 +149,6 @@ plotCounts.SummarizedExperiment <-  # nolint
         # Detect DESeqDataSet and use normalized counts, if necessary.
         if (is(object, "DESeqDataSet")) {
             message("DESeqDataSet detected. Using normalized counts.")
-            # Return normalized counts, coerce to RSE, and reslot assays. Note
-            # that if we don't coerce to RSE, DDS validity checks will fail.
             assays <- list(normalized = counts(object, normalized = TRUE))
             object <- as(object, "RangedSummarizedExperiment")
             assays(object) <- assays
