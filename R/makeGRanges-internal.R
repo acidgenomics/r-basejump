@@ -29,6 +29,16 @@
     names <- as.character(mcols(object)[[idCol]])
     assert(!any(is.na(names)))
 
+    # Warn if the object contains invalid names, showing offenders.
+    if (!isTRUE(validNames(names))) {
+        invalid <- setdiff(names, make.names(names))
+        warning(paste0(
+            length(invalid),
+            " invalid names detected: ",
+            toString(sort(invalid), width = 200L)
+        ))
+    }
+
     # Split into GRangesList if object contains multiple ranges per feature.
     if (hasDuplicates(names)) {
         warning(paste0(
