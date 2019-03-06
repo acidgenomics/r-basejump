@@ -148,6 +148,7 @@ plotCounts.SummarizedExperiment <-  # nolint
         legend = getOption("basejump.legend", TRUE),
         style = c("facet", "wide")
     ) {
+        # Detect DESeqDataSet and use normalized counts, if necessary.
         if (is(object, "DESeqDataSet")) {
             message(paste(
                 "DESeqDataSet detected.",
@@ -155,9 +156,8 @@ plotCounts.SummarizedExperiment <-  # nolint
                 "Using normalized counts.",
                 sep = "\n"
             ))
-            assays(object) <- list(
-                normalized = counts(object, normalized = TRUE)
-            )
+            assay <- 1L
+            assays(object) <- list(counts = counts(object, normalized = TRUE))
             countsAxisLabel <- "normalized counts"
         }
         validObject(object)
