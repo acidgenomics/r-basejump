@@ -1,19 +1,20 @@
 #' @rdname PANTHER-class
+#' @export
 #' @inheritParams params
 #'
 #' @param organism `character(1)`.
 #'   Full Latin organism name.
 #'
-#'   Currently supported organisms:
+#'   Supported organisms:
 #'
-#'   - *Homo sapiens*
-#'   - *Mus musculus*
 #'   - *Caenorhabditis elegans*
 #'   - *Drosophila melanogaster*
+#'   - *Homo sapiens*
+#'   - *Mus musculus*
 #' @param release `character(1)` or `NULL`.
 #'   PANTHER release version. If `NULL`, defaults to current release. Consult
 #'   the PANTHER website for a list of release versions available from the FTP
-#'   server (e.g. `"13.0"`).
+#'   server (e.g. `"14.0"`).
 #' @param progress `logical(1)`.
 #'   Use [pbapply::pblapply()] to show progress.
 #'
