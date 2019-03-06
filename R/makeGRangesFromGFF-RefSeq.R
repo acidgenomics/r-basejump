@@ -95,7 +95,7 @@
     keep <- vapply(
         X = mcols(object)[["Parent"]],
         FUN = function(x) {
-            identical(x, character(0))
+            identical(x, character(0L))
         },
         FUN.VALUE = logical(1L)
     )

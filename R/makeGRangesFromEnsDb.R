@@ -80,7 +80,8 @@ makeGRangesFromEnsDb <- function(object, level) {
         )
 
         # Join the transcript- and gene-level annotations.
-        # FIXME Saccharomyces cerevisiae messes up this step because of invalid names (e.g. ETS1-1).
+        # FIXME Saccharomyces cerevisiae messes up this step because of
+        # invalid names (e.g. ETS1-1).
         # FIXME Work on consolidating this code with `makeGRangesFromGFF()`.
         txData <- mcols(tx)
         geneData <- mcols(gene)

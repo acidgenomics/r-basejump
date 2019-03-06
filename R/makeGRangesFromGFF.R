@@ -1,3 +1,5 @@
+# nolint start
+
 #' Make `GRanges` from a GFF/GTF file
 #'
 #' @details
@@ -155,6 +157,9 @@
 #' ## Transcripts
 #' x <- makeGRangesFromGFF(file = file, level = "transcripts")
 #' summary(x)
+
+# nolint end
+
 makeGRangesFromGFF <- function(
     file,
     level = c("genes", "transcripts"),

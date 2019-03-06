@@ -94,7 +94,7 @@ with_parameters_test_that(
 # GENCODE ======================================================================
 # Expecting warning about PAR genes mismatch in strict mode.
 
-gencode_gff3_file = localOrRemoteFile(pasteURL(
+gencode_gff3_file <- localOrRemoteFile(pasteURL(
     "ftp.ebi.ac.uk",
     "pub",
     "databases",
