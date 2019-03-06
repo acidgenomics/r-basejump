@@ -34,6 +34,7 @@ convertUCSCBuildToEnsembl <- function(object) {
 
 
 
+# nolint start
 .ucscMatrix <- matrix(
     dimnames = list(NULL, c(
         "ucsc",       "ensembl",           "date",    "organism",                 "ensembldb"
@@ -64,3 +65,4 @@ convertUCSCBuildToEnsembl <- function(object) {
     ),
     ncol = 5L, byrow = TRUE
 )
+# nolint end
