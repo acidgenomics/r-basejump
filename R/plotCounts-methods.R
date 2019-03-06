@@ -148,10 +148,17 @@ plotCounts.SummarizedExperiment <-  # nolint
         legend = getOption("basejump.legend", TRUE),
         style = c("facet", "wide")
     ) {
-        # Check for accidental masking of DESeq2, which doesn't currently use
-        # generic for `plotCounts()`.
         if (is(object, "DESeqDataSet")) {
-            stop("Use `DESeq2::plotCounts()` for DESeqDataSet.")
+            message(paste(
+                "DESeqDataSet detected.",
+                "Masking `DESeq2::plotCounts()`.",
+                "Using normalized counts.",
+                sep = "\n"
+            ))
+            assays(object) <- list(
+                normalized = counts(object, normalized = TRUE)
+            )
+            countsAxisLabel <- "normalized counts"
         }
         validObject(object)
         assert(
