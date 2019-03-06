@@ -5,12 +5,12 @@
 \alias{counts}
 \alias{counts<-}
 \alias{counts,SummarizedExperiment-method}
-\alias{counts<-,SummarizedExperiment-method}
+\alias{counts<-,SummarizedExperiment,ANY-method}
 \title{Counts}
 \usage{
 \S4method{counts}{SummarizedExperiment}(object)
 
-\S4method{counts}{SummarizedExperiment}(object) <- value
+\S4method{counts}{SummarizedExperiment,ANY}(object) <- value
 }
 \arguments{
 \item{object}{Object.}
