@@ -44,6 +44,46 @@
 #'
 #' [EnsDb.Hsapiens.v75]: https://bioconductor.org/packages/EnsDb.Hsapiens.v75/
 #'
+#' @section AnnotationHub queries:
+#'
+#' Here's how to perform manual, customized AnnotationHub queries.
+#'
+#' ```
+#' library(AnnotationHub)
+#' library(ensembldb)
+#' ah <- AnnotationHub()
+#'
+#' # Human ensembldb (EnsDb) records.
+#' ahs <- query(
+#'     x = ah,
+#'     pattern = c(
+#'         "Homo sapiens",
+#'         "GRCh38",
+#'         "Ensembl",
+#'         "EnsDb"
+#'     )
+#' )
+#' mcols(ahs)
+#' print(ahs)
+#' # EnsDb (Ensembl GRCh38 94; 2018-10-11)
+#' ah[["AH64923"]]
+#'
+#' # Human UCSC TxDb records.
+#' ahs <- query(
+#'     x = ah,
+#'     pattern = c(
+#'         "Homo sapiens",
+#'         "UCSC",
+#'         "TxDb",
+#'         "knownGene"
+#'     )
+#' )
+#' mcols(ahs)
+#' print(ahs)
+#' # TxDb (UCSC hg38 GENCODE 24; 2016-12-22)
+#' ah[["AH52260"]]
+#' ```
+#'
 #' @param release `integer(1)`.
 #'   Ensembl release version (e.g. `90`). If set `NULL`, defaults to the most
 #'   recent release available.
