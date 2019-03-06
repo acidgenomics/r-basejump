@@ -150,12 +150,7 @@ plotCounts.SummarizedExperiment <-  # nolint
     ) {
         # Detect DESeqDataSet and use normalized counts, if necessary.
         if (is(object, "DESeqDataSet")) {
-            message(paste(
-                "DESeqDataSet detected.",
-                "Masking `DESeq2::plotCounts()`.",
-                "Using normalized counts.",
-                sep = "\n"
-            ))
+            message("DESeqDataSet detected. Using normalized counts.")
             # Return normalized counts, coerce to RSE, and reslot assays. Note
             # that if we don't coerce to RSE, DDS validity checks will fail.
             assays <- list(normalized = counts(object, normalized = TRUE))

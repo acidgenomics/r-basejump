@@ -20,21 +20,21 @@
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
-    # Legacy support for bcbio R packages, which pass missing through.
+    # Legacy support for bcbio R packages, which pass missing
+    # `interestingGroups` parameter through.
     if (
         missing(interestingGroups) ||
         !is.character(interestingGroups)
     ) {
         interestingGroups <- NULL
     }
-    interestingGroups <- interestingGroups(object)
+
     # Return `sampleName` by default, if necessary.
-    if (
-        is.null(interestingGroups) ||
-        !all(interestingGroups %in% colnames(colData(object)))
-    ) {
-        interestingGroups <- "sampleName"
-    }
-    assert(isCharacter(interestingGroups))
-    interestingGroups
+    out <- tryCatch(
+        expr = interestingGroups(object) <- interestingGroups,
+        error = function(e) "sampleName"
+    )
+
+    assert(isCharacter(out))
+    out
 }
