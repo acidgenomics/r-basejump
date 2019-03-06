@@ -151,18 +151,22 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
     assert(isString(genomeBuild, nullOK = TRUE))
-    # Check for accidental UCSC input and stop, informing user.
     if (isString(genomeBuild)) {
-        ucscCheck <- tryCatch(
+        # Remap UCSC genomeBuild input to Ensembl automatically, and inform.
+        remap <- tryCatch(
             expr = convertUCSCBuildToEnsembl(genomeBuild),
             error = function(e) NULL
         )
-        if (length(ucscCheck) > 0L) {
-            stop(paste(
-                "UCSC genome build ID detected.",
-                "Use Ensembl ID instead.\n",
-                printString(ucscCheck)
+        if (hasLength(remap)) {
+            ucsc <- names(remap)
+            ensembl <- unname(remap)
+            message(paste0(
+                "Remapping genome build from ",
+                "UCSC (", ucsc, ") to ",
+                "Ensembl (", ensembl, ")."
             ))
+            genomeBuild <- ensembl
+            rm(remap, ucsc, ensembl)
         }
     }
     assert(isInt(ensemblRelease, nullOK = TRUE))
