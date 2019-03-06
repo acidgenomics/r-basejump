@@ -13,6 +13,7 @@ files <- c(
 )
 names <- names(files)
 # Note that `system.file()` call drops names.
+# `devtools::check()` fails on this step unless we istall the package first.
 files <- system.file("extdata", files, package = "basejump")
 names(files) <- names
 rm(names)

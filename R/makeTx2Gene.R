@@ -7,6 +7,7 @@
 #' @name makeTx2Gene
 #' @include makeGRangesFromEnsembl.R
 #' @inheritParams makeGRangesFromEnsembl
+#' @inheritParams params
 #'
 #' @seealso `makeGRanges`.
 #'
