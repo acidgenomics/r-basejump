@@ -83,6 +83,45 @@ Alternatively, the corresponding GTF/GFF file can be loaded directly from
 GENCODE or Ensembl.
 }
 
+\section{AnnotationHub queries}{
+
+
+Here's how to perform manual, customized AnnotationHub queries.\preformatted{library(AnnotationHub)
+library(ensembldb)
+ah <- AnnotationHub()
+
+# Human ensembldb (EnsDb) records.
+ahs <- query(
+    x = ah,
+    pattern = c(
+        "Homo sapiens",
+        "GRCh38",
+        "Ensembl",
+        "EnsDb"
+    )
+)
+mcols(ahs)
+print(ahs)
+# EnsDb (Ensembl GRCh38 94; 2018-10-11)
+ah[["AH64923"]]
+
+# Human UCSC TxDb records.
+ahs <- query(
+    x = ah,
+    pattern = c(
+        "Homo sapiens",
+        "UCSC",
+        "TxDb",
+        "knownGene"
+    )
+)
+mcols(ahs)
+print(ahs)
+# TxDb (UCSC hg38 GENCODE 24; 2016-12-22)
+ah[["AH52260"]]
+}
+}
+
 \examples{
 ## Genes
 x <- makeGRangesFromEnsembl("Homo sapiens", level = "genes")
