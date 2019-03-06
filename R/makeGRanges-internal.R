@@ -250,6 +250,8 @@
 .minimizeGRanges <- function(object) {
     assert(is(object, "GRanges"))
     mcols <- mcols(object)
+    # Ensure NA values are properly set, prior to `removeNA()` call.
+    mcols <- sanitizeNA(mcols)
     # Remove columns that are all `NA`. This step will remove all
     # transcript-level columns from gene-level ranges.
     mcols <- removeNA(mcols)
