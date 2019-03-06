@@ -34,8 +34,10 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
             interestingGroups(object) <- interestingGroups
             interestingGroups(object)
         },
-        error = function(e) "sampleName"
+        error = function(e) NULL
     )
-    assert(isCharacter(out))
+    if (!isCharacter(out)) {
+        out <- "sampleName"
+    }
     out
 }
