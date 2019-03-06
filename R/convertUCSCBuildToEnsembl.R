@@ -59,8 +59,8 @@ convertUCSCBuildToEnsembl <- function(object) {
         "rn6",        "Rnor_6.0",    "2014-07", "Rattus norvegicus",
         "sacCer3",    "R64-1-1",     "2011-04", "Saccharomyces cerevisiae",
         "susScr11",   "Sscrofa11.1", "2017-02", "Sus scrofa",
-        "xenTro2",    "JGI 4.1",     "2005-08", "Xenopus tropicalis",
-        "xenTro3",    "JGI 4.2",     "2009-11", "Xenopus tropicalis"
+        "xenTro2",    "JGI_4.1",     "2005-08", "Xenopus tropicalis",
+        "xenTro3",    "JGI_4.2",     "2009-11", "Xenopus tropicalis"
     ),
     ncol = 4L, byrow = TRUE
 )
