@@ -28,13 +28,14 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
     ) {
         interestingGroups <- NULL
     }
-
     # Return `sampleName` by default, if necessary.
     out <- tryCatch(
-        expr = interestingGroups(object) <- interestingGroups,
+        expr = {
+            interestingGroups(object) <- interestingGroups
+            interestingGroups(object)
+        },
         error = function(e) "sampleName"
     )
-
     assert(isCharacter(out))
     out
 }
