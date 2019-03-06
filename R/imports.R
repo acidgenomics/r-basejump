@@ -47,7 +47,7 @@
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie allAreHexColors areDisjointSets areIntersectingSets
-#'   areSameLength areSetEqual assert false getNameInParent hasDims
+#'   areSameLength areSetEqual assert cause false getNameInParent hasDims
 #'   hasDuplicates hasInternet hasLength hasNames hasNoDuplicates
 #'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
 #'   hasValidNames isADirectory isAny isCharacter isFlag isGGScale isHeaderLevel

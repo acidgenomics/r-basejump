@@ -346,7 +346,7 @@ makeGRangesFromGFF <- function(
     } else if (
         any(grepl(pattern = "RefSeq", x = source, ignore.case = FALSE))
     ) {
-        warning(paste(
+        message(paste(
             "RefSeq support is experimental.",
             "Bioconductor has tighter integration with Ensembl.",
             sep = "\n"

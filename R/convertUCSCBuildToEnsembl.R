@@ -40,7 +40,7 @@ convertUCSCBuildToEnsembl <- function(object) {
     )),
     data = c(
         "araTha1",    "TAIR10",            "2011-02", "Arabidopsis thaliana",     FALSE,
-        "canFam3",    "CanFam3.1",         "2011-09", "Canis lupus familiaris",   FALSE,  # FIXME check organism
+        "canFam3",    "CanFam3.1",         "2011-09", "Canis familiaris",         TRUE,
         "ce10",       "WS220",             "2010-10", "Caenorhabditis elegans",   FALSE,
         "ce11",       "WBcel235",          "2013-02", "Caenorhabditis elegans",   TRUE,
         "danRer10",   "GRCz10",            "2014-09", "Danio rerio",              TRUE,

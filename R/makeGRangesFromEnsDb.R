@@ -1,3 +1,7 @@
+# FIXME Consolidate gene-into-transcript merge code with `makeGRangesFromGFF()`.
+
+
+
 #' Make `GRanges` from `EnsDb` object
 #'
 #' @details

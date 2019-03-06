@@ -309,7 +309,13 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
         isString(id),
         unname(isMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$"))
     )
-    message(paste0(id, ": ", mcols[["title"]]))
+    message(paste0(
+        id, ": ", mcols[["title"]], "\n",
+        "Run this code to download EnsDb manually:", "\n",
+        "  > library(AnnotationHub)", "\n",
+        "  > ah <- AnnotationHub()", "\n",
+        "  > edb <- ah[[\"", id, "\"]]"
+    ))
     .forceDetach(keep = userAttached)
     id
 }
