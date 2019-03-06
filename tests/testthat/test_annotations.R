@@ -13,8 +13,7 @@ context("Annotations : General")
 with_parameters_test_that(
     "convertUCSCBuildToEnsembl", {
         expect_identical(
-            object = convertUCSCBuildToEnsembl(object) %>%
-                as.character(),
+            object = unname(convertUCSCBuildToEnsembl(object)),
             expected = expected
         )
     },

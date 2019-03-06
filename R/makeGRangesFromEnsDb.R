@@ -76,6 +76,8 @@ makeGRangesFromEnsDb <- function(object, level) {
         )
 
         # Join the transcript- and gene-level annotations.
+        # FIXME Saccharomyces cerevisiae messes up this step because of invalid names (e.g. ETS1-1).
+        # FIXME Work on consolidating this code with `makeGRangesFromGFF()`.
         txData <- mcols(tx)
         geneData <- mcols(gene)
         # Use BiocTibble left_join DataFrame method here.
@@ -84,7 +86,7 @@ makeGRangesFromEnsDb <- function(object, level) {
             y = as_tibble(geneData, rownames = NULL),
             by = "gene_id"
         )
-        assert(identical(x = txData[["tx_id"]], y = data[["tx_id"]]))
+        assert(identical(txData[["tx_id"]], data[["tx_id"]]))
 
         # Now we can slot back into the transcript mcols.
         mcols(tx) <- as(data, "DataFrame")

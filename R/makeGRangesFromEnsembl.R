@@ -69,8 +69,33 @@ makeGRangesFromEnsembl <- function(
     release = NULL
 ) {
     message("Making GRanges from Ensembl.")
-    assert(isString(organism))
+    assert(
+        isString(organism),
+        isString(genomeBuild, nullOK = TRUE),
+        isInt(release, nullOK = TRUE)
+    )
     level <- match.arg(level)
+
+    # Remap UCSC genome build to Ensembl automatically, if necessary.
+    if (isString(genomeBuild)) {
+        remap <- tryCatch(
+            expr = convertUCSCBuildToEnsembl(genomeBuild),
+            error = function(e) NULL
+        )
+        if (hasLength(remap)) {
+            ucsc <- names(remap)
+            ensembl <- unname(remap)
+            message(paste0(
+                "Remapping genome build from ",
+                "UCSC (", ucsc, ") to ",
+                "Ensembl (", ensembl, ")."
+            ))
+            genomeBuild <- ensembl
+            rm(remap, ucsc, ensembl)
+        }
+    }
+
+    # Match user input to EnsDb.
     if (
         identical(tolower(organism), "homo sapiens") &&
         (
@@ -78,16 +103,18 @@ makeGRangesFromEnsembl <- function(
             identical(release, 75L)
         )
     ) {
+        # Legacy support for GRCh37 (hg19).
         id <- "EnsDb.Hsapiens.v75"
         edb <- .getEnsDbFromPackage(package = id)
     } else {
         id <- .getAnnotationHubID(
             organism = organism,
             genomeBuild = genomeBuild,
-            ensemblRelease = release
+            release = release
         )
         edb <- .getEnsDbFromAnnotationHub(id = id)
     }
+
     gr <- makeGRangesFromEnsDb(object = edb, level = level)
     metadata(gr)[["id"]] <- id
     gr
@@ -143,41 +170,25 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
 .getAnnotationHubID <- function(
     organism,
     genomeBuild = NULL,
-    ensemblRelease = NULL,
+    release = NULL,
     ah = NULL
 ) {
     userAttached <- .packages()
     assert(isString(organism))
     # Standardize organism name, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
-    assert(isString(genomeBuild, nullOK = TRUE))
-    if (isString(genomeBuild)) {
-        # Remap UCSC genomeBuild input to Ensembl automatically, and inform.
-        remap <- tryCatch(
-            expr = convertUCSCBuildToEnsembl(genomeBuild),
-            error = function(e) NULL
-        )
-        if (hasLength(remap)) {
-            ucsc <- names(remap)
-            ensembl <- unname(remap)
-            message(paste0(
-                "Remapping genome build from ",
-                "UCSC (", ucsc, ") to ",
-                "Ensembl (", ensembl, ")."
-            ))
-            genomeBuild <- ensembl
-            rm(remap, ucsc, ensembl)
-        }
-    }
-    assert(isInt(ensemblRelease, nullOK = TRUE))
-    if (isInt(ensemblRelease)) {
-        ensemblRelease <- as.integer(ensemblRelease)
+    assert(
+        isString(genomeBuild, nullOK = TRUE),
+        isInt(release, nullOK = TRUE)
+    )
+    if (isInt(release)) {
+        release <- as.integer(release)
     }
 
     # Error on request of unsupported legacy Ensembl release.
     if (
-        is.integer(ensemblRelease) &&
-        ensemblRelease < 87L
+        is.integer(release) &&
+        release < 87L
     ) {
         stop("ensembldb currently only supports Ensembl releases >= 87.")
     }
@@ -203,7 +214,7 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
             "Ensembl",
             organism,
             genomeBuild,
-            ensemblRelease,
+            release,
             rdataclass
         ),
         ignore.case = TRUE
@@ -229,10 +240,10 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
     }
 
     # Ensure Ensembl release matches, or pick the latest one.
-    if (!is.null(ensemblRelease)) {
+    if (!is.null(release)) {
         assert(isSubset("title", colnames(mcols)))
         mcols <- mcols[
-            grepl(paste("Ensembl", ensemblRelease), mcols[["title"]]),
+            grepl(paste("Ensembl", release), mcols[["title"]]),
             ,
             drop = FALSE
             ]
@@ -247,7 +258,7 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
             ),
             paste(.li, "Organism:", deparse(organism)),
             paste(.li, "Build:", deparse(genomeBuild)),
-            paste(.li, "Release:", deparse(ensemblRelease)),
+            paste(.li, "Release:", deparse(release)),
             sep = "\n"
         ))
     }
