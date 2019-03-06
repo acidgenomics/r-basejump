@@ -28,16 +28,27 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
     ) {
         interestingGroups <- NULL
     }
-    # Return `sampleName` by default, if necessary.
-    out <- tryCatch(
-        expr = {
-            interestingGroups(object) <- interestingGroups
-            interestingGroups(object)
-        },
-        error = function(e) NULL
-    )
-    if (!isCharacter(out)) {
-        out <- "sampleName"
+
+    if (is.null(interestingGroups)) {
+        interestingGroups <- interestingGroups(object)
     }
-    out
+
+    # Attempt to assign and return, if user is passing in a character vector.
+    if (is.character(interestingGroups)) {
+        interestingGroups <- tryCatch(
+            expr = {
+                interestingGroups(object) <- interestingGroups
+                interestingGroups(object)
+            },
+            error = function(e) NULL
+        )
+    }
+
+    # Return `sampleName` by default, if necessary.
+    if (is.null(interestingGroups)) {
+        interestingGroups <- "sampleName"
+    }
+
+    assert(isCharacter(interestingGroups))
+    interestingGroups
 }
