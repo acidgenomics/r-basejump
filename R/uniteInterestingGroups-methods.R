@@ -27,28 +27,35 @@ uniteInterestingGroups.DataFrame <-  # nolint
             isCharacter(interestingGroups),
             isSubset(interestingGroups, colnames(object))
         )
-        # Subset to get only the columns of interest.
-        data <- object[, interestingGroups, drop = FALSE]
-        assert(hasLength(data))
-        # This approach will return numerics for `DataFrame` class, so
-        # coercing columns to data.frame.
-        value <- apply(
-            X = as.data.frame(data),
-            MARGIN = 1L,
-            FUN = paste,
-            collapse = ":"
-        )
-        value <- as.factor(value)
-        assert(identical(rownames(object), names(value)))
+
+        if (length(interestingGroups) == 1L) {
+            # This will retain the factor levels, if they're not alphabetical.
+            value <- object[[interestingGroups]]
+        } else {
+            # Subset to get only the columns of interest.
+            data <- object[, interestingGroups, drop = FALSE]
+            # This approach will return numerics for `DataFrame` class, so
+            # coercing columns to data.frame.
+            value <- apply(
+                X = as.data.frame(data),
+                MARGIN = 1L,
+                FUN = paste,
+                collapse = ":"
+            )
+            value <- as.factor(value)
+            assert(identical(rownames(object), names(value)))
+        }
+
         # Here we're using `uname()` to unname the factor, since `DataFrame`
         # stores this metadata internally differently than standard data.frame.
         # Otherwise, unit tests can return this error:
-        # Attributes: <
+        #   Attributes:
         #   Component "listData":
         #   Component "interestingGroups":
         #   names for target but not for current
-        # >
-        object[["interestingGroups"]] <- unname(value)
+        value <- unname(value)
+        object[["interestingGroups"]] <- value
+
         object
     }
 
