@@ -394,54 +394,6 @@ makeGRangesFromGFF <- function(
 
 
 
-# Merge the gene-level annotations (`geneName`, `geneBiotype`) into a
-# transcript-level GRanges object.
-.mergeGenesIntoTranscripts <- function(transcripts, genes) {
-    message("Merging gene-level annotations into transcript-level object.")
-    assert(
-        is(transcripts, "GRanges"),
-        is(genes, "GRanges"),
-        # Note that `hasValidNames()` will error on WormBase transcripts.
-        hasNames(transcripts),
-        hasNames(genes),
-        isSubset("transcript_id", colnames(mcols(transcripts))),
-        identical(names(transcripts), mcols(transcripts)[["transcript_id"]]),
-        # Don't proceed unless we have `gene_id` column to use for merge.
-        isSubset("gene_id", colnames(mcols(transcripts))),
-        isSubset("gene_id", colnames(mcols(genes)))
-    )
-    geneCols <- setdiff(
-        x = colnames(mcols(genes)),
-        y = colnames(mcols(transcripts))
-    )
-    # Only attempt the merge if there's useful additional metadata to include.
-    # Note that base `merge()` can reorder rows, so be careful here.
-    if (length(geneCols) > 0L) {
-        geneCols <- c("gene_id", geneCols)
-        merge <- merge(
-            x = mcols(transcripts),
-            y = mcols(genes)[, geneCols, drop = FALSE],
-            all.x = TRUE,
-            by = "gene_id"
-        )
-        # Ensure that we're calling `S4Vectors::merge()`, not `base::merge()`.
-        assert(is(merge, "DataFrame"))
-        # The merge step will drop row names, so we need to reassign.
-        rownames(merge) <- merge[["transcript_id"]]
-        # Reorder to match the original transcripts object.
-        # Don't assume this is alphabetically sorted.
-        merge <- merge[names(transcripts), , drop = FALSE]
-        assert(identical(
-            x = mcols(transcripts)[["transcript_id"]],
-            y = merge[["transcript_id"]]
-        ))
-        mcols(transcripts) <- merge
-    }
-    transcripts
-}
-
-
-
 # Remove uninformative metadata columns from GFF3 before return.
 .minimizeGFF3 <- function(object) {
     assert(is(object, "GRanges"))
