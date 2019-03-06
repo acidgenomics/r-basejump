@@ -608,8 +608,10 @@ makeGRangesFromGFF <- function(
 
     # Ranges and seqnames ------------------------------------------------------
     # Compare the ranges and inform the user about mismatches.
-    # help(topic = "IPosRanges-comparison", package = "IRanges")
-    # vignette(topic = "IRangesOverview", package = "IRanges")
+    # nolint start
+    # > help(topic = "IPosRanges-comparison", package = "IRanges")
+    # > vignette(topic = "IRangesOverview", package = "IRanges")
+    # nolint end
     r1 <- ranges(gr1)
     r2 <- ranges(gr2)
     diff <- r1 != r2
