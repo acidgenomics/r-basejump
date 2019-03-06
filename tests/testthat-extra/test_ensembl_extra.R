@@ -6,13 +6,18 @@ mat <- mat[keep, , drop = FALSE]
 rm(keep)
 
 # Note that we're running at transcript level here to check the gene merge code.
+#
 # Potential issues:
-# - *C. elegans*:
+#
+# - *Caenorhabditis elegans*
 #     - Invalid transcript IDs.
-# - *S. cerevisiae*:
+# - *Canis familiaris*
+#     - Using the full *Canis lupus familiaris* won't match.
+# - *Saccharomyces cerevisiae*
 #     - Invalid gene IDs.
 #     - Iinvalid transcript IDs.
-#     - No `geneName` in `mcols()`.
+#     - No gene names.
+
 with_parameters_test_that(
     "UCSC genome build remaps", {
         object <- makeGRangesFromEnsembl(
