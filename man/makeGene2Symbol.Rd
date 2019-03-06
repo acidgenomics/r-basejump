@@ -27,6 +27,11 @@ IDs (e.g. \code{"hg38"}).}
 \item{release}{\code{integer(1)}.
 Ensembl release version (e.g. \code{90}). If set \code{NULL}, defaults to the most
 recent release available.}
+
+\item{object}{Object.}
+
+\item{file}{\code{character(1)}.
+File path.}
 }
 \value{
 \code{Gene2Symbol}.
