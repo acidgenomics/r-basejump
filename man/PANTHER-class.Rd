@@ -6,7 +6,8 @@
 \alias{PANTHER}
 \title{PANTHER database annotations}
 \usage{
-PANTHER(organism, release = NULL, progress = FALSE)
+PANTHER(organism, release = NULL,
+  progress = getOption("basejump.progress", FALSE))
 }
 \arguments{
 \item{organism}{\code{character(1)}.

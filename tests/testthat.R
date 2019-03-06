@@ -2,6 +2,9 @@ library(testthat)
 library(patrick)
 library(basejump)
 test_check("basejump")
-if (isTRUE(getOption("basejump.tests.extra"))) {
+# Run the resource intensive unit tests less frequently (e.g. per month).
+if (isTRUE(getOption("basejump.test.extra"))) {
+    # Disable our useful interactive flag for quick CI tests (see Rprofile).
+    options(basejump.test = FALSE)
     test_dir(file.path("tests", "testthat-extra"))
 }
