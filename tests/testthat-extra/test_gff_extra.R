@@ -5,6 +5,8 @@ levels <- c("genes", "transcripts")
 
 
 # Ensembl ======================================================================
+# Note that GenomicRanges chokes on Ensembl GFF3 file, so warnings are expected.
+
 ensembl_gff3_file <- localOrRemoteFile(pasteURL(
     "ftp.ensembl.org",
     "pub",
@@ -25,8 +27,6 @@ ensembl_gtf_file <- localOrRemoteFile(pasteURL(
 ))
 ensembl_lengths <- c(58735L, 206601L)
 
-# Note that GenomicRanges chokes on Ensembl GFF3 file, so warnings in strict
-# mode here are expected.
 with_parameters_test_that(
     "Ensembl GFF3", {
         suppressWarnings(
@@ -60,6 +60,8 @@ with_parameters_test_that(
 
 
 # FlyBase ======================================================================
+# Expecting warnings about broad class and GenomicFeatures dropping transcripts.
+
 flybase_gtf_file <- localOrRemoteFile(pasteURL(
     "ftp.flybase.net",
     "releases",
@@ -71,7 +73,6 @@ flybase_gtf_file <- localOrRemoteFile(pasteURL(
 ))
 flybase_lengths <- c(17772L, 35307L)
 
-# Expecting warnings about broad class and GenomicFeatures dropping transcripts.
 with_parameters_test_that(
     "FlyBase GTF", {
         suppressWarnings(
@@ -92,6 +93,7 @@ with_parameters_test_that(
 
 # GENCODE ======================================================================
 # Expecting warning about PAR genes mismatch in strict mode.
+
 gencode_gff3_file = localOrRemoteFile(pasteURL(
     "ftp.ebi.ac.uk",
     "pub",
@@ -185,6 +187,11 @@ with_parameters_test_that(
 
 
 # WormBase =====================================================================
+# FIXME There seems to be an issue with WormBase GTF.
+# GRanges does not contain `geneName` in mcols().
+# GRanges does not contain `transcriptName` in mcols().
+# Is this due to the merge step failing because of identifier garbage?
+
 wormbase_gtf_file <- localOrRemoteFile(pasteURL(
     "ftp.wormbase.org",
     "pub",
@@ -199,20 +206,12 @@ wormbase_gtf_file <- localOrRemoteFile(pasteURL(
 ))
 wormbase_lengths <- c(47169L, 61388L)
 
-# Expecting warnings about broad class and GenomicFeatures dropping transcripts.
-
-# FIXME There seems to be an issue with WormBase GTF.
-# GRanges does not contain `geneName` in mcols().
-# GRanges does not contain `transcriptName` in mcols().
-# Is this due to the merge step failing because of identifier garbage?
 with_parameters_test_that(
     "Wormbase GTF", {
-        suppressWarnings(
-            object <- makeGRangesFromGFF(
-                file = wormbase_gtf_file,
-                level = level,
-                .checkAgainstTxDb = TRUE
-            )
+        object <- makeGRangesFromGFF(
+            file = wormbase_gtf_file,
+            level = level,
+            .checkAgainstTxDb = TRUE
         )
         expect_s4_class(object, "GRanges")
         expect_identical(length(object), length)
