@@ -156,8 +156,12 @@ plotCounts.SummarizedExperiment <-  # nolint
                 "Using normalized counts.",
                 sep = "\n"
             ))
+            # Return normalized counts, coerce to RSE, and reslot assays. Note
+            # that if we don't coerce to RSE, DDS validity checks will fail.
+            assays <- list(normalized = counts(object, normalized = TRUE))
+            object <- as(object, "RangedSummarizedExperiment")
+            assays(object) <- assays
             assay <- 1L
-            assays(object) <- list(counts = counts(object, normalized = TRUE))
             countsAxisLabel <- "normalized counts"
         }
         validObject(object)
