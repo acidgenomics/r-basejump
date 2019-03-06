@@ -41,7 +41,7 @@
 
     # Split into GRangesList if object contains multiple ranges per feature.
     if (hasDuplicates(names)) {
-        warning(paste0(
+        message(paste0(
             "GRanges contains multiple ranges per ", idCol, ".\n",
             "Splitting into GRangesList.",
             sep = "\n"
@@ -126,7 +126,7 @@
         geneNameCol <- "geneName"
         geneNameData <- data[[geneNameCol]]
     } else {
-        warning("GRanges does not contain gene names in mcols().")
+        message("GRanges does not contain gene names in mcols().")
         geneNameCol <- NULL
         geneNameData <- NA
     }
@@ -140,7 +140,7 @@
         seqnamesData <- data[[seqnamesCol]]
     } else {
         # Don't think this is currently possible to hit, but keep just in case.
-        warning("GRanges does not contain seqnames.")
+        message("GRanges does not contain seqnames.")
         seqnamesCol <- NULL
         seqnamesData <- NA
     }
@@ -394,17 +394,6 @@
     )
     # Always return using camel case, even though GFF/GTF files use snake.
     mcols <- camel(mcols)
-
-    # Warn on missing name (symbol) columns.
-    if (!"geneName" %in% colnames(mcols)) {
-        warning("GRanges does not contain `geneName` in mcols().")
-    }
-    if (
-        "transcriptID" %in% colnames(mcols) &&
-        !"transcriptName" %in% colnames(mcols)
-    ) {
-        warning("GRanges does not contain `transcriptName` in mcols().")
-    }
 
     # Always use `geneName` instead of `symbol`.
     # Note that ensembldb output duplicates these.
