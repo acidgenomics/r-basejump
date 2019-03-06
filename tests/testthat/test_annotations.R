@@ -234,10 +234,6 @@ if ("EnsDb.Hsapiens.v75" %in% rownames(installed.packages())) {
 
 test_that("makeGRangesFromEnsembl : Invalid parameters", {
     expect_error(
-        object = makeGRangesFromEnsembl("Homo sapiens", genomeBuild = "hg38"),
-        regexp = "UCSC"
-    )
-    expect_error(
         object = makeGRangesFromEnsembl("Homo sapiens", release = 86L),
         regexp = ">= 87"
     )
