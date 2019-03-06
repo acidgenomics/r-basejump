@@ -9,7 +9,7 @@
 #'
 #' @seealso
 #' - [UCSC hgGateway](https://genome.ucsc.edu/cgi-bin/hgGateway)
-#' - [bcbio genome recipes](https://github.com/bcbio/bcbio-nextgen/tree/master/config/genomes)
+#' - [bcbio genome recipes](https://goo.gl/164J2P)
 #'
 #' @examples
 #' from <- c("hg19", "hg38")
