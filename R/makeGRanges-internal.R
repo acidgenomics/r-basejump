@@ -32,9 +32,9 @@
     # Warn if the object contains invalid names, showing offenders.
     if (!isTRUE(validNames(names))) {
         invalid <- setdiff(names, make.names(names))
-        warning(paste0(
-            length(invalid),
-            " invalid names detected: ",
+        # Alternatively, can warn here, but it may be too annoying.
+        message(paste0(
+            length(invalid), " invalid names: ",
             toString(sort(invalid), width = 200L)
         ))
     }
@@ -279,6 +279,12 @@
 
 .mergeGenesIntoTranscripts <- function(transcripts, genes) {
     message("Merging gene-level annotations into transcript-level object.")
+    # Use `transcript` prefix instead of `tx` consistently.
+    colnames(mcols(transcripts)) <- gsub(
+        pattern = "^tx_",
+        replacement = "transcript_",
+        x = colnames(mcols(transcripts))
+    )
     assert(
         is(transcripts, "GRanges"),
         is(genes, "GRanges"),
@@ -374,16 +380,20 @@
 
     # Standardize the metadata columns.
     mcols <- mcols(object)
-    # Always return using camel case, even though GFF/GTF files use snake.
-    mcols <- camel(mcols)
-    # Ensure "ID" is always capitalized (e.g. "entrezid").
-    colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
-    # Use `transcript` instead of `tx` consistently.
+    # Use `transcript` prefix instead of `tx` consistently.
     colnames(mcols) <- gsub(
-        pattern = "^tx",
-        replacement = "transcript",
+        pattern = "^tx_",
+        replacement = "transcript_",
         x = colnames(mcols)
     )
+    # Ensure "ID" is always capitalized (e.g. "entrezid").
+    colnames(mcols) <- gsub(
+        pattern = "(.+)id$",
+        replacement = "\\1ID",
+        x = colnames(mcols)
+    )
+    # Always return using camel case, even though GFF/GTF files use snake.
+    mcols <- camel(mcols)
 
     # Warn on missing name (symbol) columns.
     if (!"geneName" %in% colnames(mcols)) {
@@ -411,6 +421,8 @@
     mcols(object) <- mcols
 
     # Ensure broad class definitions are included, using run-length encoding.
+    # Don't pass `mcols` to `.broadClass()`, use the GRanges instead because
+    # we need the corresponding seqnames for calculations.
     mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
 
     # Finally, sort the metadata columns alphabetically.
