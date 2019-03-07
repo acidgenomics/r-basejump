@@ -177,6 +177,8 @@ makeGRangesFromGFF <- function(
     object <- import(file)
     # Slot the source (e.g. Ensembl) and type (e.g. GTF) into `metadata()`.
     object <- .slotGFFDetectInfo(object)
+    # Note that this metadata is used by TxDb caller for GFF3 (see below).
+    metadata(object)[["file"]] <- file
     # Pull detection strings from GRanges `metadata()`.
     detect <- metadata(object)[["detect"]]
     assert(is.character(detect))
@@ -631,7 +633,7 @@ makeGRangesFromGFF <- function(
     txdb <- withCallingHandlers(expr = {
         # Using `tryCatch()` here to change error message, if necessary.
         tryCatch(
-            expr = if (type == "GFF") {
+            expr = if (type == "GFF3") {
                 # `makeTxDbFromGRanges()` often chokes on GRanges from GFF3,
                 # imported via `rtracklayer::import()`, so switch to using
                 # `makeTxDbFromGFF()` instead, which always works.
