@@ -231,22 +231,26 @@ makeGRangesFromGFF <- function(
     genes <- genes[is.na(mcols(genes)[["transcript_id"]])]
     assert(hasLength(genes))
 
-    if (source == "Ensembl" && type == "GFF") {
+    if (source == "Ensembl" && type == "GFF3") {
         genes <- .makeGenesFromEnsemblGFF3(genes)
     } else if (source == "Ensembl" && type == "GTF") {
         genes <- .makeGenesFromEnsemblGTF(genes)
     } else if (source == "FlyBase" && type == "GTF") {
         genes <- .makeGenesFromFlyBaseGTF(genes)
-    } else if (source == "GENCODE" && type == "GFF") {
+    } else if (source == "GENCODE" && type == "GFF3") {
         genes <- .makeGenesFromGencodeGFF3(genes)
     } else if (source == "GENCODE" && type == "GTF") {
         genes <- .makeGenesFromGencodeGTF(genes)
-    } else if (source == "RefSeq" && type == "GFF") {
+    } else if (source == "RefSeq" && type == "GFF3") {
         genes <- .makeGenesFromRefSeqGFF3(genes)
     } else if (source == "WormBase" && type == "GTF") {
         genes <- .makeGenesFromWormBaseGTF(genes)
     } else {
-        stop("Unsupported GFF file format.")
+        stop(paste(
+            "Failed to make gene-level GRanges.",
+            "Unsupported GFF source file.",
+            sep = "\n"
+        ))
     }
 
     names(genes) <- mcols(genes)[["gene_id"]]
@@ -263,22 +267,26 @@ makeGRangesFromGFF <- function(
             transcripts[!is.na(mcols(transcripts)[["transcript_id"]])]
         assert(hasLength(transcripts))
 
-        if (source == "Ensembl" && type == "GFF") {
+        if (source == "Ensembl" && type == "GFF3") {
             transcripts <- .makeTranscriptsFromEnsemblGFF3(transcripts)
         } else if (source == "Ensembl" && type == "GTF") {
             transcripts <- .makeTranscriptsFromEnsemblGTF(transcripts)
         } else if (source == "FlyBase" && type == "GTF") {
             transcripts <- .makeTranscriptsFromFlyBaseGTF(transcripts)
-        } else if (source == "GENCODE" && type == "GFF") {
+        } else if (source == "GENCODE" && type == "GFF3") {
             transcripts <- .makeTranscriptsFromGencodeGFF3(transcripts)
         } else if (source == "GENCODE" && type == "GTF") {
             transcripts <- .makeTranscriptsFromGencodeGTF(transcripts)
-        } else if (source == "RefSeq" && type == "GFF") {
+        } else if (source == "RefSeq" && type == "GFF3") {
             transcripts <- .makeTranscriptsFromRefSeqGFF3(transcripts)
         } else if (source == "WormBase" && type == "GTF") {
             transcripts <- .makeTranscriptsFromWormBaseGTF(transcripts)
         } else {
-            stop("Unsupported GFF file format.")
+            stop(paste(
+                "Failed to make transcript-level GRanges.",
+                "Unsupported GFF file format.",
+                sep = "\n"
+            ))
         }
 
         names(transcripts) <- mcols(transcripts)[["transcript_id"]]
@@ -386,7 +394,7 @@ makeGRangesFromGFF <- function(
 .detectGFFType <- function(object) {
     assert(is(object, "GRanges"))
     if (any(c("ID", "Name", "Parent") %in% colnames(mcols(object)))) {
-        "GFF"
+        "GFF3"
     } else {
         "GTF"
     }
