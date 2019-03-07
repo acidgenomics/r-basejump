@@ -1,4 +1,4 @@
-context("Ensembl annotations")
+context("Extra : Ensembl annotations")
 
 mat <- .ucscMatrix
 keep <- as.logical(mat[, "ensembldb"])
