@@ -1,4 +1,4 @@
-context("Remote GFF file import")
+context("Extra : Remote GFF file import")
 
 levels <- c("genes", "transcripts")
 
@@ -187,11 +187,6 @@ with_parameters_test_that(
 
 
 # WormBase =====================================================================
-# FIXME There seems to be an issue with WormBase GTF.
-# GRanges does not contain `geneName` in mcols().
-# GRanges does not contain `transcriptName` in mcols().
-# Is this due to the merge step failing because of identifier garbage?
-
 wormbaseGTF <- localOrRemoteFile(pasteURL(
     "ftp.wormbase.org",
     "pub",
@@ -204,7 +199,7 @@ wormbaseGTF <- localOrRemoteFile(pasteURL(
     "c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz",
     protocol = "ftp"
 ))
-wormbaseLengths <- c(47169L, 61388L)
+wormbaseLengths <- c(47173L, 61416L)
 
 with_parameters_test_that(
     "Wormbase GTF", {
