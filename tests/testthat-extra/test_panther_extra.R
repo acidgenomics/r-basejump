@@ -1,4 +1,4 @@
-context("PANTHER releases")
+context("Extra : PANTHER releases")
 
 organisms <- names(.pantherMappings)
 
