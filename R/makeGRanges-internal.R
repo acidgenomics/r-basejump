@@ -29,22 +29,22 @@
     names <- as.character(mcols(object)[[idCol]])
     assert(!any(is.na(names)))
 
-    # Warn if the object contains invalid names, showing offenders.
-    if (!isTRUE(validNames(names))) {
-        invalid <- setdiff(names, make.names(names))
-        # Alternatively, can warn here, but it may be too annoying.
+    # Inform the user if the object contains invalid names, showing offenders.
+    invalid <- setdiff(names, make.names(names))
+    if (hasLength(invalid)) {
+        invalid <- sort(unique(invalid))
         message(paste0(
             length(invalid), " invalid names: ",
-            toString(sort(invalid), width = 200L)
+            toString(invalid, width = 200L)
         ))
     }
+    rm(invalid)
 
     # Split into GRangesList if object contains multiple ranges per feature.
     if (hasDuplicates(names)) {
         message(paste0(
             "GRanges contains multiple ranges per ", idCol, ".\n",
-            "Splitting into GRangesList.",
-            sep = "\n"
+            "Splitting into GRangesList."
         ))
         # Metadata will get dropped during `split()` call; stash and reassign.
         metadata <- metadata(object)
@@ -297,10 +297,12 @@
         isSubset("gene_id", colnames(mcols(transcripts))),
         isSubset("gene_id", colnames(mcols(genes)))
     )
+
     geneCols <- setdiff(
         x = colnames(mcols(genes)),
         y = colnames(mcols(transcripts))
     )
+
     # Only attempt the merge if there's useful additional metadata to include.
     # Note that base `merge()` can reorder rows, so be careful here.
     if (length(geneCols) > 0L) {
@@ -312,16 +314,21 @@
             by = "gene_id"
         )
         # Ensure that we're calling `S4Vectors::merge()`, not `base::merge()`.
-        assert(is(merge, "DataFrame"))
+        assert(
+            is(merge, "DataFrame"),
+            identical(nrow(merge), length(transcripts))
+        )
         # The merge step will drop row names, so we need to reassign.
         rownames(merge) <- merge[["transcript_id"]]
         # Reorder to match the original transcripts object.
         # Don't assume this is alphabetically sorted.
         merge <- merge[names(transcripts), , drop = FALSE]
-        assert(identical(
-            x = mcols(transcripts)[["transcript_id"]],
-            y = merge[["transcript_id"]]
-        ))
+        assert(
+            identical(
+                x = mcols(transcripts)[["transcript_id"]],
+                y = merge[["transcript_id"]]
+            )
+        )
         mcols(transcripts) <- merge
     }
     transcripts

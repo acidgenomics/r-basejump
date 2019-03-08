@@ -227,7 +227,6 @@ makeGRangesFromGFF <- function(
     # even when transcripts are requested. We'll merge this object into the
     # transcript-level GRanges below, when possible.
     genes <- object
-
     # Drop any rows that aren't gene specific.
     genes <- genes[!is.na(mcols(genes)[["gene_id"]])]
     genes <- genes[is.na(mcols(genes)[["transcript_id"]])]
@@ -254,6 +253,9 @@ makeGRangesFromGFF <- function(
             sep = "\n"
         ))
     }
+
+    # Drop columns that contain all NA.
+    mcols(genes) <- removeNA(mcols(genes))
 
     names(genes) <- mcols(genes)[["gene_id"]]
     metadata(genes)[["level"]] <- "genes"
@@ -290,6 +292,10 @@ makeGRangesFromGFF <- function(
                 sep = "\n"
             ))
         }
+
+        # Drop columns that contain all NA.
+        # This step is necessary for gene-level merge step to work.
+        mcols(transcripts) <- removeNA(mcols(transcripts))
 
         names(transcripts) <- mcols(transcripts)[["transcript_id"]]
         metadata(transcripts)[["level"]] <- "transcripts"
