@@ -1,8 +1,3 @@
-# FIXME Can we get RefSeq to return genes/transcripts as `GRanges` instead of
-# `GRangesList`?
-
-
-
 # RefSeq
 #
 # GFF
