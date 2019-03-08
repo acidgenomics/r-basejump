@@ -294,13 +294,7 @@ makeGRangesFromGFF <- function(
         names(transcripts) <- mcols(transcripts)[["transcript_id"]]
         metadata(transcripts)[["level"]] <- "transcripts"
 
-        if (source == "RefSeq") {
-            message("Skipping gene metadata merge for RefSeq transcripts.")
-            # Skip gene-level metadata merge for RefSeq transcripts.
-            # This feature isn't supported yet, because RefSeq doesn't return
-            # ranges 1:1 nicely for genes and transcripts.
-            out <- transcripts
-        } else {
+        if (is(genes, "GRanges")) {
             # By default, merge the gene-level annotations into the
             # transcript-level ones, for objects that have ranges 1:1 with the
             # identifiers.
@@ -308,6 +302,11 @@ makeGRangesFromGFF <- function(
                 transcripts = transcripts,
                 genes = genes
             )
+        } else {
+            message("Skipping gene metadata merge.")
+            # Skip gene-level metadata merge for GRanges that have been split
+            # into GRangesList.
+            out <- transcripts
         }
     }
 
