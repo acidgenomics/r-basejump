@@ -24,8 +24,6 @@ test_that("Ensembl2Entrez", {
 
 context("Gene2Symbol")
 
-# FIXME Add coverage for `format` arguments.
-
 format <- methodFormals(
     f = "Gene2Symbol",
     signature = "SummarizedExperiment",
@@ -41,6 +39,8 @@ with_parameters_test_that(
     },
     format = format
 )
+
+rm(format)
 
 
 
