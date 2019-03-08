@@ -1,3 +1,5 @@
+# nolint start
+
 #' Make `GRanges` from a GFF/GTF file
 #'
 #' @details
@@ -155,6 +157,9 @@
 #' ## Transcripts
 #' x <- makeGRangesFromGFF(file = file, level = "transcripts")
 #' summary(x)
+
+# nolint end
+
 makeGRangesFromGFF <- function(
     file,
     level = c("genes", "transcripts"),
@@ -172,6 +177,8 @@ makeGRangesFromGFF <- function(
     object <- import(file)
     # Slot the source (e.g. Ensembl) and type (e.g. GTF) into `metadata()`.
     object <- .slotGFFDetectInfo(object)
+    # Note that this metadata is used by TxDb caller for GFF3 (see below).
+    metadata(object)[["file"]] <- file
     # Pull detection strings from GRanges `metadata()`.
     detect <- metadata(object)[["detect"]]
     assert(is.character(detect))
@@ -226,22 +233,26 @@ makeGRangesFromGFF <- function(
     genes <- genes[is.na(mcols(genes)[["transcript_id"]])]
     assert(hasLength(genes))
 
-    if (source == "Ensembl" && type == "GFF") {
+    if (source == "Ensembl" && type == "GFF3") {
         genes <- .makeGenesFromEnsemblGFF3(genes)
     } else if (source == "Ensembl" && type == "GTF") {
         genes <- .makeGenesFromEnsemblGTF(genes)
     } else if (source == "FlyBase" && type == "GTF") {
         genes <- .makeGenesFromFlyBaseGTF(genes)
-    } else if (source == "GENCODE" && type == "GFF") {
+    } else if (source == "GENCODE" && type == "GFF3") {
         genes <- .makeGenesFromGencodeGFF3(genes)
     } else if (source == "GENCODE" && type == "GTF") {
         genes <- .makeGenesFromGencodeGTF(genes)
-    } else if (source == "RefSeq" && type == "GFF") {
+    } else if (source == "RefSeq" && type == "GFF3") {
         genes <- .makeGenesFromRefSeqGFF3(genes)
     } else if (source == "WormBase" && type == "GTF") {
         genes <- .makeGenesFromWormBaseGTF(genes)
     } else {
-        stop("Unsupported GFF file format.")
+        stop(paste(
+            "Failed to make gene-level GRanges.",
+            "Unsupported GFF source file.",
+            sep = "\n"
+        ))
     }
 
     names(genes) <- mcols(genes)[["gene_id"]]
@@ -258,22 +269,26 @@ makeGRangesFromGFF <- function(
             transcripts[!is.na(mcols(transcripts)[["transcript_id"]])]
         assert(hasLength(transcripts))
 
-        if (source == "Ensembl" && type == "GFF") {
+        if (source == "Ensembl" && type == "GFF3") {
             transcripts <- .makeTranscriptsFromEnsemblGFF3(transcripts)
         } else if (source == "Ensembl" && type == "GTF") {
             transcripts <- .makeTranscriptsFromEnsemblGTF(transcripts)
         } else if (source == "FlyBase" && type == "GTF") {
             transcripts <- .makeTranscriptsFromFlyBaseGTF(transcripts)
-        } else if (source == "GENCODE" && type == "GFF") {
+        } else if (source == "GENCODE" && type == "GFF3") {
             transcripts <- .makeTranscriptsFromGencodeGFF3(transcripts)
         } else if (source == "GENCODE" && type == "GTF") {
             transcripts <- .makeTranscriptsFromGencodeGTF(transcripts)
-        } else if (source == "RefSeq" && type == "GFF") {
+        } else if (source == "RefSeq" && type == "GFF3") {
             transcripts <- .makeTranscriptsFromRefSeqGFF3(transcripts)
         } else if (source == "WormBase" && type == "GTF") {
             transcripts <- .makeTranscriptsFromWormBaseGTF(transcripts)
         } else {
-            stop("Unsupported GFF file format.")
+            stop(paste(
+                "Failed to make transcript-level GRanges.",
+                "Unsupported GFF file format.",
+                sep = "\n"
+            ))
         }
 
         names(transcripts) <- mcols(transcripts)[["transcript_id"]]
@@ -381,58 +396,10 @@ makeGRangesFromGFF <- function(
 .detectGFFType <- function(object) {
     assert(is(object, "GRanges"))
     if (any(c("ID", "Name", "Parent") %in% colnames(mcols(object)))) {
-        "GFF"
+        "GFF3"
     } else {
         "GTF"
     }
-}
-
-
-
-# Merge the gene-level annotations (`geneName`, `geneBiotype`) into a
-# transcript-level GRanges object.
-.mergeGenesIntoTranscripts <- function(transcripts, genes) {
-    message("Merging gene-level annotations into transcript-level object.")
-    assert(
-        is(transcripts, "GRanges"),
-        is(genes, "GRanges"),
-        # Note that `hasValidNames()` will error on WormBase transcripts.
-        hasNames(transcripts),
-        hasNames(genes),
-        isSubset("transcript_id", colnames(mcols(transcripts))),
-        identical(names(transcripts), mcols(transcripts)[["transcript_id"]]),
-        # Don't proceed unless we have `gene_id` column to use for merge.
-        isSubset("gene_id", colnames(mcols(transcripts))),
-        isSubset("gene_id", colnames(mcols(genes)))
-    )
-    geneCols <- setdiff(
-        x = colnames(mcols(genes)),
-        y = colnames(mcols(transcripts))
-    )
-    # Only attempt the merge if there's useful additional metadata to include.
-    # Note that base `merge()` can reorder rows, so be careful here.
-    if (length(geneCols) > 0L) {
-        geneCols <- c("gene_id", geneCols)
-        merge <- merge(
-            x = mcols(transcripts),
-            y = mcols(genes)[, geneCols, drop = FALSE],
-            all.x = TRUE,
-            by = "gene_id"
-        )
-        # Ensure that we're calling `S4Vectors::merge()`, not `base::merge()`.
-        assert(is(merge, "DataFrame"))
-        # The merge step will drop row names, so we need to reassign.
-        rownames(merge) <- merge[["transcript_id"]]
-        # Reorder to match the original transcripts object.
-        # Don't assume this is alphabetically sorted.
-        merge <- merge[names(transcripts), , drop = FALSE]
-        assert(identical(
-            x = mcols(transcripts)[["transcript_id"]],
-            y = merge[["transcript_id"]]
-        ))
-        mcols(transcripts) <- merge
-    }
-    transcripts
 }
 
 
@@ -603,8 +570,10 @@ makeGRangesFromGFF <- function(
 
     # Ranges and seqnames ------------------------------------------------------
     # Compare the ranges and inform the user about mismatches.
-    # help(topic = "IPosRanges-comparison", package = "IRanges")
-    # vignette(topic = "IRangesOverview", package = "IRanges")
+    # nolint start
+    # > help(topic = "IPosRanges-comparison", package = "IRanges")
+    # > vignette(topic = "IRangesOverview", package = "IRanges")
+    # nolint end
     r1 <- ranges(gr1)
     r2 <- ranges(gr2)
     diff <- r1 != r2
@@ -664,7 +633,7 @@ makeGRangesFromGFF <- function(
     txdb <- withCallingHandlers(expr = {
         # Using `tryCatch()` here to change error message, if necessary.
         tryCatch(
-            expr = if (type == "GFF") {
+            expr = if (type == "GFF3") {
                 # `makeTxDbFromGRanges()` often chokes on GRanges from GFF3,
                 # imported via `rtracklayer::import()`, so switch to using
                 # `makeTxDbFromGFF()` instead, which always works.

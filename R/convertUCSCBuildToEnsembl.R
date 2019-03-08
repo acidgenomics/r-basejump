@@ -9,7 +9,7 @@
 #'
 #' @seealso
 #' - [UCSC hgGateway](https://genome.ucsc.edu/cgi-bin/hgGateway)
-#' - [bcbio genome recipes](https://github.com/bcbio/bcbio-nextgen/tree/master/config/genomes)
+#' - [bcbio genome recipes](https://goo.gl/164J2P)
 #'
 #' @examples
 #' from <- c("hg19", "hg38")
@@ -34,6 +34,7 @@ convertUCSCBuildToEnsembl <- function(object) {
 
 
 
+# nolint start
 .ucscMatrix <- matrix(
     dimnames = list(NULL, c(
         "ucsc",       "ensembl",           "date",    "organism",                 "ensembldb"
@@ -64,3 +65,4 @@ convertUCSCBuildToEnsembl <- function(object) {
     ),
     ncol = 5L, byrow = TRUE
 )
+# nolint end
