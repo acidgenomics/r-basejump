@@ -118,13 +118,7 @@ with_parameters_test_that(
 with_parameters_test_that(
     "WormBase GTF", {
         file <- files[["wormbaseGTF"]]
-        expect_warning(
-            makeGRangesFromGFF(file = file, level = level),
-            "geneName"
-        )
-        suppressWarnings(
-            object <- makeGRangesFromGFF(file = file, level = level)
-        )
+        object <- makeGRangesFromGFF(file = file, level = level)
         expect_s4_class(object, "GRanges")
         expect_length(object, length)
     },
@@ -139,20 +133,12 @@ test_that("RefSeq GFF", {
     file <- files[["refseqGFF"]]
 
     # Genes
-    expect_warning(
-        makeGRangesFromGFF(file = file, level = "genes"),
-        "RefSeq support is experimental."
-    )
-    suppressWarnings(
-        object <- makeGRangesFromGFF(file = file, level = "genes")
-    )
+    object <- makeGRangesFromGFF(file = file, level = "genes")
     expect_s4_class(object, "GRanges")
     expect_length(object, 62L)
 
     # Transcripts
-    suppressWarnings(
-        object <- makeGRangesFromGFF(file = file, level = "transcripts")
-    )
+    object <- makeGRangesFromGFF(file = file, level = "transcripts")
     expect_s4_class(object, "GRangesList")
     expect_length(object, 100L)
 })
