@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PANTHER database annotations — PANTHER-class • basejump</title>
+<title>Make <code>GRanges</code> from <code>EnsDb</code> object — makeGRangesFromEnsDb • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,10 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="PANTHER database annotations — PANTHER-class" />
+<meta property="og:title" content="Make <code>GRanges</code> from <code>EnsDb</code> object — makeGRangesFromEnsDb" />
 
-<meta property="og:description" content="PANTHER gene ontology definitions. PANTHER stands
-for Protein ANalysis THrough Evolutionary Relationships." />
+<meta property="og:description" content="Make GRanges from EnsDb object" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,71 +104,57 @@ for Protein ANalysis THrough Evolutionary Relationships." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>PANTHER database annotations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/PANTHER.R'><code>R/PANTHER.R</code></a></small>
-    <div class="hidden name"><code>PANTHER-class.Rd</code></div>
+    <h1>Make <code>GRanges</code> from <code>EnsDb</code> object</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGRangesFromEnsDb.R'><code>R/makeGRangesFromEnsDb.R</code></a></small>
+    <div class="hidden name"><code>makeGRangesFromEnsDb.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><a href='http://www.pantherdb.org'>PANTHER</a> gene ontology definitions. PANTHER stands
-for <strong>P</strong>rotein <strong>AN</strong>alysis <strong>TH</strong>rough <strong>E</strong>volutionary <strong>R</strong>elationships.</p>
+    <p>Make <code>GRanges</code> from <code>EnsDb</code> object</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>PANTHER</span>(<span class='no'>organism</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"basejump.progress"</span>, <span class='fl'>FALSE</span>))</pre>
+    <pre class="usage"><span class='fu'>makeGRangesFromEnsDb</span>(<span class='no'>object</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>organism</th>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>level</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Full Latin organism name.</p>
-<p>Supported organisms:</p><ul>
-<li><p><em>Caenorhabditis elegans</em></p></li>
-<li><p><em>Drosophila melanogaster</em></p></li>
-<li><p><em>Homo sapiens</em></p></li>
-<li><p><em>Mus musculus</em></p></li>
-</ul></td>
-    </tr>
-    <tr>
-      <th>release</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>.
-PANTHER release version. If <code>NULL</code>, defaults to current release. Consult
-the PANTHER website for a list of release versions available from the FTP
-server (e.g. <code>"14.0"</code>).</p></td>
-    </tr>
-    <tr>
-      <th>progress</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
-Use <code><a href='https://www.rdocumentation.org/packages/pbapply/topics/pbapply'>pbapply::pblapply()</a></code> to show progress.</p></td>
+Return as genes or transcripts.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>PANTHER</code>. Contains a <code>DataFrame</code>.</p>
+    <p>Use specific <code>EnsDb</code> object as annotation source.
+Alternatively, can pass in an EnsDb package name as a <code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>options</a></span>(<span class='kw'>basejump.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>PANTHER</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for homo_sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing hgnc.txt.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing hgnc.txt using data.table::fread().</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Length   Class    Mode 
-#&gt;       9 PANTHER      S4 </div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='st'>"EnsDb.Hsapiens.v75"</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/installed.packages'>installed.packages</a></span>())) {
+    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)
+}</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: EnsDb.Hsapiens.v75</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
+#&gt; <span class='message'>  - Genome Build: GRCh37</span>
+#&gt; <span class='message'>  - Ensembl Release: 75</span>
+#&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>64102 genes detected.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p>Michael Steinbaugh</p>
   </div>
 </div>
 
