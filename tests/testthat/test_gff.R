@@ -2,9 +2,24 @@ context("GFF file import")
 
 levels <- c("genes", "transcripts")
 
+files <- c(
+    ensemblGFF  = "ensembl.gff3.gz",
+    ensemblGTF  = "ensembl.gtf.gz",
+    flybaseGTF  = "flybase.gtf.gz",
+    gencodeGFF  = "gencode.gff3.gz",
+    gencodeGTF  = "gencode.gtf.gz",
+    refseqGFF   = "refseq.gff.gz",
+    wormbaseGTF = "wormbase.gtf.gz"
+)
+# Note that `file.path()` call drops names.
+names <- names(files)
+files <- file.path(extdata, files)
+names(files) <- names
+rm(names)
+
 # nolint start
 #
-# `devtools::check()` will error out on this call.
+# `devtools::check()` is currently choking on this call.
 # > files <- system.file("extdata", files, package = "basejump")
 #
 # ── 1. Error: (unknown) (@test_gff.R#18)  ───────────────────────────────────────
@@ -25,22 +40,7 @@ levels <- c("genes", "transcripts")
 # 2: eval(code, test_env)
 #
 # nolint end
-
-files <- c(
-    ensemblGFF  = "ensembl.gff3.gz",
-    ensemblGTF  = "ensembl.gtf.gz",
-    flybaseGTF  = "flybase.gtf.gz",
-    gencodeGFF  = "gencode.gff3.gz",
-    gencodeGTF  = "gencode.gtf.gz",
-    refseqGFF   = "refseq.gff.gz",
-    wormbaseGTF = "wormbase.gtf.gz"
-)
-# Note that `file.path()` call drops names.
-names <- names(files)
-files <- file.path(extdata, files)
-names(files) <- names
-rm(names)
-stopifnot(all(file.exists(files)))
+skip_if_not(all(file.exists(files)))
 
 
 
