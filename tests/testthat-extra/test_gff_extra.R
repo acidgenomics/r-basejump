@@ -152,8 +152,6 @@ with_parameters_test_that(
 
 
 # RefSeq =======================================================================
-# FIXME Can we return with a better identifier than the gene/transcript symbol?
-# FIXME Can we get this to return as GRanges instead?
 refseqGFF3 <- localOrRemoteFile(pasteURL(
     "ftp.ncbi.nlm.nih.gov",
     "genomes",
