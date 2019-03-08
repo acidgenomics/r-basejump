@@ -273,6 +273,13 @@ test_that("makeTx2GeneFromEnsembl", {
     expect_identical(nrow(tx2gene), 216741L)
 })
 
+test_that("Ensembl2Entrez", {
+    hs <- makeGRangesFromEnsembl(organism = organism, release = release)
+    object <- Ensembl2Entrez(hs)
+    expect_s4_class(object, "Ensembl2Entrez")
+    expect_identical(nrow(object), 63970L)
+})
+
 
 
 # GTF/GFF ======================================================================
@@ -533,22 +540,19 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 # Databases ====================================================================
 context("Annotations : Databases")
 
-# FIXME Add code coverage:
-# - Ensembl2Entrez
-# - geneSynonyms
-# - HGNC2Ensembl
-# - MGI2Ensembl
-
 test_that("EggNOG", {
-    expect_is(object = EggNOG(), class = "EggNOG")
+    object <- EggNOG()
+    expect_s4_class(object, "EggNOG")
 })
 
-# FIXME Add coverage for all supported organisms.
-test_that("geneSynonyms", {
-    expect_is(
-        object = geneSynonyms(organism = "Homo sapiens"),
-        class = "grouped_df"
-    )
+test_that("HGNC2Ensembl", {
+    object <- HGNC2Ensembl()
+    expect_s4_class(object, "HGNC2Ensembl")
+})
+
+test_that("MGI2Ensembl", {
+    object <- MGI2Ensembl()
+    expect_s4_class(object, "MGI2Ensembl")
 })
 
 with_parameters_test_that(
@@ -556,7 +560,15 @@ with_parameters_test_that(
         invisible(capture.output(
             object <- PANTHER(organism)
         ))
-        expect_is(object, "PANTHER")
+        expect_s4_class(object, "PANTHER")
     },
     organism = names(.pantherMappings)
 )
+
+# Full organism support is covered in extra checks.
+test_that("geneSynonyms", {
+    expect_is(
+        object = geneSynonyms(organism = "Homo sapiens"),
+        class = "grouped_df"
+    )
+})
