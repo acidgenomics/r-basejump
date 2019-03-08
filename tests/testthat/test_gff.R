@@ -2,6 +2,30 @@ context("GFF file import")
 
 levels <- c("genes", "transcripts")
 
+# nolint start
+#
+# `devtools::check()` will error out on this call.
+# > files <- system.file("extdata", files, package = "basejump")
+#
+# ── 1. Error: (unknown) (@test_gff.R#18)  ───────────────────────────────────────
+# 'names' attribute [7] must be the same length as the vector [1]
+# 1: .handleSimpleError(function (e)
+#    {
+#        handled <<- TRUE
+#        test_error <<- e
+#        options(expressions = expressions_opt_new)
+#        on.exit(options(expressions = expressions_opt), add = TRUE)
+#        e$expectation_calls <- frame_calls(11, 2)
+#        test_error <<- e
+#        register_expectation(e)
+#        e$handled <- TRUE
+#        test_error <<- e
+#    }, "'names' attribute [7] must be the same length as the vector [1]", quote(names(files)
+# <- names)) at testthat/test_gff.R:18
+# 2: eval(code, test_env)
+#
+# nolint end
+
 files <- c(
     ensemblGFF  = "ensembl.gff3.gz",
     ensemblGTF  = "ensembl.gtf.gz",
@@ -11,10 +35,9 @@ files <- c(
     refseqGFF   = "refseq.gff.gz",
     wormbaseGTF = "wormbase.gtf.gz"
 )
+# Note that `file.path()` call drops names.
 names <- names(files)
-# Note that `system.file()` call drops names.
-# `devtools::check()` fails on this step unless we install the package first.
-files <- system.file("extdata", files, package = "basejump")
+files <- file.path(extdata, files)
 names(files) <- names
 rm(names)
 stopifnot(all(file.exists(files)))
