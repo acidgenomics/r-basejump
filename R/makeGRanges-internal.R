@@ -32,16 +32,16 @@
     # Warn if the object contains invalid names, showing offenders.
     if (!isTRUE(validNames(names))) {
         invalid <- setdiff(names, make.names(names))
-        warning(paste0(
-            length(invalid),
-            " invalid names detected: ",
+        # Alternatively, can warn here, but it may be too annoying.
+        message(paste0(
+            length(invalid), " invalid names: ",
             toString(sort(invalid), width = 200L)
         ))
     }
 
     # Split into GRangesList if object contains multiple ranges per feature.
     if (hasDuplicates(names)) {
-        warning(paste0(
+        message(paste0(
             "GRanges contains multiple ranges per ", idCol, ".\n",
             "Splitting into GRangesList.",
             sep = "\n"
@@ -126,7 +126,7 @@
         geneNameCol <- "geneName"
         geneNameData <- data[[geneNameCol]]
     } else {
-        warning("GRanges does not contain gene names in mcols().")
+        message("GRanges does not contain gene names in mcols().")
         geneNameCol <- NULL
         geneNameData <- NA
     }
@@ -140,7 +140,7 @@
         seqnamesData <- data[[seqnamesCol]]
     } else {
         # Don't think this is currently possible to hit, but keep just in case.
-        warning("GRanges does not contain seqnames.")
+        message("GRanges does not contain seqnames.")
         seqnamesCol <- NULL
         seqnamesData <- NA
     }
@@ -255,6 +255,80 @@
 
 
 
+
+
+
+
+
+# Merge the gene-level annotations (`geneName`, `geneBiotype`) into a
+# transcript-level GRanges object.
+
+# nolint start
+# Alternate merge approach, which works but can have issues with invalid names.
+# Saccharomyces cerevisiae messes up this step because of names (e.g. ETS1-1).
+# > mcols <- as(left_join(
+# >     x = as_tibble(mcols(transcripts), rownames = NULL),
+# >     y = as_tibble(mcols(genes), rownames = NULL),
+# >     by = "gene_id"
+# > ), Class = "DataFrame")
+# > assert(identical(
+# >     x = mcols(transcripts)[["tx_id"]],
+# >     y = mcols[["tx_id"]]
+# > ))
+# nolint end
+
+.mergeGenesIntoTranscripts <- function(transcripts, genes) {
+    message("Merging gene-level annotations into transcript-level object.")
+    # Use `transcript` prefix instead of `tx` consistently.
+    colnames(mcols(transcripts)) <- gsub(
+        pattern = "^tx_",
+        replacement = "transcript_",
+        x = colnames(mcols(transcripts))
+    )
+    assert(
+        is(transcripts, "GRanges"),
+        is(genes, "GRanges"),
+        # Note that `hasValidNames()` will error on WormBase transcripts.
+        hasNames(transcripts),
+        hasNames(genes),
+        isSubset("transcript_id", colnames(mcols(transcripts))),
+        identical(names(transcripts), mcols(transcripts)[["transcript_id"]]),
+        # Don't proceed unless we have `gene_id` column to use for merge.
+        isSubset("gene_id", colnames(mcols(transcripts))),
+        isSubset("gene_id", colnames(mcols(genes)))
+    )
+    geneCols <- setdiff(
+        x = colnames(mcols(genes)),
+        y = colnames(mcols(transcripts))
+    )
+    # Only attempt the merge if there's useful additional metadata to include.
+    # Note that base `merge()` can reorder rows, so be careful here.
+    if (length(geneCols) > 0L) {
+        geneCols <- c("gene_id", geneCols)
+        merge <- merge(
+            x = mcols(transcripts),
+            y = mcols(genes)[, geneCols, drop = FALSE],
+            all.x = TRUE,
+            by = "gene_id"
+        )
+        # Ensure that we're calling `S4Vectors::merge()`, not `base::merge()`.
+        assert(is(merge, "DataFrame"))
+        # The merge step will drop row names, so we need to reassign.
+        rownames(merge) <- merge[["transcript_id"]]
+        # Reorder to match the original transcripts object.
+        # Don't assume this is alphabetically sorted.
+        merge <- merge[names(transcripts), , drop = FALSE]
+        assert(identical(
+            x = mcols(transcripts)[["transcript_id"]],
+            y = merge[["transcript_id"]]
+        ))
+        mcols(transcripts) <- merge
+    }
+    transcripts
+}
+
+
+
 # This step drops extra columns in `mcols()` and ensures that factor levels get
 # dropped, to reduce memory overhead.
 .minimizeGRanges <- function(object) {
@@ -306,27 +380,20 @@
 
     # Standardize the metadata columns.
     mcols <- mcols(object)
-    # Always return using camel case, even though GFF/GTF files use snake.
-    mcols <- camel(mcols)
-    # Ensure "ID" is always capitalized (e.g. "entrezid").
-    colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
-    # Use `transcript` instead of `tx` consistently.
+    # Use `transcript` prefix instead of `tx` consistently.
     colnames(mcols) <- gsub(
-        pattern = "^tx",
-        replacement = "transcript",
+        pattern = "^tx_",
+        replacement = "transcript_",
         x = colnames(mcols)
     )
-
-    # Warn on missing name (symbol) columns.
-    if (!"geneName" %in% colnames(mcols)) {
-        warning("GRanges does not contain `geneName` in mcols().")
-    }
-    if (
-        "transcriptID" %in% colnames(mcols) &&
-        !"transcriptName" %in% colnames(mcols)
-    ) {
-        warning("GRanges does not contain `transcriptName` in mcols().")
-    }
+    # Ensure "ID" is always capitalized (e.g. "entrezid").
+    colnames(mcols) <- gsub(
+        pattern = "(.+)id$",
+        replacement = "\\1ID",
+        x = colnames(mcols)
+    )
+    # Always return using camel case, even though GFF/GTF files use snake.
+    mcols <- camel(mcols)
 
     # Always use `geneName` instead of `symbol`.
     # Note that ensembldb output duplicates these.
@@ -343,6 +410,8 @@
     mcols(object) <- mcols
 
     # Ensure broad class definitions are included, using run-length encoding.
+    # Don't pass `mcols` to `.broadClass()`, use the GRanges instead because
+    # we need the corresponding seqnames for calculations.
     mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
 
     # Finally, sort the metadata columns alphabetically.

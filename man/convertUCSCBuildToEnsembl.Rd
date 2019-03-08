@@ -24,6 +24,6 @@ print(to)
 \seealso{
 \itemize{
 \item \href{https://genome.ucsc.edu/cgi-bin/hgGateway}{UCSC hgGateway}
-\item \href{https://github.com/bcbio/bcbio-nextgen/tree/master/config/genomes}{bcbio genome recipes}
+\item \href{https://goo.gl/164J2P}{bcbio genome recipes}
 }
 }

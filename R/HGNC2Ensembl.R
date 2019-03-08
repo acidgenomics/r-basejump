@@ -30,18 +30,18 @@ HGNC2Ensembl <-  # nolint
         message("Obtaining HGNC to Ensembl gene ID mappings.")
         # nolint start
         # `readr::read_tsv()` has parsing issues with this file.
-        #> data <- read_tsv(
-        #>     file = file,
-        #>     col_types = cols(),
-        #>     progress = FALSE
-        #> )
-        #>> Warning: 5075 parsing failures.
-        #>> row                      col           expected    actual                                                                        file
-        #>> 2200 kznf_gene_catalog        1/0/T/F/TRUE/FALSE 404       'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
-        #>> 2210 kznf_gene_catalog        1/0/T/F/TRUE/FALSE 341       'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
-        #>> 2211 kznf_gene_catalog        1/0/T/F/TRUE/FALSE 90        'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
-        #>> 2276 intermediate_filament_db 1/0/T/F/TRUE/FALSE HGNC:1040 'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
-        #>> 2277 intermediate_filament_db 1/0/T/F/TRUE/FALSE HGNC:1041 'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
+        # > data <- read_tsv(
+        # >     file = file,
+        # >     col_types = cols(),
+        # >     progress = FALSE
+        # > )
+        # >> Warning: 5075 parsing failures.
+        # >> row                      col           expected    actual                                                                        file
+        # >> 2200 kznf_gene_catalog        1/0/T/F/TRUE/FALSE 404       'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
+        # >> 2210 kznf_gene_catalog        1/0/T/F/TRUE/FALSE 341       'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
+        # >> 2211 kznf_gene_catalog        1/0/T/F/TRUE/FALSE 90        'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
+        # >> 2276 intermediate_filament_db 1/0/T/F/TRUE/FALSE HGNC:1040 'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
+        # >> 2277 intermediate_filament_db 1/0/T/F/TRUE/FALSE HGNC:1041 'ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt'
         #
         # `data.table::fread()` appears to load clean, with no warnings.
         # nolint end
