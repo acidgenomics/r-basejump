@@ -128,6 +128,7 @@ Collate:
     'organism-methods.R'
     'package.R'
     'params.R'
+    'pheatmap-internal.R'
     'plotCorrelationHeatmap-methods.R'
     'plotCounts-methods.R'
     'plotCountsPerBiotype-methods.R'
