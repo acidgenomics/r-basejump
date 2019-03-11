@@ -338,40 +338,58 @@
 
 # This step drops extra columns in `mcols()` and ensures that factor levels get
 # dropped, to reduce memory overhead.
+#
+# Note that `removeNA()` call currently will error on complex columns.
+# For example, this will error on `CharacterList` columns returned from
+# GENCODE GFF3 file.
 .minimizeGRanges <- function(object) {
     assert(is(object, "GRanges"))
     mcols <- mcols(object)
+
+    # Drop any complex S4 columns that aren't either atomic or list.
+    keep <- bapply(
+        X = mcols,
+        FUN = function(x) {
+            is.atomic(x) || is.list(x)
+        }
+    )
+    mcols <- mcols[, keep, drop = FALSE]
+
     # Ensure NA values are properly set, prior to `removeNA()` call.
     mcols <- sanitizeNA(mcols)
+
     # Remove columns that are all `NA`. This step will remove all
     # transcript-level columns from gene-level ranges.
     mcols <- removeNA(mcols)
+
+    # Apply run-length encoding on all atomic columns, to lower memory overhead.
+    # Note that all character columns will be coerced to factor, prior to Rle.
     mcols <- lapply(
         X = mcols,
-        FUN = function(col) {
-            if (!is.atomic(col) || isS4(col)) {
+        FUN = function(x) {
+            if (!is.atomic(x) || isS4(x)) {
                 # `I()` inhibits reinterpretation and returns `AsIs` class.
                 # This keeps complex columns (e.g. Entrez list) intact.
                 # Recommended in the `DataFrame` documentation.
-                I(col)
+                I(x)
             } else {
                 # Check to see if any character columns containing repeated
                 # values should be coerced to factor first (e.g. geneBiotype).
-                if (is.character(col) && any(duplicated(col))) {
-                    col <- as.factor(col)
+                if (is.character(x) && any(duplicated(x))) {
+                    x <- as.factor(x)
                 }
                 # Ensure factor levels get correctly reset, to save memory.
-                if (is.factor(col)) {
-                    col <- droplevels(col)
+                if (is.factor(x)) {
+                    x <- droplevels(x)
                 }
                 # Use S4 run length encoding (Rle) for atomic metadata columns.
                 # Many of these elements are repetitive, and this makes
                 # operations faster.
-                Rle(col)
+                Rle(x)
             }
         }
     )
-    # `lapply()` will return as list, so we need to coerce back to DataFrame.
+    # `lapply()` returns as list, so we need to coerce back to DataFrame.
     mcols <- as(mcols, "DataFrame")
     mcols(object) <- mcols
     object
