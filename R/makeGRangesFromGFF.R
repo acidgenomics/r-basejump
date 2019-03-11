@@ -148,7 +148,10 @@
 #' - [GenomicFeatures::makeTxDbFromGFF()].
 #'
 #' @examples
-#' file <- system.file("extdata/ensembl.gtf.gz", package = "basejump")
+#' file <- system.file(
+#'     "extdata", "ensembl.gtf.gz",
+#'     package = "basejump", mustWork = TRUE
+#' )
 #'
 #' ## Genes
 #' x <- makeGRangesFromGFF(file = file, level = "genes")
