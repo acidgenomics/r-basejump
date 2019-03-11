@@ -126,94 +126,6 @@ bioverbs::plotHeatmap
 
 
 
-# Modified version of `pheatmap:::scale_mat()`. When scaling by row or column,
-# drop features without sufficient variance and inform the user.
-.scaleMatrix <- function(object, scale = c("none", "row", "column")) {
-    assert(is.matrix(object), is.numeric(object))
-    scale <- match.arg(scale)
-
-    if (scale != "none") {
-        message(paste0("Scaling matrix per ", scale, " (z-score)."))
-    }
-
-    # Inform the user if NA values are present.
-    # Note that we're including `na.rm` in `rowVars()` and `colVars()` calls
-    # below to handle this edge case.
-    if (any(is.na(object))) {
-        message("NA values detected in matrix.")
-    }
-
-    # Assert checks to look for sufficient variance when the user is attempting
-    # to apply scaling (z-score). Currently we're keeping this very strict and
-    # only looking to see if there is non-zero variance.
-    varThreshold <- 0L
-
-    # Here we're dropping rows (features) without sufficient variation
-    # automatically. The function errors out intentionally if columns (samples)
-    # don't have sufficient variation.
-    if (scale == "row") {
-        pass <- rowVars(object, na.rm = TRUE) > varThreshold
-        if (!all(pass)) {
-            fail <- !pass
-            n <- sum(fail, na.rm = TRUE)
-            message(paste(
-                sprintf(ngettext(
-                    n = n,
-                    msg1 = "%s row doesn't",
-                    msg2 = "%s rows don't"
-                ), n),
-                "have enough variance:",
-                toString(rownames(object)[which(fail)], width = 200L),
-                "Dropping from return."
-            ))
-            object <- object[pass, , drop = FALSE]
-        }
-    } else if (scale == "column") {
-        pass <- colVars(object, na.rm = TRUE) > varThreshold
-        if (!all(pass)) {
-            fail <- !pass
-            n <- sum(fail, na.rm = TRUE)
-            stop(paste(
-                sprintf(ngettext(
-                    n = n,
-                    msg1 = "%s column doesn't",
-                    msg2 = "%s columns don't"
-                ), n),
-                "have enough variance:",
-                toString(colnames(object)[which(fail)], width = 200L)
-            ))
-        }
-    }
-
-    # Require at least a 2x2 matrix.
-    assert(nrow(object) > 1L, ncol(object) > 1L)
-
-    switch(
-        EXPR = scale,
-        none = object,
-        row = .scaleRows(object),
-        column = .scaleCols(object)
-    )
-}
-
-
-
-.scaleCols <- function(object) {
-    t(.scaleRows(t(object)))
-}
-
-
-
-.scaleRows <- function(object) {
-    assert(is.matrix(object), is.numeric(object))
-    mean <- apply(object, MARGIN = 1L, FUN = mean, na.rm = TRUE)
-    sd <- apply(object, MARGIN = 1L, FUN = sd, na.rm = TRUE)
-    out <- (object - mean) / sd
-    out
-}
-
-
-
 plotHeatmap.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -296,45 +208,16 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # pheatmap supports `clusterRows = TRUE` and `clusterCols = TRUE`, but
         # these have been found to error for some datasets. Therefore, we're
         # performing hclust calculations on own here.
-        if (isTRUE(clusterRows) || isTRUE(clusterCols)) {
-            message(paste0(
-                "Performing hierarchical clustering.\n",
-                "Using stats::hclust(method = ", deparse(clusteringMethod), ")."
-            ))
-            if (isTRUE(clusterRows)) {
-                message("Arranging rows using hclust.")
-                clusterRows <- tryCatch(
-                    expr = hclust(
-                        d = dist(mat),
-                        method = clusteringMethod
-                    ),
-                    error = function(e) {
-                        warning(
-                            "hclust() row calculation failed. Skipping.",
-                            call. = FALSE
-                        )
-                        FALSE
-                    }
-                )
-            }
-            if (isTRUE(clusterCols)) {
-                message("Arranging columns using hclust.")
-                clusterCols <- tryCatch(
-                    expr = hclust(
-                        # Note the use of `t` here.
-                        d = dist(t(mat)),
-                        method = clusteringMethod
-                    ),
-                    error = function(e) {
-                        warning(
-                            "hclust() column calculation failed. Skipping.",
-                            call. = FALSE
-                        )
-                        FALSE
-                    }
-                )
-            }
-        }
+        hc <- .hclust(
+            object = mat,
+            method = clusteringMethod,
+            rows = clusterRows,
+            cols = clusterCols
+        )
+        assert(
+            is.list(hc),
+            identical(names(hc), c("rows", "cols"))
+        )
 
         # Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
@@ -370,8 +253,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             annotationCol = annotationCol,
             annotationColors = annotationColors,
             borderColor = borderColor,
-            clusterCols = clusterCols,
-            clusterRows = clusterRows,
+            clusterCols = hc[["cols"]],
+            clusterRows = hc[["rows"]],
             color = color,
             main = title,
             # We're already applied scaling manually (see above).
