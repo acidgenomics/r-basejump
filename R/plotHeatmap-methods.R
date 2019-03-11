@@ -148,6 +148,9 @@ bioverbs::plotHeatmap
     # only looking to see if there is non-zero variance.
     varThreshold <- 0L
 
+    # Here we're dropping rows (features) without sufficient variation
+    # automatically. The function errors out intentionally if columns (samples)
+    # don't have sufficient variation.
     if (scale == "row") {
         pass <- rowVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
@@ -170,7 +173,7 @@ bioverbs::plotHeatmap
         if (!all(pass)) {
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
-            message(paste(
+            stop(paste(
                 sprintf(ngettext(
                     n = n,
                     msg1 = "%s column doesn't",
@@ -179,7 +182,6 @@ bioverbs::plotHeatmap
                 "have enough variance:",
                 toString(colnames(object)[which(fail)], width = 200L)
             ))
-            object <- object[, pass, drop = FALSE]
         }
     }
 
