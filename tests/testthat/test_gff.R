@@ -11,36 +11,17 @@ files <- c(
     refseqGFF   = "refseq.gff.gz",
     wormbaseGTF = "wormbase.gtf.gz"
 )
-# Note that `file.path()` call drops names.
+
+# Note that `paste()` call drops names.
 names <- names(files)
-files <- file.path(extdata, files)
+files <- paste(
+    basejumpCacheURL,
+    "gff",
+    files,
+    sep = "/"
+)
 names(files) <- names
 rm(names)
-skip_if_not(all(file.exists(files)))
-
-# nolint start
-#
-# `devtools::check()` is currently choking on this call.
-# > files <- system.file("extdata", files, package = "basejump")
-#
-# ── 1. Error: (unknown) (@test_gff.R#18)  ───────────────────────────────────────
-# 'names' attribute [7] must be the same length as the vector [1]
-# 1: .handleSimpleError(function (e)
-#    {
-#        handled <<- TRUE
-#        test_error <<- e
-#        options(expressions = expressions_opt_new)
-#        on.exit(options(expressions = expressions_opt), add = TRUE)
-#        e$expectation_calls <- frame_calls(11, 2)
-#        test_error <<- e
-#        register_expectation(e)
-#        e$handled <- TRUE
-#        test_error <<- e
-#    }, "'names' attribute [7] must be the same length as the vector [1]", quote(names(files)
-# <- names)) at testthat/test_gff.R:18
-# 2: eval(code, test_env)
-#
-# nolint end
 
 
 
