@@ -83,7 +83,6 @@ test_that("aggregateCols", {
 
 
 # geometricMean ================================================================
-# FIXME Parameterize this test.
 test_that("geometricMean", {
     int <- seq(from = 1L, to = 5L, by = 1L)
     num <- int ^ 2L
@@ -91,31 +90,31 @@ test_that("geometricMean", {
     mat <- as.matrix(df)
     mean <- c(int = 2.605171, num = 6.786916)
 
-    # integer ==================================================================
+    # integer
     expect_identical(
         round(geometricMean(int), digits = 6L),
         mean[["int"]]
     )
 
-    # numeric ==================================================================
+    # numeric
     expect_identical(
         round(geometricMean(num), digits = 6L),
         mean[["num"]]
     )
 
-    # matrix ===================================================================
+    # matrix
     expect_identical(
         round(geometricMean(mat), digits = 6L),
         mean
     )
 
-    # NaN on negative numbers ==================================================
+    # NaN on negative numbers
     expect_identical(
         geometricMean(seq(from = -5L, to = 5L, by = 1L)),
         NaN
     )
 
-    # Zero propagation =========================================================
+    # Zero propagation
     expect_identical(
         geometricMean(
             seq(from = 0L, to = 5L, by = 1L),

@@ -5,8 +5,9 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeTx2Gene
-#' @include makeGRanges-methods.R
-#' @inheritParams makeGRanges
+#' @include makeGRangesFromEnsembl.R
+#' @inheritParams makeGRangesFromEnsembl
+#' @inheritParams params
 #'
 #' @seealso `makeGRanges`.
 #'

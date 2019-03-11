@@ -1,7 +1,3 @@
-# FIXME Add code coverage SCE methods.
-
-
-
 context("Plots")
 
 data(rse, envir = environment())
