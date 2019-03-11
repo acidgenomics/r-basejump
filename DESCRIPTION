@@ -90,6 +90,7 @@ Collate:
     'ggplot2.R'
     'globals.R'
     'headtail-methods.R'
+    'heatmap-internal.R'
     'humanize-methods.R'
     'imports.R'
     'interestingGroups-methods.R'
