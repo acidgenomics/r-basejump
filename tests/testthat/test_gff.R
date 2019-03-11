@@ -2,33 +2,12 @@ context("GFF file import")
 
 levels <- c("genes", "transcripts")
 
-files <- c(
-    ensemblGFF  = "ensembl.gff3.gz",
-    ensemblGTF  = "ensembl.gtf.gz",
-    flybaseGTF  = "flybase.gtf.gz",
-    gencodeGFF  = "gencode.gff3.gz",
-    gencodeGTF  = "gencode.gtf.gz",
-    refseqGFF   = "refseq.gff.gz",
-    wormbaseGTF = "wormbase.gtf.gz"
-)
-
-# Note that `paste()` call drops names.
-names <- names(files)
-files <- paste(
-    basejumpCacheURL,
-    "gff",
-    files,
-    sep = "/"
-)
-names(files) <- names
-rm(names)
-
 
 
 # Ensembl ======================================================================
 with_parameters_test_that(
     "Ensembl GFF", {
-        file <- files[["ensemblGFF"]]
+        file <- "ensembl.gff3.gz"
         object <- makeGRangesFromGFF(file = file, level = level)
         expect_s4_class(object, "GRanges")
         expect_length(object, length)
@@ -39,7 +18,7 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "Ensembl GTF", {
-        file <- files[["ensemblGTF"]]
+        file <- "ensembl.gtf.gz"
         object <- makeGRangesFromGFF(file = file, level = level)
         expect_s4_class(object, "GRanges")
         expect_length(object, length)
@@ -53,7 +32,7 @@ with_parameters_test_that(
 # FlyBase ======================================================================
 with_parameters_test_that(
     "FlyBase GTF", {
-        file <- files[["flybaseGTF"]]
+        file <- "flybase.gtf.gz"
         expect_warning(
             makeGRangesFromGFF(file, level = level),
             "GRanges does not contain biotype in mcols\\(\\)."
@@ -73,7 +52,7 @@ with_parameters_test_that(
 # GENCODE ======================================================================
 with_parameters_test_that(
     "GENCODE GFF", {
-        file <- files[["gencodeGFF"]]
+        file <- "gencode.gff3.gz"
         object <- makeGRangesFromGFF(file, level = level)
         expect_s4_class(object, "GRanges")
         expect_length(object, length)
@@ -84,7 +63,7 @@ with_parameters_test_that(
 
 with_parameters_test_that(
     "GENCODE GTF", {
-        file <- files[["gencodeGTF"]]
+        file <- "gencode.gtf.gz"
         object <- makeGRangesFromGFF(file, level = level)
         expect_s4_class(object, "GRanges")
         expect_length(object, length)
@@ -95,23 +74,9 @@ with_parameters_test_that(
 
 
 
-# WormBase =====================================================================
-with_parameters_test_that(
-    "WormBase GTF", {
-        file <- files[["wormbaseGTF"]]
-        object <- makeGRangesFromGFF(file = file, level = level)
-        expect_s4_class(object, "GRanges")
-        expect_length(object, length)
-    },
-    level = levels,
-    length = c(66L, 83L)
-)
-
-
-
 # RefSeq =======================================================================
 test_that("RefSeq GFF", {
-    file <- files[["refseqGFF"]]
+    file <- "refseq.gff.gz"
 
     # Genes
     object <- makeGRangesFromGFF(file = file, level = "genes")
@@ -123,3 +88,17 @@ test_that("RefSeq GFF", {
     expect_s4_class(object, "GRangesList")
     expect_length(object, 100L)
 })
+
+
+
+# WormBase =====================================================================
+with_parameters_test_that(
+    "WormBase GTF", {
+        file <- "wormbase.gtf.gz"
+        object <- makeGRangesFromGFF(file = file, level = level)
+        expect_s4_class(object, "GRanges")
+        expect_length(object, length)
+    },
+    level = levels,
+    length = c(66L, 83L)
+)

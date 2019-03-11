@@ -1,4 +1,4 @@
-## basejump 0.9.12
+## basejump 0.9.12 (2019-03-11)
 
 ### Major changes
 
@@ -11,6 +11,9 @@
 - `plotHeatmap` family: Bug fix needed for internal `is.na` call on
   `annotationCol`, which should be wrapped with `any` to return boolean. This
   errors (as it should) on R 3.6, but I missed it on R 3.5.
+- Consolidating GRanges return code defined in `.makeGRanges`, which is run
+  for both GFF file and ensembldb import. We've improved the Rle encoding steps
+  here to work with complex GFF3 files (e.g. GENCODE).
 
 
 
