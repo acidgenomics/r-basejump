@@ -16,6 +16,7 @@ names <- names(files)
 files <- file.path(extdata, files)
 names(files) <- names
 rm(names)
+skip_if_not(all(file.exists(files)))
 
 # nolint start
 #
@@ -40,7 +41,6 @@ rm(names)
 # 2: eval(code, test_env)
 #
 # nolint end
-skip_if_not(all(file.exists(files)))
 
 
 

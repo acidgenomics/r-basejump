@@ -186,7 +186,10 @@ ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/
 }
 
 \examples{
-file <- system.file("extdata/ensembl.gtf.gz", package = "basejump")
+file <- system.file(
+    "extdata", "ensembl.gtf.gz",
+    package = "basejump", mustWork = TRUE
+)
 
 ## Genes
 x <- makeGRangesFromGFF(file = file, level = "genes")

@@ -4,5 +4,4 @@ options(
     basejump.test = TRUE
 )
 
-extdata <- system.file("extdata", package = "basejump")
-stopifnot(dir.exists(extdata))
+extdata <- system.file("extdata", package = "basejump", mustWork = TRUE)
