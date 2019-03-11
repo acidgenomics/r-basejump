@@ -80,8 +80,13 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         # Inform the user if NA values are present.
         # Note that we're including `na.rm` in `rowVars()` and `colVars()` calls
         # below to handle this edge case.
-        if (any(is.na(object))) {
-            message("NA values detected in matrix.")
+        if (any(is.na(mat))) {
+            message(paste(
+                sum(is.na(mat)),
+                "NA values detected in matrix.",
+                "Replacing with zeros."
+            ))
+            mat[is.na(mat)] <- 0L
         }
 
         message(paste(
