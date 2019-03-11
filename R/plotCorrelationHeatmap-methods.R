@@ -92,20 +92,16 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         # Attempt to calculate hierarchical clustering first internally, and
         # error with a more informative message, before attempting to pass to
         # pheatmap engine.
-        hc <- .hclust(
-            object = cor,
-            method = clusteringMethod,
-            rows = FALSE,
-            cols = TRUE
+        suppressWarnings(
+            hc <- .hclust(
+                object = cor,
+                method = clusteringMethod,
+                rows = FALSE,
+                cols = TRUE
+            )
         )
         if (!is(hc[["cols"]], "hclust")) {
-            stop(paste0(
-                "Hierarchical clustering with ",
-                clusteringMethod,
-                " method failed.\n",
-                "Corresponding correlation matrix:\n",
-                printString(cor)
-            ))
+            stop("Hierarchical clustering failed.")
         }
 
         # Get annotation columns and colors automatically.
