@@ -46,6 +46,7 @@
 [Markdown]: https://daringfireball.net/projects/markdown/
 [Matrix]: https://cran.r-project.org/package=Matrix
 [MGI]: http://www.informatics.jax.org/
+[MSigDb]: http://software.broadinstitute.org/gsea/msigdb/
 [NIH]: https://www.nih.gov/
 [PANTHER]: http://pantherdb.org/
 [pathview]: https://bioconductor.org/packages/pathview/
