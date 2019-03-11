@@ -148,10 +148,7 @@
 #' - [GenomicFeatures::makeTxDbFromGFF()].
 #'
 #' @examples
-#' file <- system.file(
-#'     "extdata", "ensembl.gtf.gz",
-#'     package = "basejump", mustWork = TRUE
-#' )
+#' file <- pasteURL(basejumpCacheURL, "ensembl.gtf.gz", protocol = "none")
 #'
 #' ## Genes
 #' x <- makeGRangesFromGFF(file = file, level = "genes")
