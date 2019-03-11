@@ -89,19 +89,9 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         ))
         cor <- cor(x = mat, y = NULL, method = method)
 
-        # Attempt to calculate hierarchical clustering first internally, and
-        # error with a more informative message, before attempting to pass to
-        # pheatmap engine.
-        suppressWarnings(
-            hc <- .hclust(
-                object = cor,
-                method = clusteringMethod,
-                rows = FALSE,
-                cols = TRUE
-            )
-        )
-        if (!is(hc[["cols"]], "hclust")) {
-            stop("Hierarchical clustering failed.")
+        # Check for NA values in correlation matrix and error, if necessary.
+        if (any(is.na(cor))) {
+            stop("NA values detected in correlation matrix.")
         }
 
         # Get annotation columns and colors automatically.
