@@ -1,20 +1,20 @@
 #' @rdname PANTHER-class
-#' @name PANTHER
+#' @export
 #' @inheritParams params
 #'
 #' @param organism `character(1)`.
 #'   Full Latin organism name.
 #'
-#'   Currently supported organisms:
+#'   Supported organisms:
 #'
-#'   - *Homo sapiens*
-#'   - *Mus musculus*
 #'   - *Caenorhabditis elegans*
 #'   - *Drosophila melanogaster*
+#'   - *Homo sapiens*
+#'   - *Mus musculus*
 #' @param release `character(1)` or `NULL`.
 #'   PANTHER release version. If `NULL`, defaults to current release. Consult
 #'   the PANTHER website for a list of release versions available from the FTP
-#'   server (e.g. `"13.0"`).
+#'   server (e.g. `"14.0"`).
 #' @param progress `logical(1)`.
 #'   Use [pbapply::pblapply()] to show progress.
 #'
@@ -22,133 +22,19 @@
 #' options(basejump.test = TRUE)
 #' x <- PANTHER("Homo sapiens", progress = FALSE)
 #' summary(x)
-NULL
-
-
-
-.pantherMappings <- c(
-    "Homo sapiens" = "human",
-    "Mus musculus" = "mouse",
-    "Caenorhabditis elegans" = "nematode_worm",
-    "Drosophila melanogaster" = "fruit_fly"
-)
-
-
-
-.splitTerms <- function(x, progress = FALSE) {
-    # This step is CPU intensive, so optionally enable progress bar.
-    # Alternatively, consider switching to BiocParallel bpparam usage here.
-    if (isTRUE(progress)) {
-        message(deparse(substitute(x)))
-        requireNamespace("pbapply", quietly = TRUE)
-        lapply <- pbapply::pblapply
-    }
-    lapply(x, function(x) {
-        x <- x %>%
-            as.character() %>%
-            strsplit(split = ";") %>%
-            unlist() %>%
-            unique() %>%
-            sort() %>%
-            gsub("#([A-Z0-9:]+)", " [\\1]", .) %>%
-            gsub(">", " > ", .)
-        if (length(x) > 0L) {
-            x
-        } else {
-            NULL
-        }
-    })
-}
-
-
-
-.PANTHER.homoSapiens <-  # nolint
-    function(data) {
-        hgnc2ensembl <- HGNC2Ensembl()
-
-        # Ensembl matches.
-        ensembl <- data %>%
-            mutate(
-                geneID = str_extract(!!sym("keys"), "ENSG[0-9]{11}")
-            ) %>%
-            filter(!is.na(!!sym("geneID")))
-
-        # HGNC matches.
-        hgnc <- data %>%
-            as_tibble() %>%
-            # Extract the HGNC ID.
-            mutate(
-                hgncID = str_match(!!sym("keys"), "HGNC=([0-9]+)")[, 2L],
-                hgncID = as.integer(!!sym("hgncID"))
-            ) %>%
-            filter(!is.na(!!sym("hgncID"))) %>%
-            left_join(
-                as_tibble(hgnc2ensembl, rownames = NULL),
-                by = "hgncID"
-            ) %>%
-            select(-!!sym("hgncID")) %>%
-            filter(!is.na(!!sym("geneID"))) %>%
-            unique()
-
-        do.call(rbind, list(ensembl, hgnc))
-    }
-
-
-
-.PANTHER.musMusculus <-  # nolint
-    function(data) {
-        mgi2ensembl <- MGI2Ensembl()
-
-        # Ensembl matches.
-        ensembl <- data %>%
-            mutate(
-                geneID = str_extract(!!sym("keys"), "ENSMUSG[0-9]{11}")
-            ) %>%
-            filter(!is.na(!!sym("geneID")))
-
-        # MGI matches.
-        mgi <- data %>%
-            as_tibble() %>%
-            mutate(
-                mgiID = str_match(!!sym("keys"), "MGI=([0-9]+)")[, 2L],
-                mgiID = as.integer(!!sym("mgiID"))
-            ) %>%
-            filter(!is.na(!!sym("mgiID"))) %>%
-            left_join(
-                as_tibble(mgi2ensembl, rownames = NULL),
-                by = "mgiID"
-            ) %>%
-            select(-!!sym("mgiID")) %>%
-            filter(!is.na(!!sym("geneID")))
-
-        do.call(rbind, list(ensembl, mgi))
-    }
-
-
-
-.PANTHER.drosophilaMelanogaster <-  # nolint
-    function(data) {
-        mutate(data, geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$"))
-    }
-
-
-
-.PANTHER.caenorhabditisElegans <-  # nolint
-    function(data) {
-        mutate(data, geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$"))
-    }
-
-
-
-#' @rdname PANTHER-class
-#' @export
 PANTHER <- function(  # nolint
     organism,
     release = NULL,
-    progress = FALSE
+    progress = getOption("basejump.progress", FALSE)
 ) {
-    assert(hasInternet())
-    organism <- match.arg(arg = organism, choices = names(.pantherMappings))
+    assert(
+        hasInternet(),
+        isString(organism)
+    )
+    organism <- match.arg(
+        arg = snake(organism),
+        choices = names(.pantherMappings)
+    )
     pantherName <-  .pantherMappings[[organism]]
     assert(isString(pantherName))
     if (is.null(release)) {
@@ -158,6 +44,7 @@ PANTHER <- function(  # nolint
         isString(release),
         isFlag(progress)
     )
+    release <- match.arg(arg = release, choices = .pantherReleases)
 
     message(paste0(
         "Downloading PANTHER annotations for ",
@@ -255,4 +142,131 @@ PANTHER <- function(  # nolint
     metadata(data)[["release"]] <- release
 
     new("PANTHER", data)
+}
+
+
+
+.pantherMappings <- c(
+    "caenorhabditis_elegans" = "nematode_worm",
+    "drosophila_melanogaster" = "fruit_fly",
+    "homo_sapiens" = "human",
+    "mus_musculus" = "mouse"
+)
+
+
+
+# Release versions are here:
+# ftp://ftp.pantherdb.org/sequence_classifications/
+.pantherReleases <- c(
+    "11.0",
+    "12.0",
+    "13.0",
+    "13.1",
+    "14.0",
+    "current_release"
+)
+
+
+
+.PANTHER.homoSapiens <-  # nolint
+    function(data) {
+        hgnc2ensembl <- HGNC2Ensembl()
+
+        # Ensembl matches.
+        ensembl <- data %>%
+            mutate(
+                geneID = str_extract(!!sym("keys"), "ENSG[0-9]{11}")
+            ) %>%
+            filter(!is.na(!!sym("geneID")))
+
+        # HGNC matches.
+        hgnc <- data %>%
+            as_tibble() %>%
+            # Extract the HGNC ID.
+            mutate(
+                hgncID = str_match(!!sym("keys"), "HGNC=([0-9]+)")[, 2L],
+                hgncID = as.integer(!!sym("hgncID"))
+            ) %>%
+            filter(!is.na(!!sym("hgncID"))) %>%
+            left_join(
+                as_tibble(hgnc2ensembl, rownames = NULL),
+                by = "hgncID"
+            ) %>%
+            select(-!!sym("hgncID")) %>%
+            filter(!is.na(!!sym("geneID"))) %>%
+            unique()
+
+        do.call(rbind, list(ensembl, hgnc))
+    }
+
+
+
+.PANTHER.musMusculus <-  # nolint
+    function(data) {
+        mgi2ensembl <- MGI2Ensembl()
+
+        # Ensembl matches.
+        ensembl <- data %>%
+            mutate(
+                geneID = str_extract(!!sym("keys"), "ENSMUSG[0-9]{11}")
+            ) %>%
+            filter(!is.na(!!sym("geneID")))
+
+        # MGI matches.
+        mgi <- data %>%
+            as_tibble() %>%
+            mutate(
+                mgiID = str_match(!!sym("keys"), "MGI=([0-9]+)")[, 2L],
+                mgiID = as.integer(!!sym("mgiID"))
+            ) %>%
+            filter(!is.na(!!sym("mgiID"))) %>%
+            left_join(
+                as_tibble(mgi2ensembl, rownames = NULL),
+                by = "mgiID"
+            ) %>%
+            select(-!!sym("mgiID")) %>%
+            filter(!is.na(!!sym("geneID")))
+
+        do.call(rbind, list(ensembl, mgi))
+    }
+
+
+
+.PANTHER.drosophilaMelanogaster <-  # nolint
+    function(data) {
+        mutate(data, geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$"))
+    }
+
+
+
+.PANTHER.caenorhabditisElegans <-  # nolint
+    function(data) {
+        mutate(data, geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$"))
+    }
+
+
+
+.splitTerms <- function(x, progress = FALSE) {
+    # This step is CPU intensive, so optionally enable progress bar.
+    # Alternatively, consider switching to BiocParallel bpparam usage here.
+    if (isTRUE(progress)) {
+        message(deparse(substitute(x)))
+        requireNamespace("pbapply", quietly = TRUE)
+        lapply <- pbapply::pblapply
+    }
+    lapply(x, function(x) {
+        x <- x %>%
+            as.character() %>%
+            strsplit(split = ";") %>%
+            unlist() %>%
+            unique() %>%
+            sort() %>%
+            gsub("#([A-Z0-9:]+)", " [\\1]", .) %>%
+            gsub(">", " > ", .)
+        if (length(x) > 0L) {
+            x
+        } else {
+            NULL
+        }
+    })
 }

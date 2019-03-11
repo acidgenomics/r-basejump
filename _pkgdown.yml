@@ -12,7 +12,7 @@ reference:
     contents:
     - emptyRanges
     - geneSynonyms
-    - makeGRanges
+    - starts_with("makeGRanges")
     - makeGene2Symbol
     - makeTx2Gene
   - title: Gene identifier mapping

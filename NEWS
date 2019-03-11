@@ -1,3 +1,22 @@
+## basejump 0.9.12 (2019-03-11)
+
+### Major changes
+
+- `makeGRangesFromGFF`: Reworked internal code, making it more modular. Added
+  initial support for RefSeq GFF3 files. Also improved sanitization and special
+  handling of files from FlyBase and WormBase.
+
+### Minor changes
+
+- `plotHeatmap` family: Bug fix needed for internal `is.na` call on
+  `annotationCol`, which should be wrapped with `any` to return boolean. This
+  errors (as it should) on R 3.6, but I missed it on R 3.5.
+- Consolidating GRanges return code defined in `.makeGRanges`, which is run
+  for both GFF file and ensembldb import. We've improved the Rle encoding steps
+  here to work with complex GFF3 files (e.g. GENCODE).
+
+
+
 ## basejump 0.9.11 (2019-02-25)
 
 ### Minor changes

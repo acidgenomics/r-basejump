@@ -21,3 +21,9 @@ from <- c("hg19", "hg38")
 to <- convertUCSCBuildToEnsembl(from)
 print(to)
 }
+\seealso{
+\itemize{
+\item \href{https://genome.ucsc.edu/cgi-bin/hgGateway}{UCSC hgGateway}
+\item \href{https://goo.gl/164J2P}{bcbio genome recipes}
+}
+}
