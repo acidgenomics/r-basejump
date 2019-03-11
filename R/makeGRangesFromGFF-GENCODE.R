@@ -30,50 +30,53 @@
 
 
 
-.makeGenesFromGencodeGFF3 <- function(object, singlePAR = TRUE) {
+# Match Ensembl spec by removing the duplicate PAR Y chromosome annotations.
+.detectPARDupes <- function(object, idCol) {
+    assert(is(object, "GRanges"))
+    idCol <- match.arg(
+        arg = idCol,
+        choices = c("ID", "gene_id", "transcript_id")
+    )
+    dupes <- grep(pattern = "_PAR_Y$", x = mcols(object)[[idCol]], value = TRUE)
+    if (hasLength(dupes)) {
+        message(paste(
+            length(dupes),
+            "pseudoautosomal region (PAR) Y chromosome duplicates:",
+            toString(dupes, width = 200L)
+        ))
+    }
+    invisible(object)
+}
+
+
+
+.makeGenesFromGencodeGFF3 <- function(object) {
     assert(
         is(object, "GRanges"),
-        isFlag(singlePAR),
         isSubset(
             x = c("gene_id", "gene_name", "gene_biotype"),
             y = colnames(mcols(object))
         )
     )
-
-    # Only keep rows that match gene type.
     object <- object[mcols(object)[["type"]] == "gene"]
-
-    # Remove duplicate PARs on Y chromosome.
-    # This is defined in the "ID" column, not "gene_id".
-    if (isTRUE(singlePAR)) {
-        object <- .singlePAR(object, idCol = "ID")
-    }
-
-    object <- .minimizeGFF3(object)
+    .detectPARDupes(object, idCol = "ID")
     object
 }
 
 
 
-.makeGenesFromGencodeGTF <- function(object, singlePAR = TRUE) {
-    assert(
-        is(object, "GRanges"),
-        isFlag(singlePAR)
-    )
+.makeGenesFromGencodeGTF <- function(object) {
+    assert(is(object, "GRanges"))
     object <- .makeGenesFromEnsemblGTF(object)
-    # Remove duplicate PARs on Y chromosome.
-    if (isTRUE(singlePAR)) {
-        object <- .singlePAR(object, idCol = "gene_id")
-    }
+    .detectPARDupes(object, idCol = "gene_id")
     object
 }
 
 
 
-.makeTranscriptsFromGencodeGFF3 <- function(object, singlePAR = TRUE) {
+.makeTranscriptsFromGencodeGFF3 <- function(object) {
     assert(
         is(object, "GRanges"),
-        isFlag(singlePAR),
         isSubset(
             x = c(
                 "gene_biotype", "gene_id",
@@ -82,54 +85,17 @@
             y = colnames(mcols(object))
         )
     )
-
-    # Match "transcript" type.
     object <- object[mcols(object)[["type"]] == "transcript"]
-
-    # Remove duplicate PARs on Y chromosome.
-    # This is defined in the "ID" column, not "transcript_id".
-    if (isTRUE(singlePAR)) {
-        object <- .singlePAR(object, idCol = "ID")
-    }
-
-    object <- .minimizeGFF3(object)
+    .detectPARDupes(object, idCol = "ID")
     object
 }
 
 
 
-.makeTranscriptsFromGencodeGTF <- function(object, singlePAR = TRUE) {
-    assert(
-        is(object, "GRanges"),
-        isFlag(singlePAR)
-    )
-    object <- .makeTranscriptsFromEnsemblGTF(object)
-
-    # Remove duplicate PARs on Y chromosome.
-    if (isTRUE(singlePAR)) {
-        object <- .singlePAR(object, idCol = "transcript_id")
-    }
-
-    object
-}
-
-
-
-# Match Ensembl spec by removing the duplicate PAR Y chromosome annotations.
-.singlePAR <- function(object, idCol) {
+.makeTranscriptsFromGencodeGTF <- function(object) {
     assert(is(object, "GRanges"))
-    idCol <- match.arg(
-        arg = idCol,
-        choices = c("ID", "gene_id", "transcript_id")
-    )
-    parY <- grepl(pattern = "_PAR_Y$", x = mcols(object)[[idCol]])
-    if (hasLength(parY)) {
-        message(paste(
-            "Removing", sum(parY, na.remove = TRUE),
-            "pseudoautosomal region (PAR) Y chromosome duplicates."
-        ))
-        object <- object[!parY]
-    }
+    object <- .makeTranscriptsFromEnsemblGTF(object)
+    .detectPARDupes(object, idCol = "transcript_id")
     object
 }
 
