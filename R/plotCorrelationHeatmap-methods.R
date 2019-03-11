@@ -5,8 +5,8 @@
 #'
 #' @param method `character(1)`.
 #'   Correlation coefficient (or covariance) method to be computed. Defaults to
-#'   "`pearson`" but "`spearman`" can also be used. Consult the [stats::cor()]
-#'   documentation for more information.
+#'   "`pearson`" but "`spearman`" or "`kendall`" can also be used. Refer to the
+#'   [stats::cor()] documentation for details.
 #'
 #' @return `pheatmap`.
 #' @examples
@@ -33,7 +33,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         object,
         assay = 1L,
         interestingGroups = NULL,
-        method = c("pearson", "spearman"),
+        method,
         clusteringMethod = "ward.D2",
         showRownames = TRUE,
         showColnames = TRUE,
@@ -84,53 +84,29 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             message("NA values detected in matrix.")
         }
 
-        # Ensure we're dropping rows without variation, otherwise the
-        # calculation will fail and return NA.
-        varThreshold <- 0L
+        message(paste(
+            "Calculating correlation matrix using", method, "method."
+        ))
+        cor <- cor(x = mat, y = NULL, method = method)
 
-        # Check across the columns first (samples) and fail, if necessary.
-        pass <- colVars(mat, na.rm = TRUE) > varThreshold
-        if (!all(pass)) {
-            fail <- !pass
-            n <- sum(fail, na.rm = TRUE)
-            stop(paste(
-                sprintf(ngettext(
-                    n = n,
-                    msg1 = "%s column doesn't",
-                    msg2 = "%s columns don't"
-                ), n),
-                "have enough variance:",
-                toString(colnames(mat)[which(fail)], width = 200L)
+        # Attempt to calculate hierarchical clustering first internally, and
+        # error with a more informative message, before attempting to pass to
+        # pheatmap engine.
+        hc <- .hclust(
+            object = cor,
+            method = clusteringMethod,
+            rows = FALSE,
+            cols = TRUE
+        )
+        if (!is(hc[["cols"]], "hclust")) {
+            stop(paste0(
+                "Hierarchical clustering with ",
+                clusteringMethod,
+                " method failed.\n",
+                "Corresponding correlation matrix:\n",
+                printString(cor)
             ))
         }
-
-        # Then check across the rows (features) and inform then remove the
-        # offenders automatically.
-        pass <- rowVars(mat, na.rm = TRUE) > varThreshold
-        if (!all(pass)) {
-            fail <- !pass
-            n <- sum(fail, na.rm = TRUE)
-            message(paste(
-                sprintf(ngettext(
-                    n = n,
-                    msg1 = "%s row doesn't",
-                    msg2 = "%s rows don't"
-                ), n),
-                "have enough variance:",
-                toString(rownames(mat)[which(fail)], width = 200L),
-                "Dropping from return."
-            ))
-            mat <- mat[pass, , drop = FALSE]
-        }
-
-        mat <- cor(mat, method = method)
-
-        # Check to see if hierarchical clustering works on our return.
-        # Disable otherwise. This isn't handled well currently in pheatmap.
-        message("Calculating distance matrix.")
-        d <- dist(mat)
-        assert(is(d, "dist"))
-        hc <- hclust(d = d, method = clusteringMethod)
 
         # Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
@@ -151,8 +127,8 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             error = function(e) NULL
         )
         if (length(sampleNames) > 0L) {
-            rownames(mat) <- sampleNames
-            colnames(mat) <- sampleNames
+            rownames(cor) <- sampleNames
+            colnames(cor) <- sampleNames
             if (
                 length(annotationCol) > 0L &&
                 !any(is.na(annotationCol))
@@ -163,13 +139,13 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
 
         # Return pretty heatmap with modified defaults.
         args <- list(
-            mat = mat,
+            mat = cor,
             annotationCol = annotationCol,
             annotationColors = annotationColors,
             borderColor = borderColor,
             clusteringMethod = clusteringMethod,
-            clusteringDistanceRows = "correlation",
             clusteringDistanceCols = "correlation",
+            clusteringDistanceRows = "correlation",
             color = color,
             main = title,
             showColnames = showColnames,
@@ -182,6 +158,9 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         assert(areDisjointSets(names(args), "scale"))
         do.call(what = pheatmap, args = args)
     }
+
+formals(plotCorrelationHeatmap.SummarizedExperiment)[["method"]] <-
+    formals(stats::cor)[["method"]]
 
 
 
