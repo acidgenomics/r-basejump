@@ -126,202 +126,6 @@ bioverbs::plotHeatmap
 
 
 
-.emptyPheatmapAnnotations <- list(
-    annotationCol = NA,
-    annotationColors = NA
-)
-
-
-
-# Automatically handle the annotation data and colors.
-# Factors with a single level are automatically dropped.
-.pheatmapAnnotations <- function(
-    object,
-    blacklist = "sampleName",
-    legendColor
-) {
-    validObject(object)
-    assert(
-        isCharacter(blacklist),
-        isHexColorFunction(legendColor, nullOK = TRUE)
-    )
-
-    # Annotation columns -------------------------------------------------------
-    data <- colData(object)
-    interestingGroups <- interestingGroups(object)
-
-    # pheatmap requires `NA` if annotations are empty.
-    if (
-        !hasDims(data) ||
-        length(interestingGroups) == 0L ||
-        identical(interestingGroups, "sampleName")
-    ) {
-        return(.emptyPheatmapAnnotations)
-    }
-
-    assert(
-        hasRownames(data),
-        isSubset(interestingGroups, colnames(data))
-    )
-    data <- data[, interestingGroups, drop = FALSE]
-
-    # Prepare the blacklist, always excluding sample names from labeling in
-    # the pheatmap annotation columns.
-    blacklist <- unique(c("sampleName", blacklist))
-
-    data <- data %>%
-        as_tibble(rownames = "rowname") %>%
-        # Remove blacklisted columns (e.g. `sampleName`).
-        .[, setdiff(colnames(.), blacklist), drop = FALSE] %>%
-        # Ensure all strings are factors.
-        mutate_if(is.character, as.factor) %>%
-        # Ensure unwanted numeric columns (e.g. sizeFactor) are dropped.
-        select_if(is.factor) %>%
-        as.data.frame() %>%
-        column_to_rownames("rowname")
-
-    # Drop any remaining factor columns that contain a single value.
-    # Note that we don't want to necessarily use `levels()` in place of
-    # `unique()` here, in case we have a situation where we're comparing a value
-    # against `NA`. Here this will a level of 1, even though we have 2 unique
-    # values.
-    hasMultiple <- vapply(
-        X = data,
-        FUN = function(x) {
-            # This handles NA values better than using `levels()`.
-            length(unique(x)) > 1L
-        },
-        FUN.VALUE = logical(1L)
-    )
-
-    # Return empty if there are no useful factor columns.
-    if (length(hasMultiple) == 0L) {
-        return(.emptyPheatmapAnnotations)  # nocov
-    } else {
-        data <- data[, hasMultiple, drop = FALSE]
-    }
-
-    # Colors -------------------------------------------------------------------
-    if (
-        is.data.frame(data) &&
-        is.function(legendColor)
-    ) {
-        colors <- lapply(
-            X = data,
-            FUN = function(x) {
-                assert(is.factor(x))
-                levels <- levels(x)
-                colors <- legendColor(length(levels))
-                names(colors) <- levels
-                colors
-            })
-        names(colors) <- colnames(data)
-    } else {
-        colors <- NA
-    }
-
-    # Return -------------------------------------------------------------------
-    list(
-        annotationCol = data,
-        annotationColors = colors
-    )
-}
-
-
-
-# Sanitize formals into snake case and abort on duplicates.
-# Duplicates may arise if user is mixing and matching camel/snake case.
-.pheatmapArgs <- function(args) {
-    assert(is.list(args), hasNames(args))
-    # Abort on snake case formatted formal args.
-    invalidNames <- grep("[._]", names(args), value = TRUE)
-    if (length(invalidNames) > 0L) {
-        stop(paste(
-            "Specify arguments in camel case:",
-            toString(invalidNames)
-        ))
-    }
-    names(args) <- snake(names(args))
-    assert(
-        isSubset(names(args), formalArgs(pheatmap)),
-        hasNoDuplicates(names(args))
-    )
-
-    args
-}
-
-
-
-# If `color = NULL`, use the pheatmap default palette
-.pheatmapColorPalette <- function(color = NULL, n = 256L) {
-    if (is.character(color)) {
-        # Hexadecimal color palette (e.g. RColorBrewer, viridis return).
-        assert(allAreHexColors(color))
-        color
-    } else if (is.function(color)) {
-        # Hexadecimal color function (e.g. viridis functions).
-        assert(isHexColorFunction(color))
-        color(n)
-    } else {
-        # pheatmap default palette.
-        # Note that `n` argument won't get evaluated here.
-        eval(formals(pheatmap)[["color"]])
-    }
-}
-
-
-
-.scaleRows <- function(object) {
-    mean <- apply(object, MARGIN = 1L, FUN = mean, na.rm = TRUE)
-    sd <- apply(object, MARGIN = 1L, FUN = sd, na.rm = TRUE)
-    (object - mean) / sd
-}
-
-
-
-# Modified version of `pheatmap:::scale_mat()`.
-.scaleMatrix <- function(object, scale = c("none", "row", "column")) {
-    assert(is.matrix(object))
-    scale <- match.arg(scale)
-    if (scale != "none") {
-        message(paste0("Scaling matrix per ", scale, " (z-score)."))
-    }
-    # Assert checks to look for sufficient variance when the user is attempting
-    # to apply scaling (z-score).
-    varThreshold <- 0L
-    if (scale == "row") {
-        pass <- rowVars(object) > varThreshold
-        if (!all(pass)) {
-            fail <- !pass
-            stop(paste0(
-                "Rows cannot be scaled.\n",
-                sum(fail, na.rm = TRUE),
-                " rows(s) don't have enough variance.\n",
-                printString(rownames(object)[which(fail)], max = 10L)
-            ))
-        }
-    } else if (scale == "column") {
-        pass <- colVars(object) > varThreshold
-        if (!all(pass)) {
-            fail <- !pass
-            stop(paste(
-                "Columns cannot be scaled.\n",
-                sum(fail, na.rm = TRUE),
-                " column(s) don't have enough variance.\n",
-                printString(colnames(object)[which(fail)], max = 10L)
-            ))
-        }
-    }
-    switch(
-        EXPR = scale,
-        none = object,
-        row = .scaleRows(object),
-        column = t(.scaleRows(t(object)))
-    )
-}
-
-
-
 plotHeatmap.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -333,8 +137,10 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         clusterCols = FALSE,
         showRownames = FALSE,
         showColnames = TRUE,
-        treeheightRow = 50L,  # set to `0L` to disable.
-        treeheightCol = 50L,  # set to `0L` to disable.
+        # Set to `0L` to disable.
+        treeheightRow = 50L,
+        # Set to `0L` to disable.
+        treeheightCol = 50L,
         color = viridis::viridis,
         legendColor = viridis::viridis,
         borderColor = NULL,
@@ -373,9 +179,14 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             return(invisible())
         }
 
-        # Convert the SE object to use symbols in the rownames, for pheatmap.
-        suppressMessages(
-            object <- convertGenesToSymbols(object)
+        # Modify the object to use gene symbols in the row names automatically,
+        # if possible. We're using `tryCatch()` call here to return the object
+        # unmodified if gene symbols aren't defined.
+        object <- tryCatch(
+            expr = suppressMessages(
+                convertGenesToSymbols(object)
+            ),
+            error = function(e) object
         )
 
         # Ensure we're always using a dense matrix.
@@ -397,45 +208,16 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         # pheatmap supports `clusterRows = TRUE` and `clusterCols = TRUE`, but
         # these have been found to error for some datasets. Therefore, we're
         # performing hclust calculations on own here.
-        if (isTRUE(clusterRows) || isTRUE(clusterCols)) {
-            message(paste0(
-                "Performing hierarchical clustering.\n",
-                "Using stats::hclust(method = ", deparse(clusteringMethod), ")."
-            ))
-            if (isTRUE(clusterRows)) {
-                message("Arranging rows using hclust.")
-                clusterRows <- tryCatch(
-                    expr = hclust(
-                        d = dist(mat),
-                        method = clusteringMethod
-                    ),
-                    error = function(e) {
-                        warning(
-                            "hclust() row calculation failed. Skipping.",
-                            call. = FALSE
-                        )
-                        FALSE
-                    }
-                )
-            }
-            if (isTRUE(clusterCols)) {
-                message("Arranging columns using hclust.")
-                clusterCols <- tryCatch(
-                    expr = hclust(
-                        # Note the use of `t` here.
-                        d = dist(t(mat)),
-                        method = clusteringMethod
-                    ),
-                    error = function(e) {
-                        warning(
-                            "hclust() column calculation failed. Skipping.",
-                            call. = FALSE
-                        )
-                        FALSE
-                    }
-                )
-            }
-        }
+        hc <- .hclust(
+            object = mat,
+            method = clusteringMethod,
+            rows = clusterRows,
+            cols = clusterCols
+        )
+        assert(
+            is.list(hc),
+            identical(names(hc), c("rows", "cols"))
+        )
 
         # Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
@@ -471,8 +253,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             annotationCol = annotationCol,
             annotationColors = annotationColors,
             borderColor = borderColor,
-            clusterCols = clusterCols,
-            clusterRows = clusterRows,
+            clusterCols = hc[["cols"]],
+            clusterRows = hc[["rows"]],
             color = color,
             main = title,
             # We're already applied scaling manually (see above).

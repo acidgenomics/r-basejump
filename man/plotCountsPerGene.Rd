@@ -10,18 +10,18 @@
 \S4method{plotCountsPerGene}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, geom = c("boxplot", "density", "violin"),
   trans = c("identity", "log2", "log10"),
-  color = getOption("basejump.color.discrete", NULL),
-  fill = getOption("basejump.fill.discrete", NULL),
-  flip = getOption("basejump.flip", TRUE), countsAxisLabel = "counts",
-  title = "counts per gene")
+  color = getOption("basejump.color.discrete", default = NULL),
+  fill = getOption("basejump.fill.discrete", default = NULL),
+  flip = getOption("basejump.flip", default = TRUE),
+  countsAxisLabel = "counts", title = "counts per gene")
 
 \S4method{plotCountsPerGene}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, geom = c("boxplot", "density", "violin"),
   trans = c("identity", "log2", "log10"),
-  color = getOption("basejump.color.discrete", NULL),
-  fill = getOption("basejump.fill.discrete", NULL),
-  flip = getOption("basejump.flip", TRUE), countsAxisLabel = "counts",
-  title = "counts per gene")
+  color = getOption("basejump.color.discrete", default = NULL),
+  fill = getOption("basejump.fill.discrete", default = NULL),
+  flip = getOption("basejump.flip", default = TRUE),
+  countsAxisLabel = "counts", title = "counts per gene")
 }
 \arguments{
 \item{object}{Object.}

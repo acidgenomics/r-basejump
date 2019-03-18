@@ -10,11 +10,14 @@
 \alias{sampleNames,SummarizedExperiment-method}
 \title{Sample data}
 \usage{
-\S4method{sampleData}{SummarizedExperiment}(object, clean = FALSE)
+\S4method{sampleData}{SummarizedExperiment}(object, clean = TRUE,
+  ignoreCols = c("^description$", "^genomeBuild$", "^qualityFormat$",
+  "^samRef$"))
 
-\S4method{sampleData}{SingleCellExperiment}(object,
-  blacklist = c("^G2M.Score$", "^Phase$", "^S.Score$", "^ident$",
-  "^old.ident$", "^orig.ident$", "^res[.0-9]+$"))
+\S4method{sampleData}{SingleCellExperiment}(object, clean = TRUE,
+  ignoreCols = c("^description$", "^genomeBuild$", "^qualityFormat$",
+  "^samRef$"), blacklistCols = c("^G2M.Score$", "^Phase$", "^S.Score$",
+  "^ident$", "^old.ident$", "^orig.ident$", "^res[.0-9]+$"))
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
@@ -27,11 +30,21 @@
 
 \item{clean}{\code{logical(1)}.
 Only return \code{factor} columns. Useful when working with objects that contain
-metrics in \code{\link[SummarizedExperiment:colData]{colData()}}.}
+quality control metrics in \code{\link[SummarizedExperiment:colData]{colData()}}.
+For example, \code{bcbioRNASeq} and \code{DESeqDataSet} objects often contain
+additional columns that aren't informative sample metadata.}
 
-\item{blacklist}{\code{character}.
-Column names that should never be treated as sample-level metadata.
-Applicable only to \code{SingleCellExperiment} objects.}
+\item{ignoreCols}{\code{character} or \code{NULL}.
+Only applies when \code{clean = TRUE}. Additional factor columns defined in
+\code{colData} to be ignored as sample-level metadata. Particularly useful for
+\code{SingleCellExperiment} objects, where cell-to-sample mappings are defined
+using the \code{sampleID} column.}
+
+\item{blacklistCols}{\code{character} or \code{NULL}.
+Column names that should not be treated as sample-level metadata.
+Currently applicable only to \code{SingleCellExperiment} objects, which have
+cell-level columns that can be difficult to distinguish, especially when
+processed using Seurat, scater, etc.}
 
 \item{value}{Value.}
 }
@@ -48,6 +61,53 @@ for accessing sample metadata for datasets where multiple items in the
 columns map to a single sample (e.g. cells for a single-cell RNA-seq
 experiment).
 }
+\section{All supported S4 classes}{
+
+
+Illegal \code{colData}:
+\itemize{
+\item \code{interestingGroups}: Generated automatically, based on the criteria
+slotted into the object using \code{\link[=interestingGroups]{interestingGroups()}}. The function will
+error intentionally if this column is manually defined in \code{\link[=colData]{colData()}}.
+}
+
+Recommended \code{colData}:
+\itemize{
+\item \code{sampleName}: Human readable sample names used by basejump plotting
+functions in favor of object column names, which should be syntactically
+valid (but not always very readable). See
+\code{\link[base:make.names]{make.names()}} for more information on syntactically
+valid names. Note that if this column is not defined in the object,
+it will be returned automatically by \code{\link[=sampleData]{sampleData()}}.
+}
+}
+
+\section{SummarizedExperiment}{
+
+
+Required \code{colData}:
+\itemize{
+\item None.
+}
+
+Illegal \code{colData}:
+\itemize{
+\item \code{sampleID}: Redundant; already defined in the object column names.
+}
+}
+
+\section{SingleCellExperiment}{
+
+
+Recommended \code{colData}:
+\itemize{
+\item \code{sampleID}: \code{factor} defining cell-to-sample mappings. These mappings
+should use syntactically valid names. Note that this is not currently
+required as we're supporting \code{SingleCellExperiment} objects from 1 sample,
+but it's required for working with multiple samples in a single object.
+}
+}
+
 \examples{
 data(rse, sce)
 
