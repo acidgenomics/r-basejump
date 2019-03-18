@@ -77,6 +77,31 @@ lanePattern <- "_L([[:digit:]]{3})"
 
 
 
+#' Sample metadata blacklist
+#' @export
+#' @examples
+#' metadataBlacklist
+metadataBlacklist <- c(
+    # Too vague.
+    "ID", "Id", "id",
+    # Generated automatically.
+    "interestingGroups",
+    # Use "sampleName" instead.
+    "name",
+    # Generated automatically from "sequence" column.
+    "revcomp",
+    # Used internally by dplyr.
+    "rowname",
+    # Use "sampleName" instead.
+    "sample",
+    # "sampleID" is set automatically, for multiplexed/cell-level data.
+    "sampleID", "sampleId", "sampleid",
+    # Use "sampleName" instead.
+    "samplename"
+)
+
+
+
 #' Update message
 #' @keywords internal
 #' @export
