@@ -107,7 +107,7 @@
 #' se <- SummarizedExperiment::SummarizedExperiment(
 #'     assay = list(counts = sparse),
 #'     colData = S4Vectors::DataFrame(
-#'         sampleName = names(samples),
+#'         sampleName = as.factor(names(samples)),
 #'         aggregate = samples
 #'     ),
 #'     rowData = S4Vectors::DataFrame(aggregate = genes)

@@ -8,7 +8,7 @@
 \usage{
 \S4method{plotZerosVsDepth}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL,
-  color = getOption("basejump.color.discrete", NULL),
+  color = getOption("basejump.color.discrete", default = NULL),
   title = "zeros vs. depth")
 }
 \arguments{

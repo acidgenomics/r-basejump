@@ -125,7 +125,11 @@ sanitizeNA.DataFrame <-  # nolint
         list <- lapply(
             X = object,
             FUN = function(col) {
-                sanitizeNA(col)
+                if (is.character(col)) {
+                    sanitizeNA(col)
+                } else {
+                    I(col)
+                }
             })
         DataFrame(list, row.names = rownames)
     }

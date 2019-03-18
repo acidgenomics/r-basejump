@@ -8,10 +8,11 @@
 \usage{
 \S4method{plotPCA}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, ntop = 500L,
-  label = getOption("basejump.label", FALSE),
-  color = getOption("basejump.color.discrete", NULL),
-  pointSize = getOption("basejump.point.size", 3L), title = "PCA",
-  subtitle = NULL, return = c("ggplot", "DataFrame"), ...)
+  label = getOption("basejump.label", default = FALSE),
+  color = getOption("basejump.color.discrete", default = NULL),
+  pointSize = getOption("basejump.point.size", default = 3L),
+  title = "PCA", subtitle = NULL, return = c("ggplot", "DataFrame"),
+  ...)
 }
 \arguments{
 \item{object}{Object.}

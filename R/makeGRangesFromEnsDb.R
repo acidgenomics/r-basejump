@@ -55,45 +55,28 @@ makeGRangesFromEnsDb <- function(object, level) {
         sep = "\n"
     ))
 
+    # Always get gene-level annotations.
+    genes <- genes(object, order.by = "gene_id", return.type = "GRanges")
     if (level == "genes") {
-        gr <- genes(
-            x = object,
-            order.by = "gene_id",
-            return.type = "GRanges"
-        )
-    } else if (level == "transcripts") {
-        tx <- transcripts(
-            x = object,
-            order.by = "tx_id",
-            return.type = "GRanges"
-        )
-
-        # Get additional mcols of interest from gene annotations.
-        gene <- genes(
-            x = object,
-            order.by = "gene_id",
-            return.type = "GRanges"
-        )
-
-        # Join the transcript- and gene-level annotations.
-        txData <- mcols(tx)
-        geneData <- mcols(gene)
-        # Use BiocTibble left_join DataFrame method here.
-        data <- left_join(
-            x = as_tibble(txData, rownames = "rowname"),
-            y = as_tibble(geneData, rownames = NULL),
-            by = "gene_id"
-        )
-        assert(identical(x = txData[["tx_id"]], y = data[["tx_id"]]))
-
-        # Now we can slot back into the transcript mcols.
-        mcols(tx) <- as(data, "DataFrame")
-        gr <- tx
+        out <- genes
+        metadata(out)[["level"]] <- genes
     }
 
-    metadata(gr) <- metadata
+    if (level == "transcripts") {
+        transcripts <-
+            transcripts(object, order.by = "tx_id", return.type = "GRanges")
+        # Merge gene-level annotations into `mcols()`.
+        out <- .mergeGenesIntoTranscripts(
+            transcripts = transcripts,
+            genes = genes
+        )
+    }
+
+    # Ensure ensembldb dependences get detached.
     .forceDetach(keep = userAttached)
-    .makeGRanges(gr)
+
+    metadata(out) <- metadata
+    .makeGRanges(out)
 }
 
 formals(makeGRangesFromEnsDb)[["level"]] <-

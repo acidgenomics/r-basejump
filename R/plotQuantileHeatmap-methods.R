@@ -88,9 +88,14 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             return(invisible())
         }
 
-        # Convert the SE object to use symbols in the rownames, for pheatmap.
-        suppressWarnings(
-            object <- convertGenesToSymbols(object)
+        # Modify the object to use gene symbols in the row names automatically,
+        # if possible. We're using `tryCatch()` call here to return the object
+        # unmodified if gene symbols aren't defined.
+        object <- tryCatch(
+            expr = suppressMessages(
+                convertGenesToSymbols(object)
+            ),
+            error = function(e) object
         )
 
         # Ensure we're using a dense matrix.

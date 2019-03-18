@@ -9,17 +9,19 @@
 \usage{
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
-  "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
-  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
-  color = viridis::viridis, legendColor = viridis::viridis,
-  borderColor = NULL, title = TRUE, ...)
+  "kendall", "spearman"), clusteringMethod = "ward.D2",
+  showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
+  treeheightCol = 50L, color = viridis::viridis,
+  legendColor = viridis::viridis, borderColor = NULL, title = TRUE,
+  ...)
 
 \S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
-  "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
-  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
-  color = viridis::viridis, legendColor = viridis::viridis,
-  borderColor = NULL, title = TRUE, ...)
+  "kendall", "spearman"), clusteringMethod = "ward.D2",
+  showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
+  treeheightCol = 50L, color = viridis::viridis,
+  legendColor = viridis::viridis, borderColor = NULL, title = TRUE,
+  ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -36,8 +38,8 @@ Groups of interest that define the samples. If left unset, defaults to
 
 \item{method}{\code{character(1)}.
 Correlation coefficient (or covariance) method to be computed. Defaults to
-"\code{pearson}" but "\code{spearman}" can also be used. Consult the \code{\link[stats:cor]{stats::cor()}}
-documentation for more information.}
+"\code{pearson}" but "\code{spearman}" or "\code{kendall}" can also be used. Refer to the
+\code{\link[stats:cor]{stats::cor()}} documentation for details.}
 
 \item{clusteringMethod}{\code{character(1)}.
 Clustering method. Accepts the same values as \code{\link[stats:hclust]{stats::hclust()}}.}

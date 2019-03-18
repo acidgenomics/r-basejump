@@ -1,10 +1,28 @@
-## basejump 0.9.12
+## basejump 0.9.13 (2019-03-18)
+
+### Minor changes
+
+- Updated dependencies, specificially brio and goalie.
+- Miscellaneous documentation improvements.
+
+
+
+## basejump 0.9.12 (2019-03-11)
+
+### Major changes
+
+- `makeGRangesFromGFF`: Reworked internal code, making it more modular. Added
+  initial support for RefSeq GFF3 files. Also improved sanitization and special
+  handling of files from FlyBase and WormBase.
 
 ### Minor changes
 
 - `plotHeatmap` family: Bug fix needed for internal `is.na` call on
   `annotationCol`, which should be wrapped with `any` to return boolean. This
   errors (as it should) on R 3.6, but I missed it on R 3.5.
+- Consolidating GRanges return code defined in `.makeGRanges`, which is run
+  for both GFF file and ensembldb import. We've improved the Rle encoding steps
+  here to work with complex GFF3 files (e.g. GENCODE).
 
 
 
@@ -377,7 +395,7 @@ my new [goalie][] assert check engine from [assertive][].
   Refer to `dots`, for example.
 - Split out `environment.R` into separate R files. See `detectHPC` for example.
 - Miscellaneous documentation improvements.
-  
+
 
 
 ## basejump 0.8.3-alpha (2018-11-25)

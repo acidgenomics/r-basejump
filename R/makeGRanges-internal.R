@@ -1,3 +1,75 @@
+# This is the main GRanges final return generator, used by
+# `makeGRangesFromEnsembl()` and `makeGRangesFromGFF()`.
+.makeGRanges <- function(object) {
+    assert(
+        is(object, "GRanges"),
+        hasNames(object),
+        hasLength(object)
+    )
+
+    # Stash object length to ensure no dropping is occurring.
+    length <- length(object)
+
+    # Minimize the object, removing unnecessary metadata columns.
+    object <- .minimizeGRanges(object)
+    assert(identical(length(object), length))
+
+    # Now we're ready to standardize into basejump conventions.
+    object <- .standardizeGRanges(object)
+    assert(identical(length(object), length))
+
+    # Prepare the metadata.
+    # Slot organism into metadata.
+    object <- .slotOrganism(object)
+    # Ensure object contains prototype metadata.
+    metadata(object) <- c(.prototypeMetadata, metadata(object))
+
+    idCol <- .detectGRangesIDs(object)
+    assert(isSubset(idCol, colnames(mcols(object))))
+    names <- as.character(mcols(object)[[idCol]])
+    assert(!any(is.na(names)))
+
+    # Inform the user if the object contains invalid names, showing offenders.
+    invalid <- setdiff(names, make.names(names))
+    if (hasLength(invalid)) {
+        invalid <- sort(unique(invalid))
+        message(paste0(
+            length(invalid), " invalid names: ",
+            toString(invalid, width = 200L)
+        ))
+    }
+    rm(invalid)
+
+    # Split into GRangesList if object contains multiple ranges per feature.
+    if (hasDuplicates(names)) {
+        message(paste0(
+            "GRanges contains multiple ranges per ", idCol, ".\n",
+            "Splitting into GRangesList."
+        ))
+        # Metadata will get dropped during `split()` call; stash and reassign.
+        metadata <- metadata(object)
+        object <- split(x = object, f = as.factor(names))
+        metadata(object) <- metadata
+        rm(metadata)
+    } else {
+        names(object) <- names
+    }
+
+    # Ensure the ranges are sorted by gene identifier.
+    object <- object[sort(names(object))]
+
+    # Inform the user about the number of features returned.
+    level <- match.arg(
+        arg = metadata(object)[["level"]],
+        choices = c("genes", "transcripts")
+    )
+    message(paste(length(object), level, "detected."))
+
+    object
+}
+
+
+
 #' Broad Class Definitions
 #'
 #' @author Rory Kirchner, Michael Steinbaugh
@@ -9,6 +81,7 @@
 #' @return Named `factor`.
 .broadClass <- function(object) {
     assert(is(object, "GRanges"))
+    object <- camel(object)
 
     # Early return if already defined in `mcols()`.
     if ("broadClass" %in% colnames(mcols(object))) {
@@ -16,6 +89,11 @@
         names(out) <- names(object)
         return(out)
     }
+
+    # Need to strip the names on the object here, otherwise data.frame coercion
+    # will error if the object contains duplicate names, which can happen with
+    # GRanges that need to be split to GRangesList.
+    names(object) <- NULL
 
     # This step coerces the GRanges to a tibble, which will now contain
     # seqnames, start, end, width, and strand as columns.
@@ -48,7 +126,7 @@
         geneNameCol <- "geneName"
         geneNameData <- data[[geneNameCol]]
     } else {
-        warning("GRanges does not contain gene names in mcols().")
+        message("GRanges does not contain gene names in mcols().")
         geneNameCol <- NULL
         geneNameData <- NA
     }
@@ -62,7 +140,7 @@
         seqnamesData <- data[[seqnamesCol]]
     } else {
         # Don't think this is currently possible to hit, but keep just in case.
-        warning("GRanges does not contain seqnames.")
+        message("GRanges does not contain seqnames.")
         seqnamesCol <- NULL
         seqnamesData <- NA
     }
@@ -71,7 +149,7 @@
     message(paste(
         "Defining broadClass using:",
         # Note that `c()` call here effectively removes `NULL` definitions.
-        toString(c(biotypeCol, geneNameCol, seqnamesCol))
+        toString(sort(c(biotypeCol, geneNameCol, seqnamesCol)))
     ))
     data <- tibble(
         biotype = biotypeData,
@@ -155,38 +233,192 @@
 
 
 
-.makeGRanges <- function(object) {
+# Note that this intentionally prioritizes transcripts over genes.
+.detectGRangesIDs <- function(object) {
+    if (is(object, "GRangesList")) {
+        object <- object[[1L]]
+    }
+    assert(is(object, "GRanges"))
+    mcolnames <- colnames(mcols(object))
+    if ("transcriptID" %in% mcolnames) {
+        "transcriptID"
+    } else if ("transcript_id" %in% mcolnames) {
+        "transcript_id"
+    } else if ("geneID" %in% mcolnames) {
+        "geneID"
+    } else if ("gene_id" %in% mcolnames) {
+        "gene_id"
+    } else {
+        stop("Failed to detect ID column.")
+    }
+}
+
+
+
+
+
+
+
+
+# Merge the gene-level annotations (`geneName`, `geneBiotype`) into a
+# transcript-level GRanges object.
+
+# nolint start
+# Alternate merge approach, which works but can have issues with invalid names.
+# Saccharomyces cerevisiae messes up this step because of names (e.g. ETS1-1).
+# > mcols <- as(left_join(
+# >     x = as_tibble(mcols(transcripts), rownames = NULL),
+# >     y = as_tibble(mcols(genes), rownames = NULL),
+# >     by = "gene_id"
+# > ), Class = "DataFrame")
+# > assert(identical(
+# >     x = mcols(transcripts)[["tx_id"]],
+# >     y = mcols[["tx_id"]]
+# > ))
+# nolint end
+
+.mergeGenesIntoTranscripts <- function(transcripts, genes) {
+    message("Merging gene-level annotations into transcript-level object.")
+    # Use `transcript` prefix instead of `tx` consistently.
+    colnames(mcols(transcripts)) <- gsub(
+        pattern = "^tx_",
+        replacement = "transcript_",
+        x = colnames(mcols(transcripts))
+    )
     assert(
-        is(object, "GRanges"),
-        hasNames(object)
+        is(transcripts, "GRanges"),
+        is(genes, "GRanges"),
+        # Note that `hasValidNames()` will error on WormBase transcripts.
+        hasNames(transcripts),
+        hasNames(genes),
+        isSubset("transcript_id", colnames(mcols(transcripts))),
+        identical(names(transcripts), mcols(transcripts)[["transcript_id"]]),
+        # Don't proceed unless we have `gene_id` column to use for merge.
+        isSubset("gene_id", colnames(mcols(transcripts))),
+        isSubset("gene_id", colnames(mcols(genes)))
     )
 
-    # Standardize the metadata columns.
-    mcols <- mcols(object)
-    # Always return using camel case, even though GFF/GTF files use snake.
-    mcols <- camel(mcols)
-    # Ensure "ID" is always capitalized (e.g. "entrezid").
-    colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
-    # Use `transcript` instead of `tx` consistently.
-    colnames(mcols) <- gsub(
-        pattern = "^tx",
-        replacement = "transcript",
-        x = colnames(mcols)
+    geneCols <- setdiff(
+        x = colnames(mcols(genes)),
+        y = colnames(mcols(transcripts))
     )
+
+    # Only attempt the merge if there's useful additional metadata to include.
+    # Note that base `merge()` can reorder rows, so be careful here.
+    if (length(geneCols) > 0L) {
+        geneCols <- c("gene_id", geneCols)
+        merge <- merge(
+            x = mcols(transcripts),
+            y = mcols(genes)[, geneCols, drop = FALSE],
+            all.x = TRUE,
+            by = "gene_id"
+        )
+        # Ensure that we're calling `S4Vectors::merge()`, not `base::merge()`.
+        assert(
+            is(merge, "DataFrame"),
+            identical(nrow(merge), length(transcripts))
+        )
+        # The merge step will drop row names, so we need to reassign.
+        rownames(merge) <- merge[["transcript_id"]]
+        # Reorder to match the original transcripts object.
+        # Don't assume this is alphabetically sorted.
+        merge <- merge[names(transcripts), , drop = FALSE]
+        assert(
+            identical(
+                x = mcols(transcripts)[["transcript_id"]],
+                y = merge[["transcript_id"]]
+            )
+        )
+        mcols(transcripts) <- merge
+    }
+    transcripts
+}
+
+
+
+# This step drops extra columns in `mcols()` and ensures that factor levels get
+# dropped, to reduce memory overhead.
+#
+# Note that `removeNA()` call currently will error on complex columns.
+# For example, this will error on `CharacterList` columns returned from
+# GENCODE GFF3 file.
+.minimizeGRanges <- function(object) {
+    assert(is(object, "GRanges"))
+    mcols <- mcols(object)
+
+    # Drop any complex S4 columns that aren't either atomic or list.
+    keep <- bapply(
+        X = mcols,
+        FUN = function(x) {
+            is.atomic(x) || is.list(x)
+        }
+    )
+    mcols <- mcols[, keep, drop = FALSE]
+
+    # Ensure NA values are properly set, prior to `removeNA()` call.
+    mcols <- sanitizeNA(mcols)
+
     # Remove columns that are all `NA`. This step will remove all
     # transcript-level columns from gene-level ranges.
     mcols <- removeNA(mcols)
 
-    # Warn on missing name (symbol) columns.
-    if (!"geneName" %in% colnames(mcols)) {
-        warning("GRanges does not contain `geneName` in mcols().")
-    }
-    if (
-        "transcriptID" %in% colnames(mcols) &&
-        !"transcriptName" %in% colnames(mcols)
-    ) {
-        warning("GRanges does not contain `transcriptName` in mcols().")
-    }
+    # Apply run-length encoding on all atomic columns, to lower memory overhead.
+    # Note that all character columns will be coerced to factor, prior to Rle.
+    mcols <- lapply(
+        X = mcols,
+        FUN = function(x) {
+            if (!is.atomic(x) || isS4(x)) {
+                # `I()` inhibits reinterpretation and returns `AsIs` class.
+                # This keeps complex columns (e.g. Entrez list) intact.
+                # Recommended in the `DataFrame` documentation.
+                I(x)
+            } else {
+                # Check to see if any character columns containing repeated
+                # values should be coerced to factor first (e.g. geneBiotype).
+                if (is.character(x) && any(duplicated(x))) {
+                    x <- as.factor(x)
+                }
+                # Ensure factor levels get correctly reset, to save memory.
+                if (is.factor(x)) {
+                    x <- droplevels(x)
+                }
+                # Use S4 run length encoding (Rle) for atomic metadata columns.
+                # Many of these elements are repetitive, and this makes
+                # operations faster.
+                Rle(x)
+            }
+        }
+    )
+    # `lapply()` returns as list, so we need to coerce back to DataFrame.
+    mcols <- as(mcols, "DataFrame")
+    mcols(object) <- mcols
+    object
+}
+
+
+
+# Standardize the GRanges into desired conventions used in basejump package.
+# Note that this step makes GRanges imported via `rtracklayer::import()`
+# incompatible with `GenomicFeatures::makeTxDbFromGRanges()`.
+.standardizeGRanges <- function(object) {
+    assert(is(object, "GRanges"))
+
+    # Standardize the metadata columns.
+    mcols <- mcols(object)
+    # Use `transcript` prefix instead of `tx` consistently.
+    colnames(mcols) <- gsub(
+        pattern = "^tx_",
+        replacement = "transcript_",
+        x = colnames(mcols)
+    )
+    # Ensure "ID" is always capitalized (e.g. "entrezid").
+    colnames(mcols) <- gsub(
+        pattern = "(.+)id$",
+        replacement = "\\1ID",
+        x = colnames(mcols)
+    )
+    # Always return using camel case, even though GFF/GTF files use snake.
+    mcols <- camel(mcols)
 
     # Always use `geneName` instead of `symbol`.
     # Note that ensembldb output duplicates these.
@@ -198,67 +430,24 @@
         mcols[["symbol"]] <- NULL
     }
 
-    mcols <- lapply(
-        X = mcols,
-        FUN = function(col) {
-            if (!is.atomic(col) || isS4(col)) {
-                # `I()` inhibits reinterpretation and returns `AsIs` class.
-                # This keeps complex columns (e.g. Entrez list) intact.
-                # Recommended in the `DataFrame` documentation.
-                I(col)
-            } else {
-                # Check to see if any character columns containing repeated
-                # values should be coerced to factor first (e.g. geneBiotype).
-                if (is.character(col) && any(duplicated(col))) {
-                    col <- as.factor(col)
-                }
-                # Ensure factor levels get correctly reset, to save memory.
-                if (is.factor(col)) {
-                    col <- droplevels(col)
-                }
-                # Use S4 run length encoding (Rle) for atomic metadata columns.
-                # Many of these elements are repetitive, and this makes
-                # operations faster.
-                Rle(col)
-            }
-        }
-    )
-    mcols <- as(mcols, "DataFrame")
+    # Re-slot updated mcols back into object before calculating broad class
+    # biotype and/or assigning names.
     mcols(object) <- mcols
 
-    # Require that names match the identifier column.
-    # Use `transcriptID` over `geneID` if defined.
-    assert(areIntersectingSets(
-        x = c("geneID", "transcriptID"),
-        y = colnames(mcols(object))
-    ))
-    if ("transcriptID" %in% colnames(mcols(object))) {
-        idCol <- "transcriptID"
-    } else {
-        idCol <- "geneID"
-    }
-    names(object) <- mcols(object)[[idCol]]
+    # Ensure broad class definitions are included, using run-length encoding.
+    # Don't pass `mcols` to `.broadClass()`, use the GRanges instead because
+    # we need the corresponding seqnames for calculations.
+    mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
 
-    # Ensure broad class definitions are included.
-    broadClass <- .broadClass(object)
-    # Apply S4 run-length encoding.
-    broadClass <- Rle(broadClass)
-    mcols(object)[["broadClass"]] <- broadClass
-
-    # Sort metadata columns alphabetically.
+    # Finally, sort the metadata columns alphabetically.
     mcols(object) <-
         mcols(object)[, sort(colnames(mcols(object))), drop = FALSE]
 
-    # Ensure GRanges is sorted by names.
+    # Ensure the ranges are sorted by identifier.
+    idCol <- .detectGRangesIDs(object)
     message(paste0("Arranging by ", idCol, "."))
+    names(object) <- mcols(object)[[idCol]]
     object <- object[sort(names(object))]
 
-    # Prepare the metadata.
-    # Slot organism into metadata.
-    object <- .slotOrganism(object)
-    # Ensure object contains prototype metadata.
-    metadata(object) <- c(.prototypeMetadata, metadata(object))
-
-    assert(is(object, "GRanges"))
     object
 }

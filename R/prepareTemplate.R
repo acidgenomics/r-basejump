@@ -68,8 +68,10 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     # Copy the shared files from the requested package, if necessary.
     if (!is.null(package)) {
         assert(isSubset(package, rownames(installed.packages())))
-        sourceDir <-
-            system.file("rmarkdown/shared", package = package, mustWork = TRUE)
+        sourceDir <- system.file(
+            "rmarkdown", "shared",
+            package = package, mustWork = TRUE
+        )
         copied <- copySharedFiles(sourceDir, overwrite = overwrite)
         files <- c(files, copied)
     }
@@ -78,8 +80,10 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     # Define this step second in case there are files in the desired package
     # that are duplicated in basejump, and which we don't necessarily want to
     # overwrite by default.
-    sourceDir <-
-        system.file("rmarkdown/shared", package = "basejump", mustWork = TRUE)
+    sourceDir <- system.file(
+        "rmarkdown", "shared",
+        package = "basejump", mustWork = TRUE
+    )
     copied <- copySharedFiles(sourceDir, overwrite = overwrite)
     files <- c(files, copied)
 
