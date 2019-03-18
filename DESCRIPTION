@@ -46,7 +46,8 @@ Imports:
 Suggests:
     BiocStyle, EnsDb.Hsapiens.v75,
     datasets, patrick, rmarkdown, testthat, viridis
-Enhances: pbapply (>= 1.3)
+Enhances:
+    pbapply (>= 1.4)
 Remotes:
     steinbaugh/bioverbs,
     steinbaugh/brio,
