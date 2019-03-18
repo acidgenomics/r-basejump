@@ -118,15 +118,7 @@ sampleData.SummarizedExperiment <-  # nolint
         )
 
         # Prepare columns ------------------------------------------------------
-        assert(
-            areDisjointSets(
-                x = c(
-                    "interestingGroups",
-                    "sampleID"
-                ),
-                y = colnames(data)
-            )
-        )
+        assert(areDisjointSets(colnames(data), metadataBlacklist))
 
         # Require `sampleName` column.
         if (!"sampleName" %in% colnames(data)) {
