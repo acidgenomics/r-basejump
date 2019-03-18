@@ -30,7 +30,7 @@
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom S4Vectors DataFrame List Rle %in% aggregate cor decode expand
-#'   head mcols mcols<- metadata metadata<- na.omit tail
+#'   head mcols mcols<- merge metadata metadata<- na.omit split tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
@@ -47,13 +47,14 @@
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie allAreHexColors areDisjointSets areIntersectingSets
-#'   areSameLength areSetEqual assert false getNameInParent hasDims hasInternet
-#'   hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows
-#'   hasRownames hasUniqueCols hasValidDimnames isADirectory  isAny isCharacter
-#'   isFlag isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange
-#'   isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
-#'   isScalar isString isSubset isSuperset matchesUniqueGeneNames validNames
-#'   validate validateClasses
+#'   areSameLength areSetEqual assert cause false getNameInParent hasDims
+#'   hasDuplicates hasInternet hasLength hasNames hasNoDuplicates
+#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
+#'   hasValidNames isADirectory isAny isCharacter isFlag isGGScale isHeaderLevel
+#'   isHexColorFunction isInClosedRange isInRange isInt isMatchingRegex
+#'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
+#'   isSubset isSuperset matchesUniqueGeneNames validNames validate
+#'   validateClasses
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom knitr asis_output kable opts_knit

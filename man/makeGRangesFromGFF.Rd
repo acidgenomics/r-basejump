@@ -6,10 +6,10 @@
 \title{Make \code{GRanges} from a GFF/GTF file}
 \usage{
 makeGRangesFromGFF(file, level = c("genes", "transcripts"),
-  strict = FALSE)
+  .checkAgainstTxDb = FALSE)
 
 makeGRangesFromGTF(file, level = c("genes", "transcripts"),
-  strict = FALSE)
+  .checkAgainstTxDb = FALSE)
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -18,15 +18,16 @@ File path.}
 \item{level}{\code{character(1)}.
 Return as genes or transcripts.}
 
-\item{strict}{\code{logical(1)}.
-Strict mode. Generate an internal \code{TxDb} using
-\code{\link[GenomicFeatures:makeTxDbFromGRanges]{GenomicFeatures::makeTxDbFromGRanges()}} and check that the
-\code{\link[IRanges:ranges]{ranges()}}, \code{\link[GenomeInfoDb:seqnames]{seqnames()}}, and
-identifiers defined in \code{\link[base:names]{names()}} are identical. Doesn't work
-for all GFF/GTF files due to some current limitations in the
-GenomicFeatures package, so this is disabled by default. Generally,
-GenomicFeatures parses GTF files better than GFF files. However, it's a
-useful sanity check and should be enabled if possible.}
+\item{.checkAgainstTxDb}{\code{logical(1)}.
+Enable strict mode, intended for development and unit testing only.
+Generate an internal \code{TxDb} using \code{\link[GenomicFeatures:makeTxDbFromGRanges]{GenomicFeatures::makeTxDbFromGRanges()}}
+and check that the \code{\link[IRanges:ranges]{ranges()}},
+\code{\link[GenomeInfoDb:seqnames]{seqnames()}}, and identifiers defined in
+\code{\link[base:names]{names()}} are identical. Doesn't work for all GFF/GTF files
+due to some current limitations in the GenomicFeatures package, so this is
+disabled by default. Generally, GenomicFeatures parses GTF files better
+than GFF files. However, it's a useful sanity check and should be enabled
+if possible.}
 }
 \description{
 Make \code{GRanges} from a GFF/GTF file
@@ -67,15 +68,16 @@ the metadata columns.
 
 
 Currently \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}} supports genomes from these sources:
-\itemize{
-\item Ensembl: GTF, GFF3.
-\item GENCODE: GTF, GFF3.
-\item RefSeq: GFF3.
-\item FlyBase: GTF. GFF3 not supported.
-\item WormBase: GTF. GFF3 not supported.
-}
 
-UCSC support will be added in a future release.
+\tabular{lrrl}{
+\tab   GTF \tab  GFF3 \tab                                     \cr
+Ensembl  \tab  TRUE \tab  TRUE \tab Also available via ensembldb.       \cr
+GENCODE  \tab  TRUE \tab  TRUE \tab Similar to Ensembl; duplicate PAR_Y.\cr
+RefSeq   \tab    NA \tab  TRUE \tab Experimental support.               \cr
+UCSC     \tab FALSE \tab FALSE \tab Use pre-built Bioconductor packages.\cr
+FlyBase  \tab  TRUE \tab FALSE \tab Newer than Ensembl.                 \cr
+WormBase \tab  TRUE \tab FALSE \tab Very similar to Ensembl.            \cr
+}
 }
 
 \section{Ensembl}{
@@ -104,7 +106,12 @@ the GENCODE annotation is essentially identical to the Ensembl annotation.
 However, GENCODE handles pseudoautosomal regions (PAR) differently than
 Ensembl. The Ensembl GTF file only includes this annotation once, for
 chromosome X. However, GENCODE GTF/GFF3 files include the annotation in the
-PAR regions of both chromosomes.
+PAR regions of both chromosomes. You'll see these genes contain a "_PAR_Y"
+suffix.
+
+Additionally, GENCODE GFF/GTF files import with a gene identifier containing
+a suffix, which differs slightly from the Ensembl GFF/GTF spec
+(e.g. GENCODE: ENSG00000000003.14; Ensembl: ENSG00000000003).
 
 The \href{https://www.gencodegenes.org/pages/faq.html}{GENCODE FAQ} has additional
 details.
@@ -114,7 +121,7 @@ details.
 
 
 Refer to the
-\href{ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt}{current RefSeq GFF3 spec}
+\href{ftp://ftp.ncbi.nlm.nih.gov/genomes/README_GFF3.txt}{current RefSeq spec}
 for details.
 
 See also:
@@ -139,15 +146,15 @@ browser is required in a web browser.
 
 Select the following options to download hg38:
 \itemize{
-\item clade: Mammal
-\item genome: Human
-\item assembly: Dec. 2013 (GRCh38/hg38)
-\item group: Genes and Gene Predictions
-\item track: GENCODE v29
-\item table: knownGene
-\item region: genome
-\item output format: GTF - gene transfer format
-\item output file: Enter a file name
+\item clade: \code{Mammal}
+\item genome: \code{Human}
+\item assembly: \code{Dec. 2013 (GRCh38/hg38)}
+\item group: \code{Genes and Gene Predictions}
+\item track: \code{GENCODE v29}
+\item table: \code{knownGene}
+\item region: \code{genome}
+\item output format: \code{GTF - gene transfer format}
+\item output file: \code{<Enter a file name>}
 }
 
 See also:
@@ -163,23 +170,23 @@ See also:
 \itemize{
 \item Ensembl GTF:\cr
 ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-\item Ensembl GFF:\cr
+\item Ensembl GFF3:\cr
 ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
 \item GENCODE GTF:\cr
 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz
-\item GENCODE GFF:\cr
+\item GENCODE GFF3:\cr
 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
-\item RefSeq GFF:\cr
+\item RefSeq GFF3:\cr
 ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-\item WormBase GTF:\cr
-ftp://ftp.wormbase.org/pub/wormbase/releases/WS268/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS268.canonical_geneset.gtf.gz
 \item FlyBase GTF:\cr
 ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
+\item WormBase GTF:\cr
+ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz
 }
 }
 
 \examples{
-file <- system.file("extdata/ensembl.gtf.gz", package = "basejump")
+file <- pasteURL(basejumpCacheURL, "ensembl.gtf.gz", protocol = "none")
 
 ## Genes
 x <- makeGRangesFromGFF(file = file, level = "genes")

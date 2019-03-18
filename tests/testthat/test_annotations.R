@@ -13,8 +13,7 @@ context("Annotations : General")
 with_parameters_test_that(
     "convertUCSCBuildToEnsembl", {
         expect_identical(
-            object = convertUCSCBuildToEnsembl(object) %>%
-                as.character(),
+            object = unname(convertUCSCBuildToEnsembl(object)),
             expected = expected
         )
     },
@@ -235,10 +234,6 @@ if ("EnsDb.Hsapiens.v75" %in% rownames(installed.packages())) {
 
 test_that("makeGRangesFromEnsembl : Invalid parameters", {
     expect_error(
-        object = makeGRangesFromEnsembl("Homo sapiens", genomeBuild = "hg38"),
-        regexp = "UCSC"
-    )
-    expect_error(
         object = makeGRangesFromEnsembl("Homo sapiens", release = 86L),
         regexp = ">= 87"
     )
@@ -276,6 +271,13 @@ tx2gene <- makeTx2GeneFromEnsembl(organism = organism, release = release)
 test_that("makeTx2GeneFromEnsembl", {
     expect_is(tx2gene, "Tx2Gene")
     expect_identical(nrow(tx2gene), 216741L)
+})
+
+test_that("Ensembl2Entrez", {
+    hs <- makeGRangesFromEnsembl(organism = organism, release = release)
+    object <- Ensembl2Entrez(hs)
+    expect_s4_class(object, "Ensembl2Entrez")
+    expect_identical(nrow(object), 63970L)
 })
 
 
@@ -371,11 +373,14 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
         expected = list(
             broadClass = Rle,
             ccdsID = Rle,
+            description = Rle,
             geneBiotype = Rle,
             geneID = Rle,
             geneName = Rle,
+            havanaGene = Rle,
             havanaTranscript = Rle,
             havanaVersion = Rle,
+            logicName = Rle,
             source = Rle,
             tag = Rle,
             transcriptBiotype = Rle,
@@ -538,22 +543,19 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 # Databases ====================================================================
 context("Annotations : Databases")
 
-# FIXME Add code coverage:
-# - Ensembl2Entrez
-# - geneSynonyms
-# - HGNC2Ensembl
-# - MGI2Ensembl
-
 test_that("EggNOG", {
-    expect_is(object = EggNOG(), class = "EggNOG")
+    object <- EggNOG()
+    expect_s4_class(object, "EggNOG")
 })
 
-# FIXME Add coverage for all supported organisms.
-test_that("geneSynonyms", {
-    expect_is(
-        object = geneSynonyms(organism = "Homo sapiens"),
-        class = "grouped_df"
-    )
+test_that("HGNC2Ensembl", {
+    object <- HGNC2Ensembl()
+    expect_s4_class(object, "HGNC2Ensembl")
+})
+
+test_that("MGI2Ensembl", {
+    object <- MGI2Ensembl()
+    expect_s4_class(object, "MGI2Ensembl")
 })
 
 with_parameters_test_that(
@@ -561,7 +563,15 @@ with_parameters_test_that(
         invisible(capture.output(
             object <- PANTHER(organism)
         ))
-        expect_is(object, "PANTHER")
+        expect_s4_class(object, "PANTHER")
     },
     organism = names(.pantherMappings)
 )
+
+# Full organism support is covered in extra checks.
+test_that("geneSynonyms", {
+    expect_is(
+        object = geneSynonyms(organism = "Homo sapiens"),
+        class = "grouped_df"
+    )
+})

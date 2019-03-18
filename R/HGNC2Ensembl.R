@@ -28,11 +28,12 @@ HGNC2Ensembl <-  # nolint
         }
 
         message("Obtaining HGNC to Ensembl gene ID mappings.")
-        data <- read_tsv(
-            file = file,
-            # Suppress the column messages.
-            col_types = cols(),
-            progress = FALSE
+        # Note that this file does not contain syntactically valid names, and
+        # `readr::read_tsv()` has parsing issues with it.
+        #
+        # Suppressing warnings about syntactically valid names and TXT file.
+        suppressWarnings(
+            data <- import(file)
         )
         data <- camel(data)
         data <- data[, c("hgncID", "ensemblGeneID")]
@@ -40,8 +41,8 @@ HGNC2Ensembl <-  # nolint
         data <- data[!is.na(data[["geneID"]]), , drop = FALSE]
         data[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", data[["hgncID"]]))
         data <- data[order(data[["hgncID"]]), , drop = FALSE]
+
         data <- as(data, "DataFrame")
         metadata(data) <- .prototypeMetadata
-
         new(Class = "HGNC2Ensembl", data)
     }

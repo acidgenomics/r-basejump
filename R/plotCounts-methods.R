@@ -11,11 +11,9 @@
 #'   Plot style.
 #'
 #' @return
-#' - `style = "facet"`:
-#'     `ggplot` grouped by `sampleName`, with
-#'     [ggplot2::facet_wrap()] applied to panel the samples.
-#' - `style = "wide"`:
-#'     `ggplot` in wide format, with genes on the x-axis.
+#' - `style = "facet"`: `ggplot` grouped by `sampleName`, with
+#'   [ggplot2::facet_wrap()] applied to panel the samples.
+#' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
 #' data(rse)
@@ -148,10 +146,14 @@ plotCounts.SummarizedExperiment <-  # nolint
         legend = getOption("basejump.legend", TRUE),
         style = c("facet", "wide")
     ) {
-        # Check for accidental masking of DESeq2, which doesn't currently use
-        # generic for `plotCounts()`.
+        # Detect DESeqDataSet and use normalized counts, if necessary.
         if (is(object, "DESeqDataSet")) {
-            stop("Use `DESeq2::plotCounts()` for DESeqDataSet.")
+            message("DESeqDataSet detected. Using normalized counts.")
+            assays <- list(normalized = counts(object, normalized = TRUE))
+            object <- as(object, "RangedSummarizedExperiment")
+            assays(object) <- assays
+            assay <- 1L
+            countsAxisLabel <- "normalized counts"
         }
         validObject(object)
         assert(
