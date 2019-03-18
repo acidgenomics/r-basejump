@@ -1,4 +1,4 @@
-## basejump 0.9.13 (2019-03-17)
+## basejump 0.9.13 (2019-03-18)
 
 ### Minor changes
 
@@ -395,7 +395,7 @@ my new [goalie][] assert check engine from [assertive][].
   Refer to `dots`, for example.
 - Split out `environment.R` into separate R files. See `detectHPC` for example.
 - Miscellaneous documentation improvements.
-  
+
 
 
 ## basejump 0.8.3-alpha (2018-11-25)
