@@ -33,14 +33,30 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 #' @examples
 #' formalsList
 formalsList <- list(
-    color.continuous = quote(getOption("basejump.color.continuous", NULL)),
-    color.discrete = quote(getOption("basejump.color.discrete", NULL)),
-    fill.continuous = quote(getOption("basejump.fill.continuous", NULL)),
-    fill.discrete = quote(getOption("basejump.fill.discrete", NULL)),
-    flip = quote(getOption("basejump.flip", TRUE)),
-    label = quote(getOption("basejump.label", FALSE)),
-    legend = quote(getOption("basejump.legend", TRUE)),
-    point.size = quote(getOption("basejump.point.size", 3L))
+    color.continuous = quote(
+        getOption("basejump.color.continuous", default = NULL)
+    ),
+    color.discrete = quote(
+        getOption("basejump.color.discrete", default = NULL)
+    ),
+    fill.continuous = quote(
+        getOption("basejump.fill.continuous", default = NULL)
+    ),
+    fill.discrete = quote(
+        getOption("basejump.fill.discrete", default = NULL)
+    ),
+    flip = quote(
+        getOption("basejump.flip", default = TRUE)
+    ),
+    label = quote(
+        getOption("basejump.label", default = FALSE)
+    ),
+    legend = quote(
+        getOption("basejump.legend", default = TRUE)
+    ),
+    point.size = quote(
+        getOption("basejump.point.size", default = 3L)
+    )
 )
 
 
@@ -58,6 +74,31 @@ genomeMetadataNames <- c("organism", "genomeBuild", "ensemblRelease")
 #' @examples
 #' lanePattern
 lanePattern <- "_L([[:digit:]]{3})"
+
+
+
+#' Sample metadata blacklist
+#' @export
+#' @examples
+#' metadataBlacklist
+metadataBlacklist <- c(
+    # Too vague.
+    "ID", "Id", "id",
+    # Generated automatically.
+    "interestingGroups",
+    # Use "sampleName" instead.
+    "name",
+    # Generated automatically from "sequence" column.
+    "revcomp",
+    # Used internally by dplyr.
+    "rowname",
+    # Use "sampleName" instead.
+    "sample",
+    # "sampleID" is set automatically, for multiplexed/cell-level data.
+    "sampleID", "sampleId", "sampleid",
+    # Use "sampleName" instead.
+    "samplename"
+)
 
 
 

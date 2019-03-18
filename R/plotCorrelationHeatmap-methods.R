@@ -5,8 +5,8 @@
 #'
 #' @param method `character(1)`.
 #'   Correlation coefficient (or covariance) method to be computed. Defaults to
-#'   "`pearson`" but "`spearman`" can also be used. Consult the [stats::cor()]
-#'   documentation for more information.
+#'   "`pearson`" but "`spearman`" or "`kendall`" can also be used. Refer to the
+#'   [stats::cor()] documentation for details.
 #'
 #' @return `pheatmap`.
 #' @examples
@@ -33,7 +33,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         object,
         assay = 1L,
         interestingGroups = NULL,
-        method = c("pearson", "spearman"),
+        method,
         clusteringMethod = "ward.D2",
         showRownames = TRUE,
         showColnames = TRUE,
@@ -76,7 +76,26 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
 
         # Correlation matrix.
         mat <- as.matrix(assays(object)[[assay]])
-        mat <- cor(mat, method = method)
+
+        # Inform the user if NA values are present, and replace with zeros.
+        if (any(is.na(mat))) {
+            message(paste(
+                sum(is.na(mat)),
+                "NA values detected in matrix.",
+                "Replacing with zeros."
+            ))
+            mat[is.na(mat)] <- 0L
+        }
+
+        message(paste(
+            "Calculating correlation matrix using", method, "method."
+        ))
+        cor <- cor(x = mat, y = NULL, method = method)
+
+        # Check for NA values in correlation matrix and error, if necessary.
+        if (any(is.na(cor))) {
+            stop("NA values detected in correlation matrix.")
+        }
 
         # Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
@@ -97,8 +116,8 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             error = function(e) NULL
         )
         if (length(sampleNames) > 0L) {
-            rownames(mat) <- sampleNames
-            colnames(mat) <- sampleNames
+            rownames(cor) <- sampleNames
+            colnames(cor) <- sampleNames
             if (
                 length(annotationCol) > 0L &&
                 !any(is.na(annotationCol))
@@ -109,13 +128,13 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
 
         # Return pretty heatmap with modified defaults.
         args <- list(
-            mat = mat,
+            mat = cor,
             annotationCol = annotationCol,
             annotationColors = annotationColors,
             borderColor = borderColor,
             clusteringMethod = clusteringMethod,
-            clusteringDistanceRows = "correlation",
             clusteringDistanceCols = "correlation",
+            clusteringDistanceRows = "correlation",
             color = color,
             main = title,
             showColnames = showColnames,
@@ -128,6 +147,9 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         assert(areDisjointSets(names(args), "scale"))
         do.call(what = pheatmap, args = args)
     }
+
+formals(plotCorrelationHeatmap.SummarizedExperiment)[["method"]] <-
+    formals(stats::cor)[["method"]]
 
 
 
