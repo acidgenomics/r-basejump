@@ -9,12 +9,57 @@
 #' @inherit bioverbs::sampleData
 #' @inheritParams params
 #'
+#' @section All supported S4 classes:
+#'
+#' Illegal `colData`:
+#'
+#' - `interestingGroups`: Generated automatically, based on the criteria
+#'   slotted into the object using [interestingGroups()]. The function will
+#'   error intentionally if this column is manually defined in [colData()].
+#'
+#' Recommended `colData`:
+#'
+#' - `sampleName`: Human readable sample names used by basejump plotting
+#'   functions in favor of object column names, which should be syntactically
+#'   valid (but not always very readable). See
+#'   [`make.names()`][base::make.names] for more information on syntactically
+#'   valid names. Note that if this column is not defined in the object,
+#'   it will be returned automatically by [sampleData()].
+#'
+#' @section SummarizedExperiment:
+#'
+#' Required `colData`:
+#'
+#' - None.
+#'
+#' Illegal `colData`:
+#'
+#' - `sampleID`: Redundant; already defined in the object column names.
+#'
+#' @section SingleCellExperiment:
+#'
+#' Recommended `colData`:
+#'
+#' - `sampleID`: `factor` defining cell-to-sample mappings. These mappings
+#'   should use syntactically valid names. Note that this is not currently
+#'   required as we're supporting `SingleCellExperiment` objects from 1 sample,
+#'   but it's required for working with multiple samples in a single object.
+#'
 #' @param clean `logical(1)`.
 #'   Only return `factor` columns. Useful when working with objects that contain
-#'   metrics in [`colData()`][SummarizedExperiment::colData].
-#' @param blacklist `character`.
-#'   Column names that should never be treated as sample-level metadata.
-#'   Applicable only to `SingleCellExperiment` objects.
+#'   quality control metrics in [`colData()`][SummarizedExperiment::colData].
+#'   For example, `bcbioRNASeq` and `DESeqDataSet` objects often contain
+#'   additional columns that aren't informative sample metadata.
+#' @param ignoreCols `character` or `NULL`.
+#'   Only applies when `clean = TRUE`. Additional factor columns defined in
+#'   `colData` to be ignored as sample-level metadata. Particularly useful for
+#'   `SingleCellExperiment` objects, where cell-to-sample mappings are defined
+#'   using the `sampleID` column.
+#' @param blacklistCols `character` or `NULL`.
+#'   Column names that should not be treated as sample-level metadata.
+#'   Currently applicable only to `SingleCellExperiment` objects, which have
+#'   cell-level columns that can be difficult to distinguish, especially when
+#'   processed using Seurat, scater, etc.
 #'
 #' @examples
 #' data(rse, sce)
@@ -52,50 +97,62 @@ bioverbs::`sampleData<-`
 
 
 
-# Checking for illegal user metadata in colData.
-# Don't blacklist `sampleID` here because it's allowed for SCE method.
-.stopOnSampleDataBlacklist <- function(object) {
-    assert(
-        is(object, "DataFrame"),
-        hasRownames(object)
-    )
-    # Check for user stash of `interestingGroups` column.
-    if (isSubset("interestingGroups", colnames(object))) {
-        stop(paste(
-            "The `interestingGroups` column should not be manually defined",
-            "in `colData()`. This column gets generated automatically."
-        ))
-    }
-    TRUE
-}
-
-
-
 # Don't run validity checks here.
+# Note that we're using grep pattern matching for `ignoreCols`.
 sampleData.SummarizedExperiment <-  # nolint
-    function(object, clean = FALSE) {
+    function(
+        object,
+        clean = TRUE,
+        ignoreCols = c(
+            "^description$",
+            "^genomeBuild$",
+            "^qualityFormat$",
+            "^samRef$"
+        )
+    ) {
         data <- colData(object)
-        .stopOnSampleDataBlacklist(data)
+        assert(
+            hasRownames(data),
+            isFlag(clean),
+            isCharacter(ignoreCols, nullOK = TRUE)
+        )
+
+        # Prepare columns ------------------------------------------------------
+        assert(areDisjointSets(colnames(data), metadataBlacklist))
 
         # Require `sampleName` column.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
         }
+        assert(is.factor(data[["sampleName"]]))
 
+        # Clean mode -----------------------------------------------------------
+        if (isTRUE(clean)) {
+            # Return only a subset of factor columns.
+            keep <- bapply(X = data, FUN = is.factor)
+            data <- data[, keep, drop = FALSE]
+
+            # Drop any additional uninformative columns to ignore.
+            if (is.character(ignoreCols)) {
+                keep <- !grepl(
+                    pattern = paste(ignoreCols, collapse = "|"),
+                    x = colnames(data)
+                )
+                data <- data[, keep, drop = FALSE]
+            }
+        }
+
+        # Interesting groups ---------------------------------------------------
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = matchInterestingGroups(object)
         )
-        # Return only factor columns in clean mode.
-        if (isTRUE(clean)) {
-            keep <- vapply(
-                X = data,
-                FUN = is.factor,
-                FUN.VALUE = logical(1L)
-            )
-            data <- data[, keep, drop = FALSE]
-        }
 
+        # Return ---------------------------------------------------------------
+        assert(
+            is.factor(data[["interestingGroups"]]),
+            is.factor(data[["sampleName"]])
+        )
         data
     }
 
@@ -115,7 +172,14 @@ setMethod(
 sampleData.SingleCellExperiment <-  # nolint
     function(
         object,
-        blacklist = c(
+        clean = TRUE,
+        ignoreCols = c(
+            "^description$",
+            "^genomeBuild$",
+            "^qualityFormat$",
+            "^samRef$"
+        ),
+        blacklistCols = c(
             "^G2M.Score$",
             "^Phase$",
             "^S.Score$",
@@ -126,84 +190,117 @@ sampleData.SingleCellExperiment <-  # nolint
         )
     ) {
         data <- colData(object)
-        .stopOnSampleDataBlacklist(data)
-        assert(isCharacter(blacklist))
+        assert(
+            hasRownames(data),
+            isFlag(clean),
+            isCharacter(ignoreCols, nullOK = TRUE),
+            isCharacter(blacklistCols, nullOK = TRUE)
+        )
 
-        # Require `sampleID` and `sampleName` columns.
-        # Note that `SummarizedExperiment` method differs but not requiring
-        # the `sampleID` column, which are the `colnames` of the object.
-        # `SingleCellExperiment` maps cells to `colnames` instead of samples.
+        # Prepare columns ------------------------------------------------------
+        assert(areDisjointSets("interestingGroups", colnames(data)))
+
+        # Generate `sampleID` and `sampleName` columns, if necessary. We're not
+        # requiring `sampleID` because many SingleCellExperiment objects are
+        # derived from a single sample (e.g. 10X PBMC example data). Note that
+        # `SummarizedExperiment` method differs by not allowing the `sampleID`
+        # column, which are the `colnames` of the object. `SingleCellExperiment`
+        # maps cells to `colnames` instead of samples, so this factor is
+        # necessary when handling multiple samples.
         if (!"sampleID" %in% colnames(data)) {
             data[["sampleID"]] <- factor("unknown")
         }
+        assert(is.factor(data[["sampleID"]]))
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- data[["sampleID"]]
         }
+        assert(is.factor(data[["sampleName"]]))
 
-        # Sample-level columns -------------------------------------------------
+        # Blacklist ------------------------------------------------------------
+        # Drop any blacklisted cell-level columns.
+        if (is.character(blacklistCols)) {
+            keep <- !grepl(
+                pattern = paste(blacklistCols, collapse = "|"),
+                x = colnames(data)
+            )
+            data <- data[, keep, drop = FALSE]
+        }
+
+        # Clean mode -----------------------------------------------------------
+        if (isTRUE(clean)) {
+            # Return only a subset of factor columns.
+            keep <- bapply(X = data, FUN = is.factor)
+            data <- data[, keep, drop = FALSE]
+
+            # Drop any additional uninformative columns to ignore.
+            if (is.character(ignoreCols)) {
+                keep <- !grepl(
+                    pattern = paste(ignoreCols, collapse = "|"),
+                    x = colnames(data)
+                )
+                data <- data[, keep, drop = FALSE]
+            }
+        }
+
+        # Drop rows with too many uniques (cell level) -------------------------
         nSamples <- length(unique(data[["sampleID"]]))
         assert(all(isPositive(nSamples)))
 
-        # Drop any blacklisted columns.
-        keep <- !grepl(
-            pattern = paste(blacklist, collapse = "|"),
-            x = colnames(data)
-        )
-        data <- data[, keep, drop = FALSE]
-
-        # Keep columns that have fewer uniques than the number of samples.
-        keep <- vapply(
+        # Keep columns that have have less than or equal the same number of
+        # uniques as the the number of samples. Note that this step is really
+        # essential, especially when QC metrics are slotted into `colData()`.
+        keep <- bapply(
             X = data,
             FUN = function(x) {
                 length(unique(x)) <= nSamples
-            },
-            FUN.VALUE = logical(1L)
+            }
         )
         data <- data[, keep, drop = FALSE]
 
-        # For columns that have the same number of uniques, they need to match
-        # our `sampleID` column factor levels exactly. Create a factor integer
-        # table to check for this.
-        subset <- data[
-            ,
-            vapply(
-                X = data,
-                FUN = function(x) {
-                    length(unique(x)) == nSamples
-                },
-                FUN.VALUE = logical(1L)
-            ),
-            drop = FALSE
-            ]
-        # Make the factor integer table.
-        factortbl <- subset %>%
+        # Check rows with same number of uniques -------------------------------
+        # For columns that have the exact same number of uniques as the number
+        # of samples, they need to match our `sampleID` column factor levels
+        # exactly, otherwise we can run into issues where cell-level values
+        # appear to be sample level. Create a factor integer table to check for
+        # this. Shouldn't apply too often but can happen for some edge cases.
+        levelTbl <- data
+        keep <- bapply(
+            X = levelTbl,
+            FUN = function(x) {
+                length(unique(x)) == nSamples
+            }
+        )
+        levelTbl %<>%
+            .[, keep, drop = FALSE] %>%
             as_tibble(rownames = NULL) %>%
             mutate_all(as.factor) %>%
             mutate_all(as.integer)
-        trash <- !vapply(
-            X = factortbl,
+        trash <- !bapply(
+            X = levelTbl,
             FUN = function(x) {
-                identical(x, factortbl[["sampleID"]])
-            },
-            FUN.VALUE = logical(1L)
+                identical(x, levelTbl[["sampleID"]])
+            }
         )
-        keep <- setdiff(colnames(data), names(trash[trash]))
-        data <- data[, keep, drop = FALSE]
+        if (any(trash)) {
+            keep <- setdiff(colnames(data), names(trash[trash]))
+            data <- data[, keep, drop = FALSE]
+        }
 
-        # Collapse and set the rownames to `sampleID`.
+        # Collapse to sample level ---------------------------------------------
+        # Collapse and set the row names to `sampleID`.
         rownames(data) <- NULL
         data <- unique(data)
         if (
             nrow(data) > nSamples ||
             any(duplicated(data[["sampleID"]]))
         ) {
-            stop(paste(
-                "Failed to collapse `colData` to sample level.",
-                "Check these columns:", toString(colnames(data))
+            stop(paste0(
+                "Failed to collapse `colData` to sample level.\n",
+                "Check these columns: ",
+                toString(colnames(data), width = 200L)
             ))
         }
         rownames(data) <- data[["sampleID"]]
-
 
         # Returning arranged by `sampleID`.
         # Use `setdiff()` approach instead of `NULL` assignment on `sampleID`
@@ -214,12 +311,17 @@ sampleData.SingleCellExperiment <-  # nolint
             drop = FALSE
         ]
 
-        # Ensure `interestingGroups` column is generated.
+        # Interesting groups ---------------------------------------------------
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = matchInterestingGroups(object)
         )
 
+        # Return ---------------------------------------------------------------
+        assert(
+            is.factor(data[["interestingGroups"]]),
+            is.factor(data[["sampleName"]])
+        )
         data
     }
 

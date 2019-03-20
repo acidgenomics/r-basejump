@@ -231,7 +231,17 @@ makeSummarizedExperiment <- function(
     if (is.null(colData)) {
         colData <- DataFrame(row.names = colnames(assay))
     }
-    assert(isSubset(colnames(assay), rownames(colData)))
+    # Allowing some single-cell RNA-seq automatic columns to pass through here,
+    # since this code is used by `makeSingleCellExperiment()`.
+    # May tighten this up in the future.
+    blacklist <- setdiff(
+        x = metadataBlacklist,
+        y = c("revcomp", "sampleID")
+    )
+    assert(
+        isSubset(colnames(assay), rownames(colData)),
+        areDisjointSets(colnames(colData), blacklist)
+    )
     colData <- colData[colnames(assay), , drop = FALSE]
 
     # Metadata -----------------------------------------------------------------
