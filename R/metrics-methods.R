@@ -54,17 +54,13 @@ metrics.SummarizedExperiment <-  # nolint
     function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
-        data <- sampleData(object) %>%
-            as_tibble(rownames = "sampleID") %>%
-            group_by(!!sym("sampleID"))
+        data <- sampleData(object, clean = FALSE)
         if (return == "tibble") {
-            data
-        } else {
-            data <- as(data, "DataFrame")
-            rownames(data) <- data[["sampleID"]]
-            data[["sampleID"]] <- NULL
-            data
+            data %<>%
+                as_tibble(rownames = "sampleID") %>%
+                group_by(!!sym("sampleID"))
         }
+        data
     }
 
 

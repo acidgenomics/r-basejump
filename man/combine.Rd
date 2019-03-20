@@ -121,8 +121,10 @@ cells <- colnames(y) \%>\%
 colnames(y) <- cells
 head(colnames(y))
 ## Increase the sample ID numbers.
-y$sampleID <- gsub("1$", "3", y$sampleID)
-y$sampleID <- gsub("2$", "4", y$sampleID)
+sampleID <- y$sampleID
+sampleID <- gsub("1$", "3", sampleID)
+sampleID <- gsub("2$", "4", sampleID)
+y$sampleID <- as.factor(sampleID)
 sampleData(y)
 
 ## Combine two SingleCellExperiment objects.

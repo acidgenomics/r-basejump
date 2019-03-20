@@ -63,6 +63,9 @@ setMethod(
 
 `sampleNames<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
+        if (!is.factor(value)) {
+            value <- as.factor(value)
+        }
         assert(hasNames(value))
         # Note that these will correspond to columns for bulk RNA-seq but not
         # single-cell RNA-seq samples, which map to cells.

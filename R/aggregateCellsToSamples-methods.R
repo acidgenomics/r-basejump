@@ -28,7 +28,13 @@ aggregateCellsToSamples.SingleCellExperiment <-  # nolint
         validObject(object)
         fun <- match.arg(fun)
         rse <- as(object, "RangedSummarizedExperiment")
-        colData(rse)[["aggregate"]] <- cell2sample(object)
+        colData <- colData(rse)
+        assert(areDisjointSets("aggregate", colnames(colData)))
+        colData[["aggregate"]] <- cell2sample(object)
+        if ("sampleID" %in% colnames(colData)) {
+            colData[["sampleID"]] <- NULL
+        }
+        colData(rse) <- colData
         aggregateCols(object = rse, col = "aggregate", fun = fun)
     }
 

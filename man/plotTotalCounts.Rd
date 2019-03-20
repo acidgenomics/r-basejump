@@ -9,13 +9,15 @@
 \usage{
 \S4method{plotTotalCounts}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, perMillion = FALSE,
-  fill = getOption("basejump.fill.discrete", NULL),
-  flip = getOption("basejump.flip", TRUE), title = "total counts")
+  fill = getOption("basejump.fill.discrete", default = NULL),
+  flip = getOption("basejump.flip", default = TRUE),
+  title = "total counts")
 
 \S4method{plotTotalCounts}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, perMillion = FALSE,
-  fill = getOption("basejump.fill.discrete", NULL),
-  flip = getOption("basejump.flip", TRUE), title = "total counts")
+  fill = getOption("basejump.fill.discrete", default = NULL),
+  flip = getOption("basejump.flip", default = TRUE),
+  title = "total counts")
 }
 \arguments{
 \item{object}{Object.}
