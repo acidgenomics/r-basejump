@@ -16,7 +16,6 @@
 #' @examples
 #' data(rse)
 #' matchInterestingGroups(rse)
-#'
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
