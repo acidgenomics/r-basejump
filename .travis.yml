@@ -16,6 +16,8 @@ matrix:
   include:
     - os: linux
       r: bioc-release
+    - os: linux
+      r: bioc-devel
     - os: osx
       r: bioc-release
   allow_failures:
