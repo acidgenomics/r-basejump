@@ -14,20 +14,23 @@ cache: packages
 
 matrix:
   include:
-  - os: linux
-    r: bioc-release
-  - os: osx
-    r: bioc-release
+    - os: linux
+      r: bioc-release
+    - os: osx
+      r: bioc-release
+  allow_failures:
+    - os: osx
+    - r: bioc-devel
 
 # Safelist (only these branches)
 branches:
   only:
-  - master
+    - master
 
 # Blocklist (everything but these branches)
 # branches:
 #   except:
-#   - develop
+#     - develop
 
 env:
   global:
