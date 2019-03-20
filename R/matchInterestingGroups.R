@@ -20,9 +20,6 @@
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
-    # Check for attempt to use `interestingGroups` automatic column.
-    assert(areDisjointSets(value, "interestingGroups"))
-
     # Legacy support for bcbio R packages, which pass missing
     # `interestingGroups` parameter through.
     if (
@@ -41,10 +38,16 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
     # inside that code. Note that `sampleName` is a magic column that is
     # automatically generated, if necessary.
     if (!is.null(interestingGroups)) {
-        assert(isSubset(
-            x = interestingGroups,
-            y = c("sampleName", colnames(colData(object)))
-        ))
+        assert(
+            areDisjointSets(
+                x = interestingGroups,
+                y = "interestingGroups"
+            ),
+            isSubset(
+                x = interestingGroups,
+                y = c("sampleName", colnames(colData(object)))
+            )
+        )
     }
 
     # Return `sampleName` by default, if necessary.
