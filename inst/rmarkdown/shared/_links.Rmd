@@ -2,7 +2,7 @@
 [AnnotationHub]: https://bioconductor.org/packages/AnnotationHub/
 [AppVeyor CI]: https://ci.appveyor.com/
 [assertive]: https://cran.r-project.org/package=assertive
-[basejump]: https://steinbaugh.com/basejump/
+[basejump]: https://basejump.acidgenomics.com/
 [bcbio]: https://bcbio-nextgen.readthedocs.io/
 [bcbioBase]: http://bioinformatics.sph.harvard.edu/bcbioBase/
 [bcbioRNASeq]: https://bioinformatics.sph.harvard.edu/bcbioRNASeq/
@@ -12,7 +12,7 @@
 [BiocManager]: https://cran.r-project.org/package=BiocManager
 [Bioconductor]: https://bioconductor.org/
 [Biostrings]: https://bioconductor.org/packages/Biostrings/
-[brightworm]: https://steinbaugh.com/brightworm/
+[brightworm]: https://brightworm.acidgenomics.com/
 [Cell Ranger]: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger
 [clusterProfiler]: https://bioconductor.org/packages/clusterProfiler/
 [conda]: https://conda.io/
@@ -51,9 +51,9 @@
 [PANTHER]: http://pantherdb.org/
 [pathview]: https://bioconductor.org/packages/pathview/
 [pheatmap]: https://cran.r-project.org/package=pheatmap
-[pointillism]: https://steinbaugh.com/pointillism/
+[pointillism]: https://pointillism.acidgenomics.com/
 [Python]: https://python.org/
-[r-wormbase]: https://steinbaugh.com/wormbase/
+[r-wormbase]: https://wormbase.acidgenomics.com/
 [R]: https://www.r-project.org/
 [rapmap]: https://github.com/COMBINE-lab/RapMap/
 [readr]: http://readr.tidyverse.org/
