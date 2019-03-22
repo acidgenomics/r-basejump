@@ -16,7 +16,6 @@
 #' @examples
 #' data(rse)
 #' matchInterestingGroups(rse)
-#'
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
@@ -33,14 +32,20 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
         interestingGroups <- interestingGroups(object)
     }
 
-    # Attempt to assign and return, if user is passing in a character vector.
-    if (is.character(interestingGroups)) {
-        interestingGroups <- tryCatch(
-            expr = {
-                interestingGroups(object) <- interestingGroups
-                interestingGroups(object)
-            },
-            error = function(e) NULL
+    # Check that this metadata is defined in `colData()`.
+    # Don't check against `sampleData()` return because this function is used
+    # inside that code. Note that `sampleName` is a magic column that is
+    # automatically generated, if necessary.
+    if (!is.null(interestingGroups)) {
+        assert(
+            areDisjointSets(
+                x = interestingGroups,
+                y = "interestingGroups"
+            ),
+            isSubset(
+                x = interestingGroups,
+                y = c("sampleName", colnames(colData(object)))
+            )
         )
     }
 

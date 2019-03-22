@@ -11,9 +11,9 @@ Toolkit for bioinformatics and R package development.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://steinbaugh.com/basejump/}
-  \item \url{https://github.com/steinbaugh/basejump/}
-  \item Report bugs at \url{https://github.com/steinbaugh/basejump/issues/}
+  \item \url{https://basejump.acidgenomics.com/}
+  \item \url{https://github.com/acidgenomics/basejump/}
+  \item Report bugs at \url{https://github.com/acidgenomics/basejump/issues/}
 }
 
 }
@@ -22,6 +22,7 @@ Useful links:
 
 Other contributors:
 \itemize{
+  \item Acid Genomics [copyright holder, funder]
   \item Rory Kirchner \email{roryk@alum.mit.edu} (0000-0003-4814-5885) [contributor]
   \item Mary Piper \email{mary.piper@gmail.com} (0000-0003-2699-3840) [contributor]
 }

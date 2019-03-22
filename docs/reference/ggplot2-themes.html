@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.14</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/steinbaugh/basejump">
+  <a href="https://github.com/acidgenomics/basejump">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>ggplot2 themes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/ggplot2.R'><code>R/ggplot2.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/ggplot2.R'><code>R/ggplot2.R</code></a></small>
     <div class="hidden name"><code>ggplot2-themes.Rd</code></div>
     </div>
 
@@ -168,7 +168,7 @@ panel borders.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>All themes are based off of <code><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>ggplot2::theme_linedraw()</a></code>, but with
+    <p>All themes are based off of <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>ggplot2::theme_linedraw()</a></code>, but with
 modifications and extra user-definable parameters.</p>
     
     <h2 class="hasAnchor" id="paperwhite"><a class="anchor" href="#paperwhite"></a>Paperwhite</h2>
@@ -187,14 +187,14 @@ expression plots.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>ggplot2::theme()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/theme'>ggplot2::theme()</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mpg</span>,
-    <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(
+    <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(
         <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>,
         <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>displ</span>,
         <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>,
@@ -204,11 +204,11 @@ expression plots.</p>
 
 <span class='co'>## Paperwhite theme.</span>
 <span class='no'>p</span> +
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
+    <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
     <span class='fu'>theme_paperwhite</span>(<span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='ggplot2-themes-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Midnight theme.</span>
 <span class='no'>p</span> +
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
+    <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
     <span class='fu'>theme_midnight</span>(<span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='ggplot2-themes-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -234,7 +234,7 @@ expression plots.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='/'>Michael Steinbaugh</a>.</p>
+  <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
 </div>
 
 <div class="pkgdown">
