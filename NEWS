@@ -1,3 +1,19 @@
+## basejump 0.9.15 (2019-03-22)
+
+### Minor changes
+
+- Migrated code to [Acid Genomics][].
+
+
+
+## basejump 0.9.14 (2019-03-18)
+
+### Minor changes
+
+- Additional bug fixes for `sampleData` and blacklisted metadata handling.
+
+
+
 ## basejump 0.9.13 (2019-03-18)
 
 ### Minor changes
@@ -1437,19 +1453,19 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [annotables]: https://github.com/stephenturner/annotables/
 [AppVeyor CI]: https://ci.appveyor.com/
 [assertive]: https://cran.r-project.org/package=assertive
-[basejump]: https://steinbaugh.com/basejump/
-[bb8]: https://github.com/steinbaugh/bb8/
+[basejump]: https://basejump.acidgenomics.com/
+[bb8]: https://bb8.acidgenomics.com/
 [bcbio]: https://github.com/bcbio/bcbio-nextgen/
-[bcbioBase]: http://bioinformatics.sph.harvard.edu/bcbioBase/
-[bcbioRNASeq]: http://bioinformatics.sph.harvard.edu/bcbioRNASeq/
-[bcbioSingleCell]: http://bioinformatics.sph.harvard.edu/bcbioSingleCell/
+[bcbioBase]: https://bioinformatics.sph.harvard.edu/bcbioBase/
+[bcbioRNASeq]: https://bioinformatics.sph.harvard.edu/bcbioRNASeq/
+[bcbioSingleCell]: https://bioinformatics.sph.harvard.edu/bcbioSingleCell/
 [BiocInstaller]: https://bioconductor.org/packages/BiocInstaller/
 [BiocManager]: https://cran.r-project.org/package=BiocManager
 [Bioconductor]: https://bioconductor.org/
-[bioverbs]: https://steinbaugh.com/bioverbs/
+[bioverbs]: https://bioverbs.acidgenomics.com/
 [Biostrings]: https://bioconductor.org/packages/Biostrings/
-[brightworm]: https://steinbaugh.com/brightworm/
-[brio]: https://steinbaugh.com/brio/
+[brightworm]: https://brightworm.acidgenomics.com/
+[brio]: https://brio.acidgenomics.com/
 [Cell Ranger]: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger
 [conda]: https://conda.io/
 [covr]: https://cran.r-project.org/package=covr
@@ -1466,7 +1482,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [ggplot2]: http://ggplot2.tidyverse.org/
 [GitHub]: https://github.com/
 [glue]: https://glue.tidyverse.org/
-[goalie]: https://steinbaugh.com/goalie/
+[goalie]: https://goalie.acidgenomics.com/
 [GRCh37]: https://grch37.ensembl.org/
 [HGNC]: https://www.genenames.org/
 [HMS RC]: https://rc.hms.harvard.edu/
@@ -1478,21 +1494,21 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [MGI]: http://www.informatics.jax.org/
 [NIH]: https://www.nih.gov/
 [PANTHER]: http://pantherdb.org/
-[pointillism]: https://steinbaugh.com/pointillism/
+[pointillism]: https://pointillism.acidgenomics.com/
 [R]: https://www.r-project.org/
 [readr]: http://readr.tidyverse.org/
 [rio]: https://cran.r-project.org/package=rio
 [rlang]: http://rlang.tidyverse.org/
 [roxygen2]: https://cran.r-project.org/package=roxygen2
 [SummarizedExperiment]: https://bioconductor.org/packages/SummarizedExperiment/
-[syntactic]: https://steinbaugh.com/syntactic/
+[syntactic]: https://syntactic.acidgenomics.com/
 [testthat]: https://cran.r-project.org/package=testthat
 [tibble]: https://tibble.tidyverse.org/
 [tidyr]: http://tidyr.tidyverse.org/
 [tidyverse]: http://www.tidyverse.org/
-[transformer]: https://steinbaugh.com/transformer/
+[transformer]: https://transformer.acidgenomics.com/
 [Travis CI]: https://travis-ci.com/
 [UCSC]: https://genome.ucsc.edu/
-[r-wormbase]: https://steinbaugh.com/wormbase/
+[r-wormbase]: https://wormbase.acidgenomics.com/
 [Windows]: https://www.microsoft.com/en-us/windows/
 [WormBase]: http://www.wormbase.org/
