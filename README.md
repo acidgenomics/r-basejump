@@ -1,8 +1,8 @@
 # basejump
 
-[![Travis CI build status](https://travis-ci.org/steinbaugh/basejump.svg?branch=master)](https://travis-ci.org/steinbaugh/basejump)
+[![Travis CI build status](https://travis-ci.org/acidgenomics/basejump.svg?branch=master)](https://travis-ci.org/acidgenomics/basejump)
 [![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/007vq15089ukn6ej/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/basejump/branch/master)
-[![Codecov percent coverage](https://codecov.io/gh/steinbaugh/basejump/branch/master/graph/badge.svg)](https://codecov.io/gh/steinbaugh/basejump)
+[![Codecov percent coverage](https://codecov.io/gh/acidgenomics/basejump/branch/master/graph/badge.svg)](https://codecov.io/gh/acidgenomics/basejump)
 [![Anaconda cloud version](https://anaconda.org/bioconda/r-basejump/badges/version.svg)](https://anaconda.org/bioconda/r-basejump)
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
@@ -19,7 +19,7 @@ if (!require("BiocManager")) {
     install.packages("BiocManager")
 }
 BiocManager::install("remotes")
-BiocManager::install("steinbaugh/basejump")
+BiocManager::install("acidgenomics/basejump")
 ```
 
 For [R][] < 3.5, [BiocManager][] is not supported. Use `BiocInstaller::biocLite()` instead of `BiocManager::install()`. This requires sourcing the legacy [Bioconductor][] `biocLite.R` script.
