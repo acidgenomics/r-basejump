@@ -97,6 +97,7 @@ reference:
     - barcodePattern
     - genomeMetadataNames
     - lanePattern
+    - metadataBlacklist
   - title: Example data
     contents:
     - df
