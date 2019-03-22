@@ -14,20 +14,26 @@ cache: packages
 
 matrix:
   include:
-  - os: linux
-    r: bioc-release
-  - os: osx
-    r: bioc-release
+    - os: linux
+      r: bioc-release
+    - os: linux
+      r: bioc-devel
+    - os: osx
+      r: bioc-release
+  allow_failures:
+    - os: osx
+    - r: bioc-devel
+  fast_finish: true
 
 # Safelist (only these branches)
 branches:
   only:
-  - master
+    - master
 
 # Blocklist (everything but these branches)
 # branches:
 #   except:
-#   - develop
+#     - develop
 
 env:
   global:
@@ -43,7 +49,7 @@ bioc_packages:
   - BiocCheck
   - EnsDb.Hsapiens.v75
 github_packages:
-  - steinbaugh/lintr
+  - acidgenomics/lintr
 
 after_success:
   - R CMD BiocCheck .

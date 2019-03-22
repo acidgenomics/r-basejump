@@ -1,5 +1,8 @@
 context("GFF file import")
 
+# gzipped files currently don't decompress properly into `tempdir()` on Windows.
+skip_on_os("windows")
+
 levels <- c("genes", "transcripts")
 
 

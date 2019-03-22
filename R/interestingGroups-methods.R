@@ -48,14 +48,17 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
+        # Check for attempt to use `interestingGroups` automatic column.
+        assert(areDisjointSets(value, "interestingGroups"))
+
         # Note that we're always allowing `sampleName` to be slotted, even if
         # that column isn't defined in `colData()`.
         if (
-            !isSubset(value, colnames(colData(object))) &&
+            !isSubset(value, colnames(sampleData(object))) &&
             !identical(value, "sampleName")
         ) {
             stop(
-                "Interesting groups must be columns in `colData()`.",
+                "Interesting groups must be columns in `sampleData()`.",
                 call. = FALSE
             )
         }
