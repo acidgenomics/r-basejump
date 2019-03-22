@@ -23,6 +23,7 @@ matrix:
   allow_failures:
     - os: osx
     - r: bioc-devel
+  fast_finish: true
 
 # Safelist (only these branches)
 branches:
@@ -48,7 +49,7 @@ bioc_packages:
   - BiocCheck
   - EnsDb.Hsapiens.v75
 github_packages:
-  - steinbaugh/lintr
+  - acidgenomics/lintr
 
 after_success:
   - R CMD BiocCheck .
