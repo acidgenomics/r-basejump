@@ -1,5 +1,6 @@
 html_document:
-  code_folding: show
+  code_download: true
+  code_folding: hide
   df_print: paged
   highlight: pygments
   keep_md: TRUE
