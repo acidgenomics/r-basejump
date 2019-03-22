@@ -26,7 +26,6 @@ supports a missing \code{interestingGroups} argument, which will then use the
 \examples{
 data(rse)
 matchInterestingGroups(rse)
-
 matchInterestingGroups(rse, interestingGroups = NULL)
 matchInterestingGroups(rse, interestingGroups = substitute())
 }
