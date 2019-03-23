@@ -212,61 +212,35 @@ File path.</p></td>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing example.gtf using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>example.gtf does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, seqnames, transcriptBiotype</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='output co'>#&gt; <span class='message'>20 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 20 rows and 2 columns
-#&gt;                          transcriptID
-#&gt;                           &lt;character&gt;
-#&gt; ENSMUST00000070533 ENSMUST00000070533
-#&gt; ENSMUST00000082908 ENSMUST00000082908
-#&gt; ENSMUST00000157708 ENSMUST00000157708
-#&gt; ENSMUST00000159265 ENSMUST00000159265
-#&gt; ENSMUST00000161581 ENSMUST00000161581
-#&gt; ...                               ...
-#&gt; ENSMUST00000194454 ENSMUST00000194454
-#&gt; ENSMUST00000194643 ENSMUST00000194643
-#&gt; ENSMUST00000195166 ENSMUST00000195166
-#&gt; ENSMUST00000195335 ENSMUST00000195335
-#&gt; ENSMUST00000208660 ENSMUST00000208660
-#&gt;                                geneID
-#&gt;                           &lt;character&gt;
-#&gt; ENSMUST00000070533 ENSMUSG00000051951
-#&gt; ENSMUST00000082908 ENSMUSG00000064842
-#&gt; ENSMUST00000157708 ENSMUSG00000088333
-#&gt; ENSMUST00000159265 ENSMUSG00000051951
-#&gt; ENSMUST00000161581 ENSMUSG00000089699
-#&gt; ...                               ...
-#&gt; ENSMUST00000194454 ENSMUSG00000102592
-#&gt; ENSMUST00000194643 ENSMUSG00000102343
-#&gt; ENSMUST00000195166 ENSMUSG00000103161
-#&gt; ENSMUST00000195335 ENSMUSG00000103377
-#&gt; ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
+#&gt;                          transcriptID             geneID
+#&gt;                           &lt;character&gt;        &lt;character&gt;
+#&gt; ENSMUST00000070533 ENSMUST00000070533 ENSMUSG00000051951
+#&gt; ENSMUST00000082908 ENSMUST00000082908 ENSMUSG00000064842
+#&gt; ENSMUST00000157708 ENSMUST00000157708 ENSMUSG00000088333
+#&gt; ENSMUST00000159265 ENSMUST00000159265 ENSMUSG00000051951
+#&gt; ENSMUST00000161581 ENSMUST00000161581 ENSMUSG00000089699
+#&gt; ...                               ...                ...
+#&gt; ENSMUST00000194454 ENSMUST00000194454 ENSMUSG00000102592
+#&gt; ENSMUST00000194643 ENSMUST00000194643 ENSMUSG00000102343
+#&gt; ENSMUST00000195166 ENSMUST00000195166 ENSMUSG00000103161
+#&gt; ENSMUST00000195335 ENSMUST00000195335 ENSMUSG00000103377
+#&gt; ENSMUST00000208660 ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
 <span class='co'>## GFF3</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gff3"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing example.gff3 using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>example.gff3 does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, seqnames, transcriptBiotype</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='output co'>#&gt; <span class='message'>26 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 26 rows and 2 columns
-#&gt;                          transcriptID
-#&gt;                           &lt;character&gt;
-#&gt; ENSMUST00000027032 ENSMUST00000027032
-#&gt; ENSMUST00000027035 ENSMUST00000027035
-#&gt; ENSMUST00000070533 ENSMUST00000070533
-#&gt; ENSMUST00000082908 ENSMUST00000082908
-#&gt; ENSMUST00000157708 ENSMUST00000157708
-#&gt; ...                               ...
-#&gt; ENSMUST00000195166 ENSMUST00000195166
-#&gt; ENSMUST00000195335 ENSMUST00000195335
-#&gt; ENSMUST00000195384 ENSMUST00000195384
-#&gt; ENSMUST00000208660 ENSMUST00000208660
-#&gt; ENSMUST00000208793 ENSMUST00000208793
-#&gt;                                geneID
-#&gt;                           &lt;character&gt;
-#&gt; ENSMUST00000027032 ENSMUSG00000025900
-#&gt; ENSMUST00000027035 ENSMUSG00000025902
-#&gt; ENSMUST00000070533 ENSMUSG00000051951
-#&gt; ENSMUST00000082908 ENSMUSG00000064842
-#&gt; ENSMUST00000157708 ENSMUSG00000088333
-#&gt; ...                               ...
-#&gt; ENSMUST00000195166 ENSMUSG00000103161
-#&gt; ENSMUST00000195335 ENSMUSG00000103377
-#&gt; ENSMUST00000195384 ENSMUSG00000102948
-#&gt; ENSMUST00000208660 ENSMUSG00000025900
-#&gt; ENSMUST00000208793 ENSMUSG00000025900</div></pre>
+#&gt;                          transcriptID             geneID
+#&gt;                           &lt;character&gt;        &lt;character&gt;
+#&gt; ENSMUST00000027032 ENSMUST00000027032 ENSMUSG00000025900
+#&gt; ENSMUST00000027035 ENSMUST00000027035 ENSMUSG00000025902
+#&gt; ENSMUST00000070533 ENSMUST00000070533 ENSMUSG00000051951
+#&gt; ENSMUST00000082908 ENSMUST00000082908 ENSMUSG00000064842
+#&gt; ENSMUST00000157708 ENSMUST00000157708 ENSMUSG00000088333
+#&gt; ...                               ...                ...
+#&gt; ENSMUST00000195166 ENSMUST00000195166 ENSMUSG00000103161
+#&gt; ENSMUST00000195335 ENSMUST00000195335 ENSMUSG00000103377
+#&gt; ENSMUST00000195384 ENSMUST00000195384 ENSMUSG00000102948
+#&gt; ENSMUST00000208660 ENSMUST00000208660 ENSMUSG00000025900
+#&gt; ENSMUST00000208793 ENSMUST00000208793 ENSMUSG00000025900</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
