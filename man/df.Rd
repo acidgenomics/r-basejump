@@ -3,13 +3,13 @@
 \docType{data}
 \name{df}
 \alias{df}
-\title{Example \code{DataFrame}}
+\title{Example DataFrame}
 \format{An object of class \code{DataFrame} with 4 rows and 4 columns.}
 \usage{
 df
 }
 \description{
-Example \code{DataFrame}
+Example DataFrame
 }
 \examples{
 data(df)

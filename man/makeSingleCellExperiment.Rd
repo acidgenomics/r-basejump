@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeSingleCellExperiment.R
 \name{makeSingleCellExperiment}
 \alias{makeSingleCellExperiment}
-\title{Make a \code{SingleCellExperiment} object}
+\title{Make a SingleCellExperiment object}
 \usage{
 makeSingleCellExperiment(assays, rowRanges, colData, metadata,
   transgeneNames = NULL, spikeNames = NULL)

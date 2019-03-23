@@ -3,7 +3,7 @@
 \docType{data}
 \name{rse}
 \alias{rse}
-\title{Example \code{SummarizedExperiment}}
+\title{Example SummarizedExperiment}
 \format{An object of class \code{RangedSummarizedExperiment} with 500 rows and 12 columns.}
 \usage{
 rse
