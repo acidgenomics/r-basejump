@@ -3,7 +3,7 @@
 \name{makeGRangesFromEnsembl}
 \alias{makeGRangesFromEnsembl}
 \alias{annotable}
-\title{Make \code{GRanges} from Ensembl}
+\title{Make GRanges from Ensembl}
 \usage{
 makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
   genomeBuild = NULL, release = NULL)

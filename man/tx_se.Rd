@@ -3,7 +3,7 @@
 \docType{data}
 \name{tx_se}
 \alias{tx_se}
-\title{Example transcript-level \code{SummarizedExperiment}}
+\title{Example transcript-level SummarizedExperiment}
 \format{An object of class \code{SummarizedExperiment} with 6 rows and 4 columns.}
 \usage{
 tx_se

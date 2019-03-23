@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeSummarizedExperiment.R
 \name{makeSummarizedExperiment}
 \alias{makeSummarizedExperiment}
-\title{Make a \code{SummarizedExperiment} object}
+\title{Make a SummarizedExperiment object}
 \usage{
 makeSummarizedExperiment(assays, rowRanges = NULL, rowData = NULL,
   colData = NULL, metadata = NULL, transgeneNames = NULL,

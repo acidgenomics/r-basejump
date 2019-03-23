@@ -154,31 +154,24 @@ Select the following options to download hg38:
 \item output file: \code{<Enter a file name>}
 }
 
-See also:
+Related URLs:
 \itemize{
-\item http://genome.ucsc.edu/cgi-bin/hgTables
-\item http://hgdownload.soe.ucsc.edu/downloads.html
-\item ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/
+\item \href{http://genome.ucsc.edu/cgi-bin/hgTables}{UCSC hgTables}
+\item \href{http://hgdownload.soe.ucsc.edu/downloads.html}{UCSC downloads}
+\item \href{ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/}{UCSC hg38 FTP}
 }
 }
 
 \section{Example URLs}{
 
 \itemize{
-\item Ensembl GTF:\cr
-ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-\item Ensembl GFF3:\cr
-ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
-\item GENCODE GTF:\cr
-ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz
-\item GENCODE GFF3:\cr
-ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
-\item RefSeq GFF3:\cr
-ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-\item FlyBase GTF:\cr
-ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
-\item WormBase GTF:\cr
-ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz
+\item \href{ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz}{Ensembl GTF}
+\item \href{ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz}{Ensembl GFF3}
+\item \href{ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz}{GENCODE GTF}
+\item \href{ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz}{GENCODE GFF3}
+\item \href{ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz}{RefSeq GFF3}
+\item \href{ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz}{FlyBase GTF}
+\item \href{ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz}{WormBase GTF}
 }
 }
 

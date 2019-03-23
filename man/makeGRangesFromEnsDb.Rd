@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeGRangesFromEnsDb.R
 \name{makeGRangesFromEnsDb}
 \alias{makeGRangesFromEnsDb}
-\title{Make \code{GRanges} from \code{EnsDb} object}
+\title{Make GRanges from EnsDb object}
 \usage{
 makeGRangesFromEnsDb(object, level = c("genes", "transcripts"))
 }
@@ -13,7 +13,7 @@ makeGRangesFromEnsDb(object, level = c("genes", "transcripts"))
 Return as genes or transcripts.}
 }
 \description{
-Make \code{GRanges} from \code{EnsDb} object
+Make GRanges from EnsDb object
 }
 \details{
 Use specific \code{EnsDb} object as annotation source.

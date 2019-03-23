@@ -3,7 +3,7 @@
 \docType{data}
 \name{sce}
 \alias{sce}
-\title{Example \code{SingleCellExperiment}}
+\title{Example SingleCellExperiment}
 \format{An object of class \code{SingleCellExperiment} with 500 rows and 100 columns.}
 \usage{
 sce
