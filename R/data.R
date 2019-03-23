@@ -1,4 +1,4 @@
-#' Example `DataFrame`
+#' Example DataFrame
 #' @examples
 #' data(df)
 #' df
@@ -14,7 +14,7 @@
 
 
 
-#' Example `matrix`
+#' Example matrix
 #' @examples
 #' data(mat)
 #' mat
@@ -30,7 +30,7 @@
 
 
 
-#' Example `SummarizedExperiment`
+#' Example SummarizedExperiment
 #'
 #' Gene-level RNA-seq data set.
 #'
@@ -44,7 +44,7 @@
 
 
 
-#' Example `SingleCellExperiment`
+#' Example SingleCellExperiment
 #'
 #' Gene-level single-cell RNA-seq data set.
 #'
@@ -56,7 +56,7 @@
 
 
 
-#' Example `sparseMatrix`
+#' Example sparseMatrix
 #' @examples
 #' data(sparse)
 #' sparse
@@ -64,7 +64,7 @@
 
 
 
-#' Example `tibble` (`tbl_df`)
+#' Example tibble
 #' @examples
 #' data(tbl)
 #' tbl
@@ -72,7 +72,7 @@
 
 
 
-#' Example transcript-level `SummarizedExperiment`
+#' Example transcript-level SummarizedExperiment
 #'
 #' Transcript-level RNA-seq data set.
 #'
