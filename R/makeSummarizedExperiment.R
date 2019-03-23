@@ -1,4 +1,4 @@
-#' Make a `SummarizedExperiment` object
+#' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
 #' automatic subsetting for row and column data, as well as automatic handling

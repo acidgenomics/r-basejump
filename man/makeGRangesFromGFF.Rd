@@ -3,7 +3,7 @@
 \name{makeGRangesFromGFF}
 \alias{makeGRangesFromGFF}
 \alias{makeGRangesFromGTF}
-\title{Make \code{GRanges} from a GFF/GTF file}
+\title{Make GRanges from a GFF/GTF file}
 \usage{
 makeGRangesFromGFF(file, level = c("genes", "transcripts"),
   .checkAgainstTxDb = FALSE)
@@ -30,7 +30,7 @@ than GFF files. However, it's a useful sanity check and should be enabled
 if possible.}
 }
 \description{
-Make \code{GRanges} from a GFF/GTF file
+Make GRanges from a GFF/GTF file
 }
 \details{
 Remote URLs and compressed files are supported.
@@ -68,15 +68,12 @@ the metadata columns.
 
 
 Currently \code{\link[=makeGRangesFromGFF]{makeGRangesFromGFF()}} supports genomes from these sources:
-
-\tabular{lrrl}{
-\tab   GTF \tab  GFF3 \tab                                     \cr
-Ensembl  \tab  TRUE \tab  TRUE \tab Also available via ensembldb.       \cr
-GENCODE  \tab  TRUE \tab  TRUE \tab Similar to Ensembl; duplicate PAR_Y.\cr
-RefSeq   \tab    NA \tab  TRUE \tab Experimental support.               \cr
-UCSC     \tab FALSE \tab FALSE \tab Use pre-built Bioconductor packages.\cr
-FlyBase  \tab  TRUE \tab FALSE \tab Newer than Ensembl.                 \cr
-WormBase \tab  TRUE \tab FALSE \tab Very similar to Ensembl.            \cr
+\itemize{
+\item Ensembl (GTF, GFF3)
+\item GENCODE (GTF, GFF3)
+\item RefSeq (GFF3)
+\item FlyBase (GTF)
+\item WormBase (GTF)
 }
 }
 
@@ -111,7 +108,7 @@ suffix.
 
 Additionally, GENCODE GFF/GTF files import with a gene identifier containing
 a suffix, which differs slightly from the Ensembl GFF/GTF spec
-(e.g. GENCODE: ENSG00000000003.14; Ensembl: ENSG00000000003).
+(e.g. GENCODE: \code{ENSG00000000003.14}; Ensembl: \code{ENSG00000000003}).
 
 The \href{https://www.gencodegenes.org/pages/faq.html}{GENCODE FAQ} has additional
 details.
@@ -157,36 +154,29 @@ Select the following options to download hg38:
 \item output file: \code{<Enter a file name>}
 }
 
-See also:
+Related URLs:
 \itemize{
-\item http://genome.ucsc.edu/cgi-bin/hgTables
-\item http://hgdownload.soe.ucsc.edu/downloads.html
-\item ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/
+\item \href{http://genome.ucsc.edu/cgi-bin/hgTables}{UCSC hgTables}
+\item \href{http://hgdownload.soe.ucsc.edu/downloads.html}{UCSC downloads}
+\item \href{ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/}{UCSC hg38 FTP}
 }
 }
 
 \section{Example URLs}{
 
 \itemize{
-\item Ensembl GTF:\cr
-ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-\item Ensembl GFF3:\cr
-ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
-\item GENCODE GTF:\cr
-ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz
-\item GENCODE GFF3:\cr
-ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
-\item RefSeq GFF3:\cr
-ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-\item FlyBase GTF:\cr
-ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
-\item WormBase GTF:\cr
-ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz
+\item \href{ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz}{Ensembl GTF}
+\item \href{ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz}{Ensembl GFF3}
+\item \href{ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz}{GENCODE GTF}
+\item \href{ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz}{GENCODE GFF3}
+\item \href{ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz}{RefSeq GFF3}
+\item \href{ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz}{FlyBase GTF}
+\item \href{ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz}{WormBase GTF}
 }
 }
 
 \examples{
-file <- pasteURL(basejumpCacheURL, "ensembl.gtf.gz", protocol = "none")
+file <- pasteURL(basejumpCacheURL, "ensembl.gtf", protocol = "none")
 
 ## Genes
 x <- makeGRangesFromGFF(file = file, level = "genes")

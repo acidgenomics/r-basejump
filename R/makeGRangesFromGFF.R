@@ -1,6 +1,6 @@
 # nolint start
 
-#' Make `GRanges` from a GFF/GTF file
+#' Make GRanges from a GFF/GTF file
 #'
 #' @details
 #' Remote URLs and compressed files are supported.
@@ -27,15 +27,11 @@
 #'
 #' Currently [makeGRangesFromGFF()] supports genomes from these sources:
 #'
-#' \tabular{lrrl}{
-#'            \tab   GTF \tab  GFF3 \tab                                     \cr
-#'   Ensembl  \tab  TRUE \tab  TRUE \tab Also available via ensembldb.       \cr
-#'   GENCODE  \tab  TRUE \tab  TRUE \tab Similar to Ensembl; duplicate PAR_Y.\cr
-#'   RefSeq   \tab    NA \tab  TRUE \tab Experimental support.               \cr
-#'   UCSC     \tab FALSE \tab FALSE \tab Use pre-built Bioconductor packages.\cr
-#'   FlyBase  \tab  TRUE \tab FALSE \tab Newer than Ensembl.                 \cr
-#'   WormBase \tab  TRUE \tab FALSE \tab Very similar to Ensembl.            \cr
-#' }
+#' - Ensembl (GTF, GFF3)
+#' - GENCODE (GTF, GFF3)
+#' - RefSeq (GFF3)
+#' - FlyBase (GTF)
+#' - WormBase (GTF)
 #'
 #' @section Ensembl:
 #'
@@ -65,7 +61,7 @@
 #'
 #' Additionally, GENCODE GFF/GTF files import with a gene identifier containing
 #' a suffix, which differs slightly from the Ensembl GFF/GTF spec
-#' (e.g. GENCODE: ENSG00000000003.14; Ensembl: ENSG00000000003).
+#' (e.g. GENCODE: `ENSG00000000003.14`; Ensembl: `ENSG00000000003`).
 #'
 #' The [GENCODE FAQ](https://www.gencodegenes.org/pages/faq.html) has additional
 #' details.
@@ -105,28 +101,21 @@
 #' - output format: `GTF - gene transfer format`
 #' - output file: `<Enter a file name>`
 #'
-#' See also:
+#' Related URLs:
 #'
-#' - http://genome.ucsc.edu/cgi-bin/hgTables
-#' - http://hgdownload.soe.ucsc.edu/downloads.html
-#' - ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/
+#' - [UCSC hgTables](http://genome.ucsc.edu/cgi-bin/hgTables)
+#' - [UCSC downloads](http://hgdownload.soe.ucsc.edu/downloads.html)
+#' - [UCSC hg38 FTP](ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/)
 #'
 #' @section Example URLs:
 #'
-#' - Ensembl GTF:\cr
-#'   ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz
-#' - Ensembl GFF3:\cr
-#'   ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz
-#' - GENCODE GTF:\cr
-#'   ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz
-#' - GENCODE GFF3:\cr
-#'   ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz
-#' - RefSeq GFF3:\cr
-#'   ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz
-#' - FlyBase GTF:\cr
-#'   ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz
-#' - WormBase GTF:\cr
-#'   ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz
+#' - [Ensembl GTF](ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz)
+#' - [Ensembl GFF3](ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz)
+#' - [GENCODE GTF](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz)
+#' - [GENCODE GFF3](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz)
+#' - [RefSeq GFF3](ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz)
+#' - [FlyBase GTF](ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz)
+#' - [WormBase GTF](ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz)
 #'
 #' @export
 #' @inheritParams params
@@ -148,7 +137,7 @@
 #' - [GenomicFeatures::makeTxDbFromGFF()].
 #'
 #' @examples
-#' file <- pasteURL(basejumpCacheURL, "ensembl.gtf.gz", protocol = "none")
+#' file <- pasteURL(basejumpCacheURL, "ensembl.gtf", protocol = "none")
 #'
 #' ## Genes
 #' x <- makeGRangesFromGFF(file = file, level = "genes")

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make <code>GRanges</code> from a GFF/GTF file — makeGRangesFromGFF • basejump</title>
+<title>Make GRanges from a GFF/GTF file — makeGRangesFromGFF • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Make <code>GRanges</code> from a GFF/GTF file — makeGRangesFromGFF" />
+<meta property="og:title" content="Make GRanges from a GFF/GTF file — makeGRangesFromGFF" />
 
 <meta property="og:description" content="Make GRanges from a GFF/GTF file" />
 <meta name="twitter:card" content="summary" />
@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.16</span>
       </span>
     </div>
 
@@ -104,14 +104,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make <code>GRanges</code> from a GFF/GTF file</h1>
+    <h1>Make GRanges from a GFF/GTF file</h1>
     <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/makeGRangesFromGFF.R'><code>R/makeGRangesFromGFF.R</code></a></small>
     <div class="hidden name"><code>makeGRangesFromGFF.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Make <code>GRanges</code> from a GFF/GTF file</p>
+    <p>Make GRanges from a GFF/GTF file</p>
     
     </div>
 
@@ -183,18 +183,13 @@ the metadata columns.</p>
     <h2 class="hasAnchor" id="supported-sources"><a class="anchor" href="#supported-sources"></a>Supported sources</h2>
 
     
-    <p>Currently <code>makeGRangesFromGFF()</code> supports genomes from these sources:</p>
-<table class='table'>
-<tr><td></td><td>GTF</td><td>GFF3</td><td></td></tr>
-<tr><td></td><td>Ensembl</td><td>TRUE</td><td>TRUE</td></tr>
-<tr><td>Also available via ensembldb.</td><td></td><td>GENCODE</td><td>TRUE</td></tr>
-<tr><td>TRUE</td><td>Similar to Ensembl; duplicate PAR_Y.</td><td></td><td>RefSeq</td></tr>
-<tr><td>NA</td><td>TRUE</td><td>Experimental support.</td><td></td></tr>
-<tr><td>UCSC</td><td>FALSE</td><td>FALSE</td><td>Use pre-built Bioconductor packages.</td></tr>
-<tr><td></td><td>FlyBase</td><td>TRUE</td><td>FALSE</td></tr>
-<tr><td>Newer than Ensembl.</td><td></td><td>WormBase</td><td>TRUE</td></tr>
-<tr><td>FALSE</td><td>Very similar to Ensembl.</td><td></td><td></td></tr>
-</table>
+    <p>Currently <code>makeGRangesFromGFF()</code> supports genomes from these sources:</p><ul>
+<li><p>Ensembl (GTF, GFF3)</p></li>
+<li><p>GENCODE (GTF, GFF3)</p></li>
+<li><p>RefSeq (GFF3)</p></li>
+<li><p>FlyBase (GTF)</p></li>
+<li><p>WormBase (GTF)</p></li>
+</ul>
     
     <h2 class="hasAnchor" id="ensembl"><a class="anchor" href="#ensembl"></a>Ensembl</h2>
 
@@ -222,7 +217,7 @@ PAR regions of both chromosomes. You'll see these genes contain a "_PAR_Y"
 suffix.</p>
 <p>Additionally, GENCODE GFF/GTF files import with a gene identifier containing
 a suffix, which differs slightly from the Ensembl GFF/GTF spec
-(e.g. GENCODE: ENSG00000000003.14; Ensembl: ENSG00000000003).</p>
+(e.g. GENCODE: <code>ENSG00000000003.14</code>; Ensembl: <code>ENSG00000000003</code>).</p>
 <p>The <a href='https://www.gencodegenes.org/pages/faq.html'>GENCODE FAQ</a> has additional
 details.</p>
     
@@ -258,30 +253,23 @@ browser is required in a web browser.</p>
 <li><p>output format: <code>GTF - gene transfer format</code></p></li>
 <li><p>output file: <code>&lt;Enter a file name&gt;</code></p></li>
 </ul>
-    <p>See also:</p><ul>
-<li><p>http://genome.ucsc.edu/cgi-bin/hgTables</p></li>
-<li><p>http://hgdownload.soe.ucsc.edu/downloads.html</p></li>
-<li><p>ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/</p></li>
+    <p>Related URLs:</p><ul>
+<li><p><a href='http://genome.ucsc.edu/cgi-bin/hgTables'>UCSC hgTables</a></p></li>
+<li><p><a href='http://hgdownload.soe.ucsc.edu/downloads.html'>UCSC downloads</a></p></li>
+<li><p><a href='ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/'>UCSC hg38 FTP</a></p></li>
 </ul>
     
     <h2 class="hasAnchor" id="example-urls"><a class="anchor" href="#example-urls"></a>Example URLs</h2>
 
     
     <ul>
-<li><p>Ensembl GTF:<br />
-ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz</p></li>
-<li><p>Ensembl GFF3:<br />
-ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz</p></li>
-<li><p>GENCODE GTF:<br />
-ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz</p></li>
-<li><p>GENCODE GFF3:<br />
-ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz</p></li>
-<li><p>RefSeq GFF3:<br />
-ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz</p></li>
-<li><p>FlyBase GTF:<br />
-ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz</p></li>
-<li><p>WormBase GTF:<br />
-ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz</p></li>
+<li><p><a href='ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz'>Ensembl GTF</a></p></li>
+<li><p><a href='ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz'>Ensembl GFF3</a></p></li>
+<li><p><a href='ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz'>GENCODE GTF</a></p></li>
+<li><p><a href='ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz'>GENCODE GFF3</a></p></li>
+<li><p><a href='ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz'>RefSeq GFF3</a></p></li>
+<li><p><a href='ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz'>FlyBase GTF</a></p></li>
+<li><p><a href='ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz'>WormBase GTF</a></p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -294,12 +282,12 @@ ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/brio/topics/pasteURL'>pasteURL</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"ensembl.gtf.gz"</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"none"</span>)
+    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/brio/topics/pasteURL'>pasteURL</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"ensembl.gtf"</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"none"</span>)
 
 <span class='co'>## Genes</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing ensembl.gtf.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing ensembl.gtf using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>ensembl.gtf.gz does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>60 genes detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 60 ranges and 8 metadata columns"</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing ensembl.gtf using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>ensembl.gtf does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>60 genes detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 60 ranges and 8 metadata columns"</div><div class='input'>
 <span class='co'>## Transcripts</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing ensembl.gtf.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing ensembl.gtf using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>ensembl.gtf.gz does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, seqnames, transcriptBiotype</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='output co'>#&gt; <span class='message'>167 transcripts detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 167 ranges and 16 metadata columns"</div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing ensembl.gtf using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>ensembl.gtf does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, seqnames, transcriptBiotype</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='output co'>#&gt; <span class='message'>167 transcripts detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 167 ranges and 16 metadata columns"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
