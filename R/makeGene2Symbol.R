@@ -1,4 +1,4 @@
-#' Make a `Gene2Symbol` object
+#' Make a Gene2Symbol object
 #'
 #' @section GFF/GTF file:
 #'

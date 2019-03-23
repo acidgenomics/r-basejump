@@ -1,4 +1,4 @@
-#' Make a `Tx2Gene` object
+#' Make a Tx2Gene object
 #'
 #' @section GFF/GTF file:
 #'

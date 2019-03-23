@@ -3,13 +3,13 @@
 \docType{data}
 \name{tbl}
 \alias{tbl}
-\title{Example \code{tibble} (\code{tbl_df})}
+\title{Example tibble}
 \format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 4 rows and 5 columns.}
 \usage{
 tbl
 }
 \description{
-Example \code{tibble} (\code{tbl_df})
+Example tibble
 }
 \examples{
 data(tbl)

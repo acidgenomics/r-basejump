@@ -8,7 +8,7 @@
 \alias{removeNA,sparseMatrix-method}
 \alias{removeNA,data.frame-method}
 \alias{removeNA,DataFrame-method}
-\title{Remove rows and columns containing only \code{NA} values}
+\title{Remove rows and columns containing only NA values}
 \usage{
 \S4method{removeNA}{atomic}(object)
 
@@ -27,7 +27,7 @@
 Sanitized object.
 }
 \description{
-Remove rows and columns containing only \code{NA} values
+Remove rows and columns containing only NA values
 }
 \examples{
 ## atomic ====

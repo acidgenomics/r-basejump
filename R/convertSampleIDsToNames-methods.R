@@ -18,7 +18,13 @@ bioverbs::convertSampleIDsToNames
 
 
 
-# Designed to work with `export(human = TRUE)` mode.
+# NULL assignment into a column name doesn't work for DataFrame class.
+# You can see this cryptic error on some R installations:
+# nolint start
+# > colData(object)[["sampleName"]] <- NULL
+# Error in replaceROWS(x, if (missing(i)) nsbs else i, value) :
+#   appending gaps is not supported
+# nolint end
 convertSampleIDsToNames.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
@@ -32,7 +38,6 @@ convertSampleIDsToNames.SummarizedExperiment <-  # nolint
             colnames <- as.character(sampleNames)
             assert(hasNoDuplicates(colnames))
             colnames(object) <- colnames
-            colData(object)[["sampleName"]] <- NULL
         }
         # Note that we need to allow invalid dimnames to pass through here,
         # so don't run validity checks.
@@ -51,16 +56,21 @@ setMethod(
 
 
 
+convertSampleIDsToNames.SingleCellExperiment <-  # nolint
+    function(object) {
+        message(paste(
+            "SingleCellExperiment contains cells instead of samples.",
+            "Returning with column names unmodified.",
+            sep = "\n"
+        ))
+    }
+
+
+
 #' @rdname convertSampleIDsToNames
 #' @export
 setMethod(
     f = "convertSampleIDsToNames",
     signature = signature("SingleCellExperiment"),
-    definition = function(object) {
-        message(paste(
-            "Returning with samples unmodified,",
-            "since object contains cells."
-        ))
-        object
-    }
+    definition = convertSampleIDsToNames.SingleCellExperiment
 )

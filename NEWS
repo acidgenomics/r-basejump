@@ -1,3 +1,20 @@
+## basejump 0.9.16 (2019-03-23)
+
+### Minor changes
+
+- `convertSampleIDsToNames`: Removed code to assign `sampleName` column to
+  `NULL`. This step doesn't work consistently for `DataFrame` across
+  Bioconductor installations, and has been found to error on R 3.4 and the
+  current bioc-devel on AppVeyor.
+- Miscellaneous documentation fixes, removing extra formatting in titles.
+- `makeGRangesFromGFF`: Compressed Ensembl GTF file example was erroring out
+  on AppVeyor CI, due to Windows' poor handling of temp files on non-admin
+  accounts. Switched to a non-gzipped example file to avoid this issue. Also
+  removed tabular table from documentation, which currently doesn't render
+  correctly via pkgdown.
+
+
+
 ## basejump 0.9.15 (2019-03-22)
 
 ### Minor changes
