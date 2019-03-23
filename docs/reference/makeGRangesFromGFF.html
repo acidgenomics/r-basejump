@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make <code>GRanges</code> from a GFF/GTF file — makeGRangesFromGFF • basejump</title>
+<title>Make GRanges from a GFF/GTF file — makeGRangesFromGFF • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Make <code>GRanges</code> from a GFF/GTF file — makeGRangesFromGFF" />
+<meta property="og:title" content="Make GRanges from a GFF/GTF file — makeGRangesFromGFF" />
 
 <meta property="og:description" content="Make GRanges from a GFF/GTF file" />
 <meta name="twitter:card" content="summary" />
@@ -104,14 +104,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make <code>GRanges</code> from a GFF/GTF file</h1>
+    <h1>Make GRanges from a GFF/GTF file</h1>
     <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/makeGRangesFromGFF.R'><code>R/makeGRangesFromGFF.R</code></a></small>
     <div class="hidden name"><code>makeGRangesFromGFF.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Make <code>GRanges</code> from a GFF/GTF file</p>
+    <p>Make GRanges from a GFF/GTF file</p>
     
     </div>
 
@@ -185,15 +185,12 @@ the metadata columns.</p>
     
     <p>Currently <code>makeGRangesFromGFF()</code> supports genomes from these sources:</p>
 <table class='table'>
-<tr><td></td><td>GTF</td><td>GFF3</td><td></td></tr>
-<tr><td></td><td>Ensembl</td><td>TRUE</td><td>TRUE</td></tr>
-<tr><td>Also available via ensembldb.</td><td></td><td>GENCODE</td><td>TRUE</td></tr>
-<tr><td>TRUE</td><td>Similar to Ensembl; duplicate PAR_Y.</td><td></td><td>RefSeq</td></tr>
-<tr><td>NA</td><td>TRUE</td><td>Experimental support.</td><td></td></tr>
-<tr><td>UCSC</td><td>FALSE</td><td>FALSE</td><td>Use pre-built Bioconductor packages.</td></tr>
-<tr><td></td><td>FlyBase</td><td>TRUE</td><td>FALSE</td></tr>
-<tr><td>Newer than Ensembl.</td><td></td><td>WormBase</td><td>TRUE</td></tr>
-<tr><td>FALSE</td><td>Very similar to Ensembl.</td><td></td><td></td></tr>
+<tr><td></td><td>21.0</td><td>6</td><td>160</td><td>110</td></tr>
+<tr><td>3.90</td><td></td><td>21.0</td><td>6</td><td>160</td></tr>
+<tr><td>110</td><td>3.90</td><td></td><td>22.8</td><td>4</td></tr>
+<tr><td>108</td><td>93</td><td>3.85</td><td></td><td>21.4</td></tr>
+<tr><td>6</td><td>258</td><td>110</td><td>3.08</td><td></td></tr>
+<tr><td>18.7</td><td>8</td><td>360</td><td>175</td><td>3.15</td></tr>
 </table>
     
     <h2 class="hasAnchor" id="ensembl"><a class="anchor" href="#ensembl"></a>Ensembl</h2>
@@ -222,7 +219,7 @@ PAR regions of both chromosomes. You'll see these genes contain a "_PAR_Y"
 suffix.</p>
 <p>Additionally, GENCODE GFF/GTF files import with a gene identifier containing
 a suffix, which differs slightly from the Ensembl GFF/GTF spec
-(e.g. GENCODE: ENSG00000000003.14; Ensembl: ENSG00000000003).</p>
+(e.g. GENCODE: <code>ENSG00000000003.14</code>; Ensembl: <code>ENSG00000000003</code>).</p>
 <p>The <a href='https://www.gencodegenes.org/pages/faq.html'>GENCODE FAQ</a> has additional
 details.</p>
     
