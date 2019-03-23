@@ -1,4 +1,4 @@
-#' Make `GRanges` from `EnsDb` object
+#' Make GRanges from EnsDb object
 #'
 #' @details
 #' Use specific `EnsDb` object as annotation source.

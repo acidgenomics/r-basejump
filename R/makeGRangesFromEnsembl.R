@@ -1,4 +1,4 @@
-#' Make `GRanges` from Ensembl
+#' Make GRanges from Ensembl
 #'
 #' Quickly obtain gene and transcript annotations from
 #' [Ensembl](https://www.ensembl.org/) using
