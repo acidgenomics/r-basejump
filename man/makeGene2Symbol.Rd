@@ -8,26 +8,13 @@
 \alias{makeGene2SymbolFromGTF}
 \title{Make a Gene2Symbol object}
 \usage{
-makeGene2SymbolFromEnsembl(organism, genomeBuild = NULL,
-  release = NULL)
+makeGene2SymbolFromEnsembl()
 
 makeGene2SymbolFromEnsDb(object)
 
 makeGene2SymbolFromGFF(file)
 }
 \arguments{
-\item{organism}{\code{character(1)}.
-Full Latin organism name (e.g. "\code{Homo sapiens}").}
-
-\item{genomeBuild}{\code{character(1)}.
-Ensembl genome build assembly name (e.g. \code{"GRCh38"}). If set \code{NULL},
-defaults to the most recent build available. Note: don't pass in UCSC build
-IDs (e.g. \code{"hg38"}).}
-
-\item{release}{\code{integer(1)}.
-Ensembl release version (e.g. \code{90}). If set \code{NULL}, defaults to the most
-recent release available.}
-
 \item{object}{Object.}
 
 \item{file}{\code{character(1)}.
@@ -64,7 +51,4 @@ print(x)
 file <- file.path(basejumpCacheURL, "example.gff3")
 x <- makeGene2SymbolFromGFF(file)
 print(x)
-}
-\seealso{
-\code{makeGRanges}.
 }

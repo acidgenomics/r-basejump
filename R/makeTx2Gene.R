@@ -1,3 +1,8 @@
+# FIXME Import freerange code.
+# @inheritParams freerange::makeGRangesFromEnsembl
+
+
+
 #' Make a Tx2Gene object
 #'
 #' @section GFF/GTF file:
@@ -5,11 +10,7 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeTx2Gene
-#' @include makeGRangesFromEnsembl.R
-#' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams params
-#'
-#' @seealso `makeGRanges`.
 #'
 #' @return `Tx2Gene`.
 #'
@@ -47,9 +48,10 @@ makeTx2GeneFromEnsembl <-
         Tx2Gene(gr)
     }
 
-f <- formals(makeGRangesFromEnsembl)
-f <- f[setdiff(names(f), c("level", "metadata", "..."))]
-formals(makeTx2GeneFromEnsembl) <- f
+# FIXME Update this once freerange is added.
+# f <- formals(makeGRangesFromEnsembl)
+# f <- f[setdiff(names(f), c("level", "metadata", "..."))]
+# formals(makeTx2GeneFromEnsembl) <- f
 
 
 
