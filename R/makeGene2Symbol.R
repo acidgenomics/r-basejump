@@ -1,3 +1,8 @@
+# FIXME Import code from freerange
+# @inheritParams makeGRangesFromEnsembl
+
+
+
 #' Make a Gene2Symbol object
 #'
 #' @section GFF/GTF file:
@@ -5,11 +10,7 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeGene2Symbol
-#' @include makeGRangesFromEnsembl.R
-#' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams params
-#'
-#' @seealso `makeGRanges`.
 #'
 #' @return `Gene2Symbol`.
 #'
@@ -47,9 +48,10 @@ makeGene2SymbolFromEnsembl <-
         Gene2Symbol(gr)
     }
 
-f <- formals(makeGRangesFromEnsembl)
-f <- f[setdiff(names(f), "level")]
-formals(makeGene2SymbolFromEnsembl) <- f
+# FIXME Update this once freerange is added.
+# f <- formals(makeGRangesFromEnsembl)
+# f <- f[setdiff(names(f), "level")]
+# formals(makeGene2SymbolFromEnsembl) <- f
 
 
 
