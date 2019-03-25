@@ -94,6 +94,9 @@
 \alias{\%$\%}
 \alias{\%>\%}
 \alias{\%T>\%}
+\alias{set_colnames}
+\alias{set_names}
+\alias{set_rownames}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -112,7 +115,7 @@ below to see their documentation.
 
   \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{bapply}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{hasRownames}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{methods}{\code{\link[methods]{show}}}
 
