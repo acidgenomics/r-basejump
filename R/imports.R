@@ -25,7 +25,6 @@
 #'   rowSums setdiff t
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom S4Vectors DataFrame List Rle %in% aggregate cor decode expand
 #'   head mcols mcols<- merge metadata metadata<- na.omit split tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
