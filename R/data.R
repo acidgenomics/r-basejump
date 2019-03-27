@@ -22,14 +22,6 @@
 
 
 
-#' Organism mappings
-#' @examples
-#' data(organism_mappings)
-#' organism_mappings
-"organism_mappings"
-
-
-
 #' Example SummarizedExperiment
 #'
 #' Gene-level RNA-seq data set.
