@@ -1,3 +1,18 @@
+## basejump 0.9.17 (2019-03-27)
+
+### Major changes
+
+- Split out Ensembl (AnnotationHub/ensembldb) annotation processing and GFF/GTF
+  file loading utilites to new [freerange][] package. All of these functions
+  remain re-exported here in [basejump][].
+
+### Minor changes
+
+- Offloaded `removeNA` and `sanitizeNA` code to [brio][] package, so these
+  functions can be imported in thew new [freerange][] package.
+
+
+
 ## basejump 0.9.16 (2019-03-23)
 
 ### Minor changes
@@ -1494,6 +1509,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [ensembldb]: https://bioconductor.org/packages/ensembldb/
 [Entrez]: https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html
 [Excel]: https://products.office.com/en-us/excel/
+[freeranges]: https://freeranges.acidgenomics.com/
 [GenomeInfoDb]: https://bioconductor.org/packages/GenomeInfoDb/
 [GenomeInfoDbData]: https://bioconductor.org/packages/GenomeInfoDbData/
 [ggplot2]: http://ggplot2.tidyverse.org/
