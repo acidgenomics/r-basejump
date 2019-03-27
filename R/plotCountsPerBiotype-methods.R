@@ -3,7 +3,7 @@
 #' @inherit bioverbs::plotCountsPerBiotype
 #' @inheritParams params
 #' @examples
-#' data(rse, sce)
+#' data(rse, sce, package = "acidData")
 #'
 #' ## SummarizedExperiment ====
 #' plotCountsPerBiotype(rse)

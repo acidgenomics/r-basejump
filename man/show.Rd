@@ -40,7 +40,7 @@ complete, original object, with misleading results.  See the
 the discussion in \code{\link{setIs}} for the general concept.
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 options(basejump.test = TRUE)
 
 ## EggNOG ====

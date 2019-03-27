@@ -25,7 +25,7 @@ coloring in plots. When multiple interesting groups are present, unite into a
 single column, delimited by a colon.
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 object <- rse
 from <- sampleData(object)
 to <- uniteInterestingGroups(

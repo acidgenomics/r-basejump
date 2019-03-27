@@ -44,7 +44,7 @@ Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 x <- Ensembl2Entrez(rse)
 print(x)
 }

@@ -6,7 +6,7 @@
 #'   Number of barcodes to return per sample.
 #'
 #' @examples
-#' data(sce)
+#' data(sce, package = "acidData")
 #' x <- topCellsPerSample(sce)
 #' lapply(x, head)
 NULL

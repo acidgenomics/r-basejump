@@ -28,7 +28,7 @@
 Interesting groups
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 object <- rse
 
 intgroup <- interestingGroups(object)

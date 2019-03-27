@@ -8,7 +8,7 @@
 #' @return Invisible `NULL`.
 #'
 #' @examples
-#' data(rse, tx_se)
+#' data(rse, tx_se, package = "acidData")
 #'
 #' ## Gene2Symbol ====
 #' x <- Gene2Symbol(rse)

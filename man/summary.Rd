@@ -24,7 +24,7 @@ Invisible \code{NULL}.
   \code{\link{class}} of the first argument.
 }
 \examples{
-data(rse, tx_se)
+data(rse, tx_se, package = "acidData")
 
 ## Gene2Symbol ====
 x <- Gene2Symbol(rse)

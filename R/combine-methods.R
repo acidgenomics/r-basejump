@@ -18,7 +18,7 @@
 #'
 #' @examples
 #' library(SummarizedExperiment)
-#' data(rse, sce)
+#' data(rse, sce, package = "acidData")
 #'
 #' ## SummarizedExperiment ====
 #' x <- rse

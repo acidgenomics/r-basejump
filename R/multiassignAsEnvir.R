@@ -13,7 +13,7 @@
 #' Object names defined in the new `environment`.
 #'
 #' @examples
-#' data(rse, sce)
+#' data(rse, sce, package = "acidData")
 #' multiassignAsEnvir(rse, sce, envirName = "example")
 #' class(example)
 #' ls(example)

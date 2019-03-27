@@ -18,7 +18,7 @@
 #' @seealso `makeGene2Symbol()`.
 #'
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #' x <- Gene2Symbol(rse)
 #' print(x)
 NULL

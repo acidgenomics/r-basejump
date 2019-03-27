@@ -48,7 +48,7 @@ Counts axis label.}
 Plot counts per biotype
 }
 \examples{
-data(rse, sce)
+data(rse, sce, package = "acidData")
 
 ## SummarizedExperiment ====
 plotCountsPerBiotype(rse)

@@ -47,7 +47,7 @@ constructor by slotting useful session information into the \code{metadata} slot
 }
 }
 \examples{
-data(sce)
+data(sce, package = "acidData")
 object <- sce
 x <- makeSingleCellExperiment(
     assays = SummarizedExperiment::assays(object),

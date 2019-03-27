@@ -2,7 +2,7 @@
 #' @inherit bioverbs::plotGenesDetected
 #' @inheritParams params
 #' @examples
-#' data(rse, sce)
+#' data(rse, sce, package = "acidData")
 #' plotGenesDetected(rse)
 #' plotGenesDetected(sce)
 NULL

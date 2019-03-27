@@ -2,7 +2,7 @@
 #' @inherit bioverbs::interestingGroups
 #' @inheritParams params
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #' object <- rse
 #'
 #' intgroup <- interestingGroups(object)
