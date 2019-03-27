@@ -2,7 +2,7 @@ Package: basejump
 Title: Base functions for bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.9.17
-Date: 2019-03-26
+Date: 2019-03-27
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -81,13 +81,11 @@ Collate:
     'convertGenesToSymbols-methods.R'
     'convertSampleIDsToNames-methods.R'
     'convertTranscriptsToGenes-methods.R'
-    'convertUCSCBuildToEnsembl.R'
     'counts-methods.R'
     'data.R'
     'deprecated.R'
     'detectHPC.R'
     'detectLanes.R'
-    'detectOrganism.R'
     'geneNames-methods.R'
     'geneSynonyms.R'
     'geometricMean-methods.R'
@@ -142,15 +140,14 @@ Collate:
     'prepareTemplate.R'
     'reexports-bioverbs.R'
     'reexports-brio.R'
+    'reexports-freerange.R'
     'reexports-goalie.R'
     'reexports-syntactic.R'
     'reexports-transformer.R'
     'reexports.R'
     'relevel.R'
-    'removeNA-methods.R'
     'sampleData-methods.R'
     'sampleNames-methods.R'
-    'sanitizeNA-methods.R'
     'sanitizePercent-methods.R'
     'sanitizeSampleData.R'
     'selectSamples-methods.R'
