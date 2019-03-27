@@ -29,17 +29,17 @@ files <- c(
     "wormbase.gtf.gz"
 )
 mapply(
-    FUN = function(cacheURL, file, envir) {
+    FUN = function(remoteDir, file, envir) {
         if (!file.exists(file)) {
             utils::download.file(
-                url = paste(cacheURL, file, sep = "/"),
+                url = paste(remoteDir, file, sep = "/"),
                 destfile = file
             )
         }
     },
     file = files,
     MoreArgs = list(
-        cacheURL = basejumpCacheURL,
+        remoteDir = basejumpTestsURL,
         envir = environment()
     )
 )

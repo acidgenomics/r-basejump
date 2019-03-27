@@ -25,12 +25,12 @@
 #'
 #' ## makeGene2SymbolFromGFF ====
 #' ## GTF
-#' file <- file.path(basejumpCacheURL, "example.gtf")
+#' file <- file.path(basejumpTestsURL, "example.gtf")
 #' x <- makeGene2SymbolFromGFF(file)
 #' print(x)
 #'
 #' ## GFF3
-#' file <- file.path(basejumpCacheURL, "example.gff3")
+#' file <- file.path(basejumpTestsURL, "example.gff3")
 #' x <- makeGene2SymbolFromGFF(file)
 #' print(x)
 NULL

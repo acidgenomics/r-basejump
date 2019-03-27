@@ -43,12 +43,12 @@ print(x)
 
 ## makeTx2GeneFromGFF ====
 ## GTF
-file <- file.path(basejumpCacheURL, "example.gtf")
+file <- file.path(basejumpTestsURL, "example.gtf")
 x <- makeTx2GeneFromGFF(file)
 print(x)
 
 ## GFF3
-file <- file.path(basejumpCacheURL, "example.gff3")
+file <- file.path(basejumpTestsURL, "example.gff3")
 x <- makeTx2GeneFromGFF(file)
 print(x)
 }

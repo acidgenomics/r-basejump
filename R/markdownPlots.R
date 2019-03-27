@@ -16,7 +16,7 @@
 #' @seealso [cowplot::plot_grid()].
 #'
 #' @examples
-#' loadRemoteData(url = file.path(basejumpCacheURL, "plotlist.rda"))
+#' loadRemoteData(url = file.path(basejumpTestsURL, "plotlist.rda"))
 #' names(plotlist)
 #' markdownPlots(list = plotlist)
 markdownPlots <- function(list, headerLevel = 2L) {

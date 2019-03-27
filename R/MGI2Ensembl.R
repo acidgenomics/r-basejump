@@ -9,7 +9,7 @@ MGI2Ensembl <- function() {  # nolint
     assert(hasInternet())
 
     if (isTRUE(getOption("basejump.test"))) {
-        file <- pasteURL(basejumpCacheURL, "mgi.rpt.gz", protocol = "none")
+        file <- pasteURL(basejumpTestsURL, "mgi.rpt.gz", protocol = "none")
     } else {
         file <- pasteURL(
             "www.informatics.jax.org",
