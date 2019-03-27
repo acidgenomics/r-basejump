@@ -33,7 +33,6 @@ URL:
 BugReports: https://github.com/acidgenomics/basejump/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: false
 Depends: R (>= 3.4)
 Imports:
     acidData (>= 0.1.0), bioverbs (>= 0.1.10), brio (>= 0.1.14),
