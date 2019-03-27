@@ -36,16 +36,17 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 3.4)
 Imports:
-    bioverbs (>= 0.1.10), brio (>= 0.1.14), freerange (>= 0.1.0),
-        goalie (>= 0.2.12), syntactic (>= 0.1.6), transformer (>= 0.1.7),
+    acidData (>= 0.1.0), bioverbs (>= 0.1.10), brio (>= 0.1.14),
+        freerange (>= 0.1.0), goalie (>= 0.2.12), syntactic (>= 0.1.6),
+        transformer (>= 0.1.7),
     Biobase, BiocGenerics, GenomeInfoDb, GenomicRanges, IRanges, Matrix,
         Matrix.utils, RColorBrewer, S4Vectors, SingleCellExperiment,
         SummarizedExperiment,
     cowplot (>= 0.9), dplyr (>= 0.8), ggplot2 (>= 3.1), ggrepel (>= 0.8),
         knitr (>= 1.22), magrittr (>= 1.5), matrixStats (>= 0.54),
-        pheatmap (>= 1.0), purrr (>= 0.3), reshape2 (>= 1.4), readr (>= 1.3),
-        rlang (>= 0.3), sessioninfo (>= 1.1), stringr (>= 1.4), tibble (>= 2.1),
-        tidyr (>= 0.8), tidyselect (>= 0.2),
+        purrr (>= 0.3), reshape2 (>= 1.4), readr (>= 1.3), rlang (>= 0.3),
+        sessioninfo (>= 1.1), stringr (>= 1.4), tibble (>= 2.1), tidyr (>= 0.8),
+        tidyselect (>= 0.2),
     grDevices, grid, methods, stats, utils
 Suggests:
     BiocStyle, EnsDb.Hsapiens.v75,
@@ -53,6 +54,7 @@ Suggests:
 Enhances:
     pbapply (>= 1.4)
 Remotes:
+    acidgenomics/acidData,
     acidgenomics/bioverbs,
     acidgenomics/brio,
     acidgenomics/freerange,
@@ -83,7 +85,6 @@ Collate:
     'convertSampleIDsToNames-methods.R'
     'convertTranscriptsToGenes-methods.R'
     'counts-methods.R'
-    'data.R'
     'deprecated.R'
     'detectHPC.R'
     'detectLanes.R'
@@ -125,17 +126,14 @@ Collate:
     'package.R'
     'params.R'
     'pheatmap-internal.R'
-    'plotCorrelationHeatmap-methods.R'
     'plotCounts-methods.R'
     'plotCountsPerBiotype-methods.R'
     'plotCountsPerBroadClass-methods.R'
     'plotCountsPerGene-methods.R'
     'plotGenderMarkers-methods.R'
     'plotGenesDetected-methods.R'
-    'plotHeatmap-methods.R'
     'plotPCA-methods.R'
     'plotQC-methods.R'
-    'plotQuantileHeatmap-methods.R'
     'plotTotalCounts-methods.R'
     'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
