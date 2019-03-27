@@ -78,7 +78,7 @@ Generally, we expect similar count spreads for all genes between samples
 unless the library sizes or total RNA expression are different.
 }
 \examples{
-data(rse, sce)
+data(rse, sce, package = "acidData")
 
 ## SummarizedExperiment ====
 plotCountsPerGene(rse, geom = "boxplot")

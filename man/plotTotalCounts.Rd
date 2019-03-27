@@ -56,7 +56,7 @@ Plot title.}
 Plot total read counts
 }
 \examples{
-data(rse, sce)
+data(rse, sce, package = "acidData")
 plotTotalCounts(rse)
 plotTotalCounts(sce)
 }

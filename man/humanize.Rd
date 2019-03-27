@@ -24,7 +24,7 @@ This can make dimnames invalid (see \code{\link[base:make.names]{make.names()}})
 should only be called prior to writing files to disk.
 }
 \examples{
-data(rse, sce)
+data(rse, sce, package = "acidData")
 
 ## SummarizedExperiment ====
 lapply(dimnames(rse), head)

@@ -11,7 +11,7 @@
 #' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
 #'
 #' @examples
-#' data(sce)
+#' data(sce, package = "acidData")
 #' x <- cell2sample(sce)
 #' table(x)
 NULL

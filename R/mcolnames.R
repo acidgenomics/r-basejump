@@ -6,7 +6,7 @@
 #' - [S4Vectors::mcols()].
 #'
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #' mcolnames(rse)
 #'
 #' ## Asignment method.

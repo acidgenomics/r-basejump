@@ -8,7 +8,7 @@
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' data(sce)
+#' data(sce, package = "acidData")
 #' object <- sce
 #' x <- makeSingleCellExperiment(
 #'     assays = SummarizedExperiment::assays(object),

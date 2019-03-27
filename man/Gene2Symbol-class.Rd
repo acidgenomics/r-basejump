@@ -60,7 +60,7 @@ We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRele
 }
 
 \examples{
-data(rse)
+data(rse, package = "acidData")
 x <- Gene2Symbol(rse)
 print(x)
 }

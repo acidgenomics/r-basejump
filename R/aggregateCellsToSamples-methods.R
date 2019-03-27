@@ -9,7 +9,7 @@
 #' [aggregateCols()] function.
 #'
 #' @examples
-#' data(sce)
+#' data(sce, package = "acidData")
 #' x <- aggregateCellsToSamples(sce)
 #' print(x)
 NULL

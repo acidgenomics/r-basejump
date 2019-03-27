@@ -18,6 +18,6 @@ Markdown output.
 Markdown
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 markdown(rse)
 }

@@ -3,7 +3,7 @@
 #' @inherit bioverbs::plotCountsPerBroadClass
 #' @inheritParams params
 #' @examples
-#' data(rse, sce)
+#' data(rse, sce, package = "acidData")
 #'
 #' ## SummarizedExperiment ====
 #' plotCountsPerBroadClass(rse)

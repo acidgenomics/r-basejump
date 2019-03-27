@@ -31,7 +31,7 @@ Cell-to-sample mappings
 \code{\link[SummarizedExperiment:colData]{colData()}}.
 }
 \examples{
-data(sce)
+data(sce, package = "acidData")
 x <- cell2sample(sce)
 table(x)
 }

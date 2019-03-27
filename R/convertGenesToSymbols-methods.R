@@ -5,7 +5,7 @@
 #' @return Modified object of same class.
 #'
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #' object <- rse
 #'
 #' g2s <- Gene2Symbol(object)

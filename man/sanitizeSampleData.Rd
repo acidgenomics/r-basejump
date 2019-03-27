@@ -29,7 +29,7 @@ Here's the current column blacklist:
 }
 
 \examples{
-data(rse)
+data(rse, package = "acidData")
 from <- sampleData(rse)
 print(from)
 to <- sanitizeSampleData(from)

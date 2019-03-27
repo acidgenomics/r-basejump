@@ -2,7 +2,7 @@
 #' @inherit bioverbs::plotQC
 #' @inheritParams params
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #' plotQC(rse)
 NULL
 

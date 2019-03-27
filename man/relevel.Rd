@@ -28,7 +28,7 @@ Factor levels will be readjusted (i.e. superfluous levels are dropped).
 Relevel row or column data
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 
 rowRanges <- SummarizedExperiment::rowRanges(rse)
 x <- relevelRowRanges(rowRanges)

@@ -18,7 +18,7 @@ mcolnames(object) <- value
 Metadata column names
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 mcolnames(rse)
 
 ## Asignment method.

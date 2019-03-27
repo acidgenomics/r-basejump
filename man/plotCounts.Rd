@@ -62,7 +62,7 @@ Plot style.}
 Plot counts
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 object <- rse
 
 rownames <- head(rownames(object))

@@ -21,6 +21,6 @@ Varies, depending on the method.
 Convert sample identifiers to names
 }
 \examples{
-data(rse)
+data(rse, package = "acidData")
 convertSampleIDsToNames(rse)
 }

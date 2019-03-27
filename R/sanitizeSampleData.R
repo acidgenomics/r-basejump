@@ -17,7 +17,7 @@
 #' `character` columns coerced to `factor` (i.e. `stringsAsFactors`).
 #'
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #' from <- sampleData(rse)
 #' print(from)
 #' to <- sanitizeSampleData(from)

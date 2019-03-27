@@ -3,7 +3,7 @@
 #' @inherit bioverbs::zerosVsDepth
 #' @inheritParams params
 #' @examples
-#' data(sce)
+#' data(sce, package = "acidData")
 #' x <- zerosVsDepth(sce)
 #' summary(x)
 #' colnames(x)

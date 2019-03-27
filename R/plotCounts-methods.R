@@ -16,7 +16,7 @@
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #' object <- rse
 #'
 #' rownames <- head(rownames(object))

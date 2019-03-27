@@ -16,7 +16,7 @@
 #'   Interesting groups.
 #'
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #'
 #' ## Checks that columns are defined in `colData()`.
 #' matchesInterestingGroups(rse, "condition")

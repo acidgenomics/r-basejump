@@ -9,7 +9,7 @@
 #'   to melting, if desired. Use `"identity"` to return unmodified (default).
 #'
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidData")
 #' x <- meltCounts(rse)
 #' print(x)
 NULL
