@@ -5,6 +5,8 @@
 # We're maintaiing legacy support for R 3.4 (BioC 3.5/3.6), so disable.
 # @importMethodsFrom SingleCellExperiment coerce
 
+# Prioritize migrating tidyr gather and separate usage in a future update.
+
 
 
 #' @importClassesFrom GenomicRanges GRanges
@@ -57,7 +59,6 @@
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
 #'   new selectMethod setAs setClass setGeneric setMethod setOldClass show
 #'   signature slot slotNames validObject .hasSlot
-#' @importFrom pheatmap pheatmap
 #' @importFrom purrr map
 #' @importFrom readr cols read_lines read_tsv
 #' @importFrom reshape2 melt
