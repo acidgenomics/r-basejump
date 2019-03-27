@@ -39,7 +39,7 @@ Imports:
         freerange (>= 0.1.0), goalie (>= 0.2.12), syntactic (>= 0.1.6),
         transformer (>= 0.1.7),
     Biobase, BiocGenerics, GenomeInfoDb, GenomicRanges, IRanges, Matrix,
-        Matrix.utils, RColorBrewer, S4Vectors, SingleCellExperiment,
+        Matrix.utils, S4Vectors, SingleCellExperiment,
         SummarizedExperiment,
     cowplot (>= 0.9), dplyr (>= 0.8), ggplot2 (>= 3.1), ggrepel (>= 0.8),
         knitr (>= 1.22), magrittr (>= 1.5), matrixStats (>= 0.54),
@@ -93,7 +93,6 @@ Collate:
     'ggplot2.R'
     'globals.R'
     'headtail-methods.R'
-    'heatmap-internal.R'
     'humanize-methods.R'
     'imports.R'
     'interestingGroups-methods.R'
@@ -124,7 +123,6 @@ Collate:
     'organism-methods.R'
     'package.R'
     'params.R'
-    'pheatmap-internal.R'
     'plotCounts-methods.R'
     'plotCountsPerBiotype-methods.R'
     'plotCountsPerBroadClass-methods.R'
