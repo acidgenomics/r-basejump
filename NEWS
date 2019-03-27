@@ -1,4 +1,4 @@
-## basejump 0.9.17 (2019-03-27)
+## basejump 0.10.0 (2019-03-27)
 
 ### Major changes
 
@@ -8,6 +8,8 @@
   `convertUCSCBuildToEnsembl`, `detectOrganism`, `emptyRanges`,
   `makeGRangesFromEnsDb`, `makeGRangesFromEnsembl`, `makeGRangesFromGFF`,
   `makeGRangesFromGTF`.
+- Split out heatmap functions to [firestarter][] package. This includes
+  `plotHeatmap`, `plotCorrelationHeatmap`, and `plotQuantileHeatmap`.
 
 ### Minor changes
 
@@ -1513,6 +1515,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [ensembldb]: https://bioconductor.org/packages/ensembldb/
 [Entrez]: https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html
 [Excel]: https://products.office.com/en-us/excel/
+[firestarter]: https://firestarter.acidgenomics.com/
 [freeranges]: https://freeranges.acidgenomics.com/
 [GenomeInfoDb]: https://bioconductor.org/packages/GenomeInfoDb/
 [GenomeInfoDbData]: https://bioconductor.org/packages/GenomeInfoDbData/
