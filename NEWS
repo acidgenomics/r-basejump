@@ -4,12 +4,16 @@
 
 - Split out Ensembl (AnnotationHub/ensembldb) annotation processing and GFF/GTF
   file loading utilites to new [freerange][] package. All of these functions
-  remain re-exported here in [basejump][].
+  remain re-exported here in [basejump][]. This includes: `annotable`,
+  `convertUCSCBuildToEnsembl`, `detectOrganism`, `emptyRanges`,
+  `makeGRangesFromEnsDb`, `makeGRangesFromEnsembl`, `makeGRangesFromGFF`,
+  `makeGRangesFromGTF`.
 
 ### Minor changes
 
 - Offloaded `removeNA` and `sanitizeNA` code to [brio][] package, so these
   functions can be imported in thew new [freerange][] package.
+- Moved `organism_mappings` internal dataset to [freerange][] package.
 
 
 
