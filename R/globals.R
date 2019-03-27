@@ -4,14 +4,16 @@ globalVariables(".")
 
 packageVersion <- packageVersion("basejump")
 
-#' basejump package cache URL
+#' basejump test data URL
 #' @keywords internal
 #' @export
 #' @examples
-#' basejumpCacheURL
-basejumpCacheURL <- paste0(
-    "http://basejump.seq.cloud/",
-    "v", packageVersion$major, ".", packageVersion$minor  # nolint
+#' basejumpTestsURL
+basejumpTestsURL <- pasteURL(
+    "tests.acidgenomics.com",
+    "basejump",
+    paste0("v", packageVersion$major, ".", packageVersion$minor),  # nolint
+    protocol = "http"
 )
 
 

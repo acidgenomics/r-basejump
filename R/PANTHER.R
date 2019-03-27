@@ -54,7 +54,7 @@ PANTHER <- function(  # nolint
 
     if (isTRUE(getOption("basejump.test"))) {
         file <- pasteURL(
-            basejumpCacheURL, paste0("PTHR13.1_", pantherName, ".gz"),
+            basejumpTestsURL, paste0("PTHR13.1_", pantherName, ".gz"),
             protocol = "none"
         )
     } else {
