@@ -19,7 +19,6 @@
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
-#' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
 #'   rowSums setdiff t
 #' @importFrom GenomeInfoDb seqnames

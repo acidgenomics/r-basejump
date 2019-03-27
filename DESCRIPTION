@@ -38,7 +38,7 @@ Depends: R (>= 3.4)
 Imports:
     bioverbs (>= 0.1.10), brio (>= 0.1.14), goalie (>= 0.2.12),
         syntactic (>= 0.1.6), transformer (>= 0.1.7),
-    AnnotationHub, Biobase, BiocGenerics, GenomeInfoDb, GenomicFeatures,
+    Biobase, BiocGenerics, GenomeInfoDb, GenomicFeatures,
         GenomicRanges, IRanges, Matrix, Matrix.utils, RColorBrewer, S4Vectors,
         SingleCellExperiment, SummarizedExperiment, ensembldb,
     cowplot (>= 0.9), dplyr (>= 0.8), ggplot2 (>= 3.1), ggrepel (>= 0.8),
