@@ -105,15 +105,16 @@
       <small>Source: <a href='https://github.com/acidgenomics/basejump/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="basejump-0-10-0-2019-03-27" class="section level2">
+    <div id="basejump-0-10-0-2019-03-28" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-10-0-2019-03-27" class="anchor"></a>basejump 0.10.0 (2019-03-27)</h2>
+<a href="#basejump-0-10-0-2019-03-28" class="anchor"></a>basejump 0.10.0 (2019-03-28)</h2>
 <div id="major-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#major-changes" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Split out Ensembl (AnnotationHub/ensembldb) annotation processing and GFF/GTF file loading utilites to new [freerange][] package. All of these functions remain re-exported here in <a href="https://basejump.acidgenomics.com/">basejump</a>. This includes: <code>annotable</code>, <code>convertUCSCBuildToEnsembl</code>, <code>detectOrganism</code>, <code>emptyRanges</code>, <code>makeGRangesFromEnsDb</code>, <code>makeGRangesFromEnsembl</code>, <code>makeGRangesFromGFF</code>, <code>makeGRangesFromGTF</code>.</li>
 <li>Split out heatmap functions to <a href="https://firestarter.acidgenomics.com/">firestarter</a> package. This includes <code>plotHeatmap</code>, <code>plotCorrelationHeatmap</code>, and <code>plotQuantileHeatmap</code>.</li>
+<li>Split out all ggplot2 functions to new <a href="https://minimalism.acidgenomics.com/">minimalism</a> package.</li>
 </ul>
 </div>
 <div id="minor-changes" class="section level3">
@@ -1123,7 +1124,7 @@
 <li>Added message during <code>hgnc2gene</code> call.</li>
 <li>Miscellaneous documentation fixes.</li>
 <li>Moved internal constructors into the S4 method definitions, where applicable.</li>
-<li>Simplified default parameter definition for <code><a href="../reference/deprecated.html">panther(organism = "XXX")</a></code>.</li>
+<li>Simplified default parameter definition for <code><a href="../reference/defunct.html">panther(organism = "XXX")</a></code>.</li>
 <li>Improved code coverage, using <code>nocov</code> where appropriate.</li>
 </ul>
 </div>
@@ -1660,7 +1661,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-0-10-0-2019-03-27">0.10.0</a></li>
+        <li><a href="#basejump-0-10-0-2019-03-28">0.10.0</a></li>
         <li><a href="#basejump-0-9-16-2019-03-23">0.9.16</a></li>
         <li><a href="#basejump-0-9-15-2019-03-22">0.9.15</a></li>
         <li><a href="#basejump-0-9-14-2019-03-18">0.9.14</a></li>
