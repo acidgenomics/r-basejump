@@ -1,4 +1,4 @@
-## basejump 0.10.0 (2019-03-27)
+## basejump 0.10.0 (2019-03-28)
 
 ### Major changes
 
@@ -10,6 +10,7 @@
   `makeGRangesFromGTF`.
 - Split out heatmap functions to [firestarter][] package. This includes
   `plotHeatmap`, `plotCorrelationHeatmap`, and `plotQuantileHeatmap`.
+- Split out all ggplot2 functions to new [minimalism][] package.
 
 ### Minor changes
 
@@ -1532,6 +1533,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [magrittr]: https://magrittr.tidyverse.org/
 [Markdown]: https://daringfireball.net/projects/markdown/
 [MGI]: http://www.informatics.jax.org/
+[minimalism]: https://minimalism.acidgenomics.com/
 [NIH]: https://www.nih.gov/
 [PANTHER]: http://pantherdb.org/
 [pointillism]: https://pointillism.acidgenomics.com/
