@@ -36,7 +36,7 @@ Only applicable when \code{assignAndSave = TRUE}.}
 Subset per sample
 }
 \examples{
-data(sce)
+data(sce, package = "acidtest")
 
 ## SingleCellExperiment ====
 object <- sce

@@ -33,7 +33,7 @@ name must be defined in
 Calculate and visualize the dropout rate.
 }
 \examples{
-data(sce)
+data(sce, package = "acidtest")
 x <- zerosVsDepth(sce)
 summary(x)
 colnames(x)

@@ -24,7 +24,7 @@ can be used in an R Markdown report, separated by headers. Internally, the
 headers are generated with the \code{markdownHeader} function.
 }
 \examples{
-loadRemoteData(url = file.path(basejumpCacheURL, "plotlist.rda"))
+loadRemoteData(url = file.path(basejumpTestsURL, "plotlist.rda"))
 names(plotlist)
 markdownPlots(list = plotlist)
 }

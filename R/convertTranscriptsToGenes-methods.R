@@ -21,8 +21,8 @@
 #' @seealso `aggregateRows()`.
 #'
 #' @examples
-#' data(tx_se)
-#' object <- tx_se
+#' data(txse, package = "acidtest")
+#' object <- txse
 #'
 #' t2g <- Tx2Gene(object)
 #' print(t2g)

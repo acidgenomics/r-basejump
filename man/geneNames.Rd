@@ -22,7 +22,7 @@ Convenience function for quickly returning unique gene symbols that map to
 the stable gene IDs.
 }
 \examples{
-data(rse)
+data(rse, package = "acidtest")
 
 ## SummarizedExperiment ====
 head(geneNames(rse))

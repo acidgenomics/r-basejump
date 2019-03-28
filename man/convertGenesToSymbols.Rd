@@ -34,7 +34,7 @@ Modified object of same class.
 Convert genes to symbols
 }
 \examples{
-data(rse)
+data(rse, package = "acidtest")
 object <- rse
 
 g2s <- Gene2Symbol(object)

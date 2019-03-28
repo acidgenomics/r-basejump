@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.0</span>
       </span>
     </div>
 
@@ -115,58 +115,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>aggregateFeatures</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>aggregateFeatures</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>aggregateSamples</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>aggregateSamples</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>checkClasses</span>(<span class='no'>...</span>)
-
-<span class='fu'>eggnog</span>(<span class='no'>...</span>)
-
-<span class='fu'>ensembl2entrez</span>(<span class='no'>...</span>)
-
-<span class='fu'>fixNA</span>(<span class='no'>...</span>)
-
-<span class='fu'>gene2symbol</span>(<span class='no'>...</span>)
-
-<span class='fu'>grepString</span>(<span class='no'>...</span>)
-
-<span class='fu'>hgnc2gene</span>(<span class='no'>...</span>)
-
-<span class='fu'>hgnc2ensembl</span>(<span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>fixNA</span>(<span class='no'>...</span>)
 
 <span class='fu'>initializeDirectory</span>(<span class='no'>...</span>)
 
 <span class='fu'>kables</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeGene2symbolFromEnsembl</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeGene2symbolFromGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeGene2symbolFromGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeTx2geneFromEnsembl</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeTx2geneFromGFF</span>(<span class='no'>...</span>)
-
-<span class='fu'>makeTx2geneFromGTF</span>(<span class='no'>...</span>)
-
-<span class='fu'>mgi2gene</span>(<span class='no'>...</span>)
-
-<span class='fu'>mgi2ensembl</span>(<span class='no'>...</span>)
-
-<span class='fu'>panther</span>(<span class='no'>...</span>)
 
 <span class='fu'>readFileByExtension</span>(<span class='no'>...</span>)
 
@@ -177,8 +130,6 @@
 <span class='fu'>readJSON</span>(<span class='no'>...</span>)
 
 <span class='fu'>readYAML</span>(<span class='no'>...</span>)
-
-<span class='fu'>tx2gene</span>(<span class='no'>...</span>)
 
 <span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>, <span class='no'>...</span>)
 
@@ -216,10 +167,6 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
@@ -250,6 +197,10 @@ Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</co
       <td><p><code>character</code>.
 Groups of interest that define the samples. If left unset, defaults to
 <code>sampleName</code>.</p></td>
+    </tr>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     

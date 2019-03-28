@@ -10,15 +10,15 @@ EggNOG <-  # nolint
         assert(hasInternet())
         if (isTRUE(getOption("basejump.test"))) {
             categoriesFile <- pasteURL(
-                basejumpCacheURL, "cog.txt",
+                basejumpTestsURL, "cog.txt",
                 protocol = "none"
             )
             eunogFile <- pasteURL(
-                basejumpCacheURL, "eunog.tsv.gz",
+                basejumpTestsURL, "eunog.tsv.gz",
                 protocol = "none"
             )
             nogFile <- pasteURL(
-                basejumpCacheURL, "nog.tsv.gz",
+                basejumpTestsURL, "nog.tsv.gz",
                 protocol = "none"
             )
         } else {
