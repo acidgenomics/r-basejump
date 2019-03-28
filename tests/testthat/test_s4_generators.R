@@ -1,4 +1,4 @@
-data(rse, envir = environment())
+data(rse, tx_se, package = "acidData", envir = environment())
 
 
 
@@ -12,8 +12,6 @@ test_that("EggNOG", {
 
 
 context("Ensembl2Entrez")
-
-data(rse, envir = environment())
 
 test_that("Ensembl2Entrez", {
     x <- Ensembl2Entrez(rse)
@@ -73,8 +71,6 @@ test_that("PANTHER", {
 
 
 context("Tx2Gene")
-
-data(tx_se, envir = environment())
 
 test_that("Tx2Gene", {
     x <- Tx2Gene(tx_se)
