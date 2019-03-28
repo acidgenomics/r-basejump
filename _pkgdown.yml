@@ -90,3 +90,6 @@ reference:
     - genomeMetadataNames
     - lanePattern
     - metadataBlacklist
+  - title: Reexports
+    contents:
+    - reexports

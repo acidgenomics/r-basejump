@@ -128,7 +128,7 @@ below to see their documentation.
 
   \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
-  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{tibble}}}
 
   \item{transformer}{\code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{as.DataFrame}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}}
 }}
