@@ -12,9 +12,7 @@ reference:
     - summary
   - title: Genome annotations
     contents:
-    - emptyRanges
     - geneSynonyms
-    - starts_with("makeGRanges")
     - makeGene2Symbol
     - makeTx2Gene
   - title: Gene identifier mapping
@@ -29,6 +27,7 @@ reference:
   - title: Metadata
     contents:
     - interestingGroups
+    - mcolnames
     - organism
     - uniteInterestingGroups
   - title: Sample-level metadata
@@ -52,7 +51,6 @@ reference:
     - autopadZeros
     - collapseToString
     - relevel
-    - starts_with("remove")
     - starts_with("sanitize")
     - sortUnique
     - starts_with("strip")
@@ -66,12 +64,6 @@ reference:
     - geometricMean
     - logRatio
     - zerosVsDepth
-  - title: Plots
-    contents:
-    - starts_with("plot")
-  - title: ggplot2
-    contents:
-    - starts_with("ggplot2-")
   - title: Markdown
     contents:
     - starts_with("markdown")
@@ -98,14 +90,3 @@ reference:
     - genomeMetadataNames
     - lanePattern
     - metadataBlacklist
-  - title: Example data
-    contents:
-    - df
-    - gender_markers
-    - mat
-    - organism_mappings
-    - rse
-    - sce
-    - sparse
-    - tbl
-    - tx_se
