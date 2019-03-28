@@ -30,7 +30,7 @@ cell-to-sample groupings and then performs aggregation with the
 \code{\link[=aggregateCols]{aggregateCols()}} function.
 }
 \examples{
-data(sce)
+data(sce, package = "acidtest")
 x <- aggregateCellsToSamples(sce)
 print(x)
 }

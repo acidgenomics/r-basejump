@@ -22,7 +22,7 @@
 #'     [`colData()`][SummarizedExperiment::colData].
 #'
 #' @examples
-#' data(rse, sce)
+#' data(rse, sce, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
 #' x <- metrics(rse)

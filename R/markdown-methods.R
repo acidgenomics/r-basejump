@@ -2,7 +2,7 @@
 #' @inherit bioverbs::markdown
 #' @inheritParams params
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidtest")
 #' markdown(rse)
 NULL
 

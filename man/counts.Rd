@@ -29,7 +29,7 @@ For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
 defined in \code{assayNames}.
 }
 \examples{
-data(rse)
+data(rse, package = "acidtest")
 x <- counts(rse)
 summary(x)
 }

@@ -82,9 +82,17 @@ brio::rdataLoadError
 #' @export
 brio::realpath
 
+#' @importFrom brio removeNA
+#' @export
+brio::removeNA
+
 #' @importFrom brio saveData
 #' @export
 brio::saveData
+
+#' @importFrom brio sanitizeNA
+#' @export
+brio::sanitizeNA
 
 #' @importFrom brio transmit
 #' @export

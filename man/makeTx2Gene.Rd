@@ -24,8 +24,11 @@ defaults to the most recent build available. Note: don't pass in UCSC build
 IDs (e.g. \code{"hg38"}).}
 
 \item{release}{\code{integer(1)}.
-Ensembl release version (e.g. \code{90}). If set \code{NULL}, defaults to the most
-recent release available.}
+Ensembl release version (e.g. \code{90}). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.}
 
 \item{object}{Object.}
 
@@ -55,15 +58,12 @@ print(x)
 
 ## makeTx2GeneFromGFF ====
 ## GTF
-file <- file.path(basejumpCacheURL, "example.gtf")
+file <- file.path(basejumpTestsURL, "example.gtf")
 x <- makeTx2GeneFromGFF(file)
 print(x)
 
 ## GFF3
-file <- file.path(basejumpCacheURL, "example.gff3")
+file <- file.path(basejumpTestsURL, "example.gff3")
 x <- makeTx2GeneFromGFF(file)
 print(x)
-}
-\seealso{
-\code{makeGRanges}.
 }

@@ -58,7 +58,7 @@ is duplicated, these functions will return a warning.
 }
 
 \examples{
-data(rse)
+data(rse, package = "acidtest")
 object <- rse
 print(object)
 

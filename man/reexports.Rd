@@ -8,16 +8,9 @@
 %   R/humanize-methods.R, R/interestingGroups-methods.R,
 %   R/logRatio-methods.R, R/mapGenes-methods.R, R/markdown-methods.R,
 %   R/meltCounts-methods.R, R/metrics-methods.R, R/organism-methods.R,
-%   R/plotCorrelationHeatmap-methods.R, R/plotCounts-methods.R,
-%   R/plotCountsPerBiotype-methods.R, R/plotCountsPerBroadClass-methods.R,
-%   R/plotCountsPerGene-methods.R, R/plotGenderMarkers-methods.R,
-%   R/plotGenesDetected-methods.R, R/plotHeatmap-methods.R,
-%   R/plotPCA-methods.R, R/plotQC-methods.R, R/plotQuantileHeatmap-methods.R,
-%   R/plotTotalCounts-methods.R, R/plotZerosVsDepth-methods.R,
-%   R/reexports-bioverbs.R, R/reexports-brio.R, R/reexports-goalie.R,
-%   R/reexports-syntactic.R, R/reexports-transformer.R,
-%   R/reexports.R, R/removeNA-methods.R, R/sampleData-methods.R,
-%   R/sampleNames-methods.R, R/sanitizeNA-methods.R,
+%   R/reexports-bioverbs.R, R/reexports-brio.R, R/reexports-freerange.R,
+%   R/reexports-goalie.R, R/reexports-syntactic.R, R/reexports-transformer.R,
+%   R/reexports.R, R/sampleData-methods.R, R/sampleNames-methods.R,
 %   R/sanitizePercent-methods.R, R/selectSamples-methods.R,
 %   R/show-methods.R, R/stripTranscriptVersions-methods.R,
 %   R/subsetPerSample-methods.R, R/topCellsPerSample-methods.R, R/tpm-methods.R,
@@ -49,7 +42,9 @@
 \alias{rdataExtPattern}
 \alias{rdataLoadError}
 \alias{realpath}
+\alias{removeNA}
 \alias{saveData}
+\alias{sanitizeNA}
 \alias{transmit}
 \alias{writeCounts}
 \alias{sanitizeColData}
@@ -65,6 +60,14 @@
 \alias{untar}
 \alias{unzip}
 \alias{zip}
+\alias{annotable}
+\alias{convertUCSCBuildToEnsembl}
+\alias{detectOrganism}
+\alias{emptyRanges}
+\alias{makeGRangesFromEnsDb}
+\alias{makeGRangesFromEnsembl}
+\alias{makeGRangesFromGFF}
+\alias{makeGRangesFromGTF}
 \alias{assert}
 \alias{bapply}
 \alias{extractLocal}
@@ -94,6 +97,9 @@
 \alias{\%$\%}
 \alias{\%>\%}
 \alias{\%T>\%}
+\alias{set_colnames}
+\alias{set_names}
+\alias{set_rownames}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -104,15 +110,17 @@ below to see their documentation.
 \describe{
   \item{Biobase}{\code{\link[Biobase]{sampleNames}}, \code{\link[Biobase]{sampleNames<-}}}
 
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{combine}}, \code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{counts<-}}, \code{\link[BiocGenerics]{organism}}, \code{\link[BiocGenerics]{plotPCA}}}
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{combine}}, \code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{counts<-}}, \code{\link[BiocGenerics]{organism}}}
 
-  \item{bioverbs}{\code{\link[bioverbs]{aggregateRows}}, \code{\link[bioverbs]{aggregateCols}}, \code{\link[bioverbs]{aggregateCellsToSamples}}, \code{\link[bioverbs]{autopadZeros}}, \code{\link[bioverbs]{cell2sample}}, \code{\link[bioverbs]{collapseToString}}, \code{\link[bioverbs]{convertGenesToSymbols}}, \code{\link[bioverbs]{convertSymbolsToGenes}}, \code{\link[bioverbs]{convertSampleIDsToNames}}, \code{\link[bioverbs]{convertTranscriptsToGenes}}, \code{\link[bioverbs]{geneNames}}, \code{\link[bioverbs]{geometricMean}}, \code{\link[bioverbs]{headtail}}, \code{\link[bioverbs]{humanize}}, \code{\link[bioverbs]{interestingGroups}}, \code{\link[bioverbs]{interestingGroups<-}}, \code{\link[bioverbs]{foldChangeToLogRatio}}, \code{\link[bioverbs]{logRatioToFoldChange}}, \code{\link[bioverbs]{mapGenesToRownames}}, \code{\link[bioverbs]{mapGenesToIDs}}, \code{\link[bioverbs]{mapGenesToSymbols}}, \code{\link[bioverbs]{markdown}}, \code{\link[bioverbs]{meltCounts}}, \code{\link[bioverbs]{metrics}}, \code{\link[bioverbs]{metricsPerSample}}, \code{\link[bioverbs]{plotCorrelationHeatmap}}, \code{\link[bioverbs]{plotCounts}}, \code{\link[bioverbs]{plotCountsPerBiotype}}, \code{\link[bioverbs]{plotCountsPerBroadClass}}, \code{\link[bioverbs]{plotCountsPerGene}}, \code{\link[bioverbs]{plotGenderMarkers}}, \code{\link[bioverbs]{plotGenesDetected}}, \code{\link[bioverbs]{plotHeatmap}}, \code{\link[bioverbs]{plotQC}}, \code{\link[bioverbs]{plotQuantileHeatmap}}, \code{\link[bioverbs]{plotTotalCounts}}, \code{\link[bioverbs]{plotZerosVsDepth}}, \code{\link[bioverbs]{plotDEGHeatmap}}, \code{\link[bioverbs]{plotDEGPCA}}, \code{\link[bioverbs]{plotGene}}, \code{\link[bioverbs]{removeNA}}, \code{\link[bioverbs]{sampleData}}, \code{\link[bioverbs]{sampleData<-}}, \code{\link[bioverbs]{sanitizeNA}}, \code{\link[bioverbs]{sanitizePercent}}, \code{\link[bioverbs]{selectSamples}}, \code{\link[bioverbs]{stripTranscriptVersions}}, \code{\link[bioverbs]{subsetPerSample}}, \code{\link[bioverbs]{topCellsPerSample}}, \code{\link[bioverbs]{uniteInterestingGroups}}, \code{\link[bioverbs]{zerosVsDepth}}}
+  \item{bioverbs}{\code{\link[bioverbs]{aggregateRows}}, \code{\link[bioverbs]{aggregateCols}}, \code{\link[bioverbs]{aggregateCellsToSamples}}, \code{\link[bioverbs]{autopadZeros}}, \code{\link[bioverbs]{cell2sample}}, \code{\link[bioverbs]{collapseToString}}, \code{\link[bioverbs]{convertGenesToSymbols}}, \code{\link[bioverbs]{convertSymbolsToGenes}}, \code{\link[bioverbs]{convertSampleIDsToNames}}, \code{\link[bioverbs]{convertTranscriptsToGenes}}, \code{\link[bioverbs]{geneNames}}, \code{\link[bioverbs]{geometricMean}}, \code{\link[bioverbs]{headtail}}, \code{\link[bioverbs]{humanize}}, \code{\link[bioverbs]{interestingGroups}}, \code{\link[bioverbs]{interestingGroups<-}}, \code{\link[bioverbs]{foldChangeToLogRatio}}, \code{\link[bioverbs]{logRatioToFoldChange}}, \code{\link[bioverbs]{mapGenesToRownames}}, \code{\link[bioverbs]{mapGenesToIDs}}, \code{\link[bioverbs]{mapGenesToSymbols}}, \code{\link[bioverbs]{markdown}}, \code{\link[bioverbs]{meltCounts}}, \code{\link[bioverbs]{metrics}}, \code{\link[bioverbs]{metricsPerSample}}, \code{\link[bioverbs]{plotDEGHeatmap}}, \code{\link[bioverbs]{plotDEGPCA}}, \code{\link[bioverbs]{plotGene}}, \code{\link[bioverbs]{sampleData}}, \code{\link[bioverbs]{sampleData<-}}, \code{\link[bioverbs]{sanitizePercent}}, \code{\link[bioverbs]{selectSamples}}, \code{\link[bioverbs]{stripTranscriptVersions}}, \code{\link[bioverbs]{subsetPerSample}}, \code{\link[bioverbs]{topCellsPerSample}}, \code{\link[bioverbs]{uniteInterestingGroups}}, \code{\link[bioverbs]{zerosVsDepth}}}
 
-  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{atomize}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{tar}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{zip}}}
+  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{atomize}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{removeNA}}, \code{\link[brio]{saveData}}, \code{\link[brio]{sanitizeNA}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{tar}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{zip}}}
+
+  \item{freerange}{\code{\link[freerange]{annotable}}, \code{\link[freerange]{convertUCSCBuildToEnsembl}}, \code{\link[freerange]{detectOrganism}}, \code{\link[freerange]{emptyRanges}}, \code{\link[freerange]{makeGRangesFromEnsDb}}, \code{\link[freerange]{makeGRangesFromEnsembl}}, \code{\link[freerange]{makeGRangesFromGFF}}, \code{\link[freerange]{makeGRangesFromGTF}}}
 
   \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{bapply}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{hasRownames}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{methods}{\code{\link[methods]{show}}}
 
@@ -120,7 +128,7 @@ below to see their documentation.
 
   \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
-  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{tibble}}}
 
   \item{transformer}{\code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{as.DataFrame}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}}
 }}

@@ -13,7 +13,7 @@
 #'       Return 1:many in long format.
 #'
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidtest")
 #' x <- Ensembl2Entrez(rse)
 #' print(x)
 NULL

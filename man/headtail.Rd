@@ -64,7 +64,7 @@ objects.
 }}
 
 \examples{
-data(rse)
+data(rse, package = "acidtest")
 
 ## data.frame ====
 headtail(datasets::mtcars, ascii = TRUE)

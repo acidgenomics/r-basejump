@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.0</span>
       </span>
     </div>
 
@@ -139,8 +139,11 @@ IDs (e.g. <code>"hg38"</code>).</p></td>
     <tr>
       <th>release</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
-Ensembl release version (e.g. <code>90</code>). If set <code>NULL</code>, defaults to the most
-recent release available.</p></td>
+Ensembl release version (e.g. <code>90</code>). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.</p></td>
     </tr>
     <tr>
       <th>object</th>
@@ -162,10 +165,6 @@ File path.</p></td>
     
     <p>Remote URLs and compressed files are supported.</p>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code>makeGRanges</code>.</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## makeTx2GeneFromEnsembl ====</span>
@@ -176,97 +175,19 @@ File path.</p></td>
 #&gt; <span class='message'>  &gt; edb &lt;- ah[["AH64923"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
 #&gt; <span class='message'>  - Genome Build: GRCh38</span>
 #&gt; <span class='message'>  - Ensembl Release: 94</span>
-#&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, seqnames, transcriptBiotype</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='output co'>#&gt; <span class='message'>14 invalid names: LRG_321t1-1, LRG_321t1-2, LRG_321t2-1, LRG_321t2-2, LRG_321t3-1, LRG_321t3-2, LRG_321t4-1, LRG_321t4-2, LRG_321t5-1, LRG_321t5-2, LRG_321t6-1, LRG_321t6-2, LRG_321t7-1, LRG_321t7-2</span></div><div class='output co'>#&gt; <span class='message'>228432 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 228432 rows and 2 columns
-#&gt;                    transcriptID          geneID
-#&gt;                     &lt;character&gt;     &lt;character&gt;
-#&gt; ENST00000000233 ENST00000000233 ENSG00000004059
-#&gt; ENST00000000412 ENST00000000412 ENSG00000003056
-#&gt; ENST00000000442 ENST00000000442 ENSG00000173153
-#&gt; ENST00000001008 ENST00000001008 ENSG00000004478
-#&gt; ENST00000001146 ENST00000001146 ENSG00000003137
-#&gt; ...                         ...             ...
-#&gt; LRG_998t1             LRG_998t1         LRG_998
-#&gt; LRG_998t2             LRG_998t2         LRG_998
-#&gt; LRG_999t1             LRG_999t1         LRG_999
-#&gt; LRG_999t2             LRG_999t2         LRG_999
-#&gt; LRG_99t1               LRG_99t1          LRG_99</div><div class='input'>
+#&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list(structure("DataFrame", package = "S4Vectors")), new("nonstandardGenericFunction",     .Data = function (object, ...)     {        standardGeneric("sanitizeNA")    }, generic = structure("sanitizeNA", package = "bioverbs"),     package = "bioverbs", group = list(), valueClass = character(0),     signature = "object", default = NULL, skeleton = (function (object,         ...)     stop("invalid call in method dispatch to 'sanitizeNA' (no default method)",         domain = NA))(object, ...)), &lt;environment&gt;): unable to find an inherited method for function 'sanitizeNA' for signature '"DataFrame"'</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div><div class='input'>
 <span class='co'>## makeTx2GeneFromEnsDb ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
 #&gt; <span class='message'>  - Genome Build: GRCh37</span>
 #&gt; <span class='message'>  - Ensembl Release: 75</span>
-#&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, seqnames, transcriptBiotype</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='output co'>#&gt; <span class='message'>215647 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 215647 rows and 2 columns
-#&gt;                    transcriptID          geneID
-#&gt;                     &lt;character&gt;     &lt;character&gt;
-#&gt; ENST00000000233 ENST00000000233 ENSG00000004059
-#&gt; ENST00000000412 ENST00000000412 ENSG00000003056
-#&gt; ENST00000000442 ENST00000000442 ENSG00000173153
-#&gt; ENST00000001008 ENST00000001008 ENSG00000004478
-#&gt; ENST00000001146 ENST00000001146 ENSG00000003137
-#&gt; ...                         ...             ...
-#&gt; LRG_94t1               LRG_94t1          LRG_94
-#&gt; LRG_96t1               LRG_96t1          LRG_96
-#&gt; LRG_97t1               LRG_97t1          LRG_97
-#&gt; LRG_98t1               LRG_98t1          LRG_98
-#&gt; LRG_99t1               LRG_99t1          LRG_99</div><div class='input'>
+#&gt; <span class='message'>  - Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list(structure("DataFrame", package = "S4Vectors")), new("nonstandardGenericFunction",     .Data = function (object, ...)     {        standardGeneric("sanitizeNA")    }, generic = structure("sanitizeNA", package = "bioverbs"),     package = "bioverbs", group = list(), valueClass = character(0),     signature = "object", default = NULL, skeleton = (function (object,         ...)     stop("invalid call in method dispatch to 'sanitizeNA' (no default method)",         domain = NA))(object, ...)), &lt;environment&gt;): unable to find an inherited method for function 'sanitizeNA' for signature '"DataFrame"'</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div><div class='input'>
 <span class='co'>## makeTx2GeneFromGFF ====</span>
 <span class='co'>## GTF</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing example.gtf using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>example.gtf does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, seqnames, transcriptBiotype</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='output co'>#&gt; <span class='message'>20 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 20 rows and 2 columns
-#&gt;                          transcriptID
-#&gt;                           &lt;character&gt;
-#&gt; ENSMUST00000070533 ENSMUST00000070533
-#&gt; ENSMUST00000082908 ENSMUST00000082908
-#&gt; ENSMUST00000157708 ENSMUST00000157708
-#&gt; ENSMUST00000159265 ENSMUST00000159265
-#&gt; ENSMUST00000161581 ENSMUST00000161581
-#&gt; ...                               ...
-#&gt; ENSMUST00000194454 ENSMUST00000194454
-#&gt; ENSMUST00000194643 ENSMUST00000194643
-#&gt; ENSMUST00000195166 ENSMUST00000195166
-#&gt; ENSMUST00000195335 ENSMUST00000195335
-#&gt; ENSMUST00000208660 ENSMUST00000208660
-#&gt;                                geneID
-#&gt;                           &lt;character&gt;
-#&gt; ENSMUST00000070533 ENSMUSG00000051951
-#&gt; ENSMUST00000082908 ENSMUSG00000064842
-#&gt; ENSMUST00000157708 ENSMUSG00000088333
-#&gt; ENSMUST00000159265 ENSMUSG00000051951
-#&gt; ENSMUST00000161581 ENSMUSG00000089699
-#&gt; ...                               ...
-#&gt; ENSMUST00000194454 ENSMUSG00000102592
-#&gt; ENSMUST00000194643 ENSMUSG00000102343
-#&gt; ENSMUST00000195166 ENSMUSG00000103161
-#&gt; ENSMUST00000195335 ENSMUSG00000103377
-#&gt; ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"example.gtf"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing example.gtf using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>example.gtf does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list(structure("DataFrame", package = "S4Vectors")), new("nonstandardGenericFunction",     .Data = function (object, ...)     {        standardGeneric("removeNA")    }, generic = structure("removeNA", package = "bioverbs"),     package = "bioverbs", group = list(), valueClass = character(0),     signature = "object", default = NULL, skeleton = (function (object,         ...)     stop("invalid call in method dispatch to 'removeNA' (no default method)",         domain = NA))(object, ...)), &lt;environment&gt;): unable to find an inherited method for function 'removeNA' for signature '"DataFrame"'</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div><div class='input'>
 <span class='co'>## GFF3</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gff3"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing example.gff3 using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>example.gff3 does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations into transcript-level object.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, seqnames, transcriptBiotype</span></div><div class='output co'>#&gt; <span class='message'>Arranging by transcriptID.</span></div><div class='output co'>#&gt; <span class='message'>26 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 26 rows and 2 columns
-#&gt;                          transcriptID
-#&gt;                           &lt;character&gt;
-#&gt; ENSMUST00000027032 ENSMUST00000027032
-#&gt; ENSMUST00000027035 ENSMUST00000027035
-#&gt; ENSMUST00000070533 ENSMUST00000070533
-#&gt; ENSMUST00000082908 ENSMUST00000082908
-#&gt; ENSMUST00000157708 ENSMUST00000157708
-#&gt; ...                               ...
-#&gt; ENSMUST00000195166 ENSMUST00000195166
-#&gt; ENSMUST00000195335 ENSMUST00000195335
-#&gt; ENSMUST00000195384 ENSMUST00000195384
-#&gt; ENSMUST00000208660 ENSMUST00000208660
-#&gt; ENSMUST00000208793 ENSMUST00000208793
-#&gt;                                geneID
-#&gt;                           &lt;character&gt;
-#&gt; ENSMUST00000027032 ENSMUSG00000025900
-#&gt; ENSMUST00000027035 ENSMUSG00000025902
-#&gt; ENSMUST00000070533 ENSMUSG00000051951
-#&gt; ENSMUST00000082908 ENSMUSG00000064842
-#&gt; ENSMUST00000157708 ENSMUSG00000088333
-#&gt; ...                               ...
-#&gt; ENSMUST00000195166 ENSMUSG00000103161
-#&gt; ENSMUST00000195335 ENSMUSG00000103377
-#&gt; ENSMUST00000195384 ENSMUSG00000102948
-#&gt; ENSMUST00000208660 ENSMUSG00000025900
-#&gt; ENSMUST00000208793 ENSMUSG00000025900</div></pre>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"example.gff3"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing example.gff3 using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>example.gff3 does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list(structure("DataFrame", package = "S4Vectors")), new("nonstandardGenericFunction",     .Data = function (object, ...)     {        standardGeneric("removeNA")    }, generic = structure("removeNA", package = "bioverbs"),     package = "bioverbs", group = list(), valueClass = character(0),     signature = "object", default = NULL, skeleton = (function (object,         ...)     stop("invalid call in method dispatch to 'removeNA' (no default method)",         domain = NA))(object, ...)), &lt;environment&gt;): unable to find an inherited method for function 'removeNA' for signature '"DataFrame"'</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -276,8 +197,6 @@ File path.</p></td>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#gff-gtf-file">GFF/GTF file</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

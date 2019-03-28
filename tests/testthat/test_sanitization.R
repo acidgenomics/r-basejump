@@ -1,6 +1,6 @@
 context("Sanitization")
 
-data(rse, envir = environment())
+data(rse, package = "acidtest", envir = environment())
 
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 mpgString <- "18.1, 18.7, 21, 21.4, 22.8"

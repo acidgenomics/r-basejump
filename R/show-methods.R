@@ -2,7 +2,7 @@
 #' @name show
 #' @inherit methods::show
 #' @examples
-#' data(rse)
+#' data(rse, package = "acidtest")
 #' options(basejump.test = TRUE)
 #'
 #' ## EggNOG ====

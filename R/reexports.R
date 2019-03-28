@@ -14,13 +14,22 @@ magrittr::`%>%`
 
 # Tee pipe
 #' @importFrom magrittr %T>%
+#' @export
 magrittr::`%T>%`
 
-
-
-#' @importFrom tibble as_tibble
+#' @importFrom magrittr set_colnames
 #' @export
-tibble::as_tibble
+magrittr::set_colnames
+
+#' @importFrom magrittr set_names
+#' @export
+magrittr::set_names
+
+#' @importFrom magrittr set_rownames
+#' @export
+magrittr::set_rownames
+
+
 
 #' @importFrom tibble tibble
 #' @export

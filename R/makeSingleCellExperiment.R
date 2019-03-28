@@ -1,14 +1,13 @@
 #' Make a SingleCellExperiment object
 #'
-#' @inherit makeSummarizedExperiment
 #' @export
-#'
+#' @inherit makeSummarizedExperiment
 #' @inheritParams params
 #'
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' data(sce)
+#' data(sce, package = "acidtest")
 #' object <- sce
 #' x <- makeSingleCellExperiment(
 #'     assays = SummarizedExperiment::assays(object),

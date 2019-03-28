@@ -1,67 +1,8 @@
-data(mat, rse, envir = environment())
-
-Rle <- structure("Rle", package = "S4Vectors")  # nolint
-organism <- "Homo sapiens"
-release <- 87L
-seqnames <- GenomeInfoDb::seqnames
+data(mat, rse, package = "acidtest", envir = environment())
 
 
 
-# General ======================================================================
-context("Annotations : General")
-
-with_parameters_test_that(
-    "convertUCSCBuildToEnsembl", {
-        expect_identical(
-            object = unname(convertUCSCBuildToEnsembl(object)),
-            expected = expected
-        )
-    },
-    object = list(
-        "hg19",
-        "hg38",
-        "mm10"
-    ),
-    expected = list(
-        "GRCh37",
-        "GRCh38",
-        "GRCm38"
-    )
-)
-
-test_that("convertUCSCBuildToEnsembl : Failure", {
-    expect_error(
-        object = convertUCSCBuildToEnsembl("XXX"),
-        regexp = "Failed to match UCSC"
-    )
-})
-
-test_that("emptyRanges", {
-    object <- emptyRanges("XXX")
-    expect_identical(
-        object = levels(seqnames(object)),
-        expected = "unknown"
-    )
-    expect_identical(
-        object = IRanges::ranges(object),
-        expected = IRanges::IRanges(
-            start = 1L,
-            end = 100L,
-            names = "XXX"
-        )
-    )
-
-    # mcolsNames argument.
-    object <- emptyRanges(
-        "EGFP",
-        seqname = "transgene",
-        mcolsNames = c("geneID", "geneName")
-    )
-    expect_identical(
-        object = names(mcols(object)),
-        expected = c("geneID", "geneName")
-    )
-})
+context("Transcript sanitization")
 
 test_that("stripTranscriptVersions : character", {
     # Return unmodified if not Ensembl transcript (ENS*T).
@@ -105,8 +46,7 @@ test_that("stripTranscriptVersions : matrix", {
 
 
 
-# Organism Matching ============================================================
-context("Annotations : Organism Matching")
+context("Organism matching")
 
 with_parameters_test_that(
     "organism", {
@@ -123,287 +63,15 @@ with_parameters_test_that(
 
 
 
-# AnnotationHub ================================================================
-context("Annotations : AnnotationHub")
+context("Identifier remapping")
 
-test_that("makeGRangesFromEnsembl : genes", {
-    object <- makeGRangesFromEnsembl(
-        organism = organism,
-        level = "genes",
-        release = release
-    )
-    expect_s4_class(object, "GRanges")
-
-    expect_identical(length(object), 63970L)
-    expect_identical(
-        object = head(names(object), 3L),
-        expected = c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
-    )
-
-    # R 3.4.1/BioC 3.6 is returning `entrezID` column as `AsIs` class intead of
-    # `list` in the `mcols()`.
-    # https://www.bioconductor.org/packages/3.6/bioc/html/GenomicRanges.html
-    if (
-        packageVersion("GenomicRanges") < "1.31" &&
-        is(mcols(object)[["entrezID"]], "AsIs")
-    ) {
-        entrezID <- "AsIs"
-    } else {
-        entrezID <- "list"
-    }
-    expect_identical(
-        object = lapply(mcols(object), class),
-        expected = list(
-            broadClass = Rle,
-            description = Rle,
-            entrezID = entrezID,
-            geneBiotype = Rle,
-            geneID = Rle,
-            geneName = Rle,
-            seqCoordSystem = Rle
-        )
-    )
-})
-
-test_that("makeGRangesFromEnsembl : transcripts", {
-    object <- makeGRangesFromEnsembl(
-        organism = organism,
-        level = "transcripts",
-        release = release
-    )
-    expect_s4_class(object, "GRanges")
-
-    expect_identical(length(object), 216741L)
-    expect_identical(
-        object = head(names(object), 3L),
-        expected = c("ENST00000000233", "ENST00000000412", "ENST00000000442")
-    )
-
-    if (
-        packageVersion("GenomicRanges") < "1.31" &&
-        is(mcols(object)[["entrezID"]], "AsIs")
-    ) {
-        entrezID <- "AsIs"
-    } else {
-        entrezID <- "list"
-    }
-    expect_identical(
-        object = lapply(mcols(object), class),
-        expected = list(
-            broadClass = Rle,
-            description = Rle,
-            entrezID = entrezID,
-            geneBiotype = Rle,
-            geneID = Rle,
-            geneName = Rle,
-            seqCoordSystem = Rle,
-            transcriptBiotype = Rle,
-            transcriptCdsSeqEnd = Rle,
-            transcriptCdsSeqStart = Rle,
-            transcriptID = Rle,
-            transcriptName = Rle,
-            transcriptSupportLevel = Rle
-        )
-    )
-})
-
-# Conditionally test if optional EnsDb.Hsapiens.v75 package is installed.
-if ("EnsDb.Hsapiens.v75" %in% rownames(installed.packages())) {
-    test_that("makeGRangesFromEnsembl : GRCh37", {
-        # Genes
-        object <- makeGRangesFromEnsembl(
-            organism = "Homo sapiens",
-            level = "genes",
-            genomeBuild = "GRCh37"
-        )
-        expect_is(object, "GRanges")
-        expect_identical(length(object), 64102L)
-        expect_identical(head(names(object), 1L), "ENSG00000000003")
-
-        # Transcripts
-        object <- makeGRangesFromEnsembl(
-            organism = "Homo sapiens",
-            level = "transcripts",
-            genomeBuild = "GRCh37"
-        )
-        expect_is(object, "GRanges")
-        expect_identical(length(object), 215647L)
-        expect_identical(head(names(object), 1L), "ENST00000000233")
-    })
-}
-
-test_that("makeGRangesFromEnsembl : Invalid parameters", {
-    expect_error(
-        object = makeGRangesFromEnsembl("Homo sapiens", release = 86L),
-        regexp = ">= 87"
-    )
-    expect_error(
-        object = makeGRangesFromEnsembl(organism = "AAA", genomeBuild = "BBB"),
-        regexp = "No ID matched on AnnotationHub"
-    )
-    expect_error(
-        object = makeGRangesFromEnsembl(c("Homo sapiens", "Mus musculus")),
-        regexp = "isString"
-    )
-    expect_error(
-        object = makeGRangesFromEnsembl("Homo sapiens", level = "XXX"),
-        regexp = "'arg' should be one of \"genes\", \"transcripts\""
-    )
-})
-
-test_that("annotable", {
-    object <- annotable(organism, release = release)
-    expect_is(object, "tbl_df")
-    expect_identical(dim(object), c(63970L, 12L))
-    expect_identical(object[["geneID"]][[1L]], "ENSG00000000003")
-})
-
+# These steps are slow. Consider using cached objects instead.
+organism <- "Homo sapiens"
+release <- 87L
 gene2symbol <-
     makeGene2SymbolFromEnsembl(organism = organism, release = release)
-
-test_that("makeGene2SymbolFromEnsembl", {
-    expect_is(gene2symbol, "Gene2Symbol")
-    expect_identical(nrow(gene2symbol), 63970L)
-})
-
-tx2gene <- makeTx2GeneFromEnsembl(organism = organism, release = release)
-
-test_that("makeTx2GeneFromEnsembl", {
-    expect_is(tx2gene, "Tx2Gene")
-    expect_identical(nrow(tx2gene), 216741L)
-})
-
-test_that("Ensembl2Entrez", {
-    hs <- makeGRangesFromEnsembl(organism = organism, release = release)
-    object <- Ensembl2Entrez(hs)
-    expect_s4_class(object, "Ensembl2Entrez")
-    expect_identical(nrow(object), 63970L)
-})
-
-
-
-# GTF/GFF ======================================================================
-context("Annotations : GTF/GFF")
-
-with_parameters_test_that(
-    "makeGene2SymbolFromGFF", {
-        expect_is(makeGene2SymbolFromGFF(file), "Gene2Symbol")
-    },
-    file = c("example.gtf", "example.gff3")
-)
-
-test_that("makeGRangesFromGFF : Minimal GTF", {
-    # Genes
-    object <- makeGRangesFromGFF("example.gtf", level = "genes")
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 17L)
-    expect_identical(names(object)[[1L]], "ENSMUSG00000025900")
-    expect_identical(
-        object = lapply(mcols(object), class),
-        expected = list(
-            broadClass = Rle,
-            geneBiotype = Rle,
-            geneID = Rle,
-            geneName = Rle,
-            geneSource = Rle,
-            geneVersion = Rle,
-            source = Rle,
-            type = Rle
-        )
-    )
-
-    # Transcripts
-    object <- makeGRangesFromGFF("example.gtf", level = "transcripts")
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 20L)
-    expect_identical(names(object)[[1L]], "ENSMUST00000070533")
-    expect_identical(
-        object = lapply(mcols(object), class),
-        expected = list(
-            broadClass = Rle,
-            ccdsID = Rle,
-            geneBiotype = Rle,
-            geneID = Rle,
-            geneName = Rle,
-            geneSource = Rle,
-            geneVersion = Rle,
-            source = Rle,
-            tag = Rle,
-            transcriptBiotype = Rle,
-            transcriptID = Rle,
-            transcriptName = Rle,
-            transcriptSource = Rle,
-            transcriptSupportLevel = Rle,
-            transcriptVersion = Rle,
-            type = Rle
-        )
-    )
-})
-
-test_that("makeGRangesFromGFF : Minimal GFF3", {
-    # Genes
-    object <- makeGRangesFromGFF("example.gff3", level = "genes")
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 20L)
-    expect_identical(names(object)[[1L]], "ENSMUSG00000025900")
-    expect_identical(
-        object = lapply(mcols(object), class),
-        expected = list(
-            broadClass = Rle,
-            description = Rle,
-            geneBiotype = Rle,
-            geneID = Rle,
-            geneName = Rle,
-            havanaGene = Rle,
-            havanaVersion = Rle,
-            logicName = Rle,
-            source = Rle,
-            type = Rle,
-            version = Rle
-        )
-    )
-
-    # Transcripts
-    object <- makeGRangesFromGFF("example.gff3", level = "transcripts")
-    expect_s4_class(object, "GRanges")
-    expect_identical(length(object), 26L)
-    expect_identical(names(object)[[1L]], "ENSMUST00000027032")
-    expect_identical(
-        object = lapply(mcols(object), class),
-        expected = list(
-            broadClass = Rle,
-            ccdsID = Rle,
-            description = Rle,
-            geneBiotype = Rle,
-            geneID = Rle,
-            geneName = Rle,
-            havanaGene = Rle,
-            havanaTranscript = Rle,
-            havanaVersion = Rle,
-            logicName = Rle,
-            source = Rle,
-            tag = Rle,
-            transcriptBiotype = Rle,
-            transcriptID = Rle,
-            transcriptName = Rle,
-            transcriptSupportLevel = Rle,
-            type = Rle,
-            version = Rle
-        )
-    )
-})
-
-with_parameters_test_that(
-    "makeTx2GeneFromGFF", {
-        expect_is(makeTx2GeneFromGFF(file), "Tx2Gene")
-    },
-    file = c("example.gtf", "example.gff3")
-)
-
-
-
-# Remapping ====================================================================
-context("Annotations : Remapping")
+tx2gene <-
+    makeTx2GeneFromEnsembl(organism = organism, release = release)
 
 test_that("convertGenesToSymbols : character", {
     expect_identical(
@@ -437,8 +105,8 @@ test_that("convertGenesToSymbols : matrix", {
     )
 })
 
+# Specify organism (to handle FASTA spike-ins (e.g. EGFP).
 test_that("convertGenesToSymbols : FASTA spike-in support", {
-    # Specify organism (to handle FASTA spike-ins (e.g. EGFP).
     expect_identical(
         object = suppressWarnings(
             convertGenesToSymbols(
@@ -540,8 +208,7 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 
 
 
-# Databases ====================================================================
-context("Annotations : Databases")
+context("Annotation databases")
 
 test_that("EggNOG", {
     object <- EggNOG()

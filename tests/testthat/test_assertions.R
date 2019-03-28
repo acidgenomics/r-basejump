@@ -1,6 +1,6 @@
 context("Assertions")
 
-data(rse, envir = environment())
+data(rse, package = "acidtest", envir = environment())
 
 gene2symbol <- Gene2Symbol(
     object = DataFrame(
