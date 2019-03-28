@@ -60,8 +60,7 @@ Count matrix. Normalized counts are recommended.}
 Counts axis label.}
 
 \item{dark}{\code{logical(1)}.
-Plot against a dark background using the \code{\link[basejump:theme_midnight]{basejump::theme_midnight()}}
-ggplot2 theme.}
+Plot against a dark background using the \code{theme_midnight()} ggplot2 theme.}
 
 \item{dimsUse}{\code{integer}.
 Vector of length 2 that denotes the columns from the reduced dimension
@@ -74,7 +73,7 @@ Directory path.}
 \item{direction}{\code{character(1)}.
 Plot "\code{both}", "\code{up}", or "\code{down}" directions.}
 
-\item{ensemblRelease}{\code{integer(1)}.
+\item{ensemblRelease, release}{\code{integer(1)}.
 Ensembl release version (e.g. \code{90}). We recommend setting this value if
 possible, for improved reproducibility. When left unset, the latest release
 available via AnnotationHub/ensembldb is used. Note that the latest version
