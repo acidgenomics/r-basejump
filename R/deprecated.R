@@ -610,29 +610,6 @@ assertIsTx2gene <- function(x) {
     )
 }
 
-#' @rdname defunct
-#' @usage NULL
-#' @export
-setMethod(
-    f = "plotCounts",
-    signature = signature("SingleCellExperiment"),
-    definition = function(object, ...) {
-        .Defunct(msg = "Use method defined in pointillism.")
-    }
-)
-
-#' @rdname deprecated
-#' @usage NULL
-#' @export
-setMethod(
-    f = "plotGene",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object, ...) {
-        .Deprecated("plotCounts")
-        plotCounts(object, ...)
-    }
-)
-
 
 
 # nolint end
