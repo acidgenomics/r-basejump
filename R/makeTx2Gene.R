@@ -1,8 +1,3 @@
-# FIXME Import freerange code.
-# @inheritParams freerange::makeGRangesFromEnsembl
-
-
-
 #' Make a Tx2Gene object
 #'
 #' @section GFF/GTF file:
@@ -48,10 +43,9 @@ makeTx2GeneFromEnsembl <-
         Tx2Gene(gr)
     }
 
-# FIXME Update this once freerange is added.
-# f <- formals(makeGRangesFromEnsembl)
-# f <- f[setdiff(names(f), c("level", "metadata", "..."))]
-# formals(makeTx2GeneFromEnsembl) <- f
+f <- formals(makeGRangesFromEnsembl)
+f <- f[setdiff(names(f), c("level", "metadata", "..."))]
+formals(makeTx2GeneFromEnsembl) <- f
 
 
 
