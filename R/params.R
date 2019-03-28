@@ -6,8 +6,6 @@
 #' @param alpha `numeric(1)`.
 #'   Adjusted P value ("alpha") cutoff. If left `NULL`, will use the cutoff
 #'   defined in the object.
-#' @param aspectRatio `integer(1)`.
-#'   Aspect ratio.
 #' @param assay `vector(1)`.
 #'   Name or index of count matrix slotted in
 #'   [`assays()`][SummarizedExperiment::assays]. When passing in a string, the
@@ -16,7 +14,7 @@
 #' @param assays `list`.
 #'   Count matrices, which must have matching dimensions. Counts can be passed
 #'   in as either a dense matrix (`matrix`) or sparse matrix (`sparseMatrix`).
-#' @param bpparam `bpparamClass`.
+#' @param BPPARAM `bpparamClass`.
 #'   BiocParallel parameter specifying the back-end to be used for computations.
 #'
 #'   We recommend using one of the following:
@@ -24,8 +22,6 @@
 #'   - [bpparam][BiocParallel::bpparam].
 #'   - [SerialParam][BiocParallel::SerialParam].
 #'   - [MulticoreParam][BiocParallel::MulticoreParam].
-#' @param censorSamples `character`.
-#'   Specify a subset of samples to censor.
 #' @param check `logical(1)`.
 #'   Perform assert checks.
 #' @param colData `DataFrame`.
