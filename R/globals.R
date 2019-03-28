@@ -36,28 +36,28 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 #' formalsList
 formalsList <- list(
     color.continuous = quote(
-        getOption("basejump.color.continuous", default = NULL)
+        getOption("acid.color.continuous", default = NULL)
     ),
     color.discrete = quote(
-        getOption("basejump.color.discrete", default = NULL)
+        getOption("acid.color.discrete", default = NULL)
     ),
     fill.continuous = quote(
-        getOption("basejump.fill.continuous", default = NULL)
+        getOption("acid.fill.continuous", default = NULL)
     ),
     fill.discrete = quote(
-        getOption("basejump.fill.discrete", default = NULL)
+        getOption("acid.fill.discrete", default = NULL)
     ),
     flip = quote(
-        getOption("basejump.flip", default = TRUE)
+        getOption("acid.flip", default = TRUE)
     ),
     label = quote(
-        getOption("basejump.label", default = FALSE)
+        getOption("acid.label", default = FALSE)
     ),
     legend = quote(
-        getOption("basejump.legend", default = TRUE)
+        getOption("acid.legend", default = TRUE)
     ),
     point.size = quote(
-        getOption("basejump.point.size", default = 3L)
+        getOption("acid.point.size", default = 3L)
     )
 )
 
