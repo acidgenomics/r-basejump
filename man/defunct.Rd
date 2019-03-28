@@ -2,57 +2,76 @@
 % Please edit documentation in R/deprecated.R
 \name{defunct}
 \alias{defunct}
-\alias{ensembl}
-\alias{gene2symbolFromGFF}
-\alias{gene2symbolFromGTF}
-\alias{sanitizeAnnotable}
-\alias{tx2geneFromGFF}
-\alias{tx2geneFromGTF}
-\alias{multiassignAsNewEnvir}
-\alias{geomean}
-\alias{parseGFFAttributes}
-\alias{dynamicPlotlist}
-\alias{midnightTheme}
-\alias{paperwhiteTheme}
-\alias{synonyms}
+\alias{aggregateFeatures}
+\alias{aggregateReplicates}
+\alias{aggregateSamples}
 \alias{broadClass}
+\alias{checkClasses}
+\alias{eggnog}
+\alias{ensembl2entrez}
+\alias{gene2symbol}
+\alias{grepString}
+\alias{hgnc2gene}
+\alias{hgnc2ensembl}
+\alias{makeGene2symbolFromEnsembl}
+\alias{makeGene2symbolFromGFF}
+\alias{makeGene2symbolFromGTF}
+\alias{makeTx2geneFromEnsembl}
+\alias{makeTx2geneFromGFF}
+\alias{makeTx2geneFromGTF}
+\alias{mgi2gene}
+\alias{mgi2ensembl}
+\alias{panther}
 \alias{setArgsToDoCall}
+\alias{tx2gene}
 \title{Defunct functions}
 \usage{
-ensembl(...)
+aggregateFeatures(...)
 
-gene2symbolFromGFF(...)
+aggregateReplicates(...)
 
-gene2symbolFromGTF(...)
+aggregateSamples(...)
 
-sanitizeAnnotable(...)
+broadClass(...)
 
-tx2geneFromGFF(...)
+checkClasses(...)
 
-tx2geneFromGTF(...)
+eggnog(...)
 
-multiassignAsNewEnvir(...)
+ensembl2entrez(...)
 
-geomean(...)
+gene2symbol(...)
 
-parseGFFAttributes(...)
+grepString(...)
 
-dynamicPlotlist(...)
+hgnc2gene(...)
 
-midnightTheme(...)
+hgnc2ensembl(...)
 
-paperwhiteTheme(...)
+makeGene2symbolFromEnsembl(...)
 
-synonyms(...)
+makeGene2symbolFromGFF(...)
 
-broadClass(object, ...)
+makeGene2symbolFromGTF(...)
+
+makeTx2geneFromEnsembl(...)
+
+makeTx2geneFromGFF(...)
+
+makeTx2geneFromGTF(...)
+
+mgi2gene(...)
+
+mgi2ensembl(...)
+
+panther(...)
 
 setArgsToDoCall(...)
+
+tx2gene(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
-
-\item{object}{Object.}
 }
 \value{
 \code{.Defunct}.
