@@ -402,6 +402,8 @@ tx2gene <- function(...) {
 
 # v0.8.5 =======================================================================
 #' @rdname deprecated
+#' @param plotlist `list`.
+#'   List containing `ggplot` objects.
 #' @export
 markdownPlotlist <- function(plotlist, ...) {
     .Deprecated("markdownPlots")

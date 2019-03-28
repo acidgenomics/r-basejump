@@ -6,19 +6,12 @@
 \alias{relevelColData}
 \title{Relevel row or column data}
 \usage{
-relevelRowRanges(rowRanges)
+relevelRowRanges(object)
 
-relevelColData(colData)
+relevelColData(object)
 }
 \arguments{
-\item{rowRanges}{\code{GRanges}.
-Genomic ranges (e.g. genome annotations). Metadata describing the assay
-rows.}
-
-\item{colData}{\code{DataFrame}.
-Metadata describing the assay columns. For bulk RNA-seq, this data
-describes the samples. For single-cell RNA-seq, this data describes the
-cells.}
+\item{object}{Object.}
 }
 \value{
 Modified object.
