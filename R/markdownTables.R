@@ -1,3 +1,8 @@
+# FIXME Not importing ggplot2, so need a different example dataset here.
+# ggplot2::mpg
+
+
+
 #' Multiple Markdown tables
 #'
 #' Knit multiple tables in a single R Markdown chunk.
