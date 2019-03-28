@@ -3,9 +3,6 @@
 #' @name params
 #' @keywords internal
 #'
-#' @param alpha `numeric(1)`.
-#'   Adjusted P value ("alpha") cutoff. If left `NULL`, will use the cutoff
-#'   defined in the object.
 #' @param assay `vector(1)`.
 #'   Name or index of count matrix slotted in
 #'   [`assays()`][SummarizedExperiment::assays]. When passing in a string, the
@@ -14,8 +11,6 @@
 #' @param assays `list`.
 #'   Count matrices, which must have matching dimensions. Counts can be passed
 #'   in as either a dense matrix (`matrix`) or sparse matrix (`sparseMatrix`).
-#' @param check `logical(1)`.
-#'   Perform assert checks.
 #' @param colData `DataFrame`.
 #'   Metadata describing the assay columns. For bulk RNA-seq, this data
 #'   describes the samples. For single-cell RNA-seq, this data describes the
@@ -189,14 +184,6 @@
 #'   Plot subtitle.
 #' @param title `character(1)`.
 #'   Plot title.
-#' @param trans `character(1)`.
-#'   Name of the axis scale transformation to apply.
-#'
-#'   For more information:
-#'
-#'   ```
-#'   help(topic = "scale_x_continuous", package = "ggplot2")
-#'   ```
 #' @param transgeneNames `character`.
 #'   Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).
 #' @param trendline `logical(1)`.

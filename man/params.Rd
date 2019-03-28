@@ -4,10 +4,6 @@
 \alias{params}
 \title{Parameters}
 \arguments{
-\item{alpha}{\code{numeric(1)}.
-Adjusted P value ("alpha") cutoff. If left \code{NULL}, will use the cutoff
-defined in the object.}
-
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
 \code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
@@ -17,9 +13,6 @@ name must be defined in
 \item{assays}{\code{list}.
 Count matrices, which must have matching dimensions. Counts can be passed
 in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
-
-\item{check}{\code{logical(1)}.
-Perform assert checks.}
 
 \item{colData}{\code{DataFrame}.
 Metadata describing the assay columns. For bulk RNA-seq, this data
@@ -243,12 +236,6 @@ Plot subtitle.}
 
 \item{title}{\code{character(1)}.
 Plot title.}
-
-\item{trans}{\code{character(1)}.
-Name of the axis scale transformation to apply.
-
-For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
-}}
 
 \item{transgeneNames}{\code{character}.
 Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
