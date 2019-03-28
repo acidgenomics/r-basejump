@@ -246,9 +246,9 @@ PANTHER <- function(  # nolint
 
 
 
+# This step is CPU intensive, so optionally enable progress bar.
+# Alternatively, consider switching to BiocParallel bpparam usage here.
 .splitTerms <- function(x, progress = FALSE) {
-    # This step is CPU intensive, so optionally enable progress bar.
-    # Alternatively, consider switching to BiocParallel bpparam usage here.
     if (isTRUE(progress)) {
         message(deparse(substitute(x)))
         requireNamespace("pbapply", quietly = TRUE)

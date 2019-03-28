@@ -8,9 +8,6 @@
 Adjusted P value ("alpha") cutoff. If left \code{NULL}, will use the cutoff
 defined in the object.}
 
-\item{aspectRatio}{\code{integer(1)}.
-Aspect ratio.}
-
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
 \code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
@@ -21,7 +18,7 @@ name must be defined in
 Count matrices, which must have matching dimensions. Counts can be passed
 in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
 
-\item{bpparam}{\code{bpparamClass}.
+\item{BPPARAM}{\code{bpparamClass}.
 BiocParallel parameter specifying the back-end to be used for computations.
 
 We recommend using one of the following:
@@ -30,9 +27,6 @@ We recommend using one of the following:
 \item \link[BiocParallel:SerialParam]{SerialParam}.
 \item \link[BiocParallel:MulticoreParam]{MulticoreParam}.
 }}
-
-\item{censorSamples}{\code{character}.
-Specify a subset of samples to censor.}
 
 \item{check}{\code{logical(1)}.
 Perform assert checks.}
