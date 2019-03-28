@@ -57,7 +57,7 @@ to \code{colnames}.
 }}
 
 \examples{
-data(rse, sce, package = "acidData")
+data(rse, sce, package = "acidtest")
 
 ## SummarizedExperiment ====
 x <- metrics(rse)

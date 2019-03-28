@@ -1,6 +1,8 @@
+# FIXME This context label is too vague.
+
 context("Data")
 
-data(rse, sce, envir = environment())
+data(rse, sce, package = "acidtest", envir = environment())
 
 
 
@@ -84,6 +86,10 @@ test_that("interestingGroups : Assignment method", {
 
 
 # makeSummarizedExperiment =====================================================
+DataFrame <- S4Vectors::DataFrame
+GRanges <- GenomicRanges::GRanges
+IRanges <- IRanges::IRanges
+
 genes <- paste0("gene", seq_len(4L))
 samples <- paste0("sample", seq_len(4L))
 mat <- matrix(

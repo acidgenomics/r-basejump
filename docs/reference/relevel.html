@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.0</span>
       </span>
     </div>
 
@@ -115,25 +115,16 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>relevelRowRanges</span>(<span class='no'>rowRanges</span>)
+    <pre class="usage"><span class='fu'>relevelRowRanges</span>(<span class='no'>object</span>)
 
-<span class='fu'>relevelColData</span>(<span class='no'>colData</span>)</pre>
+<span class='fu'>relevelColData</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>rowRanges</th>
-      <td><p><code>GRanges</code>.
-Genomic ranges (e.g. genome annotations). Metadata describing the assay
-rows.</p></td>
-    </tr>
-    <tr>
-      <th>colData</th>
-      <td><p><code>DataFrame</code>.
-Metadata describing the assay columns. For bulk RNA-seq, this data
-describes the samples. For single-cell RNA-seq, this data describes the
-cells.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     
@@ -144,7 +135,7 @@ Factor levels will be readjusted (i.e. superfluous levels are dropped).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidData"</span>)
 
 <span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>rse</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevelRowRanges</span>(<span class='no'>rowRanges</span>)</div><div class='output co'>#&gt; <span class='message'>Releveling factors in rowRanges.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 500 ranges and 5 metadata columns"</div><div class='input'>

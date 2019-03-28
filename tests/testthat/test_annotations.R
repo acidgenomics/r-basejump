@@ -1,9 +1,8 @@
-data(mat, rse, envir = environment())
+data(mat, rse, package = "acidtest", envir = environment())
 
 
 
-# General ======================================================================
-context("Annotations : General")
+context("Transcript sanitization")
 
 test_that("stripTranscriptVersions : character", {
     # Return unmodified if not Ensembl transcript (ENS*T).
@@ -47,8 +46,7 @@ test_that("stripTranscriptVersions : matrix", {
 
 
 
-# Organism Matching ============================================================
-context("Annotations : Organism Matching")
+context("Organism matching")
 
 with_parameters_test_that(
     "organism", {
@@ -65,8 +63,15 @@ with_parameters_test_that(
 
 
 
-# Identifier remapping =========================================================
-context("Annotations : Identifier remapping")
+context("Identifier remapping")
+
+# These steps are slow. Consider using cached objects instead.
+organism <- "Homo sapiens"
+release <- 87L
+gene2symbol <-
+    makeGene2SymbolFromEnsembl(organism = organism, release = release)
+tx2gene <-
+    makeTx2GeneFromEnsembl(organism = organism, release = release)
 
 test_that("convertGenesToSymbols : character", {
     expect_identical(
@@ -100,8 +105,8 @@ test_that("convertGenesToSymbols : matrix", {
     )
 })
 
+# Specify organism (to handle FASTA spike-ins (e.g. EGFP).
 test_that("convertGenesToSymbols : FASTA spike-in support", {
-    # Specify organism (to handle FASTA spike-ins (e.g. EGFP).
     expect_identical(
         object = suppressWarnings(
             convertGenesToSymbols(
@@ -203,8 +208,7 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 
 
 
-# Databases ====================================================================
-context("Annotations : Databases")
+context("Annotation databases")
 
 test_that("EggNOG", {
     object <- EggNOG()

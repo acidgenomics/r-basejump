@@ -9,7 +9,7 @@
 #' @return `character`.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #'
 #' ## character ====
 #' autopadZeros(c("A1", "B10"))
@@ -115,7 +115,7 @@ autopadZeros.SummarizedExperiment <-  # nolint
         )
         # Ensure sample names, which can be defined in `colData` as `sampleName`
         # column, also get padded, if necessary. This improves downstream
-        # handling in functions that rely on this feature (e.g. ggplot2 code).
+        # handling in functions that rely on this feature.
         if ("sampleName" %in% colnames(colData(object))) {
             sampleNames(object) <- autopadZeros(sampleNames(object))
         }

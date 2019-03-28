@@ -1,16 +1,16 @@
 #' Metadata column names
 #'
+#' @export
 #' @inheritParams params
 #'
-#' @seealso
-#' - [S4Vectors::mcols()].
+#' @seealso [S4Vectors::mcols()].
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' mcolnames(rse)
 #'
 #' ## Asignment method.
-#' mcolnames(rse) <- snake(mcolnames(rse))
+#' mcolnames(rse) <- toupper(mcolnames(rse))
 #' mcolnames(rse)
 mcolnames <- function(object) {
     # Check that object class supports `mcols()`.
