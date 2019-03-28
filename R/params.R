@@ -15,8 +15,6 @@
 #'   Count matrix. Normalized counts are recommended.
 #' @param dir `character(1)`.
 #'   Directory path.
-#' @param direction `character(1)`.
-#'   Plot "`both`", "`up`", or "`down`" directions.
 #' @param ensemblRelease,release `integer(1)`.
 #'   Ensembl release version (e.g. `90`). We recommend setting this value if
 #'   possible, for improved reproducibility. When left unset, the latest release
@@ -44,12 +42,6 @@
 #'   Ensembl genome build assembly name (e.g. `"GRCh38"`). If set `NULL`,
 #'   defaults to the most recent build available. Note: don't pass in UCSC build
 #'   IDs (e.g. `"hg38"`).
-#' @param geom `character(1)`.
-#'   Plot type. Uses [`match.arg()`][base::match.arg] internally and defaults to
-#'   the first argument in the `character` vector.
-#' @param gffFile `character(1)`.
-#'   GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
-#'   (GFFv2) instead of a GFFv3 file if possible.
 #' @param headerLevel `integer(1)` (`1`-`7`).
 #'   Markdown header level.
 #' @param i
@@ -68,10 +60,6 @@
 #'   `sampleName`.
 #' @param level `character(1)`.
 #'   Return as genes or transcripts.
-#' @param min `numeric(1)`.
-#'   Recommended minimum value cutoff.
-#' @param minCounts `integer(1)`.
-#'   Minimum number of counts per gene in the count matrix.
 #' @param n `integer(1)`.
 #'   Number to include.
 #' @param ntop `integer(1)`.
@@ -81,10 +69,6 @@
 #'   Full Latin organism name (e.g. "`Homo sapiens`").
 #' @param progress `logical(1)`.
 #'   Show progress, using progress bars.
-#' @param reducedDim `character(1)`.
-#'   Name of reduced dimension matrix slotted in
-#'   [`reducedDims()`][SingleCellExperiment::reducedDims].
-#'   Includes TNSE, UMAP, PCA, for example.
 #' @param return `character(1)`.
 #'   Return type. Uses [`match.arg()`][base::match.arg] internally and defaults
 #'   to the first argument in the `character` vector.

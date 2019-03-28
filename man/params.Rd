@@ -19,9 +19,6 @@ Count matrix. Normalized counts are recommended.}
 \item{dir}{\code{character(1)}.
 Directory path.}
 
-\item{direction}{\code{character(1)}.
-Plot "\code{both}", "\code{up}", or "\code{down}" directions.}
-
 \item{ensemblRelease, release}{\code{integer(1)}.
 Ensembl release version (e.g. \code{90}). We recommend setting this value if
 possible, for improved reproducibility. When left unset, the latest release
@@ -56,14 +53,6 @@ Ensembl genome build assembly name (e.g. \code{"GRCh38"}). If set \code{NULL},
 defaults to the most recent build available. Note: don't pass in UCSC build
 IDs (e.g. \code{"hg38"}).}
 
-\item{geom}{\code{character(1)}.
-Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
-the first argument in the \code{character} vector.}
-
-\item{gffFile}{\code{character(1)}.
-GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
-(GFFv2) instead of a GFFv3 file if possible.}
-
 \item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}).
 Markdown header level.}
 
@@ -83,12 +72,6 @@ Groups of interest that define the samples. If left unset, defaults to
 \item{level}{\code{character(1)}.
 Return as genes or transcripts.}
 
-\item{min}{\code{numeric(1)}.
-Recommended minimum value cutoff.}
-
-\item{minCounts}{\code{integer(1)}.
-Minimum number of counts per gene in the count matrix.}
-
 \item{n}{\code{integer(1)}.
 Number to include.}
 
@@ -102,11 +85,6 @@ Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{progress}{\code{logical(1)}.
 Show progress, using progress bars.}
-
-\item{reducedDim}{\code{character(1)}.
-Name of reduced dimension matrix slotted in
-\code{\link[SingleCellExperiment:reducedDims]{reducedDims()}}.
-Includes TNSE, UMAP, PCA, for example.}
 
 \item{return}{\code{character(1)}.
 Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
