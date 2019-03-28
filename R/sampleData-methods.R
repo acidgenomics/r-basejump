@@ -62,7 +62,7 @@
 #'   processed using Seurat, scater, etc.
 #'
 #' @examples
-#' data(rse, sce, package = "acidData")
+#' data(rse, sce, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
 #' x <- rse

@@ -86,7 +86,7 @@ We're attempting to make this as strict as possible, requiring:
 
 \examples{
 library(SummarizedExperiment)
-data(rse, sce, package = "acidData")
+data(rse, sce, package = "acidtest")
 
 ## SummarizedExperiment ====
 x <- rse

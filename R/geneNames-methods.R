@@ -2,7 +2,7 @@
 #' @inherit bioverbs::geneNames
 #' @inheritParams params
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
 #' head(geneNames(rse))

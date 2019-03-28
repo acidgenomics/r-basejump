@@ -9,7 +9,7 @@
 #' @seealso `detectOrganism()`.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' organism(rse)
 NULL
 

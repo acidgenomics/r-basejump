@@ -7,7 +7,7 @@
 #' Factor levels will be readjusted (i.e. superfluous levels are dropped).
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #'
 #' rowRanges <- SummarizedExperiment::rowRanges(rse)
 #' x <- relevelRowRanges(rowRanges)

@@ -14,7 +14,7 @@
 #' Typically `matrix` or `sparseMatrix` class.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' x <- counts(rse)
 #' summary(x)
 NULL

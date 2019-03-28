@@ -2,7 +2,7 @@
 #' @inherit bioverbs::uniteInterestingGroups
 #' @inheritParams params
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' object <- rse
 #' from <- sampleData(object)
 #' to <- uniteInterestingGroups(
