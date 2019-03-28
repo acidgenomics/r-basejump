@@ -2,7 +2,7 @@ Package: basejump
 Title: Base functions for bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.10.0
-Date: 2019-03-27
+Date: 2019-03-28
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -35,8 +35,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.4)
 Imports:
-    bioverbs (>= 0.1.10), brio (>= 0.1.14), freerange (>= 0.1.0),
-        goalie (>= 0.2.12), syntactic (>= 0.1.6), transformer (>= 0.1.7),
+    bioverbs (>= 0.1.10), brio (>= 0.1.15), freerange (>= 0.1.0),
+        goalie (>= 0.2.12), syntactic (>= 0.1.7), transformer (>= 0.1.8),
     Biobase, BiocGenerics, GenomeInfoDb, GenomicRanges, IRanges, S4Vectors,
         SingleCellExperiment, SummarizedExperiment,
     Matrix (>= 1.2), Matrix.utils (>= 0.9), dplyr (>= 0.8), knitr (>= 1.22),
@@ -45,7 +45,7 @@ Imports:
         stringr (>= 1.4), tibble (>= 2.1), tidyr (>= 0.8), tidyselect (>= 0.2),
     methods, utils
 Suggests:
-    acidtest (>= 0.1.0),
+    acidtest (>= 0.1),
     BiocStyle, EnsDb.Hsapiens.v75,
     datasets, patrick, rmarkdown, testthat, viridis
 Enhances:
