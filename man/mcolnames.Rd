@@ -22,11 +22,9 @@ data(rse, package = "acidData")
 mcolnames(rse)
 
 ## Asignment method.
-mcolnames(rse) <- snake(mcolnames(rse))
+mcolnames(rse) <- toupper(mcolnames(rse))
 mcolnames(rse)
 }
 \seealso{
-\itemize{
-\item \code{\link[S4Vectors:mcols]{S4Vectors::mcols()}}.
-}
+\code{\link[S4Vectors:mcols]{S4Vectors::mcols()}}.
 }
