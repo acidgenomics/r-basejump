@@ -50,7 +50,6 @@
 \alias{assertIsHexColorFunctionOrNULL}
 \alias{assertIsImplicitInteger}
 \alias{assertIsTx2gene}
-\alias{plotGene,SummarizedExperiment-method}
 \alias{separatorBar}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
