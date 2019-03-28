@@ -9,11 +9,9 @@ packageVersion <- packageVersion("basejump")
 #' @export
 #' @examples
 #' basejumpTestsURL
-basejumpTestsURL <- pasteURL(
-    "tests.acidgenomics.com",
-    "basejump",
-    paste0("v", packageVersion$major, ".", packageVersion$minor),  # nolint
-    protocol = "http"
+basejumpTestsURL <- paste0(
+    "http://tests.acidgenomics.com/basejump/",
+    "v", packageVersion$major, ".", packageVersion$minor  # nolint
 )
 
 
