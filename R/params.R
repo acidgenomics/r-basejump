@@ -49,8 +49,7 @@
 #' @param countsAxisLabel `character(1)`.
 #'   Counts axis label.
 #' @param dark `logical(1)`.
-#'   Plot against a dark background using the [basejump::theme_midnight()]
-#'   ggplot2 theme.
+#'   Plot against a dark background using the `theme_midnight()` ggplot2 theme.
 #' @param dimsUse `integer`.
 #'   Vector of length 2 that denotes the columns from the reduced dimension
 #'   matrix to use for `centerX` and `centerY` column calculations. Defaults the
@@ -59,7 +58,7 @@
 #'   Directory path.
 #' @param direction `character(1)`.
 #'   Plot "`both`", "`up`", or "`down`" directions.
-#' @param ensemblRelease `integer(1)`.
+#' @param ensemblRelease,release `integer(1)`.
 #'   Ensembl release version (e.g. `90`). We recommend setting this value if
 #'   possible, for improved reproducibility. When left unset, the latest release
 #'   available via AnnotationHub/ensembldb is used. Note that the latest version
