@@ -14,14 +14,6 @@
 #' @param assays `list`.
 #'   Count matrices, which must have matching dimensions. Counts can be passed
 #'   in as either a dense matrix (`matrix`) or sparse matrix (`sparseMatrix`).
-#' @param BPPARAM `bpparamClass`.
-#'   BiocParallel parameter specifying the back-end to be used for computations.
-#'
-#'   We recommend using one of the following:
-#'
-#'   - [bpparam][BiocParallel::bpparam].
-#'   - [SerialParam][BiocParallel::SerialParam].
-#'   - [MulticoreParam][BiocParallel::MulticoreParam].
 #' @param check `logical(1)`.
 #'   Perform assert checks.
 #' @param colData `DataFrame`.

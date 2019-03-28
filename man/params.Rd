@@ -18,16 +18,6 @@ name must be defined in
 Count matrices, which must have matching dimensions. Counts can be passed
 in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
 
-\item{BPPARAM}{\code{bpparamClass}.
-BiocParallel parameter specifying the back-end to be used for computations.
-
-We recommend using one of the following:
-\itemize{
-\item \link[BiocParallel:bpparam]{bpparam}.
-\item \link[BiocParallel:SerialParam]{SerialParam}.
-\item \link[BiocParallel:MulticoreParam]{MulticoreParam}.
-}}
-
 \item{check}{\code{logical(1)}.
 Perform assert checks.}
 
