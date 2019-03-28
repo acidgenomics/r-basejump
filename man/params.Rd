@@ -10,39 +10,11 @@ Name or index of count matrix slotted in
 name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
-\item{assays}{\code{list}.
-Count matrices, which must have matching dimensions. Counts can be passed
-in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
-
-\item{colData}{\code{DataFrame}.
-Metadata describing the assay columns. For bulk RNA-seq, this data
-describes the samples. For single-cell RNA-seq, this data describes the
-cells.}
-
 \item{colnames}{\code{logical(1)}.
 Apply to column names.}
 
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
-
-To set the discrete color palette globally, use:\preformatted{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
-}}
-
 \item{counts}{\code{matrix}.
 Count matrix. Normalized counts are recommended.}
-
-\item{countsAxisLabel}{\code{character(1)}.
-Counts axis label.}
-
-\item{dark}{\code{logical(1)}.
-Plot against a dark background using the \code{theme_midnight()} ggplot2 theme.}
-
-\item{dimsUse}{\code{integer}.
-Vector of length 2 that denotes the columns from the reduced dimension
-matrix to use for \code{centerX} and \code{centerY} column calculations. Defaults the
-first and second dimensions.}
 
 \item{dir}{\code{character(1)}.
 Directory path.}
@@ -69,17 +41,6 @@ argument in the \code{character} vector.}
 
 \item{file}{\code{character(1)}.
 File path.}
-
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
-Desired ggplot2 fill scale. Must supply discrete values. When set to
-\code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}.
-
-To set the discrete fill palette globally, use:\preformatted{options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
-}}
-
-\item{flip}{\code{logical(1)}.
-Flip x and y axes. Recommended for plots containing many samples.}
 
 \item{gene2symbol}{\code{Gene2Symbol}.
 Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
@@ -119,30 +80,8 @@ Should the enclosing frames of the \code{environment} be searched?}
 Groups of interest that define the samples. If left unset, defaults to
 \code{sampleName}.}
 
-\item{label}{\code{logical(1)}.
-Superimpose sample text labels on the plot.}
-
-\item{labelSize}{\code{integer(1)}.
-Size of the text label.}
-
-\item{lfcThreshold}{\code{numeric(1)}.
-Log fold change ratio (base 2) cutoff threshold. If left \code{NULL}, will use
-the cutoff defined in the object.}
-
-\item{legend}{\code{logical(1)}.
-Show plot legend.}
-
 \item{level}{\code{character(1)}.
 Return as genes or transcripts.}
-
-\item{limit}{\code{numeric(1)}.
-Threshold to denote on the plot, using a dashed line.}
-
-\item{max}{\code{numeric(1)}.
-Recommended maximum value cutoff.}
-
-\item{metadata}{\code{list}.
-Metadata.}
 
 \item{min}{\code{numeric(1)}.
 Recommended minimum value cutoff.}
@@ -161,34 +100,6 @@ Number of top genes to label.}
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{perMillion}{\code{logical(1)}.
-Display as counts per million.}
-
-\item{perSample}{\code{logical(1)}.
-Visualize the distributions per sample.}
-
-\item{plotlist}{\code{list}.
-List containing \code{ggplot} objects.}
-
-\item{pointAlpha}{\code{numeric(1)} (\code{0}-\code{1}).
-Alpha transparency level. Useful when there many points in the dataset
-(e.g. single-cell data), and some points can be masked.}
-
-\item{pointColor}{\code{character(1)}.
-Default point color for the plot.}
-
-\item{pointScalar}{\code{integer(1)}.
-Default point size for the plot.}
-
-\item{pointsAsNumbers}{\code{logical(1)}.
-Plot the points as numbers (\code{TRUE}) or dots (\code{FALSE}).}
-
-\item{pointSize}{\code{numeric(1)}.
-Point size for dots in the plot.}
-
-\item{prefilter}{\code{logical(1)}.
-Apply prefiltering to remove zero count genes.}
-
 \item{progress}{\code{logical(1)}.
 Show progress, using progress bars.}
 
@@ -201,47 +112,14 @@ Includes TNSE, UMAP, PCA, for example.}
 Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
 to the first argument in the \code{character} vector.}
 
-\item{rowData}{\code{DataFrame}.
-Metadata describing the assay rows, if genomic ranges are not available.
-\emph{Use rowRanges (GRanges) instead, if possible}.}
-
-\item{rowRanges}{\code{GRanges}.
-Genomic ranges (e.g. genome annotations). Metadata describing the assay
-rows.}
-
 \item{rownames}{\code{logical(1)}.
 Apply to row names.}
-
-\item{sampleMetadataFile}{\code{character(1)}.
-Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
-are also supported. Check the documentation for conventions and required
-columns.}
 
 \item{samples}{\code{character}.
 Specify a subset of samples to include.}
 
-\item{sigPointColor}{\code{character}.
-Color names for labeling upregulated and downregulated genes. Also supports
-a character string for labeling DEGs with the same color, regardless of
-direction.}
-
 \item{sort}{\code{logical(1)}.
 Resort using \code{sort}.}
-
-\item{spikeNames}{\code{character}.
-Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
-
-\item{subtitle}{\code{character(1)}.
-Plot subtitle.}
-
-\item{title}{\code{character(1)}.
-Plot title.}
-
-\item{transgeneNames}{\code{character}.
-Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
-
-\item{trendline}{\code{logical(1)}.
-Include trendline on plot.}
 
 \item{tx2gene}{\code{Tx2Gene}.
 Transcript-to-gene mappings.}
@@ -250,10 +128,6 @@ Transcript-to-gene mappings.}
 Uniform Resource Locator (URL). HTTP or FTP address.}
 
 \item{value}{Value to assign.}
-
-\item{verbose}{\code{logical(1)}.
-Run the function with verbose messages?
-\emph{It is only recommended to enable this when debugging.}}
 
 \item{x}{Object.}
 

@@ -22,9 +22,10 @@ NULL
 
 #' @rdname relevel
 #' @export
-relevelRowRanges <- function(rowRanges) {
+relevelRowRanges <- function(object) {
+    assert(is(object, "GRanges"))
     message("Releveling factors in rowRanges.")
-    mcols <- mcols(rowRanges)
+    mcols <- mcols(object)
     mcols <- DataFrame(lapply(
         X = mcols,
         FUN = function(x) {
@@ -41,19 +42,20 @@ relevelRowRanges <- function(rowRanges) {
             }
         }
     ))
-    mcols(rowRanges) <- mcols
-    rowRanges
+    mcols(object) <- mcols
+    object
 }
 
 
 
 #' @rdname relevel
 #' @export
-relevelColData <- function(colData) {
+relevelColData <- function(object) {
+    assert(is(object, "DataFrame"))
     message("Releveling factors in colData.")
     DataFrame(
         lapply(
-            X = colData,
+            X = object,
             FUN = function(x) {
                 if (is.factor(x)) {
                     droplevels(x)
@@ -68,6 +70,6 @@ relevelColData <- function(colData) {
                 }
             }
         ),
-        row.names = rownames(colData)
+        row.names = rownames(object)
     )
 }

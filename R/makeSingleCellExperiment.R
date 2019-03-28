@@ -1,8 +1,7 @@
 #' Make a SingleCellExperiment object
 #'
-#' @inherit makeSummarizedExperiment
 #' @export
-#'
+#' @inherit makeSummarizedExperiment
 #' @inheritParams params
 #'
 #' @return `SingleCellExperiment`.
