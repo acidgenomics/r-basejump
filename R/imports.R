@@ -30,14 +30,14 @@
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
 #'   rowRanges<-
 #' @importFrom dplyr arrange bind_rows desc filter funs group_by left_join
-#'   mutate mutate_all mutate_if pull rename select select_if slice
-#'   summarise_all ungroup
-#' @importFrom goalie areDisjointSets areIntersectingSets areSetEqual assert
-#'   false getNameInParent hasDims hasInternet hasLength hasNames
-#'   hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols
-#'   hasValidDimnames hasValidNames isADirectory isAny isCharacter isFlag
-#'   isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange isInt
-#'   isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
+#'   mutate mutate_all mutate_at mutate_if pull rename select select_if slice
+#'   summarise_all top_n ungroup
+#' @importFrom goalie areDisjointSets areIntersectingSets areSameLength
+#'   areSetEqual assert false getNameInParent hasDims hasInternet hasLength
+#'   hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames
+#'   hasUniqueCols hasValidDimnames hasValidNames isADirectory isAny isCharacter
+#'   isFlag isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange
+#'   isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
 #'   isScalar isString isSubset isSuperset matchesUniqueGeneNames validNames
 #'   validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
