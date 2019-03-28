@@ -1,7 +1,0 @@
-﻿source,GTF,GFF3,Comments
-Ensembl,TRUE,TRUE,Recommended default source.
-GENCODE,TRUE,TRUE,"Very similar to Ensembl, has duplicate PAR Y chromosome."
-RefSeq,#N/A,TRUE,Experimental support.
-UCSC,FALSE,FALSE,Use Bioconductor annotation packages instead.
-FlyBase,TRUE,FALSE,"Annotations are newer, superior to Ensembl."
-WormBase,TRUE,FALSE,Annotations are very similar to Ensembl.
