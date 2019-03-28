@@ -18,7 +18,7 @@
 #' - `assignAndSave = TRUE`: Subset file paths.
 #'
 #' @examples
-#' data(sce, package = "acidData")
+#' data(sce, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- sce

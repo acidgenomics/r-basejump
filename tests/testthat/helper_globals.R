@@ -1,5 +1,5 @@
 options(
-    basejump.save.dir = ".",
-    basejump.save.ext = "rds",
-    basejump.test = TRUE
+    acid.save.dir = ".",
+    acid.save.ext = "rds",
+    acid.test = TRUE
 )

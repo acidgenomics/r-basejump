@@ -34,7 +34,7 @@ Latin organism name (e.g. \emph{Homo sapiens}).
 Organism
 }
 \examples{
-data(rse, package = "acidData")
+data(rse, package = "acidtest")
 organism(rse)
 }
 \seealso{

@@ -35,11 +35,11 @@ extends this functionality, but supporting captions for each table.
 }
 \examples{
 list <- list(
-    mpg = head(ggplot2::mpg),
+    iris = head(datasets::iris),
     mtcars = head(datasets::mtcars)
 )
 captions <- c(
-    mpg = "Miles per gallon",
+    iris = "Edgar Anderson's iris data",
     mtcars = "Motor Trend car road tests"
 )
 markdownTables(list = list, captions = captions)

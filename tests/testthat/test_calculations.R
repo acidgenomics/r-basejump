@@ -1,6 +1,6 @@
 context("Calculations")
 
-data(df, mat, sparse, envir = environment())
+data(df, mat, sparse, package = "acidtest", envir = environment())
 
 
 

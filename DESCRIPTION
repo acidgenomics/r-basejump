@@ -35,25 +35,23 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.4)
 Imports:
-    acidData (>= 0.1.0), bioverbs (>= 0.1.10), brio (>= 0.1.14),
-        freerange (>= 0.1.0), goalie (>= 0.2.12), syntactic (>= 0.1.6),
-        transformer (>= 0.1.7),
-    Biobase, BiocGenerics, GenomeInfoDb, GenomicRanges, IRanges, Matrix,
-        Matrix.utils, S4Vectors, SingleCellExperiment,
-        SummarizedExperiment,
-    cowplot (>= 0.9), dplyr (>= 0.8), ggplot2 (>= 3.1), ggrepel (>= 0.8),
-        knitr (>= 1.22), magrittr (>= 1.5), matrixStats (>= 0.54),
-        purrr (>= 0.3), reshape2 (>= 1.4), readr (>= 1.3), rlang (>= 0.3),
-        sessioninfo (>= 1.1), stringr (>= 1.4), tibble (>= 2.1), tidyr (>= 0.8),
-        tidyselect (>= 0.2),
-    grDevices, grid, methods, stats, utils
+    bioverbs (>= 0.1.10), brio (>= 0.1.14), freerange (>= 0.1.0),
+        goalie (>= 0.2.12), syntactic (>= 0.1.6), transformer (>= 0.1.7),
+    Biobase, BiocGenerics, GenomeInfoDb, GenomicRanges, IRanges, S4Vectors,
+        SingleCellExperiment, SummarizedExperiment,
+    Matrix (>= 1.2), Matrix.utils (>= 0.9), dplyr (>= 0.8), knitr (>= 1.22),
+        magrittr (>= 1.5), matrixStats (>= 0.54), purrr (>= 0.3),
+        reshape2 (>= 1.4), readr (>= 1.3), rlang (>= 0.3), sessioninfo (>= 1.1),
+        stringr (>= 1.4), tibble (>= 2.1), tidyr (>= 0.8), tidyselect (>= 0.2),
+    methods, utils
 Suggests:
+    acidtest (>= 0.1.0),
     BiocStyle, EnsDb.Hsapiens.v75,
     datasets, patrick, rmarkdown, testthat, viridis
 Enhances:
     pbapply (>= 1.4)
 Remotes:
-    acidgenomics/acidData,
+    acidgenomics/acidtest,
     acidgenomics/bioverbs,
     acidgenomics/brio,
     acidgenomics/freerange,
@@ -64,97 +62,3 @@ biocViews: DataImport, GenomeAnnotation, Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
-Collate: 
-    'AllClasses.R'
-    'AllGenerics.R'
-    'EggNOG.R'
-    'Ensembl2Entrez-methods.R'
-    'Gene2Symbol-methods.R'
-    'HGNC2Ensembl.R'
-    'MGI2Ensembl.R'
-    'PANTHER.R'
-    'Tx2Gene-methods.R'
-    'aggregate-methods.R'
-    'aggregateCellsToSamples-methods.R'
-    'autopadZeros-methods.R'
-    'cell2sample-methods.R'
-    'collapseToString-methods.R'
-    'combine-methods.R'
-    'convertGenesToSymbols-methods.R'
-    'convertSampleIDsToNames-methods.R'
-    'convertTranscriptsToGenes-methods.R'
-    'counts-methods.R'
-    'deprecated.R'
-    'detectHPC.R'
-    'detectLanes.R'
-    'geneNames-methods.R'
-    'geneSynonyms.R'
-    'geometricMean-methods.R'
-    'ggplot2.R'
-    'globals.R'
-    'headtail-methods.R'
-    'humanize-methods.R'
-    'imports.R'
-    'interestingGroups-methods.R'
-    'internal.R'
-    'logRatio-methods.R'
-    'makeGene2Symbol.R'
-    'makeSampleData.R'
-    'makeSingleCellExperiment.R'
-    'makeSummarizedExperiment.R'
-    'makeTx2Gene.R'
-    'mapCellsToSamples.R'
-    'mapGenes-methods.R'
-    'markdown-methods.R'
-    'markdownHeader.R'
-    'markdownLink.R'
-    'markdownList.R'
-    'markdownPlots.R'
-    'markdownTables.R'
-    'matchInterestingGroups.R'
-    'matchesGene2Symbol.R'
-    'matchesInterestingGroups.R'
-    'mcolnames.R'
-    'meltCounts-methods.R'
-    'metrics-methods.R'
-    'microplate.R'
-    'minimalSampleData.R'
-    'multiassignAsEnvir.R'
-    'organism-methods.R'
-    'package.R'
-    'params.R'
-    'plotCounts-methods.R'
-    'plotCountsPerBiotype-methods.R'
-    'plotCountsPerBroadClass-methods.R'
-    'plotCountsPerGene-methods.R'
-    'plotGenderMarkers-methods.R'
-    'plotGenesDetected-methods.R'
-    'plotPCA-methods.R'
-    'plotQC-methods.R'
-    'plotTotalCounts-methods.R'
-    'plotZerosVsDepth-methods.R'
-    'prepareTemplate.R'
-    'reexports-bioverbs.R'
-    'reexports-brio.R'
-    'reexports-freerange.R'
-    'reexports-goalie.R'
-    'reexports-syntactic.R'
-    'reexports-transformer.R'
-    'reexports.R'
-    'relevel.R'
-    'sampleData-methods.R'
-    'sampleNames-methods.R'
-    'sanitizePercent-methods.R'
-    'sanitizeSampleData.R'
-    'selectSamples-methods.R'
-    'separator.R'
-    'show-methods.R'
-    'showSlotInfo.R'
-    'stripTranscriptVersions-methods.R'
-    'subsetPerSample-methods.R'
-    'summary-methods.R'
-    'topCellsPerSample-methods.R'
-    'tpm-methods.R'
-    'unique.R'
-    'uniteInterestingGroups-methods.R'
-    'zerosVsDepth-methods.R'

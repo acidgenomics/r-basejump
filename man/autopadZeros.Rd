@@ -39,7 +39,7 @@ the object will be returned with the rows and/or columns resorted by default.
 This does not apply to the \code{character} method.
 }
 \examples{
-data(rse, package = "acidData")
+data(rse, package = "acidtest")
 
 ## character ====
 autopadZeros(c("A1", "B10"))

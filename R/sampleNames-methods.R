@@ -12,7 +12,7 @@
 #' @return Named `character`.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' object <- rse
 #' x <- sampleNames(object)
 #' print(x)

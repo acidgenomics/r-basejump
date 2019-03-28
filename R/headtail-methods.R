@@ -8,7 +8,7 @@
 #'   Require separators to use ASCII instead of Unicode.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #'
 #' ## data.frame ====
 #' headtail(datasets::mtcars, ascii = TRUE)

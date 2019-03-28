@@ -23,7 +23,7 @@
 #' @return `character`.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' object <- rse
 #' print(object)
 #'

@@ -5,8 +5,6 @@
 # We're maintaiing legacy support for R 3.4 (BioC 3.5/3.6), so disable.
 # @importMethodsFrom SingleCellExperiment coerce
 
-# Prioritize migrating tidyr gather and separate usage in a future update.
-
 
 
 #' @importClassesFrom GenomicRanges GRanges
@@ -31,20 +29,17 @@
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
 #'   rowRanges<-
-#' @importFrom dplyr arrange bind_rows case_when desc filter funs group_by
-#'   left_join mutate mutate_all mutate_at mutate_if n pull rename select
-#'   select_if slice summarise summarise_all top_n ungroup
-#' @importFrom goalie allAreHexColors areDisjointSets areIntersectingSets
-#'   areSameLength areSetEqual assert cause false getNameInParent hasDims
-#'   hasDuplicates hasInternet hasLength hasNames hasNoDuplicates
-#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
-#'   hasValidNames isADirectory isAny isCharacter isFlag isGGScale isHeaderLevel
-#'   isHexColorFunction isInClosedRange isInRange isInt isMatchingRegex
-#'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
-#'   isSubset isSuperset matchesUniqueGeneNames validNames validate
-#'   validateClasses
-#' @importFrom grDevices colorRampPalette
-#' @importFrom grid arrow unit
+#' @importFrom dplyr arrange bind_rows desc filter funs group_by left_join
+#'   mutate mutate_all mutate_at mutate_if pull rename select select_if slice
+#'   summarise_all top_n ungroup
+#' @importFrom goalie areDisjointSets areIntersectingSets areSameLength
+#'   areSetEqual assert false getNameInParent hasDims hasInternet hasLength
+#'   hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames
+#'   hasUniqueCols hasValidDimnames hasValidNames isADirectory isAny isCharacter
+#'   isFlag isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange
+#'   isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
+#'   isScalar isString isSubset isSuperset matchesUniqueGeneNames validNames
+#'   validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
@@ -56,10 +51,9 @@
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := UQ sym syms
 #' @importFrom sessioninfo session_info
-#' @importFrom stats as.formula dist hclust prcomp quantile
 #' @importFrom stringr str_dup str_extract str_length str_match str_pad
 #'   str_replace_all str_subset str_trunc
-#' @importFrom tidyr gather separate
+#' @importFrom tidyr separate
 #' @importFrom tidyselect everything matches
 #' @importFrom tibble as_tibble column_to_rownames tibble
 #' @importFrom transformer as_tibble
