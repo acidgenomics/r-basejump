@@ -23,7 +23,7 @@ in the \code{sampleName} column of \code{sampleData}. Otherwise it will return
 the syntactically valid names defined as the rownames of \code{sampleData}.
 }
 \examples{
-data(rse, package = "acidData")
+data(rse, package = "acidtest")
 object <- rse
 x <- sampleNames(object)
 print(x)

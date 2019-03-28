@@ -5,7 +5,7 @@
 #' @return Varies, depending on the method.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' convertSampleIDsToNames(rse)
 NULL
 

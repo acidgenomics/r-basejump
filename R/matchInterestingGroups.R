@@ -14,7 +14,7 @@
 #' Interesting groups.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' matchInterestingGroups(rse)
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())

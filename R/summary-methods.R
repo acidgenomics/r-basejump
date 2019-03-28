@@ -8,14 +8,14 @@
 #' @return Invisible `NULL`.
 #'
 #' @examples
-#' data(rse, tx_se, package = "acidData")
+#' data(rse, txse, package = "acidtest")
 #'
 #' ## Gene2Symbol ====
 #' x <- Gene2Symbol(rse)
 #' summary(x)
 #'
 #' ## Tx2Gene ====
-#' x <- Tx2Gene(tx_se)
+#' x <- Tx2Gene(txse)
 #' summary(x)
 NULL
 

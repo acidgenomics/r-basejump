@@ -1,4 +1,4 @@
-data(rse, tx_se, package = "acidData", envir = environment())
+data(rse, txse, package = "acidtest", envir = environment())
 
 
 
@@ -73,6 +73,6 @@ test_that("PANTHER", {
 context("Tx2Gene")
 
 test_that("Tx2Gene", {
-    x <- Tx2Gene(tx_se)
+    x <- Tx2Gene(txse)
     expect_s4_class(x, "Tx2Gene")
 })

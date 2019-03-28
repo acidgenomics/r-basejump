@@ -2,7 +2,7 @@
 #' @inherit bioverbs::humanize
 #' @inheritParams params
 #' @examples
-#' data(rse, sce, package = "acidData")
+#' data(rse, sce, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
 #' lapply(dimnames(rse), head)

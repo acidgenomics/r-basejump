@@ -1,4 +1,4 @@
-data(mat, rse, package = "acidData", envir = environment())
+data(mat, rse, package = "acidtest", envir = environment())
 
 
 

@@ -2,7 +2,7 @@
 #' @inherit bioverbs::selectSamples
 #' @inheritParams params
 #' @examples
-#' data(rse, sce, package = "acidData")
+#' data(rse, sce, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- rse

@@ -1,6 +1,6 @@
 context("Developer")
 
-data(rse, sce, package = "acidData", envir = environment())
+data(rse, sce, package = "acidtest", envir = environment())
 
 
 

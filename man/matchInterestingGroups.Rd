@@ -24,7 +24,7 @@ supports a missing \code{interestingGroups} argument, which will then use the
 \code{interestingGroups} accessor function internally.
 }
 \examples{
-data(rse, package = "acidData")
+data(rse, package = "acidtest")
 matchInterestingGroups(rse)
 matchInterestingGroups(rse, interestingGroups = NULL)
 matchInterestingGroups(rse, interestingGroups = substitute())
