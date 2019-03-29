@@ -16,10 +16,3 @@ knitr::opts_chunk[["set"]](
     prompt = TRUE,
     tidy = FALSE
 )
-
-ggplot2::theme_set(
-    basejump::theme_paperwhite(
-        base_size = 14L,
-        legend_position = "right"
-    )
-)
