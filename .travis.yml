@@ -7,7 +7,7 @@
 # - https://jef.works/blog/2019/02/17/automate-testing-of-your-R-package/
 
 # Temporarily enable when caching package library.
-# script: true
+script: true
 
 language: r
 cache: packages
