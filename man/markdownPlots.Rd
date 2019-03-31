@@ -29,5 +29,5 @@ names(plotlist)
 markdownPlots(list = plotlist)
 }
 \seealso{
-\code{\link[cowplot:plot_grid]{cowplot::plot_grid()}}.
+\code{cowplot::plot_grid()}.
 }
