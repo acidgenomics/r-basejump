@@ -16,7 +16,7 @@
 #'   the PANTHER website for a list of release versions available from the FTP
 #'   server (e.g. `"14.0"`).
 #' @param progress `logical(1)`.
-#'   Use [pbapply::pblapply()] to show progress.
+#'   Use `pbapply::pblapply()` to show progress.
 #'
 #' @examples
 #' options(basejump.test = TRUE)
