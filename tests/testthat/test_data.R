@@ -1,8 +1,16 @@
 # FIXME This context label is too vague.
 
-context("Data")
+# nolint start
+DataFrame <- S4Vectors::DataFrame
+GRanges <- GenomicRanges::GRanges
+IRanges <- IRanges::IRanges
+# nolint end
 
 data(rse, sce, package = "acidtest", envir = environment())
+
+
+
+context("Data")
 
 
 
@@ -86,10 +94,6 @@ test_that("interestingGroups : Assignment method", {
 
 
 # makeSummarizedExperiment =====================================================
-DataFrame <- S4Vectors::DataFrame
-GRanges <- GenomicRanges::GRanges
-IRanges <- IRanges::IRanges
-
 genes <- paste0("gene", seq_len(4L))
 samples <- paste0("sample", seq_len(4L))
 mat <- matrix(
