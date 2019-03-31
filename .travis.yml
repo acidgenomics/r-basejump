@@ -7,7 +7,7 @@
 # - https://jef.works/blog/2019/02/17/automate-testing-of-your-R-package/
 
 # Temporarily enable when caching package library.
-script: true
+# script: true
 
 language: r
 cache: packages
@@ -39,10 +39,6 @@ env:
   global:
     - LINTR_COMMENT_BOT=true
 
-# Skip building vignettes, which can cause the Travis build to time out.
-r_build_args: "--no-build-vignettes --no-manual"
-r_check_args: "--no-build-vignettes --no-manual --timings"
-
 r_packages:
   - covr
 bioc_packages:
@@ -51,10 +47,15 @@ bioc_packages:
 r_github_packages:
   - acidgenomics/lintr
 
+# Skip building vignettes, which can cause the Travis build to time out.
+# r_build_args: "--no-build-vignettes --no-manual"
+# r_check_args: "--no-build-vignettes --no-manual --timings"
+
 after_success:
   - R CMD BiocCheck .
   - Rscript -e 'lintr::lint_package()'
-  - Rscript -e 'covr::codecov()'
+  # This is causing the build to stall and time out.
+  # - Rscript -e 'covr::codecov()'
 
 notifications:
   email:
