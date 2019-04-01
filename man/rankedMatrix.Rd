@@ -45,5 +45,8 @@ lfc <- matrix(
 )
 }
 \seealso{
-Not to be confused with \code{\link[Matrix:rankMatrix]{Matrix::rankMatrix()}}.
+\itemize{
+\item \code{\link[base:rank]{rank()}}.
+\item Not to be confused with \code{\link[Matrix:rankMatrix]{Matrix::rankMatrix()}}.
+}
 }

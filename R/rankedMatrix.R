@@ -10,7 +10,9 @@
 #' @param decreasing `logical(1)`.
 #'   Rank the values from positive to negative.
 #'
-#' @seealso Not to be confused with [Matrix::rankMatrix()].
+#' @seealso
+#' - [`rank()`][base::rank].
+#' - Not to be confused with [Matrix::rankMatrix()].
 #'
 #' @examples
 #' ## Order was randomized using `sample()`.
