@@ -94,6 +94,10 @@ brio::saveData
 #' @export
 brio::sanitizeNA
 
+#' @importFrom brio sanitizePercent
+#' @export
+brio::sanitizePercent
+
 #' @importFrom brio transmit
 #' @export
 brio::transmit
