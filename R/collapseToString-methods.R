@@ -49,10 +49,11 @@ NULL
 
 
 
+#' @rdname collapseToString
+#' @name collapseToString
 #' @importFrom bioverbs collapseToString
-#' @aliases NULL
 #' @export
-bioverbs::collapseToString
+NULL
 
 
 

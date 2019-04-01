@@ -3,6 +3,8 @@
 \docType{methods}
 \name{aggregate}
 \alias{aggregate}
+\alias{aggregateRows}
+\alias{aggregateCols}
 \alias{aggregateRows,matrix-method}
 \alias{aggregateRows,sparseMatrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}

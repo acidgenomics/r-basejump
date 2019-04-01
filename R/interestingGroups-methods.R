@@ -15,15 +15,17 @@ NULL
 
 
 
+#' @rdname interestingGroups
+#' @name interestingGroups
 #' @importFrom bioverbs interestingGroups
-#' @aliases NULL
 #' @export
-bioverbs::interestingGroups
+NULL
 
+#' @rdname interestingGroups
+#' @name interestingGroups<-
 #' @importFrom bioverbs interestingGroups<-
-#' @aliases NULL
 #' @export
-bioverbs::`interestingGroups<-`
+NULL
 
 
 

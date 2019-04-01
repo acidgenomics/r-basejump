@@ -11,10 +11,11 @@ NULL
 
 
 
+#' @rdname convertSampleIDsToNames
+#' @name convertSampleIDsToNames
 #' @importFrom bioverbs convertSampleIDsToNames
-#' @aliases NULL
 #' @export
-bioverbs::convertSampleIDsToNames
+NULL
 
 
 

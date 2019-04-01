@@ -3,6 +3,7 @@
 \docType{methods}
 \name{convertGenesToSymbols}
 \alias{convertGenesToSymbols}
+\alias{convertSymbolsToGenes}
 \alias{convertGenesToSymbols,character-method}
 \alias{convertGenesToSymbols,matrix-method}
 \alias{convertGenesToSymbols,sparseMatrix-method}

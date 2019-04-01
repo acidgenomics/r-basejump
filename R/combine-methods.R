@@ -67,10 +67,11 @@ NULL
 
 
 
+#' @rdname combine
+#' @name combine
 #' @importFrom BiocGenerics combine
-#' @aliases NULL
 #' @export
-BiocGenerics::combine
+NULL
 
 
 
