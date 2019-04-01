@@ -13,7 +13,7 @@
 #' @return Graphical output of plots.
 #' Separated by Markdown headers.
 #'
-#' @seealso [cowplot::plot_grid()].
+#' @seealso `cowplot::plot_grid()`.
 #'
 #' @examples
 #' loadRemoteData(url = file.path(basejumpTestsURL, "plotlist.rda"))
