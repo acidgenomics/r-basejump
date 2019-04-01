@@ -1,3 +1,17 @@
+## basejump 0.10.1 (2019-04-01)
+
+### New functions
+
+- `rankedMatrix`: New utility function for quickly performing ranked matrix
+  calculations. Particularly useful for differential expression comparison
+  across studies using log2 fold change or Wald test statistic.
+
+### Minor changes
+
+- Simplified reexport methods for functions that define S4 methods.
+
+
+
 ## basejump 0.10.0 (2019-03-28)
 
 ### Major changes
