@@ -3,6 +3,10 @@
 #' @name params
 #' @keywords internal
 #'
+#' @param object,x Object.
+#' @param value Value to assign.
+#' @param ... Additional arguments.
+#'
 #' @param i
 #'   Indices specifying elements to extract or replace. Indices are `numeric` or
 #'   `character` vectors, empty (`missing`), or `NULL`.
@@ -12,10 +16,6 @@
 #'   ```
 #'   help(topic = "Extract", package = "base")
 #'   ```
-#' @param object Object.
-#' @param value Value to assign.
-#' @param x Object.
-#' @param ... Additional arguments.
 #'
 #' @param assay `vector(1)`.
 #'   Name or index of count matrix slotted in
