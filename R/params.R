@@ -3,12 +3,25 @@
 #' @name params
 #' @keywords internal
 #'
+#' @param i
+#'   Indices specifying elements to extract or replace. Indices are `numeric` or
+#'   `character` vectors, empty (`missing`), or `NULL`.
+#'
+#'   For more information:
+#'
+#'   ```
+#'   help(topic = "Extract", package = "base")
+#'   ```
+#' @param object Object.
+#' @param value Value to assign.
+#' @param x Object.
+#' @param ... Additional arguments.
+#'
 #' @param assay `vector(1)`.
 #'   Name or index of count matrix slotted in
 #'   [`assays()`][SummarizedExperiment::assays]. When passing in a string, the
 #'   name must be defined in
 #'   [`assayNames()`][SummarizedExperiment::assayNames].
-
 #' @param colnames `logical(1)`.
 #'   Apply to column names.
 #' @param counts `matrix`.
@@ -44,15 +57,6 @@
 #'   IDs (e.g. `"hg38"`).
 #' @param headerLevel `integer(1)` (`1`-`7`).
 #'   Markdown header level.
-#' @param i
-#'   Indices specifying elements to extract or replace. Indices are `numeric` or
-#'   `character` vectors, empty (`missing`), or `NULL`.
-#'
-#'   For more information:
-#'
-#'   ```
-#'   help(topic = "Extract", package = "base")
-#'   ```
 #' @param inherits `logical(1)`.
 #'   Should the enclosing frames of the `environment` be searched?
 #' @param interestingGroups `character`.
@@ -64,7 +68,6 @@
 #'   Number to include.
 #' @param ntop `integer(1)`.
 #'   Number of top genes to label.
-#' @param object Object.
 #' @param organism `character(1)`.
 #'   Full Latin organism name (e.g. "`Homo sapiens`").
 #' @param progress `logical(1)`.
@@ -82,9 +85,46 @@
 #'   Transcript-to-gene mappings.
 #' @param url `character(1)`.
 #'   Uniform Resource Locator (URL). HTTP or FTP address.
-#' @param value Value to assign.
-#' @param x Object.
-#' @param ... Additional arguments.
+#'
+#' @param assays `list`.
+#'   Count matrices, which must have matching dimensions. Counts can be passed
+#'   in as either a dense matrix (`matrix`) or sparse matrix (`sparseMatrix`).
+#' @param rowRanges `GRanges`.
+#'   Genomic ranges (e.g. genome annotations). Metadata describing the assay
+#'   rows.
+#' @param rowData `DataFrame`.
+#'   Metadata describing the assay rows, if genomic ranges are not available.
+#'   *Use rowRanges (GRanges) instead, if possible*.
+#' @param colData `DataFrame`.
+#'   Metadata describing the assay columns. For bulk RNA-seq, this data
+#'   describes the samples. For single-cell RNA-seq, this data describes the
+#'   cells.
+#' @param metadata `list`.
+#'   Metadata.
+#' @param transgeneNames `character`.
+#'   Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).
+#' @param spikeNames `character`.
+#'   Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).
+#'
+#' @param censorSamples `character`.
+#'   Specify a subset of samples to censor.
+#' @param gffFile `character(1)`.
+#'   GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
+#'   (GFFv2) instead of a GFFv3 file if possible.
+#' @param prefilter `logical(1)`.
+#'   Apply prefiltering to remove zero count genes.
+#' @param sampleMetadataFile `character(1)`.
+#'   Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
+#'   are also supported. Check the documentation for conventions and required
+#'   columns.
+#'
+#' @param BPPARAM `bpparamClass`.
+#'   BiocParallel parameter to specify the desired processor configuration.\cr
+#'   We recommend using one of the following:
+#'
+#'   - [bpparam][BiocParallel::bpparam].
+#'   - [SerialParam][BiocParallel::SerialParam].
+#'   - [MulticoreParam][BiocParallel::MulticoreParam].
 #'
 #' @return No value.
 NULL
