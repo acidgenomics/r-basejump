@@ -4,19 +4,17 @@
 \alias{params}
 \title{Parameters}
 \arguments{
+\item{object, x}{Object.}
+
+\item{value}{Value to assign.}
+
+\item{...}{Additional arguments.}
+
 \item{i}{Indices specifying elements to extract or replace. Indices are \code{numeric} or
 \code{character} vectors, empty (\code{missing}), or \code{NULL}.
 
 For more information:\preformatted{help(topic = "Extract", package = "base")
 }}
-
-\item{object}{Object.}
-
-\item{value}{Value to assign.}
-
-\item{x}{Object.}
-
-\item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
