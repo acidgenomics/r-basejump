@@ -16,10 +16,11 @@ NULL
 
 
 
+#' @rdname aggregateCellsToSamples
+#' @name aggregateCellsToSamples
 #' @importFrom bioverbs aggregateCellsToSamples
-#' @aliases NULL
 #' @export
-bioverbs::aggregateCellsToSamples
+NULL
 
 
 

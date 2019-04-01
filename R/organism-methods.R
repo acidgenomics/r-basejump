@@ -15,10 +15,11 @@ NULL
 
 
 
+#' @rdname organism
+#' @name organism
 #' @importFrom BiocGenerics organism
-#' @aliases NULL
 #' @export
-BiocGenerics::organism
+NULL
 
 
 

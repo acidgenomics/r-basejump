@@ -45,10 +45,11 @@ NULL
 
 
 
+#' @rdname geometricMean
+#' @name geometricMean
 #' @importFrom bioverbs geometricMean
-#' @aliases NULL
 #' @export
-bioverbs::geometricMean
+NULL
 
 
 

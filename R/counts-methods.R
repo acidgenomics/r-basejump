@@ -21,15 +21,17 @@ NULL
 
 
 
+#' @rdname counts
+#' @name counts
 #' @importFrom BiocGenerics counts
-#' @aliases NULL
 #' @export
-BiocGenerics::counts
+NULL
 
+#' @rdname counts
+#' @name counts<-
 #' @importFrom BiocGenerics counts<-
-#' @aliases NULL
 #' @export
-BiocGenerics::`counts<-`
+NULL
 
 
 

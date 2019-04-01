@@ -14,10 +14,11 @@ NULL
 
 
 
+#' @rdname uniteInterestingGroups
+#' @name uniteInterestingGroups
 #' @importFrom bioverbs uniteInterestingGroups
-#' @aliases NULL
 #' @export
-bioverbs::uniteInterestingGroups
+NULL
 
 
 

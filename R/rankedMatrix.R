@@ -1,7 +1,7 @@
 #' Calculate a ranked matrix
 #'
 #' @note Ties are resolved automatically by calculating the average. See the
-#'   `ties.method` parameter in [`rank()]][base::rank] for details.
+#'   `ties.method` parameter in [`rank()`][base::rank] for details.
 #'
 #' @export
 #' @inheritParams params

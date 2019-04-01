@@ -1,7 +1,7 @@
-# NB: Don't use `NULL` assignment method to remove columns on a DataFrame if
-# we're providing support for BioC releases prior to 3.8. This will result in a
-# metadata problem that returns as a cryptic `S4Vectors::V_recycle` error.
-# This will pop up: 'NROW(value)' is greater than 'length(x)'.
+# Don't use `NULL` assignment method to remove columns on a DataFrame if we're
+# providing support for BioC releases prior to 3.8. This will result in a
+# metadata problem that returns as a cryptic `S4Vectors::V_recycle` error. This
+# will pop up: 'NROW(value)' is greater than 'length(x)'.
 
 
 
@@ -85,15 +85,17 @@ NULL
 
 
 
+#' @rdname sampleData
+#' @name sampleData
 #' @importFrom bioverbs sampleData
-#' @aliases NULL
 #' @export
-bioverbs::sampleData
+NULL
 
+#' @rdname sampleData
+#' @name sampleData<-
 #' @importFrom bioverbs sampleData<-
-#' @aliases NULL
 #' @export
-bioverbs::`sampleData<-`
+NULL
 
 
 

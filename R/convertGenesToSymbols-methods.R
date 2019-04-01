@@ -40,15 +40,17 @@ NULL
 
 
 
+#' @rdname convertGenesToSymbols
+#' @name convertGenesToSymbols
 #' @importFrom bioverbs convertGenesToSymbols
-#' @aliases NULL
 #' @export
-bioverbs::convertGenesToSymbols
+NULL
 
+#' @rdname convertGenesToSymbols
+#' @name convertSymbolsToGenes
 #' @importFrom bioverbs convertSymbolsToGenes
-#' @aliases NULL
 #' @export
-bioverbs::convertSymbolsToGenes
+NULL
 
 
 

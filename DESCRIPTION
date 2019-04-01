@@ -45,7 +45,7 @@ Imports:
         stringr (>= 1.4), tibble (>= 2.1), tidyr (>= 0.8), tidyselect (>= 0.2),
     methods, utils
 Suggests:
-    acidtest (>= 0.1),
+    acidtest (>= 0.1.1),
     BiocStyle, EnsDb.Hsapiens.v75,
     datasets, patrick, rmarkdown, testthat, viridis
 Enhances:

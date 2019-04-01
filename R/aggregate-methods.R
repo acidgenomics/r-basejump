@@ -127,15 +127,17 @@ NULL
 
 
 
+#' @rdname aggregate
+#' @name aggregateRows
 #' @importFrom bioverbs aggregateRows
-#' @aliases NULL
 #' @export
-bioverbs::aggregateRows
+NULL
 
+#' @rdname aggregate
+#' @name aggregateCols
 #' @importFrom bioverbs aggregateCols
-#' @aliases NULL
 #' @export
-bioverbs::aggregateCols
+NULL
 
 
 
