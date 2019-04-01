@@ -55,20 +55,23 @@ NULL
 
 
 
+#' @rdname mapGenes
+#' @name mapGenesToRownames
 #' @importFrom bioverbs mapGenesToRownames
-#' @aliases NULL
 #' @export
-bioverbs::mapGenesToRownames
+NULL
 
+#' @rdname mapGenes
+#' @name mapGenesToIDs
 #' @importFrom bioverbs mapGenesToIDs
-#' @aliases NULL
 #' @export
-bioverbs::mapGenesToIDs
+NULL
 
+#' @rdname mapGenes
+#' @name mapGenesToSymbols
 #' @importFrom bioverbs mapGenesToSymbols
-#' @aliases NULL
 #' @export
-bioverbs::mapGenesToSymbols
+NULL
 
 
 
