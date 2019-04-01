@@ -4,8 +4,8 @@
 \alias{rankedMatrix}
 \title{Calculate a ranked matrix}
 \usage{
-rankedMatrix(object, method = c("decreasing", "increasing",
-  "bidirectional"), MARGIN = 2L)
+rankedMatrix(object, MARGIN = 2L, method = c("increasing",
+  "decreasing", "bidirectional"))
 }
 \arguments{
 \item{object}{Object.}
@@ -16,8 +16,8 @@ rankedMatrix(object, method = c("decreasing", "increasing",
     columns. Where \code{X} has named dimnames, it can be a character
     vector selecting dimension names.}
 
-\item{decreasing}{\code{logical(1)}.
-Rank the values from positive to negative.}
+\item{method}{\code{character(1)}.
+Rank the values in \code{increasing}, \code{decreasing}, or \code{bidirectional} order.}
 }
 \description{
 Calculate a ranked matrix
@@ -28,7 +28,7 @@ Ties are resolved automatically by calculating the average. See the
 }
 \examples{
 ## Order was randomized using `sample()`.
-lfc <- matrix(
+mat <- matrix(
     data = c(
         -2.00, -1.25,  0.00,  0.25,  0.25,  0.50,  2.00,  4.00,
          2.00,  0.25, -1.25, -2.00,  0.50,  0.25,  4.00,  0.00,
