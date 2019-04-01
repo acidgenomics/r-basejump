@@ -3,6 +3,7 @@
 \docType{methods}
 \name{metrics}
 \alias{metrics}
+\alias{metricsPerSample}
 \alias{metrics,SummarizedExperiment-method}
 \alias{metrics,SingleCellExperiment-method}
 \alias{metricsPerSample,SingleCellExperiment-method}
