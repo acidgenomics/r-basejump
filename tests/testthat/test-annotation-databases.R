@@ -12,7 +12,7 @@ test_that("EggNOG", {
 
 
 
-context("HGNC2ENsembl")
+context("HGNC2Ensembl")
 
 test_that("HGNC2Ensembl", {
     object <- HGNC2Ensembl()
