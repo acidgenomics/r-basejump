@@ -1,3 +1,11 @@
+## basejump 0.10.2 (2019-04-02)
+
+### Minor changes
+
+- Added additional unit tests, to improve code coverage.
+
+
+
 ## basejump 0.10.1 (2019-04-01)
 
 ### New functions
