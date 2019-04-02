@@ -10,9 +10,9 @@ geneSynonyms(organism)
 \item{organism}{\code{character(1)}.
 Supported organisms:
 \itemize{
-\item \emph{Homo sapiens}
-\item \emph{Mus musculus}
-\item \emph{Drosophila melanogaster}
+\item \emph{Homo sapiens}.
+\item \emph{Mus musculus}.
+\item \emph{Drosophila melanogaster}.
 }}
 }
 \value{
@@ -27,7 +27,7 @@ Synonym support for \emph{Caenorhabditis elegans} is poor on NCBI.
 Use the \href{https://steinbaugh.com/wormbase/}{wormbase} package instead.
 }
 \examples{
-options(basejump.test = TRUE)
+options(acid.test = TRUE)
 x <- geneSynonyms(organism = "Homo sapiens")
 print(x)
 }

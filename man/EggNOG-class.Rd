@@ -32,7 +32,7 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
 \strong{O}rthologous \strong{G}roups.
 }
 \examples{
-options(basejump.test = TRUE)
+options(acid.test = TRUE)
 x <- EggNOG()
 print(x)
 }

@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.2</span>
       </span>
     </div>
 
@@ -224,7 +224,7 @@ samples.</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Example data ====</span>
-<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(
+<span class='no'>assay</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(
         <span class='fl'>0L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
         <span class='fl'>1L</span>, <span class='fl'>0L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
@@ -243,7 +243,7 @@ samples.</p></li>
         )
     )
 )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>assay</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>assay</span>)</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  0                  1                  1
 #&gt; transcript2                  1                  0                  1
 #&gt; transcript3                  1                  1                  0
@@ -254,34 +254,17 @@ samples.</p></li>
 #&gt; transcript3                  1
 #&gt; transcript4                  0</div><div class='input'>
 <span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='st'>"gene"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>genes</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames</a></span>(<span class='no'>counts</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>genes</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames</a></span>(<span class='no'>assay</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; transcript1 transcript2 transcript3 transcript4 
 #&gt;       gene1       gene1       gene2       gene2 
 #&gt; Levels: gene1 gene2</div><div class='input'>
 <span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>samples</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>counts</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>samples</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>assay</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>samples</span>)</div><div class='output co'>#&gt; sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 
 #&gt;            sample1            sample1            sample2            sample2 
 #&gt; Levels: sample1 sample2</div><div class='input'>
-<span class='no'>cells</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='st'>"cell"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>samples</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>counts</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>samples</span>)</div><div class='output co'>#&gt; sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 
-#&gt;            sample1            sample1            sample2            sample2 
-#&gt; Levels: sample1 sample2</div><div class='input'>
-<span class='co'>## matrix</span>
-<span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
-#&gt; transcript1                  0                  1                  1
-#&gt; transcript2                  1                  0                  1
-#&gt; transcript3                  1                  1                  0
-#&gt; transcript4                  1                  1                  1
-#&gt;             sample2_replicate2
-#&gt; transcript1                  1
-#&gt; transcript2                  1
-#&gt; transcript3                  1
-#&gt; transcript4                  0</div><div class='input'>
 <span class='co'>## sparseMatrix</span>
-<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
+<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>assay</span>, <span class='st'>"sparseMatrix"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
 #&gt; attr(,"package")
 #&gt; [1] "Matrix"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 4 x 4 sparse Matrix of class "dgCMatrix"
@@ -297,7 +280,7 @@ samples.</p></li>
 #&gt; transcript4                  .</div><div class='input'>
 <span class='co'>## SummarizedExperiment</span>
 <span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment</a></span>(
-    <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>counts</span> <span class='kw'>=</span> <span class='no'>sparse</span>),
+    <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>assay</span> <span class='kw'>=</span> <span class='no'>assay</span>),
     <span class='kw'>colData</span> <span class='kw'>=</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
         <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>as.factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>samples</span>)),
         <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>samples</span>
@@ -307,14 +290,14 @@ samples.</p></li>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 4 4 
 #&gt; metadata(0):
-#&gt; assays(1): counts
+#&gt; assays(1): assay
 #&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
 #&gt; rowData names(1): aggregate
 #&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt;   sample2_replicate2
 #&gt; colData names(2): sampleName aggregate</div><div class='input'>
 <span class='co'>## aggregateRows ====</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+<span class='fu'>aggregateRows</span>(<span class='no'>assay</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
@@ -340,14 +323,14 @@ samples.</p></li>
 #&gt; <span class='message'>Levels: gene1 gene2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 2 4 
 #&gt; metadata(0):
-#&gt; assays(1): counts
+#&gt; assays(1): ''
 #&gt; rownames(2): gene1 gene2
 #&gt; rowData names(0):
 #&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt;   sample2_replicate2
 #&gt; colData names(2): sampleName aggregate</div><div class='input'>
 <span class='co'>## aggregateCols ====</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+<span class='fu'>aggregateCols</span>(<span class='no'>assay</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
 #&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
@@ -371,11 +354,11 @@ samples.</p></li>
 #&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 4 2 
 #&gt; metadata(1): aggregate
-#&gt; assays(1): counts
+#&gt; assays(1): ''
 #&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
 #&gt; rowData names(1): aggregate
 #&gt; colnames(2): sample1 sample2
-#&gt; colData names(1): sampleName</div></pre>
+#&gt; colData names(0):</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

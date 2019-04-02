@@ -60,7 +60,7 @@
 #'
 #' @examples
 #' ## Example data ====
-#' counts <- matrix(
+#' assay <- matrix(
 #'     data = c(
 #'         0L, 1L, 1L, 1L,
 #'         1L, 0L, 1L, 1L,
@@ -79,33 +79,25 @@
 #'         )
 #'     )
 #' )
-#' print(counts)
+#' class(assay)
+#' print(assay)
 #'
 #' genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
-#' names(genes) <- rownames(counts)
+#' names(genes) <- rownames(assay)
 #' print(genes)
 #'
 #' samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
-#' names(samples) <- colnames(counts)
+#' names(samples) <- colnames(assay)
 #' print(samples)
-#'
-#' cells <- factor(paste0("cell", rep(seq_len(2L), each = 2L)))
-#' names(samples) <- colnames(counts)
-#' print(samples)
-#'
-#' ## matrix
-#' matrix <- as(counts, "matrix")
-#' class(matrix)
-#' print(matrix)
 #'
 #' ## sparseMatrix
-#' sparse <- as(matrix, "sparseMatrix")
+#' sparse <- as(assay, "sparseMatrix")
 #' class(sparse)
 #' print(sparse)
 #'
 #' ## SummarizedExperiment
 #' se <- SummarizedExperiment::SummarizedExperiment(
-#'     assay = list(counts = sparse),
+#'     assay = list(assay = assay),
 #'     colData = S4Vectors::DataFrame(
 #'         sampleName = as.factor(names(samples)),
 #'         aggregate = samples
@@ -115,12 +107,12 @@
 #' print(se)
 #'
 #' ## aggregateRows ====
-#' aggregateRows(matrix, groupings = genes)
+#' aggregateRows(assay, groupings = genes)
 #' aggregateRows(sparse, groupings = genes)
 #' aggregateRows(se)
 #'
 #' ## aggregateCols ====
-#' aggregateCols(matrix, groupings = samples)
+#' aggregateCols(assay, groupings = samples)
 #' aggregateCols(sparse, groupings = samples)
 #' aggregateCols(se)
 NULL
@@ -242,26 +234,25 @@ aggregateRows.SummarizedExperiment <-  # nolint
         )
         names(groupings) <- rownames(object)
 
-        # Assays ---------------------------------------------------------------
-        counts <- aggregateRows(
-            object = counts(object),
+        # Assay ----------------------------------------------------------------
+        assay <- aggregateRows(
+            object = assay(object),
             groupings = groupings,
             fun = fun
         )
         if (fun == "sum") {
-            assert(identical(sum(counts), sum(counts(object))))
+            assert(identical(sum(assay), sum(assay(object))))
         }
-        rownames <- rownames(counts)
 
         # Return ---------------------------------------------------------------
         args <- list(
-            assays = list(counts = counts),
+            assays = list(assay),
             colData = colData(object)
         )
         if (is(object, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- emptyRanges(names = rownames)
+            args[["rowRanges"]] <- emptyRanges(names = rownames(assay))
         } else {
-            args[["rowData"]] <- DataFrame(row.names = rownames)
+            args[["rowData"]] <- DataFrame(row.names = rownames(assay))
         }
         se <- do.call(what = SummarizedExperiment, args = args)
         validObject(se)
@@ -360,50 +351,26 @@ aggregateCols.SummarizedExperiment <-  # nolint
         groupings <- colData(object)[[col]]
         assert(
             is.factor(groupings),
-            validNames(levels(groupings))
+            validNames(levels(groupings)),
+            identical(length(groupings), ncol(object))
         )
         names(groupings) <- colnames(object)
 
-        # Assays ---------------------------------------------------------------
-        counts <- aggregateCols(
-            object = counts(object),
+        # Assay ----------------------------------------------------------------
+        assay <- aggregateCols(
+            object = assay(object),
             groupings = groupings,
             fun = fun
         )
+        assert(identical(nrow(assay), nrow(object)))
         if (fun == "sum") {
-            assert(identical(sum(counts), sum(counts(object))))
+            assert(identical(sum(assay), sum(assay(object))))
         }
-
-        # Column data ----------------------------------------------------------
-        # Reslot with minimal sample-level data only.
-        sampleNames <- sampleData(object)[["aggregate"]]
-        assert(is.factor(sampleNames))
-        sampleNames <- levels(sampleNames)
-        sampleData <- DataFrame(
-            sampleName = sampleNames,
-            row.names = makeNames(sampleNames)
-        )
-        assert(identical(rownames(sampleData), colnames(counts)))
-
-        # Collapse the sample data. This step will replace the `sampleName`
-        # column with the `aggregate` column metadata.
-        interestingGroups <- setdiff(interestingGroups(object), "sampleName")
-        sampleData <- sampleData(object) %>%
-            as_tibble() %>%
-            select(!!!syms(unique(c("aggregate", interestingGroups)))) %>%
-            unique() %>%
-            mutate(rowname = makeNames(!!sym("aggregate"))) %>%
-            rename(sampleName = !!sym("aggregate")) %>%
-            arrange(!!!syms(c("rowname", "sampleName"))) %>%
-            mutate_all(as.factor) %>%
-            mutate_all(droplevels) %>%
-            as("DataFrame")
-        assert(hasRownames(sampleData))
 
         # Return ---------------------------------------------------------------
         args <- list(
-            assays = list(counts = counts),
-            colData = sampleData
+            assays = list(assay),
+            colData = DataFrame(row.names = colnames(assay))
         )
         if (is(object, "RangedSummarizedExperiment")) {
             args[["rowRanges"]] <- rowRanges(object)
@@ -477,28 +444,32 @@ aggregateCols.SingleCellExperiment <-  # nolint
 
         # Generate SingleCellExperiment ----------------------------------------
         # Using `SummarizedExperiment` method here.
-        rse <- aggregateCols(
-            object = as(object, "RangedSummarizedExperiment"),
-            fun = fun
+        rse <- as(object, "RangedSummarizedExperiment")
+        colData(rse)[["sampleID"]] <- NULL
+        rse <- aggregateCols(object = rse, fun = fun)
+        assert(
+            is(rse, "RangedSummarizedExperiment"),
+            identical(nrow(rse), nrow(object))
         )
-        assert(is(rse, "RangedSummarizedExperiment"))
 
         # Update the sample data.
         colData <- colData(rse)
-        colData[["sampleID"]] <- cell2sample
+        assert(isSubset(rownames(colData), names(cell2sample)))
+        colData[["sampleID"]] <- cell2sample[rownames(colData)]
         colData[["sampleName"]] <- colData[["sampleID"]]
+        colData(rse) <- colData
 
         # Now ready to generate aggregated SCE.
         sce <- makeSingleCellExperiment(
-            assays = SummarizedExperiment::assays(rse),
-            rowRanges = SummarizedExperiment::rowRanges(object),
-            colData = SummarizedExperiment::colData(rse),
+            assays = list(counts = assay(rse)),
+            rowRanges = rowRanges(object),
+            colData = colData(rse),
             metadata = list(
                 aggregate = TRUE,
                 aggregateCols = groupings,
                 interestingGroups = interestingGroups(object)
             ),
-            spikeNames = SingleCellExperiment::spikeNames(object)
+            spikeNames = spikeNames(object)
         )
         validObject(sce)
         sce

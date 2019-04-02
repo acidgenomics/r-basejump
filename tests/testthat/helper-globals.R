@@ -8,6 +8,7 @@ data(
 DataFrame <- S4Vectors::DataFrame
 GRanges <- GenomicRanges::GRanges
 IRanges <- IRanges::IRanges
+SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
 # nolint end
 
 organism <- "Homo sapiens"
