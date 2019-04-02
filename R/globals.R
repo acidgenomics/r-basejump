@@ -78,6 +78,7 @@ lanePattern <- "_L([[:digit:]]{3})"
 
 
 #' Sample metadata blacklist
+#' @note `sampleID` is set automatically for multiplexed/cell-level data.
 #' @export
 #' @examples
 #' metadataBlacklist
@@ -94,7 +95,7 @@ metadataBlacklist <- c(
     "rowname",
     # Use "sampleName" instead.
     "sample",
-    # "sampleID" is set automatically, for multiplexed/cell-level data.
+    # "sampleID" case variants.
     "sampleID", "sampleId", "sampleid",
     # Use "sampleName" instead.
     "samplename"

@@ -469,16 +469,20 @@ aggregateCols.SingleCellExperiment <-  # nolint
 
         # Generate SingleCellExperiment ----------------------------------------
         # Using `SummarizedExperiment` method here.
-        rse <- aggregateCols(
-            object = as(object, "RangedSummarizedExperiment"),
-            fun = fun
+        rse <- as(object, "RangedSummarizedExperiment")
+        colData(rse)[["sampleID"]] <- NULL
+        rse <- aggregateCols(object = rse, fun = fun)
+        assert(
+            is(rse, "RangedSummarizedExperiment"),
+            identical(nrow(rse), nrow(object))
         )
-        assert(is(rse, "RangedSummarizedExperiment"))
 
         # Update the sample data.
         colData <- colData(rse)
-        colData[["sampleID"]] <- cell2sample
+        assert(isSubset(rownames(colData), names(cell2sample)))
+        colData[["sampleID"]] <- cell2sample[rownames(colData)]
         colData[["sampleName"]] <- colData[["sampleID"]]
+        colData(rse) <- colData
 
         # Now ready to generate aggregated SCE.
         sce <- makeSingleCellExperiment(
