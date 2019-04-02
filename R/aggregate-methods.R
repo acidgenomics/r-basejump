@@ -461,7 +461,7 @@ aggregateCols.SingleCellExperiment <-  # nolint
 
         # Now ready to generate aggregated SCE.
         sce <- makeSingleCellExperiment(
-            assays = assays(rse),
+            assays = list(counts = assay(rse)),
             rowRanges = rowRanges(object),
             colData = colData(rse),
             metadata = list(
