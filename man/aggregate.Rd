@@ -116,6 +116,7 @@ counts <- matrix(
         )
     )
 )
+class(counts)
 print(counts)
 
 genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
@@ -126,23 +127,14 @@ samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
 names(samples) <- colnames(counts)
 print(samples)
 
-cells <- factor(paste0("cell", rep(seq_len(2L), each = 2L)))
-names(samples) <- colnames(counts)
-print(samples)
-
-## matrix
-matrix <- as(counts, "matrix")
-class(matrix)
-print(matrix)
-
 ## sparseMatrix
-sparse <- as(matrix, "sparseMatrix")
+sparse <- as(counts, "sparseMatrix")
 class(sparse)
 print(sparse)
 
 ## SummarizedExperiment
 se <- SummarizedExperiment::SummarizedExperiment(
-    assay = list(counts = sparse),
+    assay = list(counts = counts),
     colData = S4Vectors::DataFrame(
         sampleName = as.factor(names(samples)),
         aggregate = samples
@@ -152,12 +144,12 @@ se <- SummarizedExperiment::SummarizedExperiment(
 print(se)
 
 ## aggregateRows ====
-aggregateRows(matrix, groupings = genes)
+aggregateRows(counts, groupings = genes)
 aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
 
 ## aggregateCols ====
-aggregateCols(matrix, groupings = samples)
+aggregateCols(counts, groupings = samples)
 aggregateCols(sparse, groupings = samples)
 aggregateCols(se)
 }
