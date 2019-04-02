@@ -1,8 +1,3 @@
-skip_on_travis()
-skip_on_appveyor()
-
-
-
 context("EggNOG")
 
 test_that("EggNOG", {
