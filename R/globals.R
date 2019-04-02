@@ -4,7 +4,7 @@ globalVariables(".")
 
 packageVersion <- packageVersion("basejump")
 
-#' basejump test data URL
+#' acid.test data URL
 #' @keywords internal
 #' @export
 #' @examples

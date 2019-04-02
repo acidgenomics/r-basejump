@@ -2,14 +2,14 @@
 #' @export
 #' @inheritParams params
 #' @examples
-#' options(basejump.test = TRUE)
+#' options(acid.test = TRUE)
 #' x <- HGNC2Ensembl()
 #' print(x)
 HGNC2Ensembl <-  # nolint
     function() {
         assert(hasInternet())
 
-        if (isTRUE(getOption("basejump.test"))) {
+        if (isTRUE(getOption("acid.test"))) {
             file <- pasteURL(
                 basejumpTestsURL, "hgnc.txt.gz",
                 protocol = "none"

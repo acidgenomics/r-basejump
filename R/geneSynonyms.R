@@ -19,7 +19,7 @@
 #' Grouped by `geneID` column.
 #'
 #' @examples
-#' options(basejump.test = TRUE)
+#' options(acid.test = TRUE)
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
 geneSynonyms <- function(organism) {
@@ -36,7 +36,7 @@ geneSynonyms <- function(organism) {
 
     genome <- c(kingdom = kingdom, species = species)
 
-    if (isTRUE(getOption("basejump.test"))) {
+    if (isTRUE(getOption("acid.test"))) {
         assert(organism == "Homo sapiens")
         file <- pasteURL(
             basejumpTestsURL, paste0(snake(organism), ".gene_info.gz"),
