@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.2</span>
       </span>
     </div>
 
@@ -105,6 +105,27 @@
       <small>Source: <a href='https://github.com/acidgenomics/basejump/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="basejump-0-10-2-2019-04-02" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-10-2-2019-04-02" class="anchor"></a>basejump 0.10.2 (2019-04-02)</h2>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>
+<code>aggregateRows</code>, <code>aggregateCols</code>, <code>aggregateCellsToSamples</code>: Improved internal code for SummarizedExperiment metadata handling. Applies primarily to colData and rowData juggling for these methods.</li>
+</ul>
+</div>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Added additional unit tests, to improve code coverage.</li>
+<li>Now covering the aggregation functions in better detail, using a minimal SingleCellExperiment object that works with <code>aggregateCols</code>.</li>
+<li>Consistently use “acid” prefix instead of “basejump” for global options.</li>
+</ul>
+</div>
+</div>
     <div id="basejump-0-10-1-2019-04-01" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-1-2019-04-01" class="anchor"></a>basejump 0.10.1 (2019-04-01)</h2>
@@ -116,9 +137,9 @@
 <code>rankedMatrix</code>: New utility function for quickly performing ranked matrix calculations. Particularly useful for differential expression comparison across studies using log2 fold change or Wald test statistic.</li>
 </ul>
 </div>
-<div id="minor-changes" class="section level3">
+<div id="minor-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Simplified reexport methods for functions that define S4 methods.</li>
 </ul>
@@ -127,18 +148,18 @@
     <div id="basejump-0-10-0-2019-03-28" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-0-2019-03-28" class="anchor"></a>basejump 0.10.0 (2019-03-28)</h2>
-<div id="major-changes" class="section level3">
+<div id="major-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Split out Ensembl (AnnotationHub/ensembldb) annotation processing and GFF/GTF file loading utilites to new [freerange][] package. All of these functions remain re-exported here in <a href="https://basejump.acidgenomics.com/">basejump</a>. This includes: <code>annotable</code>, <code>convertUCSCBuildToEnsembl</code>, <code>detectOrganism</code>, <code>emptyRanges</code>, <code>makeGRangesFromEnsDb</code>, <code>makeGRangesFromEnsembl</code>, <code>makeGRangesFromGFF</code>, <code>makeGRangesFromGTF</code>.</li>
 <li>Split out heatmap functions to <a href="https://firestarter.acidgenomics.com/">firestarter</a> package. This includes <code>plotHeatmap</code>, <code>plotCorrelationHeatmap</code>, and <code>plotQuantileHeatmap</code>.</li>
 <li>Split out all ggplot2 functions to new <a href="https://minimalism.acidgenomics.com/">minimalism</a> package.</li>
 </ul>
 </div>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Offloaded <code>removeNA</code> and <code>sanitizeNA</code> code to <a href="https://brio.acidgenomics.com/">brio</a> package, so these functions can be imported in thew new [freerange][] package.</li>
 <li>Moved <code>organism_mappings</code> internal dataset to [freerange][] package.</li>
@@ -148,9 +169,9 @@
     <div id="basejump-0-9-16-2019-03-23" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-16-2019-03-23" class="anchor"></a>basejump 0.9.16 (2019-03-23)</h2>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>convertSampleIDsToNames</code>: Removed code to assign <code>sampleName</code> column to <code>NULL</code>. This step doesn’t work consistently for <code>DataFrame</code> across Bioconductor installations, and has been found to error on R 3.4 and the current bioc-devel on AppVeyor.</li>
@@ -163,9 +184,9 @@
     <div id="basejump-0-9-15-2019-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-15-2019-03-22" class="anchor"></a>basejump 0.9.15 (2019-03-22)</h2>
-<div id="minor-changes-3" class="section level3">
+<div id="minor-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated code to [Acid Genomics][].</li>
 </ul>
@@ -174,9 +195,9 @@
     <div id="basejump-0-9-14-2019-03-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-14-2019-03-18" class="anchor"></a>basejump 0.9.14 (2019-03-18)</h2>
-<div id="minor-changes-4" class="section level3">
+<div id="minor-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Additional bug fixes for <code>sampleData</code> and blacklisted metadata handling.</li>
 </ul>
@@ -185,9 +206,9 @@
     <div id="basejump-0-9-13-2019-03-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-13-2019-03-18" class="anchor"></a>basejump 0.9.13 (2019-03-18)</h2>
-<div id="minor-changes-5" class="section level3">
+<div id="minor-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated dependencies, specificially brio and goalie.</li>
 <li>Miscellaneous documentation improvements.</li>
@@ -197,17 +218,17 @@
     <div id="basejump-0-9-12-2019-03-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-12-2019-03-11" class="anchor"></a>basejump 0.9.12 (2019-03-11)</h2>
-<div id="major-changes-1" class="section level3">
+<div id="major-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>makeGRangesFromGFF</code>: Reworked internal code, making it more modular. Added initial support for RefSeq GFF3 files. Also improved sanitization and special handling of files from FlyBase and WormBase.</li>
 </ul>
 </div>
-<div id="minor-changes-6" class="section level3">
+<div id="minor-changes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotHeatmap</code> family: Bug fix needed for internal <code>is.na</code> call on <code>annotationCol</code>, which should be wrapped with <code>any</code> to return boolean. This errors (as it should) on R 3.6, but I missed it on R 3.5.</li>
@@ -218,9 +239,9 @@
     <div id="basejump-0-9-11-2019-02-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-11-2019-02-25" class="anchor"></a>basejump 0.9.11 (2019-02-25)</h2>
-<div id="minor-changes-7" class="section level3">
+<div id="minor-changes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated <a href="https://transformer.acidgenomics.com/">transformer</a> package reexports to include new <a href="https://cran.r-project.org/package=data.table">data.table</a> coercion methods.</li>
 <li>Added additional useful compression function reexports from <a href="https://brio.acidgenomics.com/">brio</a> package.</li>
@@ -230,9 +251,9 @@
     <div id="basejump-0-9-10-2019-02-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-10-2019-02-17" class="anchor"></a>basejump 0.9.10 (2019-02-17)</h2>
-<div id="minor-changes-8" class="section level3">
+<div id="minor-changes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Working on making the current basejump code base completely backward compatible with bcbioBase v0.4.1 and bcbioRNASeq v0.2.8 release series.</li>
 <li>Now reexporting <code><a href="https://www.rdocumentation.org/packages/goalie/topics/bapply">goalie::bapply</a></code> and additional useful pipes from magrittr package.</li>
@@ -245,9 +266,9 @@
     <div id="basejump-0-9-9-2019-02-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-9-2019-02-11" class="anchor"></a>basejump 0.9.9 (2019-02-11)</h2>
-<div id="minor-changes-9" class="section level3">
+<div id="minor-changes-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-10" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Code fixes to provide backward compatibility support for R 3.4. Tested using R 3.4.1 with Bioconductor 3.6 release.</li>
 <li>Needed to add <code>unname</code> to some assert checks for expected <code><a href="https://www.rdocumentation.org/packages/base/topics/logical">logical(1)</a></code> return, which only happens in R 3.4 but not R 3.5.</li>
@@ -259,9 +280,9 @@
     <div id="basejump-0-9-8-2019-02-08" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-8-2019-02-08" class="anchor"></a>basejump 0.9.8 (2019-02-08)</h2>
-<div id="minor-changes-10" class="section level3">
+<div id="minor-changes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-10" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-11" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Deprecating <code>plotGene</code> in favor of <code>plotCounts</code>. This change will be reflected in future updates of packages that depend on <a href="https://basejump.acidgenomics.com/">basejump</a>, including the bcbio R packages.</li>
 <li>Split out subpackage reexports into separate files.</li>
@@ -272,9 +293,9 @@
     <div id="basejump-0-9-7-2019-01-23" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-7-2019-01-23" class="anchor"></a>basejump 0.9.7 (2019-01-23)</h2>
-<div id="minor-changes-11" class="section level3">
+<div id="minor-changes-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-11" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-12" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>decode</code> and <code>encode</code> are properly reexported from <a href="https://brio.acidgenomics.com/">brio</a>.</li>
@@ -285,9 +306,9 @@
     <div id="basejump-0-9-6-2019-01-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-6-2019-01-22" class="anchor"></a>basejump 0.9.6 (2019-01-22)</h2>
-<div id="minor-changes-12" class="section level3">
+<div id="minor-changes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-12" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Note that S4Transformer package import has been renamed to transformer.</li>
 <li>Needed to add <code>decode</code> call internally for some plotting functions, to ensure that run-length encoded (Rle) rowData gets handled correctly.</li>
@@ -324,9 +345,9 @@
     <div id="basejump-0-9-5-2019-01-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-5-2019-01-22" class="anchor"></a>basejump 0.9.5 (2019-01-22)</h2>
-<div id="minor-changes-13" class="section level3">
+<div id="minor-changes-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-14" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated basejump subpackage dependencies.</li>
 <li>Needed to add <code>decode</code> call internally for some plotting functions, to ensure that run-length encoded (Rle) rowData gets handled correctly.</li>
@@ -363,9 +384,9 @@
     <div id="basejump-0-9-4-2019-01-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-4-2019-01-12" class="anchor"></a>basejump 0.9.4 (2019-01-12)</h2>
-<div id="minor-changes-14" class="section level3">
+<div id="minor-changes-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-14" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-15" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Consolidated reexports from <a href="https://basejump.acidgenomics.com/">basejump</a> sub-packages into <code>reexports.R</code> file.</li>
 <li>Miscellaneous documentation updates, improving link appearance for functions exported in other packages.</li>
@@ -375,9 +396,9 @@
     <div id="basejump-0-9-3-2019-01-08" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-3-2019-01-08" class="anchor"></a>basejump 0.9.3 (2019-01-08)</h2>
-<div id="minor-changes-15" class="section level3">
+<div id="minor-changes-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-15" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-16" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reorganized imports in <code>DESCRIPTION</code> file to make them more human readable. Note that <a href="https://basejump.acidgenomics.com/">basejump</a> sub-packages are imported first, then <a href="https://bioconductor.org/">Bioconductor</a> packages, followed by [CRAN][] packages, and required default packages.</li>
 <li>Split out NAMESPACE imports into a separate <code>imports.R</code> file.</li>
@@ -457,9 +478,9 @@
 <code>standardizeCall</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-16" class="section level3">
+<div id="minor-changes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-16" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-17" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added <code>nullOK</code> support to <a href="https://goalie.acidgenomics.com/">goalie</a> assert checks, where applicable.</li>
 </ul>
@@ -469,16 +490,16 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-1-2018-12-22" class="anchor"></a>basejump 0.9.1 (2018-12-22)</h2>
 <p>This release defines the initial point where <a href="https://basejump.acidgenomics.com/">basejump</a> begins to import <a href="https://bioverbs.acidgenomics.com/">bioverbs</a>.</p>
-<div id="major-changes-2" class="section level3">
+<div id="major-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing generics using our <a href="https://bioverbs.acidgenomics.com/">bioverbs</a> S4 generic package. All generics previously defined in <a href="https://basejump.acidgenomics.com/">basejump</a> will continue to be reexported, to maintain backward compatibility for reverse dependencies (revdeps).</li>
 </ul>
 </div>
-<div id="minor-changes-17" class="section level3">
+<div id="minor-changes-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-17" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-18" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>aggregateCellsToSamples</code>: Split out S4 method to a separate file. Previously was defined in <code>aggregate-methods.R</code>.</li>
@@ -518,9 +539,9 @@
 <code>sanitizeColData</code>: rework of previous <code>sanitizeSampleData</code> approach.</li>
 </ul>
 </div>
-<div id="major-changes-3" class="section level3">
+<div id="major-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <a href="https://goalie.acidgenomics.com/">goalie</a> package instead of <a href="https://cran.r-project.org/package=assertive">assertive</a> for internal assert checks. The new <code><a href="https://www.rdocumentation.org/packages/goalie/topics/assert">goalie::assert</a></code> function is more flexible in many cases. Similarly, <code><a href="https://www.rdocumentation.org/packages/goalie/topics/validate">goalie::validate</a></code> is now being used in place of <code><a href="https://www.rdocumentation.org/packages/assertthat/topics/validate_that">assertthat::validate_that</a></code>.</li>
 <li>
@@ -531,9 +552,9 @@
 <code>makeGRangesFromEnsembl</code>: Switched to using S4 run-length encoding (Rle) in our metadata column (mcols) return. This functionality matches the conventions used by GenomicRanges in the <code>GRanges</code> return, and reduces the memory footprint of very large annotation objects.</li>
 </ul>
 </div>
-<div id="minor-changes-18" class="section level3">
+<div id="minor-changes-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-18" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-19" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Note that some internal instances of <code>has_length</code> aren’t quite strict enough. Switch to using <code>length(x) &gt; 0L</code> or improved <code>hasLength</code> assert check defined in the <a href="https://goalie.acidgenomics.com/">goalie</a> package.</li>
 <li>
@@ -570,9 +591,9 @@
 <code>deg</code>: Utility function to quickly obtain differentially expressed gene (DEG) identifiers as a character vector.</li>
 </ul>
 </div>
-<div id="major-changes-4" class="section level3">
+<div id="major-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>plotHeatmap</code>: Now defining row scaling internally, rather than relying on the functionality defined in <code>pheatmap</code>.</li>
@@ -590,9 +611,9 @@
 <code>humanize</code>. New generic that enables easy conversion to human-friendly column and/or row names. Useful for CSV file export in particular.</li>
 </ul>
 </div>
-<div id="minor-changes-19" class="section level3">
+<div id="minor-changes-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-19" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-20" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>export</code>: Added <code>humanize</code> argument support.</li>
@@ -605,9 +626,9 @@
     <div id="basejump-0-8-6-alpha-2018-11-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-6-alpha-2018-11-30" class="anchor"></a>basejump 0.8.6-alpha (2018-11-30)</h2>
-<div id="minor-changes-20" class="section level3">
+<div id="minor-changes-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-20" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-21" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Now importing <code>hasUniqueCols</code> from goalie. Switched from previous approach using <code>areSamplesUnique</code>.</li>
 <li>Documentation improvement for <code>genomeBuild</code>, used in <code>makeGRanges</code> functions.</li>
@@ -634,9 +655,9 @@
 <code>markdownPlotlist</code>. Renamed to <code>markdownPlots</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-21" class="section level3">
+<div id="minor-changes-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-21" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-22" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>autopadZeros</code>: Improved internal code to keep track of names for <code>character</code> method. Also added method support for <code>SummarizedExperiment</code>, which works on the column names (e.g. sample names) only by default.</li>
@@ -674,9 +695,9 @@
 <code>plotGenderMarkers</code>: Migrated the <code>SummarizedExperiment</code> method from bcbioRNASeq package.</li>
 </ul>
 </div>
-<div id="minor-changes-22" class="section level3">
+<div id="minor-changes-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-22" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-23" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Split out call functions defined in <code>calls.R</code> into separate R files. Refer to <code>dots</code>, for example.</li>
 <li>Split out <code>environment.R</code> into separate R files. See <code>detectHPC</code> for example.</li>
@@ -687,9 +708,9 @@
     <div id="basejump-0-8-3-alpha-2018-11-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-3-alpha-2018-11-25" class="anchor"></a>basejump 0.8.3-alpha (2018-11-25)</h2>
-<div id="minor-changes-23" class="section level3">
+<div id="minor-changes-24" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-23" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-24" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved usage of <code><a href="https://www.rdocumentation.org/packages/assertthat/topics/validate_that">assertthat::validate_that</a></code> in S4 class validity checks. Removed former approach using internal <code>.valid</code> function.</li>
 <li>Temporarily soft deprecated some functions that will be formally deprecated in a future release. See <code>deprecated.R</code> file.</li>
@@ -707,9 +728,9 @@
     <div id="basejump-0-8-2-alpha-2018-11-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-2-alpha-2018-11-19" class="anchor"></a>basejump 0.8.2-alpha (2018-11-19)</h2>
-<div id="major-changes-5" class="section level3">
+<div id="major-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-6" class="anchor"></a>Major changes</h3>
 <p>Migrating some additional base code that can be dispatched on either <code>SummarizedExperiment</code> or <code>SingleCellExperiment</code> from the bcbio R packages. We’re going to split out some of the single-cell RNA-seq functionality into separate packages, since a lot of my work moving forward deals with the 10X Genomics Cell Ranger platform, rather than the bcbio-supported inDrops platform.</p>
 <p>In particular:</p>
 <ul>
@@ -737,9 +758,9 @@
 <code>plotUMIsVsGenes</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-24" class="section level3">
+<div id="minor-changes-25" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-24" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-25" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated some <code>plotHeatmap</code> and <code>plotPCA</code> code from bcbio R packages.</li>
 <li>Added new <code>formalsList</code> global variable, which stashes <code>getOption</code> defaults used in some functions, namely the save/load functions and some plotting functions.</li>
@@ -752,18 +773,18 @@
     <div id="basejump-0-8-1-alpha-2018-11-15" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-1-alpha-2018-11-15" class="anchor"></a>basejump 0.8.1-alpha (2018-11-15)</h2>
-<div id="major-changes-6" class="section level3">
+<div id="major-changes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-6" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-7" class="anchor"></a>Major changes</h3>
 <p>The split-out sub-package approach isn’t working quite right, so the code base has been consolidated back into a single basejump package. Development toward splitting the package will continue, but a conceptual re-imagining of how to organize the functions is needed.</p>
 </div>
 </div>
     <div id="basejump-0-8-0-alpha-2018-11-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-0-alpha-2018-11-11" class="anchor"></a>basejump 0.8.0-alpha (2018-11-11)</h2>
-<div id="major-changes-7" class="section level3">
+<div id="major-changes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-7" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-8" class="anchor"></a>Major changes</h3>
 <p>This release is the beginning of an attempt to rework the basejump codebase a bit and make the package easier to unit test on <a href="https://travis-ci.com/">Travis CI</a>. bcbio R packages will be pinned to v0.7.2 during this development period.</p>
 <p>Here we are working to split out the functionality of basejump into several, smaller sub-packages:</p>
 <ul>
@@ -797,9 +818,9 @@
 <code>validNames</code>.</li>
 </ul>
 </div>
-<div id="major-changes-8" class="section level3">
+<div id="major-changes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-8" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-9" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Added a draft vignette explaining the functions available in the package.</li>
 <li>
@@ -808,9 +829,9 @@
 <code>saveData</code> now supports <code>basejump.save.ext</code> and <code>basejump.save.compress</code> global options, so the desired file type (e.g. RDS instead of RDA) and compression (e.g. xz instead of gzip) can be easily specified for an entire project.</li>
 </ul>
 </div>
-<div id="minor-changes-25" class="section level3">
+<div id="minor-changes-26" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-25" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-26" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>sampleNames</code> now supports assignment for <code>SummarizedExperiment</code> method.</li>
@@ -845,16 +866,16 @@
 <code>cleanSystemLibrary</code>: Utility function to check whether a user has installed packages into the <a href="https://www.r-project.org/">R</a> system library. Refer to <code>.libPaths</code> documentation for more information on library paths.</li>
 </ul>
 </div>
-<div id="major-changes-9" class="section level3">
+<div id="major-changes-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-9" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-10" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <code>build</code> instead of <code>genomeBuild</code> for <a href="https://www.ensembl.org/">Ensembl</a> annotation functions. The <code>genomeBuild</code> argument still works but now will inform the user about the change.</li>
 </ul>
 </div>
-<div id="minor-changes-26" class="section level3">
+<div id="minor-changes-27" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-26" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-27" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code>prepareTemplate</code> from <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package. Simplifed this function to copy all files inside <code>extdata/rmarkdown/shared</code> within a specified package. Currently in use for <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, <a href="https://bioinformatics.sph.harvard.edu/bcbioSingleCell/">bcbioSingleCell</a>, and the new <a href="https://pointillism.acidgenomics.com/">pointillism</a> clustering package.</li>
 <li>Made <a href="https://www.ensembl.org/">Ensembl</a> release matching stricter, based on the metadata columns.</li>
@@ -874,9 +895,9 @@
 <li>Migrated S4 generics and methods from <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a>: <code>flatFiles</code>, <code>metrics</code>, <code>plotCorrleationHeatmap</code>, <code>plotGene</code>, <code>plotHeatmap</code>, <code>plotQC</code>, and <code>plotQuantileHeatmap</code>.</li>
 </ul>
 </div>
-<div id="major-changes-10" class="section level3">
+<div id="major-changes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-10" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-11" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <code><a href="https://www.rdocumentation.org/packages/curl/topics/nslookup">curl::has_internet</a></code> internally to check for Internet connection. This applies to the annotation functions that query web databases.</li>
 <li>Added coercion method support for converting a <code>SummarizedExperiment</code> to an unstructured <code>list</code>. This is the method used internally for <code>flatFiles</code>.</li>
@@ -898,9 +919,9 @@
     <div id="basejump-0-6-3-2018-08-01" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-3-2018-08-01" class="anchor"></a>basejump 0.6.3 (2018-08-01)</h2>
-<div id="minor-changes-27" class="section level3">
+<div id="minor-changes-28" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-27" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-28" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code>separatorBar</code> and <code>updateMessage</code> global export from <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a>. Improved <code>separatorBar</code> appeareance to automatically scale to current session width, using <code><a href="https://www.rdocumentation.org/packages/base/topics/options">getOption("width")</a></code>.</li>
 </ul>
@@ -919,18 +940,18 @@
 <code>eggnog</code>: quickly download current annotations from <a href="http://eggnogdb.embl.de/">EggNOG</a> database. Useful for annotating gene-to-protein matches; currently in use with the <a href="https://brightworm.acidgenomics.com/">brightworm</a> RNAi screening package, which contains <a href="http://www.wormbase.org/">WormBase</a> gene ID and <a href="http://eggnogdb.embl.de/">EggNOG</a> ID annotations.</li>
 </ul>
 </div>
-<div id="major-changes-11" class="section level3">
+<div id="major-changes-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-11" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-12" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now suggesting <a href="https://cran.r-project.org/package=BiocManager">BiocManager</a> instead of <a href="https://bioconductor.org/packages/BiocInstaller/">BiocInstaller</a> for installation.</li>
 <li>
 <code>broadClass</code> now supports <code>GRanges</code> and <code>SummarizedExperiment</code>. Support for <code>data.frame</code> and/or <code>DataFrame</code> class objects has been removed.</li>
 </ul>
 </div>
-<div id="minor-changes-28" class="section level3">
+<div id="minor-changes-29" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-28" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-29" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>convertGenesToSymbols</code> and <code>convertTranscriptsToGenes</code> now have <code>organism</code> and <code>gene2symbol</code> arguments set <code>NULL</code> by default.</li>
@@ -947,9 +968,9 @@
     <div id="basejump-0-6-1-2018-07-21" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-1-2018-07-21" class="anchor"></a>basejump 0.6.1 (2018-07-21)</h2>
-<div id="minor-changes-29" class="section level3">
+<div id="minor-changes-30" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-29" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Bug fix for <code>convertGenesToSymbols</code> method for <code>SummarizedExperiment</code>. Previously, if <code>geneName</code> column was a factor, this function would error. This issue has been fixed by ensuring that the symbols provided in <code>geneName</code> are coerced to a character vector.</li>
 <li>Improved <a href="https://conda.io/">conda</a> installation instructions.</li>
@@ -959,9 +980,9 @@
     <div id="basejump-0-6-0-2018-07-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-0-2018-07-17" class="anchor"></a>basejump 0.6.0 (2018-07-17)</h2>
-<div id="major-changes-12" class="section level3">
+<div id="major-changes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-12" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-13" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing <a href="https://bioconductor.org/packages/SummarizedExperiment/">SummarizedExperiment</a> package and providing basic method support for generics that were previously used in the <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package.</li>
 <li>Improved GFFv3 handling in <code>makeGRangesFromGFF</code> and other GFF utility functions, including <code>makeGene2symbolFromGFF</code> and <code>makeTx2geneFromGFF</code>. Note that <code>makeGRangesFromGFF</code> now returns additional metadata columns accessible with <code><a href="https://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">S4Vectors::mcols</a></code>, and that these columns are now sorted alphabetically.</li>
@@ -987,9 +1008,9 @@
 </ul>
 <p>Providing basic <code>SummarizedExperiment</code> class method support for <code>counts</code>.</p>
 </div>
-<div id="minor-changes-30" class="section level3">
+<div id="minor-changes-31" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>geometricMean</code> generic was not exported correctly.</li>
@@ -999,9 +1020,9 @@
     <div id="basejump-0-5-11-2018-07-09" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-11-2018-07-09" class="anchor"></a>basejump 0.5.11 (2018-07-09)</h2>
-<div id="minor-changes-31" class="section level3">
+<div id="minor-changes-32" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Now requiring <a href="http://ggplot2.tidyverse.org/">ggplot2</a> v3.0 internally.</li>
 <li>
@@ -1015,9 +1036,9 @@
     <div id="basejump-0-5-10-2018-06-28" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-10-2018-06-28" class="anchor"></a>basejump 0.5.10 (2018-06-28)</h2>
-<div id="minor-changes-32" class="section level3">
+<div id="minor-changes-33" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-33" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Removed <code>makeNames</code> argument from <code>readFileByExtension</code> function. Use the <code>makeNames</code> family of functions manually after data import instead. This helps avoid unwanted sanitization of data.</li>
 <li>Simplified assert checks for internal load function.</li>
@@ -1030,9 +1051,9 @@
     <div id="basejump-0-5-9-2018-06-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-9-2018-06-12" class="anchor"></a>basejump 0.5.9 (2018-06-12)</h2>
-<div id="minor-changes-33" class="section level3">
+<div id="minor-changes-34" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-33" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-34" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Markdown function consistency improvements. Now all relevant <a href="https://daringfireball.net/projects/markdown/">Markdown</a> functions use <code>text</code> as the primary argument, instead of <code>object</code>.</li>
 </ul>
@@ -1041,9 +1062,9 @@
     <div id="basejump-0-5-8-2018-06-05" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-8-2018-06-05" class="anchor"></a>basejump 0.5.8 (2018-06-05)</h2>
-<div id="minor-changes-34" class="section level3">
+<div id="minor-changes-35" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-34" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-35" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>makeGRangesFromEnsembl</code> now supports remapping of <a href="https://genome.ucsc.edu/">UCSC</a> genome build to Ensembl. However, this isn’t recommended, and will warn the user.</li>
@@ -1067,9 +1088,9 @@
     <div id="basejump-0-5-7-2018-05-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-7-2018-05-24" class="anchor"></a>basejump 0.5.7 (2018-05-24)</h2>
-<div id="minor-changes-35" class="section level3">
+<div id="minor-changes-36" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-35" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-36" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Tweaked gray color accents for <code>theme_midnight</code> and <code>theme_paperwhite</code>.</li>
 </ul>
@@ -1078,9 +1099,9 @@
     <div id="basejump-0-5-6-2018-05-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-6-2018-05-19" class="anchor"></a>basejump 0.5.6 (2018-05-19)</h2>
-<div id="minor-changes-36" class="section level3">
+<div id="minor-changes-37" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-36" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-37" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Fixed NAMESPACE issue with <code><a href="https://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo">GenomeInfoDb::seqnames</a></code>.</li>
 <li>Improved <code>readGFF</code> working example to reflect switch to <code>GRanges</code> return.</li>
@@ -1091,17 +1112,17 @@
     <div id="basejump-0-5-5-2018-05-15" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-5-2018-05-15" class="anchor"></a>basejump 0.5.5 (2018-05-15)</h2>
-<div id="major-changes-13" class="section level3">
+<div id="major-changes-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-13" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-14" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>readGFF</code> now uses <code><a href="https://www.rdocumentation.org/packages/rtracklayer/topics/export">rtracklayer::import</a></code> internally to return GFF file as a <code>GRanges</code> object instead of a <code>data.frame</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-37" class="section level3">
+<div id="minor-changes-38" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-37" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-38" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>assertIsGFF</code> and <code>parseGFFAttributes</code> functions are now defunct.</li>
@@ -1120,9 +1141,9 @@
     <div id="basejump-0-5-3-2018-04-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-3-2018-04-30" class="anchor"></a>basejump 0.5.3 (2018-04-30)</h2>
-<div id="minor-changes-38" class="section level3">
+<div id="minor-changes-39" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-38" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-39" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved internal S4 method code for <code>fixNA</code> and <code>removeNA</code>.</li>
 <li>Tweaked gray accent colors in <code>theme_midnight</code> and <code>theme_paperwhite</code>. Now using British spelling internally for ggplot code.</li>
@@ -1133,9 +1154,9 @@
     <div id="basejump-0-5-2-2018-04-26" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-2-2018-04-26" class="anchor"></a>basejump 0.5.2 (2018-04-26)</h2>
-<div id="minor-changes-39" class="section level3">
+<div id="minor-changes-40" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-39" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-40" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved documentation for assert check functions.</li>
 <li>Deprecated <code>geomean</code> in favor of <code>geometricMean</code>.</li>
@@ -1151,9 +1172,9 @@
     <div id="basejump-0-5-1-2018-04-16" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-1-2018-04-16" class="anchor"></a>basejump 0.5.1 (2018-04-16)</h2>
-<div id="minor-changes-40" class="section level3">
+<div id="minor-changes-41" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-40" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-41" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>emptyRanges</code>: Now using <code>match.arg</code> internally to capture <code>seqname</code> argument.</li>
@@ -1190,17 +1211,17 @@
 <code>theme_midnight</code> and <code>theme_paperwhite</code> provide minimal, high contrast <a href="http://ggplot2.tidyverse.org/">ggplot2</a> themes with bold sans serif labels.</li>
 </ul>
 </div>
-<div id="major-changes-14" class="section level3">
+<div id="major-changes-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-14" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-15" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>loadData</code> now supports <code>.rda</code>, <code>.rds</code>, and <code>.RData</code> files. The function will error by design if multiple data extensions are detected inside the directory specified with the <code>dir</code> argument.</li>
 </ul>
 </div>
-<div id="minor-changes-41" class="section level3">
+<div id="minor-changes-42" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-41" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-42" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Consolidated assert check function code.</li>
 <li>Moved assertive imports to <code>basejump-package.R</code> file.</li>
@@ -1222,9 +1243,9 @@
     <div id="basejump-0-4-0-2018-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-4-0-2018-03-22" class="anchor"></a>basejump 0.4.0 (2018-03-22)</h2>
-<div id="major-changes-15" class="section level3">
+<div id="major-changes-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-15" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-16" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Introducing new functions for the acquistion of gene and transcript annotations from <a href="https://www.ensembl.org/">Ensembl</a>: <code>ensembl</code>, <code>genes</code>, and <code>transcripts</code>. These functions allow the return of <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects from <a href="https://bioconductor.org/packages/AnnotationHub/">AnnotationHub</a> using <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>.</li>
 <li>Improved internal <code>broadClass</code> definition code to match against chromosome from <a href="https://www.ensembl.org/">Ensembl</a> if available.</li>
@@ -1232,9 +1253,9 @@
 <code>loadDataAsName</code> now works with unquoted names, improving consistency with <code>loadData</code> (non-standard evaluation).</li>
 </ul>
 </div>
-<div id="minor-changes-42" class="section level3">
+<div id="minor-changes-43" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-42" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-43" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added new <code>convertUCSCBuildToEnsembl</code> function, for easy remapping of <a href="https://genome.ucsc.edu/">UCSC</a> to <a href="https://www.ensembl.org/">Ensembl</a> genome build names (e.g. <code>hg38</code> to <code>GRCh38</code>).</li>
 <li>Migrated matrix methods for <code>plotCorrelationHeatmap</code> here from <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, for improved consistency with other heatmap functions.</li>
@@ -1680,6 +1701,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-10-2-2019-04-02">0.10.2</a></li>
         <li><a href="#basejump-0-10-1-2019-04-01">0.10.1</a></li>
         <li><a href="#basejump-0-10-0-2019-03-28">0.10.0</a></li>
         <li><a href="#basejump-0-9-16-2019-03-23">0.9.16</a></li>
