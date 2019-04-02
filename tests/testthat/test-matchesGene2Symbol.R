@@ -1,6 +1,4 @@
-context("Assertions")
-
-data(rse, package = "acidtest", envir = environment())
+context("matchesGene2Symbol")
 
 gene2symbol <- Gene2Symbol(
     object = DataFrame(
@@ -9,9 +7,6 @@ gene2symbol <- Gene2Symbol(
     )
 )
 
-
-
-# matchesGene2Symbol ===========================================================
 test_that("matchesGene2Symbol", {
     genes <- gene2symbol[["geneID"]]
     expect_true(is.character(genes))
@@ -33,17 +28,5 @@ test_that("matchesGene2Symbol", {
             genes = genes,
             gene2symbol = gene2symbol
         )
-    )
-})
-
-
-
-# assertFormalInterestingGroups ================================================
-test_that("assertFormalInterestingGroups", {
-    expect_true(
-        matchesInterestingGroups(x = rse, interestingGroups = "condition")
-    )
-    expect_false(
-        matchesInterestingGroups(x = rse, interestingGroups = "XXX")
     )
 })

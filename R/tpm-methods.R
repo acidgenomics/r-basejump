@@ -25,10 +25,11 @@ NULL
 
 
 
+#' @rdname tpm
+#' @name tpm
 #' @importFrom SingleCellExperiment tpm
-#' @aliases NULL
 #' @export
-SingleCellExperiment::tpm
+NULL
 
 
 

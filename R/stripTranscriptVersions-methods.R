@@ -19,20 +19,21 @@ NULL
 
 
 
+#' @rdname stripTranscriptVersions
+#' @name stripTranscriptVersions
 #' @importFrom bioverbs stripTranscriptVersions
-#' @aliases NULL
 #' @export
-bioverbs::stripTranscriptVersions
+NULL
 
 
 
+# Pattern matching against Ensembl transcript IDs.
+# http://www.ensembl.org/info/genome/stable_ids/index.html
+# Examples: ENST (human); ENSMUST (mouse).
+# `:punct:` will match `-` or `_` here.
 stripTranscriptVersions.character <-  # nolint
     function(object) {
-        # Pattern matching against Ensembl transcript IDs.
-        # http://www.ensembl.org/info/genome/stable_ids/index.html
-        # Examples: ENST (human); ENSMUST (mouse).
         assert(isCharacter(object))
-        # punct will match `-` or `_` here.
         gsub(
             pattern = "^(ENS.*[GT][[:digit:]]{11})[[:punct:]][[:digit:]]+$",
             replacement = "\\1",

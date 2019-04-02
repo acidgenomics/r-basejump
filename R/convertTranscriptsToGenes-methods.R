@@ -55,10 +55,11 @@ NULL
 
 
 
+#' @rdname convertTranscriptsToGenes
+#' @name convertTranscriptsToGenes
 #' @importFrom bioverbs convertTranscriptsToGenes
-#' @aliases NULL
 #' @export
-bioverbs::convertTranscriptsToGenes
+NULL
 
 
 

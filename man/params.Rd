@@ -4,6 +4,18 @@
 \alias{params}
 \title{Parameters}
 \arguments{
+\item{object, x}{Object.}
+
+\item{value}{Value to assign.}
+
+\item{...}{Additional arguments.}
+
+\item{i}{Indices specifying elements to extract or replace. Indices are \code{numeric} or
+\code{character} vectors, empty (\code{missing}), or \code{NULL}.
+
+For more information:\preformatted{help(topic = "Extract", package = "base")
+}}
+
 \item{assay}{\code{vector(1)}.
 Name or index of count matrix slotted in
 \code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
@@ -56,12 +68,6 @@ IDs (e.g. \code{"hg38"}).}
 \item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}).
 Markdown header level.}
 
-\item{i}{Indices specifying elements to extract or replace. Indices are \code{numeric} or
-\code{character} vectors, empty (\code{missing}), or \code{NULL}.
-
-For more information:\preformatted{help(topic = "Extract", package = "base")
-}}
-
 \item{inherits}{\code{logical(1)}.
 Should the enclosing frames of the \code{environment} be searched?}
 
@@ -77,8 +83,6 @@ Number to include.}
 
 \item{ntop}{\code{integer(1)}.
 Number of top genes to label.}
-
-\item{object}{Object.}
 
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. "\code{Homo sapiens}").}
@@ -105,11 +109,55 @@ Transcript-to-gene mappings.}
 \item{url}{\code{character(1)}.
 Uniform Resource Locator (URL). HTTP or FTP address.}
 
-\item{value}{Value to assign.}
+\item{assays}{\code{list}.
+Count matrices, which must have matching dimensions. Counts can be passed
+in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
 
-\item{x}{Object.}
+\item{rowRanges}{\code{GRanges}.
+Genomic ranges (e.g. genome annotations). Metadata describing the assay
+rows.}
 
-\item{...}{Additional arguments.}
+\item{rowData}{\code{DataFrame}.
+Metadata describing the assay rows, if genomic ranges are not available.
+\emph{Use rowRanges (GRanges) instead, if possible}.}
+
+\item{colData}{\code{DataFrame}.
+Metadata describing the assay columns. For bulk RNA-seq, this data
+describes the samples. For single-cell RNA-seq, this data describes the
+cells.}
+
+\item{metadata}{\code{list}.
+Metadata.}
+
+\item{transgeneNames}{\code{character}.
+Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
+
+\item{spikeNames}{\code{character}.
+Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
+
+\item{censorSamples}{\code{character}.
+Specify a subset of samples to censor.}
+
+\item{gffFile}{\code{character(1)}.
+GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
+(GFFv2) instead of a GFFv3 file if possible.}
+
+\item{prefilter}{\code{logical(1)}.
+Apply prefiltering to remove zero count genes.}
+
+\item{sampleMetadataFile}{\code{character(1)}.
+Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
+are also supported. Check the documentation for conventions and required
+columns.}
+
+\item{BPPARAM}{\code{bpparamClass}.
+BiocParallel parameter to specify the desired processor configuration.\cr
+We recommend using one of the following:
+\itemize{
+\item \link[BiocParallel:bpparam]{bpparam}.
+\item \link[BiocParallel:SerialParam]{SerialParam}.
+\item \link[BiocParallel:MulticoreParam]{MulticoreParam}.
+}}
 }
 \value{
 No value.

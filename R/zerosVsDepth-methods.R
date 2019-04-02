@@ -11,10 +11,11 @@ NULL
 
 
 
+#' @rdname zerosVsDepth
+#' @name zerosVsDepth
 #' @importFrom bioverbs zerosVsDepth
-#' @aliases NULL
 #' @export
-bioverbs::zerosVsDepth
+NULL
 
 
 

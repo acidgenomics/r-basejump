@@ -3,6 +3,8 @@
 \docType{methods}
 \name{logRatio}
 \alias{logRatio}
+\alias{foldChangeToLogRatio}
+\alias{logRatioToFoldChange}
 \alias{foldChangeToLogRatio,numeric-method}
 \alias{logRatioToFoldChange,numeric-method}
 \title{Interconvert log ratio and fold change values}

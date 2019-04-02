@@ -3,6 +3,7 @@
 \docType{methods}
 \name{interestingGroups}
 \alias{interestingGroups}
+\alias{interestingGroups<-}
 \alias{interestingGroups,SummarizedExperiment-method}
 \alias{interestingGroups<-,SummarizedExperiment,character-method}
 \alias{interestingGroups<-,SummarizedExperiment,NULL-method}

@@ -3,6 +3,9 @@
 \docType{methods}
 \name{mapGenes}
 \alias{mapGenes}
+\alias{mapGenesToRownames}
+\alias{mapGenesToIDs}
+\alias{mapGenesToSymbols}
 \alias{mapGenesToRownames,Gene2Symbol-method}
 \alias{mapGenesToRownames,SummarizedExperiment-method}
 \alias{mapGenesToIDs,Gene2Symbol-method}

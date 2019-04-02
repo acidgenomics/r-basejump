@@ -28,15 +28,17 @@ NULL
 
 
 
+#' @rdname sampleNames
+#' @name sampleNames
 #' @importFrom Biobase sampleNames
-#' @aliases NULL
 #' @export
-Biobase::sampleNames
+NULL
 
+#' @rdname sampleNames
+#' @name sampleNames<-
 #' @importFrom Biobase sampleNames<-
-#' @aliases NULL
 #' @export
-Biobase::`sampleNames<-`
+NULL
 
 
 

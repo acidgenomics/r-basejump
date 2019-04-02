@@ -1,16 +1,3 @@
-data(rse, txse, package = "acidtest", envir = environment())
-
-
-
-context("EggNOG")
-
-test_that("EggNOG", {
-    x <- EggNOG()
-    expect_s4_class(x, "EggNOG")
-})
-
-
-
 context("Ensembl2Entrez")
 
 test_that("Ensembl2Entrez", {
@@ -39,34 +26,6 @@ with_parameters_test_that(
 )
 
 rm(format)
-
-
-
-context("HGNC2Ensembl")
-
-test_that("HGNC2Ensembl", {
-    x <- HGNC2Ensembl()
-    expect_s4_class(x, "HGNC2Ensembl")
-})
-
-
-
-
-context("MGI2Ensembl")
-
-test_that("MGI2Ensembl", {
-    x <- MGI2Ensembl()
-    expect_s4_class(x, "MGI2Ensembl")
-})
-
-
-
-context("PANTHER")
-
-test_that("PANTHER", {
-    x <- PANTHER(organism = "Homo sapiens")
-    expect_s4_class(x, "PANTHER")
-})
 
 
 

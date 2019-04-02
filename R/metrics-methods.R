@@ -38,15 +38,17 @@ NULL
 
 
 
+#' @rdname metrics
+#' @name metrics
 #' @importFrom bioverbs metrics
-#' @aliases NULL
 #' @export
-bioverbs::metrics
+NULL
 
+#' @rdname metrics
+#' @name metricsPerSample
 #' @importFrom bioverbs metricsPerSample
-#' @aliases NULL
 #' @export
-bioverbs::metricsPerSample
+NULL
 
 
 

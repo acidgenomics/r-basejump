@@ -21,10 +21,11 @@ NULL
 
 
 
+#' @rdname selectSamples
+#' @name selectSamples
 #' @importFrom bioverbs selectSamples
-#' @aliases NULL
 #' @export
-bioverbs::selectSamples
+NULL
 
 
 

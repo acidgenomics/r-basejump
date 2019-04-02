@@ -21,10 +21,11 @@ NULL
 
 
 
+#' @rdname autopadZeros
+#' @name autopadZeros
 #' @importFrom bioverbs autopadZeros
-#' @aliases NULL
 #' @export
-bioverbs::autopadZeros
+NULL
 
 
 
