@@ -62,77 +62,81 @@ rankedMatrix <- function(
 
 # Consider using `data.table::frank()` instead of `base::rank()` for speed.
 # This adds an additional dependency, so avoid at the moment.
-.rank.numeric <- function(x, decreasing = FALSE) {
-    assert(
-        is.numeric(x),
-        isFlag(decreasing),
-        isFlag(decreasing)
-    )
-    r <- x
-    if (isTRUE(decreasing)) r <- -r
-    rank(r, na.last = TRUE, ties.method = "average")
-}
+.rank.numeric <-  # nolint
+    function(x, decreasing = FALSE) {
+        assert(
+            is.numeric(x),
+            isFlag(decreasing),
+            isFlag(decreasing)
+        )
+        r <- x
+        if (isTRUE(decreasing)) r <- -r
+        rank(r, na.last = TRUE, ties.method = "average")
+    }
 
 
 
-.rank.matrix <- function(
-    x,
-    MARGIN = 2L,  # nolint
-    decreasing = FALSE
-) {
-    assert(
-        is.matrix(x),
-        isFlag(decreasing),
-        isInt(MARGIN)
-    )
-    apply(
-        X = x,
-        MARGIN = MARGIN,
-        FUN = .rank.numeric,
-        decreasing = decreasing
-    )
-}
+.rank.matrix <-  # nolint
+    function(
+        x,
+        MARGIN = 2L,  # nolint
+        decreasing = FALSE
+    ) {
+        assert(
+            is.matrix(x),
+            isFlag(decreasing),
+            isInt(MARGIN)
+        )
+        apply(
+            X = x,
+            MARGIN = MARGIN,
+            FUN = .rank.numeric,
+            decreasing = decreasing
+        )
+    }
 
 
 
 # Note that use of `which()` here will omit `NA` intentionally.
-.bidirRank.numeric <- function(x, removeZeros = FALSE) {
-    assert(
-        is.numeric(x),
-        isFlag(removeZeros)
-    )
-    ties <- "average"
+.bidirRank.numeric <-  # nolint
+    function(x, removeZeros = FALSE) {
+        assert(
+            is.numeric(x),
+            isFlag(removeZeros)
+        )
+        ties <- "average"
 
-    # Set any zero values to NA.
-    if (isTRUE(removeZeros)) {
-        x[x == 0L] <- NA
+        # Set any zero values to NA.
+        if (isTRUE(removeZeros)) {
+            x[x == 0L] <- NA
+        }
+
+        up <- rank(x = x[which(x > 0L)], ties.method = ties)
+        down <- -rank(x = -x[which(x < 0L)], ties.method = ties)
+
+        y <- x
+        y[names(up)] <- up
+        y[names(down)] <- down
+        y
     }
 
-    up <- rank(x = x[which(x > 0L)], ties.method = ties)
-    down <- -rank(x = -x[which(x < 0L)], ties.method = ties)
-
-    y <- x
-    y[names(up)] <- up
-    y[names(down)] <- down
-    y
-}
 
 
-
-.bidirRank.matrix <- function(
-    x,
-    MARGIN = 2L,  # nolint
-    removeZeros = FALSE
-) {
-    assert(
-        is.matrix(x),
-        isInt(MARGIN),
-        isFlag(removeZeros)
-    )
-    apply(
-        X = x,
-        MARGIN = MARGIN,
-        FUN = .bidirRank.numeric,
-        removeZeros = removeZeros
-    )
-}
+.bidirRank.matrix <-  # nolint
+    function(
+        x,
+        MARGIN = 2L,  # nolint
+        removeZeros = FALSE
+    ) {
+        assert(
+            is.matrix(x),
+            isInt(MARGIN),
+            isFlag(removeZeros)
+        )
+        apply(
+            X = x,
+            MARGIN = MARGIN,
+            FUN = .bidirRank.numeric,
+            removeZeros = removeZeros
+        )
+    }
