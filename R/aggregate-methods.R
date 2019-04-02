@@ -482,15 +482,15 @@ aggregateCols.SingleCellExperiment <-  # nolint
 
         # Now ready to generate aggregated SCE.
         sce <- makeSingleCellExperiment(
-            assays = SummarizedExperiment::assays(rse),
-            rowRanges = SummarizedExperiment::rowRanges(object),
-            colData = SummarizedExperiment::colData(rse),
+            assays = assays(rse),
+            rowRanges = rowRanges(object),
+            colData = colData(rse),
             metadata = list(
                 aggregate = TRUE,
                 aggregateCols = groupings,
                 interestingGroups = interestingGroups(object)
             ),
-            spikeNames = SingleCellExperiment::spikeNames(object)
+            spikeNames = spikeNames(object)
         )
         validObject(sce)
         sce
