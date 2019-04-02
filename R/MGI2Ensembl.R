@@ -2,13 +2,13 @@
 #' @export
 #' @inheritParams params
 #' @examples
-#' options(basejump.test = TRUE)
+#' options(acid.test = TRUE)
 #' x <- MGI2Ensembl()
 #' print(x)
 MGI2Ensembl <- function() {  # nolint
     assert(hasInternet())
 
-    if (isTRUE(getOption("basejump.test"))) {
+    if (isTRUE(getOption("acid.test"))) {
         file <- pasteURL(basejumpTestsURL, "mgi.rpt.gz", protocol = "none")
     } else {
         file <- pasteURL(

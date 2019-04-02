@@ -6,8 +6,8 @@
 \alias{PANTHER}
 \title{PANTHER database annotations}
 \usage{
-PANTHER(organism, release = NULL,
-  progress = getOption("basejump.progress", FALSE))
+PANTHER(organism, release = NULL, progress = getOption("acid.progress",
+  default = FALSE))
 }
 \arguments{
 \item{organism}{\code{character(1)}.
@@ -37,7 +37,7 @@ Use \code{pbapply::pblapply()} to show progress.}
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \examples{
-options(basejump.test = TRUE)
+options(acid.test = TRUE)
 x <- PANTHER("Homo sapiens", progress = FALSE)
 summary(x)
 }

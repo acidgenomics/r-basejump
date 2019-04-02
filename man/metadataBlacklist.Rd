@@ -11,6 +11,9 @@ metadataBlacklist
 \description{
 Sample metadata blacklist
 }
+\note{
+\code{sampleID} is set automatically for multiplexed/cell-level data.
+}
 \examples{
 metadataBlacklist
 }
