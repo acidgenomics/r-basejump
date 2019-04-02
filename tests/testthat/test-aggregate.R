@@ -168,14 +168,6 @@ test_that("SummarizedExperiment", {
     expect_identical(counts(object), expected)
 })
 
-test_that("SingleCellExperiment", {
-    sce <- acidtest::sce
-    colData(sce)[["aggregate"]] <- colData(sce)[["sampleID"]]
-    # FIXME Cell IDs are not prefixed with sample IDs.
-    object <- aggregateCols(sce)
-
-})
-
 test_that("matrix : Invalid groupings", {
     expect_error(
         object = aggregateCols(counts, groupings = "XXX"),
