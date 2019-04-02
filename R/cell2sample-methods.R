@@ -18,10 +18,11 @@ NULL
 
 
 
+#' @rdname cell2sample
+#' @name cell2sample
 #' @importFrom bioverbs cell2sample
-#' @aliases NULL
 #' @export
-bioverbs::cell2sample
+NULL
 
 
 

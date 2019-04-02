@@ -42,10 +42,11 @@ NULL
 
 
 
+#' @rdname subsetPerSample
+#' @name subsetPerSample
 #' @importFrom bioverbs subsetPerSample
-#' @aliases NULL
 #' @export
-bioverbs::subsetPerSample
+NULL
 
 
 

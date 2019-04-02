@@ -16,10 +16,11 @@ NULL
 
 
 
+#' @rdname meltCounts
+#' @name meltCounts
 #' @importFrom bioverbs meltCounts
-#' @aliases NULL
 #' @export
-bioverbs::meltCounts
+NULL
 
 
 

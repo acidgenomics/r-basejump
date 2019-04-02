@@ -1,3 +1,4 @@
+dir.create("cache", showWarnings = FALSE)
 files <- c(
     "example.counts",
     "example.csv",
@@ -23,10 +24,11 @@ files <- c(
 )
 mapply(
     FUN = function(remoteDir, file, envir) {
-        if (!file.exists(file)) {
+        destfile <- file.path("cache", file)
+        if (!file.exists(destfile)) {
             utils::download.file(
                 url = paste(remoteDir, file, sep = "/"),
-                destfile = file
+                destfile = destfile
             )
         }
     },

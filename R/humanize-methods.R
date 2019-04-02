@@ -18,10 +18,11 @@ NULL
 
 
 
+#' @rdname humanize
+#' @name humanize
 #' @importFrom bioverbs humanize
-#' @aliases NULL
 #' @export
-bioverbs::humanize
+NULL
 
 
 

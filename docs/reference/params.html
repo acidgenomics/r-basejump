@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.1</span>
       </span>
     </div>
 
@@ -119,6 +119,25 @@
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object, x</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>Value to assign.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>i</th>
+      <td><p>Indices specifying elements to extract or replace. Indices are <code>numeric</code> or
+<code>character</code> vectors, empty (<code>missing</code>), or <code>NULL</code>.</p>
+<p>For more information:</p><pre>help(topic = "Extract", package = "base")
+</pre></td>
+    </tr>
     <tr>
       <th>assay</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector(1)</a></code>.
@@ -196,13 +215,6 @@ IDs (e.g. <code>"hg38"</code>).</p></td>
 Markdown header level.</p></td>
     </tr>
     <tr>
-      <th>i</th>
-      <td><p>Indices specifying elements to extract or replace. Indices are <code>numeric</code> or
-<code>character</code> vectors, empty (<code>missing</code>), or <code>NULL</code>.</p>
-<p>For more information:</p><pre>help(topic = "Extract", package = "base")
-</pre></td>
-    </tr>
-    <tr>
       <th>inherits</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
 Should the enclosing frames of the <code>environment</code> be searched?</p></td>
@@ -227,10 +239,6 @@ Number to include.</p></td>
       <th>ntop</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
 Number of top genes to label.</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
     </tr>
     <tr>
       <th>organism</th>
@@ -274,16 +282,77 @@ Transcript-to-gene mappings.</p></td>
 Uniform Resource Locator (URL). HTTP or FTP address.</p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>Value to assign.</p></td>
+      <th>assays</th>
+      <td><p><code>list</code>.
+Count matrices, which must have matching dimensions. Counts can be passed
+in as either a dense matrix (<code>matrix</code>) or sparse matrix (<code>sparseMatrix</code>).</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>Object.</p></td>
+      <th>rowRanges</th>
+      <td><p><code>GRanges</code>.
+Genomic ranges (e.g. genome annotations). Metadata describing the assay
+rows.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <th>rowData</th>
+      <td><p><code>DataFrame</code>.
+Metadata describing the assay rows, if genomic ranges are not available.
+<em>Use rowRanges (GRanges) instead, if possible</em>.</p></td>
+    </tr>
+    <tr>
+      <th>colData</th>
+      <td><p><code>DataFrame</code>.
+Metadata describing the assay columns. For bulk RNA-seq, this data
+describes the samples. For single-cell RNA-seq, this data describes the
+cells.</p></td>
+    </tr>
+    <tr>
+      <th>metadata</th>
+      <td><p><code>list</code>.
+Metadata.</p></td>
+    </tr>
+    <tr>
+      <th>transgeneNames</th>
+      <td><p><code>character</code>.
+Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).</p></td>
+    </tr>
+    <tr>
+      <th>spikeNames</th>
+      <td><p><code>character</code>.
+Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></td>
+    </tr>
+    <tr>
+      <th>censorSamples</th>
+      <td><p><code>character</code>.
+Specify a subset of samples to censor.</p></td>
+    </tr>
+    <tr>
+      <th>gffFile</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
+(GFFv2) instead of a GFFv3 file if possible.</p></td>
+    </tr>
+    <tr>
+      <th>prefilter</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Apply prefiltering to remove zero count genes.</p></td>
+    </tr>
+    <tr>
+      <th>sampleMetadataFile</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
+are also supported. Check the documentation for conventions and required
+columns.</p></td>
+    </tr>
+    <tr>
+      <th>BPPARAM</th>
+      <td><p><code>bpparamClass</code>.
+BiocParallel parameter to specify the desired processor configuration.<br />
+We recommend using one of the following:</p><ul>
+<li><p><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/register'>bpparam</a>.</p></li>
+<li><p><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/SerialParam-class'>SerialParam</a>.</p></li>
+<li><p><a href='https://www.rdocumentation.org/packages/BiocParallel/topics/MulticoreParam-class'>MulticoreParam</a>.</p></li>
+</ul></td>
     </tr>
     </table>
     

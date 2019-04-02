@@ -13,10 +13,11 @@ NULL
 
 
 
+#' @rdname topCellsPerSample
+#' @name topCellsPerSample
 #' @importFrom bioverbs topCellsPerSample
-#' @aliases NULL
 #' @export
-bioverbs::topCellsPerSample
+NULL
 
 
 

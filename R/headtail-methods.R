@@ -20,10 +20,11 @@ NULL
 
 
 
+#' @rdname headtail
+#' @name headtail
 #' @importFrom bioverbs headtail
-#' @aliases NULL
 #' @export
-bioverbs::headtail
+NULL
 
 
 

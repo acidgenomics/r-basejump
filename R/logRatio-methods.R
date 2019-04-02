@@ -23,15 +23,17 @@ NULL
 
 
 
+#' @rdname logRatio
+#' @name foldChangeToLogRatio
 #' @importFrom bioverbs foldChangeToLogRatio
-#' @aliases NULL
 #' @export
-bioverbs::foldChangeToLogRatio
+NULL
 
+#' @rdname logRatio
+#' @name logRatioToFoldChange
 #' @importFrom bioverbs logRatioToFoldChange
-#' @aliases NULL
 #' @export
-bioverbs::logRatioToFoldChange
+NULL
 
 
 
