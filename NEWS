@@ -1,8 +1,17 @@
 ## basejump 0.10.2 (2019-04-02)
 
+### Major changes
+
+- `aggregateRows`, `aggregateCols`, `aggregateCellsToSamples`: Improved internal
+  code for SummarizedExperiment metadata handling. Applies primarily to colData
+  and rowData juggling for these methods.
+
 ### Minor changes
 
 - Added additional unit tests, to improve code coverage.
+- Now covering the aggregation functions in better detail, using a minimal
+  SingleCellExperiment object that works with `aggregateCols`.
+- Consistently use "acid" prefix instead of "basejump" for global options.
 
 
 
