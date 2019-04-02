@@ -11,9 +11,9 @@
 #' @param organism `character(1)`.
 #'   Supported organisms:
 #'
-#'   - *Homo sapiens*
-#'   - *Mus musculus*
-#'   - *Drosophila melanogaster*
+#'   - *Homo sapiens*.
+#'   - *Mus musculus*.
+#'   - *Drosophila melanogaster*.
 #'
 #' @return `grouped_df`.
 #' Grouped by `geneID` column.
