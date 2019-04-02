@@ -19,13 +19,13 @@
 #'   Use `pbapply::pblapply()` to show progress.
 #'
 #' @examples
-#' options(basejump.test = TRUE)
+#' options(acid.test = TRUE)
 #' x <- PANTHER("Homo sapiens", progress = FALSE)
 #' summary(x)
 PANTHER <- function(  # nolint
     organism,
     release = NULL,
-    progress = getOption("basejump.progress", FALSE)
+    progress = getOption("acid.progress", default = FALSE)
 ) {
     assert(
         hasInternet(),
@@ -52,7 +52,7 @@ PANTHER <- function(  # nolint
         " (", release, ")."
     ))
 
-    if (isTRUE(getOption("basejump.test"))) {
+    if (isTRUE(getOption("acid.test"))) {
         file <- pasteURL(
             basejumpTestsURL, paste0("PTHR13.1_", pantherName, ".gz"),
             protocol = "none"

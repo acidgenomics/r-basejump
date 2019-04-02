@@ -2,13 +2,13 @@
 #' @export
 #' @inheritParams params
 #' @examples
-#' options(basejump.test = TRUE)
+#' options(acid.test = TRUE)
 #' x <- EggNOG()
 #' print(x)
 EggNOG <-  # nolint
     function() {
         assert(hasInternet())
-        if (isTRUE(getOption("basejump.test"))) {
+        if (isTRUE(getOption("acid.test"))) {
             categoriesFile <- pasteURL(
                 basejumpTestsURL, "cog.txt",
                 protocol = "none"

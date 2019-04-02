@@ -3,7 +3,7 @@
 #' @inherit methods::show
 #' @examples
 #' data(rse, package = "acidtest")
-#' options(basejump.test = TRUE)
+#' options(acid.test = TRUE)
 #'
 #' ## EggNOG ====
 #' x <- EggNOG()
