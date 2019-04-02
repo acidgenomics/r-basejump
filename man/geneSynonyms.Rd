@@ -11,8 +11,8 @@ geneSynonyms(organism)
 Supported organisms:
 \itemize{
 \item \emph{Homo sapiens}
-\item \emph{Mus musculus},
-\item \emph{Drosophila melanogaster}.
+\item \emph{Mus musculus}
+\item \emph{Drosophila melanogaster}
 }}
 }
 \value{
