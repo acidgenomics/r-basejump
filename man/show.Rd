@@ -41,7 +41,7 @@ the discussion in \code{\link{setIs}} for the general concept.
 }
 \examples{
 data(rse, package = "acidtest")
-options(basejump.test = TRUE)
+options(acid.test = TRUE)
 
 ## EggNOG ====
 x <- EggNOG()
