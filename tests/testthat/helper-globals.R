@@ -1,5 +1,5 @@
 data(
-    df, lfc, mat, rse, sce, sparse, txse,
+    df, gr, lfc, mat, rse, sce, sparse, txse,
     package = "acidtest",
     envir = environment()
 )
