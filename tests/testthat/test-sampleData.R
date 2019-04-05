@@ -27,3 +27,15 @@ test_that("SummarizedExperiment assignment method", {
     sampleData(object)[["test"]] <- as.factor(seq_len(ncol(object)))
     expect_is(sampleData(object)[["test"]], "factor")
 })
+
+test_that("SingleCellExperiment", {
+    samples <- paste0("sample", seq_len(2L))
+    expect_identical(
+        sampleData(sce),
+        DataFrame(
+            sampleName = as.factor(samples),
+            interestingGroups = as.factor(samples),
+            row.names = samples
+        )
+    )
+})
