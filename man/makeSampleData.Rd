@@ -43,6 +43,7 @@ object <- data.frame(
     sampleName = paste("sample", seq_len(4L)),
     row.names = paste0("GSM000000", seq_len(4L))
 )
+makeSampleData(object)
 }
 \seealso{
 \code{makeNames}.
