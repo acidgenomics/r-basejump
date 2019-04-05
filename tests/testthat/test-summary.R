@@ -1,3 +1,5 @@
+# FIXME Move this into single S4 test file.
+
 context("summary")
 
 test_that("Gene2Symbol", {

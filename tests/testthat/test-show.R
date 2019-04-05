@@ -1,3 +1,5 @@
+# FIXME Consider consolidating these S4 tests into a single file.
+
 test <- getOption("acid.test")
 options(acid.test = TRUE)
 
