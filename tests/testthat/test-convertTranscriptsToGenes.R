@@ -69,3 +69,8 @@ test_that("Invalid params", {
         regexp = "isCharacter"
     )
 })
+
+test_that("SummarizedExperiment", {
+    se <- convertTranscriptsToGenes(txse)
+    expect_s4_class(se, "SummarizedExperiment")
+})
