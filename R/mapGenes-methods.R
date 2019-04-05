@@ -24,13 +24,12 @@
 #'
 #' @examples
 #' data(rse, package = "acidtest")
-#' object <- rse
-#' print(object)
+#' print(rse)
 #'
-#' rownames <- head(rownames(object))
+#' rownames <- head(rownames(rse))
 #' print(rownames)
 #'
-#' g2s <- Gene2Symbol(object)
+#' g2s <- Gene2Symbol(rse)
 #' geneIDs <- head(g2s[["geneID"]])
 #' print(geneIDs)
 #'
@@ -38,19 +37,19 @@
 #' print(geneNames)
 #'
 #' ## Row names.
-#' mapGenesToRownames(object, genes = rownames)
-#' mapGenesToRownames(object, genes = geneIDs)
-#' mapGenesToRownames(object, genes = geneNames)
+#' mapGenesToRownames(rse, genes = rownames)
+#' mapGenesToRownames(rse, genes = geneIDs)
+#' mapGenesToRownames(rse, genes = geneNames)
 #'
 #' ## Gene identifiers.
-#' mapGenesToIDs(object, genes = rownames)
-#' mapGenesToIDs(object, genes = geneIDs)
-#' mapGenesToIDs(object, genes = geneNames)
+#' mapGenesToIDs(rse, genes = rownames)
+#' mapGenesToIDs(rse, genes = geneIDs)
+#' mapGenesToIDs(rse, genes = geneNames)
 #'
 #' ## Gene names (symbols).
-#' mapGenesToSymbols(object, genes = rownames)
-#' mapGenesToSymbols(object, genes = geneIDs)
-#' mapGenesToSymbols(object, genes = geneNames)
+#' mapGenesToSymbols(rse, genes = rownames)
+#' mapGenesToSymbols(rse, genes = geneIDs)
+#' mapGenesToSymbols(rse, genes = geneNames)
 NULL
 
 
