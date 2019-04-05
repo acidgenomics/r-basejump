@@ -74,15 +74,14 @@ subsetPerSample.SingleCellExperiment <-  # nolint
                 subset <- selectSamples(object, sampleID = sampleID)
                 # Skip if subset doesn't have enough cells.
                 if (ncol(subset) < minCells) {
-                    warning(paste(
-                        sampleID, "didn't pass minimum cell cutoff."
-                    ), call. = FALSE)
+                    warning(paste(sampleID, "didn't pass minimum cell cutoff."))
                     return(NULL)
                 }
                 if (isTRUE(assignAndSave)) {
                     assignAndSaveData(
                         name = sampleID,
                         object = subset,
+                        envir = envir,
                         dir = dir
                     )
                 } else {
