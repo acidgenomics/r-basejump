@@ -13,7 +13,8 @@
 \S4method{autopadZeros}{matrix}(object, rownames = FALSE,
   colnames = TRUE, sort = TRUE)
 
-\S4method{autopadZeros}{SummarizedExperiment}(object, rownames = FALSE)
+\S4method{autopadZeros}{SummarizedExperiment}(object, rownames = FALSE,
+  colnames = TRUE, sort = TRUE)
 }
 \arguments{
 \item{object}{Object.}
@@ -46,5 +47,8 @@ autopadZeros(c("A1", "B10"))
 autopadZeros(c("A1", "B10", "C100"))
 
 ## SummarizedExperiment ====
-autopadZeros(rse)
+autopadZeros(rse, rownames = TRUE, colnames = TRUE)
+
+## SingleCellExperiment ====
+autopadZeros(sce, rownames = TRUE, colnames = TRUE)
 }
