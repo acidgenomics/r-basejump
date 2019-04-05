@@ -24,7 +24,7 @@ zerosVsDepth.matrix <-  # nolint
         present <- object > 0L
         DataFrame(
             dropout = (nrow(present) - colSums(present)) / nrow(present),
-            depth = colSums(object),
+            depth = as.integer(colSums(object)),
             row.names = colnames(object)
         )
     }
@@ -53,7 +53,7 @@ zerosVsDepth.sparseMatrix <-  # nolint
         colSums <- Matrix::colSums
         DataFrame(
             dropout = (nrow(present) - colSums(present)) / nrow(present),
-            depth = colSums(object),
+            depth = as.integer(colSums(object)),
             row.names = colnames(object)
         )
     }
