@@ -1,3 +1,15 @@
+context("markdown")
+
+test_that("SummarizedExperiment", {
+    output <- capture.output(markdown(rse))
+    expect_identical(
+        object = output[[3L]],
+        expected = "|         |condition |sampleName |interestingGroups |"
+    )
+})
+
+
+
 context("markdownHeader")
 
 test_that("default", {
