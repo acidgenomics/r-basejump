@@ -64,6 +64,7 @@ convertSampleIDsToNames.SingleCellExperiment <-  # nolint
             "Returning with column names unmodified.",
             sep = "\n"
         ))
+        object
     }
 
 
