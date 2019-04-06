@@ -29,7 +29,7 @@ context("mcolnames<-")
 
 test_that("Don't allow length mismatch", {
     expect_error(
-        mcolnames(df) <- "xxx",
-        "colnames\\(mcols\\(x\\)\\) does not have the same length as value."
+        object = mcolnames(df) <- "xxx",
+        regexp = "areSameLength"
     )
 })
