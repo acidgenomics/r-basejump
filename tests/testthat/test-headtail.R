@@ -32,3 +32,8 @@ test_that("SummarizedExperiment", {
         headtail(assay(rse))
     )
 })
+
+test_that("ASCII mode", {
+    output <- capture.output(headtail(rse, ascii = TRUE))
+    expect_true(grepl("...", output[[1L]]))
+})
