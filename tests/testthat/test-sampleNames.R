@@ -6,3 +6,14 @@ test_that("SummarizedExperiment", {
     names(expected) <- colnames(rse)
     expect_identical(object, expected)
 })
+
+test_that("sampleName column isn't factor", {
+    colData(rse)[["sampleName"]] <- "xxx"
+    expect_error(
+        object = sampleNames(rse),
+        expected = paste(
+            "sampleData() requires a `sampleName`",
+            "factor column in colData()."
+        )
+    )
+})
