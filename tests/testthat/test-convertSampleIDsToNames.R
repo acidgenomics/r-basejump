@@ -9,7 +9,11 @@ test_that("SummarizedExperiment", {
 
 test_that("SingleCellExperiment", {
     expect_message(
-        convertSampleIDsToNames(sce),
-        "Returning with column names unmodified."
+        object = convertSampleIDsToNames(sce),
+        regexp = "Returning with column names unmodified."
+    )
+    expect_identical(
+        object = convertSampleIDsToNames(sce),
+        expected = sce
     )
 })
