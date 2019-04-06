@@ -18,7 +18,8 @@ NULL
 
 markdown.SummarizedExperiment <-  # nolint
     function(object) {
-        sampleData(object) %>%
+        object %>%
+            sampleData() %>%
             as.data.frame() %>%
             kable()
     }
