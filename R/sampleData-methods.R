@@ -120,13 +120,17 @@ sampleData.SummarizedExperiment <-  # nolint
         )
 
         # Prepare columns ------------------------------------------------------
-        assert(areDisjointSets(colnames(data), metadataBlacklist))
+        assert(areDisjointSets(x = colnames(data), y = metadataBlacklist))
 
         # Require `sampleName` column.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
+        } else if (!is.factor(data[["sampleName"]])) {
+            stop(paste(
+                "sampleData() requires a `sampleName`",
+                "factor column in colData()."
+            ))
         }
-        assert(is.factor(data[["sampleName"]]))
 
         # Clean mode -----------------------------------------------------------
         if (isTRUE(clean)) {
