@@ -1,30 +1,37 @@
 #' Detect sequencing lanes
 #'
+#' @include globals.R
 #' @export
 #'
-#' @param object `character`.
-#'   Sequencing file or directory paths.
+#' @param path `character`.
+#'   Sequencing file paths, e.g. FASTQs.
 #' @param pattern `character(1)`.
-#'   Grep pattern. Default pattern checks for `"_LXXX"`.
+#'   Lane grep pattern. Defaults to [lanePattern] global variable.
 #'
 #' @return `integer`.
-#' Lane number.
+#' Lane numbers.
 #'
 #' @examples
-#' files <- c("sample1_L001.fastq.gz", "sample1_L002.fastq.gz")
+#' ## Matching lanes 1-4 for paired-end FASTQ files.
+#' files <- paste0(
+#'     "sample1",
+#'     paste0("_R", seq_len(2L)),
+#'     paste0("_L00", seq_len(4L)),
+#'     ".fastq.gz"
+#' )
 #' detectLanes(files)
-detectLanes <- function(
-    object,
-    pattern = lanePattern
-) {
+detectLanes <- function(path, pattern) {
     assert(
-        isCharacter(object),
+        isCharacter(path),
         isString(lanePattern)
     )
-    object <- basename(object)
-    if (any(grepl(pattern, object))) {
-        as.integer(str_match(string = object, pattern = pattern)[, 2L])
+    basename <- basename(path)
+    if (any(grepl(pattern = pattern, x = basename))) {
+        as.integer(str_match(string = basename, pattern = pattern)[, 2L])
     } else {
+        message("Failed to detect sequencing lanes.")
         integer()
     }
 }
+
+formals(detectLanes)[["pattern"]] <- lanePattern
