@@ -18,7 +18,7 @@ NULL
 
 
 
-geneNames.ANY <-  # nolint
+geneNames.Vector <-  # nolint
     function(object) {
         Gene2Symbol(object, format = "makeUnique")[["geneName"]]
     }
@@ -30,7 +30,7 @@ geneNames.ANY <-  # nolint
 setMethod(
     f = "geneNames",
     signature = signature("GRanges"),
-    definition = geneNames.ANY
+    definition = geneNames.Vector
 )
 
 
@@ -40,5 +40,5 @@ setMethod(
 setMethod(
     f = "geneNames",
     signature = signature("SummarizedExperiment"),
-    definition = geneNames.ANY
+    definition = geneNames.Vector
 )
