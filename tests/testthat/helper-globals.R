@@ -12,10 +12,6 @@ SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
 group_vars <- dplyr::group_vars
 # nolint end
 
-# FIXME Rework this
-# organism <- "Homo sapiens"
-# release <- 87L
-
 options(
     acid.save.dir = ".",
     acid.save.ext = "rds",

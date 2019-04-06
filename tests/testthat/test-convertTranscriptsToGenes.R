@@ -1,7 +1,7 @@
 context("convertTranscriptsToGenes")
 
 tx2gene <-
-    makeTx2GeneFromEnsembl(organism = organism, release = release)
+    makeTx2GeneFromEnsembl(organism = "Homo sapiens", release = 87L)
 
 test_that("character", {
     expect_identical(
