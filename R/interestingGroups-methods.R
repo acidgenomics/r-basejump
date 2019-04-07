@@ -29,15 +29,60 @@ NULL
 
 
 
+interestingGroups.Annotated <-  # nolint
+    function(object) {
+        metadata(object)[["interestingGroups"]]
+    }
+
+
+
 #' @rdname interestingGroups
 #' @export
 setMethod(
     f = "interestingGroups",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object) {
-        metadata(object)[["interestingGroups"]]
-    }
+    signature = signature("Annotated"),
+    definition = interestingGroups.Annotated
 )
+
+
+
+`interestingGroups<-.Annotated,character` <-  # nolint
+    function(object, value) {
+        assert(areDisjointSets(value, "interestingGroups"))
+        metadata(object)[["interestingGroups"]] <- value
+        object
+    }
+
+
+
+#' @rdname interestingGroups
+#' @export
+setMethod(
+    f = "interestingGroups<-",
+    signature = signature(
+        object = "Annotated",
+        value = "character"
+    ),
+    definition = `interestingGroups<-.Annotated,character`
+)
+
+
+
+`interestingGroups<-.SummarizedExperiment,character` <-  # nolint
+    function(object, value) {
+        # Check for attempt to use `interestingGroups` automatic column.
+        assert(areDisjointSets(value, "interestingGroups"))
+        # Note that we're always allowing `sampleName` to be slotted, even if
+        # that column isn't defined in `colData()`.
+        if (
+            !isSubset(value, colnames(sampleData(object))) &&
+            !identical(value, "sampleName")
+        ) {
+            stop("Interesting groups must be columns in `sampleData()`.")
+        }
+        metadata(object)[["interestingGroups"]] <- value
+        object
+    }
 
 
 
@@ -49,25 +94,16 @@ setMethod(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    definition = function(object, value) {
-        # Check for attempt to use `interestingGroups` automatic column.
-        assert(areDisjointSets(value, "interestingGroups"))
+    definition = `interestingGroups<-.SummarizedExperiment,character`
+)
 
-        # Note that we're always allowing `sampleName` to be slotted, even if
-        # that column isn't defined in `colData()`.
-        if (
-            !isSubset(value, colnames(sampleData(object))) &&
-            !identical(value, "sampleName")
-        ) {
-            stop(
-                "Interesting groups must be columns in `sampleData()`.",
-                call. = FALSE
-            )
-        }
-        metadata(object)[["interestingGroups"]] <- value
+
+
+`interestingGroups<-.Annotated,NULL` <-  # nolint
+    function(object, value) {
+        metadata(object)[["interestingGroups"]] <- NULL
         object
     }
-)
 
 
 
@@ -76,11 +112,8 @@ setMethod(
 setMethod(
     f = "interestingGroups<-",
     signature = signature(
-        object = "SummarizedExperiment",
+        object = "Annotated",
         value = "NULL"
     ),
-    definition = function(object, value) {
-        metadata(object)[["interestingGroups"]] <- NULL
-        object
-    }
+    definition = `interestingGroups<-.Annotated,NULL`
 )

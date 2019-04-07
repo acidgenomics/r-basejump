@@ -10,7 +10,7 @@
 #' @importClassesFrom GenomicRanges GRanges
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix sparseMatrix
-#' @importClassesFrom S4Vectors DataFrame List
+#' @importClassesFrom S4Vectors Annotated DataFrame DataTable List Vector
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
@@ -32,14 +32,14 @@
 #' @importFrom dplyr arrange bind_rows desc filter funs group_by left_join
 #'   mutate mutate_all mutate_at mutate_if pull rename select select_if slice
 #'   summarise_all top_n ungroup
-#' @importFrom goalie areDisjointSets areIntersectingSets areSameLength
-#'   areSetEqual assert false getNameInParent hasDims hasInternet hasLength
-#'   hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames
-#'   hasUniqueCols hasValidDimnames hasValidNames isADirectory isAny isCharacter
-#'   isFlag isGGScale isHeaderLevel isHexColorFunction isInClosedRange isInRange
-#'   isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
-#'   isScalar isString isSubset isSuperset matchesUniqueGeneNames validNames
-#'   validate validateClasses
+#' @importFrom goalie allAreMatchingRegex areDisjointSets areIntersectingSets
+#'   areSameLength areSetEqual assert false getNameInParent hasDims hasInternet
+#'   hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows
+#'   hasRownames hasUniqueCols hasValidDimnames hasValidNames isADirectory isAny
+#'   isCharacter isFlag isGGScale isHeaderLevel isHexColorFunction
+#'   isInClosedRange isInRange isInt isMatchingRegex isNonNegative
+#'   isNotMatchingRegex isNumber isPositive isScalar isString isSubset
+#'   isSuperset matchesUniqueGeneNames validNames validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars

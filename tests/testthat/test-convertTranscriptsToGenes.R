@@ -1,7 +1,7 @@
 context("convertTranscriptsToGenes")
 
 tx2gene <-
-    makeTx2GeneFromEnsembl(organism = organism, release = release)
+    makeTx2GeneFromEnsembl(organism = "Homo sapiens", release = 87L)
 
 test_that("character", {
     expect_identical(
@@ -67,5 +67,26 @@ test_that("Invalid params", {
     expect_error(
         object = convertTranscriptsToGenes(c("ENST00000000233", "")),
         regexp = "isCharacter"
+    )
+})
+
+test_that("SummarizedExperiment", {
+    se <- convertTranscriptsToGenes(txse)
+    expect_s4_class(se, "SummarizedExperiment")
+    expect_identical(
+        object = counts(se),
+        expected = matrix(
+            data = c(
+                15L, 18L, 21L, 24L,
+                51L, 54L, 57L, 60L
+            ),
+            nrow = 2L,
+            ncol = 4L,
+            byrow = TRUE,
+            dimnames = list(
+                c("ENSG00000000003", "ENSG00000000419"),
+                c("sample1", "sample2", "sample3", "sample4")
+            )
+        )
     )
 })

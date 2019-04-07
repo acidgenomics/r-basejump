@@ -6,7 +6,8 @@
 \alias{organism,matrix-method}
 \alias{organism,sparseMatrix-method}
 \alias{organism,data.frame-method}
-\alias{organism,DataFrame-method}
+\alias{organism,Annotated-method}
+\alias{organism,DataTable-method}
 \alias{organism,GRanges-method}
 \alias{organism,SummarizedExperiment-method}
 \title{Organism}
@@ -17,7 +18,9 @@
 
 \S4method{organism}{data.frame}(object)
 
-\S4method{organism}{DataFrame}(object)
+\S4method{organism}{Annotated}(object)
+
+\S4method{organism}{DataTable}(object)
 
 \S4method{organism}{GRanges}(object)
 
