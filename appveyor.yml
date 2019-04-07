@@ -16,6 +16,9 @@ install:
 
 platform: x64
 
+cache:
+  - C:\RLibrary -> appveyor.yml
+
 branches:
   only:
     - master
@@ -71,6 +74,3 @@ notifications:
     to:
       - mike@steinbaugh.com
     on_build_status_changed: true
-
-cache:
-  - C:\RLibrary -> appveyor.yml
