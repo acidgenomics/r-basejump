@@ -18,12 +18,19 @@ branches:
 
 environment:
   global:
+    GCC_PATH: mingw_64
     # PKGTYPE: win.binary
     R_ARCH: x64
     USE_RTOOLS: true
   matrix:
+    - R_VERSION: patched
+      BIOC_USE_DEVEL: "FALSE"
     - R_VERSION: devel
-      GCC_PATH: mingw_64
+      BIOC_USE_DEVEL: "TRUE"
+
+matrix:
+  allow_failures:
+    - R_VERSION: devel
 
 build_script:
   - travis-tool.sh install_bioc GenomeInfoDbData
