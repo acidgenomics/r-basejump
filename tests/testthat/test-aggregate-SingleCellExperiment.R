@@ -1,4 +1,4 @@
-sce_lanesplit <- readRDS(file.path("cache", "sce_lanesplit.rds"))
+sce_lanesplit <- readRDS(file.path("cache", "sce_lanesplit.rds"))  # nolint
 
 
 

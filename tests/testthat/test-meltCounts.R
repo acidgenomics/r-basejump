@@ -15,7 +15,7 @@ test_that("nonzeroGenes", {
 
     # Check for removal of our all-zero gene.
     expect_identical(
-        object = setdiff(a$rowname, b$rowname),
+        object = setdiff(a[["rowname"]], b[["rowname"]]),
         expected = "gene433"
     )
     expect_true(all(assay(rse)["gene433", , drop = TRUE] == 0L))
