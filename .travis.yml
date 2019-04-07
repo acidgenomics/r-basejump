@@ -52,11 +52,6 @@ notifications:
 # Temporarily enable when caching package library.
 # script: true
 
-# Avoid timeouts on long steps (e.g. codecov report).
-# https://docs.travis-ci.com/user/common-build-problems/#build-times-out-because-no-output-was-received
-# install: travis_wait mvn install
-# install: travis_wait 30 mvn install
-
 # Skip building vignettes, which can cause the Travis build to time out.
 # r_build_args: "--no-build-vignettes --no-manual"
 # r_check_args: "--no-build-vignettes --no-manual --timings"
