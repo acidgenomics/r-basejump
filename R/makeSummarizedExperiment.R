@@ -146,7 +146,7 @@ makeSummarizedExperiment <- function(
     # have matching dimnames, so we can skip that check.
 
     # Row data -----------------------------------------------------------------
-    mcolsNames <- NULL
+    mcolnames <- NULL
     # Dynamically allow input of rowRanges (recommended) or rowData (fallback).
     if (is(rowRanges, "GRanges")) {
         # Detect rows that don't contain annotations.
@@ -154,7 +154,7 @@ makeSummarizedExperiment <- function(
         # Spike-ins should contain `spike` seqname.
         # Otherwise, unannotated genes will be given `unknown` seqname.
         assert(areIntersectingSets(rownames(assay), names(rowRanges)))
-        mcolsNames <- names(mcols(rowRanges))
+        mcolnames <- names(mcols(rowRanges))
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         # Transgenes
         if (
@@ -165,7 +165,7 @@ makeSummarizedExperiment <- function(
             transgeneRanges <- emptyRanges(
                 names = transgeneNames,
                 seqname = "transgene",
-                mcolsNames = mcolsNames
+                mcolnames = mcolnames
             )
             rowRanges <- suppressWarnings(c(transgeneRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
@@ -179,7 +179,7 @@ makeSummarizedExperiment <- function(
             spikeRanges <- emptyRanges(
                 names = spikeNames,
                 seqname = "spike",
-                mcolsNames = mcolsNames
+                mcolnames = mcolnames
             )
             rowRanges <- suppressWarnings(c(spikeRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
