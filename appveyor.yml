@@ -28,13 +28,13 @@ environment:
     USE_RTOOLS: true
   matrix:
     - R_VERSION: patched
-      BIOC_USE_DEVEL: "FALSE"
-    - R_VERSION: devel
-      BIOC_USE_DEVEL: "TRUE"
+      BIOC_USE_DEVEL: false
+    # - R_VERSION: devel
+    #   BIOC_USE_DEVEL: true
 
-matrix:
-  allow_failures:
-    - R_VERSION: devel
+# matrix:
+#   allow_failures:
+#     - R_VERSION: devel
 
 build_script:
   - travis-tool.sh install_bioc GenomeInfoDbData
