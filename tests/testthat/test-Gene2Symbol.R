@@ -10,8 +10,8 @@ format <- methodFormals(
 
 with_parameters_test_that(
     "Gene2Symbol", {
-        x <- Gene2Symbol(rse, format = format)
-        expect_s4_class(x, "Gene2Symbol")
+        object <- Gene2Symbol(rse, format = format)
+        expect_s4_class(object, "Gene2Symbol")
         expect_identical(colnames(object), c("geneID", "geneName"))
         expect_true(hasRownames(object))
     },
