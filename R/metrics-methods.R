@@ -118,7 +118,7 @@ setMethod(
 
 
 
-.metricsPerSample.SingleCellExperiment <-  # nolint
+metricsPerSample.SingleCellExperiment <-  # nolint
     function(
         object,
         fun = c("mean", "median", "sum")
@@ -162,5 +162,5 @@ setMethod(
 setMethod(
     f = "metricsPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = .metricsPerSample.SingleCellExperiment
+    definition = metricsPerSample.SingleCellExperiment
 )

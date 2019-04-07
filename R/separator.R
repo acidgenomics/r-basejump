@@ -15,8 +15,14 @@
 #' @return `character(1)`.
 #'
 #' @examples
-#' cat(separator(sep = "=", times = 10L))
-separator <- function(sep = "=", times = min(c(getOption("width", 72L), 72L))) {
+#' separator(sep = "=", times = 10L)
+separator <- function(
+    sep = "=",
+    times = min(c(
+        getOption("width", default = 72L),
+        72L
+    ))
+) {
     assert(
         isString(sep), nchar(sep) == 1L,
         isInt(times)

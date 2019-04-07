@@ -1,7 +1,7 @@
 context("convertGenesToSymbols")
 
 gene2symbol <-
-    makeGene2SymbolFromEnsembl(organism = organism, release = release)
+    makeGene2SymbolFromEnsembl(organism = "Homo sapiens", release = 87L)
 
 test_that("character", {
     expect_identical(

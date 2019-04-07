@@ -22,8 +22,35 @@ test_that("SummarizedExperiment", {
     expect_silent(sampleData(object))
 })
 
-test_that("SummarizedExperiment assignment method", {
+test_that("SummarizedExperiment <-", {
     object <- rse
     sampleData(object)[["test"]] <- as.factor(seq_len(ncol(object)))
     expect_is(sampleData(object)[["test"]], "factor")
+})
+
+test_that("SingleCellExperiment", {
+    samples <- paste0("sample", seq_len(2L))
+    expect_identical(
+        sampleData(sce),
+        DataFrame(
+            sampleName = as.factor(samples),
+            interestingGroups = as.factor(samples),
+            row.names = samples
+        )
+    )
+})
+
+test_that("SingleCellExperiment <-", {
+    samples <- paste0("sample", seq_len(2L))
+    batch <- factor(seq_along(samples))
+    sampleData(sce)[["batch"]] <- batch
+    expect_identical(
+        object = sampleData(sce),
+        expected = DataFrame(
+            sampleName = as.factor(samples),
+            batch = batch,
+            interestingGroups = as.factor(samples),
+            row.names = samples
+        )
+    )
 })

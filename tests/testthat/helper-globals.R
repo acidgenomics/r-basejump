@@ -1,5 +1,5 @@
 data(
-    df, lfc, mat, rse, sce, sparse, txse,
+    df, gr, lfc, mat, rse, sce, sparse, txse,
     package = "acidtest",
     envir = environment()
 )
@@ -9,10 +9,8 @@ DataFrame <- S4Vectors::DataFrame
 GRanges <- GenomicRanges::GRanges
 IRanges <- IRanges::IRanges
 SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
+group_vars <- dplyr::group_vars
 # nolint end
-
-organism <- "Homo sapiens"
-release <- 87L
 
 options(
     acid.save.dir = ".",

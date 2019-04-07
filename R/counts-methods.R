@@ -54,7 +54,7 @@ setMethod(
 
 
 
-`counts<-.SummarizedExperiment` <-  # nolint
+`counts<-.SummarizedExperiment,ANY` <-  # nolint
     function(object, value) {
         validObject(object)
         assays(object)[["counts"]] <- value
@@ -71,5 +71,5 @@ setMethod(
         object = "SummarizedExperiment",
         value = "ANY"
     ),
-    definition = `counts<-.SummarizedExperiment`
+    definition = `counts<-.SummarizedExperiment,ANY`
 )

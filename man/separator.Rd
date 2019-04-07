@@ -4,7 +4,8 @@
 \alias{separator}
 \title{Separator bar}
 \usage{
-separator(sep = "=", times = min(c(getOption("width", 72L), 72L)))
+separator(sep = "=", times = min(c(getOption("width", default = 72L),
+  72L)))
 }
 \arguments{
 \item{sep}{\code{character(1)}.
@@ -24,5 +25,5 @@ Bioconductor HTML vignettes don't render correctly when printing > 76
 characters, even though the default width is set at 80.
 }
 \examples{
-cat(separator(sep = "=", times = 10L))
+separator(sep = "=", times = 10L)
 }

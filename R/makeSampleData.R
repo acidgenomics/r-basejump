@@ -31,6 +31,7 @@
 #'     sampleName = paste("sample", seq_len(4L)),
 #'     row.names = paste0("GSM000000", seq_len(4L))
 #' )
+#' makeSampleData(object)
 makeSampleData <- function(object) {
     assert(
         # Check for strings beginning with numbers, containing spaces, hyphens,

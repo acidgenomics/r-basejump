@@ -22,24 +22,31 @@
 #' mapCellsToSamples(cells, samples)
 mapCellsToSamples <- function(cells, samples) {
     assert(
-        isCharacter(cells),
-        hasNoDuplicates(cells),
-        isAny(samples, classes = c("character", "factor"))
+        isCharacter(cells), hasNoDuplicates(cells),
+        isCharacter(samples), hasNoDuplicates(samples)
     )
-    samples <- unique(as.character(samples))
 
-    # Early return if `cells` don't have a separator and `samples` is a string.
-    # Shouldn't happen normally but is necessary for some seurat objects.
-    if (!any(grepl("[_-]", cells)) && isString(samples)) {
+    # Early return as simple factor for single sample.
+    # This code is useful for working with some example objects (e.g. PBMC).
+    if (isString(samples)) {
+        # Check that cells match DNA bases.
+        assert(allAreMatchingRegex(x = cells, pattern = "^[ACGT]+$"))
         cell2sample <- factor(replicate(n = length(cells), expr = samples))
         names(cell2sample) <- cells
         return(cell2sample)
     }
 
-    list <- lapply(samples, function(sample) {
+    # Check that all cells contain a separator.
+    assert(allAreMatchingRegex(x = cells, pattern = "[_-]"))
+
+    list <- lapply(X = samples, FUN = function(sample) {
         pattern <- paste0("^(", sample, barcodePattern)
-        match <- str_match(cells, pattern = pattern) %>%
-            as.data.frame() %>%
+        match <- str_match(cells, pattern = pattern)
+        if (all(is.na(match[, 1L]))) {
+            stop(paste(deparse(sample), "sample failed to match any cells."))
+        }
+        match %<>%
+            data.frame() %>%
             set_colnames(c(
                 "cellID",
                 "sampleID",

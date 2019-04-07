@@ -4,23 +4,29 @@
 \alias{detectLanes}
 \title{Detect sequencing lanes}
 \usage{
-detectLanes(object, pattern = lanePattern)
+detectLanes(path, pattern = "_L([[:digit:]]{3})")
 }
 \arguments{
-\item{object}{\code{character}.
-Sequencing file or directory paths.}
+\item{path}{\code{character}.
+Sequencing file paths, e.g. FASTQs.}
 
 \item{pattern}{\code{character(1)}.
-Grep pattern. Default pattern checks for \code{"_LXXX"}.}
+Lane grep pattern. Defaults to \link{lanePattern} global variable.}
 }
 \value{
 \code{integer}.
-Lane number.
+Lane numbers.
 }
 \description{
 Detect sequencing lanes
 }
 \examples{
-files <- c("sample1_L001.fastq.gz", "sample1_L002.fastq.gz")
+## Matching lanes 1-4 for paired-end FASTQ files.
+files <- paste0(
+    "sample1",
+    paste0("_R", seq_len(2L)),
+    paste0("_L00", seq_len(4L)),
+    ".fastq.gz"
+)
 detectLanes(files)
 }

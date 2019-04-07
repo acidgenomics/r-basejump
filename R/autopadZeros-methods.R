@@ -9,14 +9,17 @@
 #' @return `character`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(rse, sce, package = "acidtest")
 #'
 #' ## character ====
 #' autopadZeros(c("A1", "B10"))
 #' autopadZeros(c("A1", "B10", "C100"))
 #'
 #' ## SummarizedExperiment ====
-#' autopadZeros(rse)
+#' autopadZeros(rse, rownames = TRUE, colnames = TRUE)
+#'
+#' ## SingleCellExperiment ====
+#' autopadZeros(sce, rownames = TRUE, colnames = TRUE)
 NULL
 
 
@@ -104,14 +107,14 @@ setMethod(
 
 
 autopadZeros.SummarizedExperiment <-  # nolint
-    function(object, rownames = FALSE) {
+    function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
         object <- do.call(
             what = autopadZeros.matrix,
             args = list(
                 object = object,
                 rownames = rownames,
-                colnames = TRUE,
-                sort = TRUE
+                colnames = colnames,
+                sort = sort
             )
         )
         # Ensure sample names, which can be defined in `colData` as `sampleName`

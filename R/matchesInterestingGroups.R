@@ -18,7 +18,7 @@
 #' @examples
 #' data(rse, package = "acidtest")
 #'
-#' ## Checks that columns are defined in `colData()`.
+#' ## Checks that columns are defined in `sampleData()`.
 #' matchesInterestingGroups(rse, "condition")
 #'
 #' ## Currently allowing `NULL` to pass.

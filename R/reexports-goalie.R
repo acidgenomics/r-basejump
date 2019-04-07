@@ -2,11 +2,13 @@
 #' @export
 goalie::assert
 
-
-
 #' @importFrom goalie bapply
 #' @export
 goalie::bapply
+
+#' @importFrom goalie cause
+#' @export
+goalie::cause
 
 #' @importFrom goalie extractLocal
 #' @export
@@ -31,6 +33,14 @@ goalie::printString
 #' @importFrom goalie standardizeCall
 #' @export
 goalie::standardizeCall
+
+#' @importFrom goalie validate
+#' @export
+goalie::validate
+
+#' @importFrom goalie validateClasses
+#' @export
+goalie::validateClasses
 
 
 

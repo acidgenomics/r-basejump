@@ -1,10 +1,16 @@
-## basejump 0.10.2 (2019-04-02)
+## basejump 0.10.2 (2019-04-07)
 
 ### Major changes
 
 - `aggregateRows`, `aggregateCols`, `aggregateCellsToSamples`: Improved internal
   code for SummarizedExperiment metadata handling. Applies primarily to colData
   and rowData juggling for these methods.
+- `interestingGroups`: Reworked to define method against `Annotated` class.
+  `SummarizedExperiment` inherits from this class, supporting `metadata`.
+- `mapCellsToSamples`: Tightened up match assert checks.
+- `mcolnames` now uses S4 methods, primarily against `Vector` class.
+- `organism`: Reworked S4 methods. Added support for `Annotated` and
+  `DataTable` classes from [S4Vectors][].
 
 ### Minor changes
 
@@ -12,6 +18,13 @@
 - Now covering the aggregation functions in better detail, using a minimal
   SingleCellExperiment object that works with `aggregateCols`.
 - Consistently use "acid" prefix instead of "basejump" for global options.
+- Miscellaneous working example improvements.
+- `detectLanes`: Renamed primary argument from `object` to `path`. Improved
+  `pattern` formal to evaluate `lanePattern` global.
+- For S4 generators, renamed test paramter from `basejump.test` to `acid.test`.
+- `sampleData`: Improved error message when `sampleName` factor column is
+  missing.
+- `zeroVsDepth` now returns `depth` column as `integer` instead of `numeric`.
 
 
 
@@ -128,7 +141,7 @@
 
 - Working on making the current basejump code base completely backward
   compatible with bcbioBase v0.4.1 and bcbioRNASeq v0.2.8 release series.
-- Now reexporting `goalie::bapply` and additional useful pipes from magrittr
+- Now reexporting `goalie::bapply` and additional useful pipes from [magrittr][]
   package.
 - Keeping the now deprecated `plotGene` generic reexported, while encouring
   users to update their code to use `plotCounts` instead.
@@ -1519,6 +1532,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 
 
 
+[Acid Genomics]: https://acidgenomics.com/
 [AnnotationHub]: https://bioconductor.org/packages/AnnotationHub/
 [annotables]: https://github.com/stephenturner/annotables/
 [AppVeyor CI]: https://ci.appveyor.com/
@@ -1537,8 +1551,10 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [brightworm]: https://brightworm.acidgenomics.com/
 [brio]: https://brio.acidgenomics.com/
 [Cell Ranger]: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger
+[checkmate]: https://cran.r-project.org/package=checkmate
 [conda]: https://conda.io/
 [covr]: https://cran.r-project.org/package=covr
+[CRAN]: https://cran.r-project.org/
 [data.table]: https://cran.r-project.org/package=data.table
 [devtools]: https://cran.r-project.org/package=devtools
 [dplyr]: http://dplyr.tidyverse.org/
@@ -1548,7 +1564,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [Entrez]: https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html
 [Excel]: https://products.office.com/en-us/excel/
 [firestarter]: https://firestarter.acidgenomics.com/
-[freeranges]: https://freeranges.acidgenomics.com/
+[freerange]: https://freerange.acidgenomics.com/
 [GenomeInfoDb]: https://bioconductor.org/packages/GenomeInfoDb/
 [GenomeInfoDbData]: https://bioconductor.org/packages/GenomeInfoDbData/
 [ggplot2]: http://ggplot2.tidyverse.org/
@@ -1567,12 +1583,14 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [minimalism]: https://minimalism.acidgenomics.com/
 [NIH]: https://www.nih.gov/
 [PANTHER]: http://pantherdb.org/
+[pheatmap]: https://cran.r-project.org/package=pheatmap
 [pointillism]: https://pointillism.acidgenomics.com/
 [R]: https://www.r-project.org/
 [readr]: http://readr.tidyverse.org/
 [rio]: https://cran.r-project.org/package=rio
 [rlang]: http://rlang.tidyverse.org/
 [roxygen2]: https://cran.r-project.org/package=roxygen2
+[S4Vectors]: https://bioconductor.org/packages/S4Vectors/
 [SummarizedExperiment]: https://bioconductor.org/packages/SummarizedExperiment/
 [syntactic]: https://syntactic.acidgenomics.com/
 [testthat]: https://cran.r-project.org/package=testthat

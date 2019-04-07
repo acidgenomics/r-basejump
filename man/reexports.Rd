@@ -58,12 +58,15 @@
 \alias{makeGRangesFromGTF}
 \alias{assert}
 \alias{bapply}
+\alias{cause}
 \alias{extractLocal}
 \alias{matchArgsToDoCall}
 \alias{methodFormals}
 \alias{methodFunction}
 \alias{printString}
 \alias{standardizeCall}
+\alias{validate}
+\alias{validateClasses}
 \alias{hasLocal}
 \alias{hasRownames}
 \alias{camel}
@@ -102,7 +105,7 @@ below to see their documentation.
 
   \item{freerange}{\code{\link[freerange]{annotable}}, \code{\link[freerange]{convertUCSCBuildToEnsembl}}, \code{\link[freerange]{detectOrganism}}, \code{\link[freerange]{emptyRanges}}, \code{\link[freerange]{makeGRangesFromEnsDb}}, \code{\link[freerange]{makeGRangesFromEnsembl}}, \code{\link[freerange]{makeGRangesFromGFF}}, \code{\link[freerange]{makeGRangesFromGTF}}}
 
-  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{bapply}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{hasRownames}}}
+  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{bapply}}, \code{\link[goalie]{cause}}, \code{\link[goalie]{extractLocal}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{validate}}, \code{\link[goalie]{validateClasses}}, \code{\link[goalie]{hasLocal}}, \code{\link[goalie]{hasRownames}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 

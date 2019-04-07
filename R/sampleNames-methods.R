@@ -63,7 +63,7 @@ setMethod(
 
 
 
-`sampleNames<-.SummarizedExperiment` <-  # nolint
+`sampleNames<-.SummarizedExperiment,character` <-  # nolint
     function(object, value) {
         if (!is.factor(value)) {
             value <- as.factor(value)
@@ -94,5 +94,5 @@ setMethod(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    definition = `sampleNames<-.SummarizedExperiment`
+    definition = `sampleNames<-.SummarizedExperiment,character`
 )

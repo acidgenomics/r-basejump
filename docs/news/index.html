@@ -105,15 +105,23 @@
       <small>Source: <a href='https://github.com/acidgenomics/basejump/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="basejump-0-10-2-2019-04-02" class="section level2">
+    <div id="basejump-0-10-2-2019-04-07" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-10-2-2019-04-02" class="anchor"></a>basejump 0.10.2 (2019-04-02)</h2>
+<a href="#basejump-0-10-2-2019-04-07" class="anchor"></a>basejump 0.10.2 (2019-04-07)</h2>
 <div id="major-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#major-changes" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>aggregateRows</code>, <code>aggregateCols</code>, <code>aggregateCellsToSamples</code>: Improved internal code for SummarizedExperiment metadata handling. Applies primarily to colData and rowData juggling for these methods.</li>
+<li>
+<code>interestingGroups</code>: Reworked to define method against <code>Annotated</code> class. <code>SummarizedExperiment</code> inherits from this class, supporting <code>metadata</code>.</li>
+<li>
+<code>mapCellsToSamples</code>: Tightened up match assert checks.</li>
+<li>
+<code>mcolnames</code> now uses S4 methods, primarily against <code>Vector</code> class.</li>
+<li>
+<code>organism</code>: Reworked S4 methods. Added support for <code>Annotated</code> and <code>DataTable</code> classes from <a href="https://bioconductor.org/packages/S4Vectors/">S4Vectors</a>.</li>
 </ul>
 </div>
 <div id="minor-changes" class="section level3">
@@ -123,6 +131,14 @@
 <li>Added additional unit tests, to improve code coverage.</li>
 <li>Now covering the aggregation functions in better detail, using a minimal SingleCellExperiment object that works with <code>aggregateCols</code>.</li>
 <li>Consistently use “acid” prefix instead of “basejump” for global options.</li>
+<li>Miscellaneous working example improvements.</li>
+<li>
+<code>detectLanes</code>: Renamed primary argument from <code>object</code> to <code>path</code>. Improved <code>pattern</code> formal to evaluate <code>lanePattern</code> global.</li>
+<li>For S4 generators, renamed test paramter from <code>basejump.test</code> to <code>acid.test</code>.</li>
+<li>
+<code>sampleData</code>: Improved error message when <code>sampleName</code> factor column is missing.</li>
+<li>
+<code>zeroVsDepth</code> now returns <code>depth</code> column as <code>integer</code> instead of <code>numeric</code>.</li>
 </ul>
 </div>
 </div>
@@ -152,7 +168,7 @@
 <h3 class="hasAnchor">
 <a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
-<li>Split out Ensembl (AnnotationHub/ensembldb) annotation processing and GFF/GTF file loading utilites to new [freerange][] package. All of these functions remain re-exported here in <a href="https://basejump.acidgenomics.com/">basejump</a>. This includes: <code>annotable</code>, <code>convertUCSCBuildToEnsembl</code>, <code>detectOrganism</code>, <code>emptyRanges</code>, <code>makeGRangesFromEnsDb</code>, <code>makeGRangesFromEnsembl</code>, <code>makeGRangesFromGFF</code>, <code>makeGRangesFromGTF</code>.</li>
+<li>Split out Ensembl (AnnotationHub/ensembldb) annotation processing and GFF/GTF file loading utilites to new <a href="https://freerange.acidgenomics.com/">freerange</a> package. All of these functions remain re-exported here in <a href="https://basejump.acidgenomics.com/">basejump</a>. This includes: <code>annotable</code>, <code>convertUCSCBuildToEnsembl</code>, <code>detectOrganism</code>, <code>emptyRanges</code>, <code>makeGRangesFromEnsDb</code>, <code>makeGRangesFromEnsembl</code>, <code>makeGRangesFromGFF</code>, <code>makeGRangesFromGTF</code>.</li>
 <li>Split out heatmap functions to <a href="https://firestarter.acidgenomics.com/">firestarter</a> package. This includes <code>plotHeatmap</code>, <code>plotCorrelationHeatmap</code>, and <code>plotQuantileHeatmap</code>.</li>
 <li>Split out all ggplot2 functions to new <a href="https://minimalism.acidgenomics.com/">minimalism</a> package.</li>
 </ul>
@@ -161,8 +177,8 @@
 <h3 class="hasAnchor">
 <a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Offloaded <code>removeNA</code> and <code>sanitizeNA</code> code to <a href="https://brio.acidgenomics.com/">brio</a> package, so these functions can be imported in thew new [freerange][] package.</li>
-<li>Moved <code>organism_mappings</code> internal dataset to [freerange][] package.</li>
+<li>Offloaded <code>removeNA</code> and <code>sanitizeNA</code> code to <a href="https://brio.acidgenomics.com/">brio</a> package, so these functions can be imported in thew new <a href="https://freerange.acidgenomics.com/">freerange</a> package.</li>
+<li>Moved <code>organism_mappings</code> internal dataset to <a href="https://freerange.acidgenomics.com/">freerange</a> package.</li>
 </ul>
 </div>
 </div>
@@ -188,7 +204,7 @@
 <h3 class="hasAnchor">
 <a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Migrated code to [Acid Genomics][].</li>
+<li>Migrated code to <a href="https://acidgenomics.com/">Acid Genomics</a>.</li>
 </ul>
 </div>
 </div>
@@ -256,7 +272,7 @@
 <a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Working on making the current basejump code base completely backward compatible with bcbioBase v0.4.1 and bcbioRNASeq v0.2.8 release series.</li>
-<li>Now reexporting <code><a href="https://www.rdocumentation.org/packages/goalie/topics/bapply">goalie::bapply</a></code> and additional useful pipes from magrittr package.</li>
+<li>Now reexporting <code><a href="https://www.rdocumentation.org/packages/goalie/topics/bapply">goalie::bapply</a></code> and additional useful pipes from <a href="https://magrittr.tidyverse.org/">magrittr</a> package.</li>
 <li>Keeping the now deprecated <code>plotGene</code> generic reexported, while encouring users to update their code to use <code>plotCounts</code> instead.</li>
 <li>
 <code>interestingGroups</code>: Simplified internal assert checks, removing <code>matchesInterestingGroups</code>, which can become circular.</li>
@@ -400,7 +416,7 @@
 <h3 class="hasAnchor">
 <a href="#minor-changes-16" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Reorganized imports in <code>DESCRIPTION</code> file to make them more human readable. Note that <a href="https://basejump.acidgenomics.com/">basejump</a> sub-packages are imported first, then <a href="https://bioconductor.org/">Bioconductor</a> packages, followed by [CRAN][] packages, and required default packages.</li>
+<li>Reorganized imports in <code>DESCRIPTION</code> file to make them more human readable. Note that <a href="https://basejump.acidgenomics.com/">basejump</a> sub-packages are imported first, then <a href="https://bioconductor.org/">Bioconductor</a> packages, followed by <a href="https://cran.r-project.org/">CRAN</a> packages, and required default packages.</li>
 <li>Split out NAMESPACE imports into a separate <code>imports.R</code> file.</li>
 </ul>
 </div>
@@ -506,7 +522,7 @@
 <li>Reorganized collapse family of functions. Refer to changes in <code>collapse-methods.R</code>, which is now split out to <code>collaseToString-methods.R</code>.</li>
 <li>Split out the markdown family of functions back out into separate files.</li>
 <li>
-<code>matchesGene2Symbol</code>, <code>matchesInterestingGroups</code>: Reworked internal code and moved to separate files. No longer relies upon <code>makeTestFunction</code> from [checkmate][] package.</li>
+<code>matchesGene2Symbol</code>, <code>matchesInterestingGroups</code>: Reworked internal code and moved to separate files. No longer relies upon <code>makeTestFunction</code> from <a href="https://cran.r-project.org/package=checkmate">checkmate</a> package.</li>
 </ul>
 </div>
 <div id="documentation" class="section level3">
@@ -545,7 +561,7 @@
 <ul>
 <li>Now using <a href="https://goalie.acidgenomics.com/">goalie</a> package instead of <a href="https://cran.r-project.org/package=assertive">assertive</a> for internal assert checks. The new <code><a href="https://www.rdocumentation.org/packages/goalie/topics/assert">goalie::assert</a></code> function is more flexible in many cases. Similarly, <code><a href="https://www.rdocumentation.org/packages/goalie/topics/validate">goalie::validate</a></code> is now being used in place of <code><a href="https://www.rdocumentation.org/packages/assertthat/topics/validate_that">assertthat::validate_that</a></code>.</li>
 <li>
-<code>plotHeatmap</code> now calculates the z-score normalization internally, rather than relying upon the codebase inside [pheatmap][].</li>
+<code>plotHeatmap</code> now calculates the z-score normalization internally, rather than relying upon the codebase inside <a href="https://cran.r-project.org/package=pheatmap">pheatmap</a>.</li>
 <li>
 <code>export</code>: Improved <code>SummarizedExperiment</code> method to also write <code>Gene2Symbol</code> and <code>Ensembl2Entrez</code> mappings to disk, when defined. The human-friendly output formal has been renamed from <code>human</code> to <code>humanize</code>, to reflect an action (verb). This corresponds better to our <code>humanize</code> generic function. Also reworked some internal code that handles output of colData and rowData to disk.</li>
 <li>
@@ -576,7 +592,7 @@
 <h3 class="hasAnchor">
 <a href="#documentation-1" class="anchor"></a>Documentation</h3>
 <ul>
-<li>Improved documentation style throughout the package, switching from the usage of scalar types like <code>string</code> to <code><a href="https://www.rdocumentation.org/packages/base/topics/character">character(1)</a></code>, and <code>boolean</code> to <code><a href="https://www.rdocumentation.org/packages/base/topics/logical">logical(1)</a></code>. This better matches the actual data structure in R. Some other packages like [checkmate][] also use this convention, which I think is more readable than my previous approach.</li>
+<li>Improved documentation style throughout the package, switching from the usage of scalar types like <code>string</code> to <code><a href="https://www.rdocumentation.org/packages/base/topics/character">character(1)</a></code>, and <code>boolean</code> to <code><a href="https://www.rdocumentation.org/packages/base/topics/logical">logical(1)</a></code>. This better matches the actual data structure in R. Some other packages like <a href="https://cran.r-project.org/package=checkmate">checkmate</a> also use this convention, which I think is more readable than my previous approach.</li>
 </ul>
 </div>
 </div>
@@ -1701,7 +1717,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-0-10-2-2019-04-02">0.10.2</a></li>
+        <li><a href="#basejump-0-10-2-2019-04-07">0.10.2</a></li>
         <li><a href="#basejump-0-10-1-2019-04-01">0.10.1</a></li>
         <li><a href="#basejump-0-10-0-2019-03-28">0.10.0</a></li>
         <li><a href="#basejump-0-9-16-2019-03-23">0.9.16</a></li>
