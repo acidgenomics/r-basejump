@@ -59,8 +59,7 @@ r_github_packages:
 after_success:
   - R CMD BiocCheck .
   - Rscript -e 'lintr::lint_package()'
-  # This is causing the build to stall and time out.
-  # - Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov()'
 
 notifications:
   email:
