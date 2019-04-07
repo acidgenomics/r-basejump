@@ -123,7 +123,8 @@
   <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>autopadZeros</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>autopadZeros</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,14 +167,25 @@ This does not apply to the <code>character</code> method.</p>
 <span class='co'>## character ====</span>
 <span class='fu'>autopadZeros</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"A1"</span>, <span class='st'>"B10"</span>))</div><div class='output co'>#&gt; [1] "A01" "B10"</div><div class='input'><span class='fu'>autopadZeros</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"A1"</span>, <span class='st'>"B10"</span>, <span class='st'>"C100"</span>))</div><div class='output co'>#&gt; [1] "A001" "B010" "C100"</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>autopadZeros</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='fu'>autopadZeros</span>(<span class='no'>rse</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 12 
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts
 #&gt; rownames(500): gene001 gene002 ... gene499 gene500
 #&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
 #&gt; colnames(12): sample01 sample02 ... sample11 sample12
-#&gt; colData names(1): condition</div></pre>
+#&gt; colData names(1): condition</div><div class='input'>
+<span class='co'>## SingleCellExperiment ====</span>
+<span class='fu'>autopadZeros</span>(<span class='no'>sce</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+#&gt; dim: 500 100 
+#&gt; metadata(1): date
+#&gt; assays(1): counts
+#&gt; rownames(500): gene001 gene002 ... gene499 gene500
+#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
+#&gt; colnames(100): cell001 cell002 ... cell099 cell100
+#&gt; colData names(2): expLibSize sampleID
+#&gt; reducedDimNames(0):
+#&gt; spikeNames(0):</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -160,7 +160,14 @@ useful for plots and doesn't have to match the column names of a
     <span class='kw'>treatment</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"vector"</span>, <span class='st'>"RNAi"</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>),
     <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fl'>4L</span>)),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='st'>"GSM000000"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fl'>4L</span>))
-)</div></pre>
+)
+<span class='fu'>makeSampleData</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
+#&gt;            sampleName genotype treatment
+#&gt;              &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
+#&gt; GSM0000001   sample 1  control    vector
+#&gt; GSM0000002   sample 2 wildtype    vector
+#&gt; GSM0000003   sample 3  control      RNAi
+#&gt; GSM0000004   sample 4 wildtype      RNAi</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
