@@ -2,7 +2,7 @@
 set.seed(1454944673L)
 
 # Set knitr defaults for R Markdown rendering.
-# # https://yihui.name/knitr/options/
+# https://yihui.name/knitr/options/
 requireNamespace(package = "knitr", quietly = TRUE)
 knitr::opts_chunk[["set"]](
     autodep = TRUE,
