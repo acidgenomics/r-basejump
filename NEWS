@@ -1,3 +1,12 @@
+## basejump 0.10.3 (2019-04-07)
+
+### Minor changes
+
+- Bug fix release for [freerange][] update. `emptyRanges` format has been
+  renamed from `mcolsNames` to `mcolnames`.
+
+
+
 ## basejump 0.10.2 (2019-04-07)
 
 ### Major changes
