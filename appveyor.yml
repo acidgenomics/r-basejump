@@ -1,5 +1,9 @@
 # AppVeyor-CI configuration for Bioconductor packages
-# https://github.com/krlmlr/r-appveyor
+#
+# See also:
+# - https://github.com/krlmlr/r-appveyor
+# - https://github.com/Bioconductor/BiocManager/blob/master/appveyor.yml
+# - https://github.com/satijalab/seurat/blob/release/3.0/appveyor.yml
 
 init:
   ps: |
