@@ -2,6 +2,7 @@
 set.seed(1454944673L)
 
 # Set knitr defaults for R Markdown rendering.
+# https://yihui.name/knitr/options/
 requireNamespace(package = "knitr", quietly = TRUE)
 knitr::opts_chunk[["set"]](
     autodep = TRUE,
@@ -15,8 +16,11 @@ knitr::opts_chunk[["set"]](
     fig.retina = 2L,
     fig.width = 10L,
     highlight = TRUE,
+    # Note that messages can screw up `lapply()` plots with tabset.
+    message = FALSE,
     prompt = TRUE,
-    tidy = FALSE
+    tidy = FALSE,
+    warning = TRUE
 )
 
 # Set default ggplot2 theme.
