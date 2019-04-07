@@ -9,7 +9,7 @@
 #' @return `character`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(rse, sce, package = "acidtest")
 #'
 #' ## character ====
 #' autopadZeros(c("A1", "B10"))
