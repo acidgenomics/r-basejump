@@ -73,6 +73,19 @@ test_that("summary", {
 
 
 
+context("PANTHER")
+
+test_that("PANTHER", {
+    object <- PANTHER("Homo sapiens")
+    expect_output(
+        object = show(object),
+        regexp = "PANTHER"
+    )
+
+})
+
+
+
 context("Tx2Gene")
 
 test_that("Tx2Gene", {
