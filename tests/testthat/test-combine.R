@@ -47,10 +47,10 @@ test_that("SingleCellExperiment", {
     colnames(y) <- cells
 
     # Increase the sample ID numbers.
-    sampleID <- y$sampleID
+    sampleID <- y[["sampleID"]]
     sampleID <- gsub("1$", "3", sampleID)
     sampleID <- gsub("2$", "4", sampleID)
-    y$sampleID <- as.factor(sampleID)
+    y[["sampleID"]] <- as.factor(sampleID)
 
     # Combine two SingleCellExperiment objects.
     c <- combine(x, y)

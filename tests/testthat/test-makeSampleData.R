@@ -11,4 +11,3 @@ test_that("makeSampleData", {
     expect_s4_class(x, "DataFrame")
     expect_true(all(bapply(x, is.factor)))
 })
-
