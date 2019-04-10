@@ -50,7 +50,7 @@ notifications:
     on_failure: change
 
 # Temporarily enable when caching package library.
-# script: true
+script: true
 
 # Skip building vignettes, which can cause the Travis build to time out.
 # r_build_args: "--no-build-vignettes --no-manual"
