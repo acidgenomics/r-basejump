@@ -6,6 +6,8 @@
 # - https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb
 # - https://jef.works/blog/2019/02/17/automate-testing-of-your-R-package/
 
+script: true
+
 language: r
 cache: packages
 
@@ -48,10 +50,3 @@ notifications:
       - mike@steinbaugh.com
     on_success: change
     on_failure: change
-
-# Temporarily enable when caching package library.
-script: true
-
-# Skip building vignettes, which can cause the Travis build to time out.
-# r_build_args: "--no-build-vignettes --no-manual"
-# r_check_args: "--no-build-vignettes --no-manual --timings"
