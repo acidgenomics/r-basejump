@@ -10,6 +10,9 @@ script: true
 
 language: r
 cache: packages
+bioc_required: true
+bioc_check: true
+use_devtools: true
 
 matrix:
   include:
@@ -34,13 +37,10 @@ env:
 
 r_packages:
   - covr
-bioc_packages:
-  - BiocCheck
 r_github_packages:
   - acidgenomics/lintr
 
 after_success:
-  - R CMD BiocCheck .
   - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'covr::codecov()'
 
