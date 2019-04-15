@@ -1,4 +1,3 @@
 rcmdcheck::rcmdcheck(args = "--no-manual")
-BiocCheck::BiocCheck(`quit-with-status` = FALSE)
+BiocCheck::BiocCheck()
 lintr::lint_package()
-covr::report()
