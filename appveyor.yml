@@ -16,9 +16,6 @@ install:
 
 platform: x64
 
-# cache:
-#   - C:\RLibrary -> appveyor.yml
-
 branches:
   only:
     - master
