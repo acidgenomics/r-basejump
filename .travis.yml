@@ -1,46 +1,14 @@
-# Travis-CI configuration for Bioconductor packages
-#
-# See also:
-# - https://docs.travis-ci.com/user/languages/r
-# - https://docs.travis-ci.com/user/environment-variables/
-# - https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb
-# - https://jef.works/blog/2019/02/17/automate-testing-of-your-R-package/
+language: general
 
-language: r
-cache: packages
+services:
+  - docker
 
-matrix:
-  include:
-    - os: linux
-      r: bioc-release
-    - os: linux
-      r: bioc-devel
-    - os: osx
-      r: bioc-release
-  allow_failures:
-    - os: osx
-    - r: bioc-devel
-  fast_finish: true
+before_install:
+  - docker pull acidgenomics/basejump
+  - docker images
 
-branches:
-  only:
-    - master
-
-env:
-  global:
-    - LINTR_COMMENT_BOT=true
-
-r_packages:
-  - covr
-bioc_packages:
-  - BiocCheck
-r_github_packages:
-  - acidgenomics/lintr
-
-after_success:
-  - R CMD BiocCheck .
-  - Rscript -e 'lintr::lint_package()'
-  - Rscript -e 'covr::codecov()'
+script:
+  - docker run -ti --user="bioc" --volume="${PWD}:/basejump" --workdir="/basejump" acidgenomics/basejump Rscript -e 'source("travis-docker.R")'
 
 notifications:
   email:
@@ -48,10 +16,3 @@ notifications:
       - mike@steinbaugh.com
     on_success: change
     on_failure: change
-
-# Temporarily enable when caching package library.
-# script: true
-
-# Skip building vignettes, which can cause the Travis build to time out.
-# r_build_args: "--no-build-vignettes --no-manual"
-# r_check_args: "--no-build-vignettes --no-manual --timings"
