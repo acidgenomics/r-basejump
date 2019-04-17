@@ -3,7 +3,7 @@ title: "basejump"
 author: "Michael Steinbaugh"
 date: "`r BiocStyle::doc_date()`"
 output: BiocStyle::html_document
-bibliography: bibliography.bib
+bibliography: ../inst/rmarkdown/shared/bibliography.bib
 vignette: >
   %\VignetteIndexEntry{basejump}
   %\VignetteEngine{knitr::rmarkdown}
