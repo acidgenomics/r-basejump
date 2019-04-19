@@ -2,10 +2,18 @@
 #' @inherit bioverbs::meltCounts
 #' @inheritParams params
 #'
-#' @param minCountsPerFeature `integer(1)`.
-#'   Minimum number of counts per row feature (i.e. gene). Internally,
-#'   [`rowSums()`][base::rowSums] values are checked against this cutoff
-#'   threshold prior to the melt operation.
+#' @param minCounts `integer(1)`.
+#'   Minimum count threshold to apply. Filters using "greater than or equal to"
+#'   logic internally. Note that this threshold gets applied prior to
+#'   logarithmic transformation, when `trans` argument applies.
+#' @param minCountsMethod `character(1)`.
+#'   Uses [`match.arg()`][base::match.arg].
+#'
+#'   - `perFeature`: *Recommended*. Applies cutoff per row feature (i.e. gene).
+#'     Internally, [`rowSums()`][base::rowSums] values are checked against this
+#'     cutoff threshold prior to the melt operation.
+#'   - `absolute`: Applies hard cutoff to `counts` column after the melt
+#'     operation. This applies to all counts, not per feature.
 #' @param trans `character(1)`.
 #'   Apply a log transformation (e.g. `log2(x + 1L)`) to the count matrix prior
 #'   to melting, if desired. Use `"identity"` to return unmodified (default).
@@ -30,57 +38,18 @@ meltCounts.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
-        minCountsPerFeature = -Inf,
-        trans = c("identity", "log2", "log10"),
-        ...
+        minCounts = 1L,
+        minCountsMethod = c("perFeature", "absolute"),
+        trans = c("identity", "log2", "log10")
     ) {
-        # Check for legacy arguments.
-        dots <- list(...)
-        if ("nonzeroGenes" %in% names(dots)) {
-            warning(paste(
-                "`nonzeroGenes` is deprecated.",
-                "Use `minCountsPerFeature` instead."
-            ))
-            nonzeroGenes <- eval(dots[["nonzeroGenes"]])
-            if (isTRUE(nonzeroGenes)) {
-                minCountsPerFeature <- 1L
-            }
-        }
-
         validObject(object)
         assert(
             isScalar(assay),
-            isInt(minCountsPerFeature)
+            isInt(minCounts),
+            isGreaterThanOrEqualTo(minCounts, 1L)
         )
+        minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
-
-        # Prepare the count matrix.
-        counts <- assays(object)[[assay]]
-        assert(hasLength(counts))
-        # Always coerce to dense matrix prior to melt operation.
-        counts <- as.matrix(counts)
-
-        # Filter out rows below our minimum expression cutoff.
-        keep <- rowSums(counts) >= minCountsPerFeature
-        if (sum(keep, na.rm = TRUE) < nrow(counts)) {
-            message(paste(
-                sum(keep, na.rm = TRUE), "/", nrow(counts),
-                "features passed minimum expression cutoff."
-            ))
-        }
-        counts <- counts[keep, , drop = FALSE]
-
-        # Log transform the matrix, if desired.
-        if (trans != "identity") {
-            message(paste0("Applying ", trans, "(x + 1) transformation."))
-            fun <- get(
-                x = trans,
-                envir = asNamespace("base"),
-                inherits = FALSE
-            )
-            assert(is.function(fun))
-            counts <- fun(counts + 1L)
-        }
 
         # Get the sample metadata.
         sampleData <- sampleData(object) %>%
@@ -88,8 +57,35 @@ meltCounts.SummarizedExperiment <-  # nolint
             rename(colname = !!sym("rowname")) %>%
             mutate_all(as.factor)
 
-        # Return as melted tibble.
-        counts %>%
+        # Prepare the count matrix.
+        counts <- assays(object)[[assay]]
+        assert(hasLength(counts))
+        # Always coerce to dense matrix prior to melt operation.
+        counts <- as.matrix(counts)
+
+        # Filter rows that don't pass our `minCounts` expression cutoff. Note
+        # that we're ensuring rows containing all zeros are always dropped,
+        # even when `minCountsMethod = "absolute"`.
+        if (minCountsMethod == "perFeature") {
+            rowCutoff <- minCounts
+        } else {
+            rowCutoff <- 1L
+        }
+        keep <- rowSums(counts) >= rowCutoff
+        if (minCountsMethod == "perFeature") {
+            message(paste(
+                sum(keep, na.rm = TRUE), "/", nrow(counts),
+                "features passed minimum rowSums() >=", rowCutoff,
+                "expression cutoff."
+            ))
+        }
+        counts <- counts[keep, , drop = FALSE]
+
+        # Ensure that no zero rows propagate.
+        assert(!any(rowSums(counts) == 0L))
+
+        # Now ready to return as melted tibble.
+        melt <- counts %>%
             # Using reshape2 method here.
             # This sets rownames as "Var1" and colnames as "Var2".
             melt(id = 1L, value.name = "counts") %>%
@@ -101,6 +97,32 @@ meltCounts.SummarizedExperiment <-  # nolint
             mutate_if(is.character, as.factor) %>%
             group_by(!!!syms(c("colname", "rowname"))) %>%
             left_join(sampleData, by = "colname")
+
+        # When applying an absolute threshold using `minCountsMethod`, apply
+        # this cutoff prior to logarithmic transformation.
+        if (minCountsMethod == "absolute") {
+            nPrefilter <- nrow(melt)
+            melt %<>% filter(counts >= !!minCounts)
+            message(paste(
+                nrow(melt), "/", nPrefilter,
+                "melted rows passed minimum >=", minCounts,
+                "absolute expression cutoff."
+            ))
+        }
+
+        # Log transform the counts, if desired.
+        if (trans != "identity") {
+            message(paste0("Applying ", trans, "(x + 1) transformation."))
+            fun <- get(
+                x = trans,
+                envir = asNamespace("base"),
+                inherits = FALSE
+            )
+            assert(is.function(fun))
+            melt[["counts"]] <- fun(melt[["counts"]] + 1L)
+        }
+
+        melt
     }
 
 
