@@ -7,7 +7,8 @@
 \title{Melt count matrix into long format}
 \usage{
 \S4method{meltCounts}{SummarizedExperiment}(object, assay = 1L,
-  nonzeroGenes = FALSE, trans = c("identity", "log2", "log10"))
+  minCountsPerFeature = -Inf, trans = c("identity", "log2", "log10"),
+  ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -18,12 +19,14 @@ Name or index of count matrix slotted in
 name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
-\item{nonzeroGenes}{\code{logical(1)}.
-Return only non-zero genes.}
+\item{minCountsPerFeature}{\code{integer(1)}.
+Minimum number of counts per row feature (i.e. gene).}
 
 \item{trans}{\code{character(1)}.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{grouped_df}.
