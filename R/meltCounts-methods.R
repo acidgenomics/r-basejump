@@ -57,7 +57,7 @@ meltCounts.SummarizedExperiment <-  # nolint
         counts <- as.matrix(counts)
 
         # Filter out rows below our minimum expression cutoff.
-        keep <- rowSums(counts) > minCountsPerFeature
+        keep <- rowSums(counts) >= minCountsPerFeature
         if (sum(keep, na.rm = TRUE) < nrow(counts)) {
             message(paste(
                 sum(keep, na.rm = TRUE), "/", nrow(counts),
