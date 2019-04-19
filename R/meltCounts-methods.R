@@ -37,10 +37,14 @@ meltCounts.SummarizedExperiment <-  # nolint
         # Check for legacy arguments.
         dots <- list(...)
         if ("nonzeroGenes" %in% names(dots)) {
-            stop(paste(
-                "`nonzeroGenes` is defunct.",
+            warning(paste(
+                "`nonzeroGenes` is deprecated.",
                 "Use `minCountsPerFeature` instead."
             ))
+            nonzeroGenes <- eval(dots[["nonzeroGenes"]])
+            if (isTRUE(nonzeroGenes)) {
+                minCountsPerFeature <- 1L
+            }
         }
 
         validObject(object)
