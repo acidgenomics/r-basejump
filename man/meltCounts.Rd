@@ -20,7 +20,9 @@ name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
 \item{minCountsPerFeature}{\code{integer(1)}.
-Minimum number of counts per row feature (i.e. gene).}
+Minimum number of counts per row feature (i.e. gene). Internally,
+\code{\link[base:rowSums]{rowSums()}} values are checked against this cutoff
+threshold prior to the melt operation.}
 
 \item{trans}{\code{character(1)}.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior

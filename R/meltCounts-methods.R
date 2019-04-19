@@ -3,7 +3,9 @@
 #' @inheritParams params
 #'
 #' @param minCountsPerFeature `integer(1)`.
-#'   Minimum number of counts per row feature (i.e. gene).
+#'   Minimum number of counts per row feature (i.e. gene). Internally,
+#'   [`rowSums()`][base::rowSums] values are checked against this cutoff
+#'   threshold prior to the melt operation.
 #' @param trans `character(1)`.
 #'   Apply a log transformation (e.g. `log2(x + 1L)`) to the count matrix prior
 #'   to melting, if desired. Use `"identity"` to return unmodified (default).
