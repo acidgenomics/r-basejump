@@ -2,8 +2,8 @@
 #' @inherit bioverbs::meltCounts
 #' @inheritParams params
 #'
-#' @param nonzeroGenes `logical(1)`.
-#'   Return only non-zero genes.
+#' @param minCountsPerFeature `integer(1)`.
+#'   Minimum number of counts per row feature (i.e. gene).
 #' @param trans `character(1)`.
 #'   Apply a log transformation (e.g. `log2(x + 1L)`) to the count matrix prior
 #'   to melting, if desired. Use `"identity"` to return unmodified (default).
@@ -28,28 +28,41 @@ meltCounts.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
-        nonzeroGenes = FALSE,
-        trans = c("identity", "log2", "log10")
+        minCountsPerFeature = -Inf,
+        trans = c("identity", "log2", "log10"),
+        ...
     ) {
+        # Check for legacy arguments.
+        dots <- list(...)
+        if ("nonzeroGenes" %in% names(dots)) {
+            stop(paste(
+                "`nonzeroGenes` is defunct.",
+                "Use `minCountsPerFeature` instead."
+            ))
+        }
+
         validObject(object)
         assert(
             isScalar(assay),
-            isFlag(nonzeroGenes)
+            isInt(minCountsPerFeature)
         )
         trans <- match.arg(trans)
 
         # Prepare the count matrix.
         counts <- assays(object)[[assay]]
         assert(hasLength(counts))
-        # Always coerce to dense matrix prior to melting.
+        # Always coerce to dense matrix prior to melt operation.
         counts <- as.matrix(counts)
 
-        # Remove genes with all zero counts.
-        if (isTRUE(nonzeroGenes)) {
-            keep <- rowSums(counts) > 0L
-            counts <- counts[keep, , drop = FALSE]
-            message(paste(nrow(counts), "non-zero genes detected."))
+        # Filter out rows below our minimum expression cutoff.
+        keep <- rowSums(counts) > minCountsPerFeature
+        if (sum(keep, na.rm = TRUE) < nrow(counts)) {
+            message(paste(
+                sum(keep, na.rm = TRUE), "/", nrow(counts),
+                "features passed minimum expression cutoff."
+            ))
         }
+        counts <- counts[keep, , drop = FALSE]
 
         # Log transform the matrix, if desired.
         if (trans != "identity") {
