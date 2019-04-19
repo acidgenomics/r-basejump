@@ -5,11 +5,11 @@ test_that("SummarizedExperiment", {
     expect_s3_class(x, "tbl_df")
 })
 
-test_that("nonzeroGenes", {
-    a <- meltCounts(rse, nonzeroGenes = FALSE)
+test_that("Non-zero features (genes)", {
+    a <- meltCounts(rse, minCountsPerFeature = -Inf)
     expect_true(any(a[["counts"]] == 0L))
 
-    b <- meltCounts(rse, nonzeroGenes = TRUE)
+    b <- meltCounts(rse, minCountsPerFeature = 1L)
     # Note that this step shouldn't drop all zeros, only all-zero genes.
     expect_true(any(b[["counts"]] == 0L))
 
