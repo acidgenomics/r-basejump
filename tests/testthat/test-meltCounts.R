@@ -6,7 +6,7 @@ test_that("SummarizedExperiment", {
 })
 
 test_that("Non-zero features (genes)", {
-    a <- meltCounts(rse, minCountsPerFeature = -Inf)
+    a <- meltCounts(rse, minCountsPerFeature = 0L)
     expect_true(any(a[["counts"]] == 0L))
 
     b <- meltCounts(rse, minCountsPerFeature = 1L)
