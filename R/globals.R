@@ -36,25 +36,25 @@ formalsList <- list(
     color.continuous = quote(
         getOption(
             x = "acid.color.continuous",
-            default = acidplots::scale_colour_synesthesia_c
+            default = acidplots::scale_colour_synesthesia_c()
         )
     ),
     color.discrete = quote(
         getOption(
             x = "acid.color.discrete",
-            default = acidplots::scale_colour_synesthesia_d
+            default = acidplots::scale_colour_synesthesia_d()
         )
     ),
     fill.continuous = quote(
         getOption(
             x = "acid.fill.continuous",
-            default = acidplots::scale_fill_synesthesia_c
+            default = acidplots::scale_fill_synesthesia_c()
         )
     ),
     fill.discrete = quote(
         getOption(
             x = "acid.fill.discrete",
-            default = acidplots::scale_fill_synesthesia_d
+            default = acidplots::scale_fill_synesthesia_d()
         )
     ),
     flip = quote(
