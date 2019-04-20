@@ -25,9 +25,9 @@ knitr::opts_chunk[["set"]](
 
 # Set default ggplot2 theme.
 requireNamespace(package = "ggplot2", quietly = TRUE)
-requireNamespace(package = "minimalism", quietly = TRUE)
+requireNamespace(package = "acidplots", quietly = TRUE)
 ggplot2::theme_set(
-    minimalism::theme_paperwhite(
+    acidplots::theme_paperwhite(
         base_size = 14L,
         legend_position = "right"
     )
