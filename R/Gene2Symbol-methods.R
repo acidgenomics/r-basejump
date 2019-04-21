@@ -66,7 +66,7 @@ Gene2Symbol.DataFrame <-  # nolint
             data <- data %>%
                 as_tibble(rownames = NULL) %>%
                 group_by(!!sym("geneName")) %>%
-                arrange(!!!sym("geneID"), .by_group = TRUE) %>%
+                arrange(!!sym("geneID"), .by_group = TRUE) %>%
                 slice(n = 1L) %>%
                 ungroup()
         } else if (format == "long") {
