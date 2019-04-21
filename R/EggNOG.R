@@ -51,7 +51,8 @@ EggNOG <-  # nolint
         categories <- read_lines(file = categoriesFile) %>%
             str_subset(pattern) %>%
             str_match(pattern) %>%
-            as_tibble() %>%
+            # tibble 2.1.1 is noisy here unless we set `.name_repair`.
+            as_tibble(.name_repair = "minimal") %>%
             select(-1L) %>%
             set_colnames(c("letter", "description")) %>%
             arrange(!!sym("letter")) %>%
