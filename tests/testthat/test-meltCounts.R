@@ -12,7 +12,7 @@ test_that("minCounts", {
 
     # Check for removal of our all-zero gene.
     expect_identical(
-        object = setdiff(unique(x[["rowname"]]), rownames(x)),
+        object = setdiff(x = rownames(rse), y = unique(x[["rowname"]])),
         expected = "gene433"
     )
     expect_true(all(assay(rse)["gene433", , drop = TRUE] == 0L))
