@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.4</span>
       </span>
     </div>
 
@@ -73,6 +73,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -108,9 +111,9 @@
     <div id="basejump-0-4-0-2018-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-4-0-2018-03-22" class="anchor"></a>basejump 0.4.0 (2018-03-22)</h2>
-<div id="major-changes-16" class="section level3">
+<div id="major-changes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-16" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-17" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Introducing new functions for the acquistion of gene and transcript annotations from <a href="https://www.ensembl.org/">Ensembl</a>: <code>ensembl</code>, <code>genes</code>, and <code>transcripts</code>. These functions allow the return of <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects from <a href="https://bioconductor.org/packages/AnnotationHub/">AnnotationHub</a> using <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>.</li>
 <li>Improved internal <code>broadClass</code> definition code to match against chromosome from <a href="https://www.ensembl.org/">Ensembl</a> if available.</li>
@@ -118,9 +121,9 @@
 <code>loadDataAsName</code> now works with unquoted names, improving consistency with <code>loadData</code> (non-standard evaluation).</li>
 </ul>
 </div>
-<div id="minor-changes-44" class="section level3">
+<div id="minor-changes-45" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-44" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-45" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added new <code>convertUCSCBuildToEnsembl</code> function, for easy remapping of <a href="https://genome.ucsc.edu/">UCSC</a> to <a href="https://www.ensembl.org/">Ensembl</a> genome build names (e.g. <code>hg38</code> to <code>GRCh38</code>).</li>
 <li>Migrated matrix methods for <code>plotCorrelationHeatmap</code> here from <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, for improved consistency with other heatmap functions.</li>
