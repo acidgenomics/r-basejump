@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.4</span>
       </span>
     </div>
 
@@ -73,6 +73,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -108,9 +111,9 @@
     <div id="basejump-0-6-0-2018-07-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-0-2018-07-17" class="anchor"></a>basejump 0.6.0 (2018-07-17)</h2>
-<div id="major-changes-13" class="section level3">
+<div id="major-changes-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-13" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-14" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing <a href="https://bioconductor.org/packages/SummarizedExperiment/">SummarizedExperiment</a> package and providing basic method support for generics that were previously used in the <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package.</li>
 <li>Improved GFFv3 handling in <code>makeGRangesFromGFF</code> and other GFF utility functions, including <code>makeGene2symbolFromGFF</code> and <code>makeTx2geneFromGFF</code>. Note that <code>makeGRangesFromGFF</code> now returns additional metadata columns accessible with <code><a href="https://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">S4Vectors::mcols</a></code>, and that these columns are now sorted alphabetically.</li>
@@ -136,9 +139,9 @@
 </ul>
 <p>Providing basic <code>SummarizedExperiment</code> class method support for <code>counts</code>.</p>
 </div>
-<div id="minor-changes-32" class="section level3">
+<div id="minor-changes-33" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-33" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>geometricMean</code> generic was not exported correctly.</li>
@@ -148,9 +151,9 @@
     <div id="basejump-0-6-1-2018-07-21" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-1-2018-07-21" class="anchor"></a>basejump 0.6.1 (2018-07-21)</h2>
-<div id="minor-changes-31" class="section level3">
+<div id="minor-changes-32" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Bug fix for <code>convertGenesToSymbols</code> method for <code>SummarizedExperiment</code>. Previously, if <code>geneName</code> column was a factor, this function would error. This issue has been fixed by ensuring that the symbols provided in <code>geneName</code> are coerced to a character vector.</li>
 <li>Improved <a href="https://conda.io/">conda</a> installation instructions.</li>
@@ -170,18 +173,18 @@
 <code>eggnog</code>: quickly download current annotations from <a href="http://eggnogdb.embl.de/">EggNOG</a> database. Useful for annotating gene-to-protein matches; currently in use with the <a href="https://brightworm.acidgenomics.com/">brightworm</a> RNAi screening package, which contains <a href="http://www.wormbase.org/">WormBase</a> gene ID and <a href="http://eggnogdb.embl.de/">EggNOG</a> ID annotations.</li>
 </ul>
 </div>
-<div id="major-changes-12" class="section level3">
+<div id="major-changes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-12" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-13" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now suggesting <a href="https://cran.r-project.org/package=BiocManager">BiocManager</a> instead of <a href="https://bioconductor.org/packages/BiocInstaller/">BiocInstaller</a> for installation.</li>
 <li>
 <code>broadClass</code> now supports <code>GRanges</code> and <code>SummarizedExperiment</code>. Support for <code>data.frame</code> and/or <code>DataFrame</code> class objects has been removed.</li>
 </ul>
 </div>
-<div id="minor-changes-30" class="section level3">
+<div id="minor-changes-31" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>convertGenesToSymbols</code> and <code>convertTranscriptsToGenes</code> now have <code>organism</code> and <code>gene2symbol</code> arguments set <code>NULL</code> by default.</li>
@@ -198,9 +201,9 @@
     <div id="basejump-0-6-3-2018-08-01" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-3-2018-08-01" class="anchor"></a>basejump 0.6.3 (2018-08-01)</h2>
-<div id="minor-changes-29" class="section level3">
+<div id="minor-changes-30" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-29" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code>separatorBar</code> and <code>updateMessage</code> global export from <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a>. Improved <code>separatorBar</code> appeareance to automatically scale to current session width, using <code><a href="https://www.rdocumentation.org/packages/base/topics/options">getOption("width")</a></code>.</li>
 </ul>
