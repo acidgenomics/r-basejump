@@ -1,13 +1,17 @@
 context("PANTHER")
 
-object <- PANTHER("Homo sapiens")
+with_parameters_test_that(
+    "organism", {
+        invisible(capture.output(
+            object <- PANTHER(organism)
+        ))
+        expect_s4_class(object, "PANTHER")
+    },
+    organism = names(.pantherMappings)
+)
 
-test_that("PANTHER", {
-    expect_s4_class(object, "PANTHER")
-    expect_identical(length(object), 9L)
-})
-
-test_that("PANTHER", {
+test_that("show", {
+    object <- PANTHER("Homo sapiens")
     expect_output(
         object = show(object),
         regexp = "PANTHER"

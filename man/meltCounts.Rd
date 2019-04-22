@@ -7,7 +7,8 @@
 \title{Melt count matrix into long format}
 \usage{
 \S4method{meltCounts}{SummarizedExperiment}(object, assay = 1L,
-  nonzeroGenes = FALSE, trans = c("identity", "log2", "log10"))
+  minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
+  trans = c("identity", "log2", "log10"))
 }
 \arguments{
 \item{object}{Object.}
@@ -18,8 +19,20 @@ Name or index of count matrix slotted in
 name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
-\item{nonzeroGenes}{\code{logical(1)}.
-Return only non-zero genes.}
+\item{minCounts}{\code{integer(1)}.
+Minimum count threshold to apply. Filters using "greater than or equal to"
+logic internally. Note that this threshold gets applied prior to
+logarithmic transformation, when \code{trans} argument applies.}
+
+\item{minCountsMethod}{\code{character(1)}.
+Uses \code{\link[base:match.arg]{match.arg()}}.
+\itemize{
+\item \code{perFeature}: \emph{Recommended}. Applies cutoff per row feature (i.e. gene).
+Internally, \code{\link[base:rowSums]{rowSums()}} values are checked against this
+cutoff threshold prior to the melt operation.
+\item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
+operation. This applies to all counts, not per feature.
+}}
 
 \item{trans}{\code{character(1)}.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior

@@ -34,28 +34,46 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 #' formalsList
 formalsList <- list(
     color.continuous = quote(
-        getOption("acid.color.continuous", default = NULL)
+        getOption(
+            x = "acid.color.continuous",
+            default = acidplots::scale_colour_synesthesia_c()
+        )
     ),
     color.discrete = quote(
-        getOption("acid.color.discrete", default = NULL)
+        getOption(
+            x = "acid.color.discrete",
+            default = acidplots::scale_colour_synesthesia_d()
+        )
     ),
     fill.continuous = quote(
-        getOption("acid.fill.continuous", default = NULL)
+        getOption(
+            x = "acid.fill.continuous",
+            default = acidplots::scale_fill_synesthesia_c()
+        )
     ),
     fill.discrete = quote(
-        getOption("acid.fill.discrete", default = NULL)
+        getOption(
+            x = "acid.fill.discrete",
+            default = acidplots::scale_fill_synesthesia_d()
+        )
     ),
     flip = quote(
-        getOption("acid.flip", default = TRUE)
+        getOption(x = "acid.flip", default = TRUE)
+    ),
+    heatmap.color = quote(
+        getOption(
+            x = "acid.heatmap.color",
+            default = acidplots::synesthesia
+        )
     ),
     label = quote(
-        getOption("acid.label", default = FALSE)
+        getOption(x = "acid.label", default = FALSE)
     ),
     legend = quote(
-        getOption("acid.legend", default = TRUE)
+        getOption(x = "acid.legend", default = TRUE)
     ),
     point.size = quote(
-        getOption("acid.point.size", default = 3L)
+        getOption(x = "acid.point.size", default = 3L)
     )
 )
 

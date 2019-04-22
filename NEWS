@@ -1,3 +1,18 @@
+## basejump 0.10.4 (2019-04-22)
+
+### Major changes
+
+- `meltCounts`: Switched from using `nonzeroGenes` formal approach to
+  `minCounts` and `minCountsMethod`, which is more flexible.
+
+### Minor changes
+
+- Consolidated minimalism and firestarter code into acidplots package.
+- Improve global options defined in `formalsList`.
+- Added back basejump vignette.
+
+
+
 ## basejump 0.10.3 (2019-04-07)
 
 ### Minor changes
@@ -61,9 +76,9 @@
   `convertUCSCBuildToEnsembl`, `detectOrganism`, `emptyRanges`,
   `makeGRangesFromEnsDb`, `makeGRangesFromEnsembl`, `makeGRangesFromGFF`,
   `makeGRangesFromGTF`.
-- Split out heatmap functions to [firestarter][] package. This includes
+- Split out heatmap functions to firestarter package. This includes
   `plotHeatmap`, `plotCorrelationHeatmap`, and `plotQuantileHeatmap`.
-- Split out all ggplot2 functions to new [minimalism][] package.
+- Split out all ggplot2 functions to new minimalism package.
 
 ### Minor changes
 
@@ -1572,7 +1587,6 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [ensembldb]: https://bioconductor.org/packages/ensembldb/
 [Entrez]: https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html
 [Excel]: https://products.office.com/en-us/excel/
-[firestarter]: https://firestarter.acidgenomics.com/
 [freerange]: https://freerange.acidgenomics.com/
 [GenomeInfoDb]: https://bioconductor.org/packages/GenomeInfoDb/
 [GenomeInfoDbData]: https://bioconductor.org/packages/GenomeInfoDbData/
@@ -1589,7 +1603,6 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [magrittr]: https://magrittr.tidyverse.org/
 [Markdown]: https://daringfireball.net/projects/markdown/
 [MGI]: http://www.informatics.jax.org/
-[minimalism]: https://minimalism.acidgenomics.com/
 [NIH]: https://www.nih.gov/
 [PANTHER]: http://pantherdb.org/
 [pheatmap]: https://cran.r-project.org/package=pheatmap

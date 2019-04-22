@@ -51,7 +51,7 @@ EggNOG <-  # nolint
         categories <- read_lines(file = categoriesFile) %>%
             str_subset(pattern) %>%
             str_match(pattern) %>%
-            as_tibble() %>%
+            as.data.frame() %>%
             select(-1L) %>%
             set_colnames(c("letter", "description")) %>%
             arrange(!!sym("letter")) %>%

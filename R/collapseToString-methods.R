@@ -128,16 +128,16 @@ collapseToString.matrix <-  # nolint
         collapse <- object %>%
             as.data.frame() %>%
             as_tibble(rownames = NULL) %>%
-            mutate_all(funs(sanitizeNA)) %>%
-            summarise_all(funs(
-                collapseToString(
+            mutate_all(.funs = sanitizeNA) %>%
+            summarise_all(
+                .funs = ~ collapseToString(
                     object = .,
                     sep = sep,
                     sort = sort,
                     removeNA = removeNA,
                     unique = unique
                 )
-            ))
+            )
 
         # Coerce collapsed tibble back to original object class.
         as(object = collapse, Class = class(object)[[1L]])
@@ -155,13 +155,23 @@ setMethod(
 
 
 
+collapseToString.data.frame <-  # nolint
+    collapseToString.matrix
+
+
+
 #' @rdname collapseToString
 #' @export
 setMethod(
     f = "collapseToString",
     signature = signature("data.frame"),
-    definition = collapseToString.matrix
+    definition = collapseToString.data.frame
 )
+
+
+
+collapseToString.DataFrame <-  # nolint
+    collapseToString.matrix
 
 
 
@@ -170,5 +180,5 @@ setMethod(
 setMethod(
     f = "collapseToString",
     signature = signature("DataFrame"),
-    definition = collapseToString.matrix
+    definition = collapseToString.DataFrame
 )
