@@ -34,7 +34,7 @@ environment:
       R_VERSION: oldrel
       BIOC_USE_DEVEL: "FALSE"
     - configuration: devel
-      R_VERSION: 3.6.0rc
+      R_VERSION: devel
       BIOC_USE_DEVEL: "TRUE"
 
 matrix:
