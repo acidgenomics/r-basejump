@@ -29,8 +29,8 @@
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
 #'   rowRanges<-
-#' @importFrom dplyr arrange bind_rows desc filter funs group_by left_join
-#'   mutate mutate_all mutate_at mutate_if pull rename select select_if slice
+#' @importFrom dplyr arrange bind_rows desc filter group_by left_join mutate
+#'   mutate_all mutate_at mutate_if pull rename select select_if slice
 #'   summarise_all top_n ungroup
 #' @importFrom goalie allAreMatchingRegex areDisjointSets areIntersectingSets
 #'   areSameLength areSetEqual assert false getNameInParent hasDims hasInternet
