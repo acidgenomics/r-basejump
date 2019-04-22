@@ -4,93 +4,96 @@ authors:
   Acid Genomics:
     href: https://acidgenomics.com/
 
+news:
+  - one_page: false
+
 reference:
   - title: S4 classes
     contents:
-    - ends_with("-class")
-    - show
-    - summary
+      - ends_with("-class")
+      - show
+      - summary
   - title: Genome annotations
     contents:
-    - geneSynonyms
-    - makeGene2Symbol
-    - makeTx2Gene
+      - geneSynonyms
+      - makeGene2Symbol
+      - makeTx2Gene
   - title: Gene identifier mapping
     contents:
-    - starts_with("convert")
-    - starts_with("mapGenes")
+      - starts_with("convert")
+      - starts_with("mapGenes")
   - title: Counts
     contents:
-    - counts
-    - meltCounts
-    - tpm
+      - counts
+      - meltCounts
+      - tpm
   - title: Metadata
     contents:
-    - interestingGroups
-    - mcolnames
-    - organism
-    - uniteInterestingGroups
+      - interestingGroups
+      - mcolnames
+      - organism
+      - uniteInterestingGroups
   - title: Sample-level metadata
     contents:
-    - makeSampleData
-    - makeSummarizedExperiment
-    - metrics
-    - minimalSampleData
-    - starts_with("sample")
-    - selectSamples
+      - makeSampleData
+      - makeSummarizedExperiment
+      - metrics
+      - minimalSampleData
+      - starts_with("sample")
+      - selectSamples
   - title: Cell-level metadata
     contents:
-    - aggregateCellsToSamples
-    - cell2sample
-    - makeSingleCellExperiment
-    - mapCellsToSamples
-    - subsetPerSample
-    - topCellsPerSample
+      - aggregateCellsToSamples
+      - cell2sample
+      - makeSingleCellExperiment
+      - mapCellsToSamples
+      - subsetPerSample
+      - topCellsPerSample
   - title: Sanitization
     contents:
-    - autopadZeros
-    - collapseToString
-    - relevel
-    - starts_with("sanitize")
-    - sortUnique
-    - starts_with("strip")
-    - toStringUnique
+      - autopadZeros
+      - collapseToString
+      - relevel
+      - starts_with("sanitize")
+      - sortUnique
+      - starts_with("strip")
+      - toStringUnique
   - title: Aggregation
     contents:
-    - starts_with("aggregate")
-    - combine
+      - starts_with("aggregate")
+      - combine
   - title: Math
     contents:
-    - geometricMean
-    - logRatio
-    - rankedMatrix
-    - zerosVsDepth
+      - geometricMean
+      - logRatio
+      - rankedMatrix
+      - zerosVsDepth
   - title: Markdown
     contents:
-    - starts_with("markdown")
-    - prepareTemplate
+      - starts_with("markdown")
+      - prepareTemplate
   - title: Developer
     contents:
-    - formalsList
-    - matchInterestingGroups
-    - multiassignAsEnvir
-    - showSlotInfo
+      - formalsList
+      - matchInterestingGroups
+      - multiassignAsEnvir
+      - showSlotInfo
   - title: Miscellaneous
     contents:
-    - starts_with("detect")
-    - geneNames
-    - headtail
-    - humanize
-    - matchesGene2Symbol
-    - matchesInterestingGroups
-    - microplate
-    - separator
+      - starts_with("detect")
+      - geneNames
+      - headtail
+      - humanize
+      - matchesGene2Symbol
+      - matchesInterestingGroups
+      - microplate
+      - separator
   - title: Global variables
     contents:
-    - barcodePattern
-    - genomeMetadataNames
-    - lanePattern
-    - metadataBlacklist
+      - barcodePattern
+      - genomeMetadataNames
+      - lanePattern
+      - metadataBlacklist
   - title: Reexports
     contents:
-    - reexports
+      - reexports

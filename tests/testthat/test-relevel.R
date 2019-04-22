@@ -9,6 +9,11 @@ test_that("SummarizedExperiment", {
     expect_s4_class(rr, "GRanges")
     x <- relevelRowRanges(rr)
     expect_s4_class(x, "GRanges")
+    if (packageVersion("GenomicRanges") < "1.31") {
+        AsIs <- "AsIs"  # nolint
+    } else {
+        AsIs <- "list"  # nolint
+    }
     expect_identical(
         object = lapply(mcols(x), class),
         expected = list(
@@ -16,7 +21,7 @@ test_that("SummarizedExperiment", {
             geneName = Rle,
             geneBiotype = Rle,
             broadClass = Rle,
-            entrezID = "list"
+            entrezID = AsIs
         )
     )
 })

@@ -5,25 +5,29 @@ test_that("SummarizedExperiment", {
     expect_s3_class(x, "tbl_df")
 })
 
-test_that("nonzeroGenes", {
-    a <- meltCounts(rse, nonzeroGenes = FALSE)
-    expect_true(any(a[["counts"]] == 0L))
-
-    b <- meltCounts(rse, nonzeroGenes = TRUE)
+test_that("minCounts", {
+    x <- meltCounts(rse, minCounts = 1L)
     # Note that this step shouldn't drop all zeros, only all-zero genes.
-    expect_true(any(b[["counts"]] == 0L))
+    expect_true(any(x[["counts"]] == 0L))
 
     # Check for removal of our all-zero gene.
     expect_identical(
-        object = setdiff(a[["rowname"]], b[["rowname"]]),
+        object = setdiff(x = rownames(rse), y = unique(x[["rowname"]])),
         expected = "gene433"
     )
     expect_true(all(assay(rse)["gene433", , drop = TRUE] == 0L))
 })
 
+test_that("Require at least 1 count per feature", {
+    expect_error(
+        object = meltCounts(rse, minCounts = 0L),
+        regexp = "less than 1"
+    )
+})
+
 trans <- eval(formals(meltCounts.SummarizedExperiment)[["trans"]])
 with_parameters_test_that(
-    "trans (log transformations)", {
+    "trans", {
         x <- meltCounts(rse, trans = trans)
         expect_s3_class(x, "tbl_df")
         expect_identical(
