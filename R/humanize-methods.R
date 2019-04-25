@@ -21,6 +21,15 @@ NULL
 
 
 
+#' @rdname humanize
+#' @name humanize
+#' @importFrom bioverbs humanize
+#' @usage humanize(object, ...)
+#' @export
+NULL
+
+
+
 humanize.SummarizedExperiment <-  # nolint
     function(object) {
         message("Making the rownames and colnames human readable.")

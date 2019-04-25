@@ -17,6 +17,15 @@ NULL
 
 
 
+#' @rdname organism
+#' @name organism
+#' @importFrom BiocGenerics organism
+#' @usage organism(object)
+#' @export
+NULL
+
+
+
 # Assuming gene identifiers are defined in the rownames.
 organism.matrix <-  # nolint
     function(object) {

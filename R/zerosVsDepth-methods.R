@@ -14,6 +14,15 @@ NULL
 
 
 
+#' @rdname zerosVsDepth
+#' @name zerosVsDepth
+#' @importFrom bioverbs zerosVsDepth
+#' @usage zerosVsDepth(object, ...)
+#' @export
+NULL
+
+
+
 zerosVsDepth.matrix <-  # nolint
     function(object) {
         present <- object > 0L

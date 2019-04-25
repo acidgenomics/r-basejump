@@ -22,6 +22,22 @@ NULL
 
 
 
+#' @rdname counts
+#' @name counts
+#' @importFrom BiocGenerics counts
+#' @usage counts(object, ...)
+#' @export
+NULL
+
+#' @rdname counts
+#' @name counts<-
+#' @importFrom BiocGenerics counts<-
+#' @usage counts(object, ...) <- value
+#' @export
+NULL
+
+
+
 counts.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)

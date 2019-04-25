@@ -11,6 +11,15 @@ NULL
 
 
 
+#' @rdname markdown
+#' @name markdown
+#' @importFrom bioverbs markdown
+#' @usage markdown(object, ...)
+#' @export
+NULL
+
+
+
 markdown.SummarizedExperiment <-  # nolint
     function(object) {
         object %>%

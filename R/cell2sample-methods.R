@@ -20,6 +20,15 @@ NULL
 
 
 
+#' @rdname cell2sample
+#' @name cell2sample
+#' @importFrom bioverbs cell2sample
+#' @usage cell2sample(object, ...)
+#' @export
+NULL
+
+
+
 cell2sample.SingleCellExperiment <-  # nolint
     function(object, return = c("factor", "tibble")) {
         validObject(object)

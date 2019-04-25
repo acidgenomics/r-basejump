@@ -27,6 +27,15 @@ NULL
 
 
 
+#' @rdname meltCounts
+#' @name meltCounts
+#' @importFrom bioverbs meltCounts
+#' @usage meltCounts(object, ...)
+#' @export
+NULL
+
+
+
 meltCounts.SummarizedExperiment <-  # nolint
     function(
         object,
