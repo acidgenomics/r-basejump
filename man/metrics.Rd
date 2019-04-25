@@ -9,6 +9,10 @@
 \alias{metricsPerSample,SingleCellExperiment-method}
 \title{Quality control metrics}
 \usage{
+metrics(object, ...)
+
+metricsPerSample(object, ...)
+
 \S4method{metrics}{SummarizedExperiment}(object, return = c("tibble",
   "DataFrame"))
 
@@ -28,6 +32,8 @@ to the first argument in the \code{character} vector.}
 \item{fun}{\code{character(1)}.
 Mathematical function name to apply.
 Uses \code{\link[base:match.arg]{match.arg()}} internally.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \itemize{

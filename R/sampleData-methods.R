@@ -7,7 +7,6 @@
 
 #' @name sampleData
 #' @inherit bioverbs::sampleData
-#' @inheritParams params
 #'
 #' @section All supported S4 classes:
 #'
@@ -45,6 +44,7 @@
 #'   required as we're supporting `SingleCellExperiment` objects from 1 sample,
 #'   but it's required for working with multiple samples in a single object.
 #'
+#' @inheritParams params
 #' @param clean `logical(1)`.
 #'   Only return `factor` columns. Useful when working with objects that contain
 #'   quality control metrics in [`colData()`][SummarizedExperiment::colData].
@@ -60,6 +60,7 @@
 #'   Currently applicable only to `SingleCellExperiment` objects, which have
 #'   cell-level columns that can be difficult to distinguish, especially when
 #'   processed using Seurat, scater, etc.
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(rse, sce, package = "acidtest")
@@ -88,12 +89,14 @@ NULL
 #' @rdname sampleData
 #' @name sampleData
 #' @importFrom bioverbs sampleData
+#' @usage sampleData(object, ...)
 #' @export
 NULL
 
 #' @rdname sampleData
 #' @name sampleData<-
 #' @importFrom bioverbs sampleData<-
+#' @usage sampleData(object, ...) <- value
 #' @export
 NULL
 

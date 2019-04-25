@@ -1,18 +1,30 @@
+#' @rdname reexports-S4
+#' @name camel
 #' @importFrom syntactic camel
+#' @usage camel(object, ...)
 #' @export
-syntactic::camel
+NULL
 
+#' @rdname reexports-S4
+#' @name capitalize
 #' @importFrom syntactic capitalize
+#' @usage capitalize(object, ...)
 #' @export
-syntactic::capitalize
+NULL
 
+#' @rdname reexports-S4
+#' @name dotted
 #' @importFrom syntactic dotted
+#' @usage dotted(object, ...)
 #' @export
-syntactic::dotted
+NULL
 
+#' @rdname reexports-S4
+#' @name kebab
 #' @importFrom syntactic kebab
+#' @usage kebab(object, ...)
 #' @export
-syntactic::kebab
+NULL
 
 #' @importFrom syntactic makeDimnames
 #' @export
@@ -22,10 +34,16 @@ syntactic::makeDimnames
 #' @export
 syntactic::makeNames
 
+#' @rdname reexports-S4
+#' @name snake
 #' @importFrom syntactic snake
+#' @usage snake(object, ...)
 #' @export
-syntactic::snake
+NULL
 
+#' @rdname reexports-S4
+#' @name upperCamel
 #' @importFrom syntactic upperCamel
+#' @usage upperCamel(object, ...)
 #' @export
-syntactic::upperCamel
+NULL

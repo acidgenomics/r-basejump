@@ -8,6 +8,8 @@
 \alias{geometricMean,sparseMatrix-method}
 \title{Geometric mean}
 \usage{
+geometricMean(object, ...)
+
 \S4method{geometricMean}{numeric}(object, removeNA = TRUE,
   zeroPropagate = FALSE)
 
@@ -29,6 +31,8 @@ Allow propagation of zeroes.}
     \code{2} indicates columns, \code{c(1, 2)} indicates rows and
     columns. Where \code{X} has named dimnames, it can be a character
     vector selecting dimension names.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{numeric}.

@@ -44,13 +44,14 @@ goalie::validateClasses
 
 
 
-# Remove these asserts in a future update.
+# Consider removing these asserts in a future update.
 
 #' @importFrom goalie hasLocal
 #' @export
 goalie::hasLocal
 
 # Still in use by bcbioRNASeq v0.2.9.
+
 #' @importFrom goalie hasRownames
 #' @export
 goalie::hasRownames

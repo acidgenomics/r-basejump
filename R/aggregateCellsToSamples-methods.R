@@ -1,7 +1,9 @@
 #' @name aggregateCellsToSamples
 #' @inherit bioverbs::aggregateCellsToSamples
+#'
 #' @inheritParams aggregate
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @details
 #' Internally [aggregateCellsToSamples()] automatically obtains the
@@ -19,6 +21,7 @@ NULL
 #' @rdname aggregateCellsToSamples
 #' @name aggregateCellsToSamples
 #' @importFrom bioverbs aggregateCellsToSamples
+#' @usage aggregateCellsToSamples(object, ...)
 #' @export
 NULL
 

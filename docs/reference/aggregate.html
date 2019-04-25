@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.5</span>
       </span>
     </div>
 
@@ -118,7 +118,11 @@
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for matrix</span>
+    <pre class="usage"><span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for matrix</span>
 <span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sum"</span>,
   <span class='st'>"mean"</span>))
 
@@ -172,6 +176,10 @@ Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.ar
 Name of column in either <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData()</a></code> or
 <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData()</a></code> that defines the desired
 aggregation groupings.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     

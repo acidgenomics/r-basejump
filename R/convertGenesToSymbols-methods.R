@@ -1,6 +1,8 @@
 #' @name convertGenesToSymbols
 #' @inherit bioverbs::convertGenesToSymbols
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return Modified object of same class.
 #'
@@ -43,12 +45,14 @@ NULL
 #' @rdname convertGenesToSymbols
 #' @name convertGenesToSymbols
 #' @importFrom bioverbs convertGenesToSymbols
+#' @usage convertGenesToSymbols(object, ...)
 #' @export
 NULL
 
 #' @rdname convertGenesToSymbols
 #' @name convertSymbolsToGenes
 #' @importFrom bioverbs convertSymbolsToGenes
+#' @usage convertSymbolsToGenes(object, ...)
 #' @export
 NULL
 

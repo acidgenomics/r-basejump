@@ -6,6 +6,8 @@
 \alias{meltCounts,SummarizedExperiment-method}
 \title{Melt count matrix into long format}
 \usage{
+meltCounts(object, ...)
+
 \S4method{meltCounts}{SummarizedExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
   trans = c("identity", "log2", "log10"))
@@ -37,6 +39,8 @@ operation. This applies to all counts, not per feature.
 \item{trans}{\code{character(1)}.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{grouped_df}.

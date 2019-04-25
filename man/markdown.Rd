@@ -6,10 +6,14 @@
 \alias{markdown,SummarizedExperiment-method}
 \title{Markdown}
 \usage{
+markdown(object, ...)
+
 \S4method{markdown}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Markdown output.

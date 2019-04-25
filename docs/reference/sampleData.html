@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.5</span>
       </span>
     </div>
 
@@ -118,7 +118,11 @@
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
+    <pre class="usage"><span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='no'>...</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+
+<span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>ignoreCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>,
   <span class='st'>"^samRef$"</span>))
@@ -172,6 +176,10 @@ processed using Seurat, scater, etc.</p></td>
     <tr>
       <th>value</th>
       <td><p>Value.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     

@@ -6,6 +6,8 @@
 \alias{aggregateCellsToSamples,SingleCellExperiment-method}
 \title{Aggregate cells to samples}
 \usage{
+aggregateCellsToSamples(object, ...)
+
 \S4method{aggregateCellsToSamples}{SingleCellExperiment}(object,
   fun = c("sum", "mean"))
 }
@@ -15,6 +17,8 @@
 \item{fun}{\code{character(1)}.
 Name of the aggregation function.
 Uses \code{\link[base:match.arg]{match.arg()}} internally.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{SummarizedExperiment}.

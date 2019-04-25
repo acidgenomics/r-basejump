@@ -9,7 +9,7 @@
 #' @param aggregate `logical(1)`.
 #'   For objects supporting [dim][base::dim], aggregate counts to gene level and
 #'   collapse the matrix.
-#' @param ... Passthrough to [makeTx2GeneFromEnsembl()].
+#' @param ... Additional arguments.
 #'
 #' @return
 #' - `character`: `factor`.
@@ -58,6 +58,7 @@ NULL
 #' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
 #' @importFrom bioverbs convertTranscriptsToGenes
+#' @usage convertTranscriptsToGenes(object, ...)
 #' @export
 NULL
 

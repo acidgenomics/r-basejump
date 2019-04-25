@@ -5,9 +5,9 @@
 #' the syntactically valid names defined as the rownames of `sampleData`.
 #'
 #' @name sampleNames
-#' @aliases sampleNames<-
 #'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return Named `character`.
 #'
@@ -31,12 +31,14 @@ NULL
 #' @rdname sampleNames
 #' @name sampleNames
 #' @importFrom Biobase sampleNames
+#' @usage sampleNames(object)
 #' @export
 NULL
 
 #' @rdname sampleNames
 #' @name sampleNames<-
 #' @importFrom Biobase sampleNames<-
+#' @usage sampleNames(object) <- value
 #' @export
 NULL
 

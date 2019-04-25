@@ -6,6 +6,8 @@
 \alias{topCellsPerSample,SingleCellExperiment-method}
 \title{Top cells per sample}
 \usage{
+topCellsPerSample(object, ...)
+
 \S4method{topCellsPerSample}{SingleCellExperiment}(object, n = 100L)
 }
 \arguments{
@@ -13,6 +15,8 @@
 
 \item{n}{\code{integer(1)}.
 Number of barcodes to return per sample.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{list}.

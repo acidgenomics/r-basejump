@@ -9,6 +9,7 @@
 #' @aliases counts<-
 #'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return Matrix.
 #' Typically `matrix` or `sparseMatrix` class.
@@ -24,12 +25,14 @@ NULL
 #' @rdname counts
 #' @name counts
 #' @importFrom BiocGenerics counts
+#' @usage counts(object, ...)
 #' @export
 NULL
 
 #' @rdname counts
 #' @name counts<-
 #' @importFrom BiocGenerics counts<-
+#' @usage counts(object, ...) <- value
 #' @export
 NULL
 

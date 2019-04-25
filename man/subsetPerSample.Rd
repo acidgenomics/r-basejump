@@ -6,6 +6,8 @@
 \alias{subsetPerSample,SingleCellExperiment-method}
 \title{Subset per sample}
 \usage{
+subsetPerSample(object, ...)
+
 \S4method{subsetPerSample}{SingleCellExperiment}(object, minCells = 1L,
   assignAndSave = FALSE, envir = parent.frame(), dir = ".")
 }
@@ -25,6 +27,8 @@ Only applicable when \code{assignAndSave = TRUE}.}
 \item{dir}{\code{character(1)}.
 Output directory.
 Only applicable when \code{assignAndSave = TRUE}.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \itemize{

@@ -11,7 +11,9 @@
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @section Methods (by class):
 #'
@@ -120,14 +122,16 @@ NULL
 
 
 #' @rdname aggregate
-#' @name aggregateRows
-#' @importFrom bioverbs aggregateRows
+#' @name aggregateCols
+#' @importFrom bioverbs aggregateCols
+#' @usage aggregateCols(object, ...)
 #' @export
 NULL
 
 #' @rdname aggregate
-#' @name aggregateCols
-#' @importFrom bioverbs aggregateCols
+#' @name aggregateRows
+#' @importFrom bioverbs aggregateRows
+#' @usage aggregateRows(object, ...)
 #' @export
 NULL
 

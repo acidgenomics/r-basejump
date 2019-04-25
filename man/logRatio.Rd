@@ -9,6 +9,10 @@
 \alias{logRatioToFoldChange,numeric-method}
 \title{Interconvert log ratio and fold change values}
 \usage{
+foldChangeToLogRatio(object, ...)
+
+logRatioToFoldChange(object, ...)
+
 \S4method{foldChangeToLogRatio}{numeric}(object, base = 2L)
 
 \S4method{logRatioToFoldChange}{numeric}(object, base = 2L)
@@ -19,6 +23,8 @@
 \item{base}{\code{integer(1)}.
 Logarithm base. Defaults to \code{2}, for compatibility with RNA-Seq
 differential expression output.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{numeric}.

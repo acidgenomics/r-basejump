@@ -1,7 +1,7 @@
 #' @name subsetPerSample
 #' @inherit bioverbs::subsetPerSample
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param minCells `integer(1)`.
 #'   Minimum number of cells required per sample.
 #' @param assignAndSave `logical(1)`.
@@ -12,6 +12,7 @@
 #' @param dir `character(1)`.
 #'   Output directory.
 #'   Only applicable when `assignAndSave = TRUE`.
+#' @param ... Additional arguments.
 #'
 #' @return
 #' - `assignAndSave = FALSE`: Per sample objects in a `list`.
@@ -45,6 +46,7 @@ NULL
 #' @rdname subsetPerSample
 #' @name subsetPerSample
 #' @importFrom bioverbs subsetPerSample
+#' @usage subsetPerSample(object, ...)
 #' @export
 NULL
 

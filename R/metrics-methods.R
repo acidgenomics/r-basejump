@@ -1,7 +1,9 @@
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::metrics
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @details
 #' [metrics()] takes data stored in [`colData()`][SummarizedExperiment::colData]
@@ -41,12 +43,14 @@ NULL
 #' @rdname metrics
 #' @name metrics
 #' @importFrom bioverbs metrics
+#' @usage metrics(object, ...)
 #' @export
 NULL
 
 #' @rdname metrics
 #' @name metricsPerSample
 #' @importFrom bioverbs metricsPerSample
+#' @usage metricsPerSample(object, ...)
 #' @export
 NULL
 
