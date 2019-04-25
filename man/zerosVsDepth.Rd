@@ -25,6 +25,8 @@ Name or index of count matrix slotted in
 \code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
 name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{matrix}.

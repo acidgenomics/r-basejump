@@ -13,6 +13,8 @@
 
 \item{n}{\code{integer(1)}.
 Number of barcodes to return per sample.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{list}.

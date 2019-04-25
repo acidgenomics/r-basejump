@@ -37,6 +37,8 @@ operation. This applies to all counts, not per feature.
 \item{trans}{\code{character(1)}.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{grouped_df}.

@@ -9,6 +9,8 @@
 \alias{collapseToString,DataFrame-method}
 \title{Collapse to string}
 \usage{
+collapseToString(object, ...)
+
 \S4method{collapseToString}{atomic}(object, sep = ", ", sort = FALSE,
   removeNA = FALSE, unique = FALSE)
 
@@ -35,6 +37,8 @@ Remove NA values.}
 
 \item{unique}{\code{logical(1)}.
 Unique values.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \itemize{

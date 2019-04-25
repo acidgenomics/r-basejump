@@ -15,6 +15,8 @@
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
 \code{sampleName}.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Modified object.

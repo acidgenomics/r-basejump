@@ -25,6 +25,8 @@ Only applicable when \code{assignAndSave = TRUE}.}
 \item{dir}{\code{character(1)}.
 Output directory.
 Only applicable when \code{assignAndSave = TRUE}.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \itemize{

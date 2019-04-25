@@ -2,7 +2,7 @@
 #'
 #' These generics are imported from other packages.
 #'
-#' @name reexports-s4
+#' @name reexports-S4
 #'
 #' @param object Object.
 #' @param ... Additional arguments.
