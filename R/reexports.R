@@ -1,3 +1,15 @@
+#' S4 generics exported from other packages
+#'
+#' These generics are imported from other packages.
+#'
+#' @name reexports-s4
+#'
+#' @param object Object.
+#' @param ... Additional arguments.
+NULL
+
+
+
 # Assignment pipe
 #' @importFrom magrittr %<>%
 #' @export
