@@ -2,9 +2,12 @@
 #' @export
 brio::assignAndSaveData
 
+#' @rdname reexports-s4
+#' @name atomize
 #' @importFrom brio atomize
+#' @usage atomize(object, ...)
 #' @export
-brio::atomize
+NULL
 
 #' @importFrom brio basenameSansExt
 #' @export
