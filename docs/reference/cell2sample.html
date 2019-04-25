@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.5</span>
       </span>
     </div>
 
@@ -118,7 +118,9 @@
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for SingleCellExperiment</span>
+    <pre class="usage"><span class='fu'>cell2sample</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>cell2sample</span>(<span class='no'>object</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"factor"</span>,
   <span class='st'>"tibble"</span>))</pre>
     
@@ -134,6 +136,10 @@
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Return type. Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a></code> internally and defaults
 to the first argument in the <code>character</code> vector.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     

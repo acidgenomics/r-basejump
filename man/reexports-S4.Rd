@@ -21,7 +21,7 @@
 \alias{flatFiles}
 \alias{as.data.frame}
 \alias{reexports-S4}
-\title{S4 generics exported from other packages}
+\title{S4 generics re-exported from other packages}
 \usage{
 plotDEGHeatmap(object, ...)
 
@@ -62,7 +62,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 \arguments{
 \item{row.names, optional}{Refer to base \code{\link[base:as.data.frame]{as.data.frame()}} for details.}
 
-\item{object}{Object.}
+\item{object, x}{Object.}
 
 \item{...}{Additional arguments.}
 }

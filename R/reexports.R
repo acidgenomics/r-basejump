@@ -1,10 +1,10 @@
-#' S4 generics exported from other packages
+#' S4 generics re-exported from other packages
 #'
 #' These generics are imported from other packages.
 #'
 #' @name reexports-S4
 #'
-#' @param object Object.
+#' @param object,x Object.
 #' @param ... Additional arguments.
 NULL
 

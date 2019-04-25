@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.5</span>
       </span>
     </div>
 
@@ -118,7 +118,11 @@
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for numeric</span>
+    <pre class="usage"><span class='fu'>foldChangeToLogRatio</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>logRatioToFoldChange</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for numeric</span>
 <span class='fu'>foldChangeToLogRatio</span>(<span class='no'>object</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for numeric</span>
@@ -136,6 +140,10 @@
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
 Logarithm base. Defaults to <code>2</code>, for compatibility with RNA-Seq
 differential expression output.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     

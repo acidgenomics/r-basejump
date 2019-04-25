@@ -36,6 +36,8 @@ Positive integer denoting the number of first and last items to include.}
 
 \item{ascii}{\code{logical(1)}.
 Require separators to use ASCII instead of Unicode.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Invisible \code{NULL}.
