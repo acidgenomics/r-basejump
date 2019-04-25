@@ -10,14 +10,6 @@ NULL
 
 
 
-#' @rdname geneNames
-#' @name geneNames
-#' @importFrom bioverbs geneNames
-#' @export
-NULL
-
-
-
 geneNames.Vector <-  # nolint
     function(object) {
         Gene2Symbol(object, format = "makeUnique")[["geneName"]]

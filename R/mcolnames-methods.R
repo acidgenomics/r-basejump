@@ -12,20 +12,6 @@ NULL
 
 
 
-#' @rdname mcolnames
-#' @name mcolnames
-#' @importFrom bioverbs mcolnames
-#' @export
-NULL
-
-#' @rdname mcolnames
-#' @name mcolnames<-
-#' @importFrom bioverbs mcolnames<-
-#' @export
-NULL
-
-
-
 mcolnames.Vector <-  # nolint
     function(x) {
         colnames(mcols(x))

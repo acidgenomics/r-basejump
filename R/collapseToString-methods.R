@@ -49,14 +49,6 @@ NULL
 
 
 
-#' @rdname collapseToString
-#' @name collapseToString
-#' @importFrom bioverbs collapseToString
-#' @export
-NULL
-
-
-
 collapseToString.atomic <-  # nolint
     function(
         object,

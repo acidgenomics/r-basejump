@@ -45,14 +45,6 @@ NULL
 
 
 
-#' @rdname geometricMean
-#' @name geometricMean
-#' @importFrom bioverbs geometricMean
-#' @export
-NULL
-
-
-
 geometricMean.numeric <-  # nolint
     function(
         object,

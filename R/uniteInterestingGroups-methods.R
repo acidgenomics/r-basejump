@@ -14,14 +14,6 @@ NULL
 
 
 
-#' @rdname uniteInterestingGroups
-#' @name uniteInterestingGroups
-#' @importFrom bioverbs uniteInterestingGroups
-#' @export
-NULL
-
-
-
 uniteInterestingGroups.DataFrame <-  # nolint
     function(object, interestingGroups) {
         assert(

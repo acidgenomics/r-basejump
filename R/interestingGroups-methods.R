@@ -15,20 +15,6 @@ NULL
 
 
 
-#' @rdname interestingGroups
-#' @name interestingGroups
-#' @importFrom bioverbs interestingGroups
-#' @export
-NULL
-
-#' @rdname interestingGroups
-#' @name interestingGroups<-
-#' @importFrom bioverbs interestingGroups<-
-#' @export
-NULL
-
-
-
 interestingGroups.Annotated <-  # nolint
     function(object) {
         metadata(object)[["interestingGroups"]]

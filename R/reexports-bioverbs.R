@@ -7,9 +7,3 @@ bioverbs::plotDEGHeatmap
 #' @importFrom bioverbs plotDEGPCA
 #' @export
 bioverbs::plotDEGPCA
-
-# Now recommending `plotCounts()` instead of `plotGene()`.
-# Still in use by some revdeps, so keep re-exported.
-#' @importFrom bioverbs plotGene
-#' @export
-bioverbs::plotGene

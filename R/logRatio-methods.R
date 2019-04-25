@@ -23,20 +23,6 @@ NULL
 
 
 
-#' @rdname logRatio
-#' @name foldChangeToLogRatio
-#' @importFrom bioverbs foldChangeToLogRatio
-#' @export
-NULL
-
-#' @rdname logRatio
-#' @name logRatioToFoldChange
-#' @importFrom bioverbs logRatioToFoldChange
-#' @export
-NULL
-
-
-
 # foldChangeToLogRatio =========================================================
 foldChangeToLogRatio.numeric <-  # nolint
     function(object, base = 2L) {

@@ -16,14 +16,6 @@ NULL
 
 
 
-#' @rdname show
-#' @name show
-#' @importFrom methods show
-#' @export
-NULL
-
-
-
 .showHeader <- function(object) {
     cat(paste(class(object), metadata(object)[["version"]]), sep = "\n")
 }
