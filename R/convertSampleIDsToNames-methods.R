@@ -1,6 +1,8 @@
 #' @name convertSampleIDsToNames
 #' @inherit bioverbs::convertSampleIDsToNames
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return Varies, depending on the method.
 #'

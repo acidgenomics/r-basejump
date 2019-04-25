@@ -1,6 +1,9 @@
 #' @name humanize
 #' @inherit bioverbs::humanize
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, sce, package = "acidtest")
 #'

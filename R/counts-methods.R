@@ -9,6 +9,7 @@
 #' @aliases counts<-
 #'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return Matrix.
 #' Typically `matrix` or `sparseMatrix` class.

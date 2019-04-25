@@ -1,6 +1,8 @@
 #' @name cell2sample
 #' @inherit bioverbs::cell2sample
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @note `sampleID` column must be defined in
 #' [`colData()`][SummarizedExperiment::colData].

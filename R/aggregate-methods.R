@@ -11,6 +11,7 @@
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
+#'
 #' @inheritParams params
 #' @param ... Additional arguments.
 #'

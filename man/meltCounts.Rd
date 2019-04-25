@@ -6,6 +6,8 @@
 \alias{meltCounts,SummarizedExperiment-method}
 \title{Melt count matrix into long format}
 \usage{
+meltCounts(object, ...)
+
 \S4method{meltCounts}{SummarizedExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
   trans = c("identity", "log2", "log10"))

@@ -10,6 +10,8 @@
 \alias{stripTranscriptVersions,SummarizedExperiment-method}
 \title{Strip transcript versions}
 \usage{
+stripTranscriptVersions(object, ...)
+
 \S4method{stripTranscriptVersions}{character}(object)
 
 \S4method{stripTranscriptVersions}{matrix}(object)

@@ -8,6 +8,8 @@
 \alias{convertSampleIDsToNames,SingleCellExperiment-method}
 \title{Convert sample identifiers to names}
 \usage{
+convertSampleIDsToNames(object, ...)
+
 \S4method{convertSampleIDsToNames}{SummarizedExperiment}(object)
 
 \S4method{convertSampleIDsToNames}{SingleCellExperiment}(object)

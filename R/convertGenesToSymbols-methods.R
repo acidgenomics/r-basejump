@@ -1,6 +1,8 @@
 #' @name convertGenesToSymbols
 #' @inherit bioverbs::convertGenesToSymbols
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return Modified object of same class.
 #'

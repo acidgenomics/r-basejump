@@ -6,6 +6,8 @@
 \alias{topCellsPerSample,SingleCellExperiment-method}
 \title{Top cells per sample}
 \usage{
+topCellsPerSample(object, ...)
+
 \S4method{topCellsPerSample}{SingleCellExperiment}(object, n = 100L)
 }
 \arguments{

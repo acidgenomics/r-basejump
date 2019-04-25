@@ -8,6 +8,8 @@
 \alias{geometricMean,sparseMatrix-method}
 \title{Geometric mean}
 \usage{
+geometricMean(object, ...)
+
 \S4method{geometricMean}{numeric}(object, removeNA = TRUE,
   zeroPropagate = FALSE)
 

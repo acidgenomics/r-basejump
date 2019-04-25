@@ -12,6 +12,8 @@
 \alias{organism,SummarizedExperiment-method}
 \title{Organism}
 \usage{
+organism(object)
+
 \S4method{organism}{matrix}(object)
 
 \S4method{organism}{sparseMatrix}(object)
