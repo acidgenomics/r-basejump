@@ -121,6 +121,22 @@ NULL
 
 
 
+#' @rdname aggregate
+#' @name aggregateCols
+#' @importFrom bioverbs aggregateCols
+#' @usage aggregateCols(object, ...)
+#' @export
+NULL
+
+#' @rdname aggregate
+#' @name aggregateRows
+#' @importFrom bioverbs aggregateRows
+#' @usage aggregateRows(object, ...)
+#' @export
+NULL
+
+
+
 .aggregateFuns <- c("sum", "mean")
 
 # Don't message when aggregating a large factor.

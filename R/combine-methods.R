@@ -68,6 +68,15 @@ NULL
 
 
 
+#' @rdname combine
+#' @name combine
+#' @importFrom BiocGenerics combine
+#' @usage combine(x, y, ...)
+#' @export
+NULL
+
+
+
 combine.SummarizedExperiment <-  # nolint
     function(x, y) {
         validObject(x)

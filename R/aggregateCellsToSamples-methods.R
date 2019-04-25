@@ -18,6 +18,15 @@ NULL
 
 
 
+#' @rdname aggregateCellsToSamples
+#' @name aggregateCellsToSamples
+#' @importFrom bioverbs aggregateCellsToSamples
+#' @usage aggregateCellsToSamples(object, ...)
+#' @export
+NULL
+
+
+
 aggregateCellsToSamples.SingleCellExperiment <-  # nolint
     function(object, fun) {
         validObject(object)

@@ -43,6 +43,15 @@ NULL
 
 
 
+#' @rdname subsetPerSample
+#' @name subsetPerSample
+#' @importFrom bioverbs subsetPerSample
+#' @usage subsetPerSample(object, ...)
+#' @export
+NULL
+
+
+
 subsetPerSample.SingleCellExperiment <-  # nolint
     function(
         object,

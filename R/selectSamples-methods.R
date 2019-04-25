@@ -21,6 +21,15 @@ NULL
 
 
 
+#' @rdname selectSamples
+#' @name selectSamples
+#' @importFrom bioverbs selectSamples
+#' @usage selectSamples(object, ...)
+#' @export
+NULL
+
+
+
 selectSamples.SummarizedExperiment <-  # nolint
     function(object, ...) {
         validObject(object)

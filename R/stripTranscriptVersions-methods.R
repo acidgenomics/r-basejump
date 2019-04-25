@@ -16,7 +16,16 @@
 #' ))
 #'
 #' ## WormBase (keep; doesn't contain versions)
-#'stripTranscriptVersions("cTel79B.1")
+#' stripTranscriptVersions("cTel79B.1")
+NULL
+
+
+
+#' @rdname stripTranscriptVersions
+#' @name stripTranscriptVersions
+#' @importFrom bioverbs stripTranscriptVersions
+#' @usage stripTranscriptVersions(object, ...)
+#' @export
 NULL
 
 
