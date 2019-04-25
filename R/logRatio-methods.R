@@ -1,11 +1,12 @@
 #' Interconvert log ratio and fold change values
 #'
 #' @name logRatio
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param base `integer(1)`.
 #'   Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
 #'   differential expression output.
+#' @param ... Additional arguments.
 #'
 #' @seealso
 #' - `gtools::foldchange2logratio()`.

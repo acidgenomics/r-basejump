@@ -1,6 +1,9 @@
 #' @name markdown
 #' @inherit bioverbs::markdown
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, package = "acidtest")
 #' markdown(rse)

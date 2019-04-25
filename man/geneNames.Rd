@@ -7,6 +7,8 @@
 \alias{geneNames,SummarizedExperiment-method}
 \title{Gene names}
 \usage{
+geneNames(object, ...)
+
 \S4method{geneNames}{GRanges}(object)
 
 \S4method{geneNames}{SummarizedExperiment}(object)

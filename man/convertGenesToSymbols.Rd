@@ -12,6 +12,10 @@
 \alias{convertSymbolsToGenes,SummarizedExperiment-method}
 \title{Convert genes to symbols}
 \usage{
+convertGenesToSymbols(object, ...)
+
+convertSymbolsToGenes(object, ...)
+
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol)
 
 \S4method{convertGenesToSymbols}{matrix}(object, gene2symbol)
@@ -28,6 +32,8 @@
 \item{gene2symbol}{\code{Gene2Symbol}.
 Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
 \code{Gene2Symbol} for more information.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Modified object of same class.

@@ -10,6 +10,8 @@
 \alias{convertTranscriptsToGenes,SummarizedExperiment-method}
 \title{Convert transcripts to genes}
 \usage{
+convertTranscriptsToGenes(object, ...)
+
 \S4method{convertTranscriptsToGenes}{character}(object, tx2gene)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene,
@@ -30,7 +32,7 @@ Transcript-to-gene mappings.}
 For objects supporting \link[base:dim]{dim}, aggregate counts to gene level and
 collapse the matrix.}
 
-\item{...}{Passthrough to \code{\link[=makeTx2GeneFromEnsembl]{makeTx2GeneFromEnsembl()}}.}
+\item{...}{Additional arguments.}
 }
 \value{
 \itemize{

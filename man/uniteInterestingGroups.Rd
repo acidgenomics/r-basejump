@@ -7,6 +7,8 @@
 \alias{uniteInterestingGroups,DataFrame-method}
 \title{Unite interesting groups into a single column}
 \usage{
+uniteInterestingGroups(object, ...)
+
 \S4method{uniteInterestingGroups}{DataFrame}(object, interestingGroups)
 }
 \arguments{

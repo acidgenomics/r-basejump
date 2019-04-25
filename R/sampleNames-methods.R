@@ -5,9 +5,9 @@
 #' the syntactically valid names defined as the rownames of `sampleData`.
 #'
 #' @name sampleNames
-#' @aliases sampleNames<-
 #'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return Named `character`.
 #'

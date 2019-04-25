@@ -7,8 +7,6 @@ setGeneric(
     }
 )
 
-
-
 #' @rdname Gene2Symbol-class
 #' @export
 setGeneric(
@@ -17,8 +15,6 @@ setGeneric(
         standardGeneric("Gene2Symbol")
     }
 )
-
-
 
 #' @rdname Tx2Gene-class
 #' @export
@@ -29,16 +25,12 @@ setGeneric(
     }
 )
 
-
-
 #' @rdname aggregate
 #' @name aggregateCols
 #' @importFrom bioverbs aggregateCols
 #' @usage aggregateCols(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname aggregate
 #' @name aggregateRows
@@ -47,287 +39,220 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname aggregateCellsToSamples
 #' @name aggregateCellsToSamples
 #' @importFrom bioverbs aggregateCellsToSamples
-#' @param ... Additional arguments.
 #' @usage aggregateCellsToSamples(object, ...)
 #' @export
 NULL
 
-
-
 #' @rdname autopadZeros
 #' @name autopadZeros
 #' @importFrom bioverbs autopadZeros
-#' @param ... Additional arguments.
 #' @usage autopadZeros(object, ...)
 #' @export
 NULL
 
-
-
 #' @rdname cell2sample
 #' @name cell2sample
 #' @importFrom bioverbs cell2sample
-#' @param ... Additional arguments.
 #' @usage cell2sample(object, ...)
 #' @export
 NULL
 
-
-
 #' @rdname collapseToString
 #' @name collapseToString
 #' @importFrom bioverbs collapseToString
-#' @param ... Additional arguments.
 #' @usage collapseToString(object, ...)
 #' @export
 NULL
 
-
-
 #' @rdname combine
 #' @name combine
 #' @importFrom BiocGenerics combine
-#' @param ... Additional arguments.
 #' @usage combine(x, y, ...)
 #' @export
 NULL
 
-
-
 #' @rdname convertGenesToSymbols
 #' @name convertGenesToSymbols
 #' @importFrom bioverbs convertGenesToSymbols
-#' @param ... Additional arguments.
 #' @usage convertGenesToSymbols(object, ...)
 #' @export
 NULL
 
-
-
 #' @rdname convertSampleIDsToNames
 #' @name convertSampleIDsToNames
 #' @importFrom bioverbs convertSampleIDsToNames
-#' @param ... Additional arguments.
+#' @usage convertSampleIDsToNames(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname convertGenesToSymbols
 #' @name convertSymbolsToGenes
 #' @importFrom bioverbs convertSymbolsToGenes
-#' @param ... Additional arguments.
+#' @usage convertSymbolsToGenes(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
 #' @importFrom bioverbs convertTranscriptsToGenes
-#' @param ... Additional arguments.
+#' @usage convertTranscriptsToGenes(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname counts
 #' @name counts
 #' @importFrom BiocGenerics counts
-#' @param ... Additional arguments.
+#' @usage counts(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname counts
 #' @name counts<-
 #' @importFrom BiocGenerics counts<-
-#' @param ... Additional arguments.
+#' @usage counts(object, ...) <- value
 #' @export
 NULL
-
-
 
 #' @rdname geneNames
 #' @name geneNames
 #' @importFrom bioverbs geneNames
-#' @param ... Additional arguments.
+#' @usage geneNames(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname geometricMean
 #' @name geometricMean
 #' @importFrom bioverbs geometricMean
-#' @param ... Additional arguments.
+#' @usage geometricMean(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname headtail
 #' @name headtail
 #' @importFrom bioverbs headtail
-#' @param ... Additional arguments.
+#' @usage headtail(x, ...)
 #' @export
 NULL
-
-
 
 #' @rdname humanize
 #' @name humanize
 #' @importFrom bioverbs humanize
-#' @param ... Additional arguments.
+#' @usage humanize(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname interestingGroups
 #' @name interestingGroups
 #' @importFrom bioverbs interestingGroups
-#' @param ... Additional arguments.
+#' @usage interestingGroups(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname interestingGroups
 #' @name interestingGroups<-
 #' @importFrom bioverbs interestingGroups<-
-#' @param ... Additional arguments.
+#' @usage interestingGroups(object, ...)  <- value
 #' @export
 NULL
-
 
 #' @rdname logRatio
 #' @name foldChangeToLogRatio
 #' @importFrom bioverbs foldChangeToLogRatio
-#' @param ... Additional arguments.
+#' @usage foldChangeToLogRatio(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname logRatio
 #' @name logRatioToFoldChange
 #' @importFrom bioverbs logRatioToFoldChange
-#' @param ... Additional arguments.
+#' @usage logRatioToFoldChange(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname mapGenes
 #' @name mapGenesToIDs
 #' @importFrom bioverbs mapGenesToIDs
-#' @param ... Additional arguments.
+#' @usage mapGenesToIDs(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname mapGenes
 #' @name mapGenesToRownames
 #' @importFrom bioverbs mapGenesToRownames
-#' @param ... Additional arguments.
+#' @usage mapGenesToRownames(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname mapGenes
 #' @name mapGenesToSymbols
 #' @importFrom bioverbs mapGenesToSymbols
-#' @param ... Additional arguments.
+#' @usage mapGenesToSymbols(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname markdown
 #' @name markdown
 #' @importFrom bioverbs markdown
-#' @param ... Additional arguments.
+#' @usage markdown(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname mcolnames
 #' @name mcolnames
 #' @importFrom bioverbs mcolnames
-#' @param ... Additional arguments.
+#' @usage mcolnames(x, ...)
 #' @export
 NULL
-
-
 
 #' @rdname mcolnames
 #' @name mcolnames<-
 #' @importFrom bioverbs mcolnames<-
-#' @param ... Additional arguments.
+#' @usage mcolnames(x, ...) <- value
 #' @export
 NULL
-
-
 
 #' @rdname meltCounts
 #' @name meltCounts
 #' @importFrom bioverbs meltCounts
-#' @param ... Additional arguments.
+#' @usage meltCounts(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname metrics
 #' @name metrics
 #' @importFrom bioverbs metrics
-#' @param ... Additional arguments.
+#' @usage metrics(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname metrics
 #' @name metricsPerSample
 #' @importFrom bioverbs metricsPerSample
-#' @param ... Additional arguments.
+#' @usage metricsPerSample(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname organism
 #' @name organism
 #' @importFrom BiocGenerics organism
-#' @param ... Additional arguments.
+#' @usage organism(object)
 #' @export
 NULL
-
-
 
 #' @rdname sampleData
 #' @name sampleData
 #' @importFrom bioverbs sampleData
-#' @param ... Additional arguments.
+#' @usage sampleData(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname sampleData
 #' @name sampleData<-
 #' @importFrom bioverbs sampleData<-
-#' @param ... Additional arguments.
+#' @usage sampleData(object, ...) <- value
 #' @export
 NULL
 
@@ -336,7 +261,7 @@ NULL
 #' @rdname sampleNames
 #' @name sampleNames
 #' @importFrom Biobase sampleNames
-#' @param ... Additional arguments.
+#' @usage sampleNames(object)
 #' @export
 NULL
 
@@ -345,7 +270,7 @@ NULL
 #' @rdname sampleNames
 #' @name sampleNames<-
 #' @importFrom Biobase sampleNames<-
-#' @param ... Additional arguments.
+#' @usage sampleNames(object) <- value
 #' @export
 NULL
 
@@ -354,7 +279,7 @@ NULL
 #' @rdname selectSamples
 #' @name selectSamples
 #' @importFrom bioverbs selectSamples
-#' @param ... Additional arguments.
+#' @usage selectSamples(object, ...)
 #' @export
 NULL
 
@@ -363,7 +288,7 @@ NULL
 #' @rdname stripTranscriptVersions
 #' @name stripTranscriptVersions
 #' @importFrom bioverbs stripTranscriptVersions
-#' @param ... Additional arguments.
+#' @usage stripTranscriptVersions(object, ...)
 #' @export
 NULL
 
@@ -372,7 +297,7 @@ NULL
 #' @rdname subsetPerSample
 #' @name subsetPerSample
 #' @importFrom bioverbs subsetPerSample
-#' @param ... Additional arguments.
+#' @usage subsetPerSample(object, ...)
 #' @export
 NULL
 
@@ -381,7 +306,7 @@ NULL
 #' @rdname topCellsPerSample
 #' @name topCellsPerSample
 #' @importFrom bioverbs topCellsPerSample
-#' @param ... Additional arguments.
+#' @usage topCellsPerSample(object, ...)
 #' @export
 NULL
 
@@ -390,7 +315,7 @@ NULL
 #' @rdname uniteInterestingGroups
 #' @name uniteInterestingGroups
 #' @importFrom bioverbs uniteInterestingGroups
-#' @param ... Additional arguments.
+#' @usage uniteInterestingGroups(object, ...)
 #' @export
 NULL
 
@@ -399,6 +324,6 @@ NULL
 #' @rdname zerosVsDepth
 #' @name zerosVsDepth
 #' @importFrom bioverbs zerosVsDepth
-#' @param ... Additional arguments.
+#' @usage zerosVsDepth(object, ...)
 #' @export
 NULL

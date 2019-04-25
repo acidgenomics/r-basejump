@@ -1,6 +1,9 @@
 #' @name geneNames
 #' @inherit bioverbs::geneNames
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, package = "acidtest")
 #'

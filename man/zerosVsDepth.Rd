@@ -9,6 +9,8 @@
 \alias{zerosVsDepth,SingleCellExperiment-method}
 \title{Percentage of zeros vs. library depth}
 \usage{
+zerosVsDepth(object, ...)
+
 \S4method{zerosVsDepth}{matrix}(object)
 
 \S4method{zerosVsDepth}{sparseMatrix}(object)

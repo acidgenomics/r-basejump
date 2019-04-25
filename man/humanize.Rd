@@ -6,6 +6,8 @@
 \alias{humanize,SummarizedExperiment-method}
 \title{Humanize an R object}
 \usage{
+humanize(object, ...)
+
 \S4method{humanize}{SummarizedExperiment}(object)
 }
 \arguments{

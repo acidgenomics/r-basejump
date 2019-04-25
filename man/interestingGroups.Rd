@@ -10,6 +10,10 @@
 \alias{interestingGroups<-,Annotated,NULL-method}
 \title{Interesting groups}
 \usage{
+interestingGroups(object, ...)
+
+interestingGroups(object, ...)  <- value
+
 \S4method{interestingGroups}{Annotated}(object)
 
 \S4method{interestingGroups}{Annotated,character}(object) <- value
@@ -23,6 +27,8 @@
 \item{object}{Object.}
 
 \item{value}{Value.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{character}.

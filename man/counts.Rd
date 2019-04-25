@@ -8,6 +8,10 @@
 \alias{counts<-,SummarizedExperiment-method}
 \title{Counts}
 \usage{
+counts(object, ...)
+
+counts(object, ...) <- value
+
 \S4method{counts}{SummarizedExperiment}(object)
 
 \S4method{counts}{SummarizedExperiment}(object) <- value
@@ -16,6 +20,8 @@
 \item{object}{Object.}
 
 \item{value}{Value to assign.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Matrix.

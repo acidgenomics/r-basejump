@@ -14,6 +14,12 @@
 \alias{mapGenesToSymbols,SummarizedExperiment-method}
 \title{Map genes}
 \usage{
+mapGenesToIDs(object, ...)
+
+mapGenesToRownames(object, ...)
+
+mapGenesToSymbols(object, ...)
+
 \S4method{mapGenesToRownames}{Gene2Symbol}(object, genes, strict = TRUE)
 
 \S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes,
@@ -41,6 +47,8 @@ symbols (e.g. "TSPN6"), if possible.}
 Require all genes to match. Recommended by default. If set \code{FALSE}, instead
 will return a warning to the user, and subset the genes vector to only
 include matches.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{character}.

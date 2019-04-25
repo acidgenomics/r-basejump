@@ -79,5 +79,5 @@ datasets::iris \%>\%
     t()
 }
 \seealso{
-\code{toString}.
+\code{\link[base:toString]{toString()}}.
 }

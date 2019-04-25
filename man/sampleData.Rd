@@ -12,6 +12,10 @@
 \alias{sampleNames,SummarizedExperiment-method}
 \title{Sample data}
 \usage{
+sampleData(object, ...)
+
+sampleData(object, ...) <- value
+
 \S4method{sampleData}{SummarizedExperiment}(object, clean = TRUE,
   ignoreCols = c("^description$", "^genomeBuild$", "^qualityFormat$",
   "^samRef$"))
@@ -49,6 +53,8 @@ cell-level columns that can be difficult to distinguish, especially when
 processed using Seurat, scater, etc.}
 
 \item{value}{Value.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{DataFrame}.

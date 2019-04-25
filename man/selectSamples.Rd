@@ -7,6 +7,8 @@
 \alias{selectSamples,SingleCellExperiment-method}
 \title{Select samples}
 \usage{
+selectSamples(object, ...)
+
 \S4method{selectSamples}{SummarizedExperiment}(object, ...)
 
 \S4method{selectSamples}{SingleCellExperiment}(object, ...)

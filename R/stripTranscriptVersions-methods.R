@@ -1,6 +1,8 @@
 #' @name stripTranscriptVersions
 #' @inherit bioverbs::stripTranscriptVersions
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @note This method is strict, and will only strip Ensembl transcript IDs
 #'   beginning with "ENS".
