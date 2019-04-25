@@ -1,7 +1,9 @@
 #' Organism
 #'
 #' @name organism
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return `character(1)`.
 #' Latin organism name (e.g. *Homo sapiens*).
@@ -18,6 +20,7 @@ NULL
 #' @rdname organism
 #' @name organism
 #' @importFrom BiocGenerics organism
+#' @usage organism(object)
 #' @export
 NULL
 

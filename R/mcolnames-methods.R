@@ -1,6 +1,9 @@
 #' @name mcolnames
 #' @inherit bioverbs::mcolnames
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, package = "acidtest")
 #' mcolnames(rse)
@@ -15,12 +18,14 @@ NULL
 #' @rdname mcolnames
 #' @name mcolnames
 #' @importFrom bioverbs mcolnames
+#' @usage mcolnames(x, ...)
 #' @export
 NULL
 
 #' @rdname mcolnames
 #' @name mcolnames<-
 #' @importFrom bioverbs mcolnames<-
+#' @usage mcolnames(x, ...) <- value
 #' @export
 NULL
 

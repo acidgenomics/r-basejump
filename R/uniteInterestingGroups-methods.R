@@ -1,6 +1,9 @@
 #' @name uniteInterestingGroups
 #' @inherit bioverbs::uniteInterestingGroups
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, package = "acidtest")
 #' object <- rse
@@ -17,6 +20,7 @@ NULL
 #' @rdname uniteInterestingGroups
 #' @name uniteInterestingGroups
 #' @importFrom bioverbs uniteInterestingGroups
+#' @usage uniteInterestingGroups(object, ...)
 #' @export
 NULL
 

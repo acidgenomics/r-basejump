@@ -1,7 +1,7 @@
 #' @name collapseToString
 #' @inherit bioverbs::collapseToString
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param sep `character(1)`.
 #'   Separator. Defaults to comma.
 #' @param unique `logical(1)`.
@@ -10,8 +10,9 @@
 #'   Sort values.
 #' @param removeNA `logical(1)`.
 #'   Remove NA values.
+#' @param ... Additional arguments.
 #'
-#' @seealso `toString`.
+#' @seealso [`toString()`][base::toString].
 #'
 #' @return
 #' - `atomic`: `character(1)`.
@@ -52,6 +53,7 @@ NULL
 #' @rdname collapseToString
 #' @name collapseToString
 #' @importFrom bioverbs collapseToString
+#' @usage collapseToString(object, ...)
 #' @export
 NULL
 

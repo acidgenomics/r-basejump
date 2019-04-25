@@ -12,6 +12,8 @@
 \alias{organism,SummarizedExperiment-method}
 \title{Organism}
 \usage{
+organism(object)
+
 \S4method{organism}{matrix}(object)
 
 \S4method{organism}{sparseMatrix}(object)
@@ -28,6 +30,8 @@
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{character(1)}.

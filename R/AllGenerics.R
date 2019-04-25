@@ -7,8 +7,6 @@ setGeneric(
     }
 )
 
-
-
 #' @rdname Gene2Symbol-class
 #' @export
 setGeneric(
@@ -17,8 +15,6 @@ setGeneric(
         standardGeneric("Gene2Symbol")
     }
 )
-
-
 
 #' @rdname Tx2Gene-class
 #' @export

@@ -1,12 +1,13 @@
 #' @name geometricMean
 #' @inherit bioverbs::geometricMean
+#'
 #' @inheritParams params
 #' @inheritParams base::apply
-#'
 #' @param removeNA `logical(1)`.
 #'   Remove `NA` values from calculations.
 #' @param zeroPropagate `logical(1)`.
 #'   Allow propagation of zeroes.
+#' @param ... Additional arguments.
 #'
 #' @note This function should be fully zero- and `NA`-tolerant. This calculation
 #'   is not particularly useful if there are elements that are <= 0 and will
@@ -48,6 +49,7 @@ NULL
 #' @rdname geometricMean
 #' @name geometricMean
 #' @importFrom bioverbs geometricMean
+#' @usage geometricMean(object, ...)
 #' @export
 NULL
 

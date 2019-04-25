@@ -8,6 +8,8 @@
 \alias{autopadZeros,SummarizedExperiment-method}
 \title{Autopad zeros}
 \usage{
+autopadZeros(object, ...)
+
 \S4method{autopadZeros}{character}(object)
 
 \S4method{autopadZeros}{matrix}(object, rownames = FALSE,
@@ -27,6 +29,8 @@ Apply to column names.}
 
 \item{sort}{\code{logical(1)}.
 Resort using \code{sort}.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{character}.

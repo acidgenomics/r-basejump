@@ -1,7 +1,7 @@
 #' @name meltCounts
 #' @inherit bioverbs::meltCounts
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param minCounts `integer(1)`.
 #'   Minimum count threshold to apply. Filters using "greater than or equal to"
 #'   logic internally. Note that this threshold gets applied prior to
@@ -17,6 +17,7 @@
 #' @param trans `character(1)`.
 #'   Apply a log transformation (e.g. `log2(x + 1L)`) to the count matrix prior
 #'   to melting, if desired. Use `"identity"` to return unmodified (default).
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(rse, package = "acidtest")
@@ -29,6 +30,7 @@ NULL
 #' @rdname meltCounts
 #' @name meltCounts
 #' @importFrom bioverbs meltCounts
+#' @usage meltCounts(object, ...)
 #' @export
 NULL
 

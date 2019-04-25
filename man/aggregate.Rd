@@ -3,8 +3,8 @@
 \docType{methods}
 \name{aggregate}
 \alias{aggregate}
-\alias{aggregateRows}
 \alias{aggregateCols}
+\alias{aggregateRows}
 \alias{aggregateRows,matrix-method}
 \alias{aggregateRows,sparseMatrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}
@@ -14,6 +14,10 @@
 \alias{aggregateCols,SingleCellExperiment-method}
 \title{Aggregate rows or columns}
 \usage{
+aggregateCols(object, ...)
+
+aggregateRows(object, ...)
+
 \S4method{aggregateRows}{matrix}(object, groupings, fun = c("sum",
   "mean"))
 
@@ -51,6 +55,8 @@ Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} or
 \code{\link[SummarizedExperiment:colData]{colData()}} that defines the desired
 aggregation groupings.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Modified object, with aggregated rows (features) or columns

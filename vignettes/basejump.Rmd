@@ -32,6 +32,13 @@ knitr::opts_chunk$set(message = FALSE)
 
 # Introduction
 
+```{r}
+library(basejump)
+library(SummarizedExperiment)
+options(acid.test = TRUE)
+data(rse, package = "acidtest")
+```
+
 This vignette focuses on the most common user-facing functions that fall into the following categories:
 
 - Annotation functions
@@ -47,13 +54,6 @@ There are additional function families whose functionality lie outside the scope
 - Coercion methods
 - Developer functions
 - Assert check functions
-
-```{r}
-library(basejump)
-library(SummarizedExperiment)
-options(acid.test = TRUE)
-data(rse, package = "acidtest")
-```
 
 # The S4 object system
 

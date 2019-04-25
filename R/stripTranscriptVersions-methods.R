@@ -1,6 +1,8 @@
 #' @name stripTranscriptVersions
 #' @inherit bioverbs::stripTranscriptVersions
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @note This method is strict, and will only strip Ensembl transcript IDs
 #'   beginning with "ENS".
@@ -14,7 +16,7 @@
 #' ))
 #'
 #' ## WormBase (keep; doesn't contain versions)
-#'stripTranscriptVersions("cTel79B.1")
+#' stripTranscriptVersions("cTel79B.1")
 NULL
 
 
@@ -22,6 +24,7 @@ NULL
 #' @rdname stripTranscriptVersions
 #' @name stripTranscriptVersions
 #' @importFrom bioverbs stripTranscriptVersions
+#' @usage stripTranscriptVersions(object, ...)
 #' @export
 NULL
 

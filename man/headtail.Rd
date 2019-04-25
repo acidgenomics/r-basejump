@@ -12,6 +12,8 @@
 \alias{headtail,SummarizedExperiment-method}
 \title{Return the first and last parts of an object}
 \usage{
+headtail(x, ...)
+
 \S4method{headtail}{atomic}(x, n = 2L)
 
 \S4method{headtail}{matrix}(x, n = 2L, ascii = FALSE)
@@ -34,6 +36,8 @@ Positive integer denoting the number of first and last items to include.}
 
 \item{ascii}{\code{logical(1)}.
 Require separators to use ASCII instead of Unicode.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Invisible \code{NULL}.

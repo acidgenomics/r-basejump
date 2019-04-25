@@ -1,6 +1,8 @@
 #' @name autopadZeros
 #' @inherit bioverbs::autopadZeros
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @note For methods on objects supporting [`dim()`][base::dim] (e.g. `matrix`),
 #' the object will be returned with the rows and/or columns resorted by default.
@@ -27,6 +29,7 @@ NULL
 #' @rdname autopadZeros
 #' @name autopadZeros
 #' @importFrom bioverbs autopadZeros
+#' @usage autopadZeros(object, ...)
 #' @export
 NULL
 

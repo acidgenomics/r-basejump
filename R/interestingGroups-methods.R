@@ -1,6 +1,9 @@
 #' @name interestingGroups
 #' @inherit bioverbs::interestingGroups
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, package = "acidtest")
 #' object <- rse
@@ -18,12 +21,14 @@ NULL
 #' @rdname interestingGroups
 #' @name interestingGroups
 #' @importFrom bioverbs interestingGroups
+#' @usage interestingGroups(object, ...)
 #' @export
 NULL
 
 #' @rdname interestingGroups
 #' @name interestingGroups<-
 #' @importFrom bioverbs interestingGroups<-
+#' @usage interestingGroups(object, ...)  <- value
 #' @export
 NULL
 

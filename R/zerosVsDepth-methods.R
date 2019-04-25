@@ -1,7 +1,10 @@
 #' @name zerosVsDepth
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @inherit bioverbs::zerosVsDepth
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(sce, package = "acidtest")
 #' x <- zerosVsDepth(sce)
@@ -14,6 +17,7 @@ NULL
 #' @rdname zerosVsDepth
 #' @name zerosVsDepth
 #' @importFrom bioverbs zerosVsDepth
+#' @usage zerosVsDepth(object, ...)
 #' @export
 NULL
 

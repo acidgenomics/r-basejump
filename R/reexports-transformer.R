@@ -11,9 +11,12 @@ NULL
 #' @export
 transformer::coerceS4ToList
 
+#' @rdname reexports-S4
+#' @name flatFiles
 #' @importFrom transformer flatFiles
+#' @usage flatFiles(object, ...)
 #' @export
-transformer::flatFiles
+NULL
 
 
 
@@ -60,9 +63,14 @@ transformer::as.SummarizedExperiment
 
 
 # coerce-data.frame.R ==========================================================
+#' @rdname reexports-S4
+#' @name as.data.frame
 #' @importFrom transformer as.data.frame
+#' @param row.names,optional
+#'   Refer to base [`as.data.frame()`][base::as.data.frame] for details.
+#' @usage as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 #' @export
-transformer::as.data.frame
+NULL
 
 setAs(
     from = "sparseMatrix",

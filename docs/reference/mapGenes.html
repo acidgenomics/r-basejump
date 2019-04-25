@@ -68,7 +68,7 @@ dynamically (e.g. for single-cell RNA-seq marker analysis)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.5</span>
       </span>
     </div>
 
@@ -124,7 +124,13 @@ dynamically (e.g. for single-cell RNA-seq marker analysis).</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for Gene2Symbol</span>
+    <pre class="usage"><span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>mapGenesToIDs</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>mapGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for Gene2Symbol</span>
 <span class='fu'>mapGenesToRownames</span>(<span class='no'>object</span>, <span class='no'>genes</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
@@ -165,6 +171,10 @@ symbols (e.g. "TSPN6"), if possible.</p></td>
 Require all genes to match. Recommended by default. If set <code>FALSE</code>, instead
 will return a warning to the user, and subset the genes vector to only
 include matches.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     

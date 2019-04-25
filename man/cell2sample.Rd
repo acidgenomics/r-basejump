@@ -6,6 +6,8 @@
 \alias{cell2sample,SingleCellExperiment-method}
 \title{Cell-to-sample mappings}
 \usage{
+cell2sample(object, ...)
+
 \S4method{cell2sample}{SingleCellExperiment}(object, return = c("factor",
   "tibble"))
 }
@@ -15,6 +17,8 @@
 \item{return}{\code{character(1)}.
 Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
 to the first argument in the \code{character} vector.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \itemize{

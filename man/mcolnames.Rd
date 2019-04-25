@@ -8,6 +8,10 @@
 \alias{mcolnames<-,Vector,character-method}
 \title{Metadata column names}
 \usage{
+mcolnames(x, ...)
+
+mcolnames(x, ...) <- value
+
 \S4method{mcolnames}{Vector}(x)
 
 \S4method{mcolnames}{Vector,character}(x) <- value
@@ -16,6 +20,8 @@
 \item{x}{Object.}
 
 \item{value}{Value.}
+
+\item{...}{Additional arguments.}
 }
 \description{
 Metadata column names

@@ -1,15 +1,17 @@
 # In use by bcbioRNASeq v0.2.9.
+
+#' @rdname reexports-S4
+#' @name plotDEGHeatmap
 #' @importFrom bioverbs plotDEGHeatmap
+#' @usage plotDEGHeatmap(object, ...)
 #' @export
-bioverbs::plotDEGHeatmap
+NULL
 
 # In use by bcbioRNASeq v0.2.9.
-#' @importFrom bioverbs plotDEGPCA
-#' @export
-bioverbs::plotDEGPCA
 
-# Now recommending `plotCounts()` instead of `plotGene()`.
-# Still in use by some revdeps, so keep re-exported.
-#' @importFrom bioverbs plotGene
+#' @rdname reexports-S4
+#' @name plotDEGPCA
+#' @importFrom bioverbs plotDEGPCA
+#' @usage plotDEGPCA(object, ...)
 #' @export
-bioverbs::plotGene
+NULL

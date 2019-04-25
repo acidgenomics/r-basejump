@@ -1,9 +1,10 @@
 #' @name topCellsPerSample
 #' @inherit bioverbs::topCellsPerSample
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param n `integer(1)`.
 #'   Number of barcodes to return per sample.
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(sce, package = "acidtest")
@@ -16,6 +17,7 @@ NULL
 #' @rdname topCellsPerSample
 #' @name topCellsPerSample
 #' @importFrom bioverbs topCellsPerSample
+#' @usage topCellsPerSample(object, ...)
 #' @export
 NULL
 

@@ -7,12 +7,16 @@
 \alias{geneNames,SummarizedExperiment-method}
 \title{Gene names}
 \usage{
+geneNames(object, ...)
+
 \S4method{geneNames}{GRanges}(object)
 
 \S4method{geneNames}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{character}.
