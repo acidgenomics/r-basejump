@@ -66,7 +66,7 @@ function will sum the counts across cells to sample level." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.5</span>
       </span>
     </div>
 
@@ -120,7 +120,9 @@ function will sum the counts across cells to sample level.</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for SingleCellExperiment</span>
+    <pre class="usage"><span class='fu'>aggregateCellsToSamples</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>object</span>,
   <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>))</pre>
     
@@ -136,6 +138,10 @@ function will sum the counts across cells to sample level.</p>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Name of the aggregation function.
 Uses <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg()</a></code> internally.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
