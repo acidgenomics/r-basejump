@@ -10,12 +10,8 @@
 \alias{plotDEGPCA}
 \alias{assignAndSaveData}
 \alias{basenameSansExt}
-\alias{decode}
 \alias{dots}
-\alias{encode}
-\alias{export}
 \alias{extPattern}
-\alias{factorize}
 \alias{fileExt}
 \alias{import}
 \alias{initDir}
@@ -28,10 +24,7 @@
 \alias{rdataExtPattern}
 \alias{rdataLoadError}
 \alias{realpath}
-\alias{removeNA}
 \alias{saveData}
-\alias{sanitizeNA}
-\alias{sanitizePercent}
 \alias{transmit}
 \alias{writeCounts}
 \alias{sanitizeColData}
@@ -94,7 +87,7 @@ below to see their documentation.
 \describe{
   \item{bioverbs}{\code{\link[bioverbs]{plotGene}}, \code{\link[bioverbs]{plotDEGHeatmap}}, \code{\link[bioverbs]{plotDEGPCA}}}
 
-  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{decode}}, \code{\link[brio]{dots}}, \code{\link[brio]{encode}}, \code{\link[brio]{export}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{factorize}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{removeNA}}, \code{\link[brio]{saveData}}, \code{\link[brio]{sanitizeNA}}, \code{\link[brio]{sanitizePercent}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{tar}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{zip}}}
+  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{dots}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{tar}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{zip}}}
 
   \item{freerange}{\code{\link[freerange]{annotable}}, \code{\link[freerange]{convertUCSCBuildToEnsembl}}, \code{\link[freerange]{detectOrganism}}, \code{\link[freerange]{emptyRanges}}, \code{\link[freerange]{makeGRangesFromEnsDb}}, \code{\link[freerange]{makeGRangesFromEnsembl}}, \code{\link[freerange]{makeGRangesFromGFF}}, \code{\link[freerange]{makeGRangesFromGTF}}}
 

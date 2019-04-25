@@ -3,6 +3,13 @@
 %   R/reexports.R
 \name{atomize}
 \alias{atomize}
+\alias{decode}
+\alias{encode}
+\alias{export}
+\alias{factorize}
+\alias{removeNA}
+\alias{sanitizeNA}
+\alias{sanitizePercent}
 \alias{camel}
 \alias{capitalize}
 \alias{dotted}
@@ -13,6 +20,20 @@
 \title{S4 generics exported from other packages}
 \usage{
 atomize(object, ...)
+
+decode(x, ...)
+
+encode(x, ...)
+
+export(x, ...)
+
+factorize(object, ...)
+
+removeNA(object, ...)
+
+sanitizeNA(object, ...)
+
+sanitizePercent(object, ...)
 
 camel(object, ...)
 

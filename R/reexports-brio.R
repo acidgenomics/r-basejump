@@ -13,29 +13,41 @@ NULL
 #' @export
 brio::basenameSansExt
 
+#' @rdname reexports-s4
+#' @name decode
 #' @importFrom brio decode
+#' @usage decode(x, ...)
 #' @export
-brio::decode
+NULL
 
 #' @importFrom brio dots
 #' @export
 brio::dots
 
+#' @rdname reexports-s4
+#' @name encode
 #' @importFrom brio encode
+#' @usage encode(x, ...)
 #' @export
-brio::encode
+NULL
 
+#' @rdname reexports-s4
+#' @name export
 #' @importFrom brio export
+#' @usage export(x, ...)
 #' @export
-brio::export
+NULL
 
 #' @importFrom brio extPattern
 #' @export
 brio::extPattern
 
+#' @rdname reexports-s4
+#' @name factorize
 #' @importFrom brio factorize
+#' @usage factorize(object, ...)
 #' @export
-brio::factorize
+NULL
 
 #' @importFrom brio fileExt
 #' @export
@@ -85,21 +97,30 @@ brio::rdataLoadError
 #' @export
 brio::realpath
 
+#' @rdname reexports-s4
+#' @name removeNA
 #' @importFrom brio removeNA
+#' @usage removeNA(object, ...)
 #' @export
-brio::removeNA
+NULL
 
 #' @importFrom brio saveData
 #' @export
 brio::saveData
 
+#' @rdname reexports-s4
+#' @name sanitizeNA
 #' @importFrom brio sanitizeNA
+#' @usage sanitizeNA(object, ...)
 #' @export
-brio::sanitizeNA
+NULL
 
+#' @rdname reexports-s4
+#' @name sanitizePercent
 #' @importFrom brio sanitizePercent
+#' @usage sanitizePercent(object, ...)
 #' @export
-brio::sanitizePercent
+NULL
 
 #' @importFrom brio transmit
 #' @export
