@@ -14,6 +14,8 @@
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Varies, depending on the method.

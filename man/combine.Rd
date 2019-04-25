@@ -7,6 +7,8 @@
 \alias{combine,SingleCellExperiment,SingleCellExperiment-method}
 \title{Combining or merging different Bioconductor data structures}
 \usage{
+combine(x, y, ...)
+
 \S4method{combine}{SummarizedExperiment,SummarizedExperiment}(x, y)
 
 \S4method{combine}{SingleCellExperiment,SingleCellExperiment}(x, y)
@@ -15,6 +17,8 @@
 \item{x}{One of the values.}
 
 \item{y}{A second value.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{SummarizedExperiment}.
