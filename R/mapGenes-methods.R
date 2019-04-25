@@ -54,26 +54,6 @@ NULL
 
 
 
-#' @rdname mapGenes
-#' @name mapGenesToRownames
-#' @importFrom bioverbs mapGenesToRownames
-#' @export
-NULL
-
-#' @rdname mapGenes
-#' @name mapGenesToIDs
-#' @importFrom bioverbs mapGenesToIDs
-#' @export
-NULL
-
-#' @rdname mapGenes
-#' @name mapGenesToSymbols
-#' @importFrom bioverbs mapGenesToSymbols
-#' @export
-NULL
-
-
-
 .mapGenes <- function(object, genes, strict = TRUE) {
     validObject(object)
     assert(

@@ -19,14 +19,6 @@ NULL
 
 
 
-#' @rdname stripTranscriptVersions
-#' @name stripTranscriptVersions
-#' @importFrom bioverbs stripTranscriptVersions
-#' @export
-NULL
-
-
-
 # Pattern matching against Ensembl transcript IDs.
 # http://www.ensembl.org/info/genome/stable_ids/index.html
 # Examples: ENST (human); ENSMUST (mouse).

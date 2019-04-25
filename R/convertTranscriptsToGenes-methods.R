@@ -55,14 +55,6 @@ NULL
 
 
 
-#' @rdname convertTranscriptsToGenes
-#' @name convertTranscriptsToGenes
-#' @importFrom bioverbs convertTranscriptsToGenes
-#' @export
-NULL
-
-
-
 convertTranscriptsToGenes.character <-  # nolint
     function(object, tx2gene) {
         assert(

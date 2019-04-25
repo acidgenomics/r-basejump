@@ -40,20 +40,6 @@ NULL
 
 
 
-#' @rdname convertGenesToSymbols
-#' @name convertGenesToSymbols
-#' @importFrom bioverbs convertGenesToSymbols
-#' @export
-NULL
-
-#' @rdname convertGenesToSymbols
-#' @name convertSymbolsToGenes
-#' @importFrom bioverbs convertSymbolsToGenes
-#' @export
-NULL
-
-
-
 # convertGenesToSymbols ========================================================
 # Allowing duplicates here (unlike convertTranscriptsToGenes).
 convertGenesToSymbols.character <-  # nolint

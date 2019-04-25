@@ -24,14 +24,6 @@ NULL
 
 
 
-#' @rdname autopadZeros
-#' @name autopadZeros
-#' @importFrom bioverbs autopadZeros
-#' @export
-NULL
-
-
-
 autopadZeros.character <-  # nolint
     function(object) {
         assert(is.character(object))

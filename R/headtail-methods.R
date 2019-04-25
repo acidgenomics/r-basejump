@@ -20,14 +20,6 @@ NULL
 
 
 
-#' @rdname headtail
-#' @name headtail
-#' @importFrom bioverbs headtail
-#' @export
-NULL
-
-
-
 headtail.atomic <-  # nolint
     function(x, n = 2L) {
         assert(

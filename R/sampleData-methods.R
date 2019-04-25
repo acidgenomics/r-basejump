@@ -85,20 +85,6 @@ NULL
 
 
 
-#' @rdname sampleData
-#' @name sampleData
-#' @importFrom bioverbs sampleData
-#' @export
-NULL
-
-#' @rdname sampleData
-#' @name sampleData<-
-#' @importFrom bioverbs sampleData<-
-#' @export
-NULL
-
-
-
 # Don't run validity checks here.
 # Note that we're using grep pattern matching for `ignoreCols`.
 sampleData.SummarizedExperiment <-  # nolint

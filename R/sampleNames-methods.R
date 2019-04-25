@@ -28,20 +28,6 @@ NULL
 
 
 
-#' @rdname sampleNames
-#' @name sampleNames
-#' @importFrom Biobase sampleNames
-#' @export
-NULL
-
-#' @rdname sampleNames
-#' @name sampleNames<-
-#' @importFrom Biobase sampleNames<-
-#' @export
-NULL
-
-
-
 sampleNames.SummarizedExperiment <-  # nolint
     function(object) {
         data <- sampleData(object)

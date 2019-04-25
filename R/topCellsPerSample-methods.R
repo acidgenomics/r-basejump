@@ -13,14 +13,6 @@ NULL
 
 
 
-#' @rdname topCellsPerSample
-#' @name topCellsPerSample
-#' @importFrom bioverbs topCellsPerSample
-#' @export
-NULL
-
-
-
 topCellsPerSample.SingleCellExperiment <-  # nolint
     function(object, n = 100L) {
         validObject(object)

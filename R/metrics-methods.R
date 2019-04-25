@@ -38,20 +38,6 @@ NULL
 
 
 
-#' @rdname metrics
-#' @name metrics
-#' @importFrom bioverbs metrics
-#' @export
-NULL
-
-#' @rdname metrics
-#' @name metricsPerSample
-#' @importFrom bioverbs metricsPerSample
-#' @export
-NULL
-
-
-
 metrics.SummarizedExperiment <-  # nolint
     function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
