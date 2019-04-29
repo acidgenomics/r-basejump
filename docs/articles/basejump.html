@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.6</span>
       </span>
     </div>
 
@@ -75,7 +75,7 @@
       <h1>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">25 April 2019</h4>
+            <h4 class="date">29 April 2019</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/acidgenomics/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -85,12 +85,16 @@
     
         <div class="abstract">
       <p class="abstract">Abstract</p>
-      <p>The basejump package is an infrastructure toolkit that extends the base functionality of Bioconductor <span class="citation">(<span class="citeproc-not-found" data-reference-id="Huber2015-nw"><strong>???</strong></span>)</span>. The package leverages the S4 object system for object-oriented programming, and defines multiple additional generic functions for use in genomics research. basejump provides simple, user-friendly functions for the acquisition of genome annotations from multiple online databases, including native support for Ensembl <span class="citation">(<span class="citeproc-not-found" data-reference-id="Hubbard2002-ah"><strong>???</strong></span>)</span> and websites supporting standard FASTA and GTF/GFF file formats. Consistent handling of sample metadata remains a challenge for many bioinformatic analyses, and basejump aims to address this by providing a suite of sanitization functions to help standardize these variable inputs. Additionally, interactive read/write operations in R can be cumbersome and non-trivial when working with multiple data objects; here we provide additional functions designed for interactive use that aim to reduce friction and provide consistent handling of multiple common file formats used in genomics research.</p>
+      <p>The basejump package is an infrastructure toolkit that extends the base functionality of Bioconductor <span class="citation">(Huber et al. 2015)</span>. The package leverages the S4 object system for object-oriented programming, and defines multiple additional generic functions for use in genomics research. basejump provides simple, user-friendly functions for the acquisition of genome annotations from multiple online databases, including native support for Ensembl <span class="citation">(T. Hubbard et al. 2002)</span> and websites supporting standard FASTA and GTF/GFF file formats. Consistent handling of sample metadata remains a challenge for many bioinformatic analyses, and basejump aims to address this by providing a suite of sanitization functions to help standardize these variable inputs. Additionally, interactive read/write operations in R can be cumbersome and non-trivial when working with multiple data objects; here we provide additional functions designed for interactive use that aim to reduce friction and provide consistent handling of multiple common file formats used in genomics research.</p>
     </div>
     
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(basejump)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(SummarizedExperiment)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/options">options</a></span>(<span class="dt">acid.test =</span> <span class="ot">TRUE</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(rse, <span class="dt">package =</span> <span class="st">"acidtest"</span>)</code></pre>
 <p>This vignette focuses on the most common user-facing functions that fall into the following categories:</p>
 <ul>
 <li>Annotation functions</li>
@@ -107,10 +111,6 @@
 <li>Developer functions</li>
 <li>Assert check functions</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(basejump)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(SummarizedExperiment)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/options">options</a></span>(<span class="dt">acid.test =</span> <span class="ot">TRUE</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(rse, <span class="dt">package =</span> <span class="st">"acidtest"</span>)</code></pre>
 </div>
 <div id="the-s4-object-system" class="section level1">
 <h1 class="hasAnchor">
@@ -128,12 +128,12 @@
 <li>
 <a href="https://www.bioconductor.org/help/course-materials/2010/AdvancedR/S4InBioconductor.pdf">S4 System Development in Bioconductor</a>, Patrick Aboyoun, 2010.</li>
 </ul>
-<p>In <a href="https://www.r-project.org/">R</a>, you can check whether a function is using the S4 object system with the [<code><a href="https://www.rdocumentation.org/packages/base/topics/isS4">isS4()</a></code>][base::isS4] function. Additionally, [<code>showMethods()</code>][methods::showMethods] and [<code>getMethod()</code>][methods::getMethod] are useful for exploring source code of S4 methods. In contrast, to obtain information on functions using the <a href="http://adv-r.had.co.nz/S3.html">S3</a> object system, use [<code><a href="https://www.rdocumentation.org/packages/utils/topics/methods">methods()</a></code>][utils::methods] instead.</p>
+<p>In <a href="https://www.r-project.org/">R</a>, you can check whether a function is using the S4 object system with the <code><a href="https://www.rdocumentation.org/packages/base/topics/isS4">isS4()</a></code> function. Additionally, <code>showMethods()</code> and <code>getMethod()</code> are useful for exploring source code of S4 methods. In contrast, to obtain information on functions using the <a href="http://adv-r.had.co.nz/S3.html">S3</a> object system, use <code><a href="https://www.rdocumentation.org/packages/utils/topics/methods">methods()</a></code> instead.</p>
 </div>
 <div id="annotation-functions" class="section level1">
 <h1 class="hasAnchor">
 <a href="#annotation-functions" class="anchor"></a>Annotation functions</h1>
-<p>Obtaining versioned genome annotations quickly and reliably from online databases such as <a href="https://www.ensembl.org/">Ensembl</a> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Hubbard2002-ah"><strong>???</strong></span>)</span>, <a href="https://www.gencodegenes.org/">GENCODE</a> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Harrow2012-hx"><strong>???</strong></span>)</span>, <a href="https://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Pruitt2007-vu"><strong>???</strong></span>)</span>, and the <a href="http://genome.ucsc.edu/">UCSC Genome Browser</a> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Kent2002-fo"><strong>???</strong></span>)</span> remains overly challenging. <a href="https://basejump.acidgenomics.com/">basejump</a> aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>, along with a robust set of tools to parse <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> and <a href="https://useast.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GFF</a> annotation files. Annotation file parsing is handled internally by the <a href="https://bioconductor.org/packages/rtracklayer/">rtracklayer</a> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lawrence2009-zx"><strong>???</strong></span>)</span>. Genome annotations are returned as [<code>GRanges</code>][GenomicRanges::GRanges] objects, defined in the <a href="https://bioconductor.org/packages/GenomicRanges/">GenomicRanges</a> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lawrence2013-vz"><strong>???</strong></span>)</span>, which allows for easy access to position, chromosome, strand, and additional metadata saved in the [<code>mcols()</code>][S4Vectors::mcols] slot of the object. <code>GRanges</code> can be coerced to a standard <code>data.frame</code> using the [<code><a href="../reference/reexports-S4.html">as.data.frame()</a></code>][BiocGenerics::as.data.frame] function.</p>
+<p>Obtaining versioned genome annotations quickly and reliably from online databases such as <a href="https://www.ensembl.org/">Ensembl</a> <span class="citation">(T. Hubbard et al. 2002)</span>, <a href="https://www.gencodegenes.org/">GENCODE</a> <span class="citation">(Harrow et al. 2012)</span>, <a href="https://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> <span class="citation">(Pruitt, Tatusova, and Maglott 2007)</span>, and the <a href="http://genome.ucsc.edu/">UCSC Genome Browser</a> <span class="citation">(Kent et al. 2002)</span> remains overly challenging. <a href="https://basejump.acidgenomics.com/">basejump</a> aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>, along with a robust set of tools to parse <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> and <a href="https://useast.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GFF</a> annotation files. Annotation file parsing is handled internally by the <a href="https://bioconductor.org/packages/rtracklayer/">rtracklayer</a> package <span class="citation">(Lawrence, Gentleman, and Carey 2009)</span>. Genome annotations are returned as <code>GRanges</code> class objects, defined in the <a href="https://bioconductor.org/packages/GenomicRanges/">GenomicRanges</a> package <span class="citation">(Lawrence et al. 2013)</span>, which allows for easy access to position, chromosome, strand, and additional metadata saved in the <code>mcols()</code> slot of the object. <code>GRanges</code> can be coerced to a standard <code>data.frame</code> using the <code><a href="../reference/reexports-S4.html">as.data.frame()</a></code> function.</p>
 <div id="ensembl-annotations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ensembl-annotations" class="anchor"></a>Ensembl annotations</h2>
@@ -204,7 +204,7 @@
 ## 5405 2271 3342 3001 1348 2252 2206 2541 3074 1200 3004 4067 1417  846 1375 
 ##    3    4    5    6    7    8    9    X    Y 
 ## 3090 2526 2903 2940 2946 2405 2308 2418  518</code></pre>
-<p>Gene metadata is contained in the [<code>mcols()</code>][S4Vectors::mcols] slot of the object, using a <code>DataFrame</code> internally. Here’a the current list of gene-level annotation columns returned from <code><a href="https://www.rdocumentation.org/packages/freerange/topics/makeGRangesFromEnsembl">makeGRangesFromEnsembl()</a></code>:</p>
+<p>Gene metadata is contained in <code>mcols()</code>, using a <code>DataFrame</code> internally. Here’a the current list of gene-level annotation columns returned from <code><a href="https://www.rdocumentation.org/packages/freerange/topics/makeGRangesFromEnsembl">makeGRangesFromEnsembl()</a></code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcols</span>(grch38) %&gt;%<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">colnames</a></span>()</code></pre>
 <pre><code>## [1] "broadClass"     "description"    "entrezID"       "geneBiotype"   
 ## [5] "geneID"         "geneIDVersion"  "geneName"       "seqCoordSystem"</code></pre>
@@ -584,13 +584,13 @@
 <p>In addition to interfacing with <a href="https://www.ensembl.org/">Ensembl</a>, <a href="https://basejump.acidgenomics.com/">basejump</a> exports a number of utility functions to interface with other genomic databases, including:</p>
 <ul>
 <li>
-<a href="#eggnog">EggNOG</a> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Huerta-Cepas2016-ql"><strong>???</strong></span>)</span>.</li>
+<a href="#eggnog">EggNOG</a> <span class="citation">(Huerta-Cepas et al. 2016)</span>.</li>
 <li>
-<a href="#hgnc">HGNC</a> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Yates2017-fq"><strong>???</strong></span>)</span>.</li>
+<a href="#hgnc">HGNC</a> <span class="citation">(Yates et al. 2017)</span>.</li>
 <li>
-<a href="#mgi">MGI</a> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Smith2018-ds"><strong>???</strong></span>)</span>.</li>
+<a href="#mgi">MGI</a> <span class="citation">(C. L. Smith et al. 2018)</span>.</li>
 <li>
-<a href="#panther">PANTHER</a> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Mi2017-jl"><strong>???</strong></span>)</span>.</li>
+<a href="#panther">PANTHER</a> <span class="citation">(Mi et al. 2017)</span>.</li>
 </ul>
 <div id="hgnc" class="section level3">
 <h3 class="hasAnchor">
@@ -627,7 +627,7 @@
 <div id="wormbase" class="section level3">
 <h3 class="hasAnchor">
 <a href="#wormbase" class="anchor"></a>WormBase</h3>
-<p>Note that for <em>Caenorhabditis elegans</em> genome annotations, we recommend additional use of our specialized <a href="https://wormbase.acidgenomics.com/">wormbase package</a>, which queries the <a href="https://wormbase.org/">WormBase</a> database <span class="citation">(<span class="citeproc-not-found" data-reference-id="Stein2001-mk"><strong>???</strong></span>)</span> directly, and provides support of versioned releases (e.g. WS265) that have additional metadata not currently available on <a href="https://www.ensembl.org/">Ensembl</a>.</p>
+<p>Note that for <em>Caenorhabditis elegans</em> genome annotations, we recommend additional use of our specialized <a href="https://wormbase.acidgenomics.com/">wormbase package</a>, which queries the <a href="https://wormbase.org/">WormBase</a> database <span class="citation">(Stein et al. 2001)</span> directly, and provides support of versioned releases (e.g. WS265) that have additional metadata not currently available on <a href="https://www.ensembl.org/">Ensembl</a>.</p>
 </div>
 </div>
 </div>
@@ -896,7 +896,7 @@
 ##  [1] ProtGenerics_1.14.0           bitops_1.0-6                 
 ##  [3] fs_1.2.7                      bit64_0.9-7                  
 ##  [5] progress_1.2.0                httr_1.4.0                   
-##  [7] rprojroot_1.3-2               syntactic_0.1.8              
+##  [7] rprojroot_1.3-2               syntactic_0.1.9              
 ##  [9] tools_3.5.2                   backports_1.1.4              
 ## [11] R6_2.4.0                      lazyeval_0.2.2               
 ## [13] DBI_1.0.0                     withr_2.1.2                  
@@ -918,18 +918,18 @@
 ## [45] GenomeInfoDbData_1.2.0        Matrix_1.2-17                
 ## [47] Rcpp_1.0.1                    R.methodsS3_1.7.1            
 ## [49] stringi_1.4.3                 yaml_2.2.0                   
-## [51] MASS_7.3-51.3                 zlibbioc_1.28.0              
-## [53] brio_0.1.19                   plyr_1.8.4                   
+## [51] MASS_7.3-51.4                 zlibbioc_1.28.0              
+## [53] brio_0.1.20                   plyr_1.8.4                   
 ## [55] goalie_0.2.15                 AnnotationHub_2.14.5         
 ## [57] grid_3.5.2                    blob_1.1.1                   
-## [59] transformer_0.1.9             promises_1.0.1               
+## [59] transformer_0.1.10            promises_1.0.1               
 ## [61] crayon_1.3.4                  lattice_0.20-38              
-## [63] Biostrings_2.50.2             bioverbs_0.1.14              
+## [63] Biostrings_2.50.2             bioverbs_0.1.15              
 ## [65] GenomicFeatures_1.34.8        hms_0.4.2                    
 ## [67] knitr_1.22                    pillar_1.3.1                 
 ## [69] reshape2_1.4.3                biomaRt_2.38.0               
 ## [71] XML_3.98-1.19                 glue_1.3.1                   
-## [73] evaluate_0.13                 freerange_0.1.3              
+## [73] evaluate_0.13                 freerange_0.1.4              
 ## [75] data.table_1.12.2             BiocManager_1.30.4           
 ## [77] httpuv_1.5.1                  tidyr_0.8.3                  
 ## [79] grr_0.9.5                     purrr_0.3.2                  
@@ -946,7 +946,18 @@
 <a href="#references" class="anchor"></a>References</h1>
 <p>The papers and software cited in our workflows are available as a <a href="https://paperpile.com/shared/agxufd">shared library</a> on <a href="https://paperpile.com/">Paperpile</a>.</p>
 <div class="references">
-
+<p>Harrow, Jennifer, Adam Frankish, Jose M Gonzalez, Electra Tapanari, Mark Diekhans, Felix Kokocinski, Bronwen L Aken, et al. 2012. “GENCODE: the Reference Human Genome Annotation for the ENCODE Project.” <em>Genome Res.</em> 22 (9) (September): 1760–1774. doi:<a href="http://dx.doi.org/10.1101/gr.135350.111">10.1101/gr.135350.111</a>. <a href="http://dx.doi.org/10.1101/gr.135350.111">http://dx.doi.org/10.1101/gr.135350.111</a>.</p>
+<p>Hubbard, T, D Barker, E Birney, G Cameron, Y Chen, L Clark, T Cox, et al. 2002. “The Ensembl Genome Database Project.” <em>Nucleic Acids Res.</em> 30 (1) (January): 38–41. <a href="https://www.ncbi.nlm.nih.gov/pubmed/11752248">https://www.ncbi.nlm.nih.gov/pubmed/11752248</a>.</p>
+<p>Huber, Wolfgang, Vincent J Carey, Robert Gentleman, Simon Anders, Marc Carlson, Benilton S Carvalho, Hector Corrada Bravo, et al. 2015. “Orchestrating High-Throughput Genomic Analysis with Bioconductor.” <em>Nat. Methods</em> 12 (2) (February): 115–121. doi:<a href="http://dx.doi.org/10.1038/nmeth.3252">10.1038/nmeth.3252</a>. <a href="http://dx.doi.org/10.1038/nmeth.3252">http://dx.doi.org/10.1038/nmeth.3252</a>.</p>
+<p>Huerta-Cepas, Jaime, Damian Szklarczyk, Kristoffer Forslund, Helen Cook, Davide Heller, Mathias C Walter, Thomas Rattei, et al. 2016. “eggNOG 4.5: a Hierarchical Orthology Framework with Improved Functional Annotations for Eukaryotic, Prokaryotic and Viral Sequences.” <em>Nucleic Acids Res.</em> 44 (D1) (January): D286–93. doi:<a href="http://dx.doi.org/10.1093/nar/gkv1248">10.1093/nar/gkv1248</a>. <a href="http://dx.doi.org/10.1093/nar/gkv1248">http://dx.doi.org/10.1093/nar/gkv1248</a>.</p>
+<p>Kent, W James, Charles W Sugnet, Terrence S Furey, Krishna M Roskin, Tom H Pringle, Alan M Zahler, and David Haussler. 2002. “The Human Genome Browser at UCSC.” <em>Genome Res.</em> 12 (6) (June): 996–1006. doi:<a href="http://dx.doi.org/10.1101/gr.229102">10.1101/gr.229102</a>. <a href="http://dx.doi.org/10.1101/gr.229102">http://dx.doi.org/10.1101/gr.229102</a>.</p>
+<p>Lawrence, Michael, Robert Gentleman, and Vincent Carey. 2009. “rtracklayer: an R Package for Interfacing with Genome Browsers.” <em>Bioinformatics</em> 25 (14) (July): 1841–1842. doi:<a href="http://dx.doi.org/10.1093/bioinformatics/btp328">10.1093/bioinformatics/btp328</a>. <a href="http://dx.doi.org/10.1093/bioinformatics/btp328">http://dx.doi.org/10.1093/bioinformatics/btp328</a>.</p>
+<p>Lawrence, Michael, Wolfgang Huber, Herv<span>é</span> Pag<span>è</span>s, Patrick Aboyoun, Marc Carlson, Robert Gentleman, Martin T Morgan, and Vincent J Carey. 2013. “Software for Computing and Annotating Genomic Ranges.” <em>PLoS Comput. Biol.</em> 9 (8) (August): e1003118. doi:<a href="http://dx.doi.org/10.1371/journal.pcbi.1003118">10.1371/journal.pcbi.1003118</a>. <a href="http://dx.doi.org/10.1371/journal.pcbi.1003118">http://dx.doi.org/10.1371/journal.pcbi.1003118</a>.</p>
+<p>Mi, Huaiyu, Xiaosong Huang, Anushya Muruganujan, Haiming Tang, Caitlin Mills, Diane Kang, and Paul D Thomas. 2017. “PANTHER Version 11: expanded Annotation Data from Gene Ontology and Reactome Pathways, and Data Analysis Tool Enhancements.” <em>Nucleic Acids Res.</em> 45 (D1) (January): D183–D189. doi:<a href="http://dx.doi.org/10.1093/nar/gkw1138">10.1093/nar/gkw1138</a>. <a href="http://dx.doi.org/10.1093/nar/gkw1138">http://dx.doi.org/10.1093/nar/gkw1138</a>.</p>
+<p>Pruitt, Kim D, Tatiana Tatusova, and Donna R Maglott. 2007. “NCBI Reference Sequences (RefSeq): a Curated Non-Redundant Sequence Database of Genomes, Transcripts and Proteins.” <em>Nucleic Acids Res.</em> 35 (Database issue) (January): D61–5. doi:<a href="http://dx.doi.org/10.1093/nar/gkl842">10.1093/nar/gkl842</a>. <a href="http://dx.doi.org/10.1093/nar/gkl842">http://dx.doi.org/10.1093/nar/gkl842</a>.</p>
+<p>Smith, Cynthia L, Judith A Blake, James A Kadin, Joel E Richardson, Carol J Bult, and Mouse Genome Database Group. 2018. “Mouse Genome Database (MGD)-2018: knowledgebase for the Laboratory Mouse.” <em>Nucleic Acids Res.</em> 46 (D1) (January): D836–D842. doi:<a href="http://dx.doi.org/10.1093/nar/gkx1006">10.1093/nar/gkx1006</a>. <a href="http://dx.doi.org/10.1093/nar/gkx1006">http://dx.doi.org/10.1093/nar/gkx1006</a>.</p>
+<p>Stein, L, P Sternberg, R Durbin, J Thierry-Mieg, and J Spieth. 2001. “WormBase: network Access to the Genome and Biology of Caenorhabditis Elegans.” <em>Nucleic Acids Res.</em> 29 (1) (January): 82–86. doi:<a href="http://dx.doi.org/10.1093/nar/29.1.82">10.1093/nar/29.1.82</a>. <a href="https://www.ncbi.nlm.nih.gov/pubmed/11125056">https://www.ncbi.nlm.nih.gov/pubmed/11125056</a>.</p>
+<p>Yates, Bethan, Bryony Braschi, Kristian A Gray, Ruth L Seal, Susan Tweedie, and Elspeth A Bruford. 2017. “Genenames.Org: the HGNC and VGNC Resources in 2017.” <em>Nucleic Acids Res.</em> 45 (D1) (January): D619–D625. doi:<a href="http://dx.doi.org/10.1093/nar/gkw1033">10.1093/nar/gkw1033</a>. <a href="http://dx.doi.org/10.1093/nar/gkw1033">http://dx.doi.org/10.1093/nar/gkw1033</a>.</p>
 </div>
 </div>
   </div>

@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.6</span>
       </span>
     </div>
 
@@ -120,9 +120,9 @@
 <li>Split out all ggplot2 functions to new minimalism package.</li>
 </ul>
 </div>
-<div id="minor-changes-5" class="section level3">
+<div id="minor-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Offloaded <code>removeNA</code> and <code>sanitizeNA</code> code to <a href="https://brio.acidgenomics.com/">brio</a> package, so these functions can be imported in thew new <a href="https://freerange.acidgenomics.com/">freerange</a> package.</li>
 <li>Moved <code>organism_mappings</code> internal dataset to <a href="https://freerange.acidgenomics.com/">freerange</a> package.</li>
@@ -132,17 +132,17 @@
     <div id="basejump-0-10-1-2019-04-01" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-1-2019-04-01" class="anchor"></a>basejump 0.10.1 (2019-04-01)</h2>
-<div id="new-functions" class="section level3">
+<div id="new-functions-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h3>
+<a href="#new-functions-1" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>rankedMatrix</code>: New utility function for quickly performing ranked matrix calculations. Particularly useful for differential expression comparison across studies using log2 fold change or Wald test statistic.</li>
 </ul>
 </div>
-<div id="minor-changes-4" class="section level3">
+<div id="minor-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Simplified reexport methods for functions that define S4 methods.</li>
 </ul>
@@ -167,9 +167,9 @@
 <code>organism</code>: Reworked S4 methods. Added support for <code>Annotated</code> and <code>DataTable</code> classes from <a href="https://bioconductor.org/packages/S4Vectors/">S4Vectors</a>.</li>
 </ul>
 </div>
-<div id="minor-changes-3" class="section level3">
+<div id="minor-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added additional unit tests, to improve code coverage.</li>
 <li>Now covering the aggregation functions in better detail, using a minimal SingleCellExperiment object that works with <code>aggregateCols</code>.</li>
@@ -188,9 +188,9 @@
     <div id="basejump-0-10-3-2019-04-07" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-3-2019-04-07" class="anchor"></a>basejump 0.10.3 (2019-04-07)</h2>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Bug fix release for <a href="https://freerange.acidgenomics.com/">freerange</a> update. <code>emptyRanges</code> format has been renamed from <code>mcolsNames</code> to <code>mcolnames</code>.</li>
 </ul>
@@ -207,9 +207,9 @@
 <code>meltCounts</code>: Switched from using <code>nonzeroGenes</code> formal approach to <code>minCounts</code> and <code>minCountsMethod</code>, which is more flexible.</li>
 </ul>
 </div>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Consolidated minimalism and firestarter code into acidplots package.</li>
 <li>Improve global options defined in <code>formalsList</code>.</li>
@@ -220,11 +220,30 @@
     <div id="basejump-0-10-5-2019-04-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-5-2019-04-25" class="anchor"></a>basejump 0.10.5 (2019-04-25)</h2>
+<div id="minor-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Reworked S4 generic reexport method, in an attempt to get pkgdown to build vignette correctly. Otherwise, <code>sampleData</code> is erroring.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0-10-6-2019-04-29" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-10-6-2019-04-29" class="anchor"></a>basejump 0.10.6 (2019-04-29)</h2>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h3>
+<ul>
+<li>
+<code>showHeader</code>: Utility function for <code>show</code> methods defined in other packages.</li>
+</ul>
+</div>
 <div id="minor-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Reworked S4 generic reexport method, in an attempt to get pkgdown to build vignette correctly. Otherwise, <code>sampleData</code> is erroring.</li>
+<li>Updated basejump dependencies (see <code>DESCRIPTION</code> for details).</li>
 </ul>
 </div>
 </div>
@@ -240,6 +259,7 @@
         <li><a href="#basejump-0-10-3-2019-04-07">0.10.3</a></li>
         <li><a href="#basejump-0-10-4-2019-04-22">0.10.4</a></li>
         <li><a href="#basejump-0-10-5-2019-04-25">0.10.5</a></li>
+        <li><a href="#basejump-0-10-6-2019-04-29">0.10.6</a></li>
       </ul>
     </div>
   </div>
