@@ -1,5 +1,6 @@
 #' Header for object show method
 #'
+#' @export
 #' @inheritParams params
 #'
 #' @return Console output, via [`cat()`][base::cat].
