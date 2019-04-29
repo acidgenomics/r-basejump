@@ -16,15 +16,9 @@ NULL
 
 
 
-.showHeader <- function(object) {
-    cat(paste(class(object), metadata(object)[["version"]]), sep = "\n")
-}
-
-
-
 show.EggNOG <-  # nolint
     function(object) {
-        .showHeader(object)
+        showHeader(object)
         showSlotInfo(list(
             ids = object %>%
                 .[["annotations"]] %>%
@@ -51,7 +45,7 @@ setMethod(
 
 show.PANTHER <-  # nolint
     function(object) {
-        .showHeader(object)
+        showHeader(object)
         showSlotInfo(list(
             organism = metadata(object)[["organism"]],
             release = metadata(object)[["release"]],

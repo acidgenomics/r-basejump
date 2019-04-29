@@ -136,6 +136,7 @@ Collate:
     'selectSamples-methods.R'
     'separator.R'
     'show-methods.R'
+    'showHeader.R'
     'showSlotInfo.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
