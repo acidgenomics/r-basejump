@@ -1,3 +1,15 @@
+## basejump 0.10.6 (2019-04-29)
+
+### New functions
+
+- `showHeader`: Utility function for `show` methods defined in other packages.
+
+### Minor changes
+
+- Updated basejump dependencies (see `DESCRIPTION` for details).
+
+
+
 ## basejump 0.10.5 (2019-04-25)
 
 ### Minor changes
