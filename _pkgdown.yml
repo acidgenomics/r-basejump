@@ -29,7 +29,9 @@ reference:
       - tpm
   - title: Metadata
     contents:
+      - alphaThreshold
       - interestingGroups
+      - lfcThreshold
       - mcolnames
       - organism
       - uniteInterestingGroups

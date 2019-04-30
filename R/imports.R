@@ -35,12 +35,12 @@
 #' @importFrom goalie allAreMatchingRegex areDisjointSets areIntersectingSets
 #'   areSameLength areSetEqual assert false getNameInParent hasDims hasInternet
 #'   hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows
-#'   hasRownames hasUniqueCols hasValidDimnames hasValidNames isADirectory isAny
-#'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
-#'   isHexColorFunction isInClosedRange isInRange isInt isMatchingRegex
-#'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
-#'   isSubset isSuperset matchesUniqueGeneNames validNames validate
-#'   validateClasses
+#'   hasRownames hasUniqueCols hasValidDimnames hasValidNames isADirectory
+#'   isAlpha isAny isCharacter isFlag isGGScale isGreaterThanOrEqualTo
+#'   isHeaderLevel isHexColorFunction isInClosedRange isInRange isInt
+#'   isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
+#'   isScalar isString isSubset isSuperset matchesUniqueGeneNames validNames
+#'   validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars

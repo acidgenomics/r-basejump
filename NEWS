@@ -1,3 +1,13 @@
+## basejump 0.10.7 (2019-04-30)
+
+### New functions
+
+- Added method support for `alphaThreshold` and `lfcThreshold` against
+  `Annotated` class. These values get stored in the `metadata` slot of the
+  object.
+
+
+
 ## basejump 0.10.6 (2019-04-29)
 
 ### New functions
