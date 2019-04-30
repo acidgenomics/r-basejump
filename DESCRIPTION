@@ -74,7 +74,7 @@ Collate:
     'Tx2Gene-methods.R'
     'aggregate-methods.R'
     'aggregateCellsToSamples-methods.R'
-    'alpha-methods.R'
+    'alphaThreshold-methods.R'
     'autopadZeros-methods.R'
     'cell2sample-methods.R'
     'collapseToString-methods.R'

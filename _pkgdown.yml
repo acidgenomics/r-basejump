@@ -29,7 +29,7 @@ reference:
       - tpm
   - title: Metadata
     contents:
-      - alpha
+      - alphaThreshold
       - interestingGroups
       - lfcThreshold
       - mcolnames
