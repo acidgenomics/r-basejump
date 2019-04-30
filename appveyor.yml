@@ -22,11 +22,14 @@ branches:
 
 environment:
   global:
-    GCC_PATH: mingw_64
     # PKGTYPE: win.binary
+    GCC_PATH: mingw_64
     R_ARCH: x64
     USE_RTOOLS: true
   matrix:
+    - configuration: 3.4
+      R_VERSION: 3.4.4
+      BIOC_USE_DEVEL: "FALSE"
     - configuration: oldrel
       R_VERSION: oldrel
       BIOC_USE_DEVEL: "FALSE"
