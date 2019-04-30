@@ -5,16 +5,16 @@
 \alias{alpha}
 \alias{alpha<-}
 \alias{alpha,Annotated-method}
-\alias{alpha<-,Annotated,character-method}
+\alias{alpha<-,Annotated,numeric-method}
 \title{Alpha level}
 \usage{
 alpha(object, ...)
 
-mcolnames(object, ...) <- value
+alpha(object, ...) <- value
 
 \S4method{alpha}{Annotated}(object)
 
-\S4method{alpha}{Annotated,character}(object) <- value
+\S4method{alpha}{Annotated,numeric}(object) <- value
 }
 \arguments{
 \item{object}{Object.}

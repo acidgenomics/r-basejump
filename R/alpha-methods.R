@@ -21,7 +21,7 @@ NULL
 #' @rdname alpha
 #' @name alpha<-
 #' @importFrom bioverbs alpha<-
-#' @usage mcolnames(object, ...) <- value
+#' @usage alpha(object, ...) <- value
 #' @export
 NULL
 
@@ -45,7 +45,7 @@ setMethod(
 
 
 
-`alpha<-.Annotated,character` <-  # nolint
+`alpha<-.Annotated,numeric` <-  # nolint
     function(object, value) {
         assert(isAlpha(value))
         metadata(object)[["alpha"]] <- value
@@ -61,7 +61,7 @@ setMethod(
     f = "alpha<-",
     signature = signature(
         object = "Annotated",
-        value = "character"
+        value = "numeric"
     ),
-    definition = `alpha<-.Annotated,character`
+    definition = `alpha<-.Annotated,numeric`
 )
