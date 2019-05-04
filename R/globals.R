@@ -100,24 +100,29 @@ lanePattern <- "_L([[:digit:]]{3})"
 #' @export
 #' @examples
 #' metadataBlacklist
-metadataBlacklist <- c(
-    # Too vague.
-    "ID", "Id", "id",
-    # Generated automatically.
+metadataBlacklist <- sort(c(
+    # Automatic / used internally
     "interestingGroups",
-    # Use "sampleName" instead.
-    "name",
-    # Generated automatically from "sequence" column.
     "revcomp",
-    # Used internally by dplyr.
     "rowname",
-    # Use "sampleName" instead.
+    "sampleID",
+    # interestingGroups variants
+    "interestinggroups",
+    "intgroup",
+    # sampleID, sampleName variants
+    "ID",
+    "Id",
+    "id",
+    "name",
+    "names",
     "sample",
-    # "sampleID" case variants.
-    "sampleID", "sampleId", "sampleid",
-    # Use "sampleName" instead.
-    "samplename"
-)
+    "samples",
+    "sampleId",
+    "sampleid",
+    "sampleNames",
+    "samplename",
+    "samplenames"
+))
 
 
 
