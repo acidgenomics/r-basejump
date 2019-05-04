@@ -48,7 +48,7 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
 
     copySharedFiles <- function(sourceDir, overwrite) {
         assert(isADirectory(sourceDir))
-        files <- list.files(sourceDir, full.names = TRUE)
+        files <- sort(list.files(sourceDir, full.names = TRUE))
         assert(hasLength(files))
         copied <- vapply(
             X = files,

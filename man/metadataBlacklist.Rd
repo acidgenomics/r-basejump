@@ -4,7 +4,7 @@
 \name{metadataBlacklist}
 \alias{metadataBlacklist}
 \title{Sample metadata blacklist}
-\format{An object of class \code{character} of length 12.}
+\format{An object of class \code{character} of length 18.}
 \usage{
 metadataBlacklist
 }

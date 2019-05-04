@@ -43,7 +43,7 @@ test_that("Assign and save mode", {
         expected = paste0("sample", seq_len(2L))
     )
     expect_identical(
-        object = list.files("subsetPerSample"),
+        object = sort(list.files("subsetPerSample")),
         expected = paste0("sample", seq_len(2L), ".rds")
     )
     unlink("subsetPerSample", recursive = TRUE)
