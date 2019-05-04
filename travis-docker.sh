@@ -18,7 +18,7 @@ rcmdcheck::rcmdcheck(
 if (packageVersion("base") >= "3.6") {
     BiocCheck::BiocCheck(
         package = ".",
-        `quit-with-status` = FALSE
+        `quit-with-status` = TRUE
     )
     lintr::lint_package()
 }
