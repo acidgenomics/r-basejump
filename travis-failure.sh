@@ -4,6 +4,6 @@ set -Eeuxo pipefail
 env | sort
 df -h | sort
 docker images
-docker system prune --all
+docker system prune --all --force
 docker images
 df -h | sort
