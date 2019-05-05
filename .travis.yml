@@ -26,9 +26,8 @@ matrix:
   fast_finish: true
 
 after_failure:
-  - env | sort
-  - df -h
-  - docker images
+  - chmod +x travis-failure.sh
+  - ./travis-failure.sh
 
 notifications:
   email:
