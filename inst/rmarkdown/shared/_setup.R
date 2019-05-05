@@ -10,6 +10,8 @@ knitr::opts_chunk[["set"]](
     # Enable caching with caution.
     cache = FALSE,
     cache.lazy = FALSE,
+    # Increase verbosity of error messages.
+    calling.handlers = list(error = rlang::entrace),
     comment = "",
     dev = c("png", "pdf"),
     fig.height = 10L,
