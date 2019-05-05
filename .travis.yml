@@ -8,7 +8,7 @@ branches:
     - master
 
 before_script:
-  - chmod +x travis-docker.sh
+  - chmod +x *.sh
 
 jobs:
   include:
@@ -26,7 +26,6 @@ matrix:
   fast_finish: true
 
 after_failure:
-  - chmod +x travis-failure.sh
   - ./travis-failure.sh
 
 notifications:
