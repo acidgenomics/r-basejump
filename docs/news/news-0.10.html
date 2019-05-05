@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.8</span>
       </span>
     </div>
 
@@ -111,9 +111,9 @@
     <div id="basejump-0-10-0-2019-03-28" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-0-2019-03-28" class="anchor"></a>basejump 0.10.0 (2019-03-28)</h2>
-<div id="major-changes-2" class="section level3">
+<div id="major-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Split out Ensembl (AnnotationHub/ensembldb) annotation processing and GFF/GTF file loading utilites to new <a href="https://freerange.acidgenomics.com/">freerange</a> package. All of these functions remain re-exported here in <a href="https://basejump.acidgenomics.com/">basejump</a>. This includes: <code>annotable</code>, <code>convertUCSCBuildToEnsembl</code>, <code>detectOrganism</code>, <code>emptyRanges</code>, <code>makeGRangesFromEnsDb</code>, <code>makeGRangesFromEnsembl</code>, <code>makeGRangesFromGFF</code>, <code>makeGRangesFromGTF</code>.</li>
 <li>Split out heatmap functions to firestarter package. This includes <code>plotHeatmap</code>, <code>plotCorrelationHeatmap</code>, and <code>plotQuantileHeatmap</code>.</li>
@@ -132,9 +132,9 @@
     <div id="basejump-0-10-1-2019-04-01" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-1-2019-04-01" class="anchor"></a>basejump 0.10.1 (2019-04-01)</h2>
-<div id="new-functions-1" class="section level3">
+<div id="new-functions-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-1" class="anchor"></a>New functions</h3>
+<a href="#new-functions-2" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>rankedMatrix</code>: New utility function for quickly performing ranked matrix calculations. Particularly useful for differential expression comparison across studies using log2 fold change or Wald test statistic.</li>
@@ -151,9 +151,9 @@
     <div id="basejump-0-10-2-2019-04-07" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-2-2019-04-07" class="anchor"></a>basejump 0.10.2 (2019-04-07)</h2>
-<div id="major-changes-1" class="section level3">
+<div id="major-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>aggregateRows</code>, <code>aggregateCols</code>, <code>aggregateCellsToSamples</code>: Improved internal code for SummarizedExperiment metadata handling. Applies primarily to colData and rowData juggling for these methods.</li>
@@ -199,9 +199,9 @@
     <div id="basejump-0-10-4-2019-04-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-4-2019-04-22" class="anchor"></a>basejump 0.10.4 (2019-04-22)</h2>
-<div id="major-changes" class="section level3">
+<div id="major-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>meltCounts</code>: Switched from using <code>nonzeroGenes</code> formal approach to <code>minCounts</code> and <code>minCountsMethod</code>, which is more flexible.</li>
@@ -231,9 +231,9 @@
     <div id="basejump-0-10-6-2019-04-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-6-2019-04-29" class="anchor"></a>basejump 0.10.6 (2019-04-29)</h2>
-<div id="new-functions" class="section level3">
+<div id="new-functions-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h3>
+<a href="#new-functions-1" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>showHeader</code>: Utility function for <code>show</code> methods defined in other packages.</li>
@@ -244,6 +244,28 @@
 <a href="#minor-changes" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated basejump dependencies (see <code>DESCRIPTION</code> for details).</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0-10-7-2019-04-30" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-10-7-2019-04-30" class="anchor"></a>basejump 0.10.7 (2019-04-30)</h2>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h3>
+<ul>
+<li>Added method support for <code>alphaThreshold</code> and <code>lfcThreshold</code> against <code>Annotated</code> class. These values get stored in the <code>metadata</code> slot of the object.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0-10-8-2019-05-05" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-10-8-2019-05-05" class="anchor"></a>basejump 0.10.8 (2019-05-05)</h2>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>Now pinned to R &gt;= 3.5.</li>
 </ul>
 </div>
 </div>
@@ -260,6 +282,8 @@
         <li><a href="#basejump-0-10-4-2019-04-22">0.10.4</a></li>
         <li><a href="#basejump-0-10-5-2019-04-25">0.10.5</a></li>
         <li><a href="#basejump-0-10-6-2019-04-29">0.10.6</a></li>
+        <li><a href="#basejump-0-10-7-2019-04-30">0.10.7</a></li>
+        <li><a href="#basejump-0-10-8-2019-05-05">0.10.8</a></li>
       </ul>
     </div>
   </div>
