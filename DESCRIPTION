@@ -35,8 +35,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    bioverbs (>= 0.1.17), brio (>= 0.1.20), freerange (>= 0.1.5),
-        goalie (>= 0.2.16), syntactic (>= 0.1.9), transformer (>= 0.1.11),
+    bioverbs (>= 0.1.16), brio (>= 0.1.20), freerange (>= 0.1.4),
+        goalie (>= 0.2.15), syntactic (>= 0.1.9), transformer (>= 0.1.10),
     Biobase, BiocGenerics, GenomeInfoDb, GenomicRanges, IRanges, S4Vectors,
         SingleCellExperiment, SummarizedExperiment,
     Matrix (>= 1.2), Matrix.utils (>= 0.9), dplyr (>= 0.8), knitr (>= 1.22),
