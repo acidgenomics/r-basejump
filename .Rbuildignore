@@ -16,4 +16,5 @@
 ^pkgdown$
 ^travis-docker\.R$
 ^travis-docker\.sh$
+^travis-failure\.sh$
 ^vignettes/\.build\.timestamp$
