@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.8</span>
       </span>
     </div>
 
@@ -112,9 +112,9 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-0-2018-12-12" class="anchor"></a>basejump 0.9.0 (2018-12-12)</h2>
 <p>I bumped the release series from v0.8 to v0.9 because this represents a significant change to the internal codebase, where I have now switched to using my new <a href="https://goalie.acidgenomics.com/">goalie</a> assert check engine from <a href="https://cran.r-project.org/package=assertive">assertive</a>.</p>
-<div id="new-functions-2" class="section level3">
+<div id="new-functions-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-2" class="anchor"></a>New functions</h3>
+<a href="#new-functions-3" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>decode</code>: Decode S4 run-length encoding (Rle).</li>
@@ -130,9 +130,9 @@
 <code>sanitizeColData</code>: rework of previous <code>sanitizeSampleData</code> approach.</li>
 </ul>
 </div>
-<div id="major-changes-5" class="section level3">
+<div id="major-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-6" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <a href="https://goalie.acidgenomics.com/">goalie</a> package instead of <a href="https://cran.r-project.org/package=assertive">assertive</a> for internal assert checks. The new <code><a href="https://www.rdocumentation.org/packages/goalie/topics/assert">goalie::assert</a></code> function is more flexible in many cases. Similarly, <code><a href="https://www.rdocumentation.org/packages/goalie/topics/validate">goalie::validate</a></code> is now being used in place of <code><a href="https://www.rdocumentation.org/packages/assertthat/topics/validate_that">assertthat::validate_that</a></code>.</li>
 <li>
@@ -175,9 +175,9 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-1-2018-12-22" class="anchor"></a>basejump 0.9.1 (2018-12-22)</h2>
 <p>This release defines the initial point where <a href="https://basejump.acidgenomics.com/">basejump</a> begins to import <a href="https://bioverbs.acidgenomics.com/">bioverbs</a>.</p>
-<div id="major-changes-4" class="section level3">
+<div id="major-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing generics using our <a href="https://bioverbs.acidgenomics.com/">bioverbs</a> S4 generic package. All generics previously defined in <a href="https://basejump.acidgenomics.com/">basejump</a> will continue to be reexported, to maintain backward compatibility for reverse dependencies (revdeps).</li>
 </ul>
@@ -455,9 +455,9 @@
     <div id="basejump-0-9-12-2019-03-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-12-2019-03-11" class="anchor"></a>basejump 0.9.12 (2019-03-11)</h2>
-<div id="major-changes-3" class="section level3">
+<div id="major-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>makeGRangesFromGFF</code>: Reworked internal code, making it more modular. Added initial support for RefSeq GFF3 files. Also improved sanitization and special handling of files from FlyBase and WormBase.</li>

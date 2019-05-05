@@ -1,3 +1,11 @@
+## basejump 0.10.8 (2019-05-05)
+
+### Major changes
+
+- Now pinned to R >= 3.5.
+
+
+
 ## basejump 0.10.7 (2019-04-30)
 
 ### New functions

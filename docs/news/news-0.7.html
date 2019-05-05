@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.8</span>
       </span>
     </div>
 
@@ -112,18 +112,18 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-0-2018-08-07" class="anchor"></a>basejump 0.7.0 (2018-08-07)</h2>
 <p>In this release, we are migrating some of the S4 generics previously exported in the <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package. We are consolidating these functions here for simplicity and stability.</p>
-<div id="new-functions-9" class="section level3">
+<div id="new-functions-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-9" class="anchor"></a>New functions</h3>
+<a href="#new-functions-10" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>makeSummarizedExperiment</code>: Renamed <code>prepareSummarizedExperiment</code>, previously exported in the <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package. We are using the <code>make</code> prefix here for consistency (see other gene annotation functions).</li>
 <li>Migrated S4 generics and methods from <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a>: <code>flatFiles</code>, <code>metrics</code>, <code>plotCorrleationHeatmap</code>, <code>plotGene</code>, <code>plotHeatmap</code>, <code>plotQC</code>, and <code>plotQuantileHeatmap</code>.</li>
 </ul>
 </div>
-<div id="major-changes-12" class="section level3">
+<div id="major-changes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-12" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-13" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <code><a href="https://www.rdocumentation.org/packages/curl/topics/nslookup">curl::has_internet</a></code> internally to check for Internet connection. This applies to the annotation functions that query web databases.</li>
 <li>Added coercion method support for converting a <code>SummarizedExperiment</code> to an unstructured <code>list</code>. This is the method used internally for <code>flatFiles</code>.</li>
@@ -133,17 +133,17 @@
     <div id="basejump-0-7-1-2018-08-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-1-2018-08-18" class="anchor"></a>basejump 0.7.1 (2018-08-18)</h2>
-<div id="new-functions-8" class="section level3">
+<div id="new-functions-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-8" class="anchor"></a>New functions</h3>
+<a href="#new-functions-9" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>cleanSystemLibrary</code>: Utility function to check whether a user has installed packages into the <a href="https://www.r-project.org/">R</a> system library. Refer to <code>.libPaths</code> documentation for more information on library paths.</li>
 </ul>
 </div>
-<div id="major-changes-11" class="section level3">
+<div id="major-changes-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-11" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-12" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <code>build</code> instead of <code>genomeBuild</code> for <a href="https://www.ensembl.org/">Ensembl</a> annotation functions. The <code>genomeBuild</code> argument still works but now will inform the user about the change.</li>
 </ul>
@@ -160,9 +160,9 @@
     <div id="basejump-0-7-2-2018-08-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-2-2018-08-29" class="anchor"></a>basejump 0.7.2 (2018-08-29)</h2>
-<div id="new-functions-7" class="section level3">
+<div id="new-functions-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-7" class="anchor"></a>New functions</h3>
+<a href="#new-functions-8" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>assertAllAreURL</code>.</li>
@@ -172,9 +172,9 @@
 <code>validNames</code>.</li>
 </ul>
 </div>
-<div id="major-changes-10" class="section level3">
+<div id="major-changes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-10" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-11" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Added a draft vignette explaining the functions available in the package.</li>
 <li>
