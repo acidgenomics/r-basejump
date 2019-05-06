@@ -16,7 +16,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -73,7 +74,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -91,7 +92,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/acidgenomics/basejump">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -162,11 +163,11 @@ Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</co
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
 
 <span class='no'>g2s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol-class.html'>Gene2Symbol</a></span>(<span class='no'>object</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>g2s</span>)</div><div class='output co'>#&gt; Gene2Symbol with 500 rows and 2 columns
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>g2s</span>)</div><div class='output co'>#&gt; Gene2Symbol with 500 rows and 2 columns
 #&gt;                  geneID    geneName
 #&gt;             &lt;character&gt; &lt;character&gt;
 #&gt; gene001 ENSG00000000003      TSPAN6
@@ -179,32 +180,32 @@ Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</co
 #&gt; gene497 ENSG00000033011        ALG1
 #&gt; gene498 ENSG00000033030      ZCCHC8
 #&gt; gene499 ENSG00000033050       ABCF2
-#&gt; gene500 ENSG00000033100       CHPF2</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>g2s</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]])
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
+#&gt; gene500 ENSG00000033100       CHPF2</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>g2s</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]])
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 #&gt; [5] "ENSG00000000460" "ENSG00000000938"</div><div class='input'>
 <span class='co'>## character ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>genes</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='no'>g2s</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
 #&gt;        "TSPAN6"          "TNMD"          "DPM1"         "SCYL3"      "C1orf112" 
 #&gt; ENSG00000000938 
 #&gt;           "FGR" </div><div class='input'>
 <span class='co'>## matrix ====</span>
-<span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>object</span>))
-<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>genes</span>) * <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>samples</span>)),
+<span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>object</span>))
+<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>genes</span>) * <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>samples</span>)),
     <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>genes</span>),
-    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>samples</span>),
-    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>genes</span>, <span class='no'>samples</span>)
+    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>genes</span>),
+    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>samples</span>),
+    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>genes</span>, <span class='no'>samples</span>)
 )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;                 sample01 sample02 sample03 sample04 sample05 sample06
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;                 sample01 sample02 sample03 sample04 sample05 sample06
 #&gt; ENSG00000000003        1        2        3        4        5        6
 #&gt; ENSG00000000005        7        8        9       10       11       12
 #&gt; ENSG00000000419       13       14       15       16       17       18
 #&gt; ENSG00000000457       19       20       21       22       23       24
 #&gt; ENSG00000000460       25       26       27       28       29       30
 #&gt; ENSG00000000938       31       32       33       34       35       36</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>counts</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='no'>g2s</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;          sample01 sample02 sample03 sample04 sample05 sample06
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;          sample01 sample02 sample03 sample04 sample05 sample06
 #&gt; TSPAN6          1        2        3        4        5        6
 #&gt; TNMD            7        8        9       10       11       12
 #&gt; DPM1           13       14       15       16       17       18
@@ -213,7 +214,7 @@ Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</co
 #&gt; FGR            31       32       33       34       35       36</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>rse</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 12 
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts
@@ -222,7 +223,7 @@ Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</co
 #&gt; colnames(12): sample01 sample02 ... sample11 sample12
 #&gt; colData names(1): condition</div><div class='input'><span class='co'>## Interconvert back to gene IDs.</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>convertSymbolsToGenes</span>(<span class='no'>x</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 12 
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts
@@ -251,7 +252,7 @@ Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</co
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>
