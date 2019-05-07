@@ -1,6 +1,9 @@
 #!/usr/bin/env Rscript
 
-Sys.setenv(TZ = "America/New_York")
+Sys.setenv(
+    `_R_CHECK_FORCE_SUGGESTS_` = FALSE,
+    TZ = "America/New_York"
+)
 options(
     deparse.max.lines = 3L,
     error = quote(rlang::entrace()),
