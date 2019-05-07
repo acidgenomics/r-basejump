@@ -56,7 +56,7 @@ subsetPerSample(
     envir = parent.frame(),
     dir = "subsetPerSample"
 )
-list.files("subsetPerSample")
+sort(list.files("subsetPerSample"))
 
 ## Clean up.
 unlink("subsetPerSample", recursive = TRUE)

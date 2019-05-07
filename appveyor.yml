@@ -1,10 +1,3 @@
-# AppVeyor-CI configuration for Bioconductor packages
-#
-# See also:
-# - https://github.com/krlmlr/r-appveyor
-# - https://github.com/Bioconductor/BiocManager/blob/master/appveyor.yml
-# - https://github.com/satijalab/seurat/blob/release/3.0/appveyor.yml
-
 init:
   ps: |
         $ErrorActionPreference = "Stop"
@@ -25,7 +18,6 @@ environment:
     _R_CHECK_FORCE_SUGGESTS_: false
     BIOC_USE_DEVEL: "FALSE"
     GCC_PATH: mingw_64
-    PKGTYPE: win.binary
     R_ARCH: x64
     USE_RTOOLS: true
   matrix:
