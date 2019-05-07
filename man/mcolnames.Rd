@@ -23,6 +23,9 @@ mcolnames(x, ...) <- value
 
 \item{...}{Additional arguments.}
 }
+\value{
+\code{character}.
+}
 \description{
 Metadata column names
 }
