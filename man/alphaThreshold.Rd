@@ -23,6 +23,10 @@ alphaThreshold(object, ...) <- value
 
 \item{...}{Additional arguments.}
 }
+\value{
+\code{numeric(1)}.
+Alpha cutoff level.
+}
 \description{
 Alpha threshold
 }
