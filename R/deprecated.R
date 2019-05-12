@@ -73,7 +73,7 @@ ensembl2entrez <- function(...) {
 #' @rdname deprecated
 #' @export
 fixNA <- function(...) {
-    .Deprecated("sanitizeNA")
+    # .Deprecated("sanitizeNA")  # nolint
     sanitizeNA(...)
 }
 
@@ -172,7 +172,7 @@ panther <- function(...) {
 #' @rdname deprecated
 #' @export
 readFileByExtension <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")  # nolint
     import(...)
 }
 
@@ -200,7 +200,7 @@ readJSON <- function(...) {
 #' @rdname deprecated
 #' @export
 readYAML <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")  # nolint
     import(...)
 }
 

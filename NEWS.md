@@ -1,3 +1,13 @@
+## basejump 0.10.9 (2019-05-12)
+
+### Minor changes
+
+- Relaxed the deprecations on some functions to provide backward compatibility
+  support for bcbioBase and bcbioRNASeq packages: `readFileByExtension`,
+  `readYAML`, `fixNA`.
+
+
+
 ## basejump 0.10.8 (2019-05-05)
 
 ### Major changes
