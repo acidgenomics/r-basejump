@@ -442,5 +442,24 @@ bioverbs::plotGene
 
 
 
+# v0.10.9 ======================================================================
+#' @rdname deprecated
+#' @export
+theme_midnight <- function(...) {
+    .Deprecated("acidplots::acid_theme_dark")
+    requireNamespace("acidplots", quietly = TRUE)
+    acidplots::acid_theme_dark(...)
+}
+
+#' @rdname deprecated
+#' @export
+theme_paperwhite <- function(...) {
+    .Deprecated("acidplots::acid_theme_light")
+    requireNamespace("acidplots", quietly = TRUE)
+    acidplots::acid_theme_light(...)
+}
+
+
+
 # nolint end
 # nocov end

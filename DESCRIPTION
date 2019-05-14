@@ -2,7 +2,7 @@ Package: basejump
 Title: Base functions for bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.10.9
-Date: 2019-05-12
+Date: 2019-05-13
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -47,14 +47,15 @@ Imports:
 Suggests:
     BiocStyle,
     EnsDb.Hsapiens.v75,
-    acidtest (>= 0.1.1),
+    acidplots,
+    acidtest,
     datasets,
     patrick,
     rmarkdown,
     testthat,
     viridis
 Enhances:
-    pbapply (>= 1.4)
+    pbapply
 Remotes:
     acidgenomics/acidtest,
     acidgenomics/bioverbs,
