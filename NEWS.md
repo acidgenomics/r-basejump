@@ -1,10 +1,12 @@
-## basejump 0.10.9 (2019-05-12)
+## basejump 0.10.9 (2019-05-13)
 
 ### Minor changes
 
 - Relaxed the deprecations on some functions to provide backward compatibility
   support for bcbioBase and bcbioRNASeq packages: `readFileByExtension`,
   `readYAML`, `fixNA`.
+- Now ensuring `theme_midnight` and `theme_paperwhite` are deprecated but
+  exported with support, by suggesting acidplots package.
 
 
 
