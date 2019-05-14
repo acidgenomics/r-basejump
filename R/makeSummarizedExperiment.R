@@ -203,10 +203,7 @@ makeSummarizedExperiment <- function(
     if (length(setdiff) > 0L) {
         stop(paste0(
             "Unannotated rows (", length(setdiff), "): ",
-            str_trunc(
-                string = toString(setdiff),
-                width = getOption("width") - 24L
-            ), "\n",
+            toString(setdiff, width = 200L), "\n",
             "Check that your genome build and Ensembl release are correct.\n",
             "Consider using a GTF/GFF file.\n",
             "Define transgenes with `transgeneNames`",
