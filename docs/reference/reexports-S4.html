@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>S4 generics re-exported from other packages — plotDEGHeatmap • basejump</title>
+<title>S4 generics exported from other packages — reexports-S4 • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="S4 generics re-exported from other packages — plotDEGHeatmap" />
+<meta property="og:title" content="S4 generics exported from other packages — reexports-S4" />
 
 <meta property="og:description" content="These generics are imported from other packages." />
 <meta name="twitter:card" content="summary" />
@@ -109,8 +109,8 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>S4 generics re-exported from other packages</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-bioverbs.R'><code>R/reexports-bioverbs.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-brio.R'><code>R/reexports-brio.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-syntactic.R'><code>R/reexports-syntactic.R</code></a>, and 3 more</small>
+    <h1>S4 generics exported from other packages</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-S4.R'><code>R/reexports-S4.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-bioverbs.R'><code>R/reexports-bioverbs.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-brio.R'><code>R/reexports-brio.R</code></a>, and 3 more</small>
     <div class="hidden name"><code>reexports-S4.Rd</code></div>
     </div>
 
@@ -130,7 +130,7 @@
 
 <span class='fu'>encode</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
-<span class='fu'>export</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'>export</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='fu'>factorize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
@@ -152,38 +152,51 @@
 
 <span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>flatFiles</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
-<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>flatFiles</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>row.names, optional</th>
-      <td><p>Refer to base <code><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame()</a></code> for details.</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
+      <th>object, x</th>
       <td><p>Object.</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
+    <tr>
+      <th>row.names, optional</th>
+      <td><p>Refer to base <code><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame()</a></code> for details.</p></td>
+    </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>showMethods</span>(<span class='st'>"camel"</span>)</div><div class='output co'>#&gt; Function: camel (package bioverbs)
+#&gt; object="ANY"
+#&gt; object="character"
+#&gt; object="data.frame"
+#&gt; object="DataFrame"
+#&gt; object="factor"
+#&gt; object="GRanges"
+#&gt; object="GRangesList"
+#&gt; object="matrix"
+#&gt; object="Matrix"
+#&gt; object="spec_tbl_df"
+#&gt;     (inherited from: object="data.frame")
+#&gt; object="SummarizedExperiment"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

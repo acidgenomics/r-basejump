@@ -134,7 +134,7 @@
 <div id="annotation-functions" class="section level1">
 <h1 class="hasAnchor">
 <a href="#annotation-functions" class="anchor"></a>Annotation functions</h1>
-<p>Obtaining versioned genome annotations quickly and reliably from online databases such as <a href="https://www.ensembl.org/">Ensembl</a> <span class="citation">(T. Hubbard et al. 2002)</span>, <a href="https://www.gencodegenes.org/">GENCODE</a> <span class="citation">(Harrow et al. 2012)</span>, <a href="https://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> <span class="citation">(Pruitt, Tatusova, and Maglott 2007)</span>, and the <a href="http://genome.ucsc.edu/">UCSC Genome Browser</a> <span class="citation">(Kent et al. 2002)</span> remains overly challenging. <a href="https://basejump.acidgenomics.com/">basejump</a> aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>, along with a robust set of tools to parse <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> and <a href="https://useast.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GFF</a> annotation files. Annotation file parsing is handled internally by the <a href="https://bioconductor.org/packages/rtracklayer/">rtracklayer</a> package <span class="citation">(Lawrence, Gentleman, and Carey 2009)</span>. Genome annotations are returned as <code>GRanges</code> class objects, defined in the <a href="https://bioconductor.org/packages/GenomicRanges/">GenomicRanges</a> package <span class="citation">(Lawrence et al. 2013)</span>, which allows for easy access to position, chromosome, strand, and additional metadata saved in the <code>mcols()</code> slot of the object. <code>GRanges</code> can be coerced to a standard <code>data.frame</code> using the <code><a href="../reference/reexports-S4.html">as.data.frame()</a></code> function.</p>
+<p>Obtaining versioned genome annotations quickly and reliably from online databases such as <a href="https://www.ensembl.org/">Ensembl</a> <span class="citation">(T. Hubbard et al. 2002)</span>, <a href="https://www.gencodegenes.org/">GENCODE</a> <span class="citation">(Harrow et al. 2012)</span>, <a href="https://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> <span class="citation">(Pruitt, Tatusova, and Maglott 2007)</span>, and the <a href="http://genome.ucsc.edu/">UCSC Genome Browser</a> <span class="citation">(Kent et al. 2002)</span> remains overly challenging. <a href="https://basejump.acidgenomics.com/">basejump</a> aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>, along with a robust set of tools to parse <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> and <a href="https://useast.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GFF</a> annotation files. Annotation file parsing is handled internally by the <a href="https://bioconductor.org/packages/rtracklayer/">rtracklayer</a> package <span class="citation">(Lawrence, Gentleman, and Carey 2009)</span>. Genome annotations are returned as <code>GRanges</code> class objects, defined in the <a href="https://bioconductor.org/packages/GenomicRanges/">GenomicRanges</a> package <span class="citation">(Lawrence et al. 2013)</span>, which allows for easy access to position, chromosome, strand, and additional metadata saved in the <code>mcols()</code> slot of the object. <code>GRanges</code> can be coerced to a standard <code>data.frame</code> using the <code><a href="../reference/reexports-S4-as.data.frame.html">as.data.frame()</a></code> function.</p>
 <div id="ensembl-annotations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ensembl-annotations" class="anchor"></a>Ensembl annotations</h2>
@@ -645,7 +645,7 @@
 <div id="sanitization-functions" class="section level1">
 <h1 class="hasAnchor">
 <a href="#sanitization-functions" class="anchor"></a>Sanitization functions</h1>
-<p>The <code>makeNames</code> suite of function, consisting primarily of <code><a href="../reference/reexports-S4.html">camel()</a></code>, <code><a href="../reference/reexports-S4.html">dotted()</a></code>, <code><a href="../reference/reexports-S4.html">snake()</a></code>, and <code><a href="../reference/reexports-S4.html">upperCamel()</a></code>, provide S4 method support for sanitizing common data structures used in genomics research and on <a href="https://bioconductor.org/">Bioconductor</a>.</p>
+<p>The <code>makeNames</code> suite of function, consisting primarily of <code><a href="../reference/reexports-S4-camel.html">camel()</a></code>, <code><a href="../reference/reexports-S4-dotted.html">dotted()</a></code>, <code><a href="../reference/reexports-S4-snake.html">snake()</a></code>, and <code><a href="../reference/reexports-S4-upperCamel.html">upperCamel()</a></code>, provide S4 method support for sanitizing common data structures used in genomics research and on <a href="https://bioconductor.org/">Bioconductor</a>.</p>
 <p>To see how these functions work, let’s load up an example <code>list</code> named <code>mn</code> (short for <code>makeNames</code>).</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/pkg/brio/man/loadRemoteData.html">loadRemoteData</a></span>(<span class="dt">url =</span> <span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(basejumpTestsURL, <span class="st">"mn.rda"</span>))
 <span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(mn)</code></pre>
@@ -666,25 +666,25 @@
 ##  [7] "G2M.Score"       "worfdbHTMLRemap" "Mazda RX4"      
 ## [10] "%GC"             "5prime"          "5'-3' bias"     
 ## [13] "123"             NA</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">camel</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-camel.html">camel</a></span>(x)</code></pre>
 <pre><code>##  [1] "helloWorld"      "helloWORLD"      "rnaiClones"     
 ##  [4] "nCount"          "tx2gene"         "tx2GeneID"      
 ##  [7] "g2mScore"        "worfdbHTMLRemap" "mazdaRX4"       
 ## [10] "percentGC"       "x5prime"         "x5x3Bias"       
 ## [13] "x123"            NA</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">dotted</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-dotted.html">dotted</a></span>(x)</code></pre>
 <pre><code>##  [1] "hello.world"       "HELLO.WORLD"       "RNAI.clones"      
 ##  [4] "n.Count"           "tx2gene"           "TX2.Gene.ID"      
 ##  [7] "G2M.Score"         "worfdb.HTML.Remap" "Mazda.RX4"        
 ## [10] "percent.GC"        "X5prime"           "X5.3.bias"        
 ## [13] "X123"              NA</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">snake</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-snake.html">snake</a></span>(x)</code></pre>
 <pre><code>##  [1] "hello_world"       "hello_world"       "rnai_clones"      
 ##  [4] "n_count"           "tx2gene"           "tx2_gene_id"      
 ##  [7] "g2m_score"         "worfdb_html_remap" "mazda_rx4"        
 ## [10] "percent_gc"        "x5prime"           "x5_3_bias"        
 ## [13] "x123"              NA</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">upperCamel</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-upperCamel.html">upperCamel</a></span>(x)</code></pre>
 <pre><code>##  [1] "HelloWorld"      "HELLOWORLD"      "RNAIClones"     
 ##  [4] "NCount"          "Tx2gene"         "TX2GeneID"      
 ##  [7] "G2MScore"        "WorfdbHTMLRemap" "MazdaRX4"       
@@ -704,16 +704,16 @@
 <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(x)</code></pre>
 <pre><code>##        Item.A        Item.B 
 ## "hello world" "HELLO WORLD"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">camel</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-camel.html">camel</a></span>(x)</code></pre>
 <pre><code>##        itemA        itemB 
 ## "helloWorld" "helloWORLD"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">dotted</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-dotted.html">dotted</a></span>(x)</code></pre>
 <pre><code>##        Item.A        Item.B 
 ## "hello.world" "HELLO.WORLD"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">snake</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-snake.html">snake</a></span>(x)</code></pre>
 <pre><code>##        item_a        item_b 
 ## "hello_world" "hello_world"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">upperCamel</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-upperCamel.html">upperCamel</a></span>(x)</code></pre>
 <pre><code>##        ItemA        ItemB 
 ## "HelloWorld" "HELLOWORLD"</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/pkg/syntactic/man/makeNames.html">makeNames</a></span>(x)</code></pre>
@@ -727,19 +727,19 @@
 <pre><code>## sample 1 sample 2 sample 3 sample 4 
 ##  group 1  group 1  group 2  group 2 
 ## Levels: group 1 group 2</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">camel</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-camel.html">camel</a></span>(x)</code></pre>
 <pre><code>## sample1 sample2 sample3 sample4 
 ##  group1  group1  group2  group2 
 ## Levels: group1 group2</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">dotted</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-dotted.html">dotted</a></span>(x)</code></pre>
 <pre><code>## sample.1 sample.2 sample.3 sample.4 
 ##  group.1  group.1  group.2  group.2 
 ## Levels: group.1 group.2</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">snake</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-snake.html">snake</a></span>(x)</code></pre>
 <pre><code>## sample_1 sample_2 sample_3 sample_4 
 ##  group_1  group_1  group_2  group_2 
 ## Levels: group_1 group_2</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">upperCamel</a></span>(x)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-upperCamel.html">upperCamel</a></span>(x)</code></pre>
 <pre><code>## Sample1 Sample2 Sample3 Sample4 
 ##  Group1  Group1  Group2  Group2 
 ## Levels: Group1 Group2</code></pre>
@@ -769,7 +769,7 @@
 ## 
 ## [[2]]
 ## [1] "Murder"   "Assault"  "UrbanPop" "Rape"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">camel</a></span>(x, <span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="ot">TRUE</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-camel.html">camel</a></span>(x, <span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="ot">TRUE</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span>()</code></pre>
 <pre><code>## [[1]]
 ##  [1] "alabama"       "alaska"        "arizona"       "arkansas"     
 ##  [5] "california"    "colorado"      "connecticut"   "delaware"     
@@ -787,7 +787,7 @@
 ## 
 ## [[2]]
 ## [1] "murder"   "assault"  "urbanPop" "rape"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">dotted</a></span>(x, <span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="ot">TRUE</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-dotted.html">dotted</a></span>(x, <span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="ot">TRUE</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span>()</code></pre>
 <pre><code>## [[1]]
 ##  [1] "Alabama"        "Alaska"         "Arizona"        "Arkansas"      
 ##  [5] "California"     "Colorado"       "Connecticut"    "Delaware"      
@@ -805,7 +805,7 @@
 ## 
 ## [[2]]
 ## [1] "Murder"    "Assault"   "Urban.Pop" "Rape"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">snake</a></span>(x, <span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="ot">TRUE</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-snake.html">snake</a></span>(x, <span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="ot">TRUE</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span>()</code></pre>
 <pre><code>## [[1]]
 ##  [1] "alabama"        "alaska"         "arizona"        "arkansas"      
 ##  [5] "california"     "colorado"       "connecticut"    "delaware"      
@@ -823,7 +823,7 @@
 ## 
 ## [[2]]
 ## [1] "murder"    "assault"   "urban_pop" "rape"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">upperCamel</a></span>(x, <span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="ot">TRUE</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-upperCamel.html">upperCamel</a></span>(x, <span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="ot">TRUE</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span>()</code></pre>
 <pre><code>## [[1]]
 ##  [1] "Alabama"       "Alaska"        "Arizona"       "Arkansas"     
 ##  [5] "California"    "Colorado"      "Connecticut"   "Delaware"     
@@ -852,13 +852,13 @@
 ## 
 ## $Item.B
 ## [1] 3 4</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">camel</a></span>(x) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-camel.html">camel</a></span>(x) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>()</code></pre>
 <pre><code>## [1] "itemA" "itemB"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">dotted</a></span>(x) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-dotted.html">dotted</a></span>(x) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>()</code></pre>
 <pre><code>## [1] "Item.A" "Item.B"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">snake</a></span>(x) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-snake.html">snake</a></span>(x) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>()</code></pre>
 <pre><code>## [1] "item_a" "item_b"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4.html">upperCamel</a></span>(x) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/reexports-S4-upperCamel.html">upperCamel</a></span>(x) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>()</code></pre>
 <pre><code>## [1] "ItemA" "ItemB"</code></pre>
 </div>
 </div>
@@ -905,7 +905,7 @@
 ## [17] bit_1.1-14                    curl_3.3                     
 ## [19] compiler_3.6.0                cli_1.1.0                    
 ## [21] xml2_1.2.0                    desc_1.2.0                   
-## [23] rtracklayer_1.44.0            bookdown_0.10                
+## [23] rtracklayer_1.44.0            bookdown_0.11                
 ## [25] readr_1.3.1                   rappdirs_0.3.1               
 ## [27] pkgdown_1.3.0.9100            commonmark_1.7               
 ## [29] stringr_1.4.0                 digest_0.6.19                
@@ -927,7 +927,7 @@
 ## [61] blob_1.1.1                    transformer_0.1.11           
 ## [63] promises_1.0.1                crayon_1.3.4                 
 ## [65] lattice_0.20-38               Biostrings_2.52.0            
-## [67] bioverbs_0.1.19               GenomicFeatures_1.36.0       
+## [67] bioverbs_0.1.19               GenomicFeatures_1.36.1       
 ## [69] hms_0.4.2                     knitr_1.23                   
 ## [71] pillar_1.4.1                  reshape2_1.4.3               
 ## [73] biomaRt_2.40.0                XML_3.98-1.19                
