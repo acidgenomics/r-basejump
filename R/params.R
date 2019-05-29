@@ -3,20 +3,13 @@
 #' @name params
 #' @keywords internal
 #'
-#' @param object,x Object.
-#' @param value Value to assign.
-#' @param ... Additional arguments.
+#' @param BPPARAM `bpparamClass`.
+#'   BiocParallel parameter to specify the desired processor configuration.\cr
+#'   We recommend using one of the following:
 #'
-#' @param i
-#'   Indices specifying elements to extract or replace. Indices are `numeric` or
-#'   `character` vectors, empty (`missing`), or `NULL`.
-#'
-#'   For more information:
-#'
-#'   ```
-#'   help(topic = "Extract", package = "base")
-#'   ```
-#'
+#'   - [bpparam][BiocParallel::bpparam].
+#'   - [SerialParam][BiocParallel::SerialParam].
+#'   - [MulticoreParam][BiocParallel::MulticoreParam].
 #' @param assay `vector(1)`.
 #'   Name or index of count matrix slotted in
 #'   [`assays()`][SummarizedExperiment::assays]. When passing in a string, the
@@ -57,6 +50,15 @@
 #'   IDs (e.g. `"hg38"`).
 #' @param headerLevel `integer(1)` (`1`-`7`).
 #'   Markdown header level.
+#' @param i
+#'   Indices specifying elements to extract or replace. Indices are `numeric` or
+#'   `character` vectors, empty (`missing`), or `NULL`.
+#'
+#'   For more information:
+#'
+#'   ```
+#'   help(topic = "Extract", package = "base")
+#'   ```
 #' @param inherits `logical(1)`.
 #'   Should the enclosing frames of the `environment` be searched?
 #' @param interestingGroups `character`.
@@ -68,6 +70,7 @@
 #'   Number to include.
 #' @param ntop `integer(1)`.
 #'   Number of top genes to label.
+#' @param object Object.
 #' @param organism `character(1)`.
 #'   Full Latin organism name (e.g. "`Homo sapiens`").
 #' @param progress `logical(1)`.
@@ -85,6 +88,9 @@
 #'   Transcript-to-gene mappings.
 #' @param url `character(1)`.
 #'   Uniform Resource Locator (URL). HTTP or FTP address.
+#' @param value Value to assign.
+#' @param x Object.
+#' @param ... Additional arguments.
 #'
 #' @param assays `list`.
 #'   Count matrices, which must have matching dimensions. Counts can be passed
@@ -117,14 +123,6 @@
 #'   Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
 #'   are also supported. Check the documentation for conventions and required
 #'   columns.
-#'
-#' @param BPPARAM `bpparamClass`.
-#'   BiocParallel parameter to specify the desired processor configuration.\cr
-#'   We recommend using one of the following:
-#'
-#'   - [bpparam][BiocParallel::bpparam].
-#'   - [SerialParam][BiocParallel::SerialParam].
-#'   - [MulticoreParam][BiocParallel::MulticoreParam].
 #'
 #' @return No value.
 NULL

@@ -7,9 +7,14 @@ NULL
 
 
 
-#' @importFrom transformer coerceS4ToList
+#' @rdname reexports-S4
+#' @name as.data.frame
+#' @importFrom transformer as.data.frame
+#' @param row.names,optional
+#'   Refer to base [`as.data.frame()`][base::as.data.frame] for details.
+#' @usage as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 #' @export
-transformer::coerceS4ToList
+NULL
 
 #' @rdname reexports-S4
 #' @name flatFiles
@@ -20,12 +25,29 @@ NULL
 
 
 
-
-# coerce-DataFrame.R ===========================================================
 #' @importFrom transformer as.DataFrame
 #' @export
 transformer::as.DataFrame
 
+#' @importFrom transformer as.SummarizedExperiment
+#' @export
+transformer::as.SummarizedExperiment
+
+#' @importFrom transformer as.data.table
+#' @export
+transformer::as.data.table
+
+#' @importFrom transformer as_tibble
+#' @export
+transformer::as_tibble
+
+#' @importFrom transformer coerceS4ToList
+#' @export
+transformer::coerceS4ToList
+
+
+
+# coerce-DataFrame.R ===========================================================
 setAs(
     from = "sparseMatrix",
     to = "DataFrame",
@@ -54,24 +76,7 @@ setAs(
 
 
 
-# coerce-SummarizedExperiment.R ================================================
-#' @importFrom transformer as.SummarizedExperiment
-#' @export
-transformer::as.SummarizedExperiment
-
-
-
-
 # coerce-data.frame.R ==========================================================
-#' @rdname reexports-S4
-#' @name as.data.frame
-#' @importFrom transformer as.data.frame
-#' @param row.names,optional
-#'   Refer to base [`as.data.frame()`][base::as.data.frame] for details.
-#' @usage as.data.frame(x, row.names = NULL, optional = FALSE, ...)
-#' @export
-NULL
-
 setAs(
     from = "sparseMatrix",
     to = "data.frame",
@@ -88,10 +93,6 @@ setAs(
 
 
 # coerce-data.table.R ==========================================================
-#' @importFrom transformer as.data.table
-#' @export
-transformer::as.data.table
-
 setAs(
     from = "data.frame",
     to = "data.table",
@@ -134,10 +135,6 @@ setAs(
 
 
 # coerce-tbl_df.R ==============================================================
-#' @importFrom transformer as_tibble
-#' @export
-transformer::as_tibble
-
 setAs(
     from = "data.frame",
     to = "tbl_df",

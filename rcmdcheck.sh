@@ -15,7 +15,7 @@ export TZ="America/New_York"
 
 # Get the package version and define the `R CMD build` tarball output.
 PKG_NAME="$(basename "$PWD")"
-PKG_VERSION="$(grep -E "^Version:\s[.0-9a-z]+$" DESCRIPTION | sed "s/^Version:\s//")"
+PKG_VERSION="$(grep -E "^Version:\s[.0-9a-z]+$" DESCRIPTION | sed "s/^Version:[[:space:]]//")"
 PKG_TARBALL="${PKG_NAME}_${PKG_VERSION}.tar.gz"
 
 echo "Session information"

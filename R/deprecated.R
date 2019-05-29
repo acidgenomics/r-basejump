@@ -73,7 +73,7 @@ ensembl2entrez <- function(...) {
 #' @rdname deprecated
 #' @export
 fixNA <- function(...) {
-    .Deprecated("sanitizeNA")
+    # .Deprecated("sanitizeNA")  # nolint
     sanitizeNA(...)
 }
 
@@ -172,7 +172,7 @@ panther <- function(...) {
 #' @rdname deprecated
 #' @export
 readFileByExtension <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")  # nolint
     import(...)
 }
 
@@ -200,7 +200,7 @@ readJSON <- function(...) {
 #' @rdname deprecated
 #' @export
 readYAML <- function(...) {
-    .Deprecated("import")
+    # .Deprecated("import")  # nolint
     import(...)
 }
 
@@ -439,6 +439,42 @@ assertIsTx2gene <- function(x) {
 #' @importFrom bioverbs plotGene
 #' @export
 bioverbs::plotGene
+
+
+
+# v0.10.9 ======================================================================
+#' @rdname defunct
+#' @export
+assertHasRownames <- function(...) {
+    .Defunct(msg = paste(
+        "'assertHasRownames' is defunct.",
+        "Use 'assert(hasRownames())' in goalie package instead.",
+        "See help(\"Defunct\")",
+        sep = "\n"
+    ))
+}
+
+#' @rdname deprecated
+#' @export
+theme_midnight <- function(...) {
+    .Deprecated("acidplots::acid_theme_dark")
+    requireNamespace("acidplots", quietly = TRUE)
+    acidplots::acid_theme_dark(...)
+}
+
+#' @rdname deprecated
+#' @export
+theme_paperwhite <- function(...) {
+    .Deprecated("acidplots::acid_theme_light")
+    requireNamespace("acidplots", quietly = TRUE)
+    acidplots::acid_theme_light(...)
+}
+
+#' @rdname defunct
+#' @export
+tx2geneFromGFF <- function(...) {
+    .Defunct("makeTx2GeneFromGFF")
+}
 
 
 

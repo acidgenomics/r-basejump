@@ -1,8 +1,8 @@
 Package: basejump
-Title: Base functions for bioinformatics
+Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.10.8
-Date: 2019-05-05
+Version: 0.10.9
+Date: 2019-05-13
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -35,26 +35,49 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    bioverbs (>= 0.1.18), brio (>= 0.2.0), freerange (>= 0.1.6),
-        goalie (>= 0.2.16), syntactic (>= 0.1.9), transformer (>= 0.1.11),
-    Biobase, BiocGenerics, GenomeInfoDb, GenomicRanges, IRanges, S4Vectors,
-        SingleCellExperiment, SummarizedExperiment,
-    Matrix (>= 1.2), Matrix.utils (>= 0.9), dplyr (>= 0.8), knitr (>= 1.22),
-        magrittr (>= 1.5), matrixStats (>= 0.54), purrr (>= 0.3),
-        reshape2 (>= 1.4), readr (>= 1.3), rlang (>= 0.3), sessioninfo (>= 1.1),
-        stringr (>= 1.4), tibble (>= 2.1), tidyr (>= 0.8), tidyselect (>= 0.2),
-    methods, utils
+    bioverbs (>= 0.1.19),
+    brio (>= 0.2.1),
+    freerange (>= 0.1.6),
+    goalie (>= 0.2.16),
+    syntactic (>= 0.1.9),
+    transformer (>= 0.1.11),
+    Biobase,
+    BiocGenerics,
+    GenomeInfoDb,
+    GenomicRanges,
+    IRanges,
+    S4Vectors,
+    SingleCellExperiment,
+    SummarizedExperiment,
+    Matrix (>= 1.2),
+    Matrix.utils (>= 0.9),
+    dplyr (>= 0.8),
+    knitr (>= 1.22),
+    magrittr (>= 1.5),
+    matrixStats (>= 0.54),
+    purrr (>= 0.3),
+    reshape2 (>= 1.4),
+    readr (>= 1.3),
+    rlang (>= 0.3),
+    sessioninfo (>= 1.1),
+    stringr (>= 1.4),
+    tibble (>= 2.1),
+    tidyr (>= 0.8),
+    tidyselect (>= 0.2),
+    methods,
+    utils
 Suggests:
     BiocStyle,
     EnsDb.Hsapiens.v75,
-    acidtest (>= 0.1.1),
+    acidplots,
+    acidtest,
     datasets,
     patrick,
     rmarkdown,
     testthat,
     viridis
 Enhances:
-    pbapply (>= 1.4)
+    pbapply
 Remotes:
     acidgenomics/acidtest,
     acidgenomics/bioverbs,
@@ -63,7 +86,10 @@ Remotes:
     acidgenomics/goalie,
     acidgenomics/syntactic,
     acidgenomics/transformer
-biocViews: DataImport, GenomeAnnotation, Visualization
+biocViews:
+    DataImport,
+    GenomeAnnotation,
+    Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
@@ -129,6 +155,7 @@ Collate:
     'params.R'
     'prepareTemplate.R'
     'rankedMatrix.R'
+    'reexports-S4.R'
     'reexports-bioverbs.R'
     'reexports-brio.R'
     'reexports-freerange.R'

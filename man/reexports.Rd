@@ -61,11 +61,11 @@
 \alias{hasRownames}
 \alias{makeDimnames}
 \alias{makeNames}
-\alias{coerceS4ToList}
 \alias{as.DataFrame}
 \alias{as.SummarizedExperiment}
 \alias{as.data.table}
 \alias{as_tibble}
+\alias{coerceS4ToList}
 \alias{\%<>\%}
 \alias{\%$\%}
 \alias{\%>\%}
@@ -95,6 +95,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{as.DataFrame}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}}
+  \item{transformer}{\code{\link[transformer]{as.DataFrame}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{coerceS4ToList}}}
 }}
 
