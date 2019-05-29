@@ -1,17 +1,9 @@
-#' @importFrom brio assignAndSaveData
-#' @export
-brio::assignAndSaveData
-
 #' @rdname reexports-S4
 #' @name atomize
 #' @importFrom brio atomize
 #' @usage atomize(object, ...)
 #' @export
 NULL
-
-#' @importFrom brio basenameSansExt
-#' @export
-brio::basenameSansExt
 
 #' @rdname reexports-S4
 #' @name decode
@@ -20,10 +12,6 @@ brio::basenameSansExt
 #' @export
 NULL
 
-#' @importFrom brio dots
-#' @export
-brio::dots
-
 #' @rdname reexports-S4
 #' @name encode
 #' @importFrom brio encode
@@ -31,16 +19,14 @@ brio::dots
 #' @export
 NULL
 
+# Note switch from "x" to "object" here in v0.10.9.
+
 #' @rdname reexports-S4
 #' @name export
 #' @importFrom brio export
-#' @usage export(x, ...)
+#' @usage export(object, ...)
 #' @export
 NULL
-
-#' @importFrom brio extPattern
-#' @export
-brio::extPattern
 
 #' @rdname reexports-S4
 #' @name factorize
@@ -48,6 +34,45 @@ brio::extPattern
 #' @usage factorize(object, ...)
 #' @export
 NULL
+
+#' @rdname reexports-S4
+#' @name removeNA
+#' @importFrom brio removeNA
+#' @usage removeNA(object, ...)
+#' @export
+NULL
+
+#' @rdname reexports-S4
+#' @name sanitizeNA
+#' @importFrom brio sanitizeNA
+#' @usage sanitizeNA(object, ...)
+#' @export
+NULL
+
+#' @rdname reexports-S4
+#' @name sanitizePercent
+#' @importFrom brio sanitizePercent
+#' @usage sanitizePercent(object, ...)
+#' @export
+NULL
+
+
+
+#' @importFrom brio assignAndSaveData
+#' @export
+brio::assignAndSaveData
+
+#' @importFrom brio basenameSansExt
+#' @export
+brio::basenameSansExt
+
+#' @importFrom brio dots
+#' @export
+brio::dots
+
+#' @importFrom brio extPattern
+#' @export
+brio::extPattern
 
 #' @importFrom brio fileExt
 #' @export
@@ -97,30 +122,9 @@ brio::rdataLoadError
 #' @export
 brio::realpath
 
-#' @rdname reexports-S4
-#' @name removeNA
-#' @importFrom brio removeNA
-#' @usage removeNA(object, ...)
-#' @export
-NULL
-
 #' @importFrom brio saveData
 #' @export
 brio::saveData
-
-#' @rdname reexports-S4
-#' @name sanitizeNA
-#' @importFrom brio sanitizeNA
-#' @usage sanitizeNA(object, ...)
-#' @export
-NULL
-
-#' @rdname reexports-S4
-#' @name sanitizePercent
-#' @importFrom brio sanitizePercent
-#' @usage sanitizePercent(object, ...)
-#' @export
-NULL
 
 #' @importFrom brio transmit
 #' @export
