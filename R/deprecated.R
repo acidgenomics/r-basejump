@@ -443,6 +443,17 @@ bioverbs::plotGene
 
 
 # v0.10.9 ======================================================================
+#' @rdname defunct
+#' @export
+assertHasRownames <- function(...) {
+    .Defunct(msg = paste(
+        "'assertHasRownames' is defunct.",
+        "Use 'assert(hasRownames())' in goalie package instead.",
+        "See help(\"Defunct\")",
+        sep = "\n"
+    ))
+}
+
 #' @rdname deprecated
 #' @export
 theme_midnight <- function(...) {
@@ -457,6 +468,12 @@ theme_paperwhite <- function(...) {
     .Deprecated("acidplots::acid_theme_light")
     requireNamespace("acidplots", quietly = TRUE)
     acidplots::acid_theme_light(...)
+}
+
+#' @rdname defunct
+#' @export
+tx2geneFromGFF <- function(...) {
+    .Defunct("makeTx2GeneFromGFF")
 }
 
 
