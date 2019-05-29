@@ -1,4 +1,4 @@
-## basejump 0.10.9 (2019-05-13)
+## basejump 0.10.9 (2019-05-29)
 
 ### Minor changes
 
@@ -7,6 +7,7 @@
   `readYAML`, `fixNA`.
 - Now ensuring `theme_midnight` and `theme_paperwhite` are deprecated but
   exported with support, by suggesting acidplots package.
+- Added back defunct function warnings: `assertHasRownames`, `tx2geneFromGFF`.
 
 
 
