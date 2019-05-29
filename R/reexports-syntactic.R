@@ -26,14 +26,6 @@ NULL
 #' @export
 NULL
 
-#' @importFrom syntactic makeDimnames
-#' @export
-syntactic::makeDimnames
-
-#' @importFrom syntactic makeNames
-#' @export
-syntactic::makeNames
-
 #' @rdname reexports-S4
 #' @name snake
 #' @importFrom syntactic snake
@@ -47,3 +39,13 @@ NULL
 #' @usage upperCamel(object, ...)
 #' @export
 NULL
+
+
+
+#' @importFrom syntactic makeDimnames
+#' @export
+syntactic::makeDimnames
+
+#' @importFrom syntactic makeNames
+#' @export
+syntactic::makeNames
