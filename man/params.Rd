@@ -4,16 +4,13 @@
 \alias{params}
 \title{Parameters}
 \arguments{
-\item{object, x}{Object.}
-
-\item{value}{Value to assign.}
-
-\item{...}{Additional arguments.}
-
-\item{i}{Indices specifying elements to extract or replace. Indices are \code{numeric} or
-\code{character} vectors, empty (\code{missing}), or \code{NULL}.
-
-For more information:\preformatted{help(topic = "Extract", package = "base")
+\item{BPPARAM}{\code{bpparamClass}.
+BiocParallel parameter to specify the desired processor configuration.\cr
+We recommend using one of the following:
+\itemize{
+\item \link[BiocParallel:bpparam]{bpparam}.
+\item \link[BiocParallel:SerialParam]{SerialParam}.
+\item \link[BiocParallel:MulticoreParam]{MulticoreParam}.
 }}
 
 \item{assay}{\code{vector(1)}.
@@ -68,6 +65,12 @@ IDs (e.g. \code{"hg38"}).}
 \item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}).
 Markdown header level.}
 
+\item{i}{Indices specifying elements to extract or replace. Indices are \code{numeric} or
+\code{character} vectors, empty (\code{missing}), or \code{NULL}.
+
+For more information:\preformatted{help(topic = "Extract", package = "base")
+}}
+
 \item{inherits}{\code{logical(1)}.
 Should the enclosing frames of the \code{environment} be searched?}
 
@@ -83,6 +86,8 @@ Number to include.}
 
 \item{ntop}{\code{integer(1)}.
 Number of top genes to label.}
+
+\item{object}{Object.}
 
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. "\code{Homo sapiens}").}
@@ -108,6 +113,12 @@ Transcript-to-gene mappings.}
 
 \item{url}{\code{character(1)}.
 Uniform Resource Locator (URL). HTTP or FTP address.}
+
+\item{value}{Value to assign.}
+
+\item{x}{Object.}
+
+\item{...}{Additional arguments.}
 
 \item{assays}{\code{list}.
 Count matrices, which must have matching dimensions. Counts can be passed
@@ -149,15 +160,6 @@ Apply prefiltering to remove zero count genes.}
 Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
 are also supported. Check the documentation for conventions and required
 columns.}
-
-\item{BPPARAM}{\code{bpparamClass}.
-BiocParallel parameter to specify the desired processor configuration.\cr
-We recommend using one of the following:
-\itemize{
-\item \link[BiocParallel:bpparam]{bpparam}.
-\item \link[BiocParallel:SerialParam]{SerialParam}.
-\item \link[BiocParallel:MulticoreParam]{MulticoreParam}.
-}}
 }
 \value{
 No value.
