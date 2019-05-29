@@ -24,6 +24,8 @@
 \alias{panther}
 \alias{setArgsToDoCall}
 \alias{tx2gene}
+\alias{assertHasRownames}
+\alias{tx2geneFromGFF}
 \title{Defunct functions}
 \usage{
 aggregateFeatures(...)
@@ -69,6 +71,10 @@ panther(...)
 setArgsToDoCall(...)
 
 tx2gene(...)
+
+assertHasRownames(...)
+
+tx2geneFromGFF(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
