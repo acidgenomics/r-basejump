@@ -62,7 +62,9 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 \arguments{
 \item{row.names, optional}{Refer to base \code{\link[base:as.data.frame]{as.data.frame()}} for details.}
 
-\item{object, x}{Object.}
+\item{object}{Object.}
+
+\item{x}{Object.}
 
 \item{...}{Additional arguments.}
 }

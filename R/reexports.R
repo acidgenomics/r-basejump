@@ -4,7 +4,8 @@
 #'
 #' @name reexports-S4
 #'
-#' @param object,x Object.
+#' @param object Object.
+#' @param x Object.
 #' @param ... Additional arguments.
 NULL
 
