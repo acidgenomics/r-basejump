@@ -84,6 +84,7 @@ combine.SummarizedExperiment <-  # nolint
 
         assert(
             identical(class(x), class(y)),
+            identical(assayNames(x), assayNames(y)),
             # Require that there are no duplicate samples.
             areDisjointSets(colnames(x), colnames(y)),
             # Currently we're being strict and requiring that the rows
@@ -102,11 +103,19 @@ combine.SummarizedExperiment <-  # nolint
         x <- as(object = x, Class = Class)
         y <- as(object = y, Class = Class)
 
-        # Counts ---------------------------------------------------------------
-        message("Binding counts.")
-        # Check that count matrices are identical format, then combine.
-        assert(identical(class(counts(x)), class(counts(y))))
-        counts <- cbind(counts(x), counts(y))
+        # Assays ---------------------------------------------------------------
+        message(paste(
+            "Binding columns in assays:",
+            printString(assayNames(x)),
+            sep = "\n"
+        ))
+        assays <- mapply(
+            x = assays(x),
+            y = assays(y),
+            FUN = cbind,
+            SIMPLIFY = FALSE,
+            USE.NAMES = TRUE
+        )
 
         # Row data -------------------------------------------------------------
         message("Checking row data.")
@@ -154,13 +163,13 @@ combine.SummarizedExperiment <-  # nolint
             x = colnames(colData(x)),
             y = colnames(colData(y))
         ))
-        cols <- intersect(
+        keep <- sort(intersect(
             x = colnames(colData(x)),
             y = colnames(colData(y))
-        )
+        ))
         colData <- rbind(
-            colData(x)[, cols, drop = FALSE],
-            colData(y)[, cols, drop = FALSE]
+            colData(x)[, keep, drop = FALSE],
+            colData(y)[, keep, drop = FALSE]
         )
 
         # Metadata -------------------------------------------------------------
@@ -205,7 +214,7 @@ combine.SummarizedExperiment <-  # nolint
 
         # Return ---------------------------------------------------------------
         args <- list(
-            assays = list(counts = counts),
+            assays = assays,
             rowRanges = rowRanges,
             rowData = rowData,
             colData = colData,
