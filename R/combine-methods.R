@@ -79,9 +79,17 @@ NULL
 
 combine.SummarizedExperiment <-  # nolint
     function(x, y) {
-        assert(identical(class(x), class(y)))
         validObject(x)
         validObject(y)
+
+        assert(
+            identical(class(x), class(y)),
+            # Require that there are no duplicate samples.
+            areDisjointSets(colnames(x), colnames(y)),
+            # Currently we're being strict and requiring that the rows
+            # (features) are identical, otherwise zero counts may be misleading.
+            identical(rownames(x), rownames(y))
+        )
 
         # Coerce the objects to SummarizedExperiment.
         # Keep as RSE if the data is ranged.
@@ -93,15 +101,6 @@ combine.SummarizedExperiment <-  # nolint
         message(paste0("Combining objects into ", Class, "."))
         x <- as(object = x, Class = Class)
         y <- as(object = y, Class = Class)
-
-        assert(
-            # Require that there are no duplicate samples.
-            areDisjointSets(colnames(x), colnames(y)),
-            # Currently we're being strict and requiring that the rows
-            # (features) are identical, otherwise zero counts may be misleading.
-            identical(rownames(x), rownames(y)),
-            identical(names(metadata(x)), names(metadata(y)))
-        )
 
         # Counts ---------------------------------------------------------------
         message("Binding counts.")
@@ -166,14 +165,30 @@ combine.SummarizedExperiment <-  # nolint
 
         # Metadata -------------------------------------------------------------
         message("Updating metadata.")
+        mx <- metadata(x)
+        my <- metadata(y)
+
+        # We're keeping only metadata elements that are common in both objects.
+        keep <- intersect(names(mx), names(my))
+        if (!isTRUE(setequal(x = names(mx), y = names(my)))) {
+            drop <- setdiff(x = union(names(mx), names(my)), y = keep)
+            message(paste0(
+                "Dropping ", length(drop),
+                " disjoint metadata elements:\n",
+                printString(drop)
+            ))
+        }
+        mx <- mx[keep]
+        my <- my[keep]
+
+        # Keep only metadata that is identical across both objects.
         keep <- mapply(
-            x = metadata(x),
-            y = metadata(y),
+            x = mx,
+            y = my,
             FUN = identical,
             SIMPLIFY = TRUE,
             USE.NAMES = TRUE
         )
-        # Inform the user about metadata values that will be dropped.
         drop <- names(keep)[!keep]
         if (hasLength(drop)) {
             message(paste0(
@@ -182,11 +197,9 @@ combine.SummarizedExperiment <-  # nolint
                 printString(drop)
             ))
         }
-        assert(identical(
-            x = metadata(x)[keep],
-            y = metadata(y)[keep]
-        ))
-        metadata <- metadata(x)[keep]
+        assert(identical(x = mx[keep], y = my[keep]))
+
+        metadata <- mx[keep]
         metadata[["combine"]] <- TRUE
         metadata <- Filter(Negate(is.null), metadata)
 
