@@ -1,3 +1,28 @@
+## basejump 0.10.10 (2019-06-08)
+
+### New functions
+
+- `matchEnsemblReleaseToURL`: Takes an Ensembl release version (e.g. `96`) as
+  input and returns the corresponding archive URL.
+- `matchHumanOrthologs`: Convenience function that wraps biomaRt package to
+  map model system gene identifiers to HGNC IDs and symbols. This is
+  particularly useful for running orthologus GSEA with our pfgsea package.
+
+### Major changes
+
+- `combine` method for `SummarizedExperiment` now includes all matrices defined
+  in `assays` slot. Also improved support for `colData` handling on subsets
+  where `NA` values have been removed.
+
+### Minor changes
+
+- `Gene2Symbol`: Modified `format` formal to use "unmodified" instead of "long",
+  which is more intuitive.
+- `makeGene2Symbol`: Added support for `format` argument, similar to
+  `Gene2Symbol` generator function.
+
+
+
 ## basejump 0.10.9 (2019-05-29)
 
 ### Minor changes
