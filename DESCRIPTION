@@ -71,6 +71,7 @@ Suggests:
     EnsDb.Hsapiens.v75,
     acidplots,
     acidtest,
+    biomaRt,
     datasets,
     patrick,
     rmarkdown,
@@ -141,6 +142,8 @@ Collate:
     'markdownList.R'
     'markdownPlots.R'
     'markdownTables.R'
+    'matchEnsemblReleaseToURL.R'
+    'matchHumanOrthologs.R'
     'matchInterestingGroups.R'
     'matchesGene2Symbol.R'
     'matchesInterestingGroups.R'
