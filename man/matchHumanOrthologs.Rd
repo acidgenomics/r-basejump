@@ -23,5 +23,5 @@ genes <- c(
     "ENSMUSG00000000028", "ENSMUSG00000000031",
     "ENSMUSG00000000037", "ENSMUSG00000000049"
 )
-matchHumanOrthologs(genes)
+matchHumanOrthologs(genes, ensemblRelease = 87L)
 }
