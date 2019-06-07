@@ -36,7 +36,7 @@ Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
     bioverbs (>= 0.1.19),
-    brio (>= 0.2.1),
+    brio (>= 0.2.2),
     freerange (>= 0.1.8),
     goalie (>= 0.2.16),
     syntactic (>= 0.1.9),
