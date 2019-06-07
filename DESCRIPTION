@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.10.10
-Date: 2019-05-30
+Date: 2019-06-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -37,7 +37,7 @@ Depends: R (>= 3.5)
 Imports:
     bioverbs (>= 0.1.19),
     brio (>= 0.2.1),
-    freerange (>= 0.1.6),
+    freerange (>= 0.1.8),
     goalie (>= 0.2.16),
     syntactic (>= 0.1.9),
     transformer (>= 0.1.11),
