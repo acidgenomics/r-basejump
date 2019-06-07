@@ -16,8 +16,8 @@ with_parameters_test_that(
     nrow = c(
         caenorhabditis_elegans = 15010L,
         drosophila_melanogaster = 10610L,
-        homo_sapiens = 19754L,
-        mus_musculus = 21111L
+        homo_sapiens = 19730L,
+        mus_musculus = 21112L
     )
 )
 
@@ -31,8 +31,8 @@ with_parameters_test_that(
     nrow = c(
         caenorhabditis_elegans = 14127L,
         drosophila_melanogaster = 10030L,
-        homo_sapiens = 19560L,
-        mus_musculus = 20906L
+        homo_sapiens = 19537L,
+        mus_musculus = 20908L
     )
 )
 
@@ -46,7 +46,7 @@ with_parameters_test_that(
     nrow = c(
         caenorhabditis_elegans = 13494L,
         drosophila_melanogaster = 10087L,
-        homo_sapiens = 18600L,
+        homo_sapiens = 18577L,
         mus_musculus = 19860L
     )
 )
@@ -61,7 +61,7 @@ with_parameters_test_that(
     nrow = c(
         caenorhabditis_elegans = 13806L,
         drosophila_melanogaster = 10349L,
-        homo_sapiens = 19671L,
+        homo_sapiens = 19648L,
         mus_musculus = 20967L
     )
 )
@@ -76,7 +76,7 @@ with_parameters_test_that(
     nrow = c(
         caenorhabditis_elegans = 14298L,
         drosophila_melanogaster = 10547L,
-        homo_sapiens = 19769L,
+        homo_sapiens = 19746L,
         mus_musculus = 21113L
     )
 )
