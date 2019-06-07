@@ -9,7 +9,7 @@
 #'     "ENSMUSG00000000028", "ENSMUSG00000000031",
 #'     "ENSMUSG00000000037", "ENSMUSG00000000049"
 #' )
-#' matchHumanOrthologs(genes)
+#' matchHumanOrthologs(genes, ensemblRelease = 87L)
 # Last modified 2019-06-07.
 matchHumanOrthologs <- function(
     genes,
@@ -54,7 +54,7 @@ matchHumanOrthologs <- function(
         match("ENSEMBL_MART_ENSEMBL", marts[["biomart"]])
     ]
     message(paste0(
-        "Matching orthologs against ", version,
+        "Matching orthologs against ", version, " (", host, ")",
         " with biomaRt ", packageVersion("biomaRt"), "."
     ))
 
