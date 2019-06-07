@@ -23,6 +23,7 @@ Rscript -e "utils::sessionInfo()"
 Rscript -e "sessioninfo::session_info()"
 
 echo "R CMD check"
+export _R_CHECK_FORCE_SUGGESTS_=false
 # Set `--as-cran` flag for extra verbose incoming package checks.
 R CMD build . --no-build-vignettes --no-manual
 R CMD check "$PKG_TARBALL" --ignore-vignettes --no-manual --timings
