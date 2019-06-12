@@ -5,7 +5,9 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeGene2Symbol
+#'
 #' @inheritParams params
+#' @inheritParams Gene2Symbol
 #'
 #' @return `Gene2Symbol`.
 #'
@@ -34,36 +36,54 @@ NULL
 
 #' @rdname makeGene2Symbol
 #' @export
+# Last modified 2019-06-06.
 makeGene2SymbolFromEnsembl <-
-    function() {
+    function(organism) {
+        format <- match.arg(format)
         gr <- do.call(
             what = makeGRangesFromEnsembl,
-            args = matchArgsToDoCall(args = list(level = "genes"))
+            args = matchArgsToDoCall(
+                args = list(level = "genes"),
+                removeFormals = "format"
+            )
         )
-        Gene2Symbol(gr)
+        Gene2Symbol(gr, format = format)
     }
 
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), "level")]
+f[["format"]] <- formals(Gene2Symbol.DataFrame)[["format"]]
 formals(makeGene2SymbolFromEnsembl) <- f
 
 
 
 #' @rdname makeGene2Symbol
 #' @export
-makeGene2SymbolFromEnsDb <- function(object) {
-    gr <- makeGRangesFromEnsDb(object)
-    Gene2Symbol(gr)
-}
+# Last modified 2019-06-06.
+makeGene2SymbolFromEnsDb <-
+    function(object, format) {
+        format <- match.arg(format)
+        gr <- makeGRangesFromEnsDb(object)
+        Gene2Symbol(gr, format = format)
+    }
+
+formals(makeGene2SymbolFromEnsDb)[["format"]] <-
+    formals(makeGene2SymbolFromEnsembl)[["format"]]
 
 
 
 #' @rdname makeGene2Symbol
 #' @export
-makeGene2SymbolFromGFF <- function(file) {
-    gr <- makeGRangesFromGFF(file, level = "genes")
-    Gene2Symbol(gr)
-}
+# Last modified 2019-06-06.
+makeGene2SymbolFromGFF <-
+    function(file, format) {
+        format <- match.arg(format)
+        gr <- makeGRangesFromGFF(file, level = "genes")
+        Gene2Symbol(gr, format = format)
+    }
+
+formals(makeGene2SymbolFromGFF)[["format"]] <-
+    formals(makeGene2SymbolFromEnsembl)[["format"]]
 
 
 

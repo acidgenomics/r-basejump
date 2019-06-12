@@ -9,11 +9,13 @@
 \title{Make a Gene2Symbol object}
 \usage{
 makeGene2SymbolFromEnsembl(organism, genomeBuild = NULL,
-  release = NULL)
+  release = NULL, format = c("makeUnique", "unmodified", "1:1"))
 
-makeGene2SymbolFromEnsDb(object)
+makeGene2SymbolFromEnsDb(object, format = c("makeUnique", "unmodified",
+  "1:1"))
 
-makeGene2SymbolFromGFF(file)
+makeGene2SymbolFromGFF(file, format = c("makeUnique", "unmodified",
+  "1:1"))
 }
 \arguments{
 \item{organism}{\code{character(1)}.
@@ -30,6 +32,18 @@ possible, for improved reproducibility. When left unset, the latest release
 available via AnnotationHub/ensembldb is used. Note that the latest version
 available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.}
+
+\item{format}{\code{character(1)}.
+Formatting method to apply:
+\itemize{
+\item \code{"makeUnique"}: \emph{Recommended.} Apply \code{\link[base:make.unique]{make.unique()}}
+to the \code{geneName} column. Gene symbols are made unique, while the gene
+IDs remain unmodified.
+\item \code{"unmodified"}: Return \code{geneID} and \code{geneName} columns unmodified, in
+long format.
+\item \code{"1:1"}: For gene symbols that map to multiple gene IDs, select only the
+first annotated gene ID.
+}}
 
 \item{object}{Object.}
 

@@ -81,50 +81,44 @@ combine.SummarizedExperiment <-  # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
+
+        assert(
+            identical(class(x), class(y)),
+            identical(assayNames(x), assayNames(y)),
+            # Require that there are no duplicate samples.
+            areDisjointSets(colnames(x), colnames(y)),
+            # Currently we're being strict and requiring that the rows
+            # (features) are identical, otherwise zero counts may be misleading.
+            identical(rownames(x), rownames(y))
+        )
+
         # Coerce the objects to SummarizedExperiment.
         # Keep as RSE if the data is ranged.
-        assert(identical(class(x), class(y)))
         if (is(x, "RangedSummarizedExperiment")) {
             Class <- "RangedSummarizedExperiment"  # nolint
         } else {
             Class <- "SummarizedExperiment"  # nolint
         }
+        message(paste0("Combining objects into ", Class, "."))
         x <- as(object = x, Class = Class)
         y <- as(object = y, Class = Class)
 
-        # Currently we're being strict and requiring that the rows (features)
-        # are identical, otherwise zero counts may be misleading.
-        assert(identical(rownames(x), rownames(y)))
-
-        # Require that there are no duplicate cells.
-        assert(areDisjointSets(colnames(x), colnames(y)))
-
-        # Require specific metadata to be identical, if defined.
-        metadata <- c(
-            "dataVersions",
-            "gffFile",
-            "interestingGroups",
-            "level",
-            "organism",
-            "pipeline",
-            "programVersions",
-            "umiType",
-            "version"
+        # Assays ---------------------------------------------------------------
+        message(paste(
+            "Binding columns in assays:",
+            printString(assayNames(x)),
+            sep = "\n"
+        ))
+        assays <- mapply(
+            x = assays(x),
+            y = assays(y),
+            FUN = cbind,
+            SIMPLIFY = FALSE,
+            USE.NAMES = TRUE
         )
-        assert(identical(
-            x = metadata(x)[metadata],
-            y = metadata(y)[metadata]
-        ))
-
-        # Counts ---------------------------------------------------------------
-        # Check that count matrices are identical format, then combine.
-        assert(identical(
-            x = class(counts(x)),
-            y = class(counts(y))
-        ))
-        counts <- cbind(counts(x), counts(y))
 
         # Row data -------------------------------------------------------------
+        message("Checking row data.")
         # Require that the gene annotations are identical.
         if (is(x, "RangedSummarizedExperiment")) {
             assert(identical(rowRanges(x), rowRanges(y)))
@@ -137,27 +131,90 @@ combine.SummarizedExperiment <-  # nolint
         }
 
         # Column data ----------------------------------------------------------
+        message("Updating column data.")
+        cdx <- colData(x)
+        cdy <- colData(y)
+        # Check for column mismatches and restore NA values, if necessary. This
+        # mismatch can occur because our metadata importer will drop columns
+        # with all NA values, which is useful for handling human metadata. This
+        # can create a column mismatch when we're subsetting large sequencing
+        # runs into batches.
+        union <- union(names(cdx), names(cdy))
+        intersect <- intersect(names(cdx), names(cdy))
+        if (!isTRUE(identical(union, intersect))) {
+            setdiff <- setdiff(union, intersect)
+            message(paste0(
+                "Fixing ", length(setdiff),
+                " mismatched columns detected in colData:\n",
+                printString(setdiff)
+            ))
+            diffx <- setdiff(setdiff, names(cdx))
+            for (col in diffx) {
+                cdx[[col]] <- NA
+            }
+            diffy <- setdiff(setdiff, names(cdy))
+            for (col in diffy) {
+                cdy[[col]] <- NA
+            }
+            colData(x) <- cdx
+            colData(y) <- cdy
+        }
         assert(areSetEqual(
             x = colnames(colData(x)),
             y = colnames(colData(y))
         ))
-        cols <- intersect(
+        keep <- sort(intersect(
             x = colnames(colData(x)),
             y = colnames(colData(y))
-        )
+        ))
         colData <- rbind(
-            colData(x)[, cols, drop = FALSE],
-            colData(y)[, cols, drop = FALSE]
+            colData(x)[, keep, drop = FALSE],
+            colData(y)[, keep, drop = FALSE]
         )
 
         # Metadata -------------------------------------------------------------
-        metadata <- metadata(x)[metadata]
+        message("Updating metadata.")
+        mx <- metadata(x)
+        my <- metadata(y)
+
+        # We're keeping only metadata elements that are common in both objects.
+        keep <- intersect(names(mx), names(my))
+        if (!isTRUE(setequal(x = names(mx), y = names(my)))) {
+            drop <- setdiff(x = union(names(mx), names(my)), y = keep)
+            message(paste0(
+                "Dropping ", length(drop),
+                " disjoint metadata elements:\n",
+                printString(drop)
+            ))
+        }
+        mx <- mx[keep]
+        my <- my[keep]
+
+        # Keep only metadata that is identical across both objects.
+        keep <- mapply(
+            x = mx,
+            y = my,
+            FUN = identical,
+            SIMPLIFY = TRUE,
+            USE.NAMES = TRUE
+        )
+        drop <- names(keep)[!keep]
+        if (hasLength(drop)) {
+            message(paste0(
+                "Dropping ", length(drop),
+                " non-identical metadata elements:\n",
+                printString(drop)
+            ))
+        }
+        assert(identical(x = mx[keep], y = my[keep]))
+
+        metadata <- mx[keep]
         metadata[["combine"]] <- TRUE
         metadata <- Filter(Negate(is.null), metadata)
 
-        # Return SingleCellExperiment ------------------------------------------
+        # Return ---------------------------------------------------------------
         args <- list(
-            assays = list(counts = counts),
+            assays = assays,
             rowRanges = rowRanges,
             rowData = rowData,
             colData = colData,
@@ -196,7 +253,7 @@ combine.SingleCellExperiment <-  # nolint
         )
         validObject(rse)
         # Make SCE from RSE.
-        # Note that standard SCE `as` coercion method doesn't return valid.
+        # Note that standard SCE `as()` coercion method doesn't return valid.
         sce <- makeSingleCellExperiment(
             assays = assays(rse),
             rowRanges = rowRanges(rse),

@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.10.9
-Date: 2019-05-13
+Version: 0.10.10
+Date: 2019-06-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -36,8 +36,8 @@ Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
     bioverbs (>= 0.1.19),
-    brio (>= 0.2.1),
-    freerange (>= 0.1.6),
+    brio (>= 0.2.2),
+    freerange (>= 0.1.8),
     goalie (>= 0.2.16),
     syntactic (>= 0.1.9),
     transformer (>= 0.1.11),
@@ -71,6 +71,7 @@ Suggests:
     EnsDb.Hsapiens.v75,
     acidplots,
     acidtest,
+    biomaRt,
     datasets,
     patrick,
     rmarkdown,
@@ -141,6 +142,8 @@ Collate:
     'markdownList.R'
     'markdownPlots.R'
     'markdownTables.R'
+    'matchEnsemblReleaseToURL.R'
+    'matchHumanOrthologs.R'
     'matchInterestingGroups.R'
     'matchesGene2Symbol.R'
     'matchesInterestingGroups.R'

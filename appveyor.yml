@@ -33,6 +33,7 @@ build_script:
   - travis-tool.sh install_bioc GenomeInfoDbData
   - travis-tool.sh install_bioc DelayedArray
   - travis-tool.sh install_bioc ensembldb
+  - travis-tool.sh install_bioc biomaRt
   - travis-tool.sh install_bioc_deps
 
 test_script:

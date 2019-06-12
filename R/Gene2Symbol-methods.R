@@ -1,21 +1,22 @@
 #' @rdname Gene2Symbol-class
 #' @name Gene2Symbol
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param format `character(1)`.
 #'   Formatting method to apply:
 #'
-#'   - `"makeUnique"`: *Recommended.*
-#'       Apply [`make.unique()`][base::make.unique] to the `geneName`
-#'       column. Gene symbols are made unique, while the gene IDs remain
-#'       unmodified.
-#'   - `"1:1"`:
-#'       For gene symbols that map to multiple gene IDs, select only the
-#'       first annotated gene ID.
-#'   - `"long"`:
-#'       Return `geneID` and `geneName` columns unmodified in long format.
+#'   - `"makeUnique"`: *Recommended.* Apply [`make.unique()`][base::make.unique]
+#'     to the `geneName` column. Gene symbols are made unique, while the gene
+#'     IDs remain unmodified.
+#'   - `"unmodified"`: Return `geneID` and `geneName` columns unmodified, in
+#'     long format.
+#'   - `"1:1"`: For gene symbols that map to multiple gene IDs, select only the
+#'     first annotated gene ID.
 #'
 #' @seealso `makeGene2Symbol()`.
+#'
+#' @note For the `format` argument, note that "long" was used instead of
+#'   "unmodified" prior to v0.10.10.
 #'
 #' @examples
 #' data(rse, package = "acidtest")
@@ -26,7 +27,7 @@ NULL
 
 
 Gene2Symbol.DataFrame <-  # nolint
-    function(object, format = c("makeUnique", "1:1", "long")) {
+    function(object, format = c("makeUnique", "unmodified", "1:1")) {
         assert(hasRows(object))
         format <- match.arg(format)
 
@@ -61,6 +62,11 @@ Gene2Symbol.DataFrame <-  # nolint
             # This is the default, and including a message is too noisy, since
             # it is used heavily in other functions.
             data[["geneName"]] <- make.unique(data[["geneName"]])
+        } else if (format == "unmodified") {
+            message(paste(
+                "Returning with unmodified gene symbols",
+                "(may contain duplicates)."
+            ))
         } else if (format == "1:1") {
             message("Returning 1:1 mappings using oldest gene ID per symbol.")
             data <- data %>%
@@ -69,8 +75,6 @@ Gene2Symbol.DataFrame <-  # nolint
                 arrange(!!sym("geneID"), .by_group = TRUE) %>%
                 slice(n = 1L) %>%
                 ungroup()
-        } else if (format == "long") {
-            message("Returning 1:many in long format (not recommended).")
         }
 
         data <- as(data, "DataFrame")
