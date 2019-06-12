@@ -12,14 +12,14 @@
 \usage{
 Gene2Symbol(object, ...)
 
-\S4method{Gene2Symbol}{DataFrame}(object, format = c("makeUnique", "1:1",
-  "long"))
+\S4method{Gene2Symbol}{DataFrame}(object, format = c("makeUnique",
+  "unmodified", "1:1"))
 
-\S4method{Gene2Symbol}{GRanges}(object, format = c("makeUnique", "1:1",
-  "long"))
+\S4method{Gene2Symbol}{GRanges}(object, format = c("makeUnique",
+  "unmodified", "1:1"))
 
 \S4method{Gene2Symbol}{SummarizedExperiment}(object,
-  format = c("makeUnique", "1:1", "long"))
+  format = c("makeUnique", "unmodified", "1:1"))
 }
 \arguments{
 \item{object}{Object.}
@@ -29,15 +29,13 @@ Gene2Symbol(object, ...)
 \item{format}{\code{character(1)}.
 Formatting method to apply:
 \itemize{
-\item \code{"makeUnique"}: \emph{Recommended.}
-Apply \code{\link[base:make.unique]{make.unique()}} to the \code{geneName}
-column. Gene symbols are made unique, while the gene IDs remain
-unmodified.
-\item \code{"1:1"}:
-For gene symbols that map to multiple gene IDs, select only the
+\item \code{"makeUnique"}: \emph{Recommended.} Apply \code{\link[base:make.unique]{make.unique()}}
+to the \code{geneName} column. Gene symbols are made unique, while the gene
+IDs remain unmodified.
+\item \code{"unmodified"}: Return \code{geneID} and \code{geneName} columns unmodified, in
+long format.
+\item \code{"1:1"}: For gene symbols that map to multiple gene IDs, select only the
 first annotated gene ID.
-\item \code{"long"}:
-Return \code{geneID} and \code{geneName} columns unmodified in long format.
 }}
 }
 \value{
@@ -51,6 +49,9 @@ Gene-to-symbol mappings
 For some organisms, gene names and gene symbols do not map 1:1
 (e.g. \emph{Homo sapiens} and \emph{Mus musculus}). Refer to the \code{format} argument here
 in the documentation for approaches that deal with this issue.
+
+For the \code{format} argument, note that "long" was used instead of
+"unmodified" prior to v0.10.10.
 }
 \section{Genome metadata}{
 

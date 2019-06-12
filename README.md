@@ -2,8 +2,8 @@
 
 [![Travis CI build status](https://travis-ci.com/acidgenomics/basejump.svg?branch=master)](https://travis-ci.com/acidgenomics/basejump)
 [![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/007vq15089ukn6ej/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/basejump/branch/master)
-[![Anaconda cloud version](https://anaconda.org/bioconda/r-basejump/badges/version.svg)](https://anaconda.org/bioconda/r-basejump)
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Anaconda cloud version](https://anaconda.org/bioconda/r-basejump/badges/version.svg)](https://anaconda.org/bioconda/r-basejump)
 
 Base functions for bioinformatics and [R][] package development.
 
@@ -14,18 +14,12 @@ Base functions for bioinformatics and [R][] package development.
 We recommend installing the package with [BiocManager][].
 
 ```r
-if (!require("BiocManager")) {
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
-BiocManager::install("remotes")
-BiocManager::install("acidgenomics/basejump")
-```
-
-For [R][] < 3.5, [BiocManager][] is not supported. Use `BiocInstaller::biocLite()` instead of `BiocManager::install()`. This requires sourcing the legacy [Bioconductor][] `biocLite.R` script.
-
-```r
-# Try `http` if `https` URLs are not supported.
-source("https://bioconductor.org/biocLite.R")
+library(BiocManager)
+install("remotes")
+install("acidgenomics/basejump")
 ```
 
 ### [conda][] method
