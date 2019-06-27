@@ -14,6 +14,7 @@ Base functions for bioinformatics and [R][] package development.
 We recommend installing the package with [BiocManager][].
 
 ```r
+Sys.setenv(R_REMOTES_UPGRADE = "always")
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
