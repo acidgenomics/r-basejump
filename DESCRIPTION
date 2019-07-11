@@ -80,6 +80,7 @@ Suggests:
 Enhances:
     pbapply
 Remotes:
+    acidgenomics/acidplots,
     acidgenomics/acidtest,
     acidgenomics/bioverbs,
     acidgenomics/brio,
