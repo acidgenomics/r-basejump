@@ -25,6 +25,8 @@
 \alias{setArgsToDoCall}
 \alias{tx2gene}
 \alias{assertHasRownames}
+\alias{theme_midnight}
+\alias{theme_paperwhite}
 \alias{tx2geneFromGFF}
 \title{Defunct functions}
 \usage{
@@ -73,6 +75,10 @@ setArgsToDoCall(...)
 tx2gene(...)
 
 assertHasRownames(...)
+
+theme_midnight(...)
+
+theme_paperwhite(...)
 
 tx2geneFromGFF(...)
 }

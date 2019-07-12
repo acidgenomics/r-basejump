@@ -27,8 +27,6 @@
 \alias{assertIsHexColorFunctionOrNULL}
 \alias{assertIsImplicitInteger}
 \alias{assertIsTx2gene}
-\alias{theme_midnight}
-\alias{theme_paperwhite}
 \alias{separatorBar}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
@@ -79,10 +77,6 @@ assertIsHexColorFunctionOrNULL(x)
 assertIsImplicitInteger(x)
 
 assertIsTx2gene(x)
-
-theme_midnight(...)
-
-theme_paperwhite(...)
 
 separatorBar
 }

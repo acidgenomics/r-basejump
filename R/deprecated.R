@@ -454,20 +454,16 @@ assertHasRownames <- function(...) {
     ))
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 theme_midnight <- function(...) {
-    .Deprecated("acidplots::acid_theme_dark")
-    requireNamespace("acidplots", quietly = TRUE)
-    acidplots::acid_theme_dark(...)
+    .Defunct("acidplots::acid_theme_dark")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 theme_paperwhite <- function(...) {
-    .Deprecated("acidplots::acid_theme_light")
-    requireNamespace("acidplots", quietly = TRUE)
-    acidplots::acid_theme_light(...)
+    .Defunct("acidplots::acid_theme_light")
 }
 
 #' @rdname defunct
