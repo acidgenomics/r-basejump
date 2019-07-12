@@ -15,15 +15,17 @@ export TZ="America/New_York"
 
 # Get the package version and define the `R CMD build` tarball output.
 PKG_NAME="$(basename "$PWD")"
-PKG_VERSION="$(grep -E "^Version:\s[.0-9a-z]+$" DESCRIPTION | sed "s/^Version:[[:space:]]//")"
+PKG_VERSION="$(grep -E "^Version:\s[.0-9a-z]+$" DESCRIPTION | sed "s/^Version:\s//")"
 PKG_TARBALL="${PKG_NAME}_${PKG_VERSION}.tar.gz"
 
 echo "Session information"
 Rscript -e "utils::sessionInfo()"
 Rscript -e "sessioninfo::session_info()"
 
+echo "Installed packages"
+Rscript -e "installed.packages()[, \"Version\", drop = TRUE]"
+
 echo "R CMD check"
-export _R_CHECK_FORCE_SUGGESTS_=false
 # Set `--as-cran` flag for extra verbose incoming package checks.
 R CMD build . --no-build-vignettes --no-manual
 R CMD check "$PKG_TARBALL" --ignore-vignettes --no-manual --timings
@@ -44,7 +46,7 @@ Rscript -e "BiocCheck::BiocCheck( \
 rm "$PKG_TARBALL"
 
 echo "Coverage"
-Rscript -e "covr::package_coverage()"
+./coverage.R
 
 echo "lintr"
 Rscript -e "if (packageVersion(\"base\") >= \"3.6\") \
