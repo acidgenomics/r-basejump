@@ -8,10 +8,6 @@ options(
     warning = quote(quit(status = 1L))
 )
 
-if (packageVersion("base") < "3.6") {
-    quit()
-}
-
 requireNamespace("covr", quietly = TRUE)
 
 cov <- covr::package_coverage()
