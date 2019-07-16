@@ -47,7 +47,8 @@ test_that("SingleCellExperiment", {
 
 test_that("SingleCellExperiment <-", {
     sd <- sampleData(sce) %>% .[sort(rownames(.)), , drop = FALSE]
-    sd[["batch"]] <- as.factor(seq_len(nrow(sd)))
+    batch <- as.factor(seq_len(nrow(sd)))
+    sd[["batch"]] <- batch
     sampleData(sce) <- sd
     sd <- sampleData(sce) %>% .[sort(rownames(.)), , drop = FALSE]
     samples <- paste0("sample", seq(2L))
