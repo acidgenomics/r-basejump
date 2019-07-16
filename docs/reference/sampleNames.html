@@ -53,6 +53,7 @@ the syntactically valid names defined as the rownames of sampleData." />
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -69,7 +70,7 @@ the syntactically valid names defined as the rownames of sampleData." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
       </span>
     </div>
 
@@ -106,6 +107,7 @@ the syntactically valid names defined as the rownames of sampleData." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -156,23 +158,9 @@ the syntactically valid names defined as the rownames of <code>sampleData</code>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
-#&gt; "sample01" "sample02" "sample03" "sample04" "sample05" "sample06" "sample07" 
-#&gt;   sample08   sample09   sample10   sample11   sample12 
-#&gt; "sample08" "sample09" "sample10" "sample11" "sample12" </div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div><div class='input'>
 <span class='co'>## Assignment support.</span>
-<span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
-<span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span>(<span class='no'>value</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>value</span>)</div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
-#&gt; "SAMPLE01" "SAMPLE02" "SAMPLE03" "SAMPLE04" "SAMPLE05" "SAMPLE06" "SAMPLE07" 
-#&gt;   sample08   sample09   sample10   sample11   sample12 
-#&gt; "SAMPLE08" "SAMPLE09" "SAMPLE10" "SAMPLE11" "SAMPLE12" </div><div class='input'><span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
-#&gt; "SAMPLE01" "SAMPLE02" "SAMPLE03" "SAMPLE04" "SAMPLE05" "SAMPLE06" "SAMPLE07" 
-#&gt;   sample08   sample09   sample10   sample11   sample12 
-#&gt; "SAMPLE08" "SAMPLE09" "SAMPLE10" "SAMPLE11" "SAMPLE12" </div></pre>
+<span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span>(<span class='no'>value</span>)</div><div class='output co'>#&gt; <span class='error'>Error in toupper(value): object 'value' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>value</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(value): object 'value' not found</span></div><div class='input'><span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'value' not found</span></div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -187,6 +175,7 @@ the syntactically valid names defined as the rownames of <code>sampleData</code>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
@@ -195,11 +184,14 @@ the syntactically valid names defined as the rownames of <code>sampleData</code>
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
