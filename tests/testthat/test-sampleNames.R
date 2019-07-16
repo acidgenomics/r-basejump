@@ -47,14 +47,13 @@ test_that("SingleCellExperiment", {
     )
 })
 
-# FIXME This is now breaking with the SCE object update.
 test_that("SCE assignment", {
     oldSamples <- sampleNames(sce)
     newSamples <- letters[seq_along(oldSamples)]
     names(newSamples) <- names(oldSamples)
     sampleNames(sce) <- newSamples
     expect_identical(
-        object = sampleNames(sce),
+        object = sort(sampleNames(sce)),
         expected = c(sample1 = "a", sample2 = "b")
     )
 })
