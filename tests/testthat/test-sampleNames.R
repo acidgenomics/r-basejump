@@ -39,7 +39,7 @@ test_that("sampleName column isn't factor", {
 
 test_that("SingleCellExperiment", {
     expect_identical(
-        object = sampleNames(sce),
+        object = sort(sampleNames(sce)),
         expected = c(
             sample1 = "sample1",
             sample2 = "sample2"
@@ -47,6 +47,7 @@ test_that("SingleCellExperiment", {
     )
 })
 
+# FIXME This is now breaking with the SCE object update.
 test_that("SCE assignment", {
     oldSamples <- sampleNames(sce)
     newSamples <- letters[seq_along(oldSamples)]

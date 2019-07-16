@@ -28,10 +28,15 @@ test_that("SummarizedExperiment <-", {
     expect_is(sampleData(object)[["test"]], "factor")
 })
 
+# Note that this doesn't sort the row names automatically. Here we're doing this
+# internally in the check, to make the example "sce" object more resistant to
+# code-breaking updates.
 test_that("SingleCellExperiment", {
     samples <- paste0("sample", seq_len(2L))
+    sd <- sampleData(sce)
+    expect_identical(sort(rownames(sd)), samples)
     expect_identical(
-        sampleData(sce),
+        sd[samples, ],
         DataFrame(
             sampleName = as.factor(samples),
             interestingGroups = as.factor(samples),
