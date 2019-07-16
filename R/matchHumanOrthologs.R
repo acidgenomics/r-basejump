@@ -1,8 +1,13 @@
 #' Match human gene orthologs
+#'
 #' @export
+#'
+#' @inheritParams params
 #' @param genes Ensembl gene identifiers.
 #' @param ensemblRelease Ensembl release (e.g. 96).
+#'
 #' @return `tbl_df`.
+#'
 #' @examples
 #' genes <- c(
 #'     "ENSMUSG00000000001", "ENSMUSG00000000003",

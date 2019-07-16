@@ -9,6 +9,9 @@ matchHumanOrthologs(genes, organism = NULL, ensemblRelease = NULL)
 \arguments{
 \item{genes}{Ensembl gene identifiers.}
 
+\item{organism}{\code{character(1)}.
+Full Latin organism name (e.g. "\code{Homo sapiens}").}
+
 \item{ensemblRelease}{Ensembl release (e.g. 96).}
 }
 \value{
