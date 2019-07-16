@@ -1,12 +1,16 @@
 #!/usr/bin/env Rscript
 
 # Check package coverage with covr.
-# Updated 2019-07-15.
+# Updated 2019-07-16.
 
 options(
     error = quote(quit(status = 1L)),
     warning = quote(quit(status = 1L))
 )
+
+if (!dir.exists("tests")) {
+    quit()
+}
 
 requireNamespace("covr", quietly = TRUE)
 
