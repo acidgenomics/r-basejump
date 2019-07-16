@@ -2,7 +2,7 @@ dir.create("cache", showWarnings = FALSE)
 files <- c(
     "example.gtf",
     "example.gff3",
-    "plotlist.rda",
+    "plotlist.rds",
     "sce_lanesplit.rds"
 )
 mapply(

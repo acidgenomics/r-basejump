@@ -16,7 +16,7 @@ test_that("matrix", {
 
 test_that("matrix : No quadrants", {
     expect_message(
-        object = headtail(mat),
+        object = capture.output(headtail(mat)),
         regexp = "Object can't be split into quadrants."
     )
 })
@@ -28,8 +28,8 @@ test_that("GRanges", {
 
 test_that("SummarizedExperiment", {
     expect_identical(
-        headtail(rse),
-        headtail(assay(rse))
+        capture.output(headtail(rse)),
+        capture.output(headtail(assay(rse)))
     )
 })
 

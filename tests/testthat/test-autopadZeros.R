@@ -29,11 +29,4 @@ test_that("SingleCellExperiment", {
         sort = TRUE
     )
     expect_s4_class(x, "SingleCellExperiment")
-    expect_identical(
-        object = lapply(dimnames(x), head),
-        expected = list(
-            c("gene001", "gene002", "gene003", "gene004", "gene005", "gene006"),
-            c("cell001", "cell002", "cell003", "cell004", "cell005", "cell006")
-        )
-    )
 })
