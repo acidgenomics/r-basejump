@@ -1,9 +1,12 @@
-## basejump 0.10.11 (2019-07-12)
+## basejump 0.10.11 (2019-07-16)
 
 ### Minor changes
 
 - Made `theme_midnight` and `theme_paperwhite` defunct, in favor if variants in
   new [acidplots][] package.
+- Decreased the number of functions reexported from goalie package.
+- Updated basejump dependency package versions.
+- Improved Travis CI Docker configuration.
 
 ## basejump 0.10.10 (2019-06-08)
 
