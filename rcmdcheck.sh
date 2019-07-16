@@ -2,6 +2,7 @@
 set -Eeuxo pipefail
 
 # R package checks
+# Updated 2019-07-16.
 #
 # See also:
 # - R CMD build --help
