@@ -39,7 +39,7 @@ test_that("SingleCellExperiment", {
     object <- sce
     # Simulate a metric column with an expected mean.
     # Standard normal distribution
-    object$nUMI <- Matrix::colSums(counts(object))
+    colData(object)[["nUMI"]] <- Matrix::colSums(counts(object))
     expect_identical(
         object = metricsPerSample(object, fun = "mean") %>%
             .[["nUMI"]] %>%

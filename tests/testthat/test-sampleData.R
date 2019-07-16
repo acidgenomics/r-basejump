@@ -46,11 +46,13 @@ test_that("SingleCellExperiment", {
 })
 
 test_that("SingleCellExperiment <-", {
-    samples <- paste0("sample", seq_len(2L))
-    batch <- factor(seq_along(samples))
-    sampleData(sce)[["batch"]] <- batch
+    sd <- sampleData(sce) %>% .[sort(rownames(.)), , drop = FALSE]
+    sd[["batch"]] <- as.factor(seq_len(nrow(sd)))
+    sampleData(sce) <- sd
+    sd <- sampleData(sce) %>% .[sort(rownames(.)), , drop = FALSE]
+    samples <- paste0("sample", seq(2L))
     expect_identical(
-        object = sampleData(sce),
+        object = sd,
         expected = DataFrame(
             sampleName = as.factor(samples),
             batch = batch,
