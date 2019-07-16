@@ -4,10 +4,7 @@ test_that("SCE factor return", {
     x <- cell2sample(sce, return = "factor")
     expect_is(x, "factor")
     expect_identical(levels(x), c("sample1", "sample2"))
-    expect_identical(
-        object = head(names(x)),
-        expected = paste0("cell00", seq_len(6L))
-    )
+    expect_true(hasNames(x))
 })
 
 test_that("SCE tibble return", {

@@ -14,13 +14,15 @@ test_that("SummarizedExperiment", {
     )
 })
 
+# Check for unmodified return on SCE objects.
 test_that("SingleCellExperiment", {
     x <- humanize(sce)
+    expect_s4_class(x, "SingleCellExperiment")
     expect_identical(
-        object = lapply(dimnames(x), head),
-        expected = list(
-            c("TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR"),
-            paste0("cell00", seq_len(6L))
+        dimnames(x),
+        list(
+            as.character(mcols(rowRanges(x))[["geneName"]]),
+            colnames(sce)
         )
     )
 })
