@@ -52,6 +52,7 @@ function will sum the counts across cells to sample level." />
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -68,7 +69,7 @@ function will sum the counts across cells to sample level." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
       </span>
     </div>
 
@@ -105,6 +106,7 @@ function will sum the counts across cells to sample level." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -161,14 +163,7 @@ cell-to-sample groupings and then performs aggregation with the
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
-#&gt; dim: 500 2 
-#&gt; metadata(1): aggregate
-#&gt; assays(1): ''
-#&gt; rownames(500): gene1 gene2 ... gene499 gene500
-#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
-#&gt; colnames(2): sample1 sample2
-#&gt; colData names(0):</div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -185,6 +180,7 @@ cell-to-sample groupings and then performs aggregation with the
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
@@ -193,11 +189,14 @@ cell-to-sample groupings and then performs aggregation with the
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

@@ -51,6 +51,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -67,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
       </span>
     </div>
 
@@ -104,6 +105,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -160,23 +162,31 @@ logical grep matching.</p>
     <h2 class="hasAnchor" id="intended-usage"><a class="anchor" href="#intended-usage"></a>Intended usage</h2>
 
     
-    <p>This function is intended to be used for sample extraction from Bioconductor
+
+
+
+<p>This function is intended to be used for sample extraction from Bioconductor
 container classes where the column names don't correspond to samples (e.g.
 <code>SingleCellExperiment</code>).</p>
     
     <h2 class="hasAnchor" id="bracket-based-subsetting"><a class="anchor" href="#bracket-based-subsetting"></a>Bracket-based subsetting</h2>
 
     
-    <p>Bracket-based subsetting with <code>[</code> also works on <code>SingleCellExperiment</code>
+
+
+
+<p>Bracket-based subsetting with <code>[</code> also works on <code>SingleCellExperiment</code>
 objects but it's not intuitive. In this case, provide cellular barcode
 identifiers for columns and gene identifiers for rows.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><ul>
+    <div class='dont-index'>
+<ul>
 <li><p><code><a href='sampleData.html'>sampleData()</a></code>.</p></li>
 <li><p><code><a href='https://rdrr.io/pkg/S4Vectors/man/split-methods.html'>S4Vectors::split()</a></code>.</p></li>
-</ul></div>
+</ul>
+</div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -184,31 +194,136 @@ identifiers for columns and gene identifiers for rows.</p>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
-<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fl'>1L</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>sample</span>)</div><div class='output co'>#&gt;   sample01 
-#&gt; "sample01" </div><div class='input'><span class='no'>subset</span> <span class='kw'>&lt;-</span> <span class='fu'>selectSamples</span>(<span class='no'>object</span>, <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='no'>sample</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>subset</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
-#&gt; dim: 500 1 
-#&gt; metadata(3): version date interestingGroups
-#&gt; assays(1): counts
-#&gt; rownames(500): gene001 gene002 ... gene499 gene500
-#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
-#&gt; colnames(1): sample01
-#&gt; colData names(1): condition</div><div class='input'>
+<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fl'>1L</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>sample</span>)</div><div class='output co'>#&gt; function (x, size, replace = FALSE, prob = NULL) 
+#&gt; {
+#&gt;     if (length(x) == 1L &amp;&amp; is.numeric(x) &amp;&amp; is.finite(x) &amp;&amp; x &gt;= 
+#&gt;         1) {
+#&gt;         if (missing(size)) 
+#&gt;             size &lt;- x
+#&gt;         sample.int(x, size, replace, prob)
+#&gt;     }
+#&gt;     else {
+#&gt;         if (missing(size)) 
+#&gt;             size &lt;- length(x)
+#&gt;         x[sample.int(length(x), size, replace, prob)]
+#&gt;     }
+#&gt; }
+#&gt; &lt;bytecode: 0x17c65440&gt;
+#&gt; &lt;environment: namespace:base&gt;</div><div class='input'><span class='no'>subset</span> <span class='kw'>&lt;-</span> <span class='fu'>selectSamples</span>(<span class='no'>object</span>, <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='no'>sample</span>)</div><div class='output co'>#&gt; <span class='error'>Error in selectSamples(object, sampleName = sample): Arguments must be atomic.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>subset</span>)</div><div class='output co'>#&gt; new("standardGeneric", .Data = function (x, ...) 
+#&gt; standardGeneric("subset"), generic = "subset", package = "base", 
+#&gt;     group = list(), valueClass = character(0), signature = "x", 
+#&gt;     default = new("derivedDefaultMethod", .Data = function (x, 
+#&gt;         ...) 
+#&gt;     UseMethod("subset"), target = new("signature", .Data = "ANY", 
+#&gt;         names = "x", package = "methods"), defined = new("signature", 
+#&gt;         .Data = "ANY", names = "x", package = "methods"), generic = "subset"), 
+#&gt;     skeleton = (new("derivedDefaultMethod", .Data = function (x, 
+#&gt;         ...) 
+#&gt;     UseMethod("subset"), target = new("signature", .Data = "ANY", 
+#&gt;         names = "x", package = "methods"), defined = new("signature", 
+#&gt;         .Data = "ANY", names = "x", package = "methods"), generic = "subset"))(x, 
+#&gt;         ...))
+#&gt; &lt;environment: 0x4831938&gt;
+#&gt; attr(,"generic")
+#&gt; [1] "subset"
+#&gt; attr(,"generic")attr(,"package")
+#&gt; [1] "base"
+#&gt; attr(,"package")
+#&gt; [1] "base"
+#&gt; attr(,"group")
+#&gt; list()
+#&gt; attr(,"valueClass")
+#&gt; character(0)
+#&gt; attr(,"signature")
+#&gt; [1] "x"
+#&gt; attr(,"default")
+#&gt; Method Definition (Class "derivedDefaultMethod"):
+#&gt; 
+#&gt; function (x, ...) 
+#&gt; UseMethod("subset")
+#&gt; &lt;bytecode: 0x37882e0&gt;
+#&gt; &lt;environment: namespace:base&gt;
+#&gt; 
+#&gt; Signatures:
+#&gt;         x    
+#&gt; target  "ANY"
+#&gt; defined "ANY"
+#&gt; attr(,"skeleton")
+#&gt; (new("derivedDefaultMethod", .Data = function (x, ...) 
+#&gt; UseMethod("subset"), target = new("signature", .Data = "ANY", 
+#&gt;     names = "x", package = "methods"), defined = new("signature", 
+#&gt;     .Data = "ANY", names = "x", package = "methods"), generic = "subset"))(x, 
+#&gt;     ...)
+#&gt; attr(,"class")
+#&gt; [1] "standardGeneric"
+#&gt; attr(,"class")attr(,"package")
+#&gt; [1] "methods"</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fl'>1L</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>sample</span>)</div><div class='output co'>#&gt;   sample1 
-#&gt; "sample1" </div><div class='input'><span class='no'>subset</span> <span class='kw'>&lt;-</span> <span class='fu'>selectSamples</span>(<span class='no'>object</span>, <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='no'>sample</span>)</div><div class='output co'>#&gt; <span class='message'>1 sample(s) matched: sample1</span></div><div class='output co'>#&gt; <span class='message'>55 cells matched.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>subset</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
-#&gt; dim: 500 55 
-#&gt; metadata(2): date selectSamples
-#&gt; assays(1): counts
-#&gt; rownames(500): gene1 gene2 ... gene499 gene500
-#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
-#&gt; colnames(55): cell001 cell002 ... cell099 cell100
-#&gt; colData names(2): expLibSize sampleID
-#&gt; reducedDimNames(0):
-#&gt; spikeNames(0):</div></pre>
+<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fl'>1L</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>sample</span>)</div><div class='output co'>#&gt; function (x, size, replace = FALSE, prob = NULL) 
+#&gt; {
+#&gt;     if (length(x) == 1L &amp;&amp; is.numeric(x) &amp;&amp; is.finite(x) &amp;&amp; x &gt;= 
+#&gt;         1) {
+#&gt;         if (missing(size)) 
+#&gt;             size &lt;- x
+#&gt;         sample.int(x, size, replace, prob)
+#&gt;     }
+#&gt;     else {
+#&gt;         if (missing(size)) 
+#&gt;             size &lt;- length(x)
+#&gt;         x[sample.int(length(x), size, replace, prob)]
+#&gt;     }
+#&gt; }
+#&gt; &lt;bytecode: 0x17c65440&gt;
+#&gt; &lt;environment: namespace:base&gt;</div><div class='input'><span class='no'>subset</span> <span class='kw'>&lt;-</span> <span class='fu'>selectSamples</span>(<span class='no'>object</span>, <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='no'>sample</span>)</div><div class='output co'>#&gt; <span class='error'>Error in selectSamples(object, sampleName = sample): Arguments must be atomic.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>subset</span>)</div><div class='output co'>#&gt; new("standardGeneric", .Data = function (x, ...) 
+#&gt; standardGeneric("subset"), generic = "subset", package = "base", 
+#&gt;     group = list(), valueClass = character(0), signature = "x", 
+#&gt;     default = new("derivedDefaultMethod", .Data = function (x, 
+#&gt;         ...) 
+#&gt;     UseMethod("subset"), target = new("signature", .Data = "ANY", 
+#&gt;         names = "x", package = "methods"), defined = new("signature", 
+#&gt;         .Data = "ANY", names = "x", package = "methods"), generic = "subset"), 
+#&gt;     skeleton = (new("derivedDefaultMethod", .Data = function (x, 
+#&gt;         ...) 
+#&gt;     UseMethod("subset"), target = new("signature", .Data = "ANY", 
+#&gt;         names = "x", package = "methods"), defined = new("signature", 
+#&gt;         .Data = "ANY", names = "x", package = "methods"), generic = "subset"))(x, 
+#&gt;         ...))
+#&gt; &lt;environment: 0x4831938&gt;
+#&gt; attr(,"generic")
+#&gt; [1] "subset"
+#&gt; attr(,"generic")attr(,"package")
+#&gt; [1] "base"
+#&gt; attr(,"package")
+#&gt; [1] "base"
+#&gt; attr(,"group")
+#&gt; list()
+#&gt; attr(,"valueClass")
+#&gt; character(0)
+#&gt; attr(,"signature")
+#&gt; [1] "x"
+#&gt; attr(,"default")
+#&gt; Method Definition (Class "derivedDefaultMethod"):
+#&gt; 
+#&gt; function (x, ...) 
+#&gt; UseMethod("subset")
+#&gt; &lt;bytecode: 0x37882e0&gt;
+#&gt; &lt;environment: namespace:base&gt;
+#&gt; 
+#&gt; Signatures:
+#&gt;         x    
+#&gt; target  "ANY"
+#&gt; defined "ANY"
+#&gt; attr(,"skeleton")
+#&gt; (new("derivedDefaultMethod", .Data = function (x, ...) 
+#&gt; UseMethod("subset"), target = new("signature", .Data = "ANY", 
+#&gt;     names = "x", package = "methods"), defined = new("signature", 
+#&gt;     .Data = "ANY", names = "x", package = "methods"), generic = "subset"))(x, 
+#&gt;     ...)
+#&gt; attr(,"class")
+#&gt; [1] "standardGeneric"
+#&gt; attr(,"class")attr(,"package")
+#&gt; [1] "methods"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -231,6 +346,7 @@ identifiers for columns and gene identifiers for rows.</p>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
@@ -239,11 +355,14 @@ identifiers for columns and gene identifiers for rows.</p>
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
