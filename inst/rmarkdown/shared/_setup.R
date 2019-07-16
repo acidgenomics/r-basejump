@@ -29,7 +29,7 @@ knitr::opts_chunk[["set"]](
 requireNamespace(package = "ggplot2", quietly = TRUE)
 requireNamespace(package = "acidplots", quietly = TRUE)
 ggplot2::theme_set(
-    acidplots::theme_paperwhite(
+    acidplots::acid_theme_light(
         base_size = 14L,
         legend_position = "right"
     )
