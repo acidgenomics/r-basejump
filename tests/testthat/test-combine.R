@@ -35,16 +35,13 @@ test_that("SummarizedExperiment", {
 
 test_that("SingleCellExperiment", {
     x <- sce
+    # Use placeholder names (e.g. "cell1").
+    colnames(x) <- paste0("cell", seq_len(ncol(x)))
 
     # Here we're faking a distinct replicate, just as an example.
     y <- x
-    # Increase the cell ID numbers.
-    cells <- colnames(y) %>%
-        sub("cell", "", .) %>%
-        as.integer() %>%
-        `+`(ncol(y)) %>%
-        paste0("cell", .)
-    colnames(y) <- cells
+    # Increase the cell ID numbers in second data set.
+    colnames(y) <- paste0("cell", seq_len(ncol(y)) + ncol(y))
 
     # Increase the sample ID numbers.
     sampleID <- y[["sampleID"]]
@@ -55,12 +52,8 @@ test_that("SingleCellExperiment", {
     # Combine two SingleCellExperiment objects.
     c <- combine(x, y)
     expect_s4_class(c, "SingleCellExperiment")
-
-    samples <- paste0("sample", seq_len(4L))
-    sampleData <- DataFrame(
-        sampleName = as.factor(samples),
-        interestingGroups = as.factor(samples),
-        row.names = samples
+    expect_identical(
+        sort(rownames(sampleData(c))),
+        paste0("sample", seq_len(4L))
     )
-    expect_identical(sampleData(c), sampleData)
 })
