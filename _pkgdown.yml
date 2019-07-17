@@ -18,10 +18,12 @@ reference:
       - geneSynonyms
       - makeGene2Symbol
       - makeTx2Gene
+      - matchEnsemblReleaseToURL
   - title: Gene identifier mapping
     contents:
       - starts_with("convert")
       - starts_with("mapGenes")
+      - matchHumanOrthologs
   - title: Counts
     contents:
       - counts

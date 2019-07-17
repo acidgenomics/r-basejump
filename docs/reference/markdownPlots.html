@@ -154,7 +154,13 @@ Separated by Markdown headers.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/brio/man/loadRemoteData.html'>loadRemoteData</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"plotlist.rda"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open URL 'http://tests.acidgenomics.com/basejump/v0.10/plotlist.rda': HTTP status was '404 Not Found'</span></div><div class='output co'>#&gt; <span class='error'>Error in download.file(url = file, destfile = destfile, mode = mode): cannot open URL 'http://tests.acidgenomics.com/basejump/v0.10/plotlist.rda'</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'plotlist' not found</span></div><div class='input'><span class='fu'>markdownPlots</span>(<span class='kw'>list</span> <span class='kw'>=</span> <span class='no'>plotlist</span>)</div><div class='output co'>#&gt; <span class='error'>Error in assert(is.list(list), hasNames(list), isHeaderLevel(headerLevel)): object 'plotlist' not found</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/brio/man/loadRemoteData.html'>loadRemoteData</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"plotlist.rds"</span>))</div><div class='output co'>#&gt; <span class='message'>Importing plotlist.rds using base::readRDS().</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; [1] "continuous" "discrete"  </div><div class='input'><span class='fu'>markdownPlots</span>(<span class='kw'>list</span> <span class='kw'>=</span> <span class='no'>plotlist</span>)</div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; ## continuous
+#&gt; </div><div class='img'><img src='markdownPlots-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; ## discrete
+#&gt; </div><div class='img'><img src='markdownPlots-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
