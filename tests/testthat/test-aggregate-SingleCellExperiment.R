@@ -69,8 +69,8 @@ test_that("acidtest::sce", {
     expect_identical(
         object = sums,
         expected = c(
-            sample1 = 3080321L,
-            sample2 = 2334466L
+            sample1 = 12622L,
+            sample2 = 7011L
         )
     )
 })

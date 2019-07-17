@@ -58,6 +58,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -74,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
       </span>
     </div>
 
@@ -111,6 +112,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -184,11 +186,13 @@
 <li><p><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a> must contain the same columns.</p></li>
 <li><p>Specific metadata must be identical (see <code>metadata</code> argument).</p></li>
 </ul>
+
     
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
-    <p>The following methods are defined in the <span class="pkg">BiocGenerics</span> package:</p><dl class='dl-horizontal'>
+
+<p>The following methods are defined in the <span class="pkg">BiocGenerics</span> package:</p><dl class='dl-horizontal'>
     <dt><code>combine(x=ANY, missing)</code></dt><dd><p>Return the first (x) argument
       unchanged.</p></dd>
     <dt><code>combine(data.frame, data.frame)</code></dt><dd><p>Combines two
@@ -217,149 +221,83 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><ul>
+    <div class='dont-index'>
+<ul>
 <li><p><code><a href='https://rdrr.io/pkg/BiocGenerics/man/combine.html'>BiocGenerics::combine()</a></code>.</p></li>
 <li><p><code><a href='https://rdrr.io/r/utils/help.html'>help("merge.Matrix", "Matrix.utils")</a></code>.</p></li>
-</ul></div>
+</ul>
+</div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>SummarizedExperiment</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocGenerics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: parallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'BiocGenerics'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:parallel':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span>
-#&gt; <span class='message'>    clusterExport, clusterMap, parApply, parCapply, parLapply,</span>
-#&gt; <span class='message'>    parLapplyLB, parRapply, parSapply, parSapplyLB</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    IQR, mad, sd, var, xtabs</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyDuplicated, append, as.data.frame, basename, cbind, colnames,</span>
-#&gt; <span class='message'>    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,</span>
-#&gt; <span class='message'>    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,</span>
-#&gt; <span class='message'>    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,</span>
-#&gt; <span class='message'>    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,</span>
-#&gt; <span class='message'>    union, unique, unsplit, which, which.max, which.min</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'S4Vectors'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    Vignettes contain introductory material; view with</span>
-#&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
-#&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: DelayedArray</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: matrixStats</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'matrixStats'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:Biobase':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyMissing, rowMedians</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocParallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'DelayedArray'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:matrixStats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    aperm, apply, rowsum</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+<span class='no'>str_pad</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='https://stringr.tidyverse.org/reference/str_pad.html'>str_pad</a></span>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
-#&gt;  [7] "sample07" "sample08" "sample09" "sample10" "sample11" "sample12"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 1 column
-#&gt;          condition
-#&gt;           &lt;factor&gt;
-#&gt; sample01         A
-#&gt; sample02         A
-#&gt; sample03         A
-#&gt; sample04         A
-#&gt; sample05         A
-#&gt; ...            ...
-#&gt; sample08         B
-#&gt; sample09         B
-#&gt; sample10         B
-#&gt; sample11         B
-#&gt; sample12         B</div><div class='input'>
-<span class='co'>## Create a copy of our minimal example.</span>
+<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
+    <span class='st'>"sample"</span>,
+    <span class='fu'>str_pad</span>(
+        <span class='kw'>string</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>x</span>)),
+        <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+        <span class='kw'>pad</span> <span class='kw'>=</span> <span class='st'>"0"</span>
+    )
+)
+
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>y</span>) + <span class='fl'>1L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>y</span>) * <span class='fl'>2L</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt;  [1] "sample13" "sample14" "sample15" "sample16" "sample17" "sample18"
-#&gt;  [7] "sample19" "sample20" "sample21" "sample22" "sample23" "sample24"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 1 column
-#&gt;          condition
-#&gt;           &lt;factor&gt;
-#&gt; sample13         A
-#&gt; sample14         A
-#&gt; sample15         A
-#&gt; sample16         A
-#&gt; sample17         A
-#&gt; ...            ...
-#&gt; sample20         B
-#&gt; sample21         B
-#&gt; sample22         B
-#&gt; sample23         B
-#&gt; sample24         B</div><div class='input'>
-<span class='co'>## Combine two SummarizedExperiment objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
+    <span class='st'>"sample"</span>,
+    <span class='fu'>str_pad</span>(
+        <span class='kw'>string</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>y</span>) + <span class='fl'>1L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>y</span>) * <span class='fl'>2L</span>),
+        <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+        <span class='kw'>pad</span> <span class='kw'>=</span> <span class='st'>"0"</span>
+    )
+)
+
+<span class='co'>## Combine the two objects.</span>
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays:</span>
+#&gt; <span class='message'>[1] "counts"</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 24 
-#&gt; metadata(6): interestingGroups version ... wd sessionInfo
+#&gt; metadata(6): version date ... wd sessionInfo
 #&gt; assays(1): counts
 #&gt; rownames(500): gene001 gene002 ... gene499 gene500
 #&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
 #&gt; colnames(24): sample01 sample02 ... sample23 sample24
-#&gt; colData names(1): condition</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt;  [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
-#&gt;  [7] "sample07" "sample08" "sample09" "sample10" "sample11" "sample12"
-#&gt; [13] "sample13" "sample14" "sample15" "sample16" "sample17" "sample18"
-#&gt; [19] "sample19" "sample20" "sample21" "sample22" "sample23" "sample24"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 24 rows and 1 column
-#&gt;          condition
-#&gt;           &lt;factor&gt;
-#&gt; sample01         A
-#&gt; sample02         A
-#&gt; sample03         A
-#&gt; sample04         A
-#&gt; sample05         A
-#&gt; ...            ...
-#&gt; sample20         B
-#&gt; sample21         B
-#&gt; sample22         B
-#&gt; sample23         B
-#&gt; sample24         B</div><div class='input'>
+#&gt; colData names(1): condition</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
-#&gt;         sampleName interestingGroups
-#&gt;           &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample1    sample1           sample1
-#&gt; sample2    sample2           sample2</div><div class='input'>
-<span class='co'>## Here we're faking a distinct replicate, just as an example.</span>
+<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
+    <span class='st'>"cell"</span>,
+    <span class='fu'>str_pad</span>(
+        <span class='kw'>string</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>x</span>)),
+        <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
+        <span class='kw'>pad</span> <span class='kw'>=</span> <span class='st'>"0"</span>
+    )
+)
+
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
-<span class='co'>## Increase the cell ID numbers.</span>
-<span class='no'>cells</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>y</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>sub</a></span>(<span class='st'>"cell"</span>, <span class='st'>""</span>, <span class='no'>.</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span>() <span class='kw'>%&gt;%</span>
-    <span class='fu'>`+`</span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>y</span>)) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"cell"</span>, <span class='no'>.</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='no'>cells</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>y</span>))</div><div class='output co'>#&gt; [1] "cell101" "cell102" "cell103" "cell104" "cell105" "cell106"</div><div class='input'><span class='co'>## Increase the sample ID numbers.</span>
-<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='no'>y</span>$<span class='no'>sampleID</span>
-<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>"1$"</span>, <span class='st'>"3"</span>, <span class='no'>sampleID</span>)
-<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>"2$"</span>, <span class='st'>"4"</span>, <span class='no'>sampleID</span>)
-<span class='no'>y</span>$<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>sampleID</span>)
-<span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
-#&gt;         sampleName interestingGroups
-#&gt;           &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample3    sample3           sample3
-#&gt; sample4    sample4           sample4</div><div class='input'>
-<span class='co'>## Combine two SingleCellExperiment objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
-#&gt; dim: 500 200 
-#&gt; metadata(4): combine date wd sessionInfo
-#&gt; assays(1): counts
-#&gt; rownames(500): gene1 gene10 ... gene98 gene99
-#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
-#&gt; colnames(200): cell001 cell002 ... cell199 cell200
-#&gt; colData names(2): expLibSize sampleID
+<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
+    <span class='st'>"cell"</span>,
+    <span class='fu'>str_pad</span>(
+        <span class='kw'>string</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>y</span>)) + <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>y</span>),
+        <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
+        <span class='kw'>pad</span> <span class='kw'>=</span> <span class='st'>"0"</span>
+    )
+)
+
+<span class='co'>## Combine the two objects.</span>
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays:</span>
+#&gt; <span class='message'>[1] "counts"    "logcounts"</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+#&gt; dim: 230 160 
+#&gt; metadata(4): date combine wd sessionInfo
+#&gt; assays(2): counts logcounts
+#&gt; rownames(230): ENSG00000005187 ENSG00000005961 ... ENSG00000254709
+#&gt;   ENSG00000271614
+#&gt; rowData names(6): broadClass entrezID ... geneName seqCoordSystem
+#&gt; colnames(160): cell0001 cell0002 ... cell0159 cell0160
+#&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):
-#&gt; spikeNames(0):</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;         sampleName interestingGroups
-#&gt;           &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample1    sample1           sample1
-#&gt; sample2    sample2           sample2
-#&gt; sample3    sample3           sample3
-#&gt; sample4    sample4           sample4</div></pre>
+#&gt; spikeNames(0):</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -382,6 +320,7 @@
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
@@ -390,11 +329,14 @@
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

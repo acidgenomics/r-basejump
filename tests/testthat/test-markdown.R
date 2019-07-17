@@ -98,7 +98,7 @@ test_that("markdownList", {
 
 
 test_that("markdownPlots", {
-    load(file = file.path("cache", "plotlist.rda"))
+    plotlist <- readRDS(file = file.path("cache", "plotlist.rds"))
     output <- capture.output(markdownPlots(list = plotlist))
     expect_identical(
         object = output,

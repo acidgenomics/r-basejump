@@ -1,8 +1,19 @@
 #' Match human gene orthologs
+#'
 #' @export
+#'
+#' @inheritParams params
 #' @param genes Ensembl gene identifiers.
 #' @param ensemblRelease Ensembl release (e.g. 96).
-#' @return `tbl_df`.
+#'
+#' @return `DataFrame`.
+#'   Data frame containing mapping columns:
+#'
+#'   - geneID
+#'   - hgncID
+#'   - geneName
+#'   - hgncName
+#'
 #' @examples
 #' genes <- c(
 #'     "ENSMUSG00000000001", "ENSMUSG00000000003",
@@ -10,7 +21,8 @@
 #'     "ENSMUSG00000000037", "ENSMUSG00000000049"
 #' )
 #' matchHumanOrthologs(genes, ensemblRelease = 87L)
-# Last modified 2019-06-07.
+
+# Updated 2019-07-17.
 matchHumanOrthologs <- function(
     genes,
     organism = NULL,
@@ -119,5 +131,7 @@ matchHumanOrthologs <- function(
 
     map %>%
         left_join(g2s, by = "geneID") %>%
-        left_join(g2shs, by = "hgncID")
+        left_join(g2shs, by = "hgncID") %>%
+        as("DataFrame") %>%
+        set_rownames(.[["geneID"]])
 }

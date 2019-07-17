@@ -122,6 +122,7 @@ setMethod(
 
 
 
+# Updated 2019-07-16.
 metricsPerSample.SingleCellExperiment <-  # nolint
     function(
         object,
@@ -141,10 +142,13 @@ metricsPerSample.SingleCellExperiment <-  # nolint
                 stop(paste(
                     "`sum` method only applies to metrics columns",
                     "prefixed with `n` (e.g. `nUMI`)."
-                ), call. = FALSE)
+                ))
             }
             # Sum only the `n*` columns containing counts.
-            data <- select(metrics, matches(pattern))
+            # Supress: Adding missing grouping variables: `sampleID`.
+            suppressMessages(
+                data <- select(metrics, matches(pattern))
+            )
         } else {
             # Summarize all numeric columns.
             data <- select_if(metrics, is.numeric)

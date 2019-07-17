@@ -58,6 +58,8 @@ PANTHER <- function(  # nolint
             protocol = "none"
         )
     } else {
+        # This works unreliably on Travis, so cover locally instead.
+        # nocov start
         file <- transmit(
             remoteDir = pasteURL(
                 "ftp.pantherdb.org",
@@ -70,6 +72,7 @@ PANTHER <- function(  # nolint
             compress = TRUE,
             localDir = tempdir()
         )
+        # nocov end
     }
     assert(isString(file))
 
@@ -250,9 +253,11 @@ PANTHER <- function(  # nolint
 # Alternatively, consider switching to BiocParallel bpparam usage here.
 .splitTerms <- function(x, progress = FALSE) {
     if (isTRUE(progress)) {
+        # nocov start
         message(deparse(substitute(x)))
         requireNamespace("pbapply", quietly = TRUE)
         lapply <- pbapply::pblapply
+        # nocov end
     }
     lapply(x, function(x) {
         x <- x %>%

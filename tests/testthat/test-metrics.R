@@ -36,18 +36,29 @@ context("metricsPerSample")
 # nolint end
 
 test_that("SingleCellExperiment", {
-    x <- metricsPerSample(sce, fun = "mean")
+    object <- sce
+    # Simulate a metric column with an expected mean.
+    # Standard normal distribution
+    colData(object)[["nUMI"]] <- Matrix::colSums(counts(object))
     expect_identical(
-        object = round(x[["expLibSize"]], digits = 2L),
-        expected = c(61185.16, 56830.14)
+        object = metricsPerSample(object, fun = "mean") %>%
+            .[["nUMI"]] %>%
+            round(digits = 2L),
+        expected = c(286.86, 194.75)
     )
-
-    x <- metricsPerSample(sce, fun = "median")
     expect_identical(
-        object = round(x[["expLibSize"]], digits = 2L),
-        expected = c(58211.62, 55454.75)
+        object = metricsPerSample(object, fun = "median") %>%
+            .[["nUMI"]] %>%
+            round(digits = 2L),
+        expected = c(216.0, 144.5)
     )
+    expect_equal(
+        object = metricsPerSample(object, fun = "sum") %>% .[["nUMI"]],
+        expected = c(12622L, 7011L)
+    )
+})
 
+test_that("Missing nUMI column", {
     expect_error(
         object = metricsPerSample(sce, fun = "sum"),
         expected = paste(

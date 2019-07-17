@@ -51,6 +51,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -67,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
       </span>
     </div>
 
@@ -104,6 +105,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -153,10 +155,12 @@ Top barcodes as <code>character</code>, split by <code>sampleID</code>.</p>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>topCellsPerSample</span>(<span class='no'>sce</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>head</span>)</div><div class='output co'>#&gt; $sample1
-#&gt; [1] "cell042" "cell063" "cell009" "cell094" "cell057" "cell037"
+#&gt; [1] "GACATTCTCCACCT" "TTGAGGACTACGCA" "GCGTAAACACGGTT" "ATACCACTCTAAGC"
+#&gt; [5] "GAGTTGTGGTAGCT" "ATTGCACTTGCTTT"
 #&gt; 
 #&gt; $sample2
-#&gt; [1] "cell005" "cell074" "cell076" "cell067" "cell018" "cell081"
+#&gt; [1] "ATTGTAGATTCCCG" "ACGTGATGCCATGA" "TGAGCTGAATGCTG" "TCCACTCTGAGCTT"
+#&gt; [5] "AAATTCGAATCACG" "CATTACACCAACTG"
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -172,6 +176,7 @@ Top barcodes as <code>character</code>, split by <code>sampleID</code>.</p>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
@@ -180,11 +185,14 @@ Top barcodes as <code>character</code>, split by <code>sampleID</code>.</p>
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

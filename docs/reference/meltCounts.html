@@ -51,6 +51,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -67,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
       </span>
     </div>
 
@@ -104,6 +105,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -184,21 +186,7 @@ Grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code> (e.g. 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>meltCounts</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>499 / 500 features passed minimum rowSums() &gt;= 1 expression cutoff.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,988 x 6</span><span>
-#&gt; </span><span style='color: #949494;'># Groups:   colname, rowname [5,988]</span><span>
-#&gt;    rowname colname  counts condition sampleName interestingGroups
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> gene001 sample01      1 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> gene002 sample01     30 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> gene003 sample01     27 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> gene004 sample01    253 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> gene005 sample01      0 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> gene006 sample01      1 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> gene007 sample01      5 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> gene008 sample01     23 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> gene009 sample01     21 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> gene010 sample01     36 A         sample01   A                
-#&gt; </span><span style='color: #949494;'># … with 5,978 more rows</span><span></div></span></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>meltCounts</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -215,6 +203,7 @@ Grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code> (e.g. 
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
@@ -223,11 +212,14 @@ Grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code> (e.g. 
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

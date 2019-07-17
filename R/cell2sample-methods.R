@@ -44,7 +44,7 @@ cell2sample.SingleCellExperiment <-  # nolint
         } else if (return == "tibble") {
             colData %>%
                 as_tibble(rownames = "cellID") %>%
-                select(!!!syms(c("cellID", "sampleID")))
+                .[, c("cellID", "sampleID")]
         }
     }
 
