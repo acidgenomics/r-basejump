@@ -67,17 +67,17 @@ Imports:
     methods,
     utils
 Suggests:
+    acidtest (>= 0.1.5),
     BiocStyle,
     EnsDb.Hsapiens.v75,
-    acidtest (>= 0.1.4),
     biomaRt,
-    datasets,
-    patrick,
-    rmarkdown,
-    testthat,
-    viridis
+    patrick (>= 0.0.1),
+    rmarkdown (>= 1.14),
+    testthat (>= 2.1),
+    viridis (>= 0.5),
+    datasets
 Enhances:
-    pbapply
+    pbapply (>= 1.4)
 Remotes:
     acidgenomics/acidplots,
     acidgenomics/acidtest,
