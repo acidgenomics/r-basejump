@@ -15,6 +15,8 @@ HGNC2Ensembl <-  # nolint
                 protocol = "none"
             )
         } else {
+            # This is unreliable on Travis, so cover locally instead.
+            # nocov start
             file <- pasteURL(
                 "ftp.ebi.ac.uk",
                 "pub",
@@ -25,6 +27,7 @@ HGNC2Ensembl <-  # nolint
                 "hgnc_complete_set.txt",
                 protocol = "ftp"
             )
+            # nocov end
         }
 
         message("Obtaining HGNC to Ensembl gene ID mappings.")
