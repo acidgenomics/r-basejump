@@ -116,6 +116,7 @@ sampleData.SummarizedExperiment <-  # nolint
         )
     ) {
         data <- colData(object)
+        if (!hasRows(data)) return(data)
         assert(
             hasRownames(data),
             isFlag(clean),
@@ -199,6 +200,7 @@ sampleData.SingleCellExperiment <-  # nolint
         )
     ) {
         data <- colData(object)
+        if (!hasRows(data)) return(data)
         assert(
             hasRownames(data),
             isFlag(clean),

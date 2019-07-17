@@ -41,7 +41,7 @@ selectSamples.SummarizedExperiment <-  # nolint
             FUN = is.atomic,
             FUN.VALUE = logical(1L)
         ))) {
-            stop("Arguments must be atomic.")
+            stop("Arguments must be atomic.")  # nocov
         }
 
         # Match the arguments against the sample metadata.
@@ -105,18 +105,22 @@ selectSamples.SingleCellExperiment <-  # nolint
             function(col, arg) {
                 # Check that column is present.
                 if (!col %in% colnames(sampleData)) {
+                    # nocov start
                     stop(paste(
                         col, "isn't present in metadata colnames."
-                    ), call. = FALSE)
+                    ))
+                    # nocov end
                 }
                 # Check that all items in argument are present.
                 if (!all(arg %in% sampleData[[col]])) {
+                    # nocov start
                     missing <- arg[which(!arg %in% sampleData[[col]])]
                     stop(paste(
                         deparse(col),
                         "metadata column doesn't contain:",
                         toString(missing)
-                    ), call. = FALSE)
+                    ))
+                    # nocov end
                 }
                 # Get the sample ID matches.
                 sampleData %>%
