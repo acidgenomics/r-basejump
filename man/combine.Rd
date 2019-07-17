@@ -89,52 +89,29 @@ We're attempting to make this as strict as possible, requiring:
 }
 
 \examples{
-library(SummarizedExperiment)
 data(rse, sce, package = "acidtest")
 
 ## SummarizedExperiment ====
 x <- rse
-colnames(x)
-colData(x)
+colnames(x) <- paste0("sample", seq_len(ncol(x)))
 
-## Create a copy of our minimal example.
 y <- x
 colnames(y) <- paste0("sample", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
-colnames(y)
-colData(y)
 
-## Combine two SummarizedExperiment objects.
+## Combine the two objects.
 c <- combine(x, y)
 print(c)
-colnames(c)
-colData(c)
 
 ## SingleCellExperiment ====
 x <- sce
-head(colnames(x))
-sampleData(x)
+colnames(x) <- paste0("cell", seq_len(ncol(x)))
 
-## Here we're faking a distinct replicate, just as an example.
 y <- x
-## Increase the cell ID numbers.
-cells <- colnames(y) \%>\%
-    sub("cell", "", .) \%>\%
-    as.integer() \%>\%
-    `+`(ncol(y)) \%>\%
-    paste0("cell", .)
-colnames(y) <- cells
-head(colnames(y))
-## Increase the sample ID numbers.
-sampleID <- y$sampleID
-sampleID <- gsub("1$", "3", sampleID)
-sampleID <- gsub("2$", "4", sampleID)
-y$sampleID <- as.factor(sampleID)
-sampleData(y)
+colnames(y) <- paste0("cell", seq_len(ncol(y)) + ncol(y))
 
-## Combine two SingleCellExperiment objects.
+## Combine the two objects.
 c <- combine(x, y)
 print(c)
-sampleData(c)
 }
 \seealso{
 \itemize{
