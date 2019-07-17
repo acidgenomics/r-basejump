@@ -89,52 +89,60 @@ We're attempting to make this as strict as possible, requiring:
 }
 
 \examples{
-library(SummarizedExperiment)
 data(rse, sce, package = "acidtest")
+str_pad <- stringr::str_pad
 
 ## SummarizedExperiment ====
 x <- rse
-colnames(x)
-colData(x)
+colnames(x) <- paste0(
+    "sample",
+    str_pad(
+        string = seq_len(ncol(x)),
+        width = 2L,
+        pad = "0"
+    )
+)
 
-## Create a copy of our minimal example.
 y <- x
-colnames(y) <- paste0("sample", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
-colnames(y)
-colData(y)
+colnames(y) <- paste0(
+    "sample",
+    str_pad(
+        string = seq(from = ncol(y) + 1L, to = ncol(y) * 2L),
+        width = 2L,
+        pad = "0"
+    )
+)
 
-## Combine two SummarizedExperiment objects.
+## Combine the two objects.
 c <- combine(x, y)
+sampleData(c)
 print(c)
-colnames(c)
-colData(c)
 
 ## SingleCellExperiment ====
 x <- sce
-head(colnames(x))
-sampleData(x)
+colnames(x) <- paste0(
+    "cell",
+    str_pad(
+        string = seq_len(ncol(x)),
+        width = 4L,
+        pad = "0"
+    )
+)
 
-## Here we're faking a distinct replicate, just as an example.
 y <- x
-## Increase the cell ID numbers.
-cells <- colnames(y) \%>\%
-    sub("cell", "", .) \%>\%
-    as.integer() \%>\%
-    `+`(ncol(y)) \%>\%
-    paste0("cell", .)
-colnames(y) <- cells
-head(colnames(y))
-## Increase the sample ID numbers.
-sampleID <- y$sampleID
-sampleID <- gsub("1$", "3", sampleID)
-sampleID <- gsub("2$", "4", sampleID)
-y$sampleID <- as.factor(sampleID)
-sampleData(y)
+colnames(y) <- paste0(
+    "cell",
+    str_pad(
+        string = seq_len(ncol(y)) + ncol(y),
+        width = 4L,
+        pad = "0"
+    )
+)
 
-## Combine two SingleCellExperiment objects.
+## Combine the two objects.
 c <- combine(x, y)
-print(c)
 sampleData(c)
+print(c)
 }
 \seealso{
 \itemize{

@@ -48,6 +48,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -64,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
       </span>
     </div>
 
@@ -101,6 +102,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -113,9 +115,9 @@
     <div id="basejump-0-5-0-2018-04-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-0-2018-04-13" class="anchor"></a>basejump 0.5.0 (2018-04-13)</h2>
-<div id="new-functions-13" class="section level3">
+<div id="new-functions-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-13" class="anchor"></a>New functions</h3>
+<a href="#new-functions-14" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>emptyRanges</code> enables easy creation of placeholder ranges for <code>GRanges</code> objects, where transgene and FASTA spike-ins are needed.</li>
@@ -138,17 +140,17 @@
 <code>theme_midnight</code> and <code>theme_paperwhite</code> provide minimal, high contrast <a href="http://ggplot2.tidyverse.org/">ggplot2</a> themes with bold sans serif labels.</li>
 </ul>
 </div>
-<div id="major-changes-17" class="section level3">
+<div id="major-changes-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-17" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-18" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>loadData</code> now supports <code>.rda</code>, <code>.rds</code>, and <code>.RData</code> files. The function will error by design if multiple data extensions are detected inside the directory specified with the <code>dir</code> argument.</li>
 </ul>
 </div>
-<div id="minor-changes-47" class="section level3">
+<div id="minor-changes-49" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-47" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-49" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Consolidated assert check function code.</li>
 <li>Moved assertive imports to <code>basejump-package.R</code> file.</li>
@@ -170,9 +172,9 @@
     <div id="basejump-0-5-1-2018-04-16" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-1-2018-04-16" class="anchor"></a>basejump 0.5.1 (2018-04-16)</h2>
-<div id="minor-changes-46" class="section level3">
+<div id="minor-changes-48" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-46" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-48" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>emptyRanges</code>: Now using <code>match.arg</code> internally to capture <code>seqname</code> argument.</li>
@@ -184,9 +186,9 @@
     <div id="basejump-0-5-2-2018-04-26" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-2-2018-04-26" class="anchor"></a>basejump 0.5.2 (2018-04-26)</h2>
-<div id="minor-changes-45" class="section level3">
+<div id="minor-changes-47" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-45" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-47" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved documentation for assert check functions.</li>
 <li>Deprecated <code>geomean</code> in favor of <code>geometricMean</code>.</li>
@@ -202,9 +204,9 @@
     <div id="basejump-0-5-3-2018-04-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-3-2018-04-30" class="anchor"></a>basejump 0.5.3 (2018-04-30)</h2>
-<div id="minor-changes-44" class="section level3">
+<div id="minor-changes-46" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-44" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-46" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved internal S4 method code for <code>fixNA</code> and <code>removeNA</code>.</li>
 <li>Tweaked gray accent colors in <code>theme_midnight</code> and <code>theme_paperwhite</code>. Now using British spelling internally for ggplot code.</li>
@@ -223,17 +225,17 @@
     <div id="basejump-0-5-5-2018-05-15" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-5-2018-05-15" class="anchor"></a>basejump 0.5.5 (2018-05-15)</h2>
-<div id="major-changes-16" class="section level3">
+<div id="major-changes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-16" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-17" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>readGFF</code> now uses <code><a href="https://rdrr.io/pkg/rtracklayer/man/export.html">rtracklayer::import</a></code> internally to return GFF file as a <code>GRanges</code> object instead of a <code>data.frame</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-43" class="section level3">
+<div id="minor-changes-45" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-43" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-45" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>assertIsGFF</code> and <code>parseGFFAttributes</code> functions are now defunct.</li>
@@ -244,9 +246,9 @@
     <div id="basejump-0-5-6-2018-05-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-6-2018-05-19" class="anchor"></a>basejump 0.5.6 (2018-05-19)</h2>
-<div id="minor-changes-42" class="section level3">
+<div id="minor-changes-44" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-42" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-44" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Fixed NAMESPACE issue with <code><a href="https://rdrr.io/pkg/GenomeInfoDb/man/seqinfo.html">GenomeInfoDb::seqnames</a></code>.</li>
 <li>Improved <code>readGFF</code> working example to reflect switch to <code>GRanges</code> return.</li>
@@ -257,9 +259,9 @@
     <div id="basejump-0-5-7-2018-05-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-7-2018-05-24" class="anchor"></a>basejump 0.5.7 (2018-05-24)</h2>
-<div id="minor-changes-41" class="section level3">
+<div id="minor-changes-43" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-41" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-43" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Tweaked gray color accents for <code>theme_midnight</code> and <code>theme_paperwhite</code>.</li>
 </ul>
@@ -268,16 +270,16 @@
     <div id="basejump-0-5-8-2018-06-05" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-8-2018-06-05" class="anchor"></a>basejump 0.5.8 (2018-06-05)</h2>
-<div id="minor-changes-40" class="section level3">
+<div id="minor-changes-42" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-40" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-42" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>makeGRangesFromEnsembl</code> now supports remapping of <a href="https://genome.ucsc.edu/">UCSC</a> genome build to Ensembl. However, this isn’t recommended, and will warn the user.</li>
 <li>
 <code>convertUCSCBuildToEnsembl</code> now returns <code>NULL</code> instead of erroring on genome build match failure.</li>
 <li>
-<code>stripTranscriptVersions</code> now matches “<code>.</code>”, “<code>-</code>”, and “<code>_</code>” version delimiters.</li>
+<code>stripTranscriptVersions</code> now matches “<code>.</code>”, “<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>”, and “<code>_</code>” version delimiters.</li>
 <li>Made unused <code>dynamicPlotlist</code> function defunct.</li>
 <li>Consider deprecating <code>assertIsCharacterOrNULL</code> and <code>assertIsDataFrameOrNULL</code> in a future release.</li>
 </ul>
@@ -294,9 +296,9 @@
     <div id="basejump-0-5-9-2018-06-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-9-2018-06-12" class="anchor"></a>basejump 0.5.9 (2018-06-12)</h2>
-<div id="minor-changes-39" class="section level3">
+<div id="minor-changes-41" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-39" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-41" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Markdown function consistency improvements. Now all relevant <a href="https://daringfireball.net/projects/markdown/">Markdown</a> functions use <code>text</code> as the primary argument, instead of <code>object</code>.</li>
 </ul>
@@ -305,9 +307,9 @@
     <div id="basejump-0-5-10-2018-06-28" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-10-2018-06-28" class="anchor"></a>basejump 0.5.10 (2018-06-28)</h2>
-<div id="minor-changes-38" class="section level3">
+<div id="minor-changes-40" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-38" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-40" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Removed <code>makeNames</code> argument from <code>readFileByExtension</code> function. Use the <code>makeNames</code> family of functions manually after data import instead. This helps avoid unwanted sanitization of data.</li>
 <li>Simplified assert checks for internal load function.</li>
@@ -320,13 +322,13 @@
     <div id="basejump-0-5-11-2018-07-09" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-11-2018-07-09" class="anchor"></a>basejump 0.5.11 (2018-07-09)</h2>
-<div id="minor-changes-37" class="section level3">
+<div id="minor-changes-39" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-37" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-39" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Now requiring <a href="http://ggplot2.tidyverse.org/">ggplot2</a> v3.0 internally.</li>
 <li>
-<code>theme_midnight</code> and <code>theme_paperwhite</code> now extend <code><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">ggplot2::theme_linedraw</a></code>, improving the consistency between these themes.</li>
+<code>theme_midnight</code> and <code>theme_paperwhite</code> now extend <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">ggplot2::theme_linedraw</a></code>, improving the consistency between these themes.</li>
 <li>Example data is now consistenly formatted using snake case: <code>rnaseq_counts</code> and <code>single_cell_counts</code>, instead of the previous camel case conventions: <code>rnaseqCounts</code>, <code>singleCellCounts</code>.</li>
 <li>Camel variants of the ggplot themes are now deprecated.</li>
 <li>Updated internal gene synonyms data from <a href="https://www.nih.gov/">NIH</a>.</li>
@@ -357,6 +359,7 @@
 
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
@@ -365,11 +368,14 @@
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

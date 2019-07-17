@@ -9,7 +9,9 @@ DataFrame <- S4Vectors::DataFrame
 GRanges <- GenomicRanges::GRanges
 IRanges <- IRanges::IRanges
 SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
+cause <- goalie::cause
 group_vars <- dplyr::group_vars
+str_pad <- stringr::str_pad
 # nolint end
 
 options(

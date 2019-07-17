@@ -51,6 +51,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -67,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
       </span>
     </div>
 
@@ -104,6 +105,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -183,7 +185,8 @@ with plotting functions that use ggplot2 internally.</p>
     
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
-    <ul>
+    
+<ul>
 <li><p><code>SummarizedExperiment</code>: Metrics are sample level. <code>sampleID</code> column corresponds
 to <code>colnames</code>.</p></li>
 <li><p><code>SingleCellExperiment</code>: Metrics are cell level. <code>cellID</code> column corresponds to
@@ -214,27 +217,36 @@ to <code>colnames</code>.</p></li>
 #&gt; </span><span style='color: #BCBCBC;'>12</span><span> sample12 B         sample12   B                </div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>sce</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 100 x 5</span><span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 80 x 4</span><span>
 #&gt; </span><span style='color: #949494;'># Groups:   sampleID [2]</span><span>
-#&gt;    cellID  expLibSize sampleID sampleName interestingGroups
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> cell001     </span><span style='text-decoration: underline;'>31</span><span>969. sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> cell002     </span><span style='text-decoration: underline;'>49</span><span>291. sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> cell003     </span><span style='text-decoration: underline;'>55</span><span>145. sample2  sample2    sample2          
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> cell004     </span><span style='text-decoration: underline;'>53</span><span>802. sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> cell005     </span><span style='text-decoration: underline;'>96</span><span>257. sample2  sample2    sample2          
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> cell006     </span><span style='text-decoration: underline;'>57</span><span>539. sample2  sample2    sample2          
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> cell007     </span><span style='text-decoration: underline;'>70</span><span>297. sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> cell008     </span><span style='text-decoration: underline;'>46</span><span>842. sample2  sample2    sample2          
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> cell009     </span><span style='text-decoration: underline;'>85</span><span>225. sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> cell010     </span><span style='text-decoration: underline;'>58</span><span>212. sample1  sample1    sample1          
-#&gt; </span><span style='color: #949494;'># … with 90 more rows</span><span></div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metricsPerSample</span>(<span class='no'>sce</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating mean per sample.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 4</span><span>
+#&gt;    cellID         sampleID sampleName interestingGroups
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> ATGCCAGAACGACT sample2  sample2    sample2          
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> CATGGCCTGTGCAT sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> GAACCTGATGAACC sample2  sample2    sample2          
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> TGACTGGATTCTCA sample2  sample2    sample2          
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> AGTCAGACTGCACA sample2  sample2    sample2          
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> TCTGATACACGTGT sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> TGGTATCTAAACAG sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> GCAGCTCTGTTTCT sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> GATATAACACGCAT sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> AATGTTGACAGTCA sample1  sample1    sample1          
+#&gt; </span><span style='color: #949494;'># … with 70 more rows</span><span></div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metricsPerSample</span>(<span class='no'>sce</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating mean per sample.</span></div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 80 x 4</span><span>
 #&gt; </span><span style='color: #949494;'># Groups:   sampleID [2]</span><span>
-#&gt;   sampleID expLibSize sampleName interestingGroups
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sample1      </span><span style='text-decoration: underline;'>61</span><span>185. sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> sample2      </span><span style='text-decoration: underline;'>56</span><span>830. sample2    sample2          </div></span></pre>
+#&gt;    cellID         sampleID sampleName interestingGroups
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> ATGCCAGAACGACT sample2  sample2    sample2          
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> CATGGCCTGTGCAT sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> GAACCTGATGAACC sample2  sample2    sample2          
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> TGACTGGATTCTCA sample2  sample2    sample2          
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> AGTCAGACTGCACA sample2  sample2    sample2          
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> TCTGATACACGTGT sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> TGGTATCTAAACAG sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> GCAGCTCTGTTTCT sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> GATATAACACGCAT sample1  sample1    sample1          
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> AATGTTGACAGTCA sample1  sample1    sample1          
+#&gt; </span><span style='color: #949494;'># … with 70 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -255,6 +267,7 @@ to <code>colnames</code>.</p></li>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
@@ -263,11 +276,14 @@ to <code>colnames</code>.</p></li>
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

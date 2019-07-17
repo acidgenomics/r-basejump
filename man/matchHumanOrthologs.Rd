@@ -9,10 +9,20 @@ matchHumanOrthologs(genes, organism = NULL, ensemblRelease = NULL)
 \arguments{
 \item{genes}{Ensembl gene identifiers.}
 
+\item{organism}{\code{character(1)}.
+Full Latin organism name (e.g. "\code{Homo sapiens}").}
+
 \item{ensemblRelease}{Ensembl release (e.g. 96).}
 }
 \value{
-\code{tbl_df}.
+\code{DataFrame}.
+Data frame containing mapping columns:
+\itemize{
+\item geneID
+\item hgncID
+\item geneName
+\item hgncName
+}
 }
 \description{
 Match human gene orthologs

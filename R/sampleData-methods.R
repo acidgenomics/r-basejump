@@ -116,6 +116,7 @@ sampleData.SummarizedExperiment <-  # nolint
         )
     ) {
         data <- colData(object)
+        if (!hasRows(data)) return(data)
         assert(
             hasRownames(data),
             isFlag(clean),
@@ -199,12 +200,14 @@ sampleData.SingleCellExperiment <-  # nolint
         )
     ) {
         data <- colData(object)
+        if (!hasRows(data)) return(data)
         assert(
             hasRownames(data),
             isFlag(clean),
             isCharacter(ignoreCols, nullOK = TRUE),
             isCharacter(blacklistCols, nullOK = TRUE)
         )
+        interestingGroups <- matchInterestingGroups(object)
 
         # Prepare columns ------------------------------------------------------
         assert(areDisjointSets("interestingGroups", colnames(data)))
@@ -272,28 +275,42 @@ sampleData.SingleCellExperiment <-  # nolint
         # exactly, otherwise we can run into issues where cell-level values
         # appear to be sample level. Create a factor integer table to check for
         # this. Shouldn't apply too often but can happen for some edge cases.
-        levelTbl <- data
+        ftable <- data
         keep <- bapply(
-            X = levelTbl,
+            X = ftable,
             FUN = function(x) {
                 length(unique(x)) == nSamples
             }
         )
-        levelTbl %<>%
-            .[, keep, drop = FALSE] %>%
+        ftable <- ftable[, keep, drop = FALSE]
+        # Don't use `as.factor()` to `as.integer()` chain here. If you have
+        # factors with different levels when sorted alphabetically, this will
+        # not work as expected.
+        #
+        # Example edge case:
+        # - sampleID: sample2, sample
+        # - sampleName: a, b
+        #
+        # See how these factor levels will flip in the index and not match.
+        # Instead, we need to enforce the factor levels by order of appearance.
+        #
+        # ftable here represents a numeric factor index table.
+        ftable %<>%
             as_tibble(rownames = NULL) %>%
-            mutate_all(as.factor) %>%
+            mutate_all(~ factor(., levels = unique(.))) %>%
             mutate_all(as.integer)
+
         trash <- !bapply(
-            X = levelTbl,
+            X = ftable,
             FUN = function(x) {
-                identical(x, levelTbl[["sampleID"]])
+                identical(x, ftable[["sampleID"]])
             }
         )
         if (any(trash)) {
             keep <- setdiff(colnames(data), names(trash[trash]))
             data <- data[, keep, drop = FALSE]
         }
+        assert(isSubset(c("sampleID", interestingGroups), colnames(data)))
 
         # Collapse to sample level ---------------------------------------------
         # Collapse and set the row names to `sampleID`.
@@ -323,7 +340,7 @@ sampleData.SingleCellExperiment <-  # nolint
         # Interesting groups ---------------------------------------------------
         data <- uniteInterestingGroups(
             object = data,
-            interestingGroups = matchInterestingGroups(object)
+            interestingGroups = interestingGroups
         )
 
         # Return ---------------------------------------------------------------
@@ -382,6 +399,7 @@ setMethod(
 
 
 
+# Updated 2019-07-16.
 `sampleData<-.SingleCellExperiment` <-  # nolint
     function(object, value) {
         assert(is(value, "DataFrame"))

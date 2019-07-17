@@ -11,6 +11,7 @@ matchEnsemblReleaseToURL(release)
 Ensembl release (e.g. 96).}
 }
 \value{
+\code{character(1)}.
 URL.
 }
 \description{

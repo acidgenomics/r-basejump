@@ -1,11 +1,17 @@
 #' Match Ensembl release to archive URL.
+#'
 #' @export
+#'
 #' @param release `integer(1)` or `character(1)`.
 #'   Ensembl release (e.g. 96).
-#' @return URL.
+#'
+#' @return `character(1)`.
+#'   URL.
+#'
 #' @examples
 #' matchEnsemblReleaseToURL(96L)
-# Last modified 2019-06-07.
+
+# Updated 2019-07-17.
 matchEnsemblReleaseToURL <- function(release) {
     requireNamespace("biomaRt", quietly = TRUE)
     if (is.null(release)) {

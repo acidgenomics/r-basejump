@@ -29,7 +29,8 @@ geneSynonyms <- function(organism) {
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
     if (species == "Drosophila_melanogaster") {
-        kingdom <- "Invertebrates"
+        # This is covered in full local tests.
+        kingdom <- "Invertebrates"  # nocov
     } else {
         kingdom <- "Mammalia"
     }
@@ -43,6 +44,8 @@ geneSynonyms <- function(organism) {
             protocol = "none"
         )
     } else {
+        # This works unreliably on Travis, so cover locally instead.
+        # nocov start
         file <- pasteURL(
             "ftp.ncbi.nih.gov",
             "gene",
@@ -52,6 +55,7 @@ geneSynonyms <- function(organism) {
             paste0(genome[["species"]], ".gene_info.gz"),
             protocol = "ftp"
         )
+        # nocov end
     }
 
     data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
@@ -69,10 +73,13 @@ geneSynonyms <- function(organism) {
 
     # Sanitize the identifiers.
     if (organism == "Drosophila melanogaster") {
+        # This is covered in full local tests.
+        # nocov start
         data <- mutate(
             data,
             geneID = str_extract(!!sym("dbXrefs"), "\\bFBgn[0-9]{7}\\b")
         )
+        # nocov end
     } else {
         data <- mutate(
             data,
