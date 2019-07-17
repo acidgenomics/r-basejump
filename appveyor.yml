@@ -34,6 +34,7 @@ build_script:
   - travis-tool.sh install_bioc DelayedArray
   - travis-tool.sh install_bioc ensembldb
   - travis-tool.sh install_bioc biomaRt
+  - travis-tool.sh install_bioc EnsDb.Hsapiens.v75
   - travis-tool.sh install_bioc_deps
 
 test_script:
