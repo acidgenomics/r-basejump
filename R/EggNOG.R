@@ -22,7 +22,9 @@ EggNOG <-  # nolint
                 protocol = "none"
             )
         } else {
+            # This is slow and unreliable on Travis, so cover locally.
             # EggNOG database doesn't support HTTPS currently.
+            # nocov start
             url <- pasteURL(
                 "eggnog5.embl.de", "download", "latest",
                 protocol = "http"
@@ -39,6 +41,7 @@ EggNOG <-  # nolint
                 url, "data", "NOG", "NOG.annotations.tsv.gz",
                 protocol = "none"
             )
+            # nocov end
         }
         assert(
             isString(categoriesFile),
