@@ -1,6 +1,26 @@
 context("Ensembl2Entrez")
 
-test_that("Ensembl2Entrez", {
-    x <- Ensembl2Entrez(rse)
-    expect_s4_class(x, "Ensembl2Entrez")
-})
+format <- methodFormals(
+    f = "Ensembl2Entrez",
+    signature = "SummarizedExperiment",
+    package = "basejump"
+) %>%
+    .[["format"]] %>%
+    eval()
+
+# Note that this method currently calls `rowData()` and uses DataFrame method.
+with_parameters_test_that(
+    "SummarizedExperiment / DataFrame", {
+        object <- Ensembl2Entrez(object = rse, format = format)
+        expect_s4_class(object, "Ensembl2Entrez")
+    },
+    format = format
+)
+
+with_parameters_test_that(
+    "GRanges", {
+        object <- Ensembl2Entrez(object = rowRanges(rse), format = format)
+        expect_s4_class(object, "Ensembl2Entrez")
+    },
+    format = format
+)
