@@ -3,13 +3,13 @@
 \docType{data}
 \name{basejumpTestsURL}
 \alias{basejumpTestsURL}
-\title{acid.test data URL}
+\title{basejump test data URL}
 \format{An object of class \code{character} of length 1.}
 \usage{
 basejumpTestsURL
 }
 \description{
-acid.test data URL
+basejump test data URL
 }
 \examples{
 basejumpTestsURL
