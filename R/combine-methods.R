@@ -23,27 +23,58 @@
 #'
 #' @examples
 #' data(rse, sce, package = "acidtest")
+#' str_pad <- stringr::str_pad
 #'
 #' ## SummarizedExperiment ====
 #' x <- rse
-#' colnames(x) <- paste0("sample", seq_len(ncol(x)))
+#' colnames(x) <- paste0(
+#'     "sample",
+#'     str_pad(
+#'         string = seq_len(ncol(x)),
+#'         width = 2L,
+#'         pad = "0"
+#'     )
+#' )
 #'
 #' y <- x
-#' colnames(y) <- paste0("sample", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
+#' colnames(y) <- paste0(
+#'     "sample",
+#'     str_pad(
+#'         string = seq(from = ncol(y) + 1L, to = ncol(y) * 2L),
+#'         width = 2L,
+#'         pad = "0"
+#'     )
+#' )
 #'
 #' ## Combine the two objects.
 #' c <- combine(x, y)
+#' sampleData(c)
 #' print(c)
 #'
 #' ## SingleCellExperiment ====
 #' x <- sce
-#' colnames(x) <- paste0("cell", seq_len(ncol(x)))
+#' colnames(x) <- paste0(
+#'     "cell",
+#'     str_pad(
+#'         string = seq_len(ncol(x)),
+#'         width = 4L,
+#'         pad = "0"
+#'     )
+#' )
 #'
 #' y <- x
-#' colnames(y) <- paste0("cell", seq_len(ncol(y)) + ncol(y))
+#' colnames(y) <- paste0(
+#'     "cell",
+#'     str_pad(
+#'         string = seq_len(ncol(y)) + ncol(y),
+#'         width = 4L,
+#'         pad = "0"
+#'     )
+#' )
 #'
 #' ## Combine the two objects.
 #' c <- combine(x, y)
+#' sampleData(c)
 #' print(c)
 NULL
 
