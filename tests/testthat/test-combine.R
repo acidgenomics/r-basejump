@@ -2,11 +2,25 @@ context("combine")
 
 test_that("SummarizedExperiment", {
     x <- rse
-    colnames(x) <- paste0("sample", seq_len(ncol(x)))
+    colnames(x) <- paste0(
+        "sample",
+        str_pad(
+            string = seq_len(ncol(x)),
+            width = 2L,
+            pad = "0"
+        )
+    )
 
     # Create a copy of our minimal example.
     y <- x
-    colnames(y) <- paste0("sample", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
+    colnames(y) <- paste0(
+        "sample",
+        str_pad(
+            string = seq(from = ncol(y) + 1L, to = ncol(y) * 2L),
+            width = 2L,
+            pad = "0"
+        )
+    )
 
     # Combine the two objects.
     c <- combine(x, y)
@@ -36,11 +50,25 @@ test_that("SummarizedExperiment", {
 
 test_that("SingleCellExperiment", {
     x <- sce
-    colnames(x) <- paste0("cell", seq_len(ncol(x)))
+    colnames(x) <- paste0(
+        "cell",
+        str_pad(
+            string = seq_len(ncol(x)),
+            width = 4L,
+            pad = "0"
+        )
+    )
 
     # Here we're faking a distinct replicate, just as an example.
     y <- x
-    colnames(y) <- paste0("cell", seq_len(ncol(y)) + ncol(y))
+    colnames(y) <- paste0(
+        "cell",
+        str_pad(
+            string = seq_len(ncol(y)) + ncol(y),
+            width = 4L,
+            pad = "0"
+        )
+    )
 
     # Increase the sample ID numbers.
     sampleID <- y[["sampleID"]]
