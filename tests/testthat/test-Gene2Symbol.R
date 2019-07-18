@@ -1,6 +1,6 @@
 context("Gene2Symbol")
 
-eval(formals(Gene2Symbol.SummarizedExperiment)[["format"]])
+format <- eval(formals(Gene2Symbol.SummarizedExperiment)[["format"]])
 
 with_parameters_test_that(
     "Gene2Symbol", {
