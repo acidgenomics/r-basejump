@@ -28,6 +28,19 @@
 \alias{theme_midnight}
 \alias{theme_paperwhite}
 \alias{tx2geneFromGFF}
+\alias{assertAreGeneAnnotations}
+\alias{assertFormalGene2symbol}
+\alias{assertFormalInterestingGroups}
+\alias{assertIsAHeaderLevel}
+\alias{assertIsAStringOrNULL}
+\alias{assertIsAnImplicitInteger}
+\alias{assertIsAnImplicitIntegerOrNULL}
+\alias{assertIsColorScaleDiscreteOrNULL}
+\alias{assertIsFillScaleDiscreteOrNULL}
+\alias{assertIsGene2symbol}
+\alias{assertIsHexColorFunctionOrNULL}
+\alias{assertIsImplicitInteger}
+\alias{assertIsTx2gene}
 \title{Defunct functions}
 \usage{
 aggregateFeatures(...)
@@ -81,6 +94,32 @@ theme_midnight(...)
 theme_paperwhite(...)
 
 tx2geneFromGFF(...)
+
+assertAreGeneAnnotations(...)
+
+assertFormalGene2symbol(...)
+
+assertFormalInterestingGroups(...)
+
+assertIsAHeaderLevel(...)
+
+assertIsAStringOrNULL(...)
+
+assertIsAnImplicitInteger(...)
+
+assertIsAnImplicitIntegerOrNULL(...)
+
+assertIsColorScaleDiscreteOrNULL(...)
+
+assertIsFillScaleDiscreteOrNULL(...)
+
+assertIsGene2symbol(...)
+
+assertIsHexColorFunctionOrNULL(...)
+
+assertIsImplicitInteger(...)
+
+assertIsTx2gene(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
@@ -90,5 +129,23 @@ tx2geneFromGFF(...)
 }
 \description{
 Defunct functions
+}
+\examples{
+a <- function(...) {
+    .Defunct("b")
+}
+
+withCallingHandlers(
+    expr = tryCatch(
+        expr = a(1L),
+        error = function(e) {
+            print(e)
+            invisible()
+        }
+    )
+)
+}
+\seealso{
+\link[base:Defunct]{Defunct}.
 }
 \keyword{internal}
