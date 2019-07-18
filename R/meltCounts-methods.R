@@ -37,33 +37,20 @@ NULL
 
 
 # Updated 2019-07-18.
-meltCounts.SummarizedExperiment <-  # nolint
+meltCounts.matrix <-  # nolint
     function(
         object,
-        assay = 1L,
         minCounts = 1L,
         minCountsMethod = c("perFeature", "absolute"),
         trans = c("identity", "log2", "log10")
     ) {
         validObject(object)
         assert(
-            isScalar(assay),
             isInt(minCounts),
             isGreaterThanOrEqualTo(minCounts, 1L)
         )
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
-
-        # Get the sample metadata.
-        sampleData <- sampleData(object) %>%
-            as_tibble(rownames = "rowname") %>%
-            rename(colname = !!sym("rowname"))
-
-        # Prepare the count matrix.
-        counts <- assays(object)[[assay]]
-        assert(hasLength(counts))
-        # Always coerce to dense matrix prior to melt operation.
-        counts <- as.matrix(counts)
 
         # Filter rows that don't pass our `minCounts` expression cutoff. Note
         # that we're ensuring rows containing all zeros are always dropped,
@@ -73,21 +60,22 @@ meltCounts.SummarizedExperiment <-  # nolint
         } else {
             rowCutoff <- 1L
         }
-        keep <- rowSums(counts) >= rowCutoff
+        keep <- rowSums(object) >= rowCutoff
         if (minCountsMethod == "perFeature") {
             message(paste(
-                sum(keep, na.rm = TRUE), "/", nrow(counts),
+                sum(keep, na.rm = TRUE), "/", nrow(object),
                 "features passed minimum rowSums() >=", rowCutoff,
                 "expression cutoff."
             ))
         }
-        counts <- counts[keep, , drop = FALSE]
+        object <- object[keep, , drop = FALSE]
 
         # Ensure that no zero rows propagate.
-        assert(!any(rowSums(counts) == 0L))
+        assert(!any(rowSums(object) == 0L))
 
         # Now ready to return as melted tibble.
-        melt <- counts %>%
+        # FIXME This is breaking in working example.
+        melt <- object %>%
             # Using reshape2 method here.
             # This sets rownames as "Var1" and colnames as "Var2".
             melt(id = 1L, value.name = "counts") %>%
@@ -96,16 +84,13 @@ meltCounts.SummarizedExperiment <-  # nolint
                 rowname = !!sym("Var1"),
                 colname = !!sym("Var2")
             ) %>%
-            mutate_if(is.factor, as.character) %>%
-            left_join(sampleData, by = "colname") %>%
-            mutate_if(is.character, as.factor) %>%
             group_by(!!!syms(c("colname", "rowname")))
 
         # When applying an absolute threshold using `minCountsMethod`, apply
         # this cutoff prior to logarithmic transformation.
         if (minCountsMethod == "absolute") {
             nPrefilter <- nrow(melt)
-            melt %<>% filter(counts >= !!minCounts)
+            melt %<>% filter(!!sym("counts") >= !!minCounts)
             message(paste(
                 nrow(melt), "/", nPrefilter,
                 "melted rows passed minimum >=", minCounts,
@@ -127,6 +112,61 @@ meltCounts.SummarizedExperiment <-  # nolint
 
         melt
     }
+
+
+
+#' @rdname meltCounts
+#' @export
+setMethod(
+    f = "meltCounts",
+    signature = signature("matrix"),
+    definition = meltCounts.matrix
+)
+
+
+
+# Updated 2019-07-18.
+meltCounts.SummarizedExperiment <-  # nolint
+    function(
+        object,
+        assay = 1L,
+        minCounts,
+        minCountsMethod,
+        trans
+    ) {
+        validObject(object)
+        assert(isScalar(assay))
+        minCountsMethod <- match.arg(minCountsMethod)
+        trans <- match.arg(trans)
+
+        # Prepare the count matrix.
+        counts <- assays(object)[[assay]]
+        assert(hasLength(counts))
+        counts <- as.matrix(counts)
+
+        # Get the sample metadata.
+        sampleData <- sampleData(object) %>%
+            as_tibble(rownames = "rowname") %>%
+            rename(colname = !!sym("rowname"))
+
+        # Passing to matrix method.
+        meltCounts(
+            object = counts,
+            minCounts = minCounts,
+            minCountsMethod = minCountsMethod,
+            trans = trans
+        ) %>%
+            ungroup() %>%
+            mutate_if(is.factor, as.character) %>%
+            left_join(sampleData, by = "colname") %>%
+            mutate_if(is.character, as.factor) %>%
+            group_by(!!!syms(c("colname", "rowname")))
+    }
+
+args <- c("minCounts", "minCountsMethod", "trans")
+formals(meltCounts.SummarizedExperiment)[args] <-
+    formals(meltCounts.matrix)[args]
+rm(args)
 
 
 
