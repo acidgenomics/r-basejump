@@ -75,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.12</span>
       </span>
     </div>
 
@@ -256,7 +256,20 @@
 
 <span class='co'>## Combine the two objects.</span>
 <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays:</span>
-#&gt; <span class='message'>[1] "counts"</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+#&gt; <span class='message'>[1] "counts"</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 24 rows and 3 columns
+#&gt;          condition sampleName interestingGroups
+#&gt;           &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
+#&gt; sample01         A   sample01                 A
+#&gt; sample02         A   sample02                 A
+#&gt; sample03         A   sample03                 A
+#&gt; sample04         A   sample04                 A
+#&gt; sample05         A   sample05                 A
+#&gt; ...            ...        ...               ...
+#&gt; sample20         B   sample20                 B
+#&gt; sample21         B   sample21                 B
+#&gt; sample22         B   sample22                 B
+#&gt; sample23         B   sample23                 B
+#&gt; sample24         B   sample24                 B</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 24 
 #&gt; metadata(6): version date ... wd sessionInfo
 #&gt; assays(1): counts
@@ -287,7 +300,11 @@
 
 <span class='co'>## Combine the two objects.</span>
 <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays:</span>
-#&gt; <span class='message'>[1] "counts"    "logcounts"</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+#&gt; <span class='message'>[1] "counts"    "logcounts"</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt;         sampleName interestingGroups
+#&gt;           &lt;factor&gt;          &lt;factor&gt;
+#&gt; sample2    sample2           sample2
+#&gt; sample1    sample1           sample1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 230 160 
 #&gt; metadata(4): date combine wd sessionInfo
 #&gt; assays(2): counts logcounts
