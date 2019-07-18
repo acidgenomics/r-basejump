@@ -2,10 +2,10 @@
 #' @inherit bioverbs::meltCounts
 #'
 #' @inheritParams params
-#' @param minCounts `integer(1)`.
-#'   Minimum count threshold to apply. Filters using "greater than or equal to"
-#'   logic internally. Note that this threshold gets applied prior to
-#'   logarithmic transformation, when `trans` argument applies.
+#' @param minCounts `integer(1)` or `NULL`.
+#'   Minimum count threshold to apply. Disable with `NULL`. Filters using
+#'   "greater than or equal to" logic internally. Note that this threshold gets
+#'   applied prior to logarithmic transformation, when `trans` argument applies.
 #' @param minCountsMethod `character(1)`.
 #'   Uses [`match.arg()`][base::match.arg].
 #'
@@ -46,8 +46,7 @@ meltCounts.matrix <-  # nolint
     ) {
         validObject(object)
         assert(
-            isInt(minCounts),
-            isGreaterThanOrEqualTo(minCounts, 1L)
+            isInt(minCounts, nullOK = TRUE),
         )
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
@@ -55,26 +54,29 @@ meltCounts.matrix <-  # nolint
         # Filter rows that don't pass our `minCounts` expression cutoff. Note
         # that we're ensuring rows containing all zeros are always dropped,
         # even when `minCountsMethod = "absolute"`.
-        if (minCountsMethod == "perFeature") {
-            rowCutoff <- minCounts
-        } else {
-            rowCutoff <- 1L
-        }
-        keep <- rowSums(object) >= rowCutoff
-        if (minCountsMethod == "perFeature") {
-            message(paste(
-                sum(keep, na.rm = TRUE), "/", nrow(object),
-                "features passed minimum rowSums() >=", rowCutoff,
-                "expression cutoff."
-            ))
-        }
-        object <- object[keep, , drop = FALSE]
+        if (isInt(minCounts)) {
+            assert(isGreaterThanOrEqualTo(minCounts, 1L))
 
-        # Ensure that no zero rows propagate.
-        assert(!any(rowSums(object) == 0L))
+            if (minCountsMethod == "perFeature") {
+                rowCutoff <- minCounts
+            } else {
+                rowCutoff <- 1L
+            }
+            keep <- rowSums(object) >= rowCutoff
+            if (minCountsMethod == "perFeature") {
+                message(paste(
+                    sum(keep, na.rm = TRUE), "/", nrow(object),
+                    "features passed minimum rowSums() >=", rowCutoff,
+                    "expression cutoff."
+                ))
+            }
+            object <- object[keep, , drop = FALSE]
 
-        # Now ready to return as melted tibble.
-        # FIXME This is breaking in working example.
+            # Ensure that no zero rows propagate.
+            assert(!any(rowSums(object) == 0L))
+        }
+
+        # Return as melted tibble.
         melt <- object %>%
             # Using reshape2 method here.
             # This sets rownames as "Var1" and colnames as "Var2".
@@ -88,7 +90,10 @@ meltCounts.matrix <-  # nolint
 
         # When applying an absolute threshold using `minCountsMethod`, apply
         # this cutoff prior to logarithmic transformation.
-        if (minCountsMethod == "absolute") {
+        if (
+            isInt(minCounts) &&
+            minCountsMethod == "absolute"
+        ) {
             nPrefilter <- nrow(melt)
             melt %<>% filter(!!sym("counts") >= !!minCounts)
             message(paste(
@@ -100,6 +105,7 @@ meltCounts.matrix <-  # nolint
 
         # Log transform the counts, if desired.
         if (trans != "identity") {
+            assert(isInt(minCounts))
             message(paste0("Applying ", trans, "(x + 1) transformation."))
             fun <- get(
                 x = trans,
