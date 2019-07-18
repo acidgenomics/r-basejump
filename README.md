@@ -9,18 +9,16 @@ Base functions for bioinformatics and [R][] package development.
 
 ## Installation
 
-### [Bioconductor][] method
-
-We recommend installing the package with [BiocManager][].
+### [R][] method
 
 ```r
-Sys.setenv(R_REMOTES_UPGRADE = "always")
-if (!requireNamespace("BiocManager", quietly = TRUE)) {
-    install.packages("BiocManager")
+if (!requireNamespace("remotes", quietly = TRUE)) {
+    install.packages("remotes")
 }
-library(BiocManager)
-install("remotes")
-install("acidgenomics/basejump")
+Sys.setenv(R_REMOTES_UPGRADE = "always")
+# Set `GITHUB_PAT` in `~/.Renviron` if you get a rate limit error.
+remotes::install_github("acidgenomics/basejump")
+remotes::update_packages()
 ```
 
 ### [conda][] method

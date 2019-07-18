@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.12</span>
       </span>
     </div>
 
@@ -161,7 +161,12 @@ should only be called prior to writing files to disk.</p>
 #&gt; 
 #&gt; [[2]]
 #&gt; [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
-#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>humanize</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>Making the rownames and colnames human readable.</span></div><div class='output co'>#&gt; <span class='error'>Error in bapply(X = data, FUN = is.factor): could not find function "bapply"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>x</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; <span class='error'>Error in lapply(dimnames(x), head): object 'x' not found</span></div><div class='input'>
+#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>humanize</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>Making the rownames and colnames human readable.</span></div><div class='output co'>#&gt; <span class='message'>Returning with the sample names unmodified.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>x</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
+#&gt; </div><div class='input'>
 
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>sce</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
