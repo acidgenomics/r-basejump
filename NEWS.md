@@ -1,3 +1,16 @@
+## basejump 0.10.12 (2019-07-18)
+
+### Minor changes
+
+- Bug fix for `combine` method on SummarizedExperiment. Needed to ensure row
+  names are assigned on rowData to provide backward compatibility for Bioc 3.7.
+- Improved unit test exceptions on Docker and AppVeyor.
+- Improved installation instructions.
+
+### Deprecations
+
+- Tightened up the list of deprecated functions.
+
 ## basejump 0.10.11 (2019-07-17)
 
 ### Minor changes

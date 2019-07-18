@@ -1,12 +1,6 @@
 context("Ensembl2Entrez")
 
-format <- methodFormals(
-    f = "Ensembl2Entrez",
-    signature = "SummarizedExperiment",
-    package = "basejump"
-) %>%
-    .[["format"]] %>%
-    eval()
+format <- eval(formals(Ensembl2Entrez.SummarizedExperiment)[["format"]])
 
 # Note that this method currently calls `rowData()` and uses DataFrame method.
 with_parameters_test_that(
