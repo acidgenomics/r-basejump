@@ -1,3 +1,9 @@
+## basejump 0.10.12 (UNRELEASED)
+
+### Deprecations
+
+- Tightened up the list of deprecated functions.
+
 ## basejump 0.10.11 (2019-07-17)
 
 ### Minor changes
