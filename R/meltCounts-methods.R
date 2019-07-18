@@ -45,9 +45,7 @@ meltCounts.matrix <-  # nolint
         trans = c("identity", "log2", "log10")
     ) {
         validObject(object)
-        assert(
-            isInt(minCounts, nullOK = TRUE),
-        )
+        assert(isInt(minCounts, nullOK = TRUE))
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
 
