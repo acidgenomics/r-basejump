@@ -1,5 +1,10 @@
 ## basejump 0.10.12 (UNRELEASED)
 
+### Minor changes
+
+- Bug fix for `combine` method on SummarizedExperiment. Needed to ensure row
+  names are assigned on rowData to provide backward compatibility for Bioc 3.7.
+
 ### Deprecations
 
 - Tightened up the list of deprecated functions.
