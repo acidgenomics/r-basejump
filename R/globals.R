@@ -2,16 +2,16 @@ globalVariables(".")
 
 
 
-packageVersion <- packageVersion("basejump")
+.version <- packageVersion("basejump")
 
-#' acid.test data URL
+#' basejump test data URL
 #' @keywords internal
 #' @export
 #' @examples
 #' basejumpTestsURL
 basejumpTestsURL <- paste0(
     "http://tests.acidgenomics.com/basejump/",
-    "v", packageVersion$major, ".", packageVersion$minor  # nolint
+    "v", .version$major, ".", .version$minor  # nolint
 )
 
 

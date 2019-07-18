@@ -1,12 +1,6 @@
 context("Gene2Symbol")
 
-format <- methodFormals(
-    f = "Gene2Symbol",
-    signature = "SummarizedExperiment",
-    package = "basejump"
-) %>%
-    .[["format"]] %>%
-    eval()
+format <- eval(formals(Gene2Symbol.SummarizedExperiment)[["format"]])
 
 with_parameters_test_that(
     "Gene2Symbol", {

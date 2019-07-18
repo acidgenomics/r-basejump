@@ -14,19 +14,6 @@
 \alias{readYAML}
 \alias{markdownPlotlist}
 \alias{mdPlotlist}
-\alias{assertAreGeneAnnotations}
-\alias{assertFormalGene2symbol}
-\alias{assertFormalInterestingGroups}
-\alias{assertIsAHeaderLevel}
-\alias{assertIsAStringOrNULL}
-\alias{assertIsAnImplicitInteger}
-\alias{assertIsAnImplicitIntegerOrNULL}
-\alias{assertIsColorScaleDiscreteOrNULL}
-\alias{assertIsFillScaleDiscreteOrNULL}
-\alias{assertIsGene2symbol}
-\alias{assertIsHexColorFunctionOrNULL}
-\alias{assertIsImplicitInteger}
-\alias{assertIsTx2gene}
 \alias{separatorBar}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
@@ -52,32 +39,6 @@ markdownPlotlist(plotlist, ...)
 
 mdPlotlist(plotlist, ...)
 
-assertAreGeneAnnotations(x)
-
-assertFormalGene2symbol(x, genes, gene2symbol)
-
-assertFormalInterestingGroups(x, interestingGroups)
-
-assertIsAHeaderLevel(x)
-
-assertIsAStringOrNULL(x)
-
-assertIsAnImplicitInteger(x)
-
-assertIsAnImplicitIntegerOrNULL(x)
-
-assertIsColorScaleDiscreteOrNULL(x)
-
-assertIsFillScaleDiscreteOrNULL(x)
-
-assertIsGene2symbol(x)
-
-assertIsHexColorFunctionOrNULL(x)
-
-assertIsImplicitInteger(x)
-
-assertIsTx2gene(x)
-
 separatorBar
 }
 \arguments{
@@ -86,28 +47,38 @@ separatorBar
 \item{plotlist}{\code{list}.
 List containing \code{ggplot} objects.}
 
-\item{x}{Object.}
-
-\item{genes}{\code{character}.
-Gene identifiers. It is considered better practice to input the stable gene
-identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
-symbols (e.g. "TSPN6"), if possible.}
-
-\item{gene2symbol}{\code{Gene2Symbol}.
-Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
-\code{Gene2Symbol} for more information.}
+\item{object}{Object.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
 \code{sampleName}.}
-
-\item{object}{Object.}
 }
 \value{
 \code{.Deprecated}.
 }
 \description{
 Deprecated functions
+}
+\examples{
+a <- function(...) {
+    .Deprecated("b")
+    b(...)
+}
+
+b <- function(x) {
+    x + 1L
+}
+
+withCallingHandlers(
+    expr = a(1L),
+    warning = function(w) {
+        print(w)
+        invokeRestart("muffleWarning")
+    }
+)
+}
+\seealso{
+\link[base:Deprecated]{Deprecated}.
 }
 \keyword{datasets}
 \keyword{internal}

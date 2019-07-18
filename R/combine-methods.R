@@ -134,8 +134,10 @@ combine.SummarizedExperiment <-  # nolint
             rowData <- NULL
         } else {
             assert(identical(rowData(x), rowData(y)))
-            rowData <- rowData(x)
             rowRanges <- NULL
+            rowData <- rowData(x)
+            # This provides backward compatibility for BioC 3.7.
+            rownames(rowData) <- rownames(x)
         }
 
         # Column data ----------------------------------------------------------
