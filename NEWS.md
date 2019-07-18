@@ -6,6 +6,8 @@
   names are assigned on rowData to provide backward compatibility for Bioc 3.7.
 - Improved unit test exceptions on Docker and AppVeyor.
 - Improved installation instructions.
+- `mapGenesToRownames`: Improved matching for `SummarizedExperiment` objects
+  that don't contain gene-to-symbol mappings defined in `rowData`.
 
 ### Deprecations
 

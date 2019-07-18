@@ -152,21 +152,58 @@ setMethod(
 
 
 
+# Updated 2019-07-19.
 mapGenesToRownames.SummarizedExperiment <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        suppressMessages(
-            g2s <- Gene2Symbol(object)
+        assert(isFlag(strict))
+
+        # Check to see if object contains gene-to-symbol mappings.
+        g2s <- tryCatch(
+            expr = {
+                suppressMessages(
+                    g2s <- Gene2Symbol(object)
+                )
+            },
+            error = function(e) {
+                NULL
+            }
         )
-        assert(identical(rownames(g2s), rownames(object)))
-        do.call(
-            what = mapGenesToRownames,
-            args = list(
-                object = g2s,
-                genes = genes,
-                strict = strict
+
+        if (is(g2s, "Gene2Symbol")) {
+            assert(identical(rownames(g2s), rownames(object)))
+            do.call(
+                what = mapGenesToRownames,
+                args = list(
+                    object = g2s,
+                    genes = genes,
+                    strict = strict
+                )
             )
-        )
+        } else {
+            # Match the user input `genes` vector to the table.
+            table <- rownames(object)
+            match <- match(x = genes, table = table)
+            names(match) <- genes
+
+            # Stop or warn if there are unmapped genes.
+            if (isTRUE(strict)) {
+                fun <- stop
+            } else {
+                fun <- warning
+            }
+            unmapped <- which(is.na(match))
+            if (length(unmapped) > 0L) {
+                fun(paste(
+                    "Some genes failed to map:", toString(genes[unmapped])
+                ), call. = FALSE)
+            }
+
+            # Return the identifiers that map to rownames.
+            mapped <- na.omit(match)
+            assert(hasLength(mapped))
+            genes[mapped]
+        }
     }
 
 
