@@ -36,6 +36,7 @@ NULL
 
 
 
+# Updated 2019-07-18.
 meltCounts.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -56,8 +57,7 @@ meltCounts.SummarizedExperiment <-  # nolint
         # Get the sample metadata.
         sampleData <- sampleData(object) %>%
             as_tibble(rownames = "rowname") %>%
-            rename(colname = !!sym("rowname")) %>%
-            mutate_all(as.factor)
+            rename(colname = !!sym("rowname"))
 
         # Prepare the count matrix.
         counts <- assays(object)[[assay]]
@@ -96,9 +96,10 @@ meltCounts.SummarizedExperiment <-  # nolint
                 rowname = !!sym("Var1"),
                 colname = !!sym("Var2")
             ) %>%
+            mutate_if(is.factor, as.character) %>%
+            left_join(sampleData, by = "colname") %>%
             mutate_if(is.character, as.factor) %>%
-            group_by(!!!syms(c("colname", "rowname"))) %>%
-            left_join(sampleData, by = "colname")
+            group_by(!!!syms(c("colname", "rowname")))
 
         # When applying an absolute threshold using `minCountsMethod`, apply
         # this cutoff prior to logarithmic transformation.
