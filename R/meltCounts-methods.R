@@ -21,7 +21,9 @@
 #'
 #' @examples
 #' data(rse, package = "acidtest")
-#' x <- meltCounts(rse)
+#' dim(rse)
+#' x <- meltCounts(rse, minCounts = NULL)
+#' nrow(x)
 #' print(x)
 NULL
 

@@ -56,7 +56,9 @@ Melt count matrix into long format
 }
 \examples{
 data(rse, package = "acidtest")
-x <- meltCounts(rse)
+dim(rse)
+x <- meltCounts(rse, minCounts = NULL)
+dim(x)
 print(x)
 }
 \seealso{
