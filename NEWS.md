@@ -9,6 +9,7 @@
 - `mapGenesToRownames`: Improved matching for `SummarizedExperiment` objects
   that don't contain gene-to-symbol mappings defined in `rowData`.
 - `meltCounts`: Improved factor handling. Also added `matrix` method support.
+  Added advanced option to disable `minCounts` filtering, by setting as `NULL`.
 
 ### Deprecations
 
