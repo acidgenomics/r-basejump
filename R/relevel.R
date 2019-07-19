@@ -1,3 +1,9 @@
+# FIXME Consider moving these to transformer package.
+# FIXME Convert to S3 methods.
+# FIXME Consider adding SummarizedExperiment method support.
+
+
+
 #' Relevel row or column data
 #'
 #' @name relevel
@@ -9,50 +15,31 @@
 #' @examples
 #' data(rse, package = "acidtest")
 #'
-#' rowRanges <- SummarizedExperiment::rowRanges(rse)
-#' x <- relevelRowRanges(rowRanges)
+#' ## DataFrame
+#' df <- SummarizedExperiment::rowData(rse)
+#' x <- relevel(df)
 #' summary(x)
 #'
-#' colData <- SummarizedExperiment::colData(rse)
-#' x <- relevelColData(colData)
+#' ## GRanges
+#' gr <- SummarizedExperiment::rowRanges(rse)
+#' x <- relevel(gr)
 #' summary(x)
 NULL
 
 
 
 #' @rdname relevel
+#' @name relevel
+#' @importFrom stats relevel
 #' @export
-relevelRowRanges <- function(object) {
-    assert(is(object, "GRanges"))
-    message("Releveling factors in rowRanges.")
-    mcols <- mcols(object)
-    mcols <- DataFrame(lapply(
-        X = mcols,
-        FUN = function(x) {
-            if (is.factor(x)) {
-                droplevels(x)
-            } else if (is(x, "Rle")) {
-                x <- decode(x)
-                if (is.factor(x)) {
-                    x <- droplevels(x)
-                }
-                Rle(x)
-            } else {
-                I(x)
-            }
-        }
-    ))
-    mcols(object) <- mcols
-    object
-}
+NULL
 
 
 
-#' @rdname relevel
+#' @method relevel DataFrame
 #' @export
-relevelColData <- function(object) {
-    assert(is(object, "DataFrame"))
-    message("Releveling factors in colData.")
+# Updated 2019-07-19.
+relevel.DataFrame <- function(object) {
     DataFrame(
         lapply(
             X = object,
@@ -72,4 +59,51 @@ relevelColData <- function(object) {
         ),
         row.names = rownames(object)
     )
+}
+
+
+
+#' @method relevel GRanges
+#' @export
+# Updated 2019-07-19.
+relevel.GRanges <- function(object) {
+    mcols(object) <- relevel(mcols(object))
+    object
+}
+
+
+
+# Deprecations =================================================================
+# FIXME Deprecate in favor of `relevel`.
+#' @rdname relevel
+#' @export
+# Updated 2019-07-19.
+relevelColData <- function(object) {
+    .Deprecated("relevel")
+    assert(is(object, "DataFrame"))
+    relevel(object)
+}
+
+
+
+# FIXME Deprecate in favor of `relevel`.
+#' @rdname relevel
+#' @export
+# Updated 2019-07-19.
+relevelRowData <- function(object) {
+    .Deprecated("relevel")
+    assert(is(object, "DataFrame"))
+    relevel(object)
+}
+
+
+
+# FIXME Deprecate in favor of `relevel`.
+#' @rdname relevel
+#' @export
+# Updated 2019-07-19.
+relevelRowRanges <- function(object) {
+    .Deprecated("relevel")
+    assert(is(object, "GRanges"))
+    relevel(object)
 }
