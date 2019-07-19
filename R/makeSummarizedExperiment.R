@@ -81,6 +81,8 @@
 #'     transgeneNames = "EGFP"
 #' )
 #' print(x)
+
+# Updated 2019-07-19.
 makeSummarizedExperiment <- function(
     assays,
     rowRanges = NULL,  # recommended
@@ -213,6 +215,7 @@ makeSummarizedExperiment <- function(
     rm(data)
 
     # Automatically arrange the rows to match the main assay.
+    # FIXME Need to relevel the factors here automatically.
     if (is(rowRanges, "GRanges")) {
         assert(hasNames(rowRanges))
         assert(isSubset(rownames(assay), names(rowRanges)))
