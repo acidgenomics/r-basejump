@@ -2,13 +2,16 @@
 % Please edit documentation in R/relevel.R
 \name{relevel}
 \alias{relevel}
-\alias{relevelRowRanges}
 \alias{relevelColData}
+\alias{relevelRowData}
+\alias{relevelRowRanges}
 \title{Relevel row or column data}
 \usage{
-relevelRowRanges(object)
-
 relevelColData(object)
+
+relevelRowData(object)
+
+relevelRowRanges(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -23,11 +26,13 @@ Relevel row or column data
 \examples{
 data(rse, package = "acidtest")
 
-rowRanges <- SummarizedExperiment::rowRanges(rse)
-x <- relevelRowRanges(rowRanges)
+## DataFrame
+df <- SummarizedExperiment::rowData(rse)
+x <- relevel(df)
 summary(x)
 
-colData <- SummarizedExperiment::colData(rse)
-x <- relevelColData(colData)
+## GRanges
+gr <- SummarizedExperiment::rowRanges(rse)
+x <- relevel(gr)
 summary(x)
 }
