@@ -1,10 +1,7 @@
-context("Metadata")
+context("detectOrganism")
 
-
-
-## detectOrganism ===============================================================
 with_parameters_test_that(
-    "detectOrganism : Homo sapiens", {
+    "Homo sapiens", {
         expect_identical(
             object = detectOrganism(object),
             expected = "Homo sapiens"
@@ -38,7 +35,7 @@ with_parameters_test_that(
 )
 
 with_parameters_test_that(
-    "detectOrganism : Rattus norvegicus", {
+    "Rattus norvegicus", {
         expect_identical(
             object = detectOrganism(object),
             expected = "Rattus norvegicus"
@@ -55,7 +52,7 @@ with_parameters_test_that(
 )
 
 with_parameters_test_that(
-    "detectOrganism : Danio rerio", {
+    "Danio rerio", {
         expect_identical(
             object = detectOrganism(object),
             expected = "Danio rerio"
@@ -72,7 +69,7 @@ with_parameters_test_that(
 )
 
 with_parameters_test_that(
-    "detectOrganism : Drosophila melanogaster", {
+    "Drosophila melanogaster", {
         expect_identical(
             object = detectOrganism(object),
             expected = "Drosophila melanogaster"
@@ -89,7 +86,7 @@ with_parameters_test_that(
 )
 
 with_parameters_test_that(
-    "detectOrganism : Caenorhabditis elegans", {
+    "Caenorhabditis elegans", {
         expect_identical(
             object = detectOrganism(object),
             expected = "Caenorhabditis elegans"
@@ -105,7 +102,7 @@ with_parameters_test_that(
 )
 
 with_parameters_test_that(
-    "detectOrganism : Gallus gallus", {
+    "Gallus gallus", {
         expect_identical(
             object = detectOrganism(object),
             expected = "Gallus gallus"
@@ -120,7 +117,7 @@ with_parameters_test_that(
 )
 
 with_parameters_test_that(
-    "detectOrganism : Ovis aries", {
+    "Ovis aries", {
         expect_identical(
             object = detectOrganism(object),
             expected = "Ovis aries"
@@ -136,7 +133,7 @@ with_parameters_test_that(
     )
 )
 
-test_that("detectOrganism : Multiple organisms", {
+test_that("Multiple organisms", {
     ## Function matches only the first genome.
     expect_identical(
         object = detectOrganism(c(
@@ -149,7 +146,7 @@ test_that("detectOrganism : Multiple organisms", {
     )
 })
 
-test_that("detectOrganism : Failure", {
+test_that("Unsupported organism", {
     expect_error(
         object = detectOrganism("XXX"),
         regexp = "Failed to detect organism"

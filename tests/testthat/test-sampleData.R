@@ -37,9 +37,9 @@ test_that("Assignment", {
 
 context("sampleData : SingleCellExperiment")
 
-## Note that this doesn't sort the row names automatically. Here we're doing this
-## internally in the check, to make the example "sce" object more resistant to
-## code-breaking updates.
+## Note that this doesn't sort the row names automatically. Here we're doing
+## this internally in the check, to make the example "sce" object more resistant
+## to code-breaking updates.
 test_that("Return", {
     samples <- paste0("sample", seq_len(2L))
     sd <- sampleData(sce)
