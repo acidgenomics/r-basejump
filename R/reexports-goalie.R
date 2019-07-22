@@ -20,7 +20,7 @@ goalie::standardizeCall
 
 
 
-# Legacy reexports needed for acidplots 0.2.4, bcbioRNASeq 0.2.10.
+## Legacy reexports needed for acidplots 0.2.4, bcbioRNASeq 0.2.10.
 
 #' @importFrom goalie assert
 #' @export

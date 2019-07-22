@@ -97,7 +97,7 @@ setMethod(
 
 
 
-# Consider aggregating the matrix to gene level instead.
+## Consider aggregating the matrix to gene level instead.
 convertTranscriptsToGenes.matrix <-  # nolint
     function(object, tx2gene, aggregate = TRUE) {
         assert(isFlag(aggregate))
@@ -141,8 +141,8 @@ setMethod(
 
 
 
-# Consider returning RSE here in a future update.
-# Need to add code that handles rowRanges.
+## Consider returning RSE here in a future update.
+## Need to add code that handles rowRanges.
 convertTranscriptsToGenes.SummarizedExperiment <-  # nolint
     function(object) {
         counts <- counts(object)

@@ -45,8 +45,8 @@ setMethod(
 
 
 
-# Using a logical matrix is faster and more memory efficient.
-# Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
+## Using a logical matrix is faster and more memory efficient.
+## Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
 zerosVsDepth.sparseMatrix <-  # nolint
     function(object) {
         assert(is(object, "sparseMatrix"))
@@ -114,7 +114,7 @@ zerosVsDepth.SingleCellExperiment <-  # nolint
             is(data, "DataFrame"),
             is(sampleData, "DataFrame")
         )
-        # Consider using BiocTibble approach here in a future update.
+        ## Consider using BiocTibble approach here in a future update.
         join <- left_join(
             x = as_tibble(data, rownames = "rowname"),
             y = as_tibble(sampleData, rownames = NULL),

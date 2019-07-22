@@ -1,5 +1,5 @@
-# To my knowledge, there isn't an easier way to reexport S4 methods in another
-# package, so redefine current supported methods again here.
+## To my knowledge, there isn't an easier way to reexport S4 methods in another
+## package, so redefine current supported methods again here.
 
 #' @importFrom methods coerce
 #' @exportMethod coerce
@@ -43,7 +43,7 @@ transformer::coerceS4ToList
 
 
 
-# coerce-DataFrame.R ===========================================================
+## coerce-DataFrame.R ===========================================================
 setAs(
     from = "sparseMatrix",
     to = "DataFrame",
@@ -72,7 +72,7 @@ setAs(
 
 
 
-# coerce-data.frame.R ==========================================================
+## coerce-data.frame.R ==========================================================
 setAs(
     from = "sparseMatrix",
     to = "data.frame",
@@ -88,7 +88,7 @@ setAs(
 
 
 
-# coerce-data.table.R ==========================================================
+## coerce-data.table.R ==========================================================
 setAs(
     from = "data.frame",
     to = "data.table",
@@ -130,7 +130,7 @@ setAs(
 
 
 
-# coerce-tbl_df.R ==============================================================
+## coerce-tbl_df.R ==============================================================
 setAs(
     from = "data.frame",
     to = "tbl_df",

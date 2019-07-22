@@ -155,7 +155,7 @@ test_that("matrix : acidtest::mat", {
 test_that("sparseMatrix", {
     object <- aggregateCols(sparse, groupings = samples)
     expect_is(object, "sparseMatrix")
-    # Is there a way to improve this check?
+    ## Is there a way to improve this check?
     expect_equal(
         object = as.matrix(object),
         expected = expected

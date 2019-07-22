@@ -92,7 +92,7 @@ makeSummarizedExperiment <- function(
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
-    # Assert checks ------------------------------------------------------------
+    ## Assert checks ------------------------------------------------------------
     assert(
         isAny(
             x = assays,
@@ -124,41 +124,41 @@ makeSummarizedExperiment <- function(
         )
     )
 
-    # Only allow `rowData` when `rowRanges` are `NULL`.
+    ## Only allow `rowData` when `rowRanges` are `NULL`.
     if (!is.null(rowRanges)) {
         assert(is.null(rowData))
     }
 
-    # Assays -------------------------------------------------------------------
-    # Drop any `NULL` items in assays.
+    ## Assays -------------------------------------------------------------------
+    ## Drop any `NULL` items in assays.
     if (is.list(assays)) {
         assays <- Filter(Negate(is.null), assays)
     }
-    # Require the primary assay to be named "counts". This helps ensure
-    # consistency with the conventions for `SingleCellExperiment`.
+    ## Require the primary assay to be named "counts". This helps ensure
+    ## consistency with the conventions for `SingleCellExperiment`.
     assert(identical(names(assays)[[1L]], "counts"))
     assay <- assays[[1L]]
-    # Require valid names for both columns (samples) and rows (genes).
-    # Note that values beginning with a number or containing invalid characters
-    # (e.g. spaces, dashes) will error here.
+    ## Require valid names for both columns (samples) and rows (genes).
+    ## Note that values beginning with a number or containing invalid characters
+    ## (e.g. spaces, dashes) will error here.
     assert(hasValidDimnames(assay))
-    # We're going to require that the assay names be sorted, but will perform
-    # this step after generating the `SummarizedExperiment` object (see below).
-    # The `SummarizedExperiment` constructor checks to ensure that all assays
-    # have matching dimnames, so we can skip that check.
+    ## We're going to require that the assay names be sorted, but will perform
+    ## this step after generating the `SummarizedExperiment` object (see below).
+    ## The `SummarizedExperiment` constructor checks to ensure that all assays
+    ## have matching dimnames, so we can skip that check.
 
-    # Row data -----------------------------------------------------------------
+    ## Row data -----------------------------------------------------------------
     mcolnames <- NULL
-    # Dynamically allow input of rowRanges (recommended) or rowData (fallback).
+    ## Dynamically allow input of rowRanges (recommended) or rowData (fallback).
     if (is(rowRanges, "GRanges")) {
-        # Detect rows that don't contain annotations.
-        # Transgenes should contain `transgene` seqname.
-        # Spike-ins should contain `spike` seqname.
-        # Otherwise, unannotated genes will be given `unknown` seqname.
+        ## Detect rows that don't contain annotations.
+        ## Transgenes should contain `transgene` seqname.
+        ## Spike-ins should contain `spike` seqname.
+        ## Otherwise, unannotated genes will be given `unknown` seqname.
         assert(areIntersectingSets(rownames(assay), names(rowRanges)))
         mcolnames <- names(mcols(rowRanges))
         setdiff <- setdiff(rownames(assay), names(rowRanges))
-        # Transgenes
+        ## Transgenes
         if (
             length(setdiff) > 0L &&
             length(transgeneNames) > 0L
@@ -172,7 +172,7 @@ makeSummarizedExperiment <- function(
             rowRanges <- suppressWarnings(c(transgeneRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
-        # FASTA spike-ins
+        ## FASTA spike-ins
         if (
             length(setdiff) > 0L &&
             length(spikeNames) > 0L
@@ -194,7 +194,7 @@ makeSummarizedExperiment <- function(
         rowRanges <- emptyRanges(names = rownames(assay))
     }
 
-    # Error on user-defined row annotation mismatch (strict).
+    ## Error on user-defined row annotation mismatch (strict).
     if (is(rowRanges, "GRanges")) {
         data <- as(rowRanges, "DataFrame")
     } else if (is(rowData, "DataFrame")) {
@@ -214,8 +214,8 @@ makeSummarizedExperiment <- function(
     }
     rm(data)
 
-    # Automatically arrange the rows to match the main assay.
-    # FIXME Need to relevel the factors here automatically.
+    ## Automatically arrange the rows to match the main assay.
+    ## FIXME Need to relevel the factors here automatically.
     if (is(rowRanges, "GRanges")) {
         assert(hasNames(rowRanges))
         assert(isSubset(rownames(assay), names(rowRanges)))
@@ -226,13 +226,13 @@ makeSummarizedExperiment <- function(
         rowData <- rowData[rownames(assay), , drop = FALSE]
     }
 
-    # Column data --------------------------------------------------------------
+    ## Column data --------------------------------------------------------------
     if (is.null(colData)) {
         colData <- DataFrame(row.names = colnames(assay))
     }
-    # Allowing some single-cell RNA-seq automatic columns to pass through here,
-    # since this code is used by `makeSingleCellExperiment()`.
-    # May tighten this up in the future.
+    ## Allowing some single-cell RNA-seq automatic columns to pass through here,
+    ## since this code is used by `makeSingleCellExperiment()`.
+    ## May tighten this up in the future.
     blacklist <- setdiff(
         x = metadataBlacklist,
         y = c("revcomp", "sampleID")
@@ -243,14 +243,14 @@ makeSummarizedExperiment <- function(
     )
     colData <- colData[colnames(assay), , drop = FALSE]
 
-    # Metadata -----------------------------------------------------------------
+    ## Metadata -----------------------------------------------------------------
     metadata <- as.list(metadata)
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- realpath(".")
     metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
     metadata <- Filter(f = Negate(is.null), x = metadata)
 
-    # Return -------------------------------------------------------------------
+    ## Return -------------------------------------------------------------------
     args <- list(
         assays = assays,
         rowRanges = rowRanges,
@@ -258,11 +258,11 @@ makeSummarizedExperiment <- function(
         colData = colData,
         metadata = metadata
     )
-    # Ensure we're not passing any `NULL` arguments to `do.call`.
-    # This step will dynamically handle `rowRanges` and/or `rowData`.
+    ## Ensure we're not passing any `NULL` arguments to `do.call`.
+    ## This step will dynamically handle `rowRanges` and/or `rowData`.
     args <- Filter(Negate(is.null), args)
     se <- do.call(what = SummarizedExperiment, args = args)
-    # Always return with sorted rows and columns.
+    ## Always return with sorted rows and columns.
     se <- se[sort(rownames(se)), sort(colnames(se))]
     validObject(se)
     se

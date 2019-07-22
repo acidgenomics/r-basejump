@@ -20,7 +20,7 @@ colnames(y) <- paste0(
     )
 )
 
-# Note that this works on rowRanges internally.
+## Note that this works on rowRanges internally.
 test_that("RangedSummarizedExperiment", {
     c <- combine(x, y)
     expect_s4_class(c, "RangedSummarizedExperiment")
@@ -40,14 +40,14 @@ test_that("RangedSummarizedExperiment", {
         condition = as.factor(rep(rep(c("A", "B"), each = 6L), times = 2L)),
         row.names = samples
     )
-    # This will error out due to elementMetadata difference otherwise.
+    ## This will error out due to elementMetadata difference otherwise.
     expect_identical(
         object = as.data.frame(colData(c)),
         expected = as.data.frame(colData)
     )
 })
 
-# Note that this works on rowData internally.
+## Note that this works on rowData internally.
 test_that("SummarizedExperiment", {
     x <- as(x, "SummarizedExperiment")
     expect_true("geneName" %in% colnames(rowData(x)))
@@ -107,7 +107,7 @@ test_that("SingleCellExperiment", {
         )
     )
 
-    # Increase the sample ID numbers.
+    ## Increase the sample ID numbers.
     sampleID <- y[["sampleID"]]
     sampleID <- gsub("1$", "3", sampleID)
     sampleID <- gsub("2$", "4", sampleID)

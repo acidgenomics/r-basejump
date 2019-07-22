@@ -42,7 +42,7 @@ autopadZeros.character <-  # nolint
         object <- as.character(object)
         assert(validNames(object))
         pattern <- "(.*[A-Za-z])([[:digit:]]+)$"
-        # Early return if no padding is necessary.
+        ## Early return if no padding is necessary.
         if (!all(grepl(pattern = pattern, x = object))) {
             return(object)
         }
@@ -120,9 +120,9 @@ autopadZeros.SummarizedExperiment <-  # nolint
                 sort = sort
             )
         )
-        # Ensure sample names, which can be defined in `colData` as `sampleName`
-        # column, also get padded, if necessary. This improves downstream
-        # handling in functions that rely on this feature.
+        ## Ensure sample names, which can be defined in `colData` as `sampleName`
+        ## column, also get padded, if necessary. This improves downstream
+        ## handling in functions that rely on this feature.
         if ("sampleName" %in% colnames(colData(object))) {
             sampleNames(object) <- autopadZeros(sampleNames(object))
         }

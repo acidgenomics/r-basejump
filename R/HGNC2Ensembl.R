@@ -15,8 +15,8 @@ HGNC2Ensembl <-  # nolint
                 protocol = "none"
             )
         } else {
-            # This is unreliable on Travis, so cover locally instead.
-            # nocov start
+            ## This is unreliable on Travis, so cover locally instead.
+            ## nocov start
             file <- pasteURL(
                 "ftp.ebi.ac.uk",
                 "pub",
@@ -27,14 +27,13 @@ HGNC2Ensembl <-  # nolint
                 "hgnc_complete_set.txt",
                 protocol = "ftp"
             )
-            # nocov end
+            ## nocov end
         }
 
         message("Obtaining HGNC to Ensembl gene ID mappings.")
-        # Note that this file does not contain syntactically valid names, and
-        # `readr::read_tsv()` has parsing issues with it.
-        #
-        # Suppressing warnings about syntactically valid names and TXT file.
+        ## Note that this file does not contain syntactically valid names, and
+        ## `readr::read_tsv()` has parsing issues with it.
+        ##         ## Suppressing warnings about syntactically valid names and TXT file.
         suppressWarnings(
             data <- import(file)
         )
