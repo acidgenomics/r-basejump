@@ -30,7 +30,8 @@ lfcThreshold(object, ...) <- value
 Log2 fold change threshold
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 
 ## Annotated
 lfcThreshold(rse) <- 0.5

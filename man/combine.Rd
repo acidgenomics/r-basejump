@@ -89,7 +89,13 @@ We're attempting to make this as strict as possible, requiring:
 }
 
 \examples{
-data(rse, sce, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
 str_pad <- stringr::str_pad
 
 ## SummarizedExperiment ====

@@ -41,7 +41,10 @@ Latin organism name (e.g. \emph{Homo sapiens}).
 Organism
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
+
+## SummarizedExperiment ====
 organism(rse)
 }
 \seealso{

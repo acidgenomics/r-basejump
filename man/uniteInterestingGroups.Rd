@@ -29,12 +29,14 @@ coloring in plots. When multiple interesting groups are present, unite into a
 single column, delimited by a colon.
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
+
+## DataFrame ====
 object <- rse
-from <- sampleData(object)
-to <- uniteInterestingGroups(
-    object = from,
+x <- uniteInterestingGroups(
+    object = sampleData(object),
     interestingGroups = interestingGroups(object)
 )
-print(to)
+print(x)
 }

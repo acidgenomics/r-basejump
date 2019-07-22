@@ -41,7 +41,8 @@ Modified object of same class.
 Convert genes to symbols
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 object <- rse
 
 g2s <- Gene2Symbol(object)

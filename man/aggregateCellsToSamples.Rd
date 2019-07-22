@@ -35,8 +35,9 @@ cell-to-sample groupings and then performs aggregation with the
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
+sce <- SingleCellExperiment
 
 ## SingleCellExperiment ====
-x <- aggregateCellsToSamples(SingleCellExperiment)
+x <- aggregateCellsToSamples(sce)
 print(x)
 }

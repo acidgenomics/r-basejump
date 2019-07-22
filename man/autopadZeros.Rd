@@ -49,16 +49,16 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
 
 ## character ====
 autopadZeros(c("A1", "B10"))
 autopadZeros(c("A1", "B10", "C100"))
 
 ## SummarizedExperiment ====
-rse <- RangedSummarizedExperiment
 autopadZeros(rse, rownames = TRUE, colnames = TRUE)
 
 ## SingleCellExperiment ====
-sce <- SingleCellExperiment
 autopadZeros(sce, rownames = TRUE, colnames = TRUE)
 }

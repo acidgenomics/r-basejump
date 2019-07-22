@@ -26,7 +26,8 @@ Convenience function for quickly returning unique gene symbols that map to
 the stable gene IDs.
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 
 ## SummarizedExperiment ====
 head(geneNames(rse))

@@ -42,7 +42,10 @@ We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRele
 
 \examples{
 ## SummarizedExperiment ====
-data(txse, package = "acidtest")
+data(SummarizedExperiment_transcripts, package = "acidtest")
+txse <- SummarizedExperiment_transcripts
+
+## SummarizedExperiment ====
 x <- Tx2Gene(txse)
 print(x)
 }
