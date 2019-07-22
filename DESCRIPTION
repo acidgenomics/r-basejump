@@ -166,7 +166,6 @@ Collate:
     'reexports-syntactic.R'
     'reexports-transformer.R'
     'reexports.R'
-    'relevel.R'
     'sampleData-methods.R'
     'sampleNames-methods.R'
     'sanitizeSampleData.R'
