@@ -26,10 +26,10 @@ geneSynonyms <- function(organism) {
     assert(hasInternet())
     organism <- match.arg(arg = organism, choices = .geneSynonymsOrganisms)
 
-    # NCBI uses underscore for species name
+    ## NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
     if (species == "Drosophila_melanogaster") {
-        # This is covered in full local tests.
+        ## This is covered in full local tests.
         kingdom <- "Invertebrates"  # nocov
     } else {
         kingdom <- "Mammalia"
@@ -44,8 +44,8 @@ geneSynonyms <- function(organism) {
             protocol = "none"
         )
     } else {
-        # This works unreliably on Travis, so cover locally instead.
-        # nocov start
+        ## This works unreliably on Travis, so cover locally instead.
+        ## nocov start
         file <- pasteURL(
             "ftp.ncbi.nih.gov",
             "gene",
@@ -55,7 +55,7 @@ geneSynonyms <- function(organism) {
             paste0(genome[["species"]], ".gene_info.gz"),
             protocol = "ftp"
         )
-        # nocov end
+        ## nocov end
     }
 
     data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
@@ -71,15 +71,15 @@ geneSynonyms <- function(organism) {
         ) %>%
         mutate(synonyms = str_replace_all(!!sym("synonyms"), "\\|", ", "))
 
-    # Sanitize the identifiers.
+    ## Sanitize the identifiers.
     if (organism == "Drosophila melanogaster") {
-        # This is covered in full local tests.
-        # nocov start
+        ## This is covered in full local tests.
+        ## nocov start
         data <- mutate(
             data,
             geneID = str_extract(!!sym("dbXrefs"), "\\bFBgn[0-9]{7}\\b")
         )
-        # nocov end
+        ## nocov end
     } else {
         data <- mutate(
             data,
@@ -96,7 +96,7 @@ geneSynonyms <- function(organism) {
 
 
 
-# Using this for parameterized unit testing.
+## Using this for parameterized unit testing.
 .geneSynonymsOrganisms <- c(
     "Homo sapiens",
     "Mus musculus",

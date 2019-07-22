@@ -16,7 +16,7 @@ Tx2Gene.DataFrame <-  # nolint
     function(object) {
         assert(hasRows(object))
 
-        # Check for required columns.
+        ## Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
             stop(paste0(
@@ -50,7 +50,7 @@ setMethod(
 Tx2Gene.GRanges <-  # nolint
     function(object) {
         data <- as(object, "DataFrame")
-        # This step is needed for handling raw GFF annotations.
+        ## This step is needed for handling raw GFF annotations.
         data <- unique(data)
         metadata(data) <- metadata(object)
         Tx2Gene(data)

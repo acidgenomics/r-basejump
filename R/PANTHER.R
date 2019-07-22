@@ -58,8 +58,8 @@ PANTHER <- function(  # nolint
             protocol = "none"
         )
     } else {
-        # This works unreliably on Travis, so cover locally instead.
-        # nocov start
+        ## This works unreliably on Travis, so cover locally instead.
+        ## nocov start
         file <- transmit(
             remoteDir = pasteURL(
                 "ftp.pantherdb.org",
@@ -72,7 +72,7 @@ PANTHER <- function(  # nolint
             compress = TRUE,
             localDir = tempdir()
         )
-        # nocov end
+        ## nocov end
     }
     assert(isString(file))
 
@@ -104,7 +104,7 @@ PANTHER <- function(  # nolint
             uniprotKB = NULL
         )
 
-    # Using organism-specific internal return functions here.
+    ## Using organism-specific internal return functions here.
     fun <- get(paste("", "PANTHER", camel(organism), sep = "."))
     assert(is.function(fun))
     data <- fun(data)
@@ -115,7 +115,7 @@ PANTHER <- function(  # nolint
         select(!!sym("geneID"), everything()) %>%
         filter(!is.na(!!sym("geneID"))) %>%
         unique() %>%
-        # Some organisms have duplicate annotations per gene ID.
+        ## Some organisms have duplicate annotations per gene ID.
         group_by(!!sym("geneID")) %>%
         top_n(n = 1L, wt = !!sym("pantherSubfamilyID")) %>%
         ungroup() %>%
@@ -135,7 +135,7 @@ PANTHER <- function(  # nolint
             .funs = .splitTerms,
             progress = progress
         ) %>%
-        # Sort columns alphabetically.
+        ## Sort columns alphabetically.
         .[, sort(colnames(.)), drop = FALSE] %>%
         as("DataFrame") %>%
         set_rownames(.[["geneID"]])
@@ -158,8 +158,8 @@ PANTHER <- function(  # nolint
 
 
 
-# Release versions are here:
-# ftp://ftp.pantherdb.org/sequence_classifications/
+## Release versions are here:
+## ftp://ftp.pantherdb.org/sequence_classifications/
 .pantherReleases <- c(
     "11.0",
     "12.0",
@@ -175,17 +175,17 @@ PANTHER <- function(  # nolint
     function(data) {
         hgnc2ensembl <- HGNC2Ensembl()
 
-        # Ensembl matches.
+        ## Ensembl matches.
         ensembl <- data %>%
             mutate(
                 geneID = str_extract(!!sym("keys"), "ENSG[0-9]{11}")
             ) %>%
             filter(!is.na(!!sym("geneID")))
 
-        # HGNC matches.
+        ## HGNC matches.
         hgnc <- data %>%
             as_tibble() %>%
-            # Extract the HGNC ID.
+            ## Extract the HGNC ID.
             mutate(
                 hgncID = str_match(!!sym("keys"), "HGNC=([0-9]+)")[, 2L],
                 hgncID = as.integer(!!sym("hgncID"))
@@ -208,14 +208,14 @@ PANTHER <- function(  # nolint
     function(data) {
         mgi2ensembl <- MGI2Ensembl()
 
-        # Ensembl matches.
+        ## Ensembl matches.
         ensembl <- data %>%
             mutate(
                 geneID = str_extract(!!sym("keys"), "ENSMUSG[0-9]{11}")
             ) %>%
             filter(!is.na(!!sym("geneID")))
 
-        # MGI matches.
+        ## MGI matches.
         mgi <- data %>%
             as_tibble() %>%
             mutate(
@@ -249,15 +249,15 @@ PANTHER <- function(  # nolint
 
 
 
-# This step is CPU intensive, so optionally enable progress bar.
-# Alternatively, consider switching to BiocParallel bpparam usage here.
+## This step is CPU intensive, so optionally enable progress bar.
+## Alternatively, consider switching to BiocParallel bpparam usage here.
 .splitTerms <- function(x, progress = FALSE) {
     if (isTRUE(progress)) {
-        # nocov start
+        ## nocov start
         message(deparse(substitute(x)))
         requireNamespace("pbapply", quietly = TRUE)
         lapply <- pbapply::pblapply
-        # nocov end
+        ## nocov end
     }
     lapply(x, function(x) {
         x <- x %>%

@@ -66,7 +66,7 @@ geometricMean.numeric <-  # nolint
             isFlag(zeroPropagate)
         )
 
-        # Check for any negative numbers and return `NaN`
+        ## Check for any negative numbers and return `NaN`
         if (any(object < 0L, na.rm = TRUE)) {
             return(NaN)
         }

@@ -15,11 +15,11 @@
 #' ))
 showSlotInfo <- function(list) {
     assert(is.list(list))
-    # Consider checking for all atomic here.
+    ## Consider checking for all atomic here.
     list <- Filter(f = Negate(is.null), x = list)
     list <- Filter(f = hasLength, x = list)
-    # Standardize to Bioconductor `show` conventions.
-    # Refer to SummarizedExperiment method for example.
+    ## Standardize to Bioconductor `show` conventions.
+    ## Refer to SummarizedExperiment method for example.
     out <- mapply(
         name = names(list),
         x = list,

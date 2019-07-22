@@ -16,7 +16,7 @@ test_that("character", {
     )
 })
 
-# Specify organism (to handle FASTA spike-ins (e.g. EGFP).
+## Specify organism (to handle FASTA spike-ins (e.g. EGFP).
 test_that("FASTA spike-in support", {
     expect_identical(
         object = suppressWarnings(

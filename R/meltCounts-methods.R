@@ -53,21 +53,21 @@ meltCounts.SummarizedExperiment <-  # nolint
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
 
-        # Get the sample metadata.
+        ## Get the sample metadata.
         sampleData <- sampleData(object) %>%
             as_tibble(rownames = "rowname") %>%
             rename(colname = !!sym("rowname")) %>%
             mutate_all(as.factor)
 
-        # Prepare the count matrix.
+        ## Prepare the count matrix.
         counts <- assays(object)[[assay]]
         assert(hasLength(counts))
-        # Always coerce to dense matrix prior to melt operation.
+        ## Always coerce to dense matrix prior to melt operation.
         counts <- as.matrix(counts)
 
-        # Filter rows that don't pass our `minCounts` expression cutoff. Note
-        # that we're ensuring rows containing all zeros are always dropped,
-        # even when `minCountsMethod = "absolute"`.
+        ## Filter rows that don't pass our `minCounts` expression cutoff. Note
+        ## that we're ensuring rows containing all zeros are always dropped,
+        ## even when `minCountsMethod = "absolute"`.
         if (minCountsMethod == "perFeature") {
             rowCutoff <- minCounts
         } else {
@@ -83,13 +83,13 @@ meltCounts.SummarizedExperiment <-  # nolint
         }
         counts <- counts[keep, , drop = FALSE]
 
-        # Ensure that no zero rows propagate.
+        ## Ensure that no zero rows propagate.
         assert(!any(rowSums(counts) == 0L))
 
-        # Now ready to return as melted tibble.
+        ## Now ready to return as melted tibble.
         melt <- counts %>%
-            # Using reshape2 method here.
-            # This sets rownames as "Var1" and colnames as "Var2".
+            ## Using reshape2 method here.
+            ## This sets rownames as "Var1" and colnames as "Var2".
             melt(id = 1L, value.name = "counts") %>%
             as_tibble() %>%
             rename(
@@ -100,8 +100,8 @@ meltCounts.SummarizedExperiment <-  # nolint
             group_by(!!!syms(c("colname", "rowname"))) %>%
             left_join(sampleData, by = "colname")
 
-        # When applying an absolute threshold using `minCountsMethod`, apply
-        # this cutoff prior to logarithmic transformation.
+        ## When applying an absolute threshold using `minCountsMethod`, apply
+        ## this cutoff prior to logarithmic transformation.
         if (minCountsMethod == "absolute") {
             nPrefilter <- nrow(melt)
             melt %<>% filter(counts >= !!minCounts)
@@ -112,7 +112,7 @@ meltCounts.SummarizedExperiment <-  # nolint
             ))
         }
 
-        # Log transform the counts, if desired.
+        ## Log transform the counts, if desired.
         if (trans != "identity") {
             message(paste0("Applying ", trans, "(x + 1) transformation."))
             fun <- get(
