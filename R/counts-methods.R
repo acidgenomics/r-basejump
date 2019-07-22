@@ -15,7 +15,10 @@
 #' Typically `matrix` or `sparseMatrix` class.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' x <- counts(rse)
 #' summary(x)
 NULL

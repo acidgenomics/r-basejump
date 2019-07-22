@@ -8,7 +8,8 @@
 #' @seealso [methods::show()].
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #' showHeader(rse)
 
 ## Updated 2019-07-22.

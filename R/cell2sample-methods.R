@@ -13,7 +13,10 @@
 #' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
+#' data(SingleCellExperiment, package = "acidtest")
+#' sce <- SingleCellExperiment
+#'
+#' ## SingleCellExperiment ====
 #' x <- cell2sample(sce)
 #' table(x)
 NULL

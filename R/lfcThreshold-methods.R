@@ -2,7 +2,8 @@
 #' @inherit bioverbs::lfcThreshold
 #' @param ... Additional arguments.
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
 #' ## Annotated
 #' lfcThreshold(rse) <- 0.5

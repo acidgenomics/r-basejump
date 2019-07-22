@@ -14,7 +14,8 @@
 #' Interesting groups.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #' matchInterestingGroups(rse)
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())

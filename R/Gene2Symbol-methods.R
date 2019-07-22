@@ -19,7 +19,10 @@
 #'   "unmodified" prior to v0.10.10.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' x <- Gene2Symbol(rse)
 #' print(x)
 NULL

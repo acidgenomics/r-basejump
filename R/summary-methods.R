@@ -9,7 +9,13 @@
 #' @return Invisible `NULL`.
 #'
 #' @examples
-#' data(rse, txse, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SummarizedExperiment_transcripts,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' txse <- SummarizedExperiment_transcripts
 #'
 #' ## Gene2Symbol ====
 #' x <- Gene2Symbol(rse)

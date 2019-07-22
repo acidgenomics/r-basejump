@@ -12,9 +12,10 @@
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
+#' sce <- SingleCellExperiment
 #'
 #' ## SingleCellExperiment ====
-#' x <- aggregateCellsToSamples(SingleCellExperiment)
+#' x <- aggregateCellsToSamples(sce)
 #' print(x)
 NULL
 

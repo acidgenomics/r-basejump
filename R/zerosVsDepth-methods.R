@@ -6,7 +6,10 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
+#' data(SingleCellExperiment, package = "acidtest")
+#' sce <- SingleCellExperiment
+#'
+#' ## SingleCellExperiment ====
 #' x <- zerosVsDepth(sce)
 #' summary(x)
 #' colnames(x)

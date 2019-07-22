@@ -7,7 +7,8 @@
 #' @return Modified object of same class.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #' object <- rse
 #'
 #' g2s <- Gene2Symbol(object)

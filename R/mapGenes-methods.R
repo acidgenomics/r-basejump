@@ -24,7 +24,8 @@
 #' @return `character`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #' print(rse)
 #'
 #' rownames <- head(rownames(rse))

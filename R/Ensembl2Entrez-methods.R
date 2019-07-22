@@ -13,7 +13,10 @@
 #'       Return 1:many in long format.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' x <- Ensembl2Entrez(rse)
 #' print(x)
 NULL

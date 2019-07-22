@@ -5,7 +5,10 @@
 #' @seealso `makeTx2Gene()`.
 #' @examples
 #' ## SummarizedExperiment ====
-#' data(txse, package = "acidtest")
+#' data(SummarizedExperiment_transcripts, package = "acidtest")
+#' txse <- SummarizedExperiment_transcripts
+#'
+#' ## SummarizedExperiment ====
 #' x <- Tx2Gene(txse)
 #' print(x)
 NULL

@@ -12,7 +12,10 @@
 #' @return Named `character`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' object <- rse
 #' x <- sampleNames(object)
 #' print(x)

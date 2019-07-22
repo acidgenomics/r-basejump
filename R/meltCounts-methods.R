@@ -20,7 +20,8 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #' dim(rse)
 #' x <- meltCounts(rse, minCounts = NULL)
 #' nrow(x)
