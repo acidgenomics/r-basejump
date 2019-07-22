@@ -19,6 +19,8 @@
 #'     url = "https://www.r-project.org",
 #'     title = "The R Project for Statistical Computing"
 #' )
+
+## Updated 2019-07-22.
 markdownLink <- function(
     text,
     url,

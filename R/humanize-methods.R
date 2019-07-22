@@ -30,7 +30,8 @@ NULL
 
 
 
-humanize.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`humanize,SummarizedExperiment` <-  # nolint
     function(object) {
         message("Making the rownames and colnames human readable.")
         human <- object
@@ -46,5 +47,5 @@ humanize.SummarizedExperiment <-  # nolint
 setMethod(
     f = "humanize",
     signature = signature("SummarizedExperiment"),
-    definition = humanize.SummarizedExperiment
+    definition = `humanize,SummarizedExperiment`
 )

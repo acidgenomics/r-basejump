@@ -20,7 +20,8 @@ NULL
 
 
 
-Ensembl2Entrez.DataFrame <-  # nolint
+## Updated 2019-07-22.
+`Ensembl2Entrez,DataFrame` <-  # nolint
     function(object, format = c("1:1", "long")) {
         assert(hasRows(object))
         format <- match.arg(format)
@@ -91,7 +92,8 @@ Ensembl2Entrez.DataFrame <-  # nolint
 
 
 
-Ensembl2Entrez.GRanges <-  # nolint
+## Updated 2019-07-22.
+`Ensembl2Entrez,GRanges` <-  # nolint
     function(object) {
         data <- as(object, "DataFrame")
         metadata(data) <- metadata(object)
@@ -103,11 +105,13 @@ Ensembl2Entrez.GRanges <-  # nolint
             )
         )
     }
-formals(Ensembl2Entrez.GRanges) <- formals(Ensembl2Entrez.DataFrame)
+
+formals(`Ensembl2Entrez,GRanges`) <- formals(`Ensembl2Entrez,DataFrame`)
 
 
 
-Ensembl2Entrez.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`Ensembl2Entrez,SummarizedExperiment` <-  # nolint
     function(object) {
         object <- as.SummarizedExperiment(object)
         data <- rowData(object)
@@ -122,8 +126,9 @@ Ensembl2Entrez.SummarizedExperiment <-  # nolint
 
 
     }
-formals(Ensembl2Entrez.SummarizedExperiment) <-
-    formals(Ensembl2Entrez.DataFrame)
+
+formals(`Ensembl2Entrez,SummarizedExperiment`) <-
+    formals(`Ensembl2Entrez,DataFrame`)
 
 
 
@@ -132,7 +137,7 @@ formals(Ensembl2Entrez.SummarizedExperiment) <-
 setMethod(
     f = "Ensembl2Entrez",
     signature = signature("DataFrame"),
-    definition = Ensembl2Entrez.DataFrame
+    definition = `Ensembl2Entrez,DataFrame`
 )
 
 
@@ -142,7 +147,7 @@ setMethod(
 setMethod(
     f = "Ensembl2Entrez",
     signature = signature("GRanges"),
-    definition = Ensembl2Entrez.GRanges
+    definition = `Ensembl2Entrez,GRanges`
 )
 
 
@@ -152,5 +157,5 @@ setMethod(
 setMethod(
     f = "Ensembl2Entrez",
     signature = signature("SummarizedExperiment"),
-    definition = Ensembl2Entrez.SummarizedExperiment
+    definition = `Ensembl2Entrez,SummarizedExperiment`
 )

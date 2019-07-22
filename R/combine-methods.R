@@ -85,7 +85,8 @@ NULL
 
 
 
-combine.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`combine,SummarizedExperiment` <-  # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
@@ -247,12 +248,13 @@ setMethod(
         x = "SummarizedExperiment",
         y = "SummarizedExperiment"
     ),
-    definition = combine.SummarizedExperiment
+    definition = `combine,SummarizedExperiment`
 )
 
 
 
-combine.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`combine,SingleCellExperiment` <-  # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
@@ -286,5 +288,5 @@ setMethod(
         x = "SingleCellExperiment",
         y = "SingleCellExperiment"
     ),
-    definition = combine.SingleCellExperiment
+    definition = `combine,SingleCellExperiment`
 )

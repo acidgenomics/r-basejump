@@ -22,6 +22,8 @@
 #' options(acid.test = TRUE)
 #' x <- PANTHER("Homo sapiens", progress = FALSE)
 #' summary(x)
+
+## Updated 2019-07-22.
 PANTHER <- function(  # nolint
     organism,
     release = NULL,
@@ -149,6 +151,7 @@ PANTHER <- function(  # nolint
 
 
 
+## Updated 2019-07-22.
 .pantherMappings <- c(
     "caenorhabditis_elegans" = "nematode_worm",
     "drosophila_melanogaster" = "fruit_fly",
@@ -160,6 +163,7 @@ PANTHER <- function(  # nolint
 
 ## Release versions are here:
 ## ftp://ftp.pantherdb.org/sequence_classifications/
+## Updated 2019-07-22.
 .pantherReleases <- c(
     "11.0",
     "12.0",
@@ -171,6 +175,7 @@ PANTHER <- function(  # nolint
 
 
 
+## Updated 2019-07-22.
 .PANTHER.homoSapiens <-  # nolint
     function(data) {
         hgnc2ensembl <- HGNC2Ensembl()
@@ -204,6 +209,7 @@ PANTHER <- function(  # nolint
 
 
 
+## Updated 2019-07-22.
 .PANTHER.musMusculus <-  # nolint
     function(data) {
         mgi2ensembl <- MGI2Ensembl()
@@ -235,6 +241,7 @@ PANTHER <- function(  # nolint
 
 
 
+## Updated 2019-07-22.
 .PANTHER.drosophilaMelanogaster <-  # nolint
     function(data) {
         mutate(data, geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$"))
@@ -242,6 +249,7 @@ PANTHER <- function(  # nolint
 
 
 
+## Updated 2019-07-22.
 .PANTHER.caenorhabditisElegans <-  # nolint
     function(data) {
         mutate(data, geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$"))
@@ -251,6 +259,7 @@ PANTHER <- function(  # nolint
 
 ## This step is CPU intensive, so optionally enable progress bar.
 ## Alternatively, consider switching to BiocParallel bpparam usage here.
+## Updated 2019-07-22.
 .splitTerms <- function(x, progress = FALSE) {
     if (isTRUE(progress)) {
         ## nocov start

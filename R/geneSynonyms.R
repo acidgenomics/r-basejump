@@ -22,6 +22,8 @@
 #' options(acid.test = TRUE)
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
+
+## Updated 2019-07-22.
 geneSynonyms <- function(organism) {
     assert(hasInternet())
     organism <- match.arg(arg = organism, choices = .geneSynonymsOrganisms)

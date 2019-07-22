@@ -39,6 +39,8 @@
 #' \dontrun{
 #' # prepareTemplate(package = "bcbioSingleCell")
 #' }
+
+## Updated 2019-07-22.
 prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     assert(
         isString(package, nullOK = TRUE),

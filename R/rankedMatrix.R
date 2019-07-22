@@ -25,6 +25,8 @@
 #'
 #' ## Bidirectional
 #' rankedMatrix(lfc, method = "bidirectional")
+
+## Updated 2019-07-22.
 rankedMatrix <- function(
     object,
     MARGIN = 2L,  # nolint

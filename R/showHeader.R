@@ -10,6 +10,8 @@
 #' @examples
 #' data(rse, package = "acidtest")
 #' showHeader(rse)
+
+## Updated 2019-07-22.
 showHeader <- function(object) {
     class <- class(object)[[1L]]
     out <- class

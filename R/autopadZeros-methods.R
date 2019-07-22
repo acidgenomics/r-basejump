@@ -35,7 +35,8 @@ NULL
 
 
 
-autopadZeros.character <-  # nolint
+## Updated 2019-07-22.
+`autopadZeros,character` <-  # nolint
     function(object) {
         assert(is.character(object))
         names <- names(object)
@@ -64,12 +65,13 @@ autopadZeros.character <-  # nolint
 setMethod(
     f = "autopadZeros",
     signature = signature("character"),
-    definition = autopadZeros.character
+    definition = `autopadZeros,character`
 )
 
 
 
-autopadZeros.matrix <-  # nolint
+## Updated 2019-07-22.
+`autopadZeros,matrix` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -104,12 +106,13 @@ autopadZeros.matrix <-  # nolint
 setMethod(
     f = "autopadZeros",
     signature = signature("matrix"),
-    definition = autopadZeros.matrix
+    definition = `autopadZeros,matrix`
 )
 
 
 
-autopadZeros.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`autopadZeros,SummarizedExperiment` <-  # nolint
     function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
         object <- do.call(
             what = autopadZeros.matrix,
@@ -136,5 +139,5 @@ autopadZeros.SummarizedExperiment <-  # nolint
 setMethod(
     f = "autopadZeros",
     signature = signature("SummarizedExperiment"),
-    definition = autopadZeros.SummarizedExperiment
+    definition = `autopadZeros,SummarizedExperiment`
 )

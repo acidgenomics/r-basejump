@@ -20,6 +20,8 @@
 #'     ".fastq.gz"
 #' )
 #' detectLanes(files)
+
+## Updated 2019-07-22.
 detectLanes <- function(path, pattern) {
     assert(
         isCharacter(path),

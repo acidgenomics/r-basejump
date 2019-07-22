@@ -16,6 +16,8 @@
 #'
 #' @examples
 #' separator(sep = "=", times = 10L)
+
+## Updated 2019-07-22.
 separator <- function(
     sep = "=",
     times = min(c(

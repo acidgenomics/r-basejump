@@ -18,6 +18,8 @@
 #' matchInterestingGroups(rse)
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())
+
+## Updated 2019-07-22.
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
     ## Legacy support for bcbio R packages, which pass missing
     ## `interestingGroups` parameter through.

@@ -17,6 +17,8 @@
 #' multiassignAsEnvir(rse, sce, envirName = "example")
 #' class(example)
 #' ls(example)
+
+## Updated 2019-07-22.
 multiassignAsEnvir <- function(
     ...,
     envirName,

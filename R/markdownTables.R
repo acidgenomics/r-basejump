@@ -35,6 +35,8 @@
 #'     mtcars = "Motor Trend car road tests"
 #' )
 #' markdownTables(list = list, captions = captions)
+
+## Updated 2019-07-22.
 markdownTables <- function(
     list,
     captions = NULL,

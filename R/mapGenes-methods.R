@@ -78,6 +78,7 @@ NULL
 
 
 
+## Updated 2019-07-22.
 .mapGenes <- function(object, genes, strict = TRUE) {
     validObject(object)
     assert(
@@ -124,7 +125,8 @@ NULL
 
 
 ## mapGenesToRownames ==========================================================
-mapGenesToRownames.Gene2Symbol <-  # nolint
+## Updated 2019-07-22.
+`mapGenesToRownames,Gene2Symbol` <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -147,13 +149,13 @@ mapGenesToRownames.Gene2Symbol <-  # nolint
 setMethod(
     f = "mapGenesToRownames",
     signature = signature("Gene2Symbol"),
-    definition = mapGenesToRownames.Gene2Symbol
+    definition = `mapGenesToRownames,Gene2Symbol`
 )
 
 
 
-## Updated 2019-07-19.
-mapGenesToRownames.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`mapGenesToRownames,SummarizedExperiment` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         assert(isFlag(strict))
@@ -213,13 +215,14 @@ mapGenesToRownames.SummarizedExperiment <-  # nolint
 setMethod(
     f = "mapGenesToRownames",
     signature = signature("SummarizedExperiment"),
-    definition = mapGenesToRownames.SummarizedExperiment
+    definition = `mapGenesToRownames,SummarizedExperiment`
 )
 
 
 
 ## mapGenesToIDs ===============================================================
-mapGenesToIDs.Gene2Symbol <-  # nolint
+## Updated 2019-07-22.
+`mapGenesToIDs,Gene2Symbol` <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -243,12 +246,13 @@ mapGenesToIDs.Gene2Symbol <-  # nolint
 setMethod(
     f = "mapGenesToIDs",
     signature = signature("Gene2Symbol"),
-    definition = mapGenesToIDs.Gene2Symbol
+    definition = `mapGenesToIDs,Gene2Symbol`
 )
 
 
 
-mapGenesToIDs.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`mapGenesToIDs,SummarizedExperiment` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         suppressMessages(
@@ -272,13 +276,14 @@ mapGenesToIDs.SummarizedExperiment <-  # nolint
 setMethod(
     f = "mapGenesToIDs",
     signature = signature("SummarizedExperiment"),
-    definition = mapGenesToIDs.SummarizedExperiment
+    definition = `mapGenesToIDs,SummarizedExperiment`
 )
 
 
 
 ## mapGenesToSymbols ===========================================================
-mapGenesToSymbols.Gene2Symbol <-  # nolint
+## Updated 2019-07-22.
+`mapGenesToSymbols,Gene2Symbol` <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -302,12 +307,13 @@ mapGenesToSymbols.Gene2Symbol <-  # nolint
 setMethod(
     f = "mapGenesToSymbols",
     signature = signature("Gene2Symbol"),
-    definition = mapGenesToSymbols.Gene2Symbol
+    definition = `mapGenesToSymbols,Gene2Symbol`
 )
 
 
 
-mapGenesToSymbols.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`mapGenesToSymbols,SummarizedExperiment` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         suppressMessages(
@@ -331,5 +337,5 @@ mapGenesToSymbols.SummarizedExperiment <-  # nolint
 setMethod(
     f = "mapGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    definition = mapGenesToSymbols.SummarizedExperiment
+    definition = `mapGenesToSymbols,SummarizedExperiment`
 )

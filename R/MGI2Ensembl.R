@@ -5,6 +5,8 @@
 #' options(acid.test = TRUE)
 #' x <- MGI2Ensembl()
 #' print(x)
+
+## Updated 2019-07-22.
 MGI2Ensembl <- function() {  # nolint
     assert(hasInternet())
 

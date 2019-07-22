@@ -18,6 +18,8 @@
 #'
 #' @examples
 #' detectHPC()
+
+## Updated 2019-07-22.
 detectHPC <- function() {
     if (!identical(Sys.getenv("LSF_ENVDIR"), "")) {
         "LSF"

@@ -33,6 +33,8 @@
 #'
 #' matchesGene2Symbol(x = x, genes = geneIDs, gene2symbol = g2s)
 #' matchesGene2Symbol(x = x, genes = geneNames, gene2symbol = g2s)
+
+## Updated 2019-07-22.
 matchesGene2Symbol <- function(
     x,
     genes,

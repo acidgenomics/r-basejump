@@ -27,6 +27,8 @@
 #' markdownHeader("Header", level = 2L)
 #' markdownHeader("Header", tabset = TRUE)
 #' markdownHeader("Header", asis = TRUE)
+
+## Updated 2019-07-22.
 markdownHeader <- function(
     text,
     level = 2L,

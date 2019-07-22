@@ -12,9 +12,9 @@
 #'
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
+
+## Updated 2019-07-22.
 sortUnique <- function(object) {
     assert(is.atomic(object))
-    object %>%
-        sort(na.last = TRUE) %>%
-        unique()
+    unique(sort(object, na.last = TRUE))
 }

@@ -104,7 +104,8 @@ NULL
 
 ## Don't run validity checks here.
 ## Note that we're using grep pattern matching for `ignoreCols`.
-sampleData.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`sampleData,SummarizedExperiment` <-  # nolint
     function(
         object,
         clean = TRUE,
@@ -173,13 +174,14 @@ sampleData.SummarizedExperiment <-  # nolint
 setMethod(
     f = "sampleData",
     signature = signature("SummarizedExperiment"),
-    definition = sampleData.SummarizedExperiment
+    definition = `sampleData,SummarizedExperiment`
 )
 
 
 
 ## Don't run validity checks here.
-sampleData.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`sampleData,SingleCellExperiment` <-  # nolint
     function(
         object,
         clean = TRUE,
@@ -358,12 +360,13 @@ sampleData.SingleCellExperiment <-  # nolint
 setMethod(
     f = "sampleData",
     signature = signature("SingleCellExperiment"),
-    definition = sampleData.SingleCellExperiment
+    definition = `sampleData,SingleCellExperiment`
 )
 
 
 
-`sampleData<-.SummarizedExperiment` <-  # nolint
+## Updated 2019-07-22.
+`sampleData<-,SummarizedExperiment` <-  # nolint
     function(object, value) {
         ## Don't allow blacklisted columns.
         ## Note that attempting to use `NULL` to remove columns on a DataFrame
@@ -394,13 +397,13 @@ setMethod(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
-    definition = `sampleData<-.SummarizedExperiment`
+    definition = `sampleData<-,SummarizedExperiment`
 )
 
 
 
-## Updated 2019-07-16.
-`sampleData<-.SingleCellExperiment` <-  # nolint
+## Updated 2019-07-22.
+`sampleData<-,SingleCellExperiment` <-  # nolint
     function(object, value) {
         assert(is(value, "DataFrame"))
 
@@ -452,5 +455,5 @@ setMethod(
         object = "SingleCellExperiment",
         value = "DataFrame"
     ),
-    definition = `sampleData<-.SingleCellExperiment`
+    definition = `sampleData<-,SingleCellExperiment`
 )

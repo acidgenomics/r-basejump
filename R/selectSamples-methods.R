@@ -30,7 +30,8 @@ NULL
 
 
 
-selectSamples.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`selectSamples,SummarizedExperiment` <-  # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)
@@ -72,17 +73,18 @@ selectSamples.SummarizedExperiment <-  # nolint
 setMethod(
     f = "selectSamples",
     signature = signature("SummarizedExperiment"),
-    definition = selectSamples.SummarizedExperiment
+    definition = `selectSamples,SummarizedExperiment`
 )
 
 
 
-selectSamples.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`selectSamples,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         validObject(object)
 
-        ## Here the `args` are captured as a named character vector. The
-        ## names of the arguments represent the column names. The value of the
+        ## Here the `args` are captured as a named character vector. The names
+        ## of the arguments represent the column names. The value of the
         ## arguments should be a string that can be used for logical grep
         ## matching here internally.
         args <- list(...)
@@ -174,5 +176,5 @@ selectSamples.SingleCellExperiment <-  # nolint
 setMethod(
     f = "selectSamples",
     signature = signature("SingleCellExperiment"),
-    definition = selectSamples.SingleCellExperiment
+    definition = `selectSamples,SingleCellExperiment`
 )

@@ -16,7 +16,8 @@ NULL
 
 
 
-show.EggNOG <-  # nolint
+## Updated 2019-07-22.
+`show,EggNOG` <-  # nolint
     function(object) {
         showHeader(object)
         showSlotInfo(list(
@@ -38,12 +39,13 @@ show.EggNOG <-  # nolint
 setMethod(
     f = "show",
     signature = signature("EggNOG"),
-    definition = show.EggNOG
+    definition = `show,EggNOG`
 )
 
 
 
-show.PANTHER <-  # nolint
+## Updated 2019-07-22.
+`show,PANTHER` <-  # nolint
     function(object) {
         showHeader(object)
         showSlotInfo(list(
@@ -60,5 +62,5 @@ show.PANTHER <-  # nolint
 setMethod(
     f = "show",
     signature = signature("PANTHER"),
-    definition = show.PANTHER
+    definition = `show,PANTHER`
 )

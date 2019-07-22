@@ -59,7 +59,8 @@ NULL
 
 
 
-collapseToString.atomic <-  # nolint
+## Updated 2019-07-22.
+`collapseToString,atomic` <-  # nolint
     function(
         object,
         sep = ", ",
@@ -98,9 +99,9 @@ collapseToString.atomic <-  # nolint
             object <- unique(object)
         }
 
-        object %>%
-            as.character() %>%
-            paste(collapse = sep)
+        out <- as.character(object)
+        out <- paste(out, collapse = sep)
+        out
     }
 
 
@@ -110,12 +111,13 @@ collapseToString.atomic <-  # nolint
 setMethod(
     f = "collapseToString",
     signature = signature("atomic"),
-    definition = collapseToString.atomic
+    definition = `collapseToString,atomic`
 )
 
 
 
-collapseToString.matrix <-  # nolint
+## Updated 2019-07-22.
+`collapseToString,matrix` <-  # nolint
     function(
         object,
         sep = ", ",
@@ -152,13 +154,14 @@ collapseToString.matrix <-  # nolint
 setMethod(
     f = "collapseToString",
     signature = signature("matrix"),
-    definition = collapseToString.matrix
+    definition = `collapseToString,matrix`
 )
 
 
 
-collapseToString.data.frame <-  # nolint
-    collapseToString.matrix
+## Updated 2019-07-22.
+`collapseToString,data.frame` <-  # nolint
+    `collapseToString,matrix`
 
 
 
@@ -167,13 +170,14 @@ collapseToString.data.frame <-  # nolint
 setMethod(
     f = "collapseToString",
     signature = signature("data.frame"),
-    definition = collapseToString.data.frame
+    definition = `collapseToString,data.frame`
 )
 
 
 
-collapseToString.DataFrame <-  # nolint
-    collapseToString.matrix
+## Updated 2019-07-22.
+`collapseToString,DataFrame` <-  # nolint
+    `collapseToString,matrix`
 
 
 
@@ -182,5 +186,5 @@ collapseToString.DataFrame <-  # nolint
 setMethod(
     f = "collapseToString",
     signature = signature("DataFrame"),
-    definition = collapseToString.DataFrame
+    definition = `collapseToString,DataFrame`
 )

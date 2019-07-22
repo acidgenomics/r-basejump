@@ -41,7 +41,8 @@ NULL
 
 
 ## foldChangeToLogRatio ========================================================
-foldChangeToLogRatio.numeric <-  # nolint
+## Updated 2019-07-22.
+`foldChangeToLogRatio,numeric` <-  # nolint
     function(object, base = 2L) {
         assert(isInt(base), isPositive(base))
         base <- as.integer(base)
@@ -57,13 +58,14 @@ foldChangeToLogRatio.numeric <-  # nolint
 setMethod(
     f = "foldChangeToLogRatio",
     signature = signature("numeric"),
-    definition = foldChangeToLogRatio.numeric
+    definition = `foldChangeToLogRatio,numeric`
 )
 
 
 
 ## logRatioToFoldChange ========================================================
-logRatioToFoldChange.numeric <-  # nolint
+## Updated 2019-07-22.
+`logRatioToFoldChange,numeric` <-  # nolint
     function(object, base = 2L) {
         assert(isInt(base), isPositive(base))
         base <- as.integer(base)
@@ -79,5 +81,5 @@ logRatioToFoldChange.numeric <-  # nolint
 setMethod(
     f = "logRatioToFoldChange",
     signature = signature("numeric"),
-    definition = logRatioToFoldChange.numeric
+    definition = `logRatioToFoldChange,numeric`
 )

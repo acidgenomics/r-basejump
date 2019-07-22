@@ -31,6 +31,8 @@
 #'
 #' ## 2 96-well plates with 6 control wells per plate.
 #' microplate(plates = 2L, wells = 96L, controls = 6L)
+
+## Updated 2019-07-22.
 microplate <- function(
     plates = 1L,
     wells = 96L,

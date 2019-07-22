@@ -44,7 +44,8 @@ NULL
 
 
 
-sampleNames.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`sampleNames,SummarizedExperiment` <-  # nolint
     function(object) {
         data <- sampleData(object)
         assert(isSubset("sampleName", colnames(data)))
@@ -60,12 +61,13 @@ sampleNames.SummarizedExperiment <-  # nolint
 setMethod(
     f = "sampleNames",
     signature = signature("SummarizedExperiment"),
-    definition = sampleNames.SummarizedExperiment
+    definition = `sampleNames,SummarizedExperiment`
 )
 
 
 
-`sampleNames<-.SummarizedExperiment,character` <-  # nolint
+## Updated 2019-07-22.
+`sampleNames<-,SummarizedExperiment,character` <-  # nolint
     function(object, value) {
         if (!is.factor(value)) {
             value <- as.factor(value)
@@ -96,5 +98,5 @@ setMethod(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    definition = `sampleNames<-.SummarizedExperiment,character`
+    definition = `sampleNames<-,SummarizedExperiment,character`
 )

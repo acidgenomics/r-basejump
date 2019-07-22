@@ -23,7 +23,8 @@ NULL
 
 
 
-zerosVsDepth.matrix <-  # nolint
+## Updated 2019-07-22.
+`zerosVsDepth,matrix` <-  # nolint
     function(object) {
         present <- object > 0L
         DataFrame(
@@ -40,14 +41,15 @@ zerosVsDepth.matrix <-  # nolint
 setMethod(
     f = "zerosVsDepth",
     signature = signature("matrix"),
-    definition = zerosVsDepth.matrix
+    definition = `zerosVsDepth,matrix`
 )
 
 
 
 ## Using a logical matrix is faster and more memory efficient.
 ## Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
-zerosVsDepth.sparseMatrix <-  # nolint
+## Updated 2019-07-22.
+`zerosVsDepth,sparseMatrix` <-  # nolint
     function(object) {
         assert(is(object, "sparseMatrix"))
         assert(!is(object, "lgCMatrix"))
@@ -69,12 +71,13 @@ zerosVsDepth.sparseMatrix <-  # nolint
 setMethod(
     f = "zerosVsDepth",
     signature = signature("sparseMatrix"),
-    definition = zerosVsDepth.sparseMatrix
+    definition = `zerosVsDepth,sparseMatrix`
 )
 
 
 
-zerosVsDepth.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`zerosVsDepth,SummarizedExperiment` <-  # nolint
     function(object, assay = 1L) {
         assert(isScalar(assay))
         counts <- assays(object)[[assay]]
@@ -94,12 +97,13 @@ zerosVsDepth.SummarizedExperiment <-  # nolint
 setMethod(
     f = "zerosVsDepth",
     signature = signature("SummarizedExperiment"),
-    definition = zerosVsDepth.SummarizedExperiment
+    definition = `zerosVsDepth,SummarizedExperiment`
 )
 
 
 
-zerosVsDepth.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`zerosVsDepth,SingleCellExperiment` <-  # nolint
     function(object, assay = 1L) {
         assert(isScalar(assay))
         counts <- assays(object)[[assay]]
@@ -133,5 +137,5 @@ zerosVsDepth.SingleCellExperiment <-  # nolint
 setMethod(
     f = "zerosVsDepth",
     signature = signature("SingleCellExperiment"),
-    definition = zerosVsDepth.SingleCellExperiment
+    definition = `zerosVsDepth,SingleCellExperiment`
 )

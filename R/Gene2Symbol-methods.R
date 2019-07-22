@@ -26,7 +26,8 @@ NULL
 
 
 
-Gene2Symbol.DataFrame <-  # nolint
+## Updated 2019-07-22.
+`Gene2Symbol,DataFrame` <-  # nolint
     function(object, format = c("makeUnique", "unmodified", "1:1")) {
         assert(hasRows(object))
         format <- match.arg(format)
@@ -90,12 +91,13 @@ Gene2Symbol.DataFrame <-  # nolint
 setMethod(
     f = "Gene2Symbol",
     signature = signature("DataFrame"),
-    definition = Gene2Symbol.DataFrame
+    definition = `Gene2Symbol,DataFrame`
 )
 
 
 
-Gene2Symbol.GRanges <-  # nolint
+## Updated 2019-07-22.
+`Gene2Symbol,GRanges` <-  # nolint
     function(object, format) {
         data <- as(object, "DataFrame")
         data <- unique(data)
@@ -103,7 +105,7 @@ Gene2Symbol.GRanges <-  # nolint
         do.call(what = Gene2Symbol, args = list(object = data, format = format))
     }
 
-formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
+formals(`Gene2Symbol,GRanges`) <- formals(`Gene2Symbol,DataFrame`)
 
 
 
@@ -112,12 +114,13 @@ formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
 setMethod(
     f = "Gene2Symbol",
     signature = signature("GRanges"),
-    definition = Gene2Symbol.GRanges
+    definition = `Gene2Symbol,GRanges`
 )
 
 
 
-Gene2Symbol.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`Gene2Symbol,SummarizedExperiment` <-  # nolint
     function(object, format) {
         object <- as.SummarizedExperiment(object)
         data <- rowData(object)
@@ -125,7 +128,7 @@ Gene2Symbol.SummarizedExperiment <-  # nolint
         do.call(what = Gene2Symbol, args = list(object = data, format = format))
     }
 
-formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
+formals(`Gene2Symbol,SummarizedExperiment`) <- formals(`Gene2Symbol,DataFrame`)
 
 
 
@@ -134,5 +137,5 @@ formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
 setMethod(
     f = "Gene2Symbol",
     signature = signature("SummarizedExperiment"),
-    definition = Gene2Symbol.SummarizedExperiment
+    definition = `Gene2Symbol,SummarizedExperiment`
 )
