@@ -4,7 +4,7 @@ data(
     matrix,
     matrix_lfc,
     RangedSummarizedExperiment,
-    SingleCellExperiment_Seurat,
+    SingleCellExperiment,
     sparseMatrix,
     SummarizedExperiment_transcripts,
     package = "acidtest",
@@ -16,7 +16,7 @@ gr <- GRanges
 lfc <- matrix_lfc
 mat <- matrix
 rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment_Seurat
+sce <- SingleCellExperiment
 sparse <- sparseMatrix
 txse <- SummarizedExperiment_transcripts
 
