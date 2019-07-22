@@ -38,7 +38,7 @@ NULL
 
 
 
-# Updated 2019-07-18.
+## Updated 2019-07-18.
 meltCounts.matrix <-  # nolint
     function(
         object,
@@ -51,9 +51,9 @@ meltCounts.matrix <-  # nolint
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
 
-        # Filter rows that don't pass our `minCounts` expression cutoff. Note
-        # that we're ensuring rows containing all zeros are always dropped,
-        # even when `minCountsMethod = "absolute"`.
+        ## Filter rows that don't pass our `minCounts` expression cutoff. Note
+        ## that we're ensuring rows containing all zeros are always dropped,
+        ## even when `minCountsMethod = "absolute"`.
         if (isInt(minCounts)) {
             assert(isGreaterThanOrEqualTo(minCounts, 1L))
 
@@ -72,14 +72,14 @@ meltCounts.matrix <-  # nolint
             }
             object <- object[keep, , drop = FALSE]
 
-            # Ensure that no zero rows propagate.
+            ## Ensure that no zero rows propagate.
             assert(!any(rowSums(object) == 0L))
         }
 
-        # Return as melted tibble.
+        ## Return as melted tibble.
         melt <- object %>%
-            # Using reshape2 method here.
-            # This sets rownames as "Var1" and colnames as "Var2".
+            ## Using reshape2 method here.
+            ## This sets rownames as "Var1" and colnames as "Var2".
             melt(id = 1L, value.name = "counts") %>%
             as_tibble() %>%
             rename(
@@ -88,8 +88,8 @@ meltCounts.matrix <-  # nolint
             ) %>%
             group_by(!!!syms(c("colname", "rowname")))
 
-        # When applying an absolute threshold using `minCountsMethod`, apply
-        # this cutoff prior to logarithmic transformation.
+        ## When applying an absolute threshold using `minCountsMethod`, apply
+        ## this cutoff prior to logarithmic transformation.
         if (
             isInt(minCounts) &&
             minCountsMethod == "absolute"
@@ -103,7 +103,7 @@ meltCounts.matrix <-  # nolint
             ))
         }
 
-        # Log transform the counts, if desired.
+        ## Log transform the counts, if desired.
         if (trans != "identity") {
             assert(isInt(minCounts))
             message(paste0("Applying ", trans, "(x + 1) transformation."))
@@ -131,7 +131,7 @@ setMethod(
 
 
 
-# Updated 2019-07-18.
+## Updated 2019-07-18.
 meltCounts.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -145,17 +145,17 @@ meltCounts.SummarizedExperiment <-  # nolint
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
 
-        # Prepare the count matrix.
+        ## Prepare the count matrix.
         counts <- assays(object)[[assay]]
         assert(hasLength(counts))
         counts <- as.matrix(counts)
 
-        # Get the sample metadata.
+        ## Get the sample metadata.
         sampleData <- sampleData(object) %>%
             as_tibble(rownames = "rowname") %>%
             rename(colname = !!sym("rowname"))
 
-        # Passing to matrix method.
+        ## Passing to matrix method.
         meltCounts(
             object = counts,
             minCounts = minCounts,

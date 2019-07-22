@@ -82,7 +82,7 @@
 #' )
 #' print(x)
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 makeSummarizedExperiment <- function(
     assays,
     rowRanges = NULL,  # recommended
