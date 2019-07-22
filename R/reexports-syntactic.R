@@ -1,7 +1,7 @@
 #' @rdname reexports-S4
-#' @name camel
-#' @importFrom syntactic camel
-#' @usage camel(object, ...)
+#' @name camelCase
+#' @importFrom syntactic camelCase
+#' @usage camelCase(object, ...)
 #' @export
 NULL
 
@@ -13,34 +13,60 @@ NULL
 NULL
 
 #' @rdname reexports-S4
-#' @name dotted
-#' @importFrom syntactic dotted
-#' @usage dotted(object, ...)
+#' @name dottedCase
+#' @importFrom syntactic dottedCase
+#' @usage dottedCase(object, ...)
 #' @export
 NULL
 
 #' @rdname reexports-S4
 #' @name kebab
-#' @importFrom syntactic kebab
-#' @usage kebab(object, ...)
+#' @importFrom syntactic kebabCase
+#' @usage kebabCase(object, ...)
+#' @export
+NULL
+
+#' @rdname reexports-S4
+#' @name mcolnames
+#' @importFrom syntactic mcolnames
+#' @usage mcolnames(x, ...)
+#' @export
+NULL
+
+#' @rdname reexports-S4
+#' @name mcolnames<-
+#' @importFrom syntactic mcolnames<-
+#' @usage mcolnames(x ...) <- value
 #' @export
 NULL
 
 #' @rdname reexports-S4
 #' @name snake
-#' @importFrom syntactic snake
-#' @usage snake(object, ...)
+#' @importFrom syntactic snakeCase
+#' @usage snakeCase(object, ...)
 #' @export
 NULL
 
 #' @rdname reexports-S4
 #' @name upperCamel
-#' @importFrom syntactic upperCamel
-#' @usage upperCamel(object, ...)
+#' @importFrom syntactic upperCamelCase
+#' @usage upperCamelCase(object, ...)
 #' @export
 NULL
 
 
+
+#' @importFrom syntactic camel
+#' @export
+syntactic::camel
+
+#' @importFrom syntactic dotted
+#' @export
+syntactic::dotted
+
+#' @importFrom syntactic kebab
+#' @export
+syntactic::kebab
 
 #' @importFrom syntactic makeDimnames
 #' @export
@@ -49,3 +75,11 @@ syntactic::makeDimnames
 #' @importFrom syntactic makeNames
 #' @export
 syntactic::makeNames
+
+#' @importFrom syntactic snake
+#' @export
+syntactic::snake
+
+#' @importFrom syntactic upperCamel
+#' @export
+syntactic::upperCamel
