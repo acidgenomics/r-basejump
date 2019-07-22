@@ -30,15 +30,14 @@ NULL
 
 
 
-## FIXME Check SCE method here.
 ## Updated 2019-07-22.
 `humanize,SummarizedExperiment` <-  # nolint
     function(object) {
         message("Making the rownames and colnames human readable.")
-        human <- object
-        human <- convertGenesToSymbols(human)
-        human <- convertSampleIDsToNames(human)
-        human
+        to <- object
+        to <- convertSampleIDsToNames(to)
+        to <- convertGenesToSymbols(to)
+        to
     }
 
 
