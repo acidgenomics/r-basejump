@@ -26,17 +26,17 @@ mapCellsToSamples <- function(cells, samples) {
         isCharacter(samples), hasNoDuplicates(samples)
     )
 
-    # Early return as simple factor for single sample.
-    # This code is useful for working with some example objects (e.g. PBMC).
+    ## Early return as simple factor for single sample.
+    ## This code is useful for working with some example objects (e.g. PBMC).
     if (isString(samples)) {
-        # Check that cells match DNA bases.
+        ## Check that cells match DNA bases.
         assert(allAreMatchingRegex(x = cells, pattern = "^[ACGT]+$"))
         cell2sample <- factor(replicate(n = length(cells), expr = samples))
         names(cell2sample) <- cells
         return(cell2sample)
     }
 
-    # Check that all cells contain a separator.
+    ## Check that all cells contain a separator.
     assert(allAreMatchingRegex(x = cells, pattern = "[_-]"))
 
     list <- lapply(X = samples, FUN = function(sample) {
@@ -51,8 +51,8 @@ mapCellsToSamples <- function(cells, samples) {
                 "cellID",
                 "sampleID",
                 "cellularBarcode",
-                # Trailing number is for matching Cell Ranger output.
-                # This gets used in the Chromium package.
+                ## Trailing number is for matching Cell Ranger output.
+                ## This gets used in the Chromium package.
                 "trailingNumber"
             )) %>%
             .[, c("cellID", "sampleID")] %>%

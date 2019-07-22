@@ -44,9 +44,9 @@ markdownList <- function(
         writeLines(c("", list, ""))
     } else {
         list %>%
-            # Add a trailing line break
+            ## Add a trailing line break
             paste0("\n") %>%
-            # Specify that output should be handled as Markdown text
+            ## Specify that output should be handled as Markdown text
             structure(format = "markdown") %>%
             asis_output()
     }

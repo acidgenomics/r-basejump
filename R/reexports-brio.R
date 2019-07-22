@@ -19,7 +19,7 @@ NULL
 #' @export
 NULL
 
-# Note switch from "x" to "object" here in v0.10.9.
+## Note switch from "x" to "object" here in v0.10.9.
 
 #' @rdname reexports-S4
 #' @name export
@@ -136,7 +136,7 @@ brio::writeCounts
 
 
 
-# Deprecated but still in use by the bcbio R packages.
+## Deprecated but still in use by the bcbio R packages.
 
 #' @importFrom brio sanitizeColData
 #' @export
@@ -152,7 +152,7 @@ brio::sanitizeRowRanges
 
 
 
-# Useful reexports from R.utils and utils.
+## Useful reexports from R.utils and utils.
 
 #' @importFrom brio bunzip2
 #' @export

@@ -22,9 +22,9 @@ EggNOG <-  # nolint
                 protocol = "none"
             )
         } else {
-            # This is slow and unreliable on Travis, so cover locally.
-            # EggNOG database doesn't support HTTPS currently.
-            # nocov start
+            ## This is slow and unreliable on Travis, so cover locally.
+            ## EggNOG database doesn't support HTTPS currently.
+            ## nocov start
             url <- pasteURL(
                 "eggnog5.embl.de", "download", "latest",
                 protocol = "http"
@@ -41,7 +41,7 @@ EggNOG <-  # nolint
                 url, "data", "NOG", "NOG.annotations.tsv.gz",
                 protocol = "none"
             )
-            # nocov end
+            ## nocov end
         }
         assert(
             isString(categoriesFile),
@@ -49,7 +49,7 @@ EggNOG <-  # nolint
             isString(nogFile)
         )
 
-        # Categories -----------------------------------------------------------
+        ## Categories -----------------------------------------------------------
         pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
         categories <- read_lines(file = categoriesFile) %>%
             str_subset(pattern) %>%
@@ -60,7 +60,7 @@ EggNOG <-  # nolint
             arrange(!!sym("letter")) %>%
             as("DataFrame")
 
-        # Annotations ----------------------------------------------------------
+        ## Annotations ----------------------------------------------------------
         colnames <- c(
             "taxonomicLevel",
             "groupName",
@@ -70,7 +70,7 @@ EggNOG <-  # nolint
             "consensusFunctionalDescription"
         )
 
-        # euNOG: Eukaryota
+        ## euNOG: Eukaryota
         eunog <- read_tsv(
             file = eunogFile,
             col_names = colnames,
@@ -78,7 +78,7 @@ EggNOG <-  # nolint
             progress = FALSE
         )
 
-        # NOG: LUCA
+        ## NOG: LUCA
         nog <- read_tsv(
             file = nogFile,
             col_names = colnames,
@@ -96,7 +96,7 @@ EggNOG <-  # nolint
             arrange(!!sym("eggnogID")) %>%
             as("DataFrame")
 
-        # Return ---------------------------------------------------------------
+        ## Return ---------------------------------------------------------------
         data <- List(
             cogFunctionalCategories = categories,
             annotations = annotations

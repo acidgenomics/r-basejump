@@ -23,10 +23,10 @@ MGI2Ensembl <- function() {  # nolint
     message("Obtaining MGI to Ensembl gene ID mappings.")
     data <- read_tsv(
         file = file,
-        # Using our global NA strings.
+        ## Using our global NA strings.
         na = naStrings,
         col_names = FALSE,
-        # Suppress the column messages.
+        ## Suppress the column messages.
         col_types = cols(),
         skip = 1L,
         progress = FALSE

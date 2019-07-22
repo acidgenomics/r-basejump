@@ -1,7 +1,7 @@
-# Don't use `NULL` assignment method to remove columns on a DataFrame if we're
-# providing support for BioC releases prior to 3.8. This will result in a
-# metadata problem that returns as a cryptic `S4Vectors::V_recycle` error. This
-# will pop up: 'NROW(value)' is greater than 'length(x)'.
+## Don't use `NULL` assignment method to remove columns on a DataFrame if we're
+## providing support for BioC releases prior to 3.8. This will result in a
+## metadata problem that returns as a cryptic `S4Vectors::V_recycle` error. This
+## will pop up: 'NROW(value)' is greater than 'length(x)'.
 
 
 
@@ -102,8 +102,8 @@ NULL
 
 
 
-# Don't run validity checks here.
-# Note that we're using grep pattern matching for `ignoreCols`.
+## Don't run validity checks here.
+## Note that we're using grep pattern matching for `ignoreCols`.
 sampleData.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -123,10 +123,10 @@ sampleData.SummarizedExperiment <-  # nolint
             isCharacter(ignoreCols, nullOK = TRUE)
         )
 
-        # Prepare columns ------------------------------------------------------
+        ## Prepare columns ------------------------------------------------------
         assert(areDisjointSets(x = colnames(data), y = metadataBlacklist))
 
-        # Require `sampleName` column.
+        ## Require `sampleName` column.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
@@ -136,13 +136,13 @@ sampleData.SummarizedExperiment <-  # nolint
             ))
         }
 
-        # Clean mode -----------------------------------------------------------
+        ## Clean mode -----------------------------------------------------------
         if (isTRUE(clean)) {
-            # Return only a subset of factor columns.
+            ## Return only a subset of factor columns.
             keep <- bapply(X = data, FUN = is.factor)
             data <- data[, keep, drop = FALSE]
 
-            # Drop any additional uninformative columns to ignore.
+            ## Drop any additional uninformative columns to ignore.
             if (is.character(ignoreCols)) {
                 keep <- !grepl(
                     pattern = paste(ignoreCols, collapse = "|"),
@@ -152,13 +152,13 @@ sampleData.SummarizedExperiment <-  # nolint
             }
         }
 
-        # Interesting groups ---------------------------------------------------
+        ## Interesting groups ---------------------------------------------------
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = matchInterestingGroups(object)
         )
 
-        # Return ---------------------------------------------------------------
+        ## Return ---------------------------------------------------------------
         assert(
             is.factor(data[["interestingGroups"]]),
             is.factor(data[["sampleName"]])
@@ -178,7 +178,7 @@ setMethod(
 
 
 
-# Don't run validity checks here.
+## Don't run validity checks here.
 sampleData.SingleCellExperiment <-  # nolint
     function(
         object,
@@ -209,16 +209,16 @@ sampleData.SingleCellExperiment <-  # nolint
         )
         interestingGroups <- matchInterestingGroups(object)
 
-        # Prepare columns ------------------------------------------------------
+        ## Prepare columns ------------------------------------------------------
         assert(areDisjointSets("interestingGroups", colnames(data)))
 
-        # Generate `sampleID` and `sampleName` columns, if necessary. We're not
-        # requiring `sampleID` because many SingleCellExperiment objects are
-        # derived from a single sample (e.g. 10X PBMC example data). Note that
-        # `SummarizedExperiment` method differs by not allowing the `sampleID`
-        # column, which are the `colnames` of the object. `SingleCellExperiment`
-        # maps cells to `colnames` instead of samples, so this factor is
-        # necessary when handling multiple samples.
+        ## Generate `sampleID` and `sampleName` columns, if necessary. We're not
+        ## requiring `sampleID` because many SingleCellExperiment objects are
+        ## derived from a single sample (e.g. 10X PBMC example data). Note that
+        ## `SummarizedExperiment` method differs by not allowing the `sampleID`
+        ## column, which are the `colnames` of the object. `SingleCellExperiment`
+        ## maps cells to `colnames` instead of samples, so this factor is
+        ## necessary when handling multiple samples.
         if (!"sampleID" %in% colnames(data)) {
             data[["sampleID"]] <- factor("unknown")
         }
@@ -228,8 +228,8 @@ sampleData.SingleCellExperiment <-  # nolint
         }
         assert(is.factor(data[["sampleName"]]))
 
-        # Blacklist ------------------------------------------------------------
-        # Drop any blacklisted cell-level columns.
+        ## Blacklist ------------------------------------------------------------
+        ## Drop any blacklisted cell-level columns.
         if (is.character(blacklistCols)) {
             keep <- !grepl(
                 pattern = paste(blacklistCols, collapse = "|"),
@@ -238,13 +238,13 @@ sampleData.SingleCellExperiment <-  # nolint
             data <- data[, keep, drop = FALSE]
         }
 
-        # Clean mode -----------------------------------------------------------
+        ## Clean mode -----------------------------------------------------------
         if (isTRUE(clean)) {
-            # Return only a subset of factor columns.
+            ## Return only a subset of factor columns.
             keep <- bapply(X = data, FUN = is.factor)
             data <- data[, keep, drop = FALSE]
 
-            # Drop any additional uninformative columns to ignore.
+            ## Drop any additional uninformative columns to ignore.
             if (is.character(ignoreCols)) {
                 keep <- !grepl(
                     pattern = paste(ignoreCols, collapse = "|"),
@@ -254,13 +254,13 @@ sampleData.SingleCellExperiment <-  # nolint
             }
         }
 
-        # Drop rows with too many uniques (cell level) -------------------------
+        ## Drop rows with too many uniques (cell level) -------------------------
         nSamples <- length(unique(data[["sampleID"]]))
         assert(all(isPositive(nSamples)))
 
-        # Keep columns that have have less than or equal the same number of
-        # uniques as the the number of samples. Note that this step is really
-        # essential, especially when QC metrics are slotted into `colData()`.
+        ## Keep columns that have have less than or equal the same number of
+        ## uniques as the the number of samples. Note that this step is really
+        ## essential, especially when QC metrics are slotted into `colData()`.
         keep <- bapply(
             X = data,
             FUN = function(x) {
@@ -269,12 +269,12 @@ sampleData.SingleCellExperiment <-  # nolint
         )
         data <- data[, keep, drop = FALSE]
 
-        # Check rows with same number of uniques -------------------------------
-        # For columns that have the exact same number of uniques as the number
-        # of samples, they need to match our `sampleID` column factor levels
-        # exactly, otherwise we can run into issues where cell-level values
-        # appear to be sample level. Create a factor integer table to check for
-        # this. Shouldn't apply too often but can happen for some edge cases.
+        ## Check rows with same number of uniques -------------------------------
+        ## For columns that have the exact same number of uniques as the number
+        ## of samples, they need to match our `sampleID` column factor levels
+        ## exactly, otherwise we can run into issues where cell-level values
+        ## appear to be sample level. Create a factor integer table to check for
+        ## this. Shouldn't apply too often but can happen for some edge cases.
         ftable <- data
         keep <- bapply(
             X = ftable,
@@ -283,18 +283,15 @@ sampleData.SingleCellExperiment <-  # nolint
             }
         )
         ftable <- ftable[, keep, drop = FALSE]
-        # Don't use `as.factor()` to `as.integer()` chain here. If you have
-        # factors with different levels when sorted alphabetically, this will
-        # not work as expected.
-        #
-        # Example edge case:
-        # - sampleID: sample2, sample
-        # - sampleName: a, b
-        #
-        # See how these factor levels will flip in the index and not match.
-        # Instead, we need to enforce the factor levels by order of appearance.
-        #
-        # ftable here represents a numeric factor index table.
+        ## Don't use `as.factor()` to `as.integer()` chain here. If you have
+        ## factors with different levels when sorted alphabetically, this will
+        ## not work as expected.
+        ##         ## Example edge case:
+        ## - sampleID: sample2, sample
+        ## - sampleName: a, b
+        ##         ## See how these factor levels will flip in the index and not match.
+        ## Instead, we need to enforce the factor levels by order of appearance.
+        ##         ## ftable here represents a numeric factor index table.
         ftable %<>%
             as_tibble(rownames = NULL) %>%
             mutate_all(~ factor(., levels = unique(.))) %>%
@@ -312,8 +309,8 @@ sampleData.SingleCellExperiment <-  # nolint
         }
         assert(isSubset(c("sampleID", interestingGroups), colnames(data)))
 
-        # Collapse to sample level ---------------------------------------------
-        # Collapse and set the row names to `sampleID`.
+        ## Collapse to sample level ---------------------------------------------
+        ## Collapse and set the row names to `sampleID`.
         rownames(data) <- NULL
         data <- unique(data)
         if (
@@ -328,22 +325,22 @@ sampleData.SingleCellExperiment <-  # nolint
         }
         rownames(data) <- data[["sampleID"]]
 
-        # Returning arranged by `sampleID`.
-        # Use `setdiff()` approach instead of `NULL` assignment on `sampleID`
-        # column to maintain backwards compatibility prior to BioC 3.8.
+        ## Returning arranged by `sampleID`.
+        ## Use `setdiff()` approach instead of `NULL` assignment on `sampleID`
+        ## column to maintain backwards compatibility prior to BioC 3.8.
         data <- data[
             rownames(data),
             setdiff(colnames(data), "sampleID"),
             drop = FALSE
         ]
 
-        # Interesting groups ---------------------------------------------------
+        ## Interesting groups ---------------------------------------------------
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = interestingGroups
         )
 
-        # Return ---------------------------------------------------------------
+        ## Return ---------------------------------------------------------------
         assert(
             is.factor(data[["interestingGroups"]]),
             is.factor(data[["sampleName"]])
@@ -365,10 +362,10 @@ setMethod(
 
 `sampleData<-.SummarizedExperiment` <-  # nolint
     function(object, value) {
-        # Don't allow blacklisted columns.
-        # Note that attempting to use `NULL` to remove columns on a DataFrame
-        # will result in `S4Vectors::V_recycle()` errors, prior to BioC 3.8.
-        # https://stat.ethz.ch/pipermail/bioc-devel/2017-November/012343.html
+        ## Don't allow blacklisted columns.
+        ## Note that attempting to use `NULL` to remove columns on a DataFrame
+        ## will result in `S4Vectors::V_recycle()` errors, prior to BioC 3.8.
+        ## https://stat.ethz.ch/pipermail/bioc-devel/2017-November/012343.html
         blacklist <- c(
             "interestingGroups",
             "rowname",
@@ -376,9 +373,9 @@ setMethod(
         )
         keep <- setdiff(colnames(value), blacklist)
         assert(hasLength(keep))
-        # Be sure to include `drop` here in case we have only 1 column left.
+        ## Be sure to include `drop` here in case we have only 1 column left.
         value <- value[, keep, drop = FALSE]
-        # Now safe to assign and return.
+        ## Now safe to assign and return.
         colData(object) <- value
         validObject(object)
         object
@@ -399,27 +396,27 @@ setMethod(
 
 
 
-# Updated 2019-07-16.
+## Updated 2019-07-16.
 `sampleData<-.SingleCellExperiment` <-  # nolint
     function(object, value) {
         assert(is(value, "DataFrame"))
 
-        # Remove legacy `sampleData` in metadata, if defined.
+        ## Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {
             message("Removed legacy sampleData in metadata() slot.")
             metadata(object)[["sampleData"]] <- NULL
         }
 
-        # Don't allow blacklisted columns.
+        ## Don't allow blacklisted columns.
         value[["interestingGroups"]] <- NULL
         value[["rowname"]] <- NULL
         value[["sampleID"]] <- NULL
 
-        # Generate `sampleID` column.
+        ## Generate `sampleID` column.
         assert(hasRownames(value))
         value[["sampleID"]] <- as.factor(rownames(value))
 
-        # Update colData slot.
+        ## Update colData slot.
         colData <- colData(object)
         assert(isSubset("sampleID", colnames(colData)))
         colData <- colData[
@@ -428,8 +425,8 @@ setMethod(
             drop = FALSE
         ]
 
-        # Join the sample-level metadata into cell-level colData.
-        # Use BiocTibble left_join DataFrame method here.
+        ## Join the sample-level metadata into cell-level colData.
+        ## Use BiocTibble left_join DataFrame method here.
         join <- left_join(
             x = as_tibble(colData, rownames = "rowname"),
             y = as_tibble(value, rownames = NULL),

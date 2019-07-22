@@ -32,7 +32,7 @@ separator <- function(
 
 
 
-# Soft deprecated, since this is still in use by bcbio R packages.
+## Soft deprecated, since this is still in use by bcbio R packages.
 #' @rdname deprecated
 #' @export
 separatorBar <- separator()

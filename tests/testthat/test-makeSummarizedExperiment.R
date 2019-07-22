@@ -34,7 +34,7 @@ test_that("RangedSummarizedExperiment", {
     expect_s4_class(object, "RangedSummarizedExperiment")
     expect_identical(dim(object), c(4L, 4L))
     expect_identical(names(object), genes)
-    # Previously we stashed devtoolsSessionInfo and utilsSessionInfo here.
+    ## Previously we stashed devtoolsSessionInfo and utilsSessionInfo here.
     expect_identical(
         object = lapply(metadata(object), class),
         expected = list(
@@ -46,13 +46,13 @@ test_that("RangedSummarizedExperiment", {
 })
 
 test_that("SummarizedExperiment", {
-    # Allow legacy support of rowData pass-in.
+    ## Allow legacy support of rowData pass-in.
     object <- makeSummarizedExperiment(
         assays = list(counts = mat),
         rowData = as(rr, "DataFrame"),
         colData = cd
     )
-    # Check for SE and not RSE.
+    ## Check for SE and not RSE.
     expect_identical(
         object = class(object),
         expected = structure(
@@ -63,7 +63,7 @@ test_that("SummarizedExperiment", {
 })
 
 test_that("No row/column annotations", {
-    # Ensure this returns clean in minimal mode.
+    ## Ensure this returns clean in minimal mode.
     rse <- makeSummarizedExperiment(
         assays = list(counts = mat),
         rowRanges = NULL,
@@ -94,7 +94,7 @@ test_that("Spike-in support", {
 })
 
 test_that("Strict names", {
-    # Don't allow any dashes and other illegal characters in names.
+    ## Don't allow any dashes and other illegal characters in names.
     matBadRows <- mat
     rownames(matBadRows) <- paste0(rownames(mat), "-XXX")
     expect_error(
@@ -141,7 +141,7 @@ test_that("Duplicate names", {
 })
 
 test_that("Column data failure", {
-    # Bad pass-in of objects not supporting `dimnames`.
+    ## Bad pass-in of objects not supporting `dimnames`.
     expect_error(
         object = makeSummarizedExperiment(
             assays = list(counts = "yyy"),

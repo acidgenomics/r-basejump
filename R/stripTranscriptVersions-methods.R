@@ -30,10 +30,10 @@ NULL
 
 
 
-# Pattern matching against Ensembl transcript IDs.
-# http://www.ensembl.org/info/genome/stable_ids/index.html
-# Examples: ENST (human); ENSMUST (mouse).
-# `:punct:` will match `-` or `_` here.
+## Pattern matching against Ensembl transcript IDs.
+## http://www.ensembl.org/info/genome/stable_ids/index.html
+## Examples: ENST (human); ENSMUST (mouse).
+## `:punct:` will match `-` or `_` here.
 stripTranscriptVersions.character <-  # nolint
     function(object) {
         assert(isCharacter(object))

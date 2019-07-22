@@ -24,8 +24,8 @@ makeSingleCellExperiment <- function(
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
-    # Make RangedSummarizedExperiment first.
-    # Supports automatic resizing of rowRanges and helps slot FASTA spike-ins.
+    ## Make RangedSummarizedExperiment first.
+    ## Supports automatic resizing of rowRanges and helps slot FASTA spike-ins.
     rse <- makeSummarizedExperiment(
         assays = assays,
         rowRanges = rowRanges,
@@ -35,8 +35,8 @@ makeSingleCellExperiment <- function(
         spikeNames = spikeNames
     )
 
-    # Then coerce to SingleCellExperiment.
-    # Note that `as` method isn't currently returning valid.
+    ## Then coerce to SingleCellExperiment.
+    ## Note that `as` method isn't currently returning valid.
     sce <- SingleCellExperiment(
         assays = assays(rse),
         rowRanges = rowRanges(rse),
@@ -44,7 +44,7 @@ makeSingleCellExperiment <- function(
         metadata = metadata(rse)
     )
 
-    # Optionally, use `isSpike` internally to define the `spikeNames`.
+    ## Optionally, use `isSpike` internally to define the `spikeNames`.
     if (is.character(spikeNames)) {
         for (i in seq_along(spikeNames)) {
             isSpike(sce, spikeNames[[i]]) <- spikeNames[[i]]
