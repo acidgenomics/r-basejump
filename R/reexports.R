@@ -1,18 +1,18 @@
-# Assignment pipe
+## Assignment pipe
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
 
-# Exposition pipe
+## Exposition pipe
 #' @importFrom magrittr %$%
 magrittr::`%$%`
 
-# Pipe
+## Pipe
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
 
-# Tee pipe
+## Tee pipe
 #' @importFrom magrittr %T>%
 #' @export
 magrittr::`%T>%`

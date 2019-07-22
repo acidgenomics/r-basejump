@@ -22,7 +22,7 @@
 #' )
 #' matchHumanOrthologs(genes, ensemblRelease = 87L)
 
-# Updated 2019-07-17.
+## Updated 2019-07-17.
 matchHumanOrthologs <- function(
     genes,
     organism = NULL,
@@ -35,7 +35,7 @@ matchHumanOrthologs <- function(
         isInt(ensemblRelease, nullOK = TRUE)
     )
 
-    # Consider warning here instead of informing.
+    ## Consider warning here instead of informing.
     if (length(genes) > 500L) {
         message(paste0(
             "The BioMart API may time out for large requests ",
@@ -46,10 +46,10 @@ matchHumanOrthologs <- function(
     if (is.null(organism)) {
         organism <- detectOrganism(genes)
     }
-    # Don't allow the user to pass in human genes, since this makes no sense.
+    ## Don't allow the user to pass in human genes, since this makes no sense.
     assert(!identical(organism, "Homo sapiens"))
 
-    # Match the Ensembl release to the archive host name, required for biomaRt.
+    ## Match the Ensembl release to the archive host name, required for biomaRt.
     host <- sub(
         pattern = "^http(s)?://([a-z0-9.]+)/?$",
         replacement = "\\2",
@@ -70,7 +70,7 @@ matchHumanOrthologs <- function(
         " with biomaRt ", packageVersion("biomaRt"), "."
     ))
 
-    # e.g. "mmusculus_gene_ensembl"
+    ## e.g. "mmusculus_gene_ensembl"
     dataset <- paste0(
         tolower(sub(
             pattern = "^([A-Z])([a-z]+)\\s([a-z]+)$",
@@ -82,7 +82,7 @@ matchHumanOrthologs <- function(
 
     mart <- tryCatch(
         expr = biomaRt::useMart(
-            # "ensembl" also works.
+            ## "ensembl" also works.
             biomart = "ENSEMBL_MART_ENSEMBL",
             dataset = dataset,
             host = host

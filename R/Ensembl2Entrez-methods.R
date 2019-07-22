@@ -39,17 +39,17 @@ Ensembl2Entrez.DataFrame <-  # nolint
             row.names = rownames(object)
         )
 
-        # Expand to long format.
+        ## Expand to long format.
         data <- expand(data)
 
-        # Inform the user about genes that don't map to Entrez.
+        ## Inform the user about genes that don't map to Entrez.
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
         assert(hasNoDuplicates(unmapped))
         if (length(unmapped) > 0L) {
             message(paste(length(unmapped), "genes don't map to Entrez."))
         }
 
-        # Inform the user about how many genes multi-map to Entrez.
+        ## Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
         if (length(multimapped) > 0L) {
             message(paste(

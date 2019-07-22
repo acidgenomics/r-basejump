@@ -21,7 +21,7 @@ test_that("List mode", {
     )
 })
 
-# This is useful for larger datasets.
+## This is useful for larger datasets.
 test_that("Assign and save mode", {
     env <- new.env()
     files <-

@@ -36,7 +36,7 @@ NULL
 
 #' @rdname makeGene2Symbol
 #' @export
-# Last modified 2019-06-06.
+## Last modified 2019-06-06.
 makeGene2SymbolFromEnsembl <-
     function(organism) {
         format <- match.arg(format)
@@ -59,7 +59,7 @@ formals(makeGene2SymbolFromEnsembl) <- f
 
 #' @rdname makeGene2Symbol
 #' @export
-# Last modified 2019-06-06.
+## Last modified 2019-06-06.
 makeGene2SymbolFromEnsDb <-
     function(object, format) {
         format <- match.arg(format)
@@ -74,7 +74,7 @@ formals(makeGene2SymbolFromEnsDb)[["format"]] <-
 
 #' @rdname makeGene2Symbol
 #' @export
-# Last modified 2019-06-06.
+## Last modified 2019-06-06.
 makeGene2SymbolFromGFF <-
     function(file, format) {
         format <- match.arg(format)

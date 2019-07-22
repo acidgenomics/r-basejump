@@ -3,15 +3,15 @@ context("Sanitization")
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
 
-# nolint start
+## nolint start
 DataFrame <- S4Vectors::DataFrame
 rowRanges <- SummarizedExperiment::rowRanges
 tibble <- tibble::tibble
-# nolint end
+## nolint end
 
 
 
-# collapseToString =============================================================
+## collapseToString =============================================================
 test_that("collapseToString : atomic", {
     expect_identical(
         object = collapseToString(
@@ -75,7 +75,7 @@ test_that("collapseToString : logical", {
         object = collapseToString(c(TRUE, FALSE), sort = TRUE),
         expected = "FALSE, TRUE"
     )
-    # NA and NaN should stay fixed even when sorting is enabled
+    ## NA and NaN should stay fixed even when sorting is enabled
     expect_identical(
         object = collapseToString(c(NA, NaN), sort = TRUE),
         expected = "NA, NaN"
@@ -111,9 +111,9 @@ test_that("collapseToString : scalar early return", {
 
 
 
-# removeNA =====================================================================
-# Support for vectors (using `stats::na.omit`).
-# This will return structure attributes about original size, with class omit.
+## removeNA =====================================================================
+## Support for vectors (using `stats::na.omit`).
+## This will return structure attributes about original size, with class omit.
 with_parameters_test_that(
     "removeNA", {
         expect_identical(
@@ -150,7 +150,7 @@ with_parameters_test_that(
 
 
 
-# sanitizeNA ===================================================================
+## sanitizeNA ===================================================================
 with_parameters_test_that(
     "sanitizeNA", {
         expect_identical(
@@ -204,7 +204,7 @@ with_parameters_test_that(
 
 
 
-# sanitizeSampleData ===========================================================
+## sanitizeSampleData ===========================================================
 test_that("sanitizeSampleData", {
     object <- DataFrame(
         genotype = rep(c("wt", "ko"), times = 2L),
@@ -212,21 +212,21 @@ test_that("sanitizeSampleData", {
         row.names = paste0("sample", seq_len(4L))
     )
 
-    # `sampleName` column is required.
+    ## `sampleName` column is required.
     object[["sampleName"]] <- NULL
     expect_error(
         object = sanitizeSampleData(object),
         regexp = "sampleName"
     )
 
-    # And `sampleName` column can't contain duplicates.
+    ## And `sampleName` column can't contain duplicates.
     object[["sampleName"]] <- "XXX"
     expect_error(
         object = sanitizeSampleData(object),
         regexp = "hasNoDuplicates"
     )
 
-    # All columns should return factor.
+    ## All columns should return factor.
     object[["sampleName"]] <- paste("sample", seq_len(nrow(object)))
     data <- sanitizeSampleData(object)
     expect_is(data, "DataFrame")
@@ -239,7 +239,7 @@ test_that("sanitizeSampleData", {
 
 
 
-# sortUnique ===================================================================
+## sortUnique ===================================================================
 test_that("sortUnique", {
     expect_identical(
         sortUnique(c("milk", "eggs", "eggs", NA)),
@@ -249,7 +249,7 @@ test_that("sortUnique", {
 
 
 
-# toStringUnique ===============================================================
+## toStringUnique ===============================================================
 test_that("toStringUnique", {
     expect_identical(
         toStringUnique(c("hello", "world", NA, "hello", "world", NA)),

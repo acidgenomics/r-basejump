@@ -83,8 +83,8 @@ headtail.matrix <-  # nolint
                 ]
             out <- as.data.frame(out)
         } else {
-            # Ensure that we're performing subset operation before coercion to
-            # data.frame, as this can blow up in memory for sparse matrices.
+            ## Ensure that we're performing subset operation before coercion to
+            ## data.frame, as this can blow up in memory for sparse matrices.
             square <- x[
                 c(
                     head(rownames(x), n = n),
@@ -97,10 +97,10 @@ headtail.matrix <-  # nolint
                 drop = FALSE
                 ]
 
-            # Coerce to data.frame, for consistency.
+            ## Coerce to data.frame, for consistency.
             square <- as.data.frame(square)
 
-            # Sanitize all non-atomic columns to placeholder symbol.
+            ## Sanitize all non-atomic columns to placeholder symbol.
             list <- lapply(
                 X = square,
                 FUN = function(x) {
@@ -113,7 +113,7 @@ headtail.matrix <-  # nolint
                     }
                 }
             )
-            # Now safe to coerce to atomic data.frame.
+            ## Now safe to coerce to atomic data.frame.
             square <- data.frame(
                 list,
                 row.names = rownames(square),
@@ -122,14 +122,14 @@ headtail.matrix <-  # nolint
                 stringsAsFactors = FALSE
             )
 
-            # Check that we have square dimensions.
+            ## Check that we have square dimensions.
             assert(
                 nrow(square) == n * 2L,
                 ncol(square) == n * 2L
             )
 
-            # Split into quadrants, so we can add vertical separators.
-            # upper/lower, left/right.
+            ## Split into quadrants, so we can add vertical separators.
+            ## upper/lower, left/right.
             ul <- square[seq_len(n), seq_len(n), drop = FALSE]
             ur <- square[seq_len(n), seq_len(n) + n, drop = FALSE]
             ll <- square[seq_len(n) + n, seq_len(n), drop = FALSE]
@@ -163,7 +163,7 @@ headtail.matrix <-  # nolint
             )
         }
 
-        # Substitute Unicode characters for ASCII, if desired.
+        ## Substitute Unicode characters for ASCII, if desired.
         if (isTRUE(ascii)) {
             dimnames(out) <- lapply(
                 X = dimnames(out),

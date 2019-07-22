@@ -26,7 +26,7 @@ NULL
 
 
 
-# Assuming gene identifiers are defined in the rownames.
+## Assuming gene identifiers are defined in the rownames.
 organism.matrix <-  # nolint
     function(object) {
         assert(hasRownames(object))
@@ -75,7 +75,7 @@ setMethod(
 
 
 
-# Note that DataFrame and GRanges inherit from this class.
+## Note that DataFrame and GRanges inherit from this class.
 organism.Annotated <-  # nolint
     function(object) {
         metadata(object)[["organism"]]
@@ -95,12 +95,12 @@ setMethod(
 
 organism.DataTable <-  # nolint
     function(object) {
-        # Attempt to use metadata stash, if defined.
+        ## Attempt to use metadata stash, if defined.
         organism <- organism.Annotated(object)
         if (isString(organism)) {
             return(organism)
         }
-        # Otherwise, fall back to matrix method.
+        ## Otherwise, fall back to matrix method.
         organism.matrix(object)
     }
 
@@ -118,7 +118,7 @@ setMethod(
 
 organism.GRanges <-  # nolint
     function(object) {
-        # Attempt to use metadata stash, if defined.
+        ## Attempt to use metadata stash, if defined.
         organism <- organism.Annotated(object)
         if (isString(organism)) {
             return(organism)
@@ -141,13 +141,13 @@ setMethod(
 
 organism.SummarizedExperiment <-  # nolint
     function(object) {
-        # Attempt to use metadata stash, if defined.
+        ## Attempt to use metadata stash, if defined.
         organism <- organism.Annotated(object)
         if (isString(organism)) {
             return(organism)
         }
 
-        # Fall back to detecting from rowRanges or rownames.
+        ## Fall back to detecting from rowRanges or rownames.
         if ("geneID" %in% colnames(rowData(object))) {
             x <- as.character(rowData(object)[["geneID"]])
         } else {

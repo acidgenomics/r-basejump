@@ -14,8 +14,8 @@ test_that("2 samples", {
     )
 })
 
-# Support for this is useful when working with example Seurat objects.
-# Consider making this stricter and checking for ACGT specifically.
+## Support for this is useful when working with example Seurat objects.
+## Consider making this stricter and checking for ACGT specifically.
 test_that("1 sample", {
     expect_identical(
         object = mapCellsToSamples(

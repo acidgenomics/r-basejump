@@ -139,7 +139,7 @@ NULL
 
 .aggregateFuns <- c("sum", "mean")
 
-# Don't message when aggregating a large factor.
+## Don't message when aggregating a large factor.
 .aggregateMessage <- function(groupings, fun) {
     assert(
         is.factor(groupings),
@@ -159,7 +159,7 @@ NULL
 
 
 
-# aggregateRows ================================================================
+## aggregateRows ================================================================
 aggregateRows.matrix <-  # nolint
     function(object, groupings, fun) {
         assert(
@@ -171,7 +171,7 @@ aggregateRows.matrix <-  # nolint
 
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
-        # `stats::aggregate.data.frame` S3 method.
+        ## `stats::aggregate.data.frame` S3 method.
         aggregate(
             x = object,
             by = list(rowname = groupings),
@@ -204,7 +204,7 @@ aggregateRows.sparseMatrix <-  # nolint
         )
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
-        # `Matrix.utils::aggregate.Matrix` S3 method.
+        ## `Matrix.utils::aggregate.Matrix` S3 method.
         aggregate(x = object, groupings = groupings, fun = fun)
     }
 
@@ -229,7 +229,7 @@ aggregateRows.SummarizedExperiment <-  # nolint
         )
         fun <- match.arg(fun)
 
-        # Groupings ------------------------------------------------------------
+        ## Groupings ------------------------------------------------------------
         assert(isSubset(col, colnames(rowData(object))))
         groupings <- rowData(object)[[col]]
         assert(
@@ -238,7 +238,7 @@ aggregateRows.SummarizedExperiment <-  # nolint
         )
         names(groupings) <- rownames(object)
 
-        # Assay ----------------------------------------------------------------
+        ## Assay ----------------------------------------------------------------
         assay <- aggregateRows(
             object = assay(object),
             groupings = groupings,
@@ -248,7 +248,7 @@ aggregateRows.SummarizedExperiment <-  # nolint
             assert(identical(sum(assay), sum(assay(object))))
         }
 
-        # Return ---------------------------------------------------------------
+        ## Return ---------------------------------------------------------------
         args <- list(
             assays = list(assay),
             colData = colData(object)
@@ -275,7 +275,7 @@ setMethod(
 
 
 
-# aggregateCols ================================================================
+## aggregateCols ================================================================
 aggregateCols.matrix <-  # nolint
     function(
         object,
@@ -343,7 +343,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
         )
         fun <- match.arg(fun)
 
-        # Groupings ------------------------------------------------------------
+        ## Groupings ------------------------------------------------------------
         if (!all(
             isSubset(col, colnames(colData(object))),
             isSubset(col, colnames(sampleData(object)))
@@ -360,7 +360,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
         )
         names(groupings) <- colnames(object)
 
-        # Assay ----------------------------------------------------------------
+        ## Assay ----------------------------------------------------------------
         assay <- aggregateCols(
             object = assay(object),
             groupings = groupings,
@@ -371,7 +371,7 @@ aggregateCols.SummarizedExperiment <-  # nolint
             assert(identical(sum(assay), sum(assay(object))))
         }
 
-        # Return ---------------------------------------------------------------
+        ## Return ---------------------------------------------------------------
         args <- list(
             assays = list(assay),
             colData = DataFrame(row.names = colnames(assay))
@@ -404,7 +404,7 @@ aggregateCols.SingleCellExperiment <-  # nolint
         validObject(object)
         fun <- match.arg(fun)
 
-        # Remap cellular barcode groupings -------------------------------------
+        ## Remap cellular barcode groupings -------------------------------------
         colData <- colData(object)
         assert(
             isSubset(c("sampleID", "aggregate"), colnames(colData)),
@@ -420,7 +420,7 @@ aggregateCols.SingleCellExperiment <-  # nolint
             as_tibble(rownames = "cellID") %>%
             select(!!!syms(c("cellID", "sampleID", "aggregate")))
 
-        # Check to see if we can aggregate.
+        ## Check to see if we can aggregate.
         if (!all(mapply(
             FUN = grepl,
             x = map[["cellID"]],
@@ -442,12 +442,12 @@ aggregateCols.SingleCellExperiment <-  # nolint
         cell2sample <- as.factor(map[["aggregate"]])
         names(cell2sample) <- as.character(groupings)
 
-        # Reslot the `aggregate` column using these groupings.
+        ## Reslot the `aggregate` column using these groupings.
         assert(identical(names(groupings), colnames(object)))
         colData(object)[["aggregate"]] <- groupings
 
-        # Generate SingleCellExperiment ----------------------------------------
-        # Using `SummarizedExperiment` method here.
+        ## Generate SingleCellExperiment ----------------------------------------
+        ## Using `SummarizedExperiment` method here.
         rse <- as(object, "RangedSummarizedExperiment")
         colData(rse)[["sampleID"]] <- NULL
         rse <- aggregateCols(object = rse, fun = fun)
@@ -456,14 +456,14 @@ aggregateCols.SingleCellExperiment <-  # nolint
             identical(nrow(rse), nrow(object))
         )
 
-        # Update the sample data.
+        ## Update the sample data.
         colData <- colData(rse)
         assert(isSubset(rownames(colData), names(cell2sample)))
         colData[["sampleID"]] <- cell2sample[rownames(colData)]
         colData[["sampleName"]] <- colData[["sampleID"]]
         colData(rse) <- colData
 
-        # Now ready to generate aggregated SCE.
+        ## Now ready to generate aggregated SCE.
         sce <- makeSingleCellExperiment(
             assays = list(counts = assay(rse)),
             rowRanges = rowRanges(object),
