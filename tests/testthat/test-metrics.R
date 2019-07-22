@@ -31,14 +31,14 @@ test_that("SCE : tibble", {
 
 context("metricsPerSample")
 
-# nolint start
-# fun <- eval(formals(metricsPerSample.SingleCellExperiment)[["fun"]])
-# nolint end
+## nolint start
+## fun <- eval(formals(metricsPerSample.SingleCellExperiment)[["fun"]])
+## nolint end
 
 test_that("SingleCellExperiment", {
     object <- sce
-    # Simulate a metric column with an expected mean.
-    # Standard normal distribution
+    ## Simulate a metric column with an expected mean.
+    ## Standard normal distribution
     colData(object)[["nUMI"]] <- Matrix::colSums(counts(object))
     expect_identical(
         object = metricsPerSample(object, fun = "mean") %>%

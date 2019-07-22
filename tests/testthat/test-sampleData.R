@@ -2,7 +2,7 @@ context("sampleData : SummarizedExperiment")
 
 test_that("Return", {
     object <- rse
-    # Check that `sampleName` and `interestingGroups` auto-populate.
+    ## Check that `sampleName` and `interestingGroups` auto-populate.
     expect_identical(
         object = setdiff(
             x = colnames(sampleData(object)),
@@ -15,7 +15,7 @@ test_that("Return", {
         expected = colData(object)
     )
 
-    # Empty `colData` is supported. Changed in v0.99.
+    ## Empty `colData` is supported. Changed in v0.99.
     object <- rse
     colData(object) <- DataFrame(row.names = colnames(object))
     interestingGroups(object) <- NULL
@@ -37,9 +37,9 @@ test_that("Assignment", {
 
 context("sampleData : SingleCellExperiment")
 
-# Note that this doesn't sort the row names automatically. Here we're doing this
-# internally in the check, to make the example "sce" object more resistant to
-# code-breaking updates.
+## Note that this doesn't sort the row names automatically. Here we're doing this
+## internally in the check, to make the example "sce" object more resistant to
+## code-breaking updates.
 test_that("Return", {
     samples <- paste0("sample", seq_len(2L))
     sd <- sampleData(sce)

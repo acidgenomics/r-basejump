@@ -60,8 +60,8 @@ rankedMatrix <- function(
 
 
 
-# Consider using `data.table::frank()` instead of `base::rank()` for speed.
-# This adds an additional dependency, so avoid at the moment.
+## Consider using `data.table::frank()` instead of `base::rank()` for speed.
+## This adds an additional dependency, so avoid at the moment.
 .rank.numeric <-  # nolint
     function(x, decreasing = FALSE) {
         assert(
@@ -97,7 +97,7 @@ rankedMatrix <- function(
 
 
 
-# Note that use of `which()` here will omit `NA` intentionally.
+## Note that use of `which()` here will omit `NA` intentionally.
 .bidirRank.numeric <-  # nolint
     function(x, removeZeros = FALSE) {
         assert(
@@ -106,7 +106,7 @@ rankedMatrix <- function(
         )
         ties <- "average"
 
-        # Set any zero values to NA.
+        ## Set any zero values to NA.
         if (isTRUE(removeZeros)) {
             x[x == 0L] <- NA
         }

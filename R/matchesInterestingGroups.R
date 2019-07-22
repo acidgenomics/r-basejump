@@ -1,4 +1,4 @@
-# Consider deprecating this function in a future release?
+## Consider deprecating this function in a future release?
 
 
 
@@ -33,28 +33,28 @@ matchesInterestingGroups <- function(
         return(false("%s is not S4 class.", .xname))
     }
 
-    # Early return on `NULL` interesting groups (e.g. example DESeqDataSet).
-    # Consider returning FALSE or warning in a future update?
+    ## Early return on `NULL` interesting groups (e.g. example DESeqDataSet).
+    ## Consider returning FALSE or warning in a future update?
     if (is.null(interestingGroups)) {
         return(TRUE)
     }
 
-    # Otherwise, require a character vector.
+    ## Otherwise, require a character vector.
     ok <- isCharacter(interestingGroups)
     if (!isTRUE(ok)) {
         return(false("interestingGroups is not non-empty character."))
     }
 
-    # Using `sampleData()` to check against `interestingGroups` column.
+    ## Using `sampleData()` to check against `interestingGroups` column.
     data <- sampleData(x)
 
-    # Check intersection with sample data.
+    ## Check intersection with sample data.
     ok <- isSubset(interestingGroups, colnames(data))
     if (!isTRUE(ok)) {
         return(false("Interesting groups are not defined in sampleData()."))
     }
 
-    # Check that interesting groups columns are factors.
+    ## Check that interesting groups columns are factors.
     ok <- all(vapply(
         X = data[, interestingGroups, drop = FALSE],
         FUN = is.factor,

@@ -19,8 +19,8 @@
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
-    # Legacy support for bcbio R packages, which pass missing
-    # `interestingGroups` parameter through.
+    ## Legacy support for bcbio R packages, which pass missing
+    ## `interestingGroups` parameter through.
     if (
         missing(interestingGroups) ||
         !is.character(interestingGroups)
@@ -32,10 +32,10 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
         interestingGroups <- interestingGroups(object)
     }
 
-    # Check that this metadata is defined in `colData()`.
-    # Don't check against `sampleData()` return because this function is used
-    # inside that code. Note that `sampleName` is a magic column that is
-    # automatically generated, if necessary.
+    ## Check that this metadata is defined in `colData()`.
+    ## Don't check against `sampleData()` return because this function is used
+    ## inside that code. Note that `sampleName` is a magic column that is
+    ## automatically generated, if necessary.
     if (!is.null(interestingGroups)) {
         assert(
             areDisjointSets(
@@ -49,7 +49,7 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
         )
     }
 
-    # Return `sampleName` by default, if necessary.
+    ## Return `sampleName` by default, if necessary.
     if (is.null(interestingGroups)) {
         interestingGroups <- "sampleName"
     }

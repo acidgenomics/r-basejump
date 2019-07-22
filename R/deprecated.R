@@ -1,5 +1,5 @@
-# nocov start
-# nolint start
+## nocov start
+## nolint start
 
 
 
@@ -19,7 +19,7 @@ NULL
 
 
 
-# v0.8.0 =======================================================================
+## v0.8.0 =======================================================================
 #' @rdname defunct
 #' @export
 aggregateFeatures <- function(...) {
@@ -202,7 +202,7 @@ setArgsToDoCall <- function(...) {
     .Defunct("matchArgsToDoCall")
 }
 
-# Soft deprecated until we update bcbio R packages.
+## Soft deprecated until we update bcbio R packages.
 #' @rdname defunct
 #' @export
 tx2gene <- function(...) {
@@ -211,7 +211,7 @@ tx2gene <- function(...) {
 
 
 
-# v0.8.5 =======================================================================
+## v0.8.5 =======================================================================
 #' @rdname deprecated
 #' @param plotlist `list`.
 #'   List containing `ggplot` objects.
@@ -227,16 +227,16 @@ mdPlotlist <- markdownPlotlist
 
 
 
-# v0.10.4 ======================================================================
-# Now recommending `plotCounts()` instead of `plotGene()`.
-# Still in use by some revdeps, so keep re-exported.
+## v0.10.4 ======================================================================
+## Now recommending `plotCounts()` instead of `plotGene()`.
+## Still in use by some revdeps, so keep re-exported.
 #' @importFrom bioverbs plotGene
 #' @export
 bioverbs::plotGene
 
 
 
-# v0.10.9 ======================================================================
+## v0.10.9 ======================================================================
 #' @rdname defunct
 #' @export
 assertHasRownames <- function(...) {
@@ -268,105 +268,104 @@ tx2geneFromGFF <- function(...) {
 
 
 
-# v0.10.12 =====================================================================
-# Legacy functions still in use by bcbio R packages that were previously defined
-# in v0.7.2 release. Keep these functions soft deprecated, so a bunch of
-# warnings don't pop up during assert checks in the older package versions.
-#
-# Source code is defined here primarily:
-# https://github.com/steinbaugh/basejump/blob/v0.7.2/R/assert.R
+## v0.10.12 =====================================================================
+## Legacy functions still in use by bcbio R packages that were previously defined
+## in v0.7.2 release. Keep these functions soft deprecated, so a bunch of
+## warnings don't pop up during assert checks in the older package versions.
+## ## Source code is defined here primarily:
+## https://github.com/steinbaugh/basejump/blob/v0.7.2/R/assert.R
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertAreGeneAnnotations <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertFormalGene2symbol <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioBase 0.4.2.
+## Imported by bcbioBase 0.4.2.
 #' @rdname defunct
 #' @export
 assertFormalInterestingGroups <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertIsAHeaderLevel <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertIsAStringOrNULL <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioBase 0.4.2.
+## Imported by bcbioBase 0.4.2.
 #' @rdname defunct
 #' @export
 assertIsAnImplicitInteger <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertIsAnImplicitIntegerOrNULL <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertIsColorScaleDiscreteOrNULL <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertIsFillScaleDiscreteOrNULL <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioBase 0.4.2.
-# Note that we don't want to check for `Gene2Symbol` S4 class here.
-# Older versions of bcbio R packages don't slot gene-to-symbol mappings as our
-# new and improved Gene2Symbol class.
+## Imported by bcbioBase 0.4.2.
+## Note that we don't want to check for `Gene2Symbol` S4 class here.
+## Older versions of bcbio R packages don't slot gene-to-symbol mappings as our
+## new and improved Gene2Symbol class.
 #' @rdname defunct
 #' @export
 assertIsGene2symbol <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertIsHexColorFunctionOrNULL <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioRNASeq 0.2.9.
+## Imported by bcbioRNASeq 0.2.9.
 #' @rdname defunct
 #' @export
 assertIsImplicitInteger <- function(...) {
     .Defunct("goalie::assert")
 }
 
-# Imported by bcbioBase 0.4.2.
-# Note that we don't want to check for `Tx2Gene` S4 class here. Older versions
-# of bcbio R packages don't slot transcript-to-gene mappings as our new and
-# improved Tx2Gene class.
+## Imported by bcbioBase 0.4.2.
+## Note that we don't want to check for `Tx2Gene` S4 class here. Older versions
+## of bcbio R packages don't slot transcript-to-gene mappings as our new and
+## improved Tx2Gene class.
 #' @rdname defunct
 #' @export
 assertIsTx2gene <- function(...) {
@@ -375,5 +374,5 @@ assertIsTx2gene <- function(...) {
 
 
 
-# nolint end
-# nocov end
+## nolint end
+## nocov end

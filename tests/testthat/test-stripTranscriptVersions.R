@@ -1,8 +1,8 @@
 context("stripTranscriptVersions")
 
 test_that("character", {
-    # Return unmodified if not Ensembl transcript (ENS*T).
-    # For example, check and make sure *C. elegans* transcripts are preserved.
+    ## Return unmodified if not Ensembl transcript (ENS*T).
+    ## For example, check and make sure *C. elegans* transcripts are preserved.
     expect_identical(
         object = stripTranscriptVersions(c(
             "ENSMUST00000119854.7",

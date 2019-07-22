@@ -66,7 +66,7 @@ markdownTables <- function(
         )
         asis_output(tables)
     } else {
-        # Return the unmodified list if not in a knit call.
+        ## Return the unmodified list if not in a knit call.
         list
     }
 }
