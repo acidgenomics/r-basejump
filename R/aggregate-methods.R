@@ -320,7 +320,7 @@ setMethod(
         fun <- match.arg(fun)
         object <- Matrix::t(object)
         object <- aggregateRows(
-            object = .,
+            object = object,
             groupings = groupings,
             fun = fun
         )

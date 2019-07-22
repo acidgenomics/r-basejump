@@ -115,7 +115,7 @@ setMethod(
 `autopadZeros,SummarizedExperiment` <-  # nolint
     function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
         object <- do.call(
-            what = autopadZeros.matrix,
+            what = `autopadZeros,matrix`,
             args = list(
                 object = object,
                 rownames = rownames,

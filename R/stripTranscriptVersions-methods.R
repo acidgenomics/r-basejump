@@ -79,8 +79,8 @@ setMethod(
 
 
 ## Updated 2019-07-22.
-`sparseTranscriptVersions,sparseMatrix` <-  # nolint
-    `sparseTranscriptVersions,matrix`
+`stripTranscriptVersions,sparseMatrix` <-  # nolint
+    `stripTranscriptVersions,matrix`
 
 
 

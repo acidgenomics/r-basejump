@@ -52,7 +52,7 @@ makeGene2SymbolFromEnsembl <-
 
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), "level")]
-f[["format"]] <- formals(Gene2Symbol.DataFrame)[["format"]]
+f[["format"]] <- formals(`Gene2Symbol,DataFrame`)[["format"]]
 formals(makeGene2SymbolFromEnsembl) <- f
 
 
