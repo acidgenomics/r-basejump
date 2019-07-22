@@ -49,7 +49,7 @@ EggNOG <-  # nolint
             isString(nogFile)
         )
 
-        ## Categories -----------------------------------------------------------
+        ## Categories ----------------------------------------------------------
         pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
         categories <- read_lines(file = categoriesFile) %>%
             str_subset(pattern) %>%
@@ -60,7 +60,7 @@ EggNOG <-  # nolint
             arrange(!!sym("letter")) %>%
             as("DataFrame")
 
-        ## Annotations ----------------------------------------------------------
+        ## Annotations ---------------------------------------------------------
         colnames <- c(
             "taxonomicLevel",
             "groupName",
@@ -96,7 +96,7 @@ EggNOG <-  # nolint
             arrange(!!sym("eggnogID")) %>%
             as("DataFrame")
 
-        ## Return ---------------------------------------------------------------
+        ## Return --------------------------------------------------------------
         data <- List(
             cogFunctionalCategories = categories,
             annotations = annotations
