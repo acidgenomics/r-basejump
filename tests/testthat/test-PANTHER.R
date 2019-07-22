@@ -1,7 +1,6 @@
-## FIXME Improve URL failure message.
-## FIXME Skip if user doesn't have internet.
-
 context("PANTHER")
+
+skip_if_not(hasInternet())
 
 with_parameters_test_that(
     "organism", {
