@@ -27,6 +27,7 @@ IRanges <- IRanges::IRanges
 SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
 cause <- goalie::cause
 group_vars <- dplyr::group_vars
+hasInternet <- goalie::hasInternet
 str_pad <- stringr::str_pad
 ## nolint end
 
@@ -35,3 +36,5 @@ options(
     acid.save.ext = "rds",
     acid.test = TRUE
 )
+
+## FIXME Warn if test URL doesn't exist.
