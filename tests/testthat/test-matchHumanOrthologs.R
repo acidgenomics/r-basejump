@@ -1,5 +1,7 @@
 context("matchHumanOrthologs")
 
+skip_if_not(hasInternet())
+
 test_that("Mus musculus", {
     genes <- c(
         "ENSMUSG00000000001", "ENSMUSG00000000003",

@@ -1,5 +1,7 @@
 context("convertGenesToSymbols")
 
+skip_if_not(hasInternet())
+
 gene2symbol <-
     makeGene2SymbolFromEnsembl(organism = "Homo sapiens", release = 87L)
 
