@@ -152,13 +152,13 @@ setMethod(
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 mapGenesToRownames.SummarizedExperiment <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         assert(isFlag(strict))
 
-        # Check to see if object contains gene-to-symbol mappings.
+        ## Check to see if object contains gene-to-symbol mappings.
         g2s <- tryCatch(
             expr = {
                 suppressMessages(
@@ -181,12 +181,12 @@ mapGenesToRownames.SummarizedExperiment <-  # nolint
                 )
             )
         } else {
-            # Match the user input `genes` vector to the table.
+            ## Match the user input `genes` vector to the table.
             table <- rownames(object)
             match <- match(x = genes, table = table)
             names(match) <- genes
 
-            # Stop or warn if there are unmapped genes.
+            ## Stop or warn if there are unmapped genes.
             if (isTRUE(strict)) {
                 fun <- stop
             } else {
@@ -199,7 +199,7 @@ mapGenesToRownames.SummarizedExperiment <-  # nolint
                 ), call. = FALSE)
             }
 
-            # Return the identifiers that map to rownames.
+            ## Return the identifiers that map to rownames.
             mapped <- na.omit(match)
             assert(hasLength(mapped))
             genes[mapped]
