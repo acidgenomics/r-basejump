@@ -31,7 +31,7 @@ Gene2Symbol.DataFrame <-  # nolint
         assert(hasRows(object))
         format <- match.arg(format)
 
-        # Check for required columns.
+        ## Check for required columns.
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
             stop(paste0(
@@ -46,9 +46,9 @@ Gene2Symbol.DataFrame <-  # nolint
             row.names = rownames(object)
         )
 
-        # Inform the user about how many symbols multi-map.
-        # Note that `duplicated` doesn't work on Rle, so we have to coerce
-        # columns to character first (see `as_tibble` call above).
+        ## Inform the user about how many symbols multi-map.
+        ## Note that `duplicated` doesn't work on Rle, so we have to coerce
+        ## columns to character first (see `as_tibble` call above).
         duplicated <- duplicated(data[["geneName"]])
         if (any(duplicated)) {
             dupes <- unique(data[["geneName"]][duplicated])
@@ -58,9 +58,9 @@ Gene2Symbol.DataFrame <-  # nolint
         }
 
         if (format == "makeUnique") {
-            # Returning 1:1 mappings with renamed gene symbols.
-            # This is the default, and including a message is too noisy, since
-            # it is used heavily in other functions.
+            ## Returning 1:1 mappings with renamed gene symbols.
+            ## This is the default, and including a message is too noisy, since
+            ## it is used heavily in other functions.
             data[["geneName"]] <- make.unique(data[["geneName"]])
         } else if (format == "unmodified") {
             message(paste(

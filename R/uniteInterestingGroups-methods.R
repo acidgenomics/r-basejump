@@ -34,13 +34,13 @@ uniteInterestingGroups.DataFrame <-  # nolint
         )
 
         if (length(interestingGroups) == 1L) {
-            # This will retain the factor levels, if they're not alphabetical.
+            ## This will retain the factor levels, if they're not alphabetical.
             value <- object[[interestingGroups]]
         } else {
-            # Subset to get only the columns of interest.
+            ## Subset to get only the columns of interest.
             data <- object[, interestingGroups, drop = FALSE]
-            # This approach will return numerics for `DataFrame` class, so
-            # coercing columns to data.frame.
+            ## This approach will return numerics for `DataFrame` class, so
+            ## coercing columns to data.frame.
             value <- apply(
                 X = as.data.frame(data),
                 MARGIN = 1L,
@@ -51,13 +51,13 @@ uniteInterestingGroups.DataFrame <-  # nolint
             assert(identical(rownames(object), names(value)))
         }
 
-        # Here we're using `uname()` to unname the factor, since `DataFrame`
-        # stores this metadata internally differently than standard data.frame.
-        # Otherwise, unit tests can return this error:
-        #   Attributes:
-        #   Component "listData":
-        #   Component "interestingGroups":
-        #   names for target but not for current
+        ## Here we're using `uname()` to unname the factor, since `DataFrame`
+        ## stores this metadata internally differently than standard data.frame.
+        ## Otherwise, unit tests can return this error:
+        ##   Attributes:
+        ##   Component "listData":
+        ##   Component "interestingGroups":
+        ##   names for target but not for current
         value <- unname(value)
         object[["interestingGroups"]] <- value
 
@@ -76,8 +76,8 @@ setMethod(
 
 
 
-# Deprecated legacy method support for bcbio R packages.
-# Safe to deprecate/remove once bcbio v0.3 release series is on hbc.
+## Deprecated legacy method support for bcbio R packages.
+## Safe to deprecate/remove once bcbio v0.3 release series is on hbc.
 uniteInterestingGroups.data.frame <-  # nolint
     uniteInterestingGroups.DataFrame
 

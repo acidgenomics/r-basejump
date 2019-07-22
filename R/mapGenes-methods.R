@@ -86,7 +86,7 @@ NULL
         isFlag(strict)
     )
 
-    # Prepare the match table.
+    ## Prepare the match table.
     if (any(genes %in% rownames(object))) {
         table <- rownames(object)
     } else if (any(genes %in% object[["geneName"]])) {
@@ -98,11 +98,11 @@ NULL
         stop(paste("All genes failed to map:", toString(head(genes))))
     }
 
-    # Match the user input `genes` vector to the table.
+    ## Match the user input `genes` vector to the table.
     match <- match(x = genes, table = table)
     names(match) <- genes
 
-    # Stop or warn if there are unmapped genes.
+    ## Stop or warn if there are unmapped genes.
     if (isTRUE(strict)) {
         fun <- stop
     } else {
@@ -115,7 +115,7 @@ NULL
         ), call. = FALSE)
     }
 
-    # Return the identifiers that map to rownames.
+    ## Return the identifiers that map to rownames.
     mapped <- na.omit(match)
     assert(hasLength(mapped))
     mapped
@@ -123,7 +123,7 @@ NULL
 
 
 
-# mapGenesToRownames ===========================================================
+## mapGenesToRownames ===========================================================
 mapGenesToRownames.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
@@ -218,7 +218,7 @@ setMethod(
 
 
 
-# mapGenesToIDs ================================================================
+## mapGenesToIDs ================================================================
 mapGenesToIDs.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
@@ -277,7 +277,7 @@ setMethod(
 
 
 
-# mapGenesToSymbols ============================================================
+## mapGenesToSymbols ============================================================
 mapGenesToSymbols.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(

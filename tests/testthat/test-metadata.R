@@ -2,7 +2,7 @@ context("Metadata")
 
 
 
-# detectOrganism ===============================================================
+## detectOrganism ===============================================================
 with_parameters_test_that(
     "detectOrganism : Homo sapiens", {
         expect_identical(
@@ -137,7 +137,7 @@ with_parameters_test_that(
 )
 
 test_that("detectOrganism : Multiple organisms", {
-    # Function matches only the first genome.
+    ## Function matches only the first genome.
     expect_identical(
         object = detectOrganism(c(
             "ENSG00000000001",

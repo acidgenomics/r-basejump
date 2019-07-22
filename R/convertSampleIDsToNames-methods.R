@@ -22,13 +22,13 @@ NULL
 
 
 
-# NULL assignment into a column name doesn't work for DataFrame class.
-# You can see this cryptic error on some R installations:
-# nolint start
-# > colData(object)[["sampleName"]] <- NULL
-# Error in replaceROWS(x, if (missing(i)) nsbs else i, value) :
-#   appending gaps is not supported
-# nolint end
+## NULL assignment into a column name doesn't work for DataFrame class.
+## You can see this cryptic error on some R installations:
+## nolint start
+## > colData(object)[["sampleName"]] <- NULL
+## Error in replaceROWS(x, if (missing(i)) nsbs else i, value) :
+##   appending gaps is not supported
+## nolint end
 convertSampleIDsToNames.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)
@@ -43,8 +43,8 @@ convertSampleIDsToNames.SummarizedExperiment <-  # nolint
             assert(hasNoDuplicates(colnames))
             colnames(object) <- colnames
         }
-        # Note that we need to allow invalid dimnames to pass through here,
-        # so don't run validity checks.
+        ## Note that we need to allow invalid dimnames to pass through here,
+        ## so don't run validity checks.
         object
     }
 

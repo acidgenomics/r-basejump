@@ -1,4 +1,4 @@
-# This check currently fails on AppVeyor because the file won't load.
+## This check currently fails on AppVeyor because the file won't load.
 skip_on_appveyor()
 
 sce_lanesplit <- readRDS(file.path("cache", "sce_lanesplit.rds"))  # nolint
