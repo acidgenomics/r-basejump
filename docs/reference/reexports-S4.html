@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.0</span>
       </span>
     </div>
 
@@ -112,7 +112,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>S4 generics exported from other packages</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-S4.R'><code>R/reexports-S4.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-bioverbs.R'><code>R/reexports-bioverbs.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-brio.R'><code>R/reexports-brio.R</code></a>, and 3 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/imports.R'><code>R/imports.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-bioverbs.R'><code>R/reexports-bioverbs.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-brio.R'><code>R/reexports-brio.R</code></a>, and 3 more</small>
     <div class="hidden name"><code>reexports-S4.Rd</code></div>
     </div>
 
@@ -122,41 +122,45 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>plotDEGHeatmap</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage">plotDEGHeatmap(object, ...)
 
-<span class='fu'>plotDEGPCA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+plotDEGPCA(object, ...)
 
-<span class='fu'>atomize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+export(object, ...)
 
-<span class='fu'>decode</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+removeNA(object, ...)
 
-<span class='fu'>encode</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+sanitizeNA(object, ...)
 
-<span class='fu'>export</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+sanitizePercent(object, ...)
 
-<span class='fu'>factorize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+camelCase(object, ...)
 
-<span class='fu'>removeNA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+capitalize(object, ...)
 
-<span class='fu'>sanitizeNA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+dottedCase(object, ...)
 
-<span class='fu'>sanitizePercent</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+kebabCase(object, ...)
 
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+mcolnames(x, ...)
 
-<span class='fu'>capitalize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+mcolnames(x ...) <- value
 
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+snakeCase(object, ...)
 
-<span class='fu'>kebab</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+upperCamelCase(object, ...)
 
-<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
-<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+atomize(object, ...)
 
-<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+decode(x, ...)
 
-<span class='fu'>flatFiles</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+encode(x, ...)
+
+factorize(object, ...)
+
+flatFiles(object, ...)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,20 +181,9 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>showMethods</span>(<span class='st'>"camel"</span>)</div><div class='output co'>#&gt; Function: camel (package bioverbs)
-#&gt; object="ANY"
-#&gt; object="character"
-#&gt; object="data.frame"
-#&gt; object="DataFrame"
-#&gt; object="factor"
-#&gt; object="GRanges"
-#&gt; object="GRangesList"
-#&gt; object="matrix"
-#&gt; object="Matrix"
-#&gt; object="spec_tbl_df"
-#&gt;     (inherited from: object="data.frame")
-#&gt; object="SummarizedExperiment"
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>showMethods</span>(<span class='st'>"camel"</span>)</div><div class='output co'>#&gt; 
+#&gt; Function "camel":
+#&gt;  &lt;not an S4 generic function&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate a ranked matrix — rankedMatrix • basejump</title>
+<title>Match Ensembl release to archive URL. — matchEnsemblReleaseToURL • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Calculate a ranked matrix — rankedMatrix" />
+<meta property="og:title" content="Match Ensembl release to archive URL. — matchEnsemblReleaseToURL" />
 
-<meta property="og:description" content="Calculate a ranked matrix" />
+<meta property="og:description" content="Match Ensembl release to archive URL." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,100 +111,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate a ranked matrix</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/rankedMatrix.R'><code>R/rankedMatrix.R</code></a></small>
-    <div class="hidden name"><code>rankedMatrix.Rd</code></div>
+    <h1>Match Ensembl release to archive URL.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/matchEnsemblReleaseToURL.R'><code>R/matchEnsemblReleaseToURL.R</code></a></small>
+    <div class="hidden name"><code>matchEnsemblReleaseToURL.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Calculate a ranked matrix</p>
+    <p>Match Ensembl release to archive URL.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>rankedMatrix</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"increasing"</span>,
-  <span class='st'>"decreasing"</span>, <span class='st'>"bidirectional"</span>))</pre>
+    <pre class="usage"><span class='fu'>matchEnsemblReleaseToURL</span>(<span class='no'>release</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>MARGIN</th>
-      <td><p>a vector giving the subscripts which the function will
-    be applied over.  E.g., for a matrix <code>1</code> indicates rows,
-    <code>2</code> indicates columns, <code><a href='https://rdrr.io/r/base/c.html'>c(1, 2)</a></code> indicates rows and
-    columns. Where <code>X</code> has named dimnames, it can be a character
-    vector selecting dimension names.</p></td>
-    </tr>
-    <tr>
-      <th>method</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Rank the values in <code>increasing</code>, <code>decreasing</code>, or <code>bidirectional</code> order.</p></td>
+      <th>release</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> or <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Ensembl release (e.g. 96).</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Ties are resolved automatically by calculating the average. See the
-<code>ties.method</code> parameter in <code><a href='https://rdrr.io/r/base/rank.html'>rank()</a></code> for details.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'>
-<ul>
-<li><p><code><a href='https://rdrr.io/r/base/rank.html'>rank()</a></code>.</p></li>
-<li><p>Not to be confused with <code><a href='https://rdrr.io/pkg/Matrix/man/rankMatrix.html'>Matrix::rankMatrix()</a></code>.</p></li>
-</ul>
-</div>
+    <p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+URL.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>matrix_lfc</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='no'>lfc</span> <span class='kw'>&lt;-</span> <span class='no'>matrix_lfc</span>
-
-<span class='co'>## Increasing (negative to positive)</span>
-<span class='fu'>rankedMatrix</span>(<span class='no'>lfc</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"increasing"</span>)</div><div class='output co'>#&gt;        contrast01 contrast02 contrast03 contrast04
-#&gt; gene01        1.0        7.0        6.0        8.0
-#&gt; gene02        2.0        4.5        8.0        6.0
-#&gt; gene03        3.0        2.0        2.0        1.0
-#&gt; gene04        4.5        1.0        4.5        7.0
-#&gt; gene05        4.5        6.0        3.0        4.5
-#&gt; gene06        6.0        4.5        4.5        2.0
-#&gt; gene07        7.0        8.0        7.0        4.5
-#&gt; gene08        8.0        3.0        1.0        3.0</div><div class='input'>
-<span class='co'>## Decreasing (positive to negative)</span>
-<span class='fu'>rankedMatrix</span>(<span class='no'>lfc</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"decreasing"</span>)</div><div class='output co'>#&gt;        contrast01 contrast02 contrast03 contrast04
-#&gt; gene01        8.0        2.0        3.0        1.0
-#&gt; gene02        7.0        4.5        1.0        3.0
-#&gt; gene03        6.0        7.0        7.0        8.0
-#&gt; gene04        4.5        8.0        4.5        2.0
-#&gt; gene05        4.5        3.0        6.0        4.5
-#&gt; gene06        3.0        4.5        4.5        7.0
-#&gt; gene07        2.0        1.0        2.0        4.5
-#&gt; gene08        1.0        6.0        8.0        6.0</div><div class='input'>
-<span class='co'>## Bidirectional</span>
-<span class='fu'>rankedMatrix</span>(<span class='no'>lfc</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"bidirectional"</span>)</div><div class='output co'>#&gt;        contrast01 contrast02 contrast03 contrast04
-#&gt; gene01       -2.0        4.0        3.0        5.0
-#&gt; gene02       -1.0        1.5        5.0        3.0
-#&gt; gene03        0.0       -1.0       -1.0       -2.0
-#&gt; gene04        1.5       -2.0        1.5        4.0
-#&gt; gene05        1.5        3.0        0.0        1.5
-#&gt; gene06        3.0        1.5        1.5       -1.0
-#&gt; gene07        4.0        5.0        4.0        1.5
-#&gt; gene08        5.0        0.0       -2.0        0.0</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>matchEnsemblReleaseToURL</span>(<span class='fl'>96L</span>)</div><div class='output co'>#&gt; [1] "http://apr2019.archive.ensembl.org"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
