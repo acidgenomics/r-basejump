@@ -1,3 +1,9 @@
+## basejump 0.11.0 (2019-07-22)
+
+Start of new release series. Version bump reflects changes in dependency
+packages. See the acidtest, bioverbs, freerange, syntactic, and transformer
+release notes for more details.
+
 ## basejump 0.10.12 (2019-07-18)
 
 ### Minor changes
