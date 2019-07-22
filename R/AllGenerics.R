@@ -1,3 +1,5 @@
+## Define other generics in the bioverbs package instead.
+
 #' @rdname Ensembl2Entrez-class
 #' @export
 setGeneric(

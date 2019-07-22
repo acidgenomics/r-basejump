@@ -96,7 +96,8 @@ combine.SummarizedExperiment <-  # nolint
             ## Require that there are no duplicate samples.
             areDisjointSets(colnames(x), colnames(y)),
             ## Currently we're being strict and requiring that the rows
-            ## (features) are identical, otherwise zero counts may be misleading.
+            ## (features) are identical, otherwise zero counts may be
+            ## misleading.
             identical(rownames(x), rownames(y))
         )
 
@@ -111,7 +112,7 @@ combine.SummarizedExperiment <-  # nolint
         x <- as(object = x, Class = Class)
         y <- as(object = y, Class = Class)
 
-        ## Assays ---------------------------------------------------------------
+        ## Assays --------------------------------------------------------------
         message(paste(
             "Binding columns in assays:",
             printString(assayNames(x)),
@@ -125,7 +126,7 @@ combine.SummarizedExperiment <-  # nolint
             USE.NAMES = TRUE
         )
 
-        ## Row data -------------------------------------------------------------
+        ## Row data ------------------------------------------------------------
         message("Checking row data.")
         ## Require that the gene annotations are identical.
         if (is(x, "RangedSummarizedExperiment")) {
@@ -140,7 +141,7 @@ combine.SummarizedExperiment <-  # nolint
             rownames(rowData) <- rownames(x)
         }
 
-        ## Column data ----------------------------------------------------------
+        ## Column data ---------------------------------------------------------
         message("Updating column data.")
         cdx <- colData(x)
         cdy <- colData(y)
@@ -182,7 +183,7 @@ combine.SummarizedExperiment <-  # nolint
             colData(y)[, keep, drop = FALSE]
         )
 
-        ## Metadata -------------------------------------------------------------
+        ## Metadata ------------------------------------------------------------
         message("Updating metadata.")
         mx <- metadata(x)
         my <- metadata(y)
@@ -222,7 +223,7 @@ combine.SummarizedExperiment <-  # nolint
         metadata[["combine"]] <- TRUE
         metadata <- Filter(Negate(is.null), metadata)
 
-        ## Return ---------------------------------------------------------------
+        ## Return --------------------------------------------------------------
         args <- list(
             assays = assays,
             rowRanges = rowRanges,

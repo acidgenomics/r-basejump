@@ -58,7 +58,7 @@ NULL
 
 
 
-## convertGenesToSymbols ========================================================
+## convertGenesToSymbols =======================================================
 ## Allowing duplicates here (unlike convertTranscriptsToGenes).
 convertGenesToSymbols.character <-  # nolint
     function(object, gene2symbol) {
@@ -166,7 +166,7 @@ setMethod(
 
 
 
-## convertSymbolsToGenes ========================================================
+## convertSymbolsToGenes =======================================================
 convertSymbolsToGenes.SummarizedExperiment <-  # nolint
     function(object) {
         validObject(object)

@@ -123,7 +123,7 @@ NULL
 
 
 
-## mapGenesToRownames ===========================================================
+## mapGenesToRownames ==========================================================
 mapGenesToRownames.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
@@ -218,7 +218,7 @@ setMethod(
 
 
 
-## mapGenesToIDs ================================================================
+## mapGenesToIDs ===============================================================
 mapGenesToIDs.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
@@ -277,7 +277,7 @@ setMethod(
 
 
 
-## mapGenesToSymbols ============================================================
+## mapGenesToSymbols ===========================================================
 mapGenesToSymbols.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(

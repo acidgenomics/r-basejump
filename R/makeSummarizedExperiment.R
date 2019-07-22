@@ -1,3 +1,7 @@
+# FIXME Automatically factorize and/or relevel colData, rowData
+
+
+
 #' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
@@ -92,7 +96,6 @@ makeSummarizedExperiment <- function(
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
-    ## Assert checks ------------------------------------------------------------
     assert(
         isAny(
             x = assays,
@@ -129,7 +132,7 @@ makeSummarizedExperiment <- function(
         assert(is.null(rowData))
     }
 
-    ## Assays -------------------------------------------------------------------
+    ## Assays ------------------------------------------------------------------
     ## Drop any `NULL` items in assays.
     if (is.list(assays)) {
         assays <- Filter(Negate(is.null), assays)
@@ -147,7 +150,7 @@ makeSummarizedExperiment <- function(
     ## The `SummarizedExperiment` constructor checks to ensure that all assays
     ## have matching dimnames, so we can skip that check.
 
-    ## Row data -----------------------------------------------------------------
+    ## Row data ----------------------------------------------------------------
     mcolnames <- NULL
     ## Dynamically allow input of rowRanges (recommended) or rowData (fallback).
     if (is(rowRanges, "GRanges")) {
@@ -226,7 +229,7 @@ makeSummarizedExperiment <- function(
         rowData <- rowData[rownames(assay), , drop = FALSE]
     }
 
-    ## Column data --------------------------------------------------------------
+    ## Column data -------------------------------------------------------------
     if (is.null(colData)) {
         colData <- DataFrame(row.names = colnames(assay))
     }
@@ -243,14 +246,14 @@ makeSummarizedExperiment <- function(
     )
     colData <- colData[colnames(assay), , drop = FALSE]
 
-    ## Metadata -----------------------------------------------------------------
+    ## Metadata ----------------------------------------------------------------
     metadata <- as.list(metadata)
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- realpath(".")
     metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
     metadata <- Filter(f = Negate(is.null), x = metadata)
 
-    ## Return -------------------------------------------------------------------
+    ## Return ------------------------------------------------------------------
     args <- list(
         assays = assays,
         rowRanges = rowRanges,

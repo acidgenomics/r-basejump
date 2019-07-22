@@ -1,4 +1,4 @@
-## EggNOG =======================================================================
+## EggNOG ======================================================================
 #' EggNOG database annotations
 #'
 #' [EggNOG](http://eggnogdb.embl.de) is a database of biological information
@@ -50,7 +50,7 @@ setClass(
 
 
 
-## Ensembl2Entrez ===============================================================
+## Ensembl2Entrez ==============================================================
 #' Ensembl-to-Entrez gene identifier mappings
 #'
 #' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
@@ -74,7 +74,7 @@ setClass(
 
 
 
-## Gene2Symbol ==================================================================
+## Gene2Symbol =================================================================
 #' Gene-to-symbol mappings
 #'
 #' @note For some organisms, gene names and gene symbols do not map 1:1
@@ -106,7 +106,7 @@ setClass(
 
 
 
-## HGNC2Ensembl =================================================================
+## HGNC2Ensembl ================================================================
 #' HGNC-to-Ensembl gene identifier mappings
 #'
 #' @author Michael Steinbaugh
@@ -133,7 +133,7 @@ setClass(
 
 
 
-## MGI2Ensembl ==================================================================
+## MGI2Ensembl =================================================================
 #' MGI-to-Ensembl gene identifier mappings
 #'
 #' @author Michael Steinbaugh
@@ -154,7 +154,7 @@ setClass(
 
 
 
-## PANTHER ======================================================================
+## PANTHER =====================================================================
 #' PANTHER database annotations
 #'
 #' [PANTHER](http://www.pantherdb.org) gene ontology definitions. PANTHER stands
@@ -190,7 +190,7 @@ setClass(
 
 
 
-## Tx2Gene ======================================================================
+## Tx2Gene =====================================================================
 #' Transcript-to-gene identifier mappings
 #'
 #' @section Genome metadata:

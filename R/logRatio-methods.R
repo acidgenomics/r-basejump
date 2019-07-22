@@ -40,7 +40,7 @@ NULL
 
 
 
-## foldChangeToLogRatio =========================================================
+## foldChangeToLogRatio ========================================================
 foldChangeToLogRatio.numeric <-  # nolint
     function(object, base = 2L) {
         assert(isInt(base), isPositive(base))
@@ -62,7 +62,7 @@ setMethod(
 
 
 
-## logRatioToFoldChange =========================================================
+## logRatioToFoldChange ========================================================
 logRatioToFoldChange.numeric <-  # nolint
     function(object, base = 2L) {
         assert(isInt(base), isPositive(base))
