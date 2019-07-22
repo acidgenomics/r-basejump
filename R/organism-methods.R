@@ -27,7 +27,8 @@ NULL
 
 
 ## Assuming gene identifiers are defined in the rownames.
-organism.matrix <-  # nolint
+## Updated 2019-07-22.
+`organism,matrix` <-  # nolint
     function(object) {
         assert(hasRownames(object))
         detectOrganism(rownames(object))
@@ -40,13 +41,14 @@ organism.matrix <-  # nolint
 setMethod(
     f = "organism",
     signature = signature("matrix"),
-    definition = organism.matrix
+    definition = `organism,matrix`
 )
 
 
 
-organism.sparseMatrix <-  # nolint
-    organism.matrix
+## Updated 2019-07-22.
+`organism,sparseMatrix` <-  # nolint
+    `organism,matrix`
 
 
 
@@ -55,13 +57,14 @@ organism.sparseMatrix <-  # nolint
 setMethod(
     f = "organism",
     signature = signature("sparseMatrix"),
-    definition = organism.sparseMatrix
+    definition = `organism,sparseMatrix`
 )
 
 
 
-organism.data.frame <-  # nolint
-    organism.matrix
+## Updated 2019-07-22.
+`organism,data.frame` <-  # nolint
+    `organism,matrix`
 
 
 
@@ -70,13 +73,14 @@ organism.data.frame <-  # nolint
 setMethod(
     f = "organism",
     signature = signature("data.frame"),
-    definition = organism.data.frame
+    definition = `organism,data.frame`
 )
 
 
 
 ## Note that DataFrame and GRanges inherit from this class.
-organism.Annotated <-  # nolint
+## Updated 2019-07-22.
+`organism,Annotated` <-  # nolint
     function(object) {
         metadata(object)[["organism"]]
     }
@@ -88,12 +92,13 @@ organism.Annotated <-  # nolint
 setMethod(
     f = "organism",
     signature = signature("Annotated"),
-    definition = organism.Annotated
+    definition = `organism,Annotated`
 )
 
 
 
-organism.DataTable <-  # nolint
+## Updated 2019-07-22.
+`organism,DataTable` <-  # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
         organism <- organism.Annotated(object)
@@ -111,15 +116,16 @@ organism.DataTable <-  # nolint
 setMethod(
     f = "organism",
     signature = signature("DataTable"),
-    definition = organism.DataTable
+    definition = `organism,DataTable`
 )
 
 
 
-organism.GRanges <-  # nolint
+## Updated 2019-07-22.
+`organism,GRanges` <-  # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
-        organism <- organism.Annotated(object)
+        organism <- `organism,Annotated`(object)
         if (isString(organism)) {
             return(organism)
         }
@@ -134,12 +140,13 @@ organism.GRanges <-  # nolint
 setMethod(
     f = "organism",
     signature = signature("GRanges"),
-    definition = organism.GRanges
+    definition = `organism,GRanges`
 )
 
 
 
-organism.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`organism,SummarizedExperiment` <-  # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
         organism <- organism.Annotated(object)
@@ -164,5 +171,5 @@ organism.SummarizedExperiment <-  # nolint
 setMethod(
     f = "organism",
     signature = signature("SummarizedExperiment"),
-    definition = organism.SummarizedExperiment
+    definition = `organism,SummarizedExperiment`
 )

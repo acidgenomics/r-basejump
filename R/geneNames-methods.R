@@ -22,10 +22,17 @@ NULL
 
 
 
-geneNames.Vector <-  # nolint
+## Updated 2019-07-22.
+`geneNames,Vector` <-  # nolint
     function(object) {
         Gene2Symbol(object, format = "makeUnique")[["geneName"]]
     }
+
+
+
+## Updated 2019-07-22.
+`geneNames,GRanges` <-  # nolint
+    `geneNames,Vector`
 
 
 
@@ -34,8 +41,14 @@ geneNames.Vector <-  # nolint
 setMethod(
     f = "geneNames",
     signature = signature("GRanges"),
-    definition = geneNames.Vector
+    definition = `geneNames,GRanges`
 )
+
+
+
+## Updated 2019-07-22.
+`geneNames,SummarizedExperiment` <-  # nolint
+    `geneNames,Vector`
 
 
 
@@ -44,5 +57,5 @@ setMethod(
 setMethod(
     f = "geneNames",
     signature = signature("SummarizedExperiment"),
-    definition = geneNames.Vector
+    definition = `geneNames,SummarizedExperiment`
 )

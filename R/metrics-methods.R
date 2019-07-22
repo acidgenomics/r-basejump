@@ -56,7 +56,8 @@ NULL
 
 
 
-metrics.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`metrics,SummarizedExperiment` <-  # nolint
     function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
@@ -77,12 +78,13 @@ metrics.SummarizedExperiment <-  # nolint
 setMethod(
     f = "metrics",
     signature = signature("SummarizedExperiment"),
-    definition = metrics.SummarizedExperiment
+    definition = `metrics,SummarizedExperiment`
 )
 
 
 
-metrics.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`metrics,SingleCellExperiment` <-  # nolint
     function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
@@ -117,13 +119,13 @@ metrics.SingleCellExperiment <-  # nolint
 setMethod(
     f = "metrics",
     signature = signature("SingleCellExperiment"),
-    definition = metrics.SingleCellExperiment
+    definition = `metrics,SingleCellExperiment`
 )
 
 
 
-## Updated 2019-07-16.
-metricsPerSample.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`metricsPerSample,SingleCellExperiment` <-  # nolint
     function(
         object,
         fun = c("mean", "median", "sum")
@@ -170,5 +172,5 @@ metricsPerSample.SingleCellExperiment <-  # nolint
 setMethod(
     f = "metricsPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = metricsPerSample.SingleCellExperiment
+    definition = `metricsPerSample,SingleCellExperiment`
 )

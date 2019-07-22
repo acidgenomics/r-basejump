@@ -1,4 +1,5 @@
 #' Object summaries
+#'
 #' @name summary
 #' @inherit base::summary description references
 #' @importFrom S4Vectors summary
@@ -21,7 +22,8 @@ NULL
 
 
 
-summary.Gene2Symbol <-  # nolint
+## Updated 2019-07-22.
+`summary,Gene2Symbol` <-  # nolint
     function(object) {
         m <- metadata(object)
         showSlotInfo(list(
@@ -44,12 +46,13 @@ summary.Gene2Symbol <-  # nolint
 setMethod(
     f = "summary",
     signature = signature("Gene2Symbol"),
-    definition = summary.Gene2Symbol
+    definition = `summary,Gene2Symbol`
 )
 
 
 
-summary.Tx2Gene <-  # nolint
+## Updated 2019-07-22.
+`summary,Tx2Gene` <-  # nolint
     function(object) {
         m <- metadata(object)
         showSlotInfo(list(
@@ -71,5 +74,5 @@ summary.Tx2Gene <-  # nolint
 setMethod(
     f = "summary",
     signature = signature("Tx2Gene"),
-    definition = summary.Tx2Gene
+    definition = `summary,Tx2Gene`
 )

@@ -24,12 +24,15 @@ NULL
 
 ## NULL assignment into a column name doesn't work for DataFrame class.
 ## You can see this cryptic error on some R installations:
+##
 ## nolint start
 ## > colData(object)[["sampleName"]] <- NULL
 ## Error in replaceROWS(x, if (missing(i)) nsbs else i, value) :
 ##   appending gaps is not supported
 ## nolint end
-convertSampleIDsToNames.SummarizedExperiment <-  # nolint
+##
+## Updated 2019-07-22.
+`convertSampleIDsToNames,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
         sampleNames <- sampleNames(object)
@@ -55,12 +58,13 @@ convertSampleIDsToNames.SummarizedExperiment <-  # nolint
 setMethod(
     f = "convertSampleIDsToNames",
     signature = signature("SummarizedExperiment"),
-    definition = convertSampleIDsToNames.SummarizedExperiment
+    definition = `convertSampleIDsToNames,SummarizedExperiment`
 )
 
 
 
-convertSampleIDsToNames.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`convertSampleIDsToNames,SingleCellExperiment` <-  # nolint
     function(object) {
         message(paste(
             "SingleCellExperiment contains cells instead of samples.",
@@ -77,5 +81,5 @@ convertSampleIDsToNames.SingleCellExperiment <-  # nolint
 setMethod(
     f = "convertSampleIDsToNames",
     signature = signature("SingleCellExperiment"),
-    definition = convertSampleIDsToNames.SingleCellExperiment
+    definition = `convertSampleIDsToNames,SingleCellExperiment`
 )

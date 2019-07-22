@@ -55,7 +55,8 @@ NULL
 
 
 
-geometricMean.numeric <-  # nolint
+## Updated 2019-07-22.
+`geometricMean,numeric` <-  # nolint
     function(
         object,
         removeNA = TRUE,
@@ -91,12 +92,13 @@ geometricMean.numeric <-  # nolint
 setMethod(
     f = "geometricMean",
     signature = signature("numeric"),
-    definition = geometricMean.numeric
+    definition = `geometricMean,numeric`
 )
 
 
 
-geometricMean.matrix <-  # nolint
+## Updated 2019-07-22.
+`geometricMean,matrix` <-  # nolint
     function(object, MARGIN = 2L) {  # nolint
         apply(
             X = object,
@@ -112,18 +114,21 @@ geometricMean.matrix <-  # nolint
 setMethod(
     f = "geometricMean",
     signature = signature("matrix"),
-    definition = geometricMean.matrix
+    definition = `geometricMean,matrix`
 )
 
 
 
-geometricMean.sparseMatrix <-  # nolint
-    geometricMean.matrix
+## Updated 2019-07-22.
+`geometricMean,sparseMatrix` <-  # nolint
+    `geometricMean,matrix`
+
+
 
 #' @rdname geometricMean
 #' @export
 setMethod(
     f = "geometricMean",
     signature = signature("sparseMatrix"),
-    definition = geometricMean.sparseMatrix
+    definition = `geometricMean,sparseMatrix`
 )

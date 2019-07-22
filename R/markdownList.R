@@ -15,6 +15,8 @@
 #' markdownList(groceries)
 #' markdownList(groceries, ordered = TRUE)
 #' markdownList(groceries, asis = TRUE)
+
+## Updated 2019-07-22.
 markdownList <- function(
     text,
     ordered = FALSE,

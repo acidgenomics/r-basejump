@@ -12,7 +12,8 @@ NULL
 
 
 
-Tx2Gene.DataFrame <-  # nolint
+## Updated 2019-07-22.
+`Tx2Gene,DataFrame` <-  # nolint
     function(object) {
         assert(hasRows(object))
 
@@ -42,12 +43,13 @@ Tx2Gene.DataFrame <-  # nolint
 setMethod(
     f = "Tx2Gene",
     signature = signature("DataFrame"),
-    definition = Tx2Gene.DataFrame
+    definition = `Tx2Gene,DataFrame`
 )
 
 
 
-Tx2Gene.GRanges <-  # nolint
+## Updated 2019-07-22.
+`Tx2Gene,GRanges` <-  # nolint
     function(object) {
         data <- as(object, "DataFrame")
         ## This step is needed for handling raw GFF annotations.
@@ -63,12 +65,13 @@ Tx2Gene.GRanges <-  # nolint
 setMethod(
     f = "Tx2Gene",
     signature = signature("GRanges"),
-    definition = Tx2Gene.GRanges
+    definition = `Tx2Gene,GRanges`
 )
 
 
 
-Tx2Gene.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`Tx2Gene,SummarizedExperiment` <-  # nolint
     function(object) {
         object <- as.SummarizedExperiment(object)
         data <- rowData(object)
@@ -83,5 +86,5 @@ Tx2Gene.SummarizedExperiment <-  # nolint
 setMethod(
     f = "Tx2Gene",
     signature = signature("SummarizedExperiment"),
-    definition = Tx2Gene.SummarizedExperiment
+    definition = `Tx2Gene,SummarizedExperiment`
 )

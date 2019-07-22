@@ -24,6 +24,8 @@
 #' to <- sanitizeSampleData(from)
 #' all(vapply(to, is.factor, logical(1L)))
 #' print(to)
+
+## Updated 2019-07-22.
 sanitizeSampleData <- function(object) {
     ## Still allowing standard `data.frame`, to support bcbioRNASeq v0.2.9.
     ## Require stricter `DataFrame` input in a future update.

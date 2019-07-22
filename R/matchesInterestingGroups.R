@@ -1,7 +1,3 @@
-## Consider deprecating this function in a future release?
-
-
-
 #' Check that interesting groups match a defined value
 #'
 #' Prevent unwanted downstream behavior when a missing interesting group
@@ -23,6 +19,8 @@
 #'
 #' ## Currently allowing `NULL` to pass.
 #' matchesInterestingGroups(rse, NULL)
+
+## Updated 2019-07-22.
 matchesInterestingGroups <- function(
     x,
     interestingGroups,

@@ -13,6 +13,8 @@
 #'     skip = NULL,
 #'     filtered = TRUE
 #' ))
+
+## Updated 2019-07-22.
 showSlotInfo <- function(list) {
     assert(is.list(list))
     ## Consider checking for all atomic here.

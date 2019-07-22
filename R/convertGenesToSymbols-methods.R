@@ -60,7 +60,8 @@ NULL
 
 ## convertGenesToSymbols =======================================================
 ## Allowing duplicates here (unlike convertTranscriptsToGenes).
-convertGenesToSymbols.character <-  # nolint
+## Updated 2019-07-22.
+`convertGenesToSymbols,character` <-  # nolint
     function(object, gene2symbol) {
         assert(
             isCharacter(object),
@@ -97,12 +98,13 @@ convertGenesToSymbols.character <-  # nolint
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("character"),
-    convertGenesToSymbols.character
+    definition = `convertGenesToSymbols,character`
 )
 
 
 
-convertGenesToSymbols.matrix <-  # nolint
+## Updated 2019-07-22.
+`convertGenesToSymbols,matrix` <-  # nolint
     function(object, gene2symbol) {
         g2s <- do.call(
             what = convertGenesToSymbols,
@@ -122,24 +124,27 @@ convertGenesToSymbols.matrix <-  # nolint
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("matrix"),
-    definition = convertGenesToSymbols.matrix
+    definition = `convertGenesToSymbols,matrix`
 )
 
 
-convertGenesToSymbols.sparseMatrix <-  # nolint
-    convertGenesToSymbols.matrix
+
+## Updated 2019-07-22.
+`convertGenesToSymbols,sparseMatrix` <-  # nolint
+    `convertGenesToSymbols,matrix`
 
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("sparseMatrix"),
-    definition = convertGenesToSymbols.sparseMatrix
+    definition = `convertGenesToSymbols,sparseMatrix`
 )
 
 
 
-convertGenesToSymbols.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`convertGenesToSymbols,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -161,13 +166,14 @@ convertGenesToSymbols.SummarizedExperiment <-  # nolint
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    definition = convertGenesToSymbols.SummarizedExperiment
+    definition = `convertGenesToSymbols,SummarizedExperiment`
 )
 
 
 
 ## convertSymbolsToGenes =======================================================
-convertSymbolsToGenes.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`convertSymbolsToGenes,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
         g2s <- Gene2Symbol(object)
@@ -186,5 +192,5 @@ convertSymbolsToGenes.SummarizedExperiment <-  # nolint
 setMethod(
     f = "convertSymbolsToGenes",
     signature = signature("SummarizedExperiment"),
-    definition = convertSymbolsToGenes.SummarizedExperiment
+    definition = `convertSymbolsToGenes,SummarizedExperiment`
 )

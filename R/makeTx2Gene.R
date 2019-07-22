@@ -34,6 +34,7 @@ NULL
 
 #' @rdname makeTx2Gene
 #' @export
+## Updated 2019-07-22.
 makeTx2GeneFromEnsembl <-
     function() {
         gr <- do.call(
@@ -51,6 +52,7 @@ formals(makeTx2GeneFromEnsembl) <- f
 
 #' @rdname makeTx2Gene
 #' @export
+## Updated 2019-07-22.
 makeTx2GeneFromEnsDb <- function(object) {
     gr <- makeGRangesFromEnsDb(object, level = "transcripts")
     Tx2Gene(gr)
@@ -60,6 +62,7 @@ makeTx2GeneFromEnsDb <- function(object) {
 
 #' @rdname makeTx2Gene
 #' @export
+## Updated 2019-07-22.
 makeTx2GeneFromGFF <- function(file) {
     gr <- makeGRangesFromGFF(file, level = "transcripts")
     Tx2Gene(gr)

@@ -16,6 +16,8 @@
 #'     metadata = S4Vectors::metadata(object)
 #' )
 #' print(x)
+
+## Updated 2019-07-22.
 makeSingleCellExperiment <- function(
     assays,
     rowRanges,

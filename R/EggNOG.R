@@ -5,6 +5,8 @@
 #' options(acid.test = TRUE)
 #' x <- EggNOG()
 #' print(x)
+
+## Updated 2019-07-22.
 EggNOG <-  # nolint
     function() {
         assert(hasInternet())

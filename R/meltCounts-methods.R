@@ -38,8 +38,8 @@ NULL
 
 
 
-## Updated 2019-07-18.
-meltCounts.matrix <-  # nolint
+## Updated 2019-07-22.
+`meltCounts,matrix` <-  # nolint
     function(
         object,
         minCounts = 1L,
@@ -126,13 +126,13 @@ meltCounts.matrix <-  # nolint
 setMethod(
     f = "meltCounts",
     signature = signature("matrix"),
-    definition = meltCounts.matrix
+    definition = `meltCounts,matrix`
 )
 
 
 
-## Updated 2019-07-18.
-meltCounts.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`meltCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -170,8 +170,8 @@ meltCounts.SummarizedExperiment <-  # nolint
     }
 
 args <- c("minCounts", "minCountsMethod", "trans")
-formals(meltCounts.SummarizedExperiment)[args] <-
-    formals(meltCounts.matrix)[args]
+formals(`meltCounts,SummarizedExperiment`)[args] <-
+    formals(`meltCounts,matrix`)[args]
 rm(args)
 
 
@@ -181,5 +181,5 @@ rm(args)
 setMethod(
     f = "meltCounts",
     signature = signature("SummarizedExperiment"),
-    definition = meltCounts.SummarizedExperiment
+    definition = `meltCounts,SummarizedExperiment`
 )

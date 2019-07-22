@@ -27,7 +27,8 @@ NULL
 
 
 
-aggregateCellsToSamples.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`aggregateCellsToSamples,SingleCellExperiment` <-  # nolint
     function(object, fun) {
         validObject(object)
         fun <- match.arg(fun)
@@ -42,7 +43,8 @@ aggregateCellsToSamples.SingleCellExperiment <-  # nolint
         aggregateCols(object = rse, col = "aggregate", fun = fun)
     }
 
-formals(aggregateCellsToSamples.SingleCellExperiment)[["fun"]] <- .aggregateFuns
+formals(`aggregateCellsToSamples,SingleCellExperiment`)[["fun"]] <-
+    .aggregateFuns
 
 
 
@@ -51,5 +53,5 @@ formals(aggregateCellsToSamples.SingleCellExperiment)[["fun"]] <- .aggregateFuns
 setMethod(
     f = "aggregateCellsToSamples",
     signature = signature("SingleCellExperiment"),
-    definition = aggregateCellsToSamples.SingleCellExperiment
+    definition = `aggregateCellsToSamples,SingleCellExperiment`
 )

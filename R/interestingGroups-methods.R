@@ -34,7 +34,8 @@ NULL
 
 
 
-interestingGroups.Annotated <-  # nolint
+## Updated 2019-07-22.
+`interestingGroups,Annotated` <-  # nolint
     function(object) {
         metadata(object)[["interestingGroups"]]
     }
@@ -46,12 +47,13 @@ interestingGroups.Annotated <-  # nolint
 setMethod(
     f = "interestingGroups",
     signature = signature("Annotated"),
-    definition = interestingGroups.Annotated
+    definition = `interestingGroups,Annotated`
 )
 
 
 
-`interestingGroups<-.Annotated,character` <-  # nolint
+## Updated 2019-07-22.
+`interestingGroups<-,Annotated,character` <-  # nolint
     function(object, value) {
         assert(areDisjointSets(value, "interestingGroups"))
         metadata(object)[["interestingGroups"]] <- value
@@ -68,12 +70,13 @@ setMethod(
         object = "Annotated",
         value = "character"
     ),
-    definition = `interestingGroups<-.Annotated,character`
+    definition = `interestingGroups<-,Annotated,character`
 )
 
 
 
-`interestingGroups<-.SummarizedExperiment,character` <-  # nolint
+## Updated 2019-07-22.
+`interestingGroups<-,SummarizedExperiment,character` <-  # nolint
     function(object, value) {
         ## Check for attempt to use `interestingGroups` automatic column.
         assert(areDisjointSets(value, "interestingGroups"))
@@ -99,12 +102,13 @@ setMethod(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    definition = `interestingGroups<-.SummarizedExperiment,character`
+    definition = `interestingGroups<-,SummarizedExperiment,character`
 )
 
 
 
-`interestingGroups<-.Annotated,NULL` <-  # nolint
+## Updated 2019-07-22.
+`interestingGroups<-,Annotated,NULL` <-  # nolint
     function(object, value) {
         metadata(object)[["interestingGroups"]] <- NULL
         object
@@ -120,5 +124,5 @@ setMethod(
         object = "Annotated",
         value = "NULL"
     ),
-    definition = `interestingGroups<-.Annotated,NULL`
+    definition = `interestingGroups<-,Annotated,NULL`
 )

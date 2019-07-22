@@ -27,7 +27,8 @@ NULL
 
 
 
-lfcThreshold.Annotated <-  # nolint
+## Updated 2019-07-22.
+`lfcThreshold,Annotated` <-  # nolint
     function(object) {
         validObject(object)
         metadata(object)[["lfcThreshold"]]
@@ -40,12 +41,13 @@ lfcThreshold.Annotated <-  # nolint
 setMethod(
     f = "lfcThreshold",
     signature = signature("Annotated"),
-    definition = lfcThreshold.Annotated
+    definition = `lfcThreshold,Annotated`
 )
 
 
 
-`lfcThreshold<-.Annotated,numeric` <-  # nolint
+## Updated 2019-07-22.
+`lfcThreshold<-,Annotated,numeric` <-  # nolint
     function(object, value) {
         assert(
             isScalar(value),
@@ -66,5 +68,5 @@ setMethod(
         object = "Annotated",
         value = "numeric"
     ),
-    definition = `lfcThreshold<-.Annotated,numeric`
+    definition = `lfcThreshold<-,Annotated,numeric`
 )

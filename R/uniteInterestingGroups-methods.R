@@ -26,7 +26,8 @@ NULL
 
 
 
-uniteInterestingGroups.DataFrame <-  # nolint
+## Updated 2019-07-22.
+`uniteInterestingGroups,DataFrame` <-  # nolint
     function(object, interestingGroups) {
         assert(
             isCharacter(interestingGroups),
@@ -71,15 +72,15 @@ uniteInterestingGroups.DataFrame <-  # nolint
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("DataFrame"),
-    definition = uniteInterestingGroups.DataFrame
+    definition = `uniteInterestingGroups,DataFrame`
 )
 
 
 
 ## Deprecated legacy method support for bcbio R packages.
 ## Safe to deprecate/remove once bcbio v0.3 release series is on hbc.
-uniteInterestingGroups.data.frame <-  # nolint
-    uniteInterestingGroups.DataFrame
+`uniteInterestingGroups,data.frame` <-  # nolint
+    `uniteInterestingGroups,DataFrame`
 
 
 
@@ -89,5 +90,5 @@ uniteInterestingGroups.data.frame <-  # nolint
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("data.frame"),
-    definition = uniteInterestingGroups.data.frame
+    definition = `uniteInterestingGroups,data.frame`
 )

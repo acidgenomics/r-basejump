@@ -38,7 +38,8 @@ NULL
 
 
 
-counts.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`counts,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
         assert(isSubset("counts", assayNames(object)))
@@ -52,12 +53,13 @@ counts.SummarizedExperiment <-  # nolint
 setMethod(
     f = "counts",
     signature = signature("SummarizedExperiment"),
-    definition = counts.SummarizedExperiment
+    definition = `counts,SummarizedExperiment`
 )
 
 
 
-`counts<-.SummarizedExperiment,ANY` <-  # nolint
+## Updated 2019-07-22.
+`counts<-,SummarizedExperiment,ANY` <-  # nolint
     function(object, value) {
         validObject(object)
         assays(object)[["counts"]] <- value
@@ -74,5 +76,5 @@ setMethod(
         object = "SummarizedExperiment",
         value = "ANY"
     ),
-    definition = `counts<-.SummarizedExperiment,ANY`
+    definition = `counts<-,SummarizedExperiment,ANY`
 )

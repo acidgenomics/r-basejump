@@ -33,14 +33,20 @@ NULL
 
 
 
+## Updated 2019-07-22.
+`tpm,SummarizedExperiment` <-  # nolint
+    function(object) {
+        validObject(object)
+        assert(isSubset("tpm", assayNames(object)))
+        assays(object)[["tpm"]]
+    }
+
+
+
 #' @rdname tpm
 #' @export
 setMethod(
     f = "tpm",
     signature = signature("SummarizedExperiment"),
-    definition = function(object) {
-        validObject(object)
-        assert(isSubset("tpm", assayNames(object)))
-        assays(object)[["tpm"]]
-    }
+    definition = `tpm,SummarizedExperiment`
 )

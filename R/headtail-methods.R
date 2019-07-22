@@ -30,7 +30,8 @@ NULL
 
 
 
-headtail.atomic <-  # nolint
+## Updated 2019-07-22.
+`headtail,atomic` <-  # nolint
     function(x, n = 2L) {
         assert(
             is.atomic(x),
@@ -60,12 +61,13 @@ headtail.atomic <-  # nolint
 setMethod(
     f = "headtail",
     signature = signature("atomic"),
-    definition = headtail.atomic
+    definition = `headtail,atomic`
 )
 
 
 
-headtail.matrix <-  # nolint
+## Updated 2019-07-22.
+`headtail,matrix` <-  # nolint
     function(x, n = 2L, ascii = FALSE) {
         assert(
             hasDims(x),
@@ -193,8 +195,14 @@ headtail.matrix <-  # nolint
 setMethod(
     f = "headtail",
     signature = signature("matrix"),
-    definition = headtail.matrix
+    definition = `headtail,matrix`
 )
+
+
+
+## Updated 2019-07-22.
+`headtail,sparseMatrix` <-  # nolint
+    `headtail,matrix`
 
 
 
@@ -203,8 +211,14 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("sparseMatrix"),
-    definition = headtail.matrix
+    definition = `headtail,sparseMatrix`
 )
+
+
+
+## Updated 2019-07-22.
+`headtail,data.frame` <-  # nolint
+    `headtail,matrix`
 
 
 
@@ -213,8 +227,14 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("data.frame"),
-    definition = headtail.matrix
+    definition = `headtail,data.frame`
 )
+
+
+
+## Updated 2019-07-22.
+`headtail,DataFrame` <-  # nolint
+    `headtail,data.frame`
 
 
 
@@ -223,12 +243,13 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("DataFrame"),
-    definition = headtail.matrix
+    definition = `headtail,DataFrame`
 )
 
 
 
-headtail.GRanges <-  # nolint
+## Updated 2019-07-22.
+`headtail,GRanges` <-  # nolint
     function() {
         headtail(
             x = as(x, "data.frame"),
@@ -237,7 +258,7 @@ headtail.GRanges <-  # nolint
         )
     }
 
-formals(headtail.GRanges) <- formals(headtail.matrix)
+formals(`headtail,GRanges`) <- formals(`headtail,matrix`)
 
 
 
@@ -246,12 +267,13 @@ formals(headtail.GRanges) <- formals(headtail.matrix)
 setMethod(
     f = "headtail",
     signature = signature("GRanges"),
-    definition = headtail.GRanges
+    definition = `headtail,GRanges`
 )
 
 
 
-headtail.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`headtail,SummarizedExperiment` <-  # nolint
     function() {
         headtail(
             x = assay(x),
@@ -260,7 +282,7 @@ headtail.SummarizedExperiment <-  # nolint
         )
     }
 
-formals(headtail.SummarizedExperiment) <- formals(headtail.matrix)
+formals(`headtail,SummarizedExperiment`) <- formals(`headtail,matrix`)
 
 
 
@@ -269,5 +291,5 @@ formals(headtail.SummarizedExperiment) <- formals(headtail.matrix)
 setMethod(
     f = "headtail",
     signature = signature("SummarizedExperiment"),
-    definition = headtail.SummarizedExperiment
+    definition = `headtail,SummarizedExperiment`
 )
