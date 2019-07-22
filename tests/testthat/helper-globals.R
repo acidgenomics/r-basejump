@@ -1,8 +1,24 @@
 data(
-    df, gr, lfc, mat, rse, sce, sparse, txse,
+    DataFrame,
+    GRanges,
+    matrix,
+    matrix_lfc,
+    RangedSummarizedExperiment,
+    SingleCellExperiment_Seurat,
+    sparseMatrix,
+    SummarizedExperiment_transcripts,
     package = "acidtest",
     envir = environment()
 )
+
+df <- DataFrame
+gr <- GRanges
+lfc <- matrix_lfc
+mat <- matrix
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment_Seurat
+sparse <- sparseMatrix
+txse <- SummarizedExperiment_transcripts
 
 ## nolint start
 DataFrame <- S4Vectors::DataFrame
