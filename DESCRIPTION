@@ -157,7 +157,6 @@ Collate:
     'params.R'
     'prepareTemplate.R'
     'rankedMatrix.R'
-    'reexports-S4.R'
     'reexports-bioverbs.R'
     'reexports-brio.R'
     'reexports-freerange.R'
