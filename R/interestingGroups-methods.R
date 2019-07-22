@@ -6,9 +6,11 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====
-#' interestingGroups(rse)
+#' intgroup <- interestingGroups(rse)
+#' print(intgroup)
 #' ## Assignment support.
 #' interestingGroups(rse) <- intgroup[[1L]]
 #' interestingGroups(rse)
