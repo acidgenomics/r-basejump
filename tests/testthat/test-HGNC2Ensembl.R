@@ -1,7 +1,6 @@
-## FIXME Improve URL failure message.
-## FIXME Skip if user doesn't have internet.
-
 context("HGNC2Ensembl")
+
+skip_if_not(hasInternet())
 
 test_that("HGNC2Ensembl", {
     object <- HGNC2Ensembl()

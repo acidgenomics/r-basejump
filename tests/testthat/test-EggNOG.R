@@ -1,7 +1,6 @@
-## FIXME Improve URL failure message.
-## FIXME Skip if user doesn't have internet.
-
 context("EggNOG")
+
+skip_if_not(hasInternet())
 
 object <- EggNOG()
 
