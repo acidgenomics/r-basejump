@@ -11,16 +11,22 @@
 #' @return `character`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
 #'
 #' ## character ====
 #' autopadZeros(c("A1", "B10"))
 #' autopadZeros(c("A1", "B10", "C100"))
 #'
 #' ## SummarizedExperiment ====
+#' rse <- RangedSummarizedExperiment
 #' autopadZeros(rse, rownames = TRUE, colnames = TRUE)
 #'
 #' ## SingleCellExperiment ====
+#' sce <- SingleCellExperiment
 #' autopadZeros(sce, rownames = TRUE, colnames = TRUE)
 NULL
 

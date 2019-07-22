@@ -2,7 +2,8 @@
 #' @inherit bioverbs::alphaThreshold
 #' @param ... Additional arguments.
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
 #' ## Annotated
 #' alphaThreshold(rse) <- 0.05
