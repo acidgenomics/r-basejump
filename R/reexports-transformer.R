@@ -1,11 +1,14 @@
-## To my knowledge, there isn't an easier way to reexport S4 methods in another
-## package, so redefine current supported methods again here.
+## Updated 2019-07-22.
 
 #' @importFrom methods coerce
 #' @exportMethod coerce
 NULL
 
 
+
+#' @importFrom transformer as.SummarizedExperiment
+#' @export
+transformer::as.SummarizedExperiment
 
 #' @rdname reexports-S4
 #' @name as.data.frame
@@ -16,12 +19,24 @@ NULL
 #' @export
 NULL
 
+#' @importFrom transformer as.data.table
+#' @export
+transformer::as.data.table
+
+#' @importFrom transformer as_tibble
+#' @export
+transformer::as_tibble
+
 #' @rdname reexports-S4
 #' @name atomize
 #' @importFrom transformer atomize
 #' @usage atomize(object, ...)
 #' @export
 NULL
+
+#' @importFrom transformer coerceS4ToList
+#' @export
+transformer::coerceS4ToList
 
 #' @rdname reexports-S4
 #' @name decode
@@ -50,24 +65,6 @@ NULL
 #' @usage flatFiles(object, ...)
 #' @export
 NULL
-
-
-
-#' @importFrom transformer as.SummarizedExperiment
-#' @export
-transformer::as.SummarizedExperiment
-
-#' @importFrom transformer as.data.table
-#' @export
-transformer::as.data.table
-
-#' @importFrom transformer as_tibble
-#' @export
-transformer::as_tibble
-
-#' @importFrom transformer coerceS4ToList
-#' @export
-transformer::coerceS4ToList
 
 
 
