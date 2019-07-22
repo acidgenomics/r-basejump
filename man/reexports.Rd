@@ -8,9 +8,15 @@
 \alias{plotGene}
 \alias{assignAndSaveData}
 \alias{basenameSansExt}
+\alias{bunzip2}
+\alias{bzip2}
+\alias{compressFile}
+\alias{decompressFile}
 \alias{dots}
 \alias{extPattern}
 \alias{fileExt}
+\alias{gunzip}
+\alias{gzip}
 \alias{import}
 \alias{initDir}
 \alias{loadData}
@@ -20,23 +26,16 @@
 \alias{naStrings}
 \alias{pasteURL}
 \alias{rdataExtPattern}
-\alias{rdataLoadError}
 \alias{realpath}
-\alias{saveData}
-\alias{transmit}
-\alias{writeCounts}
 \alias{sanitizeColData}
 \alias{sanitizeRowData}
 \alias{sanitizeRowRanges}
-\alias{bunzip2}
-\alias{bzip2}
-\alias{compressFile}
-\alias{decompressFile}
-\alias{gunzip}
-\alias{gzip}
+\alias{saveData}
 \alias{tar}
+\alias{transmit}
 \alias{untar}
 \alias{unzip}
+\alias{writeCounts}
 \alias{zip}
 \alias{annotable}
 \alias{convertUCSCBuildToEnsembl}
@@ -46,13 +45,13 @@
 \alias{makeGRangesFromEnsembl}
 \alias{makeGRangesFromGFF}
 \alias{makeGRangesFromGTF}
+\alias{assert}
+\alias{hasRownames}
 \alias{matchArgsToDoCall}
 \alias{methodFormals}
 \alias{methodFunction}
 \alias{printString}
 \alias{standardizeCall}
-\alias{assert}
-\alias{hasRownames}
 \alias{camel}
 \alias{dotted}
 \alias{kebab}
@@ -81,11 +80,11 @@ below to see their documentation.
 \describe{
   \item{bioverbs}{\code{\link[bioverbs]{plotGene}}}
 
-  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{dots}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{rdataLoadError}}, \code{\link[brio]{realpath}}, \code{\link[brio]{saveData}}, \code{\link[brio]{transmit}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{tar}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{zip}}}
+  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{dots}}, \code{\link[brio]{extPattern}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{rdataExtPattern}}, \code{\link[brio]{realpath}}, \code{\link[brio]{sanitizeColData}}, \code{\link[brio]{sanitizeRowData}}, \code{\link[brio]{sanitizeRowRanges}}, \code{\link[brio]{saveData}}, \code{\link[brio]{tar}}, \code{\link[brio]{transmit}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{zip}}}
 
   \item{freerange}{\code{\link[freerange]{annotable}}, \code{\link[freerange]{convertUCSCBuildToEnsembl}}, \code{\link[freerange]{detectOrganism}}, \code{\link[freerange]{emptyRanges}}, \code{\link[freerange]{makeGRangesFromEnsDb}}, \code{\link[freerange]{makeGRangesFromEnsembl}}, \code{\link[freerange]{makeGRangesFromGFF}}, \code{\link[freerange]{makeGRangesFromGTF}}}
 
-  \item{goalie}{\code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}, \code{\link[goalie]{assert}}, \code{\link[goalie]{hasRownames}}}
+  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie]{hasRownames}}, \code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 

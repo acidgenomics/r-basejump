@@ -1,3 +1,9 @@
+## Updated 2019-07-22.
+
+#' @importFrom syntactic camel
+#' @export
+syntactic::camel
+
 #' @rdname reexports-S4
 #' @name camelCase
 #' @importFrom syntactic camelCase
@@ -12,6 +18,10 @@ NULL
 #' @export
 NULL
 
+#' @importFrom syntactic dotted
+#' @export
+syntactic::dotted
+
 #' @rdname reexports-S4
 #' @name dottedCase
 #' @importFrom syntactic dottedCase
@@ -19,12 +29,24 @@ NULL
 #' @export
 NULL
 
+#' @importFrom syntactic kebab
+#' @export
+syntactic::kebab
+
 #' @rdname reexports-S4
-#' @name kebab
+#' @name kebabCase
 #' @importFrom syntactic kebabCase
 #' @usage kebabCase(object, ...)
 #' @export
 NULL
+
+#' @importFrom syntactic makeDimnames
+#' @export
+syntactic::makeDimnames
+
+#' @importFrom syntactic makeNames
+#' @export
+syntactic::makeNames
 
 #' @rdname reexports-S4
 #' @name mcolnames
@@ -40,46 +62,24 @@ NULL
 #' @export
 NULL
 
+#' @importFrom syntactic snake
+#' @export
+syntactic::snake
+
 #' @rdname reexports-S4
-#' @name snake
+#' @name snakeCase
 #' @importFrom syntactic snakeCase
 #' @usage snakeCase(object, ...)
 #' @export
 NULL
 
+#' @importFrom syntactic upperCamel
+#' @export
+syntactic::upperCamel
+
 #' @rdname reexports-S4
-#' @name upperCamel
+#' @name upperCamelCase
 #' @importFrom syntactic upperCamelCase
 #' @usage upperCamelCase(object, ...)
 #' @export
 NULL
-
-
-
-#' @importFrom syntactic camel
-#' @export
-syntactic::camel
-
-#' @importFrom syntactic dotted
-#' @export
-syntactic::dotted
-
-#' @importFrom syntactic kebab
-#' @export
-syntactic::kebab
-
-#' @importFrom syntactic makeDimnames
-#' @export
-syntactic::makeDimnames
-
-#' @importFrom syntactic makeNames
-#' @export
-syntactic::makeNames
-
-#' @importFrom syntactic snake
-#' @export
-syntactic::snake
-
-#' @importFrom syntactic upperCamel
-#' @export
-syntactic::upperCamel
