@@ -25,7 +25,7 @@ test_that("Require at least 1 count per feature", {
     )
 })
 
-trans <- eval(formals(meltCounts.SummarizedExperiment)[["trans"]])
+trans <- eval(formals(`meltCounts,SummarizedExperiment`)[["trans"]])
 with_parameters_test_that(
     "trans", {
         x <- meltCounts(rse, trans = trans)

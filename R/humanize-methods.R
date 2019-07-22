@@ -30,6 +30,7 @@ NULL
 
 
 
+## FIXME Check SCE method here.
 ## Updated 2019-07-22.
 `humanize,SummarizedExperiment` <-  # nolint
     function(object) {

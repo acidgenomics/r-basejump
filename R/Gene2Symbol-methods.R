@@ -119,6 +119,7 @@ setMethod(
 
 
 
+## FIXME `as.SE` is dropping rowData on SCE example.
 ## Updated 2019-07-22.
 `Gene2Symbol,SummarizedExperiment` <-  # nolint
     function(object, format) {
