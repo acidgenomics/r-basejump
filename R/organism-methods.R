@@ -101,12 +101,12 @@ setMethod(
 `organism,DataTable` <-  # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
-        organism <- organism.Annotated(object)
+        organism <- `organism,Annotated`(object)
         if (isString(organism)) {
             return(organism)
         }
         ## Otherwise, fall back to matrix method.
-        organism.matrix(object)
+        `organism,matrix`(object)
     }
 
 
@@ -149,7 +149,7 @@ setMethod(
 `organism,SummarizedExperiment` <-  # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
-        organism <- organism.Annotated(object)
+        organism <- `organism,Annotated`(object)
         if (isString(organism)) {
             return(organism)
         }
