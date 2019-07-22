@@ -1,9 +1,7 @@
-## FIXME Improve URL failure message.
-## FIXME Skip if user doesn't have internet.
-
 context("geneSynonyms")
 
 ## Full organism support is covered in extra checks.
+skip_if_not(hasInternet())
 
 test_that("geneSynonyms", {
     expect_is(
