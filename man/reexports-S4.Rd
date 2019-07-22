@@ -6,21 +6,23 @@
 \alias{reexports-S4}
 \alias{plotDEGHeatmap}
 \alias{plotDEGPCA}
-\alias{atomize}
-\alias{decode}
-\alias{encode}
 \alias{export}
-\alias{factorize}
 \alias{removeNA}
 \alias{sanitizeNA}
 \alias{sanitizePercent}
-\alias{camel}
+\alias{camelCase}
 \alias{capitalize}
-\alias{dotted}
+\alias{dottedCase}
 \alias{kebab}
+\alias{mcolnames}
+\alias{mcolnames<-}
 \alias{snake}
 \alias{upperCamel}
 \alias{as.data.frame}
+\alias{atomize}
+\alias{decode}
+\alias{encode}
+\alias{factorize}
 \alias{flatFiles}
 \title{S4 generics exported from other packages}
 \usage{
@@ -28,15 +30,7 @@ plotDEGHeatmap(object, ...)
 
 plotDEGPCA(object, ...)
 
-atomize(object, ...)
-
-decode(x, ...)
-
-encode(x, ...)
-
 export(object, ...)
-
-factorize(object, ...)
 
 removeNA(object, ...)
 
@@ -44,19 +38,31 @@ sanitizeNA(object, ...)
 
 sanitizePercent(object, ...)
 
-camel(object, ...)
+camelCase(object, ...)
 
 capitalize(object, ...)
 
-dotted(object, ...)
+dottedCase(object, ...)
 
-kebab(object, ...)
+kebabCase(object, ...)
 
-snake(object, ...)
+mcolnames(x, ...)
 
-upperCamel(object, ...)
+mcolnames(x ...) <- value
+
+snakeCase(object, ...)
+
+upperCamelCase(object, ...)
 
 as.data.frame(x, row.names = NULL, optional = FALSE, ...)
+
+atomize(object, ...)
+
+decode(x, ...)
+
+encode(x, ...)
+
+factorize(object, ...)
 
 flatFiles(object, ...)
 }

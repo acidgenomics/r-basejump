@@ -53,8 +53,13 @@
 \alias{standardizeCall}
 \alias{assert}
 \alias{hasRownames}
+\alias{camel}
+\alias{dotted}
+\alias{kebab}
 \alias{makeDimnames}
 \alias{makeNames}
+\alias{snake}
+\alias{upperCamel}
 \alias{as.SummarizedExperiment}
 \alias{as.data.table}
 \alias{as_tibble}
@@ -84,7 +89,7 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 
-  \item{syntactic}{\code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}}
+  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 

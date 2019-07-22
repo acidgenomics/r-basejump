@@ -1,37 +1,9 @@
-#' @rdname reexports-S4
-#' @name atomize
-#' @importFrom brio atomize
-#' @usage atomize(object, ...)
-#' @export
-NULL
-
-#' @rdname reexports-S4
-#' @name decode
-#' @importFrom brio decode
-#' @usage decode(x, ...)
-#' @export
-NULL
-
-#' @rdname reexports-S4
-#' @name encode
-#' @importFrom brio encode
-#' @usage encode(x, ...)
-#' @export
-NULL
-
 ## Note switch from "x" to "object" here in v0.10.9.
 
 #' @rdname reexports-S4
 #' @name export
 #' @importFrom brio export
 #' @usage export(object, ...)
-#' @export
-NULL
-
-#' @rdname reexports-S4
-#' @name factorize
-#' @importFrom brio factorize
-#' @usage factorize(object, ...)
 #' @export
 NULL
 
