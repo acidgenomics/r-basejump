@@ -12,7 +12,8 @@
 #'   Interesting groups.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
 #' ## Checks that columns are defined in `sampleData()`.
 #' matchesInterestingGroups(rse, "condition")

@@ -13,8 +13,8 @@
 #' Object names defined in the new `environment`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
-#' multiassignAsEnvir(rse, sce, envirName = "example")
+#' data(data.frame, matrix, package = "acidtest")
+#' multiassignAsEnvir(data.frame, matrix, envirName = "example")
 #' class(example)
 #' ls(example)
 

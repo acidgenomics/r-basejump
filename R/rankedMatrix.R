@@ -15,7 +15,8 @@
 #' - Not to be confused with [Matrix::rankMatrix()].
 #'
 #' @examples
-#' data(lfc, package = "acidtest")
+#' data(matrix_lfc, package = "acidtest")
+#' lfc <- matrix_lfc
 #'
 #' ## Increasing (negative to positive)
 #' rankedMatrix(lfc, method = "increasing")

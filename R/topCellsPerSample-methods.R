@@ -7,7 +7,10 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
+#' data(SingleCellExperiment, package = "acidtest")
+#' sce <- SingleCellExperiment
+#'
+#' ## SingleCellExperiment ====
 #' x <- topCellsPerSample(sce)
 #' lapply(x, head)
 NULL

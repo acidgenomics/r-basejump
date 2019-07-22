@@ -18,7 +18,10 @@
 #' `character` columns coerced to `factor` (i.e. `stringsAsFactors`).
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' from <- sampleData(rse)
 #' print(from)
 #' to <- sanitizeSampleData(from)

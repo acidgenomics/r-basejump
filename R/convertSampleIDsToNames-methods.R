@@ -7,7 +7,8 @@
 #' @return Varies, depending on the method.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #' convertSampleIDsToNames(rse)
 NULL
 

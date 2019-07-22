@@ -18,7 +18,13 @@
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #' str_pad <- stringr::str_pad
 #'
 #' ## SummarizedExperiment ====

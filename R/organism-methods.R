@@ -11,7 +11,10 @@
 #' @seealso `detectOrganism()`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' organism(rse)
 NULL
 

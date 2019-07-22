@@ -5,14 +5,16 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## DataFrame ====
 #' object <- rse
-#' from <- sampleData(object)
-#' to <- uniteInterestingGroups(
-#'     object = from,
+#' x <- uniteInterestingGroups(
+#'     object = sampleData(object),
 #'     interestingGroups = interestingGroups(object)
 #' )
-#' print(to)
+#' print(x)
 NULL
 
 

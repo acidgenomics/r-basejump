@@ -2,7 +2,6 @@
 #' @name show
 #' @inherit methods::show
 #' @examples
-#' data(rse, package = "acidtest")
 #' options(acid.test = TRUE)
 #'
 #' ## EggNOG ====

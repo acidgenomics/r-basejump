@@ -7,13 +7,20 @@
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
-#' object <- sce
+#' library(SingleCellExperiment)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' object <- SingleCellExperiment
+#' assays <- assays(object)
+#' rowRanges <- rowRanges(object)
+#' colData <- colData(object)
+#' metadata <- metadata(object)
+#'
 #' x <- makeSingleCellExperiment(
-#'     assays = SummarizedExperiment::assays(object),
-#'     rowRanges = SummarizedExperiment::rowRanges(object),
-#'     colData = SummarizedExperiment::colData(object),
-#'     metadata = S4Vectors::metadata(object)
+#'     assays = assays,
+#'     rowRanges = rowRanges,
+#'     colData = colData,
+#'     metadata = metadata
 #' )
 #' print(x)
 
