@@ -55,7 +55,8 @@ Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
 Melt count matrix into long format
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 dim(rse)
 x <- meltCounts(rse, minCounts = NULL)
 nrow(x)

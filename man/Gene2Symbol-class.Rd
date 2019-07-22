@@ -61,7 +61,10 @@ We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRele
 }
 
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
+
+## SummarizedExperiment ====
 x <- Gene2Symbol(rse)
 print(x)
 }

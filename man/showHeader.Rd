@@ -16,7 +16,8 @@ Console output, via \code{\link[base:cat]{cat()}}.
 Header for object show method
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 showHeader(rse)
 }
 \seealso{

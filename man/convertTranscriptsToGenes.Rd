@@ -51,7 +51,8 @@ collapsed to gene level using \code{aggregateRows}. This applies to our
 \code{SummarizedExperiment} method.
 }
 \examples{
-data(txse, package = "acidtest")
+data(SummarizedExperiment_transcripts, package = "acidtest")
+txse <- SummarizedExperiment_transcripts
 object <- txse
 
 t2g <- Tx2Gene(object)

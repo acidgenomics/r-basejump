@@ -34,7 +34,7 @@ Alpha threshold
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment
 
-## Annotated
+## Annotated ====
 alphaThreshold(rse) <- 0.05
 alphaThreshold(rse)
 }

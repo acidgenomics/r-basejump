@@ -57,7 +57,13 @@ identifiers for columns and gene identifiers for rows.
 }
 
 \examples{
-data(rse, sce, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
 object <- rse
