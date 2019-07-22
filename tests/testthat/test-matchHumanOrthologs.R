@@ -8,7 +8,19 @@ test_that("Mus musculus", {
         "ENSMUSG00000000028", "ENSMUSG00000000031",
         "ENSMUSG00000000037", "ENSMUSG00000000049"
     )
-    map <- matchHumanOrthologs(genes, ensemblRelease = 87L)
+    ## This depends on biomaRt, and has a tendency to time out.
+    map <- tryCatch(
+        expr = matchHumanOrthologs(genes, ensemblRelease = 87L),
+        error = function(e) e
+    )
+    ## Skip if connection timed out.
+    if (is(map, "error")) {
+        msg <- as.character(map)
+        skip_if(
+            condition = grepl(pattern = "timed out", x = msg),
+            message = msg
+        )
+    }
     expect_s4_class(map, "DataFrame")
     expect_identical(
         object = map,
