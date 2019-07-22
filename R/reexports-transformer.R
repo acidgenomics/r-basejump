@@ -17,6 +17,34 @@ NULL
 NULL
 
 #' @rdname reexports-S4
+#' @name atomize
+#' @importFrom transformer atomize
+#' @usage atomize(object, ...)
+#' @export
+NULL
+
+#' @rdname reexports-S4
+#' @name decode
+#' @importFrom transformer decode
+#' @usage decode(x, ...)
+#' @export
+NULL
+
+#' @rdname reexports-S4
+#' @name encode
+#' @importFrom transformer encode
+#' @usage encode(x, ...)
+#' @export
+NULL
+
+#' @rdname reexports-S4
+#' @name factorize
+#' @importFrom transformer factorize
+#' @usage factorize(object, ...)
+#' @export
+NULL
+
+#' @rdname reexports-S4
 #' @name flatFiles
 #' @importFrom transformer flatFiles
 #' @usage flatFiles(object, ...)
@@ -43,14 +71,27 @@ transformer::coerceS4ToList
 
 
 
-## coerce-DataFrame.R ===========================================================
+## coerce-DataFrame-S4methods.R ================================================
 setAs(
-    from = "sparseMatrix",
+    from = "Matrix",
     to = "DataFrame",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "sparseMatrix",
+            from = "Matrix",
+            to = "DataFrame"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "data.table",
+    to = "DataFrame",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "data.table",
             to = "DataFrame"
         ),
         where = "transformer"
@@ -72,14 +113,27 @@ setAs(
 
 
 
-## coerce-data.frame.R ==========================================================
+## coerce-data.frame-S4methods.R ===============================================
 setAs(
-    from = "sparseMatrix",
+    from = "IPosRanges",
     to = "data.frame",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "sparseMatrix",
+            from = "IPosRanges",
+            to = "data.frame"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "Matrix",
+    to = "data.frame",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "Matrix",
             to = "data.frame"
         ),
         where = "transformer"
@@ -88,7 +142,7 @@ setAs(
 
 
 
-## coerce-data.table.R ==========================================================
+## coerce-data.table-S4methods.R ===============================================
 setAs(
     from = "data.frame",
     to = "data.table",
@@ -116,12 +170,25 @@ setAs(
 )
 
 setAs(
-    from = "GRanges",
+    from = "GenomicRanges",
     to = "data.table",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "GRanges",
+            from = "GenomicRanges",
+            to = "data.table"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "IPosRanges",
+    to = "data.table",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "IPosRanges",
             to = "data.table"
         ),
         where = "transformer"
@@ -130,20 +197,7 @@ setAs(
 
 
 
-## coerce-tbl_df.R ==============================================================
-setAs(
-    from = "data.frame",
-    to = "tbl_df",
-    def = getMethod(
-        f = "coerce",
-        signature(
-            from = "data.frame",
-            to = "tbl_df"
-        ),
-        where = "transformer"
-    )
-)
-
+## coerce-tbl_df-S4methods.R ===================================================
 setAs(
     from = "DataFrame",
     to = "tbl_df",
@@ -158,12 +212,38 @@ setAs(
 )
 
 setAs(
-    from = "GRanges",
+    from = "GenomicRanges",
     to = "tbl_df",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "GRanges",
+            from = "GenomicRanges",
+            to = "tbl_df"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "IPosRanges",
+    to = "tbl_df",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "IPosRanges",
+            to = "tbl_df"
+        ),
+        where = "transformer"
+    )
+)
+
+setAs(
+    from = "data.frame",
+    to = "tbl_df",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "data.frame",
             to = "tbl_df"
         ),
         where = "transformer"
