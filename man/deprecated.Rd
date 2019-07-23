@@ -14,6 +14,9 @@
 \alias{readYAML}
 \alias{markdownPlotlist}
 \alias{mdPlotlist}
+\alias{relevelColData}
+\alias{relevelRowData}
+\alias{relevelRowRanges}
 \alias{separatorBar}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
@@ -38,6 +41,12 @@ readYAML(...)
 markdownPlotlist(plotlist, ...)
 
 mdPlotlist(plotlist, ...)
+
+relevelColData(object)
+
+relevelRowData(object)
+
+relevelRowRanges(object)
 
 separatorBar
 }

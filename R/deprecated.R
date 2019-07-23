@@ -374,5 +374,29 @@ assertIsTx2gene <- function(...) {
 
 
 
+# v0.11.0 ======================================================================
+#' @rdname deprecated
+#' @export
+relevelColData <- function(object) {
+    .Deprecated("relevel")
+    relevel(x = object)
+}
+
+#' @rdname deprecated
+#' @export
+relevelRowData <- function(object) {
+    .Deprecated("relevel")
+    relevel(x = object)
+}
+
+#' @rdname deprecated
+#' @export
+relevelRowRanges <- function(object) {
+    .Deprecated("relevel")
+    relevel(x = object)
+}
+
+
+
 ## nolint end
 ## nocov end
