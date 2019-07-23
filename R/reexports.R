@@ -1,3 +1,48 @@
+#' S4 generics exported from other packages
+#'
+#' These generics are imported from other packages.
+#'
+#' @section bioverbs:
+#' - `plotDEGHeatmap`
+#' - `plotDEGPCA`
+#'
+#' @section brio:
+#' - `export`
+#' - `removeNA`
+#' - `sanitizeNA`
+#' - `sanitizePercent`
+#'
+#' @section syntactic:
+#' - `camelCase`
+#' - `capitalize`
+#' - `dottedCase`
+#' - `kebabCase`
+#' - `mcolnames`, `mcolnames<-`
+#' - `snakeCase`
+#' - `upperCamelCase`
+#'
+#' @section transformer:
+#' - `as.data.frame`
+#' - `atomize`
+#' - `decode`
+#' - `encode`
+#' - `factorize`
+#' - `flatFiles`
+#'
+#' @name reexports-S4
+#' @docType import
+#'
+#' @param object,x Object.
+#' @param ... Additional arguments.
+#'
+#' @keywords internal
+#'
+#' @examples
+#' showMethods("camelCase")
+NULL
+
+
+
 ## Assignment pipe
 #' @importFrom magrittr %<>%
 #' @export
