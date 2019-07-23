@@ -20,6 +20,9 @@ sce <- SingleCellExperiment
 sparse <- sparseMatrix
 txse <- SummarizedExperiment_transcripts
 
+groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
+mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
+
 ## nolint start
 DataFrame <- S4Vectors::DataFrame
 GRanges <- GenomicRanges::GRanges
@@ -28,7 +31,9 @@ SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
 cause <- goalie::cause
 group_vars <- dplyr::group_vars
 hasInternet <- goalie::hasInternet
+rowRanges <- SummarizedExperiment::rowRanges
 str_pad <- stringr::str_pad
+tibble <- tibble::tibble
 ## nolint end
 
 options(
@@ -36,5 +41,3 @@ options(
     acid.save.ext = "rds",
     acid.test = TRUE
 )
-
-## FIXME Warn if test URL doesn't exist.

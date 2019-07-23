@@ -55,6 +55,7 @@ syntactic::makeNames
 #' @export
 NULL
 
+## pkgdown fails to render if we set the usage here.
 #' @rdname reexports-S4
 #' @name mcolnames<-
 #' @importFrom syntactic mcolnames<-
