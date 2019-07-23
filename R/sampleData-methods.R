@@ -438,7 +438,6 @@ setMethod(
         ]
 
         ## Join the sample-level metadata into cell-level colData.
-        ## FIXME Switch to using transformer left_join method on DataFrame.
         join <- left_join(
             x = as_tibble(colData, rownames = "rowname"),
             y = as_tibble(value, rownames = NULL),
