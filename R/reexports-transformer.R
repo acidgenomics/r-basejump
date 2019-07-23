@@ -25,10 +25,6 @@ NULL
 
 
 
-#' @importFrom transformer as.DataFrame
-#' @export
-transformer::as.DataFrame
-
 #' @importFrom transformer as.SummarizedExperiment
 #' @export
 transformer::as.SummarizedExperiment
