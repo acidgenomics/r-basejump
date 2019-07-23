@@ -1,7 +1,3 @@
-# FIXME Automatically factorize and/or relevel colData, rowData
-
-
-
 #' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
@@ -218,15 +214,16 @@ makeSummarizedExperiment <- function(
     rm(data)
 
     ## Automatically arrange the rows to match the main assay.
-    ## FIXME Need to relevel the factors here automatically.
     if (is(rowRanges, "GRanges")) {
         assert(hasNames(rowRanges))
         assert(isSubset(rownames(assay), names(rowRanges)))
         rowRanges <- rowRanges[rownames(assay)]
+        rowRanges <- relevel(rowRanges)
     } else if (is(rowData, "DataFrame")) {
         assert(hasRownames(rowData))
         assert(isSubset(rownames(assay), rownames(rowData)))
         rowData <- rowData[rownames(assay), , drop = FALSE]
+        rowData <- relevel(rowData)
     }
 
     ## Column data -------------------------------------------------------------
@@ -245,6 +242,7 @@ makeSummarizedExperiment <- function(
         areDisjointSets(colnames(colData), blacklist)
     )
     colData <- colData[colnames(assay), , drop = FALSE]
+    colData <- relevel(colData)
 
     ## Metadata ----------------------------------------------------------------
     metadata <- as.list(metadata)

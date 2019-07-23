@@ -57,7 +57,7 @@
 #' @importFrom tidyr separate
 #' @importFrom tidyselect everything matches
 #' @importFrom tibble as_tibble column_to_rownames tibble
-#' @importFrom transformer as_tibble
+#' @importFrom transformer as_tibble left_join
 #' @importFrom utils capture.output data getFromNamespace globalVariables
 #'   installed.packages packageVersion
 NULL
