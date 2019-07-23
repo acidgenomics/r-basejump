@@ -15,7 +15,6 @@ test_that("SummarizedExperiment", {
 })
 
 ## Check for unmodified return on SCE objects.
-## FIXME Need to improve the SCE example, going back to splatter one.
 test_that("SingleCellExperiment", {
     x <- humanize(sce)
     expect_s4_class(x, "SingleCellExperiment")
