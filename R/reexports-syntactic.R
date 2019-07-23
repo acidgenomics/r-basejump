@@ -58,7 +58,7 @@ NULL
 #' @rdname reexports-S4
 #' @name mcolnames<-
 #' @importFrom syntactic mcolnames<-
-#' @usage mcolnames(x ...) <- value
+#' @usage NULL
 #' @export
 NULL
 
