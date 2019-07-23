@@ -63,6 +63,7 @@
 \alias{as.data.table}
 \alias{as_tibble}
 \alias{coerceS4ToList}
+\alias{relevel}
 \alias{\%<>\%}
 \alias{\%$\%}
 \alias{\%>\%}
@@ -92,6 +93,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{coerceS4ToList}}}
+  \item{transformer}{\code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{relevel}}}
 }}
 

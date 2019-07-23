@@ -66,6 +66,10 @@ NULL
 #' @export
 NULL
 
+#' @importFrom transformer relevel
+#' @export
+transformer::relevel
+
 
 
 ## coerce-DataFrame-S4methods.R ================================================
