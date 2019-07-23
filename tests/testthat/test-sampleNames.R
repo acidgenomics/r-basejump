@@ -54,6 +54,6 @@ test_that("SCE assignment", {
     sampleNames(sce) <- newSamples
     expect_identical(
         object = sampleNames(sce),
-        expected = c(sample2 = "a", sample1 = "b")
+        expected = c(sample1 = "a", sample2 = "b")
     )
 })
