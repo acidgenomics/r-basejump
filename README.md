@@ -18,7 +18,22 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 Sys.setenv(R_REMOTES_UPGRADE = "always")
 # Set `GITHUB_PAT` in `~/.Renviron` if you get a rate limit error.
 remotes::install_github("acidgenomics/basejump")
+```
+
+Here's how to update to the latest version on GitHub:
+
+```r
+Sys.setenv(R_REMOTES_UPGRADE = "always")
 remotes::update_packages()
+```
+
+Always check that your Bioconductor installation is valid before proceeding.
+
+```r
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+BiocManager::valid()
 ```
 
 ### [conda][] method
