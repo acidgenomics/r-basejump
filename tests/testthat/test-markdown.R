@@ -99,7 +99,7 @@ test_that("markdownList", {
 
 test_that("markdownPlots", {
     skip_if_not(hasInternet())
-    skip_on_appeyor()
+    skip_on_appveyor()
     plotlist <- readRDS(file = file.path("cache", "plotlist.rds"))
     output <- capture.output(markdownPlots(list = plotlist))
     expect_identical(
