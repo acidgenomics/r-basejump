@@ -3,10 +3,15 @@
 \docType{methods}
 \name{meltCounts}
 \alias{meltCounts}
+\alias{meltCounts,matrix-method}
 \alias{meltCounts,SummarizedExperiment-method}
 \title{Melt count matrix into long format}
 \usage{
 meltCounts(object, ...)
+
+\S4method{meltCounts}{matrix}(object, minCounts = 1L,
+  minCountsMethod = c("perFeature", "absolute"), trans = c("identity",
+  "log2", "log10"))
 
 \S4method{meltCounts}{SummarizedExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
@@ -15,16 +20,10 @@ meltCounts(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
-name must be defined in
-\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
-
-\item{minCounts}{\code{integer(1)}.
-Minimum count threshold to apply. Filters using "greater than or equal to"
-logic internally. Note that this threshold gets applied prior to
-logarithmic transformation, when \code{trans} argument applies.}
+\item{minCounts}{\code{integer(1)} or \code{NULL}.
+Minimum count threshold to apply. Disable with \code{NULL}. Filters using
+"greater than or equal to" logic internally. Note that this threshold gets
+applied prior to logarithmic transformation, when \code{trans} argument applies.}
 
 \item{minCountsMethod}{\code{character(1)}.
 Uses \code{\link[base:match.arg]{match.arg()}}.
@@ -40,6 +39,12 @@ operation. This applies to all counts, not per feature.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 
+\item{assay}{\code{vector(1)}.
+Name or index of count matrix slotted in
+\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
+name must be defined in
+\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -50,8 +55,11 @@ Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
 Melt count matrix into long format
 }
 \examples{
-data(rse, package = "acidtest")
-x <- meltCounts(rse)
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
+dim(rse)
+x <- meltCounts(rse, minCounts = NULL)
+nrow(x)
 print(x)
 }
 \seealso{

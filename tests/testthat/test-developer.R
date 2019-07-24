@@ -28,7 +28,7 @@ test_that("Inside S4 method", {
         }
     )
 
-    # Method with formals identical to the generic.
+    ## Method with formals identical to the generic.
     setMethod(
         f = "testing",
         signature = signature("character"),
@@ -47,7 +47,7 @@ test_that("Inside S4 method", {
         )
     )
 
-    # Method with formals that differ from generic.
+    ## Method with formals that differ from generic.
     setMethod(
         f = "testing",
         signature = signature("character"),

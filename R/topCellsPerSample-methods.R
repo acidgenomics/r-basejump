@@ -7,7 +7,10 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
+#' data(SingleCellExperiment, package = "acidtest")
+#' sce <- SingleCellExperiment
+#'
+#' ## SingleCellExperiment ====
 #' x <- topCellsPerSample(sce)
 #' lapply(x, head)
 NULL
@@ -23,7 +26,8 @@ NULL
 
 
 
-topCellsPerSample.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`topCellsPerSample,SingleCellExperiment` <-  # nolint
     function(object, n = 100L) {
         validObject(object)
         assert(isInt(n))
@@ -55,5 +59,5 @@ topCellsPerSample.SingleCellExperiment <-  # nolint
 setMethod(
     f = "topCellsPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = topCellsPerSample.SingleCellExperiment
+    definition = `topCellsPerSample,SingleCellExperiment`
 )

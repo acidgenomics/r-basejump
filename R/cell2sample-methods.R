@@ -13,7 +13,10 @@
 #' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
+#' data(SingleCellExperiment, package = "acidtest")
+#' sce <- SingleCellExperiment
+#'
+#' ## SingleCellExperiment ====
 #' x <- cell2sample(sce)
 #' table(x)
 NULL
@@ -29,7 +32,8 @@ NULL
 
 
 
-cell2sample.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`cell2sample,SingleCellExperiment` <-  # nolint
     function(object, return = c("factor", "tibble")) {
         validObject(object)
         assert(isSubset("sampleID", colnames(colData(object))))
@@ -42,9 +46,9 @@ cell2sample.SingleCellExperiment <-  # nolint
             names(sample) <- cell
             sample
         } else if (return == "tibble") {
-            colData %>%
-                as_tibble(rownames = "cellID") %>%
-                .[, c("cellID", "sampleID")]
+            data <- as_tibble(colData, rownames = "cellID")
+            data <- data[, c("cellID", "sampleID")]
+            data
         }
     }
 
@@ -55,5 +59,5 @@ cell2sample.SingleCellExperiment <-  # nolint
 setMethod(
     f = "cell2sample",
     signature = signature("SingleCellExperiment"),
-    definition = cell2sample.SingleCellExperiment
+    definition = `cell2sample,SingleCellExperiment`
 )

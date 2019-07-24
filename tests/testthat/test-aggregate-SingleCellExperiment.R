@@ -1,4 +1,4 @@
-# This check currently fails on AppVeyor because the file won't load.
+## This check currently fails on AppVeyor because the file won't load.
 skip_on_appveyor()
 
 sce_lanesplit <- readRDS(file.path("cache", "sce_lanesplit.rds"))  # nolint
@@ -61,7 +61,7 @@ test_that("sce_lanesplit", {
     )
 })
 
-test_that("acidtest::sce", {
+test_that("acidtest example", {
     object <- aggregateCellsToSamples(sce)
     sums <- assay(object) %>%
         Matrix::colSums(.) %>%
@@ -69,8 +69,8 @@ test_that("acidtest::sce", {
     expect_identical(
         object = sums,
         expected = c(
-            sample1 = 12622L,
-            sample2 = 7011L
+            sample1 = 3080321L,
+            sample2 = 2334466L
         )
     )
 })

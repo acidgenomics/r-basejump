@@ -9,7 +9,8 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
 #' ## data.frame ====
 #' headtail(datasets::mtcars, ascii = TRUE)
@@ -30,7 +31,8 @@ NULL
 
 
 
-headtail.atomic <-  # nolint
+## Updated 2019-07-22.
+`headtail,atomic` <-  # nolint
     function(x, n = 2L) {
         assert(
             is.atomic(x),
@@ -60,12 +62,13 @@ headtail.atomic <-  # nolint
 setMethod(
     f = "headtail",
     signature = signature("atomic"),
-    definition = headtail.atomic
+    definition = `headtail,atomic`
 )
 
 
 
-headtail.matrix <-  # nolint
+## Updated 2019-07-22.
+`headtail,matrix` <-  # nolint
     function(x, n = 2L, ascii = FALSE) {
         assert(
             hasDims(x),
@@ -83,8 +86,8 @@ headtail.matrix <-  # nolint
                 ]
             out <- as.data.frame(out)
         } else {
-            # Ensure that we're performing subset operation before coercion to
-            # data.frame, as this can blow up in memory for sparse matrices.
+            ## Ensure that we're performing subset operation before coercion to
+            ## data.frame, as this can blow up in memory for sparse matrices.
             square <- x[
                 c(
                     head(rownames(x), n = n),
@@ -97,10 +100,10 @@ headtail.matrix <-  # nolint
                 drop = FALSE
                 ]
 
-            # Coerce to data.frame, for consistency.
+            ## Coerce to data.frame, for consistency.
             square <- as.data.frame(square)
 
-            # Sanitize all non-atomic columns to placeholder symbol.
+            ## Sanitize all non-atomic columns to placeholder symbol.
             list <- lapply(
                 X = square,
                 FUN = function(x) {
@@ -113,7 +116,7 @@ headtail.matrix <-  # nolint
                     }
                 }
             )
-            # Now safe to coerce to atomic data.frame.
+            ## Now safe to coerce to atomic data.frame.
             square <- data.frame(
                 list,
                 row.names = rownames(square),
@@ -122,14 +125,14 @@ headtail.matrix <-  # nolint
                 stringsAsFactors = FALSE
             )
 
-            # Check that we have square dimensions.
+            ## Check that we have square dimensions.
             assert(
                 nrow(square) == n * 2L,
                 ncol(square) == n * 2L
             )
 
-            # Split into quadrants, so we can add vertical separators.
-            # upper/lower, left/right.
+            ## Split into quadrants, so we can add vertical separators.
+            ## upper/lower, left/right.
             ul <- square[seq_len(n), seq_len(n), drop = FALSE]
             ur <- square[seq_len(n), seq_len(n) + n, drop = FALSE]
             ll <- square[seq_len(n) + n, seq_len(n), drop = FALSE]
@@ -163,7 +166,7 @@ headtail.matrix <-  # nolint
             )
         }
 
-        # Substitute Unicode characters for ASCII, if desired.
+        ## Substitute Unicode characters for ASCII, if desired.
         if (isTRUE(ascii)) {
             dimnames(out) <- lapply(
                 X = dimnames(out),
@@ -193,8 +196,14 @@ headtail.matrix <-  # nolint
 setMethod(
     f = "headtail",
     signature = signature("matrix"),
-    definition = headtail.matrix
+    definition = `headtail,matrix`
 )
+
+
+
+## Updated 2019-07-22.
+`headtail,sparseMatrix` <-  # nolint
+    `headtail,matrix`
 
 
 
@@ -203,8 +212,14 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("sparseMatrix"),
-    definition = headtail.matrix
+    definition = `headtail,sparseMatrix`
 )
+
+
+
+## Updated 2019-07-22.
+`headtail,data.frame` <-  # nolint
+    `headtail,matrix`
 
 
 
@@ -213,8 +228,14 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("data.frame"),
-    definition = headtail.matrix
+    definition = `headtail,data.frame`
 )
+
+
+
+## Updated 2019-07-22.
+`headtail,DataFrame` <-  # nolint
+    `headtail,data.frame`
 
 
 
@@ -223,12 +244,13 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("DataFrame"),
-    definition = headtail.matrix
+    definition = `headtail,DataFrame`
 )
 
 
 
-headtail.GRanges <-  # nolint
+## Updated 2019-07-22.
+`headtail,GRanges` <-  # nolint
     function() {
         headtail(
             x = as(x, "data.frame"),
@@ -237,7 +259,7 @@ headtail.GRanges <-  # nolint
         )
     }
 
-formals(headtail.GRanges) <- formals(headtail.matrix)
+formals(`headtail,GRanges`) <- formals(`headtail,matrix`)
 
 
 
@@ -246,12 +268,13 @@ formals(headtail.GRanges) <- formals(headtail.matrix)
 setMethod(
     f = "headtail",
     signature = signature("GRanges"),
-    definition = headtail.GRanges
+    definition = `headtail,GRanges`
 )
 
 
 
-headtail.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`headtail,SummarizedExperiment` <-  # nolint
     function() {
         headtail(
             x = assay(x),
@@ -260,7 +283,7 @@ headtail.SummarizedExperiment <-  # nolint
         )
     }
 
-formals(headtail.SummarizedExperiment) <- formals(headtail.matrix)
+formals(`headtail,SummarizedExperiment`) <- formals(`headtail,matrix`)
 
 
 
@@ -269,5 +292,5 @@ formals(headtail.SummarizedExperiment) <- formals(headtail.matrix)
 setMethod(
     f = "headtail",
     signature = signature("SummarizedExperiment"),
-    definition = headtail.SummarizedExperiment
+    definition = `headtail,SummarizedExperiment`
 )

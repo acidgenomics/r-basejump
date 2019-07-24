@@ -21,7 +21,8 @@
 #' @seealso `aggregateRows()`.
 #'
 #' @examples
-#' data(txse, package = "acidtest")
+#' data(SummarizedExperiment_transcripts, package = "acidtest")
+#' txse <- SummarizedExperiment_transcripts
 #' object <- txse
 #'
 #' t2g <- Tx2Gene(object)
@@ -64,7 +65,8 @@ NULL
 
 
 
-convertTranscriptsToGenes.character <-  # nolint
+## Updated 2019-07-22.
+`convertTranscriptsToGenes,character` <-  # nolint
     function(object, tx2gene) {
         assert(
             isCharacter(object),
@@ -92,13 +94,14 @@ convertTranscriptsToGenes.character <-  # nolint
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("character"),
-    definition = convertTranscriptsToGenes.character
+    definition = `convertTranscriptsToGenes,character`
 )
 
 
 
-# Consider aggregating the matrix to gene level instead.
-convertTranscriptsToGenes.matrix <-  # nolint
+## Consider aggregating the matrix to gene level instead.
+## Updated 2019-07-22.
+`convertTranscriptsToGenes,matrix` <-  # nolint
     function(object, tx2gene, aggregate = TRUE) {
         assert(isFlag(aggregate))
         t2g <- do.call(
@@ -123,27 +126,29 @@ convertTranscriptsToGenes.matrix <-  # nolint
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("matrix"),
-    definition = convertTranscriptsToGenes.matrix
+    definition = `convertTranscriptsToGenes,matrix`
 )
 
 
 
-convertTranscriptsToGenes.sparseMatrix <-  # nolint
-    convertTranscriptsToGenes.matrix
+## Updated 2019-07-22.
+`convertTranscriptsToGenes,sparseMatrix` <-  # nolint
+    `convertTranscriptsToGenes,matrix`
 
 #' @rdname convertTranscriptsToGenes
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("sparseMatrix"),
-    definition = convertTranscriptsToGenes.sparseMatrix
+    definition = `convertTranscriptsToGenes,sparseMatrix`
 )
 
 
 
-# Consider returning RSE here in a future update.
-# Need to add code that handles rowRanges.
-convertTranscriptsToGenes.SummarizedExperiment <-  # nolint
+## Consider returning RSE here in a future update.
+## Need to add code that handles rowRanges.
+## Updated 2019-07-22.
+`convertTranscriptsToGenes,SummarizedExperiment` <-  # nolint
     function(object) {
         counts <- counts(object)
         t2g <- Tx2Gene(object)
@@ -170,5 +175,5 @@ convertTranscriptsToGenes.SummarizedExperiment <-  # nolint
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("SummarizedExperiment"),
-    definition = convertTranscriptsToGenes.SummarizedExperiment
+    definition = `convertTranscriptsToGenes,SummarizedExperiment`
 )

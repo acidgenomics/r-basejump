@@ -34,7 +34,10 @@ cell-to-sample groupings and then performs aggregation with the
 \code{\link[=aggregateCols]{aggregateCols()}} function.
 }
 \examples{
-data(sce, package = "acidtest")
+data(SingleCellExperiment, package = "acidtest")
+sce <- SingleCellExperiment
+
+## SingleCellExperiment ====
 x <- aggregateCellsToSamples(sce)
 print(x)
 }

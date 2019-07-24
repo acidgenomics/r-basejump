@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.10.12
-Date: 2019-07-23
+Version: 0.11.0
+Date: 2019-07-22
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -35,12 +35,12 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    bioverbs (>= 0.1.19),
-    brio (>= 0.2.3),
-    freerange (>= 0.1.9),
-    goalie (>= 0.2.17),
-    syntactic (>= 0.1.10),
-    transformer (>= 0.1.12),
+    bioverbs (>= 0.2.0),
+    brio (>= 0.3.0),
+    freerange (>= 0.2.0),
+    goalie (>= 0.2.19),
+    syntactic (>= 0.2.0),
+    transformer (>= 0.2.0),
     Biobase,
     BiocGenerics,
     GenomeInfoDb,
@@ -147,7 +147,6 @@ Collate:
     'matchInterestingGroups.R'
     'matchesGene2Symbol.R'
     'matchesInterestingGroups.R'
-    'mcolnames-methods.R'
     'meltCounts-methods.R'
     'metrics-methods.R'
     'microplate.R'
@@ -158,7 +157,6 @@ Collate:
     'params.R'
     'prepareTemplate.R'
     'rankedMatrix.R'
-    'reexports-S4.R'
     'reexports-bioverbs.R'
     'reexports-brio.R'
     'reexports-freerange.R'
@@ -166,7 +164,6 @@ Collate:
     'reexports-syntactic.R'
     'reexports-transformer.R'
     'reexports.R'
-    'relevel.R'
     'sampleData-methods.R'
     'sampleNames-methods.R'
     'sanitizeSampleData.R'

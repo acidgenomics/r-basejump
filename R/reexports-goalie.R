@@ -1,3 +1,15 @@
+## Updated 2019-07-22.
+
+## Legacy reexport needed for acidplots 0.2.4, bcbioRNASeq 0.2.10.
+#' @importFrom goalie assert
+#' @export
+goalie::assert
+
+## Legacy reexport needed for acidplots 0.2.4, bcbioRNASeq 0.2.10.
+#' @importFrom goalie hasRownames
+#' @export
+goalie::hasRownames
+
 #' @importFrom goalie matchArgsToDoCall
 #' @export
 goalie::matchArgsToDoCall
@@ -17,15 +29,3 @@ goalie::printString
 #' @importFrom goalie standardizeCall
 #' @export
 goalie::standardizeCall
-
-
-
-# Legacy reexports needed for acidplots 0.2.4, bcbioRNASeq 0.2.10.
-
-#' @importFrom goalie assert
-#' @export
-goalie::assert
-
-#' @importFrom goalie hasRownames
-#' @export
-goalie::hasRownames

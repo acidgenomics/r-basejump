@@ -1,3 +1,5 @@
+## Updated 2019-07-22.
+
 #' @importFrom freerange annotable
 #' @export
 freerange::annotable

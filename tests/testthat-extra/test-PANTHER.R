@@ -2,9 +2,9 @@ context("extra | PANTHER")
 
 organisms <- names(.pantherMappings)
 
-# Here's how to obtain supported releases.
-# > releases <- .pantherReleases
-# > releases <- setdiff(releases, "current_release")
+## Here's how to obtain supported releases.
+## > releases <- .pantherReleases
+## > releases <- setdiff(releases, "current_release")
 
 with_parameters_test_that(
     "PANTHER : 11.0", {

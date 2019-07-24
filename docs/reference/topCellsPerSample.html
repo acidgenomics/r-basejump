@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.0</span>
       </span>
     </div>
 
@@ -152,15 +152,16 @@ Top barcodes as <code>character</code>, split by <code>sampleID</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
+
+<span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>topCellsPerSample</span>(<span class='no'>sce</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>head</span>)</div><div class='output co'>#&gt; $sample1
-#&gt; [1] "GACATTCTCCACCT" "TTGAGGACTACGCA" "GCGTAAACACGGTT" "ATACCACTCTAAGC"
-#&gt; [5] "GAGTTGTGGTAGCT" "ATTGCACTTGCTTT"
+#&gt; [1] "cell042" "cell063" "cell009" "cell094" "cell057" "cell037"
 #&gt; 
 #&gt; $sample2
-#&gt; [1] "ATTGTAGATTCCCG" "ACGTGATGCCATGA" "TGAGCTGAATGCTG" "TCCACTCTGAGCTT"
-#&gt; [5] "AAATTCGAATCACG" "CATTACACCAACTG"
+#&gt; [1] "cell005" "cell074" "cell076" "cell067" "cell018" "cell081"
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

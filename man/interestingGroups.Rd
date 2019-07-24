@@ -37,13 +37,13 @@ interestingGroups(object, ...)  <- value
 Interesting groups
 }
 \examples{
-data(rse, package = "acidtest")
-object <- rse
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 
-intgroup <- interestingGroups(object)
+## SummarizedExperiment ====
+intgroup <- interestingGroups(rse)
 print(intgroup)
-
 ## Assignment support.
-interestingGroups(object) <- intgroup[[1L]]
-interestingGroups(object)
+interestingGroups(rse) <- intgroup[[1L]]
+interestingGroups(rse)
 }

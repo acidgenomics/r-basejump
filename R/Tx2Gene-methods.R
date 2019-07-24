@@ -5,18 +5,22 @@
 #' @seealso `makeTx2Gene()`.
 #' @examples
 #' ## SummarizedExperiment ====
-#' data(txse, package = "acidtest")
+#' data(SummarizedExperiment_transcripts, package = "acidtest")
+#' txse <- SummarizedExperiment_transcripts
+#'
+#' ## SummarizedExperiment ====
 #' x <- Tx2Gene(txse)
 #' print(x)
 NULL
 
 
 
-Tx2Gene.DataFrame <-  # nolint
+## Updated 2019-07-22.
+`Tx2Gene,DataFrame` <-  # nolint
     function(object) {
         assert(hasRows(object))
 
-        # Check for required columns.
+        ## Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
             stop(paste0(
@@ -42,15 +46,16 @@ Tx2Gene.DataFrame <-  # nolint
 setMethod(
     f = "Tx2Gene",
     signature = signature("DataFrame"),
-    definition = Tx2Gene.DataFrame
+    definition = `Tx2Gene,DataFrame`
 )
 
 
 
-Tx2Gene.GRanges <-  # nolint
+## Updated 2019-07-22.
+`Tx2Gene,GRanges` <-  # nolint
     function(object) {
         data <- as(object, "DataFrame")
-        # This step is needed for handling raw GFF annotations.
+        ## This step is needed for handling raw GFF annotations.
         data <- unique(data)
         metadata(data) <- metadata(object)
         Tx2Gene(data)
@@ -63,12 +68,13 @@ Tx2Gene.GRanges <-  # nolint
 setMethod(
     f = "Tx2Gene",
     signature = signature("GRanges"),
-    definition = Tx2Gene.GRanges
+    definition = `Tx2Gene,GRanges`
 )
 
 
 
-Tx2Gene.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`Tx2Gene,SummarizedExperiment` <-  # nolint
     function(object) {
         object <- as.SummarizedExperiment(object)
         data <- rowData(object)
@@ -83,5 +89,5 @@ Tx2Gene.SummarizedExperiment <-  # nolint
 setMethod(
     f = "Tx2Gene",
     signature = signature("SummarizedExperiment"),
-    definition = Tx2Gene.SummarizedExperiment
+    definition = `Tx2Gene,SummarizedExperiment`
 )

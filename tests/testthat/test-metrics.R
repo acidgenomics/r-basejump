@@ -31,30 +31,33 @@ test_that("SCE : tibble", {
 
 context("metricsPerSample")
 
-# nolint start
-# fun <- eval(formals(metricsPerSample.SingleCellExperiment)[["fun"]])
-# nolint end
+## nolint start
+## fun <- eval(formals(metricsPerSample.SingleCellExperiment)[["fun"]])
+## nolint end
 
 test_that("SingleCellExperiment", {
     object <- sce
-    # Simulate a metric column with an expected mean.
-    # Standard normal distribution
+    ## Simulate a metric column with an expected mean.
+    ## Standard normal distribution
     colData(object)[["nUMI"]] <- Matrix::colSums(counts(object))
     expect_identical(
         object = metricsPerSample(object, fun = "mean") %>%
             .[["nUMI"]] %>%
             round(digits = 2L),
-        expected = c(286.86, 194.75)
+        expected = c(56005.84, 51877.02)
     )
     expect_identical(
         object = metricsPerSample(object, fun = "median") %>%
             .[["nUMI"]] %>%
-            round(digits = 2L),
-        expected = c(216.0, 144.5)
+            round(digits = 2L) %>%
+            as.integer(),
+        expected = c(52774L, 50573L)
     )
     expect_equal(
-        object = metricsPerSample(object, fun = "sum") %>% .[["nUMI"]],
-        expected = c(12622L, 7011L)
+        object = metricsPerSample(object, fun = "sum") %>%
+            .[["nUMI"]] %>%
+            as.integer(),
+        expected = c(3080321L, 2334466L)
     )
 })
 

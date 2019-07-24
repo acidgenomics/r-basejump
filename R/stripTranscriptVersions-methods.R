@@ -30,11 +30,12 @@ NULL
 
 
 
-# Pattern matching against Ensembl transcript IDs.
-# http://www.ensembl.org/info/genome/stable_ids/index.html
-# Examples: ENST (human); ENSMUST (mouse).
-# `:punct:` will match `-` or `_` here.
-stripTranscriptVersions.character <-  # nolint
+## Pattern matching against Ensembl transcript IDs.
+## http://www.ensembl.org/info/genome/stable_ids/index.html
+## Examples: ENST (human); ENSMUST (mouse).
+## `:punct:` will match `-` or `_` here.
+## Updated 2019-07-22.
+`stripTranscriptVersions,character` <-  # nolint
     function(object) {
         assert(isCharacter(object))
         gsub(
@@ -51,12 +52,13 @@ stripTranscriptVersions.character <-  # nolint
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("character"),
-    definition = stripTranscriptVersions.character
+    definition = `stripTranscriptVersions,character`
 )
 
 
 
-stripTranscriptVersions.matrix <-  # nolint
+## Updated 2019-07-22.
+`stripTranscriptVersions,matrix` <-  # nolint
     function(object) {
         rownames <- rownames(object)
         rownames <- stripTranscriptVersions(rownames)
@@ -71,8 +73,14 @@ stripTranscriptVersions.matrix <-  # nolint
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("matrix"),
-    definition = stripTranscriptVersions.matrix
+    definition = `stripTranscriptVersions,matrix`
 )
+
+
+
+## Updated 2019-07-22.
+`stripTranscriptVersions,sparseMatrix` <-  # nolint
+    `stripTranscriptVersions,matrix`
 
 
 
@@ -81,8 +89,14 @@ setMethod(
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("sparseMatrix"),
-    definition = stripTranscriptVersions.matrix
+    definition = `stripTranscriptVersions,sparseMatrix`
 )
+
+
+
+## Updated 2019-07-22.
+`stripTranscriptVersions,SummarizedExperiment` <-  # nolint
+    `stripTranscriptVersions,matrix`
 
 
 
@@ -91,5 +105,5 @@ setMethod(
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("SummarizedExperiment"),
-    definition = stripTranscriptVersions.matrix
+    definition = `stripTranscriptVersions,SummarizedExperiment`
 )

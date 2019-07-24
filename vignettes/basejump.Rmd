@@ -36,7 +36,8 @@ knitr::opts_chunk$set(message = FALSE)
 library(basejump)
 library(SummarizedExperiment)
 options(acid.test = TRUE)
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 ```
 
 This vignette focuses on the most common user-facing functions that fall into the following categories:

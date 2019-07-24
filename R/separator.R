@@ -16,6 +16,8 @@
 #'
 #' @examples
 #' separator(sep = "=", times = 10L)
+
+## Updated 2019-07-22.
 separator <- function(
     sep = "=",
     times = min(c(
@@ -32,7 +34,7 @@ separator <- function(
 
 
 
-# Soft deprecated, since this is still in use by bcbio R packages.
+## Soft deprecated, since this is still in use by bcbio R packages.
 #' @rdname deprecated
 #' @export
 separatorBar <- separator()

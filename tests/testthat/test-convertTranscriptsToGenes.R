@@ -1,5 +1,7 @@
 context("convertTranscriptsToGenes")
 
+skip_if_not(hasInternet())
+
 tx2gene <-
     makeTx2GeneFromEnsembl(organism = "Homo sapiens", release = 87L)
 

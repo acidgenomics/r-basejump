@@ -23,7 +23,8 @@ Prevent unwanted downstream behavior when a missing interesting group
 is requested by the user.
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 
 ## Checks that columns are defined in `sampleData()`.
 matchesInterestingGroups(rse, "condition")

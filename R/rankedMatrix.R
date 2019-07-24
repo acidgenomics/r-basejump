@@ -15,7 +15,8 @@
 #' - Not to be confused with [Matrix::rankMatrix()].
 #'
 #' @examples
-#' data(lfc, package = "acidtest")
+#' data(matrix_lfc, package = "acidtest")
+#' lfc <- matrix_lfc
 #'
 #' ## Increasing (negative to positive)
 #' rankedMatrix(lfc, method = "increasing")
@@ -25,6 +26,8 @@
 #'
 #' ## Bidirectional
 #' rankedMatrix(lfc, method = "bidirectional")
+
+## Updated 2019-07-22.
 rankedMatrix <- function(
     object,
     MARGIN = 2L,  # nolint
@@ -60,8 +63,8 @@ rankedMatrix <- function(
 
 
 
-# Consider using `data.table::frank()` instead of `base::rank()` for speed.
-# This adds an additional dependency, so avoid at the moment.
+## Consider using `data.table::frank()` instead of `base::rank()` for speed.
+## This adds an additional dependency, so avoid at the moment.
 .rank.numeric <-  # nolint
     function(x, decreasing = FALSE) {
         assert(
@@ -97,7 +100,7 @@ rankedMatrix <- function(
 
 
 
-# Note that use of `which()` here will omit `NA` intentionally.
+## Note that use of `which()` here will omit `NA` intentionally.
 .bidirRank.numeric <-  # nolint
     function(x, removeZeros = FALSE) {
         assert(
@@ -106,7 +109,7 @@ rankedMatrix <- function(
         )
         ties <- "average"
 
-        # Set any zero values to NA.
+        ## Set any zero values to NA.
         if (isTRUE(removeZeros)) {
             x[x == 0L] <- NA
         }

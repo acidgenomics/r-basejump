@@ -33,6 +33,8 @@
 #'
 #' matchesGene2Symbol(x = x, genes = geneIDs, gene2symbol = g2s)
 #' matchesGene2Symbol(x = x, genes = geneNames, gene2symbol = g2s)
+
+## Updated 2019-07-22.
 matchesGene2Symbol <- function(
     x,
     genes,
@@ -62,12 +64,12 @@ matchesGene2Symbol <- function(
         return(false("Row mismatch between x and gene2symbol."))
     }
 
-    # Consider tightening up this step.
+    ## Consider tightening up this step.
     if (is.null(rownames(gene2symbol))) {
         rownames(gene2symbol) <- rownames(x)
     }
 
-    # Map genes to x rownames, using gene2symbol.
+    ## Map genes to x rownames, using gene2symbol.
     ok <- isSubset(
         x = mapGenesToRownames(object = gene2symbol, genes = genes),
         y = rownames(x)

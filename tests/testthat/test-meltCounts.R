@@ -7,10 +7,10 @@ test_that("SummarizedExperiment", {
 
 test_that("minCounts", {
     x <- meltCounts(rse, minCounts = 1L)
-    # Note that this step shouldn't drop all zeros, only all-zero genes.
+    ## Note that this step shouldn't drop all zeros, only all-zero genes.
     expect_true(any(x[["counts"]] == 0L))
 
-    # Check for removal of our all-zero gene.
+    ## Check for removal of our all-zero gene.
     expect_identical(
         object = setdiff(x = rownames(rse), y = unique(x[["rowname"]])),
         expected = "gene433"
@@ -25,7 +25,7 @@ test_that("Require at least 1 count per feature", {
     )
 })
 
-trans <- eval(formals(meltCounts.SummarizedExperiment)[["trans"]])
+trans <- eval(formals(`meltCounts,SummarizedExperiment`)[["trans"]])
 with_parameters_test_that(
     "trans", {
         x <- meltCounts(rse, trans = trans)

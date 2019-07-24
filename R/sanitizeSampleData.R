@@ -18,15 +18,20 @@
 #' `character` columns coerced to `factor` (i.e. `stringsAsFactors`).
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' from <- sampleData(rse)
 #' print(from)
 #' to <- sanitizeSampleData(from)
 #' all(vapply(to, is.factor, logical(1L)))
 #' print(to)
+
+## Updated 2019-07-22.
 sanitizeSampleData <- function(object) {
-    # Still allowing standard `data.frame`, to support bcbioRNASeq v0.2.9.
-    # Require stricter `DataFrame` input in a future update.
+    ## Still allowing standard `data.frame`, to support bcbioRNASeq v0.2.9.
+    ## Require stricter `DataFrame` input in a future update.
     if (is.data.frame(object)) {
         legacy <- TRUE
         class <- class(object)[[1L]]
@@ -37,30 +42,30 @@ sanitizeSampleData <- function(object) {
 
     assert(
         is(object, "DataFrame"),
-        # Require `sampleName` column.
+        ## Require `sampleName` column.
         "sampleName" %in% colnames(object),
-        # Check for any duplicate rows.
+        ## Check for any duplicate rows.
         hasNoDuplicates(object[["sampleName"]]),
         hasRownames(object)
     )
 
-    # Drop blacklisted columns.
+    ## Drop blacklisted columns.
     blacklist <- c("interestingGroups", "sampleID")
     object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
-    # This will flatten the S4 columns if possible and drop non-atomic.
+    ## This will flatten the S4 columns if possible and drop non-atomic.
     object <- atomize(object)
-    # Ensure all columns are factors, with up-to-date levels.
+    ## Ensure all columns are factors, with up-to-date levels.
     object <- factorize(object)
     assert(
         is(object, "DataFrame"),
         hasRownames(object)
     )
 
-    # Remove this step in a future update.
+    ## Remove this step in a future update.
     if (isTRUE(legacy)) {
         object <- as(object, class)
     }
 
-    # Return.
+    ## Return.
     object
 }

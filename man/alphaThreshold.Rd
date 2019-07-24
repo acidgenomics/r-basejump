@@ -31,9 +31,10 @@ Alpha cutoff level.
 Alpha threshold
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 
-## Annotated
+## Annotated ====
 alphaThreshold(rse) <- 0.05
 alphaThreshold(rse)
 }

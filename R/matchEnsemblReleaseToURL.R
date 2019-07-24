@@ -11,7 +11,7 @@
 #' @examples
 #' matchEnsemblReleaseToURL(96L)
 
-# Updated 2019-07-17.
+## Updated 2019-07-17.
 matchEnsemblReleaseToURL <- function(release) {
     requireNamespace("biomaRt", quietly = TRUE)
     if (is.null(release)) {

@@ -116,7 +116,13 @@ but it's required for working with multiple samples in a single object.
 }
 
 \examples{
-data(rse, sce, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
 x <- rse

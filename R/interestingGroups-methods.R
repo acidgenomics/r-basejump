@@ -5,15 +5,15 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
-#' object <- rse
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
-#' intgroup <- interestingGroups(object)
+#' ## SummarizedExperiment ====
+#' intgroup <- interestingGroups(rse)
 #' print(intgroup)
-#'
 #' ## Assignment support.
-#' interestingGroups(object) <- intgroup[[1L]]
-#' interestingGroups(object)
+#' interestingGroups(rse) <- intgroup[[1L]]
+#' interestingGroups(rse)
 NULL
 
 
@@ -34,7 +34,8 @@ NULL
 
 
 
-interestingGroups.Annotated <-  # nolint
+## Updated 2019-07-22.
+`interestingGroups,Annotated` <-  # nolint
     function(object) {
         metadata(object)[["interestingGroups"]]
     }
@@ -46,12 +47,13 @@ interestingGroups.Annotated <-  # nolint
 setMethod(
     f = "interestingGroups",
     signature = signature("Annotated"),
-    definition = interestingGroups.Annotated
+    definition = `interestingGroups,Annotated`
 )
 
 
 
-`interestingGroups<-.Annotated,character` <-  # nolint
+## Updated 2019-07-22.
+`interestingGroups<-,Annotated,character` <-  # nolint
     function(object, value) {
         assert(areDisjointSets(value, "interestingGroups"))
         metadata(object)[["interestingGroups"]] <- value
@@ -68,17 +70,18 @@ setMethod(
         object = "Annotated",
         value = "character"
     ),
-    definition = `interestingGroups<-.Annotated,character`
+    definition = `interestingGroups<-,Annotated,character`
 )
 
 
 
-`interestingGroups<-.SummarizedExperiment,character` <-  # nolint
+## Updated 2019-07-22.
+`interestingGroups<-,SummarizedExperiment,character` <-  # nolint
     function(object, value) {
-        # Check for attempt to use `interestingGroups` automatic column.
+        ## Check for attempt to use `interestingGroups` automatic column.
         assert(areDisjointSets(value, "interestingGroups"))
-        # Note that we're always allowing `sampleName` to be slotted, even if
-        # that column isn't defined in `colData()`.
+        ## Note that we're always allowing `sampleName` to be slotted, even if
+        ## that column isn't defined in `colData()`.
         if (
             !isSubset(value, colnames(sampleData(object))) &&
             !identical(value, "sampleName")
@@ -99,12 +102,13 @@ setMethod(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    definition = `interestingGroups<-.SummarizedExperiment,character`
+    definition = `interestingGroups<-,SummarizedExperiment,character`
 )
 
 
 
-`interestingGroups<-.Annotated,NULL` <-  # nolint
+## Updated 2019-07-22.
+`interestingGroups<-,Annotated,NULL` <-  # nolint
     function(object, value) {
         metadata(object)[["interestingGroups"]] <- NULL
         object
@@ -120,5 +124,5 @@ setMethod(
         object = "Annotated",
         value = "NULL"
     ),
-    definition = `interestingGroups<-.Annotated,NULL`
+    definition = `interestingGroups<-,Annotated,NULL`
 )

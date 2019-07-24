@@ -10,6 +10,8 @@
 #' @examples
 #' x <- minimalSampleData(sample = c("sample 1", "sample 2"))
 #' print(x)
+
+## Updated 2019-07-22.
 minimalSampleData <- function(sample) {
     assert(
         isCharacter(sample),

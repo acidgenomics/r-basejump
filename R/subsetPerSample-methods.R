@@ -19,7 +19,8 @@
 #' - `assignAndSave = TRUE`: Subset file paths.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
+#' data(SingleCellExperiment, package = "acidtest")
+#' sce <- SingleCellExperiment
 #'
 #' ## SingleCellExperiment ====
 #' object <- sce
@@ -52,7 +53,8 @@ NULL
 
 
 
-subsetPerSample.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`subsetPerSample,SingleCellExperiment` <-  # nolint
     function(
         object,
         minCells = 1L,
@@ -68,13 +70,13 @@ subsetPerSample.SingleCellExperiment <-  # nolint
         )
         dir <- initDir(dir)
 
-        # Return objects or file paths.
+        ## Return objects or file paths.
         samples <- levels(cell2sample(object))
         return <- lapply(
             X = samples,
             FUN = function(sampleID) {
                 subset <- selectSamples(object, sampleID = sampleID)
-                # Skip if subset doesn't have enough cells.
+                ## Skip if subset doesn't have enough cells.
                 if (ncol(subset) < minCells) {
                     warning(paste(sampleID, "didn't pass minimum cell cutoff."))
                     return(NULL)
@@ -95,14 +97,14 @@ subsetPerSample.SingleCellExperiment <-  # nolint
         return <- Filter(Negate(is.null), return)
 
         if (isTRUE(assignAndSave)) {
-            # File paths.
+            ## File paths.
             names <- names(return)
             return <- unlist(return)
             return <- realpath(return)
             names(return) <- names
             invisible(return)
         } else {
-            # Individual objects.
+            ## Individual objects.
             return
         }
     }
@@ -114,5 +116,5 @@ subsetPerSample.SingleCellExperiment <-  # nolint
 setMethod(
     f = "subsetPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = subsetPerSample.SingleCellExperiment
+    definition = `subsetPerSample,SingleCellExperiment`
 )

@@ -31,32 +31,34 @@
 #'
 #' ## 2 96-well plates with 6 control wells per plate.
 #' microplate(plates = 2L, wells = 96L, controls = 6L)
+
+## Updated 2019-07-22.
 microplate <- function(
     plates = 1L,
     wells = 96L,
     controls = 0L,
     prefix = NULL
 ) {
-    # Plates
+    ## Plates
     assert(
         isInt(plates),
         isPositive(plates)
     )
     plates <- as.integer(plates)
-    # Wells
+    ## Wells
     assert(
         isInt(wells),
         isPositive(wells)
     )
     wells <- as.integer(wells)
     assert(isSubset(x = wells, y = c(96L, 384L)))
-    # Controls
+    ## Controls
     assert(
         isInt(controls),
         isInRange(x = controls, lower = 0L, upper = 12L)
     )
     controls <- as.integer(controls)
-    # Prefix
+    ## Prefix
     assert(isString(prefix, nullOK = TRUE))
 
     if (wells == 96L) {
@@ -76,9 +78,9 @@ microplate <- function(
     df <- expand.grid(plates, row, col)
     vector <- sort(paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]))
 
-    # Prepare control wells.
+    ## Prepare control wells.
     if (controls > 0L) {
-        # Create a grep string matching the control wells.
+        ## Create a grep string matching the control wells.
         grep <- str_pad(
             1L:controls,
             width = max(str_length(col)),
@@ -86,11 +88,11 @@ microplate <- function(
         ) %>%
             paste(collapse = "|") %>%
             paste0("A(", ., ")$")
-        # Remove the control wells using `grepl`.
+        ## Remove the control wells using `grepl`.
         vector <- vector[!grepl(grep, vector)]
     }
 
-    # Add a prefix, if desired.
+    ## Add a prefix, if desired.
     if (isString(prefix)) {
         vector <- paste0(prefix, "-", vector)
     }
