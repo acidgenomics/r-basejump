@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>S4 generics exported from other packages — reexports-S4 • basejump</title>
+<title>S4 generics exported from other packages — plotDEGHeatmap • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="S4 generics exported from other packages — reexports-S4" />
+<meta property="og:title" content="S4 generics exported from other packages — plotDEGHeatmap" />
 
 <meta property="og:description" content="These generics are imported from other packages." />
 <meta name="twitter:card" content="summary" />
@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.0</span>
       </span>
     </div>
 
@@ -112,7 +112,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>S4 generics exported from other packages</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-S4.R'><code>R/reexports-S4.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-bioverbs.R'><code>R/reexports-bioverbs.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-brio.R'><code>R/reexports-brio.R</code></a>, and 3 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-bioverbs.R'><code>R/reexports-bioverbs.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-brio.R'><code>R/reexports-brio.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/reexports-syntactic.R'><code>R/reexports-syntactic.R</code></a>, and 3 more</small>
     <div class="hidden name"><code>reexports-S4.Rd</code></div>
     </div>
 
@@ -126,15 +126,7 @@
 
 <span class='fu'>plotDEGPCA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>atomize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>decode</span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='fu'>encode</span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
 <span class='fu'>export</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>factorize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='fu'>removeNA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
@@ -142,25 +134,39 @@
 
 <span class='fu'>sanitizePercent</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>camelCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='fu'>capitalize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>kebab</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>kebabCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>mcolnames</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
-<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>upperCamelCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+
+<span class='fu'>atomize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>decode</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>encode</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>factorize</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='fu'>flatFiles</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>row.names, optional</th>
+      <td><p>Refer to base <code><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame()</a></code> for details.</p></td>
+    </tr>
     <tr>
       <th>object, x</th>
       <td><p>Object.</p></td>
@@ -169,34 +175,88 @@
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
-    <tr>
-      <th>row.names, optional</th>
-      <td><p>Refer to base <code><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame()</a></code> for details.</p></td>
-    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="bioverbs"><a class="anchor" href="#bioverbs"></a>bioverbs</h2>
+
+    
+
+<ul>
+<li><p><code>plotDEGHeatmap</code></p></li>
+<li><p><code>plotDEGPCA</code></p></li>
+</ul>
+
+    
+    <h2 class="hasAnchor" id="brio"><a class="anchor" href="#brio"></a>brio</h2>
+
+    
+
+<ul>
+<li><p><code>export</code></p></li>
+<li><p><code>removeNA</code></p></li>
+<li><p><code>sanitizeNA</code></p></li>
+<li><p><code>sanitizePercent</code></p></li>
+</ul>
+
+    
+    <h2 class="hasAnchor" id="syntactic"><a class="anchor" href="#syntactic"></a>syntactic</h2>
+
+    
+
+<ul>
+<li><p><code>camelCase</code></p></li>
+<li><p><code>capitalize</code></p></li>
+<li><p><code>dottedCase</code></p></li>
+<li><p><code>kebabCase</code></p></li>
+<li><p><code>mcolnames</code>, <code>mcolnames&lt;-</code></p></li>
+<li><p><code>snakeCase</code></p></li>
+<li><p><code>upperCamelCase</code></p></li>
+</ul>
+
+    
+    <h2 class="hasAnchor" id="transformer"><a class="anchor" href="#transformer"></a>transformer</h2>
+
+    
+
+<ul>
+<li><p><code>as.data.frame</code></p></li>
+<li><p><code>atomize</code></p></li>
+<li><p><code>decode</code></p></li>
+<li><p><code>encode</code></p></li>
+<li><p><code>factorize</code></p></li>
+<li><p><code>flatFiles</code></p></li>
+</ul>
+
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>showMethods</span>(<span class='st'>"camel"</span>)</div><div class='output co'>#&gt; Function: camel (package bioverbs)
-#&gt; object="ANY"
+    <pre class="examples"><div class='input'><span class='fu'>showMethods</span>(<span class='st'>"camelCase"</span>)</div><div class='output co'>#&gt; Function: camelCase (package bioverbs)
+#&gt; object="atomic"
 #&gt; object="character"
 #&gt; object="data.frame"
-#&gt; object="DataFrame"
+#&gt; object="DataTable"
 #&gt; object="factor"
-#&gt; object="GRanges"
-#&gt; object="GRangesList"
+#&gt; object="list"
 #&gt; object="matrix"
 #&gt; object="Matrix"
-#&gt; object="spec_tbl_df"
-#&gt;     (inherited from: object="data.frame")
+#&gt; object="Ranges"
 #&gt; object="SummarizedExperiment"
+#&gt; object="Vector"
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#bioverbs">bioverbs</a></li>
+
+      <li><a href="#brio">brio</a></li>
+
+      <li><a href="#syntactic">syntactic</a></li>
+
+      <li><a href="#transformer">transformer</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

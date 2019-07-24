@@ -2,9 +2,10 @@
 #' @inherit bioverbs::alphaThreshold
 #' @param ... Additional arguments.
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
-#' ## Annotated
+#' ## Annotated ====
 #' alphaThreshold(rse) <- 0.05
 #' alphaThreshold(rse)
 NULL
@@ -27,7 +28,8 @@ NULL
 
 
 
-alphaThreshold.Annotated <-  # nolint
+## Updated 2019-07-22.
+`alphaThreshold,Annotated` <-  # nolint
     function(object) {
         validObject(object)
         metadata(object)[["alpha"]]
@@ -40,12 +42,13 @@ alphaThreshold.Annotated <-  # nolint
 setMethod(
     f = "alphaThreshold",
     signature = signature("Annotated"),
-    definition = alphaThreshold.Annotated
+    definition = `alphaThreshold,Annotated`
 )
 
 
 
-`alphaThreshold<-.Annotated,numeric` <-  # nolint
+## Updated 2019-07-22.
+`alphaThreshold<-,Annotated,numeric` <-  # nolint
     function(object, value) {
         assert(isAlpha(value))
         metadata(object)[["alpha"]] <- value
@@ -63,5 +66,5 @@ setMethod(
         object = "Annotated",
         value = "numeric"
     ),
-    definition = `alphaThreshold<-.Annotated,numeric`
+    definition = `alphaThreshold<-,Annotated,numeric`
 )

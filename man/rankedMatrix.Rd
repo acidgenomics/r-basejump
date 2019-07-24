@@ -27,7 +27,8 @@ Ties are resolved automatically by calculating the average. See the
 \code{ties.method} parameter in \code{\link[base:rank]{rank()}} for details.
 }
 \examples{
-data(lfc, package = "acidtest")
+data(matrix_lfc, package = "acidtest")
+lfc <- matrix_lfc
 
 ## Increasing (negative to positive)
 rankedMatrix(lfc, method = "increasing")

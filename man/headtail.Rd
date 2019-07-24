@@ -68,7 +68,8 @@ objects.
 }}
 
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 
 ## data.frame ====
 headtail(datasets::mtcars, ascii = TRUE)

@@ -59,14 +59,15 @@ test_that("matrix", {
     expect_identical(object, expected)
 })
 
-test_that("matrix : acidtest::mat", {
+test_that("matrix : acidtest example", {
     groupings <- as.factor(paste0("gene", rep(seq_len(2L), each = 2L)))
     names(groupings) <- rownames(mat)
-
+    object <- aggregateRows(mat, groupings = groupings)
+    expect_is(object, "matrix")
     expected <- matrix(
         data = c(
-            3L, 11L, 19L, 27L,
-            7L, 15L, 23L, 31L
+             6L,  8L, 10L, 12L,
+            22L, 24L, 26L, 28L
         ),
         nrow = 2L,
         ncol = 4L,
@@ -76,9 +77,6 @@ test_that("matrix : acidtest::mat", {
             colnames(mat)
         )
     )
-
-    object <- aggregateRows(mat, groupings = groupings)
-    expect_is(object, "matrix")
     expect_identical(object, expected)
 })
 
@@ -129,14 +127,15 @@ test_that("matrix", {
     expect_identical(object, expected)
 })
 
-test_that("matrix : acidtest::mat", {
+test_that("matrix : acidtest example", {
     groupings <- as.factor(paste0("sample", rep(seq_len(2L), each = 2L)))
     names(groupings) <- colnames(mat)
-
+    object <- aggregateCols(mat, groupings = groupings)
+    expect_is(object, "matrix")
     expected <- matrix(
         data = c(
-             6L,  8L, 10L, 12L,
-            22L, 24L, 26L, 28L
+            3L, 11L, 19L, 27L,
+            7L, 15L, 23L, 31L
         ),
         nrow = 4L,
         ncol = 2L,
@@ -146,16 +145,13 @@ test_that("matrix : acidtest::mat", {
             levels(groupings)
         )
     )
-
-    object <- aggregateCols(mat, groupings = groupings)
-    expect_is(object, "matrix")
     expect_identical(object, expected)
 })
 
 test_that("sparseMatrix", {
     object <- aggregateCols(sparse, groupings = samples)
     expect_is(object, "sparseMatrix")
-    # Is there a way to improve this check?
+    ## Is there a way to improve this check?
     expect_equal(
         object = as.matrix(object),
         expected = expected

@@ -342,6 +342,10 @@
 <li>Bug fix for <code>combine</code> method on SummarizedExperiment. Needed to ensure row names are assigned on rowData to provide backward compatibility for Bioc 3.7.</li>
 <li>Improved unit test exceptions on Docker and AppVeyor.</li>
 <li>Improved installation instructions.</li>
+<li>
+<code>mapGenesToRownames</code>: Improved matching for <code>SummarizedExperiment</code> objects that don’t contain gene-to-symbol mappings defined in <code>rowData</code>.</li>
+<li>
+<code>meltCounts</code>: Improved factor handling. Also added <code>matrix</code> method support. Added advanced option to disable <code>minCounts</code> filtering, by setting as <code>NULL</code>.</li>
 </ul>
 </div>
 <div id="deprecations" class="section level3">

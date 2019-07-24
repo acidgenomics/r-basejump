@@ -17,11 +17,11 @@ test_that("SingleCellExperiment", {
     x <- zerosVsDepth(sce)
     expect_s4_class(x, "DataFrame")
     expect_identical(
-        round(mean(x[["dropout"]]), digits = 2L),
-        0.76
+        object = round(mean(x[["dropout"]]), digits = 2L),
+        expected = 0.48
     )
     expect_identical(
-        round(mean(x[["depth"]]), digits = 2L),
-        245.41
+        object = round(mean(x[["depth"]]), digits = 2L),
+        expected = 54147.87
     )
 })

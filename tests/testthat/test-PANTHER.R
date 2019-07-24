@@ -1,5 +1,7 @@
 context("PANTHER")
 
+skip_if_not(hasInternet())
+
 with_parameters_test_that(
     "organism", {
         invisible(capture.output(

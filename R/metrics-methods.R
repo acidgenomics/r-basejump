@@ -24,7 +24,13 @@
 #'     [`colData()`][SummarizedExperiment::colData].
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' x <- metrics(rse)
@@ -56,7 +62,8 @@ NULL
 
 
 
-metrics.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`metrics,SummarizedExperiment` <-  # nolint
     function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
@@ -77,12 +84,13 @@ metrics.SummarizedExperiment <-  # nolint
 setMethod(
     f = "metrics",
     signature = signature("SummarizedExperiment"),
-    definition = metrics.SummarizedExperiment
+    definition = `metrics,SummarizedExperiment`
 )
 
 
 
-metrics.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`metrics,SingleCellExperiment` <-  # nolint
     function(object, return = c("tibble", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
@@ -117,21 +125,21 @@ metrics.SingleCellExperiment <-  # nolint
 setMethod(
     f = "metrics",
     signature = signature("SingleCellExperiment"),
-    definition = metrics.SingleCellExperiment
+    definition = `metrics,SingleCellExperiment`
 )
 
 
 
-# Updated 2019-07-16.
-metricsPerSample.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`metricsPerSample,SingleCellExperiment` <-  # nolint
     function(
         object,
         fun = c("mean", "median", "sum")
     ) {
         fun <- match.arg(fun)
         message(paste("Calculating", fun, "per sample."))
-        # Consider using `getFromNamespace` here instead.
-        # Note that we're using uppercase here, because `fun` is matched arg.
+        ## Consider using `getFromNamespace` here instead.
+        ## Note that we're using uppercase here, because `fun` is matched arg.
         FUN <- get(fun, inherits = TRUE)  # nolint
         assert(is.function(FUN))
         metrics <- metrics(object)
@@ -144,13 +152,13 @@ metricsPerSample.SingleCellExperiment <-  # nolint
                     "prefixed with `n` (e.g. `nUMI`)."
                 ))
             }
-            # Sum only the `n*` columns containing counts.
-            # Supress: Adding missing grouping variables: `sampleID`.
+            ## Sum only the `n*` columns containing counts.
+            ## Supress: Adding missing grouping variables: `sampleID`.
             suppressMessages(
                 data <- select(metrics, matches(pattern))
             )
         } else {
-            # Summarize all numeric columns.
+            ## Summarize all numeric columns.
             data <- select_if(metrics, is.numeric)
         }
         assert(hasLength(data))
@@ -170,5 +178,5 @@ metricsPerSample.SingleCellExperiment <-  # nolint
 setMethod(
     f = "metricsPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = metricsPerSample.SingleCellExperiment
+    definition = `metricsPerSample,SingleCellExperiment`
 )

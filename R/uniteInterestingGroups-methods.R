@@ -5,14 +5,16 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## DataFrame ====
 #' object <- rse
-#' from <- sampleData(object)
-#' to <- uniteInterestingGroups(
-#'     object = from,
+#' x <- uniteInterestingGroups(
+#'     object = sampleData(object),
 #'     interestingGroups = interestingGroups(object)
 #' )
-#' print(to)
+#' print(x)
 NULL
 
 
@@ -26,7 +28,8 @@ NULL
 
 
 
-uniteInterestingGroups.DataFrame <-  # nolint
+## Updated 2019-07-22.
+`uniteInterestingGroups,DataFrame` <-  # nolint
     function(object, interestingGroups) {
         assert(
             isCharacter(interestingGroups),
@@ -34,13 +37,13 @@ uniteInterestingGroups.DataFrame <-  # nolint
         )
 
         if (length(interestingGroups) == 1L) {
-            # This will retain the factor levels, if they're not alphabetical.
+            ## This will retain the factor levels, if they're not alphabetical.
             value <- object[[interestingGroups]]
         } else {
-            # Subset to get only the columns of interest.
+            ## Subset to get only the columns of interest.
             data <- object[, interestingGroups, drop = FALSE]
-            # This approach will return numerics for `DataFrame` class, so
-            # coercing columns to data.frame.
+            ## This approach will return numerics for `DataFrame` class, so
+            ## coercing columns to data.frame.
             value <- apply(
                 X = as.data.frame(data),
                 MARGIN = 1L,
@@ -51,13 +54,13 @@ uniteInterestingGroups.DataFrame <-  # nolint
             assert(identical(rownames(object), names(value)))
         }
 
-        # Here we're using `uname()` to unname the factor, since `DataFrame`
-        # stores this metadata internally differently than standard data.frame.
-        # Otherwise, unit tests can return this error:
-        #   Attributes:
-        #   Component "listData":
-        #   Component "interestingGroups":
-        #   names for target but not for current
+        ## Here we're using `uname()` to unname the factor, since `DataFrame`
+        ## stores this metadata internally differently than standard data.frame.
+        ## Otherwise, unit tests can return this error:
+        ##   Attributes:
+        ##   Component "listData":
+        ##   Component "interestingGroups":
+        ##   names for target but not for current
         value <- unname(value)
         object[["interestingGroups"]] <- value
 
@@ -71,15 +74,15 @@ uniteInterestingGroups.DataFrame <-  # nolint
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("DataFrame"),
-    definition = uniteInterestingGroups.DataFrame
+    definition = `uniteInterestingGroups,DataFrame`
 )
 
 
 
-# Deprecated legacy method support for bcbio R packages.
-# Safe to deprecate/remove once bcbio v0.3 release series is on hbc.
-uniteInterestingGroups.data.frame <-  # nolint
-    uniteInterestingGroups.DataFrame
+## Deprecated legacy method support for bcbio R packages.
+## Safe to deprecate/remove once bcbio v0.3 release series is on hbc.
+`uniteInterestingGroups,data.frame` <-  # nolint
+    `uniteInterestingGroups,DataFrame`
 
 
 
@@ -89,5 +92,5 @@ uniteInterestingGroups.data.frame <-  # nolint
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("data.frame"),
-    definition = uniteInterestingGroups.data.frame
+    definition = `uniteInterestingGroups,data.frame`
 )

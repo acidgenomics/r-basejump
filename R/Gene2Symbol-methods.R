@@ -19,19 +19,23 @@
 #'   "unmodified" prior to v0.10.10.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' x <- Gene2Symbol(rse)
 #' print(x)
 NULL
 
 
 
-Gene2Symbol.DataFrame <-  # nolint
+## Updated 2019-07-22.
+`Gene2Symbol,DataFrame` <-  # nolint
     function(object, format = c("makeUnique", "unmodified", "1:1")) {
         assert(hasRows(object))
         format <- match.arg(format)
 
-        # Check for required columns.
+        ## Check for required columns.
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
             stop(paste0(
@@ -46,9 +50,9 @@ Gene2Symbol.DataFrame <-  # nolint
             row.names = rownames(object)
         )
 
-        # Inform the user about how many symbols multi-map.
-        # Note that `duplicated` doesn't work on Rle, so we have to coerce
-        # columns to character first (see `as_tibble` call above).
+        ## Inform the user about how many symbols multi-map.
+        ## Note that `duplicated` doesn't work on Rle, so we have to coerce
+        ## columns to character first (see `as_tibble` call above).
         duplicated <- duplicated(data[["geneName"]])
         if (any(duplicated)) {
             dupes <- unique(data[["geneName"]][duplicated])
@@ -58,9 +62,9 @@ Gene2Symbol.DataFrame <-  # nolint
         }
 
         if (format == "makeUnique") {
-            # Returning 1:1 mappings with renamed gene symbols.
-            # This is the default, and including a message is too noisy, since
-            # it is used heavily in other functions.
+            ## Returning 1:1 mappings with renamed gene symbols.
+            ## This is the default, and including a message is too noisy, since
+            ## it is used heavily in other functions.
             data[["geneName"]] <- make.unique(data[["geneName"]])
         } else if (format == "unmodified") {
             message(paste(
@@ -90,12 +94,13 @@ Gene2Symbol.DataFrame <-  # nolint
 setMethod(
     f = "Gene2Symbol",
     signature = signature("DataFrame"),
-    definition = Gene2Symbol.DataFrame
+    definition = `Gene2Symbol,DataFrame`
 )
 
 
 
-Gene2Symbol.GRanges <-  # nolint
+## Updated 2019-07-22.
+`Gene2Symbol,GRanges` <-  # nolint
     function(object, format) {
         data <- as(object, "DataFrame")
         data <- unique(data)
@@ -103,7 +108,7 @@ Gene2Symbol.GRanges <-  # nolint
         do.call(what = Gene2Symbol, args = list(object = data, format = format))
     }
 
-formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
+formals(`Gene2Symbol,GRanges`) <- formals(`Gene2Symbol,DataFrame`)
 
 
 
@@ -112,12 +117,13 @@ formals(Gene2Symbol.GRanges) <- formals(Gene2Symbol.DataFrame)
 setMethod(
     f = "Gene2Symbol",
     signature = signature("GRanges"),
-    definition = Gene2Symbol.GRanges
+    definition = `Gene2Symbol,GRanges`
 )
 
 
 
-Gene2Symbol.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`Gene2Symbol,SummarizedExperiment` <-  # nolint
     function(object, format) {
         object <- as.SummarizedExperiment(object)
         data <- rowData(object)
@@ -125,7 +131,7 @@ Gene2Symbol.SummarizedExperiment <-  # nolint
         do.call(what = Gene2Symbol, args = list(object = data, format = format))
     }
 
-formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
+formals(`Gene2Symbol,SummarizedExperiment`) <- formals(`Gene2Symbol,DataFrame`)
 
 
 
@@ -134,5 +140,5 @@ formals(Gene2Symbol.SummarizedExperiment) <- formals(Gene2Symbol.DataFrame)
 setMethod(
     f = "Gene2Symbol",
     signature = signature("SummarizedExperiment"),
-    definition = Gene2Symbol.SummarizedExperiment
+    definition = `Gene2Symbol,SummarizedExperiment`
 )

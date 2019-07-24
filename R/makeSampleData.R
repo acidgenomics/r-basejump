@@ -32,16 +32,18 @@
 #'     row.names = paste0("GSM000000", seq_len(4L))
 #' )
 #' makeSampleData(object)
+
+## Updated 2019-07-22.
 makeSampleData <- function(object) {
     assert(
-        # Check for strings beginning with numbers, containing spaces, hyphens,
-        # or other characters that aren't valid for names in R.
+        ## Check for strings beginning with numbers, containing spaces, hyphens,
+        ## or other characters that aren't valid for names in R.
         hasValidDimnames(object),
-        # Require sampleName column.
+        ## Require sampleName column.
         isSuperset(colnames(object), "sampleName"),
-        # Don't allow "*Id" columns (note case).
+        ## Don't allow "*Id" columns (note case).
         all(isNotMatchingRegex(x = colnames(object), pattern = "Id$")),
-        # Check for blacklisted columns.
+        ## Check for blacklisted columns.
         areDisjointSets(
             x = c(
                 "filename",

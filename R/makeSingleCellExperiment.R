@@ -7,15 +7,24 @@
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
-#' object <- sce
+#' library(SingleCellExperiment)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' object <- SingleCellExperiment
+#' assays <- assays(object)
+#' rowRanges <- rowRanges(object)
+#' colData <- colData(object)
+#' metadata <- metadata(object)
+#'
 #' x <- makeSingleCellExperiment(
-#'     assays = SummarizedExperiment::assays(object),
-#'     rowRanges = SummarizedExperiment::rowRanges(object),
-#'     colData = SummarizedExperiment::colData(object),
-#'     metadata = S4Vectors::metadata(object)
+#'     assays = assays,
+#'     rowRanges = rowRanges,
+#'     colData = colData,
+#'     metadata = metadata
 #' )
 #' print(x)
+
+## Updated 2019-07-22.
 makeSingleCellExperiment <- function(
     assays,
     rowRanges,
@@ -24,8 +33,8 @@ makeSingleCellExperiment <- function(
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
-    # Make RangedSummarizedExperiment first.
-    # Supports automatic resizing of rowRanges and helps slot FASTA spike-ins.
+    ## Make RangedSummarizedExperiment first.
+    ## Supports automatic resizing of rowRanges and helps slot FASTA spike-ins.
     rse <- makeSummarizedExperiment(
         assays = assays,
         rowRanges = rowRanges,
@@ -35,8 +44,8 @@ makeSingleCellExperiment <- function(
         spikeNames = spikeNames
     )
 
-    # Then coerce to SingleCellExperiment.
-    # Note that `as` method isn't currently returning valid.
+    ## Then coerce to SingleCellExperiment.
+    ## Note that `as` method isn't currently returning valid.
     sce <- SingleCellExperiment(
         assays = assays(rse),
         rowRanges = rowRanges(rse),
@@ -44,7 +53,7 @@ makeSingleCellExperiment <- function(
         metadata = metadata(rse)
     )
 
-    # Optionally, use `isSpike` internally to define the `spikeNames`.
+    ## Optionally, use `isSpike` internally to define the `spikeNames`.
     if (is.character(spikeNames)) {
         for (i in seq_along(spikeNames)) {
             isSpike(sce, spikeNames[[i]]) <- spikeNames[[i]]

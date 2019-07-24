@@ -1,5 +1,7 @@
 context("EggNOG")
 
+skip_if_not(hasInternet())
+
 object <- EggNOG()
 
 test_that("EggNOG", {

@@ -27,6 +27,8 @@
 #' markdownHeader("Header", level = 2L)
 #' markdownHeader("Header", tabset = TRUE)
 #' markdownHeader("Header", asis = TRUE)
+
+## Updated 2019-07-22.
 markdownHeader <- function(
     text,
     level = 2L,
@@ -40,22 +42,22 @@ markdownHeader <- function(
         isFlag(asis)
     )
 
-    # Add the header level
+    ## Add the header level
     header <- paste(str_dup("#", level), text)
 
-    # Append tabset label
+    ## Append tabset label
     if (isTRUE(tabset)) {
         header <- paste(header, "{.tabset}")
     }
 
-    # Return
+    ## Return
     if (isTRUE(asis)) {
         writeLines(c("", "", header, ""))
     } else {
         header %>%
-            # Ensure trailing line break
+            ## Ensure trailing line break
             paste0("\n") %>%
-            # Specify that output should be handled as Markdown text
+            ## Specify that output should be handled as Markdown text
             structure(format = "markdown") %>%
             asis_output()
     }

@@ -1,8 +1,8 @@
 context("Ensembl2Entrez")
 
-format <- eval(formals(Ensembl2Entrez.SummarizedExperiment)[["format"]])
+format <- eval(formals(`Ensembl2Entrez,SummarizedExperiment`)[["format"]])
 
-# Note that this method currently calls `rowData()` and uses DataFrame method.
+## Note that this method currently calls `rowData()` and uses DataFrame method.
 with_parameters_test_that(
     "SummarizedExperiment / DataFrame", {
         object <- Ensembl2Entrez(object = rse, format = format)

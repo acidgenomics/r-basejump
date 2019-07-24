@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Metadata column names — mcolnames • basejump</title>
+<title>Match Ensembl release to archive URL. — matchEnsemblReleaseToURL • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Metadata column names — mcolnames" />
+<meta property="og:title" content="Match Ensembl release to archive URL. — matchEnsemblReleaseToURL" />
 
-<meta property="og:description" content="Metadata column names" />
+<meta property="og:description" content="Match Ensembl release to archive URL." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.0</span>
       </span>
     </div>
 
@@ -111,59 +111,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Metadata column names</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/mcolnames-methods.R'><code>R/mcolnames-methods.R</code></a></small>
-    <div class="hidden name"><code>mcolnames.Rd</code></div>
+    <h1>Match Ensembl release to archive URL.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/matchEnsemblReleaseToURL.R'><code>R/matchEnsemblReleaseToURL.R</code></a></small>
+    <div class="hidden name"><code>matchEnsemblReleaseToURL.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Metadata column names</p>
+    <p>Match Ensembl release to archive URL.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mcolnames</span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='fu'>mcolnames</span>(<span class='no'>x</span>, <span class='no'>...</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='co'># S4 method for Vector</span>
-<span class='fu'>mcolnames</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for Vector,character</span>
-<span class='fu'>mcolnames</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
+    <pre class="usage"><span class='fu'>matchEnsemblReleaseToURL</span>(<span class='no'>release</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>Value.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <th>release</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> or <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Ensembl release (e.g. 96).</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>character</code>.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/S4Vectors/man/Vector-class.html'>S4Vectors::mcols()</a></code>.</p></div>
+    <p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+URL.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='fu'>mcolnames</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; [1] "geneID"      "geneName"    "geneBiotype" "broadClass"  "entrezID"   </div><div class='input'>
-<span class='co'>## Asignment method.</span>
-<span class='fu'>mcolnames</span>(<span class='no'>rse</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span>(<span class='fu'>mcolnames</span>(<span class='no'>rse</span>))
-<span class='fu'>mcolnames</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; [1] "GENEID"      "GENENAME"    "GENEBIOTYPE" "BROADCLASS"  "ENTREZID"   </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>matchEnsemblReleaseToURL</span>(<span class='fl'>96L</span>)</div><div class='output co'>#&gt; [1] "http://apr2019.archive.ensembl.org"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -171,8 +149,6 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

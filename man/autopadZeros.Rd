@@ -44,7 +44,13 @@ the object will be returned with the rows and/or columns resorted by default.
 This does not apply to the \code{character} method.
 }
 \examples{
-data(rse, sce, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
 
 ## character ====
 autopadZeros(c("A1", "B10"))

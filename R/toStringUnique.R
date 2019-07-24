@@ -10,6 +10,8 @@
 #'
 #' @examples
 #' toStringUnique(c("hello", "world", NA, "hello", "world", NA))
+
+## Updated 2019-07-22.
 toStringUnique <- function(object) {
     assert(is.atomic(object))
     object %>%

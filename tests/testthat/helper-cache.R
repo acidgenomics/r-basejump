@@ -1,3 +1,7 @@
+if (!isTRUE(hasInternet())) {
+    warning("No Internet connection detected.")
+    return()
+}
 dir.create("cache", showWarnings = FALSE)
 files <- c(
     "example.gtf",

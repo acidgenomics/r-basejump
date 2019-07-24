@@ -1,3 +1,9 @@
+## basejump 0.11.0 (2019-07-22)
+
+Start of new release series. Version bump reflects changes in dependency
+packages. See the acidtest, bioverbs, freerange, syntactic, and transformer
+release notes for more details.
+
 ## basejump 0.10.12 (2019-07-18)
 
 ### Minor changes
@@ -6,6 +12,10 @@
   names are assigned on rowData to provide backward compatibility for Bioc 3.7.
 - Improved unit test exceptions on Docker and AppVeyor.
 - Improved installation instructions.
+- `mapGenesToRownames`: Improved matching for `SummarizedExperiment` objects
+  that don't contain gene-to-symbol mappings defined in `rowData`.
+- `meltCounts`: Improved factor handling. Also added `matrix` method support.
+  Added advanced option to disable `minCounts` filtering, by setting as `NULL`.
 
 ### Deprecations
 

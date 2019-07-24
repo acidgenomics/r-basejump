@@ -12,7 +12,10 @@
 #' @return Named `character`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' object <- rse
 #' x <- sampleNames(object)
 #' print(x)
@@ -44,7 +47,8 @@ NULL
 
 
 
-sampleNames.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`sampleNames,SummarizedExperiment` <-  # nolint
     function(object) {
         data <- sampleData(object)
         assert(isSubset("sampleName", colnames(data)))
@@ -60,26 +64,27 @@ sampleNames.SummarizedExperiment <-  # nolint
 setMethod(
     f = "sampleNames",
     signature = signature("SummarizedExperiment"),
-    definition = sampleNames.SummarizedExperiment
+    definition = `sampleNames,SummarizedExperiment`
 )
 
 
 
-`sampleNames<-.SummarizedExperiment,character` <-  # nolint
+## Updated 2019-07-22.
+`sampleNames<-,SummarizedExperiment,character` <-  # nolint
     function(object, value) {
         if (!is.factor(value)) {
             value <- as.factor(value)
         }
         assert(hasNames(value))
-        # Note that these will correspond to columns for bulk RNA-seq but not
-        # single-cell RNA-seq samples, which map to cells.
+        ## Note that these will correspond to columns for bulk RNA-seq but not
+        ## single-cell RNA-seq samples, which map to cells.
         ids <- names(sampleNames(object))
         assert(hasLength(ids))
-        # Require the input to match the original IDs.
+        ## Require the input to match the original IDs.
         assert(areSetEqual(names(value), ids))
-        # Now safe to reorder the value vector to match.
+        ## Now safe to reorder the value vector to match.
         value <- value[ids]
-        # Check that the slotting destination matches.
+        ## Check that the slotting destination matches.
         assert(identical(names(value), rownames(sampleData(object))))
         sampleData(object)[["sampleName"]] <- value
         validObject(object)
@@ -96,5 +101,5 @@ setMethod(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    definition = `sampleNames<-.SummarizedExperiment,character`
+    definition = `sampleNames<-,SummarizedExperiment,character`
 )

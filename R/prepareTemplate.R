@@ -1,5 +1,5 @@
-# We're covering the code below in bcbioRNASeq and bcbioSingleCell.
-# nocov start
+## We're covering the code below in bcbioRNASeq and bcbioSingleCell.
+## nocov start
 
 
 
@@ -39,6 +39,8 @@
 #' \dontrun{
 #' # prepareTemplate(package = "bcbioSingleCell")
 #' }
+
+## Updated 2019-07-22.
 prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     assert(
         isString(package, nullOK = TRUE),
@@ -65,7 +67,7 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
         copied
     }
 
-    # Copy the shared files from the requested package, if necessary.
+    ## Copy the shared files from the requested package, if necessary.
     if (!is.null(package)) {
         assert(isSubset(package, rownames(installed.packages())))
         sourceDir <- system.file(
@@ -76,10 +78,10 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
         files <- c(files, copied)
     }
 
-    # Copy the shared files from basejump.
-    # Define this step second in case there are files in the desired package
-    # that are duplicated in basejump, and which we don't necessarily want to
-    # overwrite by default.
+    ## Copy the shared files from basejump.
+    ## Define this step second in case there are files in the desired package
+    ## that are duplicated in basejump, and which we don't necessarily want to
+    ## overwrite by default.
     sourceDir <- system.file(
         "rmarkdown", "shared",
         package = "basejump", mustWork = TRUE
@@ -92,4 +94,4 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
 
 
 
-# nocov end
+## nocov end

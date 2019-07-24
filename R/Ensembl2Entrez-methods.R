@@ -13,14 +13,18 @@
 #'       Return 1:many in long format.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' x <- Ensembl2Entrez(rse)
 #' print(x)
 NULL
 
 
 
-Ensembl2Entrez.DataFrame <-  # nolint
+## Updated 2019-07-22.
+`Ensembl2Entrez,DataFrame` <-  # nolint
     function(object, format = c("1:1", "long")) {
         assert(hasRows(object))
         format <- match.arg(format)
@@ -39,17 +43,17 @@ Ensembl2Entrez.DataFrame <-  # nolint
             row.names = rownames(object)
         )
 
-        # Expand to long format.
+        ## Expand to long format.
         data <- expand(data)
 
-        # Inform the user about genes that don't map to Entrez.
+        ## Inform the user about genes that don't map to Entrez.
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
         assert(hasNoDuplicates(unmapped))
         if (length(unmapped) > 0L) {
             message(paste(length(unmapped), "genes don't map to Entrez."))
         }
 
-        # Inform the user about how many genes multi-map to Entrez.
+        ## Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
         if (length(multimapped) > 0L) {
             message(paste(
@@ -91,7 +95,8 @@ Ensembl2Entrez.DataFrame <-  # nolint
 
 
 
-Ensembl2Entrez.GRanges <-  # nolint
+## Updated 2019-07-22.
+`Ensembl2Entrez,GRanges` <-  # nolint
     function(object) {
         data <- as(object, "DataFrame")
         metadata(data) <- metadata(object)
@@ -103,11 +108,13 @@ Ensembl2Entrez.GRanges <-  # nolint
             )
         )
     }
-formals(Ensembl2Entrez.GRanges) <- formals(Ensembl2Entrez.DataFrame)
+
+formals(`Ensembl2Entrez,GRanges`) <- formals(`Ensembl2Entrez,DataFrame`)
 
 
 
-Ensembl2Entrez.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`Ensembl2Entrez,SummarizedExperiment` <-  # nolint
     function(object) {
         object <- as.SummarizedExperiment(object)
         data <- rowData(object)
@@ -122,8 +129,9 @@ Ensembl2Entrez.SummarizedExperiment <-  # nolint
 
 
     }
-formals(Ensembl2Entrez.SummarizedExperiment) <-
-    formals(Ensembl2Entrez.DataFrame)
+
+formals(`Ensembl2Entrez,SummarizedExperiment`) <-
+    formals(`Ensembl2Entrez,DataFrame`)
 
 
 
@@ -132,7 +140,7 @@ formals(Ensembl2Entrez.SummarizedExperiment) <-
 setMethod(
     f = "Ensembl2Entrez",
     signature = signature("DataFrame"),
-    definition = Ensembl2Entrez.DataFrame
+    definition = `Ensembl2Entrez,DataFrame`
 )
 
 
@@ -142,7 +150,7 @@ setMethod(
 setMethod(
     f = "Ensembl2Entrez",
     signature = signature("GRanges"),
-    definition = Ensembl2Entrez.GRanges
+    definition = `Ensembl2Entrez,GRanges`
 )
 
 
@@ -152,5 +160,5 @@ setMethod(
 setMethod(
     f = "Ensembl2Entrez",
     signature = signature("SummarizedExperiment"),
-    definition = Ensembl2Entrez.SummarizedExperiment
+    definition = `Ensembl2Entrez,SummarizedExperiment`
 )

@@ -19,6 +19,8 @@
 #' loadRemoteData(url = file.path(basejumpTestsURL, "plotlist.rds"))
 #' names(plotlist)
 #' markdownPlots(list = plotlist)
+
+## Updated 2019-07-22.
 markdownPlots <- function(list, headerLevel = 2L) {
     assert(
         is.list(list),

@@ -59,7 +59,8 @@ NULL
 
 
 
-collapseToString.atomic <-  # nolint
+## Updated 2019-07-22.
+`collapseToString,atomic` <-  # nolint
     function(
         object,
         sep = ", ",
@@ -74,17 +75,17 @@ collapseToString.atomic <-  # nolint
             isFlag(sort)
         )
 
-        # Early return unmodified if scalar.
+        ## Early return unmodified if scalar.
         if (isScalar(object)) {
             return(object)
         }
 
-        # Sort, if desired.
+        ## Sort, if desired.
         if (isTRUE(sort)) {
             object <- sort(object, na.last = TRUE)
         }
 
-        # Remove NA values, if desired.
+        ## Remove NA values, if desired.
         if (!all(is.na(object))) {
             if (isTRUE(removeNA)) {
                 object <- removeNA(object)
@@ -93,14 +94,14 @@ collapseToString.atomic <-  # nolint
             }
         }
 
-        # Make unique, if desired.
+        ## Make unique, if desired.
         if (isTRUE(unique)) {
             object <- unique(object)
         }
 
-        object %>%
-            as.character() %>%
-            paste(collapse = sep)
+        out <- as.character(object)
+        out <- paste(out, collapse = sep)
+        out
     }
 
 
@@ -110,12 +111,13 @@ collapseToString.atomic <-  # nolint
 setMethod(
     f = "collapseToString",
     signature = signature("atomic"),
-    definition = collapseToString.atomic
+    definition = `collapseToString,atomic`
 )
 
 
 
-collapseToString.matrix <-  # nolint
+## Updated 2019-07-22.
+`collapseToString,matrix` <-  # nolint
     function(
         object,
         sep = ", ",
@@ -123,10 +125,10 @@ collapseToString.matrix <-  # nolint
         removeNA = FALSE,
         unique = FALSE
     ) {
-        # Passthrough to atomic method: sep, unique, sort.
+        ## Passthrough to atomic method: sep, unique, sort.
         assert(hasLength(object))
 
-        # Coerce to tibble to perform the collapse.
+        ## Coerce to tibble to perform the collapse.
         collapse <- object %>%
             as.data.frame() %>%
             as_tibble(rownames = NULL) %>%
@@ -141,7 +143,7 @@ collapseToString.matrix <-  # nolint
                 )
             )
 
-        # Coerce collapsed tibble back to original object class.
+        ## Coerce collapsed tibble back to original object class.
         as(object = collapse, Class = class(object)[[1L]])
     }
 
@@ -152,13 +154,14 @@ collapseToString.matrix <-  # nolint
 setMethod(
     f = "collapseToString",
     signature = signature("matrix"),
-    definition = collapseToString.matrix
+    definition = `collapseToString,matrix`
 )
 
 
 
-collapseToString.data.frame <-  # nolint
-    collapseToString.matrix
+## Updated 2019-07-22.
+`collapseToString,data.frame` <-  # nolint
+    `collapseToString,matrix`
 
 
 
@@ -167,13 +170,14 @@ collapseToString.data.frame <-  # nolint
 setMethod(
     f = "collapseToString",
     signature = signature("data.frame"),
-    definition = collapseToString.data.frame
+    definition = `collapseToString,data.frame`
 )
 
 
 
-collapseToString.DataFrame <-  # nolint
-    collapseToString.matrix
+## Updated 2019-07-22.
+`collapseToString,DataFrame` <-  # nolint
+    `collapseToString,matrix`
 
 
 
@@ -182,5 +186,5 @@ collapseToString.DataFrame <-  # nolint
 setMethod(
     f = "collapseToString",
     signature = signature("DataFrame"),
-    definition = collapseToString.DataFrame
+    definition = `collapseToString,DataFrame`
 )

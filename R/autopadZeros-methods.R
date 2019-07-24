@@ -11,7 +11,13 @@
 #' @return `character`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## character ====
 #' autopadZeros(c("A1", "B10"))
@@ -35,14 +41,15 @@ NULL
 
 
 
-autopadZeros.character <-  # nolint
+## Updated 2019-07-22.
+`autopadZeros,character` <-  # nolint
     function(object) {
         assert(is.character(object))
         names <- names(object)
         object <- as.character(object)
         assert(validNames(object))
         pattern <- "(.*[A-Za-z])([[:digit:]]+)$"
-        # Early return if no padding is necessary.
+        ## Early return if no padding is necessary.
         if (!all(grepl(pattern = pattern, x = object))) {
             return(object)
         }
@@ -64,12 +71,13 @@ autopadZeros.character <-  # nolint
 setMethod(
     f = "autopadZeros",
     signature = signature("character"),
-    definition = autopadZeros.character
+    definition = `autopadZeros,character`
 )
 
 
 
-autopadZeros.matrix <-  # nolint
+## Updated 2019-07-22.
+`autopadZeros,matrix` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -104,15 +112,16 @@ autopadZeros.matrix <-  # nolint
 setMethod(
     f = "autopadZeros",
     signature = signature("matrix"),
-    definition = autopadZeros.matrix
+    definition = `autopadZeros,matrix`
 )
 
 
 
-autopadZeros.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`autopadZeros,SummarizedExperiment` <-  # nolint
     function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
         object <- do.call(
-            what = autopadZeros.matrix,
+            what = `autopadZeros,matrix`,
             args = list(
                 object = object,
                 rownames = rownames,
@@ -120,9 +129,9 @@ autopadZeros.SummarizedExperiment <-  # nolint
                 sort = sort
             )
         )
-        # Ensure sample names, which can be defined in `colData` as `sampleName`
-        # column, also get padded, if necessary. This improves downstream
-        # handling in functions that rely on this feature.
+        ## Ensure sample names, which can be defined in `colData()` as
+        ## `sampleName` column, also get padded, if necessary. This improves
+        ## downstream handling in functions that rely on this feature.
         if ("sampleName" %in% colnames(colData(object))) {
             sampleNames(object) <- autopadZeros(sampleNames(object))
         }
@@ -136,5 +145,5 @@ autopadZeros.SummarizedExperiment <-  # nolint
 setMethod(
     f = "autopadZeros",
     signature = signature("SummarizedExperiment"),
-    definition = autopadZeros.SummarizedExperiment
+    definition = `autopadZeros,SummarizedExperiment`
 )

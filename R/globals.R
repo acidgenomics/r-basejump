@@ -101,15 +101,15 @@ lanePattern <- "_L([[:digit:]]{3})"
 #' @examples
 #' metadataBlacklist
 metadataBlacklist <- sort(c(
-    # Automatic / used internally
+    ## Automatic / used internally
     "interestingGroups",
     "revcomp",
     "rowname",
     "sampleID",
-    # interestingGroups variants
+    ## interestingGroups variants
     "interestinggroups",
     "intgroup",
-    # sampleID, sampleName variants
+    ## sampleID, sampleName variants
     "ID",
     "Id",
     "id",

@@ -5,7 +5,10 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' markdown(rse)
 NULL
 
@@ -20,7 +23,8 @@ NULL
 
 
 
-markdown.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`markdown,SummarizedExperiment` <-  # nolint
     function(object) {
         object %>%
             sampleData() %>%
@@ -35,5 +39,5 @@ markdown.SummarizedExperiment <-  # nolint
 setMethod(
     f = "markdown",
     signature = signature("SummarizedExperiment"),
-    definition = markdown.SummarizedExperiment
+    definition = `markdown,SummarizedExperiment`
 )

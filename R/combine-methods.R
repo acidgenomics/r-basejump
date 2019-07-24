@@ -18,7 +18,13 @@
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #' str_pad <- stringr::str_pad
 #'
 #' ## SummarizedExperiment ====
@@ -85,7 +91,8 @@ NULL
 
 
 
-combine.SummarizedExperiment <-  # nolint
+## Updated 2019-07-22.
+`combine,SummarizedExperiment` <-  # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
@@ -93,15 +100,16 @@ combine.SummarizedExperiment <-  # nolint
         assert(
             identical(class(x), class(y)),
             identical(assayNames(x), assayNames(y)),
-            # Require that there are no duplicate samples.
+            ## Require that there are no duplicate samples.
             areDisjointSets(colnames(x), colnames(y)),
-            # Currently we're being strict and requiring that the rows
-            # (features) are identical, otherwise zero counts may be misleading.
+            ## Currently we're being strict and requiring that the rows
+            ## (features) are identical, otherwise zero counts may be
+            ## misleading.
             identical(rownames(x), rownames(y))
         )
 
-        # Coerce the objects to SummarizedExperiment.
-        # Keep as RSE if the data is ranged.
+        ## Coerce the objects to SummarizedExperiment.
+        ## Keep as RSE if the data is ranged.
         if (is(x, "RangedSummarizedExperiment")) {
             Class <- "RangedSummarizedExperiment"  # nolint
         } else {
@@ -111,7 +119,7 @@ combine.SummarizedExperiment <-  # nolint
         x <- as(object = x, Class = Class)
         y <- as(object = y, Class = Class)
 
-        # Assays ---------------------------------------------------------------
+        ## Assays --------------------------------------------------------------
         message(paste(
             "Binding columns in assays:",
             printString(assayNames(x)),
@@ -125,9 +133,9 @@ combine.SummarizedExperiment <-  # nolint
             USE.NAMES = TRUE
         )
 
-        # Row data -------------------------------------------------------------
+        ## Row data ------------------------------------------------------------
         message("Checking row data.")
-        # Require that the gene annotations are identical.
+        ## Require that the gene annotations are identical.
         if (is(x, "RangedSummarizedExperiment")) {
             assert(identical(rowRanges(x), rowRanges(y)))
             rowRanges <- rowRanges(x)
@@ -136,19 +144,19 @@ combine.SummarizedExperiment <-  # nolint
             assert(identical(rowData(x), rowData(y)))
             rowRanges <- NULL
             rowData <- rowData(x)
-            # This provides backward compatibility for BioC 3.7.
+            ## This provides backward compatibility for BioC 3.7.
             rownames(rowData) <- rownames(x)
         }
 
-        # Column data ----------------------------------------------------------
+        ## Column data ---------------------------------------------------------
         message("Updating column data.")
         cdx <- colData(x)
         cdy <- colData(y)
-        # Check for column mismatches and restore NA values, if necessary. This
-        # mismatch can occur because our metadata importer will drop columns
-        # with all NA values, which is useful for handling human metadata. This
-        # can create a column mismatch when we're subsetting large sequencing
-        # runs into batches.
+        ## Check for column mismatches and restore NA values, if necessary. This
+        ## mismatch can occur because our metadata importer will drop columns
+        ## with all NA values, which is useful for handling human metadata. This
+        ## can create a column mismatch when we're subsetting large sequencing
+        ## runs into batches.
         union <- union(names(cdx), names(cdy))
         intersect <- intersect(names(cdx), names(cdy))
         if (!isTRUE(identical(union, intersect))) {
@@ -182,12 +190,12 @@ combine.SummarizedExperiment <-  # nolint
             colData(y)[, keep, drop = FALSE]
         )
 
-        # Metadata -------------------------------------------------------------
+        ## Metadata ------------------------------------------------------------
         message("Updating metadata.")
         mx <- metadata(x)
         my <- metadata(y)
 
-        # We're keeping only metadata elements that are common in both objects.
+        ## We're keeping only metadata elements that are common in both objects.
         keep <- intersect(names(mx), names(my))
         if (!isTRUE(setequal(x = names(mx), y = names(my)))) {
             drop <- setdiff(x = union(names(mx), names(my)), y = keep)
@@ -200,7 +208,7 @@ combine.SummarizedExperiment <-  # nolint
         mx <- mx[keep]
         my <- my[keep]
 
-        # Keep only metadata that is identical across both objects.
+        ## Keep only metadata that is identical across both objects.
         keep <- mapply(
             x = mx,
             y = my,
@@ -222,7 +230,7 @@ combine.SummarizedExperiment <-  # nolint
         metadata[["combine"]] <- TRUE
         metadata <- Filter(Negate(is.null), metadata)
 
-        # Return ---------------------------------------------------------------
+        ## Return --------------------------------------------------------------
         args <- list(
             assays = assays,
             rowRanges = rowRanges,
@@ -246,24 +254,25 @@ setMethod(
         x = "SummarizedExperiment",
         y = "SummarizedExperiment"
     ),
-    definition = combine.SummarizedExperiment
+    definition = `combine,SummarizedExperiment`
 )
 
 
 
-combine.SingleCellExperiment <-  # nolint
+## Updated 2019-07-22.
+`combine,SingleCellExperiment` <-  # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
-        # Coerce to RSE and use combine method.
+        ## Coerce to RSE and use combine method.
         class <- "RangedSummarizedExperiment"
         rse <- combine(
             x = as(object = x, Class = class),
             y = as(object = y, Class = class)
         )
         validObject(rse)
-        # Make SCE from RSE.
-        # Note that standard SCE `as()` coercion method doesn't return valid.
+        ## Make SCE from RSE.
+        ## Note that standard SCE `as()` coercion method doesn't return valid.
         sce <- makeSingleCellExperiment(
             assays = assays(rse),
             rowRanges = rowRanges(rse),
@@ -285,5 +294,5 @@ setMethod(
         x = "SingleCellExperiment",
         y = "SingleCellExperiment"
     ),
-    definition = combine.SingleCellExperiment
+    definition = `combine,SingleCellExperiment`
 )
