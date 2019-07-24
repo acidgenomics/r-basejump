@@ -1,3 +1,10 @@
+## basejump 0.11.1 (2019-07-24)
+
+### Minor changes
+
+- Added back deprecated assert checks that are required for bcbioRNASeq v0.2
+  release series.
+
 ## basejump 0.11.0 (2019-07-22)
 
 Start of new release series. Version bump reflects changes in dependency
