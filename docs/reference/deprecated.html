@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.1</span>
       </span>
     </div>
 
@@ -142,6 +142,38 @@
 
 <span class='fu'>mdPlotlist</span>(<span class='no'>plotlist</span>, <span class='no'>...</span>)
 
+<span class='fu'>assertAreGeneAnnotations</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertFormalGene2symbol</span>(<span class='no'>x</span>, <span class='no'>genes</span>, <span class='no'>gene2symbol</span>)
+
+<span class='fu'>assertFormalInterestingGroups</span>(<span class='no'>x</span>, <span class='no'>interestingGroups</span>)
+
+<span class='fu'>assertIsAHeaderLevel</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsAStringOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsAnImplicitInteger</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsAnImplicitIntegerOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsColorScaleDiscreteOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsFillScaleDiscreteOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsGene2symbol</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsHexColorFunctionOrNULL</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsImplicitInteger</span>(<span class='no'>x</span>)
+
+<span class='fu'>assertIsTx2gene</span>(<span class='no'>x</span>)
+
+<span class='fu'>relevelColData</span>(<span class='no'>object</span>)
+
+<span class='fu'>relevelRowData</span>(<span class='no'>object</span>)
+
+<span class='fu'>relevelRowRanges</span>(<span class='no'>object</span>)
+
 <span class='no'>separatorBar</span></pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -157,14 +189,31 @@
 List containing <code>ggplot</code> objects.</p></td>
     </tr>
     <tr>
-      <th>object</th>
+      <th>x</th>
       <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>genes</th>
+      <td><p><code>character</code>.
+Gene identifiers. It is considered better practice to input the stable gene
+identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
+symbols (e.g. "TSPN6"), if possible.</p></td>
+    </tr>
+    <tr>
+      <th>gene2symbol</th>
+      <td><p><code>Gene2Symbol</code>.
+Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</code> columns. See
+<code>Gene2Symbol</code> for more information.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>.
 Groups of interest that define the samples. If left unset, defaults to
 <code>sampleName</code>.</p></td>
+    </tr>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     
