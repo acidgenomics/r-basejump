@@ -161,38 +161,43 @@ panther <- function(...) {
     .Defunct("PANTHER")
 }
 
+## Still in use by bcbioRNASeq v0.2.
 #' @rdname deprecated
 #' @export
 readFileByExtension <- function(...) {
-    .Deprecated("import")
+    ## > .Deprecated("import")  # nolint
     import(...)
 }
 
+## Still in use by bcbioRNASeq v0.2.
 #' @rdname deprecated
 #' @export
 readGFF <- function(...) {
-    .Deprecated("import")
+    ## > .Deprecated("import")  # nolint
     import(...)
 }
 
+## Still in use by bcbioRNASeq v0.2.
 #' @rdname deprecated
 #' @export
 readGTF <- function(...) {
-    .Deprecated("import")
+    ## > .Deprecated("import")  # nolint
     import(...)
 }
 
+## Still in use by bcbioRNASeq v0.2.
 #' @rdname deprecated
 #' @export
 readJSON <- function(...) {
-    .Deprecated("import")
+    ## > .Deprecated("import")  # nolint
     import(...)
 }
 
+## Still in use by bcbioRNASeq v0.2.
 #' @rdname deprecated
 #' @export
 readYAML <- function(...) {
-    .Deprecated("import")
+    ## > .Deprecated("import")  # nolint
     import(...)
 }
 
