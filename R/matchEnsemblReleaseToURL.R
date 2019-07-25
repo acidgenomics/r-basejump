@@ -22,7 +22,7 @@ matchEnsemblReleaseToURL <- function(release) {
     map <- tryCatch(
         expr = biomaRt::listEnsemblArchives(),
         error = function(e) {
-            stop("biomaRt timed out connecting to Ensembl.", call. = FALSE)
+            stop("biomaRt timed out connecting to Ensembl.")
         }
     )
     assert(

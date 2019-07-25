@@ -59,7 +59,7 @@ matchHumanOrthologs <- function(
     marts <- tryCatch(
         expr = biomaRt::listMarts(host = host),
         error = function(e) {
-            stop("biomaRt timed out connecting to Ensembl.", call. = FALSE)
+            stop("biomaRt timed out connecting to Ensembl.")
         }
     )
     version <- marts[["version"]][
@@ -88,7 +88,7 @@ matchHumanOrthologs <- function(
             host = host
         ),
         error = function(e) {
-            stop("biomaRt timed out connecting to Ensembl.", call. = FALSE)
+            stop("biomaRt timed out connecting to Ensembl.")
         }
     )
 
@@ -103,7 +103,7 @@ matchHumanOrthologs <- function(
             )
         ),
         error = function(e) {
-            stop("biomaRt timed out connecting to Ensembl.", call. = FALSE)
+            stop("biomaRt timed out connecting to Ensembl.")
         }
     ) %>%
         as_tibble(rownames = NULL) %>%
