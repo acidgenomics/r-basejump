@@ -1,5 +1,5 @@
-## Set seed for reproducibility.
-set.seed(1454944673L)
+## Set seed for reproducibility. Using Fibonacci sequence.
+set.seed(1123581321L)
 
 ## Set knitr defaults for R Markdown rendering.
 ## https://yihui.name/knitr/options/
