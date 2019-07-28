@@ -69,8 +69,8 @@ print(x)
 }
 \seealso{
 \itemize{
-\item \code{SummarizedExperiment::SummarizedExperiment()}.
-\item \code{SingleCellExperiment::SingleCellExperiment()}.
+\item \code{\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment()}}.
+\item \code{\link[SingleCellExperiment:SingleCellExperiment]{SingleCellExperiment()}}.
 \item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.

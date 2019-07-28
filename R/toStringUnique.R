@@ -5,7 +5,7 @@
 #'
 #' @param object `atomic`.
 #'
-#' @seealso `toString`.
+#' @seealso [`toString()`][base::toString].
 #'
 #' @return `character(1)`.
 #'

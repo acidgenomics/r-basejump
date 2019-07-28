@@ -24,5 +24,5 @@ rse <- RangedSummarizedExperiment
 showHeader(rse)
 }
 \seealso{
-\code{\link[methods:show]{methods::show()}}.
+\code{\link[=show]{show()}}.
 }

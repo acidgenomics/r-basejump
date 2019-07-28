@@ -22,5 +22,5 @@ Updated 2019-07-28.
 toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 }
 \seealso{
-\code{toString}.
+\code{\link[base:toString]{toString()}}.
 }

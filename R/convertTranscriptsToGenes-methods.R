@@ -18,7 +18,7 @@
 #'     Object containing counts collapsed to gene level by default
 #'     (see `aggregate` argument).
 #'
-#' @seealso `aggregateRows()`.
+#' @seealso [aggregateRows()].
 #'
 #' @examples
 #' data(SummarizedExperiment_transcripts, package = "acidtest")

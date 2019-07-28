@@ -9,7 +9,7 @@
 #' @return `character(1)`.
 #' Latin organism name (e.g. *Homo sapiens*).
 #'
-#' @seealso `detectOrganism()`.
+#' @seealso [detectOrganism()][.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
