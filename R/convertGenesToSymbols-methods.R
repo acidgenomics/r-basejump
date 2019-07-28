@@ -1,5 +1,6 @@
 #' @name convertGenesToSymbols
 #' @inherit bioverbs::convertGenesToSymbols
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.

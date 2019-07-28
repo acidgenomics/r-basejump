@@ -3,13 +3,16 @@
 #' Prevent unwanted downstream behavior when a missing interesting group
 #' is requested by the user.
 #'
+#' @note Updated 2019-07-28.
 #' @export
-#' @inherit params
-#'
+
+#' @inheritParams params
 #' @inheritParams goalie::params
 #' @param x S4 class.
 #' @param interestingGroups `character`.
 #'   Interesting groups.
+#'
+#' @return `logical(1)`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
@@ -20,8 +23,6 @@
 #'
 #' ## Currently allowing `NULL` to pass.
 #' matchesInterestingGroups(rse, NULL)
-
-## Updated 2019-07-22.
 matchesInterestingGroups <- function(
     x,
     interestingGroups,

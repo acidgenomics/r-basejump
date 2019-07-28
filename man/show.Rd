@@ -7,12 +7,16 @@
 \alias{show,PANTHER-method}
 \title{Show an object}
 \usage{
+show(object, ...)
+
 \S4method{show}{EggNOG}(object)
 
 \S4method{show}{PANTHER}(object)
 }
 \arguments{
 \item{object}{Any R object}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{show} returns an invisible \code{NULL}.
@@ -38,6 +42,9 @@ inheritance, since otherwise the method would not receive the
 complete, original object, with misleading results.  See the
 \code{simpleInheritanceOnly} argument to \code{\link{setGeneric}} and
 the discussion in \code{\link{setIs}} for the general concept.
+}
+\note{
+Updated 2019-07-28.
 }
 \examples{
 options(acid.test = TRUE)

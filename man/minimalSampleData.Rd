@@ -16,6 +16,9 @@ Sample names (e.g. per-sample directory names).}
 \description{
 Minimal sample data
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 x <- minimalSampleData(sample = c("sample 1", "sample 2"))
 print(x)

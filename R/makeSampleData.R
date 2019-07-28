@@ -17,7 +17,9 @@
 #'   - `samplename` (use `sampleName`).
 #' - `sampleName` column is always placed first.
 #'
+#' @note Updated 2019-07-28.
 #' @export
+#'
 #' @inheritParams params
 #'
 #' @return `DataFrame`.
@@ -32,8 +34,6 @@
 #'     row.names = paste0("GSM000000", seq_len(4L))
 #' )
 #' makeSampleData(object)
-
-## Updated 2019-07-22.
 makeSampleData <- function(object) {
     assert(
         ## Check for strings beginning with numbers, containing spaces, hyphens,

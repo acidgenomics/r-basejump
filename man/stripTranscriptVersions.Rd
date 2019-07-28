@@ -32,6 +32,8 @@ Contains transcript identifiers without version numbers.
 Strip transcript versions
 }
 \note{
+Updated 2019-07-28.
+
 This method is strict, and will only strip Ensembl transcript IDs
 beginning with "ENS".
 }

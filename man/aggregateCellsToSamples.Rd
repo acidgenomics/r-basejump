@@ -33,6 +33,9 @@ Internally \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}} aut
 cell-to-sample groupings and then performs aggregation with the
 \code{\link[=aggregateCols]{aggregateCols()}} function.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 sce <- SingleCellExperiment

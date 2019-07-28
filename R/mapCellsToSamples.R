@@ -4,6 +4,7 @@
 #' matching.
 #'
 #' @name mapCellsToSamples
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @param cells `character`.
@@ -20,8 +21,6 @@
 #' cells <- paste(samples, c("AAAAAAAA", "CCCCCCCC"), sep = "_")
 #' print(cells)
 #' mapCellsToSamples(cells, samples)
-
-## Updated 2019-07-22.
 mapCellsToSamples <- function(cells, samples) {
     assert(
         isCharacter(cells), hasNoDuplicates(cells),

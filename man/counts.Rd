@@ -33,6 +33,8 @@ Count matrix.
 \note{
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
 defined in \code{assayNames}.
+
+Updated 2019-07-28.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

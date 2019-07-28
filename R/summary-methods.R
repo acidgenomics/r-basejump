@@ -2,9 +2,10 @@
 #'
 #' @name summary
 #' @inherit base::summary description references
-#' @importFrom S4Vectors summary
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return Invisible `NULL`.
 #'
@@ -24,6 +25,15 @@
 #' ## Tx2Gene ====
 #' x <- Tx2Gene(txse)
 #' summary(x)
+NULL
+
+
+
+#' @rdname summary
+#' @name summary
+#' @importFrom S4Vectors summary
+#' @usage summary(object, ...)
+#' @export
 NULL
 
 

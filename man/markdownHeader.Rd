@@ -31,6 +31,9 @@ Markdown chunk with '\code{results = "asis"}' enabled.}
 Generate a Markdown header (levels 1-7) in any R Markdown code block. When
 calling inside an \code{asis} chunk, set \code{asis = TRUE}.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 markdownHeader("Header", level = 2L)
 markdownHeader("Header", tabset = TRUE)

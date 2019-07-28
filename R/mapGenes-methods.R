@@ -13,6 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param strict `logical(1)`.

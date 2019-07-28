@@ -16,10 +16,10 @@
 #' - `bcbioRNASeq::prepareRNASeqTemplate()`.
 #' - `bcbioSingleCell::prepareSingleCellTemplate()`.
 #'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @inheritParams params
-#'
 #' @param package `character(1)` or `NULL`.
 #'   Name of package containing the R Markdown template. If `NULL`, only the
 #'   basic shared files defined in the basejump package will be copied.
@@ -32,15 +32,13 @@
 #' @examples
 #' ## RNA-seq template.
 #' \dontrun{
-#' # prepareTemplate(package = "bcbioRNASeq")
+#' ## > prepareTemplate(package = "bcbioRNASeq")
 #' }
 #'
 #' ## Single-cell RNA-seq template.
 #' \dontrun{
-#' # prepareTemplate(package = "bcbioSingleCell")
+#' ## > prepareTemplate(package = "bcbioSingleCell")
 #' }
-
-## Updated 2019-07-22.
 prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     assert(
         isString(package, nullOK = TRUE),

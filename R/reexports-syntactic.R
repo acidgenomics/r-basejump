@@ -40,6 +40,10 @@ syntactic::kebab
 #' @export
 NULL
 
+#' @importFrom syntactic label
+#' @export
+syntactic::label
+
 #' @importFrom syntactic makeDimnames
 #' @export
 syntactic::makeDimnames
@@ -47,6 +51,10 @@ syntactic::makeDimnames
 #' @importFrom syntactic makeNames
 #' @export
 syntactic::makeNames
+
+#' @importFrom syntactic makeWords
+#' @export
+syntactic::makeWords
 
 #' @rdname reexports-S4
 #' @name mcolnames
@@ -73,6 +81,10 @@ syntactic::snake
 #' @usage snakeCase(object, ...)
 #' @export
 NULL
+
+#' @importFrom syntactic title
+#' @export
+syntactic::title
 
 #' @importFrom syntactic upperCamel
 #' @export

@@ -23,6 +23,9 @@ Supports using a named \code{list} containing multiple \code{ggplot} objects, wh
 can be used in an R Markdown report, separated by headers. Internally, the
 headers are generated with the \code{markdownHeader} function.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 loadRemoteData(url = file.path(basejumpTestsURL, "plotlist.rds"))
 names(plotlist)

@@ -1,5 +1,6 @@
 #' Convert to a unique character string
 #'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @param object `atomic`.
@@ -10,8 +11,6 @@
 #'
 #' @examples
 #' toStringUnique(c("hello", "world", NA, "hello", "world", NA))
-
-## Updated 2019-07-22.
 toStringUnique <- function(object) {
     assert(is.atomic(object))
     object %>%

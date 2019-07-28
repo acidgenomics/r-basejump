@@ -1,5 +1,6 @@
 #' @name interestingGroups
 #' @inherit bioverbs::interestingGroups
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.

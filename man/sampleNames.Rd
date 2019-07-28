@@ -28,6 +28,9 @@ This function will return the human readable sample names if defined
 in the \code{sampleName} column of \code{sampleData}. Otherwise it will return
 the syntactically valid names defined as the rownames of \code{sampleData}.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

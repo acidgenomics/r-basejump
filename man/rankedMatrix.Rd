@@ -25,6 +25,8 @@ Calculate a ranked matrix
 \note{
 Ties are resolved automatically by calculating the average. See the
 \code{ties.method} parameter in \code{\link[base:rank]{rank()}} for details.
+
+Updated 2019-07-28.
 }
 \examples{
 data(matrix_lfc, package = "acidtest")

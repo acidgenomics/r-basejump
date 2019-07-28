@@ -7,12 +7,16 @@
 \alias{summary,Tx2Gene-method}
 \title{Object summaries}
 \usage{
+summary(object, ...)
+
 \S4method{summary}{Gene2Symbol}(object)
 
 \S4method{summary}{Tx2Gene}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Invisible \code{NULL}.
@@ -22,6 +26,9 @@ Invisible \code{NULL}.
   of the results of various model fitting functions.  The function
   invokes particular \code{\link{methods}} which depend on the
   \code{\link{class}} of the first argument.
+}
+\note{
+Updated 2019-07-28.
 }
 \examples{
 data(

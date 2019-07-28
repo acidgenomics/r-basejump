@@ -1,5 +1,6 @@
 #' @name aggregateCellsToSamples
 #' @inherit bioverbs::aggregateCellsToSamples
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams aggregate
 #' @inheritParams params

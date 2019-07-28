@@ -1,6 +1,11 @@
 #' Show an object
+#'
 #' @name show
 #' @inherit methods::show
+#' @note Updated 2019-07-28.
+#'
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' options(acid.test = TRUE)
 #'
@@ -11,6 +16,15 @@
 #' ## PANTHER ====
 #' x <- PANTHER("Homo sapiens", progress = FALSE)
 #' show(x)
+NULL
+
+
+
+#' @rdname show
+#' @name show
+#' @importFrom methods show
+#' @usage show(object, ...)
+#' @export
 NULL
 
 

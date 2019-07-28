@@ -1,5 +1,6 @@
 #' Match human gene orthologs
 #'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @inheritParams params
@@ -21,8 +22,6 @@
 #'     "ENSMUSG00000000037", "ENSMUSG00000000049"
 #' )
 #' matchHumanOrthologs(genes, ensemblRelease = 87L)
-
-## Updated 2019-07-17.
 matchHumanOrthologs <- function(
     genes,
     organism = NULL,
