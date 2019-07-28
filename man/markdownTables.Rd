@@ -48,7 +48,7 @@ markdownTables(list = list, captions = captions)
 }
 \seealso{
 \itemize{
-\item \code{knitr::kable}.
+\item \code{knitr::kable()}.
 \item \href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow post}.
 }
 }

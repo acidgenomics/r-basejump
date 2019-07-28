@@ -22,7 +22,7 @@
 #' - Otherwise: `list`.
 #'
 #' @seealso
-#' - `knitr::kable`.
+#' - `knitr::kable()`.
 #' - [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples

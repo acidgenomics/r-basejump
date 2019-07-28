@@ -7,7 +7,7 @@
 #'
 #' @return Console output, via [`cat()`][base::cat].
 #'
-#' @seealso [methods::show()].
+#' @seealso [show()].
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")

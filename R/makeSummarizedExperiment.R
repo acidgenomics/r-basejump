@@ -20,8 +20,8 @@
 #' - Providing `rowData`: `SummarizedExperiment`.
 #'
 #' @seealso
-#' - `SummarizedExperiment::SummarizedExperiment()`.
-#' - `SingleCellExperiment::SingleCellExperiment()`.
+#' - [`SummarizedExperiment()`][SummarizedExperiment::SummarizedExperiment].
+#' - [`SingleCellExperiment()`][SingleCellExperiment::SingleCellExperiment].
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.

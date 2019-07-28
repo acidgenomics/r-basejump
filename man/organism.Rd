@@ -51,5 +51,5 @@ rse <- RangedSummarizedExperiment
 organism(rse)
 }
 \seealso{
-\code{detectOrganism()}.
+[detectOrganism()][.
 }

@@ -86,5 +86,5 @@ x <- convertTranscriptsToGenes(object)
 print(x)
 }
 \seealso{
-\code{aggregateRows()}.
+\code{\link[=aggregateRows]{aggregateRows()}}.
 }
