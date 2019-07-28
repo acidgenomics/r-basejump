@@ -56,6 +56,9 @@ File path.}
 \description{
 Make a Gene2Symbol object
 }
+\note{
+Updated 2019-07-28.
+}
 \section{GFF/GTF file}{
 
 

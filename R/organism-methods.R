@@ -1,6 +1,7 @@
 #' Organism
 #'
 #' @name organism
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.
@@ -8,7 +9,7 @@
 #' @return `character(1)`.
 #' Latin organism name (e.g. *Homo sapiens*).
 #'
-#' @seealso `detectOrganism()`.
+#' @seealso [detectOrganism()][.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")

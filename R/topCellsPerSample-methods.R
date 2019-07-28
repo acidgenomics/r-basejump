@@ -1,5 +1,6 @@
 #' @name topCellsPerSample
 #' @inherit bioverbs::topCellsPerSample
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param n `integer(1)`.

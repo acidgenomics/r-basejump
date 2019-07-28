@@ -42,6 +42,8 @@ Autopad zeros
 For methods on objects supporting \code{\link[base:dim]{dim()}} (e.g. \code{matrix}),
 the object will be returned with the rows and/or columns resorted by default.
 This does not apply to the \code{character} method.
+
+Updated 2019-07-28.
 }
 \examples{
 data(

@@ -32,6 +32,8 @@ Knit multiple tables in a single R Markdown chunk.
 \code{\link[knitr:kable]{knitr::kable()}} now supports multiple tables as a \code{list} for the \code{x}
 argument, but it still only supports a single caption. \code{markdownTables}
 extends this functionality, but supporting captions for each table.
+
+Updated 2019-07-28.
 }
 \examples{
 list <- list(
@@ -46,7 +48,7 @@ markdownTables(list = list, captions = captions)
 }
 \seealso{
 \itemize{
-\item \code{knitr::kable}.
+\item \code{knitr::kable()}.
 \item \href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow post}.
 }
 }

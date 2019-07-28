@@ -1,11 +1,11 @@
 #' @name convertTranscriptsToGenes
 #' @inherit bioverbs::convertTranscriptsToGenes
-#' @inheritParams params
-#'
 #' @note For objects containing a count matrix, the object rows will be
 #'   collapsed to gene level using `aggregateRows`. This applies to our
 #'   `SummarizedExperiment` method.
+#' @note Updated 2019-07-28.
 #'
+#' @inheritParams params
 #' @param aggregate `logical(1)`.
 #'   For objects supporting [dim][base::dim], aggregate counts to gene level and
 #'   collapse the matrix.
@@ -18,7 +18,7 @@
 #'     Object containing counts collapsed to gene level by default
 #'     (see `aggregate` argument).
 #'
-#' @seealso `aggregateRows()`.
+#' @seealso [aggregateRows()].
 #'
 #' @examples
 #' data(SummarizedExperiment_transcripts, package = "acidtest")

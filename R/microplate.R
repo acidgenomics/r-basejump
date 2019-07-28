@@ -5,6 +5,7 @@
 #'
 #' These plate formats are frequently used for high-throughput screening assays.
 #'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @param plates `integer(1)`.
@@ -31,8 +32,6 @@
 #'
 #' ## 2 96-well plates with 6 control wells per plate.
 #' microplate(plates = 2L, wells = 96L, controls = 6L)
-
-## Updated 2019-07-22.
 microplate <- function(
     plates = 1L,
     wells = 96L,

@@ -32,6 +32,9 @@ differential expression output.}
 \description{
 Interconvert log ratio and fold change values
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 ## Convert fold change to log ratio.
 foldChangeToLogRatio(c(-8, -4, -2, 1, 2, 4, 8))

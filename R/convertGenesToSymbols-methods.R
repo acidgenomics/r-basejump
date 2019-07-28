@@ -1,5 +1,6 @@
 #' @name convertGenesToSymbols
 #' @inherit bioverbs::convertGenesToSymbols
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.
@@ -82,9 +83,7 @@ NULL
 
         missing <- setdiff(object, gene2symbol[["geneID"]])
         if (length(missing) > 0L) {
-            warning(paste(
-                "Failed to match genes:", toString(missing)
-            ), call. = FALSE)
+            warning(paste("Failed to match genes:", toString(missing)))
             names(missing) <- missing
             out <- c(out, missing)
         }

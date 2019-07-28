@@ -36,6 +36,9 @@ useful for plots and doesn't have to match the column names of a
 \item \code{sampleName} column is always placed first.
 }
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 object <- data.frame(
     genotype = rep(c("control", "wildtype"), times = 2L),

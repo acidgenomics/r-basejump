@@ -2,6 +2,8 @@
 #'
 #' @export
 #' @inherit makeSummarizedExperiment
+#' @note Updated 2019-07-28.
+#'
 #' @inheritParams params
 #'
 #' @return `SingleCellExperiment`.
@@ -23,8 +25,6 @@
 #'     metadata = metadata
 #' )
 #' print(x)
-
-## Updated 2019-07-22.
 makeSingleCellExperiment <- function(
     assays,
     rowRanges,

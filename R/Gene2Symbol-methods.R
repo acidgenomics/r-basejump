@@ -1,6 +1,9 @@
 #' @rdname Gene2Symbol-class
 #' @name Gene2Symbol
 #'
+#' @note For the `format` argument, note that "long" was used instead of
+#'   "unmodified" prior to v0.10.10.
+#'
 #' @inheritParams params
 #' @param format `character(1)`.
 #'   Formatting method to apply:
@@ -13,10 +16,7 @@
 #'   - `"1:1"`: For gene symbols that map to multiple gene IDs, select only the
 #'     first annotated gene ID.
 #'
-#' @seealso `makeGene2Symbol()`.
-#'
-#' @note For the `format` argument, note that "long" was used instead of
-#'   "unmodified" prior to v0.10.10.
+#' @seealso [makeGene2Symbol()].
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")

@@ -1,5 +1,6 @@
 #' @name alphaThreshold
 #' @inherit bioverbs::alphaThreshold
+#' @note Updated 2019-07-28.
 #' @param ... Additional arguments.
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")

@@ -36,6 +36,9 @@ name must be defined in
 \description{
 Calculate and visualize the dropout rate.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 sce <- SingleCellExperiment

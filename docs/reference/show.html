@@ -72,7 +72,7 @@ Formal methods for show will
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.2</span>
       </span>
     </div>
 
@@ -130,7 +130,9 @@ Formal methods for show will
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for EggNOG</span>
+    <pre class="usage"><span class='fu'>show</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for EggNOG</span>
 <span class='fu'>show</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for PANTHER</span>
@@ -163,6 +165,10 @@ complete, original object, with misleading results.  See the
 <code>simpleInheritanceOnly</code> argument to <code>setGeneric</code> and
 the discussion in <code>setIs</code> for the general concept.</p>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Updated 2019-07-28.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code>showMethods</code> prints all the methods for one or more
@@ -174,11 +180,11 @@ the discussion in <code>setIs</code> for the general concept.</p>
 
 <span class='co'>## EggNOG ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EggNOG-class.html'>EggNOG</a></span>()
-<span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; EggNOG 0.11.0 of length 2
+<span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; EggNOG 0.11.2 of length 2
 #&gt; ids(10): COG5153 COG5156 ... ENOG410KJ10 ENOG410KJ1P
 #&gt; categories(18): 1 2 ... 17 18</div><div class='input'>
 <span class='co'>## PANTHER ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PANTHER-class.html'>PANTHER</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for homo_sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing hgnc.txt.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing hgnc.txt using data.table::fread().</span></div><div class='output co'>#&gt; <span class='message'>hgnc.txt.gz does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; PANTHER 0.11.0 of length 9
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PANTHER-class.html'>PANTHER</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for homo_sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing hgnc.txt.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing hgnc.txt using data.table::fread().</span></div><div class='output co'>#&gt; <span class='message'>hgnc.txt.gz does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; PANTHER 0.11.2 of length 9
 #&gt; organism: homo_sapiens
 #&gt; release: current_release
 #&gt; genes(10): ENSG00000010219 ENSG00000075188 ... ENSG00000197140 ENSG00000213886</div></pre>
@@ -191,6 +197,8 @@ the discussion in <code>setIs</code> for the general concept.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

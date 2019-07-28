@@ -43,6 +43,9 @@ Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns.
 Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

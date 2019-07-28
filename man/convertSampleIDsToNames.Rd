@@ -24,6 +24,9 @@ Varies, depending on the method.
 \description{
 Convert sample identifiers to names
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

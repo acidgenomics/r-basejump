@@ -30,6 +30,9 @@ Alpha cutoff level.
 \description{
 Alpha threshold
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

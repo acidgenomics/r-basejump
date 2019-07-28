@@ -27,6 +27,9 @@ Humanize an R object
 This can make dimnames invalid (see \code{\link[base:make.names]{make.names()}}) and
 should only be called prior to writing files to disk.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(
     RangedSummarizedExperiment,

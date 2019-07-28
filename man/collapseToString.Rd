@@ -49,6 +49,9 @@ Unique values.}
 \description{
 Collapse to string
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 ## character ====
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")

@@ -1,6 +1,7 @@
 #' Interconvert log ratio and fold change values
 #'
 #' @name logRatio
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param base `integer(1)`.

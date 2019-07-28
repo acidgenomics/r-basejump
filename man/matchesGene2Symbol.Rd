@@ -23,10 +23,13 @@ Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns.
 \item{.xname}{\emph{Not intended to be used directly.}}
 }
 \value{
-No value.
+\code{logical(1)}.
 }
 \description{
 Check that user-defined gene input matches expected values
+}
+\note{
+Updated 2019-07-28.
 }
 \examples{
 x <- S4Vectors::DataFrame(

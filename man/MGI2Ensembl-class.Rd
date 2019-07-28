@@ -15,6 +15,9 @@ Contains a \code{DataFrame} with \code{mgiID} and \code{geneID} columns.
 \description{
 MGI-to-Ensembl gene identifier mappings
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 options(acid.test = TRUE)
 x <- MGI2Ensembl()

@@ -1,5 +1,6 @@
 #' Match human gene orthologs
 #'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @inheritParams params
@@ -21,8 +22,6 @@
 #'     "ENSMUSG00000000037", "ENSMUSG00000000049"
 #' )
 #' matchHumanOrthologs(genes, ensemblRelease = 87L)
-
-## Updated 2019-07-17.
 matchHumanOrthologs <- function(
     genes,
     organism = NULL,
@@ -59,7 +58,7 @@ matchHumanOrthologs <- function(
     marts <- tryCatch(
         expr = biomaRt::listMarts(host = host),
         error = function(e) {
-            stop("biomaRt timed out connecting to Ensembl.", call. = FALSE)
+            stop("biomaRt timed out connecting to Ensembl.")
         }
     )
     version <- marts[["version"]][
@@ -88,7 +87,7 @@ matchHumanOrthologs <- function(
             host = host
         ),
         error = function(e) {
-            stop("biomaRt timed out connecting to Ensembl.", call. = FALSE)
+            stop("biomaRt timed out connecting to Ensembl.")
         }
     )
 
@@ -103,7 +102,7 @@ matchHumanOrthologs <- function(
             )
         ),
         error = function(e) {
-            stop("biomaRt timed out connecting to Ensembl.", call. = FALSE)
+            stop("biomaRt timed out connecting to Ensembl.")
         }
     ) %>%
         as_tibble(rownames = NULL) %>%

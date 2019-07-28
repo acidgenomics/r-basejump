@@ -4,6 +4,7 @@
 #' values unique. The function also strips `NA` values. This is useful for
 #' repetitive gene vector operations, for example.
 #'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @param object `atomic`.
@@ -12,8 +13,6 @@
 #'
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
-
-## Updated 2019-07-22.
 sortUnique <- function(object) {
     assert(is.atomic(object))
     unique(sort(object, na.last = TRUE))

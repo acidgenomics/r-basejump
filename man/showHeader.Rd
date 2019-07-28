@@ -15,11 +15,14 @@ Console output, via \code{\link[base:cat]{cat()}}.
 \description{
 Header for object show method
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment
 showHeader(rse)
 }
 \seealso{
-\code{\link[methods:show]{methods::show()}}.
+\code{\link[=show]{show()}}.
 }

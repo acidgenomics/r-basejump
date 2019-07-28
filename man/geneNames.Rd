@@ -25,6 +25,9 @@ geneNames(object, ...)
 Convenience function for quickly returning unique gene symbols that map to
 the stable gene IDs.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

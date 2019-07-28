@@ -67,6 +67,9 @@ objects.
 \item \code{SummarizedExperiment}: Summarize the primary \code{assay}.
 }}
 
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

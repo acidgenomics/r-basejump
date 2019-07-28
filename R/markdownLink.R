@@ -4,6 +4,7 @@
 #'
 #' @inherit markdownHeader
 #' @author Rory Kirchner, Michael Steinbaugh
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @param url `character(1)`.
@@ -19,8 +20,6 @@
 #'     url = "https://www.r-project.org",
 #'     title = "The R Project for Statistical Computing"
 #' )
-
-## Updated 2019-07-22.
 markdownLink <- function(
     text,
     url,

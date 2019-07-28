@@ -29,6 +29,9 @@ Include a Markdown-formatted list, either ordered or unordered. This function
 works in any R Markdown code block. When calling from inside an \code{asis} chunk,
 set \code{asis = TRUE}.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 groceries <- c("milk", "eggs")
 markdownList(groceries)

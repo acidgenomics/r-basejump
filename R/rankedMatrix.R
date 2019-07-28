@@ -2,8 +2,9 @@
 #'
 #' @note Ties are resolved automatically by calculating the average. See the
 #'   `ties.method` parameter in [`rank()`][base::rank] for details.
-#'
+#' @note Updated 2019-07-28.
 #' @export
+#'
 #' @inheritParams params
 #' @inheritParams base::apply
 #'
@@ -26,8 +27,6 @@
 #'
 #' ## Bidirectional
 #' rankedMatrix(lfc, method = "bidirectional")
-
-## Updated 2019-07-22.
 rankedMatrix <- function(
     object,
     MARGIN = 2L,  # nolint
