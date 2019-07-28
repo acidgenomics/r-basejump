@@ -7,7 +7,7 @@
 \alias{show,PANTHER-method}
 \title{Show an object}
 \usage{
-show(object, ...)
+show(object)
 
 \S4method{show}{EggNOG}(object)
 
@@ -15,8 +15,6 @@ show(object, ...)
 }
 \arguments{
 \item{object}{Any R object}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{show} returns an invisible \code{NULL}.

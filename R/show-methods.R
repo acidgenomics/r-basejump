@@ -4,8 +4,6 @@
 #' @inherit methods::show
 #' @note Updated 2019-07-28.
 #'
-#' @param ... Additional arguments.
-#'
 #' @examples
 #' options(acid.test = TRUE)
 #'
@@ -23,7 +21,7 @@ NULL
 #' @rdname show
 #' @name show
 #' @importFrom methods show
-#' @usage show(object, ...)
+#' @usage show(object)
 #' @export
 NULL
 
