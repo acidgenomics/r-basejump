@@ -3,7 +3,6 @@
 #'
 #' @note For the `format` argument, note that "long" was used instead of
 #'   "unmodified" prior to v0.10.10.
-#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param format `character(1)`.
@@ -17,7 +16,7 @@
 #'   - `"1:1"`: For gene symbols that map to multiple gene IDs, select only the
 #'     first annotated gene ID.
 #'
-#' @seealso `makeGene2Symbol()`.
+#' @seealso [makeGene2Symbol()].
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")

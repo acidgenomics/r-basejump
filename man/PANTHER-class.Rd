@@ -36,6 +36,9 @@ Use \code{pbapply::pblapply()} to show progress.}
 \href{http://www.pantherdb.org}{PANTHER} gene ontology definitions. PANTHER stands
 for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 options(acid.test = TRUE)
 x <- PANTHER("Homo sapiens", progress = FALSE)
