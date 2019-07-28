@@ -1,5 +1,4 @@
 #' @rdname MGI2Ensembl-class
-#' @note Updated 2019-07-28.
 #' @export
 #' @inheritParams params
 #' @examples

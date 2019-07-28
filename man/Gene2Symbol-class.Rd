@@ -50,6 +50,8 @@ For some organisms, gene names and gene symbols do not map 1:1
 (e.g. \emph{Homo sapiens} and \emph{Mus musculus}). Refer to the \code{format} argument here
 in the documentation for approaches that deal with this issue.
 
+Updated 2019-07-28.
+
 For the \code{format} argument, note that "long" was used instead of
 "unmodified" prior to v0.10.10.
 }
@@ -69,7 +71,7 @@ x <- Gene2Symbol(rse)
 print(x)
 }
 \seealso{
-\code{makeGene2Symbol()}.
+\code{\link[=makeGene2Symbol]{makeGene2Symbol()}}.
 }
 \author{
 Michael Steinbaugh
