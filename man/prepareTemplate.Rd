@@ -32,14 +32,17 @@ This code is used internally by:
 \item \code{bcbioSingleCell::prepareSingleCellTemplate()}.
 }
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 ## RNA-seq template.
 \dontrun{
-# prepareTemplate(package = "bcbioRNASeq")
+## > prepareTemplate(package = "bcbioRNASeq")
 }
 
 ## Single-cell RNA-seq template.
 \dontrun{
-# prepareTemplate(package = "bcbioSingleCell")
+## > prepareTemplate(package = "bcbioSingleCell")
 }
 }

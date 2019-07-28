@@ -46,6 +46,9 @@ constructor by slotting useful session information into the \code{metadata} slot
 \item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
 }
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 library(SingleCellExperiment)
 data(SingleCellExperiment, package = "acidtest")

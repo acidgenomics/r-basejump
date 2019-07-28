@@ -30,6 +30,9 @@ plates.
 \details{
 These plate formats are frequently used for high-throughput screening assays.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 ## Single 96-well plate.
 microplate(wells = 96L)

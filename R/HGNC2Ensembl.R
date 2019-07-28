@@ -1,12 +1,11 @@
 #' @rdname HGNC2Ensembl-class
+#' @note Updated 2019-07-28.
 #' @export
 #' @inheritParams params
 #' @examples
 #' options(acid.test = TRUE)
 #' x <- HGNC2Ensembl()
 #' print(x)
-
-## Updated 2019-07-22.
 HGNC2Ensembl <-  # nolint
     function() {
         assert(hasInternet())

@@ -10,8 +10,9 @@
 #' - `sessionInfo`: [sessioninfo::session_info()] return.
 #'
 #' @note Column and rows always return sorted alphabetically.
-#'
+#' @note Updated 2019-07-28.
 #' @export
+#'
 #' @inheritParams params
 #'
 #' @return
@@ -81,8 +82,6 @@
 #'     transgeneNames = "EGFP"
 #' )
 #' print(x)
-
-## Updated 2019-07-19.
 makeSummarizedExperiment <- function(
     assays,
     rowRanges = NULL,  # recommended

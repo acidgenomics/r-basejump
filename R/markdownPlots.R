@@ -4,9 +4,10 @@
 #' can be used in an R Markdown report, separated by headers. Internally, the
 #' headers are generated with the `markdownHeader` function.
 #'
+#' @note Updated 2019-07-28.
 #' @export
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param list `list`.
 #'   Named list containing `ggplot` objects.
 #'
@@ -19,8 +20,6 @@
 #' loadRemoteData(url = file.path(basejumpTestsURL, "plotlist.rds"))
 #' names(plotlist)
 #' markdownPlots(list = plotlist)
-
-## Updated 2019-07-22.
 markdownPlots <- function(list, headerLevel = 2L) {
     assert(
         is.list(list),

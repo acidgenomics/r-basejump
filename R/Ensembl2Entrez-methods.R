@@ -1,7 +1,8 @@
 #' @rdname Ensembl2Entrez-class
 #' @name Ensembl2Entrez
-#' @inheritParams params
+#' @note Updated 2019-07-28.
 #'
+#' @inheritParams params
 #' @param format `character(1)`.
 #'   Formatting method to apply:
 #'

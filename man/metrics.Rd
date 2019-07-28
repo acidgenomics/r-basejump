@@ -63,6 +63,9 @@ to \code{colnames}.
 \code{colnames}. Tibble is returned grouped by sample (\code{sampleID} column).
 }}
 
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(
     RangedSummarizedExperiment,

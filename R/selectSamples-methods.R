@@ -1,6 +1,9 @@
 #' @name selectSamples
 #' @inherit bioverbs::selectSamples
+#' @note Updated 2019-07-28.
+#'
 #' @inheritParams params
+#'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,

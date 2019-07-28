@@ -16,11 +16,14 @@ Interesting groups.}
 \item{.xname}{\emph{Not intended to be used directly.}}
 }
 \value{
-No value.
+\code{logical(1)}.
 }
 \description{
 Prevent unwanted downstream behavior when a missing interesting group
 is requested by the user.
+}
+\note{
+Updated 2019-07-28.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

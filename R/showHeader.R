@@ -1,6 +1,8 @@
 #' Header for object show method
 #'
+#' @note Updated 2019-07-28.
 #' @export
+#'
 #' @inheritParams params
 #'
 #' @return Console output, via [`cat()`][base::cat].
@@ -11,8 +13,6 @@
 #' data(RangedSummarizedExperiment, package = "acidtest")
 #' rse <- RangedSummarizedExperiment
 #' showHeader(rse)
-
-## Updated 2019-07-22.
 showHeader <- function(object) {
     class <- class(object)[[1L]]
     out <- class

@@ -47,6 +47,8 @@ Useful for describing non-normal (i.e. geometric) distributions.
 This function should be fully zero- and \code{NA}-tolerant. This calculation
 is not particularly useful if there are elements that are <= 0 and will
 return \code{NaN}.
+
+Updated 2019-07-28.
 }
 \examples{
 ## numeric ====

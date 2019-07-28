@@ -9,6 +9,7 @@
 #' **O**rthologous **G**roups.
 #'
 #' @author Michael Steinbaugh
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @return `EggNOG`.
@@ -57,6 +58,7 @@ setClass(
 #' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 #'
 #' @author Michael Steinbaugh
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @return `Ensembl2Entrez`.
@@ -87,6 +89,7 @@ setClass(
 #' [`metadata()`][S4Vectors::metadata].
 #'
 #' @author Michael Steinbaugh
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @return `Gene2Symbol`.
@@ -110,6 +113,7 @@ setClass(
 #' HGNC-to-Ensembl gene identifier mappings
 #'
 #' @author Michael Steinbaugh
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @return `HGNC2Ensembl`.
@@ -137,6 +141,7 @@ setClass(
 #' MGI-to-Ensembl gene identifier mappings
 #'
 #' @author Michael Steinbaugh
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @return `MGI2Ensembl`.
@@ -161,6 +166,7 @@ setClass(
 #' for **P**rotein **AN**alysis **TH**rough **E**volutionary **R**elationships.
 #'
 #' @author Michael Steinbaugh
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @return `PANTHER`. Contains a `DataFrame`.
@@ -199,6 +205,7 @@ setClass(
 #' `metadata`.
 #'
 #' @author Michael Steinbaugh
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @return `Tx2Gene`.

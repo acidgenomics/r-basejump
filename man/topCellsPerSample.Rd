@@ -25,6 +25,9 @@ Top barcodes as \code{character}, split by \code{sampleID}.
 \description{
 Obtain the top cellular barcodes, based on counts.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 sce <- SingleCellExperiment

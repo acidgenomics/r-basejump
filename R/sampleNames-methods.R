@@ -5,6 +5,7 @@
 #' the syntactically valid names defined as the rownames of `sampleData`.
 #'
 #' @name sampleNames
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.

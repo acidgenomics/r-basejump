@@ -1,6 +1,7 @@
 #' @name zerosVsDepth
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @inherit bioverbs::zerosVsDepth
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.

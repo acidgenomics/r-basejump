@@ -69,9 +69,11 @@ Aggregate gene/transcript features (rows) or sample replicates (columns).
 \code{\link[=aggregateRows]{aggregateRows()}} works down the rows, and is designed to aggregate features
 (e.g. genes or transcripts). Most commonly, the \code{\link[=aggregateRows]{aggregateRows()}} function
 can be used to aggregate counts from transcript-level to gene-level.
-
 \code{\link[=aggregateCols]{aggregateCols()}} works across the columns, and is designed to aggregate
 sample replicates.
+}
+\note{
+Updated 2019-07-28.
 }
 \section{Methods (by class)}{
 

@@ -56,6 +56,8 @@ constructor by slotting useful session information into the \code{metadata} slot
 }
 \note{
 Column and rows always return sorted alphabetically.
+
+Updated 2019-07-28.
 }
 \examples{
 library(IRanges)

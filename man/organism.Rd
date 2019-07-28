@@ -40,6 +40,9 @@ Latin organism name (e.g. \emph{Homo sapiens}).
 \description{
 Organism
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

@@ -5,6 +5,7 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeGene2Symbol
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @inheritParams Gene2Symbol

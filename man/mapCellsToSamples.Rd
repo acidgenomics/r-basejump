@@ -21,6 +21,9 @@ Cells as the names and samples as the levels.
 This function extracts \code{sampleID} from the \code{cellID} column using grep
 matching.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 samples <- paste0("sample", seq_len(2L))
 print(samples)

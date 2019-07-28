@@ -5,7 +5,7 @@
 #' @note [knitr::kable()] now supports multiple tables as a `list` for the `x`
 #'   argument, but it still only supports a single caption. `markdownTables`
 #'   extends this functionality, but supporting captions for each table.
-#'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @param list Named `list`.
@@ -35,8 +35,6 @@
 #'     mtcars = "Motor Trend car road tests"
 #' )
 #' markdownTables(list = list, captions = captions)
-
-## Updated 2019-07-22.
 markdownTables <- function(
     list,
     captions = NULL,

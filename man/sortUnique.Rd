@@ -17,6 +17,9 @@ This is a convenience function to quickly sort and atomic vector and make the
 values unique. The function also strips \code{NA} values. This is useful for
 repetitive gene vector operations, for example.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 }

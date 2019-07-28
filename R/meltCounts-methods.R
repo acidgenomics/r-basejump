@@ -1,5 +1,6 @@
 #' @name meltCounts
 #' @inherit bioverbs::meltCounts
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param minCounts `integer(1)` or `NULL`.
