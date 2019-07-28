@@ -3,7 +3,7 @@
 #' Detect if R is running on a high-performance computing (HPC) cluster.
 #'
 #' @note Currently supports detection of Slurm or LSF.
-#'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @return `character(1)` or `logical(1)`.
@@ -18,8 +18,6 @@
 #'
 #' @examples
 #' detectHPC()
-
-## Updated 2019-07-22.
 detectHPC <- function() {
     if (!identical(Sys.getenv("LSF_ENVDIR"), "")) {
         "LSF"

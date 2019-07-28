@@ -68,6 +68,9 @@ for accessing sample metadata for datasets where multiple items in the
 columns map to a single sample (e.g. cells for a single-cell RNA-seq
 experiment).
 }
+\note{
+Updated 2019-07-28.
+}
 \section{All supported S4 classes}{
 
 

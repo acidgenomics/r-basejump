@@ -36,6 +36,9 @@ Utility function that enables quick and easy sample selection.
 Internally, pattern matching against sample and file names is applied using
 logical grep matching.
 }
+\note{
+Updated 2019-07-28.
+}
 \section{Intended usage}{
 
 

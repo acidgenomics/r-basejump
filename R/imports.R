@@ -24,7 +24,7 @@
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom S4Vectors DataFrame List Rle %in% aggregate cor decode expand
-#'   head mcols mcols<- merge metadata metadata<- na.omit split tail
+#'   head mcols mcols<- merge metadata metadata<- na.omit split summary tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges

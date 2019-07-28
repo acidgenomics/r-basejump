@@ -1,5 +1,7 @@
 #' @name combine
 #' @inherit BiocGenerics::combine
+#' @note Updated 2019-07-28.
+#'
 #' @param ... Additional arguments.
 #'
 #' @note We're attempting to make this as strict as possible, requiring:

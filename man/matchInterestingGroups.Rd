@@ -23,6 +23,9 @@ Match the user-defined interesting groups to the values slotted within a
 supports a missing \code{interestingGroups} argument, which will then use the
 \code{interestingGroups} accessor function internally.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

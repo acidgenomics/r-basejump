@@ -16,6 +16,8 @@ Detect if R is running on a high-performance computing (HPC) cluster.
 }
 \note{
 Currently supports detection of Slurm or LSF.
+
+Updated 2019-07-28.
 }
 \examples{
 detectHPC()

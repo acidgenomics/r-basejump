@@ -16,6 +16,9 @@ Invisible \code{NULL}.
 \description{
 Show slot information
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 showSlotInfo(list(
     dir = "~",

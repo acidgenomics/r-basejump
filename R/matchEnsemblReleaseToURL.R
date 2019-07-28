@@ -1,5 +1,6 @@
 #' Match Ensembl release to archive URL.
 #'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @param release `integer(1)` or `character(1)`.
@@ -10,8 +11,6 @@
 #'
 #' @examples
 #' matchEnsemblReleaseToURL(96L)
-
-## Updated 2019-07-17.
 matchEnsemblReleaseToURL <- function(release) {
     requireNamespace("biomaRt", quietly = TRUE)
     if (is.null(release)) {
@@ -22,7 +21,7 @@ matchEnsemblReleaseToURL <- function(release) {
     map <- tryCatch(
         expr = biomaRt::listEnsemblArchives(),
         error = function(e) {
-            stop("biomaRt timed out connecting to Ensembl.", call. = FALSE)
+            stop("biomaRt timed out connecting to Ensembl.")
         }
     )
     assert(

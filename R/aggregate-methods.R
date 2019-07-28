@@ -5,12 +5,12 @@
 #' [aggregateRows()] works down the rows, and is designed to aggregate features
 #' (e.g. genes or transcripts). Most commonly, the [aggregateRows()] function
 #' can be used to aggregate counts from transcript-level to gene-level.
-#'
 #' [aggregateCols()] works across the columns, and is designed to aggregate
 #' sample replicates.
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.

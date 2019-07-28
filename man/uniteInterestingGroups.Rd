@@ -28,6 +28,9 @@ Create a single interesting groups column (\code{interestingGroups}) used for
 coloring in plots. When multiple interesting groups are present, unite into a
 single column, delimited by a colon.
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

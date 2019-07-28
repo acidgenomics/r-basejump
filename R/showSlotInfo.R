@@ -1,9 +1,10 @@
 #' Show slot information
 #'
+#' @note Updated 2019-07-28.
+#' @export
+#'
 #' @param list `list`.
 #'   Named list containing slot metadata.
-#'
-#' @export
 #'
 #' @return Invisible `NULL`.
 #'
@@ -13,8 +14,6 @@
 #'     skip = NULL,
 #'     filtered = TRUE
 #' ))
-
-## Updated 2019-07-22.
 showSlotInfo <- function(list) {
     assert(is.list(list))
     ## Consider checking for all atomic here.

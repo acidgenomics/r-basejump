@@ -1,7 +1,7 @@
 #' @rdname PANTHER-class
 #' @export
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param organism `character(1)`.
 #'   Full Latin organism name.
 #'
@@ -22,8 +22,6 @@
 #' options(acid.test = TRUE)
 #' x <- PANTHER("Homo sapiens", progress = FALSE)
 #' summary(x)
-
-## Updated 2019-07-22.
 PANTHER <- function(  # nolint
     organism,
     release = NULL,

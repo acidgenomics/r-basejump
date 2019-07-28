@@ -1,8 +1,9 @@
 #' Assign multiple objects into a new environment
 #'
-#' @inheritParams brio::dots
+#' @note Updated 2019-07-28.
 #' @export
 #'
+#' @inheritParams brio::dots
 #' @param envirName `character(1)`.
 #'   Name of the new `environment` to create.
 #' @param parentFrame `environment`.
@@ -17,8 +18,6 @@
 #' multiassignAsEnvir(data.frame, matrix, envirName = "example")
 #' class(example)
 #' ls(example)
-
-## Updated 2019-07-22.
 multiassignAsEnvir <- function(
     ...,
     envirName,

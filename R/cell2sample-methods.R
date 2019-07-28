@@ -1,11 +1,12 @@
 #' @name cell2sample
 #' @inherit bioverbs::cell2sample
 #'
-#' @inheritParams params
-#' @param ... Additional arguments.
-#'
 #' @note `sampleID` column must be defined in
 #' [`colData()`][SummarizedExperiment::colData].
+#' @note Updated 2019-07-28.
+#'
+#' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @return
 #' - `"factor"`: Named `factor` containing as the [levels][base::levels] and

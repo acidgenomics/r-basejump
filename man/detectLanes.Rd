@@ -20,6 +20,9 @@ Lane numbers.
 \description{
 Detect sequencing lanes
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 ## Matching lanes 1-4 for paired-end FASTQ files.
 files <- paste0(

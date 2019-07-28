@@ -23,6 +23,9 @@ Object names defined in the new \code{environment}.
 \description{
 Assign multiple objects into a new environment
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 data(data.frame, matrix, package = "acidtest")
 multiassignAsEnvir(data.frame, matrix, envirName = "example")

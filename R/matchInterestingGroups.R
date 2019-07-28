@@ -5,6 +5,7 @@
 #' supports a missing `interestingGroups` argument, which will then use the
 #' `interestingGroups` accessor function internally.
 #'
+#' @note Updated 2019-07-28.
 #' @export
 #'
 #' @inheritParams params
@@ -19,8 +20,6 @@
 #' matchInterestingGroups(rse)
 #' matchInterestingGroups(rse, interestingGroups = NULL)
 #' matchInterestingGroups(rse, interestingGroups = substitute())
-
-## Updated 2019-07-22.
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
     ## Legacy support for bcbio R packages, which pass missing
     ## `interestingGroups` parameter through.

@@ -5,8 +5,6 @@
 #' options(acid.test = TRUE)
 #' x <- HGNC2Ensembl()
 #' print(x)
-
-## Updated 2019-07-22.
 HGNC2Ensembl <-  # nolint
     function() {
         assert(hasInternet())

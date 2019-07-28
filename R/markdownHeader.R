@@ -3,9 +3,10 @@
 #' Generate a Markdown header (levels 1-7) in any R Markdown code block. When
 #' calling inside an `asis` chunk, set `asis = TRUE`.
 #'
+#' @note Updated 2019-07-28.
 #' @export
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param text `character(1)`.
 #'   Header text.
 #' @param level `integer(1)`.
@@ -27,8 +28,6 @@
 #' markdownHeader("Header", level = 2L)
 #' markdownHeader("Header", tabset = TRUE)
 #' markdownHeader("Header", asis = TRUE)
-
-## Updated 2019-07-22.
 markdownHeader <- function(
     text,
     level = 2L,

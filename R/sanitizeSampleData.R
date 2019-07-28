@@ -7,9 +7,10 @@
 #' - interestingGroups.
 #' - sampleID.
 #'
+#' @note Updated 2019-07-28.
 #' @export
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param object `DataFrame` (recommended) or `data.frame` (legacy).
 #'   Note that legacy `data.frame` support will be removed in a future update.
 #'
@@ -27,8 +28,6 @@
 #' to <- sanitizeSampleData(from)
 #' all(vapply(to, is.factor, logical(1L)))
 #' print(to)
-
-## Updated 2019-07-22.
 sanitizeSampleData <- function(object) {
     ## Still allowing standard `data.frame`, to support bcbioRNASeq v0.2.9.
     ## Require stricter `DataFrame` input in a future update.

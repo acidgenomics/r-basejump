@@ -7,6 +7,7 @@
 
 #' @name sampleData
 #' @inherit bioverbs::sampleData
+#' @note Updated 2019-07-28.
 #'
 #' @section All supported S4 classes:
 #'

@@ -1,6 +1,11 @@
 #' @name geometricMean
 #' @inherit bioverbs::geometricMean
 #'
+#' @note This function should be fully zero- and `NA`-tolerant. This calculation
+#'   is not particularly useful if there are elements that are <= 0 and will
+#'   return `NaN`.
+#' @note Updated 2019-07-28.
+#'
 #' @inheritParams params
 #' @inheritParams base::apply
 #' @param removeNA `logical(1)`.
@@ -8,10 +13,6 @@
 #' @param zeroPropagate `logical(1)`.
 #'   Allow propagation of zeroes.
 #' @param ... Additional arguments.
-#'
-#' @note This function should be fully zero- and `NA`-tolerant. This calculation
-#'   is not particularly useful if there are elements that are <= 0 and will
-#'   return `NaN`.
 #'
 #' @seealso
 #' - [Paul McMurdie's code](https://stackoverflow.com/a/25555105).

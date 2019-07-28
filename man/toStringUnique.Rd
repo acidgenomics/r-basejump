@@ -15,9 +15,12 @@ toStringUnique(object)
 \description{
 Convert to a unique character string
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 }
 \seealso{
-\code{toString}.
+\code{\link[base:toString]{toString()}}.
 }

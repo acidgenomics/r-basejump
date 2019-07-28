@@ -33,6 +33,8 @@ Cell-to-sample mappings
 \note{
 \code{sampleID} column must be defined in
 \code{\link[SummarizedExperiment:colData]{colData()}}.
+
+Updated 2019-07-28.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

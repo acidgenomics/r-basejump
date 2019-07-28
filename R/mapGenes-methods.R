@@ -13,6 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
+#' @note Updated 2019-07-28.
 #'
 #' @inheritParams params
 #' @param strict `logical(1)`.
@@ -112,9 +113,7 @@ NULL
     }
     unmapped <- which(is.na(match))
     if (length(unmapped) > 0L) {
-        fun(paste(
-            "Some genes failed to map:", toString(genes[unmapped])
-        ), call. = FALSE)
+        fun(paste("Some genes failed to map:", toString(genes[unmapped])))
     }
 
     ## Return the identifiers that map to rownames.
@@ -199,7 +198,7 @@ setMethod(
             if (length(unmapped) > 0L) {
                 fun(paste(
                     "Some genes failed to map:", toString(genes[unmapped])
-                ), call. = FALSE)
+                ))
             }
 
             ## Return the identifiers that map to rownames.

@@ -10,8 +10,9 @@
 #' - `sessionInfo`: [sessioninfo::session_info()] return.
 #'
 #' @note Column and rows always return sorted alphabetically.
-#'
+#' @note Updated 2019-07-28.
 #' @export
+#'
 #' @inheritParams params
 #'
 #' @return
@@ -19,8 +20,8 @@
 #' - Providing `rowData`: `SummarizedExperiment`.
 #'
 #' @seealso
-#' - `SummarizedExperiment::SummarizedExperiment()`.
-#' - `SingleCellExperiment::SingleCellExperiment()`.
+#' - [`SummarizedExperiment()`][SummarizedExperiment::SummarizedExperiment].
+#' - [`SingleCellExperiment()`][SingleCellExperiment::SingleCellExperiment].
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.
@@ -81,8 +82,6 @@
 #'     transgeneNames = "EGFP"
 #' )
 #' print(x)
-
-## Updated 2019-07-19.
 makeSummarizedExperiment <- function(
     assays,
     rowRanges = NULL,  # recommended

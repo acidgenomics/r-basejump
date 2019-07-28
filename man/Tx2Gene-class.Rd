@@ -31,6 +31,8 @@ Contains a \code{DataFrame} with \code{transcriptID} and \code{geneID} columns.
 Transcript-to-gene identifier mappings
 }
 \note{
+Updated 2019-07-28.
+
 No attempt is made to arrange the rows by transcript identifier.
 }
 \section{Genome metadata}{
@@ -50,7 +52,7 @@ x <- Tx2Gene(txse)
 print(x)
 }
 \seealso{
-\code{makeTx2Gene()}.
+\code{\link[=makeTx2Gene]{makeTx2Gene()}}.
 }
 \author{
 Michael Steinbaugh

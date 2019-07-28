@@ -1,8 +1,12 @@
 #' @rdname Tx2Gene-class
 #' @name Tx2Gene
+#'
 #' @note No attempt is made to arrange the rows by transcript identifier.
+#'
 #' @inheritParams params
-#' @seealso `makeTx2Gene()`.
+#'
+#' @seealso [makeTx2Gene()].
+#'
 #' @examples
 #' ## SummarizedExperiment ====
 #' data(SummarizedExperiment_transcripts, package = "acidtest")

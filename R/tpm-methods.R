@@ -2,6 +2,7 @@
 #'
 #' @note Both gene- and transcript-level counts are supported, as long as they
 #'   were imported using a tximport caller (e.g. salmon, kallisto).
+#' @note Updated 2019-07-28.
 #'
 #' @name tpm
 #' @inheritParams params

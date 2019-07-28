@@ -46,6 +46,9 @@ constructor by slotting useful session information into the \code{metadata} slot
 \item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
 }
 }
+\note{
+Updated 2019-07-28.
+}
 \examples{
 library(SingleCellExperiment)
 data(SingleCellExperiment, package = "acidtest")
@@ -66,8 +69,8 @@ print(x)
 }
 \seealso{
 \itemize{
-\item \code{SummarizedExperiment::SummarizedExperiment()}.
-\item \code{SingleCellExperiment::SingleCellExperiment()}.
+\item \code{\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment()}}.
+\item \code{\link[SingleCellExperiment:SingleCellExperiment]{SingleCellExperiment()}}.
 \item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.

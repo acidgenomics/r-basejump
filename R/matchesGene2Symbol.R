@@ -1,12 +1,15 @@
 #' Check that user-defined gene input matches expected values
 #'
+#' @note Updated 2019-07-28.
 #' @export
-#' @inherit params
 #'
+#' @inheritParams params
 #' @inheritParams goalie::params
 #' @param x Object class supporting [`rownames()`][base::rownames].
 #'   All rownames in this object must intersect with the rownames defined in the
 #'   `gene2symbol` argument.
+#'
+#' @return `logical(1)`.
 #'
 #' @examples
 #' x <- S4Vectors::DataFrame(
@@ -33,8 +36,6 @@
 #'
 #' matchesGene2Symbol(x = x, genes = geneIDs, gene2symbol = g2s)
 #' matchesGene2Symbol(x = x, genes = geneNames, gene2symbol = g2s)
-
-## Updated 2019-07-22.
 matchesGene2Symbol <- function(
     x,
     genes,
