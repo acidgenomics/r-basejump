@@ -3,7 +3,6 @@
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Travis CI build status](https://travis-ci.com/acidgenomics/basejump.svg?branch=master)](https://travis-ci.com/acidgenomics/basejump)
 [![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/007vq15089ukn6ej/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/basejump/branch/master)
-[![Anaconda cloud version](https://anaconda.org/bioconda/r-basejump/badges/version.svg)](https://anaconda.org/bioconda/r-basejump)
 [![Anaconda version](https://anaconda.org/bioconda/r-basejump/badges/version.svg) ![Anaconda latest release date](https://anaconda.org/bioconda/r-basejump/badges/latest_release_date.svg) ![Anaconda downloads](https://anaconda.org/bioconda/r-basejump/badges/downloads.svg)](https://anaconda.org/bioconda/r-basejump)
 
 Base functions for bioinformatics and [R][] package development.
@@ -49,9 +48,9 @@ conda install -c bioconda r-basejump
 
 The papers and software cited in our workflows are available as a [shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
 
-[bioconda]: https://bioconda.github.io/
 [BiocManager]: https://cran.r-project.org/package=BiocManager
 [Bioconductor]: https://bioconductor.org/
-[conda]: https://conda.io/
 [Paperpile]: https://paperpile.com/
 [R]: https://www.r-project.org/
+[bioconda]: https://bioconda.github.io/
+[conda]: https://conda.io/
