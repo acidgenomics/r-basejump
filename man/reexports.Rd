@@ -55,12 +55,12 @@
 \alias{camel}
 \alias{dotted}
 \alias{kebab}
-\alias{label}
 \alias{makeDimnames}
+\alias{makeLabel}
 \alias{makeNames}
+\alias{makeTitle}
 \alias{makeWords}
 \alias{snake}
-\alias{title}
 \alias{upperCamel}
 \alias{as.SummarizedExperiment}
 \alias{as.data.table}
@@ -92,7 +92,7 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 
-  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{label}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{title}}, \code{\link[syntactic]{upperCamel}}}
+  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
