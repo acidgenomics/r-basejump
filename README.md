@@ -48,9 +48,9 @@ conda install -c bioconda r-basejump
 
 The papers and software cited in our workflows are available as a [shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
 
-[bioconda]: https://bioconda.github.io/
 [BiocManager]: https://cran.r-project.org/package=BiocManager
 [Bioconductor]: https://bioconductor.org/
-[conda]: https://conda.io/
 [Paperpile]: https://paperpile.com/
 [R]: https://www.r-project.org/
+[bioconda]: https://bioconda.github.io/
+[conda]: https://conda.io/
