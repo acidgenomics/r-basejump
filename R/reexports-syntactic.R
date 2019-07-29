@@ -40,17 +40,21 @@ syntactic::kebab
 #' @export
 NULL
 
-#' @importFrom syntactic label
-#' @export
-syntactic::label
-
 #' @importFrom syntactic makeDimnames
 #' @export
 syntactic::makeDimnames
 
+#' @importFrom syntactic makeLabel
+#' @export
+syntactic::makeLabel
+
 #' @importFrom syntactic makeNames
 #' @export
 syntactic::makeNames
+
+#' @importFrom syntactic makeTitle
+#' @export
+syntactic::makeTitle
 
 #' @importFrom syntactic makeWords
 #' @export
@@ -81,10 +85,6 @@ syntactic::snake
 #' @usage snakeCase(object, ...)
 #' @export
 NULL
-
-#' @importFrom syntactic title
-#' @export
-syntactic::title
 
 #' @importFrom syntactic upperCamel
 #' @export

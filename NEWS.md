@@ -1,8 +1,8 @@
-## basejump 0.11.12 (2019-07-28)
+## basejump 0.11.12 (2019-07-29)
 
 ### Minor changes
 
-- Reexporting new functions in syntactic: `makeWords`, `label`, `title`.
+- Reexporting new functions in syntactic: `makeLabel`, `makeTitle`, `makeWords`.
 - Updated documentation to include modification timestamp.
 
 ## basejump 0.11.1 (2019-07-24)
