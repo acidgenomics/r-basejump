@@ -1,4 +1,10 @@
-## basejump 0.11.12 (2019-07-29)
+## basejump 0.11.3 (2019-07-30)
+
+- `mapCellsToSamples`: Relaxed grep matching on `cells` input to support legacy
+  bcbioSingleCell objects. This change was needed to improve `updateObject`
+  method in the upcoming bcbioSingleCell update.
+
+## basejump 0.11.2 (2019-07-29)
 
 ### Minor changes
 

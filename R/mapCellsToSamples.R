@@ -4,7 +4,7 @@
 #' matching.
 #'
 #' @name mapCellsToSamples
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-07-30.
 #' @export
 #'
 #' @param cells `character`.
@@ -30,8 +30,8 @@ mapCellsToSamples <- function(cells, samples) {
     ## Early return as simple factor for single sample.
     ## This code is useful for working with some example objects (e.g. PBMC).
     if (isString(samples)) {
-        ## Check that cells match DNA bases.
-        assert(allAreMatchingRegex(x = cells, pattern = "^[ACGT]+$"))
+        ## Check that cells input contains expected barcodes with DNA bases.
+        assert(allAreMatchingRegex(x = cells, pattern = "[ACGT]+$"))
         cell2sample <- factor(replicate(n = length(cells), expr = samples))
         names(cell2sample) <- cells
         return(cell2sample)

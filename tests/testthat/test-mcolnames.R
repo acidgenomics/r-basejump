@@ -15,12 +15,7 @@ test_that("GRanges", {
 })
 
 test_that("SummarizedExperiment", {
-    expect_identical(
-        object = mcolnames(rse),
-        expected = c(
-            "geneID", "geneName", "geneBiotype", "broadClass", "entrezID"
-        )
-    )
+    expect_true("geneName" %in% mcolnames(rse))
 })
 
 
