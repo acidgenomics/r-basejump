@@ -26,17 +26,7 @@ test_that("summary", {
     x <- Gene2Symbol(rse)
     output <- capture.output(summary(x))
     expect_identical(
-        output,
-        c(
-            "genes: 500",
-            "symbols: 500",
-            "format: makeUnique",
-            "organism: Homo sapiens",
-            "genomeBuild: GRCh38",
-            "ensemblRelease: 92",
-            "id: AH60977",
-            "version: 0.1.0",
-            "date: 2019-03-27"
-        )
+        head(output, n = 1L),
+        paste("genes:", nrow(rse))
     )
 })
