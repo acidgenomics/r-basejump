@@ -67,7 +67,7 @@ Imports:
     methods,
     utils
 Suggests:
-    acidtest (>= 0.1.5),
+    acidtest (>= 0.2.1),
     BiocStyle,
     EnsDb.Hsapiens.v75,
     biomaRt,
