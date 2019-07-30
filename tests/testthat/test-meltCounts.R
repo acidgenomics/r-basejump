@@ -5,17 +5,19 @@ test_that("SummarizedExperiment", {
     expect_s3_class(x, "tbl_df")
 })
 
+## Here we're checking the handling of zero count genes.
 test_that("minCounts", {
-    x <- meltCounts(rse, minCounts = 1L)
-    ## Note that this step shouldn't drop all zeros, only all-zero genes.
-    expect_true(any(x[["counts"]] == 0L))
+    object <- rse
+    assay(object)[seq_len(2L), ] <- 0L
+    x <- meltCounts(object, minCounts = 1L)
 
     ## Check for removal of our all-zero gene.
     expect_identical(
-        object = setdiff(x = rownames(rse), y = unique(x[["rowname"]])),
-        expected = "gene433"
+        object = setdiff(x = rownames(object), y = unique(x[["rowname"]])),
+        expected = head(rownames(object), n = 2L)
     )
-    expect_true(all(assay(rse)["gene433", , drop = TRUE] == 0L))
+    ## Note that this step shouldn't drop all zeros, only all-zero genes.
+    expect_true(any(x[["counts"]] == 0L))
 })
 
 test_that("Require at least 1 count per feature", {
@@ -37,8 +39,8 @@ with_parameters_test_that(
     },
     trans = trans,
     expected = list(
-        identity = c(1, 30, 27, 253, 0, 1),  # nolint
-        log2 = c(1.000, 4.954, 4.807, 7.989, 0.000, 1.000),
-        log10 = c(0.301, 1.491, 1.447, 2.405, 0.000, 0.301)
+        identity = c(4, 49, 73, 0, 6, 12),  # nolint
+        log2 = c(2.322, 5.644, 6.209, 0.000, 2.807, 3.700),
+        log10 = c(0.699, 1.699, 1.869, 0.000, 0.845, 1.114)
     )
 )
