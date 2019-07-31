@@ -1,15 +1,4 @@
-Meta
-doc
 .RData
+.Rcheck
 .Rhistory
 .Rproj.user
-.Ruserdata
-docs/reference/*/
-docs/reference/*.bib
-docs/reference/*.rda
-docs/reference/*.R
-docs/reference/*.Rmd
-docs/reference/*.yaml
-inst/doc/
-.httr-oauth
-*.pdf
