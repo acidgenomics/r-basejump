@@ -7,7 +7,7 @@
 
 
 
-#' @importClassesFrom GenomicRanges GRanges
+#' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix sparseMatrix
 #' @importClassesFrom S4Vectors Annotated DataFrame DataTable List Vector
@@ -23,8 +23,9 @@
 #'   rowSums setdiff t
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom S4Vectors DataFrame List Rle %in% aggregate cor decode expand
-#'   head mcols mcols<- merge metadata metadata<- na.omit split summary tail
+#' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate cor decode
+#'   expand head mcols mcols<- merge metadata metadata<- na.omit split summary
+#'   tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
 #'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
@@ -33,10 +34,10 @@
 #'   mutate_all mutate_at mutate_if pull rename select select_if slice
 #'   summarise_all top_n ungroup
 #' @importFrom goalie allAreMatchingRegex areDisjointSets areIntersectingSets
-#'   areSameLength areSetEqual assert bapply false getNameInParent hasDims
-#'   hasInternet hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols
-#'   hasRows hasRownames hasUniqueCols hasValidDimnames hasValidNames
-#'   isADirectory isAlpha isAny isCharacter isFlag isGGScale
+#'   areSameLength areSetEqual assert bapply false getNameInParent hasCols
+#'   hasDims hasInternet hasLength hasNames hasNoDuplicates
+#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
+#'   hasValidNames isADirectory isAlpha isAny isCharacter isFlag isGGScale
 #'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
 #'   isInRange isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber
 #'   isPositive isScalar isString isSubset isSuperset matchesUniqueGeneNames

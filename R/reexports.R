@@ -43,12 +43,26 @@ NULL
 
 
 
-## Assignment pipe
+#' @importFrom GenomicRanges GRanges
+#' @export
+GenomicRanges::GRanges
+
+#' @importFrom GenomicRanges GRangesList
+#' @export
+GenomicRanges::GRangesList
+
+#' @importFrom S4Vectors DataFrame
+#' @export
+S4Vectors::DataFrame
+
+#' @importFrom S4Vectors SimpleList
+#' @export
+S4Vectors::SimpleList
+
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
 
-## Exposition pipe
 #' @importFrom magrittr %$%
 magrittr::`%$%`
 
@@ -73,8 +87,6 @@ magrittr::set_names
 #' @importFrom magrittr set_rownames
 #' @export
 magrittr::set_rownames
-
-
 
 #' @importFrom tibble tibble
 #' @export
