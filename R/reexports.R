@@ -51,6 +51,10 @@ GenomicRanges::GRanges
 #' @export
 GenomicRanges::GRangesList
 
+#' @importFrom IRanges IRanges
+#' @export
+IRanges::IRanges
+
 #' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
@@ -58,6 +62,10 @@ S4Vectors::DataFrame
 #' @importFrom S4Vectors SimpleList
 #' @export
 S4Vectors::SimpleList
+
+#' @importFrom SingleCellExperiment reducedDims
+#' @export
+SingleCellExperiment::reducedDims
 
 #' @importFrom magrittr %<>%
 #' @export
