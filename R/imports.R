@@ -46,8 +46,8 @@
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
-#'   new selectMethod setAs setClass setGeneric setMethod setOldClass show
-#'   signature slot slotNames validObject .hasSlot
+#'   new selectMethod setAs setClass setGeneric setMethod setOldClass
+#'   setValidity show signature slot slotNames validObject .hasSlot
 #' @importFrom purrr map
 #' @importFrom readr cols read_lines read_tsv
 #' @importFrom reshape2 melt

@@ -19,6 +19,18 @@ Name or index of count matrix slotted in
 name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
+\item{assays}{\code{SimpleList}.
+Count matrices, which must have matching dimensions. Counts can be passed
+in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
+
+\item{censorSamples}{\code{character}.
+Specify a subset of samples to censor.}
+
+\item{colData}{\code{DataFrame}.
+Metadata describing the assay columns. For bulk RNA-seq, this data
+describes the samples. For single-cell RNA-seq, this data describes the
+cells.}
+
 \item{colnames}{\code{logical(1)}.
 Apply to column names.}
 
@@ -62,6 +74,10 @@ Ensembl genome build assembly name (e.g. \code{"GRCh38"}). If set \code{NULL},
 defaults to the most recent build available. Note: don't pass in UCSC build
 IDs (e.g. \code{"hg38"}).}
 
+\item{gffFile}{\code{character(1)}.
+GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
+(GFFv2) instead of a GFFv3 file if possible.}
+
 \item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}).
 Markdown header level.}
 
@@ -81,6 +97,9 @@ Groups of interest that define the samples. If left unset, defaults to
 \item{level}{\code{character(1)}.
 Return as genes or transcripts.}
 
+\item{metadata}{\code{list}.
+Metadata.}
+
 \item{n}{\code{integer(1)}.
 Number to include.}
 
@@ -92,21 +111,46 @@ Number of top genes to label.}
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
+\item{prefilter}{\code{logical(1)}.
+Apply prefiltering. Remove zero count genes.}
+
 \item{progress}{\code{logical(1)}.
 Show progress, using progress bars.}
+
+\item{reducedDims}{\code{SimpleList}.
+List containing matrices of cell coordinates in reduced space.}
 
 \item{return}{\code{character(1)}.
 Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
 to the first argument in the \code{character} vector.}
 
+\item{rowData}{\code{DataFrame}.
+Metadata describing the assay rows, if genomic ranges are not available.
+\emph{Use rowRanges (GRanges) instead, if possible}.}
+
+\item{rowRanges}{\code{GRanges} or \code{GRangesList}.
+Genomic ranges (e.g. genome annotations). Metadata describing the assay
+rows.}
+
 \item{rownames}{\code{logical(1)}.
 Apply to row names.}
+
+\item{sampleMetadataFile}{\code{character(1)}.
+Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
+are also supported. Check the documentation for conventions and required
+columns.}
 
 \item{samples}{\code{character}.
 Specify a subset of samples to include.}
 
 \item{sort}{\code{logical(1)}.
 Resort using \code{sort}.}
+
+\item{spikeNames}{\code{character}.
+Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
+
+\item{transgeneNames}{\code{character}.
+Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
 
 \item{tx2gene}{\code{Tx2Gene}.
 Transcript-to-gene mappings.}
@@ -119,47 +163,6 @@ Uniform Resource Locator (URL). HTTP or FTP address.}
 \item{x}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{assays}{\code{list}.
-Count matrices, which must have matching dimensions. Counts can be passed
-in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
-
-\item{rowRanges}{\code{GRanges}.
-Genomic ranges (e.g. genome annotations). Metadata describing the assay
-rows.}
-
-\item{rowData}{\code{DataFrame}.
-Metadata describing the assay rows, if genomic ranges are not available.
-\emph{Use rowRanges (GRanges) instead, if possible}.}
-
-\item{colData}{\code{DataFrame}.
-Metadata describing the assay columns. For bulk RNA-seq, this data
-describes the samples. For single-cell RNA-seq, this data describes the
-cells.}
-
-\item{metadata}{\code{list}.
-Metadata.}
-
-\item{transgeneNames}{\code{character}.
-Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
-
-\item{spikeNames}{\code{character}.
-Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
-
-\item{censorSamples}{\code{character}.
-Specify a subset of samples to censor.}
-
-\item{gffFile}{\code{character(1)}.
-GFF/GTF (General Feature Format) file. Generally, we recommend using a GTF
-(GFFv2) instead of a GFFv3 file if possible.}
-
-\item{prefilter}{\code{logical(1)}.
-Apply prefiltering to remove zero count genes.}
-
-\item{sampleMetadataFile}{\code{character(1)}.
-Sample metadata file path. CSV or TSV is preferred, but Excel worksheets
-are also supported. Check the documentation for conventions and required
-columns.}
 }
 \value{
 No value.
