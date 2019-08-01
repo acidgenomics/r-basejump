@@ -39,26 +39,22 @@
 #' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.
 #'
 #' @examples
-#' ## > library(IRanges)
-#' ## > library(GenomicRanges)
-#' ## > library(SummarizedExperiment)
-#'
 #' ## Rows (genes)
 #' genes <- c(
-#'     "EGFP",  # transgene
-#'     paste0("gene", seq_len(3L))
+#'     sprintf("gene%02d", seq_len(3L)),
+#'     "EGFP"  # transgene
 #' )
 #' print(genes)
 #'
 #' ## Columns (samples)
-#' samples <- paste0("sample", seq_len(4L))
+#' samples <- sprintf("sample%02d", seq_len(4L))
 #' print(samples)
 #'
 #' ## Counts (assay)
 #' counts <- matrix(
-#'     data = seq_len(16L),
-#'     nrow = 4L,
-#'     ncol = 4L,
+#'     data = seq_len(length(genes) * length(samples)),
+#'     nrow = length(genes),
+#'     ncol = length(samples),
 #'     dimnames = list(genes, samples)
 #' )
 #' ## Primary assay must be named "counts".
@@ -66,27 +62,30 @@
 #' print(assays)
 #'
 #' ## Row data (genomic ranges)
-#' rowRanges <- GRanges(
-#'     seqnames = rep("1", times = 3L),
-#'     ranges = IRanges(
-#'         start = seq(from = 1L, to = 201L, by = 100L),
-#'         end = seq(from = 100L, to = 300L, by = 100L)
-#'     )
-#' )
 #' ## Note that we haven't defined the transgene here.
 #' ## It will be handled automatically in the function call.
-#' names(rowRanges) <- paste0("gene", seq_len(3L))
+#' rowRanges <- emptyRanges(names = head(genes, n = length(genes) - 1L))
 #' print(rowRanges)
 #'
 #' ## Column data
 #' colData <- DataFrame(
-#'     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
-#'     age = rep(c(3L, 6L), 2L),
+#'     age = rep(
+#'         x = c(3L, 6L),
+#'         times = length(samples) / 2L
+#'     ),
+#'     genotype = rep(
+#'         x = c("wildtype", "knockout"),
+#'         times = 1L,
+#'         each = length(samples) / 2L
+#'     ),
 #'     row.names = samples
 #' )
 #' print(colData)
 #'
-#' ## Note that this returns with the dimnames sorted.
+#' ## Minimal mode.
+#' x <- makeSummarizedExperiment(assays = assays)
+#' print(x)
+#'
 #' x <- makeSummarizedExperiment(
 #'     assays = assays,
 #'     rowRanges = rowRanges,
