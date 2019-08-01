@@ -4,16 +4,17 @@
 \alias{makeSummarizedExperiment}
 \title{Make a SummarizedExperiment object}
 \usage{
-makeSummarizedExperiment(assays, rowRanges = NULL, rowData = NULL,
-  colData = NULL, metadata = NULL, transgeneNames = NULL,
-  spikeNames = NULL)
+makeSummarizedExperiment(assays, rowRanges = GRangesList(),
+  rowData = NULL, colData = DataFrame(), metadata = list(),
+  transgeneNames = NULL, spikeNames = NULL, sort = TRUE,
+  sessionInfo = TRUE)
 }
 \arguments{
-\item{assays}{\code{list}.
+\item{assays}{\code{SimpleList}.
 Count matrices, which must have matching dimensions. Counts can be passed
 in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
 
-\item{rowRanges}{\code{GRanges}.
+\item{rowRanges}{\code{GRanges} or \code{GRangesList}.
 Genomic ranges (e.g. genome annotations). Metadata describing the assay
 rows.}
 
@@ -34,6 +35,14 @@ Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
 
 \item{spikeNames}{\code{character}.
 Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
+
+\item{sort}{\code{logical(1)}.
+Ensure all row and column names are sorted alphabetically. This includes
+columns inside \code{rowData} and \code{colData}, and \code{metadata} slot names. Assay
+names are required to contain \code{counts} as the first assay.}
+
+\item{sessionInfo}{\code{logical(1)}.
+Slot session information into \code{metadata}.}
 }
 \value{
 \itemize{
@@ -44,70 +53,75 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
 \description{
 This function is a utility wrapper for \code{SummarizedExperiment} that provides
 automatic subsetting for row and column data, as well as automatic handling
-of transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the \code{metadata} slot:
+of transgenes and spike-ins.
 }
-\details{
+\note{
+Column and rows always return sorted alphabetically.
+
+Updated 2019-08-01.
+}
+\section{Session information}{
+
+
+This function improves upon the standard constructor by slotting useful
+session information into the \code{metadata} slot by default:
 \itemize{
 \item \code{date}: Today's date, returned from \code{Sys.Date}.
 \item \code{wd}: Working directory, returned from \code{getwd}.
 \item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
 }
-}
-\note{
-Column and rows always return sorted alphabetically.
 
-Updated 2019-07-28.
+This behavior can be disabled by setting \code{sessionInfo = FALSE}.
 }
+
 \examples{
-library(IRanges)
-library(GenomicRanges)
-library(SummarizedExperiment)
-
 ## Rows (genes)
 genes <- c(
-    "EGFP",  # transgene
-    paste0("gene", seq_len(3L))
+    sprintf("gene\%02d", seq_len(3L)),
+    "EGFP"  # transgene
 )
 print(genes)
 
 ## Columns (samples)
-samples <- paste0("sample", seq_len(4L))
+samples <- sprintf("sample\%02d", seq_len(4L))
 print(samples)
 
 ## Counts (assay)
 counts <- matrix(
-    data = seq_len(16L),
-    nrow = 4L,
-    ncol = 4L,
+    data = seq_len(length(genes) * length(samples)),
+    nrow = length(genes),
+    ncol = length(samples),
     dimnames = list(genes, samples)
 )
 ## Primary assay must be named "counts".
-assays <- list(counts = counts)
+assays <- SimpleList(counts = counts)
 print(assays)
 
 ## Row data (genomic ranges)
-rowRanges <- GRanges(
-    seqnames = rep("1", times = 3L),
-    ranges = IRanges(
-        start = seq(from = 1L, to = 201L, by = 100L),
-        end = seq(from = 100L, to = 300L, by = 100L)
-    )
-)
 ## Note that we haven't defined the transgene here.
 ## It will be handled automatically in the function call.
-names(rowRanges) <- paste0("gene", seq_len(3L))
+rowRanges <- emptyRanges(names = head(genes, n = length(genes) - 1L))
 print(rowRanges)
 
 ## Column data
-colData <- S4Vectors::DataFrame(
-    genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
-    age = rep(c(3L, 6L), 2L),
+colData <- DataFrame(
+    age = rep(
+        x = c(3L, 6L),
+        times = length(samples) / 2L
+    ),
+    genotype = rep(
+        x = c("wildtype", "knockout"),
+        times = 1L,
+        each = length(samples) / 2L
+    ),
     row.names = samples
 )
 print(colData)
 
-## Note that this returns with the dimnames sorted.
+## Minimal mode.
+x <- makeSummarizedExperiment(assays = assays)
+print(x)
+
 x <- makeSummarizedExperiment(
     assays = assays,
     rowRanges = rowRanges,

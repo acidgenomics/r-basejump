@@ -4,15 +4,17 @@
 \alias{makeSingleCellExperiment}
 \title{Make a SingleCellExperiment object}
 \usage{
-makeSingleCellExperiment(assays, rowRanges, colData, metadata,
-  transgeneNames = NULL, spikeNames = NULL)
+makeSingleCellExperiment(assays, rowRanges = GRangesList(),
+  colData = DataFrame(), metadata = list(),
+  reducedDims = SimpleList(), transgeneNames = NULL,
+  spikeNames = NULL)
 }
 \arguments{
-\item{assays}{\code{list}.
+\item{assays}{\code{SimpleList}.
 Count matrices, which must have matching dimensions. Counts can be passed
 in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
 
-\item{rowRanges}{\code{GRanges}.
+\item{rowRanges}{\code{GRanges} or \code{GRangesList}.
 Genomic ranges (e.g. genome annotations). Metadata describing the assay
 rows.}
 
@@ -23,6 +25,9 @@ cells.}
 
 \item{metadata}{\code{list}.
 Metadata.}
+
+\item{reducedDims}{\code{SimpleList}.
+List containing matrices of cell coordinates in reduced space.}
 
 \item{transgeneNames}{\code{character}.
 Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
@@ -36,21 +41,26 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
 \description{
 This function is a utility wrapper for \code{SummarizedExperiment} that provides
 automatic subsetting for row and column data, as well as automatic handling
-of transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the \code{metadata} slot:
+of transgenes and spike-ins.
 }
-\details{
+\note{
+Updated 2019-08-01.
+}
+\section{Session information}{
+
+
+This function improves upon the standard constructor by slotting useful
+session information into the \code{metadata} slot by default:
 \itemize{
 \item \code{date}: Today's date, returned from \code{Sys.Date}.
 \item \code{wd}: Working directory, returned from \code{getwd}.
 \item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
 }
+
+This behavior can be disabled by setting \code{sessionInfo = FALSE}.
 }
-\note{
-Updated 2019-07-28.
-}
+
 \examples{
-library(SingleCellExperiment)
 data(SingleCellExperiment, package = "acidtest")
 
 object <- SingleCellExperiment
@@ -58,12 +68,14 @@ assays <- assays(object)
 rowRanges <- rowRanges(object)
 colData <- colData(object)
 metadata <- metadata(object)
+reducedDims <- reducedDims(object)
 
 x <- makeSingleCellExperiment(
     assays = assays,
     rowRanges = rowRanges,
     colData = colData,
-    metadata = metadata
+    metadata = metadata,
+    reducedDims = reducedDims
 )
 print(x)
 }
