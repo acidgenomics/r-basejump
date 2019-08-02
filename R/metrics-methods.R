@@ -97,12 +97,27 @@ setMethod(
         return <- match.arg(return)
         data <- colData(object)
         ## Strip "cell" column, which gets defined by monocle3.
+        ## Consider adding a step to strip "sample" if slotted also.
         if (isSubset("cell", colnames(data))) {
             data[["cell"]] <- NULL
         }
+        ## Slot cluster identifier mappings into "ident" column, if defined in
+        ## the object but not slotted into `colData`. This is currently the case
+        ## with monocle3.
+        if (!isSubset("ident", colnames(data))) {
+            ident <- tryCatch(
+                expr = clusters(object),
+                error = function(e) NULL
+            )
+            if (is.factor(ident)) {
+                data[["ident"]] <- ident
+            }
+        }
+        ## Automatically assign `sampleID` column, if necessary.
         if (!isSubset("sampleID", colnames(data))) {
             data[["sampleID"]] <- factor("unknown")
         }
+        ## Automatically assign `sampleName` column, if necessary.
         if (!isSubset("sampleName", colnames(data))) {
             data[["sampleName"]] <- data[["sampleID"]]
         }
