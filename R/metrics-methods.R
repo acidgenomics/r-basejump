@@ -1,7 +1,7 @@
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::metrics
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-02.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.
@@ -18,8 +18,8 @@
 #'   Uses [`match.arg()`][base::match.arg] internally.
 #'
 #' @return
-#' - `"tibble"`: `grouped_df`.
-#'     Grouped by `sampleID` column.
+#' - `"tbl_df"`: `grouped_df`.
+#'     Tibble grouped by `sampleID` column.
 #' - `"DataFrame"`: `DataFrame`.
 #'     Row names are identical to the column names of the object, like
 #'     [`colData()`][SummarizedExperiment::colData].
@@ -65,11 +65,11 @@ NULL
 
 ## Updated 2019-07-22.
 `metrics,SummarizedExperiment` <-  # nolint
-    function(object, return = c("tibble", "DataFrame")) {
+    function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
         data <- sampleData(object, clean = FALSE)
-        if (return == "tibble") {
+        if (return == "tbl_df") {
             data %<>%
                 as_tibble(rownames = "sampleID") %>%
                 group_by(!!sym("sampleID"))
@@ -90,16 +90,20 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-02.
 `metrics,SingleCellExperiment` <-  # nolint
-    function(object, return = c("tibble", "DataFrame")) {
+    function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
         data <- colData(object)
-        if (!"sampleID" %in% colnames(data)) {
+        ## Strip "cell" column, which gets defined by monocle3.
+        if (isSubset("cell", colnames(data))) {
+            data[["cell"]] <- NULL
+        }
+        if (!isSubset("sampleID", colnames(data))) {
             data[["sampleID"]] <- factor("unknown")
         }
-        if (!"sampleName" %in% colnames(data)) {
+        if (!isSubset("sampleName", colnames(data))) {
             data[["sampleName"]] <- data[["sampleID"]]
         }
         data <- data %>%
@@ -108,7 +112,7 @@ setMethod(
             ) %>%
             as_tibble(rownames = "cellID") %>%
             group_by(!!sym("sampleID"))
-        if (return == "tibble") {
+        if (return == "tbl_df") {
             data
         } else {
             data <- as(data, "DataFrame")
