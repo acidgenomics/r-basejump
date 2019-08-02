@@ -147,7 +147,7 @@ setMethod(
         ## Note that we're using uppercase here, because `fun` is matched arg.
         FUN <- get(fun, inherits = TRUE)  # nolint
         assert(is.function(FUN))
-        metrics <- metrics(object)
+        metrics <- metrics(object, return = "tbl_df")
         assert(is(metrics, "grouped_df"))
         if (fun == "sum") {
             pattern <- "^n[A-Z0-9]"
