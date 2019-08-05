@@ -1,7 +1,3 @@
-## FIXME Check for valid names in all slots. rownames, colnames, colData, rowData, metadata
-
-
-
 #' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
@@ -19,9 +15,9 @@
 #'
 #' This behavior can be disabled by setting `sessionInfo = FALSE`.
 #'
+#' @name makeSummarizedExperiment
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2019-08-01.
-#' @export
+#' @note Updated 2019-08-05.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sort `logical(1)`.
@@ -97,7 +93,12 @@
 #'     transgeneNames = "EGFP"
 #' )
 #' print(x)
-makeSummarizedExperiment <- function(
+NULL
+
+
+
+## Updated 2019-08-05.
+`makeSummarizedExperiment,SimpleList` <- function(
     assays,
     rowRanges,
     rowData,
@@ -109,10 +110,7 @@ makeSummarizedExperiment <- function(
     sessionInfo = TRUE
 ) {
     assert(
-        isAny(
-            x = assays,
-            classes = c("SimpleList", "list")
-        ),
+        is(assays, "SimpleList"),
         isAny(
             x = rowRanges,
             classes = c("GRanges", "GRangesList", "NULL")
@@ -147,21 +145,22 @@ makeSummarizedExperiment <- function(
     }
 
     ## Assays ------------------------------------------------------------------
-    ## Coerce to `list` class to `SimpleList`, for consistency.
-    if (is.list(assays)) {
-        assays <- as(assays, "SimpleList")
-    }
-
     ## Drop any `NULL` items in assays.
     assays <- Filter(f = Negate(is.null), x = assays)
-    assert(is(assays, "SimpleList"))
 
     ## Require the primary assay to be named "counts". This helps ensure
     ## consistency with the conventions for `SingleCellExperiment`.
     assert(
         hasNames(assays),
         hasValidNames(assays),
-        identical(names(assays)[[1L]], "counts")
+        identical(
+            x = names(assays)[[1L]],
+            y = "counts"
+        ),
+        identical(
+            x = names(assays),
+            y = camelCase(names(assays))
+        )
     )
     assay <- assays[[1L]]
 
@@ -179,13 +178,28 @@ makeSummarizedExperiment <- function(
     ## Row data ----------------------------------------------------------------
     ## Dynamically allow input of rowRanges (recommended) or rowData (fallback).
     if (hasLength(rowRanges)) {
+        rowData <- NULL
         ## Detect rows that don't contain annotations.
         ## Transgenes should contain `transgene` seqname.
         ## Spike-ins should contain `spike` seqname.
         ## Otherwise, unannotated genes will be given `unknown` seqname.
-        assert(areIntersectingSets(rownames(assay), names(rowRanges)))
-        mcolnames <- names(mcols(rowRanges))
+        assert(
+            areIntersectingSets(
+                x = rownames(assay),
+                y = names(rowRanges)
+            )
+        )
         setdiff <- setdiff(rownames(assay), names(rowRanges))
+        mcolnames <- mcolnames(rowRanges)
+        if (hasLength(mcolnames)) {
+            assert(
+                validNames(mcolnames),
+                identical(
+                    x = mcolnames,
+                    y = camelCase(mcolnames)
+                )
+            )
+        }
         ## Transgenes
         if (hasLength(transgeneNames) && hasLength(setdiff)) {
             assert(isSubset(x = transgeneNames, y = setdiff))
@@ -222,7 +236,13 @@ makeSummarizedExperiment <- function(
         rowData <- rowData[rownames(assay), , drop = FALSE]
         rowData <- relevel(rowData)
         if (hasCols(rowData)) {
-            assert(hasValidNames(rowData))
+            assert(
+                hasValidNames(rowData),
+                identical(
+                    x = colnames(rowData),
+                    y = camelCase(colnames(rowData))
+                )
+            )
         }
     }
 
@@ -272,7 +292,13 @@ makeSummarizedExperiment <- function(
         colData <- relevel(colData)
     }
     if (hasCols(colData)) {
-        assert(hasValidNames(colData))
+        assert(
+            hasValidNames(colData),
+            identical(
+                x = colnames(colData),
+                y = camelCase(colnames(colData))
+            )
+        )
     }
 
     ## Metadata ----------------------------------------------------------------
@@ -286,7 +312,13 @@ makeSummarizedExperiment <- function(
     }
     metadata <- Filter(f = Negate(is.null), x = metadata)
     if (hasLength(metadata)) {
-        assert(hasValidNames(metadata))
+        assert(
+            hasValidNames(metadata),
+            identical(
+                x = names(metadata),
+                y = camelCase(names(metadata))
+            )
+        )
     }
 
     ## Return ------------------------------------------------------------------
@@ -325,7 +357,6 @@ makeSummarizedExperiment <- function(
         metadata(se) <- metadata(se)[sort(names(metadata(se)))]
     }
 
-    assert(identical(assayNames(se)[[1L]], "counts"))
     validObject(se)
     se
 }
@@ -337,4 +368,14 @@ f <- methodFormals(
     signature = signature(assays = "SimpleList"),
     package = "SummarizedExperiment"
 )
-formals(makeSummarizedExperiment)[args] <- f[args]
+formals(`makeSummarizedExperiment,SimpleList`)[args] <- f[args]
+
+
+
+#' @rdname makeSummarizedExperiment
+#' @export
+setMethod(
+    f = "makeSummarizedExperiment",
+    signature = signature("SimpleList"),
+    definition = `makeSummarizedExperiment,SimpleList`
+)
