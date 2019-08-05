@@ -12,7 +12,7 @@ markdownLink(text, url, title = NULL)
 Header text.}
 
 \item{url}{\code{character(1)}.
-URL.}
+Uniform Resource Locator (URL). HTTP or FTP address.}
 
 \item{title}{\code{character(1)} or \code{NULL}.
 Link title attribute. This will appear in a mouse-over pop-up box.}
