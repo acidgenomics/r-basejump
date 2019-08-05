@@ -1,6 +1,6 @@
 #' Match human gene orthologs
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-05.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
