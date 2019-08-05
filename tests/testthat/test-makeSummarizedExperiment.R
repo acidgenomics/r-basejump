@@ -18,7 +18,7 @@ counts <- matrix(
     dimnames = list(genes, samples)
 )
 
-assays <- list(counts = counts)
+assays <- SimpleList(counts = counts)
 
 rowRanges <- GRanges(
     seqnames = replicate(n = 4L, expr = "1"),
@@ -29,7 +29,7 @@ rowRanges <- GRanges(
 )
 names(rowRanges) <- genes
 
-rowData <- as(rowRanges, "DataFrame")
+rowData <- as(as.data.frame(rowRanges), "DataFrame")
 
 colData <- DataFrame(
     genotype = rep(c("wildtype", "knockout"), each = 2L),
@@ -58,6 +58,7 @@ test_that("RangedSummarizedExperiment", {
 
 ## Allowing legacy support of rowData pass-in.
 test_that("SummarizedExperiment", {
+    ## FIXME Now this is breaking.
     object <- makeSummarizedExperiment(
         assays = assays,
         rowData = rowData,
@@ -67,7 +68,7 @@ test_that("SummarizedExperiment", {
 })
 
 test_that("Minimal input", {
-    assays <- list(counts = matrix())
+    assays <- SimpleList(counts = matrix())
 
     x <- makeSummarizedExperiment(assays = assays)
     expect_identical(class(x), SE)
@@ -107,7 +108,7 @@ test_that("Strict names", {
     rownames(countsBadRows) <- paste0(rownames(counts), "-XXX")
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = countsBadRows),
+            assays = SimpleList(counts = countsBadRows),
             rowRanges = rowRanges,
             colData = colData
         ),
@@ -117,7 +118,7 @@ test_that("Strict names", {
     colnames(countsBadCols) <- paste0(colnames(countsBadCols), "-XXX")
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = countsBadCols),
+            assays = SimpleList(counts = countsBadCols),
             rowRanges = rowRanges,
             colData = colData
         ),
@@ -130,7 +131,7 @@ test_that("Duplicate names", {
     rownames(countsDupeRows) <- paste0("gene", rep(seq_len(2L), each = 2L))
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = countsDupeRows),
+            assays = SimpleList(counts = countsDupeRows),
             rowRanges = rowRanges,
             colData = colData
         ),
@@ -140,7 +141,7 @@ test_that("Duplicate names", {
     colnames(countsDupeCols) <- paste0("sample", rep(seq_len(2L), each = 2L))
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = countsDupeCols),
+            assays = SimpleList(counts = countsDupeCols),
             rowRanges = rowRanges,
             colData = colData
         ),
@@ -152,7 +153,7 @@ test_that("Column data failure", {
     ## Bad pass-in of objects not supporting `dimnames`.
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = "yyy"),
+            assays = SimpleList(counts = "yyy"),
             rowRanges = rowRanges,
             colData = colData
         ),
