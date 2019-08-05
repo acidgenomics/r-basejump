@@ -1,3 +1,8 @@
+## FIXME Ensure row names always get set here.
+## Same applies for Gene2Symbol and Tx2Gene.
+
+
+
 #' @rdname Gene2Symbol-class
 #' @name Gene2Symbol
 #'
