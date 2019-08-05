@@ -8,15 +8,14 @@ matchesInterestingGroups(x, interestingGroups,
   .xname = getNameInParent(x))
 }
 \arguments{
-\item{x}{S4 class.}
+\item{x}{Object.}
 
 \item{interestingGroups}{\code{character}.
-Interesting groups.}
+Groups of interest that define the samples. If left unset, defaults to
+\code{sampleName}.}
 
-\item{.xname}{\emph{Not intended to be used directly.}}
-}
-\value{
-\code{logical(1)}.
+\item{.xname}{Name of object defined in \code{x}.
+\emph{Not intended to be used directly.}}
 }
 \description{
 Prevent unwanted downstream behavior when a missing interesting group
