@@ -160,6 +160,9 @@ Uniform Resource Locator (URL). HTTP or FTP address.}
 
 \item{value}{Value to assign.}
 
+\item{verbose}{\code{logical(1)}.
+Verbose output, typically for debugging.}
+
 \item{x}{Object.}
 
 \item{...}{Additional arguments.}

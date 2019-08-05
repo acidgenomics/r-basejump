@@ -121,6 +121,8 @@
 #' @param url `character(1)`.
 #'   Uniform Resource Locator (URL). HTTP or FTP address.
 #' @param value Value to assign.
+#' @param verbose `logical(1)`.
+#'   Verbose output, typically for debugging.
 #' @param x Object.
 #' @param ... Additional arguments.
 #'
