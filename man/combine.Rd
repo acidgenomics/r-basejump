@@ -45,7 +45,7 @@ There are two basic combine strategies. One is an intersection
   let us know if there are features that you require.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-05.
 
 We're attempting to make this as strict as possible, requiring:
 \itemize{
