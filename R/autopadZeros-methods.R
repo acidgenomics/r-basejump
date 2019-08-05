@@ -91,13 +91,13 @@ setMethod(
             isFlag(colnames),
             isFlag(sort)
         )
-        if (isTRUE(rownames)) {
+        if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- autopadZeros(rownames(object))
             if (isTRUE(sort)) {
                 object <- object[sort(rownames(object)), , drop = FALSE]
             }
         }
-        if (isTRUE(colnames)) {
+        if (isTRUE(colnames) && hasColnames(object)) {
             colnames(object) <- autopadZeros(colnames(object))
             if (isTRUE(sort)) {
                 object <- object[, sort(colnames(object)), drop = FALSE]
@@ -117,6 +117,10 @@ setMethod(
 )
 
 
+
+## FIXME This example is breaking on sce_autopad.
+## Error in (function (classes, fdef, mtable)  :
+## unable to find an inherited method for function 'autopadZeros' for signature '"NULL"'
 
 ## Updated 2019-07-22.
 `autopadZeros,SummarizedExperiment` <-  # nolint
