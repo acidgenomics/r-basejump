@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.4</span>
       </span>
     </div>
 
@@ -120,9 +120,9 @@
     <div id="basejump-0-11-1-2019-07-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-1-2019-07-24" class="anchor"></a>basejump 0.11.1 (2019-07-24)</h2>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added back deprecated assert checks that are required for bcbioRNASeq v0.2 release series.</li>
 </ul>
@@ -131,9 +131,9 @@
     <div id="basejump-0-11-2-2019-07-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-2-2019-07-29" class="anchor"></a>basejump 0.11.2 (2019-07-29)</h2>
-<div id="minor-changes" class="section level3">
+<div id="minor-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reexporting new functions in syntactic: <code>makeLabel</code>, <code>makeTitle</code>, <code>makeWords</code>.</li>
 <li>Updated documentation to include modification timestamp.</li>
@@ -143,10 +143,39 @@
     <div id="basejump-0-11-3-2019-07-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-3-2019-07-30" class="anchor"></a>basejump 0.11.3 (2019-07-30)</h2>
+<p>100th release!</p>
+<div id="minor-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>mapCellsToSamples</code>: Relaxed grep matching on <code>cells</code> input to support legacy bcbioSingleCell objects. This change was needed to improve <code>updateObject</code> method in the upcoming bcbioSingleCell update.</li>
 </ul>
+</div>
+</div>
+    <div id="basejump-0-11-4-2019-08-05" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-11-4-2019-08-05" class="anchor"></a>basejump 0.11.4 (2019-08-05)</h2>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>
+<code>makeSampleData</code>: Switched to S4 method that works on <code>data.frame</code> and <code>DataFrame</code> class objects. Enforcing lower camel case for column names.</li>
+<li>
+<code>makeSummarizedExperiment</code> and <code>makeSingleCellExperiment</code>: Switched to S4 method approach that currently requires <code>SimpleList</code> input for assays. Previously, we allowed <code>list</code> input for assays, but we’re tightening this up to simply the package code base and improve consistency.</li>
+<li>
+<code>aggregate</code> methods now consistently return the primary assay named as <code>counts</code>. This follows the recommended conventions defined in SingleCellExperiment. Aggregation functions will now intentionally fail for <code>SummarizedExperiment</code> objects that don’t contain an assay named <code>counts</code>.</li>
+</ul>
+</div>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Improved documentation consistency by offloading <code>params.Rd</code> file to new acidroxygen package. This will be linked in the other Acid Genomics packages.</li>
+<li>Updated unit tests to follow new package conventions (see above changes).</li>
+</ul>
+</div>
 </div>
   </div>
 
@@ -158,6 +187,7 @@
         <li><a href="#basejump-0-11-1-2019-07-24">0.11.1</a></li>
         <li><a href="#basejump-0-11-2-2019-07-29">0.11.2</a></li>
         <li><a href="#basejump-0-11-3-2019-07-30">0.11.3</a></li>
+        <li><a href="#basejump-0-11-4-2019-08-05">0.11.4</a></li>
       </ul>
     </div>
   </div>

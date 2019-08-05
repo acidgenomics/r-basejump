@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.4</span>
       </span>
     </div>
 
@@ -129,7 +129,10 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>genes</th>
-      <td><p>Ensembl gene identifiers.</p></td>
+      <td><p><code>character</code>.
+Gene identifiers. It is considered better practice to input the stable gene
+identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
+symbols (e.g. "TSPN6"), if possible.</p></td>
     </tr>
     <tr>
       <th>organism</th>
@@ -138,7 +141,12 @@ Full Latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
     </tr>
     <tr>
       <th>ensemblRelease</th>
-      <td><p>Ensembl release (e.g. 96).</p></td>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
+Ensembl release version (e.g. <code>90</code>). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.</p></td>
     </tr>
     </table>
     
@@ -155,7 +163,7 @@ Data frame containing mapping columns:</p><ul>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-28.</p>
+    <p>Updated 2019-08-05.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

@@ -75,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.4</span>
       </span>
     </div>
 
@@ -178,7 +178,7 @@
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-28.</p>
+    <p>Updated 2019-08-05.</p>
 <p>We're attempting to make this as strict as possible, requiring:</p><ul>
 <li><p>Rows (genes) across objects must be identical.</p></li>
 <li><p><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a> and/or
@@ -278,10 +278,10 @@
 #&gt; sample23         B   sample23                 B
 #&gt; sample24         B   sample24                 B</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 24 
-#&gt; metadata(6): version date ... wd sessionInfo
+#&gt; metadata(6): combine date ... version wd
 #&gt; assays(1): counts
 #&gt; rownames(500): gene001 gene002 ... gene499 gene500
-#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
+#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
 #&gt; colnames(24): sample01 sample02 ... sample23 sample24
 #&gt; colData names(1): condition</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
@@ -313,12 +313,12 @@
 #&gt; sample1    sample1           sample1
 #&gt; sample2    sample2           sample2</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 500 200 
-#&gt; metadata(4): date combine wd sessionInfo
+#&gt; metadata(4): combine date sessionInfo wd
 #&gt; assays(1): counts
 #&gt; rownames(500): gene1 gene10 ... gene98 gene99
-#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
+#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
 #&gt; colnames(200): cell0001 cell0002 ... cell0199 cell0200
-#&gt; colData names(2): expLibSize sampleID
+#&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):
 #&gt; spikeNames(0):</div></pre>
   </div>

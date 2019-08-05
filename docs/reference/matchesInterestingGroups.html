@@ -69,7 +69,7 @@ is requested by the user." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.4</span>
       </span>
     </div>
 
@@ -132,22 +132,25 @@ is requested by the user.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>S4 class.</p></td>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>.
-Interesting groups.</p></td>
+Groups of interest that define the samples. If left unset, defaults to
+<code>sampleName</code>.</p></td>
     </tr>
     <tr>
       <th>.xname</th>
-      <td><p><em>Not intended to be used directly.</em></p></td>
+      <td><p>Name of object defined in <code>x</code>.
+<em>Not intended to be used directly.</em></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.</p>
+    <p><code>TRUE</code> on success;
+<code>FALSE</code> on failure, with cause set.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 

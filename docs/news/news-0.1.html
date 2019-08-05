@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.4</span>
       </span>
     </div>
 
@@ -136,7 +136,7 @@
 <ul>
 <li>Added overwrite support for <code>saveData</code>. Now will skip on existing files when <code>overwrite = FALSE</code>.</li>
 <li>Bug fix for <code>readDataVersions</code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
-<li>Improved key value pair method for <code>loadDataAsName</code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 =   "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
+<li>Improved key value pair method for <code>loadDataAsName</code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 = "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
 <li>
 <a href="https://www.ensembl.org/">Ensembl</a> release version now defaults to <code>NULL</code> instead of <code>current</code> for <code>annotable</code>, <code>gene2symbol</code>, <code>symbol2gene</code> and <code>tx2gene</code> functions.</li>
 <li>Allow <code>rowData</code> to be left unset in <code>prepareSummarizedExperiment</code>. This is useful for setting up objects that don’t contain gene annotations.</li>
