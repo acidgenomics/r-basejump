@@ -8,11 +8,9 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
+#' @inheritParams acidroxygen::params
 #' @param list Named `list`.
-#'   Column data that can be coerced to `data.frame`.
-#' @param captions `character` or `NULL`.
-#'   Table captions. If `NULL`, the names of the list will be used automatically
-#'   as captions.
+#'   Must contain data that can be coerced to `data.frame`.
 #' @param force `logical(1)`.
 #'   Force knit output using [knitr::asis_output()].
 #'   *Recommended for development and unit testing only.*

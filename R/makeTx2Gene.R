@@ -1,7 +1,3 @@
-## FIXME Always return rownames.
-
-
-
 #' Make a Tx2Gene object
 #'
 #' @section GFF/GTF file:
