@@ -44,20 +44,20 @@ test_that("SingleCellExperiment", {
         object = metricsPerSample(object, fun = "mean") %>%
             .[["nUMI"]] %>%
             round(digits = 2L),
-        expected = c(56005.84, 51877.02)
+        expected = c(55883.41, 53992.89)
     )
     expect_identical(
         object = metricsPerSample(object, fun = "median") %>%
             .[["nUMI"]] %>%
             round(digits = 2L) %>%
             as.integer(),
-        expected = c(52774L, 50573L)
+        expected = c(54488L, 51660L)
     )
     expect_equal(
         object = metricsPerSample(object, fun = "sum") %>%
             .[["nUMI"]] %>%
             as.integer(),
-        expected = c(3080321L, 2334466L)
+        expected = c(3576538, 1943744L)
     )
 })
 
