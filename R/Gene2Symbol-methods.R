@@ -9,7 +9,7 @@
 #' @note For the `format` argument, note that "long" was used instead of
 #'   "unmodified" prior to v0.10.10.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param format `character(1)`.
 #'   Formatting method to apply:
 #'

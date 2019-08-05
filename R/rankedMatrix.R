@@ -5,7 +5,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @inheritParams base::apply
 #'
 #' @param method `character(1)`.

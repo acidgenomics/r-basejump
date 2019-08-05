@@ -1,3 +1,7 @@
+## FIXME Enforce camelCase here.
+
+
+
 #' Make sample data
 #'
 #' Utility function that prepares metadata to be slotted into `colData`.
@@ -20,7 +24,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @return `DataFrame`.
 #'

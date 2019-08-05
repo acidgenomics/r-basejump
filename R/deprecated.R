@@ -1,3 +1,7 @@
+## FIXME Move defunct deprecated function documentation to acidroxygen.
+
+
+
 ## nocov start
 ## nolint start
 
@@ -5,7 +9,7 @@
 
 #' @name defunct
 #' @inherit bioverbs::defunct description examples return seealso title
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @keywords internal
 NULL
 
@@ -13,7 +17,7 @@ NULL
 
 #' @name deprecated
 #' @inherit bioverbs::deprecated description examples return seealso title
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @keywords internal
 NULL
 

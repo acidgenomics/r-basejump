@@ -1,3 +1,7 @@
+## FIXME Check for valid names in all slots. rownames, colnames, colData, rowData, metadata
+
+
+
 #' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
@@ -19,7 +23,7 @@
 #' @note Updated 2019-08-01.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param sort `logical(1)`.
 #'   Ensure all row and column names are sorted alphabetically. This includes
 #'   columns inside `rowData` and `colData`, and `metadata` slot names. Assay

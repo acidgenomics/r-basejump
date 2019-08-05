@@ -3,10 +3,7 @@
 #' @name logRatio
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
-#' @param base `integer(1)`.
-#'   Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
-#'   differential expression output.
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @seealso
@@ -41,7 +38,6 @@ NULL
 
 
 
-## foldChangeToLogRatio ========================================================
 ## Updated 2019-07-22.
 `foldChangeToLogRatio,numeric` <-  # nolint
     function(object, base = 2L) {
@@ -64,7 +60,6 @@ setMethod(
 
 
 
-## logRatioToFoldChange ========================================================
 ## Updated 2019-07-22.
 `logRatioToFoldChange,numeric` <-  # nolint
     function(object, base = 2L) {

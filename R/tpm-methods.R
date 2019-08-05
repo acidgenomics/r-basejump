@@ -5,7 +5,7 @@
 #' @note Updated 2019-07-28.
 #'
 #' @name tpm
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @return `matrix`.
 #'

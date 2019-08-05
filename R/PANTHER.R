@@ -1,7 +1,7 @@
 #' @rdname PANTHER-class
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param organism `character(1)`.
 #'   Full Latin organism name.
 #'

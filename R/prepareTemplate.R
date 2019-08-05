@@ -19,7 +19,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param package `character(1)` or `NULL`.
 #'   Name of package containing the R Markdown template. If `NULL`, only the
 #'   basic shared files defined in the basejump package will be copied.

@@ -3,7 +3,7 @@
 #' @inherit bioverbs::metrics
 #' @note Updated 2019-08-02.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @details

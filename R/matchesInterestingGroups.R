@@ -1,3 +1,7 @@
+## FIXME Consider moving goalie params to acidroxygen.
+
+
+
 #' Check that interesting groups match a defined value
 #'
 #' Prevent unwanted downstream behavior when a missing interesting group
@@ -6,7 +10,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @inheritParams goalie::params
 #' @param x S4 class.
 #' @param interestingGroups `character`.

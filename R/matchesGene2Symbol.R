@@ -3,7 +3,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @inheritParams goalie::params
 #' @param x Object class supporting [`rownames()`][base::rownames].
 #'   All rownames in this object must intersect with the rownames defined in the

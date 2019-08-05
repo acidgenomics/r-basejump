@@ -2,7 +2,7 @@
 #' @inherit bioverbs::collapseToString
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param sep `character(1)`.
 #'   Separator. Defaults to comma.
 #' @param unique `logical(1)`.

@@ -7,10 +7,7 @@
 #' @note Updated 2019-07-30.
 #' @export
 #'
-#' @param cells `character`.
-#'   Cell identifiers.
-#' @param samples `character`.
-#'   Sample identifiers.
+#' @inheritParams acidroxygen::params
 #'
 #' @return `factor`.
 #' Cells as the names and samples as the levels.

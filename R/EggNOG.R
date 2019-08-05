@@ -1,6 +1,6 @@
 #' @rdname EggNOG-class
 #' @export
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @examples
 #' options(acid.test = TRUE)
 #' x <- EggNOG()

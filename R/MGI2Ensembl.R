@@ -1,6 +1,6 @@
 #' @rdname MGI2Ensembl-class
 #' @export
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @examples
 #' options(acid.test = TRUE)
 #' x <- MGI2Ensembl()
