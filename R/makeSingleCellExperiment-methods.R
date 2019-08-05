@@ -1,9 +1,9 @@
 #' Make a SingleCellExperiment object
 #'
-#' @include makeSummarizedExperiment.R
+#' @name makeSingleCellExperiment
+#' @include makeSummarizedExperiment-methods.R
 #' @inherit makeSummarizedExperiment
-#' @note Updated 2019-08-01.
-#' @export
+#' @note Updated 2019-08-05.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -12,6 +12,7 @@
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
 #'
+#' ## SimpleList ====
 #' object <- SingleCellExperiment
 #' assays <- assays(object)
 #' rowRanges <- rowRanges(object)
@@ -27,7 +28,12 @@
 #'     reducedDims = reducedDims
 #' )
 #' print(x)
-makeSingleCellExperiment <- function(
+NULL
+
+
+
+## Updated 2019-08-05.
+`makeSingleCellExperiment,SimpleList` <- function(
     assays,
     rowRanges,
     colData,
@@ -50,6 +56,8 @@ makeSingleCellExperiment <- function(
         reducedDims <- SimpleList()
     }
     if (hasLength(reducedDims)) {
+        ## Don't enforce camel case here, since it's currently common to slot
+        ## PCA, TSNE, UMAP assays (note upper case).
         assert(hasValidNames(reducedDims))
     }
 
@@ -92,8 +100,18 @@ makeSingleCellExperiment <- function(
 }
 
 args <- c("rowRanges", "colData", "metadata")
-formals(makeSingleCellExperiment)[args] <-
-    formals(makeSummarizedExperiment)[args]
+formals(`makeSingleCellExperiment,SimpleList`)[args] <-
+    formals(`makeSummarizedExperiment,SimpleList`)[args]
 args <- "reducedDims"
-formals(makeSingleCellExperiment)[args] <-
+formals(`makeSingleCellExperiment,SimpleList`)[args] <-
     formals(SingleCellExperiment)[args]
+
+
+
+#' @rdname makeSingleCellExperiment
+#' @export
+setMethod(
+    f = "makeSingleCellExperiment",
+    signature = signature("SimpleList"),
+    definition = `makeSingleCellExperiment,SimpleList`
+)
