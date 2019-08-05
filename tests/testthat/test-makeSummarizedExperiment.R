@@ -67,7 +67,7 @@ test_that("SummarizedExperiment", {
 })
 
 test_that("Minimal input", {
-    assays = list(counts = matrix())
+    assays <- list(counts = matrix())
 
     x <- makeSummarizedExperiment(assays = assays)
     expect_identical(class(x), SE)
