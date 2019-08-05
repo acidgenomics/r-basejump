@@ -67,6 +67,7 @@ Imports:
     methods,
     utils
 Suggests:
+    acidroxygen (>= 0.0.1),
     acidtest (>= 0.2.2),
     BiocStyle,
     EnsDb.Hsapiens.v75,
@@ -80,6 +81,7 @@ Enhances:
     pbapply (>= 1.4)
 Remotes:
     acidgenomics/acidplots,
+    acidgenomics/acidroxygen,
     acidgenomics/acidtest,
     acidgenomics/bioverbs,
     acidgenomics/brio,
@@ -154,7 +156,6 @@ Collate:
     'multiassignAsEnvir.R'
     'organism-methods.R'
     'package.R'
-    'params.R'
     'prepareTemplate.R'
     'rankedMatrix.R'
     'reexports-bioverbs.R'
