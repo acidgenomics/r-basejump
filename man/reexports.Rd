@@ -72,13 +72,23 @@
 \alias{IRanges}
 \alias{DataFrame}
 \alias{SimpleList}
+\alias{mcols}
+\alias{mcols<-}
 \alias{metadata}
+\alias{metadata<-}
 \alias{reducedDims}
+\alias{reducedDims<-}
+\alias{assayNames}
 \alias{assay}
+\alias{assay<-}
 \alias{assays}
+\alias{assays<-}
 \alias{colData}
+\alias{colData<-}
 \alias{rowData}
+\alias{rowData<-}
 \alias{rowRanges}
+\alias{rowRanges<-}
 \alias{\%<>\%}
 \alias{\%$\%}
 \alias{\%>\%}
@@ -108,11 +118,11 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{SimpleList}}, \code{\link[S4Vectors]{metadata}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{SimpleList}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}}
 
-  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{reducedDims}}}
+  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{reducedDims}}, \code{\link[SingleCellExperiment]{reducedDims<-}}}
 
-  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowRanges}}}
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assay<-}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}}
 
   \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
