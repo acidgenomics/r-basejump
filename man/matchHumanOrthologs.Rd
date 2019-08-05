@@ -7,12 +7,20 @@
 matchHumanOrthologs(genes, organism = NULL, ensemblRelease = NULL)
 }
 \arguments{
-\item{genes}{Ensembl gene identifiers.}
+\item{genes}{\code{character}.
+Gene identifiers. It is considered better practice to input the stable gene
+identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
+symbols (e.g. "TSPN6"), if possible.}
 
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{ensemblRelease}{Ensembl release (e.g. 96).}
+\item{ensemblRelease}{\code{integer(1)}.
+Ensembl release version (e.g. \code{90}). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.}
 }
 \value{
 \code{DataFrame}.

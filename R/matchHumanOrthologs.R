@@ -1,15 +1,9 @@
-## FIXME Move these params to acidroxygen.
-
-
-
 #' Match human gene orthologs
 #'
 #' @note Updated 2019-07-28.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
-#' @param genes Ensembl gene identifiers.
-#' @param ensemblRelease Ensembl release (e.g. 96).
 #'
 #' @return `DataFrame`.
 #'   Data frame containing mapping columns:
