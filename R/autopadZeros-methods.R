@@ -6,6 +6,13 @@
 #' This does not apply to the `character` method.
 #' @note Updated 2019-07-28.
 #'
+#' @section SummarizedExperiment sample names:
+#'
+#' If `sampleName` column is defined in
+#' [`colData()`][SummarizedExperiment::colData], these values will also get
+#' padded, if necessary. This improves # downstream handling in functions that
+#' rely on this feature.
+#'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
@@ -118,11 +125,7 @@ setMethod(
 
 
 
-## FIXME This example is breaking on sce_autopad.
-## Error in (function (classes, fdef, mtable)  :
-## unable to find an inherited method for function 'autopadZeros' for signature '"NULL"'
-
-## Updated 2019-07-22.
+## Updated 2019-08-05.
 `autopadZeros,SummarizedExperiment` <-  # nolint
     function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
         object <- do.call(
@@ -134,9 +137,6 @@ setMethod(
                 sort = sort
             )
         )
-        ## Ensure sample names, which can be defined in `colData()` as
-        ## `sampleName` column, also get padded, if necessary. This improves
-        ## downstream handling in functions that rely on this feature.
         if ("sampleName" %in% colnames(colData(object))) {
             sampleNames(object) <- autopadZeros(sampleNames(object))
         }
