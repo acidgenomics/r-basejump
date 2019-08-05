@@ -1,7 +1,3 @@
-## FIXME Always return rownames.
-
-
-
 #' Make a Gene2Symbol object
 #'
 #' @section GFF/GTF file:
