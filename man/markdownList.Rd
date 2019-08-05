@@ -9,10 +9,9 @@ markdownList(text, ordered = FALSE, asis = FALSE)
 }
 \arguments{
 \item{text}{\code{character(1)}.
-Header text.}
+Text.}
 
-\item{ordered}{\code{logical(1)}.
-Ordered ("\code{TRUE}") or unordered ("\code{FALSE}").}
+\item{ordered}{\code{logical(1)}.}
 
 \item{asis}{\code{logical(1)}.
 Set this to \code{TRUE} when using the function inside a loop or inside an R
