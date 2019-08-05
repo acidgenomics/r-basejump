@@ -58,7 +58,6 @@ test_that("RangedSummarizedExperiment", {
 
 ## Allowing legacy support of rowData pass-in.
 test_that("SummarizedExperiment", {
-    ## FIXME Now this is breaking.
     object <- makeSummarizedExperiment(
         assays = assays,
         rowData = rowData,

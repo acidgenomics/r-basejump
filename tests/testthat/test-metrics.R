@@ -57,7 +57,7 @@ test_that("SingleCellExperiment", {
         object = metricsPerSample(object, fun = "sum") %>%
             .[["nUMI"]] %>%
             as.integer(),
-        expected = c(3576538, 1943744L)
+        expected = c(3576538L, 1943744L)
     )
 })
 
