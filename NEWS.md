@@ -1,3 +1,10 @@
+## basejump 0.11.4 (UNRELEASED)
+
+### Minor changes
+
+- `makeSampleData`: Switched to S4 method that works on `data.frame` and
+  `DataFrame` class objects. Enforcing lower camel case for column names.
+
 ## basejump 0.11.3 (2019-07-30)
 
 100th release!
