@@ -1,6 +1,6 @@
 context("extra | geneSynonyms")
 
-organisms <- .geneSynonymsOrganisms
+organisms <- eval(formals("geneSynonyms")[["organism"]])
 
 with_parameters_test_that(
     "geneSynonyms", {
