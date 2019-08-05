@@ -45,7 +45,7 @@
 #'   required as we're supporting `SingleCellExperiment` objects from 1 sample,
 #'   but it's required for working with multiple samples in a single object.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param clean `logical(1)`.
 #'   Only return `factor` columns. Useful when working with objects that contain
 #'   quality control metrics in [`colData()`][SummarizedExperiment::colData].

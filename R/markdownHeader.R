@@ -1,3 +1,7 @@
+## FIXME Consider moving some of these params to acidroxygen.
+
+
+
 #' Markdown header
 #'
 #' Generate a Markdown header (levels 1-7) in any R Markdown code block. When
@@ -6,7 +10,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param text `character(1)`.
 #'   Header text.
 #' @param level `integer(1)`.

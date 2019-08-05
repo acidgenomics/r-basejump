@@ -1,3 +1,7 @@
+## FIXME Always return rownames.
+
+
+
 #' Make a Tx2Gene object
 #'
 #' @section GFF/GTF file:
@@ -7,7 +11,7 @@
 #' @name makeTx2Gene
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @return `Tx2Gene`.
 #'

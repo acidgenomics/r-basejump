@@ -1,7 +1,7 @@
 #' @name subsetPerSample
 #' @inherit bioverbs::subsetPerSample
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param minCells `integer(1)`.
 #'   Minimum number of cells required per sample.
 #' @param assignAndSave `logical(1)`.

@@ -3,7 +3,7 @@
 #'
 #' @note No attempt is made to arrange the rows by transcript identifier.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @seealso [makeTx2Gene()].
 #'

@@ -1,3 +1,9 @@
+## FIXME Consider moving these params to acidroxygen.
+## #' @param url `character(1)`.
+## #'   URL.
+
+
+
 #' Markdown hyperlink
 #'
 #' For use in `asis` blocks only.
@@ -7,8 +13,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @param url `character(1)`.
-#'   URL.
+#' @inheritParams acidroxygen::params
 #' @param title `character(1)` or `NULL`.
 #'   Link title attribute. This will appear in a mouse-over pop-up box.
 #'

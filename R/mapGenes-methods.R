@@ -15,7 +15,7 @@
 #' @name mapGenes
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param strict `logical(1)`.
 #'   Require all genes to match. Recommended by default. If set `FALSE`, instead
 #'   will return a warning to the user, and subset the genes vector to only

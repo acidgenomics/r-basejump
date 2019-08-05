@@ -2,7 +2,7 @@
 #' @inherit bioverbs::convertGenesToSymbols
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return Modified object of same class.

@@ -7,7 +7,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param list `list`.
 #'   Named list containing `ggplot` objects.
 #'

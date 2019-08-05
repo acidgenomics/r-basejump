@@ -1,6 +1,7 @@
 #' @rdname Ensembl2Entrez-class
 #' @name Ensembl2Entrez
-#' @inheritParams params
+#'
+#' @inheritParams acidroxygen::params
 #' @param format `character(1)`.
 #'   Formatting method to apply:
 #'

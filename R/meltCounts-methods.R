@@ -2,7 +2,7 @@
 #' @inherit bioverbs::meltCounts
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param minCounts `integer(1)` or `NULL`.
 #'   Minimum count threshold to apply. Disable with `NULL`. Filters using
 #'   "greater than or equal to" logic internally. Note that this threshold gets

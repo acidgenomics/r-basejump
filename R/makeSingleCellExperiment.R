@@ -5,7 +5,7 @@
 #' @note Updated 2019-08-01.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @return `SingleCellExperiment`.
 #'

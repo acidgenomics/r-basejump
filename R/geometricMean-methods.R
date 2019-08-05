@@ -6,12 +6,8 @@
 #'   return `NaN`.
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @inheritParams base::apply
-#' @param removeNA `logical(1)`.
-#'   Remove `NA` values from calculations.
-#' @param zeroPropagate `logical(1)`.
-#'   Allow propagation of zeroes.
 #' @param ... Additional arguments.
 #'
 #' @seealso
