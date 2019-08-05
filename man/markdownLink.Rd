@@ -9,13 +9,13 @@ markdownLink(text, url, title = NULL)
 }
 \arguments{
 \item{text}{\code{character(1)}.
-Header text.}
+Text.}
 
 \item{url}{\code{character(1)}.
 Uniform Resource Locator (URL).}
 
-\item{title}{\code{character(1)} or \code{NULL}.
-Link title attribute. This will appear in a mouse-over pop-up box.}
+\item{title}{\code{character(1)}.
+Title.}
 }
 \value{
 Markdown-formatted link.
@@ -24,7 +24,7 @@ Markdown-formatted link.
 For use in \code{asis} blocks only.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-05.
 }
 \examples{
 markdownLink(
