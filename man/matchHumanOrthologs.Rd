@@ -36,7 +36,7 @@ Data frame containing mapping columns:
 Match human gene orthologs
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-05.
 }
 \examples{
 genes <- c(

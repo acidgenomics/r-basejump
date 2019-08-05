@@ -17,6 +17,10 @@ Groups of interest that define the samples. If left unset, defaults to
 \item{.xname}{Name of object defined in \code{x}.
 \emph{Not intended to be used directly.}}
 }
+\value{
+\code{TRUE} on success;
+\code{FALSE} on failure, with cause set.
+}
 \description{
 Prevent unwanted downstream behavior when a missing interesting group
 is requested by the user.

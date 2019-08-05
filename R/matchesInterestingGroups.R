@@ -1,7 +1,3 @@
-## FIXME @inherit goalie::check
-
-
-
 #' Check that interesting groups match a defined value
 #'
 #' Prevent unwanted downstream behavior when a missing interesting group
@@ -10,6 +6,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
+#' @inherit goalie::check return
 #' @inheritParams acidroxygen::params
 #'
 #' @examples

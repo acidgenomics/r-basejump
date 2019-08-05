@@ -21,6 +21,10 @@ Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns.
 \item{.xname}{Name of object defined in \code{x}.
 \emph{Not intended to be used directly.}}
 }
+\value{
+\code{TRUE} on success;
+\code{FALSE} on failure, with cause set.
+}
 \description{
 Check that user-defined gene input matches expected values
 }

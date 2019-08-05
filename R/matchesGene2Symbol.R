@@ -1,12 +1,9 @@
-## FIXME @inherit goalie::check
-
-
-
 #' Check that user-defined gene input matches expected values
 #'
 #' @note Updated 2019-07-28.
 #' @export
 #'
+#' @inherit goalie::check return
 #' @inheritParams acidroxygen::params
 #'
 #' @examples
