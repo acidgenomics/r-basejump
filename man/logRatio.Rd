@@ -21,8 +21,7 @@ logRatioToFoldChange(object, ...)
 \item{object}{Object.}
 
 \item{base}{\code{integer(1)}.
-Logarithm base. Defaults to \code{2}, for compatibility with RNA-Seq
-differential expression output.}
+Logarithm base.}
 
 \item{...}{Additional arguments.}
 }

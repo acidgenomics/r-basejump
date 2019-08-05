@@ -26,7 +26,7 @@ interestingGroups(object, ...)  <- value
 \arguments{
 \item{object}{Object.}
 
-\item{value}{Value.}
+\item{value}{Value to assign.}
 
 \item{...}{Additional arguments.}
 }

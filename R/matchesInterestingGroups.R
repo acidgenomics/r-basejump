@@ -1,4 +1,4 @@
-## FIXME Consider moving goalie params to acidroxygen.
+## FIXME @inherit goalie::check
 
 
 
@@ -9,14 +9,8 @@
 #'
 #' @note Updated 2019-07-28.
 #' @export
-
-#' @inheritParams acidroxygen::params
-#' @inheritParams goalie::params
-#' @param x S4 class.
-#' @param interestingGroups `character`.
-#'   Interesting groups.
 #'
-#' @return `logical(1)`.
+#' @inheritParams acidroxygen::params
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
