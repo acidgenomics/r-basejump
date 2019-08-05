@@ -63,9 +63,33 @@ S4Vectors::DataFrame
 #' @export
 S4Vectors::SimpleList
 
+#' @importFrom S4Vectors metadata
+#' @export
+S4Vectors::metadata
+
 #' @importFrom SingleCellExperiment reducedDims
 #' @export
 SingleCellExperiment::reducedDims
+
+#' @importFrom SummarizedExperiment assay
+#' @export
+SummarizedExperiment::assay
+
+#' @importFrom SummarizedExperiment assays
+#' @export
+SummarizedExperiment::assays
+
+#' @importFrom SummarizedExperiment colData
+#' @export
+SummarizedExperiment::colData
+
+#' @importFrom SummarizedExperiment rowData
+#' @export
+SummarizedExperiment::rowData
+
+#' @importFrom SummarizedExperiment rowRanges
+#' @export
+SummarizedExperiment::rowRanges
 
 #' @importFrom magrittr %<>%
 #' @export
