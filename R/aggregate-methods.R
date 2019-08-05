@@ -253,15 +253,16 @@ setMethod(
 
         ## Return --------------------------------------------------------------
         args <- list(
-            assays = SimpleList(assay),
+            assays = SimpleList(counts = counts),
             colData = colData(object)
         )
         if (is(object, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- emptyRanges(names = rownames(assay))
+            args[["rowRanges"]] <- emptyRanges(names = rownames(counts))
         } else {
-            args[["rowData"]] <- DataFrame(row.names = rownames(assay))
+            args[["rowData"]] <- DataFrame(row.names = rownames(counts))
         }
         se <- do.call(what = SummarizedExperiment, args = args)
+        metadata(se)[["aggregate"]] <- TRUE
         validObject(se)
         se
     }
