@@ -64,7 +64,7 @@ to \code{colnames}.
 }}
 
 \note{
-Updated 2019-08-02.
+Updated 2019-08-05.
 }
 \examples{
 data(
