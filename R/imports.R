@@ -29,9 +29,9 @@
 #'   expand head mcols mcols<- merge metadata metadata<- na.omit split summary
 #'   tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
-#' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
-#'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
-#'   rowRanges<-
+#' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
+#'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
+#'   rowRanges rowRanges<-
 #' @importFrom dplyr arrange bind_rows desc filter group_by left_join mutate
 #'   mutate_all mutate_at mutate_if pull rename select select_if slice
 #'   summarise_all top_n ungroup

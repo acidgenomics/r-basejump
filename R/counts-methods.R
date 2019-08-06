@@ -42,12 +42,11 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-06.
 `counts,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
-        assert(isSubset("counts", assayNames(object)))
-        assays(object)[["counts"]]
+        assay(object, i = "counts")
     }
 
 
@@ -62,11 +61,16 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
-`counts<-,SummarizedExperiment,ANY` <-  # nolint
+## Updated 2019-08-06.
+`counts<-,SummarizedExperiment,matrix` <-  # nolint
     function(object, value) {
+        assert(
+            all(!is.na(value)),
+            all(is.finite(value)),
+            all(value > 0)
+        )
+        assay(object, i = "counts") <- value
         validObject(object)
-        assays(object)[["counts"]] <- value
         object
     }
 
@@ -78,7 +82,26 @@ setReplaceMethod(
     f = "counts",
     signature = signature(
         object = "SummarizedExperiment",
-        value = "ANY"
+        value = "matrix"
     ),
-    definition = `counts<-,SummarizedExperiment,ANY`
+    definition = `counts<-,SummarizedExperiment,matrix`
+)
+
+
+
+## Updated 2019-08-06.
+`counts<-,SummarizedExperiment,Matrix` <-  # nolint
+    `counts<-,SummarizedExperiment,matrix`
+
+
+
+#' @rdname counts
+#' @export
+setReplaceMethod(
+    f = "counts",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "Matrix"
+    ),
+    definition = `counts<-,SummarizedExperiment,Matrix`
 )
