@@ -43,7 +43,7 @@
 #'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
 #'   isInRange isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber
 #'   isPositive isScalar isString isSubset isSuperset matchesUniqueGeneNames
-#'   validNames validate validateClasses
+#'   methodFunction validNames validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
