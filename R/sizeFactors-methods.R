@@ -1,7 +1,3 @@
-## FIXME SCE method isn't assigning into `object@int_colData` as expected.
-
-
-
 #' Size factors
 #'
 #' @name sizeFactors
@@ -123,7 +119,10 @@ setReplaceMethod(
 
 
 
-## Need to export numeric value signature, otherwise SE method mask.
+## Need to export numeric value signature, otherwise SE method will mask, and
+## SCE method won't assign into `object@int_colData` as expected.
+## https://github.com/drisso/SingleCellExperiment/pull/34
+
 ## Updated 2019-08-06.
 `sizeFactors<-,SingleCellExperiment,ANY` <-  # nolint
     methodFunction(
