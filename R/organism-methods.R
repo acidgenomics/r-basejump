@@ -191,6 +191,7 @@ setMethod(
 `organism<-,Annotated,character` <-  # nolint
     function(object, value) {
         metadata(object)[["organism"]] <- value
+        object
     }
 
 
@@ -199,6 +200,6 @@ setMethod(
 #' @export
 setReplaceMethod(
     f = "organism",
-    signature = "Annotated",
+    signature = signature("Annotated"),
     definition = `organism<-,Annotated,character`
 )
