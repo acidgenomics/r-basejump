@@ -222,7 +222,11 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 
 <span class='co'>## SimpleList ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>assays</span> <span class='kw'>&lt;-</span> <span class='fu'>assays</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in assays(object): could not find function "assays"</span></div><div class='input'><span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'>rowRanges</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in rowRanges(object): could not find function "rowRanges"</span></div><div class='input'><span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'>colData</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in colData(object): could not find function "colData"</span></div><div class='input'><span class='no'>metadata</span> <span class='kw'>&lt;-</span> <span class='fu'>metadata</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in metadata(object): could not find function "metadata"</span></div><div class='input'><span class='no'>reducedDims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SingleCellExperiment/man/SCE-reducedDims.html'>reducedDims</a></span>(<span class='no'>object</span>)
+<span class='no'>assays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span>(<span class='no'>object</span>)
+<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/DelayedArray/man/DelayedMatrix-stats.html'>rowRanges</a></span>(<span class='no'>object</span>)
+<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span>(<span class='no'>object</span>)
+<span class='no'>metadata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/Annotated-class.html'>metadata</a></span>(<span class='no'>object</span>)
+<span class='no'>reducedDims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SingleCellExperiment/man/SCE-reducedDims.html'>reducedDims</a></span>(<span class='no'>object</span>)
 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeSingleCellExperiment</span>(
     <span class='kw'>assays</span> <span class='kw'>=</span> <span class='no'>assays</span>,
@@ -230,7 +234,17 @@ session information into the <code>metadata</code> slot by default:</p><ul>
     <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>,
     <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='no'>metadata</span>,
     <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='no'>reducedDims</span>
-)</div><div class='output co'>#&gt; <span class='error'>Error in is(x, class): object 'assays' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div></pre>
+)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+#&gt; dim: 500 100 
+#&gt; metadata(3): date sessionInfo wd
+#&gt; assays(1): counts
+#&gt; rownames(500): gene1 gene10 ... gene98 gene99
+#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
+#&gt; colnames(100): cell001 cell002 ... cell099 cell100
+#&gt; colData names(1): sampleID
+#&gt; reducedDimNames(0):
+#&gt; spikeNames(0):</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
