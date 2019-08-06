@@ -13,8 +13,5 @@ test_that("SE assignment", {
 })
 
 test_that("SE assignment failure", {
-    expect_error(
-        object = counts(rse) <- matrix(),
-        regexp = "must equal nb"
-    )
+    expect_error(counts(rse) <- matrix())
 })
