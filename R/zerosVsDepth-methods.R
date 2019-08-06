@@ -1,7 +1,7 @@
 #' @name zerosVsDepth
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @inherit bioverbs::zerosVsDepth
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-06.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -80,11 +80,11 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-06.
 `zerosVsDepth,SummarizedExperiment` <-  # nolint
     function(object, assay = 1L) {
         assert(isScalar(assay))
-        counts <- assays(object)[[assay]]
+        counts <- assay(object, i = assay)
         data <- zerosVsDepth(counts)
         sampleData <- sampleData(object)
         assert(
@@ -106,11 +106,11 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-06.
 `zerosVsDepth,SingleCellExperiment` <-  # nolint
     function(object, assay = 1L) {
         assert(isScalar(assay))
-        counts <- assays(object)[[assay]]
+        counts <- assay(object, i = assay)
 
         data <- zerosVsDepth(counts)
         data[["sampleID"]] <- cell2sample(object)

@@ -2,7 +2,7 @@
 #'
 #' @note Both gene- and transcript-level counts are supported, as long as they
 #'   were imported using a tximport caller (e.g. salmon, kallisto).
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-06.
 #'
 #' @name tpm
 #' @inheritParams acidroxygen::params
@@ -34,12 +34,10 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-06.
 `tpm,SummarizedExperiment` <-  # nolint
     function(object) {
-        validObject(object)
-        assert(isSubset("tpm", assayNames(object)))
-        assays(object)[["tpm"]]
+        assay(object, i = "tpm")
     }
 
 
