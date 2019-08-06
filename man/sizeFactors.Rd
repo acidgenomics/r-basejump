@@ -23,7 +23,9 @@ sizeFactors(object, ...) <- value
 \arguments{
 \item{object}{Object.}
 
-\item{value}{Value to be assigned to corresponding components of object.}
+\item{value}{Value to assign.}
+
+\item{type}{A string specifying the \emph{type} of size factor to get or set.}
 
 \item{...}{Additional arguments.}
 }
@@ -61,6 +63,6 @@ mean(sizeFactors(object))
 \item \code{DESeq2::sizeFactors()}.
 \item \code{DESeq2::estimateSizeFactors()}.
 \item \code{DESeq2::estimateSizeFactorsForMatrix()}.
-\item \code{SummarizedExperiment::colData()}.
+\item \code{SingleCellExperiment::sizeFactors()}.
 }
 }

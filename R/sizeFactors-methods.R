@@ -6,7 +6,7 @@
 #' @importMethodsFrom SingleCellExperiment sizeFactors sizeFactors<-
 #'
 #' @inheritParams acidroxygen::params
-#' @param value Value to be assigned to corresponding components of object.
+#' @inheritParams SingleCellExperiment::sizeFactors
 #' @param ... Additional arguments.
 #'
 #' @return `numeric`.
@@ -16,7 +16,7 @@
 #' - `DESeq2::sizeFactors()`.
 #' - `DESeq2::estimateSizeFactors()`.
 #' - `DESeq2::estimateSizeFactorsForMatrix()`.
-#' - `SummarizedExperiment::colData()`.
+#' - `SingleCellExperiment::sizeFactors()`.
 #'
 #' @examples
 #' data(
