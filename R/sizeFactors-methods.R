@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' data(
-#'     RangedSummarizedExperiemnt,
+#'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
