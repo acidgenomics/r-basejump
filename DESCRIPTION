@@ -72,6 +72,7 @@ Suggests:
     acidroxygen (>= 0.0.1),
     acidtest (>= 0.2.2),
     BiocStyle,
+    DESeq2,
     EnsDb.Hsapiens.v75,
     biomaRt,
     patrick (>= 0.0.1),
@@ -123,6 +124,7 @@ Collate:
     'detectHPC.R'
     'globals.R'
     'detectLanes.R'
+    'estimateSizeFactors-methods.R'
     'geneNames-methods.R'
     'geneSynonyms.R'
     'geometricMean-methods.R'
