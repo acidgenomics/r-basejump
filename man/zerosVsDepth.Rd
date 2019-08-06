@@ -37,7 +37,7 @@ name must be defined in
 Calculate and visualize the dropout rate.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-06.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

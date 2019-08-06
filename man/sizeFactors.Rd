@@ -6,6 +6,7 @@
 \alias{sizeFactors<-}
 \alias{sizeFactors,SummarizedExperiment-method}
 \alias{sizeFactors<-,SummarizedExperiment,numeric-method}
+\alias{sizeFactors<-,SingleCellExperiment,numeric-method}
 \title{Size factors}
 \usage{
 sizeFactors(object, ...)
@@ -15,6 +16,9 @@ sizeFactors(object, ...) <- value
 \S4method{sizeFactors}{SummarizedExperiment}(object)
 
 \S4method{sizeFactors}{SummarizedExperiment,numeric}(object) <- value
+
+\S4method{sizeFactors}{SingleCellExperiment,numeric}(object, type = NULL,
+  ...) <- value
 }
 \arguments{
 \item{object}{Object.}
