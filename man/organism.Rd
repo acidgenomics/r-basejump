@@ -3,6 +3,7 @@
 \docType{methods}
 \name{organism}
 \alias{organism}
+\alias{organism<-}
 \alias{organism,matrix-method}
 \alias{organism,sparseMatrix-method}
 \alias{organism,data.frame-method}
@@ -13,6 +14,8 @@
 \title{Organism}
 \usage{
 organism(object)
+
+organism(object) <- value
 
 \S4method{organism}{matrix}(object)
 

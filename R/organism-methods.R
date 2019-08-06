@@ -28,6 +28,13 @@ NULL
 #' @export
 NULL
 
+#' @rdname organism
+#' @name organism<-
+#' @importFrom BiocGenerics organism<-
+#' @usage organism(object) <- value
+#' @export
+NULL
+
 
 
 ## Assuming gene identifiers are defined in the rownames.
@@ -177,3 +184,24 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `organism,SummarizedExperiment`
 )
+
+
+
+## Updated 2019-08-06.
+`organism<-,Annotated,character` <-  # nolint
+    function(object, value) {
+        metadata(object)[["organism"]] <- value
+    }
+
+
+
+#' #' @rdname organism
+#' #' @export
+#' setReplaceMethod(
+#'     f = "organism<-",
+#'     signature = signature(
+#'         object = "ANY",
+#'         value = "ANY"
+#'     ),
+#'     definition = `organism<-,Annotated,character`
+#' )
