@@ -21,7 +21,7 @@ Transcripts per million
 Both gene- and transcript-level counts are supported, as long as they
 were imported using a tximport caller (e.g. salmon, kallisto).
 
-Updated 2019-07-28.
+Updated 2019-08-06.
 }
 \examples{
 se <- SummarizedExperiment::SummarizedExperiment(

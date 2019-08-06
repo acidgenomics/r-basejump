@@ -1,6 +1,6 @@
 #' @name meltCounts
 #' @inherit bioverbs::meltCounts
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-06.
 #'
 #' @inheritParams acidroxygen::params
 #' @param minCounts `integer(1)` or `NULL`.
@@ -133,7 +133,7 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-06.
 `meltCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -148,7 +148,7 @@ setMethod(
         trans <- match.arg(trans)
 
         ## Prepare the count matrix.
-        counts <- assays(object)[[assay]]
+        counts <- assay(object, i = assay)
         assert(hasLength(counts))
         counts <- as.matrix(counts)
 
