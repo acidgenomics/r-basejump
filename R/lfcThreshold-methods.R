@@ -1,6 +1,6 @@
 #' @name lfcThreshold
 #' @inherit bioverbs::lfcThreshold
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-06.
 #' @param ... Additional arguments.
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
@@ -64,8 +64,8 @@ setMethod(
 
 #' @rdname lfcThreshold
 #' @export
-setMethod(
-    f = "lfcThreshold<-",
+setReplaceMethod(
+    f = "lfcThreshold",
     signature = signature(
         object = "Annotated",
         value = "numeric"

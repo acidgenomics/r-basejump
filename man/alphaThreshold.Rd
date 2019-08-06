@@ -31,7 +31,7 @@ Alpha cutoff level.
 Alpha threshold
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-06.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

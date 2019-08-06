@@ -1,6 +1,6 @@
 #' @name interestingGroups
 #' @inherit bioverbs::interestingGroups
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-06.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -65,8 +65,8 @@ setMethod(
 
 #' @rdname interestingGroups
 #' @export
-setMethod(
-    f = "interestingGroups<-",
+setReplaceMethod(
+    f = "interestingGroups",
     signature = signature(
         object = "Annotated",
         value = "character"
@@ -97,8 +97,8 @@ setMethod(
 
 #' @rdname interestingGroups
 #' @export
-setMethod(
-    f = "interestingGroups<-",
+setReplaceMethod(
+    f = "interestingGroups",
     signature = signature(
         object = "SummarizedExperiment",
         value = "character"
@@ -119,8 +119,8 @@ setMethod(
 
 #' @rdname interestingGroups
 #' @export
-setMethod(
-    f = "interestingGroups<-",
+setReplaceMethod(
+    f = "interestingGroups",
     signature = signature(
         object = "Annotated",
         value = "NULL"
