@@ -30,7 +30,7 @@ lfcThreshold(object, ...) <- value
 Log2 fold change threshold
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-06.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
