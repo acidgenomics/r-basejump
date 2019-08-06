@@ -11,6 +11,7 @@
 \alias{organism,DataTable-method}
 \alias{organism,GRanges-method}
 \alias{organism,SummarizedExperiment-method}
+\alias{organism<-,Annotated-method}
 \title{Organism}
 \usage{
 organism(object)
@@ -30,9 +31,13 @@ organism(object) <- value
 \S4method{organism}{GRanges}(object)
 
 \S4method{organism}{SummarizedExperiment}(object)
+
+\S4method{organism}{Annotated}(object) <- value
 }
 \arguments{
 \item{object}{Object.}
+
+\item{value}{Value to assign.}
 
 \item{...}{Additional arguments.}
 }
