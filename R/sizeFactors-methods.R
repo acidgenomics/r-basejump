@@ -1,3 +1,7 @@
+## FIXME SCE method isn't assigning into `object@int_colData` as expected.
+
+
+
 #' Size factors
 #'
 #' @name sizeFactors
@@ -51,7 +55,8 @@ NULL
 ##
 ## > getMethod(
 ## >     f = "sizeFactors",
-## >     signature = "DESeqDataSet"
+## >     signature = "DESeqDataSet",
+## >     where = asNamespace("DESeq2")
 ## > )
 ##
 ## > getMethod(
@@ -59,7 +64,8 @@ NULL
 ## >     signature = signature(
 ## >         object = "DESeqDataSet",
 ## >         value = "numeric"
-## >     )
+## >     ),
+## >     where = asNamespace("DESeq2")
 ## > )
 ##
 ## nolint end
@@ -95,7 +101,7 @@ setMethod(
         assert(
             all(!is.na(value)),
             all(is.finite(value)),
-            all(value > 0)
+            all(value > 0L)
         )
         colData(object)[["sizeFactor"]] <- unname(value)
         validObject(object)
@@ -113,4 +119,36 @@ setReplaceMethod(
         value = "numeric"
     ),
     definition = `sizeFactors<-,SummarizedExperiment,numeric`
+)
+
+
+
+## Need to export numeric value signature, otherwise SE method mask.
+## Updated 2019-08-06.
+`sizeFactors<-,SingleCellExperiment,ANY` <-  # nolint
+    methodFunction(
+        f = "sizeFactors<-",
+        signature = signature(
+            object = "SingleCellExperiment",
+            value = "ANY"
+        ),
+        package = "SingleCellExperiment"
+    )
+
+
+
+`sizeFactors<-,SingleCellExperiment,numeric` <-  # nolint
+    `sizeFactors<-,SingleCellExperiment,ANY`
+
+
+
+#' @rdname sizeFactors
+#' @export
+setReplaceMethod(
+    f = "sizeFactors",
+    signature = signature(
+        object = "SingleCellExperiment",
+        value = "numeric"
+    ),
+    definition = `sizeFactors<-,SingleCellExperiment,numeric`
 )
