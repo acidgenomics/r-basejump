@@ -7,7 +7,7 @@
 #'
 #' @name counts
 #' @aliases counts<-
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-06.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -74,8 +74,8 @@ setMethod(
 
 #' @rdname counts
 #' @export
-setMethod(
-    f = "counts<-",
+setReplaceMethod(
+    f = "counts",
     signature = signature(
         object = "SummarizedExperiment",
         value = "ANY"

@@ -1,7 +1,7 @@
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::metrics
-#' @note Updated 2019-08-05.
+#' @note Updated 2019-08-06.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.

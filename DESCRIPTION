@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.11.4
-Date: 2019-08-05
+Date: 2019-08-06
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -43,6 +43,8 @@ Imports:
     transformer (>= 0.2),
     Biobase,
     BiocGenerics,
+    DelayedArray,
+    DelayedMatrixStats,
     GenomeInfoDb,
     GenomicRanges,
     IRanges,
@@ -173,6 +175,7 @@ Collate:
     'show-methods.R'
     'showHeader.R'
     'showSlotInfo.R'
+    'sizeFactors-methods.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
