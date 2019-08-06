@@ -19,12 +19,23 @@
 #' - `SummarizedExperiment::colData()`.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiemnt,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#'
+#' ## SummarizedExperiment ====
+#' object <- RangedSummarizedExperiment
+#' object <- estimateSizeFactors(object)
+#' head(sizeFactors(object))
+#' mean(sizeFactors(object))
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' object <- estimateSizeFactors(object)
 #' head(sizeFactors(object))
+#' mean(sizeFactors(object))
 NULL
 
 

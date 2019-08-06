@@ -38,12 +38,23 @@ Size factors
 Updated 2019-08-06.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(
+    RangedSummarizedExperiemnt,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+
+## SummarizedExperiment ====
+object <- RangedSummarizedExperiment
+object <- estimateSizeFactors(object)
+head(sizeFactors(object))
+mean(sizeFactors(object))
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
 object <- estimateSizeFactors(object)
 head(sizeFactors(object))
+mean(sizeFactors(object))
 }
 \seealso{
 \itemize{
