@@ -195,13 +195,10 @@ setMethod(
 
 
 
-#' #' @rdname organism
-#' #' @export
-#' setReplaceMethod(
-#'     f = "organism<-",
-#'     signature = signature(
-#'         object = "ANY",
-#'         value = "ANY"
-#'     ),
-#'     definition = `organism<-,Annotated,character`
-#' )
+#' @rdname organism
+#' @export
+setReplaceMethod(
+    f = "organism",
+    signature = "Annotated",
+    definition = `organism<-,Annotated,character`
+)
