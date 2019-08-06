@@ -56,6 +56,15 @@ NULL
 
 
 
+## If exporting a numeric value signature for SE, the SE method will mask SCE
+## ANY value method. In this case, we need to export a corresponding SCE numeric
+## method.
+##
+## See also:
+## - https://github.com/drisso/SingleCellExperiment/pull/34
+
+
+
 ## nolint start
 ##
 ## SE methods are modified versions of the DESeqDataSet methods.
@@ -103,14 +112,17 @@ setMethod(
 
 
 ## Updated 2019-08-06.
-`sizeFactors<-,SummarizedExperiment,numeric` <-  # nolint
+`sizeFactors<-,SummarizedExperiment,ANY` <-  # nolint
     function(object, value) {
-        assert(
-            all(!is.na(value)),
-            all(is.finite(value)),
-            all(value > 0L)
-        )
-        colData(object)[["sizeFactor"]] <- unname(value)
+        if (!is.null(value)) {
+            assert(
+                all(!is.na(value)),
+                all(is.finite(value)),
+                all(value > 0L)
+            )
+            value <- unname(value)
+        }
+        colData(object)[["sizeFactor"]] <- value
         validObject(object)
         object
     }
@@ -123,42 +135,7 @@ setReplaceMethod(
     f = "sizeFactors",
     signature = signature(
         object = "SummarizedExperiment",
-        value = "numeric"
+        value = "ANY"
     ),
-    definition = `sizeFactors<-,SummarizedExperiment,numeric`
-)
-
-
-
-## Need to export numeric value signature, otherwise SE method will mask, and
-## SCE method won't assign into `object@int_colData` as expected.
-## https://github.com/drisso/SingleCellExperiment/pull/34
-
-## Updated 2019-08-06.
-`sizeFactors<-,SingleCellExperiment,ANY` <-  # nolint
-    methodFunction(
-        f = "sizeFactors<-",
-        signature = signature(
-            object = "SingleCellExperiment",
-            value = "ANY"
-        ),
-        package = "SingleCellExperiment"
-    )
-
-
-
-`sizeFactors<-,SingleCellExperiment,numeric` <-  # nolint
-    `sizeFactors<-,SingleCellExperiment,ANY`
-
-
-
-#' @rdname sizeFactors
-#' @export
-setReplaceMethod(
-    f = "sizeFactors",
-    signature = signature(
-        object = "SingleCellExperiment",
-        value = "numeric"
-    ),
-    definition = `sizeFactors<-,SingleCellExperiment,numeric`
+    definition = `sizeFactors<-,SummarizedExperiment,ANY`
 )
