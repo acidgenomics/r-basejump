@@ -67,7 +67,7 @@ setMethod(
         assert(
             all(!is.na(value)),
             all(is.finite(value)),
-            all(value > 0)
+            all(value >= 0L)
         )
         assay(object, i = "counts") <- value
         validObject(object)
