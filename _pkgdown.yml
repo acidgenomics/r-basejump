@@ -61,15 +61,15 @@ reference:
       - sortUnique
       - starts_with("strip")
       - toStringUnique
-  - title: Aggregation
+  - title: Aggregation and normalization
     contents:
       - starts_with("aggregate")
       - combine
-  - title: Math
-    contents:
+      - estimateSizeFactors
       - geometricMean
       - logRatio
       - rankedMatrix
+      - sizeFactors
       - zerosVsDepth
   - title: Markdown
     contents:

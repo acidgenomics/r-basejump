@@ -212,9 +212,24 @@ objects.</p>
 <span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
 
 <span class='co'>## data.frame ====</span>
-<span class='fu'>headtail</span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/r/datasets/mtcars.html'>mtcars</a></span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .local(x, ...): unused argument (unicode = TRUE)</span></div><div class='input'><span class='fu'>headtail</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='no'><a href='https://dplyr.tidyverse.org/reference/starwars.html'>starwars</a></span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .local(x, ...): unused argument (unicode = FALSE)</span></div><div class='input'>
+<span class='fu'>headtail</span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/r/datasets/mtcars.html'>mtcars</a></span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                mpg cyl │ gear carb
+#&gt; Mazda RX4       21   6 │    4    4
+#&gt; Mazda RX4 Wag   21   6 │    4    4
+#&gt; ─                ─   ─ ┼    ─    ─
+#&gt; Maserati Bora   15   8 │    5    8
+#&gt; Volvo 142E    21.4   4 │    4    2</div><div class='input'><span class='fu'>headtail</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='no'><a href='https://dplyr.tidyverse.org/reference/starwars.html'>starwars</a></span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;               name height ... vehicles starships
+#&gt; 1   Luke Skywalker    172 ...       &lt;&gt;        &lt;&gt;
+#&gt; 2            C-3PO    167 ...       &lt;&gt;        &lt;&gt;
+#&gt; ...            ...    ... ...      ...       ...
+#&gt; 3   Captain Phasma   &lt;NA&gt; ...       &lt;&gt;        &lt;&gt;
+#&gt; 4   Padm.. Amidala    165 ...       &lt;&gt;        &lt;&gt;</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>headtail</span>(<span class='no'>rse</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .local(x, ...): unused argument (unicode = TRUE)</span></div></pre>
+<span class='fu'>headtail</span>(<span class='no'>rse</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;         sample01 sample02 │ sample11 sample12
+#&gt; gene001        4       16 │        1        0
+#&gt; gene002       49       15 │        2        1
+#&gt; ─              ─        ─ ┼        ─        ─
+#&gt; gene499       44       56 │       30       97
+#&gt; gene500        0        1 │        7       17</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
