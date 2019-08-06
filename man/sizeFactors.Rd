@@ -5,8 +5,7 @@
 \alias{sizeFactors}
 \alias{sizeFactors<-}
 \alias{sizeFactors,SummarizedExperiment-method}
-\alias{sizeFactors<-,SummarizedExperiment,numeric-method}
-\alias{sizeFactors<-,SingleCellExperiment,numeric-method}
+\alias{sizeFactors<-,SummarizedExperiment-method}
 \title{Size factors}
 \usage{
 sizeFactors(object, ...)
@@ -15,17 +14,12 @@ sizeFactors(object, ...) <- value
 
 \S4method{sizeFactors}{SummarizedExperiment}(object)
 
-\S4method{sizeFactors}{SummarizedExperiment,numeric}(object) <- value
-
-\S4method{sizeFactors}{SingleCellExperiment,numeric}(object, type = NULL,
-  ...) <- value
+\S4method{sizeFactors}{SummarizedExperiment}(object) <- value
 }
 \arguments{
 \item{object}{Object.}
 
 \item{value}{Value to assign.}
-
-\item{type}{A string specifying the \emph{type} of size factor to get or set.}
 
 \item{...}{Additional arguments.}
 }
