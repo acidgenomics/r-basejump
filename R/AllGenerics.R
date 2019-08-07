@@ -27,6 +27,10 @@ setGeneric(
     }
 )
 
+
+
+## FIXME Move this to bioverbs.
+
 #' @rdname calculateMetrics
 #' @export
 setGeneric(
