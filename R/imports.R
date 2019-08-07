@@ -1,9 +1,5 @@
 ## Conflicts with BiocGenerics:
-## @importMethodsFrom Matrix colSums rowMeans rowSums t
-
-## SingleCellExperiment prior to BioC 3.8 doesn't define coercion methods.
-## We're maintaiing legacy support for R 3.4 (BioC 3.5/3.6), so disable.
-## @importMethodsFrom SingleCellExperiment coerce
+## #' @importMethodsFrom Matrix colSums rowMeans rowSums t
 
 
 
@@ -16,6 +12,7 @@
 #'
 #' @importMethodsFrom S4Vectors as.data.frame as.list coerce do.call lapply
 #'   match setdiff t
+#' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
