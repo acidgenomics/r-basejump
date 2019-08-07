@@ -132,6 +132,12 @@ of transgenes and spike-ins.</p>
 <span class='fu'>makeSingleCellExperiment</span>(<span class='no'>assays</span>,
   <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span>(), <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(),
+  <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>makeSingleCellExperiment</span>(<span class='no'>assays</span>,
+  <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span>(), <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
+  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(),
   <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -240,7 +246,8 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 #&gt; metadata(3): date sessionInfo wd
 #&gt; assays(1): counts
 #&gt; rownames(500): gene1 gene10 ... gene98 gene99
-#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
+#&gt; rowData names(8): broadClass description ...
+#&gt;   geneName seqCoordSystem
 #&gt; colnames(100): cell001 cell002 ... cell099 cell100
 #&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):

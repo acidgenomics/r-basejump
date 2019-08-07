@@ -195,9 +195,7 @@ List containing <code>ggplot</code> objects.</p></td>
     <tr>
       <th>genes</th>
       <td><p><code>character</code>.
-Gene identifiers. It is considered better practice to input the stable gene
-identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
-symbols (e.g. "TSPN6"), if possible.</p></td>
+Gene identifiers.</p></td>
     </tr>
     <tr>
       <th>gene2symbol</th>
@@ -208,8 +206,8 @@ Gene-to-symbol mappings. Must contain <code>geneID</code> and <code>geneName</co
     <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>.
-Groups of interest that define the samples. If left unset, defaults to
-<code>sampleName</code>.</p></td>
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.</p></td>
     </tr>
     <tr>
       <th>object</th>
