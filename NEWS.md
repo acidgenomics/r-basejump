@@ -1,4 +1,4 @@
-## basejump 0.11.4 (2019-08-06)
+## basejump 0.11.4 (2019-08-07)
 
 ### Major changes
 

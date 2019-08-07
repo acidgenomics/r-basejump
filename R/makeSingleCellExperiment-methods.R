@@ -112,6 +112,22 @@ formals(`makeSingleCellExperiment,SimpleList`)[args] <-
 #' @export
 setMethod(
     f = "makeSingleCellExperiment",
-    signature = signature("SimpleList"),
+    signature = signature(assays = "SimpleList"),
     definition = `makeSingleCellExperiment,SimpleList`
+)
+
+
+
+## Updated 2019-08-07.
+`makeSingleCellExperiment,list` <-  # nolint
+    `makeSingleCellExperiment,SimpleList`
+
+
+
+#' @rdname makeSingleCellExperiment
+#' @export
+setMethod(
+    f = "makeSingleCellExperiment",
+    signature = signature(assays = "list"),
+    definition = `makeSingleCellExperiment,list`
 )

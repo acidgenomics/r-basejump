@@ -5,11 +5,17 @@
 \name{makeSummarizedExperiment}
 \alias{makeSummarizedExperiment}
 \alias{makeSummarizedExperiment,SimpleList-method}
+\alias{makeSummarizedExperiment,list-method}
 \title{Make a SummarizedExperiment object}
 \usage{
 makeSummarizedExperiment(assays, ...)
 
 \S4method{makeSummarizedExperiment}{SimpleList}(assays,
+  rowRanges = GRangesList(), rowData = NULL, colData = DataFrame(),
+  metadata = list(), transgeneNames = NULL, spikeNames = NULL,
+  sort = TRUE, sessionInfo = TRUE)
+
+\S4method{makeSummarizedExperiment}{list}(assays,
   rowRanges = GRangesList(), rowData = NULL, colData = DataFrame(),
   metadata = list(), transgeneNames = NULL, spikeNames = NULL,
   sort = TRUE, sessionInfo = TRUE)

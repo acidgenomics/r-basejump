@@ -5,11 +5,17 @@
 \name{makeSingleCellExperiment}
 \alias{makeSingleCellExperiment}
 \alias{makeSingleCellExperiment,SimpleList-method}
+\alias{makeSingleCellExperiment,list-method}
 \title{Make a SingleCellExperiment object}
 \usage{
 makeSingleCellExperiment(assays, ...)
 
 \S4method{makeSingleCellExperiment}{SimpleList}(assays,
+  rowRanges = GRangesList(), colData = DataFrame(),
+  metadata = list(), reducedDims = SimpleList(),
+  transgeneNames = NULL, spikeNames = NULL)
+
+\S4method{makeSingleCellExperiment}{list}(assays,
   rowRanges = GRangesList(), colData = DataFrame(),
   metadata = list(), reducedDims = SimpleList(),
   transgeneNames = NULL, spikeNames = NULL)
