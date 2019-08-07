@@ -9,10 +9,10 @@ markdownHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
 }
 \arguments{
 \item{text}{\code{character(1)}.
-Header text.}
+Text.}
 
 \item{level}{\code{integer(1)}.
-Header level (1-7).}
+Markdown header level (1-7).}
 
 \item{tabset}{\code{logical(1)}.
 Include tabset marker.}

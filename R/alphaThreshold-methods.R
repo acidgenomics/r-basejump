@@ -1,6 +1,6 @@
 #' @name alphaThreshold
 #' @inherit bioverbs::alphaThreshold
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-06.
 #' @param ... Additional arguments.
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
@@ -61,8 +61,8 @@ setMethod(
 
 #' @rdname alphaThreshold
 #' @export
-setMethod(
-    f = "alphaThreshold<-",
+setReplaceMethod(
+    f = "alphaThreshold",
     signature = signature(
         object = "Annotated",
         value = "numeric"

@@ -4,7 +4,7 @@
 #' @inherit base::summary description references
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return Invisible `NULL`.

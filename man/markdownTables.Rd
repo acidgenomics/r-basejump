@@ -9,11 +9,11 @@ markdownTables(list, captions = NULL, force = FALSE)
 }
 \arguments{
 \item{list}{Named \code{list}.
-Column data that can be coerced to \code{data.frame}.}
+Must contain data that can be coerced to \code{data.frame}.}
 
 \item{captions}{\code{character} or \code{NULL}.
-Table captions. If \code{NULL}, the names of the list will be used automatically
-as captions.}
+Captions.
+If \code{NULL}, the names of the primary input list will be used automatically.}
 
 \item{force}{\code{logical(1)}.
 Force knit output using \code{\link[knitr:asis_output]{knitr::asis_output()}}.

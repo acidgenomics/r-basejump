@@ -5,14 +5,9 @@
 #'
 #' @note Updated 2019-07-28.
 #' @export
-
-#' @inheritParams params
-#' @inheritParams goalie::params
-#' @param x S4 class.
-#' @param interestingGroups `character`.
-#'   Interesting groups.
 #'
-#' @return `logical(1)`.
+#' @inherit goalie::check return
+#' @inheritParams acidroxygen::params
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")

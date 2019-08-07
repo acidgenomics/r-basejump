@@ -5,7 +5,8 @@
 \alias{counts}
 \alias{counts<-}
 \alias{counts,SummarizedExperiment-method}
-\alias{counts<-,SummarizedExperiment-method}
+\alias{counts<-,SummarizedExperiment,matrix-method}
+\alias{counts<-,SummarizedExperiment,Matrix-method}
 \title{Counts}
 \usage{
 counts(object, ...)
@@ -14,7 +15,9 @@ counts(object, ...) <- value
 
 \S4method{counts}{SummarizedExperiment}(object)
 
-\S4method{counts}{SummarizedExperiment}(object) <- value
+\S4method{counts}{SummarizedExperiment,matrix}(object) <- value
+
+\S4method{counts}{SummarizedExperiment,Matrix}(object) <- value
 }
 \arguments{
 \item{object}{Object.}
@@ -34,7 +37,7 @@ Count matrix.
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
 defined in \code{assayNames}.
 
-Updated 2019-07-28.
+Updated 2019-08-06.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

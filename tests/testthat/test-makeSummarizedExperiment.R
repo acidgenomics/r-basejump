@@ -1,8 +1,16 @@
 context("makeSummarizedExperiment")
 
+## Test for SummarizedExperiment instead of RangedSummarizedExperiment.
+SE <-  # nolint
+    structure(
+        .Data = "SummarizedExperiment",
+        package = "SummarizedExperiment"
+    )
+
 genes <- paste0("gene", seq_len(4L))
 samples <- paste0("sample", seq_len(4L))
-mat <- matrix(
+
+counts <- matrix(
     data = seq(1L:16L),
     nrow = 4L,
     ncol = 4L,
@@ -10,16 +18,20 @@ mat <- matrix(
     dimnames = list(genes, samples)
 )
 
-rr <- GRanges(
+assays <- SimpleList(counts = counts)
+
+rowRanges <- GRanges(
     seqnames = replicate(n = 4L, expr = "1"),
     ranges = IRanges(
         start = seq(from = 1L, to = 301L, by = 100L),
         end = seq(from = 100L, to = 401L, by = 100L)
     )
 )
-names(rr) <- genes
+names(rowRanges) <- genes
 
-cd <- DataFrame(
+rowData <- as(as.data.frame(rowRanges), "DataFrame")
+
+colData <- DataFrame(
     genotype = rep(c("wildtype", "knockout"), each = 2L),
     age = rep(c(3L, 6L), times = 2L),
     row.names = samples
@@ -27,59 +39,55 @@ cd <- DataFrame(
 
 test_that("RangedSummarizedExperiment", {
     object <- makeSummarizedExperiment(
-        assays = list(counts = mat),
-        rowRanges = rr,
-        colData = cd
+        assays = assays,
+        rowRanges = rowRanges,
+        colData = colData
     )
     expect_s4_class(object, "RangedSummarizedExperiment")
     expect_identical(dim(object), c(4L, 4L))
     expect_identical(names(object), genes)
-    ## Previously we stashed devtoolsSessionInfo and utilsSessionInfo here.
     expect_identical(
         object = lapply(metadata(object), class),
         expected = list(
             date = "Date",
-            wd = "character",
-            sessionInfo = "session_info"
+            sessionInfo = "session_info",
+            wd = "character"
         )
     )
 })
 
+## Allowing legacy support of rowData pass-in.
 test_that("SummarizedExperiment", {
-    ## Allow legacy support of rowData pass-in.
     object <- makeSummarizedExperiment(
-        assays = list(counts = mat),
-        rowData = as(rr, "DataFrame"),
-        colData = cd
+        assays = assays,
+        rowData = rowData,
+        colData = colData
     )
-    ## Check for SE and not RSE.
-    expect_identical(
-        object = class(object),
-        expected = structure(
-            .Data = "SummarizedExperiment",
-            package = "SummarizedExperiment"
-        )
-    )
+    expect_identical(class(object), SE)
 })
 
-test_that("No row/column annotations", {
-    ## Ensure this returns clean in minimal mode.
-    rse <- makeSummarizedExperiment(
-        assays = list(counts = mat),
+test_that("Minimal input", {
+    assays <- SimpleList(counts = matrix())
+
+    x <- makeSummarizedExperiment(assays = assays)
+    expect_identical(class(x), SE)
+
+    x <- makeSummarizedExperiment(
+        assays = assays,
         rowRanges = NULL,
         rowData = NULL,
-        colData = NULL
+        colData = NULL,
+        metadata = NULL
     )
-    expect_s4_class(rse, "RangedSummarizedExperiment")
-    expect_identical(levels(seqnames(rse)), "unknown")
+    expect_identical(class(x), SE)
 })
 
 test_that("Spike-in support", {
-    rownames(mat)[1L:2L] <- c("EGFP", "ERCC")
+    rownames(assays[[1L]])[1L:2L] <- c("EGFP", "ERCC")
     object <- makeSummarizedExperiment(
-        assays = list(counts = mat),
-        rowRanges = rr[3L:4L],
-        colData = cd,
+        assays = assays,
+        rowRanges = rowRanges[3L:4L],
+        colData = colData,
         transgeneNames = "EGFP",
         spikeNames = "ERCC"
     )
@@ -95,46 +103,46 @@ test_that("Spike-in support", {
 
 test_that("Strict names", {
     ## Don't allow any dashes and other illegal characters in names.
-    matBadRows <- mat
-    rownames(matBadRows) <- paste0(rownames(mat), "-XXX")
+    countsBadRows <- counts
+    rownames(countsBadRows) <- paste0(rownames(counts), "-XXX")
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = matBadRows),
-            rowRanges = rr,
-            colData = cd
+            assays = SimpleList(counts = countsBadRows),
+            rowRanges = rowRanges,
+            colData = colData
         ),
         regexp = "hasValidDimnames"
     )
-    matBadCols <- mat
-    colnames(matBadCols) <- paste0(colnames(matBadCols), "-XXX")
+    countsBadCols <- counts
+    colnames(countsBadCols) <- paste0(colnames(countsBadCols), "-XXX")
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = matBadCols),
-            rowRanges = rr,
-            colData = cd
+            assays = SimpleList(counts = countsBadCols),
+            rowRanges = rowRanges,
+            colData = colData
         ),
         regexp = "hasValidDimnames"
     )
 })
 
 test_that("Duplicate names", {
-    matDupeRows <- mat
-    rownames(matDupeRows) <- paste0("gene", rep(seq_len(2L), each = 2L))
+    countsDupeRows <- counts
+    rownames(countsDupeRows) <- paste0("gene", rep(seq_len(2L), each = 2L))
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = matDupeRows),
-            rowRanges = rr,
-            colData = cd
+            assays = SimpleList(counts = countsDupeRows),
+            rowRanges = rowRanges,
+            colData = colData
         ),
         regexp = "hasValidDimnames"
     )
-    matDupeCols <- mat
-    colnames(matDupeCols) <- paste0("sample", rep(seq_len(2L), each = 2L))
+    countsDupeCols <- counts
+    colnames(countsDupeCols) <- paste0("sample", rep(seq_len(2L), each = 2L))
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = matDupeCols),
-            rowRanges = rr,
-            colData = cd
+            assays = SimpleList(counts = countsDupeCols),
+            rowRanges = rowRanges,
+            colData = colData
         ),
         regexp = "hasValidDimnames"
     )
@@ -144,25 +152,25 @@ test_that("Column data failure", {
     ## Bad pass-in of objects not supporting `dimnames`.
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = "yyy"),
-            rowRanges = rr,
-            colData = cd
+            assays = SimpleList(counts = "yyy"),
+            rowRanges = rowRanges,
+            colData = colData
         ),
         regexp = "areIntersectingSets"
     )
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = mat),
-            rowRanges = rr,
+            assays = assays,
+            rowRanges = rowRanges,
             colData = c(xxx = "yyy")
         ),
         regexp = "isAny.*colData"
     )
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = mat),
+            assays = assays,
             rowRanges = c(xxx = "yyy"),
-            colData = cd
+            colData = colData
         ),
         regexp = "isAny.*rowRanges"
     )
@@ -171,9 +179,9 @@ test_that("Column data failure", {
 test_that("Invalid metadata", {
     expect_error(
         object = makeSummarizedExperiment(
-            assays = list(counts = mat),
-            rowRanges = rr,
-            colData = cd,
+            assays = assays,
+            rowRanges = rowRanges,
+            colData = colData,
             metadata = Sys.Date()
         ),
         regexp = "isAny.*metadata"

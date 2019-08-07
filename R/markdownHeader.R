@@ -6,16 +6,9 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
-#' @param text `character(1)`.
-#'   Header text.
+#' @inheritParams acidroxygen::params
 #' @param level `integer(1)`.
-#'   Header level (1-7).
-#' @param tabset `logical(1)`.
-#'   Include tabset marker.
-#' @param asis `logical(1)`.
-#'   Set this to `TRUE` when using the function inside a loop or inside an R
-#'   Markdown chunk with '`results = "asis"`' enabled.
+#'   Markdown header level (1-7).
 #'
 #' @seealso
 #' [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).

@@ -2,7 +2,7 @@
 #' @inherit bioverbs::stripTranscriptVersions
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @note This method is strict, and will only strip Ensembl transcript IDs

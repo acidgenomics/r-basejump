@@ -63,14 +63,14 @@ test_that("sce_lanesplit", {
 
 test_that("acidtest example", {
     object <- aggregateCellsToSamples(sce)
-    sums <- assay(object) %>%
+    sums <- counts(object) %>%
         Matrix::colSums(.) %>%
         as("integer")
     expect_identical(
         object = sums,
         expected = c(
-            sample1 = 3080321L,
-            sample2 = 2334466L
+            sample1 = 3576538L,
+            sample2 = 1943744L
         )
     )
 })

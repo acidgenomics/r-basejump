@@ -23,10 +23,7 @@ zerosVsDepth(object, ...)
 \item{object}{Object.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
-name must be defined in
-\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
+Assay name or index position.}
 
 \item{...}{Additional arguments.}
 }
@@ -37,7 +34,7 @@ name must be defined in
 Calculate and visualize the dropout rate.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-06.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

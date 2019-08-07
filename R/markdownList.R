@@ -8,8 +8,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @param ordered `logical(1)`.
-#'   Ordered ("`TRUE`") or unordered ("`FALSE`").
+#' @inheritParams acidroxygen::params
 #'
 #' @examples
 #' groceries <- c("milk", "eggs")

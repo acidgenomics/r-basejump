@@ -7,13 +7,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
-#' @param organism `character(1)`.
-#'   Supported organisms:
-#'
-#'   - *Homo sapiens*.
-#'   - *Mus musculus*.
-#'   - *Drosophila melanogaster*.
+#' @inheritParams acidroxygen::params
 #'
 #' @return `grouped_df`.
 #' Grouped by `geneID` column.
@@ -22,9 +16,15 @@
 #' options(acid.test = TRUE)
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
-geneSynonyms <- function(organism) {
+geneSynonyms <- function(
+    organism = c(
+        "Homo sapiens",
+        "Mus musculus",
+        "Drosophila melanogaster"
+    )
+) {
     assert(hasInternet())
-    organism <- match.arg(arg = organism, choices = .geneSynonymsOrganisms)
+    organism <- match.arg(organism)
 
     ## NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
@@ -93,12 +93,3 @@ geneSynonyms <- function(organism) {
         arrange(!!sym("geneID")) %>%
         group_by(!!sym("geneID"))
 }
-
-
-
-## Using this for parameterized unit testing.
-.geneSynonymsOrganisms <- c(
-    "Homo sapiens",
-    "Mus musculus",
-    "Drosophila melanogaster"
-)

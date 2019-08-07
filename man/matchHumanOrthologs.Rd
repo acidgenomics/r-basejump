@@ -7,12 +7,18 @@
 matchHumanOrthologs(genes, organism = NULL, ensemblRelease = NULL)
 }
 \arguments{
-\item{genes}{Ensembl gene identifiers.}
+\item{genes}{\code{character}.
+Gene identifiers.}
 
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{ensemblRelease}{Ensembl release (e.g. 96).}
+\item{ensemblRelease}{\code{integer(1)}.
+Ensembl release version (e.g. \code{90}). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.}
 }
 \value{
 \code{DataFrame}.
@@ -28,7 +34,7 @@ Data frame containing mapping columns:
 Match human gene orthologs
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-05.
 }
 \examples{
 genes <- c(

@@ -13,10 +13,10 @@ metrics(object, ...)
 
 metricsPerSample(object, ...)
 
-\S4method{metrics}{SummarizedExperiment}(object, return = c("tibble",
+\S4method{metrics}{SummarizedExperiment}(object, return = c("tbl_df",
   "DataFrame"))
 
-\S4method{metrics}{SingleCellExperiment}(object, return = c("tibble",
+\S4method{metrics}{SingleCellExperiment}(object, return = c("tbl_df",
   "DataFrame"))
 
 \S4method{metricsPerSample}{SingleCellExperiment}(object, fun = c("mean",
@@ -37,8 +37,8 @@ Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 }
 \value{
 \itemize{
-\item \code{"tibble"}: \code{grouped_df}.
-Grouped by \code{sampleID} column.
+\item \code{"tbl_df"}: \code{grouped_df}.
+Tibble grouped by \code{sampleID} column.
 \item \code{"DataFrame"}: \code{DataFrame}.
 Row names are identical to the column names of the object, like
 \code{\link[SummarizedExperiment:colData]{colData()}}.
@@ -64,7 +64,7 @@ to \code{colnames}.
 }}
 
 \note{
-Updated 2019-07-28.
+Updated 2019-08-06.
 }
 \examples{
 data(

@@ -1,3 +1,24 @@
+## basejump 0.11.4 (2019-08-07)
+
+### Major changes
+
+- `makeSampleData`: Switched to S4 method that works on `data.frame` and
+  `DataFrame` class objects. Enforcing lower camel case for column names.
+- `makeSummarizedExperiment` and `makeSingleCellExperiment`: Switched to S4
+  method approach that currently requires `SimpleList` input for assays.
+  Previously, we allowed `list` input for assays, but we're tightening this up
+  to simply the package code base and improve consistency.
+- `aggregate` methods now consistently return the primary assay named as
+  `counts`. This follows the recommended conventions defined in
+  SingleCellExperiment. Aggregation functions will now intentionally fail for
+  `SummarizedExperiment` objects that don't contain an assay named `counts`.
+
+### Minor changes
+
+- Improved documentation consistency by offloading `params.Rd` file to new
+  acidroxygen package. This will be linked in the other Acid Genomics packages.
+- Updated unit tests to follow new package conventions (see above changes).
+
 ## basejump 0.11.3 (2019-07-30)
 
 100th release!

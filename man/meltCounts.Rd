@@ -40,10 +40,7 @@ Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
-name must be defined in
-\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
+Assay name or index position.}
 
 \item{...}{Additional arguments.}
 }
@@ -55,7 +52,7 @@ Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
 Melt count matrix into long format
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-06.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

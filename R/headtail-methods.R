@@ -2,11 +2,9 @@
 #' @inherit bioverbs::headtail
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param n `integer(1)`.
 #'   Positive integer denoting the number of first and last items to include.
-#' @param ascii `logical(1)`.
-#'   Require separators to use ASCII instead of Unicode.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -14,11 +12,11 @@
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## data.frame ====
-#' headtail(datasets::mtcars, ascii = TRUE)
-#' headtail(dplyr::starwars)
+#' headtail(datasets::mtcars, unicode = TRUE)
+#' headtail(dplyr::starwars, unicode = FALSE)
 #'
 #' ## SummarizedExperiment ====
-#' headtail(rse, ascii = TRUE)
+#' headtail(rse, unicode = TRUE)
 NULL
 
 
@@ -70,12 +68,12 @@ setMethod(
 
 ## Updated 2019-07-22.
 `headtail,matrix` <-  # nolint
-    function(x, n = 2L, ascii = FALSE) {
+    function(x, n = 2L, unicode = TRUE) {
         assert(
             hasDims(x),
             isInt(n),
             isPositive(n),
-            isFlag(ascii)
+            isFlag(unicode)
         )
 
         if (nrow(x) <= n * 2L || ncol(x) <= n * 2L) {
@@ -168,7 +166,7 @@ setMethod(
         }
 
         ## Substitute Unicode characters for ASCII, if desired.
-        if (isTRUE(ascii)) {
+        if (!isTRUE(unicode)) {
             dimnames(out) <- lapply(
                 X = dimnames(out),
                 FUN = iconv,
@@ -256,7 +254,7 @@ setMethod(
         headtail(
             x = as(x, "data.frame"),
             n = n,
-            ascii = ascii
+            unicode = unicode
         )
     }
 
@@ -280,7 +278,7 @@ setMethod(
         headtail(
             x = assay(x),
             n = n,
-            ascii = ascii
+            unicode = unicode
         )
     }
 

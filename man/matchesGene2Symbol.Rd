@@ -7,23 +7,21 @@
 matchesGene2Symbol(x, genes, gene2symbol, .xname = getNameInParent(x))
 }
 \arguments{
-\item{x}{Object class supporting \code{\link[base:rownames]{rownames()}}.
-All rownames in this object must intersect with the rownames defined in the
-\code{gene2symbol} argument.}
+\item{x}{Object.}
 
 \item{genes}{\code{character}.
-Gene identifiers. It is considered better practice to input the stable gene
-identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
-symbols (e.g. "TSPN6"), if possible.}
+Gene identifiers.}
 
 \item{gene2symbol}{\code{Gene2Symbol}.
 Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
 \code{Gene2Symbol} for more information.}
 
-\item{.xname}{\emph{Not intended to be used directly.}}
+\item{.xname}{Name of object defined in \code{x}.
+\emph{Not intended to be used directly.}}
 }
 \value{
-\code{logical(1)}.
+\code{TRUE} on success;
+\code{FALSE} on failure, with cause set.
 }
 \description{
 Check that user-defined gene input matches expected values

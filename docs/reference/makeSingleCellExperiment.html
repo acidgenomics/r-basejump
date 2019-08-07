@@ -38,8 +38,7 @@
 
 <meta property="og:description" content="This function is a utility wrapper for SummarizedExperiment that provides
 automatic subsetting for row and column data, as well as automatic handling
-of transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the metadata slot:" />
+of transgenes and spike-ins." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +70,7 @@ constructor by slotting useful session information into the metadata slot:" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.4</span>
       </span>
     </div>
 
@@ -115,7 +114,7 @@ constructor by slotting useful session information into the metadata slot:" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make a SingleCellExperiment object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/makeSingleCellExperiment.R'><code>R/makeSingleCellExperiment.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/makeSingleCellExperiment-methods.R'><code>R/makeSingleCellExperiment-methods.R</code></a></small>
     <div class="hidden name"><code>makeSingleCellExperiment.Rd</code></div>
     </div>
 
@@ -123,12 +122,22 @@ constructor by slotting useful session information into the metadata slot:" />
     
     <p>This function is a utility wrapper for <code>SummarizedExperiment</code> that provides
 automatic subsetting for row and column data, as well as automatic handling
-of transgenes and spike-ins. Additionally, it improves upon the standard
-constructor by slotting useful session information into the <code>metadata</code> slot:</p>
+of transgenes and spike-ins.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeSingleCellExperiment</span>(<span class='no'>assays</span>, <span class='no'>rowRanges</span>, <span class='no'>colData</span>, <span class='no'>metadata</span>,
+    <pre class="usage"><span class='fu'>makeSingleCellExperiment</span>(<span class='no'>assays</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SimpleList</span>
+<span class='fu'>makeSingleCellExperiment</span>(<span class='no'>assays</span>,
+  <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span>(), <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
+  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(),
+  <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>makeSingleCellExperiment</span>(<span class='no'>assays</span>,
+  <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span>(), <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
+  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(),
   <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -136,13 +145,17 @@ constructor by slotting useful session information into the <code>metadata</code
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>assays</th>
-      <td><p><code>list</code>.
+      <td><p><code>SimpleList</code>.
 Count matrices, which must have matching dimensions. Counts can be passed
 in as either a dense matrix (<code>matrix</code>) or sparse matrix (<code>sparseMatrix</code>).</p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
       <th>rowRanges</th>
-      <td><p><code>GRanges</code>.
+      <td><p><code>GRanges</code> or <code>GRangesList</code>.
 Genomic ranges (e.g. genome annotations). Metadata describing the assay
 rows.</p></td>
     </tr>
@@ -157,6 +170,11 @@ cells.</p></td>
       <th>metadata</th>
       <td><p><code>list</code>.
 Metadata.</p></td>
+    </tr>
+    <tr>
+      <th>reducedDims</th>
+      <td><p><code>SimpleList</code>.
+List containing matrices of cell coordinates in reduced space.</p></td>
     </tr>
     <tr>
       <th>transgeneNames</th>
@@ -174,19 +192,23 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></
 
     <p><code>SingleCellExperiment</code>.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Updated 2019-08-05.</p>
+    
+    <h2 class="hasAnchor" id="session-information"><a class="anchor" href="#session-information"></a>Session information</h2>
 
     
-<ul>
+
+
+<p>This function improves upon the standard constructor by slotting useful
+session information into the <code>metadata</code> slot by default:</p><ul>
 <li><p><code>date</code>: Today's date, returned from <code>Sys.Date</code>.</p></li>
 <li><p><code>wd</code>: Working directory, returned from <code>getwd</code>.</p></li>
 <li><p><code>sessionInfo</code>: <code><a href='https://rdrr.io/pkg/sessioninfo/man/session_info.html'>sessioninfo::session_info()</a></code> return.</p></li>
 </ul>
 
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>Updated 2019-07-28.</p>
+<p>This behavior can be disabled by setting <code>sessionInfo = FALSE</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -202,57 +224,32 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>SingleCellExperiment</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: SummarizedExperiment</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocGenerics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: parallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'BiocGenerics'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:parallel':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span>
-#&gt; <span class='message'>    clusterExport, clusterMap, parApply, parCapply, parLapply,</span>
-#&gt; <span class='message'>    parLapplyLB, parRapply, parSapply, parSapplyLB</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    IQR, mad, sd, var, xtabs</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyDuplicated, append, as.data.frame, basename, cbind, colnames,</span>
-#&gt; <span class='message'>    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,</span>
-#&gt; <span class='message'>    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,</span>
-#&gt; <span class='message'>    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,</span>
-#&gt; <span class='message'>    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,</span>
-#&gt; <span class='message'>    union, unique, unsplit, which, which.max, which.min</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'S4Vectors'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    Vignettes contain introductory material; view with</span>
-#&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
-#&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: DelayedArray</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: matrixStats</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'matrixStats'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:Biobase':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyMissing, rowMedians</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocParallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'DelayedArray'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:matrixStats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    aperm, apply, rowsum</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
+<span class='co'>## SimpleList ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>assays</span> <span class='kw'>&lt;-</span> <span class='fu'>assays</span>(<span class='no'>object</span>)
-<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'>rowRanges</span>(<span class='no'>object</span>)
-<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'>colData</span>(<span class='no'>object</span>)
-<span class='no'>metadata</span> <span class='kw'>&lt;-</span> <span class='fu'>metadata</span>(<span class='no'>object</span>)
+<span class='no'>assays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span>(<span class='no'>object</span>)
+<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/DelayedArray/man/DelayedMatrix-stats.html'>rowRanges</a></span>(<span class='no'>object</span>)
+<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span>(<span class='no'>object</span>)
+<span class='no'>metadata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/Annotated-class.html'>metadata</a></span>(<span class='no'>object</span>)
+<span class='no'>reducedDims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SingleCellExperiment/man/SCE-reducedDims.html'>reducedDims</a></span>(<span class='no'>object</span>)
 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeSingleCellExperiment</span>(
     <span class='kw'>assays</span> <span class='kw'>=</span> <span class='no'>assays</span>,
     <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='no'>rowRanges</span>,
     <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>,
-    <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='no'>metadata</span>
+    <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='no'>metadata</span>,
+    <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='no'>reducedDims</span>
 )
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 500 100 
-#&gt; metadata(3): date wd sessionInfo
+#&gt; metadata(3): date sessionInfo wd
 #&gt; assays(1): counts
 #&gt; rownames(500): gene1 gene10 ... gene98 gene99
-#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
+#&gt; rowData names(8): broadClass description ...
+#&gt;   geneName seqCoordSystem
 #&gt; colnames(100): cell001 cell002 ... cell099 cell100
-#&gt; colData names(2): expLibSize sampleID
+#&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):
 #&gt; spikeNames(0):</div></pre>
   </div>
@@ -263,9 +260,9 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
-
       <li><a href="#note">Note</a></li>
+
+      <li><a href="#session-information">Session information</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

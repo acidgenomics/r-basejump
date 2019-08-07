@@ -1,6 +1,6 @@
 #' @name combine
 #' @inherit BiocGenerics::combine
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-05.
 #'
 #' @param ... Additional arguments.
 #'
@@ -93,7 +93,7 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-05.
 `combine,SummarizedExperiment` <-  # nolint
     function(x, y) {
         validObject(x)
@@ -134,6 +134,8 @@ NULL
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         )
+        assert(is.list(assays))
+        assays <- as(assays, "SimpleList")
 
         ## Row data ------------------------------------------------------------
         message("Checking row data.")

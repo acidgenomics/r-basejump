@@ -2,7 +2,7 @@
 #' @inherit bioverbs::selectSamples
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @examples
 #' data(

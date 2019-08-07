@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.4</span>
       </span>
     </div>
 
@@ -77,7 +77,7 @@
       <h1>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">30 July 2019</h4>
+            <h4 class="date">6 August 2019</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/acidgenomics/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -136,7 +136,7 @@ rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
 <div id="annotation-functions" class="section level1">
 <h1 class="hasAnchor">
 <a href="#annotation-functions" class="anchor"></a>Annotation functions</h1>
-<p>Obtaining versioned genome annotations quickly and reliably from online databases such as <a href="https://www.ensembl.org/">Ensembl</a> <span class="citation">(T. Hubbard et al. 2002)</span>, <a href="https://www.gencodegenes.org/">GENCODE</a> <span class="citation">(Harrow et al. 2012)</span>, <a href="https://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> <span class="citation">(Pruitt, Tatusova, and Maglott 2007)</span>, and the <a href="http://genome.ucsc.edu/">UCSC Genome Browser</a> <span class="citation">(Kent et al. 2002)</span> remains overly challenging. <a href="https://basejump.acidgenomics.com/">basejump</a> aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>, along with a robust set of tools to parse <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> and <a href="https://useast.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GFF</a> annotation files. Annotation file parsing is handled internally by the <a href="https://bioconductor.org/packages/rtracklayer/">rtracklayer</a> package <span class="citation">(Lawrence, Gentleman, and Carey 2009)</span>. Genome annotations are returned as <code>GRanges</code> class objects, defined in the <a href="https://bioconductor.org/packages/GenomicRanges/">GenomicRanges</a> package <span class="citation">(Lawrence et al. 2013)</span>, which allows for easy access to position, chromosome, strand, and additional metadata saved in the <code>mcols()</code> slot of the object. <code>GRanges</code> can be coerced to a standard <code>data.frame</code> using the <code><a href="../reference/reexports-S4.html">as.data.frame()</a></code> function.</p>
+<p>Obtaining versioned genome annotations quickly and reliably from online databases such as <a href="https://www.ensembl.org/">Ensembl</a> <span class="citation">(T. Hubbard et al. 2002)</span>, <a href="https://www.gencodegenes.org/">GENCODE</a> <span class="citation">(Harrow et al. 2012)</span>, <a href="https://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> <span class="citation">(Pruitt, Tatusova, and Maglott 2007)</span>, and the <a href="http://genome.ucsc.edu/">UCSC Genome Browser</a> <span class="citation">(Kent et al. 2002)</span> remains overly challenging. <a href="https://basejump.acidgenomics.com/">basejump</a> aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>, along with a robust set of tools to parse <a href="http://mblab.wustl.edu/GTF22.html" title="General Transfer Format">GTF</a> and <a href="https://useast.ensembl.org/info/website/upload/gff.html" title="General Feature Format">GFF</a> annotation files. Annotation file parsing is handled internally by the <a href="https://bioconductor.org/packages/rtracklayer/">rtracklayer</a> package <span class="citation">(Lawrence, Gentleman, and Carey 2009)</span>. Genome annotations are returned as <code>GRanges</code> class objects, defined in the <a href="https://bioconductor.org/packages/GenomicRanges/">GenomicRanges</a> package <span class="citation">(Lawrence et al. 2013)</span>, which allows for easy access to position, chromosome, strand, and additional metadata saved in the <code><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">mcols()</a></code> slot of the object. <code>GRanges</code> can be coerced to a standard <code>data.frame</code> using the <code><a href="../reference/reexports-S4.html">as.data.frame()</a></code> function.</p>
 <div id="ensembl-annotations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ensembl-annotations" class="anchor"></a>Ensembl annotations</h2>
@@ -151,7 +151,7 @@ rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(grch38))</code></pre>
 <pre><code>## [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 ## [5] "ENSG00000000460" "ENSG00000000938"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">metadata</span>(grch38))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/S4Vectors/man/Annotated-class.html">metadata</a></span>(grch38))</code></pre>
 <pre><code>## [1] "package"        "version"        "date"           "organism"      
 ## [5] "genomeBuild"    "ensemblRelease" "ensembldb"      "level"         
 ## [9] "id"</code></pre>
@@ -207,11 +207,11 @@ rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
 ## 5457 2329 3432 3072 1392 2306 2262 2623 3148 1216 3025 4193 1449  893 1399 
 ##    3    4    5    6    7    8    9    X    Y 
 ## 3189 2643 3016 3021 3000 2455 2375 2507  544</code></pre>
-<p>Gene metadata is contained in <code>mcols()</code>, using a <code>DataFrame</code> internally. Here’a the current list of gene-level annotation columns returned from <code><a href="https://rdrr.io/pkg/freerange/man/makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcols</span>(grch38) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>()</code></pre>
+<p>Gene metadata is contained in <code><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">mcols()</a></code>, using a <code>DataFrame</code> internally. Here’a the current list of gene-level annotation columns returned from <code><a href="https://rdrr.io/pkg/freerange/man/makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">mcols</a></span>(grch38) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>()</code></pre>
 <pre><code>## [1] "broadClass"     "description"    "entrezID"       "geneBiotype"   
 ## [5] "geneID"         "geneIDVersion"  "geneName"       "seqCoordSystem"</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcols</span>(grch38) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="dt">X =</span> ., <span class="dt">FUN =</span> head)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">mcols</a></span>(grch38) %&gt;%<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="dt">X =</span> ., <span class="dt">FUN =</span> head)</code></pre>
 <pre><code>## $broadClass
 ## factor-Rle of length 6 with 1 run
 ##   Lengths:      6
@@ -875,64 +875,64 @@ rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] SummarizedExperiment_1.14.0 DelayedArray_0.10.0        
+##  [1] SummarizedExperiment_1.14.1 DelayedArray_0.10.0        
 ##  [3] BiocParallel_1.18.0         matrixStats_0.54.0         
 ##  [5] Biobase_2.44.0              GenomicRanges_1.36.0       
 ##  [7] GenomeInfoDb_1.20.0         IRanges_2.18.1             
 ##  [9] S4Vectors_0.22.0            BiocGenerics_0.30.0        
-## [11] basejump_0.11.3             BiocStyle_2.12.0           
+## [11] basejump_0.11.4             BiocStyle_2.12.0           
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] ProtGenerics_1.16.0           bitops_1.0-6                 
-##  [3] fs_1.3.1                      bit64_0.9-7                  
-##  [5] progress_1.2.2                httr_1.4.0                   
-##  [7] rprojroot_1.3-2               syntactic_0.2.2              
-##  [9] tools_3.6.1                   backports_1.1.4              
-## [11] R6_2.4.0                      lazyeval_0.2.2               
-## [13] DBI_1.0.0                     withr_2.1.2                  
-## [15] prettyunits_1.0.2             tidyselect_0.2.5             
-## [17] bit_1.1-14                    curl_4.0                     
-## [19] compiler_3.6.1                cli_1.1.0                    
-## [21] xml2_1.2.1                    desc_1.2.0                   
-## [23] rtracklayer_1.44.2            bookdown_0.12                
-## [25] readr_1.3.1                   rappdirs_0.3.1               
-## [27] pkgdown_1.3.0.9100            commonmark_1.7               
-## [29] stringr_1.4.0                 digest_0.6.20                
-## [31] Rsamtools_2.0.0               rmarkdown_1.14               
-## [33] R.utils_2.9.0                 XVector_0.24.0               
-## [35] pkgconfig_2.0.2               htmltools_0.3.6              
-## [37] sessioninfo_1.1.1             ensembldb_2.8.0              
-## [39] dbplyr_1.4.2                  rlang_0.4.0                  
-## [41] RSQLite_2.1.2                 shiny_1.3.2                  
-## [43] dplyr_0.8.3                   R.oo_1.22.0                  
-## [45] RCurl_1.95-4.12               magrittr_1.5                 
-## [47] GenomeInfoDbData_1.2.1        Matrix_1.2-17                
-## [49] Rcpp_1.0.2                    R.methodsS3_1.7.1            
-## [51] stringi_1.4.3                 yaml_2.2.0                   
-## [53] MASS_7.3-51.4                 zlibbioc_1.30.0              
-## [55] brio_0.3.1                    plyr_1.8.4                   
-## [57] goalie_0.3.0                  BiocFileCache_1.8.0          
-## [59] AnnotationHub_2.16.0          grid_3.6.1                   
-## [61] blob_1.2.0                    transformer_0.2.0            
-## [63] promises_1.0.1                crayon_1.3.4                 
-## [65] lattice_0.20-38               Biostrings_2.52.0            
-## [67] bioverbs_0.2.0                GenomicFeatures_1.36.4       
-## [69] hms_0.5.0                     zeallot_0.1.0                
-## [71] knitr_1.23                    pillar_1.4.2                 
-## [73] reshape2_1.4.3                biomaRt_2.40.3               
-## [75] XML_3.98-1.20                 glue_1.3.1                   
-## [77] evaluate_0.14                 freerange_0.2.0              
-## [79] data.table_1.12.2             BiocManager_1.30.4           
-## [81] vctrs_0.2.0                   httpuv_1.5.1                 
-## [83] tidyr_0.8.3                   grr_0.9.5                    
-## [85] purrr_0.3.2                   assertthat_0.2.1             
-## [87] xfun_0.8                      mime_0.7                     
-## [89] xtable_1.8-4                  AnnotationFilter_1.8.0       
-## [91] roxygen2_6.1.1                later_0.8.0                  
-## [93] SingleCellExperiment_1.6.0    tibble_2.1.3                 
-## [95] GenomicAlignments_1.20.1      Matrix.utils_0.9.7           
-## [97] AnnotationDbi_1.46.0          memoise_1.1.0                
-## [99] interactiveDisplayBase_1.22.0</code></pre>
+##   [1] ProtGenerics_1.16.0           bitops_1.0-6                 
+##   [3] fs_1.3.1                      bit64_0.9-7                  
+##   [5] progress_1.2.2                httr_1.4.1                   
+##   [7] rprojroot_1.3-2               syntactic_0.2.3              
+##   [9] tools_3.6.1                   backports_1.1.4              
+##  [11] R6_2.4.0                      lazyeval_0.2.2               
+##  [13] DBI_1.0.0                     withr_2.1.2                  
+##  [15] prettyunits_1.0.2             tidyselect_0.2.5             
+##  [17] bit_1.1-14                    curl_4.0                     
+##  [19] compiler_3.6.1                cli_1.1.0                    
+##  [21] xml2_1.2.1                    desc_1.2.0                   
+##  [23] rtracklayer_1.44.2            bookdown_0.12                
+##  [25] readr_1.3.1                   rappdirs_0.3.1               
+##  [27] pkgdown_1.3.0.9100            commonmark_1.7               
+##  [29] stringr_1.4.0                 digest_0.6.20                
+##  [31] Rsamtools_2.0.0               rmarkdown_1.14               
+##  [33] R.utils_2.9.0                 XVector_0.24.0               
+##  [35] pkgconfig_2.0.2               htmltools_0.3.6              
+##  [37] sessioninfo_1.1.1             ensembldb_2.8.0              
+##  [39] dbplyr_1.4.2                  rlang_0.4.0                  
+##  [41] RSQLite_2.1.2                 shiny_1.3.2                  
+##  [43] DelayedMatrixStats_1.6.0      dplyr_0.8.3                  
+##  [45] R.oo_1.22.0                   RCurl_1.95-4.12              
+##  [47] magrittr_1.5                  GenomeInfoDbData_1.2.1       
+##  [49] Matrix_1.2-17                 Rcpp_1.0.2                   
+##  [51] R.methodsS3_1.7.1             stringi_1.4.3                
+##  [53] yaml_2.2.0                    MASS_7.3-51.4                
+##  [55] zlibbioc_1.30.0               brio_0.3.2                   
+##  [57] plyr_1.8.4                    goalie_0.3.1                 
+##  [59] BiocFileCache_1.8.0           AnnotationHub_2.16.0         
+##  [61] grid_3.6.1                    blob_1.2.0                   
+##  [63] transformer_0.2.1             promises_1.0.1               
+##  [65] crayon_1.3.4                  lattice_0.20-38              
+##  [67] Biostrings_2.52.0             bioverbs_0.2.1               
+##  [69] GenomicFeatures_1.36.4        hms_0.5.0                    
+##  [71] zeallot_0.1.0                 knitr_1.23                   
+##  [73] pillar_1.4.2                  reshape2_1.4.3               
+##  [75] biomaRt_2.40.3                XML_3.98-1.20                
+##  [77] glue_1.3.1                    evaluate_0.14                
+##  [79] freerange_0.2.0               data.table_1.12.2            
+##  [81] BiocManager_1.30.4            vctrs_0.2.0                  
+##  [83] httpuv_1.5.1                  tidyr_0.8.3                  
+##  [85] grr_0.9.5                     purrr_0.3.2                  
+##  [87] assertthat_0.2.1              xfun_0.8                     
+##  [89] mime_0.7                      xtable_1.8-4                 
+##  [91] AnnotationFilter_1.8.0        roxygen2_6.1.1               
+##  [93] later_0.8.0                   SingleCellExperiment_1.6.0   
+##  [95] tibble_2.1.3                  GenomicAlignments_1.20.1     
+##  [97] Matrix.utils_0.9.7            AnnotationDbi_1.46.0         
+##  [99] memoise_1.1.0                 interactiveDisplayBase_1.22.0</code></pre>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">

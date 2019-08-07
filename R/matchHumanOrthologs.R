@@ -1,11 +1,9 @@
 #' Match human gene orthologs
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-05.
 #' @export
 #'
-#' @inheritParams params
-#' @param genes Ensembl gene identifiers.
-#' @param ensemblRelease Ensembl release (e.g. 96).
+#' @inheritParams acidroxygen::params
 #'
 #' @return `DataFrame`.
 #'   Data frame containing mapping columns:
