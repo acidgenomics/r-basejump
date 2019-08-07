@@ -1,7 +1,7 @@
 #' Detect sequencing lanes
 #'
 #' @include globals.R
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-07.
 #' @export
 #'
 #' @param path `character`.
@@ -30,7 +30,6 @@ detectLanes <- function(path, pattern) {
     if (any(grepl(pattern = pattern, x = basename))) {
         as.integer(str_match(string = basename, pattern = pattern)[, 2L])
     } else {
-        message("Failed to detect sequencing lanes.")
         integer()
     }
 }
