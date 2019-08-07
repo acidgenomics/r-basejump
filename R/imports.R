@@ -51,6 +51,7 @@
 #' @importFrom readr cols read_lines read_tsv
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := UQ sym syms
+#' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_dup str_extract str_length str_match str_pad
 #'   str_replace_all str_subset str_trunc
