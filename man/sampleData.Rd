@@ -51,7 +51,7 @@ Currently applicable only to \code{SingleCellExperiment} objects, which have
 cell-level columns that can be difficult to distinguish, especially when
 processed using Seurat, scater, etc.}
 
-\item{value}{Value.}
+\item{value}{Value to assign.}
 
 \item{...}{Additional arguments.}
 }

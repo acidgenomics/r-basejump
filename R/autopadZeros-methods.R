@@ -6,7 +6,14 @@
 #' This does not apply to the `character` method.
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @section SummarizedExperiment sample names:
+#'
+#' If `sampleName` column is defined in
+#' [`colData()`][SummarizedExperiment::colData], these values will also get
+#' padded, if necessary. This improves # downstream handling in functions that
+#' rely on this feature.
+#'
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return `character`.
@@ -91,13 +98,13 @@ setMethod(
             isFlag(colnames),
             isFlag(sort)
         )
-        if (isTRUE(rownames)) {
+        if (isTRUE(rownames) && hasRownames(object)) {
             rownames(object) <- autopadZeros(rownames(object))
             if (isTRUE(sort)) {
                 object <- object[sort(rownames(object)), , drop = FALSE]
             }
         }
-        if (isTRUE(colnames)) {
+        if (isTRUE(colnames) && hasColnames(object)) {
             colnames(object) <- autopadZeros(colnames(object))
             if (isTRUE(sort)) {
                 object <- object[, sort(colnames(object)), drop = FALSE]
@@ -118,7 +125,7 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-05.
 `autopadZeros,SummarizedExperiment` <-  # nolint
     function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
         object <- do.call(
@@ -130,9 +137,6 @@ setMethod(
                 sort = sort
             )
         )
-        ## Ensure sample names, which can be defined in `colData()` as
-        ## `sampleName` column, also get padded, if necessary. This improves
-        ## downstream handling in functions that rely on this feature.
         if ("sampleName" %in% colnames(colData(object))) {
             sampleNames(object) <- autopadZeros(sampleNames(object))
         }

@@ -1,4 +1,3 @@
-## EggNOG ======================================================================
 #' EggNOG database annotations
 #'
 #' [EggNOG](http://eggnogdb.embl.de) is a database of biological information
@@ -26,8 +25,11 @@
 #' contains additional useful reference information.
 setClass(
     Class = "EggNOG",
-    contains = "SimpleDataFrameList",
-    validity = function(object) {
+    contains = "SimpleDataFrameList"
+)
+setValidity(
+    Class = "EggNOG",
+    method = function(object) {
         validate(
             identical(
                 x = names(object),
@@ -51,7 +53,6 @@ setClass(
 
 
 
-## Ensembl2Entrez ==============================================================
 #' Ensembl-to-Entrez gene identifier mappings
 #'
 #' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
@@ -65,8 +66,11 @@ setClass(
 #' Contains a `DataFrame` with `geneID` and `entrezID` columns.
 setClass(
     Class = "Ensembl2Entrez",
-    contains = "DataFrame",
-    validity = function(object) {
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "Ensembl2Entrez",
+    method = function(object) {
         validate(
             identical(colnames(object), c("geneID", "entrezID")),
             is.integer(object[["entrezID"]])
@@ -76,7 +80,6 @@ setClass(
 
 
 
-## Gene2Symbol =================================================================
 #' Gene-to-symbol mappings
 #'
 #' @note For some organisms, gene names and gene symbols do not map 1:1
@@ -96,8 +99,11 @@ setClass(
 #' Contains a `DataFrame` with `geneID` and `geneName` columns.
 setClass(
     Class = "Gene2Symbol",
-    contains = "DataFrame",
-    validity = function(object) {
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "Gene2Symbol",
+    method = function(object) {
         validate(
             identical(colnames(object), c("geneID", "geneName")),
             nrow(object) > 0L,
@@ -109,7 +115,6 @@ setClass(
 
 
 
-## HGNC2Ensembl ================================================================
 #' HGNC-to-Ensembl gene identifier mappings
 #'
 #' @author Michael Steinbaugh
@@ -120,8 +125,11 @@ setClass(
 #' Contains a `DataFrame` with `hgncID` and `geneID` columns.
 setClass(
     Class = "HGNC2Ensembl",
-    contains = "DataFrame",
-    validity = function(object) {
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "HGNC2Ensembl",
+    method = function(object) {
         validate(
             identical(
                 x = lapply(object, class),
@@ -137,7 +145,6 @@ setClass(
 
 
 
-## MGI2Ensembl =================================================================
 #' MGI-to-Ensembl gene identifier mappings
 #'
 #' @author Michael Steinbaugh
@@ -148,8 +155,11 @@ setClass(
 #' Contains a `DataFrame` with `mgiID` and `geneID` columns.
 setClass(
     Class = "MGI2Ensembl",
-    contains = "DataFrame",
-    validity = function(object) {
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "MGI2Ensembl",
+    method = function(object) {
         validate(
             identical(colnames(object), c("mgiID", "geneID")),
             is.null(rownames(object))
@@ -159,7 +169,6 @@ setClass(
 
 
 
-## PANTHER =====================================================================
 #' PANTHER database annotations
 #'
 #' [PANTHER](http://www.pantherdb.org) gene ontology definitions. PANTHER stands
@@ -172,8 +181,11 @@ setClass(
 #' @return `PANTHER`. Contains a `DataFrame`.
 setClass(
     Class = "PANTHER",
-    contains = "DataFrame",
-    validity = function(object) {
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "PANTHER",
+    method = function(object) {
         validate(
             identical(
                 x = colnames(object),
@@ -196,7 +208,6 @@ setClass(
 
 
 
-## Tx2Gene =====================================================================
 #' Transcript-to-gene identifier mappings
 #'
 #' @section Genome metadata:
@@ -212,8 +223,11 @@ setClass(
 #' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 setClass(
     Class = "Tx2Gene",
-    contains = "DataFrame",
-    validity = function(object) {
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "Tx2Gene",
+    method = function(object) {
         validate(
             nrow(object) > 0L,
             identical(colnames(object), c("transcriptID", "geneID")),

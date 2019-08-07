@@ -45,6 +45,15 @@ This does not apply to the \code{character} method.
 
 Updated 2019-07-28.
 }
+\section{SummarizedExperiment sample names}{
+
+
+If \code{sampleName} column is defined in
+\code{\link[SummarizedExperiment:colData]{colData()}}, these values will also get
+padded, if necessary. This improves # downstream handling in functions that
+rely on this feature.
+}
+
 \examples{
 data(
     RangedSummarizedExperiment,

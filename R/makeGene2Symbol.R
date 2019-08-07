@@ -7,8 +7,8 @@
 #' @name makeGene2Symbol
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
 #' @inheritParams Gene2Symbol
+#' @inheritParams acidroxygen::params
 #'
 #' @return `Gene2Symbol`.
 #'

@@ -39,9 +39,7 @@ mapGenesToSymbols(object, ...)
 \item{object}{Object.}
 
 \item{genes}{\code{character}.
-Gene identifiers. It is considered better practice to input the stable gene
-identifiers from Ensembl (e.g. "ENSG00000000003") and not the (HGNC) gene
-symbols (e.g. "TSPN6"), if possible.}
+Gene identifiers.}
 
 \item{strict}{\code{logical(1)}.
 Require all genes to match. Recommended by default. If set \code{FALSE}, instead

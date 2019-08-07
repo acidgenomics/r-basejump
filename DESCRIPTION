@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.11.3
-Date: 2019-07-30
+Version: 0.11.4
+Date: 2019-08-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -35,14 +35,16 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    bioverbs (>= 0.2),
+    bioverbs (>= 0.2.1),
     brio (>= 0.3.1),
-    freerange (>= 0.2),
-    goalie (>= 0.2.19),
-    syntactic (>= 0.2.2),
+    freerange (>= 0.2.1),
+    goalie (>= 0.3),
+    syntactic (>= 0.2.3),
     transformer (>= 0.2),
     Biobase,
     BiocGenerics,
+    DelayedArray,
+    DelayedMatrixStats,
     GenomeInfoDb,
     GenomicRanges,
     IRanges,
@@ -67,8 +69,10 @@ Imports:
     methods,
     utils
 Suggests:
-    acidtest (>= 0.2.1),
+    acidroxygen (>= 0.0.1),
+    acidtest (>= 0.2.2),
     BiocStyle,
+    DESeq2,
     EnsDb.Hsapiens.v75,
     biomaRt,
     patrick (>= 0.0.1),
@@ -80,6 +84,7 @@ Enhances:
     pbapply (>= 1.4)
 Remotes:
     acidgenomics/acidplots,
+    acidgenomics/acidroxygen,
     acidgenomics/acidtest,
     acidgenomics/bioverbs,
     acidgenomics/brio,
@@ -119,6 +124,7 @@ Collate:
     'detectHPC.R'
     'globals.R'
     'detectLanes.R'
+    'estimateSizeFactors-methods.R'
     'geneNames-methods.R'
     'geneSynonyms.R'
     'geometricMean-methods.R'
@@ -130,9 +136,9 @@ Collate:
     'lfcThreshold-methods.R'
     'logRatio-methods.R'
     'makeGene2Symbol.R'
-    'makeSampleData.R'
-    'makeSingleCellExperiment.R'
-    'makeSummarizedExperiment.R'
+    'makeSampleData-methods.R'
+    'makeSummarizedExperiment-methods.R'
+    'makeSingleCellExperiment-methods.R'
     'makeTx2Gene.R'
     'mapCellsToSamples.R'
     'mapGenes-methods.R'
@@ -154,7 +160,6 @@ Collate:
     'multiassignAsEnvir.R'
     'organism-methods.R'
     'package.R'
-    'params.R'
     'prepareTemplate.R'
     'rankedMatrix.R'
     'reexports-bioverbs.R'
@@ -172,6 +177,7 @@ Collate:
     'show-methods.R'
     'showHeader.R'
     'showSlotInfo.R'
+    'sizeFactors-methods.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'

@@ -10,7 +10,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param object `DataFrame` (recommended) or `data.frame` (legacy).
 #'   Note that legacy `data.frame` support will be removed in a future update.
 #'

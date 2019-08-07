@@ -12,7 +12,7 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @section Methods (by class):
@@ -62,7 +62,7 @@
 #'
 #' @examples
 #' ## Example data ====
-#' assay <- matrix(
+#' counts <- matrix(
 #'     data = c(
 #'         0L, 1L, 1L, 1L,
 #'         1L, 0L, 1L, 1L,
@@ -81,40 +81,40 @@
 #'         )
 #'     )
 #' )
-#' class(assay)
-#' print(assay)
+#' class(counts)
+#' print(counts)
 #'
 #' genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
-#' names(genes) <- rownames(assay)
+#' names(genes) <- rownames(counts)
 #' print(genes)
 #'
 #' samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
-#' names(samples) <- colnames(assay)
+#' names(samples) <- colnames(counts)
 #' print(samples)
 #'
 #' ## sparseMatrix
-#' sparse <- as(assay, "sparseMatrix")
+#' sparse <- as(counts, "sparseMatrix")
 #' class(sparse)
 #' print(sparse)
 #'
 #' ## SummarizedExperiment
 #' se <- SummarizedExperiment::SummarizedExperiment(
-#'     assay = list(assay = assay),
-#'     colData = S4Vectors::DataFrame(
+#'     assays = SimpleList(counts = counts),
+#'     colData = DataFrame(
 #'         sampleName = as.factor(names(samples)),
 #'         aggregate = samples
 #'     ),
-#'     rowData = S4Vectors::DataFrame(aggregate = genes)
+#'     rowData = DataFrame(aggregate = genes)
 #' )
 #' print(se)
 #'
 #' ## aggregateRows ====
-#' aggregateRows(assay, groupings = genes)
+#' aggregateRows(counts, groupings = genes)
 #' aggregateRows(sparse, groupings = genes)
 #' aggregateRows(se)
 #'
 #' ## aggregateCols ====
-#' aggregateCols(assay, groupings = samples)
+#' aggregateCols(counts, groupings = samples)
 #' aggregateCols(sparse, groupings = samples)
 #' aggregateCols(se)
 NULL
@@ -241,27 +241,28 @@ setMethod(
         )
         names(groupings) <- rownames(object)
 
-        ## Assay ---------------------------------------------------------------
-        assay <- aggregateRows(
-            object = assay(object),
+        ## Counts --------------------------------------------------------------
+        counts <- aggregateRows(
+            object = counts(object),
             groupings = groupings,
             fun = fun
         )
         if (fun == "sum") {
-            assert(identical(sum(assay), sum(assay(object))))
+            assert(identical(x = sum(counts), y = sum(counts(object))))
         }
 
         ## Return --------------------------------------------------------------
         args <- list(
-            assays = list(assay),
+            assays = SimpleList(counts = counts),
             colData = colData(object)
         )
         if (is(object, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- emptyRanges(names = rownames(assay))
+            args[["rowRanges"]] <- emptyRanges(names = rownames(counts))
         } else {
-            args[["rowData"]] <- DataFrame(row.names = rownames(assay))
+            args[["rowData"]] <- DataFrame(row.names = rownames(counts))
         }
         se <- do.call(what = SummarizedExperiment, args = args)
+        metadata(se)[["aggregate"]] <- TRUE
         validObject(se)
         se
     }
@@ -368,21 +369,21 @@ setMethod(
         )
         names(groupings) <- colnames(object)
 
-        ## Assay ---------------------------------------------------------------
-        assay <- aggregateCols(
-            object = assay(object),
+        ## Counts --------------------------------------------------------------
+        counts <- aggregateCols(
+            object = counts(object),
             groupings = groupings,
             fun = fun
         )
-        assert(identical(nrow(assay), nrow(object)))
+        assert(identical(nrow(counts), nrow(object)))
         if (fun == "sum") {
-            assert(identical(sum(assay), sum(assay(object))))
+            assert(identical(sum(counts), sum(counts(object))))
         }
 
         ## Return --------------------------------------------------------------
         args <- list(
-            assays = list(assay),
-            colData = DataFrame(row.names = colnames(assay))
+            assays = SimpleList(counts = counts),
+            colData = DataFrame(row.names = colnames(counts))
         )
         if (is(object, "RangedSummarizedExperiment")) {
             args[["rowRanges"]] <- rowRanges(object)
@@ -474,7 +475,7 @@ setMethod(
 
         ## Now ready to generate aggregated SCE.
         sce <- makeSingleCellExperiment(
-            assays = list(counts = assay(rse)),
+            assays = SimpleList(counts = counts(rse)),
             rowRanges = rowRanges(object),
             colData = colData(rse),
             metadata = list(

@@ -3,7 +3,7 @@
 #' @name organism
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return `character(1)`.
@@ -25,6 +25,13 @@ NULL
 #' @name organism
 #' @importFrom BiocGenerics organism
 #' @usage organism(object)
+#' @export
+NULL
+
+#' @rdname organism
+#' @name organism<-
+#' @importFrom BiocGenerics organism<-
+#' @usage organism(object) <- value
 #' @export
 NULL
 
@@ -176,4 +183,23 @@ setMethod(
     f = "organism",
     signature = signature("SummarizedExperiment"),
     definition = `organism,SummarizedExperiment`
+)
+
+
+
+## Updated 2019-08-06.
+`organism<-,Annotated,character` <-  # nolint
+    function(object, value) {
+        metadata(object)[["organism"]] <- value
+        object
+    }
+
+
+
+#' @rdname organism
+#' @export
+setReplaceMethod(
+    f = "organism",
+    signature = signature("Annotated"),
+    definition = `organism<-,Annotated,character`
 )

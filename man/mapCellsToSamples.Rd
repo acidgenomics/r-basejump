@@ -22,7 +22,7 @@ This function extracts \code{sampleID} from the \code{cellID} column using grep
 matching.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-07-30.
 }
 \examples{
 samples <- paste0("sample", seq_len(2L))

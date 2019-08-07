@@ -1,6 +1,6 @@
 #' @rdname HGNC2Ensembl-class
 #' @export
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @examples
 #' options(acid.test = TRUE)
 #' x <- HGNC2Ensembl()

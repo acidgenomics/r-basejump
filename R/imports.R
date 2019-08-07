@@ -1,13 +1,9 @@
 ## Conflicts with BiocGenerics:
-## @importMethodsFrom Matrix colSums rowMeans rowSums t
-
-## SingleCellExperiment prior to BioC 3.8 doesn't define coercion methods.
-## We're maintaiing legacy support for R 3.4 (BioC 3.5/3.6), so disable.
-## @importMethodsFrom SingleCellExperiment coerce
+## #' @importMethodsFrom Matrix colSums rowMeans rowSums t
 
 
 
-#' @importClassesFrom GenomicRanges GRanges
+#' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix sparseMatrix
 #' @importClassesFrom S4Vectors Annotated DataFrame DataTable List Vector
@@ -16,37 +12,41 @@
 #'
 #' @importMethodsFrom S4Vectors as.data.frame as.list coerce do.call lapply
 #'   match setdiff t
+#' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
 #'   rowSums setdiff t
+#' @importFrom DelayedArray DelayedArray
+#' @importFrom DelayedMatrixStats colSums2 rowSums2
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom S4Vectors DataFrame List Rle %in% aggregate cor decode expand
-#'   head mcols mcols<- merge metadata metadata<- na.omit split summary tail
+#' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate cor decode
+#'   expand head mcols mcols<- merge metadata metadata<- na.omit split summary
+#'   tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
-#' @importFrom SummarizedExperiment SummarizedExperiment assay assayNames
-#'   assayNames<- assays assays<- colData colData<- rowData rowData<- rowRanges
-#'   rowRanges<-
+#' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
+#'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
+#'   rowRanges rowRanges<-
 #' @importFrom dplyr arrange bind_rows desc filter group_by left_join mutate
 #'   mutate_all mutate_at mutate_if pull rename select select_if slice
 #'   summarise_all top_n ungroup
 #' @importFrom goalie allAreMatchingRegex areDisjointSets areIntersectingSets
-#'   areSameLength areSetEqual assert bapply false getNameInParent hasDims
-#'   hasInternet hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols
-#'   hasRows hasRownames hasUniqueCols hasValidDimnames hasValidNames
-#'   isADirectory isAlpha isAny isCharacter isFlag isGGScale
+#'   areSameLength areSetEqual assert bapply false getNameInParent hasColnames
+#'   hasCols hasDims hasInternet hasLength hasNames hasNoDuplicates
+#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
+#'   hasValidNames isADirectory isAlpha isAny isCharacter isFlag isGGScale
 #'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
 #'   isInRange isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber
 #'   isPositive isScalar isString isSubset isSuperset matchesUniqueGeneNames
-#'   validNames validate validateClasses
+#'   methodFunction validNames validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
-#'   new selectMethod setAs setClass setGeneric setMethod setOldClass show
-#'   signature slot slotNames validObject .hasSlot
+#'   new selectMethod setAs setClass setGeneric setMethod setReplaceMethod
+#'   setOldClass setValidity show signature slot slotNames validObject .hasSlot
 #' @importFrom purrr map
 #' @importFrom readr cols read_lines read_tsv
 #' @importFrom reshape2 melt

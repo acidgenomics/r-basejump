@@ -3,13 +3,8 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams params
-#' @inheritParams goalie::params
-#' @param x Object class supporting [`rownames()`][base::rownames].
-#'   All rownames in this object must intersect with the rownames defined in the
-#'   `gene2symbol` argument.
-#'
-#' @return `logical(1)`.
+#' @inherit goalie::check return
+#' @inheritParams acidroxygen::params
 #'
 #' @examples
 #' x <- S4Vectors::DataFrame(

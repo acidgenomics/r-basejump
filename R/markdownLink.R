@@ -4,13 +4,10 @@
 #'
 #' @inherit markdownHeader
 #' @author Rory Kirchner, Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-05.
 #' @export
 #'
-#' @param url `character(1)`.
-#'   URL.
-#' @param title `character(1)` or `NULL`.
-#'   Link title attribute. This will appear in a mouse-over pop-up box.
+#' @inheritParams acidroxygen::params
 #'
 #' @return Markdown-formatted link.
 #'

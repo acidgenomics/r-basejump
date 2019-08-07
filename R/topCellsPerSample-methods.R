@@ -2,7 +2,7 @@
 #' @inherit bioverbs::topCellsPerSample
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param n `integer(1)`.
 #'   Number of barcodes to return per sample.
 #' @param ... Additional arguments.

@@ -45,7 +45,7 @@
 #'   required as we're supporting `SingleCellExperiment` objects from 1 sample,
 #'   but it's required for working with multiple samples in a single object.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param clean `logical(1)`.
 #'   Only return `factor` columns. Useful when working with objects that contain
 #'   quality control metrics in [`colData()`][SummarizedExperiment::colData].
@@ -373,7 +373,7 @@ setMethod(
 
 
 ## Updated 2019-07-22.
-`sampleData<-,SummarizedExperiment` <-  # nolint
+`sampleData<-,SummarizedExperiment,DataFrame` <-  # nolint
     function(object, value) {
         ## Don't allow blacklisted columns.
         ## Note that attempting to use `NULL` to remove columns on a DataFrame
@@ -398,22 +398,20 @@ setMethod(
 
 #' @rdname sampleData
 #' @export
-setMethod(
-    f = "sampleData<-",
+setReplaceMethod(
+    f = "sampleData",
     signature = signature(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
-    definition = `sampleData<-,SummarizedExperiment`
+    definition = `sampleData<-,SummarizedExperiment,DataFrame`
 )
 
 
 
 ## Updated 2019-07-22.
-`sampleData<-,SingleCellExperiment` <-  # nolint
+`sampleData<-,SingleCellExperiment,DataFrame` <-  # nolint
     function(object, value) {
-        assert(is(value, "DataFrame"))
-
         ## Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {
             message("Removed legacy sampleData in metadata() slot.")
@@ -455,11 +453,11 @@ setMethod(
 
 #' @rdname sampleData
 #' @export
-setMethod(
-    f = "sampleData<-",
+setReplaceMethod(
+    f = "sampleData",
     signature = signature(
         object = "SingleCellExperiment",
         value = "DataFrame"
     ),
-    definition = `sampleData<-,SingleCellExperiment`
+    definition = `sampleData<-,SingleCellExperiment,DataFrame`
 )
