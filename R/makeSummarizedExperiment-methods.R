@@ -145,6 +145,11 @@ NULL
     }
 
     ## Assays ------------------------------------------------------------------
+    ## This step provides legacy support for bcbioRNASeq.
+    if (!is(assays, "SimpleList")) {
+        assays <- as(assays, "SimpleList")
+    }
+
     ## Drop any `NULL` items in assays.
     assays <- Filter(f = Negate(is.null), x = assays)
 
@@ -376,6 +381,22 @@ formals(`makeSummarizedExperiment,SimpleList`)[args] <- f[args]
 #' @export
 setMethod(
     f = "makeSummarizedExperiment",
-    signature = signature("SimpleList"),
+    signature = signature(assays = "SimpleList"),
     definition = `makeSummarizedExperiment,SimpleList`
+)
+
+
+
+## Updated 2019-08-07.
+`makeSummarizedExperiment,list` <-  # nolint
+    `makeSummarizedExperiment,SimpleList`
+
+
+
+#' @rdname makeSummarizedExperiment
+#' @export
+setMethod(
+    f = "makeSummarizedExperiment",
+    signature = signature(assays = "list"),
+    definition = `makeSummarizedExperiment,list`
 )
