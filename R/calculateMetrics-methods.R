@@ -27,21 +27,12 @@ NULL
 
 
 ## Updated 2019-08-07.
-`calculateMetrics,DelayedArray` <-  # nolint
+`calculateMetrics,matrix` <-  # nolint
     function(
         object,
         rowRanges = NULL,
         prefilter = FALSE
     ) {
-        ## This provides easy method support for `sparseMatrix` class.
-        if (!is(object, "DelayedArray")) {
-            object <- DelayedArray(object)
-        }
-        ## Ensure we're calling from DelayedMatrixStats, and not matrixStats
-        ## or Matrix packages.
-        colSums <- DelayedMatrixStats::colSums2
-
-        ## Using shared method code for dense and sparseMatrix.
         assert(
             hasValidDimnames(object),
             hasRows(object),
@@ -51,7 +42,7 @@ NULL
 
         message(sprintf(
             fmt = "Calculating %d cellular barcode metrics.",
-            ncol(counts)
+            ncol(object)
         ))
 
         codingFeatures <- character()
@@ -126,7 +117,6 @@ NULL
             missingBiotype()
         }
 
-        ## Using DelayedMatrixStats approach here (see above).
         ## Using S4 run-length encoding here to reduce memory overhead.
         ## Consider renaming "UMI" to something more general here.
         nUMI <- Rle(as.integer(colSums(object)))
@@ -135,13 +125,13 @@ NULL
             mat <- object[codingFeatures, , drop = FALSE]
             Rle(as.integer(colSums(mat)))
         } else {
-            NA_integer_
+            Rle(NA_integer_)
         }
         nMito <- if (hasLength(mitoFeatures)) {
             mat <- object[mitoFeatures, , drop = FALSE]
             Rle(as.integer(colSums(mat)))
         } else {
-            NA_integer_
+            Rle(NA_integer_)
         }
         log10GenesPerUMI <- log10(nGene) / log10(nUMI)
         mitoRatio <- nMito / nUMI
@@ -183,6 +173,15 @@ NULL
 
 
 
+## Updated 2019-08-07.
+`calculateMetrics,DelayedArray` <-  # nolint
+    appendToBody(
+        fun = `calculateMetrics,matrix`,
+        values = quote(colSums <- DelayedMatrixStats::colSums2)
+    )
+
+
+
 #' @rdname calculateMetrics
 #' @export
 setMethod(
@@ -195,7 +194,10 @@ setMethod(
 
 ## Updated 2019-08-07.
 `calculateMetrics,Matrix` <-  # nolint
-    `calculateMetrics,DelayedArray`
+    appendToBody(
+        fun = `calculateMetrics,matrix`,
+        values = quote(colSums <- Matrix::colSums)
+    )
 
 
 
@@ -212,8 +214,12 @@ setMethod(
 ## Updated 2019-08-07.
 `calculateMetrics,SingleCellExperiment` <-  # nolint
     function(object, prefilter = FALSE) {
+        counts <- counts(object)
+        if (ncol(counts) >= 2E4L) {
+            counts <- DelayedArray(counts)
+        }
         calculateMetrics(
-            object = counts(object),
+            object = counts,
             rowRanges = rowRanges(object),
             prefilter = prefilter
         )
