@@ -176,6 +176,16 @@ NULL
 
 
 
+#' @rdname calculateMetrics
+#' @export
+setMethod(
+    f = "calculateMetrics",
+    signature = signature("matrix"),
+    definition = `calculateMetrics,matrix`
+)
+
+
+
 ## Updated 2019-08-07.
 `calculateMetrics,DelayedArray` <-  # nolint
     appendToBody(
@@ -215,9 +225,32 @@ setMethod(
 
 
 ## Updated 2019-08-07.
+`calculateMetrics,RangedSummarizedExperiment` <-  # nolint
+    function(object, prefilter = FALSE) {
+        calculateMetrics(
+            object = counts(object),
+            rowRanges = rowRanges(object),
+            prefilter = prefilter
+        )
+    }
+
+
+
+#' @rdname calculateMetrics
+#' @export
+setMethod(
+    f = "calculateMetrics",
+    signature = signature("RangedSummarizedExperiment"),
+    definition = `calculateMetrics,RangedSummarizedExperiment`
+)
+
+
+
+## Updated 2019-08-07.
 `calculateMetrics,SingleCellExperiment` <-  # nolint
     function(object, prefilter = FALSE) {
         counts <- counts(object)
+        ## Use DelayedArray for large datasets.
         if (ncol(counts) >= 2E4L) {
             counts <- DelayedArray(counts)
         }
