@@ -112,7 +112,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>HGNC-to-Ensembl gene identifier mappings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/HGNC2Ensembl.R'><code>R/HGNC2Ensembl.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
     <div class="hidden name"><code>HGNC2Ensembl-class.Rd</code></div>
     </div>
 
@@ -122,33 +122,20 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>HGNC2Ensembl</span>()</pre>
         
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>HGNC2Ensembl</code>.
-Contains a <code>DataFrame</code> with <code>hgncID</code> and <code>geneID</code> columns.</p>
+    <p><code>HGNC2Ensembl</code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Contains a <code>DataFrame</code> with <code>hgncID</code> and <code>geneID</code> columns.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-28.</p>
+    <p>Updated 2019-08-08.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>HGNC2Ensembl</span>()</div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing hgnc.txt.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing hgnc.txt using data.table::fread().</span></div><div class='output co'>#&gt; <span class='message'>hgnc.txt.gz does not return syntactically valid names.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; HGNC2Ensembl with 10 rows and 2 columns
-#&gt;       hgncID          geneID
-#&gt;    &lt;integer&gt;     &lt;character&gt;
-#&gt; 1       3095 ENSG00000010219
-#&gt; 2       3097 ENSG00000135636
-#&gt; 3      15479 ENSG00000197140
-#&gt; 4      18795 ENSG00000213886
-#&gt; 5      23685 ENSG00000148158
-#&gt; 6      25944 ENSG00000130772
-#&gt; 7      26333 ENSG00000151304
-#&gt; 8      28290 ENSG00000165716
-#&gt; 9      28894 ENSG00000163564
-#&gt; 10     29929 ENSG00000075188</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -156,13 +143,11 @@ Contains a <code>DataFrame</code> with <code>hgncID</code> and <code>geneID</cod
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#note">Note</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#details">Details</a></li>
 
-    <h2>Author</h2>
-    <p>Michael Steinbaugh</p>
+      <li><a href="#note">Note</a></li>
+          </ul>
+
   </div>
 </div>
 
