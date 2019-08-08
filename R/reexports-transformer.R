@@ -38,6 +38,10 @@ NULL
 #' @export
 transformer::coerceS4ToList
 
+#' @importFrom transformer left_join
+#' @export
+transformer::left_join
+
 #' @rdname reexports-S4
 #' @name decode
 #' @importFrom transformer decode
