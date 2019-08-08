@@ -29,6 +29,10 @@ reference:
       - counts
       - meltCounts
       - tpm
+  - title: Quality control metrics
+    contents:
+      - calculateMetrics
+      - metrics
   - title: Metadata
     contents:
       - alphaThreshold
@@ -41,7 +45,6 @@ reference:
     contents:
       - makeSampleData
       - makeSummarizedExperiment
-      - metrics
       - minimalSampleData
       - starts_with("sample")
       - selectSamples
