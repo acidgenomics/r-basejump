@@ -94,7 +94,6 @@ setValidity(
 #' @export
 #'
 #' @return `Gene2Symbol`.
-#'
 setClass(
     Class = "Gene2Symbol",
     contains = "DataFrame"
