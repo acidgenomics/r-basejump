@@ -1,3 +1,15 @@
+## basejump 0.11.5 (2019-08-08)
+
+### New functions
+
+- `calculateMetrics`: Migrated code here from bcbioSingleCell. Improved method
+  to support `DelayedArray` class for large matrices.
+
+### Minor changes
+
+- Improved code coverage and adjusted unit tests for breaking changes seen due
+  to new covr update.
+
 ## basejump 0.11.4 (2019-08-07)
 
 ### Major changes

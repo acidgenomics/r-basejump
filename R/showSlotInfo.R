@@ -1,6 +1,6 @@
 #' Show slot information
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-07.
 #' @export
 #'
 #' @param list `list`.
@@ -37,8 +37,8 @@ showSlotInfo <- function(list) {
                 paste0(name, "(", length(x), "): ", info)
             }
         },
-        SIMPLIFY = TRUE,
+        SIMPLIFY = FALSE,
         USE.NAMES = FALSE
     )
-    cat(out, sep = "\n")
+    cat(unlist(out), sep = "\n")
 }

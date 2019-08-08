@@ -8,18 +8,8 @@ test_that("Tx2Gene", {
 })
 
 test_that("summary", {
-    output <- capture.output(summary(object))
-    expect_identical(
-        output,
-        c(
-            "transcripts: 6",
-            "genes: 2",
-            "organism: Homo sapiens",
-            "genomeBuild: GRCh38",
-            "ensemblRelease: 92",
-            "id: AH60977",
-            "version: 0.1.0",
-            "date: 2019-03-27"
-        )
+    expect_output(
+        object = summary(object),
+        regexp = "organism: Homo sapiens"
     )
 })
