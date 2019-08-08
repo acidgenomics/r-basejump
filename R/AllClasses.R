@@ -60,7 +60,6 @@ setValidity(
 #'
 #' Contains a `DataFrame` with `geneID` and `entrezID` columns.
 #'
-#' @author Michael Steinbaugh
 #' @note Updated 2019-08-08.
 #' @export
 #'
@@ -83,21 +82,19 @@ setValidity(
 
 #' Gene-to-symbol mappings
 #'
-#' @note For some organisms, gene names and gene symbols do not map 1:1
-#' (e.g. *Homo sapiens* and *Mus musculus*). Refer to the `format` argument here
-#' in the documentation for approaches that deal with this issue.
+#' @details
+#' Contains a `DataFrame` with `geneID` and `geneName` columns.
 #'
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
 #' [`metadata()`][S4Vectors::metadata].
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `Gene2Symbol`.
-#' Contains a `DataFrame` with `geneID` and `geneName` columns.
+#'
 setClass(
     Class = "Gene2Symbol",
     contains = "DataFrame"
@@ -118,12 +115,13 @@ setValidity(
 
 #' HGNC-to-Ensembl gene identifier mappings
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @details
+#' Contains a `DataFrame` with `hgncID` and `geneID` columns.
+#'
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `HGNC2Ensembl`.
-#' Contains a `DataFrame` with `hgncID` and `geneID` columns.
 setClass(
     Class = "HGNC2Ensembl",
     contains = "DataFrame"
@@ -148,12 +146,13 @@ setValidity(
 
 #' MGI-to-Ensembl gene identifier mappings
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @details
+#' Contains a `DataFrame` with `mgiID` and `geneID` columns.
+#'
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `MGI2Ensembl`.
-#' Contains a `DataFrame` with `mgiID` and `geneID` columns.
 setClass(
     Class = "MGI2Ensembl",
     contains = "DataFrame"
@@ -175,11 +174,10 @@ setValidity(
 #' [PANTHER](http://www.pantherdb.org) gene ontology definitions. PANTHER stands
 #' for **P**rotein **AN**alysis **TH**rough **E**volutionary **R**elationships.
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-08.
 #' @export
 #'
-#' @return `PANTHER`. Contains a `DataFrame`.
+#' @return `PANTHER`.
 setClass(
     Class = "PANTHER",
     contains = "DataFrame"
@@ -211,17 +209,18 @@ setValidity(
 
 #' Transcript-to-gene identifier mappings
 #'
+#' @details
+#' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
+#'
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
 #' `metadata`.
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `Tx2Gene`.
-#' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 setClass(
     Class = "Tx2Gene",
     contains = "DataFrame"
