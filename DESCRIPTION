@@ -38,9 +38,9 @@ Imports:
     bioverbs (>= 0.2.3),
     brio (>= 0.3.2),
     freerange (>= 0.2.1),
-    goalie (>= 0.3),
+    goalie (>= 0.3.1),
     syntactic (>= 0.2.3),
-    transformer (>= 0.2),
+    transformer (>= 0.2.2),
     Biobase,
     BiocGenerics,
     DelayedArray,
@@ -70,7 +70,7 @@ Imports:
     methods,
     utils
 Suggests:
-    acidroxygen (>= 0.0.1),
+    acidroxygen (>= 0.1),
     acidtest (>= 0.2.2),
     BiocStyle,
     DESeq2,
