@@ -71,8 +71,8 @@ data(SingleCellExperiment, package = "acidtest")
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
 object <- calculateMetrics(object)
-
 show(object)
+
 x <- filterCells(object)
 show(x)
 
