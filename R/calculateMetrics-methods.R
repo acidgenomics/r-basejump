@@ -1,14 +1,12 @@
-#' Calculate cellular barcode quality metrics
-#'
 #' @name calculateMetrics
+#' @inherit bioverbs::calculateMetrics
 #' @author Michael Steinbaugh, Rory Kirchner
+#'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
 #'   normalized counts here.
 #' @note Updated 2019-08-07.
 #'
 #' @inheritParams acidroxygen::params
-#'
-#' @return `DataFrame`.
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
@@ -22,6 +20,15 @@
 #' # Minimal metrics (supported, but not recommended).
 #' x <- calculateMetrics(counts, rowRanges = NULL)
 #' head(x)
+NULL
+
+
+
+#' @rdname calculateMetrics
+#' @name calculateMetrics
+#' @importFrom bioverbs calculateMetrics
+#' @usage calculateMetrics(object, ...)
+#' @export
 NULL
 
 
