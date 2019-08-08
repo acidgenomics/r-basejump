@@ -872,7 +872,7 @@ NULL
 
 
 
-#' @rdname Tx2Gene-class
+#' @rdname Tx2Gene
 #' @export
 setMethod(
     f = "Tx2Gene",
@@ -894,7 +894,7 @@ setMethod(
 
 
 
-#' @rdname Tx2Gene-class
+#' @rdname Tx2Gene
 #' @export
 setMethod(
     f = "Tx2Gene",
@@ -915,7 +915,7 @@ setMethod(
 
 
 
-#' @rdname Tx2Gene-class
+#' @rdname Tx2Gene
 #' @export
 setMethod(
     f = "Tx2Gene",

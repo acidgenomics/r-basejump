@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EggNOG database annotations — EggNOG-class • basejump</title>
+<title>Ensembl-to-Entrez gene identifier mappings — Ensembl2Entrez • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,14 +34,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="EggNOG database annotations — EggNOG-class" />
+<meta property="og:title" content="Ensembl-to-Entrez gene identifier mappings — Ensembl2Entrez" />
 
-<meta property="og:description" content="EggNOG is a database of biological information
-hosted by the EMBL. It is based on the original idea of COGs (clusters of
-orthologous groups) and expands that idea to non-supervised
-orthologous groups constructed from numerous organisms. eggNOG stands for
-evolutionary genealogy of genes: Non-supervised
-Orthologous Groups." />
+<meta property="og:description" content="Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+Entrez ID if there are multiple identifiers that map to an Ensembl gene ID." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,57 +112,95 @@ Orthologous Groups." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>EggNOG database annotations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
-    <div class="hidden name"><code>EggNOG-class.Rd</code></div>
+    <h1>Ensembl-to-Entrez gene identifier mappings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerators.R'><code>R/AllGenerators.R</code></a></small>
+    <div class="hidden name"><code>Ensembl2Entrez.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><a href='http://eggnogdb.embl.de'>EggNOG</a> is a database of biological information
-hosted by the EMBL. It is based on the original idea of COGs (<strong>c</strong>lusters of
-<strong>o</strong>rthologous <strong>g</strong>roups) and expands that idea to non-supervised
-orthologous groups constructed from numerous organisms. eggNOG stands for
-<strong>e</strong>volutionary <strong>g</strong>enealogy of <strong>g</strong>enes: <strong>N</strong>on-supervised
-<strong>O</strong>rthologous <strong>G</strong>roups.</p>
+    <p>Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
     
     </div>
 
-        
+    <pre class="usage"><span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>, <span class='st'>"long"</span>))
+
+<span class='co'># S4 method for GRanges</span>
+<span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>, <span class='st'>"long"</span>))
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>,
+  <span class='st'>"long"</span>))</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Formatting method to apply:</p><ul>
+<li><p><code>"1:1"</code>: <em>Recommended.</em>
+Return with 1:1 mappings. For Ensembl genes that don't map 1:1 with
+Entrez, pick the oldest Entrez ID. Genes that don't map to Entrez will
+contain <code>NA</code> in <code>entrezID</code> column.</p></li>
+<li><p><code>"long"</code>:
+Return 1:many in long format.</p></li>
+</ul></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>EggNOG</code>.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This class extends <code>list</code> and contains:</p><ol>
-<li><p>"<code>cogFunctionalCategories</code>": <strong>C</strong>luster of <strong>O</strong>rthologous <strong>G</strong>roups
-(COG) functional category information.</p></li>
-<li><p>"<code>annotations</code>": up-to-date functional descriptions and categories
-for <strong>Eu</strong>karyotes <strong>N</strong>on-supervised <strong>O</strong>rthologous <strong>G</strong>roups (euNOG)
-and <strong>N</strong>on-supervised <strong>O</strong>rthologous <strong>G</strong>roups (NOG) protein
-identifiers.</p></li>
-</ol>
-
-<p>The <a href='http://eggnogdb.embl.de/download/latest/README.txt'>EggNOG README</a>
-contains additional useful reference information.</p>
+    <p><code>Ensembl2Entrez</code>.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Updated 2019-08-08.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>RangedSummarizedExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
+
+<span class='co'>## SummarizedExperiment ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>4 genes don't map to Entrez.</span></div><div class='output co'>#&gt; <span class='message'>2 genes map to multiple Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'>Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Ensembl2Entrez with 500 rows and 2 columns
+#&gt;                  geneID  entrezID
+#&gt;             &lt;character&gt; &lt;integer&gt;
+#&gt; gene001 ENSG00000000003      7105
+#&gt; gene002 ENSG00000000005     64102
+#&gt; gene003 ENSG00000000419      8813
+#&gt; gene004 ENSG00000000457     57147
+#&gt; gene005 ENSG00000000460     55732
+#&gt; ...                 ...       ...
+#&gt; gene496 ENSG00000032742      8100
+#&gt; gene497 ENSG00000033011     56052
+#&gt; gene498 ENSG00000033030     55596
+#&gt; gene499 ENSG00000033050     10061
+#&gt; gene500 ENSG00000033100     54480</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
-
       <li><a href="#note">Note</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

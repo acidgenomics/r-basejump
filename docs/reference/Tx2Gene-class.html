@@ -112,7 +112,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Transcript-to-gene identifier mappings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/Tx2Gene-methods.R'><code>R/Tx2Gene-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
     <div class="hidden name"><code>Tx2Gene-class.Rd</code></div>
     </div>
 
@@ -122,39 +122,18 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>Tx2Gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for GRanges</span>
-<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    </table>
-    
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>Tx2Gene</code>.
-Contains a <code>DataFrame</code> with <code>transcriptID</code> and <code>geneID</code> columns.</p>
+    <p><code>Tx2Gene</code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Contains a <code>DataFrame</code> with <code>transcriptID</code> and <code>geneID</code> columns.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-28.</p>
-<p>No attempt is made to arrange the rows by transcript identifier.</p>
+    <p>Updated 2019-08-08.</p>
     
     <h2 class="hasAnchor" id="genome-metadata"><a class="anchor" href="#genome-metadata"></a>Genome metadata</h2>
 
@@ -164,46 +143,21 @@ Contains a <code>DataFrame</code> with <code>transcriptID</code> and <code>geneI
 <p>We recommend slotting <code>organism</code>, <code>genomeBuild</code>, and <code>ensemblRelease</code> into
 <code>metadata</code>.</p>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='makeTx2Gene.html'>makeTx2Gene()</a></code>.</p></div>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SummarizedExperiment_transcripts</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='no'>txse</span> <span class='kw'>&lt;-</span> <span class='no'>SummarizedExperiment_transcripts</span>
-
-<span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>Tx2Gene</span>(<span class='no'>txse</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 6 rows and 2 columns
-#&gt;                    transcriptID          geneID
-#&gt;                     &lt;character&gt;     &lt;character&gt;
-#&gt; ENST00000494424 ENST00000494424 ENSG00000000003
-#&gt; ENST00000496771 ENST00000496771 ENSG00000000003
-#&gt; ENST00000612152 ENST00000612152 ENSG00000000003
-#&gt; ENST00000371584 ENST00000371584 ENSG00000000419
-#&gt; ENST00000371588 ENST00000371588 ENSG00000000419
-#&gt; ENST00000413082 ENST00000413082 ENSG00000000419</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#note">Note</a></li>
 
       <li><a href="#genome-metadata">Genome metadata</a></li>
+          </ul>
 
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Michael Steinbaugh</p>
   </div>
 </div>
 
