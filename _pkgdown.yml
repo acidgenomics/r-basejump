@@ -36,9 +36,12 @@ reference:
   - title: Metadata
     contents:
       - alphaThreshold
+      - geneNames
+      - headtail
+      - humanize
       - interestingGroups
       - lfcThreshold
-      - mcolnames
+      - microplate
       - organism
       - uniteInterestingGroups
   - title: Sample-level metadata
@@ -80,21 +83,13 @@ reference:
       - prepareTemplate
   - title: Developer
     contents:
+      - starts_with("detect")
       - formalsList
-      - matchInterestingGroups
+      - starts_with("match")
       - multiassignAsEnvir
+      - separator
       - showHeader
       - showSlotInfo
-  - title: Miscellaneous
-    contents:
-      - starts_with("detect")
-      - geneNames
-      - headtail
-      - humanize
-      - matchesGene2Symbol
-      - matchesInterestingGroups
-      - microplate
-      - separator
   - title: Global variables
     contents:
       - barcodePattern
