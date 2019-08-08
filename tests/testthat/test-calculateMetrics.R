@@ -1,7 +1,7 @@
 context("calculateMetrics")
 
 with_parameters_test_that(
-    "SingleCellExperiment", {
+    "matrix-like", {
         object <- calculateMetrics(object, prefilter = TRUE)
         expect_s4_class(object, "DataFrame")
         ## Check for run-length encoding.
@@ -21,12 +21,17 @@ with_parameters_test_that(
     },
     object = list(
         Matrix = counts(sce),
-        DelayedArray = DelayedArray(counts(sce)),
-        SingleCellExperiment = sce
+        DelayedArray = DelayedArray(counts(sce))
     )
 )
 
-test_that("RangedSummarizedExperiment", {
-    object <- calculateMetrics(rse)
-    expect_s4_class(object, "DataFrame")
-})
+with_parameters_test_that(
+    "SummarizedExperiment", {
+        x <- calculateMetrics(object)
+        expect_s4_class(x, "SummarizedExperiment")
+    },
+    object = list(
+        SummarizedExperiment = rse,
+        SingleCellExperiment = sce
+    )
+)
