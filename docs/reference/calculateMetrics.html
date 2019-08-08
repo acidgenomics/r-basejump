@@ -162,6 +162,10 @@ rows.</p></td>
       <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
 Apply prefiltering. Remove zero count genes.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -172,7 +176,7 @@ Apply prefiltering. Remove zero count genes.</p></td>
 
     <p>Input a raw count matrix. Do not use size factor adjusted or log
 normalized counts here.</p>
-<p>Updated 2019-08-07.</p>
+<p>Updated 2019-08-08.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -180,7 +184,20 @@ normalized counts here.</p>
 
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in calculateMetrics(object): could not find function "calculateMetrics"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating 100 cellular barcode metrics.</span></div><div class='output co'>#&gt; <span class='message'>497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'>0 mitochondrial features detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 100 rows and 6 columns
+#&gt;         nCount nFeature nCoding nMito log10FeaturesPerCount mitoRatio
+#&gt;          &lt;Rle&gt;    &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;                 &lt;Rle&gt;     &lt;Rle&gt;
+#&gt; cell001  41054      235   40988    NA             0.5139573        NA
+#&gt; cell002  49758      246   49642    NA             0.5090494        NA
+#&gt; cell003  57439      248   57321    NA             0.5031199        NA
+#&gt; cell004  68140      263   67976    NA             0.5006734        NA
+#&gt; cell005  63809      245   63684    NA             0.4972372        NA
+#&gt; ...        ...      ...     ...   ...                   ...       ...
+#&gt; cell096  43523      224   43447    NA             0.5066589        NA
+#&gt; cell097  62713      247   62573    NA             0.4987531        NA
+#&gt; cell098  44418      233   44341    NA             0.5093762        NA
+#&gt; cell099  78494      277   78327    NA             0.4989911        NA
+#&gt; cell100  47034      242   47031    NA             0.5101895        NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -4,9 +4,10 @@
 #'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
 #'   normalized counts here.
-#' @note Updated 2019-08-07.
+#' @note Updated 2019-08-08.
 #'
 #' @inheritParams acidroxygen::params
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
