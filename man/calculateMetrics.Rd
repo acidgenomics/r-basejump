@@ -21,8 +21,7 @@ calculateMetrics(object, ...)
 \S4method{calculateMetrics}{Matrix}(object, rowRanges = NULL,
   prefilter = FALSE)
 
-\S4method{calculateMetrics}{RangedSummarizedExperiment}(object,
-  prefilter = FALSE)
+\S4method{calculateMetrics}{RangedSummarizedExperiment}(object)
 
 \S4method{calculateMetrics}{SingleCellExperiment}(object,
   prefilter = FALSE)
@@ -35,12 +34,18 @@ Genomic ranges (e.g. genome annotations). Metadata describing the assay
 rows.}
 
 \item{prefilter}{\code{logical(1)}.
-Apply prefiltering. Remove zero count genes.}
+Drop very low quality samples/cells from the object.
+This can resize the number of columns but the rows (i.e. features) do not
+change with this operation.}
 
 \item{...}{Additional arguments.}
 }
 \value{
-\code{DataFrame}.
+\itemize{
+\item \code{matrix} / \code{Matrix} / \code{DelayedArray}: \code{DataFrame} containing metrics.
+\item \code{SingleCellExperiment} / \code{SummarizedExperiment}: Modified object, with
+metrics in \code{\link[SummarizedExperiment:colData]{colData()}}.
+}
 }
 \description{
 Calculate quality control metrics

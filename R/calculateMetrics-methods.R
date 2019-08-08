@@ -7,7 +7,16 @@
 #' @note Updated 2019-08-08.
 #'
 #' @inheritParams acidroxygen::params
+#' @param prefilter `logical(1)`.
+#'   Drop very low quality samples/cells from the object.
+#'   This can resize the number of columns but the rows (i.e. features) do not
+#'   change with this operation.
 #' @param ... Additional arguments.
+#'
+#' @return
+#' - `matrix` / `Matrix` / `DelayedArray`: `DataFrame` containing metrics.
+#' - `SingleCellExperiment` / `SummarizedExperiment`: Modified object, with
+#'   metrics in [`colData()`][SummarizedExperiment::colData].
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
@@ -225,12 +234,51 @@ setMethod(
 
 
 
+## Updated 2019-08-08
+.slotMetricsInSE <-
+    function(
+        object,
+        metrics,
+        prefilter
+    ) {
+        assert(
+            is(object, "SummarizedExperiment"),
+            is(metrics, "DataFrame"),
+            isSubset(rownames(metrics), colnames(object)),
+            isFlag(prefilter)
+        )
+        ## Resize the object, if necessary.
+        if (isTRUE(prefilter)) {
+            object <- object[, rownames(metrics), drop = FALSE]
+        }
+        ## Update the metrics in column data.
+        colData <- colData(object)
+        colData <- colData[
+            ,
+            setdiff(colnames(colData), colnames(metrics)),
+            drop = FALSE
+            ]
+        assert(identical(rownames(colData), rownames(metrics)))
+        colData <- cbind(colData, metrics)
+        colData(object) <- colData
+        validObject(object)
+        object
+    }
+
+
+
 ## Updated 2019-08-07.
 `calculateMetrics,RangedSummarizedExperiment` <-  # nolint
-    function(object, prefilter = FALSE) {
-        calculateMetrics(
+    function(object) {
+        prefilter <- FALSE
+        metrics <- calculateMetrics(
             object = counts(object),
             rowRanges = rowRanges(object),
+            prefilter = prefilter
+        )
+        .slotMetricsInSE(
+            object = object,
+            metrics = metrics,
             prefilter = prefilter
         )
     }
@@ -247,7 +295,7 @@ setMethod(
 
 
 
-## Updated 2019-08-07.
+## Updated 2019-08-08.
 `calculateMetrics,SingleCellExperiment` <-  # nolint
     function(object, prefilter = FALSE) {
         counts <- counts(object)
@@ -255,9 +303,14 @@ setMethod(
         if (ncol(counts) >= 2E4L) {
             counts <- DelayedArray(counts)
         }
-        calculateMetrics(
+        metrics <- calculateMetrics(
             object = counts,
             rowRanges = rowRanges(object),
+            prefilter = prefilter
+        )
+        .slotMetricsInSE(
+            object = object,
+            metrics = metrics,
             prefilter = prefilter
         )
     }
