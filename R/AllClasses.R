@@ -7,11 +7,6 @@
 #' **e**volutionary **g**enealogy of **g**enes: **N**on-supervised
 #' **O**rthologous **G**roups.
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
-#' @export
-#'
-#' @return `EggNOG`.
 #' This class extends `list` and contains:
 #'
 #' 1. "`cogFunctionalCategories`": **C**luster of **O**rthologous **G**roups
@@ -23,6 +18,11 @@
 #'
 #' The [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt)
 #' contains additional useful reference information.
+#'
+#' @note Updated 2019-08-08.
+#' @export
+#'
+#' @return `EggNOG`.
 setClass(
     Class = "EggNOG",
     contains = "SimpleDataFrameList"
@@ -58,12 +58,13 @@ setValidity(
 #' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 #' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 #'
+#' Contains a `DataFrame` with `geneID` and `entrezID` columns.
+#'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `Ensembl2Entrez`.
-#' Contains a `DataFrame` with `geneID` and `entrezID` columns.
 setClass(
     Class = "Ensembl2Entrez",
     contains = "DataFrame"
