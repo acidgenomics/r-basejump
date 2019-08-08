@@ -29,17 +29,6 @@ setGeneric(
 
 
 
-## FIXME Move this to bioverbs.
-
-#' @rdname calculateMetrics
-#' @export
-setGeneric(
-    name = "calculateMetrics",
-    def = function(object, ...) {
-        standardGeneric("calculateMetrics")
-    }
-)
-
 #' @rdname makeSampleData
 #' @export
 setGeneric(
