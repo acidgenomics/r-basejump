@@ -103,8 +103,7 @@ VignetteBuilder: knitr
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
-    'EggNOG.R'
-    'Ensembl2Entrez-methods.R'
+    'AllGenerators.R'
     'Gene2Symbol-methods.R'
     'HGNC2Ensembl.R'
     'MGI2Ensembl.R'
