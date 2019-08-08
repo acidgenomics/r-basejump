@@ -10,16 +10,11 @@
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
-#' counts <- counts(indrops)
-#' rowRanges <- rowRanges(indrops)
 #'
-#' # Metrics using genome annotations (recommended).
-#' x <- calculateMetrics(counts, rowRanges = rowRanges)
-#' head(x)
-#'
-#' # Minimal metrics (supported, but not recommended).
-#' x <- calculateMetrics(counts, rowRanges = NULL)
-#' head(x)
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' x <- calculateMetrics(object)
+#' print(x)
 NULL
 
 
@@ -125,9 +120,10 @@ NULL
         }
 
         ## Using S4 run-length encoding here to reduce memory overhead.
-        ## Consider renaming "UMI" to something more general here.
-        nUMI <- Rle(as.integer(colSums(object)))
-        nGene <- Rle(as.integer(colSums(object > 0L)))
+        ## We're following the naming conventions used in Seurat 3.
+        ## Note that "nCount" represents "nUMI" for droplet scRNA-seq data.
+        nCount <- Rle(as.integer(colSums(object)))
+        nFeature <- Rle(as.integer(colSums(object > 0L)))
         nCoding <- if (hasLength(codingFeatures)) {
             mat <- object[codingFeatures, , drop = FALSE]
             Rle(as.integer(colSums(mat)))
@@ -140,14 +136,14 @@ NULL
         } else {
             Rle(NA_integer_)
         }
-        log10GenesPerUMI <- log10(nGene) / log10(nUMI)
-        mitoRatio <- nMito / nUMI
+        log10FeaturesPerCount <- log10(nFeature) / log10(nCount)
+        mitoRatio <- nMito / nCount
         data <- DataFrame(
-            nUMI = nUMI,
-            nGene = nGene,
+            nCount = nCount,
+            nFeature = nFeature,
             nCoding = nCoding,
             nMito = nMito,
-            log10GenesPerUMI = log10GenesPerUMI,
+            log10FeaturesPerCount = log10FeaturesPerCount,
             mitoRatio = mitoRatio,
             row.names = colnames(object)
         )
@@ -155,15 +151,15 @@ NULL
         ## Apply low stringency cellular barcode pre-filtering.
         ## This keeps only cellular barcodes with non-zero genes.
         if (isTRUE(prefilter)) {
-            keep <- !is.na(data[["log10GenesPerUMI"]])
+            keep <- !is.na(data[["log10FeaturesPerCount"]])
             assert(is(keep, "Rle"))
             data <- data[keep, , drop = FALSE]
 
-            keep <- data[["nUMI"]] > 0L
+            keep <- data[["nCount"]] > 0L
             assert(is(keep, "Rle"))
             data <- data[keep, , drop = FALSE]
 
-            keep <- data[["nGene"]] > 0L
+            keep <- data[["nFeature"]] > 0L
             assert(is(keep, "Rle"))
             data <- data[keep, , drop = FALSE]
 

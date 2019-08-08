@@ -43,16 +43,11 @@ Updated 2019-08-07.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
-counts <- counts(indrops)
-rowRanges <- rowRanges(indrops)
 
-# Metrics using genome annotations (recommended).
-x <- calculateMetrics(counts, rowRanges = rowRanges)
-head(x)
-
-# Minimal metrics (supported, but not recommended).
-x <- calculateMetrics(counts, rowRanges = NULL)
-head(x)
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+x <- calculateMetrics(object)
+print(x)
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
