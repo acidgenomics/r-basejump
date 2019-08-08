@@ -418,10 +418,8 @@ setReplaceMethod(
             metadata(object)[["sampleData"]] <- NULL
         }
 
-        ## Don't allow blacklisted columns.
-        value[["interestingGroups"]] <- NULL
-        value[["rowname"]] <- NULL
-        value[["sampleID"]] <- NULL
+        ## Unset any blacklisted columns.
+        value[c("interestingGroups", "rowname", "sampleID")] <- NULL
 
         ## Generate `sampleID` column.
         assert(hasRownames(value))
@@ -435,15 +433,11 @@ setReplaceMethod(
             c("sampleID", setdiff(colnames(colData), colnames(value))),
             drop = FALSE
         ]
-
-        ## Join the sample-level metadata into cell-level colData.
-        join <- left_join(
-            x = as_tibble(colData, rownames = "rowname"),
-            y = as_tibble(value, rownames = NULL),
-            by = "sampleID"
+        value <- left_join(colData, value, by = "sampleID")
+        assert(
+            is(value, "DataFrame"),
+            hasRownames(value)
         )
-        value <- as(join, "DataFrame")
-        assert(hasRownames(value))
         colData(object) <- value
 
         object
