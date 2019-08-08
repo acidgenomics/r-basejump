@@ -109,8 +109,11 @@ NULL
     sort = TRUE,
     sessionInfo = TRUE
 ) {
+    ## Providing legacy support for list input.
+    if (is.list(assays)) {
+        assays <- SimpleList(assays)
+    }
     assert(
-        is(assays, "SimpleList"),
         isAny(
             x = rowRanges,
             classes = c("GRanges", "GRangesList", "NULL")
