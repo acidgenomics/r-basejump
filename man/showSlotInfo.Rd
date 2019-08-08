@@ -17,7 +17,7 @@ Invisible \code{NULL}.
 Show slot information
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-07.
 }
 \examples{
 showSlotInfo(list(

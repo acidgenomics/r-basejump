@@ -176,6 +176,29 @@ test_that("Column data failure", {
     )
 })
 
+test_that("Row annotation mismatch", {
+    badRowRanges <- rowRanges
+    names(badRowRanges)[seq_len(2L)] <- LETTERS[seq_len(2L)]
+    expect_error(
+        object = makeSummarizedExperiment(
+            assays = assays,
+            rowRanges = badRowRanges
+        ),
+        regexp = "gene1, gene2"
+    )
+
+    badRowData <- rowData
+    rownames(badRowData)[c(3L, 4L)] <- LETTERS[seq_len(2L)]
+    expect_error(
+        object = makeSummarizedExperiment(
+            assays = assays,
+            rowData = badRowData
+        ),
+        regexp = "gene3, gene4"
+    )
+
+})
+
 test_that("Invalid metadata", {
     expect_error(
         object = makeSummarizedExperiment(

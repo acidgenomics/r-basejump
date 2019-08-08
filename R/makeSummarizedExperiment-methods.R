@@ -251,35 +251,6 @@ NULL
         }
     }
 
-    ## Error on user-defined row annotation mismatch. This step is important, to
-    ## catch users accidentially attempting to use the wrong version of genome
-    ## annotations.
-    if (hasRownames(assay)) {
-        if (hasLength(rowRanges)) {
-            data <- as(rowRanges, "DataFrame")
-        } else if (hasRows(rowData)) {
-            data <- rowData
-        } else {
-            data <- NULL
-        }
-        if (hasRows(data)) {
-            setdiff <- setdiff(rownames(assay), rownames(data))
-            if (hasLength(setdiff)) {
-                stop(sprintf(
-                    fmt = paste0(
-                        "%d unannotated rows: %s\n",
-                        "Check genome build and release version.\n",
-                        "Define transgenes with `transgeneNames`",
-                        "and spike-ins with `spikeNames`.",
-                    ),
-                    length(setdiff),
-                    toString(setdiff, width = 200L)
-                ))
-            }
-        }
-        rm(data)
-    }
-
     ## Column data -------------------------------------------------------------
     if (hasRows(colData)) {
         ## Allowing some single-cell RNA-seq automatic columns to pass through
