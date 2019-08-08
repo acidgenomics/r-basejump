@@ -255,7 +255,7 @@ formals(`Ensembl2Entrez,SummarizedExperiment`) <-
 
 
 
-#' @rdname Ensembl2Entrez-class
+#' @rdname Ensembl2Entrez
 #' @export
 setMethod(
     f = "Ensembl2Entrez",
@@ -265,7 +265,7 @@ setMethod(
 
 
 
-#' @rdname Ensembl2Entrez-class
+#' @rdname Ensembl2Entrez
 #' @export
 setMethod(
     f = "Ensembl2Entrez",
@@ -275,7 +275,7 @@ setMethod(
 
 
 
-#' @rdname Ensembl2Entrez-class
+#' @rdname Ensembl2Entrez
 #' @export
 setMethod(
     f = "Ensembl2Entrez",
@@ -381,7 +381,7 @@ NULL
 
 
 
-#' @rdname Gene2Symbol-class
+#' @rdname Gene2Symbol
 #' @export
 setMethod(
     f = "Gene2Symbol",
@@ -404,7 +404,7 @@ formals(`Gene2Symbol,GRanges`) <- formals(`Gene2Symbol,DataFrame`)
 
 
 
-#' @rdname Gene2Symbol-class
+#' @rdname Gene2Symbol
 #' @export
 setMethod(
     f = "Gene2Symbol",
@@ -427,7 +427,7 @@ formals(`Gene2Symbol,SummarizedExperiment`) <- formals(`Gene2Symbol,DataFrame`)
 
 
 
-#' @rdname Gene2Symbol-class
+#' @rdname Gene2Symbol
 #' @export
 setMethod(
     f = "Gene2Symbol",

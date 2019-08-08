@@ -1,6 +1,6 @@
 ## Define other generics in the bioverbs package instead.
 
-#' @rdname Ensembl2Entrez-class
+#' @rdname Ensembl2Entrez
 #' @export
 setGeneric(
     name = "Ensembl2Entrez",
@@ -9,7 +9,7 @@ setGeneric(
     }
 )
 
-#' @rdname Gene2Symbol-class
+#' @rdname Gene2Symbol
 #' @export
 setGeneric(
     name = "Gene2Symbol",
@@ -18,7 +18,7 @@ setGeneric(
     }
 )
 
-#' @rdname Tx2Gene-class
+#' @rdname Tx2Gene
 #' @export
 setGeneric(
     name = "Tx2Gene",

@@ -10,7 +10,7 @@ news:
 reference:
   - title: S4 classes
     contents:
-      - ends_with("-class")
+      - matches("^[A-Z]")
       - show
       - summary
   - title: Genome annotations
