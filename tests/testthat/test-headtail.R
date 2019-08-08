@@ -1,17 +1,19 @@
 context("headtail")
 
 test_that("atomic", {
-    expect_identical(
-        object = capture.output(headtail(LETTERS)),
-        expected = "A B ... Y Z"
+    expect_output(
+        object = headtail(LETTERS),
+        regexp = "A B ... Y Z"
     )
 
 })
 
 test_that("matrix", {
     mat <- assay(rse)
-    output <- capture.output(headtail(mat))
-    expect_true(grepl("gene001", output[[2L]]))
+    expect_output(
+        object = headtail(mat),
+        regexp = "gene001"
+    )
 })
 
 test_that("matrix : No quadrants", {
@@ -22,8 +24,10 @@ test_that("matrix : No quadrants", {
 })
 
 test_that("GRanges", {
-    output <- capture.output(headtail(gr))
-    expect_true(grepl("ENSG00000000003", output[[2L]]))
+    expect_output(
+        object = headtail(gr),
+        regexp = "ENSG00000000003"
+    )
 })
 
 test_that("SummarizedExperiment", {
