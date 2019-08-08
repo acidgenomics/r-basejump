@@ -21,7 +21,7 @@ Lane numbers.
 Detect sequencing lanes
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-07.
 }
 \examples{
 ## Matching lanes 1-4 for paired-end FASTQ files.

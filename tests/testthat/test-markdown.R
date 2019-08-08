@@ -52,19 +52,18 @@ test_that("asis", {
 context("markdownLink")
 
 test_that("markdownLink", {
-    expect_identical(
-        capture.output(markdownLink(
+    expect_output(
+        object = markdownLink(
             text = "R",
             url = "https://www.r-project.org",
             title = "The R Project for Statistical Computing"
-        )),
-        paste(
-            "[R](https://www.r-project.org):",
+        ),
+        regexp = paste(
+            "\\[R\\]\\(https://www.r-project.org\\):",
             "The R Project for Statistical Computing"
         )
     )
 })
-
 
 
 
@@ -101,19 +100,11 @@ test_that("markdownPlots", {
     skip_if_not(hasInternet())
     skip_on_appveyor()
     plotlist <- readRDS(file = file.path("cache", "plotlist.rds"))
-    output <- capture.output(markdownPlots(list = plotlist))
-    expect_identical(
-        object = output,
-        expected = c(
-            "",
-            "",
-            "## continuous",
-            "",
-            "",
-            "",
-            "## discrete",
-            ""
-        )
+    output <- capture.output()
+    expect_output(
+        object = markdownPlots(list = plotlist),
+        regexp = "## continuous"
+
     )
 })
 

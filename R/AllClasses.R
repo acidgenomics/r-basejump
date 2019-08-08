@@ -7,11 +7,6 @@
 #' **e**volutionary **g**enealogy of **g**enes: **N**on-supervised
 #' **O**rthologous **G**roups.
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
-#' @export
-#'
-#' @return `EggNOG`.
 #' This class extends `list` and contains:
 #'
 #' 1. "`cogFunctionalCategories`": **C**luster of **O**rthologous **G**roups
@@ -23,6 +18,11 @@
 #'
 #' The [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt)
 #' contains additional useful reference information.
+#'
+#' @note Updated 2019-08-08.
+#' @export
+#'
+#' @return `EggNOG`.
 setClass(
     Class = "EggNOG",
     contains = "SimpleDataFrameList"
@@ -58,12 +58,12 @@ setValidity(
 #' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 #' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' Contains a `DataFrame` with `geneID` and `entrezID` columns.
+#'
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `Ensembl2Entrez`.
-#' Contains a `DataFrame` with `geneID` and `entrezID` columns.
 setClass(
     Class = "Ensembl2Entrez",
     contains = "DataFrame"
@@ -82,21 +82,18 @@ setValidity(
 
 #' Gene-to-symbol mappings
 #'
-#' @note For some organisms, gene names and gene symbols do not map 1:1
-#' (e.g. *Homo sapiens* and *Mus musculus*). Refer to the `format` argument here
-#' in the documentation for approaches that deal with this issue.
+#' @details
+#' Contains a `DataFrame` with `geneID` and `geneName` columns.
 #'
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
 #' [`metadata()`][S4Vectors::metadata].
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `Gene2Symbol`.
-#' Contains a `DataFrame` with `geneID` and `geneName` columns.
 setClass(
     Class = "Gene2Symbol",
     contains = "DataFrame"
@@ -117,12 +114,13 @@ setValidity(
 
 #' HGNC-to-Ensembl gene identifier mappings
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @details
+#' Contains a `DataFrame` with `hgncID` and `geneID` columns.
+#'
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `HGNC2Ensembl`.
-#' Contains a `DataFrame` with `hgncID` and `geneID` columns.
 setClass(
     Class = "HGNC2Ensembl",
     contains = "DataFrame"
@@ -147,12 +145,13 @@ setValidity(
 
 #' MGI-to-Ensembl gene identifier mappings
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @details
+#' Contains a `DataFrame` with `mgiID` and `geneID` columns.
+#'
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `MGI2Ensembl`.
-#' Contains a `DataFrame` with `mgiID` and `geneID` columns.
 setClass(
     Class = "MGI2Ensembl",
     contains = "DataFrame"
@@ -174,11 +173,10 @@ setValidity(
 #' [PANTHER](http://www.pantherdb.org) gene ontology definitions. PANTHER stands
 #' for **P**rotein **AN**alysis **TH**rough **E**volutionary **R**elationships.
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-08.
 #' @export
 #'
-#' @return `PANTHER`. Contains a `DataFrame`.
+#' @return `PANTHER`.
 setClass(
     Class = "PANTHER",
     contains = "DataFrame"
@@ -210,17 +208,18 @@ setValidity(
 
 #' Transcript-to-gene identifier mappings
 #'
+#' @details
+#' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
+#'
 #' @section Genome metadata:
 #'
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
 #' `metadata`.
 #'
-#' @author Michael Steinbaugh
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-08.
 #' @export
 #'
 #' @return `Tx2Gene`.
-#' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 setClass(
     Class = "Tx2Gene",
     contains = "DataFrame"

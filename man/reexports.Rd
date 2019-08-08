@@ -66,6 +66,7 @@
 \alias{as.data.table}
 \alias{as_tibble}
 \alias{coerceS4ToList}
+\alias{left_join}
 \alias{relevel}
 \alias{GRanges}
 \alias{GRangesList}
@@ -128,6 +129,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{relevel}}}
+  \item{transformer}{\code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{left_join}}, \code{\link[transformer]{relevel}}}
 }}
 

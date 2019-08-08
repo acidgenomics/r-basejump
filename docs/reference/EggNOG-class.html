@@ -73,7 +73,7 @@ Orthologous Groups." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.5</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@ Orthologous Groups." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>EggNOG database annotations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/EggNOG.R'><code>R/EggNOG.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
     <div class="hidden name"><code>EggNOG-class.Rd</code></div>
     </div>
 
@@ -132,12 +132,14 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
     
     </div>
 
-    <pre class="usage"><span class='fu'>EggNOG</span>()</pre>
         
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>EggNOG</code>.
-This class extends <code>list</code> and contains:</p><ol>
+    <p><code>EggNOG</code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This class extends <code>list</code> and contains:</p><ol>
 <li><p>"<code>cogFunctionalCategories</code>": <strong>C</strong>luster of <strong>O</strong>rthologous <strong>G</strong>roups
 (COG) functional category information.</p></li>
 <li><p>"<code>annotations</code>": up-to-date functional descriptions and categories
@@ -151,15 +153,9 @@ contains additional useful reference information.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-28.</p>
+    <p>Updated 2019-08-08.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>EggNOG</span>()
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; EggNOG 0.11.4 of length 2
-#&gt; ids(10): COG5153 COG5156 ... ENOG410KJ10 ENOG410KJ1P
-#&gt; categories(18): 1 2 ... 17 18</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -167,13 +163,11 @@ contains additional useful reference information.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#note">Note</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#details">Details</a></li>
 
-    <h2>Author</h2>
-    <p>Michael Steinbaugh</p>
+      <li><a href="#note">Note</a></li>
+          </ul>
+
   </div>
 </div>
 

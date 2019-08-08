@@ -3,6 +3,12 @@ context("organism")
 object <- rse
 rownames(object) <- as.character(rowData(rse)[["geneID"]])
 
+## nolint start
+matrix <- assay(object)
+GRanges <- rowRanges(object)
+DataFrame <- as(as.data.frame(GRanges), "DataFrame")
+## nolint end
+
 with_parameters_test_that(
     "organism", {
         expect_identical(
@@ -11,8 +17,9 @@ with_parameters_test_that(
         )
     },
     object = list(
-        matrix = assay(object),
-        GRanges = rowRanges(object),
+        matrix = matrix,
+        DataFrame = DataFrame,
+        GRanges = GRanges,
         SummarizedExperiment = object
     )
 )

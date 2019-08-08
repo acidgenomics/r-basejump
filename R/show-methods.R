@@ -2,7 +2,7 @@
 #'
 #' @name show
 #' @inherit methods::show
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-07.
 #'
 #' @examples
 #' options(acid.test = TRUE)

@@ -32,15 +32,16 @@
 #' @importFrom dplyr arrange bind_rows desc filter group_by left_join mutate
 #'   mutate_all mutate_at mutate_if pull rename select select_if slice
 #'   summarise_all top_n ungroup
-#' @importFrom goalie allAreMatchingRegex areDisjointSets areIntersectingSets
-#'   areSameLength areSetEqual assert bapply false getNameInParent hasColnames
-#'   hasCols hasDims hasInternet hasLength hasNames hasNoDuplicates
-#'   hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols hasValidDimnames
-#'   hasValidNames isADirectory isAlpha isAny isCharacter isFlag isGGScale
-#'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
-#'   isInRange isInt isMatchingRegex isNonNegative isNotMatchingRegex isNumber
-#'   isPositive isScalar isString isSubset isSuperset matchesUniqueGeneNames
-#'   methodFunction validNames validate validateClasses
+#' @importFrom goalie allAreMatchingRegex appendToBody areDisjointSets
+#'   areIntersectingSets areSameLength areSetEqual assert bapply false
+#'   getNameInParent hasColnames hasCols hasDims hasInternet hasLength hasNames
+#'   hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols
+#'   hasValidDimnames hasValidNames isADirectory isAlpha isAny isCharacter
+#'   isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction
+#'   isInClosedRange isInRange isInt isMatchingRegex isNonNegative
+#'   isNotMatchingRegex isNumber isPositive isScalar isString isSubset
+#'   isSuperset matchesUniqueGeneNames methodFunction validNames validate
+#'   validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
@@ -51,6 +52,7 @@
 #' @importFrom readr cols read_lines read_tsv
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := UQ sym syms
+#' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_dup str_extract str_length str_match str_pad
 #'   str_replace_all str_subset str_trunc
