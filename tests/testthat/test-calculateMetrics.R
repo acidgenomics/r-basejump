@@ -35,3 +35,14 @@ with_parameters_test_that(
         SingleCellExperiment = sce
     )
 )
+
+test_that("Low pass prefiltering", {
+    ## All barcodes in example should pass.
+    object <- sce
+    x <- calculateMetrics(object, prefilter = TRUE)
+    expect_identical(ncol(x), ncol(object))
+    ## Simulate some poor barcodes.
+    counts(object)[, seq_len(2L)] <- 0L
+    x <- calculateMetrics(object, prefilter = TRUE)
+    expect_identical(ncol(x), ncol(object) - 2L)
+})
