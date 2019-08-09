@@ -21,10 +21,11 @@
 #' @importFrom DelayedArray DelayedArray
 #' @importFrom DelayedMatrixStats colSums2 rowSums2
 #' @importFrom GenomeInfoDb seqnames
+#' @importFrom IRanges DataFrameList
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate cor decode
-#'   expand head mcols mcols<- merge metadata metadata<- na.omit split summary
-#'   tail
+#'   expand head lapply mcols mcols<- merge metadata metadata<- na.omit split
+#'   summary tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
