@@ -1,11 +1,7 @@
-## FIXME Unit test this well on existing datasets.
-
-
-
 #' @name filterCells
 #' @author Michael Steinbaugh
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-09.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -86,14 +82,14 @@ NULL
 
 
 
-## Updated 2019-07-24.
-.paddedCount <- function(x, width = 8L) {
+## Updated 2019-08-09.
+.paddedCount <- function(x, width = 9L) {
     str_pad(x, width = width, pad = " ")
 }
 
 
 
-## FIXME Move this to goalie package.
+## Consider moving this to goalie.
 ## Updated 2019-08-08.
 .hasMetrics <- function(object) {
     assert(is(object, "SummarizedExperiment"))
@@ -109,7 +105,7 @@ NULL
 
 
 
-## Updated 2019-08-08.
+## Updated 2019-08-09.
 `filterCells,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -128,8 +124,7 @@ NULL
         ## Feature-level metrics.
         minCellsPerFeature = 1L,
         ## Manually subset top cells by sequencing depth.
-        nCells = Inf,
-        verbose = TRUE
+        nCells = Inf
     ) {
         validObject(object)
         assert(
@@ -156,8 +151,7 @@ NULL
             all(isInLeftOpenRange(maxMitoRatio, lower = 0L, upper = 1L)),
             ## minCellsPerFeature
             all(isIntegerish(minCellsPerFeature)),
-            all(isPositive(minCellsPerFeature)),
-            isFlag(verbose)
+            all(isPositive(minCellsPerFeature))
         )
 
         ## Using this for summary statistics prior to return.
@@ -167,7 +161,7 @@ NULL
         metrics <- colData(object)
         sampleNames <- unname(sampleNames(object))
 
-        ## Filter low quality cells --------------------------------------------
+        ## Detect low quality cells --------------------------------------------
         ## Check that the requested column names for filtering match.
         assert(isSubset(
             x = c(
@@ -284,18 +278,14 @@ NULL
         lgl <- lgl[, keep, drop = FALSE]
         assert(!isTRUE(anyNA(lgl)))
 
-        ## Can consider using Rle here but it will drop cell IDs.
         cells <- apply(X = lgl, MARGIN = 1L, FUN = function(x) { all(x) })
-        if (!any(cells)) {
-            stop("No cells passed filtering cutoffs.")
-        }
-
-        ## Resize the metrics to keep only the cells that pass.
-        metrics <- metrics[cells, , drop = FALSE]
+        assert(identical(names(cells), colnames(object)))
 
         ## Keep top expected number of cells -----------------------------------
         ## Expected nCells per sample (filtered by top nUMI)
         if (nCells < Inf) {
+            ## Resize the metrics to analyze only passing cells.
+            metrics <- metrics[cells, , drop = FALSE]
             split <- split(x = metrics, f = metrics[["sampleID"]])
             topCellsPerSample <- lapply(
                 X = split,
@@ -307,11 +297,14 @@ NULL
             )
             topCells <- unlist(unname(topCellsPerSample))
             metrics <- metrics[names(topCells), , drop = FALSE]
+            ## Update the cells logical vector.
+            cells <- names(cells) %in% names(topCells)
+            names(cells) <- colnames(object)
         } else {
             topCellsPerSample <- NULL
         }
 
-        ## Filter low quality features (i.e. genes) ----------------------------
+        ## Detect low quality features (i.e. genes) ----------------------------
         if (minCellsPerFeature > 0L) {
             nonzero <- counts(object) > 0L
             if (is(nonzero, "Matrix")) {
@@ -322,27 +315,92 @@ NULL
                 stop("No features passed `minCellsPerFeature` cutoff.")
             }
         } else {
-            features <- NULL
+            features <- rep(TRUE, times = nrow(object))
+            names(features) <- rownames(object)
+        }
+
+        ## Summary statistics --------------------------------------------------
+        assert(
+            is.logical(cells),
+            is.logical(features),
+            identical(
+                x = list(
+                    names(features),
+                    names(cells)
+                ),
+                y = dimnames(object)
+            )
+        )
+        message(
+            "Filtering summary:\n",
+            sprintf(
+                fmt = paste0(
+                    "  Pre-filter:\n",
+                    "    - %d %s\n",
+                    "    - %d %s\n"
+                ),
+                originalDim[[2L]],
+                ngettext(
+                    n = originalDim[[2L]],
+                    msg1 = "cell",
+                    msg2 = "cells"
+                ),
+                originalDim[[1L]],
+                ngettext(
+                    n = originalDim[[1L]],
+                    msg1 = "feature",
+                    msg2 = "features"
+                )
+            ),
+            sprintf(
+                fmt = paste0(
+                    "  Post-filter:\n",
+                    "    - %d %s (%s)\n",
+                    "    - %d %s (%s)"
+                ),
+                dim(object)[[2L]],
+                ngettext(
+                    n = dim(object)[[2L]],
+                    msg1 = "cell",
+                    msg2 = "cells"
+                ),
+                percent(dim(object)[[2L]] / originalDim[[2L]]),
+                dim(object)[[1L]],
+                ngettext(
+                    n = dim(object)[[1L]],
+                    msg1 = "feature",
+                    msg2 = "features"
+                ),
+                percent(dim(object)[[1L]] / originalDim[[1L]])
+            )
+        )
+
+        ## Error on filtering failure.
+        if (!any(cells)) {
+            stop("No cells passed filtering.")
+        }
+        if (!any(features)) {
+            stop("No features passed filtering.")
         }
 
         ## Update object -------------------------------------------------------
         ## Remove low quality cells.
-        if (nrow(metrics) < ncol(object)) {
-            assert(isSubset(rownames(metrics), colnames(object)))
+        if (sum(cells, na.rm = TRUE) < ncol(object)) {
+            assert(identical(names(cells), colnames(object)))
             object <- object[, cells, drop = FALSE]
         }
         ## Remove low quality features.
-        if (is.logical(features)) {
+        if (sum(features, na.rm = TRUE) < nrow(object)) {
             assert(identical(names(features), rownames(object)))
             object <- object[features, , drop = FALSE]
         }
 
-        ## Add useful metadata.
+        ## Stash useful metadata.
         metadata <- SimpleList(
             cells = cells,
             features = features,
             topCellsPerSample = topCellsPerSample,
-            params = params,
+            args = args,
             filter = filter,
             call = match.call(),
             date = Sys.Date(),
@@ -352,53 +410,6 @@ NULL
         metadata(object)[["filterCells"]] <- metadata
         if (!identical(dim(object), originalDim)) {
             metadata(object)[["subset"]] <- TRUE
-        }
-
-        ## Return --------------------------------------------------------------
-        if (isTRUE(verbose)) {
-            message(
-                "Filtering summary:\n",
-                sprintf(
-                    fmt = paste0(
-                        "  Pre-filter:\n",
-                        "    - %d %s\n",
-                        "    - %d %s\n"
-                    ),
-                    originalDim[[2L]],
-                    ngettext(
-                        n = originalDim[[2L]],
-                        msg1 = "cell",
-                        msg2 = "cells"
-                    ),
-                    originalDim[[1L]],
-                    ngettext(
-                        n = originalDim[[1L]],
-                        msg1 = "feature",
-                        msg2 = "features"
-                    )
-                ),
-                sprintf(
-                    fmt = paste0(
-                        "  Post-filter:\n",
-                        "    - %d %s (%s)\n",
-                        "    - %d %s (%s)"
-                    ),
-                    dim(object)[[2L]],
-                    ngettext(
-                        n = dim(object)[[2L]],
-                        msg1 = "cell",
-                        msg2 = "cells"
-                    ),
-                    percent(dim(object)[[2L]] / originalDim[[2L]]),
-                    dim(object)[[1L]],
-                    ngettext(
-                        n = dim(object)[[1L]],
-                        msg1 = "feature",
-                        msg2 = "features"
-                    ),
-                    percent(dim(object)[[1L]] / originalDim[[1L]])
-                )
-            )
         }
 
         object
