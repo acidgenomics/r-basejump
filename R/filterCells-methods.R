@@ -45,9 +45,6 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
-#' object <- calculateMetrics(object)
-#' show(object)
-#'
 #' x <- filterCells(object)
 #' show(x)
 #'
@@ -443,7 +440,7 @@ NULL
             filter = filter,
             perSamplePass = perSamplePass,
             totalPass = totalPass,
-            call = match.call(),
+            call = standardizeCall(),
             date = Sys.Date(),
             version = .version
         )

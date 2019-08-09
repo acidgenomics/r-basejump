@@ -12,8 +12,7 @@ filterCells(object, ...)
   maxCounts = Inf, minFeatures = 1L, maxFeatures = Inf,
   minNovelty = 0L, maxMitoRatio = 1L, countsCol = "nCount",
   featuresCol = "nFeature", noveltyCol = "log10FeaturesPerCount",
-  mitoRatioCol = "mitoRatio", minCellsPerFeature = 1L, nCells = Inf,
-  verbose = TRUE)
+  mitoRatioCol = "mitoRatio", minCellsPerFeature = 1L, nCells = Inf)
 }
 \arguments{
 \item{object}{Object.}
@@ -46,9 +45,6 @@ Previously named \code{minCellsPerGene} in bcbioSingleCell.}
 Expected number of cells per sample.
 Don't set this by default, unless you're confident of your capture.}
 
-\item{verbose}{\code{logical(1)}.
-Run the function with verbose output.}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -68,16 +64,13 @@ matching per sample, be sure to use the \code{\link[=sampleNames]{sampleNames()}
 the \code{sampleName} column in \code{\link[=sampleData]{sampleData()}}).
 }
 \note{
-Updated 2019-08-08.
+Updated 2019-08-09.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
-object <- calculateMetrics(object)
-show(object)
-
 x <- filterCells(object)
 show(x)
 
