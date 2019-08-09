@@ -77,8 +77,10 @@ NULL
     ok <- !is.null(metadata(object)[["filterCells"]])
     if (isTRUE(ok)) return(TRUE)
 
-    ok <- !is.null(metadata(object)[["subset"]])
-    if (isTRUE(ok)) return(TRUE)
+    ## nolint start
+    ## > ok <- !is.null(metadata(object)[["subset"]])
+    ## > if (isTRUE(ok)) return(TRUE)
+    ## nolint end
 
     FALSE
 }
