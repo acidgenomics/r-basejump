@@ -71,13 +71,16 @@ NULL
 
 
 
+## Consider moving this to goalie.
 ## Updated 2019-08-08.
 .isFiltered <- function(object) {
-    if (!is.null(metadata(object)[["filterCells"]])) {
-        TRUE
-    } else {
-        FALSE
-    }
+    ok <- !is.null(metadata(object)[["filterCells"]])
+    if (isTRUE(ok)) return(TRUE)
+
+    ok <- !is.null(metadata(object)[["subset"]])
+    if (isTRUE(ok)) return(TRUE)
+
+    FALSE
 }
 
 
@@ -128,8 +131,6 @@ NULL
     ) {
         validObject(object)
         assert(
-            ## Check to see if `calculateMetrics()` needs to be run.
-            .hasMetrics(object),
             ## nCells
             all(isIntegerish(nCells)),
             all(isPositive(nCells)),
@@ -153,6 +154,11 @@ NULL
             all(isIntegerish(minCellsPerFeature)),
             all(isPositive(minCellsPerFeature))
         )
+
+        ## Calculate metrics, if necessary.
+        if (!.hasMetrics(object)) {
+            object <- calculateMetrics(object)
+        }
 
         ## Using this for summary statistics prior to return.
         originalDim <- dim(object)
@@ -282,7 +288,7 @@ NULL
         assert(identical(names(cells), colnames(object)))
 
         ## Keep top expected number of cells -----------------------------------
-        ## Expected nCells per sample (filtered by top nUMI)
+        ## Expected nCells per sample (filtered by top nUMI).
         if (nCells < Inf) {
             ## Resize the metrics to analyze only passing cells.
             metrics <- metrics[cells, , drop = FALSE]
@@ -331,49 +337,80 @@ NULL
                 y = dimnames(object)
             )
         )
-        message(
-            "Filtering summary:\n",
-            sprintf(
-                fmt = paste0(
-                    "  Pre-filter:\n",
-                    "    - %d %s\n",
-                    "    - %d %s\n"
-                ),
-                originalDim[[2L]],
-                ngettext(
-                    n = originalDim[[2L]],
-                    msg1 = "cell",
-                    msg2 = "cells"
-                ),
-                originalDim[[1L]],
-                ngettext(
-                    n = originalDim[[1L]],
-                    msg1 = "feature",
-                    msg2 = "features"
+
+        perSamplePass <- lapply(
+            X = filter,
+            FUN = function(x) {
+                x <- vapply(
+                    X = x,
+                    FUN = function(x) {
+                        sum(x, na.rm = FALSE)
+                    },
+                    FUN.VALUE = numeric(1L)
                 )
-            ),
-            sprintf(
-                fmt = paste0(
-                    "  Post-filter:\n",
-                    "    - %d %s (%s)\n",
-                    "    - %d %s (%s)"
-                ),
-                dim(object)[[2L]],
-                ngettext(
-                    n = dim(object)[[2L]],
-                    msg1 = "cell",
-                    msg2 = "cells"
-                ),
-                percent(dim(object)[[2L]] / originalDim[[2L]]),
-                dim(object)[[1L]],
-                ngettext(
-                    n = dim(object)[[1L]],
-                    msg1 = "feature",
-                    msg2 = "features"
-                ),
-                percent(dim(object)[[1L]] / originalDim[[1L]])
-            )
+                x <- na.omit(x)
+                ## Drop the `na.omit` attribute, which is annoying in print.
+                names <- names(x)
+                x <- as.integer(x)
+                names(x) <- names
+                x
+
+            }
         )
+
+        totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
+        storage.mode(totalPass) <- "integer"
+
+        message(sprintf(
+            fmt = paste0(
+                "Pre-filter:\n",
+                "  - %d %s\n",
+                "  - %d %s"
+            ),
+            originalDim[[2L]],
+            ngettext(
+                n = originalDim[[2L]],
+                msg1 = "cell",
+                msg2 = "cells"
+            ),
+            originalDim[[1L]],
+            ngettext(
+                n = originalDim[[1L]],
+                msg1 = "feature",
+                msg2 = "features"
+            )
+        ))
+        message(sprintf(
+            fmt = paste0(
+                "Post-filter:\n",
+                "  - %d %s (%s)\n",
+                "  - %d %s (%s)"
+            ),
+            dim(object)[[2L]],
+            ngettext(
+                n = dim(object)[[2L]],
+                msg1 = "cell",
+                msg2 = "cells"
+            ),
+            percent(dim(object)[[2L]] / originalDim[[2L]]),
+            dim(object)[[1L]],
+            ngettext(
+                n = dim(object)[[1L]],
+                msg1 = "feature",
+                msg2 = "features"
+            ),
+            percent(dim(object)[[1L]] / originalDim[[1L]])
+        ))
+        message(sprintf(
+            fmt = "Per argument:\n%s",
+            printString(totalPass)
+        ))
+        if (length(perSamplePass) > 1L) {
+            message(sprintf(
+                fmt = "Per sample, per argument:\n%s",
+                printString(perSamplePass)
+            ))
+        }
 
         ## Error on filtering failure.
         if (!any(cells)) {
@@ -402,6 +439,8 @@ NULL
             topCellsPerSample = topCellsPerSample,
             args = args,
             filter = filter,
+            perSamplePass = perSamplePass,
+            totalPass = totalPass,
             call = match.call(),
             date = Sys.Date(),
             version = .version
