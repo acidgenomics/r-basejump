@@ -16,7 +16,7 @@ Console output, via \code{\link[base:cat]{cat()}}.
 Header for object show method
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-11.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

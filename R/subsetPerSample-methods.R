@@ -1,5 +1,6 @@
 #' @name subsetPerSample
 #' @inherit bioverbs::subsetPerSample
+#' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param minCells `integer(1)`.
@@ -53,7 +54,7 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-11.
 `subsetPerSample,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -69,7 +70,6 @@ NULL
             is.environment(envir)
         )
         dir <- initDir(dir)
-
         ## Return objects or file paths.
         samples <- levels(cell2sample(object))
         return <- lapply(
@@ -78,7 +78,10 @@ NULL
                 subset <- selectSamples(object, sampleID = sampleID)
                 ## Skip if subset doesn't have enough cells.
                 if (ncol(subset) < minCells) {
-                    warning(paste(sampleID, "didn't pass minimum cell cutoff."))
+                    warning(sprintf(
+                        "'%s' didn't pass minimum cell cutoff.",
+                        sampleID
+                    ))
                     return(NULL)
                 }
                 if (isTRUE(assignAndSave)) {
@@ -95,7 +98,6 @@ NULL
         )
         names(return) <- samples
         return <- Filter(Negate(is.null), return)
-
         if (isTRUE(assignAndSave)) {
             ## File paths.
             names <- names(return)

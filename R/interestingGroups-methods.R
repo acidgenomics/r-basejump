@@ -1,6 +1,6 @@
 #' @name interestingGroups
 #' @inherit bioverbs::interestingGroups
-#' @note Updated 2019-08-06.
+#' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -76,18 +76,19 @@ setReplaceMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-11.
 `interestingGroups<-,SummarizedExperiment,character` <-  # nolint
     function(object, value) {
         ## Check for attempt to use `interestingGroups` automatic column.
         assert(areDisjointSets(value, "interestingGroups"))
         ## Note that we're always allowing `sampleName` to be slotted, even if
         ## that column isn't defined in `colData()`.
-        if (
-            !isSubset(value, colnames(sampleData(object))) &&
-            !identical(value, "sampleName")
-        ) {
-            stop("Interesting groups must be columns in `sampleData()`.")
+        setdiff <- setdiff(value, colnames(sampleData(object)))
+        if (hasLength(setdiff)) {
+            stop(sprintf(
+                "Columns not defined in 'sampleData()': %s.",
+                toString(setdiff, width = 100L)
+            ))
         }
         metadata(object)[["interestingGroups"]] <- value
         object

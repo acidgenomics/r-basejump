@@ -87,7 +87,7 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-11.
 `selectSamples,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         validObject(object)
@@ -117,8 +117,8 @@ setMethod(
                 ## Check that column is present.
                 if (!col %in% colnames(sampleData)) {
                     ## nocov start
-                    stop(paste(
-                        col, "isn't present in metadata colnames."
+                    stop(sprintf(
+                        "'%s' isn't present in metadata column names.", col
                     ))
                     ## nocov end
                 }
@@ -126,10 +126,9 @@ setMethod(
                 if (!all(arg %in% sampleData[[col]])) {
                     ## nocov start
                     missing <- arg[which(!arg %in% sampleData[[col]])]
-                    stop(paste(
-                        deparse(col),
-                        "metadata column doesn't contain:",
-                        toString(missing)
+                    stop(sprintf(
+                        "'%s' metadata column doesn't contain: %s.",
+                        deparse(col), toString(missing, width = 100L)
                     ))
                     ## nocov end
                 }
@@ -154,9 +153,15 @@ setMethod(
             sort() %>%
             unique()
 
-        message(paste(
-            length(sampleNames), "sample(s) matched:",
-            toString(sampleNames)
+        message(sprintf(
+            "%d %s matched: %s.",
+            length(sampleNames),
+            ngettext(
+                n = length(sampleNames),
+                msg1 = "sample",
+                msg2 = "samples"
+            ),
+            toString(sampleNames, width = 100L)
         ))
 
         ## Use the metrics `data.frame` to match the cellular barcodes
@@ -170,7 +175,15 @@ setMethod(
         cells <- metrics %>%
             filter(!!sym("sampleID") %in% !!samples) %>%
             pull("cellID")
-        message(paste(length(cells), "cells matched."))
+        message(sprintf(
+            "%d %s matched.",
+            length(cells),
+            ngettext(
+                n = length(cells),
+                msg1 = "cell",
+                msg2 = "cells"
+            )
+        ))
 
         object <- object[, cells, drop = FALSE]
         metadata(object)[["selectSamples"]] <- TRUE

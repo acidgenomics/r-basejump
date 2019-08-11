@@ -26,7 +26,6 @@ markdownList <- function(
         isFlag(ordered),
         isFlag(asis)
     )
-
     list <- vapply(
         X = seq_along(text),
         FUN = function(a) {
@@ -39,7 +38,6 @@ markdownList <- function(
         },
         FUN.VALUE = character(1L)
     )
-
     if (isTRUE(asis)) {
         writeLines(c("", list, ""))
     } else {

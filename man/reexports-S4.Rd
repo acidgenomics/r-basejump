@@ -71,6 +71,9 @@ flatFiles(object, ...)
 
 \item{...}{Additional arguments.}
 }
+\value{
+No return.
+}
 \description{
 These generics are imported from other packages.
 }

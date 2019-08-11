@@ -69,7 +69,7 @@ columns map to a single sample (e.g. cells for a single-cell RNA-seq
 experiment).
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-11.
 }
 \section{All supported S4 classes}{
 

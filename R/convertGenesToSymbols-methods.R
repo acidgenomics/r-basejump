@@ -82,7 +82,10 @@ NULL
 
         missing <- setdiff(object, gene2symbol[["geneID"]])
         if (length(missing) > 0L) {
-            warning(paste("Failed to match genes:", toString(missing)))
+            warning(sprintf(
+                "Failed to match genes: %s.",
+                toString(missing, width = 100L)
+            ))
             names(missing) <- missing
             out <- c(out, missing)
         }

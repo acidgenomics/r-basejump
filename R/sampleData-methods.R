@@ -7,7 +7,7 @@
 
 #' @name sampleData
 #' @inherit bioverbs::sampleData
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #'
 #' @section All supported S4 classes:
 #'
@@ -139,8 +139,8 @@ NULL
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
             stop(paste(
-                "sampleData() requires a `sampleName`",
-                "factor column in colData()."
+                "'sampleData()' requires a 'sampleName'",
+                "factor column in 'colData()'."
             ))
         }
 
@@ -330,7 +330,7 @@ setMethod(
             any(duplicated(data[["sampleID"]]))
         ) {
             stop(paste0(
-                "Failed to collapse `colData` to sample level.\n",
+                "Failed to collapse 'colData()' to sample level.\n",
                 "Check these columns: ",
                 toString(colnames(data), width = 200L)
             ))
