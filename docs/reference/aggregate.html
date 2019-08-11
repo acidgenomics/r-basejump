@@ -128,31 +128,31 @@
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>))
+  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
 
 <span class='co'># S4 method for sparseMatrix</span>
 <span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>))
+  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"aggregate"</span>,
-  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>))
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>))
+  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
 
 <span class='co'># S4 method for sparseMatrix</span>
 <span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>))
+  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"aggregate"</span>,
-  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>))
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>))</pre>
+  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,7 +202,7 @@ sample replicates.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-28.</p>
+    <p>Updated 2019-08-11.</p>
     
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
@@ -320,7 +320,7 @@ samples.</p></li>
 #&gt;   sample2_replicate2
 #&gt; colData names(2): sampleName aggregate</div><div class='input'>
 <span class='co'>## aggregateRows ====</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>counts</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+<span class='fu'>aggregateRows</span>(<span class='no'>counts</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
@@ -329,7 +329,7 @@ samples.</p></li>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
@@ -339,7 +339,7 @@ samples.</p></li>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
@@ -353,7 +353,7 @@ samples.</p></li>
 #&gt;   sample2_replicate2
 #&gt; colData names(2): sampleName aggregate</div><div class='input'>
 <span class='co'>## aggregateCols ====</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>counts</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+<span class='fu'>aggregateCols</span>(<span class='no'>counts</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
 #&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
@@ -361,7 +361,7 @@ samples.</p></li>
 #&gt; transcript1       1       2
 #&gt; transcript2       1       2
 #&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
 #&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
@@ -370,7 +370,7 @@ samples.</p></li>
 #&gt; transcript1       1       2
 #&gt; transcript2       1       2
 #&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span>
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
 #&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>

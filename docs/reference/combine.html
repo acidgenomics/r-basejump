@@ -178,7 +178,7 @@
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-05.</p>
+    <p>Updated 2019-08-11.</p>
 <p>We're attempting to make this as strict as possible, requiring:</p><ul>
 <li><p>Rows (genes) across objects must be identical.</p></li>
 <li><p><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a> and/or
@@ -262,8 +262,7 @@
 )
 
 <span class='co'>## Combine the two objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays:</span>
-#&gt; <span class='message'>[1] "counts"</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 24 rows and 3 columns
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays: counts.</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 24 rows and 3 columns
 #&gt;          condition sampleName interestingGroups
 #&gt;           &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample01         A   sample01                 A
@@ -306,8 +305,7 @@
 )
 
 <span class='co'>## Combine the two objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays:</span>
-#&gt; <span class='message'>[1] "counts"</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays: counts.</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1
@@ -315,7 +313,7 @@
 #&gt; dim: 500 200 
 #&gt; metadata(4): combine date sessionInfo wd
 #&gt; assays(1): counts
-#&gt; rownames(500): gene1 gene10 ... gene98 gene99
+#&gt; rownames(500): gene001 gene002 ... gene499 gene500
 #&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
 #&gt; colnames(200): cell0001 cell0002 ... cell0199 cell0200
 #&gt; colData names(1): sampleID
