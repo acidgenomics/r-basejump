@@ -157,12 +157,15 @@ NULL
             all(isIntegerish(minCellsPerFeature)),
             all(isNonNegative(minCellsPerFeature))
         )
-
+        ## Ensure we're performing sparse calculations.
+        if (is(counts(object), "Matrix")) {
+            colSums <- Matrix::colSums
+            rowSums <- Matrix::rowSums
+        }
         ## Calculate metrics, if necessary.
         if (!.hasMetrics(object)) {
             object <- calculateMetrics(object)
         }
-
         ## Using DataFrame with Rle instead of tibble for improved speed.
         metrics <- colData(object)
         sampleNames <- unname(sampleNames(object))
@@ -171,20 +174,9 @@ NULL
         ## Detect low quality cells --------------------------------------------
         ## Check that the requested column names for filtering match.
         assert(isSubset(
-            x = c(
-                countsCol,
-                featuresCol,
-                noveltyCol,
-                mitoRatioCol
-            ),
+            x = c(countsCol, featuresCol, noveltyCol, mitoRatioCol),
             y = colnames(metrics)
         ))
-
-        ## nolint start
-        ## Match the arguments to use for filtering.
-        ## > args <- matchArgsToDoCall(removeFormals = "object")
-        ## > args <- args[!grepl("cells", names(args), ignore.case = TRUE)]
-        ## nolint end
 
         ## Standardize cell-level filtering args.
         args <- list(
@@ -196,7 +188,6 @@ NULL
             maxMitoRatio = maxMitoRatio
         )
         assert(allAreMatchingRegex(x = names(args), pattern = "^(max|min)"))
-
         ## Loop across the arguments and expand to match the number of samples,
         ## so we can run parameterized checks via `mapply()`.
         args <- lapply(
@@ -320,9 +311,6 @@ NULL
         ## Important: remove the low quality cells prior to this calculation.
         if (minCellsPerFeature > 0L) {
             nonzero <- counts(object) > 0L
-            if (is(nonzero, "Matrix")) {
-                rowSums <- Matrix::rowSums
-            }
             features <- rowSums(nonzero) >= minCellsPerFeature
         } else {
             features <- rep(TRUE, times = nrow(object))
@@ -342,12 +330,22 @@ NULL
             is.logical(cells),
             is.logical(features)
         )
+
         nCells <- sum(cells, na.rm = TRUE)
         nFeatures <- sum(features, na.rm = TRUE)
         if (identical(c(nFeatures, nCells), originalDim)) {
             message("No filtering applied.")
             return(object)
         }
+
+        ## Check that there are no all zero rows or columns. Otherwise,
+        ## downstream conversion to Seurat can error.
+        nonzero <- counts(object) > 0L
+        assert(
+            isTRUE(all(rowSums(nonzero) > 0L)),
+            isTRUE(all(colSums(nonzero) > 0L))
+        )
+
         perSamplePass <- lapply(
             X = filter,
             FUN = function(x) {
@@ -368,6 +366,7 @@ NULL
         )
         totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
         storage.mode(totalPass) <- "integer"
+
         message(sprintf(
             fmt = paste0(
                 "Pre-filter:\n",
