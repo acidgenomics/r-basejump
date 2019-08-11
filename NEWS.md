@@ -1,4 +1,4 @@
-## basejump 0.11.5 (2019-08-08)
+## basejump 0.11.5 (2019-08-11)
 
 ### New functions
 
