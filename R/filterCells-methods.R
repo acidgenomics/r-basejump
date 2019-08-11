@@ -306,9 +306,6 @@ NULL
                 rowSums <- Matrix::rowSums
             }
             features <- rowSums(nonzero) >= minCellsPerFeature
-            if (!any(features)) {
-                stop("No features passed `minCellsPerFeature` cutoff.")
-            }
         } else {
             features <- rep(TRUE, times = nrow(object))
             names(features) <- rownames(object)
@@ -350,21 +347,33 @@ NULL
         totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
         storage.mode(totalPass) <- "integer"
 
+        nCells <- sum(cells, na.rm = TRUE)
+        nFeatures <- sum(features, na.rm = TRUE)
+
+        if (identical(c(nFeatures, nCells), dim(object))) {
+            message("No filtering applied.")
+            return(object)
+        }
+
+        if (!any(features)) {
+            stop("No features passed filtering.")
+        }
+
         message(sprintf(
             fmt = paste0(
                 "Pre-filter:\n",
                 "  - %d %s\n",
                 "  - %d %s"
             ),
-            originalDim[[2L]],
+            ncol(object),
             ngettext(
-                n = originalDim[[2L]],
+                n = ncol(object),
                 msg1 = "cell",
                 msg2 = "cells"
             ),
-            originalDim[[1L]],
+            nrow(object),
             ngettext(
-                n = originalDim[[1L]],
+                n = nrow(object),
                 msg1 = "feature",
                 msg2 = "features"
             )
@@ -375,20 +384,20 @@ NULL
                 "  - %d %s (%s)\n",
                 "  - %d %s (%s)"
             ),
-            dim(object)[[2L]],
+            nCells,
             ngettext(
-                n = dim(object)[[2L]],
+                n = nCells,
                 msg1 = "cell",
                 msg2 = "cells"
             ),
-            percent(dim(object)[[2L]] / originalDim[[2L]]),
-            dim(object)[[1L]],
+            percent(nCells / ncol(object)),
+            nFeatures,
             ngettext(
-                n = dim(object)[[1L]],
+                n = nFeatures,
                 msg1 = "feature",
                 msg2 = "features"
             ),
-            percent(dim(object)[[1L]] / originalDim[[1L]])
+            percent(nFeatures / nrow(object))
         ))
         message(sprintf(
             fmt = "Per argument:\n%s",
@@ -403,16 +412,6 @@ NULL
 
         if (!any(cells)) {
             stop("No cells passed filtering.")
-        } else if (!any(features)) {
-            stop("No features passed filtering.")
-        } else if (
-            identical(
-                x = c(length(features), length(cells)),
-                y = dim(object)
-            )
-        ) {
-            message("No filtering applied. Returning unmodified.")
-            return(object)
         }
 
         ## Update object -------------------------------------------------------
@@ -442,9 +441,7 @@ NULL
         )
         metadata <- Filter(f = Negate(is.null), x = metadata)
         metadata(object)[["filterCells"]] <- metadata
-        if (!identical(dim(object), originalDim)) {
-            metadata(object)[["subset"]] <- TRUE
-        }
+        metadata(object)[["subset"]] <- TRUE
 
         object
     }
