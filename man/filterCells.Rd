@@ -10,9 +10,9 @@ filterCells(object, ...)
 
 \S4method{filterCells}{SingleCellExperiment}(object, minCounts = 1L,
   maxCounts = Inf, minFeatures = 1L, maxFeatures = Inf,
-  minNovelty = 0L, maxMitoRatio = 1L, countsCol = "nCount",
-  featuresCol = "nFeature", noveltyCol = "log10FeaturesPerCount",
-  mitoRatioCol = "mitoRatio", minCellsPerFeature = 1L, nCells = Inf)
+  minNovelty = 0L, maxMitoRatio = 1L, minCellsPerFeature = 1L,
+  nCells = Inf, countsCol = "nCount", featuresCol = "nFeature",
+  noveltyCol = "log10FeaturesPerCount", mitoRatioCol = "mitoRatio")
 }
 \arguments{
 \item{object}{Object.}
@@ -45,12 +45,13 @@ Previously named \code{minCellsPerGene} in bcbioSingleCell.}
 Expected number of cells per sample.
 Don't set this by default, unless you're confident of your capture.}
 
+\item{countsCol, featuresCol, noveltyCol, mitoRatioCol}{\code{character(1)}.
+Column mapping name.}
+
 \item{...}{Additional arguments.}
 }
 \value{
 \code{SingleCellExperiment}.
-Filtering information gets slotted into \code{\link[S4Vectors:metadata]{metadata()}}
-as \code{filterCells} metadata.
 }
 \description{
 Filter cells
@@ -62,9 +63,12 @@ applying the same filtering cutoff to all samples. The filtering parameters
 now support per-sample cutoffs, defined using a named \code{numeric} vector. When
 matching per sample, be sure to use the \code{\link[=sampleNames]{sampleNames()}} return values (i.e.
 the \code{sampleName} column in \code{\link[=sampleData]{sampleData()}}).
+
+Filtering information gets slotted into \code{\link[S4Vectors:metadata]{metadata()}}
+as \code{filterCells} metadata.
 }
 \note{
-Updated 2019-08-09.
+Updated 2019-08-11.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
@@ -81,7 +85,4 @@ x <- filterCells(
     minCounts = c(sample1 = 100L)
 )
 show(x)
-}
-\author{
-Michael Steinbaugh
 }

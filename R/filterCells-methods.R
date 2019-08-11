@@ -1,7 +1,6 @@
 #' @name filterCells
-#' @author Michael Steinbaugh
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-08-09.
+#' @note Updated 2019-08-11.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -10,6 +9,9 @@
 #' now support per-sample cutoffs, defined using a named `numeric` vector. When
 #' matching per sample, be sure to use the [sampleNames()] return values (i.e.
 #' the `sampleName` column in [sampleData()]).
+#'
+#' Filtering information gets slotted into [`metadata()`][S4Vectors::metadata]
+#' as `filterCells` metadata.
 #'
 #' @inheritParams acidroxygen::params
 #' @param nCells `integer(1)`.
@@ -34,11 +36,11 @@
 #' @param minCellsPerFeature `integer(1)`.
 #'   Include genes with non-zero expression in at least this many cells.
 #'   Previously named `minCellsPerGene` in bcbioSingleCell.
+#' @param countsCol,featuresCol,noveltyCol,mitoRatioCol `character(1)`.
+#'   Column mapping name.
 #' @param ... Additional arguments.
 #'
 #' @return `SingleCellExperiment`.
-#' Filtering information gets slotted into [`metadata()`][S4Vectors::metadata]
-#' as `filterCells` metadata.
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
@@ -69,24 +71,15 @@ NULL
 
 
 ## Consider moving this to goalie.
-## Updated 2019-08-08.
-.isFiltered <- function(object) {
-    ok <- !is.null(metadata(object)[["filterCells"]])
+## Updated 2019-08-11.
+.isFiltered <- function(object, metadata = c("filterCells", "subset")) {
+    assert(
+        is(object, "SummarizedExperiment"),
+        isCharacter(metadata)
+    )
+    ok <- isSubset(metadata, names(metadata(object)))
     if (isTRUE(ok)) return(TRUE)
-
-    ## nolint start
-    ## > ok <- !is.null(metadata(object)[["subset"]])
-    ## > if (isTRUE(ok)) return(TRUE)
-    ## nolint end
-
     FALSE
-}
-
-
-
-## Updated 2019-08-09.
-.paddedCount <- function(x, width = 9L) {
-    str_pad(x, width = width, pad = " ")
 }
 
 
@@ -118,15 +111,15 @@ NULL
         maxFeatures = Inf,
         minNovelty = 0L,
         maxMitoRatio = 1L,
+        ## Feature-level metrics.
+        minCellsPerFeature = 1L,
+        ## Manually subset top cells by sequencing depth.
+        nCells = Inf,
         ## Column mappings.
         countsCol = "nCount",
         featuresCol = "nFeature",
         noveltyCol = "log10FeaturesPerCount",
-        mitoRatioCol = "mitoRatio",
-        ## Feature-level metrics.
-        minCellsPerFeature = 1L,
-        ## Manually subset top cells by sequencing depth.
-        nCells = Inf
+        mitoRatioCol = "mitoRatio"
     ) {
         validObject(object)
         assert(
@@ -151,16 +144,13 @@ NULL
             all(isInLeftOpenRange(maxMitoRatio, lower = 0L, upper = 1L)),
             ## minCellsPerFeature
             all(isIntegerish(minCellsPerFeature)),
-            all(isPositive(minCellsPerFeature))
+            all(isNonNegative(minCellsPerFeature))
         )
 
         ## Calculate metrics, if necessary.
         if (!.hasMetrics(object)) {
             object <- calculateMetrics(object)
         }
-
-        ## Using this for summary statistics prior to return.
-        originalDim <- dim(object)
 
         ## Using DataFrame with Rle instead of tibble for improved speed.
         metrics <- colData(object)
@@ -411,12 +401,18 @@ NULL
             ))
         }
 
-        ## Error on filtering failure.
         if (!any(cells)) {
             stop("No cells passed filtering.")
-        }
-        if (!any(features)) {
+        } else if (!any(features)) {
             stop("No features passed filtering.")
+        } else if (
+            identical(
+                x = c(length(features), length(cells)),
+                y = dim(object)
+            )
+        ) {
+            message("No filtering applied. Returning unmodified.")
+            return(object)
         }
 
         ## Update object -------------------------------------------------------
