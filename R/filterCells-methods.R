@@ -71,20 +71,6 @@ NULL
 
 
 ## Consider moving this to goalie.
-## Updated 2019-08-11.
-.isFiltered <- function(object, metadata = c("filterCells", "subset")) {
-    assert(
-        is(object, "SummarizedExperiment"),
-        isCharacter(metadata)
-    )
-    ok <- isSubset(metadata, names(metadata(object)))
-    if (isTRUE(ok)) return(TRUE)
-    FALSE
-}
-
-
-
-## Consider moving this to goalie.
 ## Updated 2019-08-08.
 .hasMetrics <- function(object) {
     assert(is(object, "SummarizedExperiment"))
@@ -97,6 +83,30 @@ NULL
     }
     TRUE
 }
+
+
+
+## Consider moving this to goalie.
+## Updated 2019-08-11.
+.isNonFiltered <-
+    function(
+        x,
+        metadata = c("filterCells", "subset"),
+        .xname = getNameInParent(x)
+    ) {
+        assert(
+            is(x, "SummarizedExperiment"),
+            isCharacter(metadata)
+        )
+        ok <- isSubset(metadata, names(metadata(x)))
+        if (isTRUE(ok)) {
+            return(false(
+                "'%s' contains filter metadata: %s",
+                .xname, toString(metadata)
+            ))
+        }
+        TRUE
+    }
 
 
 
@@ -123,6 +133,7 @@ NULL
     ) {
         validObject(object)
         assert(
+            .isNonFiltered(object),
             ## nCells
             all(isIntegerish(nCells)),
             all(isPositive(nCells)),
@@ -155,6 +166,7 @@ NULL
         ## Using DataFrame with Rle instead of tibble for improved speed.
         metrics <- colData(object)
         sampleNames <- unname(sampleNames(object))
+        originalDim <- dim(object)
 
         ## Detect low quality cells --------------------------------------------
         ## Check that the requested column names for filtering match.
@@ -276,10 +288,8 @@ NULL
         cells <- apply(X = lgl, MARGIN = 1L, FUN = function(x) { all(x) })
         assert(identical(names(cells), colnames(object)))
 
-        ## Keep top expected number of cells -----------------------------------
-        ## Expected nCells per sample (filtered by top nUMI).
+        ## Keep top expected number of cells per sample.
         if (nCells < Inf) {
-            ## Resize the metrics to analyze only passing cells.
             metrics <- metrics[cells, , drop = FALSE]
             split <- split(x = metrics, f = metrics[["sampleID"]])
             topCellsPerSample <- lapply(
@@ -292,14 +302,22 @@ NULL
             )
             topCells <- unlist(unname(topCellsPerSample))
             metrics <- metrics[names(topCells), , drop = FALSE]
-            ## Update the cells logical vector.
             cells <- names(cells) %in% names(topCells)
             names(cells) <- colnames(object)
         } else {
             topCellsPerSample <- NULL
         }
 
+        ## Remove the low quality cells.
+        if (!any(cells)) {
+            stop("No cells passed filtering.")
+        } else if (sum(cells, na.rm = TRUE) < ncol(object)) {
+            assert(identical(names(cells), colnames(object)))
+            object <- object[, cells, drop = FALSE]
+        }
+
         ## Detect low quality features (i.e. genes) ----------------------------
+        ## Important: remove the low quality cells prior to this calculation.
         if (minCellsPerFeature > 0L) {
             nonzero <- counts(object) > 0L
             if (is(nonzero, "Matrix")) {
@@ -311,19 +329,25 @@ NULL
             names(features) <- rownames(object)
         }
 
+        ## Remove the low quality features.
+        if (!any(features)) {
+            stop("No features passed filtering.")
+        } else if (sum(features, na.rm = TRUE) < nrow(object)) {
+            assert(identical(names(features), rownames(object)))
+            object <- object[features, , drop = FALSE]
+        }
+
         ## Summary statistics --------------------------------------------------
         assert(
             is.logical(cells),
-            is.logical(features),
-            identical(
-                x = list(
-                    names(features),
-                    names(cells)
-                ),
-                y = dimnames(object)
-            )
+            is.logical(features)
         )
-
+        nCells <- sum(cells, na.rm = TRUE)
+        nFeatures <- sum(features, na.rm = TRUE)
+        if (identical(c(nFeatures, nCells), originalDim)) {
+            message("No filtering applied.")
+            return(object)
+        }
         perSamplePass <- lapply(
             X = filter,
             FUN = function(x) {
@@ -340,40 +364,25 @@ NULL
                 x <- as.integer(x)
                 names(x) <- names
                 x
-
             }
         )
-
         totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
         storage.mode(totalPass) <- "integer"
-
-        nCells <- sum(cells, na.rm = TRUE)
-        nFeatures <- sum(features, na.rm = TRUE)
-
-        if (identical(c(nFeatures, nCells), dim(object))) {
-            message("No filtering applied.")
-            return(object)
-        }
-
-        if (!any(features)) {
-            stop("No features passed filtering.")
-        }
-
         message(sprintf(
             fmt = paste0(
                 "Pre-filter:\n",
                 "  - %d %s\n",
                 "  - %d %s"
             ),
-            ncol(object),
+            originalDim[[2L]],
             ngettext(
-                n = ncol(object),
+                n = originalDim[[2L]],
                 msg1 = "cell",
                 msg2 = "cells"
             ),
-            nrow(object),
+            originalDim[[1L]],
             ngettext(
-                n = nrow(object),
+                n = originalDim[[1L]],
                 msg1 = "feature",
                 msg2 = "features"
             )
@@ -390,14 +399,14 @@ NULL
                 msg1 = "cell",
                 msg2 = "cells"
             ),
-            percent(nCells / ncol(object)),
+            percent(nCells / originalDim[[2L]]),
             nFeatures,
             ngettext(
                 n = nFeatures,
                 msg1 = "feature",
                 msg2 = "features"
             ),
-            percent(nFeatures / nrow(object))
+            percent(nFeatures / originalDim[[1L]])
         ))
         message(sprintf(
             fmt = "Per argument:\n%s",
@@ -410,23 +419,7 @@ NULL
             ))
         }
 
-        if (!any(cells)) {
-            stop("No cells passed filtering.")
-        }
-
         ## Update object -------------------------------------------------------
-        ## Remove low quality cells.
-        if (sum(cells, na.rm = TRUE) < ncol(object)) {
-            assert(identical(names(cells), colnames(object)))
-            object <- object[, cells, drop = FALSE]
-        }
-        ## Remove low quality features.
-        if (sum(features, na.rm = TRUE) < nrow(object)) {
-            assert(identical(names(features), rownames(object)))
-            object <- object[features, , drop = FALSE]
-        }
-
-        ## Stash useful metadata.
         metadata <- SimpleList(
             cells = cells,
             features = features,
@@ -442,7 +435,6 @@ NULL
         metadata <- Filter(f = Negate(is.null), x = metadata)
         metadata(object)[["filterCells"]] <- metadata
         metadata(object)[["subset"]] <- TRUE
-
         object
     }
 
