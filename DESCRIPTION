@@ -158,6 +158,7 @@ Collate:
     'organism-methods.R'
     'package.R'
     'prepareTemplate.R'
+    'pseudobulk-methods.R'
     'rankedMatrix.R'
     'reexports-bioverbs.R'
     'reexports-brio.R'
