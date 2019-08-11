@@ -1,6 +1,6 @@
 #' @name combine
 #' @inherit BiocGenerics::combine
-#' @note Updated 2019-08-05.
+#' @note Updated 2019-08-11.
 #'
 #' @param ... Additional arguments.
 #'
@@ -117,15 +117,14 @@ NULL
         } else {
             Class <- "SummarizedExperiment"  # nolint
         }
-        message(paste0("Combining objects into ", Class, "."))
+        message(sprintf("Combining objects into %s.", Class))
         x <- as(object = x, Class = Class)
         y <- as(object = y, Class = Class)
 
         ## Assays --------------------------------------------------------------
-        message(paste(
-            "Binding columns in assays:",
-            printString(assayNames(x)),
-            sep = "\n"
+        message(sprintf(
+            "Binding columns in assays: %s.",
+            toString(assayNames(x))
         ))
         assays <- mapply(
             x = assays(x),
@@ -165,10 +164,15 @@ NULL
         intersect <- intersect(names(cdx), names(cdy))
         if (!isTRUE(identical(union, intersect))) {
             setdiff <- setdiff(union, intersect)
-            message(paste0(
-                "Fixing ", length(setdiff),
-                " mismatched columns detected in colData:\n",
-                printString(setdiff)
+            message(sprintf(
+                "Fixing %d mismatched %s in 'colData()': %s.",
+                length(setdiff),
+                ngettext(
+                    n = length(setdiff),
+                    msg1 = "column",
+                    msg2 = "columns"
+                ),
+                toString(setdiff, width = 100L)
             ))
             diffx <- setdiff(setdiff, names(cdx))
             for (col in diffx) {
@@ -203,10 +207,15 @@ NULL
         keep <- intersect(names(mx), names(my))
         if (!isTRUE(setequal(x = names(mx), y = names(my)))) {
             drop <- setdiff(x = union(names(mx), names(my)), y = keep)
-            message(paste0(
-                "Dropping ", length(drop),
-                " disjoint metadata elements:\n",
-                printString(drop)
+            message(sprintf(
+                "Dropping %d disjoint metadata %s: %s.",
+                length(drop),
+                ngettext(
+                    n = length(drop),
+                    msg1 = "element",
+                    msg2 = "elements"
+                ),
+                toString(drop, width = 100L)
             ))
         }
         mx <- mx[keep]
@@ -222,10 +231,15 @@ NULL
         )
         drop <- names(keep)[!keep]
         if (hasLength(drop)) {
-            message(paste0(
-                "Dropping ", length(drop),
-                " non-identical metadata elements:\n",
-                printString(drop)
+            message(sprintf(
+                "Dropping %d non-identical metadata %s: %s.",
+                length(drop),
+                ngettext(
+                    n = length(drop),
+                    msg1 = "element",
+                    msg2 = "elements"
+                ),
+                toString(drop, width = 100L)
             ))
         }
         assert(identical(x = mx[keep], y = my[keep]))

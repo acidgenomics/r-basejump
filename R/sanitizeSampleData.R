@@ -7,7 +7,7 @@
 #' - interestingGroups.
 #' - sampleID.
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -38,7 +38,6 @@ sanitizeSampleData <- function(object) {
     } else {
         legacy <- FALSE
     }
-
     assert(
         is(object, "DataFrame"),
         ## Require `sampleName` column.
@@ -47,7 +46,6 @@ sanitizeSampleData <- function(object) {
         hasNoDuplicates(object[["sampleName"]]),
         hasRownames(object)
     )
-
     ## Drop blacklisted columns.
     blacklist <- c("interestingGroups", "sampleID")
     object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
@@ -59,12 +57,10 @@ sanitizeSampleData <- function(object) {
         is(object, "DataFrame"),
         hasRownames(object)
     )
-
     ## Remove this step in a future update.
     if (isTRUE(legacy)) {
         object <- as(object, class)
     }
-
     ## Return.
     object
 }

@@ -1,6 +1,6 @@
 #' Match human gene orthologs
 #'
-#' @note Updated 2019-08-05.
+#' @note Updated 2019-08-11.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -32,14 +32,6 @@ matchHumanOrthologs <- function(
         isInt(ensemblRelease, nullOK = TRUE)
     )
 
-    ## Consider warning here instead of informing.
-    if (length(genes) > 500L) {
-        message(paste0(
-            "The BioMart API may time out for large requests ",
-            "(", length(genes), " genes)."
-        ))
-    }
-
     if (is.null(organism)) {
         organism <- detectOrganism(genes)
     }
@@ -62,9 +54,9 @@ matchHumanOrthologs <- function(
     version <- marts[["version"]][
         match("ENSEMBL_MART_ENSEMBL", marts[["biomart"]])
     ]
-    message(paste0(
-        "Matching orthologs against ", version, " (", host, ")",
-        " with biomaRt ", packageVersion("biomaRt"), "."
+    message(sprintf(
+        "Matching orthologs against %s (%s) with biomart %s.",
+        version, host, packageVersion("biomaRt")
     ))
 
     ## e.g. "mmusculus_gene_ensembl"

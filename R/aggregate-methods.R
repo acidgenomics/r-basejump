@@ -10,7 +10,7 @@
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -137,7 +137,8 @@ NULL
 
 
 
-.aggregateFuns <- c("sum", "mean")
+## Updated 2019-08-11.
+.aggregateFuns <- c("sum", "mean", "geometricMean", "median")
 
 ## Don't message when aggregating a large factor.
 .aggregateMessage <- function(groupings, fun) {
@@ -145,7 +146,7 @@ NULL
         is.factor(groupings),
         isString(fun)
     )
-    msg <- paste0("Aggregating counts using ", fun, "().")
+    msg <- sprintf("Aggregating counts using '%s()'.", fun)
     if (length(groupings) <= 20L) {
         msg <- paste(
             msg,
@@ -357,8 +358,8 @@ setMethod(
             isSubset(col, colnames(colData(object))),
             isSubset(col, colnames(sampleData(object)))
         )) {
-            stop(paste(
-                deparse(col), "column not defined in colData()."
+            stop(sprintf(
+                "'%s' column not defined in 'colData()'.", deparse(col)
             ))
         }
         groupings <- colData(object)[[col]]
@@ -421,9 +422,9 @@ setMethod(
             is.factor(colData[["aggregate"]])
         )
 
-        message(paste(
-            "Remapping cells to aggregate samples:",
-            toString(sort(levels(colData[["aggregate"]])))
+        message(sprintf(
+            "Remapping cells to aggregate samples: %s",
+            toString(sort(levels(colData[["aggregate"]])), width = 100L)
         ))
 
         map <- colData(object)

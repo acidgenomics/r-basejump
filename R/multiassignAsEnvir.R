@@ -31,7 +31,6 @@ multiassignAsEnvir <- function(
         isString(envirName),
         is.environment(parentFrame)
     )
-
     envir <- new.env(parent = parentFrame)
     invisible(lapply(
         X = seq_along(dots),
@@ -43,9 +42,10 @@ multiassignAsEnvir <- function(
             )
         }
     ))
-
-    message(paste0("Assigning ", toString(names), " as ", envirName, "."))
+    message(sprintf(
+        "Assigning %s as %s.",
+        toString(names, width = 100L), envirName
+    ))
     assign(envirName, value = envir, envir = parentFrame)
-
     invisible(objects(envir))
 }

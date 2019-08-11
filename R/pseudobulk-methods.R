@@ -1,38 +1,33 @@
-#' @name aggregateCellsToSamples
-#' @inherit bioverbs::aggregateCellsToSamples
-#' @note Updated 2019-07-28.
+#' @name pseudobulk
+#' @inherit bioverbs::pseudobulk
+#' @note Updated 2019-08-11.
 #'
 #' @inheritParams aggregate
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
-#'
-#' @details
-#' Internally [aggregateCellsToSamples()] automatically obtains the
-#' cell-to-sample groupings and then performs aggregation with the
-#' [aggregateCols()] function.
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
-#' x <- aggregateCellsToSamples(object)
+#' x <- pseudobulk(object)
 #' print(x)
 NULL
 
 
 
-#' @rdname aggregateCellsToSamples
-#' @name aggregateCellsToSamples
-#' @importFrom bioverbs aggregateCellsToSamples
-#' @usage aggregateCellsToSamples(object, ...)
+#' @rdname pseudobulk
+#' @name pseudobulk
+#' @importFrom bioverbs pseudobulk
+#' @usage pseudobulk(object, ...)
 #' @export
 NULL
 
 
 
 ## Updated 2019-07-22.
-`aggregateCellsToSamples,SingleCellExperiment` <-  # nolint
+`pseudobulk,SingleCellExperiment` <-  # nolint
     function(object, fun) {
         validObject(object)
         fun <- match.arg(fun)
@@ -47,15 +42,15 @@ NULL
         aggregateCols(object = rse, col = "aggregate", fun = fun)
     }
 
-formals(`aggregateCellsToSamples,SingleCellExperiment`)[["fun"]] <-
-    .aggregateFuns
+formals(`pseudobulk,SingleCellExperiment`)[["fun"]] <-
+    setdiff(.aggregateFuns, "sum")
 
 
 
-#' @rdname aggregateCellsToSamples
+#' @rdname pseudobulk
 #' @export
 setMethod(
-    f = "aggregateCellsToSamples",
+    f = "pseudobulk",
     signature = signature("SingleCellExperiment"),
-    definition = `aggregateCellsToSamples,SingleCellExperiment`
+    definition = `pseudobulk,SingleCellExperiment`
 )

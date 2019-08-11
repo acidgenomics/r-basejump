@@ -37,6 +37,8 @@
 #'
 #' @keywords internal
 #'
+#' @return No return.
+#'
 #' @examples
 #' showMethods("camelCase")
 NULL

@@ -37,12 +37,8 @@ Updated 2019-07-28.
 }
 \examples{
 ## RNA-seq template.
-\dontrun{
 ## > prepareTemplate(package = "bcbioRNASeq")
-}
 
 ## Single-cell RNA-seq template.
-\dontrun{
 ## > prepareTemplate(package = "bcbioSingleCell")
-}
 }
