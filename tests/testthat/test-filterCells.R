@@ -2,100 +2,184 @@ context("filterCells")
 
 object <- sce
 
-test_that("No filtering", {
-    ## Expecting an object with the same dimensions by default.
-    invisible(capture.output(
-        x <- filterCells(object)
-    ))
-    expect_s4_class(x, "bcbioSingleCell")
+test_that("No filtering applied", {
+    x <- filterCells(object, minCellsPerFeature = 0L)
+    expect_s4_class(x, "SingleCellExperiment")
     expect_identical(dim(x), dim(object))
+    expect_null(metadata(x)[["filterCells"]])
 })
 
-test_that("Expected cutoff failure", {
+test_that("No cells pass", {
     expect_error(
         filterCells(object, minCounts = Inf),
-        "No cells passed `minCounts` cutoff"
+        "No cells passed filtering."
+    )
+    expect_error(
+        filterCells(object, maxCounts = 1L),
+        "No cells passed filtering."
+    )
+    expect_error(
+        filterCells(object, minFeatures = Inf),
+        "No cells passed filtering."
+    )
+    expect_error(
+        filterCells(object, maxFeatures = 1L),
+        "No cells passed filtering."
+    )
+    expect_error(
+        filterCells(object, minNovelty = 1L),
+        "No cells passed filtering."
+    )
+    ## Skipping `mitoRatio` check here because it's not in the example object.
+})
+
+test_that("No features pass", {
+    expect_error(
+        filterCells(object, minCellsPerFeature = Inf),
+        "No features passed filtering."
     )
 })
 
+test_that("Already filtered", {
+    x <- filterCells(object)
+    expect_error(
+        object = filterCells(x),
+        regexp = "filter metadata"
+    )
+})
+
+## Note that this matches per sample.
+test_that("Top cells only", {
+    x <- filterCells(object, nCells = 2L)
+    expect_identical(ncol(x), 4L)
+})
+
+## Refer to the quality control R Markdown for actual recommended cutoffs.
+## These are skewed, and designed to work with our minimal dataset.
 with_parameters_test_that(
-    "Parameterized cutoff tests", {
+    "Cell filtering", {
         args[["object"]] <- object
-        invisible(capture.output(
-            x <- do.call(what = filterCells, args = args)
-        ))
-        expect_s4_class(x, "bcbioSingleCell")
-        expect_is(metadata(x)[["filterParams"]], "list")
-        expect_is(metadata(x)[["filterCells"]], "character")
-        expect_is(metadata(x)[["filterGenes"]], "character")
-        expect_identical(metadata(x)[["subset"]], TRUE)
+        x <- do.call(what = filterCells, args = args)
+        expect_s4_class(x, "SingleCellExperiment")
         expect_identical(dim(x), dim)
     },
-    ## Refer to the quality control R Markdown for actual recommended cutoffs.
-    ## These are skewed, and designed to work with our minimal dataset.
     args = list(
-        list(minCounts = 2000L),
-        list(maxCounts = 2500L),
-        list(minGenes = 45L),
-        list(maxGenes = 49L),
-        list(maxMitoRatio = 0.1),
-        list(minNovelty = 0.5),
-        list(minCellsPerGene = 95L)
+        list(minCounts = 50000L),
+        list(maxCounts = 50000L),
+        list(minFeatures = 250L),
+        list(maxFeatures = 250L),
+        list(minNovelty = 0.5)
     ),
     dim = list(
-        c(50L, 35L),
-        c(50L, 88L),
-        c(50L, 95L),
-        c(50L, 81L),
-        c(50L, 22L),
-        c(50L, 81L),
-        c(45L, 100L)
+        c(475L, 58L),
+        c(463L, 42L),
+        c(474L, 36L),
+        c(467L, 69L),
+        c(477L, 76L)
     )
 )
 
-test_that("Per sample cutoffs", {
-    ## Get the count of sample1 (run1_AGAGGATA).
-    ## We're applying no filtering to that sample.
-    sampleNames <- sampleNames(object)
-    expect_identical(
-        sampleNames,
-        c(multiplexed_AAAAAAAA = "rep_1")
-    )
-    invisible(capture.output(
-        object <- filterCells(
-            object = object,
-            minCounts = c(rep_1 = 1L),
-            maxCounts = c(rep_1 = Inf),
-            minGenes = c(rep_1 = 1L),
-            maxGenes = c(rep_1 = Inf),
-            maxMitoRatio = c(rep_1 = 1L),
-            minNovelty = c(rep_1 = 0L)
-        )
-    ))
-    expect_identical(
-        object = metadata(object)[["filterParams"]],
-        expected = list(
-            nCells = Inf,
-            minCounts = c(rep_1 = 1L),
-            maxCounts = c(rep_1 = Inf),
-            minGenes = c(rep_1 = 1L),
-            maxGenes = c(rep_1 = Inf),
-            minNovelty = c(rep_1 = 0L),
-            maxMitoRatio = c(rep_1 = 1L),
-            minCellsPerGene = 1L
-        )
-    )
+test_that("Feature filtering", {
+    x <- filterCells(object, minCellsPerFeature = 50L)
+    expect_identical(dim(x), c(252L, 100L))
 })
 
-## Coverage to add:
-## - .isFiltered on filtered object
-## - filterCells with minCounts argument
-## - extract method with filterCells applied
-## - No cells passing maxCounts cutoff
-## - No cells passing minGenes cutoff
-## - No cells passing maxGenes cutoff
-## - No cells passing minNovelty cutoff
-## - No cells passing maxMitoRatio
-## - nCells argument set, less than Inf
-## - No cells pass nCells argument
-## - No cells passed minCellsPerGene
+test_that("Per sample filtering", {
+    expect_identical(
+        object = sampleNames(object),
+        expected = c(
+            sample1 = "sample1",
+            sample2 = "sample2"
+        )
+    )
+
+    ## minCounts
+    x <- filterCells(
+        object = object,
+        minCounts = c(
+            sample1 = 50000L,
+            sample2 = 25000L
+        )
+    )
+    m <- metadata(x)[["filterCells"]][["perSamplePass"]]
+    expect_identical(
+        object = c(
+            m[["sample1"]][["minCounts"]],
+            m[["sample2"]][["minCounts"]]
+        ),
+        expected = c(51L, 28L)
+    )
+    expect_identical(dim(x), c(477L, 79L))
+
+    ## maxCounts
+    x <- filterCells(
+        object = object,
+        maxCounts = c(
+            sample1 = 50000L,
+            sample2 = 25000L
+        )
+    )
+    m <- metadata(x)[["filterCells"]][["perSamplePass"]]
+    expect_identical(
+        object = c(
+            m[["sample1"]][["maxCounts"]],
+            m[["sample2"]][["maxCounts"]]
+        ),
+        expected = c(13L, 8L)
+    )
+    expect_identical(dim(x), c(445L, 21L))
+
+    ## minFeatures
+    x <- filterCells(
+        object = object,
+        minFeatures = c(
+            sample1 = 300L,
+            sample2 = 250L
+        )
+    )
+    m <- metadata(x)[["filterCells"]][["perSamplePass"]]
+    expect_identical(
+        object = c(
+            m[["sample1"]][["minFeatures"]],
+            m[["sample2"]][["minFeatures"]]
+        ),
+        expected = c(9L, 7L)
+    )
+    expect_identical(dim(x), c(456L, 16L))
+
+    ## maxFeatures
+    x <- filterCells(
+        object = object,
+        maxFeatures = c(
+            sample1 = 300L,
+            sample2 = 250L
+        )
+    )
+    m <- metadata(x)[["filterCells"]][["perSamplePass"]]
+    expect_identical(
+        object = c(
+            m[["sample1"]][["maxFeatures"]],
+            m[["sample2"]][["maxFeatures"]]
+        ),
+        expected = c(55L, 30L)
+    )
+    expect_identical(dim(x), c(474L, 85L))
+
+    ## minNovelty
+    x <- filterCells(
+        object = object,
+        minNovelty = c(
+            sample1 = 0.5,
+            sample2 = 0.6
+        )
+    )
+    m <- metadata(x)[["filterCells"]][["perSamplePass"]]
+    expect_identical(
+        object = c(
+            m[["sample1"]][["minNovelty"]],
+            m[["sample2"]][["minNovelty"]]
+        ),
+        expected = c(22L, 15L)
+    )
+    expect_identical(dim(x), c(468L, 37L))
+})
