@@ -157,11 +157,6 @@ NULL
             all(isIntegerish(minCellsPerFeature)),
             all(isNonNegative(minCellsPerFeature))
         )
-        ## Ensure we're performing sparse calculations.
-        if (is(counts(object), "Matrix")) {
-            colSums <- Matrix::colSums
-            rowSums <- Matrix::rowSums
-        }
         ## Calculate metrics, if necessary.
         if (!.hasMetrics(object)) {
             object <- calculateMetrics(object)
@@ -311,6 +306,10 @@ NULL
         ## Important: remove the low quality cells prior to this calculation.
         if (minCellsPerFeature > 0L) {
             nonzero <- counts(object) > 0L
+            ## Ensure we're performing sparse calculations.
+            if (is(nonzero, "Matrix")) {
+                rowSums <- Matrix::rowSums
+            }
             features <- rowSums(nonzero) >= minCellsPerFeature
         } else {
             features <- rep(TRUE, times = nrow(object))
@@ -338,13 +337,9 @@ NULL
             return(object)
         }
 
-        ## Check that there are no all zero rows or columns. Otherwise,
-        ## downstream conversion to Seurat can error.
-        nonzero <- counts(object) > 0L
-        assert(
-            isTRUE(all(rowSums(nonzero) > 0L)),
-            isTRUE(all(colSums(nonzero) > 0L))
-        )
+        ## Ensure that there are no all zero rows or columns.
+        ## Otherwise, downstream conversion to Seurat can error.
+        assert(hasNonZeroRowsAndCols(counts(object)))
 
         perSamplePass <- lapply(
             X = filter,
@@ -364,6 +359,7 @@ NULL
                 x
             }
         )
+
         totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
         storage.mode(totalPass) <- "integer"
 
