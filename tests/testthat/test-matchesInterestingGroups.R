@@ -16,6 +16,6 @@ test_that("Match failure", {
     expect_s3_class(ok, "goalie")
     expect_identical(
         cause(ok),
-        noquote("Interesting groups are not defined in sampleData().")
+        noquote("Interesting groups are not defined in 'sampleData()'.")
     )
 })
