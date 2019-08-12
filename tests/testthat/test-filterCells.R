@@ -1,6 +1,7 @@
 context("filterCells")
 
 object <- sce
+object <- calculateMetrics(object)
 
 test_that("No filtering applied", {
     x <- filterCells(object, minCellsPerFeature = 0L)
@@ -40,12 +41,12 @@ test_that("No features pass", {
     )
 })
 
-test_that("Already filtered", {
+## May tighten this up and restrict in the future, but currently this approach
+## is in use by the bcbioSingleCell QC template.
+test_that("Double filtering is allowed", {
     x <- filterCells(object)
-    expect_error(
-        object = filterCells(x),
-        regexp = "filterCells"
-    )
+    x <- filterCells(x)
+    expect_s4_class(x, "SingleCellExperiment")
 })
 
 ## Note that this matches per sample.
@@ -182,4 +183,22 @@ test_that("Per sample filtering", {
         expected = c(22L, 15L)
     )
     expect_identical(dim(x), c(468L, 37L))
+
+    ## nCells
+    x <- filterCells(
+        object = object,
+        nCells = c(
+            sample1 = 2L,
+            sample2 = 4L
+        )
+    )
+    expect_identical(ncol(x), 6L)
+    m <- metadata(x)[["filterCells"]][["topCellsPerSample"]]
+    expect_identical(
+        lapply(m, length),
+        list(
+            sample1 = 2L,
+            sample2 = 4L
+        )
+    )
 })
