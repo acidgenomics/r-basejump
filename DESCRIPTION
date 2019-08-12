@@ -101,6 +101,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 Collate: 
+    'globals.R'
     'AllClasses.R'
     'AllGenerics.R'
     'AllGenerators.R'
@@ -118,7 +119,6 @@ Collate:
     'counts-methods.R'
     'deprecated.R'
     'detectHPC.R'
-    'globals.R'
     'detectLanes.R'
     'estimateSizeFactors-methods.R'
     'filterCells-methods.R'
