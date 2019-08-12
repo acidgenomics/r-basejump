@@ -1,8 +1,20 @@
+#' All global variables
+#' @noRd
+NULL
+
+
+
 globalVariables(".")
 
-
-
 .version <- packageVersion("basejump")
+
+## Including these here for backward compatibility with R 3.5.
+if (packageVersion("base") < "3.6") {
+    appendToBody <- goalie::appendToBody
+    methodFormals <- goalie::methodFormals
+}
+
+
 
 #' basejump test data URL
 #' @keywords internal
@@ -131,4 +143,4 @@ metadataBlacklist <- sort(c(
 #' @export
 #' @examples
 #' message(updateMessage)
-updateMessage <- "Run updateObject() to update your object."
+updateMessage <- "Run 'updateObject()' to update your object."

@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
       </span>
     </div>
 
@@ -206,7 +206,7 @@ as <code>filterCells</code> metadata.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-11.</p>
+    <p>Updated 2019-08-12.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -214,13 +214,57 @@ as <code>filterCells</code> metadata.</p>
 
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>filterCells</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in filterCells(object): could not find function "filterCells"</span></div><div class='input'><span class='fu'><a href='show.html'>show</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in show(x): object 'x' not found</span></div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>filterCells</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating 100 cellular barcode metrics.</span></div><div class='output co'>#&gt; <span class='message'>497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'>0 mitochondrial features detected.</span></div><div class='output co'>#&gt; <span class='message'>Pre-filter:</span>
+#&gt; <span class='message'>  - 100 cells</span>
+#&gt; <span class='message'>  - 500 features</span></div><div class='output co'>#&gt; <span class='message'>Post-filter:</span>
+#&gt; <span class='message'>  - 100 cells (100%)</span>
+#&gt; <span class='message'>  - 478 features (95.6%)</span></div><div class='output co'>#&gt; <span class='message'>Per argument:</span>
+#&gt; <span class='message'>  minCounts   maxCounts minFeatures maxFeatures  minNovelty </span>
+#&gt; <span class='message'>        100         100         100         100         100 </span></div><div class='output co'>#&gt; <span class='message'>Per sample, per argument:</span>
+#&gt; <span class='message'>$sample1</span>
+#&gt; <span class='message'>  minCounts   maxCounts minFeatures maxFeatures  minNovelty </span>
+#&gt; <span class='message'>         64          64          64          64          64 </span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>$sample2</span>
+#&gt; <span class='message'>  minCounts   maxCounts minFeatures maxFeatures  minNovelty </span>
+#&gt; <span class='message'>         36          36          36          36          36 </span></div><div class='input'><span class='fu'><a href='show.html'>show</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+#&gt; dim: 478 100 
+#&gt; metadata(3): date filterCells subset
+#&gt; assays(1): counts
+#&gt; rownames(478): gene001 gene002 ... gene499 gene500
+#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
+#&gt; colnames(100): cell001 cell002 ... cell099 cell100
+#&gt; colData names(7): sampleID nCount ... log10FeaturesPerCount mitoRatio
+#&gt; reducedDimNames(0):
+#&gt; spikeNames(0):</div><div class='input'>
 <span class='co'>## Per sample cutoffs.</span>
 <span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt;   sample1   sample2 
 #&gt; "sample1" "sample2" </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>filterCells</span>(
     <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
     <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>sample1</span> <span class='kw'>=</span> <span class='fl'>100L</span>)
-)</div><div class='output co'>#&gt; <span class='error'>Error in filterCells(object = object, minCounts = c(sample1 = 100L)): could not find function "filterCells"</span></div><div class='input'><span class='fu'><a href='show.html'>show</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in show(x): object 'x' not found</span></div></pre>
+)</div><div class='output co'>#&gt; <span class='message'>Calculating 100 cellular barcode metrics.</span></div><div class='output co'>#&gt; <span class='message'>497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'>0 mitochondrial features detected.</span></div><div class='output co'>#&gt; <span class='message'>Pre-filter:</span>
+#&gt; <span class='message'>  - 100 cells</span>
+#&gt; <span class='message'>  - 500 features</span></div><div class='output co'>#&gt; <span class='message'>Post-filter:</span>
+#&gt; <span class='message'>  - 100 cells (100%)</span>
+#&gt; <span class='message'>  - 478 features (95.6%)</span></div><div class='output co'>#&gt; <span class='message'>Per argument:</span>
+#&gt; <span class='message'>  minCounts   maxCounts minFeatures maxFeatures  minNovelty </span>
+#&gt; <span class='message'>        100         100         100         100         100 </span></div><div class='output co'>#&gt; <span class='message'>Per sample, per argument:</span>
+#&gt; <span class='message'>$sample1</span>
+#&gt; <span class='message'>  minCounts   maxCounts minFeatures maxFeatures  minNovelty </span>
+#&gt; <span class='message'>         64          64          64          64          64 </span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>$sample2</span>
+#&gt; <span class='message'>  minCounts   maxCounts minFeatures maxFeatures  minNovelty </span>
+#&gt; <span class='message'>         36          36          36          36          36 </span></div><div class='input'><span class='fu'><a href='show.html'>show</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+#&gt; dim: 478 100 
+#&gt; metadata(3): date filterCells subset
+#&gt; assays(1): counts
+#&gt; rownames(478): gene001 gene002 ... gene499 gene500
+#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
+#&gt; colnames(100): cell001 cell002 ... cell099 cell100
+#&gt; colData names(7): sampleID nCount ... log10FeaturesPerCount mitoRatio
+#&gt; reducedDimNames(0):
+#&gt; spikeNames(0):</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

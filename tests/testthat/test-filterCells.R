@@ -44,7 +44,7 @@ test_that("Already filtered", {
     x <- filterCells(object)
     expect_error(
         object = filterCells(x),
-        regexp = "filter metadata"
+        regexp = "filterCells"
     )
 })
 
