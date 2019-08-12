@@ -54,7 +54,7 @@ Calculate quality control metrics
 Input a raw count matrix. Do not use size factor adjusted or log
 normalized counts here.
 
-Updated 2019-08-08.
+Updated 2019-08-12.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
