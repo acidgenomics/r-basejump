@@ -8,17 +8,14 @@
 \usage{
 filterCells(object, ...)
 
-\S4method{filterCells}{SingleCellExperiment}(object, nCells = Inf,
-  minCounts = 1L, maxCounts = Inf, minFeatures = 1L,
-  maxFeatures = Inf, minNovelty = 0L, maxMitoRatio = 1L,
-  minCellsPerFeature = 1L)
+\S4method{filterCells}{SingleCellExperiment}(object, minCounts = 1L,
+  maxCounts = Inf, minFeatures = 1L, maxFeatures = Inf,
+  minNovelty = 0L, maxMitoRatio = 1L, minCellsPerFeature = 1L,
+  nCells = Inf, countsCol = "nCount", featuresCol = "nFeature",
+  noveltyCol = "log10FeaturesPerCount", mitoRatioCol = "mitoRatio")
 }
 \arguments{
 \item{object}{Object.}
-
-\item{nCells}{\code{integer(1)}.
-Expected number of cells per sample.
-Don't set this by default, unless you're confident of your capture.}
 
 \item{minCounts, maxCounts}{\code{integer(1)}.
 Minimum/maximum number of counts per cell.
@@ -44,35 +41,40 @@ Maximum relative mitochondrial abundance.}
 Include genes with non-zero expression in at least this many cells.
 Previously named \code{minCellsPerGene} in bcbioSingleCell.}
 
+\item{nCells}{\code{integer(1)}.
+Expected number of cells per sample.
+Don't set this by default, unless you're confident of your capture.}
+
+\item{countsCol, featuresCol, noveltyCol, mitoRatioCol}{\code{character(1)}.
+Column mapping name.}
+
 \item{...}{Additional arguments.}
 }
 \value{
 \code{SingleCellExperiment}.
-Filtering information gets slotted into \code{\link[S4Vectors:metadata]{metadata()}}
-as \code{filterCells} metadata.
 }
 \description{
 Filter cells
 }
 \details{
-Apply gene detection, novelty score, and mitochondrial abundance cutoffs to
-cellular barcodes. By default we recommend applying the same filtering cutoff
-to all samples. The filtering parameters now support per-sample cutoffs,
-defined using a named \code{numeric} vector. When matching per sample, be sure to
-use the \code{\link[=sampleNames]{sampleNames()}} return values (i.e. the \code{sampleName} column in
-\code{\link[=sampleData]{sampleData()}}).
+Apply feature (i.e. gene/transcript) detection, novelty score, and
+mitochondrial abundance cutoffs to cellular barcodes. By default we recommend
+applying the same filtering cutoff to all samples. The filtering parameters
+now support per-sample cutoffs, defined using a named \code{numeric} vector. When
+matching per sample, be sure to use the \code{\link[=sampleNames]{sampleNames()}} return values (i.e.
+the \code{sampleName} column in \code{\link[=sampleData]{sampleData()}}).
+
+Filtering information gets slotted into \code{\link[S4Vectors:metadata]{metadata()}}
+as \code{filterCells} metadata.
 }
 \note{
-Updated 2019-08-08.
+Updated 2019-08-11.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
-object <- calculateMetrics(object)
-
-show(object)
 x <- filterCells(object)
 show(x)
 
@@ -83,7 +85,4 @@ x <- filterCells(
     minCounts = c(sample1 = 100L)
 )
 show(x)
-}
-\author{
-Michael Steinbaugh
 }

@@ -1,6 +1,6 @@
 #' @name meltCounts
 #' @inherit bioverbs::meltCounts
-#' @note Updated 2019-08-06.
+#' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param minCounts `integer(1)` or `NULL`.
@@ -40,7 +40,7 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-11.
 `meltCounts,matrix` <-  # nolint
     function(
         object,
@@ -66,10 +66,15 @@ NULL
             }
             keep <- rowSums(object) >= rowCutoff
             if (minCountsMethod == "perFeature") {
-                message(paste(
-                    sum(keep, na.rm = TRUE), "/", nrow(object),
-                    "features passed minimum rowSums() >=", rowCutoff,
-                    "expression cutoff."
+                message(sprintf(
+                    "%d / %d %s passed minimum 'rowSums()' >= %s cutoff.",
+                    sum(keep, na.rm = TRUE), nrow(object),
+                    ngettext(
+                        n = nrow(object),
+                        msg1 = "feature",
+                        msg2 = "features"
+                    ),
+                    rowCutoff
                 ))
             }
             object <- object[keep, , drop = FALSE]
@@ -98,17 +103,23 @@ NULL
         ) {
             nPrefilter <- nrow(melt)
             melt %<>% filter(!!sym("counts") >= !!minCounts)
-            message(paste(
-                nrow(melt), "/", nPrefilter,
-                "melted rows passed minimum >=", minCounts,
-                "absolute expression cutoff."
+            message(sprintf(
+                "%d / %d melted %s passed minimum >= %d expression cutoff.",
+                nrow(melt),
+                nPrefilter,
+                ngettext(
+                    n = nPrefilter,
+                    msg1 = "feature",
+                    msg2 = "features"
+                ),
+                minCounts
             ))
         }
 
         ## Log transform the counts, if desired.
         if (trans != "identity") {
             assert(isInt(minCounts))
-            message(paste0("Applying ", trans, "(x + 1) transformation."))
+            message(sprintf("Applying '%s(x + 1L)' transformation.", trans))
             fun <- get(
                 x = trans,
                 envir = asNamespace("base"),

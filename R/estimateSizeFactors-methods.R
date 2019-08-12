@@ -109,7 +109,7 @@ NULL
         )
         type <- match.arg(type)
         message(sprintf(
-            fmt = "Calculating library size factors using %s method.",
+            fmt = "Calculating library size factors using '%s' method.",
             type
         ))
 
@@ -120,11 +120,8 @@ NULL
         zero <- libSizes == 0L
         if (isTRUE(any(zero))) {
             stop(sprintf(
-                fmt = "Cells with no expression detected: %s",
-                toString(
-                    unname(which(zero)),
-                    width = 100L
-                )
+                fmt = "Cells with no expression detected: %s.",
+                toString(unname(which(zero)), width = 100L)
             ))
         }
 

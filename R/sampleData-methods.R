@@ -7,7 +7,7 @@
 
 #' @name sampleData
 #' @inherit bioverbs::sampleData
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #'
 #' @section All supported S4 classes:
 #'
@@ -139,8 +139,8 @@ NULL
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
             stop(paste(
-                "sampleData() requires a `sampleName`",
-                "factor column in colData()."
+                "'sampleData()' requires a 'sampleName'",
+                "factor column in 'colData()'."
             ))
         }
 
@@ -187,7 +187,7 @@ setMethod(
 
 
 ## Don't run validity checks here.
-## Updated 2019-07-22.
+## Updated 2019-08-08.
 `sampleData,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -330,7 +330,7 @@ setMethod(
             any(duplicated(data[["sampleID"]]))
         ) {
             stop(paste0(
-                "Failed to collapse `colData` to sample level.\n",
+                "Failed to collapse 'colData()' to sample level.\n",
                 "Check these columns: ",
                 toString(colnames(data), width = 200L)
             ))
@@ -372,23 +372,24 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## nolint start
+##
+## Note that attempting to use `NULL` to remove columns on a DataFrame
+## will result in `S4Vectors::V_recycle()` errors, prior to BioC 3.8.
+## https://stat.ethz.ch/pipermail/bioc-devel/2017-November/012343.html
+##
+## nolint end
+
+
+
+## Updated 2019-08-08.
 `sampleData<-,SummarizedExperiment,DataFrame` <-  # nolint
     function(object, value) {
-        ## Don't allow blacklisted columns.
-        ## Note that attempting to use `NULL` to remove columns on a DataFrame
-        ## will result in `S4Vectors::V_recycle()` errors, prior to BioC 3.8.
-        ## https://stat.ethz.ch/pipermail/bioc-devel/2017-November/012343.html
-        blacklist <- c(
-            "interestingGroups",
-            "rowname",
-            "sampleID"
-        )
+        assert(hasRownames(value))
+        blacklist <- c("interestingGroups", "rowname", "sampleID")
         keep <- setdiff(colnames(value), blacklist)
         assert(hasLength(keep))
-        ## Be sure to include `drop` here in case we have only 1 column left.
         value <- value[, keep, drop = FALSE]
-        ## Now safe to assign and return.
         colData(object) <- value
         validObject(object)
         object
@@ -412,20 +413,12 @@ setReplaceMethod(
 ## Updated 2019-07-22.
 `sampleData<-,SingleCellExperiment,DataFrame` <-  # nolint
     function(object, value) {
-        ## Remove legacy `sampleData` in metadata, if defined.
-        if (!is.null(metadata(object)[["sampleData"]])) {
-            message("Removed legacy sampleData in metadata() slot.")
-            metadata(object)[["sampleData"]] <- NULL
-        }
-
-        ## Unset any blacklisted columns.
-        value[c("interestingGroups", "rowname", "sampleID")] <- NULL
-
-        ## Generate `sampleID` column.
         assert(hasRownames(value))
+        blacklist <- c("interestingGroups", "rowname", "sampleID")
+        keep <- setdiff(colnames(value), blacklist)
+        assert(hasLength(keep))
+        value <- value[, keep, drop = FALSE]
         value[["sampleID"]] <- as.factor(rownames(value))
-
-        ## Update colData slot.
         colData <- colData(object)
         assert(isSubset("sampleID", colnames(colData)))
         colData <- colData[
@@ -434,12 +427,8 @@ setReplaceMethod(
             drop = FALSE
         ]
         value <- left_join(colData, value, by = "sampleID")
-        assert(
-            is(value, "DataFrame"),
-            hasRownames(value)
-        )
+        assert(is(value, "DataFrame"), hasRownames(value))
         colData(object) <- value
-
         object
     }
 

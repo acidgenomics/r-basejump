@@ -29,8 +29,8 @@ matchEnsemblReleaseToURL <- function(release) {
         isSubset(c("url", "version"), colnames(map))
     )
     if (!release %in% map[["version"]]) {
-        stop(paste(
-            "Supported Ensembl releases:",
+        stop(sprintf(
+            "Supported Ensembl releases: %s.",
             toString(map[["version"]])
         ))
     }

@@ -31,14 +31,10 @@
 #'
 #' @examples
 #' ## RNA-seq template.
-#' \dontrun{
 #' ## > prepareTemplate(package = "bcbioRNASeq")
-#' }
 #'
 #' ## Single-cell RNA-seq template.
-#' \dontrun{
 #' ## > prepareTemplate(package = "bcbioSingleCell")
-#' }
 prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     assert(
         isString(package, nullOK = TRUE),

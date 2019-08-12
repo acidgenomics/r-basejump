@@ -1,24 +1,17 @@
-## FIXME Move SCE method to basejump, so we can use with Chromium.
-## FIXME nGene to nFeature
-## FIXME log10GenesPerUMI to log10FeaturesPerUMI
-## FIXME Rework to not use dplyr / tibble here.
-## FIXME Look for nUMI and use that first, otherwise pick nCount
-## FIXME Look for nGene and use that, otherwise pick nFeature
-## FIXME Look for log10GenesPerUMI, log10FeaturesPerUMI
-
-
 #' @name filterCells
-#' @author Michael Steinbaugh
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-11.
 #'
 #' @details
-#' Apply gene detection, novelty score, and mitochondrial abundance cutoffs to
-#' cellular barcodes. By default we recommend applying the same filtering cutoff
-#' to all samples. The filtering parameters now support per-sample cutoffs,
-#' defined using a named `numeric` vector. When matching per sample, be sure to
-#' use the [sampleNames()] return values (i.e. the `sampleName` column in
-#' [sampleData()]).
+#' Apply feature (i.e. gene/transcript) detection, novelty score, and
+#' mitochondrial abundance cutoffs to cellular barcodes. By default we recommend
+#' applying the same filtering cutoff to all samples. The filtering parameters
+#' now support per-sample cutoffs, defined using a named `numeric` vector. When
+#' matching per sample, be sure to use the [sampleNames()] return values (i.e.
+#' the `sampleName` column in [sampleData()]).
+#'
+#' Filtering information gets slotted into [`metadata()`][S4Vectors::metadata]
+#' as `filterCells` metadata.
 #'
 #' @inheritParams acidroxygen::params
 #' @param nCells `integer(1)`.
@@ -43,20 +36,17 @@
 #' @param minCellsPerFeature `integer(1)`.
 #'   Include genes with non-zero expression in at least this many cells.
 #'   Previously named `minCellsPerGene` in bcbioSingleCell.
+#' @param countsCol,featuresCol,noveltyCol,mitoRatioCol `character(1)`.
+#'   Column mapping name.
 #' @param ... Additional arguments.
 #'
 #' @return `SingleCellExperiment`.
-#' Filtering information gets slotted into [`metadata()`][S4Vectors::metadata]
-#' as `filterCells` metadata.
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
-#' object <- calculateMetrics(object)
-#'
-#' show(object)
 #' x <- filterCells(object)
 #' show(x)
 #'
@@ -80,420 +70,366 @@ NULL
 
 
 
+## Consider moving this to goalie.
 ## Updated 2019-08-08.
-.isFiltered <- function(object) {
-    if (!is.null(metadata(object)[["filterCells"]])) {
-        TRUE
-    } else {
-        FALSE
+.hasMetrics <- function(object) {
+    assert(is(object, "SummarizedExperiment"))
+    ok <- isSubset(
+        x = c("nCount", "nFeature"),
+        y = colnames(colData(object))
+    )
+    if (!isTRUE(ok)) {
+        return(false("`calculateMetrics()` needs to be run on this object."))
     }
+    TRUE
 }
 
 
 
-## Updated 2019-07-24.
-.paddedCount <- function(x, width = 8L) {
-    str_pad(x, width = width, pad = " ")
-}
+## Consider moving this to goalie.
+## Updated 2019-08-11.
+.isNonFiltered <-
+    function(
+        x,
+        metadata = c("filterCells", "subset"),
+        .xname = getNameInParent(x)
+    ) {
+        assert(
+            is(x, "SummarizedExperiment"),
+            isCharacter(metadata)
+        )
+        ok <- isSubset(metadata, names(metadata(x)))
+        if (isTRUE(ok)) {
+            return(false(
+                "'%s' contains filter metadata: %s",
+                .xname, toString(metadata)
+            ))
+        }
+        TRUE
+    }
 
 
 
-## Updated 2019-08-08.
+## Updated 2019-08-09.
 `filterCells,SingleCellExperiment` <-  # nolint
     function(
         object,
-        nCells = Inf,
+        ## Cell-level metrics.
         minCounts = 1L,
         maxCounts = Inf,
         minFeatures = 1L,
         maxFeatures = Inf,
         minNovelty = 0L,
         maxMitoRatio = 1L,
-        minCellsPerFeature = 1L
+        ## Feature-level metrics.
+        minCellsPerFeature = 1L,
+        ## Manually subset top cells by sequencing depth.
+        nCells = Inf,
+        ## Column mappings.
+        countsCol = "nCount",
+        featuresCol = "nFeature",
+        noveltyCol = "log10FeaturesPerCount",
+        mitoRatioCol = "mitoRatio"
     ) {
         validObject(object)
         assert(
-            ## Expected nCells per sample.
-            is.numeric(nCells),
+            .isNonFiltered(object),
+            ## nCells
+            all(isIntegerish(nCells)),
             all(isPositive(nCells)),
-            ## minCounts (see below)
-            isAny(minCounts, c("numeric", "character")),
+            ## minCounts
+            all(isIntegerish(minCounts)),
+            all(isPositive(minCounts)),
             ## maxCounts
-            is.numeric(maxCounts),
+            all(isIntegerish(maxCounts)),
             all(isPositive(maxCounts)),
             ## minFeatures
-            is.numeric(minFeatures),
+            all(isIntegerish(minFeatures)),
             all(isPositive(minFeatures)),
-            ## maxGenes
-            is.numeric(maxFeatures),
+            ## maxFeatures
+            all(isIntegerish(maxFeatures)),
             all(isNonNegative(maxFeatures)),
             ## minNovelty
-            is.numeric(minNovelty),
             all(isInRange(minNovelty, lower = 0L, upper = 1L)),
             ## maxMitoRatio
-            is.numeric(maxMitoRatio),
-            ## Don't allow the user to set at 0.
             all(isInLeftOpenRange(maxMitoRatio, lower = 0L, upper = 1L)),
-            ## minCellsPerGene
-            is.numeric(minCellsPerFeature),
-            ## Don't allow genes with all zero counts.
-            all(isPositive(minCellsPerFeature))
+            ## minCellsPerFeature
+            all(isIntegerish(minCellsPerFeature)),
+            all(isNonNegative(minCellsPerFeature))
         )
-        ## minCounts supports barcode ranks filtering.
-        if (is.character(minCounts)) {
-            assert(
-                isString(minCounts),
-                isSubset(minCounts, c("inflection", "knee"))
-            )
-        } else {
-            assert(
-                is.numeric(minCounts),
-                all(isPositive(minCounts))
-            )
+        ## Calculate metrics, if necessary.
+        if (!.hasMetrics(object)) {
+            object <- calculateMetrics(object)
         }
-
+        ## Using DataFrame with Rle instead of tibble for improved speed.
+        metrics <- colData(object)
+        sampleNames <- unname(sampleNames(object))
         originalDim <- dim(object)
-        sampleNames <- sampleNames(object)
-        colData <- colData(object)
 
-        ## Check to see if `calculateMetrics()` needs to be run on the object.
-        if (!isSubset(c("nCount", "nFeature"), colnames(colData))) {
-            stop("`calculateMetrics()` needs to be run on this object.")
-        }
+        ## Detect low quality cells --------------------------------------------
+        ## Check that the requested column names for filtering match.
+        assert(isSubset(
+            x = c(countsCol, featuresCol, noveltyCol, mitoRatioCol),
+            y = colnames(metrics)
+        ))
 
-        params <- list(
-            nCells = nCells,
+        ## Standardize cell-level filtering args.
+        args <- list(
             minCounts = minCounts,
             maxCounts = maxCounts,
             minFeatures = minFeatures,
             maxFeatures = maxFeatures,
             minNovelty = minNovelty,
-            maxMitoRatio = maxMitoRatio,
-            minCellsPerFeature = minCellsPerFeature
+            maxMitoRatio = maxMitoRatio
+        )
+        assert(allAreMatchingRegex(x = names(args), pattern = "^(max|min)"))
+        ## Loop across the arguments and expand to match the number of samples,
+        ## so we can run parameterized checks via `mapply()`.
+        args <- lapply(
+            X = args,
+            FUN = function(arg) {
+                if (hasLength(arg, n = 1L)) {
+                    arg <- rep(arg, times = length(sampleNames))
+                    names(arg) <- sampleNames
+                }
+                assert(identical(names(arg), sampleNames))
+                arg
+            }
         )
 
-        ## Filter low quality cells --------------------------------------------
-        summaryCells <- character()
-        summaryCells[["prefilter"]] <- paste(
-            paste(.paddedCount(ncol(object)), "cells"),
-            "prefilter",
-            sep = " | "
+        ## Determine the relational operator to use based on the name.
+        ## Use GTE (`>=`) for `min*` and LTE (`<=`) for `max*`.
+        operators <- lapply(
+            X = names(args),
+            FUN = function(x) {
+                if (grepl("^min", x)) {
+                    `>=`
+                } else if (grepl("^max", x)) {
+                    `<=`
+                }
+            }
+        )
+        names(operators) <- names(args)
+
+        ## Map the cell arguments to the metrics column name.
+        arg2col <- c(
+            minCounts = countsCol,
+            maxCounts = countsCol,
+            minFeatures = featuresCol,
+            maxFeatures = featuresCol,
+            minNovelty = noveltyCol,
+            maxMitoRatio = mitoRatioCol
         )
 
-        ## minCounts
-        if (isString(minCounts)) {
-            ranks <- barcodeRanksPerSample(object)
-            minCounts <- vapply(
-                X = ranks,
-                FUN = function(x) {
-                    as.integer(x[[minCounts]])
-                },
-                FUN.VALUE = integer(1L)
-            )
-            names(minCounts) <- sampleNames
-            minCounts <- minCounts[sort(names(minCounts))]
-        }
-        if (!is.null(names(minCounts))) {
-            assert(areSetEqual(names(minCounts), sampleNames))
-            message(paste(
-                "minCounts: per sample mode",
-                printString(minCounts),
-                sep = "\n"
-            ))
-            list <- mapply(
-                sample = names(minCounts),
-                cutoff = minCounts,
-                FUN = function(sample, cutoff) {
-                    filter(
-                        colData,
-                        !!sym("sampleName") == !!sample,
-                        !!sym("nUMI") >= !!cutoff
-                    )
-                },
-                SIMPLIFY = FALSE,
-                USE.NAMES = FALSE
-            )
-            colData <- bind_rows(list)
-        } else {
-            colData <- filter(colData, !!sym("nUMI") >= !!minCounts)
-        }
-        if (!nrow(colData)) {
-            stop("No cells passed `minCounts` cutoff")
-        }
-        summaryCells[["minCounts"]] <- paste(
-            paste(.paddedCount(nrow(colData)), "cells"),
-            paste("minCounts", ">=", min(minCounts)),
-            sep = " | "
-        )
+        ## Split the metrics per sample so we can perform parameterized
+        ## filtering checks using `mapply()`.
+        split <- split(x = metrics, f = metrics[["sampleID"]])
+        assert(is(split, "SplitDataFrameList"))
 
-        ## maxCounts
-        if (!is.null(names(maxCounts))) {
-            assert(areSetEqual(names(maxCounts), sampleNames))
-            message(paste(
-                "maxCounts: per sample mode",
-                printString(maxCounts),
-                sep = "\n"
-            ))
-            list <- mapply(
-                sample = names(maxCounts),
-                cutoff = maxCounts,
-                FUN = function(sample, cutoff) {
-                    filter(
-                        colData,
-                        !!sym("sampleName") == !!sample,
-                        !!sym("nUMI") <= !!cutoff
-                    )
-                },
-                SIMPLIFY = FALSE,
-                USE.NAMES = FALSE
-            )
-            colData <- bind_rows(list)
-        } else {
-            colData <- filter(colData, !!sym("nUMI") <= !!maxCounts)
-        }
-        if (!nrow(colData)) {
-            stop("No cells passed `maxCounts` cutoff")
-        }
-        summaryCells[["maxCounts"]] <- paste(
-            paste(.paddedCount(nrow(colData)), "cells"),
-            paste("maxCounts", "<=", max(maxCounts)),
-            sep = " | "
-        )
-
-        ## minGenes
-        if (!is.null(names(minGenes))) {
-            assert(areSetEqual(names(minGenes), sampleNames))
-            message(paste(
-                "minGenes: per sample mode",
-                printString(minGenes),
-                sep = "\n"
-            ))
-            list <- mapply(
-                sample = names(minGenes),
-                cutoff = minGenes,
-                FUN = function(sample, cutoff) {
-                    filter(
-                        colData,
-                        !!sym("sampleName") == !!sample,
-                        !!sym("nGene") >= !!cutoff
-                    )
-                },
-                SIMPLIFY = FALSE,
-                USE.NAMES = FALSE
-            )
-            colData <- bind_rows(list)
-        } else {
-            colData <- filter(colData, !!sym("nGene") >= !!minGenes)
-        }
-        if (!nrow(colData)) {
-            stop("No cells passed `minGenes` cutoff")
-        }
-        summaryCells[["minGenes"]] <- paste(
-            paste(.paddedCount(nrow(colData)), "cells"),
-            paste("minGenes", ">=", min(minGenes)),
-            sep = " | "
-        )
-
-        ## maxGenes
-        if (!is.null(names(maxGenes))) {
-            assert(areSetEqual(names(maxGenes), sampleNames))
-            message(paste(
-                "maxGenes: per sample mode",
-                printString(maxGenes),
-                sep = "\n"
-            ))
-            list <- mapply(
-                sample = names(maxGenes),
-                cutoff = maxGenes,
-                FUN = function(sample, cutoff) {
-                    filter(
-                        colData,
-                        !!sym("sampleName") == !!sample,
-                        !!sym("nGene") <= !!cutoff
-                    )
-                },
-                SIMPLIFY = FALSE,
-                USE.NAMES = FALSE
-            )
-            colData <- bind_rows(list)
-        } else {
-            colData <- filter(colData, !!sym("nGene") <= !!maxGenes)
-        }
-        if (!nrow(colData)) {
-            stop("No cells passed `maxGenes` cutoff")
-        }
-        summaryCells[["maxGenes"]] <- paste(
-            paste(.paddedCount(nrow(colData)), "cells"),
-            paste("maxGenes", "<=", max(maxGenes)),
-            sep = " | "
-        )
-
-        ## minNovelty
-        if (!is.null(names(minNovelty))) {
-            assert(areSetEqual(names(minNovelty), sampleNames))
-            message(paste(
-                "minNovelty: per sample mode",
-                printString(minNovelty),
-                sep = "\n"
-            ))
-            list <- mapply(
-                sample = names(minNovelty),
-                cutoff = minNovelty,
-                FUN = function(sample, cutoff) {
-                    filter(
-                        colData,
-                        !!sym("sampleName") == !!sample,
-                        !!sym("log10GenesPerUMI") >= !!cutoff)
-                },
-                SIMPLIFY = FALSE,
-                USE.NAMES = FALSE
-            )
-            colData <- bind_rows(list)
-        } else {
-            colData <- filter(
-                colData,
-                !!sym("log10GenesPerUMI") >= !!minNovelty
-            )
-        }
-        if (!nrow(colData)) {
-            stop("No cells passed `minNovelty` cutoff")
-        }
-        summaryCells[["minNovelty"]] <- paste(
-            paste(.paddedCount(nrow(colData)), "cells"),
-            paste("minNovelty", "<=", min(minNovelty)),
-            sep = " | "
-        )
-
-        ## maxMitoRatio
-        if (!is.null(names(maxMitoRatio))) {
-            assert(areSetEqual(names(maxMitoRatio), sampleNames))
-            message(paste(
-                "maxMitoRatio: per sample mode",
-                printString(maxMitoRatio),
-                sep = "\n"
-            ))
-            list <- mapply(
-                sample = names(maxMitoRatio),
-                cutoff = maxMitoRatio,
-                FUN = function(sample, cutoff) {
-                    filter(
-                        colData,
-                        !!sym("sampleName") == !!sample,
-                        !!sym("mitoRatio") <= !!cutoff
-                    )
-                },
-                SIMPLIFY = FALSE,
-                USE.NAMES = FALSE
-            )
-            colData <- bind_rows(list)
-        } else {
-            colData <- filter(colData, !!sym("mitoRatio") <= !!maxMitoRatio)
-        }
-        if (!nrow(colData)) {
-            stop("No cells passed `maxMitoRatio` cutoff")
-        }
-        summaryCells[["maxMitoRatio"]] <- paste(
-            paste(.paddedCount(nrow(colData)), "cells"),
-            paste("maxMitoRatio", "<=", max(maxMitoRatio)),
-            sep = " | "
-        )
-
-        ## Expected nCells per sample (filtered by top nUMI)
-        if (nCells < Inf) {
-            colData <- colData %>%
-                group_by(!!sym("sampleID")) %>%
-                arrange(desc(!!sym("nUMI")), .by_group = TRUE) %>%
-                slice(seq_len(nCells))
-        }
-
-        if (!nrow(colData)) {
-            stop("No cells passed `nCells` cutoff")
-        }
-        summaryCells[["nCells"]] <- paste(
-            paste(.paddedCount(nrow(colData)), "cells"),
-            paste("nCells", "==", nCells),
-            sep = " | "
-        )
-
-        ## Now coerce back to DataFrame from tibble.
-        colData <- as(colData, "DataFrame")
-        assert(hasRownames(colData))
-        cells <- sort(rownames(colData))
-        assert(isSubset(cells, colnames(object)))
-        object <- object[, cells, drop = FALSE]
-
-        ## Filter low quality genes --------------------------------------------
-        summaryGenes <- character()
-        summaryGenes[["prefilter"]] <- paste(
-            paste(.paddedCount(nrow(object)), "genes"),
-            "prefilter",
-            sep = " | "
-        )
-        if (minCellsPerGene > 0L) {
-            nonzero <- counts(object) > 0L
-            keep <- rowSums(nonzero) >= minCellsPerGene
-            genes <- names(keep)[keep]
-        } else {
-            genes <- rownames(object)
-        }
-        if (!length(genes)) {
-            stop("No genes passed `minCellsPerGene` cutoff")
-        }
-        summaryGenes[["minCellsPerGene"]] <- paste(
-            paste(.paddedCount(length(genes)), "genes"),
-            paste("minCellsPerGene", ">=", as.character(minCellsPerGene)),
-            sep = " | "
-        )
-        genes <- sort(genes)
-        assert(isSubset(genes, rownames(object)))
-        object <- object[genes, , drop = FALSE]
-
-        ## Summary -------------------------------------------------------------
-        summaryParams <- paste("  -", c(
-            paste(">=", min(minCounts), "UMIs per cell"),
-            paste("<=", max(maxCounts), "UMIs per cell"),
-            paste(">=", min(minGenes), "genes per cell"),
-            paste("<=", max(maxGenes), "genes per cell"),
-            paste(">=", min(minNovelty), "novelty score"),
-            paste("<=", max(maxMitoRatio), "mitochondrial abundance"),
-            paste("==", nCells, "cells per sample"),
-            paste(">=", min(minCellsPerGene), "cells per gene")
+        ## Loop across the samples.
+        filter <- DataFrameList(mapply(
+            sampleName = names(split),
+            metrics = split,
+            FUN = function(sampleName, metrics) {
+                ## Loop across the filtering parameters (per sample).
+                perSample <- mapply(
+                    argName = names(args),
+                    arg = args,
+                    operator = operators,
+                    metricCol = arg2col,
+                    FUN = function(argName, arg, operator, metricCol) {
+                        metric <- metrics[[metricCol]]
+                        do.call(
+                            what = operator,
+                            args = list(e1 = metric, e2 = arg)
+                        )
+                    },
+                    SIMPLIFY = FALSE,
+                    USE.NAMES = TRUE
+                )
+                perSample <- DataFrame(perSample)
+                rownames(perSample) <- rownames(metrics)
+                perSample
+            },
+            SIMPLIFY = FALSE,
+            USE.NAMES = TRUE
         ))
-        summary <- c(
-            "Parameters:",
-            summaryParams,
-            separatorBar,
-            "Cells:",
-            as.character(summaryCells),
-            paste(
-                .paddedCount(dim(object)[[2L]]), "of", originalDim[[2L]],
-                "cells passed filtering",
-                paste0(
-                    "(", percent(dim(object)[[2L]] / originalDim[[2L]]), ")"
-                )
-            ),
-            ## Number of cells per sample.
-            printString(table(colData[["sampleName"]])),
-            separatorBar,
-            "Genes:",
-            as.character(summaryGenes),
-            paste(
-                .paddedCount(dim(object)[[1L]]), "of", originalDim[[1L]],
-                "genes passed filtering",
-                paste0(
-                    "(", percent(dim(object)[[1L]] / originalDim[[1L]]), ")"
-                )
-            )
+
+        ## Coerce the filter list to a single sparse logical matrix.
+        lgl <- do.call(what = rbind, args = filter)
+        lgl <- lgl[colnames(object), , drop = FALSE]
+        lgl <- decode(lgl)
+        lgl <- as(lgl, "Matrix")
+        ## Drop columns that contain all NA.
+        keep <- apply(
+            X = lgl,
+            MARGIN = 2L,
+            FUN = function(x) {
+                !all(is.na(x))
+            }
         )
-        message(paste(summary, collapse = "\n"))
+        lgl <- lgl[, keep, drop = FALSE]
+        assert(!isTRUE(anyNA(lgl)))
 
-        ## Metadata ------------------------------------------------------------
-        metadata(object)[["cellularBarcodes"]] <- NULL
-        metadata(object)[["filterCells"]] <- cells
-        metadata(object)[["filterGenes"]] <- genes
-        metadata(object)[["filterParams"]] <- params
-        metadata(object)[["filterSummary"]] <- summary
+        cells <- apply(X = lgl, MARGIN = 1L, FUN = function(x) { all(x) })
+        assert(identical(names(cells), colnames(object)))
 
+        ## Keep top expected number of cells per sample.
+        if (nCells < Inf) {
+            metrics <- metrics[cells, , drop = FALSE]
+            split <- split(x = metrics, f = metrics[["sampleID"]])
+            topCellsPerSample <- lapply(
+                X = split,
+                FUN = function(x) {
+                    metric <- decode(x[[countsCol]])
+                    names(metric) <- rownames(x)
+                    head(sort(metric, decreasing = TRUE), n = nCells)
+                }
+            )
+            topCells <- unlist(unname(topCellsPerSample))
+            metrics <- metrics[names(topCells), , drop = FALSE]
+            cells <- names(cells) %in% names(topCells)
+            names(cells) <- colnames(object)
+        } else {
+            topCellsPerSample <- NULL
+        }
+
+        ## Remove the low quality cells.
+        if (!any(cells)) {
+            stop("No cells passed filtering.")
+        } else if (sum(cells, na.rm = TRUE) < ncol(object)) {
+            assert(identical(names(cells), colnames(object)))
+            object <- object[, cells, drop = FALSE]
+        }
+
+        ## Detect low quality features (i.e. genes) ----------------------------
+        ## Important: remove the low quality cells prior to this calculation.
+        if (minCellsPerFeature > 0L) {
+            nonzero <- counts(object) > 0L
+            ## Ensure we're performing sparse calculations.
+            if (is(nonzero, "Matrix")) {
+                rowSums <- Matrix::rowSums
+            }
+            features <- rowSums(nonzero) >= minCellsPerFeature
+        } else {
+            features <- rep(TRUE, times = nrow(object))
+            names(features) <- rownames(object)
+        }
+
+        ## Remove the low quality features.
+        if (!any(features)) {
+            stop("No features passed filtering.")
+        } else if (sum(features, na.rm = TRUE) < nrow(object)) {
+            assert(identical(names(features), rownames(object)))
+            object <- object[features, , drop = FALSE]
+        }
+
+        ## Summary statistics --------------------------------------------------
+        assert(
+            is.logical(cells),
+            is.logical(features)
+        )
+
+        nCells <- sum(cells, na.rm = TRUE)
+        nFeatures <- sum(features, na.rm = TRUE)
+        if (identical(c(nFeatures, nCells), originalDim)) {
+            message("No filtering applied.")
+            return(object)
+        }
+
+        ## Ensure that there are no all zero rows or columns.
+        ## Otherwise, downstream conversion to Seurat can error.
+        assert(hasNonZeroRowsAndCols(counts(object)))
+
+        perSamplePass <- lapply(
+            X = filter,
+            FUN = function(x) {
+                x <- vapply(
+                    X = x,
+                    FUN = function(x) {
+                        sum(x, na.rm = FALSE)
+                    },
+                    FUN.VALUE = numeric(1L)
+                )
+                x <- na.omit(x)
+                ## Drop the `na.omit` attribute, which is annoying in print.
+                names <- names(x)
+                x <- as.integer(x)
+                names(x) <- names
+                x
+            }
+        )
+
+        totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
+        storage.mode(totalPass) <- "integer"
+
+        message(sprintf(
+            fmt = paste0(
+                "Pre-filter:\n",
+                "  - %d %s\n",
+                "  - %d %s"
+            ),
+            originalDim[[2L]],
+            ngettext(
+                n = originalDim[[2L]],
+                msg1 = "cell",
+                msg2 = "cells"
+            ),
+            originalDim[[1L]],
+            ngettext(
+                n = originalDim[[1L]],
+                msg1 = "feature",
+                msg2 = "features"
+            )
+        ))
+        message(sprintf(
+            fmt = paste0(
+                "Post-filter:\n",
+                "  - %d %s (%s)\n",
+                "  - %d %s (%s)"
+            ),
+            nCells,
+            ngettext(
+                n = nCells,
+                msg1 = "cell",
+                msg2 = "cells"
+            ),
+            percent(nCells / originalDim[[2L]]),
+            nFeatures,
+            ngettext(
+                n = nFeatures,
+                msg1 = "feature",
+                msg2 = "features"
+            ),
+            percent(nFeatures / originalDim[[1L]])
+        ))
+        message(sprintf(
+            fmt = "Per argument:\n%s",
+            printString(totalPass)
+        ))
+        if (length(perSamplePass) > 1L) {
+            message(sprintf(
+                fmt = "Per sample, per argument:\n%s",
+                printString(perSamplePass)
+            ))
+        }
+
+        ## Update object -------------------------------------------------------
+        metadata <- SimpleList(
+            cells = cells,
+            features = features,
+            topCellsPerSample = topCellsPerSample,
+            args = args,
+            filter = filter,
+            perSamplePass = perSamplePass,
+            totalPass = totalPass,
+            call = standardizeCall(),
+            date = Sys.Date(),
+            version = .version
+        )
+        metadata <- Filter(f = Negate(is.null), x = metadata)
+        metadata(object)[["filterCells"]] <- metadata
+        metadata(object)[["subset"]] <- TRUE
         object
     }
 

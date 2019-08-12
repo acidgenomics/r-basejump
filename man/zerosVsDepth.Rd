@@ -34,7 +34,7 @@ Assay name or index position.}
 Calculate and visualize the dropout rate.
 }
 \note{
-Updated 2019-08-06.
+Updated 2019-08-11.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

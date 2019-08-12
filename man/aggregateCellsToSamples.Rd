@@ -9,7 +9,7 @@
 aggregateCellsToSamples(object, ...)
 
 \S4method{aggregateCellsToSamples}{SingleCellExperiment}(object,
-  fun = c("sum", "mean"))
+  fun = c("sum", "mean", "geometricMean", "median"))
 }
 \arguments{
 \item{object}{Object.}
@@ -38,9 +38,9 @@ Updated 2019-07-28.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
-sce <- SingleCellExperiment
 
 ## SingleCellExperiment ====
-x <- aggregateCellsToSamples(sce)
+object <- SingleCellExperiment
+x <- aggregateCellsToSamples(object)
 print(x)
 }

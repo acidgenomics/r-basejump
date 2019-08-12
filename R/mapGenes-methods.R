@@ -98,7 +98,10 @@ NULL
     } else if (any(genes %in% object[["geneID"]])) {
         table <- object[["geneID"]]
     } else {
-        stop(paste("All genes failed to map:", toString(head(genes))))
+        stop(sprintf(
+            "All genes failed to map: %s.",
+            toString(genes, width = 100L)
+        ))
     }
 
     ## Match the user input `genes` vector to the table.
@@ -113,7 +116,10 @@ NULL
     }
     unmapped <- which(is.na(match))
     if (length(unmapped) > 0L) {
-        fun(paste("Some genes failed to map:", toString(genes[unmapped])))
+        fun(sprintf(
+            "Some genes failed to map: %s.",
+            toString(genes[unmapped], width = 100L)
+        ))
     }
 
     ## Return the identifiers that map to rownames.
@@ -196,8 +202,9 @@ setMethod(
             }
             unmapped <- which(is.na(match))
             if (length(unmapped) > 0L) {
-                fun(paste(
-                    "Some genes failed to map:", toString(genes[unmapped])
+                fun(sprintf(
+                    "Some genes failed to map: %s.",
+                    toString(genes[unmapped], width = 100L)
                 ))
             }
 

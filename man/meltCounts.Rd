@@ -52,7 +52,7 @@ Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
 Melt count matrix into long format
 }
 \note{
-Updated 2019-08-06.
+Updated 2019-08-11.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

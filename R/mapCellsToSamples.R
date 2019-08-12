@@ -4,7 +4,7 @@
 #' matching.
 #'
 #' @name mapCellsToSamples
-#' @note Updated 2019-07-30.
+#' @note Updated 2019-08-11.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -41,7 +41,10 @@ mapCellsToSamples <- function(cells, samples) {
         pattern <- paste0("^(", sample, barcodePattern)
         match <- str_match(cells, pattern = pattern)
         if (all(is.na(match[, 1L]))) {
-            stop(paste(deparse(sample), "sample failed to match any cells."))
+            stop(sprintf(
+                "'%s' sample failed to match any cells.",
+                deparse(sample)
+            ))
         }
         match %<>%
             data.frame() %>%

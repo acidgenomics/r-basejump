@@ -29,9 +29,10 @@ reference:
       - counts
       - meltCounts
       - tpm
-  - title: Quality control metrics
+  - title: Quality control
     contents:
       - calculateMetrics
+      - filterCells
       - metrics
   - title: Metadata
     contents:
@@ -53,7 +54,6 @@ reference:
       - selectSamples
   - title: Cell-level metadata
     contents:
-      - aggregateCellsToSamples
       - cell2sample
       - makeSingleCellExperiment
       - mapCellsToSamples
@@ -74,6 +74,7 @@ reference:
       - estimateSizeFactors
       - geometricMean
       - logRatio
+      - pseudobulk
       - rankedMatrix
       - sizeFactors
       - zerosVsDepth

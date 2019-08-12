@@ -19,25 +19,25 @@ aggregateCols(object, ...)
 aggregateRows(object, ...)
 
 \S4method{aggregateRows}{matrix}(object, groupings, fun = c("sum",
-  "mean"))
+  "mean", "geometricMean", "median"))
 
 \S4method{aggregateRows}{sparseMatrix}(object, groupings, fun = c("sum",
-  "mean"))
+  "mean", "geometricMean", "median"))
 
 \S4method{aggregateRows}{SummarizedExperiment}(object, col = "aggregate",
-  fun = c("sum", "mean"))
+  fun = c("sum", "mean", "geometricMean", "median"))
 
 \S4method{aggregateCols}{matrix}(object, groupings, fun = c("sum",
-  "mean"))
+  "mean", "geometricMean", "median"))
 
 \S4method{aggregateCols}{sparseMatrix}(object, groupings, fun = c("sum",
-  "mean"))
+  "mean", "geometricMean", "median"))
 
 \S4method{aggregateCols}{SummarizedExperiment}(object, col = "aggregate",
-  fun = c("sum", "mean"))
+  fun = c("sum", "mean", "geometricMean", "median"))
 
 \S4method{aggregateCols}{SingleCellExperiment}(object, fun = c("sum",
-  "mean"))
+  "mean", "geometricMean", "median"))
 }
 \arguments{
 \item{object}{Object.}
@@ -73,7 +73,7 @@ can be used to aggregate counts from transcript-level to gene-level.
 sample replicates.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-11.
 }
 \section{Methods (by class)}{
 
