@@ -1,4 +1,4 @@
-#' Generator functions
+#' All generator functions
 #' @include AllGenerics.R
 #' @noRd
 NULL

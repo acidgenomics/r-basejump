@@ -1,6 +1,6 @@
 #' @name filterCells
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-08-11.
+#' @note Updated 2019-08-12.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -70,47 +70,7 @@ NULL
 
 
 
-## Consider moving this to goalie.
-## Updated 2019-08-08.
-.hasMetrics <- function(object) {
-    assert(is(object, "SummarizedExperiment"))
-    ok <- isSubset(
-        x = c("nCount", "nFeature"),
-        y = colnames(colData(object))
-    )
-    if (!isTRUE(ok)) {
-        return(false("`calculateMetrics()` needs to be run on this object."))
-    }
-    TRUE
-}
-
-
-
-## Consider moving this to goalie.
-## Updated 2019-08-11.
-.isNonFiltered <-
-    function(
-        x,
-        metadata = c("filterCells", "subset"),
-        .xname = getNameInParent(x)
-    ) {
-        assert(
-            is(x, "SummarizedExperiment"),
-            isCharacter(metadata)
-        )
-        ok <- isSubset(metadata, names(metadata(x)))
-        if (isTRUE(ok)) {
-            return(false(
-                "'%s' contains filter metadata: %s",
-                .xname, toString(metadata)
-            ))
-        }
-        TRUE
-    }
-
-
-
-## Updated 2019-08-09.
+## Updated 2019-08-12.
 `filterCells,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -132,8 +92,11 @@ NULL
         mitoRatioCol = "mitoRatio"
     ) {
         validObject(object)
+        ## Don't allow re-run on already filtered object.
+        if (hasSubset(object, metadata = "filterCells")) {
+            stop("Object has already been filtered with 'filterCells()'.")
+        }
         assert(
-            .isNonFiltered(object),
             ## nCells
             all(isIntegerish(nCells)),
             all(isPositive(nCells)),
@@ -158,7 +121,7 @@ NULL
             all(isNonNegative(minCellsPerFeature))
         )
         ## Calculate metrics, if necessary.
-        if (!.hasMetrics(object)) {
+        if (!hasMetrics(object, colData = c("nCount", "nFeature"))) {
             object <- calculateMetrics(object)
         }
         ## Using DataFrame with Rle instead of tibble for improved speed.

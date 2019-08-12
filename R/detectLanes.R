@@ -1,6 +1,5 @@
 #' Detect sequencing lanes
 #'
-#' @include globals.R
 #' @note Updated 2019-08-07.
 #' @export
 #'

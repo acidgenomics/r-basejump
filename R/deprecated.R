@@ -509,5 +509,14 @@ relevelRowRanges <- function(object) {
 
 
 
+# v0.11.6 ======================================================================
+#' @rdname defunct
+#' @export
+separatorBar <- function(...) {
+    .Defunct("separator")
+}
+
+
+
 ## nolint end
 ## nocov end

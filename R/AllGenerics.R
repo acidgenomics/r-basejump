@@ -1,4 +1,9 @@
-## Define other generics in the bioverbs package instead.
+#' All generic functions
+#' @include AllGenerics.R
+#' @noRd
+NULL
+
+
 
 #' @rdname Ensembl2Entrez
 #' @export
@@ -9,6 +14,8 @@ setGeneric(
     }
 )
 
+
+
 #' @rdname Gene2Symbol
 #' @export
 setGeneric(
@@ -17,6 +24,8 @@ setGeneric(
         standardGeneric("Gene2Symbol")
     }
 )
+
+
 
 #' @rdname Tx2Gene
 #' @export
@@ -38,6 +47,8 @@ setGeneric(
     }
 )
 
+
+
 #' @rdname makeSingleCellExperiment
 #' @export
 setGeneric(
@@ -46,6 +57,8 @@ setGeneric(
         standardGeneric("makeSingleCellExperiment")
     }
 )
+
+
 
 #' @rdname makeSummarizedExperiment
 #' @export

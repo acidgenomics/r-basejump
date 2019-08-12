@@ -28,6 +28,7 @@
 \alias{theme_midnight}
 \alias{theme_paperwhite}
 \alias{tx2geneFromGFF}
+\alias{separatorBar}
 \title{Defunct functions}
 \usage{
 aggregateFeatures(...)
@@ -81,6 +82,8 @@ theme_midnight(...)
 theme_paperwhite(...)
 
 tx2geneFromGFF(...)
+
+separatorBar(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
