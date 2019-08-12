@@ -4,7 +4,7 @@
 #'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
 #'   normalized counts here.
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-12.
 #'
 #' @inheritParams acidroxygen::params
 #' @param prefilter `logical(1)`.
@@ -38,7 +38,7 @@ NULL
 
 
 
-## Updated 2019-08-07.
+## Updated 2019-08-12.
 `calculateMetrics,matrix` <-  # nolint
     function(
         object,
@@ -63,8 +63,8 @@ NULL
         missingBiotype <- function() {
             message(paste0(
                 "Calculating metrics without biotype information.\n",
-                "`rowRanges` required to calculate: ",
-                "nCoding, nMito, mitoRatio"
+                "'rowRanges' required to calculate: ",
+                "nCoding, nMito, mitoRatio."
             ))
         }
 
@@ -78,7 +78,7 @@ NULL
             setdiff <- setdiff(rownames(object), names(rowRanges))
             if (hasLength(setdiff)) {
                 stop(sprintf(
-                    fmt = "Features missing in rowRanges: %s",
+                    fmt = "Features missing in 'rowRanges()': %s",
                     toString(setdiff, width = 200L)
                 ))
             }
@@ -86,7 +86,7 @@ NULL
             ## Subset ranges to match matrix.
             assert(isSubset(rownames(object), names(rowRanges)))
             rowRanges <- rowRanges[rownames(object)]
-            rowData <- mcols(rowRanges)
+            rowData <- mcols(rowRanges, use.names = TRUE)
             assert(
                 hasRownames(rowData),
                 identical(rownames(rowData), names(rowRanges))
