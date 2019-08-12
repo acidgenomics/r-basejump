@@ -92,10 +92,6 @@ NULL
         mitoRatioCol = "mitoRatio"
     ) {
         validObject(object)
-        ## Don't allow re-run on already filtered object.
-        if (hasSubset(object, metadata = "filterCells")) {
-            stop("Object has already been filtered with 'filterCells()'.")
-        }
         assert(
             ## nCells
             all(isIntegerish(nCells)),
@@ -238,6 +234,7 @@ NULL
         assert(identical(names(cells), colnames(object)))
 
         ## Keep top expected number of cells per sample.
+        ## FIXME Allow the user to apply this per sample.
         if (nCells < Inf) {
             metrics <- metrics[cells, , drop = FALSE]
             split <- split(x = metrics, f = metrics[["sampleID"]])
