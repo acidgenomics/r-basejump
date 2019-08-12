@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Subset per sample — subsetPerSample • basejump</title>
+<title>Filter cells — filterCells • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Subset per sample — subsetPerSample" />
+<meta property="og:title" content="Filter cells — filterCells" />
 
-<meta property="og:description" content="Subset per sample" />
+<meta property="og:description" content="Filter cells" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,22 +111,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Subset per sample</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/subsetPerSample-methods.R'><code>R/subsetPerSample-methods.R</code></a></small>
-    <div class="hidden name"><code>subsetPerSample.Rd</code></div>
+    <h1>Filter cells</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/filterCells-methods.R'><code>R/filterCells-methods.R</code></a></small>
+    <div class="hidden name"><code>filterCells.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Subset per sample</p>
+    <p>Filter cells</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>subsetPerSample</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>filterCells</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>subsetPerSample</span>(<span class='no'>object</span>, <span class='kw'>minCells</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>assignAndSave</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>(), <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>)</pre>
+<span class='fu'>filterCells</span>(<span class='no'>object</span>, <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>maxCounts</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>minFeatures</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>maxFeatures</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>minNovelty</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>maxMitoRatio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>minCellsPerFeature</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>nCells</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>countsCol</span> <span class='kw'>=</span> <span class='st'>"nCount"</span>, <span class='kw'>featuresCol</span> <span class='kw'>=</span> <span class='st'>"nFeature"</span>,
+  <span class='kw'>noveltyCol</span> <span class='kw'>=</span> <span class='st'>"log10FeaturesPerCount"</span>, <span class='kw'>mitoRatioCol</span> <span class='kw'>=</span> <span class='st'>"mitoRatio"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,26 +139,49 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>minCells</th>
+      <th>minCounts, maxCounts</th>
       <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
-Minimum number of cells required per sample.</p></td>
+Minimum/maximum number of counts per cell.
+Applies to UMI disambiguated counts for droplet scRNA-seq.
+Matches <code>nUMI</code> then <code>nCount</code> column in
+<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code> internally.
+Previously named <code>minUMIs</code>/<code>maxUMIs</code> in bcbioSingleCell.</p></td>
     </tr>
     <tr>
-      <th>assignAndSave</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Assign and save the individual datasets.</p></td>
+      <th>minFeatures, maxFeatures</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
+Minimum/maximum number of features (i.e. genes) detected.
+Matches <code>nFeature</code>in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code> internally.
+Previously named <code>minGenes</code>/<code>maxGenes</code> in bcbioSingleCell.</p></td>
     </tr>
     <tr>
-      <th>envir</th>
-      <td><p><code>environment</code>.
-Where to assign the subsets.
-Only applicable when <code>assignAndSave = TRUE</code>.</p></td>
+      <th>minNovelty</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> (<code>0</code>-<code>1</code>).
+Minimum novelty score (log10 features per UMI).
+Matches <code>log10FeaturesPerCount</code> then <code>log10FeaturesPerUMI</code> (legacy)
+<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code> internally.</p></td>
     </tr>
     <tr>
-      <th>dir</th>
+      <th>maxMitoRatio</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> (<code>0</code>-<code>1</code>).
+Maximum relative mitochondrial abundance.</p></td>
+    </tr>
+    <tr>
+      <th>minCellsPerFeature</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
+Include genes with non-zero expression in at least this many cells.
+Previously named <code>minCellsPerGene</code> in bcbioSingleCell.</p></td>
+    </tr>
+    <tr>
+      <th>nCells</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
+Expected number of cells per sample.
+Don't set this by default, unless you're confident of your capture.</p></td>
+    </tr>
+    <tr>
+      <th>countsCol, featuresCol, noveltyCol, mitoRatioCol</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Output directory.
-Only applicable when <code>assignAndSave = TRUE</code>.</p></td>
+Column mapping name.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -165,12 +191,18 @@ Only applicable when <code>assignAndSave = TRUE</code>.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p><code>SingleCellExperiment</code>.</p>
     
-<ul>
-<li><p><code>assignAndSave = FALSE</code>: Per sample objects in a <code>list</code>.</p></li>
-<li><p><code>assignAndSave = TRUE</code>: Subset file paths.</p></li>
-</ul>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>Apply feature (i.e. gene/transcript) detection, novelty score, and
+mitochondrial abundance cutoffs to cellular barcodes. By default we recommend
+applying the same filtering cutoff to all samples. The filtering parameters
+now support per-sample cutoffs, defined using a named <code>numeric</code> vector. When
+matching per sample, be sure to use the <code><a href='sampleNames.html'>sampleNames()</a></code> return values (i.e.
+the <code>sampleName</code> column in <code><a href='sampleData.html'>sampleData()</a></code>).</p>
+<p>Filtering information gets slotted into <code><a href='https://rdrr.io/pkg/S4Vectors/man/Annotated-class.html'>metadata()</a></code>
+as <code>filterCells</code> metadata.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -179,22 +211,16 @@ Only applicable when <code>assignAndSave = TRUE</code>.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-
-<span class='co'>## List mode (default).</span>
-<span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='fu'>subsetPerSample</span>(<span class='no'>object</span>, <span class='kw'>assignAndSave</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>1 sample matched: sample1.</span></div><div class='output co'>#&gt; <span class='message'>64 cells matched.</span></div><div class='output co'>#&gt; <span class='message'>1 sample matched: sample2.</span></div><div class='output co'>#&gt; <span class='message'>36 cells matched.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>list</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2"</div><div class='input'>
-<span class='co'>## Assign and save mode (useful for large datasets).</span>
-<span class='fu'>subsetPerSample</span>(
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>filterCells</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in filterCells(object): could not find function "filterCells"</span></div><div class='input'><span class='fu'><a href='show.html'>show</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in show(x): object 'x' not found</span></div><div class='input'>
+<span class='co'>## Per sample cutoffs.</span>
+<span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt;   sample1   sample2 
+#&gt; "sample1" "sample2" </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>filterCells</span>(
     <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
-    <span class='kw'>assignAndSave</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>(),
-    <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"subsetPerSample"</span>
-)</div><div class='output co'>#&gt; <span class='message'>1 sample matched: sample1.</span></div><div class='output co'>#&gt; <span class='message'>64 cells matched.</span></div><div class='output co'>#&gt; <span class='message'>Saving sample1.rds to /Users/mike/git/packages/basejump/docs/reference/subsetPerSample</span></div><div class='output co'>#&gt; <span class='message'>1 sample matched: sample2.</span></div><div class='output co'>#&gt; <span class='message'>36 cells matched.</span></div><div class='output co'>#&gt; <span class='message'>Saving sample2.rds to /Users/mike/git/packages/basejump/docs/reference/subsetPerSample</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='st'>"subsetPerSample"</span>))</div><div class='output co'>#&gt; [1] "sample1.rds" "sample2.rds"</div><div class='input'>
-<span class='co'>## Clean up.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='st'>"subsetPerSample"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
+    <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>sample1</span> <span class='kw'>=</span> <span class='fl'>100L</span>)
+)</div><div class='output co'>#&gt; <span class='error'>Error in filterCells(object = object, minCounts = c(sample1 = 100L)): could not find function "filterCells"</span></div><div class='input'><span class='fu'><a href='show.html'>show</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in show(x): object 'x' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -202,6 +228,8 @@ Only applicable when <code>assignAndSave = TRUE</code>.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#note">Note</a></li>
       

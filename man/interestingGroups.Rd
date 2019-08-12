@@ -37,7 +37,7 @@ interestingGroups(object, ...)  <- value
 Interesting groups
 }
 \note{
-Updated 2019-08-06.
+Updated 2019-08-11.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

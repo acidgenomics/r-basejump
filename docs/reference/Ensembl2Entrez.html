@@ -124,16 +124,16 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>Ensembl2Entrez</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>, <span class='st'>"long"</span>))
+<span class='fu'>Ensembl2Entrez</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>, <span class='st'>"long"</span>))
 
 <span class='co'># S4 method for GRanges</span>
-<span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>, <span class='st'>"long"</span>))
+<span class='fu'>Ensembl2Entrez</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>, <span class='st'>"long"</span>))
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>,
+<span class='fu'>Ensembl2Entrez</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1:1"</span>,
   <span class='st'>"long"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -175,7 +175,7 @@ Return 1:many in long format.</p></li>
 <span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Ensembl2Entrez-class.html'>Ensembl2Entrez</a></span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>4 genes don't map to Entrez.</span></div><div class='output co'>#&gt; <span class='message'>2 genes map to multiple Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'>Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Ensembl2Entrez with 500 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>Ensembl2Entrez</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>4 genes don't map to Entrez.</span></div><div class='output co'>#&gt; <span class='message'>2 genes map to multiple Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'>Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Ensembl2Entrez with 500 rows and 2 columns
 #&gt;                  geneID  entrezID
 #&gt;             &lt;character&gt; &lt;integer&gt;
 #&gt; gene001 ENSG00000000003      7105

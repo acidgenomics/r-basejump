@@ -145,7 +145,7 @@ setMethod(
         fun = c("mean", "median", "sum")
     ) {
         fun <- match.arg(fun)
-        message(paste("Calculating", fun, "per sample."))
+        message(sprintf("Calculating %s per sample.", fun))
         ## Consider using `getFromNamespace` here instead.
         ## Note that we're using uppercase here, because `fun` is matched arg.
         FUN <- get(fun, inherits = TRUE)  # nolint
@@ -156,8 +156,8 @@ setMethod(
             pattern <- "^n[A-Z0-9]"
             if (!any(grepl(pattern, colnames(metrics)))) {
                 stop(paste(
-                    "`sum` method only applies to metrics columns",
-                    "prefixed with `n` (e.g. `nUMI`)."
+                    "'sum()' method only applies to metrics columns",
+                    "prefixed with 'n' (e.g. 'nCount')."
                 ))
             }
             ## Sum only the `n*` columns containing counts.

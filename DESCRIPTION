@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.11.5
-Date: 2019-08-08
+Date: 2019-08-11
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -35,10 +35,10 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    bioverbs (>= 0.2.3),
+    bioverbs (>= 0.2.4),
     brio (>= 0.3.2),
     freerange (>= 0.2.1),
-    goalie (>= 0.3.1),
+    goalie (>= 0.3.3),
     syntactic (>= 0.2.3),
     transformer (>= 0.2.2),
     Biobase,
@@ -158,6 +158,7 @@ Collate:
     'organism-methods.R'
     'package.R'
     'prepareTemplate.R'
+    'pseudobulk-methods.R'
     'rankedMatrix.R'
     'reexports-bioverbs.R'
     'reexports-brio.R'

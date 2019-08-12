@@ -5,7 +5,7 @@
 #'
 #' These plate formats are frequently used for high-throughput screening assays.
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #' @export
 #'
 #' @param plates `integer(1)`.
@@ -59,7 +59,6 @@ microplate <- function(
     controls <- as.integer(controls)
     ## Prefix
     assert(isString(prefix, nullOK = TRUE))
-
     if (wells == 96L) {
         row <- 8L
         col <- 12L
@@ -67,16 +66,13 @@ microplate <- function(
         row <- 16L
         col <- 24L
     }
-
     row <- LETTERS[1L:row]
     col <- 1L:col %>%
         str_pad(width = max(str_length(.)), pad = "0")
     plates <- 1L:plates %>%
         str_pad(width = max(str_length(.)), pad = "0")
-
     df <- expand.grid(plates, row, col)
     vector <- sort(paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]))
-
     ## Prepare control wells.
     if (controls > 0L) {
         ## Create a grep string matching the control wells.
@@ -90,11 +86,10 @@ microplate <- function(
         ## Remove the control wells using `grepl`.
         vector <- vector[!grepl(grep, vector)]
     }
-
     ## Add a prefix, if desired.
     if (isString(prefix)) {
         vector <- paste0(prefix, "-", vector)
     }
-
+    ## Return.
     vector
 }

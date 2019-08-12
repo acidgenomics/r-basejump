@@ -2,7 +2,7 @@
 #'
 #' @note Ties are resolved automatically by calculating the average. See the
 #'   `ties.method` parameter in [`rank()`][base::rank] for details.
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -14,6 +14,8 @@
 #' @seealso
 #' - [`rank()`][base::rank].
 #' - Not to be confused with [Matrix::rankMatrix()].
+#'
+#' @return `matrix`.
 #'
 #' @examples
 #' data(matrix_lfc, package = "acidtest")
@@ -37,26 +39,24 @@ rankedMatrix <- function(
         isInt(MARGIN)
     )
     method <- match.arg(method)
-
     if (method %in% c("decreasing", "increasing")) {
         if (method == "decreasing") {
             decreasing <- TRUE
         } else if (method == "increasing") {
             decreasing <- FALSE
         }
-        mat <- .rank.matrix(
+        mat <- `.rank,matrix`(
             x = object,
             MARGIN = MARGIN,
             decreasing = decreasing
         )
     } else if (method == "bidirectional") {
-        mat <- .bidirRank.matrix(
+        mat <- `.bidirRank,matrix`(
             x = object,
             MARGIN = MARGIN,
             removeZeros = FALSE
         )
     }
-
     mat
 }
 
@@ -64,7 +64,7 @@ rankedMatrix <- function(
 
 ## Consider using `data.table::frank()` instead of `base::rank()` for speed.
 ## This adds an additional dependency, so avoid at the moment.
-.rank.numeric <-  # nolint
+`.rank,numeric` <-  # nolint
     function(x, decreasing = FALSE) {
         assert(
             is.numeric(x),
@@ -78,7 +78,7 @@ rankedMatrix <- function(
 
 
 
-.rank.matrix <-  # nolint
+`.rank,matrix` <-  # nolint
     function(
         x,
         MARGIN = 2L,  # nolint
@@ -92,7 +92,7 @@ rankedMatrix <- function(
         apply(
             X = x,
             MARGIN = MARGIN,
-            FUN = .rank.numeric,
+            FUN = `.rank,numeric`,
             decreasing = decreasing
         )
     }
@@ -100,22 +100,19 @@ rankedMatrix <- function(
 
 
 ## Note that use of `which()` here will omit `NA` intentionally.
-.bidirRank.numeric <-  # nolint
+`.bidirRank,numeric` <-  # nolint
     function(x, removeZeros = FALSE) {
         assert(
             is.numeric(x),
             isFlag(removeZeros)
         )
         ties <- "average"
-
         ## Set any zero values to NA.
         if (isTRUE(removeZeros)) {
             x[x == 0L] <- NA
         }
-
         up <- rank(x = x[which(x > 0L)], ties.method = ties)
         down <- -rank(x = -x[which(x < 0L)], ties.method = ties)
-
         y <- x
         y[names(up)] <- up
         y[names(down)] <- down
@@ -124,7 +121,7 @@ rankedMatrix <- function(
 
 
 
-.bidirRank.matrix <-  # nolint
+`.bidirRank,matrix` <-  # nolint
     function(
         x,
         MARGIN = 2L,  # nolint
@@ -138,7 +135,7 @@ rankedMatrix <- function(
         apply(
             X = x,
             MARGIN = MARGIN,
-            FUN = .bidirRank.numeric,
+            FUN = `.bidirRank,numeric`,
             removeZeros = removeZeros
         )
     }

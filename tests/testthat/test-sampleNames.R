@@ -18,7 +18,7 @@ test_that("SE assignment", {
 test_that("SE assignment failures", {
     expect_error(
         sampleNames(rse) <- "xxx",
-        "The names of value are NULL."
+        "The names of 'value' are NULL."
     )
     expect_error(
         sampleNames(rse) <- c(aaa = "bbb"),

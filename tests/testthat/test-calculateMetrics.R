@@ -1,7 +1,7 @@
 context("calculateMetrics")
 
 with_parameters_test_that(
-    "SingleCellExperiment", {
+    "matrix-like", {
         object <- calculateMetrics(object, prefilter = TRUE)
         expect_s4_class(object, "DataFrame")
         ## Check for run-length encoding.
@@ -21,12 +21,28 @@ with_parameters_test_that(
     },
     object = list(
         Matrix = counts(sce),
-        DelayedArray = DelayedArray(counts(sce)),
+        DelayedArray = DelayedArray(counts(sce))
+    )
+)
+
+with_parameters_test_that(
+    "SummarizedExperiment", {
+        x <- calculateMetrics(object)
+        expect_s4_class(x, "SummarizedExperiment")
+    },
+    object = list(
+        SummarizedExperiment = rse,
         SingleCellExperiment = sce
     )
 )
 
-test_that("RangedSummarizedExperiment", {
-    object <- calculateMetrics(rse)
-    expect_s4_class(object, "DataFrame")
+test_that("Low pass prefiltering", {
+    ## All barcodes in example should pass.
+    object <- sce
+    x <- calculateMetrics(object, prefilter = TRUE)
+    expect_identical(ncol(x), ncol(object))
+    ## Simulate some poor barcodes.
+    counts(object)[, seq_len(2L)] <- 0L
+    x <- calculateMetrics(object, prefilter = TRUE)
+    expect_identical(ncol(x), ncol(object) - 2L)
 })

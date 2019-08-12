@@ -19,6 +19,9 @@ rankedMatrix(object, MARGIN = 2L, method = c("increasing",
 \item{method}{\code{character(1)}.
 Rank the values in \code{increasing}, \code{decreasing}, or \code{bidirectional} order.}
 }
+\value{
+\code{matrix}.
+}
 \description{
 Calculate a ranked matrix
 }
@@ -26,7 +29,7 @@ Calculate a ranked matrix
 Ties are resolved automatically by calculating the average. See the
 \code{ties.method} parameter in \code{\link[base:rank]{rank()}} for details.
 
-Updated 2019-07-28.
+Updated 2019-08-11.
 }
 \examples{
 data(matrix_lfc, package = "acidtest")

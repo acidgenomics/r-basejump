@@ -1,7 +1,7 @@
 #' @name zerosVsDepth
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @inherit bioverbs::zerosVsDepth
-#' @note Updated 2019-08-06.
+#' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -52,14 +52,13 @@ setMethod(
 
 ## Using a logical matrix is faster and more memory efficient.
 ## Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
-## Updated 2019-07-22.
+## Updated 2019-08-11.
 `zerosVsDepth,sparseMatrix` <-  # nolint
     function(object) {
         assert(is(object, "sparseMatrix"))
         assert(!is(object, "lgCMatrix"))
-        present <- object %>%
-            as("dgCMatrix") %>%
-            as("lgCMatrix")
+        present <- as(object, "dgCMatrix")
+        present <- as(present, "lgCMatrix")
         colSums <- Matrix::colSums
         DataFrame(
             dropout = (nrow(present) - colSums(present)) / nrow(present),
@@ -106,31 +105,24 @@ setMethod(
 
 
 
-## Updated 2019-08-06.
+## Updated 2019-08-11.
 `zerosVsDepth,SingleCellExperiment` <-  # nolint
     function(object, assay = 1L) {
         assert(isScalar(assay))
         counts <- assay(object, i = assay)
-
         data <- zerosVsDepth(counts)
         data[["sampleID"]] <- cell2sample(object)
-
         sampleData <- sampleData(object)
         sampleData[["sampleID"]] <- as.factor(rownames(sampleData))
-
         assert(
             is(data, "DataFrame"),
             is(sampleData, "DataFrame")
         )
-        ## Consider using BiocTibble approach here in a future update.
-        join <- left_join(
-            x = as_tibble(data, rownames = "rowname"),
-            y = as_tibble(sampleData, rownames = NULL),
-            by = "sampleID"
+        out <- left_join(x = data, y = sampleData, by = "sampleID")
+        assert(
+            is(out, "DataFrame"),
+            hasRownames(out)
         )
-
-        out <- as(join, "DataFrame")
-        assert(hasRownames(out))
         out
     }
 

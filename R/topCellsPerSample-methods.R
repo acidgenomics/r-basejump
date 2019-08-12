@@ -32,7 +32,6 @@ NULL
     function(object, n = 100L) {
         validObject(object)
         assert(isInt(n))
-
         cell2sample <- cell2sample(object)
         counts <- counts(object)
         if (is(counts, "sparseMatrix")) {
@@ -40,7 +39,6 @@ NULL
         }
         colSums <- colSums(counts)
         assert(identical(names(cell2sample), names(colSums)))
-
         tibble(
             cellID = names(cell2sample),
             sampleID = cell2sample,

@@ -3,7 +3,7 @@
 #' Prevent unwanted downstream behavior when a missing interesting group
 #' is requested by the user.
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #' @export
 #'
 #' @inherit goalie::check return
@@ -25,7 +25,7 @@ matchesInterestingGroups <- function(
 ) {
     ok <- isS4(x)
     if (!isTRUE(ok)) {
-        return(false("%s is not S4 class.", .xname))
+        return(false("'%s' is not S4 class.", .xname))
     }
 
     ## Early return on `NULL` interesting groups (e.g. example DESeqDataSet).
@@ -36,9 +36,7 @@ matchesInterestingGroups <- function(
 
     ## Otherwise, require a character vector.
     ok <- isCharacter(interestingGroups)
-    if (!isTRUE(ok)) {
-        return(false("interestingGroups is not non-empty character."))
-    }
+    if (!isTRUE(ok)) return(ok)
 
     ## Using `sampleData()` to check against `interestingGroups` column.
     data <- sampleData(x)
@@ -46,7 +44,7 @@ matchesInterestingGroups <- function(
     ## Check intersection with sample data.
     ok <- isSubset(interestingGroups, colnames(data))
     if (!isTRUE(ok)) {
-        return(false("Interesting groups are not defined in sampleData()."))
+        return(false("Interesting groups are not defined in 'sampleData()'."))
     }
 
     ## Check that interesting groups columns are factors.

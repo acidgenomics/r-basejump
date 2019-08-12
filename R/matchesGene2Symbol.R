@@ -1,6 +1,6 @@
 #' Check that user-defined gene input matches expected values
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #' @export
 #'
 #' @inherit goalie::check return
@@ -39,25 +39,20 @@ matchesGene2Symbol <- function(
 ) {
     ok <- hasRownames(x)
     if (!isTRUE(ok)) {
-        return(false("%s doesn't have row names.", .xname))
+        return(false("'%s' doesn't have row names.", .xname))
     }
 
     ok <- isCharacter(genes)
-    if (!isTRUE(ok)) {
-        return(false(
-            "genes is not non-empty character: %s",
-            toString(genes)
-        ))
-    }
+    if (!isTRUE(ok)) return(ok)
 
     ok <- is(gene2symbol, "Gene2Symbol")
     if (!isTRUE(ok)) {
-        return(false("gene2symbol must be Gene2Symbol S4 class."))
+        return(false("'gene2symbol' must be Gene2Symbol S4 class."))
     }
 
     ok <- identical(nrow(x), nrow(gene2symbol))
     if (!isTRUE(ok)) {
-        return(false("Row mismatch between x and gene2symbol."))
+        return(false("Row mismatch between 'x' and 'gene2symbol'."))
     }
 
     ## Consider tightening up this step.
@@ -71,7 +66,7 @@ matchesGene2Symbol <- function(
         y = rownames(x)
     )
     if (!isTRUE(ok)) {
-        return(false("Failed to map genes to rownames in %s.", .xname))
+        return(false("Failed to map genes to rownames in '%s'.", .xname))
     }
 
     TRUE

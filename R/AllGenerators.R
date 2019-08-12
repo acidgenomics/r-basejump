@@ -151,9 +151,9 @@ NULL
 
         cols <- c("geneID", "entrezID")
         if (!all(cols %in% colnames(object))) {
-            stop(paste0(
-                "Object does not contain Ensembl-to-Entrez mappings.\n",
-                "Requires: ", toString(cols)
+            stop(sprintf(
+                "Object does not contain Ensembl-to-Entrez mappings: %s.",
+                toString(cols)
             ))
         }
 
@@ -170,21 +170,21 @@ NULL
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
         assert(hasNoDuplicates(unmapped))
         if (length(unmapped) > 0L) {
-            message(paste(length(unmapped), "genes don't map to Entrez."))
+            message(sprintf("%d genes don't map to Entrez.", length(unmapped)))
         }
 
         ## Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
         if (length(multimapped) > 0L) {
-            message(paste(
-                length(multimapped), "genes map to multiple Entrez IDs."
+            message(sprintf(
+                "%d genes map to multiple Entrez IDs.", length(multimapped)
             ))
         }
 
         if (format == "1:1") {
-            message(paste(
+            message(
                 "Returning with 1:1 mappings using oldest Entrez ID per gene."
-            ))
+            )
             entrez <- object[["entrezID"]]
             assert(is.list(entrez))
             names(entrez) <- object[["geneID"]]
@@ -330,9 +330,9 @@ NULL
         ## Check for required columns.
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
-            stop(paste0(
-                "Object does not contain gene-to-symbol mappings.\n",
-                "Requires: ", toString(cols)
+            stop(sprintf(
+                "Object does not contain gene-to-symbol mappings: %s.",
+                toString(cols)
             ))
         }
 
@@ -348,8 +348,8 @@ NULL
         duplicated <- duplicated(data[["geneName"]])
         if (any(duplicated)) {
             dupes <- unique(data[["geneName"]][duplicated])
-            message(paste(
-                length(dupes), "non-unique gene symbol(s) detected."
+            message(sprintf(
+                "%d non-unique gene symbol(s) detected.", length(dupes)
             ))
         }
 
@@ -513,7 +513,7 @@ MGI2Ensembl <- function() {  # nolint
         )
     }
 
-    message("Obtaining MGI to Ensembl gene ID mappings.")
+    message("Obtaining MGI-to-Ensembl gene ID mappings.")
     data <- read_tsv(
         file = file,
         ## Using our global NA strings.
@@ -584,10 +584,9 @@ PANTHER <- function(  # nolint
     )
     release <- match.arg(arg = release, choices = .pantherReleases)
 
-    message(paste0(
-        "Downloading PANTHER annotations for ",
-        organism,
-        " (", release, ")."
+    message(sprintf(
+        "Downloading PANTHER annotations for %s (%s).",
+        organism, release
     ))
 
     if (isTRUE(getOption("acid.test"))) {
@@ -854,9 +853,9 @@ NULL
         ## Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
-            stop(paste0(
-                "Object does not contain transcript-to-gene mappings.\n",
-                "Requires: ", toString(cols)
+            stop(sprintf(
+                "Object does not contain transcript-to-gene mappings: %s.",
+                toString(cols)
             ))
         }
 

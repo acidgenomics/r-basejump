@@ -4,7 +4,7 @@
 #' @note For objects containing a count matrix, the object rows will be
 #'   collapsed to gene level using `aggregateRows`. This applies to our
 #'   `SummarizedExperiment` method.
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param aggregate `logical(1)`.
@@ -77,7 +77,10 @@ NULL
         validObject(tx2gene)
         missing <- setdiff(object, tx2gene[["transcriptID"]])
         if (length(missing) > 0L) {
-            stop(paste("Failed to match transcripts:", toString(missing)))
+            stop(sprintf(
+                "Failed to match transcripts: %s.",
+                toString(missing, width = 100L)
+            ))
         }
         tx2gene <- tx2gene[
             match(x = object, table = tx2gene[["transcriptID"]]),

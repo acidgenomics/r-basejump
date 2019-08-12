@@ -21,10 +21,11 @@
 #' @importFrom DelayedArray DelayedArray
 #' @importFrom DelayedMatrixStats colSums2 rowSums2
 #' @importFrom GenomeInfoDb seqnames
+#' @importFrom IRanges DataFrameList
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate cor decode
-#'   expand head mcols mcols<- merge metadata metadata<- na.omit split summary
-#'   tail
+#'   expand head lapply mcols mcols<- merge metadata metadata<- na.omit split
+#'   summary tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
@@ -38,10 +39,10 @@
 #'   hasNoDuplicates hasNonZeroRowsAndCols hasRows hasRownames hasUniqueCols
 #'   hasValidDimnames hasValidNames isADirectory isAlpha isAny isCharacter
 #'   isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction
-#'   isInClosedRange isInRange isInt isMatchingRegex isNonNegative
-#'   isNotMatchingRegex isNumber isPositive isScalar isString isSubset
-#'   isSuperset matchesUniqueGeneNames methodFunction validNames validate
-#'   validateClasses
+#'   isInClosedRange isInLeftOpenRange isInRange isInt isIntegerish
+#'   isMatchingRegex isNonNegative isNotMatchingRegex isNumber isPositive
+#'   isScalar isString isSubset isSuperset matchesUniqueGeneNames methodFunction
+#'   validNames validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars

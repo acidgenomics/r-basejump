@@ -26,7 +26,7 @@ Prevent unwanted downstream behavior when a missing interesting group
 is requested by the user.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-11.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

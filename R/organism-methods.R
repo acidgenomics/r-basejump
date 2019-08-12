@@ -164,14 +164,12 @@ setMethod(
         if (isString(organism)) {
             return(organism)
         }
-
         ## Fall back to detecting from rowRanges or rownames.
         if ("geneID" %in% colnames(rowData(object))) {
             x <- as.character(rowData(object)[["geneID"]])
         } else {
             x <- rownames(object)
         }
-
         detectOrganism(x)
     }
 

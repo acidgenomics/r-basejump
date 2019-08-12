@@ -19,7 +19,7 @@ Sanitized data frame containing only non-blacklisted columns and all
 Sanitize sample data
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-11.
 }
 \section{Blacklist}{
 

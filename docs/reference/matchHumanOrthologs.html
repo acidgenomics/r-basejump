@@ -161,7 +161,7 @@ Data frame containing mapping columns:</p><ul>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-05.</p>
+    <p>Updated 2019-08-11.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -170,7 +170,7 @@ Data frame containing mapping columns:</p><ul>
     <span class='st'>"ENSMUSG00000000028"</span>, <span class='st'>"ENSMUSG00000000031"</span>,
     <span class='st'>"ENSMUSG00000000037"</span>, <span class='st'>"ENSMUSG00000000049"</span>
 )
-<span class='fu'>matchHumanOrthologs</span>(<span class='no'>genes</span>, <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>87L</span>)</div><div class='output co'>#&gt; <span class='message'>Matching orthologs against Ensembl Genes 87 (dec2016.archive.ensembl.org) with biomaRt 2.40.3.</span></div><div class='output co'>#&gt; <span class='message'>Getting Mus musculus gene symbols.</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.0 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73905: Ensembl 97 EnsDb for Mus musculus</span>
+<span class='fu'>matchHumanOrthologs</span>(<span class='no'>genes</span>, <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>87L</span>)</div><div class='output co'>#&gt; <span class='message'>Matching orthologs against Ensembl Genes 87 (dec2016.archive.ensembl.org) with biomart 2.40.3.</span></div><div class='output co'>#&gt; <span class='message'>Getting Mus musculus gene symbols.</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.0 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73905: Ensembl 97 EnsDb for Mus musculus</span>
 #&gt; <span class='message'>Run this code to download EnsDb manually:</span>
 #&gt; <span class='message'>  &gt; library(AnnotationHub)</span>
 #&gt; <span class='message'>  &gt; ah &lt;- AnnotationHub()</span>
@@ -185,14 +185,30 @@ Data frame containing mapping columns:</p><ul>
 #&gt; <span class='message'>  - Genome Build: GRCh38</span>
 #&gt; <span class='message'>  - Ensembl Release: 79</span>
 #&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>65774 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>2403 non-unique gene symbol(s) detected.</span></div><div class='output co'>#&gt; <span class='message'>Returning with unmodified gene symbols (may contain duplicates).</span></div><div class='output co'>#&gt; DataFrame with 6 rows and 4 columns
-#&gt;                                geneID          hgncID    geneName    hgncName
-#&gt;                           &lt;character&gt;     &lt;character&gt; &lt;character&gt; &lt;character&gt;
-#&gt; ENSMUSG00000000001 ENSMUSG00000000001 ENSG00000065135       Gnai3       GNAI3
-#&gt; ENSMUSG00000000003 ENSMUSG00000000003              NA        Pbsn          NA
-#&gt; ENSMUSG00000000028 ENSMUSG00000000028 ENSG00000093009       Cdc45       CDC45
-#&gt; ENSMUSG00000000031 ENSMUSG00000000031              NA         H19          NA
-#&gt; ENSMUSG00000000037 ENSMUSG00000000037 ENSG00000102098       Scml2       SCML2
-#&gt; ENSMUSG00000000049 ENSMUSG00000000049 ENSG00000091583        Apoh        APOH</div></pre>
+#&gt;                                geneID
+#&gt;                           &lt;character&gt;
+#&gt; ENSMUSG00000000001 ENSMUSG00000000001
+#&gt; ENSMUSG00000000003 ENSMUSG00000000003
+#&gt; ENSMUSG00000000028 ENSMUSG00000000028
+#&gt; ENSMUSG00000000031 ENSMUSG00000000031
+#&gt; ENSMUSG00000000037 ENSMUSG00000000037
+#&gt; ENSMUSG00000000049 ENSMUSG00000000049
+#&gt;                             hgncID    geneName
+#&gt;                        &lt;character&gt; &lt;character&gt;
+#&gt; ENSMUSG00000000001 ENSG00000065135       Gnai3
+#&gt; ENSMUSG00000000003              NA        Pbsn
+#&gt; ENSMUSG00000000028 ENSG00000093009       Cdc45
+#&gt; ENSMUSG00000000031              NA         H19
+#&gt; ENSMUSG00000000037 ENSG00000102098       Scml2
+#&gt; ENSMUSG00000000049 ENSG00000091583        Apoh
+#&gt;                       hgncName
+#&gt;                    &lt;character&gt;
+#&gt; ENSMUSG00000000001       GNAI3
+#&gt; ENSMUSG00000000003          NA
+#&gt; ENSMUSG00000000028       CDC45
+#&gt; ENSMUSG00000000031          NA
+#&gt; ENSMUSG00000000037       SCML2
+#&gt; ENSMUSG00000000049        APOH</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -39,6 +39,9 @@ Only applicable when \code{assignAndSave = TRUE}.}
 \description{
 Subset per sample
 }
+\note{
+Updated 2019-08-11.
+}
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 sce <- SingleCellExperiment

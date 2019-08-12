@@ -183,7 +183,7 @@ Grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code> (e.g. 
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-06.</p>
+    <p>Updated 2019-08-11.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -196,19 +196,20 @@ Grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code> (e.g. 
 <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; [1] 500  12</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>meltCounts</span>(<span class='no'>rse</span>, <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 6000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,000 x 6</span><span>
 #&gt; </span><span style='color: #949494;'># Groups:   colname, rowname [6,000]</span><span>
-#&gt;    rowname colname  counts condition sampleName interestingGroups
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> gene001 sample01      4 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> gene002 sample01     49 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> gene003 sample01     73 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> gene004 sample01      0 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> gene005 sample01      6 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> gene006 sample01     12 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> gene007 sample01     13 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> gene008 sample01    146 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> gene009 sample01      6 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> gene010 sample01     10 A         sample01   A                
-#&gt; </span><span style='color: #949494;'># … with 5,990 more rows</span><span></div></span></pre>
+#&gt;    rowname colname counts condition sampleName
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> gene001 sample…      4 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> gene002 sample…     49 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> gene003 sample…     73 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> gene004 sample…      0 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> gene005 sample…      6 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> gene006 sample…     12 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> gene007 sample…     13 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> gene008 sample…    146 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> gene009 sample…      6 A         sample01  
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> gene010 sample…     10 A         sample01  
+#&gt; </span><span style='color: #949494;'># … with 5,990 more rows, and 1 more variable:
+#&gt; #   interestingGroups </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

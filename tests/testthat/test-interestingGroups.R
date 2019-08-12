@@ -23,6 +23,6 @@ test_that("Assignment method", {
     )
     expect_error(
         object = interestingGroups(object) <- "XXX",
-        regexp = "Interesting groups must be columns in `sampleData\\(\\)`."
+        regexp = "XXX"
     )
 })
