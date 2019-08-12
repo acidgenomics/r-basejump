@@ -31,10 +31,3 @@ separator <- function(
     )
     paste0(rep(x = sep, times = times), collapse = "")
 }
-
-
-
-## Soft deprecated, since this is still in use by bcbio R packages.
-#' @rdname deprecated
-#' @export
-separatorBar <- separator()
