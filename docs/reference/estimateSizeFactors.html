@@ -70,7 +70,7 @@ to those generated after normalization with other sets of size factors." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
       </span>
     </div>
 
@@ -224,13 +224,13 @@ can handle millions of cells without the calculations blowing up in memory.</p>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>estimateSizeFactors</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating library size factors using mean-ratio method.</span></div><div class='output co'>#&gt; <span class='message'>Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='sizeFactors.html'>sizeFactors</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt;  sample01  sample02  sample03  sample04  sample05  sample06  sample07  sample08 
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>estimateSizeFactors</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating library size factors using 'mean-ratio' method.</span></div><div class='output co'>#&gt; <span class='message'>Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='sizeFactors.html'>sizeFactors</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt;  sample01  sample02  sample03  sample04  sample05  sample06  sample07  sample08 
 #&gt; 0.8039626 0.8195890 0.8000980 0.7962334 0.8169846 0.8168166 1.2516260 1.2623377 
 #&gt;  sample09  sample10  sample11  sample12 
 #&gt; 1.1822733 1.1673609 1.2329331 1.0497847 </div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>estimateSizeFactors</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating library size factors using mean-ratio method.</span></div><div class='output co'>#&gt; <span class='message'>Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='sizeFactors.html'>sizeFactors</a></span>(<span class='no'>object</span>))</div><div class='output co'>#&gt;   cell001   cell002   cell003   cell004   cell005   cell006 
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>estimateSizeFactors</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating library size factors using 'mean-ratio' method.</span></div><div class='output co'>#&gt; <span class='message'>Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='sizeFactors.html'>sizeFactors</a></span>(<span class='no'>object</span>))</div><div class='output co'>#&gt;   cell001   cell002   cell003   cell004   cell005   cell006 
 #&gt; 0.7436939 0.9013670 1.0405084 1.2343572 1.1559011 0.9029430 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
