@@ -1,4 +1,8 @@
-globalVariables(".")
+utils::globalVariables(".")
+
+## Including these here for backward compatibility with R 3.5.
+appendToBody <- goalie::appendToBody
+methodFormals <- goalie::methodFormals
 
 
 
@@ -131,4 +135,4 @@ metadataBlacklist <- sort(c(
 #' @export
 #' @examples
 #' message(updateMessage)
-updateMessage <- "Run updateObject() to update your object."
+updateMessage <- "Run 'updateObject()' to update your object."
