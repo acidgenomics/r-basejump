@@ -1,3 +1,10 @@
+#' All classes
+#' @include AllGlobals.R
+#' @noRd
+NULL
+
+
+
 #' EggNOG database annotations
 #'
 #' [EggNOG](http://eggnogdb.embl.de) is a database of biological information

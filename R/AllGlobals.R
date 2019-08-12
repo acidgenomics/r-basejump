@@ -1,12 +1,20 @@
-utils::globalVariables(".")
-
-## Including these here for backward compatibility with R 3.5.
-appendToBody <- goalie::appendToBody
-methodFormals <- goalie::methodFormals
+#' All global variables
+#' @noRd
+NULL
 
 
+
+globalVariables(".")
 
 .version <- packageVersion("basejump")
+
+## Including these here for backward compatibility with R 3.5.
+if (packageVersion("base") < "3.6") {
+    appendToBody <- goalie::appendToBody
+    methodFormals <- goalie::methodFormals
+}
+
+
 
 #' basejump test data URL
 #' @keywords internal
