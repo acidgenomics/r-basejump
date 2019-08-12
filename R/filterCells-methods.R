@@ -1,6 +1,6 @@
 #' @name filterCells
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-08-12.
+#' @note Updated 2019-08-13.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -92,10 +92,6 @@ NULL
         mitoRatioCol = "mitoRatio"
     ) {
         validObject(object)
-        ## Don't allow re-run on already filtered object.
-        if (hasSubset(object, metadata = "filterCells")) {
-            stop("Object has already been filtered with 'filterCells()'.")
-        }
         assert(
             ## nCells
             all(isIntegerish(nCells)),
@@ -143,9 +139,9 @@ NULL
             minFeatures = minFeatures,
             maxFeatures = maxFeatures,
             minNovelty = minNovelty,
-            maxMitoRatio = maxMitoRatio
+            maxMitoRatio = maxMitoRatio,
+            nCells = nCells
         )
-        assert(allAreMatchingRegex(x = names(args), pattern = "^(max|min)"))
         ## Loop across the arguments and expand to match the number of samples,
         ## so we can run parameterized checks via `mapply()`.
         args <- lapply(
@@ -159,6 +155,10 @@ NULL
                 arg
             }
         )
+        ## Handle the `nCells` argument differentely downstream.
+        nCells <- args[["nCells"]]
+        args <- args[setdiff(names(args), "nCells")]
+        assert(allAreMatchingRegex(x = names(args), pattern = "^(max|min)"))
 
         ## Determine the relational operator to use based on the name.
         ## Use GTE (`>=`) for `min*` and LTE (`<=`) for `max*`.
@@ -169,6 +169,8 @@ NULL
                     `>=`
                 } else if (grepl("^max", x)) {
                     `<=`
+                } else {
+                    NULL
                 }
             }
         )
@@ -238,16 +240,19 @@ NULL
         assert(identical(names(cells), colnames(object)))
 
         ## Keep top expected number of cells per sample.
-        if (nCells < Inf) {
+        if (any(nCells < Inf)) {
             metrics <- metrics[cells, , drop = FALSE]
             split <- split(x = metrics, f = metrics[["sampleID"]])
-            topCellsPerSample <- lapply(
-                X = split,
-                FUN = function(x) {
-                    metric <- decode(x[[countsCol]])
-                    names(metric) <- rownames(x)
-                    head(sort(metric, decreasing = TRUE), n = nCells)
-                }
+            topCellsPerSample <- mapply(
+                metrics = split,
+                n = nCells,
+                FUN = function(metrics, n) {
+                    metric <- decode(metrics[[countsCol]])
+                    names(metric) <- rownames(metrics)
+                    head(sort(metric, decreasing = TRUE), n = n)
+                },
+                SIMPLIFY = FALSE,
+                USE.NAMES = TRUE
             )
             topCells <- unlist(unname(topCellsPerSample))
             metrics <- metrics[names(topCells), , drop = FALSE]
