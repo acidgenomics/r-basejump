@@ -100,7 +100,7 @@ readSampleData <- function(
 
     ## Look for bcbio "samplename" column and rename to "fileName".
     if (identical(pipeline, "bcbio")) {
-        if (grepl("samplename", colnames(data))) {
+        if (isSubset("samplename", colnames(data))) {
             message("Renaming 'samplename' column to 'fileName'.")
             assert(areDisjointSets(x = "fileName", y = colnames(data)))
             colnames(data)[colnames(data) == "samplename"] <- "fileName"
