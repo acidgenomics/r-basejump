@@ -1,5 +1,6 @@
 ## Conflicts with BiocGenerics:
 ## #' @importMethodsFrom Matrix colSums rowMeans rowSums t
+## #' @importFrom tidyr expand
 
 
 
