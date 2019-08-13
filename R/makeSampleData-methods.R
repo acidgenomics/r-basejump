@@ -19,7 +19,7 @@
 #' - `sampleName` column is always placed first.
 #'
 #' @name makeSampleData
-#' @note Updated 2019-08-05.
+#' @note Updated 2019-08-13.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -39,8 +39,8 @@ NULL
 
 
 
-## Updated 2019-08-05.
-`makeSampleData,data.frame` <- function(object) {
+## Updated 2019-08-13.
+`makeSampleData,DataFrame` <- function(object) {
     assert(
         ## Check for strings beginning with numbers, containing spaces, hyphens,
         ## or other characters that aren't valid for names in R.
@@ -63,6 +63,7 @@ NULL
     if (!isSubset("sampleName", colnames(object))) {
         object[["sampleName"]] <- rownames(object)
     }
+    ## FIXME Consider switching to base S4 methods here.
     out <- object %>%
         as_tibble(rownames = "rowname") %>%
         camelCase() %>%
@@ -76,22 +77,6 @@ NULL
     )
     out
 }
-
-
-
-#' @rdname makeSampleData
-#' @export
-setMethod(
-    f = "makeSampleData",
-    signature = signature("data.frame"),
-    definition = `makeSampleData,data.frame`
-)
-
-
-
-## Updated 2019-08-05.
-`makeSampleData,DataFrame` <-  # nolint
-    `makeSampleData,data.frame`
 
 
 
