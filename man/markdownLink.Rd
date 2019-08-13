@@ -7,16 +7,6 @@
 \usage{
 markdownLink(text, url, title = NULL)
 }
-\arguments{
-\item{text}{\code{character(1)}.
-Text.}
-
-\item{url}{\code{character(1)}.
-Uniform Resource Locator (URL).}
-
-\item{title}{\code{character(1)}.
-Title.}
-}
 \value{
 Markdown-formatted link.
 }

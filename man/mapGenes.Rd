@@ -36,11 +36,6 @@ mapGenesToSymbols(object, ...)
   strict = TRUE)
 }
 \arguments{
-\item{object}{Object.}
-
-\item{genes}{\code{character}.
-Gene identifiers.}
-
 \item{strict}{\code{logical(1)}.
 Require all genes to match. Recommended by default. If set \code{FALSE}, instead
 will return a warning to the user, and subset the genes vector to only

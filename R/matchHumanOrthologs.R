@@ -99,7 +99,7 @@ matchHumanOrthologs <- function(
         sanitizeNA() %>%
         set_colnames(c("geneID", "hgncID"))
 
-    message(paste("Getting", organism, "gene symbols."))
+    message(sprintf("Getting %s gene symbols.", organism))
     g2s <-
         makeGene2SymbolFromEnsembl(
             organism = organism,

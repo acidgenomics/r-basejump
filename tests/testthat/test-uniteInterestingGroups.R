@@ -2,7 +2,7 @@ context("uniteInterestingGroups")
 
 object <- as(datasets::mtcars, "DataFrame")
 
-test_that("Check that `interestingGroups` column gets defined as factor.", {
+test_that("Check that 'interestingGroups' column gets defined as factor.", {
     x <- uniteInterestingGroups(
         object = object,
         interestingGroups = c("vs", "am", "gear")

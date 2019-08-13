@@ -35,10 +35,6 @@ organism(object) <- value
 \S4method{organism}{Annotated}(object) <- value
 }
 \arguments{
-\item{object}{Object.}
-
-\item{value}{Value to assign.}
-
 \item{...}{Additional arguments.}
 }
 \value{

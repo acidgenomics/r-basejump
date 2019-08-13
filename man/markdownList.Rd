@@ -7,16 +7,6 @@
 \usage{
 markdownList(text, ordered = FALSE, asis = FALSE)
 }
-\arguments{
-\item{text}{\code{character(1)}.
-Text.}
-
-\item{ordered}{\code{logical(1)}.}
-
-\item{asis}{\code{logical(1)}.
-Set this to \code{TRUE} when using the function inside a loop or inside an R
-Markdown chunk with '\code{results = "asis"}' enabled.}
-}
 \value{
 \itemize{
 \item \code{asis = TRUE}: \code{\link[knitr:asis_output]{knitr::asis_output()}} return.
