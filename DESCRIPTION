@@ -160,6 +160,8 @@ Collate:
     'prepareTemplate.R'
     'pseudobulk-methods.R'
     'rankedMatrix.R'
+    'readSampleData.R'
+    'readTx2Gene.R'
     'reexports-bioverbs.R'
     'reexports-brio.R'
     'reexports-freerange.R'
