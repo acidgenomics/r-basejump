@@ -156,10 +156,11 @@ readSampleData <- function(
     ## Prepare metadata for lane split replicates. This step will expand rows
     ## into the number of desired replicates.
     if (length(lanes) > 1L) {
+        ## FIXME Switch to S4 methods instead of using tidyverse.
         data <- data %>%
             group_by(!!!syms(nameCols)) %>%
             ## Expand by lane (e.g. "L001").
-            expand(
+            tidyr::expand(
                 lane = paste0(
                     "L", str_pad(string = lanes, width = 3L, pad = "0")
                 )
