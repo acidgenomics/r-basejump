@@ -43,6 +43,7 @@ Imports:
     transformer (>= 0.2.2),
     Biobase,
     BiocGenerics,
+    Biostrings,
     DelayedArray,
     DelayedMatrixStats,
     GenomeInfoDb,
