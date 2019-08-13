@@ -329,9 +329,12 @@ setMethod(
             nrow(data) > nSamples ||
             any(duplicated(data[["sampleID"]]))
         ) {
-            stop(paste0(
-                "Failed to collapse 'colData()' to sample level.\n",
-                "Check these columns: ",
+            stop(sprintf(
+                fmt = paste(
+                    "Failed to collapse 'colData()' to sample level.\n",
+                    "Check: %s.",
+                    sep = "\n"
+                ),
                 toString(colnames(data), width = 200L)
             ))
         }
