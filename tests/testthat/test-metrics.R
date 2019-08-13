@@ -61,12 +61,12 @@ test_that("SingleCellExperiment", {
     )
 })
 
-test_that("Missing nUMI column", {
+test_that("Missing nCount column", {
     expect_error(
         object = metricsPerSample(sce, fun = "sum"),
         expected = paste(
-            "`sum` method only applies to metrics columns",
-            "prefixed with `n` (e.g. `nUMI`)."
+            "'sum' method only applies to metrics columns",
+            "prefixed with 'n' (e.g. 'nCount')."
         )
     )
 })
