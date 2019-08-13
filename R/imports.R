@@ -34,11 +34,11 @@
 #'   mutate_all mutate_at mutate_if pull rename select select_if slice
 #'   summarise_all top_n ungroup
 #' @importFrom goalie allAreMatchingRegex appendToBody areDisjointSets
-#'   areIntersectingSets areSameLength areSetEqual assert bapply false
-#'   getNameInParent hasColnames hasCols hasDims hasInternet hasLength
+#'   areIntersectingSets areSameLength areSetEqual assert bapply containsAURL
+#'   false getNameInParent hasColnames hasCols hasDims hasInternet hasLength
 #'   hasMetrics hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRows
 #'   hasRownames hasSubset hasUniqueCols hasValidDimnames hasValidNames
-#'   isADirectory isAlpha isAny isCharacter isFlag isGGScale
+#'   isADirectory isAFile isAlpha isAny isCharacter isFlag isGGScale
 #'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
 #'   isInLeftOpenRange isInRange isInt isIntegerish isMatchingRegex
 #'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
