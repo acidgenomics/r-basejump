@@ -3,13 +3,10 @@
 \docType{methods}
 \name{makeSampleData}
 \alias{makeSampleData}
-\alias{makeSampleData,data.frame-method}
 \alias{makeSampleData,DataFrame-method}
 \title{Make sample data}
 \usage{
 makeSampleData(object, ...)
-
-\S4method{makeSampleData}{data.frame}(object)
 
 \S4method{makeSampleData}{DataFrame}(object)
 }
@@ -47,7 +44,7 @@ useful for plots and doesn't have to match the column names of a
 }
 }
 \note{
-Updated 2019-08-05.
+Updated 2019-08-13.
 }
 \examples{
 object <- DataFrame(
