@@ -359,10 +359,10 @@ NULL
             ## it is used heavily in other functions.
             data[["geneName"]] <- make.unique(data[["geneName"]])
         } else if (format == "unmodified") {
-            message(paste(
-                "Returning with unmodified gene symbols",
+            message(
+                "Returning with unmodified gene symbols ",
                 "(may contain duplicates)."
-            ))
+            )
         } else if (format == "1:1") {
             message("Returning 1:1 mappings using oldest gene ID per symbol.")
             data <- data %>%

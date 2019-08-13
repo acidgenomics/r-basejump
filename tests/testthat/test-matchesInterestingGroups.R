@@ -1,11 +1,11 @@
 context("matchesInterestingGroups")
 
-test_that("Column defined in `sampleData()`", {
+test_that("Column defined in 'sampleData()'", {
     ok <- matchesInterestingGroups(x = rse, interestingGroups = "condition")
     expect_true(ok)
 })
 
-test_that("Allow `NULL` to pass", {
+test_that("Allow 'NULL' to pass", {
     ok <- matchesInterestingGroups(x = rse, interestingGroups = NULL)
     expect_true(ok)
 })

@@ -6,19 +6,6 @@
 \usage{
 matchesGene2Symbol(x, genes, gene2symbol, .xname = getNameInParent(x))
 }
-\arguments{
-\item{x}{Object.}
-
-\item{genes}{\code{character}.
-Gene identifiers.}
-
-\item{gene2symbol}{\code{Gene2Symbol}.
-Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
-\code{Gene2Symbol} for more information.}
-
-\item{.xname}{Name of object defined in \code{x}.
-\emph{Not intended to be used directly.}}
-}
 \value{
 \code{TRUE} on success;
 \code{FALSE} on failure, with cause set.

@@ -18,8 +18,6 @@ estimateSizeFactors(object, ...)
   "log-geometric-mean-ratio", "deseq2-median-ratio"), center = 1L)
 }
 \arguments{
-\item{object}{Object.}
-
 \item{type}{\code{character(1)}.
 Method for estimation:\preformatted{libSize <- colSums(counts(object))
 }

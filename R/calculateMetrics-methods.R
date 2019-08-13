@@ -61,10 +61,12 @@ NULL
         mitoFeatures <- character()
 
         missingBiotype <- function() {
-            message(paste0(
-                "Calculating metrics without biotype information.\n",
-                "'rowRanges' required to calculate: ",
-                "nCoding, nMito, mitoRatio."
+            message(sprintf(
+                fmt = paste0(
+                    "Calculating metrics without biotype information.\n",
+                    "'rowRanges' required to calculate: %s."
+                ),
+                toString(c("nCoding", "nMito", "mitoRatio"))
             ))
         }
 

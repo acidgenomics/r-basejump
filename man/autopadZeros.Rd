@@ -21,15 +21,6 @@ autopadZeros(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{rownames}{\code{logical(1)}.
-Apply to row names.}
-
-\item{colnames}{\code{logical(1)}.
-Apply to column names.}
-
-\item{sort}{\code{logical(1)}.
-Resort using \code{sort}.}
-
 \item{...}{Additional arguments.}
 }
 \value{

@@ -138,10 +138,7 @@ NULL
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
-            stop(paste(
-                "'sampleData()' requires a 'sampleName'",
-                "factor column in 'colData()'."
-            ))
+            stop("'sampleData()' requires 'sampleName' factor in 'colData()'.")
         }
 
         ## Clean mode ----------------------------------------------------------
@@ -329,9 +326,12 @@ setMethod(
             nrow(data) > nSamples ||
             any(duplicated(data[["sampleID"]]))
         ) {
-            stop(paste0(
-                "Failed to collapse 'colData()' to sample level.\n",
-                "Check these columns: ",
+            stop(sprintf(
+                fmt = paste(
+                    "Failed to collapse 'colData()' to sample level.\n",
+                    "Check: %s.",
+                    sep = "\n"
+                ),
                 toString(colnames(data), width = 200L)
             ))
         }

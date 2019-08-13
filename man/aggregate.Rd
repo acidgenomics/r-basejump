@@ -40,8 +40,6 @@ aggregateRows(object, ...)
   "mean", "geometricMean", "median"))
 }
 \arguments{
-\item{object}{Object.}
-
 \item{groupings}{\code{factor}.
 Defines the aggregation groupings. The new aggregate names are defined as
 the \code{factor} \link[base:levels]{levels}, and the original, unaggregated names

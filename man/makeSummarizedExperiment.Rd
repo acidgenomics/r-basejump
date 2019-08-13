@@ -21,34 +21,6 @@ makeSummarizedExperiment(assays, ...)
   sort = TRUE, sessionInfo = TRUE)
 }
 \arguments{
-\item{assays}{\code{SimpleList}.
-Count matrices, which must have matching dimensions. Counts can be passed
-in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
-
-\item{...}{Additional arguments.}
-
-\item{rowRanges}{\code{GRanges} or \code{GRangesList}.
-Genomic ranges (e.g. genome annotations). Metadata describing the assay
-rows.}
-
-\item{rowData}{\code{DataFrame}.
-Metadata describing the assay rows, if genomic ranges are not available.
-\emph{Use rowRanges (GRanges) instead, if possible}.}
-
-\item{colData}{\code{DataFrame}.
-Metadata describing the assay columns. For bulk RNA-seq, this data
-describes the samples. For single-cell RNA-seq, this data describes the
-cells.}
-
-\item{metadata}{\code{list}.
-Metadata.}
-
-\item{transgeneNames}{\code{character}.
-Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
-
-\item{spikeNames}{\code{character}.
-Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
-
 \item{sort}{\code{logical(1)}.
 Ensure all row and column names are sorted alphabetically. This includes
 columns inside \code{rowData} and \code{colData}, and \code{metadata} slot names. Assay
