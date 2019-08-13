@@ -2,8 +2,9 @@
 #'
 #' Generates a `Tx2Gene` object containing `transcriptID` and `geneID` columns.
 #'
-#' @author Michael Steinbaugh
-#' @note Doesn't attempt to strip transcript versions.
+#' @note File should not contain column header names.
+#' @note The functon doesn't attempt to strip transcript versions. Use
+#'   [stripTranscriptVersions()] in a separate call, if necessary.
 #' @note Updated 2019-08-13.
 #' @export
 #'
