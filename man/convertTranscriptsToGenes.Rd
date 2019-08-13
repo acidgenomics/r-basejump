@@ -24,9 +24,6 @@ convertTranscriptsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{tx2gene}{\code{Tx2Gene}.
-Transcript-to-gene mappings.}
-
 \item{aggregate}{\code{logical(1)}.
 For objects supporting \code{\link[base:dim]{dim()}}, aggregate counts to gene level
 and collapse the matrix.}

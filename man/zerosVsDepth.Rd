@@ -22,9 +22,6 @@ zerosVsDepth(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
-
 \item{...}{Additional arguments.}
 }
 \value{

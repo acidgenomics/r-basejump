@@ -7,10 +7,6 @@
 geneSynonyms(organism = c("Homo sapiens", "Mus musculus",
   "Drosophila melanogaster"))
 }
-\arguments{
-\item{organism}{\code{character(1)}.
-Full Latin organism name (e.g. "\code{Homo sapiens}").}
-}
 \value{
 \code{grouped_df}.
 Grouped by \code{geneID} column.

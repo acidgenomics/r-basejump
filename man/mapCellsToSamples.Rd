@@ -6,13 +6,6 @@
 \usage{
 mapCellsToSamples(cells, samples)
 }
-\arguments{
-\item{cells}{\code{character}.
-Cell identifiers.}
-
-\item{samples}{\code{character}.
-Sample identifiers.}
-}
 \value{
 \code{factor}.
 Cells as the names and samples as the levels.
