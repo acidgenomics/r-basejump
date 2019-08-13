@@ -84,7 +84,7 @@ readSampleData <- function(
     pipeline <- match.arg(pipeline)
     requiredCols <- switch(
         EXPR = pipeline,
-        bcbio = c("fileName", "description"),
+        bcbio = "description",
         cellranger = "directory"
     )
 
@@ -235,9 +235,9 @@ readSampleData <- function(
             paste0(
                 "Blacklisted columns detected: %s.\n",
                 "Refer to 'readSampleData()' for formatting requirements."
-            )),
+            ),
             toString(intersect)
-        )
+        ))
     }
 
     ## Check for required columns (e.g. description).
@@ -248,9 +248,9 @@ readSampleData <- function(
             paste0(
                 "Required columns missing: %s.\n",
                 "Refer to 'readSampleData()' for formatting requirements."
-            )),
+            ),
             toString(setdiff)
-        )
+        ))
     }
 
     TRUE
