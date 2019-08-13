@@ -827,7 +827,7 @@ PANTHER <- function(  # nolint
 #' @name Tx2Gene
 #'
 #' @note No attempt is made to arrange the rows by transcript identifier.
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-13.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -845,11 +845,10 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-13.
 `Tx2Gene,DataFrame` <-  # nolint
     function(object) {
         assert(hasRows(object))
-
         ## Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
@@ -858,13 +857,17 @@ NULL
                 toString(cols)
             ))
         }
-
+        transcriptID <- as.character(decode(object[["transcriptID"]]))
+        geneID <- as.character(decode(object[["geneID"]]))
+        rownames <- rownames(object)
+        if (is.null(rownames)) {
+            rownames <- transcriptID
+        }
         data <- DataFrame(
-            transcriptID = as.character(decode(object[["transcriptID"]])),
-            geneID = as.character(decode(object[["geneID"]])),
-            row.names = rownames(object)
+            transcriptID = transcriptID,
+            geneID = geneID,
+            row.names = rownames
         )
-
         metadata(data) <- .slotGenomeMetadata(object)
         new(Class = "Tx2Gene", data)
     }
