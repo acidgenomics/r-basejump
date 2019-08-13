@@ -179,7 +179,7 @@ test_that("Required column check failure.", {
     )
 })
 
-test_that("Duplicate rows in `sampleName` column", {
+test_that("Duplicate rows in 'sampleName' column", {
     file <- file.path(
         "cache",
         "bcbio-metadata-multiplexed-invalid-duplicated.csv"
@@ -202,7 +202,7 @@ test_that("bcbio 'samplename' column", {
     )
 })
 
-test_that("`sampleID` column defined by user", {
+test_that("'sampleID' column defined by user", {
     file <- file.path(
         "cache",
         "bcbio-metadata-demultiplexed-invalid-sample-id.csv"

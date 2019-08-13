@@ -138,10 +138,7 @@ NULL
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
-            stop(paste(
-                "'sampleData()' requires a 'sampleName'",
-                "factor column in 'colData()'."
-            ))
+            stop("'sampleData()' requires 'sampleName' factor in 'colData()'.")
         }
 
         ## Clean mode ----------------------------------------------------------

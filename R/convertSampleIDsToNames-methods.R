@@ -68,11 +68,10 @@ setMethod(
 ## Updated 2019-07-22.
 `convertSampleIDsToNames,SingleCellExperiment` <-  # nolint
     function(object) {
-        message(paste(
-            "SingleCellExperiment contains cells instead of samples.",
-            "Returning with column names unmodified.",
-            sep = "\n"
-        ))
+        message(
+            "SingleCellExperiment contains cells instead of samples.\n",
+            "Returning with column names unmodified."
+        )
         object
     }
 

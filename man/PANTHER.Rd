@@ -8,9 +8,6 @@ PANTHER(organism, release = NULL, progress = getOption("acid.progress",
   default = FALSE))
 }
 \arguments{
-\item{organism}{\code{character(1)}.
-Full Latin organism name (e.g. "\code{Homo sapiens}").}
-
 \item{release}{\code{character(1)} or \code{NULL}.
 PANTHER release version. If \code{NULL}, defaults to current release. Consult
 the PANTHER website for a list of release versions available from the FTP
