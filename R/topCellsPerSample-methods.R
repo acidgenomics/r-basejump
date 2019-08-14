@@ -1,6 +1,6 @@
 #' @name topCellsPerSample
 #' @inherit bioverbs::topCellsPerSample
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-14.
 #'
 #' @inheritParams acidroxygen::params
 #' @param n `integer(1)`.
@@ -9,10 +9,10 @@
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
-#' sce <- SingleCellExperiment
 #'
 #' ## SingleCellExperiment ====
-#' x <- topCellsPerSample(sce)
+#' object <- SingleCellExperiment
+#' x <- topCellsPerSample(object)
 #' lapply(x, head)
 NULL
 
@@ -27,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-14.
 `topCellsPerSample,SingleCellExperiment` <-  # nolint
     function(object, n = 100L) {
         validObject(object)
@@ -39,16 +39,22 @@ NULL
         }
         colSums <- colSums(counts)
         assert(identical(names(cell2sample), names(colSums)))
-        tibble(
+        data <- DataFrame(
             cellID = names(cell2sample),
             sampleID = cell2sample,
             n = colSums
-        ) %>%
-            group_by(!!sym("sampleID")) %>%
-            arrange(desc(!!sym("n")), .by_group = TRUE) %>%
-            slice(seq_len(!!n)) %>%
-            split(.[["sampleID"]]) %>%
-            map("cellID")
+        )
+        split <- split(data, f = data[["sampleID"]])
+        assert(is(split, "SplitDataFrameList"))
+        lapply(
+            X = split,
+            FUN = function(x) {
+                order <- order(x[["n"]], decreasing = TRUE)
+                x <- x[order, , drop = FALSE]
+                x <- head(x, n = n)
+                x[["cellID"]]
+            }
+        )
     }
 
 
