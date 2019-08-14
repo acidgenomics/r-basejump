@@ -1,3 +1,7 @@
+## FIXME Switch to base R approaches here.
+
+
+
 #' All generator functions
 #' @include AllGenerics.R
 #' @noRd
@@ -647,6 +651,7 @@ PANTHER <- function(  # nolint
     data <- fun(data)
     assert(hasRows(data))
 
+    ## FIXME Switch away from dplyr here.
     data <- data %>%
         select(-!!sym("keys")) %>%
         select(!!sym("geneID"), everything()) %>%
