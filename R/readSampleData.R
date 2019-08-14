@@ -1,3 +1,5 @@
+## FIXME Don't use dplyr code internally here.
+
 ## FIXME Allow the user to set the sampleID column.
 ## FIXME Allow support for "sample" here.
 ## FIXME bcbio needs to use "description" instead of sample.
