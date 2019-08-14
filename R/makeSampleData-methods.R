@@ -41,7 +41,10 @@ NULL
 
 ## Updated 2019-08-14.
 `makeSampleData,DataFrame` <- function(object) {
-    assert(hasValidDimnames(object))
+    assert(
+        hasValidDimnames(object),
+        allAreAtomic(object)
+    )
     object <- camelCase(object, rownames = FALSE, colnames = TRUE)
     assert(
         ## Don't allow "*Id" columns (note case).
@@ -65,7 +68,6 @@ NULL
     list <- lapply(
         X = object,
         FUN = function(x) {
-            assert(is.atomic(x))
             x <- as.factor(x)
             x <- droplevels(x)
             x
