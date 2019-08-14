@@ -20,6 +20,10 @@ Gene2Symbol(object, ...)
   format = c("makeUnique", "unmodified", "1:1"))
 }
 \arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+
 \item{format}{\code{character(1)}.
 Formatting method to apply:
 \itemize{

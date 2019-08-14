@@ -29,6 +29,10 @@ calculateMetrics(object, ...)
 \arguments{
 \item{object}{Object.}
 
+\item{rowRanges}{\code{GRanges} or \code{GRangesList}.
+Genomic ranges (e.g. genome annotations). Metadata describing the assay
+rows.}
+
 \item{prefilter}{\code{logical(1)}.
 Drop very low quality samples/cells from the object.
 This can resize the number of columns but the rows (i.e. features) do not

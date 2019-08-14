@@ -18,6 +18,11 @@ logRatioToFoldChange(object, ...)
 \S4method{logRatioToFoldChange}{numeric}(object, base = 2L)
 }
 \arguments{
+\item{object}{Object.}
+
+\item{base}{\code{integer(1)}.
+Logarithm base.}
+
 \item{...}{Additional arguments.}
 }
 \value{

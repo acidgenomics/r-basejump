@@ -20,6 +20,12 @@ geometricMean(object, ...)
 \arguments{
 \item{object}{Object.}
 
+\item{removeNA}{\code{logical(1)}.
+Remove \code{NA} values from calculations.}
+
+\item{zeroPropagate}{\code{logical(1)}.
+Allow propagation of zeroes.}
+
 \item{MARGIN}{a vector giving the subscripts which the function will
     be applied over.  E.g., for a matrix \code{1} indicates rows,
     \code{2} indicates columns, \code{c(1, 2)} indicates rows and

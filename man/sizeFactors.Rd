@@ -17,9 +17,9 @@ sizeFactors(object, ...) <- value
 \S4method{sizeFactors}{SummarizedExperiment}(object) <- value
 }
 \arguments{
-\item{object}{A SingleCellExperiment object.}
+\item{object}{Object.}
 
-\item{value}{A numeric vector of size factors for all cells.}
+\item{value}{Value to assign.}
 
 \item{...}{Additional arguments.}
 }

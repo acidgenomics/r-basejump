@@ -14,6 +14,8 @@ summary(object, ...)
 \S4method{summary}{Tx2Gene}(object)
 }
 \arguments{
+\item{object}{Object.}
+
 \item{...}{Additional arguments.}
 }
 \value{

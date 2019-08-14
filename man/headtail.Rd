@@ -34,6 +34,9 @@ headtail(x, ...)
 \item{n}{\code{integer(1)}.
 Positive integer denoting the number of first and last items to include.}
 
+\item{unicode}{\code{logical(1)}.
+Allow Unicode characters in console output.}
+
 \item{...}{Additional arguments.}
 }
 \value{

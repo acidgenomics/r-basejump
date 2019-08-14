@@ -7,6 +7,16 @@
 matchesInterestingGroups(x, interestingGroups,
   .xname = getNameInParent(x))
 }
+\arguments{
+\item{x}{Object.}
+
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
+
+\item{.xname}{Name of object defined in \code{x}.
+\emph{Not intended to be used directly.}}
+}
 \value{
 \code{TRUE} on success;
 \code{FALSE} on failure, with cause set.

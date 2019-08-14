@@ -8,6 +8,9 @@
 \usage{
 \S4method{tpm}{SummarizedExperiment}(object)
 }
+\arguments{
+\item{object}{Object.}
+}
 \value{
 \code{matrix}.
 }

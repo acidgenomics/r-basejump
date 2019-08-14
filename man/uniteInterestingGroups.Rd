@@ -13,6 +13,10 @@ uniteInterestingGroups(object, ...)
 \arguments{
 \item{object}{Object.}
 
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
+
 \item{...}{Additional arguments.}
 }
 \value{

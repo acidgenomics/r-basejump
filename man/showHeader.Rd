@@ -6,6 +6,9 @@
 \usage{
 showHeader(object)
 }
+\arguments{
+\item{object}{Object.}
+}
 \value{
 Console output, via \code{\link[base:cat]{cat()}}.
 }

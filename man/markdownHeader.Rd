@@ -8,8 +8,18 @@
 markdownHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
 }
 \arguments{
+\item{text}{\code{character(1)}.
+Text.}
+
 \item{level}{\code{integer(1)}.
 Markdown header level (1-7).}
+
+\item{tabset}{\code{logical(1)}.
+Include tabset marker.}
+
+\item{asis}{\code{logical(1)}.
+Set this to \code{TRUE} when using the function inside a loop or inside an R
+Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
