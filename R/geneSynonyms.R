@@ -1,3 +1,8 @@
+## FIXME Switch to base R approaches here.
+## FIXME Switch from `==` to `identical()`.
+
+
+
 #' Gene synonyms
 #'
 #' Look up gene synonyms from NCBI.

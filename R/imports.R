@@ -1,3 +1,7 @@
+## FIXME Reduce the number of tidyverse imports.
+
+
+
 ## Conflicts with BiocGenerics:
 ## #' @importMethodsFrom Matrix colSums rowMeans rowSums t
 ## #' @importFrom tidyr expand
@@ -52,7 +56,6 @@
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
 #'   new selectMethod setAs setClass setGeneric setMethod setReplaceMethod
 #'   setOldClass setValidity show signature slot slotNames validObject .hasSlot
-#' @importFrom purrr map
 #' @importFrom readr cols read_lines read_tsv
 #' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! := UQ sym syms
