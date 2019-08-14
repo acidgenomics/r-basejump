@@ -19,7 +19,7 @@
 #' - `sampleName` column is always placed first.
 #'
 #' @name makeSampleData
-#' @note Updated 2019-08-13.
+#' @note Updated 2019-08-14.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -39,14 +39,13 @@ NULL
 
 
 
-## Updated 2019-08-13.
+## Updated 2019-08-14.
 `makeSampleData,DataFrame` <- function(object) {
+    assert(hasValidDimnames(object))
+    object <- camelCase(object, rownames = FALSE, colnames = TRUE)
     assert(
-        ## Check for strings beginning with numbers, containing spaces, hyphens,
-        ## or other characters that aren't valid for names in R.
-        hasValidDimnames(object),
         ## Don't allow "*Id" columns (note case).
-        all(isNotMatchingRegex(x = colnames(object), pattern = "Id$")),
+        allAreNotMatchingRegex(x = colnames(object), pattern = "Id$"),
         ## Check for blacklisted columns.
         areDisjointSets(
             x = c(
@@ -63,19 +62,16 @@ NULL
     if (!isSubset("sampleName", colnames(object))) {
         object[["sampleName"]] <- rownames(object)
     }
-    ## FIXME Consider switching to base S4 methods here.
-    out <- object %>%
-        as_tibble(rownames = "rowname") %>%
-        camelCase() %>%
-        mutate_all(as.factor) %>%
-        mutate_all(droplevels) %>%
-        select(!!sym("sampleName"), everything()) %>%
-        as("DataFrame")
-    assert(
-        hasRownames(out),
-        hasValidDimnames(out)
+    list <- lapply(
+        X = object,
+        FUN = function(x) {
+            assert(is.atomic(x))
+            x <- as.factor(x)
+            x <- droplevels(x)
+            x
+        }
     )
-    out
+    DataFrame(list, row.names = rownames(object))
 }
 
 
