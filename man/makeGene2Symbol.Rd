@@ -18,6 +18,21 @@ makeGene2SymbolFromGFF(file, format = c("makeUnique", "unmodified",
   "1:1"))
 }
 \arguments{
+\item{organism}{\code{character(1)}.
+Full Latin organism name (e.g. \code{"Homo sapiens"}).}
+
+\item{genomeBuild}{\code{character(1)}.
+Ensembl genome build assembly name (e.g. \code{"GRCh38"}). If set \code{NULL},
+defaults to the most recent build available.
+Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
+
+\item{release}{\code{integer(1)}.
+Ensembl release version (e.g. \code{90}). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.}
+
 \item{format}{\code{character(1)}.
 Formatting method to apply:
 \itemize{
@@ -29,6 +44,11 @@ long format.
 \item \code{"1:1"}: For gene symbols that map to multiple gene IDs, select only the
 first annotated gene ID.
 }}
+
+\item{object}{Object.}
+
+\item{file}{\code{character(1)}.
+File path.}
 }
 \value{
 \code{Gene2Symbol}.

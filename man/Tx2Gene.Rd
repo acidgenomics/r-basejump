@@ -16,6 +16,11 @@ Tx2Gene(object, ...)
 
 \S4method{Tx2Gene}{SummarizedExperiment}(object)
 }
+\arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+}
 \value{
 \code{Tx2Gene}.
 }

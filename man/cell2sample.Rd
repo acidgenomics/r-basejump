@@ -14,6 +14,10 @@ cell2sample(object, ...)
 \arguments{
 \item{object}{Object.}
 
+\item{return}{\code{character(1)}.
+Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
+to the first argument in the \code{character} vector.}
+
 \item{...}{Additional arguments.}
 }
 \value{

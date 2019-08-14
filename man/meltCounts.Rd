@@ -39,6 +39,9 @@ operation. This applies to all counts, not per feature.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
 \item{...}{Additional arguments.}
 }
 \value{

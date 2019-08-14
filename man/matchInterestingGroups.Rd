@@ -8,6 +8,10 @@ matchInterestingGroups(object, interestingGroups = NULL)
 }
 \arguments{
 \item{object}{\code{SummarizedExperiment}.}
+
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
 }
 \value{
 \code{character}.

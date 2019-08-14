@@ -10,6 +10,9 @@ markdownPlots(list, headerLevel = 2L)
 \arguments{
 \item{list}{\code{list}.
 Named list containing \code{ggplot} objects.}
+
+\item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}).
+Markdown header level.}
 }
 \value{
 Graphical output of plots.

@@ -18,6 +18,10 @@ Ensembl2Entrez(object, ...)
   "long"))
 }
 \arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+
 \item{format}{\code{character(1)}.
 Formatting method to apply:
 \itemize{
