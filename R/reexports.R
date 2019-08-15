@@ -1,7 +1,3 @@
-#' @importFrom methods coerce
-#' @exportMethod coerce
-NULL
-
 #' @importFrom GenomicRanges GRanges
 #' @export
 GenomicRanges::GRanges

@@ -1,5 +1,11 @@
-## Reexport transformer S4 coercion methods
-## Updated 2019-08-15.
+#' Reexport transformer S4 coercion methods
+#'
+#' @importFrom methods coerce
+#' @exportMethod coerce
+#'
+#' @note Updated 2019-08-15.
+#' @noRd
+NULL
 
 
 
