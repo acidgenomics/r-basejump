@@ -162,7 +162,7 @@ Collate:
     'rankedMatrix.R'
     'readSampleData.R'
     'readTx2Gene.R'
-    'reexports-transformer.R'
+    'reexports-coerce.R'
     'reexports.R'
     'sampleData-methods.R'
     'sampleNames-methods.R'
