@@ -350,25 +350,26 @@ readYAML <- function(...) {
     import(...)
 }
 
-#' @rdname deprecated
+#' @importFrom transformer relevel
 #' @export
-relevelColData <- function(object) {
-    .Deprecated("relevel")
-    relevel(x = object)
+transformer::relevel
+
+#' @rdname defunct
+#' @export
+relevelColData <- function(...) {
+    .Defunct("droplevels")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
-relevelRowData <- function(object) {
-    .Deprecated("relevel")
-    relevel(x = object)
+relevelRowData <- function(...) {
+    .Defunct("droplevels")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
-relevelRowRanges <- function(object) {
-    .Deprecated("relevel")
-    relevel(x = object)
+relevelRowRanges <- function(...) {
+    .Defunct("droplevels")
 }
 
 
