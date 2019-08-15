@@ -203,12 +203,6 @@ bioverbs::plotGene
 ## v0.10.9 ======================================================================
 #' @rdname defunct
 #' @export
-assertHasRownames <- function(...) {
-    .Defunct("goalie::hasRownames")
-}
-
-#' @rdname defunct
-#' @export
 theme_midnight <- function(...) {
     .Defunct("acidplots::acid_theme_dark")
 }
@@ -237,84 +231,6 @@ separatorBar <- function(...) {
 
 
 # v0.11.8 ======================================================================
-#' @rdname defunct
-#' @export
-assertFormalInterestingGroups <- function(...) {
-    .Defunct("goalie::assert")
-}
-
-#' @rdname defunct
-#' @export
-assertIsAHeaderLevel <- function(...) {
-    .Defunct("goalie::isHeaderLevel")
-}
-
-#' @rdname defunct
-#' @export
-assertIsAStringOrNULL <- function(...) {
-    .Defunct("goalie::isString")
-}
-
-#' @rdname defunct
-#' @export
-assertIsAnImplicitInteger <- function(...) {
-    .Defunct("goalie::isInt")
-}
-
-#' @rdname defunct
-#' @export
-assertIsAnImplicitIntegerOrNULL <- function(...) {
-    .Defunct("goalie::IsInt")
-}
-
-#' @rdname defunct
-#' @export
-assertIsColorScaleDiscreteOrNULL <- function(...) {
-    .Defunct("goalie::isGGScale")
-}
-
-#' @rdname defunct
-#' @export
-assertIsFillScaleDiscreteOrNULL <- function(...) {
-    .Defunct("goalie::isGGScale")
-}
-
-#' @rdname defunct
-#' @export
-assertIsGene2symbol <- function(...) {
-    .Defunct("goalie::assert")
-}
-
-#' @rdname defunct
-#' @export
-assertIsHexColorFunctionOrNULL <- function(...) {
-    .Defunct("goalie::isHexColorFunction")
-}
-
-#' @rdname defunct
-#' @export
-assertIsImplicitInteger <- function(...) {
-    .Defunct("goalie::isIntegerish")
-}
-
-#' @rdname defunct
-#' @export
-assertIsTx2gene <- function(...) {
-    .Defunct("goalie::assert")
-}
-
-#' @rdname defunct
-#' @export
-assertAreGeneAnnotations <- function(...) {
-    .Defunct("goalie::assert")
-}
-
-#' @rdname defunct
-#' @export
-assertFormalGene2symbol <- function(...) {
-    .Defunct("goalie::assert")
-}
-
 #' @rdname deprecated
 #' @export
 readFileByExtension <- function(...) {
