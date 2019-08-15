@@ -24,24 +24,13 @@
 \alias{panther}
 \alias{setArgsToDoCall}
 \alias{tx2gene}
-\alias{assertHasRownames}
 \alias{theme_midnight}
 \alias{theme_paperwhite}
 \alias{tx2geneFromGFF}
 \alias{separatorBar}
-\alias{assertFormalInterestingGroups}
-\alias{assertIsAHeaderLevel}
-\alias{assertIsAStringOrNULL}
-\alias{assertIsAnImplicitInteger}
-\alias{assertIsAnImplicitIntegerOrNULL}
-\alias{assertIsColorScaleDiscreteOrNULL}
-\alias{assertIsFillScaleDiscreteOrNULL}
-\alias{assertIsGene2symbol}
-\alias{assertIsHexColorFunctionOrNULL}
-\alias{assertIsImplicitInteger}
-\alias{assertIsTx2gene}
-\alias{assertAreGeneAnnotations}
-\alias{assertFormalGene2symbol}
+\alias{relevelColData}
+\alias{relevelRowData}
+\alias{relevelRowRanges}
 \title{Defunct functions}
 \usage{
 aggregateFeatures(...)
@@ -88,8 +77,6 @@ setArgsToDoCall(...)
 
 tx2gene(...)
 
-assertHasRownames(...)
-
 theme_midnight(...)
 
 theme_paperwhite(...)
@@ -98,31 +85,11 @@ tx2geneFromGFF(...)
 
 separatorBar(...)
 
-assertFormalInterestingGroups(...)
+relevelColData(...)
 
-assertIsAHeaderLevel(...)
+relevelRowData(...)
 
-assertIsAStringOrNULL(...)
-
-assertIsAnImplicitInteger(...)
-
-assertIsAnImplicitIntegerOrNULL(...)
-
-assertIsColorScaleDiscreteOrNULL(...)
-
-assertIsFillScaleDiscreteOrNULL(...)
-
-assertIsGene2symbol(...)
-
-assertIsHexColorFunctionOrNULL(...)
-
-assertIsImplicitInteger(...)
-
-assertIsTx2gene(...)
-
-assertAreGeneAnnotations(...)
-
-assertFormalGene2symbol(...)
+relevelRowRanges(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

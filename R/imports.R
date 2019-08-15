@@ -36,9 +36,8 @@
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
-#' @importFrom dplyr arrange bind_rows desc filter group_by left_join mutate
-#'   mutate_all mutate_at mutate_if pull rename select select_if slice
-#'   summarise_all top_n ungroup
+#' @importFrom dplyr arrange bind_rows desc filter group_by mutate pull rename
+#'   select slice summarise_all top_n ungroup
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
 #'   appendToBody areDisjointSets areIntersectingSets areSameLength areSetEqual
 #'   assert bapply containsAURL false getNameInParent hasColnames hasCols
@@ -49,7 +48,7 @@
 #'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange isInt
 #'   isIntegerish isMatchingRegex isNonNegative isNotMatchingRegex isNumber
 #'   isPositive isScalar isString isSubset isSuperset matchesUniqueGeneNames
-#'   methodFunction validNames validate validateClasses
+#'   methodFormals methodFunction validNames validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars

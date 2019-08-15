@@ -14,9 +14,6 @@
 \alias{readGTF}
 \alias{readJSON}
 \alias{readYAML}
-\alias{relevelColData}
-\alias{relevelRowData}
-\alias{relevelRowRanges}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
 \usage{
@@ -39,12 +36,6 @@ readGTF(...)
 readJSON(...)
 
 readYAML(...)
-
-relevelColData(object)
-
-relevelRowData(object)
-
-relevelRowRanges(object)
 }
 \arguments{
 \item{...}{Additional arguments.}
