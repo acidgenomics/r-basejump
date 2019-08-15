@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.11.8
-Date: 2019-08-14
+Date: 2019-08-15
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -40,7 +40,7 @@ Imports:
     freerange (>= 0.2.2),
     goalie (>= 0.3.5),
     syntactic (>= 0.2.3),
-    transformer (>= 0.2.3),
+    transformer (>= 0.2.4),
     Biobase,
     BiocGenerics,
     Biostrings,
@@ -162,11 +162,6 @@ Collate:
     'rankedMatrix.R'
     'readSampleData.R'
     'readTx2Gene.R'
-    'reexports-bioverbs.R'
-    'reexports-brio.R'
-    'reexports-freerange.R'
-    'reexports-goalie.R'
-    'reexports-syntactic.R'
     'reexports-transformer.R'
     'reexports.R'
     'sampleData-methods.R'
