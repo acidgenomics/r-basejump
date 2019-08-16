@@ -140,7 +140,7 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 `Ensembl2Entrez,DataFrame` <-  # nolint
     function(object, format = c("1:1", "long")) {
         assert(hasRows(object))
@@ -163,13 +163,27 @@ NULL
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
         assert(hasNoDuplicates(unmapped))
         if (length(unmapped) > 0L) {
-            message(sprintf("%d genes don't map to Entrez.", length(unmapped)))
+            message(sprintf(
+                "%d %s map to Entrez.",
+                length(unmapped),
+                ngettext(
+                    n = length(unmapped),
+                    msg1 = "gene doesn't",
+                    msg2 = "genes don't"
+                )
+            ))
         }
         ## Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
         if (length(multimapped) > 0L) {
             message(sprintf(
-                "%d genes map to multiple Entrez IDs.", length(multimapped)
+                "%d %s to multiple Entrez IDs.",
+                length(multimapped),
+                ngettext(
+                    n = length(multimapped),
+                    msg1 = "gene maps",
+                    msg2 = "genes map"
+                )
             ))
         }
         ## Return mode.
@@ -180,7 +194,7 @@ NULL
             entrez <- object[["entrezID"]]
             assert(is.list(entrez))
             names(entrez) <- object[["geneID"]]
-            map <- lapply(
+            map <- bplapply(
                 X = entrez,
                 FUN = function(x) {
                     if (all(is.na(x))) {
@@ -190,7 +204,7 @@ NULL
                     }
                 }
             )
-            entrez <- unlist(map)
+            entrez <- unlist(map, recursive = FALSE, use.names = TRUE)
             data <- DataFrame(
                 geneID = names(entrez),
                 entrezID = as.integer(entrez),
@@ -469,10 +483,16 @@ HGNC2Ensembl <-  # nolint
             ## nocov end
         }
         message("Obtaining HGNC to Ensembl gene ID mappings.")
-        ## Note that this file does not contain syntactically valid names, and
-        ## `readr::read_tsv()` has parsing issues with it.
-        ## FIXME Use a calling handler here instead.
-        suppressWarnings(data <- import(file))
+        data <- withCallingHandlers(
+            expr = import(file),
+            message = function(m) {
+                if (isTRUE(grepl(pattern = "syntactic", x = m))) {
+                    invokeRestart("muffleMessage")
+                } else {
+                    m
+                }
+            }
+        )
         data <- camel(data)
         data <- data[, c("hgncID", "ensemblGeneID")]
         colnames(data)[[2L]] <- "geneID"
