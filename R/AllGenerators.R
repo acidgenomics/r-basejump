@@ -529,17 +529,7 @@ MGI2Ensembl <- function() {  # nolint
         )
     }
     message("Obtaining MGI-to-Ensembl gene ID mappings.")
-    ## FIXME Switch to import, using tsv.
-    data <- read_tsv(
-        file = file,
-        ## Using our global NA strings.
-        na = naStrings,
-        col_names = FALSE,
-        ## Suppress the column messages.
-        col_types = cols(),
-        skip = 1L,
-        progress = FALSE
-    )
+    data <- import(file, format = "tsv", colnames = FALSE)
     data <- as(data[, c(1L, 11L)], "DataFrame")
     colnames(data) <- c("mgiID", "geneID")
     data[["mgiID"]] <- as.integer(gsub("^MGI\\:", "", data[["mgiID"]]))
