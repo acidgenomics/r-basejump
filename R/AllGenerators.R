@@ -560,7 +560,7 @@ MGI2Ensembl <- function() {  # nolint
 #'
 #' @examples
 #' options(acid.test = TRUE)
-#' x <- PANTHER("Homo sapiens")
+#' x <- PANTHER(organism = "Homo sapiens")
 #' summary(x)
 PANTHER <- function(organism, release = NULL) {
     assert(
@@ -605,7 +605,6 @@ PANTHER <- function(organism, release = NULL) {
         )
         ## nocov end
     }
-    assert(isString(file))
     data <- import(
         file = file,
         format = "tsv",
@@ -746,58 +745,61 @@ PANTHER <- function(organism, release = NULL) {
 
 
 
-## FIXME REWORK
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 .PANTHER.musMusculus <-  # nolint
     function(data) {
         mgi2ensembl <- MGI2Ensembl()
-
-        ## Ensembl matches.
-        ensembl <- data %>%
-            mutate(
-                geneID = str_extract(!!sym("keys"), "ENSMUSG[0-9]{11}")
-            ) %>%
-            filter(!is.na(!!sym("geneID")))
-
-        ## MGI matches.
-        mgi <- data %>%
-            as_tibble() %>%
-            mutate(
-                mgiID = str_match(!!sym("keys"), "MGI=([0-9]+)")[, 2L],
-                mgiID = as.integer(!!sym("mgiID"))
-            ) %>%
-            filter(!is.na(!!sym("mgiID"))) %>%
-            left_join(
-                as_tibble(mgi2ensembl, rownames = NULL),
-                by = "mgiID"
-            ) %>%
-            select(-!!sym("mgiID")) %>%
-            filter(!is.na(!!sym("geneID")))
-
-        do.call(rbind, list(ensembl, mgi))
+        ## Filter Ensembl matches.
+        ensembl <- data
+        pattern <- "ENSG[0-9]{11}"
+        keep <- str_detect(string = ensembl[["keys"]], pattern = pattern)
+        ensembl <- ensembl[keep, , drop = FALSE]
+        ensembl[["geneID"]] <-
+            str_extract(string = ensembl[["keys"]], pattern = pattern)
+        ## Filter HGNC matches.
+        mgi <- data
+        pattern <- "MGI=([0-9]+)"
+        keep <- str_detect(string = mgi[["keys"]], pattern = pattern)
+        mgi <- mgi[keep, , drop = FALSE]
+        mgi[["mgiID"]] <- as.integer(
+            str_match(string = mgi[["keys"]], pattern = pattern)[, 2L]
+        )
+        mgi <- left_join(mgi, mgi2ensembl, by = "mgiID")
+        mgi[["mgiID"]] <- NULL
+        keep <- !is.na(mgi[["geneID"]])
+        mgi <- mgi[keep, , drop = FALSE]
+        mgi <- unique(mgi)
+        ## Bind and return.
+        do.call(what = rbind, args = list(ensembl, mgi))
     }
 
 
 
-## FIXME REWORK
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 .PANTHER.drosophilaMelanogaster <-  # nolint
     function(data) {
-        mutate(data, geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$"))
+        data[["geneID"]] <- str_extract(
+            string = data[["keys"]],
+            pattern = "FBgn\\d{7}$"
+        )
+        data
     }
 
 
 
-## FIXME REWORK
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 .PANTHER.caenorhabditisElegans <-  # nolint
     function(data) {
-        mutate(data, geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$"))
+        data[["geneID"]] <- str_extract(
+            string = data[["keys"]],
+            pattern = "WBGene\\d{8}$"
+        )
+        data
     }
 
 
 
-## This is CPU intensive.
+## This is CPU intensive, so calling BiocParallel here.
 ## Updated 2019-08-16.
 .splitPANTHERTerms <- function(x) {
     message(sprintf("  - %s", deparse(substitute(x))))
