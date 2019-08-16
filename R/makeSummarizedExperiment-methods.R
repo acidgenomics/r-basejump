@@ -233,8 +233,6 @@ NULL
         ## Automatically arrange the ranges to match the main assay.
         assert(isSubset(rownames(assay), names(rowRanges)))
         rowRanges <- rowRanges[rownames(assay)]
-        ## Releving here to avoid factor levels blowing up the object size.
-        rowRanges <- relevel(rowRanges)
         if (hasCols(mcols(rowRanges))) {
             assert(hasValidNames(mcols(rowRanges)))
         }
@@ -242,7 +240,6 @@ NULL
         ## Automatically arrange the rows to match the main assay.
         assert(isSubset(rownames(assay), rownames(rowData)))
         rowData <- rowData[rownames(assay), , drop = FALSE]
-        rowData <- relevel(rowData)
         if (hasCols(rowData)) {
             assert(
                 hasValidNames(rowData),
@@ -268,7 +265,6 @@ NULL
             areDisjointSets(colnames(colData), blacklist)
         )
         colData <- colData[colnames(assay), , drop = FALSE]
-        colData <- relevel(colData)
     }
     if (hasCols(colData)) {
         assert(
@@ -336,6 +332,9 @@ NULL
         metadata(se) <- metadata(se)[sort(names(metadata(se)))]
     }
 
+    ## Drop factor levels in rowData and colData, to lower memory overhead.
+    se <- droplevels(se)
+    
     validObject(se)
     se
 }
