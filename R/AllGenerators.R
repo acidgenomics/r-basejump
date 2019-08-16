@@ -715,6 +715,30 @@ PANTHER <- function(organism, release = NULL) {
 
 
 
+## This is CPU intensive, so calling BiocParallel here.
+## Updated 2019-08-16.
+.splitPANTHERTerms <- function(x) {
+    message(sprintf("  - %s", deparse(substitute(x))))
+    bplapply(
+        X = x,
+        FUN = function(x) {
+            x <- as.character(x)
+            x <- strsplit(x, split = ";")
+            x <- unlist(x)
+            x <- sort(unique(x))
+            x <- gsub("#([A-Z0-9:]+)", " [\\1]", x)
+            x <- gsub(">", " > ", x)
+            if (length(x) > 0L) {
+                x
+            } else {
+                NULL
+            }
+        }
+    )
+}
+
+
+
 ## Updated 2019-08-16.
 .PANTHER.homoSapiens <-  # nolint
     function(data) {
@@ -799,30 +823,6 @@ PANTHER <- function(organism, release = NULL) {
 
 
 
-## This is CPU intensive, so calling BiocParallel here.
-## Updated 2019-08-16.
-.splitPANTHERTerms <- function(x) {
-    message(sprintf("  - %s", deparse(substitute(x))))
-    bplapply(
-        X = x,
-        FUN = function(x) {
-            x <- as.character(x)
-            x <- strsplit(x, split = ";")
-            x <- unlist(x)
-            x <- sort(unique(x))
-            x <- gsub("#([A-Z0-9:]+)", " [\\1]", x)
-            x <- gsub(">", " > ", x)
-            if (length(x) > 0L) {
-                x
-            } else {
-                NULL
-            }
-        }
-    )
-}
-
-
-
 ## Tx2Gene =====================================================================
 #' @inherit Tx2Gene-class title description return
 #' @name Tx2Gene
@@ -850,7 +850,6 @@ NULL
 `Tx2Gene,DataFrame` <-  # nolint
     function(object) {
         assert(hasRows(object))
-        ## Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
             stop(sprintf(
