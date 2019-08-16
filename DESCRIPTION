@@ -81,8 +81,6 @@ Suggests:
     testthat (>= 2.1),
     viridis (>= 0.5),
     datasets
-Enhances:
-    pbapply (>= 1.4)
 Remotes:
     acidgenomics/acidplots,
     acidgenomics/acidroxygen,
