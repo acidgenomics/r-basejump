@@ -11,7 +11,7 @@ NULL
 
 ## EggNOG ======================================================================
 #' @inherit EggNOG-class title description return
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-15.
 #' @export
 #' @inheritParams acidroxygen::params
 #' @examples
@@ -64,14 +64,14 @@ EggNOG <-  # nolint
 
         ## Categories ----------------------------------------------------------
         pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
-        categories <- read_lines(file = categoriesFile) %>%
-            str_subset(pattern) %>%
-            str_match(pattern) %>%
-            as.data.frame() %>%
-            select(-1L) %>%
-            set_colnames(c("letter", "description")) %>%
-            arrange(!!sym("letter")) %>%
-            as("DataFrame")
+        x <- readLines(categoriesFile)
+        x <- str_subset(x, pattern)
+        x <- str_match(x, pattern)
+        x <- as(x, "DataFrame")
+        x <- x[, c(2L, 3L)]
+        colnames(x) <- c("letter", "description")
+        x <- x[order(x[["letter"]]), , drop = FALSE]
+        categories <- x
 
         ## Annotations ---------------------------------------------------------
         colnames <- c(
@@ -82,32 +82,25 @@ EggNOG <-  # nolint
             "cogFunctionalCategory",
             "consensusFunctionalDescription"
         )
-
         ## euNOG: Eukaryota
-        eunog <- read_tsv(
-            file = eunogFile,
-            col_names = colnames,
-            col_types = cols(),
-            progress = FALSE
-        )
-
+        eunog <- as(import(eunogFile, colnames = FALSE), "DataFrame")
+        colnames(eunog) <- colnames
         ## NOG: LUCA
-        nog <- read_tsv(
-            file = nogFile,
-            col_names = colnames,
-            col_types = cols(),
-            progress = FALSE
-        )
-
-        annotations <- bind_rows(eunog, nog) %>%
-            select(!!!syms(c(
+        nog <- as(import(nogFile, colnames = FALSE), "DataFrame")
+        ## Bind annotations.
+        colnames(nog) <- colnames
+        x <- rbind(eunog, nog)
+        x <- x[
+            ,
+            c(
                 "groupName",
                 "consensusFunctionalDescription",
                 "cogFunctionalCategory"
-            ))) %>%
-            rename(eggnogID = !!sym("groupName")) %>%
-            arrange(!!sym("eggnogID")) %>%
-            as("DataFrame")
+            )
+            ]
+        colnames(x)[colnames(x) == "groupName"] <- "eggnogID"
+        x <- x[order(x[["eggnogID"]]), , drop = FALSE]
+        annotations <- x
 
         ## Return --------------------------------------------------------------
         data <- List(
