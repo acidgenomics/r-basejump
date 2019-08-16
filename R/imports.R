@@ -27,7 +27,7 @@
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom S4Vectors as.data.frame as.list coerce do.call lapply
-#'   match setdiff t
+#'   match setdiff t unique
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom transformer as.data.frame coerce
@@ -67,8 +67,8 @@
 #' @importFrom reshape2 melt
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
-#' @importFrom stringr str_dup str_extract str_length str_match str_pad
-#'   str_replace_all str_subset str_trunc
+#' @importFrom stringr str_detect str_dup str_extract str_length str_match
+#'   str_pad str_replace_all str_subset str_trunc
 #' @importFrom utils capture.output data getFromNamespace globalVariables
 #'   installed.packages packageVersion
 NULL

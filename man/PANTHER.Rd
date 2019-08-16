@@ -4,8 +4,7 @@
 \alias{PANTHER}
 \title{PANTHER database annotations}
 \usage{
-PANTHER(organism, release = NULL, progress = getOption("acid.progress",
-  default = FALSE))
+PANTHER(organism, release = NULL)
 }
 \arguments{
 \item{organism}{\code{character(1)}.
@@ -42,6 +41,6 @@ Updated 2019-08-08.
 
 \examples{
 options(acid.test = TRUE)
-x <- PANTHER("Homo sapiens", progress = FALSE)
+x <- PANTHER("Homo sapiens")
 summary(x)
 }
