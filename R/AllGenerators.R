@@ -448,7 +448,6 @@ setMethod(
 HGNC2Ensembl <-  # nolint
     function() {
         assert(hasInternet())
-
         if (isTRUE(getOption("acid.test"))) {
             file <- pasteURL(
                 basejumpTestsURL, "hgnc.txt.gz",
@@ -469,10 +468,10 @@ HGNC2Ensembl <-  # nolint
             )
             ## nocov end
         }
-
         message("Obtaining HGNC to Ensembl gene ID mappings.")
         ## Note that this file does not contain syntactically valid names, and
         ## `readr::read_tsv()` has parsing issues with it.
+        ## FIXME Use a calling handler here instead.
         suppressWarnings(data <- import(file))
         data <- camel(data)
         data <- data[, c("hgncID", "ensemblGeneID")]
@@ -480,7 +479,6 @@ HGNC2Ensembl <-  # nolint
         data <- data[!is.na(data[["geneID"]]), , drop = FALSE]
         data[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", data[["hgncID"]]))
         data <- data[order(data[["hgncID"]]), , drop = FALSE]
-
         data <- as(data, "DataFrame")
         metadata(data) <- .prototypeMetadata
         new(Class = "HGNC2Ensembl", data)
@@ -499,7 +497,6 @@ HGNC2Ensembl <-  # nolint
 #' print(x)
 MGI2Ensembl <- function() {  # nolint
     assert(hasInternet())
-
     if (isTRUE(getOption("acid.test"))) {
         file <- pasteURL(basejumpTestsURL, "mgi.rpt.gz", protocol = "none")
     } else {
@@ -511,8 +508,8 @@ MGI2Ensembl <- function() {  # nolint
             protocol = "http"
         )
     }
-
     message("Obtaining MGI-to-Ensembl gene ID mappings.")
+    ## FIXME Switch to import, using tsv.
     data <- read_tsv(
         file = file,
         ## Using our global NA strings.
@@ -528,7 +525,6 @@ MGI2Ensembl <- function() {  # nolint
     data[["mgiID"]] <- as.integer(gsub("^MGI\\:", "", data[["mgiID"]]))
     data <- data[order(data[["mgiID"]]), , drop = FALSE]
     metadata(data) <- .prototypeMetadata
-
     new(Class = "MGI2Ensembl", data)
 }
 

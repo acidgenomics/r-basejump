@@ -1,10 +1,21 @@
 ## FIXME Reduce the number of tidyverse imports.
 
-
-
 ## Conflicts with BiocGenerics:
 ## #' @importMethodsFrom Matrix colSums rowMeans rowSums t
 ## #' @importFrom tidyr expand
+
+## FIXME Switch to data.table instead of readr here?
+
+## FIXME Reduce these dependencies:
+## #' @importFrom dplyr arrange bind_rows desc filter group_by mutate pull rename
+## #'   select slice summarise_all top_n ungroup
+## #' @importFrom magrittr set_colnames set_rownames
+## #' @importFrom readr cols read_lines read_tsv
+## #' @importFrom rlang !! !!! := UQ sym syms
+## #' @importFrom tibble column_to_rownames tibble
+## #' @importFrom tidyr separate
+## #' @importFrom tidyselect everything matches
+## #' @importFrom transformer as_tibble
 
 
 
@@ -22,22 +33,21 @@
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
-#'   rowSums setdiff t
+#'   rowSums setdiff t unlist
+#' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
 #' @importFrom DelayedArray DelayedArray
 #' @importFrom DelayedMatrixStats colSums2 rowSums2
 #' @importFrom GenomeInfoDb seqnames
-#' @importFrom IRanges DataFrameList
+#' @importFrom IRanges DataFrameList SplitDataFrameList
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate cor decode
-#'   expand head lapply mcols mcols<- merge metadata metadata<- na.omit split
-#'   summary tail
+#'   expand head lapply mcols mcols<- merge metadata metadata<- na.omit order
+#'   split summary tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
-#' @importFrom dplyr arrange bind_rows desc filter group_by mutate pull rename
-#'   select slice summarise_all top_n ungroup
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
 #'   appendToBody areDisjointSets areIntersectingSets areSameLength areSetEqual
 #'   assert bapply containsAURL false getNameInParent hasColnames hasCols
@@ -50,22 +60,15 @@
 #'   isPositive isScalar isString isSubset isSuperset matchesUniqueGeneNames
 #'   methodFormals methodFunction validNames validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
-#' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
 #'   new selectMethod setAs setClass setGeneric setMethod setReplaceMethod
 #'   setOldClass setValidity show signature slot slotNames validObject .hasSlot
-#' @importFrom readr cols read_lines read_tsv
 #' @importFrom reshape2 melt
-#' @importFrom rlang !! !!! := UQ sym syms
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_dup str_extract str_length str_match str_pad
 #'   str_replace_all str_subset str_trunc
-#' @importFrom tidyr separate
-#' @importFrom tidyselect everything matches
-#' @importFrom tibble as_tibble column_to_rownames tibble
-#' @importFrom transformer as_tibble
 #' @importFrom utils capture.output data getFromNamespace globalVariables
 #'   installed.packages packageVersion
 NULL
