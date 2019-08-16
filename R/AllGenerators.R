@@ -145,7 +145,6 @@ NULL
     function(object, format = c("1:1", "long")) {
         assert(hasRows(object))
         format <- match.arg(format)
-
         cols <- c("geneID", "entrezID")
         if (!all(cols %in% colnames(object))) {
             stop(sprintf(
@@ -153,23 +152,19 @@ NULL
                 toString(cols)
             ))
         }
-
         data <- DataFrame(
             geneID = as.character(decode(object[["geneID"]])),
             entrezID = I(object[["entrezID"]]),
             row.names = rownames(object)
         )
-
         ## Expand to long format.
         data <- expand(data)
-
         ## Inform the user about genes that don't map to Entrez.
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
         assert(hasNoDuplicates(unmapped))
         if (length(unmapped) > 0L) {
             message(sprintf("%d genes don't map to Entrez.", length(unmapped)))
         }
-
         ## Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
         if (length(multimapped) > 0L) {
@@ -177,7 +172,7 @@ NULL
                 "%d genes map to multiple Entrez IDs.", length(multimapped)
             ))
         }
-
+        ## Return mode.
         if (format == "1:1") {
             message(
                 "Returning with 1:1 mappings using oldest Entrez ID per gene."
@@ -204,7 +199,6 @@ NULL
         } else if (format == "long") {
             message("Returning 1:many in long format (not recommended).")
         }
-
         metadata(data) <- metadata(object)
         metadata(data)[["format"]] <- format
         new(Class = "Ensembl2Entrez", data)
@@ -318,12 +312,11 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-15.
 `Gene2Symbol,DataFrame` <-  # nolint
     function(object, format = c("makeUnique", "unmodified", "1:1")) {
         assert(hasRows(object))
         format <- match.arg(format)
-
         ## Check for required columns.
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
@@ -332,13 +325,11 @@ NULL
                 toString(cols)
             ))
         }
-
         data <- DataFrame(
             geneID = as.character(decode(object[["geneID"]])),
             geneName = as.character(decode(object[["geneName"]])),
             row.names = rownames(object)
         )
-
         ## Inform the user about how many symbols multi-map.
         ## Note that `duplicated` doesn't work on Rle, so we have to coerce
         ## columns to character first (see `as_tibble` call above).
@@ -346,10 +337,16 @@ NULL
         if (any(duplicated)) {
             dupes <- unique(data[["geneName"]][duplicated])
             message(sprintf(
-                "%d non-unique gene symbol(s) detected.", length(dupes)
+                "%d non-unique gene %s detected.",
+                length(dupes),
+                ngettext(
+                    n = length(dupes),
+                    msg1 = "symbol",
+                    msg2 = "symbols"
+                )
             ))
         }
-
+        ## Return mode.
         if (format == "makeUnique") {
             ## Returning 1:1 mappings with renamed gene symbols.
             ## This is the default, and including a message is too noisy, since
@@ -362,15 +359,20 @@ NULL
             )
         } else if (format == "1:1") {
             message("Returning 1:1 mappings using oldest gene ID per symbol.")
-            data <- data %>%
-                as_tibble(rownames = NULL) %>%
-                group_by(!!sym("geneName")) %>%
-                arrange(!!sym("geneID"), .by_group = TRUE) %>%
-                slice(n = 1L) %>%
-                ungroup()
+            x <- split(data, f = data[["geneName"]])
+            x <- bplapply(
+                X = x,
+                FUN = function(x) {
+                    x <- x[order(x[["geneID"]]), , drop = FALSE]
+                    x <- head(x, n = 1L)
+                    x
+                }
+            )
+            x <- DataFrameList(x)
+            x <- unlist(x, recursive = FALSE, use.names = FALSE)
+            data <- x
+            assert(is(data, "DataFrame"))
         }
-
-        data <- as(data, "DataFrame")
         metadata(data) <- .slotGenomeMetadata(object)
         metadata(data)[["format"]] <- format
         new(Class = "Gene2Symbol", data)
