@@ -1,13 +1,6 @@
-## Don't use `NULL` assignment method to remove columns on a DataFrame if we're
-## providing support for BioC releases prior to 3.8. This will result in a
-## metadata problem that returns as a cryptic `S4Vectors::V_recycle` error. This
-## will pop up: 'NROW(value)' is greater than 'length(x)'.
-
-
-
 #' @name sampleData
 #' @inherit bioverbs::sampleData
-#' @note Updated 2019-08-11.
+#' @note Updated 2019-08-16.
 #'
 #' @section All supported S4 classes:
 #'
@@ -110,8 +103,7 @@ NULL
 
 
 ## Don't run validity checks here.
-## Note that we're using grep pattern matching for `ignoreCols`.
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 `sampleData,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -128,42 +120,35 @@ NULL
         assert(
             hasRownames(data),
             isFlag(clean),
-            isCharacter(ignoreCols, nullOK = TRUE)
+            isCharacter(ignoreCols, nullOK = TRUE),
+            areDisjointSets(x = colnames(data), y = metadataBlacklist)
         )
-
-        ## Prepare columns -----------------------------------------------------
-        assert(areDisjointSets(x = colnames(data), y = metadataBlacklist))
-
         ## Require `sampleName` column.
-        if (!"sampleName" %in% colnames(data)) {
+        if (!isSubset("sampleName", colnames(data))) {
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
             stop("'sampleData()' requires 'sampleName' factor in 'colData()'.")
         }
-
-        ## Clean mode ----------------------------------------------------------
+        ## Clean mode.
         if (isTRUE(clean)) {
             ## Return only a subset of factor columns.
             keep <- bapply(X = data, FUN = is.factor)
             data <- data[, keep, drop = FALSE]
-
             ## Drop any additional uninformative columns to ignore.
             if (is.character(ignoreCols)) {
                 keep <- !grepl(
                     pattern = paste(ignoreCols, collapse = "|"),
-                    x = colnames(data)
+                    x = camelCase(colnames(data))
                 )
                 data <- data[, keep, drop = FALSE]
             }
         }
-
-        ## Interesting groups --------------------------------------------------
+        ## Add interesting groups column.
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = matchInterestingGroups(object)
         )
-
-        ## Return --------------------------------------------------------------
+        ## Return.
         assert(
             is.factor(data[["interestingGroups"]]),
             is.factor(data[["sampleName"]])
@@ -184,7 +169,7 @@ setMethod(
 
 
 ## Don't run validity checks here.
-## Updated 2019-08-08.
+## Updated 2019-08-16.
 `sampleData,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -196,13 +181,13 @@ setMethod(
             "^samRef$"
         ),
         blacklistCols = c(
-            "^G2M.Score$",
-            "^Phase$",
-            "^S.Score$",
             "^ident$",
-            "^old.ident$",
-            "^orig.ident$",
-            "^res[.0-9]+$"
+            "^g2mScore$",
+            "^sScore$",
+            "^phase$",
+            "^oldIdent$",
+            "^origIdent$",
+            "^res[0-9]+"
         )
     ) {
         data <- colData(object)
@@ -211,13 +196,12 @@ setMethod(
             hasRownames(data),
             isFlag(clean),
             isCharacter(ignoreCols, nullOK = TRUE),
-            isCharacter(blacklistCols, nullOK = TRUE)
+            isCharacter(blacklistCols, nullOK = TRUE),
+            areDisjointSets("interestingGroups", colnames(data))
         )
         interestingGroups <- matchInterestingGroups(object)
 
         ## Prepare columns -----------------------------------------------------
-        assert(areDisjointSets("interestingGroups", colnames(data)))
-
         ## Generate `sampleID` and `sampleName` columns, if necessary. We're not
         ## requiring `sampleID` because many SingleCellExperiment objects are
         ## derived from a single sample (e.g. 10X PBMC example data). Note that
@@ -233,13 +217,11 @@ setMethod(
             data[["sampleName"]] <- data[["sampleID"]]
         }
         assert(is.factor(data[["sampleName"]]))
-
-        ## Blacklist -----------------------------------------------------------
         ## Drop any blacklisted cell-level columns.
         if (is.character(blacklistCols)) {
             keep <- !grepl(
                 pattern = paste(blacklistCols, collapse = "|"),
-                x = colnames(data)
+                x = camelCase(colnames(data))
             )
             data <- data[, keep, drop = FALSE]
         }
@@ -249,12 +231,11 @@ setMethod(
             ## Return only a subset of factor columns.
             keep <- bapply(X = data, FUN = is.factor)
             data <- data[, keep, drop = FALSE]
-
             ## Drop any additional uninformative columns to ignore.
             if (is.character(ignoreCols)) {
                 keep <- !grepl(
                     pattern = paste(ignoreCols, collapse = "|"),
-                    x = colnames(data)
+                    x = camelCase(colnames(data))
                 )
                 data <- data[, keep, drop = FALSE]
             }
@@ -301,11 +282,10 @@ setMethod(
         ## Instead, we need to enforce the factor levels by order of appearance.
         ##
         ## ftable here represents a numeric factor index table.
-        ftable %<>%
-            as_tibble(rownames = NULL) %>%
-            mutate_all(~ factor(., levels = unique(.))) %>%
-            mutate_all(as.integer)
-
+        factorToInteger <- function(x) {
+            as.integer(factor(x, levels = unique(x)))
+        }
+        ftable <- mutate_all(ftable, factorToInteger)
         trash <- !bapply(
             X = ftable,
             FUN = function(x) {
@@ -336,7 +316,6 @@ setMethod(
             ))
         }
         rownames(data) <- data[["sampleID"]]
-
         ## Returning arranged by `sampleID`. Use `setdiff()` approach instead of
         ## `NULL` assignment on `sampleID` column to maintain backwards
         ## compatibility prior to BioC 3.8.
@@ -345,14 +324,12 @@ setMethod(
             setdiff(colnames(data), "sampleID"),
             drop = FALSE
         ]
-
-        ## Interesting groups --------------------------------------------------
+        ## Add interesting groups column.
         data <- uniteInterestingGroups(
             object = data,
             interestingGroups = interestingGroups
         )
-
-        ## Return --------------------------------------------------------------
+        ## Return.
         assert(
             is.factor(data[["interestingGroups"]]),
             is.factor(data[["sampleName"]])
