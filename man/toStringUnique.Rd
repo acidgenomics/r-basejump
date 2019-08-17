@@ -16,7 +16,7 @@ toStringUnique(object)
 Convert to a unique character string
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-16.
 }
 \examples{
 toStringUnique(c("hello", "world", NA, "hello", "world", NA))

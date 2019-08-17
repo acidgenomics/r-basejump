@@ -1,3 +1,7 @@
+## FIXME Remove magrittr pipe.
+
+
+
 #' Map cells to samples
 #'
 #' This function extracts `sampleID` from the `cellID` column using grep

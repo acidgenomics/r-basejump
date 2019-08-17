@@ -1,3 +1,7 @@
+## FIXME Remove magrittr pipe.
+
+
+
 #' Show an object
 #'
 #' @name show

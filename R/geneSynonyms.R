@@ -1,5 +1,6 @@
 ## FIXME Switch to base R approaches here.
 ## FIXME Switch from `==` to `identical()`.
+## FIXME Remove magrittr pipe.
 
 
 
@@ -14,24 +15,24 @@
 #'
 #' @inheritParams acidroxygen::params
 #'
-#' @return `grouped_df`.
-#' Grouped by `geneID` column.
+#' @return `SplitDataFrame`.
+#' Split by `geneID` column.
 #'
 #' @examples
 #' options(acid.test = TRUE)
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
-geneSynonyms <- function(
-    organism = c(
-        "Homo sapiens",
-        "Mus musculus",
-        "Drosophila melanogaster"
-    )
-) {
+geneSynonyms <- function(organism) {
     assert(hasInternet())
-    organism <- match.arg(organism)
-
-    ## NCBI uses underscore for species name
+    organism <- match.arg(
+        arg = organism,
+        choices = c(
+            "Homo sapiens",
+            "Mus musculus",
+            "Drosophila melanogaster"
+        )
+    )
+    ## NCBI uses underscore for species name.
     species <- gsub(" ", "_", organism)
     if (species == "Drosophila_melanogaster") {
         ## This is covered in full local tests.
@@ -39,9 +40,7 @@ geneSynonyms <- function(
     } else {
         kingdom <- "Mammalia"
     }
-
     genome <- c(kingdom = kingdom, species = species)
-
     if (isTRUE(getOption("acid.test"))) {
         assert(organism == "Homo sapiens")
         file <- pasteURL(
@@ -62,13 +61,20 @@ geneSynonyms <- function(
         )
         ## nocov end
     }
-
-    data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
+    data <- withCallingHandlers(
+        expr = import(file = file, format = "tsv", colnames = TRUE),
+        message = function(m) {
+            if (isTRUE(grepl(pattern = "syntactic", x = m))) {
+                invokeRestart("muffleMessage")
+            } else {
+                m
+            }
+        }
+    )
     assert(hasLength(data))
-
-    data <- data %>%
-        camel() %>%
-        select(!!!syms(c("symbol", "synonyms", "dbXrefs"))) %>%
+    data <- camelCase(data)
+    data <- data[, c("symbol", "synonyms", "dbXrefs")]
+    colnames(data)[colnames(data) == "symbol"] <- "geneName"
         rename(geneName = !!sym("symbol")) %>%
         filter(
             !!sym("synonyms") != "-",

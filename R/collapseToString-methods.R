@@ -1,3 +1,7 @@
+## FIXME Remove magrittr pipe.
+
+
+
 #' @name collapseToString
 #' @inherit bioverbs::collapseToString
 #' @note Updated 2019-07-28.
