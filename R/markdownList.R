@@ -1,3 +1,7 @@
+## FIXME Remove magrittr pipe.
+
+
+
 #' Markdown list
 #'
 #' Include a Markdown-formatted list, either ordered or unordered. This function

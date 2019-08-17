@@ -1,3 +1,7 @@
+## FIXME Remove magrittr pipe.
+
+
+
 #' @name meltCounts
 #' @inherit bioverbs::meltCounts
 #' @note Updated 2019-08-11.

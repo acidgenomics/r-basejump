@@ -1,6 +1,6 @@
 #' @name selectSamples
 #' @inherit bioverbs::selectSamples
-#' @note Updated 2019-08-14.
+#' @note Updated 2019-08-16.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -44,7 +44,6 @@ NULL
     function(object, ...) {
         validObject(object)
         args <- list(...)
-
         ## Check that all arguments are atomic.
         if (!all(vapply(
             X = args,
@@ -53,11 +52,9 @@ NULL
         ))) {
             stop("Arguments must be atomic.")  # nocov
         }
-
         ## Match the arguments against the sample metadata.
         sampleData <- sampleData(object)
         assert(isSubset(names(args), colnames(sampleData)))
-
         ## Obtain the sample identifiers.
         list <- mapply(
             col = names(args),
@@ -71,7 +68,7 @@ NULL
         )
         samples <- sort(as.character(Reduce(f = intersect, x = list)))
         assert(hasLength(samples))
-
+        ## Return.
         object[, samples, drop = FALSE]
     }
 
@@ -138,12 +135,10 @@ setMethod(
         )
         samples <- Reduce(f = intersect, x = matches)
         assert(hasLength(samples))
-
         ## Output to the user which samples matched, using the `sampleName`
         ## metadata column, which is more descriptive than `sampleID`
         sampleNames <- sampleData[samples, "sampleName", drop = TRUE]
         sampleNames <- sort(unique(as.character(sampleNames)))
-
         message(sprintf(
             "%d %s matched: %s.",
             length(sampleNames),
@@ -154,7 +149,6 @@ setMethod(
             ),
             toString(sampleNames, width = 100L)
         ))
-
         ## Use the metrics `data.frame` to match the cellular barcodes.
         metrics <- metrics(object)
         assert(

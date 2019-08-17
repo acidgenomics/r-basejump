@@ -1,3 +1,7 @@
+## FIXME Remove magrittr pipe.
+
+
+
 #' Markdown header
 #'
 #' Generate a Markdown header (levels 1-7) in any R Markdown code block. When

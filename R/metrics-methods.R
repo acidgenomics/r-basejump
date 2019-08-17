@@ -1,3 +1,7 @@
+## FIXME Remove magrittr pipe.
+
+
+
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::metrics

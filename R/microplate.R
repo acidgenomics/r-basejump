@@ -1,3 +1,7 @@
+## FIXME Remove magrittr pipe.
+
+
+
 #' Microtiter plate well identifiers
 #'
 #' Quickly generate identifiers (with optional prefixes) for 96 and 384 well
