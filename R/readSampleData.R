@@ -137,24 +137,18 @@ readSampleData <- function(
     ## Prepare metadata for lane split replicates. This step will expand rows
     ## into the number of desired replicates (e.g. "L001").
     ## `lapply()` approach here inspired by `mefa::rep.data.frame()`.
-    ## - https://stackoverflow.com/questions/11121385/
-    ## - https://github.com/psolymos/mefa/blob/master/R/rep.data.frame.R
     if (length(lanes) > 1L) {
         split <- split(data, f = data[[idCol]])
         split <- SplitDataFrameList(lapply(
             X = split,
             FUN = function(x) {
-                # Expand the data frame to the number of lanes.
-                x <- lapply(x, rep, times = length(lanes))
-                x <- DataFrame(x)
-                x[["lane"]] <- paste0(
-                    "L",
-                    str_pad(string = lanes, width = 3L, pad = "0")
-                )
+                x <- rep(x, times = length(lanes))
+                x[["lane"]] <-
+                    paste0("L", str_pad(string = lanes, width = 3L, pad = "0"))
                 x
             }
         ))
-        data <- unlist(split, recursive = FALSE, use.names = FALSE)
+        data <- unlist(split, use.names = FALSE)
         pasteLanes <- function(nameCol, laneCol) {
             makeNames(paste(nameCol, laneCol, sep = "_"), unique = FALSE)
         }

@@ -19,7 +19,7 @@
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom S4Vectors as.data.frame as.list coerce do.call lapply
-#'   match setdiff t unique
+#'   match rep setdiff t unique
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom transformer as.data.frame coerce
