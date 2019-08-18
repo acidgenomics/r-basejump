@@ -10,7 +10,7 @@
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-08-11.
+#' @note Updated 2019-08-18.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -161,7 +161,7 @@ NULL
 
 
 ## aggregateRows ===============================================================
-## Updated 2019-07-22.
+## Updated 2019-08-18.
 `aggregateRows,matrix` <-  # nolint
     function(object, groupings, fun) {
         assert(
@@ -179,7 +179,8 @@ NULL
             FUN = getFromNamespace(x = fun, ns = "base")
         )
         assert(is.data.frame(data))
-        data <- column_to_rownames(data, var = "rowname")
+        rownames(data) <- data[["rowname"]]
+        data[["rowname"]] <- NULL
         as.matrix(data)
     }
 
@@ -409,28 +410,23 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-18.
 `aggregateCols,SingleCellExperiment` <-  # nolint
     function(object, fun) {
         validObject(object)
         fun <- match.arg(fun)
-
-        ## Remap cellular barcode groupings ------------------------------------
+        ## Remap cellular barcode groupings.
         colData <- colData(object)
         assert(
             isSubset(c("sampleID", "aggregate"), colnames(colData)),
             is.factor(colData[["aggregate"]])
         )
-
         message(sprintf(
             "Remapping cells to aggregate samples: %s",
             toString(sort(levels(colData[["aggregate"]])), width = 100L)
         ))
-
         map <- colData(object)
         map <- as_tibble(map, rownames = "cellID")
-        map <- map[, c("cellID", "sampleID", "aggregate")]
-
         ## Check to see if we can aggregate.
         if (!all(mapply(
             FUN = grepl,
@@ -449,10 +445,8 @@ setMethod(
             USE.NAMES = TRUE
         )
         groupings <- as.factor(groupings)
-
         cell2sample <- as.factor(map[["aggregate"]])
         names(cell2sample) <- as.character(groupings)
-
         ## Reslot the `aggregate` column using these groupings.
         assert(identical(names(groupings), colnames(object)))
         colData(object)[["aggregate"]] <- groupings
@@ -466,16 +460,18 @@ setMethod(
             is(rse, "RangedSummarizedExperiment"),
             identical(nrow(rse), nrow(object))
         )
-
         ## Update the sample data.
         colData <- colData(rse)
         assert(isSubset(rownames(colData), names(cell2sample)))
         colData[["sampleID"]] <- cell2sample[rownames(colData)]
         colData[["sampleName"]] <- colData[["sampleID"]]
         colData(rse) <- colData
-
+        ## Update the metadata.
+        metadata <- metadata(object)
+        metadata[["aggregate"]] <- TRUE
+        metadata[["aggregateCols"]] <- groupings
         ## Now ready to generate aggregated SCE.
-        sce <- makeSingleCellExperiment(
+        sce <- SingleCellExperiment(
             assays = SimpleList(counts = counts(rse)),
             rowRanges = rowRanges(object),
             colData = colData(rse),
@@ -483,8 +479,7 @@ setMethod(
                 aggregate = TRUE,
                 aggregateCols = groupings,
                 interestingGroups = interestingGroups(object)
-            ),
-            spikeNames = spikeNames(object)
+            )
         )
         validObject(sce)
         sce
