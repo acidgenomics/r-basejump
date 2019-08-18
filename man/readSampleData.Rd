@@ -4,18 +4,16 @@
 \alias{readSampleData}
 \title{Read sample metadata}
 \usage{
-readSampleData(file, lanes = 0L, pipeline = c("bcbio", "cellranger"))
+readSampleData(file, sheet = 1L, lanes = 0L, pipeline = c("bcbio",
+  "cellranger"))
 }
 \arguments{
 \item{file}{\code{character(1)}.
-File path. Supports CSV, TSV, and XLSX file formats.}
-
-\item{lanes}{\code{integer(1)}.
-Number of lanes used to split the samples into technical replicates
-suffix (i.e. \code{_LXXX}).}
+File path.}
 
 \item{pipeline}{\code{character(1)}.
-Name of supported pipeline.}
+Analysis pipeline.
+Currently defaults to bcbio.}
 }
 \value{
 \code{DataFrame}.
@@ -26,7 +24,7 @@ This function reads user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2019-08-13.
+Updated 2019-08-18.
 }
 \section{bcbio pipeline}{
 

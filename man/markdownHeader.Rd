@@ -32,7 +32,7 @@ Generate a Markdown header (levels 1-7) in any R Markdown code block. When
 calling inside an \code{asis} chunk, set \code{asis = TRUE}.
 }
 \note{
-Updated 2019-08-11.
+Updated 2019-08-18.
 }
 \examples{
 markdownHeader("Header", level = 2L)

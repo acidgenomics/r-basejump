@@ -34,7 +34,7 @@ Data frame containing mapping columns:
 Match human gene orthologs
 }
 \note{
-Updated 2019-08-11.
+Updated 2019-08-18.
 }
 \examples{
 genes <- c(
@@ -42,5 +42,5 @@ genes <- c(
     "ENSMUSG00000000028", "ENSMUSG00000000031",
     "ENSMUSG00000000037", "ENSMUSG00000000049"
 )
-matchHumanOrthologs(genes, ensemblRelease = 87L)
+matchHumanOrthologs(genes = genes, ensemblRelease = 87L)
 }

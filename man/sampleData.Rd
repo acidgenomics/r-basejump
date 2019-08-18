@@ -21,8 +21,8 @@ sampleData(object, ...) <- value
 
 \S4method{sampleData}{SingleCellExperiment}(object, clean = TRUE,
   ignoreCols = c("^description$", "^genomeBuild$", "^qualityFormat$",
-  "^samRef$"), blacklistCols = c("^G2M.Score$", "^Phase$", "^S.Score$",
-  "^ident$", "^old.ident$", "^orig.ident$", "^res[.0-9]+$"))
+  "^samRef$"), blacklistCols = c("^ident$", "^g2mScore$", "^sScore$",
+  "^phase$", "^oldIdent$", "^origIdent$", "^res[0-9]+"))
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
@@ -69,7 +69,7 @@ columns map to a single sample (e.g. cells for a single-cell RNA-seq
 experiment).
 }
 \note{
-Updated 2019-08-11.
+Updated 2019-08-16.
 }
 \section{All supported S4 classes}{
 

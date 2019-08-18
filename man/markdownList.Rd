@@ -29,7 +29,7 @@ works in any R Markdown code block. When calling from inside an \code{asis} chun
 set \code{asis = TRUE}.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-18.
 }
 \examples{
 groceries <- c("milk", "eggs")

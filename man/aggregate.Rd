@@ -73,7 +73,7 @@ can be used to aggregate counts from transcript-level to gene-level.
 sample replicates.
 }
 \note{
-Updated 2019-08-11.
+Updated 2019-08-18.
 }
 \section{Methods (by class)}{
 

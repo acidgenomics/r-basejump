@@ -4,16 +4,16 @@
 \alias{geneSynonyms}
 \title{Gene synonyms}
 \usage{
-geneSynonyms(organism = c("Homo sapiens", "Mus musculus",
-  "Drosophila melanogaster"))
+geneSynonyms(organism)
 }
 \arguments{
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. \code{"Homo sapiens"}).}
 }
 \value{
-\code{grouped_df}.
-Grouped by \code{geneID} column.
+\code{SplitDataFrameList}.
+Split by \code{geneID} column.
+Handles genes with duplicate entries (e.g. ENSG00000004866).
 }
 \description{
 Look up gene synonyms from NCBI.
@@ -22,7 +22,7 @@ Look up gene synonyms from NCBI.
 Synonym support for \emph{Caenorhabditis elegans} is poor on NCBI.
 Use the \href{https://steinbaugh.com/wormbase/}{wormbase} package instead.
 
-Updated 2019-07-28.
+Updated 2019-08-18.
 }
 \examples{
 options(acid.test = TRUE)
