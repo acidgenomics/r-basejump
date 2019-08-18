@@ -1,10 +1,4 @@
-## FIXME Remove magrittr pipe.
-## FIXME Don't use dplyr code internally here.
-## FIXME Allow the user to set the sampleID column.
-## FIXME Allow support for "sample" here.
-## FIXME bcbio needs to use "description" instead of sample.
-## FIXME Add a bcbio mode!
-## FIXME Can we improve bcbio pipeline to return directory?
+## Consider adding "cpi-to-bcbio" metadata import support here.
 
 
 
@@ -46,17 +40,13 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-08-13.
+#' @note Updated 2019-08-18.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
-#' @param file `character(1)`.
-#'   File path. Supports CSV, TSV, and XLSX file formats.
-#' @param lanes `integer(1)`.
-#'   Number of lanes used to split the samples into technical replicates
-#'   suffix (i.e. `_LXXX`).
 #' @param pipeline `character(1)`.
-#'   Name of supported pipeline.
+#'   Analysis pipeline.
+#'   Currently defaults to bcbio.
 #'
 #' @return `DataFrame`.
 #'
@@ -72,6 +62,7 @@
 #' print(x)
 readSampleData <- function(
     file,
+    sheet = 1L,
     lanes = 0L,
     pipeline = c("bcbio", "cellranger")
 ) {
@@ -89,18 +80,18 @@ readSampleData <- function(
         bcbio = "description",
         cellranger = "directory"
     )
-
     ## Convert lanes to a sequence, if necessary.
     if (hasLength(lanes, n = 1L) && lanes > 1L) {
         lanes <- seq_len(lanes)
     }
 
-    data <- import(file) %>%
-        as_tibble(rownames = NULL) %>%
-        camelCase() %>%
-        removeNA()
-
-    ## Look for bcbio "samplename" column and rename to "fileName".
+    ## Import ------------------------------------------------------------------
+    data <- import(file, sheet = sheet)
+    data <- as(data, "DataFrame")
+    data <- camelCase(data)
+    data <- removeNA(data)
+    ## Check for pipeline-specific columns. Look for bcbio "samplename" column
+    ## and rename to "fileName".
     if (identical(pipeline, "bcbio")) {
         if (isSubset("samplename", colnames(data))) {
             message("Renaming 'samplename' column to 'fileName'.")
@@ -109,28 +100,16 @@ readSampleData <- function(
         }
         idCol <- "description"
     } else if (identical(pipeline, "cellranger")) {
-        ## FIXME Add support for Chromium.
-        stop("Cell Ranger isn't supported yet.")
         idCol <- "directory"
     }
-
-    assert(.isSampleData(
-        object = data,
-        requiredCols = requiredCols
-    ))
-
+    assert(.isSampleData(object = data, requiredCols = requiredCols))
     ## Valid rows must contain a non-empty description.
     data <- data[!is.na(data[[idCol]]), , drop = FALSE]
-
     ## Determine whether the samples are multiplexed, based on the presence
     ## of duplicate values in the `description` column.
     if (
         isSubset(c("index", "sequence"), colnames(data)) &&
-        (
-            any(duplicated(data[[idCol]])) ||
-            ## Keep this line for bcbioSingleCell multiplexed minimal example.
-            nrow(data) == 1L
-        )
+        (any(duplicated(data[[idCol]])) || nrow(data) == 1L)
     ) {
         multiplexed <- TRUE
         message("Multiplexed samples detected.")
@@ -153,25 +132,33 @@ readSampleData <- function(
             "Refer to 'readSampleData()' for formatting requirements."
         )
     }
-    nameCols <- c("sampleName", idCol)
 
+    ## Lane-split replicates ---------------------------------------------------
     ## Prepare metadata for lane split replicates. This step will expand rows
-    ## into the number of desired replicates.
+    ## into the number of desired replicates (e.g. "L001").
+    ## `lapply()` approach here inspired by `mefa::rep.data.frame()`.
+    ## - https://stackoverflow.com/questions/11121385/
+    ## - https://github.com/psolymos/mefa/blob/master/R/rep.data.frame.R
     if (length(lanes) > 1L) {
-        ## FIXME Switch to S4 methods instead of using tidyverse.
-        data <- data %>%
-            group_by(!!!syms(nameCols)) %>%
-            ## Expand by lane (e.g. "L001").
-            tidyr::expand(
-                lane = paste0(
-                    "L", str_pad(string = lanes, width = 3L, pad = "0")
+        split <- split(data, f = data[[idCol]])
+        split <- SplitDataFrameList(lapply(
+            X = split,
+            FUN = function(x) {
+                # Expand the data frame to the number of lanes.
+                x <- lapply(x, rep, times = length(lanes))
+                x <- DataFrame(x)
+                x[["lane"]] <- paste0(
+                    "L",
+                    str_pad(string = lanes, width = 3L, pad = "0")
                 )
-            ) %>%
-            left_join(data, by = nameCols) %>%
-            ungroup()
+                x
+            }
+        ))
+        data <- unlist(split, recursive = FALSE, use.names = FALSE)
         pasteLanes <- function(nameCol, laneCol) {
             makeNames(paste(nameCol, laneCol, sep = "_"), unique = FALSE)
         }
+        nameCols <- c(idCol, "sampleName")
         data <- mutate_at(
             .tbl = data,
             .vars = nameCols,
@@ -182,6 +169,7 @@ readSampleData <- function(
         )
     }
 
+    ## Multiplexed samples -----------------------------------------------------
     ## This step applies to handling single-cell metadata.
     ## - bcbio subdirs (e.g. inDrops): `description`-`revcomp`.
     ## - Note that forward `sequence` is required in metadata file.
@@ -211,7 +199,7 @@ readSampleData <- function(
         data[[idCol]] <- paste(data[[idCol]], data[["revcomp"]], sep = "-")
     }
 
-    data <- as(data, "DataFrame")
+    ## Return.
     rownames(data) <- makeNames(data[[idCol]], unique = TRUE)
     makeSampleData(data)
 }
@@ -222,13 +210,10 @@ readSampleData <- function(
 ## Updated 2019-08-13.
 .isSampleData <- function(object, requiredCols = "sampleName") {
     assert(isCharacter(requiredCols))
-
     ok <- isAny(object, c("data.frame", "DataFrame"))
     if (!isTRUE(ok)) return(ok)
-
     ok <- hasRows(object)
     if (!isTRUE(ok)) return(ok)
-
     ## Check for blacklisted columns.
     intersect <- intersect(colnames(object), metadataBlacklist)
     ok <- !hasLength(intersect)
@@ -241,7 +226,6 @@ readSampleData <- function(
             toString(intersect)
         ))
     }
-
     ## Check for required columns (e.g. description).
     ok <- isSubset(requiredCols, colnames(object))
     if (!isTRUE(ok)) {
@@ -254,6 +238,5 @@ readSampleData <- function(
             toString(setdiff)
         ))
     }
-
     TRUE
 }
