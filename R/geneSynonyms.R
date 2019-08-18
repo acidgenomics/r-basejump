@@ -1,22 +1,17 @@
-## FIXME Switch to base R approaches here.
-## FIXME Switch from `==` to `identical()`.
-## FIXME Remove magrittr pipe.
-
-
-
 #' Gene synonyms
 #'
 #' Look up gene synonyms from NCBI.
 #'
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
 #' Use the [wormbase](https://steinbaugh.com/wormbase/) package instead.
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-18.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
 #'
-#' @return `SplitDataFrame`.
+#' @return `SplitDataFrameList`.
 #' Split by `geneID` column.
+#' Handles genes with duplicate entries (e.g. ENSG00000004866).
 #'
 #' @examples
 #' options(acid.test = TRUE)
@@ -72,35 +67,35 @@ geneSynonyms <- function(organism) {
         }
     )
     assert(hasLength(data))
+    data <- as(data, "DataFrame")
     data <- camelCase(data)
     data <- data[, c("symbol", "synonyms", "dbXrefs")]
     colnames(data)[colnames(data) == "symbol"] <- "geneName"
-        rename(geneName = !!sym("symbol")) %>%
-        filter(
-            !!sym("synonyms") != "-",
-            !!sym("dbXrefs") != "-"
-        ) %>%
-        mutate(synonyms = str_replace_all(!!sym("synonyms"), "\\|", ", "))
-
+    keep <- data[["synonyms"]] != "-"
+    data <- data[keep, , drop = FALSE]
+    keep <- data[["dbXrefs"]] != "-"
+    data <- data[keep, , drop = FALSE]
+    data[["synonyms"]] <- gsub(
+        pattern = "\\|",
+        replacement = ", ",
+        x = data[["synonyms"]]
+    )
     ## Sanitize the identifiers.
-    if (organism == "Drosophila melanogaster") {
+    if (identical(organism, "Drosophila melanogaster")) {
         ## This is covered in full local tests.
         ## nocov start
-        data <- mutate(
-            data,
-            geneID = str_extract(!!sym("dbXrefs"), "\\bFBgn[0-9]{7}\\b")
-        )
+        pattern <- "\\bFBgn[0-9]{7}\\b"
         ## nocov end
     } else {
-        data <- mutate(
-            data,
-            geneID = str_extract(!!sym("dbXrefs"), "\\bENS[A-Z]+[0-9]{11}\\b")
-        )
+        pattern <- "\\bENS[A-Z]+[0-9]{11}\\b"
     }
-
-    data %>%
-        filter(!is.na(!!sym("geneID"))) %>%
-        select(!!!syms(c("geneID", "geneName", "synonyms"))) %>%
-        arrange(!!sym("geneID")) %>%
-        group_by(!!sym("geneID"))
+    data[["geneID"]] <- str_extract(
+        string = data[["dbXrefs"]],
+        pattern = pattern
+    )
+    keep <- !is.na(data[["geneID"]])
+    data <- data[keep, , drop = FALSE]
+    data <- data[, c("geneID", "geneName", "synonyms")]
+    data <- data[order(data[["geneID"]]), , drop = FALSE]
+    split(data, f = data[["geneID"]])
 }
