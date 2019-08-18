@@ -67,6 +67,11 @@
 \alias{makeGRangesFromEnsembl}
 \alias{makeGRangesFromGFF}
 \alias{makeGRangesFromGTF}
+\alias{matchArgsToDoCall}
+\alias{methodFormals}
+\alias{methodFunction}
+\alias{printString}
+\alias{standardizeCall}
 \alias{\%<>\%}
 \alias{\%$\%}
 \alias{\%>\%}
@@ -132,6 +137,8 @@ below to see their documentation.
   \item{freerange}{\code{\link[freerange]{annotable}}, \code{\link[freerange]{convertUCSCBuildToEnsembl}}, \code{\link[freerange]{detectOrganism}}, \code{\link[freerange]{emptyRanges}}, \code{\link[freerange]{makeGRangesFromEnsDb}}, \code{\link[freerange]{makeGRangesFromEnsembl}}, \code{\link[freerange]{makeGRangesFromGFF}}, \code{\link[freerange]{makeGRangesFromGTF}}}
 
   \item{GenomicRanges}{\code{\link[GenomicRanges]{GRanges}}, \code{\link[GenomicRanges]{GRangesList}}}
+
+  \item{goalie}{\code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}}
 
   \item{IRanges}{\code{\link[IRanges]{IRanges}}}
 

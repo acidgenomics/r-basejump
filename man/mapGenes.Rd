@@ -58,7 +58,7 @@ writing code that needs to handle either gene identifier or gene name input
 dynamically (e.g. for single-cell RNA-seq marker analysis).
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-18.
 }
 \section{Ambiguous gene names}{
 

@@ -20,7 +20,7 @@ metricsPerSample(object, ...)
   "DataFrame"))
 
 \S4method{metricsPerSample}{SingleCellExperiment}(object, fun = c("mean",
-  "median", "sum"))
+  "median", "sum"), return = c("tbl_df", "DataFrame"))
 }
 \arguments{
 \item{object}{Object.}
@@ -36,35 +36,32 @@ Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 \item{...}{Additional arguments.}
 }
 \value{
-\itemize{
-\item \code{"tbl_df"}: \code{grouped_df}.
-Tibble grouped by \code{sampleID} column.
-\item \code{"DataFrame"}: \code{DataFrame}.
-Row names are identical to the column names of the object, like
-\code{\link[SummarizedExperiment:colData]{colData()}}.
-}
+Object of class determined by \code{return} argument.
 }
 \description{
 Quality control metrics
 }
 \details{
 \code{\link[=metrics]{metrics()}} takes data stored in \code{\link[SummarizedExperiment:colData]{colData()}}
-and consistently returns a tibble grouped by sample by default (\code{sampleID}).
-It always returns \code{sampleName} and \code{interestingGroups} columns, even when
-these columns are not defined in \code{colData}. This is designed to integrate
-with plotting functions that use ggplot2 internally.
+and consistently returns a \code{tbl_df} or \code{DataFrame} with \code{sampleName} and
+\code{interestingGroups} columns, even when these columns are not defined in
+\code{colData()}. This is designed to integrate with plotting functions that use
+ggplot2 internally.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{SummarizedExperiment}: Metrics are sample level. \code{sampleID} column corresponds
-to \code{colnames}.
+\item \code{SummarizedExperiment}: Sample-level metrics.
 
-\item \code{SingleCellExperiment}: Metrics are cell level. \code{cellID} column corresponds to
-\code{colnames}. Tibble is returned grouped by sample (\code{sampleID} column).
+\item \code{SingleCellExperiment}: Cell-level metrics.
+
+\item \code{SingleCellExperiment}: Sample-level metrics.
 }}
 
 \note{
-Updated 2019-08-06.
+These functions will error intentionally if no numeric columns are
+defined in \code{colData()}.
+
+Updated 2019-08-18.
 }
 \examples{
 data(
