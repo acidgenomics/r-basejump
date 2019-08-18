@@ -1,13 +1,9 @@
-## FIXME Use DataFrame instead of `as_tibble()` here.
-
-
-
 #' @name cell2sample
 #' @inherit bioverbs::cell2sample
 #'
 #' @note `sampleID` column must be defined in
 #' [`colData()`][SummarizedExperiment::colData].
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-18.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -15,7 +11,7 @@
 #' @return
 #' - `"factor"`: Named `factor` containing as the [levels][base::levels] and
 #'   cell IDs as the [names][base::names].
-#' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
+#' - `"tbl_df"`: Tibble containing `cellID` and `sampleID` columns.
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
@@ -37,24 +33,23 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-18.
 `cell2sample,SingleCellExperiment` <-  # nolint
-    function(object, return = c("factor", "tibble")) {
+    function(object, return = c("factor", "tbl_df")) {
         validObject(object)
         assert(isSubset("sampleID", colnames(colData(object))))
         return <- match.arg(return)
-        colData <- colData(object)
-        if (return == "factor") {
-            sample <- colData[["sampleID"]]
-            assert(is.factor(sample))
-            cell <- colnames(object)
-            names(sample) <- cell
-            sample
-        } else if (return == "tibble") {
-            data <- as_tibble(colData, rownames = "cellID")
-            data <- data[, c("cellID", "sampleID")]
-            data
+        data <- colData(object)
+        data <- data[, "sampleID", drop = FALSE]
+        data <- decode(data)
+        if (identical(return, "factor")) {
+            out <- data[["sampleID"]]
+            assert(is.factor(out))
+            names(out) <- colnames(object)
+        } else if (identical(return, "tbl_df")) {
+            out <- as_tibble(data, rownames = "cellID")
         }
+        out
     }
 
 
