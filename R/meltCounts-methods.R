@@ -1,4 +1,7 @@
 ## FIXME Remove magrittr pipe.
+## FIXME Use DataFrame instead of `as_tibble()` here.
+## FIXME Remove use of `!!` here.
+## FIXME Remove use of 'filter()' here.
 
 
 
