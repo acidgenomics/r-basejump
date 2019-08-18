@@ -1,13 +1,9 @@
-## FIXME Remove magrittr pipe.
-
-
-
 #' Markdown header
 #'
 #' Generate a Markdown header (levels 1-7) in any R Markdown code block. When
 #' calling inside an `asis` chunk, set `asis = TRUE`.
 #'
-#' @note Updated 2019-08-11.
+#' @note Updated 2019-08-18.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -38,21 +34,22 @@ markdownHeader <- function(
         isFlag(asis)
     )
     ## Add the header level.
-    header <- paste(str_dup("#", level), text)
+    text <- paste(str_dup("#", level), text)
     ## Append tabset label
     if (isTRUE(tabset)) {
-        header <- paste(header, "{.tabset}")
+        text <- paste(text, "{.tabset}")
     }
     ## Return.
     if (isTRUE(asis)) {
-        writeLines(c("", "", header, ""))
+        text <- c("", "", text, "")
+        writeLines(text = text, con = stdout())
     } else {
-        header %>%
-            ## Ensure trailing line break.
-            paste0("\n") %>%
-            ## Specify that output should be handled as Markdown text.
-            structure(format = "markdown") %>%
-            asis_output()
+        ## Ensure trailing line break.
+        text <- paste0(text, "\n")
+        ## Specify that output should be handled as Markdown text.
+        text <- structure(text, format = "markdown")
+        text <- asis_output(text)
+        text
     }
 }
 
