@@ -1,3 +1,7 @@
+## FIXME Use DataFrame instead of `as_tibble()` here.
+
+
+
 #' @name cell2sample
 #' @inherit bioverbs::cell2sample
 #'
