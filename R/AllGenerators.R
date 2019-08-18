@@ -1,7 +1,3 @@
-## FIXME Switch to base R approaches here.
-
-
-
 #' All generator functions
 #' @include AllGenerics.R
 #' @noRd
