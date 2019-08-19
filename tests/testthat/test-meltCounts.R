@@ -2,7 +2,7 @@ context("meltCounts")
 
 test_that("SummarizedExperiment", {
     x <- meltCounts(rse)
-    expect_s3_class(x, "tbl_df")
+    expect_s4_class(x, "DataFrame")
 })
 
 ## Here we're checking the handling of zero count genes.
@@ -31,7 +31,7 @@ trans <- eval(formals(`meltCounts,SummarizedExperiment`)[["trans"]])
 with_parameters_test_that(
     "trans", {
         x <- meltCounts(rse, trans = trans)
-        expect_s3_class(x, "tbl_df")
+        expect_s4_class(x, "DataFrame")
         expect_identical(
             object = round(head(x[["counts"]]), digits = 3L),
             expected = expected

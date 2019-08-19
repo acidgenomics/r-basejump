@@ -1,72 +1,60 @@
 context("metrics")
 
-test_that("SE : tibble", {
-    x <- metrics(rse)
+rse <- calculateMetrics(rse)
+sce <- calculateMetrics(sce)
+
+test_that("SummarizedExperiment : tibble", {
+    x <- metrics(rse, return = "tbl_df")
     expect_s3_class(x, "tbl_df")
-    expect_identical(group_vars(x), "sampleID")
     expect_identical(
         object = colnames(x),
         expected = c(
             "sampleID",
             "condition",
+            "nCount",
+            "nFeature",
+            "nCoding",
+            "nMito",
+            "log10FeaturesPerCount",
+            "mitoRatio",
             "sampleName",
             "interestingGroups"
         )
     )
 })
 
-test_that("SE : DataFrame", {
+test_that("SummarizedExperiment : DataFrame", {
     x <- metrics(rse, return = "DataFrame")
     expect_s4_class(x, "DataFrame")
     expect_true(hasRownames(x))
 })
 
-test_that("SCE : tibble", {
-    x <- metrics(sce)
+test_that("SingleCellExperiment", {
+    x <- metrics(sce, return = "tbl_df")
     expect_s3_class(x, "tbl_df")
 
+    x <- metrics(sce, return = "DataFrame")
+    expect_s4_class(x, "DataFrame")
 })
 
 
 
 context("metricsPerSample")
 
-## nolint start
-## fun <- eval(formals(metricsPerSample.SingleCellExperiment)[["fun"]])
-## nolint end
-
-test_that("SingleCellExperiment", {
-    object <- sce
-    ## Simulate a metric column with an expected mean.
-    ## Standard normal distribution
-    colData(object)[["nUMI"]] <- Matrix::colSums(counts(object))
-    expect_identical(
-        object = metricsPerSample(object, fun = "mean") %>%
-            .[["nUMI"]] %>%
-            round(digits = 2L),
-        expected = c(55883.41, 53992.89)
-    )
-    expect_identical(
-        object = metricsPerSample(object, fun = "median") %>%
-            .[["nUMI"]] %>%
-            round(digits = 2L) %>%
-            as.integer(),
-        expected = c(54488L, 51660L)
-    )
-    expect_equal(
-        object = metricsPerSample(object, fun = "sum") %>%
-            .[["nUMI"]] %>%
-            as.integer(),
-        expected = c(3576538L, 1943744L)
-    )
-})
-
-test_that("Missing nCount column", {
-    expect_error(
-        object = metricsPerSample(sce, fun = "sum"),
-        expected = paste(
-            "'sum' method only applies to metrics columns",
-            "prefixed with 'n' (e.g. 'nCount')."
+fun <- eval(formals(`metricsPerSample,SingleCellExperiment`)[["fun"]])
+with_parameters_test_that(
+    "SingleCellExperiment", {
+        col <- "nCount"
+        x <- metricsPerSample(sce, fun = fun)
+        expect_identical(
+            object = as.integer(round(x[[col]])),
+            expected = expected
         )
+    },
+    fun = fun,
+    expected = list(
+        mean = c(55883L, 53993L),
+        median = c(54488L, 51660L),
+        sum = c(3576538L, 1943744L)
     )
-})
+)
