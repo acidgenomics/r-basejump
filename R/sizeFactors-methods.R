@@ -1,7 +1,7 @@
 #' Size factors
 #'
 #' @name sizeFactors
-#' @note Updated 2019-08-06.
+#' @note Updated 2019-08-19.
 #'
 #' @importMethodsFrom SingleCellExperiment sizeFactors sizeFactors<-
 #'
