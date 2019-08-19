@@ -57,18 +57,14 @@ Imports:
     biomaRt,
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9),
-    data.table (>= 1.12),
     knitr (>= 1.22),
     magrittr (>= 1.5),
     matrixStats (>= 0.54),
     reshape2 (>= 1.4),
-    rlang (>= 0.4),
     scales (>= 1.0),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
     tibble (>= 2.1),
-    tidyr (>= 0.8),
-    tidyselect (>= 0.2),
     methods,
     utils
 Suggests:
