@@ -105,5 +105,6 @@ matchHumanOrthologs <- function(
     out <- left_join(out, g2s, by = "geneID")
     out <- left_join(out, g2shs, by = "hgncID")
     rownames(out) <- out[["geneID"]]
+    out <- out[, sort(colnames(out))]
     out
 }
