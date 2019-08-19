@@ -93,7 +93,10 @@ setMethod(
                 x
             }
         )
-        DataFrame(list, row.names = rownames(object))
+        out <- DataFrame(list, row.names = rownames(object))
+        ## Ensure `sampleName` column is always first.
+        out <- out[, unique(c("sampleName", colnames(out))), drop = FALSE]
+        out
     }
 
 
