@@ -39,42 +39,62 @@ NULL
 
 
 
-## Updated 2019-08-14.
-`makeSampleData,DataFrame` <- function(object) {
-    assert(
-        hasValidDimnames(object),
-        allAreAtomic(object)
-    )
-    object <- camelCase(object, rownames = FALSE, colnames = TRUE)
-    assert(
-        ## Don't allow "*Id" columns (note case).
-        allAreNotMatchingRegex(x = colnames(object), pattern = "Id$"),
-        ## Check for blacklisted columns.
-        areDisjointSets(
-            x = c(
-                "filename",
-                "id",
-                "interestingGroups",
-                "rowname",
-                "sample",
-                "samplename"
-            ),
-            y = colnames(object)
-        )
-    )
-    if (!isSubset("sampleName", colnames(object))) {
-        object[["sampleName"]] <- rownames(object)
+## Updated 2019-08-19.
+`makeSampleData,data.frame` <-  # nolint
+    function(object) {
+        object <- as(object, "DataFrame")
+        makeSampleData(object)
     }
-    list <- lapply(
-        X = object,
-        FUN = function(x) {
-            x <- as.factor(x)
-            x <- droplevels(x)
-            x
+
+
+
+#' @rdname makeSampleData
+#' @export
+setMethod(
+    f = "makeSampleData",
+    signature = signature("data.frame"),
+    definition = `makeSampleData,data.frame`
+)
+
+
+
+## Updated 2019-08-14.
+`makeSampleData,DataFrame` <-  # nolint
+    function(object) {
+        assert(
+            hasValidDimnames(object),
+            allAreAtomic(object)
+        )
+        object <- camelCase(object, rownames = FALSE, colnames = TRUE)
+        assert(
+            ## Don't allow "*Id" columns (note case).
+            allAreNotMatchingRegex(x = colnames(object), pattern = "Id$"),
+            ## Check for blacklisted columns.
+            areDisjointSets(
+                x = c(
+                    "filename",
+                    "id",
+                    "interestingGroups",
+                    "rowname",
+                    "sample",
+                    "samplename"
+                ),
+                y = colnames(object)
+            )
+        )
+        if (!isSubset("sampleName", colnames(object))) {
+            object[["sampleName"]] <- rownames(object)
         }
-    )
-    DataFrame(list, row.names = rownames(object))
-}
+        list <- lapply(
+            X = object,
+            FUN = function(x) {
+                x <- as.factor(x)
+                x <- droplevels(x)
+                x
+            }
+        )
+        DataFrame(list, row.names = rownames(object))
+    }
 
 
 
