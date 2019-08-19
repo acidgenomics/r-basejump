@@ -399,9 +399,9 @@ transformer::atomize
 #' @export
 transformer::coerceS4ToList
 
-#' @importFrom transformer droplevels
-#' @export
-transformer::droplevels
+#' @importMethodsFrom transformer droplevels
+#' @exportMethod droplevels
+NULL
 
 #' @importFrom transformer decode
 #' @export

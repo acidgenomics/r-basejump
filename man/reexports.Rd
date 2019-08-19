@@ -105,7 +105,6 @@
 \alias{as_tibble}
 \alias{atomize}
 \alias{coerceS4ToList}
-\alias{droplevels}
 \alias{decode}
 \alias{encode}
 \alias{factorize}
@@ -154,6 +153,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{relevel}}, \code{\link[transformer]{anti_join}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{droplevels}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{full_join}}, \code{\link[transformer]{inner_join}}, \code{\link[transformer]{left_join}}, \code{\link[transformer]{mutate_all}}, \code{\link[transformer]{mutate_at}}, \code{\link[transformer]{mutate_if}}, \code{\link[transformer]{right_join}}, \code{\link[transformer]{select_all}}, \code{\link[transformer]{select_at}}, \code{\link[transformer]{select_if}}, \code{\link[transformer]{semi_join}}, \code{\link[transformer]{transmute_at}}, \code{\link[transformer]{transmute_if}}}
+  \item{transformer}{\code{\link[transformer]{relevel}}, \code{\link[transformer]{anti_join}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{full_join}}, \code{\link[transformer]{inner_join}}, \code{\link[transformer]{left_join}}, \code{\link[transformer]{mutate_all}}, \code{\link[transformer]{mutate_at}}, \code{\link[transformer]{mutate_if}}, \code{\link[transformer]{right_join}}, \code{\link[transformer]{select_all}}, \code{\link[transformer]{select_at}}, \code{\link[transformer]{select_if}}, \code{\link[transformer]{semi_join}}, \code{\link[transformer]{transmute_at}}, \code{\link[transformer]{transmute_if}}}
 }}
 
