@@ -103,6 +103,8 @@ setMethod(
         }
         ## Match the arguments against the sample metadata.
         sampleData <- sampleData(object)
+        ## Allowing the user to select by "sampleID".
+        sampleData[["sampleID"]] <- rownames(sampleData)
         assert(hasRownames(sampleData))
         matches <- mapply(
             col = names(args),
@@ -152,7 +154,7 @@ setMethod(
         ))
 
         colData <- colData(object)
-        keep <- colData[["sampleID"]] %in% sample
+        keep <- colData[["sampleID"]] %in% samples
         colData <- colData[keep, , drop = FALSE]
         cells <- rownames(colData)
         message(sprintf(
