@@ -558,7 +558,7 @@ MGI2Ensembl <- function() {  # nolint
 #' options(acid.test = TRUE)
 #' x <- PANTHER(organism = "Homo sapiens")
 #' summary(x)
-PANTHER <- function(organism, release = NULL) {
+PANTHER <- function(organism, release = NULL) {  # nolint
     assert(
         hasInternet(),
         isString(organism)
