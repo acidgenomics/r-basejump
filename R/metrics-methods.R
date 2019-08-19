@@ -61,14 +61,6 @@ NULL
 
 
 
-.metricsError <- paste(
-    "Object doesn't contain any numeric columns in 'colData()'.",
-    "Consider running 'calculateMetrics()'.",
-    sep = "\n"
-)
-
-
-
 ## Updated 2019-08-18.
 `metrics,SummarizedExperiment` <-  # nolint
     function(object, return = c("tbl_df", "DataFrame")) {
@@ -77,8 +69,6 @@ NULL
         data <- sampleData(object, clean = FALSE)
         ## Decode columns that contain Rle, if necessary.
         data <- decode(data)
-        ## Error on numeric column failure.
-        if (!any(bapply(data, is.numeric))) stop(.metricsError)
         switch(
             EXPR = return,
             "DataFrame" = data,
@@ -108,8 +98,6 @@ setMethod(
         data <- data[, setdiff(colnames(data), blacklist), drop = FALSE]
         ## Decode columns that contain Rle, if necessary.
         data <- decode(data)
-        ## Error on numeric column failure.
-        if (!any(bapply(data, is.numeric))) stop(.metricsError)
         ## Automatically assign `sampleID` column, if necessary.
         if (!isSubset("sampleID", colnames(data))) {
             data[["sampleID"]] <- factor("unknown")
@@ -158,8 +146,6 @@ setMethod(
         data <- colData(object)
         ## Decode columns that contain Rle, if necessary.
         data <- decode(data)
-        ## Error on numeric column failure.
-        if (!any(bapply(data, is.numeric))) stop(.metricsError)
         # Subset the relevant metrics columns.
         if (identical(fun, "sum")) {
             pattern <- "^n[A-Z0-9]"
