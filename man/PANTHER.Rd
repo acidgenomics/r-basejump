@@ -4,21 +4,16 @@
 \alias{PANTHER}
 \title{PANTHER database annotations}
 \usage{
-PANTHER(organism, release = NULL, progress = getOption("acid.progress",
-  default = FALSE))
+PANTHER(organism, release = NULL)
 }
 \arguments{
 \item{organism}{\code{character(1)}.
-Full Latin organism name (e.g. "\code{Homo sapiens}").}
+Full Latin organism name (e.g. \code{"Homo sapiens"}).}
 
 \item{release}{\code{character(1)} or \code{NULL}.
 PANTHER release version. If \code{NULL}, defaults to current release. Consult
 the PANTHER website for a list of release versions available from the FTP
 server (e.g. \code{"14.0"}).}
-
-\item{progress}{\code{logical(1)}.
-Show progress.
-Uses \code{pbapply::pblapply()} internally to render progress bar.}
 }
 \value{
 \code{PANTHER}.
@@ -42,6 +37,6 @@ Updated 2019-08-08.
 
 \examples{
 options(acid.test = TRUE)
-x <- PANTHER("Homo sapiens", progress = FALSE)
+x <- PANTHER(organism = "Homo sapiens")
 summary(x)
 }

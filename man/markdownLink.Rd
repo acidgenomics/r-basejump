@@ -24,7 +24,7 @@ Markdown-formatted link.
 For use in \code{asis} blocks only.
 }
 \note{
-Updated 2019-08-05.
+Updated 2019-08-19.
 }
 \examples{
 markdownLink(

@@ -26,14 +26,6 @@ test_that("Mus musculus", {
         object = map,
         expected = DataFrame(
             geneID = genes,
-            hgncID = c(
-                "ENSG00000065135",
-                NA,
-                "ENSG00000093009",
-                NA,
-                "ENSG00000102098",
-                "ENSG00000091583"
-            ),
             geneName = c(
                 "Gnai3",
                 "Pbsn",
@@ -41,6 +33,14 @@ test_that("Mus musculus", {
                 "H19",
                 "Scml2",
                 "Apoh"
+            ),
+            hgncID = c(
+                "ENSG00000065135",
+                NA,
+                "ENSG00000093009",
+                NA,
+                "ENSG00000102098",
+                "ENSG00000091583"
             ),
             hgncName = c(
                 "GNAI3",

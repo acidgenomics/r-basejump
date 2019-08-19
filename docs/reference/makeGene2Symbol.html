@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
       </span>
     </div>
 
@@ -137,7 +137,7 @@
     <tr>
       <th>organism</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Full Latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+Full Latin organism name (e.g. <code>"Homo sapiens"</code>).</p></td>
     </tr>
     <tr>
       <th>genomeBuild</th>
@@ -201,10 +201,10 @@ File path.</p></td>
 #&gt; <span class='message'>Run this code to download EnsDb manually:</span>
 #&gt; <span class='message'>  &gt; library(AnnotationHub)</span>
 #&gt; <span class='message'>  &gt; ah &lt;- AnnotationHub()</span>
-#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH73986"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
-#&gt; <span class='message'>  - Genome Build: GRCh38</span>
-#&gt; <span class='message'>  - Ensembl Release: 79</span>
-#&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>65774 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>2403 non-unique gene symbol(s) detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 65774 rows and 2 columns
+#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH73986"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
+#&gt; <span class='message'>  - Genome Build: "GRCh38"</span>
+#&gt; <span class='message'>  - Ensembl Release: 79L</span>
+#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>65774 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>2403 non-unique gene symbols detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 65774 rows and 2 columns
 #&gt;                          geneID    geneName
 #&gt;                     &lt;character&gt; &lt;character&gt;
 #&gt; ENSG00000000003 ENSG00000000003      TSPAN6
@@ -219,10 +219,10 @@ File path.</p></td>
 #&gt; LRG_98                   LRG_98      RAG1.1
 #&gt; LRG_99                   LRG_99      RAG2.1</div><div class='input'>
 <span class='co'>## makeTx2GeneFromEnsDb ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: EnsDb.Hsapiens.v75</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: Homo sapiens</span>
-#&gt; <span class='message'>  - Genome Build: GRCh37</span>
-#&gt; <span class='message'>  - Ensembl Release: 75</span>
-#&gt; <span class='message'>  - Level: genes</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>64102 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>3075 non-unique gene symbol(s) detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 64102 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: EnsDb.Hsapiens.v75</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
+#&gt; <span class='message'>  - Genome Build: "GRCh37"</span>
+#&gt; <span class='message'>  - Ensembl Release: 75L</span>
+#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>64102 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>3075 non-unique gene symbols detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 64102 rows and 2 columns
 #&gt;                          geneID    geneName
 #&gt;                     &lt;character&gt; &lt;character&gt;
 #&gt; ENSG00000000003 ENSG00000000003      TSPAN6
@@ -239,7 +239,7 @@ File path.</p></td>
 <span class='co'>## makeGene2SymbolFromGFF ====</span>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"example.gtf"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing example.gtf using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>17 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 17 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing 'example.gtf' using 'rtracklayer::import()'.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>17 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 17 rows and 2 columns
 #&gt;                                geneID    geneName
 #&gt;                           &lt;character&gt; &lt;character&gt;
 #&gt; ENSMUSG00000025900 ENSMUSG00000025900         Rp1
@@ -255,7 +255,7 @@ File path.</p></td>
 #&gt; ENSMUSG00000104017 ENSMUSG00000104017     Gm37363</div><div class='input'>
 <span class='co'>## GFF3</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"example.gff3"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing example.gff3 using rtracklayer::import().</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID.</span></div><div class='output co'>#&gt; <span class='message'>20 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 20 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing 'example.gff3' using 'rtracklayer::import()'.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>20 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 20 rows and 2 columns
 #&gt;                                geneID    geneName
 #&gt;                           &lt;character&gt; &lt;character&gt;
 #&gt; ENSMUSG00000025900 ENSMUSG00000025900         Rp1

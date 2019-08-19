@@ -19,9 +19,6 @@ jobs:
       name: "bioc-3.8"
       script: tag="bioc-3.8" ./.Rcheck/docker
     - stage: test
-      name: "bioc-3.7"
-      script: tag="bioc-3.7" ./.Rcheck/docker
-    - stage: test
       name: "bioc-devel"
       script: tag="bioc-devel" ./.Rcheck/docker
 

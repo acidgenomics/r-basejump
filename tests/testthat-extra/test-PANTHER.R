@@ -85,7 +85,7 @@ with_parameters_test_that(
     "PANTHER : current_release", {
         object <- PANTHER(organism = organism, release = NULL)
         expect_s4_class(object, "PANTHER")
-        message(paste0(organism, ": ", nrow(object)))
+        message(sprintf("%s: %d", organism, nrow(object)))
     },
     organism = organisms
 )

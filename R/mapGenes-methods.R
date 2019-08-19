@@ -13,7 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-18.
 #'
 #' @inheritParams acidroxygen::params
 #' @param strict `logical(1)`.

@@ -5,7 +5,7 @@
 #'
 #' These plate formats are frequently used for high-throughput screening assays.
 #'
-#' @note Updated 2019-08-11.
+#' @note Updated 2019-08-18.
 #' @export
 #'
 #' @param plates `integer(1)`.
@@ -38,27 +38,19 @@ microplate <- function(
     controls = 0L,
     prefix = NULL
 ) {
-    ## Plates
+    plates <- as.integer(plates)
+    wells <- as.integer(wells)
+    controls <- as.integer(controls)
     assert(
         isInt(plates),
-        isPositive(plates)
-    )
-    plates <- as.integer(plates)
-    ## Wells
-    assert(
+        isPositive(plates),
         isInt(wells),
-        isPositive(wells)
-    )
-    wells <- as.integer(wells)
-    assert(isSubset(x = wells, y = c(96L, 384L)))
-    ## Controls
-    assert(
+        isPositive(wells),
+        isSubset(x = wells, y = c(96L, 384L)),
         isInt(controls),
-        isInRange(x = controls, lower = 0L, upper = 12L)
+        isInRange(x = controls, lower = 0L, upper = 12L),
+        isString(prefix, nullOK = TRUE)
     )
-    controls <- as.integer(controls)
-    ## Prefix
-    assert(isString(prefix, nullOK = TRUE))
     if (wells == 96L) {
         row <- 8L
         col <- 12L
@@ -66,11 +58,11 @@ microplate <- function(
         row <- 16L
         col <- 24L
     }
-    row <- LETTERS[1L:row]
-    col <- 1L:col %>%
-        str_pad(width = max(str_length(.)), pad = "0")
-    plates <- 1L:plates %>%
-        str_pad(width = max(str_length(.)), pad = "0")
+    row <- LETTERS[seq_len(row)]
+    col <- seq_len(col)
+    col <- str_pad(col, width = max(str_length(col)), pad = "0")
+    plates <- seq_len(plates)
+    plates <- str_pad(plates, width = max(str_length(plates)), pad = "0")
     df <- expand.grid(plates, row, col)
     vector <- sort(paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]))
     ## Prepare control wells.
@@ -80,11 +72,12 @@ microplate <- function(
             1L:controls,
             width = max(str_length(col)),
             pad = "0"
-        ) %>%
-            paste(collapse = "|") %>%
-            paste0("A(", ., ")$")
+        )
+        grep <- paste(grep, collapse = "|")
+        grep <- paste0("A(", grep, ")$")
         ## Remove the control wells using `grepl`.
-        vector <- vector[!grepl(grep, vector)]
+        keep <- !grepl(grep, vector)
+        vector <- vector[keep]
     }
     ## Add a prefix, if desired.
     if (isString(prefix)) {

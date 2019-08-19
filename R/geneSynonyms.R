@@ -4,29 +4,30 @@
 #'
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
 #' Use the [wormbase](https://steinbaugh.com/wormbase/) package instead.
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-18.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
 #'
-#' @return `grouped_df`.
-#' Grouped by `geneID` column.
+#' @return `SplitDataFrameList`.
+#' Split by `geneID` column.
+#' Handles genes with duplicate entries (e.g. ENSG00000004866).
 #'
 #' @examples
 #' options(acid.test = TRUE)
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
-geneSynonyms <- function(
-    organism = c(
-        "Homo sapiens",
-        "Mus musculus",
-        "Drosophila melanogaster"
-    )
-) {
+geneSynonyms <- function(organism) {
     assert(hasInternet())
-    organism <- match.arg(organism)
-
-    ## NCBI uses underscore for species name
+    organism <- match.arg(
+        arg = organism,
+        choices = c(
+            "Homo sapiens",
+            "Mus musculus",
+            "Drosophila melanogaster"
+        )
+    )
+    ## NCBI uses underscore for species name.
     species <- gsub(" ", "_", organism)
     if (species == "Drosophila_melanogaster") {
         ## This is covered in full local tests.
@@ -34,9 +35,7 @@ geneSynonyms <- function(
     } else {
         kingdom <- "Mammalia"
     }
-
     genome <- c(kingdom = kingdom, species = species)
-
     if (isTRUE(getOption("acid.test"))) {
         assert(organism == "Homo sapiens")
         file <- pasteURL(
@@ -57,39 +56,46 @@ geneSynonyms <- function(
         )
         ## nocov end
     }
-
-    data <- read_tsv(file = file, col_types = cols(), progress = FALSE)
+    data <- withCallingHandlers(
+        expr = import(file = file, format = "tsv", colnames = TRUE),
+        message = function(m) {
+            if (isTRUE(grepl(pattern = "syntactic", x = m))) {
+                invokeRestart("muffleMessage")
+            } else {
+                m
+            }
+        }
+    )
     assert(hasLength(data))
-
-    data <- data %>%
-        camel() %>%
-        select(!!!syms(c("symbol", "synonyms", "dbXrefs"))) %>%
-        rename(geneName = !!sym("symbol")) %>%
-        filter(
-            !!sym("synonyms") != "-",
-            !!sym("dbXrefs") != "-"
-        ) %>%
-        mutate(synonyms = str_replace_all(!!sym("synonyms"), "\\|", ", "))
-
+    data <- as(data, "DataFrame")
+    data <- camelCase(data)
+    data <- data[, c("symbol", "synonyms", "dbXrefs")]
+    colnames(data)[colnames(data) == "symbol"] <- "geneName"
+    keep <- data[["synonyms"]] != "-"
+    data <- data[keep, , drop = FALSE]
+    keep <- data[["dbXrefs"]] != "-"
+    data <- data[keep, , drop = FALSE]
+    data[["synonyms"]] <- gsub(
+        pattern = "\\|",
+        replacement = ", ",
+        x = data[["synonyms"]]
+    )
     ## Sanitize the identifiers.
-    if (organism == "Drosophila melanogaster") {
+    if (identical(organism, "Drosophila melanogaster")) {
         ## This is covered in full local tests.
         ## nocov start
-        data <- mutate(
-            data,
-            geneID = str_extract(!!sym("dbXrefs"), "\\bFBgn[0-9]{7}\\b")
-        )
+        pattern <- "\\bFBgn[0-9]{7}\\b"
         ## nocov end
     } else {
-        data <- mutate(
-            data,
-            geneID = str_extract(!!sym("dbXrefs"), "\\bENS[A-Z]+[0-9]{11}\\b")
-        )
+        pattern <- "\\bENS[A-Z]+[0-9]{11}\\b"
     }
-
-    data %>%
-        filter(!is.na(!!sym("geneID"))) %>%
-        select(!!!syms(c("geneID", "geneName", "synonyms"))) %>%
-        arrange(!!sym("geneID")) %>%
-        group_by(!!sym("geneID"))
+    data[["geneID"]] <- str_extract(
+        string = data[["dbXrefs"]],
+        pattern = pattern
+    )
+    keep <- !is.na(data[["geneID"]])
+    data <- data[keep, , drop = FALSE]
+    data <- data[, c("geneID", "geneName", "synonyms")]
+    data <- data[order(data[["geneID"]]), , drop = FALSE]
+    split(data, f = data[["geneID"]])
 }

@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
       </span>
     </div>
 
@@ -136,7 +136,7 @@
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>metricsPerSample</span>(<span class='no'>object</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mean"</span>,
-  <span class='st'>"median"</span>, <span class='st'>"sum"</span>))</pre>
+  <span class='st'>"median"</span>, <span class='st'>"sum"</span>), <span class='kw'>return</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"tbl_df"</span>, <span class='st'>"DataFrame"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,37 +165,30 @@ Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-<ul>
-<li><p><code>"tbl_df"</code>: <code>grouped_df</code>.
-Tibble grouped by <code>sampleID</code> column.</p></li>
-<li><p><code>"DataFrame"</code>: <code>DataFrame</code>.
-Row names are identical to the column names of the object, like
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code>.</p></li>
-</ul>
-
+    <p>Object of class determined by <code>return</code> argument.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>metrics()</code> takes data stored in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code>
-and consistently returns a tibble grouped by sample by default (<code>sampleID</code>).
-It always returns <code>sampleName</code> and <code>interestingGroups</code> columns, even when
-these columns are not defined in <code>colData</code>. This is designed to integrate
-with plotting functions that use ggplot2 internally.</p>
+and consistently returns a <code>tbl_df</code> or <code>DataFrame</code> with <code>sampleName</code> and
+<code>interestingGroups</code> columns, even when these columns are not defined in
+<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code>. This is designed to integrate with plotting functions that use
+ggplot2 internally.</p>
     
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
     
 <ul>
-<li><p><code>SummarizedExperiment</code>: Metrics are sample level. <code>sampleID</code> column corresponds
-to <code>colnames</code>.</p></li>
-<li><p><code>SingleCellExperiment</code>: Metrics are cell level. <code>cellID</code> column corresponds to
-<code>colnames</code>. Tibble is returned grouped by sample (<code>sampleID</code> column).</p></li>
+<li><p><code>SummarizedExperiment</code>: Sample-level metrics.</p></li>
+<li><p><code>SingleCellExperiment</code>: Cell-level metrics.</p></li>
+<li><p><code>SingleCellExperiment</code>: Sample-level metrics.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-06.</p>
+    <p>These functions will error intentionally if no numeric columns are
+defined in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code>.</p>
+<p>Updated 2019-08-18.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -204,50 +197,49 @@ to <code>colnames</code>.</p></li>
     <span class='no'>SingleCellExperiment</span>,
     <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
 )
-<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>rse</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 12 x 4</span><span>
-#&gt; </span><span style='color: #949494;'># Groups:   sampleID [12]</span><span>
-#&gt;    sampleID condition sampleName interestingGroups
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> sample01 A         sample01   A                
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> sample02 A         sample02   A                
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> sample03 A         sample03   A                
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> sample04 A         sample04   A                
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> sample05 A         sample05   A                
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> sample06 A         sample06   A                
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> sample07 B         sample07   B                
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> sample08 B         sample08   B                
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> sample09 B         sample09   B                
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> sample10 B         sample10   B                
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> sample11 B         sample11   B                
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> sample12 B         sample12   B                </div><div class='input'>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='calculateMetrics.html'>calculateMetrics</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating 12 cellular barcode metrics.</span></div><div class='output co'>#&gt; <span class='message'>497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'>0 mitochondrial features detected.</span></div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>object</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 12 x 10</span><span>
+#&gt;    sampleID condition nCount nFeature nCoding nMito log10FeaturesPe… mitoRatio
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> sample01 A          </span><span style='text-decoration: underline;'>19</span><span>139      445   </span><span style='text-decoration: underline;'>19</span><span>081    </span><span style='color: #BB0000;'>NA</span><span>            0.618        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> sample02 A          </span><span style='text-decoration: underline;'>19</span><span>511      437   </span><span style='text-decoration: underline;'>19</span><span>473    </span><span style='color: #BB0000;'>NA</span><span>            0.615        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> sample03 A          </span><span style='text-decoration: underline;'>19</span><span>047      449   </span><span style='text-decoration: underline;'>19</span><span>009    </span><span style='color: #BB0000;'>NA</span><span>            0.620        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> sample04 A          </span><span style='text-decoration: underline;'>18</span><span>955      455   </span><span style='text-decoration: underline;'>18</span><span>891    </span><span style='color: #BB0000;'>NA</span><span>            0.621        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> sample05 A          </span><span style='text-decoration: underline;'>19</span><span>449      452   </span><span style='text-decoration: underline;'>19</span><span>416    </span><span style='color: #BB0000;'>NA</span><span>            0.619        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> sample06 A          </span><span style='text-decoration: underline;'>19</span><span>445      446   </span><span style='text-decoration: underline;'>19</span><span>423    </span><span style='color: #BB0000;'>NA</span><span>            0.618        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> sample07 B          </span><span style='text-decoration: underline;'>29</span><span>796      459   </span><span style='text-decoration: underline;'>29</span><span>782    </span><span style='color: #BB0000;'>NA</span><span>            0.595        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> sample08 B          </span><span style='text-decoration: underline;'>30</span><span>051      456   </span><span style='text-decoration: underline;'>30</span><span>037    </span><span style='color: #BB0000;'>NA</span><span>            0.594        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> sample09 B          </span><span style='text-decoration: underline;'>28</span><span>145      444   </span><span style='text-decoration: underline;'>28</span><span>131    </span><span style='color: #BB0000;'>NA</span><span>            0.595        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> sample10 B          </span><span style='text-decoration: underline;'>27</span><span>790      443   </span><span style='text-decoration: underline;'>27</span><span>776    </span><span style='color: #BB0000;'>NA</span><span>            0.596        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> sample11 B          </span><span style='text-decoration: underline;'>29</span><span>351      445   </span><span style='text-decoration: underline;'>29</span><span>337    </span><span style='color: #BB0000;'>NA</span><span>            0.593        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> sample12 B          </span><span style='text-decoration: underline;'>24</span><span>991      442   </span><span style='text-decoration: underline;'>24</span><span>974    </span><span style='color: #BB0000;'>NA</span><span>            0.602        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #949494;'># … with 2 more variables: sampleName </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span style='color: #949494;'>, interestingGroups </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>sce</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 100 x 4</span><span>
-#&gt; </span><span style='color: #949494;'># Groups:   sampleID [2]</span><span>
-#&gt;    cellID  sampleID sampleName interestingGroups
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> cell001 sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> cell002 sample2  sample2    sample2          
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> cell003 sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> cell004 sample2  sample2    sample2          
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> cell005 sample2  sample2    sample2          
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> cell006 sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> cell007 sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> cell008 sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> cell009 sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> cell010 sample1  sample1    sample1          
-#&gt; </span><span style='color: #949494;'># … with 90 more rows</span><span></div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metricsPerSample</span>(<span class='no'>sce</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating mean per sample.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 3</span><span>
-#&gt; </span><span style='color: #949494;'># Groups:   sampleID [2]</span><span>
-#&gt;   sampleID sampleName interestingGroups
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sample1  sample1    sample1          
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> sample2  sample2    sample2          </div></span></pre>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='calculateMetrics.html'>calculateMetrics</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating 100 cellular barcode metrics.</span></div><div class='output co'>#&gt; <span class='message'>497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'>0 mitochondrial features detected.</span></div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>object</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 100 x 10</span><span>
+#&gt;    cellID sampleID nCount nFeature nCoding nMito log10FeaturesPe… mitoRatio
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> cell0… sample1   </span><span style='text-decoration: underline;'>41</span><span>054      235   </span><span style='text-decoration: underline;'>40</span><span>988    </span><span style='color: #BB0000;'>NA</span><span>            0.514        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> cell0… sample2   </span><span style='text-decoration: underline;'>49</span><span>758      246   </span><span style='text-decoration: underline;'>49</span><span>642    </span><span style='color: #BB0000;'>NA</span><span>            0.509        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> cell0… sample1   </span><span style='text-decoration: underline;'>57</span><span>439      248   </span><span style='text-decoration: underline;'>57</span><span>321    </span><span style='color: #BB0000;'>NA</span><span>            0.503        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> cell0… sample2   </span><span style='text-decoration: underline;'>68</span><span>140      263   </span><span style='text-decoration: underline;'>67</span><span>976    </span><span style='color: #BB0000;'>NA</span><span>            0.501        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> cell0… sample2   </span><span style='text-decoration: underline;'>63</span><span>809      245   </span><span style='text-decoration: underline;'>63</span><span>684    </span><span style='color: #BB0000;'>NA</span><span>            0.497        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> cell0… sample1   </span><span style='text-decoration: underline;'>49</span><span>845      231   </span><span style='text-decoration: underline;'>49</span><span>701    </span><span style='color: #BB0000;'>NA</span><span>            0.503        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> cell0… sample1   </span><span style='text-decoration: underline;'>58</span><span>662      245   </span><span style='text-decoration: underline;'>58</span><span>662    </span><span style='color: #BB0000;'>NA</span><span>            0.501        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> cell0… sample1   </span><span style='text-decoration: underline;'>43</span><span>157      226   </span><span style='text-decoration: underline;'>43</span><span>049    </span><span style='color: #BB0000;'>NA</span><span>            0.508        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> cell0… sample1   </span><span style='text-decoration: underline;'>47</span><span>298      229   </span><span style='text-decoration: underline;'>47</span><span>204    </span><span style='color: #BB0000;'>NA</span><span>            0.505        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> cell0… sample1   </span><span style='text-decoration: underline;'>44</span><span>743      231   </span><span style='text-decoration: underline;'>44</span><span>743    </span><span style='color: #BB0000;'>NA</span><span>            0.508        </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #949494;'># … with 90 more rows, and 2 more variables: sampleName </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span style='color: #949494;'>,
+#&gt; #   interestingGroups </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span></div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metricsPerSample</span>(<span class='no'>object</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating mean per sample.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 9</span><span>
+#&gt;   sampleID sampleName interestingGrou… nCount nFeature nCoding nMito
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sample1  sample1    sample1          </span><span style='text-decoration: underline;'>55</span><span>883.     240   </span><span style='text-decoration: underline;'>55</span><span>784.    </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> sample2  sample2    sample2          </span><span style='text-decoration: underline;'>53</span><span>993.     245.  </span><span style='text-decoration: underline;'>53</span><span>886.    </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #949494;'># … with 2 more variables: log10FeaturesPerCount </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mitoRatio </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

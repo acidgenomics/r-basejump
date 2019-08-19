@@ -11,7 +11,7 @@ matchHumanOrthologs(genes, organism = NULL, ensemblRelease = NULL)
 Gene identifiers.}
 
 \item{organism}{\code{character(1)}.
-Full Latin organism name (e.g. "\code{Homo sapiens}").}
+Full Latin organism name (e.g. \code{"Homo sapiens"}).}
 
 \item{ensemblRelease}{\code{integer(1)}.
 Ensembl release version (e.g. \code{90}). We recommend setting this value if
@@ -34,7 +34,7 @@ Data frame containing mapping columns:
 Match human gene orthologs
 }
 \note{
-Updated 2019-08-11.
+Updated 2019-08-18.
 }
 \examples{
 genes <- c(
@@ -42,5 +42,5 @@ genes <- c(
     "ENSMUSG00000000028", "ENSMUSG00000000031",
     "ENSMUSG00000000037", "ENSMUSG00000000049"
 )
-matchHumanOrthologs(genes, ensemblRelease = 87L)
+matchHumanOrthologs(genes = genes, ensemblRelease = 87L)
 }

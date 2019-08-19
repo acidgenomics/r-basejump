@@ -1,6 +1,6 @@
 #' @name collapseToString
 #' @inherit bioverbs::collapseToString
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-18.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sep `character(1)`.
@@ -60,7 +60,7 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-18.
 `collapseToString,atomic` <-  # nolint
     function(
         object,
@@ -75,17 +75,14 @@ NULL
             isFlag(unique),
             isFlag(sort)
         )
-
         ## Early return unmodified if scalar.
         if (isScalar(object)) {
             return(object)
         }
-
         ## Sort, if desired.
         if (isTRUE(sort)) {
             object <- sort(object, na.last = TRUE)
         }
-
         ## Remove NA values, if desired.
         if (!all(is.na(object))) {
             if (isTRUE(removeNA)) {
@@ -94,12 +91,11 @@ NULL
                 object <- sanitizeNA(object)
             }
         }
-
         ## Make unique, if desired.
         if (isTRUE(unique)) {
             object <- unique(object)
         }
-
+        ## Return.
         out <- as.character(object)
         out <- paste(out, collapse = sep)
         out
@@ -117,7 +113,8 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Alternatively, can use `dplyr::summarise_all()` approach.
+## Updated 2019-08-10.
 `collapseToString,matrix` <-  # nolint
     function(
         object,
@@ -126,26 +123,26 @@ setMethod(
         removeNA = FALSE,
         unique = FALSE
     ) {
-        ## Passthrough to atomic method: sep, unique, sort.
         assert(hasLength(object))
-
-        ## Coerce to tibble to perform the collapse.
-        collapse <- object %>%
-            as.data.frame() %>%
-            as_tibble(rownames = NULL) %>%
-            mutate_all(.funs = sanitizeNA) %>%
-            summarise_all(
-                .funs = ~ collapseToString(
-                    object = .,
+        x <- object
+        x <- as.data.frame(x, stringsAsFactors = FALSE)
+        list <- lapply(
+            X = x,
+            FUN = function(x) {
+                x <- sanitizeNA(x)
+                x <- collapseToString(
+                    object = x,
                     sep = sep,
                     sort = sort,
                     removeNA = removeNA,
                     unique = unique
                 )
-            )
-
-        ## Coerce collapsed tibble back to original object class.
-        as(object = collapse, Class = class(object)[[1L]])
+            }
+        )
+        x <- do.call(what = cbind, args = list)
+        x <- as.data.frame(x, stringsAsFactors = FALSE)
+        x <- as(object = x, Class = class(object)[[1L]])
+        x
     }
 
 
@@ -176,9 +173,9 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-18.
 `collapseToString,DataFrame` <-  # nolint
-    `collapseToString,matrix`
+    `collapseToString,data.frame`
 
 
 

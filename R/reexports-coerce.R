@@ -1,78 +1,11 @@
-## Updated 2019-07-22.
-
+#' Reexport transformer S4 coercion methods
+#'
 #' @importFrom methods coerce
 #' @exportMethod coerce
+#'
+#' @note Updated 2019-08-15.
+#' @noRd
 NULL
-
-
-
-#' @importFrom transformer as.SummarizedExperiment
-#' @export
-transformer::as.SummarizedExperiment
-
-#' @rdname reexports-S4
-#' @name as.data.frame
-#' @importFrom transformer as.data.frame
-#' @param row.names,optional
-#'   Refer to base [`as.data.frame()`][base::as.data.frame] for details.
-#' @usage as.data.frame(x, row.names = NULL, optional = FALSE, ...)
-#' @export
-NULL
-
-#' @importFrom transformer as.data.table
-#' @export
-transformer::as.data.table
-
-#' @importFrom transformer as_tibble
-#' @export
-transformer::as_tibble
-
-#' @rdname reexports-S4
-#' @name atomize
-#' @importFrom transformer atomize
-#' @usage atomize(object, ...)
-#' @export
-NULL
-
-#' @importFrom transformer coerceS4ToList
-#' @export
-transformer::coerceS4ToList
-
-#' @importFrom transformer left_join
-#' @export
-transformer::left_join
-
-#' @rdname reexports-S4
-#' @name decode
-#' @importFrom transformer decode
-#' @usage decode(x, ...)
-#' @export
-NULL
-
-#' @rdname reexports-S4
-#' @name encode
-#' @importFrom transformer encode
-#' @usage encode(x, ...)
-#' @export
-NULL
-
-#' @rdname reexports-S4
-#' @name factorize
-#' @importFrom transformer factorize
-#' @usage factorize(object, ...)
-#' @export
-NULL
-
-#' @rdname reexports-S4
-#' @name flatFiles
-#' @importFrom transformer flatFiles
-#' @usage flatFiles(object, ...)
-#' @export
-NULL
-
-#' @importFrom transformer relevel
-#' @export
-transformer::relevel
 
 
 

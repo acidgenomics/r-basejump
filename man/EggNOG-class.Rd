@@ -18,9 +18,9 @@ orthologous groups constructed from numerous organisms. eggNOG stands for
 \details{
 This class extends \code{list} and contains:
 \enumerate{
-\item "\code{cogFunctionalCategories}": \strong{C}luster of \strong{O}rthologous \strong{G}roups
+\item \code{"cogFunctionalCategories"}: \strong{C}luster of \strong{O}rthologous \strong{G}roups
 (COG) functional category information.
-\item "\code{annotations}": up-to-date functional descriptions and categories
+\item \code{"annotations"}: up-to-date functional descriptions and categories
 for \strong{Eu}karyotes \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (euNOG)
 and \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (NOG) protein
 identifiers.
@@ -30,5 +30,5 @@ The \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}
 contains additional useful reference information.
 }
 \note{
-Updated 2019-08-08.
+Updated 2019-08-13.
 }

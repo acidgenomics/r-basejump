@@ -1,6 +1,6 @@
 #' @name meltCounts
 #' @inherit bioverbs::meltCounts
-#' @note Updated 2019-08-11.
+#' @note Updated 2019-08-19.
 #'
 #' @inheritParams acidroxygen::params
 #' @param minCounts `integer(1)` or `NULL`.
@@ -40,7 +40,7 @@ NULL
 
 
 
-## Updated 2019-08-11.
+## Updated 2019-08-19.
 `meltCounts,matrix` <-  # nolint
     function(
         object,
@@ -52,13 +52,11 @@ NULL
         assert(isInt(minCounts, nullOK = TRUE))
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
-
         ## Filter rows that don't pass our `minCounts` expression cutoff. Note
         ## that we're ensuring rows containing all zeros are always dropped,
         ## even when `minCountsMethod = "absolute"`.
         if (isInt(minCounts)) {
             assert(isGreaterThanOrEqualTo(minCounts, 1L))
-
             if (minCountsMethod == "perFeature") {
                 rowCutoff <- minCounts
             } else {
@@ -78,34 +76,27 @@ NULL
                 ))
             }
             object <- object[keep, , drop = FALSE]
-
             ## Ensure that no zero rows propagate.
             assert(!any(rowSums(object) == 0L))
         }
-
-        ## Return as melted tibble.
-        melt <- object %>%
-            ## Using reshape2 method here.
-            ## This sets rownames as "Var1" and colnames as "Var2".
-            melt(id = 1L, value.name = "counts") %>%
-            as_tibble() %>%
-            rename(
-                rowname = !!sym("Var1"),
-                colname = !!sym("Var2")
-            ) %>%
-            group_by(!!!syms(c("colname", "rowname")))
-
+        ## Using reshape2 array (matrix) method here.
+        ## > help(topic = "melt.array", package = "reshape2")
+        ## nolint end
+        data <- melt(
+            data = object,
+            varnames = c("rowname", "colname"),
+            value.name = "counts"
+        )
+        data <- as(data, "DataFrame")
         ## When applying an absolute threshold using `minCountsMethod`, apply
         ## this cutoff prior to logarithmic transformation.
-        if (
-            isInt(minCounts) &&
-            minCountsMethod == "absolute"
-        ) {
-            nPrefilter <- nrow(melt)
-            melt %<>% filter(!!sym("counts") >= !!minCounts)
+        if (isInt(minCounts) && minCountsMethod == "absolute") {
+            nPrefilter <- nrow(data)
+            keep <- data[["counts"]] >= minCounts
+            data <- data[keep, , drop = FALSE]
             message(sprintf(
                 "%d / %d melted %s passed minimum >= %d expression cutoff.",
-                nrow(melt),
+                nrow(data),
                 nPrefilter,
                 ngettext(
                     n = nPrefilter,
@@ -115,7 +106,6 @@ NULL
                 minCounts
             ))
         }
-
         ## Log transform the counts, if desired.
         if (trans != "identity") {
             assert(isInt(minCounts))
@@ -126,10 +116,10 @@ NULL
                 inherits = FALSE
             )
             assert(is.function(fun))
-            melt[["counts"]] <- fun(melt[["counts"]] + 1L)
+            data[["counts"]] <- fun(data[["counts"]] + 1L)
         }
-
-        melt
+        data <- droplevels(data)
+        data
     }
 
 
@@ -157,29 +147,23 @@ setMethod(
         assert(isScalar(assay))
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
-
         ## Prepare the count matrix.
         counts <- assay(object, i = assay)
         assert(hasLength(counts))
         counts <- as.matrix(counts)
-
         ## Get the sample metadata.
-        sampleData <- sampleData(object) %>%
-            as_tibble(rownames = "rowname") %>%
-            rename(colname = !!sym("rowname"))
-
+        sampleData <- sampleData(object)
+        sampleData[["colname"]] <- rownames(sampleData)
         ## Passing to matrix method.
-        meltCounts(
+        data <- meltCounts(
             object = counts,
             minCounts = minCounts,
             minCountsMethod = minCountsMethod,
             trans = trans
-        ) %>%
-            ungroup() %>%
-            mutate_if(is.factor, as.character) %>%
-            left_join(sampleData, by = "colname") %>%
-            mutate_if(is.character, as.factor) %>%
-            group_by(!!!syms(c("colname", "rowname")))
+        )
+        data <- left_join(data, sampleData, by = "colname")
+        data <- droplevels(data)
+        data
     }
 
 args <- c("minCounts", "minCountsMethod", "trans")

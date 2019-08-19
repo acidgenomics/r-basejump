@@ -72,7 +72,7 @@ Formal methods for show will
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
       </span>
     </div>
 
@@ -167,7 +167,7 @@ the discussion in <code>setIs</code> for the general concept.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-07.</p>
+    <p>Updated 2019-08-18.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -179,13 +179,12 @@ the discussion in <code>setIs</code> for the general concept.</p>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'>## EggNOG ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EggNOG.html'>EggNOG</a></span>()
-<span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; EggNOG 0.11.6 of length 2
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EggNOG.html'>EggNOG</a></span>()</div><div class='output co'>#&gt; <span class='message'>Decompressing 'eunog.tsv.gz' in 'tempdir()'</span></div><div class='output co'>#&gt; <span class='message'>Importing 'eunog.tsv' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing 'nog.tsv.gz' in 'tempdir()'</span></div><div class='output co'>#&gt; <span class='message'>Importing 'nog.tsv' using 'data.table::fread()'.</span></div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; EggNOG 0.11.8 of length 2
 #&gt; ids(10): COG5153 COG5156 ... ENOG410KJ10 ENOG410KJ1P
 #&gt; categories(18): 1 2 ... 17 18</div><div class='input'>
 <span class='co'>## PANTHER ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PANTHER.html'>PANTHER</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for homo_sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing hgnc.txt.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing hgnc.txt using data.table::fread().</span></div><div class='output co'>#&gt; <span class='message'>hgnc.txt.gz does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; PANTHER 0.11.6 of length 9
-#&gt; organism: homo_sapiens
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PANTHER.html'>PANTHER</a></span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for 'Homo sapiens' (current release).</span></div><div class='output co'>#&gt; <span class='message'>Decompressing 'PTHR13.1_human.gz' in 'tempdir()'</span></div><div class='output co'>#&gt; <span class='message'>Importing 'PTHR13.1_human' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Importing HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing 'hgnc.txt.gz' in 'tempdir()'</span></div><div class='output co'>#&gt; <span class='message'>Importing 'hgnc.txt' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='output co'>#&gt; <span class='message'>  - goBP</span></div><div class='output co'>#&gt; <span class='message'>  - goCC</span></div><div class='output co'>#&gt; <span class='message'>  - goMF</span></div><div class='output co'>#&gt; <span class='message'>  - pantherClass</span></div><div class='output co'>#&gt; <span class='message'>  - pantherPathway</span></div><div class='input'><span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; PANTHER 0.11.8 of length 9
+#&gt; organism: Homo sapiens
 #&gt; release: current_release
 #&gt; genes(10): ENSG00000010219 ENSG00000075188 ... ENSG00000197140 ENSG00000213886</div></pre>
   </div>

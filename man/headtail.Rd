@@ -71,12 +71,12 @@ objects.
 Updated 2019-07-28.
 }
 \examples{
+data(mtcars, package = "datasets")
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment
 
 ## data.frame ====
-headtail(datasets::mtcars, unicode = TRUE)
-headtail(dplyr::starwars, unicode = FALSE)
+headtail(mtcars, unicode = TRUE)
 
 ## SummarizedExperiment ====
 headtail(rse, unicode = TRUE)
