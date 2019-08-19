@@ -69,14 +69,15 @@ microplate <- function(
     if (controls > 0L) {
         ## Create a grep string matching the control wells.
         grep <- str_pad(
-            seq_len(controls),
+            1L:controls,
             width = max(str_length(col)),
             pad = "0"
         )
         grep <- paste(grep, collapse = "|")
-        grep <- paste0(grep, "A(", grep, ")$")
+        grep <- paste0("A(", grep, ")$")
         ## Remove the control wells using `grepl`.
-        vector <- vector[!grepl(grep, vector)]
+        keep <- !grepl(grep, vector)
+        vector <- vector[keep]
     }
     ## Add a prefix, if desired.
     if (isString(prefix)) {
