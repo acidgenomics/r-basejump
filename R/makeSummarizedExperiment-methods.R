@@ -334,7 +334,7 @@ NULL
 
     ## Drop factor levels in rowData and colData, to lower memory overhead.
     se <- droplevels(se)
-    
+
     validObject(se)
     se
 }
