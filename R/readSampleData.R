@@ -187,7 +187,8 @@ readSampleData <- function(
                 x <- as(x, "character")
                 x
             },
-            FUN.VALUE = character(1L)
+            FUN.VALUE = character(1L),
+            USE.NAMES = FALSE
         )
         ## Match the sample directories exactly here, using the hyphen.
         data[[idCol]] <- paste(data[[idCol]], data[["revcomp"]], sep = "-")

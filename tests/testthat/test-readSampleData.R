@@ -56,75 +56,72 @@ context("readSampleData : Multiplexed samples")
 file <- file.path("cache", "bcbio-metadata-multiplexed-indrops.csv")
 
 test_that("DataFrame return", {
-    ## Note that we're expecting this to sort by the rownames (`description`),
-    ## and not by the `sampleName` column.
-    expect_identical(
-        object = readSampleData(file),
-        expected = DataFrame(
-            sampleName = factor(c(
-                "sample1_1",
-                "sample2_1",
-                "sample3_1",
-                "sample4_1",
-                "sample1_2",
-                "sample2_2",
-                "sample3_2",
-                "sample4_2"
-            )),
-            fileName = factor(c(
-                rep("indrops1_R1.fastq.gz", times = 4L),
-                rep("indrops2_R1.fastq.gz", times = 4L)
-            )),
-            ## Valid rownames (sampleIDs) are generated from this column.
-            ## Note that we're sorting the sample metadata by this column.
-            description = factor(c(
-                "indrops1-ATAGAGAG",
-                "indrops1-AGAGGATA",
-                "indrops1-CTCCTTAC",
-                "indrops1-TATGCAGT",
-                "indrops2-ATAGAGAG",
-                "indrops2-AGAGGATA",
-                "indrops2-CTCCTTAC",
-                "indrops2-TATGCAGT"
-            )),
-            index = factor(rep(seq_len(4L), times = 2L)),
-            sequence = factor(
-                rep(c(
-                    "CTCTCTAT",
-                    "TATCCTCT",
-                    "GTAAGGAG",
-                    "ACTGCATA"
-                ), times = 2L)
-            ),
-            aggregate = factor(
-                paste0("sample", rep(seq_len(4L), times = 2L)),
-                levels = paste0("sample", seq_len(4L))
-            ),
-            genotype = factor(
-                rep(c("wildtype", "knockout"), times = 4L),
-                ## Note that the order should be alphabetical here.
-                levels = c("knockout", "wildtype")
-            ),
-            revcomp = factor(
-                rep(c(
-                    "ATAGAGAG",
-                    "AGAGGATA",
-                    "CTCCTTAC",
-                    "TATGCAGT"
-                ), times = 2L)
-            ),
-            row.names = c(
-                "indrops1_ATAGAGAG",
-                "indrops1_AGAGGATA",
-                "indrops1_CTCCTTAC",
-                "indrops1_TATGCAGT",
-                "indrops2_ATAGAGAG",
-                "indrops2_AGAGGATA",
-                "indrops2_CTCCTTAC",
-                "indrops2_TATGCAGT"
-            )
+    object <- readSampleData(file)
+    expected <- DataFrame(
+        sampleName = factor(c(
+            "sample1_1",
+            "sample2_1",
+            "sample3_1",
+            "sample4_1",
+            "sample1_2",
+            "sample2_2",
+            "sample3_2",
+            "sample4_2"
+        )),
+        fileName = factor(c(
+            rep("indrops1_R1.fastq.gz", times = 4L),
+            rep("indrops2_R1.fastq.gz", times = 4L)
+        )),
+        ## Valid rownames (sampleIDs) are generated from this column.
+        ## Note that we're sorting the sample metadata by this column.
+        description = factor(c(
+            "indrops1-ATAGAGAG",
+            "indrops1-AGAGGATA",
+            "indrops1-CTCCTTAC",
+            "indrops1-TATGCAGT",
+            "indrops2-ATAGAGAG",
+            "indrops2-AGAGGATA",
+            "indrops2-CTCCTTAC",
+            "indrops2-TATGCAGT"
+        )),
+        index = factor(rep(seq_len(4L), times = 2L)),
+        sequence = factor(
+            rep(c(
+                "CTCTCTAT",
+                "TATCCTCT",
+                "GTAAGGAG",
+                "ACTGCATA"
+            ), times = 2L)
+        ),
+        aggregate = factor(
+            paste0("sample", rep(seq_len(4L), times = 2L)),
+            levels = paste0("sample", seq_len(4L))
+        ),
+        genotype = factor(
+            rep(c("wildtype", "knockout"), times = 4L),
+            ## Note that the order should be alphabetical here.
+            levels = c("knockout", "wildtype")
+        ),
+        revcomp = factor(
+            rep(c(
+                "ATAGAGAG",
+                "AGAGGATA",
+                "CTCCTTAC",
+                "TATGCAGT"
+            ), times = 2L)
+        ),
+        row.names = c(
+            "indrops1_ATAGAGAG",
+            "indrops1_AGAGGATA",
+            "indrops1_CTCCTTAC",
+            "indrops1_TATGCAGT",
+            "indrops2_ATAGAGAG",
+            "indrops2_AGAGGATA",
+            "indrops2_CTCCTTAC",
+            "indrops2_TATGCAGT"
         )
     )
+    expect_identical(object, expected)
 })
 
 test_that("Lane-split technical replicate support", {
