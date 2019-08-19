@@ -3,10 +3,13 @@
 \docType{methods}
 \name{makeSampleData}
 \alias{makeSampleData}
+\alias{makeSampleData,data.frame-method}
 \alias{makeSampleData,DataFrame-method}
 \title{Make sample data}
 \usage{
 makeSampleData(object, ...)
+
+\S4method{makeSampleData}{data.frame}(object)
 
 \S4method{makeSampleData}{DataFrame}(object)
 }
