@@ -1,15 +1,3 @@
-## FIXME Reduce the number of tidyverse imports.
-## FIXME Reduce these dependencies:
-## #' @importFrom rlang !! !!! := sym syms
-
-
-
-## Conflicts with BiocGenerics:
-## #' @importMethodsFrom Matrix colSums rowMeans rowSums t
-## #' @importFrom tidyr expand
-
-
-
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix sparseMatrix
