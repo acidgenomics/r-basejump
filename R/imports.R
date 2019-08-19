@@ -1,6 +1,5 @@
 ## FIXME Reduce the number of tidyverse imports.
 ## FIXME Reduce these dependencies:
-## #' @importFrom dplyr group_by mutate rename select slice ungroup
 ## #' @importFrom rlang !! !!! := sym syms
 
 
@@ -24,6 +23,7 @@
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
+#' @importFrom AnnotationDbi select
 #' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
 #'   rowSums setdiff t unlist
 #' @importFrom BiocParallel bplapply
@@ -40,6 +40,7 @@
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
+#' @importFrom biomaRt listEnsemblArchives listMarts useMart
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
 #'   appendToBody areDisjointSets areIntersectingSets areSameLength areSetEqual
 #'   assert bapply containsAURL false getNameInParent hasColnames hasCols

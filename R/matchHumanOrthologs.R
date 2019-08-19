@@ -25,7 +25,6 @@ matchHumanOrthologs <- function(
     organism = NULL,
     ensemblRelease = NULL
 ) {
-    requireNamespace("biomaRt", quietly = TRUE)
     timeout <- "biomaRt timed out connecting to Ensembl."
     assert(
         isCharacter(genes),
@@ -44,7 +43,7 @@ matchHumanOrthologs <- function(
         x = matchEnsemblReleaseToURL(ensemblRelease)
     )
     marts <- tryCatch(
-        expr = biomaRt::listMarts(host = host),
+        expr = listMarts(host = host),
         error = function(e) stop(timeout)
     )
     which <- match("ENSEMBL_MART_ENSEMBL", marts[["biomart"]])
@@ -63,7 +62,7 @@ matchHumanOrthologs <- function(
         "_gene_ensembl"
     )
     mart <- tryCatch(
-        expr = biomaRt::useMart(
+        expr = useMart(
             ## "ensembl" also works.
             biomart = "ENSEMBL_MART_ENSEMBL",
             dataset = dataset,
@@ -72,7 +71,7 @@ matchHumanOrthologs <- function(
         error = function(e) stop(timeout)
     )
     map <- tryCatch(
-        expr = biomaRt::select(
+        expr = select(
             x = mart,
             keys = genes,
             keytype = "ensembl_gene_id",

@@ -12,14 +12,13 @@
 #' @examples
 #' matchEnsemblReleaseToURL(96L)
 matchEnsemblReleaseToURL <- function(release) {
-    requireNamespace("biomaRt", quietly = TRUE)
     if (is.null(release)) {
         return("http://useast.ensembl.org")
     }
     release <- as.character(release)
     assert(isString(release))
     map <- tryCatch(
-        expr = biomaRt::listEnsemblArchives(),
+        expr = listEnsemblArchives(),
         error = function(e) {
             stop("biomaRt timed out connecting to Ensembl.")
         }
