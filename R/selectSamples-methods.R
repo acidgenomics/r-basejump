@@ -1,6 +1,6 @@
 #' @name selectSamples
 #' @inherit bioverbs::selectSamples
-#' @note Updated 2019-08-16.
+#' @note Updated 2019-08-19.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -84,10 +84,11 @@ setMethod(
 
 
 
-## Updated 2019-08-14.
+## Updated 2019-08-19.
 `selectSamples,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         validObject(object)
+        assert(isSubset("sampleID", colnames(colData(object))))
         ## Here the `args` are captured as a named character vector. The names
         ## of the arguments represent the column names. The value of the
         ## arguments should be a string that can be used for logical grep
@@ -149,15 +150,11 @@ setMethod(
             ),
             toString(sampleNames, width = 100L)
         ))
-        ## Use the metrics `data.frame` to match the cellular barcodes.
-        metrics <- metrics(object)
-        assert(
-            is(metrics, "grouped_df"),
-            isSubset(c("cellID", "sampleID"), colnames(metrics))
-        )
-        keep <- metrics[["sampleID"]] %in% samples
-        metrics <- metrics[keep, , drop = FALSE]
-        cells <- as.character(metrics[["cellID"]])
+
+        colData <- colData(object)
+        keep <- colData[["sampleID"]] %in% sample
+        colData <- colData[keep, , drop = FALSE]
+        cells <- rownames(colData)
         message(sprintf(
             "%d %s matched.",
             length(cells),
