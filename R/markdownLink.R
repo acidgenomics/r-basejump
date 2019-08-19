@@ -4,7 +4,7 @@
 #'
 #' @inherit markdownHeader
 #' @author Rory Kirchner, Michael Steinbaugh
-#' @note Updated 2019-08-05.
+#' @note Updated 2019-08-19.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -27,11 +27,11 @@ markdownLink <- function(
         isString(url),
         isString(title, nullOK = TRUE)
     )
-    x <- paste0("[", text, "](", url, ")")
+    text <- paste0("[", text, "](", url, ")")
     if (!is.null(title)) {
-        x <- paste0(x, ": ", title)
+        text <- paste0(text, ": ", title)
     }
-    writeLines(x)
+    writeLines(text = text, con = stdout())
 }
 
 
