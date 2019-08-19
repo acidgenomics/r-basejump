@@ -74,7 +74,7 @@ microplate <- function(
             pad = "0"
         )
         grep <- paste(grep, collapse = "|")
-        grep <- paste0(grep, "A(", ., ")$")
+        grep <- paste0(grep, "A(", grep, ")$")
         ## Remove the control wells using `grepl`.
         vector <- vector[!grepl(grep, vector)]
     }
