@@ -39,7 +39,7 @@ markdownList <- function(
         FUN.VALUE = character(1L)
     )
     if (isTRUE(asis)) {
-        text <- c("", list, "")
+        text <- c("", text, "")
         writeLines(text = text, con = stdout())
     } else {
         ## Add a trailing line break.
