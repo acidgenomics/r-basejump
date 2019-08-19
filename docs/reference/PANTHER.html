@@ -69,7 +69,7 @@ for Protein ANalysis THrough Evolutionary Relationships." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
       </span>
     </div>
 
@@ -124,8 +124,7 @@ for <strong>P</strong>rotein <strong>AN</strong>alysis <strong>TH</strong>rough 
     
     </div>
 
-    <pre class="usage"><span class='fu'>PANTHER</span>(<span class='no'>organism</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"acid.progress"</span>,
-  <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</pre>
+    <pre class="usage"><span class='fu'>PANTHER</span>(<span class='no'>organism</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,7 +132,7 @@ for <strong>P</strong>rotein <strong>AN</strong>alysis <strong>TH</strong>rough 
     <tr>
       <th>organism</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Full Latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+Full Latin organism name (e.g. <code>"Homo sapiens"</code>).</p></td>
     </tr>
     <tr>
       <th>release</th>
@@ -141,12 +140,6 @@ Full Latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
 PANTHER release version. If <code>NULL</code>, defaults to current release. Consult
 the PANTHER website for a list of release versions available from the FTP
 server (e.g. <code>"14.0"</code>).</p></td>
-    </tr>
-    <tr>
-      <th>progress</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Show progress.
-Uses <code><a href='https://rdrr.io/pkg/pbapply/man/pbapply.html'>pbapply::pblapply()</a></code> internally to render progress bar.</p></td>
     </tr>
     </table>
     
@@ -173,7 +166,7 @@ Uses <code><a href='https://rdrr.io/pkg/pbapply/man/pbapply.html'>pbapply::pblap
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>PANTHER</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for homo_sapiens (current_release).</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing hgnc.txt.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing hgnc.txt using data.table::fread().</span></div><div class='output co'>#&gt; <span class='message'>hgnc.txt.gz does not return syntactically valid names.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Length   Class    Mode 
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>PANTHER</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for 'Homo sapiens' (current release).</span></div><div class='output co'>#&gt; <span class='message'>Decompressing 'PTHR13.1_human.gz' in 'tempdir()'</span></div><div class='output co'>#&gt; <span class='message'>Importing 'PTHR13.1_human' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Importing HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing 'hgnc.txt.gz' in 'tempdir()'</span></div><div class='output co'>#&gt; <span class='message'>Importing 'hgnc.txt' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms.</span></div><div class='output co'>#&gt; <span class='message'>  - goBP</span></div><div class='output co'>#&gt; <span class='message'>  - goCC</span></div><div class='output co'>#&gt; <span class='message'>  - goMF</span></div><div class='output co'>#&gt; <span class='message'>  - pantherClass</span></div><div class='output co'>#&gt; <span class='message'>  - pantherPathway</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Length   Class    Mode 
 #&gt;       9 PANTHER      S4 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

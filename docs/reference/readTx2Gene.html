@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shared list of optional default formals — formalsList • basejump</title>
+<title>Read transcript-to-gene annotations — readTx2Gene • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Shared list of optional default formals — formalsList" />
+<meta property="og:title" content="Read transcript-to-gene annotations — readTx2Gene" />
 
-<meta property="og:description" content="Shared list of optional default formals" />
+<meta property="og:description" content="Generates a Tx2Gene object containing transcriptID and geneID columns." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,58 +111,87 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Shared list of optional default formals</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGlobals.R'><code>R/AllGlobals.R</code></a></small>
-    <div class="hidden name"><code>formalsList.Rd</code></div>
+    <h1>Read transcript-to-gene annotations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/readTx2Gene.R'><code>R/readTx2Gene.R</code></a></small>
+    <div class="hidden name"><code>readTx2Gene.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Shared list of optional default formals</p>
+    <p>Generates a <code>Tx2Gene</code> object containing <code>transcriptID</code> and <code>geneID</code> columns.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>formalsList</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>readTx2Gene</span>(<span class='no'>file</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+File path.</p></td>
+    </tr>
+    <tr>
+      <th>organism</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Full Latin organism name (e.g. <code>"Homo sapiens"</code>).</p></td>
+    </tr>
+    <tr>
+      <th>genomeBuild</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Ensembl genome build assembly name (e.g. <code>"GRCh38"</code>). If set <code>NULL</code>,
+defaults to the most recent build available.
+Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></td>
+    </tr>
+    <tr>
+      <th>ensemblRelease</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
+Ensembl release version (e.g. <code>90</code>). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>list</code> of length 9.</p>
+    <p><code>Tx2Gene</code>.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>File should not contain column header names.</p>
+<p>The functon doesn't attempt to strip transcript versions. Use
+<code><a href='stripTranscriptVersions.html'>stripTranscriptVersions()</a></code> in a separate call, if necessary.</p>
+<p>Updated 2019-08-13.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>formalsList</span></div><div class='output co'>#&gt; $color.continuous
-#&gt; getOption(x = "acid.color.continuous", default = acidplots::scale_colour_synesthesia_c())
-#&gt; 
-#&gt; $color.discrete
-#&gt; getOption(x = "acid.color.discrete", default = acidplots::scale_colour_synesthesia_d())
-#&gt; 
-#&gt; $fill.continuous
-#&gt; getOption(x = "acid.fill.continuous", default = acidplots::scale_fill_synesthesia_c())
-#&gt; 
-#&gt; $fill.discrete
-#&gt; getOption(x = "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d())
-#&gt; 
-#&gt; $flip
-#&gt; getOption(x = "acid.flip", default = TRUE)
-#&gt; 
-#&gt; $heatmap.color
-#&gt; getOption(x = "acid.heatmap.color", default = acidplots::synesthesia)
-#&gt; 
-#&gt; $label
-#&gt; getOption(x = "acid.label", default = FALSE)
-#&gt; 
-#&gt; $legend
-#&gt; getOption(x = "acid.legend", default = TRUE)
-#&gt; 
-#&gt; $point.size
-#&gt; getOption(x = "acid.point.size", default = 3L)
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"tx2gene.csv"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readTx2Gene</span>(
+    <span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>,
+    <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Mus musculus"</span>,
+    <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCm38"</span>,
+    <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>90L</span>
+)</div><div class='output co'>#&gt; <span class='message'>Importing 'tx2gene.csv' using 'data.table::fread()'.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 5 rows and 2 columns
+#&gt;                          transcriptID             geneID
+#&gt;                           &lt;character&gt;        &lt;character&gt;
+#&gt; ENSMUST00000033908 ENSMUST00000033908 ENSMUSG00000031511
+#&gt; ENSMUST00000070080 ENSMUST00000070080 ENSMUSG00000056124
+#&gt; ENSMUST00000119854 ENSMUST00000119854 ENSMUSG00000037736
+#&gt; ENSMUST00000174016 ENSMUST00000174016 ENSMUSG00000036036
+#&gt; ENSMUST00000204196 ENSMUST00000204196 ENSMUSG00000029804</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

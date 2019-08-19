@@ -52,7 +52,7 @@ x <- EggNOG()
 show(x)
 
 ## PANTHER ====
-x <- PANTHER("Homo sapiens", progress = FALSE)
+x <- PANTHER("Homo sapiens")
 show(x)
 }
 \seealso{

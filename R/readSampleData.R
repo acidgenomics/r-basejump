@@ -44,6 +44,10 @@
 #' @export
 #'
 #' @inheritParams acidroxygen::params
+#' @inheritParams brio::import
+#' @param lanes `integer(1)`.
+#'   Number of lanes used to split the samples into technical replicates
+#'   suffix (i.e. `_LXXX`).
 #' @param pipeline `character(1)`.
 #'   Analysis pipeline.
 #'   Currently defaults to bcbio.

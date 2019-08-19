@@ -11,6 +11,15 @@ readSampleData(file, sheet = 1L, lanes = 0L, pipeline = c("bcbio",
 \item{file}{\code{character(1)}.
 File path.}
 
+\item{sheet}{\code{character(1)} or \code{integer(1)}.
+\emph{Applies to Excel Workbook, Google Sheet, or GraphPad Prism file.}
+Sheet to read. Either a string (the name of a sheet), or an integer (the
+position of the sheet). Defaults to the first sheet.}
+
+\item{lanes}{\code{integer(1)}.
+Number of lanes used to split the samples into technical replicates
+suffix (i.e. \code{_LXXX}).}
+
 \item{pipeline}{\code{character(1)}.
 Analysis pipeline.
 Currently defaults to bcbio.}
