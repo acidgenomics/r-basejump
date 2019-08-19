@@ -7,29 +7,13 @@
 \alias{fixNA}
 \alias{initializeDirectory}
 \alias{kables}
+\alias{markdownPlotlist}
+\alias{mdPlotlist}
 \alias{readFileByExtension}
 \alias{readGFF}
 \alias{readGTF}
 \alias{readJSON}
 \alias{readYAML}
-\alias{markdownPlotlist}
-\alias{mdPlotlist}
-\alias{assertAreGeneAnnotations}
-\alias{assertFormalGene2symbol}
-\alias{assertFormalInterestingGroups}
-\alias{assertIsAHeaderLevel}
-\alias{assertIsAStringOrNULL}
-\alias{assertIsAnImplicitInteger}
-\alias{assertIsAnImplicitIntegerOrNULL}
-\alias{assertIsColorScaleDiscreteOrNULL}
-\alias{assertIsFillScaleDiscreteOrNULL}
-\alias{assertIsGene2symbol}
-\alias{assertIsHexColorFunctionOrNULL}
-\alias{assertIsImplicitInteger}
-\alias{assertIsTx2gene}
-\alias{relevelColData}
-\alias{relevelRowData}
-\alias{relevelRowRanges}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
 \usage{
@@ -38,6 +22,10 @@ fixNA(...)
 initializeDirectory(...)
 
 kables(...)
+
+markdownPlotlist(plotlist, ...)
+
+mdPlotlist(plotlist, ...)
 
 readFileByExtension(...)
 
@@ -48,42 +36,6 @@ readGTF(...)
 readJSON(...)
 
 readYAML(...)
-
-markdownPlotlist(plotlist, ...)
-
-mdPlotlist(plotlist, ...)
-
-assertAreGeneAnnotations(x)
-
-assertFormalGene2symbol(x, genes, gene2symbol)
-
-assertFormalInterestingGroups(x, interestingGroups)
-
-assertIsAHeaderLevel(x)
-
-assertIsAStringOrNULL(x)
-
-assertIsAnImplicitInteger(x)
-
-assertIsAnImplicitIntegerOrNULL(x)
-
-assertIsColorScaleDiscreteOrNULL(x)
-
-assertIsFillScaleDiscreteOrNULL(x)
-
-assertIsGene2symbol(x)
-
-assertIsHexColorFunctionOrNULL(x)
-
-assertIsImplicitInteger(x)
-
-assertIsTx2gene(x)
-
-relevelColData(object)
-
-relevelRowData(object)
-
-relevelRowRanges(object)
 }
 \arguments{
 \item{...}{Additional arguments.}
@@ -91,20 +43,11 @@ relevelRowRanges(object)
 \item{plotlist}{\code{list}.
 List containing \code{ggplot} objects.}
 
-\item{x}{Object.}
-
-\item{genes}{\code{character}.
-Gene identifiers.}
-
-\item{gene2symbol}{\code{Gene2Symbol}.
-Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
-\code{Gene2Symbol} for more information.}
+\item{object}{Object.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
-
-\item{object}{Object.}
 }
 \value{
 \code{.Deprecated}.

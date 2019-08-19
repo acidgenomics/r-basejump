@@ -11,11 +11,11 @@ estimateSizeFactors(object, ...)
 
 \S4method{estimateSizeFactors}{SummarizedExperiment}(object,
   type = c("mean-ratio", "geometric-mean-ratio",
-  "log-geometric-mean-ratio", "deseq2-median-ratio"), center = 1L)
+  "log-geometric-mean-ratio"), center = 1L)
 
 \S4method{estimateSizeFactors}{SingleCellExperiment}(object,
   type = c("mean-ratio", "geometric-mean-ratio",
-  "log-geometric-mean-ratio", "deseq2-median-ratio"), center = 1L)
+  "log-geometric-mean-ratio"), center = 1L)
 }
 \arguments{
 \item{object}{Object.}
@@ -30,9 +30,6 @@ Method for estimation:\preformatted{libSize <- colSums(counts(object))
 }
 \item \code{mean-geometric-mean-log-total}:\preformatted{log(libSize) / geometricMean(log(libSize))
 }
-\item \code{deseq2-median-ratio}: Requires DESeq2.
-The size factor is a median ratio of the sample over a "pseudosample":
-for each feature (i.e. gene), the geometric mean of all samples.
 }}
 
 \item{center}{\code{numeric(1)}.

@@ -19,8 +19,8 @@ Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
-\item "\code{asis = TRUE}": \code{\link[knitr:asis_output]{knitr::asis_output()}} return.
-\item "\code{asis = FALSE}": \code{\link[base:writeLines]{writeLines()}} return.
+\item \code{asis = TRUE}: \code{\link[knitr:asis_output]{knitr::asis_output()}} return.
+\item \code{asis = FALSE}: \code{\link[base:writeLines]{writeLines()}} return.
 }
 }
 \description{
@@ -29,7 +29,7 @@ works in any R Markdown code block. When calling from inside an \code{asis} chun
 set \code{asis = TRUE}.
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-18.
 }
 \examples{
 groceries <- c("milk", "eggs")

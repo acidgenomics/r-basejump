@@ -24,11 +24,13 @@
 \alias{panther}
 \alias{setArgsToDoCall}
 \alias{tx2gene}
-\alias{assertHasRownames}
 \alias{theme_midnight}
 \alias{theme_paperwhite}
 \alias{tx2geneFromGFF}
 \alias{separatorBar}
+\alias{relevelColData}
+\alias{relevelRowData}
+\alias{relevelRowRanges}
 \title{Defunct functions}
 \usage{
 aggregateFeatures(...)
@@ -75,8 +77,6 @@ setArgsToDoCall(...)
 
 tx2gene(...)
 
-assertHasRownames(...)
-
 theme_midnight(...)
 
 theme_paperwhite(...)
@@ -84,6 +84,12 @@ theme_paperwhite(...)
 tx2geneFromGFF(...)
 
 separatorBar(...)
+
+relevelColData(...)
+
+relevelRowData(...)
+
+relevelRowRanges(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

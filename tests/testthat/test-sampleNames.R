@@ -31,8 +31,8 @@ test_that("sampleName column isn't factor", {
     expect_error(
         object = sampleNames(rse),
         expected = paste(
-            "sampleData() requires a `sampleName`",
-            "factor column in colData()."
+            "sampleData() requires a 'sampleName'",
+            "factor column in 'colData()'."
         )
     )
 })

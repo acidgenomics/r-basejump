@@ -5,7 +5,7 @@
 #' set `asis = TRUE`.
 #'
 #' @inherit markdownHeader
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-18.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -26,7 +26,7 @@ markdownList <- function(
         isFlag(ordered),
         isFlag(asis)
     )
-    list <- vapply(
+    text <- vapply(
         X = seq_along(text),
         FUN = function(a) {
             if (isTRUE(ordered)) {
@@ -39,14 +39,15 @@ markdownList <- function(
         FUN.VALUE = character(1L)
     )
     if (isTRUE(asis)) {
-        writeLines(c("", list, ""))
+        text <- c("", text, "")
+        writeLines(text = text, con = stdout())
     } else {
-        list %>%
-            ## Add a trailing line break
-            paste0("\n") %>%
-            ## Specify that output should be handled as Markdown text
-            structure(format = "markdown") %>%
-            asis_output()
+        ## Add a trailing line break.
+        text <- paste0(text, "\n")
+        ## Specify that output should be handled as Markdown text.
+        text <- structure(text, format = "markdown")
+        text <- asis_output(text)
+        text
     }
 }
 

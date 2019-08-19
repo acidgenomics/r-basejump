@@ -37,9 +37,6 @@
 #'     ```
 #'     log(libSize) / geometricMean(log(libSize))
 #'     ```
-#'   - `deseq2-median-ratio`: Requires DESeq2.
-#'     The size factor is a median ratio of the sample over a "pseudosample":
-#'     for each feature (i.e. gene), the geometric mean of all samples.
 #' @param center `numeric(1)`.
 #'   If non-zero, scales all size factors so that the average size factor across
 #'   cells is equal to the value defined. Set to `0` to disable centering.
@@ -99,8 +96,7 @@ NULL
         type = c(
             "mean-ratio",
             "geometric-mean-ratio",
-            "log-geometric-mean-ratio",
-            "deseq2-median-ratio"
+            "log-geometric-mean-ratio"
         )
     ) {
         assert(
@@ -112,10 +108,8 @@ NULL
             fmt = "Calculating library size factors using '%s' method.",
             type
         ))
-
         ## Get the sum of expression per cell.
         libSizes <- colSums2(counts)
-
         ## Error on detection of cells without any expression.
         zero <- libSizes == 0L
         if (isTRUE(any(zero))) {
@@ -124,7 +118,6 @@ NULL
                 toString(unname(which(zero)), width = 100L)
             ))
         }
-
         ## Calculate the size factors per cell.
         sf <- switch(
             EXPR = type,
@@ -136,16 +129,10 @@ NULL
             },
             "log-geometric-mean-ratio" = {
                 log(libSizes) / geometricMean(log(libSizes))
-            },
-            "deseq2-median-ratio" = {
-                requireNamespace("DESeq2", quietly = TRUE)
-                DESeq2::estimateSizeFactorsForMatrix(counts)
             }
         )
-
         assert(!anyNA(sf))
         names(sf) <- colnames(counts)
-
         sf
     }
 

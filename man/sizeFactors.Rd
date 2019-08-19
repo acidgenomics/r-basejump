@@ -31,7 +31,7 @@ Names correspond to object column names.
 Size factors
 }
 \note{
-Updated 2019-08-06.
+Updated 2019-08-19.
 }
 \examples{
 data(

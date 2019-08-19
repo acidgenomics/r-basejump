@@ -37,7 +37,7 @@ NULL
 
 #' @rdname makeGene2Symbol
 #' @export
-## Updated 2019-06-06.
+## Updated 2019-08-15.
 makeGene2SymbolFromEnsembl <-
     function(organism) {
         format <- match.arg(format)

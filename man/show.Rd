@@ -42,7 +42,7 @@ complete, original object, with misleading results.  See the
 the discussion in \code{\link{setIs}} for the general concept.
 }
 \note{
-Updated 2019-08-07.
+Updated 2019-08-18.
 }
 \examples{
 options(acid.test = TRUE)
@@ -52,7 +52,7 @@ x <- EggNOG()
 show(x)
 
 ## PANTHER ====
-x <- PANTHER("Homo sapiens", progress = FALSE)
+x <- PANTHER("Homo sapiens")
 show(x)
 }
 \seealso{

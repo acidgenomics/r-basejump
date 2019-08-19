@@ -19,7 +19,7 @@
 #' - `sampleName` column is always placed first.
 #'
 #' @name makeSampleData
-#' @note Updated 2019-08-05.
+#' @note Updated 2019-08-14.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -39,43 +39,12 @@ NULL
 
 
 
-## Updated 2019-08-05.
-`makeSampleData,data.frame` <- function(object) {
-    assert(
-        ## Check for strings beginning with numbers, containing spaces, hyphens,
-        ## or other characters that aren't valid for names in R.
-        hasValidDimnames(object),
-        ## Don't allow "*Id" columns (note case).
-        all(isNotMatchingRegex(x = colnames(object), pattern = "Id$")),
-        ## Check for blacklisted columns.
-        areDisjointSets(
-            x = c(
-                "filename",
-                "id",
-                "interestingGroups",
-                "rowname",
-                "sample",
-                "samplename"
-            ),
-            y = colnames(object)
-        )
-    )
-    if (!isSubset("sampleName", colnames(object))) {
-        object[["sampleName"]] <- rownames(object)
+## Updated 2019-08-19.
+`makeSampleData,data.frame` <-  # nolint
+    function(object) {
+        object <- as(object, "DataFrame")
+        makeSampleData(object)
     }
-    out <- object %>%
-        as_tibble(rownames = "rowname") %>%
-        camelCase() %>%
-        mutate_all(as.factor) %>%
-        mutate_all(droplevels) %>%
-        select(!!sym("sampleName"), everything()) %>%
-        as("DataFrame")
-    assert(
-        hasRownames(out),
-        hasValidDimnames(out)
-    )
-    out
-}
 
 
 
@@ -89,9 +58,50 @@ setMethod(
 
 
 
-## Updated 2019-08-05.
+## Updated 2019-08-14.
 `makeSampleData,DataFrame` <-  # nolint
-    `makeSampleData,data.frame`
+    function(object) {
+        assert(
+            hasValidDimnames(object),
+            allAreAtomic(object)
+        )
+        object <- camelCase(object, rownames = FALSE, colnames = TRUE)
+        assert(
+            ## Don't allow "*Id" columns (note case).
+            allAreNotMatchingRegex(x = colnames(object), pattern = "Id$"),
+            ## Check for blacklisted columns.
+            areDisjointSets(
+                x = c(
+                    "filename",
+                    "id",
+                    "interestingGroups",
+                    "rowname",
+                    "sample",
+                    "samplename"
+                ),
+                y = colnames(object)
+            )
+        )
+        if (!isSubset("sampleName", colnames(object))) {
+            object[["sampleName"]] <- rownames(object)
+        }
+        list <- lapply(
+            X = object,
+            FUN = function(x) {
+                x <- as.factor(x)
+                x <- droplevels(x)
+                x
+            }
+        )
+        out <- DataFrame(list, row.names = rownames(object))
+        ## Ensure rownames are sorted and `sampleName` column is always first.
+        out <- out[
+            sort(rownames(out)),
+            unique(c("sampleName", colnames(out))),
+            drop = FALSE
+        ]
+        out
+    }
 
 
 

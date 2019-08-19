@@ -2,7 +2,7 @@
 #'
 #' @name show
 #' @inherit methods::show
-#' @note Updated 2019-08-07.
+#' @note Updated 2019-08-18.
 #'
 #' @examples
 #' options(acid.test = TRUE)
@@ -12,7 +12,7 @@
 #' show(x)
 #'
 #' ## PANTHER ====
-#' x <- PANTHER("Homo sapiens", progress = FALSE)
+#' x <- PANTHER("Homo sapiens")
 #' show(x)
 NULL
 
@@ -27,19 +27,15 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-18.
 `show,EggNOG` <-  # nolint
     function(object) {
         showHeader(object)
+        ids <- sort(object[["annotations"]][["eggnogID"]])
+        categories <- sort(object[["cogFunctionalCategories"]][["description"]])
         showSlotInfo(list(
-            ids = object %>%
-                .[["annotations"]] %>%
-                .[["eggnogID"]] %>%
-                sort(),
-            categories = object %>%
-                .[["cogFunctionalCategories"]] %>%
-                .[["description"]] %>%
-                sort()
+            ids = ids,
+            categories = categories
         ))
     }
 

@@ -27,10 +27,10 @@ mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
 DataFrame <- S4Vectors::DataFrame
 GRanges <- GenomicRanges::GRanges
 IRanges <- IRanges::IRanges
+SingleCellExperiment <- SingleCellExperiment::SingleCellExperiment
 SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
 `assay<-` <- SummarizedExperiment::`assay<-`
 cause <- goalie::cause
-group_vars <- dplyr::group_vars
 hasInternet <- goalie::hasInternet
 rowRanges <- SummarizedExperiment::rowRanges
 str_pad <- stringr::str_pad

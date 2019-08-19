@@ -8,7 +8,7 @@ test_that("SCE factor return", {
 })
 
 test_that("SCE tibble return", {
-    x <- cell2sample(sce, return = "tibble")
+    x <- cell2sample(sce, return = "tbl_df")
     expect_s3_class(x, "tbl_df")
     expect_identical(colnames(x), c("cellID", "sampleID"))
 })

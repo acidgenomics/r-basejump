@@ -47,7 +47,7 @@ useful for plots and doesn't have to match the column names of a
 }
 }
 \note{
-Updated 2019-08-05.
+Updated 2019-08-14.
 }
 \examples{
 object <- DataFrame(

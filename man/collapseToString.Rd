@@ -50,7 +50,7 @@ Unique values.}
 Collapse to string
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-08-18.
 }
 \examples{
 ## character ====

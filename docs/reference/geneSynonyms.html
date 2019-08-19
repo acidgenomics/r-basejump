@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
       </span>
     </div>
 
@@ -122,8 +122,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='st'>"Mus musculus"</span>,
-  <span class='st'>"Drosophila melanogaster"</span>))</pre>
+    <pre class="usage"><span class='fu'>geneSynonyms</span>(<span class='no'>organism</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -131,37 +130,74 @@
     <tr>
       <th>organism</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Full Latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+Full Latin organism name (e.g. <code>"Homo sapiens"</code>).</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>grouped_df</code>.
-Grouped by <code>geneID</code> column.</p>
+    <p><code>SplitDataFrameList</code>.
+Split by <code>geneID</code> column.
+Handles genes with duplicate entries (e.g. ENSG00000004866).</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Synonym support for <em>Caenorhabditis elegans</em> is poor on NCBI.
 Use the <a href='https://steinbaugh.com/wormbase/'>wormbase</a> package instead.</p>
-<p>Updated 2019-07-28.</p>
+<p>Updated 2019-08-18.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 8 x 3</span><span>
-#&gt; </span><span style='color: #949494;'># Groups:   geneID [8]</span><span>
-#&gt;   geneID          geneName synonyms                    
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> ENSG00000114771 AADAC    CES5A1, DAC                 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> ENSG00000121410 A1BG     A1B, ABG, GAB, HYST2477     
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> ENSG00000129673 AANAT    DSPS, SNAT                  
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> ENSG00000156006 NAT2     AAC2, NAT-2, PNAT           
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> ENSG00000171428 NAT1     AAC1, MNAT, NAT-1, NATI     
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> ENSG00000175899 A2M      A2MD, CPAMD5, FWP007, S863-7
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> ENSG00000196136 SERPINA3 AACT, ACT, GIG24, GIG25     
-#&gt; </span><span style='color: #BCBCBC;'>8</span><span> ENSG00000256069 A2MP1    A2MP                        </div></span></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Decompressing 'homo_sapiens.gene_info.gz' in 'tempdir()'</span></div><div class='output co'>#&gt; <span class='message'>Importing 'homo_sapiens.gene_info' using 'data.table::fread()'.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; SplitDataFrameList of length 8
+#&gt; $ENSG00000114771
+#&gt; DataFrame with 1 row and 3 columns
+#&gt;            geneID    geneName    synonyms
+#&gt;       &lt;character&gt; &lt;character&gt; &lt;character&gt;
+#&gt; 1 ENSG00000114771       AADAC CES5A1, DAC
+#&gt; 
+#&gt; $ENSG00000121410
+#&gt; DataFrame with 1 row and 3 columns
+#&gt;            geneID    geneName                synonyms
+#&gt;       &lt;character&gt; &lt;character&gt;             &lt;character&gt;
+#&gt; 1 ENSG00000121410        A1BG A1B, ABG, GAB, HYST2477
+#&gt; 
+#&gt; $ENSG00000129673
+#&gt; DataFrame with 1 row and 3 columns
+#&gt;            geneID    geneName    synonyms
+#&gt;       &lt;character&gt; &lt;character&gt; &lt;character&gt;
+#&gt; 1 ENSG00000129673       AANAT  DSPS, SNAT
+#&gt; 
+#&gt; $ENSG00000156006
+#&gt; DataFrame with 1 row and 3 columns
+#&gt;            geneID    geneName          synonyms
+#&gt;       &lt;character&gt; &lt;character&gt;       &lt;character&gt;
+#&gt; 1 ENSG00000156006        NAT2 AAC2, NAT-2, PNAT
+#&gt; 
+#&gt; $ENSG00000171428
+#&gt; DataFrame with 1 row and 3 columns
+#&gt;            geneID    geneName                synonyms
+#&gt;       &lt;character&gt; &lt;character&gt;             &lt;character&gt;
+#&gt; 1 ENSG00000171428        NAT1 AAC1, MNAT, NAT-1, NATI
+#&gt; 
+#&gt; $ENSG00000175899
+#&gt; DataFrame with 1 row and 3 columns
+#&gt;            geneID    geneName                     synonyms
+#&gt;       &lt;character&gt; &lt;character&gt;                  &lt;character&gt;
+#&gt; 1 ENSG00000175899         A2M A2MD, CPAMD5, FWP007, S863-7
+#&gt; 
+#&gt; $ENSG00000196136
+#&gt; DataFrame with 1 row and 3 columns
+#&gt;            geneID    geneName                synonyms
+#&gt;       &lt;character&gt; &lt;character&gt;             &lt;character&gt;
+#&gt; 1 ENSG00000196136    SERPINA3 AACT, ACT, GIG24, GIG25
+#&gt; 
+#&gt; $ENSG00000256069
+#&gt; DataFrame with 1 row and 3 columns
+#&gt;            geneID    geneName    synonyms
+#&gt;       &lt;character&gt; &lt;character&gt; &lt;character&gt;
+#&gt; 1 ENSG00000256069       A2MP1        A2MP
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

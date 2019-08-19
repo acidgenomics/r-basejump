@@ -7,7 +7,7 @@ NULL
 
 ## EggNOG ======================================================================
 #' @inherit EggNOG-class title description return
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-15.
 #' @export
 #' @inheritParams acidroxygen::params
 #' @examples
@@ -60,14 +60,14 @@ EggNOG <-  # nolint
 
         ## Categories ----------------------------------------------------------
         pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
-        categories <- read_lines(file = categoriesFile) %>%
-            str_subset(pattern) %>%
-            str_match(pattern) %>%
-            as.data.frame() %>%
-            select(-1L) %>%
-            set_colnames(c("letter", "description")) %>%
-            arrange(!!sym("letter")) %>%
-            as("DataFrame")
+        x <- readLines(categoriesFile)
+        x <- str_subset(x, pattern)
+        x <- str_match(x, pattern)
+        x <- as(x, "DataFrame")
+        x <- x[, c(2L, 3L)]
+        colnames(x) <- c("letter", "description")
+        x <- x[order(x[["letter"]]), , drop = FALSE]
+        categories <- x
 
         ## Annotations ---------------------------------------------------------
         colnames <- c(
@@ -78,32 +78,25 @@ EggNOG <-  # nolint
             "cogFunctionalCategory",
             "consensusFunctionalDescription"
         )
-
         ## euNOG: Eukaryota
-        eunog <- read_tsv(
-            file = eunogFile,
-            col_names = colnames,
-            col_types = cols(),
-            progress = FALSE
-        )
-
+        eunog <- as(import(eunogFile, colnames = FALSE), "DataFrame")
+        colnames(eunog) <- colnames
         ## NOG: LUCA
-        nog <- read_tsv(
-            file = nogFile,
-            col_names = colnames,
-            col_types = cols(),
-            progress = FALSE
-        )
-
-        annotations <- bind_rows(eunog, nog) %>%
-            select(!!!syms(c(
+        nog <- as(import(nogFile, colnames = FALSE), "DataFrame")
+        ## Bind annotations.
+        colnames(nog) <- colnames
+        x <- rbind(eunog, nog)
+        x <- x[
+            ,
+            c(
                 "groupName",
                 "consensusFunctionalDescription",
                 "cogFunctionalCategory"
-            ))) %>%
-            rename(eggnogID = !!sym("groupName")) %>%
-            arrange(!!sym("eggnogID")) %>%
-            as("DataFrame")
+            )
+            ]
+        colnames(x)[colnames(x) == "groupName"] <- "eggnogID"
+        x <- x[order(x[["eggnogID"]]), , drop = FALSE]
+        annotations <- x
 
         ## Return --------------------------------------------------------------
         data <- List(
@@ -143,12 +136,11 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 `Ensembl2Entrez,DataFrame` <-  # nolint
     function(object, format = c("1:1", "long")) {
         assert(hasRows(object))
         format <- match.arg(format)
-
         cols <- c("geneID", "entrezID")
         if (!all(cols %in% colnames(object))) {
             stop(sprintf(
@@ -156,31 +148,41 @@ NULL
                 toString(cols)
             ))
         }
-
         data <- DataFrame(
             geneID = as.character(decode(object[["geneID"]])),
             entrezID = I(object[["entrezID"]]),
             row.names = rownames(object)
         )
-
         ## Expand to long format.
         data <- expand(data)
-
         ## Inform the user about genes that don't map to Entrez.
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
         assert(hasNoDuplicates(unmapped))
         if (length(unmapped) > 0L) {
-            message(sprintf("%d genes don't map to Entrez.", length(unmapped)))
+            message(sprintf(
+                "%d %s map to Entrez.",
+                length(unmapped),
+                ngettext(
+                    n = length(unmapped),
+                    msg1 = "gene doesn't",
+                    msg2 = "genes don't"
+                )
+            ))
         }
-
         ## Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
         if (length(multimapped) > 0L) {
             message(sprintf(
-                "%d genes map to multiple Entrez IDs.", length(multimapped)
+                "%d %s to multiple Entrez IDs.",
+                length(multimapped),
+                ngettext(
+                    n = length(multimapped),
+                    msg1 = "gene maps",
+                    msg2 = "genes map"
+                )
             ))
         }
-
+        ## Return mode.
         if (format == "1:1") {
             message(
                 "Returning with 1:1 mappings using oldest Entrez ID per gene."
@@ -188,7 +190,7 @@ NULL
             entrez <- object[["entrezID"]]
             assert(is.list(entrez))
             names(entrez) <- object[["geneID"]]
-            map <- lapply(
+            map <- bplapply(
                 X = entrez,
                 FUN = function(x) {
                     if (all(is.na(x))) {
@@ -198,7 +200,7 @@ NULL
                     }
                 }
             )
-            entrez <- unlist(map)
+            entrez <- unlist(map, recursive = FALSE, use.names = TRUE)
             data <- DataFrame(
                 geneID = names(entrez),
                 entrezID = as.integer(entrez),
@@ -207,7 +209,6 @@ NULL
         } else if (format == "long") {
             message("Returning 1:many in long format (not recommended).")
         }
-
         metadata(data) <- metadata(object)
         metadata(data)[["format"]] <- format
         new(Class = "Ensembl2Entrez", data)
@@ -321,12 +322,11 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-15.
 `Gene2Symbol,DataFrame` <-  # nolint
     function(object, format = c("makeUnique", "unmodified", "1:1")) {
         assert(hasRows(object))
         format <- match.arg(format)
-
         ## Check for required columns.
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(object))) {
@@ -335,13 +335,11 @@ NULL
                 toString(cols)
             ))
         }
-
         data <- DataFrame(
             geneID = as.character(decode(object[["geneID"]])),
             geneName = as.character(decode(object[["geneName"]])),
             row.names = rownames(object)
         )
-
         ## Inform the user about how many symbols multi-map.
         ## Note that `duplicated` doesn't work on Rle, so we have to coerce
         ## columns to character first (see `as_tibble` call above).
@@ -349,31 +347,42 @@ NULL
         if (any(duplicated)) {
             dupes <- unique(data[["geneName"]][duplicated])
             message(sprintf(
-                "%d non-unique gene symbol(s) detected.", length(dupes)
+                "%d non-unique gene %s detected.",
+                length(dupes),
+                ngettext(
+                    n = length(dupes),
+                    msg1 = "symbol",
+                    msg2 = "symbols"
+                )
             ))
         }
-
+        ## Return mode.
         if (format == "makeUnique") {
             ## Returning 1:1 mappings with renamed gene symbols.
             ## This is the default, and including a message is too noisy, since
             ## it is used heavily in other functions.
             data[["geneName"]] <- make.unique(data[["geneName"]])
         } else if (format == "unmodified") {
-            message(paste(
-                "Returning with unmodified gene symbols",
+            message(
+                "Returning with unmodified gene symbols ",
                 "(may contain duplicates)."
-            ))
+            )
         } else if (format == "1:1") {
             message("Returning 1:1 mappings using oldest gene ID per symbol.")
-            data <- data %>%
-                as_tibble(rownames = NULL) %>%
-                group_by(!!sym("geneName")) %>%
-                arrange(!!sym("geneID"), .by_group = TRUE) %>%
-                slice(n = 1L) %>%
-                ungroup()
+            x <- split(data, f = data[["geneName"]])
+            x <- bplapply(
+                X = x,
+                FUN = function(x) {
+                    x <- x[order(x[["geneID"]]), , drop = FALSE]
+                    x <- head(x, n = 1L)
+                    x
+                }
+            )
+            x <- DataFrameList(x)
+            x <- unlist(x, recursive = FALSE, use.names = FALSE)
+            data <- x
+            assert(is(data, "DataFrame"))
         }
-
-        data <- as(data, "DataFrame")
         metadata(data) <- .slotGenomeMetadata(object)
         metadata(data)[["format"]] <- format
         new(Class = "Gene2Symbol", data)
@@ -449,7 +458,6 @@ setMethod(
 HGNC2Ensembl <-  # nolint
     function() {
         assert(hasInternet())
-
         if (isTRUE(getOption("acid.test"))) {
             file <- pasteURL(
                 basejumpTestsURL, "hgnc.txt.gz",
@@ -470,18 +478,23 @@ HGNC2Ensembl <-  # nolint
             )
             ## nocov end
         }
-
-        message("Obtaining HGNC to Ensembl gene ID mappings.")
-        ## Note that this file does not contain syntactically valid names, and
-        ## `readr::read_tsv()` has parsing issues with it.
-        suppressWarnings(data <- import(file))
+        message("Importing HGNC to Ensembl gene ID mappings.")
+        data <- withCallingHandlers(
+            expr = import(file),
+            message = function(m) {
+                if (isTRUE(grepl(pattern = "syntactic", x = m))) {
+                    invokeRestart("muffleMessage")
+                } else {
+                    m
+                }
+            }
+        )
         data <- camel(data)
         data <- data[, c("hgncID", "ensemblGeneID")]
         colnames(data)[[2L]] <- "geneID"
         data <- data[!is.na(data[["geneID"]]), , drop = FALSE]
         data[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", data[["hgncID"]]))
         data <- data[order(data[["hgncID"]]), , drop = FALSE]
-
         data <- as(data, "DataFrame")
         metadata(data) <- .prototypeMetadata
         new(Class = "HGNC2Ensembl", data)
@@ -500,7 +513,6 @@ HGNC2Ensembl <-  # nolint
 #' print(x)
 MGI2Ensembl <- function() {  # nolint
     assert(hasInternet())
-
     if (isTRUE(getOption("acid.test"))) {
         file <- pasteURL(basejumpTestsURL, "mgi.rpt.gz", protocol = "none")
     } else {
@@ -512,24 +524,13 @@ MGI2Ensembl <- function() {  # nolint
             protocol = "http"
         )
     }
-
-    message("Obtaining MGI-to-Ensembl gene ID mappings.")
-    data <- read_tsv(
-        file = file,
-        ## Using our global NA strings.
-        na = naStrings,
-        col_names = FALSE,
-        ## Suppress the column messages.
-        col_types = cols(),
-        skip = 1L,
-        progress = FALSE
-    )
+    message("Importing MGI-to-Ensembl gene ID mappings.")
+    data <- import(file, format = "tsv", colnames = FALSE)
     data <- as(data[, c(1L, 11L)], "DataFrame")
     colnames(data) <- c("mgiID", "geneID")
     data[["mgiID"]] <- as.integer(gsub("^MGI\\:", "", data[["mgiID"]]))
     data <- data[order(data[["mgiID"]]), , drop = FALSE]
     metadata(data) <- .prototypeMetadata
-
     new(Class = "MGI2Ensembl", data)
 }
 
@@ -552,25 +553,18 @@ MGI2Ensembl <- function() {  # nolint
 #'   PANTHER release version. If `NULL`, defaults to current release. Consult
 #'   the PANTHER website for a list of release versions available from the FTP
 #'   server (e.g. `"14.0"`).
-#' @param progress `logical(1)`.
-#'   Show progress.
-#'   Uses `pbapply::pblapply()` internally to render progress bar.
 #'
 #' @examples
 #' options(acid.test = TRUE)
-#' x <- PANTHER("Homo sapiens", progress = FALSE)
+#' x <- PANTHER(organism = "Homo sapiens")
 #' summary(x)
-PANTHER <- function(  # nolint
-    organism,
-    release = NULL,
-    progress = getOption("acid.progress", default = FALSE)
-) {
+PANTHER <- function(organism, release = NULL) {  # nolint
     assert(
         hasInternet(),
         isString(organism)
     )
     organism <- match.arg(
-        arg = snake(organism),
+        arg = organism,
         choices = names(.pantherMappings)
     )
     pantherName <-  .pantherMappings[[organism]]
@@ -578,17 +572,13 @@ PANTHER <- function(  # nolint
     if (is.null(release)) {
         release <- "current_release"
     }
-    assert(
-        isString(release),
-        isFlag(progress)
-    )
+    assert(isString(release))
     release <- match.arg(arg = release, choices = .pantherReleases)
-
     message(sprintf(
-        "Downloading PANTHER annotations for %s (%s).",
-        organism, release
+        "Downloading PANTHER annotations for '%s' (%s).",
+        organism,
+        gsub("_", " ", release)
     ))
-
     if (isTRUE(getOption("acid.test"))) {
         file <- pasteURL(
             basejumpTestsURL, paste0("PTHR13.1_", pantherName, ".gz"),
@@ -611,11 +601,10 @@ PANTHER <- function(  # nolint
         )
         ## nocov end
     }
-    assert(isString(file))
-
-    data <- read_tsv(
+    data <- import(
         file = file,
-        col_names = c(
+        format = "tsv",
+        colnames = c(
             "pantherID",
             "X2",
             "pantherSubfamilyID",
@@ -626,199 +615,207 @@ PANTHER <- function(  # nolint
             "goCC",
             "pantherClass",
             "pantherPathway"
-        ),
-        col_types = cols(),
-        progress = progress
-    ) %>%
-        separate(
-            col = "pantherID",
-            into = c("organism", "keys", "uniprotKB"),
-            sep = "\\|"
-        ) %>%
-        mutate(
-            X2 = NULL,
-            organism = NULL,
-            uniprotKB = NULL
         )
-
+    )
+    data[["X2"]] <- NULL
+    data <- as(data, "DataFrame")
+    ## Now using base R methods here instead of `tidyr::separate()`.
+    idsplit <- List(strsplit(data[["pantherID"]], split = "|", fixed = TRUE))
+    idsplit <- DataFrame(do.call(rbind, idsplit))
+    colnames(idsplit) <- c("organism", "keys", "uniprotKB")
+    data[["pantherID"]] <- NULL
+    data[["keys"]] <- idsplit[["keys"]]
     ## Using organism-specific internal return functions here.
     fun <- get(paste("", "PANTHER", camel(organism), sep = "."))
     assert(is.function(fun))
     data <- fun(data)
-    assert(hasRows(data))
-
-    data <- data %>%
-        select(-!!sym("keys")) %>%
-        select(!!sym("geneID"), everything()) %>%
-        filter(!is.na(!!sym("geneID"))) %>%
-        unique() %>%
-        ## Some organisms have duplicate annotations per gene ID.
-        group_by(!!sym("geneID")) %>%
-        top_n(n = 1L, wt = !!sym("pantherSubfamilyID")) %>%
-        ungroup() %>%
-        arrange(!!sym("geneID"))
+    assert(
+        is(data, "DataFrame"),
+        hasRows(data)
+    )
+    data[["keys"]] <- NULL
+    data <- data[, unique(c("geneID", colnames(data)))]
+    keep <- !is.na(data[["geneID"]])
+    data <- data[keep, , drop = FALSE]
+    data <- unique(data)
+    ## Some organisms have duplicate PANTHER annotations per gene ID.
+    split <- split(data, f = data[["geneID"]])
+    split <- SplitDataFrameList(bplapply(
+        X = split,
+        FUN = function(x) {
+            x <- x[order(x[["pantherSubfamilyID"]]), , drop = FALSE]
+            x <- head(x, n = 1L)
+            x
+        }
+    ))
+    data <- unlist(split)
+    data <- data[order(data[["geneID"]]), , drop = FALSE]
     assert(hasNoDuplicates(data[["geneID"]]))
-
     message("Splitting and sorting the GO terms.")
-    data <- data %>%
-        mutate_at(
-            .vars = c(
-                "goMF",
-                "goBP",
-                "goCC",
-                "pantherClass",
-                "pantherPathway"
-            ),
-            .funs = .splitTerms,
-            progress = progress
-        ) %>%
-        ## Sort columns alphabetically.
-        .[, sort(colnames(.)), drop = FALSE] %>%
-        as("DataFrame") %>%
-        set_rownames(.[["geneID"]])
-
+    ## Note that we're using S4 method that works on DataFrame here.
+    data <- mutate_at(
+        .tbl = data,
+        .vars = c(
+            "goBP",
+            "goCC",
+            "goMF",
+            "pantherClass",
+            "pantherPathway"
+        ),
+        .funs = .splitPANTHERTerms
+    )
+    ## Sort columns alphabetically.
+    data <- data[, sort(colnames(data)), drop = FALSE]
+    rownames(data) <- data[["geneID"]]
     metadata(data) <- .prototypeMetadata
     metadata(data)[["organism"]] <- organism
     metadata(data)[["release"]] <- release
-
-    new("PANTHER", data)
+    new(Class = "PANTHER", data)
 }
 
 
 
 ## Updated 2019-07-22.
 .pantherMappings <- c(
-    "caenorhabditis_elegans" = "nematode_worm",
-    "drosophila_melanogaster" = "fruit_fly",
-    "homo_sapiens" = "human",
-    "mus_musculus" = "mouse"
+    "Caenorhabditis elegans" = "nematode_worm",
+    "Drosophila melanogaster" = "fruit_fly",
+    "Homo sapiens" = "human",
+    "Mus musculus" = "mouse"
 )
 
 
 
+## nolint start
+##
 ## Release versions are here:
-## ftp://ftp.pantherdb.org/sequence_classifications/
-## Updated 2019-07-22.
+## > url <- pasteURL(
+## >     "ftp.pantherdb.org",
+## >     "sequence_classifications",
+## >     protocol = "ftp"
+## > )
+## > x <- RCurl::getURL(url = paste0(url, "/"), dirlistonly = TRUE)
+## > x <- strsplit(x, split = "\n", fixed = TRUE)
+##
+## nolint end
+##
+## Updated 2019-08-16.
 .pantherReleases <- c(
     "11.0",
     "12.0",
     "13.0",
     "13.1",
     "14.0",
+    "14.1",
     "current_release"
 )
 
 
 
-## Updated 2019-07-22.
+## This is CPU intensive, so calling BiocParallel here.
+## Updated 2019-08-16.
+.splitPANTHERTerms <- function(x) {
+    message(sprintf("  - %s", deparse(substitute(x))))
+    bplapply(
+        X = x,
+        FUN = function(x) {
+            x <- as.character(x)
+            x <- strsplit(x, split = ";")
+            x <- unlist(x)
+            x <- sort(unique(x))
+            x <- gsub("#([A-Z0-9:]+)", " [\\1]", x)
+            x <- gsub(">", " > ", x)
+            if (length(x) > 0L) {
+                x
+            } else {
+                NULL
+            }
+        }
+    )
+}
+
+
+
+## Updated 2019-08-16.
 .PANTHER.homoSapiens <-  # nolint
     function(data) {
         hgnc2ensembl <- HGNC2Ensembl()
-
-        ## Ensembl matches.
-        ensembl <- data %>%
-            mutate(
-                geneID = str_extract(!!sym("keys"), "ENSG[0-9]{11}")
-            ) %>%
-            filter(!is.na(!!sym("geneID")))
-
-        ## HGNC matches.
-        hgnc <- data %>%
-            as_tibble() %>%
-            ## Extract the HGNC ID.
-            mutate(
-                hgncID = str_match(!!sym("keys"), "HGNC=([0-9]+)")[, 2L],
-                hgncID = as.integer(!!sym("hgncID"))
-            ) %>%
-            filter(!is.na(!!sym("hgncID"))) %>%
-            left_join(
-                as_tibble(hgnc2ensembl, rownames = NULL),
-                by = "hgncID"
-            ) %>%
-            select(-!!sym("hgncID")) %>%
-            filter(!is.na(!!sym("geneID"))) %>%
-            unique()
-
-        do.call(rbind, list(ensembl, hgnc))
+        ## Filter Ensembl matches.
+        ensembl <- data
+        pattern <- "ENSG[0-9]{11}"
+        keep <- str_detect(string = ensembl[["keys"]], pattern = pattern)
+        ensembl <- ensembl[keep, , drop = FALSE]
+        ensembl[["geneID"]] <-
+            str_extract(string = ensembl[["keys"]], pattern = pattern)
+        ## Filter HGNC matches.
+        hgnc <- data
+        pattern <- "HGNC=([0-9]+)"
+        keep <- str_detect(string = hgnc[["keys"]], pattern = pattern)
+        hgnc <- hgnc[keep, , drop = FALSE]
+        hgnc[["hgncID"]] <- as.integer(
+            str_match(string = hgnc[["keys"]], pattern = pattern)[, 2L]
+        )
+        hgnc <- left_join(hgnc, hgnc2ensembl, by = "hgncID")
+        hgnc[["hgncID"]] <- NULL
+        keep <- !is.na(hgnc[["geneID"]])
+        hgnc <- hgnc[keep, , drop = FALSE]
+        hgnc <- unique(hgnc)
+        ## Bind and return.
+        do.call(what = rbind, args = list(ensembl, hgnc))
     }
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 .PANTHER.musMusculus <-  # nolint
     function(data) {
         mgi2ensembl <- MGI2Ensembl()
-
-        ## Ensembl matches.
-        ensembl <- data %>%
-            mutate(
-                geneID = str_extract(!!sym("keys"), "ENSMUSG[0-9]{11}")
-            ) %>%
-            filter(!is.na(!!sym("geneID")))
-
-        ## MGI matches.
-        mgi <- data %>%
-            as_tibble() %>%
-            mutate(
-                mgiID = str_match(!!sym("keys"), "MGI=([0-9]+)")[, 2L],
-                mgiID = as.integer(!!sym("mgiID"))
-            ) %>%
-            filter(!is.na(!!sym("mgiID"))) %>%
-            left_join(
-                as_tibble(mgi2ensembl, rownames = NULL),
-                by = "mgiID"
-            ) %>%
-            select(-!!sym("mgiID")) %>%
-            filter(!is.na(!!sym("geneID")))
-
-        do.call(rbind, list(ensembl, mgi))
+        ## Filter Ensembl matches.
+        ensembl <- data
+        pattern <- "ENSG[0-9]{11}"
+        keep <- str_detect(string = ensembl[["keys"]], pattern = pattern)
+        ensembl <- ensembl[keep, , drop = FALSE]
+        ensembl[["geneID"]] <-
+            str_extract(string = ensembl[["keys"]], pattern = pattern)
+        ## Filter HGNC matches.
+        mgi <- data
+        pattern <- "MGI=([0-9]+)"
+        keep <- str_detect(string = mgi[["keys"]], pattern = pattern)
+        mgi <- mgi[keep, , drop = FALSE]
+        mgi[["mgiID"]] <- as.integer(
+            str_match(string = mgi[["keys"]], pattern = pattern)[, 2L]
+        )
+        mgi <- left_join(mgi, mgi2ensembl, by = "mgiID")
+        mgi[["mgiID"]] <- NULL
+        keep <- !is.na(mgi[["geneID"]])
+        mgi <- mgi[keep, , drop = FALSE]
+        mgi <- unique(mgi)
+        ## Bind and return.
+        do.call(what = rbind, args = list(ensembl, mgi))
     }
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 .PANTHER.drosophilaMelanogaster <-  # nolint
     function(data) {
-        mutate(data, geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$"))
+        data[["geneID"]] <- str_extract(
+            string = data[["keys"]],
+            pattern = "FBgn\\d{7}$"
+        )
+        data
     }
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-16.
 .PANTHER.caenorhabditisElegans <-  # nolint
     function(data) {
-        mutate(data, geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$"))
+        data[["geneID"]] <- str_extract(
+            string = data[["keys"]],
+            pattern = "WBGene\\d{8}$"
+        )
+        data
     }
-
-
-
-## This step is CPU intensive, so optionally enable progress bar.
-## Alternatively, consider switching to BiocParallel bpparam usage here.
-## Updated 2019-07-22.
-.splitTerms <- function(x, progress = FALSE) {
-    if (isTRUE(progress)) {
-        ## nocov start
-        message(deparse(substitute(x)))
-        requireNamespace("pbapply", quietly = TRUE)
-        lapply <- pbapply::pblapply
-        ## nocov end
-    }
-    lapply(x, function(x) {
-        x <- x %>%
-            as.character() %>%
-            strsplit(split = ";") %>%
-            unlist() %>%
-            unique() %>%
-            sort() %>%
-            gsub("#([A-Z0-9:]+)", " [\\1]", .) %>%
-            gsub(">", " > ", .)
-        if (length(x) > 0L) {
-            x
-        } else {
-            NULL
-        }
-    })
-}
 
 
 
@@ -827,7 +824,7 @@ PANTHER <- function(  # nolint
 #' @name Tx2Gene
 #'
 #' @note No attempt is made to arrange the rows by transcript identifier.
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-13.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -845,12 +842,10 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-13.
 `Tx2Gene,DataFrame` <-  # nolint
     function(object) {
         assert(hasRows(object))
-
-        ## Check for required columns.
         cols <- c("transcriptID", "geneID")
         if (!all(cols %in% colnames(object))) {
             stop(sprintf(
@@ -858,13 +853,17 @@ NULL
                 toString(cols)
             ))
         }
-
+        transcriptID <- as.character(decode(object[["transcriptID"]]))
+        geneID <- as.character(decode(object[["geneID"]]))
+        rownames <- rownames(object)
+        if (is.null(rownames)) {
+            rownames <- transcriptID
+        }
         data <- DataFrame(
-            transcriptID = as.character(decode(object[["transcriptID"]])),
-            geneID = as.character(decode(object[["geneID"]])),
-            row.names = rownames(object)
+            transcriptID = transcriptID,
+            geneID = geneID,
+            row.names = rownames
         )
-
         metadata(data) <- .slotGenomeMetadata(object)
         new(Class = "Tx2Gene", data)
     }

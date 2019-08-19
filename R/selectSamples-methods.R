@@ -1,6 +1,6 @@
 #' @name selectSamples
 #' @inherit bioverbs::selectSamples
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-08-19.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -44,7 +44,6 @@ NULL
     function(object, ...) {
         validObject(object)
         args <- list(...)
-
         ## Check that all arguments are atomic.
         if (!all(vapply(
             X = args,
@@ -53,11 +52,9 @@ NULL
         ))) {
             stop("Arguments must be atomic.")  # nocov
         }
-
         ## Match the arguments against the sample metadata.
         sampleData <- sampleData(object)
         assert(isSubset(names(args), colnames(sampleData)))
-
         ## Obtain the sample identifiers.
         list <- mapply(
             col = names(args),
@@ -71,7 +68,7 @@ NULL
         )
         samples <- sort(as.character(Reduce(f = intersect, x = list)))
         assert(hasLength(samples))
-
+        ## Return.
         object[, samples, drop = FALSE]
     }
 
@@ -87,17 +84,16 @@ setMethod(
 
 
 
-## Updated 2019-08-11.
+## Updated 2019-08-19.
 `selectSamples,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         validObject(object)
-
+        assert(isSubset("sampleID", colnames(colData(object))))
         ## Here the `args` are captured as a named character vector. The names
         ## of the arguments represent the column names. The value of the
         ## arguments should be a string that can be used for logical grep
         ## matching here internally.
         args <- list(...)
-
         if (!all(vapply(
             X = args,
             FUN = is.atomic,
@@ -105,11 +101,11 @@ setMethod(
         ))) {
             stop("Arguments must be atomic.")
         }
-
         ## Match the arguments against the sample metadata.
-        sampleData <- sampleData(object) %>%
-            as_tibble(rownames = "sampleID")
-
+        sampleData <- sampleData(object)
+        ## Allowing the user to select by "sampleID".
+        sampleData[["sampleID"]] <- rownames(sampleData)
+        assert(hasRownames(sampleData))
         matches <- mapply(
             col = names(args),
             arg = args,
@@ -118,7 +114,7 @@ setMethod(
                 if (!col %in% colnames(sampleData)) {
                     ## nocov start
                     stop(sprintf(
-                        "'%s' isn't present in metadata column names.", col
+                        "'%s' isn't present in 'sampleData()'.", col
                     ))
                     ## nocov end
                 }
@@ -128,31 +124,24 @@ setMethod(
                     missing <- arg[which(!arg %in% sampleData[[col]])]
                     stop(sprintf(
                         "'%s' metadata column doesn't contain: %s.",
-                        deparse(col), toString(missing, width = 100L)
+                        col, toString(missing, width = 100L)
                     ))
                     ## nocov end
                 }
                 ## Get the sample ID matches.
-                sampleData %>%
-                    filter(!!sym(col) %in% !!arg) %>%
-                    pull("sampleID") %>%
-                    as.character()
+                keep <- sampleData[[col]] %in% arg
+                data <- sampleData[keep, , drop = FALSE]
+                rownames(data)
             },
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         )
         samples <- Reduce(f = intersect, x = matches)
         assert(hasLength(samples))
-
         ## Output to the user which samples matched, using the `sampleName`
         ## metadata column, which is more descriptive than `sampleID`
-        sampleNames <- sampleData %>%
-            filter(!!sym("sampleID") %in% !!samples) %>%
-            pull("sampleName") %>%
-            as.character() %>%
-            sort() %>%
-            unique()
-
+        sampleNames <- sampleData[samples, "sampleName", drop = TRUE]
+        sampleNames <- sort(unique(as.character(sampleNames)))
         message(sprintf(
             "%d %s matched: %s.",
             length(sampleNames),
@@ -164,17 +153,10 @@ setMethod(
             toString(sampleNames, width = 100L)
         ))
 
-        ## Use the metrics `data.frame` to match the cellular barcodes
-        metrics <- metrics(object)
-        assert(
-            is(metrics, "grouped_df"),
-            isSubset(c("cellID", "sampleID"), colnames(metrics))
-        )
-
-        ## Note that we don't need to sort here.
-        cells <- metrics %>%
-            filter(!!sym("sampleID") %in% !!samples) %>%
-            pull("cellID")
+        colData <- colData(object)
+        keep <- colData[["sampleID"]] %in% samples
+        colData <- colData[keep, , drop = FALSE]
+        cells <- rownames(colData)
         message(sprintf(
             "%d %s matched.",
             length(cells),
@@ -184,10 +166,8 @@ setMethod(
                 msg2 = "cells"
             )
         ))
-
         object <- object[, cells, drop = FALSE]
         metadata(object)[["selectSamples"]] <- TRUE
-
         object
     }
 
