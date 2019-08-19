@@ -27,18 +27,19 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' x <- metrics(rse)
+#' object <- RangedSummarizedExperiment
+#' object <- calculateMetrics(object)
+#' x <- metrics(object)
 #' print(x)
 #'
 #' ## SingleCellExperiment ====
-#' x <- metrics(sce)
+#' object <- SingleCellExperiment
+#' object <- calculateMetrics(object)
+#' x <- metrics(object)
 #' print(x)
-#'
-#' x <- metricsPerSample(sce, fun = "mean")
+#' x <- metricsPerSample(object, fun = "mean")
 #' print(x)
 NULL
 
