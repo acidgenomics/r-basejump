@@ -114,7 +114,7 @@ setMethod(
 
 
 ## Alternatively, can use `dplyr::summarise_all()` approach.
-## Updated 2019-08-18.
+## Updated 2019-08-10.
 `collapseToString,matrix` <-  # nolint
     function(
         object,
@@ -125,7 +125,7 @@ setMethod(
     ) {
         assert(hasLength(object))
         x <- object
-        x <- as.data.frame(x)
+        x <- as.data.frame(x, stringsAsFactors = FALSE)
         list <- lapply(
             X = x,
             FUN = function(x) {
@@ -140,7 +140,9 @@ setMethod(
             }
         )
         x <- do.call(what = cbind, args = list)
-        as(object = x, Class = class(object)[[1L]])
+        x <- as.data.frame(x, stringsAsFactors = FALSE)
+        x <- as(object = x, Class = class(object)[[1L]])
+        x
     }
 
 
