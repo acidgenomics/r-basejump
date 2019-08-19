@@ -133,6 +133,34 @@ readSampleData <- function(
         )
     }
 
+    ## Multiplexed samples -----------------------------------------------------
+    ## This step applies to handling single-cell metadata.
+    ## - bcbio subdirs (e.g. inDrops): `description`-`revcomp`.
+    ## - Note that forward `sequence` is required in metadata file.
+    ## - Index number is also required here for data preservation, but is not
+    ##   used in generation of the sample directory names.
+    ## - Require at least 6 nucleotides in the index sequence.
+    ## - inDrops currently uses 8 but SureCell uses 6.
+    if (identical(pipeline, "bcbio") && isTRUE(multiplexed)) {
+        assert(isSubset(c("index", "sequence"), colnames(data)))
+        sequence <- data[["sequence"]]
+        assert(allAreMatchingRegex(sequence, pattern = "^[ACGT]{6,}"))
+        data[["revcomp"]] <- vapply(
+            X = sequence,
+            FUN = function(x) {
+                x <- as(x, "character")
+                x <- as(x, "DNAStringSet")
+                x <- reverseComplement(x)
+                x <- as(x, "character")
+                x
+            },
+            FUN.VALUE = character(1L),
+            USE.NAMES = FALSE
+        )
+        ## Match the sample directories exactly here, using the hyphen.
+        data[[idCol]] <- paste(data[[idCol]], data[["revcomp"]], sep = "-")
+    }
+
     ## Lane-split replicates ---------------------------------------------------
     ## Prepare metadata for lane split replicates. This step will expand rows
     ## into the number of desired replicates (e.g. "L001").
@@ -161,37 +189,30 @@ readSampleData <- function(
                 laneCol = data[["lane"]]
             )
         )
-    }
-
-    ## Multiplexed samples -----------------------------------------------------
-    ## This step applies to handling single-cell metadata.
-    ## - bcbio subdirs (e.g. inDrops): `description`-`revcomp`.
-    ## - Note that forward `sequence` is required in metadata file.
-    ## - Index number is also required here for data preservation, but is not
-    ##   used in generation of the sample directory names.
-    ## - Require at least 6 nucleotides in the index sequence.
-    ## - inDrops currently uses 8 but SureCell uses 6.
-    if (
-        identical(pipeline, "bcbio") &&
-        isTRUE(multiplexed)
-    ) {
-        assert(isSubset(c("index", "sequence"), colnames(data)))
-        sequence <- data[["sequence"]]
-        assert(allAreMatchingRegex(sequence, pattern = "^[ACGT]{6,}"))
-        data[["revcomp"]] <- vapply(
-            X = sequence,
-            FUN = function(x) {
-                x <- as(x, "character")
-                x <- as(x, "DNAStringSet")
-                x <- reverseComplement(x)
-                x <- as(x, "character")
-                x
-            },
-            FUN.VALUE = character(1L),
-            USE.NAMES = FALSE
-        )
-        ## Match the sample directories exactly here, using the hyphen.
-        data[[idCol]] <- paste(data[[idCol]], data[["revcomp"]], sep = "-")
+        ## Fix the lane-split bcbio description. This is an uncommon edge case,
+        ## but we're still providing support here.
+        ## Example: `indrops1_AGAGGATA_L001` to `indrops1_L001_AGAGGATA`.
+        if (identical(pipeline, "bcbio") && isTRUE(multiplexed)) {
+            match <- str_match(
+                string = data[["description"]],
+                pattern = paste0(
+                    "^",
+                    "(.+)",
+                    "_",
+                    "(", data[["revcomp"]], ")",
+                    "_",
+                    "(", data[["lane"]], ")",
+                    "$"
+                )
+            )
+            data[["description"]] <- apply(
+                X = match,
+                MARGIN = 1L,
+                FUN = function(x) {
+                    paste0(x[[2L]], "_", x[[4L]], "_", x[[3L]])
+                }
+            )
+        }
     }
 
     ## Return.
