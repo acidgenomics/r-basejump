@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
       </span>
     </div>
 
@@ -126,7 +126,7 @@
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>cell2sample</span>(<span class='no'>object</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"factor"</span>,
-  <span class='st'>"tibble"</span>))</pre>
+  <span class='st'>"tbl_df"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,7 +153,7 @@ to the first argument in the <code>character</code> vector.</p></td>
 <ul>
 <li><p><code>"factor"</code>: Named <code>factor</code> containing as the <a href='https://rdrr.io/r/base/levels.html'>levels</a> and
 cell IDs as the <a href='https://rdrr.io/r/base/names.html'>names</a>.</p></li>
-<li><p><code>"tibble"</code>: <code>tbl_df</code> containing <code>cellID</code> and <code>sampleID</code> columns.</p></li>
+<li><p><code>"tbl_df"</code>: Tibble containing <code>cellID</code> and <code>sampleID</code> columns.</p></li>
 </ul>
 
     
@@ -161,7 +161,7 @@ cell IDs as the <a href='https://rdrr.io/r/base/names.html'>names</a>.</p></li>
 
     <p><code>sampleID</code> column must be defined in
 <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code>.</p>
-<p>Updated 2019-07-28.</p>
+<p>Updated 2019-08-18.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

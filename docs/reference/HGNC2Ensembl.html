@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
       </span>
     </div>
 
@@ -135,7 +135,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>HGNC2Ensembl</span>()</div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing hgnc.txt.gz in tempdir().</span></div><div class='output co'>#&gt; <span class='message'>Importing hgnc.txt using data.table::fread().</span></div><div class='output co'>#&gt; <span class='message'>hgnc.txt.gz does not return syntactically valid names.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; HGNC2Ensembl with 10 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>HGNC2Ensembl</span>()</div><div class='output co'>#&gt; <span class='message'>Importing HGNC to Ensembl gene ID mappings.</span></div><div class='output co'>#&gt; <span class='message'>Decompressing 'hgnc.txt.gz' in 'tempdir()'</span></div><div class='output co'>#&gt; <span class='message'>Importing 'hgnc.txt' using 'data.table::fread()'.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; HGNC2Ensembl with 10 rows and 2 columns
 #&gt;       hgncID          geneID
 #&gt;    &lt;integer&gt;     &lt;character&gt;
 #&gt; 1       3095 ENSG00000010219
