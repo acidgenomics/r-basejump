@@ -1,5 +1,11 @@
 ## basejump 0.11.9 (2019-08-21)
 
+### Minor changes
+
+- `meltCounts`: Added initial method support for `SingleCellExperiment`.
+  Currently requires deparsing of the count matrix to call `reshape2::melt`.
+  Returns columns with S4 run-length encoding (Rle) applied.
+
 ## basejump 0.11.8 (2019-08-19)
 
 ## basejump 0.11.7 (2019-08-13)
