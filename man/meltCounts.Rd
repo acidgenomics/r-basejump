@@ -5,6 +5,7 @@
 \alias{meltCounts}
 \alias{meltCounts,matrix-method}
 \alias{meltCounts,SummarizedExperiment-method}
+\alias{meltCounts,SingleCellExperiment-method}
 \title{Melt count matrix into long format}
 \usage{
 meltCounts(object, ...)
@@ -14,6 +15,10 @@ meltCounts(object, ...)
   "log2", "log10"))
 
 \S4method{meltCounts}{SummarizedExperiment}(object, assay = 1L,
+  minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
+  trans = c("identity", "log2", "log10"))
+
+\S4method{meltCounts}{SingleCellExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
   trans = c("identity", "log2", "log10"))
 }
@@ -52,7 +57,7 @@ Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
 Melt count matrix into long format
 }
 \note{
-Updated 2019-08-19.
+Updated 2019-08-20.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
