@@ -17,8 +17,11 @@ if (packageVersion("base") < "3.6") {
 
 
 #' basejump test data URL
-#' @keywords internal
+#'
 #' @export
+#' @keywords internal
+#' @note Updated 2019-08-21.
+#'
 #' @examples
 #' basejumpTestsURL
 basejumpTestsURL <- paste0(
@@ -33,6 +36,8 @@ basejumpTestsURL <- paste0(
 #' Trailing number is to match cellranger output.
 #'
 #' @export
+#' @note Updated 2019-08-21.
+#'
 #' @examples
 #' barcodePattern
 barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
@@ -42,6 +47,8 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 #' Shared list of optional default formals
 #'
 #' @export
+#' @note Updated 2019-08-21.
+#'
 #' @examples
 #' formalsList
 formalsList <- list(
@@ -92,7 +99,10 @@ formalsList <- list(
 
 
 #' Slot names in metadata containing genome information
+#'
 #' @export
+#' @note Updated 2019-08-21.
+#'
 #' @examples
 #' genomeMetadataNames
 genomeMetadataNames <- c("organism", "genomeBuild", "ensemblRelease")
@@ -100,7 +110,10 @@ genomeMetadataNames <- c("organism", "genomeBuild", "ensemblRelease")
 
 
 #' Sequencing lane grep pattern
+#'
 #' @export
+#' @note Updated 2019-08-21.
+#'
 #' @examples
 #' lanePattern
 lanePattern <- "_L([[:digit:]]{3})"
@@ -108,8 +121,11 @@ lanePattern <- "_L([[:digit:]]{3})"
 
 
 #' Sample metadata blacklist
-#' @note `sampleID` is set automatically for multiplexed/cell-level data.
+#'
 #' @export
+#' @note `sampleID` is set automatically for multiplexed/cell-level data.
+#' @note Updated 2019-08-21.
+#'
 #' @examples
 #' metadataBlacklist
 metadataBlacklist <- sort(c(
@@ -138,9 +154,33 @@ metadataBlacklist <- sort(c(
 
 
 
-#' Update message
-#' @keywords internal
+#' Quality control metric columns
+#'
+#' Column names returned by `calculateMetrics()`.
+#'
 #' @export
+#' @note Previously: "nGene", "log10GenesPerUMI".
+#' @note Updated 2019-08-21.
+#'
+#' @examples
+#' metricsCols
+metricsCols <- c(
+    "nCount",
+    "nFeature",
+    "nCoding",
+    "nMito",
+    "log10FeaturesPerCount",
+    "mitoRatio"
+)
+
+
+
+#' Update message
+#'
+#' @export
+#' @keywords internal
+#' @note Updated 2019-08-21.
+#'
 #' @examples
 #' message(updateMessage)
 updateMessage <- "Run 'updateObject()' to update your object."

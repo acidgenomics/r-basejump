@@ -100,6 +100,7 @@ reference:
       - genomeMetadataNames
       - lanePattern
       - metadataBlacklist
+      - metricsCols
   - title: Reexports
     contents:
       - reexports
