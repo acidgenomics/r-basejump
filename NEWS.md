@@ -5,6 +5,7 @@
 - `meltCounts`: Added initial method support for `SingleCellExperiment`.
   Currently requires deparsing of the count matrix to call `reshape2::melt`.
   Returns columns with S4 run-length encoding (Rle) applied.
+- `mapGenes`: Converted warning to message when `strict = FALSE`.
 
 ## basejump 0.11.8 (2019-08-19)
 
