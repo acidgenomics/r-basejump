@@ -13,7 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @note Updated 2019-08-18.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param strict `logical(1)`.
@@ -80,7 +80,7 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-21.
 .mapGenes <- function(object, genes, strict = TRUE) {
     validObject(object)
     assert(
@@ -88,7 +88,6 @@ NULL
         isCharacter(genes),
         isFlag(strict)
     )
-
     ## Prepare the match table.
     if (any(genes %in% rownames(object))) {
         table <- rownames(object)
@@ -103,25 +102,22 @@ NULL
             toString(genes, width = 100L)
         ))
     }
-
     ## Match the user input `genes` vector to the table.
     match <- match(x = genes, table = table)
     names(match) <- genes
-
     ## Stop or warn if there are unmapped genes.
     if (isTRUE(strict)) {
         fun <- stop
     } else {
-        fun <- warning
+        fun <- message
     }
     unmapped <- which(is.na(match))
     if (length(unmapped) > 0L) {
         fun(sprintf(
             "Some genes failed to map: %s.",
-            toString(genes[unmapped], width = 100L)
+            toString(genes[unmapped], width = 200L)
         ))
     }
-
     ## Return the identifiers that map to rownames.
     mapped <- na.omit(match)
     assert(hasLength(mapped))
@@ -165,7 +161,6 @@ setMethod(
     function(object, genes, strict = TRUE) {
         validObject(object)
         assert(isFlag(strict))
-
         ## Check to see if object contains gene-to-symbol mappings.
         g2s <- tryCatch(
             expr = {
@@ -177,7 +172,6 @@ setMethod(
                 NULL
             }
         )
-
         if (is(g2s, "Gene2Symbol")) {
             assert(identical(rownames(g2s), rownames(object)))
             do.call(
@@ -193,7 +187,6 @@ setMethod(
             table <- rownames(object)
             match <- match(x = genes, table = table)
             names(match) <- genes
-
             ## Stop or warn if there are unmapped genes.
             if (isTRUE(strict)) {
                 fun <- stop
@@ -207,7 +200,6 @@ setMethod(
                     toString(genes[unmapped], width = 100L)
                 ))
             }
-
             ## Return the identifiers that map to rownames.
             mapped <- na.omit(match)
             assert(hasLength(mapped))

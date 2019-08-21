@@ -1,8 +1,70 @@
-## basejump 0.11.8 (UNRELEASED)
+## basejump 0.11.9 (2019-08-21)
+
+### Minor changes
+
+- `meltCounts`: Added initial method support for `SingleCellExperiment`.
+  Currently requires deparsing of the count matrix to call `reshape2::melt`.
+  Returns columns with S4 run-length encoding (Rle) applied.
+- `mapGenes`: Converted warning to message when `strict = FALSE`.
+
+## basejump 0.11.8 (2019-08-19)
+
+### New functions
+
+- Migrated `readSampleData` and `readTx2Gene` from bcbioBase.
+- Reworked `readSampleData` internal code, but still supporting bcbio pipeline
+  conventions (i.e. "description" column for samples) as the default. I've
+  reworked this approach so we can also call `readSampleData` inside the
+  Chromium package (for 10X Genomics single-cell RNA-seq data) without having
+  to depend on the bcbio R packages.
+- Reexporting new dplyr-like methods that support S4 `DataFrame`:
+  `inner_join`, `left_join`, `right_join`, `full_join`, `anti_join`;
+  `mutate_all`, `mutate_at`, `mutate_if`;
+  `select_all`, `select_at`, `select_if`.
+
+### Major changes
+
+- Removed dplyr and magrittr dependencies in internal code, where applicable.
+- `aggregateCols`: Sped up return by calling `SingleCellExperiment` rather than
+  `makeSingleCellExperiment`. Note that this now doesn't return session
+  information in the object.
+- `cell2sample`: Renamed return from `tibble` to `tbl_df`, for consistency.
+- Made some previous deprecated functions still used in bcbioRNASeq v0.2 release
+  series (which has now been updated to v0.3) defunct. This applies primarily
+  to `assert*` functions that have been reworked using a goalie approach.
+- `estimateSizeFactors`: Removed option to calculate "deseq2-median-ratio"
+  using DESeq2. We may revisit this idea in a future release.
+- `makeSampleData`: Improved internal code for `DataFrame` method.
+
+### Minor changes
+
+- Updated basejump dependencies, in preparation for bioconda release update
+  supporting bcbioRNASeq.
+- Now importing AnnotationDbi, BiocParallel, Biostrings, and biomaRt.
+- Safe to import `select` from AnnotationDbi, now that we're no longer depending
+  on dplyr.
+- Switched to using `droplevels` instead of `relevel` on S4 objects internally,
+  where applicable. This is better supported by S4Vectors package.
+- Simplified reexport documentation for S4 functions and methods.
 
 ## basejump 0.11.7 (2019-08-13)
 
+### Minor changes
+
+- `filterCells`: Improved downstream handling of `nCells` argument.
+  Ensure double filtering is still allowed.
+
 ## basejump 0.11.6 (2019-08-12)
+
+### Minor changes
+
+- Updated goalie dependency.
+- Tightened up `appendToBody` and `methodFormals` calls to have better backward
+  compatibility with R 3.5.
+- `calculateMetrics`: Bug fix for getting `rowData` via `mcols` without
+  `use.names = TRUE`. This improves Bioconductor backward compatibility.
+  Also updated internal code to call `hasMetrics` from goalie.
+- Made `separatorBar` defunct. Use `separator` function instead.
 
 ## basejump 0.11.5 (2019-08-11)
 
