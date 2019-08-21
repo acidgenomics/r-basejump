@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
       </span>
     </div>
 
@@ -132,6 +132,11 @@
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>meltCounts</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>minCountsMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"perFeature"</span>, <span class='st'>"absolute"</span>),
+  <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>))
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>meltCounts</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>minCountsMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"perFeature"</span>, <span class='st'>"absolute"</span>),
   <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -183,7 +188,7 @@ Grouped by <code>colname</code> (e.g. sample ID) and <code>rowname</code> (e.g. 
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-19.</p>
+    <p>Updated 2019-08-20.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
