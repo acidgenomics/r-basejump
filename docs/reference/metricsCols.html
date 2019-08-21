@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sequencing lane grep pattern — lanePattern • basejump</title>
+<title>Quality control metric columns — metricsCols • basejump</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Sequencing lane grep pattern — lanePattern" />
+<meta property="og:title" content="Quality control metric columns — metricsCols" />
 
-<meta property="og:description" content="Sequencing lane grep pattern" />
+<meta property="og:description" content="Column names returned by calculateMetrics()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,30 +111,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sequencing lane grep pattern</h1>
+    <h1>Quality control metric columns</h1>
     <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGlobals.R'><code>R/AllGlobals.R</code></a></small>
-    <div class="hidden name"><code>lanePattern.Rd</code></div>
+    <div class="hidden name"><code>metricsCols.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Sequencing lane grep pattern</p>
+    <p>Column names returned by <code><a href='calculateMetrics.html'>calculateMetrics()</a></code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>lanePattern</span></pre>
+    <pre class="usage"><span class='no'>metricsCols</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>character</code> of length 1.</p>
+    <p>An object of class <code>character</code> of length 6.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-21.</p>
+    <p>Previously: "nGene", "log10GenesPerUMI".</p>
+<p>Updated 2019-08-21.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>lanePattern</span></div><div class='output co'>#&gt; [1] "_L([[:digit:]]{3})"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>metricsCols</span></div><div class='output co'>#&gt; [1] "nCount"                "nFeature"              "nCoding"              
+#&gt; [4] "nMito"                 "log10FeaturesPerCount" "mitoRatio"            </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
