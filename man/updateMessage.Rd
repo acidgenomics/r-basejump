@@ -11,6 +11,9 @@ updateMessage
 \description{
 Update message
 }
+\note{
+Updated 2019-08-21.
+}
 \examples{
 message(updateMessage)
 }

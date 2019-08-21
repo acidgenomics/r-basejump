@@ -11,6 +11,9 @@ lanePattern
 \description{
 Sequencing lane grep pattern
 }
+\note{
+Updated 2019-08-21.
+}
 \examples{
 lanePattern
 }
