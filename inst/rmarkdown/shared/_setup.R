@@ -3,7 +3,7 @@ set.seed(1123581321L)
 
 ## Set knitr defaults for R Markdown rendering.
 ## https://yihui.name/knitr/options/
-requireNamespace(package = "knitr", quietly = TRUE)
+requireNamespace(package = "knitr")
 knitr::opts_chunk[["set"]](
     autodep = TRUE,
     bootstrap.show.code = FALSE,
@@ -26,8 +26,8 @@ knitr::opts_chunk[["set"]](
 )
 
 ## Set default ggplot2 theme.
-requireNamespace(package = "ggplot2", quietly = TRUE)
-requireNamespace(package = "acidplots", quietly = TRUE)
+requireNamespace(package = "ggplot2")
+requireNamespace(package = "acidplots")
 ggplot2::theme_set(
     acidplots::acid_theme_light(
         base_size = 14L,
