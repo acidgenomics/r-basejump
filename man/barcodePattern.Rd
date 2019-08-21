@@ -11,6 +11,9 @@ barcodePattern
 \description{
 Trailing number is to match cellranger output.
 }
+\note{
+Updated 2019-08-21.
+}
 \examples{
 barcodePattern
 }
