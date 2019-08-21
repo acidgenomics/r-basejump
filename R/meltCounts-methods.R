@@ -1,6 +1,6 @@
 #' @name meltCounts
 #' @inherit bioverbs::meltCounts
-#' @note Updated 2019-08-19.
+#' @note Updated 2019-08-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param minCounts `integer(1)` or `NULL`.
@@ -134,7 +134,7 @@ setMethod(
 
 
 
-## Updated 2019-08-06.
+## Updated 2019-08-20.
 `meltCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -151,9 +151,6 @@ setMethod(
         counts <- assay(object, i = assay)
         assert(hasLength(counts))
         counts <- as.matrix(counts)
-        ## Get the sample metadata.
-        sampleData <- sampleData(object)
-        sampleData[["colname"]] <- rownames(sampleData)
         ## Passing to matrix method.
         data <- meltCounts(
             object = counts,
@@ -161,6 +158,9 @@ setMethod(
             minCountsMethod = minCountsMethod,
             trans = trans
         )
+        ## Get the sample metadata.
+        sampleData <- sampleData(object)
+        sampleData[["colname"]] <- rownames(sampleData)
         data <- left_join(data, sampleData, by = "colname")
         data <- droplevels(data)
         data
@@ -179,4 +179,50 @@ setMethod(
     f = "meltCounts",
     signature = signature("SummarizedExperiment"),
     definition = `meltCounts,SummarizedExperiment`
+)
+
+
+
+## Updated 2019-08-20.
+`meltCounts,SingleCellExperiment` <-  # nolint
+    function(object) {
+        validObject(object)
+        assert(isScalar(assay))
+        minCountsMethod <- match.arg(minCountsMethod)
+        trans <- match.arg(trans)
+        ## Prepare the count matrix.
+        counts <- assay(object, i = assay)
+        assert(hasLength(counts))
+        ## Note that this will deparse, and can be memory intensive.
+        counts <- as.matrix(counts)
+        ## Passing to matrix method.
+        data <- meltCounts(
+            object = counts,
+            minCounts = minCounts,
+            minCountsMethod = minCountsMethod,
+            trans = trans
+        )
+        ## Get the cell-level metrics, which contains sample metadata.
+        metrics <- metrics(object, return = "DataFrame")
+        keep <- which(bapply(metrics, is.factor))
+        metrics <- metrics[, keep, drop = FALSE]
+        metrics[["colname"]] <- rownames(metrics)
+        ## Join the cell-level metadata.
+        data <- left_join(data, metrics, by = "colname")
+        data <- droplevels(data)
+        data <- encode(data)
+        data
+    }
+
+formals(`meltCounts,SingleCellExperiment`) <-
+    formals(`meltCounts,SummarizedExperiment`)
+
+
+
+#' @rdname meltCounts
+#' @export
+setMethod(
+    f = "meltCounts",
+    signature = signature("SingleCellExperiment"),
+    definition = `meltCounts,SingleCellExperiment`
 )

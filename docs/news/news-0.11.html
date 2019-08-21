@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
       </span>
     </div>
 
@@ -120,9 +120,9 @@
     <div id="basejump-0-11-1-2019-07-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-1-2019-07-24" class="anchor"></a>basejump 0.11.1 (2019-07-24)</h2>
-<div id="minor-changes-4" class="section level3">
+<div id="minor-changes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added back deprecated assert checks that are required for bcbioRNASeq v0.2 release series.</li>
 </ul>
@@ -131,9 +131,9 @@
     <div id="basejump-0-11-2-2019-07-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-2-2019-07-29" class="anchor"></a>basejump 0.11.2 (2019-07-29)</h2>
-<div id="minor-changes-3" class="section level3">
+<div id="minor-changes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reexporting new functions in syntactic: <code>makeLabel</code>, <code>makeTitle</code>, <code>makeWords</code>.</li>
 <li>Updated documentation to include modification timestamp.</li>
@@ -144,9 +144,9 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-3-2019-07-30" class="anchor"></a>basejump 0.11.3 (2019-07-30)</h2>
 <p>100th release!</p>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>mapCellsToSamples</code>: Relaxed grep matching on <code>cells</code> input to support legacy bcbioSingleCell objects. This change was needed to improve <code>updateObject</code> method in the upcoming bcbioSingleCell update.</li>
@@ -156,9 +156,9 @@
     <div id="basejump-0-11-4-2019-08-07" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-4-2019-08-07" class="anchor"></a>basejump 0.11.4 (2019-08-07)</h2>
-<div id="major-changes" class="section level3">
+<div id="major-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>makeSampleData</code>: Switched to S4 method that works on <code>data.frame</code> and <code>DataFrame</code> class objects. Enforcing lower camel case for column names.</li>
@@ -168,9 +168,9 @@
 <code>aggregate</code> methods now consistently return the primary assay named as <code>counts</code>. This follows the recommended conventions defined in SingleCellExperiment. Aggregation functions will now intentionally fail for <code>SummarizedExperiment</code> objects that don’t contain an assay named <code>counts</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved documentation consistency by offloading <code>params.Rd</code> file to new acidroxygen package. This will be linked in the other Acid Genomics packages.</li>
 <li>Updated unit tests to follow new package conventions (see above changes).</li>
@@ -180,17 +180,17 @@
     <div id="basejump-0-11-5-2019-08-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-5-2019-08-11" class="anchor"></a>basejump 0.11.5 (2019-08-11)</h2>
-<div id="new-functions" class="section level3">
+<div id="new-functions-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h3>
+<a href="#new-functions-1" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>calculateMetrics</code>: Migrated code here from bcbioSingleCell. Improved method to support <code>DelayedArray</code> class for large matrices.</li>
 </ul>
 </div>
-<div id="minor-changes" class="section level3">
+<div id="minor-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved code coverage and adjusted unit tests for breaking changes seen due to new covr update.</li>
 </ul>
@@ -199,14 +199,83 @@
     <div id="basejump-0-11-6-2019-08-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-6-2019-08-12" class="anchor"></a>basejump 0.11.6 (2019-08-12)</h2>
+<div id="minor-changes-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Updated goalie dependency.</li>
+<li>Tightened up <code>appendToBody</code> and <code>methodFormals</code> calls to have better backward compatibility with R 3.5.</li>
+<li>
+<code>calculateMetrics</code>: Bug fix for getting <code>rowData</code> via <code>mcols</code> without <code>use.names = TRUE</code>. This improves Bioconductor backward compatibility. Also updated internal code to call <code>hasMetrics</code> from goalie.</li>
+<li>Made <code>separatorBar</code> defunct. Use <code>separator</code> function instead.</li>
+</ul>
+</div>
 </div>
     <div id="basejump-0-11-7-2019-08-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-7-2019-08-13" class="anchor"></a>basejump 0.11.7 (2019-08-13)</h2>
+<div id="minor-changes-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>
+<code>filterCells</code>: Improved downstream handling of <code>nCells</code> argument. Ensure double filtering is still allowed.</li>
+</ul>
 </div>
-    <div id="basejump-0-11-8-unreleased" class="section level2">
+</div>
+    <div id="basejump-0-11-8-2019-08-19" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-11-8-unreleased" class="anchor"></a>basejump 0.11.8 (UNRELEASED)</h2>
+<a href="#basejump-0-11-8-2019-08-19" class="anchor"></a>basejump 0.11.8 (2019-08-19)</h2>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h3>
+<ul>
+<li>Migrated <code>readSampleData</code> and <code>readTx2Gene</code> from bcbioBase.</li>
+<li>Reworked <code>readSampleData</code> internal code, but still supporting bcbio pipeline conventions (i.e. “description” column for samples) as the default. I’ve reworked this approach so we can also call <code>readSampleData</code> inside the Chromium package (for 10X Genomics single-cell RNA-seq data) without having to depend on the bcbio R packages.</li>
+<li>Reexporting new dplyr-like methods that support S4 <code>DataFrame</code>: <code>inner_join</code>, <code>left_join</code>, <code>right_join</code>, <code>full_join</code>, <code>anti_join</code>; <code>mutate_all</code>, <code>mutate_at</code>, <code>mutate_if</code>; <code>select_all</code>, <code>select_at</code>, <code>select_if</code>.</li>
+</ul>
+</div>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>Removed dplyr and magrittr dependencies in internal code, where applicable.</li>
+<li>
+<code>aggregateCols</code>: Sped up return by calling <code>SingleCellExperiment</code> rather than <code>makeSingleCellExperiment</code>. Note that this now doesn’t return session information in the object.</li>
+<li>
+<code>cell2sample</code>: Renamed return from <code>tibble</code> to <code>tbl_df</code>, for consistency.</li>
+<li>Made some previous deprecated functions still used in bcbioRNASeq v0.2 release series (which has now been updated to v0.3) defunct. This applies primarily to <code>assert*</code> functions that have been reworked using a goalie approach.</li>
+<li>
+<code>estimateSizeFactors</code>: Removed option to calculate “deseq2-median-ratio” using DESeq2. We may revisit this idea in a future release.</li>
+<li>
+<code>makeSampleData</code>: Improved internal code for <code>DataFrame</code> method.</li>
+</ul>
+</div>
+<div id="minor-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Updated basejump dependencies, in preparation for bioconda release update supporting bcbioRNASeq.</li>
+<li>Now importing AnnotationDbi, BiocParallel, Biostrings, and biomaRt.</li>
+<li>Safe to import <code>select</code> from AnnotationDbi, now that we’re no longer depending on dplyr.</li>
+<li>Switched to using <code>droplevels</code> instead of <code>relevel</code> on S4 objects internally, where applicable. This is better supported by S4Vectors package.</li>
+<li>Simplified reexport documentation for S4 functions and methods.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0-11-9-2019-08-21" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-11-9-2019-08-21" class="anchor"></a>basejump 0.11.9 (2019-08-21)</h2>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>
+<code>meltCounts</code>: Added initial method support for <code>SingleCellExperiment</code>. Currently requires deparsing of the count matrix to call <code><a href="https://rdrr.io/pkg/reshape2/man/melt.html">reshape2::melt</a></code>. Returns columns with S4 run-length encoding (Rle) applied.</li>
+<li>
+<code>mapGenes</code>: Converted warning to message when <code>strict = FALSE</code>.</li>
+</ul>
+</div>
 </div>
   </div>
 
@@ -222,7 +291,8 @@
         <li><a href="#basejump-0-11-5-2019-08-11">0.11.5</a></li>
         <li><a href="#basejump-0-11-6-2019-08-12">0.11.6</a></li>
         <li><a href="#basejump-0-11-7-2019-08-13">0.11.7</a></li>
-        <li><a href="#basejump-0-11-8-unreleased">0.11.8</a></li>
+        <li><a href="#basejump-0-11-8-2019-08-19">0.11.8</a></li>
+        <li><a href="#basejump-0-11-9-2019-08-21">0.11.9</a></li>
       </ul>
     </div>
   </div>
