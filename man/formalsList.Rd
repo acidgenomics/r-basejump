@@ -11,6 +11,9 @@ formalsList
 \description{
 Shared list of optional default formals
 }
+\note{
+Updated 2019-08-21.
+}
 \examples{
 formalsList
 }
