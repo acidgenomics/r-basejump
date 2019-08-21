@@ -1,4 +1,6 @@
-## basejump 0.11.8 (UNRELEASED)
+## basejump 0.11.9 (2019-08-21)
+
+## basejump 0.11.8 (2019-08-19)
 
 ## basejump 0.11.7 (2019-08-13)
 
