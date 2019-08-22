@@ -3,7 +3,7 @@
 #' @name makeSingleCellExperiment
 #' @include makeSummarizedExperiment-methods.R
 #' @inherit makeSummarizedExperiment
-#' @note Updated 2019-08-05.
+#' @note Updated 2019-08-22.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-08-05.
+## Updated 2019-08-22.
 `makeSingleCellExperiment,SimpleList` <- function(
     assays,
     rowRanges,
@@ -43,24 +43,17 @@ NULL
     spikeNames = NULL
 ) {
     assert(
-        isAny(
-            x = reducedDims,
-            classes = c("SimpleList", "list", "NULL")
-        )
+        isAny(reducedDims, c("SimpleList", "list", "NULL"))
     )
-
     ## Coerce reducedDims to SimpleList, for consistency.
-    if (is.list(reducedDims)) {
-        reducedDims <- as(reducedDims, "SimpleList")
-    } else if (is.null(reducedDims)) {
-        reducedDims <- SimpleList()
+    if (!is(reducedDims, "SimpleList")) {
+        reducedDims <- SimpleList(reducedDims)
     }
+    ## Don't enforce camel case here, since it's currently common to slot PCA,
+    ## TSNE, UMAP assays (note upper case).
     if (hasLength(reducedDims)) {
-        ## Don't enforce camel case here, since it's currently common to slot
-        ## PCA, TSNE, UMAP assays (note upper case).
         assert(hasValidNames(reducedDims))
     }
-
     ## Make SummarizedExperiment first.
     ## Supports automatic resizing of rowRanges and helps slot FASTA spike-ins.
     se <- makeSummarizedExperiment(
@@ -71,13 +64,11 @@ NULL
         transgeneNames = transgeneNames,
         spikeNames = spikeNames
     )
-
     ## SCE constructor currently errors on empty rowRanges.
     rowRanges <- rowRanges(se)
     if (!hasLength(rowRanges)) {
         rowRanges <- emptyRanges(names = rownames(se))
     }
-
     ## Then coerce to SingleCellExperiment.
     ## Note that `as` method isn't currently returning valid.
     sce <- SingleCellExperiment(
@@ -87,14 +78,12 @@ NULL
         metadata = metadata(se),
         reducedDims = reducedDims
     )
-
     ## Optionally, use `isSpike` internally to define the `spikeNames`.
     if (is.character(spikeNames)) {
         for (i in seq_along(spikeNames)) {
             isSpike(sce, spikeNames[[i]]) <- spikeNames[[i]]
         }
     }
-
     validObject(sce)
     sce
 }
