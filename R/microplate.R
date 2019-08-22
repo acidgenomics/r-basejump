@@ -69,7 +69,7 @@ microplate <- function(
     if (controls > 0L) {
         ## Create a grep string matching the control wells.
         grep <- str_pad(
-            1L:controls,
+            seq_len(controls),
             width = max(str_length(col)),
             pad = "0"
         )

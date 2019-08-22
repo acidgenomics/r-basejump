@@ -53,7 +53,7 @@ test_that("DataFrame", {
 
 test_that("integer", {
     expect_identical(
-        object = collapseToString(seq(1L:5L)),
+        object = collapseToString(seq_len(5L)),
         expected = "1, 2, 3, 4, 5"
     )
 })
