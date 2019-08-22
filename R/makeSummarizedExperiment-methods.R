@@ -114,34 +114,15 @@ NULL
         assays <- SimpleList(assays)
     }
     assert(
-        isAny(
-            x = rowRanges,
-            classes = c("GRanges", "GRangesList", "NULL")
-        ),
-        isAny(
-            x = rowData,
-            classes = c("DataFrame", "NULL")
-        ),
-        isAny(
-            x = colData,
-            classes = c("DataFrame", "NULL")
-        ),
-        isAny(
-            x = metadata,
-            classes = c("list", "NULL")
-        ),
-        isAny(
-            x = transgeneNames,
-            classes = c("character", "NULL")
-        ),
-        isAny(
-            x = spikeNames,
-            classes = c("character", "NULL")
-        ),
+        isAny(rowRanges, c("GRanges", "GRangesList", "NULL")),
+        isAny(rowData, c("DataFrame", "NULL")),
+        isAny(colData, c("DataFrame", "NULL")),
+        isAny(metadata, c("list", "NULL")),
+        isAny(transgeneNames, c("character", "NULL")),
+        isAny(spikeNames, c("character", "NULL")),
         isFlag(sort),
         isFlag(sessionInfo)
     )
-
     ## Only allow `rowData` if `rowRanges` are not defined.
     if (hasLength(rowRanges)) {
         assert(!hasLength(rowData))
@@ -152,65 +133,48 @@ NULL
     if (!is(assays, "SimpleList")) {
         assays <- as(assays, "SimpleList")
     }
-
     ## Drop any `NULL` items in assays.
     assays <- Filter(f = Negate(is.null), x = assays)
-
     ## Require the primary assay to be named "counts". This helps ensure
     ## consistency with the conventions for `SingleCellExperiment`.
     assert(
         hasNames(assays),
         hasValidNames(assays),
-        identical(
-            x = names(assays)[[1L]],
-            y = "counts"
-        ),
-        identical(
-            x = names(assays),
-            y = camelCase(names(assays))
-        )
+        identical(names(assays)[[1L]], "counts"),
+        identical(names(assays), camelCase(names(assays)))
     )
     assay <- assays[[1L]]
-
     ## Require valid names for both columns (samples) and rows (genes). Note
     ## that values beginning with a number or containing invalid characters
     ## (e.g. spaces, dashes) will error here. This assert will pass if the
     ## assay does not contain any row or column names.
     assert(hasValidDimnames(assay))
-
     ## We're going to sort the assay names by default, but will perform this
     ## step after generating the `SummarizedExperiment` object (see below). The
     ## `SummarizedExperiment()` constructor checks to ensure that all assays
     ## have matching dimnames, so we can skip that check.
 
     ## Row data ----------------------------------------------------------------
-    ## Dynamically allow input of rowRanges (recommended) or rowData (fallback).
+    ## Dynamically allow input of rowRanges (recommended) or rowData (fallback):
+    ## - Detect rows that don't contain annotations.
+    ## - Transgenes should contain `transgene` seqname.
+    ## - Spike-ins should contain `spike` seqname.
+    ## - Non-Ensembl features (e.g. IgG1) will be given `unknown` seqname.
+    ## - Error on missing Ensembl features; indicates a version mismatch.
     if (hasLength(rowRanges)) {
         rowData <- NULL
-        ## Detect rows that don't contain annotations.
-        ## Transgenes should contain `transgene` seqname.
-        ## Spike-ins should contain `spike` seqname.
-        ## Otherwise, unannotated genes will be given `unknown` seqname.
-        assert(
-            areIntersectingSets(
-                x = rownames(assay),
-                y = names(rowRanges)
-            )
-        )
+        assert(areIntersectingSets(rownames(assay), names(rowRanges)))
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         mcolnames <- mcolnames(rowRanges)
         if (hasLength(mcolnames)) {
             assert(
                 validNames(mcolnames),
-                identical(
-                    x = mcolnames,
-                    y = camelCase(mcolnames)
-                )
+                identical(mcolnames, camelCase(mcolnames))
             )
         }
-        ## Transgenes
+        ## Transgenes.
         if (hasLength(transgeneNames) && hasLength(setdiff)) {
-            assert(isSubset(x = transgeneNames, y = setdiff))
+            assert(isSubset(transgeneNames, setdiff))
             transgeneRanges <- emptyRanges(
                 names = transgeneNames,
                 seqname = "transgene",
@@ -219,9 +183,9 @@ NULL
             rowRanges <- suppressWarnings(c(transgeneRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
-        ## FASTA spike-ins
+        ## FASTA spike-ins.
         if (hasLength(spikeNames) && hasLength(setdiff)) {
-            assert(isSubset(x = spikeNames, y = setdiff))
+            assert(isSubset(spikeNames, setdiff))
             spikeRanges <- emptyRanges(
                 names = spikeNames,
                 seqname = "spike",
@@ -230,25 +194,49 @@ NULL
             rowRanges <- suppressWarnings(c(spikeRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
-        ## Automatically arrange the ranges to match the main assay.
+        ## Additional non-Ensembl gene symbols. Automatically handle extra gene
+        ## symbols in 10X Cell Ranger output. For example: CD11b, CD127, HLA-Dr,
+        ## IgG1, PD-1, etc.
+        pattern <- "^EN[ST].+[0-9.]+$"
+        if (
+            hasLength(setdiff) &&
+            any(grepl(pattern = pattern, x = names(rowRanges)))
+        ) {
+            symbols <- setdiff[!grepl(pattern = pattern, x = setdiff)]
+            message(sprintf(
+                fmt = paste0(
+                    "%d non-Ensembl %s detected.\n",
+                    "Define spike-ins using 'spikeNames' ",
+                    "and transgenes using 'transgeneNames'.\n",
+                    "%s"
+                ),
+                length(symbols),
+                ngettext(
+                    n = length(symbols),
+                    msg1 = "feature",
+                    msg2 = "features"
+                ),
+                printString(symbols)
+            ))
+            unknownRanges <- emptyRanges(
+                names = symbols,
+                mcolnames = mcolnames
+            )
+            rowRanges <- suppressWarnings(c(unknownRanges, rowRanges))
+            setdiff <- setdiff(rownames(assay), names(rowRanges))
+        }
+        ## Error on unannotated features. This often indicates an accidental
+        ## Ensembl release version mismatch.
         assert(isSubset(rownames(assay), names(rowRanges)))
         rowRanges <- rowRanges[rownames(assay)]
-        if (hasCols(mcols(rowRanges))) {
-            assert(hasValidNames(mcols(rowRanges)))
-        }
+        rowRanges <- encode(rowRanges)
     } else if (hasRows(rowData)) {
-        ## Automatically arrange the rows to match the main assay.
-        assert(isSubset(rownames(assay), rownames(rowData)))
+        assert(
+            isSubset(rownames(assay), rownames(rowData)),
+            hasValidNames(rowData),
+            identical(colnames(rowData), camelCase(colnames(rowData)))
+        )
         rowData <- rowData[rownames(assay), , drop = FALSE]
-        if (hasCols(rowData)) {
-            assert(
-                hasValidNames(rowData),
-                identical(
-                    x = colnames(rowData),
-                    y = camelCase(colnames(rowData))
-                )
-            )
-        }
     }
 
     ## Column data -------------------------------------------------------------
@@ -256,10 +244,7 @@ NULL
         ## Allowing some single-cell RNA-seq automatic columns to pass through
         ## here, since this code is used by `makeSingleCellExperiment()`. May
         ## tighten this up and be more restrictive in the future.
-        blacklist <- setdiff(
-            x = metadataBlacklist,
-            y = c("revcomp", "sampleID")
-        )
+        blacklist <- setdiff(metadataBlacklist, c("revcomp", "sampleID"))
         assert(
             isSubset(colnames(assay), rownames(colData)),
             areDisjointSets(colnames(colData), blacklist)
@@ -269,10 +254,7 @@ NULL
     if (hasCols(colData)) {
         assert(
             hasValidNames(colData),
-            identical(
-                x = colnames(colData),
-                y = camelCase(colnames(colData))
-            )
+            identical(colnames(colData), camelCase(colnames(colData)))
         )
     }
 
@@ -289,10 +271,7 @@ NULL
     if (hasLength(metadata)) {
         assert(
             hasValidNames(metadata),
-            identical(
-                x = names(metadata),
-                y = camelCase(names(metadata))
-            )
+            identical(names(metadata), camelCase(names(metadata)))
         )
     }
 
@@ -310,7 +289,6 @@ NULL
     args <- Filter(f = Negate(is.null), x = args)
     args <- Filter(f = hasLength, x = args)
     se <- do.call(what = SummarizedExperiment, args = args)
-
     if (isTRUE(sort)) {
         ## Assay names. Always keep counts first.
         assayNames <- assayNames(se)
@@ -318,23 +296,17 @@ NULL
             assayNames <- unique(c("counts", sort(assayNames)))
             assays(se) <- assays(se)[assayNames]
         }
-
         ## Assay rows and columns.
         se <- se[sort(rownames(se)), sort(colnames(se))]
-
         ## Row data columns.
         rowData(se) <- rowData(se)[, sort(colnames(rowData(se))), drop = FALSE]
-
         ## Column data columns.
         colData(se) <- colData(se)[, sort(colnames(colData(se))), drop = FALSE]
-
         ## Metadata names.
         metadata(se) <- metadata(se)[sort(names(metadata(se)))]
     }
-
     ## Drop factor levels in rowData and colData, to lower memory overhead.
     se <- droplevels(se)
-
     validObject(se)
     se
 }
