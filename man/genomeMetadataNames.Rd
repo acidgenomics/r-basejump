@@ -11,6 +11,9 @@ genomeMetadataNames
 \description{
 Slot names in metadata containing genome information
 }
+\note{
+Updated 2019-08-21.
+}
 \examples{
 genomeMetadataNames
 }
