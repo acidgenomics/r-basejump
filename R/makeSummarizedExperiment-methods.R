@@ -229,6 +229,7 @@ NULL
         ## Ensembl release version mismatch.
         assert(isSubset(rownames(assay), names(rowRanges)))
         rowRanges <- rowRanges[rownames(assay)]
+        rowRanges <- encode(rowRanges)
     } else if (hasRows(rowData)) {
         assert(
             isSubset(rownames(assay), rownames(rowData)),
