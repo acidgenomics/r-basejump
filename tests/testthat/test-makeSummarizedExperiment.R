@@ -11,7 +11,7 @@ genes <- paste0("gene", seq_len(4L))
 samples <- paste0("sample", seq_len(4L))
 
 counts <- matrix(
-    data = seq(1L:16L),
+    data = seq_len(16L),
     nrow = 4L,
     ncol = 4L,
     byrow = FALSE,
@@ -83,7 +83,7 @@ test_that("Minimal input", {
 })
 
 test_that("Spike-in support", {
-    rownames(assays[[1L]])[1L:2L] <- c("EGFP", "ERCC")
+    rownames(assays[[1L]])[seq_len(2L)] <- c("EGFP", "ERCC")
     object <- makeSummarizedExperiment(
         assays = assays,
         rowRanges = rowRanges[3L:4L],

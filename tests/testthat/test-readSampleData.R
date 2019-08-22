@@ -19,7 +19,7 @@ test_that("Lane-split technical replicate support", {
     object <- readSampleData(file, lanes = 4L)
     expect_true("lane" %in% colnames(object))
     expect_identical(
-        object = rownames(object)[1L:8L],
+        object = rownames(object)[seq_len(8L)],
         expected = c(
             paste0("sample1_L00", seq_len(4L)),
             paste0("sample2_L00", seq_len(4L))
