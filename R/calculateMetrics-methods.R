@@ -38,7 +38,7 @@ NULL
 
 
 
-## Updated 2019-08-12.
+## Updated 2019-08-22.
 `calculateMetrics,matrix` <-  # nolint
     function(
         object,
@@ -51,15 +51,17 @@ NULL
             isAny(rowRanges, c("GRanges", "NULL")),
             isFlag(prefilter)
         )
-
         message(sprintf(
-            fmt = "Calculating %d cellular barcode metrics.",
-            ncol(object)
+            fmt = "Calculating %d sample %s.",
+            ncol(object),
+            ngettext(
+                n = ncol(object),
+                msg1 = "metric",
+                msg2 = "metrics"
+            )
         ))
-
         codingFeatures <- character()
         mitoFeatures <- character()
-
         missingBiotype <- function() {
             message(sprintf(
                 fmt = paste0(
@@ -69,7 +71,6 @@ NULL
                 toString(c("nCoding", "nMito", "mitoRatio"))
             ))
         }
-
         ## Calculate nCoding and nMito, which requires annotations.
         if (!is.null(rowRanges)) {
             assert(
@@ -84,7 +85,6 @@ NULL
                     toString(setdiff, width = 200L)
                 ))
             }
-
             ## Subset ranges to match matrix.
             assert(isSubset(rownames(object), names(rowRanges)))
             rowRanges <- rowRanges[rownames(object)]
@@ -130,7 +130,6 @@ NULL
         } else {
             missingBiotype()
         }
-
         ## Using S4 run-length encoding here to reduce memory overhead.
         ## We're following the naming conventions used in Seurat 3.
         ## Note that "nCount" represents "nUMI" for droplet scRNA-seq data.
@@ -159,7 +158,6 @@ NULL
             mitoRatio = mitoRatio,
             row.names = colnames(object)
         )
-
         ## Apply low stringency cellular barcode pre-filtering.
         ## This keeps only cellular barcodes with non-zero genes.
         if (isTRUE(prefilter)) {
@@ -182,7 +180,6 @@ NULL
                 percent(nrow(data) / ncol(object))
             ))
         }
-
         data
     }
 
