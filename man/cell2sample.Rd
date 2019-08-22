@@ -9,7 +9,7 @@
 cell2sample(object, ...)
 
 \S4method{cell2sample}{SingleCellExperiment}(object, return = c("factor",
-  "tbl_df"))
+  "DataFrame", "tbl_df"))
 }
 \arguments{
 \item{object}{Object.}
@@ -24,6 +24,8 @@ to the first argument in the \code{character} vector.}
 \itemize{
 \item \code{"factor"}: Named \code{factor} containing as the \link[base:levels]{levels} and
 cell IDs as the \link[base:names]{names}.
+\item \code{DataFrame}: Data frame containing \code{sampleID} column and cell identifiers
+as the row names.
 \item \code{"tbl_df"}: Tibble containing \code{cellID} and \code{sampleID} columns.
 }
 }
@@ -34,7 +36,7 @@ Cell-to-sample mappings
 \code{sampleID} column must be defined in
 \code{\link[SummarizedExperiment:colData]{colData()}}.
 
-Updated 2019-08-18.
+Updated 2019-08-22.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
