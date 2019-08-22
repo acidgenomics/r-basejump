@@ -11,6 +11,9 @@ basejumpTestsURL
 \description{
 basejump test data URL
 }
+\note{
+Updated 2019-08-21.
+}
 \examples{
 basejumpTestsURL
 }
