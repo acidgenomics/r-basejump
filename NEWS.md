@@ -1,3 +1,15 @@
+## basejump 0.11.10 (2019-08-22)
+
+### Minor changes
+
+- `makeSummarizedExperiment`: Now automatically handles non-Ensembl gene symbols
+  present in assays that aren't defined in `rowRanges`. This applies primarily
+  to 10X Cell Ranger v3 output, which includes some non-Ensembl gene symbols:
+  CD11b, CD4, CD8a, HLA-DR, IgG1, PD-1, etc. The function still intentionally
+  errors on unannotated Ensembl features, which often indicates an accidental
+  release version mismatch.
+- Updated dependency versions.
+
 ## basejump 0.11.9 (2019-08-21)
 
 ### Minor changes
