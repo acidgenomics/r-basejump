@@ -158,25 +158,27 @@ NULL
             mitoRatio = mitoRatio,
             row.names = colnames(object)
         )
-        ## Apply low stringency cellular barcode pre-filtering.
-        ## This keeps only cellular barcodes with non-zero genes.
+        ## Apply low stringency pre-filtering.
+        ## This keeps only samples/cells with non-zero features.
         if (isTRUE(prefilter)) {
-            keep <- !is.na(data[["log10FeaturesPerCount"]])
-            assert(is(keep, "Rle"))
+            ## Novelty score.
+            keep <- which(!is.na(data[["log10FeaturesPerCount"]]))
             data <- data[keep, , drop = FALSE]
-
-            keep <- data[["nCount"]] > 0L
-            assert(is(keep, "Rle"))
+            ## Minimum number of read counts per sample.
+            keep <- which(data[["nCount"]] > 0L)
             data <- data[keep, , drop = FALSE]
-
-            keep <- data[["nFeature"]] > 0L
-            assert(is(keep, "Rle"))
+            ## Minimum number of features (i.e. genes) per sample.
+            keep <- which(data[["nFeature"]] > 0L)
             data <- data[keep, , drop = FALSE]
-
             message(sprintf(
-                fmt = "%d / %d cellular barcodes passed pre-filtering (%s).",
+                fmt = "%d / %d %s passed pre-filtering (%s).",
                 nrow(data),
                 ncol(object),
+                ngettext(
+                    n = nrow(data),
+                    msg1 = "sample",
+                    msg2 = "samples"
+                ),
                 percent(nrow(data) / ncol(object))
             ))
         }
