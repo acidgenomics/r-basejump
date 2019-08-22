@@ -162,13 +162,13 @@ NULL
         ## This keeps only samples/cells with non-zero features.
         if (isTRUE(prefilter)) {
             ## Novelty score.
-            keep <- which(!is.na(data[["log10FeaturesPerCount"]]))
+            keep <- !is.na(data[["log10FeaturesPerCount"]])
             data <- data[keep, , drop = FALSE]
             ## Minimum number of read counts per sample.
-            keep <- which(data[["nCount"]] > 0L)
+            keep <- data[["nCount"]] > 0L
             data <- data[keep, , drop = FALSE]
             ## Minimum number of features (i.e. genes) per sample.
-            keep <- which(data[["nFeature"]] > 0L)
+            keep <- data[["nFeature"]] > 0L
             data <- data[keep, , drop = FALSE]
             message(sprintf(
                 fmt = "%d / %d %s passed pre-filtering (%s).",
