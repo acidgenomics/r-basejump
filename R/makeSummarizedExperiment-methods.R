@@ -226,8 +226,8 @@ NULL
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
         ## Error on unannotated features. This often indicates an accidental
-        ## Ensembl version mismatch.
-        assert(isSubset(rownames(assay), rownames(rowData)))
+        ## Ensembl release version mismatch.
+        assert(isSubset(rownames(assay), names(rowRanges)))
         rowRanges <- rowRanges[rownames(assay)]
     } else if (hasRows(rowData)) {
         assert(
