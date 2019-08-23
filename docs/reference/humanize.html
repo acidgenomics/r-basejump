@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.11</span>
       </span>
     </div>
 
@@ -162,29 +162,28 @@ should only be called prior to writing files to disk.</p>
     <span class='no'>SingleCellExperiment</span>,
     <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
 )
-<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>rse</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>object</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "gene001" "gene002" "gene003" "gene004" "gene005" "gene006"
 #&gt; 
 #&gt; [[2]]
 #&gt; [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
-#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>humanize</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>Making the rownames and colnames human readable.</span></div><div class='output co'>#&gt; <span class='message'>Returning with the sample names unmodified.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>x</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>humanize</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Making the rownames and colnames human readable.</span></div><div class='output co'>#&gt; <span class='message'>Returning with the sample names unmodified.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>x</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     
 #&gt; 
 #&gt; [[2]]
 #&gt; [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
 #&gt; </div><div class='input'>
-
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>sce</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>object</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "gene001" "gene002" "gene003" "gene004" "gene005" "gene006"
 #&gt; 
 #&gt; [[2]]
 #&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"
-#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>humanize</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Making the rownames and colnames human readable.</span></div><div class='output co'>#&gt; <span class='message'>SingleCellExperiment contains cells instead of samples.</span>
+#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>humanize</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Making the rownames and colnames human readable.</span></div><div class='output co'>#&gt; <span class='message'>SingleCellExperiment contains cells instead of samples.</span>
 #&gt; <span class='message'>Returning with column names unmodified.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>x</span>), <span class='no'>head</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     
 #&gt; 
