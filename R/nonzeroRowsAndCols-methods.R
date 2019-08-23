@@ -116,8 +116,10 @@ setMethod(
 ## Updated 2019-08-23.
 `nonzeroRowsAndCols,SummarizedExperiment` <-  # nolint
     function(object) {
-        ## FIXME
-        stop("FIXME")
+        counts <- counts(object)
+        counts <- nonzeroRowsAndCols(counts)
+        object <- object[rownames(counts), colnames(counts)]
+        object
     }
 
 
