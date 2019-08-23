@@ -36,17 +36,16 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-lapply(dimnames(rse), head)
-x <- humanize(rse)
+object <- RangedSummarizedExperiment
+lapply(dimnames(object), head)
+x <- humanize(object)
 lapply(dimnames(x), head)
 
-
 ## SingleCellExperiment ====
-lapply(dimnames(sce), head)
-x <- humanize(sce)
+object <- SingleCellExperiment
+lapply(dimnames(object), head)
+x <- humanize(object)
 lapply(dimnames(x), head)
 }

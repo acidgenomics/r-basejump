@@ -21,7 +21,8 @@ calculateMetrics(object, ...)
 \S4method{calculateMetrics}{DelayedArray}(object, rowRanges = NULL,
   prefilter = FALSE)
 
-\S4method{calculateMetrics}{RangedSummarizedExperiment}(object)
+\S4method{calculateMetrics}{RangedSummarizedExperiment}(object,
+  prefilter = FALSE)
 
 \S4method{calculateMetrics}{SingleCellExperiment}(object,
   prefilter = FALSE)

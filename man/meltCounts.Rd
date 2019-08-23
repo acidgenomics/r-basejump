@@ -50,8 +50,13 @@ Assay name or index position.}
 \item{...}{Additional arguments.}
 }
 \value{
-\code{grouped_df}.
-Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
+\code{DataFrame}.
+Melted data frame containing these columns:
+\itemize{
+\item \code{colname} (e.g. sample ID).
+\item \code{rowname} (e.g. gene ID).
+\item \code{counts}.
+}
 }
 \description{
 Melt count matrix into long format
