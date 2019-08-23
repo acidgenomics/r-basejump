@@ -38,11 +38,6 @@ NULL
 
 
 
-## FIXME Rethink approach to zero count row and column filtering.
-## FIXME Need to perform this step inside RSE, SCE methods, not matrix.
-
-## Drop zero rows and columns first when prefilter = TRUE.
-
 ## Updated 2019-08-23.
 `calculateMetrics,matrix` <-  # nolint
     function(
