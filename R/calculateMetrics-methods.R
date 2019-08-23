@@ -4,7 +4,7 @@
 #'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
 #'   normalized counts here.
-#' @note Updated 2019-08-12.
+#' @note Updated 2019-08-23.
 #'
 #' @inheritParams acidroxygen::params
 #' @param prefilter `logical(1)`.
@@ -38,7 +38,9 @@ NULL
 
 
 
-## Updated 2019-08-22.
+## Drop zero rows and columns first when prefilter = TRUE.
+
+## Updated 2019-08-23.
 `calculateMetrics,matrix` <-  # nolint
     function(
         object,
@@ -51,6 +53,14 @@ NULL
             isAny(rowRanges, c("GRanges", "NULL")),
             isFlag(prefilter)
         )
+        originalDim <- dim(object)
+
+        ## Drop zero rows and columns to speed up calculates for large objects.
+        if (isTRUE(prefilter)) {
+            nzrows <- "XXX"
+            nzcols <- "XXX"
+        }
+
         message(sprintf(
             fmt = "Calculating %d sample %s.",
             ncol(object),
@@ -60,6 +70,12 @@ NULL
                 msg2 = "metrics"
             )
         ))
+
+
+
+
+
+
         codingFeatures <- character()
         mitoFeatures <- character()
         missingBiotype <- function() {
@@ -197,31 +213,14 @@ setMethod(
 
 
 
-## Updated 2019-08-07.
-`calculateMetrics,DelayedArray` <-  # nolint
-    appendToBody(
-        fun = `calculateMetrics,matrix`,
-        values = quote(colSums <- DelayedMatrixStats::colSums2)
-    )
-
-
-
-#' @rdname calculateMetrics
-#' @export
-setMethod(
-    f = "calculateMetrics",
-    signature = signature("DelayedArray"),
-    definition = `calculateMetrics,DelayedArray`
-)
-
-
-
-## Updated 2019-08-07.
-`calculateMetrics,Matrix` <-  # nolint
-    appendToBody(
-        fun = `calculateMetrics,matrix`,
-        values = quote(colSums <- Matrix::colSums)
-    )
+## Updated 2019-08-23.
+## FIXME Rework this approach in goalie.
+fun <- `calculateMetrics,matrix`
+cs <- quote(colSums <- Matrix::colSums)
+rs <- quote(rowSums <- Matrix::rowSums)
+fun <- appendToBody(fun = fun, values = cs)
+fun <- appendToBody(fun = fun, values = rs)
+`calculateMetrics,Matrix` <- fun  # nolint
 
 
 
@@ -235,7 +234,28 @@ setMethod(
 
 
 
-## Updated 2019-08-08
+## Updated 2019-08-23.
+## FIXME Rework this in goalie.
+fun <- `calculateMetrics,matrix`
+cs <- quote(colSums <- DelayedMatrixStats::colSums2)
+rs <- quote(rowSums <- DelayedMatrixStats::rowSums2)
+fun <- appendToBody(fun = fun, values = cs)
+fun <- appendToBody(fun = fun, values = rs)
+`calculateMetrics,DelayedArray` <- fun  # nolint
+
+
+
+#' @rdname calculateMetrics
+#' @export
+setMethod(
+    f = "calculateMetrics",
+    signature = signature("DelayedArray"),
+    definition = `calculateMetrics,DelayedArray`
+)
+
+
+
+## Updated 2019-08-23.
 .slotMetricsInSE <-
     function(
         object,
