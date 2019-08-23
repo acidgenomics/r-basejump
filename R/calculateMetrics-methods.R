@@ -38,6 +38,9 @@ NULL
 
 
 
+## FIXME Rethink approach to zero count row and column filtering.
+## FIXME Need to perform this step inside RSE, SCE methods, not matrix.
+
 ## Drop zero rows and columns first when prefilter = TRUE.
 
 ## Updated 2019-08-23.
@@ -54,13 +57,15 @@ NULL
             isFlag(prefilter)
         )
         originalDim <- dim(object)
-
-        ## Drop zero rows and columns to speed up calculates for large objects.
+        ## Drop zero rows and columns to speed up calculations for very large
+        ## (i.e. unfiltered) objects. In particular, this dramatically speeds
+        ## up calculations on unfiltered 10X Cell Ranger output.
         if (isTRUE(prefilter)) {
-            nzrows <- "XXX"
-            nzcols <- "XXX"
+            message("Prefiltering zero count rows and columns.")
+            nzrows <- rowSums(object) > 0L
+            nzcols <- colSums(object) > 0L
+            object <- object[nzrows, nzcols]
         }
-
         message(sprintf(
             fmt = "Calculating %d sample %s.",
             ncol(object),
@@ -70,12 +75,6 @@ NULL
                 msg2 = "metrics"
             )
         ))
-
-
-
-
-
-
         codingFeatures <- character()
         mitoFeatures <- character()
         missingBiotype <- function() {
@@ -187,15 +186,30 @@ NULL
             keep <- data[["nFeature"]] > 0L
             data <- data[keep, , drop = FALSE]
             message(sprintf(
-                fmt = "%d / %d %s passed pre-filtering (%s).",
+                fmt = paste(
+                    "Prefiltering summary:",
+                    "  - %d / %d %s (%s)",
+                    "  - %d / %d %s (%s)",
+                    sep = "\n"
+                ),
+                ## Matrix columns (samples).
                 nrow(data),
-                ncol(object),
+                originalDim[[2L]],
                 ngettext(
                     n = nrow(data),
                     msg1 = "sample",
                     msg2 = "samples"
                 ),
-                percent(nrow(data) / ncol(object))
+                percent(nrow(data) / originalDim[[2L]]),
+                ## Matrix rows (features).
+                nrow(object),
+                originalDim[[1L]],
+                ngettext(
+                    n = nrow(object),
+                    msg1 = "feature",
+                    msg2 = "features"
+                ),
+                percent(nrow(object) / originalDim[[1L]])
             ))
         }
         data
@@ -215,6 +229,7 @@ setMethod(
 
 ## Updated 2019-08-23.
 ## FIXME Rework this approach in goalie.
+## FIXME Allow user to pass in character vector or list to appendToBody.
 fun <- `calculateMetrics,matrix`
 cs <- quote(colSums <- Matrix::colSums)
 rs <- quote(rowSums <- Matrix::rowSums)
@@ -236,6 +251,7 @@ setMethod(
 
 ## Updated 2019-08-23.
 ## FIXME Rework this in goalie.
+## FIXME Allow user to pass in character vector or list to appendToBody.
 fun <- `calculateMetrics,matrix`
 cs <- quote(colSums <- DelayedMatrixStats::colSums2)
 rs <- quote(rowSums <- DelayedMatrixStats::rowSums2)
@@ -316,14 +332,17 @@ setMethod(
 
 
 
+## nolint start
+## Consider using DelayedArray for very large datasets.
+## > if (ncol(counts) >= 1E6L) {
+## >     counts <- DelayedArray(counts)
+## > }
+## nolint end
+
 ## Updated 2019-08-08.
 `calculateMetrics,SingleCellExperiment` <-  # nolint
     function(object, prefilter = FALSE) {
         counts <- counts(object)
-        ## Use DelayedArray for large datasets.
-        if (ncol(counts) >= 2E4L) {
-            counts <- DelayedArray(counts)
-        }
         metrics <- calculateMetrics(
             object = counts,
             rowRanges = rowRanges(object),
