@@ -109,7 +109,25 @@ setMethod(
 
 
 
-## FIXME DelayedArray
+## Updated 2019-08-23.
+`nonzeroRowsAndCols,DelayedArray` <-  # nolint
+    appendToBody(
+        fun = `nonzeroRowsAndCols,matrix`,
+        values = list(
+            quote(rowSums <- DelayedMatrixStats::rowSums2),
+            quote(colSums <- DelayedMatrixStats::colSums2)
+        )
+    )
+
+
+
+#' @rdname nonzeroRowsAndCols
+#' @export
+setMethod(
+    f = "nonzeroRowsAndCols",
+    signature = signature("DelayedArray"),
+    definition = `nonzeroRowsAndCols,DelayedArray`
+)
 
 
 
