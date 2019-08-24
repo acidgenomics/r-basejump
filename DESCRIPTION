@@ -144,7 +144,6 @@ Collate:
     'matchInterestingGroups.R'
     'matchesGene2Symbol.R'
     'matchesInterestingGroups.R'
-    'melt-methods.R'
     'meltCounts-methods.R'
     'metrics-methods.R'
     'microplate.R'
