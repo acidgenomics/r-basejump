@@ -162,7 +162,8 @@ setMethod(
 
 
 
-## FIXME Need DataFrame method here.s
+## FIXME Matrix method. Use Rle?
+## FIXME DataFrame method. Use Rle?.
 
 
 
