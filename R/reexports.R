@@ -371,9 +371,9 @@ syntactic::upperCamelCase
 #' @export
 tibble::tibble
 
-#' @importFrom transformer anti_join
+#' @importFrom transformer antiJoin
 #' @export
-transformer::anti_join
+transformer::antiJoin
 
 #' @importFrom transformer as.SummarizedExperiment
 #' @export
@@ -419,54 +419,46 @@ transformer::factorize
 #' @export
 transformer::flatFiles
 
-#' @importFrom transformer full_join
+#' @importFrom transformer fullJoin
 #' @export
-transformer::full_join
+transformer::fullJoin
 
-#' @importFrom transformer inner_join
+#' @importFrom transformer innerJoin
 #' @export
-transformer::inner_join
+transformer::innerJoin
 
-#' @importFrom transformer left_join
+#' @importFrom transformer leftJoin
 #' @export
-transformer::left_join
+transformer::leftJoin
 
-#' @importFrom transformer mutate_all
+#' @importFrom transformer mutateAll
 #' @export
-transformer::mutate_all
+transformer::mutateAll
 
-#' @importFrom transformer mutate_at
+#' @importFrom transformer mutateAt
 #' @export
-transformer::mutate_at
+transformer::mutateAt
 
-#' @importFrom transformer mutate_if
+#' @importFrom transformer mutateIf
 #' @export
-transformer::mutate_if
+transformer::mutateIf
 
-#' @importFrom transformer right_join
+#' @importFrom transformer rightJoin
 #' @export
-transformer::right_join
+transformer::rightJoin
 
-#' @importFrom transformer select_all
+#' @importFrom transformer selectIf
 #' @export
-transformer::select_all
+transformer::selectIf
 
-#' @importFrom transformer select_at
+#' @importFrom transformer semiJoin
 #' @export
-transformer::select_at
+transformer::semiJoin
 
-#' @importFrom transformer select_if
+#' @importFrom transformer transmuteAt
 #' @export
-transformer::select_if
+transformer::transmuteAt
 
-#' @importFrom transformer semi_join
+#' @importFrom transformer transmuteIf
 #' @export
-transformer::semi_join
-
-#' @importFrom transformer transmute_at
-#' @export
-transformer::transmute_at
-
-#' @importFrom transformer transmute_if
-#' @export
-transformer::transmute_if
+transformer::transmuteIf
