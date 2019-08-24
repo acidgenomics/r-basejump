@@ -4,6 +4,7 @@
 \name{gather}
 \alias{gather}
 \alias{gather,matrix-method}
+\alias{gather,data.frame-method}
 \alias{gather,SummarizedExperiment-method}
 \alias{gather,SingleCellExperiment-method}
 \title{Gather columns into key-value pairs}
@@ -13,6 +14,8 @@ gather(object, ...)
 \S4method{gather}{matrix}(object, minCounts = 1L,
   minCountsMethod = c("perFeature", "absolute"), trans = c("identity",
   "log2", "log10"))
+
+\S4method{gather}{data.frame}(object, ...)
 
 \S4method{gather}{SummarizedExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
@@ -44,10 +47,10 @@ operation. This applies to all counts, not per feature.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 
+\item{...}{Additional arguments.}
+
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{DataFrame}.
@@ -56,7 +59,7 @@ Assay name or index position.}
 Gather columns into key-value pairs
 }
 \note{
-Updated 2019-08-20.
+Updated 2019-08-24.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
