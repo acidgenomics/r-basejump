@@ -75,6 +75,7 @@ Suggests:
     patrick (>= 0.0.1),
     rmarkdown (>= 1.14),
     testthat (>= 2.1),
+    tidyr (> 0.8),
     viridis (>= 0.5),
     datasets
 Remotes:

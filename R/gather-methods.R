@@ -45,7 +45,7 @@ NULL
 
 
 
-## Updated 2019-08-19.
+## Updated 2019-08-24.
 `gather,matrix` <-  # nolint
     function(
         object,
@@ -62,13 +62,13 @@ NULL
         ## even when `minCountsMethod = "absolute"`.
         if (isInt(minCounts)) {
             assert(isGreaterThanOrEqualTo(minCounts, 1L))
-            if (minCountsMethod == "perFeature") {
+            if (identical(minCountsMethod, "perFeature")) {
                 rowCutoff <- minCounts
             } else {
                 rowCutoff <- 1L
             }
             keep <- rowSums(object) >= rowCutoff
-            if (minCountsMethod == "perFeature") {
+            if (identical(minCountsMethod, "perFeature")) {
                 message(sprintf(
                     "%d / %d %s passed minimum 'rowSums()' >= %s cutoff.",
                     sum(keep, na.rm = TRUE), nrow(object),
@@ -96,7 +96,10 @@ NULL
         data <- as(data, "DataFrame")
         ## When applying an absolute threshold using `minCountsMethod`, apply
         ## this cutoff prior to logarithmic transformation.
-        if (isInt(minCounts) && minCountsMethod == "absolute") {
+        if (
+            isInt(minCounts) &&
+            identical(minCountsMethod, "absolute")
+        ) {
             nPrefilter <- nrow(data)
             keep <- data[["counts"]] >= minCounts
             data <- data[keep, , drop = FALSE]
@@ -113,7 +116,7 @@ NULL
             ))
         }
         ## Log transform the counts, if desired.
-        if (trans != "identity") {
+        if (!identical(trans, "identity")) {
             assert(isInt(minCounts))
             message(sprintf("Applying '%s(x + 1L)' transformation.", trans))
             fun <- get(
@@ -140,7 +143,30 @@ setMethod(
 
 
 
-## Updated 2019-08-20.
+## Updated 2019-08-24.
+`gather,data.frame` <-  # nolint
+    function(object, ...) {
+        assert(requireNamespace("tidyr", quietly = TRUE))
+        tidyr::gather(data = object, ...)
+    }
+
+
+
+#' @rdname gather
+#' @export
+setMethod(
+    f = "gather",
+    signature = signature("data.frame"),
+    definition = `gather,data.frame`
+)
+
+
+
+## FIXME Need DataFrame method here.s
+
+
+
+## Updated 2019-08-24.
 `gather,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -189,7 +215,7 @@ setMethod(
 
 
 
-## Updated 2019-08-20.
+## Updated 2019-08-24.
 `gather,SingleCellExperiment` <-  # nolint
     function(object) {
         validObject(object)
