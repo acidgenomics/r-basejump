@@ -45,6 +45,20 @@ NULL
 
 
 
+## FIXME Rethink this.
+
+## > reshape2::melt(
+## >     data = object,
+## >     varnames = c("rowname", "colname"),
+## >     value.name = "counts"
+## > )
+
+.gather <- function(object) {
+    stop("IN PROGRESS")
+}
+
+
+
 ## Updated 2019-08-24.
 `gather,matrix` <-  # nolint
     function(
@@ -87,13 +101,9 @@ NULL
         ## Using reshape2 array (matrix) method here.
         ## > help(topic = "melt.array", package = "reshape2")
         ## nolint end
-        ## FIXME Remove, this isn't maintained anymore.s
-        data <- melt(
-            data = object,
-            varnames = c("rowname", "colname"),
-            value.name = "counts"
-        )
-        data <- as(data, "DataFrame")
+        ## FIXME Remove reshape2 dependency, not maintained.
+        data <- .gather(data)
+        stop("IN PROGRESS")
         ## When applying an absolute threshold using `minCountsMethod`, apply
         ## this cutoff prior to logarithmic transformation.
         if (
