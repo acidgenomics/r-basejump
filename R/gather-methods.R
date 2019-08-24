@@ -1,6 +1,11 @@
-#' @name meltCounts
-#' @inherit bioverbs::meltCounts
-#' @note Updated 2019-08-20.
+## FIXME Deprecating in favor of `gather()`.
+## FIXME Need to nuke `reshape2::melt()` dependency.
+
+
+
+#' @name gather
+#' @inherit bioverbs::gather
+#' @note Updated 2019-08-24.
 #'
 #' @inheritParams acidroxygen::params
 #' @param minCounts `integer(1)` or `NULL`.
@@ -24,24 +29,24 @@
 #' data(RangedSummarizedExperiment, package = "acidtest")
 #' rse <- RangedSummarizedExperiment
 #' dim(rse)
-#' x <- meltCounts(rse, minCounts = NULL)
+#' x <- gather(rse, minCounts = NULL)
 #' nrow(x)
 #' print(x)
 NULL
 
 
 
-#' @rdname meltCounts
-#' @name meltCounts
-#' @importFrom bioverbs meltCounts
-#' @usage meltCounts(object, ...)
+#' @rdname gather
+#' @name gather
+#' @importFrom bioverbs gather
+#' @usage gather(object, ...)
 #' @export
 NULL
 
 
 
 ## Updated 2019-08-19.
-`meltCounts,matrix` <-  # nolint
+`gather,matrix` <-  # nolint
     function(
         object,
         minCounts = 1L,
@@ -82,6 +87,7 @@ NULL
         ## Using reshape2 array (matrix) method here.
         ## > help(topic = "melt.array", package = "reshape2")
         ## nolint end
+        ## FIXME Remove, this isn't maintained anymore.s
         data <- melt(
             data = object,
             varnames = c("rowname", "colname"),
@@ -124,18 +130,18 @@ NULL
 
 
 
-#' @rdname meltCounts
+#' @rdname gather
 #' @export
 setMethod(
-    f = "meltCounts",
+    f = "gather",
     signature = signature("matrix"),
-    definition = `meltCounts,matrix`
+    definition = `gather,matrix`
 )
 
 
 
 ## Updated 2019-08-20.
-`meltCounts,SummarizedExperiment` <-  # nolint
+`gather,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -152,7 +158,7 @@ setMethod(
         assert(hasLength(counts))
         counts <- as.matrix(counts)
         ## Passing to matrix method.
-        data <- meltCounts(
+        data <- gather(
             object = counts,
             minCounts = minCounts,
             minCountsMethod = minCountsMethod,
@@ -167,24 +173,24 @@ setMethod(
     }
 
 args <- c("minCounts", "minCountsMethod", "trans")
-formals(`meltCounts,SummarizedExperiment`)[args] <-
-    formals(`meltCounts,matrix`)[args]
+formals(`gather,SummarizedExperiment`)[args] <-
+    formals(`gather,matrix`)[args]
 rm(args)
 
 
 
-#' @rdname meltCounts
+#' @rdname gather
 #' @export
 setMethod(
-    f = "meltCounts",
+    f = "gather",
     signature = signature("SummarizedExperiment"),
-    definition = `meltCounts,SummarizedExperiment`
+    definition = `gather,SummarizedExperiment`
 )
 
 
 
 ## Updated 2019-08-20.
-`meltCounts,SingleCellExperiment` <-  # nolint
+`gather,SingleCellExperiment` <-  # nolint
     function(object) {
         validObject(object)
         assert(isScalar(assay))
@@ -196,7 +202,7 @@ setMethod(
         ## Note that this will deparse, and can be memory intensive.
         counts <- as.matrix(counts)
         ## Passing to matrix method.
-        data <- meltCounts(
+        data <- gather(
             object = counts,
             minCounts = minCounts,
             minCountsMethod = minCountsMethod,
@@ -214,15 +220,15 @@ setMethod(
         data
     }
 
-formals(`meltCounts,SingleCellExperiment`) <-
-    formals(`meltCounts,SummarizedExperiment`)
+formals(`gather,SingleCellExperiment`) <-
+    formals(`gather,SummarizedExperiment`)
 
 
 
-#' @rdname meltCounts
+#' @rdname gather
 #' @export
 setMethod(
-    f = "meltCounts",
+    f = "gather",
     signature = signature("SingleCellExperiment"),
-    definition = `meltCounts,SingleCellExperiment`
+    definition = `gather,SingleCellExperiment`
 )
