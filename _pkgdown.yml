@@ -34,6 +34,7 @@ reference:
       - calculateMetrics
       - filterCells
       - metrics
+      - nonzeroRowsAndCols
   - title: Import/export
     contents:
       - starts_with("read")

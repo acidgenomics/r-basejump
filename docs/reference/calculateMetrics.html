@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.11</span>
       </span>
     </div>
 
@@ -128,16 +128,17 @@
 <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='co'># S4 method for DelayedArray</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
 <span class='co'># S4 method for Matrix</span>
 <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
+<span class='co'># S4 method for DelayedArray</span>
+<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
 <span class='co'># S4 method for RangedSummarizedExperiment</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)
+<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>,
+  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>,
@@ -183,7 +184,7 @@ metrics in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/Summarize
 
     <p>Input a raw count matrix. Do not use size factor adjusted or log
 normalized counts here.</p>
-<p>Updated 2019-08-12.</p>
+<p>Updated 2019-08-23.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -191,7 +192,7 @@ normalized counts here.</p>
 
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating 100 cellular barcode metrics.</span></div><div class='output co'>#&gt; <span class='message'>497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'>0 mitochondrial features detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'>497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'>0 mitochondrial features detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 500 100 
 #&gt; metadata(1): date
 #&gt; assays(1): counts

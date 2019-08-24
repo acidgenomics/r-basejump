@@ -24,7 +24,7 @@
 #' @importFrom DelayedArray DelayedArray
 #' @importFrom DelayedMatrixStats colSums2 rowSums2
 #' @importFrom GenomeInfoDb seqnames
-#' @importFrom IRanges DataFrameList SplitDataFrameList
+#' @importFrom IRanges DataFrameList SplitDataFrameList stack
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate cor decode
 #'   expand head lapply mcols mcols<- merge metadata metadata<- na.omit order

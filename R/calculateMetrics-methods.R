@@ -38,11 +38,6 @@ NULL
 
 
 
-## FIXME Rethink approach to zero count row and column filtering.
-## FIXME Need to perform this step inside RSE, SCE methods, not matrix.
-
-## Drop zero rows and columns first when prefilter = TRUE.
-
 ## Updated 2019-08-23.
 `calculateMetrics,matrix` <-  # nolint
     function(
@@ -56,15 +51,9 @@ NULL
             isAny(rowRanges, c("GRanges", "NULL")),
             isFlag(prefilter)
         )
-        originalDim <- dim(object)
-        ## Drop zero rows and columns to speed up calculations for very large
-        ## (i.e. unfiltered) objects. In particular, this dramatically speeds
-        ## up calculations on unfiltered 10X Cell Ranger output.
         if (isTRUE(prefilter)) {
-            message("Prefiltering zero count rows and columns.")
-            nzrows <- rowSums(object) > 0L
-            nzcols <- colSums(object) > 0L
-            object <- object[nzrows, nzcols]
+            originalDim <- dim(object)
+            assert(hasNonZeroRowsAndCols(object))
         }
         message(sprintf(
             fmt = "Calculating %d sample %s.",
@@ -185,32 +174,20 @@ NULL
             ## Minimum number of features (i.e. genes) per sample.
             keep <- data[["nFeature"]] > 0L
             data <- data[keep, , drop = FALSE]
-            message(sprintf(
-                fmt = paste(
-                    "Prefiltering summary:",
-                    "  - %d / %d %s (%s)",
-                    "  - %d / %d %s (%s)",
-                    sep = "\n"
-                ),
-                ## Matrix columns (samples).
-                nrow(data),
-                originalDim[[2L]],
-                ngettext(
-                    n = nrow(data),
-                    msg1 = "sample",
-                    msg2 = "samples"
-                ),
-                percent(nrow(data) / originalDim[[2L]]),
-                ## Matrix rows (features).
-                nrow(object),
-                originalDim[[1L]],
-                ngettext(
-                    n = nrow(object),
-                    msg1 = "feature",
-                    msg2 = "features"
-                ),
-                percent(nrow(object) / originalDim[[1L]])
-            ))
+            n1 <- nrow(data)
+            n2 <- originalDim[[2L]]
+            if (n1 < n2) {
+                message(sprintf(
+                    fmt = "Prefilter: %d / %d %s (%s).",
+                    n1, n2,
+                    ngettext(
+                        n = n1,
+                        msg1 = "sample",
+                        msg2 = "samples"
+                    ),
+                    percent(n1 / n2)
+                ))
+            }
         }
         data
     }
@@ -228,14 +205,14 @@ setMethod(
 
 
 ## Updated 2019-08-23.
-## FIXME Rework this approach in goalie.
-## FIXME Allow user to pass in character vector or list to appendToBody.
-fun <- `calculateMetrics,matrix`
-cs <- quote(colSums <- Matrix::colSums)
-rs <- quote(rowSums <- Matrix::rowSums)
-fun <- appendToBody(fun = fun, values = cs)
-fun <- appendToBody(fun = fun, values = rs)
-`calculateMetrics,Matrix` <- fun  # nolint
+`calculateMetrics,Matrix` <-  # nolint
+    appendToBody(
+        fun = `calculateMetrics,matrix`,
+        values = list(
+            quote(rowSums <- Matrix::rowSums),
+            quote(colSums <- Matrix::colSums)
+        )
+    )
 
 
 
@@ -250,14 +227,14 @@ setMethod(
 
 
 ## Updated 2019-08-23.
-## FIXME Rework this in goalie.
-## FIXME Allow user to pass in character vector or list to appendToBody.
-fun <- `calculateMetrics,matrix`
-cs <- quote(colSums <- DelayedMatrixStats::colSums2)
-rs <- quote(rowSums <- DelayedMatrixStats::rowSums2)
-fun <- appendToBody(fun = fun, values = cs)
-fun <- appendToBody(fun = fun, values = rs)
-`calculateMetrics,DelayedArray` <- fun  # nolint
+`calculateMetrics,DelayedArray` <-  # nolint
+    appendToBody(
+        fun = `calculateMetrics,matrix`,
+        values = list(
+            quote(rowSums <- DelayedMatrixStats::rowSums2),
+            quote(colSums <- DelayedMatrixStats::colSums2)
+        )
+    )
 
 
 
@@ -271,20 +248,25 @@ setMethod(
 
 
 
+## nolint start
+## Consider using DelayedArray for very large datasets.
+## > if (ncol(counts) >= 1E6L) {
+## >     counts <- DelayedArray(counts)
+## > }
+## nolint end
+
 ## Updated 2019-08-23.
-.slotMetricsInSE <-
-    function(
-        object,
-        metrics,
-        prefilter
-    ) {
-        assert(
-            is(object, "SummarizedExperiment"),
-            is(metrics, "DataFrame"),
-            isSubset(rownames(metrics), colnames(object)),
-            isFlag(prefilter)
+`calculateMetrics,RangedSummarizedExperiment` <-  # nolint
+    function(object, prefilter = FALSE) {
+        ## Drop zero rows and columns to first to speed up calculations.
+        if (isTRUE(prefilter)) {
+            object <- nonzeroRowsAndCols(object)
+        }
+        metrics <- calculateMetrics(
+            object = counts(object),
+            rowRanges = rowRanges(object),
+            prefilter = prefilter
         )
-        ## Resize the object, if necessary.
         if (isTRUE(prefilter)) {
             object <- object[, rownames(metrics), drop = FALSE]
         }
@@ -304,24 +286,6 @@ setMethod(
 
 
 
-## Updated 2019-08-07.
-`calculateMetrics,RangedSummarizedExperiment` <-  # nolint
-    function(object) {
-        prefilter <- FALSE
-        metrics <- calculateMetrics(
-            object = counts(object),
-            rowRanges = rowRanges(object),
-            prefilter = prefilter
-        )
-        .slotMetricsInSE(
-            object = object,
-            metrics = metrics,
-            prefilter = prefilter
-        )
-    }
-
-
-
 #' @rdname calculateMetrics
 #' @export
 setMethod(
@@ -332,28 +296,9 @@ setMethod(
 
 
 
-## nolint start
-## Consider using DelayedArray for very large datasets.
-## > if (ncol(counts) >= 1E6L) {
-## >     counts <- DelayedArray(counts)
-## > }
-## nolint end
-
-## Updated 2019-08-08.
+## Updated 2019-08-23.
 `calculateMetrics,SingleCellExperiment` <-  # nolint
-    function(object, prefilter = FALSE) {
-        counts <- counts(object)
-        metrics <- calculateMetrics(
-            object = counts,
-            rowRanges = rowRanges(object),
-            prefilter = prefilter
-        )
-        .slotMetricsInSE(
-            object = object,
-            metrics = metrics,
-            prefilter = prefilter
-        )
-    }
+    `calculateMetrics,RangedSummarizedExperiment`
 
 
 
