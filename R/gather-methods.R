@@ -47,11 +47,232 @@ NULL
 
 ## FIXME Rethink this.
 
+## nolint start
+##
 ## > reshape2::melt(
 ## >     data = object,
 ## >     varnames = c("rowname", "colname"),
 ## >     value.name = "counts"
 ## > )
+##
+## > methods("melt")
+## > getS3method(f = "melt", class = "array")
+## > getS3method(f = "melt", class = "data.frame")
+##
+## > methods("gather")
+## > getS3method(f = "gather", class = "default")
+## > getS3method(f = "gather", class = "data.frame")
+##
+## > methods("gather_")
+## > getS3method(f = "gather_", class = "data.frame")
+##
+## nolint end
+
+
+
+gather.data.frame <-
+    function(data, key = "key", value = "value", ..., na.rm = FALSE,
+              convert = FALSE, factor_key = FALSE)
+    {
+        key_var <- as_string(ensym2(key))
+        value_var <- as_string(ensym2(value))
+        quos <- quos(...)
+        if (is_empty(quos)) {
+            gather_vars <- setdiff(names(data), c(key_var, value_var))
+        }
+        else {
+            gather_vars <- unname(tidyselect::vars_select(names(data), !!!quos))
+        }
+        if (is_empty(gather_vars)) {
+            return(data)
+        }
+        gather_idx <- match(gather_vars, names(data))
+        id_idx <- setdiff(seq_along(data), gather_idx)
+        dup_indx <- match(c(key_var, value_var), names(data))
+        id_idx <- setdiff(id_idx, dup_indx)
+        args <- normalize_melt_arguments(data, gather_idx)
+        valueAsFactor <- "factor" %in% class(args$attr_template)
+        ## FIXME This still calls Rcpp internally.
+        out <- melt_dataframe(
+            data,
+            id_idx - 1L,
+            gather_idx - 1L,
+            as.character(key_var),
+            as.character(value_var),
+            args$attr_template,
+            args$factorsAsStrings,
+            as.logical(valueAsFactor),
+            as.logical(factor_key)
+        )
+        if (na.rm && anyNA(out)) {
+            missing <- is.na(out[[value_var]])
+            out <- out[!missing, ]
+        }
+        if (convert) {
+            out[[key_var]] <- type.convert(as.character(out[[key_var]]),
+                                           as.is = TRUE)
+        }
+        reconstruct_tibble(data, out, gather_vars)
+    }
+
+
+
+reconstruct_tibble <-
+    function(input, output, ungrouped_vars = chr())
+    {
+        if (inherits(input, "grouped_df")) {
+            regroup(output, input, ungrouped_vars)
+        }
+        else if (inherits(input, "tbl_df")) {
+            as_tibble(output)
+        }
+        else {
+            output
+        }
+    }
+
+
+
+melt.array <-
+    function(
+        data,
+        varnames = names(dimnames(data)),
+        ...,
+        na.rm = FALSE,
+        as.is = FALSE,
+        value.name = "value"
+    ) {
+        var.convert <- function(x) {
+            if (!is.character(x))
+                return(x)
+            x <- type.convert(x, as.is = TRUE)
+            if (!is.character(x))
+                return(x)
+            factor(x, levels = unique(x))
+        }
+        dn <- amv_dimnames(data)
+        names(dn) <- varnames
+        if (!as.is) {
+            dn <- lapply(dn, var.convert)
+        }
+        labels <- expand.grid(
+            dn,
+            KEEP.OUT.ATTRS = FALSE,
+            stringsAsFactors = FALSE
+        )
+        if (na.rm) {
+            missing <- is.na(data)
+            data <- data[!missing]
+            labels <- labels[!missing, ]
+        }
+        value_df <- setNames(
+            object = data.frame(as.vector(data)),
+            nm = value.name
+        )
+        cbind(labels, value_df)
+    }
+
+
+
+melt_check <-
+    function(data, id.vars, measure.vars, variable.name, value.name)
+    {
+        varnames <- names(data)
+        if (!missing(id.vars) && is.numeric(id.vars)) {
+            id.vars <- varnames[id.vars]
+        }
+        if (!missing(measure.vars) && is.numeric(measure.vars)) {
+            measure.vars <- varnames[measure.vars]
+        }
+        if (!missing(id.vars)) {
+            unknown <- setdiff(id.vars, varnames)
+            if (length(unknown) > 0) {
+                vars <- paste(unknown, collapse = ", ")
+                stop("id variables not found in data: ", vars, call. = FALSE)
+            }
+        }
+        if (!missing(measure.vars)) {
+            unknown <- setdiff(measure.vars, varnames)
+            if (length(unknown) > 0) {
+                vars <- paste(unknown, collapse = ", ")
+                stop("measure variables not found in data: ", vars,
+                     call. = FALSE)
+            }
+        }
+        if (missing(id.vars) && missing(measure.vars)) {
+            discrete <- sapply(data, is.discrete)
+            id.vars <- varnames[discrete]
+            measure.vars <- varnames[!discrete]
+            if (length(id.vars) != 0) {
+                message("Using ", paste(id.vars, collapse = ", "),
+                        " as id variables")
+            }
+            else {
+                message("No id variables; using all as measure variables")
+            }
+        }
+        else if (missing(id.vars)) {
+            id.vars <- setdiff(varnames, measure.vars)
+        }
+        else if (missing(measure.vars)) {
+            measure.vars <- setdiff(varnames, id.vars)
+        }
+        if (!is.string(variable.name))
+            stop("'variable.name' should be a string", call. = FALSE)
+        if (!is.string(value.name))
+            stop("'value.name' should be a string", call. = FALSE)
+        list(id = id.vars, measure = measure.vars)
+    }
+
+
+
+melt.data.frame <-
+    function(
+        data,
+        id.vars,
+        measure.vars,
+        variable.name = "variable",
+        ...,
+        na.rm = FALSE,
+        value.name = "value",
+        factorsAsStrings = TRUE
+    ) {
+        vars <- melt_check(
+            data,
+            id.vars,
+            measure.vars,
+            variable.name,
+            value.name
+        )
+        id.ind <- match(vars$id, names(data))
+        measure.ind <- match(vars$measure, names(data))
+        if (!length(measure.ind)) {
+            return(data[id.vars])
+        }
+        args <- normalize_melt_arguments(data, measure.ind, factorsAsStrings)
+        measure.attributes <- args$measure.attributes
+        factorsAsStrings <- args$factorsAsStrings
+        valueAsFactor <- "factor" %in% measure.attributes$class
+        ## FIXME This calls Rcpp.
+        df <- melt_dataframe(
+            data,
+            as.integer(id.ind - 1),
+            as.integer(measure.ind - 1),
+            as.character(variable.name),
+            as.character(value.name),
+            as.pairlist(measure.attributes),
+            as.logical(factorsAsStrings),
+            as.logical(valueAsFactor)
+        )
+        if (na.rm) {
+            return(df[!is.na(df[[value.name]]), ])
+        }
+        else {
+            return(df)
+        }
+    }
+
+
 
 .gather <- function(object) {
     stop("IN PROGRESS")
