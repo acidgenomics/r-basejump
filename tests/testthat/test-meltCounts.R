@@ -1,3 +1,5 @@
+## FIXME Rename to gather.
+
 context("meltCounts")
 
 test_that("SummarizedExperiment", {
