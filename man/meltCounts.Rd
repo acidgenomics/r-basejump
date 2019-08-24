@@ -6,7 +6,7 @@
 \alias{meltCounts,matrix-method}
 \alias{meltCounts,SummarizedExperiment-method}
 \alias{meltCounts,SingleCellExperiment-method}
-\title{Melt count matrix into long format}
+\title{Deprecated functions}
 \usage{
 meltCounts(object, ...)
 
@@ -50,11 +50,10 @@ Assay name or index position.}
 \item{...}{Additional arguments.}
 }
 \value{
-\code{grouped_df}.
-Grouped by \code{colname} (e.g. sample ID) and \code{rowname} (e.g. gene ID).
+\code{.Deprecated}.
 }
 \description{
-Melt count matrix into long format
+Deprecated functions
 }
 \note{
 Updated 2019-08-20.
@@ -68,5 +67,5 @@ nrow(x)
 print(x)
 }
 \seealso{
-\code{reshape2::melt()}.
+\link[base:Deprecated]{Deprecated}.
 }

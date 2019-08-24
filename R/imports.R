@@ -1,3 +1,8 @@
+## FIXME Need to remove the reshape2 dependency. No longer maintained.
+## FIXME Rename `meltCounts` to simply `gather`?
+
+
+
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix sparseMatrix
