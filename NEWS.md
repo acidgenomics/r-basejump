@@ -1,3 +1,17 @@
+## basejump 0.11.11 (2019-08-23)
+
+### New functions
+
+- `nonzeroRowsAndCols`: Quickly remove non-zero rows and columns from a matrix
+  or `SummarizedExperiment`.
+
+### Minor changes
+
+- `calculateMetrics`: Now calls `nonzeroRowsAndCols` internally first when
+  `prefilter = FALSE`, speeding up calculations significantly for very large
+  `SingleCellExperiment` objects. This was added to improve loading of example
+  unfiltered 10X Genomics Chromium data.
+
 ## basejump 0.11.10 (2019-08-22)
 
 ### Minor changes
