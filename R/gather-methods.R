@@ -1,9 +1,3 @@
-## FIXME Deprecating in favor of `gather()`.
-## FIXME Need to nuke `reshape2::melt()` dependency.
-## FIXME Consider requiring numeric matrix for method.
-
-
-
 #' @name gather
 #' @inherit bioverbs::gather
 #' @note Updated 2019-08-26.
@@ -75,10 +69,7 @@ NULL
     dimnames = c("rowname", "colname"),
     valueCol = "value"
 ) {
-    assert(
-        is.matrix(object),
-        hasColnames(object)
-    )
+    assert(hasColnames(object))
     if (is.null(rownames(object))) {
         rownames(object) <- as.character(seq_len(nrow(object)))
     }
@@ -92,9 +83,11 @@ NULL
         KEEP.OUT.ATTRS = FALSE,
         stringsAsFactors = TRUE
     ))
-    value_df <- DataFrame(as.vector(object))
-    names(value_df) <- valueCol
-    cbind(labels, value_df)
+    value <- DataFrame(as.vector(object))
+    names(value) <- valueCol
+    out <- cbind(labels, value)
+    out <- encode(out)
+    out
 }
 
 
@@ -170,7 +163,7 @@ NULL
             assert(is.function(fun))
             data[[valueCol]] <- fun(data[[valueCol]] + 1L)
         }
-        data <- droplevels(data)
+        data <- encode(data)
         data
     }
 
@@ -182,6 +175,25 @@ setMethod(
     f = "gather",
     signature = signature("matrix"),
     definition = `gather,matrix`
+)
+
+
+
+## Updated 2019-08-26.
+`gather,Matrix` <-  # nolint
+    appendToBody(
+        fun = `gather,matrix`,
+        values = quote(rowSums <- Matrix::rowSums)
+    )
+
+
+
+#' @rdname gather
+#' @export
+setMethod(
+    f = "gather",
+    signature = signature("Matrix"),
+    definition = `gather,Matrix`
 )
 
 
@@ -249,13 +261,6 @@ setMethod(
 
 
 
-
-## FIXME Matrix method. Use Rle?
-
-
-
-
-
 ## Updated 2019-08-24.
 `gather,SummarizedExperiment` <-  # nolint
     function(
@@ -284,7 +289,7 @@ setMethod(
         sampleData <- sampleData(object)
         sampleData[["colname"]] <- rownames(sampleData)
         data <- leftJoin(data, sampleData, by = "colname")
-        data <- droplevels(data)
+        data <- encode(data)
         data
     }
 
@@ -331,7 +336,6 @@ setMethod(
         metrics[["colname"]] <- rownames(metrics)
         ## Join the cell-level metadata.
         data <- leftJoin(data, metrics, by = "colname")
-        data <- droplevels(data)
         data <- encode(data)
         data
     }
