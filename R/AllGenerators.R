@@ -754,7 +754,7 @@ PANTHER <- function(organism, release = NULL) {  # nolint
         hgnc[["hgncID"]] <- as.integer(
             str_match(string = hgnc[["keys"]], pattern = pattern)[, 2L]
         )
-        hgnc <- left_join(hgnc, hgnc2ensembl, by = "hgncID")
+        hgnc <- leftJoin(hgnc, hgnc2ensembl, by = "hgncID")
         hgnc[["hgncID"]] <- NULL
         keep <- !is.na(hgnc[["geneID"]])
         hgnc <- hgnc[keep, , drop = FALSE]
@@ -784,7 +784,7 @@ PANTHER <- function(organism, release = NULL) {  # nolint
         mgi[["mgiID"]] <- as.integer(
             str_match(string = mgi[["keys"]], pattern = pattern)[, 2L]
         )
-        mgi <- left_join(mgi, mgi2ensembl, by = "mgiID")
+        mgi <- leftJoin(mgi, mgi2ensembl, by = "mgiID")
         mgi[["mgiID"]] <- NULL
         keep <- !is.na(mgi[["geneID"]])
         mgi <- mgi[keep, , drop = FALSE]
