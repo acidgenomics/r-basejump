@@ -17,8 +17,7 @@
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
 #' @importFrom AnnotationDbi select
-#' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
-#'   rowSums setdiff t unlist
+#' @importFrom BiocGenerics unlist
 #' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
 #' @importFrom DelayedArray DelayedArray
@@ -26,9 +25,10 @@
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom IRanges DataFrameList SplitDataFrameList stack
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate cor decode
-#'   expand head lapply mcols mcols<- merge metadata metadata<- na.omit order
-#'   split summary tail
+#' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
+#'   as.data.frame as.list colSums cor decode do.call expand expand.grid head
+#'   lapply match mcols mcols<- merge metadata metadata<- na.omit order rowSums
+#'   setdiff split summary t tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
@@ -51,7 +51,6 @@
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
 #'   new selectMethod setAs setClass setGeneric setMethod setReplaceMethod
 #'   setOldClass setValidity show signature slot slotNames validObject .hasSlot
-#' @importFrom reshape2 melt
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_detect str_dup str_extract str_length str_match

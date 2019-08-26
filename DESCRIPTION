@@ -60,7 +60,6 @@ Imports:
     knitr (>= 1.22),
     magrittr (>= 1.5),
     matrixStats (>= 0.54),
-    reshape2 (>= 1.4),
     scales (>= 1.0),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
