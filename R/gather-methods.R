@@ -34,7 +34,11 @@
 #' methods("gather_")
 #' getS3method("gather", "data.frame", envir = asNamespace("tidyr"))
 #' getS3method("gather_", "data.frame", envir = asNamespace("tidyr"))
+#' tidyr:::melt_dataframe
 #' ```
+#'
+#' https://github.com/tidyverse/tidyr/blob/master/src/melt.cpp
+#' https://github.com/tidyverse/tidyr/blob/master/src/RcppExports.cpp
 #'
 #' reshape2 (deprecated):
 #'
@@ -73,9 +77,14 @@ NULL
 ) {
     assert(
         is.matrix(object),
-        hasColnames(object),
-        hasRownames(object)
+        hasColnames(object)
     )
+    if (is.null(rownames(object))) {
+        rownames(object) <- as.character(seq_len(nrow(object)))
+    }
+    if (is.null(colnames(object))) {
+        colnames(object) <- as.character(seq_len(ncol(object)))
+    }
     dn <- dimnames(object)
     names(dn) <- dimnames
     labels <- DataFrame(expand.grid(
@@ -177,10 +186,10 @@ setMethod(
 
 
 
-## Updated 2019-08-24.
+## Updated 2019-08-26.
 `gather,data.frame` <-  # nolint
     function(object, ...) {
-        assert(requireNamespace("tidyr", quietly = TRUE))
+        requireNamespace("tidyr", quietly = FALSE)
         tidyr::gather(object, ...)
     }
 
@@ -213,42 +222,30 @@ setMethod(
         if (is.null(gatherCols)) {
             gatherCols <- setdiff(colnames(object), c(keyCol, valueCol))
         }
-        assert(isSubset(gatherCols, colnames(object)))
-
-
-        gather_idx <- match(gather_vars, names(data))
-        id_idx <- setdiff(seq_along(data), gather_idx)
-        dup_indx <- match(c(key_var, value_var), names(data))
-        id_idx <- setdiff(id_idx, dup_indx)
-        args <- normalize_melt_arguments(data, gather_idx)
-        valueAsFactor <- "factor" %in% class(args$attr_template)
-
-
-        ## Argh this uses Rcpp internally.
-        out <- melt_dataframe(
-            data,
-            id_idx - 1L,
-            gather_idx - 1L,
-            as.character(key_var),
-            as.character(value_var),
-            args$attr_template,
-            args$factorsAsStrings,
-            as.logical(valueAsFactor),
-            as.logical(factor_key)
+        assert(
+            isSubset(gatherCols, colnames(object)),
+            all(bapply(object[, gatherCols], is.atomic)),
+            hasLength(
+                unlist(unique(lapply(object[, gatherCols], class))),
+                n = 1L
+            )
         )
-        if (na.rm && anyNA(out)) {
-            missing <- is.na(out[[value_var]])
-            out <- out[!missing, ]
-        }
-        if (convert) {
-            out[[key_var]] <- type.convert(as.character(out[[key_var]]),
-                                           as.is = TRUE)
-        }
-        reconstruct_tibble(data, out, gather_vars)
+        .gatherMatrix(
+            object = as.matrix(object[, gatherCols]),
+            dimnames = c("rowname", keyCol),
+            valueCol = valueCol
+        )
     }
 
-## FIXME Only allow atomic columns.
-## FIXME Consider using this internally for matrix.
+
+
+#' @rdname gather
+#' @export
+setMethod(
+    f = "gather",
+    signature = signature("DataFrame"),
+    definition = `gather,DataFrame`
+)
 
 
 
@@ -286,7 +283,7 @@ setMethod(
         ## Get the sample metadata.
         sampleData <- sampleData(object)
         sampleData[["colname"]] <- rownames(sampleData)
-        data <- left_join(data, sampleData, by = "colname")
+        data <- leftJoin(data, sampleData, by = "colname")
         data <- droplevels(data)
         data
     }
@@ -333,7 +330,7 @@ setMethod(
         metrics <- metrics[, keep, drop = FALSE]
         metrics[["colname"]] <- rownames(metrics)
         ## Join the cell-level metadata.
-        data <- left_join(data, metrics, by = "colname")
+        data <- leftJoin(data, metrics, by = "colname")
         data <- droplevels(data)
         data <- encode(data)
         data
