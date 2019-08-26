@@ -403,7 +403,7 @@ setReplaceMethod(
             c("sampleID", setdiff(colnames(colData), colnames(value))),
             drop = FALSE
         ]
-        value <- left_join(colData, value, by = "sampleID")
+        value <- leftJoin(colData, value, by = "sampleID")
         assert(is(value, "DataFrame"), hasRownames(value))
         colData(object) <- value
         object
