@@ -13,27 +13,32 @@
 \usage{
 gather(object, ...)
 
-\S4method{gather}{matrix}(object, min = NULL, minMethod = c("perRow",
-  "absolute"), trans = c("identity", "log2", "log10"))
+\S4method{gather}{matrix}(object, colnames = c("rowname", "colname",
+  "value"), min = NULL, minMethod = c("perRow", "absolute"),
+  trans = c("identity", "log2", "log10"))
 
-\S4method{gather}{Matrix}(object, min = NULL, minMethod = c("perRow",
-  "absolute"), trans = c("identity", "log2", "log10"))
+\S4method{gather}{Matrix}(object, colnames = c("rowname", "colname",
+  "value"), min = NULL, minMethod = c("perRow", "absolute"),
+  trans = c("identity", "log2", "log10"))
 
 \S4method{gather}{data.frame}(object, ...)
 
-\S4method{gather}{DataFrame}(object, keyCol = "key",
-  valueCol = "value", gatherCols = NULL)
+\S4method{gather}{DataFrame}(object, colnames = c("rowname", "colname",
+  "value"))
 
 \S4method{gather}{SummarizedExperiment}(object, assay = 1L, min = NULL,
   minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
-  "log10"))
+  "log10"), colnames = c("rowname", "colname", "value"))
 
 \S4method{gather}{SingleCellExperiment}(object, assay = 1L, min = NULL,
   minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
-  "log10"))
+  "log10"), colnames = c("rowname", "colname", "value"))
 }
 \arguments{
 \item{object}{Object.}
+
+\item{colnames}{\code{character(3)}.
+Column name mappings for melted data frame return.}
 
 \item{min}{\code{integer(1)} or \code{NULL}.
 Minimum count threshold to apply. Filters using "greater than or equal to"
@@ -41,6 +46,7 @@ logic internally. Note that this threshold gets applied prior to
 logarithmic transformation, when \code{trans} argument applies.}
 
 \item{minMethod}{\code{character(1)}.
+Only applies when \code{min} argument is numeric.
 Uses \code{\link[base:match.arg]{match.arg()}}.
 \itemize{
 \item \code{perRow}: \emph{Recommended}. Applies cutoff per row (i.e. gene).
@@ -67,7 +73,7 @@ Gather columns into key-value pairs
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{data.frame}: Passes to \code{tidyr::gather()}.
+\item \code{data.frame}: Method passes to \code{tidyr::gather()}.
 }}
 
 \note{

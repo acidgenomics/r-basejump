@@ -3,11 +3,14 @@
 #' @note Updated 2019-08-26.
 #'
 #' @inheritParams acidroxygen::params
+#' @param colnames `character(3)`.
+#'   Column name mappings for melted data frame return.
 #' @param min `integer(1)` or `NULL`.
 #'   Minimum count threshold to apply. Filters using "greater than or equal to"
 #'   logic internally. Note that this threshold gets applied prior to
 #'   logarithmic transformation, when `trans` argument applies.
 #' @param minMethod `character(1)`.
+#'   Only applies when `min` argument is numeric.
 #'   Uses [`match.arg()`][base::match.arg].
 #'
 #'   - `perRow`: *Recommended*. Applies cutoff per row (i.e. gene).
@@ -64,12 +67,17 @@ NULL
 
 
 ## Updated 2019-08-26.
-.gatherMatrix <- function(
+.gather <- function(
     object,
-    dimnames = c("rowname", "colname"),
-    valueCol = "value"
+    colnames = c("rowname", "colname", "value")
 ) {
-    assert(hasColnames(object))
+    assert(
+        isAny(object, c("matrix", "Matrix")),
+        hasDims(object),
+        isCharacter(colnames),
+        hasLength(colnames, n = 3L),
+        areDisjointSets(colnames, colnames(object))
+    )
     if (is.null(rownames(object))) {
         rownames(object) <- as.character(seq_len(nrow(object)))
     }
@@ -77,15 +85,15 @@ NULL
         colnames(object) <- as.character(seq_len(ncol(object)))
     }
     dn <- dimnames(object)
-    names(dn) <- dimnames
-    labels <- DataFrame(expand.grid(
+    names(dn) <- colnames[seq_len(2L)]
+    out <- DataFrame(expand.grid(
         dn,
         KEEP.OUT.ATTRS = FALSE,
         stringsAsFactors = TRUE
     ))
     value <- DataFrame(as.vector(object))
-    names(value) <- valueCol
-    out <- cbind(labels, value)
+    names(value) <- colnames[[3L]]
+    out <- cbind(out, value)
     out <- encode(out)
     out
 }
@@ -96,6 +104,7 @@ NULL
 `gather,matrix` <-  # nolint
     function(
         object,
+        colnames = c("rowname", "colname", "value"),
         min = NULL,
         minMethod = c("perRow", "absolute"),
         trans = c("identity", "log2", "log10")
@@ -108,10 +117,7 @@ NULL
         minMethod <- match.arg(minMethod)
         trans <- match.arg(trans)
         if (isInt(min)) {
-            assert(
-                is.numeric(object),
-                isGreaterThanOrEqualTo(min, 1L)
-            )
+            assert(isGreaterThanOrEqualTo(min, 1L))
             if (identical(minMethod, "perRow")) {
                 rowCutoff <- min
             } else {
@@ -120,27 +126,29 @@ NULL
             keep <- rowSums(object) >= rowCutoff
             if (identical(minMethod, "perRow")) {
                 message(sprintf(
-                    "%d / %d %s passed minimum 'rowSums()' >= %s cutoff.",
-                    sum(keep, na.rm = TRUE), nrow(object),
+                    "%d / %d %s passed '%s' >= %s cutoff.",
+                    sum(keep, na.rm = TRUE),
+                    nrow(object),
                     ngettext(
                         n = nrow(object),
                         msg1 = "feature",
                         msg2 = "features"
                     ),
+                    minMethod,
                     rowCutoff
                 ))
             }
             object <- object[keep, , drop = FALSE]
             assert(!any(rowSums(object) == 0L))
         }
-        valueCol <- "value"
-        data <- .gatherMatrix(object, valueCol = valueCol)
+        valueCol <- colnames[[3L]]
+        data <- .gather(object = object, colnames = colnames)
         if (isInt(min) && identical(minMethod, "absolute")) {
             nPrefilter <- nrow(data)
             keep <- data[[valueCol]] >= min
             data <- data[keep, , drop = FALSE]
             message(sprintf(
-                "%d / %d melted %s passed minimum >= %d expression cutoff.",
+                "%d / %d %s passed '%s' >= %d expression cutoff.",
                 nrow(data),
                 nPrefilter,
                 ngettext(
@@ -148,6 +156,7 @@ NULL
                     msg1 = "feature",
                     msg2 = "features"
                 ),
+                minMethod,
                 min
             ))
         }
@@ -207,7 +216,7 @@ setMethod(
 
 
 
-#' @describeIn gather Passes to `tidyr::gather()`.
+#' @describeIn gather Method passes to `tidyr::gather()`.
 #' @export
 setMethod(
     f = "gather",
@@ -221,32 +230,14 @@ setMethod(
 `gather,DataFrame` <-  # nolint
     function(
         object,
-        keyCol = "key",
-        valueCol = "value",
-        gatherCols = NULL
+        colnames = c("rowname", "colname", "value")
     ) {
         assert(
             hasColnames(object),
-            isString(keyCol),
-            isString(valueCol),
-            areDisjointSets(c(keyCol, valueCol), colnames(object))
+            all(bapply(object, is.atomic)),
+            hasLength(unlist(unique(lapply(object, class))), n = 1L)
         )
-        if (is.null(gatherCols)) {
-            gatherCols <- setdiff(colnames(object), c(keyCol, valueCol))
-        }
-        assert(
-            isSubset(gatherCols, colnames(object)),
-            all(bapply(object[, gatherCols], is.atomic)),
-            hasLength(
-                unlist(unique(lapply(object[, gatherCols], class))),
-                n = 1L
-            )
-        )
-        .gatherMatrix(
-            object = as.matrix(object[, gatherCols]),
-            dimnames = c("rowname", keyCol),
-            valueCol = valueCol
-        )
+        .gather(object = as.matrix(object), colnames = colnames)
     }
 
 
@@ -274,28 +265,24 @@ setMethod(
         assert(isScalar(assay))
         minMethod <- match.arg(minMethod)
         trans <- match.arg(trans)
-        ## Prepare the count matrix.
         counts <- assay(object, i = assay)
-        assert(hasLength(counts))
-        counts <- as.matrix(counts)
-        ## Passing to matrix method.
         data <- gather(
             object = counts,
+            colnames = colnames,
             min = min,
             minMethod = minMethod,
             trans = trans
         )
-        ## Get the sample metadata.
-        sampleData <- sampleData(object)
-        sampleData[["colname"]] <- rownames(sampleData)
-        data <- leftJoin(data, sampleData, by = "colname")
+        colnamesCol <- colnames[[2L]]
+        colData <- sampleData(object)
+        colData[[colnamesCol]] <- rownames(colData)
+        data <- leftJoin(data, colData, by = colnamesCol)
         data <- encode(data)
         data
     }
 
-args <- c("min", "minMethod", "trans")
-formals(`gather,SummarizedExperiment`)[args] <-
-    formals(`gather,matrix`)[args]
+args <- c("colnames", "min", "minMethod", "trans")
+formals(`gather,SummarizedExperiment`)[args] <- formals(`gather,matrix`)[args]
 rm(args)
 
 
@@ -310,32 +297,27 @@ setMethod(
 
 
 
-## Updated 2019-08-24.
+## Updated 2019-08-26.
 `gather,SingleCellExperiment` <-  # nolint
     function(object) {
         validObject(object)
         assert(isScalar(assay))
         minMethod <- match.arg(minMethod)
         trans <- match.arg(trans)
-        ## Prepare the count matrix.
         counts <- assay(object, i = assay)
-        assert(hasLength(counts))
-        ## Note that this will deparse, and can be memory intensive.
-        counts <- as.matrix(counts)
-        ## Passing to matrix method.
         data <- gather(
             object = counts,
+            colnames = colnames,
             min = min,
             minMethod = minMethod,
             trans = trans
         )
-        ## Get the cell-level metrics, which contains sample metadata.
-        metrics <- metrics(object, return = "DataFrame")
-        keep <- which(bapply(metrics, is.factor))
-        metrics <- metrics[, keep, drop = FALSE]
-        metrics[["colname"]] <- rownames(metrics)
-        ## Join the cell-level metadata.
-        data <- leftJoin(data, metrics, by = "colname")
+        colnamesCol <- colnames[[2L]]
+        colData <- metrics(object, return = "DataFrame")
+        keep <- which(bapply(colData, is.factor))
+        colData <- colData[, keep, drop = FALSE]
+        colData[[colnamesCol]] <- rownames(colData)
+        data <- leftJoin(data, colData, by = colnamesCol)
         data <- encode(data)
         data
     }
