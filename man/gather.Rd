@@ -82,10 +82,23 @@ Gather columns into key-value pairs
 Updated 2019-08-26.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
-rse <- RangedSummarizedExperiment
-dim(rse)
-x <- gather(rse, min = NULL)
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+
+## SummarizedExperiment ====
+object <- RangedSummarizedExperiment
+dim(object)
+x <- gather(object)
+nrow(x)
+print(x)
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+dim(object)
+x <- gather(object)
 nrow(x)
 print(x)
 }
