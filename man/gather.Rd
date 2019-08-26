@@ -5,6 +5,7 @@
 \alias{gather}
 \alias{gather,matrix-method}
 \alias{gather,data.frame-method}
+\alias{gather,DataFrame-method}
 \alias{gather,SummarizedExperiment-method}
 \alias{gather,SingleCellExperiment-method}
 \title{Gather columns into key-value pairs}
@@ -15,6 +16,9 @@ gather(object, ...)
   "absolute"), trans = c("identity", "log2", "log10"))
 
 \S4method{gather}{data.frame}(object, ...)
+
+\S4method{gather}{DataFrame}(object, keyCol = "key",
+  valueCol = "value", gatherCols = NULL)
 
 \S4method{gather}{SummarizedExperiment}(object, assay = 1L, min = NULL,
   minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
@@ -78,7 +82,11 @@ tidyr (recommended):\preformatted{methods("gather")
 methods("gather_")
 getS3method("gather", "data.frame", envir = asNamespace("tidyr"))
 getS3method("gather_", "data.frame", envir = asNamespace("tidyr"))
+tidyr:::melt_dataframe
 }
+
+https://github.com/tidyverse/tidyr/blob/master/src/melt.cpp
+https://github.com/tidyverse/tidyr/blob/master/src/RcppExports.cpp
 
 reshape2 (deprecated):\preformatted{help(topic = "melt.array", package = "reshape2")
 methods("melt")
