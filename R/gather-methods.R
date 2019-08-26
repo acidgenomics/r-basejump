@@ -1,5 +1,6 @@
 ## FIXME Deprecating in favor of `gather()`.
 ## FIXME Need to nuke `reshape2::melt()` dependency.
+## FIXME Consider requiring numeric matrix for method.
 
 
 
