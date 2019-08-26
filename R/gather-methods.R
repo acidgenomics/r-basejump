@@ -5,6 +5,8 @@
 #' @inheritParams acidroxygen::params
 #' @param colnames `character(3)`.
 #'   Column name mappings for melted data frame return.
+#'   Currently only applies to `matrix` and `DataFrame` methods.
+#'   Standardized for `SummarizedExperiment` and `SingleCellExperiment`.
 #' @param min `integer(1)` or `NULL`.
 #'   Minimum count threshold to apply. Filters using "greater than or equal to"
 #'   logic internally. Note that this threshold gets applied prior to
@@ -268,12 +270,11 @@ setMethod(
         counts <- assay(object, i = assay)
         data <- gather(
             object = counts,
-            colnames = colnames,
             min = min,
             minMethod = minMethod,
             trans = trans
         )
-        colnamesCol <- colnames[[2L]]
+        colnamesCol <- colnames(data)[[2L]]
         colData <- sampleData(object)
         colData[[colnamesCol]] <- rownames(colData)
         data <- leftJoin(data, colData, by = colnamesCol)
@@ -281,7 +282,7 @@ setMethod(
         data
     }
 
-args <- c("colnames", "min", "minMethod", "trans")
+args <- c("min", "minMethod", "trans")
 formals(`gather,SummarizedExperiment`)[args] <- formals(`gather,matrix`)[args]
 rm(args)
 
@@ -307,12 +308,11 @@ setMethod(
         counts <- assay(object, i = assay)
         data <- gather(
             object = counts,
-            colnames = colnames,
             min = min,
             minMethod = minMethod,
             trans = trans
         )
-        colnamesCol <- colnames[[2L]]
+        colnamesCol <- colnames(data)[[2L]]
         colData <- metrics(object, return = "DataFrame")
         keep <- which(bapply(colData, is.factor))
         colData <- colData[, keep, drop = FALSE]

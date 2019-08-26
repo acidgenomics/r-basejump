@@ -28,17 +28,19 @@ gather(object, ...)
 
 \S4method{gather}{SummarizedExperiment}(object, assay = 1L, min = NULL,
   minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
-  "log10"), colnames = c("rowname", "colname", "value"))
+  "log10"))
 
 \S4method{gather}{SingleCellExperiment}(object, assay = 1L, min = NULL,
   minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
-  "log10"), colnames = c("rowname", "colname", "value"))
+  "log10"))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{colnames}{\code{character(3)}.
-Column name mappings for melted data frame return.}
+Column name mappings for melted data frame return.
+Currently only applies to \code{matrix} and \code{DataFrame} methods.
+Standardized for \code{SummarizedExperiment} and \code{SingleCellExperiment}.}
 
 \item{min}{\code{integer(1)} or \code{NULL}.
 Minimum count threshold to apply. Filters using "greater than or equal to"
