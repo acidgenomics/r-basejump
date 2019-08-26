@@ -4,6 +4,7 @@
 \name{gather}
 \alias{gather}
 \alias{gather,matrix-method}
+\alias{gather,Matrix-method}
 \alias{gather,data.frame-method}
 \alias{gather,DataFrame-method}
 \alias{gather,SummarizedExperiment-method}
@@ -13,6 +14,9 @@
 gather(object, ...)
 
 \S4method{gather}{matrix}(object, min = NULL, minMethod = c("perRow",
+  "absolute"), trans = c("identity", "log2", "log10"))
+
+\S4method{gather}{Matrix}(object, min = NULL, minMethod = c("perRow",
   "absolute"), trans = c("identity", "log2", "log10"))
 
 \S4method{gather}{data.frame}(object, ...)
