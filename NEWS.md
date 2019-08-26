@@ -2,6 +2,10 @@
 
 ### New functions
 
+- `gather`: Added S4 methods for melting data into long format. Provides support
+  for `matrix`, `Matrix`, `DataFrame`, `SummarizedExperiment`, and
+  `SingleCellExperiment` currently. Note that `data.frame` method is currently
+  exported but passes to `tidyr::gather`, to maintain consistency with tidyr.
 - `nonzeroRowsAndCols`: Quickly remove non-zero rows and columns from a matrix
   or `SummarizedExperiment`.
 
