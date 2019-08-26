@@ -46,8 +46,6 @@ NULL
 
 
 
-## FIXME Rethink this.
-
 ## nolint start
 ##
 ## > reshape2::melt(
@@ -71,10 +69,17 @@ NULL
 
 
 
+## tidyr ====
 gather.data.frame <-
-    function(data, key = "key", value = "value", ..., na.rm = FALSE,
-              convert = FALSE, factor_key = FALSE)
-    {
+    function(
+        data,
+        key = "key",
+        value = "value",
+        ...,
+        na.rm = FALSE,
+        convert = FALSE,
+        factor_key = FALSE
+    ) {
         key_var <- as_string(ensym2(key))
         value_var <- as_string(ensym2(value))
         quos <- quos(...)
@@ -158,6 +163,7 @@ reconstruct_tibble <-
 
 
 
+## reshape2 ====
 melt.array <-
     function(
         data,
@@ -195,6 +201,54 @@ melt.array <-
             nm = value.name
         )
         cbind(labels, value_df)
+    }
+
+
+
+melt.data.frame <-
+    function(
+        data,
+        id.vars,
+        measure.vars,
+        variable.name = "variable",
+        ...,
+        na.rm = FALSE,
+        value.name = "value",
+        factorsAsStrings = TRUE
+    ) {
+        vars <- melt_check(
+            data,
+            id.vars,
+            measure.vars,
+            variable.name,
+            value.name
+        )
+        id.ind <- match(vars$id, names(data))
+        measure.ind <- match(vars$measure, names(data))
+        if (!length(measure.ind)) {
+            return(data[id.vars])
+        }
+        args <- normalize_melt_arguments(data, measure.ind, factorsAsStrings)
+        measure.attributes <- args$measure.attributes
+        factorsAsStrings <- args$factorsAsStrings
+        valueAsFactor <- "factor" %in% measure.attributes$class
+        ## FIXME This calls Rcpp.
+        df <- melt_dataframe(
+            data,
+            as.integer(id.ind - 1),
+            as.integer(measure.ind - 1),
+            as.character(variable.name),
+            as.character(value.name),
+            as.pairlist(measure.attributes),
+            as.logical(factorsAsStrings),
+            as.logical(valueAsFactor)
+        )
+        if (na.rm) {
+            return(df[!is.na(df[[value.name]]), ])
+        }
+        else {
+            return(df)
+        }
     }
 
 
@@ -251,54 +305,7 @@ melt_check <-
 
 
 
-melt.data.frame <-
-    function(
-        data,
-        id.vars,
-        measure.vars,
-        variable.name = "variable",
-        ...,
-        na.rm = FALSE,
-        value.name = "value",
-        factorsAsStrings = TRUE
-    ) {
-        vars <- melt_check(
-            data,
-            id.vars,
-            measure.vars,
-            variable.name,
-            value.name
-        )
-        id.ind <- match(vars$id, names(data))
-        measure.ind <- match(vars$measure, names(data))
-        if (!length(measure.ind)) {
-            return(data[id.vars])
-        }
-        args <- normalize_melt_arguments(data, measure.ind, factorsAsStrings)
-        measure.attributes <- args$measure.attributes
-        factorsAsStrings <- args$factorsAsStrings
-        valueAsFactor <- "factor" %in% measure.attributes$class
-        ## FIXME This calls Rcpp.
-        df <- melt_dataframe(
-            data,
-            as.integer(id.ind - 1),
-            as.integer(measure.ind - 1),
-            as.character(variable.name),
-            as.character(value.name),
-            as.pairlist(measure.attributes),
-            as.logical(factorsAsStrings),
-            as.logical(valueAsFactor)
-        )
-        if (na.rm) {
-            return(df[!is.na(df[[value.name]]), ])
-        }
-        else {
-            return(df)
-        }
-    }
-
-
-
+## basejump ====
 .gather <- function(object) {
     stop("IN PROGRESS")
 }
