@@ -11,32 +11,31 @@
 \usage{
 gather(object, ...)
 
-\S4method{gather}{matrix}(object, minCounts = 1L,
-  minCountsMethod = c("perFeature", "absolute"), trans = c("identity",
-  "log2", "log10"))
+\S4method{gather}{matrix}(object, min = NULL, minMethod = c("perRow",
+  "absolute"), trans = c("identity", "log2", "log10"))
 
 \S4method{gather}{data.frame}(object, ...)
 
-\S4method{gather}{SummarizedExperiment}(object, assay = 1L,
-  minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
-  trans = c("identity", "log2", "log10"))
+\S4method{gather}{SummarizedExperiment}(object, assay = 1L, min = NULL,
+  minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
+  "log10"))
 
-\S4method{gather}{SingleCellExperiment}(object, assay = 1L,
-  minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
-  trans = c("identity", "log2", "log10"))
+\S4method{gather}{SingleCellExperiment}(object, assay = 1L, min = NULL,
+  minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
+  "log10"))
 }
 \arguments{
 \item{object}{Object.}
 
-\item{minCounts}{\code{integer(1)} or \code{NULL}.
-Minimum count threshold to apply. Disable with \code{NULL}. Filters using
-"greater than or equal to" logic internally. Note that this threshold gets
-applied prior to logarithmic transformation, when \code{trans} argument applies.}
+\item{min}{\code{integer(1)} or \code{NULL}.
+Minimum count threshold to apply. Filters using "greater than or equal to"
+logic internally. Note that this threshold gets applied prior to
+logarithmic transformation, when \code{trans} argument applies.}
 
-\item{minCountsMethod}{\code{character(1)}.
+\item{minMethod}{\code{character(1)}.
 Uses \code{\link[base:match.arg]{match.arg()}}.
 \itemize{
-\item \code{perFeature}: \emph{Recommended}. Applies cutoff per row feature (i.e. gene).
+\item \code{perRow}: \emph{Recommended}. Applies cutoff per row (i.e. gene).
 Internally, \code{\link[base:rowSums]{rowSums()}} values are checked against this
 cutoff threshold prior to the melt operation.
 \item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
@@ -58,17 +57,32 @@ Assay name or index position.}
 \description{
 Gather columns into key-value pairs
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{data.frame}: Passes to \code{tidyr::gather()}.
+}}
+
 \note{
-Updated 2019-08-24.
+Updated 2019-08-26.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment
 dim(rse)
-x <- gather(rse, minCounts = NULL)
+x <- gather(rse, min = NULL)
 nrow(x)
 print(x)
 }
 \seealso{
-\code{tidyr::gather()}.
+tidyr (recommended):\preformatted{methods("gather")
+methods("gather_")
+getS3method("gather", "data.frame", envir = asNamespace("tidyr"))
+getS3method("gather_", "data.frame", envir = asNamespace("tidyr"))
+}
+
+reshape2 (deprecated):\preformatted{help(topic = "melt.array", package = "reshape2")
+methods("melt")
+getS3method("melt", "data.array", envir = asNamespace("tidyr"))
+getS3method("melt", "data.frame", envir = asNamespace("tidyr"))
+}
 }
