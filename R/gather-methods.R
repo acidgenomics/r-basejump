@@ -6,7 +6,7 @@
 
 #' @name gather
 #' @inherit bioverbs::gather
-#' @note Updated 2019-08-24.
+#' @note Updated 2019-08-26.
 #'
 #' @inheritParams acidroxygen::params
 #' @param minCounts `integer(1)` or `NULL`.
@@ -281,7 +281,7 @@ melt.data.frame <-
 
 
 
-## Updated 2019-08-24.
+## Updated 2019-08-26.
 `gather,matrix` <-  # nolint
     function(
         object,
@@ -289,8 +289,10 @@ melt.data.frame <-
         minCountsMethod = c("perFeature", "absolute"),
         trans = c("identity", "log2", "log10")
     ) {
-        validObject(object)
-        assert(isInt(minCounts, nullOK = TRUE))
+        assert(
+            is.numeric(object),
+            isInt(minCounts, nullOK = TRUE)
+        )
         minCountsMethod <- match.arg(minCountsMethod)
         trans <- match.arg(trans)
         ## Filter rows that don't pass our `minCounts` expression cutoff. Note
