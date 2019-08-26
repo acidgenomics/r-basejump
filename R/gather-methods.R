@@ -118,6 +118,30 @@ gather.data.frame <-
 
 
 
+normalize_melt_arguments <-
+    function(data, measure.ind) {
+        measure.attributes <- map(measure.ind, function(i) {
+            attributes(data[[i]])
+        })
+        measure.attrs.equal <- all_identical(measure.attributes)
+        if (measure.attrs.equal) {
+            attr_template <- data[[measure.ind[1]]]
+        }
+        else {
+            warn(glue(
+                "attributes are not identical across measure variables;\n       they will be dropped"
+            ))
+            attr_template <- NULL
+        }
+        any.factors <- any(map_lgl(measure.ind, function(i) is.factor(data[[i]])))
+        if (any.factors) {
+            attr_template <- NULL
+        }
+        list(attr_template = attr_template, factorsAsStrings = TRUE)
+    }
+
+
+
 reconstruct_tibble <-
     function(input, output, ungrouped_vars = chr())
     {
