@@ -1,43 +1,48 @@
-## FIXME Rename to gather.
+context("melt")
 
-context("meltCounts")
-
-test_that("SummarizedExperiment", {
-    x <- meltCounts(rse)
-    expect_s4_class(x, "DataFrame")
-})
+with_parameters_test_that(
+    "Default", {
+        x <- melt(object)
+        expect_s4_class(x, "DataFrame")
+    },
+    object = list(
+        matrix = mat,
+        Matrix = sparse,
+        DataFrame = df,
+        SummarizedExperiment = rse,
+        SingleCellExperiment = sce
+    )
+)
 
 ## Here we're checking the handling of zero count genes.
-test_that("minCounts", {
+test_that("min", {
     object <- rse
     assay(object)[seq_len(2L), ] <- 0L
-    x <- meltCounts(object, minCounts = 1L)
-
+    x <- melt(object, min = 1L)
     ## Check for removal of our all-zero gene.
     expect_identical(
         object = setdiff(x = rownames(object), y = unique(x[["rowname"]])),
         expected = head(rownames(object), n = 2L)
     )
     ## Note that this step shouldn't drop all zeros, only all-zero genes.
-    expect_true(any(x[["counts"]] == 0L))
+    expect_true(any(x[["value"]] == 0L))
 })
 
 test_that("Require at least 1 count per feature", {
     expect_error(
-        object = meltCounts(rse, minCounts = 0L),
+        object = melt(rse, min = 0L),
         regexp = "less than 1"
     )
 })
 
-trans <- eval(formals(`meltCounts,SummarizedExperiment`)[["trans"]])
+trans <- eval(formals(`melt,SummarizedExperiment`)[["trans"]])
 with_parameters_test_that(
     "trans", {
-        x <- meltCounts(rse, trans = trans)
-        expect_s4_class(x, "DataFrame")
-        expect_identical(
-            object = round(head(x[["counts"]]), digits = 3L),
-            expected = expected
-        )
+        object <- rse
+        object <- melt(object, min = 1L, trans = trans)
+        expect_s4_class(object, "DataFrame")
+        object <- decode(round(head(object[["value"]]), digits = 3L))
+        expect_identical(object, expected)
     },
     trans = trans,
     expected = list(
