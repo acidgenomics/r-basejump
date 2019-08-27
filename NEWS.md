@@ -10,6 +10,10 @@ Updated R dependency to 3.6.
 - `nonzeroRowsAndCols`: Quickly remove non-zero rows and columns from a matrix
   or `SummarizedExperiment`.
 
+### Major changes
+
+- Migrated `EggNOG` and `PANTHER` S4 classes to separate packages.
+
 ### Minor changes
 
 - `calculateMetrics`: Now calls `nonzeroRowsAndCols` internally first when
