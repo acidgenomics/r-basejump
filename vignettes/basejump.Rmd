@@ -205,47 +205,6 @@ head(rownames(rse_genes))
 
 To convert from transcript- to gene-level easily, the `convertTranscriptsToGenes()` and `stripTranscriptVersions()` functions are also provided (not shown).
 
-## Query external annotation databases
-
-In addition to interfacing with [Ensembl][], [basejump][] exports a number of utility functions to interface with other genomic databases, including:
-
-- [EggNOG][] [@Huerta-Cepas2016-ql].
-- [HGNC][] [@Yates2017-fq].
-- [MGI][] [@Smith2018-ds].
-- [PANTHER][] [@Mi2017-jl].
-
-### HGNC
-
-```{r}
-hgnc2gene <- HGNC2Ensembl()
-summary(hgnc2gene)
-```
-
-### MGI
-
-```{r}
-mgi2ensembl <- MGI2Ensembl()
-summary(mgi2ensembl)
-```
-
-### EggNOG
-
-```{r}
-eggnog <- EggNOG()
-summary(eggnog)
-```
-
-### PANTHER
-
-```{r}
-panther <- PANTHER(organism = "Homo sapiens")
-summary(panther)
-```
-
-### WormBase
-
-Note that for *Caenorhabditis elegans* genome annotations, we recommend additional use of our specialized [wormbase package][r-wormbase], which queries the [WormBase][] database [@Stein2001-mk] directly, and provides support of versioned releases (e.g. WS265) that have additional metadata not currently available on [Ensembl][].
-
 # Import/export functions
 
 FIXME This section is still under development.
