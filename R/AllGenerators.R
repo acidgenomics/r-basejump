@@ -556,9 +556,16 @@ MGI2Ensembl <- function() {  # nolint
 #'
 #' @examples
 #' options(acid.test = TRUE)
-#' x <- PANTHER(organism = "Homo sapiens")
+#' x <- PANTHER(
+#'     organism = "Homo sapiens",
+#'     BPPARAM = BiocParallel::SerialParam()
+#' )
 #' summary(x)
-PANTHER <- function(organism, release = NULL) {  # nolint
+PANTHER <- function(
+    organism,
+    release = NULL,
+    BPPARAM = BiocParallel::SerialParam(progressbar = TRUE)  # nolint
+) {  # nolint
     assert(
         hasInternet(),
         isString(organism)
@@ -646,23 +653,24 @@ PANTHER <- function(organism, release = NULL) {  # nolint
             x <- x[order(x[["pantherSubfamilyID"]]), , drop = FALSE]
             x <- head(x, n = 1L)
             x
-        }
+        },
+        BPPARAM = BPPARAM
     ))
-    data <- unlist(split)
+    data <- unsplit(split, f = unlist(split[, "geneID"]))
     data <- data[order(data[["geneID"]]), , drop = FALSE]
     assert(hasNoDuplicates(data[["geneID"]]))
     message("Splitting and sorting the GO terms.")
-    ## Note that we're using S4 method that works on DataFrame here.
-    data <- mutate_at(
-        .tbl = data,
-        .vars = c(
+    data <- mutateAt(
+        object = data,
+        vars = c(
             "goBP",
             "goCC",
             "goMF",
             "pantherClass",
             "pantherPathway"
         ),
-        .funs = .splitPANTHERTerms
+        fun = .splitPANTHERTerms,
+        BPPARAM = BPPARAM
     )
     ## Sort columns alphabetically.
     data <- data[, sort(colnames(data)), drop = FALSE]
@@ -712,9 +720,11 @@ PANTHER <- function(organism, release = NULL) {  # nolint
 
 
 ## This is CPU intensive, so calling BiocParallel here.
-## Updated 2019-08-16.
-.splitPANTHERTerms <- function(x) {
-    message(sprintf("  - %s", deparse(substitute(x))))
+## Updated 2019-08-27.
+.splitPANTHERTerms <- function(
+    x,
+    BPPARAM  # nolint
+) {
     bplapply(
         X = x,
         FUN = function(x) {
@@ -724,12 +734,13 @@ PANTHER <- function(organism, release = NULL) {  # nolint
             x <- sort(unique(x))
             x <- gsub("#([A-Z0-9:]+)", " [\\1]", x)
             x <- gsub(">", " > ", x)
-            if (length(x) > 0L) {
+            if (hasLength(x)) {
                 x
             } else {
                 NULL
             }
-        }
+        },
+        BPPARAM = BPPARAM
     )
 }
 
