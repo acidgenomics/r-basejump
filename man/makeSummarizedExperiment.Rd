@@ -71,7 +71,7 @@ of transgenes and spike-ins.
 \note{
 Column and rows always return sorted alphabetically.
 
-Updated 2019-08-05.
+Updated 2019-08-27.
 }
 \section{Session information}{
 
