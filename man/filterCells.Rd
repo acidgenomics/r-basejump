@@ -76,7 +76,7 @@ data(SingleCellExperiment, package = "acidtest")
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
 x <- filterCells(object)
-show(x)
+print(x)
 
 ## Per sample cutoffs.
 sampleNames(object)
@@ -84,5 +84,5 @@ x <- filterCells(
     object = object,
     minCounts = c(sample1 = 100L)
 )
-show(x)
+print(x)
 }

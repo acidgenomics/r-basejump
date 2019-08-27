@@ -163,7 +163,6 @@ Collate:
     'sanitizeSampleData.R'
     'selectSamples-methods.R'
     'separator.R'
-    'show-methods.R'
     'showHeader.R'
     'showSlotInfo.R'
     'sizeFactors-methods.R'
