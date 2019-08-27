@@ -1,6 +1,6 @@
 #' @name combine
 #' @inherit BiocGenerics::combine
-#' @note Updated 2019-08-11.
+#' @note Updated 2019-08-27.
 #'
 #' @param ... Additional arguments.
 #'
@@ -25,12 +25,10 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #' str_pad <- stringr::str_pad
 #'
 #' ## SummarizedExperiment ====
-#' x <- rse
+#' x <- RangedSummarizedExperiment
 #' colnames(x) <- paste0(
 #'     "sample",
 #'     str_pad(
@@ -56,7 +54,7 @@
 #' print(c)
 #'
 #' ## SingleCellExperiment ====
-#' x <- sce
+#' x <- SingleCellExperiment
 #' colnames(x) <- paste0(
 #'     "cell",
 #'     str_pad(
@@ -93,12 +91,11 @@ NULL
 
 
 
-## Updated 2019-08-05.
+## Updated 2019-08-27.
 `combine,SummarizedExperiment` <-  # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
-
         assert(
             identical(class(x), class(y)),
             identical(assayNames(x), assayNames(y)),
@@ -109,7 +106,6 @@ NULL
             ## misleading.
             identical(rownames(x), rownames(y))
         )
-
         ## Coerce the objects to SummarizedExperiment.
         ## Keep as RSE if the data is ranged.
         if (is(x, "RangedSummarizedExperiment")) {
@@ -202,7 +198,6 @@ NULL
         message("Updating metadata.")
         mx <- metadata(x)
         my <- metadata(y)
-
         ## We're keeping only metadata elements that are common in both objects.
         keep <- intersect(names(mx), names(my))
         if (!isTRUE(setequal(x = names(mx), y = names(my)))) {
@@ -220,7 +215,6 @@ NULL
         }
         mx <- mx[keep]
         my <- my[keep]
-
         ## Keep only metadata that is identical across both objects.
         keep <- mapply(
             x = mx,
@@ -243,7 +237,6 @@ NULL
             ))
         }
         assert(identical(x = mx[keep], y = my[keep]))
-
         metadata <- mx[keep]
         metadata[["combine"]] <- TRUE
         metadata <- Filter(Negate(is.null), metadata)
@@ -257,9 +250,9 @@ NULL
             metadata = metadata
         )
         args <- Filter(Negate(is.null), args)
-        se <- do.call(what = makeSummarizedExperiment, args = args)
-        validObject(se)
-        se
+        out <- do.call(what = SummarizedExperiment, args = args)
+        validObject(out)
+        out
     }
 
 
@@ -277,27 +270,16 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-08-27.
 `combine,SingleCellExperiment` <-  # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
-        ## Coerce to RSE and use combine method.
-        class <- "RangedSummarizedExperiment"
-        rse <- combine(
-            x = as(object = x, Class = class),
-            y = as(object = y, Class = class)
-        )
+        x <- as(object = x, Class = "RangedSummarizedExperiment")
+        y <- as(object = y, Class = "RangedSummarizedExperiment")
+        rse <- combine(x = x, y = y)
         validObject(rse)
-        ## Make SCE from RSE.
-        ## Note that standard SCE `as()` coercion method doesn't return valid.
-        sce <- makeSingleCellExperiment(
-            assays = assays(rse),
-            rowRanges = rowRanges(rse),
-            colData = colData(rse),
-            metadata = metadata(rse),
-            spikeNames = spikeNames(x)
-        )
+        sce <- as(rse, "SingleCellExperiment")
         validObject(sce)
         sce
     }

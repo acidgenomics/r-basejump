@@ -45,7 +45,7 @@ There are two basic combine strategies. One is an intersection
   let us know if there are features that you require.
 }
 \note{
-Updated 2019-08-11.
+Updated 2019-08-27.
 
 We're attempting to make this as strict as possible, requiring:
 \itemize{
@@ -96,12 +96,10 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 str_pad <- stringr::str_pad
 
 ## SummarizedExperiment ====
-x <- rse
+x <- RangedSummarizedExperiment
 colnames(x) <- paste0(
     "sample",
     str_pad(
@@ -127,7 +125,7 @@ sampleData(c)
 print(c)
 
 ## SingleCellExperiment ====
-x <- sce
+x <- SingleCellExperiment
 colnames(x) <- paste0(
     "cell",
     str_pad(
