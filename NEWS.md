@@ -17,6 +17,11 @@ Updated R dependency to 3.6.
   `SingleCellExperiment` objects. This was added to improve loading of example
   unfiltered 10X Genomics Chromium data.
 
+### Deprecations
+
+- Deprecated `readSampleData` and `readTx2Gene` in favor of `importSampleData`
+  and `importTx2Gene`, respectively.
+
 ## basejump 0.11.10 (2019-08-22)
 
 ### Minor changes

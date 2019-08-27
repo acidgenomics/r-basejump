@@ -290,5 +290,22 @@ relevelRowRanges <- function(...) {
 
 
 
+# v0.11.11 =====================================================================
+#' @rdname deprecated
+#' @export
+readSampleData <- function(...) {
+    .Deprecated("importSampleData")
+    importSampleData(...)
+}
+
+#' @rdname deprecated
+#' @export
+readTx2Gene <- function(...) {
+    .Deprecated("importTx2Gene")
+    importTx2Gene(...)
+}
+
+
+
 ## nolint end
 ## nocov end

@@ -1,4 +1,4 @@
-#' Read transcript-to-gene annotations
+#' Import transcript-to-gene annotations
 #'
 #' Generates a `Tx2Gene` object containing `transcriptID` and `geneID` columns.
 #'
@@ -14,14 +14,14 @@
 #'
 #' @examples
 #' file <- file.path(basejumpTestsURL, "tx2gene.csv")
-#' x <- readTx2Gene(
+#' x <- importTx2Gene(
 #'     file = file,
 #'     organism = "Mus musculus",
 #'     genomeBuild = "GRCm38",
 #'     ensemblRelease = 90L
 #' )
 #' print(x)
-readTx2Gene <- function(
+importTx2Gene <- function(
     file,
     organism = NULL,
     genomeBuild = NULL,

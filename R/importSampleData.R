@@ -2,9 +2,9 @@
 
 
 
-#' Read sample metadata
+#' Import sample metadata
 #'
-#' This function reads user-defined sample metadata saved in a spreadsheet.
+#' This function imports user-defined sample metadata saved in a spreadsheet.
 #'
 #' @section bcbio pipeline:
 #'
@@ -57,14 +57,14 @@
 #' @examples
 #' ## Demultiplexed ====
 #' file <- file.path(basejumpTestsURL, "bcbio-metadata-demultiplexed.csv")
-#' x <- readSampleData(file, pipeline = "bcbio")
+#' x <- importSampleData(file, pipeline = "bcbio")
 #' print(x)
 #'
 #' ## Multiplexed ====
 #' file <- file.path(basejumpTestsURL, "bcbio-metadata-multiplexed-indrops.csv")
-#' x <- readSampleData(file, pipeline = "bcbio")
+#' x <- importSampleData(file, pipeline = "bcbio")
 #' print(x)
-readSampleData <- function(
+importSampleData <- function(
     file,
     sheet = 1L,
     lanes = 0L,
@@ -133,7 +133,7 @@ readSampleData <- function(
     } else {
         stop(
             "Sample data input file is malformed.\n",
-            "Refer to 'readSampleData()' for formatting requirements."
+            "Refer to 'importSampleData()' for formatting requirements."
         )
     }
 
@@ -239,7 +239,7 @@ readSampleData <- function(
         return(false(
             paste0(
                 "Blacklisted columns detected: %s.\n",
-                "Refer to 'readSampleData()' for formatting requirements."
+                "Refer to 'importSampleData()' for formatting requirements."
             ),
             toString(intersect)
         ))
@@ -251,7 +251,7 @@ readSampleData <- function(
         return(false(
             paste0(
                 "Required columns missing: %s.\n",
-                "Refer to 'readSampleData()' for formatting requirements."
+                "Refer to 'importSampleData()' for formatting requirements."
             ),
             toString(setdiff)
         ))
