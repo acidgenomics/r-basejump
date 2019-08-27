@@ -48,7 +48,7 @@
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' x <- filterCells(object)
-#' show(x)
+#' print(x)
 #'
 #' ## Per sample cutoffs.
 #' sampleNames(object)
@@ -56,7 +56,7 @@
 #'     object = object,
 #'     minCounts = c(sample1 = 100L)
 #' )
-#' show(x)
+#' print(x)
 NULL
 
 
