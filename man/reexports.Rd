@@ -5,7 +5,6 @@
 \alias{reexports}
 \alias{plotGene}
 \alias{relevel}
-\alias{left_join}
 \alias{GRanges}
 \alias{GRangesList}
 \alias{IRanges}
@@ -152,6 +151,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{relevel}}, \code{\link[transformer]{left_join}}, \code{\link[transformer]{antiJoin}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{fullJoin}}, \code{\link[transformer]{innerJoin}}, \code{\link[transformer]{leftJoin}}, \code{\link[transformer]{mutateAll}}, \code{\link[transformer]{mutateAt}}, \code{\link[transformer]{mutateIf}}, \code{\link[transformer]{rightJoin}}, \code{\link[transformer]{selectIf}}, \code{\link[transformer]{semiJoin}}, \code{\link[transformer]{transmuteAt}}, \code{\link[transformer]{transmuteIf}}}
+  \item{transformer}{\code{\link[transformer]{relevel}}, \code{\link[transformer]{antiJoin}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{fullJoin}}, \code{\link[transformer]{innerJoin}}, \code{\link[transformer]{leftJoin}}, \code{\link[transformer]{mutateAll}}, \code{\link[transformer]{mutateAt}}, \code{\link[transformer]{mutateIf}}, \code{\link[transformer]{rightJoin}}, \code{\link[transformer]{selectIf}}, \code{\link[transformer]{semiJoin}}, \code{\link[transformer]{transmuteAt}}, \code{\link[transformer]{transmuteIf}}}
 }}
 

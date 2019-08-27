@@ -290,12 +290,5 @@ relevelRowRanges <- function(...) {
 
 
 
-# v0.11.11 =====================================================================
-#' @importFrom transformer left_join
-#' @export
-transformer::left_join
-
-
-
 ## nolint end
 ## nocov end
