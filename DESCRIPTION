@@ -176,5 +176,4 @@ Collate:
     'topCellsPerSample-methods.R'
     'tpm-methods.R'
     'uniteInterestingGroups-methods.R'
-    'unsplit-methods.R'
     'zerosVsDepth-methods.R'

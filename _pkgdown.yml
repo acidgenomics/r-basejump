@@ -27,7 +27,6 @@ reference:
   - title: Counts
     contents:
       - counts
-      - meltCounts
       - tpm
   - title: Quality control
     contents:
@@ -78,6 +77,7 @@ reference:
       - estimateSizeFactors
       - geometricMean
       - logRatio
+      - melt
       - pseudobulk
       - rankedMatrix
       - sizeFactors

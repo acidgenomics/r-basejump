@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.11</span>
       </span>
     </div>
 
@@ -116,9 +116,9 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-0-2018-08-07" class="anchor"></a>basejump 0.7.0 (2018-08-07)</h2>
 <p>In this release, we are migrating some of the S4 generics previously exported in the <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package. We are consolidating these functions here for simplicity and stability.</p>
-<div id="new-functions-13" class="section level3">
+<div id="new-functions-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-13" class="anchor"></a>New functions</h3>
+<a href="#new-functions-14" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>makeSummarizedExperiment</code>: Renamed <code>prepareSummarizedExperiment</code>, previously exported in the <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package. We are using the <code>make</code> prefix here for consistency (see other gene annotation functions).</li>
@@ -137,9 +137,9 @@
     <div id="basejump-0-7-1-2018-08-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-1-2018-08-18" class="anchor"></a>basejump 0.7.1 (2018-08-18)</h2>
-<div id="new-functions-12" class="section level3">
+<div id="new-functions-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-12" class="anchor"></a>New functions</h3>
+<a href="#new-functions-13" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>cleanSystemLibrary</code>: Utility function to check whether a user has installed packages into the <a href="https://www.r-project.org/">R</a> system library. Refer to <code>.libPaths</code> documentation for more information on library paths.</li>
@@ -152,9 +152,9 @@
 <li>Now using <code>build</code> instead of <code>genomeBuild</code> for <a href="https://www.ensembl.org/">Ensembl</a> annotation functions. The <code>genomeBuild</code> argument still works but now will inform the user about the change.</li>
 </ul>
 </div>
-<div id="minor-changes-44" class="section level3">
+<div id="minor-changes-46" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-44" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-46" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code>prepareTemplate</code> from <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package. Simplifed this function to copy all files inside <code>extdata/rmarkdown/shared</code> within a specified package. Currently in use for <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, <a href="https://bioinformatics.sph.harvard.edu/bcbioSingleCell/">bcbioSingleCell</a>, and the new <a href="https://pointillism.acidgenomics.com/">pointillism</a> clustering package.</li>
 <li>Made <a href="https://www.ensembl.org/">Ensembl</a> release matching stricter, based on the metadata columns.</li>
@@ -164,9 +164,9 @@
     <div id="basejump-0-7-2-2018-08-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-2-2018-08-29" class="anchor"></a>basejump 0.7.2 (2018-08-29)</h2>
-<div id="new-functions-11" class="section level3">
+<div id="new-functions-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-11" class="anchor"></a>New functions</h3>
+<a href="#new-functions-12" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>assertAllAreURL</code>.</li>
@@ -187,9 +187,9 @@
 <code>saveData</code> now supports <code>basejump.save.ext</code> and <code>basejump.save.compress</code> global options, so the desired file type (e.g. RDS instead of RDA) and compression (e.g. xz instead of gzip) can be easily specified for an entire project.</li>
 </ul>
 </div>
-<div id="minor-changes-43" class="section level3">
+<div id="minor-changes-45" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-43" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-45" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>sampleNames</code> now supports assignment for <code>SummarizedExperiment</code> method.</li>
