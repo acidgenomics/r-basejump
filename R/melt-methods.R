@@ -1,6 +1,6 @@
-#' @name gather
-#' @inherit bioverbs::gather
-#' @note Updated 2019-08-26.
+#' @name melt
+#' @inherit bioverbs::melt
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param colnames `character(3)`.
@@ -26,7 +26,7 @@
 #' @param ... Additional arguments.
 #'
 #' @seealso
-#' tidyr (recommended):
+#' tidyr:
 #'
 #' ```r
 #' methods("gather")
@@ -58,31 +58,31 @@
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' dim(object)
-#' x <- gather(object)
+#' x <- melt(object)
 #' nrow(x)
 #' print(x)
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' dim(object)
-#' x <- gather(object)
+#' x <- melt(object)
 #' nrow(x)
 #' print(x)
 NULL
 
 
 
-#' @rdname gather
-#' @name gather
-#' @importFrom bioverbs gather
-#' @usage gather(object, ...)
+#' @rdname melt
+#' @name melt
+#' @importFrom bioverbs melt
+#' @usage melt(object, ...)
 #' @export
 NULL
 
 
 
 ## Updated 2019-08-26.
-.gather <- function(
+.melt <- function(
     object,
     colnames = c("rowname", "colname", "value")
 ) {
@@ -116,7 +116,7 @@ NULL
 
 
 ## Updated 2019-08-26.
-`gather,matrix` <-  # nolint
+`melt,matrix` <-  # nolint
     function(
         object,
         colnames = c("rowname", "colname", "value"),
@@ -157,7 +157,7 @@ NULL
             assert(!any(rowSums(object) == 0L))
         }
         valueCol <- colnames[[3L]]
-        data <- .gather(object = object, colnames = colnames)
+        data <- .melt(object = object, colnames = colnames)
         if (isInt(min) && identical(minMethod, "absolute")) {
             nPrefilter <- nrow(data)
             keep <- data[[valueCol]] >= min
@@ -193,56 +193,56 @@ NULL
 
 
 
-#' @rdname gather
+#' @rdname melt
 #' @export
 setMethod(
-    f = "gather",
+    f = "melt",
     signature = signature("matrix"),
-    definition = `gather,matrix`
+    definition = `melt,matrix`
 )
 
 
 
 ## Updated 2019-08-26.
-`gather,Matrix` <-  # nolint
+`melt,Matrix` <-  # nolint
     appendToBody(
-        fun = `gather,matrix`,
+        fun = `melt,matrix`,
         values = quote(rowSums <- Matrix::rowSums)
     )
 
 
 
-#' @rdname gather
+#' @rdname melt
 #' @export
 setMethod(
-    f = "gather",
+    f = "melt",
     signature = signature("Matrix"),
-    definition = `gather,Matrix`
+    definition = `melt,Matrix`
 )
 
 
 
 ## Updated 2019-08-26.
-`gather,data.frame` <-  # nolint
+`melt,data.frame` <-  # nolint
     function(object, ...) {
         requireNamespace("tidyr", quietly = FALSE)
-        tidyr::gather(object, ...)
+        tidyr::melt(object, ...)
     }
 
 
 
-#' @describeIn gather Method passes to `tidyr::gather()`.
+#' @describeIn melt Method passes to `tidyr::melt()`.
 #' @export
 setMethod(
-    f = "gather",
+    f = "melt",
     signature = signature("data.frame"),
-    definition = `gather,data.frame`
+    definition = `melt,data.frame`
 )
 
 
 
 ## Updated 2019-08-26.
-`gather,DataFrame` <-  # nolint
+`melt,DataFrame` <-  # nolint
     function(
         object,
         colnames = c("rowname", "colname", "value")
@@ -252,23 +252,23 @@ setMethod(
             all(bapply(object, is.atomic)),
             hasLength(unlist(unique(lapply(object, class))), n = 1L)
         )
-        .gather(object = as.matrix(object), colnames = colnames)
+        .melt(object = as.matrix(object), colnames = colnames)
     }
 
 
 
-#' @rdname gather
+#' @rdname melt
 #' @export
 setMethod(
-    f = "gather",
+    f = "melt",
     signature = signature("DataFrame"),
-    definition = `gather,DataFrame`
+    definition = `melt,DataFrame`
 )
 
 
 
 ## Updated 2019-08-24.
-`gather,SummarizedExperiment` <-  # nolint
+`melt,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -281,7 +281,7 @@ setMethod(
         minMethod <- match.arg(minMethod)
         trans <- match.arg(trans)
         counts <- assay(object, i = assay)
-        data <- gather(
+        data <- melt(
             object = counts,
             min = min,
             minMethod = minMethod,
@@ -296,30 +296,30 @@ setMethod(
     }
 
 args <- c("min", "minMethod", "trans")
-formals(`gather,SummarizedExperiment`)[args] <- formals(`gather,matrix`)[args]
+formals(`melt,SummarizedExperiment`)[args] <- formals(`melt,matrix`)[args]
 rm(args)
 
 
 
-#' @rdname gather
+#' @rdname melt
 #' @export
 setMethod(
-    f = "gather",
+    f = "melt",
     signature = signature("SummarizedExperiment"),
-    definition = `gather,SummarizedExperiment`
+    definition = `melt,SummarizedExperiment`
 )
 
 
 
 ## Updated 2019-08-26.
-`gather,SingleCellExperiment` <-  # nolint
+`melt,SingleCellExperiment` <-  # nolint
     function(object) {
         validObject(object)
         assert(isScalar(assay))
         minMethod <- match.arg(minMethod)
         trans <- match.arg(trans)
         counts <- assay(object, i = assay)
-        data <- gather(
+        data <- melt(
             object = counts,
             min = min,
             minMethod = minMethod,
@@ -335,15 +335,15 @@ setMethod(
         data
     }
 
-formals(`gather,SingleCellExperiment`) <-
-    formals(`gather,SummarizedExperiment`)
+formals(`melt,SingleCellExperiment`) <-
+    formals(`melt,SummarizedExperiment`)
 
 
 
-#' @rdname gather
+#' @rdname melt
 #' @export
 setMethod(
-    f = "gather",
+    f = "melt",
     signature = signature("SingleCellExperiment"),
-    definition = `gather,SingleCellExperiment`
+    definition = `melt,SingleCellExperiment`
 )
