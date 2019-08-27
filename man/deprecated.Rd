@@ -4,11 +4,6 @@
 \docType{methods}
 \name{deprecated}
 \alias{deprecated}
-\alias{fixNA}
-\alias{initializeDirectory}
-\alias{kables}
-\alias{markdownPlotlist}
-\alias{mdPlotlist}
 \alias{readFileByExtension}
 \alias{readGFF}
 \alias{readGTF}
@@ -19,16 +14,6 @@
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
 \usage{
-fixNA(...)
-
-initializeDirectory(...)
-
-kables(...)
-
-markdownPlotlist(plotlist, ...)
-
-mdPlotlist(plotlist, ...)
-
 readFileByExtension(...)
 
 readGFF(...)
@@ -45,9 +30,6 @@ readTx2Gene(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
-
-\item{plotlist}{\code{list}.
-List containing \code{ggplot} objects.}
 
 \item{object}{Object.}
 
