@@ -18,7 +18,7 @@
 #' @importFrom DelayedArray DelayedArray
 #' @importFrom DelayedMatrixStats colSums2 rowSums2
 #' @importFrom GenomeInfoDb seqnames
-#' @importFrom IRanges DataFrameList SplitDataFrameList
+#' @importFrom IRanges DataFrameList SplitDataFrameList unsplit
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
 #'   as.data.frame as.list colSums cor decode do.call expand expand.grid head
