@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.11</span>
       </span>
     </div>
 
@@ -170,12 +170,10 @@
     <span class='no'>SummarizedExperiment_transcripts</span>,
     <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
 )
-<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='no'>txse</span> <span class='kw'>&lt;-</span> <span class='no'>SummarizedExperiment_transcripts</span>
 
 <span class='co'>## Gene2Symbol ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='no'>rse</span>)
-<span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; genes: 500
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='no'>RangedSummarizedExperiment</span>)
+<span class='fu'>summary</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; genes: 500
 #&gt; symbols: 500
 #&gt; format: makeUnique
 #&gt; organism: Homo sapiens
@@ -185,8 +183,8 @@
 #&gt; version: 0.2.0
 #&gt; date: 2019-07-29</div><div class='input'>
 <span class='co'>## Tx2Gene ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Tx2Gene.html'>Tx2Gene</a></span>(<span class='no'>txse</span>)
-<span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; transcripts: 6
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Tx2Gene.html'>Tx2Gene</a></span>(<span class='no'>SummarizedExperiment_transcripts</span>)
+<span class='fu'>summary</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; transcripts: 6
 #&gt; genes: 2
 #&gt; organism: Homo sapiens
 #&gt; genomeBuild: GRCh38
