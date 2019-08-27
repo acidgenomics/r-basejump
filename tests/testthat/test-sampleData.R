@@ -14,7 +14,10 @@ test_that("Return", {
     ## nolint start
     ##
     ## Bioc 3.10 is inconsistently returning "DFrame" and/or "DataFrame".
-    ## https://github.com/Bioconductor/S4Vectors/blob/master/R/DataFrame-class.R#L20
+    ##
+    ## See also:
+    ## - https://github.com/Bioconductor/S4Vectors/blob/master/R/DataFrame-class.R#L20
+    ## - https://github.com/Bioconductor/S4Vectors/issues/50
     ##
     ## DataFrame to DFrame class migration:
     ##
