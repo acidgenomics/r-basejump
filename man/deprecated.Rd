@@ -14,6 +14,8 @@
 \alias{readGTF}
 \alias{readJSON}
 \alias{readYAML}
+\alias{readSampleData}
+\alias{readTx2Gene}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
 \usage{
@@ -36,6 +38,10 @@ readGTF(...)
 readJSON(...)
 
 readYAML(...)
+
+readSampleData(...)
+
+readTx2Gene(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
