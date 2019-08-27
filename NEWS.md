@@ -1,4 +1,6 @@
-## basejump 0.11.11 (2019-08-23)
+## basejump 0.11.11 (2019-08-26)
+
+Updated R dependency to 3.6.
 
 ### New functions
 

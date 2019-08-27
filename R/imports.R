@@ -38,7 +38,7 @@
 #'   appendToBody areDisjointSets areIntersectingSets areSameLength areSetEqual
 #'   assert bapply containsAURL false getNameInParent hasColnames hasCols
 #'   hasDims hasInternet hasLength hasMetrics hasNames hasNoDuplicates
-#'   hasNonZeroRowsAndCols hasRows hasRownames hasSubset hasUniqueCols
+#'   hasNonzeroRowsAndCols hasRows hasRownames hasSubset hasUniqueCols
 #'   hasValidDimnames hasValidNames isADirectory isAFile isAlpha isAny
 #'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
 #'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange isInt
