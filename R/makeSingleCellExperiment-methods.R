@@ -3,7 +3,7 @@
 #' @name makeSingleCellExperiment
 #' @include makeSummarizedExperiment-methods.R
 #' @inherit makeSummarizedExperiment
-#' @note Updated 2019-08-22.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -32,13 +32,13 @@ NULL
 
 
 
-## Updated 2019-08-22.
+## Updated 2019-08-27.
 `makeSingleCellExperiment,SimpleList` <- function(
     assays,
-    rowRanges,
-    colData,
-    metadata,
-    reducedDims,
+    rowRanges = GRangesList(),
+    colData = DataFrame(),
+    metadata = list(),
+    reducedDims = SimpleList(),
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
@@ -87,13 +87,6 @@ NULL
     validObject(sce)
     sce
 }
-
-args <- c("rowRanges", "colData", "metadata")
-formals(`makeSingleCellExperiment,SimpleList`)[args] <-
-    formals(`makeSummarizedExperiment,SimpleList`)[args]
-args <- "reducedDims"
-formals(`makeSingleCellExperiment,SimpleList`)[args] <-
-    formals(SingleCellExperiment)[args]
 
 
 
