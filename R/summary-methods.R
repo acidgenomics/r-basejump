@@ -2,6 +2,7 @@
 #'
 #' @name summary
 #' @inherit base::summary description references
+#' @keywords internal
 #' @note Updated 2019-07-28.
 #'
 #' @inheritParams acidroxygen::params
@@ -15,16 +16,14 @@
 #'     SummarizedExperiment_transcripts,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' txse <- SummarizedExperiment_transcripts
 #'
 #' ## Gene2Symbol ====
-#' x <- Gene2Symbol(rse)
-#' summary(x)
+#' object <- Gene2Symbol(RangedSummarizedExperiment)
+#' summary(object)
 #'
 #' ## Tx2Gene ====
-#' x <- Tx2Gene(txse)
-#' summary(x)
+#' object <- Tx2Gene(SummarizedExperiment_transcripts)
+#' summary(object)
 NULL
 
 

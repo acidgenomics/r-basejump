@@ -11,8 +11,6 @@ reference:
   - title: S4 classes
     contents:
       - matches("^[A-Z]")
-      - show
-      - summary
   - title: Genome annotations
     contents:
       - geneSynonyms

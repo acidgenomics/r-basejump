@@ -36,19 +36,18 @@ data(
     SummarizedExperiment_transcripts,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-txse <- SummarizedExperiment_transcripts
 
 ## Gene2Symbol ====
-x <- Gene2Symbol(rse)
-summary(x)
+object <- Gene2Symbol(RangedSummarizedExperiment)
+summary(object)
 
 ## Tx2Gene ====
-x <- Tx2Gene(txse)
-summary(x)
+object <- Tx2Gene(SummarizedExperiment_transcripts)
+summary(object)
 }
 \references{
 Chambers, J. M. and Hastie, T. J. (1992)
   \emph{Statistical Models in S}.
   Wadsworth & Brooks/Cole.
 }
+\keyword{internal}
