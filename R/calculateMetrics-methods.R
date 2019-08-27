@@ -53,7 +53,7 @@ NULL
         )
         if (isTRUE(prefilter)) {
             originalDim <- dim(object)
-            assert(hasNonZeroRowsAndCols(object))
+            assert(hasNonzeroRowsAndCols(object))
         }
         message(sprintf(
             fmt = "Calculating %d sample %s.",
