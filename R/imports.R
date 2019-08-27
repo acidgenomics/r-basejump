@@ -12,7 +12,7 @@
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
 #' @importFrom AnnotationDbi select
-#' @importFrom BiocGenerics unlist
+#' @importFrom BiocGenerics colSums rowSums unlist
 #' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
 #' @importFrom DelayedArray DelayedArray
@@ -21,9 +21,9 @@
 #' @importFrom IRanges DataFrameList SplitDataFrameList unsplit
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
-#'   as.data.frame as.list colSums cor decode do.call expand expand.grid head
-#'   lapply match mcols mcols<- merge metadata metadata<- na.omit order rowSums
-#'   setdiff split summary t tail
+#'   as.data.frame as.list cor decode do.call expand expand.grid head lapply
+#'   match mcols mcols<- merge metadata metadata<- na.omit order setdiff split
+#'   summary t tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-

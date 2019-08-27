@@ -223,25 +223,6 @@ setMethod(
 
 
 ## Updated 2019-08-26.
-`melt,data.frame` <-  # nolint
-    function(object, ...) {
-        requireNamespace("tidyr", quietly = FALSE)
-        tidyr::melt(object, ...)
-    }
-
-
-
-#' @describeIn melt Method passes to `tidyr::melt()`.
-#' @export
-setMethod(
-    f = "melt",
-    signature = signature("data.frame"),
-    definition = `melt,data.frame`
-)
-
-
-
-## Updated 2019-08-26.
 `melt,DataFrame` <-  # nolint
     function(
         object,

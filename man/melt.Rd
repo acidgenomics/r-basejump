@@ -5,7 +5,6 @@
 \alias{melt}
 \alias{melt,matrix-method}
 \alias{melt,Matrix-method}
-\alias{melt,data.frame-method}
 \alias{melt,DataFrame-method}
 \alias{melt,SummarizedExperiment-method}
 \alias{melt,SingleCellExperiment-method}
@@ -20,8 +19,6 @@ melt(object, ...)
 \S4method{melt}{Matrix}(object, colnames = c("rowname", "colname",
   "value"), min = NULL, minMethod = c("perRow", "absolute"),
   trans = c("identity", "log2", "log10"))
-
-\S4method{melt}{data.frame}(object, ...)
 
 \S4method{melt}{DataFrame}(object, colnames = c("rowname", "colname",
   "value"))
@@ -62,10 +59,10 @@ operation. This applies to all counts, not per feature.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 
-\item{...}{Additional arguments.}
-
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{DataFrame}.
@@ -73,11 +70,6 @@ Assay name or index position.}
 \description{
 Unpivot column data from wide format to long format.
 }
-\section{Methods (by class)}{
-\itemize{
-\item \code{data.frame}: Method passes to \code{tidyr::melt()}.
-}}
-
 \note{
 Updated 2019-08-27.
 }
