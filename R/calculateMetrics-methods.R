@@ -4,7 +4,7 @@
 #'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
 #'   normalized counts here.
-#' @note Updated 2019-08-23.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param prefilter `logical(1)`.
@@ -38,7 +38,7 @@ NULL
 
 
 
-## Updated 2019-08-23.
+## Updated 2019-08-27.
 `calculateMetrics,matrix` <-  # nolint
     function(
         object,
@@ -53,7 +53,7 @@ NULL
         )
         if (isTRUE(prefilter)) {
             originalDim <- dim(object)
-            assert(hasNonzeroRowsAndCols(object))
+            object <- nonzeroRowsAndCols(object)
         }
         message(sprintf(
             fmt = "Calculating %d sample %s.",
@@ -97,7 +97,7 @@ NULL
                 hasRownames(rowData),
                 identical(rownames(rowData), names(rowRanges))
             )
-            if ("broadClass" %in% colnames(rowData)) {
+            if (isSubset("broadClass", colnames(rowData))) {
                 ## Drop rows with NA broad class.
                 keep <- !is.na(rowData[["broadClass"]])
                 assert(is(keep, "Rle"))
