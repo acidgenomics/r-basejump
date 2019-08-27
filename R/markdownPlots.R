@@ -33,7 +33,7 @@ markdownPlots <- function(list, headerLevel = 2L) {
         FUN = function(name, plot, headerLevel) {
             assert(isString(name))
             markdownHeader(name, level = headerLevel, asis = TRUE)
-            show(plot)
+            print(plot)
             plot
         },
         SIMPLIFY = FALSE

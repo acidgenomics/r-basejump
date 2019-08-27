@@ -98,7 +98,7 @@
 \alias{upperCamel}
 \alias{upperCamelCase}
 \alias{tibble}
-\alias{anti_join}
+\alias{antiJoin}
 \alias{as.SummarizedExperiment}
 \alias{as.data.frame}
 \alias{as.data.table}
@@ -109,19 +109,17 @@
 \alias{encode}
 \alias{factorize}
 \alias{flatFiles}
-\alias{full_join}
-\alias{inner_join}
-\alias{left_join}
-\alias{mutate_all}
-\alias{mutate_at}
-\alias{mutate_if}
-\alias{right_join}
-\alias{select_all}
-\alias{select_at}
-\alias{select_if}
-\alias{semi_join}
-\alias{transmute_at}
-\alias{transmute_if}
+\alias{fullJoin}
+\alias{innerJoin}
+\alias{leftJoin}
+\alias{mutateAll}
+\alias{mutateAt}
+\alias{mutateIf}
+\alias{rightJoin}
+\alias{selectIf}
+\alias{semiJoin}
+\alias{transmuteAt}
+\alias{transmuteIf}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -153,6 +151,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{relevel}}, \code{\link[transformer]{anti_join}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{full_join}}, \code{\link[transformer]{inner_join}}, \code{\link[transformer]{left_join}}, \code{\link[transformer]{mutate_all}}, \code{\link[transformer]{mutate_at}}, \code{\link[transformer]{mutate_if}}, \code{\link[transformer]{right_join}}, \code{\link[transformer]{select_all}}, \code{\link[transformer]{select_at}}, \code{\link[transformer]{select_if}}, \code{\link[transformer]{semi_join}}, \code{\link[transformer]{transmute_at}}, \code{\link[transformer]{transmute_if}}}
+  \item{transformer}{\code{\link[transformer]{relevel}}, \code{\link[transformer]{antiJoin}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{fullJoin}}, \code{\link[transformer]{innerJoin}}, \code{\link[transformer]{leftJoin}}, \code{\link[transformer]{mutateAll}}, \code{\link[transformer]{mutateAt}}, \code{\link[transformer]{mutateIf}}, \code{\link[transformer]{rightJoin}}, \code{\link[transformer]{selectIf}}, \code{\link[transformer]{semiJoin}}, \code{\link[transformer]{transmuteAt}}, \code{\link[transformer]{transmuteIf}}}
 }}
 

@@ -4,8 +4,8 @@
 \name{calculateMetrics}
 \alias{calculateMetrics}
 \alias{calculateMetrics,matrix-method}
-\alias{calculateMetrics,DelayedArray-method}
 \alias{calculateMetrics,Matrix-method}
+\alias{calculateMetrics,DelayedArray-method}
 \alias{calculateMetrics,RangedSummarizedExperiment-method}
 \alias{calculateMetrics,SingleCellExperiment-method}
 \title{Calculate quality control metrics}
@@ -15,13 +15,14 @@ calculateMetrics(object, ...)
 \S4method{calculateMetrics}{matrix}(object, rowRanges = NULL,
   prefilter = FALSE)
 
-\S4method{calculateMetrics}{DelayedArray}(object, rowRanges = NULL,
-  prefilter = FALSE)
-
 \S4method{calculateMetrics}{Matrix}(object, rowRanges = NULL,
   prefilter = FALSE)
 
-\S4method{calculateMetrics}{RangedSummarizedExperiment}(object)
+\S4method{calculateMetrics}{DelayedArray}(object, rowRanges = NULL,
+  prefilter = FALSE)
+
+\S4method{calculateMetrics}{RangedSummarizedExperiment}(object,
+  prefilter = FALSE)
 
 \S4method{calculateMetrics}{SingleCellExperiment}(object,
   prefilter = FALSE)
@@ -54,7 +55,7 @@ Calculate quality control metrics
 Input a raw count matrix. Do not use size factor adjusted or log
 normalized counts here.
 
-Updated 2019-08-12.
+Updated 2019-08-27.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

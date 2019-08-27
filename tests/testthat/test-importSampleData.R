@@ -1,10 +1,10 @@
-context("readSampleData : Demultiplexed samples")
+context("importSampleData : Demultiplexed samples")
 
 file <- file.path("cache", "bcbio-metadata-demultiplexed.csv")
 
 test_that("DataFrame return", {
     expect_identical(
-        object = readSampleData(file),
+        object = importSampleData(file),
         expected = DataFrame(
             sampleName = factor(paste0("sample", seq_len(4L))),
             fileName = factor(paste0("sample", seq_len(4L), "_R1.fastq.gz")),
@@ -16,10 +16,10 @@ test_that("DataFrame return", {
 })
 
 test_that("Lane-split technical replicate support", {
-    object <- readSampleData(file, lanes = 4L)
+    object <- importSampleData(file, lanes = 4L)
     expect_true("lane" %in% colnames(object))
     expect_identical(
-        object = rownames(object)[1L:8L],
+        object = rownames(object)[seq_len(8L)],
         expected = c(
             paste0("sample1_L00", seq_len(4L)),
             paste0("sample2_L00", seq_len(4L))
@@ -33,7 +33,7 @@ test_that("Required column check failure", {
         "bcbio-metadata-demultiplexed-invalid-missing-columns.csv"
     )
     expect_error(
-        object = readSampleData(file),
+        object = importSampleData(file),
         regexp = "description"
     )
 })
@@ -44,19 +44,19 @@ test_that("Duplicated description", {
         "bcbio-metadata-demultiplexed-invalid-duplicated.csv"
     )
     expect_error(
-        object = readSampleData(file),
+        object = importSampleData(file),
         regexp = "Sample data input file is malformed."
     )
 })
 
 
 
-context("readSampleData : Multiplexed samples")
+context("importSampleData : Multiplexed samples")
 
 file <- file.path("cache", "bcbio-metadata-multiplexed-indrops.csv")
 
 test_that("DataFrame return", {
-    object <- readSampleData(file)
+    object <- importSampleData(file)
     expected <- DataFrame(
         sampleName = factor(c(
             "sample2_1",
@@ -133,7 +133,7 @@ test_that("DataFrame return", {
 })
 
 test_that("Lane-split technical replicate support", {
-    object <- readSampleData(file, lanes = 4L)
+    object <- importSampleData(file, lanes = 4L)
     expect_identical(
         object = rownames(object),
         expected = c(
@@ -179,7 +179,7 @@ test_that("Required column check failure.", {
         "bcbio-metadata-multiplexed-invalid-missing-columns.csv"
     )
     expect_error(
-        object = readSampleData(file),
+        object = importSampleData(file),
         regexp = "Sample data input file is malformed."
     )
 })
@@ -190,7 +190,7 @@ test_that("Duplicate rows in 'sampleName' column", {
         "bcbio-metadata-multiplexed-invalid-duplicated.csv"
     )
     expect_error(
-        object = readSampleData(file),
+        object = importSampleData(file),
         regexp = "sampleName"
     )
 })
@@ -202,7 +202,7 @@ test_that("bcbio 'samplename' column", {
         "bcbio-metadata-demultiplexed-invalid-legacy-samplename.csv"
     )
     expect_identical(
-        colnames(readSampleData(file)),
+        colnames(importSampleData(file)),
         c("sampleName", "fileName", "description")
     )
 })
@@ -213,21 +213,21 @@ test_that("'sampleID' column defined by user", {
         "bcbio-metadata-demultiplexed-invalid-sample-id.csv"
     )
     expect_error(
-        object = readSampleData(file),
+        object = importSampleData(file),
         regexp = "sampleID"
     )
 })
 
 test_that("Missing file", {
     expect_error(
-        object = readSampleData("XXX.csv"),
+        object = importSampleData("XXX.csv"),
         regexp = "isAFile"
     )
 })
 
 
 
-context("readSampleData : Malformed input")
+context("importSampleData : Malformed input")
 
 test_that("Metadata blacklist", {
     file <- file.path(
@@ -235,7 +235,7 @@ test_that("Metadata blacklist", {
         "bcbio-metadata-invalid-column-name.csv"
     )
     expect_error(
-        object = readSampleData(file),
+        object = importSampleData(file),
         regexp = "sampleNames"
     )
 })
@@ -246,7 +246,7 @@ test_that("Invalid description", {
         "bcbio-metadata-invalid-description.csv"
     )
     expect_error(
-        object = readSampleData(file),
+        object = importSampleData(file),
         regexp = "Sample data input file is malformed."
     )
 })

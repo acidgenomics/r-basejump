@@ -1,6 +1,6 @@
 #' @name filterCells
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-08-13.
+#' @note Updated 2019-08-27.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -48,7 +48,7 @@
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' x <- filterCells(object)
-#' show(x)
+#' print(x)
 #'
 #' ## Per sample cutoffs.
 #' sampleNames(object)
@@ -56,7 +56,7 @@
 #'     object = object,
 #'     minCounts = c(sample1 = 100L)
 #' )
-#' show(x)
+#' print(x)
 NULL
 
 
@@ -70,7 +70,7 @@ NULL
 
 
 
-## Updated 2019-08-12.
+## Updated 2019-08-27.
 `filterCells,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -131,7 +131,6 @@ NULL
             x = c(countsCol, featuresCol, noveltyCol, mitoRatioCol),
             y = colnames(metrics)
         ))
-
         ## Standardize cell-level filtering args.
         args <- list(
             minCounts = minCounts,
@@ -159,7 +158,6 @@ NULL
         nCells <- args[["nCells"]]
         args <- args[setdiff(names(args), "nCells")]
         assert(allAreMatchingRegex(x = names(args), pattern = "^(max|min)"))
-
         ## Determine the relational operator to use based on the name.
         ## Use GTE (`>=`) for `min*` and LTE (`<=`) for `max*`.
         operators <- lapply(
@@ -175,7 +173,6 @@ NULL
             }
         )
         names(operators) <- names(args)
-
         ## Map the cell arguments to the metrics column name.
         arg2col <- c(
             minCounts = countsCol,
@@ -185,12 +182,10 @@ NULL
             minNovelty = noveltyCol,
             maxMitoRatio = mitoRatioCol
         )
-
         ## Split the metrics per sample so we can perform parameterized
         ## filtering checks using `mapply()`.
         split <- split(x = metrics, f = metrics[["sampleID"]])
         assert(is(split, "SplitDataFrameList"))
-
         ## Loop across the samples.
         filter <- DataFrameList(mapply(
             sampleName = names(split),
@@ -219,7 +214,6 @@ NULL
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         ))
-
         ## Coerce the filter list to a single sparse logical matrix.
         lgl <- do.call(what = rbind, args = filter)
         lgl <- lgl[colnames(object), , drop = FALSE]
@@ -235,10 +229,8 @@ NULL
         )
         lgl <- lgl[, keep, drop = FALSE]
         assert(!isTRUE(anyNA(lgl)))
-
         cells <- apply(X = lgl, MARGIN = 1L, FUN = function(x) { all(x) })
         assert(identical(names(cells), colnames(object)))
-
         ## Keep top expected number of cells per sample.
         if (any(nCells < Inf)) {
             metrics <- metrics[cells, , drop = FALSE]
@@ -261,7 +253,6 @@ NULL
         } else {
             topCellsPerSample <- NULL
         }
-
         ## Remove the low quality cells.
         if (!any(cells)) {
             stop("No cells passed filtering.")
@@ -283,7 +274,6 @@ NULL
             features <- rep(TRUE, times = nrow(object))
             names(features) <- rownames(object)
         }
-
         ## Remove the low quality features.
         if (!any(features)) {
             stop("No features passed filtering.")
@@ -297,18 +287,15 @@ NULL
             is.logical(cells),
             is.logical(features)
         )
-
         nCells <- sum(cells, na.rm = TRUE)
         nFeatures <- sum(features, na.rm = TRUE)
         if (identical(c(nFeatures, nCells), originalDim)) {
             message("No filtering applied.")
             return(object)
         }
-
         ## Ensure that there are no all zero rows or columns.
         ## Otherwise, downstream conversion to Seurat can error.
-        assert(hasNonZeroRowsAndCols(counts(object)))
-
+        assert(hasNonzeroRowsAndCols(counts(object)))
         perSamplePass <- lapply(
             X = filter,
             FUN = function(x) {
@@ -327,10 +314,8 @@ NULL
                 x
             }
         )
-
         totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
         storage.mode(totalPass) <- "integer"
-
         message(sprintf(
             fmt = paste0(
                 "Pre-filter:\n",

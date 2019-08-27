@@ -20,7 +20,7 @@ test_that("character", {
 
 test_that("matrix", {
     object <- matrix(
-        data = seq(1L:8L),
+        data = seq_len(8L),
         byrow = TRUE,
         nrow = 4L,
         ncol = 2L,

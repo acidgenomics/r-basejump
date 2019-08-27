@@ -118,7 +118,7 @@ setMethod(
             is(data, "DataFrame"),
             is(sampleData, "DataFrame")
         )
-        out <- left_join(x = data, y = sampleData, by = "sampleID")
+        out <- leftJoin(x = data, y = sampleData, by = "sampleID")
         assert(
             is(out, "DataFrame"),
             hasRownames(out)

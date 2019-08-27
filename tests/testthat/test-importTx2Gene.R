@@ -1,7 +1,7 @@
-context("readTx2Gene")
+context("importTx2Gene")
 
-test_that("readTx2Gene", {
-    object <- readTx2Gene(
+test_that("importTx2Gene", {
+    object <- importTx2Gene(
         file = file.path("cache", "tx2gene.csv"),
         organism = "Mus musculus",
         genomeBuild = "GRCm38",

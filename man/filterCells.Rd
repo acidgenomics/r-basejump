@@ -68,7 +68,7 @@ Filtering information gets slotted into \code{\link[S4Vectors:metadata]{metadata
 as \code{filterCells} metadata.
 }
 \note{
-Updated 2019-08-13.
+Updated 2019-08-27.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
@@ -76,7 +76,7 @@ data(SingleCellExperiment, package = "acidtest")
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
 x <- filterCells(object)
-show(x)
+print(x)
 
 ## Per sample cutoffs.
 sampleNames(object)
@@ -84,5 +84,5 @@ x <- filterCells(
     object = object,
     minCounts = c(sample1 = 100L)
 )
-show(x)
+print(x)
 }

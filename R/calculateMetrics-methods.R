@@ -4,7 +4,7 @@
 #'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
 #'   normalized counts here.
-#' @note Updated 2019-08-12.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param prefilter `logical(1)`.
@@ -38,7 +38,7 @@ NULL
 
 
 
-## Updated 2019-08-22.
+## Updated 2019-08-27.
 `calculateMetrics,matrix` <-  # nolint
     function(
         object,
@@ -51,6 +51,10 @@ NULL
             isAny(rowRanges, c("GRanges", "NULL")),
             isFlag(prefilter)
         )
+        if (isTRUE(prefilter)) {
+            originalDim <- dim(object)
+            object <- nonzeroRowsAndCols(object)
+        }
         message(sprintf(
             fmt = "Calculating %d sample %s.",
             ncol(object),
@@ -93,7 +97,7 @@ NULL
                 hasRownames(rowData),
                 identical(rownames(rowData), names(rowRanges))
             )
-            if ("broadClass" %in% colnames(rowData)) {
+            if (isSubset("broadClass", colnames(rowData))) {
                 ## Drop rows with NA broad class.
                 keep <- !is.na(rowData[["broadClass"]])
                 assert(is(keep, "Rle"))
@@ -170,17 +174,20 @@ NULL
             ## Minimum number of features (i.e. genes) per sample.
             keep <- data[["nFeature"]] > 0L
             data <- data[keep, , drop = FALSE]
-            message(sprintf(
-                fmt = "%d / %d %s passed pre-filtering (%s).",
-                nrow(data),
-                ncol(object),
-                ngettext(
-                    n = nrow(data),
-                    msg1 = "sample",
-                    msg2 = "samples"
-                ),
-                percent(nrow(data) / ncol(object))
-            ))
+            n1 <- nrow(data)
+            n2 <- originalDim[[2L]]
+            if (n1 < n2) {
+                message(sprintf(
+                    fmt = "Prefilter: %d / %d %s (%s).",
+                    n1, n2,
+                    ngettext(
+                        n = n1,
+                        msg1 = "sample",
+                        msg2 = "samples"
+                    ),
+                    percent(n1 / n2)
+                ))
+            }
         }
         data
     }
@@ -197,30 +204,14 @@ setMethod(
 
 
 
-## Updated 2019-08-07.
-`calculateMetrics,DelayedArray` <-  # nolint
-    appendToBody(
-        fun = `calculateMetrics,matrix`,
-        values = quote(colSums <- DelayedMatrixStats::colSums2)
-    )
-
-
-
-#' @rdname calculateMetrics
-#' @export
-setMethod(
-    f = "calculateMetrics",
-    signature = signature("DelayedArray"),
-    definition = `calculateMetrics,DelayedArray`
-)
-
-
-
-## Updated 2019-08-07.
+## Updated 2019-08-23.
 `calculateMetrics,Matrix` <-  # nolint
     appendToBody(
         fun = `calculateMetrics,matrix`,
-        values = quote(colSums <- Matrix::colSums)
+        values = list(
+            quote(rowSums <- Matrix::rowSums),
+            quote(colSums <- Matrix::colSums)
+        )
     )
 
 
@@ -235,20 +226,47 @@ setMethod(
 
 
 
-## Updated 2019-08-08
-.slotMetricsInSE <-
-    function(
-        object,
-        metrics,
-        prefilter
-    ) {
-        assert(
-            is(object, "SummarizedExperiment"),
-            is(metrics, "DataFrame"),
-            isSubset(rownames(metrics), colnames(object)),
-            isFlag(prefilter)
+## Updated 2019-08-23.
+`calculateMetrics,DelayedArray` <-  # nolint
+    appendToBody(
+        fun = `calculateMetrics,matrix`,
+        values = list(
+            quote(rowSums <- DelayedMatrixStats::rowSums2),
+            quote(colSums <- DelayedMatrixStats::colSums2)
         )
-        ## Resize the object, if necessary.
+    )
+
+
+
+#' @rdname calculateMetrics
+#' @export
+setMethod(
+    f = "calculateMetrics",
+    signature = signature("DelayedArray"),
+    definition = `calculateMetrics,DelayedArray`
+)
+
+
+
+## nolint start
+## Consider using DelayedArray for very large datasets.
+## > if (ncol(counts) >= 1E6L) {
+## >     counts <- DelayedArray(counts)
+## > }
+## nolint end
+
+## Updated 2019-08-23.
+`calculateMetrics,RangedSummarizedExperiment` <-  # nolint
+    function(object, prefilter = FALSE) {
+        ## Drop zero rows and columns to first to speed up calculations.
+        if (isTRUE(prefilter)) {
+            object <- nonzeroRowsAndCols(object)
+        }
+        metrics <- calculateMetrics(
+            object = counts(object),
+            rowRanges = rowRanges(object),
+            prefilter = prefilter
+        )
         if (isTRUE(prefilter)) {
             object <- object[, rownames(metrics), drop = FALSE]
         }
@@ -268,24 +286,6 @@ setMethod(
 
 
 
-## Updated 2019-08-07.
-`calculateMetrics,RangedSummarizedExperiment` <-  # nolint
-    function(object) {
-        prefilter <- FALSE
-        metrics <- calculateMetrics(
-            object = counts(object),
-            rowRanges = rowRanges(object),
-            prefilter = prefilter
-        )
-        .slotMetricsInSE(
-            object = object,
-            metrics = metrics,
-            prefilter = prefilter
-        )
-    }
-
-
-
 #' @rdname calculateMetrics
 #' @export
 setMethod(
@@ -296,25 +296,9 @@ setMethod(
 
 
 
-## Updated 2019-08-08.
+## Updated 2019-08-23.
 `calculateMetrics,SingleCellExperiment` <-  # nolint
-    function(object, prefilter = FALSE) {
-        counts <- counts(object)
-        ## Use DelayedArray for large datasets.
-        if (ncol(counts) >= 2E4L) {
-            counts <- DelayedArray(counts)
-        }
-        metrics <- calculateMetrics(
-            object = counts,
-            rowRanges = rowRanges(object),
-            prefilter = prefilter
-        )
-        .slotMetricsInSE(
-            object = object,
-            metrics = metrics,
-            prefilter = prefilter
-        )
-    }
+    `calculateMetrics,RangedSummarizedExperiment`
 
 
 

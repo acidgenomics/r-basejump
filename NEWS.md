@@ -1,3 +1,31 @@
+## basejump 0.11.11 (2019-08-27)
+
+Updated R dependency to 3.6.
+
+### New functions
+
+- `melt`: Added S4 methods for melting data into long format. Provides support
+  for `matrix`, `Matrix`, `DataFrame`, `SummarizedExperiment`, and
+  `SingleCellExperiment` currently.
+- `nonzeroRowsAndCols`: Quickly remove non-zero rows and columns from a matrix
+  or `SummarizedExperiment`.
+
+### Major changes
+
+- Migrated `EggNOG` and `PANTHER` S4 classes to separate packages.
+
+### Minor changes
+
+- `calculateMetrics`: Now calls `nonzeroRowsAndCols` internally first when
+  `prefilter = FALSE`, speeding up calculations significantly for very large
+  `SingleCellExperiment` objects. This was added to improve loading of example
+  unfiltered 10X Genomics Chromium data.
+
+### Deprecations
+
+- Deprecated `readSampleData` and `readTx2Gene` in favor of `importSampleData`
+  and `importTx2Gene`, respectively.
+
 ## basejump 0.11.10 (2019-08-22)
 
 ### Minor changes

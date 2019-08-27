@@ -2,9 +2,9 @@
 
 
 
-#' Read sample metadata
+#' Import sample metadata
 #'
-#' This function reads user-defined sample metadata saved in a spreadsheet.
+#' This function imports user-defined sample metadata saved in a spreadsheet.
 #'
 #' @section bcbio pipeline:
 #'
@@ -40,7 +40,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-08-18.
+#' @note Updated 2019-08-27.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -57,14 +57,14 @@
 #' @examples
 #' ## Demultiplexed ====
 #' file <- file.path(basejumpTestsURL, "bcbio-metadata-demultiplexed.csv")
-#' x <- readSampleData(file, pipeline = "bcbio")
+#' x <- importSampleData(file, pipeline = "bcbio")
 #' print(x)
 #'
 #' ## Multiplexed ====
 #' file <- file.path(basejumpTestsURL, "bcbio-metadata-multiplexed-indrops.csv")
-#' x <- readSampleData(file, pipeline = "bcbio")
+#' x <- importSampleData(file, pipeline = "bcbio")
 #' print(x)
-readSampleData <- function(
+importSampleData <- function(
     file,
     sheet = 1L,
     lanes = 0L,
@@ -85,7 +85,7 @@ readSampleData <- function(
         cellranger = "directory"
     )
     ## Convert lanes to a sequence, if necessary.
-    if (hasLength(lanes, n = 1L) && lanes > 1L) {
+    if (hasLength(lanes, n = 1L) && isTRUE(lanes > 1L)) {
         lanes <- seq_len(lanes)
     }
 
@@ -113,7 +113,7 @@ readSampleData <- function(
     ## of duplicate values in the `description` column.
     if (
         isSubset(c("index", "sequence"), colnames(data)) &&
-        (any(duplicated(data[[idCol]])) || nrow(data) == 1L)
+        (any(duplicated(data[[idCol]])) || identical(nrow(data), 1L))
     ) {
         multiplexed <- TRUE
         message("Multiplexed samples detected.")
@@ -133,7 +133,7 @@ readSampleData <- function(
     } else {
         stop(
             "Sample data input file is malformed.\n",
-            "Refer to 'readSampleData()' for formatting requirements."
+            "Refer to 'importSampleData()' for formatting requirements."
         )
     }
 
@@ -169,7 +169,7 @@ readSampleData <- function(
     ## Prepare metadata for lane split replicates. This step will expand rows
     ## into the number of desired replicates (e.g. "L001").
     ## `lapply()` approach here inspired by `mefa::rep.data.frame()`.
-    if (length(lanes) > 1L) {
+    if (isTRUE(length(lanes) > 1L)) {
         split <- split(data, f = data[[idCol]])
         split <- SplitDataFrameList(lapply(
             X = split,
@@ -180,18 +180,16 @@ readSampleData <- function(
                 x
             }
         ))
-        data <- unlist(split, use.names = FALSE)
+        data <- unsplit(split, f = unlist(split[, idCol]))
         pasteLanes <- function(nameCol, laneCol) {
             makeNames(paste(nameCol, laneCol, sep = "_"), unique = FALSE)
         }
         nameCols <- c(idCol, "sampleName")
-        data <- mutate_at(
-            .tbl = data,
-            .vars = nameCols,
-            .funs = ~ pasteLanes(
-                nameCol = .,
-                laneCol = data[["lane"]]
-            )
+        data <- mutateAt(
+            object = data,
+            vars = nameCols,
+            fun = pasteLanes,
+            laneCol = data[["lane"]]
         )
         ## Fix the lane-split bcbio description. This is an uncommon edge case,
         ## but we're still providing support here.
@@ -241,7 +239,7 @@ readSampleData <- function(
         return(false(
             paste0(
                 "Blacklisted columns detected: %s.\n",
-                "Refer to 'readSampleData()' for formatting requirements."
+                "Refer to 'importSampleData()' for formatting requirements."
             ),
             toString(intersect)
         ))
@@ -253,7 +251,7 @@ readSampleData <- function(
         return(false(
             paste0(
                 "Required columns missing: %s.\n",
-                "Refer to 'readSampleData()' for formatting requirements."
+                "Refer to 'importSampleData()' for formatting requirements."
             ),
             toString(setdiff)
         ))

@@ -1,6 +1,6 @@
 #' Show slot information
 #'
-#' @note Updated 2019-08-07.
+#' @note Updated 2019-08-27.
 #' @export
 #'
 #' @param list `list`.
@@ -19,7 +19,7 @@ showSlotInfo <- function(list) {
     ## Consider checking for all atomic here.
     list <- Filter(f = Negate(is.null), x = list)
     list <- Filter(f = hasLength, x = list)
-    ## Standardize to Bioconductor `show` conventions.
+    ## Standardize to Bioconductor `show()` conventions.
     ## Refer to SummarizedExperiment method for example.
     out <- mapply(
         name = names(list),
