@@ -266,7 +266,7 @@ setMethod(
         keep <- bapply(
             X = ftable,
             FUN = function(x) {
-                length(unique(x)) == nSamples
+                identical(length(unique(x)), nSamples)
             }
         )
         ftable <- ftable[, keep, drop = FALSE]
@@ -285,7 +285,7 @@ setMethod(
         factorToInteger <- function(x) {
             as.integer(factor(x, levels = unique(x)))
         }
-        ftable <- mutate_all(ftable, factorToInteger)
+        ftable <- mutateAll(ftable, factorToInteger)
         trash <- !bapply(
             X = ftable,
             FUN = function(x) {
@@ -403,7 +403,7 @@ setReplaceMethod(
             c("sampleID", setdiff(colnames(colData), colnames(value))),
             drop = FALSE
         ]
-        value <- left_join(colData, value, by = "sampleID")
+        value <- leftJoin(colData, value, by = "sampleID")
         assert(is(value, "DataFrame"), hasRownames(value))
         colData(object) <- value
         object

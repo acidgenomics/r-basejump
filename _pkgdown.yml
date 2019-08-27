@@ -11,8 +11,6 @@ reference:
   - title: S4 classes
     contents:
       - matches("^[A-Z]")
-      - show
-      - summary
   - title: Genome annotations
     contents:
       - geneSynonyms
@@ -27,16 +25,16 @@ reference:
   - title: Counts
     contents:
       - counts
-      - meltCounts
       - tpm
   - title: Quality control
     contents:
       - calculateMetrics
       - filterCells
       - metrics
+      - nonzeroRowsAndCols
   - title: Import/export
     contents:
-      - starts_with("read")
+      - starts_with("import")
   - title: Metadata
     contents:
       - alphaThreshold
@@ -77,6 +75,7 @@ reference:
       - estimateSizeFactors
       - geometricMean
       - logRatio
+      - melt
       - pseudobulk
       - rankedMatrix
       - sizeFactors

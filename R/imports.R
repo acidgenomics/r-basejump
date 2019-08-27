@@ -12,18 +12,18 @@
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
 #' @importFrom AnnotationDbi select
-#' @importFrom BiocGenerics as.data.frame as.list colSums do.call lapply match
-#'   rowSums setdiff t unlist
+#' @importFrom BiocGenerics colSums rowSums unlist
 #' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
 #' @importFrom DelayedArray DelayedArray
 #' @importFrom DelayedMatrixStats colSums2 rowSums2
 #' @importFrom GenomeInfoDb seqnames
-#' @importFrom IRanges DataFrameList SplitDataFrameList
+#' @importFrom IRanges DataFrameList SplitDataFrameList unsplit
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate cor decode
-#'   expand head lapply mcols mcols<- merge metadata metadata<- na.omit order
-#'   split summary tail
+#' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
+#'   as.data.frame as.list cor decode do.call expand expand.grid head lapply
+#'   match mcols mcols<- merge metadata metadata<- na.omit order setdiff split
+#'   summary t tail
 #' @importFrom SingleCellExperiment SingleCellExperiment isSpike<- spikeNames
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
@@ -33,7 +33,7 @@
 #'   appendToBody areDisjointSets areIntersectingSets areSameLength areSetEqual
 #'   assert bapply containsAURL false getNameInParent hasColnames hasCols
 #'   hasDims hasInternet hasLength hasMetrics hasNames hasNoDuplicates
-#'   hasNonZeroRowsAndCols hasRows hasRownames hasSubset hasUniqueCols
+#'   hasNonzeroRowsAndCols hasRows hasRownames hasSubset hasUniqueCols
 #'   hasValidDimnames hasValidNames isADirectory isAFile isAlpha isAny
 #'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
 #'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange isInt
@@ -45,8 +45,7 @@
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
 #'   new selectMethod setAs setClass setGeneric setMethod setReplaceMethod
-#'   setOldClass setValidity show signature slot slotNames validObject .hasSlot
-#' @importFrom reshape2 melt
+#'   setOldClass setValidity signature slot slotNames validObject .hasSlot
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_detect str_dup str_extract str_length str_match

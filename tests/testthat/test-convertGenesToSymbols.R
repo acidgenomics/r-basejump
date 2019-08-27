@@ -54,7 +54,7 @@ test_that("Invalid identifiers", {
 
 test_that("matrix", {
     object <- matrix(
-        data = seq(1L:4L),
+        data = seq_len(4L),
         byrow = TRUE,
         nrow = 2L,
         ncol = 2L,
