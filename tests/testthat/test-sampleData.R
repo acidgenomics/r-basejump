@@ -10,12 +10,39 @@ test_that("Return", {
         ),
         expected = c("sampleName", "interestingGroups")
     )
-    expect_identical(
-        object = sampleData(object)[, colnames(colData(object)), drop = FALSE],
-        expected = colData(object)
-    )
 
-    ## Empty `colData` is supported. Changed in v0.99.
+    ## nolint start
+    ##
+    ## Bioc 3.10 is inconsistently returning "DFrame" and/or "DataFrame".
+    ## https://github.com/Bioconductor/S4Vectors/blob/master/R/DataFrame-class.R#L20
+    ##
+    ## DataFrame to DFrame class migration:
+    ##
+    ## Just a direct DataFrame extension with no additional slot for now. Once
+    ## all serialized DataFrame instances are replaced with DFrame instances
+    ## (which will take several BioC release cycles) we'll be able to move the
+    ## DataFrame slots from the DataFrame class definition to the DFrame class
+    ## definition. The final goal is to have DataFrame become a virtual class
+    ## with no slots that only extends DataTable, and DFrame a concrete
+    ## DataFrame and SimpleList subclass that has the same slots as the current
+    ## DataFrame class.
+    ##
+    ## > class(x)
+    ## > [1] "DFrame"
+    ## > attr(,"package")
+    ## > [1] "S4Vectors"
+    ##
+    ## > class(y)
+    ## > [1] "DataFrame"
+    ## > attr(,"package")
+    ## > [1] "S4Vectors"
+    ##
+    ## nolint end
+    x <- sampleData(object)[, colnames(colData(object)), drop = FALSE]
+    y <- colData(object)
+    expect_identical(object = x@listData, expected = y@listData)
+
+    ## Empty `colData` is supported.
     object <- rse
     colData(object) <- DataFrame(row.names = colnames(object))
     interestingGroups(object) <- NULL
