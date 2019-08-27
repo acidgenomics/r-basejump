@@ -1,7 +1,6 @@
 library(testthat)
 library(patrick)
 library(basejump)
-
 test_check("basejump")
 
 ## Run the resource intensive unit tests less frequently (e.g. per month).
