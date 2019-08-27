@@ -538,7 +538,7 @@ MGI2Ensembl <- function() {  # nolint
 
 ## PANTHER =====================================================================
 #' @inherit PANTHER-class title description return
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-27.
 #' @export
 #'
 #' @section Suported organisms:
@@ -592,7 +592,7 @@ PANTHER <- function(
             protocol = "none"
         )
     } else {
-        ## This works unreliably on Travis, so cover locally instead.
+        ## FTP connection is unreliable for CI, so cover locally instead.
         ## nocov start
         file <- transmit(
             remoteDir = pasteURL(
