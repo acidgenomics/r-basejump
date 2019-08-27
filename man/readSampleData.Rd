@@ -33,7 +33,7 @@ This function reads user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2019-08-18.
+Updated 2019-08-27.
 }
 \section{bcbio pipeline}{
 
