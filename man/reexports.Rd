@@ -76,9 +76,6 @@
 \alias{\%$\%}
 \alias{\%>\%}
 \alias{\%T>\%}
-\alias{set_colnames}
-\alias{set_names}
-\alias{set_rownames}
 \alias{camel}
 \alias{camelCase}
 \alias{capitalize}
@@ -139,7 +136,7 @@ below to see their documentation.
 
   \item{IRanges}{\code{\link[IRanges]{IRanges}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
+  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{SimpleList}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}}
 
