@@ -17,7 +17,7 @@
 #'
 #' @name makeSummarizedExperiment
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2019-08-05.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sort `logical(1)`.
@@ -97,20 +97,19 @@ NULL
 
 
 
-## Updated 2019-08-05.
+## Updated 2019-08-27.
 `makeSummarizedExperiment,SimpleList` <- function(
     assays,
-    rowRanges,
-    rowData,
-    colData,
-    metadata,
+    rowRanges = GRangesList(),
+    rowData = NULL,
+    colData = DataFrame(),
+    metadata = list(),
     transgeneNames = NULL,
     spikeNames = NULL,
     sort = TRUE,
     sessionInfo = TRUE
 ) {
-    ## Providing legacy support for list input.
-    if (is.list(assays)) {
+    if (!is(assays, "SimpleList")) {
         assays <- SimpleList(assays)
     }
     assert(
@@ -123,16 +122,12 @@ NULL
         isFlag(sort),
         isFlag(sessionInfo)
     )
-    ## Only allow `rowData` if `rowRanges` are not defined.
+    ## Only allow `rowData` when `rowRanges` isn't defined.
     if (hasLength(rowRanges)) {
         assert(!hasLength(rowData))
     }
 
     ## Assays ------------------------------------------------------------------
-    ## This step provides legacy support for bcbioRNASeq.
-    if (!is(assays, "SimpleList")) {
-        assays <- as(assays, "SimpleList")
-    }
     ## Drop any `NULL` items in assays.
     assays <- Filter(f = Negate(is.null), x = assays)
     ## Require the primary assay to be named "counts". This helps ensure
@@ -310,15 +305,6 @@ NULL
     validObject(se)
     se
 }
-
-## Update formals to match current `SimpleList` S4 method.
-args <- c("colData", "metadata", "rowData", "rowRanges")
-f <- methodFormals(
-    f = "SummarizedExperiment",
-    signature = signature(assays = "SimpleList"),
-    package = "SummarizedExperiment"
-)
-formals(`makeSummarizedExperiment,SimpleList`)[args] <- f[args]
 
 
 

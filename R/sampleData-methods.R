@@ -103,7 +103,7 @@ NULL
 
 
 ## Don't run validity checks here.
-## Updated 2019-08-16.
+## Updated 2019-08-27.
 `sampleData,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -125,6 +125,7 @@ NULL
         )
         ## Require `sampleName` column.
         if (!isSubset("sampleName", colnames(data))) {
+            ## Bioconductor 3.10 is converting to "DFrame" class here.
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
             stop("'sampleData()' requires 'sampleName' factor in 'colData()'.")

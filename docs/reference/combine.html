@@ -75,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.11</span>
       </span>
     </div>
 
@@ -178,7 +178,7 @@
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-11.</p>
+    <p>Updated 2019-08-27.</p>
 <p>We're attempting to make this as strict as possible, requiring:</p><ul>
 <li><p>Rows (genes) across objects must be identical.</p></li>
 <li><p><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a> and/or
@@ -236,12 +236,10 @@
     <span class='no'>SingleCellExperiment</span>,
     <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
 )
-<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 <span class='no'>str_pad</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='https://stringr.tidyverse.org/reference/str_pad.html'>str_pad</a></span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
     <span class='st'>"sample"</span>,
     <span class='fu'>str_pad</span>(
@@ -277,14 +275,14 @@
 #&gt; sample23         B   sample23                 B
 #&gt; sample24         B   sample24                 B</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 24 
-#&gt; metadata(6): combine date ... version wd
+#&gt; metadata(4): version date interestingGroups combine
 #&gt; assays(1): counts
 #&gt; rownames(500): gene001 gene002 ... gene499 gene500
 #&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
 #&gt; colnames(24): sample01 sample02 ... sample23 sample24
 #&gt; colData names(1): condition</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
     <span class='st'>"cell"</span>,
     <span class='fu'>str_pad</span>(
@@ -311,7 +309,7 @@
 #&gt; sample1    sample1           sample1
 #&gt; sample2    sample2           sample2</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 500 200 
-#&gt; metadata(4): combine date sessionInfo wd
+#&gt; metadata(2): date combine
 #&gt; assays(1): counts
 #&gt; rownames(500): gene001 gene002 ... gene499 gene500
 #&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
