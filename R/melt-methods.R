@@ -81,7 +81,7 @@ NULL
 
 
 
-## Updated 2019-08-26.
+## Updated 2019-09-01.
 .melt <- function(
     object,
     colnames = c("rowname", "colname", "value")
@@ -109,7 +109,6 @@ NULL
     value <- DataFrame(as.vector(object))
     names(value) <- colnames[[3L]]
     out <- cbind(out, value)
-    out <- encode(out)
     out
 }
 
@@ -158,6 +157,7 @@ NULL
         }
         valueCol <- colnames[[3L]]
         data <- .melt(object = object, colnames = colnames)
+        data <- encode(data)
         if (isInt(min) && identical(minMethod, "absolute")) {
             nPrefilter <- nrow(data)
             keep <- data[[valueCol]] >= min
