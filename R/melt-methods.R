@@ -203,6 +203,21 @@ setMethod(
 
 
 
+## Updated 2019-09-01.
+`melt,table` <- .melt  # nolint
+
+
+
+#' @rdname melt
+#' @export
+setMethod(
+    f = "melt",
+    signature = signature("table"),
+    definition = `melt,table`
+)
+
+
+
 ## Updated 2019-08-26.
 `melt,Matrix` <-  # nolint
     appendToBody(
@@ -222,7 +237,7 @@ setMethod(
 
 
 
-## Updated 2019-08-26.
+## Updated 2019-09-01.
 `melt,DataFrame` <-  # nolint
     function(
         object,
@@ -233,7 +248,7 @@ setMethod(
             all(bapply(object, is.atomic)),
             hasLength(unlist(unique(lapply(object, class))), n = 1L)
         )
-        .melt(object = as.matrix(object), colnames = colnames)
+        melt(object = as.matrix(object), colnames = colnames)
     }
 
 
