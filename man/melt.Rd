@@ -4,6 +4,7 @@
 \name{melt}
 \alias{melt}
 \alias{melt,matrix-method}
+\alias{melt,table-method}
 \alias{melt,Matrix-method}
 \alias{melt,DataFrame-method}
 \alias{melt,SummarizedExperiment-method}
@@ -15,6 +16,9 @@ melt(object, ...)
 \S4method{melt}{matrix}(object, colnames = c("rowname", "colname",
   "value"), min = NULL, minMethod = c("perRow", "absolute"),
   trans = c("identity", "log2", "log10"))
+
+\S4method{melt}{table}(object, colnames = c("rowname", "colname",
+  "value"))
 
 \S4method{melt}{Matrix}(object, colnames = c("rowname", "colname",
   "value"), min = NULL, minMethod = c("perRow", "absolute"),
