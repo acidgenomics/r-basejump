@@ -1,3 +1,8 @@
+## basejump 0.11.12 (2019-09-03)
+
+- `melt`: Added method support for contingency `table` class.
+- Removed `set_*` reexports from magrittr packages.
+
 ## basejump 0.11.11 (2019-08-27)
 
 Updated R dependency to 3.6.
