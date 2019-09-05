@@ -5,7 +5,7 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeTx2Gene
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-09-05.
 #'
 #' @inheritParams acidroxygen::params
 #'

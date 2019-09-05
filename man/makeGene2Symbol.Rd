@@ -9,7 +9,8 @@
 \title{Make a Gene2Symbol object}
 \usage{
 makeGene2SymbolFromEnsembl(organism, genomeBuild = NULL,
-  release = NULL, format = c("makeUnique", "unmodified", "1:1"))
+  release = NULL, ignoreTxVersion = TRUE, format = c("makeUnique",
+  "unmodified", "1:1"))
 
 makeGene2SymbolFromEnsDb(object, format = c("makeUnique", "unmodified",
   "1:1"))
@@ -32,6 +33,10 @@ possible, for improved reproducibility. When left unset, the latest release
 available via AnnotationHub/ensembldb is used. Note that the latest version
 available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.}
+
+\item{ignoreTxVersion}{\code{logical(1)}. Don't the include the transcript version
+in the identifier. Only applies when \code{level = "transcripts"}. This
+simplifies identifier matching when generating a \code{tx2gene} file.}
 
 \item{format}{\code{character(1)}.
 Formatting method to apply:
