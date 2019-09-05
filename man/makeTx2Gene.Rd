@@ -11,9 +11,9 @@
 makeTx2GeneFromEnsembl(organism, genomeBuild = NULL, release = NULL,
   ignoreTxVersion = TRUE)
 
-makeTx2GeneFromEnsDb(object)
+makeTx2GeneFromEnsDb(object, ignoreTxVersion = TRUE)
 
-makeTx2GeneFromGFF(file)
+makeTx2GeneFromGFF(file, ignoreTxVersion = TRUE)
 }
 \arguments{
 \item{organism}{\code{character(1)}.
@@ -47,7 +47,7 @@ File path.}
 Make a Tx2Gene object
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-09-05.
 }
 \section{GFF/GTF file}{
 
