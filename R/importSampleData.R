@@ -40,7 +40,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-05.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -68,7 +68,7 @@ importSampleData <- function(
     file,
     sheet = 1L,
     lanes = 0L,
-    pipeline = c("bcbio", "cellranger")
+    pipeline = c("bcbio", "cellranger", "none")
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
     if (!hasLength(lanes)) lanes <- 0L
@@ -81,8 +81,9 @@ importSampleData <- function(
     pipeline <- match.arg(pipeline)
     requiredCols <- switch(
         EXPR = pipeline,
-        bcbio = "description",
-        cellranger = "directory"
+        "bcbio" = "description",
+        "cellranger" = "directory",
+        "none" = "sampleID"
     )
     ## Convert lanes to a sequence, if necessary.
     if (hasLength(lanes, n = 1L) && isTRUE(lanes > 1L)) {
@@ -104,11 +105,18 @@ importSampleData <- function(
         }
         idCol <- "description"
     } else if (identical(pipeline, "cellranger")) {
+        ## Consider renaming this to `sampleID`, for consistency.
         idCol <- "directory"
+    } else if (identical(pipeline, "none")) {
+        idCol <- "sampleID"
     }
     assert(.isSampleData(object = data, requiredCols = requiredCols))
-    ## Valid rows must contain a non-empty description.
+    ## Valid rows must contain a non-empty sample identifier.
     data <- data[!is.na(data[[idCol]]), , drop = FALSE]
+    ## Requiring syntactically valid names on direct "sampleID" input.
+    if (identical(idCol, "sampleID")) {
+        assert(validNames(unique(data[[idCol]])))
+    }
     ## Determine whether the samples are multiplexed, based on the presence
     ## of duplicate values in the `description` column.
     if (

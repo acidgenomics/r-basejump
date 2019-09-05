@@ -4,7 +4,7 @@
 \name{metadataBlacklist}
 \alias{metadataBlacklist}
 \title{Sample metadata blacklist}
-\format{An object of class \code{character} of length 18.}
+\format{An object of class \code{character} of length 17.}
 \usage{
 metadataBlacklist
 }
@@ -14,7 +14,7 @@ Sample metadata blacklist
 \note{
 \code{sampleID} is set automatically for multiplexed/cell-level data.
 
-Updated 2019-08-21.
+Updated 2019-09-05.
 }
 \examples{
 metadataBlacklist
