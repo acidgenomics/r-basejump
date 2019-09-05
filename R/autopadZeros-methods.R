@@ -4,7 +4,7 @@
 #' @note For methods on objects supporting [`dim()`][base::dim] (e.g. `matrix`),
 #' the object will be returned with the rows and/or columns resorted by default.
 #' This does not apply to the `character` method.
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-09-05.
 #'
 #' @section SummarizedExperiment sample names:
 #'
@@ -49,27 +49,40 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2019-09-05.
 `autopadZeros,character` <-  # nolint
     function(object) {
-        assert(is.character(object))
-        names <- names(object)
-        object <- as.character(object)
-        assert(validNames(object))
-        pattern <- "(.*[A-Za-z])([[:digit:]]+)$"
-        ## Early return if no padding is necessary.
-        if (!all(grepl(pattern = pattern, x = object))) {
+        x <- unname(object)
+        ## Detect if we need to pad the left or right side automatically.
+        leftPattern <- "^([[:digit:]]+)(.+)$"
+        rightPattern <- "^(.+)([[:digit:]]+)$"
+        if (allAreMatchingRegex(x = x, pattern = leftPattern)) {
+            side <- "left"
+            pattern <- leftPattern
+        } else if (allAreMatchingRegex(x = x, pattern = rightPattern)) {
+            side <- "right"
+            pattern <- rightPattern
+        } else {
+            ## Early return if no padding is necessary.
             return(object)
         }
-        match <- str_match(string = object, pattern = pattern)
-        prefix <- match[, 2L]
-        nums <- match[, 3L]
-        width <- max(str_length(nums))
-        nums <- str_pad(string = nums, width = width, side = "left", pad = "0")
-        mat <- matrix(data = c(prefix, nums), ncol = 2L)
-        out <- paste0(mat[, 1L], mat[, 2L])
-        names(out) <- names
-        out
+        match <- str_match(string = x, pattern = pattern)
+        if (identical(side, "left")) {
+            colnames(match) <- c("string", "num", "stem")
+        } else if (identical(side, "right")) {
+            colnames(match) <- c("string", "stem", "num")
+        }
+        num <- match[, "num"]
+        width <- max(str_length(num))
+        num <- str_pad(string = num, width = width, side = "left", pad = "0")
+        stem <- match[, "stem"]
+        if (identical(side, "left")) {
+            x <- paste0(num, stem)
+        } else if (identical(side, "right")) {
+            x <- paste0(stem, num)
+        }
+        names(x) <- names(object)
+        x
     }
 
 
