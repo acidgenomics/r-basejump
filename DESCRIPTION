@@ -35,10 +35,10 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.6)
 Imports:
-    bioverbs (>= 0.2.7),
+    bioverbs (>= 0.2.8),
     brio (>= 0.3.7),
     freerange (>= 0.2.5),
-    goalie (>= 0.3.6),
+    goalie (>= 0.3.7),
     syntactic (>= 0.2.4),
     transformer (>= 0.2.6),
     AnnotationDbi (>= 1.46),
