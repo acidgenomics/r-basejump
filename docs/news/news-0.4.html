@@ -8,11 +8,13 @@
 
 <title>Version 0.4 • basejump</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -34,7 +36,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
+
 <meta property="og:title" content="Version 0.4" />
+
 
 
 
@@ -65,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.13</span>
       </span>
     </div>
 
@@ -87,7 +91,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/acidgenomics/basejump">
@@ -115,9 +118,9 @@
     <div id="basejump-0-4-0-2018-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-4-0-2018-03-22" class="anchor"></a>basejump 0.4.0 (2018-03-22)</h2>
-<div id="major-changes-21" class="section level3">
+<div id="major-changes-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-21" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-23" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Introducing new functions for the acquistion of gene and transcript annotations from <a href="https://www.ensembl.org/">Ensembl</a>: <code>ensembl</code>, <code>genes</code>, and <code>transcripts</code>. These functions allow the return of <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects from <a href="https://bioconductor.org/packages/AnnotationHub/">AnnotationHub</a> using <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>.</li>
 <li>Improved internal <code>broadClass</code> definition code to match against chromosome from <a href="https://www.ensembl.org/">Ensembl</a> if available.</li>
@@ -125,13 +128,13 @@
 <code>loadDataAsName</code> now works with unquoted names, improving consistency with <code>loadData</code> (non-standard evaluation).</li>
 </ul>
 </div>
-<div id="minor-changes-62" class="section level3">
+<div id="minor-changes-64" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-62" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-64" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added new <code>convertUCSCBuildToEnsembl</code> function, for easy remapping of <a href="https://genome.ucsc.edu/">UCSC</a> to <a href="https://www.ensembl.org/">Ensembl</a> genome build names (e.g. <code>hg38</code> to <code>GRCh38</code>).</li>
 <li>Migrated matrix methods for <code>plotCorrelationHeatmap</code> here from <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, for improved consistency with other heatmap functions.</li>
-<li>Exporting <code>makeNames</code> variant of <code><a href="https://rdrr.io/r/base/make.names.html">base::make.names</a></code> that sanitizes using underscores ("_“) rather than dots (”.").</li>
+<li>Exporting <code>makeNames</code> variant of <code><a href="https://rdrr.io/r/base/make.names.html">base::make.names</a></code> that sanitizes using underscores (“_“) rather than dots (”.“).</li>
 <li>Converted <code>readYAML</code> from a generic to standard function.</li>
 <li>Added support for <a href="https://ci.appveyor.com/">AppVeyor CI</a> code testing on <a href="https://www.microsoft.com/en-us/windows/">Windows</a>.</li>
 <li>Made <a href="https://travis-ci.com/">Travis CI</a> build checks stricter, adding support for <code>BiocCheck</code>.</li>
@@ -139,9 +142,9 @@
 <li>Simplified working examples for assert checks to just show successes.</li>
 </ul>
 </div>
-<div id="deprecations-5" class="section level3">
+<div id="deprecations-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#deprecations-5" class="anchor"></a>Deprecations</h3>
+<a href="#deprecations-6" class="anchor"></a>Deprecations</h3>
 <ul>
 <li>
 <code>annotable</code> function has been deprecated in favor of the new <code>ensembl</code> function.</li>
@@ -179,7 +182,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
 
       </footer>

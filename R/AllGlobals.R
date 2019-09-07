@@ -124,20 +124,20 @@ lanePattern <- "_L([[:digit:]]{3})"
 #'
 #' @export
 #' @note `sampleID` is set automatically for multiplexed/cell-level data.
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-09-05.
 #'
 #' @examples
 #' metadataBlacklist
 metadataBlacklist <- sort(c(
-    ## Automatic / used internally
+    ## Automatic / used internally:
     "interestingGroups",
     "revcomp",
     "rowname",
-    "sampleID",
-    ## interestingGroups variants
+    ## > "sampleID",
+    ## interestingGroups variants:
     "interestinggroups",
     "intgroup",
-    ## sampleID, sampleName variants
+    ## sampleID, sampleName variants:
     "ID",
     "Id",
     "id",
