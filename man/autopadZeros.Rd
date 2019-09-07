@@ -43,7 +43,7 @@ For methods on objects supporting \code{\link[base:dim]{dim()}} (e.g. \code{matr
 the object will be returned with the rows and/or columns resorted by default.
 This does not apply to the \code{character} method.
 
-Updated 2019-07-28.
+Updated 2019-09-05.
 }
 \section{SummarizedExperiment sample names}{
 
@@ -60,16 +60,18 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## character ====
-autopadZeros(c("A1", "B10"))
+## Left side.
+autopadZeros(c("1-EV-DMSO", "10-EV-DMSO", "2-EV-DMSO-B"))
+## Right side.
 autopadZeros(c("A1", "B10", "C100"))
 
 ## SummarizedExperiment ====
-autopadZeros(rse, rownames = TRUE, colnames = TRUE)
+object <- RangedSummarizedExperiment
+autopadZeros(object, rownames = TRUE, colnames = TRUE)
 
 ## SingleCellExperiment ====
-autopadZeros(sce, rownames = TRUE, colnames = TRUE)
+object <- SingleCellExperiment
+autopadZeros(object, rownames = TRUE, colnames = TRUE)
 }

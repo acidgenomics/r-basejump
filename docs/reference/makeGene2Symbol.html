@@ -8,11 +8,13 @@
 
 <title>Make a Gene2Symbol object — makeGene2Symbol • basejump</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -34,10 +36,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Make a Gene2Symbol object — makeGene2Symbol" />
 
+<meta property="og:title" content="Make a Gene2Symbol object — makeGene2Symbol" />
 <meta property="og:description" content="Make a Gene2Symbol object" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -68,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.13</span>
       </span>
     </div>
 
@@ -90,7 +93,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/acidgenomics/basejump">
@@ -117,20 +119,19 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Make a Gene2Symbol object</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>, <span class='st'>"unmodified"</span>, <span class='st'>"1:1"</span>))
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>,
+  <span class='st'>"unmodified"</span>, <span class='st'>"1:1"</span>))
 
 <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>, <span class='st'>"unmodified"</span>,
   <span class='st'>"1:1"</span>))
 
 <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>, <span class='st'>"unmodified"</span>,
   <span class='st'>"1:1"</span>))</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -156,6 +157,12 @@ available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.</p></td>
     </tr>
     <tr>
+      <th>ignoreTxVersion</th>
+      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>. Don't the include the transcript version
+in the identifier. Only applies when <code>level = "transcripts"</code>. This
+simplifies identifier matching when generating a <code>tx2gene</code> file.</p></td>
+    </tr>
+    <tr>
       <th>format</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
 Formatting method to apply:</p><ul>
@@ -178,33 +185,30 @@ first annotated gene ID.</p></li>
 File path.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>Gene2Symbol</code>.</p>
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Updated 2019-07-28.</p>
-    
     <h2 class="hasAnchor" id="gff-gtf-file"><a class="anchor" href="#gff-gtf-file"></a>GFF/GTF file</h2>
 
     
 
 
 <p>Remote URLs and compressed files are supported.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## makeGene2SymbolFromEnsembl ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.0 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73986: Ensembl 79 EnsDb for Homo sapiens</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.1 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73881: Ensembl 97 EnsDb for Homo sapiens</span>
 #&gt; <span class='message'>Run this code to download EnsDb manually:</span>
 #&gt; <span class='message'>  &gt; library(AnnotationHub)</span>
 #&gt; <span class='message'>  &gt; ah &lt;- AnnotationHub()</span>
-#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH73986"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
-#&gt; <span class='message'>  - Genome Build: "GRCh38"</span>
-#&gt; <span class='message'>  - Ensembl Release: 79L</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>65774 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>2403 non-unique gene symbols detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 65774 rows and 2 columns
+#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH73881"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
+#&gt; <span class='message'>  - Genome build: "GRCh38"</span>
+#&gt; <span class='message'>  - Ensembl release: 97L</span>
+#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>67667 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>3076 non-unique gene symbols detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 67667 rows and 2 columns
 #&gt;                          geneID    geneName
 #&gt;                     &lt;character&gt; &lt;character&gt;
 #&gt; ENSG00000000003 ENSG00000000003      TSPAN6
@@ -213,16 +217,16 @@ File path.</p></td>
 #&gt; ENSG00000000457 ENSG00000000457       SCYL3
 #&gt; ENSG00000000460 ENSG00000000460    C1orf112
 #&gt; ...                         ...         ...
-#&gt; LRG_94                   LRG_94      PRF1.1
-#&gt; LRG_96                   LRG_96    RAB27A.1
-#&gt; LRG_97                   LRG_97      RAC2.1
-#&gt; LRG_98                   LRG_98      RAG1.1
-#&gt; LRG_99                   LRG_99      RAG2.1</div><div class='input'>
+#&gt; LRG_995                 LRG_995     FUBP1.1
+#&gt; LRG_996                 LRG_996     ERBB3.1
+#&gt; LRG_997                 LRG_997      ROS1.1
+#&gt; LRG_998                 LRG_998     CCND3.1
+#&gt; LRG_999                 LRG_999       CIC.1</div><div class='input'>
 <span class='co'>## makeTx2GeneFromEnsDb ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: EnsDb.Hsapiens.v75</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
-#&gt; <span class='message'>  - Genome Build: "GRCh37"</span>
-#&gt; <span class='message'>  - Ensembl Release: 75L</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>64102 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>3075 non-unique gene symbols detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 64102 rows and 2 columns
+#&gt; <span class='message'>  - Genome build: "GRCh37"</span>
+#&gt; <span class='message'>  - Ensembl release: 75L</span>
+#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>64102 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>3075 non-unique gene symbols detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 64102 rows and 2 columns
 #&gt;                          geneID    geneName
 #&gt;                     &lt;character&gt; &lt;character&gt;
 #&gt; ENSG00000000003 ENSG00000000003      TSPAN6
@@ -239,7 +243,7 @@ File path.</p></td>
 <span class='co'>## makeGene2SymbolFromGFF ====</span>
 <span class='co'>## GTF</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"example.gtf"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing 'example.gtf' using 'rtracklayer::import()'.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>17 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 17 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing 'example.gtf' using 'rtracklayer::import()'.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>17 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 17 rows and 2 columns
 #&gt;                                geneID    geneName
 #&gt;                           &lt;character&gt; &lt;character&gt;
 #&gt; ENSMUSG00000025900 ENSMUSG00000025900         Rp1
@@ -255,7 +259,7 @@ File path.</p></td>
 #&gt; ENSMUSG00000104017 ENSMUSG00000104017     Gm37363</div><div class='input'>
 <span class='co'>## GFF3</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"example.gff3"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing 'example.gff3' using 'rtracklayer::import()'.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>20 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 20 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from GFF file.</span></div><div class='output co'>#&gt; <span class='message'>Importing 'example.gff3' using 'rtracklayer::import()'.</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>20 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Gene2Symbol with 20 rows and 2 columns
 #&gt;                                geneID    geneName
 #&gt;                           &lt;character&gt; &lt;character&gt;
 #&gt; ENSMUSG00000025900 ENSMUSG00000025900         Rp1
@@ -274,13 +278,9 @@ File path.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#note">Note</a></li>
-
       <li><a href="#gff-gtf-file">GFF/GTF file</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -294,7 +294,7 @@ File path.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
 
       </footer>

@@ -8,11 +8,13 @@
 
 <title>Match human gene orthologs — matchHumanOrthologs • basejump</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -34,10 +36,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Match human gene orthologs — matchHumanOrthologs" />
 
+<meta property="og:title" content="Match human gene orthologs — matchHumanOrthologs" />
 <meta property="og:description" content="Match human gene orthologs" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -68,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.13</span>
       </span>
     </div>
 
@@ -90,7 +93,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/acidgenomics/basejump">
@@ -117,13 +119,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Match human gene orthologs</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>matchHumanOrthologs</span>(<span class='no'>genes</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -147,7 +147,7 @@ available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>DataFrame</code>.
@@ -158,11 +158,9 @@ Data frame containing mapping columns:</p><ul>
 <li><p>hgncName</p></li>
 </ul>
 
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Updated 2019-08-18.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
@@ -170,21 +168,21 @@ Data frame containing mapping columns:</p><ul>
     <span class='st'>"ENSMUSG00000000028"</span>, <span class='st'>"ENSMUSG00000000031"</span>,
     <span class='st'>"ENSMUSG00000000037"</span>, <span class='st'>"ENSMUSG00000000049"</span>
 )
-<span class='fu'>matchHumanOrthologs</span>(<span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>genes</span>, <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>87L</span>)</div><div class='output co'>#&gt; <span class='message'>Matching orthologs against Ensembl Genes 87 (dec2016.archive.ensembl.org) with biomaRt 2.40.3.</span></div><div class='output co'>#&gt; <span class='message'>Getting Mus musculus gene symbols.</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.0 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73905: Ensembl 97 EnsDb for Mus musculus</span>
+<span class='fu'>matchHumanOrthologs</span>(<span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>genes</span>, <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>87L</span>)</div><div class='output co'>#&gt; <span class='message'>Matching orthologs against Ensembl Genes 87 (dec2016.archive.ensembl.org) with biomaRt 2.40.4.</span></div><div class='output co'>#&gt; <span class='message'>Getting Mus musculus gene symbols.</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.1 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73905: Ensembl 97 EnsDb for Mus musculus</span>
 #&gt; <span class='message'>Run this code to download EnsDb manually:</span>
 #&gt; <span class='message'>  &gt; library(AnnotationHub)</span>
 #&gt; <span class='message'>  &gt; ah &lt;- AnnotationHub()</span>
 #&gt; <span class='message'>  &gt; edb &lt;- ah[["AH73905"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Mus musculus"</span>
-#&gt; <span class='message'>  - Genome Build: "GRCm38"</span>
-#&gt; <span class='message'>  - Ensembl Release: 97L</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>56393 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>768 non-unique gene symbols detected.</span></div><div class='output co'>#&gt; <span class='message'>Returning with unmodified gene symbols (may contain duplicates).</span></div><div class='output co'>#&gt; <span class='message'>Getting Homo sapiens gene symbols.</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.0 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73986: Ensembl 79 EnsDb for Homo sapiens</span>
+#&gt; <span class='message'>  - Genome build: "GRCm38"</span>
+#&gt; <span class='message'>  - Ensembl release: 97L</span>
+#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>56393 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>768 non-unique gene symbols detected.</span></div><div class='output co'>#&gt; <span class='message'>Returning with unmodified gene symbols (may contain duplicates).</span></div><div class='output co'>#&gt; <span class='message'>Getting Homo sapiens gene symbols.</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.1 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73881: Ensembl 97 EnsDb for Homo sapiens</span>
 #&gt; <span class='message'>Run this code to download EnsDb manually:</span>
 #&gt; <span class='message'>  &gt; library(AnnotationHub)</span>
 #&gt; <span class='message'>  &gt; ah &lt;- AnnotationHub()</span>
-#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH73986"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
-#&gt; <span class='message'>  - Genome Build: "GRCh38"</span>
-#&gt; <span class='message'>  - Ensembl Release: 79L</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>65774 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>2403 non-unique gene symbols detected.</span></div><div class='output co'>#&gt; <span class='message'>Returning with unmodified gene symbols (may contain duplicates).</span></div><div class='output co'>#&gt; DataFrame with 6 rows and 4 columns
+#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH73881"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
+#&gt; <span class='message'>  - Genome build: "GRCh38"</span>
+#&gt; <span class='message'>  - Ensembl release: 97L</span>
+#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>67667 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>3076 non-unique gene symbols detected.</span></div><div class='output co'>#&gt; <span class='message'>Returning with unmodified gene symbols (may contain duplicates).</span></div><div class='output co'>#&gt; DataFrame with 6 rows and 4 columns
 #&gt;                                geneID    geneName          hgncID    hgncName
 #&gt;                           &lt;character&gt; &lt;character&gt;     &lt;character&gt; &lt;character&gt;
 #&gt; ENSMUSG00000000001 ENSMUSG00000000001       Gnai3 ENSG00000065135       GNAI3
@@ -198,11 +196,8 @@ Data frame containing mapping columns:</p><ul>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#note">Note</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -216,7 +211,7 @@ Data frame containing mapping columns:</p><ul>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
 
       </footer>

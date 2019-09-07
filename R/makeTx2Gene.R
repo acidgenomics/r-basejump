@@ -5,7 +5,7 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeTx2Gene
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-09-05.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -36,7 +36,7 @@ NULL
 
 #' @rdname makeTx2Gene
 #' @export
-## Updated 2019-07-22.
+## Updated 2019-09-05.
 makeTx2GeneFromEnsembl <-
     function() {
         gr <- do.call(
@@ -47,7 +47,7 @@ makeTx2GeneFromEnsembl <-
     }
 
 f <- formals(makeGRangesFromEnsembl)
-f <- f[setdiff(names(f), c("level", "metadata", "..."))]
+f <- f[setdiff(names(f), "level")]
 formals(makeTx2GeneFromEnsembl) <- f
 
 
@@ -56,19 +56,33 @@ formals(makeTx2GeneFromEnsembl) <- f
 #' @export
 ## Updated 2019-07-22.
 makeTx2GeneFromEnsDb <- function(object) {
-    gr <- makeGRangesFromEnsDb(object, level = "transcripts")
+    gr <- do.call(
+        what = makeGRangesFromEnsDb,
+        args = matchArgsToDoCall(args = list(level = "transcripts"))
+    )
     Tx2Gene(gr)
 }
+
+f <- formals(makeGRangesFromEnsDb)
+f <- f[setdiff(names(f), "level")]
+formals(makeTx2GeneFromEnsDb) <- f
 
 
 
 #' @rdname makeTx2Gene
 #' @export
-## Updated 2019-07-22.
+## Updated 2019-09-05.
 makeTx2GeneFromGFF <- function(file) {
-    gr <- makeGRangesFromGFF(file, level = "transcripts")
+    gr <- do.call(
+        what = makeGRangesFromGFF,
+        args = matchArgsToDoCall(args = list(level = "transcripts"))
+    )
     Tx2Gene(gr)
 }
+
+f <- formals(makeGRangesFromGFF)
+f <- f[setdiff(names(f), c("level", ".checkAgainstTxDb"))]
+formals(makeTx2GeneFromGFF) <- f
 
 
 

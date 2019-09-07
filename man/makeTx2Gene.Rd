@@ -8,11 +8,12 @@
 \alias{makeTx2GeneFromGTF}
 \title{Make a Tx2Gene object}
 \usage{
-makeTx2GeneFromEnsembl(organism, genomeBuild = NULL, release = NULL)
+makeTx2GeneFromEnsembl(organism, genomeBuild = NULL, release = NULL,
+  ignoreTxVersion = TRUE)
 
-makeTx2GeneFromEnsDb(object)
+makeTx2GeneFromEnsDb(object, ignoreTxVersion = TRUE)
 
-makeTx2GeneFromGFF(file)
+makeTx2GeneFromGFF(file, ignoreTxVersion = TRUE)
 }
 \arguments{
 \item{organism}{\code{character(1)}.
@@ -30,6 +31,10 @@ available via AnnotationHub/ensembldb is used. Note that the latest version
 available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.}
 
+\item{ignoreTxVersion}{\code{logical(1)}. Don't the include the transcript version
+in the identifier. Only applies when \code{level = "transcripts"}. This
+simplifies identifier matching when generating a \code{tx2gene} file.}
+
 \item{object}{Object.}
 
 \item{file}{\code{character(1)}.
@@ -42,7 +47,7 @@ File path.}
 Make a Tx2Gene object
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-09-05.
 }
 \section{GFF/GTF file}{
 

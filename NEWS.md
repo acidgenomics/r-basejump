@@ -1,4 +1,24 @@
+## basejump 0.11.13 (2019-06-06)
+
+### Major changes
+
+- `autopadZeros`: Added improved support for detection and automatic handling
+  of zeros in need of padding on the left side of a character vector. This
+  addition is necessary for handling of Genewiz processed FASTQ file names.
+- `makeTx2Gene` functions now support `ignoreTxVersion` argument, similar to
+  conventions defined in tximport package.
+
+### Minor changes
+
+- `importSampleData`: Updated to tentatively support a general pipeline via the
+  "none" argument. In this case, only a `sampleID` column is required in
+  metadata. This is been developed in conjunction with my new Genewiz to
+  kallisto Nextflow processing pipeline being implemented at CPI.
+  
+
 ## basejump 0.11.12 (2019-09-03)
+
+### Minor changes
 
 - `melt`: Added method support for contingency `table` class.
 - Removed `set_*` reexports from magrittr packages.
