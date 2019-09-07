@@ -1,7 +1,3 @@
-## Consider adding "cpi-to-bcbio" metadata import support here.
-
-
-
 #' Import sample metadata
 #'
 #' This function imports user-defined sample metadata saved in a spreadsheet.
@@ -40,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-09-05.
+#' @note Updated 2019-09-06.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -71,7 +67,9 @@ importSampleData <- function(
     pipeline = c("bcbio", "cellranger", "none")
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
-    if (!hasLength(lanes)) lanes <- 0L
+    if (!hasLength(lanes)) {
+        lanes <- 0L
+    }
     assert(
         isAFile(file) || containsAURL(file),
         isInt(lanes),
@@ -110,6 +108,12 @@ importSampleData <- function(
     } else if (identical(pipeline, "none")) {
         idCol <- "sampleID"
     }
+    ## Don't allow the user to set `sampleID` column manually, except when no
+    ## pipeline is specified.
+    if (!identical(pipeline, "none")) {
+        assert(areDisjointSets("sampleID", colnames(data)))
+    }
+    ## Check that input passes blacklist, and has all required columns.
     assert(.isSampleData(object = data, requiredCols = requiredCols))
     ## Valid rows must contain a non-empty sample identifier.
     data <- data[!is.na(data[[idCol]]), , drop = FALSE]
