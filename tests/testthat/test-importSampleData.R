@@ -213,8 +213,12 @@ test_that("'sampleID' column defined by user", {
         "bcbio-metadata-demultiplexed-invalid-sample-id.csv"
     )
     expect_error(
-        object = importSampleData(file),
+        object = importSampleData(file, pipeline = "bcbio"),
         regexp = "sampleID"
+    )
+    expect_s4_class(
+        object = importSampleData(file, pipeline = "none"),
+        class = "DataFrame"
     )
 })
 
