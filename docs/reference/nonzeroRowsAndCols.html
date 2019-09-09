@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Markdown header — markdownHeader • basejump</title>
+<title>Subset object to keep only non-zero rows and columns — nonzeroRowsAndCols • basejump</title>
 
 
 <!-- jquery -->
@@ -37,9 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Markdown header — markdownHeader" />
-<meta property="og:description" content="Generate a Markdown header (levels 1-7) in any R Markdown code block. When
-calling inside an asis chunk, set asis = TRUE." />
+<meta property="og:title" content="Subset object to keep only non-zero rows and columns — nonzeroRowsAndCols" />
+<meta property="og:description" content="Subset object to keep only non-zero rows and columns" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,76 +113,65 @@ calling inside an asis chunk, set asis = TRUE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Markdown header</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/markdownHeader.R'><code>R/markdownHeader.R</code></a></small>
-    <div class="hidden name"><code>markdownHeader.Rd</code></div>
+    <h1>Subset object to keep only non-zero rows and columns</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/nonzeroRowsAndCols-methods.R'><code>R/nonzeroRowsAndCols-methods.R</code></a></small>
+    <div class="hidden name"><code>nonzeroRowsAndCols.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Generate a Markdown header (levels 1-7) in any R Markdown code block. When
-calling inside an <code>asis</code> chunk, set <code>asis = TRUE</code>.</p>
+    <p>Subset object to keep only non-zero rows and columns</p>
     </div>
 
-    <pre class="usage"><span class='fu'>markdownHeader</span>(<span class='no'>text</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for Matrix</span>
+<span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for DelayedArray</span>
+<span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>text</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Text.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>level</th>
-      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
-Markdown header level (1-7).</p></td>
-    </tr>
-    <tr>
-      <th>tabset</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Include tabset marker.</p></td>
-    </tr>
-    <tr>
-      <th>asis</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Set this to <code>TRUE</code> when using the function inside a loop or inside an R
-Markdown chunk with '<code>results = "asis"</code>' enabled.</p></td>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-<ul>
-<li><p><code>asis = TRUE</code>: <code><a href='https://rdrr.io/pkg/knitr/man/asis_output.html'>knitr::asis_output()</a></code> return.</p></li>
-<li><p><code>asis = FALSE</code>: <code><a href='https://rdrr.io/r/base/writeLines.html'>writeLines()</a></code> return.</p></li>
-</ul>
-
+    <p>Modified object.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-18.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='https://daringfireball.net/projects/markdown/syntax'>Markdown Syntax</a>.</p></div>
+    <p>Updated 2019-08-23.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; [1] "## Header\n"
-#&gt; attr(,"format")
-#&gt; [1] "markdown"
-#&gt; attr(,"class")
-#&gt; [1] "knit_asis"
-#&gt; attr(,"knit_cacheable")
-#&gt; [1] NA</div><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "## Header {.tabset}\n"
-#&gt; attr(,"format")
-#&gt; [1] "markdown"
-#&gt; attr(,"class")
-#&gt; [1] "knit_asis"
-#&gt; attr(,"knit_cacheable")
-#&gt; [1] NA</div><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; 
-#&gt; 
-#&gt; ## Header
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
+    <span class='no'>RangedSummarizedExperiment</span>,
+    <span class='no'>SingleCellExperiment</span>,
+    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
+)
+
+<span class='co'>## SummarizedExperiment ====</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; [1] 500  12</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 500  12</div><div class='input'>
+<span class='co'>## SingleCellExperiment ====</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; [1] 500 100</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Filtered zero count rows and columns:</span>
+#&gt; <span class='message'>  - 478 / 500 rows (95.6%)</span>
+#&gt; <span class='message'>  - 100 / 100 columns (100%)</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 478 100</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -191,7 +179,6 @@ Markdown chunk with '<code>results = "asis"</code>' enabled.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#note">Note</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

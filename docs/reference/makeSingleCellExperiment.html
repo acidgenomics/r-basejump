@@ -73,7 +73,7 @@ of transgenes and spike-ins." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
       </span>
     </div>
 
@@ -130,14 +130,14 @@ of transgenes and spike-ins.</p>
 
 <span class='co'># S4 method for SimpleList</span>
 <span class='fu'>makeSingleCellExperiment</span>(<span class='no'>assays</span>,
-  <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span>(), <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
-  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(),
+  <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'>GRangesList</span>(), <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'>DataFrame</span>(),
+  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'>SimpleList</span>(),
   <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for list</span>
 <span class='fu'>makeSingleCellExperiment</span>(<span class='no'>assays</span>,
-  <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span>(), <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
-  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(),
+  <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='fu'>GRangesList</span>(), <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'>DataFrame</span>(),
+  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'>SimpleList</span>(),
   <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -224,11 +224,11 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 
 <span class='co'>## SimpleList ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>assays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span>(<span class='no'>object</span>)
-<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/DelayedArray/man/DelayedMatrix-stats.html'>rowRanges</a></span>(<span class='no'>object</span>)
-<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span>(<span class='no'>object</span>)
-<span class='no'>metadata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/Annotated-class.html'>metadata</a></span>(<span class='no'>object</span>)
-<span class='no'>reducedDims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SingleCellExperiment/man/SCE-reducedDims.html'>reducedDims</a></span>(<span class='no'>object</span>)
+<span class='no'>assays</span> <span class='kw'>&lt;-</span> <span class='fu'>assays</span>(<span class='no'>object</span>)
+<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'>rowRanges</span>(<span class='no'>object</span>)
+<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'>colData</span>(<span class='no'>object</span>)
+<span class='no'>metadata</span> <span class='kw'>&lt;-</span> <span class='fu'>metadata</span>(<span class='no'>object</span>)
+<span class='no'>reducedDims</span> <span class='kw'>&lt;-</span> <span class='fu'>reducedDims</span>(<span class='no'>object</span>)
 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeSingleCellExperiment</span>(
     <span class='kw'>assays</span> <span class='kw'>=</span> <span class='no'>assays</span>,

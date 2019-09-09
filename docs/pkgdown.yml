@@ -1,6 +1,5 @@
 pandoc: 1.12.3.1
 pkgdown: 1.4.0
 pkgdown_sha: ~
-articles:
-  basejump: basejump.html
+articles: []
 
