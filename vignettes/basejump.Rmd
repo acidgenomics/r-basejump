@@ -40,22 +40,6 @@ data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment
 ```
 
-This vignette focuses on the most common user-facing functions that fall into the following categories:
-
-- Annotation functions
-- Read/write functions
-- Data functions
-- Syntactic naming functions
-- Math and science functions
-
-There are additional function families whose functionality lie outside the scope of this vignette. Consult the [basejump][] website or package documentation for more information of these types of functions, which are more technical in nature and predominantly developer-facing:
-
-- R Markdown functions
-- Atomic vector functions
-- Coercion methods
-- Developer functions
-- Assert check functions
-
 # The S4 object system
 
 The [basejump][] package defines generics and methods for object-oriented programming with the S4 object system, which is used extensively by the [Bioconductor][] project. These resources describe the S4 object system in detail:
