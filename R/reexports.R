@@ -329,14 +329,6 @@ syntactic::makeTitle
 #' @export
 syntactic::makeWords
 
-#' @importFrom syntactic mcolnames
-#' @export
-syntactic::mcolnames
-
-#' @importFrom syntactic mcolnames<-
-#' @export
-syntactic::`mcolnames<-`
-
 #' @importFrom syntactic snake
 #' @export
 syntactic::snake
