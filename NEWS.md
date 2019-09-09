@@ -1,4 +1,11 @@
-## basejump 0.11.13 (2019-06-06)
+## basejump 0.11.14 (2019-09-09)
+
+### Minor changes
+
+- `mcolnames`: Moved S4 methods previously defined in syntactic here.
+- Improved website documentation.
+
+## basejump 0.11.13 (2019-09-06)
 
 ### Major changes
 

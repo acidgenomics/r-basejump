@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
       </span>
     </div>
 
@@ -298,12 +298,12 @@ samples.</p></li>
 #&gt; transcript4                  .</div><div class='input'>
 <span class='co'>## SummarizedExperiment</span>
 <span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment</a></span>(
-    <span class='kw'>assays</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(<span class='kw'>counts</span> <span class='kw'>=</span> <span class='no'>counts</span>),
-    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(
+    <span class='kw'>assays</span> <span class='kw'>=</span> <span class='fu'>SimpleList</span>(<span class='kw'>counts</span> <span class='kw'>=</span> <span class='no'>counts</span>),
+    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'>DataFrame</span>(
         <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>samples</span>)),
         <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>samples</span>
     ),
-    <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(<span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>genes</span>)
+    <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='fu'>DataFrame</span>(<span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='no'>genes</span>)
 )
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 4 4 

@@ -17,7 +17,7 @@
 #'
 #' @name makeSummarizedExperiment
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sort `logical(1)`.
@@ -160,7 +160,7 @@ NULL
         rowData <- NULL
         assert(areIntersectingSets(rownames(assay), names(rowRanges)))
         setdiff <- setdiff(rownames(assay), names(rowRanges))
-        mcolnames <- mcolnames(rowRanges)
+        mcolnames <- names(mcols(rowRanges))
         if (hasLength(mcolnames)) {
             assert(
                 validNames(mcolnames),

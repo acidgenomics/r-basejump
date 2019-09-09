@@ -72,7 +72,7 @@ colData()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
       </span>
     </div>
 
@@ -152,7 +152,7 @@ colData()." />
 
     <p>This function adheres to the following conventions:</p><ul>
 <li><p>All column names will be converted to lower camel case
-(see <code><a href='https://rdrr.io/pkg/bioverbs/man/camelCase.html'>camelCase()</a></code> for details).</p></li>
+(see <code>camelCase()</code> for details).</p></li>
 <li><p>Required columns:</p><ul>
 <li><p><code>sampleName</code>: Human readable sample names. Note that this column is
 useful for plots and doesn't have to match the column names of a
@@ -175,7 +175,7 @@ useful for plots and doesn't have to match the column names of a
     <div class='dont-index'><p><code>makeNames</code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(
+    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>DataFrame</span>(
     <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"control"</span>, <span class='st'>"wildtype"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>2L</span>),
     <span class='kw'>treatment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"vector"</span>, <span class='st'>"RNAi"</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>),
     <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4L</span>)),
