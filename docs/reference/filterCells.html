@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
       </span>
     </div>
 
@@ -144,14 +144,14 @@
 Minimum/maximum number of counts per cell.
 Applies to UMI disambiguated counts for droplet scRNA-seq.
 Matches <code>nUMI</code> then <code>nCount</code> column in
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code> internally.
+<code>colData()</code> internally.
 Previously named <code>minUMIs</code>/<code>maxUMIs</code> in bcbioSingleCell.</p></td>
     </tr>
     <tr>
       <th>minFeatures, maxFeatures</th>
       <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
 Minimum/maximum number of features (i.e. genes) detected.
-Matches <code>nFeature</code>in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code> internally.
+Matches <code>nFeature</code>in <code>colData()</code> internally.
 Previously named <code>minGenes</code>/<code>maxGenes</code> in bcbioSingleCell.</p></td>
     </tr>
     <tr>
@@ -159,7 +159,7 @@ Previously named <code>minGenes</code>/<code>maxGenes</code> in bcbioSingleCell.
       <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> (<code>0</code>-<code>1</code>).
 Minimum novelty score (log10 features per UMI).
 Matches <code>log10FeaturesPerCount</code> then <code>log10FeaturesPerUMI</code> (legacy)
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code> internally.</p></td>
+<code>colData()</code> internally.</p></td>
     </tr>
     <tr>
       <th>maxMitoRatio</th>
@@ -198,8 +198,8 @@ Column mapping name.</p></td>
 mitochondrial abundance cutoffs to cellular barcodes. By default we recommend
 applying the same filtering cutoff to all samples. The filtering parameters
 now support per-sample cutoffs, defined using a named <code>numeric</code> vector. When
-matching per sample, be sure to use the <code><a href='sampleNames.html'>sampleNames()</a></code> return values (i.e.
-the <code>sampleName</code> column in <code><a href='sampleData.html'>sampleData()</a></code>).</p>
+matching per sample, be sure to use the <code>sampleNames()</code> return values (i.e.
+the <code>sampleName</code> column in <code>sampleData()</code>).</p>
 <p>Filtering information gets slotted into <code><a href='https://rdrr.io/pkg/S4Vectors/man/Annotated-class.html'>metadata()</a></code>
 as <code>filterCells</code> metadata.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
@@ -235,7 +235,7 @@ as <code>filterCells</code> metadata.</p>
 #&gt; reducedDimNames(0):
 #&gt; spikeNames(0):</div><div class='input'>
 <span class='co'>## Per sample cutoffs.</span>
-<span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt;   sample1   sample2 
+<span class='fu'>sampleNames</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt;   sample1   sample2 
 #&gt; "sample1" "sample2" </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>filterCells</span>(
     <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
     <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>sample1</span> <span class='kw'>=</span> <span class='fl'>100L</span>)

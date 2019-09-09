@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
       </span>
     </div>
 
@@ -77,7 +77,7 @@
       <h1>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">6 September 2019</h4>
+            <h4 class="date">9 September 2019</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/acidgenomics/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -98,22 +98,6 @@
 <span class="kw"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="dt">acid.test =</span> <span class="ot">TRUE</span>)
 <span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(RangedSummarizedExperiment, <span class="dt">package =</span> <span class="st">"acidtest"</span>)
 rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
-<p>This vignette focuses on the most common user-facing functions that fall into the following categories:</p>
-<ul>
-<li>Annotation functions</li>
-<li>Read/write functions</li>
-<li>Data functions</li>
-<li>Syntactic naming functions</li>
-<li>Math and science functions</li>
-</ul>
-<p>There are additional function families whose functionality lie outside the scope of this vignette. Consult the <a href="https://basejump.acidgenomics.com/">basejump</a> website or package documentation for more information of these types of functions, which are more technical in nature and predominantly developer-facing:</p>
-<ul>
-<li>R Markdown functions</li>
-<li>Atomic vector functions</li>
-<li>Coercion methods</li>
-<li>Developer functions</li>
-<li>Assert check functions</li>
-</ul>
 </div>
 <div id="the-s4-object-system" class="section level1">
 <h1 class="hasAnchor">
@@ -158,17 +142,17 @@ rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
 ## 
 ## other attached packages:
 ##  [1] SummarizedExperiment_1.14.1 DelayedArray_0.10.0        
-##  [3] BiocParallel_1.18.1         matrixStats_0.54.0         
-##  [5] Biobase_2.44.0              GenomicRanges_1.36.0       
+##  [3] BiocParallel_1.18.1         matrixStats_0.55.0         
+##  [5] Biobase_2.44.0              GenomicRanges_1.36.1       
 ##  [7] GenomeInfoDb_1.20.0         IRanges_2.18.2             
 ##  [9] S4Vectors_0.22.0            BiocGenerics_0.30.0        
-## [11] basejump_0.11.13            BiocStyle_2.12.0           
+## [11] basejump_0.11.14            BiocStyle_2.12.0           
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] ProtGenerics_1.16.0           bitops_1.0-6                 
 ##  [3] fs_1.3.1                      bit64_0.9-7                  
 ##  [5] progress_1.2.2                httr_1.4.1                   
-##  [7] rprojroot_1.3-2               syntactic_0.2.4              
+##  [7] rprojroot_1.3-2               syntactic_0.2.5              
 ##  [9] tools_3.6.1                   backports_1.1.4              
 ## [11] R6_2.4.0                      colorspace_1.4-1             
 ## [13] lazyeval_0.2.2                DBI_1.0.0                    
@@ -176,7 +160,7 @@ rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
 ## [17] prettyunits_1.0.2             bit_1.1-14                   
 ## [19] curl_4.0                      compiler_3.6.1               
 ## [21] cli_1.1.0                     desc_1.2.0                   
-## [23] rtracklayer_1.44.3            bookdown_0.13                
+## [23] rtracklayer_1.44.4            bookdown_0.13                
 ## [25] scales_1.0.0                  rappdirs_0.3.1               
 ## [27] pkgdown_1.4.0                 stringr_1.4.0                
 ## [29] digest_0.6.20                 Rsamtools_2.0.0              
@@ -198,7 +182,7 @@ rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
 ## [61] blob_1.2.0                    transformer_0.2.6            
 ## [63] promises_1.0.1                crayon_1.3.4                 
 ## [65] lattice_0.20-38               Biostrings_2.52.0            
-## [67] bioverbs_0.2.8                GenomicFeatures_1.36.4       
+## [67] bioverbs_0.2.9                GenomicFeatures_1.36.4       
 ## [69] hms_0.5.1                     zeallot_0.1.0                
 ## [71] knitr_1.24                    pillar_1.4.2                 
 ## [73] biomaRt_2.40.4                XML_3.98-1.20                
