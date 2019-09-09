@@ -43,6 +43,7 @@ reference:
       - humanize
       - interestingGroups
       - lfcThreshold
+      - mcolnames
       - microplate
       - organism
       - uniteInterestingGroups
@@ -88,7 +89,8 @@ reference:
     contents:
       - starts_with("detect")
       - formalsList
-      - starts_with("match")
+      - matchInterestingGroups
+      - starts_with("matches")
       - multiassignAsEnvir
       - separator
       - showHeader

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Markdown header — markdownHeader • basejump</title>
+<title>Import transcript-to-gene annotations — importTx2Gene • basejump</title>
 
 
 <!-- jquery -->
@@ -37,9 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Markdown header — markdownHeader" />
-<meta property="og:description" content="Generate a Markdown header (levels 1-7) in any R Markdown code block. When
-calling inside an asis chunk, set asis = TRUE." />
+<meta property="og:title" content="Import transcript-to-gene annotations — importTx2Gene" />
+<meta property="og:description" content="Generates a Tx2Gene object containing transcriptID and geneID columns." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,76 +113,74 @@ calling inside an asis chunk, set asis = TRUE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Markdown header</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/markdownHeader.R'><code>R/markdownHeader.R</code></a></small>
-    <div class="hidden name"><code>markdownHeader.Rd</code></div>
+    <h1>Import transcript-to-gene annotations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/importTx2Gene.R'><code>R/importTx2Gene.R</code></a></small>
+    <div class="hidden name"><code>importTx2Gene.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Generate a Markdown header (levels 1-7) in any R Markdown code block. When
-calling inside an <code>asis</code> chunk, set <code>asis = TRUE</code>.</p>
+    <p>Generates a <code>Tx2Gene</code> object containing <code>transcriptID</code> and <code>geneID</code> columns.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>markdownHeader</span>(<span class='no'>text</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>importTx2Gene</span>(<span class='no'>file</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>text</th>
+      <th>file</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Text.</p></td>
+File path.</p></td>
     </tr>
     <tr>
-      <th>level</th>
+      <th>organism</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Full Latin organism name (e.g. <code>"Homo sapiens"</code>).</p></td>
+    </tr>
+    <tr>
+      <th>genomeBuild</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Ensembl genome build assembly name (e.g. <code>"GRCh38"</code>). If set <code>NULL</code>,
+defaults to the most recent build available.
+Note: don't pass in UCSC build IDs (e.g. <code>"hg38"</code>).</p></td>
+    </tr>
+    <tr>
+      <th>ensemblRelease</th>
       <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
-Markdown header level (1-7).</p></td>
-    </tr>
-    <tr>
-      <th>tabset</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Include tabset marker.</p></td>
-    </tr>
-    <tr>
-      <th>asis</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Set this to <code>TRUE</code> when using the function inside a loop or inside an R
-Markdown chunk with '<code>results = "asis"</code>' enabled.</p></td>
+Ensembl release version (e.g. <code>90</code>). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-<ul>
-<li><p><code>asis = TRUE</code>: <code><a href='https://rdrr.io/pkg/knitr/man/asis_output.html'>knitr::asis_output()</a></code> return.</p></li>
-<li><p><code>asis = FALSE</code>: <code><a href='https://rdrr.io/r/base/writeLines.html'>writeLines()</a></code> return.</p></li>
-</ul>
-
+    <p><code>Tx2Gene</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-18.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='https://daringfireball.net/projects/markdown/syntax'>Markdown Syntax</a>.</p></div>
+    <p>File should not contain column header names.</p>
+<p>The functon doesn't attempt to strip transcript versions. Use
+<code>stripTranscriptVersions()</code> in a separate call, if necessary.</p>
+<p>Updated 2019-08-13.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; [1] "## Header\n"
-#&gt; attr(,"format")
-#&gt; [1] "markdown"
-#&gt; attr(,"class")
-#&gt; [1] "knit_asis"
-#&gt; attr(,"knit_cacheable")
-#&gt; [1] NA</div><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "## Header {.tabset}\n"
-#&gt; attr(,"format")
-#&gt; [1] "markdown"
-#&gt; attr(,"class")
-#&gt; [1] "knit_asis"
-#&gt; attr(,"knit_cacheable")
-#&gt; [1] NA</div><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; 
-#&gt; 
-#&gt; ## Header
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"tx2gene.csv"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importTx2Gene</span>(
+    <span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>,
+    <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Mus musculus"</span>,
+    <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCm38"</span>,
+    <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>90L</span>
+)</div><div class='output co'>#&gt; <span class='message'>Importing 'tx2gene.csv' using 'data.table::fread()'.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 5 rows and 2 columns
+#&gt;                          transcriptID             geneID
+#&gt;                           &lt;character&gt;        &lt;character&gt;
+#&gt; ENSMUST00000033908 ENSMUST00000033908 ENSMUSG00000031511
+#&gt; ENSMUST00000070080 ENSMUST00000070080 ENSMUSG00000056124
+#&gt; ENSMUST00000119854 ENSMUST00000119854 ENSMUSG00000037736
+#&gt; ENSMUST00000174016 ENSMUST00000174016 ENSMUSG00000036036
+#&gt; ENSMUST00000204196 ENSMUST00000204196 ENSMUSG00000029804</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -191,7 +188,6 @@ Markdown chunk with '<code>results = "asis"</code>' enabled.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#note">Note</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
