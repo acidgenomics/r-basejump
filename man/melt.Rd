@@ -14,25 +14,25 @@
 melt(object, ...)
 
 \S4method{melt}{matrix}(object, colnames = c("rowname", "colname",
-  "value"), min = NULL, minMethod = c("perRow", "absolute"),
+  "value"), min = -Inf, minMethod = c("absolute", "perRow"),
   trans = c("identity", "log2", "log10"))
 
 \S4method{melt}{table}(object, colnames = c("rowname", "colname",
   "value"))
 
 \S4method{melt}{Matrix}(object, colnames = c("rowname", "colname",
-  "value"), min = NULL, minMethod = c("perRow", "absolute"),
+  "value"), min = -Inf, minMethod = c("absolute", "perRow"),
   trans = c("identity", "log2", "log10"))
 
 \S4method{melt}{DataFrame}(object, colnames = c("rowname", "colname",
   "value"))
 
-\S4method{melt}{SummarizedExperiment}(object, assay = 1L, min = NULL,
-  minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
+\S4method{melt}{SummarizedExperiment}(object, assay = 1L, min = -Inf,
+  minMethod = c("absolute", "perRow"), trans = c("identity", "log2",
   "log10"))
 
-\S4method{melt}{SingleCellExperiment}(object, assay = 1L, min = NULL,
-  minMethod = c("perRow", "absolute"), trans = c("identity", "log2",
+\S4method{melt}{SingleCellExperiment}(object, assay = 1L, min = -Inf,
+  minMethod = c("absolute", "perRow"), trans = c("identity", "log2",
   "log10"))
 }
 \arguments{
@@ -43,20 +43,21 @@ Column name mappings for melted data frame return.
 Currently only applies to \code{matrix} and \code{DataFrame} methods.
 Standardized for \code{SummarizedExperiment} and \code{SingleCellExperiment}.}
 
-\item{min}{\code{integer(1)} or \code{NULL}.
+\item{min}{\code{numeric(1)} or \code{NULL}.
 Minimum count threshold to apply. Filters using "greater than or equal to"
 logic internally. Note that this threshold gets applied prior to
-logarithmic transformation, when \code{trans} argument applies.}
+logarithmic transformation, when \code{trans} argument applies.
+Use \code{-Inf} or \code{NULL} to disable.}
 
 \item{minMethod}{\code{character(1)}.
 Only applies when \code{min} argument is numeric.
 Uses \code{\link[base:match.arg]{match.arg()}}.
 \itemize{
-\item \code{perRow}: \emph{Recommended}. Applies cutoff per row (i.e. gene).
-Internally, \code{\link[base:rowSums]{rowSums()}} values are checked against this
-cutoff threshold prior to the melt operation.
 \item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
 operation. This applies to all counts, not per feature.
+\item \code{perRow}: Applies cutoff per row (i.e. gene). Internally,
+\code{\link[base:rowSums]{rowSums()}} values are checked against this cutoff
+threshold prior to the melt operation.
 }}
 
 \item{trans}{\code{character(1)}.
@@ -75,7 +76,7 @@ Assay name or index position.}
 Unpivot column data from wide format to long format.
 }
 \note{
-Updated 2019-08-27.
+Updated 2019-09-15.
 }
 \examples{
 data(
