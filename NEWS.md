@@ -1,3 +1,12 @@
+## basejump 0.11.15 (2019-09-15)
+
+### Major changes
+
+- `melt`: Updated `min` and `minMethod` defaults for `matrix` method. The `min`
+  argument now defaults to `-Inf`, and the `minMethod` now defaults to
+  `"absolute"`, instead of `"perRow"`, since this behavior is more intuitive to
+  the user.
+
 ## basejump 0.11.14 (2019-09-09)
 
 ### Minor changes
