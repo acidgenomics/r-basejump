@@ -127,11 +127,14 @@ NULL
         assert(
             hasColnames(object),
             hasRownames(object),
-            isInt(min, nullOK = TRUE)
+            isNumber(min, nullOK = TRUE)
         )
         minMethod <- match.arg(minMethod)
         trans <- match.arg(trans)
-        if (isInt(min) && identical(minMethod, "perRow")) {
+        if (
+            identical(minMethod, "perRow") &&
+            isTRUE(is.finite(min))
+        ) {
             keep <- rowSums(object) >= min
             if (identical(minMethod, "perRow")) {
                 message(sprintf(
@@ -144,7 +147,7 @@ NULL
                         msg2 = "features"
                     ),
                     minMethod,
-                    rowCutoff
+                    as.character(min)
                 ))
             }
             object <- object[keep, , drop = FALSE]
@@ -152,12 +155,15 @@ NULL
         valueCol <- colnames[[3L]]
         data <- .melt(object = object, colnames = colnames)
         data <- encode(data)
-        if (isInt(min) && identical(minMethod, "absolute")) {
+        if (
+            identical(minMethod, "absolute") &&
+            isTRUE(is.finite(min))
+        ) {
             nPrefilter <- nrow(data)
             keep <- data[[valueCol]] >= min
             data <- data[keep, , drop = FALSE]
             message(sprintf(
-                "%d / %d %s passed '%s' >= %d expression cutoff.",
+                "%d / %d %s passed '%s' >= %s expression cutoff.",
                 nrow(data),
                 nPrefilter,
                 ngettext(
@@ -166,7 +172,7 @@ NULL
                     msg2 = "features"
                 ),
                 minMethod,
-                min
+                as.character(min)
             ))
         }
         ## Log transform the value, if desired.
