@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.15</span>
       </span>
     </div>
 
@@ -126,7 +126,7 @@
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>melt</span>(<span class='no'>object</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>,
-  <span class='st'>"value"</span>), <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"perRow"</span>, <span class='st'>"absolute"</span>),
+  <span class='st'>"value"</span>), <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
   <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>))
 
 <span class='co'># S4 method for table</span>
@@ -135,7 +135,7 @@
 
 <span class='co'># S4 method for Matrix</span>
 <span class='fu'>melt</span>(<span class='no'>object</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>,
-  <span class='st'>"value"</span>), <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"perRow"</span>, <span class='st'>"absolute"</span>),
+  <span class='st'>"value"</span>), <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
   <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>))
 
 <span class='co'># S4 method for DataFrame</span>
@@ -143,13 +143,13 @@
   <span class='st'>"value"</span>))
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>melt</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"perRow"</span>, <span class='st'>"absolute"</span>), <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>,
+<span class='fu'>melt</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
+  <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>), <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>,
   <span class='st'>"log10"</span>))
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>melt</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"perRow"</span>, <span class='st'>"absolute"</span>), <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>,
+<span class='fu'>melt</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
+  <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>), <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>,
   <span class='st'>"log10"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -168,21 +168,22 @@ Standardized for <code>SummarizedExperiment</code> and <code>SingleCellExperimen
     </tr>
     <tr>
       <th>min</th>
-      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> or <code>NULL</code>.
+      <td><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code> or <code>NULL</code>.
 Minimum count threshold to apply. Filters using "greater than or equal to"
 logic internally. Note that this threshold gets applied prior to
-logarithmic transformation, when <code>trans</code> argument applies.</p></td>
+logarithmic transformation, when <code>trans</code> argument applies.
+Use <code>-Inf</code> or <code>NULL</code> to disable.</p></td>
     </tr>
     <tr>
       <th>minMethod</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
 Only applies when <code>min</code> argument is numeric.
 Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code>.</p><ul>
-<li><p><code>perRow</code>: <em>Recommended</em>. Applies cutoff per row (i.e. gene).
-Internally, <code><a href='https://rdrr.io/r/base/colSums.html'>rowSums()</a></code> values are checked against this
-cutoff threshold prior to the melt operation.</p></li>
 <li><p><code>absolute</code>: Applies hard cutoff to <code>counts</code> column after the melt
 operation. This applies to all counts, not per feature.</p></li>
+<li><p><code>perRow</code>: Applies cutoff per row (i.e. gene). Internally,
+<code><a href='https://rdrr.io/r/base/colSums.html'>rowSums()</a></code> values are checked against this cutoff
+threshold prior to the melt operation.</p></li>
 </ul></td>
     </tr>
     <tr>
@@ -207,7 +208,7 @@ Assay name or index position.</p></td>
     <p><code>DataFrame</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-27.</p>
+    <p>Updated 2019-09-15.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>tidyr:</p><pre>methods("gather")
@@ -288,7 +289,7 @@ getS3method("melt", "data.frame", envir = asNamespace("tidyr"))
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
