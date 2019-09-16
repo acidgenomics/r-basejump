@@ -1,25 +1,26 @@
 #' @name melt
 #' @inherit bioverbs::melt
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
 #' @param colnames `character(3)`.
 #'   Column name mappings for melted data frame return.
 #'   Currently only applies to `matrix` and `DataFrame` methods.
 #'   Standardized for `SummarizedExperiment` and `SingleCellExperiment`.
-#' @param min `integer(1)` or `NULL`.
+#' @param min `numeric(1)` or `NULL`.
 #'   Minimum count threshold to apply. Filters using "greater than or equal to"
 #'   logic internally. Note that this threshold gets applied prior to
 #'   logarithmic transformation, when `trans` argument applies.
+#'   Use `-Inf` or `NULL` to disable.
 #' @param minMethod `character(1)`.
 #'   Only applies when `min` argument is numeric.
 #'   Uses [`match.arg()`][base::match.arg].
 #'
-#'   - `perRow`: *Recommended*. Applies cutoff per row (i.e. gene).
-#'     Internally, [`rowSums()`][base::rowSums] values are checked against this
-#'     cutoff threshold prior to the melt operation.
 #'   - `absolute`: Applies hard cutoff to `counts` column after the melt
 #'     operation. This applies to all counts, not per feature.
+#'   - `perRow`: Applies cutoff per row (i.e. gene). Internally,
+#'     [`rowSums()`][base::rowSums] values are checked against this cutoff
+#'     threshold prior to the melt operation.
 #' @param trans `character(1)`.
 #'   Apply a log transformation (e.g. `log2(x + 1L)`) to the count matrix prior
 #'   to melting, if desired. Use `"identity"` to return unmodified (default).
@@ -114,30 +115,27 @@ NULL
 
 
 
-## Updated 2019-08-26.
+## Updated 2019-09-15.
 `melt,matrix` <-  # nolint
     function(
         object,
         colnames = c("rowname", "colname", "value"),
-        min = NULL,
-        minMethod = c("perRow", "absolute"),
+        min = -Inf,
+        minMethod = c("absolute", "perRow"),
         trans = c("identity", "log2", "log10")
     ) {
         assert(
             hasColnames(object),
             hasRownames(object),
-            isInt(min, nullOK = TRUE)
+            isNumber(min, nullOK = TRUE)
         )
         minMethod <- match.arg(minMethod)
         trans <- match.arg(trans)
-        if (isInt(min)) {
-            assert(isGreaterThanOrEqualTo(min, 1L))
-            if (identical(minMethod, "perRow")) {
-                rowCutoff <- min
-            } else {
-                rowCutoff <- 1L
-            }
-            keep <- rowSums(object) >= rowCutoff
+        if (
+            identical(minMethod, "perRow") &&
+            isTRUE(is.finite(min))
+        ) {
+            keep <- rowSums(object) >= min
             if (identical(minMethod, "perRow")) {
                 message(sprintf(
                     "%d / %d %s passed '%s' >= %s cutoff.",
@@ -149,21 +147,23 @@ NULL
                         msg2 = "features"
                     ),
                     minMethod,
-                    rowCutoff
+                    as.character(min)
                 ))
             }
             object <- object[keep, , drop = FALSE]
-            assert(!any(rowSums(object) == 0L))
         }
         valueCol <- colnames[[3L]]
         data <- .melt(object = object, colnames = colnames)
         data <- encode(data)
-        if (isInt(min) && identical(minMethod, "absolute")) {
+        if (
+            identical(minMethod, "absolute") &&
+            isTRUE(is.finite(min))
+        ) {
             nPrefilter <- nrow(data)
             keep <- data[[valueCol]] >= min
             data <- data[keep, , drop = FALSE]
             message(sprintf(
-                "%d / %d %s passed '%s' >= %d expression cutoff.",
+                "%d / %d %s passed '%s' >= %s expression cutoff.",
                 nrow(data),
                 nPrefilter,
                 ngettext(
@@ -172,7 +172,7 @@ NULL
                     msg2 = "features"
                 ),
                 minMethod,
-                min
+                as.character(min)
             ))
         }
         ## Log transform the value, if desired.

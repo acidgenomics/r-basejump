@@ -55,13 +55,13 @@ formalsList <- list(
     color.continuous = quote(
         getOption(
             x = "acid.color.continuous",
-            default = acidplots::scale_colour_synesthesia_c()
+            default = acidplots::scale_color_synesthesia_c()
         )
     ),
     color.discrete = quote(
         getOption(
             x = "acid.color.discrete",
-            default = acidplots::scale_colour_synesthesia_d()
+            default = acidplots::scale_color_synesthesia_d()
         )
     ),
     fill.continuous = quote(

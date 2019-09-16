@@ -17,10 +17,13 @@ nonzeroRowsAndCols(object, ...)
 
 \S4method{nonzeroRowsAndCols}{DelayedArray}(object)
 
-\S4method{nonzeroRowsAndCols}{SummarizedExperiment}(object)
+\S4method{nonzeroRowsAndCols}{SummarizedExperiment}(object, assay = 1L)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{...}{Additional arguments.}
 }
