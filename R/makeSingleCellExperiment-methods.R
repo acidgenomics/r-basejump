@@ -33,7 +33,7 @@ NULL
 
 
 ## Updated 2019-08-27.
-`makeSingleCellExperiment,SimpleList` <- function(
+`makeSingleCellExperiment,SimpleList` <- function(  # nolint
     assays,
     rowRanges = GRangesList(),
     colData = DataFrame(),
