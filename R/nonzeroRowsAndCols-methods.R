@@ -131,12 +131,12 @@ setMethod(
 
 
 
-## Updated 2019-08-23.
+## Updated 2019-09-16.
 `nonzeroRowsAndCols,SummarizedExperiment` <-  # nolint
-    function(object) {
-        counts <- counts(object)
-        counts <- nonzeroRowsAndCols(counts)
-        object <- object[rownames(counts), colnames(counts)]
+    function(object, assay = 1L) {
+        assay <- assay(object, i = assay)
+        assay <- nonzeroRowsAndCols(assay)
+        object <- object[rownames(assay), colnames(assay)]
         object
     }
 
