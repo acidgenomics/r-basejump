@@ -98,7 +98,7 @@ NULL
 
 
 ## Updated 2019-08-27.
-`makeSummarizedExperiment,SimpleList` <- function(
+`makeSummarizedExperiment,SimpleList` <- function(  # nolint
     assays,
     rowRanges = GRangesList(),
     rowData = NULL,
