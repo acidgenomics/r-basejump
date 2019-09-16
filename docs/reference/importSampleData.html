@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.15</span>
       </span>
     </div>
 
@@ -160,7 +160,7 @@ Currently defaults to bcbio.</p></td>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Works with local or remote files.</p>
-<p>Updated 2019-09-05.</p>
+<p>Updated 2019-09-06.</p>
     <h2 class="hasAnchor" id="bcbio-pipeline"><a class="anchor" href="#bcbio-pipeline"></a>bcbio pipeline</h2>
 
     
@@ -181,7 +181,7 @@ they cannot contain illegal characters (e.g. spaces, non-alphanumerics,
 <em>dashes</em>) or <em>begin with a number</em>. Consult the documentation in <code><a href='https://rdrr.io/r/utils/help.html'>help(topic = "make.names")</a></code> for more information on valid names in R.</p>
 <p><strong>Multiplexed samples.</strong> This applies to some single-cell RNA-seq formats,
 including inDrops. In this case, bcbio will output per-sample directories
-with this this structure: <code>description-revcomp</code>. <code>readSampleData()</code> checks to
+with this this structure: <code>description-revcomp</code>. <code><a href='deprecated.html'>readSampleData()</a></code> checks to
 see if the <code>"description"</code> column is unique. If the values are duplicated,
 the function assumes that bcbio processed multiplexed FASTQs, where multiple
 samples of interest are barcoded inside a single FASTQ. This this case, you
@@ -195,7 +195,7 @@ reverse complement will be calculated automatically and added as the
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Demultiplexed ====</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-demultiplexed.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>Importing 'bcbio-metadata-demultiplexed.csv' using 'data.table::fread()'.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>Importing 'bcbio-metadata-demultiplexed.csv' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Setting row names from 'rowname' column.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
 #&gt;         sampleName            fileName description genotype
 #&gt;           &lt;factor&gt;            &lt;factor&gt;    &lt;factor&gt; &lt;factor&gt;
 #&gt; sample1    sample1 sample1_R1.fastq.gz     sample1 wildtype
@@ -204,7 +204,7 @@ reverse complement will be calculated automatically and added as the
 #&gt; sample4    sample4 sample4_R1.fastq.gz     sample4 knockout</div><div class='input'>
 <span class='co'>## Multiplexed ====</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-multiplexed-indrops.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>Importing 'bcbio-metadata-multiplexed-indrops.csv' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>Importing 'bcbio-metadata-multiplexed-indrops.csv' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Setting row names from 'rowname' column.</span></div><div class='output co'>#&gt; <span class='message'>Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
 #&gt;                   sampleName             fileName       description    index
 #&gt;                     &lt;factor&gt;             &lt;factor&gt;          &lt;factor&gt; &lt;factor&gt;
 #&gt; indrops1_AGAGGATA  sample2_1 indrops1_R1.fastq.gz indrops1-AGAGGATA        2
@@ -248,7 +248,7 @@ reverse complement will be calculated automatically and added as the
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
