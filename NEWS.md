@@ -7,6 +7,11 @@
   `"absolute"`, instead of `"perRow"`, since this behavior is more intuitive to
   the user.
 
+### Minor changes
+
+- `nonzeroRowsAndCols`: Added `assay` argument, switching from internal `counts`
+  usage, to make the `SummarizedExperiment` method more flexible.
+
 ## basejump 0.11.14 (2019-09-09)
 
 ### Minor changes
