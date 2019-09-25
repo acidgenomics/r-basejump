@@ -1,5 +1,6 @@
 #' @name snakeCase
 #' @inherit syntactic::snakeCase
+#' @inheritParams camelCase
 #' @note Updated 2019-09-25.
 #' @examples
 #' data(syntactic, package = "acidtest")

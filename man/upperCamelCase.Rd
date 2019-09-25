@@ -54,6 +54,29 @@ Sanitize names.}
 \item{strict}{\code{logical(1)}.
 Enforce strict name sanitization. When \code{TRUE}, this does not allow the
 return of any capitalized acronyms. "RNA" will become "Rna", for example.}
+
+\item{rownames}{\code{logical(1)}.
+Apply sanitization on row names. This is not generally recommended by
+default, since rownames commonly contain gene identifiers that should not
+be modified.}
+
+\item{colnames}{\code{logical(1)}.
+Apply to column names.}
+
+\item{mcols}{\code{logical(1)}.
+Sanitize names of metadata columns (i.e. \code{DataFrame}).}
+
+\item{metadata}{\code{logical(1)}.
+Sanitize metadata names.}
+
+\item{assayNames}{\code{logical(1)}.
+Sanitize assay names.}
+
+\item{rowData}{\code{logical(1)}.
+Sanitize the row data names.}
+
+\item{colData}{\code{logical(1)}.
+Sanitize column names of column data.}
 }
 \value{
 Modified object.

@@ -1,6 +1,24 @@
 #' @name camelCase
 #' @inherit syntactic::camelCase
 #' @note Updated 2019-09-25.
+#'
+#' @inheritParams acidroxygen::params
+#'
+#' @param assayNames `logical(1)`.
+#'   Sanitize assay names.
+#' @param colData `logical(1)`.
+#'   Sanitize column names of column data.
+#' @param mcols `logical(1)`.
+#'   Sanitize names of metadata columns (i.e. `DataFrame`).
+#' @param metadata `logical(1)`.
+#'   Sanitize metadata names.
+#' @param rowData `logical(1)`.
+#'   Sanitize the row data names.
+#' @param rownames `logical(1)`.
+#'   Apply sanitization on row names. This is not generally recommended by
+#'   default, since rownames commonly contain gene identifiers that should not
+#'   be modified.
+#'
 #' @examples
 #' data(syntactic, package = "acidtest")
 #' lapply(syntactic, camelCase)
