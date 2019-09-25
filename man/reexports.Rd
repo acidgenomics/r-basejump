@@ -77,10 +77,8 @@
 \alias{\%>\%}
 \alias{\%T>\%}
 \alias{camel}
-\alias{camelCase}
 \alias{capitalize}
 \alias{dotted}
-\alias{dottedCase}
 \alias{kebab}
 \alias{kebabCase}
 \alias{makeDimnames}
@@ -89,9 +87,7 @@
 \alias{makeTitle}
 \alias{makeWords}
 \alias{snake}
-\alias{snakeCase}
 \alias{upperCamel}
-\alias{upperCamelCase}
 \alias{tibble}
 \alias{antiJoin}
 \alias{as.SummarizedExperiment}
@@ -142,7 +138,7 @@ below to see their documentation.
 
   \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assay<-}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}}
 
-  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{camelCase}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{dottedCase}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{snakeCase}}, \code{\link[syntactic]{upperCamel}}, \code{\link[syntactic]{upperCamelCase}}}
+  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
