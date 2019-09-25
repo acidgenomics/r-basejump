@@ -8,6 +8,15 @@ NULL
 
 
 
+#' @rdname upperCamelCase
+#' @name upperCamelCase
+#' @importFrom syntactic upperCamelCase
+#' @usage upperCamelCase(object, ...)
+#' @export
+NULL
+
+
+
 `upperCamelCase,atomic` <-  # nolint
     function(object, names = TRUE, strict = FALSE) {
         assert(

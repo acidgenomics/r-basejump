@@ -15,6 +15,8 @@
 \alias{dottedCase,SummarizedExperiment-method}
 \title{Dotted case}
 \usage{
+dottedCase(object, ...)
+
 \S4method{dottedCase}{atomic}(object, names = TRUE)
 
 \S4method{dottedCase}{factor}(object, names = TRUE)

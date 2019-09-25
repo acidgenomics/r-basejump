@@ -1,3 +1,11 @@
+## basejump 0.11.16 (2019-09-25)
+
+### Minor changes
+
+- Migrated S4 methods from syntactic that work on Bioconductor classes here.
+  This keeps the syntactic package very light weight and focused only on
+  character string sanitization.
+
 ## basejump 0.11.15 (2019-09-16)
 
 ### Major changes

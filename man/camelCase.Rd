@@ -15,6 +15,8 @@
 \alias{camelCase,SummarizedExperiment-method}
 \title{Camel case}
 \usage{
+camelCase(object, ...)
+
 \S4method{camelCase}{atomic}(object, names = TRUE, strict = FALSE)
 
 \S4method{camelCase}{factor}(object, names = TRUE, strict = FALSE)
