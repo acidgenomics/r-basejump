@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.11.15
-Date: 2019-09-16
+Version: 0.11.16
+Date: 2019-09-25
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -37,9 +37,9 @@ Depends: R (>= 3.6)
 Imports:
     bioverbs (>= 0.2.10),
     brio (>= 0.3.8),
-    freerange (>= 0.2.5),
+    freerange (>= 0.2.6),
     goalie (>= 0.3.8),
-    syntactic (>= 0.2.6),
+    syntactic (>= 0.3.0),
     transformer (>= 0.2.7),
     AnnotationDbi (>= 1.46),
     Biobase (>= 2.44),
@@ -102,6 +102,7 @@ Collate:
     'alphaThreshold-methods.R'
     'autopadZeros-methods.R'
     'calculateMetrics-methods.R'
+    'camelCase-methods.R'
     'cell2sample-methods.R'
     'collapseToString-methods.R'
     'combine-methods.R'
@@ -112,6 +113,7 @@ Collate:
     'deprecated.R'
     'detectHPC.R'
     'detectLanes.R'
+    'dottedCase-methods.R'
     'estimateSizeFactors-methods.R'
     'filterCells-methods.R'
     'geneNames-methods.R'
@@ -166,6 +168,7 @@ Collate:
     'showHeader.R'
     'showSlotInfo.R'
     'sizeFactors-methods.R'
+    'snakeCase-methods.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
@@ -174,4 +177,5 @@ Collate:
     'topCellsPerSample-methods.R'
     'tpm-methods.R'
     'uniteInterestingGroups-methods.R'
+    'upperCamelCase-methods.R'
     'zerosVsDepth-methods.R'

@@ -285,10 +285,6 @@ magrittr::`%T>%`
 #' @export
 syntactic::camel
 
-#' @importFrom syntactic camelCase
-#' @export
-syntactic::camelCase
-
 #' @importFrom syntactic capitalize
 #' @export
 syntactic::capitalize
@@ -296,10 +292,6 @@ syntactic::capitalize
 #' @importFrom syntactic dotted
 #' @export
 syntactic::dotted
-
-#' @importFrom syntactic dottedCase
-#' @export
-syntactic::dottedCase
 
 #' @importFrom syntactic kebab
 #' @export
@@ -333,17 +325,9 @@ syntactic::makeWords
 #' @export
 syntactic::snake
 
-#' @importFrom syntactic snakeCase
-#' @export
-syntactic::snakeCase
-
 #' @importFrom syntactic upperCamel
 #' @export
 syntactic::upperCamel
-
-#' @importFrom syntactic upperCamelCase
-#' @export
-syntactic::upperCamelCase
 
 #' @importFrom tibble tibble
 #' @export

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.16</span>
       </span>
     </div>
 
@@ -207,7 +207,7 @@
 <a href="#basejump-0-0-13-2017-06-12" class="anchor"></a>basejump 0.0.13 (2017-06-12)</h2>
 <ul>
 <li>
-<code>setMethod</code> for <a href="http://www.tidyverse.org/">tidyverse</a> NAMESPACE collisons (<a href="http://dplyr.tidyverse.org/">dplyr</a>, <a href="http://tidyr.tidyverse.org/">tidyr</a>) using `signature(“data.frame”).</li>
+<code>setMethod</code> for <a href="http://www.tidyverse.org/">tidyverse</a> NAMESPACE collisons (<a href="http://dplyr.tidyverse.org/">dplyr</a>, <a href="http://tidyr.tidyverse.org/">tidyr</a>) using <code>signature("data.frame")</code>.</li>
 </ul>
 </div>
     <div id="basejump-0-0-14-2017-06-13" class="section level2">
@@ -316,12 +316,12 @@
 </li>
 <li>Added <code>*GFF</code> function variants for <code>gene2symbolFromGTF</code> and <code>tx2geneFromGTF</code>.</li>
 <li>Added shared <a href="https://github.com/bcbio/bcbio-nextgen/">bcbio</a> generic functions: <code>aggregateReplicates</code>, <code>bcbio</code>, <code>bcbio&lt;-</code>, <code>interestingGroups</code>, <code>metrics</code>, <code>plotGene</code>, <code>sampleDirs</code>, <code>sampleMetadata</code>, <code>selectSamples</code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
-<li>Incorporated <a href="https://github.com/bcbio/bcbio-nextgen/">bcbio</a> utility functions shared across <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a> and <a href="https://bioinformatics.sph.harvard.edu/bcbioSingleCell/">bcbioSingleCell</a>: <code>readDataVersions</code> (deprecated <code>.dataVersions</code>), <code>readLogFile</code> (deprecated <code>.logFile</code>), <code>readProgramVersions</code> (deprecated <code>.programs</code>), <code>sampleYAML</code> (deprecated <code>.sampleYAML</code>), <code>sampleYAMLMetadata</code> (deprecated <code>sampleYAMLMetadata</code>), <code>sampleYAMLMetrics</code> (deprecated .sampleYAMLMetrics`).</li>
+<li>Incorporated <a href="https://github.com/bcbio/bcbio-nextgen/">bcbio</a> utility functions shared across <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a> and <a href="https://bioinformatics.sph.harvard.edu/bcbioSingleCell/">bcbioSingleCell</a>: <code>readDataVersions</code> (deprecated <code>.dataVersions</code>), <code>readLogFile</code> (deprecated <code>.logFile</code>), <code>readProgramVersions</code> (deprecated <code>.programs</code>), <code>sampleYAML</code> (deprecated <code>.sampleYAML</code>), <code>sampleYAMLMetadata</code> (deprecated <code>sampleYAMLMetadata</code>), <code>sampleYAMLMetrics</code> (deprecated <code>.sampleYAMLMetrics</code>).</li>
 <li>Deprecated <code>metadataTable</code> function.</li>
 <li>Moved all <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a> documentation to <code>methods-*.R</code> files where applicable.</li>
 <li>Now using <code>assays</code> in <code>prepareSummarizedExperiment</code> generic definition as primary object.</li>
 <li>Improved <code>assignAndSaveData</code> to add silent return of file path.</li>
-<li>Now consistently using clear function definitions (`<code>) in chain   operations with magrittr pipe (</code>%&gt;%`).</li>
+<li>Now consistently using clear function definitions in chain operations with magrittr pipe (<code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code>).</li>
 <li>Added <code>.prepareSampleMetadata</code> utility function, for use with loading sample metadata from an external CSV, <a href="https://products.office.com/en-us/excel/">Excel</a>, or YAML file.</li>
 <li>Added <code>loadData</code> functionality back to the package.</li>
 <li>Initial commit of <code>loadDataAsName</code> function.</li>
@@ -331,7 +331,7 @@
 <li>Improved S4 method support for the logRatio functions.</li>
 <li>Added integer support for <code>geomean</code> function. Also improved internal code of <code>geomean</code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
 <li>Added release support for <code>tx2gene</code> functions.</li>
-<li>Reduced the number of reexported functions (for documentation) down to the <a href="https://magrittr.tidyverse.org/">magrittr</a> pipe (<code>%&gt;%</code>), <code>Matrix</code>, <code>DataFrame</code>, and <code>tibble</code>.</li>
+<li>Reduced the number of reexported functions (for documentation) down to the <a href="https://magrittr.tidyverse.org/">magrittr</a> pipe (<code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code>), <code>Matrix</code>, <code>DataFrame</code>, and <code>tibble</code>.</li>
 <li>Added silent return of file path to <code>saveData</code> function.</li>
 <li>Improved documentation for <a href="https://tibble.tidyverse.org/">tibble</a> coercion using <code>as(object, "tibble")</code>
 </li>
@@ -390,7 +390,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

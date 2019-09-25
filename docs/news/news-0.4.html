@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.16</span>
       </span>
     </div>
 
@@ -118,9 +118,9 @@
     <div id="basejump-0-4-0-2018-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-4-0-2018-03-22" class="anchor"></a>basejump 0.4.0 (2018-03-22)</h2>
-<div id="major-changes-23" class="section level3">
+<div id="major-changes-24" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-23" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-24" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Introducing new functions for the acquistion of gene and transcript annotations from <a href="https://www.ensembl.org/">Ensembl</a>: <code>ensembl</code>, <code>genes</code>, and <code>transcripts</code>. These functions allow the return of <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects from <a href="https://bioconductor.org/packages/AnnotationHub/">AnnotationHub</a> using <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>.</li>
 <li>Improved internal <code>broadClass</code> definition code to match against chromosome from <a href="https://www.ensembl.org/">Ensembl</a> if available.</li>
@@ -128,13 +128,13 @@
 <code>loadDataAsName</code> now works with unquoted names, improving consistency with <code>loadData</code> (non-standard evaluation).</li>
 </ul>
 </div>
-<div id="minor-changes-64" class="section level3">
+<div id="minor-changes-67" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-64" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-67" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added new <code>convertUCSCBuildToEnsembl</code> function, for easy remapping of <a href="https://genome.ucsc.edu/">UCSC</a> to <a href="https://www.ensembl.org/">Ensembl</a> genome build names (e.g. <code>hg38</code> to <code>GRCh38</code>).</li>
 <li>Migrated matrix methods for <code>plotCorrelationHeatmap</code> here from <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, for improved consistency with other heatmap functions.</li>
-<li>Exporting <code>makeNames</code> variant of <code><a href="https://rdrr.io/r/base/make.names.html">base::make.names</a></code> that sanitizes using underscores (“_“) rather than dots (”.“).</li>
+<li>Exporting <code>makeNames</code> variant of <code><a href="https://rdrr.io/r/base/make.names.html">base::make.names</a></code> that sanitizes using underscores rather than dots.</li>
 <li>Converted <code>readYAML</code> from a generic to standard function.</li>
 <li>Added support for <a href="https://ci.appveyor.com/">AppVeyor CI</a> code testing on <a href="https://www.microsoft.com/en-us/windows/">Windows</a>.</li>
 <li>Made <a href="https://travis-ci.com/">Travis CI</a> build checks stricter, adding support for <code>BiocCheck</code>.</li>
@@ -182,7 +182,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
