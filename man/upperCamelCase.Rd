@@ -15,6 +15,8 @@
 \alias{upperCamelCase,SummarizedExperiment-method}
 \title{Upper camel case}
 \usage{
+upperCamelCase(object, ...)
+
 \S4method{upperCamelCase}{atomic}(object, names = TRUE, strict = FALSE)
 
 \S4method{upperCamelCase}{factor}(object, names = TRUE, strict = FALSE)

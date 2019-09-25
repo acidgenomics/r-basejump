@@ -15,6 +15,8 @@
 \alias{snakeCase,SummarizedExperiment-method}
 \title{Snake case}
 \usage{
+snakeCase(object, ...)
+
 \S4method{snakeCase}{atomic}(object, names = TRUE)
 
 \S4method{snakeCase}{factor}(object, names = TRUE)

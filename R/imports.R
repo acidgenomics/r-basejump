@@ -9,7 +9,6 @@
 #'   match rep setdiff t unique
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom syntactic camelCase dottedCase snakeCase upperCamelCase
 #' @importMethodsFrom transformer as.data.frame coerce
 #'
 #' @importFrom AnnotationDbi select
