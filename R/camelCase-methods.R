@@ -3,7 +3,6 @@
 #' @note Updated 2019-09-25.
 #'
 #' @inheritParams acidroxygen::params
-#'
 #' @param assayNames `logical(1)`.
 #'   Sanitize assay names.
 #' @param colData `logical(1)`.
@@ -18,6 +17,7 @@
 #'   Apply sanitization on row names. This is not generally recommended by
 #'   default, since rownames commonly contain gene identifiers that should not
 #'   be modified.
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(syntactic, package = "acidtest")

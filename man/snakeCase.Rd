@@ -71,6 +71,8 @@ Sanitize the row data names.}
 
 \item{colData}{\code{logical(1)}.
 Sanitize column names of column data.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Modified object.
