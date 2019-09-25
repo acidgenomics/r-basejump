@@ -37,7 +37,7 @@ Depends: R (>= 3.6)
 Imports:
     bioverbs (>= 0.2.10),
     brio (>= 0.3.8),
-    freerange (>= 0.2.5),
+    freerange (>= 0.2.6),
     goalie (>= 0.3.8),
     syntactic (>= 0.3.0),
     transformer (>= 0.2.7),
