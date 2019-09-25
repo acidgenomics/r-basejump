@@ -33,10 +33,10 @@
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
 #'   appendToBody areDisjointSets areIntersectingSets areSameLength areSetEqual
 #'   assert bapply containsAURL false getNameInParent hasColnames hasCols
-#'   hasDims hasInternet hasLength hasMetrics hasNames hasNoDuplicates
-#'   hasNonzeroRowsAndCols hasRows hasRownames hasSubset hasUniqueCols
-#'   hasValidDimnames hasValidNames isADirectory isAFile isAlpha isAny
-#'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
+#'   hasDimnames hasDims hasInternet hasLength hasMetrics hasNames
+#'   hasNoDuplicates hasNonzeroRowsAndCols hasRows hasRownames hasSubset
+#'   hasUniqueCols hasValidDimnames hasValidNames isADirectory isAFile isAlpha
+#'   isAny isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
 #'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange isInt
 #'   isIntegerish isMatchingRegex isNonNegative isNotMatchingRegex isNumber
 #'   isPositive isScalar isString isSubset isSuperset matchArgsToDoCall
