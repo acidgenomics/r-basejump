@@ -1,7 +1,10 @@
 #' @name snakeCase
 #' @inherit syntactic::snakeCase
-#' @inheritParams camelCase
 #' @note Updated 2019-09-25.
+#'
+#' @inheritParams camelCase
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(syntactic, package = "acidtest")
 #' lapply(syntactic, snakeCase)
