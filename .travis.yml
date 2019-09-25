@@ -16,7 +16,7 @@ jobs:
       name: "bioc-release"
       script: tag="bioc-3.9" ./.Rcheck/docker
     - stage: test
-      name: "bioc-release"
+      name: "bioc-devel"
       script: tag="bioc-devel" ./.Rcheck/docker
 
 matrix:
