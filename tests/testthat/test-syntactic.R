@@ -70,9 +70,6 @@ with_parameters_test_that(
     )
 )
 
-funs <- c(funs, kebabCase = kebabCase)
-funs <- funs[sort(names(funs))]
-
 with_parameters_test_that(
     "Unnamed", {
         object <- syntactic[["character"]]
@@ -81,7 +78,7 @@ with_parameters_test_that(
             expected = expected
         )
     },
-    f = funs,
+    f = c(funs, kebabCase = kebabCase),
     expected = list(
         camelCase = c(
             "percentGC",
@@ -117,23 +114,6 @@ with_parameters_test_that(
             "X123",
             NA
         ),
-        kebabCase = c(
-            "percent-gc",
-            "x10um",
-            "x5-3-bias",
-            "x5prime",
-            "g2m-score",
-            "hello-world",
-            "hello-world",
-            "mazda-rx4",
-            "n-count",
-            "rnai-clones",
-            "tx2gene",
-            "tx2-gene-id",
-            "worfdb-html-remap",
-            "x123",
-            NA
-        ),
         snakeCase = c(
             "percent_gc",
             "x10um",
@@ -166,6 +146,23 @@ with_parameters_test_that(
             "TX2GeneID",
             "WorfdbHTMLRemap",
             "X123",
+            NA
+        ),
+        kebabCase = c(
+            "percent-gc",
+            "x10um",
+            "x5-3-bias",
+            "x5prime",
+            "g2m-score",
+            "hello-world",
+            "hello-world",
+            "mazda-rx4",
+            "n-count",
+            "rnai-clones",
+            "tx2gene",
+            "tx2-gene-id",
+            "worfdb-html-remap",
+            "x123",
             NA
         )
     )
