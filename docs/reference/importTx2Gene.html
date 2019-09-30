@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.16</span>
       </span>
     </div>
 
@@ -163,7 +163,7 @@ ensembldb in use.</p></td>
 
     <p>File should not contain column header names.</p>
 <p>The functon doesn't attempt to strip transcript versions. Use
-<code>stripTranscriptVersions()</code> in a separate call, if necessary.</p>
+<code><a href='stripTranscriptVersions.html'>stripTranscriptVersions()</a></code> in a separate call, if necessary.</p>
 <p>Updated 2019-08-13.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -173,7 +173,7 @@ ensembldb in use.</p></td>
     <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Mus musculus"</span>,
     <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCm38"</span>,
     <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>90L</span>
-)</div><div class='output co'>#&gt; <span class='message'>Importing 'tx2gene.csv' using 'data.table::fread()'.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 5 rows and 2 columns
+)</div><div class='output co'>#&gt; <span class='message'>Importing 'tx2gene.csv' using 'data.table::fread()'.</span></div><div class='output co'>#&gt; <span class='message'>Setting row names from 'rowname' column.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 5 rows and 2 columns
 #&gt;                          transcriptID             geneID
 #&gt;                           &lt;character&gt;        &lt;character&gt;
 #&gt; ENSMUST00000033908 ENSMUST00000033908 ENSMUSG00000031511
@@ -201,7 +201,7 @@ ensembldb in use.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

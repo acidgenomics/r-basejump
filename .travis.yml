@@ -13,7 +13,7 @@ install:
 jobs:
   include:
     - stage: test
-      name: "bioc-3.9"
+      name: "bioc-release"
       script: tag="bioc-3.9" ./.Rcheck/docker
     - stage: test
       name: "bioc-devel"
