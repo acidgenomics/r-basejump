@@ -28,26 +28,32 @@ Utility function that prepares metadata to be slotted into
 \details{
 This function adheres to the following conventions:
 \itemize{
+\item Row names are required. Either define manually (recommended) or pass in as
+a rownames column (data.table / tibble style).
+Supported colnames: "sampleID", "rowname", "rn".
 \item All column names will be converted to lower camel case
 (see \code{\link[=camelCase]{camelCase()}} for details).
-\item Required columns:
+\item \code{sampleName} column is always placed first.
+}
+
+Required columns:
 \itemize{
 \item \code{sampleName}: Human readable sample names. Note that this column is
 useful for plots and doesn't have to match the column names of a
 \code{SummarizedExperiment} object, which should use valid names.
 }
-\item Blacklisted columns:
+
+Blacklisted columns:
 \itemize{
 \item \code{filename} (use \code{fileName}).
-\item \code{rowname}.
+\item \code{id}.
+\item \code{interestingGroups}. Defined automatically downstream.
 \item \code{sample}. Too vague. Does this represent an ID or human readable name?
 \item \code{samplename} (use \code{sampleName}).
 }
-\item \code{sampleName} column is always placed first.
-}
 }
 \note{
-Updated 2019-08-14.
+Updated 2019-10-09.
 }
 \examples{
 object <- DataFrame(
