@@ -1,3 +1,13 @@
+## basejump 0.11.17 (2019-10-09)
+
+### Minor changes
+
+- `makeSampleData`: Made function slightly more flexible. Now allowing automatic
+  rowname coercion from columns ("sampleID", "rowname", "rn"), similar to
+  approach employed by data.table and tibble packages.
+- Now exporting `stripGeneVersions` alias, which uses the same code internally
+  as `stripTranscriptVersions`.
+
 ## basejump 0.11.16 (2019-09-25)
 
 ### Minor changes
