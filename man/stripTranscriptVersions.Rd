@@ -7,6 +7,7 @@
 \alias{stripTranscriptVersions,matrix-method}
 \alias{stripTranscriptVersions,sparseMatrix-method}
 \alias{stripTranscriptVersions,SummarizedExperiment-method}
+\alias{stripGeneVersions}
 \title{Strip transcript versions}
 \usage{
 stripTranscriptVersions(object, ...)
@@ -18,6 +19,8 @@ stripTranscriptVersions(object, ...)
 \S4method{stripTranscriptVersions}{sparseMatrix}(object)
 
 \S4method{stripTranscriptVersions}{SummarizedExperiment}(object)
+
+stripGeneVersions(...)
 }
 \arguments{
 \item{object}{Object.}
@@ -32,7 +35,7 @@ Contains transcript identifiers without version numbers.
 Strip transcript versions
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-10-09.
 
 This method is strict, and will only strip Ensembl transcript IDs
 beginning with "ENS".
