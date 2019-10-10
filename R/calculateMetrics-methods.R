@@ -228,6 +228,9 @@ setMethod(
 
 ## nolint start
 
+## DelayedArray methods disabled until bug fix:
+## https://github.com/Bioconductor/DelayedArray/issues/55
+
 ## Consider using DelayedArray for very large datasets.
 ## > if (ncol(counts) >= 1E6L) {
 ## >     counts <- DelayedArray(counts)

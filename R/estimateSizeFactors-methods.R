@@ -1,6 +1,8 @@
 ## nolint start
 
-## DelayedArray is erroring on Bioconductor 3.10 devel.
+## DelayedArray methods disabled until bug fix:
+## https://github.com/Bioconductor/DelayedArray/issues/55
+
 ## Calculating library size factors using 'mean-ratio' method.
 ## Error in get(name, envir = asNamespace(pkg), inherits = FALSE) :
 ##   object 'is_pristine' not found

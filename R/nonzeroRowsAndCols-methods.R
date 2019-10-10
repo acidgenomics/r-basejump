@@ -111,6 +111,9 @@ setMethod(
 
 ## nolint start
 
+## DelayedArray methods disabled until bug fix:
+## https://github.com/Bioconductor/DelayedArray/issues/55
+
 ## Updated 2019-10-09.
 ## > `nonzeroRowsAndCols,DelayedArray` <-  # nolint
 ## >     appendToBody(
