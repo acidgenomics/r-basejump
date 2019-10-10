@@ -5,21 +5,27 @@
 #'
 #' This function adheres to the following conventions:
 #'
+#' - Row names are required. Either define manually (recommended) or pass in as
+#'   a rownames column (data.table / tibble style).
+#'   Supported colnames: "sampleID", "rowname", "rn".
 #' - All column names will be converted to lower camel case
 #'   (see [camelCase()] for details).
-#' - Required columns:
+#' - `sampleName` column is always placed first.
+#'
+#' Required columns:
 #'   - `sampleName`: Human readable sample names. Note that this column is
 #'     useful for plots and doesn't have to match the column names of a
 #'     `SummarizedExperiment` object, which should use valid names.
-#' - Blacklisted columns:
+#'
+#' Blacklisted columns:
 #'   - `filename` (use `fileName`).
-#'   - `rowname`.
+#'   - `id`.
+#'   - `interestingGroups`. Defined automatically downstream.
 #'   - `sample`. Too vague. Does this represent an ID or human readable name?
 #'   - `samplename` (use `sampleName`).
-#' - `sampleName` column is always placed first.
 #'
 #' @name makeSampleData
-#' @note Updated 2019-08-14.
+#' @note Updated 2019-10-09.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -58,24 +64,40 @@ setMethod(
 
 
 
-## Updated 2019-08-14.
+## Updated 2019-10-09.
 `makeSampleData,DataFrame` <-  # nolint
     function(object) {
+        ## Check for complex S4 columns, which are discouraged.
         assert(
-            hasValidDimnames(object),
-            allAreAtomic(object)
+            allAreAtomic(object),
+            hasColnames(object)
         )
         object <- camelCase(object, rownames = FALSE, colnames = TRUE)
+        ## Move row names from column automatically, if applicable.
+        if (!hasRownames(object)) {
+            rnCols <- c("sampleID", "rowname", "rn")
+            idCol <- as.integer(na.omit(match(
+                x = rnCols,
+                table = colnames(object)
+            )))
+            if (isInt(idCol)) {
+                rownames(object) <- makeNames(object[[idCol]], unique = TRUE)
+                object[[idCol]] <- NULL
+            }
+        }
         assert(
+            hasRownames(object),
             ## Don't allow "*Id" columns (note case).
             allAreNotMatchingRegex(x = colnames(object), pattern = "Id$"),
             ## Check for blacklisted columns.
             areDisjointSets(
                 x = c(
+                    ## rn,
+                    ## rowname,
+                    ## sampleID,
                     "filename",
                     "id",
                     "interestingGroups",
-                    "rowname",
                     "sample",
                     "samplename"
                 ),
@@ -95,6 +117,7 @@ setMethod(
         )
         out <- DataFrame(list, row.names = rownames(object))
         ## Ensure rownames are sorted and `sampleName` column is always first.
+        assert(hasRownames(out), hasColnames(out))
         out <- out[
             sort(rownames(out)),
             unique(c("sampleName", colnames(out))),
