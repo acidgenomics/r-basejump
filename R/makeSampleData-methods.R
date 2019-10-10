@@ -76,13 +76,13 @@ setMethod(
         ## Move row names from column automatically, if applicable.
         if (!hasRownames(object)) {
             rnCols <- c("sampleID", "rowname", "rn")
-            col <- as.integer(na.omit(match(
+            idCol <- as.integer(na.omit(match(
                 x = rnCols,
                 table = colnames(object)
             )))
-            if (isInt(col)) {
-                rownames(object) <- object[[col]]
-                object[[col]] <- NULL
+            if (isInt(idCol)) {
+                rownames(object) <- makeNames(object[[idCol]], unique = TRUE)
+                object[[idCol]] <- NULL
             }
         }
         assert(
@@ -92,14 +92,14 @@ setMethod(
             ## Check for blacklisted columns.
             areDisjointSets(
                 x = c(
+                    ## rn,
+                    ## rowname,
+                    ## sampleID,
                     "filename",
                     "id",
                     "interestingGroups",
                     "sample",
-                    "samplename",
-                    "rn",
-                    "rowname",
-                    "sampleID"
+                    "samplename"
                 ),
                 y = colnames(object)
             )

@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-09-06.
+#' @note Updated 2019-10-09.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
