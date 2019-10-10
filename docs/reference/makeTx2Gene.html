@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.17</span>
       </span>
     </div>
 
@@ -185,14 +185,14 @@ File path.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## makeTx2GeneFromEnsembl ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.1 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH73881: Ensembl 97 EnsDb for Homo sapiens</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.1 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH75011: Ensembl 98 EnsDb for Homo sapiens</span>
 #&gt; <span class='message'>Run this code to download EnsDb manually:</span>
 #&gt; <span class='message'>  &gt; library(AnnotationHub)</span>
 #&gt; <span class='message'>  &gt; ah &lt;- AnnotationHub()</span>
-#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH73881"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
+#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH75011"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
 #&gt; <span class='message'>  - Genome build: "GRCh38"</span>
-#&gt; <span class='message'>  - Ensembl release: 97L</span>
-#&gt; <span class='message'>  - Level: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations: geneName, geneBiotype, seqCoordSystem, description, geneIDVersion, symbol, entrezid.</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneName, seqnames, transcriptBiotype.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'transcriptID'.</span></div><div class='output co'>#&gt; <span class='message'>14 invalid names: LRG_321t1-1, LRG_321t1-2, LRG_321t2-1, LRG_321t2-2, LRG_321t3-1, LRG_321t3-2, LRG_321t4-1, LRG_3.....</span></div><div class='output co'>#&gt; <span class='message'>248916 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 248916 rows and 2 columns
+#&gt; <span class='message'>  - Ensembl release: 98L</span>
+#&gt; <span class='message'>  - Level: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Merging gene-level annotations: geneName, geneBiotype, seqCoordSystem, description, geneIDVersion, symbol, entrezid.</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneName, seqnames, transcriptBiotype.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'transcriptID'.</span></div><div class='output co'>#&gt; <span class='message'>14 invalid names: LRG_321t1-1, LRG_321t1-2, LRG_321t2-1, LRG_321t2-2, LRG_321t3-1, LRG_321t3-2, LRG_321t4-1, LRG_3.....</span></div><div class='output co'>#&gt; <span class='message'>250194 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 250194 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000000233 ENST00000000233 ENSG00000004059
