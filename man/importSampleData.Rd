@@ -5,7 +5,7 @@
 \title{Import sample metadata}
 \usage{
 importSampleData(file, sheet = 1L, lanes = 0L, pipeline = c("none",
-  "bcbio", "cellranger"))
+  "bcbio", "cellranger", "cpi"))
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -21,8 +21,14 @@ Number of lanes used to split the samples into technical replicates
 suffix (i.e. \code{_LXXX}).}
 
 \item{pipeline}{\code{character(1)}.
-Analysis pipeline.
-Currently defaults to bcbio.}
+Analysis pipeline:
+\itemize{
+\item \code{"none"}: Simple mode, requiring only "sampleID" column.
+\item \code{"bcbio"}: bcbio mode. See section here in documentation for details.
+\item \code{"cellranger"}: Cell Ranger mode. Currently requires "directory" column.
+Used by Chromium R package.
+\item \code{"cpi"}: Constellation Pharmaceuticals (CPI) mode.
+}}
 }
 \value{
 \code{DataFrame}.
