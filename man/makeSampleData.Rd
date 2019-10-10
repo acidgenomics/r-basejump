@@ -53,7 +53,7 @@ Blacklisted columns:
 }
 }
 \note{
-Updated 2019-10-09.
+Updated 2019-10-10.
 }
 \examples{
 object <- DataFrame(

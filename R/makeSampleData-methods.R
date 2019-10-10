@@ -25,7 +25,7 @@
 #'   - `samplename` (use `sampleName`).
 #'
 #' @name makeSampleData
-#' @note Updated 2019-10-09.
+#' @note Updated 2019-10-10.
 #'
 #' @inheritParams acidroxygen::params
 #'
