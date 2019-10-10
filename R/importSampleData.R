@@ -124,9 +124,13 @@ importSampleData <- function(
         ## Sample identifier is in "description" column.
         ## "sampleID" column currently is a sequential numeric.
         colnames(data)[colnames(data) == "sampleID"] <- "sampleNum"
+        idCol <- "description"
     }
     ## Check that input passes blacklist, and has all required columns.
-    assert(.isSampleData(object = data, requiredCols = requiredCols))
+    assert(
+        .isSampleData(object = data, requiredCols = requiredCols),
+        isString(idCol), isSubset(idCol, colnames(data))
+    )
     ## Valid rows must contain a non-empty sample identifier.
     data <- data[!is.na(data[[idCol]]), , drop = FALSE]
     ## Requiring syntactically valid names on direct "sampleID" input.
