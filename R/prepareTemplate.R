@@ -16,7 +16,7 @@
 #' - `bcbioRNASeq::prepareRNASeqTemplate()`.
 #' - `bcbioSingleCell::prepareSingleCellTemplate()`.
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-10-10.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -41,7 +41,6 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
         isFlag(overwrite)
     )
     files <- character()
-
     copySharedFiles <- function(sourceDir, overwrite) {
         assert(isADirectory(sourceDir))
         files <- sort(list.files(sourceDir, full.names = TRUE))
@@ -60,7 +59,6 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
         names(copied) <- basename(files)
         copied
     }
-
     ## Copy the shared files from the requested package, if necessary.
     if (!is.null(package)) {
         assert(isSubset(package, rownames(installed.packages())))
@@ -71,7 +69,6 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
         copied <- copySharedFiles(sourceDir, overwrite = overwrite)
         files <- c(files, copied)
     }
-
     ## Copy the shared files from basejump.
     ## Define this step second in case there are files in the desired package
     ## that are duplicated in basejump, and which we don't necessarily want to
@@ -82,7 +79,6 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     )
     copied <- copySharedFiles(sourceDir, overwrite = overwrite)
     files <- c(files, copied)
-
     invisible(files)
 }
 
