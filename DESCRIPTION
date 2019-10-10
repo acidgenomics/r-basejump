@@ -46,8 +46,6 @@ Imports:
     BiocGenerics (>= 0.30),
     BiocParallel (>= 1.18),
     Biostrings (>= 2.52),
-    DelayedArray (>= 0.10),
-    DelayedMatrixStats (>= 1.6),
     GenomeInfoDb (>= 1.20),
     GenomicRanges (>= 1.36),
     IRanges (>= 2.18.2),
@@ -67,10 +65,10 @@ Imports:
     methods,
     utils
 Suggests:
-    acidroxygen (>= 0.1.3),
-    acidtest (>= 0.2.5),
     BiocStyle (>= 2.12),
     EnsDb.Hsapiens.v75 (>= 2.99),
+    acidroxygen (>= 0.1.3),
+    acidtest (>= 0.2.5),
     patrick (>= 0.0.1),
     rmarkdown (>= 1.15),
     testthat (>= 2.2),
