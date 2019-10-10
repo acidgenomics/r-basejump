@@ -73,7 +73,8 @@ setMethod(
             hasColnames(object)
         )
         object <- camelCase(object, rownames = FALSE, colnames = TRUE)
-        ## Move row names from column automatically, if applicable.
+        object <- removeNA(object)
+        ## Assign row names from column automatically, if applicable.
         if (!hasRownames(object)) {
             rnCols <- c("sampleID", "rowname", "rn")
             idCol <- as.integer(na.omit(match(
@@ -81,8 +82,10 @@ setMethod(
                 table = colnames(object)
             )))
             if (isInt(idCol)) {
+                ## Don't delete the original ID column here. This is helpful for
+                ## FASTQ data provenance with files containing hyphens and other
+                ## invalid characters.
                 rownames(object) <- makeNames(object[[idCol]], unique = TRUE)
-                object[[idCol]] <- NULL
             }
         }
         assert(
