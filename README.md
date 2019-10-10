@@ -40,7 +40,7 @@ BiocManager::valid()
 
 Configure [conda][] to use the [bioconda][] channels.
 
-```bash
+```sh
 conda install -c bioconda r-basejump
 ```
 

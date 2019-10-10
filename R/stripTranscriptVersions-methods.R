@@ -1,6 +1,6 @@
 #' @name stripTranscriptVersions
 #' @inherit bioverbs::stripTranscriptVersions
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-10-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -31,11 +31,15 @@ NULL
 
 
 
-## Pattern matching against Ensembl transcript IDs.
-## http://www.ensembl.org/info/genome/stable_ids/index.html
-## Examples: ENST (human); ENSMUST (mouse).
+## Pattern matching against Ensembl transcript (and gene) IDs.
+##
+## Example prefixes: ENST (human); ENSMUST (mouse).
 ## `:punct:` will match `-` or `_` here.
-## Updated 2019-07-22.
+##
+## See also:
+## - http://www.ensembl.org/info/genome/stable_ids/index.html
+##
+## Updated 2019-10-07.
 `stripTranscriptVersions,character` <-  # nolint
     function(object) {
         assert(isCharacter(object))
@@ -108,3 +112,11 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `stripTranscriptVersions,SummarizedExperiment`
 )
+
+
+
+#' @rdname stripTranscriptVersions
+#' @export
+stripGeneVersions <- function(...) {
+    stripTranscriptVersions(...)
+}
