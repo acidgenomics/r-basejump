@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-10-09.
+#' @note Updated 2019-10-10.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -64,7 +64,7 @@ importSampleData <- function(
     file,
     sheet = 1L,
     lanes = 0L,
-    pipeline = c("bcbio", "cellranger", "none")
+    pipeline = c("none", "bcbio", "cellranger")
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
     if (!hasLength(lanes)) {
