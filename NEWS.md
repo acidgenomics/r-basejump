@@ -1,3 +1,15 @@
+## basejump 0.11.18 (2019-10-10)
+
+### Minor changes
+
+- `importSampleData`: Pipeline now defaulting to "none" instead of "bcbio",
+  since this flag is now properly hard coded in bcbio R packages.
+  Added new Constellation (CPI) pipeline option.
+- `makeSampleData`: Now checks for all NA columns and rows, similar to approach
+  in `importSampleData`. This helps improve return consistency. Automatic
+  rowname setting has been tweaked a bit to no longer attempt to remove original
+  ID column.
+
 ## basejump 0.11.17 (2019-10-09)
 
 ### Minor changes
