@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.17</span>
       </span>
     </div>
 
@@ -132,10 +132,6 @@
 <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='co'># S4 method for DelayedArray</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
 <span class='co'># S4 method for RangedSummarizedExperiment</span>
 <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>,
   <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -174,7 +170,7 @@ change with this operation.</p></td>
 
     
 <ul>
-<li><p><code>matrix</code> / <code>Matrix</code> / <code>DelayedArray</code>: <code>DataFrame</code> containing metrics.</p></li>
+<li><p><code>matrix</code> / <code>Matrix</code>: <code>DataFrame</code> containing metrics.</p></li>
 <li><p><code>SingleCellExperiment</code> / <code>SummarizedExperiment</code>: Modified object, with
 metrics in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code>.</p></li>
 </ul>
@@ -183,7 +179,7 @@ metrics in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/Summarize
 
     <p>Input a raw count matrix. Do not use size factor adjusted or log
 normalized counts here.</p>
-<p>Updated 2019-08-27.</p>
+<p>Updated 2019-10-09.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)

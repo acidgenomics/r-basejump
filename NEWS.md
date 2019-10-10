@@ -8,6 +8,14 @@
 - Now exporting `stripGeneVersions` alias, which uses the same code internally
   as `stripTranscriptVersions`.
 
+### Disabled methods
+
+- Disabled DelayedArray class methods for `calculateMetrics`,
+  `estimateSizeFactors`, and `nonzeroRowsAndCols` until `is_pristine` bug in
+  DelayedArray v0.11.8 is fixed on Bioconductor Devel (3.10). This is causing
+  unit tests to fail otherwise.
+  See [related issue](https://github.com/Bioconductor/DelayedArray/issues/55)
+
 ## basejump 0.11.16 (2019-09-25)
 
 ### Minor changes

@@ -1,3 +1,8 @@
+## > #' @importFrom DelayedArray DelayedArray
+## > #' @importFrom DelayedMatrixStats colSums2 rowSums2
+
+
+
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix sparseMatrix
@@ -15,8 +20,6 @@
 #' @importFrom BiocGenerics colSums rowSums unlist
 #' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
-#' @importFrom DelayedArray DelayedArray
-#' @importFrom DelayedMatrixStats colSums2 rowSums2
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom IRanges DataFrameList SplitDataFrameList unsplit
 #' @importFrom Matrix.utils aggregate.Matrix
