@@ -65,10 +65,10 @@ Imports:
     methods,
     utils
 Suggests:
-    BiocStyle (>= 2.12),
-    EnsDb.Hsapiens.v75 (>= 2.99),
     acidroxygen (>= 0.1.3),
     acidtest (>= 0.2.5),
+    BiocStyle (>= 2.12),
+    EnsDb.Hsapiens.v75 (>= 2.99),
     patrick (>= 0.0.1),
     rmarkdown (>= 1.15),
     testthat (>= 2.2),
