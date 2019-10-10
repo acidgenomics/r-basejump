@@ -5,7 +5,6 @@
 \alias{nonzeroRowsAndCols}
 \alias{nonzeroRowsAndCols,matrix-method}
 \alias{nonzeroRowsAndCols,Matrix-method}
-\alias{nonzeroRowsAndCols,DelayedArray-method}
 \alias{nonzeroRowsAndCols,SummarizedExperiment-method}
 \title{Subset object to keep only non-zero rows and columns}
 \usage{
@@ -14,8 +13,6 @@ nonzeroRowsAndCols(object, ...)
 \S4method{nonzeroRowsAndCols}{matrix}(object)
 
 \S4method{nonzeroRowsAndCols}{Matrix}(object)
-
-\S4method{nonzeroRowsAndCols}{DelayedArray}(object)
 
 \S4method{nonzeroRowsAndCols}{SummarizedExperiment}(object, assay = 1L)
 }
@@ -34,7 +31,7 @@ Modified object.
 Subset object to keep only non-zero rows and columns
 }
 \note{
-Updated 2019-08-23.
+Updated 2019-10-09.
 }
 \examples{
 data(

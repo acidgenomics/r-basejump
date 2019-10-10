@@ -18,8 +18,10 @@ with_parameters_test_that(
         expect_identical(x, y)
     },
     object = list(
-        Matrix = counts(sce),
-        DelayedArray = DelayedArray(counts(sce))
+        Matrix = counts(sce)
+        ## nolint start
+        ## > DelayedArray = DelayedArray(counts(sce))
+        ## nolint end
     )
 )
 

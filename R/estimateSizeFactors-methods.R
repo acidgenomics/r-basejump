@@ -1,9 +1,15 @@
-## Seeing this pop up on Travis CI checks:
+## nolint start
+
+## DelayedArray methods disabled until bug fix:
+## https://github.com/Bioconductor/DelayedArray/issues/55
+
 ## Calculating library size factors using 'mean-ratio' method.
 ## Error in get(name, envir = asNamespace(pkg), inherits = FALSE) :
 ##   object 'is_pristine' not found
 ## Calls: estimateSizeFactors ... .librarySizeFactors -> colSums2 -> colSums2
 ##   -> .local -> ::: -> get
+
+## nolint end
 
 
 
@@ -108,7 +114,8 @@ NULL
         )
     ) {
         assert(
-            isAny(counts, c("matrix", "Matrix", "DelayedArray")),
+            ## DelayedArray
+            isAny(counts, c("matrix", "Matrix")),
             !anyNA(counts)
         )
         type <- match.arg(type)
@@ -119,9 +126,13 @@ NULL
         ## Get the sum of expression per cell.
         if (is(counts, "Matrix")) {
             colSums <- Matrix::colSums
-        } else if (is(counts, "DelayedArray")) {
-            colSums <- DelayedMatrixStats::colSums2
         }
+        ## nolint start
+        ## > else if (is(counts, "DelayedArray")) {
+        ## >     assert(requireNamespace("DelayedArray", quietly = TRUE))
+        ## >     colSums <- DelayedMatrixStats::colSums2
+        ## > }
+        ## nolint end
         libSizes <- colSums(counts)
         ## Error on detection of cells without any expression.
         zero <- libSizes == 0L
