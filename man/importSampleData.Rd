@@ -4,8 +4,8 @@
 \alias{importSampleData}
 \title{Import sample metadata}
 \usage{
-importSampleData(file, sheet = 1L, lanes = 0L, pipeline = c("bcbio",
-  "cellranger", "none"))
+importSampleData(file, sheet = 1L, lanes = 0L, pipeline = c("none",
+  "bcbio", "cellranger"))
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -33,7 +33,7 @@ This function imports user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2019-10-09.
+Updated 2019-10-10.
 }
 \section{bcbio pipeline}{
 
