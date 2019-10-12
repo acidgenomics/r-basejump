@@ -118,10 +118,6 @@ brio::dots
 #' @export
 brio::export
 
-#' @importFrom brio extPattern
-#' @export
-brio::extPattern
-
 #' @importFrom brio fileExt
 #' @export
 brio::fileExt
@@ -165,10 +161,6 @@ brio::naStrings
 #' @importFrom brio pasteURL
 #' @export
 brio::pasteURL
-
-#' @importFrom brio rdataExtPattern
-#' @export
-brio::rdataExtPattern
 
 #' @importFrom brio realpath
 #' @export
