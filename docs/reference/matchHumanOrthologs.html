@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.18</span>
       </span>
     </div>
 
@@ -186,22 +186,14 @@ Data frame containing mapping columns:</p><ul>
 #&gt; <span class='message'>  - Genome build: "GRCh38"</span>
 #&gt; <span class='message'>  - Ensembl release: 98L</span>
 #&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>67946 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>3132 non-unique gene symbols detected.</span></div><div class='output co'>#&gt; <span class='message'>Returning with unmodified gene symbols (may contain duplicates).</span></div><div class='output co'>#&gt; DataFrame with 6 rows and 4 columns
-#&gt;                                geneID    geneName          hgncID
-#&gt;                           &lt;character&gt; &lt;character&gt;     &lt;character&gt;
-#&gt; ENSMUSG00000000001 ENSMUSG00000000001       Gnai3 ENSG00000065135
-#&gt; ENSMUSG00000000003 ENSMUSG00000000003        Pbsn              NA
-#&gt; ENSMUSG00000000028 ENSMUSG00000000028       Cdc45 ENSG00000093009
-#&gt; ENSMUSG00000000031 ENSMUSG00000000031         H19              NA
-#&gt; ENSMUSG00000000037 ENSMUSG00000000037       Scml2 ENSG00000102098
-#&gt; ENSMUSG00000000049 ENSMUSG00000000049        Apoh ENSG00000091583
-#&gt;                       hgncName
-#&gt;                    &lt;character&gt;
-#&gt; ENSMUSG00000000001       GNAI3
-#&gt; ENSMUSG00000000003          NA
-#&gt; ENSMUSG00000000028       CDC45
-#&gt; ENSMUSG00000000031          NA
-#&gt; ENSMUSG00000000037       SCML2
-#&gt; ENSMUSG00000000049        APOH</div></pre>
+#&gt;                                geneID    geneName          hgncID    hgncName
+#&gt;                           &lt;character&gt; &lt;character&gt;     &lt;character&gt; &lt;character&gt;
+#&gt; ENSMUSG00000000001 ENSMUSG00000000001       Gnai3 ENSG00000065135       GNAI3
+#&gt; ENSMUSG00000000003 ENSMUSG00000000003        Pbsn              NA          NA
+#&gt; ENSMUSG00000000028 ENSMUSG00000000028       Cdc45 ENSG00000093009       CDC45
+#&gt; ENSMUSG00000000031 ENSMUSG00000000031         H19              NA          NA
+#&gt; ENSMUSG00000000037 ENSMUSG00000000037       Scml2 ENSG00000102098       SCML2
+#&gt; ENSMUSG00000000049 ENSMUSG00000000049        Apoh ENSG00000091583        APOH</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
