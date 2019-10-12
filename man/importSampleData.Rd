@@ -4,8 +4,8 @@
 \alias{importSampleData}
 \title{Import sample metadata}
 \usage{
-importSampleData(file, sheet = 1L, lanes = 0L, pipeline = c("bcbio",
-  "cellranger", "none"))
+importSampleData(file, sheet = 1L, lanes = 0L, pipeline = c("none",
+  "bcbio", "cellranger", "cpi"))
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -21,8 +21,14 @@ Number of lanes used to split the samples into technical replicates
 suffix (i.e. \code{_LXXX}).}
 
 \item{pipeline}{\code{character(1)}.
-Analysis pipeline.
-Currently defaults to bcbio.}
+Analysis pipeline:
+\itemize{
+\item \code{"none"}: Simple mode, requiring only "sampleID" column.
+\item \code{"bcbio"}: bcbio mode. See section here in documentation for details.
+\item \code{"cellranger"}: Cell Ranger mode. Currently requires "directory" column.
+Used by Chromium R package.
+\item \code{"cpi"}: Constellation Pharmaceuticals (CPI) mode.
+}}
 }
 \value{
 \code{DataFrame}.
@@ -33,7 +39,7 @@ This function imports user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2019-09-06.
+Updated 2019-10-10.
 }
 \section{bcbio pipeline}{
 

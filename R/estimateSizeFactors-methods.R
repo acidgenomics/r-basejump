@@ -1,3 +1,18 @@
+## nolint start
+
+## DelayedArray methods disabled until bug fix:
+## https://github.com/Bioconductor/DelayedArray/issues/55
+
+## Calculating library size factors using 'mean-ratio' method.
+## Error in get(name, envir = asNamespace(pkg), inherits = FALSE) :
+##   object 'is_pristine' not found
+## Calls: estimateSizeFactors ... .librarySizeFactors -> colSums2 -> colSums2
+##   -> .local -> ::: -> get
+
+## nolint end
+
+
+
 #' Estimate size factors
 #'
 #' Define size factors from the library sizes, and then apply centering at
@@ -17,7 +32,7 @@
 #'   can handle millions of cells without the calculations blowing up in memory.
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2019-08-06.
+#' @note Updated 2019-10-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param type `character(1)`.
@@ -40,7 +55,6 @@
 #' @param center `numeric(1)`.
 #'   If non-zero, scales all size factors so that the average size factor across
 #'   cells is equal to the value defined. Set to `0` to disable centering.
-#'
 #' @param ... Additional arguments.
 #'
 #' @seealso
@@ -89,7 +103,7 @@ NULL
 
 
 
-## Updated 2019-08-06.
+## Updated 2019-10-09.
 .librarySizeFactors <-  # nolint
     function(
         counts,
@@ -100,7 +114,8 @@ NULL
         )
     ) {
         assert(
-            is(counts, "DelayedArray"),
+            ## DelayedArray
+            isAny(counts, c("matrix", "Matrix")),
             !anyNA(counts)
         )
         type <- match.arg(type)
@@ -109,7 +124,16 @@ NULL
             type
         ))
         ## Get the sum of expression per cell.
-        libSizes <- colSums2(counts)
+        if (is(counts, "Matrix")) {
+            colSums <- Matrix::colSums
+        }
+        ## nolint start
+        ## > else if (is(counts, "DelayedArray")) {
+        ## >     assert(requireNamespace("DelayedArray", quietly = TRUE))
+        ## >     colSums <- DelayedMatrixStats::colSums2
+        ## > }
+        ## nolint end
+        libSizes <- colSums(counts)
         ## Error on detection of cells without any expression.
         zero <- libSizes == 0L
         if (isTRUE(any(zero))) {
@@ -154,7 +178,7 @@ NULL
 
 
 
-## Updated 2019-08-06.
+## Updated 2019-10-09.
 `estimateSizeFactors,SummarizedExperiment` <-  # nolint
     function(object, type, center) {
         validObject(object)
@@ -163,8 +187,7 @@ NULL
             isNonNegative(center)
         )
         type <- match.arg(type)
-        counts <- DelayedArray(counts(object))
-        assert(is(counts, "DelayedMatrix"))
+        counts <- counts(object)
         sf <- .librarySizeFactors(counts = counts, type = type)
         if (center > 0L) {
             sf <- .centerSizeFactors(sf = sf, center = center)

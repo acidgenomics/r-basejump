@@ -72,7 +72,7 @@ colData()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.17</span>
       </span>
     </div>
 
@@ -151,25 +151,31 @@ colData()." />
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function adheres to the following conventions:</p><ul>
+<li><p>Row names are required. Either define manually (recommended) or pass in as
+a rownames column (data.table / tibble style).
+Supported colnames: "sampleID", "rowname", "rn".</p></li>
 <li><p>All column names will be converted to lower camel case
 (see <code><a href='camelCase.html'>camelCase()</a></code> for details).</p></li>
-<li><p>Required columns:</p><ul>
+<li><p><code>sampleName</code> column is always placed first.</p></li>
+</ul>
+
+<p>Required columns:</p><ul>
 <li><p><code>sampleName</code>: Human readable sample names. Note that this column is
 useful for plots and doesn't have to match the column names of a
 <code>SummarizedExperiment</code> object, which should use valid names.</p></li>
-</ul></li>
-<li><p>Blacklisted columns:</p><ul>
+</ul>
+
+<p>Blacklisted columns:</p><ul>
 <li><p><code>filename</code> (use <code>fileName</code>).</p></li>
-<li><p><code>rowname</code>.</p></li>
+<li><p><code>id</code>.</p></li>
+<li><p><code>interestingGroups</code>. Defined automatically downstream.</p></li>
 <li><p><code>sample</code>. Too vague. Does this represent an ID or human readable name?</p></li>
 <li><p><code>samplename</code> (use <code>sampleName</code>).</p></li>
-</ul></li>
-<li><p><code>sampleName</code> column is always placed first.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-14.</p>
+    <p>Updated 2019-10-09.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code>makeNames</code>.</p></div>

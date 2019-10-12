@@ -33,7 +33,7 @@ This code is used internally by:
 }
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-10-10.
 }
 \examples{
 ## RNA-seq template.

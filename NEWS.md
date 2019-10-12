@@ -1,3 +1,33 @@
+## basejump 0.11.18 (2019-10-10)
+
+### Minor changes
+
+- `importSampleData`: Pipeline now defaulting to "none" instead of "bcbio",
+  since this flag is now properly hard coded in bcbio R packages.
+  Added new Constellation (CPI) pipeline option.
+- `makeSampleData`: Now checks for all NA columns and rows, similar to approach
+  in `importSampleData`. This helps improve return consistency. Automatic
+  rowname setting has been tweaked a bit to no longer attempt to remove original
+  ID column.
+
+## basejump 0.11.17 (2019-10-09)
+
+### Minor changes
+
+- `makeSampleData`: Made function slightly more flexible. Now allowing automatic
+  rowname coercion from columns ("sampleID", "rowname", "rn"), similar to
+  approach employed by data.table and tibble packages.
+- Now exporting `stripGeneVersions` alias, which uses the same code internally
+  as `stripTranscriptVersions`.
+
+### Disabled methods
+
+- Disabled DelayedArray class methods for `calculateMetrics`,
+  `estimateSizeFactors`, and `nonzeroRowsAndCols` until `is_pristine` bug in
+  DelayedArray v0.11.8 is fixed on Bioconductor Devel (3.10). This is causing
+  unit tests to fail otherwise.
+  See [related issue](https://github.com/Bioconductor/DelayedArray/issues/55)
+
 ## basejump 0.11.16 (2019-09-25)
 
 ### Minor changes

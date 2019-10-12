@@ -1,6 +1,6 @@
 #' @name nonzeroRowsAndCols
 #' @inherit bioverbs::nonzeroRowsAndCols
-#' @note Updated 2019-08-23.
+#' @note Updated 2019-10-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -109,25 +109,30 @@ setMethod(
 
 
 
-## Updated 2019-08-23.
-`nonzeroRowsAndCols,DelayedArray` <-  # nolint
-    appendToBody(
-        fun = `nonzeroRowsAndCols,matrix`,
-        values = list(
-            quote(rowSums <- DelayedMatrixStats::rowSums2),
-            quote(colSums <- DelayedMatrixStats::colSums2)
-        )
-    )
+## nolint start
 
+## DelayedArray methods disabled until bug fix:
+## https://github.com/Bioconductor/DelayedArray/issues/55
 
+## Updated 2019-10-09.
+## > `nonzeroRowsAndCols,DelayedArray` <-  # nolint
+## >     appendToBody(
+## >         fun = `nonzeroRowsAndCols,matrix`,
+## >         values = list(
+## >             quote(rowSums <- DelayedMatrixStats::rowSums2),
+## >             quote(colSums <- DelayedMatrixStats::colSums2)
+## >         )
+## >     )
 
-#' @rdname nonzeroRowsAndCols
-#' @export
-setMethod(
-    f = "nonzeroRowsAndCols",
-    signature = signature("DelayedArray"),
-    definition = `nonzeroRowsAndCols,DelayedArray`
-)
+## > #' @rdname nonzeroRowsAndCols
+## > #' @export
+## > setMethod(
+## >     f = "nonzeroRowsAndCols",
+## >     signature = signature("DelayedArray"),
+## >     definition = `nonzeroRowsAndCols,DelayedArray`
+## > )
+
+## nolint end
 
 
 
