@@ -14,7 +14,7 @@ jobs:
   include:
     - stage: test
       name: "bioc-release"
-      script: tag="bioc-3.9" ./.Rcheck/docker
+      script: tag="bioc-release" ./.Rcheck/docker
     - stage: test
       name: "bioc-devel"
       script: tag="bioc-devel" ./.Rcheck/docker

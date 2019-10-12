@@ -34,7 +34,7 @@ Data frame containing mapping columns:
 Match human gene orthologs
 }
 \note{
-Updated 2019-08-18.
+Updated 2019-10-10.
 }
 \examples{
 genes <- c(
@@ -42,5 +42,8 @@ genes <- c(
     "ENSMUSG00000000028", "ENSMUSG00000000031",
     "ENSMUSG00000000037", "ENSMUSG00000000049"
 )
-matchHumanOrthologs(genes = genes, ensemblRelease = 87L)
+## Protect against Ensembl timeouts causing build checks to fail.
+if (goalie::hasInternet("https://useast.ensembl.org")) {
+    matchHumanOrthologs(genes = genes, ensemblRelease = 87L)
+}
 }

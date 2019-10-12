@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-09-06.
+#' @note Updated 2019-10-10.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -45,8 +45,12 @@
 #'   Number of lanes used to split the samples into technical replicates
 #'   suffix (i.e. `_LXXX`).
 #' @param pipeline `character(1)`.
-#'   Analysis pipeline.
-#'   Currently defaults to bcbio.
+#'   Analysis pipeline:
+#'   - `"none"`: Simple mode, requiring only "sampleID" column.
+#'   - `"bcbio"`: bcbio mode. See section here in documentation for details.
+#'   - `"cellranger"`: Cell Ranger mode. Currently requires "directory" column.
+#'     Used by Chromium R package.
+#'   - `"cpi"`: Constellation Pharmaceuticals (CPI) mode.
 #'
 #' @return `DataFrame`.
 #'
@@ -64,7 +68,7 @@ importSampleData <- function(
     file,
     sheet = 1L,
     lanes = 0L,
-    pipeline = c("bcbio", "cellranger", "none")
+    pipeline = c("none", "bcbio", "cellranger", "cpi")
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
     if (!hasLength(lanes)) {
@@ -79,23 +83,34 @@ importSampleData <- function(
     pipeline <- match.arg(pipeline)
     requiredCols <- switch(
         EXPR = pipeline,
+        "none" = "sampleID",
         "bcbio" = "description",
         "cellranger" = "directory",
-        "none" = "sampleID"
+        "cpi" = "description"
     )
     ## Convert lanes to a sequence, if necessary.
     if (hasLength(lanes, n = 1L) && isTRUE(lanes > 1L)) {
         lanes <- seq_len(lanes)
     }
+    ## CPI pipeline currently defaults to sheet 2 for sample metadata.
+    ## Sheet 1 contains experiment metadata.
+    if (identical(pipeline, "cpi")) {
+        assert(sheet == 2L)
+    }
 
     ## Import ------------------------------------------------------------------
     data <- import(file, sheet = sheet)
     data <- as(data, "DataFrame")
-    data <- camelCase(data)
+    data <- camelCase(data, rownames = FALSE, colnames = TRUE)
     data <- removeNA(data)
-    ## Check for pipeline-specific columns. Look for bcbio "samplename" column
-    ## and rename to "fileName".
-    if (identical(pipeline, "bcbio")) {
+    ## Manual "sampleID" column is not allowed for bcbio or Cell Ranger input.
+    if (isSubset(pipeline, c("bcbio", "cellranger"))) {
+        assert(areDisjointSets("sampleID", colnames(data)))
+    }
+    if (identical(pipeline, "none")) {
+        idCol <- "sampleID"
+    } else if (identical(pipeline, "bcbio")) {
+        ## Look for bcbio "samplename" column and rename to "fileName".
         if (isSubset("samplename", colnames(data))) {
             message("Renaming 'samplename' column to 'fileName'.")
             assert(areDisjointSets(x = "fileName", y = colnames(data)))
@@ -105,16 +120,17 @@ importSampleData <- function(
     } else if (identical(pipeline, "cellranger")) {
         ## Consider renaming this to `sampleID`, for consistency.
         idCol <- "directory"
-    } else if (identical(pipeline, "none")) {
-        idCol <- "sampleID"
-    }
-    ## Don't allow the user to set `sampleID` column manually, except when no
-    ## pipeline is specified.
-    if (!identical(pipeline, "none")) {
-        assert(areDisjointSets("sampleID", colnames(data)))
+    } else if (identical(pipeline, "cpi")) {
+        ## Sample identifier is in "description" column.
+        ## "sampleID" column currently is a sequential numeric.
+        colnames(data)[colnames(data) == "sampleID"] <- "sampleNum"
+        idCol <- "description"
     }
     ## Check that input passes blacklist, and has all required columns.
-    assert(.isSampleData(object = data, requiredCols = requiredCols))
+    assert(
+        .isSampleData(object = data, requiredCols = requiredCols),
+        isString(idCol), isSubset(idCol, colnames(data))
+    )
     ## Valid rows must contain a non-empty sample identifier.
     data <- data[!is.na(data[[idCol]]), , drop = FALSE]
     ## Requiring syntactically valid names on direct "sampleID" input.
