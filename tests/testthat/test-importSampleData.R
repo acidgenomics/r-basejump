@@ -4,7 +4,7 @@ file <- file.path("cache", "bcbio-metadata-demultiplexed.csv")
 
 test_that("DataFrame return", {
     expect_identical(
-        object = importSampleData(file),
+        object = importSampleData(file, pipeline = "bcbio"),
         expected = DataFrame(
             sampleName = factor(paste0("sample", seq_len(4L))),
             fileName = factor(paste0("sample", seq_len(4L), "_R1.fastq.gz")),
@@ -16,7 +16,7 @@ test_that("DataFrame return", {
 })
 
 test_that("Lane-split technical replicate support", {
-    object <- importSampleData(file, lanes = 4L)
+    object <- importSampleData(file, lanes = 4L, pipeline = "bcbio")
     expect_true("lane" %in% colnames(object))
     expect_identical(
         object = rownames(object)[seq_len(8L)],
@@ -33,7 +33,7 @@ test_that("Required column check failure", {
         "bcbio-metadata-demultiplexed-invalid-missing-columns.csv"
     )
     expect_error(
-        object = importSampleData(file),
+        object = importSampleData(file, pipeline = "bcbio"),
         regexp = "description"
     )
 })
@@ -44,7 +44,7 @@ test_that("Duplicated description", {
         "bcbio-metadata-demultiplexed-invalid-duplicated.csv"
     )
     expect_error(
-        object = importSampleData(file),
+        object = importSampleData(file, pipeline = "bcbio"),
         regexp = "Sample data input file is malformed."
     )
 })
@@ -56,7 +56,7 @@ context("importSampleData : Multiplexed samples")
 file <- file.path("cache", "bcbio-metadata-multiplexed-indrops.csv")
 
 test_that("DataFrame return", {
-    object <- importSampleData(file)
+    object <- importSampleData(file, pipeline = "bcbio")
     expected <- DataFrame(
         sampleName = factor(c(
             "sample2_1",
@@ -133,7 +133,7 @@ test_that("DataFrame return", {
 })
 
 test_that("Lane-split technical replicate support", {
-    object <- importSampleData(file, lanes = 4L)
+    object <- importSampleData(file, lanes = 4L, pipeline = "bcbio")
     expect_identical(
         object = rownames(object),
         expected = c(
@@ -179,7 +179,7 @@ test_that("Required column check failure.", {
         "bcbio-metadata-multiplexed-invalid-missing-columns.csv"
     )
     expect_error(
-        object = importSampleData(file),
+        object = importSampleData(file, pipeline = "bcbio"),
         regexp = "Sample data input file is malformed."
     )
 })
@@ -190,7 +190,7 @@ test_that("Duplicate rows in 'sampleName' column", {
         "bcbio-metadata-multiplexed-invalid-duplicated.csv"
     )
     expect_error(
-        object = importSampleData(file),
+        object = importSampleData(file, pipeline = "bcbio"),
         regexp = "sampleName"
     )
 })
@@ -201,9 +201,10 @@ test_that("bcbio 'samplename' column", {
         "cache",
         "bcbio-metadata-demultiplexed-invalid-legacy-samplename.csv"
     )
+    out <- importSampleData(file, pipeline = "bcbio")
     expect_identical(
-        colnames(importSampleData(file)),
-        c("sampleName", "fileName", "description")
+        object = colnames(out),
+        expected = c("sampleName", "fileName", "description")
     )
 })
 
@@ -239,7 +240,7 @@ test_that("Metadata blacklist", {
         "bcbio-metadata-invalid-column-name.csv"
     )
     expect_error(
-        object = importSampleData(file),
+        object = importSampleData(file, pipeline = "bcbio"),
         regexp = "sampleNames"
     )
 })
@@ -250,7 +251,7 @@ test_that("Invalid description", {
         "bcbio-metadata-invalid-description.csv"
     )
     expect_error(
-        object = importSampleData(file),
+        object = importSampleData(file, pipeline = "bcbio"),
         regexp = "Sample data input file is malformed."
     )
 })
