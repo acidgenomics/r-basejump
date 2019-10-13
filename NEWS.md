@@ -1,4 +1,4 @@
-## basejump 0.11.18 (2019-10-10)
+## basejump 0.11.18 (2019-10-13)
 
 ### Minor changes
 
