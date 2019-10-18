@@ -23,6 +23,7 @@
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom IRanges DataFrameList SplitDataFrameList unsplit
 #' @importFrom Matrix.utils aggregate.Matrix
+#' @importFrom RCurl getURL
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
 #'   as.data.frame as.list cor decode do.call expand expand.grid head lapply
 #'   match mcols mcols<- merge metadata metadata<- na.omit order setdiff split

@@ -49,6 +49,7 @@ Imports:
     GenomeInfoDb (>= 1.20),
     GenomicRanges (>= 1.36),
     IRanges (>= 2.18.2),
+    RCurl (>= 1.95),
     S4Vectors (>= 0.22),
     SingleCellExperiment (>= 1.6),
     SummarizedExperiment (>= 1.14),
