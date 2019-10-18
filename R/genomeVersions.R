@@ -92,21 +92,12 @@ flybaseVersion <- function(dmel = FALSE) {
     assert(isFlag(dmel))
     url <- "ftp://ftp.flybase.net/releases/"
     if (isTRUE(dmel)) {
-        x <- getURL(
-            url = paste0(url, "current/"),
-            dirlistonly = TRUE
-        )
-        x <- unlist(strsplit(x, split = "\n"))
+        x <- getURLDirList(paste0(url, "current/"))
         x <- grep(pattern = "^dmel_r[.0-9]+$", x = x, value = TRUE)
         x <- str_split_fixed(x, pattern = "_", n = 2L)[1L, 2L]
     } else {
-        x <- getURL(
-            url = "ftp://ftp.flybase.net/releases/",
-            dirlistonly = TRUE
-        )
-        x <- unlist(strsplit(x, split = "\n"))
+        x <- getURLDirList(url)
         x <- grep(pattern = "^FB[0-9]{4}_[0-9]{2}$", x = x, value = TRUE)
-
     }
     x <- sort(x)
     x <- tail(x, n = 1L)
@@ -118,4 +109,16 @@ flybaseVersion <- function(dmel = FALSE) {
 #' @rdname genomeVersions
 #' @export
 wormbaseVersion <- function() {
+    url <- pasteURL(
+        "ftp.wormbase.org",
+        "pub",
+        "wormbase",
+        "releases",
+        "current-production-release",
+        protocol = "ftp"
+    )
+    x <- getURLDirList(paste0(url, "/"))
+    x <- grep(pattern = "letter.WS[0-9]+", x = x, value = TRUE)
+    x <- str_split_fixed(x, pattern = "\\.", n = 2L)[1L, 2L]
+    x
 }
