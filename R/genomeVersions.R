@@ -76,6 +76,12 @@ gencodeVersion <- function(organism) {
 #' @rdname genomeVersions
 #' @export
 refseqVersion <- function() {
+    suppressMessages(
+        import(
+            file = "ftp://ftp.ncbi.nlm.nih.gov/refseq/release/RELEASE_NUMBER",
+            format = "lines"
+        )
+    )
 }
 
 
