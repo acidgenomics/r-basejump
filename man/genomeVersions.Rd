@@ -3,28 +3,28 @@
 \name{genomeVersions}
 \alias{genomeVersions}
 \alias{ensemblVersion}
-\alias{flybaseVersion}
 \alias{gencodeVersion}
 \alias{refseqVersion}
+\alias{flybaseVersion}
 \alias{wormbaseVersion}
 \title{Genome versions}
 \usage{
 ensemblVersion()
 
-flybaseVersion(dmel = FALSE)
-
 gencodeVersion(organism)
 
 refseqVersion()
 
+flybaseVersion(dmel = FALSE)
+
 wormbaseVersion()
 }
 \arguments{
-\item{dmel}{\code{logical(1)}.
-Return \emph{Drosophila melanogaster} genome release version.}
-
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. \code{"Homo sapiens"}).}
+
+\item{dmel}{\code{logical(1)}.
+Return \emph{Drosophila melanogaster} genome release version.}
 }
 \value{
 \code{character(1)}.
@@ -39,9 +39,9 @@ Updated 2019-10-18.
 \examples{
 if (hasInternet()) {
     ensemblVersion()
-    flybaseVersion()
     gencodeVersion(organism = "Homo sapiens")
     refseqVersion()
+    flybaseVersion()
     wormbaseVersion()
 }
 }
