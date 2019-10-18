@@ -116,6 +116,7 @@ Collate:
     'filterCells-methods.R'
     'geneNames-methods.R'
     'geneSynonyms.R'
+    'genomeVersions.R'
     'geometricMean-methods.R'
     'headtail-methods.R'
     'humanize-methods.R'
