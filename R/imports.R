@@ -51,8 +51,9 @@
 #'   setOldClass setValidity signature slot slotNames validObject .hasSlot
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
-#' @importFrom stringr str_detect str_dup str_extract str_length str_match
-#'   str_pad str_replace_all str_subset str_trunc
+#' @importFrom stringr boundary str_detect str_dup str_extract str_length
+#'   str_match str_pad str_replace_all str_split str_split_fixed str_subset
+#'   str_trunc
 #' @importFrom transformer as_tibble
 #' @importFrom utils capture.output data getFromNamespace globalVariables
 #'   installed.packages packageVersion
