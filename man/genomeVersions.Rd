@@ -26,6 +26,10 @@ Return \emph{Drosophila melanogaster} genome release version.}
 \item{organism}{\code{character(1)}.
 Full Latin organism name (e.g. \code{"Homo sapiens"}).}
 }
+\value{
+\code{character(1)}.
+Release version.
+}
 \description{
 Obtain the latest release version from various genome annotation sources.
 }
@@ -33,7 +37,13 @@ Obtain the latest release version from various genome annotation sources.
 Updated 2019-10-18.
 }
 \examples{
-ensemblVersion()
+if (hasInternet()) {
+    ensemblVersion()
+    flybaseVersion()
+    gencodeVersion(organism = "Homo sapiens")
+    refseqVersion()
+    wormbaseVersion()
+}
 }
 \seealso{
 Refer to the koopa package for shell variants:
