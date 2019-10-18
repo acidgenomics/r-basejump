@@ -122,6 +122,14 @@ brio::export
 #' @export
 brio::fileExt
 
+#' @importFrom brio getURL
+#' @export
+brio::getURL
+
+#' @importFrom brio getURLDirList
+#' @export
+brio::getURLDirList
+
 #' @importFrom brio gunzip
 #' @export
 brio::gunzip

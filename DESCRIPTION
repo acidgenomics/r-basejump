@@ -36,7 +36,7 @@ Encoding: UTF-8
 Depends: R (>= 3.6)
 Imports:
     bioverbs (>= 0.2.10),
-    brio (>= 0.3.11),
+    brio (>= 0.3.12),
     freerange (>= 0.2.6),
     goalie (>= 0.3.10),
     syntactic (>= 0.3.1),
@@ -49,7 +49,6 @@ Imports:
     GenomeInfoDb (>= 1.20),
     GenomicRanges (>= 1.36),
     IRanges (>= 2.18.2),
-    RCurl (>= 1.95),
     S4Vectors (>= 0.22),
     SingleCellExperiment (>= 1.6),
     SummarizedExperiment (>= 1.14),
