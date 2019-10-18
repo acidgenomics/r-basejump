@@ -1,3 +1,11 @@
+## basejump 0.11.19 (UNRELEASED)
+
+### New functions
+
+- Genome version detection: `ensemblVersion`, `gencodeVersion`, `refseqVersion`,
+  `flybaseVersion`, `wormbaseVersion`. Similar shell variants are available in
+  the [koopa][] package.
+
 ## basejump 0.11.18 (2019-10-13)
 
 ### Minor changes
@@ -1761,6 +1769,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [grch37]: https://grch37.ensembl.org/
 [hgnc]: https://www.genenames.org/
 [hms rc]: https://rc.hms.harvard.edu/
+[koopa]: https://koopa.acidgenomics.com/
 [libreoffice]: https://www.libreoffice.org/
 [lintr]: https://github.com/jimhester/lintr/
 [macos]: https://www.apple.com/macos/
