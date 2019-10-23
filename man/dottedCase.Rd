@@ -49,7 +49,9 @@ dottedCase(object, ...)
 \item{object}{Object.}
 
 \item{names}{\code{logical(1)}.
-Sanitize names.}
+Sanitize names.
+
+Only applies to string mode (\code{rename = FALSE}).}
 
 \item{rownames}{\code{logical(1)}.
 Apply sanitization on row names. This is not generally recommended by

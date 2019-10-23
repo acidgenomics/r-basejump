@@ -100,9 +100,17 @@ SummarizedExperiment::`rowRanges<-`
 #' @export
 acidbase::basenameSansExt
 
+#' @importFrom acidbase dots
+#' @export
+acidbase::dots
+
 #' @importFrom acidbase fileExt
 #' @export
 acidbase::fileExt
+
+#' @importFrom acidbase initDir
+#' @export
+acidbase::initDir
 
 #' @importFrom acidbase matchArgsToDoCall
 #' @export
@@ -115,6 +123,10 @@ acidbase::methodFormals
 #' @importFrom acidbase methodFunction
 #' @export
 acidbase::methodFunction
+
+#' @importFrom acidbase pasteURL
+#' @export
+acidbase::pasteURL
 
 #' @importFrom acidbase printString
 #' @export
@@ -150,12 +162,6 @@ brio::compressFile
 #' @export
 brio::decompressFile
 
-## FIXME Move dots to acidbase.
-
-#' @importFrom brio dots
-#' @export
-brio::dots
-
 #' @importFrom brio export
 #' @export
 brio::export
@@ -180,12 +186,6 @@ brio::gzip
 #' @export
 brio::import
 
-## FIXME Move initDir into acidbase.
-
-#' @importFrom brio initDir
-#' @export
-brio::initDir
-
 #' @importFrom brio loadData
 #' @export
 brio::loadData
@@ -205,12 +205,6 @@ brio::localOrRemoteFile
 #' @importFrom brio naStrings
 #' @export
 brio::naStrings
-
-## FIXME Move pasteURL into acidbase.
-
-#' @importFrom brio pasteURL
-#' @export
-brio::pasteURL
 
 #' @importFrom brio removeNA
 #' @export
