@@ -27,26 +27,33 @@
 \alias{rowData<-}
 \alias{rowRanges}
 \alias{rowRanges<-}
-\alias{assignAndSaveData}
 \alias{basenameSansExt}
+\alias{dots}
+\alias{fileExt}
+\alias{initDir}
+\alias{matchArgsToDoCall}
+\alias{methodFormals}
+\alias{methodFunction}
+\alias{pasteURL}
+\alias{printString}
+\alias{realpath}
+\alias{standardizeCall}
+\alias{assignAndSaveData}
 \alias{bunzip2}
 \alias{bzip2}
 \alias{compressFile}
 \alias{decompressFile}
-\alias{dots}
 \alias{export}
-\alias{fileExt}
+\alias{getURL}
+\alias{getURLDirList}
 \alias{gunzip}
 \alias{gzip}
 \alias{import}
-\alias{initDir}
 \alias{loadData}
 \alias{loadDataAsName}
 \alias{loadRemoteData}
 \alias{localOrRemoteFile}
 \alias{naStrings}
-\alias{pasteURL}
-\alias{realpath}
 \alias{removeNA}
 \alias{sanitizeNA}
 \alias{sanitizePercent}
@@ -65,11 +72,6 @@
 \alias{makeGRangesFromEnsembl}
 \alias{makeGRangesFromGFF}
 \alias{makeGRangesFromGTF}
-\alias{matchArgsToDoCall}
-\alias{methodFormals}
-\alias{methodFunction}
-\alias{printString}
-\alias{standardizeCall}
 \alias{\%<>\%}
 \alias{\%$\%}
 \alias{\%>\%}
@@ -116,15 +118,15 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{acidbase}{\code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase]{methodFormals}}, \code{\link[acidbase]{methodFunction}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{standardizeCall}}}
+
   \item{bioverbs}{\code{\link[bioverbs]{plotGene}}}
 
-  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{basenameSansExt}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{dots}}, \code{\link[brio]{export}}, \code{\link[brio]{fileExt}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{import}}, \code{\link[brio]{initDir}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{pasteURL}}, \code{\link[brio]{realpath}}, \code{\link[brio]{removeNA}}, \code{\link[brio]{sanitizeNA}}, \code{\link[brio]{sanitizePercent}}, \code{\link[brio]{saveData}}, \code{\link[brio]{tar}}, \code{\link[brio]{transmit}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{zip}}}
+  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{export}}, \code{\link[brio]{getURL}}, \code{\link[brio]{getURLDirList}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{import}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{removeNA}}, \code{\link[brio]{sanitizeNA}}, \code{\link[brio]{sanitizePercent}}, \code{\link[brio]{saveData}}, \code{\link[brio]{tar}}, \code{\link[brio]{transmit}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{zip}}}
 
   \item{freerange}{\code{\link[freerange]{annotable}}, \code{\link[freerange]{convertUCSCBuildToEnsembl}}, \code{\link[freerange]{detectOrganism}}, \code{\link[freerange]{emptyRanges}}, \code{\link[freerange]{makeGRangesFromEnsDb}}, \code{\link[freerange]{makeGRangesFromEnsembl}}, \code{\link[freerange]{makeGRangesFromGFF}}, \code{\link[freerange]{makeGRangesFromGTF}}}
 
   \item{GenomicRanges}{\code{\link[GenomicRanges]{GRanges}}, \code{\link[GenomicRanges]{GRangesList}}}
-
-  \item{goalie}{\code{\link[goalie]{matchArgsToDoCall}}, \code{\link[goalie]{methodFormals}}, \code{\link[goalie]{methodFunction}}, \code{\link[goalie]{printString}}, \code{\link[goalie]{standardizeCall}}}
 
   \item{IRanges}{\code{\link[IRanges]{IRanges}}}
 
