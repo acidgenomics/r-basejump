@@ -6,9 +6,13 @@ GenomicRanges::GRanges
 #' @export
 GenomicRanges::GRangesList
 
+
+
 #' @importFrom IRanges IRanges
 #' @export
 IRanges::IRanges
+
+
 
 #' @importFrom S4Vectors DataFrame
 #' @export
@@ -34,6 +38,8 @@ S4Vectors::metadata
 #' @export
 S4Vectors::`metadata<-`
 
+
+
 #' @importFrom SingleCellExperiment reducedDims
 #' @export
 SingleCellExperiment::reducedDims
@@ -41,6 +47,8 @@ SingleCellExperiment::reducedDims
 #' @importFrom SingleCellExperiment reducedDims<-
 #' @export
 SingleCellExperiment::`reducedDims<-`
+
+
 
 #' @importFrom SummarizedExperiment assayNames
 #' @export
@@ -86,13 +94,57 @@ SummarizedExperiment::rowRanges
 #' @export
 SummarizedExperiment::`rowRanges<-`
 
+
+
+#' @importFrom acidbase basenameSansExt
+#' @export
+acidbase::basenameSansExt
+
+#' @importFrom acidbase dots
+#' @export
+acidbase::dots
+
+#' @importFrom acidbase fileExt
+#' @export
+acidbase::fileExt
+
+#' @importFrom acidbase initDir
+#' @export
+acidbase::initDir
+
+#' @importFrom acidbase matchArgsToDoCall
+#' @export
+acidbase::matchArgsToDoCall
+
+#' @importFrom acidbase methodFormals
+#' @export
+acidbase::methodFormals
+
+#' @importFrom acidbase methodFunction
+#' @export
+acidbase::methodFunction
+
+#' @importFrom acidbase pasteURL
+#' @export
+acidbase::pasteURL
+
+#' @importFrom acidbase printString
+#' @export
+acidbase::printString
+
+#' @importFrom acidbase realpath
+#' @export
+acidbase::realpath
+
+#' @importFrom acidbase standardizeCall
+#' @export
+acidbase::standardizeCall
+
+
+
 #' @importFrom brio assignAndSaveData
 #' @export
 brio::assignAndSaveData
-
-#' @importFrom brio basenameSansExt
-#' @export
-brio::basenameSansExt
 
 #' @importFrom brio bunzip2
 #' @export
@@ -110,17 +162,17 @@ brio::compressFile
 #' @export
 brio::decompressFile
 
-#' @importFrom brio dots
-#' @export
-brio::dots
-
 #' @importFrom brio export
 #' @export
 brio::export
 
-#' @importFrom brio fileExt
+#' @importFrom brio getURL
 #' @export
-brio::fileExt
+brio::getURL
+
+#' @importFrom brio getURLDirList
+#' @export
+brio::getURLDirList
 
 #' @importFrom brio gunzip
 #' @export
@@ -133,10 +185,6 @@ brio::gzip
 #' @importFrom brio import
 #' @export
 brio::import
-
-#' @importFrom brio initDir
-#' @export
-brio::initDir
 
 #' @importFrom brio loadData
 #' @export
@@ -157,14 +205,6 @@ brio::localOrRemoteFile
 #' @importFrom brio naStrings
 #' @export
 brio::naStrings
-
-#' @importFrom brio pasteURL
-#' @export
-brio::pasteURL
-
-#' @importFrom brio realpath
-#' @export
-brio::realpath
 
 #' @importFrom brio removeNA
 #' @export
@@ -206,6 +246,8 @@ brio::writeCounts
 #' @export
 brio::zip
 
+
+
 #' @importFrom freerange annotable
 #' @export
 freerange::annotable
@@ -238,25 +280,7 @@ freerange::makeGRangesFromGFF
 #' @export
 freerange::makeGRangesFromGTF
 
-#' @importFrom goalie matchArgsToDoCall
-#' @export
-goalie::matchArgsToDoCall
 
-#' @importFrom goalie methodFormals
-#' @export
-goalie::methodFormals
-
-#' @importFrom goalie methodFunction
-#' @export
-goalie::methodFunction
-
-#' @importFrom goalie printString
-#' @export
-goalie::printString
-
-#' @importFrom goalie standardizeCall
-#' @export
-goalie::standardizeCall
 
 #' @importFrom magrittr %<>%
 #' @export
@@ -272,6 +296,8 @@ magrittr::`%>%`
 #' @importFrom magrittr %T>%
 #' @export
 magrittr::`%T>%`
+
+
 
 #' @importFrom syntactic camel
 #' @export
@@ -321,9 +347,13 @@ syntactic::snake
 #' @export
 syntactic::upperCamel
 
+
+
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
+
+
 
 #' @importFrom transformer antiJoin
 #' @export

@@ -3,7 +3,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams brio::dots
+#' @inheritParams acidbase::dots
 #' @param envirName `character(1)`.
 #'   Name of the new `environment` to create.
 #' @param parentFrame `environment`.

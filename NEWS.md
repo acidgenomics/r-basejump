@@ -1,3 +1,16 @@
+## basejump 0.11.19 (2019-10-23)
+
+### New functions
+
+- Genome version detection: `ensemblVersion`, `gencodeVersion`, `refseqVersion`,
+  `flybaseVersion`, `wormbaseVersion`. Similar shell variants are available in
+  the [koopa][] package.
+
+### Minor changes
+
+- Moved some low-level functions to new [acidbase][] package. Updated NAMESPACE
+  and reexports to reflect these changes.
+
 ## basejump 0.11.18 (2019-10-13)
 
 ### Minor changes
@@ -1720,6 +1733,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Initial draft release.
 
 [acid genomics]: https://acidgenomics.com/
+[acidbase]: https://acidbase.acidgenomics.com/
 [acidplots]: https://acidplots.acidgenomics.com/
 [annotables]: https://github.com/stephenturner/annotables/
 [annotationhub]: https://bioconductor.org/packages/AnnotationHub/
@@ -1761,6 +1775,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [grch37]: https://grch37.ensembl.org/
 [hgnc]: https://www.genenames.org/
 [hms rc]: https://rc.hms.harvard.edu/
+[koopa]: https://koopa.acidgenomics.com/
 [libreoffice]: https://www.libreoffice.org/
 [lintr]: https://github.com/jimhester/lintr/
 [macos]: https://www.apple.com/macos/
