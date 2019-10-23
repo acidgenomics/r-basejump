@@ -1,10 +1,15 @@
-## basejump 0.11.19 (UNRELEASED)
+## basejump 0.11.19 (2019-10-23)
 
 ### New functions
 
 - Genome version detection: `ensemblVersion`, `gencodeVersion`, `refseqVersion`,
   `flybaseVersion`, `wormbaseVersion`. Similar shell variants are available in
   the [koopa][] package.
+
+### Minor changes
+
+- Moved some low-level functions to new [acidbase][] package. Updated NAMESPACE
+  and reexports to reflect these changes.
 
 ## basejump 0.11.18 (2019-10-13)
 
@@ -1728,6 +1733,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Initial draft release.
 
 [acid genomics]: https://acidgenomics.com/
+[acidbase]: https://acidbase.acidgenomics.com/
 [acidplots]: https://acidplots.acidgenomics.com/
 [annotables]: https://github.com/stephenturner/annotables/
 [annotationhub]: https://bioconductor.org/packages/AnnotationHub/
