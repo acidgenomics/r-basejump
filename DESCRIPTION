@@ -39,7 +39,7 @@ Imports:
     bioverbs (>= 0.2.10),
     brio (>= 0.3.13),
     freerange (>= 0.2.7),
-    goalie (>= 0.3.13),
+    goalie (>= 0.4.0),
     syntactic (>= 0.3.2),
     transformer (>= 0.2.8),
     AnnotationDbi (>= 1.46),
