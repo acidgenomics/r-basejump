@@ -1,3 +1,10 @@
+## basejump 0.11.20 (2019-10-24)
+
+### New reexports
+
+- Reexporting `metadata2` and `metadata2<-` functions from transformer.
+  These will be used internally in the pending DESeqAnalysis update.
+
 ## basejump 0.11.19 (2019-10-23)
 
 ### New functions
