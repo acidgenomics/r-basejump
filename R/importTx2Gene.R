@@ -5,7 +5,7 @@
 #' @note File should not contain column header names.
 #' @note The functon doesn't attempt to strip transcript versions. Use
 #'   [stripTranscriptVersions()] in a separate call, if necessary.
-#' @note Updated 2019-08-13.
+#' @note Updated 2019-10-24.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -39,5 +39,5 @@ importTx2Gene <- function(
         genomeBuild = as.character(genomeBuild),
         ensemblRelease = as.integer(ensemblRelease)
     )
-    Tx2Gene(data)
+    Tx2Gene(data, metadata = TRUE)
 }

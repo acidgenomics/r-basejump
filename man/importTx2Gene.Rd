@@ -38,7 +38,7 @@ File should not contain column header names.
 The functon doesn't attempt to strip transcript versions. Use
 \code{\link[=stripTranscriptVersions]{stripTranscriptVersions()}} in a separate call, if necessary.
 
-Updated 2019-08-13.
+Updated 2019-10-24.
 }
 \examples{
 file <- file.path(basejumpTestsURL, "tx2gene.csv")

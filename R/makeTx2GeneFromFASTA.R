@@ -30,7 +30,7 @@
 #'     "Homo_sapiens.GRCh38.cdna.all.fa.gz",
 #'     protocol = "ftp"
 #' )
-#' makeTx2GeneFromFASTA(file = "XXX", source = "ensembl")
+#' makeTx2GeneFromFASTA(file, source = "ensembl")
 makeTx2GeneFromFASTA <- function(
     file,
     source = c(
@@ -42,6 +42,7 @@ makeTx2GeneFromFASTA <- function(
     )
 ) {
     x <- import(file, format = "lines")
+    source <- match.arg(source)
     ## FIXME Remove once we add support for the other importers.
     stopifnot(identical(source, "ensembl"))
 
@@ -59,10 +60,8 @@ makeTx2GeneFromFASTA <- function(
     x <- do.call(what = rbind, args = x)
     x[, 2L] <- gsub(pattern = "^gene:", replacement = "", x = x[, 2L])
 
-    ## FIXME Run sub on commands after data frame drop.
-
-    length(x)
 
 
-
+    x <- unique(x)
+    Tx2Gene(x)
 }
