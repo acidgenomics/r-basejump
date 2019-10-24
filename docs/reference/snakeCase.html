@@ -72,7 +72,7 @@ are defined by underscores (e.g. this_is_snake_case)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.20</span>
       </span>
     </div>
 
@@ -172,7 +172,8 @@ are defined by underscores (e.g. <code>this_is_snake_case</code>).</p>
     <tr>
       <th>names</th>
       <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Sanitize names.</p></td>
+Sanitize names.</p>
+<p>Only applies to string mode (<code>rename = FALSE</code>).</p></td>
     </tr>
     <tr>
       <th>rownames</th>
@@ -234,7 +235,7 @@ Contains syntatically valid names. For objects supporting
 #&gt;  [4] "x5prime"           "g2m_score"         "hello_world"      
 #&gt;  [7] "hello_world"       "mazda_rx4"         "n_count"          
 #&gt; [10] "rnai_clones"       "tx2gene"           "tx2_gene_id"      
-#&gt; [13] "worfdb_html_remap" "x123"              NA                 
+#&gt; [13] "worfdb_html_remap" "x123"             
 #&gt; 
 #&gt; $character_named
 #&gt;        item_a        item_b 

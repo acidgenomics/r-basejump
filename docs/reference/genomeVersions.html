@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate quality control metrics — calculateMetrics • basejump</title>
+<title>Genome versions — genomeVersions • basejump</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Calculate quality control metrics — calculateMetrics" />
-<meta property="og:description" content="Calculate quality control metrics" />
+<meta property="og:title" content="Genome versions — genomeVersions" />
+<meta property="og:description" content="Obtain the latest release version from various genome annotation sources." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -113,89 +113,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate quality control metrics</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/calculateMetrics-methods.R'><code>R/calculateMetrics-methods.R</code></a></small>
-    <div class="hidden name"><code>calculateMetrics.Rd</code></div>
+    <h1>Genome versions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/genomeVersions.R'><code>R/genomeVersions.R</code></a></small>
+    <div class="hidden name"><code>genomeVersions.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate quality control metrics</p>
+    <p>Obtain the latest release version from various genome annotation sources.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>ensemblVersion</span>()
 
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>gencodeVersion</span>(<span class='no'>organism</span>)
 
-<span class='co'># S4 method for Matrix</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>refseqVersion</span>()
 
-<span class='co'># S4 method for RangedSummarizedExperiment</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>,
-  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>flybaseVersion</span>(<span class='kw'>dmel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>,
-  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>wormbaseVersion</span>()</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>organism</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Full Latin organism name (e.g. <code>"Homo sapiens"</code>).</p></td>
     </tr>
     <tr>
-      <th>rowRanges</th>
-      <td><p><code>GRanges</code> or <code>GRangesList</code>.
-Genomic ranges (e.g. genome annotations). Metadata describing the assay
-rows.</p></td>
-    </tr>
-    <tr>
-      <th>prefilter</th>
+      <th>dmel</th>
       <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Drop very low quality samples/cells from the object.
-This can resize the number of columns but the rows (i.e. features) do not
-change with this operation.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+Return <em>Drosophila melanogaster</em> genome release version.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-<ul>
-<li><p><code>matrix</code> / <code>Matrix</code>: <code>DataFrame</code> containing metrics.</p></li>
-<li><p><code>SingleCellExperiment</code> / <code>SummarizedExperiment</code>: Modified object, with
-metrics in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code>.</p></li>
-</ul>
-
+    <p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Release version.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Input a raw count matrix. Do not use size factor adjusted or log
-normalized counts here.</p>
-<p>Updated 2019-10-09.</p>
+    <p>Updated 2019-10-18.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Refer to the koopa package for shell variants:</p><ul>
+<li><p><code>ensembl-version</code>.</p></li>
+<li><p><code>flybase-version</code>.</p></li>
+<li><p><code>gencode-version</code>.</p></li>
+<li><p><code>refseq-version</code>.</p></li>
+<li><p><code>wormbase-version</code>.</p></li>
+</ul>
+</div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-
-<span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'>497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'>0 mitochondrial features detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
-#&gt; dim: 500 100 
-#&gt; metadata(1): date
-#&gt; assays(1): counts
-#&gt; rownames(500): gene001 gene002 ... gene499 gene500
-#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
-#&gt; colnames(100): cell001 cell002 ... cell099 cell100
-#&gt; colData names(7): sampleID nCount ... log10FeaturesPerCount mitoRatio
-#&gt; reducedDimNames(0):
-#&gt; spikeNames(0):</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='kw pkg'>goalie</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/goalie/man/check-scalar-hasInternet.html'>hasInternet</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"ftp://ftp.ensembl.org/"</span>)) {
+    <span class='fu'>ensemblVersion</span>()
+}</div><div class='output co'>#&gt; [1] "98"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -203,11 +176,10 @@ normalized counts here.</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#note">Note</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p>Michael Steinbaugh, Rory Kirchner</p>
   </div>
 </div>
 

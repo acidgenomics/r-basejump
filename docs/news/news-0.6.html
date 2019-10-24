@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.20</span>
       </span>
     </div>
 
@@ -115,9 +115,9 @@
       
     </div>
 
-    <div id="basejump-0-6-0-2018-07-17" class="section level2">
+    <div id="basejump-060-2018-07-17" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-6-0-2018-07-17" class="anchor"></a>basejump 0.6.0 (2018-07-17)</h2>
+<a href="#basejump-060-2018-07-17" class="anchor"></a>basejump 0.6.0 (2018-07-17)</h2>
 <div id="major-changes-21" class="section level3">
 <h3 class="hasAnchor">
 <a href="#major-changes-21" class="anchor"></a>Major changes</h3>
@@ -146,33 +146,33 @@
 </ul>
 <p>Providing basic <code>SummarizedExperiment</code> class method support for <code>counts</code>.</p>
 </div>
-<div id="minor-changes-56" class="section level3">
+<div id="minor-changes-58" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-56" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-58" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>geometricMean</code> generic was not exported correctly.</li>
 </ul>
 </div>
 </div>
-    <div id="basejump-0-6-1-2018-07-21" class="section level2">
+    <div id="basejump-061-2018-07-21" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-6-1-2018-07-21" class="anchor"></a>basejump 0.6.1 (2018-07-21)</h2>
-<div id="minor-changes-55" class="section level3">
+<a href="#basejump-061-2018-07-21" class="anchor"></a>basejump 0.6.1 (2018-07-21)</h2>
+<div id="minor-changes-57" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-55" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-57" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Bug fix for <code>convertGenesToSymbols</code> method for <code>SummarizedExperiment</code>. Previously, if <code>geneName</code> column was a factor, this function would error. This issue has been fixed by ensuring that the symbols provided in <code>geneName</code> are coerced to a character vector.</li>
 <li>Improved <a href="https://conda.io/">conda</a> installation instructions.</li>
 </ul>
 </div>
 </div>
-    <div id="basejump-0-6-2-2018-07-31" class="section level2">
+    <div id="basejump-062-2018-07-31" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-6-2-2018-07-31" class="anchor"></a>basejump 0.6.2 (2018-07-31)</h2>
-<div id="new-functions-16" class="section level3">
+<a href="#basejump-062-2018-07-31" class="anchor"></a>basejump 0.6.2 (2018-07-31)</h2>
+<div id="new-functions-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-16" class="anchor"></a>New functions</h3>
+<a href="#new-functions-17" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>convertSymbolsToGenes</code>: provides <code>SummarizedExperiment</code> method support for converting objects containing gene symbols (“geneName”) as rownames back to gene identifiers (“geneID”).</li>
@@ -189,9 +189,9 @@
 <code>broadClass</code> now supports <code>GRanges</code> and <code>SummarizedExperiment</code>. Support for <code>data.frame</code> and/or <code>DataFrame</code> class objects has been removed.</li>
 </ul>
 </div>
-<div id="minor-changes-54" class="section level3">
+<div id="minor-changes-56" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-54" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-56" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>convertGenesToSymbols</code> and <code>convertTranscriptsToGenes</code> now have <code>organism</code> and <code>gene2symbol</code> arguments set <code>NULL</code> by default.</li>
@@ -205,23 +205,23 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0-6-3-2018-08-01" class="section level2">
+    <div id="basejump-063-2018-08-01" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-6-3-2018-08-01" class="anchor"></a>basejump 0.6.3 (2018-08-01)</h2>
-<div id="minor-changes-53" class="section level3">
+<a href="#basejump-063-2018-08-01" class="anchor"></a>basejump 0.6.3 (2018-08-01)</h2>
+<div id="minor-changes-55" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-53" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-55" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code>separatorBar</code> and <code>updateMessage</code> global export from <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a>. Improved <code>separatorBar</code> appeareance to automatically scale to current session width, using <code><a href="https://rdrr.io/r/base/options.html">getOption("width")</a></code>.</li>
 </ul>
 </div>
 </div>
-    <div id="basejump-0-6-4-2018-08-03" class="section level2">
+    <div id="basejump-064-2018-08-03" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-6-4-2018-08-03" class="anchor"></a>basejump 0.6.4 (2018-08-03)</h2>
-<div id="new-functions-15" class="section level3">
+<a href="#basejump-064-2018-08-03" class="anchor"></a>basejump 0.6.4 (2018-08-03)</h2>
+<div id="new-functions-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-15" class="anchor"></a>New functions</h3>
+<a href="#new-functions-16" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>matchInterestingGroups</code>: New developer function to automatically handle <code>interestingGroups</code> argument used across various plotting functions and in the <a href="https://github.com/bcbio/bcbio-nextgen/">bcbio</a> infrastructure packges.</li>
@@ -234,11 +234,11 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-0-6-0-2018-07-17">0.6.0</a></li>
-        <li><a href="#basejump-0-6-1-2018-07-21">0.6.1</a></li>
-        <li><a href="#basejump-0-6-2-2018-07-31">0.6.2</a></li>
-        <li><a href="#basejump-0-6-3-2018-08-01">0.6.3</a></li>
-        <li><a href="#basejump-0-6-4-2018-08-03">0.6.4</a></li>
+        <li><a href="#basejump-060-2018-07-17">0.6.0</a></li>
+        <li><a href="#basejump-061-2018-07-21">0.6.1</a></li>
+        <li><a href="#basejump-062-2018-07-31">0.6.2</a></li>
+        <li><a href="#basejump-063-2018-08-01">0.6.3</a></li>
+        <li><a href="#basejump-064-2018-08-03">0.6.4</a></li>
       </ul>
     </div>
   </div>
