@@ -22,12 +22,8 @@
 #' - `wormbase-version`.
 #'
 #' @examples
-#' if (hasInternet()) {
+#' if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
 #'     ensemblVersion()
-#'     gencodeVersion(organism = "Homo sapiens")
-#'     refseqVersion()
-#'     flybaseVersion()
-#'     wormbaseVersion()
 #' }
 NULL
 

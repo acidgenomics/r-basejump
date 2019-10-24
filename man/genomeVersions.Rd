@@ -37,12 +37,8 @@ Obtain the latest release version from various genome annotation sources.
 Updated 2019-10-18.
 }
 \examples{
-if (hasInternet()) {
+if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
     ensemblVersion()
-    gencodeVersion(organism = "Homo sapiens")
-    refseqVersion()
-    flybaseVersion()
-    wormbaseVersion()
 }
 }
 \seealso{
