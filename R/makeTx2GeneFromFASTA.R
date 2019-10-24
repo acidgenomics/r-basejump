@@ -43,25 +43,23 @@ makeTx2GeneFromFASTA <- function(
 ) {
     x <- import(file, format = "lines")
     source <- match.arg(source)
-    ## FIXME Remove once we add support for the other importers.
-    stopifnot(identical(source, "ensembl"))
-
-    ## Ensembl -----------------------------------------------------------------
-    x <- grep(pattern = "^>", x = x, value = TRUE)
-    ## Strip the ">" prefix.
-    x <- substr(x, start = 2L, stop = nchar(x))
-    x <- strsplit(x = x, split = " ", fixed = TRUE)
-    x <- lapply(
-        X = x,
-        FUN = function(x) {
-            x[c(1L, 4L)]
-        }
-    )
-    x <- do.call(what = rbind, args = x)
-    x[, 2L] <- gsub(pattern = "^gene:", replacement = "", x = x[, 2L])
-
-
-
+    if (identical(source, "ensembl")) {
+        ## Ensembl -------------------------------------------------------------
+        x <- grep(pattern = "^>", x = x, value = TRUE)
+        ## Strip the ">" prefix.
+        x <- substr(x, start = 2L, stop = nchar(x))
+        x <- strsplit(x = x, split = " ", fixed = TRUE)
+        x <- lapply(
+            X = x,
+            FUN = function(x) {
+                x[c(1L, 4L)]
+            }
+        )
+        x <- do.call(what = rbind, args = x)
+        x[, 2L] <- gsub(pattern = "^gene:", replacement = "", x = x[, 2L])
+    } else {
+        stop("NOT YET SUPPORTED")
+    }
     x <- unique(x)
     Tx2Gene(x)
 }
