@@ -9,9 +9,7 @@
 #'
 #'   - `"ensembl"`: Ensembl.
 #'   - `"gencode"`: GENCODE.
-#'   - `"refseq"`: RefSeq.
 #'   - `"flybase"`: FlyBase.
-#'   - `"wormbase"`: WormBase.
 #'
 #'   Assuming Ensembl transcriptome (i.e. cDNA) input by default.
 
@@ -48,19 +46,22 @@
 makeTx2GeneFromFASTA <- function(
     file,
     source = c(
+        ## "refseq"
+        ## "wormbase"
         "ensembl",
         "gencode",
-        "refseq",
-        "flybase",
-        "wormbase"
+        "flybase"
     )
 ) {
     x <- import(file, format = "lines")
     source <- match.arg(source)
+    x <- grep(pattern = "^>", x = x, value = TRUE)
+    ## Error if the input doesn't contain ">". For example, this happens with
+    ## bcbio "ref-transcripts.fa" file returned by gffutils.
+    assert(hasLength(x))
+    x <- substr(x, start = 2L, stop = nchar(x))
     if (identical(source, "ensembl")) {
         ## Ensembl -------------------------------------------------------------
-        x <- grep(pattern = "^>", x = x, value = TRUE)
-        x <- substr(x, start = 2L, stop = nchar(x))
         x <- strsplit(x = x, split = " ", fixed = TRUE)
         x <- lapply(
             X = x,
@@ -72,8 +73,6 @@ makeTx2GeneFromFASTA <- function(
         x[, 2L] <- gsub(pattern = "^gene:", replacement = "", x = x[, 2L])
     } else if (identical(source, "gencode")) {
         ## GENCODE -------------------------------------------------------------
-        x <- grep(pattern = "^>", x = x, value = TRUE)
-        x <- substr(x, start = 2L, stop = nchar(x))
         x <- strsplit(x = x, split = "|", fixed = TRUE)
         x <- lapply(
             X = x,
@@ -82,8 +81,21 @@ makeTx2GeneFromFASTA <- function(
             }
         )
         x <- do.call(what = rbind, args = x)
-    } else {
-        stop("NOT YET SUPPORTED")
+    } else if (identical(source, "flybase")) {
+        ## FlyBase -------------------------------------------------------------
+        x <- strsplit(x = x, split = " ", fixed = TRUE)
+        x <- lapply(
+            X = x,
+            FUN = function(x) {
+                x[c(1L, 9L)]
+            }
+        )
+        x <- do.call(what = rbind, args = x)
+        x[, 2L] <- gsub(
+            pattern = "^.*\\b(FBgn[0-9]{7})\\b.*$",
+            replacement = "\\1",
+            x = x[, 2L]
+        )
     }
     x <- unique(x)
     Tx2Gene(x)
