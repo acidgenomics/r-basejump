@@ -4,7 +4,8 @@
 \alias{makeTx2GeneFromFASTA}
 \title{Make a Tx2Gene object from transcriptome FASTA}
 \usage{
-makeTx2GeneFromFASTA(file, source = c("ensembl", "gencode", "flybase"))
+makeTx2GeneFromFASTA(file, source = c("ensembl", "gencode", "flybase",
+  "wormbase"))
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -52,6 +53,21 @@ file <- pasteURL(
     protocol = "ftp"
 )
 makeTx2GeneFromFASTA(file, source = "gencode")
+
+## WormBase ====
+file <- pasteURL(
+    "ftp.wormbase.org",
+    "pub",
+    "wormbase",
+    "releases",
+    "WS272",
+    "species",
+    "c_elegans",
+    "PRJNA13758",
+    "c_elegans.PRJNA13758.WS272.mRNA_transcripts.fa.gz",
+    protocol = "ftp"
+)
+makeTx2GeneFromFASTA(file, source = "wormbase")
 }
 \seealso{
 tx2gene importers defined in \link{koopa}.
