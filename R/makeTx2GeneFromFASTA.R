@@ -1,6 +1,8 @@
 #' Make a Tx2Gene object from transcriptome FASTA
 #'
 #' @export
+#' @note RefSeq transcript FASTA (e.g. "GRCh38_latest_rna.fna.gz") doesn't
+#'   contain gene identifiers, and is not supported.
 #' @note Updated 2019-10-24.
 #'
 #' @inheritParams acidroxygen::params
@@ -10,6 +12,7 @@
 #'   - `"ensembl"`: Ensembl.
 #'   - `"gencode"`: GENCODE.
 #'   - `"flybase"`: FlyBase.
+#'   - `"wormbase"`: WormBase.
 #'
 #'   Assuming Ensembl transcriptome (i.e. cDNA) input by default.
 
@@ -29,7 +32,7 @@
 #'     "Homo_sapiens.GRCh38.cdna.all.fa.gz",
 #'     protocol = "ftp"
 #' )
-#' makeTx2GeneFromFASTA(file, source = "ensembl")
+#' ## > makeTx2GeneFromFASTA(file, source = "ensembl")
 #'
 #' ## GENCODE ====
 #' file <- pasteURL(
@@ -42,7 +45,19 @@
 #'     "gencode.v32.transcripts.fa.gz",
 #'     protocol = "ftp"
 #' )
-#' makeTx2GeneFromFASTA(file, source = "gencode")
+#' ## > makeTx2GeneFromFASTA(file, source = "gencode")
+#'
+#' ## FlyBase ====
+#' file <- pasteURL(
+#'     "ftp.flybase.net",
+#'     "releases",
+#'     "FB2019_05",
+#'     "dmel_r6.30",
+#'     "fasta",
+#'     "dmel-all-transcript-r6.30.fasta.gz",
+#'     protocol = "ftp"
+#' )
+#' ## > makeTx2GeneFromFASTA(file, source = "flybase")
 #'
 #' ## WormBase ====
 #' file <- pasteURL(
@@ -57,11 +72,10 @@
 #'     "c_elegans.PRJNA13758.WS272.mRNA_transcripts.fa.gz",
 #'     protocol = "ftp"
 #' )
-#' makeTx2GeneFromFASTA(file, source = "wormbase")
+#' ## > makeTx2GeneFromFASTA(file, source = "wormbase")
 makeTx2GeneFromFASTA <- function(
     file,
     source = c(
-        ## "refseq"
         "ensembl",
         "gencode",
         "flybase",

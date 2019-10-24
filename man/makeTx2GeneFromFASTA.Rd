@@ -17,6 +17,7 @@ FASTA file source:
 \item \code{"ensembl"}: Ensembl.
 \item \code{"gencode"}: GENCODE.
 \item \code{"flybase"}: FlyBase.
+\item \code{"wormbase"}: WormBase.
 }
 
 Assuming Ensembl transcriptome (i.e. cDNA) input by default.}
@@ -25,6 +26,9 @@ Assuming Ensembl transcriptome (i.e. cDNA) input by default.}
 Make a Tx2Gene object from transcriptome FASTA
 }
 \note{
+RefSeq transcript FASTA (e.g. "GRCh38_latest_rna.fna.gz") doesn't
+contain gene identifiers, and is not supported.
+
 Updated 2019-10-24.
 }
 \examples{
@@ -39,7 +43,7 @@ file <- pasteURL(
     "Homo_sapiens.GRCh38.cdna.all.fa.gz",
     protocol = "ftp"
 )
-makeTx2GeneFromFASTA(file, source = "ensembl")
+## > makeTx2GeneFromFASTA(file, source = "ensembl")
 
 ## GENCODE ====
 file <- pasteURL(
@@ -52,7 +56,19 @@ file <- pasteURL(
     "gencode.v32.transcripts.fa.gz",
     protocol = "ftp"
 )
-makeTx2GeneFromFASTA(file, source = "gencode")
+## > makeTx2GeneFromFASTA(file, source = "gencode")
+
+## FlyBase ====
+file <- pasteURL(
+    "ftp.flybase.net",
+    "releases",
+    "FB2019_05",
+    "dmel_r6.30",
+    "fasta",
+    "dmel-all-transcript-r6.30.fasta.gz",
+    protocol = "ftp"
+)
+## > makeTx2GeneFromFASTA(file, source = "flybase")
 
 ## WormBase ====
 file <- pasteURL(
@@ -67,7 +83,7 @@ file <- pasteURL(
     "c_elegans.PRJNA13758.WS272.mRNA_transcripts.fa.gz",
     protocol = "ftp"
 )
-makeTx2GeneFromFASTA(file, source = "wormbase")
+## > makeTx2GeneFromFASTA(file, source = "wormbase")
 }
 \seealso{
 tx2gene importers defined in \link{koopa}.
