@@ -40,7 +40,7 @@ file <- pasteURL(
     "Homo_sapiens.GRCh38.cdna.all.fa.gz",
     protocol = "ftp"
 )
-makeTx2GeneFromFASTA(file = "XXX", source = "ensembl")
+makeTx2GeneFromFASTA(file, source = "ensembl")
 }
 \seealso{
 tx2gene importers defined in \link{koopa}.

@@ -29,7 +29,7 @@ NULL
             is.character(object),
             identical(ncol(object), 2L)
         )
-        Tx2Gene(as.data.frame(object, stringsAsFactors = FALSE))
+        Tx2Gene(object = as.data.frame(object, stringsAsFactors = FALSE))
     }
 
 
@@ -48,7 +48,8 @@ setMethod(
 `Tx2Gene,data.frame` <-  # nolint
     function(object) {
         assert(identical(ncol(object), 2L))
-        Tx2Gene(as(object, "DataFrame"), metadata = FALSE)
+        colnames(object) <- c("transcriptID", "geneID")
+        Tx2Gene(object = as(object, "DataFrame"), metadata = FALSE)
     }
 
 
@@ -98,7 +99,7 @@ setMethod(
         ## This step is needed for handling raw GFF annotations.
         data <- unique(data)
         metadata(data) <- metadata(object)
-        Tx2Gene(data, metadata = TRUE)
+        Tx2Gene(object = data, metadata = TRUE)
     }
 
 
@@ -116,7 +117,7 @@ setMethod(
 ## Updated 2019-10-24.
 `Tx2Gene,SummarizedExperiment` <-  # nolint
     function(object) {
-        Tx2Gene(rowData(object, use.names = TRUE))
+        Tx2Gene(object = rowData(object, use.names = TRUE), metadata = TRUE)
     }
 
 

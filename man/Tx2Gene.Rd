@@ -28,7 +28,7 @@ Tx2Gene(object, ...)
 \item{...}{Additional arguments.}
 
 \item{metadata}{\code{logical(1)}.
-Slot genome metadata.}
+Include genome metadata.}
 }
 \value{
 \code{Tx2Gene}.
