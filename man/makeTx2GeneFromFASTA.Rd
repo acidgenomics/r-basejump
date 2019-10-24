@@ -4,8 +4,7 @@
 \alias{makeTx2GeneFromFASTA}
 \title{Make a Tx2Gene object from transcriptome FASTA}
 \usage{
-makeTx2GeneFromFASTA(file, source = c("ensembl", "gencode", "refseq",
-  "flybase", "wormbase"))
+makeTx2GeneFromFASTA(file, source = c("ensembl", "gencode", "flybase"))
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -16,9 +15,7 @@ FASTA file source:
 \itemize{
 \item \code{"ensembl"}: Ensembl.
 \item \code{"gencode"}: GENCODE.
-\item \code{"refseq"}: RefSeq.
 \item \code{"flybase"}: FlyBase.
-\item \code{"wormbase"}: WormBase.
 }
 
 Assuming Ensembl transcriptome (i.e. cDNA) input by default.}
@@ -30,6 +27,7 @@ Make a Tx2Gene object from transcriptome FASTA
 Updated 2019-10-24.
 }
 \examples{
+## Ensembl ====
 file <- pasteURL(
     "ftp.ensembl.org",
     "pub",
@@ -41,6 +39,19 @@ file <- pasteURL(
     protocol = "ftp"
 )
 makeTx2GeneFromFASTA(file, source = "ensembl")
+
+## GENCODE ====
+file <- pasteURL(
+    "ftp.ebi.ac.uk",
+    "pub",
+    "databases",
+    "gencode",
+    "Gencode_human",
+    "release_32",
+    "gencode.v32.transcripts.fa.gz",
+    protocol = "ftp"
+)
+makeTx2GeneFromFASTA(file, source = "gencode")
 }
 \seealso{
 tx2gene importers defined in \link{koopa}.
