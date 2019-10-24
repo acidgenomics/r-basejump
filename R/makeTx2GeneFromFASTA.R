@@ -20,6 +20,7 @@
 #' [koopa]: https://koopa.acidgenomics.com/
 #'
 #' @examples
+#' ## Ensembl ====
 #' file <- pasteURL(
 #'     "ftp.ensembl.org",
 #'     "pub",
@@ -31,6 +32,19 @@
 #'     protocol = "ftp"
 #' )
 #' makeTx2GeneFromFASTA(file, source = "ensembl")
+#'
+#' ## GENCODE ====
+#' file <- pasteURL(
+#'     "ftp.ebi.ac.uk",
+#'     "pub",
+#'     "databases",
+#'     "gencode",
+#'     "Gencode_human",
+#'     "release_32",
+#'     "gencode.v32.transcripts.fa.gz",
+#'     protocol = "ftp"
+#' )
+#' makeTx2GeneFromFASTA(file, source = "gencode")
 makeTx2GeneFromFASTA <- function(
     file,
     source = c(
@@ -46,7 +60,6 @@ makeTx2GeneFromFASTA <- function(
     if (identical(source, "ensembl")) {
         ## Ensembl -------------------------------------------------------------
         x <- grep(pattern = "^>", x = x, value = TRUE)
-        ## Strip the ">" prefix.
         x <- substr(x, start = 2L, stop = nchar(x))
         x <- strsplit(x = x, split = " ", fixed = TRUE)
         x <- lapply(
@@ -57,6 +70,18 @@ makeTx2GeneFromFASTA <- function(
         )
         x <- do.call(what = rbind, args = x)
         x[, 2L] <- gsub(pattern = "^gene:", replacement = "", x = x[, 2L])
+    } else if (identical(source, "gencode")) {
+        ## GENCODE -------------------------------------------------------------
+        x <- grep(pattern = "^>", x = x, value = TRUE)
+        x <- substr(x, start = 2L, stop = nchar(x))
+        x <- strsplit(x = x, split = "|", fixed = TRUE)
+        x <- lapply(
+            X = x,
+            FUN = function(x) {
+                x[c(1L, 2L)]
+            }
+        )
+        x <- do.call(what = rbind, args = x)
     } else {
         stop("NOT YET SUPPORTED")
     }
