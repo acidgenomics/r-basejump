@@ -415,6 +415,14 @@ transformer::innerJoin
 #' @export
 transformer::leftJoin
 
+#' @importFrom transformer metadata2
+#' @export
+transformer::metadata2
+
+#' @importFrom transformer metadata2<-
+#' @export
+transformer::`metadata2<-`
+
 #' @importFrom transformer mutateAll
 #' @export
 transformer::mutateAll
