@@ -114,7 +114,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Transcript-to-gene identifier mappings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerators.R'><code>R/AllGenerators.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/Tx2Gene-methods.R'><code>R/Tx2Gene-methods.R</code></a></small>
     <div class="hidden name"><code>Tx2Gene.Rd</code></div>
     </div>
 
@@ -124,8 +124,14 @@
 
     <pre class="usage"><span class='fu'>Tx2Gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for DataFrame</span>
+<span class='co'># S4 method for matrix</span>
 <span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>Tx2Gene</span>(<span class='no'>object</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for GRanges</span>
 <span class='fu'>Tx2Gene</span>(<span class='no'>object</span>)
@@ -144,6 +150,11 @@
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
+    <tr>
+      <th>metadata</th>
+      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
+Include genome metadata.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -152,7 +163,7 @@
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>No attempt is made to arrange the rows by transcript identifier.</p>
-<p>Updated 2019-08-13.</p>
+<p>Updated 2019-10-24.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='makeTx2Gene.html'>makeTx2Gene()</a></code>.</p></div>

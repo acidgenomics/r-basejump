@@ -17,6 +17,7 @@ reference:
       - genomeVersions
       - makeGene2Symbol
       - makeTx2Gene
+      - makeTx2GeneFromFASTA
       - matchEnsemblReleaseToURL
   - title: Gene identifier mapping
     contents:

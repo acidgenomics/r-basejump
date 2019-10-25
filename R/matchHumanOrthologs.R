@@ -1,6 +1,6 @@
 #' Match human gene orthologs
 #'
-#' @note Updated 2019-10-10.
+#' @note Updated 2019-10-25.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -20,9 +20,9 @@
 #'     "ENSMUSG00000000037", "ENSMUSG00000000049"
 #' )
 #' ## Protect against Ensembl timeouts causing build checks to fail.
-#' if (goalie::hasInternet("https://useast.ensembl.org")) {
-#'     matchHumanOrthologs(genes = genes, ensemblRelease = 87L)
-#' }
+#' ## > if (goalie::hasInternet("https://ensembl.org")) {
+#' ## >     matchHumanOrthologs(genes = genes, ensemblRelease = 87L)
+#' ## > }
 matchHumanOrthologs <- function(
     genes,
     organism = NULL,
