@@ -160,7 +160,7 @@ Data frame containing mapping columns:</p><ul>
 
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-10-10.</p>
+    <p>Updated 2019-10-25.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
@@ -169,31 +169,9 @@ Data frame containing mapping columns:</p><ul>
     <span class='st'>"ENSMUSG00000000037"</span>, <span class='st'>"ENSMUSG00000000049"</span>
 )
 <span class='co'>## Protect against Ensembl timeouts causing build checks to fail.</span>
-<span class='kw'>if</span> (<span class='kw pkg'>goalie</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/goalie/man/check-scalar-hasInternet.html'>hasInternet</a></span>(<span class='st'>"https://useast.ensembl.org"</span>)) {
-    <span class='fu'>matchHumanOrthologs</span>(<span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>genes</span>, <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>87L</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Matching orthologs against Ensembl Genes 87 (dec2016.archive.ensembl.org) with biomaRt 2.40.5.</span></div><div class='output co'>#&gt; <span class='message'>Getting Mus musculus gene symbols.</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.1 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH75036: Ensembl 98 EnsDb for Mus musculus</span>
-#&gt; <span class='message'>Run this code to download EnsDb manually:</span>
-#&gt; <span class='message'>  &gt; library(AnnotationHub)</span>
-#&gt; <span class='message'>  &gt; ah &lt;- AnnotationHub()</span>
-#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH75036"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Mus musculus"</span>
-#&gt; <span class='message'>  - Genome build: "GRCm38"</span>
-#&gt; <span class='message'>  - Ensembl release: 98L</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>56239 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>772 non-unique gene symbols detected.</span></div><div class='output co'>#&gt; <span class='message'>Returning with unmodified gene symbols (may contain duplicates).</span></div><div class='output co'>#&gt; <span class='message'>Getting Homo sapiens gene symbols.</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>Matching EnsDb from AnnotationHub 2.16.1 (2019-05-02).</span></div><div class='output co'>#&gt; <span class='message'>AH75011: Ensembl 98 EnsDb for Homo sapiens</span>
-#&gt; <span class='message'>Run this code to download EnsDb manually:</span>
-#&gt; <span class='message'>  &gt; library(AnnotationHub)</span>
-#&gt; <span class='message'>  &gt; ah &lt;- AnnotationHub()</span>
-#&gt; <span class='message'>  &gt; edb &lt;- ah[["AH75011"]]</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from EnsDb object.</span></div><div class='output co'>#&gt; <span class='message'>  - Organism: "Homo sapiens"</span>
-#&gt; <span class='message'>  - Genome build: "GRCh38"</span>
-#&gt; <span class='message'>  - Ensembl release: 98L</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining 'broadClass' using: geneBiotype, geneName, seqnames.</span></div><div class='output co'>#&gt; <span class='message'>Arranging by 'geneID'.</span></div><div class='output co'>#&gt; <span class='message'>67946 genes detected.</span></div><div class='output co'>#&gt; <span class='message'>3132 non-unique gene symbols detected.</span></div><div class='output co'>#&gt; <span class='message'>Returning with unmodified gene symbols (may contain duplicates).</span></div><div class='output co'>#&gt; DataFrame with 6 rows and 4 columns
-#&gt;                                geneID    geneName          hgncID    hgncName
-#&gt;                           &lt;character&gt; &lt;character&gt;     &lt;character&gt; &lt;character&gt;
-#&gt; ENSMUSG00000000001 ENSMUSG00000000001       Gnai3 ENSG00000065135       GNAI3
-#&gt; ENSMUSG00000000003 ENSMUSG00000000003        Pbsn              NA          NA
-#&gt; ENSMUSG00000000028 ENSMUSG00000000028       Cdc45 ENSG00000093009       CDC45
-#&gt; ENSMUSG00000000031 ENSMUSG00000000031         H19              NA          NA
-#&gt; ENSMUSG00000000037 ENSMUSG00000000037       Scml2 ENSG00000102098       SCML2
-#&gt; ENSMUSG00000000049 ENSMUSG00000000049        Apoh ENSG00000091583        APOH</div></pre>
+<span class='co'>## &gt; if (goalie::hasInternet("https://ensembl.org")) {</span>
+<span class='co'>## &gt;     matchHumanOrthologs(genes = genes, ensemblRelease = 87L)</span>
+<span class='co'>## &gt; }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

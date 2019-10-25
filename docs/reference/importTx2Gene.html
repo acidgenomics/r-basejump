@@ -164,7 +164,7 @@ ensembldb in use.</p></td>
     <p>File should not contain column header names.</p>
 <p>The functon doesn't attempt to strip transcript versions. Use
 <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions()</a></code> in a separate call, if necessary.</p>
-<p>Updated 2019-08-13.</p>
+<p>Updated 2019-10-24.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"tx2gene.csv"</span>)
@@ -174,13 +174,13 @@ ensembldb in use.</p></td>
     <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCm38"</span>,
     <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>90L</span>
 )</div><div class='output co'>#&gt; <span class='message'>Importing 'tx2gene.csv' using 'data.table::fread()'.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 5 rows and 2 columns
-#&gt;                          transcriptID             geneID
-#&gt;                           &lt;character&gt;        &lt;character&gt;
-#&gt; ENSMUST00000033908 ENSMUST00000033908 ENSMUSG00000031511
-#&gt; ENSMUST00000070080 ENSMUST00000070080 ENSMUSG00000056124
-#&gt; ENSMUST00000119854 ENSMUST00000119854 ENSMUSG00000037736
-#&gt; ENSMUST00000174016 ENSMUST00000174016 ENSMUSG00000036036
-#&gt; ENSMUST00000204196 ENSMUST00000204196 ENSMUSG00000029804</div></pre>
+#&gt;         transcriptID             geneID
+#&gt;          &lt;character&gt;        &lt;character&gt;
+#&gt; 1 ENSMUST00000033908 ENSMUSG00000031511
+#&gt; 2 ENSMUST00000070080 ENSMUSG00000056124
+#&gt; 3 ENSMUST00000119854 ENSMUSG00000037736
+#&gt; 4 ENSMUST00000174016 ENSMUSG00000036036
+#&gt; 5 ENSMUST00000204196 ENSMUSG00000029804</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
