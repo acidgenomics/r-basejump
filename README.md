@@ -42,8 +42,9 @@ Configure [Conda][] to use the [Bioconda][] channels.
 
 ```sh
 # Don't install recipe into base environment.
-conda create --name=r-basejump r-basejump
-conda activate r-basejump
+name="r-basejump"
+conda create --name="$name" "$name"
+conda activate "$name"
 ```
 
 ### [Docker][] method
