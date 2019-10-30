@@ -41,7 +41,9 @@ BiocManager::valid()
 Configure [conda][] to use the [bioconda][] channels.
 
 ```sh
-conda install -c bioconda r-basejump
+# Don't install recipe into base environment.
+conda create --name=r-basejump r-basejump
+conda activate r-basejump
 ```
 
 ## References
