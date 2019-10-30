@@ -52,7 +52,7 @@ conda activate "$name"
 ```sh
 image="acidgenomics/basejump"
 workdir="/work"
-docker pull 
+docker pull "$image"
 docker run -it \
     --volume="${PWD}:${workdir}" \
     --workdir="$workdir" \
