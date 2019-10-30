@@ -56,8 +56,7 @@ docker pull "$image"
 docker run -it \
     --volume="${PWD}:${workdir}" \
     --workdir="$workdir" \
-    "$image" \
-    bash
+    "$image"
 ```
 
 ## References
