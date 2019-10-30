@@ -36,14 +36,27 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
 BiocManager::valid()
 ```
 
-### [conda][] method
+### [Conda][] method
 
-Configure [conda][] to use the [bioconda][] channels.
+Configure [Conda][] to use the [Bioconda][] channels.
 
 ```sh
 # Don't install recipe into base environment.
 conda create --name=r-basejump r-basejump
 conda activate r-basejump
+```
+
+### [Docker][] method
+
+```sh
+image="acidgenomics/basejump"
+workdir="/work"
+docker pull 
+docker run -it \
+    --volume="${PWD}:${workdir}" \
+    --workdir="$workdir" \
+    "$image" \
+    bash
 ```
 
 ## References
@@ -54,5 +67,6 @@ The papers and software cited in our workflows are available as a [shared librar
 [bioconda]: https://bioconda.github.io/
 [bioconductor]: https://bioconductor.org/
 [conda]: https://conda.io/
+[docker]: https://www.docker.com/
 [paperpile]: https://paperpile.com/
 [r]: https://www.r-project.org/
