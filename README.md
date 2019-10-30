@@ -45,6 +45,7 @@ Configure [Conda][] to use the [Bioconda][] channels.
 name="r-basejump"
 conda create --name="$name" "$name"
 conda activate "$name"
+R
 ```
 
 ### [Docker][] method
@@ -56,7 +57,8 @@ docker pull "$image"
 docker run -it \
     --volume="${PWD}:${workdir}" \
     --workdir="$workdir" \
-    "$image"
+    "$image" \
+    R
 ```
 
 ## References
