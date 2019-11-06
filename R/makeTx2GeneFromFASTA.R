@@ -3,7 +3,7 @@
 #' @export
 #' @note RefSeq transcript FASTA (e.g. "GRCh38_latest_rna.fna.gz") doesn't
 #'   contain gene identifiers, and is not supported.
-#' @note Updated 2019-10-24.
+#' @note Updated 2019-11-06.
 #'
 #' @inheritParams acidroxygen::params
 #' @param source `character(1)`.
@@ -18,6 +18,7 @@
 
 #' @seealso
 #' tx2gene importers defined in [koopa][].
+#'
 #' [koopa]: https://koopa.acidgenomics.com/
 #'
 #' @examples
