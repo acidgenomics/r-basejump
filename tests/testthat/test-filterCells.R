@@ -10,6 +10,11 @@ test_that("No filtering applied", {
     expect_null(metadata(x)[["filterCells"]])
 })
 
+## FIXME Fun new SCE issue popping up with Bioconductor 3.10
+## Warning in e1 >= Rle(e2) :
+## longer object length is not a multiple of shorter object length
+## Calls: filterCells ... <Anonymous> -> callGeneric -> eval -> eval -> >= -> >=
+
 test_that("No cells pass", {
     expect_error(
         filterCells(object, minCounts = Inf),
