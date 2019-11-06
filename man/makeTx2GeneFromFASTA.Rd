@@ -86,6 +86,5 @@ file <- pasteURL(
 ## > makeTx2GeneFromFASTA(file, source = "wormbase")
 }
 \seealso{
-tx2gene importers defined in \link{koopa}.
-\link{koopa}: https://koopa.acidgenomics.com/
+tx2gene importers defined in \href{https://koopa.acidgenomics.com/}{koopa}.
 }
