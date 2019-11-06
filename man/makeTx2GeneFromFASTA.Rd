@@ -22,6 +22,9 @@ FASTA file source:
 
 Assuming Ensembl transcriptome (i.e. cDNA) input by default.}
 }
+\value{
+\code{Tx2Gene}.
+}
 \description{
 Make a Tx2Gene object from transcriptome FASTA
 }
@@ -29,7 +32,7 @@ Make a Tx2Gene object from transcriptome FASTA
 RefSeq transcript FASTA (e.g. "GRCh38_latest_rna.fna.gz") doesn't
 contain gene identifiers, and is not supported.
 
-Updated 2019-10-24.
+Updated 2019-11-06.
 }
 \examples{
 ## Ensembl ====

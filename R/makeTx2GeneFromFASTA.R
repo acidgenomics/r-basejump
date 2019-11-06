@@ -15,7 +15,9 @@
 #'   - `"wormbase"`: WormBase.
 #'
 #'   Assuming Ensembl transcriptome (i.e. cDNA) input by default.
-
+#'
+#' @return `Tx2Gene`.
+#'
 #' @seealso
 #' tx2gene importers defined in [koopa][].
 #'
