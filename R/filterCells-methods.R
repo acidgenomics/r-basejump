@@ -198,7 +198,9 @@ NULL
                     operator = operators,
                     metricCol = arg2col,
                     FUN = function(argName, arg, operator, metricCol) {
-                        metric <- metrics[[metricCol]]
+                        ## Note that `decode()` step is now required for proper
+                        ## Rle handling on Bioconductor 3.10.
+                        metric <- decode(metrics[[metricCol]])
                         do.call(
                             what = operator,
                             args = list(e1 = metric, e2 = arg)
