@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.11.20
-Date: 2019-10-24
+Date: 2019-11-06
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -35,44 +35,44 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.6)
 Imports:
+    AnnotationDbi (>= 1.48),
+    Biobase (>= 2.46),
+    BiocGenerics (>= 0.32),
+    BiocParallel (>= 1.20),
+    Biostrings (>= 2.54),
+    GenomeInfoDb (>= 1.22),
+    GenomicRanges (>= 1.38),
+    IRanges (>= 2.20),
+    Matrix (>= 1.2),
+    Matrix.utils (>= 0.9),
+    S4Vectors (>= 0.24),
+    SingleCellExperiment (>= 1.8),
+    SummarizedExperiment (>= 1.16),
     acidbase (>= 0.1.1),
+    biomaRt (>= 2.42),
     bioverbs (>= 0.2.10),
     brio (>= 0.3.14),
     freerange (>= 0.2.7),
     goalie (>= 0.4.0),
-    syntactic (>= 0.3.2),
-    transformer (>= 0.2.9),
-    AnnotationDbi (>= 1.46),
-    Biobase (>= 2.44),
-    BiocGenerics (>= 0.30),
-    BiocParallel (>= 1.18),
-    Biostrings (>= 2.52),
-    GenomeInfoDb (>= 1.20),
-    GenomicRanges (>= 1.36),
-    IRanges (>= 2.18.2),
-    S4Vectors (>= 0.22),
-    SingleCellExperiment (>= 1.6),
-    SummarizedExperiment (>= 1.14),
-    biomaRt (>= 2.40),
-    Matrix (>= 1.2),
-    Matrix.utils (>= 0.9),
     knitr (>= 1.24),
     magrittr (>= 1.5),
     matrixStats (>= 0.55),
     scales (>= 1.0),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
+    syntactic (>= 0.3.2),
     tibble (>= 2.1),
+    transformer (>= 0.2.9),
     methods,
     utils
 Suggests:
-    acidroxygen (>= 0.1.3),
-    acidtest (>= 0.2.6),
-    BiocStyle (>= 2.12),
+    BiocStyle (>= 2.14),
     EnsDb.Hsapiens.v75 (>= 2.99),
+    acidroxygen (>= 0.1.3),
+    acidtest (>= 0.2.7),
     patrick (>= 0.0.1),
-    rmarkdown (>= 1.15),
-    testthat (>= 2.2),
+    rmarkdown (>= 1.16),
+    testthat (>= 2.3),
     datasets
 Remotes:
     acidgenomics/acidbase,
