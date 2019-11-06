@@ -11,8 +11,8 @@ test_that("mean", {
 
 test_that("geomean", {
     object <- pseudobulk(object, fun = "geometricMean")
-    object <- round(Matrix::colSums(counts(x)))
-    expected <- c(sample1 = 62958, sample2 = 61262)  # nolint
+    object <- round(Matrix::colSums(counts(object)))
+    expected <- c(sample1 = 2794849, sample2 = 2813670)  # nolint
     expect_identical(object, expected)
 })
 

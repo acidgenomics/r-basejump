@@ -50,7 +50,7 @@ with_parameters_test_that(
     },
     fun = fun,
     expected = list(
-        mean = c(57038, 55170L),
+        mean = c(57038L, 55170L),
         median = c(56431L, 51017L),
         sum = c(2794849L, 2813670L)
     )
