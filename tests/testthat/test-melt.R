@@ -44,7 +44,7 @@ with_parameters_test_that(
     },
     trans = trans,
     expected = list(
-        identity = c(14, 19, 19, 107, 128),  # nolint
+        identity = c(14, 19, 19, 107, 128, 4),  # nolint
         log2 = c(3.907, 4.322, 4.322, 6.755, 7.011, 2.322),
         log10 = c(1.176, 1.301, 1.301, 2.033, 2.111, 0.699)
     )
