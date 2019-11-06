@@ -198,21 +198,10 @@ NULL
                     operator = operators,
                     metricCol = arg2col,
                     FUN = function(argName, arg, operator, metricCol) {
-                        ## Note that `decode()` step is now required for proper
-                        ## Rle handling on Bioconductor 3.10.
-                        ##
-                        ## FIXME minCounts = Inf
-                        ## sample1 sample2
-                        ## Inf     Inf
-                        ##
-                        ## Warning in .Primitive(">=")(e1 = c(61091L, 93296L, 57158L, 56084L, 69314L,  :
-                        ## longer object length is not a multiple of shorter object length
-                        ##
-                        metric <- decode(metrics[[metricCol]])
-                        do.call(
-                            what = operator,
-                            args = list(e1 = metric, e2 = arg)
-                        )
+                        assert(isSubset(sampleName, names(arg)))
+                        e1 <- metrics[[metricCol]]
+                        e2 <- arg[[sampleName]]
+                        do.call(what = operator, args = list(e1 = e1, e2 = e2))
                     },
                     SIMPLIFY = FALSE,
                     USE.NAMES = TRUE
