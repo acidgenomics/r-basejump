@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.20</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.21</span>
       </span>
     </div>
 
@@ -115,12 +115,12 @@
       
     </div>
 
-    <div id="basejump-080-2018-11-11" class="section level2">
+    <div id="basejump-0-8-0-2018-11-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-080-2018-11-11" class="anchor"></a>basejump 0.8.0 (2018-11-11)</h2>
-<div id="major-changes-16" class="section level3">
+<a href="#basejump-0-8-0-2018-11-11" class="anchor"></a>basejump 0.8.0 (2018-11-11)</h2>
+<div id="major-changes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-16" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-17" class="anchor"></a>Major changes</h3>
 <p>This release is the beginning of an attempt to rework the basejump codebase a bit and make the package easier to unit test on <a href="https://travis-ci.com/">Travis CI</a>. bcbio R packages will be pinned to v0.7.2 during this development period.</p>
 <p>Here we are working to split out the functionality of basejump into several, smaller sub-packages:</p>
 <ul>
@@ -139,21 +139,21 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-081-2018-11-15" class="section level2">
+    <div id="basejump-0-8-1-2018-11-15" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-081-2018-11-15" class="anchor"></a>basejump 0.8.1 (2018-11-15)</h2>
-<div id="major-changes-15" class="section level3">
+<a href="#basejump-0-8-1-2018-11-15" class="anchor"></a>basejump 0.8.1 (2018-11-15)</h2>
+<div id="major-changes-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-15" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-16" class="anchor"></a>Major changes</h3>
 <p>The split-out sub-package approach isn’t working quite right, so the code base has been consolidated back into a single basejump package. Development toward splitting the package will continue, but a conceptual re-imagining of how to organize the functions is needed.</p>
 </div>
 </div>
-    <div id="basejump-082-2018-11-19" class="section level2">
+    <div id="basejump-0-8-2-2018-11-19" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-082-2018-11-19" class="anchor"></a>basejump 0.8.2 (2018-11-19)</h2>
-<div id="major-changes-14" class="section level3">
+<a href="#basejump-0-8-2-2018-11-19" class="anchor"></a>basejump 0.8.2 (2018-11-19)</h2>
+<div id="major-changes-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-14" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-15" class="anchor"></a>Major changes</h3>
 <p>Migrating some additional base code that can be dispatched on either <code>SummarizedExperiment</code> or <code>SingleCellExperiment</code> from the bcbio R packages. We’re going to split out some of the single-cell RNA-seq functionality into separate packages, since a lot of my work moving forward deals with the 10X Genomics Cell Ranger platform, rather than the bcbio-supported inDrops platform.</p>
 <p>In particular:</p>
 <ul>
@@ -189,13 +189,13 @@
 <li>Added new <code>formalsList</code> global variable, which stashes <code>getOption</code> defaults used in some functions, namely the save/load functions and some plotting functions.</li>
 <li>Switched to using <code>formalsList</code> along with <code>formals</code> declaration internally to make the parameters more consistent across functions.</li>
 <li>Miscellaneous fixes to working examples and documentation.</li>
-<li>Split out sanitization functions into separate R files (e.g. <code>removeNA</code>).</li>
+<li>Split out sanitization functions into separate R files (e.g. <code>removeNA</code>).</li>
 </ul>
 </div>
 </div>
-    <div id="basejump-083-2018-11-25" class="section level2">
+    <div id="basejump-0-8-3-2018-11-25" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-083-2018-11-25" class="anchor"></a>basejump 0.8.3 (2018-11-25)</h2>
+<a href="#basejump-0-8-3-2018-11-25" class="anchor"></a>basejump 0.8.3 (2018-11-25)</h2>
 <div id="minor-changes-51" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-51" class="anchor"></a>Minor changes</h3>
@@ -213,9 +213,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-084-2018-11-28" class="section level2">
+    <div id="basejump-0-8-4-2018-11-28" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-084-2018-11-28" class="anchor"></a>basejump 0.8.4 (2018-11-28)</h2>
+<a href="#basejump-0-8-4-2018-11-28" class="anchor"></a>basejump 0.8.4 (2018-11-28)</h2>
 <div id="new-functions-12" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-functions-12" class="anchor"></a>New functions</h3>
@@ -240,9 +240,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-085-2018-11-29" class="section level2">
+    <div id="basejump-0-8-5-2018-11-29" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-085-2018-11-29" class="anchor"></a>basejump 0.8.5 (2018-11-29)</h2>
+<a href="#basejump-0-8-5-2018-11-29" class="anchor"></a>basejump 0.8.5 (2018-11-29)</h2>
 <div id="new-functions-11" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-functions-11" class="anchor"></a>New functions</h3>
@@ -282,9 +282,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-086-2018-11-30" class="section level2">
+    <div id="basejump-0-8-6-2018-11-30" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-086-2018-11-30" class="anchor"></a>basejump 0.8.6 (2018-11-30)</h2>
+<a href="#basejump-0-8-6-2018-11-30" class="anchor"></a>basejump 0.8.6 (2018-11-30)</h2>
 <div id="minor-changes-48" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-48" class="anchor"></a>Minor changes</h3>
@@ -295,9 +295,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-087-2018-12-01" class="section level2">
+    <div id="basejump-0-8-7-2018-12-01" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-087-2018-12-01" class="anchor"></a>basejump 0.8.7 (2018-12-01)</h2>
+<a href="#basejump-0-8-7-2018-12-01" class="anchor"></a>basejump 0.8.7 (2018-12-01)</h2>
 <div id="new-functions-10" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-functions-10" class="anchor"></a>New functions</h3>
@@ -312,15 +312,15 @@
 <ul>
 <li>
 <code>export</code>: Added <code>humanize</code> argument support.</li>
-<li>Improved grep pattern matching inside <code>makeNames</code> functions (e.g. <code>.sanitizeAcronyms</code>).</li>
+<li>Improved grep pattern matching inside <code>makeNames</code> functions (e.g. <code>.sanitizeAcronyms</code>).</li>
 <li>
 <code>sampleData</code>: Improved blacklist pattern matching against <code>Seurat</code> objects for <code>SingleCellExperiment</code> method.</li>
 </ul>
 </div>
 </div>
-    <div id="basejump-088-2018-12-03" class="section level2">
+    <div id="basejump-0-8-8-2018-12-03" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-088-2018-12-03" class="anchor"></a>basejump 0.8.8 (2018-12-03)</h2>
+<a href="#basejump-0-8-8-2018-12-03" class="anchor"></a>basejump 0.8.8 (2018-12-03)</h2>
 <div id="new-functions-9" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-functions-9" class="anchor"></a>New functions</h3>
@@ -329,9 +329,9 @@
 <code>deg</code>: Utility function to quickly obtain differentially expressed gene (DEG) identifiers as a character vector.</li>
 </ul>
 </div>
-<div id="major-changes-13" class="section level3">
+<div id="major-changes-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-13" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-14" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>plotHeatmap</code>: Now defining row scaling internally, rather than relying on the functionality defined in <code>pheatmap</code>.</li>
@@ -344,15 +344,15 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-080-2018-11-11">0.8.0</a></li>
-        <li><a href="#basejump-081-2018-11-15">0.8.1</a></li>
-        <li><a href="#basejump-082-2018-11-19">0.8.2</a></li>
-        <li><a href="#basejump-083-2018-11-25">0.8.3</a></li>
-        <li><a href="#basejump-084-2018-11-28">0.8.4</a></li>
-        <li><a href="#basejump-085-2018-11-29">0.8.5</a></li>
-        <li><a href="#basejump-086-2018-11-30">0.8.6</a></li>
-        <li><a href="#basejump-087-2018-12-01">0.8.7</a></li>
-        <li><a href="#basejump-088-2018-12-03">0.8.8</a></li>
+        <li><a href="#basejump-0-8-0-2018-11-11">0.8.0</a></li>
+        <li><a href="#basejump-0-8-1-2018-11-15">0.8.1</a></li>
+        <li><a href="#basejump-0-8-2-2018-11-19">0.8.2</a></li>
+        <li><a href="#basejump-0-8-3-2018-11-25">0.8.3</a></li>
+        <li><a href="#basejump-0-8-4-2018-11-28">0.8.4</a></li>
+        <li><a href="#basejump-0-8-5-2018-11-29">0.8.5</a></li>
+        <li><a href="#basejump-0-8-6-2018-11-30">0.8.6</a></li>
+        <li><a href="#basejump-0-8-7-2018-12-01">0.8.7</a></li>
+        <li><a href="#basejump-0-8-8-2018-12-03">0.8.8</a></li>
       </ul>
     </div>
   </div>

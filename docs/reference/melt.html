@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.20</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.21</span>
       </span>
     </div>
 
@@ -240,33 +240,33 @@ getS3method("melt", "data.frame", envir = asNamespace("tidyr"))
 <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 6000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 6000 rows and 6 columns
 #&gt;       colname rowname value condition sampleName interestingGroups
 #&gt;         &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;     &lt;Rle&gt;      &lt;Rle&gt;             &lt;Rle&gt;
-#&gt; 1    sample01 gene001     4         A   sample01                 A
-#&gt; 2    sample01 gene002    49         A   sample01                 A
-#&gt; 3    sample01 gene003    73         A   sample01                 A
-#&gt; 4    sample01 gene004     0         A   sample01                 A
-#&gt; 5    sample01 gene005     6         A   sample01                 A
+#&gt; 1    sample01 gene001    14         A   sample01                 A
+#&gt; 2    sample01 gene002    19         A   sample01                 A
+#&gt; 3    sample01 gene003    19         A   sample01                 A
+#&gt; 4    sample01 gene004   107         A   sample01                 A
+#&gt; 5    sample01 gene005   128         A   sample01                 A
 #&gt; ...       ...     ...   ...       ...        ...               ...
-#&gt; 5996 sample12 gene496    60         B   sample12                 B
-#&gt; 5997 sample12 gene497     0         B   sample12                 B
-#&gt; 5998 sample12 gene498   214         B   sample12                 B
-#&gt; 5999 sample12 gene499    97         B   sample12                 B
-#&gt; 6000 sample12 gene500    17         B   sample12                 B</div><div class='input'>
+#&gt; 5996 sample12 gene496     0         B   sample12                 B
+#&gt; 5997 sample12 gene497     2         B   sample12                 B
+#&gt; 5998 sample12 gene498    20         B   sample12                 B
+#&gt; 5999 sample12 gene499     4         B   sample12                 B
+#&gt; 6000 sample12 gene500    31         B   sample12                 B</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; [1] 500 100</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>melt</span>(<span class='no'>object</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 50000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 50000 rows and 6 columns
 #&gt;       colname rowname value sampleID sampleName interestingGroups
 #&gt;         &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;    &lt;Rle&gt;      &lt;Rle&gt;             &lt;Rle&gt;
-#&gt; 1     cell001 gene001    75  sample1    sample1           sample1
+#&gt; 1     cell001 gene001    50  sample1    sample1           sample1
 #&gt; 2     cell001 gene002     0  sample1    sample1           sample1
-#&gt; 3     cell001 gene003     0  sample1    sample1           sample1
-#&gt; 4     cell001 gene004    38  sample1    sample1           sample1
-#&gt; 5     cell001 gene005    26  sample1    sample1           sample1
+#&gt; 3     cell001 gene003  1320  sample1    sample1           sample1
+#&gt; 4     cell001 gene004    62  sample1    sample1           sample1
+#&gt; 5     cell001 gene005    10  sample1    sample1           sample1
 #&gt; ...       ...     ...   ...      ...        ...               ...
-#&gt; 49996 cell100 gene496     0  sample2    sample2           sample2
-#&gt; 49997 cell100 gene497    13  sample2    sample2           sample2
-#&gt; 49998 cell100 gene498   149  sample2    sample2           sample2
-#&gt; 49999 cell100 gene499   295  sample2    sample2           sample2
+#&gt; 49996 cell100 gene496    36  sample2    sample2           sample2
+#&gt; 49997 cell100 gene497     0  sample2    sample2           sample2
+#&gt; 49998 cell100 gene498    27  sample2    sample2           sample2
+#&gt; 49999 cell100 gene499    15  sample2    sample2           sample2
 #&gt; 50000 cell100 gene500     0  sample2    sample2           sample2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
