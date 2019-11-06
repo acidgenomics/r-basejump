@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.20</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.21</span>
       </span>
     </div>
 
@@ -115,9 +115,9 @@
       
     </div>
 
-    <div id="basejump-020-2018-01-28" class="section level2">
+    <div id="basejump-0-2-0-2018-01-28" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-020-2018-01-28" class="anchor"></a>basejump 0.2.0 (2018-01-28)</h2>
+<a href="#basejump-0-2-0-2018-01-28" class="anchor"></a>basejump 0.2.0 (2018-01-28)</h2>
 <ul>
 <li>Offloaded internal <a href="https://github.com/bcbio/bcbio-nextgen/">bcbio</a>-specific code to new package named <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a>. Consequently, this makes the <a href="https://basejump.acidgenomics.com/">basejump</a> package leaner, meaner, and easier to manage. The following functions are now exported in that package: <code>bcbio</code>, <code>checkInterestingGroups</code>, <code>flatFiles</code>, <code>interestingGroups</code>, <code>metrics</code>, <code>plotDot</code>, <code>plotGene</code>, <code>plotQC</code>, <code>plotViolin</code>, <code>prepareSummarizedExperiment</code>, <code>prepareTemplate</code>, <code>readDataVersions</code>, <code>readLogFile</code>, <code>readProgramVersions</code>, <code>readSampleMetadataFile</code>, <code>sampleMetadata</code>, <code>sampleYAML</code>, <code>sampleYAMLMetadata</code>, <code>sampleYAMLMetrics</code>, and <code>selectSamples</code>. These functions are now deprecated here in <a href="https://basejump.acidgenomics.com/">basejump</a> (see <code>deprecated.R</code> file for more information).</li>
 <li>
@@ -132,14 +132,14 @@
 <code>annotables</code> now checks for all packages attached by <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a> and <a href="https://bioconductor.org/packages/AnnotationHub/">AnnotationHub</a> and forces detachment at the end of the function call. Otherwise, this can result in the unwanted effect of <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a> masking other user-loaded functions, such as the <a href="http://www.tidyverse.org/">tidyverse</a> suite (e.g. <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select</a></code>).</li>
 <li>Consistently reformatted code indents to be a multple of 4 spaces, as recommended by <a href="https://bioconductor.org/">Bioconductor</a>.</li>
 <li>
-<code>camel</code> now handles delimited numbers a little differently. Previously, delimiters in between numbers (e.g. the commas in “1,000,000”) were stripped. Sometimes this can result in confusing names. For example, if we have a column formatted in dotted case containing a decimal (e.g. “resolution.1.6”), the decimal would be stripped (e.g. “resolution16” in camel). Now, we sanitize a numeric delimiter as a lower case “x” character (e.g. “resolution1x6”). This ensures that numbers containing decimals remain semantically meaningful when sanitized with <code>camel</code>.</li>
+<code>camel</code> now handles delimited numbers a little differently. Previously, delimiters in between numbers (e.g. the commas in “1,000,000”) were stripped. Sometimes this can result in confusing names. For example, if we have a column formatted in dotted case containing a decimal (e.g. “resolution.1.6”), the decimal would be stripped (e.g. “resolution16” in camel). Now, we sanitize a numeric delimiter as a lower case “x” character (e.g. “resolution1x6”). This ensures that numbers containing decimals remain semantically meaningful when sanitized with <code>camel</code>.</li>
 <li>Internally, <code>gsub</code> (and <code>grepl</code>) calls have been simplified to use the default order of “pattern, replacement, x”.</li>
 <li>Internally, all implicit integers have been converted to explicit integers, where applicable.</li>
 </ul>
 </div>
-    <div id="basejump-021-2018-02-07" class="section level2">
+    <div id="basejump-0-2-1-2018-02-07" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-021-2018-02-07" class="anchor"></a>basejump 0.2.1 (2018-02-07)</h2>
+<a href="#basejump-0-2-1-2018-02-07" class="anchor"></a>basejump 0.2.1 (2018-02-07)</h2>
 <ul>
 <li>Added <code>convertGenesToSymbols</code> and <code>convertTranscriptsToGenes</code> functions. Previously some of this functionality was contained within the <code>gene2symbol</code> and <code>tx2gene</code> generics for the character method. This behavior was inconsistent with <code>gene2symbol</code> and <code>tx2gene</code> usage in the <a href="https://github.com/bcbio/bcbio-nextgen/">bcbio</a> R packages, so I decided to split these out into separate functions. Now <code>gene2symbol</code> and <code>tx2gene</code> work consistently with the <code>annotable</code> function to return gene-to-symbol and transcript-to-gene identifier mappings in a <code>data.frame</code>.</li>
 <li>
@@ -155,8 +155,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-020-2018-01-28">0.2.0</a></li>
-        <li><a href="#basejump-021-2018-02-07">0.2.1</a></li>
+        <li><a href="#basejump-0-2-0-2018-01-28">0.2.0</a></li>
+        <li><a href="#basejump-0-2-1-2018-02-07">0.2.1</a></li>
       </ul>
     </div>
   </div>

@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.20</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.21</span>
       </span>
     </div>
 
@@ -77,7 +77,7 @@
       <h1>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">24 October 2019</h4>
+            <h4 class="date">6 November 2019</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/acidgenomics/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -87,17 +87,17 @@
     
         <div class="abstract">
       <p class="abstract">Abstract</p>
-      <p>The basejump package is an infrastructure toolkit that extends the base functionality of Bioconductor <span class="citation">(Huber et al. 2015)</span>. The package leverages the S4 object system for object-oriented programming, and defines multiple additional generic functions for use in genomics research. basejump provides simple, user-friendly functions for the acquisition of genome annotations from multiple online databases, including native support for Ensembl <span class="citation">(Hubbard et al. 2002)</span> and websites supporting standard FASTA and GTF/GFF file formats. Consistent handling of sample metadata remains a challenge for many bioinformatic analyses, and basejump aims to address this by providing a suite of sanitization functions to help standardize these variable inputs. Additionally, interactive read/write operations in R can be cumbersome and non-trivial when working with multiple data objects; here we provide additional functions designed for interactive use that aim to reduce friction and provide consistent handling of multiple common file formats used in genomics research.</p>
+      The basejump package is an infrastructure toolkit that extends the base functionality of Bioconductor <span class="citation">(Huber et al. 2015)</span>. The package leverages the S4 object system for object-oriented programming, and defines multiple additional generic functions for use in genomics research. basejump provides simple, user-friendly functions for the acquisition of genome annotations from multiple online databases, including native support for Ensembl <span class="citation">(Hubbard et al. 2002)</span> and websites supporting standard FASTA and GTF/GFF file formats. Consistent handling of sample metadata remains a challenge for many bioinformatic analyses, and basejump aims to address this by providing a suite of sanitization functions to help standardize these variable inputs. Additionally, interactive read/write operations in R can be cumbersome and non-trivial when working with multiple data objects; here we provide additional functions designed for interactive use that aim to reduce friction and provide consistent handling of multiple common file formats used in genomics research.
     </div>
     
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(basejump)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(SummarizedExperiment)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="dt">acid.test =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(RangedSummarizedExperiment, <span class="dt">package =</span> <span class="st">"acidtest"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5"></a>rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(basejump)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(SummarizedExperiment)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="dt">acid.test =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(RangedSummarizedExperiment, <span class="dt">package =</span> <span class="st">"acidtest"</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</a></code></pre></div>
 </div>
 <div id="the-s4-object-system" class="section level1">
 <h1 class="hasAnchor">
@@ -120,7 +120,7 @@
 <div id="r-session-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#r-session-information" class="anchor"></a>R session information</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>utils<span class="op">::</span><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">utils<span class="op">::</span><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</a></code></pre></div>
 <pre><code>## R version 3.6.1 (2019-07-05)
 ## Platform: x86_64-redhat-linux-gnu (64-bit)
 ## Running under: Red Hat Enterprise Linux
@@ -141,63 +141,65 @@
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] SummarizedExperiment_1.14.1 DelayedArray_0.10.0        
-##  [3] BiocParallel_1.18.1         matrixStats_0.55.0         
-##  [5] Biobase_2.44.0              GenomicRanges_1.36.1       
-##  [7] GenomeInfoDb_1.20.0         IRanges_2.18.3             
-##  [9] S4Vectors_0.22.1            BiocGenerics_0.30.0        
-## [11] basejump_0.11.20            BiocStyle_2.12.0           
+##  [1] SummarizedExperiment_1.16.0 DelayedArray_0.12.0        
+##  [3] BiocParallel_1.20.0         matrixStats_0.55.0         
+##  [5] Biobase_2.46.0              GenomicRanges_1.38.0       
+##  [7] GenomeInfoDb_1.22.0         IRanges_2.20.0             
+##  [9] S4Vectors_0.24.0            BiocGenerics_0.32.0        
+## [11] basejump_0.11.21            BiocStyle_2.14.0           
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] ProtGenerics_1.16.0           bitops_1.0-6                 
-##  [3] fs_1.3.1                      bit64_0.9-7                  
-##  [5] progress_1.2.2                httr_1.4.1                   
-##  [7] rprojroot_1.3-2               syntactic_0.3.2              
-##  [9] tools_3.6.1                   backports_1.1.5              
-## [11] R6_2.4.0                      colorspace_1.4-1             
-## [13] lazyeval_0.2.2                DBI_1.0.0                    
-## [15] withr_2.1.2                   tidyselect_0.2.5             
-## [17] prettyunits_1.0.2             bit_1.1-14                   
-## [19] curl_4.2                      compiler_3.6.1               
-## [21] cli_1.1.0                     desc_1.2.0                   
-## [23] rtracklayer_1.44.4            bookdown_0.14                
-## [25] scales_1.0.0                  acidbase_0.1.1               
-## [27] rappdirs_0.3.1                pkgdown_1.4.1                
-## [29] stringr_1.4.0                 digest_0.6.22                
-## [31] Rsamtools_2.0.3               rmarkdown_1.16               
-## [33] R.utils_2.9.0                 XVector_0.24.0               
-## [35] pkgconfig_2.0.3               htmltools_0.4.0              
-## [37] sessioninfo_1.1.1             ensembldb_2.8.1              
-## [39] fastmap_1.0.1                 dbplyr_1.4.2                 
-## [41] rlang_0.4.0                   RSQLite_2.1.2                
-## [43] shiny_1.4.0                   dplyr_0.8.3                  
-## [45] R.oo_1.22.0                   RCurl_1.95-4.12              
-## [47] magrittr_1.5                  GenomeInfoDbData_1.2.1       
-## [49] Matrix_1.2-17                 munsell_0.5.0                
-## [51] Rcpp_1.0.2                    R.methodsS3_1.7.1            
-## [53] stringi_1.4.3                 yaml_2.2.0                   
-## [55] MASS_7.3-51.4                 zlibbioc_1.30.0              
-## [57] brio_0.3.14                   goalie_0.4.0                 
-## [59] BiocFileCache_1.8.0           AnnotationHub_2.16.1         
-## [61] grid_3.6.1                    blob_1.2.0                   
-## [63] transformer_0.2.9             promises_1.1.0               
-## [65] crayon_1.3.4                  lattice_0.20-38              
-## [67] Biostrings_2.52.0             bioverbs_0.2.10              
-## [69] GenomicFeatures_1.36.4        hms_0.5.1                    
-## [71] zeallot_0.1.0                 knitr_1.25                   
-## [73] pillar_1.4.2                  biomaRt_2.40.5               
-## [75] XML_3.98-1.20                 glue_1.3.1                   
-## [77] evaluate_0.14                 freerange_0.2.7              
-## [79] data.table_1.12.6             BiocManager_1.30.9           
-## [81] vctrs_0.2.0                   httpuv_1.5.2                 
-## [83] grr_0.9.5                     purrr_0.3.3                  
-## [85] assertthat_0.2.1              xfun_0.10                    
-## [87] mime_0.7                      xtable_1.8-4                 
-## [89] AnnotationFilter_1.8.0        later_1.0.0                  
-## [91] SingleCellExperiment_1.6.0    tibble_2.1.3                 
-## [93] GenomicAlignments_1.20.1      Matrix.utils_0.9.7           
-## [95] AnnotationDbi_1.46.1          memoise_1.1.0                
-## [97] interactiveDisplayBase_1.22.0</code></pre>
+##   [1] ProtGenerics_1.18.0           bitops_1.0-6                 
+##   [3] fs_1.3.1                      bit64_0.9-7                  
+##   [5] progress_1.2.2                httr_1.4.1                   
+##   [7] rprojroot_1.3-2               syntactic_0.3.2              
+##   [9] tools_3.6.1                   backports_1.1.5              
+##  [11] R6_2.4.0                      colorspace_1.4-1             
+##  [13] lazyeval_0.2.2                DBI_1.0.0                    
+##  [15] withr_2.1.2                   tidyselect_0.2.5             
+##  [17] prettyunits_1.0.2             bit_1.1-14                   
+##  [19] curl_4.2                      compiler_3.6.1               
+##  [21] cli_1.1.0                     desc_1.2.0                   
+##  [23] rtracklayer_1.46.0            bookdown_0.14                
+##  [25] scales_1.0.0                  acidbase_0.1.1               
+##  [27] askpass_1.1                   rappdirs_0.3.1               
+##  [29] pkgdown_1.4.1                 stringr_1.4.0                
+##  [31] digest_0.6.22                 Rsamtools_2.2.0              
+##  [33] rmarkdown_1.16                R.utils_2.9.0                
+##  [35] XVector_0.26.0                pkgconfig_2.0.3              
+##  [37] htmltools_0.4.0               sessioninfo_1.1.1            
+##  [39] ensembldb_2.10.0              fastmap_1.0.1                
+##  [41] dbplyr_1.4.2                  rlang_0.4.1                  
+##  [43] rstudioapi_0.10               RSQLite_2.1.2                
+##  [45] shiny_1.4.0                   dplyr_0.8.3                  
+##  [47] R.oo_1.23.0                   RCurl_1.95-4.12              
+##  [49] magrittr_1.5                  GenomeInfoDbData_1.2.2       
+##  [51] Matrix_1.2-17                 munsell_0.5.0                
+##  [53] Rcpp_1.0.2                    R.methodsS3_1.7.1            
+##  [55] stringi_1.4.3                 yaml_2.2.0                   
+##  [57] MASS_7.3-51.4                 zlibbioc_1.32.0              
+##  [59] brio_0.3.14                   goalie_0.4.0                 
+##  [61] BiocFileCache_1.10.0          AnnotationHub_2.18.0         
+##  [63] grid_3.6.1                    blob_1.2.0                   
+##  [65] promises_1.1.0                transformer_0.2.9            
+##  [67] crayon_1.3.4                  lattice_0.20-38              
+##  [69] Biostrings_2.54.0             bioverbs_0.2.10              
+##  [71] GenomicFeatures_1.38.0        hms_0.5.2                    
+##  [73] zeallot_0.1.0                 knitr_1.25                   
+##  [75] pillar_1.4.2                  biomaRt_2.42.0               
+##  [77] XML_3.98-1.20                 glue_1.3.1                   
+##  [79] BiocVersion_3.10.1            evaluate_0.14                
+##  [81] freerange_0.2.7               data.table_1.12.6            
+##  [83] BiocManager_1.30.9            httpuv_1.5.2                 
+##  [85] vctrs_0.2.0                   grr_0.9.5                    
+##  [87] openssl_1.4.1                 purrr_0.3.3                  
+##  [89] assertthat_0.2.1              xfun_0.10                    
+##  [91] mime_0.7                      xtable_1.8-4                 
+##  [93] AnnotationFilter_1.10.0       later_1.0.0                  
+##  [95] SingleCellExperiment_1.8.0    tibble_2.1.3                 
+##  [97] GenomicAlignments_1.22.0      Matrix.utils_0.9.7           
+##  [99] AnnotationDbi_1.48.0          memoise_1.1.0                
+## [101] interactiveDisplayBase_1.24.0</code></pre>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">
