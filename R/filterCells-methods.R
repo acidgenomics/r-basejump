@@ -1,6 +1,6 @@
 #' @name filterCells
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-11-06.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
