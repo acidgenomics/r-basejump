@@ -68,7 +68,7 @@ Filtering information gets slotted into \code{\link[S4Vectors:metadata]{metadata
 as \code{filterCells} metadata.
 }
 \note{
-Updated 2019-08-27.
+Updated 2019-11-06.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
