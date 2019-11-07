@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.11.21
-Date: 2019-11-06
+Date: 2019-11-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -51,8 +51,8 @@ Imports:
     acidbase (>= 0.1.1),
     biomaRt (>= 2.42),
     bioverbs (>= 0.2.10),
-    brio (>= 0.3.14),
-    freerange (>= 0.2.7),
+    brio (>= 0.3.15),
+    freerange (>= 0.2.8),
     goalie (>= 0.4.0),
     knitr (>= 1.24),
     magrittr (>= 1.5),
@@ -62,7 +62,7 @@ Imports:
     stringr (>= 1.4),
     syntactic (>= 0.3.2),
     tibble (>= 2.1),
-    transformer (>= 0.2.9),
+    transformer (>= 0.2.10),
     methods,
     utils
 Suggests:
