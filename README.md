@@ -9,6 +9,8 @@ Base functions for bioinformatics and [R][] package development.
 
 ## Installation
 
+Requirements: [R][] >= 3.6, [Bioconductor][] >= 3.10.
+
 ### [R][] method
 
 ```r
