@@ -73,7 +73,7 @@ of transgenes and spike-ins." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.20</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.21</span>
       </span>
     </div>
 
@@ -228,7 +228,7 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 <span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/DelayedArray/man/DelayedMatrix-stats.html'>rowRanges</a></span>(<span class='no'>object</span>)
 <span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span>(<span class='no'>object</span>)
 <span class='no'>metadata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/Annotated-class.html'>metadata</a></span>(<span class='no'>object</span>)
-<span class='no'>reducedDims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SingleCellExperiment/man/SCE-reducedDims.html'>reducedDims</a></span>(<span class='no'>object</span>)
+<span class='no'>reducedDims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html'>reducedDims</a></span>(<span class='no'>object</span>)
 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeSingleCellExperiment</span>(
     <span class='kw'>assays</span> <span class='kw'>=</span> <span class='no'>assays</span>,
@@ -246,7 +246,8 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 #&gt; colnames(100): cell001 cell002 ... cell099 cell100
 #&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):
-#&gt; spikeNames(0):</div></pre>
+#&gt; spikeNames(0):
+#&gt; altExpNames(0):</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

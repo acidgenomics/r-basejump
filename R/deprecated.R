@@ -19,7 +19,7 @@ NULL
 
 
 
-## v0.10.4 ======================================================================
+## v0.10.4 =====================================================================
 ## Now recommending `plotCounts()` instead of `plotGene()`.
 ## Still in use by some revdeps, so keep re-exported.
 #' @importFrom bioverbs plotGene
@@ -28,7 +28,7 @@ bioverbs::plotGene
 
 
 
-## v0.10.9 ======================================================================
+## v0.10.9 =====================================================================
 #' @rdname defunct
 #' @export
 theme_midnight <- function(...) {

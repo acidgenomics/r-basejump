@@ -1,3 +1,16 @@
+## basejump 0.11.21 (2019-11-07)
+
+### Major changes
+
+- Updated Bioconductor dependencies to require new 3.10 release.
+
+### Bug fixes
+
+- `filterCells` requires an internal `decode` step to handle `Rle` evaluation,
+  which worked previously in Bioconductor 3.9 release.
+- Updated unit tests to reflect `SingleCellExperiment` example object resave
+  in acidtest 0.2.7 update, which changed the numbers.
+
 ## basejump 0.11.20 (2019-10-24)
 
 ### New reexports
