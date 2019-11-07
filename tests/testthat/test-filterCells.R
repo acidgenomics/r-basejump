@@ -72,28 +72,24 @@ with_parameters_test_that(
         list(minNovelty = 0.5)
     ),
     dim = list(
-        c(475L, 58L),
-        c(463L, 42L),
-        c(474L, 36L),
-        c(467L, 69L),
-        c(477L, 76L)
+        c(482L, 68L),
+        c(464L, 32L),
+        c(483L, 78L),
+        c(458L, 25L),
+        c(485L, 96L)
     )
 )
 
 test_that("Feature filtering", {
     x <- filterCells(object, minCellsPerFeature = 50L)
-    expect_identical(dim(x), c(252L, 100L))
+    expect_identical(dim(x), c(282L, 100L))
 })
 
-test_that("Per sample filtering", {
-    expect_identical(
-        object = sampleNames(object),
-        expected = c(
-            sample1 = "sample1",
-            sample2 = "sample2"
-        )
-    )
 
+
+context("filterCells : Per sample filtering")
+
+test_that("minCounts", {
     ## minCounts
     x <- filterCells(
         object = object,
@@ -108,11 +104,12 @@ test_that("Per sample filtering", {
             m[["sample1"]][["minCounts"]],
             m[["sample2"]][["minCounts"]]
         ),
-        expected = c(51L, 28L)
+        expected = c(36L, 51L)
     )
-    expect_identical(dim(x), c(477L, 79L))
+    expect_identical(dim(x), c(484L, 87L))
+})
 
-    ## maxCounts
+test_that("maxCounts", {
     x <- filterCells(
         object = object,
         maxCounts = c(
@@ -126,11 +123,12 @@ test_that("Per sample filtering", {
             m[["sample1"]][["maxCounts"]],
             m[["sample2"]][["maxCounts"]]
         ),
-        expected = c(13L, 8L)
+        expected = c(13L, 0L)
     )
-    expect_identical(dim(x), c(445L, 21L))
+    expect_identical(dim(x), c(443L, 13L))
+})
 
-    ## minFeatures
+test_that("minFeatures", {
     x <- filterCells(
         object = object,
         minFeatures = c(
@@ -144,11 +142,12 @@ test_that("Per sample filtering", {
             m[["sample1"]][["minFeatures"]],
             m[["sample2"]][["minFeatures"]]
         ),
-        expected = c(9L, 7L)
+        expected = c(3L, 39L)
     )
-    expect_identical(dim(x), c(456L, 16L))
+    expect_identical(dim(x), c(475L, 42L))
+})
 
-    ## maxFeatures
+test_that("maxFeatures", {
     x <- filterCells(
         object = object,
         maxFeatures = c(
@@ -162,11 +161,12 @@ test_that("Per sample filtering", {
             m[["sample1"]][["maxFeatures"]],
             m[["sample2"]][["maxFeatures"]]
         ),
-        expected = c(55L, 30L)
+        expected = c(46L, 13L)
     )
-    expect_identical(dim(x), c(474L, 85L))
+    expect_identical(dim(x), c(475L, 59L))
+})
 
-    ## minNovelty
+test_that("minNovelty", {
     x <- filterCells(
         object = object,
         minNovelty = c(
@@ -180,11 +180,12 @@ test_that("Per sample filtering", {
             m[["sample1"]][["minNovelty"]],
             m[["sample2"]][["minNovelty"]]
         ),
-        expected = c(22L, 15L)
+        expected = c(47L, 0L)
     )
-    expect_identical(dim(x), c(468L, 37L))
+    expect_identical(dim(x), c(473L, 47L))
+})
 
-    ## nCells
+test_that("nCells", {
     x <- filterCells(
         object = object,
         nCells = c(

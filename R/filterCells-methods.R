@@ -1,6 +1,6 @@
 #' @name filterCells
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-11-06.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -198,11 +198,10 @@ NULL
                     operator = operators,
                     metricCol = arg2col,
                     FUN = function(argName, arg, operator, metricCol) {
-                        metric <- metrics[[metricCol]]
-                        do.call(
-                            what = operator,
-                            args = list(e1 = metric, e2 = arg)
-                        )
+                        assert(isSubset(sampleName, names(arg)))
+                        e1 <- metrics[[metricCol]]
+                        e2 <- arg[[sampleName]]
+                        do.call(what = operator, args = list(e1 = e1, e2 = e2))
                     },
                     SIMPLIFY = FALSE,
                     USE.NAMES = TRUE

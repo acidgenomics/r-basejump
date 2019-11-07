@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.20</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.21</span>
       </span>
     </div>
 
@@ -115,9 +115,9 @@
       
     </div>
 
-    <div id="basejump-090-2018-12-12" class="section level2">
+    <div id="basejump-0-9-0-2018-12-12" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-090-2018-12-12" class="anchor"></a>basejump 0.9.0 (2018-12-12)</h2>
+<a href="#basejump-0-9-0-2018-12-12" class="anchor"></a>basejump 0.9.0 (2018-12-12)</h2>
 <p>I bumped the release series from v0.8 to v0.9 because this represents a significant change to the internal codebase, where I have now switched to using my new <a href="https://goalie.acidgenomics.com/">goalie</a> assert check engine from <a href="https://cran.r-project.org/package=assertive">assertive</a>.</p>
 <div id="new-functions-8" class="section level3">
 <h3 class="hasAnchor">
@@ -137,9 +137,9 @@
 <code>sanitizeColData</code>: rework of previous <code>sanitizeSampleData</code> approach.</li>
 </ul>
 </div>
-<div id="major-changes-12" class="section level3">
+<div id="major-changes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-12" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-13" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <a href="https://goalie.acidgenomics.com/">goalie</a> package instead of <a href="https://cran.r-project.org/package=assertive">assertive</a> for internal assert checks. The new <code><a href="https://rdrr.io/pkg/goalie/man/assert.html">goalie::assert</a></code> function is more flexible in many cases. Similarly, <code><a href="https://rdrr.io/pkg/goalie/man/validate.html">goalie::validate</a></code> is now being used in place of <code><a href="https://rdrr.io/pkg/assertthat/man/validate_that.html">assertthat::validate_that</a></code>.</li>
 <li>
@@ -178,13 +178,13 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-091-2018-12-22" class="section level2">
+    <div id="basejump-0-9-1-2018-12-22" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-091-2018-12-22" class="anchor"></a>basejump 0.9.1 (2018-12-22)</h2>
+<a href="#basejump-0-9-1-2018-12-22" class="anchor"></a>basejump 0.9.1 (2018-12-22)</h2>
 <p>This release defines the initial point where <a href="https://basejump.acidgenomics.com/">basejump</a> begins to import <a href="https://bioverbs.acidgenomics.com/">bioverbs</a>.</p>
-<div id="major-changes-11" class="section level3">
+<div id="major-changes-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-11" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-12" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing generics using our <a href="https://bioverbs.acidgenomics.com/">bioverbs</a> S4 generic package. All generics previously defined in <a href="https://basejump.acidgenomics.com/">basejump</a> will continue to be reexported, to maintain backward compatibility for reverse dependencies (revdeps).</li>
 </ul>
@@ -209,9 +209,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-092-2019-01-07" class="section level2">
+    <div id="basejump-0-9-2-2019-01-07" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-092-2019-01-07" class="anchor"></a>basejump 0.9.2 (2019-01-07)</h2>
+<a href="#basejump-0-9-2-2019-01-07" class="anchor"></a>basejump 0.9.2 (2019-01-07)</h2>
 <p>This release defines the initial point where <a href="https://basejump.acidgenomics.com/">basejump</a> becomes even more modular, offloading some functions to new <a href="https://brio.acidgenomics.com/">brio</a>, <a href="https://syntactic.acidgenomics.com/">syntactic</a>, and S4Transformer packages.</p>
 <p>Note that all offloaded functions will continue to be reexported in <a href="https://basejump.acidgenomics.com/">basejump</a>. If you notice a function that is missing and not correctly re-exported, please file an issue.</p>
 <p>Note that S4Transformer has since been renamed to <a href="https://transformer.acidgenomics.com/">transformer</a>.</p>
@@ -290,9 +290,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-093-2019-01-08" class="section level2">
+    <div id="basejump-0-9-3-2019-01-08" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-093-2019-01-08" class="anchor"></a>basejump 0.9.3 (2019-01-08)</h2>
+<a href="#basejump-0-9-3-2019-01-08" class="anchor"></a>basejump 0.9.3 (2019-01-08)</h2>
 <div id="minor-changes-43" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-43" class="anchor"></a>Minor changes</h3>
@@ -302,9 +302,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-094-2019-01-12" class="section level2">
+    <div id="basejump-0-9-4-2019-01-12" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-094-2019-01-12" class="anchor"></a>basejump 0.9.4 (2019-01-12)</h2>
+<a href="#basejump-0-9-4-2019-01-12" class="anchor"></a>basejump 0.9.4 (2019-01-12)</h2>
 <div id="minor-changes-42" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-42" class="anchor"></a>Minor changes</h3>
@@ -314,9 +314,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-095-2019-01-22" class="section level2">
+    <div id="basejump-0-9-5-2019-01-22" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-095-2019-01-22" class="anchor"></a>basejump 0.9.5 (2019-01-22)</h2>
+<a href="#basejump-0-9-5-2019-01-22" class="anchor"></a>basejump 0.9.5 (2019-01-22)</h2>
 <div id="minor-changes-41" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-41" class="anchor"></a>Minor changes</h3>
@@ -353,9 +353,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-096-2019-01-22" class="section level2">
+    <div id="basejump-0-9-6-2019-01-22" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-096-2019-01-22" class="anchor"></a>basejump 0.9.6 (2019-01-22)</h2>
+<a href="#basejump-0-9-6-2019-01-22" class="anchor"></a>basejump 0.9.6 (2019-01-22)</h2>
 <div id="minor-changes-40" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-40" class="anchor"></a>Minor changes</h3>
@@ -392,9 +392,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-097-2019-01-23" class="section level2">
+    <div id="basejump-0-9-7-2019-01-23" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-097-2019-01-23" class="anchor"></a>basejump 0.9.7 (2019-01-23)</h2>
+<a href="#basejump-0-9-7-2019-01-23" class="anchor"></a>basejump 0.9.7 (2019-01-23)</h2>
 <div id="minor-changes-39" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-39" class="anchor"></a>Minor changes</h3>
@@ -405,9 +405,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-098-2019-02-08" class="section level2">
+    <div id="basejump-0-9-8-2019-02-08" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-098-2019-02-08" class="anchor"></a>basejump 0.9.8 (2019-02-08)</h2>
+<a href="#basejump-0-9-8-2019-02-08" class="anchor"></a>basejump 0.9.8 (2019-02-08)</h2>
 <div id="minor-changes-38" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-38" class="anchor"></a>Minor changes</h3>
@@ -418,9 +418,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-099-2019-02-11" class="section level2">
+    <div id="basejump-0-9-9-2019-02-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-099-2019-02-11" class="anchor"></a>basejump 0.9.9 (2019-02-11)</h2>
+<a href="#basejump-0-9-9-2019-02-11" class="anchor"></a>basejump 0.9.9 (2019-02-11)</h2>
 <div id="minor-changes-37" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-37" class="anchor"></a>Minor changes</h3>
@@ -432,9 +432,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0910-2019-02-17" class="section level2">
+    <div id="basejump-0-9-10-2019-02-17" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0910-2019-02-17" class="anchor"></a>basejump 0.9.10 (2019-02-17)</h2>
+<a href="#basejump-0-9-10-2019-02-17" class="anchor"></a>basejump 0.9.10 (2019-02-17)</h2>
 <div id="minor-changes-36" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-36" class="anchor"></a>Minor changes</h3>
@@ -447,9 +447,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0911-2019-02-25" class="section level2">
+    <div id="basejump-0-9-11-2019-02-25" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0911-2019-02-25" class="anchor"></a>basejump 0.9.11 (2019-02-25)</h2>
+<a href="#basejump-0-9-11-2019-02-25" class="anchor"></a>basejump 0.9.11 (2019-02-25)</h2>
 <div id="minor-changes-35" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-35" class="anchor"></a>Minor changes</h3>
@@ -459,12 +459,12 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0912-2019-03-11" class="section level2">
+    <div id="basejump-0-9-12-2019-03-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0912-2019-03-11" class="anchor"></a>basejump 0.9.12 (2019-03-11)</h2>
-<div id="major-changes-10" class="section level3">
+<a href="#basejump-0-9-12-2019-03-11" class="anchor"></a>basejump 0.9.12 (2019-03-11)</h2>
+<div id="major-changes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-10" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-11" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>makeGRangesFromGFF</code>: Reworked internal code, making it more modular. Added initial support for RefSeq GFF3 files. Also improved sanitization and special handling of files from FlyBase and WormBase.</li>
@@ -480,9 +480,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0913-2019-03-18" class="section level2">
+    <div id="basejump-0-9-13-2019-03-18" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0913-2019-03-18" class="anchor"></a>basejump 0.9.13 (2019-03-18)</h2>
+<a href="#basejump-0-9-13-2019-03-18" class="anchor"></a>basejump 0.9.13 (2019-03-18)</h2>
 <div id="minor-changes-33" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-33" class="anchor"></a>Minor changes</h3>
@@ -492,9 +492,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0914-2019-03-18" class="section level2">
+    <div id="basejump-0-9-14-2019-03-18" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0914-2019-03-18" class="anchor"></a>basejump 0.9.14 (2019-03-18)</h2>
+<a href="#basejump-0-9-14-2019-03-18" class="anchor"></a>basejump 0.9.14 (2019-03-18)</h2>
 <div id="minor-changes-32" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
@@ -503,9 +503,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0915-2019-03-22" class="section level2">
+    <div id="basejump-0-9-15-2019-03-22" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0915-2019-03-22" class="anchor"></a>basejump 0.9.15 (2019-03-22)</h2>
+<a href="#basejump-0-9-15-2019-03-22" class="anchor"></a>basejump 0.9.15 (2019-03-22)</h2>
 <div id="minor-changes-31" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
@@ -514,9 +514,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0916-2019-03-23" class="section level2">
+    <div id="basejump-0-9-16-2019-03-23" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0916-2019-03-23" class="anchor"></a>basejump 0.9.16 (2019-03-23)</h2>
+<a href="#basejump-0-9-16-2019-03-23" class="anchor"></a>basejump 0.9.16 (2019-03-23)</h2>
 <div id="minor-changes-30" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
@@ -535,23 +535,23 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-090-2018-12-12">0.9.0</a></li>
-        <li><a href="#basejump-091-2018-12-22">0.9.1</a></li>
-        <li><a href="#basejump-092-2019-01-07">0.9.2</a></li>
-        <li><a href="#basejump-093-2019-01-08">0.9.3</a></li>
-        <li><a href="#basejump-094-2019-01-12">0.9.4</a></li>
-        <li><a href="#basejump-095-2019-01-22">0.9.5</a></li>
-        <li><a href="#basejump-096-2019-01-22">0.9.6</a></li>
-        <li><a href="#basejump-097-2019-01-23">0.9.7</a></li>
-        <li><a href="#basejump-098-2019-02-08">0.9.8</a></li>
-        <li><a href="#basejump-099-2019-02-11">0.9.9</a></li>
-        <li><a href="#basejump-0910-2019-02-17">0.9.10</a></li>
-        <li><a href="#basejump-0911-2019-02-25">0.9.11</a></li>
-        <li><a href="#basejump-0912-2019-03-11">0.9.12</a></li>
-        <li><a href="#basejump-0913-2019-03-18">0.9.13</a></li>
-        <li><a href="#basejump-0914-2019-03-18">0.9.14</a></li>
-        <li><a href="#basejump-0915-2019-03-22">0.9.15</a></li>
-        <li><a href="#basejump-0916-2019-03-23">0.9.16</a></li>
+        <li><a href="#basejump-0-9-0-2018-12-12">0.9.0</a></li>
+        <li><a href="#basejump-0-9-1-2018-12-22">0.9.1</a></li>
+        <li><a href="#basejump-0-9-2-2019-01-07">0.9.2</a></li>
+        <li><a href="#basejump-0-9-3-2019-01-08">0.9.3</a></li>
+        <li><a href="#basejump-0-9-4-2019-01-12">0.9.4</a></li>
+        <li><a href="#basejump-0-9-5-2019-01-22">0.9.5</a></li>
+        <li><a href="#basejump-0-9-6-2019-01-22">0.9.6</a></li>
+        <li><a href="#basejump-0-9-7-2019-01-23">0.9.7</a></li>
+        <li><a href="#basejump-0-9-8-2019-02-08">0.9.8</a></li>
+        <li><a href="#basejump-0-9-9-2019-02-11">0.9.9</a></li>
+        <li><a href="#basejump-0-9-10-2019-02-17">0.9.10</a></li>
+        <li><a href="#basejump-0-9-11-2019-02-25">0.9.11</a></li>
+        <li><a href="#basejump-0-9-12-2019-03-11">0.9.12</a></li>
+        <li><a href="#basejump-0-9-13-2019-03-18">0.9.13</a></li>
+        <li><a href="#basejump-0-9-14-2019-03-18">0.9.14</a></li>
+        <li><a href="#basejump-0-9-15-2019-03-22">0.9.15</a></li>
+        <li><a href="#basejump-0-9-16-2019-03-23">0.9.16</a></li>
       </ul>
     </div>
   </div>
