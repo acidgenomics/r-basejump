@@ -61,8 +61,7 @@ NULL
         assert(
             hasLength(x),
             identical(length(x), length(y)),
-            !anyNA(x),
-            !anyNA(y)
+            !anyNA(x), !anyNA(y)
         )
         cor(x = x, y = y, method = match.arg(method))
     }
@@ -85,13 +84,15 @@ setMethod(
 
 
 
-## Updated 2019-11-07.
-`correlation,matrix,NULL` <-  # nolint
+`correlation,matrix,missing` <-  # nolint
     function(x, y, method) {
-        cor(x = x, y = y, match.arg(method))
+        if (missing(y)) {
+            y <- NULL
+        }
+        cor(x = x, y = y, method = match.arg(method))
     }
 
-formals(`correlation,matrix,NULL`)[["method"]] <-
+formals(`correlation,matrix,missing`)[["method"]] <-
     formals(`correlation,numeric,numeric`)[["method"]]
 
 
@@ -102,9 +103,9 @@ setMethod(
     f = "correlation",
     signature = signature(
         x = "matrix",
-        y = "NULL"
+        y = "missingOrNULL"
     ),
-    definition = `correlation,matrix,NULL`
+    definition = `correlation,matrix,missing`
 )
 
 
@@ -116,7 +117,7 @@ setMethod(
     }
 
 formals(`correlation,matrix,matrix`)[["method"]] <-
-    formals(`correlation,matrix,NULL`)[["method"]]
+    formals(`correlation,matrix,missing`)[["method"]]
 
 
 

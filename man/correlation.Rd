@@ -4,7 +4,7 @@
 \name{correlation}
 \alias{correlation}
 \alias{correlation,numeric,numeric-method}
-\alias{correlation,matrix,NULL-method}
+\alias{correlation,matrix,missingOrNULL-method}
 \alias{correlation,matrix,matrix-method}
 \title{Correlation}
 \usage{
@@ -13,7 +13,7 @@ correlation(x, y, ...)
 \S4method{correlation}{numeric,numeric}(x, y, method = c("pearson",
   "kendall", "spearman"))
 
-\S4method{correlation}{matrix,`NULL`}(x, y, method = c("pearson",
+\S4method{correlation}{matrix,missingOrNULL}(x, y, method = c("pearson",
   "kendall", "spearman"))
 
 \S4method{correlation}{matrix,matrix}(x, y, method = c("pearson",
