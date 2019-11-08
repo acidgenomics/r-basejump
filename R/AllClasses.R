@@ -6,7 +6,7 @@ NULL
 
 
 ## > showClass("missingOrNULL")
-setClassUnion("missingOrNULL", c("missing", "NULL"))
+setClassUnion(name = "missingOrNULL", members = c("missing", "NULL"))
 
 
 
