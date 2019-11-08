@@ -73,7 +73,17 @@ method <- formals(stats::cor)[["method"]]
             !anyNA(x), !anyNA(y)
         )
         method <- match.arg(method)
-        message("Calculating ", method, " correlation value.")
+        n <- length(x)
+        message(sprintf(
+            fmt = "Calculating %s correlation on %d %s.",
+            method,
+            n,
+            ngettext(
+                n = n,
+                msg1 = "value",
+                msg2 = "values"
+            )
+        ))
         cor(x = x, y = y, method = method)
     }
 
