@@ -32,11 +32,11 @@
 #' head(x)
 #' head(y)
 #'
-#' cor(x)
+#' stats::cor(x)
 #' correlation(x)
 #'
-#' cor(x = c(x), y = c(y))
-#' correlation(x, y)
+#' stats::cor(x = c(x), y = c(y))
+#' correlation(x = x, y = y)
 #'
 #' ## SummarizedExperiment ====
 #' x <- list[["SummarizedExperiment_x"]]
@@ -131,4 +131,40 @@ setMethod(
         y = "matrix"
     ),
     definition = `correlation,matrix,matrix`
+)
+
+
+
+`correlation,Matrix,missing` <-  # nolint
+    `correlation,matrix,missing`
+
+
+
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "Matrix",
+        y = "missingOrNULL"
+    ),
+    definition = `correlation,Matrix,missing`
+)
+
+
+
+`correlation,Matrix,Matrix` <-  # nolint
+    `correlation,matrix,matrix`
+
+
+
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "Matrix",
+        y = "Matrix"
+    ),
+    definition = `correlation,Matrix,Matrix`
 )
