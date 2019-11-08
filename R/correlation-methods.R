@@ -5,11 +5,13 @@
 #' @note Updated 2019-11-08.
 #'
 #' @inheritParams acidroxygen::params
+#' @inheritParams stats::cor
 #' @param i `integer(1)` or `character(1)`.
 #'   For `SummarizedExperiment`, primary assay.
 #' @param j `integer(1)`, `character(1)`, or `NULL`.
 #'   For `SummarizedExperiment`, optional secondary assay.
 #'   If `NULL`, calculates correlation matrix only on the primary assay.
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(correlation, package = "acidtest")
