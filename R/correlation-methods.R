@@ -187,6 +187,7 @@ setMethod(
         i = 1L, j = NULL,
         method
     ) {
+        assert(!identical(i, j))
         method <- match.arg(method)
         if (is.null(j)) {
             correlation(
