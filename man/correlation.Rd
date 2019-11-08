@@ -8,6 +8,7 @@
 \alias{correlation,matrix,matrix-method}
 \alias{correlation,Matrix,missingOrNULL-method}
 \alias{correlation,Matrix,Matrix-method}
+\alias{correlation,SummarizedExperiment,missingOrNULL-method}
 \alias{correlation,SummarizedExperiment,SummarizedExperiment-method}
 \title{Correlation}
 \usage{
@@ -27,6 +28,9 @@ correlation(x, y, ...)
 
 \S4method{correlation}{Matrix,Matrix}(x, y, method = c("pearson",
   "kendall", "spearman"))
+
+\S4method{correlation}{SummarizedExperiment,missingOrNULL}(x, y = NULL,
+  i = 1L, j = NULL, method = c("pearson", "kendall", "spearman"))
 
 \S4method{correlation}{SummarizedExperiment,SummarizedExperiment}(x, y,
   i = 1L, method = c("pearson", "kendall", "spearman"))
@@ -83,7 +87,9 @@ correlation(x = x, y = y)
 x <- list[["SummarizedExperiment_x"]]
 y <- list[["SummarizedExperiment_y"]]
 
+correlation(x = x, i = 1L)
 correlation(x = x, i = 1L, j = 2L)
+correlation(x = x, y = y)
 }
 \seealso{
 \itemize{
