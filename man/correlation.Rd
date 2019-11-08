@@ -8,6 +8,7 @@
 \alias{correlation,matrix,matrix-method}
 \alias{correlation,Matrix,missingOrNULL-method}
 \alias{correlation,Matrix,Matrix-method}
+\alias{correlation,SummarizedExperiment,SummarizedExperiment-method}
 \title{Correlation}
 \usage{
 correlation(x, y, ...)
@@ -26,6 +27,9 @@ correlation(x, y, ...)
 
 \S4method{correlation}{Matrix,Matrix}(x, y, method = c("pearson",
   "kendall", "spearman"))
+
+\S4method{correlation}{SummarizedExperiment,SummarizedExperiment}(x, y,
+  i = 1L, method = c("pearson", "kendall", "spearman"))
 }
 \arguments{
 \item{x}{Object.}

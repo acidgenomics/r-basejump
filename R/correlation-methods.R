@@ -60,6 +60,7 @@ method <- formals(stats::cor)[["method"]]
 
 
 
+## Updated 2019-11-08.
 `correlation,numeric,numeric` <-  # nolint
     function(x, y, method) {
         assert(
@@ -89,6 +90,7 @@ setMethod(
 
 
 
+## Updated 2019-11-08.
 `correlation,matrix,missing` <-  # nolint
     function(x, y = NULL, method) {
         assert(!anyNA(x))
@@ -114,7 +116,7 @@ setMethod(
 
 
 
-## Updated 2019-11-07.
+## Updated 2019-11-08.
 `correlation,matrix,matrix` <-  # nolint
     function(x, y, method) {
         correlation(x = c(x), y = c(y), method = match.arg(method))
@@ -169,6 +171,33 @@ setMethod(
         y = "Matrix"
     ),
     definition = `correlation,Matrix,Matrix`
+)
+
+
+
+## Updated 2019-11-08.
+`correlation,SE,SE` <-  # nolint
+    function(x, y, i = 1L, method) {
+        correlation(
+            x = assay(x, i = i),
+            y = assay(y, i = i),
+            method = match.arg(method)
+        )
+    }
+
+formals(`correlation,SE,SE`)[["method"]] <- method
+
+
+
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "SummarizedExperiment",
+        y = "SummarizedExperiment"
+    ),
+    definition = `correlation,SE,SE`
 )
 
 
