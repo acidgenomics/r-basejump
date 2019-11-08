@@ -6,6 +6,8 @@
 \alias{correlation,numeric,numeric-method}
 \alias{correlation,matrix,missingOrNULL-method}
 \alias{correlation,matrix,matrix-method}
+\alias{correlation,Matrix,missingOrNULL-method}
+\alias{correlation,Matrix,Matrix-method}
 \title{Correlation}
 \usage{
 correlation(x, y, ...)
@@ -17,6 +19,12 @@ correlation(x, y, ...)
   "kendall", "spearman"))
 
 \S4method{correlation}{matrix,matrix}(x, y, method = c("pearson",
+  "kendall", "spearman"))
+
+\S4method{correlation}{Matrix,missingOrNULL}(x, y, method = c("pearson",
+  "kendall", "spearman"))
+
+\S4method{correlation}{Matrix,Matrix}(x, y, method = c("pearson",
   "kendall", "spearman"))
 }
 \arguments{
@@ -61,11 +69,11 @@ y <- list[["matrix_y"]]
 head(x)
 head(y)
 
-cor(x)
+stats::cor(x)
 correlation(x)
 
-cor(x = c(x), y = c(y))
-correlation(x, y)
+stats::cor(x = c(x), y = c(y))
+correlation(x = x, y = y)
 
 ## SummarizedExperiment ====
 x <- list[["SummarizedExperiment_x"]]
