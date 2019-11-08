@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.21</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.22</span>
       </span>
     </div>
 
@@ -77,7 +77,7 @@
       <h1>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">6 November 2019</h4>
+            <h4 class="date">8 November 2019</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/acidgenomics/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -87,17 +87,17 @@
     
         <div class="abstract">
       <p class="abstract">Abstract</p>
-      The basejump package is an infrastructure toolkit that extends the base functionality of Bioconductor <span class="citation">(Huber et al. 2015)</span>. The package leverages the S4 object system for object-oriented programming, and defines multiple additional generic functions for use in genomics research. basejump provides simple, user-friendly functions for the acquisition of genome annotations from multiple online databases, including native support for Ensembl <span class="citation">(Hubbard et al. 2002)</span> and websites supporting standard FASTA and GTF/GFF file formats. Consistent handling of sample metadata remains a challenge for many bioinformatic analyses, and basejump aims to address this by providing a suite of sanitization functions to help standardize these variable inputs. Additionally, interactive read/write operations in R can be cumbersome and non-trivial when working with multiple data objects; here we provide additional functions designed for interactive use that aim to reduce friction and provide consistent handling of multiple common file formats used in genomics research.
+      <p>The basejump package is an infrastructure toolkit that extends the base functionality of Bioconductor <span class="citation">(Huber et al. 2015)</span>. The package leverages the S4 object system for object-oriented programming, and defines multiple additional generic functions for use in genomics research. basejump provides simple, user-friendly functions for the acquisition of genome annotations from multiple online databases, including native support for Ensembl <span class="citation">(Hubbard et al. 2002)</span> and websites supporting standard FASTA and GTF/GFF file formats. Consistent handling of sample metadata remains a challenge for many bioinformatic analyses, and basejump aims to address this by providing a suite of sanitization functions to help standardize these variable inputs. Additionally, interactive read/write operations in R can be cumbersome and non-trivial when working with multiple data objects; here we provide additional functions designed for interactive use that aim to reduce friction and provide consistent handling of multiple common file formats used in genomics research.</p>
     </div>
     
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(basejump)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(SummarizedExperiment)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="dt">acid.test =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(RangedSummarizedExperiment, <span class="dt">package =</span> <span class="st">"acidtest"</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(basejump)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(SummarizedExperiment)
+<span class="kw"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="dt">acid.test =</span> <span class="ot">TRUE</span>)
+<span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(RangedSummarizedExperiment, <span class="dt">package =</span> <span class="st">"acidtest"</span>)
+rse &lt;-<span class="st"> </span>RangedSummarizedExperiment</code></pre>
 </div>
 <div id="the-s4-object-system" class="section level1">
 <h1 class="hasAnchor">
@@ -120,7 +120,7 @@
 <div id="r-session-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#r-session-information" class="anchor"></a>R session information</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">utils<span class="op">::</span><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">utils::<span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</code></pre>
 <pre><code>## R version 3.6.1 (2019-07-05)
 ## Platform: x86_64-redhat-linux-gnu (64-bit)
 ## Running under: Red Hat Enterprise Linux
@@ -146,7 +146,7 @@
 ##  [5] Biobase_2.46.0              GenomicRanges_1.38.0       
 ##  [7] GenomeInfoDb_1.22.0         IRanges_2.20.0             
 ##  [9] S4Vectors_0.24.0            BiocGenerics_0.32.0        
-## [11] basejump_0.11.21            BiocStyle_2.14.0           
+## [11] basejump_0.11.22            BiocStyle_2.14.0           
 ## 
 ## loaded via a namespace (and not attached):
 ##   [1] ProtGenerics_1.18.0           bitops_1.0-6                 
@@ -164,54 +164,49 @@
 ##  [25] scales_1.0.0                  acidbase_0.1.1               
 ##  [27] askpass_1.1                   rappdirs_0.3.1               
 ##  [29] pkgdown_1.4.1                 stringr_1.4.0                
-##  [31] digest_0.6.22                 Rsamtools_2.2.0              
+##  [31] digest_0.6.22                 Rsamtools_2.2.1              
 ##  [33] rmarkdown_1.16                R.utils_2.9.0                
 ##  [35] XVector_0.26.0                pkgconfig_2.0.3              
 ##  [37] htmltools_0.4.0               sessioninfo_1.1.1            
 ##  [39] ensembldb_2.10.0              fastmap_1.0.1                
 ##  [41] dbplyr_1.4.2                  rlang_0.4.1                  
-##  [43] rstudioapi_0.10               RSQLite_2.1.2                
-##  [45] shiny_1.4.0                   dplyr_0.8.3                  
-##  [47] R.oo_1.23.0                   RCurl_1.95-4.12              
-##  [49] magrittr_1.5                  GenomeInfoDbData_1.2.2       
-##  [51] Matrix_1.2-17                 munsell_0.5.0                
-##  [53] Rcpp_1.0.2                    R.methodsS3_1.7.1            
-##  [55] stringi_1.4.3                 yaml_2.2.0                   
-##  [57] MASS_7.3-51.4                 zlibbioc_1.32.0              
-##  [59] brio_0.3.14                   goalie_0.4.0                 
-##  [61] BiocFileCache_1.10.0          AnnotationHub_2.18.0         
-##  [63] grid_3.6.1                    blob_1.2.0                   
-##  [65] promises_1.1.0                transformer_0.2.9            
-##  [67] crayon_1.3.4                  lattice_0.20-38              
-##  [69] Biostrings_2.54.0             bioverbs_0.2.10              
-##  [71] GenomicFeatures_1.38.0        hms_0.5.2                    
-##  [73] zeallot_0.1.0                 knitr_1.25                   
-##  [75] pillar_1.4.2                  biomaRt_2.42.0               
-##  [77] XML_3.98-1.20                 glue_1.3.1                   
-##  [79] BiocVersion_3.10.1            evaluate_0.14                
-##  [81] freerange_0.2.7               data.table_1.12.6            
-##  [83] BiocManager_1.30.9            httpuv_1.5.2                 
-##  [85] vctrs_0.2.0                   grr_0.9.5                    
-##  [87] openssl_1.4.1                 purrr_0.3.3                  
-##  [89] assertthat_0.2.1              xfun_0.10                    
-##  [91] mime_0.7                      xtable_1.8-4                 
-##  [93] AnnotationFilter_1.10.0       later_1.0.0                  
-##  [95] SingleCellExperiment_1.8.0    tibble_2.1.3                 
-##  [97] GenomicAlignments_1.22.0      Matrix.utils_0.9.7           
-##  [99] AnnotationDbi_1.48.0          memoise_1.1.0                
-## [101] interactiveDisplayBase_1.24.0</code></pre>
+##  [43] RSQLite_2.1.2                 shiny_1.4.0                  
+##  [45] dplyr_0.8.3                   R.oo_1.23.0                  
+##  [47] RCurl_1.95-4.12               magrittr_1.5                 
+##  [49] GenomeInfoDbData_1.2.2        Matrix_1.2-17                
+##  [51] munsell_0.5.0                 Rcpp_1.0.2                   
+##  [53] R.methodsS3_1.7.1             stringi_1.4.3                
+##  [55] yaml_2.2.0                    MASS_7.3-51.4                
+##  [57] zlibbioc_1.32.0               brio_0.3.15                  
+##  [59] goalie_0.4.0                  BiocFileCache_1.10.0         
+##  [61] AnnotationHub_2.18.0          grid_3.6.1                   
+##  [63] blob_1.2.0                    promises_1.1.0               
+##  [65] transformer_0.2.10            crayon_1.3.4                 
+##  [67] lattice_0.20-38               Biostrings_2.54.0            
+##  [69] bioverbs_0.2.11               GenomicFeatures_1.38.0       
+##  [71] hms_0.5.2                     zeallot_0.1.0                
+##  [73] knitr_1.25                    pillar_1.4.2                 
+##  [75] biomaRt_2.42.0                XML_3.98-1.20                
+##  [77] glue_1.3.1                    BiocVersion_3.10.1           
+##  [79] evaluate_0.14                 freerange_0.2.8              
+##  [81] data.table_1.12.6             BiocManager_1.30.9           
+##  [83] vctrs_0.2.0                   httpuv_1.5.2                 
+##  [85] grr_0.9.5                     openssl_1.4.1                
+##  [87] purrr_0.3.3                   assertthat_0.2.1             
+##  [89] xfun_0.10                     mime_0.7                     
+##  [91] xtable_1.8-4                  AnnotationFilter_1.10.0      
+##  [93] later_1.0.0                   SingleCellExperiment_1.8.0   
+##  [95] tibble_2.1.3                  GenomicAlignments_1.22.0     
+##  [97] Matrix.utils_0.9.7            AnnotationDbi_1.48.0         
+##  [99] memoise_1.1.0                 interactiveDisplayBase_1.24.0</code></pre>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <p>The papers and software cited in our workflows are available as a <a href="https://paperpile.com/shared/agxufd">shared library</a> on <a href="https://paperpile.com/">Paperpile</a>.</p>
-<div id="refs" class="references">
-<div id="ref-Hubbard2002-ah">
-<p>Hubbard, T, D Barker, E Birney, G Cameron, Y Chen, L Clark, T Cox, et al. 2002. “The Ensembl Genome Database Project.” <em>Nucleic Acids Res.</em> 30 (1): 38–41. <a href="https://www.ncbi.nlm.nih.gov/pubmed/11752248">https://www.ncbi.nlm.nih.gov/pubmed/11752248</a>.</p>
-</div>
-<div id="ref-Huber2015-nw">
-<p>Huber, Wolfgang, Vincent J Carey, Robert Gentleman, Simon Anders, Marc Carlson, Benilton S Carvalho, Hector Corrada Bravo, et al. 2015. “Orchestrating High-Throughput Genomic Analysis with Bioconductor.” <em>Nat. Methods</em> 12 (2): 115–21. <a href="https://doi.org/10.1038/nmeth.3252">https://doi.org/10.1038/nmeth.3252</a>.</p>
-</div>
+<div class="references">
+<p>Hubbard, T, D Barker, E Birney, G Cameron, Y Chen, L Clark, T Cox, et al. 2002. “The Ensembl Genome Database Project.” <em>Nucleic Acids Res.</em> 30 (1) (January): 38–41. <a href="https://www.ncbi.nlm.nih.gov/pubmed/11752248">https://www.ncbi.nlm.nih.gov/pubmed/11752248</a>.</p>
+<p>Huber, Wolfgang, Vincent J Carey, Robert Gentleman, Simon Anders, Marc Carlson, Benilton S Carvalho, Hector Corrada Bravo, et al. 2015. “Orchestrating High-Throughput Genomic Analysis with Bioconductor.” <em>Nat. Methods</em> 12 (2) (February): 115–121. doi:<a href="http://dx.doi.org/10.1038/nmeth.3252">10.1038/nmeth.3252</a>. <a href="http://dx.doi.org/10.1038/nmeth.3252">http://dx.doi.org/10.1038/nmeth.3252</a>.</p>
 </div>
 </div>
   </div>
