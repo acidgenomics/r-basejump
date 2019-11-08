@@ -15,14 +15,14 @@ correlation(x, y, ...)
 \S4method{correlation}{numeric,numeric}(x, y, method = c("pearson",
   "kendall", "spearman"))
 
-\S4method{correlation}{matrix,missingOrNULL}(x, y, method = c("pearson",
-  "kendall", "spearman"))
+\S4method{correlation}{matrix,missingOrNULL}(x, y = NULL,
+  method = c("pearson", "kendall", "spearman"))
 
 \S4method{correlation}{matrix,matrix}(x, y, method = c("pearson",
   "kendall", "spearman"))
 
-\S4method{correlation}{Matrix,missingOrNULL}(x, y, method = c("pearson",
-  "kendall", "spearman"))
+\S4method{correlation}{Matrix,missingOrNULL}(x, y = NULL,
+  method = c("pearson", "kendall", "spearman"))
 
 \S4method{correlation}{Matrix,Matrix}(x, y, method = c("pearson",
   "kendall", "spearman"))
