@@ -42,7 +42,9 @@
 #' x <- list[["SummarizedExperiment_x"]]
 #' y <- list[["SummarizedExperiment_y"]]
 #'
+#' correlation(x = x, i = 1L)
 #' correlation(x = x, i = 1L, j = 2L)
+#' correlation(x = x, y = y)
 NULL
 
 
@@ -96,7 +98,7 @@ setMethod(
         assert(!anyNA(x))
         method <- match.arg(method)
         message("Calculating ", method, " correlation matrix.")
-        cor(x = x, y = y, method = method)
+        cor(x = x, y = NULL, method = method)
     }
 
 formals(`correlation,matrix,missing`)[["method"]] <- method
@@ -119,7 +121,8 @@ setMethod(
 ## Updated 2019-11-08.
 `correlation,matrix,matrix` <-  # nolint
     function(x, y, method) {
-        correlation(x = c(x), y = c(y), method = match.arg(method))
+        method <- match.arg(method)
+        correlation(x = c(x), y = c(y), method = method)
     }
 
 formals(`correlation,matrix,matrix`)[["method"]] <- method
@@ -176,12 +179,52 @@ setMethod(
 
 
 ## Updated 2019-11-08.
+`correlation,SE,missing` <-  # nolint
+    function(
+        x, y = NULL,
+        i = 1L, j = NULL,
+        method
+    ) {
+        method <- match.arg(method)
+        if (is.null(j)) {
+            correlation(
+                x = assay(x, i = i),
+                method = method
+            )
+        } else {
+            correlation(
+                x = assay(x, i = i),
+                y = assay(x, i = j),
+                method = method
+            )
+        }
+    }
+
+formals(`correlation,SE,missing`)[["method"]] <- method
+
+
+
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "SummarizedExperiment",
+        y = "missingOrNULL"
+    ),
+    definition = `correlation,SE,missing`
+)
+
+
+
+## Updated 2019-11-08.
 `correlation,SE,SE` <-  # nolint
     function(x, y, i = 1L, method) {
+        method <- match.arg(method)
         correlation(
             x = assay(x, i = i),
             y = assay(y, i = i),
-            method = match.arg(method)
+            method = method
         )
     }
 
