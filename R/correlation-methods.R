@@ -56,6 +56,10 @@ NULL
 
 
 
+method <- formals(stats::cor)[["method"]]
+
+
+
 `correlation,numeric,numeric` <-  # nolint
     function(x, y, method) {
         assert(
@@ -68,8 +72,7 @@ NULL
         cor(x = x, y = y, method = method)
     }
 
-formals(`correlation,numeric,numeric`)[["method"]] <-
-    formals(stats::cor)[["method"]]
+formals(`correlation,numeric,numeric`)[["method"]] <- method
 
 
 
@@ -87,14 +90,14 @@ setMethod(
 
 
 `correlation,matrix,missing` <-  # nolint
-    function(x, y, method) {
+    function(x, y = NULL, method) {
+        assert(!anyNA(x))
         method <- match.arg(method)
         message("Calculating ", method, " correlation matrix.")
-        cor(x = x, y = NULL, method = method)
+        cor(x = x, y = y, method = method)
     }
 
-formals(`correlation,matrix,missing`)[["method"]] <-
-    formals(`correlation,numeric,numeric`)[["method"]]
+formals(`correlation,matrix,missing`)[["method"]] <- method
 
 
 
@@ -117,8 +120,7 @@ setMethod(
         correlation(x = c(x), y = c(y), method = match.arg(method))
     }
 
-formals(`correlation,matrix,matrix`)[["method"]] <-
-    formals(`correlation,matrix,missing`)[["method"]]
+formals(`correlation,matrix,matrix`)[["method"]] <- method
 
 
 
@@ -168,3 +170,7 @@ setMethod(
     ),
     definition = `correlation,Matrix,Matrix`
 )
+
+
+
+rm(method)
