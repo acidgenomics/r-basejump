@@ -63,7 +63,9 @@ NULL
             identical(length(x), length(y)),
             !anyNA(x), !anyNA(y)
         )
-        cor(x = x, y = y, method = match.arg(method))
+        method <- match.arg(method)
+        message("Calculating ", method, " correlation value.")
+        cor(x = x, y = y, method = method)
     }
 
 formals(`correlation,numeric,numeric`)[["method"]] <-
@@ -86,10 +88,9 @@ setMethod(
 
 `correlation,matrix,missing` <-  # nolint
     function(x, y, method) {
-        if (missing(y)) {
-            y <- NULL
-        }
-        cor(x = x, y = y, method = match.arg(method))
+        method <- match.arg(method)
+        message("Calculating ", method, " correlation matrix.")
+        cor(x = x, y = NULL, method = method)
     }
 
 formals(`correlation,matrix,missing`)[["method"]] <-
