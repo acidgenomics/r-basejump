@@ -40,12 +40,19 @@ correlation(x, y, ...)
 
 \item{y}{Object.}
 
+\item{method}{a character string indicating which correlation
+    coefficient (or covariance) is to be computed.  One of
+    \code{"pearson"} (default), \code{"kendall"}, or \code{"spearman"}:
+    can be abbreviated.}
+
 \item{i}{\code{integer(1)} or \code{character(1)}.
 For \code{SummarizedExperiment}, primary assay.}
 
 \item{j}{\code{integer(1)}, \code{character(1)}, or \code{NULL}.
 For \code{SummarizedExperiment}, optional secondary assay.
 If \code{NULL}, calculates correlation matrix only on the primary assay.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{numeric(1)} or \code{matrix}.
