@@ -1,4 +1,4 @@
-## basejump 0.11.22 (UNRELEASED)
+## basejump 0.11.22 (2019-11-11)
 
 ### New functions
 
