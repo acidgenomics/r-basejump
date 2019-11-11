@@ -31,6 +31,7 @@ reference:
   - title: Quality control
     contents:
       - calculateMetrics
+      - correlation
       - filterCells
       - metrics
       - nonzeroRowsAndCols

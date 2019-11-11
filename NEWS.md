@@ -1,3 +1,13 @@
+## basejump 0.11.22 (2019-11-11)
+
+### New functions
+
+- `correlation`: Added S4 method support that mimics base `cor` methods, but
+  is more flexible, supporting additional arguments via `...` in generic. This
+  way we can provide intelligent and quick correlation calculations for nested
+  assays inside a `SummarizedExperiment` and for `DESeqResults`
+  (see DESeqAnalysis package).
+
 ## basejump 0.11.21 (2019-11-07)
 
 ### Major changes

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.21</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.22</span>
       </span>
     </div>
 
@@ -183,9 +183,9 @@
     <div id="basejump-0-11-5-2019-08-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-5-2019-08-11" class="anchor"></a>basejump 0.11.5 (2019-08-11)</h2>
-<div id="new-functions-3" class="section level3">
+<div id="new-functions-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-3" class="anchor"></a>New functions</h3>
+<a href="#new-functions-4" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>calculateMetrics</code>: Migrated code here from bcbioSingleCell. Improved method to support <code>DelayedArray</code> class for large matrices.</li>
@@ -229,9 +229,9 @@
     <div id="basejump-0-11-8-2019-08-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-8-2019-08-19" class="anchor"></a>basejump 0.11.8 (2019-08-19)</h2>
-<div id="new-functions-2" class="section level3">
+<div id="new-functions-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-2" class="anchor"></a>New functions</h3>
+<a href="#new-functions-3" class="anchor"></a>New functions</h3>
 <ul>
 <li>Migrated <code>readSampleData</code> and <code>readTx2Gene</code> from bcbioBase.</li>
 <li>Reworked <code>readSampleData</code> internal code, but still supporting bcbio pipeline conventions (i.e. “description” column for samples) as the default. I’ve reworked this approach so we can also call <code>readSampleData</code> inside the Chromium package (for 10X Genomics single-cell RNA-seq data) without having to depend on the bcbio R packages.</li>
@@ -297,9 +297,9 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-11-2019-08-27" class="anchor"></a>basejump 0.11.11 (2019-08-27)</h2>
 <p>Updated R dependency to 3.6.</p>
-<div id="new-functions-1" class="section level3">
+<div id="new-functions-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-1" class="anchor"></a>New functions</h3>
+<a href="#new-functions-2" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>melt</code>: Added S4 methods for melting data into long format. Provides support for <code>matrix</code>, <code>Matrix</code>, <code>DataFrame</code>, <code>SummarizedExperiment</code>, and <code>SingleCellExperiment</code> currently.</li>
@@ -447,9 +447,9 @@
     <div id="basejump-0-11-19-2019-10-23" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-11-19-2019-10-23" class="anchor"></a>basejump 0.11.19 (2019-10-23)</h2>
-<div id="new-functions" class="section level3">
+<div id="new-functions-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h3>
+<a href="#new-functions-1" class="anchor"></a>New functions</h3>
 <ul>
 <li>Genome version detection: <code>ensemblVersion</code>, <code>gencodeVersion</code>, <code>refseqVersion</code>, <code>flybaseVersion</code>, <code>wormbaseVersion</code>. Similar shell variants are available in the <a href="https://koopa.acidgenomics.com/">koopa</a> package.</li>
 </ul>
@@ -473,9 +473,9 @@
 </ul>
 </div>
 </div>
-    <div id="basejump-0-11-21-2019-11-06" class="section level2">
+    <div id="basejump-0-11-21-2019-11-07" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-11-21-2019-11-06" class="anchor"></a>basejump 0.11.21 (2019-11-06)</h2>
+<a href="#basejump-0-11-21-2019-11-07" class="anchor"></a>basejump 0.11.21 (2019-11-07)</h2>
 <div id="major-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#major-changes" class="anchor"></a>Major changes</h3>
@@ -490,6 +490,18 @@
 <li>
 <code>filterCells</code> requires an internal <code>decode</code> step to handle <code>Rle</code> evaluation, which worked previously in Bioconductor 3.9 release.</li>
 <li>Updated unit tests to reflect <code>SingleCellExperiment</code> example object resave in acidtest 0.2.7 update, which changed the numbers.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0-11-22-unreleased" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-11-22-unreleased" class="anchor"></a>basejump 0.11.22 (UNRELEASED)</h2>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h3>
+<ul>
+<li>
+<code>correlation</code>: Added S4 method support that mimics base <code>cor</code> methods, but is more flexible, supporting additional arguments via <code>...</code> in generic. This way we can provide intelligent and quick correlation calculations for nested assays inside a <code>SummarizedExperiment</code> and for <code>DESeqResults</code> (see DESeqAnalysis package).</li>
 </ul>
 </div>
 </div>
@@ -520,7 +532,8 @@
         <li><a href="#basejump-0-11-18-2019-10-13">0.11.18</a></li>
         <li><a href="#basejump-0-11-19-2019-10-23">0.11.19</a></li>
         <li><a href="#basejump-0-11-20-2019-10-24">0.11.20</a></li>
-        <li><a href="#basejump-0-11-21-2019-11-06">0.11.21</a></li>
+        <li><a href="#basejump-0-11-21-2019-11-07">0.11.21</a></li>
+        <li><a href="#basejump-0-11-22-unreleased">0.11.22</a></li>
       </ul>
     </div>
   </div>

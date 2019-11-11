@@ -54,8 +54,9 @@ NULL
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
-#'   new selectMethod setAs setClass setGeneric setMethod setReplaceMethod
-#'   setOldClass setValidity signature slot slotNames validObject .hasSlot
+#'   new selectMethod setAs setClass setClassUnion setGeneric setMethod
+#'   setReplaceMethod setOldClass setValidity signature slot slotNames
+#'   validObject .hasSlot
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr boundary str_detect str_dup str_extract str_length
