@@ -5,6 +5,11 @@ NULL
 
 
 
+## > showClass("missingOrNULL")
+setClassUnion(name = "missingOrNULL", members = c("missing", "NULL"))
+
+
+
 #' Ensembl-to-Entrez gene identifier mappings
 #'
 #' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
