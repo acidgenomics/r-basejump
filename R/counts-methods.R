@@ -7,13 +7,13 @@
 #'
 #' @name counts
 #' @aliases counts<-
-#' @note Updated 2019-08-06.
+#' @note Updated 2019-11-12.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return Matrix.
-#' Typically `matrix` or `sparseMatrix` class.
+#' Typically `matrix` or `Matrix` class.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
