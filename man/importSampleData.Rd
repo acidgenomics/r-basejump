@@ -4,8 +4,12 @@
 \alias{importSampleData}
 \title{Import sample metadata}
 \usage{
-importSampleData(file, sheet = 1L, lanes = 0L, pipeline = c("none",
-  "bcbio", "cellranger", "cpi"))
+importSampleData(
+  file,
+  sheet = 1L,
+  lanes = 0L,
+  pipeline = c("none", "bcbio", "cellranger", "cpi")
+)
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -18,7 +22,7 @@ position of the sheet). Defaults to the first sheet.}
 
 \item{lanes}{\code{integer(1)}.
 Number of lanes used to split the samples into technical replicates
-suffix (i.e. \code{_LXXX}).}
+suffix (i.e. \verb{_LXXX}).}
 
 \item{pipeline}{\code{character(1)}.
 Analysis pipeline:

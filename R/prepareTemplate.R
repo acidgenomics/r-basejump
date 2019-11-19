@@ -16,10 +16,9 @@
 #' - `bcbioRNASeq::prepareRNASeqTemplate()`.
 #' - `bcbioSingleCell::prepareSingleCellTemplate()`.
 #'
-#' @note Updated 2019-10-10.
+#' @note Updated 2019-11-19.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
 #' @param package `character(1)` or `NULL`.
 #'   Name of package containing the R Markdown template. If `NULL`, only the
 #'   basic shared files defined in the basejump package will be copied.

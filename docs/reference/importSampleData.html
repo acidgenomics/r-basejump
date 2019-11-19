@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
       </span>
     </div>
 
@@ -122,8 +122,12 @@
     <p>This function imports user-defined sample metadata saved in a spreadsheet.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>lanes</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>,
-  <span class='st'>"bcbio"</span>, <span class='st'>"cellranger"</span>, <span class='st'>"cpi"</span>))</pre>
+    <pre class="usage"><span class='fu'>importSampleData</span>(
+  <span class='no'>file</span>,
+  <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>lanes</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"bcbio"</span>, <span class='st'>"cellranger"</span>, <span class='st'>"cpi"</span>)
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

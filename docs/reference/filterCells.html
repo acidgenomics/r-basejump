@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
       </span>
     </div>
 
@@ -125,11 +125,21 @@
     <pre class="usage"><span class='fu'>filterCells</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>filterCells</span>(<span class='no'>object</span>, <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>maxCounts</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>minFeatures</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>maxFeatures</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>minNovelty</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>maxMitoRatio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>minCellsPerFeature</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>nCells</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>countsCol</span> <span class='kw'>=</span> <span class='st'>"nCount"</span>, <span class='kw'>featuresCol</span> <span class='kw'>=</span> <span class='st'>"nFeature"</span>,
-  <span class='kw'>noveltyCol</span> <span class='kw'>=</span> <span class='st'>"log10FeaturesPerCount"</span>, <span class='kw'>mitoRatioCol</span> <span class='kw'>=</span> <span class='st'>"mitoRatio"</span>)</pre>
+<span class='fu'>filterCells</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>maxCounts</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>minFeatures</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>maxFeatures</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>minNovelty</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>maxMitoRatio</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>minCellsPerFeature</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>nCells</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>countsCol</span> <span class='kw'>=</span> <span class='st'>"nCount"</span>,
+  <span class='kw'>featuresCol</span> <span class='kw'>=</span> <span class='st'>"nFeature"</span>,
+  <span class='kw'>noveltyCol</span> <span class='kw'>=</span> <span class='st'>"log10FeaturesPerCount"</span>,
+  <span class='kw'>mitoRatioCol</span> <span class='kw'>=</span> <span class='st'>"mitoRatio"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,7 +214,7 @@ the <code>sampleName</code> column in <code><a href='sampleData.html'>sampleData
 as <code>filterCells</code> metadata.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-11-06.</p>
+    <p>Updated 2019-11-19.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)

@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
       </span>
     </div>
 
@@ -122,15 +122,17 @@
     <p>Make a Gene2Symbol object</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeGene2SymbolFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>,
-  <span class='st'>"unmodified"</span>, <span class='st'>"1:1"</span>))
+    <pre class="usage"><span class='fu'>makeGene2SymbolFromEnsembl</span>(
+  <span class='no'>organism</span>,
+  <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>, <span class='st'>"unmodified"</span>, <span class='st'>"1:1"</span>)
+)
 
-<span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>, <span class='st'>"unmodified"</span>,
-  <span class='st'>"1:1"</span>))
+<span class='fu'>makeGene2SymbolFromEnsDb</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>, <span class='st'>"unmodified"</span>, <span class='st'>"1:1"</span>))
 
-<span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>, <span class='st'>"unmodified"</span>,
-  <span class='st'>"1:1"</span>))</pre>
+<span class='fu'>makeGene2SymbolFromGFF</span>(<span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"makeUnique"</span>, <span class='st'>"unmodified"</span>, <span class='st'>"1:1"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
