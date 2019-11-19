@@ -125,8 +125,8 @@ NULL
         sampleNames <- sampleNames(object)
         sampleIDs <- names(sampleNames)
         assert(
-            isSubset(sampleNames, levels(metrics[["sampleName"]])),
-            isSubset(sampleIDs, levels(metrics[["sampleID"]]))
+            isSubset(sampleNames, unique(metrics[["sampleName"]])),
+            isSubset(sampleIDs, unique(metrics[["sampleID"]]))
         )
         originalDim <- dim(object)
 
