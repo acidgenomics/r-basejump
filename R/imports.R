@@ -41,16 +41,15 @@ NULL
 #'    methodFormals methodFunction
 #' @importFrom biomaRt listEnsemblArchives listMarts useMart
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
-#'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert
-#'   containsAURL false hasColnames hasCols hasDimnames hasDims hasInternet
-#'   hasLength hasMetrics hasNames hasNoDuplicates hasNonzeroRowsAndCols hasRows
-#'   hasRownames hasSubset hasUniqueCols hasValidDimnames hasValidNames
-#'   isADirectory isAFile isAlpha isAny isCharacter isFlag isGGScale
-#'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
-#'   isInLeftOpenRange isInRange isInt isIntegerish isMatchingRegex
-#'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
-#'   isSubset isSuperset matchesUniqueGeneNames validNames validate
-#'   validateClasses
+#'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert false
+#'   hasColnames hasCols hasDimnames hasDims hasInternet hasLength hasMetrics
+#'   hasNames hasNoDuplicates hasNonzeroRowsAndCols hasRows hasRownames
+#'   hasSubset hasUniqueCols hasValidDimnames hasValidNames isADirectory isAFile
+#'   isAURL isAlpha isAny isCharacter isFlag isGGScale isGreaterThanOrEqualTo
+#'   isHeaderLevel isHexColorFunction isInClosedRange isInLeftOpenRange
+#'   isInRange isInt isIntegerish isMatchingRegex isNonNegative
+#'   isNotMatchingRegex isNumber isPositive isScalar isString isSubset
+#'   isSuperset matchesUniqueGeneNames validNames validate validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
