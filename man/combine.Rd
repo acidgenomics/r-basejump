@@ -13,6 +13,10 @@ combine(x, y, ...)
 \S4method{combine}{SingleCellExperiment,SingleCellExperiment}(x, y)
 }
 \arguments{
+\item{x}{Object.}
+
+\item{y}{Object.}
+
 \item{...}{Additional arguments.}
 }
 \value{
