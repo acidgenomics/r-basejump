@@ -75,7 +75,7 @@ importSampleData <- function(
         lanes <- 0L
     }
     assert(
-        isAFile(file) || containsAURL(file),
+        isAFile(file) || isAURL(file),
         isInt(lanes),
         isNonNegative(lanes)
     )
