@@ -2,6 +2,7 @@
 #' @inherit BiocGenerics::combine return title
 #' @note Updated 2019-11-19.
 #'
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @note We're attempting to make this as strict as possible, requiring:
