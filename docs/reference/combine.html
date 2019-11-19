@@ -38,14 +38,7 @@
   
 
 <meta property="og:title" content="Combining or merging different Bioconductor data structures — combine" />
-<meta property="og:description" content="The combine generic function handles methods for combining
-  or merging different Bioconductor data structures.
-  It should, given an arbitrary number of arguments of the same class
-  (possibly by inheritance), combine them into a single instance in
-  a sensible way (some methods may only combine 2 objects,
-  ignoring ... in the argument list; because Bioconductor
-  data structures are complicated, check carefully that combine
-  does as you intend)." />
+<meta property="og:description" content="Combining or merging different Bioconductor data structures" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,14 +119,7 @@
     </div>
 
     <div class="ref-description">
-    <p>The <code>combine</code> generic function handles methods for combining
-  or merging different Bioconductor data structures.
-  It should, given an arbitrary number of arguments of the same class
-  (possibly by inheritance), combine them into a single instance in
-  a sensible way (some methods may only combine 2 objects,
-  ignoring <code>...</code> in the argument list; because Bioconductor
-  data structures are complicated, check carefully that <code>combine</code>
-  does as you intend).</p>
+    <p>Combining or merging different Bioconductor data structures</p>
     </div>
 
     <pre class="usage"><span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
@@ -148,14 +134,6 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>One of the values.</p></td>
-    </tr>
-    <tr>
-      <th>y</th>
-      <td><p>A second value.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
@@ -164,19 +142,9 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>SummarizedExperiment</code>.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>There are two basic combine strategies. One is an intersection
-  strategy. The returned value should only have rows (or columns) that
-  are found in all input data objects. The union strategy says that the
-  return value will have all rows (or columns) found in any one of the
-  input data objects (in which case some indication of what to use for
-  missing values will need to be provided).</p>
-<p>These functions and methods are currently under construction. Please
-  let us know if there are features that you require.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-27.</p>
+    <p>Updated 2019-11-19.</p>
 <p>We're attempting to make this as strict as possible, requiring:</p><ul>
 <li><p>Rows (genes) across objects must be identical.</p></li>
 <li><p><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a> and/or
@@ -186,37 +154,6 @@
 <li><p>Specific metadata must be identical (see <code>metadata</code> argument).</p></li>
 </ul>
 
-    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
-
-    
-
-<p>The following methods are defined in the <span class="pkg">BiocGenerics</span> package:</p><dl class='dl-horizontal'>
-    <dt><code>combine(x=ANY, missing)</code></dt><dd><p>Return the first (x) argument
-      unchanged.</p></dd>
-    <dt><code>combine(data.frame, data.frame)</code></dt><dd><p>Combines two
-      <code>data.frame</code> objects so that the resulting <code>data.frame</code>
-      contains all rows and columns of the original objects. Rows and
-      columns in the returned value are unique, that is, a row or column
-      represented in both arguments is represented only once in the
-      result. To perform this operation, <code>combine</code> makes sure that data
-      in shared rows and columns are identical in the two
-      data.frames. Data differences in shared rows and columns usually cause an
-      error. <code>combine</code> issues a warning when a column is a
-      <code>factor</code> and the levels of the factor in the two
-      data.frames are different.</p></dd>
-    <dt><code>combine(matrix, matrix)</code></dt><dd><p>Combined two <code>matrix</code>
-      objects so that the resulting <code>matrix</code> contains all rows and
-      columns of the original objects. Both matricies must have
-      <code>dimnames</code>. Rows and columns in the returned
-      value are unique, that is, a row or column represented in both
-      arguments is represented only once in the result. To perform this
-      operation, <code>combine</code> makes sure that data in shared rows and
-      columns are all equal in the two matricies.</p></dd>
-  
-</dl><p>Additional <code>combine</code> methods are defined in the <span class="pkg">Biobase</span> package
-  for <a href='https://rdrr.io/pkg/Biobase/man/class.AnnotatedDataFrame.html'>AnnotatedDataFrame</a>,
-  <a href='https://rdrr.io/pkg/Biobase/man/class.AssayData.html'>AssayData</a>, <a href='https://rdrr.io/pkg/Biobase/man/class.MIAME.html'>MIAME</a>,
-  and <a href='https://rdrr.io/pkg/Biobase/man/class.eSet.html'>eSet</a> objects.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'>
@@ -320,15 +257,11 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
       <li><a href="#note">Note</a></li>
-      <li><a href="#methods">Methods</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p>Biocore</p>
   </div>
 </div>
 
