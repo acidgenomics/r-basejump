@@ -122,12 +122,8 @@ NULL
         }
         ## Using DataFrame with Rle instead of tibble for improved speed.
         metrics <- colData(object)
-        sampleNames <- sampleNames(object)
-        sampleIDs <- names(sampleNames)
-        assert(
-            isSubset(sampleNames, unique(metrics[["sampleName"]])),
-            isSubset(sampleIDs, unique(metrics[["sampleID"]]))
-        )
+        sampleIDs <- names(sampleNames(object))
+        assert(isSubset(sampleIDs, levels(metrics[["sampleID"]])))
         originalDim <- dim(object)
 
         ## Detect low quality cells --------------------------------------------
