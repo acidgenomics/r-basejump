@@ -8,8 +8,12 @@
 \alias{makeTx2GeneFromGTF}
 \title{Make a Tx2Gene object}
 \usage{
-makeTx2GeneFromEnsembl(organism, genomeBuild = NULL, release = NULL,
-  ignoreTxVersion = TRUE)
+makeTx2GeneFromEnsembl(
+  organism,
+  genomeBuild = NULL,
+  release = NULL,
+  ignoreTxVersion = TRUE
+)
 
 makeTx2GeneFromEnsDb(object, ignoreTxVersion = TRUE)
 

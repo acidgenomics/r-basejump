@@ -1,7 +1,6 @@
 #' @inherit MGI2Ensembl-class title description return
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-11-19.
 #' @export
-#' @inheritParams acidroxygen::params
 #' @examples
 #' options(acid.test = TRUE)
 #' x <- MGI2Ensembl()

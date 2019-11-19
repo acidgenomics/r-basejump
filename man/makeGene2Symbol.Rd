@@ -8,15 +8,17 @@
 \alias{makeGene2SymbolFromGTF}
 \title{Make a Gene2Symbol object}
 \usage{
-makeGene2SymbolFromEnsembl(organism, genomeBuild = NULL,
-  release = NULL, ignoreTxVersion = TRUE, format = c("makeUnique",
-  "unmodified", "1:1"))
+makeGene2SymbolFromEnsembl(
+  organism,
+  genomeBuild = NULL,
+  release = NULL,
+  ignoreTxVersion = TRUE,
+  format = c("makeUnique", "unmodified", "1:1")
+)
 
-makeGene2SymbolFromEnsDb(object, format = c("makeUnique", "unmodified",
-  "1:1"))
+makeGene2SymbolFromEnsDb(object, format = c("makeUnique", "unmodified", "1:1"))
 
-makeGene2SymbolFromGFF(file, format = c("makeUnique", "unmodified",
-  "1:1"))
+makeGene2SymbolFromGFF(file, format = c("makeUnique", "unmodified", "1:1"))
 }
 \arguments{
 \item{organism}{\code{character(1)}.
