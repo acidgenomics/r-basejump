@@ -91,6 +91,12 @@ formalsList <- list(
             default = acidplots::synesthesia
         )
     ),
+    heatmap.quantile.color = quote(
+        getOption(
+            x = "acid.heatmap.quantile.color",
+            default = viridis::viridis
+        )
+    ),
     label = quote(
         getOption(x = "acid.label", default = FALSE)
     ),
