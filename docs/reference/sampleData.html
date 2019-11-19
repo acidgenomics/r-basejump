@@ -127,15 +127,20 @@
 <span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='no'>...</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ignoreCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>,
-  <span class='st'>"^samRef$"</span>))
+<span class='fu'>sampleData</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>ignoreCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>, <span class='st'>"^samRef$"</span>)
+)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ignoreCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>,
-  <span class='st'>"^samRef$"</span>), <span class='kw'>blacklistCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^ident$"</span>, <span class='st'>"^g2mScore$"</span>, <span class='st'>"^sScore$"</span>,
-  <span class='st'>"^phase$"</span>, <span class='st'>"^oldIdent$"</span>, <span class='st'>"^origIdent$"</span>, <span class='st'>"^res[0-9]+"</span>))
+<span class='fu'>sampleData</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>ignoreCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>, <span class='st'>"^samRef$"</span>),
+  <span class='kw'>blacklistCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^ident$"</span>, <span class='st'>"^g2mScore$"</span>, <span class='st'>"^sScore$"</span>, <span class='st'>"^phase$"</span>, <span class='st'>"^oldIdent$"</span>,
+    <span class='st'>"^origIdent$"</span>, <span class='st'>"^res[0-9]+"</span>)
+)
 
 <span class='co'># S4 method for SummarizedExperiment,DataFrame</span>
 <span class='fu'>sampleData</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
