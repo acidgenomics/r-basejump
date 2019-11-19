@@ -125,11 +125,21 @@
     <pre class="usage"><span class='fu'>filterCells</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>filterCells</span>(<span class='no'>object</span>, <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>maxCounts</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>minFeatures</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>maxFeatures</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>minNovelty</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>maxMitoRatio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>minCellsPerFeature</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>nCells</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>countsCol</span> <span class='kw'>=</span> <span class='st'>"nCount"</span>, <span class='kw'>featuresCol</span> <span class='kw'>=</span> <span class='st'>"nFeature"</span>,
-  <span class='kw'>noveltyCol</span> <span class='kw'>=</span> <span class='st'>"log10FeaturesPerCount"</span>, <span class='kw'>mitoRatioCol</span> <span class='kw'>=</span> <span class='st'>"mitoRatio"</span>)</pre>
+<span class='fu'>filterCells</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>maxCounts</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>minFeatures</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>maxFeatures</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>minNovelty</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>maxMitoRatio</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>minCellsPerFeature</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>nCells</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>countsCol</span> <span class='kw'>=</span> <span class='st'>"nCount"</span>,
+  <span class='kw'>featuresCol</span> <span class='kw'>=</span> <span class='st'>"nFeature"</span>,
+  <span class='kw'>noveltyCol</span> <span class='kw'>=</span> <span class='st'>"log10FeaturesPerCount"</span>,
+  <span class='kw'>mitoRatioCol</span> <span class='kw'>=</span> <span class='st'>"mitoRatio"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

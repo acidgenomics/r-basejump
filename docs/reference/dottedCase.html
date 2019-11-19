@@ -134,33 +134,39 @@
 <span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for Vector</span>
-<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for DataTable</span>
-<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>dottedCase</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
 
 <span class='co'># S4 method for Ranges</span>
-<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>assayNames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>dottedCase</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>assayNames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
