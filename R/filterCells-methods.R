@@ -1,6 +1,6 @@
 #' @name filterCells
 #' @inherit bioverbs::filterCells
-#' @note Updated 2019-11-06.
+#' @note Updated 2019-11-19.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -70,7 +70,7 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-11-19.
 `filterCells,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -122,7 +122,12 @@ NULL
         }
         ## Using DataFrame with Rle instead of tibble for improved speed.
         metrics <- colData(object)
-        sampleNames <- unname(sampleNames(object))
+        sampleNames <- sampleNames(object)
+        sampleIDs <- names(sampleNames)
+        assert(
+            isSubset(sampleNames, levels(metrics[["sampleName"]])),
+            isSubset(sampleIDs, levels(metrics[["sampleID"]]))
+        )
         originalDim <- dim(object)
 
         ## Detect low quality cells --------------------------------------------
@@ -147,10 +152,10 @@ NULL
             X = args,
             FUN = function(arg) {
                 if (hasLength(arg, n = 1L)) {
-                    arg <- rep(arg, times = length(sampleNames))
-                    names(arg) <- sampleNames
+                    arg <- rep(arg, times = length(sampleIDs))
+                    names(arg) <- sampleIDs
                 }
-                assert(identical(names(arg), sampleNames))
+                assert(identical(names(arg), sampleIDs))
                 arg
             }
         )
