@@ -4,8 +4,10 @@
 \alias{makeTx2GeneFromFASTA}
 \title{Make a Tx2Gene object from transcriptome FASTA}
 \usage{
-makeTx2GeneFromFASTA(file, source = c("ensembl", "gencode", "flybase",
-  "wormbase"))
+makeTx2GeneFromFASTA(
+  file,
+  source = c("ensembl", "gencode", "flybase", "wormbase")
+)
 }
 \arguments{
 \item{file}{\code{character(1)}.

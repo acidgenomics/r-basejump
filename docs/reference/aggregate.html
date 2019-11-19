@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
       </span>
     </div>
 
@@ -127,32 +127,49 @@
 <span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
+<span class='fu'>aggregateRows</span>(
+  <span class='no'>object</span>,
+  <span class='no'>groupings</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>)
+)
 
 <span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
+<span class='fu'>aggregateRows</span>(
+  <span class='no'>object</span>,
+  <span class='no'>groupings</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>)
+)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"aggregate"</span>,
-  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
+<span class='fu'>aggregateRows</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"aggregate"</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>)
+)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
+<span class='fu'>aggregateCols</span>(
+  <span class='no'>object</span>,
+  <span class='no'>groupings</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>)
+)
 
 <span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
+<span class='fu'>aggregateCols</span>(
+  <span class='no'>object</span>,
+  <span class='no'>groupings</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>)
+)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"aggregate"</span>,
-  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))
+<span class='fu'>aggregateCols</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"aggregate"</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>)
+)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>,
-  <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))</pre>
+<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

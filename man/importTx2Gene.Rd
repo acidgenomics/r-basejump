@@ -4,8 +4,7 @@
 \alias{importTx2Gene}
 \title{Import transcript-to-gene annotations}
 \usage{
-importTx2Gene(file, organism = NULL, genomeBuild = NULL,
-  ensemblRelease = NULL)
+importTx2Gene(file, organism = NULL, genomeBuild = NULL, ensemblRelease = NULL)
 }
 \arguments{
 \item{file}{\code{character(1)}.

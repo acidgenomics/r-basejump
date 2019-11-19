@@ -1,3 +1,16 @@
+## basejump 0.11.23 (2019-11-19)
+
+### Minor changes
+
+- Updated package documentation to support roxygen2 7.0 update.
+- Reworked `formalsList` global slightly. Using the `synesthesia` color palette
+  for `heatmap.color` argument doesn't always perform well enough, so I'm
+  switching to a blue/black/yellow palette defined by `blueYellow` in acidplots
+  instead for `heatmap.color`. The `synesthesia` palette performs really well
+  for correlation heatmaps, and is now recommended by default via the
+  `acid.heatmap.correlation.color` global now instead.
+- `filterCells`: Improved internal sampleName / sampleID handling.
+
 ## basejump 0.11.22 (2019-11-11)
 
 ### New functions
