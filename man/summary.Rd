@@ -21,13 +21,10 @@ summary(object, ...)
 Invisible \code{NULL}.
 }
 \description{
-\code{summary} is a generic function used to produce result summaries
-  of the results of various model fitting functions.  The function
-  invokes particular \code{\link[base]{methods}} which depend on the
-  \code{\link[base]{class}} of the first argument.
+Object summaries
 }
 \note{
-Updated 2019-07-28.
+Updated 2019-11-19.
 }
 \examples{
 data(
@@ -43,10 +40,5 @@ summary(object)
 ## Tx2Gene ====
 object <- Tx2Gene(SummarizedExperiment_transcripts)
 summary(object)
-}
-\references{
-Chambers, J. M. and Hastie, T. J. (1992)
-  \emph{Statistical Models in S}.
-  Wadsworth & Brooks/Cole.
 }
 \keyword{internal}

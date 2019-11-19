@@ -1,9 +1,8 @@
 #' Object summaries
 #'
 #' @name summary
-#' @inherit base::summary description references
 #' @keywords internal
-#' @note Updated 2019-07-28.
+#' @note Updated 2019-11-19.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.

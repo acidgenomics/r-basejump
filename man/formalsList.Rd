@@ -4,7 +4,7 @@
 \name{formalsList}
 \alias{formalsList}
 \title{Shared list of optional default formals}
-\format{An object of class \code{list} of length 11.}
+\format{An object of class \code{list} of length 12.}
 \usage{
 formalsList
 }
