@@ -10,6 +10,19 @@ globalVariables(".")
 
 
 
+#' Single-sell barcode pattern
+#'
+#' Trailing number is to match cellranger output.
+#'
+#' @export
+#' @note Updated 2019-08-21.
+#'
+#' @examples
+#' barcodePattern
+barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
+
+
+
 #' basejump test data URL
 #'
 #' @export
@@ -24,21 +37,6 @@ basejumpTestsURL <- paste0(
 )
 
 
-
-#' Single-sell barcode pattern
-#'
-#' Trailing number is to match cellranger output.
-#'
-#' @export
-#' @note Updated 2019-08-21.
-#'
-#' @examples
-#' barcodePattern
-barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
-
-
-
-## FIXME Rethink default heatmap color -- correlation?
 
 #' Shared list of optional default formals
 #'
@@ -78,6 +76,12 @@ formalsList <- list(
     heatmap.color = quote(
         getOption(
             x = "acid.heatmap.color",
+            default = acidplots::blueYellow
+        )
+    ),
+    heatmap.correlation.color = quote(
+        getOption(
+            x = "acid.heatmap.correlation.color",
             default = acidplots::synesthesia
         )
     ),
