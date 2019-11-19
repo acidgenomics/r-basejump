@@ -12,7 +12,7 @@ formalsList
 Shared list of optional default formals
 }
 \note{
-Updated 2019-08-21.
+Updated 2019-11-19.
 }
 \examples{
 formalsList

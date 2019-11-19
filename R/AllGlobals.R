@@ -38,10 +38,12 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 
 
 
+## FIXME Rethink default heatmap color -- correlation?
+
 #' Shared list of optional default formals
 #'
 #' @export
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-11-19.
 #'
 #' @examples
 #' formalsList

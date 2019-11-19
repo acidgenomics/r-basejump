@@ -4,8 +4,11 @@
 \alias{rankedMatrix}
 \title{Calculate a ranked matrix}
 \usage{
-rankedMatrix(object, MARGIN = 2L, method = c("increasing",
-  "decreasing", "bidirectional"))
+rankedMatrix(
+  object,
+  MARGIN = 2L,
+  method = c("increasing", "decreasing", "bidirectional")
+)
 }
 \arguments{
 \item{object}{Object.}

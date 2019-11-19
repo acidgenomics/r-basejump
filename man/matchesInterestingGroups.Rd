@@ -4,8 +4,7 @@
 \alias{matchesInterestingGroups}
 \title{Check that interesting groups match a defined value}
 \usage{
-matchesInterestingGroups(x, interestingGroups,
-  .xname = getNameInParent(x))
+matchesInterestingGroups(x, interestingGroups, .xname = getNameInParent(x))
 }
 \arguments{
 \item{x}{Object.}

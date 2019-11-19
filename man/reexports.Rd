@@ -132,18 +132,18 @@ below to see their documentation.
 
   \item{IRanges}{\code{\link[IRanges]{IRanges}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%T>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%T>\%}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{SimpleList}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}, \code{\link[S4Vectors]{SimpleList}}}
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{reducedDims}}, \code{\link[SingleCellExperiment]{reducedDims<-}}}
 
-  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assay<-}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}}
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assay<-}}, \code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}}
 
   \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{relevel}}, \code{\link[transformer]{antiJoin}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{fullJoin}}, \code{\link[transformer]{innerJoin}}, \code{\link[transformer]{leftJoin}}, \code{\link[transformer]{metadata2}}, \code{\link[transformer]{metadata2<-}}, \code{\link[transformer]{mutateAll}}, \code{\link[transformer]{mutateAt}}, \code{\link[transformer]{mutateIf}}, \code{\link[transformer]{rightJoin}}, \code{\link[transformer]{selectIf}}, \code{\link[transformer]{semiJoin}}, \code{\link[transformer]{transmuteAt}}, \code{\link[transformer]{transmuteIf}}}
+  \item{transformer}{\code{\link[transformer]{antiJoin}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{fullJoin}}, \code{\link[transformer]{innerJoin}}, \code{\link[transformer]{leftJoin}}, \code{\link[transformer]{metadata2}}, \code{\link[transformer]{metadata2<-}}, \code{\link[transformer]{mutateAll}}, \code{\link[transformer]{mutateAt}}, \code{\link[transformer]{mutateIf}}, \code{\link[transformer]{relevel}}, \code{\link[transformer]{rightJoin}}, \code{\link[transformer]{selectIf}}, \code{\link[transformer]{semiJoin}}, \code{\link[transformer]{transmuteAt}}, \code{\link[transformer]{transmuteIf}}}
 }}
 

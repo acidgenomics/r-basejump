@@ -7,10 +7,9 @@
 #' - interestingGroups.
 #' - sampleID.
 #'
-#' @note Updated 2019-08-11.
+#' @note Updated 2019-11-19.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
 #' @param object `DataFrame` (recommended) or `data.frame` (legacy).
 #'   Note that legacy `data.frame` support will be removed in a future update.
 #'
