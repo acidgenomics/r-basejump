@@ -82,6 +82,12 @@ formalsList <- list(
     heatmap.correlation.color = quote(
         getOption(
             x = "acid.heatmap.correlation.color",
+            default = viridis::viridis
+        )
+    ),
+    heatmap.legend.color = quote(
+        getOption(
+            x = "acid.heatmap.legend.color",
             default = acidplots::synesthesia
         )
     ),
