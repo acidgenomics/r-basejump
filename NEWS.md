@@ -9,6 +9,7 @@
   instead for `heatmap.color`. The `synesthesia` palette performs really well
   for correlation heatmaps, and is now recommended by default via the
   `acid.heatmap.correlation.color` global now instead.
+- `filterCells`: Improved internal sampleName / sampleID handling.
 
 ## basejump 0.11.22 (2019-11-11)
 
