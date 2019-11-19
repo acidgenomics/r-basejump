@@ -1,6 +1,6 @@
 #' @name combine
-#' @inherit BiocGenerics::combine
-#' @note Updated 2019-08-27.
+#' @inherit BiocGenerics::combine return title
+#' @note Updated 2019-11-19.
 #'
 #' @param ... Additional arguments.
 #'
