@@ -89,7 +89,7 @@ biocViews:
     GenomeAnnotation,
     Preprocessing
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 Collate: 
     'AllGlobals.R'
@@ -129,6 +129,7 @@ Collate:
     'importSampleData.R'
     'importTx2Gene.R'
     'imports.R'
+    'integerCounts-methods.R'
     'interestingGroups-methods.R'
     'internal.R'
     'lfcThreshold-methods.R'
