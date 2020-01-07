@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.11.24.9000
-Date: 2019-12-04
+Version: 0.11.24
+Date: 2020-01-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -48,30 +48,30 @@ Imports:
     S4Vectors (>= 0.24),
     SingleCellExperiment (>= 1.8),
     SummarizedExperiment (>= 1.16),
-    acidbase (>= 0.1.1),
+    acidbase (>= 0.1.2),
     biomaRt (>= 2.42),
-    bioverbs (>= 0.2.12),
-    brio (>= 0.3.15),
+    bioverbs (>= 0.2.13),
+    brio (>= 0.3.16),
     freerange (>= 0.2.8),
-    goalie (>= 0.4.0),
-    knitr (>= 1.24),
+    goalie (>= 0.4.1),
+    knitr (>= 1.26),
     magrittr (>= 1.5),
     matrixStats (>= 0.55),
-    scales (>= 1.0),
+    scales (>= 1.1),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
-    syntactic (>= 0.3.2),
+    syntactic (>= 0.3.4),
     tibble (>= 2.1),
-    transformer (>= 0.2.10),
+    transformer (>= 0.2.11),
     methods,
     utils
 Suggests:
     BiocStyle (>= 2.14),
     EnsDb.Hsapiens.v75 (>= 2.99),
-    acidroxygen (>= 0.1.4),
+    acidroxygen (>= 0.1.5),
     acidtest (>= 0.2.8),
     patrick (>= 0.0.1),
-    rmarkdown (>= 1.16),
+    rmarkdown (>= 2.0),
     testthat (>= 2.3),
     datasets
 Remotes:
