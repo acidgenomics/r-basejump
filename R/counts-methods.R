@@ -7,7 +7,7 @@
 #'
 #' @name counts
 #' @aliases counts<-
-#' @note Updated 2019-11-12.
+#' @note Updated 2019-12-04.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -17,10 +17,10 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
-#' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====
-#' x <- counts(rse)
+#' object <- RangedSummarizedExperiment
+#' x <- counts(object)
 #' summary(x)
 NULL
 

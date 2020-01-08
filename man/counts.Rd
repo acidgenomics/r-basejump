@@ -36,13 +36,13 @@ Count matrix.
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
 defined in \code{assayNames}.
 
-Updated 2019-11-12.
+Updated 2019-12-04.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
-rse <- RangedSummarizedExperiment
 
 ## SummarizedExperiment ====
-x <- counts(rse)
+object <- RangedSummarizedExperiment
+x <- counts(object)
 summary(x)
 }
