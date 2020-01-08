@@ -1,5 +1,11 @@
 ## basejump 0.11.24 (2020-01-08)
 
+### New functions
+
+- `integerCounts`: Simple method support for returning a rounded integer counts
+  matrix. Intended primarily for downstream handoff to bulk RNA-seq differential
+  expression callers, such as DESeq2.
+
 ### Minor changes
 
 - Updated dependency package version requirements. Needed primarily for bug
