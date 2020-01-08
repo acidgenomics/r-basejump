@@ -38,6 +38,17 @@ setGeneric(
 
 
 
+#' @rdname integerCounts
+#' @export
+setGeneric(
+    name = "integerCounts",
+    def = function(object, ...) {
+        standardGeneric("integerCounts")
+    }
+)
+
+
+
 #' @rdname makeSampleData
 #' @export
 setGeneric(
