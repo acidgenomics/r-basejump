@@ -1,3 +1,10 @@
+## basejump 0.11.24 (2020-01-08)
+
+### Minor changes
+
+- Updated dependency package version requirements. Needed primarily for bug
+  fix in transformer, improving `mutateAll` functionality.
+
 ## basejump 0.11.23 (2019-11-19)
 
 ### Minor changes
