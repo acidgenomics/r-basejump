@@ -71,7 +71,7 @@ coercing using \code{\link[BiocGenerics:as.data.frame]{as.data.frame()}}.
 }}
 
 \note{
-Updated 2019-08-21.
+Updated 2020-01-20.
 }
 \section{Broad class definitions}{
 
