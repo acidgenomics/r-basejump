@@ -1,6 +1,6 @@
 context("mutate")
 
-x <- mtcars
+x <- as(mtcars, "DataFrame")
 
 test_that("mutateAll", {
     expect_identical(x[["gear"]][1L], 4)  # nolint
