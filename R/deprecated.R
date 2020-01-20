@@ -22,9 +22,9 @@ NULL
 ## v0.10.4 =====================================================================
 ## Now recommending `plotCounts()` instead of `plotGene()`.
 ## Still in use by some revdeps, so keep re-exported.
-#' @importFrom bioverbs plotGene
+#' @importFrom acidgenerics plotGene
 #' @export
-bioverbs::plotGene
+acidgenerics::plotGene
 
 
 
@@ -94,10 +94,6 @@ readYAML <- function(...) {
     import(...)
 }
 
-#' @importFrom transformer relevel
-#' @export
-transformer::relevel
-
 #' @rdname defunct
 #' @export
 relevelColData <- function(...) {
@@ -139,7 +135,7 @@ readTx2Gene <- function(...) {
 ## These were previously deprecated in transformer package.
 #' @rdname defunct
 #' @name flatFiles
-#' @importFrom bioverbs flatFiles
+#' @importFrom acidgenerics flatFiles
 #' @export
 NULL
 

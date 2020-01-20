@@ -9,6 +9,8 @@
 \alias{relevelColData}
 \alias{relevelRowData}
 \alias{relevelRowRanges}
+\alias{flatFiles}
+\alias{flatFiles,SummarizedExperiment-method}
 \title{Defunct functions}
 \usage{
 theme_midnight(...)
@@ -24,9 +26,13 @@ relevelColData(...)
 relevelRowData(...)
 
 relevelRowRanges(...)
+
+\S4method{flatFiles}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{...}{Additional arguments.}
+
+\item{object}{Object.}
 }
 \value{
 \code{.Defunct}.
