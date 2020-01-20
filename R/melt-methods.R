@@ -179,7 +179,7 @@ NULL
         if (!identical(trans, "identity")) {
             assert(isInt(min))
             cli_alert(sprintf(
-                "Applying {.fun %s(x + 1L)} transformation.", trans
+                "Applying {.code %s(x + 1L)} transformation.", trans
             ))
             fun <- get(
                 x = trans,
