@@ -118,7 +118,7 @@ makeGRangesFromEnsembl <- function(
         isFlag(ignoreTxVersion)
     )
     level <- match.arg(level)
-    cli_alert("Making GRanges from Ensembl.")
+    cli_alert("Making {.var GRanges} from Ensembl.")
     ## Remap UCSC genome build to Ensembl automatically, if necessary.
     if (isString(genomeBuild)) {
         remap <- tryCatch(
@@ -333,7 +333,7 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
         isString(id),
         unname(isMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$"))
     )
-    cli_text(sprintf("%s: %s", id, mcols[["title"]]))
+    cli_alert_info(sprintf("{.val %s}: %s.", id, mcols[["title"]]))
     .forceDetach(keep = userAttached)
     id
 }
