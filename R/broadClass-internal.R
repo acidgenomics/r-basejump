@@ -22,7 +22,7 @@
 #' @note Can return `NA_character_` here instead. Keeping this as "other", to
 #'   main consistency with previous data sets. Also note that `NA` can behave
 #'   inconsistently in plotting engines.
-#' @note Updated 2019-07-22.
+#' @note Updated 2020-01-20.
 #'
 #' @author Rory Kirchner, Michael Steinbaugh
 #' @noRd
@@ -162,7 +162,9 @@
         geneNameCol <- "geneName"
         geneNameData <- data[[geneNameCol]]
     } else {
-        message("GRanges does not contain gene names in mcols().")
+        cli_alert_warning(
+            "{.var GRanges} does not contain gene names in {.fun mcols}."
+        )
         geneNameCol <- NULL
         geneNameData <- NA_character_
     }
@@ -176,14 +178,14 @@
         seqnamesData <- data[[seqnamesCol]]
     } else {
         ## Don't think this is currently possible to hit, but keep just in case.
-        message("GRanges does not contain seqnames.")
+        cli_alert_warning("{.var GRanges} does not contain {.fun seqnames}.")
         seqnamesCol <- NULL
         seqnamesData <- NA_character_
     }
 
     ## Apply broad class -------------------------------------------------------
-    message(sprintf(
-        "Defining 'broadClass' using: %s.",
+    cli_alert(sprintf(
+        "Defining {.var broadClass} using: {.var %s}.",
         ## Note that `c()` call here effectively removes `NULL` definitions.
         toString(sort(c(biotypeCol, geneNameCol, seqnamesCol)))
     ))
