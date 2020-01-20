@@ -1,7 +1,7 @@
-## Updated 2019-09-06.
+## Updated 2020-01-19.
 
-localOrRemoteFile <- brio::localOrRemoteFile
-pasteURL <- brio::pasteURL
+localOrRemoteFile <- pipette::localOrRemoteFile
+pasteURL <- acidbase::pasteURL
 
 ## Enable this for even more verbose checks.
 checkAgainstTxDb <- TRUE
