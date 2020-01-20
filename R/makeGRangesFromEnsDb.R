@@ -6,7 +6,7 @@
 #'
 #' @export
 #' @include makeGRangesFromEnsembl.R
-#' @note Updated 2019-09-05.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -22,7 +22,7 @@ makeGRangesFromEnsDb <- function(
     ignoreTxVersion = TRUE
 ) {
     level <- match.arg(level)
-    message("Making GRanges from EnsDb object.")
+    cli_alert("Making {.var GRanges} from {.var EnsDb}.")
     userAttached <- .packages()
     ## Allow loading of EnsDb package, passed in as a character string.
     if (isString(object)) {
@@ -51,19 +51,14 @@ makeGRangesFromEnsDb <- function(
         ensembldb = metadata(object),
         level = level
     )
-    message(sprintf(
-        fmt = paste(
-            "  - Organism: %s",
-            "  - Genome build: %s",
-            "  - Ensembl release: %s",
-            "  - Level: %s",
-            sep = "\n"
-        ),
-        deparse(metadata[["organism"]]),
-        deparse(metadata[["genomeBuild"]]),
-        deparse(metadata[["ensemblRelease"]]),
-        deparse(metadata[["level"]])
+    cli_div(theme = list(body = list("margin-left" = 4L)))
+    cli_dl(items = c(
+        "Organism" = metadata[["organism"]],
+        "Genome build" = metadata[["genomeBuild"]],
+        "Ensembl release" = metadata[["ensemblRelease"]],
+        "Level" = metadata[["level"]]
     ))
+    cli_end()
     ## Always get gene-level annotations.
     genes <- genes(
         x = object,
