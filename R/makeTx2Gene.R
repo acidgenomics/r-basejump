@@ -17,8 +17,10 @@
 #' print(x)
 #'
 #' ## makeTx2GeneFromEnsDb ====
-#' x <- makeTx2GeneFromEnsDb("EnsDb.Hsapiens.v75")
-#' print(x)
+#' if ("EnsDb.Hsapiens.v75" %in% rownames(installed.packages())) {
+#'     x <- makeTx2GeneFromEnsDb("EnsDb.Hsapiens.v75")
+#'     print(x)
+#' }
 #'
 #' ## makeTx2GeneFromGFF ====
 #' ## GTF
