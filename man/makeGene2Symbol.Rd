@@ -64,7 +64,7 @@ File path.}
 Make a Gene2Symbol object
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-01-20.
 }
 \section{GFF/GTF file}{
 
@@ -78,8 +78,10 @@ x <- makeGene2SymbolFromEnsembl(organism = "Homo sapiens")
 print(x)
 
 ## makeTx2GeneFromEnsDb ====
-x <- makeGene2SymbolFromEnsDb("EnsDb.Hsapiens.v75")
-print(x)
+if ("EnsDb.Hsapiens.v75" \%in\% rownames(installed.packages())) {
+    x <- makeGene2SymbolFromEnsDb("EnsDb.Hsapiens.v75")
+    print(x)
+}
 
 ## makeGene2SymbolFromGFF ====
 ## GTF

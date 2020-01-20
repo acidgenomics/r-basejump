@@ -5,7 +5,7 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeGene2Symbol
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams Gene2Symbol
 #' @inheritParams acidroxygen::params
@@ -18,8 +18,10 @@
 #' print(x)
 #'
 #' ## makeTx2GeneFromEnsDb ====
-#' x <- makeGene2SymbolFromEnsDb("EnsDb.Hsapiens.v75")
-#' print(x)
+#' if ("EnsDb.Hsapiens.v75" %in% rownames(installed.packages())) {
+#'     x <- makeGene2SymbolFromEnsDb("EnsDb.Hsapiens.v75")
+#'     print(x)
+#' }
 #'
 #' ## makeGene2SymbolFromGFF ====
 #' ## GTF
