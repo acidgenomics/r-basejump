@@ -2,6 +2,8 @@ context("makeGRangesFromEnsembl")
 
 skip_if_not(hasInternet())
 
+Rle <- structure("Rle", package = "S4Vectors")  # nolint
+
 test_that("Genes", {
     object <- makeGRangesFromEnsembl(
         organism = organism,

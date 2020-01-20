@@ -4,8 +4,6 @@ data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
     SummarizedExperiment_transcripts,
-    band_instruments,
-    band_members,
     matrix,
     matrix_lfc,
     sparseMatrix,
@@ -42,8 +40,6 @@ skip_on_docker <- goalie::skip_on_docker
 str_pad <- stringr::str_pad
 tibble <- tibble::tibble
 ## nolint end
-
-## > Rle <- structure("Rle", package = "S4Vectors")  # nolint
 
 options(
     acid.save.dir = ".",
