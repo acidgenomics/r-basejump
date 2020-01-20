@@ -89,7 +89,7 @@ Assay name or index position.}
 Unpivot column data from wide format to long format.
 }
 \note{
-Updated 2019-09-15.
+Updated 2020-01-20.
 }
 \examples{
 data(
