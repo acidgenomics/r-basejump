@@ -1,6 +1,6 @@
 #' @name combine
 #' @inherit BiocGenerics::combine return title
-#' @note Updated 2019-11-19.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -92,7 +92,7 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2020-01-20.
 `combine,SummarizedExperiment` <-  # nolint
     function(x, y) {
         validObject(x)
@@ -114,13 +114,13 @@ NULL
         } else {
             Class <- "SummarizedExperiment"  # nolint
         }
-        message(sprintf("Combining objects into %s.", Class))
+        cli_alert(sprintf("Combining objects into {.var %s}.", Class))
         x <- as(object = x, Class = Class)
         y <- as(object = y, Class = Class)
 
         ## Assays --------------------------------------------------------------
-        message(sprintf(
-            "Binding columns in assays: %s.",
+        cli_alert(sprintf(
+            "Binding columns in {.fun assays}: {.var %s}.",
             toString(assayNames(x))
         ))
         assays <- mapply(
@@ -134,7 +134,7 @@ NULL
         assays <- as(assays, "SimpleList")
 
         ## Row data ------------------------------------------------------------
-        message("Checking row data.")
+        cli_alert("Checking row data.")
         ## Require that the gene annotations are identical.
         if (is(x, "RangedSummarizedExperiment")) {
             assert(identical(rowRanges(x), rowRanges(y)))
@@ -149,7 +149,7 @@ NULL
         }
 
         ## Column data ---------------------------------------------------------
-        message("Updating column data.")
+        cli_alert("Updating column data.")
         cdx <- colData(x)
         cdy <- colData(y)
         ## Check for column mismatches and restore NA values, if necessary. This
@@ -161,8 +161,8 @@ NULL
         intersect <- intersect(names(cdx), names(cdy))
         if (!isTRUE(identical(union, intersect))) {
             setdiff <- setdiff(union, intersect)
-            message(sprintf(
-                "Fixing %d mismatched %s in 'colData()': %s.",
+            cli_alert_warning(sprintf(
+                "Fixing %d mismatched %s in {.fun colData}: {.var %s}.",
                 length(setdiff),
                 ngettext(
                     n = length(setdiff),
@@ -196,15 +196,15 @@ NULL
         )
 
         ## Metadata ------------------------------------------------------------
-        message("Updating metadata.")
+        cli_alert("Updating metadata.")
         mx <- metadata(x)
         my <- metadata(y)
         ## We're keeping only metadata elements that are common in both objects.
         keep <- intersect(names(mx), names(my))
         if (!isTRUE(setequal(x = names(mx), y = names(my)))) {
             drop <- setdiff(x = union(names(mx), names(my)), y = keep)
-            message(sprintf(
-                "Dropping %d disjoint metadata %s: %s.",
+            cli_alert_warning(sprintf(
+                "Dropping %d disjoint metadata %s: {.var %s}.",
                 length(drop),
                 ngettext(
                     n = length(drop),
@@ -226,8 +226,8 @@ NULL
         )
         drop <- names(keep)[!keep]
         if (hasLength(drop)) {
-            message(sprintf(
-                "Dropping %d non-identical metadata %s: %s.",
+            cli_alert_warning(sprintf(
+                "Dropping %d non-identical metadata %s: {.var %s}.",
                 length(drop),
                 ngettext(
                     n = length(drop),

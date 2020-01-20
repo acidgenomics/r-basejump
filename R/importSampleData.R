@@ -36,11 +36,11 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-10-10.
+#' @note Updated 2020-01-20.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
-#' @inheritParams brio::import
+#' @inheritParams pipette::import
 #' @param lanes `integer(1)`.
 #'   Number of lanes used to split the samples into technical replicates
 #'   suffix (i.e. `_LXXX`).
@@ -112,7 +112,7 @@ importSampleData <- function(
     } else if (identical(pipeline, "bcbio")) {
         ## Look for bcbio "samplename" column and rename to "fileName".
         if (isSubset("samplename", colnames(data))) {
-            message("Renaming 'samplename' column to 'fileName'.")
+            cli_alert_warning("Renaming 'samplename' column to 'fileName'.")
             assert(areDisjointSets(x = "fileName", y = colnames(data)))
             colnames(data)[colnames(data) == "samplename"] <- "fileName"
         }
@@ -144,7 +144,7 @@ importSampleData <- function(
         (any(duplicated(data[[idCol]])) || identical(nrow(data), 1L))
     ) {
         multiplexed <- TRUE
-        message("Multiplexed samples detected.")
+        cli_alert_info("Multiplexed samples detected.")
         requiredCols <- c(requiredCols, "sampleName", "index")
         ## Note that sample ID column is now expected to have duplicates.
         assert(

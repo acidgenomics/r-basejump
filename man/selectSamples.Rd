@@ -17,7 +17,7 @@ selectSamples(object, ...)
 
 \item{...}{Selection arguments:
 \itemize{
-\item Key value pairs that must map to the column names of \code{\link[bioverbs:sampleData]{sampleData()}}.
+\item Key value pairs that must map to the column names of \code{\link[acidgenerics:sampleData]{sampleData()}}.
 \item \code{atomic} values are supported.
 \item Avoid using \code{logical} or \code{numeric} indices
 (e.g. \code{\link[base:which]{which()}} return), thereby making your code more
@@ -36,7 +36,7 @@ Internally, pattern matching against sample and file names is applied using
 logical grep matching.
 }
 \note{
-Updated 2019-08-19.
+Updated 2020-01-20.
 }
 \section{Intended usage}{
 
@@ -52,7 +52,7 @@ container classes where the column names don't correspond to samples (e.g.
 
 
 
-Bracket-based subsetting with \verb{[} also works on \code{SingleCellExperiment}
+Bracket-based subsetting with \code{[} also works on \code{SingleCellExperiment}
 objects but it's not intuitive. In this case, provide cellular barcode
 identifiers for columns and gene identifiers for rows.
 

@@ -1,5 +1,5 @@
 #' @name uniteInterestingGroups
-#' @inherit bioverbs::uniteInterestingGroups
+#' @inherit acidgenerics::uniteInterestingGroups
 #' @note Updated 2019-08-29.
 #'
 #' @inheritParams acidroxygen::params
@@ -22,7 +22,7 @@ NULL
 
 #' @rdname uniteInterestingGroups
 #' @name uniteInterestingGroups
-#' @importFrom bioverbs uniteInterestingGroups
+#' @importFrom acidgenerics uniteInterestingGroups
 #' @usage uniteInterestingGroups(object, ...)
 #' @export
 NULL

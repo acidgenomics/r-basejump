@@ -1,5 +1,5 @@
 #' @name pseudobulk
-#' @inherit bioverbs::pseudobulk
+#' @inherit acidgenerics::pseudobulk
 #' @note Updated 2019-08-11.
 #'
 #' @inheritParams aggregate
@@ -19,7 +19,7 @@ NULL
 
 #' @rdname pseudobulk
 #' @name pseudobulk
-#' @importFrom bioverbs pseudobulk
+#' @importFrom acidgenerics pseudobulk
 #' @usage pseudobulk(object, ...)
 #' @export
 NULL

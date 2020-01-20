@@ -1,17 +1,17 @@
 data(
-    DataFrame,
+    DFrame,
     GRanges,
-    matrix,
-    matrix_lfc,
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    sparseMatrix,
     SummarizedExperiment_transcripts,
+    matrix,
+    matrix_lfc,
+    sparseMatrix,
     package = "acidtest",
     envir = environment()
 )
 
-df <- DataFrame
+df <- DFrame
 gr <- GRanges
 lfc <- matrix_lfc
 mat <- matrix
@@ -23,6 +23,9 @@ txse <- SummarizedExperiment_transcripts
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
 
+organism <- "Homo sapiens"
+release <- 97L
+
 ## nolint start
 DataFrame <- S4Vectors::DataFrame
 GRanges <- GenomicRanges::GRanges
@@ -33,6 +36,7 @@ SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
 cause <- goalie::cause
 hasInternet <- goalie::hasInternet
 rowRanges <- SummarizedExperiment::rowRanges
+skip_on_docker <- goalie::skip_on_docker
 str_pad <- stringr::str_pad
 tibble <- tibble::tibble
 ## nolint end

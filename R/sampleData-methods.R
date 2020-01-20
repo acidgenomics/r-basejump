@@ -1,5 +1,5 @@
 #' @name sampleData
-#' @inherit bioverbs::sampleData
+#' @inherit acidgenerics::sampleData
 #' @note Updated 2019-08-16.
 #'
 #' @section All supported S4 classes:
@@ -88,14 +88,14 @@ NULL
 
 #' @rdname sampleData
 #' @name sampleData
-#' @importFrom bioverbs sampleData
+#' @importFrom acidgenerics sampleData
 #' @usage sampleData(object, ...)
 #' @export
 NULL
 
 #' @rdname sampleData
 #' @name sampleData<-
-#' @importFrom bioverbs sampleData<-
+#' @importFrom acidgenerics sampleData<-
 #' @usage sampleData(object, ...) <- value
 #' @export
 NULL

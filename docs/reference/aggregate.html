@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
@@ -217,7 +217,7 @@ can be used to aggregate counts from transcript-level to gene-level.
 sample replicates.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-18.</p>
+    <p>Updated 2020-01-20.</p>
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
     
@@ -332,7 +332,7 @@ samples.</p></li>
 #&gt;   sample2_replicate2
 #&gt; colData names(2): sampleName aggregate</div><div class='input'>
 <span class='co'>## aggregateRows ====</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>counts</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
+<span class='fu'>aggregateRows</span>(<span class='no'>counts</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
@@ -341,7 +341,7 @@ samples.</p></li>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
@@ -351,7 +351,7 @@ samples.</p></li>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
@@ -365,7 +365,7 @@ samples.</p></li>
 #&gt;   sample2_replicate2
 #&gt; colData names(2): sampleName aggregate</div><div class='input'>
 <span class='co'>## aggregateCols ====</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>counts</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
+<span class='fu'>aggregateCols</span>(<span class='no'>counts</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
 #&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
@@ -373,7 +373,7 @@ samples.</p></li>
 #&gt; transcript1       1       2
 #&gt; transcript2       1       2
 #&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
 #&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
@@ -382,7 +382,7 @@ samples.</p></li>
 #&gt; transcript1       1       2
 #&gt; transcript2       1       2
 #&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'sum()'.</span>
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span>
 #&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
 #&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
@@ -393,7 +393,7 @@ samples.</p></li>
 #&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
 #&gt; rowData names(1): aggregate
 #&gt; colnames(2): sample1 sample2
-#&gt; colData names(0):</div></pre>
+#&gt; colData names(0):</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

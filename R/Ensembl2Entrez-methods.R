@@ -1,6 +1,6 @@
 #' @inherit Ensembl2Entrez-class title description return
 #' @name Ensembl2Entrez
-#' @note Updated 2019-08-08.
+#' @note Updated 2020-01-19.
 #'
 #' @inheritParams acidroxygen::params
 #' @param format `character(1)`.
@@ -47,8 +47,8 @@ NULL
         unmapped <- data[["geneID"]][which(is.na(data[["entrezID"]]))]
         assert(hasNoDuplicates(unmapped))
         if (length(unmapped) > 0L) {
-            message(sprintf(
-                "%d %s map to Entrez.",
+            cli_alert_info(sprintf(
+                "%d %s map to Entrez IDs.",
                 length(unmapped),
                 ngettext(
                     n = length(unmapped),
@@ -60,7 +60,7 @@ NULL
         ## Inform the user about how many genes multi-map to Entrez.
         multimapped <- unique(data[["geneID"]][duplicated(data[["geneID"]])])
         if (length(multimapped) > 0L) {
-            message(sprintf(
+            cli_alert_info(sprintf(
                 "%d %s to multiple Entrez IDs.",
                 length(multimapped),
                 ngettext(
@@ -72,7 +72,7 @@ NULL
         }
         ## Return mode.
         if (format == "1:1") {
-            message(
+            cli_alert(
                 "Returning with 1:1 mappings using oldest Entrez ID per gene."
             )
             entrez <- object[["entrezID"]]
@@ -95,7 +95,9 @@ NULL
                 row.names = rownames(object)
             )
         } else if (format == "long") {
-            message("Returning 1:many in long format (not recommended).")
+            cli_alert_warning(
+                "Returning 1:many in long format {.emph (not recommended)}."
+            )
         }
         metadata(data) <- metadata(object)
         metadata(data)[["format"]] <- format

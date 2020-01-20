@@ -24,7 +24,7 @@ Object names defined in the new \code{environment}.
 Assign multiple objects into a new environment
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-01-20.
 }
 \examples{
 data(data.frame, matrix, package = "acidtest")

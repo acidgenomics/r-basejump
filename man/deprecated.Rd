@@ -10,6 +10,7 @@
 \alias{readYAML}
 \alias{readSampleData}
 \alias{readTx2Gene}
+\alias{coerceS4ToList}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
 \usage{
@@ -26,6 +27,8 @@ readYAML(...)
 readSampleData(...)
 
 readTx2Gene(...)
+
+coerceS4ToList(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

@@ -61,7 +61,7 @@ ggplot2 internally.
 These functions will error intentionally if no numeric columns are
 defined in \code{colData()}.
 
-Updated 2019-08-18.
+Updated 2020-01-20.
 }
 \examples{
 data(

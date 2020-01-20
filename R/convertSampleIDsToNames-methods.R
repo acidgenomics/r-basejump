@@ -1,6 +1,6 @@
 #' @name convertSampleIDsToNames
-#' @inherit bioverbs::convertSampleIDsToNames
-#' @note Updated 2019-07-28.
+#' @inherit acidgenerics::convertSampleIDsToNames
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -17,7 +17,7 @@ NULL
 
 #' @rdname convertSampleIDsToNames
 #' @name convertSampleIDsToNames
-#' @importFrom bioverbs convertSampleIDsToNames
+#' @importFrom acidgenerics convertSampleIDsToNames
 #' @usage convertSampleIDsToNames(object, ...)
 #' @export
 NULL
@@ -33,7 +33,7 @@ NULL
 ##   appending gaps is not supported
 ## nolint end
 ##
-## Updated 2019-07-22.
+## Updated 2020-01-20.
 `convertSampleIDsToNames,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
@@ -42,7 +42,7 @@ NULL
             identical(as.character(sampleNames), colnames(object)) ||
             !identical(names(sampleNames), colnames(object))
         ) {
-            message("Returning with the sample names unmodified.")
+            cli_alert_warning("Returning with the sample names unmodified.")
         } else {
             colnames <- as.character(sampleNames)
             assert(hasNoDuplicates(colnames))
@@ -68,10 +68,10 @@ setMethod(
 ## Updated 2019-07-22.
 `convertSampleIDsToNames,SingleCellExperiment` <-  # nolint
     function(object) {
-        message(
-            "SingleCellExperiment contains cells instead of samples.\n",
+        cli_alert_warning(paste(
+            "{.var SingleCellExperiment} contains cells instead of samples.",
             "Returning with column names unmodified."
-        )
+        ))
         object
     }
 

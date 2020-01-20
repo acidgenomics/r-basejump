@@ -4,10 +4,10 @@
 \name{reexports}
 \alias{reexports}
 \alias{plotGene}
-\alias{relevel}
 \alias{GRanges}
 \alias{GRangesList}
 \alias{IRanges}
+\alias{getURL}
 \alias{DataFrame}
 \alias{SimpleList}
 \alias{mcols}
@@ -28,7 +28,11 @@
 \alias{rowRanges}
 \alias{rowRanges<-}
 \alias{basenameSansExt}
+\alias{compress}
+\alias{compressExtPattern}
+\alias{decompress}
 \alias{dots}
+\alias{extPattern}
 \alias{fileExt}
 \alias{initDir}
 \alias{matchArgsToDoCall}
@@ -38,44 +42,33 @@
 \alias{printString}
 \alias{realpath}
 \alias{standardizeCall}
+\alias{\%<>\%}
+\alias{\%$\%}
+\alias{\%>\%}
+\alias{\%T>\%}
+\alias{as.SummarizedExperiment}
+\alias{as.data.frame}
+\alias{as.data.table}
+\alias{as_tibble}
 \alias{assignAndSaveData}
-\alias{bunzip2}
-\alias{bzip2}
-\alias{compressFile}
-\alias{decompressFile}
+\alias{atomize}
+\alias{coerceToList}
+\alias{decode}
+\alias{encode}
 \alias{export}
-\alias{getURL}
-\alias{getURLDirList}
-\alias{gunzip}
-\alias{gzip}
+\alias{factorize}
 \alias{import}
 \alias{loadData}
 \alias{loadDataAsName}
 \alias{loadRemoteData}
 \alias{localOrRemoteFile}
+\alias{metadata2}
+\alias{metadata2<-}
 \alias{naStrings}
 \alias{removeNA}
 \alias{sanitizeNA}
 \alias{sanitizePercent}
 \alias{saveData}
-\alias{tar}
-\alias{transmit}
-\alias{untar}
-\alias{unzip}
-\alias{writeCounts}
-\alias{zip}
-\alias{annotable}
-\alias{convertUCSCBuildToEnsembl}
-\alias{detectOrganism}
-\alias{emptyRanges}
-\alias{makeGRangesFromEnsDb}
-\alias{makeGRangesFromEnsembl}
-\alias{makeGRangesFromGFF}
-\alias{makeGRangesFromGTF}
-\alias{\%<>\%}
-\alias{\%$\%}
-\alias{\%>\%}
-\alias{\%T>\%}
 \alias{camel}
 \alias{capitalize}
 \alias{dotted}
@@ -89,30 +82,10 @@
 \alias{snake}
 \alias{upperCamel}
 \alias{tibble}
-\alias{antiJoin}
-\alias{as.SummarizedExperiment}
-\alias{as.data.frame}
-\alias{as.data.table}
-\alias{as_tibble}
-\alias{atomize}
-\alias{coerceS4ToList}
-\alias{decode}
-\alias{encode}
-\alias{factorize}
-\alias{flatFiles}
-\alias{fullJoin}
-\alias{innerJoin}
-\alias{leftJoin}
-\alias{metadata2}
-\alias{metadata2<-}
-\alias{mutateAll}
-\alias{mutateAt}
-\alias{mutateIf}
-\alias{rightJoin}
-\alias{selectIf}
-\alias{semiJoin}
-\alias{transmuteAt}
-\alias{transmuteIf}
+\alias{tar}
+\alias{untar}
+\alias{unzip}
+\alias{zip}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -120,19 +93,19 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{acidbase}{\code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase]{methodFormals}}, \code{\link[acidbase]{methodFunction}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{standardizeCall}}}
+  \item{acidbase}{\code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{compress}}, \code{\link[acidbase]{compressExtPattern}}, \code{\link[acidbase]{decompress}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{extPattern}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase]{methodFormals}}, \code{\link[acidbase]{methodFunction}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{standardizeCall}}}
 
-  \item{bioverbs}{\code{\link[bioverbs]{plotGene}}}
-
-  \item{brio}{\code{\link[brio]{assignAndSaveData}}, \code{\link[brio]{bunzip2}}, \code{\link[brio]{bzip2}}, \code{\link[brio]{compressFile}}, \code{\link[brio]{decompressFile}}, \code{\link[brio]{export}}, \code{\link[brio]{getURL}}, \code{\link[brio]{getURLDirList}}, \code{\link[brio]{gunzip}}, \code{\link[brio]{gzip}}, \code{\link[brio]{import}}, \code{\link[brio]{loadData}}, \code{\link[brio]{loadDataAsName}}, \code{\link[brio]{loadRemoteData}}, \code{\link[brio]{localOrRemoteFile}}, \code{\link[brio]{naStrings}}, \code{\link[brio]{removeNA}}, \code{\link[brio]{sanitizeNA}}, \code{\link[brio]{sanitizePercent}}, \code{\link[brio]{saveData}}, \code{\link[brio]{tar}}, \code{\link[brio]{transmit}}, \code{\link[brio]{untar}}, \code{\link[brio]{unzip}}, \code{\link[brio]{writeCounts}}, \code{\link[brio]{zip}}}
-
-  \item{freerange}{\code{\link[freerange]{annotable}}, \code{\link[freerange]{convertUCSCBuildToEnsembl}}, \code{\link[freerange]{detectOrganism}}, \code{\link[freerange]{emptyRanges}}, \code{\link[freerange]{makeGRangesFromEnsDb}}, \code{\link[freerange]{makeGRangesFromEnsembl}}, \code{\link[freerange]{makeGRangesFromGFF}}, \code{\link[freerange]{makeGRangesFromGTF}}}
+  \item{acidgenerics}{\code{\link[acidgenerics]{plotGene}}}
 
   \item{GenomicRanges}{\code{\link[GenomicRanges]{GRanges}}, \code{\link[GenomicRanges]{GRangesList}}}
 
   \item{IRanges}{\code{\link[IRanges]{IRanges}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%T>\%}}}
+
+  \item{pipette}{\code{\link[pipette]{as_tibble}}, \code{\link[pipette]{as.data.frame}}, \code{\link[pipette]{as.data.table}}, \code{\link[pipette]{as.SummarizedExperiment}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{atomize}}, \code{\link[pipette]{coerceToList}}, \code{\link[pipette]{decode}}, \code{\link[pipette]{encode}}, \code{\link[pipette]{export}}, \code{\link[pipette]{factorize}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{metadata2}}, \code{\link[pipette]{metadata2<-}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{removeNA}}, \code{\link[pipette]{sanitizeNA}}, \code{\link[pipette]{sanitizePercent}}, \code{\link[pipette]{saveData}}}
+
+  \item{RCurl}{\code{\link[RCurl]{getURL}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}, \code{\link[S4Vectors]{SimpleList}}}
 
@@ -144,6 +117,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 
-  \item{transformer}{\code{\link[transformer]{antiJoin}}, \code{\link[transformer]{as_tibble}}, \code{\link[transformer]{as.data.frame}}, \code{\link[transformer]{as.data.table}}, \code{\link[transformer]{as.SummarizedExperiment}}, \code{\link[transformer]{atomize}}, \code{\link[transformer]{coerceS4ToList}}, \code{\link[transformer]{decode}}, \code{\link[transformer]{encode}}, \code{\link[transformer]{factorize}}, \code{\link[transformer]{flatFiles}}, \code{\link[transformer]{fullJoin}}, \code{\link[transformer]{innerJoin}}, \code{\link[transformer]{leftJoin}}, \code{\link[transformer]{metadata2}}, \code{\link[transformer]{metadata2<-}}, \code{\link[transformer]{mutateAll}}, \code{\link[transformer]{mutateAt}}, \code{\link[transformer]{mutateIf}}, \code{\link[transformer]{relevel}}, \code{\link[transformer]{rightJoin}}, \code{\link[transformer]{selectIf}}, \code{\link[transformer]{semiJoin}}, \code{\link[transformer]{transmuteAt}}, \code{\link[transformer]{transmuteIf}}}
+  \item{utils}{\code{\link[utils]{tar}}, \code{\link[utils]{untar}}, \code{\link[utils]{unzip}}, \code{\link[utils]{zip}}}
 }}
 

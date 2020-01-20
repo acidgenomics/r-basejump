@@ -9,7 +9,7 @@ data(
 list <- correlation
 rm(correlation)
 
-score <- 0.9635
+score <- 0.964
 
 test_that("vector", {
     x <- list[["vector_x"]]

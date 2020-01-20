@@ -22,9 +22,9 @@ NULL
 ## v0.10.4 =====================================================================
 ## Now recommending `plotCounts()` instead of `plotGene()`.
 ## Still in use by some revdeps, so keep re-exported.
-#' @importFrom bioverbs plotGene
+#' @importFrom acidgenerics plotGene
 #' @export
-bioverbs::plotGene
+acidgenerics::plotGene
 
 
 
@@ -94,10 +94,6 @@ readYAML <- function(...) {
     import(...)
 }
 
-#' @importFrom transformer relevel
-#' @export
-transformer::relevel
-
 #' @rdname defunct
 #' @export
 relevelColData <- function(...) {
@@ -118,7 +114,7 @@ relevelRowRanges <- function(...) {
 
 
 
-# v0.11.11 =====================================================================
+## v0.11.11 ====================================================================
 #' @rdname deprecated
 #' @export
 readSampleData <- function(...) {
@@ -132,6 +128,36 @@ readTx2Gene <- function(...) {
     .Deprecated("importTx2Gene")
     importTx2Gene(...)
 }
+
+
+
+## v0.12.0 =====================================================================
+## These were previously deprecated in transformer package.
+#' @rdname defunct
+#' @name flatFiles
+#' @importFrom acidgenerics flatFiles
+#' @export
+NULL
+
+#' @rdname deprecated
+#' @export
+coerceS4ToList <- function(...) {
+    .Deprecated("coerceToList")
+    coerceToList(...)
+}
+
+`flatFiles,SummarizedExperiment` <-  # nolint
+    function(object) {
+        .Defunct("coerceToList")
+    }
+
+#' @rdname defunct
+#' @export
+setMethod(
+    f = "flatFiles",
+    signature = signature("SummarizedExperiment"),
+    definition = `flatFiles,SummarizedExperiment`
+)
 
 
 

@@ -24,7 +24,7 @@ Varies, depending on the method.
 Convert sample identifiers to names
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-01-20.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

@@ -26,7 +26,7 @@ combine(x, y, ...)
 Combining or merging different Bioconductor data structures
 }
 \note{
-Updated 2019-11-19.
+Updated 2020-01-20.
 
 We're attempting to make this as strict as possible, requiring:
 \itemize{
