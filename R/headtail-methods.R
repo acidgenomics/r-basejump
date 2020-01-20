@@ -1,6 +1,6 @@
 #' @name headtail
 #' @inherit acidgenerics::headtail
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param n `integer(1)`.
@@ -66,7 +66,7 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-20.
 `headtail,matrix` <-  # nolint
     function(x, n = 2L, unicode = TRUE) {
         assert(
@@ -75,9 +75,8 @@ setMethod(
             isPositive(n),
             isFlag(unicode)
         )
-
         if (nrow(x) <= n * 2L || ncol(x) <= n * 2L) {
-            message("Object can't be split into quadrants.")
+            cli_alert_warning("Object can't be split into quadrants.")
             out <- x[
                 head(rownames(x), n = n * 2L),
                 head(colnames(x), n = n * 2L),
@@ -98,10 +97,8 @@ setMethod(
                 ),
                 drop = FALSE
                 ]
-
             ## Coerce to data.frame, for consistency.
             square <- as.data.frame(square)
-
             ## Sanitize all non-atomic columns to placeholder symbol.
             list <- lapply(
                 X = square,
@@ -123,20 +120,17 @@ setMethod(
                 check.names = FALSE,
                 stringsAsFactors = FALSE
             )
-
             ## Check that we have square dimensions.
             assert(
                 nrow(square) == n * 2L,
                 ncol(square) == n * 2L
             )
-
             ## Split into quadrants, so we can add vertical separators.
             ## upper/lower, left/right.
             ul <- square[seq_len(n), seq_len(n), drop = FALSE]
             ur <- square[seq_len(n), seq_len(n) + n, drop = FALSE]
             ll <- square[seq_len(n) + n, seq_len(n), drop = FALSE]
             lr <- square[seq_len(n) + n, seq_len(n) + n, drop = FALSE]
-
             head <- data.frame(
                 ul,
                 "\u2502" = rep("\u2502", times = n),
@@ -164,7 +158,6 @@ setMethod(
                 stringsAsFactors = FALSE
             )
         }
-
         ## Substitute Unicode characters for ASCII, if desired.
         if (!isTRUE(unicode)) {
             dimnames(out) <- lapply(
@@ -183,7 +176,6 @@ setMethod(
                 sub = "."
             ))
         }
-
         print(out)
         invisible()
     }
