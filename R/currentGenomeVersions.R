@@ -23,7 +23,8 @@
 #'
 #' @examples
 #' if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
-#'     currentEnsemblVersion()
+#'     ## This function can cause CI checks to fail.
+#'     ## > currentEnsemblVersion()
 #' }
 NULL
 
