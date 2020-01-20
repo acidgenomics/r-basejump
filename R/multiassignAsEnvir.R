@@ -1,6 +1,6 @@
 #' Assign multiple objects into a new environment
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-01-20.
 #' @export
 #'
 #' @inheritParams acidbase::dots
@@ -42,8 +42,8 @@ multiassignAsEnvir <- function(
             )
         }
     ))
-    message(sprintf(
-        "Assigning %s as %s.",
+    cli_alert(sprintf(
+        "Assigning {.envvar %s} as {.envvar %s}.",
         toString(names, width = 100L), envirName
     ))
     assign(envirName, value = envir, envir = parentFrame)
