@@ -1,5 +1,5 @@
 #' @name lfcThreshold
-#' @inherit bioverbs::lfcThreshold
+#' @inherit acidgenerics::lfcThreshold
 #' @note Updated 2019-08-06.
 #' @param ... Additional arguments.
 #' @examples
@@ -15,14 +15,14 @@ NULL
 
 #' @rdname lfcThreshold
 #' @name lfcThreshold
-#' @importFrom bioverbs lfcThreshold
+#' @importFrom acidgenerics lfcThreshold
 #' @usage lfcThreshold(object, ...)
 #' @export
 NULL
 
 #' @rdname lfcThreshold
 #' @name lfcThreshold<-
-#' @importFrom bioverbs lfcThreshold<-
+#' @importFrom acidgenerics lfcThreshold<-
 #' @usage lfcThreshold(object, ...) <- value
 #' @export
 NULL

@@ -1,5 +1,5 @@
 #' @name headtail
-#' @inherit bioverbs::headtail
+#' @inherit acidgenerics::headtail
 #' @note Updated 2019-07-28.
 #'
 #' @inheritParams acidroxygen::params
@@ -23,7 +23,7 @@ NULL
 
 #' @rdname headtail
 #' @name headtail
-#' @importFrom bioverbs headtail
+#' @importFrom acidgenerics headtail
 #' @usage headtail(x, ...)
 #' @export
 NULL

@@ -1,6 +1,6 @@
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::metrics
+#' @inherit acidgenerics::metrics
 #' @note These functions will error intentionally if no numeric columns are
 #'   defined in `colData()`.
 #' @note Updated 2019-08-18.
@@ -47,14 +47,14 @@ NULL
 
 #' @rdname metrics
 #' @name metrics
-#' @importFrom bioverbs metrics
+#' @importFrom acidgenerics metrics
 #' @usage metrics(object, ...)
 #' @export
 NULL
 
 #' @rdname metrics
 #' @name metricsPerSample
-#' @importFrom bioverbs metricsPerSample
+#' @importFrom acidgenerics metricsPerSample
 #' @usage metricsPerSample(object, ...)
 #' @export
 NULL

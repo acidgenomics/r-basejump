@@ -1,5 +1,5 @@
 #' @name nonzeroRowsAndCols
-#' @inherit bioverbs::nonzeroRowsAndCols
+#' @inherit acidgenerics::nonzeroRowsAndCols
 #' @note Updated 2019-10-09.
 #'
 #' @inheritParams acidroxygen::params
@@ -29,7 +29,7 @@ NULL
 
 #' @rdname nonzeroRowsAndCols
 #' @name nonzeroRowsAndCols
-#' @importFrom bioverbs nonzeroRowsAndCols
+#' @importFrom acidgenerics nonzeroRowsAndCols
 #' @usage nonzeroRowsAndCols(object, ...)
 #' @export
 NULL

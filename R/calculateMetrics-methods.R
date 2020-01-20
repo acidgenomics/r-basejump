@@ -1,5 +1,5 @@
 #' @name calculateMetrics
-#' @inherit bioverbs::calculateMetrics
+#' @inherit acidgenerics::calculateMetrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
@@ -31,7 +31,7 @@ NULL
 
 #' @rdname calculateMetrics
 #' @name calculateMetrics
-#' @importFrom bioverbs calculateMetrics
+#' @importFrom acidgenerics calculateMetrics
 #' @usage calculateMetrics(object, ...)
 #' @export
 NULL

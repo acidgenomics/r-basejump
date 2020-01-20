@@ -1,5 +1,5 @@
 #' @name convertGenesToSymbols
-#' @inherit bioverbs::convertGenesToSymbols
+#' @inherit acidgenerics::convertGenesToSymbols
 #' @note Updated 2019-07-28.
 #'
 #' @inheritParams acidroxygen::params
@@ -46,14 +46,14 @@ NULL
 
 #' @rdname convertGenesToSymbols
 #' @name convertGenesToSymbols
-#' @importFrom bioverbs convertGenesToSymbols
+#' @importFrom acidgenerics convertGenesToSymbols
 #' @usage convertGenesToSymbols(object, ...)
 #' @export
 NULL
 
 #' @rdname convertGenesToSymbols
 #' @name convertSymbolsToGenes
-#' @importFrom bioverbs convertSymbolsToGenes
+#' @importFrom acidgenerics convertSymbolsToGenes
 #' @usage convertSymbolsToGenes(object, ...)
 #' @export
 NULL

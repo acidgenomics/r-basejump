@@ -1,5 +1,5 @@
 #' @name convertTranscriptsToGenes
-#' @inherit bioverbs::convertTranscriptsToGenes
+#' @inherit acidgenerics::convertTranscriptsToGenes
 #'
 #' @note For objects containing a count matrix, the object rows will be
 #'   collapsed to gene level using `aggregateRows`. This applies to our
@@ -59,7 +59,7 @@ NULL
 
 #' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
-#' @importFrom bioverbs convertTranscriptsToGenes
+#' @importFrom acidgenerics convertTranscriptsToGenes
 #' @usage convertTranscriptsToGenes(object, ...)
 #' @export
 NULL

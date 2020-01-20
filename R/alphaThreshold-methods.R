@@ -1,5 +1,5 @@
 #' @name alphaThreshold
-#' @inherit bioverbs::alphaThreshold
+#' @inherit acidgenerics::alphaThreshold
 #' @note Updated 2019-08-06.
 #' @param ... Additional arguments.
 #' @examples
@@ -15,14 +15,14 @@ NULL
 
 #' @rdname alphaThreshold
 #' @name alphaThreshold
-#' @importFrom bioverbs alphaThreshold
+#' @importFrom acidgenerics alphaThreshold
 #' @usage alphaThreshold(object, ...)
 #' @export
 NULL
 
 #' @rdname alphaThreshold
 #' @name alphaThreshold<-
-#' @importFrom bioverbs alphaThreshold<-
+#' @importFrom acidgenerics alphaThreshold<-
 #' @usage alphaThreshold(object, ...) <- value
 #' @export
 NULL

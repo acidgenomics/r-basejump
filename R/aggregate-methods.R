@@ -123,14 +123,14 @@ NULL
 
 #' @rdname aggregate
 #' @name aggregateCols
-#' @importFrom bioverbs aggregateCols
+#' @importFrom acidgenerics aggregateCols
 #' @usage aggregateCols(object, ...)
 #' @export
 NULL
 
 #' @rdname aggregate
 #' @name aggregateRows
-#' @importFrom bioverbs aggregateRows
+#' @importFrom acidgenerics aggregateRows
 #' @usage aggregateRows(object, ...)
 #' @export
 NULL

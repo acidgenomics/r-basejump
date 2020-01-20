@@ -17,7 +17,7 @@ NULL
 #'   match rep setdiff t unique
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom transformer as.data.frame coerce
+#' @importMethodsFrom pipette as.data.frame coerce
 NULL
 
 
@@ -29,6 +29,8 @@ NULL
 #' @importFrom GenomeInfoDb seqnames
 #' @importFrom IRanges DataFrameList SplitDataFrameList unsplit
 #' @importFrom Matrix.utils aggregate.Matrix
+#' @importFrom RCurl getURL url.exists
+#' @importFrom R.utils gzip
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
 #'   as.data.frame as.list cor decode do.call expand expand.grid head lapply
 #'   match mcols mcols<- merge metadata metadata<- na.omit order setdiff split
@@ -61,7 +63,14 @@ NULL
 #' @importFrom stringr boundary str_detect str_dup str_extract str_length
 #'   str_match str_pad str_replace_all str_split str_split_fixed str_subset
 #'   str_trunc
-#' @importFrom transformer as_tibble
+#' @importFrom pipette as_tibble
 #' @importFrom utils capture.output data getFromNamespace globalVariables
 #'   installed.packages packageVersion
+NULL
+
+
+
+## This is needed to properly declare S4 `as()` coercion methods.
+#' @importFrom methods coerce
+#' @exportMethod coerce
 NULL

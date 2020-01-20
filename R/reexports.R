@@ -229,10 +229,6 @@ pipette::export
 #' @export
 pipette::factorize
 
-#' @importFrom pipette flatFiles
-#' @export
-pipette::flatFiles
-
 #' @importFrom pipette import
 #' @export
 pipette::import

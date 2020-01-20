@@ -1,5 +1,5 @@
 #' @name autopadZeros
-#' @inherit bioverbs::autopadZeros
+#' @inherit acidgenerics::autopadZeros
 #'
 #' @note For methods on objects supporting [`dim()`][base::dim] (e.g. `matrix`),
 #' the object will be returned with the rows and/or columns resorted by default.
@@ -44,7 +44,7 @@ NULL
 
 #' @rdname autopadZeros
 #' @name autopadZeros
-#' @importFrom bioverbs autopadZeros
+#' @importFrom acidgenerics autopadZeros
 #' @usage autopadZeros(object, ...)
 #' @export
 NULL

@@ -59,21 +59,21 @@ NULL
 
 #' @rdname mapGenes
 #' @name mapGenesToRownames
-#' @importFrom bioverbs mapGenesToRownames
+#' @importFrom acidgenerics mapGenesToRownames
 #' @usage mapGenesToRownames(object, ...)
 #' @export
 NULL
 
 #' @rdname mapGenes
 #' @name mapGenesToIDs
-#' @importFrom bioverbs mapGenesToIDs
+#' @importFrom acidgenerics mapGenesToIDs
 #' @usage mapGenesToIDs(object, ...)
 #' @export
 NULL
 
 #' @rdname mapGenes
 #' @name mapGenesToSymbols
-#' @importFrom bioverbs mapGenesToSymbols
+#' @importFrom acidgenerics mapGenesToSymbols
 #' @usage mapGenesToSymbols(object, ...)
 #' @export
 NULL

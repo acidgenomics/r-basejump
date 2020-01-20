@@ -1,5 +1,5 @@
 #' @name aggregateCellsToSamples
-#' @inherit bioverbs::aggregateCellsToSamples
+#' @inherit acidgenerics::aggregateCellsToSamples
 #' @note Updated 2019-07-28.
 #'
 #' @inheritParams aggregate
@@ -24,7 +24,7 @@ NULL
 
 #' @rdname aggregateCellsToSamples
 #' @name aggregateCellsToSamples
-#' @importFrom bioverbs aggregateCellsToSamples
+#' @importFrom acidgenerics aggregateCellsToSamples
 #' @usage aggregateCellsToSamples(object, ...)
 #' @export
 NULL

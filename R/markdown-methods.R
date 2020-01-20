@@ -1,5 +1,5 @@
 #' @name markdown
-#' @inherit bioverbs::markdown
+#' @inherit acidgenerics::markdown
 #' @note Updated 2019-07-28.
 #'
 #' @inheritParams acidroxygen::params
@@ -17,7 +17,7 @@ NULL
 
 #' @rdname markdown
 #' @name markdown
-#' @importFrom bioverbs markdown
+#' @importFrom acidgenerics markdown
 #' @usage markdown(object, ...)
 #' @export
 NULL
