@@ -1,6 +1,6 @@
 context("select")
 
-x <- mtcars
+x <- as(mtcars, "DataFrame")
 
 test_that("selectIf", {
     x <- selectIf(x, predicate = is.double)
