@@ -1,6 +1,6 @@
 #' @name melt
 #' @inherit acidgenerics::melt
-#' @note Updated 2019-09-15.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param colnames `character(3)`.
@@ -115,7 +115,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2020-01-20.
 `melt,matrix` <-  # nolint
     function(
         object,
@@ -137,8 +137,8 @@ NULL
         ) {
             keep <- rowSums(object) >= min
             if (identical(minMethod, "perRow")) {
-                message(sprintf(
-                    "%d / %d %s passed '%s' >= %s cutoff.",
+                cli_alert_info(sprintf(
+                    "%d / %d %s passed {.arg %s} >= %s cutoff.",
                     sum(keep, na.rm = TRUE),
                     nrow(object),
                     ngettext(
@@ -162,8 +162,8 @@ NULL
             nPrefilter <- nrow(data)
             keep <- data[[valueCol]] >= min
             data <- data[keep, , drop = FALSE]
-            message(sprintf(
-                "%d / %d %s passed '%s' >= %s expression cutoff.",
+            cli_alert_info(sprintf(
+                "%d / %d %s passed {.arg %s} >= %s expression cutoff.",
                 nrow(data),
                 nPrefilter,
                 ngettext(
@@ -178,7 +178,9 @@ NULL
         ## Log transform the value, if desired.
         if (!identical(trans, "identity")) {
             assert(isInt(min))
-            message(sprintf("Applying '%s(x + 1L)' transformation.", trans))
+            cli_alert(sprintf(
+                "Applying {.fun %s(x + 1L)} transformation.", trans
+            ))
             fun <- get(
                 x = trans,
                 envir = asNamespace("base"),
