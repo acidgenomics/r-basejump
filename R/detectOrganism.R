@@ -23,7 +23,7 @@
 #'   package, which gets loaded into the namespace when DESeq2 is attached.
 #'   Instead, we're exporting the character method here as a separate function
 #'   named `detectOrganism`.
-#' @note Updated 2019-08-21.
+#' @note Updated 2020-01-20.
 #'
 #' @param object `character`.
 #'
@@ -51,12 +51,14 @@
 #' detectOrganism(c("ENSG00000000003", "ENSMUSG00000000001"))
 detectOrganism <- function(object) {
     assert(isCharacter(object))
-    data(
-        list = "organismMappings",
-        package = "freerange",
-        envir = environment()
+    data <- import(
+        file = system.file(
+            "extdata",
+            "organismMappings.rda",
+            package = "basejump"
+        ),
+        quiet = TRUE
     )
-    data <- get("organismMappings", inherits = FALSE)
     ## Parse the character vector until we get a match.
     x <- NA_character_
     i <- 1L
