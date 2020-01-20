@@ -138,7 +138,7 @@ NULL
             keep <- rowSums(object) >= min
             if (identical(minMethod, "perRow")) {
                 cli_alert_info(sprintf(
-                    "%d / %d %s passed {.arg %s} >= %s cutoff.",
+                    "%d / %d %s passed {.arg %s} >= {.val %s} cutoff.",
                     sum(keep, na.rm = TRUE),
                     nrow(object),
                     ngettext(
@@ -163,7 +163,7 @@ NULL
             keep <- data[[valueCol]] >= min
             data <- data[keep, , drop = FALSE]
             cli_alert_info(sprintf(
-                "%d / %d %s passed {.arg %s} >= %s expression cutoff.",
+                "%d / %d %s passed {.arg %s} >= {.val %s} expression cutoff.",
                 nrow(data),
                 nPrefilter,
                 ngettext(
