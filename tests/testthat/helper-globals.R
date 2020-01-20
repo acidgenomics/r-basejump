@@ -1,5 +1,5 @@
 data(
-    DataFrame,
+    DFrame,
     GRanges,
     matrix,
     matrix_lfc,
@@ -11,7 +11,7 @@ data(
     envir = environment()
 )
 
-df <- DataFrame
+df <- DFrame
 gr <- GRanges
 lfc <- matrix_lfc
 mat <- matrix
@@ -22,6 +22,9 @@ txse <- SummarizedExperiment_transcripts
 
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
+
+organism <- "Homo sapiens"
+release <- 97L
 
 ## nolint start
 DataFrame <- S4Vectors::DataFrame
@@ -36,6 +39,8 @@ rowRanges <- SummarizedExperiment::rowRanges
 str_pad <- stringr::str_pad
 tibble <- tibble::tibble
 ## nolint end
+
+## > Rle <- structure("Rle", package = "S4Vectors")  # nolint
 
 options(
     acid.save.dir = ".",
