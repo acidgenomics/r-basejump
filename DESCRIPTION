@@ -53,6 +53,7 @@ Imports:
     acidbase (>= 0.1.2),
     acidgenerics (>= 0.3.0),
     biomaRt (>= 2.42),
+    cli (>= 2.0),
     goalie (>= 0.4.1),
     knitr (>= 1.26),
     magrittr (>= 1.5),
