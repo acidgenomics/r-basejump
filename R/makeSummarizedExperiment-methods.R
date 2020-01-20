@@ -17,7 +17,7 @@
 #'
 #' @name makeSummarizedExperiment
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2019-09-09.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sort `logical(1)`.
@@ -198,20 +198,19 @@ NULL
             any(grepl(pattern = pattern, x = names(rowRanges)))
         ) {
             symbols <- setdiff[!grepl(pattern = pattern, x = setdiff)]
-            message(sprintf(
-                fmt = paste0(
-                    "%d non-Ensembl %s detected.\n",
-                    "Define spike-ins using 'spikeNames' ",
-                    "and transgenes using 'transgeneNames'.\n",
-                    "%s"
-                ),
+            cli_alert_warning(sprintf(
+                fmt = "%d non-Ensembl %s detected: {.val %s}.",
                 length(symbols),
                 ngettext(
                     n = length(symbols),
                     msg1 = "feature",
                     msg2 = "features"
                 ),
-                printString(symbols)
+                toString(symbols, width = 200L)
+            ))
+            cli_alert_info(paste(
+                "Define spike-ins using {.arg spikeNames}",
+                "and transgenes using {.arg transgeneNames}."
             ))
             unknownRanges <- emptyRanges(
                 names = symbols,

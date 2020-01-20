@@ -3,7 +3,7 @@
 #' @inherit acidgenerics::metrics
 #' @note These functions will error intentionally if no numeric columns are
 #'   defined in `colData()`.
-#' @note Updated 2019-08-18.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -129,7 +129,7 @@ setMethod(
 
 
 
-## Updated 2019-08-18.
+## Updated 2020-01-20.
 `metricsPerSample,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -138,7 +138,7 @@ setMethod(
     ) {
         fun <- match.arg(fun)
         return <- match.arg(return)
-        message(sprintf("Calculating %s per sample.", fun))
+        cli_alert(sprintf("Calculating %s per sample.", fun))
         ## Consider using `getFromNamespace` here instead.
         ## Note that we're using uppercase here, because `fun` is matched arg.
         FUN <- get(fun, inherits = TRUE)  # nolint
