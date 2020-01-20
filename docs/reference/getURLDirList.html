@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Genome versions — genomeVersions • basejump</title>
+<title>Get remote URL directory listing — getURLDirList • basejump</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Genome versions — genomeVersions" />
-<meta property="og:description" content="Obtain the latest release version from various genome annotation sources." />
+<meta property="og:title" content="Get remote URL directory listing — getURLDirList" />
+<meta property="og:description" content="Get remote URL directory listing" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
@@ -113,62 +113,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Genome versions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/genomeVersions.R'><code>R/genomeVersions.R</code></a></small>
-    <div class="hidden name"><code>genomeVersions.Rd</code></div>
+    <h1>Get remote URL directory listing</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/getURLDirList.R'><code>R/getURLDirList.R</code></a></small>
+    <div class="hidden name"><code>getURLDirList.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Obtain the latest release version from various genome annotation sources.</p>
+    <p>Get remote URL directory listing</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ensemblVersion</span>()
-
-<span class='fu'>gencodeVersion</span>(<span class='no'>organism</span>)
-
-<span class='fu'>refseqVersion</span>()
-
-<span class='fu'>flybaseVersion</span>(<span class='kw'>dmel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>wormbaseVersion</span>()</pre>
+    <pre class="usage"><span class='fu'>getURLDirList</span>(<span class='no'>url</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>organism</th>
+      <th>url</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Full Latin organism name (e.g. <code>"Homo sapiens"</code>).</p></td>
+Uniform Resource Locator (URL).</p></td>
     </tr>
     <tr>
-      <th>dmel</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Return <em>Drosophila melanogaster</em> genome release version.</p></td>
+      <th>pattern</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Pattern to use for matching.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Release version.</p>
+    <p><code>character</code>.
+Simple directory contents return, including both files and subdirectories.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-10-18.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Refer to the koopa package for shell variants:</p><ul>
-<li><p><code>ensembl-version</code>.</p></li>
-<li><p><code>flybase-version</code>.</p></li>
-<li><p><code>gencode-version</code>.</p></li>
-<li><p><code>refseq-version</code>.</p></li>
-<li><p><code>wormbase-version</code>.</p></li>
-</ul>
-</div>
+    <p>Best served using FTP instead of HTTP.</p>
+<p>Updated 2020-01-18.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='kw pkg'>goalie</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/goalie/man/check-scalar-hasInternet.html'>hasInternet</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"ftp://ftp.ensembl.org/"</span>)) {
-    <span class='fu'>ensemblVersion</span>()
-}</div><div class='output co'>#&gt; [1] "98"</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (
+    <span class='kw pkg'>goalie</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/goalie/man/check-scalar-hasInternet.html'>hasInternet</a></span>() <span class='kw'>&amp;&amp;</span>
+    !<span class='fu'><a href='https://rdrr.io/r/base/Logic.html'>isTRUE</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nzchar</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"CI"</span>)))
+) {
+    <span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='st'>"ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/current"</span>
+    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>getURLDirList</span>(<span class='no'>url</span>)
+    <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>x</span>)
+}</div><div class='output co'>#&gt; [1] "GCF_000001405.39_GRCh38.p13"                        
+#&gt; [2] "Homo_sapiens_AR109.20190905_annotation_report.xml"  
+#&gt; [3] "README_Homo_sapiens_annotation_release_109.20190905"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -176,7 +166,6 @@ Release version.</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#note">Note</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

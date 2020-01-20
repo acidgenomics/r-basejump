@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
@@ -152,7 +152,7 @@
     <p><code>SummarizedExperiment</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-11-19.</p>
+    <p>Updated 2020-01-20.</p>
 <p>We're attempting to make this as strict as possible, requiring:</p><ul>
 <li><p>Rows (genes) across objects must be identical.</p></li>
 <li><p><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a> and/or
@@ -201,7 +201,7 @@
 )
 
 <span class='co'>## Combine the two objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays: counts.</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 24 rows and 3 columns
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>→ Combining objects into <span style='color: #000000;background-color: #BBBBBB;'>`RangedSummarizedExperiment`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Binding columns in </span><span style='color: #000000;background-color: #BBBBBB;'>`assays()`</span><span>: </span><span style='color: #000000;background-color: #BBBBBB;'>`counts`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>→ Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>→ Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 24 rows and 3 columns
 #&gt;          condition sampleName interestingGroups
 #&gt;           &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample01         A   sample01                 A
@@ -244,7 +244,7 @@
 )
 
 <span class='co'>## Combine the two objects.</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Combining objects into RangedSummarizedExperiment.</span></div><div class='output co'>#&gt; <span class='message'>Binding columns in assays: counts.</span></div><div class='output co'>#&gt; <span class='message'>Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>→ Combining objects into </span><span style='color: #000000;background-color: #BBBBBB;'>`RangedSummarizedExperiment`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Binding columns in </span><span style='color: #000000;background-color: #BBBBBB;'>`assays()`</span><span>: </span><span style='color: #000000;background-color: #BBBBBB;'>`counts`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Checking row data.</span></div><div class='output co'>#&gt; <span class='message'>→ Updating column data.</span></div><div class='output co'>#&gt; <span class='message'>→ Updating metadata.</span></div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1
@@ -258,7 +258,7 @@
 #&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):
 #&gt; spikeNames(0):
-#&gt; altExpNames(0):</div></pre>
+#&gt; altExpNames(0):</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -64,7 +64,6 @@ Updated 2020-01-20.
 \examples{
 data(correlation, package = "acidtest")
 list <- correlation
-rm(correlation)
 
 ## vector ====
 x <- list[["vector_x"]]

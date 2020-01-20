@@ -73,7 +73,7 @@ of transgenes and spike-ins." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
@@ -226,7 +226,7 @@ Slot session information into <code>metadata</code>.</p></td>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Column and rows always return sorted alphabetically.</p>
-<p>Updated 2019-09-09.</p>
+<p>Updated 2020-01-20.</p>
     <h2 class="hasAnchor" id="session-information"><a class="anchor" href="#session-information"></a>Session information</h2>
 
     
@@ -276,7 +276,7 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 <span class='co'>## Row data (genomic ranges)</span>
 <span class='co'>## Note that we haven't defined the transgene here.</span>
 <span class='co'>## It will be handled automatically in the function call.</span>
-<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/freerange/man/emptyRanges.html'>emptyRanges</a></span>(<span class='kw'>names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>genes</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>genes</span>) - <span class='fl'>1L</span>))
+<span class='no'>rowRanges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='emptyRanges.html'>emptyRanges</a></span>(<span class='kw'>names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>genes</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>genes</span>) - <span class='fl'>1L</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>rowRanges</span>)</div><div class='output co'>#&gt; GRanges object with 3 ranges and 0 metadata columns:
 #&gt;          seqnames    ranges strand
 #&gt;             &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
