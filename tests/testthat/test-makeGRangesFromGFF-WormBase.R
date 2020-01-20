@@ -1,6 +1,9 @@
 context("makeGRangesFromGFF : WormBase")
 
 skip_if_not(hasInternet())
+
+Rle <- structure("Rle", package = "S4Vectors")  # nolint
+
 file <- file.path("cache", "wormbase.gtf")
 
 test_that("GTF genes", {
