@@ -1,5 +1,7 @@
 context("makeGene2Symbol")
 
+skip_if_not_installed("EnsDb.Hsapiens.v75")
+
 with_parameters_test_that(
     "makeGene2SymbolFromEnsDb", {
         object <- makeGene2SymbolFromEnsDb(
