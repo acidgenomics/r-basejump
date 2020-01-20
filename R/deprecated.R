@@ -118,7 +118,7 @@ relevelRowRanges <- function(...) {
 
 
 
-# v0.11.11 =====================================================================
+## v0.11.11 ====================================================================
 #' @rdname deprecated
 #' @export
 readSampleData <- function(...) {
@@ -132,6 +132,36 @@ readTx2Gene <- function(...) {
     .Deprecated("importTx2Gene")
     importTx2Gene(...)
 }
+
+
+
+## v0.12.0 =====================================================================
+## These were previously deprecated in transformer package.
+#' @rdname defunct
+#' @name flatFiles
+#' @importFrom bioverbs flatFiles
+#' @export
+NULL
+
+#' @rdname deprecated
+#' @export
+coerceS4ToList <- function(...) {
+    .Deprecated("coerceToList")
+    coerceToList(...)
+}
+
+`flatFiles,SummarizedExperiment` <-  # nolint
+    function(object) {
+        .Defunct("coerceToList")
+    }
+
+#' @rdname defunct
+#' @export
+setMethod(
+    f = "flatFiles",
+    signature = signature("SummarizedExperiment"),
+    definition = `flatFiles,SummarizedExperiment`
+)
 
 
 
