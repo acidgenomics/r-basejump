@@ -1,6 +1,6 @@
 #' @name nonzeroRowsAndCols
 #' @inherit acidgenerics::nonzeroRowsAndCols
-#' @note Updated 2019-10-09.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -36,7 +36,7 @@ NULL
 
 
 
-## Updated 2019-08-23.
+## Updated 2020-01-20.
 `nonzeroRowsAndCols,matrix` <-  # nolint
     function(object) {
         originalDim <- dim(object)
@@ -45,7 +45,7 @@ NULL
         object <- object[nzrows, nzcols, drop = FALSE]
         dim <- dim(object)
         if (!identical(dim, originalDim)) {
-            message(sprintf(
+            cli_alert_info(sprintf(
                 fmt = paste(
                     "Filtered zero count rows and columns:",
                     "  - %d / %d %s (%s)",
