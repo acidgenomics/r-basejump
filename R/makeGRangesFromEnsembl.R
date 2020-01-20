@@ -82,7 +82,7 @@
 #' ```
 #'
 #' @export
-#' @note Updated 2019-08-21.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param release `integer(1)`.
@@ -110,7 +110,6 @@ makeGRangesFromEnsembl <- function(
     release = NULL,
     ignoreTxVersion = TRUE
 ) {
-    message("Making GRanges from Ensembl.")
     assert(
         hasInternet(),
         isString(organism),
@@ -119,6 +118,7 @@ makeGRangesFromEnsembl <- function(
         isFlag(ignoreTxVersion)
     )
     level <- match.arg(level)
+    cli_alert("Making GRanges from Ensembl.")
     ## Remap UCSC genome build to Ensembl automatically, if necessary.
     if (isString(genomeBuild)) {
         remap <- tryCatch(
@@ -128,8 +128,11 @@ makeGRangesFromEnsembl <- function(
         if (hasLength(remap)) {
             ucsc <- names(remap)
             ensembl <- unname(remap)
-            message(sprintf(
-                "Remapping genome build from UCSC (%s) to Ensembl (%s).",
+            cli_alert_note(sprintf(
+                fmt = paste(
+                    "Remapping genome build from UCSC ({.val %s}) to",
+                    "Ensembl ({.val %s})."
+                ),
                 ucsc, ensembl
             ))
             genomeBuild <- ensembl
@@ -240,9 +243,9 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
             x = fullOrganism,
             ignore.case = TRUE
         )
-        message(sprintf(
-            "Matching %s using %s.",
-            deparse(fullOrganism), deparse(organism)
+        cli_alert(sprintf(
+            "Matching {.val %s} using {.val %s}.",
+            fullOrganism, organism
         ))
     }
     ## Coerce integerish (e.g. 90) to integer (e.g. 90L).
@@ -262,8 +265,8 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
     }
     ## Matching EnsDb objects from ensembldb by default.
     rdataclass <- "EnsDb"
-    message(sprintf(
-        "Matching %s from AnnotationHub %s (%s).",
+    cli_alert(sprintf(
+        "Matching {.var %s} from {.pkg AnnotationHub} %s (%s).",
         rdataclass,
         packageVersion("AnnotationHub"),
         snapshotDate(ah)
@@ -330,17 +333,7 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
         isString(id),
         unname(isMatchingRegex(x = id, pattern = "^AH[[:digit:]]+$"))
     )
-    message(sprintf(
-        fmt = paste(
-            "%s: %s",
-            "Run this code to download EnsDb manually:",
-            "  > library(AnnotationHub)",
-            "  > ah <- AnnotationHub()",
-            "  > edb <- ah[[\"%s\"]]",
-            sep = "\n"
-        ),
-        id, mcols[["title"]], id
-    ))
+    cli_text(sprintf("%s: %s", id, mcols[["title"]]))
     .forceDetach(keep = userAttached)
     id
 }
@@ -372,10 +365,13 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
 
 
 #' Get EnsDb from Package
+#'
+#' @note Updated 2020-01-20.
 #' @noRd
+#'
 #' @examples .getEnsDbFromPackage("EnsDb.Hsapiens.v75")
 .getEnsDbFromPackage <- function(package) {
-    message(sprintf("Getting EnsDb from %s.", package))
+    cli_alert(sprintf("Getting {.var EnsDb} from {.pkg %s}.", package))
     userAttached <- .packages()
     assert(isString(package))
     require(package, character.only = TRUE)
