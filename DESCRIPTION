@@ -69,7 +69,7 @@ Suggests:
     BiocStyle (>= 2.14),
     EnsDb.Hsapiens.v75 (>= 2.99),
     acidroxygen (>= 0.1.6),
-    acidtest (>= 0.2.9),
+    acidtest (>= 0.2.11),
     patrick (>= 0.0.1),
     rmarkdown (>= 2.0),
     testthat (>= 2.3),
