@@ -81,6 +81,7 @@
 
 
 
+## Updated 2020-01-20.
 .makeGenesFromRefSeqGFF3 <- function(object) {
     assert(
         is(object, "GRanges"),
@@ -107,6 +108,7 @@
 
 
 
+## Updated 2020-01-20.
 .makeGenesFromRefSeqGTF <- function(object) {
     assert(
         is(object, "GRanges"),
@@ -121,6 +123,7 @@
 
 
 
+## Updated 2020-01-20.
 .makeTranscriptsFromRefSeqGFF3 <- function(object) {
     assert(
         is(object, "GRanges"),
@@ -135,6 +138,7 @@
 
 
 
+## Updated 2020-01-20.
 .makeTranscriptsFromRefSeqGTF <- function(object) {
     assert(
         is(object, "GRanges"),
@@ -148,7 +152,7 @@
     keep <- mcols(object)[["type"]] == "exon"
     assert(any(keep))
     n <- sum(keep, na.rm = TRUE)
-    message(sprintf(
+    cli_alert_info(sprintf(
         "%d %s detected.",
         n, ngettext(n = n, msg1 = "exon", msg2 = "exons")
     ))
@@ -165,6 +169,7 @@
 
 
 ## This step ensures that `gene_id` and `transcript_id` columns are defined.
+## Updated 2020-01-20.
 .standardizeRefSeqToEnsembl <- function(object) {
     assert(is(object, "GRanges"))
     mcols <- mcols(object)

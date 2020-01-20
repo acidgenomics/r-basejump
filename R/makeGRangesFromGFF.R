@@ -184,7 +184,10 @@ makeGRangesFromGFF <- function(
         isFlag(.checkAgainstTxDb)
     )
     level <- match.arg(level)
-    message("Making GRanges from GFF file.")
+    cli_alert(sprintf(
+        fmt = "Making {.var GRanges} from GFF file: {.file %s}.",
+        file
+    ))
 
     ## Import ------------------------------------------------------------------
     ## This step uses `rtracklayer::import()` internally.
@@ -213,7 +216,9 @@ makeGRangesFromGFF <- function(
     ## This check may be removed in a future update.
     if (isTRUE(.checkAgainstTxDb)) {
         ## nocov start
-        message("Strict mode enabled. Checking against TxDb.")
+        cli_alert_warning(
+            "Strict mode enabled. Checking against {.var TxDb}."
+        )
         txdb <- .makeTxDbFromGFF(object)
         ## nocov end
     } else {
@@ -341,7 +346,7 @@ makeGRangesFromGFF <- function(
             ## identifiers.
             out <- .mergeGenesIntoTranscripts(transcripts, genes)
         } else {
-            message("Skipping gene metadata merge.")
+            cli_alert_warning("Skipping gene metadata merge.")
             out <- transcripts
         }
     }
