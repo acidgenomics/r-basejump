@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Version 0.4 • basejump</title>
+<title>Version 0.12 • basejump</title>
 
 
 <!-- jquery -->
@@ -37,7 +37,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Version 0.4" />
+<meta property="og:title" content="Version 0.12" />
 
 
 
@@ -111,54 +111,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small>0.4</small></h1>
+      <h1>Changelog <small>0.12</small></h1>
       
     </div>
 
-    <div id="basejump-0-4-0-2018-03-22" class="section level2">
+    <div id="basejump-0-12-0-2020-01-20" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-4-0-2018-03-22" class="anchor"></a>basejump 0.4.0 (2018-03-22)</h2>
-<div id="major-changes-26" class="section level3">
+<a href="#basejump-0-12-0-2020-01-20" class="anchor"></a>basejump 0.12.0 (2020-01-20)</h2>
+<div id="major-changes" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-26" class="anchor"></a>Major changes</h3>
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
 <ul>
-<li>Introducing new functions for the acquistion of gene and transcript annotations from <a href="https://www.ensembl.org/">Ensembl</a>: <code>ensembl</code>, <code>genes</code>, and <code>transcripts</code>. These functions allow the return of <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects from <a href="https://bioconductor.org/packages/AnnotationHub/">AnnotationHub</a> using <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>.</li>
-<li>Improved internal <code>broadClass</code> definition code to match against chromosome from <a href="https://www.ensembl.org/">Ensembl</a> if available.</li>
-<li>
-<code>loadDataAsName</code> now works with unquoted names, improving consistency with <code>loadData</code> (non-standard evaluation).</li>
-</ul>
-</div>
-<div id="minor-changes-72" class="section level3">
-<h3 class="hasAnchor">
-<a href="#minor-changes-72" class="anchor"></a>Minor changes</h3>
-<ul>
-<li>Added new <code>convertUCSCBuildToEnsembl</code> function, for easy remapping of <a href="https://genome.ucsc.edu/">UCSC</a> to <a href="https://www.ensembl.org/">Ensembl</a> genome build names (e.g. <code>hg38</code> to <code>GRCh38</code>).</li>
-<li>Migrated matrix methods for <code>plotCorrelationHeatmap</code> here from <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, for improved consistency with other heatmap functions.</li>
-<li>Exporting <code>makeNames</code> variant of <code><a href="https://rdrr.io/r/base/make.names.html">base::make.names</a></code> that sanitizes using underscores rather than dots.</li>
-<li>Converted <code>readYAML</code> from a generic to standard function.</li>
-<li>Added support for <a href="https://ci.appveyor.com/">AppVeyor CI</a> code testing on <a href="https://www.microsoft.com/en-us/windows/">Windows</a>.</li>
-<li>Made <a href="https://travis-ci.com/">Travis CI</a> build checks stricter, adding support for <code>BiocCheck</code>.</li>
-<li>Added new assert checks: <code>assertAreGeneAnnotations</code>, <code>assertAreTranscriptAnnotations</code>, <code>isAnImplicitInteger</code>.</li>
-<li>Simplified working examples for assert checks to just show successes.</li>
-</ul>
-</div>
-<div id="deprecations-6" class="section level3">
-<h3 class="hasAnchor">
-<a href="#deprecations-6" class="anchor"></a>Deprecations</h3>
-<ul>
-<li>
-<code>annotable</code> function has been deprecated in favor of the new <code>ensembl</code> function.</li>
-<li>
-<code>checkAnnotable</code> deprecated in favor of <code>assertIsAnnotable</code>.</li>
-<li>
-<code>checkGene2symbol</code> deprecated in favor of <code>assertIsGene2symbol</code>.</li>
-<li>
-<code>checkTx2gene</code> deprecated in favor of <code>assertIsTx2gene</code>.</li>
-<li>
-<code>assertFormalColorFunction</code> deprecated in favor of <code>assertIsHexColorFunctionOrNULL</code>.</li>
-<li>
-<code>initializeDir</code> deprecated in favor of <code>initializeDirectory</code>.</li>
-<li>Defunct: <code>summarizeRows</code>, <code>wash</code>, <code>packageSE</code>, <code>prepareSE</code>, <code>metadataTable</code>, <code>comp</code>, <code>revcomp</code>, <code>symbol2gene</code>.</li>
+<li>Migrated functions from brio (now renamed to pipette), freerange, and transformer, in preparation for Bioconductor submission and reviews.</li>
+<li>Updated messages to utilize the cli package.</li>
 </ul>
 </div>
 </div>
@@ -168,7 +133,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-0-4-0-2018-03-22">0.4.0</a></li>
+        <li><a href="#basejump-0-12-0-2020-01-20">0.12.0</a></li>
       </ul>
     </div>
   </div>

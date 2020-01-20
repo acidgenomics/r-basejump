@@ -118,9 +118,9 @@
     <div id="basejump-0-8-0-2018-11-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-0-2018-11-11" class="anchor"></a>basejump 0.8.0 (2018-11-11)</h2>
-<div id="major-changes-17" class="section level3">
+<div id="major-changes-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-17" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-18" class="anchor"></a>Major changes</h3>
 <p>This release is the beginning of an attempt to rework the basejump codebase a bit and make the package easier to unit test on <a href="https://travis-ci.com/">Travis CI</a>. bcbio R packages will be pinned to v0.7.2 during this development period.</p>
 <p>Here we are working to split out the functionality of basejump into several, smaller sub-packages:</p>
 <ul>
@@ -142,18 +142,18 @@
     <div id="basejump-0-8-1-2018-11-15" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-1-2018-11-15" class="anchor"></a>basejump 0.8.1 (2018-11-15)</h2>
-<div id="major-changes-16" class="section level3">
+<div id="major-changes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-16" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-17" class="anchor"></a>Major changes</h3>
 <p>The split-out sub-package approach isn’t working quite right, so the code base has been consolidated back into a single basejump package. Development toward splitting the package will continue, but a conceptual re-imagining of how to organize the functions is needed.</p>
 </div>
 </div>
     <div id="basejump-0-8-2-2018-11-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-2-2018-11-19" class="anchor"></a>basejump 0.8.2 (2018-11-19)</h2>
-<div id="major-changes-15" class="section level3">
+<div id="major-changes-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-15" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-16" class="anchor"></a>Major changes</h3>
 <p>Migrating some additional base code that can be dispatched on either <code>SummarizedExperiment</code> or <code>SingleCellExperiment</code> from the bcbio R packages. We’re going to split out some of the single-cell RNA-seq functionality into separate packages, since a lot of my work moving forward deals with the 10X Genomics Cell Ranger platform, rather than the bcbio-supported inDrops platform.</p>
 <p>In particular:</p>
 <ul>
@@ -329,9 +329,9 @@
 <code>deg</code>: Utility function to quickly obtain differentially expressed gene (DEG) identifiers as a character vector.</li>
 </ul>
 </div>
-<div id="major-changes-14" class="section level3">
+<div id="major-changes-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-14" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-15" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>plotHeatmap</code>: Now defining row scaling internally, rather than relying on the functionality defined in <code>pheatmap</code>.</li>

@@ -1,3 +1,11 @@
+## basejump 0.12.0 (2020-01-20)
+
+### Major changes
+
+- Migrated functions from brio (now renamed to pipette), freerange, and
+  transformer, in preparation for Bioconductor submission and reviews.
+- Updated messages to utilize the cli package.
+
 ## basejump 0.11.24 (2020-01-08)
 
 ### New functions
