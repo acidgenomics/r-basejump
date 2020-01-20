@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
@@ -150,11 +150,11 @@ Parent <code>environment</code> where to assign the new <code>environment</code>
 Object names defined in the new <code>environment</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-28.</p>
+    <p>Updated 2020-01-20.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.frame</span>, <span class='no'>matrix</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='fu'>multiassignAsEnvir</span>(<span class='no'>data.frame</span>, <span class='no'>matrix</span>, <span class='kw'>envirName</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Assigning data.frame, matrix as example.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>example</span>)</div><div class='output co'>#&gt; [1] "environment"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span>(<span class='no'>example</span>)</div><div class='output co'>#&gt; [1] "data.frame" "matrix"    </div></pre>
+<span class='fu'>multiassignAsEnvir</span>(<span class='no'>data.frame</span>, <span class='no'>matrix</span>, <span class='kw'>envirName</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Assigning <span style='color: #000000;background-color: #BBBBBB;'>`data.frame, matrix`</span><span> as </span><span style='color: #000000;background-color: #BBBBBB;'>`example`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>example</span>)</div><div class='output co'>#&gt; [1] "environment"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span>(<span class='no'>example</span>)</div><div class='output co'>#&gt; [1] "data.frame" "matrix"    </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
