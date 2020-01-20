@@ -12,9 +12,9 @@ data(
     envir = environment()
 )
 
-x <- band_members
+x <- as(band_members, "DataFrame")
+y <- as(band_instruments, "DataFrame")
 rownames(x) <- x[["name"]]
-y <- band_instruments
 rownames(y) <- y[["name"]]
 by <- "name"
 
