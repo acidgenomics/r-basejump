@@ -1,6 +1,6 @@
 #' @name selectSamples
 #' @inherit acidgenerics::selectSamples
-#' @note Updated 2019-08-19.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -142,7 +142,7 @@ setMethod(
         ## metadata column, which is more descriptive than `sampleID`
         sampleNames <- sampleData[samples, "sampleName", drop = TRUE]
         sampleNames <- sort(unique(as.character(sampleNames)))
-        message(sprintf(
+        cli_alert_info(sprintf(
             "%d %s matched: %s.",
             length(sampleNames),
             ngettext(
@@ -157,7 +157,7 @@ setMethod(
         keep <- colData[["sampleID"]] %in% samples
         colData <- colData[keep, , drop = FALSE]
         cells <- rownames(colData)
-        message(sprintf(
+        cli_alert_info(sprintf(
             "%d %s matched.",
             length(cells),
             ngettext(

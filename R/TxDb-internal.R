@@ -17,7 +17,7 @@
         inherits = FALSE
     )
     assert(is.function(fun))
-    message(sprintf("Checking %s in TxDb.", level))
+    cli_alert(sprintf("Checking %s in {.var TxDb}.", level))
     gr1 <- gr
     rm(gr)
     ## Convert the TxDb to GRanges using either `genes()` or `transcripts()`.
@@ -40,9 +40,9 @@
     ) {
         ## GenomicFeatures currently returns GFF3 input with gene symbols as the
         ## names, so ensure we're setting the GRanges from GFF to match.
-        message(
-            "TxDb returns gene names as identifiers for GFF3.\n",
-            "Setting names on GRanges from GFF to match."
+        cli_alert(
+            "{.var TxDb} returns gene names as identifiers for GFF3.\n",
+            "Setting names on {.var GRanges} from GFF to match."
         )
         names(gr1) <- mcols(gr1)[["geneName"]]
     } else if (
@@ -69,9 +69,9 @@
     ) {
         ## GenomicFeatures currently returns GFF3 input with transcript names
         ## only, so ensure we're setting both GRanges accordingly.
-        message(
-            "TxDb returns gene names as identifiers for GFF3.\n",
-            "Setting names on GRanges from GFF to match."
+        cli_alert(
+            "{.var TxDb} returns gene names as identifiers for GFF3.\n",
+            "Setting names on {.var GRanges} from GFF to match."
         )
         names(gr1) <- mcols(gr1)[["transcriptName"]]
         names(gr2) <- mcols(gr2)[["txName"]]
@@ -87,11 +87,10 @@
     if (length(gr1) > length(gr2)) {
         assert(isSubset(names(gr2), names(gr1)))
         n <- length(gr1) - length(gr2)
-        warning(sprintf(
-            fmt = paste(
-                "GenomicFeatures dropped %d %s from file to make TxDb.",
-                "Missing: %s.",
-                sep = "\n"
+        cli_alert_warning(sprintf(
+            fmt = paste0(
+                "{.pkg GenomicFeatures} dropped %d %s from file to make ",
+                "{.var TxDb}. Missing: %s."
             ),
             n,
             ngettext(
@@ -108,11 +107,10 @@
         ## dupes from the GFF file but they still remain in GenomicFeatures.
         assert(isSubset(names(gr1), names(gr2)))
         n <- length(gr2) - length(gr1)
-        warning(sprintf(
-            fmt = paste(
-                "basejump dropped %d %s from file to make GRanges.",
-                "Missing: %s.",
-                sep = "\n"
+        cli_alert_warning(sprintf(
+            fmt = paste0(
+                "{.pkg basejump} dropped %d %s from file to make ",
+                "{.var GRanges}. Missing: %s."
             ),
             n,
             ngettext(
@@ -141,15 +139,15 @@
     diff <- r1 != r2
     if (any(diff)) {
         which <- head(which(diff), n = 10L)
-        warning(sprintf(
+        cli_alert_warning(sprintf(
             fmt = paste(
-                "%d range mismatches detected in TxDb.",
-                "Showing GRanges mismatch comparison (first 10).",
+                "%d range mismatches detected in {.var TxDb}.",
+                "Showing {.var GRanges} mismatch comparison (first 10).",
                 "",
-                "(1) basejump:",
+                "(1) {.pkg basejump}:",
                 "%s",
                 "",
-                "(2) GenomicFeatures:",
+                "(2) {.pkg GenomicFeatures}:",
                 "%s",
                 "",
                 "If the ranges in (1) are incorrect, please file an issue:",
@@ -228,10 +226,14 @@
                 ## `makeTxDbFromGRanges()` often chokes on GRanges from GFF3,
                 ## imported via `rtracklayer::import()`, so switch to using
                 ## `makeTxDbFromGFF()` instead, which always works.
-                message("Making TxDb using 'makeTxDbFromGFF()'.")
+                cli_alert(
+                    "Making {.var TxDb} using {.fun makeTxDbFromGFF}."
+                )
                 makeTxDbFromGFF(file)
             } else if (type == "GTF") {
-                message("Making TxDb using 'makeTxDbFromGRanges()'.")
+                cli_alert(
+                    "Making {.var TxDb} using {.fun makeTxDbFromGRanges}."
+                )
                 makeTxDbFromGRanges(object)
             },
             error = function(e) {
