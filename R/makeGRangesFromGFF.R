@@ -185,8 +185,8 @@ makeGRangesFromGFF <- function(
     )
     level <- match.arg(level)
     cli_alert(sprintf(
-        fmt = "Making {.var GRanges} from GFF file: {.file %s}.",
-        file
+        fmt = "Making {.var GRanges} from GFF file ({.file %s}).",
+        basename(file)
     ))
 
     ## Import ------------------------------------------------------------------
