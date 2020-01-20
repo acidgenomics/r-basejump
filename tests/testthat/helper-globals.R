@@ -1,12 +1,14 @@
 data(
     DFrame,
     GRanges,
-    matrix,
-    matrix_lfc,
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    sparseMatrix,
     SummarizedExperiment_transcripts,
+    band_instruments,
+    band_members,
+    matrix,
+    matrix_lfc,
+    sparseMatrix,
     package = "acidtest",
     envir = environment()
 )
@@ -36,6 +38,7 @@ SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
 cause <- goalie::cause
 hasInternet <- goalie::hasInternet
 rowRanges <- SummarizedExperiment::rowRanges
+skip_on_docker <- goalie::skip_on_docker
 str_pad <- stringr::str_pad
 tibble <- tibble::tibble
 ## nolint end
