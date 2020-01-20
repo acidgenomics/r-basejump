@@ -22,10 +22,10 @@
 #' - `current-wormbase-version`.
 #'
 #' @examples
-#' if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
-#'     ## This function can cause CI checks to fail.
-#'     ## > currentEnsemblVersion()
-#' }
+#' ## Protect against Ensembl timeouts causing build checks to fail.
+#' ## > if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
+#' ## >     currentEnsemblVersion()
+#' ## > }
 NULL
 
 

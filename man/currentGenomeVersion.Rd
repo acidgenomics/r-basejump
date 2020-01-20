@@ -37,10 +37,10 @@ Obtain the latest release version from various genome annotation sources.
 Updated 2020-01-20.
 }
 \examples{
-if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
-    ## This function can cause CI checks to fail.
-    ## > currentEnsemblVersion()
-}
+## Protect against Ensembl timeouts causing build checks to fail.
+## > if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
+## >     currentEnsemblVersion()
+## > }
 }
 \seealso{
 Refer to the koopa package for shell variants:
