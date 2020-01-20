@@ -17,7 +17,7 @@ selectSamples(object, ...)
 
 \item{...}{Selection arguments:
 \itemize{
-\item Key value pairs that must map to the column names of \code{\link[bioverbs:sampleData]{sampleData()}}.
+\item Key value pairs that must map to the column names of \code{\link[acidgenerics:sampleData]{sampleData()}}.
 \item \code{atomic} values are supported.
 \item Avoid using \code{logical} or \code{numeric} indices
 (e.g. \code{\link[base:which]{which()}} return), thereby making your code more
