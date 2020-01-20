@@ -74,10 +74,10 @@ NULL
             ## it is used heavily in other functions.
             data[["geneName"]] <- make.unique(data[["geneName"]])
         } else if (format == "unmodified") {
-            cli_alert_warning(
-                "Returning with unmodified gene symbols ",
+            cli_alert_warning(paste(
+                "Returning with unmodified gene symbols",
                 "{.emph (may contain duplicates)}."
-            )
+            ))
         } else if (format == "1:1") {
             cli_alert("Returning 1:1 mappings using oldest gene ID per symbol.")
             x <- split(data, f = data[["geneName"]])

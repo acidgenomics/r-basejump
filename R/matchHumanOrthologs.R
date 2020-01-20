@@ -51,8 +51,11 @@ matchHumanOrthologs <- function(
     )
     which <- match("ENSEMBL_MART_ENSEMBL", marts[["biomart"]])
     version <- marts[["version"]][which]
-    message(sprintf(
-        "Matching orthologs against %s (%s) with biomaRt %s.",
+    cli_alert(sprintf(
+        fmt = paste(
+            "Matching orthologs against {.var %s} ({.url %s}) with",
+            "{.pkg biomaRt} %s."
+        ),
         version, host, packageVersion("biomaRt")
     ))
     ## e.g. "mmusculus_gene_ensembl".
@@ -89,13 +92,13 @@ matchHumanOrthologs <- function(
     colnames(map) <- c("geneID", "hgncID")
     map <- sanitizeNA(map)
     ## Get the corresponding gene-to-symbol mappings.
-    message(sprintf("Getting %s gene symbols.", organism))
+    cli_alert(sprintf("Getting {.emph %s} gene symbols.", organism))
     g2s <- makeGene2SymbolFromEnsembl(
         organism = organism,
         release = ensemblRelease,
         format = "unmodified"
     )
-    message("Getting Homo sapiens gene symbols.")
+    cli_alert("Getting {.emph Homo sapiens} gene symbols.")
     g2shs <- makeGene2SymbolFromEnsembl(
         organism = "Homo sapiens",
         release = ensemblRelease,
