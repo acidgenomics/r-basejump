@@ -36,11 +36,13 @@ Encoding: UTF-8
 Depends: R (>= 3.6)
 Imports:
     AnnotationDbi (>= 1.48),
+    AnnotationHub (>= 2.18),
     Biobase (>= 2.46),
     BiocGenerics (>= 0.32),
     BiocParallel (>= 1.20),
     Biostrings (>= 2.54),
     GenomeInfoDb (>= 1.22),
+    GenomicFeatures (>= 1.38),
     GenomicRanges (>= 1.38),
     IRanges (>= 2.20),
     Matrix (>= 1.2),
@@ -54,6 +56,7 @@ Imports:
     acidgenerics (>= 0.3.0),
     biomaRt (>= 2.42),
     cli (>= 2.0),
+    ensembldb (>= 2.10),
     goalie (>= 0.4.1),
     knitr (>= 1.26),
     magrittr (>= 1.5),
