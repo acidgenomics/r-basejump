@@ -1,6 +1,6 @@
 #' @name humanize
 #' @inherit acidgenerics::humanize
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -36,10 +36,9 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-20.
 `humanize,SummarizedExperiment` <-  # nolint
     function(object) {
-        message("Making the rownames and colnames human readable.")
         to <- object
         to <- convertSampleIDsToNames(to)
         to <- convertGenesToSymbols(to)
