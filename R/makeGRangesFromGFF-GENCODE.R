@@ -45,7 +45,7 @@
     )
     dupes <- grep(pattern = "_PAR_Y$", x = mcols(object)[[idCol]], value = TRUE)
     if (hasLength(dupes)) {
-        cli_alert_note(sprintf(
+        cli_alert_warning(sprintf(
             "%d pseudoautosomal region (PAR) Y chromosome %s: {.var %s}.",
             length(dupes),
             ngettext(

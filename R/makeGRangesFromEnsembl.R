@@ -128,7 +128,7 @@ makeGRangesFromEnsembl <- function(
         if (hasLength(remap)) {
             ucsc <- names(remap)
             ensembl <- unname(remap)
-            cli_alert_note(sprintf(
+            cli_alert_warning(sprintf(
                 fmt = paste(
                     "Remapping genome build from UCSC ({.val %s}) to",
                     "Ensembl ({.val %s})."
