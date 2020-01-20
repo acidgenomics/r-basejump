@@ -1,5 +1,5 @@
 #' @name subsetPerSample
-#' @inherit bioverbs::subsetPerSample
+#' @inherit acidgenerics::subsetPerSample
 #' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
@@ -47,7 +47,7 @@ NULL
 
 #' @rdname subsetPerSample
 #' @name subsetPerSample
-#' @importFrom bioverbs subsetPerSample
+#' @importFrom acidgenerics subsetPerSample
 #' @usage subsetPerSample(object, ...)
 #' @export
 NULL

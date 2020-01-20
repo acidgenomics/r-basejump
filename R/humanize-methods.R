@@ -1,5 +1,5 @@
 #' @name humanize
-#' @inherit bioverbs::humanize
+#' @inherit acidgenerics::humanize
 #' @note Updated 2019-07-28.
 #'
 #' @inheritParams acidroxygen::params
@@ -29,7 +29,7 @@ NULL
 
 #' @rdname humanize
 #' @name humanize
-#' @importFrom bioverbs humanize
+#' @importFrom acidgenerics humanize
 #' @usage humanize(object, ...)
 #' @export
 NULL

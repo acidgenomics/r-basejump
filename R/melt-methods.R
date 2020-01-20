@@ -1,5 +1,5 @@
 #' @name melt
-#' @inherit bioverbs::melt
+#' @inherit acidgenerics::melt
 #' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
@@ -75,7 +75,7 @@ NULL
 
 #' @rdname melt
 #' @name melt
-#' @importFrom bioverbs melt
+#' @importFrom acidgenerics melt
 #' @usage melt(object, ...)
 #' @export
 NULL

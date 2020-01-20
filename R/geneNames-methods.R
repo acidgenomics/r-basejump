@@ -1,5 +1,5 @@
 #' @name geneNames
-#' @inherit bioverbs::geneNames
+#' @inherit acidgenerics::geneNames
 #' @note Updated 2019-07-28.
 #'
 #' @inheritParams acidroxygen::params
@@ -17,7 +17,7 @@ NULL
 
 #' @rdname geneNames
 #' @name geneNames
-#' @importFrom bioverbs geneNames
+#' @importFrom acidgenerics geneNames
 #' @usage geneNames(object, ...)
 #' @export
 NULL

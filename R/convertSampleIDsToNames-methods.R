@@ -1,5 +1,5 @@
 #' @name convertSampleIDsToNames
-#' @inherit bioverbs::convertSampleIDsToNames
+#' @inherit acidgenerics::convertSampleIDsToNames
 #' @note Updated 2019-07-28.
 #'
 #' @inheritParams acidroxygen::params
@@ -17,7 +17,7 @@ NULL
 
 #' @rdname convertSampleIDsToNames
 #' @name convertSampleIDsToNames
-#' @importFrom bioverbs convertSampleIDsToNames
+#' @importFrom acidgenerics convertSampleIDsToNames
 #' @usage convertSampleIDsToNames(object, ...)
 #' @export
 NULL

@@ -1,5 +1,5 @@
 #' @name collapseToString
-#' @inherit bioverbs::collapseToString
+#' @inherit acidgenerics::collapseToString
 #' @note Updated 2019-08-18.
 #'
 #' @inheritParams acidroxygen::params
@@ -53,7 +53,7 @@ NULL
 
 #' @rdname collapseToString
 #' @name collapseToString
-#' @importFrom bioverbs collapseToString
+#' @importFrom acidgenerics collapseToString
 #' @usage collapseToString(object, ...)
 #' @export
 NULL

@@ -1,6 +1,6 @@
 #' @name zerosVsDepth
 #' @author Rory Kirchner, Michael Steinbaugh
-#' @inherit bioverbs::zerosVsDepth
+#' @inherit acidgenerics::zerosVsDepth
 #' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname zerosVsDepth
 #' @name zerosVsDepth
-#' @importFrom bioverbs zerosVsDepth
+#' @importFrom acidgenerics zerosVsDepth
 #' @usage zerosVsDepth(object, ...)
 #' @export
 NULL

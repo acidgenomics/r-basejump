@@ -1,5 +1,5 @@
 #' @name geometricMean
-#' @inherit bioverbs::geometricMean
+#' @inherit acidgenerics::geometricMean
 #'
 #' @note This function should be fully zero- and `NA`-tolerant. This calculation
 #'   is not particularly useful if there are elements that are <= 0 and will
@@ -45,7 +45,7 @@ NULL
 
 #' @rdname geometricMean
 #' @name geometricMean
-#' @importFrom bioverbs geometricMean
+#' @importFrom acidgenerics geometricMean
 #' @usage geometricMean(object, ...)
 #' @export
 NULL

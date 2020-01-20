@@ -1,5 +1,5 @@
 #' @name selectSamples
-#' @inherit bioverbs::selectSamples
+#' @inherit acidgenerics::selectSamples
 #' @note Updated 2019-08-19.
 #'
 #' @inheritParams acidroxygen::params
@@ -32,7 +32,7 @@ NULL
 
 #' @rdname selectSamples
 #' @name selectSamples
-#' @importFrom bioverbs selectSamples
+#' @importFrom acidgenerics selectSamples
 #' @usage selectSamples(object, ...)
 #' @export
 NULL

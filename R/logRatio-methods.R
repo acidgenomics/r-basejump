@@ -24,14 +24,14 @@ NULL
 
 #' @rdname logRatio
 #' @name foldChangeToLogRatio
-#' @importFrom bioverbs foldChangeToLogRatio
+#' @importFrom acidgenerics foldChangeToLogRatio
 #' @usage foldChangeToLogRatio(object, ...)
 #' @export
 NULL
 
 #' @rdname logRatio
 #' @name logRatioToFoldChange
-#' @importFrom bioverbs logRatioToFoldChange
+#' @importFrom acidgenerics logRatioToFoldChange
 #' @usage logRatioToFoldChange(object, ...)
 #' @export
 NULL

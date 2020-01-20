@@ -1,5 +1,5 @@
 #' @name filterCells
-#' @inherit bioverbs::filterCells
+#' @inherit acidgenerics::filterCells
 #' @note Updated 2019-11-19.
 #'
 #' @details
@@ -63,7 +63,7 @@ NULL
 
 #' @rdname filterCells
 #' @name filterCells
-#' @importFrom bioverbs filterCells
+#' @importFrom acidgenerics filterCells
 #' @usage filterCells(object, ...)
 #' @export
 NULL

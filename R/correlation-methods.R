@@ -1,7 +1,7 @@
 #' Correlation
 #'
 #' @name correlation
-#' @inherit bioverbs::correlation
+#' @inherit acidgenerics::correlation
 #' @note Updated 2019-11-08.
 #'
 #' @inheritParams acidroxygen::params
@@ -53,7 +53,7 @@ NULL
 
 #' @rdname correlation
 #' @name correlation
-#' @importFrom bioverbs correlation
+#' @importFrom acidgenerics correlation
 #' @usage correlation(x, y, ...)
 #' @export
 NULL

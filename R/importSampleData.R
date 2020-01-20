@@ -36,11 +36,11 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2019-10-10.
+#' @note Updated 2020-01-19.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
-#' @inheritParams brio::import
+#' @inheritParams pipette::import
 #' @param lanes `integer(1)`.
 #'   Number of lanes used to split the samples into technical replicates
 #'   suffix (i.e. `_LXXX`).

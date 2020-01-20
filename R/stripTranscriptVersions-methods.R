@@ -1,5 +1,5 @@
 #' @name stripTranscriptVersions
-#' @inherit bioverbs::stripTranscriptVersions
+#' @inherit acidgenerics::stripTranscriptVersions
 #' @note Updated 2019-10-09.
 #'
 #' @inheritParams acidroxygen::params
@@ -24,7 +24,7 @@ NULL
 
 #' @rdname stripTranscriptVersions
 #' @name stripTranscriptVersions
-#' @importFrom bioverbs stripTranscriptVersions
+#' @importFrom acidgenerics stripTranscriptVersions
 #' @usage stripTranscriptVersions(object, ...)
 #' @export
 NULL

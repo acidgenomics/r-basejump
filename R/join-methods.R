@@ -1,5 +1,5 @@
 #' @name join
-#' @inherit bioverbs::join
+#' @inherit acidgenerics::join
 #' @note Updated 2019-09-03.
 #'
 #' @inheritParams acidroxygen::params
@@ -37,42 +37,42 @@ NULL
 
 #' @rdname join
 #' @name innerJoin
-#' @importFrom bioverbs innerJoin
+#' @importFrom acidgenerics innerJoin
 #' @usage innerJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name leftJoin
-#' @importFrom bioverbs leftJoin
+#' @importFrom acidgenerics leftJoin
 #' @usage leftJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name rightJoin
-#' @importFrom bioverbs rightJoin
+#' @importFrom acidgenerics rightJoin
 #' @usage rightJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name fullJoin
-#' @importFrom bioverbs fullJoin
+#' @importFrom acidgenerics fullJoin
 #' @usage fullJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name semiJoin
-#' @importFrom bioverbs semiJoin
+#' @importFrom acidgenerics semiJoin
 #' @usage semiJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name antiJoin
-#' @importFrom bioverbs antiJoin
+#' @importFrom acidgenerics antiJoin
 #' @usage antiJoin(x, y, by, ...)
 #' @export
 NULL

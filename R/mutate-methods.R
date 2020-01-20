@@ -1,5 +1,5 @@
 #' @name mutate
-#' @inherit bioverbs::mutate
+#' @inherit acidgenerics::mutate
 #' @note Updated 2020-01-08.
 #'
 #' @inheritParams acidroxygen::params
@@ -20,35 +20,35 @@ NULL
 
 #' @rdname mutate
 #' @name mutateAll
-#' @importFrom bioverbs mutateAll
+#' @importFrom acidgenerics mutateAll
 #' @usage mutateAll(object, fun, ...)
 #' @export
 NULL
 
 #' @rdname mutate
 #' @name mutateAt
-#' @importFrom bioverbs mutateAt
+#' @importFrom acidgenerics mutateAt
 #' @usage mutateAll(object, fun, ...)
 #' @export
 NULL
 
 #' @rdname mutate
 #' @name mutateIf
-#' @importFrom bioverbs mutateIf
+#' @importFrom acidgenerics mutateIf
 #' @usage mutateIf(object, predicate, fun, ...)
 #' @export
 NULL
 
 #' @rdname mutate
 #' @name transmuteAt
-#' @importFrom bioverbs transmuteAt
+#' @importFrom acidgenerics transmuteAt
 #' @usage transmuteAt(object, vars, fun, ...)
 #' @export
 NULL
 
 #' @rdname mutate
 #' @name transmuteIf
-#' @importFrom bioverbs transmuteIf
+#' @importFrom acidgenerics transmuteIf
 #' @usage transmuteIf(object, predicate, fun, ...)
 #' @export
 NULL

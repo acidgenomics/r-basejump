@@ -29,7 +29,7 @@ NULL
 
 #' @rdname select
 #' @name selectIf
-#' @importFrom bioverbs selectIf
+#' @importFrom acidgenerics selectIf
 #' @usage selectIf(object, predicate, ...)
 #' @export
 NULL
