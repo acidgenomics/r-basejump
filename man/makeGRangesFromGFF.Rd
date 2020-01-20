@@ -57,7 +57,7 @@ Runs the same internal code as \code{\link[=makeGRangesFromGFF]{makeGRangesFromG
 }}
 
 \note{
-Updated 2019-09-04.
+Updated 2020-01-20.
 }
 \section{Recommendations}{
 
@@ -218,7 +218,7 @@ Related URLs:
 }
 
 \examples{
-file <- pasteURL(freerangeTestsURL, "ensembl.gtf", protocol = "none")
+file <- pasteURL(basejumpTestsURL, "ensembl.gtf", protocol = "none")
 
 ## Genes
 x <- makeGRangesFromGFF(file = file, level = "genes")

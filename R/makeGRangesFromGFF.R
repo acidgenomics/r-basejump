@@ -138,7 +138,7 @@
 #' - [WormBase GTF](ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz)
 #'
 #' @export
-#' @note Updated 2019-09-04.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param .checkAgainstTxDb `logical(1)`.
@@ -160,7 +160,7 @@
 #' - [GenomicFeatures::makeTxDbFromGFF()].
 #'
 #' @examples
-#' file <- pasteURL(freerangeTestsURL, "ensembl.gtf", protocol = "none")
+#' file <- pasteURL(basejumpTestsURL, "ensembl.gtf", protocol = "none")
 #'
 #' ## Genes
 #' x <- makeGRangesFromGFF(file = file, level = "genes")
