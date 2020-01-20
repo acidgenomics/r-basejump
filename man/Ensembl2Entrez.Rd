@@ -39,7 +39,7 @@ Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 }
 \note{
-Updated 2019-08-08.
+Updated 2020-01-19.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
