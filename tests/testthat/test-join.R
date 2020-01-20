@@ -5,7 +5,13 @@ context("join : Beatles vs. Stones")
 ## > data(band_members, band_instruments, package = "dplyr")
 ## nolint end
 
-data(band_members, band_instruments, envir = environment())
+data(
+    band_members,
+    band_instruments,
+    package = "acidtest",
+    envir = environment()
+)
+
 x <- band_members
 rownames(x) <- x[["name"]]
 y <- band_instruments
