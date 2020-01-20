@@ -10,7 +10,7 @@
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-08-18.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -141,6 +141,7 @@ NULL
 .aggregateFuns <- c("sum", "mean", "geometricMean", "median")
 
 ## Don't message when aggregating a large factor.
+## Updated 2020-01-20.
 .aggregateMessage <- function(groupings, fun) {
     assert(
         is.factor(groupings),
@@ -155,7 +156,7 @@ NULL
             sep = "\n"
         )
     }
-    message(msg)
+    cli_alert_info(msg)
 }
 
 
@@ -410,7 +411,7 @@ setMethod(
 
 
 
-## Updated 2019-08-18.
+## Updated 2020-01-20.
 `aggregateCols,SingleCellExperiment` <-  # nolint
     function(object, fun) {
         validObject(object)
@@ -421,7 +422,7 @@ setMethod(
             isSubset(c("sampleID", "aggregate"), colnames(colData)),
             is.factor(colData[["aggregate"]])
         )
-        message(sprintf(
+        cli_alert(sprintf(
             "Remapping cells to aggregate samples: %s",
             toString(sort(levels(colData[["aggregate"]])), width = 100L)
         ))

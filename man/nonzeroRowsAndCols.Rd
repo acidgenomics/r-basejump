@@ -30,7 +30,7 @@ Modified object.
 Subset object to keep only non-zero rows and columns
 }
 \note{
-Updated 2019-10-09.
+Updated 2020-01-20.
 }
 \examples{
 data(
