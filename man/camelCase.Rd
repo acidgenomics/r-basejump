@@ -94,6 +94,8 @@ Modified object.
 Contains syntatically valid names. For objects supporting
 \code{\link[base:names]{names()}}, the underlying data returns unchanged, except for
 \code{character} or \code{vector} class.
+Returns invisible modified file path when \code{rename = TRUE}.
+Returns invisible \code{NULL} when \code{recursive = TRUE}.
 }
 \description{
 Format character strings to use (lower) camel-style formatting, where word
