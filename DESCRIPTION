@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.11.24
-Date: 2020-01-08
+Version: 0.12.0
+Date: 2020-01-20
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -45,43 +45,42 @@ Imports:
     IRanges (>= 2.20),
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9),
+    RCurl (>= 1.95),
+    R.utils (>= 2.9),
     S4Vectors (>= 0.24),
     SingleCellExperiment (>= 1.8),
     SummarizedExperiment (>= 1.16),
     acidbase (>= 0.1.2),
+    acidgenerics (>= 0.3.0),
     biomaRt (>= 2.42),
-    bioverbs (>= 0.2.13),
-    brio (>= 0.3.16),
-    freerange (>= 0.2.8),
     goalie (>= 0.4.1),
     knitr (>= 1.26),
     magrittr (>= 1.5),
     matrixStats (>= 0.55),
+    pipette (>= 0.4.0),
     scales (>= 1.1),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
     syntactic (>= 0.3.4),
     tibble (>= 2.1),
-    transformer (>= 0.2.11),
     methods,
     utils
 Suggests:
     BiocStyle (>= 2.14),
     EnsDb.Hsapiens.v75 (>= 2.99),
-    acidroxygen (>= 0.1.5),
-    acidtest (>= 0.2.8),
+    acidroxygen (>= 0.1.6),
+    acidtest (>= 0.2.9),
     patrick (>= 0.0.1),
     rmarkdown (>= 2.0),
     testthat (>= 2.3),
     datasets
 Remotes:
     acidgenomics/acidbase,
+    acidgenomics/acidgenerics,
     acidgenomics/acidroxygen,
     acidgenomics/acidtest,
-    acidgenomics/bioverbs,
-    acidgenomics/brio,
-    acidgenomics/freerange,
     acidgenomics/goalie,
+    acidgenomics/pipette,
     acidgenomics/syntactic,
     acidgenomics/transformer
 biocViews:
@@ -100,10 +99,12 @@ Collate:
     'HGNC2Ensembl.R'
     'MGI2Ensembl.R'
     'Tx2Gene-methods.R'
+    'TxDb-internal.R'
     'aggregate-methods.R'
     'aggregateCellsToSamples-methods.R'
     'alphaThreshold-methods.R'
     'autopadZeros-methods.R'
+    'broadClass-internal.R'
     'calculateMetrics-methods.R'
     'camelCase-methods.R'
     'cell2sample-methods.R'
@@ -112,18 +113,23 @@ Collate:
     'convertGenesToSymbols-methods.R'
     'convertSampleIDsToNames-methods.R'
     'convertTranscriptsToGenes-methods.R'
+    'convertUCSCBuildToEnsembl.R'
     'correlation-methods.R'
     'counts-methods.R'
     'deprecated.R'
+    'detectGFF-internal.R'
     'detectHPC.R'
     'detectLanes.R'
+    'detectOrganism.R'
     'dottedCase-methods.R'
+    'emptyRanges.R'
     'estimateSizeFactors-methods.R'
     'filterCells-methods.R'
     'geneNames-methods.R'
     'geneSynonyms.R'
     'genomeVersions.R'
     'geometricMean-methods.R'
+    'getURLDirList.R'
     'headtail-methods.R'
     'humanize-methods.R'
     'importSampleData.R'
@@ -132,8 +138,18 @@ Collate:
     'integerCounts-methods.R'
     'interestingGroups-methods.R'
     'internal.R'
+    'join-methods.R'
     'lfcThreshold-methods.R'
     'logRatio-methods.R'
+    'makeGRanges-internal.R'
+    'makeGRangesFromEnsembl.R'
+    'makeGRangesFromEnsDb.R'
+    'makeGRangesFromGFF-Ensembl.R'
+    'makeGRangesFromGFF-FlyBase.R'
+    'makeGRangesFromGFF-GENCODE.R'
+    'makeGRangesFromGFF-RefSeq.R'
+    'makeGRangesFromGFF-WormBase.R'
+    'makeGRangesFromGFF.R'
     'makeGene2Symbol.R'
     'makeSampleData-methods.R'
     'makeSummarizedExperiment-methods.R'
@@ -155,10 +171,12 @@ Collate:
     'matchesInterestingGroups.R'
     'mcolnames-methods.R'
     'melt-methods.R'
+    'mergeGenesIntoTranscripts-internal.R'
     'metrics-methods.R'
     'microplate.R'
     'minimalSampleData.R'
     'multiassignAsEnvir.R'
+    'mutate-methods.R'
     'nonzeroRowsAndCols-methods.R'
     'organism-methods.R'
     'package.R'
@@ -170,6 +188,7 @@ Collate:
     'sampleData-methods.R'
     'sampleNames-methods.R'
     'sanitizeSampleData.R'
+    'select-methods.R'
     'selectSamples-methods.R'
     'separator.R'
     'showHeader.R'
@@ -183,6 +202,7 @@ Collate:
     'toStringUnique.R'
     'topCellsPerSample-methods.R'
     'tpm-methods.R'
+    'transmit.R'
     'uniteInterestingGroups-methods.R'
     'upperCamelCase-methods.R'
     'zerosVsDepth-methods.R'
