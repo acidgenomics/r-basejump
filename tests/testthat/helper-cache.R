@@ -18,11 +18,19 @@ files <- c(
     "bcbio-metadata-multiplexed-indrops.csv",
     "bcbio-metadata-multiplexed-invalid-duplicated.csv",
     "bcbio-metadata-multiplexed-invalid-missing-columns.csv",
-    "example.gtf",
+    "ensembl.gff3",
+    "ensembl.gtf",
     "example.gff3",
+    "example.gtf",
+    "flybase.gtf",
+    "gencode.gff3",
+    "gencode.gtf",
     "plotlist.rds",
+    "refseq.gff3",
+    "refseq.gtf",
     "sce_lanesplit.rds",
-    "tx2gene.csv"
+    "tx2gene.csv",
+    "wormbase.gtf"
 )
 mapply(
     FUN = function(remoteDir, file, envir) {
