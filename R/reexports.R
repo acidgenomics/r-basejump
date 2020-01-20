@@ -164,146 +164,6 @@ acidbase::standardizeCall
 
 
 
-#' @importFrom brio assignAndSaveData
-#' @export
-brio::assignAndSaveData
-
-#' @importFrom brio bunzip2
-#' @export
-brio::bunzip2
-
-#' @importFrom brio bzip2
-#' @export
-brio::bzip2
-
-#' @importFrom brio compressFile
-#' @export
-brio::compressFile
-
-#' @importFrom brio decompressFile
-#' @export
-brio::decompressFile
-
-#' @importFrom brio export
-#' @export
-brio::export
-
-#' @importFrom brio getURL
-#' @export
-brio::getURL
-
-#' @importFrom brio getURLDirList
-#' @export
-brio::getURLDirList
-
-#' @importFrom brio gunzip
-#' @export
-brio::gunzip
-
-#' @importFrom brio gzip
-#' @export
-brio::gzip
-
-#' @importFrom brio import
-#' @export
-brio::import
-
-#' @importFrom brio loadData
-#' @export
-brio::loadData
-
-#' @importFrom brio loadDataAsName
-#' @export
-brio::loadDataAsName
-
-#' @importFrom brio loadRemoteData
-#' @export
-brio::loadRemoteData
-
-#' @importFrom brio localOrRemoteFile
-#' @export
-brio::localOrRemoteFile
-
-#' @importFrom brio naStrings
-#' @export
-brio::naStrings
-
-#' @importFrom brio removeNA
-#' @export
-brio::removeNA
-
-#' @importFrom brio sanitizeNA
-#' @export
-brio::sanitizeNA
-
-#' @importFrom brio sanitizePercent
-#' @export
-brio::sanitizePercent
-
-#' @importFrom brio saveData
-#' @export
-brio::saveData
-
-#' @importFrom brio tar
-#' @export
-brio::tar
-
-#' @importFrom brio transmit
-#' @export
-brio::transmit
-
-#' @importFrom brio untar
-#' @export
-brio::untar
-
-#' @importFrom brio unzip
-#' @export
-brio::unzip
-
-#' @importFrom brio writeCounts
-#' @export
-brio::writeCounts
-
-#' @importFrom brio zip
-#' @export
-brio::zip
-
-
-
-#' @importFrom freerange annotable
-#' @export
-freerange::annotable
-
-#' @importFrom freerange convertUCSCBuildToEnsembl
-#' @export
-freerange::convertUCSCBuildToEnsembl
-
-#' @importFrom freerange detectOrganism
-#' @export
-freerange::detectOrganism
-
-#' @importFrom freerange emptyRanges
-#' @export
-freerange::emptyRanges
-
-#' @importFrom freerange makeGRangesFromEnsDb
-#' @export
-freerange::makeGRangesFromEnsDb
-
-#' @importFrom freerange makeGRangesFromEnsembl
-#' @export
-freerange::makeGRangesFromEnsembl
-
-#' @importFrom freerange makeGRangesFromGFF
-#' @export
-freerange::makeGRangesFromGFF
-
-#' @importFrom freerange makeGRangesFromGTF
-#' @export
-freerange::makeGRangesFromGTF
-
-
-
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
@@ -318,6 +178,108 @@ magrittr::`%>%`
 #' @importFrom magrittr %T>%
 #' @export
 magrittr::`%T>%`
+
+
+
+#' @importFrom pipette as.SummarizedExperiment
+#' @export
+pipette::as.SummarizedExperiment
+
+#' @importFrom pipette as.data.frame
+#' @export
+pipette::as.data.frame
+
+#' @importFrom pipette as.data.table
+#' @export
+pipette::as.data.table
+
+#' @importFrom pipette as_tibble
+#' @export
+pipette::as_tibble
+
+#' @importFrom pipette assignAndSaveData
+#' @export
+pipette::assignAndSaveData
+
+#' @importFrom pipette atomize
+#' @export
+pipette::atomize
+
+#' @importFrom pipette coerceToList
+#' @export
+pipette::coerceToList
+
+#' @importFrom pipette decode
+#' @export
+pipette::decode
+
+#' @importMethodsFrom pipette droplevels
+#' @exportMethod droplevels
+NULL
+
+#' @importFrom pipette encode
+#' @export
+pipette::encode
+
+#' @importFrom pipette export
+#' @export
+pipette::export
+
+#' @importFrom pipette factorize
+#' @export
+pipette::factorize
+
+#' @importFrom pipette flatFiles
+#' @export
+pipette::flatFiles
+
+#' @importFrom pipette import
+#' @export
+pipette::import
+
+#' @importFrom pipette loadData
+#' @export
+pipette::loadData
+
+#' @importFrom pipette loadDataAsName
+#' @export
+pipette::loadDataAsName
+
+#' @importFrom pipette loadRemoteData
+#' @export
+pipette::loadRemoteData
+
+#' @importFrom pipette localOrRemoteFile
+#' @export
+pipette::localOrRemoteFile
+
+#' @importFrom pipette metadata2
+#' @export
+pipette::metadata2
+
+#' @importFrom pipette metadata2<-
+#' @export
+pipette::`metadata2<-`
+
+#' @importFrom pipette naStrings
+#' @export
+pipette::naStrings
+
+#' @importFrom pipette removeNA
+#' @export
+pipette::removeNA
+
+#' @importFrom pipette sanitizeNA
+#' @export
+pipette::sanitizeNA
+
+#' @importFrom pipette sanitizePercent
+#' @export
+pipette::sanitizePercent
+
+#' @importFrom pipette saveData
+#' @export
+pipette::saveData
 
 
 
@@ -374,108 +336,6 @@ syntactic::upperCamel
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
-
-
-
-#' @importFrom transformer antiJoin
-#' @export
-transformer::antiJoin
-
-#' @importFrom transformer as.SummarizedExperiment
-#' @export
-transformer::as.SummarizedExperiment
-
-#' @importFrom transformer as.data.frame
-#' @export
-transformer::as.data.frame
-
-#' @importFrom transformer as.data.table
-#' @export
-transformer::as.data.table
-
-#' @importFrom transformer as_tibble
-#' @export
-transformer::as_tibble
-
-#' @importFrom transformer atomize
-#' @export
-transformer::atomize
-
-#' @importFrom transformer coerceS4ToList
-#' @export
-transformer::coerceS4ToList
-
-#' @importMethodsFrom transformer droplevels
-#' @exportMethod droplevels
-NULL
-
-#' @importFrom transformer decode
-#' @export
-transformer::decode
-
-#' @importFrom transformer encode
-#' @export
-transformer::encode
-
-#' @importFrom transformer factorize
-#' @export
-transformer::factorize
-
-#' @importFrom transformer flatFiles
-#' @export
-transformer::flatFiles
-
-#' @importFrom transformer fullJoin
-#' @export
-transformer::fullJoin
-
-#' @importFrom transformer innerJoin
-#' @export
-transformer::innerJoin
-
-#' @importFrom transformer leftJoin
-#' @export
-transformer::leftJoin
-
-#' @importFrom transformer metadata2
-#' @export
-transformer::metadata2
-
-#' @importFrom transformer metadata2<-
-#' @export
-transformer::`metadata2<-`
-
-#' @importFrom transformer mutateAll
-#' @export
-transformer::mutateAll
-
-#' @importFrom transformer mutateAt
-#' @export
-transformer::mutateAt
-
-#' @importFrom transformer mutateIf
-#' @export
-transformer::mutateIf
-
-#' @importFrom transformer rightJoin
-#' @export
-transformer::rightJoin
-
-#' @importFrom transformer selectIf
-#' @export
-transformer::selectIf
-
-#' @importFrom transformer semiJoin
-#' @export
-transformer::semiJoin
-
-#' @importFrom transformer transmuteAt
-#' @export
-transformer::transmuteAt
-
-#' @importFrom transformer transmuteIf
-#' @export
-transformer::transmuteIf
 
 
 
