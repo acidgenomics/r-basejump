@@ -22,12 +22,16 @@ NULL
 
 
 
+#' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom AnnotationDbi select
-#' @importFrom BiocGenerics colSums rowSums unlist
+#' @importFrom BiocGenerics colSums organism rowSums unlist
 #' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
 #' @importFrom GenomeInfoDb seqnames
-#' @importFrom IRanges DataFrameList SplitDataFrameList unsplit
+#' @importFrom GenomicFeatures genes makeTxDbFromGFF makeTxDbFromGRanges
+#'   transcripts
+#' @importFrom GenomicRanges GRanges ranges
+#' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom RCurl getURL url.exists
 #' @importFrom R.utils gzip
@@ -40,18 +44,20 @@ NULL
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
 #' @importFrom acidbase appendToBody bapply getNameInParent matchArgsToDoCall
-#'    methodFormals methodFunction
+#'    methodFormals methodFunction printString
 #' @importFrom biomaRt listEnsemblArchives listMarts useMart
+#' @importFrom ensembldb ensemblVersion
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
 #'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert false
-#'   hasColnames hasCols hasDimnames hasDims hasInternet hasLength hasMetrics
-#'   hasNames hasNoDuplicates hasNonzeroRowsAndCols hasRows hasRownames
-#'   hasSubset hasUniqueCols hasValidDimnames hasValidNames isADirectory isAFile
-#'   isAURL isAlpha isAny isCharacter isFlag isGGScale isGreaterThanOrEqualTo
-#'   isHeaderLevel isHexColorFunction isInClosedRange isInLeftOpenRange
-#'   isInRange isInt isIntegerish isMatchingRegex isNonNegative
-#'   isNotMatchingRegex isNumber isPositive isScalar isString isSubset
-#'   isSuperset matchesUniqueGeneNames validNames validate validateClasses
+#'   hasColnames hasCols hasDimnames hasDims hasDuplicates hasInternet hasLength
+#'   hasMetrics hasNames hasNoDuplicates hasNonzeroRowsAndCols hasRows
+#'   hasRownames hasSubset hasUniqueCols hasValidDimnames hasValidNames
+#'   isADirectory isAFile isAURL isAlpha isAny isCharacter isFlag isGGScale
+#'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
+#'   isInLeftOpenRange isInRange isInt isIntegerish isMatchingRegex
+#'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
+#'   isSubset isSuperset matchesUniqueGeneNames validNames validate
+#'   validateClasses
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
