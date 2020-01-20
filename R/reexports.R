@@ -14,6 +14,12 @@ IRanges::IRanges
 
 
 
+#' @importFrom RCurl getURL
+#' @export
+RCurl::getURL
+
+
+
 #' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
@@ -100,9 +106,25 @@ SummarizedExperiment::`rowRanges<-`
 #' @export
 acidbase::basenameSansExt
 
+#' @importFrom acidbase compress
+#' @export
+acidbase::compress
+
+#' @importFrom acidbase compressExtPattern
+#' @export
+acidbase::compressExtPattern
+
+#' @importFrom acidbase decompress
+#' @export
+acidbase::decompress
+
 #' @importFrom acidbase dots
 #' @export
 acidbase::dots
+
+#' @importFrom acidbase extPattern
+#' @export
+acidbase::extPattern
 
 #' @importFrom acidbase fileExt
 #' @export
@@ -454,3 +476,21 @@ transformer::transmuteAt
 #' @importFrom transformer transmuteIf
 #' @export
 transformer::transmuteIf
+
+
+
+#' @importFrom utils tar
+#' @export
+utils::tar
+
+#' @importFrom utils untar
+#' @export
+utils::untar
+
+#' @importFrom utils unzip
+#' @export
+utils::unzip
+
+#' @importFrom utils zip
+#' @export
+utils::zip
