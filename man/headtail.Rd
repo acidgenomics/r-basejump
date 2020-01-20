@@ -67,7 +67,7 @@ objects.
 }}
 
 \note{
-Updated 2019-07-28.
+Updated 2020-01-20.
 }
 \examples{
 data(mtcars, package = "datasets")

@@ -1,18 +1,3 @@
-## nolint start
-
-## DelayedArray methods disabled until bug fix:
-## https://github.com/Bioconductor/DelayedArray/issues/55
-
-## Calculating library size factors using 'mean-ratio' method.
-## Error in get(name, envir = asNamespace(pkg), inherits = FALSE) :
-##   object 'is_pristine' not found
-## Calls: estimateSizeFactors ... .librarySizeFactors -> colSums2 -> colSums2
-##   -> .local -> ::: -> get
-
-## nolint end
-
-
-
 #' Estimate size factors
 #'
 #' Define size factors from the library sizes, and then apply centering at
@@ -32,7 +17,7 @@
 #'   can handle millions of cells without the calculations blowing up in memory.
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2019-10-09.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param type `character(1)`.
@@ -103,7 +88,7 @@ NULL
 
 
 
-## Updated 2019-10-09.
+## Updated 2020-01-20.
 .librarySizeFactors <-  # nolint
     function(
         counts,
@@ -119,8 +104,8 @@ NULL
             !anyNA(counts)
         )
         type <- match.arg(type)
-        message(sprintf(
-            fmt = "Calculating library size factors using '%s' method.",
+        cli_alert(sprintf(
+            fmt = "Calculating library size factors using {.val %s} method.",
             type
         ))
         ## Get the sum of expression per cell.
@@ -162,7 +147,7 @@ NULL
 
 
 
-## Updated 2019-08-06.
+## Updated 2020-01-20.
 .centerSizeFactors <- function(sf, center = 1L) {
     assert(
         is.numeric(sf),
@@ -170,7 +155,7 @@ NULL
         isNumber(center),
         isPositive(center)
     )
-    message(sprintf("Centering size factors at %d.", center))
+    cli_alert(sprintf("Centering size factors at %d.", center))
     sf <- sf / mean(sf) * center
     assert(mean(sf) == center)
     sf

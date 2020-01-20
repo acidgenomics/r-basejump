@@ -59,12 +59,11 @@ If \code{NULL}, calculates correlation matrix only on the primary assay.}
 Correlation
 }
 \note{
-Updated 2019-11-08.
+Updated 2020-01-20.
 }
 \examples{
 data(correlation, package = "acidtest")
 list <- correlation
-rm(correlation)
 
 ## vector ====
 x <- list[["vector_x"]]

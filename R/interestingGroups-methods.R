@@ -1,5 +1,5 @@
 #' @name interestingGroups
-#' @inherit bioverbs::interestingGroups
+#' @inherit acidgenerics::interestingGroups
 #' @note Updated 2019-08-11.
 #'
 #' @inheritParams acidroxygen::params
@@ -21,14 +21,14 @@ NULL
 
 #' @rdname interestingGroups
 #' @name interestingGroups
-#' @importFrom bioverbs interestingGroups
+#' @importFrom acidgenerics interestingGroups
 #' @usage interestingGroups(object, ...)
 #' @export
 NULL
 
 #' @rdname interestingGroups
 #' @name interestingGroups<-
-#' @importFrom bioverbs interestingGroups<-
+#' @importFrom acidgenerics interestingGroups<-
 #' @usage interestingGroups(object, ...)  <- value
 #' @export
 NULL

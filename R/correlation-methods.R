@@ -1,8 +1,8 @@
 #' Correlation
 #'
 #' @name correlation
-#' @inherit bioverbs::correlation
-#' @note Updated 2019-11-08.
+#' @inherit acidgenerics::correlation
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams stats::cor
@@ -16,7 +16,6 @@
 #' @examples
 #' data(correlation, package = "acidtest")
 #' list <- correlation
-#' rm(correlation)
 #'
 #' ## vector ====
 #' x <- list[["vector_x"]]
@@ -53,7 +52,7 @@ NULL
 
 #' @rdname correlation
 #' @name correlation
-#' @importFrom bioverbs correlation
+#' @importFrom acidgenerics correlation
 #' @usage correlation(x, y, ...)
 #' @export
 NULL
@@ -64,7 +63,7 @@ method <- formals(stats::cor)[["method"]]
 
 
 
-## Updated 2019-11-08.
+## Updated 2020-01-20.
 `correlation,numeric,numeric` <-  # nolint
     function(x, y, method) {
         assert(
@@ -74,7 +73,7 @@ method <- formals(stats::cor)[["method"]]
         )
         method <- match.arg(method)
         n <- length(x)
-        message(sprintf(
+        cli_alert(sprintf(
             fmt = "Calculating %s correlation on %d %s.",
             method,
             n,
@@ -104,12 +103,14 @@ setMethod(
 
 
 
-## Updated 2019-11-08.
+## Updated 2020-01-20.
 `correlation,matrix,missing` <-  # nolint
     function(x, y = NULL, method) {
         assert(!anyNA(x))
         method <- match.arg(method)
-        message("Calculating ", method, " correlation matrix.")
+        cli_alert(sprintf(
+            "Calculating {.val %s} correlation matrix.", method
+        ))
         cor(x = x, y = NULL, method = method)
     }
 

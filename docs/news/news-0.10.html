@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.24</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
@@ -118,9 +118,9 @@
     <div id="basejump-0-10-0-2019-03-28" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-0-2019-03-28" class="anchor"></a>basejump 0.10.0 (2019-03-28)</h2>
-<div id="major-changes-10" class="section level3">
+<div id="major-changes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-10" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-11" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Split out Ensembl (AnnotationHub/ensembldb) annotation processing and GFF/GTF file loading utilites to new <a href="https://freerange.acidgenomics.com/">freerange</a> package. All of these functions remain re-exported here in <a href="https://basejump.acidgenomics.com/">basejump</a>. This includes: <code>annotable</code>, <code>convertUCSCBuildToEnsembl</code>, <code>detectOrganism</code>, <code>emptyRanges</code>, <code>makeGRangesFromEnsDb</code>, <code>makeGRangesFromEnsembl</code>, <code>makeGRangesFromGFF</code>, <code>makeGRangesFromGTF</code>.</li>
 <li>Split out heatmap functions to firestarter package. This includes <code>plotHeatmap</code>, <code>plotCorrelationHeatmap</code>, and <code>plotQuantileHeatmap</code>.</li>
@@ -158,9 +158,9 @@
     <div id="basejump-0-10-2-2019-04-07" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-2-2019-04-07" class="anchor"></a>basejump 0.10.2 (2019-04-07)</h2>
-<div id="major-changes-9" class="section level3">
+<div id="major-changes-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-9" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-10" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>aggregateRows</code>, <code>aggregateCols</code>, <code>aggregateCellsToSamples</code>: Improved internal code for SummarizedExperiment metadata handling. Applies primarily to colData and rowData juggling for these methods.</li>
@@ -206,9 +206,9 @@
     <div id="basejump-0-10-4-2019-04-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-4-2019-04-22" class="anchor"></a>basejump 0.10.4 (2019-04-22)</h2>
-<div id="major-changes-8" class="section level3">
+<div id="major-changes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-8" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-9" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>meltCounts</code>: Switched from using <code>nonzeroGenes</code> formal approach to <code>minCounts</code> and <code>minCountsMethod</code>, which is more flexible.</li>
@@ -268,9 +268,9 @@
     <div id="basejump-0-10-8-2019-05-05" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-8-2019-05-05" class="anchor"></a>basejump 0.10.8 (2019-05-05)</h2>
-<div id="major-changes-7" class="section level3">
+<div id="major-changes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-7" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-8" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now pinned to R &gt;= 3.5.</li>
 </ul>
@@ -302,9 +302,9 @@
 <code>matchHumanOrthologs</code>: Convenience function that wraps biomaRt package to map model system gene identifiers to HGNC IDs and symbols. This is particularly useful for running orthologus GSEA with our pfgsea package.</li>
 </ul>
 </div>
-<div id="major-changes-6" class="section level3">
+<div id="major-changes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-6" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-7" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>combine</code> method for <code>SummarizedExperiment</code> now includes all matrices defined in <code>assays</code> slot. Also improved support for <code>colData</code> handling on subsets where <code>NA</code> values have been removed.</li>

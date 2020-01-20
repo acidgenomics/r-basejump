@@ -1,5 +1,5 @@
 #' @name topCellsPerSample
-#' @inherit bioverbs::topCellsPerSample
+#' @inherit acidgenerics::topCellsPerSample
 #' @note Updated 2019-08-14.
 #'
 #' @inheritParams acidroxygen::params
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname topCellsPerSample
 #' @name topCellsPerSample
-#' @importFrom bioverbs topCellsPerSample
+#' @importFrom acidgenerics topCellsPerSample
 #' @usage topCellsPerSample(object, ...)
 #' @export
 NULL

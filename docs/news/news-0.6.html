@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.11.24</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
@@ -118,9 +118,9 @@
     <div id="basejump-0-6-0-2018-07-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-0-2018-07-17" class="anchor"></a>basejump 0.6.0 (2018-07-17)</h2>
-<div id="major-changes-22" class="section level3">
+<div id="major-changes-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-22" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-23" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing <a href="https://bioconductor.org/packages/SummarizedExperiment/">SummarizedExperiment</a> package and providing basic method support for generics that were previously used in the <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a> package.</li>
 <li>Improved GFFv3 handling in <code>makeGRangesFromGFF</code> and other GFF utility functions, including <code>makeGene2symbolFromGFF</code> and <code>makeTx2geneFromGFF</code>. Note that <code>makeGRangesFromGFF</code> now returns additional metadata columns accessible with <code><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">S4Vectors::mcols</a></code>, and that these columns are now sorted alphabetically.</li>
@@ -180,9 +180,9 @@
 <code>eggnog</code>: quickly download current annotations from <a href="http://eggnogdb.embl.de/">EggNOG</a> database. Useful for annotating gene-to-protein matches; currently in use with the <a href="https://brightworm.acidgenomics.com/">brightworm</a> RNAi screening package, which contains <a href="http://www.wormbase.org/">WormBase</a> gene ID and <a href="http://eggnogdb.embl.de/">EggNOG</a> ID annotations.</li>
 </ul>
 </div>
-<div id="major-changes-21" class="section level3">
+<div id="major-changes-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-21" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-22" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now suggesting <a href="https://cran.r-project.org/package=BiocManager">BiocManager</a> instead of <a href="https://bioconductor.org/packages/BiocInstaller/">BiocInstaller</a> for installation.</li>
 <li>

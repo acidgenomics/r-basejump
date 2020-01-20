@@ -1,6 +1,6 @@
 #' @name filterCells
-#' @inherit bioverbs::filterCells
-#' @note Updated 2019-11-19.
+#' @inherit acidgenerics::filterCells
+#' @note Updated 2020-01-20.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -63,7 +63,7 @@ NULL
 
 #' @rdname filterCells
 #' @name filterCells
-#' @importFrom bioverbs filterCells
+#' @importFrom acidgenerics filterCells
 #' @usage filterCells(object, ...)
 #' @export
 NULL
@@ -116,6 +116,7 @@ NULL
             all(isIntegerish(minCellsPerFeature)),
             all(isNonNegative(minCellsPerFeature))
         )
+        cli_alert("Filtering cells with {.fun filterCells}.")
         ## Calculate metrics, if necessary.
         if (!hasMetrics(object, colData = c("nCount", "nFeature"))) {
             object <- calculateMetrics(object)
@@ -290,7 +291,7 @@ NULL
         nCells <- sum(cells, na.rm = TRUE)
         nFeatures <- sum(features, na.rm = TRUE)
         if (identical(c(nFeatures, nCells), originalDim)) {
-            message("No filtering applied.")
+            cli_alert_warning("No filtering applied.")
             return(object)
         }
         ## Ensure that there are no all zero rows or columns.
@@ -316,55 +317,71 @@ NULL
         )
         totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
         storage.mode(totalPass) <- "integer"
-        message(sprintf(
-            fmt = paste0(
-                "Pre-filter:\n",
-                "  - %d %s\n",
-                "  - %d %s"
+
+        ## Inform the user regarding filtering parameters.
+        cli_text("Pre-filter:")
+        cli_div(theme = list(body = list("margin-left" = 2L)))
+        cli_ul(items = c(
+            sprintf(
+                fmt = "%d %s",
+                originalDim[[2L]],
+                ngettext(
+                    n = originalDim[[2L]],
+                    msg1 = "cell",
+                    msg2 = "cells"
+                )
             ),
-            originalDim[[2L]],
-            ngettext(
-                n = originalDim[[2L]],
-                msg1 = "cell",
-                msg2 = "cells"
-            ),
-            originalDim[[1L]],
-            ngettext(
-                n = originalDim[[1L]],
-                msg1 = "feature",
-                msg2 = "features"
+            sprintf(
+                fmt = "%d %s",
+                originalDim[[1L]],
+                ngettext(
+                    n = originalDim[[1L]],
+                    msg1 = "feature",
+                    msg2 = "features"
+                )
             )
         ))
-        message(sprintf(
-            fmt = paste0(
-                "Post-filter:\n",
-                "  - %d %s (%s)\n",
-                "  - %d %s (%s)"
+        cli_end()
+        cli_text("Post-filter:")
+        cli_div(theme = list(body = list("margin-left" = 2L)))
+        cli_ul(items = c(
+            sprintf(
+                fmt = "%d %s (%s)",
+                nCells,
+                ngettext(
+                    n = nCells,
+                    msg1 = "cell",
+                    msg2 = "cells"
+                ),
+                percent(nCells / originalDim[[2L]])
             ),
-            nCells,
-            ngettext(
-                n = nCells,
-                msg1 = "cell",
-                msg2 = "cells"
-            ),
-            percent(nCells / originalDim[[2L]]),
-            nFeatures,
-            ngettext(
-                n = nFeatures,
-                msg1 = "feature",
-                msg2 = "features"
-            ),
-            percent(nFeatures / originalDim[[1L]])
+            sprintf(
+                fmt = "%d %s (%s)",
+                nFeatures,
+                ngettext(
+                    n = nFeatures,
+                    msg1 = "feature",
+                    msg2 = "features"
+                ),
+                percent(nFeatures / originalDim[[1L]])
+            )
         ))
-        message(sprintf(
-            fmt = "Per argument:\n%s",
-            printString(totalPass)
-        ))
+        cli_end()
+        cli_text("Per argument:")
+        cli_div(theme = list(body = list("margin-left" = 4L)))
+        cli_dl(items = totalPass)
+        cli_end()
         if (length(perSamplePass) > 1L) {
-            message(sprintf(
-                fmt = "Per sample, per argument:\n%s",
-                printString(perSamplePass)
-            ))
+            cli_text("Per sample, per argument:")
+            for (i in seq_along(perSamplePass)) {
+                cli_div(theme = list(body = list("margin-left" = 2L)))
+                cli_text(sprintf("%s:", names(perSamplePass)[[i]]))
+                cli_end()
+                cli_div(theme = list(body = list("margin-left" = 4L)))
+                cli_dl(items = perSamplePass[[i]])
+                cli_end()
+            }
+            ## > cli_verbatim(printString(perSamplePass))
         }
 
         ## Update object -------------------------------------------------------
@@ -383,6 +400,7 @@ NULL
         metadata <- Filter(f = Negate(is.null), x = metadata)
         metadata(object)[["filterCells"]] <- metadata
         metadata(object)[["subset"]] <- TRUE
+        cli_alert_success("Cell filtering was successful.")
         object
     }
 

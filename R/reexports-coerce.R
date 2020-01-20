@@ -1,4 +1,4 @@
-#' Reexport transformer S4 coercion methods
+#' Reexport pipette S4 coercion methods
 #'
 #' @importFrom methods coerce
 #' @exportMethod coerce
@@ -19,7 +19,7 @@ setAs(
             from = "Matrix",
             to = "DataFrame"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -32,7 +32,7 @@ setAs(
             from = "data.table",
             to = "DataFrame"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -45,7 +45,7 @@ setAs(
             from = "tbl_df",
             to = "DataFrame"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -53,15 +53,15 @@ setAs(
 
 ## coerce-data.frame-S4methods.R ===============================================
 setAs(
-    from = "IPosRanges",
+    from = "IRanges",
     to = "data.frame",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "IPosRanges",
+            from = "IRanges",
             to = "data.frame"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -74,7 +74,7 @@ setAs(
             from = "Matrix",
             to = "data.frame"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -90,7 +90,7 @@ setAs(
             from = "data.frame",
             to = "data.table"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -103,7 +103,7 @@ setAs(
             from = "DataFrame",
             to = "data.table"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -116,20 +116,20 @@ setAs(
             from = "GenomicRanges",
             to = "data.table"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
 setAs(
-    from = "IPosRanges",
+    from = "IRanges",
     to = "data.table",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "IPosRanges",
+            from = "IRanges",
             to = "data.table"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -145,7 +145,7 @@ setAs(
             from = "DataFrame",
             to = "tbl_df"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -158,20 +158,20 @@ setAs(
             from = "GenomicRanges",
             to = "tbl_df"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
 setAs(
-    from = "IPosRanges",
+    from = "IRanges",
     to = "tbl_df",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "IPosRanges",
+            from = "IRanges",
             to = "tbl_df"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )
 
@@ -184,6 +184,6 @@ setAs(
             from = "data.frame",
             to = "tbl_df"
         ),
-        where = "transformer"
+        where = "pipette"
     )
 )

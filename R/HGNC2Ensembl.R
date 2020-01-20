@@ -1,5 +1,5 @@
 #' @inherit HGNC2Ensembl-class title description return
-#' @note Updated 2019-11-19.
+#' @note Updated 2020-01-20.
 #' @export
 #' @examples
 #' options(acid.test = TRUE)
@@ -28,7 +28,7 @@ HGNC2Ensembl <-  # nolint
             )
             ## nocov end
         }
-        message("Importing HGNC to Ensembl gene ID mappings.")
+        cli_alert("Importing HGNC to Ensembl gene ID mappings.")
         data <- withCallingHandlers(
             expr = import(file),
             message = function(m) {

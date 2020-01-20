@@ -1,10 +1,10 @@
 #' @name calculateMetrics
-#' @inherit bioverbs::calculateMetrics
+#' @inherit acidgenerics::calculateMetrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
 #'   normalized counts here.
-#' @note Updated 2019-10-09.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param prefilter `logical(1)`.
@@ -31,7 +31,7 @@ NULL
 
 #' @rdname calculateMetrics
 #' @name calculateMetrics
-#' @importFrom bioverbs calculateMetrics
+#' @importFrom acidgenerics calculateMetrics
 #' @usage calculateMetrics(object, ...)
 #' @export
 NULL
@@ -55,7 +55,7 @@ NULL
             originalDim <- dim(object)
             object <- nonzeroRowsAndCols(object)
         }
-        message(sprintf(
+        cli_alert(sprintf(
             fmt = "Calculating %d sample %s.",
             ncol(object),
             ngettext(
@@ -67,10 +67,10 @@ NULL
         codingFeatures <- character()
         mitoFeatures <- character()
         missingBiotype <- function() {
-            message(sprintf(
+            cli_alert_warning(sprintf(
                 fmt = paste0(
                     "Calculating metrics without biotype information.\n",
-                    "'rowRanges' required to calculate: %s."
+                    "{.fun rowRanges} required to calculate: {.var %s}."
                 ),
                 toString(c("nCoding", "nMito", "mitoRatio"))
             ))
@@ -106,7 +106,7 @@ NULL
                 keep <- rowData[["broadClass"]] == "coding"
                 assert(is(keep, "Rle"))
                 codingFeatures <- rownames(rowData[keep, , drop = FALSE])
-                message(sprintf(
+                cli_alert_info(sprintf(
                     fmt = "%d coding %s detected.",
                     length(codingFeatures),
                     ngettext(
@@ -119,7 +119,7 @@ NULL
                 keep <- rowData[["broadClass"]] == "mito"
                 assert(is(keep, "Rle"))
                 mitoFeatures <- rownames(rowData[keep, , drop = FALSE])
-                message(sprintf(
+                cli_alert_info(sprintf(
                     fmt = "%d mitochondrial %s detected.",
                     length(mitoFeatures),
                     ngettext(
@@ -177,7 +177,7 @@ NULL
             n1 <- nrow(data)
             n2 <- originalDim[[2L]]
             if (n1 < n2) {
-                message(sprintf(
+                cli_alert_info(sprintf(
                     fmt = "Prefilter: %d / %d %s (%s).",
                     n1, n2,
                     ngettext(

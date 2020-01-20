@@ -1,10 +1,10 @@
 #' @name convertTranscriptsToGenes
-#' @inherit bioverbs::convertTranscriptsToGenes
+#' @inherit acidgenerics::convertTranscriptsToGenes
 #'
 #' @note For objects containing a count matrix, the object rows will be
 #'   collapsed to gene level using `aggregateRows`. This applies to our
 #'   `SummarizedExperiment` method.
-#' @note Updated 2019-08-11.
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param aggregate `logical(1)`.
@@ -59,7 +59,7 @@ NULL
 
 #' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
-#' @importFrom bioverbs convertTranscriptsToGenes
+#' @importFrom acidgenerics convertTranscriptsToGenes
 #' @usage convertTranscriptsToGenes(object, ...)
 #' @export
 NULL

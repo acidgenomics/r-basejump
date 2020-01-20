@@ -1,5 +1,5 @@
 #' @name mcolnames
-#' @inherit bioverbs::mcolnames
+#' @inherit acidgenerics::mcolnames
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -19,14 +19,14 @@ NULL
 
 #' @rdname mcolnames
 #' @name mcolnames
-#' @importFrom bioverbs mcolnames
+#' @importFrom acidgenerics mcolnames
 #' @usage mcolnames(x, ...)
 #' @export
 NULL
 
 #' @rdname mcolnames
 #' @name mcolnames<-
-#' @importFrom bioverbs mcolnames<-
+#' @importFrom acidgenerics mcolnames<-
 #' @usage mcolnames(x, ...) <- value
 #' @export
 NULL

@@ -1,5 +1,5 @@
 #' @name cell2sample
-#' @inherit bioverbs::cell2sample
+#' @inherit acidgenerics::cell2sample
 #'
 #' @note `sampleID` column must be defined in
 #' [`colData()`][SummarizedExperiment::colData].
@@ -28,7 +28,7 @@ NULL
 
 #' @rdname cell2sample
 #' @name cell2sample
-#' @importFrom bioverbs cell2sample
+#' @importFrom acidgenerics cell2sample
 #' @usage cell2sample(object, ...)
 #' @export
 NULL
