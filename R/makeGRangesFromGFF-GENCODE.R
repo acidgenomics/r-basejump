@@ -31,7 +31,12 @@
 
 
 
-## Match Ensembl spec by removing the duplicate PAR Y chromosome annotations.
+#' Detect PAR duplicates
+#'
+#' Match Ensembl spec by removing the duplicate PAR Y chromosome annotations.
+#'
+#' @note Updated 2020-01-20.
+#' @noRd
 .detectPARDupes <- function(object, idCol) {
     assert(is(object, "GRanges"))
     idCol <- match.arg(
@@ -40,8 +45,8 @@
     )
     dupes <- grep(pattern = "_PAR_Y$", x = mcols(object)[[idCol]], value = TRUE)
     if (hasLength(dupes)) {
-        message(sprintf(
-            "%d pseudoautosomal region (PAR) Y chromosome %s: %s.",
+        cli_alert_note(sprintf(
+            "%d pseudoautosomal region (PAR) Y chromosome %s: {.var %s}.",
             length(dupes),
             ngettext(
                 n = length(dupes),
