@@ -116,6 +116,7 @@ NULL
             all(isIntegerish(minCellsPerFeature)),
             all(isNonNegative(minCellsPerFeature))
         )
+        cli_alert("Filtering cells with {.fun filterCells}.")
         ## Calculate metrics, if necessary.
         if (!hasMetrics(object, colData = c("nCount", "nFeature"))) {
             object <- calculateMetrics(object)
@@ -317,7 +318,9 @@ NULL
         totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
         storage.mode(totalPass) <- "integer"
 
+        ## Inform the user regarding filtering parameters.
         cli_text("Pre-filter:")
+        cli_div(theme = list(body = list("margin-left" = 2L)))
         cli_ul(items = c(
             sprintf(
                 fmt = "%d %s",
@@ -338,7 +341,9 @@ NULL
                 )
             )
         ))
+        cli_end()
         cli_text("Post-filter:")
+        cli_div(theme = list(body = list("margin-left" = 2L)))
         cli_ul(items = c(
             sprintf(
                 fmt = "%d %s (%s)",
@@ -361,11 +366,22 @@ NULL
                 percent(nFeatures / originalDim[[1L]])
             )
         ))
+        cli_end()
         cli_text("Per argument:")
-        cli_verbatim(printString(totalPass))
+        cli_div(theme = list(body = list("margin-left" = 4L)))
+        cli_dl(items = totalPass)
+        cli_end()
         if (length(perSamplePass) > 1L) {
             cli_text("Per sample, per argument:")
-            cli_verbatim(printString(perSamplePass))
+            for (i in seq_along(perSamplePass)) {
+                cli_div(theme = list(body = list("margin-left" = 2L)))
+                cli_text(sprintf("%s:", names(perSamplePass)[[i]]))
+                cli_end()
+                cli_div(theme = list(body = list("margin-left" = 4L)))
+                cli_dl(items = perSamplePass[[i]])
+                cli_end()
+            }
+            ## > cli_verbatim(printString(perSamplePass))
         }
 
         ## Update object -------------------------------------------------------
@@ -384,6 +400,7 @@ NULL
         metadata <- Filter(f = Negate(is.null), x = metadata)
         metadata(object)[["filterCells"]] <- metadata
         metadata(object)[["subset"]] <- TRUE
+        cli_alert_success("Cell filtering was successful.")
         object
     }
 
