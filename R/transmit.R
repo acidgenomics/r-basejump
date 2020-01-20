@@ -4,10 +4,10 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @export
-#' @note Updated 2020-01-18.
+#' @note Updated 2020-01-19.
 #'
 #' @inheritParams acidroxygen::params
-#' @inheritParams saveData
+#' @inheritParams pipette::saveData
 #' @param remoteDir `character(1)`.
 #'   Remote FTP directory path.
 #' @param localDir `character(1)`.
