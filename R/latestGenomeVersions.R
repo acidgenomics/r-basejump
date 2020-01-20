@@ -1,9 +1,9 @@
-#' Genome versions
+#' Latest genome version
 #'
 #' Obtain the latest release version from various genome annotation sources.
 #'
-#' @name genomeVersions
-#' @note Updated 2019-10-18.
+#' @name latestGenomeVersion
+#' @note Updated 2020-01-20.
 #'
 #' @inheritParams acidroxygen::params
 #' @param dmel `logical(1)`.
@@ -15,23 +15,23 @@
 #' @seealso
 #' Refer to the koopa package for shell variants:
 #'
-#' - `ensembl-version`.
-#' - `flybase-version`.
-#' - `gencode-version`.
-#' - `refseq-version`.
-#' - `wormbase-version`.
+#' - `latest-ensembl-version`.
+#' - `latest-flybase-version`.
+#' - `latest-gencode-version`.
+#' - `latest-refseq-version`.
+#' - `latest-wormbase-version`.
 #'
 #' @examples
 #' if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
-#'     ensemblVersion()
+#'     currentEnsemblVersion()
 #' }
 NULL
 
 
 
-#' @rdname genomeVersions
+#' @rdname latestGenomeVersion
 #' @export
-ensemblVersion <- function() {
+latestEnsemblVersion <- function() {
     suppressMessages(
         x <- import(
             file = "ftp://ftp.ensembl.org/pub/current_README",
@@ -45,9 +45,9 @@ ensemblVersion <- function() {
 
 
 
-#' @rdname genomeVersions
+#' @rdname latestGenomeVersion
 #' @export
-gencodeVersion <- function(organism) {
+latestGencodeVersion <- function(organism) {
     organism <- match.arg(
         arg = organism,
         choices = c("Homo sapiens", "Mus musculus")
@@ -69,9 +69,9 @@ gencodeVersion <- function(organism) {
 
 
 
-#' @rdname genomeVersions
+#' @rdname latestGenomeVersion
 #' @export
-refseqVersion <- function() {
+latestRefseqVersion <- function() {
     suppressMessages(
         import(
             file = "ftp://ftp.ncbi.nlm.nih.gov/refseq/release/RELEASE_NUMBER",
@@ -82,9 +82,9 @@ refseqVersion <- function() {
 
 
 
-#' @rdname genomeVersions
+#' @rdname latestGenomeVersion
 #' @export
-flybaseVersion <- function(dmel = FALSE) {
+latestFlybaseVersion <- function(dmel = FALSE) {
     assert(isFlag(dmel))
     url <- "ftp://ftp.flybase.net/releases/"
     if (isTRUE(dmel)) {
@@ -102,9 +102,9 @@ flybaseVersion <- function(dmel = FALSE) {
 
 
 
-#' @rdname genomeVersions
+#' @rdname latestGenomeVersion
 #' @export
-wormbaseVersion <- function() {
+latestWormbaseVersion <- function() {
     url <- pasteURL(
         "ftp.wormbase.org",
         "pub",
