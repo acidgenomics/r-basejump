@@ -110,7 +110,7 @@
         n <- length(gr2) - length(gr1)
         warning(sprintf(
             fmt = paste(
-                "freerange dropped %d %s from file to make GRanges.",
+                "basejump dropped %d %s from file to make GRanges.",
                 "Missing: %s.",
                 sep = "\n"
             ),
@@ -146,14 +146,14 @@
                 "%d range mismatches detected in TxDb.",
                 "Showing GRanges mismatch comparison (first 10).",
                 "",
-                "(1) freerange:",
+                "(1) basejump:",
                 "%s",
                 "",
                 "(2) GenomicFeatures:",
                 "%s",
                 "",
                 "If the ranges in (1) are incorrect, please file an issue:",
-                "  https://github.com/acidgenomics/freerange/issues",
+                "  https://github.com/acidgenomics/basejump/issues",
                 "If the ranges in (2) are incorrect, please file an issue:",
                 "  https://github.com/Bioconductor/GenomicFeatures/issues",
                 sep = "\n"
