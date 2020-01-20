@@ -46,7 +46,8 @@ NULL
 #' @importFrom acidbase appendToBody bapply getNameInParent matchArgsToDoCall
 #'    methodFormals methodFunction printString
 #' @importFrom biomaRt listEnsemblArchives listMarts useMart
-#' @importFrom cli cli_alert cli_alert_info cli_alert_warning cli_text
+#' @importFrom cli cli_alert cli_alert_info cli_alert_success cli_alert_warning
+#'   cli_text
 #' @importFrom ensembldb ensemblVersion
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
 #'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert false
