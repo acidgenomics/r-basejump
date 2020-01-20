@@ -57,7 +57,7 @@ New object containing a merge of \code{x} and \code{y} objects.
 Join operations
 }
 \note{
-Updated 2019-09-03.
+Updated 2020-01-20.
 }
 \section{Ordering}{
 
@@ -75,12 +75,12 @@ Unlike the S3 methods defined in dplyr, the join methods defined here for
 }
 
 \examples{
-data(band_members, band_instruments)
+data(band_members, band_instruments, package = "acidtest")
 
 ## DataFrame ====
-x <- band_members
+x <- as(band_members, "DataFrame")
+y <- as(band_instruments, "DataFrame")
 print(x)
-y <- band_instruments
 print(y)
 by <- "name"
 innerJoin(x = x, y = y, by = by)

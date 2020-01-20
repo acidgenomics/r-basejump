@@ -1,4 +1,5 @@
 ## Report the source of the gene annotations.
+## Updated 2020-01-20.
 .detectGFFSource <- function(object) {
     assert(is(object, "GRanges"))
     mcols <- mcols(object)
@@ -61,6 +62,7 @@
 
 
 ## Determine if GFF or GTF.
+## Updated 2020-01-20.
 .detectGFFType <- function(object) {
     assert(is(object, "GRanges"))
     if (any(c("ID", "Name", "Parent") %in% colnames(mcols(object)))) {
@@ -72,10 +74,11 @@
 
 
 
+## Updated 2020-01-20.
 .slotGFFDetectInfo <- function(object) {
     source <- .detectGFFSource(object)
     type <- .detectGFFType(object)
-    message(sprintf("%s %s detected.", source, type))
+    cli_alert_info(sprintf("%s %s detected.", source, type))
     metadata(object)[["detect"]] <- c(
         source = source,
         type = type
