@@ -2,10 +2,10 @@
 #'
 #' Append the transcript version to the identifier (e.g. ENST00000000233.10).
 #'
-#' @note Updated 2019-09-05.
+#' @note Updated 2020-01-20.
 #' @noRd
 .addTxVersion <- function(object) {
-    message("Adding version to transcript identifiers.")
+    cli_alert("Adding version to transcript identifiers.")
     mcolnames <- colnames(mcols(object))
     assert(
         is(object, "GRanges"),
@@ -30,7 +30,12 @@
 
 
 
-## Note that this intentionally prioritizes transcripts over genes.
+#' Detect GRanges identifiers
+#'
+#' Note that this intentionally prioritizes transcripts over genes.
+#'
+#' @note Updated 2020-01-20.
+#' @noRd
 .detectGRangesIDs <- function(object) {
     if (is(object, "GRangesList")) {
         object <- object[[1L]]
@@ -52,8 +57,13 @@
 
 
 
-## This is the main GRanges final return generator, used by
-## `makeGRangesFromEnsembl()` and `makeGRangesFromGFF()`.
+#' Make GRanges
+#'
+#' This is the main GRanges final return generator, used by
+#' `makeGRangesFromEnsembl()` and `makeGRangesFromGFF()`.
+#'
+#' @note Updated 2020-01-20.
+#' @noRd
 .makeGRanges <- function(object, ignoreTxVersion = TRUE) {
     assert(
         is(object, "GRanges"),
@@ -87,8 +97,8 @@
     invalid <- setdiff(names, make.names(names, unique = TRUE))
     if (hasLength(invalid)) {
         invalid <- sort(unique(invalid))
-        message(sprintf(
-            "%d invalid %s: %s.",
+        cli_alert_warning(sprintf(
+            fmt = "%d invalid %s: {.var %s}.",
             length(invalid),
             ngettext(
                 n = length(invalid),
@@ -101,10 +111,10 @@
     rm(invalid)
     ## Split into GRangesList if object contains multiple ranges per feature.
     if (hasDuplicates(names)) {
-        message(sprintf(
-            fmt = paste0(
-                "GRanges contains multiple ranges per '%s'.\n",
-                "Splitting into GRangesList."
+        cli_alert_warning(sprintf(
+            fmt = paste(
+                "{.var GRanges} contains multiple ranges per '%s'.",
+                "Splitting into {.var GRangesList}."
             ),
             idCol
         ))
@@ -123,7 +133,7 @@
         arg = metadata(object)[["level"]],
         choices = c("genes", "transcripts")
     )
-    message(sprintf(
+    cli_alert_info(sprintf(
         "%d %s detected.",
         length(object),
         ngettext(
@@ -137,11 +147,17 @@
 
 
 
-## Remove uninformative metadata columns from GFF3 before return.
-## Always remove columns beginning with a capital letter.
-## - Ensembl: Alias, ID, Name, Parent
-## - GENCODE: ID, Parent
-## - RefSeq: Dbxref, Gap, ID, Name, Note, Parent, Target
+#' Minimize GFF3 return
+#'
+#' Remove uninformative metadata columns from GFF3 before return.
+#' Always remove columns beginning with a capital letter.
+#'
+#' - Ensembl: Alias, ID, Name, Parent
+#' - GENCODE: ID, Parent
+#' - RefSeq: Dbxref, Gap, ID, Name, Note, Parent, Target
+#'
+#' @note Updated 2020-01-20.
+#' @noRd
 .minimizeGFF3 <- function(object) {
     assert(is(object, "GRanges"))
     mcols <- mcols(object)
@@ -160,12 +176,17 @@
 
 
 
-## This step drops extra columns in `mcols()` and applies run-length encoding,
-## to reduce memory overhead.
-##
-## Note that `removeNA()` call currently will error on complex columns.
-## For example, this will error on `CharacterList` columns returned from
-## GENCODE GFF3 file.
+#' Minimize GRanges
+#'
+#' This step drops extra columns in `mcols()` and applies run-length encoding,
+#' to reduce memory overhead.
+#'
+#' Note that `removeNA()` call currently will error on complex columns. For
+#' example, this will error on `CharacterList` columns returned from GENCODE
+#' GFF3 file.
+#'
+#' @note Updated 2020-01-20.
+#' @noRd
 .minimizeGRanges <- function(object) {
     assert(is(object, "GRanges"))
     mcols <- mcols(object)
@@ -211,9 +232,13 @@
 
 
 
-## Standardize the GRanges into desired conventions used in basejump. Note that
-## this step makes GRanges imported via `rtracklayer::import()` incompatible
-## with `GenomicFeatures::makeTxDbFromGRanges()`.
+#' Standardize the GRanges into desired conventions used in basejump
+#'
+#' Note that this step makes GRanges imported via `rtracklayer::import()`
+#' incompatible with `GenomicFeatures::makeTxDbFromGRanges()`.
+#'
+#' @note Updated 2020-01-20.
+#' @noRd
 .standardizeGRanges <- function(object) {
     assert(is(object, "GRanges"))
     ## Standardize the metadata columns.
@@ -237,7 +262,9 @@
     if (all(c("geneName", "symbol") %in% colnames(mcols))) {
         mcols[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(mcols)) {
-        message("Renaming 'symbol' to 'geneName' in 'mcols()'.")
+        cli_alert(
+            "Renaming {.var symbol} to {.var geneName} in {.fun mcols}."
+        )
         mcols[["geneName"]] <- mcols[["symbol"]]
         mcols[["symbol"]] <- NULL
     }
@@ -253,7 +280,7 @@
         mcols(object)[, sort(colnames(mcols(object))), drop = FALSE]
     ## Ensure the ranges are sorted by identifier.
     idCol <- .detectGRangesIDs(object)
-    message(sprintf("Arranging by '%s'.", idCol))
+    cli_alert(sprintf("Arranging by {.var %s}.", idCol))
     names(object) <- mcols(object)[[idCol]]
     object <- object[sort(names(object))]
     object
