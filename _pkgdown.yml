@@ -13,8 +13,10 @@ reference:
       - matches("^[A-Z]")
   - title: Genome annotations
     contents:
+      - currentGenomeVersion
+      - emptyRanges
       - geneSynonyms
-      - genomeVersions
+      - starts_with("makeGRanges")
       - makeGene2Symbol
       - makeTx2Gene
       - makeTx2GeneFromFASTA
@@ -27,6 +29,7 @@ reference:
   - title: Counts
     contents:
       - counts
+      - integerCounts
       - tpm
   - title: Quality control
     contents:
@@ -38,6 +41,12 @@ reference:
   - title: Import/export
     contents:
       - starts_with("import")
+      - transmit
+  - title: Data manipulation
+    contents:
+      - join
+      - mutate
+      - select
   - title: Metadata
     contents:
       - alphaThreshold
@@ -94,6 +103,7 @@ reference:
   - title: Developer
     contents:
       - starts_with("detect")
+      - getURLDirList
       - formalsList
       - matchInterestingGroups
       - starts_with("matches")
