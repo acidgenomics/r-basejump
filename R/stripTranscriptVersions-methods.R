@@ -83,8 +83,8 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
-`stripTranscriptVersions,sparseMatrix` <-  # nolint
+## Updated 2020-01-30.
+`stripTranscriptVersions,Matrix` <-  # nolint
     `stripTranscriptVersions,matrix`
 
 
@@ -93,8 +93,8 @@ setMethod(
 #' @export
 setMethod(
     f = "stripTranscriptVersions",
-    signature = signature("sparseMatrix"),
-    definition = `stripTranscriptVersions,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `stripTranscriptVersions,Matrix`
 )
 
 

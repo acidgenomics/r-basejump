@@ -1,6 +1,6 @@
 #' @name convertGenesToSymbols
 #' @inherit acidgenerics::convertGenesToSymbols
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -131,8 +131,8 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
-`convertGenesToSymbols,sparseMatrix` <-  # nolint
+## Updated 2020-01-30.
+`convertGenesToSymbols,Matrix` <-  # nolint
     `convertGenesToSymbols,matrix`
 
 
@@ -141,8 +141,8 @@ setMethod(
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature("sparseMatrix"),
-    definition = `convertGenesToSymbols,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `convertGenesToSymbols,Matrix`
 )
 
 

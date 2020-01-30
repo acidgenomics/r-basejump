@@ -1,7 +1,7 @@
 #' @name zerosVsDepth
-#' @author Rory Kirchner, Michael Steinbaugh
+#' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit acidgenerics::zerosVsDepth
-#' @note Updated 2019-08-11.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -52,10 +52,9 @@ setMethod(
 
 ## Using a logical matrix is faster and more memory efficient.
 ## Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
-## Updated 2019-08-11.
-`zerosVsDepth,sparseMatrix` <-  # nolint
+## Updated 2020-01-30.
+`zerosVsDepth,Matrix` <-  # nolint
     function(object) {
-        assert(is(object, "sparseMatrix"))
         assert(!is(object, "lgCMatrix"))
         present <- as(object, "dgCMatrix")
         present <- as(present, "lgCMatrix")
@@ -73,8 +72,8 @@ setMethod(
 #' @export
 setMethod(
     f = "zerosVsDepth",
-    signature = signature("sparseMatrix"),
-    definition = `zerosVsDepth,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `zerosVsDepth,Matrix`
 )
 
 

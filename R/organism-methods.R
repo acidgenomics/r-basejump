@@ -57,8 +57,8 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
-`organism,sparseMatrix` <-  # nolint
+## Updated 2020-01-30.
+`organism,Matrix` <-  # nolint
     `organism,matrix`
 
 
@@ -67,8 +67,8 @@ setMethod(
 #' @export
 setMethod(
     f = "organism",
-    signature = signature("sparseMatrix"),
-    definition = `organism,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `organism,Matrix`
 )
 
 
