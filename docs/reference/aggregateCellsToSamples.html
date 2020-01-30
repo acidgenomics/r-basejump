@@ -72,7 +72,7 @@ function will sum the counts across cells to sample level." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
       </span>
     </div>
 
@@ -124,26 +124,17 @@ function will sum the counts across cells to sample level." />
 function will sum the counts across cells to sample level.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>aggregateCellsToSamples</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>aggregateCellsToSamples</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>aggregateCellsToSamples</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"median"</span>)
-)</pre>
+<span class='fu'>aggregateCellsToSamples</span>(<span class='no'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
+      <th>x</th>
       <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>fun</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Name of the aggregation function.
-Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code> internally.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -158,25 +149,26 @@ Object with cell-level counts aggregated to sample-level.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Internally <code>aggregateCellsToSamples()</code> automatically obtains the
-cell-to-sample groupings and then performs aggregation with the
-<code><a href='aggregate.html'>aggregateCols()</a></code> function.</p>
+cell-to-sample groupings and then performs a sum aggregation with the
+<code><a href='aggregateCols.html'>aggregateCols()</a></code> function.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-28.</p>
+    <p>Updated 2020-01-30.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>x</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 2 
 #&gt; metadata(1): aggregate
 #&gt; assays(1): counts
 #&gt; rownames(500): gene001 gene002 ... gene499 gene500
 #&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
 #&gt; colnames(2): sample1 sample2
-#&gt; colData names(0):</div></span></pre>
+#&gt; colData names(0):</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

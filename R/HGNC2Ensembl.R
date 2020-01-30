@@ -1,5 +1,5 @@
 #' @inherit HGNC2Ensembl-class title description return
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-01-30.
 #' @export
 #' @examples
 #' options(acid.test = TRUE)
@@ -39,7 +39,7 @@ HGNC2Ensembl <-  # nolint
                 }
             }
         )
-        data <- camel(data)
+        data <- camelCase(data)
         data <- data[, c("hgncID", "ensemblGeneID")]
         colnames(data)[[2L]] <- "geneID"
         data <- data[!is.na(data[["geneID"]]), , drop = FALSE]

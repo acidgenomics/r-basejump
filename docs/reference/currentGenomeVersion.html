@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
       </span>
     </div>
 
@@ -166,9 +166,11 @@ Release version.</p>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='kw pkg'>goalie</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/goalie/man/check-scalar-hasInternet.html'>hasInternet</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"ftp://ftp.ensembl.org/"</span>)) {
-    <span class='fu'>currentEnsemblVersion</span>()
-}</div><div class='output co'>#&gt; [1] "99"</div></pre>
+    <pre class="examples"><div class='input'>## Protect against Ensembl timeouts causing build checks to fail.
+## > if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
+## >     currentEnsemblVersion()
+## > }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
