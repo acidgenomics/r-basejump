@@ -4,7 +4,7 @@
 \alias{geometricMean}
 \alias{geometricMean,numeric-method}
 \alias{geometricMean,matrix-method}
-\alias{geometricMean,sparseMatrix-method}
+\alias{geometricMean,Matrix-method}
 \title{Geometric mean}
 \usage{
 geometricMean(object, ...)
@@ -13,7 +13,7 @@ geometricMean(object, ...)
 
 \S4method{geometricMean}{matrix}(object, MARGIN = 2L)
 
-\S4method{geometricMean}{sparseMatrix}(object, MARGIN = 2L)
+\S4method{geometricMean}{Matrix}(object, MARGIN = 2L)
 }
 \arguments{
 \item{object}{Object.}
@@ -67,7 +67,7 @@ matrix <- matrix(
 print(matrix)
 geometricMean(matrix)
 
-## sparseMatrix ====
+## Matrix ====
 sparse <- as(matrix, "sparseMatrix")
 print(sparse)
 geometricMean(sparse)

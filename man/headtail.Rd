@@ -4,7 +4,7 @@
 \alias{headtail}
 \alias{headtail,atomic-method}
 \alias{headtail,matrix-method}
-\alias{headtail,sparseMatrix-method}
+\alias{headtail,Matrix-method}
 \alias{headtail,data.frame-method}
 \alias{headtail,DataFrame-method}
 \alias{headtail,GRanges-method}
@@ -17,7 +17,7 @@ headtail(x, ...)
 
 \S4method{headtail}{matrix}(x, n = 2L, unicode = TRUE)
 
-\S4method{headtail}{sparseMatrix}(x, n = 2L, unicode = TRUE)
+\S4method{headtail}{Matrix}(x, n = 2L, unicode = TRUE)
 
 \S4method{headtail}{data.frame}(x, n = 2L, unicode = TRUE)
 
@@ -55,7 +55,7 @@ objects.
 
 \item \code{headtail,matrix-method}: Show first and last rows.
 
-\item \code{headtail,sparseMatrix-method}: Same method as \code{matrix}.
+\item \code{headtail,Matrix-method}: Same method as \code{matrix}.
 
 \item \code{headtail,data.frame-method}: Same method as \code{matrix}.
 
@@ -67,7 +67,7 @@ objects.
 }}
 
 \note{
-Updated 2020-01-20.
+Updated 2020-01-30.
 }
 \examples{
 data(mtcars, package = "datasets")
