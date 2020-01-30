@@ -46,7 +46,6 @@ Imports:
     GenomicRanges (>= 1.38),
     IRanges (>= 2.20),
     Matrix (>= 1.2),
-    Matrix.utils (>= 0.9),
     RCurl (>= 1.95),
     R.utils (>= 2.9),
     S4Vectors (>= 0.24),
