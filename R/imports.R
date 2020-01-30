@@ -32,6 +32,7 @@ NULL
 #'   transcripts
 #' @importFrom GenomicRanges GRanges ranges
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
+#' @importFrom Matrix fac2sparse
 #' @importFrom RCurl getURL url.exists
 #' @importFrom R.utils gzip
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
