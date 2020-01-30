@@ -1,4 +1,10 @@
-#' @rdname aggregate
+#' @name aggregateCols
+#' @inherit acidgenerics::aggregateCols
+NULL
+
+
+
+#' @rdname aggregateCols
 #' @name aggregateCols
 #' @importFrom acidgenerics aggregateCols
 #' @usage aggregateCols(x, ...)
@@ -23,7 +29,7 @@ NULL
 
 
 
-#' @rdname aggregate
+#' @rdname aggregateCols
 #' @export
 setMethod(
     f = "aggregateCols",
@@ -49,7 +55,7 @@ setMethod(
 
 
 
-#' @rdname aggregate
+#' @rdname aggregateCols
 #' @export
 setMethod(
     f = "aggregateCols",
@@ -112,7 +118,7 @@ setMethod(
 
 
 
-#' @rdname aggregate
+#' @rdname aggregateCols
 #' @export
 setMethod(
     f = "aggregateCols",
@@ -202,7 +208,7 @@ setMethod(
 
 
 
-#' @rdname aggregate
+#' @rdname aggregateCols
 #' @export
 setMethod(
     f = "aggregateCols",
