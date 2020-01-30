@@ -1,6 +1,6 @@
 #' @name pseudobulk
 #' @inherit acidgenerics::pseudobulk
-#' @note Updated 2019-08-11.
+#' @note Updated 2020-01-03.
 #'
 #' @inheritParams aggregate
 #' @inheritParams acidroxygen::params
@@ -30,10 +30,10 @@ NULL
 `pseudobulk,SingleCellExperiment` <-  # nolint
     function(
         object,
-        FUN  # nolint
+        fun = c("sum", "mean")
     ) {
         validObject(object)
-        FUN <- match.fun(FUN)
+        fun <- match.arg(fun)
         rse <- as(object, "RangedSummarizedExperiment")
         colData <- colData(rse)
         assert(areDisjointSets("aggregate", colnames(colData)))
@@ -42,7 +42,7 @@ NULL
             colData[["sampleID"]] <- NULL
         }
         colData(rse) <- colData
-        aggregateCols(x = rse, col = "aggregate", FUN = FUN)
+        aggregateCols(x = rse, col = "aggregate", fun = fun)
     }
 
 
