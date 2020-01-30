@@ -49,13 +49,15 @@
 #'   [`colData()`][SummarizedExperiment::colData] that defines the desired
 #'   aggregation groupings.
 #' @param fun `character(1)`.
-#'   Name of the aggregation function.
+#'   Name of the aggregation method to apply.
+#'   Note that "n" will return the number of aggregations (count).
 #'   Uses [`match.arg()`][base::match.arg] internally.
 #'
 #' @seealso
 #' - `stats::aggregate()`.
 #' - `S4Vectors::aggregate()`.
 #' - `Matrix.utils::aggregate.Matrix()`.
+#' - `muscat::aggregateData()`.
 #'
 #' @return Modified object, with aggregated rows (features) or columns
 #'   (samples).
@@ -137,7 +139,7 @@ NULL
     function(
         x,
         by,
-        fun = c("sum", "count", "mean")
+        fun = c("sum", "mean", "n")
     ) {
         assert(
             hasRows(x), hasCols(x),
@@ -145,14 +147,14 @@ NULL
             identical(names(by), rownames(x))
         )
         fun <- match.arg(fun)
-        if (fun == "count") {
+        if (fun == "n") {
             x <- x != 0L
         }
         model <- fac2sparse(by)
         ## This step calculates the sum.
         result <- model %*% x
         if (fun == "mean") {
-            n <- aggregate(x = x, by = by, fun = "count")
+            n <- aggregate(x = x, by = by, fun = "n")
             result <- result / n
         }
         result
