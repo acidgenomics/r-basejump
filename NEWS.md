@@ -1,3 +1,17 @@
+## basejump 0.12.1 (2020-01-30)
+
+### Major changes
+
+- Reworked `aggregate`, `aggregateCols`, `aggregateRows` support to reflect
+  internal migration away from Matrix.utils dependency.
+
+### Minor changes
+
+- NAMESPACE fix for unexpected removal of Matrix.utils from CRAN. Now defining
+  the previously imported aggregate.Matrix function directly here in basejump.
+- `aggregate`: Now defining matrix method.
+- `aggregate*` generics now consistently use "x" instead of "object".
+
 ## basejump 0.12.0 (2020-01-20)
 
 ### Major changes
