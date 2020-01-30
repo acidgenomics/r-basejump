@@ -5,19 +5,14 @@
 \alias{aggregateCellsToSamples,SingleCellExperiment-method}
 \title{Aggregate cells to samples}
 \usage{
-aggregateCellsToSamples(object, ...)
+aggregateCellsToSamples(x, ...)
 
-\S4method{aggregateCellsToSamples}{SingleCellExperiment}(
-  object,
-  fun = c("sum", "mean", "geometricMean", "median")
-)
+\S4method{aggregateCellsToSamples}{SingleCellExperiment}(x, FUN)
 }
 \arguments{
-\item{object}{Object.}
+\item{x}{Object.}
 
-\item{fun}{\code{character(1)}.
-Name of the aggregation function.
-Uses \code{\link[base:match.arg]{match.arg()}} internally.}
+\item{FUN}{\code{function}.}
 
 \item{...}{Additional arguments.}
 }
@@ -35,13 +30,13 @@ cell-to-sample groupings and then performs aggregation with the
 \code{\link[=aggregateCols]{aggregateCols()}} function.
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-01-30.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
-object <- SingleCellExperiment
-x <- aggregateCellsToSamples(object)
+x <- SingleCellExperiment
+x <- aggregateCellsToSamples(x)
 print(x)
 }

@@ -110,7 +110,7 @@ setMethod(
         se
     }
 
-formals(`aggregateCols,SummarizedExperiment`)[["fun"]] <- .aggregateFuns
+
 
 #' @rdname aggregate
 #' @export
