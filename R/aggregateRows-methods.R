@@ -1,3 +1,7 @@
+## FIXME Rename generic to x.
+
+
+
 #' @rdname aggregate
 #' @name aggregateRows
 #' @importFrom acidgenerics aggregateRows
@@ -7,22 +11,21 @@ NULL
 
 
 
-## Updated 2019-08-18.
+## Updated 2020-01-30.
 `aggregateRows,matrix` <-  # nolint
-    function(object, groupings, fun) {
+    function(object, by, FUN) {
         assert(
             hasValidDimnames(object),
-            is.factor(groupings),
-            identical(rownames(object), names(groupings)),
-            validNames(levels(groupings))
+            is.factor(by),
+            identical(rownames(object), names(by)),
+            validNames(levels(by))
         )
-        fun <- match.arg(fun)
-        .aggregateMessage(groupings, fun = fun)
+        FUN <- match.fun(FUN)
         ## Using the `stats::aggregate.data.frame()` S3 method here.
         data <- aggregate(
             x = object,
-            by = list(rowname = groupings),
-            FUN = getFromNamespace(x = fun, ns = "base")
+            by = list(rowname = by),
+            FUN = FUN
         )
         assert(is.data.frame(data))
         rownames(data) <- data[["rowname"]]
@@ -30,7 +33,7 @@ NULL
         as.matrix(data)
     }
 
-formals(`aggregateRows,matrix`)[["fun"]] <- .aggregateFuns
+
 
 #' @rdname aggregate
 #' @export
@@ -44,21 +47,20 @@ setMethod(
 
 ## Updated 2020-01-30.
 `aggregateRows,sparseMatrix` <-  # nolint
-    function(object, groupings, fun) {
+    function(object, by, FUN) {
         validObject(object)
         assert(
             hasValidDimnames(object),
-            is.factor(groupings),
-            identical(rownames(object), names(groupings)),
-            validNames(levels(groupings))
+            is.factor(by),
+            identical(rownames(object), names(by)),
+            validNames(levels(by))
         )
-        fun <- match.arg(fun)
-        .aggregateMessage(groupings, fun = fun)
+        FUN <- match.fun(FUN)
         ## Using our internal Matrix S4 method here.
-        aggregate(x = object, groupings = groupings, fun = fun)
+        aggregate(x = object, by = by, FUN = FUN)
     }
 
-formals(`aggregateRows,sparseMatrix`)[["fun"]] <- .aggregateFuns
+
 
 #' @rdname aggregate
 #' @export
@@ -70,34 +72,31 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `aggregateRows,SummarizedExperiment` <-  # nolint
-    function(object, col = "aggregate", fun) {
+    function(
+        object,
+        col = "aggregate",
+        FUN
+    ) {
         validObject(object)
         assert(
             hasValidDimnames(object),
             isString(col)
         )
-        fun <- match.arg(fun)
+        FUN <- match.fun(FUN)
 
         ## Groupings -----------------------------------------------------------
         assert(isSubset(col, colnames(rowData(object))))
-        groupings <- rowData(object)[[col]]
+        by <- rowData(object)[[col]]
         assert(
-            is.factor(groupings),
-            validNames(levels(groupings))
+            is.factor(by),
+            validNames(levels(by))
         )
-        names(groupings) <- rownames(object)
+        names(by) <- rownames(object)
 
         ## Counts --------------------------------------------------------------
-        counts <- aggregateRows(
-            object = counts(object),
-            groupings = groupings,
-            fun = fun
-        )
-        if (fun == "sum") {
-            assert(identical(x = sum(counts), y = sum(counts(object))))
-        }
+        counts <- aggregateRows(object = counts(object), by = by, FUN = FUN)
 
         ## Return --------------------------------------------------------------
         args <- list(
@@ -115,7 +114,7 @@ setMethod(
         se
     }
 
-formals(`aggregateRows,SummarizedExperiment`)[["fun"]] <- .aggregateFuns
+
 
 #' @rdname aggregate
 #' @export
