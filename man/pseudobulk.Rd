@@ -13,8 +13,7 @@ pseudobulk(object, ...)
 \item{object}{Object.}
 
 \item{fun}{\code{character(1)}.
-Name of the aggregation method to apply.
-Note that "n" will return the number of aggregations (count).
+Name of the aggregation function to apply.
 Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 
 \item{...}{Additional arguments.}

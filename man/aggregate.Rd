@@ -3,7 +3,7 @@
 \name{aggregate}
 \alias{aggregate}
 \alias{aggregate,Matrix-method}
-\title{Aggregate rows or columns}
+\title{Aggregate}
 \usage{
 aggregate(x, ...)
 
@@ -13,67 +13,25 @@ aggregate(x, ...)
 \item{x}{Object.}
 
 \item{by}{\code{factor}.
-Defines the aggregation groupings. The new aggregate names are defined as
-the \code{factor} \link[base:levels]{levels}, and the original, unaggregated names
-are defined as the \link[base:names]{names}.}
+Aggregation groupings. The new aggregate names are defined as the \code{factor}
+\link[base:levels]{levels}, and the original, unaggregated names are defined as
+the \link[base:names]{names}.}
 
 \item{fun}{\code{character(1)}.
-Name of the aggregation method to apply.
-Note that "n" will return the number of aggregations (count).
+Name of the aggregation function to apply.
 Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 
 \item{...}{Additional arguments.}
-
-\item{col}{\code{character(1)}.
-Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} or
-\code{\link[SummarizedExperiment:colData]{colData()}} that defines the desired
-aggregation groupings.}
 }
 \value{
-Modified object, with aggregated rows (features) or columns
-(samples).
+Modified object.
 }
 \description{
-Aggregate gene/transcript features (rows) or sample replicates (columns).
-}
-\details{
-\code{\link[=aggregateRows]{aggregateRows()}} works down the rows, and is designed to aggregate features
-(e.g. genes or transcripts). Most commonly, the \code{\link[=aggregateRows]{aggregateRows()}} function
-can be used to aggregate counts from transcript-level to gene-level.
-\code{\link[=aggregateCols]{aggregateCols()}} works across the columns, and is designed to aggregate
-sample replicates.
+Aggregate
 }
 \note{
 Updated 2020-01-30.
 }
-\section{Methods (by class)}{
-
-\itemize{
-\item \code{matrix}, \code{Matrix}:
-Aggregate rows or columns using a grouping \code{factor}.
-\item \code{SummarizedExperiment}:
-Aggregate rows or columns of data slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}} using an automatically
-generated grouping \code{factor}, which is obtained from a user-defined column
-(\code{col} argument) in either the
-\code{\link[SummarizedExperiment:rowData]{rowData()}} or
-\code{\link[SummarizedExperiment:colData]{colData()}} of the object. Slot an
-\code{aggregate} column into \code{\link[SummarizedExperiment:rowData]{rowData()}}
-for \code{\link[=aggregateRows]{aggregateRows()}}, or into
-\code{\link[SummarizedExperiment:colData]{colData()}} for \code{\link[=aggregateCols]{aggregateCols()}}. This
-method will define the \code{groupings} automatically, and perform the
-aggregation.
-\item \code{SingleCellExperiment}:
-Aggregate \code{\link[SummarizedExperiment:assays]{assays()}} across cell-level
-groupings, defined by a column in
-\code{\link[SummarizedExperiment:colData]{colData()}}. Inherits from
-\code{SummarizedExperiment}, and still relies upon slotting an \code{aggregate}
-column into \code{\link[SummarizedExperiment:colData]{colData()}}. Note that these
-groupings will map to cells, so care must be taken to properly aggregate
-samples.
-}
-}
-
 \examples{
 ## Example data ====
 counts <- matrix(
@@ -136,10 +94,7 @@ aggregateCols(se)
 \itemize{
 \item \code{stats::aggregate()}.
 \item \code{S4Vectors::aggregate()}.
-\item \code{Matrix.utils::aggregate.Matrix()}.
+\item \code{Matrix.utils::aggregate.Matrix()} (defunct).
 \item \code{muscat::aggregateData()}.
 }
-}
-\author{
-Michael Steinbaugh, Rory Kirchner
 }
