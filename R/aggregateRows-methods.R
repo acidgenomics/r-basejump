@@ -18,7 +18,7 @@ NULL
         )
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
-        ## Using `stats::aggregate.data.frame()` S3 method here.
+        ## Using the `stats::aggregate.data.frame()` S3 method here.
         data <- aggregate(
             x = object,
             by = list(rowname = groupings),
@@ -42,7 +42,7 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `aggregateRows,sparseMatrix` <-  # nolint
     function(object, groupings, fun) {
         validObject(object)
@@ -54,7 +54,7 @@ setMethod(
         )
         fun <- match.arg(fun)
         .aggregateMessage(groupings, fun = fun)
-        ## FIXME `Matrix.utils::aggregate.Matrix` S3 method.
+        ## Using our internal Matrix S4 method here.
         aggregate(x = object, groupings = groupings, fun = fun)
     }
 
