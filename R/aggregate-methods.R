@@ -17,7 +17,7 @@
 #'
 #' @section Methods (by class):
 #'
-#' - `matrix`, `sparseMatrix`:
+#' - `matrix`, `Matrix`:
 #'     Aggregate rows or columns using a grouping `factor`.
 #' - `SummarizedExperiment`:
 #'     Aggregate rows or columns of data slotted in
@@ -94,7 +94,7 @@
 #' names(samples) <- colnames(counts)
 #' print(samples)
 #'
-#' ## sparseMatrix
+#' ## Matrix
 #' sparse <- as(counts, "sparseMatrix")
 #' class(sparse)
 #' print(sparse)

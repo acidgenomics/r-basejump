@@ -34,7 +34,7 @@ setMethod(
 
 
 ## Updated 2020-01-30.
-`aggregateCols,sparseMatrix` <-  # nolint
+`aggregateCols,Matrix` <-  # nolint
     function(
         x,
         by,
@@ -53,8 +53,8 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateCols",
-    signature = signature("sparseMatrix"),
-    definition = `aggregateCols,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `aggregateCols,Matrix`
 )
 
 

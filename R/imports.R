@@ -5,7 +5,7 @@
 
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
-#' @importClassesFrom Matrix sparseMatrix
+#' @importClassesFrom Matrix Matrix
 #' @importClassesFrom S4Vectors Annotated DataFrame DataTable List Vector
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment

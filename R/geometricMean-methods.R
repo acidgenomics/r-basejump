@@ -35,7 +35,7 @@
 #' print(matrix)
 #' geometricMean(matrix)
 #'
-#' ## sparseMatrix ====
+#' ## Matrix ====
 #' sparse <- as(matrix, "sparseMatrix")
 #' print(sparse)
 #' geometricMean(sparse)
@@ -116,8 +116,8 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
-`geometricMean,sparseMatrix` <-  # nolint
+## Updated 2020-01-30.
+`geometricMean,Matrix` <-  # nolint
     `geometricMean,matrix`
 
 
@@ -126,6 +126,6 @@ setMethod(
 #' @export
 setMethod(
     f = "geometricMean",
-    signature = signature("sparseMatrix"),
-    definition = `geometricMean,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `geometricMean,Matrix`
 )
