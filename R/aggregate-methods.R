@@ -10,7 +10,7 @@
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -40,7 +40,7 @@
 #'     groupings will map to cells, so care must be taken to properly aggregate
 #'     samples.
 #'
-#' @param groupings `factor`.
+#' @param by `factor`.
 #'   Defines the aggregation groupings. The new aggregate names are defined as
 #'   the `factor` [levels][base::levels], and the original, unaggregated names
 #'   are defined as the [names][base::names].
@@ -149,6 +149,7 @@ NULL
             x <- x != 0L
         }
         model <- fac2sparse(by)
+        ## This step calculates the sum.
         result <- model %*% x
         if (fun == "mean") {
             n <- aggregate(x = x, by = by, fun = "count")
