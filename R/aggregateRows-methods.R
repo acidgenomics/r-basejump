@@ -9,19 +9,23 @@ NULL
 
 ## Updated 2020-01-30.
 `aggregateRows,matrix` <-  # nolint
-    function(x, by, FUN) {
+    function(
+        x,
+        by,
+        fun = c("sum", "mean", "median", "geometricMean")
+    ) {
         assert(
             hasValidDimnames(x),
             is.factor(by),
             identical(rownames(x), names(by)),
             validNames(levels(by))
         )
-        FUN <- match.fun(FUN)
+        fun <- match.arg(fun)
         ## Using the `stats::aggregate.data.frame()` S3 method here.
         data <- aggregate(
             x = x,
             by = list(rowname = by),
-            FUN = FUN
+            FUN = get(x = fun, inherits = TRUE)
         )
         assert(is.data.frame(data))
         rownames(data) <- data[["rowname"]]
@@ -42,8 +46,12 @@ setMethod(
 
 
 ## Updated 2020-01-30.
-`aggregateRows,sparseMatrix` <-  # nolint
-    function(x, by, FUN) {
+`aggregateRows,Matrix` <-  # nolint
+    function(
+        x,
+        by,
+        fun = c("sum", "mean")
+    ) {
         validObject(x)
         assert(
             hasValidDimnames(x),
@@ -51,9 +59,9 @@ setMethod(
             identical(rownames(x), names(by)),
             validNames(levels(by))
         )
-        FUN <- match.fun(FUN)
+        fun <- match.arg(fun)
         ## Using our internal Matrix S4 method here.
-        aggregate(x = x, by = by, FUN = FUN)
+        aggregate(x = x, by = by, fun = fun)
     }
 
 
@@ -62,8 +70,8 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateRows",
-    signature = signature("sparseMatrix"),
-    definition = `aggregateRows,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `aggregateRows,Matrix`
 )
 
 
@@ -73,14 +81,14 @@ setMethod(
     function(
         x,
         col = "aggregate",
-        FUN
+        fun = "sum"
     ) {
         validObject(x)
         assert(
             hasValidDimnames(x),
-            isString(col)
+            isString(col),
+            isString(fun)
         )
-        FUN <- match.fun(FUN)
 
         ## Groupings -----------------------------------------------------------
         assert(isSubset(col, colnames(rowData(x))))
@@ -92,7 +100,7 @@ setMethod(
         names(by) <- rownames(x)
 
         ## Counts --------------------------------------------------------------
-        counts <- aggregateRows(x = counts(x), by = by, FUN = FUN)
+        counts <- aggregateRows(x = counts(x), by = by, fun = fun)
 
         ## Return --------------------------------------------------------------
         args <- list(
