@@ -38,7 +38,9 @@
   
 
 <meta property="og:title" content="Dotted case — dottedCase" />
-<meta property="og:description" content="Dotted case" />
+<meta property="og:description" content="Support is provided for matching against base R parameters. However, it is
+recommended to avoid using it for variable assignments into an environment,
+as that can introduce conflicts with base functions." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
       </span>
     </div>
 
@@ -119,7 +121,9 @@
     </div>
 
     <div class="ref-description">
-    <p>Dotted case</p>
+    <p>Support is provided for matching against base R parameters. However, it is
+recommended to avoid using it for variable assignments into an <code>environment</code>,
+as that can introduce conflicts with base functions.</p>
     </div>
 
     <pre class="usage"><span class='fu'>dottedCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
@@ -226,7 +230,10 @@ Sanitize column names of column data.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Modified object, with names formatted in dotted case.</p>
+    <p>Modified object.
+Contains syntatically valid names.
+For objects with <code><a href='https://rdrr.io/r/base/names.html'>names()</a></code> defined, the underlying data
+returns unchanged, except for <code>character</code> or <code>vector</code> class.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Updated 2019-09-25.</p>

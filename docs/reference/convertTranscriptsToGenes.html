@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
       </span>
     </div>
 
@@ -130,7 +130,7 @@
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>tx2gene</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='co'># S4 method for sparseMatrix</span>
+<span class='co'># S4 method for Matrix</span>
 <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>tx2gene</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
@@ -166,7 +166,7 @@ and collapse the matrix.</p></td>
 <ul>
 <li><p><code>character</code>: <code>factor</code>.
 Genes in the values, transcripts in the names.</p></li>
-<li><p><code>matrix</code>, <code>sparseMatrix</code>, <code>SummarizedExperiment</code>:
+<li><p><code>matrix</code>, <code>Matrix</code>, <code>SummarizedExperiment</code>:
 Object containing counts collapsed to gene level by default
 (see <code>aggregate</code> argument).</p></li>
 </ul>
@@ -176,10 +176,10 @@ Object containing counts collapsed to gene level by default
     <p>For objects containing a count matrix, the object rows will be
 collapsed to gene level using <code>aggregateRows</code>. This applies to our
 <code>SummarizedExperiment</code> method.</p>
-<p>Updated 2020-01-20.</p>
+<p>Updated 2020-01-30.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='aggregate.html'>aggregateRows()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='aggregateRows.html'>aggregateRows()</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SummarizedExperiment_transcripts</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
@@ -217,16 +217,11 @@ collapsed to gene level using <code>aggregateRows</code>. This applies to our
 #&gt; ENST00000371584      13      14      15      16
 #&gt; ENST00000371588      17      18      19      20
 #&gt; ENST00000413082      21      22      23      24</div><div class='input'><span class='co'>## Aggregate to gene level.</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>counts</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='no'>t2g</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span>
-#&gt; <span class='message'>Groupings:</span>
-#&gt; <span class='message'>ENST00000494424 ENST00000496771 ENST00000612152 ENST00000371584 ENST00000371588 </span>
-#&gt; <span class='message'>ENSG00000000003 ENSG00000000003 ENSG00000000003 ENSG00000000419 ENSG00000000419 </span>
-#&gt; <span class='message'>ENST00000413082 </span>
-#&gt; <span class='message'>ENSG00000000419 </span>
-#&gt; <span class='message'>Levels: ENSG00000000003 ENSG00000000419</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                 sample1 sample2 sample3 sample4
-#&gt; ENSG00000000003      15      18      21      24
-#&gt; ENSG00000000419      51      54      57      60</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample1 sample2 sample3 sample4 
-#&gt;      66      72      78      84 </div><div class='input'><span class='co'>## Simply map to rownames.</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>counts</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='no'>t2g</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .local(x, ...): unused argument (groupings = t2g)</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ENST00000494424 ENST00000496771 ENST00000612152 ENST00000371584 ENST00000371588 
+#&gt; ENSG00000000003 ENSG00000000003 ENSG00000000003 ENSG00000000419 ENSG00000000419 
+#&gt; ENST00000413082 
+#&gt; ENSG00000000419 
+#&gt; Levels: ENSG00000000003 ENSG00000000419</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in base::colSums(x, na.rm = na.rm, dims = dims, ...): 'x' must be an array of at least two dimensions</span></div><div class='input'><span class='co'>## Simply map to rownames.</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>counts</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='no'>t2g</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                 sample1 sample2 sample3 sample4
 #&gt; ENSG00000000003       1       2       3       4
@@ -237,20 +232,13 @@ collapsed to gene level using <code>aggregateRows</code>. This applies to our
 #&gt; ENSG00000000419      21      22      23      24</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample1 sample2 sample3 sample4 
 #&gt;      66      72      78      84 </div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'sum()'.</span>
-#&gt; <span class='message'>Groupings:</span>
-#&gt; <span class='message'>ENST00000494424 ENST00000496771 ENST00000612152 ENST00000371584 ENST00000371588 </span>
-#&gt; <span class='message'>ENSG00000000003 ENSG00000000003 ENSG00000000003 ENSG00000000419 ENSG00000000419 </span>
-#&gt; <span class='message'>ENST00000413082 </span>
-#&gt; <span class='message'>ENSG00000000419 </span>
-#&gt; <span class='message'>Levels: ENSG00000000003 ENSG00000000419</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 2 4 
-#&gt; metadata(0):
-#&gt; assays(1): counts
-#&gt; rownames(2): ENSG00000000003 ENSG00000000419
-#&gt; rowData names(0):
-#&gt; colnames(4): sample1 sample2 sample3 sample4
-#&gt; colData names(0):</div></span></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .local(x, ...): unused argument (groupings = t2g)</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                 sample1 sample2 sample3 sample4
+#&gt; ENSG00000000003       1       2       3       4
+#&gt; ENSG00000000003       5       6       7       8
+#&gt; ENSG00000000003       9      10      11      12
+#&gt; ENSG00000000419      13      14      15      16
+#&gt; ENSG00000000419      17      18      19      20
+#&gt; ENSG00000000419      21      22      23      24</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

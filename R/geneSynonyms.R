@@ -4,7 +4,7 @@
 #'
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
 #' Use the [wormbase](https://steinbaugh.com/wormbase/) package instead.
-#' @note Updated 2019-08-18.
+#' @note Updated 2020-01-30.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -39,7 +39,7 @@ geneSynonyms <- function(organism) {
     if (isTRUE(getOption("acid.test"))) {
         assert(organism == "Homo sapiens")
         file <- pasteURL(
-            basejumpTestsURL, paste0(snake(organism), ".gene_info.gz"),
+            basejumpTestsURL, paste0(snakeCase(organism), ".gene_info.gz"),
             protocol = "none"
         )
     } else {
