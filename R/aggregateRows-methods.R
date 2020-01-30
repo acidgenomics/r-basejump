@@ -1,11 +1,7 @@
-## FIXME Rename generic to x.
-
-
-
 #' @rdname aggregate
 #' @name aggregateRows
 #' @importFrom acidgenerics aggregateRows
-#' @usage aggregateRows(object, ...)
+#' @usage aggregateRows(x, ...)
 #' @export
 NULL
 
@@ -13,17 +9,17 @@ NULL
 
 ## Updated 2020-01-30.
 `aggregateRows,matrix` <-  # nolint
-    function(object, by, FUN) {
+    function(x, by, FUN) {
         assert(
-            hasValidDimnames(object),
+            hasValidDimnames(x),
             is.factor(by),
-            identical(rownames(object), names(by)),
+            identical(rownames(x), names(by)),
             validNames(levels(by))
         )
         FUN <- match.fun(FUN)
         ## Using the `stats::aggregate.data.frame()` S3 method here.
         data <- aggregate(
-            x = object,
+            x = x,
             by = list(rowname = by),
             FUN = FUN
         )
@@ -47,17 +43,17 @@ setMethod(
 
 ## Updated 2020-01-30.
 `aggregateRows,sparseMatrix` <-  # nolint
-    function(object, by, FUN) {
-        validObject(object)
+    function(x, by, FUN) {
+        validObject(x)
         assert(
-            hasValidDimnames(object),
+            hasValidDimnames(x),
             is.factor(by),
-            identical(rownames(object), names(by)),
+            identical(rownames(x), names(by)),
             validNames(levels(by))
         )
         FUN <- match.fun(FUN)
         ## Using our internal Matrix S4 method here.
-        aggregate(x = object, by = by, FUN = FUN)
+        aggregate(x = x, by = by, FUN = FUN)
     }
 
 
@@ -75,35 +71,35 @@ setMethod(
 ## Updated 2020-01-30.
 `aggregateRows,SummarizedExperiment` <-  # nolint
     function(
-        object,
+        x,
         col = "aggregate",
         FUN
     ) {
-        validObject(object)
+        validObject(x)
         assert(
-            hasValidDimnames(object),
+            hasValidDimnames(x),
             isString(col)
         )
         FUN <- match.fun(FUN)
 
         ## Groupings -----------------------------------------------------------
-        assert(isSubset(col, colnames(rowData(object))))
-        by <- rowData(object)[[col]]
+        assert(isSubset(col, colnames(rowData(x))))
+        by <- rowData(x)[[col]]
         assert(
             is.factor(by),
             validNames(levels(by))
         )
-        names(by) <- rownames(object)
+        names(by) <- rownames(x)
 
         ## Counts --------------------------------------------------------------
-        counts <- aggregateRows(object = counts(object), by = by, FUN = FUN)
+        counts <- aggregateRows(x = counts(x), by = by, FUN = FUN)
 
         ## Return --------------------------------------------------------------
         args <- list(
             assays = SimpleList(counts = counts),
-            colData = colData(object)
+            colData = colData(x)
         )
-        if (is(object, "RangedSummarizedExperiment")) {
+        if (is(x, "RangedSummarizedExperiment")) {
             args[["rowRanges"]] <- emptyRanges(names = rownames(counts))
         } else {
             args[["rowData"]] <- DataFrame(row.names = rownames(counts))
