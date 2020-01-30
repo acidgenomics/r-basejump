@@ -31,6 +31,48 @@
 #'   Name of column in either [`rowData()`][SummarizedExperiment::rowData] or
 #'   [`colData()`][SummarizedExperiment::colData] that defines the desired
 #'   aggregation groupings.
+#'
+#' @examples
+#' counts <- matrix(
+#'     data = c(
+#'         0L, 1L, 1L, 1L,
+#'         1L, 0L, 1L, 1L,
+#'         1L, 1L, 0L, 1L,
+#'         1L, 1L, 1L, 0L
+#'     ),
+#'     nrow = 4L,
+#'     ncol = 4L,
+#'     byrow = TRUE,
+#'     dimnames = list(
+#'         paste0("transcript", seq_len(4L)),
+#'         paste(
+#'             paste0("sample", rep(seq_len(2L), each = 2L)),
+#'             paste0("replicate", rep(seq_len(2L), times = 2L)),
+#'             sep = "_"
+#'         )
+#'     )
+#' )
+#'
+#' genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
+#' names(genes) <- rownames(counts)
+#' print(genes)
+#'
+#' ## matrix ====
+#' print(counts)
+#' aggregateRows(counts, by = samples)
+#'
+#' ## Matrix ====
+#' sparse <- as(counts, "sparseMatrix")
+#' print(sparse)
+#' aggregateRows(sparse, by = samples)
+#'
+#' ## SummarizedExperiment ====
+#' se <- SummarizedExperiment::SummarizedExperiment(
+#'     assays = SimpleList(counts = counts),
+#'     rowData = DataFrame(aggregate = genes)
+#' )
+#' print(se)
+#' aggregateRows(se)
 NULL
 
 
@@ -46,29 +88,7 @@ NULL
 
 ## Updated 2020-01-30.
 `aggregateRows,matrix` <-  # nolint
-    function(
-        x,
-        by,
-        fun = c("sum", "mean", "median", "geometricMean")
-    ) {
-        assert(
-            hasValidDimnames(x),
-            is.factor(by),
-            identical(rownames(x), names(by)),
-            validNames(levels(by))
-        )
-        fun <- match.arg(fun)
-        ## Using the `stats::aggregate.data.frame()` S3 method here.
-        data <- aggregate(
-            x = x,
-            by = list(rowname = by),
-            FUN = get(x = fun, inherits = TRUE)
-        )
-        assert(is.data.frame(data))
-        rownames(data) <- data[["rowname"]]
-        data[["rowname"]] <- NULL
-        as.matrix(data)
-    }
+    `aggregate,matrix`
 
 
 
