@@ -9,7 +9,7 @@
 \usage{
 aggregateRows(x, ...)
 
-\S4method{aggregateRows}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
+\S4method{aggregateRows}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean", "n"))
 
 \S4method{aggregateRows}{Matrix}(x, by, fun = c("sum", "mean"))
 
@@ -60,10 +60,10 @@ samples.
 \examples{
 counts <- matrix(
     data = c(
-        0L, 1L, 1L, 1L,
-        1L, 0L, 1L, 1L,
-        1L, 1L, 0L, 1L,
-        1L, 1L, 1L, 0L
+        0L, 2L, 2L, 2L,
+        2L, 0L, 2L, 2L,
+        2L, 2L, 0L, 2L,
+        2L, 2L, 2L, 0L
     ),
     nrow = 4L,
     ncol = 4L,
