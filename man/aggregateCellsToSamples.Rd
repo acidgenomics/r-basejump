@@ -7,12 +7,10 @@
 \usage{
 aggregateCellsToSamples(x, ...)
 
-\S4method{aggregateCellsToSamples}{SingleCellExperiment}(x, FUN)
+\S4method{aggregateCellsToSamples}{SingleCellExperiment}(x)
 }
 \arguments{
 \item{x}{Object.}
-
-\item{FUN}{\code{function}.}
 
 \item{...}{Additional arguments.}
 }
@@ -26,7 +24,7 @@ function will sum the counts across cells to sample level.
 }
 \details{
 Internally \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}} automatically obtains the
-cell-to-sample groupings and then performs aggregation with the
+cell-to-sample groupings and then performs a sum aggregation with the
 \code{\link[=aggregateCols]{aggregateCols()}} function.
 }
 \note{

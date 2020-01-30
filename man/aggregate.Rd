@@ -11,40 +11,44 @@
 \alias{aggregateCols,SingleCellExperiment-method}
 \alias{aggregateRows}
 \alias{aggregateRows,matrix-method}
-\alias{aggregateRows,sparseMatrix-method}
+\alias{aggregateRows,Matrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}
 \title{Aggregate rows or columns}
 \usage{
 aggregate(x, ...)
 
-\S4method{aggregate}{Matrix}(x, by, fun = c("sum", "count", "mean"))
+\S4method{aggregate}{Matrix}(x, by, fun = c("sum", "mean", "n"))
 
 aggregateCols(x, ...)
 
-\S4method{aggregateCols}{matrix}(x, by, FUN)
+\S4method{aggregateCols}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
 
-\S4method{aggregateCols}{sparseMatrix}(x, by, FUN)
+\S4method{aggregateCols}{sparseMatrix}(x, by, fun = c("sum", "mean"))
 
-\S4method{aggregateCols}{SummarizedExperiment}(x, col = "aggregate", FUN)
+\S4method{aggregateCols}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
 
-\S4method{aggregateCols}{SingleCellExperiment}(x, FUN)
+\S4method{aggregateCols}{SingleCellExperiment}(x, fun)
 
 aggregateRows(x, ...)
 
-\S4method{aggregateRows}{matrix}(x, by, FUN)
+\S4method{aggregateRows}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
 
-\S4method{aggregateRows}{sparseMatrix}(x, by, FUN)
+\S4method{aggregateRows}{Matrix}(x, by, fun = c("sum", "mean"))
 
-\S4method{aggregateRows}{SummarizedExperiment}(x, col = "aggregate", FUN)
+\S4method{aggregateRows}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
 }
 \arguments{
 \item{x}{Object.}
 
-\item{fun}{\code{character(1)}.
-Name of the aggregation function.
-Uses \code{\link[base:match.arg]{match.arg()}} internally.}
+\item{by}{\code{factor}.
+Defines the aggregation groupings. The new aggregate names are defined as
+the \code{factor} \link[base:levels]{levels}, and the original, unaggregated names
+are defined as the \link[base:names]{names}.}
 
-\item{FUN}{\code{function}.}
+\item{fun}{\code{character(1)}.
+Name of the aggregation method to apply.
+Note that "n" will return the number of aggregations (count).
+Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 
 \item{col}{\code{character(1)}.
 Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} or
@@ -52,11 +56,6 @@ Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} o
 aggregation groupings.}
 
 \item{...}{Additional arguments.}
-
-\item{groupings}{\code{factor}.
-Defines the aggregation groupings. The new aggregate names are defined as
-the \code{factor} \link[base:levels]{levels}, and the original, unaggregated names
-are defined as the \link[base:names]{names}.}
 }
 \value{
 Modified object, with aggregated rows (features) or columns
@@ -73,7 +72,7 @@ can be used to aggregate counts from transcript-level to gene-level.
 sample replicates.
 }
 \note{
-Updated 2020-01-20.
+Updated 2020-01-30.
 }
 \section{Methods (by class)}{
 
@@ -166,6 +165,7 @@ aggregateCols(se)
 \item \code{stats::aggregate()}.
 \item \code{S4Vectors::aggregate()}.
 \item \code{Matrix.utils::aggregate.Matrix()}.
+\item \code{muscat::aggregateData()}.
 }
 }
 \author{
