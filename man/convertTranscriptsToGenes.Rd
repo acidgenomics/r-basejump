@@ -4,7 +4,7 @@
 \alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes,character-method}
 \alias{convertTranscriptsToGenes,matrix-method}
-\alias{convertTranscriptsToGenes,sparseMatrix-method}
+\alias{convertTranscriptsToGenes,Matrix-method}
 \alias{convertTranscriptsToGenes,SummarizedExperiment-method}
 \title{Convert transcripts to genes}
 \usage{
@@ -14,7 +14,7 @@ convertTranscriptsToGenes(object, ...)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene, aggregate = TRUE)
 
-\S4method{convertTranscriptsToGenes}{sparseMatrix}(object, tx2gene, aggregate = TRUE)
+\S4method{convertTranscriptsToGenes}{Matrix}(object, tx2gene, aggregate = TRUE)
 
 \S4method{convertTranscriptsToGenes}{SummarizedExperiment}(object)
 }

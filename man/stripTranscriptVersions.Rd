@@ -4,7 +4,7 @@
 \alias{stripTranscriptVersions}
 \alias{stripTranscriptVersions,character-method}
 \alias{stripTranscriptVersions,matrix-method}
-\alias{stripTranscriptVersions,sparseMatrix-method}
+\alias{stripTranscriptVersions,Matrix-method}
 \alias{stripTranscriptVersions,SummarizedExperiment-method}
 \alias{stripGeneVersions}
 \title{Strip transcript versions}
@@ -15,7 +15,7 @@ stripTranscriptVersions(object, ...)
 
 \S4method{stripTranscriptVersions}{matrix}(object)
 
-\S4method{stripTranscriptVersions}{sparseMatrix}(object)
+\S4method{stripTranscriptVersions}{Matrix}(object)
 
 \S4method{stripTranscriptVersions}{SummarizedExperiment}(object)
 

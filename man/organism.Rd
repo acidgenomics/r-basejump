@@ -4,7 +4,7 @@
 \alias{organism}
 \alias{organism<-}
 \alias{organism,matrix-method}
-\alias{organism,sparseMatrix-method}
+\alias{organism,Matrix-method}
 \alias{organism,data.frame-method}
 \alias{organism,Annotated-method}
 \alias{organism,DataTable-method}
@@ -19,7 +19,7 @@ organism(object) <- value
 
 \S4method{organism}{matrix}(object)
 
-\S4method{organism}{sparseMatrix}(object)
+\S4method{organism}{Matrix}(object)
 
 \S4method{organism}{data.frame}(object)
 

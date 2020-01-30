@@ -6,7 +6,7 @@
 \alias{aggregate,Matrix-method}
 \alias{aggregateCols}
 \alias{aggregateCols,matrix-method}
-\alias{aggregateCols,sparseMatrix-method}
+\alias{aggregateCols,Matrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
 \alias{aggregateCols,SingleCellExperiment-method}
 \alias{aggregateRows}
@@ -23,7 +23,7 @@ aggregateCols(x, ...)
 
 \S4method{aggregateCols}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
 
-\S4method{aggregateCols}{sparseMatrix}(x, by, fun = c("sum", "mean"))
+\S4method{aggregateCols}{Matrix}(x, by, fun = c("sum", "mean"))
 
 \S4method{aggregateCols}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
 
@@ -77,7 +77,7 @@ Updated 2020-01-30.
 \section{Methods (by class)}{
 
 \itemize{
-\item \code{matrix}, \code{sparseMatrix}:
+\item \code{matrix}, \code{Matrix}:
 Aggregate rows or columns using a grouping \code{factor}.
 \item \code{SummarizedExperiment}:
 Aggregate rows or columns of data slotted in
@@ -134,7 +134,7 @@ samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
 names(samples) <- colnames(counts)
 print(samples)
 
-## sparseMatrix
+## Matrix
 sparse <- as(counts, "sparseMatrix")
 class(sparse)
 print(sparse)

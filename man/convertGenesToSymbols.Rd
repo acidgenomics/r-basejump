@@ -5,7 +5,7 @@
 \alias{convertSymbolsToGenes}
 \alias{convertGenesToSymbols,character-method}
 \alias{convertGenesToSymbols,matrix-method}
-\alias{convertGenesToSymbols,sparseMatrix-method}
+\alias{convertGenesToSymbols,Matrix-method}
 \alias{convertGenesToSymbols,SummarizedExperiment-method}
 \alias{convertSymbolsToGenes,SummarizedExperiment-method}
 \title{Convert genes to symbols}
@@ -18,7 +18,7 @@ convertSymbolsToGenes(object, ...)
 
 \S4method{convertGenesToSymbols}{matrix}(object, gene2symbol)
 
-\S4method{convertGenesToSymbols}{sparseMatrix}(object, gene2symbol)
+\S4method{convertGenesToSymbols}{Matrix}(object, gene2symbol)
 
 \S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 
@@ -40,7 +40,7 @@ Modified object of same class.
 Convert genes to symbols
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-01-30.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
