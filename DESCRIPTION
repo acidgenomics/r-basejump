@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.12.0
-Date: 2020-01-20
+Version: 0.12.1
+Date: 2020-01-30
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -52,8 +52,8 @@ Imports:
     S4Vectors (>= 0.24),
     SingleCellExperiment (>= 1.8),
     SummarizedExperiment (>= 1.16),
-    acidbase (>= 0.1.2),
-    acidgenerics (>= 0.3.0),
+    acidbase (>= 0.1.5),
+    acidgenerics (>= 0.3.3),
     biomaRt (>= 2.42),
     cli (>= 2.0),
     ensembldb (>= 2.10),
@@ -61,19 +61,19 @@ Imports:
     knitr (>= 1.26),
     magrittr (>= 1.5),
     matrixStats (>= 0.55),
-    pipette (>= 0.4.0),
+    pipette (>= 0.4.1),
     scales (>= 1.1),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
-    syntactic (>= 0.3.4),
+    syntactic (>= 0.3.6),
     tibble (>= 2.1),
     methods,
     utils
 Suggests:
     BiocStyle (>= 2.14),
     EnsDb.Hsapiens.v75 (>= 2.99),
-    acidroxygen (>= 0.1.6),
-    acidtest (>= 0.2.11),
+    acidroxygen (>= 0.1.8),
+    acidtest (>= 0.2.14),
     patrick (>= 0.0.1),
     rmarkdown (>= 2.0),
     testthat (>= 2.3),
@@ -106,6 +106,8 @@ Collate:
     'TxDb-internal.R'
     'aggregate-methods.R'
     'aggregateCellsToSamples-methods.R'
+    'aggregateCols-methods.R'
+    'aggregateRows-methods.R'
     'alphaThreshold-methods.R'
     'autopadZeros-methods.R'
     'broadClass-internal.R'
