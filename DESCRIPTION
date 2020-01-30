@@ -52,7 +52,7 @@ Imports:
     SingleCellExperiment (>= 1.8),
     SummarizedExperiment (>= 1.16),
     acidbase (>= 0.1.5),
-    acidgenerics (>= 0.3.3),
+    acidgenerics (>= 0.3.4),
     biomaRt (>= 2.42),
     cli (>= 2.0),
     ensembldb (>= 2.10),

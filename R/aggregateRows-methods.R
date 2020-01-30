@@ -59,12 +59,12 @@
 #'
 #' ## matrix ====
 #' print(counts)
-#' aggregateRows(counts, by = samples)
+#' aggregateRows(counts, by = genes)
 #'
 #' ## Matrix ====
 #' sparse <- as(counts, "sparseMatrix")
 #' print(sparse)
-#' aggregateRows(sparse, by = samples)
+#' aggregateRows(sparse, by = genes)
 #'
 #' ## SummarizedExperiment ====
 #' se <- SummarizedExperiment::SummarizedExperiment(
