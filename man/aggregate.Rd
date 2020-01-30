@@ -17,7 +17,7 @@
 \usage{
 aggregate(x, ...)
 
-\S4method{aggregate}{Matrix}(x, groupings = NULL, form = NULL, fun = "sum")
+\S4method{aggregate}{Matrix}(x, groupings, fun)
 
 aggregateCols(object, ...)
 
