@@ -9,7 +9,6 @@ test_that("sum", {
     expect_identical(object, expected)
 })
 
-# FIXME Now this is returning NaN due to zeros, uh oh.
 test_that("mean", {
     object <- pseudobulk(object, fun = "mean")
     object <- round(Matrix::colSums(counts(object)))
