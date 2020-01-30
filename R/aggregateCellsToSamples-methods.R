@@ -1,6 +1,6 @@
 #' @name aggregateCellsToSamples
 #' @inherit acidgenerics::aggregateCellsToSamples
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams aggregate
 #' @inheritParams acidroxygen::params
@@ -15,8 +15,8 @@
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
-#' x <- aggregateCellsToSamples(object)
+#' x <- SingleCellExperiment
+#' x <- aggregateCellsToSamples(x)
 #' print(x)
 NULL
 
@@ -25,30 +25,27 @@ NULL
 #' @rdname aggregateCellsToSamples
 #' @name aggregateCellsToSamples
 #' @importFrom acidgenerics aggregateCellsToSamples
-#' @usage aggregateCellsToSamples(object, ...)
+#' @usage aggregateCellsToSamples(x, ...)
 #' @export
 NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `aggregateCellsToSamples,SingleCellExperiment` <-  # nolint
-    function(object, fun) {
-        validObject(object)
-        fun <- match.arg(fun)
-        rse <- as(object, "RangedSummarizedExperiment")
+    function(x, FUN) {
+        validObject(x)
+        FUN <- match.fun(FUN)
+        rse <- as(x, "RangedSummarizedExperiment")
         colData <- colData(rse)
         assert(areDisjointSets("aggregate", colnames(colData)))
-        colData[["aggregate"]] <- cell2sample(object)
+        colData[["aggregate"]] <- cell2sample(x)
         if ("sampleID" %in% colnames(colData)) {
             colData[["sampleID"]] <- NULL
         }
         colData(rse) <- colData
-        aggregateCols(object = rse, col = "aggregate", fun = fun)
+        aggregateCols(x = rse, col = "aggregate", FUN = FUN)
     }
-
-formals(`aggregateCellsToSamples,SingleCellExperiment`)[["fun"]] <-
-    .aggregateFuns
 
 
 
