@@ -54,15 +54,15 @@ expected <- matrix(
 )
 
 test_that("matrix", {
-    object <- aggregateRows(counts, groupings = genes)
+    object <- aggregateRows(counts, by = genes)
     expect_is(object, "matrix")
     expect_identical(object, expected)
 })
 
 test_that("matrix : acidtest example", {
-    groupings <- as.factor(paste0("gene", rep(seq_len(2L), each = 2L)))
-    names(groupings) <- rownames(mat)
-    object <- aggregateRows(mat, groupings = groupings)
+    by <- as.factor(paste0("gene", rep(seq_len(2L), each = 2L)))
+    names(by) <- rownames(mat)
+    object <- aggregateRows(mat, by = by)
     expect_is(object, "matrix")
     expected <- matrix(
         data = c(
@@ -73,7 +73,7 @@ test_that("matrix : acidtest example", {
         ncol = 4L,
         byrow = TRUE,
         dimnames = list(
-            levels(groupings),
+            levels(by),
             colnames(mat)
         )
     )
@@ -81,7 +81,7 @@ test_that("matrix : acidtest example", {
 })
 
 test_that("sparseMatrix", {
-    object <- aggregateRows(sparse, groupings = genes)
+    object <- aggregateRows(sparse, by = genes)
     expect_is(object, "sparseMatrix")
     expect_equal(as.matrix(object), as.matrix(expected))
 })
@@ -96,11 +96,11 @@ test_that("SummarizedExperiment", {
 
 test_that("Invalid groupings", {
     expect_error(
-        object = aggregateRows(counts, groupings = "XXX"),
+        object = aggregateRows(counts, by = "XXX"),
         regexp = "is.factor"
     )
     expect_error(
-        object = aggregateRows(counts, groupings = factor(c("XXX", "YYY"))),
+        object = aggregateRows(counts, by = factor(c("XXX", "YYY"))),
         regexp = "identical"
     )
 })
@@ -124,15 +124,15 @@ expected <- matrix(
 )
 
 test_that("matrix", {
-    object <- aggregateCols(counts, groupings = samples)
+    object <- aggregateCols(counts, by = samples)
     expect_is(object, "matrix")
     expect_identical(object, expected)
 })
 
 test_that("matrix : acidtest example", {
-    groupings <- as.factor(paste0("sample", rep(seq_len(2L), each = 2L)))
-    names(groupings) <- colnames(mat)
-    object <- aggregateCols(mat, groupings = groupings)
+    by <- as.factor(paste0("sample", rep(seq_len(2L), each = 2L)))
+    names(by) <- colnames(mat)
+    object <- aggregateCols(mat, by = by)
     expect_is(object, "matrix")
     expected <- matrix(
         data = c(
@@ -144,14 +144,14 @@ test_that("matrix : acidtest example", {
         byrow = FALSE,
         dimnames = list(
             rownames(mat),
-            levels(groupings)
+            levels(by)
         )
     )
     expect_identical(object, expected)
 })
 
 test_that("sparseMatrix", {
-    object <- aggregateCols(sparse, groupings = samples)
+    object <- aggregateCols(sparse, by = samples)
     expect_is(object, "sparseMatrix")
     ## Is there a way to improve this check?
     expect_equal(
@@ -169,11 +169,11 @@ test_that("SummarizedExperiment", {
 
 test_that("matrix : Invalid groupings", {
     expect_error(
-        object = aggregateCols(counts, groupings = "XXX"),
+        object = aggregateCols(counts, by = "XXX"),
         regexp = "is.factor"
     )
     expect_error(
-        object = aggregateCols(counts, groupings = factor(c("XXX", "YYY"))),
+        object = aggregateCols(counts, by = factor(c("XXX", "YYY"))),
         regexp = "identical"
     )
 })
