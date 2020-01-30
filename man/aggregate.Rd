@@ -17,63 +17,34 @@
 \usage{
 aggregate(x, ...)
 
-\S4method{aggregate}{Matrix}(x, groupings, fun)
+\S4method{aggregate}{Matrix}(x, by, fun = c("sum", "count", "mean"))
 
-aggregateCols(object, ...)
+aggregateCols(x, ...)
 
-\S4method{aggregateCols}{matrix}(
-  object,
-  groupings,
-  fun = c("sum", "mean", "geometricMean", "median")
-)
+\S4method{aggregateCols}{matrix}(x, by, FUN)
 
-\S4method{aggregateCols}{sparseMatrix}(
-  object,
-  groupings,
-  fun = c("sum", "mean", "geometricMean", "median")
-)
+\S4method{aggregateCols}{sparseMatrix}(x, by, FUN)
 
-\S4method{aggregateCols}{SummarizedExperiment}(
-  object,
-  col = "aggregate",
-  fun = c("sum", "mean", "geometricMean", "median")
-)
+\S4method{aggregateCols}{SummarizedExperiment}(x, col = "aggregate", FUN)
 
-\S4method{aggregateCols}{SingleCellExperiment}(object, fun = c("sum", "mean", "geometricMean", "median"))
+\S4method{aggregateCols}{SingleCellExperiment}(x, FUN)
 
-aggregateRows(object, ...)
+aggregateRows(x, ...)
 
-\S4method{aggregateRows}{matrix}(
-  object,
-  groupings,
-  fun = c("sum", "mean", "geometricMean", "median")
-)
+\S4method{aggregateRows}{matrix}(x, by, FUN)
 
-\S4method{aggregateRows}{sparseMatrix}(
-  object,
-  groupings,
-  fun = c("sum", "mean", "geometricMean", "median")
-)
+\S4method{aggregateRows}{sparseMatrix}(x, by, FUN)
 
-\S4method{aggregateRows}{SummarizedExperiment}(
-  object,
-  col = "aggregate",
-  fun = c("sum", "mean", "geometricMean", "median")
-)
+\S4method{aggregateRows}{SummarizedExperiment}(x, col = "aggregate", FUN)
 }
 \arguments{
 \item{x}{Object.}
-
-\item{groupings}{\code{factor}.
-Defines the aggregation groupings. The new aggregate names are defined as
-the \code{factor} \link[base:levels]{levels}, and the original, unaggregated names
-are defined as the \link[base:names]{names}.}
 
 \item{fun}{\code{character(1)}.
 Name of the aggregation function.
 Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 
-\item{object}{Object.}
+\item{FUN}{\code{function}.}
 
 \item{col}{\code{character(1)}.
 Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} or
@@ -81,6 +52,11 @@ Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} o
 aggregation groupings.}
 
 \item{...}{Additional arguments.}
+
+\item{groupings}{\code{factor}.
+Defines the aggregation groupings. The new aggregate names are defined as
+the \code{factor} \link[base:levels]{levels}, and the original, unaggregated names
+are defined as the \link[base:names]{names}.}
 }
 \value{
 Modified object, with aggregated rows (features) or columns
