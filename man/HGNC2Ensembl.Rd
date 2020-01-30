@@ -13,7 +13,7 @@ HGNC2Ensembl()
 HGNC-to-Ensembl gene identifier mappings
 }
 \note{
-Updated 2020-01-20.
+Updated 2020-01-30.
 }
 \examples{
 options(acid.test = TRUE)

@@ -5,7 +5,7 @@
 
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
-#' @importClassesFrom Matrix sparseMatrix
+#' @importClassesFrom Matrix Matrix
 #' @importClassesFrom S4Vectors Annotated DataFrame DataTable List Vector
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
@@ -32,7 +32,7 @@ NULL
 #'   transcripts
 #' @importFrom GenomicRanges GRanges ranges
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
-#' @importFrom Matrix.utils aggregate.Matrix
+#' @importFrom Matrix fac2sparse
 #' @importFrom RCurl getURL url.exists
 #' @importFrom R.utils gzip
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate

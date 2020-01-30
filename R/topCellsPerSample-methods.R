@@ -1,6 +1,6 @@
 #' @name topCellsPerSample
 #' @inherit acidgenerics::topCellsPerSample
-#' @note Updated 2019-08-14.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams acidroxygen::params
 #' @param n `integer(1)`.
@@ -27,14 +27,14 @@ NULL
 
 
 
-## Updated 2019-08-14.
+## Updated 2020-01-30.
 `topCellsPerSample,SingleCellExperiment` <-  # nolint
     function(object, n = 100L) {
         validObject(object)
         assert(isInt(n))
         cell2sample <- cell2sample(object)
         counts <- counts(object)
-        if (is(counts, "sparseMatrix")) {
+        if (is(counts, "Matrix")) {
             colSums <- Matrix::colSums
         }
         colSums <- colSums(counts)

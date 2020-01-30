@@ -4,7 +4,7 @@
 \alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes,character-method}
 \alias{convertTranscriptsToGenes,matrix-method}
-\alias{convertTranscriptsToGenes,sparseMatrix-method}
+\alias{convertTranscriptsToGenes,Matrix-method}
 \alias{convertTranscriptsToGenes,SummarizedExperiment-method}
 \title{Convert transcripts to genes}
 \usage{
@@ -14,7 +14,7 @@ convertTranscriptsToGenes(object, ...)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene, aggregate = TRUE)
 
-\S4method{convertTranscriptsToGenes}{sparseMatrix}(object, tx2gene, aggregate = TRUE)
+\S4method{convertTranscriptsToGenes}{Matrix}(object, tx2gene, aggregate = TRUE)
 
 \S4method{convertTranscriptsToGenes}{SummarizedExperiment}(object)
 }
@@ -34,7 +34,7 @@ and collapse the matrix.}
 \itemize{
 \item \code{character}: \code{factor}.
 Genes in the values, transcripts in the names.
-\item \code{matrix}, \code{sparseMatrix}, \code{SummarizedExperiment}:
+\item \code{matrix}, \code{Matrix}, \code{SummarizedExperiment}:
 Object containing counts collapsed to gene level by default
 (see \code{aggregate} argument).
 }
@@ -47,7 +47,7 @@ For objects containing a count matrix, the object rows will be
 collapsed to gene level using \code{aggregateRows}. This applies to our
 \code{SummarizedExperiment} method.
 
-Updated 2020-01-20.
+Updated 2020-01-30.
 }
 \examples{
 data(SummarizedExperiment_transcripts, package = "acidtest")

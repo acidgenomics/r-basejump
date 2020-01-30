@@ -7,13 +7,13 @@
 \usage{
 pseudobulk(object, ...)
 
-\S4method{pseudobulk}{SingleCellExperiment}(object, fun = c("mean", "geometricMean", "median"))
+\S4method{pseudobulk}{SingleCellExperiment}(object, fun = c("sum", "mean"))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{fun}{\code{character(1)}.
-Name of the aggregation function.
+Name of the aggregation function to apply.
 Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 
 \item{...}{Additional arguments.}
@@ -26,7 +26,7 @@ RNA-seq dataset.
 Pseudobulk
 }
 \note{
-Updated 2019-08-11.
+Updated 2020-01-03.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

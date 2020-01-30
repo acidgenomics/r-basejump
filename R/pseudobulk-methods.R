@@ -1,6 +1,6 @@
 #' @name pseudobulk
 #' @inherit acidgenerics::pseudobulk
-#' @note Updated 2019-08-11.
+#' @note Updated 2020-01-03.
 #'
 #' @inheritParams aggregate
 #' @inheritParams acidroxygen::params
@@ -26,9 +26,12 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `pseudobulk,SingleCellExperiment` <-  # nolint
-    function(object, fun) {
+    function(
+        object,
+        fun = c("sum", "mean")
+    ) {
         validObject(object)
         fun <- match.arg(fun)
         rse <- as(object, "RangedSummarizedExperiment")
@@ -39,11 +42,8 @@ NULL
             colData[["sampleID"]] <- NULL
         }
         colData(rse) <- colData
-        aggregateCols(object = rse, col = "aggregate", fun = fun)
+        aggregateCols(x = rse, col = "aggregate", fun = fun)
     }
-
-formals(`pseudobulk,SingleCellExperiment`)[["fun"]] <-
-    setdiff(.aggregateFuns, "sum")
 
 
 

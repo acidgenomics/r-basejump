@@ -84,10 +84,15 @@ Sanitize column names of column data.}
 \item{...}{Additional arguments.}
 }
 \value{
-Modified object, with names formatted in dotted case.
+Modified object.
+Contains syntatically valid names.
+For objects with \code{\link[base:names]{names()}} defined, the underlying data
+returns unchanged, except for \code{character} or \code{vector} class.
 }
 \description{
-Dotted case
+Support is provided for matching against base R parameters. However, it is
+recommended to avoid using it for variable assignments into an \code{environment},
+as that can introduce conflicts with base functions.
 }
 \note{
 Updated 2019-09-25.

@@ -22,7 +22,7 @@ Look up gene synonyms from NCBI.
 Synonym support for \emph{Caenorhabditis elegans} is poor on NCBI.
 Use the \href{https://steinbaugh.com/wormbase/}{wormbase} package instead.
 
-Updated 2019-08-18.
+Updated 2020-01-30.
 }
 \examples{
 options(acid.test = TRUE)
