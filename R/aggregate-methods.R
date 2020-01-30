@@ -22,7 +22,6 @@
 #' @return Modified object.
 #'
 #' @examples
-#' ## Example data ====
 #' counts <- matrix(
 #'     data = c(
 #'         0L, 1L, 1L, 1L,
@@ -42,42 +41,19 @@
 #'         )
 #'     )
 #' )
-#' class(counts)
-#' print(counts)
 #'
 #' genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
 #' names(genes) <- rownames(counts)
 #' print(genes)
 #'
-#' samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
-#' names(samples) <- colnames(counts)
-#' print(samples)
+#' ## matrix ====
+#' print(counts)
+#' aggregate(counts, by = genes)
 #'
-#' ## Matrix
+#' ## Matrix ====
 #' sparse <- as(counts, "sparseMatrix")
-#' class(sparse)
 #' print(sparse)
-#'
-#' ## SummarizedExperiment
-#' se <- SummarizedExperiment::SummarizedExperiment(
-#'     assays = SimpleList(counts = counts),
-#'     colData = DataFrame(
-#'         sampleName = as.factor(names(samples)),
-#'         aggregate = samples
-#'     ),
-#'     rowData = DataFrame(aggregate = genes)
-#' )
-#' print(se)
-#'
-#' ## aggregateRows ====
-#' aggregateRows(counts, groupings = genes)
-#' aggregateRows(sparse, groupings = genes)
-#' aggregateRows(se)
-#'
-#' ## aggregateCols ====
-#' aggregateCols(counts, groupings = samples)
-#' aggregateCols(sparse, groupings = samples)
-#' aggregateCols(se)
+#' aggregate(sparse, by = genes)
 NULL
 
 
@@ -88,6 +64,43 @@ NULL
 #' @usage aggregate(x, ...)
 #' @export
 NULL
+
+
+
+## Using the `stats::aggregate.data.frame()` S3 method internally here.
+## Updated 2020-01-30.
+`aggregate,matrix` <-  # nolint
+    function(
+        x,
+        by,
+        fun = c("sum", "mean", "median", "geometricMean")
+    ) {
+        assert(
+            hasValidDimnames(x),
+            is.factor(by),
+            identical(rownames(x), names(by)),
+            validNames(levels(by))
+        )
+        x <- aggregate(
+            x = as.data.frame(x),
+            by = list(rowname = by),
+            FUN = get(x = fun, inherits = TRUE)
+        )
+        rownames(x) <- x[["rowname"]]
+        x[["rowname"]] <- NULL
+        x <- as.matrix(x)
+        x
+    }
+
+
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregate",
+    signature = signature("matrix"),
+    definition = `aggregate,matrix`
+)
 
 
 
