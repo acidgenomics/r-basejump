@@ -12,11 +12,11 @@ NULL
     function(
         x,
         by,
-        FUN  # nolint
+        fun = c("sum", "mean", "median", "geometricMean")
     ) {
-        FUN <- match.arg(FUN)
+        fun <- match.arg(fun)
         x <- t(x)
-        x <- aggregateRows(x = x, by = by, FUN = FUN)
+        x <- aggregateRows(x = x, by = by, fun = fun)
         x <- t(x)
         x
     }
@@ -38,11 +38,11 @@ setMethod(
     function(
         x,
         by,
-        FUN
+        fun = c("sum", "mean")
     ) {
-        FUN <- match.fun(FUN)
+        fun <- match.arg(fun)
         x <- Matrix::t(x)
-        x <- aggregateRows(x = x, by = by, FUN = FUN)
+        x <- aggregateRows(x = x, by = by, fun = fun)
         x <- Matrix::t(x)
         x
     }
@@ -64,14 +64,14 @@ setMethod(
     function(
         x,
         col = "aggregate",
-        FUN
+        fun = "sum"
     ) {
         validObject(x)
         assert(
             hasValidDimnames(x),
-            isString(col)
+            isString(col),
+            isString(fun)
         )
-        FUN <- match.fun(FUN)
 
         ## Groupings -----------------------------------------------------------
         if (!all(
@@ -91,7 +91,7 @@ setMethod(
         names(by) <- colnames(x)
 
         ## Counts --------------------------------------------------------------
-        counts <- aggregateCols(x = counts(x), by = by, FUN = FUN)
+        counts <- aggregateCols(x = counts(x), by = by, fun = fun)
         assert(identical(nrow(counts), nrow(x)))
 
         ## Return --------------------------------------------------------------
@@ -126,10 +126,10 @@ setMethod(
 `aggregateCols,SingleCellExperiment` <-  # nolint
     function(
         x,
-        FUN  # nolint
+        fun  # nolint
     ) {
         validObject(x)
-        FUN <- match.fun(FUN)
+        assert(isString(fun))
         ## Remap cellular barcodes.
         colData <- colData(x)
         assert(
@@ -170,7 +170,7 @@ setMethod(
         ## Using `SummarizedExperiment` method here.
         rse <- as(x, "RangedSummarizedExperiment")
         colData(rse)[["sampleID"]] <- NULL
-        rse <- aggregateCols(x = rse, FUN = FUN)
+        rse <- aggregateCols(x = rse, fun = fun)
         assert(
             is(rse, "RangedSummarizedExperiment"),
             identical(nrow(rse), nrow(x))

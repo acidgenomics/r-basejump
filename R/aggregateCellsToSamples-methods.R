@@ -8,7 +8,7 @@
 #'
 #' @details
 #' Internally [aggregateCellsToSamples()] automatically obtains the
-#' cell-to-sample groupings and then performs aggregation with the
+#' cell-to-sample groupings and then performs a sum aggregation with the
 #' [aggregateCols()] function.
 #'
 #' @examples
@@ -33,9 +33,8 @@ NULL
 
 ## Updated 2020-01-30.
 `aggregateCellsToSamples,SingleCellExperiment` <-  # nolint
-    function(x, FUN) {
+    function(x) {
         validObject(x)
-        FUN <- match.fun(FUN)
         rse <- as(x, "RangedSummarizedExperiment")
         colData <- colData(rse)
         assert(areDisjointSets("aggregate", colnames(colData)))
@@ -44,7 +43,7 @@ NULL
             colData[["sampleID"]] <- NULL
         }
         colData(rse) <- colData
-        aggregateCols(x = rse, col = "aggregate", FUN = FUN)
+        aggregateCols(x = rse, col = "aggregate", fun = "sum")
     }
 
 
