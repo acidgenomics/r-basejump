@@ -7,14 +7,12 @@
 \usage{
 pseudobulk(object, ...)
 
-\S4method{pseudobulk}{SingleCellExperiment}(object, fun = c("mean", "geometricMean", "median"))
+\S4method{pseudobulk}{SingleCellExperiment}(object, FUN)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{fun}{\code{character(1)}.
-Name of the aggregation function.
-Uses \code{\link[base:match.arg]{match.arg()}} internally.}
+\item{FUN}{\code{function}.}
 
 \item{...}{Additional arguments.}
 }

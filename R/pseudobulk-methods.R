@@ -26,11 +26,14 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `pseudobulk,SingleCellExperiment` <-  # nolint
-    function(object, fun) {
+    function(
+        object,
+        FUN  # nolint
+    ) {
         validObject(object)
-        fun <- match.arg(fun)
+        FUN <- match.fun(FUN)
         rse <- as(object, "RangedSummarizedExperiment")
         colData <- colData(rse)
         assert(areDisjointSets("aggregate", colnames(colData)))
@@ -39,11 +42,8 @@ NULL
             colData[["sampleID"]] <- NULL
         }
         colData(rse) <- colData
-        aggregateCols(object = rse, col = "aggregate", fun = fun)
+        aggregateCols(x = rse, col = "aggregate", FUN = FUN)
     }
-
-formals(`pseudobulk,SingleCellExperiment`)[["fun"]] <-
-    setdiff(.aggregateFuns, "sum")
 
 
 
