@@ -24,10 +24,10 @@
 #' @examples
 #' counts <- matrix(
 #'     data = c(
-#'         0L, 1L, 1L, 1L,
-#'         1L, 0L, 1L, 1L,
-#'         1L, 1L, 0L, 1L,
-#'         1L, 1L, 1L, 0L
+#'         0L, 2L, 2L, 2L,
+#'         2L, 0L, 2L, 2L,
+#'         2L, 2L, 0L, 2L,
+#'         2L, 2L, 2L, 0L
 #'     ),
 #'     nrow = 4L,
 #'     ncol = 4L,
@@ -73,7 +73,7 @@ NULL
     function(
         x,
         by,
-        fun = c("sum", "mean", "median", "geometricMean")
+        fun = c("sum", "mean", "median", "geometricMean", "n")
     ) {
         assert(
             hasValidDimnames(x),
@@ -81,6 +81,12 @@ NULL
             identical(rownames(x), names(by)),
             validNames(levels(by))
         )
+        fun <- match.arg(fun)
+        if (fun == "n") {
+            x <- x != 0L
+            mode(x) <- "integer"
+            fun <- "sum"
+        }
         x <- aggregate(
             x = as.data.frame(x),
             by = list(rowname = by),

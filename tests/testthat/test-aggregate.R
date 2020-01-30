@@ -1,9 +1,9 @@
 counts <- matrix(
     data = c(
-        0L, 1L, 1L, 1L,
-        1L, 0L, 1L, 1L,
-        1L, 1L, 0L, 1L,
-        1L, 1L, 1L, 0L
+        0L, 2L, 2L, 2L,
+        2L, 0L, 2L, 2L,
+        2L, 2L, 0L, 2L,
+        2L, 2L, 2L, 0L
     ),
     nrow = 4L,
     ncol = 4L,
@@ -37,12 +37,25 @@ se <- SummarizedExperiment(
 
 
 
+context("aggregate")
+
+test_that("'n' count mode", {
+    object <- aggregate(counts, by = genes, fun = "n")
+    expect_is(object, "matrix")
+    expect_true(all(colSums(object) == 3L))
+    object <- aggregate(sparse, by = genes, fun = "n")
+    expect_is(object, "Matrix")
+    expect_true(all(colSums(object) == 3L))
+})
+
+
+
 context("aggregateRows")
 
 expected <- matrix(
     data = c(
-        1L, 1L, 2L, 2L,
-        2L, 2L, 1L, 1L
+        2L, 2L, 4L, 4L,
+        4L, 4L, 2L, 2L
     ),
     nrow = 2L,
     ncol = 4L,
@@ -111,8 +124,8 @@ context("aggregateCols")
 
 expected <- matrix(
     data = c(
-        1L, 1L, 2L, 2L,
-        2L, 2L, 1L, 1L
+        2L, 2L, 4L, 4L,
+        4L, 4L, 2L, 2L
     ),
     nrow = 4L,
     ncol = 2L,

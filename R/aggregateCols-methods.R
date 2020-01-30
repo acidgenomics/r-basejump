@@ -7,10 +7,10 @@
 #' @examples
 #' counts <- matrix(
 #'     data = c(
-#'         0L, 1L, 1L, 1L,
-#'         1L, 0L, 1L, 1L,
-#'         1L, 1L, 0L, 1L,
-#'         1L, 1L, 1L, 0L
+#'         0L, 2L, 2L, 2L,
+#'         2L, 0L, 2L, 2L,
+#'         2L, 2L, 0L, 2L,
+#'         2L, 2L, 2L, 0L
 #'     ),
 #'     nrow = 4L,
 #'     ncol = 4L,

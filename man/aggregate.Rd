@@ -8,7 +8,7 @@
 \usage{
 aggregate(x, ...)
 
-\S4method{aggregate}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
+\S4method{aggregate}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean", "n"))
 
 \S4method{aggregate}{Matrix}(x, by, fun = c("sum", "mean", "n"))
 }
@@ -38,10 +38,10 @@ Updated 2020-01-30.
 \examples{
 counts <- matrix(
     data = c(
-        0L, 1L, 1L, 1L,
-        1L, 0L, 1L, 1L,
-        1L, 1L, 0L, 1L,
-        1L, 1L, 1L, 0L
+        0L, 2L, 2L, 2L,
+        2L, 0L, 2L, 2L,
+        2L, 2L, 0L, 2L,
+        2L, 2L, 2L, 0L
     ),
     nrow = 4L,
     ncol = 4L,
