@@ -1,3 +1,7 @@
+## FIXME Rename generic to x.
+
+
+
 #' @rdname aggregate
 #' @name aggregateCols
 #' @importFrom acidgenerics aggregateCols
@@ -7,26 +11,21 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `aggregateCols,matrix` <-  # nolint
     function(
         object,
-        groupings,
-        fun
+        by,
+        FUN  # nolint
     ) {
-        fun <- match.arg(fun)
+        FUN <- match.arg(FUN)
         object <- t(object)
-        object <- aggregateRows(
-            object = object,
-            groupings = groupings,
-            fun = fun
-        )
-        assert(is.matrix(object))
+        object <- aggregateRows(object = object, by = by, FUN = FUN)
         object <- t(object)
         object
     }
 
-formals(`aggregateCols,matrix`)[["fun"]] <- .aggregateFuns
+
 
 #' @rdname aggregate
 #' @export
@@ -38,26 +37,21 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `aggregateCols,sparseMatrix` <-  # nolint
     function(
         object,
-        groupings,
-        fun
+        by,
+        FUN
     ) {
-        fun <- match.arg(fun)
+        FUN <- match.fun(FUN)
         object <- Matrix::t(object)
-        object <- aggregateRows(
-            object = object,
-            groupings = groupings,
-            fun = fun
-        )
-        assert(is(object, "Matrix"))
+        object <- aggregateRows(object = object, by = by, FUN = FUN)
         object <- Matrix::t(object)
         object
     }
 
-formals(`aggregateCols,sparseMatrix`)[["fun"]] <- .aggregateFuns
+
 
 #' @rdname aggregate
 #' @export
@@ -71,13 +65,17 @@ setMethod(
 
 ## Updated 2019-07-22.
 `aggregateCols,SummarizedExperiment` <-  # nolint
-    function(object, col = "aggregate", fun) {
+    function(
+        object,
+        col = "aggregate",
+        FUN
+    ) {
         validObject(object)
         assert(
             hasValidDimnames(object),
             isString(col)
         )
-        fun <- match.arg(fun)
+        FUN <- match.fun(FUN)
 
         ## Groupings -----------------------------------------------------------
         if (!all(
@@ -88,24 +86,17 @@ setMethod(
                 "'%s' column not defined in 'colData()'.", deparse(col)
             ))
         }
-        groupings <- colData(object)[[col]]
+        by <- colData(object)[[col]]
         assert(
-            is.factor(groupings),
-            validNames(levels(groupings)),
-            identical(length(groupings), ncol(object))
+            is.factor(by),
+            validNames(levels(by)),
+            identical(length(by), ncol(object))
         )
-        names(groupings) <- colnames(object)
+        names(by) <- colnames(object)
 
         ## Counts --------------------------------------------------------------
-        counts <- aggregateCols(
-            object = counts(object),
-            groupings = groupings,
-            fun = fun
-        )
+        counts <- aggregateCols(object = counts(object), by = by, FUN = FUN)
         assert(identical(nrow(counts), nrow(object)))
-        if (fun == "sum") {
-            assert(identical(sum(counts), sum(counts(object))))
-        }
 
         ## Return --------------------------------------------------------------
         args <- list(
@@ -135,12 +126,15 @@ setMethod(
 
 
 
-## Updated 2020-01-20.
+## Updated 2020-01-30.
 `aggregateCols,SingleCellExperiment` <-  # nolint
-    function(object, fun) {
+    function(
+        object,
+        FUN  # nolint
+    ) {
         validObject(object)
-        fun <- match.arg(fun)
-        ## Remap cellular barcode groupings.
+        FUN <- match.fun(FUN)
+        ## Remap cellular barcodes.
         colData <- colData(object)
         assert(
             isSubset(c("sampleID", "aggregate"), colnames(colData)),
@@ -161,7 +155,7 @@ setMethod(
         ))) {
             stop("Cell IDs are not prefixed with sample IDs.")
         }
-        groupings <- mapply(
+        by <- mapply(
             FUN = gsub,
             x = map[["cellID"]],
             pattern = paste0("^", map[["sampleID"]]),
@@ -169,18 +163,18 @@ setMethod(
             SIMPLIFY = TRUE,
             USE.NAMES = TRUE
         )
-        groupings <- as.factor(groupings)
+        by <- as.factor(by)
         cell2sample <- as.factor(map[["aggregate"]])
-        names(cell2sample) <- as.character(groupings)
+        names(cell2sample) <- as.character(by)
         ## Reslot the `aggregate` column using these groupings.
-        assert(identical(names(groupings), colnames(object)))
-        colData(object)[["aggregate"]] <- groupings
+        assert(identical(names(by), colnames(object)))
+        colData(object)[["aggregate"]] <- by
 
         ## Generate SingleCellExperiment ---------------------------------------
         ## Using `SummarizedExperiment` method here.
         rse <- as(object, "RangedSummarizedExperiment")
         colData(rse)[["sampleID"]] <- NULL
-        rse <- aggregateCols(object = rse, fun = fun)
+        rse <- aggregateCols(object = rse, FUN = FUN)
         assert(
             is(rse, "RangedSummarizedExperiment"),
             identical(nrow(rse), nrow(object))
@@ -194,7 +188,7 @@ setMethod(
         ## Update the metadata.
         metadata <- metadata(object)
         metadata[["aggregate"]] <- TRUE
-        metadata[["aggregateCols"]] <- groupings
+        metadata[["aggregateCols"]] <- by
         ## Now ready to generate aggregated SCE.
         sce <- SingleCellExperiment(
             assays = SimpleList(counts = counts(rse)),
@@ -202,7 +196,7 @@ setMethod(
             colData = colData(rse),
             metadata = list(
                 aggregate = TRUE,
-                aggregateCols = groupings,
+                aggregateCols = by,
                 interestingGroups = interestingGroups(object)
             )
         )
@@ -210,7 +204,7 @@ setMethod(
         sce
     }
 
-formals(`aggregateCols,SingleCellExperiment`)[["fun"]] <- .aggregateFuns
+
 
 #' @rdname aggregate
 #' @export
