@@ -1,11 +1,7 @@
-## FIXME Rename generic to x.
-
-
-
 #' @rdname aggregate
 #' @name aggregateCols
 #' @importFrom acidgenerics aggregateCols
-#' @usage aggregateCols(object, ...)
+#' @usage aggregateCols(x, ...)
 #' @export
 NULL
 
@@ -14,15 +10,15 @@ NULL
 ## Updated 2020-01-30.
 `aggregateCols,matrix` <-  # nolint
     function(
-        object,
+        x,
         by,
         FUN  # nolint
     ) {
         FUN <- match.arg(FUN)
-        object <- t(object)
-        object <- aggregateRows(object = object, by = by, FUN = FUN)
-        object <- t(object)
-        object
+        x <- t(x)
+        x <- aggregateRows(x = x, by = by, FUN = FUN)
+        x <- t(x)
+        x
     }
 
 
@@ -40,15 +36,15 @@ setMethod(
 ## Updated 2020-01-30.
 `aggregateCols,sparseMatrix` <-  # nolint
     function(
-        object,
+        x,
         by,
         FUN
     ) {
         FUN <- match.fun(FUN)
-        object <- Matrix::t(object)
-        object <- aggregateRows(object = object, by = by, FUN = FUN)
-        object <- Matrix::t(object)
-        object
+        x <- Matrix::t(x)
+        x <- aggregateRows(x = x, by = by, FUN = FUN)
+        x <- Matrix::t(x)
+        x
     }
 
 
@@ -63,50 +59,50 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `aggregateCols,SummarizedExperiment` <-  # nolint
     function(
-        object,
+        x,
         col = "aggregate",
         FUN
     ) {
-        validObject(object)
+        validObject(x)
         assert(
-            hasValidDimnames(object),
+            hasValidDimnames(x),
             isString(col)
         )
         FUN <- match.fun(FUN)
 
         ## Groupings -----------------------------------------------------------
         if (!all(
-            isSubset(col, colnames(colData(object))),
-            isSubset(col, colnames(sampleData(object)))
+            isSubset(col, colnames(colData(x))),
+            isSubset(col, colnames(sampleData(x)))
         )) {
             stop(sprintf(
                 "'%s' column not defined in 'colData()'.", deparse(col)
             ))
         }
-        by <- colData(object)[[col]]
+        by <- colData(x)[[col]]
         assert(
             is.factor(by),
             validNames(levels(by)),
-            identical(length(by), ncol(object))
+            identical(length(by), ncol(x))
         )
-        names(by) <- colnames(object)
+        names(by) <- colnames(x)
 
         ## Counts --------------------------------------------------------------
-        counts <- aggregateCols(object = counts(object), by = by, FUN = FUN)
-        assert(identical(nrow(counts), nrow(object)))
+        counts <- aggregateCols(x = counts(x), by = by, FUN = FUN)
+        assert(identical(nrow(counts), nrow(x)))
 
         ## Return --------------------------------------------------------------
         args <- list(
             assays = SimpleList(counts = counts),
             colData = DataFrame(row.names = colnames(counts))
         )
-        if (is(object, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- rowRanges(object)
+        if (is(x, "RangedSummarizedExperiment")) {
+            args[["rowRanges"]] <- rowRanges(x)
         } else {
-            args[["rowData"]] <- rowData(object)
+            args[["rowData"]] <- rowData(x)
         }
         se <- do.call(what = SummarizedExperiment, args = args)
         metadata(se)[["aggregate"]] <- TRUE
@@ -129,13 +125,13 @@ setMethod(
 ## Updated 2020-01-30.
 `aggregateCols,SingleCellExperiment` <-  # nolint
     function(
-        object,
+        x,
         FUN  # nolint
     ) {
-        validObject(object)
+        validObject(x)
         FUN <- match.fun(FUN)
         ## Remap cellular barcodes.
-        colData <- colData(object)
+        colData <- colData(x)
         assert(
             isSubset(c("sampleID", "aggregate"), colnames(colData)),
             is.factor(colData[["aggregate"]])
@@ -144,7 +140,7 @@ setMethod(
             "Remapping cells to aggregate samples: %s",
             toString(sort(levels(colData[["aggregate"]])), width = 100L)
         ))
-        map <- colData(object)
+        map <- colData(x)
         map <- as_tibble(map, rownames = "cellID")
         ## Check to see if we can aggregate.
         if (!all(mapply(
@@ -167,17 +163,17 @@ setMethod(
         cell2sample <- as.factor(map[["aggregate"]])
         names(cell2sample) <- as.character(by)
         ## Reslot the `aggregate` column using these groupings.
-        assert(identical(names(by), colnames(object)))
-        colData(object)[["aggregate"]] <- by
+        assert(identical(names(by), colnames(x)))
+        colData(x)[["aggregate"]] <- by
 
         ## Generate SingleCellExperiment ---------------------------------------
         ## Using `SummarizedExperiment` method here.
-        rse <- as(object, "RangedSummarizedExperiment")
+        rse <- as(x, "RangedSummarizedExperiment")
         colData(rse)[["sampleID"]] <- NULL
-        rse <- aggregateCols(object = rse, FUN = FUN)
+        rse <- aggregateCols(x = rse, FUN = FUN)
         assert(
             is(rse, "RangedSummarizedExperiment"),
-            identical(nrow(rse), nrow(object))
+            identical(nrow(rse), nrow(x))
         )
         ## Update the sample data.
         colData <- colData(rse)
@@ -186,18 +182,18 @@ setMethod(
         colData[["sampleName"]] <- colData[["sampleID"]]
         colData(rse) <- colData
         ## Update the metadata.
-        metadata <- metadata(object)
+        metadata <- metadata(x)
         metadata[["aggregate"]] <- TRUE
         metadata[["aggregateCols"]] <- by
         ## Now ready to generate aggregated SCE.
         sce <- SingleCellExperiment(
             assays = SimpleList(counts = counts(rse)),
-            rowRanges = rowRanges(object),
+            rowRanges = rowRanges(x),
             colData = colData(rse),
             metadata = list(
                 aggregate = TRUE,
                 aggregateCols = by,
-                interestingGroups = interestingGroups(object)
+                interestingGroups = interestingGroups(x)
             )
         )
         validObject(sce)
