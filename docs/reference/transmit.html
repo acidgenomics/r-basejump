@@ -72,7 +72,7 @@ FTP server. Also enables on-the-fly file renaming and compression." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
       </span>
     </div>
 
@@ -184,7 +184,9 @@ Local file paths.</p>
     <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span>(<span class='no'>readme</span>)
     <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span>(<span class='no'>readme</span>)
     <span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>readme</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Transmitting files from <span style='color: #0000BB;font-style: italic;'>&lt;ftp.ncbi.nlm.nih.gov&gt;</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Files matching pattern: </span><span style='color: #0000BB;'>README</span><span></span></div><div class='output co'>#&gt; <span class='message'>→ Downloading </span><span style='color: #0000BB;'>ncbi-readme.txt</span><span>.</span></div></span></pre>
+}</div><div class='output co'>#&gt; <span class='message'>Transmitting files from <span style='color: #0000BB;font-style: italic;'>&lt;ftp.ncbi.nlm.nih.gov&gt;</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Files matching pattern: </span><span style='color: #0000BB;'>00__README_archiving_notice.txt, README</span><span></span></div><div class='output co'>#&gt; <span class='error'>Error in transmit(remoteDir = remoteDir, pattern = "README", rename = "ncbi-readme.txt",     compress = FALSE): Assert failure.</span>
+#&gt; <span class='error'>[1] areSameLength(x = match, y = rename) is not TRUE.</span>
+#&gt; <span class='error'>Cause: 'match' does not have the same length as 'rename'.</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

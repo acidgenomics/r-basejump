@@ -4,7 +4,7 @@
 #' @note For objects containing a count matrix, the object rows will be
 #'   collapsed to gene level using `aggregateRows`. This applies to our
 #'   `SummarizedExperiment` method.
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams acidroxygen::params
 #' @param aggregate `logical(1)`.
@@ -15,7 +15,7 @@
 #' @return
 #' - `character`: `factor`.
 #'     Genes in the values, transcripts in the names.
-#' - `matrix`, `sparseMatrix`, `SummarizedExperiment`:
+#' - `matrix`, `Matrix`, `SummarizedExperiment`:
 #'     Object containing counts collapsed to gene level by default
 #'     (see `aggregate` argument).
 #'
@@ -135,16 +135,16 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
-`convertTranscriptsToGenes,sparseMatrix` <-  # nolint
+## Updated 2020-01-30.
+`convertTranscriptsToGenes,Matrix` <-  # nolint
     `convertTranscriptsToGenes,matrix`
 
 #' @rdname convertTranscriptsToGenes
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
-    signature = signature("sparseMatrix"),
-    definition = `convertTranscriptsToGenes,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `convertTranscriptsToGenes,Matrix`
 )
 
 

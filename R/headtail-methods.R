@@ -1,6 +1,6 @@
 #' @name headtail
 #' @inherit acidgenerics::headtail
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams acidroxygen::params
 #' @param n `integer(1)`.
@@ -192,8 +192,8 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
-`headtail,sparseMatrix` <-  # nolint
+## Updated 2020-01-30.
+`headtail,Matrix` <-  # nolint
     `headtail,matrix`
 
 
@@ -202,8 +202,8 @@ setMethod(
 #' @export
 setMethod(
     f = "headtail",
-    signature = signature("sparseMatrix"),
-    definition = `headtail,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `headtail,Matrix`
 )
 
 

@@ -3,7 +3,7 @@
 \name{zerosVsDepth}
 \alias{zerosVsDepth}
 \alias{zerosVsDepth,matrix-method}
-\alias{zerosVsDepth,sparseMatrix-method}
+\alias{zerosVsDepth,Matrix-method}
 \alias{zerosVsDepth,SummarizedExperiment-method}
 \alias{zerosVsDepth,SingleCellExperiment-method}
 \title{Percentage of zeros vs. library depth}
@@ -12,7 +12,7 @@ zerosVsDepth(object, ...)
 
 \S4method{zerosVsDepth}{matrix}(object)
 
-\S4method{zerosVsDepth}{sparseMatrix}(object)
+\S4method{zerosVsDepth}{Matrix}(object)
 
 \S4method{zerosVsDepth}{SummarizedExperiment}(object, assay = 1L)
 
@@ -33,7 +33,7 @@ Assay name or index position.}
 Calculate and visualize the dropout rate.
 }
 \note{
-Updated 2019-08-11.
+Updated 2020-01-30.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
@@ -45,5 +45,5 @@ summary(x)
 colnames(x)
 }
 \author{
-Rory Kirchner, Michael Steinbaugh
+Michael Steinbaugh, Rory Kirchner
 }

@@ -1,3 +1,6 @@
+env:
+  - RCHECK_SKIP_COVERAGE=1
+
 os: linux
 language: shell
 

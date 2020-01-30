@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
       </span>
     </div>
 
@@ -130,7 +130,7 @@
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
-<span class='co'># S4 method for sparseMatrix</span>
+<span class='co'># S4 method for Matrix</span>
 <span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -203,7 +203,7 @@ return <code>NaN</code>.</p>
 #&gt; [3,]    3    9
 #&gt; [4,]    4   16
 #&gt; [5,]    5   25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div><div class='input'>
-<span class='co'>## sparseMatrix ====</span>
+<span class='co'>## Matrix ====</span>
 <span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 5 x 2 sparse Matrix of class "dgCMatrix"
 #&gt;          
