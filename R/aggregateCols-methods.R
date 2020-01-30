@@ -3,6 +3,51 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inherit aggregateRows
+#'
+#' @examples
+#' counts <- matrix(
+#'     data = c(
+#'         0L, 1L, 1L, 1L,
+#'         1L, 0L, 1L, 1L,
+#'         1L, 1L, 0L, 1L,
+#'         1L, 1L, 1L, 0L
+#'     ),
+#'     nrow = 4L,
+#'     ncol = 4L,
+#'     byrow = TRUE,
+#'     dimnames = list(
+#'         paste0("transcript", seq_len(4L)),
+#'         paste(
+#'             paste0("sample", rep(seq_len(2L), each = 2L)),
+#'             paste0("replicate", rep(seq_len(2L), times = 2L)),
+#'             sep = "_"
+#'         )
+#'     )
+#' )
+#'
+#' samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
+#' names(samples) <- colnames(counts)
+#' print(samples)
+#'
+#' ## matrix ====
+#' print(counts)
+#' aggregateCols(counts, by = samples)
+#'
+#' ## Matrix ====
+#' sparse <- as(counts, "sparseMatrix")
+#' print(sparse)
+#' aggregateCols(sparse, by = samples)
+#'
+#' ## SummarizedExperiment ====
+#' se <- SummarizedExperiment::SummarizedExperiment(
+#'     assays = SimpleList(counts = counts),
+#'     colData = DataFrame(
+#'         sampleName = as.factor(names(samples)),
+#'         aggregate = samples
+#'     )
+#' )
+#' print(se)
+#' aggregateCols(se)
 NULL
 
 
