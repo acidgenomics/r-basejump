@@ -1,4 +1,10 @@
-#' @rdname aggregate
+#' @name aggregateRows
+#' @inherit acidgenerics::aggregateRows
+NULL
+
+
+
+#' @rdname aggregateRows
 #' @name aggregateRows
 #' @importFrom acidgenerics aggregateRows
 #' @usage aggregateRows(x, ...)
@@ -35,7 +41,7 @@ NULL
 
 
 
-#' @rdname aggregate
+#' @rdname aggregateRows
 #' @export
 setMethod(
     f = "aggregateRows",
@@ -66,7 +72,7 @@ setMethod(
 
 
 
-#' @rdname aggregate
+#' @rdname aggregateRows
 #' @export
 setMethod(
     f = "aggregateRows",
@@ -120,7 +126,7 @@ setMethod(
 
 
 
-#' @rdname aggregate
+#' @rdname aggregateRows
 #' @export
 setMethod(
     f = "aggregateRows",
