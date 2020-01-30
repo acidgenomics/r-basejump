@@ -1,6 +1,6 @@
 #' @name pseudobulk
 #' @inherit acidgenerics::pseudobulk
-#' @note Updated 2020-01-03.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams aggregate
 #' @inheritParams acidroxygen::params

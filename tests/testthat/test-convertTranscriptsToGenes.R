@@ -1,5 +1,6 @@
 context("convertTranscriptsToGenes")
 
+skip_on_docker()
 skip_if_not(hasInternet())
 
 tx2gene <-
