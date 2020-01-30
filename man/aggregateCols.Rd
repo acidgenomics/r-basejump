@@ -20,6 +20,11 @@ aggregateCols(x, ...)
 }
 \arguments{
 \item{x}{Object.}
+
+\item{col}{\code{character(1)}.
+Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} or
+\code{\link[SummarizedExperiment:colData]{colData()}} that defines the desired
+aggregation groupings.}
 }
 \value{
 Modified object of same class, with columns aggregated.
@@ -27,6 +32,37 @@ Modified object of same class, with columns aggregated.
 \description{
 Aggregate columns
 }
+\section{Methods (by class)}{
+
+\itemize{
+\item \code{matrix}, \code{Matrix}:
+Aggregate using a grouping \code{factor}.
+\item \code{SummarizedExperiment}:
+Aggregate data slotted in
+\code{\link[SummarizedExperiment:assays]{assays()}} using an automatically
+generated grouping \code{factor}, which is obtained from a user-defined column
+(\code{col} argument) in either the
+\code{\link[SummarizedExperiment:rowData]{rowData()}} or
+\code{\link[SummarizedExperiment:colData]{colData()}} of the object. Slot an
+\code{aggregate} column into \code{\link[SummarizedExperiment:rowData]{rowData()}}
+for \code{\link[=aggregateRows]{aggregateRows()}}, or into
+\code{\link[SummarizedExperiment:colData]{colData()}} for \code{\link[=aggregateCols]{aggregateCols()}}. This
+method will define the \code{groupings} automatically, and perform the
+aggregation.
+\item \code{SingleCellExperiment}:
+Aggregate \code{\link[SummarizedExperiment:assays]{assays()}} across cell-level
+groupings, defined by a column in
+\code{\link[SummarizedExperiment:colData]{colData()}}. Inherits from
+\code{SummarizedExperiment}, and still relies upon slotting an \code{aggregate}
+column into \code{\link[SummarizedExperiment:colData]{colData()}}. Note that these
+groupings will map to cells, so care must be taken to properly aggregate
+samples.
+}
+}
+
 \examples{
 class(aggregateCols)
+}
+\author{
+Michael Steinbaugh, Rory Kirchner
 }

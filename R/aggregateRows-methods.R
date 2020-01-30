@@ -1,5 +1,36 @@
 #' @name aggregateRows
 #' @inherit acidgenerics::aggregateRows
+#' @author Michael Steinbaugh, Rory Kirchner
+#'
+#' @section Methods (by class):
+#'
+#' - `matrix`, `Matrix`:
+#'   Aggregate using a grouping `factor`.
+#' - `SummarizedExperiment`:
+#'   Aggregate data slotted in
+#'   [`assays()`][SummarizedExperiment::assays] using an automatically
+#'   generated grouping `factor`, which is obtained from a user-defined column
+#'   (`col` argument) in either the
+#'   [`rowData()`][SummarizedExperiment::rowData] or
+#'   [`colData()`][SummarizedExperiment::colData] of the object. Slot an
+#'   `aggregate` column into [`rowData()`][SummarizedExperiment::rowData]
+#'   for [aggregateRows()], or into
+#'   [`colData()`][SummarizedExperiment::colData] for [aggregateCols()]. This
+#'   method will define the `groupings` automatically, and perform the
+#'   aggregation.
+#' - `SingleCellExperiment`:
+#'   Aggregate [`assays()`][SummarizedExperiment::assays] across cell-level
+#'   groupings, defined by a column in
+#'   [`colData()`][SummarizedExperiment::colData]. Inherits from
+#'   `SummarizedExperiment`, and still relies upon slotting an `aggregate`
+#'   column into [`colData()`][SummarizedExperiment::colData]. Note that these
+#'   groupings will map to cells, so care must be taken to properly aggregate
+#'   samples.
+#'
+#' @param col `character(1)`.
+#'   Name of column in either [`rowData()`][SummarizedExperiment::rowData] or
+#'   [`colData()`][SummarizedExperiment::colData] that defines the desired
+#'   aggregation groupings.
 NULL
 
 

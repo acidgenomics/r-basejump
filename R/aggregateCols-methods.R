@@ -1,5 +1,8 @@
 #' @name aggregateCols
 #' @inherit acidgenerics::aggregateCols
+#' @author Michael Steinbaugh, Rory Kirchner
+#'
+#' @inherit aggregateRows
 NULL
 
 
