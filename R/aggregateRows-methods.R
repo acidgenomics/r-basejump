@@ -27,6 +27,7 @@
 #'   groupings will map to cells, so care must be taken to properly aggregate
 #'   samples.
 #'
+#' @inheritParams aggregate
 #' @param col `character(1)`.
 #'   Name of column in either [`rowData()`][SummarizedExperiment::rowData] or
 #'   [`colData()`][SummarizedExperiment::colData] that defines the desired

@@ -26,7 +26,7 @@ RNA-seq dataset.
 Pseudobulk
 }
 \note{
-Updated 2020-01-03.
+Updated 2020-01-30.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
