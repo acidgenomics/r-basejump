@@ -3,6 +3,7 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inherit aggregateRows
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' counts <- matrix(

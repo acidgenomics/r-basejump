@@ -34,6 +34,8 @@ Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} or
 \code{\link[SummarizedExperiment:colData]{colData()}} that defines the desired
 aggregation groupings.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Modified object of same class, with columns aggregated.
