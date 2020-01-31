@@ -32,6 +32,7 @@
 #'   Name of column in either [`rowData()`][SummarizedExperiment::rowData] or
 #'   [`colData()`][SummarizedExperiment::colData] that defines the desired
 #'   aggregation groupings.
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' counts <- matrix(
