@@ -18,6 +18,15 @@ aggregateRows(x, ...)
 \arguments{
 \item{x}{Object.}
 
+\item{by}{\code{factor}.
+Aggregation groupings. The new aggregate names are defined as the \code{factor}
+\link[base:levels]{levels}, and the original, unaggregated names are defined as
+the \link[base:names]{names}.}
+
+\item{fun}{\code{character(1)}.
+Name of the aggregation function to apply.
+Uses \code{\link[base:match.arg]{match.arg()}} internally.}
+
 \item{col}{\code{character(1)}.
 Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} or
 \code{\link[SummarizedExperiment:colData]{colData()}} that defines the desired
