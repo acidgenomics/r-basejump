@@ -104,7 +104,7 @@ setMethod(
 
 
 ## Consider aggregating the matrix to gene level instead.
-## Updated 2019-07-22.
+## Updated 2020-01-30.
 `convertTranscriptsToGenes,matrix` <-  # nolint
     function(object, tx2gene, aggregate = TRUE) {
         assert(isFlag(aggregate))
@@ -116,7 +116,7 @@ setMethod(
             )
         )
         if (isTRUE(aggregate)) {
-            aggregateRows(object, groupings = t2g)
+            aggregateRows(object, by = t2g)
         } else {
             rownames(object) <- as.character(t2g)
             object

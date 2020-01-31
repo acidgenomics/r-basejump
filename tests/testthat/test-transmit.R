@@ -15,7 +15,7 @@ remoteDir <- paste(
 test_that("NCBI FTP README file", {
     object <- transmit(
         remoteDir = remoteDir,
-        pattern = "README",
+        pattern = "^README$",
         compress = FALSE
     )
     expected <- file.path(getwd(), "README")
@@ -38,7 +38,7 @@ test_that("NCBI FTP README file", {
 test_that("Rename and compress", {
     object <- transmit(
         remoteDir = remoteDir,
-        pattern = "README",
+        pattern = "^README$",
         rename = "readme.txt",
         compress = TRUE
     )
@@ -53,14 +53,14 @@ test_that("Invalid parameters", {
     expect_error(
         object = transmit(
             remoteDir = "http://steinbaugh.com",
-            pattern = "README"
+            pattern = "^README$"
         ),
         regexp = "ftp"
     )
     expect_error(
         object = transmit(
             remoteDir = "ftp://ftp.wormbase.org/pub/",
-            pattern = "README"
+            pattern = "^README$"
         ),
         regexp = "remoteFiles"
     )
@@ -74,7 +74,7 @@ test_that("Invalid parameters", {
     expect_error(
         object = transmit(
             remoteDir = remoteDir,
-            pattern = "README",
+            pattern = "^README$",
             rename = c("XXX", "YYY")
         ),
         regexp = "areSameLength"

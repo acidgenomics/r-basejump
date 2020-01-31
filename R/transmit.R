@@ -4,7 +4,7 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @export
-#' @note Updated 2020-01-19.
+#' @note Updated 2020-01-30.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams pipette::saveData
@@ -33,7 +33,7 @@
 #'     )
 #'     readme <- transmit(
 #'         remoteDir = remoteDir,
-#'         pattern = "README",
+#'         pattern = "^README$",
 #'         rename = "ncbi-readme.txt",
 #'         compress = FALSE
 #'     )
