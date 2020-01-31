@@ -133,6 +133,8 @@ setMethod(
         result <- model %*% x
         if (fun == "mean") {
             n <- aggregate(x = x, by = by, fun = "n")
+            ## Avoid NaN from diving by zero.
+            n[n == 0L] <- 1L
             result <- result / n
         }
         result
