@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.2</span>
       </span>
     </div>
 
@@ -118,12 +118,45 @@
     <div id="basejump-0-12-0-2020-01-20" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-12-0-2020-01-20" class="anchor"></a>basejump 0.12.0 (2020-01-20)</h2>
+<div id="major-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<ul>
+<li>Migrated functions from brio (now renamed to pipette), freerange, and transformer, in preparation for Bioconductor submission and reviews.</li>
+<li>Updated messages to utilize the cli package.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0-12-1-2020-01-30" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-12-1-2020-01-30" class="anchor"></a>basejump 0.12.1 (2020-01-30)</h2>
 <div id="major-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#major-changes" class="anchor"></a>Major changes</h3>
 <ul>
-<li>Migrated functions from brio (now renamed to pipette), freerange, and transformer, in preparation for Bioconductor submission and reviews.</li>
-<li>Updated messages to utilize the cli package.</li>
+<li>Reworked <code>aggregate</code>, <code>aggregateCols</code>, <code>aggregateRows</code> support to reflect internal migration away from Matrix.utils dependency.</li>
+</ul>
+</div>
+<div id="minor-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>NAMESPACE fix for unexpected removal of Matrix.utils from CRAN. Now defining the previously imported aggregate.Matrix function directly here in basejump.</li>
+<li>
+<code>aggregate</code>: Now defining matrix method.</li>
+<li>
+<code>aggregate*</code> generics now consistently use “x” instead of “object”.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0-12-2-2020-02-18" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-12-2-2020-02-18" class="anchor"></a>basejump 0.12.2 (2020-02-18)</h2>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Migrating <code>pseudobulk</code> methods to pointillism package. Rethinking the approach used here to work better with per-cluster aggregation operations. Will be updated in the next pointillism release.</li>
 </ul>
 </div>
 </div>
@@ -134,6 +167,8 @@
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
         <li><a href="#basejump-0-12-0-2020-01-20">0.12.0</a></li>
+        <li><a href="#basejump-0-12-1-2020-01-30">0.12.1</a></li>
+        <li><a href="#basejump-0-12-2-2020-02-18">0.12.2</a></li>
       </ul>
     </div>
   </div>
