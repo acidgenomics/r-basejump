@@ -92,7 +92,6 @@ reference:
       - geometricMean
       - logRatio
       - melt
-      - pseudobulk
       - rankedMatrix
       - sizeFactors
       - zerosVsDepth
