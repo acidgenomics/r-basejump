@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.12.1
-Date: 2020-01-30
+Version: 0.12.2
+Date: 2020-02-18
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -186,7 +186,6 @@ Collate:
     'organism-methods.R'
     'package.R'
     'prepareTemplate.R'
-    'pseudobulk-methods.R'
     'rankedMatrix.R'
     'reexports-coerce.R'
     'reexports.R'
