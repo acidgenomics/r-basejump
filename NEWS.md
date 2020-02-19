@@ -1,3 +1,11 @@
+## basejump 0.12.2 (2020-02-18)
+
+### Minor changes
+
+- Migrating `pseudobulk` methods to pointillism package. Rethinking the approach
+  used here to work better with per-cluster aggregation operations. Will be
+  updated in the next pointillism release.
+
 ## basejump 0.12.1 (2020-01-30)
 
 ### Major changes
