@@ -117,7 +117,6 @@ NULL
         isAny(colData, c("DataFrame", "NULL")),
         isAny(metadata, c("list", "NULL")),
         isAny(transgeneNames, c("character", "NULL")),
-        isAny(spikeNames, c("character", "NULL")),
         isFlag(sort),
         isFlag(sessionInfo)
     )
