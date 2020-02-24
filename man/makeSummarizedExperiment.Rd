@@ -16,7 +16,6 @@ makeSummarizedExperiment(assays, ...)
   colData = DataFrame(),
   metadata = list(),
   transgeneNames = NULL,
-  spikeNames = NULL,
   sort = TRUE,
   sessionInfo = TRUE
 )
@@ -28,7 +27,6 @@ makeSummarizedExperiment(assays, ...)
   colData = DataFrame(),
   metadata = list(),
   transgeneNames = NULL,
-  spikeNames = NULL,
   sort = TRUE,
   sessionInfo = TRUE
 )
@@ -59,9 +57,6 @@ Metadata.}
 \item{transgeneNames}{\code{character}.
 Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
 
-\item{spikeNames}{\code{character}.
-Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
-
 \item{sort}{\code{logical(1)}.
 Ensure all row and column names are sorted alphabetically. This includes
 columns inside \code{rowData} and \code{colData}, and \code{metadata} slot names. Assay
@@ -84,7 +79,7 @@ of transgenes and spike-ins.
 \note{
 Column and rows always return sorted alphabetically.
 
-Updated 2020-01-20.
+Updated 2020-02-24.
 }
 \section{Session information}{
 

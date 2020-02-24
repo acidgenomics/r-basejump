@@ -39,7 +39,7 @@ NULL
 #'   as.data.frame as.list cor decode do.call expand expand.grid head lapply
 #'   match mcols mcols<- merge metadata metadata<- na.omit order setdiff split
 #'   summary t tail
-#' @importFrom SingleCellExperiment SingleCellExperiment isSpike<-
+#' @importFrom SingleCellExperiment SingleCellExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-

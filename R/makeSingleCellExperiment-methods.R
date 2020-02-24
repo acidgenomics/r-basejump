@@ -3,9 +3,13 @@
 #' @name makeSingleCellExperiment
 #' @include makeSummarizedExperiment-methods.R
 #' @inherit makeSummarizedExperiment
-#' @note Updated 2019-08-27.
+#' @note Updated 2020-02-24.
 #'
 #' @inheritParams acidroxygen::params
+#'
+#' @seealso
+#' - `SingleCellExperiment::altExps()`, which has replaced the now defunct
+#'   `isSpike` method for setting spike-in transcripts.
 #'
 #' @return `SingleCellExperiment`.
 #'
@@ -39,8 +43,7 @@ NULL
     colData = DataFrame(),
     metadata = list(),
     reducedDims = SimpleList(),
-    transgeneNames = NULL,
-    spikeNames = NULL
+    transgeneNames = NULL
 ) {
     assert(
         isAny(reducedDims, c("SimpleList", "list", "NULL"))
@@ -61,8 +64,7 @@ NULL
         rowRanges = rowRanges,
         colData = colData,
         metadata = metadata,
-        transgeneNames = transgeneNames,
-        spikeNames = spikeNames
+        transgeneNames = transgeneNames
     )
     ## SCE constructor currently errors on empty rowRanges.
     rowRanges <- rowRanges(se)
@@ -78,12 +80,6 @@ NULL
         metadata = metadata(se),
         reducedDims = reducedDims
     )
-    ## Optionally, use `isSpike` internally to define the `spikeNames`.
-    if (is.character(spikeNames)) {
-        for (i in seq_along(spikeNames)) {
-            isSpike(sce, spikeNames[[i]]) <- spikeNames[[i]]
-        }
-    }
     validObject(sce)
     sce
 }
