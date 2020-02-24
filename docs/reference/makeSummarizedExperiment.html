@@ -73,7 +73,7 @@ of transgenes and spike-ins." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.3</span>
       </span>
     </div>
 
@@ -136,7 +136,6 @@ of transgenes and spike-ins.</p>
   <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
   <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>sessionInfo</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )
@@ -149,7 +148,6 @@ of transgenes and spike-ins.</p>
   <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
   <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>sessionInfo</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</pre>
@@ -197,11 +195,6 @@ Metadata.</p></td>
 Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).</p></td>
     </tr>
     <tr>
-      <th>spikeNames</th>
-      <td><p><code>character</code>.
-Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></td>
-    </tr>
-    <tr>
       <th>sort</th>
       <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
 Ensure all row and column names are sorted alphabetically. This includes
@@ -226,7 +219,7 @@ Slot session information into <code>metadata</code>.</p></td>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Column and rows always return sorted alphabetically.</p>
-<p>Updated 2020-01-20.</p>
+<p>Updated 2020-02-24.</p>
     <h2 class="hasAnchor" id="session-information"><a class="anchor" href="#session-information"></a>Session information</h2>
 
     

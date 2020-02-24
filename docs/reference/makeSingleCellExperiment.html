@@ -73,7 +73,7 @@ of transgenes and spike-ins." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.3</span>
       </span>
     </div>
 
@@ -135,8 +135,7 @@ of transgenes and spike-ins.</p>
   <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
   <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(),
-  <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )
 
 <span class='co'># S4 method for list</span>
@@ -146,8 +145,7 @@ of transgenes and spike-ins.</p>
   <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
   <span class='kw'>reducedDims</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(),
-  <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>spikeNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -191,11 +189,6 @@ List containing matrices of cell coordinates in reduced space.</p></td>
       <td><p><code>character</code>.
 Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).</p></td>
     </tr>
-    <tr>
-      <th>spikeNames</th>
-      <td><p><code>character</code>.
-Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -203,7 +196,7 @@ Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).</p></
     <p><code>SingleCellExperiment</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-27.</p>
+    <p>Updated 2020-02-24.</p>
     <h2 class="hasAnchor" id="session-information"><a class="anchor" href="#session-information"></a>Session information</h2>
 
     
@@ -221,11 +214,8 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 
     <div class='dont-index'>
 <ul>
-<li><p><code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment()</a></code>.</p></li>
-<li><p><code><a href='https://rdrr.io/pkg/SingleCellExperiment/man/SingleCellExperiment.html'>SingleCellExperiment()</a></code>.</p></li>
-<li><p><code><a href='https://rdrr.io/r/utils/help.html'>help("RangedSummarizedExperiment-class", "SummarizedExperiment")</a></code>.</p></li>
-<li><p><code><a href='https://rdrr.io/r/utils/help.html'>help("SummarizedExperiment-class", "SummarizedExperiment")</a></code>.</p></li>
-<li><p><code><a href='https://rdrr.io/r/utils/help.html'>help("SingleCellExperiment-class", "SingleCellExperiment")</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/SingleCellExperiment/man/altExps.html'>SingleCellExperiment::altExps()</a></code>, which has replaced the now defunct
+<code>isSpike</code> method for setting spike-in transcripts.</p></li>
 </ul>
 </div>
 
