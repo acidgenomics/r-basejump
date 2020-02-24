@@ -1,3 +1,14 @@
+## basejump 0.12.3 (2020-02-24)
+
+### Minor changes
+
+- `makeSingleCellExperiment`, `makeSummarizedExperiment`: Removed `spikeNames`
+  support due to a breaking change in SingleCellExperiment, which has removed
+  `isSpike` in favor of `altExps`. Refer to the SingleCellExperiment
+  documentation for updated current best practice for handling spike-in
+  transcripts, which now requires slotting a separate SummarizedExperiment
+  object containing things like ERCCs inside the main SingleCellExperiment.
+
 ## basejump 0.12.2 (2020-02-18)
 
 ### Minor changes
