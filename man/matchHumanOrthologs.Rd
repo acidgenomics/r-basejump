@@ -34,7 +34,7 @@ Data frame containing mapping columns:
 Match human gene orthologs
 }
 \note{
-Updated 2019-10-25.
+Updated 2020-03-15.
 }
 \examples{
 genes <- c(
@@ -46,4 +46,11 @@ genes <- c(
 ## > if (goalie::hasInternet("https://ensembl.org")) {
 ## >     matchHumanOrthologs(genes = genes, ensemblRelease = 87L)
 ## > }
+}
+\seealso{
+\itemize{
+\item \code{biomaRt::listEnsemblArchives()}.
+\item \code{biomaRt::listMarts()}.
+\item \code{biomaRt::useMart()}.
+}
 }
