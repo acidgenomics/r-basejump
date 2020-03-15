@@ -15,8 +15,7 @@ makeSingleCellExperiment(assays, ...)
   colData = DataFrame(),
   metadata = list(),
   reducedDims = SimpleList(),
-  transgeneNames = NULL,
-  spikeNames = NULL
+  transgeneNames = NULL
 )
 
 \S4method{makeSingleCellExperiment}{list}(
@@ -25,8 +24,7 @@ makeSingleCellExperiment(assays, ...)
   colData = DataFrame(),
   metadata = list(),
   reducedDims = SimpleList(),
-  transgeneNames = NULL,
-  spikeNames = NULL
+  transgeneNames = NULL
 )
 }
 \arguments{
@@ -53,9 +51,6 @@ List containing matrices of cell coordinates in reduced space.}
 
 \item{transgeneNames}{\code{character}.
 Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
-
-\item{spikeNames}{\code{character}.
-Vector indicating which assay rows denote spike-in sequences (e.g. ERCCs).}
 }
 \value{
 \code{SingleCellExperiment}.
@@ -66,7 +61,7 @@ automatic subsetting for row and column data, as well as automatic handling
 of transgenes and spike-ins.
 }
 \note{
-Updated 2019-08-27.
+Updated 2020-02-24.
 }
 \section{Session information}{
 
@@ -104,10 +99,7 @@ print(x)
 }
 \seealso{
 \itemize{
-\item \code{\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment()}}.
-\item \code{\link[SingleCellExperiment:SingleCellExperiment]{SingleCellExperiment()}}.
-\item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
-\item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
-\item \code{help("SingleCellExperiment-class", "SingleCellExperiment")}.
+\item \code{SingleCellExperiment::altExps()}, which has replaced the now defunct
+\code{isSpike} method for setting spike-in transcripts.
 }
 }
