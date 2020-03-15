@@ -52,5 +52,6 @@ genes <- c(
 \item \code{biomaRt::listEnsemblArchives()}.
 \item \code{biomaRt::listMarts()}.
 \item \code{biomaRt::useMart()}.
+\item \code{biomaRt::select()}.
 }
 }
