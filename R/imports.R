@@ -45,7 +45,7 @@ NULL
 #'   rowRanges rowRanges<-
 #' @importFrom acidbase appendToBody bapply getNameInParent matchArgsToDoCall
 #'   methodFormals methodFunction printString
-#' @importFrom biomaRt listEnsemblArchives listMarts useMart
+#' @importFrom biomaRt listEnsemblArchives useMart
 #' @importFrom cli cli_alert cli_alert_info cli_alert_success cli_alert_warning
 #'   cli_div cli_dl cli_end cli_li cli_text cli_ul cli_verbatim
 #' @importFrom ensembldb ensemblVersion
