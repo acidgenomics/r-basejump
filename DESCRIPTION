@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.12.3
-Date: 2020-02-24
+Version: 0.12.4
+Date: 2020-03-15
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -56,7 +56,7 @@ Imports:
     biomaRt (>= 2.42),
     cli (>= 2.0),
     ensembldb (>= 2.10),
-    goalie (>= 0.4.1),
+    goalie (>= 0.4.2),
     knitr (>= 1.26),
     magrittr (>= 1.5),
     matrixStats (>= 0.55),
@@ -64,7 +64,7 @@ Imports:
     scales (>= 1.1),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
-    syntactic (>= 0.3.6),
+    syntactic (>= 0.3.8),
     tibble (>= 2.1),
     methods,
     utils
@@ -91,7 +91,7 @@ biocViews:
     GenomeAnnotation,
     Preprocessing
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 Collate: 
     'AllGlobals.R'
