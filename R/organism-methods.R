@@ -1,10 +1,9 @@
 #' Organism
 #'
 #' @name organism
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-03-15.
 #'
 #' @inheritParams acidroxygen::params
-#' @param ... Additional arguments.
 #'
 #' @return `character(1)`.
 #' Latin organism name (e.g. *Homo sapiens*).
