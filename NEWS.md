@@ -1,3 +1,12 @@
+## basejump 0.12.4 (2020-03-15)
+
+### Minor changes
+
+- `matchEnsemblReleaseToURL`, `matchHumanOrthologs`: update unit tests to
+  reflect Ensembl server migration, which has rendered Ensembl archives
+  inaccessible via biomaRt until March 24th. Unit tests now check against
+  current release instead of a pinned archive release.
+
 ## basejump 0.12.3 (2020-02-24)
 
 ### Minor changes
