@@ -18,8 +18,13 @@ URL.
 Match Ensembl release to archive URL.
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-03-15.
 }
 \examples{
 matchEnsemblReleaseToURL(96L)
+}
+\seealso{
+\itemize{
+\item \code{biomaRt::listEnsemblArchives()}.
+}
 }
