@@ -16,8 +16,6 @@ sampleNames(object) <- value
 \item{object}{Object.}
 
 \item{value}{Value to assign.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 Named \code{character}.
@@ -28,7 +26,7 @@ in the \code{sampleName} column of \code{sampleData}. Otherwise it will return
 the syntactically valid names defined as the rownames of \code{sampleData}.
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-03-15.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
