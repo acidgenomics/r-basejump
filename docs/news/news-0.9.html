@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.3</span>
       </span>
     </div>
 
@@ -150,9 +150,9 @@
 <code>makeGRangesFromEnsembl</code>: Switched to using S4 run-length encoding (Rle) in our metadata column (mcols) return. This functionality matches the conventions used by GenomicRanges in the <code>GRanges</code> return, and reduces the memory footprint of very large annotation objects.</li>
 </ul>
 </div>
-<div id="minor-changes-50" class="section level3">
+<div id="minor-changes-51" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-50" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-51" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Note that some internal instances of <code>has_length</code> aren’t quite strict enough. Switch to using <code>length(x) &gt; 0L</code> or improved <code>hasLength</code> assert check defined in the <a href="https://goalie.acidgenomics.com/">goalie</a> package.</li>
 <li>
@@ -189,9 +189,9 @@
 <li>Now importing generics using our <a href="https://bioverbs.acidgenomics.com/">bioverbs</a> S4 generic package. All generics previously defined in <a href="https://basejump.acidgenomics.com/">basejump</a> will continue to be reexported, to maintain backward compatibility for reverse dependencies (revdeps).</li>
 </ul>
 </div>
-<div id="minor-changes-49" class="section level3">
+<div id="minor-changes-50" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-49" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-50" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>aggregateCellsToSamples</code>: Split out S4 method to a separate file. Previously was defined in <code>aggregate-methods.R</code>.</li>
@@ -282,9 +282,9 @@
 <code>standardizeCall</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-48" class="section level3">
+<div id="minor-changes-49" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-48" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-49" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added <code>nullOK</code> support to <a href="https://goalie.acidgenomics.com/">goalie</a> assert checks, where applicable.</li>
 </ul>
@@ -293,9 +293,9 @@
     <div id="basejump-0-9-3-2019-01-08" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-3-2019-01-08" class="anchor"></a>basejump 0.9.3 (2019-01-08)</h2>
-<div id="minor-changes-47" class="section level3">
+<div id="minor-changes-48" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-47" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-48" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reorganized imports in <code>DESCRIPTION</code> file to make them more human readable. Note that <a href="https://basejump.acidgenomics.com/">basejump</a> sub-packages are imported first, then <a href="https://bioconductor.org/">Bioconductor</a> packages, followed by <a href="https://cran.r-project.org/">CRAN</a> packages, and required default packages.</li>
 <li>Split out NAMESPACE imports into a separate <code>imports.R</code> file.</li>
@@ -305,9 +305,9 @@
     <div id="basejump-0-9-4-2019-01-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-4-2019-01-12" class="anchor"></a>basejump 0.9.4 (2019-01-12)</h2>
-<div id="minor-changes-46" class="section level3">
+<div id="minor-changes-47" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-46" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-47" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Consolidated reexports from <a href="https://basejump.acidgenomics.com/">basejump</a> sub-packages into <code>reexports.R</code> file.</li>
 <li>Miscellaneous documentation updates, improving link appearance for functions exported in other packages.</li>
@@ -317,9 +317,9 @@
     <div id="basejump-0-9-5-2019-01-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-5-2019-01-22" class="anchor"></a>basejump 0.9.5 (2019-01-22)</h2>
-<div id="minor-changes-45" class="section level3">
+<div id="minor-changes-46" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-45" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-46" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated basejump subpackage dependencies.</li>
 <li>Needed to add <code>decode</code> call internally for some plotting functions, to ensure that run-length encoded (Rle) rowData gets handled correctly.</li>
@@ -356,9 +356,9 @@
     <div id="basejump-0-9-6-2019-01-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-6-2019-01-22" class="anchor"></a>basejump 0.9.6 (2019-01-22)</h2>
-<div id="minor-changes-44" class="section level3">
+<div id="minor-changes-45" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-44" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-45" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Note that S4Transformer package import has been renamed to transformer.</li>
 <li>Needed to add <code>decode</code> call internally for some plotting functions, to ensure that run-length encoded (Rle) rowData gets handled correctly.</li>
@@ -395,9 +395,9 @@
     <div id="basejump-0-9-7-2019-01-23" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-7-2019-01-23" class="anchor"></a>basejump 0.9.7 (2019-01-23)</h2>
-<div id="minor-changes-43" class="section level3">
+<div id="minor-changes-44" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-43" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-44" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>decode</code> and <code>encode</code> are properly reexported from <a href="https://brio.acidgenomics.com/">brio</a>.</li>
@@ -408,9 +408,9 @@
     <div id="basejump-0-9-8-2019-02-08" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-8-2019-02-08" class="anchor"></a>basejump 0.9.8 (2019-02-08)</h2>
-<div id="minor-changes-42" class="section level3">
+<div id="minor-changes-43" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-42" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-43" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Deprecating <code>plotGene</code> in favor of <code>plotCounts</code>. This change will be reflected in future updates of packages that depend on <a href="https://basejump.acidgenomics.com/">basejump</a>, including the bcbio R packages.</li>
 <li>Split out subpackage reexports into separate files.</li>
@@ -421,9 +421,9 @@
     <div id="basejump-0-9-9-2019-02-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-9-2019-02-11" class="anchor"></a>basejump 0.9.9 (2019-02-11)</h2>
-<div id="minor-changes-41" class="section level3">
+<div id="minor-changes-42" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-41" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-42" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Code fixes to provide backward compatibility support for R 3.4. Tested using R 3.4.1 with Bioconductor 3.6 release.</li>
 <li>Needed to add <code>unname</code> to some assert checks for expected <code><a href="https://rdrr.io/r/base/logical.html">logical(1)</a></code> return, which only happens in R 3.4 but not R 3.5.</li>
@@ -435,9 +435,9 @@
     <div id="basejump-0-9-10-2019-02-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-10-2019-02-17" class="anchor"></a>basejump 0.9.10 (2019-02-17)</h2>
-<div id="minor-changes-40" class="section level3">
+<div id="minor-changes-41" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-40" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-41" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Working on making the current basejump code base completely backward compatible with bcbioBase v0.4.1 and bcbioRNASeq v0.2.8 release series.</li>
 <li>Now reexporting <code><a href="https://rdrr.io/pkg/goalie/man/reexports.html">goalie::bapply</a></code> and additional useful pipes from <a href="https://magrittr.tidyverse.org/">magrittr</a> package.</li>
@@ -450,9 +450,9 @@
     <div id="basejump-0-9-11-2019-02-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-11-2019-02-25" class="anchor"></a>basejump 0.9.11 (2019-02-25)</h2>
-<div id="minor-changes-39" class="section level3">
+<div id="minor-changes-40" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-39" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-40" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated <a href="https://transformer.acidgenomics.com/">transformer</a> package reexports to include new <a href="https://cran.r-project.org/package=data.table">data.table</a> coercion methods.</li>
 <li>Added additional useful compression function reexports from <a href="https://brio.acidgenomics.com/">brio</a> package.</li>
@@ -470,9 +470,9 @@
 <code>makeGRangesFromGFF</code>: Reworked internal code, making it more modular. Added initial support for RefSeq GFF3 files. Also improved sanitization and special handling of files from FlyBase and WormBase.</li>
 </ul>
 </div>
-<div id="minor-changes-38" class="section level3">
+<div id="minor-changes-39" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-38" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-39" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotHeatmap</code> family: Bug fix needed for internal <code>is.na</code> call on <code>annotationCol</code>, which should be wrapped with <code>any</code> to return boolean. This errors (as it should) on R 3.6, but I missed it on R 3.5.</li>
@@ -483,9 +483,9 @@
     <div id="basejump-0-9-13-2019-03-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-13-2019-03-18" class="anchor"></a>basejump 0.9.13 (2019-03-18)</h2>
-<div id="minor-changes-37" class="section level3">
+<div id="minor-changes-38" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-37" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-38" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated dependencies, specificially brio and goalie.</li>
 <li>Miscellaneous documentation improvements.</li>
@@ -495,9 +495,9 @@
     <div id="basejump-0-9-14-2019-03-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-14-2019-03-18" class="anchor"></a>basejump 0.9.14 (2019-03-18)</h2>
-<div id="minor-changes-36" class="section level3">
+<div id="minor-changes-37" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-36" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-37" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Additional bug fixes for <code>sampleData</code> and blacklisted metadata handling.</li>
 </ul>
@@ -506,9 +506,9 @@
     <div id="basejump-0-9-15-2019-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-15-2019-03-22" class="anchor"></a>basejump 0.9.15 (2019-03-22)</h2>
-<div id="minor-changes-35" class="section level3">
+<div id="minor-changes-36" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-35" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-36" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated code to <a href="https://acidgenomics.com/">Acid Genomics</a>.</li>
 </ul>
@@ -517,9 +517,9 @@
     <div id="basejump-0-9-16-2019-03-23" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-9-16-2019-03-23" class="anchor"></a>basejump 0.9.16 (2019-03-23)</h2>
-<div id="minor-changes-34" class="section level3">
+<div id="minor-changes-35" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-34" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-35" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>convertSampleIDsToNames</code>: Removed code to assign <code>sampleName</code> column to <code>NULL</code>. This step doesn’t work consistently for <code>DataFrame</code> across Bioconductor installations, and has been found to error on R 3.4 and the current bioc-devel on AppVeyor.</li>

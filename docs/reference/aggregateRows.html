@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.3</span>
       </span>
     </div>
 
@@ -141,11 +141,28 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
+      <th>by</th>
+      <td><p><code>factor</code>.
+Aggregation groupings. The new aggregate names are defined as the <code>factor</code>
+<a href='https://rdrr.io/r/base/levels.html'>levels</a>, and the original, unaggregated names are defined as
+the <a href='https://rdrr.io/r/base/names.html'>names</a>.</p></td>
+    </tr>
+    <tr>
+      <th>fun</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Name of the aggregation function to apply.
+Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code> internally.</p></td>
+    </tr>
+    <tr>
       <th>col</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
 Name of column in either <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData()</a></code> or
 <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code> that defines the desired
 aggregation groupings.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
 
@@ -218,8 +235,12 @@ samples.</p></li>
 #&gt; transcript1                  2
 #&gt; transcript2                  2
 #&gt; transcript3                  2
-#&gt; transcript4                  0</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>counts</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .local(x, ...): Assert failure.</span>
-#&gt; <span class='error'>[3] identical(rownames(x), names(by)) is not TRUE.</span></div><div class='input'>
+#&gt; transcript4                  0</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>counts</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt;       sample1_replicate1 sample1_replicate2 sample2_replicate1
+#&gt; gene1                  2                  2                  4
+#&gt; gene2                  4                  4                  2
+#&gt;       sample2_replicate2
+#&gt; gene1                  4
+#&gt; gene2                  2</div><div class='input'>
 <span class='co'>## Matrix ====</span>
 <span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>counts</span>, <span class='st'>"sparseMatrix"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 4 x 4 sparse Matrix of class "dgCMatrix"
@@ -232,8 +253,13 @@ samples.</p></li>
 #&gt; transcript1                  2
 #&gt; transcript2                  2
 #&gt; transcript3                  2
-#&gt; transcript4                  .</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>sparse</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .local(x, ...): Assert failure.</span>
-#&gt; <span class='error'>[3] identical(rownames(x), names(by)) is not TRUE.</span></div><div class='input'>
+#&gt; transcript4                  .</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>sparse</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
+#&gt;       sample1_replicate1 sample1_replicate2 sample2_replicate1
+#&gt; gene1                  2                  2                  4
+#&gt; gene2                  4                  4                  2
+#&gt;       sample2_replicate2
+#&gt; gene1                  4
+#&gt; gene2                  2</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment</a></span>(
     <span class='kw'>assays</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(<span class='kw'>counts</span> <span class='kw'>=</span> <span class='no'>counts</span>),

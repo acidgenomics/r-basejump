@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.3</span>
       </span>
     </div>
 
@@ -144,11 +144,28 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
+      <th>by</th>
+      <td><p><code>factor</code>.
+Aggregation groupings. The new aggregate names are defined as the <code>factor</code>
+<a href='https://rdrr.io/r/base/levels.html'>levels</a>, and the original, unaggregated names are defined as
+the <a href='https://rdrr.io/r/base/names.html'>names</a>.</p></td>
+    </tr>
+    <tr>
+      <th>fun</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Name of the aggregation function to apply.
+Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code> internally.</p></td>
+    </tr>
+    <tr>
       <th>col</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
 Name of column in either <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData()</a></code> or
 <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code> that defines the desired
 aggregation groupings.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
 

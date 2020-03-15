@@ -82,25 +82,6 @@ test_that("Minimal input", {
     expect_identical(class(x), SE)
 })
 
-test_that("Spike-in support", {
-    rownames(assays[[1L]])[seq_len(2L)] <- c("EGFP", "ERCC")
-    object <- makeSummarizedExperiment(
-        assays = assays,
-        rowRanges = rowRanges[3L:4L],
-        colData = colData,
-        transgeneNames = "EGFP",
-        spikeNames = "ERCC"
-    )
-    expect_identical(
-        object = rownames(object),
-        expected = c("EGFP", "ERCC", genes[3L:4L])
-    )
-    expect_identical(
-        object = levels(seqnames(object)),
-        expected = c("spike", "transgene", "1")
-    )
-})
-
 test_that("Strict names", {
     ## Don't allow any dashes and other illegal characters in names.
     countsBadRows <- counts

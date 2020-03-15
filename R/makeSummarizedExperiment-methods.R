@@ -17,7 +17,7 @@
 #'
 #' @name makeSummarizedExperiment
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-02-24.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sort `logical(1)`.
@@ -105,7 +105,6 @@ NULL
     colData = DataFrame(),
     metadata = list(),
     transgeneNames = NULL,
-    spikeNames = NULL,
     sort = TRUE,
     sessionInfo = TRUE
 ) {
@@ -118,7 +117,6 @@ NULL
         isAny(colData, c("DataFrame", "NULL")),
         isAny(metadata, c("list", "NULL")),
         isAny(transgeneNames, c("character", "NULL")),
-        isAny(spikeNames, c("character", "NULL")),
         isFlag(sort),
         isFlag(sessionInfo)
     )
@@ -178,17 +176,6 @@ NULL
             rowRanges <- suppressWarnings(c(transgeneRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
-        ## FASTA spike-ins.
-        if (hasLength(spikeNames) && hasLength(setdiff)) {
-            assert(isSubset(spikeNames, setdiff))
-            spikeRanges <- emptyRanges(
-                names = spikeNames,
-                seqname = "spike",
-                mcolnames = mcolnames
-            )
-            rowRanges <- suppressWarnings(c(spikeRanges, rowRanges))
-            setdiff <- setdiff(rownames(assay), names(rowRanges))
-        }
         ## Additional non-Ensembl gene symbols. Automatically handle extra gene
         ## symbols in 10X Cell Ranger output. For example: CD11b, CD127, HLA-Dr,
         ## IgG1, PD-1, etc.
@@ -208,10 +195,7 @@ NULL
                 ),
                 toString(symbols, width = 200L)
             ))
-            cli_alert_info(paste(
-                "Define spike-ins using {.arg spikeNames}",
-                "and transgenes using {.arg transgeneNames}."
-            ))
+            cli_alert_info("Define transgenes using {.arg transgeneNames}.")
             unknownRanges <- emptyRanges(
                 names = symbols,
                 mcolnames = mcolnames
