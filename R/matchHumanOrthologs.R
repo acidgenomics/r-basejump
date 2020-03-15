@@ -69,7 +69,7 @@ matchHumanOrthologs <- function(
             biomart = "ensembl",
             dataset = dataset,
             host = host,
-            verbose = TRUE
+            verbose = FALSE
         ),
         error = function(e) {
             stop("'biomaRt::useMart()' error: ", e)
