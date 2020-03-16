@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.4</span>
       </span>
     </div>
 
@@ -181,9 +181,9 @@
 <code>plotUMIsVsGenes</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-57" class="section level3">
+<div id="minor-changes-58" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-57" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-58" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated some <code>plotHeatmap</code> and <code>plotPCA</code> code from bcbio R packages.</li>
 <li>Added new <code>formalsList</code> global variable, which stashes <code>getOption</code> defaults used in some functions, namely the save/load functions and some plotting functions.</li>
@@ -196,9 +196,9 @@
     <div id="basejump-0-8-3-2018-11-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-3-2018-11-25" class="anchor"></a>basejump 0.8.3 (2018-11-25)</h2>
-<div id="minor-changes-56" class="section level3">
+<div id="minor-changes-57" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-56" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-57" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved usage of <code><a href="https://rdrr.io/pkg/assertthat/man/validate_that.html">assertthat::validate_that</a></code> in S4 class validity checks. Removed former approach using internal <code>.valid</code> function.</li>
 <li>Temporarily soft deprecated some functions that will be formally deprecated in a future release. See <code>deprecated.R</code> file.</li>
@@ -230,9 +230,9 @@
 <code>plotGenderMarkers</code>: Migrated the <code>SummarizedExperiment</code> method from bcbioRNASeq package.</li>
 </ul>
 </div>
-<div id="minor-changes-55" class="section level3">
+<div id="minor-changes-56" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-55" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-56" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Split out call functions defined in <code>calls.R</code> into separate R files. Refer to <code>dots</code>, for example.</li>
 <li>Split out <code>environment.R</code> into separate R files. See <code>detectHPC</code> for example.</li>
@@ -259,9 +259,9 @@
 <code>markdownPlotlist</code>. Renamed to <code>markdownPlots</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-54" class="section level3">
+<div id="minor-changes-55" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-54" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-55" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>autopadZeros</code>: Improved internal code to keep track of names for <code>character</code> method. Also added method support for <code>SummarizedExperiment</code>, which works on the column names (e.g. sample names) only by default.</li>
@@ -285,9 +285,9 @@
     <div id="basejump-0-8-6-2018-11-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-8-6-2018-11-30" class="anchor"></a>basejump 0.8.6 (2018-11-30)</h2>
-<div id="minor-changes-53" class="section level3">
+<div id="minor-changes-54" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-53" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-54" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Now importing <code>hasUniqueCols</code> from goalie. Switched from previous approach using <code>areSamplesUnique</code>.</li>
 <li>Documentation improvement for <code>genomeBuild</code>, used in <code>makeGRanges</code> functions.</li>
@@ -306,9 +306,9 @@
 <code>humanize</code>. New generic that enables easy conversion to human-friendly column and/or row names. Useful for CSV file export in particular.</li>
 </ul>
 </div>
-<div id="minor-changes-52" class="section level3">
+<div id="minor-changes-53" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-52" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-53" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>export</code>: Added <code>humanize</code> argument support.</li>

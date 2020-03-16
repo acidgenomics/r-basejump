@@ -5,10 +5,9 @@
 #' the syntactically valid names defined as the rownames of `sampleData`.
 #'
 #' @name sampleNames
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-03-15.
 #'
 #' @inheritParams acidroxygen::params
-#' @param ... Additional arguments.
 #'
 #' @return Named `character`.
 #'

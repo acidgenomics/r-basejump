@@ -37,8 +37,6 @@ organism(object) <- value
 \item{object}{Object.}
 
 \item{value}{Value to assign.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{character(1)}.
@@ -48,7 +46,7 @@ Latin organism name (e.g. \emph{Homo sapiens}).
 Organism
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-03-15.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

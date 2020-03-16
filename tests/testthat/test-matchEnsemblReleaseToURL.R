@@ -2,9 +2,16 @@ context("matchEnsemblReleaseToURL")
 
 skip_if_not(hasInternet(url = "https://ensembl.org/"))
 
-test_that("Ensembl 96", {
+test_that("Ensembl 98", {
     expect_identical(
-        object = matchEnsemblReleaseToURL(96L),
-        expected = "http://apr2019.archive.ensembl.org"
+        object = matchEnsemblReleaseToURL(98L),
+        expected = "http://sep2019.archive.ensembl.org"
     )
 })
+
+## > test_that("Ensembl 99", {
+## >     expect_identical(
+## >         object = matchEnsemblReleaseToURL(99L),
+## >         expected = "http://jan2020.archive.ensembl.org"
+## >     )
+## > })

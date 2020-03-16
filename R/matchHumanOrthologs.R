@@ -1,6 +1,6 @@
 #' Match human gene orthologs
 #'
-#' @note Updated 2019-10-25.
+#' @note Updated 2020-03-15.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -12,6 +12,12 @@
 #'   - hgncID
 #'   - geneName
 #'   - hgncName
+#'
+#' @seealso
+#' - `biomaRt::listEnsemblArchives()`.
+#' - `biomaRt::listMarts()`.
+#' - `biomaRt::useMart()`.
+#' - `biomaRt::select()`.
 #'
 #' @examples
 #' genes <- c(
@@ -28,7 +34,6 @@ matchHumanOrthologs <- function(
     organism = NULL,
     ensemblRelease = NULL
 ) {
-    timeout <- "biomaRt timed out connecting to Ensembl."
     assert(
         isCharacter(genes),
         isString(organism, nullOK = TRUE),
@@ -40,24 +45,8 @@ matchHumanOrthologs <- function(
     ## Don't allow the user to pass in human genes, since this makes no sense.
     assert(!identical(organism, "Homo sapiens"))
     ## Match the Ensembl release to the archive host name, required for biomaRt.
-    host <- sub(
-        pattern = "^http(s)?://([a-z0-9.]+)/?$",
-        replacement = "\\2",
-        x = matchEnsemblReleaseToURL(ensemblRelease)
-    )
-    marts <- tryCatch(
-        expr = listMarts(host = host),
-        error = function(e) stop(timeout)
-    )
-    which <- match("ENSEMBL_MART_ENSEMBL", marts[["biomart"]])
-    version <- marts[["version"]][which]
-    cli_alert(sprintf(
-        fmt = paste(
-            "Matching orthologs against {.var %s} ({.url %s}) with",
-            "{.pkg biomaRt} %s."
-        ),
-        version, host, packageVersion("biomaRt")
-    ))
+    ## e.g. Ensembl 99: http://jan2020.archive.ensembl.org
+    host <- matchEnsemblReleaseToURL(ensemblRelease)
     ## e.g. "mmusculus_gene_ensembl".
     dataset <- paste0(
         tolower(sub(
@@ -67,14 +56,24 @@ matchHumanOrthologs <- function(
         )),
         "_gene_ensembl"
     )
+    cli_alert(sprintf(
+        fmt = paste(
+            "Matching orthologs against {.var %s} ({.url %s}) with",
+            "{.pkg biomaRt} %s."
+        ),
+        dataset, host, packageVersion("biomaRt")
+    ))
     mart <- tryCatch(
         expr = useMart(
-            ## "ensembl" also works.
-            biomart = "ENSEMBL_MART_ENSEMBL",
+            ## Can use "ENSEMBL_MART_ENSEMBL" instead of "ensembl" here.
+            biomart = "ensembl",
             dataset = dataset,
-            host = host
+            host = host,
+            verbose = FALSE
         ),
-        error = function(e) stop(timeout)
+        error = function(e) {
+            stop("'biomaRt::useMart()' error: ", e)
+        }
     )
     map <- tryCatch(
         expr = select(
@@ -86,7 +85,9 @@ matchHumanOrthologs <- function(
                 "hsapiens_homolog_ensembl_gene"
             )
         ),
-        error = function(e) stop(timeout)
+        error = function(e) {
+            stop("'biomaRt::select()' error: ", e)
+        }
     )
     map <- as(map, "DataFrame")
     colnames(map) <- c("geneID", "hgncID")
