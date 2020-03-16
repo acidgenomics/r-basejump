@@ -4,7 +4,9 @@
 \name{genomeMetadataNames}
 \alias{genomeMetadataNames}
 \title{Slot names in metadata containing genome information}
-\format{An object of class \code{character} of length 3.}
+\format{
+An object of class \code{character} of length 3.
+}
 \usage{
 genomeMetadataNames
 }
