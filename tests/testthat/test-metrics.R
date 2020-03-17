@@ -44,14 +44,16 @@ context("metricsPerSample")
 fun <- eval(formals(`metricsPerSample,SingleCellExperiment`)[["fun"]])
 with_parameters_test_that(
     "SingleCellExperiment", {
-        x <- metricsPerSample(sce, fun = fun)
+        x <- sce
+        x <- calculateMetrics(x)
+        x <- metricsPerSample(x, fun = fun)
         x <- as.integer(round(x[["nCount"]]))
         expect_identical(object = x, expected = expected)
     },
     fun = fun,
     expected = list(
-        mean = c(57038L, 55170L),
-        median = c(56431L, 51017L),
-        sum = c(2794849L, 2813670L)
+        mean = c(60587L, 54304L),
+        median = c(56661L, 52534L),
+        sum = c(3211137L, 2552299L)
     )
 )
