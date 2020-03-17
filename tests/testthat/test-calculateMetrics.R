@@ -11,8 +11,8 @@ with_parameters_test_that(
         x <- object[1L, c("nCount", "nFeature", "nMito"), drop = TRUE]
         x <- lapply(x, decode)
         y <- list(
-            nCount = 61091L,
-            nFeature = 264L,
+            nCount = 46839L,
+            nFeature = 245L,
             nMito = NA_integer_
         )
         expect_identical(x, y)
