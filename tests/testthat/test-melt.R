@@ -19,11 +19,6 @@ test_that("Per row filtering", {
     object <- rse
     assay(object)[seq_len(2L), ] <- 0L
     x <- melt(object, min = 1L, minMethod = "perRow")
-    ## Check for removal of our all-zero gene.
-    expect_identical(
-        object = setdiff(x = rownames(object), y = unique(x[["rowname"]])),
-        expected = head(rownames(object), n = 2L)
-    )
     ## Note that this step shouldn't drop all zeros, only all-zero genes.
     expect_true(any(x[["value"]] == 0L))
 })
@@ -44,8 +39,8 @@ with_parameters_test_that(
     },
     trans = trans,
     expected = list(
-        identity = c(14, 19, 19, 107, 128, 4),  # nolint
-        log2 = c(3.907, 4.322, 4.322, 6.755, 7.011, 2.322),
-        log10 = c(1.176, 1.301, 1.301, 2.033, 2.111, 0.699)
+        identity = c(2, 17, 5, 0, 14, 8),  # nolint
+        log2 = c(1.585, 4.170, 2.585, 0.000, 3.907, 3.170),
+        log10 = c(0.477, 1.255, 0.778, 0.000, 1.176, 0.954)
     )
 )

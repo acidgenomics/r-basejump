@@ -72,11 +72,11 @@ with_parameters_test_that(
         list(minNovelty = 0.5)
     ),
     dim = list(
-        c(482L, 68L),
-        c(464L, 32L),
-        c(483L, 78L),
-        c(458L, 25L),
-        c(485L, 96L)
+        c(482L, 71L),
+        c(464L, 29L),
+        c(482L, 74L),
+        c(458L, 29L),
+        c(481L, 91L)
     )
 )
 
@@ -104,9 +104,9 @@ test_that("minCounts", {
             m[["sample1"]][["minCounts"]],
             m[["sample2"]][["minCounts"]]
         ),
-        expected = c(36L, 51L)
+        expected = c(42L, 47L)
     )
-    expect_identical(dim(x), c(484L, 87L))
+    expect_identical(dim(x), c(483L, 89L))
 })
 
 test_that("maxCounts", {
@@ -123,9 +123,9 @@ test_that("maxCounts", {
             m[["sample1"]][["maxCounts"]],
             m[["sample2"]][["maxCounts"]]
         ),
-        expected = c(13L, 0L)
+        expected = c(11L, 0L)
     )
-    expect_identical(dim(x), c(443L, 13L))
+    expect_identical(dim(x), c(432L, 11L))
 })
 
 test_that("minFeatures", {
@@ -142,9 +142,9 @@ test_that("minFeatures", {
             m[["sample1"]][["minFeatures"]],
             m[["sample2"]][["minFeatures"]]
         ),
-        expected = c(3L, 39L)
+        expected = c(1L, 35L)
     )
-    expect_identical(dim(x), c(475L, 42L))
+    expect_identical(dim(x), c(473L, 36L))
 })
 
 test_that("maxFeatures", {
@@ -161,9 +161,9 @@ test_that("maxFeatures", {
             m[["sample1"]][["maxFeatures"]],
             m[["sample2"]][["maxFeatures"]]
         ),
-        expected = c(46L, 13L)
+        expected = c(52L, 13L)
     )
-    expect_identical(dim(x), c(475L, 59L))
+    expect_identical(dim(x), c(472L, 65L))
 })
 
 test_that("minNovelty", {
@@ -180,9 +180,9 @@ test_that("minNovelty", {
             m[["sample1"]][["minNovelty"]],
             m[["sample2"]][["minNovelty"]]
         ),
-        expected = c(47L, 0L)
+        expected = c(46L, 0L)
     )
-    expect_identical(dim(x), c(473L, 47L))
+    expect_identical(dim(x), c(466L, 46L))
 })
 
 test_that("nCells", {
