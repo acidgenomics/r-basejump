@@ -4,7 +4,7 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @export
-#' @note Updated 2020-01-30.
+#' @note Updated 2020-03-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams pipette::saveData
@@ -123,7 +123,7 @@ transmit <- function(
     }
     ## Check for existing files and skip, if necessary.
     if (any(file.exists(files))) {
-        exists <- which(file.exists(files))
+        exists <- file.exists(files)
         skip <- files[exists]
         cli_alert_warning(sprintf(
             "Skipped: {.file %s}.",
@@ -132,7 +132,7 @@ transmit <- function(
         localPaths <- localPaths[!exists]
     }
     ## Early return if all files exist.
-    if (length(localPaths) == 0L) {
+    if (!hasLength(localPaths)) {
         cli_alert_success("All files are already downloaded.")
         files <- realpath(files)
         names(files) <- match

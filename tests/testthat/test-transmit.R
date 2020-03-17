@@ -21,18 +21,16 @@ test_that("NCBI FTP README file", {
     expected <- file.path(getwd(), "README")
     names(expected) <- "README"
     expect_identical(object, expected)
-
-    ## Check that function skips on existing.
+    ## Check that function skips on existing files.
     expect_message(
         object = transmit(
             remoteDir = remoteDir,
             pattern = "README",
             compress = FALSE
         ),
-        regexp = "All files are already downloaded."
+        regexp = "Skipped"
     )
-
-    unlink("README")
+    unlink(object)
 })
 
 test_that("Rename and compress", {
