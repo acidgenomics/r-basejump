@@ -72,7 +72,7 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.5</span>
       </span>
     </div>
 
@@ -172,7 +172,7 @@ Return 1:many in long format.</p></li>
 <span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>Ensembl2Entrez</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> 4 genes don't map to Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 2 genes map to multiple Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'>→ Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Ensembl2Entrez with 500 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>Ensembl2Entrez</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> 4 genes don't map to Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 1 gene maps to multiple Entrez IDs.</span></div><div class='output co'>#&gt; <span class='message'>→ Returning with 1:1 mappings using oldest Entrez ID per gene.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Ensembl2Entrez with 500 rows and 2 columns
 #&gt;                  geneID  entrezID
 #&gt;             &lt;character&gt; &lt;integer&gt;
 #&gt; gene001 ENSG00000000003      7105
