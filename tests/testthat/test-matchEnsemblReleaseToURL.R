@@ -8,10 +8,3 @@ test_that("Ensembl 98", {
         expected = "http://sep2019.archive.ensembl.org"
     )
 })
-
-## > test_that("Ensembl 99", {
-## >     expect_identical(
-## >         object = matchEnsemblReleaseToURL(99L),
-## >         expected = "http://jan2020.archive.ensembl.org"
-## >     )
-## > })
