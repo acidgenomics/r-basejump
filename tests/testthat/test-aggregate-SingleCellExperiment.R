@@ -69,8 +69,8 @@ test_that("acidtest example", {
     expect_identical(
         object = sums,
         expected = c(
-            sample1 = 2794849L,
-            sample2 = 2813670L
+            sample1 = 3211137L,
+            sample2 = 2552299L
         )
     )
 })
