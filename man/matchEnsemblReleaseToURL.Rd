@@ -8,7 +8,7 @@ matchEnsemblReleaseToURL(release)
 }
 \arguments{
 \item{release}{\code{integer(1)} or \code{character(1)}.
-Ensembl release (e.g. 96).}
+Ensembl release (e.g. 99).}
 }
 \value{
 \code{character(1)}.
@@ -18,7 +18,7 @@ URL.
 Match Ensembl release to archive URL.
 }
 \note{
-Updated 2020-03-15.
+Updated 2020-03-16.
 }
 \examples{
 matchEnsemblReleaseToURL(96L)

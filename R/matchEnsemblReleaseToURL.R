@@ -1,10 +1,10 @@
 #' Match Ensembl release to archive URL.
 #'
-#' @note Updated 2020-03-15.
+#' @note Updated 2020-03-16.
 #' @export
 #'
 #' @param release `integer(1)` or `character(1)`.
-#'   Ensembl release (e.g. 96).
+#'   Ensembl release (e.g. 99).
 #'
 #' @return `character(1)`.
 #'   URL.
@@ -15,8 +15,9 @@
 #' @examples
 #' matchEnsemblReleaseToURL(96L)
 matchEnsemblReleaseToURL <- function(release) {
+    currentURL <- "http://useast.ensembl.org"
     if (is.null(release)) {
-        return("http://useast.ensembl.org")
+        return(currentURL)
     }
     release <- as.character(release)
     assert(isString(release))
@@ -36,7 +37,14 @@ matchEnsemblReleaseToURL <- function(release) {
             toString(map[["version"]])
         ))
     }
-    url <- map[["url"]][match(x = release, table = map[["version"]])]
-    assert(grepl("ensembl\\.org", url))
+    ## Extract the matching row, so we can check if releast is current.
+    which <- match(x = release, table = map[["version"]])
+    x <- map[which, , drop = FALSE]
+    isCurrent <- identical(x[1L, "current_release"], "*")
+    if (isTRUE(isCurrent)) {
+        return(currentURL)
+    }
+    url <- x[1L, "url"]
+    assert(isTRUE(grepl("ensembl\\.org", url)))
     url
 }
