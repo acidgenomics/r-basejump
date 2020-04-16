@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.12.5
-Date: 2020-03-16
+Date: 2020-04-16
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -84,8 +84,7 @@ Remotes:
     acidgenomics/acidtest,
     acidgenomics/goalie,
     acidgenomics/pipette,
-    acidgenomics/syntactic,
-    acidgenomics/transformer
+    acidgenomics/syntactic
 biocViews:
     DataImport,
     GenomeAnnotation,
