@@ -53,7 +53,7 @@ R
 ### [Docker][] method
 
 ```sh
-image="acidgenomics/basejump"
+image="acidgenomics/r-basejump"
 workdir="/mnt/work"
 docker pull "$image"
 docker run -it \
