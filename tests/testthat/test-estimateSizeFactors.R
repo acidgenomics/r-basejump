@@ -17,9 +17,10 @@ test_that("SingleCellExperiment", {
     object <- estimateSizeFactors(object)
     expect_type(sizeFactors(object), "double")
     ## Check that values are stashed in int_colData, not colData.
-    expect_identical(
-        unname(sizeFactors(object)),
-        unname(object@int_colData[["size_factor"]])
-    )
-    expect_null(colData(object)[["sizeFactor"]])
+    ## This was changed again in Bioconductor 3.11 release.
+    ## > expect_identical(
+    ## >     unname(sizeFactors(object)),
+    ## >     unname(object@int_colData[["size_factor"]])
+    ## > )
+    ## > expect_null(colData(object)[["sizeFactor"]])
 })
