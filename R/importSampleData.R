@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-05-10.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -50,7 +50,11 @@
 #'   - `"bcbio"`: bcbio mode. See section here in documentation for details.
 #'   - `"cellranger"`: Cell Ranger mode. Currently requires "directory" column.
 #'     Used by Chromium R package.
-#'   - `"cpi"`: Constellation Pharmaceuticals (CPI) mode.
+#' @param autopadZeros `logical(1)`.
+#'   Autopad zeros in sample identifiers, for improved sorting.
+#'   Currently supported only for non-multiplexed samples.
+#'   For example: `sample_1`, `sample_2`, ... `sample_10` becomes
+#'   `sample_01`, `sample_02`, ... `sample10`.
 #'
 #' @return `DataFrame`.
 #'
@@ -68,7 +72,8 @@ importSampleData <- function(
     file,
     sheet = 1L,
     lanes = 0L,
-    pipeline = c("none", "bcbio", "cellranger", "cpi")
+    pipeline = c("none", "bcbio", "cellranger", "cpi"),
+    autopadZeros = FALSE
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
     if (!hasLength(lanes)) {
@@ -77,25 +82,27 @@ importSampleData <- function(
     assert(
         isAFile(file) || isAURL(file),
         isInt(lanes),
-        isNonNegative(lanes)
+        isNonNegative(lanes),
+        isFlag(autopadZeros)
     )
     lanes <- as.integer(lanes)
     pipeline <- match.arg(pipeline)
+    if (identical(pipeline, "cpi")) {
+        .Defunct(msg = paste(
+            "CPI pipeline support is defunct.",
+            "Use `pipeline = \"none\", sheet = 2L` instead.",
+            sep = "\n"
+        ))
+    }
     requiredCols <- switch(
         EXPR = pipeline,
         "none" = "sampleID",
         "bcbio" = "description",
-        "cellranger" = "directory",
-        "cpi" = "description"
+        "cellranger" = "directory"
     )
     ## Convert lanes to a sequence, if necessary.
     if (hasLength(lanes, n = 1L) && isTRUE(lanes > 1L)) {
         lanes <- seq_len(lanes)
-    }
-    ## CPI pipeline currently defaults to sheet 2 for sample metadata.
-    ## Sheet 1 contains experiment metadata.
-    if (identical(pipeline, "cpi")) {
-        assert(sheet == 2L)
     }
 
     ## Import ------------------------------------------------------------------
@@ -120,11 +127,6 @@ importSampleData <- function(
     } else if (identical(pipeline, "cellranger")) {
         ## Consider renaming this to `sampleID`, for consistency.
         idCol <- "directory"
-    } else if (identical(pipeline, "cpi")) {
-        ## Sample identifier is in "description" column.
-        ## "sampleID" column currently is a sequential numeric.
-        colnames(data)[colnames(data) == "sampleID"] <- "sampleNum"
-        idCol <- "description"
     }
     ## Check that input passes blacklist, and has all required columns.
     assert(
@@ -133,12 +135,7 @@ importSampleData <- function(
     )
     ## Valid rows must contain a non-empty sample identifier.
     data <- data[!is.na(data[[idCol]]), , drop = FALSE]
-    ## Requiring syntactically valid names on direct "sampleID" input.
-    if (identical(idCol, "sampleID")) {
-        assert(validNames(unique(data[[idCol]])))
-    }
-    ## Determine whether the samples are multiplexed, based on the presence
-    ## of duplicate values in the `description` column.
+    ## Determine whether the samples are multiplexed.
     if (
         isSubset(c("index", "sequence"), colnames(data)) &&
         (any(duplicated(data[[idCol]])) || identical(nrow(data), 1L))
@@ -151,18 +148,35 @@ importSampleData <- function(
             isSubset(requiredCols, colnames(data)),
             hasNoDuplicates(data[["sampleName"]])
         )
-    } else if (hasNoDuplicates(data[["description"]])) {
+    } else if (hasNoDuplicates(data[[idCol]])) {
         multiplexed <- FALSE
         ## Note that `sampleName` column isn't required for demultiplexed
         ## samples. We can assign from the bcbio `description` automatically.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- data[[idCol]]
         }
+        ## Requiring syntactically valid names on direct "sampleID" input.
+        ## Sanitize sample IDs into snake case, if necessary.
+        if (
+            identical(idCol, "sampleID") &&
+            !validNames(unique(data[[idCol]]))
+        ) {
+            cli_alert_info(paste0(
+                "Sanitizing sample IDs defined in ",
+                "{.var ", idCol, "} column into snake case."
+            ))
+            data[[idCol]] <- snakeCase(data[[idCol]])
+        }
+        ## Autopad zeros in sample IDs to improve sorting.
+        if (isTRUE(autopadZeros)) {
+            data[[idCol]] <- autopadZeros(data[[idCol]])
+        }
     } else {
-        stop(
-            "Sample data input file is malformed.\n",
-            "Refer to 'importSampleData()' for formatting requirements."
-        )
+        stop(paste(
+            "Sample data input file is malformed.",
+            "Refer to 'importSampleData()' for formatting requirements.",
+            sep = "\n"
+        ))
     }
 
     ## Multiplexed samples -----------------------------------------------------
