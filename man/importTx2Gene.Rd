@@ -4,7 +4,14 @@
 \alias{importTx2Gene}
 \title{Import transcript-to-gene annotations}
 \usage{
-importTx2Gene(file, organism = NULL, genomeBuild = NULL, ensemblRelease = NULL)
+importTx2Gene(
+  file,
+  organism = NULL,
+  genomeBuild = NULL,
+  ensemblRelease = NULL,
+  ignoreTxVersion = FALSE,
+  ignoreGeneVersion = TRUE
+)
 }
 \arguments{
 \item{file}{\code{character(1)}.
@@ -24,6 +31,16 @@ possible, for improved reproducibility. When left unset, the latest release
 available via AnnotationHub/ensembldb is used. Note that the latest version
 available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.}
+
+\item{ignoreTxVersion}{\code{logical(1)}.
+Don't include the transcript version in the identifier.
+\strong{Not recommended} by default when handing off salmon or kallisto output
+to tximport-DESeq2 workflow.}
+
+\item{ignoreGeneVersion}{\code{logical(1)}.
+Don't include the gene version in the identifier.
+\strong{Recommended} by default when handing off salmon or kallisto output to
+tximport-DESeq2 workflow.}
 }
 \value{
 \code{Tx2Gene}.
@@ -34,18 +51,22 @@ Generates a \code{Tx2Gene} object containing \code{transcriptID} and \code{geneI
 \note{
 File should not contain column header names.
 
-The functon doesn't attempt to strip transcript versions. Use
-\code{\link[=stripTranscriptVersions]{stripTranscriptVersions()}} in a separate call, if necessary.
-
-Updated 2019-10-24.
+Updated 2020-05-10.
 }
 \examples{
 file <- file.path(basejumpTestsURL, "tx2gene.csv")
 x <- importTx2Gene(
     file = file,
-    organism = "Mus musculus",
-    genomeBuild = "GRCm38",
+    organism = "Homo sapiens",
+    genomeBuild = "GRCh38",
     ensemblRelease = 90L
 )
 print(x)
+}
+\seealso{
+\itemize{
+\item \code{stripTranscriptVersions}, \code{stripGeneVersions}
+\item \code{download-ensembl-genome} script (which generates \code{tx2gene.csv} output)
+defined in koopa shell bootloader.
+}
 }

@@ -147,7 +147,7 @@ with_parameters_test_that(
 
 
 
-context("syntactic : DataTable")
+context("syntactic : DataFrame")
 
 mcols(df) <- DataFrame(TEST = seq_len(ncol(df)))
 metadata(df) <- list(TEST = "XXX")

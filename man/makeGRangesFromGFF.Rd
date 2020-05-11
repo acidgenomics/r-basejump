@@ -57,7 +57,7 @@ Runs the same internal code as \code{\link[=makeGRangesFromGFF]{makeGRangesFromG
 }}
 
 \note{
-Updated 2020-01-20.
+Updated 2020-05-11.
 }
 \section{Recommendations}{
 
@@ -98,9 +98,9 @@ See also:
 \itemize{
 \item \href{https://pythonhosted.org/gffutils/}{gffutils documentation}
 \item \href{https://www.ncbi.nlm.nih.gov/genbank/genomes_gff/}{GenBank GFF documentation}
-\item \href{http://ccb.jhu.edu/software/stringtie/gff.shtml}{stringtie GFF documentation}
+\item \href{https://ccb.jhu.edu/software/stringtie/gff.shtml}{stringtie GFF documentation}
 \item \href{http://gmod.org/wiki/GFF}{gmod.org GFF wiki}
-\item \href{http://mblab.wustl.edu/GTF2.html}{Brent Lab GTF2 spec notes}
+\item \href{https://mblab.wustl.edu/GTF2.html}{Brent Lab GTF2 spec notes}
 \item \href{https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md}{Sequence Ontology GFF3 spec notes}
 }
 }
@@ -206,14 +206,18 @@ Related URLs:
 \section{Example URLs}{
 
 \itemize{
-\item \href{ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz}{Ensembl GTF}
-\item \href{ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz}{Ensembl GFF3}
-\item \href{ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz}{GENCODE GTF}
-\item \href{ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz}{GENCODE GFF3}
-\item \href{ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gtf.gz}{RefSeq GTF}
-\item \href{ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz}{RefSeq GFF3}
-\item \href{ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz}{FlyBase GTF}
-\item \href{ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz}{WormBase GTF}
+\item Ensembl \emph{Homo sapiens} 95
+\href{ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz}{GTF},
+\href{ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz}{GFF3}
+\item GENCODE \emph{Homo sapiens} 29
+\href{ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz}{GTF},
+\href{ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz}{GFF3}
+\item RefSeq \emph{Homo sapiens}
+\href{ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/}{GTF and GFF3}
+\item FlyBase \emph{Drosophila melanogaster} r6.24
+\href{ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz}{GTF}
+\item WormBase \emph{Caenorhabditis elegans} WS267
+\href{ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz}{GTF}
 }
 }
 

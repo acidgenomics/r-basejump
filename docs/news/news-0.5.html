@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -55,7 +59,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.6</span>
       </span>
     </div>
 
@@ -93,7 +97,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/basejump">
+  <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -111,7 +115,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small>0.5</small></h1>
+      <h1 data-toc-skip>Changelog <small>0.5</small></h1>
       
     </div>
 
@@ -151,9 +155,9 @@
 <code>loadData</code> now supports <code>.rda</code>, <code>.rds</code>, and <code>.RData</code> files. The function will error by design if multiple data extensions are detected inside the directory specified with the <code>dir</code> argument.</li>
 </ul>
 </div>
-<div id="minor-changes-75" class="section level3">
+<div id="minor-changes-76" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-75" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-76" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Consolidated assert check function code.</li>
 <li>Moved assertive imports to <code>basejump-package.R</code> file.</li>
@@ -175,9 +179,9 @@
     <div id="basejump-0-5-1-2018-04-16" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-1-2018-04-16" class="anchor"></a>basejump 0.5.1 (2018-04-16)</h2>
-<div id="minor-changes-74" class="section level3">
+<div id="minor-changes-75" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-74" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-75" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>emptyRanges</code>: Now using <code>match.arg</code> internally to capture <code>seqname</code> argument.</li>
@@ -189,9 +193,9 @@
     <div id="basejump-0-5-2-2018-04-26" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-2-2018-04-26" class="anchor"></a>basejump 0.5.2 (2018-04-26)</h2>
-<div id="minor-changes-73" class="section level3">
+<div id="minor-changes-74" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-73" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-74" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved documentation for assert check functions.</li>
 <li>Deprecated <code>geomean</code> in favor of <code>geometricMean</code>.</li>
@@ -207,9 +211,9 @@
     <div id="basejump-0-5-3-2018-04-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-3-2018-04-30" class="anchor"></a>basejump 0.5.3 (2018-04-30)</h2>
-<div id="minor-changes-72" class="section level3">
+<div id="minor-changes-73" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-72" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-73" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved internal S4 method code for <code>fixNA</code> and <code>removeNA</code>.</li>
 <li>Tweaked gray accent colors in <code>theme_midnight</code> and <code>theme_paperwhite</code>. Now using British spelling internally for ggplot code.</li>
@@ -236,9 +240,9 @@
 <code>readGFF</code> now uses <code><a href="https://rdrr.io/pkg/rtracklayer/man/export.html">rtracklayer::import</a></code> internally to return GFF file as a <code>GRanges</code> object instead of a <code>data.frame</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-71" class="section level3">
+<div id="minor-changes-72" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-71" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-72" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>assertIsGFF</code> and <code>parseGFFAttributes</code> functions are now defunct.</li>
@@ -249,9 +253,9 @@
     <div id="basejump-0-5-6-2018-05-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-6-2018-05-19" class="anchor"></a>basejump 0.5.6 (2018-05-19)</h2>
-<div id="minor-changes-70" class="section level3">
+<div id="minor-changes-71" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-70" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-71" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Fixed NAMESPACE issue with <code><a href="https://rdrr.io/pkg/GenomeInfoDb/man/seqinfo.html">GenomeInfoDb::seqnames</a></code>.</li>
 <li>Improved <code>readGFF</code> working example to reflect switch to <code>GRanges</code> return.</li>
@@ -262,9 +266,9 @@
     <div id="basejump-0-5-7-2018-05-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-7-2018-05-24" class="anchor"></a>basejump 0.5.7 (2018-05-24)</h2>
-<div id="minor-changes-69" class="section level3">
+<div id="minor-changes-70" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-69" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-70" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Tweaked gray color accents for <code>theme_midnight</code> and <code>theme_paperwhite</code>.</li>
 </ul>
@@ -273,9 +277,9 @@
     <div id="basejump-0-5-8-2018-06-05" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-8-2018-06-05" class="anchor"></a>basejump 0.5.8 (2018-06-05)</h2>
-<div id="minor-changes-68" class="section level3">
+<div id="minor-changes-69" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-68" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-69" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>makeGRangesFromEnsembl</code> now supports remapping of <a href="https://genome.ucsc.edu/">UCSC</a> genome build to Ensembl. However, this isn’t recommended, and will warn the user.</li>
@@ -299,9 +303,9 @@
     <div id="basejump-0-5-9-2018-06-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-9-2018-06-12" class="anchor"></a>basejump 0.5.9 (2018-06-12)</h2>
-<div id="minor-changes-67" class="section level3">
+<div id="minor-changes-68" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-67" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-68" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Markdown function consistency improvements. Now all relevant <a href="https://daringfireball.net/projects/markdown/">Markdown</a> functions use <code>text</code> as the primary argument, instead of <code>object</code>.</li>
 </ul>
@@ -310,9 +314,9 @@
     <div id="basejump-0-5-10-2018-06-28" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-10-2018-06-28" class="anchor"></a>basejump 0.5.10 (2018-06-28)</h2>
-<div id="minor-changes-66" class="section level3">
+<div id="minor-changes-67" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-66" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-67" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Removed <code>makeNames</code> argument from <code>readFileByExtension</code> function. Use the <code>makeNames</code> family of functions manually after data import instead. This helps avoid unwanted sanitization of data.</li>
 <li>Simplified assert checks for internal load function.</li>
@@ -325,9 +329,9 @@
     <div id="basejump-0-5-11-2018-07-09" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-11-2018-07-09" class="anchor"></a>basejump 0.5.11 (2018-07-09)</h2>
-<div id="minor-changes-65" class="section level3">
+<div id="minor-changes-66" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-65" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-66" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Now requiring <a href="http://ggplot2.tidyverse.org/">ggplot2</a> v3.0 internally.</li>
 <li>
@@ -340,24 +344,10 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-0-5-0-2018-04-13">0.5.0</a></li>
-        <li><a href="#basejump-0-5-1-2018-04-16">0.5.1</a></li>
-        <li><a href="#basejump-0-5-2-2018-04-26">0.5.2</a></li>
-        <li><a href="#basejump-0-5-3-2018-04-30">0.5.3</a></li>
-        <li><a href="#basejump-0-5-4-2018-05-08">0.5.4</a></li>
-        <li><a href="#basejump-0-5-5-2018-05-15">0.5.5</a></li>
-        <li><a href="#basejump-0-5-6-2018-05-19">0.5.6</a></li>
-        <li><a href="#basejump-0-5-7-2018-05-24">0.5.7</a></li>
-        <li><a href="#basejump-0-5-8-2018-06-05">0.5.8</a></li>
-        <li><a href="#basejump-0-5-9-2018-06-12">0.5.9</a></li>
-        <li><a href="#basejump-0-5-10-2018-06-28">0.5.10</a></li>
-        <li><a href="#basejump-0-5-11-2018-07-09">0.5.11</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -369,7 +359,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

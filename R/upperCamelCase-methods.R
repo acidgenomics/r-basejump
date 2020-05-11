@@ -1,6 +1,6 @@
 #' @name upperCamelCase
 #' @inherit syntactic::upperCamelCase
-#' @note Updated 2019-09-25.
+#' @note Updated 2020-05-11.
 #'
 #' @inheritParams camelCase
 #' @param ... Additional arguments.
@@ -180,7 +180,7 @@ setMethod(
 
 
 
-`upperCamelCase,DataTable` <-  # nolint
+`upperCamelCase,DataFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -223,8 +223,8 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("DataTable"),
-    definition = `upperCamelCase,DataTable`
+    signature = signature("DataFrame"),
+    definition = `upperCamelCase,DataFrame`
 )
 
 

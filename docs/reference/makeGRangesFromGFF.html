@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,7 +43,6 @@
 
 <meta property="og:title" content="Make GRanges from a GFF/GTF file — makeGRangesFromGFF" />
 <meta property="og:description" content="Make GRanges from a GFF/GTF file" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -57,7 +60,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -71,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.6</span>
       </span>
     </div>
 
@@ -95,7 +98,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/basejump">
+  <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -185,7 +188,7 @@ Runs the same internal code as <code>makeGRangesFromGFF()</code>.</p></li>
 </ul>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2020-01-20.</p>
+    <p>Updated 2020-05-11.</p>
     <h2 class="hasAnchor" id="recommendations"><a class="anchor" href="#recommendations"></a>Recommendations</h2>
 
     
@@ -225,9 +228,9 @@ to the stop codon.</p></li>
 <p>See also:</p><ul>
 <li><p><a href='https://pythonhosted.org/gffutils/'>gffutils documentation</a></p></li>
 <li><p><a href='https://www.ncbi.nlm.nih.gov/genbank/genomes_gff/'>GenBank GFF documentation</a></p></li>
-<li><p><a href='http://ccb.jhu.edu/software/stringtie/gff.shtml'>stringtie GFF documentation</a></p></li>
+<li><p><a href='https://ccb.jhu.edu/software/stringtie/gff.shtml'>stringtie GFF documentation</a></p></li>
 <li><p><a href='http://gmod.org/wiki/GFF'>gmod.org GFF wiki</a></p></li>
-<li><p><a href='http://mblab.wustl.edu/GTF2.html'>Brent Lab GTF2 spec notes</a></p></li>
+<li><p><a href='https://mblab.wustl.edu/GTF2.html'>Brent Lab GTF2 spec notes</a></p></li>
 <li><p><a href='https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md'>Sequence Ontology GFF3 spec notes</a></p></li>
 </ul>
 
@@ -324,14 +327,18 @@ browser is required in a web browser.</p>
     
 
 <ul>
-<li><p><a href='ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz'>Ensembl GTF</a></p></li>
-<li><p><a href='ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz'>Ensembl GFF3</a></p></li>
-<li><p><a href='ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz'>GENCODE GTF</a></p></li>
-<li><p><a href='ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz'>GENCODE GFF3</a></p></li>
-<li><p><a href='ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gtf.gz'>RefSeq GTF</a></p></li>
-<li><p><a href='ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/GCF_000001405.38_GRCh38.p12/GCF_000001405.38_GRCh38.p12_genomic.gff.gz'>RefSeq GFF3</a></p></li>
-<li><p><a href='ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz'>FlyBase GTF</a></p></li>
-<li><p><a href='ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz'>WormBase GTF</a></p></li>
+<li><p>Ensembl <em>Homo sapiens</em> 95
+<a href='ftp://ftp.ensembl.org/pub/release-95/gtf/homo_sapiens/Homo_sapiens.GRCh38.95.gtf.gz'>GTF</a>,
+<a href='ftp://ftp.ensembl.org/pub/release-95/gff3/homo_sapiens/Homo_sapiens.GRCh38.95.gff3.gz'>GFF3</a></p></li>
+<li><p>GENCODE <em>Homo sapiens</em> 29
+<a href='ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz'>GTF</a>,
+<a href='ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gff3.gz'>GFF3</a></p></li>
+<li><p>RefSeq <em>Homo sapiens</em>
+<a href='ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/reference/'>GTF and GFF3</a></p></li>
+<li><p>FlyBase <em>Drosophila melanogaster</em> r6.24
+<a href='ftp://ftp.flybase.net/releases/FB2018_05/dmel_r6.24/gtf/dmel-all-r6.24.gtf.gz'>GTF</a></p></li>
+<li><p>WormBase <em>Caenorhabditis elegans</em> WS267
+<a href='ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz'>GTF</a></p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -348,31 +355,14 @@ browser is required in a web browser.</p>
     <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"ensembl.gtf"</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"none"</span>)
 
 <span class='co'>## Genes</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making <span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>ensembl.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>ensembl.gtf</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneBiotype, geneName, seqnames`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`geneID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 60 genes detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 60 ranges and 8 metadata columns"</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making <span style='color: #C6C6C6;background-color: #262626;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>ensembl.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>ensembl.gtf</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #C6C6C6;background-color: #262626;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #C6C6C6;background-color: #262626;'>`broadClass`</span><span> using: </span><span style='color: #C6C6C6;background-color: #262626;'>`geneBiotype, geneName, seqnames`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #C6C6C6;background-color: #262626;'>`geneID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 60 genes detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 60 ranges and 8 metadata columns"</div><div class='input'>
 <span class='co'>## Transcripts</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>ensembl.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>ensembl.gtf</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 167 transcripts detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 167 ranges and 16 metadata columns"</div></span></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #C6C6C6;background-color: #262626;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>ensembl.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>ensembl.gtf</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #C6C6C6;background-color: #262626;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #C6C6C6;background-color: #262626;'>`broadClass`</span><span> using: </span><span style='color: #C6C6C6;background-color: #262626;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #C6C6C6;background-color: #262626;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 167 transcripts detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 167 ranges and 16 metadata columns"</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#functions">Functions</a></li>
-      <li><a href="#note">Note</a></li>
-      <li><a href="#recommendations">Recommendations</a></li>
-      <li><a href="#gff-gtf-specification">GFF/GTF specification</a></li>
-      <li><a href="#feature-type">Feature type</a></li>
-      <li><a href="#supported-sources">Supported sources</a></li>
-      <li><a href="#ensembl">Ensembl</a></li>
-      <li><a href="#gencode-vs-ensembl">GENCODE vs. Ensembl</a></li>
-      <li><a href="#refseq">RefSeq</a></li>
-      <li><a href="#ucsc">UCSC</a></li>
-      <li><a href="#example-urls">Example URLs</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -383,7 +373,7 @@ browser is required in a web browser.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

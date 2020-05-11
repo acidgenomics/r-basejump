@@ -1,6 +1,6 @@
 #' @name snakeCase
 #' @inherit syntactic::snakeCase
-#' @note Updated 2019-09-25.
+#' @note Updated 2020-05-11.
 #'
 #' @inheritParams camelCase
 #' @param ... Additional arguments.
@@ -165,7 +165,7 @@ setMethod(
 
 
 
-`snakeCase,DataTable` <-  # nolint
+`snakeCase,DataFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -202,8 +202,8 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("DataTable"),
-    definition = `snakeCase,DataTable`
+    signature = signature("DataFrame"),
+    definition = `snakeCase,DataFrame`
 )
 
 

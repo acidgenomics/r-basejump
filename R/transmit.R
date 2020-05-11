@@ -4,7 +4,7 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @export
-#' @note Updated 2020-03-16.
+#' @note Updated 2020-05-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams pipette::saveData
@@ -21,19 +21,14 @@
 #' Local file paths.
 #'
 #' @examples
+#' remoteDir <- "ftp://ftp.ncbi.nlm.nih.gov/genomes/"
 #' if (
-#'     goalie::hasInternet() &&
-#'     !isTRUE(nzchar(Sys.getenv("CI")))
+#'     !isTRUE(nzchar(Sys.getenv("CI"))) &&
+#'     goalie::hasInternet(remoteDir)
 #' ) {
-#'     remoteDir <- paste(
-#'         "ftp://ftp.ncbi.nlm.nih.gov",
-#'         "genomes",
-#'         "Homo_sapiens",
-#'         sep = "/"
-#'     )
 #'     readme <- transmit(
 #'         remoteDir = remoteDir,
-#'         pattern = "^README$",
+#'         pattern = "^README\\.txt$",
 #'         rename = "ncbi-readme.txt",
 #'         compress = FALSE
 #'     )

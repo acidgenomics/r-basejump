@@ -8,7 +8,7 @@
 \alias{dottedCase,matrix-method}
 \alias{dottedCase,data.frame-method}
 \alias{dottedCase,Vector-method}
-\alias{dottedCase,DataTable-method}
+\alias{dottedCase,DataFrame-method}
 \alias{dottedCase,Ranges-method}
 \alias{dottedCase,Matrix-method}
 \alias{dottedCase,SummarizedExperiment-method}
@@ -28,7 +28,7 @@ dottedCase(object, ...)
 
 \S4method{dottedCase}{Vector}(object, names = TRUE, mcols = TRUE, metadata = TRUE)
 
-\S4method{dottedCase}{DataTable}(
+\S4method{dottedCase}{DataFrame}(
   object,
   rownames = FALSE,
   colnames = TRUE,
@@ -95,7 +95,7 @@ recommended to avoid using it for variable assignments into an \code{environment
 as that can introduce conflicts with base functions.
 }
 \note{
-Updated 2019-09-25.
+Updated 2020-05-11.
 }
 \examples{
 data(syntactic, package = "acidtest")
