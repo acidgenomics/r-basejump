@@ -31,7 +31,6 @@ Analysis pipeline:
 \item \code{"bcbio"}: bcbio mode. See section here in documentation for details.
 \item \code{"cellranger"}: Cell Ranger mode. Currently requires "directory" column.
 Used by Chromium R package.
-\item \code{"cpi"}: Constellation Pharmaceuticals (CPI) mode.
 }}
 }
 \value{
@@ -43,7 +42,7 @@ This function imports user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2020-01-20.
+Updated 2020-05-10.
 }
 \section{bcbio pipeline}{
 
