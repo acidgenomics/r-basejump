@@ -28,7 +28,7 @@
 #' ) {
 #'     readme <- transmit(
 #'         remoteDir = remoteDir,
-#'         pattern = "^README$",
+#'         pattern = "^README\\.txt$",
 #'         rename = "ncbi-readme.txt",
 #'         compress = FALSE
 #'     )

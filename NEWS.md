@@ -1,3 +1,19 @@
+## basejump 0.12.5 (2020-05-11)
+
+### Minor changes
+
+- `importSampleData`: The `pipeline = "cpi"` option is now defunct.
+  Use `pipeline = "none', sheet = 2L` for CPI samples.
+- `importSampleData`: Added optional `autopadZeros` argument for easy handling
+  of sample identifiers, which are often input by users without correct padding.
+  This helps easily convert sample_1, sample_2, ... sample_10 to expected
+  sample_01, sample_02, ... sample_10 sorting. Currently disabled by default.
+- `importTx2Gene`: Added `ignoreGeneVersion` option, now enabled by default.
+  This helps process gene identifiers by default in a manner suitable for
+  downstream tximport-DESeq2 workflow.
+- Miscellaneous unit test updates to reflect changes in `DataFrame` class and
+  NCBI server updates.
+
 ## basejump 0.12.4 (2020-03-15)
 
 ### Minor changes
