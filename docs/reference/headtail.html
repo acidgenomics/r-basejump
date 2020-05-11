@@ -133,22 +133,22 @@ interactive use.</p>
 <span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for GRanges</span>
-<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>headtail</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,11 +161,6 @@ interactive use.</p>
       <th>n</th>
       <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
 Positive integer denoting the number of first and last items to include.</p></td>
-    </tr>
-    <tr>
-      <th>unicode</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Allow Unicode characters in console output.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -194,7 +189,7 @@ objects.</p>
 </ul>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2020-01-30.</p>
+    <p>Updated 2020-05-11.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'>
@@ -211,19 +206,19 @@ objects.</p>
 <span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
 
 <span class='co'>## data.frame ====</span>
-<span class='fu'>headtail</span>(<span class='no'>mtcars</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                mpg cyl │ gear carb
-#&gt; Mazda RX4       21   6 │    4    4
-#&gt; Mazda RX4 Wag   21   6 │    4    4
-#&gt; ─                ─   ─ ┼    ─    ─
-#&gt; Maserati Bora   15   8 │    5    8
-#&gt; Volvo 142E    21.4   4 │    4    2</div><div class='input'>
+<span class='fu'>headtail</span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt;                mpg cyl ... gear carb
+#&gt; Mazda RX4       21   6 ...    4    4
+#&gt; Mazda RX4 Wag   21   6 ...    4    4
+#&gt; ...            ... ... ...  ...  ...
+#&gt; Maserati Bora   15   8 ...    5    8
+#&gt; Volvo 142E    21.4   4 ...    4    2</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>headtail</span>(<span class='no'>rse</span>, <span class='kw'>unicode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;         sample01 sample02 │ sample11 sample12
-#&gt; gene001        2        7 │        1        2
-#&gt; gene002       17        7 │       28       18
-#&gt; ─              ─        ─ ┼        ─        ─
-#&gt; gene499        1        0 │        0        0
-#&gt; gene500       27       13 │       12       36</div></pre>
+<span class='fu'>headtail</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt;         sample01 sample02 ... sample11 sample12
+#&gt; gene001        2        7 ...        1        2
+#&gt; gene002       17        7 ...       28       18
+#&gt; ...          ...      ... ...      ...      ...
+#&gt; gene499        1        0 ...        0        0
+#&gt; gene500       27       13 ...       12       36</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
