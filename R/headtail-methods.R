@@ -132,7 +132,7 @@ setMethod(
             lr <- square[seq_len(n) + n, seq_len(n) + n, drop = FALSE]
             head <- data.frame(
                 ul,
-                "..." = rep("...", times = n),  # \u2502
+                "..." = rep("...", times = n),
                 ur,
                 check.rows = FALSE,
                 check.names = FALSE,
@@ -140,7 +140,7 @@ setMethod(
             )
             tail <- data.frame(
                 ll,
-                "..." = rep("...", times = n),  # \u2502
+                "..." = rep("...", times = n),
                 lr,
                 check.rows = FALSE,
                 check.names = FALSE,
@@ -148,10 +148,10 @@ setMethod(
             )
             out <- rbind(
                 head,
-                "..." = c(  # "\u2500"
-                    rep("...", times = n),  # \u2500
-                    "...",  # \u253C
-                    rep("...", times = n)  # \u2500
+                "..." = c(
+                    rep("...", times = n),
+                    "...",
+                    rep("...", times = n)
                 ),
                 tail,
                 stringsAsFactors = FALSE
