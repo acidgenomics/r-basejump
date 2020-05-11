@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -55,7 +59,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.6</span>
       </span>
     </div>
 
@@ -93,7 +97,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/basejump">
+  <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -111,7 +115,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small>0.10</small></h1>
+      <h1 data-toc-skip>Changelog <small>0.10</small></h1>
       
     </div>
 
@@ -127,9 +131,9 @@
 <li>Split out all ggplot2 functions to new minimalism package.</li>
 </ul>
 </div>
-<div id="minor-changes-35" class="section level3">
+<div id="minor-changes-36" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-35" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-36" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Offloaded <code>removeNA</code> and <code>sanitizeNA</code> code to <a href="https://brio.acidgenomics.com/">brio</a> package, so these functions can be imported in thew new <a href="https://freerange.acidgenomics.com/">freerange</a> package.</li>
 <li>Moved <code>organism_mappings</code> internal dataset to <a href="https://freerange.acidgenomics.com/">freerange</a> package.</li>
@@ -147,9 +151,9 @@
 <code>rankedMatrix</code>: New utility function for quickly performing ranked matrix calculations. Particularly useful for differential expression comparison across studies using log2 fold change or Wald test statistic.</li>
 </ul>
 </div>
-<div id="minor-changes-34" class="section level3">
+<div id="minor-changes-35" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-34" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-35" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Simplified reexport methods for functions that define S4 methods.</li>
 </ul>
@@ -174,9 +178,9 @@
 <code>organism</code>: Reworked S4 methods. Added support for <code>Annotated</code> and <code>DataTable</code> classes from <a href="https://bioconductor.org/packages/S4Vectors/">S4Vectors</a>.</li>
 </ul>
 </div>
-<div id="minor-changes-33" class="section level3">
+<div id="minor-changes-34" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-33" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-34" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added additional unit tests, to improve code coverage.</li>
 <li>Now covering the aggregation functions in better detail, using a minimal SingleCellExperiment object that works with <code>aggregateCols</code>.</li>
@@ -195,9 +199,9 @@
     <div id="basejump-0-10-3-2019-04-07" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-3-2019-04-07" class="anchor"></a>basejump 0.10.3 (2019-04-07)</h2>
-<div id="minor-changes-32" class="section level3">
+<div id="minor-changes-33" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-33" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Bug fix release for <a href="https://freerange.acidgenomics.com/">freerange</a> update. <code>emptyRanges</code> format has been renamed from <code>mcolsNames</code> to <code>mcolnames</code>.</li>
 </ul>
@@ -214,9 +218,9 @@
 <code>meltCounts</code>: Switched from using <code>nonzeroGenes</code> formal approach to <code>minCounts</code> and <code>minCountsMethod</code>, which is more flexible.</li>
 </ul>
 </div>
-<div id="minor-changes-31" class="section level3">
+<div id="minor-changes-32" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Consolidated minimalism and firestarter code into acidplots package.</li>
 <li>Improve global options defined in <code>formalsList</code>.</li>
@@ -227,9 +231,9 @@
     <div id="basejump-0-10-5-2019-04-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-5-2019-04-25" class="anchor"></a>basejump 0.10.5 (2019-04-25)</h2>
-<div id="minor-changes-30" class="section level3">
+<div id="minor-changes-31" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reworked S4 generic reexport method, in an attempt to get pkgdown to build vignette correctly. Otherwise, <code>sampleData</code> is erroring.</li>
 </ul>
@@ -246,9 +250,9 @@
 <code>showHeader</code>: Utility function for <code>show</code> methods defined in other packages.</li>
 </ul>
 </div>
-<div id="minor-changes-29" class="section level3">
+<div id="minor-changes-30" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-29" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated basejump dependencies (see <code>DESCRIPTION</code> for details).</li>
 </ul>
@@ -279,9 +283,9 @@
     <div id="basejump-0-10-9-2019-05-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-9-2019-05-29" class="anchor"></a>basejump 0.10.9 (2019-05-29)</h2>
-<div id="minor-changes-28" class="section level3">
+<div id="minor-changes-29" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-28" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-29" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Relaxed the deprecations on some functions to provide backward compatibility support for bcbioBase and bcbioRNASeq packages: <code>readFileByExtension</code>, <code>readYAML</code>, <code>fixNA</code>.</li>
 <li>Now ensuring <code>theme_midnight</code> and <code>theme_paperwhite</code> are deprecated but exported with support, by suggesting acidplots package.</li>
@@ -310,9 +314,9 @@
 <code>combine</code> method for <code>SummarizedExperiment</code> now includes all matrices defined in <code>assays</code> slot. Also improved support for <code>colData</code> handling on subsets where <code>NA</code> values have been removed.</li>
 </ul>
 </div>
-<div id="minor-changes-27" class="section level3">
+<div id="minor-changes-28" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-27" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-28" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>Gene2Symbol</code>: Modified <code>format</code> formal to use “unmodified” instead of “long”, which is more intuitive.</li>
@@ -324,9 +328,9 @@
     <div id="basejump-0-10-11-2019-07-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-11-2019-07-17" class="anchor"></a>basejump 0.10.11 (2019-07-17)</h2>
-<div id="minor-changes-26" class="section level3">
+<div id="minor-changes-27" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-26" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-27" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Made <code>theme_midnight</code> and <code>theme_paperwhite</code> defunct, in favor if variants in new <a href="https://acidplots.acidgenomics.com/">acidplots</a> package.</li>
 <li>Decreased the number of functions reexported from goalie package.</li>
@@ -338,9 +342,9 @@
     <div id="basejump-0-10-12-2019-07-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-10-12-2019-07-18" class="anchor"></a>basejump 0.10.12 (2019-07-18)</h2>
-<div id="minor-changes-25" class="section level3">
+<div id="minor-changes-26" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-25" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-26" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Bug fix for <code>combine</code> method on SummarizedExperiment. Needed to ensure row names are assigned on rowData to provide backward compatibility for Bioc 3.7.</li>
 <li>Improved unit test exceptions on Docker and AppVeyor.</li>
@@ -361,25 +365,10 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-0-10-0-2019-03-28">0.10.0</a></li>
-        <li><a href="#basejump-0-10-1-2019-04-01">0.10.1</a></li>
-        <li><a href="#basejump-0-10-2-2019-04-07">0.10.2</a></li>
-        <li><a href="#basejump-0-10-3-2019-04-07">0.10.3</a></li>
-        <li><a href="#basejump-0-10-4-2019-04-22">0.10.4</a></li>
-        <li><a href="#basejump-0-10-5-2019-04-25">0.10.5</a></li>
-        <li><a href="#basejump-0-10-6-2019-04-29">0.10.6</a></li>
-        <li><a href="#basejump-0-10-7-2019-04-30">0.10.7</a></li>
-        <li><a href="#basejump-0-10-8-2019-05-05">0.10.8</a></li>
-        <li><a href="#basejump-0-10-9-2019-05-29">0.10.9</a></li>
-        <li><a href="#basejump-0-10-10-2019-06-08">0.10.10</a></li>
-        <li><a href="#basejump-0-10-11-2019-07-17">0.10.11</a></li>
-        <li><a href="#basejump-0-10-12-2019-07-18">0.10.12</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -391,7 +380,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

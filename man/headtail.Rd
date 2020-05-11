@@ -67,7 +67,7 @@ objects.
 }}
 
 \note{
-Updated 2020-01-30.
+Updated 2020-05-11.
 }
 \examples{
 data(mtcars, package = "datasets")
@@ -75,10 +75,10 @@ data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment
 
 ## data.frame ====
-headtail(mtcars, unicode = TRUE)
+headtail(mtcars, unicode = FALSE)
 
 ## SummarizedExperiment ====
-headtail(rse, unicode = TRUE)
+headtail(rse, unicode = FALSE)
 }
 \seealso{
 \itemize{
