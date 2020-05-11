@@ -13,10 +13,10 @@
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## data.frame ====
-#' headtail(mtcars, unicode = FALSE)
+#' headtail(mtcars)
 #'
 #' ## SummarizedExperiment ====
-#' headtail(rse, unicode = FALSE)
+#' headtail(rse)
 NULL
 
 
@@ -66,14 +66,13 @@ setMethod(
 
 
 
-## Updated 2020-01-20.
+## Updated 2020-05-11.
 `headtail,matrix` <-  # nolint
-    function(x, n = 2L, unicode = TRUE) {
+    function(x, n = 2L) {
         assert(
             hasDims(x),
             isInt(n),
-            isPositive(n),
-            isFlag(unicode)
+            isPositive(n)
         )
         if (nrow(x) <= n * 2L || ncol(x) <= n * 2L) {
             cli_alert_warning("Object can't be split into quadrants.")
@@ -133,7 +132,7 @@ setMethod(
             lr <- square[seq_len(n) + n, seq_len(n) + n, drop = FALSE]
             head <- data.frame(
                 ul,
-                "\u2502" = rep("\u2502", times = n),
+                "..." = rep("...", times = n),  # \u2502
                 ur,
                 check.rows = FALSE,
                 check.names = FALSE,
@@ -141,7 +140,7 @@ setMethod(
             )
             tail <- data.frame(
                 ll,
-                "\u2502" = rep("\u2502", times = n),
+                "..." = rep("...", times = n),  # \u2502
                 lr,
                 check.rows = FALSE,
                 check.names = FALSE,
@@ -149,32 +148,14 @@ setMethod(
             )
             out <- rbind(
                 head,
-                "\u2500" = c(
-                    rep("\u2500", times = n),
-                    "\u253C",
-                    rep("\u2500", times = n)
+                "..." = c(  # "\u2500"
+                    rep("...", times = n),  # \u2500
+                    "...",  # \u253C
+                    rep("...", times = n)  # \u2500
                 ),
                 tail,
                 stringsAsFactors = FALSE
             )
-        }
-        ## Substitute Unicode characters for ASCII, if desired.
-        if (!isTRUE(unicode)) {
-            dimnames(out) <- lapply(
-                X = dimnames(out),
-                FUN = iconv,
-                from = "UTF-8",
-                to = "ASCII",
-                sub = "."
-            )
-            out <- as.data.frame(apply(
-                X = out,
-                MARGIN = c(1L, 2L),  # rows and columns
-                FUN = iconv,
-                from = "UTF-8",
-                to = "ASCII",
-                sub = "."
-            ))
         }
         print(out)
         invisible()
@@ -240,13 +221,12 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-05-11.
 `headtail,GRanges` <-  # nolint
     function() {
         headtail(
             x = as(x, "data.frame"),
-            n = n,
-            unicode = unicode
+            n = n
         )
     }
 
@@ -264,13 +244,12 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-05-11.
 `headtail,SummarizedExperiment` <-  # nolint
     function() {
         headtail(
             x = assay(x),
-            n = n,
-            unicode = unicode
+            n = n
         )
     }
 
