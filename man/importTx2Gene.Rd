@@ -63,3 +63,10 @@ x <- importTx2Gene(
 )
 print(x)
 }
+\seealso{
+\itemize{
+\item \code{stripTranscriptVersions}, \code{stripGeneVersions}
+\item \code{download-ensembl-genome} script (which generates \code{tx2gene.csv} output)
+defined in koopa shell bootloader.
+}
+}
