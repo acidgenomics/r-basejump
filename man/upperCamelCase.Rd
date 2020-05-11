@@ -8,7 +8,7 @@
 \alias{upperCamelCase,matrix-method}
 \alias{upperCamelCase,data.frame-method}
 \alias{upperCamelCase,Vector-method}
-\alias{upperCamelCase,DataTable-method}
+\alias{upperCamelCase,DataFrame-method}
 \alias{upperCamelCase,Ranges-method}
 \alias{upperCamelCase,Matrix-method}
 \alias{upperCamelCase,SummarizedExperiment-method}
@@ -34,7 +34,7 @@ upperCamelCase(object, ...)
   strict = FALSE
 )
 
-\S4method{upperCamelCase}{DataTable}(
+\S4method{upperCamelCase}{DataFrame}(
   object,
   rownames = FALSE,
   colnames = TRUE,
@@ -118,7 +118,7 @@ for S4 class names and corresponding generators, but not variables or
 functions.
 }
 \note{
-Updated 2019-09-25.
+Updated 2020-05-11.
 }
 \examples{
 data(syntactic, package = "acidtest")

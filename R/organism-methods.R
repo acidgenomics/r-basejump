@@ -1,7 +1,7 @@
 #' Organism
 #'
 #' @name organism
-#' @note Updated 2020-03-15.
+#' @note Updated 2020-05-11.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -108,7 +108,7 @@ setMethod(
 
 
 ## Updated 2019-07-22.
-`organism,DataTable` <-  # nolint
+`organism,DataFrame` <-  # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
         organism <- `organism,Annotated`(object)
@@ -125,8 +125,8 @@ setMethod(
 #' @export
 setMethod(
     f = "organism",
-    signature = signature("DataTable"),
-    definition = `organism,DataTable`
+    signature = signature("DataFrame"),
+    definition = `organism,DataFrame`
 )
 
 

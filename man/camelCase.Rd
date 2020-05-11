@@ -8,7 +8,7 @@
 \alias{camelCase,matrix-method}
 \alias{camelCase,data.frame-method}
 \alias{camelCase,Vector-method}
-\alias{camelCase,DataTable-method}
+\alias{camelCase,DataFrame-method}
 \alias{camelCase,Ranges-method}
 \alias{camelCase,Matrix-method}
 \alias{camelCase,SummarizedExperiment-method}
@@ -28,7 +28,7 @@ camelCase(object, ...)
 
 \S4method{camelCase}{Vector}(object, names = TRUE, mcols = TRUE, metadata = TRUE, strict = FALSE)
 
-\S4method{camelCase}{DataTable}(
+\S4method{camelCase}{DataFrame}(
   object,
   rownames = FALSE,
   colnames = TRUE,
@@ -103,7 +103,7 @@ boundaries are defined by capitlization only (e.g. \code{thisIsCamelCase}).
 Camel case is recommended by Bioconductor for variable and function names.
 }
 \note{
-Updated 2019-09-25.
+Updated 2020-05-11.
 }
 \examples{
 data(syntactic, package = "acidtest")

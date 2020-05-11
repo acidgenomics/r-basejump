@@ -20,9 +20,9 @@ Look up gene synonyms from NCBI.
 }
 \note{
 Synonym support for \emph{Caenorhabditis elegans} is poor on NCBI.
-Use the \href{https://steinbaugh.com/wormbase/}{wormbase} package instead.
+Use the \href{https://wormbase.acidgenomics.com/}{wormbase} package instead.
 
-Updated 2020-01-30.
+Updated 2020-05-11.
 }
 \examples{
 options(acid.test = TRUE)
