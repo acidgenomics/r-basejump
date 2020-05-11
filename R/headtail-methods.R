@@ -1,6 +1,6 @@
 #' @name headtail
 #' @inherit acidgenerics::headtail
-#' @note Updated 2020-01-30.
+#' @note Updated 2020-05-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param n `integer(1)`.
@@ -13,10 +13,10 @@
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## data.frame ====
-#' headtail(mtcars, unicode = TRUE)
+#' headtail(mtcars, unicode = FALSE)
 #'
 #' ## SummarizedExperiment ====
-#' headtail(rse, unicode = TRUE)
+#' headtail(rse, unicode = FALSE)
 NULL
 
 
