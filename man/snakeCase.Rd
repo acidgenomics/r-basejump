@@ -8,7 +8,7 @@
 \alias{snakeCase,matrix-method}
 \alias{snakeCase,data.frame-method}
 \alias{snakeCase,Vector-method}
-\alias{snakeCase,DataTable-method}
+\alias{snakeCase,DataFrame-method}
 \alias{snakeCase,Ranges-method}
 \alias{snakeCase,Matrix-method}
 \alias{snakeCase,SummarizedExperiment-method}
@@ -28,7 +28,7 @@ snakeCase(object, ...)
 
 \S4method{snakeCase}{Vector}(object, names = TRUE, mcols = TRUE, metadata = TRUE)
 
-\S4method{snakeCase}{DataTable}(
+\S4method{snakeCase}{DataFrame}(
   object,
   rownames = FALSE,
   colnames = TRUE,
@@ -94,7 +94,7 @@ Format character strings to use snake-style formatting, where word boundaries
 are defined by underscores (e.g. \code{this_is_snake_case}).
 }
 \note{
-Updated 2019-09-25.
+Updated 2020-05-11.
 }
 \examples{
 data(syntactic, package = "acidtest")

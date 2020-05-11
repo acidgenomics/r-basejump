@@ -15,6 +15,10 @@
   build warnings in latest R 4.0 release version.
 - Miscellaneous unit test updates to reflect changes in `DataFrame` class and
   NCBI server updates.
+- `camelCase`, `dottedCase`, `organism`, `snakeCase`, `upperCamelCase`: S4
+  methods for `DataFrame` are now defined directly against `DataFrame`, instead
+  of attempting to inherit from `DataTable` virtual class. This will break
+  otherwise on bioc-devel 3.12, which seems to have changed inheritance.
 
 ## basejump 0.12.4 (2020-03-15)
 

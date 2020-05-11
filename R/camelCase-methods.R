@@ -1,6 +1,6 @@
 #' @name camelCase
 #' @inherit syntactic::camelCase
-#' @note Updated 2019-09-25.
+#' @note Updated 2020-05-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param assayNames `logical(1)`.
@@ -192,7 +192,7 @@ setMethod(
 
 
 
-`camelCase,DataTable` <-  # nolint
+`camelCase,DataFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -233,8 +233,8 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("DataTable"),
-    definition = `camelCase,DataTable`
+    signature = signature("DataFrame"),
+    definition = `camelCase,DataFrame`
 )
 
 

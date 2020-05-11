@@ -7,7 +7,7 @@
 \alias{organism,Matrix-method}
 \alias{organism,data.frame-method}
 \alias{organism,Annotated-method}
-\alias{organism,DataTable-method}
+\alias{organism,DataFrame-method}
 \alias{organism,GRanges-method}
 \alias{organism,SummarizedExperiment-method}
 \alias{organism<-,Annotated-method}
@@ -25,7 +25,7 @@ organism(object) <- value
 
 \S4method{organism}{Annotated}(object)
 
-\S4method{organism}{DataTable}(object)
+\S4method{organism}{DataFrame}(object)
 
 \S4method{organism}{GRanges}(object)
 
@@ -46,7 +46,7 @@ Latin organism name (e.g. \emph{Homo sapiens}).
 Organism
 }
 \note{
-Updated 2020-03-15.
+Updated 2020-05-11.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

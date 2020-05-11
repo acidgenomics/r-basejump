@@ -1,6 +1,6 @@
 #' @name dottedCase
 #' @inherit syntactic::dottedCase
-#' @note Updated 2019-09-25.
+#' @note Updated 2020-05-11.
 #'
 #' @inheritParams camelCase
 #' @param ... Additional arguments.
@@ -165,7 +165,7 @@ setMethod(
 
 
 
-`dottedCase,DataTable` <-  # nolint
+`dottedCase,DataFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -202,8 +202,8 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("DataTable"),
-    definition = `dottedCase,DataTable`
+    signature = signature("DataFrame"),
+    definition = `dottedCase,DataFrame`
 )
 
 
