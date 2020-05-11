@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,7 +43,6 @@
 
 <meta property="og:title" content="Import sample metadata — importSampleData" />
 <meta property="og:description" content="This function imports user-defined sample metadata saved in a spreadsheet." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -57,7 +60,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -71,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.6</span>
       </span>
     </div>
 
@@ -95,7 +98,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/basejump">
+  <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -126,7 +129,8 @@
   <span class='no'>file</span>,
   <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>lanes</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"bcbio"</span>, <span class='st'>"cellranger"</span>, <span class='st'>"cpi"</span>)
+  <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"bcbio"</span>, <span class='st'>"cellranger"</span>, <span class='st'>"cpi"</span>),
+  <span class='kw'>autopadZeros</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -158,8 +162,15 @@ Analysis pipeline:</p><ul>
 <li><p><code>"bcbio"</code>: bcbio mode. See section here in documentation for details.</p></li>
 <li><p><code>"cellranger"</code>: Cell Ranger mode. Currently requires "directory" column.
 Used by Chromium R package.</p></li>
-<li><p><code>"cpi"</code>: Constellation Pharmaceuticals (CPI) mode.</p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>autopadZeros</th>
+      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
+Autopad zeros in sample identifiers, for improved sorting.
+Currently supported only for non-multiplexed samples.
+For example: <code>sample_1</code>, <code>sample_2</code>, ... <code>sample_10</code> becomes
+<code>sample_01</code>, <code>sample_02</code>, ... <code>sample10</code>.</p></td>
     </tr>
     </table>
 
@@ -169,7 +180,7 @@ Used by Chromium R package.</p></li>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Works with local or remote files.</p>
-<p>Updated 2020-01-20.</p>
+<p>Updated 2020-05-10.</p>
     <h2 class="hasAnchor" id="bcbio-pipeline"><a class="anchor" href="#bcbio-pipeline"></a>bcbio pipeline</h2>
 
     
@@ -187,7 +198,7 @@ processed multiplexed samples.</p>
 <code>"description"</code> column. The values provided in description for demultiplexed
 samples must be unique. They must also be <em>syntactically valid</em>, meaning that
 they cannot contain illegal characters (e.g. spaces, non-alphanumerics,
-<em>dashes</em>) or <em>begin with a number</em>. Consult the documentation in <code><a href='https://rdrr.io/r/utils/help.html'>help(topic = "make.names")</a></code> for more information on valid names in R.</p>
+<em>dashes</em>) or <em>begin with a number</em>. Consult the documentation in <code><a href='https://rdrr.io/r/base/make.names.html'>help(topic = "make.names")</a></code> for more information on valid names in R.</p>
 <p><strong>Multiplexed samples.</strong> This applies to some single-cell RNA-seq formats,
 including inDrops. In this case, bcbio will output per-sample directories
 with this this structure: <code>description-revcomp</code>. <code><a href='deprecated.html'>readSampleData()</a></code> checks to
@@ -204,7 +215,7 @@ reverse complement will be calculated automatically and added as the
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Demultiplexed ====</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-demultiplexed.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>bcbio-metadata-demultiplexed.csv</span><span> using </span><span style='color: #0000BB;'>data.table</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`fread()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>bcbio-metadata-demultiplexed.csv</span><span> using </span><span style='color: #0000BB;'>data.table</span><span>::</span><span style='color: #262626;background-color: #DADADA;'>`fread()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
 #&gt;         sampleName            fileName description genotype
 #&gt;           &lt;factor&gt;            &lt;factor&gt;    &lt;factor&gt; &lt;factor&gt;
 #&gt; sample1    sample1 sample1_R1.fastq.gz     sample1 wildtype
@@ -213,7 +224,7 @@ reverse complement will be calculated automatically and added as the
 #&gt; sample4    sample4 sample4_R1.fastq.gz     sample4 knockout</div><div class='input'>
 <span class='co'>## Multiplexed ====</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-multiplexed-indrops.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>bcbio-metadata-multiplexed-indrops.csv</span><span> using </span><span style='color: #0000BB;'>data.table</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`fread()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>bcbio-metadata-multiplexed-indrops.csv</span><span> using </span><span style='color: #0000BB;'>data.table</span><span>::</span><span style='color: #262626;background-color: #DADADA;'>`fread()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
 #&gt;                   sampleName             fileName       description    index
 #&gt;                     &lt;factor&gt;             &lt;factor&gt;          &lt;factor&gt; &lt;factor&gt;
 #&gt; indrops1_AGAGGATA  sample2_1 indrops1_R1.fastq.gz indrops1-AGAGGATA        2
@@ -235,18 +246,10 @@ reverse complement will be calculated automatically and added as the
 #&gt; indrops2_CTCCTTAC GTAAGGAG   sample3 wildtype CTCCTTAC
 #&gt; indrops2_TATGCAGT ACTGCATA   sample4 knockout TATGCAGT</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#note">Note</a></li>
-      <li><a href="#bcbio-pipeline">bcbio pipeline</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Michael Steinbaugh</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -257,7 +260,7 @@ reverse complement will be calculated automatically and added as the
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
