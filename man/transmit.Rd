@@ -31,7 +31,7 @@ Utility function that supports easy file matching and download from a remote
 FTP server. Also enables on-the-fly file renaming and compression.
 }
 \note{
-Updated 2020-01-30.
+Updated 2020-03-16.
 }
 \examples{
 if (
