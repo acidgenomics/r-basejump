@@ -11,6 +11,8 @@
 - `importTx2Gene`: Added `ignoreGeneVersion` option, now enabled by default.
   This helps process gene identifiers by default in a manner suitable for
   downstream tximport-DESeq2 workflow.
+- `headtail`: Removed Unicode support in favor of simple ASCII return, to avoid
+  build warnings in latest R 4.0 release version.
 - Miscellaneous unit test updates to reflect changes in `DataFrame` class and
   NCBI server updates.
 

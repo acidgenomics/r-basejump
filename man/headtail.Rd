@@ -15,26 +15,23 @@ headtail(x, ...)
 
 \S4method{headtail}{atomic}(x, n = 2L)
 
-\S4method{headtail}{matrix}(x, n = 2L, unicode = TRUE)
+\S4method{headtail}{matrix}(x, n = 2L)
 
-\S4method{headtail}{Matrix}(x, n = 2L, unicode = TRUE)
+\S4method{headtail}{Matrix}(x, n = 2L)
 
-\S4method{headtail}{data.frame}(x, n = 2L, unicode = TRUE)
+\S4method{headtail}{data.frame}(x, n = 2L)
 
-\S4method{headtail}{DataFrame}(x, n = 2L, unicode = TRUE)
+\S4method{headtail}{DataFrame}(x, n = 2L)
 
-\S4method{headtail}{GRanges}(x, n = 2L, unicode = TRUE)
+\S4method{headtail}{GRanges}(x, n = 2L)
 
-\S4method{headtail}{SummarizedExperiment}(x, n = 2L, unicode = TRUE)
+\S4method{headtail}{SummarizedExperiment}(x, n = 2L)
 }
 \arguments{
 \item{x}{Object.}
 
 \item{n}{\code{integer(1)}.
 Positive integer denoting the number of first and last items to include.}
-
-\item{unicode}{\code{logical(1)}.
-Allow Unicode characters in console output.}
 
 \item{...}{Additional arguments.}
 }
@@ -75,10 +72,10 @@ data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment
 
 ## data.frame ====
-headtail(mtcars, unicode = FALSE)
+headtail(mtcars)
 
 ## SummarizedExperiment ====
-headtail(rse, unicode = FALSE)
+headtail(rse)
 }
 \seealso{
 \itemize{
