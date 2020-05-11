@@ -8,7 +8,8 @@ importSampleData(
   file,
   sheet = 1L,
   lanes = 0L,
-  pipeline = c("none", "bcbio", "cellranger", "cpi")
+  pipeline = c("none", "bcbio", "cellranger", "cpi"),
+  autopadZeros = FALSE
 )
 }
 \arguments{
@@ -32,6 +33,12 @@ Analysis pipeline:
 \item \code{"cellranger"}: Cell Ranger mode. Currently requires "directory" column.
 Used by Chromium R package.
 }}
+
+\item{autopadZeros}{\code{logical(1)}.
+Autopad zeros in sample identifiers, for improved sorting.
+Currently supported only for non-multiplexed samples.
+For example: \code{sample_1}, \code{sample_2}, ... \code{sample_10} becomes
+\code{sample_01}, \code{sample_02}, ... \code{sample10}.}
 }
 \value{
 \code{DataFrame}.

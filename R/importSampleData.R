@@ -50,6 +50,11 @@
 #'   - `"bcbio"`: bcbio mode. See section here in documentation for details.
 #'   - `"cellranger"`: Cell Ranger mode. Currently requires "directory" column.
 #'     Used by Chromium R package.
+#' @param autopadZeros `logical(1)`.
+#'   Autopad zeros in sample identifiers, for improved sorting.
+#'   Currently supported only for non-multiplexed samples.
+#'   For example: `sample_1`, `sample_2`, ... `sample_10` becomes
+#'   `sample_01`, `sample_02`, ... `sample10`.
 #'
 #' @return `DataFrame`.
 #'
@@ -67,7 +72,8 @@ importSampleData <- function(
     file,
     sheet = 1L,
     lanes = 0L,
-    pipeline = c("none", "bcbio", "cellranger", "cpi")
+    pipeline = c("none", "bcbio", "cellranger", "cpi"),
+    autopadZeros = FALSE
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
     if (!hasLength(lanes)) {
@@ -76,7 +82,8 @@ importSampleData <- function(
     assert(
         isAFile(file) || isAURL(file),
         isInt(lanes),
-        isNonNegative(lanes)
+        isNonNegative(lanes),
+        isFlag(autopadZeros)
     )
     lanes <- as.integer(lanes)
     pipeline <- match.arg(pipeline)
@@ -128,23 +135,6 @@ importSampleData <- function(
     )
     ## Valid rows must contain a non-empty sample identifier.
     data <- data[!is.na(data[[idCol]]), , drop = FALSE]
-
-
-
-    ## Requiring syntactically valid names on direct "sampleID" input.
-    if (identical(idCol, "sampleID")) {
-        ## Sanitize sample IDs into snake case, if necessary.
-        if (!validNames(unique(data[[idCol]]))) {
-            cli_alert_info(paste0(
-                "Sanitizing sample IDs defined in ",
-                "{.var ", idCol, "} column into snake case."
-            ))
-            data[[idCol]] <- snakeCase(data[[idCol]])
-        }
-    }
-
-
-
     ## Determine whether the samples are multiplexed.
     if (
         isSubset(c("index", "sequence"), colnames(data)) &&
@@ -164,6 +154,22 @@ importSampleData <- function(
         ## samples. We can assign from the bcbio `description` automatically.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- data[[idCol]]
+        }
+        ## Requiring syntactically valid names on direct "sampleID" input.
+        ## Sanitize sample IDs into snake case, if necessary.
+        if (
+            identical(idCol, "sampleID") &&
+            !validNames(unique(data[[idCol]]))
+        ) {
+            cli_alert_info(paste0(
+                "Sanitizing sample IDs defined in ",
+                "{.var ", idCol, "} column into snake case."
+            ))
+            data[[idCol]] <- snakeCase(data[[idCol]])
+        }
+        ## Autopad zeros in sample IDs to improve sorting.
+        if (isTRUE(autopadZeros)) {
+            data[[idCol]] <- autopadZeros(data[[idCol]])
         }
     } else {
         stop(paste(
@@ -255,9 +261,6 @@ importSampleData <- function(
 
     ## Return.
     rownames(data) <- makeNames(data[[idCol]], unique = TRUE)
-
-    ## FIXME DON'T FLIP THE ROWS AUTOMATICALLY HERE?
-    ## FIXME HOW TO DEAL WITH AUTOPADDING.
     makeSampleData(data)
 }
 
