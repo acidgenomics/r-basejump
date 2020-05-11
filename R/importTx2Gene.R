@@ -19,6 +19,11 @@
 #'
 #' @return `Tx2Gene`.
 #'
+#' @seealso
+#' - `stripTranscriptVersions`, `stripGeneVersions`
+#' - `download-ensembl-genome` script (which generates `tx2gene.csv` output)
+#'   defined in koopa shell bootloader.
+#'
 #' @examples
 #' file <- file.path(basejumpTestsURL, "tx2gene.csv")
 #' x <- importTx2Gene(
