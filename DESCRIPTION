@@ -71,7 +71,6 @@ Imports:
 Suggests:
     BiocStyle (>= 2.14),
     EnsDb.Hsapiens.v75 (>= 2.99),
-    acidroxygen (>= 0.1.8),
     acidtest (>= 0.3.0),
     patrick (>= 0.0.1),
     rmarkdown (>= 2.0),
@@ -80,7 +79,6 @@ Suggests:
 Remotes:
     acidgenomics/acidbase,
     acidgenomics/acidgenerics,
-    acidgenomics/acidroxygen,
     acidgenomics/acidtest,
     acidgenomics/goalie,
     acidgenomics/pipette,
