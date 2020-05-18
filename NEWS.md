@@ -1,3 +1,10 @@
+## basejump 0.12.6 (2020-05-17)
+
+### Minor changes
+
+- `convertGenesToSymbols`: Added method support for `GRanges` class objects.
+  Automatically sets names as unique gene symbols.
+
 ## basejump 0.12.5 (2020-05-11)
 
 ### Minor changes
