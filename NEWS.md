@@ -4,6 +4,7 @@
 
 - `convertGenesToSymbols`: Added method support for `GRanges` class objects.
   Automatically sets names as unique gene symbols.
+- `HGNC2Ensembl`: Enforce TSV handling internally in `import` call.
 - `MGI2Ensembl`: Fix for column name handling.
 
 ## basejump 0.12.5 (2020-05-11)

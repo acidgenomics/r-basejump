@@ -30,7 +30,7 @@ HGNC2Ensembl <-  # nolint
         }
         cli_alert("Importing HGNC to Ensembl gene ID mappings.")
         data <- withCallingHandlers(
-            expr = import(file),
+            expr = import(file = file, format = "tsv"),
             message = function(m) {
                 if (isTRUE(grepl(pattern = "syntactic", x = m))) {
                     invokeRestart("muffleMessage")
