@@ -1,6 +1,6 @@
 #' @name convertGenesToSymbols
 #' @inherit acidgenerics::convertGenesToSymbols
-#' @note Updated 2020-01-30.
+#' @note Updated 2020-05-17.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -61,7 +61,7 @@ NULL
 
 
 ## Allowing duplicates here (unlike convertTranscriptsToGenes).
-## Updated 2019-07-22.
+## Updated 2020-05-17.
 `convertGenesToSymbols,character` <-  # nolint
     function(object, gene2symbol) {
         assert(
@@ -69,19 +69,16 @@ NULL
             is(gene2symbol, "Gene2Symbol")
         )
         validObject(gene2symbol)
-
         ## Arrange the gene2symbol to match the input.
         gene2symbol <- gene2symbol[
             match(x = object, table = gene2symbol[["geneID"]]),
             ,
             drop = FALSE
         ]
-
         out <- gene2symbol[["geneName"]]
         names(out) <- gene2symbol[["geneID"]]
-
         missing <- setdiff(object, gene2symbol[["geneID"]])
-        if (length(missing) > 0L) {
+        if (hasLength(missing)) {
             warning(sprintf(
                 "Failed to match genes: %s.",
                 toString(missing, width = 100L)
@@ -89,7 +86,6 @@ NULL
             names(missing) <- missing
             out <- c(out, missing)
         }
-
         out[object]
     }
 
@@ -143,6 +139,29 @@ setMethod(
     f = "convertGenesToSymbols",
     signature = signature("Matrix"),
     definition = `convertGenesToSymbols,Matrix`
+)
+
+
+
+## Updated 2020-05-17.
+`convertGenesToSymbols,GRanges` <-  # nolint
+    function(object) {
+        validObject(object)
+        g2s <- Gene2Symbol(object)
+        symbols <- g2s[["geneName"]]
+        assert(hasNoDuplicates(symbols))
+        names(object) <- as.character(symbols)
+        object
+    }
+
+
+
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertGenesToSymbols",
+    signature = signature("GRanges"),
+    definition = `convertGenesToSymbols,GRanges`
 )
 
 
