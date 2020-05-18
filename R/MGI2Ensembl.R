@@ -1,5 +1,5 @@
 #' @inherit MGI2Ensembl-class title description return
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-05-18.
 #' @export
 #' @examples
 #' options(acid.test = TRUE)
@@ -19,7 +19,7 @@ MGI2Ensembl <- function() {  # nolint
         )
     }
     cli_alert("Importing MGI-to-Ensembl gene ID mappings.")
-    data <- import(file, format = "tsv", colnames = FALSE)
+    data <- import(file = file, format = "tsv", colnames = TRUE)
     data <- as(data[, c(1L, 11L)], "DataFrame")
     colnames(data) <- c("mgiID", "geneID")
     data[["mgiID"]] <- as.integer(gsub("^MGI\\:", "", data[["mgiID"]]))
