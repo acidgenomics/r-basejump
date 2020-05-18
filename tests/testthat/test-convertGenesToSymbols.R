@@ -71,6 +71,16 @@ test_that("matrix", {
     )
 })
 
+test_that("GRanges", {
+    object <- gr
+    object <- convertGenesToSymbols(object)
+    expect_identical(
+        object = names(object),
+        expected = as.character(Gene2Symbol(gr)[["geneName"]])
+    )
+
+})
+
 test_that("SummarizedExperiment", {
     object <- convertGenesToSymbols(rse)
     expect_identical(
