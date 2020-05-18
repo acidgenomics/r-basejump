@@ -60,12 +60,12 @@ Imports:
     knitr (>= 1.26),
     magrittr (>= 1.5),
     matrixStats (>= 0.55),
-    pipette (>= 0.4.1),
+    pipette (>= 0.4.5),
     scales (>= 1.1),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
     syntactic (>= 0.3.9),
-    tibble (>= 2.1),
+    tibble (>= 3.0),
     methods,
     utils
 Suggests:
