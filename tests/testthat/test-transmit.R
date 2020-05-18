@@ -56,7 +56,7 @@ test_that("Invalid parameters", {
             pattern = "^README$",
             rename = c("XXX", "YYY")
         ),
-        regexp = "areSameLength"
+        regexp = "match"
     )
     ## Currently only FTP is supported.
     expect_error(
