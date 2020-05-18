@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.7</span>
       </span>
     </div>
 
@@ -215,7 +215,7 @@ reverse complement will be calculated automatically and added as the
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Demultiplexed ====</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-demultiplexed.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>bcbio-metadata-demultiplexed.csv</span><span> using </span><span style='color: #0000BB;'>data.table</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`fread()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>bcbio-metadata-demultiplexed.csv</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #C6C6C6;background-color: #262626;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
 #&gt;         sampleName            fileName description genotype
 #&gt;           &lt;factor&gt;            &lt;factor&gt;    &lt;factor&gt; &lt;factor&gt;
 #&gt; sample1    sample1 sample1_R1.fastq.gz     sample1 wildtype
@@ -224,7 +224,7 @@ reverse complement will be calculated automatically and added as the
 #&gt; sample4    sample4 sample4_R1.fastq.gz     sample4 knockout</div><div class='input'>
 <span class='co'>## Multiplexed ====</span>
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-multiplexed-indrops.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>bcbio-metadata-multiplexed-indrops.csv</span><span> using </span><span style='color: #0000BB;'>data.table</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`fread()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>bcbio-metadata-multiplexed-indrops.csv</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #C6C6C6;background-color: #262626;'>`vroom()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
 #&gt;                   sampleName             fileName       description    index
 #&gt;                     &lt;factor&gt;             &lt;factor&gt;          &lt;factor&gt; &lt;factor&gt;
 #&gt; indrops1_AGAGGATA  sample2_1 indrops1_R1.fastq.gz indrops1-AGAGGATA        2
