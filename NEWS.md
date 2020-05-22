@@ -1,3 +1,11 @@
+## basejump 0.12.7 (2020-05-22)
+
+### Minor changes
+
+- `aggregate`, `aggregateCols`, `aggregateRows`: Relaxed assert checks on
+  validity of dimnames, so we can use internally in acidgsea package, which
+  needs to handle gene symbols containing syntactically invalid hyphens.
+
 ## basejump 0.12.6 (2020-05-17)
 
 ### Minor changes
