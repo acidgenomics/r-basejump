@@ -104,7 +104,7 @@ setMethod(
 
 
 
-## Updated 2020-01-30.
+## Updated 2020-05-22.
 `aggregateRows,Matrix` <-  # nolint
     function(
         x,
@@ -113,10 +113,9 @@ setMethod(
     ) {
         validObject(x)
         assert(
-            hasValidDimnames(x),
+            hasDimnames(x),
             is.factor(by),
-            identical(rownames(x), names(by)),
-            validNames(levels(by))
+            identical(rownames(x), names(by))
         )
         fun <- match.arg(fun)
         ## Using our internal Matrix S4 method here.
@@ -135,7 +134,7 @@ setMethod(
 
 
 
-## Updated 2020-01-30.
+## Updated 2020-05-22.
 `aggregateRows,SummarizedExperiment` <-  # nolint
     function(
         x,
@@ -144,7 +143,7 @@ setMethod(
     ) {
         validObject(x)
         assert(
-            hasValidDimnames(x),
+            hasDimnames(x),
             isString(col),
             isString(fun)
         )
@@ -152,10 +151,7 @@ setMethod(
         ## Groupings -----------------------------------------------------------
         assert(isSubset(col, colnames(rowData(x))))
         by <- rowData(x)[[col]]
-        assert(
-            is.factor(by),
-            validNames(levels(by))
-        )
+        assert(is.factor(by))
         names(by) <- rownames(x)
 
         ## Counts --------------------------------------------------------------
