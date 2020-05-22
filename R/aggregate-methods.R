@@ -1,7 +1,7 @@
 #' Aggregate
 #'
 #' @name aggregate
-#' @note Updated 2020-01-30.
+#' @note Updated 2020-05-22.
 #'
 #' @inheritParams acidroxygen::params
 #' @param by `factor`.
@@ -68,7 +68,7 @@ NULL
 
 
 ## Using the `stats::aggregate.data.frame()` S3 method internally here.
-## Updated 2020-01-30.
+## Updated 2020-05-22.
 `aggregate,matrix` <-  # nolint
     function(
         x,
@@ -76,10 +76,9 @@ NULL
         fun = c("sum", "mean", "median", "geometricMean", "n")
     ) {
         assert(
-            hasValidDimnames(x),
+            hasDimnames(x),
             is.factor(by),
-            identical(rownames(x), names(by)),
-            validNames(levels(by))
+            identical(rownames(x), names(by))
         )
         fun <- match.arg(fun)
         if (fun == "n") {
@@ -112,7 +111,7 @@ setMethod(
 
 ## Matrix multiplication using sparse model (design matrix).
 ## Note that this works row-wise, like stats data.frame method.
-## Updated 2020-01-30.
+## Updated 2020-05-22.
 `aggregate,Matrix` <-  # nolint
     function(
         x,
@@ -120,7 +119,7 @@ setMethod(
         fun = c("sum", "mean", "n")
     ) {
         assert(
-            hasRows(x), hasCols(x),
+            hasDimnames(x),
             is.factor(by),
             identical(names(by), rownames(x))
         )

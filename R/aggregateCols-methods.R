@@ -114,7 +114,7 @@ setMethod(
 
 
 
-## Updated 2020-01-30.
+## Updated 2020-05-22.
 `aggregateCols,SummarizedExperiment` <-  # nolint
     function(
         x,
@@ -123,7 +123,7 @@ setMethod(
     ) {
         validObject(x)
         assert(
-            hasValidDimnames(x),
+            hasDimnames(x),
             isString(col),
             isString(fun)
         )
@@ -140,7 +140,6 @@ setMethod(
         by <- colData(x)[[col]]
         assert(
             is.factor(by),
-            validNames(levels(by)),
             identical(length(by), ncol(x))
         )
         names(by) <- colnames(x)
