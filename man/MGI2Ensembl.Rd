@@ -13,7 +13,7 @@ MGI2Ensembl()
 MGI-to-Ensembl gene identifier mappings
 }
 \note{
-Updated 2020-01-20.
+Updated 2020-05-18.
 }
 \examples{
 options(acid.test = TRUE)
