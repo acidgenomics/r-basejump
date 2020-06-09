@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.7</span>
       </span>
     </div>
 
@@ -77,7 +77,7 @@
       <h1 data-toc-skip>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">11 May 2020</h4>
+            <h4 class="date">9 June 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/acidgenomics/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -87,7 +87,7 @@
     
         <div class="abstract">
       <p class="abstract">Abstract</p>
-      The basejump package is an infrastructure toolkit that extends the base functionality of Bioconductor <span class="citation">(Huber et al. 2015)</span>. The package leverages the S4 object system for object-oriented programming, and defines multiple additional generic functions for use in genomics research. basejump provides simple, user-friendly functions for the acquisition of genome annotations from multiple online databases, including native support for Ensembl <span class="citation">(Hubbard et al. 2002)</span> and websites supporting standard FASTA and GTF/GFF file formats. Consistent handling of sample metadata remains a challenge for many bioinformatic analyses, and basejump aims to address this by providing a suite of sanitization functions to help standardize these variable inputs. Additionally, interactive read/write operations in R can be cumbersome and non-trivial when working with multiple data objects; here we provide additional functions designed for interactive use that aim to reduce friction and provide consistent handling of multiple common file formats used in genomics research.
+      <p>The basejump package is an infrastructure toolkit that extends the base functionality of Bioconductor <span class="citation">(Huber et al. 2015)</span>. The package leverages the S4 object system for object-oriented programming, and defines multiple additional generic functions for use in genomics research. basejump provides simple, user-friendly functions for the acquisition of genome annotations from multiple online databases, including native support for Ensembl <span class="citation">(Hubbard et al. 2002)</span> and websites supporting standard FASTA and GTF/GFF file formats. Consistent handling of sample metadata remains a challenge for many bioinformatic analyses, and basejump aims to address this by providing a suite of sanitization functions to help standardize these variable inputs. Additionally, interactive read/write operations in R can be cumbersome and non-trivial when working with multiple data objects; here we provide additional functions designed for interactive use that aim to reduce friction and provide consistent handling of multiple common file formats used in genomics research.</p>
     </div>
     
 <div id="introduction" class="section level1">
@@ -123,7 +123,7 @@
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">utils</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</pre></body></html></div>
 <pre><code>## R version 4.0.0 (2020-04-24)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
-## Running under: macOS Mojave 10.14.6
+## Running under: macOS Catalina 10.15.5
 ## 
 ## Matrix products: default
 ## BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -140,61 +140,61 @@
 ##  [1] SummarizedExperiment_1.18.1 DelayedArray_0.14.0        
 ##  [3] matrixStats_0.56.0          Biobase_2.48.0             
 ##  [5] GenomicRanges_1.40.0        GenomeInfoDb_1.24.0        
-##  [7] IRanges_2.22.1              S4Vectors_0.26.0           
-##  [9] BiocGenerics_0.34.0         basejump_0.12.6            
+##  [7] IRanges_2.22.2              S4Vectors_0.26.1           
+##  [9] BiocGenerics_0.34.0         basejump_0.12.7            
 ## [11] BiocStyle_2.16.0           
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] ProtGenerics_1.20.0           bitops_1.0-6                 
-##  [3] fs_1.4.1                      bit64_0.9-7                  
-##  [5] progress_1.2.2                httr_1.4.1                   
-##  [7] rprojroot_1.3-2               syntactic_0.3.9              
-##  [9] tools_4.0.0                   backports_1.1.6              
-## [11] R6_2.4.1                      colorspace_1.4-1             
-## [13] lazyeval_0.2.2                DBI_1.1.0                    
-## [15] withr_2.2.0                   tidyselect_1.0.0             
-## [17] prettyunits_1.1.1             bit_1.1-15.2                 
-## [19] curl_4.3                      compiler_4.0.0               
-## [21] acidgenerics_0.3.4            cli_2.0.2                    
-## [23] desc_1.2.0                    rtracklayer_1.48.0           
-## [25] bookdown_0.18                 scales_1.1.0                 
-## [27] acidbase_0.1.9                askpass_1.1                  
-## [29] rappdirs_0.3.1                pkgdown_1.5.1                
-## [31] stringr_1.4.0                 digest_0.6.25                
-## [33] Rsamtools_2.4.0               rmarkdown_2.1                
-## [35] R.utils_2.9.2                 XVector_0.28.0               
-## [37] pkgconfig_2.0.3               htmltools_0.4.0              
-## [39] sessioninfo_1.1.1             dbplyr_1.4.3                 
-## [41] fastmap_1.0.1                 ensembldb_2.12.1             
-## [43] rlang_0.4.6                   RSQLite_2.2.0                
-## [45] shiny_1.4.0.2                 BiocParallel_1.22.0          
-## [47] dplyr_0.8.5                   R.oo_1.23.0                  
-## [49] RCurl_1.98-1.2                magrittr_1.5                 
-## [51] GenomeInfoDbData_1.2.3        Matrix_1.2-18                
-## [53] munsell_0.5.0                 Rcpp_1.0.4.6                 
-## [55] fansi_0.4.1                   lifecycle_0.2.0              
-## [57] R.methodsS3_1.8.0             stringi_1.4.6                
-## [59] yaml_2.2.1                    MASS_7.3-51.6                
-## [61] zlibbioc_1.34.0               goalie_0.4.4                 
-## [63] BiocFileCache_1.12.0          AnnotationHub_2.20.0         
-## [65] grid_4.0.0                    blob_1.2.1                   
-## [67] promises_1.1.0                crayon_1.3.4                 
-## [69] lattice_0.20-41               Biostrings_2.56.0            
-## [71] GenomicFeatures_1.40.0        hms_0.5.3                    
-## [73] pipette_0.4.3                 knitr_1.28                   
-## [75] pillar_1.4.4                  biomaRt_2.44.0               
-## [77] XML_3.99-0.3                  glue_1.4.0                   
-## [79] BiocVersion_3.11.1            evaluate_0.14                
-## [81] data.table_1.12.8             BiocManager_1.30.10          
-## [83] vctrs_0.2.4                   httpuv_1.5.2                 
-## [85] openssl_1.4.1                 purrr_0.3.4                  
-## [87] assertthat_0.2.1              xfun_0.13                    
-## [89] mime_0.9                      xtable_1.8-4                 
-## [91] AnnotationFilter_1.12.0       later_1.0.0                  
-## [93] SingleCellExperiment_1.10.1   tibble_3.0.1                 
-## [95] GenomicAlignments_1.24.0      AnnotationDbi_1.50.0         
-## [97] memoise_1.1.0                 ellipsis_0.3.0               
-## [99] interactiveDisplayBase_1.26.0</code></pre>
+##   [1] ProtGenerics_1.20.0           bitops_1.0-6                 
+##   [3] fs_1.4.1                      bit64_0.9-7                  
+##   [5] progress_1.2.2                httr_1.4.1                   
+##   [7] rprojroot_1.3-2               syntactic_0.3.9              
+##   [9] tools_4.0.0                   backports_1.1.7              
+##  [11] R6_2.4.1                      colorspace_1.4-1             
+##  [13] lazyeval_0.2.2                DBI_1.1.0                    
+##  [15] withr_2.2.0                   tidyselect_1.1.0             
+##  [17] prettyunits_1.1.1             bit_1.1-15.2                 
+##  [19] curl_4.3                      compiler_4.0.0               
+##  [21] acidgenerics_0.3.5            cli_2.0.2                    
+##  [23] desc_1.2.0                    rtracklayer_1.48.0           
+##  [25] bookdown_0.19                 scales_1.1.1                 
+##  [27] acidbase_0.1.9                askpass_1.1                  
+##  [29] rappdirs_0.3.1                pkgdown_1.5.1                
+##  [31] stringr_1.4.0                 digest_0.6.25                
+##  [33] Rsamtools_2.4.0               rmarkdown_2.2                
+##  [35] R.utils_2.9.2                 XVector_0.28.0               
+##  [37] pkgconfig_2.0.3               htmltools_0.4.0              
+##  [39] sessioninfo_1.1.1             dbplyr_1.4.4                 
+##  [41] fastmap_1.0.1                 ensembldb_2.12.1             
+##  [43] rlang_0.4.6                   RSQLite_2.2.0                
+##  [45] shiny_1.4.0.2                 generics_0.0.2               
+##  [47] BiocParallel_1.22.0           dplyr_1.0.0                  
+##  [49] R.oo_1.23.0                   RCurl_1.98-1.2               
+##  [51] magrittr_1.5                  GenomeInfoDbData_1.2.3       
+##  [53] Matrix_1.2-18                 munsell_0.5.0                
+##  [55] Rcpp_1.0.4.6                  fansi_0.4.1                  
+##  [57] lifecycle_0.2.0               R.methodsS3_1.8.0            
+##  [59] stringi_1.4.6                 yaml_2.2.1                   
+##  [61] MASS_7.3-51.6                 zlibbioc_1.34.0              
+##  [63] goalie_0.4.4                  BiocFileCache_1.12.0         
+##  [65] AnnotationHub_2.20.0          grid_4.0.0                   
+##  [67] blob_1.2.1                    promises_1.1.0               
+##  [69] crayon_1.3.4                  lattice_0.20-41              
+##  [71] Biostrings_2.56.0             GenomicFeatures_1.40.0       
+##  [73] hms_0.5.3                     pipette_0.4.5                
+##  [75] knitr_1.28                    pillar_1.4.4                 
+##  [77] biomaRt_2.44.0                XML_3.99-0.3                 
+##  [79] glue_1.4.1                    BiocVersion_3.11.1           
+##  [81] evaluate_0.14                 data.table_1.12.8            
+##  [83] BiocManager_1.30.10           vctrs_0.3.1                  
+##  [85] httpuv_1.5.4                  openssl_1.4.1                
+##  [87] purrr_0.3.4                   assertthat_0.2.1             
+##  [89] xfun_0.14                     mime_0.9                     
+##  [91] xtable_1.8-4                  AnnotationFilter_1.12.0      
+##  [93] later_1.1.0.1                 SingleCellExperiment_1.10.1  
+##  [95] tibble_3.0.1                  GenomicAlignments_1.24.0     
+##  [97] AnnotationDbi_1.50.0          memoise_1.1.0                
+##  [99] ellipsis_0.3.1                interactiveDisplayBase_1.26.3</code></pre>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">
