@@ -33,7 +33,7 @@ Modified object.
 Aggregate
 }
 \note{
-Updated 2020-01-30.
+Updated 2020-05-22.
 }
 \examples{
 counts <- matrix(
