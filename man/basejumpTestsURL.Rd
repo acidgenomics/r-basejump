@@ -14,7 +14,7 @@ basejumpTestsURL
 basejump test data URL
 }
 \note{
-Updated 2019-08-21.
+Updated 2020-06-09.
 }
 \examples{
 basejumpTestsURL

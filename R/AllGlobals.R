@@ -27,12 +27,12 @@ barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 #'
 #' @export
 #' @keywords internal
-#' @note Updated 2019-08-21.
+#' @note Updated 2020-06-09.
 #'
 #' @examples
 #' basejumpTestsURL
 basejumpTestsURL <- paste0(
-    "http://tests.acidgenomics.com/basejump/",
+    "https://tests.acidgenomics.com/basejump/",
     "v", .version$major, ".", .version$minor  # nolint
 )
 

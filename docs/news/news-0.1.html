@@ -119,9 +119,9 @@
       
     </div>
 
-    <div id="basejump-0-1-0-2017-10-23" class="section level2">
+    <div id="basejump-010-2017-10-23" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-0-2017-10-23" class="anchor"></a>basejump 0.1.0 (2017-10-23)</h2>
+<a href="#basejump-010-2017-10-23" class="anchor"></a>basejump 0.1.0 (2017-10-23)</h2>
 <ul>
 <li>Bump version to match <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a> package.</li>
 <li>Improved unit testing coverage of <code>prepareSummarizedExperiment</code>.</li>
@@ -137,9 +137,9 @@
 <li>Switched <code>str_</code> to base <code>grep</code> and <code>gsub</code> in internal functions.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-1-2017-11-11" class="section level2">
+    <div id="basejump-011-2017-11-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-1-2017-11-11" class="anchor"></a>basejump 0.1.1 (2017-11-11)</h2>
+<a href="#basejump-011-2017-11-11" class="anchor"></a>basejump 0.1.1 (2017-11-11)</h2>
 <ul>
 <li>Added overwrite support for <code>saveData</code>. Now will skip on existing files when <code>overwrite = FALSE</code>.</li>
 <li>Bug fix for <code>readDataVersions</code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
@@ -150,9 +150,9 @@
 <li>Removed sample selection by pattern matching (<code>pattern</code>, <code>patternCol</code> arguments) in <code>readSampleMetadata</code>. This feature wasn’t fully baked and doesn’t offer enough functionality to the user.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-2-2017-11-30" class="section level2">
+    <div id="basejump-012-2017-11-30" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-2-2017-11-30" class="anchor"></a>basejump 0.1.2 (2017-11-30)</h2>
+<a href="#basejump-012-2017-11-30" class="anchor"></a>basejump 0.1.2 (2017-11-30)</h2>
 <ul>
 <li>Added <a href="https://github.com/bcbio/bcbio-nextgen/">bcbio</a> <code>plotQC</code> generic.</li>
 <li>Added back <code>toStringUnique</code> code, which is still in use in the <a href="https://wormbase.acidgenomics.com/">wormbase</a> package.</li>
@@ -163,9 +163,9 @@
 <li>Bug fix for <code>detectOrganism</code>. Now allowing <code>NULL</code> return for unsupported organism, with a warning.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-3-2017-12-01" class="section level2">
+    <div id="basejump-013-2017-12-01" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-3-2017-12-01" class="anchor"></a>basejump 0.1.3 (2017-12-01)</h2>
+<a href="#basejump-013-2017-12-01" class="anchor"></a>basejump 0.1.3 (2017-12-01)</h2>
 <ul>
 <li>
 <code>loadData</code> and <code>loadDataAsName</code> now default to <code>replace = TRUE</code>. If an object with the same name exists in the destination environment, then a warning is generated.</li>
@@ -177,40 +177,40 @@
 <li>Updated <code>annotable</code> function to include nested <a href="https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html">Entrez</a> identifiers in the <code>entrez</code> column. This is useful for downstream functional analysis.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-4-2017-12-04" class="section level2">
+    <div id="basejump-014-2017-12-04" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-4-2017-12-04" class="anchor"></a>basejump 0.1.4 (2017-12-04)</h2>
+<a href="#basejump-014-2017-12-04" class="anchor"></a>basejump 0.1.4 (2017-12-04)</h2>
 <ul>
 <li>Added <code>midnightTheme</code> <a href="http://ggplot2.tidyverse.org/">ggplot2</a> theme. Originally this was defined as <code>darkTheme</code> in the <a href="https://bioinformatics.sph.harvard.edu/bcbioSingleCell/">bcbioSingleCell</a> package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">ggplot2::theme_minimal</a></code> as the base, with some color tweaks, namely dark gray axes without white axis lines.</li>
 <li>Improve NAMESPACE imports to include <code><a href="https://rdrr.io/r/stats/formula.html">stats::formula</a></code> and <code><a href="https://rdrr.io/r/utils/capture.output.html">utils::capture.output</a></code>.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-5-2017-12-05" class="section level2">
+    <div id="basejump-015-2017-12-05" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-5-2017-12-05" class="anchor"></a>basejump 0.1.5 (2017-12-05)</h2>
+<a href="#basejump-015-2017-12-05" class="anchor"></a>basejump 0.1.5 (2017-12-05)</h2>
 <ul>
 <li>Added <code>checkAnnotable</code>, <code>checkGene2symbol</code>, <code>checkTx2gene</code>, and <code>sanitizeAnnotable</code> utility functions that will be used in the bcbio R packages.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-6-2017-12-06" class="section level2">
+    <div id="basejump-016-2017-12-06" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-6-2017-12-06" class="anchor"></a>basejump 0.1.6 (2017-12-06)</h2>
+<a href="#basejump-016-2017-12-06" class="anchor"></a>basejump 0.1.6 (2017-12-06)</h2>
 <ul>
 <li>Moved <code>microplate</code> code from the <a href="https://wormbase.acidgenomics.com/">wormbase</a> package here, since it’s of general interest.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-7-2017-12-11" class="section level2">
+    <div id="basejump-017-2017-12-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-7-2017-12-11" class="anchor"></a>basejump 0.1.7 (2017-12-11)</h2>
+<a href="#basejump-017-2017-12-11" class="anchor"></a>basejump 0.1.7 (2017-12-11)</h2>
 <ul>
 <li>Renamed <code>fc2lr</code> to <code>foldChangeToLogRatio</code> and <code>lr2fc</code> and <code>logRatioToFoldChange</code>.</li>
 <li>Moved <code>plotDot</code> and <code>plotViolin</code> generics here from <a href="https://bioinformatics.sph.harvard.edu/bcbioSingleCell/">bcbioSingleCell</a>.</li>
 <li>Added internal <a href="https://grch37.ensembl.org/">GRCh37</a> gene annotations.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-8-2017-12-14" class="section level2">
+    <div id="basejump-018-2017-12-14" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-8-2017-12-14" class="anchor"></a>basejump 0.1.8 (2017-12-14)</h2>
+<a href="#basejump-018-2017-12-14" class="anchor"></a>basejump 0.1.8 (2017-12-14)</h2>
 <ul>
 <li>Improved <code>matrix</code> and <code>dgCMatrix</code> method support in <code>aggregateReplicates</code> and <code>aggregateFeatures</code> functions. Both of these functions now use a consistent <code>groupings</code> parameter, which uses a named factor to define the mappings of either samples (columns) for <code>aggregateReplicates</code> or genes/transcripts (rows) for <code>aggregateFeatures</code>.</li>
 <li>Update for <code>makeNames</code> sanitization functions. Now they will work on <code><a href="https://rdrr.io/r/base/names.html">names(x)</a></code> for vectors by default.</li>
@@ -221,9 +221,9 @@
 <li>Improved handling of <code>NA</code> values from <a href="https://www.libreoffice.org/">LibreOffice</a> and <a href="https://products.office.com/en-us/excel/">Microsoft Excel</a> output in <code>readFileByExtension</code>. This function now sets <code>""</code>, <code>NA</code>, and <code>#N/A</code> strings as <code>NA</code> correctly.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-9-2017-12-18" class="section level2">
+    <div id="basejump-019-2017-12-18" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-9-2017-12-18" class="anchor"></a>basejump 0.1.9 (2017-12-18)</h2>
+<a href="#basejump-019-2017-12-18" class="anchor"></a>basejump 0.1.9 (2017-12-18)</h2>
 <ul>
 <li>Added <code>plotHeatmap</code> functionality.</li>
 <li>Migrated <code>tpm</code> generic from <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, for future use in <a href="https://bioinformatics.sph.harvard.edu/bcbioSingleCell/">bcbioSingleCell</a>.</li>
@@ -231,9 +231,9 @@
 <li>Added matrix method support for <code>plotQuantileHeatmap</code>, which works similarly as <code>plotHeatmap</code>.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-10-2017-12-20" class="section level2">
+    <div id="basejump-0110-2017-12-20" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-10-2017-12-20" class="anchor"></a>basejump 0.1.10 (2017-12-20)</h2>
+<a href="#basejump-0110-2017-12-20" class="anchor"></a>basejump 0.1.10 (2017-12-20)</h2>
 <ul>
 <li>Bug fix for multiplexed sample input into <code>readSampleMetadataFile</code>. We were detecting the presence of <code>index</code> column but should instead check against <code>sequence</code> column.</li>
 <li>Added <code>dynamicPlotlist</code> and <code>mdPlotlist</code> plotting utilities.</li>
