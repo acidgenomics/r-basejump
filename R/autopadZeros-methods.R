@@ -3,8 +3,8 @@
 #'
 #' @note For methods on objects supporting [`dim()`][base::dim] (e.g. `matrix`),
 #' the object will be returned with the rows and/or columns resorted by default.
-#' This does not apply to the `character` method.
-#' @note Updated 2019-09-05.
+#' This does not apply to the `character` method defined in syntactic.
+#' @note Updated 2020-06-15.
 #'
 #' @section SummarizedExperiment sample names:
 #'
@@ -25,12 +25,6 @@
 #'     package = "acidtest"
 #' )
 #'
-#' ## character ====
-#' ## Left side.
-#' autopadZeros(c("1-EV-DMSO", "10-EV-DMSO", "2-EV-DMSO-B"))
-#' ## Right side.
-#' autopadZeros(c("A1", "B10", "C100"))
-#'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' autopadZeros(object, rownames = TRUE, colnames = TRUE)
@@ -44,58 +38,10 @@ NULL
 
 #' @rdname autopadZeros
 #' @name autopadZeros
-#' @importFrom acidgenerics autopadZeros
+#' @importFrom syntactic autopadZeros
 #' @usage autopadZeros(object, ...)
 #' @export
 NULL
-
-
-
-## Updated 2019-09-05.
-`autopadZeros,character` <-  # nolint
-    function(object) {
-        x <- unname(object)
-        ## Detect if we need to pad the left or right side automatically.
-        leftPattern <- "^([[:digit:]]+)(.+)$"
-        rightPattern <- "^([^0-9]+)([[:digit:]]+)$"
-        if (allAreMatchingRegex(x = x, pattern = leftPattern)) {
-            side <- "left"
-            pattern <- leftPattern
-        } else if (allAreMatchingRegex(x = x, pattern = rightPattern)) {
-            side <- "right"
-            pattern <- rightPattern
-        } else {
-            ## Early return if no padding is necessary.
-            return(object)
-        }
-        match <- str_match(string = x, pattern = pattern)
-        if (identical(side, "left")) {
-            colnames(match) <- c("string", "num", "stem")
-        } else if (identical(side, "right")) {
-            colnames(match) <- c("string", "stem", "num")
-        }
-        num <- match[, "num"]
-        width <- max(str_length(num))
-        num <- str_pad(string = num, width = width, side = "left", pad = "0")
-        stem <- match[, "stem"]
-        if (identical(side, "left")) {
-            x <- paste0(num, stem)
-        } else if (identical(side, "right")) {
-            x <- paste0(stem, num)
-        }
-        names(x) <- names(object)
-        x
-    }
-
-
-
-#' @rdname autopadZeros
-#' @export
-setMethod(
-    f = "autopadZeros",
-    signature = signature("character"),
-    definition = `autopadZeros,character`
-)
 
 
 
