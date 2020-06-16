@@ -2,14 +2,11 @@
 % Please edit documentation in R/autopadZeros-methods.R
 \name{autopadZeros}
 \alias{autopadZeros}
-\alias{autopadZeros,character-method}
 \alias{autopadZeros,matrix-method}
 \alias{autopadZeros,SummarizedExperiment-method}
 \title{Autopad zeros}
 \usage{
 autopadZeros(object, ...)
-
-\S4method{autopadZeros}{character}(object)
 
 \S4method{autopadZeros}{matrix}(object, rownames = FALSE, colnames = TRUE, sort = TRUE)
 
@@ -38,9 +35,9 @@ Autopad zeros
 \note{
 For methods on objects supporting \code{\link[base:dim]{dim()}} (e.g. \code{matrix}),
 the object will be returned with the rows and/or columns resorted by default.
-This does not apply to the \code{character} method.
+This does not apply to the \code{character} method defined in syntactic.
 
-Updated 2019-09-05.
+Updated 2020-06-15.
 }
 \section{SummarizedExperiment sample names}{
 
@@ -57,12 +54,6 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-
-## character ====
-## Left side.
-autopadZeros(c("1-EV-DMSO", "10-EV-DMSO", "2-EV-DMSO-B"))
-## Right side.
-autopadZeros(c("A1", "B10", "C100"))
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment

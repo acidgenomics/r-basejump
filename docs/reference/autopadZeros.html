@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.9</span>
       </span>
     </div>
 
@@ -127,9 +127,6 @@
 
     <pre class="usage"><span class='fu'>autopadZeros</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for character</span>
-<span class='fu'>autopadZeros</span>(<span class='no'>object</span>)
-
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>autopadZeros</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
@@ -171,8 +168,8 @@ Resort using <code>sort</code>.</p></td>
 
     <p>For methods on objects supporting <code><a href='https://rdrr.io/r/base/dim.html'>dim()</a></code> (e.g. <code>matrix</code>),
 the object will be returned with the rows and/or columns resorted by default.
-This does not apply to the <code>character</code> method.</p>
-<p>Updated 2019-09-05.</p>
+This does not apply to the <code>character</code> method defined in syntactic.</p>
+<p>Updated 2020-06-15.</p>
     <h2 class="hasAnchor" id="summarizedexperiment-sample-names"><a class="anchor" href="#summarizedexperiment-sample-names"></a>SummarizedExperiment sample names</h2>
 
     
@@ -190,10 +187,6 @@ rely on this feature.</p>
     <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
 )
 
-<span class='co'>## character ====</span>
-<span class='co'>## Left side.</span>
-<span class='fu'>autopadZeros</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1-EV-DMSO"</span>, <span class='st'>"10-EV-DMSO"</span>, <span class='st'>"2-EV-DMSO-B"</span>))</div><div class='output co'>#&gt; [1] "01-EV-DMSO"   "10-EV-DMSO"   "02-EV-DMSO-B"</div><div class='input'><span class='co'>## Right side.</span>
-<span class='fu'>autopadZeros</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A1"</span>, <span class='st'>"B10"</span>, <span class='st'>"C100"</span>))</div><div class='output co'>#&gt; [1] "A001" "B010" "C100"</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
 <span class='fu'>autopadZeros</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 

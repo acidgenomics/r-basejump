@@ -1,3 +1,18 @@
+## basejump 0.12.8 (2020-06-15)
+
+### Minor changes
+
+- `autopadZeros`: Migrated character method support to syntactic package, since
+  this is useful for low-level code run inside koopa.
+
+## basejump 0.12.7 (2020-05-22)
+
+### Minor changes
+
+- `aggregate`, `aggregateCols`, `aggregateRows`: Relaxed assert checks on
+  validity of dimnames, so we can use internally in acidgsea package, which
+  needs to handle gene symbols containing syntactically invalid hyphens.
+
 ## basejump 0.12.6 (2020-05-17)
 
 ### Minor changes
