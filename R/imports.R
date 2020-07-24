@@ -32,7 +32,6 @@ NULL
 #' @importFrom GenomicRanges GRanges ranges
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse
-#' @importFrom RCurl getURL url.exists
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
 #'   as.data.frame as.list cor decode do.call expand expand.grid head lapply
 #'   match mcols mcols<- merge metadata metadata<- na.omit order setdiff split
