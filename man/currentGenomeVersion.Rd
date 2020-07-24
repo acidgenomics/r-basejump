@@ -34,7 +34,7 @@ Release version.
 Obtain the latest release version from various genome annotation sources.
 }
 \note{
-Updated 2020-01-20.
+Updated 2020-07-24.
 }
 \examples{
 ## Protect against Ensembl timeouts causing build checks to fail.
