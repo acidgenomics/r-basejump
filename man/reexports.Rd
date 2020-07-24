@@ -7,7 +7,6 @@
 \alias{GRanges}
 \alias{GRangesList}
 \alias{IRanges}
-\alias{getURL}
 \alias{DataFrame}
 \alias{SimpleList}
 \alias{mcols}
@@ -82,10 +81,6 @@
 \alias{snake}
 \alias{upperCamel}
 \alias{tibble}
-\alias{tar}
-\alias{untar}
-\alias{unzip}
-\alias{zip}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -105,8 +100,6 @@ below to see their documentation.
 
   \item{pipette}{\code{\link[pipette:coerce-SummarizedExperiment]{as.SummarizedExperiment}}, \code{\link[pipette:coerce-data.frame]{as.data.frame}}, \code{\link[pipette:coerce-data.table]{as.data.table}}, \code{\link[pipette:coerce-tbl_df]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{atomize}}, \code{\link[pipette:coerce-list]{coerceToList}}, \code{\link[pipette]{decode}}, \code{\link[pipette]{encode}}, \code{\link[pipette]{export}}, \code{\link[pipette]{factorize}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{metadata2}}, \code{\link[pipette:metadata2]{metadata2<-}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{removeNA}}, \code{\link[pipette]{sanitizeNA}}, \code{\link[pipette]{sanitizePercent}}, \code{\link[pipette]{saveData}}}
 
-  \item{RCurl}{\code{\link[RCurl]{getURL}}}
-
   \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}, \code{\link[S4Vectors:Vector-class]{mcols}}, \code{\link[S4Vectors:Vector-class]{mcols<-}}, \code{\link[S4Vectors:Annotated-class]{metadata}}, \code{\link[S4Vectors:Annotated-class]{metadata<-}}}
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{reducedDims}}, \code{\link[SingleCellExperiment:reducedDims]{reducedDims<-}}}
@@ -116,7 +109,5 @@ below to see their documentation.
   \item{syntactic}{\code{\link[syntactic:deprecated]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic:deprecated]{dotted}}, \code{\link[syntactic:deprecated]{kebab}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic:deprecated]{snake}}, \code{\link[syntactic:deprecated]{upperCamel}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
-
-  \item{utils}{\code{\link[utils]{tar}}, \code{\link[utils]{untar}}, \code{\link[utils]{unzip}}, \code{\link[utils]{zip}}}
 }}
 
