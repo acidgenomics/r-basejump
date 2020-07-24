@@ -20,6 +20,6 @@ Updated 2019-08-08.
 
 
 We recommend slotting \code{organism}, \code{genomeBuild}, and \code{ensemblRelease} into
-\code{\link[S4Vectors:metadata]{metadata()}}.
+\code{\link[S4Vectors:Annotated-class]{metadata()}}.
 }
 

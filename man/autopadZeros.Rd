@@ -43,7 +43,7 @@ Updated 2020-06-15.
 
 
 If \code{sampleName} column is defined in
-\code{\link[SummarizedExperiment:colData]{colData()}}, these values will also get
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}, these values will also get
 padded, if necessary. This improves # downstream handling in functions that
 rely on this feature.
 }
