@@ -14,12 +14,6 @@ IRanges::IRanges
 
 
 
-#' @importFrom RCurl getURL
-#' @export
-RCurl::getURL
-
-
-
 #' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
@@ -332,21 +326,3 @@ syntactic::upperCamel
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
-
-
-
-#' @importFrom utils tar
-#' @export
-utils::tar
-
-#' @importFrom utils untar
-#' @export
-utils::untar
-
-#' @importFrom utils unzip
-#' @export
-utils::unzip
-
-#' @importFrom utils zip
-#' @export
-utils::zip
