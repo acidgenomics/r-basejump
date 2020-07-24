@@ -64,7 +64,7 @@ can also be supplied using the assignment function \code{\link[=sizeFactors<-]{s
 We're computing internally on the count matrix as a DelayedArray, so we
 can handle millions of cells without the calculations blowing up in memory.
 
-Updated 2020-01-20.
+Updated 2020-07-24.
 }
 \examples{
 data(

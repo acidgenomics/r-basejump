@@ -17,7 +17,7 @@
 #'   can handle millions of cells without the calculations blowing up in memory.
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-07-24.
 #'
 #' @inheritParams acidroxygen::params
 #' @param type `character(1)`.
@@ -112,12 +112,6 @@ NULL
         if (is(counts, "Matrix")) {
             colSums <- Matrix::colSums
         }
-        ## nolint start
-        ## > else if (is(counts, "DelayedArray")) {
-        ## >     assert(requireNamespace("DelayedArray", quietly = TRUE))
-        ## >     colSums <- DelayedMatrixStats::colSums2
-        ## > }
-        ## nolint end
         libSizes <- colSums(counts)
         ## Error on detection of cells without any expression.
         zero <- libSizes == 0L

@@ -27,7 +27,7 @@ makeGRangesFromEnsDb <- function(
     ## Allow loading of EnsDb package, passed in as a character string.
     if (isString(object)) {
         package <- object
-        requireNamespace(package = package, quietly = FALSE)
+        requireNamespaces(package)
         object <- get(
             x = package,
             envir = asNamespace(package),
