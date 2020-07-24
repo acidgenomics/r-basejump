@@ -164,9 +164,9 @@ setMethod(
         ## Check to see if object contains gene-to-symbol mappings.
         g2s <- tryCatch(
             expr = {
-                suppressMessages(
+                suppressMessages({
                     g2s <- Gene2Symbol(object)
-                )
+                })
             },
             error = function(e) {
                 NULL
@@ -254,9 +254,9 @@ setMethod(
 `mapGenesToIDs,SummarizedExperiment` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        suppressMessages(
+        suppressMessages({
             g2s <- Gene2Symbol(object)
-        )
+        })
         assert(identical(rownames(g2s), rownames(object)))
         do.call(
             what = mapGenesToIDs,
@@ -315,9 +315,9 @@ setMethod(
 `mapGenesToSymbols,SummarizedExperiment` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
-        suppressMessages(
+        suppressMessages({
             g2s <- Gene2Symbol(object)
-        )
+        })
         assert(identical(rownames(g2s), rownames(object)))
         do.call(
             what = mapGenesToSymbols,

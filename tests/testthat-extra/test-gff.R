@@ -145,13 +145,13 @@ lengths <- c(genes = 17825L, transcripts = 35421L)
 file <- localOrRemoteFile(files[["flybaseGTF"]])
 with_parameters_test_that(
     "GTF", {
-        suppressWarnings(
+        suppressWarnings({
             object <- makeGRangesFromGFF(
                 file = file,
                 level = level,
                 .checkAgainstTxDb = checkAgainstTxDb
             )
-        )
+        })
         expect_s4_class(object, "GRanges")
         expect_identical(length(object), length)
     },

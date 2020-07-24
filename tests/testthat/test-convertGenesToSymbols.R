@@ -21,12 +21,12 @@ test_that("character", {
 ## Specify organism (to handle FASTA spike-ins (e.g. EGFP).
 test_that("FASTA spike-in support", {
     expect_identical(
-        object = suppressWarnings(
+        object = suppressWarnings({
             convertGenesToSymbols(
                 object = c("EGFP", "ENSG00000000003"),
                 gene2symbol = gene2symbol
             )
-        ),
+        }),
         expected = c(
             EGFP = "EGFP",
             ENSG00000000003 = "TSPAN6"
