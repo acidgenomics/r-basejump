@@ -45,7 +45,6 @@ Imports:
     GenomicRanges,
     IRanges,
     Matrix (>= 1.2),
-    RCurl (>= 1.98),
     S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
@@ -67,6 +66,7 @@ Imports:
 Suggests:
     BiocStyle,
     EnsDb.Hsapiens.v75,
+    RCurl,
     acidtest (>= 0.3.1),
     biomaRt,
     datasets,
