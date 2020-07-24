@@ -17,7 +17,6 @@
 #' - `biomaRt::listEnsemblArchives()`.
 #' - `biomaRt::listMarts()`.
 #' - `biomaRt::useMart()`.
-#' - `biomaRt::select()`.
 #'
 #' @examples
 #' genes <- c(
@@ -77,7 +76,7 @@ matchHumanOrthologs <- function(
         }
     )
     map <- tryCatch(
-        expr = select(
+        expr = biomaRt::select(
             x = mart,
             keys = genes,
             keytype = "ensembl_gene_id",

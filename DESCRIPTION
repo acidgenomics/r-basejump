@@ -35,7 +35,6 @@ License: GPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
-    AnnotationDbi,
     AnnotationHub,
     Biobase,
     BiocGenerics,
