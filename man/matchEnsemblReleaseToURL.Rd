@@ -18,7 +18,7 @@ URL.
 Match Ensembl release to archive URL.
 }
 \note{
-Updated 2020-03-16.
+Updated 2020-07-24.
 }
 \examples{
 matchEnsemblReleaseToURL(96L)

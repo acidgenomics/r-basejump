@@ -44,8 +44,8 @@ NULL
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
 #' @importFrom acidbase appendToBody bapply getNameInParent matchArgsToDoCall
-#'   methodFormals methodFunction printString
-#' @importFrom biomaRt listEnsemblArchives useMart
+#'   methodFormals methodFunction printString requireNamespaces
+#' @importFrom biomaRt  useMart
 #' @importFrom cli cli_alert cli_alert_info cli_alert_success cli_alert_warning
 #'   cli_div cli_dl cli_end cli_li cli_text cli_ul cli_verbatim
 #' @importFrom ensembldb ensemblVersion
