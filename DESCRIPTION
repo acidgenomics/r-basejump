@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.12.8
-Date: 2020-06-15
+Version: 0.12.9
+Date: 2020-07-24
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -33,7 +33,7 @@ URL:
 BugReports: https://github.com/acidgenomics/basejump/issues/
 License: GPL-3
 Encoding: UTF-8
-Depends: R (>= 3.6)
+Depends: R (>= 4.0)
 Imports:
     AnnotationDbi (>= 1.48),
     AnnotationHub (>= 2.18),
@@ -60,13 +60,13 @@ Imports:
     knitr (>= 1.26),
     magrittr (>= 1.5),
     matrixStats (>= 0.55),
-    pipette (>= 0.4.5),
+    methods,
+    pipette (>= 0.4.8),
     scales (>= 1.1),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
     syntactic (>= 0.3.10),
     tibble (>= 3.0),
-    methods,
     utils
 Suggests:
     BiocStyle (>= 2.14),
@@ -88,7 +88,7 @@ biocViews:
     GenomeAnnotation,
     Preprocessing
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Collate: 
     'AllGlobals.R'
