@@ -17,9 +17,7 @@ importSampleData(
 File path.}
 
 \item{sheet}{\code{character(1)} or \code{integer(1)}.
-\emph{Applies to Excel Workbook, Google Sheet, or GraphPad Prism file.}
-Sheet to read. Either a string (the name of a sheet), or an integer (the
-position of the sheet). Defaults to the first sheet.}
+Workbook sheet.}
 
 \item{lanes}{\code{integer(1)}.
 Number of lanes used to split the samples into technical replicates
@@ -49,7 +47,7 @@ This function imports user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2020-05-10.
+Updated 2020-07-24.
 }
 \section{bcbio pipeline}{
 

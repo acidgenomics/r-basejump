@@ -36,11 +36,12 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2020-05-10.
+#' @note Updated 2020-07-24.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
-#' @inheritParams pipette::import
+#' @param sheet `character(1)` or `integer(1)`.
+#'   Workbook sheet.
 #' @param lanes `integer(1)`.
 #'   Number of lanes used to split the samples into technical replicates
 #'   suffix (i.e. `_LXXX`).
