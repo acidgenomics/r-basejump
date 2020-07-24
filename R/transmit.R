@@ -4,7 +4,7 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @export
-#' @note Updated 2020-05-11.
+#' @note Updated 2020-07-24.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams pipette::saveData
@@ -15,7 +15,7 @@
 #' @param rename `character(1)` or `NULL`.
 #'   Rename the local files (including suffix), if desired.
 #' @param compress `logical(1)`.
-#'   gzip compress the files after download.
+#'   Compress the downloaded files.
 #'
 #' @return Invisible `character`.
 #' Local file paths.
@@ -142,7 +142,7 @@ transmit <- function(
         FUN = function(url, destfile, compress = FALSE) {
             download.file(url = url, destfile = destfile)
             if (isTRUE(compress)) {
-                destfile <- gzip(destfile, overwrite = TRUE)
+                destfile <- compress(destfile, overwrite = TRUE)
             }
             realpath(destfile)
         },
