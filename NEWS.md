@@ -1,3 +1,9 @@
+## basejump 0.12.9 (2020-07-24)
+
+### Minor changes
+
+- Maintenance release, updating minimum R dependency to 4.0.
+
 ## basejump 0.12.8 (2020-06-15)
 
 ### Minor changes
