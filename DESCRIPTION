@@ -46,7 +46,6 @@ Imports:
     IRanges,
     Matrix (>= 1.2),
     RCurl (>= 1.98),
-    R.utils (>= 2.9),
     S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,

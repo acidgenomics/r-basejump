@@ -20,7 +20,7 @@ Pattern to use for matching.}
 Rename the local files (including suffix), if desired.}
 
 \item{compress}{\code{logical(1)}.
-gzip compress the files after download.}
+Compress the downloaded files.}
 }
 \value{
 Invisible \code{character}.
@@ -31,7 +31,7 @@ Utility function that supports easy file matching and download from a remote
 FTP server. Also enables on-the-fly file renaming and compression.
 }
 \note{
-Updated 2020-05-11.
+Updated 2020-07-24.
 }
 \examples{
 remoteDir <- "ftp://ftp.ncbi.nlm.nih.gov/genomes/"
