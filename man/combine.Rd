@@ -31,10 +31,10 @@ Updated 2020-01-20.
 We're attempting to make this as strict as possible, requiring:
 \itemize{
 \item Rows (genes) across objects must be identical.
-\item \link[SummarizedExperiment:rowRanges]{rowRanges} and/or
-\link[SummarizedExperiment:rowData]{rowData}
-\link[S4Vectors:metadata]{metadata} must be identical.
-\item \link[SummarizedExperiment:colData]{colData} must contain the same columns.
+\item \link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges} and/or
+\link[SummarizedExperiment:SummarizedExperiment-class]{rowData}
+\link[S4Vectors:Annotated-class]{metadata} must be identical.
+\item \link[SummarizedExperiment:SummarizedExperiment-class]{colData} must contain the same columns.
 \item Specific metadata must be identical (see \code{metadata} argument).
 }
 }

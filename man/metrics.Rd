@@ -42,7 +42,7 @@ Object of class determined by \code{return} argument.
 Quality control metrics
 }
 \details{
-\code{\link[=metrics]{metrics()}} takes data stored in \code{\link[SummarizedExperiment:colData]{colData()}}
+\code{\link[=metrics]{metrics()}} takes data stored in \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}
 and consistently returns a \code{tbl_df} or \code{DataFrame} with \code{sampleName} and
 \code{interestingGroups} columns, even when these columns are not defined in
 \code{colData()}. This is designed to integrate with plotting functions that use

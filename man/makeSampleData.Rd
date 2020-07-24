@@ -22,7 +22,7 @@ makeSampleData(object, ...)
 }
 \description{
 Utility function that prepares metadata to be slotted into
-\code{\link[SummarizedExperiment:colData]{colData()}}.
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
 }
 \details{
 This function adheres to the following conventions:

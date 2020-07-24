@@ -69,7 +69,7 @@ Uses \code{\link[base:match.arg]{match.arg()}}.
 \item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
 operation. This applies to all counts, not per feature.
 \item \code{perRow}: Applies cutoff per row (i.e. gene). Internally,
-\code{\link[base:rowSums]{rowSums()}} values are checked against this cutoff
+\code{\link[base:colSums]{rowSums()}} values are checked against this cutoff
 threshold prior to the melt operation.
 }}
 

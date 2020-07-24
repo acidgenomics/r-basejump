@@ -153,7 +153,7 @@ print(x)
 }
 \seealso{
 \itemize{
-\item \code{\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment()}}.
+\item \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{SummarizedExperiment()}}.
 \item \code{\link[SingleCellExperiment:SingleCellExperiment]{SingleCellExperiment()}}.
 \item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.

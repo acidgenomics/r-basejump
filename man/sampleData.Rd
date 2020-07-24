@@ -39,7 +39,7 @@ sampleData(object, ...) <- value
 
 \item{clean}{\code{logical(1)}.
 Only return \code{factor} columns. Useful when working with objects that contain
-quality control metrics in \code{\link[SummarizedExperiment:colData]{colData()}}.
+quality control metrics in \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
 For example, \code{bcbioRNASeq} and \code{DESeqDataSet} objects often contain
 additional columns that aren't informative sample metadata.}
 
@@ -67,7 +67,7 @@ Metadata that describes the samples.
 }
 \details{
 This is a complement to the standard
-\code{\link[SummarizedExperiment:colData]{colData()}} function, but improves support
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}} function, but improves support
 for accessing sample metadata for datasets where multiple items in the
 columns map to a single sample (e.g. cells for a single-cell RNA-seq
 experiment).

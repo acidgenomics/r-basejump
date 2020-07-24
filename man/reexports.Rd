@@ -93,27 +93,27 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{acidbase}{\code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{compress}}, \code{\link[acidbase]{compressExtPattern}}, \code{\link[acidbase]{decompress}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{extPattern}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase]{methodFormals}}, \code{\link[acidbase]{methodFunction}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{standardizeCall}}}
+  \item{acidbase}{\code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{compress}}, \code{\link[acidbase:extPattern]{compressExtPattern}}, \code{\link[acidbase:compress]{decompress}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{extPattern}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase:methodDefinition]{methodFormals}}, \code{\link[acidbase:methodDefinition]{methodFunction}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{standardizeCall}}}
 
-  \item{acidgenerics}{\code{\link[acidgenerics]{plotGene}}}
+  \item{acidgenerics}{\code{\link[acidgenerics:defunct]{plotGene}}}
 
-  \item{GenomicRanges}{\code{\link[GenomicRanges]{GRanges}}, \code{\link[GenomicRanges]{GRangesList}}}
+  \item{GenomicRanges}{\code{\link[GenomicRanges:GRanges-class]{GRanges}}, \code{\link[GenomicRanges:GRangesList-class]{GRangesList}}}
 
-  \item{IRanges}{\code{\link[IRanges]{IRanges}}}
+  \item{IRanges}{\code{\link[IRanges:IRanges-constructor]{IRanges}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%T>\%}}}
+  \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
-  \item{pipette}{\code{\link[pipette]{as_tibble}}, \code{\link[pipette]{as.data.frame}}, \code{\link[pipette]{as.data.table}}, \code{\link[pipette]{as.SummarizedExperiment}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{atomize}}, \code{\link[pipette]{coerceToList}}, \code{\link[pipette]{decode}}, \code{\link[pipette]{encode}}, \code{\link[pipette]{export}}, \code{\link[pipette]{factorize}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{metadata2}}, \code{\link[pipette]{metadata2<-}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{removeNA}}, \code{\link[pipette]{sanitizeNA}}, \code{\link[pipette]{sanitizePercent}}, \code{\link[pipette]{saveData}}}
+  \item{pipette}{\code{\link[pipette:coerce-SummarizedExperiment]{as.SummarizedExperiment}}, \code{\link[pipette:coerce-data.frame]{as.data.frame}}, \code{\link[pipette:coerce-data.table]{as.data.table}}, \code{\link[pipette:coerce-tbl_df]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{atomize}}, \code{\link[pipette:coerce-list]{coerceToList}}, \code{\link[pipette]{decode}}, \code{\link[pipette]{encode}}, \code{\link[pipette]{export}}, \code{\link[pipette]{factorize}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{metadata2}}, \code{\link[pipette:metadata2]{metadata2<-}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{removeNA}}, \code{\link[pipette]{sanitizeNA}}, \code{\link[pipette]{sanitizePercent}}, \code{\link[pipette]{saveData}}}
 
   \item{RCurl}{\code{\link[RCurl]{getURL}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}, \code{\link[S4Vectors]{mcols<-}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{metadata<-}}, \code{\link[S4Vectors]{SimpleList}}}
+  \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}, \code{\link[S4Vectors:Vector-class]{mcols}}, \code{\link[S4Vectors:Vector-class]{mcols<-}}, \code{\link[S4Vectors:Annotated-class]{metadata}}, \code{\link[S4Vectors:Annotated-class]{metadata<-}}}
 
-  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{reducedDims}}, \code{\link[SingleCellExperiment]{reducedDims<-}}}
+  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{reducedDims}}, \code{\link[SingleCellExperiment:reducedDims]{reducedDims<-}}}
 
-  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assay<-}}, \code{\link[SummarizedExperiment]{assayNames}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{assays<-}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{colData<-}}, \code{\link[SummarizedExperiment]{rowData}}, \code{\link[SummarizedExperiment]{rowData<-}}, \code{\link[SummarizedExperiment]{rowRanges}}, \code{\link[SummarizedExperiment]{rowRanges<-}}}
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment:SummarizedExperiment-class]{assay}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assay<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assayNames}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData<-}}, \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges}}, \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges<-}}}
 
-  \item{syntactic}{\code{\link[syntactic]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic]{dotted}}, \code{\link[syntactic]{kebab}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic]{snake}}, \code{\link[syntactic]{upperCamel}}}
+  \item{syntactic}{\code{\link[syntactic:deprecated]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic:deprecated]{dotted}}, \code{\link[syntactic:deprecated]{kebab}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic:deprecated]{snake}}, \code{\link[syntactic:deprecated]{upperCamel}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 

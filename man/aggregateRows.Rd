@@ -28,8 +28,8 @@ Name of the aggregation function to apply.
 Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 
 \item{col}{\code{character(1)}.
-Name of column in either \code{\link[SummarizedExperiment:rowData]{rowData()}} or
-\code{\link[SummarizedExperiment:colData]{colData()}} that defines the desired
+Name of column in either \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData()}} or
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}} that defines the desired
 aggregation groupings.}
 
 \item{...}{Additional arguments.}
@@ -47,22 +47,22 @@ Aggregate rows
 Aggregate using a grouping \code{factor}.
 \item \code{SummarizedExperiment}:
 Aggregate data slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}} using an automatically
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays()}} using an automatically
 generated grouping \code{factor}, which is obtained from a user-defined column
 (\code{col} argument) in either the
-\code{\link[SummarizedExperiment:rowData]{rowData()}} or
-\code{\link[SummarizedExperiment:colData]{colData()}} of the object. Slot an
-\code{aggregate} column into \code{\link[SummarizedExperiment:rowData]{rowData()}}
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData()}} or
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}} of the object. Slot an
+\code{aggregate} column into \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData()}}
 for \code{\link[=aggregateRows]{aggregateRows()}}, or into
-\code{\link[SummarizedExperiment:colData]{colData()}} for \code{\link[=aggregateCols]{aggregateCols()}}. This
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}} for \code{\link[=aggregateCols]{aggregateCols()}}. This
 method will define the \code{groupings} automatically, and perform the
 aggregation.
 \item \code{SingleCellExperiment}:
-Aggregate \code{\link[SummarizedExperiment:assays]{assays()}} across cell-level
+Aggregate \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays()}} across cell-level
 groupings, defined by a column in
-\code{\link[SummarizedExperiment:colData]{colData()}}. Inherits from
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}. Inherits from
 \code{SummarizedExperiment}, and still relies upon slotting an \code{aggregate}
-column into \code{\link[SummarizedExperiment:colData]{colData()}}. Note that these
+column into \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}. Note that these
 groupings will map to cells, so care must be taken to properly aggregate
 samples.
 }

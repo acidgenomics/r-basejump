@@ -33,8 +33,8 @@ simplifies identifier matching when generating a \code{tx2gene} file.}
 \item{.checkAgainstTxDb}{\code{logical(1)}.
 Enable strict mode, intended for development and unit testing only.
 Generate an internal \code{TxDb} using \code{\link[GenomicFeatures:makeTxDbFromGRanges]{GenomicFeatures::makeTxDbFromGRanges()}}
-and check that the \code{\link[IRanges:ranges]{ranges()}},
-\code{\link[GenomeInfoDb:seqnames]{seqnames()}}, and identifiers defined in
+and check that the \code{\link[IRanges:range-squeezers]{ranges()}},
+\code{\link[GenomeInfoDb:seqinfo]{seqnames()}}, and identifiers defined in
 \code{\link[base:names]{names()}} are identical. Doesn't work for all GFF/GTF files
 due to some current limitations in the GenomicFeatures package, so this is
 disabled by default. Generally, GenomicFeatures parses GTF files better
@@ -234,7 +234,7 @@ summary(x)
 }
 \seealso{
 \itemize{
-\item \code{\link[rtracklayer:import]{rtracklayer::import()}}.
+\item \code{\link[rtracklayer:export]{rtracklayer::import()}}.
 \item \code{\link[GenomicFeatures:makeTxDbFromGRanges]{GenomicFeatures::makeTxDbFromGRanges()}}.
 \item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
 }

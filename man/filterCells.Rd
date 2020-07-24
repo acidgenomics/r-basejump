@@ -73,7 +73,7 @@ now support per-sample cutoffs, defined using a named \code{numeric} vector. Whe
 matching per sample, be sure to use the \code{\link[=sampleNames]{sampleNames()}} return values (i.e.
 the \code{sampleName} column in \code{\link[=sampleData]{sampleData()}}).
 
-Filtering information gets slotted into \code{\link[S4Vectors:metadata]{metadata()}}
+Filtering information gets slotted into \code{\link[S4Vectors:Annotated-class]{metadata()}}
 as \code{filterCells} metadata.
 }
 \note{
