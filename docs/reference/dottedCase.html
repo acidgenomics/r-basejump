@@ -76,7 +76,7 @@ as that can introduce conflicts with base functions." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.9</span>
       </span>
     </div>
 
@@ -244,15 +244,15 @@ returns unchanged, except for <code>character</code> or <code>vector</code> clas
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>syntactic</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>syntactic</span>, <span class='no'>dottedCase</span>)</div><div class='output co'>#&gt; $character
-#&gt;  [1] "percent.GC"        "X10um"             "X5.3.bias"        
-#&gt;  [4] "X5prime"           "G2M.Score"         "hello.world"      
-#&gt;  [7] "HELLO.WORLD"       "Mazda.RX4"         "n.Count"          
-#&gt; [10] "RNAI.clones"       "tx2gene"           "TX2.Gene.ID"      
-#&gt; [13] "worfdb.HTML.Remap" "X123"             
+#&gt;  [1] "percent.gc"        "x10um"             "x5.3.bias"        
+#&gt;  [4] "x5prime"           "g2m.score"         "hello.world"      
+#&gt;  [7] "hello.world"       "mazda.rx4"         "n.count"          
+#&gt; [10] "rnai.clones"       "tx2gene"           "tx2.gene.id"      
+#&gt; [13] "worfdb.html.remap" "x123"             
 #&gt; 
 #&gt; $character_named
-#&gt;        Item.A        Item.B 
-#&gt; "hello.world" "HELLO.WORLD" 
+#&gt;        item.a        item.b 
+#&gt; "hello.world" "hello.world" 
 #&gt; 
 #&gt; $factor
 #&gt; sample.1 sample.2 sample.3 sample.4 
@@ -260,15 +260,15 @@ returns unchanged, except for <code>character</code> or <code>vector</code> clas
 #&gt; Levels: group.1 group.2
 #&gt; 
 #&gt; $list
-#&gt; $list$Item.A
+#&gt; $list$item.a
 #&gt; [1] 1 2
 #&gt; 
-#&gt; $list$Item.B
+#&gt; $list$item.b
 #&gt; [1] 3 4
 #&gt; 
 #&gt; 
 #&gt; $matrix
-#&gt;            Murder Assault Urban.Pop Rape
+#&gt;            murder assault urban.pop rape
 #&gt; Alabama      13.2     236        58 21.2
 #&gt; Alaska       10.0     263        48 44.5
 #&gt; Arizona       8.1     294        80 31.0
@@ -277,7 +277,7 @@ returns unchanged, except for <code>character</code> or <code>vector</code> clas
 #&gt; Colorado      7.9     204        78 38.7
 #&gt; 
 #&gt; $data.frame
-#&gt;            Murder Assault Urban.Pop Rape
+#&gt;            murder assault urban.pop rape
 #&gt; Alabama      13.2     236        58 21.2
 #&gt; Alaska       10.0     263        48 44.5
 #&gt; Arizona       8.1     294        80 31.0
