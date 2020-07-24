@@ -21,7 +21,7 @@ Markdown output.
 Markdown
 }
 \note{
-Updated 2019-07-28.
+Updated 2020-07-24.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

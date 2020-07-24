@@ -33,7 +33,7 @@ Knit multiple tables in a single R Markdown chunk.
 argument, but it still only supports a single caption. \code{markdownTables}
 extends this functionality, but supporting captions for each table.
 
-Updated 2019-07-28.
+Updated 2020-07-24.
 }
 \examples{
 list <- list(
