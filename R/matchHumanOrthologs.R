@@ -1,6 +1,6 @@
 #' Match human gene orthologs
 #'
-#' @note Updated 2020-03-15.
+#' @note Updated 2020-07-24.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -34,6 +34,7 @@ matchHumanOrthologs <- function(
     organism = NULL,
     ensemblRelease = NULL
 ) {
+    requireNamespaces("biomaRt")
     assert(
         isCharacter(genes),
         isString(organism, nullOK = TRUE),
@@ -64,7 +65,7 @@ matchHumanOrthologs <- function(
         dataset, host, packageVersion("biomaRt")
     ))
     mart <- tryCatch(
-        expr = useMart(
+        expr = biomaRt::useMart(
             ## Can use "ENSEMBL_MART_ENSEMBL" instead of "ensembl" here.
             biomart = "ensembl",
             dataset = dataset,
