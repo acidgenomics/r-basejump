@@ -3,7 +3,7 @@
 #' Obtain the latest release version from various genome annotation sources.
 #'
 #' @name currentGenomeVersion
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-07-24.
 #'
 #' @inheritParams acidroxygen::params
 #' @param dmel `logical(1)`.
@@ -33,12 +33,12 @@ NULL
 #' @rdname currentGenomeVersion
 #' @export
 currentEnsemblVersion <- function() {
-    suppressMessages(
+    suppressMessages({
         x <- import(
             file = "ftp://ftp.ensembl.org/pub/current_README",
             format = "lines"
         )
-    )
+    })
     x <- x[[3L]]
     x <- str_split_fixed(x, pattern = boundary("word"), n = 4L)[1L, 3L]
     x
@@ -49,6 +49,7 @@ currentEnsemblVersion <- function() {
 #' @rdname currentGenomeVersion
 #' @export
 currentGencodeVersion <- function(organism) {
+    requireNamespaces("RCurl")
     organism <- match.arg(
         arg = organism,
         choices = c("Homo sapiens", "Mus musculus")
@@ -62,7 +63,7 @@ currentGencodeVersion <- function(organism) {
         pattern <- "Release M[[:digit:]]+"
     }
     url <- paste0(url, "/", shortName, "/")
-    x <- getURL(url)
+    x <- RCurl::getURL(url)
     x <- str_extract(x, pattern = pattern)
     x <- str_split_fixed(x, pattern = boundary("word"), n = 2L)[1L, 2L]
     x
@@ -73,12 +74,12 @@ currentGencodeVersion <- function(organism) {
 #' @rdname currentGenomeVersion
 #' @export
 currentRefseqVersion <- function() {
-    suppressMessages(
+    suppressMessages({
         import(
             file = "ftp://ftp.ncbi.nlm.nih.gov/refseq/release/RELEASE_NUMBER",
             format = "lines"
         )
-    )
+    })
 }
 
 

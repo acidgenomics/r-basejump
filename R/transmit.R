@@ -43,6 +43,7 @@ transmit <- function(
     rename = NULL,
     compress = FALSE
 ) {
+    requireNamespaces("RCurl")
     assert(
         hasInternet(),
         isString(remoteDir),
@@ -65,13 +66,13 @@ transmit <- function(
     server <- str_match(remoteDir, "^.*//([^/]+)/.*$")[1L, 2L]
     assert(isString(server))
     ## Error and inform the user if the FTP connection fails.
-    if (!isTRUE(url.exists(remoteDir))) {
+    if (!isTRUE(RCurl::url.exists(remoteDir))) {
         stop(sprintf("Connection to '%s' failed.", server))  # nocov
     } else {
         cli_text(sprintf("Transmitting files from {.url %s}.", server))
     }
     ## Get a list of the files in the remote directory.
-    remoteTxt <- getURL(remoteDir)
+    remoteTxt <- RCurl::getURL(remoteDir)
     if (!all(
         is.character(remoteTxt),
         length(remoteTxt) > 0L
