@@ -3,7 +3,7 @@
 #' Generate a Markdown header (levels 1-7) in any R Markdown code block. When
 #' calling inside an `asis` chunk, set `asis = TRUE`.
 #'
-#' @note Updated 2019-08-18.
+#' @note Updated 2020-07-24.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -48,7 +48,8 @@ markdownHeader <- function(
         text <- paste0(text, "\n")
         ## Specify that output should be handled as Markdown text.
         text <- structure(text, format = "markdown")
-        text <- asis_output(text)
+        requireNamespaces("knitr")
+        text <- knitr::asis_output(text)
         text
     }
 }

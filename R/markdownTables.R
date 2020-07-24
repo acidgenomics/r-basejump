@@ -5,7 +5,7 @@
 #' @note [knitr::kable()] now supports multiple tables as a `list` for the `x`
 #'   argument, but it still only supports a single caption. `markdownTables`
 #'   extends this functionality, but supporting captions for each table.
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-07-24.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -38,6 +38,7 @@ markdownTables <- function(
     captions = NULL,
     force = FALSE
 ) {
+    requireNamespaces("knitr")
     assert(
         is.list(list),
         isAny(captions, classes = c("character", "NULL"))
@@ -51,18 +52,18 @@ markdownTables <- function(
         areSameLength(list, captions),
         isFlag(force)
     )
-    output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
+    output <- knitr::opts_knit[["get"]]("rmarkdown.pandoc.to")
     if (!is.null(output) || isTRUE(force)) {
         tables <- mapply(
             x = list,
             caption = captions,
             FUN = function(x, caption) {
-                kable(x = as.data.frame(x), caption = caption)
+                knitr::kable(x = as.data.frame(x), caption = caption)
             },
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         )
-        asis_output(tables)
+        knitr::asis_output(tables)
     } else {
         ## Return the unmodified list if not in a knit call.
         list

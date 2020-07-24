@@ -54,7 +54,6 @@ Imports:
     cli (>= 2.0),
     ensembldb,
     goalie (>= 0.4.6),
-    knitr (>= 1.29),
     magrittr (>= 1.5),
     matrixStats (>= 0.56),
     methods,
@@ -71,6 +70,7 @@ Suggests:
     acidtest (>= 0.3.1),
     biomaRt,
     datasets,
+    knitr,
     patrick,
     rmarkdown,
     testthat

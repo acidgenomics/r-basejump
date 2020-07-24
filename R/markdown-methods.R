@@ -1,6 +1,6 @@
 #' @name markdown
 #' @inherit acidgenerics::markdown
-#' @note Updated 2019-07-28.
+#' @note Updated 2020-07-24.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -24,13 +24,14 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2020-07-24.
 `markdown,SummarizedExperiment` <-  # nolint
     function(object) {
-        object %>%
-            sampleData() %>%
-            as.data.frame() %>%
-            kable()
+        requireNamespaces("knitr")
+        x <- object
+        x <- sampleData(x)
+        x <- as.data.frame(x)
+        knitr::kable(x)
     }
 
 
