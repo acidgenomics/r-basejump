@@ -57,28 +57,31 @@ test_that("Top cells only", {
 
 ## Refer to the quality control R Markdown for actual recommended cutoffs.
 ## These are skewed, and designed to work with our minimal dataset.
-with_parameters_test_that(
-    "Cell filtering", {
-        args[["object"]] <- object
-        x <- do.call(what = filterCells, args = args)
-        expect_s4_class(x, "SingleCellExperiment")
-        expect_identical(dim(x), dim)
-    },
-    args = list(
-        list(minCounts = 50000L),
-        list(maxCounts = 50000L),
-        list(minFeatures = 250L),
-        list(maxFeatures = 250L),
-        list(minNovelty = 0.5)
-    ),
-    dim = list(
-        c(482L, 71L),
-        c(464L, 29L),
-        c(482L, 74L),
-        c(458L, 29L),
-        c(481L, 91L)
+test_that("Cell filtering", {
+    mapply(
+        args = list(
+            list(minCounts = 50000L),
+            list(maxCounts = 50000L),
+            list(minFeatures = 250L),
+            list(maxFeatures = 250L),
+            list(minNovelty = 0.5)
+        ),
+        dim = list(
+            c(482L, 71L),
+            c(464L, 29L),
+            c(482L, 74L),
+            c(458L, 29L),
+            c(481L, 91L)
+        ),
+        FUN = function(args, dim) {
+            args[["object"]] <- object
+            x <- do.call(what = filterCells, args = args)
+            expect_s4_class(x, "SingleCellExperiment")
+            expect_identical(dim(x), dim)
+        },
+        SIMPLIFY = FALSE
     )
-)
+})
 
 test_that("Feature filtering", {
     x <- filterCells(object, minCellsPerFeature = 50L)
