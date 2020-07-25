@@ -16,15 +16,18 @@ mat <- mat[keep, , drop = FALSE]
 ##     - Iinvalid transcript IDs.
 ##     - No gene names.
 
-with_parameters_test_that(
-    "UCSC genome build remaps", {
-        object <- makeGRangesFromEnsembl(
-            organism = organism,
-            genomeBuild = genomeBuild,
-            level = "transcripts"
-        )
-        expect_s4_class(object, "GRanges")
-    },
-    organism = mat[, "organism"],
-    genomeBuild = mat[, "ucsc"]
-)
+test_that("UCSC genome build remaps", {
+    mapply(
+        organism = mat[, "organism"],
+        genomeBuild = mat[, "ucsc"],
+        FUN = function(organism, genomeBuild) {
+            object <- makeGRangesFromEnsembl(
+                organism = organism,
+                genomeBuild = genomeBuild,
+                level = "transcripts"
+            )
+            expect_s4_class(object, "GRanges")
+        },
+        SIMPLIFY = FALSE
+    )
+})
