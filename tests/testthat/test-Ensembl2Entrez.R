@@ -1,20 +1,18 @@
 context("Ensembl2Entrez")
 
-format <- eval(formals(`Ensembl2Entrez,SummarizedExperiment`)[["format"]])
+formats <- eval(formals(`Ensembl2Entrez,SummarizedExperiment`)[["format"]])
 
 ## Note that this method currently calls `rowData()` and uses DataFrame method.
-with_parameters_test_that(
-    "SummarizedExperiment / DataFrame", {
+test_that("SummarizedExperiment / DataFrame", {
+    for (format in formats) {
         object <- Ensembl2Entrez(object = rse, format = format)
         expect_s4_class(object, "Ensembl2Entrez")
-    },
-    format = format
-)
+    }
+})
 
-with_parameters_test_that(
-    "GRanges", {
+test_that("GRanges", {
+    for (format in formats) {
         object <- Ensembl2Entrez(object = rowRanges(rse), format = format)
         expect_s4_class(object, "Ensembl2Entrez")
-    },
-    format = format
-)
+    }
+})

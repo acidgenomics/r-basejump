@@ -1,17 +1,14 @@
 context("Gene2Symbol")
 
-format <- eval(formals(`Gene2Symbol,SummarizedExperiment`)[["format"]])
-
-with_parameters_test_that(
-    "Gene2Symbol", {
+formats <- eval(formals(`Gene2Symbol,SummarizedExperiment`)[["format"]])
+test_that("Gene2Symbol", {
+    for (format in formats) {
         object <- Gene2Symbol(rse, format = format)
         expect_s4_class(object, "Gene2Symbol")
         expect_identical(colnames(object), c("geneID", "geneName"))
-    },
-    format = format
-)
-
-rm(format)
+    }
+})
+rm(formats)
 
 test_that("No mappings", {
     object <- rse

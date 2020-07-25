@@ -1,137 +1,129 @@
 context("detectOrganism")
 
-with_parameters_test_that(
-    "Homo sapiens", {
-        expect_identical(
-            object = detectOrganism(object),
-            expected = "Homo sapiens"
-        )
-    },
-    object = c(
+test_that("Homo sapiens", {
+    for (object in c(
         "Homo sapiens",
         "hsapiens",
         "GRCh38",
         "hg38",
         "ENSG00000000001",
         "ENST00000000001"
-    )
-)
-
-with_parameters_test_that(
-    "detectOrganism : Mus musculus", {
+    )) {
         expect_identical(
             object = detectOrganism(object),
-            expected = "Mus musculus"
+            expected = "Homo sapiens"
         )
-    },
-    object = c(
+    }
+})
+
+test_that("detectOrganism : Mus musculus", {
+    for (object in c(
         "Mus musculus",
         "mmusculus",
         "GRCm38",
         "mm10",
         "ENSMUSG00000000001",
         "ENSMUST00000000001"
-    )
-)
-
-with_parameters_test_that(
-    "Rattus norvegicus", {
+    )) {
         expect_identical(
             object = detectOrganism(object),
-            expected = "Rattus norvegicus"
+            expected = "Mus musculus"
         )
-    },
-    object = c(
+    }
+})
+
+test_that("Rattus norvegicus", {
+    for (object in c(
         "Rattus norvegicus",
         "rnorvegicus",
         "Rnor_6.0",
         "rn5",
         "ENSRNOG00000000001",
         "ENSRNOT00000000001"
-    )
-)
-
-with_parameters_test_that(
-    "Danio rerio", {
+    )) {
         expect_identical(
             object = detectOrganism(object),
-            expected = "Danio rerio"
+            expected = "Rattus norvegicus"
         )
-    },
-    object = c(
+    }
+})
+
+test_that("Danio rerio", {
+    for (object in c(
         "Danio rerio",
         "drerio",
         "GRCz10",
         "danRer10",
         "ENSDARG00000000001",
         "ENSDART00000000001"
-    )
-)
-
-with_parameters_test_that(
-    "Drosophila melanogaster", {
+    )) {
         expect_identical(
             object = detectOrganism(object),
-            expected = "Drosophila melanogaster"
+            expected = "Danio rerio"
         )
-    },
-    object = c(
+    }
+})
+
+test_that("Drosophila melanogaster", {
+    for (object in c(
         "Drosophila melanogaster",
         "dmelanogaster",
         "BDGP6",
         "dm6",
         "FBgn0000001",
         "FBtr0000001"
-    )
-)
-
-with_parameters_test_that(
-    "Caenorhabditis elegans", {
+    )) {
         expect_identical(
             object = detectOrganism(object),
-            expected = "Caenorhabditis elegans"
+            expected = "Drosophila melanogaster"
         )
-    },
-    object = c(
+    }
+})
+
+test_that("Caenorhabditis elegans", {
+    for (object in c(
         "Caenorhabditis elegans",
         "celegans",
         "WBcel235",
         "ce11",
         "WBGene00000001"
-    )
-)
-
-with_parameters_test_that(
-    "Gallus gallus", {
+    )) {
         expect_identical(
             object = detectOrganism(object),
-            expected = "Gallus gallus"
+            expected = "Caenorhabditis elegans"
         )
-    },
-    object = c(
+    }
+})
+
+test_that("Gallus gallus", {
+    for (object in c(
         "Gallus gallus",
         "ggallus",
         "ENSGALG00000000001",
         "ENSGALT00000000001"
-    )
-)
-
-with_parameters_test_that(
-    "Ovis aries", {
+    )) {
         expect_identical(
             object = detectOrganism(object),
-            expected = "Ovis aries"
+            expected = "Gallus gallus"
         )
-    },
-    object = c(
+    }
+})
+
+test_that("Ovis aries", {
+    for (object inc(
         "Ovis aries",
         "oaries",
         "Oar_v3.1",
         "oviAri3",
         "ENSOARG00000000001",
         "ENSOART00000000001"
-    )
-)
+    )) {
+        expect_identical(
+            object = detectOrganism(object),
+            expected = "Ovis aries"
+        )
+    }
+})
 
 test_that("Multiple organisms", {
     ## Function matches only the first genome.

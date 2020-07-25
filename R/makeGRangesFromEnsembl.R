@@ -201,9 +201,9 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
 #' @noRd
 .annotationHub <- function() {
     userAttached <- .packages()
-    invisible(capture.output(
+    invisible(capture.output({
         ah <- suppressMessages(AnnotationHub())
-    ))
+    }))
     assert(is(ah, "AnnotationHub"))
     .forceDetach(keep = userAttached)
     ah
@@ -354,9 +354,9 @@ formals(annotable) <- formals(makeGRangesFromEnsembl)
     ## `capture.output` here again to suppress console output.
     ## Additionally, it attaches ensembldb and other Bioconductor dependency
     ## packages, which will mask some tidyverse functions (e.g. `select`).
-    invisible(capture.output(
+    invisible(capture.output({
         edb <- suppressMessages(ah[[id]])
-    ))
+    }))
     assert(is(edb, "EnsDb"))
     .forceDetach(keep = userAttached)
     edb

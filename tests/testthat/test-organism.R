@@ -9,20 +9,19 @@ GRanges <- rowRanges(object)
 DataFrame <- as(as.data.frame(GRanges), "DataFrame")
 ## nolint end
 
-with_parameters_test_that(
-    "organism", {
-        expect_identical(
-            object = organism(object),
-            expected = "Homo sapiens"
-        )
-    },
-    object = list(
+test_that("organism", {
+    for (object in list(
         matrix = matrix,
         DataFrame = DataFrame,
         GRanges = GRanges,
         SummarizedExperiment = object
-    )
-)
+    )) {
+        expect_identical(
+            object = organism(object),
+            expected = "Homo sapiens"
+        )
+    }
+})
 
 test_that("SE metadata stash", {
     org <- "xxx"
