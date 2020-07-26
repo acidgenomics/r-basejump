@@ -1,4 +1,4 @@
-## Updated 2020-01-19.
+## Updated 2020-07-26.
 
 localOrRemoteFile <- pipette::localOrRemoteFile
 pasteURL <- acidbase::pasteURL
@@ -12,28 +12,28 @@ files <- list(
     ensemblGFF3 = pasteURL(
         "ftp.ensembl.org",
         "pub",
-        "release-97",
+        "release-100",
         "gff3",
         "homo_sapiens",
-        "Homo_sapiens.GRCh38.97.gff3.gz",
+        "Homo_sapiens.GRCh38.100.gff3.gz",
         protocol = "ftp"
     ),
     ensemblGTF = pasteURL(
         "ftp.ensembl.org",
         "pub",
-        "release-97",
+        "release-100",
         "gtf",
         "homo_sapiens",
-        "Homo_sapiens.GRCh38.97.gtf.gz",
+        "Homo_sapiens.GRCh38.100.gtf.gz",
         protocol = "ftp"
     ),
     flybaseGTF = pasteURL(
         "ftp.flybase.net",
         "releases",
-        "FB2019_04",
-        "dmel_r6.29",
+        "FB2020_03",
+        "dmel_r6.34",
         "gtf",
-        "dmel-all-r6.29.gtf.gz",
+        "dmel-all-r6.34.gtf.gz",
         protocol = "ftp"
     ),
     gencodeGFF3 = pasteURL(
@@ -42,8 +42,8 @@ files <- list(
         "databases",
         "gencode",
         "Gencode_human",
-        "release_31",
-        "gencode.v31.annotation.gff3.gz",
+        "release_34",
+        "gencode.v34.annotation.gff3.gz",
         protocol = "ftp"
     ),
     gencodeGTF = pasteURL(
@@ -52,8 +52,8 @@ files <- list(
         "databases",
         "gencode",
         "Gencode_human",
-        "release_31",
-        "gencode.v31.annotation.gtf.gz",
+        "release_34",
+        "gencode.v34.annotation.gtf.gz",
         protocol = "ftp"
     ),
     refseqGFF3 = pasteURL(
@@ -83,11 +83,11 @@ files <- list(
         "pub",
         "wormbase",
         "releases",
-        "WS273",
+        "WS277",
         "species",
         "c_elegans",
         "PRJNA13758",
-        "c_elegans.PRJNA13758.WS273.canonical_geneset.gtf.gz",
+        "c_elegans.PRJNA13758.WS277.canonical_geneset.gtf.gz",
         protocol = "ftp"
     )
 )
@@ -97,39 +97,36 @@ files <- list(
 ## Ensembl =====================================================================
 context("Ensembl")
 
-## GenomicRanges chokes on Ensembl GFF3 file, so warnings are expected.
-
 skip_if_not(hasInternet(url = "ftp://ftp.ensembl.org/"))
-lengths <- c(genes = 60617L, transcripts = 226788L)
-
-file <- localOrRemoteFile(files[["ensemblGTF"]])
-with_parameters_test_that(
-    "GTF", {
-        object <- makeGRangesFromGFF(
-            file = file,
-            level = level,
-            .checkAgainstTxDb = checkAgainstTxDb
-        )
-        expect_s4_class(object, "GRanges")
-        expect_identical(length(object), length)
+length <- c(genes = 60683L, transcripts = 227954L)
+mapply(
+    testName = c(
+        "GTF",
+        "GFF3"
+    ),
+    file = c(
+        localOrRemoteFile(files[["ensemblGTF"]]),
+        localOrRemoteFile(files[["ensemblGFF3"]])
+    ),
+    FUN = function(testName, file) {
+        test_that(testName, {
+            mapply(
+                level = levels,
+                length = length,
+                FUN = function(level, length) {
+                    object <- makeGRangesFromGFF(
+                        file = file,
+                        level = level,
+                        .checkAgainstTxDb = checkAgainstTxDb
+                    )
+                    expect_s4_class(object, "GRanges")
+                    expect_identical(length(object), length)
+                },
+                SIMPLIFY = FALSE
+            )
+        })
     },
-    level = levels,
-    length = lengths
-)
-
-file <- localOrRemoteFile(files[["ensemblGFF3"]])
-with_parameters_test_that(
-    "GFF3", {
-        object <- makeGRangesFromGFF(
-            file = file,
-            level = level,
-            .checkAgainstTxDb = checkAgainstTxDb
-        )
-        expect_s4_class(object, "GRanges")
-        expect_identical(length(object), length)
-    },
-    level = levels,
-    length = ensemblLengths
+    SIMPLIFY = FALSE
 )
 
 
@@ -140,24 +137,26 @@ context("FlyBase")
 ## Expecting warnings about broad class and dropped transcripts.
 
 skip_if_not(hasInternet(url = "ftp://ftp.flybase.net/"))
-lengths <- c(genes = 17825L, transcripts = 35421L)
-
+length <- c(genes = 17875L, transcripts = 35647L)
 file <- localOrRemoteFile(files[["flybaseGTF"]])
-with_parameters_test_that(
-    "GTF", {
-        suppressWarnings({
-            object <- makeGRangesFromGFF(
-                file = file,
-                level = level,
-                .checkAgainstTxDb = checkAgainstTxDb
-            )
-        })
-        expect_s4_class(object, "GRanges")
-        expect_identical(length(object), length)
-    },
-    level = levels,
-    length = lengths
-)
+test_that("GTF", {
+    mapply(
+        level = levels,
+        length = length,
+        FUN = function(level, length) {
+            suppressWarnings({
+                object <- makeGRangesFromGFF(
+                    file = file,
+                    level = level,
+                    .checkAgainstTxDb = checkAgainstTxDb
+                )
+            })
+            expect_s4_class(object, "GRanges")
+            expect_identical(length(object), length)
+        },
+        SIMPLIFY = FALSE
+    )
+})
 
 
 
@@ -169,36 +168,38 @@ context("GENCODE")
 ## 45 PAR dupe genes; 161 PAR dupe transcripts.
 
 skip_if_not(hasInternet(url = "ftp://ftp.ebi.ac.uk/"))
-lengths <- c(genes = 60603L, transcripts = 226882L)
-
-file <- localOrRemoteFile(files[["gencodeGTF"]])
-with_parameters_test_that(
-    "GTF", {
-        object <- makeGRangesFromGFF(
-            file = file,
-            level = level,
-            .checkAgainstTxDb = checkAgainstTxDb
-        )
-        expect_s4_class(object, "GRanges")
-        expect_identical(length(object), length)
+mapply(
+    testName = c(
+        "GTF",
+        "GFF3"
+    ),
+    file = c(
+        localOrRemoteFile(files[["gencodeGTF"]]),
+        localOrRemoteFile(files[["gencodeGFF3"]])
+    ),
+    length = list(
+        c(genes = 60669L, transcripts = 228048L),
+        c(genes = 60624L, transcripts = 227887L)
+    ),
+    FUN = function(testName, file, length) {
+        test_that(testName, {
+            mapply(
+                level = levels,
+                length = length,
+                FUN = function(level, length) {
+                    object <- makeGRangesFromGFF(
+                        file = file,
+                        level = level,
+                        .checkAgainstTxDb = checkAgainstTxDb
+                    )
+                    expect_s4_class(object, "GRanges")
+                    expect_identical(length(object), length)
+                },
+                SIMPLIFY = FALSE
+            )
+        })
     },
-    level = levels,
-    length = lengths
-)
-
-file <- localOrRemoteFile(files[["gencodeGFF3"]])
-with_parameters_test_that(
-    "GFF3", {
-        object <- makeGRangesFromGFF(
-            file = file,
-            level = level,
-            .checkAgainstTxDb = checkAgainstTxDb
-        )
-        expect_s4_class(object, "GRanges")
-        expect_identical(length(object), length)
-    },
-    level = levels,
-    length = lengths
+    SIMPLIFY = FALSE
 )
 
 
@@ -209,37 +210,38 @@ context("RefSeq")
 # GenomicFeatures currently chokes on RefSeq files.
 
 skip_if_not(hasInternet(url = "ftp://ftp.ncbi.nlm.nih.gov/"))
-
-file <- localOrRemoteFile(files[["refseqGTF"]])
-lengths <- c(genes = 61024L, transcripts = 171642L)
-with_parameters_test_that(
-    "GTF", {
-        object <- makeGRangesFromGFF(
-            file = file,
-            level = level,
-            .checkAgainstTxDb = FALSE
-        )
-        expect_s4_class(object, "GRangesList")
-        expect_identical(length(object), length)
+mapply(
+    testName = c(
+        "GTF",
+        "GFF3"
+    ),
+    file = c(
+        localOrRemoteFile(files[["refseqGTF"]]),
+        localOrRemoteFile(files[["refseqGFF3"]])
+    ),
+    length = list(
+        c(genes = 61197L, transcripts = 174165L),
+        c(genes = 54606L, transcripts = 160987L)
+    ),
+    FUN = function(testName, file, class, length) {
+        test_that(testName, {
+            mapply(
+                level = levels,
+                length = length,
+                FUN = function(level, length) {
+                    object <- makeGRangesFromGFF(
+                        file = file,
+                        level = level,
+                        .checkAgainstTxDb = FALSE
+                    )
+                    ## > expect_s4_class(object, class)
+                    expect_identical(length(object), length)
+                },
+                SIMPLIFY = FALSE
+            )
+        })
     },
-    level = levels,
-    length = lengths
-)
-
-file <- localOrRemoteFile(files[["refseqGFF3"]])
-lengths <- c(genes = 54534L, transcripts = 158792L)
-with_parameters_test_that(
-    "GFF3", {
-        object <- makeGRangesFromGFF(
-            file = file,
-            level = level,
-            .checkAgainstTxDb = FALSE
-        )
-        expect_s4_class(object, "GRangesList")
-        expect_identical(length(object), length)
-    },
-    level = levels,
-    length = lengths
+    SIMPLIFY = FALSE
 )
 
 
@@ -248,19 +250,21 @@ with_parameters_test_that(
 context("WormBase")
 
 skip_if_not(hasInternet(url = "ftp://ftp.wormbase.org/"))
-lengths <- c(46911L, 72718L)
-
+length <- c(46932L, 66847L)
 file <- localOrRemoteFile(files[["wormbaseGTF"]])
-with_parameters_test_that(
-    "GTF", {
-        object <- makeGRangesFromGFF(
-            file = file,
-            level = level,
-            .checkAgainstTxDb = checkAgainstTxDb
-        )
-        expect_s4_class(object, "GRanges")
-        expect_identical(length(object), length)
-    },
-    level = levels,
-    length = lengths
-)
+test_that("GTF", {
+    mapply(
+        level = levels,
+        length = length,
+        FUN = function(level, length) {
+            object <- makeGRangesFromGFF(
+                file = file,
+                level = level,
+                .checkAgainstTxDb = checkAgainstTxDb
+            )
+            expect_s4_class(object, "GRanges")
+            expect_identical(length(object), length)
+        },
+        SIMPLIFY = FALSE
+    )
+})
