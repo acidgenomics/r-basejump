@@ -110,7 +110,7 @@ test_that("Gallus gallus", {
 })
 
 test_that("Ovis aries", {
-    for (object inc(
+    for (object in c(
         "Ovis aries",
         "oaries",
         "Oar_v3.1",
