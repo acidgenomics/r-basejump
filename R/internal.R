@@ -11,12 +11,14 @@
             X = detach,
             FUN = function(name) {
                 if (name %in% .packages()) {
-                    suppressWarnings(detach(
-                        name = paste0("package:", name),
-                        unload = TRUE,
-                        force = TRUE,
-                        character.only = TRUE
-                    ))
+                    suppressWarnings({
+                        detach(
+                            name = paste0("package:", name),
+                            unload = TRUE,
+                            force = TRUE,
+                            character.only = TRUE
+                        )
+                    })
                 }
             }
         ))
