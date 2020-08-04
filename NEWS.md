@@ -1,3 +1,11 @@
+## basejump 0.12.10 (2020-08-04)
+
+### Minor changes
+
+- Migrated `alphaThreshold` and `lfcThreshold` methods to DESeqAnalysis package.
+  These are not used in other packages and may not be generally applicable to
+  `SummarizedExperiment` class, so rethinking here.
+
 ## basejump 0.12.9 (2020-07-24)
 
 ### Minor changes
