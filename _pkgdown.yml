@@ -49,12 +49,10 @@ reference:
       - select
   - title: Metadata
     contents:
-      - alphaThreshold
       - geneNames
       - headtail
       - humanize
       - interestingGroups
-      - lfcThreshold
       - mcolnames
       - microplate
       - organism
