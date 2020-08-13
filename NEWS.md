@@ -1,3 +1,9 @@
+## basejump 0.12.11 (2020-08-13)
+
+### Minor changes
+
+- Now reexporting `requireNamespaces` from acidbase package.
+
 ## basejump 0.12.10 (2020-08-04)
 
 ### Minor changes
