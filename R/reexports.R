@@ -152,6 +152,10 @@ acidbase::printString
 #' @export
 acidbase::realpath
 
+#' @importFrom acidbase requireNamespaces
+#' @export
+acidbase::requireNamespaces
+
 #' @importFrom acidbase standardizeCall
 #' @export
 acidbase::standardizeCall

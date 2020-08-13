@@ -40,6 +40,7 @@
 \alias{pasteURL}
 \alias{printString}
 \alias{realpath}
+\alias{requireNamespaces}
 \alias{standardizeCall}
 \alias{\%<>\%}
 \alias{\%$\%}
@@ -88,7 +89,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{acidbase}{\code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{compress}}, \code{\link[acidbase:extPattern]{compressExtPattern}}, \code{\link[acidbase:compress]{decompress}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{extPattern}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase:methodDefinition]{methodFormals}}, \code{\link[acidbase:methodDefinition]{methodFunction}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{standardizeCall}}}
+  \item{acidbase}{\code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{compress}}, \code{\link[acidbase:extPattern]{compressExtPattern}}, \code{\link[acidbase:compress]{decompress}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{extPattern}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase:methodDefinition]{methodFormals}}, \code{\link[acidbase:methodDefinition]{methodFunction}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{requireNamespaces}}, \code{\link[acidbase]{standardizeCall}}}
 
   \item{acidgenerics}{\code{\link[acidgenerics:defunct]{plotGene}}}
 
