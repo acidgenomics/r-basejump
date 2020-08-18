@@ -1,3 +1,4 @@
+!*.html
 .RData
 .Rcheck
 .Rhistory
