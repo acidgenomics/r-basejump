@@ -88,6 +88,7 @@ reference:
       - combine
       - estimateSizeFactors
       - geometricMean
+      - starts_with("intersect")
       - logRatio
       - melt
       - rankedMatrix

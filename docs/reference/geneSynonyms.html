@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.12</span>
       </span>
     </div>
 
@@ -150,7 +150,7 @@ Use the <a href='https://wormbase.acidgenomics.com/'>wormbase</a> package instea
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>homo_sapiens.gene_info.gz</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; SplitDataFrameList of length 8
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>homo_sapiens.gene_info.gz</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; SplitDataFrameList of length 8
 #&gt; $ENSG00000114771
 #&gt; DataFrame with 1 row and 3 columns
 #&gt;            geneID    geneName    synonyms
