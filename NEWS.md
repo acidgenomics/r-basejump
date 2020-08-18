@@ -1,3 +1,10 @@
+## basejump 0.12.12 (2020-08-18)
+
+### New methods
+
+- `intersectAll`: Defined `list` method.
+- `intersectionMatrix`: Defined `list` method.
+
 ## basejump 0.12.11 (2020-08-13)
 
 ### Minor changes
