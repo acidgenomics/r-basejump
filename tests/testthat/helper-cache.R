@@ -3,7 +3,7 @@ if (packageVersion("base") < "3.6") {
 }
 if (!isTRUE(hasInternet())) {
     warning("No Internet connection detected.")
-    return()
+    return(invisible())
 }
 dir.create("cache", showWarnings = FALSE)
 files <- c(
