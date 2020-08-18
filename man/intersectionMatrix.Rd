@@ -24,11 +24,11 @@ Intersection matrix
 Updated 2020-08-18.
 }
 \examples{
-list <- list(
+object <- list(
     a = c("a", "b", "c", "d", "e", "f"),
     b = c("b", "c", "d", "e", "f", "g"),
     c = c("c", "d", "e", "f", "g", "h")
 )
-mat <- intersectionMatrix(list)
+mat <- intersectionMatrix(object)
 rowSums(mat)
 }
