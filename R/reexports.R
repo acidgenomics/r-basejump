@@ -100,6 +100,10 @@ SummarizedExperiment::`rowRanges<-`
 #' @export
 acidbase::basenameSansExt
 
+#' @importFrom acidbase barcodePattern
+#' @export
+acidbase::barcodePattern
+
 #' @importFrom acidbase compress
 #' @export
 acidbase::compress
@@ -124,13 +128,33 @@ acidbase::extPattern
 #' @export
 acidbase::fileExt
 
+#' @importFrom acidbase formalsList
+#' @export
+acidbase::formalsList
+
+#' @importFrom acidbase genomeMetadataNames
+#' @export
+acidbase::genomeMetadataNames
+
 #' @importFrom acidbase initDir
 #' @export
 acidbase::initDir
 
+#' @importFrom acidbase lanePattern
+#' @export
+acidbase::lanePattern
+
 #' @importFrom acidbase matchArgsToDoCall
 #' @export
 acidbase::matchArgsToDoCall
+
+#' @importFrom acidbase metadataBlacklist
+#' @export
+acidbase::metadataBlacklist
+
+#' @importFrom acidbase metricsCols
+#' @export
+acidbase::metricsCols
 
 #' @importFrom acidbase methodFormals
 #' @export
@@ -159,6 +183,10 @@ acidbase::requireNamespaces
 #' @importFrom acidbase standardizeCall
 #' @export
 acidbase::standardizeCall
+
+#' @importFrom acidbase updateMessage
+#' @export
+acidbase::updateMessage
 
 
 
