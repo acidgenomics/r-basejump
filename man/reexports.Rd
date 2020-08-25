@@ -27,14 +27,20 @@
 \alias{rowRanges}
 \alias{rowRanges<-}
 \alias{basenameSansExt}
+\alias{barcodePattern}
 \alias{compress}
 \alias{compressExtPattern}
 \alias{decompress}
 \alias{dots}
 \alias{extPattern}
 \alias{fileExt}
+\alias{formalsList}
+\alias{genomeMetadataNames}
 \alias{initDir}
+\alias{lanePattern}
 \alias{matchArgsToDoCall}
+\alias{metadataBlacklist}
+\alias{metricsCols}
 \alias{methodFormals}
 \alias{methodFunction}
 \alias{pasteURL}
@@ -42,6 +48,7 @@
 \alias{realpath}
 \alias{requireNamespaces}
 \alias{standardizeCall}
+\alias{updateMessage}
 \alias{\%<>\%}
 \alias{\%$\%}
 \alias{\%>\%}
@@ -89,7 +96,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{acidbase}{\code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{compress}}, \code{\link[acidbase:extPattern]{compressExtPattern}}, \code{\link[acidbase:compress]{decompress}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{extPattern}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase:methodDefinition]{methodFormals}}, \code{\link[acidbase:methodDefinition]{methodFunction}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{requireNamespaces}}, \code{\link[acidbase]{standardizeCall}}}
+  \item{acidbase}{\code{\link[acidbase]{barcodePattern}}, \code{\link[acidbase]{basenameSansExt}}, \code{\link[acidbase]{compress}}, \code{\link[acidbase:extPattern]{compressExtPattern}}, \code{\link[acidbase:compress]{decompress}}, \code{\link[acidbase]{dots}}, \code{\link[acidbase]{extPattern}}, \code{\link[acidbase]{fileExt}}, \code{\link[acidbase]{formalsList}}, \code{\link[acidbase]{genomeMetadataNames}}, \code{\link[acidbase]{initDir}}, \code{\link[acidbase]{lanePattern}}, \code{\link[acidbase]{matchArgsToDoCall}}, \code{\link[acidbase]{metadataBlacklist}}, \code{\link[acidbase:methodDefinition]{methodFormals}}, \code{\link[acidbase:methodDefinition]{methodFunction}}, \code{\link[acidbase]{metricsCols}}, \code{\link[acidbase]{pasteURL}}, \code{\link[acidbase]{printString}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{requireNamespaces}}, \code{\link[acidbase]{standardizeCall}}, \code{\link[acidbase]{updateMessage}}}
 
   \item{acidgenerics}{\code{\link[acidgenerics:defunct]{plotGene}}}
 
