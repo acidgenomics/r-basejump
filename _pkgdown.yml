@@ -109,13 +109,6 @@ reference:
       - separator
       - showHeader
       - showSlotInfo
-  - title: Global variables
-    contents:
-      - barcodePattern
-      - genomeMetadataNames
-      - lanePattern
-      - metadataBlacklist
-      - metricsCols
   - title: Reexports
     contents:
       - reexports

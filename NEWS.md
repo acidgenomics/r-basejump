@@ -1,3 +1,9 @@
+## basejump 0.12.13 (2020-08-25)
+
+### Minor changes
+
+- Migrated some globals to acidbase package, for improved consistency.
+
 ## basejump 0.12.12 (2020-08-18)
 
 ### New methods
