@@ -12,8 +12,8 @@ df <- DataFrame(
     ),
     concentration = factor(
         c(
-            rep(x = 0, each = 3L),
-            rep(x = c(0.1, 1, 10), each = 3L, times = 2L)
+            rep(x = 0L, each = 3L),
+            rep(x = c(0.1, 1L, 10L), each = 3L, times = 2L)
         )
     ),
     replicate = factor(
