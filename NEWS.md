@@ -1,3 +1,12 @@
+## basejump 0.12.14 (2020-09-14)
+
+### New functions
+
+- `splitByLevel`: Easily split a data frame into a list using a defined factor
+  column (`f` argument). Can easily include the reference level with
+  `ref = TRUE`, which is useful for statistical calculations on pairwise
+  contrasts.
+
 ## basejump 0.12.13 (2020-08-25)
 
 ### Minor changes

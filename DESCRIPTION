@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.12.13
-Date: 2020-08-25
+Version: 0.12.14
+Date: 2020-09-14
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -49,7 +49,7 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     acidbase (>= 0.1.14),
-    acidgenerics (>= 0.3.10),
+    acidgenerics (>= 0.3.11),
     cli (>= 2.0),
     ensembldb,
     goalie (>= 0.4.8),
@@ -194,6 +194,7 @@ Collate:
     'sizeFactors-methods.R'
     'snakeCase-methods.R'
     'sortUnique.R'
+    'splitByLevel-methods.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
     'summary-methods.R'
