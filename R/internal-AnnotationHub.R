@@ -168,6 +168,68 @@
 
 
 
+#' Get EnsDb dynmically from AnnotationHub or individual package
+#'
+#' @note Updated 2020-09-24.
+#' @noRd
+#'
+#' @details
+#' Remaps UCSC genome build to Ensembl automatically, if necessary.
+#' Provides legacy support for GRCh37 (hg19).
+#'
+#' @examples
+#' .getEnsDb("Homo sapiens")
+.getEnsDb <- function(
+    organism,
+    genomeBuild = NULL,
+    release = NULL
+) {
+    assert(
+        isString(organism),
+        isString(genomeBuild, nullOK = TRUE),
+        isInt(release, nullOK = TRUE)
+    )
+    if (isString(genomeBuild)) {
+        remap <- tryCatch(
+            expr = convertUCSCBuildToEnsembl(genomeBuild),
+            error = function(e) NULL
+        )
+        if (hasLength(remap)) {
+            ucsc <- names(remap)
+            ensembl <- unname(remap)
+            cli_alert_warning(sprintf(
+                fmt = paste(
+                    "Remapping genome build from UCSC ({.val %s}) to",
+                    "Ensembl ({.val %s})."
+                ),
+                ucsc, ensembl
+            ))
+            genomeBuild <- ensembl
+            rm(remap, ucsc, ensembl)
+        }
+    }
+    if (
+        identical(tolower(organism), "homo sapiens") &&
+        (
+            identical(tolower(as.character(genomeBuild)), "grch37") ||
+            identical(release, 75L)
+        )
+    ) {
+        id <- "EnsDb.Hsapiens.v75"
+        edb <- .getEnsDbFromPackage(package = id)
+    } else {
+        id <- .getAnnotationHubID(
+            organism = organism,
+            genomeBuild = genomeBuild,
+            release = release
+        )
+        edb <- .getEnsDbFromAnnotationHub(id = id)
+    }
+    list(edb = edb, id = id)
+}
+
+
+
 #' Get EnsDb from AnnotationHub
 #'
 #' @note Updated 2020-09-24.
