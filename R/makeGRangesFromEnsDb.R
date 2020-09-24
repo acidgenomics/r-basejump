@@ -51,6 +51,10 @@ makeGRangesFromEnsDb <- function(
         ensembldb = metadata(object),
         level = level
     )
+    ## AnnotationHub ID is slotted in attributes, when applicable.
+    if (isString(attr(object, "id"))) {
+        metadata[["id"]] <- attr(object, "id")
+    }
     cli_div(theme = list(body = list("margin-left" = 4L)))
     cli_dl(items = c(
         "Organism" = metadata[["organism"]],
