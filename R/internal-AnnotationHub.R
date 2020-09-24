@@ -23,6 +23,9 @@
 #'
 #' @note Updated 2020-09-24.
 #' @noRd
+#'
+#' @examples
+#' .getAnnotationHubID("Homo sapiens")
 .getAnnotationHubID <- function(
     organism,
     genomeBuild = NULL,
