@@ -1,77 +1,3 @@
-#' Get EnsDb from AnnotationHub
-#'
-#' @export
-#' @note Updated 2020-09-24.
-#'
-#' @inheritParams acidroxygen::params
-#' @param release `integer(1)`.
-#'   Ensembl release version (e.g. `90`). If set `NULL`, defaults to the most
-#'   recent release available.
-#'
-#' @return `EnsDb`.
-#'
-#' @examples
-#' edb <- getEnsDbFromAnnotationHub(
-#'     organism = "Homo sapiens",
-#'     release = 100L,
-#'     build = "GRCh38"
-#' )
-#' print(edb)
-getEnsDb <- function(
-    organism,
-    genomeBuild = NULL,
-    release = NULL
-) {
-    assert(
-        hasInternet(),
-        isString(organism),
-        isString(genomeBuild, nullOK = TRUE),
-        isInt(release, nullOK = TRUE)
-    )
-    ## Remap UCSC genome build to Ensembl automatically, if necessary.
-    if (isString(genomeBuild)) {
-        remap <- tryCatch(
-            expr = convertUCSCBuildToEnsembl(genomeBuild),
-            error = function(e) NULL
-        )
-        if (hasLength(remap)) {
-            ucsc <- names(remap)
-            ensembl <- unname(remap)
-            cli_alert_warning(sprintf(
-                fmt = paste(
-                    "Remapping genome build from UCSC ({.val %s}) to",
-                    "Ensembl ({.val %s})."
-                ),
-                ucsc, ensembl
-            ))
-            genomeBuild <- ensembl
-            rm(remap, ucsc, ensembl)
-        }
-    }
-    ## Match user input to EnsDb.
-    if (
-        identical(tolower(organism), "homo sapiens") &&
-        (
-            identical(tolower(as.character(genomeBuild)), "grch37") ||
-            identical(release, 75L)
-        )
-    ) {
-        ## Legacy support for GRCh37 (hg19).
-        id <- "EnsDb.Hsapiens.v75"
-        edb <- .getEnsDbFromPackage(package = id)
-    } else {
-        id <- .getAnnotationHubID(
-            organism = organism,
-            genomeBuild = genomeBuild,
-            release = release
-        )
-        edb <- .getEnsDbFromAnnotationHub(id = id)
-    }
-    edb
-}
-
-
-
 #' Connect to AnnotationHub
 #'
 #' @note Updated 2020-09-24.
@@ -106,7 +32,8 @@ getEnsDb <- function(
     assert(
         isString(organism),
         isString(genomeBuild, nullOK = TRUE),
-        isInt(release, nullOK = TRUE)
+        isInt(release, nullOK = TRUE),
+        is(ah, "AnnotationHub") || is.null(ah)
     )
     userAttached <- .packages()
     ## Standardize organism name, if necessary.
@@ -146,6 +73,7 @@ getEnsDb <- function(
         ah <- .annotationHub()
     }
     ## Matching EnsDb objects from ensembldb by default.
+    preparerclass <- "AHEnsDbs"
     rdataclass <- "EnsDb"
     cli_alert(sprintf(
         "Matching {.var %s} from {.pkg AnnotationHub} %s (%s).",
@@ -160,19 +88,34 @@ getEnsDb <- function(
             "Ensembl",
             organism,
             genomeBuild,
-            release,
-            rdataclass
+            preparerclass,
+            rdataclass,
+            release
         ),
         ignore.case = TRUE
     )
     assert(is(ahs, "AnnotationHub"))
     ## Get the AnnotationHub from the metadata columns.
     mcols <- mcols(ahs, use.names = TRUE)
-    ## Sort the entries by title instead of AH identifier.
+    assert(
+        all(mcols[["dataprovider"]] == "Ensembl"),
+        all(mcols[["genome"]] == genomeBuild),
+        all(mcols[["preparerclass"]] == preparerclass),
+        all(mcols[["rdataclass"]] == rdataclass),
+        all(mcols[["sourcetype"]] == "ensembl"),
+        all(mcols[["species"]] == organism)
+    )
+    ## Sort the entries by Ensembl release as integer instead of AH identifier.
     ## Updates can otherwise mess up the expected order, for example:
     ## > AH73881 | Ensembl 97 EnsDb for Homo sapiens
     ## > AH73986 | Ensembl 79 EnsDb for Homo sapiens
-    mcols <- mcols[order(mcols[["title"]]), , drop = FALSE]
+    ## > AH79689 | Ensembl 100 EnsDb for Homo sapiens
+    match <- str_match(
+        string = mcols[["title"]],
+        pattern = "^Ensembl ([0-9]+) EnsDb.+$"
+    )
+    idx <- order(as.integer(match[, 2L]))
+    mcols <- mcols[idx, , drop = FALSE]
     ## Abort if there's no match and working offline.
     if (!isTRUE(hasInternet()) && !hasRows(mcols)) {
         ## nocov start
@@ -236,7 +179,10 @@ getEnsDb <- function(
 #' @examples
 #' .getEnsDbFromAnnotationHub("AH64923")
 .getEnsDbFromAnnotationHub <- function(id, ah = NULL) {
-    assert(isString(id))
+    assert(
+        isString(id),
+        is(ah, "AnnotationHub") || is.null(ah)
+    )
     userAttached <- .packages()
     if (is.null(ah)) {
         ah <- .annotationHub()
