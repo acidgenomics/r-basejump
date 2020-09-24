@@ -113,25 +113,20 @@ makeGRangesFromEnsembl <- function(
     assert(isFlag(ignoreTxVersion))
     level <- match.arg(level)
     cli_alert("Making {.var GRanges} from Ensembl.")
-    x <- .getEnsDb(
+    edb <- getEnsDb(
         organism = organism,
         genomeBuild = genomeBuild,
         release = release
     )
     assert(
-        is.list(x),
-        is(x[["edb"]], "EnsDb"),
-        isString(x[["id"]])
+        is(edb, "EnsDb"),
+        isString(attr(edb, "id"))
     )
-    edb <- x[["edb"]]
-    id <- x[["id"]]
-    gr <- makeGRangesFromEnsDb(
+    makeGRangesFromEnsDb(
         object = edb,
         level = level,
         ignoreTxVersion = ignoreTxVersion
     )
-    metadata(gr)[["id"]] <- id
-    gr
 }
 
 
