@@ -84,8 +84,10 @@
 #' @export
 #' @note Updated 2020-09-24.
 #'
-#' @inheritParams getEnsDb
 #' @inheritParams acidroxygen::params
+#' @param release `integer(1)`.
+#'   Ensembl release version (e.g. `90`). If set `NULL`, defaults to the most
+#'   recent release available.
 #'
 #' @return `GRanges`.
 #'
@@ -111,11 +113,18 @@ makeGRangesFromEnsembl <- function(
     assert(isFlag(ignoreTxVersion))
     level <- match.arg(level)
     cli_alert("Making {.var GRanges} from Ensembl.")
-    edb <- getEnsDbFromAnnotationHub(
+    x <- .getEnsDb(
         organism = organism,
         genomeBuild = genomeBuild,
         release = release
     )
+    assert(
+        is.list(x),
+        is(x[["edb"]], "EnsDb"),
+        isString(x[["id"]])
+    )
+    edb <- x[["edb"]]
+    id <- x[["id"]]
     gr <- makeGRangesFromEnsDb(
         object = edb,
         level = level,
