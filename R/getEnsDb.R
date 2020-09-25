@@ -1,7 +1,9 @@
 #' Get EnsDb from Bioconductor AnnotationHub
 #'
-#' @note Updated 2020-09-24.
-#' @noRd
+#' @export
+#' @note Updated 2020-09-25.
+#'
+#' @inheritParams acidroxygen::params
 #'
 #' @details
 #' Remaps UCSC genome build to Ensembl automatically, if necessary.
