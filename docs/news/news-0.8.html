@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -86,17 +86,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -185,9 +191,9 @@
 <code>plotUMIsVsGenes</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-66" class="section level3">
+<div id="minor-changes-67" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-66" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-67" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated some <code>plotHeatmap</code> and <code>plotPCA</code> code from bcbio R packages.</li>
 <li>Added new <code>formalsList</code> global variable, which stashes <code>getOption</code> defaults used in some functions, namely the save/load functions and some plotting functions.</li>
@@ -200,9 +206,9 @@
     <div id="basejump-083-2018-11-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-083-2018-11-25" class="anchor"></a>basejump 0.8.3 (2018-11-25)</h2>
-<div id="minor-changes-65" class="section level3">
+<div id="minor-changes-66" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-65" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-66" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved usage of <code><a href="https://rdrr.io/pkg/assertthat/man/validate_that.html">assertthat::validate_that</a></code> in S4 class validity checks. Removed former approach using internal <code>.valid</code> function.</li>
 <li>Temporarily soft deprecated some functions that will be formally deprecated in a future release. See <code>deprecated.R</code> file.</li>
@@ -220,9 +226,9 @@
     <div id="basejump-084-2018-11-28" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-084-2018-11-28" class="anchor"></a>basejump 0.8.4 (2018-11-28)</h2>
-<div id="new-functions-15" class="section level3">
+<div id="new-functions-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-15" class="anchor"></a>New functions</h3>
+<a href="#new-functions-16" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>autopadZeros</code>. Useful for padding zeros inside of a character vector.</li>
@@ -234,9 +240,9 @@
 <code>plotGenderMarkers</code>: Migrated the <code>SummarizedExperiment</code> method from bcbioRNASeq package.</li>
 </ul>
 </div>
-<div id="minor-changes-64" class="section level3">
+<div id="minor-changes-65" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-64" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-65" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Split out call functions defined in <code>calls.R</code> into separate R files. Refer to <code>dots</code>, for example.</li>
 <li>Split out <code>environment.R</code> into separate R files. See <code>detectHPC</code> for example.</li>
@@ -247,9 +253,9 @@
     <div id="basejump-085-2018-11-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-085-2018-11-29" class="anchor"></a>basejump 0.8.5 (2018-11-29)</h2>
-<div id="new-functions-14" class="section level3">
+<div id="new-functions-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-14" class="anchor"></a>New functions</h3>
+<a href="#new-functions-15" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>relevelRowRanges</code>, <code>relevelColData</code>.</li>
@@ -263,9 +269,9 @@
 <code>markdownPlotlist</code>. Renamed to <code>markdownPlots</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-63" class="section level3">
+<div id="minor-changes-64" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-63" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-64" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>autopadZeros</code>: Improved internal code to keep track of names for <code>character</code> method. Also added method support for <code>SummarizedExperiment</code>, which works on the column names (e.g. sample names) only by default.</li>
@@ -289,9 +295,9 @@
     <div id="basejump-086-2018-11-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-086-2018-11-30" class="anchor"></a>basejump 0.8.6 (2018-11-30)</h2>
-<div id="minor-changes-62" class="section level3">
+<div id="minor-changes-63" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-62" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-63" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Now importing <code>hasUniqueCols</code> from goalie. Switched from previous approach using <code>areSamplesUnique</code>.</li>
 <li>Documentation improvement for <code>genomeBuild</code>, used in <code>makeGRanges</code> functions.</li>
@@ -302,17 +308,17 @@
     <div id="basejump-087-2018-12-01" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-087-2018-12-01" class="anchor"></a>basejump 0.8.7 (2018-12-01)</h2>
-<div id="new-functions-13" class="section level3">
+<div id="new-functions-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-13" class="anchor"></a>New functions</h3>
+<a href="#new-functions-14" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>humanize</code>. New generic that enables easy conversion to human-friendly column and/or row names. Useful for CSV file export in particular.</li>
 </ul>
 </div>
-<div id="minor-changes-61" class="section level3">
+<div id="minor-changes-62" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-61" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-62" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>export</code>: Added <code>humanize</code> argument support.</li>
@@ -325,9 +331,9 @@
     <div id="basejump-088-2018-12-03" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-088-2018-12-03" class="anchor"></a>basejump 0.8.8 (2018-12-03)</h2>
-<div id="new-functions-12" class="section level3">
+<div id="new-functions-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-12" class="anchor"></a>New functions</h3>
+<a href="#new-functions-13" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>deg</code>: Utility function to quickly obtain differentially expressed gene (DEG) identifiers as a character vector.</li>
@@ -359,7 +365,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

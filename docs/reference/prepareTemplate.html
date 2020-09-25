@@ -78,7 +78,7 @@ subdirectory, the function will return an error." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -91,17 +91,23 @@ subdirectory, the function will return an error." />
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -133,7 +139,7 @@ function will copy dependency files from a requested package inside the
 subdirectory, the function will return an error.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>prepareTemplate</span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>prepareTemplate</span>(package = <span class='kw'>NULL</span>, overwrite = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,11 +173,11 @@ Was the file copied?.</p>
     <p>Updated 2019-11-19.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>## RNA-seq template.
-## &gt; prepareTemplate(package = "bcbioRNASeq")
+    <pre class="examples"><div class='input'><span class='co'>## RNA-seq template.</span>
+<span class='co'>## &gt; prepareTemplate(package = "bcbioRNASeq")</span>
 
-## Single-cell RNA-seq template.
-## &gt; prepareTemplate(package = "bcbioSingleCell")
+<span class='co'>## Single-cell RNA-seq template.</span>
+<span class='co'>## &gt; prepareTemplate(package = "bcbioSingleCell")</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -188,7 +194,7 @@ Was the file copied?.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,23 +131,23 @@
     <p>Filter cells</p>
     </div>
 
-    <pre class="usage"><span class='fu'>filterCells</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>filterCells</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>filterCells</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>maxCounts</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>minFeatures</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>maxFeatures</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>minNovelty</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='kw'>maxMitoRatio</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>minCellsPerFeature</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>nCells</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>countsCol</span> <span class='kw'>=</span> <span class='st'>"nCount"</span>,
-  <span class='kw'>featuresCol</span> <span class='kw'>=</span> <span class='st'>"nFeature"</span>,
-  <span class='kw'>noveltyCol</span> <span class='kw'>=</span> <span class='st'>"log10FeaturesPerCount"</span>,
-  <span class='kw'>mitoRatioCol</span> <span class='kw'>=</span> <span class='st'>"mitoRatio"</span>
+  <span class='kw'>object</span>,
+  minCounts = <span class='fl'>1L</span>,
+  maxCounts = <span class='fl'>Inf</span>,
+  minFeatures = <span class='fl'>1L</span>,
+  maxFeatures = <span class='fl'>Inf</span>,
+  minNovelty = <span class='fl'>0L</span>,
+  maxMitoRatio = <span class='fl'>1L</span>,
+  minCellsPerFeature = <span class='fl'>1L</span>,
+  nCells = <span class='fl'>Inf</span>,
+  countsCol = <span class='st'>"nCount"</span>,
+  featuresCol = <span class='st'>"nFeature"</span>,
+  noveltyCol = <span class='st'>"log10FeaturesPerCount"</span>,
+  mitoRatioCol = <span class='st'>"mitoRatio"</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -220,11 +226,13 @@ as <code>filterCells</code> metadata.</p>
     <p>Updated 2020-01-20.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>SingleCellExperiment</span>, package = <span class='st'>"acidtest"</span>)
 
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>filterCells</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>→ Filtering cells with <span style='color: #000000;background-color: #BBBBBB;'>`filterCells()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 496 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 0 mitochondrial features detected.</span></div><div class='output co'>#&gt; <span class='message'>Pre-filter:</span></div><div class='output co'>#&gt; <span class='message'>  ● 100 cells</span></div><div class='output co'>#&gt; <span class='message'>  ● 500 features</span></div><div class='output co'>#&gt; <span class='message'>Post-filter:</span></div><div class='output co'>#&gt; <span class='message'>  ● 100 cells (100%)</span></div><div class='output co'>#&gt; <span class='message'>  ● 483 features (97%)</span></div><div class='output co'>#&gt; <span class='message'>Per argument:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 100</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 100</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 100</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 100</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 100</span></div><div class='output co'>#&gt; <span class='message'>Per sample, per argument:</span></div><div class='output co'>#&gt; <span class='message'>  sample1:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 53</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 53</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 53</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 53</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 53</span></div><div class='output co'>#&gt; <span class='message'>  sample2:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 47</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 47</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 47</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 47</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 47</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✓</span><span> Cell filtering was successful.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>SingleCellExperiment</span>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>filterCells</span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Filtering cells with <span style='color: #000000;background-color: #BBBBBB;'>`filterCells()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 496 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 0 mitochondrial features detected.</span></div><div class='output co'>#&gt; <span class='message'>Pre-filter:</span></div><div class='output co'>#&gt; <span class='message'>  ● 100 cells</span></div><div class='output co'>#&gt; <span class='message'>  ● 500 features</span></div><div class='output co'>#&gt; <span class='message'>Post-filter:</span></div><div class='output co'>#&gt; <span class='message'>  ● 100 cells (100%)</span></div><div class='output co'>#&gt; <span class='message'>  ● 483 features (97%)</span></div><div class='output co'>#&gt; <span class='message'>Per argument:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 100</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 100</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 100</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 100</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 100</span></div><div class='output co'>#&gt; <span class='message'>Per sample, per argument:</span></div><div class='output co'>#&gt; <span class='message'>  sample1:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 53</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 53</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 53</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 53</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 53</span></div><div class='output co'>#&gt; <span class='message'>  sample2:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 47</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 47</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 47</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 47</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 47</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✓</span><span> Cell filtering was successful.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 483 100 
 #&gt; metadata(3): date filterCells subset
 #&gt; assays(1): counts
@@ -235,11 +243,14 @@ as <code>filterCells</code> metadata.</p>
 #&gt; reducedDimNames(0):
 #&gt; altExpNames(0):</div><div class='input'>
 <span class='co'>## Per sample cutoffs.</span>
-<span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt;   sample1   sample2 
-#&gt; "sample1" "sample2" </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>filterCells</span>(
-    <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
-    <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>sample1</span> <span class='kw'>=</span> <span class='fl'>100L</span>)
-)</div><div class='output co'>#&gt; <span class='message'>→ Filtering cells with </span><span style='color: #000000;background-color: #BBBBBB;'>`filterCells()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 496 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 0 mitochondrial features detected.</span></div><div class='output co'>#&gt; <span class='message'>Pre-filter:</span></div><div class='output co'>#&gt; <span class='message'>  ● 100 cells</span></div><div class='output co'>#&gt; <span class='message'>  ● 500 features</span></div><div class='output co'>#&gt; <span class='message'>Post-filter:</span></div><div class='output co'>#&gt; <span class='message'>  ● 100 cells (100%)</span></div><div class='output co'>#&gt; <span class='message'>  ● 483 features (97%)</span></div><div class='output co'>#&gt; <span class='message'>Per argument:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 100</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 100</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 100</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 100</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 100</span></div><div class='output co'>#&gt; <span class='message'>Per sample, per argument:</span></div><div class='output co'>#&gt; <span class='message'>  sample1:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 53</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 53</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 53</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 53</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 53</span></div><div class='output co'>#&gt; <span class='message'>  sample2:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 47</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 47</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 47</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 47</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 47</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✓</span><span> Cell filtering was successful.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+<span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt;   sample1   sample2 
+#&gt; "sample1" "sample2" </div><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>filterCells</span>(
+    object = <span class='kw'>object</span>,
+    minCounts = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(sample1 = <span class='fl'>100L</span>)
+)
+</div><div class='output co'>#&gt; <span class='message'>→ Filtering cells with </span><span style='color: #000000;background-color: #BBBBBB;'>`filterCells()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 496 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 0 mitochondrial features detected.</span></div><div class='output co'>#&gt; <span class='message'>Pre-filter:</span></div><div class='output co'>#&gt; <span class='message'>  ● 100 cells</span></div><div class='output co'>#&gt; <span class='message'>  ● 500 features</span></div><div class='output co'>#&gt; <span class='message'>Post-filter:</span></div><div class='output co'>#&gt; <span class='message'>  ● 100 cells (100%)</span></div><div class='output co'>#&gt; <span class='message'>  ● 483 features (97%)</span></div><div class='output co'>#&gt; <span class='message'>Per argument:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 100</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 100</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 100</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 100</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 100</span></div><div class='output co'>#&gt; <span class='message'>Per sample, per argument:</span></div><div class='output co'>#&gt; <span class='message'>  sample1:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 53</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 53</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 53</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 53</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 53</span></div><div class='output co'>#&gt; <span class='message'>  sample2:</span></div><div class='output co'>#&gt; <span class='message'>    minCounts: 47</span></div><div class='output co'>#&gt; <span class='message'>    maxCounts: 47</span></div><div class='output co'>#&gt; <span class='message'>    minFeatures: 47</span></div><div class='output co'>#&gt; <span class='message'>    maxFeatures: 47</span></div><div class='output co'>#&gt; <span class='message'>    minNovelty: 47</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✓</span><span> Cell filtering was successful.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 483 100 
 #&gt; metadata(3): date filterCells subset
 #&gt; assays(1): counts
@@ -264,7 +275,7 @@ as <code>filterCells</code> metadata.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

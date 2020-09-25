@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,34 +131,34 @@
     <p>Correlation</p>
     </div>
 
-    <pre class="usage"><span class='fu'>correlation</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>correlation</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for numeric,numeric</span>
-<span class='fu'>correlation</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
+<span class='fu'>correlation</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
 
 <span class='co'># S4 method for matrix,missingOrNULL</span>
-<span class='fu'>correlation</span>(<span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
+<span class='fu'>correlation</span>(<span class='kw'>x</span>, y = <span class='kw'>NULL</span>, method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
 
 <span class='co'># S4 method for matrix,matrix</span>
-<span class='fu'>correlation</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
+<span class='fu'>correlation</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
 
 <span class='co'># S4 method for Matrix,missingOrNULL</span>
-<span class='fu'>correlation</span>(<span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
+<span class='fu'>correlation</span>(<span class='kw'>x</span>, y = <span class='kw'>NULL</span>, method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
 
 <span class='co'># S4 method for Matrix,Matrix</span>
-<span class='fu'>correlation</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
+<span class='fu'>correlation</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))
 
 <span class='co'># S4 method for SummarizedExperiment,missingOrNULL</span>
 <span class='fu'>correlation</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>j</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>)
+  <span class='kw'>x</span>,
+  y = <span class='kw'>NULL</span>,
+  i = <span class='fl'>1L</span>,
+  j = <span class='kw'>NULL</span>,
+  method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>)
 )
 
 <span class='co'># S4 method for SummarizedExperiment,SummarizedExperiment</span>
-<span class='fu'>correlation</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))</pre>
+<span class='fu'>correlation</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, i = <span class='fl'>1L</span>, method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,26 +214,31 @@ If <code>NULL</code>, calculates correlation matrix only on the primary assay.</
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>correlation</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='no'>correlation</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>correlation</span>, package = <span class='st'>"acidtest"</span>)
+<span class='kw'>list</span> <span class='op'>&lt;-</span> <span class='kw'>correlation</span>
 
 <span class='co'>## vector ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>list</span><span class='kw'>[[</span><span class='st'>"vector_x"</span>]]
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>list</span><span class='kw'>[[</span><span class='st'>"vector_y"</span>]]
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>list</span>[[<span class='st'>"vector_x"</span>]]
+<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='kw'>list</span>[[<span class='st'>"vector_y"</span>]]
 
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 2 0 2 0 0 3</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] 2.72888063 0.85160055 0.77611653 0.09761048 1.84708704 2.21355843</div><div class='input'>
-<span class='fu'>correlation</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating pearson correlation on 100 values.</span></div><div class='output co'>#&gt; [1] 0.9639725</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] 2 0 2 0 0 3</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>y</span>)
+</div><div class='output co'>#&gt; [1] 2.72888063 0.85160055 0.77611653 0.09761048 1.84708704 2.21355843</div><div class='input'>
+<span class='fu'>correlation</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating pearson correlation on 100 values.</span></div><div class='output co'>#&gt; [1] 0.9639725</div><div class='input'>
 <span class='co'>## matrix ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>list</span><span class='kw'>[[</span><span class='st'>"matrix_x"</span>]]
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>list</span><span class='kw'>[[</span><span class='st'>"matrix_y"</span>]]
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>list</span>[[<span class='st'>"matrix_x"</span>]]
+<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='kw'>list</span>[[<span class='st'>"matrix_y"</span>]]
 
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
 #&gt; [1,]    2    6    7   12    4    8    0    1    2     8
 #&gt; [2,]    0    3    2    4    3    2    0    5    2     1
 #&gt; [3,]    2    6    0    4   11    1    0    0    2     0
 #&gt; [4,]    0    2    8    7    0    9    9    2   12    10
 #&gt; [5,]    0   14    2    0    1    5   17    6    6     3
-#&gt; [6,]    3    0    2    4    0   14    1    1    7     1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt;            [,1]      [,2]      [,3]        [,4]       [,5]      [,6]       [,7]
+#&gt; [6,]    3    0    2    4    0   14    1    1    7     1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>y</span>)
+</div><div class='output co'>#&gt;            [,1]      [,2]      [,3]        [,4]       [,5]      [,6]       [,7]
 #&gt; [1,] 2.72888063  4.482075 6.4867973 12.29092372  2.4683960  9.971302 -0.1783549
 #&gt; [2,] 0.85160055  2.990193 1.4060853  5.32644594  4.8522692  1.968144  1.1793192
 #&gt; [3,] 0.77611653  4.156413 0.2934493  4.59148530 10.8719632  1.790731  1.5901375
@@ -241,7 +252,8 @@ If <code>NULL</code>, calculates correlation matrix only on the primary assay.</
 #&gt; [4,]  3.4262606 10.3806385 10.2887448
 #&gt; [5,]  5.3835456  4.2828418  1.3432672
 #&gt; [6,]  2.5023073  7.0039474 -0.2109346</div><div class='input'>
-<span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;              [,1]         [,2]        [,3]        [,4]        [,5]        [,6]
+<span class='kw'>stats</span>::<span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt;              [,1]         [,2]        [,3]        [,4]        [,5]        [,6]
 #&gt;  [1,]  1.00000000 -0.207183643 -0.07713685  0.16531934  0.33022143 -0.08855786
 #&gt;  [2,] -0.20718364  1.000000000  0.05349055 -0.31603656  0.17849858 -0.30768455
 #&gt;  [3,] -0.07713685  0.053490553  1.00000000  0.07365429 -0.09858911  0.07053355
@@ -262,7 +274,8 @@ If <code>NULL</code>, calculates correlation matrix only on the primary assay.</
 #&gt;  [7,]  1.00000000  0.14866842  0.55966224  0.352993037
 #&gt;  [8,]  0.14866842  1.00000000 -0.20458421 -0.315088877
 #&gt;  [9,]  0.55966224 -0.20458421  1.00000000  0.334298223
-#&gt; [10,]  0.35299304 -0.31508888  0.33429822  1.000000000</div><div class='input'><span class='fu'>correlation</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating <span style='color: #0000BB;'>pearson</span><span> correlation matrix.</span></div><div class='output co'>#&gt;              [,1]         [,2]        [,3]        [,4]        [,5]        [,6]
+#&gt; [10,]  0.35299304 -0.31508888  0.33429822  1.000000000</div><div class='input'><span class='fu'>correlation</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating <span style='color: #0000BB;'>pearson</span><span> correlation matrix.</span></div><div class='output co'>#&gt;              [,1]         [,2]        [,3]        [,4]        [,5]        [,6]
 #&gt;  [1,]  1.00000000 -0.207183643 -0.07713685  0.16531934  0.33022143 -0.08855786
 #&gt;  [2,] -0.20718364  1.000000000  0.05349055 -0.31603656  0.17849858 -0.30768455
 #&gt;  [3,] -0.07713685  0.053490553  1.00000000  0.07365429 -0.09858911  0.07053355
@@ -284,12 +297,15 @@ If <code>NULL</code>, calculates correlation matrix only on the primary assay.</
 #&gt;  [8,]  0.14866842  1.00000000 -0.20458421 -0.315088877
 #&gt;  [9,]  0.55966224 -0.20458421  1.00000000  0.334298223
 #&gt; [10,]  0.35299304 -0.31508888  0.33429822  1.000000000</div><div class='input'>
-<span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x</span>), <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>y</span>))</div><div class='output co'>#&gt; [1] 0.9639725</div><div class='input'><span class='fu'>correlation</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating pearson correlation on 100 values.</span></div><div class='output co'>#&gt; [1] 0.9639725</div><div class='input'>
+<span class='kw'>stats</span>::<span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span>(x = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span>), y = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>y</span>))
+</div><div class='output co'>#&gt; [1] 0.9639725</div><div class='input'><span class='fu'>correlation</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating pearson correlation on 100 values.</span></div><div class='output co'>#&gt; [1] 0.9639725</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>list</span><span class='kw'>[[</span><span class='st'>"SummarizedExperiment_x"</span>]]
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>list</span><span class='kw'>[[</span><span class='st'>"SummarizedExperiment_y"</span>]]
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>list</span>[[<span class='st'>"SummarizedExperiment_x"</span>]]
+<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='kw'>list</span>[[<span class='st'>"SummarizedExperiment_y"</span>]]
 
-<span class='fu'>correlation</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>1L</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating </span><span style='color: #0000BB;'>pearson</span><span> correlation matrix.</span></div><div class='output co'>#&gt;              [,1]         [,2]        [,3]        [,4]        [,5]        [,6]
+<span class='fu'>correlation</span>(x = <span class='kw'>x</span>, i = <span class='fl'>1L</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating </span><span style='color: #0000BB;'>pearson</span><span> correlation matrix.</span></div><div class='output co'>#&gt;              [,1]         [,2]        [,3]        [,4]        [,5]        [,6]
 #&gt;  [1,]  1.00000000 -0.207183643 -0.07713685  0.16531934  0.33022143 -0.08855786
 #&gt;  [2,] -0.20718364  1.000000000  0.05349055 -0.31603656  0.17849858 -0.30768455
 #&gt;  [3,] -0.07713685  0.053490553  1.00000000  0.07365429 -0.09858911  0.07053355
@@ -310,7 +326,9 @@ If <code>NULL</code>, calculates correlation matrix only on the primary assay.</
 #&gt;  [7,]  1.00000000  0.14866842  0.55966224  0.352993037
 #&gt;  [8,]  0.14866842  1.00000000 -0.20458421 -0.315088877
 #&gt;  [9,]  0.55966224 -0.20458421  1.00000000  0.334298223
-#&gt; [10,]  0.35299304 -0.31508888  0.33429822  1.000000000</div><div class='input'><span class='fu'>correlation</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>j</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating pearson correlation on 100 values.</span></div><div class='output co'>#&gt; [1] 0.9639725</div><div class='input'><span class='fu'>correlation</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating pearson correlation on 100 values.</span></div><div class='output co'>#&gt; [1] 0.9639725</div></span></pre>
+#&gt; [10,]  0.35299304 -0.31508888  0.33429822  1.000000000</div><div class='input'><span class='fu'>correlation</span>(x = <span class='kw'>x</span>, i = <span class='fl'>1L</span>, j = <span class='fl'>2L</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating pearson correlation on 100 values.</span></div><div class='output co'>#&gt; [1] 0.9639725</div><div class='input'><span class='fu'>correlation</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating pearson correlation on 100 values.</span></div><div class='output co'>#&gt; [1] 0.9639725</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -326,7 +344,7 @@ If <code>NULL</code>, calculates correlation matrix only on the primary assay.</
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

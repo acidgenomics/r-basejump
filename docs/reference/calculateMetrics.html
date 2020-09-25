@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,19 +131,19 @@
     <p>Calculate quality control metrics</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>calculateMetrics</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>calculateMetrics</span>(<span class='kw'>object</span>, rowRanges = <span class='kw'>NULL</span>, prefilter = <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>calculateMetrics</span>(<span class='kw'>object</span>, rowRanges = <span class='kw'>NULL</span>, prefilter = <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for RangedSummarizedExperiment</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>calculateMetrics</span>(<span class='kw'>object</span>, prefilter = <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>calculateMetrics</span>(<span class='no'>object</span>, <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>calculateMetrics</span>(<span class='kw'>object</span>, prefilter = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,13 +185,18 @@ metrics in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/Summarize
     <p>Input a raw count matrix. Do not use size factor adjusted or log
 normalized counts here.</p>
 <p>Updated 2020-01-20.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Michael Steinbaugh, Rory Kirchner</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>SingleCellExperiment</span>, package = <span class='st'>"acidtest"</span>)
 
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> 496 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 0 mitochondrial features detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>SingleCellExperiment</span>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> 496 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 0 mitochondrial features detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; class: SingleCellExperiment 
 #&gt; dim: 500 100 
 #&gt; metadata(1): date
 #&gt; assays(1): counts
@@ -210,7 +221,7 @@ normalized counts here.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,13 +131,13 @@
     <p>Split by factor level</p>
     </div>
 
-    <pre class="usage"><span class='fu'>splitByLevel</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>splitByLevel</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>splitByLevel</span>(<span class='no'>x</span>, <span class='no'>f</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>splitByLevel</span>(<span class='kw'>x</span>, <span class='kw'>f</span>, ref = <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>splitByLevel</span>(<span class='no'>x</span>, <span class='no'>f</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>splitByLevel</span>(<span class='kw'>x</span>, <span class='kw'>f</span>, ref = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,30 +181,31 @@ List of data frames split by factors.</p>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(
-    <span class='kw'>compound</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/relevel.html'>relevel</a></span>(
+    <pre class="examples"><div class='input'><span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(
+    compound = <span class='fu'><a href='https://rdrr.io/r/stats/relevel.html'>relevel</a></span>(
         <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(
             <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-                <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"dmso"</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>3L</span>),
-                <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ts_0001"</span>, <span class='st'>"ts_0002"</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>9L</span>)
+                <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(x = <span class='st'>"dmso"</span>, each = <span class='fl'>3L</span>),
+                <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(x = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ts_0001"</span>, <span class='st'>"ts_0002"</span>), each = <span class='fl'>9L</span>)
             )
         ),
-        <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"dmso"</span>
+        ref = <span class='st'>"dmso"</span>
     ),
-    <span class='kw'>concentration</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(
+    concentration = <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(
         <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-            <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>3L</span>),
-            <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.1</span>, <span class='fl'>1</span>, <span class='fl'>10</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
+            <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(x = <span class='fl'>0</span>, each = <span class='fl'>3L</span>),
+            <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(x = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.1</span>, <span class='fl'>1</span>, <span class='fl'>10</span>), each = <span class='fl'>3L</span>, times = <span class='fl'>2L</span>)
         )
     ),
-    <span class='kw'>replicate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(
+    replicate = <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(
         <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(
-            <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>3L</span>),
-            <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>7L</span>
+            <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(from = <span class='fl'>1L</span>, to = <span class='fl'>3L</span>),
+            times = <span class='fl'>7L</span>
         )
     )
 )
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>levels</span>)</div><div class='output co'>#&gt; $compound
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='kw'>df</span>, <span class='kw'>levels</span>)
+</div><div class='output co'>#&gt; $compound
 #&gt; [1] "dmso"    "ts_0001" "ts_0002"
 #&gt; 
 #&gt; $concentration
@@ -207,7 +214,8 @@ List of data frames split by factors.</p>
 #&gt; $replicate
 #&gt; [1] "1" "2" "3"
 #&gt; </div><div class='input'>
-<span class='fu'>splitByLevel</span>(<span class='no'>df</span>, <span class='kw'>f</span> <span class='kw'>=</span> <span class='st'>"compound"</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='fu'>splitByLevel</span>(<span class='kw'>df</span>, f = <span class='st'>"compound"</span>, ref = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; [[1]]
 #&gt; DataFrame with 3 rows and 3 columns
 #&gt;   compound concentration replicate
 #&gt;   &lt;factor&gt;      &lt;factor&gt;  &lt;factor&gt;
@@ -242,7 +250,8 @@ List of data frames split by factors.</p>
 #&gt; 7  ts_0002           10          1
 #&gt; 8  ts_0002           10          2
 #&gt; 9  ts_0002           10          3
-#&gt; </div><div class='input'><span class='fu'>splitByLevel</span>(<span class='no'>df</span>, <span class='kw'>f</span> <span class='kw'>=</span> <span class='st'>"compound"</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>splitByLevel</span>(<span class='kw'>df</span>, f = <span class='st'>"compound"</span>, ref = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; [[1]]
 #&gt; DataFrame with 12 rows and 3 columns
 #&gt;     compound concentration replicate
 #&gt;     &lt;factor&gt;      &lt;factor&gt;  &lt;factor&gt;
@@ -274,7 +283,8 @@ List of data frames split by factors.</p>
 #&gt; 11   ts_0002            10         2
 #&gt; 12   ts_0002            10         3
 #&gt; </div><div class='input'>
-<span class='fu'>splitByLevel</span>(<span class='no'>df</span>, <span class='kw'>f</span> <span class='kw'>=</span> <span class='st'>"concentration"</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='fu'>splitByLevel</span>(<span class='kw'>df</span>, f = <span class='st'>"concentration"</span>, ref = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; [[1]]
 #&gt; DataFrame with 3 rows and 3 columns
 #&gt;   compound concentration replicate
 #&gt;   &lt;factor&gt;      &lt;factor&gt;  &lt;factor&gt;
@@ -314,7 +324,8 @@ List of data frames split by factors.</p>
 #&gt; 4  ts_0002            10         1
 #&gt; 5  ts_0002            10         2
 #&gt; 6  ts_0002            10         3
-#&gt; </div><div class='input'><span class='fu'>splitByLevel</span>(<span class='no'>df</span>, <span class='kw'>f</span> <span class='kw'>=</span> <span class='st'>"concentration"</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>splitByLevel</span>(<span class='kw'>df</span>, f = <span class='st'>"concentration"</span>, ref = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; [[1]]
 #&gt; DataFrame with 9 rows and 3 columns
 #&gt;   compound concentration replicate
 #&gt;   &lt;factor&gt;      &lt;factor&gt;  &lt;factor&gt;
@@ -371,7 +382,7 @@ List of data frames split by factors.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

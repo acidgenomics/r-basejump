@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -86,17 +86,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -150,9 +156,9 @@
 </ul>
 <p>Providing basic <code>SummarizedExperiment</code> class method support for <code>counts</code>.</p>
 </div>
-<div id="minor-changes-72" class="section level3">
+<div id="minor-changes-73" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-72" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-73" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>geometricMean</code> generic was not exported correctly.</li>
@@ -162,9 +168,9 @@
     <div id="basejump-061-2018-07-21" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-061-2018-07-21" class="anchor"></a>basejump 0.6.1 (2018-07-21)</h2>
-<div id="minor-changes-71" class="section level3">
+<div id="minor-changes-72" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-71" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-72" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Bug fix for <code>convertGenesToSymbols</code> method for <code>SummarizedExperiment</code>. Previously, if <code>geneName</code> column was a factor, this function would error. This issue has been fixed by ensuring that the symbols provided in <code>geneName</code> are coerced to a character vector.</li>
 <li>Improved <a href="https://conda.io/">conda</a> installation instructions.</li>
@@ -174,9 +180,9 @@
     <div id="basejump-062-2018-07-31" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-062-2018-07-31" class="anchor"></a>basejump 0.6.2 (2018-07-31)</h2>
-<div id="new-functions-20" class="section level3">
+<div id="new-functions-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-20" class="anchor"></a>New functions</h3>
+<a href="#new-functions-21" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>convertSymbolsToGenes</code>: provides <code>SummarizedExperiment</code> method support for converting objects containing gene symbols (“geneName”) as rownames back to gene identifiers (“geneID”).</li>
@@ -193,9 +199,9 @@
 <code>broadClass</code> now supports <code>GRanges</code> and <code>SummarizedExperiment</code>. Support for <code>data.frame</code> and/or <code>DataFrame</code> class objects has been removed.</li>
 </ul>
 </div>
-<div id="minor-changes-70" class="section level3">
+<div id="minor-changes-71" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-70" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-71" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>convertGenesToSymbols</code> and <code>convertTranscriptsToGenes</code> now have <code>organism</code> and <code>gene2symbol</code> arguments set <code>NULL</code> by default.</li>
@@ -212,9 +218,9 @@
     <div id="basejump-063-2018-08-01" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-063-2018-08-01" class="anchor"></a>basejump 0.6.3 (2018-08-01)</h2>
-<div id="minor-changes-69" class="section level3">
+<div id="minor-changes-70" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-69" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-70" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code>separatorBar</code> and <code>updateMessage</code> global export from <a href="https://bioinformatics.sph.harvard.edu/bcbioBase/">bcbioBase</a>. Improved <code>separatorBar</code> appeareance to automatically scale to current session width, using <code><a href="https://rdrr.io/r/base/options.html">getOption("width")</a></code>.</li>
 </ul>
@@ -223,9 +229,9 @@
     <div id="basejump-064-2018-08-03" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-064-2018-08-03" class="anchor"></a>basejump 0.6.4 (2018-08-03)</h2>
-<div id="new-functions-19" class="section level3">
+<div id="new-functions-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-19" class="anchor"></a>New functions</h3>
+<a href="#new-functions-20" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>matchInterestingGroups</code>: New developer function to automatically handle <code>interestingGroups</code> argument used across various plotting functions and in the <a href="https://github.com/bcbio/bcbio-nextgen/">bcbio</a> infrastructure packges.</li>
@@ -249,7 +255,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
