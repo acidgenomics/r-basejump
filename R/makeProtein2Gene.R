@@ -23,6 +23,7 @@ makeProtein2GeneFromEnsembl <- function(
     genomeBuild = NULL,
     release = NULL
 ) {
+    cli_alert("Making {.var Protein2Gene} from Ensembl.")
     if (is.null(organism)) {
         organism <- detectOrganism(ids)
     }
@@ -42,11 +43,6 @@ makeProtein2GeneFromEnsembl <- function(
     colnames(df) <- gsub("id$", "ID", colnames(df))
     colnames(df) <- gsub("name$", "Name", colnames(df))
     assert(isSubset(ids, df[["proteinID"]]))
-    df
-    ## FIXME NEED TO OUTPUT AS PROTEIN2GENE CLASS.
-    ##
-    ## FIXME NEED TO SUPORT ARGUMENTS HERE.
-    metadata(data) <- .slotGenomeMetadata(object)
-    metadata(data)[["format"]] <- format
-    new(Class = "Gene2Symbol", data)
+    metadata(df) <- .getEnsDbMetadata(edb)
+    new(Class = "Protein2Gene", df)
 }
