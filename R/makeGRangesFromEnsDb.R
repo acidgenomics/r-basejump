@@ -24,7 +24,6 @@ makeGRangesFromEnsDb <- function(
     level <- match.arg(level)
     cli_alert("Making {.var GRanges} from {.var EnsDb}.")
     userAttached <- .packages()
-    ## Allow loading of EnsDb package, passed in as a character string.
     if (isString(object)) {
         package <- object
         requireNamespaces(package)
@@ -35,35 +34,7 @@ makeGRangesFromEnsDb <- function(
         )
     }
     assert(is(object, "EnsDb"))
-    ## Get the genome build from the ensembldb metdata.
-    m <- metadata(object)
-    genomeBuild <- m[
-        match(x = "genome_build", table = m[["name"]]),
-        "value",
-        drop = TRUE
-    ]
-    assert(isString(genomeBuild))
-    ## Define the metadata to return.
-    metadata <- list(
-        organism = organism(object),
-        genomeBuild = genomeBuild,
-        ensemblRelease = as.integer(ensemblVersion(object)),
-        ensembldb = metadata(object),
-        level = level
-    )
-    ## AnnotationHub ID is slotted in attributes, when applicable.
-    if (isString(attr(object, "id"))) {
-        metadata[["id"]] <- attr(object, "id")
-    }
-    cli_div(theme = list(body = list("margin-left" = 4L)))
-    cli_dl(items = c(
-        "Organism" = metadata[["organism"]],
-        "Genome build" = metadata[["genomeBuild"]],
-        "Ensembl release" = metadata[["ensemblRelease"]],
-        "Level" = metadata[["level"]]
-    ))
-    cli_end()
-    ## Always get gene-level annotations.
+    metadata <- .getEnsDbMetadata(object, level = level)
     genes <- genes(
         x = object,
         order.by = "gene_id",
@@ -71,7 +42,6 @@ makeGRangesFromEnsDb <- function(
     )
     if (level == "genes") {
         out <- genes
-        metadata(out)[["level"]] <- genes
     }
     if (level == "transcripts") {
         transcripts <- transcripts(
@@ -79,13 +49,11 @@ makeGRangesFromEnsDb <- function(
             order.by = "tx_id",
             return.type = "GRanges"
         )
-        ## Merge gene-level annotations into `mcols()`.
         out <- .mergeGenesIntoTranscripts(
             transcripts = transcripts,
             genes = genes
         )
     }
-    ## Ensure ensembldb dependences get detached.
     .forceDetach(keep = userAttached)
     metadata(out) <- metadata
     out <- .makeGRanges(out, ignoreTxVersion = ignoreTxVersion)
