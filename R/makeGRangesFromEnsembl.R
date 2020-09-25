@@ -85,9 +85,6 @@
 #' @note Updated 2020-09-24.
 #'
 #' @inheritParams acidroxygen::params
-#' @param release `integer(1)`.
-#'   Ensembl release version (e.g. `90`). If set `NULL`, defaults to the most
-#'   recent release available.
 #'
 #' @return `GRanges`.
 #'
