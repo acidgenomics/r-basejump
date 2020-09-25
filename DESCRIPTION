@@ -152,6 +152,7 @@ Collate:
     'makeGRangesFromGFF-WormBase.R'
     'makeGRangesFromGFF.R'
     'makeGene2Symbol.R'
+    'makeProtein2Gene.R'
     'makeSampleData-methods.R'
     'makeSummarizedExperiment-methods.R'
     'makeSingleCellExperiment-methods.R'
