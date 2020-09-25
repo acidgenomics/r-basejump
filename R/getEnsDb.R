@@ -116,3 +116,49 @@ getEnsDb <- function(
     .forceDetach(keep = userAttached)
     edb
 }
+
+
+
+#' Get metadata inside EnsDb object
+#'
+#' @note Updated 2020-09-25.
+#' @noRd
+.getEnsDbMetadata <- function(object, level = NULL) {
+    assert(
+        is(object, "EnsDb"),
+        isString(level, nullOK = TRUE)
+    )
+    metadata <- metadata(object)
+    assert(is.data.frame(metadata))
+    genomeBuild <- metadata[
+        match(x = "genome_build", table = metadata[["name"]]),
+        "value",
+        drop = TRUE
+    ]
+    assert(isString(genomeBuild))
+    list <- list(
+        "organism" = organism(object),
+        "genomeBuild" = genomeBuild,
+        "ensemblRelease" = as.integer(ensemblVersion(object)),
+        "ensembldb" = metadata
+    )
+    if (!is.null(level)) {
+        level[["level"]] <- level
+    }
+    ## AnnotationHub ID should be stashed in attributes, when possible.
+    if (isString(attr(object, "id"))) {
+        list[["id"]] <- attr(object, "id")
+    }
+    cli_div(theme = list(body = list("margin-left" = 4L)))
+    items <- c(
+        "Organism" = list[["organism"]],
+        "Genome build" = list[["genomeBuild"]],
+        "Ensembl release" = list[["ensemblRelease"]]
+    )
+    if (isString(list[["level"]])) {
+        items <- c(items, "Level" = list[["level"]])
+    }
+    cli_dl(items = items)
+    cli_end()
+    list
+}
