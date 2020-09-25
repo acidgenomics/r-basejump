@@ -62,7 +62,7 @@ setValidity(
             identical(colnames(object), c("geneID", "geneName")),
             nrow(object) > 0L,
             is.character(object[["geneID"]]),
-            class(object[["geneName"]]) %in% c("character", "factor")
+            isAny(object[["geneName"]], c("character", "factor"))
         )
     }
 )
@@ -119,6 +119,40 @@ setValidity(
         validate(
             identical(colnames(object), c("mgiID", "geneID")),
             is.null(rownames(object))
+        )
+    }
+)
+
+
+
+#' Protein-to-gene mappings
+#'
+#' @details
+#' Contains a `DataFrame` with `proteinID`, `geneID`, and `geneName` columns.
+#'
+#' @section Genome metadata:
+#'
+#' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
+#' [`metadata()`][S4Vectors::metadata].
+#'
+#' @note Updated 2020-09-25.
+#' @export
+#'
+#' @return `Protein2Gene`.
+setClass(
+    Class = "Protein2Gene",
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "Protein2Gene",
+    method = function(object) {
+        validate(
+            identical(
+                x = colnames(object),
+                y = c("proteinID", "geneID", "geneName")
+            ),
+            nrow(object) > 0L,
+            all(bapply(X = object, FUN = is.character))
         )
     }
 )
