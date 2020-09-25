@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,22 +131,22 @@
     <p>Defunct functions</p>
     </div>
 
-    <pre class="usage"><span class='fu'>theme_midnight</span>(<span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>theme_midnight</span>(<span class='kw'>...</span>)
 
-<span class='fu'>theme_paperwhite</span>(<span class='no'>...</span>)
+<span class='fu'>theme_paperwhite</span>(<span class='kw'>...</span>)
 
-<span class='fu'>tx2geneFromGFF</span>(<span class='no'>...</span>)
+<span class='fu'>tx2geneFromGFF</span>(<span class='kw'>...</span>)
 
-<span class='fu'>separatorBar</span>(<span class='no'>...</span>)
+<span class='fu'>separatorBar</span>(<span class='kw'>...</span>)
 
-<span class='fu'>relevelColData</span>(<span class='no'>...</span>)
+<span class='fu'>relevelColData</span>(<span class='kw'>...</span>)
 
-<span class='fu'>relevelRowData</span>(<span class='no'>...</span>)
+<span class='fu'>relevelRowData</span>(<span class='kw'>...</span>)
 
-<span class='fu'>relevelRowRanges</span>(<span class='no'>...</span>)
+<span class='fu'>relevelRowRanges</span>(<span class='kw'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>flatFiles</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>flatFiles</span>(<span class='kw'>object</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,19 +169,20 @@
     <div class='dont-index'><p><a href='https://rdrr.io/r/base/Defunct.html'>Defunct</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>...</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>...</span>) {
     <span class='fu'><a href='https://rdrr.io/r/base/Defunct.html'>.Defunct</a></span>(<span class='st'>"b"</span>)
 }
 
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>withCallingHandlers</a></span>(
-    <span class='kw'>expr</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
-        <span class='kw'>expr</span> <span class='kw'>=</span> <span class='fu'>a</span>(<span class='fl'>1L</span>),
-        <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) {
-            <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>e</span>)
+    expr = <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
+        expr = <span class='fu'>a</span>(<span class='fl'>1L</span>),
+        error = <span class='fu'>function</span>(<span class='kw'>e</span>) {
+            <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>e</span>)
             <span class='fu'><a href='https://rdrr.io/r/base/invisible.html'>invisible</a></span>()
         }
     )
-)</div><div class='output co'>#&gt; &lt;defunctError: 'a' is defunct.
+)
+</div><div class='output co'>#&gt; &lt;defunctError: 'a' is defunct.
 #&gt; Use 'b' instead.
 #&gt; See help("Defunct")&gt;</div></pre>
   </div>
@@ -193,7 +200,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

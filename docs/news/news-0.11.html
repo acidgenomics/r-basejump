@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -86,17 +86,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -127,9 +133,9 @@
     <div id="basejump-0111-2019-07-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0111-2019-07-24" class="anchor"></a>basejump 0.11.1 (2019-07-24)</h2>
-<div id="minor-changes-32" class="section level3">
+<div id="minor-changes-33" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-33" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added back deprecated assert checks that are required for bcbioRNASeq v0.2 release series.</li>
 </ul>
@@ -138,9 +144,9 @@
     <div id="basejump-0112-2019-07-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0112-2019-07-29" class="anchor"></a>basejump 0.11.2 (2019-07-29)</h2>
-<div id="minor-changes-31" class="section level3">
+<div id="minor-changes-32" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-32" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reexporting new functions in syntactic: <code>makeLabel</code>, <code>makeTitle</code>, <code>makeWords</code>.</li>
 <li>Updated documentation to include modification timestamp.</li>
@@ -151,9 +157,9 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0113-2019-07-30" class="anchor"></a>basejump 0.11.3 (2019-07-30)</h2>
 <p>100th release!</p>
-<div id="minor-changes-30" class="section level3">
+<div id="minor-changes-31" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-31" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>mapCellsToSamples</code>: Relaxed grep matching on <code>cells</code> input to support legacy bcbioSingleCell objects. This change was needed to improve <code>updateObject</code> method in the upcoming bcbioSingleCell update.</li>
@@ -175,9 +181,9 @@
 <code>aggregate</code> methods now consistently return the primary assay named as <code>counts</code>. This follows the recommended conventions defined in SingleCellExperiment. Aggregation functions will now intentionally fail for <code>SummarizedExperiment</code> objects that don’t contain an assay named <code>counts</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-29" class="section level3">
+<div id="minor-changes-30" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-29" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-30" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved documentation consistency by offloading <code>params.Rd</code> file to new acidroxygen package. This will be linked in the other Acid Genomics packages.</li>
 <li>Updated unit tests to follow new package conventions (see above changes).</li>
@@ -187,17 +193,17 @@
     <div id="basejump-0115-2019-08-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0115-2019-08-11" class="anchor"></a>basejump 0.11.5 (2019-08-11)</h2>
-<div id="new-functions-6" class="section level3">
+<div id="new-functions-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-6" class="anchor"></a>New functions</h3>
+<a href="#new-functions-7" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>calculateMetrics</code>: Migrated code here from bcbioSingleCell. Improved method to support <code>DelayedArray</code> class for large matrices.</li>
 </ul>
 </div>
-<div id="minor-changes-28" class="section level3">
+<div id="minor-changes-29" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-28" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-29" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved code coverage and adjusted unit tests for breaking changes seen due to new covr update.</li>
 </ul>
@@ -206,9 +212,9 @@
     <div id="basejump-0116-2019-08-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0116-2019-08-12" class="anchor"></a>basejump 0.11.6 (2019-08-12)</h2>
-<div id="minor-changes-27" class="section level3">
+<div id="minor-changes-28" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-27" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-28" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated goalie dependency.</li>
 <li>Tightened up <code>appendToBody</code> and <code>methodFormals</code> calls to have better backward compatibility with R 3.5.</li>
@@ -221,9 +227,9 @@
     <div id="basejump-0117-2019-08-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0117-2019-08-13" class="anchor"></a>basejump 0.11.7 (2019-08-13)</h2>
-<div id="minor-changes-26" class="section level3">
+<div id="minor-changes-27" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-26" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-27" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>filterCells</code>: Improved downstream handling of <code>nCells</code> argument. Ensure double filtering is still allowed.</li>
@@ -233,9 +239,9 @@
     <div id="basejump-0118-2019-08-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0118-2019-08-19" class="anchor"></a>basejump 0.11.8 (2019-08-19)</h2>
-<div id="new-functions-5" class="section level3">
+<div id="new-functions-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-5" class="anchor"></a>New functions</h3>
+<a href="#new-functions-6" class="anchor"></a>New functions</h3>
 <ul>
 <li>Migrated <code>readSampleData</code> and <code>readTx2Gene</code> from bcbioBase.</li>
 <li>Reworked <code>readSampleData</code> internal code, but still supporting bcbio pipeline conventions (i.e. “description” column for samples) as the default. I’ve reworked this approach so we can also call <code>readSampleData</code> inside the Chromium package (for 10X Genomics single-cell RNA-seq data) without having to depend on the bcbio R packages.</li>
@@ -258,9 +264,9 @@
 <code>makeSampleData</code>: Improved internal code for <code>DataFrame</code> method.</li>
 </ul>
 </div>
-<div id="minor-changes-25" class="section level3">
+<div id="minor-changes-26" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-25" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-26" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated basejump dependencies, in preparation for bioconda release update supporting bcbioRNASeq.</li>
 <li>Now importing AnnotationDbi, BiocParallel, Biostrings, and biomaRt.</li>
@@ -273,9 +279,9 @@
     <div id="basejump-0119-2019-08-21" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0119-2019-08-21" class="anchor"></a>basejump 0.11.9 (2019-08-21)</h2>
-<div id="minor-changes-24" class="section level3">
+<div id="minor-changes-25" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-24" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-25" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>meltCounts</code>: Added initial method support for <code>SingleCellExperiment</code>. Currently requires deparsing of the count matrix to call <code><a href="https://rdrr.io/pkg/reshape2/man/melt.html">reshape2::melt</a></code>. Returns columns with S4 run-length encoding (Rle) applied.</li>
@@ -287,9 +293,9 @@
     <div id="basejump-01110-2019-08-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01110-2019-08-22" class="anchor"></a>basejump 0.11.10 (2019-08-22)</h2>
-<div id="minor-changes-23" class="section level3">
+<div id="minor-changes-24" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-23" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-24" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>makeSummarizedExperiment</code>: Now automatically handles non-Ensembl gene symbols present in assays that aren’t defined in <code>rowRanges</code>. This applies primarily to 10X Cell Ranger v3 output, which includes some non-Ensembl gene symbols: CD11b, CD4, CD8a, HLA-DR, IgG1, PD-1, etc. The function still intentionally errors on unannotated Ensembl features, which often indicates an accidental release version mismatch.</li>
@@ -301,9 +307,9 @@
 <h2 class="hasAnchor">
 <a href="#basejump-01111-2019-08-27" class="anchor"></a>basejump 0.11.11 (2019-08-27)</h2>
 <p>Updated R dependency to 3.6.</p>
-<div id="new-functions-4" class="section level3">
+<div id="new-functions-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-4" class="anchor"></a>New functions</h3>
+<a href="#new-functions-5" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>melt</code>: Added S4 methods for melting data into long format. Provides support for <code>matrix</code>, <code>Matrix</code>, <code>DataFrame</code>, <code>SummarizedExperiment</code>, and <code>SingleCellExperiment</code> currently.</li>
@@ -318,9 +324,9 @@
 <li>Migrated <code>EggNOG</code> and <code>PANTHER</code> S4 classes to separate packages.</li>
 </ul>
 </div>
-<div id="minor-changes-22" class="section level3">
+<div id="minor-changes-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-22" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-23" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>calculateMetrics</code>: Now calls <code>nonzeroRowsAndCols</code> internally first when <code>prefilter = FALSE</code>, speeding up calculations significantly for very large <code>SingleCellExperiment</code> objects. This was added to improve loading of example unfiltered 10X Genomics Chromium data.</li>
@@ -337,9 +343,9 @@
     <div id="basejump-01112-2019-09-03" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01112-2019-09-03" class="anchor"></a>basejump 0.11.12 (2019-09-03)</h2>
-<div id="minor-changes-21" class="section level3">
+<div id="minor-changes-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-21" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-22" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>melt</code>: Added method support for contingency <code>table</code> class.</li>
@@ -360,9 +366,9 @@
 <code>makeTx2Gene</code> functions now support <code>ignoreTxVersion</code> argument, similar to conventions defined in tximport package.</li>
 </ul>
 </div>
-<div id="minor-changes-20" class="section level3">
+<div id="minor-changes-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-20" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-21" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>importSampleData</code>: Updated to tentatively support a general pipeline via the “none” argument. In this case, only a <code>sampleID</code> column is required in metadata. This is been developed in conjunction with my new Genewiz to kallisto Nextflow processing pipeline being implemented at CPI.</li>
@@ -372,9 +378,9 @@
     <div id="basejump-01114-2019-09-09" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01114-2019-09-09" class="anchor"></a>basejump 0.11.14 (2019-09-09)</h2>
-<div id="minor-changes-19" class="section level3">
+<div id="minor-changes-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-19" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-20" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>mcolnames</code>: Moved S4 methods previously defined in syntactic here.</li>
@@ -393,9 +399,9 @@
 <code>melt</code>: Updated <code>min</code> and <code>minMethod</code> defaults for <code>matrix</code> method. The <code>min</code> argument now defaults to <code>-Inf</code>, and the <code>minMethod</code> now defaults to <code>"absolute"</code>, instead of <code>"perRow"</code>, since this behavior is more intuitive to the user.</li>
 </ul>
 </div>
-<div id="minor-changes-18" class="section level3">
+<div id="minor-changes-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-18" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-19" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>nonzeroRowsAndCols</code>: Added <code>assay</code> argument, switching from internal <code>counts</code> usage, to make the <code>SummarizedExperiment</code> method more flexible.</li>
@@ -405,9 +411,9 @@
     <div id="basejump-01116-2019-09-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01116-2019-09-25" class="anchor"></a>basejump 0.11.16 (2019-09-25)</h2>
-<div id="minor-changes-17" class="section level3">
+<div id="minor-changes-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-17" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-18" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated S4 methods from syntactic that work on Bioconductor classes here. This keeps the syntactic package very light weight and focused only on character string sanitization.</li>
 </ul>
@@ -416,9 +422,9 @@
     <div id="basejump-01117-2019-10-09" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01117-2019-10-09" class="anchor"></a>basejump 0.11.17 (2019-10-09)</h2>
-<div id="minor-changes-16" class="section level3">
+<div id="minor-changes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-16" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-17" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>makeSampleData</code>: Made function slightly more flexible. Now allowing automatic rowname coercion from columns (“sampleID”, “rowname”, “rn”), similar to approach employed by data.table and tibble packages.</li>
@@ -437,9 +443,9 @@
     <div id="basejump-01118-2019-10-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01118-2019-10-13" class="anchor"></a>basejump 0.11.18 (2019-10-13)</h2>
-<div id="minor-changes-15" class="section level3">
+<div id="minor-changes-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-15" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-16" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>importSampleData</code>: Pipeline now defaulting to “none” instead of “bcbio”, since this flag is now properly hard coded in bcbio R packages. Added new Constellation (CPI) pipeline option.</li>
@@ -451,16 +457,16 @@
     <div id="basejump-01119-2019-10-23" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01119-2019-10-23" class="anchor"></a>basejump 0.11.19 (2019-10-23)</h2>
-<div id="new-functions-3" class="section level3">
+<div id="new-functions-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-3" class="anchor"></a>New functions</h3>
+<a href="#new-functions-4" class="anchor"></a>New functions</h3>
 <ul>
 <li>Genome version detection: <code>ensemblVersion</code>, <code>gencodeVersion</code>, <code>refseqVersion</code>, <code>flybaseVersion</code>, <code>wormbaseVersion</code>. Similar shell variants are available in the <a href="https://koopa.acidgenomics.com/">koopa</a> package.</li>
 </ul>
 </div>
-<div id="minor-changes-14" class="section level3">
+<div id="minor-changes-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-14" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-15" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Moved some low-level functions to new <a href="https://acidbase.acidgenomics.com/">acidbase</a> package. Updated NAMESPACE and reexports to reflect these changes.</li>
 </ul>
@@ -500,9 +506,9 @@
     <div id="basejump-01122-2019-11-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01122-2019-11-11" class="anchor"></a>basejump 0.11.22 (2019-11-11)</h2>
-<div id="new-functions-2" class="section level3">
+<div id="new-functions-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-2" class="anchor"></a>New functions</h3>
+<a href="#new-functions-3" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>correlation</code>: Added S4 method support that mimics base <code>cor</code> methods, but is more flexible, supporting additional arguments via <code>...</code> in generic. This way we can provide intelligent and quick correlation calculations for nested assays inside a <code>SummarizedExperiment</code> and for <code>DESeqResults</code> (see DESeqAnalysis package).</li>
@@ -512,9 +518,9 @@
     <div id="basejump-01123-2019-11-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01123-2019-11-19" class="anchor"></a>basejump 0.11.23 (2019-11-19)</h2>
-<div id="minor-changes-13" class="section level3">
+<div id="minor-changes-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-14" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated package documentation to support roxygen2 7.0 update.</li>
 <li>Reworked <code>formalsList</code> global slightly. Using the <code>synesthesia</code> color palette for <code>heatmap.color</code> argument doesn’t always perform well enough, so I’m switching to a blue/black/yellow palette defined by <code>blueYellow</code> in acidplots instead for <code>heatmap.color</code>. The <code>synesthesia</code> palette performs really well for correlation heatmaps, and is now recommended by default via the <code>acid.heatmap.correlation.color</code> global now instead.</li>
@@ -526,17 +532,17 @@
     <div id="basejump-01124-2020-01-08" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01124-2020-01-08" class="anchor"></a>basejump 0.11.24 (2020-01-08)</h2>
-<div id="new-functions-1" class="section level3">
+<div id="new-functions-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-1" class="anchor"></a>New functions</h3>
+<a href="#new-functions-2" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code>integerCounts</code>: Simple method support for returning a rounded integer counts matrix. Intended primarily for downstream handoff to bulk RNA-seq differential expression callers, such as DESeq2.</li>
 </ul>
 </div>
-<div id="minor-changes-12" class="section level3">
+<div id="minor-changes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-12" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated dependency package version requirements. Needed primarily for bug fix in transformer, improving <code>mutateAll</code> functionality.</li>
 </ul>
@@ -559,7 +565,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

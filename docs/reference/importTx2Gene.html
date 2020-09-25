@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -126,12 +132,12 @@
     </div>
 
     <pre class="usage"><span class='fu'>importTx2Gene</span>(
-  <span class='no'>file</span>,
-  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>ignoreGeneVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>file</span>,
+  organism = <span class='kw'>NULL</span>,
+  genomeBuild = <span class='kw'>NULL</span>,
+  ensemblRelease = <span class='kw'>NULL</span>,
+  ignoreTxVersion = <span class='fl'>FALSE</span>,
+  ignoreGeneVersion = <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -197,13 +203,15 @@ defined in koopa shell bootloader.</p></li>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"tx2gene.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importTx2Gene</span>(
-    <span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>,
-    <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>,
-    <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCh38"</span>,
-    <span class='kw'>ensemblRelease</span> <span class='kw'>=</span> <span class='fl'>90L</span>
-)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>tx2gene.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 10 rows and 2 columns
+    <pre class="examples"><div class='input'><span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='kw'>basejumpTestsURL</span>, <span class='st'>"tx2gene.csv"</span>)
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>importTx2Gene</span>(
+    file = <span class='kw'>file</span>,
+    organism = <span class='st'>"Homo sapiens"</span>,
+    genomeBuild = <span class='st'>"GRCh38"</span>,
+    ensemblRelease = <span class='fl'>90L</span>
+)
+</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>tx2gene.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; Tx2Gene with 10 rows and 2 columns
 #&gt;         transcriptID          geneID
 #&gt;          &lt;character&gt;     &lt;character&gt;
 #&gt; 1  ENST00000631435.1 ENSG00000282253
@@ -231,7 +239,7 @@ defined in koopa shell bootloader.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

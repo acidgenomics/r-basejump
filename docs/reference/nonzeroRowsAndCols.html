@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,16 +131,16 @@
     <p>Subset object to keep only non-zero rows and columns</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>nonzeroRowsAndCols</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)
+<span class='fu'>nonzeroRowsAndCols</span>(<span class='kw'>object</span>)
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)
+<span class='fu'>nonzeroRowsAndCols</span>(<span class='kw'>object</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>)</pre>
+<span class='fu'>nonzeroRowsAndCols</span>(<span class='kw'>object</span>, assay = <span class='fl'>1L</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,21 +169,27 @@ Assay name or index position.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
-    <span class='no'>RangedSummarizedExperiment</span>,
-    <span class='no'>SingleCellExperiment</span>,
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
+    <span class='kw'>RangedSummarizedExperiment</span>,
+    <span class='kw'>SingleCellExperiment</span>,
+    package = <span class='st'>"acidtest"</span>
 )
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; [1] 500  12</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> Filtered zero count rows and columns:</span>
+<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>RangedSummarizedExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt; [1] 500  12</div><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>nonzeroRowsAndCols</span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> Filtered zero count rows and columns:</span>
 #&gt; <span class='message'>- 499 / 500 rows (100%)</span>
-#&gt; <span class='message'>- 12 / 12 columns (100%)</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 499  12</div><div class='input'>
+#&gt; <span class='message'>- 12 / 12 columns (100%)</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] 499  12</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; [1] 500 100</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Filtered zero count rows and columns:</span>
+<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>SingleCellExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt; [1] 500 100</div><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>nonzeroRowsAndCols</span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Filtered zero count rows and columns:</span>
 #&gt; <span class='message'>- 483 / 500 rows (97%)</span>
-#&gt; <span class='message'>- 100 / 100 columns (100%)</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 483 100</div></span></pre>
+#&gt; <span class='message'>- 100 / 100 columns (100%)</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] 483 100</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -193,7 +205,7 @@ Assay name or index position.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
