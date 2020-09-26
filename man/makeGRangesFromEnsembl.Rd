@@ -34,8 +34,11 @@ defaults to the most recent build available.
 Note: don't pass in UCSC build IDs (e.g. \code{"hg38"}).}
 
 \item{release}{\code{integer(1)}.
-Ensembl release version (e.g. \code{90}). If set \code{NULL}, defaults to the most
-recent release available.}
+Ensembl release version (e.g. \code{90}). We recommend setting this value if
+possible, for improved reproducibility. When left unset, the latest release
+available via AnnotationHub/ensembldb is used. Note that the latest version
+available can vary, depending on the versions of AnnotationHub and
+ensembldb in use.}
 
 \item{ignoreTxVersion}{\code{logical(1)}. Don't the include the transcript version
 in the identifier. Only applies when \code{level = "transcripts"}. This
@@ -71,7 +74,7 @@ coercing using \code{\link[BiocGenerics:as.data.frame]{as.data.frame()}}.
 }}
 
 \note{
-Updated 2020-01-20.
+Updated 2020-09-24.
 }
 \section{Broad class definitions}{
 

@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -126,8 +132,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>makeTx2GeneFromFASTA</span>(
-  <span class='no'>file</span>,
-  <span class='kw'>source</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ensembl"</span>, <span class='st'>"gencode"</span>, <span class='st'>"flybase"</span>, <span class='st'>"wormbase"</span>)
+  <span class='kw'>file</span>,
+  source = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ensembl"</span>, <span class='st'>"gencode"</span>, <span class='st'>"flybase"</span>, <span class='st'>"wormbase"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -166,7 +172,7 @@ contain gene identifiers, and is not supported.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Ensembl ====</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(
+<span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(
     <span class='st'>"ftp.ensembl.org"</span>,
     <span class='st'>"pub"</span>,
     <span class='st'>"release-98"</span>,
@@ -174,12 +180,12 @@ contain gene identifiers, and is not supported.</p>
     <span class='st'>"homo_sapiens"</span>,
     <span class='st'>"cdna"</span>,
     <span class='st'>"Homo_sapiens.GRCh38.cdna.all.fa.gz"</span>,
-    <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ftp"</span>
+    protocol = <span class='st'>"ftp"</span>
 )
 <span class='co'>## &gt; makeTx2GeneFromFASTA(file, source = "ensembl")</span>
 
 <span class='co'>## GENCODE ====</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(
+<span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(
     <span class='st'>"ftp.ebi.ac.uk"</span>,
     <span class='st'>"pub"</span>,
     <span class='st'>"databases"</span>,
@@ -187,24 +193,24 @@ contain gene identifiers, and is not supported.</p>
     <span class='st'>"Gencode_human"</span>,
     <span class='st'>"release_32"</span>,
     <span class='st'>"gencode.v32.transcripts.fa.gz"</span>,
-    <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ftp"</span>
+    protocol = <span class='st'>"ftp"</span>
 )
 <span class='co'>## &gt; makeTx2GeneFromFASTA(file, source = "gencode")</span>
 
 <span class='co'>## FlyBase ====</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(
+<span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(
     <span class='st'>"ftp.flybase.net"</span>,
     <span class='st'>"releases"</span>,
     <span class='st'>"FB2019_05"</span>,
     <span class='st'>"dmel_r6.30"</span>,
     <span class='st'>"fasta"</span>,
     <span class='st'>"dmel-all-transcript-r6.30.fasta.gz"</span>,
-    <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ftp"</span>
+    protocol = <span class='st'>"ftp"</span>
 )
 <span class='co'>## &gt; makeTx2GeneFromFASTA(file, source = "flybase")</span>
 
 <span class='co'>## WormBase ====</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(
+<span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(
     <span class='st'>"ftp.wormbase.org"</span>,
     <span class='st'>"pub"</span>,
     <span class='st'>"wormbase"</span>,
@@ -214,9 +220,10 @@ contain gene identifiers, and is not supported.</p>
     <span class='st'>"c_elegans"</span>,
     <span class='st'>"PRJNA13758"</span>,
     <span class='st'>"c_elegans.PRJNA13758.WS272.mRNA_transcripts.fa.gz"</span>,
-    <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ftp"</span>
+    protocol = <span class='st'>"ftp"</span>
 )
-<span class='co'>## &gt; makeTx2GeneFromFASTA(file, source = "wormbase")</span></div></pre>
+<span class='co'>## &gt; makeTx2GeneFromFASTA(file, source = "wormbase")</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -232,7 +239,7 @@ contain gene identifiers, and is not supported.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

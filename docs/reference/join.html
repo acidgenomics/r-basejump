@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,35 +131,35 @@
     <p>Join operations</p>
     </div>
 
-    <pre class="usage"><span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>innerJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>, <span class='kw'>...</span>)
 
-<span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
+<span class='fu'>leftJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>, <span class='kw'>...</span>)
 
-<span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
+<span class='fu'>rightJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>, <span class='kw'>...</span>)
 
-<span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
+<span class='fu'>fullJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>, <span class='kw'>...</span>)
 
-<span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
+<span class='fu'>semiJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>, <span class='kw'>...</span>)
 
-<span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for DataFrame,DataFrame,character</span>
-<span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+<span class='fu'>antiJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame,character</span>
-<span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+<span class='fu'>innerJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame,character</span>
-<span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+<span class='fu'>leftJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame,character</span>
-<span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+<span class='fu'>rightJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame,character</span>
-<span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+<span class='fu'>fullJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame,character</span>
-<span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)</pre>
+<span class='fu'>semiJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame,character</span>
+<span class='fu'>antiJoin</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>by</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -209,47 +215,55 @@ work on Bioconductor S4 class objects, and use base R code internally.</p><ul>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>band_members</span>, <span class='no'>band_instruments</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>band_members</span>, <span class='kw'>band_instruments</span>, package = <span class='st'>"acidtest"</span>)
 
 <span class='co'>## DataFrame ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>band_members</span>, <span class='st'>"DataFrame"</span>)
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>band_instruments</span>, <span class='st'>"DataFrame"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 2 columns
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>as</span>(<span class='kw'>band_members</span>, <span class='st'>"DataFrame"</span>)
+<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'>as</span>(<span class='kw'>band_instruments</span>, <span class='st'>"DataFrame"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 3 rows and 2 columns
 #&gt;          name        band
 #&gt;   &lt;character&gt; &lt;character&gt;
 #&gt; 1        Mick      Stones
 #&gt; 2        John     Beatles
-#&gt; 3        Paul     Beatles</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 2 columns
+#&gt; 3        Paul     Beatles</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>y</span>)
+</div><div class='output co'>#&gt; DataFrame with 3 rows and 2 columns
 #&gt;          name       plays
 #&gt;   &lt;character&gt; &lt;character&gt;
 #&gt; 1        John      guitar
 #&gt; 2        Paul        bass
-#&gt; 3       Keith      guitar</div><div class='input'><span class='no'>by</span> <span class='kw'>&lt;-</span> <span class='st'>"name"</span>
-<span class='fu'>innerJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 3 columns
+#&gt; 3       Keith      guitar</div><div class='input'><span class='kw'>by</span> <span class='op'>&lt;-</span> <span class='st'>"name"</span>
+<span class='fu'>innerJoin</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>, by = <span class='kw'>by</span>)
+</div><div class='output co'>#&gt; DataFrame with 2 rows and 3 columns
 #&gt;          name        band       plays
 #&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
 #&gt; 1        John     Beatles      guitar
-#&gt; 2        Paul     Beatles        bass</div><div class='input'><span class='fu'>leftJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
+#&gt; 2        Paul     Beatles        bass</div><div class='input'><span class='fu'>leftJoin</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>, by = <span class='kw'>by</span>)
+</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
 #&gt;          name        band       plays
 #&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
 #&gt; 1        Mick      Stones          NA
 #&gt; 2        John     Beatles      guitar
-#&gt; 3        Paul     Beatles        bass</div><div class='input'><span class='fu'>rightJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
+#&gt; 3        Paul     Beatles        bass</div><div class='input'><span class='fu'>rightJoin</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>, by = <span class='kw'>by</span>)
+</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
 #&gt;          name       plays        band
 #&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
 #&gt; 1        John      guitar     Beatles
 #&gt; 2        Paul        bass     Beatles
-#&gt; 3       Keith      guitar          NA</div><div class='input'><span class='fu'>fullJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
+#&gt; 3       Keith      guitar          NA</div><div class='input'><span class='fu'>fullJoin</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>, by = <span class='kw'>by</span>)
+</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
 #&gt;          name        band       plays
 #&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
 #&gt; 1        Mick      Stones          NA
 #&gt; 2        John     Beatles      guitar
 #&gt; 3        Paul     Beatles        bass
-#&gt; 4       Keith          NA      guitar</div><div class='input'><span class='fu'>semiJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt; 4       Keith          NA      guitar</div><div class='input'><span class='fu'>semiJoin</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>, by = <span class='kw'>by</span>)
+</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;          name        band
 #&gt;   &lt;character&gt; &lt;character&gt;
 #&gt; 1        John     Beatles
-#&gt; 2        Paul     Beatles</div><div class='input'><span class='fu'>antiJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 1 row and 2 columns
+#&gt; 2        Paul     Beatles</div><div class='input'><span class='fu'>antiJoin</span>(x = <span class='kw'>x</span>, y = <span class='kw'>y</span>, by = <span class='kw'>by</span>)
+</div><div class='output co'>#&gt; DataFrame with 1 row and 2 columns
 #&gt;          name        band
 #&gt;   &lt;character&gt; &lt;character&gt;
 #&gt; 1        Mick      Stones</div></pre>
@@ -268,7 +282,7 @@ work on Bioconductor S4 class objects, and use base R code internally.</p><ul>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

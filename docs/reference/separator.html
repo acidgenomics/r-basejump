@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,7 +131,7 @@
     <p>Maximum of 72 characters wide.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>separator</span>(<span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"="</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"width"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>72L</span>), <span class='fl'>72L</span>)))</pre>
+    <pre class="usage"><span class='fu'>separator</span>(sep = <span class='st'>"="</span>, times = <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"width"</span>, default = <span class='fl'>72L</span>), <span class='fl'>72L</span>)))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,7 +157,8 @@ Number of times to repeat.</p></td>
 characters, even though the default width is set at 80.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>separator</span>(<span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"="</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>10L</span>)</div><div class='output co'>#&gt; [1] "=========="</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>separator</span>(sep = <span class='st'>"="</span>, times = <span class='fl'>10L</span>)
+</div><div class='output co'>#&gt; [1] "=========="</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -167,7 +174,7 @@ characters, even though the default width is set at 80.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

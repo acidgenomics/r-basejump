@@ -75,7 +75,7 @@ matching." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -88,17 +88,23 @@ matching." />
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -127,7 +133,7 @@ matching." />
 matching.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mapCellsToSamples</span>(<span class='no'>cells</span>, <span class='no'>samples</span>)</pre>
+    <pre class="usage"><span class='fu'>mapCellsToSamples</span>(<span class='kw'>cells</span>, <span class='kw'>samples</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,9 +159,12 @@ Cells as the names and samples as the levels.</p>
     <p>Updated 2019-08-18.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>samples</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2"</div><div class='input'><span class='no'>cells</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='no'>samples</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"AAAAAAAA"</span>, <span class='st'>"CCCCCCCC"</span>), <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"_"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>cells</span>)</div><div class='output co'>#&gt; [1] "sample1_AAAAAAAA" "sample2_CCCCCCCC"</div><div class='input'><span class='fu'>mapCellsToSamples</span>(<span class='no'>cells</span>, <span class='no'>samples</span>)</div><div class='output co'>#&gt; sample1_AAAAAAAA sample2_CCCCCCCC 
+    <pre class="examples"><div class='input'><span class='kw'>samples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>samples</span>)
+</div><div class='output co'>#&gt; [1] "sample1" "sample2"</div><div class='input'><span class='kw'>cells</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='kw'>samples</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"AAAAAAAA"</span>, <span class='st'>"CCCCCCCC"</span>), sep = <span class='st'>"_"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>cells</span>)
+</div><div class='output co'>#&gt; [1] "sample1_AAAAAAAA" "sample2_CCCCCCCC"</div><div class='input'><span class='fu'>mapCellsToSamples</span>(<span class='kw'>cells</span>, <span class='kw'>samples</span>)
+</div><div class='output co'>#&gt; sample1_AAAAAAAA sample2_CCCCCCCC 
 #&gt;          sample1          sample2 
 #&gt; Levels: sample1 sample2</div></pre>
   </div>
@@ -173,7 +182,7 @@ Cells as the names and samples as the levels.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

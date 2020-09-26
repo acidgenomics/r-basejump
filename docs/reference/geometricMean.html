@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,16 +131,16 @@
     <p>The geometric mean is the nth root of n products or e to the mean log of <code>x</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>geometricMean</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for numeric</span>
-<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>zeroPropagate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>geometricMean</span>(<span class='kw'>object</span>, removeNA = <span class='fl'>TRUE</span>, zeroPropagate = <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
+<span class='fu'>geometricMean</span>(<span class='kw'>object</span>, MARGIN = <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
+<span class='fu'>geometricMean</span>(<span class='kw'>object</span>, MARGIN = <span class='fl'>2L</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,31 +196,39 @@ return <code>NaN</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## numeric ====</span>
-<span class='no'>vec1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1L</span>, <span class='fl'>5L</span>, <span class='fl'>1L</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>vec1</span>)</div><div class='output co'>#&gt; [1] 1 2 3 4 5</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>vec1</span>)</div><div class='output co'>#&gt; [1] 2.605171</div><div class='input'>
-<span class='no'>vec2</span> <span class='kw'>&lt;-</span> <span class='no'>vec1</span> ^ <span class='fl'>2L</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1]  1  4  9 16 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1] 6.786916</div><div class='input'>
+<span class='kw'>vec1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1L</span>, <span class='fl'>5L</span>, <span class='fl'>1L</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>vec1</span>)
+</div><div class='output co'>#&gt; [1] 1 2 3 4 5</div><div class='input'><span class='fu'>geometricMean</span>(<span class='kw'>vec1</span>)
+</div><div class='output co'>#&gt; [1] 2.605171</div><div class='input'>
+<span class='kw'>vec2</span> <span class='op'>&lt;-</span> <span class='kw'>vec1</span> <span class='op'>^</span> <span class='fl'>2L</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>vec2</span>)
+</div><div class='output co'>#&gt; [1]  1  4  9 16 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='kw'>vec2</span>)
+</div><div class='output co'>#&gt; [1] 6.786916</div><div class='input'>
 <span class='co'>## matrix ====</span>
-<span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>vec1</span>, <span class='no'>vec2</span>),
-    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-    <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+<span class='kw'>matrix</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
+    data = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>vec1</span>, <span class='kw'>vec2</span>),
+    ncol = <span class='fl'>2L</span>,
+    byrow = <span class='fl'>FALSE</span>
 )
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt;      [,1] [,2]
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>matrix</span>)
+</div><div class='output co'>#&gt;      [,1] [,2]
 #&gt; [1,]    1    1
 #&gt; [2,]    2    4
 #&gt; [3,]    3    9
 #&gt; [4,]    4   16
-#&gt; [5,]    5   25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div><div class='input'>
+#&gt; [5,]    5   25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='kw'>matrix</span>)
+</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div><div class='input'>
 <span class='co'>## Matrix ====</span>
-<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 5 x 2 sparse Matrix of class "dgCMatrix"
+<span class='kw'>sparse</span> <span class='op'>&lt;-</span> <span class='fu'>as</span>(<span class='kw'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>sparse</span>)
+</div><div class='output co'>#&gt; 5 x 2 sparse Matrix of class "dgCMatrix"
 #&gt;          
 #&gt; [1,] 1  1
 #&gt; [2,] 2  4
 #&gt; [3,] 3  9
 #&gt; [4,] 4 16
-#&gt; [5,] 5 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div></pre>
+#&gt; [5,] 5 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='kw'>sparse</span>)
+</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -230,7 +244,7 @@ return <code>NaN</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

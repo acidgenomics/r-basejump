@@ -75,7 +75,7 @@ are defined by underscores (e.g. this_is_snake_case)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -88,17 +88,23 @@ are defined by underscores (e.g. this_is_snake_case)." />
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -127,50 +133,50 @@ are defined by underscores (e.g. this_is_snake_case)." />
 are defined by underscores (e.g. <code>this_is_snake_case</code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>snakeCase</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for atomic</span>
-<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>snakeCase</span>(<span class='kw'>object</span>, names = <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for factor</span>
-<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>snakeCase</span>(<span class='kw'>object</span>, names = <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>snakeCase</span>(<span class='kw'>object</span>, names = <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>snakeCase</span>(<span class='kw'>object</span>, rownames = <span class='fl'>FALSE</span>, colnames = <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>snakeCase</span>(<span class='kw'>object</span>, rownames = <span class='fl'>FALSE</span>, colnames = <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for Vector</span>
-<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>snakeCase</span>(<span class='kw'>object</span>, names = <span class='fl'>TRUE</span>, mcols = <span class='fl'>TRUE</span>, metadata = <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for DataFrame</span>
 <span class='fu'>snakeCase</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>object</span>,
+  rownames = <span class='fl'>FALSE</span>,
+  colnames = <span class='fl'>TRUE</span>,
+  mcols = <span class='fl'>TRUE</span>,
+  metadata = <span class='fl'>TRUE</span>
 )
 
 <span class='co'># S4 method for Ranges</span>
-<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>mcols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>snakeCase</span>(<span class='kw'>object</span>, names = <span class='fl'>FALSE</span>, mcols = <span class='fl'>TRUE</span>, metadata = <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>snakeCase</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>snakeCase</span>(<span class='kw'>object</span>, rownames = <span class='fl'>FALSE</span>, colnames = <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>snakeCase</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>assayNames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>colData</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>object</span>,
+  rownames = <span class='fl'>FALSE</span>,
+  colnames = <span class='fl'>TRUE</span>,
+  assayNames = <span class='fl'>TRUE</span>,
+  rowData = <span class='fl'>TRUE</span>,
+  colData = <span class='fl'>TRUE</span>,
+  metadata = <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -240,8 +246,9 @@ returns unchanged, except for <code>character</code> or <code>vector</code> clas
     <p>Updated 2020-05-11.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>syntactic</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>syntactic</span>, <span class='no'>snakeCase</span>)</div><div class='output co'>#&gt; $character
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>syntactic</span>, package = <span class='st'>"acidtest"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='kw'>syntactic</span>, <span class='kw'>snakeCase</span>)
+</div><div class='output co'>#&gt; $character
 #&gt;  [1] "percent_gc"        "x10um"             "x5_3_bias"        
 #&gt;  [4] "x5prime"           "g2m_score"         "hello_world"      
 #&gt;  [7] "hello_world"       "mazda_rx4"         "n_count"          
@@ -298,7 +305,7 @@ returns unchanged, except for <code>character</code> or <code>vector</code> clas
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

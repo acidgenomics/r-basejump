@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,21 +131,21 @@
     <p>Deprecated functions</p>
     </div>
 
-    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='kw'>...</span>)
 
-<span class='fu'>readGFF</span>(<span class='no'>...</span>)
+<span class='fu'>readGFF</span>(<span class='kw'>...</span>)
 
-<span class='fu'>readGTF</span>(<span class='no'>...</span>)
+<span class='fu'>readGTF</span>(<span class='kw'>...</span>)
 
-<span class='fu'>readJSON</span>(<span class='no'>...</span>)
+<span class='fu'>readJSON</span>(<span class='kw'>...</span>)
 
-<span class='fu'>readYAML</span>(<span class='no'>...</span>)
+<span class='fu'>readYAML</span>(<span class='kw'>...</span>)
 
-<span class='fu'>readSampleData</span>(<span class='no'>...</span>)
+<span class='fu'>readSampleData</span>(<span class='kw'>...</span>)
 
-<span class='fu'>readTx2Gene</span>(<span class='no'>...</span>)
+<span class='fu'>readTx2Gene</span>(<span class='kw'>...</span>)
 
-<span class='fu'>coerceS4ToList</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>coerceS4ToList</span>(<span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,22 +174,23 @@ Corresponds to factors describing the columns of the object.</p></td>
     <div class='dont-index'><p><a href='https://rdrr.io/r/base/Deprecated.html'>Deprecated</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>...</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>a</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>...</span>) {
     <span class='fu'><a href='https://rdrr.io/r/base/Deprecated.html'>.Deprecated</a></span>(<span class='st'>"b"</span>)
-    <span class='fu'>b</span>(<span class='no'>...</span>)
+    <span class='fu'>b</span>(<span class='kw'>...</span>)
 }
 
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
-    <span class='no'>x</span> + <span class='fl'>1L</span>
+<span class='kw'>b</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
+    <span class='kw'>x</span> <span class='op'>+</span> <span class='fl'>1L</span>
 }
 
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>withCallingHandlers</a></span>(
-    <span class='kw'>expr</span> <span class='kw'>=</span> <span class='fu'>a</span>(<span class='fl'>1L</span>),
-    <span class='kw'>warning</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>w</span>) {
-        <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>w</span>)
+    expr = <span class='fu'>a</span>(<span class='fl'>1L</span>),
+    warning = <span class='fu'>function</span>(<span class='kw'>w</span>) {
+        <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>w</span>)
         <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>invokeRestart</a></span>(<span class='st'>"muffleWarning"</span>)
     }
-)</div><div class='output co'>#&gt; &lt;deprecatedWarning: 'a' is deprecated.
+)
+</div><div class='output co'>#&gt; &lt;deprecatedWarning: 'a' is deprecated.
 #&gt; Use 'b' instead.
 #&gt; See help("Deprecated")&gt;</div><div class='output co'>#&gt; [1] 2</div></pre>
   </div>
@@ -201,7 +208,7 @@ Corresponds to factors describing the columns of the object.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,34 +131,34 @@
     <p>Metadata that describes the samples.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>sampleData</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
-<span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='no'>...</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+<span class='fu'>sampleData</span>(<span class='kw'>object</span>, <span class='kw'>...</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>sampleData</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ignoreCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>, <span class='st'>"^samRef$"</span>)
+  <span class='kw'>object</span>,
+  clean = <span class='fl'>TRUE</span>,
+  ignoreCols = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>, <span class='st'>"^samRef$"</span>)
 )
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>sampleData</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ignoreCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>, <span class='st'>"^samRef$"</span>),
-  <span class='kw'>blacklistCols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^ident$"</span>, <span class='st'>"^g2mScore$"</span>, <span class='st'>"^sScore$"</span>, <span class='st'>"^phase$"</span>, <span class='st'>"^oldIdent$"</span>,
+  <span class='kw'>object</span>,
+  clean = <span class='fl'>TRUE</span>,
+  ignoreCols = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^description$"</span>, <span class='st'>"^genomeBuild$"</span>, <span class='st'>"^qualityFormat$"</span>, <span class='st'>"^samRef$"</span>),
+  blacklistCols = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"^ident$"</span>, <span class='st'>"^g2mScore$"</span>, <span class='st'>"^sScore$"</span>, <span class='st'>"^phase$"</span>, <span class='st'>"^oldIdent$"</span>,
     <span class='st'>"^origIdent$"</span>, <span class='st'>"^res[0-9]+"</span>)
 )
 
 <span class='co'># S4 method for SummarizedExperiment,DataFrame</span>
-<span class='fu'>sampleData</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+<span class='fu'>sampleData</span>(<span class='kw'>object</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='co'># S4 method for SingleCellExperiment,DataFrame</span>
-<span class='fu'>sampleData</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+<span class='fu'>sampleData</span>(<span class='kw'>object</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>object</span>)</pre>
+<span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='kw'>object</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -256,16 +262,17 @@ but it's required for working with multiple samples in a single object.</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
-    <span class='no'>RangedSummarizedExperiment</span>,
-    <span class='no'>SingleCellExperiment</span>,
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
+    <span class='kw'>RangedSummarizedExperiment</span>,
+    <span class='kw'>SingleCellExperiment</span>,
+    package = <span class='st'>"acidtest"</span>
 )
-<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
+<span class='kw'>rse</span> <span class='op'>&lt;-</span> <span class='kw'>RangedSummarizedExperiment</span>
+<span class='kw'>sce</span> <span class='op'>&lt;-</span> <span class='kw'>SingleCellExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse</span>
-<span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 3 columns
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>rse</span>
+<span class='fu'>sampleData</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 12 rows and 3 columns
 #&gt;          condition sampleName interestingGroups
 #&gt;           &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample01         A   sample01                 A
@@ -280,9 +287,10 @@ but it's required for working with multiple samples in a single object.</p></li>
 #&gt; sample11         B   sample11                 B
 #&gt; sample12         B   sample12                 B</div><div class='input'>
 <span class='co'>## Assignment support</span>
-<span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"batch"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1L</span>
+<span class='fu'>sampleData</span>(<span class='kw'>x</span>)[[<span class='st'>"batch"</span>]] <span class='op'>&lt;-</span> <span class='fl'>1L</span>
 <span class='co'>## `batch` column should be now defined.</span>
-<span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 3 columns
+<span class='fu'>sampleData</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 12 rows and 3 columns
 #&gt;          condition sampleName interestingGroups
 #&gt;           &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample01         A   sample01                 A
@@ -297,16 +305,18 @@ but it's required for working with multiple samples in a single object.</p></li>
 #&gt; sample11         B   sample11                 B
 #&gt; sample12         B   sample12                 B</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce</span>
-<span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>sce</span>
+<span class='fu'>sampleData</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1
 #&gt; sample2    sample2           sample2</div><div class='input'>
 <span class='co'>## Assignment support.</span>
-<span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"batch"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1L</span>
+<span class='fu'>sampleData</span>(<span class='kw'>x</span>)[[<span class='st'>"batch"</span>]] <span class='op'>&lt;-</span> <span class='fl'>1L</span>
 <span class='co'>## `batch` column should be now defined.</span>
-<span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+<span class='fu'>sampleData</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;         sampleName interestingGroups
 #&gt;           &lt;factor&gt;          &lt;factor&gt;
 #&gt; sample1    sample1           sample1
@@ -326,7 +336,7 @@ but it's required for working with multiple samples in a single object.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

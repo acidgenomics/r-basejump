@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,48 +131,48 @@
     <p>Unpivot column data from wide format to long format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>melt</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>melt</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>melt</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>, <span class='st'>"value"</span>),
-  <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
-  <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
-  <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>)
+  <span class='kw'>object</span>,
+  colnames = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>, <span class='st'>"value"</span>),
+  min = <span class='op'>-</span><span class='fl'>Inf</span>,
+  minMethod = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
+  trans = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>)
 )
 
 <span class='co'># S4 method for table</span>
-<span class='fu'>melt</span>(<span class='no'>object</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>, <span class='st'>"value"</span>))
+<span class='fu'>melt</span>(<span class='kw'>object</span>, colnames = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>, <span class='st'>"value"</span>))
 
 <span class='co'># S4 method for Matrix</span>
 <span class='fu'>melt</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>, <span class='st'>"value"</span>),
-  <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
-  <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
-  <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>)
+  <span class='kw'>object</span>,
+  colnames = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>, <span class='st'>"value"</span>),
+  min = <span class='op'>-</span><span class='fl'>Inf</span>,
+  minMethod = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
+  trans = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>)
 )
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>melt</span>(<span class='no'>object</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>, <span class='st'>"value"</span>))
+<span class='fu'>melt</span>(<span class='kw'>object</span>, colnames = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rowname"</span>, <span class='st'>"colname"</span>, <span class='st'>"value"</span>))
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>melt</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
-  <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
-  <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>)
+  <span class='kw'>object</span>,
+  assay = <span class='fl'>1L</span>,
+  min = <span class='op'>-</span><span class='fl'>Inf</span>,
+  minMethod = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
+  trans = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>)
 )
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>melt</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
-  <span class='kw'>minMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
-  <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>)
+  <span class='kw'>object</span>,
+  assay = <span class='fl'>1L</span>,
+  min = <span class='op'>-</span><span class='fl'>Inf</span>,
+  minMethod = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"absolute"</span>, <span class='st'>"perRow"</span>),
+  trans = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -230,27 +236,32 @@ Assay name or index position.</p></td>
 
     <div class='dont-index'><p>tidyr:<div class="r"></p><pre><span class='fu'><a href='https://rdrr.io/r/utils/methods.html'>methods</a></span>(<span class='st'>"gather"</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/methods.html'>methods</a></span>(<span class='st'>"gather_"</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/getS3method.html'>getS3method</a></span>(<span class='st'>"gather"</span>, <span class='st'>"data.frame"</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-internal.html'>asNamespace</a></span>(<span class='st'>"tidyr"</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/getS3method.html'>getS3method</a></span>(<span class='st'>"gather_"</span>, <span class='st'>"data.frame"</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-internal.html'>asNamespace</a></span>(<span class='st'>"tidyr"</span>))
-<span class='kw pkg'>tidyr</span><span class='kw ns'>:::</span><span class='no'>melt_dataframe</span></pre><p></div></p>
+<span class='fu'><a href='https://rdrr.io/r/utils/getS3method.html'>getS3method</a></span>(<span class='st'>"gather"</span>, <span class='st'>"data.frame"</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/ns-internal.html'>asNamespace</a></span>(<span class='st'>"tidyr"</span>))
+<span class='fu'><a href='https://rdrr.io/r/utils/getS3method.html'>getS3method</a></span>(<span class='st'>"gather_"</span>, <span class='st'>"data.frame"</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/ns-internal.html'>asNamespace</a></span>(<span class='st'>"tidyr"</span>))
+<span class='kw'>tidyr</span>:::<span class='kw'>melt_dataframe</span>
+</pre><p></div></p>
 <p>https://github.com/tidyverse/tidyr/blob/master/src/melt.cpp
 https://github.com/tidyverse/tidyr/blob/master/src/RcppExports.cpp</p>
-<p>reshape2 (deprecated):<div class="r"></p><pre><span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span>(<span class='kw'>topic</span> <span class='kw'>=</span> <span class='st'>"melt.array"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"reshape2"</span>)
+<p>reshape2 (deprecated):<div class="r"></p><pre><span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span>(topic = <span class='st'>"melt.array"</span>, package = <span class='st'>"reshape2"</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/methods.html'>methods</a></span>(<span class='st'>"melt"</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/getS3method.html'>getS3method</a></span>(<span class='st'>"melt"</span>, <span class='st'>"data.array"</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-internal.html'>asNamespace</a></span>(<span class='st'>"tidyr"</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/getS3method.html'>getS3method</a></span>(<span class='st'>"melt"</span>, <span class='st'>"data.frame"</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-internal.html'>asNamespace</a></span>(<span class='st'>"tidyr"</span>))</pre><p></div></p></div>
+<span class='fu'><a href='https://rdrr.io/r/utils/getS3method.html'>getS3method</a></span>(<span class='st'>"melt"</span>, <span class='st'>"data.array"</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/ns-internal.html'>asNamespace</a></span>(<span class='st'>"tidyr"</span>))
+<span class='fu'><a href='https://rdrr.io/r/utils/getS3method.html'>getS3method</a></span>(<span class='st'>"melt"</span>, <span class='st'>"data.frame"</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/ns-internal.html'>asNamespace</a></span>(<span class='st'>"tidyr"</span>))
+</pre><p></div></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
-    <span class='no'>RangedSummarizedExperiment</span>,
-    <span class='no'>SingleCellExperiment</span>,
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
+    <span class='kw'>RangedSummarizedExperiment</span>,
+    <span class='kw'>SingleCellExperiment</span>,
+    package = <span class='st'>"acidtest"</span>
 )
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; [1] 500  12</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>melt</span>(<span class='no'>object</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 6000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 6000 rows and 6 columns
+<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>RangedSummarizedExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt; [1] 500  12</div><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>melt</span>(<span class='kw'>object</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] 6000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 6000 rows and 6 columns
 #&gt;       colname rowname value condition sampleName interestingGroups
 #&gt;         &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;     &lt;Rle&gt;      &lt;Rle&gt;             &lt;Rle&gt;
 #&gt; 1    sample01 gene001     2         A   sample01                 A
@@ -265,9 +276,12 @@ https://github.com/tidyverse/tidyr/blob/master/src/RcppExports.cpp</p>
 #&gt; 5999 sample12 gene499     0         B   sample12                 B
 #&gt; 6000 sample12 gene500    36         B   sample12                 B</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; [1] 500 100</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>melt</span>(<span class='no'>object</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 50000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 50000 rows and 6 columns
+<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>SingleCellExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='kw'>object</span>)
+</div><div class='output co'>#&gt; [1] 500 100</div><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>melt</span>(<span class='kw'>object</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] 50000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 50000 rows and 6 columns
 #&gt;       colname rowname value sampleID sampleName interestingGroups
 #&gt;         &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;    &lt;Rle&gt;      &lt;Rle&gt;             &lt;Rle&gt;
 #&gt; 1     cell001 gene001     0  sample1    sample1           sample1
@@ -296,7 +310,7 @@ https://github.com/tidyverse/tidyr/blob/master/src/RcppExports.cpp</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -127,11 +133,11 @@
 
     <pre class="usage"><span class='fu'>currentEnsemblVersion</span>()
 
-<span class='fu'>currentGencodeVersion</span>(<span class='no'>organism</span>)
+<span class='fu'>currentGencodeVersion</span>(<span class='kw'>organism</span>)
 
 <span class='fu'>currentRefseqVersion</span>()
 
-<span class='fu'>currentFlybaseVersion</span>(<span class='kw'>dmel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>currentFlybaseVersion</span>(dmel = <span class='fl'>FALSE</span>)
 
 <span class='fu'>currentWormbaseVersion</span>()</pre>
 
@@ -169,10 +175,10 @@ Release version.</p>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>## Protect against Ensembl timeouts causing build checks to fail.
-## &gt; if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {
-## &gt;     currentEnsemblVersion()
-## &gt; }
+    <pre class="examples"><div class='input'><span class='co'>## Protect against Ensembl timeouts causing build checks to fail.</span>
+<span class='co'>## &gt; if (goalie::hasInternet(url = "ftp://ftp.ensembl.org/")) {</span>
+<span class='co'>## &gt;     currentEnsemblVersion()</span>
+<span class='co'>## &gt; }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -189,7 +195,7 @@ Release version.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

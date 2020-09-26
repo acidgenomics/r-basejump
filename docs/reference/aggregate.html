@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,13 +131,13 @@
     <p>Aggregate</p>
     </div>
 
-    <pre class="usage"><span class='fu'>aggregate</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>aggregate</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregate</span>(<span class='no'>x</span>, <span class='no'>by</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"n"</span>))
+<span class='fu'>aggregate</span>(<span class='kw'>x</span>, <span class='kw'>by</span>, fun = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"geometricMean"</span>, <span class='st'>"n"</span>))
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>aggregate</span>(<span class='no'>x</span>, <span class='no'>by</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"n"</span>))</pre>
+<span class='fu'>aggregate</span>(<span class='kw'>x</span>, <span class='kw'>by</span>, fun = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"n"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,33 +183,35 @@ Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <pre class="examples"><div class='input'><span class='kw'>counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
+    data = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
         <span class='fl'>0L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>,
         <span class='fl'>2L</span>, <span class='fl'>0L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>,
         <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>0L</span>, <span class='fl'>2L</span>,
         <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>0L</span>
     ),
-    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
-    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
-    <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    nrow = <span class='fl'>4L</span>,
+    ncol = <span class='fl'>4L</span>,
+    byrow = <span class='fl'>TRUE</span>,
+    dimnames = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
         <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"transcript"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4L</span>)),
         <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(
-            <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)),
-            <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"replicate"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>2L</span>)),
-            <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"_"</span>
+            <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), each = <span class='fl'>2L</span>)),
+            <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"replicate"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), times = <span class='fl'>2L</span>)),
+            sep = <span class='st'>"_"</span>
         )
     )
 )
 
-<span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"gene"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)))
-<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>genes</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='no'>counts</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; transcript1 transcript2 transcript3 transcript4 
+<span class='kw'>genes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"gene"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), each = <span class='fl'>2L</span>)))
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>genes</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='kw'>counts</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>genes</span>)
+</div><div class='output co'>#&gt; transcript1 transcript2 transcript3 transcript4 
 #&gt;       gene1       gene1       gene2       gene2 
 #&gt; Levels: gene1 gene2</div><div class='input'>
 <span class='co'>## matrix ====</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>counts</span>)
+</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  0                  2                  2
 #&gt; transcript2                  2                  0                  2
 #&gt; transcript3                  2                  2                  0
@@ -212,15 +220,17 @@ Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code
 #&gt; transcript1                  2
 #&gt; transcript2                  2
 #&gt; transcript3                  2
-#&gt; transcript4                  0</div><div class='input'><span class='fu'>aggregate</span>(<span class='no'>counts</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt;       sample1_replicate1 sample1_replicate2 sample2_replicate1
+#&gt; transcript4                  0</div><div class='input'><span class='fu'>aggregate</span>(<span class='kw'>counts</span>, by = <span class='kw'>genes</span>)
+</div><div class='output co'>#&gt;       sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; gene1                  2                  2                  4
 #&gt; gene2                  4                  4                  2
 #&gt;       sample2_replicate2
 #&gt; gene1                  4
 #&gt; gene2                  2</div><div class='input'>
 <span class='co'>## Matrix ====</span>
-<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>counts</span>, <span class='st'>"sparseMatrix"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 4 x 4 sparse Matrix of class "dgCMatrix"
+<span class='kw'>sparse</span> <span class='op'>&lt;-</span> <span class='fu'>as</span>(<span class='kw'>counts</span>, <span class='st'>"sparseMatrix"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>sparse</span>)
+</div><div class='output co'>#&gt; 4 x 4 sparse Matrix of class "dgCMatrix"
 #&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  .                  2                  2
 #&gt; transcript2                  2                  .                  2
@@ -230,7 +240,8 @@ Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code
 #&gt; transcript1                  2
 #&gt; transcript2                  2
 #&gt; transcript3                  2
-#&gt; transcript4                  .</div><div class='input'><span class='fu'>aggregate</span>(<span class='no'>sparse</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
+#&gt; transcript4                  .</div><div class='input'><span class='fu'>aggregate</span>(<span class='kw'>sparse</span>, by = <span class='kw'>genes</span>)
+</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
 #&gt;       sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; gene1                  2                  2                  4
 #&gt; gene2                  4                  4                  2
@@ -252,7 +263,7 @@ Uses <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
