@@ -75,7 +75,7 @@ transgene and FASTA spike-in sequences." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -88,17 +88,23 @@ transgene and FASTA spike-in sequences." />
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -128,9 +134,9 @@ transgene and FASTA spike-in sequences.</p>
     </div>
 
     <pre class="usage"><span class='fu'>emptyRanges</span>(
-  <span class='no'>names</span>,
-  <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"unknown"</span>, <span class='st'>"transgene"</span>, <span class='st'>"spike"</span>),
-  <span class='kw'>mcolnames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>names</span>,
+  seqname = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"unknown"</span>, <span class='st'>"transgene"</span>, <span class='st'>"spike"</span>),
+  mcolnames = <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -169,14 +175,16 @@ another <code>GRanges</code> that contains metadata.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Unknown/dead genes.</span>
-<span class='fu'>emptyRanges</span>(<span class='st'>"ENSG00000000000"</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"unknown"</span>)</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
+<span class='fu'>emptyRanges</span>(<span class='st'>"ENSG00000000000"</span>, seqname = <span class='st'>"unknown"</span>)
+</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
 #&gt;                   seqnames    ranges strand
 #&gt;                      &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
 #&gt;   ENSG00000000000  unknown     1-100      *
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
 <span class='co'>## Transgenes.</span>
-<span class='fu'>emptyRanges</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>, <span class='st'>"GAL4"</span>), <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"transgene"</span>)</div><div class='output co'>#&gt; GRanges object with 3 ranges and 0 metadata columns:
+<span class='fu'>emptyRanges</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>, <span class='st'>"GAL4"</span>), seqname = <span class='st'>"transgene"</span>)
+</div><div class='output co'>#&gt; GRanges object with 3 ranges and 0 metadata columns:
 #&gt;             seqnames    ranges strand
 #&gt;                &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
 #&gt;       EGFP transgene     1-100      *
@@ -185,7 +193,8 @@ another <code>GRanges</code> that contains metadata.</p></td>
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
 <span class='co'>## Spike-ins.</span>
-<span class='fu'>emptyRanges</span>(<span class='st'>"ERCC"</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"spike"</span>)</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
+<span class='fu'>emptyRanges</span>(<span class='st'>"ERCC"</span>, seqname = <span class='st'>"spike"</span>)
+</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
 #&gt;        seqnames    ranges strand
 #&gt;           &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
 #&gt;   ERCC    spike     1-100      *
@@ -206,7 +215,7 @@ another <code>GRanges</code> that contains metadata.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -1,3 +1,29 @@
+## basejump 0.12.15 (2020-09-25)
+
+### New classes
+
+- `Protein2Gene`: `DataFrame` with `proteinID`, `geneID`, and `geneName`
+  columns. Use corresponding `makeProtein2GeneFromEnsembl` to generate object
+  simplify using Ensembl protein IDs as input.
+
+### New functions
+
+- `getEnsDb`: Now exporting function that was used internally to obtain `EnsDb`
+  object from AnnotationHub.
+- `makeProtein2GeneFromEnsembl`: New utility function that takes Ensembl protein
+  identifiers as input, and returns corresponding gene identifiers and gene
+  names (i.e. HUGO gene symbols).
+
+### Minor changes
+
+- Reworked some internal code in `makeGRangesFromEnesmbl` to enable export of
+  new `getEnsDb` function.
+- Reworked internal handling of AnnotationHub and EnsDb metadata.
+- `makeGRangesFromEnsembl` / `getEnsDb`: Improved sorting of Ensembl releases
+  so that current release greater than 99 returns as expected. Since Ensembl is
+  now at 101, we need to convert to integers internally instead of attempting
+  to sort on strings.
+
 ## basejump 0.12.14 (2020-09-14)
 
 ### New functions

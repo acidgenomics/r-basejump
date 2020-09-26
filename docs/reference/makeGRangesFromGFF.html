@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -126,17 +132,17 @@
     </div>
 
     <pre class="usage"><span class='fu'>makeGRangesFromGFF</span>(
-  <span class='no'>file</span>,
-  <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
-  <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>.checkAgainstTxDb</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>file</span>,
+  level = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
+  ignoreTxVersion = <span class='fl'>TRUE</span>,
+  .checkAgainstTxDb = <span class='fl'>FALSE</span>
 )
 
 <span class='fu'>makeGRangesFromGTF</span>(
-  <span class='no'>file</span>,
-  <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
-  <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>.checkAgainstTxDb</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>file</span>,
+  level = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
+  ignoreTxVersion = <span class='fl'>TRUE</span>,
+  .checkAgainstTxDb = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -352,12 +358,16 @@ browser is required in a web browser.</p>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"ensembl.gtf"</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"none"</span>)
+    <pre class="examples"><div class='input'><span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/acidbase/man/pasteURL.html'>pasteURL</a></span>(<span class='kw'>basejumpTestsURL</span>, <span class='st'>"ensembl.gtf"</span>, protocol = <span class='st'>"none"</span>)
 
 <span class='co'>## Genes</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making <span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>ensembl.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>ensembl.gtf</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneBiotype, geneName, seqnames`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`geneID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 60 genes detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 60 ranges and 8 metadata columns"</div><div class='input'>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(file = <span class='kw'>file</span>, level = <span class='st'>"genes"</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Making <span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>ensembl.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>ensembl.gtf</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneBiotype, geneName, seqnames`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`geneID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 60 genes detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] "GRanges object with 60 ranges and 8 metadata columns"</div><div class='input'>
 <span class='co'>## Transcripts</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>ensembl.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>ensembl.gtf</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 167 transcripts detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 167 ranges and 16 metadata columns"</div></span></pre>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(file = <span class='kw'>file</span>, level = <span class='st'>"transcripts"</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>ensembl.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>ensembl.gtf</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 167 transcripts detected.</span></div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] "GRanges object with 167 ranges and 16 metadata columns"</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -373,7 +383,7 @@ browser is required in a web browser.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -86,17 +86,23 @@
   </a>
 </li>
 <li>
-  <a href="articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -139,29 +145,33 @@
 <ul>
 <li>Object and function parameter arguments should be formated in lowerCamelCase.</li>
 <li>Use spaces instead of tabs. Indent with 4 spaces.</li>
-<li>Use <code>&lt;-</code> and not <code>=</code> for assignment.</li>
+<li>Use <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> and not <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> for assignment.</li>
 <li>Explicitly define <code>if</code>/<code>then</code> statements using opening and closing brackets (<code>{</code>, <code>}</code>).</li>
 <li>
 <code>else</code> declarations should be on the same line as the closing bracket.</li>
-<li>Use spaces around assignment operators (<code>&lt;-</code>), brackets (<code>{</code>), and comma delimiters (e.g. <code><a href="https://rdrr.io/r/base/c.html">c("foo", "bar")</a></code> not <code><a href="https://rdrr.io/r/base/c.html">c("foo","bar")</a></code>.</li>
+<li>Use spaces around assignment operators (<code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>), brackets (<code>{</code>), and comma delimiters (e.g. <code><a href="https://rdrr.io/r/base/c.html">c("foo", "bar")</a></code> not <code><a href="https://rdrr.io/r/base/c.html">c("foo","bar")</a></code>.</li>
 </ul>
 </div>
 <div id="required-checks" class="section level2">
 <h2 class="hasAnchor">
 <a href="#required-checks" class="anchor"></a>Required checks</h2>
 <p>Run these commands prior to a pull request:</p>
-<div class="sourceCode" id="cb1"><html><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/document.html">document</a></span>()
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/run_examples.html">run_examples</a></span>()
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/test.html">test</a></span>()
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/check.html">check</a></span>()
-<span class="kw pkg">BiocCheck</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocCheck/man/BiocCheck.html">BiocCheck</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>())
-<span class="kw pkg">lintr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/lintr/man/lint_package.html">lint_package</a></span>()
-<span class="kw pkg">covr</span><span class="kw ns">::</span><span class="fu"><a href="http://covr.r-lib.org/reference/report.html">report</a></span>()</pre></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/document.html">document</a></span>()
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/run_examples.html">run_examples</a></span>()
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/test.html">test</a></span>()
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/check.html">check</a></span>()
+<span class="kw">BiocCheck</span>::<span class="fu"><a href="https://rdrr.io/pkg/BiocCheck/man/BiocCheck.html">BiocCheck</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>())
+<span class="kw">lintr</span>::<span class="fu"><a href="https://rdrr.io/pkg/lintr/man/lint_package.html">lint_package</a></span>()
+<span class="kw">covr</span>::<span class="fu"><a href="http://covr.r-lib.org/reference/report.html">report</a></span>()
+</pre></div>
 <div id="rebuild-website" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rebuild-website" class="anchor"></a>Rebuild website</h3>
-<div class="sourceCode" id="cb2"><html><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/unlink.html">unlink</a></span>(<span class="st">"docs"</span>, <span class="kw">recursive</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="kw pkg">pkgdown</span><span class="kw ns">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</pre></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/unlink.html">unlink</a></span>(<span class="st">"docs"</span>, recursive = <span class="fl">TRUE</span>)
+<span class="kw">pkgdown</span>::<span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()
+</pre></div>
 </div>
 </div>
 </div>
@@ -184,7 +194,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

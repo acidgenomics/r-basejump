@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -126,11 +132,11 @@
     </div>
 
     <pre class="usage"><span class='fu'>importSampleData</span>(
-  <span class='no'>file</span>,
-  <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>lanes</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"bcbio"</span>, <span class='st'>"cellranger"</span>, <span class='st'>"cpi"</span>),
-  <span class='kw'>autopadZeros</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>file</span>,
+  sheet = <span class='fl'>1L</span>,
+  lanes = <span class='fl'>0L</span>,
+  pipeline = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"bcbio"</span>, <span class='st'>"cellranger"</span>, <span class='st'>"cpi"</span>),
+  autopadZeros = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -209,11 +215,16 @@ the sample directory names (e.g. <code>"sample-ATAGAGAG"</code>). Define the for
 index barcode in the <code>sequence</code> column here, not the reverse complement. The
 reverse complement will be calculated automatically and added as the
 <code>revcomp</code> column in the sample metadata.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Michael Steinbaugh</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Demultiplexed ====</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-demultiplexed.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>bcbio-metadata-demultiplexed.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
+<span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='kw'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-demultiplexed.csv"</span>)
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='kw'>file</span>, pipeline = <span class='st'>"bcbio"</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>bcbio-metadata-demultiplexed.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
 #&gt;         sampleName            fileName description genotype
 #&gt;           &lt;factor&gt;            &lt;factor&gt;    &lt;factor&gt; &lt;factor&gt;
 #&gt; sample1    sample1 sample1_R1.fastq.gz     sample1 wildtype
@@ -221,8 +232,10 @@ reverse complement will be calculated automatically and added as the
 #&gt; sample3    sample3 sample3_R1.fastq.gz     sample3 wildtype
 #&gt; sample4    sample4 sample4_R1.fastq.gz     sample4 knockout</div><div class='input'>
 <span class='co'>## Multiplexed ====</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-multiplexed-indrops.csv"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='no'>file</span>, <span class='kw'>pipeline</span> <span class='kw'>=</span> <span class='st'>"bcbio"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>bcbio-metadata-multiplexed-indrops.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
+<span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='kw'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-multiplexed-indrops.csv"</span>)
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>importSampleData</span>(<span class='kw'>file</span>, pipeline = <span class='st'>"bcbio"</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>bcbio-metadata-multiplexed-indrops.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
 #&gt;                   sampleName             fileName       description    index
 #&gt;                     &lt;factor&gt;             &lt;factor&gt;          &lt;factor&gt; &lt;factor&gt;
 #&gt; indrops1_AGAGGATA  sample2_1 indrops1_R1.fastq.gz indrops1-AGAGGATA        2
@@ -258,7 +271,7 @@ reverse complement will be calculated automatically and added as the
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

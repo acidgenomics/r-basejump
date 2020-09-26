@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -126,9 +132,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>makeGRangesFromEnsDb</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
-  <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>object</span>,
+  level = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
+  ignoreTxVersion = <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -163,9 +169,10 @@ Alternatively, can pass in an EnsDb package name as a <code><a href='https://rdr
     <p>Updated 2020-01-20.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='st'>"EnsDb.Hsapiens.v75"</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/installed.packages.html'>installed.packages</a></span>())) {
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)
-}</div><div class='output co'>#&gt; <span class='message'>→ Making <span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from </span><span style='color: #000000;background-color: #BBBBBB;'>`EnsDb`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>    Organism: Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>    Genome build: GRCh37</span></div><div class='output co'>#&gt; <span class='message'>    Ensembl release: 75</span></div><div class='output co'>#&gt; <span class='message'>    Level: genes</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneBiotype, geneName, seqnames`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`geneID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 64102 genes detected.</span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='st'>"EnsDb.Hsapiens.v75"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/installed.packages.html'>installed.packages</a></span>())) {
+    <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeGRangesFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)
+}
+</div><div class='output co'>#&gt; <span class='message'>→ Making <span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from </span><span style='color: #000000;background-color: #BBBBBB;'>`EnsDb`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>    Organism: Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>    Genome build: GRCh37</span></div><div class='output co'>#&gt; <span class='message'>    Ensembl release: 75</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneBiotype, geneName, seqnames`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`geneID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 64102 genes detected.</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -181,7 +188,7 @@ Alternatively, can pass in an EnsDb package name as a <code><a href='https://rdr
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

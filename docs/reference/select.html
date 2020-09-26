@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -125,10 +131,10 @@
     <p>Select multiple columns</p>
     </div>
 
-    <pre class="usage"><span class='fu'>selectIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>selectIf</span>(<span class='kw'>object</span>, <span class='kw'>predicate</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for DataFrame,`function`</span>
-<span class='fu'>selectIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>)</pre>
+<span class='fu'>selectIf</span>(<span class='kw'>object</span>, <span class='kw'>predicate</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,14 +164,16 @@ For example, <code><a href='https://rdrr.io/r/base/is.recursive.html'>is.atomic(
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>These functions are inspired by dplyr. However, they are designed to only
-work on <code>DataFrame</code> class, and use base R code internally.<div class="r"></p><pre><span class='no'>`help(topic = "select_all", package = "dplyr")`</span></pre><p></div></p></div>
+work on <code>DataFrame</code> class, and use base R code internally.<div class="r"></p><pre><span class='kw'>`help(topic = "select_all", package = "dplyr")`</span>
+</pre><p></div></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>iris</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"datasets"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>iris</span>, package = <span class='st'>"datasets"</span>)
 
 <span class='co'>## DataFrame ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>iris</span>, <span class='st'>"DataFrame"</span>)
-<span class='fu'>selectIf</span>(<span class='no'>x</span>, <span class='kw'>predicate</span> <span class='kw'>=</span> <span class='no'>is.factor</span>)</div><div class='output co'>#&gt; DataFrame with 150 rows and 1 column
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>as</span>(<span class='kw'>iris</span>, <span class='st'>"DataFrame"</span>)
+<span class='fu'>selectIf</span>(<span class='kw'>x</span>, predicate = <span class='kw'>is.factor</span>)
+</div><div class='output co'>#&gt; DataFrame with 150 rows and 1 column
 #&gt;       Species
 #&gt;      &lt;factor&gt;
 #&gt; 1      setosa
@@ -194,7 +202,7 @@ work on <code>DataFrame</code> class, and use base R code internally.<div class=
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

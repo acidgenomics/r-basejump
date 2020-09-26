@@ -54,7 +54,7 @@ detectOrganism <- function(object) {
     data <- import(
         file = system.file(
             "extdata",
-            "organismMappings.rda",
+            "organismMappings.rds",
             package = "basejump"
         ),
         quiet = TRUE

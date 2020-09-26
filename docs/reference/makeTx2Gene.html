@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
       </span>
     </div>
 
@@ -87,17 +87,23 @@
   </a>
 </li>
 <li>
-  <a href="../articles/basejump.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://acidgenomics.com/">
+    <span class="fas fa fas fa-vial fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/acidgenomics/basejump/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -126,15 +132,15 @@
     </div>
 
     <pre class="usage"><span class='fu'>makeTx2GeneFromEnsembl</span>(
-  <span class='no'>organism</span>,
-  <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>organism</span>,
+  genomeBuild = <span class='kw'>NULL</span>,
+  release = <span class='kw'>NULL</span>,
+  ignoreTxVersion = <span class='fl'>TRUE</span>
 )
 
-<span class='fu'>makeTx2GeneFromEnsDb</span>(<span class='no'>object</span>, <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>makeTx2GeneFromEnsDb</span>(<span class='kw'>object</span>, ignoreTxVersion = <span class='fl'>TRUE</span>)
 
-<span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>, <span class='kw'>ignoreTxVersion</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>makeTx2GeneFromGFF</span>(<span class='kw'>file</span>, ignoreTxVersion = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,7 +198,9 @@ File path.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## makeTx2GeneFromEnsembl ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsembl</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making <span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>→ Matching </span><span style='color: #000000;background-color: #BBBBBB;'>`EnsDb`</span><span> from </span><span style='color: #0000BB;'>AnnotationHub</span><span> 2.20.2 (2020-04-27).</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> </span><span style='color: #0000BB;'>AH78783</span><span>: Ensembl 99 EnsDb for Homo sapiens.</span></div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from </span><span style='color: #000000;background-color: #BBBBBB;'>`EnsDb`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>    Organism: Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>    Genome build: GRCh38</span></div><div class='output co'>#&gt; <span class='message'>    Ensembl release: 99</span></div><div class='output co'>#&gt; <span class='message'>    Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>→ Merging gene-level annotations: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, geneBiotype, seqCoordSystem, description, geneIDVersion, symbol, entrezid`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>!</span><span> 14 invalid names: </span><span style='color: #000000;background-color: #BBBBBB;'>`LRG_321t1-1, LRG_321t1-2, LRG_321t2-1, LRG_321t2-2, LRG_321t3-1, LRG_321t3-2, LRG_321t4-1, LRG_3....`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 250641 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 250641 rows and 2 columns
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsembl</span>(organism = <span class='st'>"Homo sapiens"</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Making <span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from Ensembl.</span></div><div class='output co'>#&gt; <span class='message'>→ Getting </span><span style='color: #000000;background-color: #BBBBBB;'>`EnsDb`</span><span> from </span><span style='color: #0000BB;'>AnnotationHub</span><span> 2.20.2 (2020-04-27).</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> </span><span style='color: #0000BB;'>AH83216</span><span>: Ensembl 101 EnsDb for Homo sapiens.</span></div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from </span><span style='color: #000000;background-color: #BBBBBB;'>`EnsDb`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>    Organism: Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>    Genome build: GRCh38</span></div><div class='output co'>#&gt; <span class='message'>    Ensembl release: 101</span></div><div class='output co'>#&gt; <span class='message'>→ Merging gene-level annotations: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, geneBiotype, seqCoordSystem, description, geneIDVersion, symbol, entrezid`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>!</span><span> 14 invalid names: </span><span style='color: #000000;background-color: #BBBBBB;'>`LRG_321t1-1, LRG_321t1-2, LRG_321t2-1, LRG_321t2-2, LRG_321t3-1, LRG_321t3-2, LRG_321t4-1, LRG_3....`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 252335 genes detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; Tx2Gene with 252335 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000000233 ENST00000000233 ENSG00000004059
@@ -207,10 +215,11 @@ File path.</p></td>
 #&gt; LRG_999t2             LRG_999t2         LRG_999
 #&gt; LRG_99t1               LRG_99t1          LRG_99</div><div class='input'>
 <span class='co'>## makeTx2GeneFromEnsDb ====</span>
-<span class='kw'>if</span> (<span class='st'>"EnsDb.Hsapiens.v75"</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/installed.packages.html'>installed.packages</a></span>())) {
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)
-    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)
-}</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from </span><span style='color: #000000;background-color: #BBBBBB;'>`EnsDb`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>    Organism: Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>    Genome build: GRCh37</span></div><div class='output co'>#&gt; <span class='message'>    Ensembl release: 75</span></div><div class='output co'>#&gt; <span class='message'>    Level: transcripts</span></div><div class='output co'>#&gt; <span class='message'>→ Merging gene-level annotations: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, geneBiotype, seqCoordSystem, symbol, entrezid`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 215647 transcripts detected.</span></div><div class='output co'>#&gt; Tx2Gene with 215647 rows and 2 columns
+<span class='co'>if</span> (<span class='st'>"EnsDb.Hsapiens.v75"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/installed.packages.html'>installed.packages</a></span>())) {
+    <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeTx2GeneFromEnsDb</span>(<span class='st'>"EnsDb.Hsapiens.v75"</span>)
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+}
+</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from </span><span style='color: #000000;background-color: #BBBBBB;'>`EnsDb`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>    Organism: Homo sapiens</span></div><div class='output co'>#&gt; <span class='message'>    Genome build: GRCh37</span></div><div class='output co'>#&gt; <span class='message'>    Ensembl release: 75</span></div><div class='output co'>#&gt; <span class='message'>→ Merging gene-level annotations: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, geneBiotype, seqCoordSystem, symbol, entrezid`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 215647 genes detected.</span></div><div class='output co'>#&gt; Tx2Gene with 215647 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000000233 ENST00000000233 ENSG00000004059
@@ -226,8 +235,10 @@ File path.</p></td>
 #&gt; LRG_99t1               LRG_99t1          LRG_99</div><div class='input'>
 <span class='co'>## makeTx2GeneFromGFF ====</span>
 <span class='co'>## GTF</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"example.gtf"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>example.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>example.gtf</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 20 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 20 rows and 2 columns
+<span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='kw'>basejumpTestsURL</span>, <span class='st'>"example.gtf"</span>)
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='kw'>file</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>example.gtf</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>example.gtf</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GTF detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 20 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; Tx2Gene with 20 rows and 2 columns
 #&gt;                          transcriptID             geneID
 #&gt;                           &lt;character&gt;        &lt;character&gt;
 #&gt; ENSMUST00000070533 ENSMUST00000070533 ENSMUSG00000051951
@@ -242,8 +253,10 @@ File path.</p></td>
 #&gt; ENSMUST00000195335 ENSMUST00000195335 ENSMUSG00000103377
 #&gt; ENSMUST00000208660 ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
 <span class='co'>## GFF3</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>basejumpTestsURL</span>, <span class='st'>"example.gff3"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>example.gff3</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>example.gff3</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Merging gene-level annotations: </span><span style='color: #000000;background-color: #BBBBBB;'>`logicName, description, havanaGene, geneName, geneBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 26 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Tx2Gene with 26 rows and 2 columns
+<span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='kw'>basejumpTestsURL</span>, <span class='st'>"example.gff3"</span>)
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeTx2GeneFromGFF</span>(<span class='kw'>file</span>)
+</div><div class='output co'>#&gt; <span class='message'>→ Making </span><span style='color: #000000;background-color: #BBBBBB;'>`GRanges`</span><span> from GFF file (</span><span style='color: #0000BB;'>example.gff3</span><span>).</span></div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>example.gff3</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.12</span><span> using </span><span style='color: #0000BB;'>rtracklayer</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`import()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Ensembl GFF3 detected.</span></div><div class='output co'>#&gt; <span class='message'>→ Merging gene-level annotations: </span><span style='color: #000000;background-color: #BBBBBB;'>`logicName, description, havanaGene, geneName, geneBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Defining </span><span style='color: #000000;background-color: #BBBBBB;'>`broadClass`</span><span> using: </span><span style='color: #000000;background-color: #BBBBBB;'>`geneName, seqnames, transcriptBiotype`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'>→ Arranging by </span><span style='color: #000000;background-color: #BBBBBB;'>`transcriptID`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 26 transcripts detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; Tx2Gene with 26 rows and 2 columns
 #&gt;                          transcriptID             geneID
 #&gt;                           &lt;character&gt;        &lt;character&gt;
 #&gt; ENSMUST00000027032 ENSMUST00000027032 ENSMUSG00000025900
@@ -272,7 +285,7 @@ File path.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
