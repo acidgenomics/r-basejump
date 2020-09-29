@@ -1,3 +1,10 @@
+## basejump 0.12.16 (2020-09-29)
+
+### Minor changes
+
+- `makeProtein2GeneFromEnsembl`: Improved error message on match failure. Now
+  returns the protein IDs that failed to match more clearly.
+
 ## basejump 0.12.15 (2020-09-25)
 
 ### New classes
