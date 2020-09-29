@@ -1,7 +1,7 @@
 #' Map protein identifiers to genes
 #'
 #' @name makeProtein2Gene
-#' @note Updated 2020-09-25.
+#' @note Updated 2020-09-29.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ids `character`.
@@ -23,6 +23,10 @@ makeProtein2GeneFromEnsembl <- function(
     genomeBuild = NULL,
     release = NULL
 ) {
+    assert(
+        isCharacter(ids),
+        hasNoDuplicates(ids)
+    )
     cli_alert("Making {.var Protein2Gene} from Ensembl.")
     if (is.null(organism)) {
         organism <- detectOrganism(ids)
@@ -42,7 +46,15 @@ makeProtein2GeneFromEnsembl <- function(
     df <- camelCase(df)
     colnames(df) <- gsub("id$", "ID", colnames(df))
     colnames(df) <- gsub("name$", "Name", colnames(df))
-    assert(isSubset(ids, df[["proteinID"]]))
+    if (!areSetEqual(ids, unique(df[["proteinID"]]))) {
+        stop(sprintf(
+            "Match failure: %s.",
+            toString(
+                sort(setdiff(ids, unique(df[["proteinID"]]))),
+                width = 500L
+            )
+        ))
+    }
     metadata(df) <- .getEnsDbMetadata(edb)
     new(Class = "Protein2Gene", df)
 }
