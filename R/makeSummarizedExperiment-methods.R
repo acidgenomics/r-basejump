@@ -252,11 +252,16 @@ NULL
     args <- Filter(f = Negate(is.null), x = args)
     args <- Filter(f = hasLength, x = args)
     se <- do.call(what = SummarizedExperiment, args = args)
-    if (isTRUE(sort)) {
-        ## Assay names. Always keep counts first.
+        if (isTRUE(sort)) {
+        ## Assay names.
         assayNames <- assayNames(se)
         if (length(assayNames) > 1L) {
-            assayNames <- unique(c("counts", sort(assayNames)))
+            ## Always keep (raw) counts first, when defined.
+            if (isSubset("counts", assayNames)) {
+                assayNames <- unique(c("counts", sort(assayNames)))
+            } else {
+                assayNames <- sort(assayNames)
+            }
             assays(se) <- assays(se)[assayNames]
         }
         ## Assay rows and columns.
