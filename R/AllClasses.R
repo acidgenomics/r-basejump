@@ -13,7 +13,7 @@ setClassUnion(name = "missingOrNULL", members = c("missing", "NULL"))
 #' Ensembl-to-Entrez gene identifier mappings
 #'
 #' @details
-#' Contains a `DataFrame` with `ensemblID` and `entrezID` columns.
+#' Contains a `DataFrame` with `ensembl` and `entrez` columns.
 #'
 #' @note Updated 2020-10-01.
 #' @export
@@ -28,10 +28,10 @@ setValidity(
     method = function(object) {
         validate(
             areSetEqual(
-                x = c("ensemblID", "entrezID"),
+                x = c("ensembl", "entrez"),
                 y = colnames(object)
             ),
-            is.integer(object[["entrezID"]])
+            is.integer(object[["entrez"]])
         )
     }
 )
