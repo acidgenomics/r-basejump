@@ -106,6 +106,16 @@ NULL
 
 
 
+#' @rdname Ensembl2Entrez
+#' @export
+setMethod(
+    f = "Ensembl2Entrez",
+    signature = signature("DataFrame"),
+    definition = `Ensembl2Entrez,DataFrame`
+)
+
+
+
 ## Updated 2019-07-22.
 `Ensembl2Entrez,GRanges` <-  # nolint
     function(object) {
@@ -121,6 +131,16 @@ NULL
     }
 
 formals(`Ensembl2Entrez,GRanges`) <- formals(`Ensembl2Entrez,DataFrame`)
+
+
+
+#' @rdname Ensembl2Entrez
+#' @export
+setMethod(
+    f = "Ensembl2Entrez",
+    signature = signature("GRanges"),
+    definition = `Ensembl2Entrez,GRanges`
+)
 
 
 
@@ -143,26 +163,6 @@ formals(`Ensembl2Entrez,GRanges`) <- formals(`Ensembl2Entrez,DataFrame`)
 
 formals(`Ensembl2Entrez,SummarizedExperiment`) <-
     formals(`Ensembl2Entrez,DataFrame`)
-
-
-
-#' @rdname Ensembl2Entrez
-#' @export
-setMethod(
-    f = "Ensembl2Entrez",
-    signature = signature("DataFrame"),
-    definition = `Ensembl2Entrez,DataFrame`
-)
-
-
-
-#' @rdname Ensembl2Entrez
-#' @export
-setMethod(
-    f = "Ensembl2Entrez",
-    signature = signature("GRanges"),
-    definition = `Ensembl2Entrez,GRanges`
-)
 
 
 
