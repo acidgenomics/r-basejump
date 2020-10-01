@@ -17,7 +17,7 @@
 #'
 #' @name makeSummarizedExperiment
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2020-02-24.
+#' @note Updated 2020-10-01.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sort `logical(1)`.
@@ -97,7 +97,7 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2020-10-01.
 `makeSummarizedExperiment,SimpleList` <- function(  # nolint
     assays,
     rowRanges = GRangesList(),
@@ -133,7 +133,6 @@ NULL
     assert(
         hasNames(assays),
         hasValidNames(assays),
-        identical(names(assays)[[1L]], "counts"),
         identical(names(assays), camelCase(names(assays)))
     )
     assay <- assays[[1L]]
