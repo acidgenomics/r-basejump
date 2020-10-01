@@ -105,14 +105,13 @@ NULL
         if (is.null(organism)) {
             organism <- detectOrganism(object)
         }
-        df <- .ncbiOrgDb(
-            keys = object,
-            keytype = "ENSEMBL",
-            columns = "ENTREZID",
-            organism = organism
-        )
         .makeEnsembl2Entrez(
-            object = df,
+            object = .getEnsembl2EntrezFromOrgDb(
+                keys = object,
+                keytype = "ENSEMBL",
+                columns = "ENTREZID",
+                organism = organism
+            ),
             format = match.arg(format)
         )
     }
@@ -134,14 +133,13 @@ setMethod(
         organism = "Homo sapiens",
         format = c("1:1", "long")
     ) {
-        df <- .ncbiOrgDb(
-            keys = as.character(object),
-            keytype = "ENTREZID",
-            columns = "ENSEMBL",
-            organism = organism
-        )
         .makeEnsembl2Entrez(
-            object = df,
+            object = .getEnsembl2EntrezFromOrgDb(
+                keys = as.character(object),
+                keytype = "ENTREZID",
+                columns = "ENSEMBL",
+                organism = organism
+            ),
             format = match.arg(format),
             return = "Entrez2Ensembl"
         )
