@@ -33,9 +33,9 @@ NULL
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
-#'   as.data.frame as.list cor decode do.call expand expand.grid head lapply
-#'   match mcols mcols<- merge metadata metadata<- na.omit order setdiff split
-#'   summary t tail
+#'   as.data.frame as.list complete.cases cor decode do.call expand expand.grid
+#'   head lapply match mcols mcols<- merge metadata metadata<- na.omit order
+#'   setdiff split summary t tail
 #' @importFrom SingleCellExperiment SingleCellExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
