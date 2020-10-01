@@ -1,6 +1,6 @@
 #' @inherit Ensembl2Entrez-class title description return
 #' @name Ensembl2Entrez
-#' @note Updated 2020-01-19.
+#' @note Updated 2020-10-01.
 #'
 #' @inheritParams acidroxygen::params
 #' @param format `character(1)`.
@@ -17,10 +17,40 @@
 #' data(RangedSummarizedExperiment, package = "acidtest")
 #' rse <- RangedSummarizedExperiment
 #'
+#' ## character ====
+#' ## Ensembl-to-Entrez.
+#' genes <- c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
+#' x <- Ensembl2Entrez(genes)
+#' print(x)
+#'
+#' ## Entrez-to-Ensembl
+#' genes <- c(1L, 2L, 3L).
+#' x <- Entrez2Ensembl(genes)
+#' print(x)
+#'
 #' ## SummarizedExperiment ====
 #' x <- Ensembl2Entrez(rse)
 #' print(x)
 NULL
+
+
+
+## Updated 2020-10-01.
+.ncbiOrgDb <- function(organism) {
+    assert(isString(organism))
+    ah <- .annotationHub()
+    ahs <- query(ah, pattern = c(organism, "NCBI", "OrgDb"))
+    id <- tail(names(ahs), n = 1L)
+    orgdb <- ah[[id]]
+    assert(is(orgdb, "OrgDb"))
+    orgdb
+}
+
+
+
+## FIXME Add character method.
+
+## FIXME ADD CHARACTER METHOD 2.
 
 
 
