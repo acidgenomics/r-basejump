@@ -130,11 +130,7 @@ NULL
     assays <- Filter(f = Negate(is.null), x = assays)
     ## Require the primary assay to be named "counts". This helps ensure
     ## consistency with the conventions for `SingleCellExperiment`.
-    assert(
-        hasNames(assays),
-        hasValidNames(assays),
-        identical(names(assays), camelCase(names(assays)))
-    )
+    assert(hasNames(assays), hasValidNames(assays))
     assay <- assays[[1L]]
     ## Require valid names for both columns (samples) and rows (genes). Note
     ## that values beginning with a number or containing invalid characters
@@ -159,10 +155,7 @@ NULL
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         mcolnames <- names(mcols(rowRanges))
         if (hasLength(mcolnames)) {
-            assert(
-                validNames(mcolnames),
-                identical(mcolnames, camelCase(mcolnames))
-            )
+            assert(hasValidNames(mcolnames))
         }
         ## Transgenes.
         if (hasLength(transgeneNames) && hasLength(setdiff)) {
@@ -210,8 +203,7 @@ NULL
     } else if (hasRows(rowData)) {
         assert(
             isSubset(rownames(assay), rownames(rowData)),
-            hasValidNames(rowData),
-            identical(colnames(rowData), camelCase(colnames(rowData)))
+            hasValidNames(rowData)
         )
         rowData <- rowData[rownames(assay), , drop = FALSE]
     }
@@ -229,10 +221,7 @@ NULL
         colData <- colData[colnames(assay), , drop = FALSE]
     }
     if (hasCols(colData)) {
-        assert(
-            hasValidNames(colData),
-            identical(colnames(colData), camelCase(colnames(colData)))
-        )
+        assert(hasValidNames(colData))
     }
 
     ## Metadata ----------------------------------------------------------------
@@ -246,10 +235,7 @@ NULL
     }
     metadata <- Filter(f = Negate(is.null), x = metadata)
     if (hasLength(metadata)) {
-        assert(
-            hasValidNames(metadata),
-            identical(names(metadata), camelCase(names(metadata)))
-        )
+        assert(hasValidNames(metadata))
     }
 
     ## Return ------------------------------------------------------------------
