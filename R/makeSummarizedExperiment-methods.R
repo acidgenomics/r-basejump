@@ -155,7 +155,7 @@ NULL
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         mcolnames <- names(mcols(rowRanges))
         if (hasLength(mcolnames)) {
-            assert(hasValidNames(mcolnames))
+            assert(validNames(mcolnames))
         }
         ## Transgenes.
         if (hasLength(transgeneNames) && hasLength(setdiff)) {
