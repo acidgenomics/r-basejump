@@ -27,7 +27,7 @@ setValidity(
     Class = "Ensembl2Entrez",
     method = function(object) {
         validate(
-            areSetEqual(
+            identical(
                 x = c("ensembl", "entrez"),
                 y = colnames(object)
             ),
@@ -37,8 +37,6 @@ setValidity(
 )
 
 
-
-## Note that this must come after Ensembl2Entrez class definition.
 
 #' Entrez-to-Ensembl gene identifier mappings
 #'
@@ -50,7 +48,19 @@ setValidity(
 #' @return `Entrez2Ensembl`.
 setClass(
     Class = "Entrez2Ensembl",
-    contains = "Ensembl2Entrez"
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "Entrez2Ensembl",
+    method = function(object) {
+        validate(
+            identical(
+                x = c("entrez", "ensembl"),
+                y = colnames(object)
+            ),
+            is.integer(object[["entrez"]])
+        )
+    }
 )
 
 
