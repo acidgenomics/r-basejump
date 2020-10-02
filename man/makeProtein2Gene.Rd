@@ -32,11 +32,14 @@ available via AnnotationHub/ensembldb is used. Note that the latest version
 available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.}
 }
+\value{
+\code{Protein2Gene}.
+}
 \description{
 Map protein identifiers to genes
 }
 \note{
-Updated 2020-09-25.
+Updated 2020-09-29.
 }
 \examples{
 ids <- c("ENSP00000238714", "ENSP00000338157")

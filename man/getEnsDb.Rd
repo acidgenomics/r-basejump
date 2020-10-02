@@ -22,6 +22,9 @@ available via AnnotationHub/ensembldb is used. Note that the latest version
 available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.}
 }
+\value{
+\code{EnsDb}.
+}
 \description{
 Get EnsDb from Bioconductor AnnotationHub
 }

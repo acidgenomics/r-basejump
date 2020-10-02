@@ -22,10 +22,12 @@ reference:
   - title: Genome annotations
     contents:
       - currentGenomeVersion
+      - getEnsDb
       - emptyRanges
       - geneSynonyms
       - starts_with("makeGRanges")
       - makeGene2Symbol
+      - makeProtein2Gene
       - makeTx2Gene
       - makeTx2GeneFromFASTA
       - matchEnsemblReleaseToURL
@@ -55,6 +57,7 @@ reference:
       - join
       - mutate
       - select
+      - starts_with("split")
   - title: Metadata
     contents:
       - geneNames

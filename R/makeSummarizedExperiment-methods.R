@@ -17,7 +17,7 @@
 #'
 #' @name makeSummarizedExperiment
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2020-02-24.
+#' @note Updated 2020-10-01.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sort `logical(1)`.
@@ -97,7 +97,7 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2020-10-01.
 `makeSummarizedExperiment,SimpleList` <- function(  # nolint
     assays,
     rowRanges = GRangesList(),
@@ -130,12 +130,7 @@ NULL
     assays <- Filter(f = Negate(is.null), x = assays)
     ## Require the primary assay to be named "counts". This helps ensure
     ## consistency with the conventions for `SingleCellExperiment`.
-    assert(
-        hasNames(assays),
-        hasValidNames(assays),
-        identical(names(assays)[[1L]], "counts"),
-        identical(names(assays), camelCase(names(assays)))
-    )
+    assert(hasNames(assays), hasValidNames(assays))
     assay <- assays[[1L]]
     ## Require valid names for both columns (samples) and rows (genes). Note
     ## that values beginning with a number or containing invalid characters
@@ -160,10 +155,7 @@ NULL
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         mcolnames <- names(mcols(rowRanges))
         if (hasLength(mcolnames)) {
-            assert(
-                validNames(mcolnames),
-                identical(mcolnames, camelCase(mcolnames))
-            )
+            assert(validNames(mcolnames))
         }
         ## Transgenes.
         if (hasLength(transgeneNames) && hasLength(setdiff)) {
@@ -211,8 +203,7 @@ NULL
     } else if (hasRows(rowData)) {
         assert(
             isSubset(rownames(assay), rownames(rowData)),
-            hasValidNames(rowData),
-            identical(colnames(rowData), camelCase(colnames(rowData)))
+            hasValidNames(rowData)
         )
         rowData <- rowData[rownames(assay), , drop = FALSE]
     }
@@ -230,10 +221,7 @@ NULL
         colData <- colData[colnames(assay), , drop = FALSE]
     }
     if (hasCols(colData)) {
-        assert(
-            hasValidNames(colData),
-            identical(colnames(colData), camelCase(colnames(colData)))
-        )
+        assert(hasValidNames(colData))
     }
 
     ## Metadata ----------------------------------------------------------------
@@ -247,10 +235,7 @@ NULL
     }
     metadata <- Filter(f = Negate(is.null), x = metadata)
     if (hasLength(metadata)) {
-        assert(
-            hasValidNames(metadata),
-            identical(names(metadata), camelCase(names(metadata)))
-        )
+        assert(hasValidNames(metadata))
     }
 
     ## Return ------------------------------------------------------------------
@@ -267,11 +252,16 @@ NULL
     args <- Filter(f = Negate(is.null), x = args)
     args <- Filter(f = hasLength, x = args)
     se <- do.call(what = SummarizedExperiment, args = args)
-    if (isTRUE(sort)) {
-        ## Assay names. Always keep counts first.
+        if (isTRUE(sort)) {
+        ## Assay names.
         assayNames <- assayNames(se)
         if (length(assayNames) > 1L) {
-            assayNames <- unique(c("counts", sort(assayNames)))
+            ## Always keep (raw) counts first, when defined.
+            if (isSubset("counts", assayNames)) {
+                assayNames <- unique(c("counts", sort(assayNames)))
+            } else {
+                assayNames <- sort(assayNames)
+            }
             assays(se) <- assays(se)[assayNames]
         }
         ## Assay rows and columns.

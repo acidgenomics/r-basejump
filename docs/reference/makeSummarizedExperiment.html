@@ -76,7 +76,7 @@ of transgenes and spike-ins." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.17</span>
       </span>
     </div>
 
@@ -135,31 +135,31 @@ automatic subsetting for row and column data, as well as automatic handling
 of transgenes and spike-ins.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeSummarizedExperiment</span>(<span class='kw'>assays</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>makeSummarizedExperiment</span><span class='op'>(</span><span class='va'>assays</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SimpleList</span>
-<span class='fu'>makeSummarizedExperiment</span>(
-  <span class='kw'>assays</span>,
-  rowRanges = <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span>(),
-  rowData = <span class='kw'>NULL</span>,
-  colData = <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
-  metadata = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  transgeneNames = <span class='kw'>NULL</span>,
-  sort = <span class='fl'>TRUE</span>,
-  sessionInfo = <span class='fl'>TRUE</span>
-)
+<span class='fu'>makeSummarizedExperiment</span><span class='op'>(</span>
+  <span class='va'>assays</span>,
+  rowRanges <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span><span class='op'>(</span><span class='op'>)</span>,
+  rowData <span class='op'>=</span> <span class='cn'>NULL</span>,
+  colData <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span><span class='op'>(</span><span class='op'>)</span>,
+  metadata <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  transgeneNames <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sort <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  sessionInfo <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>makeSummarizedExperiment</span>(
-  <span class='kw'>assays</span>,
-  rowRanges = <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span>(),
-  rowData = <span class='kw'>NULL</span>,
-  colData = <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(),
-  metadata = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  transgeneNames = <span class='kw'>NULL</span>,
-  sort = <span class='fl'>TRUE</span>,
-  sessionInfo = <span class='fl'>TRUE</span>
-)</pre>
+<span class='fu'>makeSummarizedExperiment</span><span class='op'>(</span>
+  <span class='va'>assays</span>,
+  rowRanges <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span><span class='op'>(</span><span class='op'>)</span>,
+  rowData <span class='op'>=</span> <span class='cn'>NULL</span>,
+  colData <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span><span class='op'>(</span><span class='op'>)</span>,
+  metadata <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  transgeneNames <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sort <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  sessionInfo <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -228,7 +228,7 @@ Slot session information into <code>metadata</code>.</p></td>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Column and rows always return sorted alphabetically.</p>
-<p>Updated 2020-02-24.</p>
+<p>Updated 2020-10-01.</p>
     <h2 class="hasAnchor" id="session-information"><a class="anchor" href="#session-information"></a>Session information</h2>
 
     
@@ -256,33 +256,33 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Rows (genes)</span>
-<span class='kw'>genes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span>(<span class='st'>"gene%02d"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>3L</span>)),
+<span class='va'>genes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span><span class='op'>(</span><span class='st'>"gene%02d"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>3L</span><span class='op'>)</span><span class='op'>)</span>,
     <span class='st'>"EGFP"</span>  <span class='co'># transgene</span>
-)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>genes</span>)
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>genes</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "gene01" "gene02" "gene03" "EGFP"  </div><div class='input'>
 <span class='co'>## Columns (samples)</span>
-<span class='kw'>samples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span>(<span class='st'>"sample%02d"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4L</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>samples</span>)
+<span class='va'>samples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span><span class='op'>(</span><span class='st'>"sample%02d"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "sample01" "sample02" "sample03" "sample04"</div><div class='input'>
 <span class='co'>## Counts (assay)</span>
-<span class='kw'>counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
-    data = <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>genes</span>) <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>samples</span>)),
-    nrow = <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>genes</span>),
-    ncol = <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>samples</span>),
-    dimnames = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>genes</span>, <span class='kw'>samples</span>)
-)
+<span class='va'>counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>
+    data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>genes</span><span class='op'>)</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span><span class='op'>)</span>,
+    nrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>genes</span><span class='op'>)</span>,
+    ncol <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span>,
+    dimnames <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>genes</span>, <span class='va'>samples</span><span class='op'>)</span>
+<span class='op'>)</span>
 <span class='co'>## Primary assay must be named "counts".</span>
-<span class='kw'>assays</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(counts = <span class='kw'>counts</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>assays</span>)
+<span class='va'>assays</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span><span class='op'>(</span>counts <span class='op'>=</span> <span class='va'>counts</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>assays</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; List of length 1
 #&gt; names(1): counts</div><div class='input'>
 <span class='co'>## Row data (genomic ranges)</span>
 <span class='co'>## Note that we haven't defined the transgene here.</span>
 <span class='co'>## It will be handled automatically in the function call.</span>
-<span class='kw'>rowRanges</span> <span class='op'>&lt;-</span> <span class='fu'><a href='emptyRanges.html'>emptyRanges</a></span>(names = <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>genes</span>, n = <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>genes</span>) <span class='op'>-</span> <span class='fl'>1L</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>rowRanges</span>)
+<span class='va'>rowRanges</span> <span class='op'>&lt;-</span> <span class='fu'><a href='emptyRanges.html'>emptyRanges</a></span><span class='op'>(</span>names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>genes</span>, n <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>genes</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1L</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>rowRanges</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; GRanges object with 3 ranges and 0 metadata columns:
 #&gt;          seqnames    ranges strand
 #&gt;             &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
@@ -292,19 +292,19 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
 <span class='co'>## Column data</span>
-<span class='kw'>colData</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(
-    age = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(
-        x = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3L</span>, <span class='fl'>6L</span>),
-        times = <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>samples</span>) <span class='op'>/</span> <span class='fl'>2L</span>
-    ),
-    genotype = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(
-        x = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"wildtype"</span>, <span class='st'>"knockout"</span>),
-        times = <span class='fl'>1L</span>,
-        each = <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>samples</span>) <span class='op'>/</span> <span class='fl'>2L</span>
-    ),
-    row.names = <span class='kw'>samples</span>
-)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>colData</span>)
+<span class='va'>colData</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span><span class='op'>(</span>
+    age <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>
+        x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3L</span>, <span class='fl'>6L</span><span class='op'>)</span>,
+        times <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>2L</span>
+    <span class='op'>)</span>,
+    genotype <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>
+        x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"wildtype"</span>, <span class='st'>"knockout"</span><span class='op'>)</span>,
+        times <span class='op'>=</span> <span class='fl'>1L</span>,
+        each <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>2L</span>
+    <span class='op'>)</span>,
+    row.names <span class='op'>=</span> <span class='va'>samples</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>colData</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;                age    genotype
 #&gt;          &lt;integer&gt; &lt;character&gt;
@@ -313,8 +313,8 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 #&gt; sample03         3    knockout
 #&gt; sample04         6    knockout</div><div class='input'>
 <span class='co'>## Minimal mode.</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeSummarizedExperiment</span>(assays = <span class='kw'>assays</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeSummarizedExperiment</span><span class='op'>(</span>assays <span class='op'>=</span> <span class='va'>assays</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 4 4 
 #&gt; metadata(3): date sessionInfo wd
@@ -323,13 +323,13 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 #&gt; rowData names(0):
 #&gt; colnames(4): sample01 sample02 sample03 sample04
 #&gt; colData names(0):</div><div class='input'>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeSummarizedExperiment</span>(
-    assays = <span class='kw'>assays</span>,
-    rowRanges = <span class='kw'>rowRanges</span>,
-    colData = <span class='kw'>colData</span>,
-    transgeneNames = <span class='st'>"EGFP"</span>
-)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>makeSummarizedExperiment</span><span class='op'>(</span>
+    assays <span class='op'>=</span> <span class='va'>assays</span>,
+    rowRanges <span class='op'>=</span> <span class='va'>rowRanges</span>,
+    colData <span class='op'>=</span> <span class='va'>colData</span>,
+    transgeneNames <span class='op'>=</span> <span class='st'>"EGFP"</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 4 4 
 #&gt; metadata(3): date sessionInfo wd

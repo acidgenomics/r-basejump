@@ -12,12 +12,10 @@ setClassUnion(name = "missingOrNULL", members = c("missing", "NULL"))
 
 #' Ensembl-to-Entrez gene identifier mappings
 #'
-#' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
-#' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
+#' @details
+#' Contains a `DataFrame` with `ensembl` and `entrez` columns.
 #'
-#' Contains a `DataFrame` with `geneID` and `entrezID` columns.
-#'
-#' @note Updated 2019-08-08.
+#' @note Updated 2020-10-01.
 #' @export
 #'
 #' @return `Ensembl2Entrez`.
@@ -29,8 +27,38 @@ setValidity(
     Class = "Ensembl2Entrez",
     method = function(object) {
         validate(
-            identical(colnames(object), c("geneID", "entrezID")),
-            is.integer(object[["entrezID"]])
+            identical(
+                x = c("ensembl", "entrez"),
+                y = colnames(object)
+            ),
+            is.integer(object[["entrez"]])
+        )
+    }
+)
+
+
+
+#' Entrez-to-Ensembl gene identifier mappings
+#'
+#' @inherit Ensembl2Entrez-class details
+#'
+#' @note Updated 2020-10-01.
+#' @export
+#'
+#' @return `Entrez2Ensembl`.
+setClass(
+    Class = "Entrez2Ensembl",
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "Entrez2Ensembl",
+    method = function(object) {
+        validate(
+            identical(
+                x = c("entrez", "ensembl"),
+                y = colnames(object)
+            ),
+            is.integer(object[["entrez"]])
         )
     }
 )
