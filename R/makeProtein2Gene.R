@@ -36,7 +36,7 @@ makeProtein2GeneFromEnsembl <- function(
         genomeBuild = genomeBuild,
         release = release
     )
-    df <- ensembldb::select(
+    df <- select(
         x = edb,
         keys = ids,
         keytype = "PROTEINID",
