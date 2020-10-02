@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.12.17
-Date: 2020-10-01
+Version: 0.13.0
+Date: 2020-10-02
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -38,6 +38,7 @@ Imports:
     AnnotationDbi,
     AnnotationHub,
     Biobase,
+    BiocFileCache,
     BiocGenerics,
     BiocParallel,
     Biostrings,
@@ -58,6 +59,7 @@ Imports:
     matrixStats (>= 0.56),
     methods,
     pipette (>= 0.4.14),
+    rappdirs (>= 0.3),
     scales (>= 1.1),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
@@ -92,6 +94,7 @@ Collate:
     'AllGlobals.R'
     'AllClasses.R'
     'AllGenerics.R'
+    'BiocFileCache.R'
     'Ensembl2Entrez-methods.R'
     'Gene2Symbol-methods.R'
     'HGNC2Ensembl.R'
