@@ -6,7 +6,7 @@
 \alias{splitByLevel,DataFrame-method}
 \title{Split by factor level}
 \usage{
-splitByLevel(x, ...)
+splitByLevel(x, f, ref = FALSE, ...)
 
 \S4method{splitByLevel}{data.frame}(x, f, ref = FALSE)
 

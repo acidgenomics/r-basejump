@@ -2,23 +2,32 @@
 % Please edit documentation in R/AllGenerics.R, R/Ensembl2Entrez-methods.R
 \name{Ensembl2Entrez}
 \alias{Ensembl2Entrez}
-\alias{Ensembl2Entrez,DataFrame-method}
+\alias{Entrez2Ensembl}
+\alias{Ensembl2Entrez,character-method}
+\alias{Entrez2Ensembl,integer-method}
 \alias{Ensembl2Entrez,GRanges-method}
-\alias{Ensembl2Entrez,SummarizedExperiment-method}
+\alias{Ensembl2Entrez,RangedSummarizedExperiment-method}
 \title{Ensembl-to-Entrez gene identifier mappings}
 \usage{
 Ensembl2Entrez(object, ...)
 
-\S4method{Ensembl2Entrez}{DataFrame}(object, format = c("1:1", "long"))
+Entrez2Ensembl(object, ...)
+
+\S4method{Ensembl2Entrez}{character}(object, organism = NULL, format = c("1:1", "long"))
+
+\S4method{Entrez2Ensembl}{integer}(object, organism = "Homo sapiens", format = c("1:1", "long"))
 
 \S4method{Ensembl2Entrez}{GRanges}(object, format = c("1:1", "long"))
 
-\S4method{Ensembl2Entrez}{SummarizedExperiment}(object, format = c("1:1", "long"))
+\S4method{Ensembl2Entrez}{RangedSummarizedExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{organism}{\code{character(1)}.
+Full Latin organism name (e.g. \code{"Homo sapiens"}).}
 
 \item{format}{\code{character(1)}.
 Formatting method to apply:
@@ -35,15 +44,26 @@ Return 1:many in long format.
 \code{Ensembl2Entrez}.
 }
 \description{
-Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
-Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
+Ensembl-to-Entrez gene identifier mappings
 }
 \note{
-Updated 2020-01-19.
+Updated 2020-10-01.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment
+
+## character ====
+## Ensembl-to-Entrez.
+genes <- c("ENSG00000000003", "ENSG00000000005")
+x <- Ensembl2Entrez(genes)
+print(x)
+
+## integer ====
+## Entrez-to-Ensembl.
+genes <- c(1L, 2L)
+x <- Entrez2Ensembl(genes)
+print(x)
 
 ## SummarizedExperiment ====
 x <- Ensembl2Entrez(rse)

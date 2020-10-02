@@ -76,7 +76,7 @@ matchHumanOrthologs <- function(
         }
     )
     map <- tryCatch(
-        expr = biomaRt::select(
+        expr = select(
             x = mart,
             keys = genes,
             keytype = "ensembl_gene_id",
