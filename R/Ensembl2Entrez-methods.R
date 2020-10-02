@@ -81,7 +81,9 @@ NULL
                 recursive = FALSE,
                 use.names = FALSE
             )
-            df <- DataFrame( "a" = names(split), "b" = unique)
+            df <- DataFrame("a" = names(split), "b" = unique)
+            ## This will check the return values for duplicates.
+            ## > assert(all(bapply(X = df, FUN = hasNoDuplicates)))
             rownames(df) <- df[[1L]]
             colnames(df) <- cols
         }
@@ -165,7 +167,7 @@ setMethod(
         colnames(df)[colnames(df) == "geneID"] <- "ensembl"
         colnames(df)[colnames(df) == "entrezID"] <- "entrez"
         metadata(df) <- metadata(object)
-        `Ensembl2Entrez,DataFrame`(
+        .makeEnsembl2Entrez(
             object = df,
             format = match.arg(format)
         )
