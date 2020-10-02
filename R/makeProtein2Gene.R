@@ -8,6 +8,8 @@
 #'   Ensembl protein identifiers.
 #'   Human proteins are prefixed with "ENSP", for example.
 #'
+#' @return `Protein2Gene`.
+#'
 #' @examples
 #' ids <- c("ENSP00000238714", "ENSP00000338157")
 #' makeProtein2GeneFromEnsembl(ids)

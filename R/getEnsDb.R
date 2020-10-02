@@ -9,6 +9,8 @@
 #' Remaps UCSC genome build to Ensembl automatically, if necessary.
 #' Provides legacy support for GRCh37 (hg19).
 #'
+#' @return `EnsDb`.
+#'
 #' @examples
 #' getEnsDb(organism = "Homo sapiens", release = 100L)
 getEnsDb <- function(

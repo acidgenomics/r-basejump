@@ -32,6 +32,9 @@ available via AnnotationHub/ensembldb is used. Note that the latest version
 available can vary, depending on the versions of AnnotationHub and
 ensembldb in use.}
 }
+\value{
+\code{Protein2Gene}.
+}
 \description{
 Map protein identifiers to genes
 }
