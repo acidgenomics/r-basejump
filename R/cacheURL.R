@@ -1,12 +1,12 @@
 #' Download and cache a data file from DepMap into BiocFileCache
 #'
-#' @note Updated 2020-09-30.
-#' @noRd
+#' @export
+#' @note Updated 2020-10-02.
 #'
-#' @param fileID `character(1)`.
-#'   DepMap file ID on figshare.com.
+#' @inheritParams acidroxygen::params
 #' @param fileName `character(1)`.
-#'   File name.
+#'   File name to store internally in `BiocFileCache`.
+#'   Defaults to basename of URL.
 #'
 #' @return `character(1)`.
 #'   Cached file path on disk.
