@@ -48,7 +48,7 @@ NULL
 #' @rdname splitByLevel
 #' @name splitByLevel
 #' @importFrom acidgenerics splitByLevel
-#' @usage splitByLevel(x, ...)
+#' @usage splitByLevel(x, f, ref = FALSE, ...)
 #' @export
 NULL
 
