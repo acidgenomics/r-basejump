@@ -1,4 +1,4 @@
-## basejump 0.12.17 (2020-10-01)
+## basejump 0.13.0 (2020-10-02)
 
 ### Major changes
 
@@ -12,6 +12,8 @@
 - `makeSummarizedExperiment`: No longer requiring primary `assay` defined to
   be named "counts". This isn't appropriate for `SummarizedExperiment` objects
   defined in the new DepMapAnalysis package.
+- `makeGRangesFromEnsembl`: Include `geneSynonyms` column for supported
+  organisms, including *Homo sapiens*.
 
 ## basejump 0.12.16 (2020-09-29)
 
