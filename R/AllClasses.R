@@ -15,8 +15,8 @@ setClassUnion(name = "missingOrNULL", members = c("missing", "NULL"))
 #' @details
 #' Contains a `DataFrame` with `ensembl` and `entrez` columns.
 #'
-#' @note Updated 2020-10-01.
 #' @export
+#' @note Updated 2020-10-01.
 #'
 #' @return `Ensembl2Entrez`.
 setClass(
@@ -42,8 +42,8 @@ setValidity(
 #'
 #' @inherit Ensembl2Entrez-class details
 #'
-#' @note Updated 2020-10-01.
 #' @export
+#' @note Updated 2020-10-01.
 #'
 #' @return `Entrez2Ensembl`.
 setClass(
@@ -75,8 +75,8 @@ setValidity(
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
 #' [`metadata()`][S4Vectors::metadata].
 #'
-#' @note Updated 2019-08-08.
 #' @export
+#' @note Updated 2019-08-08.
 #'
 #' @return `Gene2Symbol`.
 setClass(
@@ -97,13 +97,38 @@ setValidity(
 
 
 
+#' HGNC complete set metadata
+#'
+#' @export
+#' @note Updated 2020-10-03
+#'
+#' @return `HGNC`.
+setClass(
+    Class = "HGNC",
+    contains = "DataFrame"
+)
+setValidity(
+    Class = "HGNC",
+    method = function(object) {
+        ## FIXME ADD THIS.
+        ## validate(
+        ##     isSubset("FIXME", colnames(object)
+        ## )
+        TRUE
+    }
+)
+
+
+
+## FIXME RENAME THE COLUMNS.
+
 #' HGNC-to-Ensembl gene identifier mappings
 #'
 #' @details
-#' Contains a `DataFrame` with `hgncID` and `geneID` columns.
+#' Contains a `DataFrame` with `hgnc` and `ensembl` columns.
 #'
-#' @note Updated 2019-08-08.
 #' @export
+#' @note Updated 2019-08-08.
 #'
 #' @return `HGNC2Ensembl`.
 setClass(
@@ -117,8 +142,8 @@ setValidity(
             identical(
                 x = lapply(object, class),
                 y = list(
-                    hgncID = "integer",
-                    geneID = "character"
+                    hgnc = "integer",
+                    gene = "character"
                 )
             ),
             is.null(rownames(object))
@@ -128,13 +153,15 @@ setValidity(
 
 
 
+## FIXME REWORK
+
 #' MGI-to-Ensembl gene identifier mappings
 #'
 #' @details
-#' Contains a `DataFrame` with `mgiID` and `geneID` columns.
+#' Contains a `DataFrame` with `mgi` and `ensembl` columns.
 #'
-#' @note Updated 2019-08-08.
 #' @export
+#' @note Updated 2019-08-08.
 #'
 #' @return `MGI2Ensembl`.
 setClass(
@@ -145,7 +172,7 @@ setValidity(
     Class = "MGI2Ensembl",
     method = function(object) {
         validate(
-            identical(colnames(object), c("mgiID", "geneID")),
+            identical(colnames(object), c("mgi", "ensembl")),
             is.null(rownames(object))
         )
     }
@@ -163,8 +190,8 @@ setValidity(
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
 #' [`metadata()`][S4Vectors::metadata].
 #'
-#' @note Updated 2020-09-25.
 #' @export
+#' @note Updated 2020-09-25.
 #'
 #' @return `Protein2Gene`.
 setClass(
@@ -197,8 +224,8 @@ setValidity(
 #' We recommend slotting `organism`, `genomeBuild`, and `ensemblRelease` into
 #' `metadata`.
 #'
-#' @note Updated 2019-08-08.
 #' @export
+#' @note Updated 2019-08-08.
 #'
 #' @return `Tx2Gene`.
 setClass(
