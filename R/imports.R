@@ -25,6 +25,8 @@ NULL
 #' @importFrom AnnotationDbi select
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom BiocGenerics colSums organism rowSums unlist
+#' @importFrom BiocFileCache BiocFileCache bfcadd bfccache bfcdownload
+#'   bfcneedsupdate bfcquery bfcrpath
 #' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
 #' @importFrom GenomeInfoDb seqnames
@@ -63,6 +65,7 @@ NULL
 #'   new selectMethod setAs setClass setClassUnion setGeneric setMethod
 #'   setReplaceMethod setOldClass setValidity signature slot slotNames
 #'   validObject .hasSlot
+#' @importFrom rappdirs user_cache_dir
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr boundary str_detect str_dup str_extract str_length
@@ -70,7 +73,7 @@ NULL
 #'   str_trunc
 #' @importFrom pipette as_tibble
 #' @importFrom utils capture.output data download.file getFromNamespace
-#'   globalVariables installed.packages packageVersion
+#'   globalVariables installed.packages packageName packageVersion
 NULL
 
 
