@@ -16,7 +16,7 @@ setClassUnion(name = "missingOrNULL", members = c("missing", "NULL"))
 #' Contains a `DataFrame` with `ensembl` and `entrez` columns.
 #'
 #' @export
-#' @note Updated 2020-10-01.
+#' @note Updated 2020-10-05.
 #'
 #' @return `Ensembl2Entrez`.
 setClass(
@@ -27,10 +27,8 @@ setValidity(
     Class = "Ensembl2Entrez",
     method = function(object) {
         validate(
-            identical(
-                x = c("ensembl", "entrez"),
-                y = colnames(object)
-            ),
+            hasRows(object),
+            identical(c("ensembl", "entrez"), colnames(object)),
             is.integer(object[["entrez"]])
         )
     }
@@ -43,7 +41,7 @@ setValidity(
 #' @inherit Ensembl2Entrez-class details
 #'
 #' @export
-#' @note Updated 2020-10-01.
+#' @note Updated 2020-10-05.
 #'
 #' @return `Entrez2Ensembl`.
 setClass(
@@ -54,10 +52,8 @@ setValidity(
     Class = "Entrez2Ensembl",
     method = function(object) {
         validate(
-            identical(
-                x = c("entrez", "ensembl"),
-                y = colnames(object)
-            ),
+            hasRows(object),
+            identical(c("entrez", "ensembl"), colnames(object)),
             is.integer(object[["entrez"]])
         )
     }
@@ -87,8 +83,8 @@ setValidity(
     Class = "Gene2Symbol",
     method = function(object) {
         validate(
+            hasRows(object),
             identical(colnames(object), c("geneID", "geneName")),
-            nrow(object) > 0L,
             is.character(object[["geneID"]]),
             isAny(object[["geneName"]], c("character", "factor"))
         )
@@ -100,7 +96,7 @@ setValidity(
 #' HGNC complete set metadata
 #'
 #' @export
-#' @note Updated 2020-10-03
+#' @note Updated 2020-10-05.
 #'
 #' @return `HGNC`.
 setClass(
@@ -111,10 +107,10 @@ setValidity(
     Class = "HGNC",
     method = function(object) {
         validate(
-            isSubset(
-                x = c("hgncID", "ensemblGeneID"),
-                y = colnames(object)
-            )
+            hasRows(object),
+            isSubset(c("hgncID", "ensemblGeneID"), colnames(object)),
+            is.integer(object[["hgncID"]]),
+            hasNoDuplicates(object[["hgncID"]])
         )
     }
 )
@@ -127,7 +123,7 @@ setValidity(
 #' Contains a `DataFrame` with `hgnc` and `ensembl` columns.
 #'
 #' @export
-#' @note Updated 2019-08-08.
+#' @note Updated 2020-10-05.
 #'
 #' @return `HGNC2Ensembl`.
 setClass(
@@ -138,10 +134,10 @@ setValidity(
     Class = "HGNC2Ensembl",
     method = function(object) {
         validate(
-            identical(
-                x = c("hgnc", "ensembl"),
-                y = colnames(object)
-            )
+            hasRows(object),
+            identical(c("hgnc", "ensembl"), colnames(object)),
+            is.integer(object[["hgnc"]]),
+            hasNoDuplicates(object[["hgnc"]])
         )
     }
 )
@@ -165,7 +161,10 @@ setValidity(
     Class = "MGI2Ensembl",
     method = function(object) {
         validate(
-            identical(colnames(object), c("mgi", "ensembl"))
+            hasRows(object),
+            identical(colnames(object), c("mgi", "ensembl")),
+            is.integer(object[["mgi"]]),
+            hasNoDuplicates(object[["mgi"]])
         )
     }
 )
@@ -183,7 +182,7 @@ setValidity(
 #' [`metadata()`][S4Vectors::metadata].
 #'
 #' @export
-#' @note Updated 2020-09-25.
+#' @note Updated 2020-10-05.
 #'
 #' @return `Protein2Gene`.
 setClass(
@@ -194,11 +193,11 @@ setValidity(
     Class = "Protein2Gene",
     method = function(object) {
         validate(
+            hasRows(object),
             identical(
                 x = colnames(object),
                 y = c("proteinID", "geneID", "geneName")
             ),
-            nrow(object) > 0L,
             all(bapply(X = object, FUN = is.character))
         )
     }
@@ -217,7 +216,7 @@ setValidity(
 #' `metadata`.
 #'
 #' @export
-#' @note Updated 2019-08-08.
+#' @note Updated 2020-10-05.
 #'
 #' @return `Tx2Gene`.
 setClass(
@@ -228,14 +227,14 @@ setValidity(
     Class = "Tx2Gene",
     method = function(object) {
         validate(
-            nrow(object) > 0L,
+            hasRows(object),
             identical(colnames(object), c("transcriptID", "geneID")),
             all(vapply(
                 X = object,
                 FUN = is.character,
                 FUN.VALUE = logical(1L)
             )),
-            !any(duplicated(object[["transcriptID"]]))
+            hasNoDuplicates(object[["transcriptID"]])
         )
     }
 )
