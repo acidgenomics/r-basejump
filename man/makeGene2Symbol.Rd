@@ -13,6 +13,7 @@ makeGene2SymbolFromEnsembl(
   genomeBuild = NULL,
   release = NULL,
   ignoreTxVersion = TRUE,
+  synonyms = TRUE,
   format = c("makeUnique", "unmodified", "1:1")
 )
 
@@ -64,7 +65,7 @@ File path.}
 Make a Gene2Symbol object
 }
 \note{
-Updated 2020-01-20.
+Updated 2020-10-05.
 }
 \section{GFF/GTF file}{
 

@@ -1,3 +1,15 @@
+#' Add broad class annotations
+#'
+#' @note Updated 2020-10-05.
+#' @noRd
+.addBroadClass <- function(object) {
+    assert(is(object, "GRanges"))
+    mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
+    object
+}
+
+
+
 #' Add Ensembl gene synonyms
 #'
 #' @note Updated 2020-10-05.
@@ -6,7 +18,7 @@
     assert(is(object, "GRanges"))
     mcols <- mcols(object)
     assert(isSubset("geneID", colnames(mcols)))
-    if (!any(grepl(pattern = "^ENS", x= mcols[["geneID"]]))) {
+    if (!any(grepl(pattern = "^ENS", x = mcols[["geneID"]]))) {
         return(object)
     }
     organism <- organism(object)
@@ -62,7 +74,7 @@
 #'
 #' Note that this intentionally prioritizes transcripts over genes.
 #'
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-10-05.
 #' @noRd
 .detectGRangesIDs <- function(object) {
     if (is(object, "GRangesList")) {
@@ -71,16 +83,17 @@
     assert(is(object, "GRanges"))
     mcolnames <- colnames(mcols(object))
     if ("transcriptID" %in% mcolnames) {
-        "transcriptID"
+        out <- "transcriptID"
     } else if ("transcript_id" %in% mcolnames) {
-        "transcript_id"
+        out <- "transcript_id"
     } else if ("geneID" %in% mcolnames) {
-        "geneID"
+        out <- "geneID"
     } else if ("gene_id" %in% mcolnames) {
-        "gene_id"
+        out <- "gene_id"
     } else {
         stop("Failed to detect ID column.")
     }
+    out
 }
 
 
@@ -92,33 +105,42 @@
 #'
 #' @note Updated 2020-10-05.
 #' @noRd
-.makeGRanges <- function(object, ignoreTxVersion = TRUE) {
+.makeGRanges <- function(
+    object,
+    ignoreTxVersion = TRUE,
+    broadClass = TRUE,
+    synonyms = TRUE
+) {
     assert(
         is(object, "GRanges"),
         hasNames(object),
         hasLength(object),
-        isFlag(ignoreTxVersion)
+        isFlag(ignoreTxVersion),
+        isFlag(broadClass),
+        isFlag(synonyms)
     )
-    ## Stash object length to ensure no dropping is occurring.
     length <- length(object)
-    ## Minimize the object, removing unnecessary metadata columns.
     object <- .minimizeGRanges(object)
-    assert(identical(length(object), length))
-    ## Now we're ready to standardize the metadata naming conventions.
+    assert(hasLength(object, n = length))
     object <- .standardizeGRanges(object)
-    assert(identical(length(object), length))
+    assert(hasLength(object, n = length))
+    if (isFALSE(ignoreTxVersion)) {
+        object <- .addTxVersion(object)
+    }
+    if (isTRUE(broadClass)) {
+        object <- .addBroadClass(object)
+    }
+    if (isTRUE(synonyms)) {
+        object <- .addGeneSynonyms(object)
+    }
+    ## Sort the metadata columns alphabetically.
+    mcols(object) <-
+        mcols(object)[, sort(colnames(mcols(object))), drop = FALSE]
     ## Prepare the metadata.
     ## Slot organism into metadata.
     object <- .slotOrganism(object)
     ## Ensure object contains prototype metadata.
     metadata(object) <- c(.prototypeMetadata, metadata(object))
-    ## Add gene synonym column into mcols for Ensembl genes, if possible.
-    object <- .addGeneSynonyms(object)
-    ## Ensure the transcript identifier includes the version, if desired. This
-    ## is useful for tx2gene handling with tximport.
-    if (identical(ignoreTxVersion, FALSE)) {
-        object <- .addTxVersion(object)
-    }
     idCol <- .detectGRangesIDs(object)
     assert(isSubset(idCol, colnames(mcols(object))))
     names <- as.character(mcols(object)[[idCol]])
@@ -267,7 +289,7 @@
 #' Note that this step makes GRanges imported via `rtracklayer::import()`
 #' incompatible with `GenomicFeatures::makeTxDbFromGRanges()`.
 #'
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-10-05.
 #' @noRd
 .standardizeGRanges <- function(object) {
     assert(is(object, "GRanges"))
@@ -301,13 +323,13 @@
     ## Re-slot updated mcols back into object before calculating broad class
     ## biotype and/or assigning names.
     mcols(object) <- mcols
-    ## Ensure broad class definitions are included, using run-length encoding.
-    ## Don't pass `mcols` to `.broadClass()`, use the GRanges instead because
-    ## we need the corresponding seqnames for calculations.
-    mcols(object)[["broadClass"]] <- Rle(.broadClass(object))
-    ## Finally, sort the metadata columns alphabetically.
-    mcols(object) <-
-        mcols(object)[, sort(colnames(mcols(object))), drop = FALSE]
+
+
+
+
+
+
+
     ## Ensure the ranges are sorted by identifier.
     idCol <- .detectGRangesIDs(object)
     cli_alert(sprintf("Arranging by {.var %s}.", idCol))

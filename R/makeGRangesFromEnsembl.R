@@ -82,7 +82,7 @@
 #' ```
 #'
 #' @export
-#' @note Updated 2020-09-24.
+#' @note Updated 2020-10-05.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -105,9 +105,15 @@ makeGRangesFromEnsembl <- function(
     level = c("genes", "transcripts"),
     genomeBuild = NULL,
     release = NULL,
-    ignoreTxVersion = TRUE
+    ignoreTxVersion = TRUE,
+    broadClass = TRUE,
+    synonyms = TRUE
 ) {
-    assert(isFlag(ignoreTxVersion))
+    assert(
+        isFlag(ignoreTxVersion),
+        isFlag(broadClass),
+        isFlag(synonyms)
+    )
     level <- match.arg(level)
     cli_alert("Making {.var GRanges} from Ensembl.")
     edb <- getEnsDb(
@@ -122,7 +128,9 @@ makeGRangesFromEnsembl <- function(
     makeGRangesFromEnsDb(
         object = edb,
         level = level,
-        ignoreTxVersion = ignoreTxVersion
+        ignoreTxVersion = ignoreTxVersion,
+        broadClass = broadClass,
+        synonyms = synonyms
     )
 }
 
@@ -133,16 +141,8 @@ makeGRangesFromEnsembl <- function(
 #' a `tbl_df` (tibble) instead of `GRanges`. Note that `GRanges` can also be
 #' coercing using [`as.data.frame()`][BiocGenerics::as.data.frame].
 #' @export
-annotable <-
-    function() {
-        gr <- do.call(
-            what = makeGRangesFromEnsembl,
-            args = matchArgsToDoCall()
-        )
-        ## Decode run-length encoding in mcols before coercion. Otherwise,
-        ## Windows users won't get expected atomic columns.
+annotable <- function(...) {
+        gr <- makeGRangesFromEnsembl(...)
         mcols(gr) <- decode(mcols(gr))
         as_tibble(gr, rownames = NULL)
     }
-
-formals(annotable) <- formals(makeGRangesFromEnsembl)

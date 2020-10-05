@@ -5,7 +5,7 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeTx2Gene
-#' @note Updated 2019-09-05.
+#' @note Updated 2020-10-05.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -38,12 +38,17 @@ NULL
 
 #' @rdname makeTx2Gene
 #' @export
-## Updated 2019-09-05.
+## Updated 2020-10-05.
 makeTx2GeneFromEnsembl <-
     function() {
         gr <- do.call(
             what = makeGRangesFromEnsembl,
-            args = matchArgsToDoCall(args = list(level = "transcripts"))
+            args = matchArgsToDoCall(
+                args = list(
+                    level = "transcripts",
+                    synonyms = FALSE
+                )
+            )
         )
         Tx2Gene(gr)
     }
@@ -56,11 +61,16 @@ formals(makeTx2GeneFromEnsembl) <- f
 
 #' @rdname makeTx2Gene
 #' @export
-## Updated 2019-07-22.
+## Updated 2020-10-05.
 makeTx2GeneFromEnsDb <- function(object) {
     gr <- do.call(
         what = makeGRangesFromEnsDb,
-        args = matchArgsToDoCall(args = list(level = "transcripts"))
+        args = matchArgsToDoCall(
+            args = list(
+                level = "transcripts",
+                synonyms = FALSE
+            )
+        )
     )
     Tx2Gene(gr)
 }

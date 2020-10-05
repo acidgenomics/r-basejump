@@ -9,6 +9,7 @@ makeGRangesFromGFF(
   file,
   level = c("genes", "transcripts"),
   ignoreTxVersion = TRUE,
+  synonyms = TRUE,
   .checkAgainstTxDb = FALSE
 )
 
@@ -16,6 +17,7 @@ makeGRangesFromGTF(
   file,
   level = c("genes", "transcripts"),
   ignoreTxVersion = TRUE,
+  synonyms = TRUE,
   .checkAgainstTxDb = FALSE
 )
 }
@@ -57,7 +59,7 @@ Runs the same internal code as \code{\link[=makeGRangesFromGFF]{makeGRangesFromG
 }}
 
 \note{
-Updated 2020-05-11.
+Updated 2020-10-05.
 }
 \section{Recommendations}{
 

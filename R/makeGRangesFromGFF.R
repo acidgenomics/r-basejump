@@ -142,7 +142,7 @@
 #'   [GTF](ftp://ftp.wormbase.org/pub/wormbase/releases/WS267/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS267.canonical_geneset.gtf.gz)
 #'
 #' @export
-#' @note Updated 2020-05-11.
+#' @note Updated 2020-10-05.
 #'
 #' @inheritParams acidroxygen::params
 #' @param .checkAgainstTxDb `logical(1)`.
@@ -180,11 +180,13 @@ makeGRangesFromGFF <- function(
     file,
     level = c("genes", "transcripts"),
     ignoreTxVersion = TRUE,
+    synonyms = TRUE,
     .checkAgainstTxDb = FALSE
 ) {
     assert(
         isString(file),
         isFlag(ignoreTxVersion),
+        isFlag(synonyms),
         isFlag(.checkAgainstTxDb)
     )
     level <- match.arg(level)
@@ -356,7 +358,11 @@ makeGRangesFromGFF <- function(
     }
 
     ## Return ------------------------------------------------------------------
-    out <- .makeGRanges(out, ignoreTxVersion = ignoreTxVersion)
+    out <- .makeGRanges(
+        object = out,
+        ignoreTxVersion = ignoreTxVersion,
+        synonyms = synonyms
+    )
     ## Ensure that the ranges match GenomicFeatures output, if desired.
     ## Note that this step will error out for WormBase currently. Need to think
     ## of a reworked approach that avoids this.
