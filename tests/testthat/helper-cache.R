@@ -1,7 +1,4 @@
-if (packageVersion("base") < "3.6") {
-    hasInternet <- goalie::hasInternet
-}
-if (!isTRUE(hasInternet())) {
+if (!isTRUE(goalie::hasInternet())) {
     warning("No Internet connection detected.")
     return(invisible(NULL))
 }
