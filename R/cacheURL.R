@@ -7,6 +7,9 @@
 #' @param fileName `character(1)`.
 #'   File name to store internally in `BiocFileCache`.
 #'   Defaults to basename of URL.
+#' @param update `logical(1)`.
+#'   Call `bfcneedsupdate` internally to see if URL needs an update.
+#'   Doesn't work reliably for all servers, so disabled by default.
 #'
 #' @return `character(1)`.
 #'   Cached file path on disk.
@@ -22,11 +25,14 @@
 cacheURL <- function(
     url,
     fileName = basename(url),
+    update = FALSE,
     verbose = TRUE
 ) {
     assert(
+        hasInternet(),
         isAURL(url),
         isString(fileName),
+        isFlag(update),
         isFlag(verbose)
     )
     if (isTRUE(verbose)) {
@@ -57,8 +63,10 @@ cacheURL <- function(
             download = TRUE
         ))
     }
-    if (!isFALSE(bfcneedsupdate(x = bfc, rids = rid))) {
-        bfcdownload(x = bfc, rid = rid, ask = FALSE)
+    if (isTRUE(update)) {
+        if (!isFALSE(bfcneedsupdate(x = bfc, rids = rid))) {
+            bfcdownload(x = bfc, rid = rid, ask = FALSE)
+        }
     }
     out <- unname(bfcrpath(x = bfc, rids = rid))
     assert(isAFile(out))
