@@ -21,8 +21,8 @@
 #'   Returns `geneID`, `geneName`, and `geneSynonyms` columns in the split.
 #'
 #' @examples
-#' x <- geneSynonyms(organism = "Homo sapiens")
-#' print(x)
+#' object <- geneSynonyms(organism = "Homo sapiens")
+#' print(object)
 geneSynonyms <- function(
     organism = c(
         "Homo sapiens",
@@ -88,6 +88,7 @@ geneSynonyms <- function(
     df <- df[order(df[["geneID"]]), , drop = FALSE]
     split <- split(df, f = df[["geneID"]])
     if (identical(return, "DataFrame")) {
+        cli_alert("Preparing unique synonyms per gene.")
         list <- bplapply(
             X = split,
             FUN = function(x) {
@@ -100,9 +101,11 @@ geneSynonyms <- function(
                 DataFrame("geneID" = geneID, "geneSynonyms" = geneSynonyms)
             }
         )
-        out <- do.call(what = rbind, args = list)
-        assert(identical(names(split), out[["geneID"]]))
-        rownames(out) <- out[["geneID"]]
+        df <- do.call(what = rbind, args = list)
+        assert(identical(names(split), df[["geneID"]]))
+        df <- df[complete.cases(df), ]
+        rownames(df) <- df[["geneID"]]
+        out <- df
     } else {
         out <- split
     }
