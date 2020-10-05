@@ -148,15 +148,13 @@ setValidity(
 
 
 
-## FIXME REWORK
-
 #' MGI-to-Ensembl gene identifier mappings
 #'
 #' @details
 #' Contains a `DataFrame` with `mgi` and `ensembl` columns.
 #'
 #' @export
-#' @note Updated 2019-08-08.
+#' @note Updated 2020-10-05.
 #'
 #' @return `MGI2Ensembl`.
 setClass(
@@ -167,8 +165,7 @@ setValidity(
     Class = "MGI2Ensembl",
     method = function(object) {
         validate(
-            identical(colnames(object), c("mgi", "ensembl")),
-            is.null(rownames(object))
+            identical(colnames(object), c("mgi", "ensembl"))
         )
     }
 )
