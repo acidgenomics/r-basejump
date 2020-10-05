@@ -1,7 +1,7 @@
 #' Import HGNC complete set metadata
 #'
 #' @export
-#' @note Updated 2020-10-03.
+#' @note Updated 2020-10-05.
 #'
 #' @return `HGNC`.
 #'

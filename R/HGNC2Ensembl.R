@@ -1,51 +1,20 @@
 #' @inherit HGNC2Ensembl-class title description return
-#' @note Updated 2020-01-30.
+#' @note Updated 2020-10-03.
 #' @export
 #' @examples
-#' options(acid.test = TRUE)
-#' x <- HGNC2Ensembl()
-#' print(x)
+#' object <- HGNC2Ensembl()
+#' print(object)
 HGNC2Ensembl <-  # nolint
     function() {
-        assert(hasInternet())
-        if (isTRUE(getOption("acid.test"))) {
-            file <- pasteURL(
-                basejumpTestsURL, "hgnc.txt.gz",
-                protocol = "none"
-            )
-        } else {
-            ## This is unreliable on Travis, so cover locally instead.
-            ## nocov start
-            file <- pasteURL(
-                "ftp.ebi.ac.uk",
-                "pub",
-                "databases",
-                "genenames",
-                "new",
-                "tsv",
-                "hgnc_complete_set.txt",
-                protocol = "ftp"
-            )
-            ## nocov end
-        }
-        cli_alert("Importing HGNC to Ensembl gene ID mappings.")
-        data <- withCallingHandlers(
-            expr = import(file = file, format = "tsv"),
-            message = function(m) {
-                if (isTRUE(grepl(pattern = "syntactic", x = m))) {
-                    invokeRestart("muffleMessage")
-                } else {
-                    m
-                }
-            }
-        )
-        data <- camelCase(data)
-        data <- data[, c("hgncID", "ensemblGeneID")]
-        colnames(data)[[2L]] <- "geneID"
-        data <- data[!is.na(data[["geneID"]]), , drop = FALSE]
-        data[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", data[["hgncID"]]))
-        data <- data[order(data[["hgncID"]]), , drop = FALSE]
-        data <- as(data, "DataFrame")
-        metadata(data) <- .prototypeMetadata
-        new(Class = "HGNC2Ensembl", data)
+        hgnc <- HGNC()
+        cli_alert("Mapping HGNC identifiers to Ensembl.")
+        df <- as(hgnc, "DataFrame")
+        cols <- c("hgncID", "ensemblGeneID")
+        assert(isSubset(cols, colnames(df)))
+        df <- df[, cols]
+        colnames(df)[colnames(df) == "ensemblGeneID"] <- "ensembl"
+        colnames(df)[colnames(df) == "hgncID"] <- "hgnc"
+        df <- df[complete.cases(df), ]
+        metadata(df) <- metadata(hgnc)
+        new(Class = "HGNC2Ensembl", df)
     }
