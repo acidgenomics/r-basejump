@@ -12,6 +12,7 @@
 \alias{readTx2Gene}
 \alias{coerceS4ToList}
 \alias{matchEnsemblReleaseToURL}
+\alias{matchHumanOrthologs}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
 \usage{
@@ -32,6 +33,8 @@ readTx2Gene(...)
 coerceS4ToList(...)
 
 matchEnsemblReleaseToURL(...)
+
+matchHumanOrthologs(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
