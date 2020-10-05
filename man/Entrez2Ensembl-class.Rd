@@ -14,5 +14,5 @@ Entrez-to-Ensembl gene identifier mappings
 Contains a \code{DataFrame} with \code{ensembl} and \code{entrez} columns.
 }
 \note{
-Updated 2020-10-01.
+Updated 2020-10-05.
 }
