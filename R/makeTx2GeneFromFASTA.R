@@ -1,7 +1,3 @@
-## FIXME USE BIOCFILECACHE
-
-
-
 #' Make a Tx2Gene object from transcriptome FASTA
 #'
 #' @export
