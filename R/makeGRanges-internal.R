@@ -1,3 +1,28 @@
+#' Add Ensembl gene synonyms
+#'
+#' @note Updated 2020-10-05.
+#' @noRd
+.addGeneSynonyms <- function(object) {
+    assert(is(object, "GRanges"))
+    mcols <- mcols(object)
+    assert(isSubset("geneID", colnames(mcols)))
+    if (!any(grepl(pattern = "^ENS", x= mcols[["geneID"]]))) {
+        return(object)
+    }
+    organism <- organism(object)
+    if (!isSubset(organism, eval(formals(geneSynonyms)[["organism"]]))) {
+        return(object)
+    }
+    cli_alert("Adding gene synonyms.")
+    synonyms <- geneSynonyms(organism = organism, return = "DataFrame")
+    assert(identical(c("geneID", "geneSynonyms"), colnames(synonyms)))
+    mcols <- leftJoin(x = mcols, y = synonyms, by = "geneID")
+    mcols(object) <- mcols
+    object
+}
+
+
+
 #' Add the transcript version
 #'
 #' Append the transcript version to the identifier (e.g. ENST00000000233.10).
@@ -62,7 +87,7 @@
 #' This is the main GRanges final return generator, used by
 #' `makeGRangesFromEnsembl()` and `makeGRangesFromGFF()`.
 #'
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-10-05.
 #' @noRd
 .makeGRanges <- function(object, ignoreTxVersion = TRUE) {
     assert(
@@ -84,6 +109,8 @@
     object <- .slotOrganism(object)
     ## Ensure object contains prototype metadata.
     metadata(object) <- c(.prototypeMetadata, metadata(object))
+    ## Add gene synonym column into mcols for Ensembl genes, if possible.
+    object <- .addGeneSynonyms(object)
     ## Ensure the transcript identifier includes the version, if desired. This
     ## is useful for tx2gene handling with tximport.
     if (identical(ignoreTxVersion, FALSE)) {
