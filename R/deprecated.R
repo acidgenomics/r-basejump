@@ -169,6 +169,13 @@ matchEnsemblReleaseToURL <- function(...) {
     mapEnsemblReleaseToURL(...)
 }
 
+#' @rdname deprecated
+#' @export
+matchHumanOrthologs <- function(...) {
+    .Deprecated("mapHumanOrthologs")
+    mapHumanOrthologs(...)
+}
+
 
 
 ## nolint end
