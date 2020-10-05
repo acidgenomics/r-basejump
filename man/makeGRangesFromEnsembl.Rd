@@ -10,16 +10,11 @@ makeGRangesFromEnsembl(
   level = c("genes", "transcripts"),
   genomeBuild = NULL,
   release = NULL,
-  ignoreTxVersion = TRUE
+  ignoreTxVersion = TRUE,
+  synonyms = TRUE
 )
 
-annotable(
-  organism,
-  level = c("genes", "transcripts"),
-  genomeBuild = NULL,
-  release = NULL,
-  ignoreTxVersion = TRUE
-)
+annotable(...)
 }
 \arguments{
 \item{organism}{\code{character(1)}.
@@ -43,6 +38,8 @@ ensembldb in use.}
 \item{ignoreTxVersion}{\code{logical(1)}. Don't the include the transcript version
 in the identifier. Only applies when \code{level = "transcripts"}. This
 simplifies identifier matching when generating a \code{tx2gene} file.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{GRanges}.
@@ -74,7 +71,7 @@ coercing using \code{\link[BiocGenerics:as.data.frame]{as.data.frame()}}.
 }}
 
 \note{
-Updated 2020-09-24.
+Updated 2020-10-05.
 }
 \section{Broad class definitions}{
 

@@ -7,7 +7,8 @@
 makeGRangesFromEnsDb(
   object,
   level = c("genes", "transcripts"),
-  ignoreTxVersion = TRUE
+  ignoreTxVersion = TRUE,
+  synonyms = TRUE
 )
 }
 \arguments{

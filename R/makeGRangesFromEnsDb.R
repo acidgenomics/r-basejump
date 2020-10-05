@@ -19,8 +19,15 @@
 makeGRangesFromEnsDb <- function(
     object,
     level,
-    ignoreTxVersion = TRUE
+    ignoreTxVersion = TRUE,
+    broadClass = TRUE,
+    synonyms = TRUE
 ) {
+    assert(
+        isFlag(ignoreTxVersion),
+        isFlag(broadClass),
+        isFlag(synonyms)
+    )
     level <- match.arg(level)
     cli_alert("Making {.var GRanges} from {.var EnsDb}.")
     userAttached <- .packages()
@@ -56,7 +63,12 @@ makeGRangesFromEnsDb <- function(
     }
     .forceDetach(keep = userAttached)
     metadata(out) <- metadata
-    out <- .makeGRanges(out, ignoreTxVersion = ignoreTxVersion)
+    out <- .makeGRanges(
+        object = out,
+        ignoreTxVersion = ignoreTxVersion,
+        broadClass = broadClass,
+        synonyms = synonyms
+    )
     out
 }
 

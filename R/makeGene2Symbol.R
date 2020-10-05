@@ -5,7 +5,7 @@
 #' Remote URLs and compressed files are supported.
 #'
 #' @name makeGene2Symbol
-#' @note Updated 2020-01-20.
+#' @note Updated 2020-10-05.
 #'
 #' @inheritParams Gene2Symbol
 #' @inheritParams acidroxygen::params
@@ -39,14 +39,17 @@ NULL
 
 #' @rdname makeGene2Symbol
 #' @export
-## Updated 2019-08-15.
+## Updated 2020-10-05.
 makeGene2SymbolFromEnsembl <-
     function(organism) {
         format <- match.arg(format)
         gr <- do.call(
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall(
-                args = list(level = "genes"),
+                args = list(
+                    level = "genes",
+                    synonyms = FALSE
+                ),
                 removeFormals = "format"
             )
         )
@@ -62,11 +65,14 @@ formals(makeGene2SymbolFromEnsembl) <- f
 
 #' @rdname makeGene2Symbol
 #' @export
-## Updated 2019-06-06.
+## Updated 2020-10-05.
 makeGene2SymbolFromEnsDb <-
     function(object, format) {
         format <- match.arg(format)
-        gr <- makeGRangesFromEnsDb(object)
+        gr <- makeGRangesFromEnsDb(
+            object = object,
+            synonyms = FALSE
+        )
         Gene2Symbol(gr, format = format)
     }
 
@@ -77,11 +83,15 @@ formals(makeGene2SymbolFromEnsDb)[["format"]] <-
 
 #' @rdname makeGene2Symbol
 #' @export
-## Updated 2019-06-06.
+## Updated 2020-10-05.
 makeGene2SymbolFromGFF <-
     function(file, format) {
         format <- match.arg(format)
-        gr <- makeGRangesFromGFF(file, level = "genes")
+        gr <- makeGRangesFromGFF(
+            file = file,
+            level = "genes",
+            synonyms = FALSE
+        )
         Gene2Symbol(gr, format = format)
     }
 
