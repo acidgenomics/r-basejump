@@ -1,6 +1,6 @@
-#' Match human gene orthologs
+#' Map input to human gene orthologs
 #'
-#' @note Updated 2020-07-24.
+#' @note Updated 2020-10-05.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
@@ -26,9 +26,9 @@
 #' )
 #' ## Protect against Ensembl timeouts causing build checks to fail.
 #' ## > if (goalie::hasInternet("https://ensembl.org")) {
-#' ## >     matchHumanOrthologs(genes = genes, ensemblRelease = 87L)
+#' ## >     mapHumanOrthologs(genes = genes, ensemblRelease = 87L)
 #' ## > }
-matchHumanOrthologs <- function(
+mapHumanOrthologs <- function(
     genes,
     organism = NULL,
     ensemblRelease = NULL
@@ -46,7 +46,7 @@ matchHumanOrthologs <- function(
     assert(!identical(organism, "Homo sapiens"))
     ## Match the Ensembl release to the archive host name, required for biomaRt.
     ## e.g. Ensembl 99: http://jan2020.archive.ensembl.org
-    host <- matchEnsemblReleaseToURL(ensemblRelease)
+    host <- mapEnsemblReleaseToURL(ensemblRelease)
     ## e.g. "mmusculus_gene_ensembl".
     dataset <- paste0(
         tolower(sub(

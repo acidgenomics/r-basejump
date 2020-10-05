@@ -27,7 +27,7 @@ Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns.
 Check that user-defined gene input matches expected values
 }
 \note{
-Updated 2019-08-11.
+Updated 2020-10-05.
 }
 \examples{
 x <- S4Vectors::DataFrame(
