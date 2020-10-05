@@ -1,7 +1,3 @@
-## FIXME INCLUDE geneSynonyms here.
-
-
-
 #' Make GRanges from EnsDb object
 #'
 #' @details
@@ -10,7 +6,7 @@
 #'
 #' @export
 #' @include makeGRangesFromEnsembl.R
-#' @note Updated 2020-10-02.
+#' @note Updated 2020-10-05.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -44,11 +40,6 @@ makeGRangesFromEnsDb <- function(
         order.by = "gene_id",
         return.type = "GRanges"
     )
-    organism <- organism(object)
-    choices <- eval(formals(geneSynonyms)[["organism"]])
-    if (isSubset(organism, choices)) {
-        synonyms <- geneSynonyms(organism)
-    }
     if (level == "genes") {
         out <- genes
     }
