@@ -40,6 +40,6 @@ Use the \href{https://wormbase.acidgenomics.com/}{wormbase} package instead.
 Updated 2020-10-05.
 }
 \examples{
-x <- geneSynonyms(organism = "Homo sapiens")
-print(x)
+object <- geneSynonyms(organism = "Homo sapiens")
+print(object)
 }
