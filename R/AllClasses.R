@@ -110,17 +110,16 @@ setClass(
 setValidity(
     Class = "HGNC",
     method = function(object) {
-        ## FIXME ADD THIS.
-        ## validate(
-        ##     isSubset("FIXME", colnames(object)
-        ## )
-        TRUE
+        validate(
+            isSubset(
+                x = c("hgncID", "ensemblGeneID"),
+                y = colnames(object)
+            )
+        )
     }
 )
 
 
-
-## FIXME RENAME THE COLUMNS.
 
 #' HGNC-to-Ensembl gene identifier mappings
 #'
@@ -140,13 +139,9 @@ setValidity(
     method = function(object) {
         validate(
             identical(
-                x = lapply(object, class),
-                y = list(
-                    hgnc = "integer",
-                    gene = "character"
-                )
-            ),
-            is.null(rownames(object))
+                x = c("hgnc", "ensembl"),
+                y = colnames(object)
+            )
         )
     }
 )
