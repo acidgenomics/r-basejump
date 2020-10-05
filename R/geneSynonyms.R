@@ -34,7 +34,10 @@ geneSynonyms <- function(
     assert(hasInternet())
     organism <- match.arg(organism)
     return <- match.arg(return)
-    cli_alert(sprintf("Importing %s gene synonyms from Ensembl.", organism))
+    cli_alert(sprintf(
+        "Importing {.var %s} gene synonyms from Ensembl.",
+        organism
+    ))
     ## NCBI uses underscore for species name.
     species <- gsub(" ", "_", organism)
     if (species == "Drosophila_melanogaster") {
