@@ -28,8 +28,12 @@ HGNC <- function() {
     df <- import(file, format = "tsv")
     df <- as(df, "DataFrame")
     df <- camelCase(df)
-    assert(isSubset("hgncID", colnames(df)))
-    ids <- as.integer(gsub("^HGNC\\:", "", df[["hgncID"]]))
-    df <- df[order(ids), ]
+    assert(
+        isSubset("hgncID", colnames(df)),
+        hasNoDuplicates(df[["hgncID"]])
+    )
+    df[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", df[["hgncID"]]))
+    df <- df[order(df[["hgncID"]]), ]
+    rownames(df) <- df[["hgncID"]]
     new("HGNC", df)
 }

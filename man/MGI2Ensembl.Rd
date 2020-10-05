@@ -13,10 +13,9 @@ MGI2Ensembl()
 MGI-to-Ensembl gene identifier mappings
 }
 \note{
-Updated 2020-05-18.
+Updated 2020-10-05.
 }
 \examples{
-options(acid.test = TRUE)
-x <- MGI2Ensembl()
-print(x)
+object <- MGI2Ensembl()
+print(object)
 }
