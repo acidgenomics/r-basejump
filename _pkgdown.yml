@@ -30,12 +30,12 @@ reference:
       - makeProtein2Gene
       - makeTx2Gene
       - makeTx2GeneFromFASTA
-      - matchEnsemblReleaseToURL
+      - mapEnsemblReleaseToURL
   - title: Gene identifier mapping
     contents:
       - starts_with("convert")
       - starts_with("mapGenes")
-      - matchHumanOrthologs
+      - mapHumanOrthologs
   - title: Counts
     contents:
       - counts
