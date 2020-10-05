@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.13.0
-Date: 2020-10-02
+Date: 2020-10-05
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -96,6 +96,7 @@ Collate:
     'AllGenerics.R'
     'Ensembl2Entrez-methods.R'
     'Gene2Symbol-methods.R'
+    'HGNC.R'
     'HGNC2Ensembl.R'
     'MGI2Ensembl.R'
     'Tx2Gene-methods.R'
