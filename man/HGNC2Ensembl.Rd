@@ -13,10 +13,9 @@ HGNC2Ensembl()
 HGNC-to-Ensembl gene identifier mappings
 }
 \note{
-Updated 2020-01-30.
+Updated 2020-10-03.
 }
 \examples{
-options(acid.test = TRUE)
-x <- HGNC2Ensembl()
-print(x)
+object <- HGNC2Ensembl()
+print(object)
 }
