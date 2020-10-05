@@ -31,7 +31,7 @@ Use specific \code{EnsDb} object as annotation source.
 Alternatively, can pass in an EnsDb package name as a \code{character(1)}.
 }
 \note{
-Updated 2020-01-20.
+Updated 2020-10-02.
 }
 \examples{
 if ("EnsDb.Hsapiens.v75" \%in\% rownames(installed.packages())) {

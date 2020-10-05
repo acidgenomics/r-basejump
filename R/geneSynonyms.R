@@ -4,29 +4,36 @@
 #'
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
 #' Use the [wormbase](https://wormbase.acidgenomics.com/) package instead.
-#' @note Updated 2020-05-11.
+#' @note Updated 2020-10-05.
 #' @export
 #'
 #' @inheritParams acidroxygen::params
 #'
-#' @return `SplitDataFrameList`.
-#' Split by `geneID` column.
-#' Handles genes with duplicate entries (e.g. ENSG00000004866).
+#' @return
+#' - `DataFrame`:
+#'   Returns unique row for each `geneID`.
+#'   Returns only `geneID` and `geneSynonyms` columns.
+#'   The `geneSynonyms` column returns as character vector, with synonyms
+#'   arranged alphabetically and delimited by `", "`.
+#' - `SplitDataFrameList`:
+#'   Split by `geneID` column.
+#'   Keeps duplicate rows mapping to same `geneID` (e.g. ENSG00000004866).
+#'   Returns `geneID`, `geneName`, and `geneSynonyms` columns in the split.
 #'
 #' @examples
-#' options(acid.test = TRUE)
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
-geneSynonyms <- function(organism) {
+geneSynonyms <- function(
+    organism = c(
+        "Homo sapiens",
+        "Mus musculus",
+        "Drosophila melanogaster"
+    ),
+    return = c("DataFrame", "SplitDataFrameList")
+) {
     assert(hasInternet())
-    organism <- match.arg(
-        arg = organism,
-        choices = c(
-            "Homo sapiens",
-            "Mus musculus",
-            "Drosophila melanogaster"
-        )
-    )
+    organism <- match.arg(organism)
+    return <- match.arg(return)
     ## NCBI uses underscore for species name.
     species <- gsub(" ", "_", organism)
     if (species == "Drosophila_melanogaster") {
@@ -36,49 +43,31 @@ geneSynonyms <- function(organism) {
         kingdom <- "Mammalia"
     }
     genome <- c(kingdom = kingdom, species = species)
-    if (isTRUE(getOption("acid.test"))) {
-        assert(organism == "Homo sapiens")
-        file <- pasteURL(
-            basejumpTestsURL, paste0(snakeCase(organism), ".gene_info.gz"),
-            protocol = "none"
-        )
-    } else {
-        ## This works unreliably on Travis, so cover locally instead.
-        ## nocov start
-        file <- pasteURL(
-            "ftp.ncbi.nih.gov",
-            "gene",
-            "DATA",
-            "GENE_INFO",
-            genome[["kingdom"]],
-            paste0(genome[["species"]], ".gene_info.gz"),
-            protocol = "ftp"
-        )
-        ## nocov end
-    }
-    data <- withCallingHandlers(
-        expr = import(file = file, format = "tsv", colnames = TRUE),
-        message = function(m) {
-            if (isTRUE(grepl(pattern = "syntactic", x = m))) {
-                invokeRestart("muffleMessage")
-            } else {
-                m
-            }
-        }
+    url <- pasteURL(
+        "ftp.ncbi.nih.gov",
+        "gene",
+        "DATA",
+        "GENE_INFO",
+        genome[["kingdom"]],
+        paste0(genome[["species"]], ".gene_info.gz"),
+        protocol = "ftp"
     )
-    assert(hasLength(data))
-    data <- as(data, "DataFrame")
-    data <- camelCase(data)
-    data <- data[, c("symbol", "synonyms", "dbXrefs")]
-    colnames(data)[colnames(data) == "symbol"] <- "geneName"
-    keep <- data[["synonyms"]] != "-"
-    data <- data[keep, , drop = FALSE]
-    keep <- data[["dbXrefs"]] != "-"
-    data <- data[keep, , drop = FALSE]
-    data[["synonyms"]] <- gsub(
+    file <- cacheURL(url)
+    df <- import(file = file, format = "tsv", colnames = TRUE)
+    assert(hasLength(df))
+    df <- as(df, "DataFrame")
+    df <- camelCase(df)
+    df <- df[, c("symbol", "synonyms", "dbXrefs")]
+    colnames(df)[colnames(df) == "symbol"] <- "geneName"
+    colnames(df)[colnames(df) == "synonyms"] <- "geneSynonyms"
+    keep <- df[["geneSynonyms"]] != "-"
+    df <- df[keep, , drop = FALSE]
+    keep <- df[["dbXrefs"]] != "-"
+    df <- df[keep, , drop = FALSE]
+    df[["geneSynonyms"]] <- gsub(
         pattern = "\\|",
         replacement = ", ",
-        x = data[["synonyms"]]
+        x = df[["geneSynonyms"]]
     )
     ## Sanitize the identifiers.
     if (identical(organism, "Drosophila melanogaster")) {
@@ -89,13 +78,33 @@ geneSynonyms <- function(organism) {
     } else {
         pattern <- "\\bENS[A-Z]+[0-9]{11}\\b"
     }
-    data[["geneID"]] <- str_extract(
-        string = data[["dbXrefs"]],
+    df[["geneID"]] <- str_extract(
+        string = df[["dbXrefs"]],
         pattern = pattern
     )
-    keep <- !is.na(data[["geneID"]])
-    data <- data[keep, , drop = FALSE]
-    data <- data[, c("geneID", "geneName", "synonyms")]
-    data <- data[order(data[["geneID"]]), , drop = FALSE]
-    split(data, f = data[["geneID"]])
+    keep <- !is.na(df[["geneID"]])
+    df <- df[keep, , drop = FALSE]
+    df <- df[, c("geneID", "geneName", "geneSynonyms")]
+    df <- df[order(df[["geneID"]]), , drop = FALSE]
+    split <- split(df, f = df[["geneID"]])
+    if (identical(return, "DataFrame")) {
+        list <- bplapply(
+            X = split,
+            FUN = function(x) {
+                geneID <- x[["geneID"]][[1L]]
+                geneSynonyms <- strsplit(x[["geneSynonyms"]], split = ", ")
+                geneSynonyms <- unlist(geneSynonyms)
+                geneSynonyms <- c(geneSynonyms, x[["geneName"]])
+                geneSynonyms <- sort(unique(geneSynonyms))
+                geneSynonyms <- toString(geneSynonyms)
+                DataFrame("geneID" = geneID, "geneSynonyms" = geneSynonyms)
+            }
+        )
+        out <- do.call(what = rbind, args = list)
+        assert(identical(names(split), out[["geneID"]]))
+        rownames(out) <- out[["geneID"]]
+    } else {
+        out <- split
+    }
+    out
 }

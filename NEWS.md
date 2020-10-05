@@ -1,4 +1,4 @@
-## basejump 0.13.0 (2020-10-02)
+## basejump 0.13.0 (2020-10-05)
 
 ### Major changes
 
