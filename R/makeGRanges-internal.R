@@ -13,7 +13,10 @@
     if (!isSubset(organism, eval(formals(geneSynonyms)[["organism"]]))) {
         return(object)
     }
-    cli_alert("Adding gene synonyms.")
+    cli_alert(sprintf(
+        "Adding gene synonyms to {.var %s} column.",
+        "geneSynonyms"
+    ))
     synonyms <- geneSynonyms(organism = organism, return = "DataFrame")
     assert(identical(c("geneID", "geneSynonyms"), colnames(synonyms)))
     mcols <- leftJoin(x = mcols, y = synonyms, by = "geneID")
