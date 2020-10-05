@@ -161,5 +161,15 @@ setMethod(
 
 
 
+## v0.13.0 =====================================================================
+#' @rdname deprecated
+#' @export
+matchEnsemblReleaseToURL <- function(...) {
+    .Deprecated("mapEnsemblReleaseToURL")
+    mapEnsemblReleaseToURL(...)
+}
+
+
+
 ## nolint end
 ## nocov end
