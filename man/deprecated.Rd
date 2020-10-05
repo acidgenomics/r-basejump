@@ -11,6 +11,7 @@
 \alias{readSampleData}
 \alias{readTx2Gene}
 \alias{coerceS4ToList}
+\alias{matchEnsemblReleaseToURL}
 \alias{uniteInterestingGroups,data.frame-method}
 \title{Deprecated functions}
 \usage{
@@ -29,6 +30,8 @@ readSampleData(...)
 readTx2Gene(...)
 
 coerceS4ToList(...)
+
+matchEnsemblReleaseToURL(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

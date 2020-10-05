@@ -14,6 +14,7 @@
   defined in the new DepMapAnalysis package.
 - `makeGRangesFromEnsembl`: Include `geneSynonyms` column for supported
   organisms, including *Homo sapiens*.
+- Deprecated `matchEnsemblReleaseToURL` in favor of `mapEnsemblReleaseToURL`.
 
 ## basejump 0.12.16 (2020-09-29)
 
