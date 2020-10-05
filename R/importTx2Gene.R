@@ -45,11 +45,7 @@ importTx2Gene <- function(
         isFlag(ignoreTxVersion),
         isFlag(ignoreGeneVersion)
     )
-    data <- import(
-        file = file,
-        rownames = FALSE,
-        colnames = FALSE
-    )
+    data <- import(file = file, rownames = FALSE, colnames = FALSE)
     colnames(data) <- c("transcriptID", "geneID")
     data <- as(data, "DataFrame")
     if (isTRUE(ignoreTxVersion)) {
