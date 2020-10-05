@@ -6,7 +6,8 @@ NULL
 
 globalVariables(".")
 
-.version <- packageVersion("basejump")
+## FIXME Use packageName consistently across packages.
+.version <- packageVersion(packageName())
 
 
 
