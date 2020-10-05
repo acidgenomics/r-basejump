@@ -1,4 +1,4 @@
-context("matchHumanOrthologs")
+context("mapHumanOrthologs")
 
 skip_if_not(hasInternet())
 
@@ -10,7 +10,7 @@ test_that("Mus musculus", {
     )
     ## This depends on biomaRt, and has a tendency to time out.
     map <- tryCatch(
-        expr = matchHumanOrthologs(genes, ensemblRelease = NULL),
+        expr = mapHumanOrthologs(genes, ensemblRelease = NULL),
         error = function(e) e
     )
     ## Skip if connection timed out.
