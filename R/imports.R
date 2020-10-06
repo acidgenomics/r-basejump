@@ -25,8 +25,6 @@ NULL
 #' @importFrom AnnotationDbi select
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom BiocGenerics colSums organism rowSums unlist
-#' @importFrom BiocFileCache BiocFileCache bfcadd bfccache bfcdownload
-#'   bfcneedsupdate bfcquery bfcrpath
 #' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
 #' @importFrom GenomeInfoDb seqnames
