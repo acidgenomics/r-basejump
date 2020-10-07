@@ -19,23 +19,10 @@ reference:
   - title: S4 classes
     contents:
       - matches("^[A-Z]")
-  - title: Genome annotations
-    contents:
-      - currentGenomeVersion
-      - getEnsDb
-      - emptyRanges
-      - geneSynonyms
-      - starts_with("makeGRanges")
-      - makeGene2Symbol
-      - makeProtein2Gene
-      - makeTx2Gene
-      - makeTx2GeneFromFASTA
-      - matchEnsemblReleaseToURL
   - title: Gene identifier mapping
     contents:
       - starts_with("convert")
-      - starts_with("mapGenes")
-      - matchHumanOrthologs
+      - mapGenes
   - title: Counts
     contents:
       - counts
@@ -52,21 +39,13 @@ reference:
     contents:
       - starts_with("import")
       - transmit
-  - title: Data manipulation
-    contents:
-      - join
-      - mutate
-      - select
-      - starts_with("split")
   - title: Metadata
     contents:
-      - geneNames
       - headtail
       - humanize
       - interestingGroups
       - mcolnames
       - microplate
-      - organism
       - uniteInterestingGroups
   - title: Sample-level metadata
     contents:
@@ -111,15 +90,13 @@ reference:
       - prepareTemplate
   - title: Developer
     contents:
-      - starts_with("detect")
-      - getURLDirList
-      - formalsList
+      - detectHPC
+      - detectLanes
       - matchInterestingGroups
       - starts_with("matches")
       - multiassignAsEnvir
       - separator
       - showHeader
-      - showSlotInfo
   - title: Reexports
     contents:
       - reexports

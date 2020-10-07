@@ -1,10 +1,10 @@
 #' Correlation
 #'
 #' @name correlation
-#' @inherit acidgenerics::correlation
+#' @inherit AcidGenerics::correlation
 #' @note Updated 2020-01-20.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @inheritParams stats::cor
 #' @param i `integer(1)` or `character(1)`.
 #'   For `SummarizedExperiment`, primary assay.
@@ -14,7 +14,7 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(correlation, package = "acidtest")
+#' data(correlation, package = "AcidTest")
 #' list <- correlation
 #'
 #' ## vector ====
@@ -52,7 +52,7 @@ NULL
 
 #' @rdname correlation
 #' @name correlation
-#' @importFrom acidgenerics correlation
+#' @importFrom AcidGenerics correlation
 #' @usage correlation(x, y, ...)
 #' @export
 NULL

@@ -5,7 +5,7 @@
 #' @inherit makeSummarizedExperiment
 #' @note Updated 2020-02-24.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @seealso
 #' - `SingleCellExperiment::altExps()`, which has replaced the now defunct
@@ -14,7 +14,7 @@
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SimpleList ====
 #' object <- SingleCellExperiment

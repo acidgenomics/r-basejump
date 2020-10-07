@@ -1,10 +1,10 @@
 #' Check that user-defined gene input matches expected values
 #'
-#' @note Updated 2019-08-11.
+#' @note Updated 2020-10-05.
 #' @export
 #'
 #' @inherit goalie::check return
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @examples
 #' x <- S4Vectors::DataFrame(
@@ -41,25 +41,20 @@ matchesGene2Symbol <- function(
     if (!isTRUE(ok)) {
         return(false("'%s' doesn't have row names.", .xname))
     }
-
     ok <- isCharacter(genes)
     if (!isTRUE(ok)) return(ok)
-
     ok <- is(gene2symbol, "Gene2Symbol")
     if (!isTRUE(ok)) {
         return(false("'gene2symbol' must be Gene2Symbol S4 class."))
     }
-
     ok <- identical(nrow(x), nrow(gene2symbol))
     if (!isTRUE(ok)) {
         return(false("Row mismatch between 'x' and 'gene2symbol'."))
     }
-
     ## Consider tightening up this step.
     if (is.null(rownames(gene2symbol))) {
         rownames(gene2symbol) <- rownames(x)
     }
-
     ## Map genes to x rownames, using gene2symbol.
     ok <- isSubset(
         x = mapGenesToRownames(object = gene2symbol, genes = genes),
@@ -68,6 +63,5 @@ matchesGene2Symbol <- function(
     if (!isTRUE(ok)) {
         return(false("Failed to map genes to rownames in '%s'.", .xname))
     }
-
     TRUE
 }

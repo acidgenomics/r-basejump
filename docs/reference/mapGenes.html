@@ -77,7 +77,7 @@ dynamically (e.g. for single-cell RNA-seq marker analysis)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -137,29 +137,29 @@ writing code that needs to handle either gene identifier or gene name input
 dynamically (e.g. for single-cell RNA-seq marker analysis).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mapGenesToRownames</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>mapGenesToRownames</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>mapGenesToIDs</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+<span class='fu'>mapGenesToIDs</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>mapGenesToSymbols</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
-
-<span class='co'># S4 method for Gene2Symbol</span>
-<span class='fu'>mapGenesToRownames</span>(<span class='kw'>object</span>, <span class='kw'>genes</span>, strict = <span class='fl'>TRUE</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>mapGenesToRownames</span>(<span class='kw'>object</span>, <span class='kw'>genes</span>, strict = <span class='fl'>TRUE</span>)
+<span class='fu'>mapGenesToSymbols</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Gene2Symbol</span>
-<span class='fu'>mapGenesToIDs</span>(<span class='kw'>object</span>, <span class='kw'>genes</span>, strict = <span class='fl'>TRUE</span>)
+<span class='fu'>mapGenesToRownames</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>genes</span>, strict <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>mapGenesToIDs</span>(<span class='kw'>object</span>, <span class='kw'>genes</span>, strict = <span class='fl'>TRUE</span>)
+<span class='fu'>mapGenesToRownames</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>genes</span>, strict <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Gene2Symbol</span>
-<span class='fu'>mapGenesToSymbols</span>(<span class='kw'>object</span>, <span class='kw'>genes</span>, strict = <span class='fl'>TRUE</span>)
+<span class='fu'>mapGenesToIDs</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>genes</span>, strict <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>mapGenesToSymbols</span>(<span class='kw'>object</span>, <span class='kw'>genes</span>, strict = <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>mapGenesToIDs</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>genes</span>, strict <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Gene2Symbol</span>
+<span class='fu'>mapGenesToSymbols</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>genes</span>, strict <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>mapGenesToSymbols</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>genes</span>, strict <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -203,9 +203,9 @@ by sanitizing them with <code>make.names</code>. If a user requests a gene name 
 is duplicated, these functions will return a warning.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>RangedSummarizedExperiment</span>, package = <span class='st'>"acidtest"</span>)
-<span class='kw'>rse</span> <span class='op'>&lt;-</span> <span class='kw'>RangedSummarizedExperiment</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>rse</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>RangedSummarizedExperiment</span>, package <span class='op'>=</span> <span class='st'>"AcidTest"</span><span class='op'>)</span>
+<span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 12 
 #&gt; metadata(3): version date interestingGroups
@@ -214,49 +214,49 @@ is duplicated, these functions will return a warning.</p>
 #&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
 #&gt; colnames(12): sample01 sample02 ... sample11 sample12
 #&gt; colData names(1): condition</div><div class='input'>
-<span class='kw'>rownames</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='kw'>rse</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>rownames</span>)
+<span class='va'>rownames</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>rownames</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "gene001" "gene002" "gene003" "gene004" "gene005" "gene006"</div><div class='input'>
-<span class='kw'>g2s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='kw'>rse</span>)
-<span class='kw'>geneIDs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>g2s</span>[[<span class='st'>"geneID"</span>]])
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>geneIDs</span>)
+<span class='va'>g2s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/AcidGenomes/man/Gene2Symbol.html'>Gene2Symbol</a></span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span>
+<span class='va'>geneIDs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>g2s</span><span class='op'>[[</span><span class='st'>"geneID"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>geneIDs</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 #&gt; [5] "ENSG00000000460" "ENSG00000000938"</div><div class='input'>
-<span class='kw'>geneNames</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>g2s</span>[[<span class='st'>"geneName"</span>]])
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>geneNames</span>)
+<span class='va'>geneNames</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>g2s</span><span class='op'>[[</span><span class='st'>"geneName"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>geneNames</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div><div class='input'>
 <span class='co'>## Row names.</span>
-<span class='fu'>mapGenesToRownames</span>(<span class='kw'>rse</span>, genes = <span class='kw'>rownames</span>)
+<span class='fu'>mapGenesToRownames</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>rownames</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   gene001   gene002   gene003   gene004   gene005   gene006 
-#&gt; "gene001" "gene002" "gene003" "gene004" "gene005" "gene006" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='kw'>rse</span>, genes = <span class='kw'>geneIDs</span>)
+#&gt; "gene001" "gene002" "gene003" "gene004" "gene005" "gene006" </div><div class='input'><span class='fu'>mapGenesToRownames</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>geneIDs</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
 #&gt;       "gene001"       "gene002"       "gene003"       "gene004"       "gene005" 
 #&gt; ENSG00000000938 
-#&gt;       "gene006" </div><div class='input'><span class='fu'>mapGenesToRownames</span>(<span class='kw'>rse</span>, genes = <span class='kw'>geneNames</span>)
+#&gt;       "gene006" </div><div class='input'><span class='fu'>mapGenesToRownames</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>geneNames</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    TSPAN6      TNMD      DPM1     SCYL3  C1orf112       FGR 
 #&gt; "gene001" "gene002" "gene003" "gene004" "gene005" "gene006" </div><div class='input'>
 <span class='co'>## Gene identifiers.</span>
-<span class='fu'>mapGenesToIDs</span>(<span class='kw'>rse</span>, genes = <span class='kw'>rownames</span>)
+<span class='fu'>mapGenesToIDs</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>rownames</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;           gene001           gene002           gene003           gene004 
 #&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
 #&gt;           gene005           gene006 
-#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='kw'>rse</span>, genes = <span class='kw'>geneIDs</span>)
+#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>geneIDs</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   ENSG00000000003   ENSG00000000005   ENSG00000000419   ENSG00000000457 
 #&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
 #&gt;   ENSG00000000460   ENSG00000000938 
-#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span>(<span class='kw'>rse</span>, genes = <span class='kw'>geneNames</span>)
+#&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'><span class='fu'>mapGenesToIDs</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>geneNames</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            TSPAN6              TNMD              DPM1             SCYL3 
 #&gt; "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" 
 #&gt;          C1orf112               FGR 
 #&gt; "ENSG00000000460" "ENSG00000000938" </div><div class='input'>
 <span class='co'>## Gene names (symbols).</span>
-<span class='fu'>mapGenesToSymbols</span>(<span class='kw'>rse</span>, genes = <span class='kw'>rownames</span>)
+<span class='fu'>mapGenesToSymbols</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>rownames</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    gene001    gene002    gene003    gene004    gene005    gene006 
-#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112"      "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='kw'>rse</span>, genes = <span class='kw'>geneIDs</span>)
+#&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112"      "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>geneIDs</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ENSG00000000003 ENSG00000000005 ENSG00000000419 ENSG00000000457 ENSG00000000460 
 #&gt;        "TSPAN6"          "TNMD"          "DPM1"         "SCYL3"      "C1orf112" 
 #&gt; ENSG00000000938 
-#&gt;           "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span>(<span class='kw'>rse</span>, genes = <span class='kw'>geneNames</span>)
+#&gt;           "FGR" </div><div class='input'><span class='fu'>mapGenesToSymbols</span><span class='op'>(</span><span class='va'>rse</span>, genes <span class='op'>=</span> <span class='va'>geneNames</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     TSPAN6       TNMD       DPM1      SCYL3   C1orf112        FGR 
 #&gt;   "TSPAN6"     "TNMD"     "DPM1"    "SCYL3" "C1orf112"      "FGR" </div></pre>
   </div>

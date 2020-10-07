@@ -66,7 +66,7 @@ is duplicated, these functions will return a warning.
 }
 
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 print(rse)
 

@@ -27,7 +27,7 @@
 #' @name makeSampleData
 #' @note Updated 2019-10-10.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @return `DataFrame`.
 #'

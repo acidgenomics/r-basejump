@@ -8,14 +8,14 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param object `SummarizedExperiment`.
 #'
 #' @return `character`.
 #' Interesting groups.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #' matchInterestingGroups(rse)
 #' matchInterestingGroups(rse, interestingGroups = NULL)

@@ -50,7 +50,7 @@ collapsed to gene level using \code{aggregateRows}. This applies to our
 Updated 2020-01-30.
 }
 \examples{
-data(SummarizedExperiment_transcripts, package = "acidtest")
+data(SummarizedExperiment_transcripts, package = "AcidTest")
 txse <- SummarizedExperiment_transcripts
 object <- txse
 

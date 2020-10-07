@@ -78,7 +78,7 @@ This behavior can be disabled by setting \code{sessionInfo = FALSE}.
 }
 
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SimpleList ====
 object <- SingleCellExperiment

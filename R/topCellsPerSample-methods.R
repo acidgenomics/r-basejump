@@ -1,14 +1,14 @@
 #' @name topCellsPerSample
-#' @inherit acidgenerics::topCellsPerSample
+#' @inherit AcidGenerics::topCellsPerSample
 #' @note Updated 2020-01-30.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param n `integer(1)`.
 #'   Number of barcodes to return per sample.
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname topCellsPerSample
 #' @name topCellsPerSample
-#' @importFrom acidgenerics topCellsPerSample
+#' @importFrom AcidGenerics topCellsPerSample
 #' @usage topCellsPerSample(object, ...)
 #' @export
 NULL

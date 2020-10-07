@@ -31,7 +31,7 @@ single column, delimited by a colon.
 Updated 2019-08-29.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 
 ## DataFrame ====

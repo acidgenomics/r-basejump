@@ -1,12 +1,12 @@
 #' @name uniteInterestingGroups
-#' @inherit acidgenerics::uniteInterestingGroups
+#' @inherit AcidGenerics::uniteInterestingGroups
 #' @note Updated 2019-08-29.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## DataFrame ====
@@ -22,7 +22,7 @@ NULL
 
 #' @rdname uniteInterestingGroups
 #' @name uniteInterestingGroups
-#' @importFrom acidgenerics uniteInterestingGroups
+#' @importFrom AcidGenerics uniteInterestingGroups
 #' @usage uniteInterestingGroups(object, ...)
 #' @export
 NULL

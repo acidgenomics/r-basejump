@@ -1,5 +1,5 @@
 #' @name sampleData
-#' @inherit acidgenerics::sampleData
+#' @inherit AcidGenerics::sampleData
 #' @note Updated 2019-08-16.
 #'
 #' @section All supported S4 classes:
@@ -38,7 +38,7 @@
 #'   required as we're supporting `SingleCellExperiment` objects from 1 sample,
 #'   but it's required for working with multiple samples in a single object.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param clean `logical(1)`.
 #'   Only return `factor` columns. Useful when working with objects that contain
 #'   quality control metrics in [`colData()`][SummarizedExperiment::colData].
@@ -60,7 +60,7 @@
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #' rse <- RangedSummarizedExperiment
 #' sce <- SingleCellExperiment
@@ -88,14 +88,14 @@ NULL
 
 #' @rdname sampleData
 #' @name sampleData
-#' @importFrom acidgenerics sampleData
+#' @importFrom AcidGenerics sampleData
 #' @usage sampleData(object, ...)
 #' @export
 NULL
 
 #' @rdname sampleData
 #' @name sampleData<-
-#' @importFrom acidgenerics sampleData<-
+#' @importFrom AcidGenerics sampleData<-
 #' @usage sampleData(object, ...) <- value
 #' @export
 NULL

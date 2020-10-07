@@ -24,7 +24,7 @@ Markdown
 Updated 2020-07-24.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 
 ## SummarizedExperiment ====

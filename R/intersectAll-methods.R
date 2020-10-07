@@ -1,8 +1,8 @@
 #' @name intersectAll
-#' @inherit acidgenerics::intersectAll
+#' @inherit AcidGenerics::intersectAll
 #' @note Updated 2020-08-18.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -18,7 +18,7 @@ NULL
 
 #' @rdname intersectAll
 #' @name intersectAll
-#' @importFrom acidgenerics intersectAll
+#' @importFrom AcidGenerics intersectAll
 #' @usage intersectAll(object, ...)
 #' @export
 NULL

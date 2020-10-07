@@ -7,12 +7,12 @@
 #' @name sampleNames
 #' @note Updated 2020-03-15.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @return Named `character`.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====
@@ -27,22 +27,6 @@
 #' sampleNames(object) <- value
 #' x <- sampleNames(object)
 #' print(x)
-NULL
-
-
-
-#' @rdname sampleNames
-#' @name sampleNames
-#' @importFrom Biobase sampleNames
-#' @usage sampleNames(object)
-#' @export
-NULL
-
-#' @rdname sampleNames
-#' @name sampleNames<-
-#' @importFrom Biobase sampleNames<-
-#' @usage sampleNames(object) <- value
-#' @export
 NULL
 
 

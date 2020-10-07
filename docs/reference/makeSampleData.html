@@ -75,7 +75,7 @@ colData()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -133,13 +133,13 @@ colData()." />
 <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeSampleData</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>makeSampleData</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>makeSampleData</span>(<span class='kw'>object</span>)
+<span class='fu'>makeSampleData</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>makeSampleData</span>(<span class='kw'>object</span>)</pre>
+<span class='fu'>makeSampleData</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,13 +190,13 @@ useful for plots and doesn't have to match the column names of a
     <div class='dont-index'><p><code>makeNames</code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(
-    genotype = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"control"</span>, <span class='st'>"wildtype"</span>), times = <span class='fl'>2L</span>),
-    treatment = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"vector"</span>, <span class='st'>"RNAi"</span>), each = <span class='fl'>2L</span>),
-    sampleName = <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4L</span>)),
-    row.names = <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"GSM000000"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4L</span>))
-)
-<span class='fu'>makeSampleData</span>(<span class='kw'>object</span>)
+    <pre class="examples"><div class='input'><span class='va'>object</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span><span class='op'>(</span>
+    genotype <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"control"</span>, <span class='st'>"wildtype"</span><span class='op'>)</span>, times <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span>,
+    treatment <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"vector"</span>, <span class='st'>"RNAi"</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span>,
+    sampleName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span>,
+    row.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"GSM000000"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'>makeSampleData</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
 #&gt;            sampleName genotype treatment
 #&gt;              &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;

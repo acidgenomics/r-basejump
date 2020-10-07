@@ -1,12 +1,12 @@
 #' @name interestingGroups
-#' @inherit acidgenerics::interestingGroups
+#' @inherit AcidGenerics::interestingGroups
 #' @note Updated 2019-08-11.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====
@@ -21,14 +21,14 @@ NULL
 
 #' @rdname interestingGroups
 #' @name interestingGroups
-#' @importFrom acidgenerics interestingGroups
+#' @importFrom AcidGenerics interestingGroups
 #' @usage interestingGroups(object, ...)
 #' @export
 NULL
 
 #' @rdname interestingGroups
 #' @name interestingGroups<-
-#' @importFrom acidgenerics interestingGroups<-
+#' @importFrom AcidGenerics interestingGroups<-
 #' @usage interestingGroups(object, ...)  <- value
 #' @export
 NULL

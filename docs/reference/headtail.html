@@ -75,7 +75,7 @@ interactive use." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -124,7 +124,7 @@ interactive use." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Return the first and last parts of an object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/headtail-methods.R'><code>R/headtail-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/headtail-methods.R'><code>R/headtail-methods.R</code></a></small>
     <div class="hidden name"><code>headtail.Rd</code></div>
     </div>
 
@@ -133,28 +133,19 @@ interactive use." />
 interactive use.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>headtail</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
-
-<span class='co'># S4 method for atomic</span>
-<span class='fu'>headtail</span>(<span class='kw'>x</span>, n = <span class='fl'>2L</span>)
-
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>headtail</span>(<span class='kw'>x</span>, n = <span class='fl'>2L</span>)
-
-<span class='co'># S4 method for Matrix</span>
-<span class='fu'>headtail</span>(<span class='kw'>x</span>, n = <span class='fl'>2L</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>headtail</span>(<span class='kw'>x</span>, n = <span class='fl'>2L</span>)
+    <pre class="usage"><span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>headtail</span>(<span class='kw'>x</span>, n = <span class='fl'>2L</span>)
+<span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, n <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Matrix</span>
+<span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, n <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span>
 
 <span class='co'># S4 method for GRanges</span>
-<span class='fu'>headtail</span>(<span class='kw'>x</span>, n = <span class='fl'>2L</span>)
+<span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, n <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>headtail</span>(<span class='kw'>x</span>, n = <span class='fl'>2L</span>)</pre>
+<span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, n <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -185,17 +176,14 @@ objects.</p>
 
     
 <ul>
-<li><p><code>headtail,atomic-method</code>: Paste collapse to a <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.</p></li>
-<li><p><code>headtail,matrix-method</code>: Show first and last rows.</p></li>
-<li><p><code>headtail,Matrix-method</code>: Same method as <code>matrix</code>.</p></li>
-<li><p><code>headtail,data.frame-method</code>: Same method as <code>matrix</code>.</p></li>
 <li><p><code>headtail,DataFrame-method</code>: Same method as <code>data.frame</code>.</p></li>
+<li><p><code>headtail,Matrix-method</code>: Same method as <code>matrix</code>.</p></li>
 <li><p><code>headtail,GRanges-method</code>: Summarize the ranges.</p></li>
 <li><p><code>headtail,SummarizedExperiment-method</code>: Summarize the primary <code>assay</code>.</p></li>
 </ul>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2020-05-11.</p>
+    <p>Updated 2020-10-07.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'>
@@ -206,20 +194,12 @@ objects.</p>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>mtcars</span>, package = <span class='st'>"datasets"</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>RangedSummarizedExperiment</span>, package = <span class='st'>"acidtest"</span>)
-<span class='kw'>rse</span> <span class='op'>&lt;-</span> <span class='kw'>RangedSummarizedExperiment</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>mtcars</span>, package <span class='op'>=</span> <span class='st'>"datasets"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>RangedSummarizedExperiment</span>, package <span class='op'>=</span> <span class='st'>"AcidTest"</span><span class='op'>)</span>
+<span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
 
-<span class='co'>## data.frame ====</span>
-<span class='fu'>headtail</span>(<span class='kw'>mtcars</span>)
-</div><div class='output co'>#&gt;                mpg cyl ... gear carb
-#&gt; Mazda RX4       21   6 ...    4    4
-#&gt; Mazda RX4 Wag   21   6 ...    4    4
-#&gt; ...            ... ... ...  ...  ...
-#&gt; Maserati Bora   15   8 ...    5    8
-#&gt; Volvo 142E    21.4   4 ...    4    2</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>headtail</span>(<span class='kw'>rse</span>)
+<span class='fu'>headtail</span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;         sample01 sample02 ... sample11 sample12
 #&gt; gene001        2        7 ...        1        2
 #&gt; gene002       17        7 ...       28       18

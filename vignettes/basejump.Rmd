@@ -36,7 +36,7 @@ knitr::opts_chunk$set(message = FALSE)
 library(basejump)
 library(SummarizedExperiment)
 options(acid.test = TRUE)
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 ```
 

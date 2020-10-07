@@ -1,15 +1,15 @@
 #' @name nonzeroRowsAndCols
-#' @inherit acidgenerics::nonzeroRowsAndCols
+#' @inherit AcidGenerics::nonzeroRowsAndCols
 #' @note Updated 2020-01-20.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
@@ -29,7 +29,7 @@ NULL
 
 #' @rdname nonzeroRowsAndCols
 #' @name nonzeroRowsAndCols
-#' @importFrom acidgenerics nonzeroRowsAndCols
+#' @importFrom AcidGenerics nonzeroRowsAndCols
 #' @usage nonzeroRowsAndCols(object, ...)
 #' @export
 NULL

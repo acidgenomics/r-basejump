@@ -39,7 +39,7 @@
 #' @note Updated 2020-07-24.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param sheet `character(1)` or `integer(1)`.
 #'   Workbook sheet.
 #' @param lanes `integer(1)`.

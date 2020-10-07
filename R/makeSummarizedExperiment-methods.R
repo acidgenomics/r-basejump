@@ -19,7 +19,7 @@
 #' @note Column and rows always return sorted alphabetically.
 #' @note Updated 2020-10-01.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param sort `logical(1)`.
 #'   Ensure all row and column names are sorted alphabetically. This includes
 #'   columns inside `rowData` and `colData`, and `metadata` slot names. Assay

@@ -1,14 +1,14 @@
 #' @name convertGenesToSymbols
-#' @inherit acidgenerics::convertGenesToSymbols
+#' @inherit AcidGenerics::convertGenesToSymbols
 #' @note Updated 2020-05-17.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return Modified object of same class.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #' object <- rse
 #'
@@ -46,14 +46,14 @@ NULL
 
 #' @rdname convertGenesToSymbols
 #' @name convertGenesToSymbols
-#' @importFrom acidgenerics convertGenesToSymbols
+#' @importFrom AcidGenerics convertGenesToSymbols
 #' @usage convertGenesToSymbols(object, ...)
 #' @export
 NULL
 
 #' @rdname convertGenesToSymbols
 #' @name convertSymbolsToGenes
-#' @importFrom acidgenerics convertSymbolsToGenes
+#' @importFrom AcidGenerics convertSymbolsToGenes
 #' @usage convertSymbolsToGenes(object, ...)
 #' @export
 NULL

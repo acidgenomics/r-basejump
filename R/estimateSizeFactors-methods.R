@@ -19,7 +19,7 @@
 #' @name estimateSizeFactors
 #' @note Updated 2020-07-24.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param type `character(1)`.
 #'   Method for estimation:
 #'   ```
@@ -63,7 +63,7 @@
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====

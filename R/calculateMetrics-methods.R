@@ -1,12 +1,12 @@
 #' @name calculateMetrics
-#' @inherit acidgenerics::calculateMetrics
+#' @inherit AcidGenerics::calculateMetrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @note Input a raw count matrix. Do not use size factor adjusted or log
 #'   normalized counts here.
 #' @note Updated 2020-01-20.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param prefilter `logical(1)`.
 #'   Drop very low quality samples/cells from the object.
 #'   This can resize the number of columns but the rows (i.e. features) do not
@@ -19,7 +19,7 @@
 #'   metrics in [`colData()`][SummarizedExperiment::colData].
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
@@ -31,7 +31,7 @@ NULL
 
 #' @rdname calculateMetrics
 #' @name calculateMetrics
-#' @importFrom acidgenerics calculateMetrics
+#' @importFrom AcidGenerics calculateMetrics
 #' @usage calculateMetrics(object, ...)
 #' @export
 NULL
