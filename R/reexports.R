@@ -135,69 +135,133 @@ AcidGenomes::Entrez2Ensembl
 #' @export
 AcidGenomes::Gene2Symbol
 
-# importFrom(AcidGenomes,HGNC)
+#' @importFrom AcidGenomes HGNC
+#' @export
+AcidGenomes::HGNC
 
-# importFrom(AcidGenomes,HGNC2Ensembl)
+#' @importFrom AcidGenomes HGNC2Ensembl
+#' @export
+AcidGenomes::HGNC2Ensembl
 
-# importFrom(AcidGenomes,MGI2Ensembl)
+#' @importFrom AcidGenomes MGI2Ensembl
+#' @export
+AcidGenomes::MGI2Ensembl
 
-# importFrom(AcidGenomes,Tx2Gene)
+#' @importFrom AcidGenomes Tx2Gene
+#' @export
+AcidGenomes::Tx2Gene
 
-# importFrom(AcidGenomes,annotable)
+#' @importFrom AcidGenomes annotable
+#' @export
+AcidGenomes::annotable
 
-# importFrom(AcidGenomes,currentEnsemblVersion)
+#' @importFrom AcidGenomes currentEnsemblVersion
+#' @export
+AcidGenomes::currentEnsemblVersion
 
-# importFrom(AcidGenomes,currentFlyBaseVersion)
+#' @importFrom AcidGenomes currentFlyBaseVersion
+#' @export
+AcidGenomes::currentFlyBaseVersion
 
-# importFrom(AcidGenomes,currentGencodeVersion)
+#' @importFrom AcidGenomes currentGencodeVersion
+#' @export
+AcidGenomes::currentGencodeVersion
 
-# importFrom(AcidGenomes,currentRefSeqVersion)
+#' @importFrom AcidGenomes currentRefSeqVersion
+#' @export
+AcidGenomes::currentRefSeqVersion
 
-# importFrom(AcidGenomes,currentWormBaseVersion)
+#' @importFrom AcidGenomes currentWormBaseVersion
+#' @export
+AcidGenomes::currentWormBaseVersion
 
-# importFrom(AcidGenomes,detectOrganism)
+#' @importFrom AcidGenomes detectOrganism
+#' @export
+AcidGenomes::detectOrganism
 
-# importFrom(AcidGenomes,emptyRanges)
+#' @importFrom AcidGenomes emptyRanges
+#' @export
+AcidGenomes::emptyRanges
 
-# importFrom(AcidGenomes,geneNames)
+#' @importFrom AcidGenomes geneNames
+#' @export
+AcidGenomes::geneNames
 
-# importFrom(AcidGenomes,geneSynonyms)
+#' @importFrom AcidGenomes geneSynonyms
+#' @export
+AcidGenomes::geneSynonyms
 
-# importFrom(AcidGenomes,getEnsDb)
+#' @importFrom AcidGenomes getEnsDb
+#' @export
+AcidGenomes::getEnsDb
 
-# importFrom(AcidGenomes,importTx2Gene)
+#' @importFrom AcidGenomes importTx2Gene
+#' @export
+AcidGenomes::importTx2Gene
 
-# importFrom(AcidGenomes,makeGRangesFromEnsDb)
+#' @importFrom AcidGenomes makeGRangesFromEnsDb
+#' @export
+AcidGenomes::makeGRangesFromEnsDb
 
-# importFrom(AcidGenomes,makeGRangesFromEnsembl)
+#' @importFrom AcidGenomes makeGRangesFromEnsembl
+#' @export
+AcidGenomes::makeGRangesFromEnsembl
 
-# importFrom(AcidGenomes,makeGRangesFromGFF)
+#' @importFrom AcidGenomes makeGRangesFromGFF
+#' @export
+AcidGenomes::makeGRangesFromGFF
 
-# importFrom(AcidGenomes,makeGRangesFromGTF)
+#' @importFrom AcidGenomes makeGRangesFromGTF
+#' @export
+AcidGenomes::makeGRangesFromGTF
 
-# importFrom(AcidGenomes,makeGene2SymbolFromEnsDb)
+#' @importFrom AcidGenomes makeGene2SymbolFromEnsDb
+#' @export
+AcidGenomes::makeGene2SymbolFromEnsDb
 
-# importFrom(AcidGenomes,makeGene2SymbolFromEnsembl)
+#' @importFrom AcidGenomes makeGene2SymbolFromEnsembl
+#' @export
+AcidGenomes::makeGene2SymbolFromEnsembl
 
-# importFrom(AcidGenomes,makeGene2SymbolFromGFF)
+#' @importFrom AcidGenomes makeGene2SymbolFromGFF
+#' @export
+AcidGenomes::makeGene2SymbolFromGFF
 
-# importFrom(AcidGenomes,makeGene2SymbolFromGTF)
+#' @importFrom AcidGenomes makeGene2SymbolFromGTF
+#' @export
+AcidGenomes::makeGene2SymbolFromGTF
 
-# importFrom(AcidGenomes,makeProtein2GeneFromEnsembl)
+#' @importFrom AcidGenomes makeProtein2GeneFromEnsembl
+#' @export
+AcidGenomes::makeProtein2GeneFromEnsembl
 
-# importFrom(AcidGenomes,makeTx2GeneFromEnsDb)
+#' @importFrom AcidGenomes makeTx2GeneFromEnsDb
+#' @export
+AcidGenomes::makeTx2GeneFromEnsDb
 
-# importFrom(AcidGenomes,makeTx2GeneFromEnsembl)
+#' @importFrom AcidGenomes makeTx2GeneFromEnsembl
+#' @export
+AcidGenomes::makeTx2GeneFromEnsembl
 
-# importFrom(AcidGenomes,makeTx2GeneFromFASTA)
+#' @importFrom AcidGenomes makeTx2GeneFromFASTA
+#' @export
+AcidGenomes::makeTx2GeneFromFASTA
 
-# importFrom(AcidGenomes,makeTx2GeneFromGFF)
+#' @importFrom AcidGenomes makeTx2GeneFromGFF
+#' @export
+AcidGenomes::makeTx2GeneFromGFF
 
-# importFrom(AcidGenomes,makeTx2GeneFromGTF)
+#' @importFrom AcidGenomes makeTx2GeneFromGTF
+#' @export
+AcidGenomes::makeTx2GeneFromGTF
 
-# importFrom(AcidGenomes,mapEnsemblReleaseToURL)
+#' @importFrom AcidGenomes mapEnsemblReleaseToURL
+#' @export
+AcidGenomes::mapEnsemblReleaseToURL
 
-# importFrom(AcidGenomes,mapHumanOrthologs)
+#' @importFrom AcidGenomes mapHumanOrthologs
+#' @export
+AcidGenomes::mapHumanOrthologs
 
 #' @importFrom AcidGenomes mapUCSCBuildToEnsembl
 #' @export
