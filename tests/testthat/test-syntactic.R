@@ -83,7 +83,7 @@ test_that("list", {
         f = funs,
         expected = list(
             camel = c("itemA", "itemB"),
-            dotted = c("Item.A", "Item.B"),
+            dotted = c("item.a", "item.b"),
             snake = c("item_a", "item_b"),
             upperCamel = c("ItemA", "ItemB")
         ),
@@ -111,8 +111,8 @@ test_that("matrix", {
                 c("murder", "assault", "urbanPop")
             ),
             dottedCase = list(
-                c("Alabama", "Alaska", "Arizona"),
-                c("Murder", "Assault", "Urban.Pop")
+                c("alabama", "alaska", "arizona"),
+                c("murder", "assault", "urban.pop")
             ),
             snakeCase = list(
                 c("alabama", "alaska", "arizona"),
@@ -184,7 +184,7 @@ test_that("GRanges", {
         f = funs,
         expected = list(
             camelCase = c("geneID", "geneName"),
-            dottedCase = c("gene.ID", "gene.Name"),
+            dottedCase = c("gene.id", "gene.name"),
             snakeCase = c("gene_id", "gene_name"),
             upperCamelCase = c("GeneID", "GeneName")
         ),
