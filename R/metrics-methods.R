@@ -25,7 +25,7 @@
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====

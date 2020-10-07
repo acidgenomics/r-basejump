@@ -19,7 +19,7 @@
 #'   metrics in [`colData()`][SummarizedExperiment::colData].
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment

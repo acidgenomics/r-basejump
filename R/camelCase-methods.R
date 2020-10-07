@@ -20,7 +20,7 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(syntactic, package = "acidtest")
+#' data(syntactic, package = "AcidTest")
 #' lapply(syntactic, camelCase)
 NULL
 

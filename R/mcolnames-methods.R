@@ -5,7 +5,7 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## Vector ====
 #' object <- RangedSummarizedExperiment

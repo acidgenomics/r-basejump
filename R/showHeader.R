@@ -10,7 +10,7 @@
 #' @seealso [show()].
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #' showHeader(rse)
 showHeader <- function(object) {

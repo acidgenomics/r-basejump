@@ -20,7 +20,7 @@
 #' - `assignAndSave = TRUE`: Subset file paths.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #' sce <- SingleCellExperiment
 #'
 #' ## SingleCellExperiment ====

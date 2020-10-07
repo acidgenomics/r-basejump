@@ -8,7 +8,7 @@
 #' @return Modified object of same class.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #' object <- rse
 #'
