@@ -18,20 +18,23 @@ NULL
 
 
 
-#' @rdname headtail
-#' @name headtail
-#' @importFrom AcidGenerics headtail
-#' @usage headtail(x, ...)
-#' @export
-NULL
+## Updated 2020-10-07.
+`headtail,matrix` <-  # nolint
+    getMethod(
+        f = "headtail",
+        signature = "matrix",
+        where = asNamespace("AcidBase")
+    )
 
 
 
-## FIXME NEED TO UPDATE THIS.
-
-## Updated 2019-07-22.
+## Updated 2020-10-07.
 `headtail,DataFrame` <-  # nolint
-    `headtail,data.frame`
+    getMethod(
+        f = "headtail",
+        signature = "data.frame",
+        where = asNamespace("AcidBase")
+    )
 
 
 
@@ -45,7 +48,7 @@ setMethod(
 
 
 
-## Updated 2020-01-30.
+## Updated 2020-10-07.
 `headtail,Matrix` <-  # nolint
     `headtail,matrix`
 
