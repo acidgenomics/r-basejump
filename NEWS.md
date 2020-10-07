@@ -1,5 +1,8 @@
 ## basejump 0.13.0 (2020-10-05)
 
+Migrated some functions to AcidBase, AcidGenomes, AcidPlyr, and pipette
+packages.
+
 ### Major changes
 
 - `Ensembl2Entrez`: Improved internal matching engine, to allow reverse matching
