@@ -1,3 +1,107 @@
+#' @importFrom AcidBase basenameSansExt
+#' @export
+AcidBase::basenameSansExt
+
+#' @importFrom AcidBase barcodePattern
+#' @export
+AcidBase::barcodePattern
+
+#' @importFrom AcidBase compress
+#' @export
+AcidBase::compress
+
+#' @importFrom AcidBase compressExtPattern
+#' @export
+AcidBase::compressExtPattern
+
+#' @importFrom AcidBase decompress
+#' @export
+AcidBase::decompress
+
+#' @importFrom AcidBase dots
+#' @export
+AcidBase::dots
+
+#' @importFrom AcidBase extPattern
+#' @export
+AcidBase::extPattern
+
+#' @importFrom AcidBase fileExt
+#' @export
+AcidBase::fileExt
+
+#' @importFrom AcidBase formalsList
+#' @export
+AcidBase::formalsList
+
+#' @importFrom AcidBase genomeMetadataNames
+#' @export
+AcidBase::genomeMetadataNames
+
+#' @importFrom AcidBase initDir
+#' @export
+AcidBase::initDir
+
+#' @importFrom AcidBase lanePattern
+#' @export
+AcidBase::lanePattern
+
+#' @importFrom AcidBase matchArgsToDoCall
+#' @export
+AcidBase::matchArgsToDoCall
+
+#' @importFrom AcidBase metadataBlacklist
+#' @export
+AcidBase::metadataBlacklist
+
+#' @importFrom AcidBase metricsCols
+#' @export
+AcidBase::metricsCols
+
+#' @importFrom AcidBase methodFormals
+#' @export
+AcidBase::methodFormals
+
+#' @importFrom AcidBase methodFunction
+#' @export
+AcidBase::methodFunction
+
+#' @importFrom AcidBase pasteURL
+#' @export
+AcidBase::pasteURL
+
+#' @importFrom AcidBase printString
+#' @export
+AcidBase::printString
+
+#' @importFrom AcidBase realpath
+#' @export
+AcidBase::realpath
+
+#' @importFrom AcidBase requireNamespaces
+#' @export
+AcidBase::requireNamespaces
+
+#' @importFrom AcidBase standardizeCall
+#' @export
+AcidBase::standardizeCall
+
+#' @importFrom AcidBase updateMessage
+#' @export
+AcidBase::updateMessage
+
+
+
+#' @importFrom AcidGenomes Ensembl2Entrez
+#' @export
+AcidGenomes::Ensembl2Entrez
+
+#' @importFrom AcidGenomes Entrez2Ensembl
+#' @export
+AcidGenomes::Entrez2Ensembl
+
+
+
 #' @importFrom GenomicRanges GRanges
 #' @export
 GenomicRanges::GRanges
@@ -96,100 +200,6 @@ SummarizedExperiment::`rowRanges<-`
 
 
 
-#' @importFrom AcidBase basenameSansExt
-#' @export
-AcidBase::basenameSansExt
-
-#' @importFrom AcidBase barcodePattern
-#' @export
-AcidBase::barcodePattern
-
-#' @importFrom AcidBase compress
-#' @export
-AcidBase::compress
-
-#' @importFrom AcidBase compressExtPattern
-#' @export
-AcidBase::compressExtPattern
-
-#' @importFrom AcidBase decompress
-#' @export
-AcidBase::decompress
-
-#' @importFrom AcidBase dots
-#' @export
-AcidBase::dots
-
-#' @importFrom AcidBase extPattern
-#' @export
-AcidBase::extPattern
-
-#' @importFrom AcidBase fileExt
-#' @export
-AcidBase::fileExt
-
-#' @importFrom AcidBase formalsList
-#' @export
-AcidBase::formalsList
-
-#' @importFrom AcidBase genomeMetadataNames
-#' @export
-AcidBase::genomeMetadataNames
-
-#' @importFrom AcidBase initDir
-#' @export
-AcidBase::initDir
-
-#' @importFrom AcidBase lanePattern
-#' @export
-AcidBase::lanePattern
-
-#' @importFrom AcidBase matchArgsToDoCall
-#' @export
-AcidBase::matchArgsToDoCall
-
-#' @importFrom AcidBase metadataBlacklist
-#' @export
-AcidBase::metadataBlacklist
-
-#' @importFrom AcidBase metricsCols
-#' @export
-AcidBase::metricsCols
-
-#' @importFrom AcidBase methodFormals
-#' @export
-AcidBase::methodFormals
-
-#' @importFrom AcidBase methodFunction
-#' @export
-AcidBase::methodFunction
-
-#' @importFrom AcidBase pasteURL
-#' @export
-AcidBase::pasteURL
-
-#' @importFrom AcidBase printString
-#' @export
-AcidBase::printString
-
-#' @importFrom AcidBase realpath
-#' @export
-AcidBase::realpath
-
-#' @importFrom AcidBase requireNamespaces
-#' @export
-AcidBase::requireNamespaces
-
-#' @importFrom AcidBase standardizeCall
-#' @export
-AcidBase::standardizeCall
-
-#' @importFrom AcidBase updateMessage
-#' @export
-AcidBase::updateMessage
-
-
-
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
@@ -230,6 +240,10 @@ pipette::assignAndSaveData
 #' @importFrom pipette atomize
 #' @export
 pipette::atomize
+
+#' @importFrom pipette cacheURL
+#' @export
+pipette::cacheURL
 
 #' @importFrom pipette coerceToList
 #' @export
