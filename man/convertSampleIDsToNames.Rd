@@ -27,7 +27,7 @@ Convert sample identifiers to names
 Updated 2020-01-20.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 convertSampleIDsToNames(rse)
 }

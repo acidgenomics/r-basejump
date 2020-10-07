@@ -37,7 +37,7 @@ Cell-to-sample mappings
 Updated 2019-08-22.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 sce <- SingleCellExperiment
 
 ## SingleCellExperiment ====

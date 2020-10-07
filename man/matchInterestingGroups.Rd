@@ -27,7 +27,7 @@ supports a missing \code{interestingGroups} argument, which will then use the
 Updated 2019-07-28.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 matchInterestingGroups(rse)
 matchInterestingGroups(rse, interestingGroups = NULL)

@@ -36,7 +36,7 @@ Calculate and visualize the dropout rate.
 Updated 2020-01-30.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 sce <- SingleCellExperiment
 
 ## SingleCellExperiment ====

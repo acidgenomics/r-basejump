@@ -28,7 +28,7 @@ Obtain the top cellular barcodes, based on counts.
 Updated 2020-01-30.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment

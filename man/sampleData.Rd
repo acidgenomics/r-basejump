@@ -126,7 +126,7 @@ but it's required for working with multiple samples in a single object.
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 rse <- RangedSummarizedExperiment
 sce <- SingleCellExperiment

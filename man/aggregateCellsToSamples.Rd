@@ -31,7 +31,7 @@ cell-to-sample groupings and then performs a sum aggregation with the
 Updated 2020-01-30.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 x <- SingleCellExperiment

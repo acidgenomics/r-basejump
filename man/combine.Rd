@@ -42,7 +42,7 @@ We're attempting to make this as strict as possible, requiring:
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 str_pad <- stringr::str_pad
 

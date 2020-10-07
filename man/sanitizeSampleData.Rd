@@ -32,7 +32,7 @@ Here's the current column blacklist:
 }
 
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 
 ## SummarizedExperiment ====

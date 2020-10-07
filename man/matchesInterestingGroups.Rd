@@ -28,7 +28,7 @@ is requested by the user.
 Updated 2019-08-11.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 
 ## Checks that columns are defined in `sampleData()`.

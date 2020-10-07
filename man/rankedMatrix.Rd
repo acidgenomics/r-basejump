@@ -35,7 +35,7 @@ Ties are resolved automatically by calculating the average. See the
 Updated 2019-08-11.
 }
 \examples{
-data(matrix_lfc, package = "acidtest")
+data(matrix_lfc, package = "AcidTest")
 lfc <- matrix_lfc
 
 ## Increasing (negative to positive)
