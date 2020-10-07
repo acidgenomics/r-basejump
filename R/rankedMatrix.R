@@ -5,7 +5,7 @@
 #' @note Updated 2019-08-11.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @inheritParams base::apply
 #'
 #' @param method `character(1)`.
@@ -18,7 +18,7 @@
 #' @return `matrix`.
 #'
 #' @examples
-#' data(matrix_lfc, package = "acidtest")
+#' data(matrix_lfc, package = "AcidTest")
 #' lfc <- matrix_lfc
 #'
 #' ## Increasing (negative to positive)

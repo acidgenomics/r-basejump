@@ -2,7 +2,7 @@
 #' @inherit BiocGenerics::combine return title
 #' @note Updated 2020-01-20.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @note We're attempting to make this as strict as possible, requiring:
@@ -24,7 +24,7 @@
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #' str_pad <- stringr::str_pad
 #'

@@ -49,7 +49,7 @@ normalized counts here.
 Updated 2020-01-20.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment

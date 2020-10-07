@@ -8,14 +8,14 @@
 #' @name integerCounts
 #' @note Updated 2019-12-04.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return Matrix.
 #' Typically `matrix` or `Matrix` class.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment

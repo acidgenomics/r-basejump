@@ -3,7 +3,7 @@
 #' @name aggregate
 #' @note Updated 2020-05-22.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param by `factor`.
 #'   Aggregation groupings. The new aggregate names are defined as the `factor`
 #'   [levels][base::levels], and the original, unaggregated names are defined as

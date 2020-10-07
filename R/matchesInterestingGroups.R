@@ -7,10 +7,10 @@
 #' @export
 #'
 #' @inherit goalie::check return
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## Checks that columns are defined in `sampleData()`.

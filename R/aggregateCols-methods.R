@@ -1,5 +1,5 @@
 #' @name aggregateCols
-#' @inherit acidgenerics::aggregateCols
+#' @inherit AcidGenerics::aggregateCols
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inherit aggregateRows
@@ -55,7 +55,7 @@ NULL
 
 #' @rdname aggregateCols
 #' @name aggregateCols
-#' @importFrom acidgenerics aggregateCols
+#' @importFrom AcidGenerics aggregateCols
 #' @usage aggregateCols(x, ...)
 #' @export
 NULL

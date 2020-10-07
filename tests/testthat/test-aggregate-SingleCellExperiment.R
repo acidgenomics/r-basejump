@@ -61,7 +61,7 @@ test_that("sce_lanesplit", {
     )
 })
 
-test_that("acidtest example", {
+test_that("AcidTest example", {
     object <- aggregateCellsToSamples(sce)
     sums <- counts(object) %>%
         Matrix::colSums(.) %>%

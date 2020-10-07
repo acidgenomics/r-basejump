@@ -52,7 +52,7 @@ rely on this feature.
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 
 ## SummarizedExperiment ====

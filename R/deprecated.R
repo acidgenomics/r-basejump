@@ -4,27 +4,18 @@
 
 
 #' @name defunct
-#' @inherit acidroxygen::defunct description examples return seealso title
-#' @inheritParams acidroxygen::params
+#' @inherit AcidRoxygen::defunct description examples return seealso title
+#' @inheritParams AcidRoxygen::params
 #' @keywords internal
 NULL
 
 
 
 #' @name deprecated
-#' @inherit acidroxygen::deprecated description examples return seealso title
-#' @inheritParams acidroxygen::params
+#' @inherit AcidRoxygen::deprecated description examples return seealso title
+#' @inheritParams AcidRoxygen::params
 #' @keywords internal
 NULL
-
-
-
-## v0.10.4 =====================================================================
-## Now recommending `plotCounts()` instead of `plotGene()`.
-## Still in use by some revdeps, so keep re-exported.
-#' @importFrom acidgenerics plotGene
-#' @export
-acidgenerics::plotGene
 
 
 
@@ -135,7 +126,7 @@ readTx2Gene <- function(...) {
 ## These were previously deprecated in transformer package.
 #' @rdname defunct
 #' @name flatFiles
-#' @importFrom acidgenerics flatFiles
+#' @importFrom AcidGenerics flatFiles
 #' @export
 NULL
 
@@ -158,6 +149,23 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `flatFiles,SummarizedExperiment`
 )
+
+
+
+## v0.13.0 =====================================================================
+#' @rdname deprecated
+#' @export
+matchEnsemblReleaseToURL <- function(...) {
+    .Deprecated("mapEnsemblReleaseToURL")
+    mapEnsemblReleaseToURL(...)
+}
+
+#' @rdname deprecated
+#' @export
+matchHumanOrthologs <- function(...) {
+    .Deprecated("mapHumanOrthologs")
+    mapHumanOrthologs(...)
+}
 
 
 

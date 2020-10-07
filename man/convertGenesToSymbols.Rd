@@ -46,7 +46,7 @@ Convert genes to symbols
 Updated 2020-05-17.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 object <- rse
 

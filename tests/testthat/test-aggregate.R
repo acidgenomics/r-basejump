@@ -72,7 +72,7 @@ test_that("matrix", {
     expect_identical(object, expected)
 })
 
-test_that("matrix : acidtest example", {
+test_that("matrix : AcidTest example", {
     by <- as.factor(paste0("gene", rep(seq_len(2L), each = 2L)))
     names(by) <- rownames(mat)
     object <- aggregateRows(mat, by = by)
@@ -142,7 +142,7 @@ test_that("matrix", {
     expect_identical(object, expected)
 })
 
-test_that("matrix : acidtest example", {
+test_that("matrix : AcidTest example", {
     by <- as.factor(paste0("sample", rep(seq_len(2L), each = 2L)))
     names(by) <- colnames(mat)
     object <- aggregateCols(mat, by = by)

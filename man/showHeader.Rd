@@ -19,7 +19,7 @@ Header for object show method
 Updated 2019-08-11.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 showHeader(rse)
 }

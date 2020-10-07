@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -131,19 +131,19 @@
     <p>Calculate and visualize the dropout rate.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zerosVsDepth</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>zerosVsDepth</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>zerosVsDepth</span>(<span class='kw'>object</span>)
+<span class='fu'>zerosVsDepth</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>zerosVsDepth</span>(<span class='kw'>object</span>)
+<span class='fu'>zerosVsDepth</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>zerosVsDepth</span>(<span class='kw'>object</span>, assay = <span class='fl'>1L</span>)
+<span class='fu'>zerosVsDepth</span><span class='op'>(</span><span class='va'>object</span>, assay <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>zerosVsDepth</span>(<span class='kw'>object</span>, assay = <span class='fl'>1L</span>)</pre>
+<span class='fu'>zerosVsDepth</span><span class='op'>(</span><span class='va'>object</span>, assay <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,13 +174,13 @@ Assay name or index position.</p></td>
     <p>Michael Steinbaugh, Rory Kirchner</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>SingleCellExperiment</span>, package = <span class='st'>"acidtest"</span>)
-<span class='kw'>sce</span> <span class='op'>&lt;-</span> <span class='kw'>SingleCellExperiment</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>SingleCellExperiment</span>, package <span class='op'>=</span> <span class='st'>"AcidTest"</span><span class='op'>)</span>
+<span class='va'>sce</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
 
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>zerosVsDepth</span>(<span class='kw'>sce</span>)
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>x</span>)
-</div><div class='output co'>#&gt; [1] "DataFrame object of length 5 with 0 metadata columns"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='kw'>x</span>)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>zerosVsDepth</span><span class='op'>(</span><span class='va'>sce</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "DataFrame object of length 5 with 0 metadata columns"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "sampleID"          "dropout"           "depth"            
 #&gt; [4] "sampleName"        "interestingGroups"</div></pre>
   </div>

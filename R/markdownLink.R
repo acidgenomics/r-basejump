@@ -7,7 +7,7 @@
 #' @note Updated 2019-08-19.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @return Markdown-formatted link.
 #'

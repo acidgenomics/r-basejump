@@ -1,14 +1,14 @@
 #' @name selectSamples
-#' @inherit acidgenerics::selectSamples
+#' @inherit AcidGenerics::selectSamples
 #' @note Updated 2020-01-20.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #' rse <- RangedSummarizedExperiment
 #' sce <- SingleCellExperiment
@@ -32,7 +32,7 @@ NULL
 
 #' @rdname selectSamples
 #' @name selectSamples
-#' @importFrom acidgenerics selectSamples
+#' @importFrom AcidGenerics selectSamples
 #' @usage selectSamples(object, ...)
 #' @export
 NULL

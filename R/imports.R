@@ -22,15 +22,11 @@ NULL
 
 
 
-#' @importFrom AnnotationDbi select
-#' @importFrom AnnotationHub AnnotationHub query snapshotDate
-#' @importFrom BiocGenerics colSums organism rowSums unlist
-#' @importFrom BiocParallel bplapply
+#' @importFrom AcidBase appendToBody bapply compress getNameInParent
+#'   matchArgsToDoCall methodFormals methodFunction printString
+#'   requireNamespaces
+#' @importFrom BiocGenerics colSums rowSums unlist
 #' @importFrom Biostrings reverseComplement
-#' @importFrom GenomeInfoDb seqnames
-#' @importFrom GenomicFeatures genes makeTxDbFromGFF makeTxDbFromGRanges
-#'   transcripts
-#' @importFrom GenomicRanges GRanges ranges
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse
 #' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
@@ -41,12 +37,8 @@ NULL
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
-#' @importFrom acidbase appendToBody bapply compress getNameInParent
-#'   matchArgsToDoCall methodFormals methodFunction printString
-#'   requireNamespaces
 #' @importFrom cli cli_alert cli_alert_info cli_alert_success cli_alert_warning
 #'   cli_div cli_dl cli_end cli_li cli_text cli_ul cli_verbatim
-#' @importFrom ensembldb ensemblVersion
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
 #'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert false
 #'   hasColnames hasCols hasDimnames hasDims hasDuplicates hasInternet hasLength
@@ -68,9 +60,8 @@ NULL
 #' @importFrom stringr boundary str_detect str_dup str_extract str_length
 #'   str_match str_pad str_replace_all str_split str_split_fixed str_subset
 #'   str_trunc
-#' @importFrom pipette as_tibble
 #' @importFrom utils capture.output data download.file getFromNamespace
-#'   globalVariables installed.packages packageVersion
+#'   installed.packages packageName packageVersion
 NULL
 
 

@@ -121,6 +121,6 @@ functions.
 Updated 2020-05-11.
 }
 \examples{
-data(syntactic, package = "acidtest")
+data(syntactic, package = "AcidTest")
 lapply(syntactic, upperCamelCase)
 }

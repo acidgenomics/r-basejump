@@ -3,7 +3,7 @@
 #' @note Updated 2020-01-20.
 #' @export
 #'
-#' @inheritParams acidbase::dots
+#' @inheritParams AcidBase::dots
 #' @param envirName `character(1)`.
 #'   Name of the new `environment` to create.
 #' @param parentFrame `environment`.
@@ -14,7 +14,7 @@
 #' Object names defined in the new `environment`.
 #'
 #' @examples
-#' data(data.frame, matrix, package = "acidtest")
+#' data(data.frame, matrix, package = "AcidTest")
 #' multiassignAsEnvir(data.frame, matrix, envirName = "example")
 #' class(example)
 #' ls(example)

@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@
     <p>Sanitize sample data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sanitizeSampleData</span>(<span class='kw'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>sanitizeSampleData</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,12 +163,12 @@ Sanitized data frame containing only non-blacklisted columns and all
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>RangedSummarizedExperiment</span>, package = <span class='st'>"acidtest"</span>)
-<span class='kw'>rse</span> <span class='op'>&lt;-</span> <span class='kw'>RangedSummarizedExperiment</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>RangedSummarizedExperiment</span>, package <span class='op'>=</span> <span class='st'>"AcidTest"</span><span class='op'>)</span>
+<span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='kw'>from</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='kw'>rse</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>from</span>)
+<span class='va'>from</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sampleData.html'>sampleData</a></span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>from</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 12 rows and 3 columns
 #&gt;          condition sampleName interestingGroups
 #&gt;           &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
@@ -182,9 +182,9 @@ Sanitized data frame containing only non-blacklisted columns and all
 #&gt; sample09         B   sample09                 B
 #&gt; sample10         B   sample10                 B
 #&gt; sample11         B   sample11                 B
-#&gt; sample12         B   sample12                 B</div><div class='input'><span class='kw'>to</span> <span class='op'>&lt;-</span> <span class='fu'>sanitizeSampleData</span>(<span class='kw'>from</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>vapply</a></span>(<span class='kw'>to</span>, <span class='kw'>is.factor</span>, <span class='fu'><a href='https://rdrr.io/r/base/logical.html'>logical</a></span>(<span class='fl'>1L</span>)))
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>to</span>)
+#&gt; sample12         B   sample12                 B</div><div class='input'><span class='va'>to</span> <span class='op'>&lt;-</span> <span class='fu'>sanitizeSampleData</span><span class='op'>(</span><span class='va'>from</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>vapply</a></span><span class='op'>(</span><span class='va'>to</span>, <span class='va'>is.factor</span>, <span class='fu'><a href='https://rdrr.io/r/base/logical.html'>logical</a></span><span class='op'>(</span><span class='fl'>1L</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>to</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 12 rows and 2 columns
 #&gt;          condition sampleName
 #&gt;           &lt;factor&gt;   &lt;factor&gt;

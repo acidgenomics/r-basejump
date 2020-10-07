@@ -1,3 +1,344 @@
+#' @importClassesFrom AcidGenomes Ensembl2Entrez
+#' @exportClass Ensembl2Entrez
+#'
+#' @importClassesFrom AcidGenomes Entrez2Ensembl
+#' @exportClass Entrez2Ensembl
+#'
+#' @importClassesFrom AcidGenomes Gene2Symbol
+#' @exportClass Gene2Symbol
+#'
+#' @importClassesFrom AcidGenomes HGNC
+#' @exportClass HGNC
+#'
+#' @importClassesFrom AcidGenomes HGNC2Ensembl
+#' @exportClass HGNC2Ensembl
+#'
+#' @importClassesFrom AcidGenomes MGI2Ensembl
+#' @exportClass MGI2Ensembl
+#'
+#' @importClassesFrom AcidGenomes Protein2Gene
+#' @exportClass Protein2Gene
+#'
+#' @importClassesFrom AcidGenomes Tx2Gene
+#' @exportClass Tx2Gene
+NULL
+
+
+
+#' @importFrom AcidBase basenameSansExt
+#' @export
+AcidBase::basenameSansExt
+
+#' @importFrom AcidBase barcodePattern
+#' @export
+AcidBase::barcodePattern
+
+#' @importFrom AcidBase compress
+#' @export
+AcidBase::compress
+
+#' @importFrom AcidBase compressExtPattern
+#' @export
+AcidBase::compressExtPattern
+
+#' @importFrom AcidBase decompress
+#' @export
+AcidBase::decompress
+
+#' @importFrom AcidBase dots
+#' @export
+AcidBase::dots
+
+#' @importFrom AcidBase extPattern
+#' @export
+AcidBase::extPattern
+
+#' @importFrom AcidBase fileExt
+#' @export
+AcidBase::fileExt
+
+#' @importFrom AcidBase formalsList
+#' @export
+AcidBase::formalsList
+
+#' @importFrom AcidBase genomeMetadataNames
+#' @export
+AcidBase::genomeMetadataNames
+
+#' @importFrom AcidBase initDir
+#' @export
+AcidBase::initDir
+
+#' @importFrom AcidBase lanePattern
+#' @export
+AcidBase::lanePattern
+
+#' @importFrom AcidBase matchArgsToDoCall
+#' @export
+AcidBase::matchArgsToDoCall
+
+#' @importFrom AcidBase metadataBlacklist
+#' @export
+AcidBase::metadataBlacklist
+
+#' @importFrom AcidBase metricsCols
+#' @export
+AcidBase::metricsCols
+
+#' @importFrom AcidBase methodFormals
+#' @export
+AcidBase::methodFormals
+
+#' @importFrom AcidBase methodFunction
+#' @export
+AcidBase::methodFunction
+
+#' @importFrom AcidBase pasteURL
+#' @export
+AcidBase::pasteURL
+
+#' @importFrom AcidBase printString
+#' @export
+AcidBase::printString
+
+#' @importFrom AcidBase realpath
+#' @export
+AcidBase::realpath
+
+#' @importFrom AcidBase requireNamespaces
+#' @export
+AcidBase::requireNamespaces
+
+#' @importFrom AcidBase showSlotInfo
+#' @export
+AcidBase::showSlotInfo
+
+#' @importFrom AcidBase standardizeCall
+#' @export
+AcidBase::standardizeCall
+
+#' @importFrom AcidBase updateMessage
+#' @export
+AcidBase::updateMessage
+
+
+
+#' @importFrom AcidGenomes Ensembl2Entrez
+#' @export
+AcidGenomes::Ensembl2Entrez
+
+#' @importFrom AcidGenomes Entrez2Ensembl
+#' @export
+AcidGenomes::Entrez2Ensembl
+
+#' @importFrom AcidGenomes Gene2Symbol
+#' @export
+AcidGenomes::Gene2Symbol
+
+#' @importFrom AcidGenomes HGNC
+#' @export
+AcidGenomes::HGNC
+
+#' @importFrom AcidGenomes HGNC2Ensembl
+#' @export
+AcidGenomes::HGNC2Ensembl
+
+#' @importFrom AcidGenomes MGI2Ensembl
+#' @export
+AcidGenomes::MGI2Ensembl
+
+#' @importFrom AcidGenomes Tx2Gene
+#' @export
+AcidGenomes::Tx2Gene
+
+#' @importFrom AcidGenomes annotable
+#' @export
+AcidGenomes::annotable
+
+#' @importFrom AcidGenomes currentEnsemblVersion
+#' @export
+AcidGenomes::currentEnsemblVersion
+
+#' @importFrom AcidGenomes currentFlyBaseVersion
+#' @export
+AcidGenomes::currentFlyBaseVersion
+
+#' @importFrom AcidGenomes currentGencodeVersion
+#' @export
+AcidGenomes::currentGencodeVersion
+
+#' @importFrom AcidGenomes currentRefSeqVersion
+#' @export
+AcidGenomes::currentRefSeqVersion
+
+#' @importFrom AcidGenomes currentWormBaseVersion
+#' @export
+AcidGenomes::currentWormBaseVersion
+
+#' @importFrom AcidGenomes detectOrganism
+#' @export
+AcidGenomes::detectOrganism
+
+#' @importFrom AcidGenomes emptyRanges
+#' @export
+AcidGenomes::emptyRanges
+
+#' @importFrom AcidGenomes geneNames
+#' @export
+AcidGenomes::geneNames
+
+#' @importFrom AcidGenomes geneSynonyms
+#' @export
+AcidGenomes::geneSynonyms
+
+#' @importFrom AcidGenomes getEnsDb
+#' @export
+AcidGenomes::getEnsDb
+
+#' @importFrom AcidGenomes importTx2Gene
+#' @export
+AcidGenomes::importTx2Gene
+
+#' @importFrom AcidGenomes makeGRangesFromEnsDb
+#' @export
+AcidGenomes::makeGRangesFromEnsDb
+
+#' @importFrom AcidGenomes makeGRangesFromEnsembl
+#' @export
+AcidGenomes::makeGRangesFromEnsembl
+
+#' @importFrom AcidGenomes makeGRangesFromGFF
+#' @export
+AcidGenomes::makeGRangesFromGFF
+
+#' @importFrom AcidGenomes makeGRangesFromGTF
+#' @export
+AcidGenomes::makeGRangesFromGTF
+
+#' @importFrom AcidGenomes makeGene2SymbolFromEnsDb
+#' @export
+AcidGenomes::makeGene2SymbolFromEnsDb
+
+#' @importFrom AcidGenomes makeGene2SymbolFromEnsembl
+#' @export
+AcidGenomes::makeGene2SymbolFromEnsembl
+
+#' @importFrom AcidGenomes makeGene2SymbolFromGFF
+#' @export
+AcidGenomes::makeGene2SymbolFromGFF
+
+#' @importFrom AcidGenomes makeGene2SymbolFromGTF
+#' @export
+AcidGenomes::makeGene2SymbolFromGTF
+
+#' @importFrom AcidGenomes makeProtein2GeneFromEnsembl
+#' @export
+AcidGenomes::makeProtein2GeneFromEnsembl
+
+#' @importFrom AcidGenomes makeTx2GeneFromEnsDb
+#' @export
+AcidGenomes::makeTx2GeneFromEnsDb
+
+#' @importFrom AcidGenomes makeTx2GeneFromEnsembl
+#' @export
+AcidGenomes::makeTx2GeneFromEnsembl
+
+#' @importFrom AcidGenomes makeTx2GeneFromFASTA
+#' @export
+AcidGenomes::makeTx2GeneFromFASTA
+
+#' @importFrom AcidGenomes makeTx2GeneFromGFF
+#' @export
+AcidGenomes::makeTx2GeneFromGFF
+
+#' @importFrom AcidGenomes makeTx2GeneFromGTF
+#' @export
+AcidGenomes::makeTx2GeneFromGTF
+
+#' @importFrom AcidGenomes mapEnsemblReleaseToURL
+#' @export
+AcidGenomes::mapEnsemblReleaseToURL
+
+#' @importFrom AcidGenomes mapHumanOrthologs
+#' @export
+AcidGenomes::mapHumanOrthologs
+
+#' @importFrom AcidGenomes mapUCSCBuildToEnsembl
+#' @export
+AcidGenomes::mapUCSCBuildToEnsembl
+
+#' @importFrom AcidGenomes organism
+#' @export
+AcidGenomes::organism
+
+#' @importFrom AcidGenomes organism<-
+#' @export
+AcidGenomes::`organism<-`
+
+#' @importFrom AcidGenomes stripGeneVersions
+#' @export
+AcidGenomes::stripGeneVersions
+
+#' @importFrom AcidGenomes stripTranscriptVersions
+#' @export
+AcidGenomes::stripTranscriptVersions
+
+
+
+#' @importFrom AcidPlyr antiJoin
+#' @export
+AcidPlyr::antiJoin
+
+#' @importFrom AcidPlyr fullJoin
+#' @export
+AcidPlyr::fullJoin
+
+#' @importFrom AcidPlyr innerJoin
+#' @export
+AcidPlyr::innerJoin
+
+#' @importFrom AcidPlyr leftJoin
+#' @export
+AcidPlyr::leftJoin
+
+#' @importFrom AcidPlyr mutateAll
+#' @export
+AcidPlyr::mutateAll
+
+#' @importFrom AcidPlyr mutateAt
+#' @export
+AcidPlyr::mutateAt
+
+#' @importFrom AcidPlyr mutateIf
+#' @export
+AcidPlyr::mutateIf
+
+#' @importFrom AcidPlyr rightJoin
+#' @export
+AcidPlyr::rightJoin
+
+#' @importFrom AcidPlyr selectIf
+#' @export
+AcidPlyr::selectIf
+
+#' @importFrom AcidPlyr semiJoin
+#' @export
+AcidPlyr::semiJoin
+
+#' @importFrom AcidPlyr splitByLevel
+#' @export
+AcidPlyr::splitByLevel
+
+#' @importFrom AcidPlyr transmuteAt
+#' @export
+AcidPlyr::transmuteAt
+
+#' @importFrom AcidPlyr transmuteIf
+#' @export
+AcidPlyr::transmuteIf
+
+
+
 #' @importFrom GenomicRanges GRanges
 #' @export
 GenomicRanges::GRanges
@@ -96,100 +437,6 @@ SummarizedExperiment::`rowRanges<-`
 
 
 
-#' @importFrom acidbase basenameSansExt
-#' @export
-acidbase::basenameSansExt
-
-#' @importFrom acidbase barcodePattern
-#' @export
-acidbase::barcodePattern
-
-#' @importFrom acidbase compress
-#' @export
-acidbase::compress
-
-#' @importFrom acidbase compressExtPattern
-#' @export
-acidbase::compressExtPattern
-
-#' @importFrom acidbase decompress
-#' @export
-acidbase::decompress
-
-#' @importFrom acidbase dots
-#' @export
-acidbase::dots
-
-#' @importFrom acidbase extPattern
-#' @export
-acidbase::extPattern
-
-#' @importFrom acidbase fileExt
-#' @export
-acidbase::fileExt
-
-#' @importFrom acidbase formalsList
-#' @export
-acidbase::formalsList
-
-#' @importFrom acidbase genomeMetadataNames
-#' @export
-acidbase::genomeMetadataNames
-
-#' @importFrom acidbase initDir
-#' @export
-acidbase::initDir
-
-#' @importFrom acidbase lanePattern
-#' @export
-acidbase::lanePattern
-
-#' @importFrom acidbase matchArgsToDoCall
-#' @export
-acidbase::matchArgsToDoCall
-
-#' @importFrom acidbase metadataBlacklist
-#' @export
-acidbase::metadataBlacklist
-
-#' @importFrom acidbase metricsCols
-#' @export
-acidbase::metricsCols
-
-#' @importFrom acidbase methodFormals
-#' @export
-acidbase::methodFormals
-
-#' @importFrom acidbase methodFunction
-#' @export
-acidbase::methodFunction
-
-#' @importFrom acidbase pasteURL
-#' @export
-acidbase::pasteURL
-
-#' @importFrom acidbase printString
-#' @export
-acidbase::printString
-
-#' @importFrom acidbase realpath
-#' @export
-acidbase::realpath
-
-#' @importFrom acidbase requireNamespaces
-#' @export
-acidbase::requireNamespaces
-
-#' @importFrom acidbase standardizeCall
-#' @export
-acidbase::standardizeCall
-
-#' @importFrom acidbase updateMessage
-#' @export
-acidbase::updateMessage
-
-
-
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
@@ -231,6 +478,10 @@ pipette::assignAndSaveData
 #' @export
 pipette::atomize
 
+#' @importFrom pipette cacheURL
+#' @export
+pipette::cacheURL
+
 #' @importFrom pipette coerceToList
 #' @export
 pipette::coerceToList
@@ -254,6 +505,10 @@ pipette::export
 #' @importFrom pipette factorize
 #' @export
 pipette::factorize
+
+#' @importFrom pipette getURLDirList
+#' @export
+pipette::getURLDirList
 
 #' @importFrom pipette import
 #' @export
