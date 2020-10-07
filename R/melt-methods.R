@@ -29,10 +29,10 @@ NULL
 
 ## Updated 2020-10-07.
 `melt,matrix` <-  # nolint
-    getMethod(
+    methodFunction(
         f = "melt",
         signature = "matrix",
-        where = asNamespace("AcidPlyr")
+        package = "AcidPlyr"
     )
 
 
