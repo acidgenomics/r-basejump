@@ -46,3 +46,19 @@ setGeneric(
         standardGeneric("makeSummarizedExperiment")
     }
 )
+
+
+
+#' @rdname headtail
+#' @name headtail
+#' @importFrom AcidGenerics headtail
+#' @usage headtail(x, ...)
+#' @export
+NULL
+
+#' @rdname melt
+#' @name melt
+#' @importFrom AcidGenerics melt
+#' @usage melt(object, ...)
+#' @export
+NULL
