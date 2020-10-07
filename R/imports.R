@@ -24,7 +24,7 @@ NULL
 
 #' @importFrom AnnotationDbi select
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
-#' @importFrom BiocGenerics colSums organism rowSums unlist
+#' @importFrom BiocGenerics colSums rowSums unlist
 #' @importFrom BiocParallel bplapply
 #' @importFrom Biostrings reverseComplement
 #' @importFrom GenomeInfoDb seqnames
