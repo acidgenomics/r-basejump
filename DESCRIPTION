@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.13.0
-Date: 2020-10-05
+Date: 2020-10-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -35,6 +35,10 @@ License: GPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
+    AcidBase (>= 0.2.2),
+    AcidGenerics (>= 0.4.0),
+    AcidGenomes (>= 0.1.0),
+    AcidPlyr (>= 0.1.1),
     AnnotationDbi,
     AnnotationHub,
     Biobase,
@@ -50,8 +54,6 @@ Imports:
     S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
-    acidbase (>= 0.1.14),
-    acidgenerics (>= 0.3.12),
     cli (>= 2.0),
     ensembldb,
     goalie (>= 0.4.8),
@@ -67,22 +69,12 @@ Imports:
     tibble (>= 3.0),
     utils
 Suggests:
+    AcidTest (>= 0.4.0),
     BiocStyle,
-    EnsDb.Hsapiens.v75,
-    RCurl,
-    acidtest (>= 0.3.2),
-    biomaRt,
     datasets,
     knitr,
     rmarkdown,
     testthat
-Remotes:
-    acidgenomics/acidbase,
-    acidgenomics/acidgenerics,
-    acidgenomics/acidtest,
-    acidgenomics/goalie,
-    acidgenomics/pipette,
-    acidgenomics/syntactic
 biocViews:
     DataImport,
     GenomeAnnotation,
@@ -94,20 +86,11 @@ Collate:
     'AllGlobals.R'
     'AllClasses.R'
     'AllGenerics.R'
-    'Ensembl2Entrez-methods.R'
-    'Gene2Symbol-methods.R'
-    'HGNC.R'
-    'HGNC2Ensembl.R'
-    'MGI2Ensembl.R'
-    'Tx2Gene-methods.R'
-    'TxDb-internal.R'
     'aggregate-methods.R'
     'aggregateCellsToSamples-methods.R'
     'aggregateCols-methods.R'
     'aggregateRows-methods.R'
     'autopadZeros-methods.R'
-    'broadClass-internal.R'
-    'cacheURL.R'
     'calculateMetrics-methods.R'
     'camelCase-methods.R'
     'cell2sample-methods.R'
@@ -116,57 +99,30 @@ Collate:
     'convertGenesToSymbols-methods.R'
     'convertSampleIDsToNames-methods.R'
     'convertTranscriptsToGenes-methods.R'
-    'convertUCSCBuildToEnsembl.R'
     'correlation-methods.R'
     'counts-methods.R'
-    'currentGenomeVersions.R'
     'deprecated.R'
-    'detectGFF-internal.R'
     'detectHPC.R'
     'detectLanes.R'
-    'detectOrganism.R'
     'dottedCase-methods.R'
-    'emptyRanges.R'
     'estimateSizeFactors-methods.R'
     'filterCells-methods.R'
-    'geneNames-methods.R'
-    'geneSynonyms.R'
     'geometricMean-methods.R'
-    'getEnsDb.R'
-    'getURLDirList.R'
     'headtail-methods.R'
     'humanize-methods.R'
     'importSampleData.R'
-    'importTx2Gene.R'
     'imports.R'
     'integerCounts-methods.R'
     'interestingGroups-methods.R'
-    'internal-AnnotationHub.R'
     'internal.R'
     'intersectAll-methods.R'
     'intersectionMatrix-methods.R'
-    'join-methods.R'
     'logRatio-methods.R'
-    'makeGRanges-internal.R'
-    'makeGRangesFromEnsembl.R'
-    'makeGRangesFromEnsDb.R'
-    'makeGRangesFromGFF-Ensembl.R'
-    'makeGRangesFromGFF-FlyBase.R'
-    'makeGRangesFromGFF-GENCODE.R'
-    'makeGRangesFromGFF-RefSeq.R'
-    'makeGRangesFromGFF-WormBase.R'
-    'makeGRangesFromGFF.R'
-    'makeGene2Symbol.R'
-    'makeProtein2Gene.R'
     'makeSampleData-methods.R'
     'makeSummarizedExperiment-methods.R'
     'makeSingleCellExperiment-methods.R'
-    'makeTx2Gene.R'
-    'makeTx2GeneFromFASTA.R'
     'mapCellsToSamples.R'
-    'mapEnsemblReleaseToURL.R'
     'mapGenes-methods.R'
-    'mapHumanOrthologs.R'
     'markdown-methods.R'
     'markdownHeader.R'
     'markdownLink.R'
@@ -178,14 +134,11 @@ Collate:
     'matchesInterestingGroups.R'
     'mcolnames-methods.R'
     'melt-methods.R'
-    'mergeGenesIntoTranscripts-internal.R'
     'metrics-methods.R'
     'microplate.R'
     'minimalSampleData.R'
     'multiassignAsEnvir.R'
-    'mutate-methods.R'
     'nonzeroRowsAndCols-methods.R'
-    'organism-methods.R'
     'package.R'
     'prepareTemplate.R'
     'rankedMatrix.R'
@@ -194,18 +147,13 @@ Collate:
     'sampleData-methods.R'
     'sampleNames-methods.R'
     'sanitizeSampleData.R'
-    'select-methods.R'
     'selectSamples-methods.R'
     'separator.R'
     'showHeader.R'
-    'showSlotInfo.R'
     'sizeFactors-methods.R'
     'snakeCase-methods.R'
     'sortUnique.R'
-    'splitByLevel-methods.R'
-    'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
-    'summary-methods.R'
     'toStringUnique.R'
     'topCellsPerSample-methods.R'
     'tpm-methods.R'
