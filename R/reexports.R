@@ -1,3 +1,21 @@
+##' @importClassesFrom AcidGenomes Ensembl2Entrez
+##' @exportClass Ensembl2Entrez
+#NULL
+
+#exportClasses(Ensembl2Entrez)
+#exportClasses(Entrez2Ensembl)
+#exportClasses(Gene2Symbol)
+#exportClasses(HGNC)
+#exportClasses(HGNC2Ensembl)
+#exportClasses(MGI2Ensembl)
+#exportClasses(Protein2Gene)
+#exportClasses(Tx2Gene)
+
+
+
+
+
+
 #' @importFrom AcidBase basenameSansExt
 #' @export
 AcidBase::basenameSansExt
@@ -82,6 +100,10 @@ AcidBase::realpath
 #' @export
 AcidBase::requireNamespaces
 
+#' @importFrom AcidBase showSlotInfo
+#' @export
+AcidBase::showSlotInfo
+
 #' @importFrom AcidBase standardizeCall
 #' @export
 AcidBase::standardizeCall
@@ -99,6 +121,84 @@ AcidGenomes::Ensembl2Entrez
 #' @importFrom AcidGenomes Entrez2Ensembl
 #' @export
 AcidGenomes::Entrez2Ensembl
+
+# importFrom(AcidGenomes,Gene2Symbol)
+# importFrom(AcidGenomes,HGNC)
+# importFrom(AcidGenomes,HGNC2Ensembl)
+# importFrom(AcidGenomes,MGI2Ensembl)
+# importFrom(AcidGenomes,Tx2Gene)
+# importFrom(AcidGenomes,annotable)
+
+# importFrom(AcidGenomes,currentEnsemblVersion)
+# importFrom(AcidGenomes,currentFlyBaseVersion)
+# importFrom(AcidGenomes,currentGencodeVersion)
+# importFrom(AcidGenomes,currentRefSeqVersion)
+# importFrom(AcidGenomes,currentWormBaseVersion)
+# importFrom(AcidGenomes,detectOrganism)
+# importFrom(AcidGenomes,emptyRanges)
+# importFrom(AcidGenomes,geneNames)
+# importFrom(AcidGenomes,geneSynonyms)
+# importFrom(AcidGenomes,getEnsDb)
+
+
+# importFrom(AcidGenomes,importTx2Gene)
+# importFrom(AcidGenomes,makeGRangesFromEnsDb)
+# importFrom(AcidGenomes,makeGRangesFromEnsembl)
+# importFrom(AcidGenomes,makeGRangesFromGFF)
+# importFrom(AcidGenomes,makeGRangesFromGTF)
+# importFrom(AcidGenomes,makeGene2SymbolFromEnsDb)
+# importFrom(AcidGenomes,makeGene2SymbolFromEnsembl)
+# importFrom(AcidGenomes,makeGene2SymbolFromGFF)
+# importFrom(AcidGenomes,makeGene2SymbolFromGTF)
+# importFrom(AcidGenomes,makeProtein2GeneFromEnsembl)
+# importFrom(AcidGenomes,makeTx2GeneFromEnsDb)
+# importFrom(AcidGenomes,makeTx2GeneFromEnsembl)
+# importFrom(AcidGenomes,makeTx2GeneFromFASTA)
+# importFrom(AcidGenomes,makeTx2GeneFromGFF)
+# importFrom(AcidGenomes,makeTx2GeneFromGTF)
+# importFrom(AcidGenomes,mapEnsemblReleaseToURL)
+# importFrom(AcidGenomes,mapHumanOrthologs)
+
+#' @importFrom AcidGenomes mapUCSCBuildToEnsembl
+#' @export
+AcidGenomes::mapUCSCBuildToEnsembl
+
+#' @importFrom organism
+#' @export
+AcidGenomes::organism
+
+#' @importFrom organism<-
+#' @export
+AcidGenomes::`organism<-`
+
+# importFrom(AcidGenomes,stripGeneVersions)
+# importFrom(AcidGenomes,stripTranscriptVersions)
+#
+# importFrom(AcidPlyr,antiJoin)
+# importFrom(AcidPlyr,fullJoin)
+# importFrom(AcidPlyr,innerJoin)
+# importFrom(AcidPlyr,leftJoin)
+# importFrom(AcidPlyr,mutateAll)
+# importFrom(AcidPlyr,mutateAt)
+# importFrom(AcidPlyr,mutateIf)
+# importFrom(AcidPlyr,rightJoin)
+# importFrom(AcidPlyr,selectIf)
+
+#' @importFrom AcidPlyr semiJoin
+#' @export
+AcidPlyr::semiJoin
+
+#' @importFrom AcidPlyr splitByLevel
+#' @export
+AcidPlyr::splitByLevel
+
+#' @importFrom AcidPlyr transmuteAt
+#' @export
+AcidPlyr::transmuteAt
+
+#' @importFrom AcidPlyr transmuteIf
+#' @export
+AcidPlyr::transmuteIf
 
 
 
@@ -268,6 +368,10 @@ pipette::export
 #' @importFrom pipette factorize
 #' @export
 pipette::factorize
+
+#' @importFrom pipette getURLDirList
+#' @export
+pipette::getURLDirList
 
 #' @importFrom pipette import
 #' @export
