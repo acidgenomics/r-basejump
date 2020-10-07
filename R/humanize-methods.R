@@ -1,8 +1,8 @@
 #' @name humanize
-#' @inherit acidgenerics::humanize
+#' @inherit AcidGenerics::humanize
 #' @note Updated 2020-01-20.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -29,7 +29,7 @@ NULL
 
 #' @rdname humanize
 #' @name humanize
-#' @importFrom acidgenerics humanize
+#' @importFrom AcidGenerics humanize
 #' @usage humanize(object, ...)
 #' @export
 NULL

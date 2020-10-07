@@ -1,8 +1,8 @@
 #' @name collapseToString
-#' @inherit acidgenerics::collapseToString
+#' @inherit AcidGenerics::collapseToString
 #' @note Updated 2019-08-18.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param sep `character(1)`.
 #'   Separator. Defaults to comma.
 #' @param unique `logical(1)`.
@@ -53,7 +53,7 @@ NULL
 
 #' @rdname collapseToString
 #' @name collapseToString
-#' @importFrom acidgenerics collapseToString
+#' @importFrom AcidGenerics collapseToString
 #' @usage collapseToString(object, ...)
 #' @export
 NULL

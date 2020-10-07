@@ -1,5 +1,5 @@
 #' @name filterCells
-#' @inherit acidgenerics::filterCells
+#' @inherit AcidGenerics::filterCells
 #' @note Updated 2020-01-20.
 #'
 #' @details
@@ -13,7 +13,7 @@
 #' Filtering information gets slotted into [`metadata()`][S4Vectors::metadata]
 #' as `filterCells` metadata.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param nCells `integer(1)`.
 #'   Expected number of cells per sample.
 #'   Don't set this by default, unless you're confident of your capture.
@@ -63,7 +63,7 @@ NULL
 
 #' @rdname filterCells
 #' @name filterCells
-#' @importFrom acidgenerics filterCells
+#' @importFrom AcidGenerics filterCells
 #' @usage filterCells(object, ...)
 #' @export
 NULL

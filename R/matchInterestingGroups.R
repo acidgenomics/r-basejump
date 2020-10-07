@@ -8,7 +8,7 @@
 #' @note Updated 2019-07-28.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param object `SummarizedExperiment`.
 #'
 #' @return `character`.

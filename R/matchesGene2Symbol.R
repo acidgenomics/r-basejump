@@ -4,7 +4,7 @@
 #' @export
 #'
 #' @inherit goalie::check return
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @examples
 #' x <- S4Vectors::DataFrame(

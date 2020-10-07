@@ -2,7 +2,7 @@
 #' @inherit syntactic::camelCase
 #' @note Updated 2020-05-11.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param assayNames `logical(1)`.
 #'   Sanitize assay names.
 #' @param colData `logical(1)`.

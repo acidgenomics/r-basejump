@@ -1,7 +1,7 @@
 #' @name mcolnames
-#' @inherit acidgenerics::mcolnames
+#' @inherit AcidGenerics::mcolnames
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -19,14 +19,14 @@ NULL
 
 #' @rdname mcolnames
 #' @name mcolnames
-#' @importFrom acidgenerics mcolnames
+#' @importFrom AcidGenerics mcolnames
 #' @usage mcolnames(x, ...)
 #' @export
 NULL
 
 #' @rdname mcolnames
 #' @name mcolnames<-
-#' @importFrom acidgenerics mcolnames<-
+#' @importFrom AcidGenerics mcolnames<-
 #' @usage mcolnames(x, ...) <- value
 #' @export
 NULL

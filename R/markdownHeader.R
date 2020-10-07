@@ -6,7 +6,7 @@
 #' @note Updated 2020-07-24.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param level `integer(1)`.
 #'   Markdown header level (1-7).
 #'

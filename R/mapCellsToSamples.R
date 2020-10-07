@@ -7,7 +7,7 @@
 #' @note Updated 2019-08-18.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @return `factor`.
 #' Cells as the names and samples as the levels.

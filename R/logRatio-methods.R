@@ -3,7 +3,7 @@
 #' @name logRatio
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @seealso
@@ -24,14 +24,14 @@ NULL
 
 #' @rdname logRatio
 #' @name foldChangeToLogRatio
-#' @importFrom acidgenerics foldChangeToLogRatio
+#' @importFrom AcidGenerics foldChangeToLogRatio
 #' @usage foldChangeToLogRatio(object, ...)
 #' @export
 NULL
 
 #' @rdname logRatio
 #' @name logRatioToFoldChange
-#' @importFrom acidgenerics logRatioToFoldChange
+#' @importFrom AcidGenerics logRatioToFoldChange
 #' @usage logRatioToFoldChange(object, ...)
 #' @export
 NULL

@@ -1,8 +1,8 @@
 #' @name uniteInterestingGroups
-#' @inherit acidgenerics::uniteInterestingGroups
+#' @inherit AcidGenerics::uniteInterestingGroups
 #' @note Updated 2019-08-29.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -22,7 +22,7 @@ NULL
 
 #' @rdname uniteInterestingGroups
 #' @name uniteInterestingGroups
-#' @importFrom acidgenerics uniteInterestingGroups
+#' @importFrom AcidGenerics uniteInterestingGroups
 #' @usage uniteInterestingGroups(object, ...)
 #' @export
 NULL

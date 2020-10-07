@@ -3,7 +3,7 @@
 #' @note Updated 2019-08-11.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @return Console output, via [`cat()`][base::cat].
 #'

@@ -1,12 +1,12 @@
 #' @name geometricMean
-#' @inherit acidgenerics::geometricMean
+#' @inherit AcidGenerics::geometricMean
 #'
 #' @note This function should be fully zero- and `NA`-tolerant. This calculation
 #'   is not particularly useful if there are elements that are <= 0 and will
 #'   return `NaN`.
 #' @note Updated 2019-07-28.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @inheritParams base::apply
 #' @param ... Additional arguments.
 #'
@@ -45,7 +45,7 @@ NULL
 
 #' @rdname geometricMean
 #' @name geometricMean
-#' @importFrom acidgenerics geometricMean
+#' @importFrom AcidGenerics geometricMean
 #' @usage geometricMean(object, ...)
 #' @export
 NULL

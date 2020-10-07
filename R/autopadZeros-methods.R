@@ -1,5 +1,5 @@
 #' @name autopadZeros
-#' @inherit acidgenerics::autopadZeros
+#' @inherit AcidGenerics::autopadZeros
 #'
 #' @note For methods on objects supporting [`dim()`][base::dim] (e.g. `matrix`),
 #' the object will be returned with the rows and/or columns resorted by default.
@@ -13,7 +13,7 @@
 #' padded, if necessary. This improves # downstream handling in functions that
 #' rely on this feature.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return `character`.

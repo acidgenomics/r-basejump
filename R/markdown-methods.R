@@ -1,8 +1,8 @@
 #' @name markdown
-#' @inherit acidgenerics::markdown
+#' @inherit AcidGenerics::markdown
 #' @note Updated 2020-07-24.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -17,7 +17,7 @@ NULL
 
 #' @rdname markdown
 #' @name markdown
-#' @importFrom acidgenerics markdown
+#' @importFrom AcidGenerics markdown
 #' @usage markdown(object, ...)
 #' @export
 NULL

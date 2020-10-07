@@ -8,7 +8,7 @@
 #' @note Updated 2020-07-24.
 #' @export
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param list Named `list`.
 #'   Must contain data that can be coerced to `data.frame`.
 #' @param force `logical(1)`.

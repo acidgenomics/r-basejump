@@ -1,11 +1,11 @@
 #' @name cell2sample
-#' @inherit acidgenerics::cell2sample
+#' @inherit AcidGenerics::cell2sample
 #'
 #' @note `sampleID` column must be defined in
 #' [`colData()`][SummarizedExperiment::colData].
 #' @note Updated 2019-08-22.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return
@@ -28,7 +28,7 @@ NULL
 
 #' @rdname cell2sample
 #' @name cell2sample
-#' @importFrom acidgenerics cell2sample
+#' @importFrom AcidGenerics cell2sample
 #' @usage cell2sample(object, ...)
 #' @export
 NULL

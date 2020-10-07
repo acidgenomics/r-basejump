@@ -1,8 +1,8 @@
 #' @name intersectionMatrix
-#' @inherit acidgenerics::intersectionMatrix
+#' @inherit AcidGenerics::intersectionMatrix
 #' @note Updated 2020-08-18.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -19,7 +19,7 @@ NULL
 
 #' @rdname intersectionMatrix
 #' @name intersectionMatrix
-#' @importFrom acidgenerics intersectionMatrix
+#' @importFrom AcidGenerics intersectionMatrix
 #' @usage intersectionMatrix(object, ...)
 #' @export
 NULL
