@@ -1,12 +1,7 @@
-#' All global variables
+#' Package version
+#'
+#' @note Updated 2020-10-07.
 #' @noRd
-NULL
-
-
-
-globalVariables(".")
-
-## FIXME Use packageName consistently across packages.
 .version <- packageVersion(packageName())
 
 

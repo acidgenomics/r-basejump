@@ -61,7 +61,7 @@ NULL
 #'   str_match str_pad str_replace_all str_split str_split_fixed str_subset
 #'   str_trunc
 #' @importFrom utils capture.output data download.file getFromNamespace
-#'   globalVariables installed.packages packageName packageVersion
+#'   installed.packages packageName packageVersion
 NULL
 
 
