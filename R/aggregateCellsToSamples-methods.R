@@ -12,7 +12,7 @@
 #' [aggregateCols()] function.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' x <- SingleCellExperiment

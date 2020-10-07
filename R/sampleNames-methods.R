@@ -12,7 +12,7 @@
 #' @return Named `character`.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====

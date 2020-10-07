@@ -18,7 +18,7 @@
 #' @return `matrix`.
 #'
 #' @examples
-#' data(matrix_lfc, package = "acidtest")
+#' data(matrix_lfc, package = "AcidTest")
 #' lfc <- matrix_lfc
 #'
 #' ## Increasing (negative to positive)

@@ -18,7 +18,7 @@
 #' `character` columns coerced to `factor` (i.e. `stringsAsFactors`).
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====

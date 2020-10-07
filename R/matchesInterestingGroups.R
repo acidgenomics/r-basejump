@@ -10,7 +10,7 @@
 #' @inheritParams acidroxygen::params
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## Checks that columns are defined in `sampleData()`.

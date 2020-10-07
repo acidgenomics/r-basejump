@@ -14,7 +14,7 @@
 #' @return `SingleCellExperiment`.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SimpleList ====
 #' object <- SingleCellExperiment

@@ -14,7 +14,7 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(correlation, package = "acidtest")
+#' data(correlation, package = "AcidTest")
 #' list <- correlation
 #'
 #' ## vector ====

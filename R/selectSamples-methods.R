@@ -8,7 +8,7 @@
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #' rse <- RangedSummarizedExperiment
 #' sce <- SingleCellExperiment

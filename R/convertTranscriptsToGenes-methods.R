@@ -22,7 +22,7 @@
 #' @seealso [aggregateRows()].
 #'
 #' @examples
-#' data(SummarizedExperiment_transcripts, package = "acidtest")
+#' data(SummarizedExperiment_transcripts, package = "AcidTest")
 #' txse <- SummarizedExperiment_transcripts
 #' object <- txse
 #'
