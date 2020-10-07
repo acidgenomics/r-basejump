@@ -1,3 +1,42 @@
+#' @name melt
+#' @inherit AcidPlyr::melt
+#'
+#' @note Updated 2020-10-07.
+#'
+#' @examples
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#'
+#' ## SummarizedExperiment ====
+#' object <- RangedSummarizedExperiment
+#' dim(object)
+#' x <- melt(object)
+#' nrow(x)
+#' print(x)
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' dim(object)
+#' x <- melt(object)
+#' nrow(x)
+#' print(x)
+NULL
+
+
+
+## Updated 2020-10-07.
+`melt,matrix` <-  # nolint
+    getMethod(
+        f = "melt",
+        signature = "matrix",
+        where = asNamespace("AcidPlyr")
+    )
+
+
+
 ## Updated 2019-08-26.
 `melt,Matrix` <-  # nolint
     appendToBody(
