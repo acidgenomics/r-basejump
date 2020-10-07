@@ -76,7 +76,7 @@ set asis = TRUE." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -135,7 +135,7 @@ works in any R Markdown code block. When calling from inside an <code>asis</code
 set <code>asis = TRUE</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>markdownList</span>(<span class='kw'>text</span>, ordered = <span class='fl'>FALSE</span>, asis = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>markdownList</span><span class='op'>(</span><span class='va'>text</span>, ordered <span class='op'>=</span> <span class='cn'>FALSE</span>, asis <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,22 +173,22 @@ Markdown chunk with '<code>results = "asis"</code>' enabled.</p></td>
     <div class='dont-index'><p><a href='https://daringfireball.net/projects/markdown/syntax'>Markdown Syntax</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>groceries</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>)
-<span class='fu'>markdownList</span>(<span class='kw'>groceries</span>)
+    <pre class="examples"><div class='input'><span class='va'>groceries</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"milk"</span>, <span class='st'>"eggs"</span><span class='op'>)</span>
+<span class='fu'>markdownList</span><span class='op'>(</span><span class='va'>groceries</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "- milk\n" "- eggs\n"
 #&gt; attr(,"format")
 #&gt; [1] "markdown"
 #&gt; attr(,"class")
 #&gt; [1] "knit_asis"
 #&gt; attr(,"knit_cacheable")
-#&gt; [1] NA</div><div class='input'><span class='fu'>markdownList</span>(<span class='kw'>groceries</span>, ordered = <span class='fl'>TRUE</span>)
+#&gt; [1] NA</div><div class='input'><span class='fu'>markdownList</span><span class='op'>(</span><span class='va'>groceries</span>, ordered <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "1. milk\n" "2. eggs\n"
 #&gt; attr(,"format")
 #&gt; [1] "markdown"
 #&gt; attr(,"class")
 #&gt; [1] "knit_asis"
 #&gt; attr(,"knit_cacheable")
-#&gt; [1] NA</div><div class='input'><span class='fu'>markdownList</span>(<span class='kw'>groceries</span>, asis = <span class='fl'>TRUE</span>)
+#&gt; [1] NA</div><div class='input'><span class='fu'>markdownList</span><span class='op'>(</span><span class='va'>groceries</span>, asis <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 
 #&gt; - milk
 #&gt; - eggs

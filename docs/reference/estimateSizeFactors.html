@@ -76,7 +76,7 @@ to those generated after normalization with other sets of size factors." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -135,21 +135,21 @@ unity. This ensures that the library size adjustment yields values comparable
 to those generated after normalization with other sets of size factors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>estimateSizeFactors</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>estimateSizeFactors</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>estimateSizeFactors</span>(
-  <span class='kw'>object</span>,
-  type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mean-ratio"</span>, <span class='st'>"geometric-mean-ratio"</span>, <span class='st'>"log-geometric-mean-ratio"</span>),
-  center = <span class='fl'>1L</span>
-)
+<span class='fu'>estimateSizeFactors</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mean-ratio"</span>, <span class='st'>"geometric-mean-ratio"</span>, <span class='st'>"log-geometric-mean-ratio"</span><span class='op'>)</span>,
+  center <span class='op'>=</span> <span class='fl'>1L</span>
+<span class='op'>)</span>
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>estimateSizeFactors</span>(
-  <span class='kw'>object</span>,
-  type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mean-ratio"</span>, <span class='st'>"geometric-mean-ratio"</span>, <span class='st'>"log-geometric-mean-ratio"</span>),
-  center = <span class='fl'>1L</span>
-)</pre>
+<span class='fu'>estimateSizeFactors</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mean-ratio"</span>, <span class='st'>"geometric-mean-ratio"</span>, <span class='st'>"log-geometric-mean-ratio"</span><span class='op'>)</span>,
+  center <span class='op'>=</span> <span class='fl'>1L</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,14 +161,14 @@ to those generated after normalization with other sets of size factors.</p>
     <tr>
       <th>type</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Method for estimation:</p><pre><span class='kw'>libSize</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span>(<span class='fu'><a href='counts.html'>counts</a></span>(<span class='kw'>object</span>))
+Method for estimation:</p><pre><span class='va'>libSize</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='counts.html'>counts</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>
 </pre>
 <ul>
-<li><p><code>mean-ratio</code>:</p><pre><span class='kw'>libSize</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='kw'>libSize</span>)
+<li><p><code>mean-ratio</code>:</p><pre><span class='va'>libSize</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>libSize</span><span class='op'>)</span>
 </pre></li>
-<li><p><code>geometric-mean-ratio</code>:</p><pre><span class='kw'>libSize</span> <span class='op'>/</span> <span class='fu'><a href='geometricMean.html'>geometricMean</a></span>(<span class='kw'>libSize</span>)
+<li><p><code>geometric-mean-ratio</code>:</p><pre><span class='va'>libSize</span> <span class='op'>/</span> <span class='fu'><a href='geometricMean.html'>geometricMean</a></span><span class='op'>(</span><span class='va'>libSize</span><span class='op'>)</span>
 </pre></li>
-<li><p><code>mean-geometric-mean-log-total</code>:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='kw'>libSize</span>) <span class='op'>/</span> <span class='fu'><a href='geometricMean.html'>geometricMean</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='kw'>libSize</span>))
+<li><p><code>mean-geometric-mean-log-total</code>:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>libSize</span><span class='op'>)</span> <span class='op'>/</span> <span class='fu'><a href='geometricMean.html'>geometricMean</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>libSize</span><span class='op'>)</span><span class='op'>)</span>
 </pre></li>
 </ul></td>
     </tr>
@@ -222,24 +222,24 @@ can handle millions of cells without the calculations blowing up in memory.</p>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
-    <span class='kw'>RangedSummarizedExperiment</span>,
-    <span class='kw'>SingleCellExperiment</span>,
-    package = <span class='st'>"acidtest"</span>
-)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span>
+    <span class='va'>RangedSummarizedExperiment</span>,
+    <span class='va'>SingleCellExperiment</span>,
+    package <span class='op'>=</span> <span class='st'>"AcidTest"</span>
+<span class='op'>)</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>RangedSummarizedExperiment</span>
-<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='fu'>estimateSizeFactors</span>(<span class='kw'>object</span>)
-</div><div class='output co'>#&gt; <span class='message'>→ Calculating library size factors using <span style='color: #0000BB;'>mean-ratio</span><span> method.</span></div><div class='output co'>#&gt; <span class='message'>→ Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='sizeFactors.html'>sizeFactors</a></span>(<span class='kw'>object</span>)
+<span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
+<span class='va'>object</span> <span class='op'>&lt;-</span> <span class='fu'>estimateSizeFactors</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating library size factors using <span style='color: #0000BB;'>mean-ratio</span><span> method.</span></div><div class='output co'>#&gt; <span class='message'>→ Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='sizeFactors.html'>sizeFactors</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  sample01  sample02  sample03  sample04  sample05  sample06  sample07  sample08 
 #&gt; 0.8251116 0.8941871 0.8485451 0.8576735 0.9074252 0.8962024 1.0815364 1.1392705 
 #&gt;  sample09  sample10  sample11  sample12 
 #&gt; 1.1080522 1.1392310 1.1265461 1.1762188 </div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>SingleCellExperiment</span>
-<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='fu'>estimateSizeFactors</span>(<span class='kw'>object</span>)
-</div><div class='output co'>#&gt; <span class='message'>→ Calculating library size factors using </span><span style='color: #0000BB;'>mean-ratio</span><span> method.</span></div><div class='output co'>#&gt; <span class='message'>→ Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='sizeFactors.html'>sizeFactors</a></span>(<span class='kw'>object</span>))
+<span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
+<span class='va'>object</span> <span class='op'>&lt;-</span> <span class='fu'>estimateSizeFactors</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>→ Calculating library size factors using </span><span style='color: #0000BB;'>mean-ratio</span><span> method.</span></div><div class='output co'>#&gt; <span class='message'>→ Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='sizeFactors.html'>sizeFactors</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   cell001   cell002   cell003   cell004   cell005   cell006 
 #&gt; 0.8126923 1.2351486 1.2943494 1.0557070 1.0792347 0.8452250 </div></span></pre>
   </div>

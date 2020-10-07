@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -132,7 +132,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>tpm</span>(<span class='kw'>object</span>)</pre>
+<span class='fu'>tpm</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,18 +153,18 @@ were imported using a tximport caller (e.g. salmon, kallisto).</p>
 <p>Updated 2019-08-06.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>se</span> <span class='op'>&lt;-</span> <span class='kw'>SummarizedExperiment</span>::<span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment</a></span>(
-    assays = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-        tpm = <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
-            data = <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4L</span>),
-            nrow = <span class='fl'>2L</span>,
-            ncol = <span class='fl'>2L</span>,
-            byrow = <span class='fl'>TRUE</span>
-        )
-    )
-)
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>tpm</span>(<span class='kw'>se</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='kw'>x</span>)
+    <pre class="examples"><div class='input'><span class='va'>se</span> <span class='op'>&lt;-</span> <span class='fu'>SummarizedExperiment</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment</a></span><span class='op'>(</span>
+    assays <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        tpm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>
+            data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span>,
+            nrow <span class='op'>=</span> <span class='fl'>2L</span>,
+            ncol <span class='op'>=</span> <span class='fl'>2L</span>,
+            byrow <span class='op'>=</span> <span class='cn'>TRUE</span>
+        <span class='op'>)</span>
+    <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>tpm</span><span class='op'>(</span><span class='va'>se</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "matrix" "array" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
