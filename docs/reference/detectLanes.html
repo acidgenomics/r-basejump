@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@
     <p>Detect sequencing lanes</p>
     </div>
 
-    <pre class="usage"><span class='fu'>detectLanes</span>(<span class='kw'>path</span>, pattern = <span class='st'>"_L([[:digit:]]{3})"</span>)</pre>
+    <pre class="usage"><span class='fu'>detectLanes</span><span class='op'>(</span><span class='va'>path</span>, pattern <span class='op'>=</span> <span class='st'>"_L([[:digit:]]{3})"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,7 +144,7 @@ Sequencing file paths, e.g. FASTQs.</p></td>
     <tr>
       <th>pattern</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Lane grep pattern. Defaults to <a href='https://rdrr.io/pkg/acidbase/man/lanePattern.html'>lanePattern</a> global variable.</p></td>
+Lane grep pattern. Defaults to <a href='https://acidbase.acidgenomics.com/reference/lanePattern.html'>lanePattern</a> global variable.</p></td>
     </tr>
     </table>
 
@@ -158,13 +158,13 @@ Lane numbers.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Matching lanes 1-4 for paired-end FASTQ files.</span>
-<span class='kw'>files</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
+<span class='va'>files</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span>
     <span class='st'>"sample1"</span>,
-    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"_R"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>)),
-    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"_L00"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4L</span>)),
+    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"_R"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"_L00"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span>,
     <span class='st'>".fastq.gz"</span>
-)
-<span class='fu'>detectLanes</span>(<span class='kw'>files</span>)
+<span class='op'>)</span>
+<span class='fu'>detectLanes</span><span class='op'>(</span><span class='va'>files</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 1 2 3 4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

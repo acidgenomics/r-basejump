@@ -76,7 +76,7 @@ the syntactically valid names defined as the rownames of sampleData." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@ the syntactically valid names defined as the rownames of sampleData." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sample names</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/sampleNames-methods.R'><code>R/sampleNames-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/sampleNames-methods.R'><code>R/sampleNames-methods.R</code></a></small>
     <div class="hidden name"><code>sampleNames.Rd</code></div>
     </div>
 
@@ -135,12 +135,12 @@ in the <code>sampleName</code> column of <code>sampleData</code>. Otherwise it w
 the syntactically valid names defined as the rownames of <code>sampleData</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sampleNames</span>(<span class='kw'>object</span>)
+    <pre class="usage"><span class='fu'>sampleNames</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 
-<span class='fu'>sampleNames</span>(<span class='kw'>object</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>sampleNames</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for SummarizedExperiment,character</span>
-<span class='fu'>sampleNames</span>(<span class='kw'>object</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span></pre>
+<span class='fu'>sampleNames</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,27 +163,27 @@ the syntactically valid names defined as the rownames of <code>sampleData</code>
     <p>Updated 2020-03-15.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>RangedSummarizedExperiment</span>, package = <span class='st'>"acidtest"</span>)
-<span class='kw'>rse</span> <span class='op'>&lt;-</span> <span class='kw'>RangedSummarizedExperiment</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>RangedSummarizedExperiment</span>, package <span class='op'>=</span> <span class='st'>"AcidTest"</span><span class='op'>)</span>
+<span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='kw'>rse</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='kw'>object</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+<span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>rse</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>sampleNames</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
 #&gt; "sample01" "sample02" "sample03" "sample04" "sample05" "sample06" "sample07" 
 #&gt;   sample08   sample09   sample10   sample11   sample12 
 #&gt; "sample08" "sample09" "sample10" "sample11" "sample12" </div><div class='input'>
 <span class='co'>## Assignment support.</span>
-<span class='kw'>value</span> <span class='op'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='kw'>object</span>)
-<span class='kw'>value</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span>(<span class='kw'>value</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>value</span>)
+<span class='va'>value</span> <span class='op'>&lt;-</span> <span class='fu'>sampleNames</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
+<span class='va'>value</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
 #&gt; "SAMPLE01" "SAMPLE02" "SAMPLE03" "SAMPLE04" "SAMPLE05" "SAMPLE06" "SAMPLE07" 
 #&gt;   sample08   sample09   sample10   sample11   sample12 
-#&gt; "SAMPLE08" "SAMPLE09" "SAMPLE10" "SAMPLE11" "SAMPLE12" </div><div class='input'><span class='fu'>sampleNames</span>(<span class='kw'>object</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='kw'>object</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+#&gt; "SAMPLE08" "SAMPLE09" "SAMPLE10" "SAMPLE11" "SAMPLE12" </div><div class='input'><span class='fu'>sampleNames</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>sampleNames</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   sample01   sample02   sample03   sample04   sample05   sample06   sample07 
 #&gt; "SAMPLE01" "SAMPLE02" "SAMPLE03" "SAMPLE04" "SAMPLE05" "SAMPLE06" "SAMPLE07" 
 #&gt;   sample08   sample09   sample10   sample11   sample12 

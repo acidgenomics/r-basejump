@@ -75,7 +75,7 @@ boundaries are defined by capitlization only (e.g. thisIsCamelCase)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -133,53 +133,53 @@ boundaries are defined by capitlization only (e.g. thisIsCamelCase)." />
 boundaries are defined by capitlization only (e.g. <code>thisIsCamelCase</code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>camelCase</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for atomic</span>
-<span class='fu'>camelCase</span>(<span class='kw'>object</span>, names = <span class='fl'>TRUE</span>, strict = <span class='fl'>FALSE</span>)
+<span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, names <span class='op'>=</span> <span class='cn'>TRUE</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for factor</span>
-<span class='fu'>camelCase</span>(<span class='kw'>object</span>, names = <span class='fl'>TRUE</span>, strict = <span class='fl'>FALSE</span>)
+<span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, names <span class='op'>=</span> <span class='cn'>TRUE</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>camelCase</span>(<span class='kw'>object</span>, names = <span class='fl'>TRUE</span>, strict = <span class='fl'>FALSE</span>)
+<span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, names <span class='op'>=</span> <span class='cn'>TRUE</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>camelCase</span>(<span class='kw'>object</span>, rownames = <span class='fl'>FALSE</span>, colnames = <span class='fl'>TRUE</span>, strict = <span class='fl'>FALSE</span>)
+<span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, rownames <span class='op'>=</span> <span class='cn'>FALSE</span>, colnames <span class='op'>=</span> <span class='cn'>TRUE</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>camelCase</span>(<span class='kw'>object</span>, rownames = <span class='fl'>FALSE</span>, colnames = <span class='fl'>TRUE</span>, strict = <span class='fl'>FALSE</span>)
+<span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, rownames <span class='op'>=</span> <span class='cn'>FALSE</span>, colnames <span class='op'>=</span> <span class='cn'>TRUE</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Vector</span>
-<span class='fu'>camelCase</span>(<span class='kw'>object</span>, names = <span class='fl'>TRUE</span>, mcols = <span class='fl'>TRUE</span>, metadata = <span class='fl'>TRUE</span>, strict = <span class='fl'>FALSE</span>)
+<span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, names <span class='op'>=</span> <span class='cn'>TRUE</span>, mcols <span class='op'>=</span> <span class='cn'>TRUE</span>, metadata <span class='op'>=</span> <span class='cn'>TRUE</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>camelCase</span>(
-  <span class='kw'>object</span>,
-  rownames = <span class='fl'>FALSE</span>,
-  colnames = <span class='fl'>TRUE</span>,
-  mcols = <span class='fl'>TRUE</span>,
-  metadata = <span class='fl'>TRUE</span>,
-  strict = <span class='fl'>FALSE</span>
-)
+<span class='fu'>camelCase</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  rownames <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  colnames <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  mcols <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  metadata <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  strict <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S4 method for Ranges</span>
-<span class='fu'>camelCase</span>(<span class='kw'>object</span>, names = <span class='fl'>FALSE</span>, mcols = <span class='fl'>TRUE</span>, metadata = <span class='fl'>TRUE</span>, strict = <span class='fl'>FALSE</span>)
+<span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, names <span class='op'>=</span> <span class='cn'>FALSE</span>, mcols <span class='op'>=</span> <span class='cn'>TRUE</span>, metadata <span class='op'>=</span> <span class='cn'>TRUE</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>camelCase</span>(<span class='kw'>object</span>, rownames = <span class='fl'>FALSE</span>, colnames = <span class='fl'>TRUE</span>, strict = <span class='fl'>FALSE</span>)
+<span class='fu'>camelCase</span><span class='op'>(</span><span class='va'>object</span>, rownames <span class='op'>=</span> <span class='cn'>FALSE</span>, colnames <span class='op'>=</span> <span class='cn'>TRUE</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>camelCase</span>(
-  <span class='kw'>object</span>,
-  rownames = <span class='fl'>FALSE</span>,
-  colnames = <span class='fl'>TRUE</span>,
-  assayNames = <span class='fl'>TRUE</span>,
-  rowData = <span class='fl'>TRUE</span>,
-  colData = <span class='fl'>TRUE</span>,
-  metadata = <span class='fl'>TRUE</span>,
-  strict = <span class='fl'>FALSE</span>
-)</pre>
+<span class='fu'>camelCase</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  rownames <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  colnames <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  assayNames <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  rowData <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  colData <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  metadata <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  strict <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -257,8 +257,8 @@ returns unchanged, except for <code>character</code> or <code>vector</code> clas
     <p>Updated 2020-05-11.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>syntactic</span>, package = <span class='st'>"acidtest"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='kw'>syntactic</span>, <span class='kw'>camelCase</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>syntactic</span>, package <span class='op'>=</span> <span class='st'>"AcidTest"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>syntactic</span>, <span class='va'>camelCase</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $character
 #&gt;  [1] "percentGC"       "x10um"           "x5x3Bias"        "x5prime"        
 #&gt;  [5] "g2mScore"        "helloWorld"      "helloWORLD"      "mazdaRX4"       

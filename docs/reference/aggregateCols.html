@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
       </span>
     </div>
 
@@ -131,19 +131,19 @@
     <p>Aggregate columns</p>
     </div>
 
-    <pre class="usage"><span class='fu'>aggregateCols</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>aggregateCols</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregateCols</span>(<span class='kw'>x</span>, <span class='kw'>by</span>, fun = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"geometricMean"</span>))
+<span class='fu'>aggregateCols</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>by</span>, fun <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"sum"</span>, <span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"geometricMean"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Matrix</span>
-<span class='fu'>aggregateCols</span>(<span class='kw'>x</span>, <span class='kw'>by</span>, fun = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>))
+<span class='fu'>aggregateCols</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>by</span>, fun <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"sum"</span>, <span class='st'>"mean"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>aggregateCols</span>(<span class='kw'>x</span>, col = <span class='st'>"aggregate"</span>, fun = <span class='st'>"sum"</span>)
+<span class='fu'>aggregateCols</span><span class='op'>(</span><span class='va'>x</span>, col <span class='op'>=</span> <span class='st'>"aggregate"</span>, fun <span class='op'>=</span> <span class='st'>"sum"</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>aggregateCols</span>(<span class='kw'>x</span>, <span class='kw'>fun</span>)</pre>
+<span class='fu'>aggregateCols</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>fun</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -215,34 +215,34 @@ samples.</p></li>
     <p>Michael Steinbaugh, Rory Kirchner</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
-    data = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <pre class="examples"><div class='input'><span class='va'>counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>
+    data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
         <span class='fl'>0L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>,
         <span class='fl'>2L</span>, <span class='fl'>0L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>,
         <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>0L</span>, <span class='fl'>2L</span>,
         <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>0L</span>
-    ),
-    nrow = <span class='fl'>4L</span>,
-    ncol = <span class='fl'>4L</span>,
-    byrow = <span class='fl'>TRUE</span>,
-    dimnames = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-        <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"transcript"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4L</span>)),
-        <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(
-            <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), each = <span class='fl'>2L</span>)),
-            <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"replicate"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), times = <span class='fl'>2L</span>)),
-            sep = <span class='st'>"_"</span>
-        )
-    )
-)
+    <span class='op'>)</span>,
+    nrow <span class='op'>=</span> <span class='fl'>4L</span>,
+    ncol <span class='op'>=</span> <span class='fl'>4L</span>,
+    byrow <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    dimnames <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"transcript"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span>,
+        <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span>
+            <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span><span class='op'>)</span>,
+            <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"replicate"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span>, times <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span><span class='op'>)</span>,
+            sep <span class='op'>=</span> <span class='st'>"_"</span>
+        <span class='op'>)</span>
+    <span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='kw'>samples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2L</span>), each = <span class='fl'>2L</span>)))
-<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>samples</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='kw'>counts</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>samples</span>)
+<span class='va'>samples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"sample"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>counts</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 
 #&gt;            sample1            sample1            sample2            sample2 
 #&gt; Levels: sample1 sample2</div><div class='input'>
 <span class='co'>## matrix ====</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>counts</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>counts</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  0                  2                  2
 #&gt; transcript2                  2                  0                  2
@@ -252,15 +252,15 @@ samples.</p></li>
 #&gt; transcript1                  2
 #&gt; transcript2                  2
 #&gt; transcript3                  2
-#&gt; transcript4                  0</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='kw'>counts</span>, by = <span class='kw'>samples</span>)
+#&gt; transcript4                  0</div><div class='input'><span class='fu'>aggregateCols</span><span class='op'>(</span><span class='va'>counts</span>, by <span class='op'>=</span> <span class='va'>samples</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;             sample1 sample2
 #&gt; transcript1       2       4
 #&gt; transcript2       2       4
 #&gt; transcript3       4       2
 #&gt; transcript4       4       2</div><div class='input'>
 <span class='co'>## Matrix ====</span>
-<span class='kw'>sparse</span> <span class='op'>&lt;-</span> <span class='fu'>as</span>(<span class='kw'>counts</span>, <span class='st'>"sparseMatrix"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>sparse</span>)
+<span class='va'>sparse</span> <span class='op'>&lt;-</span> <span class='fu'>as</span><span class='op'>(</span><span class='va'>counts</span>, <span class='st'>"sparseMatrix"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>sparse</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 4 x 4 sparse Matrix of class "dgCMatrix"
 #&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  .                  2                  2
@@ -271,7 +271,7 @@ samples.</p></li>
 #&gt; transcript1                  2
 #&gt; transcript2                  2
 #&gt; transcript3                  2
-#&gt; transcript4                  .</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='kw'>sparse</span>, by = <span class='kw'>samples</span>)
+#&gt; transcript4                  .</div><div class='input'><span class='fu'>aggregateCols</span><span class='op'>(</span><span class='va'>sparse</span>, by <span class='op'>=</span> <span class='va'>samples</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 4 x 2 sparse Matrix of class "dgCMatrix"
 #&gt;             sample1 sample2
 #&gt; transcript1       2       4
@@ -279,14 +279,14 @@ samples.</p></li>
 #&gt; transcript3       4       2
 #&gt; transcript4       4       2</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='kw'>se</span> <span class='op'>&lt;-</span> <span class='kw'>SummarizedExperiment</span>::<span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment</a></span>(
-    assays = <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span>(counts = <span class='kw'>counts</span>),
-    colData = <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>(
-        sampleName = <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>samples</span>)),
-        aggregate = <span class='kw'>samples</span>
-    )
-)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>se</span>)
+<span class='va'>se</span> <span class='op'>&lt;-</span> <span class='fu'>SummarizedExperiment</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment</a></span><span class='op'>(</span>
+    assays <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span><span class='op'>(</span>counts <span class='op'>=</span> <span class='va'>counts</span><span class='op'>)</span>,
+    colData <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span><span class='op'>(</span>
+        sampleName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span><span class='op'>)</span>,
+        aggregate <span class='op'>=</span> <span class='va'>samples</span>
+    <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>se</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 4 4 
 #&gt; metadata(0):
@@ -295,7 +295,7 @@ samples.</p></li>
 #&gt; rowData names(0):
 #&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt;   sample2_replicate2
-#&gt; colData names(2): sampleName aggregate</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='kw'>se</span>)
+#&gt; colData names(2): sampleName aggregate</div><div class='input'><span class='fu'>aggregateCols</span><span class='op'>(</span><span class='va'>se</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 4 2 
 #&gt; metadata(1): aggregate
