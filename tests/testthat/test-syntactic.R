@@ -1,4 +1,4 @@
-data(syntactic, package = "acidtest", envir = environment())
+data(syntactic, package = "AcidTest", envir = environment())
 funs <- list(
     camelCase = camelCase,
     dottedCase = dottedCase,

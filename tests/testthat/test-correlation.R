@@ -2,7 +2,7 @@ context("correlation")
 
 data(
     correlation,
-    package = "acidtest",
+    package = "AcidTest",
     envir = environment()
 )
 

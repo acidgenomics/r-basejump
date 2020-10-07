@@ -7,7 +7,7 @@ data(
     matrix,
     matrix_lfc,
     sparseMatrix,
-    package = "acidtest",
+    package = "AcidTest",
     envir = environment()
 )
 
