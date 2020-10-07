@@ -20,10 +20,10 @@ NULL
 
 ## Updated 2020-10-07.
 `headtail,matrix` <-  # nolint
-    getMethod(
+    methodFunction(
         f = "headtail",
         signature = "matrix",
-        where = asNamespace("AcidBase")
+        package = "AcidBase"
     )
 
 
