@@ -1,5 +1,5 @@
 #' @name aggregateRows
-#' @inherit acidgenerics::aggregateRows
+#' @inherit AcidGenerics::aggregateRows
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @section Methods (by class):
@@ -81,7 +81,7 @@ NULL
 
 #' @rdname aggregateRows
 #' @name aggregateRows
-#' @importFrom acidgenerics aggregateRows
+#' @importFrom AcidGenerics aggregateRows
 #' @usage aggregateRows(x, ...)
 #' @export
 NULL

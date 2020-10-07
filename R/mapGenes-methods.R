@@ -15,7 +15,7 @@
 #' @name mapGenes
 #' @note Updated 2019-08-21.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param strict `logical(1)`.
 #'   Require all genes to match. Recommended by default. If set `FALSE`, instead
 #'   will return a warning to the user, and subset the genes vector to only
@@ -59,21 +59,21 @@ NULL
 
 #' @rdname mapGenes
 #' @name mapGenesToRownames
-#' @importFrom acidgenerics mapGenesToRownames
+#' @importFrom AcidGenerics mapGenesToRownames
 #' @usage mapGenesToRownames(object, ...)
 #' @export
 NULL
 
 #' @rdname mapGenes
 #' @name mapGenesToIDs
-#' @importFrom acidgenerics mapGenesToIDs
+#' @importFrom AcidGenerics mapGenesToIDs
 #' @usage mapGenesToIDs(object, ...)
 #' @export
 NULL
 
 #' @rdname mapGenes
 #' @name mapGenesToSymbols
-#' @importFrom acidgenerics mapGenesToSymbols
+#' @importFrom AcidGenerics mapGenesToSymbols
 #' @usage mapGenesToSymbols(object, ...)
 #' @export
 NULL

@@ -1,9 +1,9 @@
 #' @name zerosVsDepth
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit acidgenerics::zerosVsDepth
+#' @inherit AcidGenerics::zerosVsDepth
 #' @note Updated 2020-01-30.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname zerosVsDepth
 #' @name zerosVsDepth
-#' @importFrom acidgenerics zerosVsDepth
+#' @importFrom AcidGenerics zerosVsDepth
 #' @usage zerosVsDepth(object, ...)
 #' @export
 NULL

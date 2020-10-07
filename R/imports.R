@@ -41,7 +41,7 @@ NULL
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
-#' @importFrom acidbase appendToBody bapply compress getNameInParent
+#' @importFrom AcidBase appendToBody bapply compress getNameInParent
 #'   matchArgsToDoCall methodFormals methodFunction printString
 #'   requireNamespaces
 #' @importFrom cli cli_alert cli_alert_info cli_alert_success cli_alert_warning

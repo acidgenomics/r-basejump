@@ -1,12 +1,12 @@
 #' @name convertTranscriptsToGenes
-#' @inherit acidgenerics::convertTranscriptsToGenes
+#' @inherit AcidGenerics::convertTranscriptsToGenes
 #'
 #' @note For objects containing a count matrix, the object rows will be
 #'   collapsed to gene level using `aggregateRows`. This applies to our
 #'   `SummarizedExperiment` method.
 #' @note Updated 2020-01-30.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param aggregate `logical(1)`.
 #'   For objects supporting [`dim()`][base::dim], aggregate counts to gene level
 #'   and collapse the matrix.
@@ -59,7 +59,7 @@ NULL
 
 #' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
-#' @importFrom acidgenerics convertTranscriptsToGenes
+#' @importFrom AcidGenerics convertTranscriptsToGenes
 #' @usage convertTranscriptsToGenes(object, ...)
 #' @export
 NULL

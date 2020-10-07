@@ -5,7 +5,7 @@
 #'
 #' @importMethodsFrom SingleCellExperiment sizeFactors sizeFactors<-
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @inheritParams SingleCellExperiment::sizeFactors
 #' @param ... Additional arguments.
 #'

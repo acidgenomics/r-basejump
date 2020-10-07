@@ -1,8 +1,8 @@
 #' @name subsetPerSample
-#' @inherit acidgenerics::subsetPerSample
+#' @inherit AcidGenerics::subsetPerSample
 #' @note Updated 2019-08-11.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param minCells `integer(1)`.
 #'   Minimum number of cells required per sample.
 #' @param assignAndSave `logical(1)`.
@@ -47,7 +47,7 @@ NULL
 
 #' @rdname subsetPerSample
 #' @name subsetPerSample
-#' @importFrom acidgenerics subsetPerSample
+#' @importFrom AcidGenerics subsetPerSample
 #' @usage subsetPerSample(object, ...)
 #' @export
 NULL

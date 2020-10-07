@@ -3,7 +3,7 @@
 #' @note Updated 2020-01-20.
 #' @export
 #'
-#' @inheritParams acidbase::dots
+#' @inheritParams AcidBase::dots
 #' @param envirName `character(1)`.
 #'   Name of the new `environment` to create.
 #' @param parentFrame `environment`.

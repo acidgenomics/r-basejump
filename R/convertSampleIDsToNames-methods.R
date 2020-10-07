@@ -1,8 +1,8 @@
 #' @name convertSampleIDsToNames
-#' @inherit acidgenerics::convertSampleIDsToNames
+#' @inherit AcidGenerics::convertSampleIDsToNames
 #' @note Updated 2020-01-20.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return Varies, depending on the method.
@@ -17,7 +17,7 @@ NULL
 
 #' @rdname convertSampleIDsToNames
 #' @name convertSampleIDsToNames
-#' @importFrom acidgenerics convertSampleIDsToNames
+#' @importFrom AcidGenerics convertSampleIDsToNames
 #' @usage convertSampleIDsToNames(object, ...)
 #' @export
 NULL

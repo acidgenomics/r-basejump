@@ -1,11 +1,11 @@
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit acidgenerics::metrics
+#' @inherit AcidGenerics::metrics
 #' @note These functions will error intentionally if no numeric columns are
 #'   defined in `colData()`.
 #' @note Updated 2020-01-20.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @details
@@ -47,14 +47,14 @@ NULL
 
 #' @rdname metrics
 #' @name metrics
-#' @importFrom acidgenerics metrics
+#' @importFrom AcidGenerics metrics
 #' @usage metrics(object, ...)
 #' @export
 NULL
 
 #' @rdname metrics
 #' @name metricsPerSample
-#' @importFrom acidgenerics metricsPerSample
+#' @importFrom AcidGenerics metricsPerSample
 #' @usage metricsPerSample(object, ...)
 #' @export
 NULL

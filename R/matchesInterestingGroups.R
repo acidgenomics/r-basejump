@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @inherit goalie::check return
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

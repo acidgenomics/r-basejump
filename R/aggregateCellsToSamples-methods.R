@@ -1,9 +1,9 @@
 #' @name aggregateCellsToSamples
-#' @inherit acidgenerics::aggregateCellsToSamples
+#' @inherit AcidGenerics::aggregateCellsToSamples
 #' @note Updated 2020-01-30.
 #'
 #' @inheritParams aggregate
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @details
@@ -24,7 +24,7 @@ NULL
 
 #' @rdname aggregateCellsToSamples
 #' @name aggregateCellsToSamples
-#' @importFrom acidgenerics aggregateCellsToSamples
+#' @importFrom AcidGenerics aggregateCellsToSamples
 #' @usage aggregateCellsToSamples(x, ...)
 #' @export
 NULL

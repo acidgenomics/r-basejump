@@ -96,97 +96,97 @@ SummarizedExperiment::`rowRanges<-`
 
 
 
-#' @importFrom acidbase basenameSansExt
+#' @importFrom AcidBase basenameSansExt
 #' @export
-acidbase::basenameSansExt
+AcidBase::basenameSansExt
 
-#' @importFrom acidbase barcodePattern
+#' @importFrom AcidBase barcodePattern
 #' @export
-acidbase::barcodePattern
+AcidBase::barcodePattern
 
-#' @importFrom acidbase compress
+#' @importFrom AcidBase compress
 #' @export
-acidbase::compress
+AcidBase::compress
 
-#' @importFrom acidbase compressExtPattern
+#' @importFrom AcidBase compressExtPattern
 #' @export
-acidbase::compressExtPattern
+AcidBase::compressExtPattern
 
-#' @importFrom acidbase decompress
+#' @importFrom AcidBase decompress
 #' @export
-acidbase::decompress
+AcidBase::decompress
 
-#' @importFrom acidbase dots
+#' @importFrom AcidBase dots
 #' @export
-acidbase::dots
+AcidBase::dots
 
-#' @importFrom acidbase extPattern
+#' @importFrom AcidBase extPattern
 #' @export
-acidbase::extPattern
+AcidBase::extPattern
 
-#' @importFrom acidbase fileExt
+#' @importFrom AcidBase fileExt
 #' @export
-acidbase::fileExt
+AcidBase::fileExt
 
-#' @importFrom acidbase formalsList
+#' @importFrom AcidBase formalsList
 #' @export
-acidbase::formalsList
+AcidBase::formalsList
 
-#' @importFrom acidbase genomeMetadataNames
+#' @importFrom AcidBase genomeMetadataNames
 #' @export
-acidbase::genomeMetadataNames
+AcidBase::genomeMetadataNames
 
-#' @importFrom acidbase initDir
+#' @importFrom AcidBase initDir
 #' @export
-acidbase::initDir
+AcidBase::initDir
 
-#' @importFrom acidbase lanePattern
+#' @importFrom AcidBase lanePattern
 #' @export
-acidbase::lanePattern
+AcidBase::lanePattern
 
-#' @importFrom acidbase matchArgsToDoCall
+#' @importFrom AcidBase matchArgsToDoCall
 #' @export
-acidbase::matchArgsToDoCall
+AcidBase::matchArgsToDoCall
 
-#' @importFrom acidbase metadataBlacklist
+#' @importFrom AcidBase metadataBlacklist
 #' @export
-acidbase::metadataBlacklist
+AcidBase::metadataBlacklist
 
-#' @importFrom acidbase metricsCols
+#' @importFrom AcidBase metricsCols
 #' @export
-acidbase::metricsCols
+AcidBase::metricsCols
 
-#' @importFrom acidbase methodFormals
+#' @importFrom AcidBase methodFormals
 #' @export
-acidbase::methodFormals
+AcidBase::methodFormals
 
-#' @importFrom acidbase methodFunction
+#' @importFrom AcidBase methodFunction
 #' @export
-acidbase::methodFunction
+AcidBase::methodFunction
 
-#' @importFrom acidbase pasteURL
+#' @importFrom AcidBase pasteURL
 #' @export
-acidbase::pasteURL
+AcidBase::pasteURL
 
-#' @importFrom acidbase printString
+#' @importFrom AcidBase printString
 #' @export
-acidbase::printString
+AcidBase::printString
 
-#' @importFrom acidbase realpath
+#' @importFrom AcidBase realpath
 #' @export
-acidbase::realpath
+AcidBase::realpath
 
-#' @importFrom acidbase requireNamespaces
+#' @importFrom AcidBase requireNamespaces
 #' @export
-acidbase::requireNamespaces
+AcidBase::requireNamespaces
 
-#' @importFrom acidbase standardizeCall
+#' @importFrom AcidBase standardizeCall
 #' @export
-acidbase::standardizeCall
+AcidBase::standardizeCall
 
-#' @importFrom acidbase updateMessage
+#' @importFrom AcidBase updateMessage
 #' @export
-acidbase::updateMessage
+AcidBase::updateMessage
 
 
 

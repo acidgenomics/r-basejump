@@ -7,7 +7,7 @@
 #' @name sampleNames
 #' @note Updated 2020-03-15.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @return Named `character`.
 #'

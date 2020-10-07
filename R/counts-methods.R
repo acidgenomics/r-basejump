@@ -9,7 +9,7 @@
 #' @aliases counts<-
 #' @note Updated 2019-12-04.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return Matrix.

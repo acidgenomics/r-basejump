@@ -5,7 +5,7 @@
 #' @inherit makeSummarizedExperiment
 #' @note Updated 2020-02-24.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #'
 #' @seealso
 #' - `SingleCellExperiment::altExps()`, which has replaced the now defunct
