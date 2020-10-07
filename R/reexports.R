@@ -1,18 +1,27 @@
-##' @importClassesFrom AcidGenomes Ensembl2Entrez
-##' @exportClass Ensembl2Entrez
-#NULL
-
-#exportClasses(Ensembl2Entrez)
-#exportClasses(Entrez2Ensembl)
-#exportClasses(Gene2Symbol)
-#exportClasses(HGNC)
-#exportClasses(HGNC2Ensembl)
-#exportClasses(MGI2Ensembl)
-#exportClasses(Protein2Gene)
-#exportClasses(Tx2Gene)
-
-
-
+#' @importClassesFrom AcidGenomes Ensembl2Entrez
+#' @exportClass Ensembl2Entrez
+#'
+#' @importClassesFrom AcidGenomes Entrez2Ensembl
+#' @exportClass Entrez2Ensembl
+#'
+#' @importClassesFrom AcidGenomes Gene2Symbol
+#' @exportClass Gene2Symbol
+#'
+#' @importClassesFrom AcidGenomes HGNC
+#' @exportClass HGNC
+#'
+#' @importClassesFrom AcidGenomes HGNC2Ensembl
+#' @exportClass HGNC2Ensembl
+#'
+#' @importClassesFrom AcidGenomes MGI2Ensembl
+#' @exportClass MGI2Ensembl
+#'
+#' @importClassesFrom AcidGenomes Protein2Gene
+#' @exportClass Protein2Gene
+#'
+#' @importClassesFrom AcidGenomes Tx2Gene
+#' @exportClass Tx2Gene
+NULL
 
 
 
@@ -122,67 +131,131 @@ AcidGenomes::Ensembl2Entrez
 #' @export
 AcidGenomes::Entrez2Ensembl
 
-# importFrom(AcidGenomes,Gene2Symbol)
+#' @importFrom AcidGenomes Gene2Symbol
+#' @export
+AcidGenomes::Gene2Symbol
+
 # importFrom(AcidGenomes,HGNC)
+
 # importFrom(AcidGenomes,HGNC2Ensembl)
+
 # importFrom(AcidGenomes,MGI2Ensembl)
+
 # importFrom(AcidGenomes,Tx2Gene)
+
 # importFrom(AcidGenomes,annotable)
 
 # importFrom(AcidGenomes,currentEnsemblVersion)
+
 # importFrom(AcidGenomes,currentFlyBaseVersion)
+
 # importFrom(AcidGenomes,currentGencodeVersion)
+
 # importFrom(AcidGenomes,currentRefSeqVersion)
+
 # importFrom(AcidGenomes,currentWormBaseVersion)
+
 # importFrom(AcidGenomes,detectOrganism)
+
 # importFrom(AcidGenomes,emptyRanges)
+
 # importFrom(AcidGenomes,geneNames)
+
 # importFrom(AcidGenomes,geneSynonyms)
+
 # importFrom(AcidGenomes,getEnsDb)
 
-
 # importFrom(AcidGenomes,importTx2Gene)
+
 # importFrom(AcidGenomes,makeGRangesFromEnsDb)
+
 # importFrom(AcidGenomes,makeGRangesFromEnsembl)
+
 # importFrom(AcidGenomes,makeGRangesFromGFF)
+
 # importFrom(AcidGenomes,makeGRangesFromGTF)
+
 # importFrom(AcidGenomes,makeGene2SymbolFromEnsDb)
+
 # importFrom(AcidGenomes,makeGene2SymbolFromEnsembl)
+
 # importFrom(AcidGenomes,makeGene2SymbolFromGFF)
+
 # importFrom(AcidGenomes,makeGene2SymbolFromGTF)
+
 # importFrom(AcidGenomes,makeProtein2GeneFromEnsembl)
+
 # importFrom(AcidGenomes,makeTx2GeneFromEnsDb)
+
 # importFrom(AcidGenomes,makeTx2GeneFromEnsembl)
+
 # importFrom(AcidGenomes,makeTx2GeneFromFASTA)
+
 # importFrom(AcidGenomes,makeTx2GeneFromGFF)
+
 # importFrom(AcidGenomes,makeTx2GeneFromGTF)
+
 # importFrom(AcidGenomes,mapEnsemblReleaseToURL)
+
 # importFrom(AcidGenomes,mapHumanOrthologs)
 
 #' @importFrom AcidGenomes mapUCSCBuildToEnsembl
 #' @export
 AcidGenomes::mapUCSCBuildToEnsembl
 
-#' @importFrom organism
+#' @importFrom AcidGenomes organism
 #' @export
 AcidGenomes::organism
 
-#' @importFrom organism<-
+#' @importFrom AcidGenomes organism<-
 #' @export
 AcidGenomes::`organism<-`
 
-# importFrom(AcidGenomes,stripGeneVersions)
-# importFrom(AcidGenomes,stripTranscriptVersions)
-#
-# importFrom(AcidPlyr,antiJoin)
-# importFrom(AcidPlyr,fullJoin)
-# importFrom(AcidPlyr,innerJoin)
-# importFrom(AcidPlyr,leftJoin)
-# importFrom(AcidPlyr,mutateAll)
-# importFrom(AcidPlyr,mutateAt)
-# importFrom(AcidPlyr,mutateIf)
-# importFrom(AcidPlyr,rightJoin)
-# importFrom(AcidPlyr,selectIf)
+#' @importFrom AcidGenomes stripGeneVersions
+#' @export
+AcidGenomes::stripGeneVersions
+
+#' @importFrom AcidGenomes stripTranscriptVersions
+#' @export
+AcidGenomes::stripTranscriptVersions
+
+
+
+#' @importFrom AcidPlyr antiJoin
+#' @export
+AcidPlyr::antiJoin
+
+#' @importFrom AcidPlyr fullJoin
+#' @export
+AcidPlyr::fullJoin
+
+#' @importFrom AcidPlyr innerJoin
+#' @export
+AcidPlyr::innerJoin
+
+#' @importFrom AcidPlyr leftJoin
+#' @export
+AcidPlyr::leftJoin
+
+#' @importFrom AcidPlyr mutateAll
+#' @export
+AcidPlyr::mutateAll
+
+#' @importFrom AcidPlyr mutateAt
+#' @export
+AcidPlyr::mutateAt
+
+#' @importFrom AcidPlyr mutateIf
+#' @export
+AcidPlyr::mutateIf
+
+#' @importFrom AcidPlyr rightJoin
+#' @export
+AcidPlyr::rightJoin
+
+#' @importFrom AcidPlyr selectIf
+#' @export
+AcidPlyr::selectIf
 
 #' @importFrom AcidPlyr semiJoin
 #' @export
