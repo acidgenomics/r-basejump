@@ -36,7 +36,7 @@ Updated 2020-01-20.
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 
 ## SummarizedExperiment ====

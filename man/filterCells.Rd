@@ -80,7 +80,7 @@ as \code{filterCells} metadata.
 Updated 2020-01-20.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment

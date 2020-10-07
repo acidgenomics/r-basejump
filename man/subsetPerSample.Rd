@@ -47,7 +47,7 @@ Subset per sample
 Updated 2019-08-11.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 sce <- SingleCellExperiment
 
 ## SingleCellExperiment ====

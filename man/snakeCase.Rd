@@ -97,6 +97,6 @@ are defined by underscores (e.g. \code{this_is_snake_case}).
 Updated 2020-05-11.
 }
 \examples{
-data(syntactic, package = "acidtest")
+data(syntactic, package = "AcidTest")
 lapply(syntactic, snakeCase)
 }

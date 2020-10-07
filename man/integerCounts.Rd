@@ -34,7 +34,7 @@ defined in \code{assayNames}.
 Updated 2019-12-04.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment

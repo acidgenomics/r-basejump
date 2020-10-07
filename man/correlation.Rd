@@ -62,7 +62,7 @@ Correlation
 Updated 2020-01-20.
 }
 \examples{
-data(correlation, package = "acidtest")
+data(correlation, package = "AcidTest")
 list <- correlation
 
 ## vector ====

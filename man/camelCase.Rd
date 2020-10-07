@@ -106,6 +106,6 @@ Camel case is recommended by Bioconductor for variable and function names.
 Updated 2020-05-11.
 }
 \examples{
-data(syntactic, package = "acidtest")
+data(syntactic, package = "AcidTest")
 lapply(syntactic, camelCase)
 }

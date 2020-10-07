@@ -27,7 +27,7 @@ Assign multiple objects into a new environment
 Updated 2020-01-20.
 }
 \examples{
-data(data.frame, matrix, package = "acidtest")
+data(data.frame, matrix, package = "AcidTest")
 multiassignAsEnvir(data.frame, matrix, envirName = "example")
 class(example)
 ls(example)

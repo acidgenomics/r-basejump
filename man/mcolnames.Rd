@@ -29,7 +29,7 @@ mcolnames(x, ...) <- value
 Metadata column names
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## Vector ====
 object <- RangedSummarizedExperiment
