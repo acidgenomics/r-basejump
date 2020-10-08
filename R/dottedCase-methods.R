@@ -12,15 +12,6 @@ NULL
 
 
 
-#' @rdname dottedCase
-#' @name dottedCase
-#' @importFrom syntactic dottedCase
-#' @usage dottedCase(object, ...)
-#' @export
-NULL
-
-
-
 `dottedCase,atomic` <-  # nolint
     function(object, names = TRUE) {
         assert(isFlag(names))

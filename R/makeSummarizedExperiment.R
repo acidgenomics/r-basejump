@@ -15,9 +15,9 @@
 #'
 #' This behavior can be disabled by setting `sessionInfo = FALSE`.
 #'
-#' @name makeSummarizedExperiment
+#' @export
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2020-10-01.
+#' @note Updated 2020-10-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param sort `logical(1)`.
@@ -93,13 +93,8 @@
 #'     transgeneNames = "EGFP"
 #' )
 #' print(x)
-NULL
-
-
-
-## Updated 2020-10-01.
-`makeSummarizedExperiment,SimpleList` <- function(  # nolint
-    assays,
+makeSummarizedExperiment <- function(
+    assays = SimpleList(),
     rowRanges = GRangesList(),
     rowData = NULL,
     colData = DataFrame(),
@@ -108,10 +103,8 @@ NULL
     sort = TRUE,
     sessionInfo = TRUE
 ) {
-    if (!is(assays, "SimpleList")) {
-        assays <- SimpleList(assays)
-    }
     assert(
+        isAny(assays, c("SimpleList", "list")),
         isAny(rowRanges, c("GRanges", "GRangesList", "NULL")),
         isAny(rowData, c("DataFrame", "NULL")),
         isAny(colData, c("DataFrame", "NULL")),
@@ -120,6 +113,9 @@ NULL
         isFlag(sort),
         isFlag(sessionInfo)
     )
+    if (!is(assays, "SimpleList")) {
+        assays <- SimpleList(assays)
+    }
     ## Only allow `rowData` when `rowRanges` isn't defined.
     if (hasLength(rowRanges)) {
         assert(!hasLength(rowData))
@@ -128,19 +124,28 @@ NULL
     ## Assays ------------------------------------------------------------------
     ## Drop any `NULL` items in assays.
     assays <- Filter(f = Negate(is.null), x = assays)
-    ## Require the primary assay to be named "counts". This helps ensure
-    ## consistency with the conventions for `SingleCellExperiment`.
-    assert(hasNames(assays), hasValidNames(assays))
-    assay <- assays[[1L]]
-    ## Require valid names for both columns (samples) and rows (genes). Note
-    ## that values beginning with a number or containing invalid characters
-    ## (e.g. spaces, dashes) will error here. This assert will pass if the
-    ## assay does not contain any row or column names.
-    assert(hasValidDimnames(assay))
-    ## We're going to sort the assay names by default, but will perform this
-    ## step after generating the `SummarizedExperiment` object (see below). The
-    ## `SummarizedExperiment()` constructor checks to ensure that all assays
-    ## have matching dimnames, so we can skip that check.
+    if (hasLength(assays)) {
+        ## Require the primary assay to be named "counts". This helps ensure
+        ## consistency with the conventions for `SingleCellExperiment`.
+        if (!hasNames(assays)) {
+            if (hasLength(assays, n = 1L)) {
+                names(assays) <- "assay"
+            } else {
+                stop("Multiple assays defined without names.")
+            }
+        }
+        assert(hasNames(assays), hasValidNames(assays))
+        assay <- assays[[1L]]
+        ## Require valid names for both columns (samples) and rows (genes). Note
+        ## that values beginning with a number or containing invalid characters
+        ## (e.g. spaces, dashes) will error here. This assert will pass if the
+        ## assay does not contain any row or column names.
+        assert(hasValidDimnames(assay))
+        ## We're going to sort the assay names by default, but will perform this
+        ## step after generating the `SummarizedExperiment` object (see below).
+        ## The `SummarizedExperiment()` constructor checks to ensure that all
+        ## assays have matching dimnames, so we can skip that check.
+    }
 
     ## Row data ----------------------------------------------------------------
     ## Dynamically allow input of rowRanges (recommended) or rowData (fallback):
@@ -278,29 +283,3 @@ NULL
     validObject(se)
     se
 }
-
-
-
-#' @rdname makeSummarizedExperiment
-#' @export
-setMethod(
-    f = "makeSummarizedExperiment",
-    signature = signature(assays = "SimpleList"),
-    definition = `makeSummarizedExperiment,SimpleList`
-)
-
-
-
-## Updated 2019-08-07.
-`makeSummarizedExperiment,list` <-  # nolint
-    `makeSummarizedExperiment,SimpleList`
-
-
-
-#' @rdname makeSummarizedExperiment
-#' @export
-setMethod(
-    f = "makeSummarizedExperiment",
-    signature = signature(assays = "list"),
-    definition = `makeSummarizedExperiment,list`
-)

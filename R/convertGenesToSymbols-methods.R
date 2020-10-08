@@ -44,22 +44,6 @@ NULL
 
 
 
-#' @rdname convertGenesToSymbols
-#' @name convertGenesToSymbols
-#' @importFrom AcidGenerics convertGenesToSymbols
-#' @usage convertGenesToSymbols(object, ...)
-#' @export
-NULL
-
-#' @rdname convertGenesToSymbols
-#' @name convertSymbolsToGenes
-#' @importFrom AcidGenerics convertSymbolsToGenes
-#' @usage convertSymbolsToGenes(object, ...)
-#' @export
-NULL
-
-
-
 ## Allowing duplicates here (unlike convertTranscriptsToGenes).
 ## Updated 2020-05-17.
 `convertGenesToSymbols,character` <-  # nolint

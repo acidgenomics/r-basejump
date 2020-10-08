@@ -22,15 +22,6 @@ NULL
 
 
 
-#' @rdname aggregateCellsToSamples
-#' @name aggregateCellsToSamples
-#' @importFrom AcidGenerics aggregateCellsToSamples
-#' @usage aggregateCellsToSamples(x, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-01-30.
 `aggregateCellsToSamples,SingleCellExperiment` <-  # nolint
     function(x) {

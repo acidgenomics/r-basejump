@@ -57,15 +57,6 @@ NULL
 
 
 
-#' @rdname convertTranscriptsToGenes
-#' @name convertTranscriptsToGenes
-#' @importFrom AcidGenerics convertTranscriptsToGenes
-#' @usage convertTranscriptsToGenes(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-22.
 `convertTranscriptsToGenes,character` <-  # nolint
     function(object, tx2gene) {

@@ -15,15 +15,6 @@ NULL
 
 
 
-#' @rdname convertSampleIDsToNames
-#' @name convertSampleIDsToNames
-#' @importFrom AcidGenerics convertSampleIDsToNames
-#' @usage convertSampleIDsToNames(object, ...)
-#' @export
-NULL
-
-
-
 ## NULL assignment into a column name doesn't work for DataFrame class.
 ## You can see this cryptic error on some R installations:
 ##

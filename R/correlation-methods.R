@@ -50,15 +50,6 @@ NULL
 
 
 
-#' @rdname correlation
-#' @name correlation
-#' @importFrom AcidGenerics correlation
-#' @usage correlation(x, y, ...)
-#' @export
-NULL
-
-
-
 method <- formals(stats::cor)[["method"]]
 
 

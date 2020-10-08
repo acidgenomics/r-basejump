@@ -15,15 +15,6 @@ NULL
 
 
 
-#' @rdname markdown
-#' @name markdown
-#' @importFrom AcidGenerics markdown
-#' @usage markdown(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-07-24.
 `markdown,SummarizedExperiment` <-  # nolint
     function(object) {

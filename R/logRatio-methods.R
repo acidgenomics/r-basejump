@@ -22,22 +22,6 @@ NULL
 
 
 
-#' @rdname logRatio
-#' @name foldChangeToLogRatio
-#' @importFrom AcidGenerics foldChangeToLogRatio
-#' @usage foldChangeToLogRatio(object, ...)
-#' @export
-NULL
-
-#' @rdname logRatio
-#' @name logRatioToFoldChange
-#' @importFrom AcidGenerics logRatioToFoldChange
-#' @usage logRatioToFoldChange(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-22.
 `foldChangeToLogRatio,numeric` <-  # nolint
     function(object, base = 2L) {

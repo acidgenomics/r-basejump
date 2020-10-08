@@ -18,15 +18,6 @@ NULL
 
 
 
-#' @rdname topCellsPerSample
-#' @name topCellsPerSample
-#' @importFrom AcidGenerics topCellsPerSample
-#' @usage topCellsPerSample(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-01-30.
 `topCellsPerSample,SingleCellExperiment` <-  # nolint
     function(object, n = 100L) {
