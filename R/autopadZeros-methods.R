@@ -36,15 +36,6 @@ NULL
 
 
 
-#' @rdname autopadZeros
-#' @name autopadZeros
-#' @importFrom syntactic autopadZeros
-#' @usage autopadZeros(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-22.
 `autopadZeros,matrix` <-  # nolint
     function(

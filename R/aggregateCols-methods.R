@@ -53,15 +53,6 @@ NULL
 
 
 
-#' @rdname aggregateCols
-#' @name aggregateCols
-#' @importFrom AcidGenerics aggregateCols
-#' @usage aggregateCols(x, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-01-30.
 `aggregateCols,matrix` <-  # nolint
     function(

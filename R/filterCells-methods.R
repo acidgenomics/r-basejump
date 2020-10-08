@@ -61,15 +61,6 @@ NULL
 
 
 
-#' @rdname filterCells
-#' @name filterCells
-#' @importFrom AcidGenerics filterCells
-#' @usage filterCells(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-11-19.
 `filterCells,SingleCellExperiment` <-  # nolint
     function(

@@ -57,29 +57,6 @@ NULL
 
 
 
-#' @rdname mapGenes
-#' @name mapGenesToRownames
-#' @importFrom AcidGenerics mapGenesToRownames
-#' @usage mapGenesToRownames(object, ...)
-#' @export
-NULL
-
-#' @rdname mapGenes
-#' @name mapGenesToIDs
-#' @importFrom AcidGenerics mapGenesToIDs
-#' @usage mapGenesToIDs(object, ...)
-#' @export
-NULL
-
-#' @rdname mapGenes
-#' @name mapGenesToSymbols
-#' @importFrom AcidGenerics mapGenesToSymbols
-#' @usage mapGenesToSymbols(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-21.
 .mapGenes <- function(object, genes, strict = TRUE) {
     validObject(object)

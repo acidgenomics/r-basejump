@@ -17,15 +17,6 @@ NULL
 
 
 
-#' @rdname intersectionMatrix
-#' @name intersectionMatrix
-#' @importFrom AcidGenerics intersectionMatrix
-#' @usage intersectionMatrix(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-08-18.
 `intersectionMatrix,list` <-  # nolint
     function(object) {

@@ -16,15 +16,6 @@ NULL
 
 
 
-#' @rdname intersectAll
-#' @name intersectAll
-#' @importFrom AcidGenerics intersectAll
-#' @usage intersectAll(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-08-18.
 `intersectAll,list` <-  # nolint
     function(object) {

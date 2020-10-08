@@ -17,22 +17,6 @@ NULL
 
 
 
-#' @rdname mcolnames
-#' @name mcolnames
-#' @importFrom AcidGenerics mcolnames
-#' @usage mcolnames(x, ...)
-#' @export
-NULL
-
-#' @rdname mcolnames
-#' @name mcolnames<-
-#' @importFrom AcidGenerics mcolnames<-
-#' @usage mcolnames(x, ...) <- value
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-19.
 `mcolnames,Vector` <-  # nolint
     function(x) {
