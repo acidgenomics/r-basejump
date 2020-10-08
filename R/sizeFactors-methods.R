@@ -40,22 +40,6 @@ NULL
 
 
 
-#' @rdname sizeFactors
-#' @name sizeFactors
-#' @importFrom BiocGenerics sizeFactors
-#' @usage sizeFactors(object, ...)
-#' @export
-NULL
-
-#' @rdname sizeFactors
-#' @name sizeFactors<-
-#' @importFrom BiocGenerics sizeFactors<-
-#' @usage sizeFactors(object, ...) <- value
-#' @export
-NULL
-
-
-
 ## If exporting a numeric value signature for SE, the SE method will mask SCE
 ## ANY value method. In this case, we need to export a corresponding SCE numeric
 ## method.

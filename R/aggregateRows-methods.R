@@ -79,15 +79,6 @@ NULL
 
 
 
-#' @rdname aggregateRows
-#' @name aggregateRows
-#' @importFrom AcidGenerics aggregateRows
-#' @usage aggregateRows(x, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-01-30.
 `aggregateRows,matrix` <-  # nolint
     `aggregate,matrix`

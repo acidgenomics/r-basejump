@@ -26,15 +26,6 @@ NULL
 
 
 
-#' @rdname camelCase
-#' @name camelCase
-#' @importFrom syntactic camelCase
-#' @usage camelCase(object, ...)
-#' @export
-NULL
-
-
-
 `camelCase,atomic` <-  # nolint
     function(object, names = TRUE, strict = FALSE) {
         assert(

@@ -29,15 +29,6 @@ NULL
 
 
 
-#' @rdname calculateMetrics
-#' @name calculateMetrics
-#' @importFrom AcidGenerics calculateMetrics
-#' @usage calculateMetrics(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-27.
 `calculateMetrics,matrix` <-  # nolint
     function(

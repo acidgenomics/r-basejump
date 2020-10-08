@@ -30,15 +30,6 @@ NULL
 
 
 
-#' @rdname selectSamples
-#' @name selectSamples
-#' @importFrom AcidGenerics selectSamples
-#' @usage selectSamples(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-22.
 `selectSamples,SummarizedExperiment` <-  # nolint
     function(object, ...) {

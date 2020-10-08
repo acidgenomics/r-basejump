@@ -45,15 +45,6 @@ NULL
 
 
 
-#' @rdname subsetPerSample
-#' @name subsetPerSample
-#' @importFrom AcidGenerics subsetPerSample
-#' @usage subsetPerSample(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-11.
 `subsetPerSample,SingleCellExperiment` <-  # nolint
     function(

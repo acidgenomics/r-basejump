@@ -86,22 +86,6 @@ NULL
 
 
 
-#' @rdname sampleData
-#' @name sampleData
-#' @importFrom AcidGenerics sampleData
-#' @usage sampleData(object, ...)
-#' @export
-NULL
-
-#' @rdname sampleData
-#' @name sampleData<-
-#' @importFrom AcidGenerics sampleData<-
-#' @usage sampleData(object, ...) <- value
-#' @export
-NULL
-
-
-
 ## Don't run validity checks here.
 ## Updated 2019-08-27.
 `sampleData,SummarizedExperiment` <-  # nolint
