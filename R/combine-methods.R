@@ -83,15 +83,6 @@ NULL
 
 
 
-#' @rdname combine
-#' @name combine
-#' @importFrom BiocGenerics combine
-#' @usage combine(x, y, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-01-20.
 `combine,SummarizedExperiment` <-  # nolint
     function(x, y) {

@@ -27,15 +27,6 @@ NULL
 
 
 
-#' @rdname nonzeroRowsAndCols
-#' @name nonzeroRowsAndCols
-#' @importFrom AcidGenerics nonzeroRowsAndCols
-#' @usage nonzeroRowsAndCols(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-01-20.
 `nonzeroRowsAndCols,matrix` <-  # nolint
     function(object) {

@@ -51,15 +51,6 @@ NULL
 
 
 
-#' @rdname collapseToString
-#' @name collapseToString
-#' @importFrom AcidGenerics collapseToString
-#' @usage collapseToString(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-18.
 `collapseToString,atomic` <-  # nolint
     function(

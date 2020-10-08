@@ -19,22 +19,6 @@ NULL
 
 
 
-#' @rdname interestingGroups
-#' @name interestingGroups
-#' @importFrom AcidGenerics interestingGroups
-#' @usage interestingGroups(object, ...)
-#' @export
-NULL
-
-#' @rdname interestingGroups
-#' @name interestingGroups<-
-#' @importFrom AcidGenerics interestingGroups<-
-#' @usage interestingGroups(object, ...)  <- value
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-22.
 `interestingGroups,Annotated` <-  # nolint
     function(object) {

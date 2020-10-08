@@ -12,15 +12,6 @@ NULL
 
 
 
-#' @rdname snakeCase
-#' @name snakeCase
-#' @importFrom syntactic snakeCase
-#' @usage snakeCase(object, ...)
-#' @export
-NULL
-
-
-
 `snakeCase,atomic` <-  # nolint
     function(object, names = TRUE) {
         assert(isFlag(names))

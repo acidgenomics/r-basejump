@@ -45,22 +45,6 @@ NULL
 
 
 
-#' @rdname metrics
-#' @name metrics
-#' @importFrom AcidGenerics metrics
-#' @usage metrics(object, ...)
-#' @export
-NULL
-
-#' @rdname metrics
-#' @name metricsPerSample
-#' @importFrom AcidGenerics metricsPerSample
-#' @usage metricsPerSample(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-18.
 `metrics,SummarizedExperiment` <-  # nolint
     function(object, return = c("tbl_df", "DataFrame")) {

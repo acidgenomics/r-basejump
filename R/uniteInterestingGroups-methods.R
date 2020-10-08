@@ -20,15 +20,6 @@ NULL
 
 
 
-#' @rdname uniteInterestingGroups
-#' @name uniteInterestingGroups
-#' @importFrom AcidGenerics uniteInterestingGroups
-#' @usage uniteInterestingGroups(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-22.
 `uniteInterestingGroups,DataFrame` <-  # nolint
     function(object, interestingGroups) {

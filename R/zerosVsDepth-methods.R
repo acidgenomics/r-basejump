@@ -18,15 +18,6 @@ NULL
 
 
 
-#' @rdname zerosVsDepth
-#' @name zerosVsDepth
-#' @importFrom AcidGenerics zerosVsDepth
-#' @usage zerosVsDepth(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-22.
 `zerosVsDepth,matrix` <-  # nolint
     function(object) {

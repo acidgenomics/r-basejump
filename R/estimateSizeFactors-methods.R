@@ -79,15 +79,6 @@ NULL
 
 
 
-#' @rdname estimateSizeFactors
-#' @name estimateSizeFactors
-#' @importFrom BiocGenerics estimateSizeFactors
-#' @usage estimateSizeFactors(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-01-20.
 .librarySizeFactors <-  # nolint
     function(

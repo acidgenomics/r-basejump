@@ -26,15 +26,6 @@ NULL
 
 
 
-#' @rdname cell2sample
-#' @name cell2sample
-#' @importFrom AcidGenerics cell2sample
-#' @usage cell2sample(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-22.
 `cell2sample,SingleCellExperiment` <-  # nolint
     function(

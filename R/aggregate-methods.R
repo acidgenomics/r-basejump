@@ -58,15 +58,6 @@ NULL
 
 
 
-#' @rdname aggregate
-#' @name aggregate
-#' @importFrom S4Vectors aggregate
-#' @usage aggregate(x, ...)
-#' @export
-NULL
-
-
-
 ## Using the `stats::aggregate.data.frame()` S3 method internally here.
 ## Updated 2020-05-22.
 `aggregate,matrix` <-  # nolint

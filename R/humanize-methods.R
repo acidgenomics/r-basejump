@@ -27,15 +27,6 @@ NULL
 
 
 
-#' @rdname humanize
-#' @name humanize
-#' @importFrom AcidGenerics humanize
-#' @usage humanize(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-01-20.
 `humanize,SummarizedExperiment` <-  # nolint
     function(object) {

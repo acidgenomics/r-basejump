@@ -26,14 +26,6 @@ NULL
 
 
 
-#' @rdname tpm
-#' @name tpm
-#' @importFrom SingleCellExperiment tpm
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-06.
 `tpm,SummarizedExperiment` <-  # nolint
     function(object) {

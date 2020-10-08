@@ -26,22 +26,6 @@ NULL
 
 
 
-#' @rdname counts
-#' @name counts
-#' @importFrom BiocGenerics counts
-#' @usage counts(object, ...)
-#' @export
-NULL
-
-#' @rdname counts
-#' @name counts<-
-#' @importFrom BiocGenerics counts<-
-#' @usage counts(object, ...) <- value
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-06.
 `counts,SummarizedExperiment` <-  # nolint
     function(object) {
