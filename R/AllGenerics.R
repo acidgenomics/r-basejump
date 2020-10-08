@@ -273,28 +273,6 @@ setGeneric(
 
 
 
-#' @rdname makeSingleCellExperiment
-#' @export
-setGeneric(
-    name = "makeSingleCellExperiment",
-    def = function(assays, ...) {
-        standardGeneric("makeSingleCellExperiment")
-    }
-)
-
-
-
-#' @rdname makeSummarizedExperiment
-#' @export
-setGeneric(
-    name = "makeSummarizedExperiment",
-    def = function(assays, ...) {
-        standardGeneric("makeSummarizedExperiment")
-    }
-)
-
-
-
 #' @rdname mapGenes
 #' @name mapGenesToRownames
 #' @importFrom AcidGenerics mapGenesToRownames

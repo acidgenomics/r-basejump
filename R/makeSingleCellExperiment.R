@@ -1,9 +1,9 @@
 #' Make a SingleCellExperiment object
 #'
-#' @name makeSingleCellExperiment
-#' @include makeSummarizedExperiment-methods.R
 #' @inherit makeSummarizedExperiment
-#' @note Updated 2020-02-24.
+#'
+#' @export
+#' @note Updated 2020-10-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -32,13 +32,8 @@
 #'     reducedDims = reducedDims
 #' )
 #' print(x)
-NULL
-
-
-
-## Updated 2019-08-27.
-`makeSingleCellExperiment,SimpleList` <- function(  # nolint
-    assays,
+makeSingleCellExperiment <- function(
+    assays = SimpleList(),
     rowRanges = GRangesList(),
     colData = DataFrame(),
     metadata = list(),
@@ -48,7 +43,6 @@ NULL
     assert(
         isAny(reducedDims, c("SimpleList", "list", "NULL"))
     )
-    ## Coerce reducedDims to SimpleList, for consistency.
     if (!is(reducedDims, "SimpleList")) {
         reducedDims <- SimpleList(reducedDims)
     }
@@ -57,8 +51,6 @@ NULL
     if (hasLength(reducedDims)) {
         assert(hasValidNames(reducedDims))
     }
-    ## Make SummarizedExperiment first.
-    ## Supports automatic resizing of rowRanges and helps slot FASTA spike-ins.
     se <- makeSummarizedExperiment(
         assays = assays,
         rowRanges = rowRanges,
@@ -66,46 +58,19 @@ NULL
         metadata = metadata,
         transgeneNames = transgeneNames
     )
-    ## SCE constructor currently errors on empty rowRanges.
+    assert(is(se, "SummarizedExperiment"))
+    validObject(se)
     rowRanges <- rowRanges(se)
-    if (!hasLength(rowRanges)) {
-        rowRanges <- emptyRanges(names = rownames(se))
-    }
-    ## Then coerce to SingleCellExperiment.
-    ## Note that `as` method isn't currently returning valid.
-    sce <- SingleCellExperiment(
+    args <- list(
         assays = assays(se),
         rowRanges = rowRanges,
         colData = colData(se),
         metadata = metadata(se),
         reducedDims = reducedDims
     )
+    args <- Filter(f = Negate(is.null), x = args)
+    sce <- do.call(what = SingleCellExperiment, args = args)
+    assert(is(sce, "SingleCellExperiment"))
     validObject(sce)
     sce
 }
-
-
-
-#' @rdname makeSingleCellExperiment
-#' @export
-setMethod(
-    f = "makeSingleCellExperiment",
-    signature = signature(assays = "SimpleList"),
-    definition = `makeSingleCellExperiment,SimpleList`
-)
-
-
-
-## Updated 2019-08-07.
-`makeSingleCellExperiment,list` <-  # nolint
-    `makeSingleCellExperiment,SimpleList`
-
-
-
-#' @rdname makeSingleCellExperiment
-#' @export
-setMethod(
-    f = "makeSingleCellExperiment",
-    signature = signature(assays = "list"),
-    definition = `makeSingleCellExperiment,list`
-)
