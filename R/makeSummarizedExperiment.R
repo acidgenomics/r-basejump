@@ -1,7 +1,3 @@
-## FIXME CONVERT TO STANDARD FUNCTION.
-
-
-
 #' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
