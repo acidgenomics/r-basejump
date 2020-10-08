@@ -1,3 +1,10 @@
+## basejump 0.13.1 (2020-10-07)
+
+### Minor changes
+
+- Reworked `makeSummarizedExperiment` and `makeSingleCellExperiment` generators
+  to generate empty objects without requiring any assays to be defined.
+
 ## basejump 0.13.0 (2020-10-05)
 
 Migrated some functions to AcidBase, AcidGenomes, AcidPlyr, and pipette
