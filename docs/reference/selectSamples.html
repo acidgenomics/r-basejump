@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.2</span>
       </span>
     </div>
 
@@ -123,7 +123,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Select samples</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/selectSamples-methods.R'><code>R/selectSamples-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/selectSamples-methods.R'><code>R/selectSamples-methods.R</code></a></small>
     <div class="hidden name"><code>selectSamples.Rd</code></div>
     </div>
 
@@ -216,8 +216,10 @@ identifiers for columns and gene identifiers for rows.</p>
 #&gt; dim: 500 1 
 #&gt; metadata(3): version date interestingGroups
 #&gt; assays(1): counts
-#&gt; rownames(500): gene001 gene002 ... gene499 gene500
-#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
+#&gt; rownames(500): gene001 gene002 ... gene499
+#&gt;   gene500
+#&gt; rowData names(8): broadClass description ...
+#&gt;   geneName seqCoordSystem
 #&gt; colnames(1): sample01
 #&gt; colData names(1): condition</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
@@ -231,9 +233,12 @@ identifiers for columns and gene identifiers for rows.</p>
 #&gt; dim: 500 53 
 #&gt; metadata(2): date selectSamples
 #&gt; assays(1): counts
-#&gt; rownames(500): gene001 gene002 ... gene499 gene500
-#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
-#&gt; colnames(53): cell001 cell003 ... cell097 cell098
+#&gt; rownames(500): gene001 gene002 ... gene499
+#&gt;   gene500
+#&gt; rowData names(8): broadClass description ...
+#&gt;   geneName seqCoordSystem
+#&gt; colnames(53): cell001 cell003 ... cell097
+#&gt;   cell098
 #&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):
 #&gt; altExpNames(0):</div></span></pre>

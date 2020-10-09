@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.2</span>
       </span>
     </div>
 
@@ -123,7 +123,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Counts</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/counts-methods.R'><code>R/counts-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/counts-methods.R'><code>R/counts-methods.R</code></a></small>
     <div class="hidden name"><code>counts.Rd</code></div>
     </div>
 
@@ -178,27 +178,48 @@ defined in <code>assayNames</code>.</p>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>counts</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     sample01         sample02          sample03          sample04      
-#&gt;  Min.   :  0.00   Min.   :   0.00   Min.   :   0.00   Min.   :   0.00  
-#&gt;  1st Qu.:  4.00   1st Qu.:   5.00   1st Qu.:   4.00   1st Qu.:   4.00  
-#&gt;  Median : 17.00   Median :  15.00   Median :  14.00   Median :  15.00  
-#&gt;  Mean   : 41.76   Mean   :  45.26   Mean   :  42.95   Mean   :  43.41  
-#&gt;  3rd Qu.: 41.25   3rd Qu.:  48.25   3rd Qu.:  44.25   3rd Qu.:  45.00  
-#&gt;  Max.   :719.00   Max.   :1407.00   Max.   :1301.00   Max.   :1658.00  
-#&gt;     sample05          sample06          sample07          sample08      
-#&gt;  Min.   :   0.00   Min.   :   0.00   Min.   :   0.00   Min.   :   0.00  
-#&gt;  1st Qu.:   4.00   1st Qu.:   4.00   1st Qu.:   3.75   1st Qu.:   3.00  
-#&gt;  Median :  15.00   Median :  16.00   Median :  15.00   Median :  16.00  
-#&gt;  Mean   :  45.93   Mean   :  45.36   Mean   :  54.74   Mean   :  57.66  
-#&gt;  3rd Qu.:  46.00   3rd Qu.:  49.25   3rd Qu.:  53.25   3rd Qu.:  56.00  
-#&gt;  Max.   :1102.00   Max.   :1257.00   Max.   :1167.00   Max.   :1285.00  
-#&gt;     sample09          sample10          sample11          sample12      
-#&gt;  Min.   :   0.00   Min.   :   0.00   Min.   :   0.00   Min.   :   0.00  
-#&gt;  1st Qu.:   3.00   1st Qu.:   4.00   1st Qu.:   4.00   1st Qu.:   3.75  
-#&gt;  Median :  15.00   Median :  15.00   Median :  15.50   Median :  17.00  
-#&gt;  Mean   :  56.08   Mean   :  57.66   Mean   :  57.02   Mean   :  59.53  
-#&gt;  3rd Qu.:  55.25   3rd Qu.:  56.75   3rd Qu.:  53.25   3rd Qu.:  57.25  
-#&gt;  Max.   :1249.00   Max.   :1024.00   Max.   :1081.00   Max.   :1385.00  </div></pre>
+</div><div class='output co'>#&gt;     sample01         sample02      
+#&gt;  Min.   :  0.00   Min.   :   0.00  
+#&gt;  1st Qu.:  4.00   1st Qu.:   5.00  
+#&gt;  Median : 17.00   Median :  15.00  
+#&gt;  Mean   : 41.76   Mean   :  45.26  
+#&gt;  3rd Qu.: 41.25   3rd Qu.:  48.25  
+#&gt;  Max.   :719.00   Max.   :1407.00  
+#&gt;     sample03          sample04      
+#&gt;  Min.   :   0.00   Min.   :   0.00  
+#&gt;  1st Qu.:   4.00   1st Qu.:   4.00  
+#&gt;  Median :  14.00   Median :  15.00  
+#&gt;  Mean   :  42.95   Mean   :  43.41  
+#&gt;  3rd Qu.:  44.25   3rd Qu.:  45.00  
+#&gt;  Max.   :1301.00   Max.   :1658.00  
+#&gt;     sample05          sample06      
+#&gt;  Min.   :   0.00   Min.   :   0.00  
+#&gt;  1st Qu.:   4.00   1st Qu.:   4.00  
+#&gt;  Median :  15.00   Median :  16.00  
+#&gt;  Mean   :  45.93   Mean   :  45.36  
+#&gt;  3rd Qu.:  46.00   3rd Qu.:  49.25  
+#&gt;  Max.   :1102.00   Max.   :1257.00  
+#&gt;     sample07          sample08      
+#&gt;  Min.   :   0.00   Min.   :   0.00  
+#&gt;  1st Qu.:   3.75   1st Qu.:   3.00  
+#&gt;  Median :  15.00   Median :  16.00  
+#&gt;  Mean   :  54.74   Mean   :  57.66  
+#&gt;  3rd Qu.:  53.25   3rd Qu.:  56.00  
+#&gt;  Max.   :1167.00   Max.   :1285.00  
+#&gt;     sample09          sample10      
+#&gt;  Min.   :   0.00   Min.   :   0.00  
+#&gt;  1st Qu.:   3.00   1st Qu.:   4.00  
+#&gt;  Median :  15.00   Median :  15.00  
+#&gt;  Mean   :  56.08   Mean   :  57.66  
+#&gt;  3rd Qu.:  55.25   3rd Qu.:  56.75  
+#&gt;  Max.   :1249.00   Max.   :1024.00  
+#&gt;     sample11          sample12      
+#&gt;  Min.   :   0.00   Min.   :   0.00  
+#&gt;  1st Qu.:   4.00   1st Qu.:   3.75  
+#&gt;  Median :  15.50   Median :  17.00  
+#&gt;  Mean   :  57.02   Mean   :  59.53  
+#&gt;  3rd Qu.:  53.25   3rd Qu.:  57.25  
+#&gt;  Max.   :1081.00   Max.   :1385.00  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

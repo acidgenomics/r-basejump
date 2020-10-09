@@ -76,7 +76,7 @@ of transgenes and spike-ins." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.2</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@ of transgenes and spike-ins." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make a SingleCellExperiment object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/makeSingleCellExperiment-methods.R'><code>R/makeSingleCellExperiment-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/makeSingleCellExperiment.R'><code>R/makeSingleCellExperiment.R</code></a></small>
     <div class="hidden name"><code>makeSingleCellExperiment.Rd</code></div>
     </div>
 
@@ -135,21 +135,8 @@ automatic subsetting for row and column data, as well as automatic handling
 of transgenes and spike-ins.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeSingleCellExperiment</span><span class='op'>(</span><span class='va'>assays</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='co'># S4 method for SimpleList</span>
-<span class='fu'>makeSingleCellExperiment</span><span class='op'>(</span>
-  <span class='va'>assays</span>,
-  rowRanges <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span><span class='op'>(</span><span class='op'>)</span>,
-  colData <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span><span class='op'>(</span><span class='op'>)</span>,
-  metadata <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
-  reducedDims <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span><span class='op'>(</span><span class='op'>)</span>,
-  transgeneNames <span class='op'>=</span> <span class='cn'>NULL</span>
-<span class='op'>)</span>
-
-<span class='co'># S4 method for list</span>
-<span class='fu'>makeSingleCellExperiment</span><span class='op'>(</span>
-  <span class='va'>assays</span>,
+    <pre class="usage"><span class='fu'>makeSingleCellExperiment</span><span class='op'>(</span>
+  assays <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/SimpleList-class.html'>SimpleList</a></span><span class='op'>(</span><span class='op'>)</span>,
   rowRanges <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span><span class='op'>(</span><span class='op'>)</span>,
   colData <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span><span class='op'>(</span><span class='op'>)</span>,
   metadata <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
@@ -165,10 +152,6 @@ of transgenes and spike-ins.</p>
       <td><p><code>SimpleList</code>.
 Count matrices, which must have matching dimensions. Counts can be passed
 in as either a dense matrix (<code>matrix</code>) or sparse matrix (<code>sparseMatrix</code>).</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>rowRanges</th>
@@ -205,7 +188,7 @@ Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).</p><
     <p><code>SingleCellExperiment</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2020-02-24.</p>
+    <p>Updated 2020-10-07.</p>
     <h2 class="hasAnchor" id="session-information"><a class="anchor" href="#session-information"></a>Session information</h2>
 
     
@@ -251,9 +234,12 @@ session information into the <code>metadata</code> slot by default:</p><ul>
 #&gt; dim: 500 100 
 #&gt; metadata(3): date sessionInfo wd
 #&gt; assays(1): counts
-#&gt; rownames(500): gene001 gene002 ... gene499 gene500
-#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
-#&gt; colnames(100): cell001 cell002 ... cell099 cell100
+#&gt; rownames(500): gene001 gene002 ... gene499
+#&gt;   gene500
+#&gt; rowData names(8): broadClass description ...
+#&gt;   geneName seqCoordSystem
+#&gt; colnames(100): cell001 cell002 ... cell099
+#&gt;   cell100
 #&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):
 #&gt; altExpNames(0):</div></pre>

@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.2</span>
       </span>
     </div>
 
@@ -123,7 +123,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Humanize an R object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/humanize-methods.R'><code>R/humanize-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/humanize-methods.R'><code>R/humanize-methods.R</code></a></small>
     <div class="hidden name"><code>humanize.Rd</code></div>
     </div>
 
@@ -173,33 +173,41 @@ should only be called prior to writing files to disk.</p>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>, <span class='va'>head</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "gene001" "gene002" "gene003" "gene004" "gene005" "gene006"
+#&gt; [1] "gene001" "gene002" "gene003" "gene004"
+#&gt; [5] "gene005" "gene006"
 #&gt; 
 #&gt; [[2]]
-#&gt; [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
+#&gt; [1] "sample01" "sample02" "sample03" "sample04"
+#&gt; [5] "sample05" "sample06"
 #&gt; </div><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>humanize</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'><span style='color: #BBBB00;'>!</span><span> Returning with the sample names unmodified.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='va'>head</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     
+#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"   
+#&gt; [5] "C1orf112" "FGR"     
 #&gt; 
 #&gt; [[2]]
-#&gt; [1] "sample01" "sample02" "sample03" "sample04" "sample05" "sample06"
+#&gt; [1] "sample01" "sample02" "sample03" "sample04"
+#&gt; [5] "sample05" "sample06"
 #&gt; </div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>, <span class='va'>head</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "gene001" "gene002" "gene003" "gene004" "gene005" "gene006"
+#&gt; [1] "gene001" "gene002" "gene003" "gene004"
+#&gt; [5] "gene005" "gene006"
 #&gt; 
 #&gt; [[2]]
-#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"
+#&gt; [1] "cell001" "cell002" "cell003" "cell004"
+#&gt; [5] "cell005" "cell006"
 #&gt; </div><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>humanize</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>!</span><span> </span><span style='color: #000000;background-color: #BBBBBB;'>`SingleCellExperiment`</span><span> contains cells instead of samples. Returning with column names unmodified.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='va'>head</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>!</span><span> </span><span style='color: #C6C6C6;background-color: #262626;'>`SingleCellExperiment`</span><span> contains cells instead of samples. Returning with column names unmodified.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='va'>head</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     
+#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"   
+#&gt; [5] "C1orf112" "FGR"     
 #&gt; 
 #&gt; [[2]]
-#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"
+#&gt; [1] "cell001" "cell002" "cell003" "cell004"
+#&gt; [5] "cell005" "cell006"
 #&gt; </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
