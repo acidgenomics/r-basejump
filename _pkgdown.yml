@@ -37,8 +37,7 @@ reference:
       - nonzeroRowsAndCols
   - title: Import/export
     contents:
-      - starts_with("import")
-      - transmit
+      - importSampleData
   - title: Metadata
     contents:
       - headtail

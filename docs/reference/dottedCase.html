@@ -76,7 +76,7 @@ as that can introduce conflicts with base functions." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.2</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@ as that can introduce conflicts with base functions." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Dotted case</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/dottedCase-methods.R'><code>R/dottedCase-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/dottedCase-methods.R'><code>R/dottedCase-methods.R</code></a></small>
     <div class="hidden name"><code>dottedCase.Rd</code></div>
     </div>
 
@@ -251,10 +251,12 @@ returns unchanged, except for <code>character</code> or <code>vector</code> clas
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>syntactic</span>, package <span class='op'>=</span> <span class='st'>"AcidTest"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>syntactic</span>, <span class='va'>dottedCase</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $character
-#&gt;  [1] "percent.gc"        "x10um"             "x5.3.bias"        
-#&gt;  [4] "x5prime"           "g2m.score"         "hello.world"      
-#&gt;  [7] "hello.world"       "mazda.rx4"         "n.count"          
-#&gt; [10] "rnai.clones"       "tx2gene"           "tx2.gene.id"      
+#&gt;  [1] "percent.gc"        "x10um"            
+#&gt;  [3] "x5.3.bias"         "x5prime"          
+#&gt;  [5] "g2m.score"         "hello.world"      
+#&gt;  [7] "hello.world"       "mazda.rx4"        
+#&gt;  [9] "n.count"           "rnai.clones"      
+#&gt; [11] "tx2gene"           "tx2.gene.id"      
 #&gt; [13] "worfdb.html.remap" "x123"             
 #&gt; 
 #&gt; $character_named
