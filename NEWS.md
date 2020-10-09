@@ -1,3 +1,9 @@
+## basejump 0.13.2 (2020-10-09)
+
+### Minor changes
+
+- Migrated `transmit` to pipette package. Still reexporting here.
+
 ## basejump 0.13.1 (2020-10-07)
 
 ### Minor changes

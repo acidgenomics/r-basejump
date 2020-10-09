@@ -1,4 +1,4 @@
-#' Reexport pipette S4 coercion methods
+#' Reexport S4 coercion methods
 #'
 #' @importFrom methods coerce
 #' @exportMethod coerce

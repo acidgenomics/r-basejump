@@ -59,6 +59,11 @@ threshold prior to the melt operation.
 \item{trans}{\code{character(1)}.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{DataFrame}.
@@ -67,13 +72,13 @@ to melting, if desired. Use \code{"identity"} to return unmodified (default).}
 Unpivot column data from wide format to long format.
 }
 \note{
-Updated 2020-10-07.
+Updated 2020-10-09.
 }
 \examples{
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 
 ## SummarizedExperiment ====
