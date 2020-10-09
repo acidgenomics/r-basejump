@@ -144,6 +144,8 @@
 \alias{makeWords}
 \alias{snake}
 \alias{upperCamel}
+\alias{column_to_rownames}
+\alias{rownames_to_column}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -174,6 +176,6 @@ below to see their documentation.
 
   \item{syntactic}{\code{\link[syntactic:deprecated]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic:deprecated]{dotted}}, \code{\link[syntactic:deprecated]{kebab}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic:deprecated]{snake}}, \code{\link[syntactic:deprecated]{upperCamel}}}
 
-  \item{tibble}{\code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble:rownames]{column_to_rownames}}, \code{\link[tibble:rownames]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 }}
 
