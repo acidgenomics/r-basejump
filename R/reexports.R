@@ -1,30 +1,3 @@
-#' @importClassesFrom AcidGenomes Ensembl2Entrez
-#' @exportClass Ensembl2Entrez
-#'
-#' @importClassesFrom AcidGenomes Entrez2Ensembl
-#' @exportClass Entrez2Ensembl
-#'
-#' @importClassesFrom AcidGenomes Gene2Symbol
-#' @exportClass Gene2Symbol
-#'
-#' @importClassesFrom AcidGenomes HGNC
-#' @exportClass HGNC
-#'
-#' @importClassesFrom AcidGenomes HGNC2Ensembl
-#' @exportClass HGNC2Ensembl
-#'
-#' @importClassesFrom AcidGenomes MGI2Ensembl
-#' @exportClass MGI2Ensembl
-#'
-#' @importClassesFrom AcidGenomes Protein2Gene
-#' @exportClass Protein2Gene
-#'
-#' @importClassesFrom AcidGenomes Tx2Gene
-#' @exportClass Tx2Gene
-NULL
-
-
-
 #' @importFrom AcidBase basenameSansExt
 #' @export
 AcidBase::basenameSansExt

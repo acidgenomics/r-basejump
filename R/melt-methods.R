@@ -1,13 +1,16 @@
 #' @name melt
 #' @inherit AcidPlyr::melt
 #'
-#' @note Updated 2020-10-07.
+#' @note Updated 2020-10-09.
+#'
+#' @inheritParams AcidRoxygen::params
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
