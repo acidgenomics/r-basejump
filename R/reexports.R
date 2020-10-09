@@ -558,6 +558,10 @@ pipette::sanitizePercent
 #' @export
 pipette::saveData
 
+#' @importFrom pipette transmit
+#' @export
+pipette::transmit
+
 
 
 #' @importFrom syntactic camel
