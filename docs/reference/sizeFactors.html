@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.3</span>
       </span>
     </div>
 
@@ -187,19 +187,15 @@ Names correspond to object column names.</p>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='fu'><a href='estimateSizeFactors.html'>estimateSizeFactors</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>→ Calculating library size factors using <span style='color: #0000BB;'>mean-ratio</span><span> method.</span></div><div class='output co'>#&gt; <span class='message'>→ Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>sizeFactors</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  sample01  sample02  sample03  sample04  sample05 
-#&gt; 0.8251116 0.8941871 0.8485451 0.8576735 0.9074252 
-#&gt;  sample06 
-#&gt; 0.8962024 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'>sizeFactors</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  sample01  sample02  sample03  sample04  sample05  sample06 
+#&gt; 0.8251116 0.8941871 0.8485451 0.8576735 0.9074252 0.8962024 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'>sizeFactors</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 1</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='fu'><a href='estimateSizeFactors.html'>estimateSizeFactors</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>→ Calculating library size factors using </span><span style='color: #0000BB;'>mean-ratio</span><span> method.</span></div><div class='output co'>#&gt; <span class='message'>→ Centering size factors at 1.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>sizeFactors</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   cell001   cell002   cell003   cell004   cell005 
-#&gt; 0.8126923 1.2351486 1.2943494 1.0557070 1.0792347 
-#&gt;   cell006 
-#&gt; 0.8452250 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'>sizeFactors</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   cell001   cell002   cell003   cell004   cell005   cell006 
+#&gt; 0.8126923 1.2351486 1.2943494 1.0557070 1.0792347 0.8452250 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'>sizeFactors</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 1</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

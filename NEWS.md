@@ -1,3 +1,10 @@
+## basejump 0.13.3 (2020-11-24)
+
+### Minor changes
+
+- Updated dependency version cutoffs. Applies primarily to cli and magrittr.
+- Now rexporting new `sem` function from AcidBase.
+
 ## basejump 0.13.2 (2020-10-09)
 
 ### Minor changes

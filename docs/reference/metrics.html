@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.3</span>
       </span>
     </div>
 
@@ -227,9 +227,9 @@ defined in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/Summarize
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> sample10 B          </span><span style='text-decoration: underline;'>28</span><span>829      447   </span><span style='text-decoration: underline;'>28</span><span>626    </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>11</span><span> sample11 B          </span><span style='text-decoration: underline;'>28</span><span>508      448   </span><span style='text-decoration: underline;'>28</span><span>340    </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>12</span><span> sample12 B          </span><span style='text-decoration: underline;'>29</span><span>765      447   </span><span style='text-decoration: underline;'>29</span><span>523    </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 4 more variables:</span><span>
-#&gt; </span><span style='color: #949494;'>#   log10FeaturesPerCount </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mitoRatio </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   sampleName </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span style='color: #949494;'>, interestingGroups </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span></div><div class='input'>
+#&gt; </span><span style='color: #949494;'># … with 4 more variables: log10FeaturesPerCount </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   mitoRatio </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, sampleName </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   interestingGroups </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='fu'><a href='calculateMetrics.html'>calculateMetrics</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
@@ -253,12 +253,11 @@ defined in <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/Summarize
 #&gt; </span><span style='color: #949494;'>#   sampleName </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span style='color: #949494;'>, interestingGroups </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span></div><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>metricsPerSample</span><span class='op'>(</span><span class='va'>object</span>, fun <span class='op'>=</span> <span class='st'>"mean"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>→ Calculating mean per sample.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 9</span><span>
-#&gt;   sampleID sampleName interestingGrou… nCount
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sample1  sample1    sample1          </span><span style='text-decoration: underline;'>60</span><span>587.
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> sample2  sample2    sample2          </span><span style='text-decoration: underline;'>54</span><span>304.
-#&gt; </span><span style='color: #949494;'># … with 5 more variables: nFeature </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   nCoding </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nMito </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt;   sampleID sampleName interestingGrou… nCount nFeature nCoding
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sample1  sample1    sample1          </span><span style='text-decoration: underline;'>60</span><span>587.     261.  </span><span style='text-decoration: underline;'>60</span><span>495.
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> sample2  sample2    sample2          </span><span style='text-decoration: underline;'>54</span><span>304.     260.  </span><span style='text-decoration: underline;'>54</span><span>213 
+#&gt; </span><span style='color: #949494;'># … with 3 more variables: nMito </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   log10FeaturesPerCount </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mitoRatio </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
