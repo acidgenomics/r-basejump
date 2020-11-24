@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.3</span>
       </span>
     </div>
 
@@ -176,7 +176,7 @@
     <div class='dont-index'>
 <ul>
 <li><p><code><a href='https://rdrr.io/pkg/BiocGenerics/man/combine.html'>BiocGenerics::combine()</a></code>.</p></li>
-<li><p><code><a href='https://rdrr.io/pkg/Matrix.utils/man/merge.Matrix.html'>help("merge.Matrix", "Matrix.utils")</a></code>.</p></li>
+<li><p><code>help("merge.Matrix", "Matrix.utils")</code>.</p></li>
 </ul>
 </div>
 
@@ -228,15 +228,11 @@
 #&gt; sample24         B   sample24                 B</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 500 24 
-#&gt; metadata(4): version date interestingGroups
-#&gt;   combine
+#&gt; metadata(4): version date interestingGroups combine
 #&gt; assays(1): counts
-#&gt; rownames(500): gene001 gene002 ... gene499
-#&gt;   gene500
-#&gt; rowData names(8): broadClass description ...
-#&gt;   geneName seqCoordSystem
-#&gt; colnames(24): sample01 sample02 ... sample23
-#&gt;   sample24
+#&gt; rownames(500): gene001 gene002 ... gene499 gene500
+#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
+#&gt; colnames(24): sample01 sample02 ... sample23 sample24
 #&gt; colData names(1): condition</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
@@ -271,12 +267,9 @@
 #&gt; dim: 500 200 
 #&gt; metadata(2): date combine
 #&gt; assays(1): counts
-#&gt; rownames(500): gene001 gene002 ... gene499
-#&gt;   gene500
-#&gt; rowData names(8): broadClass description ...
-#&gt;   geneName seqCoordSystem
-#&gt; colnames(200): cell0001 cell0002 ... cell0199
-#&gt;   cell0200
+#&gt; rownames(500): gene001 gene002 ... gene499 gene500
+#&gt; rowData names(8): broadClass description ... geneName seqCoordSystem
+#&gt; colnames(200): cell0001 cell0002 ... cell0199 cell0200
 #&gt; colData names(1): sampleID
 #&gt; reducedDimNames(0):
 #&gt; altExpNames(0):</div></span></pre>

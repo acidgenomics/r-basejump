@@ -82,6 +82,10 @@ AcidBase::realpath
 #' @export
 AcidBase::requireNamespaces
 
+#' @importFrom AcidBase sem
+#' @export
+AcidBase::sem
+
 #' @importFrom AcidBase showSlotInfo
 #' @export
 AcidBase::showSlotInfo
@@ -586,6 +590,14 @@ syntactic::snake
 syntactic::upperCamel
 
 
+
+#' @importFrom tibble column_to_rownames
+#' @export
+tibble::column_to_rownames
+
+#' @importFrom tibble rownames_to_column
+#' @export
+tibble::rownames_to_column
 
 #' @importFrom tibble tibble
 #' @export
