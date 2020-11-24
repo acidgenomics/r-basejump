@@ -82,6 +82,10 @@ AcidBase::realpath
 #' @export
 AcidBase::requireNamespaces
 
+#' @importFrom AcidBase sem
+#' @export
+AcidBase::sem
+
 #' @importFrom AcidBase showSlotInfo
 #' @export
 AcidBase::showSlotInfo
