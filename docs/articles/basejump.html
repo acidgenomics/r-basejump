@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.4</span>
       </span>
     </div>
 
@@ -77,13 +77,14 @@
 
       
 
-      </header><script src="basejump_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="basejump_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="basejump_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="basejump_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">25 September 2020</h4>
+            <h4 class="date">4 December 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/acidgenomics/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -99,13 +100,12 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://basejump.acidgenomics.com">basejump</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">SummarizedExperiment</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(acid.test = <span class="fl">TRUE</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">RangedSummarizedExperiment</span>, package = <span class="st">"acidtest"</span>)
-<span class="kw">rse</span> <span class="op">&lt;-</span> <span class="kw">RangedSummarizedExperiment</span>
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://basejump.acidgenomics.com/">basejump</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/SummarizedExperiment">SummarizedExperiment</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>acid.test <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">RangedSummarizedExperiment</span>, package <span class="op">=</span> <span class="st">"AcidTest"</span><span class="op">)</span>
+<span class="va">rse</span> <span class="op">&lt;-</span> <span class="va">RangedSummarizedExperiment</span></code></pre></div>
 </div>
 <div id="the-s4-object-system" class="section level1">
 <h1 class="hasAnchor">
@@ -128,12 +128,11 @@
 <div id="r-session-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#r-session-information" class="anchor"></a>R session information</h1>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">utils</span>::<span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()
-</pre></div>
-<pre><code>## R version 4.0.2 (2020-06-22)
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## R version 4.0.3 (2020-10-10)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
-## Running under: macOS Catalina 10.15.6
+## Running under: macOS Catalina 10.15.7
 ## 
 ## Matrix products: default
 ## BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -147,65 +146,66 @@
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] SummarizedExperiment_1.18.2 DelayedArray_0.14.1        
-##  [3] matrixStats_0.56.0          Biobase_2.48.0             
-##  [5] GenomicRanges_1.40.0        GenomeInfoDb_1.24.2        
-##  [7] IRanges_2.22.2              S4Vectors_0.26.1           
-##  [9] BiocGenerics_0.34.0         basejump_0.12.15           
-## [11] BiocStyle_2.16.0           
+##  [1] SummarizedExperiment_1.20.0 Biobase_2.50.0             
+##  [3] GenomicRanges_1.42.0        GenomeInfoDb_1.26.1        
+##  [5] IRanges_2.24.0              S4Vectors_0.28.0           
+##  [7] BiocGenerics_0.36.0         MatrixGenerics_1.2.0       
+##  [9] matrixStats_0.57.0          basejump_0.13.4            
+## [11] BiocStyle_2.18.1           
 ## 
 ## loaded via a namespace (and not attached):
-##   [1] ProtGenerics_1.20.0           bitops_1.0-6                 
+##   [1] ProtGenerics_1.22.0           bitops_1.0-6                 
 ##   [3] fs_1.5.0                      bit64_4.0.5                  
 ##   [5] progress_1.2.2                httr_1.4.2                   
-##   [7] rprojroot_1.3-2               syntactic_0.4.2              
-##   [9] tools_4.0.2                   backports_1.1.10             
-##  [11] R6_2.4.1                      colorspace_1.4-1             
+##   [7] rprojroot_2.0.2               syntactic_0.4.3              
+##   [9] tools_4.0.3                   R6_2.5.0                     
+##  [11] AcidGenerics_0.4.1            colorspace_2.0-0             
 ##  [13] lazyeval_0.2.2                DBI_1.1.0                    
-##  [15] withr_2.2.0                   tidyselect_1.1.0             
-##  [17] prettyunits_1.1.1             bit_4.0.4                    
-##  [19] curl_4.3                      compiler_4.0.2               
-##  [21] _0.3.12           cli_2.0.2                    
-##  [23] desc_1.2.0                    rtracklayer_1.48.0           
-##  [25] bookdown_0.20                 scales_1.1.1                 
-##  [27] AcidBase_0.1.14               readr_1.3.1                  
-##  [29] askpass_1.1                   rappdirs_0.3.1               
-##  [31] pkgdown_1.6.1                 systemfonts_0.3.1            
-##  [33] stringr_1.4.0                 digest_0.6.25                
-##  [35] Rsamtools_2.4.0               rmarkdown_2.3                
-##  [37] XVector_0.28.0                pkgconfig_2.0.3              
-##  [39] htmltools_0.5.0               sessioninfo_1.1.1            
-##  [41] dbplyr_1.4.4                  fastmap_1.0.1                
-##  [43] ensembldb_2.12.1              rlang_0.4.7                  
-##  [45] rstudioapi_0.11               RSQLite_2.2.0                
-##  [47] shiny_1.5.0                   generics_0.0.2               
-##  [49] vroom_1.3.1                   BiocParallel_1.22.0          
-##  [51] dplyr_1.0.2                   RCurl_1.98-1.2               
-##  [53] magrittr_1.5                  GenomeInfoDbData_1.2.3       
-##  [55] Matrix_1.2-18                 munsell_0.5.0                
-##  [57] Rcpp_1.0.5                    fansi_0.4.1                  
-##  [59] lifecycle_0.2.0               stringi_1.5.3                
-##  [61] yaml_2.2.1                    zlibbioc_1.34.0              
-##  [63] goalie_0.4.8                  BiocFileCache_1.12.1         
-##  [65] AnnotationHub_2.20.2          grid_4.0.2                   
-##  [67] blob_1.2.1                    promises_1.1.1               
-##  [69] crayon_1.3.4                  lattice_0.20-41              
-##  [71] Biostrings_2.56.0             GenomicFeatures_1.40.1       
-##  [73] hms_0.5.3                     pipette_0.4.14               
-##  [75] knitr_1.29                    pillar_1.4.6                 
-##  [77] biomaRt_2.44.1                XML_3.99-0.5                 
-##  [79] glue_1.4.2                    BiocVersion_3.11.1           
-##  [81] evaluate_0.14                 data.table_1.13.0            
-##  [83] BiocManager_1.30.10           vctrs_0.3.4                  
-##  [85] httpuv_1.5.4                  openssl_1.4.2                
-##  [87] purrr_0.3.4                   assertthat_0.2.1             
-##  [89] cpp11_0.2.1                   xfun_0.17                    
-##  [91] mime_0.9                      xtable_1.8-4                 
-##  [93] AnnotationFilter_1.12.0       later_1.1.0.1                
-##  [95] ragg_0.3.1                    SingleCellExperiment_1.10.1  
-##  [97] tibble_3.0.3                  GenomicAlignments_1.24.0     
-##  [99] AnnotationDbi_1.50.3          memoise_1.1.0                
-## [101] ellipsis_0.3.1                interactiveDisplayBase_1.26.3</code></pre>
+##  [15] withr_2.3.0                   prettyunits_1.1.1            
+##  [17] tidyselect_1.1.0              bit_4.0.4                    
+##  [19] curl_4.3                      compiler_4.0.3               
+##  [21] textshaping_0.2.1             cli_2.2.0                    
+##  [23] xml2_1.3.2                    desc_1.2.0                   
+##  [25] DelayedArray_0.16.0           rtracklayer_1.50.0           
+##  [27] bookdown_0.21                 scales_1.1.1                 
+##  [29] readr_1.4.0                   askpass_1.1                  
+##  [31] rappdirs_0.3.1                pkgdown_1.6.1                
+##  [33] systemfonts_0.3.2             stringr_1.4.0                
+##  [35] digest_0.6.27                 Rsamtools_2.6.0              
+##  [37] rmarkdown_2.5                 XVector_0.30.0               
+##  [39] pkgconfig_2.0.3               htmltools_0.5.0              
+##  [41] sessioninfo_1.1.1             AcidPlyr_0.1.4               
+##  [43] dbplyr_2.0.0                  fastmap_1.0.1                
+##  [45] ensembldb_2.14.0              rlang_0.4.9                  
+##  [47] RSQLite_2.2.1                 shiny_1.5.0                  
+##  [49] generics_0.1.0                vroom_1.3.2                  
+##  [51] BiocParallel_1.24.1           dplyr_1.0.2                  
+##  [53] RCurl_1.98-1.2                magrittr_2.0.1               
+##  [55] GenomeInfoDbData_1.2.4        Matrix_1.2-18                
+##  [57] munsell_0.5.0                 Rcpp_1.0.5                   
+##  [59] fansi_0.4.1                   lifecycle_0.2.0              
+##  [61] stringi_1.5.3                 yaml_2.2.1                   
+##  [63] zlibbioc_1.36.0               goalie_0.4.11                
+##  [65] BiocFileCache_1.14.0          AnnotationHub_2.22.0         
+##  [67] grid_4.0.3                    blob_1.2.1                   
+##  [69] promises_1.1.1                crayon_1.3.4                 
+##  [71] lattice_0.20-41               Biostrings_2.58.0            
+##  [73] GenomicFeatures_1.42.1        hms_0.5.3                    
+##  [75] pipette_0.4.19                knitr_1.30                   
+##  [77] pillar_1.4.7                  AcidGenomes_0.1.1            
+##  [79] AcidBase_0.2.4                biomaRt_2.46.0               
+##  [81] XML_3.99-0.5                  glue_1.4.2                   
+##  [83] BiocVersion_3.12.0            evaluate_0.14                
+##  [85] data.table_1.13.2             BiocManager_1.30.10          
+##  [87] vctrs_0.3.5                   httpuv_1.5.4                 
+##  [89] openssl_1.4.3                 purrr_0.3.4                  
+##  [91] assertthat_0.2.1              xfun_0.19                    
+##  [93] mime_0.9                      xtable_1.8-4                 
+##  [95] AnnotationFilter_1.14.0       later_1.1.0.1                
+##  [97] ragg_0.4.0                    SingleCellExperiment_1.12.0  
+##  [99] tibble_3.0.4                  GenomicAlignments_1.26.0     
+## [101] AnnotationDbi_1.52.0          memoise_1.1.0                
+## [103] ellipsis_0.3.1                interactiveDisplayBase_1.28.0</code></pre>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">

@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.4</span>
       </span>
     </div>
 
@@ -128,9 +128,9 @@
     <div id="basejump-0120-2020-01-20" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0120-2020-01-20" class="anchor"></a>basejump 0.12.0 (2020-01-20)</h2>
-<div id="major-changes-1" class="section level3">
+<div id="major-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Migrated functions from brio (now renamed to pipette), freerange, and transformer, in preparation for Bioconductor submission and reviews.</li>
 <li>Updated messages to utilize the cli package.</li>
@@ -140,16 +140,16 @@
     <div id="basejump-0121-2020-01-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0121-2020-01-30" class="anchor"></a>basejump 0.12.1 (2020-01-30)</h2>
-<div id="major-changes" class="section level3">
+<div id="major-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Reworked <code>aggregate</code>, <code>aggregateCols</code>, <code>aggregateRows</code> support to reflect internal migration away from Matrix.utils dependency.</li>
 </ul>
 </div>
-<div id="minor-changes-14" class="section level3">
+<div id="minor-changes-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-14" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-18" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>NAMESPACE fix for unexpected removal of Matrix.utils from CRAN. Now defining the previously imported aggregate.Matrix function directly here in basejump.</li>
 <li>
@@ -162,9 +162,9 @@
     <div id="basejump-0122-2020-02-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0122-2020-02-18" class="anchor"></a>basejump 0.12.2 (2020-02-18)</h2>
-<div id="minor-changes-13" class="section level3">
+<div id="minor-changes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-17" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrating <code>pseudobulk</code> methods to pointillism package. Rethinking the approach used here to work better with per-cluster aggregation operations. Will be updated in the next pointillism release.</li>
 </ul>
@@ -173,9 +173,9 @@
     <div id="basejump-0123-2020-02-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0123-2020-02-24" class="anchor"></a>basejump 0.12.3 (2020-02-24)</h2>
-<div id="minor-changes-12" class="section level3">
+<div id="minor-changes-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-12" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-16" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>makeSingleCellExperiment</code>, <code>makeSummarizedExperiment</code>: Removed <code>spikeNames</code> support due to a breaking change in SingleCellExperiment, which has removed <code>isSpike</code> in favor of <code>altExps</code>. Refer to the SingleCellExperiment documentation for updated current best practice for handling spike-in transcripts, which now requires slotting a separate SummarizedExperiment object containing things like ERCCs inside the main SingleCellExperiment.</li>
@@ -185,9 +185,9 @@
     <div id="basejump-0124-2020-03-15" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0124-2020-03-15" class="anchor"></a>basejump 0.12.4 (2020-03-15)</h2>
-<div id="minor-changes-11" class="section level3">
+<div id="minor-changes-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-11" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-15" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>matchEnsemblReleaseToURL</code>, <code>matchHumanOrthologs</code>: update unit tests to reflect Ensembl server migration, which has rendered Ensembl archives inaccessible via biomaRt until March 24th. Unit tests now check against current release instead of a pinned archive release.</li>
@@ -197,9 +197,9 @@
     <div id="basejump-0125-2020-05-11" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0125-2020-05-11" class="anchor"></a>basejump 0.12.5 (2020-05-11)</h2>
-<div id="minor-changes-10" class="section level3">
+<div id="minor-changes-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-10" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-14" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>importSampleData</code>: The <code>pipeline = "cpi"</code> option is now defunct. Use <code>pipeline = "none', sheet = 2L</code> for CPI samples.</li>
@@ -218,9 +218,9 @@
     <div id="basejump-0126-2020-05-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0126-2020-05-17" class="anchor"></a>basejump 0.12.6 (2020-05-17)</h2>
-<div id="minor-changes-9" class="section level3">
+<div id="minor-changes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>convertGenesToSymbols</code>: Added method support for <code>GRanges</code> class objects. Automatically sets names as unique gene symbols.</li>
@@ -234,9 +234,9 @@
     <div id="basejump-0127-2020-05-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0127-2020-05-22" class="anchor"></a>basejump 0.12.7 (2020-05-22)</h2>
-<div id="minor-changes-8" class="section level3">
+<div id="minor-changes-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-12" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>aggregate</code>, <code>aggregateCols</code>, <code>aggregateRows</code>: Relaxed assert checks on validity of dimnames, so we can use internally in acidgsea package, which needs to handle gene symbols containing syntactically invalid hyphens.</li>
@@ -246,9 +246,9 @@
     <div id="basejump-0128-2020-06-15" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0128-2020-06-15" class="anchor"></a>basejump 0.12.8 (2020-06-15)</h2>
-<div id="minor-changes-7" class="section level3">
+<div id="minor-changes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-11" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>autopadZeros</code>: Migrated character method support to syntactic package, since this is useful for low-level code run inside koopa.</li>
@@ -258,9 +258,9 @@
     <div id="basejump-0129-2020-07-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0129-2020-07-24" class="anchor"></a>basejump 0.12.9 (2020-07-24)</h2>
-<div id="minor-changes-6" class="section level3">
+<div id="minor-changes-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-10" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Maintenance release, updating minimum R dependency to 4.0.</li>
 </ul>
@@ -269,9 +269,9 @@
     <div id="basejump-01210-2020-08-04" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01210-2020-08-04" class="anchor"></a>basejump 0.12.10 (2020-08-04)</h2>
-<div id="minor-changes-5" class="section level3">
+<div id="minor-changes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code>alphaThreshold</code> and <code>lfcThreshold</code> methods to DESeqAnalysis package. These are not used in other packages and may not be generally applicable to <code>SummarizedExperiment</code> class, so rethinking here.</li>
 </ul>
@@ -280,11 +280,11 @@
     <div id="basejump-01211-2020-08-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01211-2020-08-13" class="anchor"></a>basejump 0.12.11 (2020-08-13)</h2>
-<div id="minor-changes-4" class="section level3">
+<div id="minor-changes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Now reexporting <code>requireNamespaces</code> from AcidBase package.</li>
+<li>Now reexporting <code>requireNamespaces</code> from acidbase package.</li>
 </ul>
 </div>
 </div>
@@ -305,11 +305,11 @@
     <div id="basejump-01213-2020-08-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01213-2020-08-25" class="anchor"></a>basejump 0.12.13 (2020-08-25)</h2>
-<div id="minor-changes-3" class="section level3">
+<div id="minor-changes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Migrated some globals to AcidBase package, for improved consistency.</li>
+<li>Migrated some globals to acidbase package, for improved consistency.</li>
 </ul>
 </div>
 </div>
@@ -346,9 +346,9 @@
 <code>makeProtein2GeneFromEnsembl</code>: New utility function that takes Ensembl protein identifiers as input, and returns corresponding gene identifiers and gene names (i.e. HUGO gene symbols).</li>
 </ul>
 </div>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reworked some internal code in <code>makeGRangesFromEnesmbl</code> to enable export of new <code>getEnsDb</code> function.</li>
 <li>Reworked internal handling of AnnotationHub and EnsDb metadata.</li>
@@ -360,24 +360,12 @@
     <div id="basejump-01216-2020-09-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-01216-2020-09-29" class="anchor"></a>basejump 0.12.16 (2020-09-29)</h2>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>makeProtein2GeneFromEnsembl</code>: Improved error message on match failure. Now returns the protein IDs that failed to match more clearly.</li>
-</ul>
-</div>
-</div>
-    <div id="basejump-01217-2020-10-01" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basejump-01217-2020-10-01" class="anchor"></a>basejump 0.12.17 (2020-10-01)</h2>
-<div id="minor-changes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
-<ul>
-<li>
-<code>makeSummarizedExperiment</code>: No longer requiring primary <code>assay</code> defined to be named “counts”. This isn’t appropriate for <code>SummarizedExperiment</code> objects defined in the new DepMapAnalysis package.</li>
 </ul>
 </div>
 </div>

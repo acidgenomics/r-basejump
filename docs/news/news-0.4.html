@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.4</span>
       </span>
     </div>
 
@@ -128,9 +128,9 @@
     <div id="basejump-040-2018-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-040-2018-03-22" class="anchor"></a>basejump 0.4.0 (2018-03-22)</h2>
-<div id="major-changes-27" class="section level3">
+<div id="major-changes-28" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-27" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-28" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Introducing new functions for the acquistion of gene and transcript annotations from <a href="https://www.ensembl.org/">Ensembl</a>: <code>ensembl</code>, <code>genes</code>, and <code>transcripts</code>. These functions allow the return of <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects from <a href="https://bioconductor.org/packages/AnnotationHub/">AnnotationHub</a> using <a href="https://bioconductor.org/packages/ensembldb/">ensembldb</a>.</li>
 <li>Improved internal <code>broadClass</code> definition code to match against chromosome from <a href="https://www.ensembl.org/">Ensembl</a> if available.</li>
@@ -138,9 +138,9 @@
 <code>loadDataAsName</code> now works with unquoted names, improving consistency with <code>loadData</code> (non-standard evaluation).</li>
 </ul>
 </div>
-<div id="minor-changes-87" class="section level3">
+<div id="minor-changes-91" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-87" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-91" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added new <code>convertUCSCBuildToEnsembl</code> function, for easy remapping of <a href="https://genome.ucsc.edu/">UCSC</a> to <a href="https://www.ensembl.org/">Ensembl</a> genome build names (e.g. <code>hg38</code> to <code>GRCh38</code>).</li>
 <li>Migrated matrix methods for <code>plotCorrelationHeatmap</code> here from <a href="https://bioinformatics.sph.harvard.edu/bcbioRNASeq/">bcbioRNASeq</a>, for improved consistency with other heatmap functions.</li>
