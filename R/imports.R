@@ -3,6 +3,7 @@
 
 
 
+#' @importClassesFrom BiocGenerics AsIs
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix Matrix

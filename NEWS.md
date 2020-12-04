@@ -1,3 +1,11 @@
+## basejump 0.13.4 (2020-12-04)
+
+### Minor changes
+
+- Added `AsIs` method support for `sem`, which is required for dplyr `mutate`
+  calculations on numeric classes. Note that the `numeric` method is defined
+  in the AcidBase package.
+
 ## basejump 0.13.3 (2020-11-24)
 
 ### Minor changes
