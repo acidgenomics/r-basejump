@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Interesting groups — interestingGroups • basejump</title>
+<title>Version 0.13 • basejump</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Interesting groups — interestingGroups" />
-<meta property="og:description" content="Interesting groups" />
+<meta property="og:title" content="Version 0.13" />
 
 
 
@@ -61,7 +60,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -122,72 +121,89 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Interesting groups</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/basejump/blob/master/R/interestingGroups-methods.R'><code>R/interestingGroups-methods.R</code></a></small>
-    <div class="hidden name"><code>interestingGroups.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small>0.13</small></h1>
+      
     </div>
 
-    <div class="ref-description">
-    <p>Interesting groups</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>  <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S4 method for Annotated</span>
-<span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
-
-<span class='co'># S4 method for Annotated,character</span>
-<span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S4 method for SummarizedExperiment,character</span>
-<span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S4 method for Annotated,`NULL`</span>
-<span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>Value to assign.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>character</code>.</p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>Updated 2019-08-11.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>RangedSummarizedExperiment</span>, package <span class='op'>=</span> <span class='st'>"AcidTest"</span><span class='op'>)</span>
-<span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
-
-<span class='co'>## SummarizedExperiment ====</span>
-<span class='va'>intgroup</span> <span class='op'>&lt;-</span> <span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>intgroup</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "condition"</div><div class='input'><span class='co'>## Assignment support.</span>
-<span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>intgroup</span><span class='op'>[[</span><span class='fl'>1L</span><span class='op'>]</span><span class='op'>]</span>
-<span class='fu'>interestingGroups</span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "condition"</div></pre>
+    <div id="basejump-0130-2020-10-05" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0130-2020-10-05" class="anchor"></a>basejump 0.13.0 (2020-10-05)</h2>
+<p>Migrated some functions to AcidBase, AcidGenomes, AcidPlyr, and pipette packages.</p>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>
+<code>Ensembl2Entrez</code>: Improved internal matching engine, to allow reverse matching of Entrez identifiers to Ensembl identifiers.</li>
+<li>Now exporting <code>Entrez2Ensembl</code>, which works like <code>Entrez2Ensembl</code>.</li>
+<li>New S4 class <code>Entrez2Ensembl</code>, which inherits <code>Ensembl2Entrez</code> structure.</li>
+</ul>
+</div>
+<div id="minor-changes-4" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>
+<code>makeSummarizedExperiment</code>: No longer requiring primary <code>assay</code> defined to be named “counts”. This isn’t appropriate for <code>SummarizedExperiment</code> objects defined in the new DepMapAnalysis package.</li>
+<li>
+<code>makeGRangesFromEnsembl</code>: Include <code>geneSynonyms</code> column for supported organisms, including <em>Homo sapiens</em>.</li>
+<li>Deprecated <code>matchEnsemblReleaseToURL</code> in favor of <code>mapEnsemblReleaseToURL</code>.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0131-2020-10-07" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0131-2020-10-07" class="anchor"></a>basejump 0.13.1 (2020-10-07)</h2>
+<div id="minor-changes-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Reworked <code>makeSummarizedExperiment</code> and <code>makeSingleCellExperiment</code> generators to generate empty objects without requiring any assays to be defined.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0132-2020-10-09" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0132-2020-10-09" class="anchor"></a>basejump 0.13.2 (2020-10-09)</h2>
+<div id="minor-changes-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Migrated <code>transmit</code> to pipette package. Still reexporting here.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0133-2020-11-24" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0133-2020-11-24" class="anchor"></a>basejump 0.13.3 (2020-11-24)</h2>
+<div id="minor-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Updated dependency version cutoffs. Applies primarily to cli and magrittr.</li>
+<li>Now rexporting new <code>sem</code> function from AcidBase.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0134-2020-12-04" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0134-2020-12-04" class="anchor"></a>basejump 0.13.4 (2020-12-04)</h2>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Added <code>AsIs</code> method support for <code>sem</code>, which is required for dplyr <code>mutate</code> calculations on numeric classes. Note that the <code>numeric</code> method is defined in the AcidBase package.</li>
+</ul>
+</div>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 

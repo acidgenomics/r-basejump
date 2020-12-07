@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.4</span>
       </span>
     </div>
 
@@ -223,7 +223,7 @@ reverse complement will be calculated automatically and added as the
     <pre class="examples"><div class='input'><span class='co'>## Demultiplexed ====</span>
 <span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-demultiplexed.csv"</span><span class='op'>)</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>importSampleData</span><span class='op'>(</span><span class='va'>file</span>, pipeline <span class='op'>=</span> <span class='st'>"bcbio"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>bcbio-metadata-demultiplexed.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.13</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #C6C6C6;background-color: #262626;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>bcbio-metadata-demultiplexed.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.13</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
 #&gt;         sampleName            fileName description genotype
 #&gt;           &lt;factor&gt;            &lt;factor&gt;    &lt;factor&gt; &lt;factor&gt;
@@ -234,38 +234,28 @@ reverse complement will be calculated automatically and added as the
 <span class='co'>## Multiplexed ====</span>
 <span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>basejumpTestsURL</span>, <span class='st'>"bcbio-metadata-multiplexed-indrops.csv"</span><span class='op'>)</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>importSampleData</span><span class='op'>(</span><span class='va'>file</span>, pipeline <span class='op'>=</span> <span class='st'>"bcbio"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>bcbio-metadata-multiplexed-indrops.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.13</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #C6C6C6;background-color: #262626;'>`vroom()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>→ Importing </span><span style='color: #0000BB;'>bcbio-metadata-multiplexed-indrops.csv</span><span> at </span><span style='color: #0000BB;'>https://tests.acidgenomics.com/basejump/v0.13</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Multiplexed samples detected.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 8 rows and 8 columns
-#&gt;                   sampleName             fileName
-#&gt;                     &lt;factor&gt;             &lt;factor&gt;
-#&gt; indrops1_AGAGGATA  sample2_1 indrops1_R1.fastq.gz
-#&gt; indrops1_ATAGAGAG  sample1_1 indrops1_R1.fastq.gz
-#&gt; indrops1_CTCCTTAC  sample3_1 indrops1_R1.fastq.gz
-#&gt; indrops1_TATGCAGT  sample4_1 indrops1_R1.fastq.gz
-#&gt; indrops2_AGAGGATA  sample2_2 indrops2_R1.fastq.gz
-#&gt; indrops2_ATAGAGAG  sample1_2 indrops2_R1.fastq.gz
-#&gt; indrops2_CTCCTTAC  sample3_2 indrops2_R1.fastq.gz
-#&gt; indrops2_TATGCAGT  sample4_2 indrops2_R1.fastq.gz
-#&gt;                         description    index sequence
-#&gt;                            &lt;factor&gt; &lt;factor&gt; &lt;factor&gt;
-#&gt; indrops1_AGAGGATA indrops1-AGAGGATA        2 TATCCTCT
-#&gt; indrops1_ATAGAGAG indrops1-ATAGAGAG        1 CTCTCTAT
-#&gt; indrops1_CTCCTTAC indrops1-CTCCTTAC        3 GTAAGGAG
-#&gt; indrops1_TATGCAGT indrops1-TATGCAGT        4 ACTGCATA
-#&gt; indrops2_AGAGGATA indrops2-AGAGGATA        2 TATCCTCT
-#&gt; indrops2_ATAGAGAG indrops2-ATAGAGAG        1 CTCTCTAT
-#&gt; indrops2_CTCCTTAC indrops2-CTCCTTAC        3 GTAAGGAG
-#&gt; indrops2_TATGCAGT indrops2-TATGCAGT        4 ACTGCATA
-#&gt;                   aggregate genotype  revcomp
-#&gt;                    &lt;factor&gt; &lt;factor&gt; &lt;factor&gt;
-#&gt; indrops1_AGAGGATA   sample2 knockout AGAGGATA
-#&gt; indrops1_ATAGAGAG   sample1 wildtype ATAGAGAG
-#&gt; indrops1_CTCCTTAC   sample3 wildtype CTCCTTAC
-#&gt; indrops1_TATGCAGT   sample4 knockout TATGCAGT
-#&gt; indrops2_AGAGGATA   sample2 knockout AGAGGATA
-#&gt; indrops2_ATAGAGAG   sample1 wildtype ATAGAGAG
-#&gt; indrops2_CTCCTTAC   sample3 wildtype CTCCTTAC
-#&gt; indrops2_TATGCAGT   sample4 knockout TATGCAGT</div></span></pre>
+#&gt;                   sampleName             fileName       description    index
+#&gt;                     &lt;factor&gt;             &lt;factor&gt;          &lt;factor&gt; &lt;factor&gt;
+#&gt; indrops1_AGAGGATA  sample2_1 indrops1_R1.fastq.gz indrops1-AGAGGATA        2
+#&gt; indrops1_ATAGAGAG  sample1_1 indrops1_R1.fastq.gz indrops1-ATAGAGAG        1
+#&gt; indrops1_CTCCTTAC  sample3_1 indrops1_R1.fastq.gz indrops1-CTCCTTAC        3
+#&gt; indrops1_TATGCAGT  sample4_1 indrops1_R1.fastq.gz indrops1-TATGCAGT        4
+#&gt; indrops2_AGAGGATA  sample2_2 indrops2_R1.fastq.gz indrops2-AGAGGATA        2
+#&gt; indrops2_ATAGAGAG  sample1_2 indrops2_R1.fastq.gz indrops2-ATAGAGAG        1
+#&gt; indrops2_CTCCTTAC  sample3_2 indrops2_R1.fastq.gz indrops2-CTCCTTAC        3
+#&gt; indrops2_TATGCAGT  sample4_2 indrops2_R1.fastq.gz indrops2-TATGCAGT        4
+#&gt;                   sequence aggregate genotype  revcomp
+#&gt;                   &lt;factor&gt;  &lt;factor&gt; &lt;factor&gt; &lt;factor&gt;
+#&gt; indrops1_AGAGGATA TATCCTCT   sample2 knockout AGAGGATA
+#&gt; indrops1_ATAGAGAG CTCTCTAT   sample1 wildtype ATAGAGAG
+#&gt; indrops1_CTCCTTAC GTAAGGAG   sample3 wildtype CTCCTTAC
+#&gt; indrops1_TATGCAGT ACTGCATA   sample4 knockout TATGCAGT
+#&gt; indrops2_AGAGGATA TATCCTCT   sample2 knockout AGAGGATA
+#&gt; indrops2_ATAGAGAG CTCTCTAT   sample1 wildtype ATAGAGAG
+#&gt; indrops2_CTCCTTAC GTAAGGAG   sample3 wildtype CTCCTTAC
+#&gt; indrops2_TATGCAGT ACTGCATA   sample4 knockout TATGCAGT</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
