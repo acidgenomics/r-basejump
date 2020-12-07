@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.4</span>
       </span>
     </div>
 
@@ -245,32 +245,19 @@ https://github.com/tidyverse/tidyr/blob/master/src/RcppExports.cpp</p>
 <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 6000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 6000 rows and 6 columns
-#&gt;       colname rowname value condition sampleName
-#&gt;         &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;     &lt;Rle&gt;      &lt;Rle&gt;
-#&gt; 1    sample01 gene001     2         A   sample01
-#&gt; 2    sample01 gene002    17         A   sample01
-#&gt; 3    sample01 gene003     5         A   sample01
-#&gt; 4    sample01 gene004     0         A   sample01
-#&gt; 5    sample01 gene005    14         A   sample01
-#&gt; ...       ...     ...   ...       ...        ...
-#&gt; 5996 sample12 gene496     7         B   sample12
-#&gt; 5997 sample12 gene497   149         B   sample12
-#&gt; 5998 sample12 gene498     1         B   sample12
-#&gt; 5999 sample12 gene499     0         B   sample12
-#&gt; 6000 sample12 gene500    36         B   sample12
-#&gt;      interestingGroups
-#&gt;                  &lt;Rle&gt;
-#&gt; 1                    A
-#&gt; 2                    A
-#&gt; 3                    A
-#&gt; 4                    A
-#&gt; 5                    A
-#&gt; ...                ...
-#&gt; 5996                 B
-#&gt; 5997                 B
-#&gt; 5998                 B
-#&gt; 5999                 B
-#&gt; 6000                 B</div><div class='input'>
+#&gt;       colname rowname value condition sampleName interestingGroups
+#&gt;         &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;     &lt;Rle&gt;      &lt;Rle&gt;             &lt;Rle&gt;
+#&gt; 1    sample01 gene001     2         A   sample01                 A
+#&gt; 2    sample01 gene002    17         A   sample01                 A
+#&gt; 3    sample01 gene003     5         A   sample01                 A
+#&gt; 4    sample01 gene004     0         A   sample01                 A
+#&gt; 5    sample01 gene005    14         A   sample01                 A
+#&gt; ...       ...     ...   ...       ...        ...               ...
+#&gt; 5996 sample12 gene496     7         B   sample12                 B
+#&gt; 5997 sample12 gene497   149         B   sample12                 B
+#&gt; 5998 sample12 gene498     1         B   sample12                 B
+#&gt; 5999 sample12 gene499     0         B   sample12                 B
+#&gt; 6000 sample12 gene500    36         B   sample12                 B</div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
@@ -278,32 +265,19 @@ https://github.com/tidyverse/tidyr/blob/master/src/RcppExports.cpp</p>
 <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 50000</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 50000 rows and 6 columns
-#&gt;       colname rowname value sampleID sampleName
-#&gt;         &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;    &lt;Rle&gt;      &lt;Rle&gt;
-#&gt; 1     cell001 gene001     0  sample1    sample1
-#&gt; 2     cell001 gene002   121  sample1    sample1
-#&gt; 3     cell001 gene003     0  sample1    sample1
-#&gt; 4     cell001 gene004    25  sample1    sample1
-#&gt; 5     cell001 gene005    39  sample1    sample1
-#&gt; ...       ...     ...   ...      ...        ...
-#&gt; 49996 cell100 gene496     0  sample2    sample2
-#&gt; 49997 cell100 gene497     0  sample2    sample2
-#&gt; 49998 cell100 gene498     0  sample2    sample2
-#&gt; 49999 cell100 gene499     0  sample2    sample2
-#&gt; 50000 cell100 gene500   121  sample2    sample2
-#&gt;       interestingGroups
-#&gt;                   &lt;Rle&gt;
-#&gt; 1               sample1
-#&gt; 2               sample1
-#&gt; 3               sample1
-#&gt; 4               sample1
-#&gt; 5               sample1
-#&gt; ...                 ...
-#&gt; 49996           sample2
-#&gt; 49997           sample2
-#&gt; 49998           sample2
-#&gt; 49999           sample2
-#&gt; 50000           sample2</div></pre>
+#&gt;       colname rowname value sampleID sampleName interestingGroups
+#&gt;         &lt;Rle&gt;   &lt;Rle&gt; &lt;Rle&gt;    &lt;Rle&gt;      &lt;Rle&gt;             &lt;Rle&gt;
+#&gt; 1     cell001 gene001     0  sample1    sample1           sample1
+#&gt; 2     cell001 gene002   121  sample1    sample1           sample1
+#&gt; 3     cell001 gene003     0  sample1    sample1           sample1
+#&gt; 4     cell001 gene004    25  sample1    sample1           sample1
+#&gt; 5     cell001 gene005    39  sample1    sample1           sample1
+#&gt; ...       ...     ...   ...      ...        ...               ...
+#&gt; 49996 cell100 gene496     0  sample2    sample2           sample2
+#&gt; 49997 cell100 gene497     0  sample2    sample2           sample2
+#&gt; 49998 cell100 gene498     0  sample2    sample2           sample2
+#&gt; 49999 cell100 gene499     0  sample2    sample2           sample2
+#&gt; 50000 cell100 gene500   121  sample2    sample2           sample2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

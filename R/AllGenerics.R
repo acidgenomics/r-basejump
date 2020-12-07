@@ -396,6 +396,15 @@ NULL
 
 
 
+#' @rdname sem
+#' @name sem
+#' @importFrom AcidGenerics sem
+#' @usage sem(x, ...)
+#' @export
+NULL
+
+
+
 #' @rdname sizeFactors
 #' @name sizeFactors
 #' @importFrom BiocGenerics sizeFactors

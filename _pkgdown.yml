@@ -81,6 +81,7 @@ reference:
       - logRatio
       - melt
       - rankedMatrix
+      - sem
       - sizeFactors
       - zerosVsDepth
   - title: Markdown
