@@ -463,6 +463,10 @@ pipette::coerceToList
 #' @export
 pipette::decode
 
+#' @importFrom pipette download
+#' @export
+pipette::download
+
 #' @importMethodsFrom pipette droplevels
 #' @exportMethod droplevels
 NULL
