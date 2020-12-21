@@ -1,6 +1,6 @@
 #' @name combine
-#' @inherit BiocGenerics::combine return title
-#' @note Updated 2020-01-20.
+#' @inherit AcidGenerics::combine return title
+#' @note Updated 2020-12-21.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -15,7 +15,6 @@
 #' - Specific metadata must be identical (see `metadata` argument).
 #'
 #' @seealso
-#' - `BiocGenerics::combine()`.
 #' - `help("merge.Matrix", "Matrix.utils")`.
 #'
 #' @return `SummarizedExperiment`.
