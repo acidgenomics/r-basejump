@@ -4,7 +4,7 @@
 \alias{combine}
 \alias{combine,SummarizedExperiment,SummarizedExperiment-method}
 \alias{combine,SingleCellExperiment,SingleCellExperiment-method}
-\title{Combining or merging different Bioconductor data structures}
+\title{Objects exported from other packages}
 \usage{
 combine(x, y, ...)
 
@@ -23,10 +23,10 @@ combine(x, y, ...)
 \code{SummarizedExperiment}.
 }
 \description{
-Combining or merging different Bioconductor data structures
+Objects exported from other packages
 }
 \note{
-Updated 2020-01-20.
+Updated 2020-12-21.
 
 We're attempting to make this as strict as possible, requiring:
 \itemize{
@@ -100,7 +100,6 @@ print(c)
 }
 \seealso{
 \itemize{
-\item \code{BiocGenerics::combine()}.
 \item \code{help("merge.Matrix", "Matrix.utils")}.
 }
 }

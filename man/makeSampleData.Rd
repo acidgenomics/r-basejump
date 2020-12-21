@@ -14,11 +14,6 @@ makeSampleData(object, ...)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{...}{Additional arguments.}
-}
-\value{
-\code{DataFrame}.
 }
 \description{
 Utility function that prepares metadata to be slotted into
