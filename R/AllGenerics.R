@@ -57,7 +57,8 @@ NULL
 
 #' @rdname camelCase
 #' @name camelCase
-#' @importFrom syntactic camelCase
+#' @importFrom AcidGenerics camelCase
+#' @importMethodsFrom syntactic camelCase
 #' @usage camelCase(object, ...)
 #' @export
 NULL
@@ -152,7 +153,8 @@ NULL
 
 #' @rdname dottedCase
 #' @name dottedCase
-#' @importFrom syntactic dottedCase
+#' @importFrom AcidGenerics dottedCase
+#' @importMethodsFrom syntactic dottedCase
 #' @usage dottedCase(object, ...)
 #' @export
 NULL
@@ -203,6 +205,8 @@ NULL
 NULL
 
 
+
+## FIXME DEFINE THIS IN ACIDGENERICS.
 
 #' @rdname integerCounts
 #' @export
@@ -264,6 +268,8 @@ NULL
 NULL
 
 
+
+## FIXME DEFINE THIS IN ACIDGENERICS.
 
 #' @rdname makeSampleData
 #' @export
@@ -374,12 +380,16 @@ NULL
 
 
 
+## FIXME DEFINE THIS IN ACIDGENERICS.
+
 #' @rdname sampleNames
 #' @name sampleNames
 #' @importFrom Biobase sampleNames
 #' @usage sampleNames(object)
 #' @export
 NULL
+
+## FIXME DEFINE THIS IN ACIDGENERICS.
 
 #' @rdname sampleNames
 #' @name sampleNames<-
@@ -426,7 +436,8 @@ NULL
 
 #' @rdname snakeCase
 #' @name snakeCase
-#' @importFrom syntactic snakeCase
+#' @importFrom AcidGenerics snakeCase
+#' @importMethodsFrom syntactic snakeCase
 #' @usage snakeCase(object, ...)
 #' @export
 NULL
@@ -451,6 +462,9 @@ NULL
 
 
 
+## FIXME DEFINE THIS IN ACIDGENERICS.
+## FIXME THIS IS TOO LARGE A PACKAGE TO OWN, SO REDEFINE.
+
 #' @rdname tpm
 #' @name tpm
 #' @importFrom SingleCellExperiment tpm
@@ -470,7 +484,8 @@ NULL
 
 #' @rdname upperCamelCase
 #' @name upperCamelCase
-#' @importFrom syntactic upperCamelCase
+#' @importFrom AcidGenerics upperCamelCase
+#' @importMethodsFrom syntactic upperCamelCase
 #' @usage upperCamelCase(object, ...)
 #' @export
 NULL
