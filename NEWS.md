@@ -1,3 +1,10 @@
+## basejump 0.13.5 (2020-12-21)
+
+### Minor changes
+
+- Consolidated S4 generic imports into AcidGenerics, removing import dependency
+  on BiocGenerics.
+
 ## basejump 0.13.4 (2020-12-04)
 
 ### Minor changes

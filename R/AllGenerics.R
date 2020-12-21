@@ -1,3 +1,5 @@
+## FIXME NEED TO EXPORT IN ACIDGENERICS.
+
 #' @rdname aggregate
 #' @name aggregate
 #' @importFrom S4Vectors aggregate
@@ -36,7 +38,8 @@ NULL
 
 #' @rdname autopadZeros
 #' @name autopadZeros
-#' @importFrom syntactic autopadZeros
+#' @importFrom AcidGenerics autopadZeros
+#' @importMethodsFrom syntactic autopadZeros
 #' @usage autopadZeros(object, ...)
 #' @export
 NULL
@@ -81,7 +84,7 @@ NULL
 
 #' @rdname combine
 #' @name combine
-#' @importFrom BiocGenerics combine
+#' @importFrom AcidGenerics combine
 #' @usage combine(x, y, ...)
 #' @export
 NULL
@@ -133,14 +136,14 @@ NULL
 
 #' @rdname counts
 #' @name counts
-#' @importFrom BiocGenerics counts
+#' @importFrom AcidGenerics counts
 #' @usage counts(object, ...)
 #' @export
 NULL
 
 #' @rdname counts
 #' @name counts<-
-#' @importFrom BiocGenerics counts<-
+#' @importFrom AcidGenerics counts<-
 #' @usage counts(object, ...) <- value
 #' @export
 NULL
@@ -158,7 +161,7 @@ NULL
 
 #' @rdname estimateSizeFactors
 #' @name estimateSizeFactors
-#' @importFrom BiocGenerics estimateSizeFactors
+#' @importFrom AcidGenerics estimateSizeFactors
 #' @usage estimateSizeFactors(object, ...)
 #' @export
 NULL
@@ -407,14 +410,14 @@ NULL
 
 #' @rdname sizeFactors
 #' @name sizeFactors
-#' @importFrom BiocGenerics sizeFactors
+#' @importFrom AcidGenerics sizeFactors
 #' @usage sizeFactors(object, ...)
 #' @export
 NULL
 
 #' @rdname sizeFactors
 #' @name sizeFactors<-
-#' @importFrom BiocGenerics sizeFactors<-
+#' @importFrom AcidGenerics sizeFactors<-
 #' @usage sizeFactors(object, ...) <- value
 #' @export
 NULL
