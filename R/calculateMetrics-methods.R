@@ -217,54 +217,6 @@ setMethod(
 
 
 
-## nolint start
-
-## DelayedArray methods disabled until bug fix:
-## https://github.com/Bioconductor/DelayedArray/issues/55
-
-## Consider using DelayedArray for very large datasets.
-## > if (ncol(counts) >= 1E6L) {
-## >     counts <- DelayedArray(counts)
-## > }
-
-## Updated 2019-10-09.
-## > `calculateMetrics,DelayedArray` <-  # nolint
-## >     appendToBody(
-## >         fun = `calculateMetrics,matrix`,
-## >         values = list(
-## >             quote(rowSums <- DelayedMatrixStats::rowSums2),
-## >             quote(colSums <- DelayedMatrixStats::colSums2)
-## >         )
-## >     )
-
-## > #' @rdname calculateMetrics
-## > #' @export
-## > setMethod(
-## >     f = "calculateMetrics",
-## >     signature = signature("DelayedArray"),
-## >     definition = `calculateMetrics,DelayedArray`
-## > )
-
-## DelayedArray is erroring on Bioconductor 3.10 devel:
-## test-calculateMetrics.R:5: error: matrix-like
-## object 'is_pristine' not found
-## 1: rlang::eval_tidy(code, args)
-## 2: calculateMetrics(object, prefilter = TRUE) at test-calculateMetrics.R:5
-## 3: calculateMetrics(object, prefilter = TRUE)
-## 4: .local(object, ...)
-## 5: nonzeroRowsAndCols(object) at /work/R/calculateMetrics-methods.R:56
-## 6: nonzeroRowsAndCols(object)
-## 7: .local(object, ...)
-## 8: rowSums(object)
-## 9: rowSums(object)
-## 10: .local(x, rows, cols, na.rm, dim., ...)
-## 11: DelayedArray:::is_pristine
-## 12: get(name, envir = asNamespace(pkg), inherits = FALSE)
-
-## nolint end
-
-
-
 ## Updated 2019-08-23.
 `calculateMetrics,RangedSummarizedExperiment` <-  # nolint
     function(object, prefilter = FALSE) {
