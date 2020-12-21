@@ -1,8 +1,6 @@
-## FIXME NEED TO EXPORT IN ACIDGENERICS.
-
 #' @rdname aggregate
 #' @name aggregate
-#' @importFrom S4Vectors aggregate
+#' @importFrom AcidGenerics aggregate
 #' @usage aggregate(x, ...)
 #' @export
 NULL
@@ -206,16 +204,12 @@ NULL
 
 
 
-## FIXME DEFINE THIS IN ACIDGENERICS.
-
 #' @rdname integerCounts
+#' @name integerCounts
+#' @importFrom AcidGenerics integerCounts
+#' @usage integerCounts(object, ...)
 #' @export
-setGeneric(
-    name = "integerCounts",
-    def = function(object, ...) {
-        standardGeneric("integerCounts")
-    }
-)
+NULL
 
 
 
@@ -269,16 +263,12 @@ NULL
 
 
 
-## FIXME DEFINE THIS IN ACIDGENERICS.
-
 #' @rdname makeSampleData
+#' @name makeSampleData
+#' @importFrom AcidGenerics makeSampleData
+#' @usage makeSampleData(object, ...)
 #' @export
-setGeneric(
-    name = "makeSampleData",
-    def = function(object, ...) {
-        standardGeneric("makeSampleData")
-    }
-)
+NULL
 
 
 
@@ -380,20 +370,16 @@ NULL
 
 
 
-## FIXME DEFINE THIS IN ACIDGENERICS.
-
 #' @rdname sampleNames
 #' @name sampleNames
-#' @importFrom Biobase sampleNames
+#' @importFrom AcidGenerics sampleNames
 #' @usage sampleNames(object)
 #' @export
 NULL
 
-## FIXME DEFINE THIS IN ACIDGENERICS.
-
 #' @rdname sampleNames
 #' @name sampleNames<-
-#' @importFrom Biobase sampleNames<-
+#' @importFrom AcidGenerics sampleNames<-
 #' @usage sampleNames(object) <- value
 #' @export
 NULL
@@ -462,12 +448,10 @@ NULL
 
 
 
-## FIXME DEFINE THIS IN ACIDGENERICS.
-## FIXME THIS IS TOO LARGE A PACKAGE TO OWN, SO REDEFINE.
-
 #' @rdname tpm
 #' @name tpm
-#' @importFrom SingleCellExperiment tpm
+#' @importFrom AcidGenerics tpm
+#' @usage tpm(object, ...)
 #' @export
 NULL
 
