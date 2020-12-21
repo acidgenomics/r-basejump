@@ -1,12 +1,9 @@
-#' Integer counts
-#'
-#' Count matrix.
+#' @name integerCounts
+#' @inherit AcidGenerics::integerCounts
+#' @note Updated 2020-12-21.
 #'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
 #'   defined in `assayNames`.
-#'
-#' @name integerCounts
-#' @note Updated 2019-12-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.

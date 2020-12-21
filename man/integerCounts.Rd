@@ -25,13 +25,13 @@ Matrix.
 Typically \code{matrix} or \code{Matrix} class.
 }
 \description{
-Count matrix.
+Integer counts
 }
 \note{
+Updated 2020-12-21.
+
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
 defined in \code{assayNames}.
-
-Updated 2019-12-04.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
