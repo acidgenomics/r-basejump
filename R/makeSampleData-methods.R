@@ -1,4 +1,6 @@
-#' Make sample data
+#' @name makeSampleData
+#' @inherit AcidGenerics::makeSampleData
+#' @note Updated 2020-12-21.
 #'
 #' Utility function that prepares metadata to be slotted into
 #' [`colData()`][SummarizedExperiment::colData].
@@ -24,12 +26,7 @@
 #'   - `sample`. Too vague. Does this represent an ID or human readable name?
 #'   - `samplename` (use `sampleName`).
 #'
-#' @name makeSampleData
-#' @note Updated 2019-10-10.
-#'
 #' @inheritParams AcidRoxygen::params
-#'
-#' @return `DataFrame`.
 #'
 #' @seealso `makeNames`.
 #'
