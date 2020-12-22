@@ -1,8 +1,3 @@
-## FIXME NOW SEEING THIS ROXYGEN WARNING:
-## Warning: Link to unknown topic in inherited text: BiocGenerics::dge
-
-
-
 #' @importClassesFrom AcidGenerics AsIs
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList

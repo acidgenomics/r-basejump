@@ -96,6 +96,24 @@ AcidBase::updateMessage
 
 
 
+#' @importFrom AcidGenerics mcols
+#' @export
+AcidGenerics::mcols
+
+#' @importFrom AcidGenerics mcols<-
+#' @export
+AcidGenerics::`mcols<-`
+
+#' @importFrom AcidGenerics metadata
+#' @export
+AcidGenerics::metadata
+
+#' @importFrom AcidGenerics metadata<-
+#' @export
+AcidGenerics::`metadata<-`
+
+
+
 #' @importFrom AcidGenomes Ensembl2Entrez
 #' @export
 AcidGenomes::Ensembl2Entrez
@@ -335,22 +353,6 @@ S4Vectors::DataFrame
 #' @importFrom S4Vectors SimpleList
 #' @export
 S4Vectors::SimpleList
-
-#' @importFrom S4Vectors mcols
-#' @export
-S4Vectors::mcols
-
-#' @importFrom S4Vectors mcols<-
-#' @export
-S4Vectors::`mcols<-`
-
-#' @importFrom S4Vectors metadata
-#' @export
-S4Vectors::metadata
-
-#' @importFrom S4Vectors metadata<-
-#' @export
-S4Vectors::`metadata<-`
 
 
 
