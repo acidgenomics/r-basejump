@@ -4,7 +4,7 @@
 \alias{combine}
 \alias{combine,SummarizedExperiment,SummarizedExperiment-method}
 \alias{combine,SingleCellExperiment,SingleCellExperiment-method}
-\title{Objects exported from other packages}
+\title{Combine multiple objects}
 \usage{
 combine(x, y, ...)
 
@@ -23,7 +23,7 @@ combine(x, y, ...)
 \code{SummarizedExperiment}.
 }
 \description{
-Objects exported from other packages
+Combine multiple objects
 }
 \note{
 Updated 2020-12-21.
