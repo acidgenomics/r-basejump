@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.5</span>
       </span>
     </div>
 
@@ -81,7 +81,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -98,13 +98,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://acidgenomics.com/">
-    <span class="fas fa fas fa-vial fa-lg"></span>
+    <span class="fas fa-vial fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/acidgenomics/basejump/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -139,9 +139,9 @@
 <li>New S4 class <code>Entrez2Ensembl</code>, which inherits <code>Ensembl2Entrez</code> structure.</li>
 </ul>
 </div>
-<div id="minor-changes-4" class="section level3">
+<div id="minor-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>makeSummarizedExperiment</code>: No longer requiring primary <code>assay</code> defined to be named “counts”. This isn’t appropriate for <code>SummarizedExperiment</code> objects defined in the new DepMapAnalysis package.</li>
@@ -154,9 +154,9 @@
     <div id="basejump-0131-2020-10-07" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0131-2020-10-07" class="anchor"></a>basejump 0.13.1 (2020-10-07)</h2>
-<div id="minor-changes-3" class="section level3">
+<div id="minor-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reworked <code>makeSummarizedExperiment</code> and <code>makeSingleCellExperiment</code> generators to generate empty objects without requiring any assays to be defined.</li>
 </ul>
@@ -165,9 +165,9 @@
     <div id="basejump-0132-2020-10-09" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0132-2020-10-09" class="anchor"></a>basejump 0.13.2 (2020-10-09)</h2>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code>transmit</code> to pipette package. Still reexporting here.</li>
 </ul>
@@ -176,9 +176,9 @@
     <div id="basejump-0133-2020-11-24" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0133-2020-11-24" class="anchor"></a>basejump 0.13.3 (2020-11-24)</h2>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated dependency version cutoffs. Applies primarily to cli and magrittr.</li>
 <li>Now rexporting new <code>sem</code> function from AcidBase.</li>
@@ -188,11 +188,22 @@
     <div id="basejump-0134-2020-12-04" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0134-2020-12-04" class="anchor"></a>basejump 0.13.4 (2020-12-04)</h2>
+<div id="minor-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Added <code>AsIs</code> method support for <code>sem</code>, which is required for dplyr <code>mutate</code> calculations on numeric classes. Note that the <code>numeric</code> method is defined in the AcidBase package.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0135-2020-12-22" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0135-2020-12-22" class="anchor"></a>basejump 0.13.5 (2020-12-22)</h2>
 <div id="minor-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Added <code>AsIs</code> method support for <code>sem</code>, which is required for dplyr <code>mutate</code> calculations on numeric classes. Note that the <code>numeric</code> method is defined in the AcidBase package.</li>
+<li>Consolidated S4 generic imports into AcidGenerics, removing import dependency on BiocGenerics.</li>
 </ul>
 </div>
 </div>
