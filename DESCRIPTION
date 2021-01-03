@@ -33,18 +33,18 @@ URL:
 BugReports: https://github.com/acidgenomics/basejump/issues/
 License: GPL-3
 Encoding: UTF-8
-Depends: R (>= 4.0)
+Depends:
+    R (>= 4.0),
+    S4Vectors
 Imports:
     AcidBase (>= 0.2.6),
     AcidGenerics (>= 0.5.0),
     AcidGenomes (>= 0.1.1),
     AcidPlyr (>= 0.1.4),
-    Biobase,
     Biostrings,
     GenomicRanges,
     IRanges,
     Matrix (>= 1.2),
-    S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
     cli (>= 2.2),

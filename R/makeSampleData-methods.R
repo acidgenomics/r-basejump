@@ -1,3 +1,7 @@
+## FIXME Consider not enforcing lower camel case here.
+
+
+
 #' @name makeSampleData
 #' @inherit AcidGenerics::makeSampleData
 #' @note Updated 2020-12-21.
