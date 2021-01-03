@@ -593,6 +593,8 @@ syntactic::upperCamel
 
 
 
+## FIXME DEFINE THESE IN PIPETTE INSTEAD.
+
 #' @importFrom tibble column_to_rownames
 #' @export
 tibble::column_to_rownames
