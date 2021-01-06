@@ -13,9 +13,6 @@
 #' the accessor function [sizeFactors()]. Alternative library size estimators
 #' can also be supplied using the assignment function [sizeFactors<-()].
 #'
-#' @note We're computing internally on the count matrix as a DelayedArray, so we
-#'   can handle millions of cells without the calculations blowing up in memory.
-#'
 #' @name estimateSizeFactors
 #' @note Updated 2020-07-24.
 #'
@@ -90,7 +87,6 @@ NULL
         )
     ) {
         assert(
-            ## DelayedArray
             isAny(counts, c("matrix", "Matrix")),
             !anyNA(counts)
         )

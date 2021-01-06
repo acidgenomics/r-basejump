@@ -100,33 +100,6 @@ setMethod(
 
 
 
-## nolint start
-
-## DelayedArray methods disabled until bug fix:
-## https://github.com/Bioconductor/DelayedArray/issues/55
-
-## Updated 2019-10-09.
-## > `nonzeroRowsAndCols,DelayedArray` <-  # nolint
-## >     appendToBody(
-## >         fun = `nonzeroRowsAndCols,matrix`,
-## >         values = list(
-## >             quote(rowSums <- DelayedMatrixStats::rowSums2),
-## >             quote(colSums <- DelayedMatrixStats::colSums2)
-## >         )
-## >     )
-
-## > #' @rdname nonzeroRowsAndCols
-## > #' @export
-## > setMethod(
-## >     f = "nonzeroRowsAndCols",
-## >     signature = signature("DelayedArray"),
-## >     definition = `nonzeroRowsAndCols,DelayedArray`
-## > )
-
-## nolint end
-
-
-
 ## Updated 2019-09-16.
 `nonzeroRowsAndCols,SummarizedExperiment` <-  # nolint
     function(object, assay = 1L) {

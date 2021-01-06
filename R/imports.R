@@ -1,9 +1,4 @@
-## > #' @importFrom DelayedArray DelayedArray
-## > #' @importFrom DelayedMatrixStats colSums2 rowSums2
-
-
-
-#' @importClassesFrom BiocGenerics AsIs
+#' @importClassesFrom AcidGenerics AsIs
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix Matrix
@@ -14,8 +9,6 @@ NULL
 
 
 
-#' @importMethodsFrom S4Vectors as.data.frame as.list coerce do.call lapply
-#'   match rep setdiff t unique
 #' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce
@@ -26,14 +19,14 @@ NULL
 #' @importFrom AcidBase appendToBody bapply compress getNameInParent
 #'   matchArgsToDoCall methodFormals methodFunction printString
 #'   requireNamespaces
-#' @importFrom BiocGenerics colSums rowSums unlist
+#' @importFrom AcidGenerics %in% aggregate as.data.frame as.list colSums
+#'   complete.cases cor decode do.call expand expand.grid head lapply match
+#'   mcols mcols<- merge metadata metadata<- na.omit order rowSums setdiff split
+#'   summary t tail unlist
 #' @importFrom Biostrings reverseComplement
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse
-#' @importFrom S4Vectors DataFrame List Rle SimpleList %in% aggregate
-#'   as.data.frame as.list complete.cases cor decode do.call expand expand.grid
-#'   head lapply match mcols mcols<- merge metadata metadata<- na.omit order
-#'   setdiff split summary t tail
+#' @importFrom S4Vectors DataFrame List Rle SimpleList
 #' @importFrom SingleCellExperiment SingleCellExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
@@ -61,8 +54,8 @@ NULL
 #' @importFrom stringr boundary str_detect str_dup str_extract str_length
 #'   str_match str_pad str_replace_all str_split str_split_fixed str_subset
 #'   str_trunc
-#' @importFrom utils capture.output data download.file getFromNamespace
-#'   installed.packages packageName packageVersion
+#' @importFrom utils capture.output data getFromNamespace installed.packages
+#'   packageName packageVersion
 NULL
 
 
