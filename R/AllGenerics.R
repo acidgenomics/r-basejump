@@ -1,6 +1,6 @@
 #' @rdname aggregate
 #' @name aggregate
-#' @importFrom S4Vectors aggregate
+#' @importFrom AcidGenerics aggregate
 #' @usage aggregate(x, ...)
 #' @export
 NULL
@@ -36,7 +36,8 @@ NULL
 
 #' @rdname autopadZeros
 #' @name autopadZeros
-#' @importFrom syntactic autopadZeros
+#' @importFrom AcidGenerics autopadZeros
+#' @importMethodsFrom syntactic autopadZeros
 #' @usage autopadZeros(object, ...)
 #' @export
 NULL
@@ -54,7 +55,8 @@ NULL
 
 #' @rdname camelCase
 #' @name camelCase
-#' @importFrom syntactic camelCase
+#' @importFrom AcidGenerics camelCase
+#' @importMethodsFrom syntactic camelCase
 #' @usage camelCase(object, ...)
 #' @export
 NULL
@@ -81,7 +83,7 @@ NULL
 
 #' @rdname combine
 #' @name combine
-#' @importFrom BiocGenerics combine
+#' @importFrom AcidGenerics combine
 #' @usage combine(x, y, ...)
 #' @export
 NULL
@@ -133,14 +135,14 @@ NULL
 
 #' @rdname counts
 #' @name counts
-#' @importFrom BiocGenerics counts
+#' @importFrom AcidGenerics counts
 #' @usage counts(object, ...)
 #' @export
 NULL
 
 #' @rdname counts
 #' @name counts<-
-#' @importFrom BiocGenerics counts<-
+#' @importFrom AcidGenerics counts<-
 #' @usage counts(object, ...) <- value
 #' @export
 NULL
@@ -149,7 +151,8 @@ NULL
 
 #' @rdname dottedCase
 #' @name dottedCase
-#' @importFrom syntactic dottedCase
+#' @importFrom AcidGenerics dottedCase
+#' @importMethodsFrom syntactic dottedCase
 #' @usage dottedCase(object, ...)
 #' @export
 NULL
@@ -158,7 +161,7 @@ NULL
 
 #' @rdname estimateSizeFactors
 #' @name estimateSizeFactors
-#' @importFrom BiocGenerics estimateSizeFactors
+#' @importFrom AcidGenerics estimateSizeFactors
 #' @usage estimateSizeFactors(object, ...)
 #' @export
 NULL
@@ -202,13 +205,11 @@ NULL
 
 
 #' @rdname integerCounts
+#' @name integerCounts
+#' @importFrom AcidGenerics integerCounts
+#' @usage integerCounts(object, ...)
 #' @export
-setGeneric(
-    name = "integerCounts",
-    def = function(object, ...) {
-        standardGeneric("integerCounts")
-    }
-)
+NULL
 
 
 
@@ -263,13 +264,11 @@ NULL
 
 
 #' @rdname makeSampleData
+#' @name makeSampleData
+#' @importFrom AcidGenerics makeSampleData
+#' @usage makeSampleData(object, ...)
 #' @export
-setGeneric(
-    name = "makeSampleData",
-    def = function(object, ...) {
-        standardGeneric("makeSampleData")
-    }
-)
+NULL
 
 
 
@@ -373,14 +372,14 @@ NULL
 
 #' @rdname sampleNames
 #' @name sampleNames
-#' @importFrom Biobase sampleNames
+#' @importFrom AcidGenerics sampleNames
 #' @usage sampleNames(object)
 #' @export
 NULL
 
 #' @rdname sampleNames
 #' @name sampleNames<-
-#' @importFrom Biobase sampleNames<-
+#' @importFrom AcidGenerics sampleNames<-
 #' @usage sampleNames(object) <- value
 #' @export
 NULL
@@ -407,14 +406,14 @@ NULL
 
 #' @rdname sizeFactors
 #' @name sizeFactors
-#' @importFrom BiocGenerics sizeFactors
+#' @importFrom AcidGenerics sizeFactors
 #' @usage sizeFactors(object, ...)
 #' @export
 NULL
 
 #' @rdname sizeFactors
 #' @name sizeFactors<-
-#' @importFrom BiocGenerics sizeFactors<-
+#' @importFrom AcidGenerics sizeFactors<-
 #' @usage sizeFactors(object, ...) <- value
 #' @export
 NULL
@@ -423,7 +422,8 @@ NULL
 
 #' @rdname snakeCase
 #' @name snakeCase
-#' @importFrom syntactic snakeCase
+#' @importFrom AcidGenerics snakeCase
+#' @importMethodsFrom syntactic snakeCase
 #' @usage snakeCase(object, ...)
 #' @export
 NULL
@@ -450,7 +450,8 @@ NULL
 
 #' @rdname tpm
 #' @name tpm
-#' @importFrom SingleCellExperiment tpm
+#' @importFrom AcidGenerics tpm
+#' @usage tpm(object, ...)
 #' @export
 NULL
 
@@ -467,7 +468,8 @@ NULL
 
 #' @rdname upperCamelCase
 #' @name upperCamelCase
-#' @importFrom syntactic upperCamelCase
+#' @importFrom AcidGenerics upperCamelCase
+#' @importMethodsFrom syntactic upperCamelCase
 #' @usage upperCamelCase(object, ...)
 #' @export
 NULL

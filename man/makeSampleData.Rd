@@ -14,17 +14,19 @@ makeSampleData(object, ...)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{DataFrame}.
 }
 \description{
+Make sample data
+}
+\note{
+Updated 2020-12-21.
+
 Utility function that prepares metadata to be slotted into
 \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
-}
-\details{
+
 This function adheres to the following conventions:
 \itemize{
 \item Row names are required. Either define manually (recommended) or pass in as
@@ -50,9 +52,6 @@ Blacklisted columns:
 \item \code{sample}. Too vague. Does this represent an ID or human readable name?
 \item \code{samplename} (use \code{sampleName}).
 }
-}
-\note{
-Updated 2019-10-10.
 }
 \examples{
 object <- DataFrame(

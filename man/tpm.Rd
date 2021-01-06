@@ -5,6 +5,8 @@
 \alias{tpm,SummarizedExperiment-method}
 \title{Transcripts per million}
 \usage{
+tpm(object, ...)
+
 \S4method{tpm}{SummarizedExperiment}(object)
 }
 \arguments{
