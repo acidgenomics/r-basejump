@@ -461,6 +461,10 @@ pipette::cacheURL
 #' @export
 pipette::coerceToList
 
+#' @importFrom pipette column_to_rownames
+#' @export
+pipette::column_to_rownames
+
 #' @importFrom pipette decode
 #' @export
 pipette::decode
@@ -525,6 +529,10 @@ pipette::naStrings
 #' @export
 pipette::removeNA
 
+#' @importFrom pipette rownames_to_column
+#' @export
+pipette::rownames_to_column
+
 #' @importFrom pipette sanitizeNA
 #' @export
 pipette::sanitizeNA
@@ -536,6 +544,10 @@ pipette::sanitizePercent
 #' @importFrom pipette saveData
 #' @export
 pipette::saveData
+
+#' @importFrom pipette tibble
+#' @export
+pipette::tibble
 
 #' @importFrom pipette transmit
 #' @export
@@ -590,19 +602,3 @@ syntactic::snake
 #' @importFrom syntactic upperCamel
 #' @export
 syntactic::upperCamel
-
-
-
-## FIXME DEFINE THESE IN PIPETTE INSTEAD.
-
-#' @importFrom tibble column_to_rownames
-#' @export
-tibble::column_to_rownames
-
-#' @importFrom tibble rownames_to_column
-#' @export
-tibble::rownames_to_column
-
-#' @importFrom tibble tibble
-#' @export
-tibble::tibble
