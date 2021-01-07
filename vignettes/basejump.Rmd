@@ -47,7 +47,7 @@ The [basejump][] package defines generics and methods for object-oriented progra
 - [S4 classes and methods](https://www.bioconductor.org/help/course-materials/2017/Zurich/S4-classes-and-methods.html), Martin Morgan and Hervé Pagès, 2017.
 - [A quick overview of the S4 class system](https://bioconductor.org/packages/devel/bioc/vignettes/S4Vectors/inst/doc/S4QuickOverview.pdf), Hervé Pagès, 2016.
 - [The S4 object system](http://adv-r.had.co.nz/S4.html), Hadley Wickham.
-- [Bioconductor for Genomic Data Science](http://kasperdanielhansen.github.io/genbioconductor), Kasper Hansen, 2016.
+- [Bioconductor for Genomic Data Science](https://kasperdanielhansen.github.io/genbioconductor/), Kasper Hansen, 2016.
 - [S4 System Development in Bioconductor](https://www.bioconductor.org/help/course-materials/2010/AdvancedR/S4InBioconductor.pdf), Patrick Aboyoun, 2010.
 
 In [R][], you can check whether a function is using the S4 object system with the `isS4()` function. Additionally, `showMethods()` and `getMethod()` are useful for exploring source code of S4 methods. In contrast, to obtain information on functions using the [S3][] object system, use `methods()` instead.
@@ -63,32 +63,32 @@ utils::sessionInfo()
 The papers and software cited in our workflows are available as a [shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
 
 [annotables]: https://github.com/stephenturner/annotables/
-[AnnotationHub]: https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html
-[basejump]: https://basejump.acidgenomics.com/
-[Bioconductor]: https://bioconductor.org/
-[EnsDb.Hsapiens.v75]: https://bioconductor.org/packages/EnsDb.Hsapiens.v75/
-[Ensembl]: https://www.ensembl.org/
+[annotationhub]: https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html
+[basejump]: https://r.acidgenomics.com/packages/basejump/
+[bioconductor]: https://bioconductor.org/
+[ensdb.hsapiens.v75]: https://bioconductor.org/packages/EnsDb.Hsapiens.v75/
+[ensembl]: https://www.ensembl.org/
 [ensembldb]: https://bioconductor.org/packages/ensembldb/
-[FASTA]: https://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml
-[FlyBase]: http://flybase.org/
-[GenomeInfoDb]: https://bioconductor.org/packages/GenomeInfoDb/
-[GFF]: https://useast.ensembl.org/info/website/upload/gff.html  "General Feature Format"
-[GTF]: http://mblab.wustl.edu/GTF22.html  "General Transfer Format"
-[Gencode]: https://www.gencodegenes.org/
-[GenomicRanges]: https://bioconductor.org/packages/GenomicRanges/
+[fasta]: https://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml
+[flybase]: http://flybase.org/
+[genomeinfodb]: https://bioconductor.org/packages/GenomeInfoDb/
+[gff]: https://useast.ensembl.org/info/website/upload/gff.html  "General Feature Format"
+[gtf]: http://mblab.wustl.edu/GTF22.html  "General Transfer Format"
+[gencode]: https://www.gencodegenes.org/
+[genomicranges]: https://bioconductor.org/packages/GenomicRanges/
 [ggplot2]: https://ggplot2.tidyverse.org/
-[GRCh37]: https://grch37.ensembl.org/
+[grch37]: https://grch37.ensembl.org/
 [hg19]: https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19
-[IRanges]: https://www.bioconductor.org/packages/IRanges/
-[Paperpile]: https://paperpile.com/
+[iranges]: https://www.bioconductor.org/packages/IRanges/
+[paperpile]: https://paperpile.com/
 [pheatmap]: https://cran.r-project.org/package=pheatmap
-[R]: https://www.r-project.org/
-[R Markdown]: https://rmarkdown.rstudio.com/
+[r]: https://www.r-project.org/
+[r markdown]: https://rmarkdown.rstudio.com/
 [r-wormbase]: https://wormbase.acidgenomics.com/
-[RefSeq]: https://www.ncbi.nlm.nih.gov/refseq/
+[refseq]: https://www.ncbi.nlm.nih.gov/refseq/
 [rio]: https://cran.r-project.org/package=rio
 [rtracklayer]: https://bioconductor.org/packages/rtracklayer/
-[S3]: http://adv-r.had.co.nz/S3.html
-[SummarizedExperiment]: https://bioconductor.org/packages/SummarizedExperiment/
-[UCSC]: http://genome.ucsc.edu/
-[WormBase]: https://wormbase.org/
+[s3]: http://adv-r.had.co.nz/S3.html
+[summarizedexperiment]: https://bioconductor.org/packages/SummarizedExperiment/
+[ucsc]: http://genome.ucsc.edu/
+[wormbase]: https://wormbase.org/
