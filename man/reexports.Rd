@@ -114,6 +114,7 @@
 \alias{atomize}
 \alias{cacheURL}
 \alias{coerceToList}
+\alias{column_to_rownames}
 \alias{decode}
 \alias{download}
 \alias{encode}
@@ -129,9 +130,11 @@
 \alias{metadata2<-}
 \alias{naStrings}
 \alias{removeNA}
+\alias{rownames_to_column}
 \alias{sanitizeNA}
 \alias{sanitizePercent}
 \alias{saveData}
+\alias{tibble}
 \alias{transmit}
 \alias{camel}
 \alias{capitalize}
@@ -145,9 +148,6 @@
 \alias{makeWords}
 \alias{snake}
 \alias{upperCamel}
-\alias{column_to_rownames}
-\alias{rownames_to_column}
-\alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -155,7 +155,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AcidBase}{\code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:extPattern]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{extPattern}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{matchArgsToDoCall}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase]{updateMessage}}}
+  \item{AcidBase}{\code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{matchArgsToDoCall}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase]{updateMessage}}}
 
   \item{AcidGenerics}{\code{\link[AcidGenerics:reexports-bioc]{mcols}}, \code{\link[AcidGenerics:reexports-bioc]{mcols<-}}, \code{\link[AcidGenerics:reexports-bioc]{metadata}}, \code{\link[AcidGenerics:reexports-bioc]{metadata<-}}}
 
@@ -169,7 +169,7 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
-  \item{pipette}{\code{\link[pipette:coerce-SummarizedExperiment]{as.SummarizedExperiment}}, \code{\link[pipette:coerce-data.frame]{as.data.frame}}, \code{\link[pipette:coerce-data.table]{as.data.table}}, \code{\link[pipette:coerce-tbl_df]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{atomize}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:coerce-list]{coerceToList}}, \code{\link[pipette]{decode}}, \code{\link[pipette:reexports]{download}}, \code{\link[pipette]{encode}}, \code{\link[pipette]{export}}, \code{\link[pipette]{factorize}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{metadata2}}, \code{\link[pipette:metadata2]{metadata2<-}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{removeNA}}, \code{\link[pipette]{sanitizeNA}}, \code{\link[pipette]{sanitizePercent}}, \code{\link[pipette]{saveData}}, \code{\link[pipette]{transmit}}}
+  \item{pipette}{\code{\link[pipette:coerce-SummarizedExperiment]{as.SummarizedExperiment}}, \code{\link[pipette:coerce-data.frame]{as.data.frame}}, \code{\link[pipette:coerce-data.table]{as.data.table}}, \code{\link[pipette:coerce-tbl_df]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{atomize}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:coerce-list]{coerceToList}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette]{decode}}, \code{\link[pipette:reexports]{download}}, \code{\link[pipette]{encode}}, \code{\link[pipette]{export}}, \code{\link[pipette]{factorize}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{metadata2}}, \code{\link[pipette:metadata2]{metadata2<-}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{removeNA}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{sanitizeNA}}, \code{\link[pipette]{sanitizePercent}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}}
 
@@ -178,7 +178,5 @@ below to see their documentation.
   \item{SummarizedExperiment}{\code{\link[SummarizedExperiment:SummarizedExperiment-class]{assay}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assay<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assayNames}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData<-}}, \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges}}, \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges<-}}}
 
   \item{syntactic}{\code{\link[syntactic:deprecated]{camel}}, \code{\link[syntactic]{capitalize}}, \code{\link[syntactic:deprecated]{dotted}}, \code{\link[syntactic:deprecated]{kebab}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{makeDimnames}}, \code{\link[syntactic]{makeLabel}}, \code{\link[syntactic]{makeNames}}, \code{\link[syntactic]{makeTitle}}, \code{\link[syntactic]{makeWords}}, \code{\link[syntactic:deprecated]{snake}}, \code{\link[syntactic:deprecated]{upperCamel}}}
-
-  \item{tibble}{\code{\link[tibble:rownames]{column_to_rownames}}, \code{\link[tibble:rownames]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 }}
 

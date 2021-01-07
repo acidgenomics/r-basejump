@@ -717,9 +717,9 @@ release notes for more details.
 
 ### Minor changes
 
-- Offloaded `removeNA` and `sanitizeNA` code to [brio][] package, so these
-  functions can be imported in thew new [freerange][] package.
-- Moved `organism_mappings` internal dataset to [freerange][] package.
+- Offloaded `removeNA` and `sanitizeNA` code to brio package, so these
+  functions can be imported in thew new freerange package.
+- Moved `organism_mappings` internal dataset to freerange package.
 
 ## basejump 0.9.16 (2019-03-23)
 
@@ -776,9 +776,9 @@ release notes for more details.
 
 ### Minor changes
 
-- Updated [transformer][] package reexports to include new [data.table][]
+- Updated transformer package reexports to include new [data.table][]
   coercion methods.
-- Added additional useful compression function reexports from [brio][] package.
+- Added additional useful compression function reexports from brio package.
 
 ## basejump 0.9.10 (2019-02-17)
 
@@ -817,7 +817,7 @@ release notes for more details.
 
 ### Minor changes
 
-- `decode` and `encode` are properly reexported from [brio][].
+- `decode` and `encode` are properly reexported from brio.
 - Updated Travis CI and AppVeyor CI configurations.
 
 ## basejump 0.9.6 (2019-01-22)
@@ -888,14 +888,14 @@ release notes for more details.
 ## basejump 0.9.2 (2019-01-07)
 
 This release defines the initial point where [basejump][] becomes even more
-modular, offloading some functions to new [brio][], [syntactic][], and
+modular, offloading some functions to new brio, [syntactic][], and
 S4Transformer packages.
 
 Note that all offloaded functions will continue to be reexported in
 [basejump][]. If you notice a function that is missing and not correctly
 re-exported, please file an issue.
 
-Note that S4Transformer has since been renamed to [transformer][].
+Note that S4Transformer has since been renamed to transformer.
 
 ### Offloaded to S4Transformer
 
@@ -942,11 +942,11 @@ Note that S4Transformer has since been renamed to [transformer][].
 ## basejump 0.9.1 (2018-12-22)
 
 This release defines the initial point where [basejump][] begins to import
-[bioverbs][].
+bioverbs.
 
 ### Major changes
 
-- Now importing generics using our [bioverbs][] S4 generic package. All generics
+- Now importing generics using our bioverbs S4 generic package. All generics
   previously defined in [basejump][] will continue to be reexported, to maintain
   backward compatibility for reverse dependencies (revdeps).
 
@@ -1320,7 +1320,7 @@ simplicity and stability.
   gene identifiers ("geneID").
 - `eggnog`: quickly download current annotations from [EggNOG][] database.
   Useful for annotating gene-to-protein matches; currently in use with the
-  [brightworm][] RNAi screening package, which contains [WormBase][] gene ID and
+  brightworm RNAi screening package, which contains [WormBase][] gene ID and
   [EggNOG][] ID annotations.
 
 ### Major changes
@@ -1446,7 +1446,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 
 - Fixed NAMESPACE issue with `GenomeInfoDb::seqnames`.
 - Improved `readGFF` working example to reflect switch to `GRanges` return.
-- Added [macOS][] bioc-release image to [Travis CI][] build checks.
+- Added macOS bioc-release image to [Travis CI][] build checks.
 
 ## basejump 0.5.5 (2018-05-15)
 
@@ -1715,8 +1715,8 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Improved organism matching to detect "Homo_sapiens" and "H. sapiens".
 - Factors are now supported in the `makeNames` utilities: `camel`,
   `dotted`, `snake`, and `upperCamel`.
-- Improved handling of `NA` values from [LibreOffice][] and
-  [Microsoft Excel][Excel] output in `readFileByExtension`. This function now
+- Improved handling of `NA` values from LibreOffice and
+  Microsoft Excel output in `readFileByExtension`. This function now
   sets `""`, `NA`, and `#N/A` strings as `NA` correctly.
 
 ## basejump 0.1.7 (2017-12-11)
@@ -1862,7 +1862,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Now consistently using clear function definitions in chain operations with
   magrittr pipe (`%>%`).
 - Added `.prepareSampleMetadata` utility function, for use with loading
-  sample metadata from an external CSV, [Excel][], or YAML file.
+  sample metadata from an external CSV, Excel, or YAML file.
 - Added `loadData` functionality back to the package.
 - Initial commit of `loadDataAsName` function.
 - Improved `annotable` function documentation and support for [Ensembl][]
@@ -2016,13 +2016,13 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 - Initial draft release.
 
 [acid genomics]: https://acidgenomics.com/
-[acidbase]: https://acidbase.acidgenomics.com/
-[acidplots]: https://acidplots.acidgenomics.com/
+[acidbase]: https://r.acidgenomics.com/packages/acidbase/
+[acidplots]: https://r.acidgenomics.com/packages/acidplots/
 [annotables]: https://github.com/stephenturner/annotables/
 [annotationhub]: https://bioconductor.org/packages/AnnotationHub/
 [appveyor ci]: https://ci.appveyor.com/
 [assertive]: https://cran.r-project.org/package=assertive
-[basejump]: https://basejump.acidgenomics.com/
+[basejump]: https://r.acidgenomics.com/packages/basejump/
 [bb8]: https://bb8.acidgenomics.com/
 [bcbio]: https://github.com/bcbio/bcbio-nextgen/
 [bcbiobase]: https://bioinformatics.sph.harvard.edu/bcbioBase/
@@ -2032,9 +2032,6 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [biocmanager]: https://cran.r-project.org/package=BiocManager
 [bioconductor]: https://bioconductor.org/
 [biostrings]: https://bioconductor.org/packages/Biostrings/
-[bioverbs]: https://bioverbs.acidgenomics.com/
-[brightworm]: https://brightworm.acidgenomics.com/
-[brio]: https://brio.acidgenomics.com/
 [cell ranger]: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger
 [checkmate]: https://cran.r-project.org/package=checkmate
 [conda]: https://conda.io/
@@ -2042,48 +2039,43 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [cran]: https://cran.r-project.org/
 [data.table]: https://cran.r-project.org/package=data.table
 [devtools]: https://cran.r-project.org/package=devtools
-[dplyr]: http://dplyr.tidyverse.org/
+[dplyr]: https://dplyr.tidyverse.org/
 [eggnog]: http://eggnogdb.embl.de/
 [ensembl]: https://www.ensembl.org/
 [ensembldb]: https://bioconductor.org/packages/ensembldb/
 [entrez]: https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html
-[excel]: https://products.office.com/en-us/excel/
-[freerange]: https://freerange.acidgenomics.com/
 [genomeinfodb]: https://bioconductor.org/packages/GenomeInfoDb/
 [genomeinfodbdata]: https://bioconductor.org/packages/GenomeInfoDbData/
-[ggplot2]: http://ggplot2.tidyverse.org/
+[ggplot2]: https://ggplot2.tidyverse.org/
 [github]: https://github.com/
 [glue]: https://glue.tidyverse.org/
-[goalie]: https://goalie.acidgenomics.com/
+[goalie]: https://r.acidgenomics.com/packages/goalie/
 [grch37]: https://grch37.ensembl.org/
 [hgnc]: https://www.genenames.org/
 [hms rc]: https://rc.hms.harvard.edu/
 [koopa]: https://koopa.acidgenomics.com/
-[libreoffice]: https://www.libreoffice.org/
 [lintr]: https://github.com/jimhester/lintr/
-[macos]: https://www.apple.com/macos/
 [magrittr]: https://magrittr.tidyverse.org/
 [markdown]: https://daringfireball.net/projects/markdown/
 [mgi]: http://www.informatics.jax.org/
 [nih]: https://www.nih.gov/
 [panther]: http://pantherdb.org/
 [pheatmap]: https://cran.r-project.org/package=pheatmap
-[pointillism]: https://pointillism.acidgenomics.com/
-[r-wormbase]: https://wormbase.acidgenomics.com/
+[pointillism]: https://r.acidgenomics.com/packages/pointillism/
+[r-wormbase]: https://r.acidgenomics.com/packages/wormbase/
 [r]: https://www.r-project.org/
-[readr]: http://readr.tidyverse.org/
+[readr]: https://readr.tidyverse.org/
 [rio]: https://cran.r-project.org/package=rio
-[rlang]: http://rlang.tidyverse.org/
+[rlang]: https://rlang.r-lib.org/
 [roxygen2]: https://cran.r-project.org/package=roxygen2
 [s4vectors]: https://bioconductor.org/packages/S4Vectors/
 [summarizedexperiment]: https://bioconductor.org/packages/SummarizedExperiment/
-[syntactic]: https://syntactic.acidgenomics.com/
+[syntactic]: https://r.acidgenomics.com/packages/syntactic/
 [testthat]: https://cran.r-project.org/package=testthat
 [tibble]: https://tibble.tidyverse.org/
-[tidyr]: http://tidyr.tidyverse.org/
-[tidyverse]: http://www.tidyverse.org/
-[transformer]: https://transformer.acidgenomics.com/
+[tidyr]: https://tidyr.tidyverse.org/
+[tidyverse]: https://www.tidyverse.org/
 [travis ci]: https://travis-ci.com/
 [ucsc]: https://genome.ucsc.edu/
 [windows]: https://www.microsoft.com/en-us/windows/
-[wormbase]: http://www.wormbase.org/
+[wormbase]: https://wormbase.org/
