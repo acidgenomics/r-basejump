@@ -225,10 +225,9 @@ setMethod(
         colData <- colData(rse)
         assert(isSubset(rownames(colData), names(cell2sample)))
         colData[[sampleCol]] <- cell2sample[rownames(colData)]
-        ## FIXME Rethink this step?
-        ##       What if we have existing data in sampleName?
-        ##       Need to rethink this approach here.
-        colData[["sampleName"]] <- colData[[sampleCol]]
+        if (isSubset("sampleName", colnames(colData))) {
+            colData[["sampleName"]] <- colData[[sampleCol]]
+        }
         colData(rse) <- colData
         ## Update the metadata.
         metadata <- metadata(x)
