@@ -22,7 +22,7 @@ NULL
 
 
 
-## Updated 2020-01-30.
+## Updated 2021-01-16.
 `aggregateCellsToSamples,SingleCellExperiment` <-  # nolint
     function(x) {
         validObject(x)
@@ -30,8 +30,9 @@ NULL
         colData <- colData(rse)
         assert(areDisjointSets("aggregate", colnames(colData)))
         colData[["aggregate"]] <- cell2sample(x)
-        if ("sampleId" %in% colnames(colData)) {
-            colData[["sampleId"]] <- NULL
+        sampleCol <- matchSampleColumn(colData)
+        if (isSubset(sampleCol, colnames(colData))) {
+            colData[[sampleCol]] <- NULL
         }
         colData(rse) <- colData
         aggregateCols(x = rse, col = "aggregate", fun = "sum")
