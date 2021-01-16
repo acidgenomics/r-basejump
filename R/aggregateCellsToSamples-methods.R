@@ -30,8 +30,8 @@ NULL
         colData <- colData(rse)
         assert(areDisjointSets("aggregate", colnames(colData)))
         colData[["aggregate"]] <- cell2sample(x)
-        if ("sampleID" %in% colnames(colData)) {
-            colData[["sampleID"]] <- NULL
+        if ("sampleId" %in% colnames(colData)) {
+            colData[["sampleId"]] <- NULL
         }
         colData(rse) <- colData
         aggregateCols(x = rse, col = "aggregate", fun = "sum")
