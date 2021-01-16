@@ -304,6 +304,15 @@ NULL
 
 
 
+#' @rdname matchSampleColumn
+#' @name matchSampleColumn
+#' @importFrom AcidGenerics matchSampleColumn
+#' @usage matchSampleColumn(object, ...)
+#' @export
+NULL
+
+
+
 #' @rdname mcolnames
 #' @name mcolnames
 #' @importFrom AcidGenerics mcolnames
