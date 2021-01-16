@@ -1,6 +1,7 @@
 #' @name aggregateCols
 #' @inherit AcidGenerics::aggregateCols
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @note Updated 2021-01-16.
 #'
 #' @inherit aggregateRows
 #' @param ... Additional arguments.
@@ -118,7 +119,6 @@ setMethod(
             isString(col),
             isString(fun)
         )
-
         ## Groupings -----------------------------------------------------------
         if (!all(
             isSubset(col, colnames(colData(x))),
@@ -134,11 +134,9 @@ setMethod(
             identical(length(by), ncol(x))
         )
         names(by) <- colnames(x)
-
         ## Counts --------------------------------------------------------------
         counts <- aggregateCols(x = counts(x), by = by, fun = fun)
         assert(identical(nrow(counts), nrow(x)))
-
         ## Return --------------------------------------------------------------
         args <- list(
             assays = SimpleList(counts = counts),
@@ -167,7 +165,7 @@ setMethod(
 
 
 
-## Updated 2020-01-30.
+## Updated 2021-01-16.
 `aggregateCols,SingleCellExperiment` <-  # nolint
     function(
         x,
@@ -177,44 +175,47 @@ setMethod(
         assert(isString(fun))
         ## Remap cellular barcodes.
         colData <- colData(x)
+        sampleCol <- matchSampleColumn(colData)
+        cellCol <- "cellId"
+        aggregateCol <- "aggregate"
         assert(
-            isSubset(c("sampleID", "aggregate"), colnames(colData)),
-            is.factor(colData[["aggregate"]])
+            isString(sampleCol),
+            isString(aggregateCol),
+            isSubset(c(sampleCol, aggregateCol), colnames(colData)),
+            is.factor(colData[[aggregateCol]])
         )
         cli_alert(sprintf(
             "Remapping cells to aggregate samples: %s",
-            toString(sort(levels(colData[["aggregate"]])), width = 100L)
+            toString(sort(levels(colData[[aggregateCol]])), width = 100L)
         ))
-        map <- colData(x)
-        map <- as_tibble(map, rownames = "cellID")
+        map <- as_tibble(colData(x), rownames = cellCol)
         ## Check to see if we can aggregate.
         if (!all(mapply(
             FUN = grepl,
-            x = map[["cellID"]],
-            pattern = paste0("^", map[["sampleID"]]),
+            x = map[[cellCol]],
+            pattern = paste0("^", map[[sampleCol]]),
             SIMPLIFY = TRUE
         ))) {
-            stop("Cell IDs are not prefixed with sample IDs.")
+            stop("Cell identifiers are not prefixed with sample identifiers.")
         }
         by <- mapply(
             FUN = gsub,
-            x = map[["cellID"]],
-            pattern = paste0("^", map[["sampleID"]]),
-            replacement = map[["aggregate"]],
+            x = map[[cellCol]],
+            pattern = paste0("^", map[[sampleCol]]),
+            replacement = map[[aggregateCol]],
             SIMPLIFY = TRUE,
             USE.NAMES = TRUE
         )
         by <- as.factor(by)
-        cell2sample <- as.factor(map[["aggregate"]])
+        cell2sample <- as.factor(map[[aggregateCol]])
         names(cell2sample) <- as.character(by)
         ## Reslot the `aggregate` column using these groupings.
         assert(identical(names(by), colnames(x)))
-        colData(x)[["aggregate"]] <- by
-
+        colData(x)[[aggregateCol]] <- by
         ## Generate SingleCellExperiment ---------------------------------------
         ## Using `SummarizedExperiment` method here.
         rse <- as(x, "RangedSummarizedExperiment")
-        colData(rse)[["sampleID"]] <- NULL
+        colData(rse)[[sampleCol]] <- NULL
         rse <- aggregateCols(x = rse, fun = fun)
         assert(
             is(rse, "RangedSummarizedExperiment"),
@@ -223,8 +224,11 @@ setMethod(
         ## Update the sample data.
         colData <- colData(rse)
         assert(isSubset(rownames(colData), names(cell2sample)))
-        colData[["sampleID"]] <- cell2sample[rownames(colData)]
-        colData[["sampleName"]] <- colData[["sampleID"]]
+        colData[[sampleCol]] <- cell2sample[rownames(colData)]
+        ## FIXME Rethink this step?
+        ##       What if we have existing data in sampleName?
+        ##       Need to rethink this approach here.
+        colData[["sampleName"]] <- colData[[sampleCol]]
         colData(rse) <- colData
         ## Update the metadata.
         metadata <- metadata(x)
