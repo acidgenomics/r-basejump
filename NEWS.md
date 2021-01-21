@@ -9,6 +9,7 @@
 
 - Consolidated S4 generic imports into AcidGenerics, removing import dependency
   on BiocGenerics.
+- Removed reexport of `mapUCSCBuildToEnsembl`, defined in AcidGenomes.
 
 ## basejump 0.13.4 (2020-12-04)
 
