@@ -1,4 +1,9 @@
-## basejump 0.13.5 (2020-12-22)
+## basejump 0.13.5 (UNRELEASED)
+
+### Major changes
+
+- `camelCase` and `upperCamelCase` now default to `strict = TRUE`, reflecting
+  change implemented in syntactic v0.4.4 release.
 
 ### Minor changes
 
