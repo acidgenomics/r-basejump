@@ -21,13 +21,13 @@ intersectionMatrix(object, ...)
 Intersection matrix
 }
 \note{
-Updated 2020-08-18.
+Updated 2021-01-15.
 }
 \examples{
 object <- list(
-    a = c("a", "b", "c", "d", "e", "f"),
-    b = c("b", "c", "d", "e", "f", "g"),
-    c = c("c", "d", "e", "f", "g", "h")
+    "aaa" = c("a", "b", "c", "d", "e", "f"),
+    "bbb" = c("b", "c", "d", "e", "f", "g"),
+    "ccc" = c("c", "d", "e", "f", "g", "h")
 )
 mat <- intersectionMatrix(object)
 rowSums(mat)

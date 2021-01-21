@@ -19,7 +19,7 @@ Sanitized data frame containing only non-blacklisted columns and all
 Sanitize sample data
 }
 \note{
-Updated 2019-11-19.
+Updated 2021-01-14.
 }
 \section{Blacklist}{
 
@@ -27,7 +27,7 @@ Updated 2019-11-19.
 Here's the current column blacklist:
 \itemize{
 \item interestingGroups.
-\item sampleID.
+\item sampleId.
 }
 }
 

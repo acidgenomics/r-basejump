@@ -48,7 +48,7 @@ additional columns that aren't informative sample metadata.}
 Only applies when \code{clean = TRUE}. Additional factor columns defined in
 \code{colData} to be ignored as sample-level metadata. Particularly useful for
 \code{SingleCellExperiment} objects, where cell-to-sample mappings are defined
-using the \code{sampleID} column.}
+using the \code{sampleId} column.}
 
 \item{blacklistCols}{\code{character} or \code{NULL}.
 Column names that should not be treated as sample-level metadata.
@@ -107,7 +107,7 @@ Required \code{colData}:
 
 Illegal \code{colData}:
 \itemize{
-\item \code{sampleID}: Redundant; already defined in the object column names.
+\item \code{sampleId}: Redundant; already defined in the object column names.
 }
 }
 
@@ -116,7 +116,7 @@ Illegal \code{colData}:
 
 Recommended \code{colData}:
 \itemize{
-\item \code{sampleID}: \code{factor} defining cell-to-sample mappings. These mappings
+\item \code{sampleId}: \code{factor} defining cell-to-sample mappings. These mappings
 should use syntactically valid names. Note that this is not currently
 required as we're supporting \code{SingleCellExperiment} objects from 1 sample,
 but it's required for working with multiple samples in a single object.
