@@ -10,7 +10,7 @@ test_that("SummarizedExperiment", {
 })
 
 test_that("SingleCellExperiment", {
-    object <- selectSamples(sce, sampleID = "sample1")
+    object <- selectSamples(sce, sampleId = "sample1")
     expect_identical(
         object = sampleNames(object),
         expected = c(sample1 = "sample1")

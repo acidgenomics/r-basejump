@@ -72,7 +72,7 @@ test_that("DataFrame return", {
             rep("indrops1_R1.fastq.gz", times = 4L),
             rep("indrops2_R1.fastq.gz", times = 4L)
         )),
-        ## Valid rownames (sampleIDs) are generated from this column.
+        ## Valid rownames (sampleId) are generated from this column.
         ## Note that we're sorting the sample metadata by this column.
         description = factor(c(
             "indrops1-AGAGGATA",
@@ -208,14 +208,14 @@ test_that("bcbio 'samplename' column", {
     )
 })
 
-test_that("'sampleID' column defined by user", {
+test_that("'sampleId' column defined by user", {
     file <- file.path(
         "cache",
         "bcbio-metadata-demultiplexed-invalid-sample-id.csv"
     )
     expect_error(
         object = importSampleData(file, pipeline = "bcbio"),
-        regexp = "sampleID"
+        regexp = "sampleId"
     )
     expect_s4_class(
         object = importSampleData(file, pipeline = "none"),

@@ -108,10 +108,10 @@ test_that("SingleCellExperiment", {
     )
 
     ## Increase the sample ID numbers.
-    sampleID <- y[["sampleID"]]
-    sampleID <- gsub("1$", "3", sampleID)
-    sampleID <- gsub("2$", "4", sampleID)
-    y[["sampleID"]] <- as.factor(sampleID)
+    sampleId <- y[["sampleId"]]
+    sampleId <- gsub("1$", "3", sampleId)
+    sampleId <- gsub("2$", "4", sampleId)
+    y[["sampleId"]] <- as.factor(sampleId)
 
     c <- combine(x, y)
     expect_s4_class(c, "SingleCellExperiment")

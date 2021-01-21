@@ -9,7 +9,7 @@ test_that("SummarizedExperiment : tibble", {
     expect_identical(
         object = colnames(x),
         expected = c(
-            "sampleID",
+            "sampleId",
             "condition",
             "nCount",
             "nFeature",

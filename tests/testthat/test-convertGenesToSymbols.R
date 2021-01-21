@@ -98,6 +98,6 @@ test_that("SummarizedExperiment", {
     object <- convertSymbolsToGenes(object)
     expect_identical(
         object = rownames(object),
-        expected = as.character(mcols(rowRanges(object))[["geneID"]])
+        expected = as.character(mcols(rowRanges(object))[["geneId"]])
     )
 })
