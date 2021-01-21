@@ -254,10 +254,6 @@ AcidGenomes::mapEnsemblReleaseToURL
 #' @export
 AcidGenomes::mapHumanOrthologs
 
-#' @importFrom AcidGenomes mapUCSCBuildToEnsembl
-#' @export
-AcidGenomes::mapUCSCBuildToEnsembl
-
 #' @importFrom AcidGenomes organism
 #' @export
 AcidGenomes::organism
