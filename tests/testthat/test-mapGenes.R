@@ -1,5 +1,5 @@
 g2s <- Gene2Symbol(rse)
-geneIDs <- head(g2s[["geneID"]])
+geneIds <- head(g2s[["geneId"]])
 geneNames <- head(g2s[["geneName"]])
 rownames <- head(rownames(rse))
 
@@ -20,7 +20,7 @@ test_that("SummarizedExperiment", {
         )
     )
     expect_identical(
-        object = mapGenesToRownames(rse, genes = geneIDs),
+        object = mapGenesToRownames(rse, genes = geneIds),
         expected = c(
             ENSG00000000003 = "gene001",
             ENSG00000000005 = "gene002",
@@ -60,7 +60,7 @@ test_that("SummarizedExperiment", {
         )
     )
     expect_identical(
-        object = mapGenesToIDs(rse, genes = geneIDs),
+        object = mapGenesToIDs(rse, genes = geneIds),
         expected = c(
             ENSG00000000003 = "ENSG00000000003",
             ENSG00000000005 = "ENSG00000000005",
@@ -100,7 +100,7 @@ test_that("SummarizedExperiment", {
         )
     )
     expect_identical(
-        object = mapGenesToSymbols(rse, genes = geneIDs),
+        object = mapGenesToSymbols(rse, genes = geneIds),
         expected = c(
             ENSG00000000003 = "TSPAN6",
             ENSG00000000005 = "TNMD",

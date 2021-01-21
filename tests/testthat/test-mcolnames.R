@@ -10,7 +10,7 @@ test_that("DataFrame", {
 test_that("GRanges", {
     expect_identical(
         object = mcolnames(gr),
-        expected = c("geneID", "geneName")
+        expected = c("geneId", "geneName")
     )
 })
 

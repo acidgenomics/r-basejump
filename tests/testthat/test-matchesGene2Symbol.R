@@ -2,13 +2,13 @@ context("matchesGene2Symbol")
 
 gene2symbol <- Gene2Symbol(
     object = DataFrame(
-        geneID = paste0("gene", seq_len(2L)),
-        geneName = paste0("symbol", seq_len(2L))
+        "geneId" = paste0("gene", seq_len(2L)),
+        "geneName" = paste0("symbol", seq_len(2L))
     )
 )
 
 test_that("matchesGene2Symbol", {
-    genes <- gene2symbol[["geneID"]]
+    genes <- gene2symbol[["geneId"]]
     expect_true(is.character(genes))
     x <- DataFrame(
         "sample1" = c(1L, 2L),
