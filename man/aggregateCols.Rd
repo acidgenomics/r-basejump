@@ -43,6 +43,9 @@ Modified object of same class, with columns aggregated.
 \description{
 Aggregate columns
 }
+\note{
+Updated 2021-01-16.
+}
 \section{Methods (by class)}{
 
 \itemize{

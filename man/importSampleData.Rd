@@ -26,7 +26,7 @@ suffix (i.e. \verb{_LXXX}).}
 \item{pipeline}{\code{character(1)}.
 Analysis pipeline:
 \itemize{
-\item \code{"none"}: Simple mode, requiring only "sampleID" column.
+\item \code{"none"}: Simple mode, requiring only "sampleId" column.
 \item \code{"bcbio"}: bcbio mode. See section here in documentation for details.
 \item \code{"cellranger"}: Cell Ranger mode. Currently requires "directory" column.
 Used by Chromium R package.

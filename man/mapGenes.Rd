@@ -74,24 +74,24 @@ rownames <- head(rownames(rse))
 print(rownames)
 
 g2s <- Gene2Symbol(rse)
-geneIDs <- head(g2s[["geneID"]])
-print(geneIDs)
+geneIds <- head(g2s[["geneId"]])
+print(geneIds)
 
 geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 ## Row names.
 mapGenesToRownames(rse, genes = rownames)
-mapGenesToRownames(rse, genes = geneIDs)
+mapGenesToRownames(rse, genes = geneIds)
 mapGenesToRownames(rse, genes = geneNames)
 
 ## Gene identifiers.
 mapGenesToIDs(rse, genes = rownames)
-mapGenesToIDs(rse, genes = geneIDs)
+mapGenesToIDs(rse, genes = geneIds)
 mapGenesToIDs(rse, genes = geneNames)
 
 ## Gene names (symbols).
 mapGenesToSymbols(rse, genes = rownames)
-mapGenesToSymbols(rse, genes = geneIDs)
+mapGenesToSymbols(rse, genes = geneIds)
 mapGenesToSymbols(rse, genes = geneNames)
 }

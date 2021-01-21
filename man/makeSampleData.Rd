@@ -31,7 +31,7 @@ This function adheres to the following conventions:
 \itemize{
 \item Row names are required. Either define manually (recommended) or pass in as
 a rownames column (data.table / tibble style).
-Supported colnames: "sampleID", "rowname", "rn".
+Supported colnames: "sampleId", "rowname", "rn".
 \item All column names will be converted to lower camel case
 (see \code{\link[=camelCase]{camelCase()}} for details).
 \item \code{sampleName} column is always placed first.

@@ -13,7 +13,7 @@ matchesGene2Symbol(x, genes, gene2symbol, .xname = getNameInParent(x))
 Gene identifiers.}
 
 \item{gene2symbol}{\code{Gene2Symbol}.
-Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
+Gene-to-symbol mappings. Must contain \code{geneId} and \code{geneName} columns. See
 \code{Gene2Symbol} for more information.}
 
 \item{.xname}{Name of object defined in \code{x}.
@@ -39,19 +39,19 @@ print(x)
 
 g2s <- Gene2Symbol(
     object = S4Vectors::DataFrame(
-        geneID = c("ENSG00000000003", "ENSG00000000005"),
-        geneName = c("TSPAN6", "TNMD"),
+        "geneId" = c("ENSG00000000003", "ENSG00000000005"),
+        "geneName" = c("TSPAN6", "TNMD"),
         row.names = rownames(x)
     )
 )
 print(g2s)
 
-geneIDs <- g2s[["geneID"]]
-print(geneIDs)
+geneIds <- g2s[["geneId"]]
+print(geneIds)
 
 geneNames <- g2s[["geneName"]]
 print(geneNames)
 
-matchesGene2Symbol(x = x, genes = geneIDs, gene2symbol = g2s)
+matchesGene2Symbol(x = x, genes = geneIds, gene2symbol = g2s)
 matchesGene2Symbol(x = x, genes = geneNames, gene2symbol = g2s)
 }

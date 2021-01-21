@@ -32,7 +32,7 @@ convertSymbolsToGenes(object, ...)
 \item{object}{Object.}
 
 \item{gene2symbol}{\code{Gene2Symbol}.
-Gene-to-symbol mappings. Must contain \code{geneID} and \code{geneName} columns. See
+Gene-to-symbol mappings. Must contain \code{geneId} and \code{geneName} columns. See
 \code{Gene2Symbol} for more information.}
 
 \item{...}{Additional arguments.}
@@ -53,7 +53,7 @@ object <- rse
 
 g2s <- Gene2Symbol(object)
 print(g2s)
-genes <- head(g2s[["geneID"]])
+genes <- head(g2s[["geneId"]])
 print(genes)
 
 ## character ====

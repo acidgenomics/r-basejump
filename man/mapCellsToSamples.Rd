@@ -18,11 +18,11 @@ Sample identifiers.}
 Cells as the names and samples as the levels.
 }
 \description{
-This function extracts \code{sampleID} from the \code{cellID} column using grep
+This function extracts \code{sampleId} from the \code{cellId} column using grep
 matching.
 }
 \note{
-Updated 2019-08-18.
+Updated 2021-01-14.
 }
 \examples{
 samples <- paste0("sample", seq_len(2L))
