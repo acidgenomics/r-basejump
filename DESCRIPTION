@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.13.5
-Date: 2020-12-22
+Date: 2021-01-21
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -37,30 +37,30 @@ Depends:
     R (>= 4.0),
     S4Vectors
 Imports:
-    AcidBase (>= 0.2.6),
-    AcidGenerics (>= 0.5.0),
-    AcidGenomes (>= 0.1.1),
-    AcidPlyr (>= 0.1.4),
+    AcidBase (>= 0.3.2),
+    AcidCLI (>= 0.0.5),
+    AcidGenerics (>= 0.5.1),
+    AcidGenomes (>= 0.2.0),
+    AcidPlyr (>= 0.1.6),
     Biostrings,
     GenomicRanges,
     IRanges,
-    Matrix (>= 1.2),
+    Matrix (>= 1.3),
     SingleCellExperiment,
     SummarizedExperiment,
-    cli (>= 2.2),
-    goalie (>= 0.4.11),
+    goalie (>= 0.4.14),
     magrittr (>= 2.0),
     matrixStats (>= 0.57),
     methods,
-    pipette (>= 0.4.23),
+    pipette (>= 0.5.2),
     scales (>= 1.1),
     sessioninfo (>= 1.1),
     stringr (>= 1.4),
-    syntactic (>= 0.4.3),
+    syntactic (>= 0.4.4),
     tibble (>= 3.0),
     utils
 Suggests:
-    AcidTest (>= 0.4.0),
+    AcidTest (>= 0.4),
     BiocStyle,
     datasets,
     knitr,
