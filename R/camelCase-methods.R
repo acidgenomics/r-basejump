@@ -1,6 +1,6 @@
 #' @name camelCase
 #' @inherit syntactic::camelCase
-#' @note Updated 2020-05-11.
+#' @note Updated 2021-01-21.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param assayNames `logical(1)`.
@@ -27,7 +27,7 @@ NULL
 
 
 `camelCase,atomic` <-  # nolint
-    function(object, names = TRUE, strict = FALSE) {
+    function(object, names = TRUE, strict = TRUE) {
         assert(
             isFlag(names),
             isFlag(strict)
@@ -51,7 +51,7 @@ setMethod(
 
 
 `camelCase,factor` <-  # nolint
-    function(object, names = TRUE, strict = FALSE) {
+    function(object, names = TRUE, strict = TRUE) {
         assert(
             isFlag(names),
             isFlag(strict)
@@ -99,7 +99,7 @@ setMethod(
         object,
         rownames = FALSE,
         colnames = TRUE,
-        strict = FALSE
+        strict = TRUE
     ) {
         assert(
             hasDimnames(object),
@@ -148,7 +148,7 @@ setMethod(
         names = TRUE,
         mcols = TRUE,
         metadata = TRUE,
-        strict = FALSE
+        strict = TRUE
     ) {
         assert(
             isFlag(names),
@@ -190,7 +190,7 @@ setMethod(
         colnames = TRUE,
         mcols = TRUE,
         metadata = TRUE,
-        strict = FALSE
+        strict = TRUE
     ) {
         assert(
             hasDimnames(object),
@@ -268,7 +268,7 @@ setMethod(
         rowData = TRUE,
         colData = TRUE,
         metadata = TRUE,
-        strict = FALSE
+        strict = TRUE
     ) {
         assert(
             isFlag(rownames),

@@ -1,6 +1,6 @@
 #' @name upperCamelCase
 #' @inherit syntactic::upperCamelCase
-#' @note Updated 2020-05-11.
+#' @note Updated 2021-01-21.
 #'
 #' @inheritParams camelCase
 #' @param ... Additional arguments.
@@ -13,7 +13,7 @@ NULL
 
 
 `upperCamelCase,atomic` <-  # nolint
-    function(object, names = TRUE, strict = FALSE) {
+    function(object, names = TRUE, strict = TRUE) {
         assert(
             isFlag(names),
             isFlag(strict)
@@ -37,7 +37,7 @@ setMethod(
 
 
 `upperCamelCase,factor` <-  # nolint
-    function(object, names = TRUE, strict = FALSE) {
+    function(object, names = TRUE, strict = TRUE) {
         assert(
             isFlag(names),
             isFlag(strict)
@@ -85,7 +85,7 @@ setMethod(
         object,
         rownames = FALSE,
         colnames = TRUE,
-        strict = FALSE
+        strict = TRUE
     ) {
         assert(
             hasDimnames(object),
@@ -136,7 +136,7 @@ setMethod(
         names = TRUE,
         mcols = TRUE,
         metadata = TRUE,
-        strict = FALSE
+        strict = TRUE
     ) {
         assert(
             isFlag(names),
@@ -178,7 +178,7 @@ setMethod(
         colnames = TRUE,
         mcols = TRUE,
         metadata = TRUE,
-        strict = FALSE
+        strict = TRUE
     ) {
         assert(
             hasDimnames(object),
@@ -258,7 +258,7 @@ setMethod(
         rowData = TRUE,
         colData = TRUE,
         metadata = TRUE,
-        strict = FALSE
+        strict = TRUE
     ) {
         assert(
             isFlag(rownames),
