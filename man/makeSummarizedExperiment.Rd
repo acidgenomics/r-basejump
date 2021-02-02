@@ -6,7 +6,7 @@
 \usage{
 makeSummarizedExperiment(
   assays = SimpleList(),
-  rowRanges = GRangesList(),
+  rowRanges = GRanges(),
   rowData = NULL,
   colData = DataFrame(),
   metadata = list(),
@@ -61,7 +61,7 @@ of transgenes and spike-ins.
 \note{
 Column and rows always return sorted alphabetically.
 
-Updated 2020-10-07.
+Updated 2021-02-02.
 }
 \section{Session information}{
 
