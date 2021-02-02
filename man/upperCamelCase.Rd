@@ -16,22 +16,22 @@
 \usage{
 upperCamelCase(object, ...)
 
-\S4method{upperCamelCase}{atomic}(object, names = TRUE, strict = FALSE)
+\S4method{upperCamelCase}{atomic}(object, names = TRUE, strict = TRUE)
 
-\S4method{upperCamelCase}{factor}(object, names = TRUE, strict = FALSE)
+\S4method{upperCamelCase}{factor}(object, names = TRUE, strict = TRUE)
 
-\S4method{upperCamelCase}{list}(object, names = TRUE, strict = FALSE)
+\S4method{upperCamelCase}{list}(object, names = TRUE, strict = TRUE)
 
-\S4method{upperCamelCase}{matrix}(object, rownames = FALSE, colnames = TRUE, strict = FALSE)
+\S4method{upperCamelCase}{matrix}(object, rownames = FALSE, colnames = TRUE, strict = TRUE)
 
-\S4method{upperCamelCase}{data.frame}(object, rownames = FALSE, colnames = TRUE, strict = FALSE)
+\S4method{upperCamelCase}{data.frame}(object, rownames = FALSE, colnames = TRUE, strict = TRUE)
 
 \S4method{upperCamelCase}{Vector}(
   object,
   names = TRUE,
   mcols = TRUE,
   metadata = TRUE,
-  strict = FALSE
+  strict = TRUE
 )
 
 \S4method{upperCamelCase}{DataFrame}(
@@ -40,7 +40,7 @@ upperCamelCase(object, ...)
   colnames = TRUE,
   mcols = TRUE,
   metadata = TRUE,
-  strict = FALSE
+  strict = TRUE
 )
 
 \S4method{upperCamelCase}{Ranges}(
@@ -48,10 +48,10 @@ upperCamelCase(object, ...)
   names = FALSE,
   mcols = TRUE,
   metadata = TRUE,
-  strict = FALSE
+  strict = TRUE
 )
 
-\S4method{upperCamelCase}{Matrix}(object, rownames = FALSE, colnames = TRUE, strict = FALSE)
+\S4method{upperCamelCase}{Matrix}(object, rownames = FALSE, colnames = TRUE, strict = TRUE)
 
 \S4method{upperCamelCase}{SummarizedExperiment}(
   object,
@@ -61,7 +61,7 @@ upperCamelCase(object, ...)
   rowData = TRUE,
   colData = TRUE,
   metadata = TRUE,
-  strict = FALSE
+  strict = TRUE
 )
 }
 \arguments{
@@ -118,7 +118,7 @@ for S4 class names and corresponding generators, but not variables or
 functions.
 }
 \note{
-Updated 2020-05-11.
+Updated 2021-01-21.
 }
 \examples{
 data(syntactic, package = "AcidTest")

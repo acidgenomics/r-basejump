@@ -57,14 +57,6 @@ for \code{\link[=aggregateRows]{aggregateRows()}}, or into
 \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}} for \code{\link[=aggregateCols]{aggregateCols()}}. This
 method will define the \code{groupings} automatically, and perform the
 aggregation.
-\item \code{SingleCellExperiment}:
-Aggregate \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays()}} across cell-level
-groupings, defined by a column in
-\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}. Inherits from
-\code{SummarizedExperiment}, and still relies upon slotting an \code{aggregate}
-column into \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}. Note that these
-groupings will map to cells, so care must be taken to properly aggregate
-samples.
 }
 }
 
