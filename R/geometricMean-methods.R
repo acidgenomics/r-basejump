@@ -54,12 +54,10 @@ NULL
             isFlag(removeNA),
             isFlag(zeroPropagate)
         )
-
         ## Check for any negative numbers and return `NaN`
         if (any(object < 0L, na.rm = TRUE)) {
             return(NaN)
         }
-
         if (isTRUE(zeroPropagate)) {
             if (any(object == 0L, na.rm = TRUE)) {
                 return(0L)

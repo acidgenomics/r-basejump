@@ -5,9 +5,9 @@
 #' Here's the current column blacklist:
 #'
 #' - interestingGroups.
-#' - sampleID.
+#' - sampleId.
 #'
-#' @note Updated 2019-11-19.
+#' @note Updated 2021-01-14.
 #' @export
 #'
 #' @param object `DataFrame` (recommended) or `data.frame` (legacy).
@@ -46,7 +46,7 @@ sanitizeSampleData <- function(object) {
         hasRownames(object)
     )
     ## Drop blacklisted columns.
-    blacklist <- c("interestingGroups", "sampleID")
+    blacklist <- c("interestingGroups", "sampleId")
     object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
     ## This will flatten the S4 columns if possible and drop non-atomic.
     object <- atomize(object)

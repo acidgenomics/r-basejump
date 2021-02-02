@@ -79,7 +79,7 @@ setMethod(
 `selectSamples,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         validObject(object)
-        assert(isSubset("sampleID", colnames(colData(object))))
+        assert(isSubset("sampleId", colnames(colData(object))))
         ## Here the `args` are captured as a named character vector. The names
         ## of the arguments represent the column names. The value of the
         ## arguments should be a string that can be used for logical grep
@@ -94,8 +94,8 @@ setMethod(
         }
         ## Match the arguments against the sample metadata.
         sampleData <- sampleData(object)
-        ## Allowing the user to select by "sampleID".
-        sampleData[["sampleID"]] <- rownames(sampleData)
+        ## Allowing the user to select by "sampleId".
+        sampleData[["sampleId"]] <- rownames(sampleData)
         assert(hasRownames(sampleData))
         matches <- mapply(
             col = names(args),
@@ -130,7 +130,7 @@ setMethod(
         samples <- Reduce(f = intersect, x = matches)
         assert(hasLength(samples))
         ## Output to the user which samples matched, using the `sampleName`
-        ## metadata column, which is more descriptive than `sampleID`
+        ## metadata column, which is more descriptive than `sampleId`
         sampleNames <- sampleData[samples, "sampleName", drop = TRUE]
         sampleNames <- sort(unique(as.character(sampleNames)))
         cli_alert_info(sprintf(
@@ -145,7 +145,7 @@ setMethod(
         ))
 
         colData <- colData(object)
-        keep <- colData[["sampleID"]] %in% samples
+        keep <- colData[["sampleId"]] %in% samples
         colData <- colData[keep, , drop = FALSE]
         cells <- rownames(colData)
         cli_alert_info(sprintf(

@@ -177,7 +177,7 @@ matchHumanOrthologs <- function(...) {
 #' @export
 NULL
 
-`markdown,SummarizedExperiment` <-  # nolint
+`markdown,ANY` <-  # nolint
     function(object) {
         .Defunct()
     }
@@ -186,9 +186,17 @@ NULL
 #' @export
 setMethod(
     f = "markdown",
-    signature = signature("SummarizedExperiment"),
-    definition = `markdown,SummarizedExperiment`
+    signature = signature("ANY"),
+    definition = `markdown,ANY`
 )
+
+
+
+#' @rdname defunct
+#' @export
+multiassignAsEnvir <- function(...) {
+    .Defunct()
+}
 
 
 
