@@ -318,13 +318,6 @@ NULL
 #' @export
 NULL
 
-#' @rdname metrics
-#' @name metricsPerSample
-#' @importFrom AcidGenerics metricsPerSample
-#' @usage metricsPerSample(object, ...)
-#' @export
-NULL
-
 
 
 #' @rdname nonzeroRowsAndCols
