@@ -192,9 +192,56 @@ setMethod(
 
 
 
+`mcolnames,Vector` <-  # nolint
+    function(x) {
+        .Defunct()
+    }
+
+#' @rdname defunct
+#' @export
+setMethod(
+    f = "mcolnames",
+    signature = signature(x = "Vector"),
+    definition = `mcolnames,Vector`
+)
+
+`mcolnames<-,Vector,character` <-  # nolint
+    function(x, value) {
+        .Defunct()
+    }
+
+#' @rdname mcolnames
+#' @export
+setMethod(
+    f = "mcolnames<-",
+    signature = signature(
+        x = "Vector",
+        value = "character"
+    ),
+    definition = `mcolnames<-,Vector,character`
+)
+
+
+
 #' @rdname defunct
 #' @export
 multiassignAsEnvir <- function(...) {
+    .Defunct()
+}
+
+
+
+#' @rdname defunct
+#' @export
+sortUnique <- function(...) {
+    .Defunct()
+}
+
+
+
+#' @rdname defunct
+#' @export
+toStringUnique <- function(...) {
     .Defunct()
 }
 

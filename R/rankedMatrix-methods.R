@@ -1,3 +1,7 @@
+## FIXME NEED TO CONVERT TO GENERIC HERE.
+
+
+
 #' Calculate a ranked matrix
 #'
 #' @note Ties are resolved automatically by calculating the average. See the
