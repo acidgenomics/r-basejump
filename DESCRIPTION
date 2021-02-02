@@ -136,6 +136,7 @@ Collate:
     'rankedMatrix.R'
     'reexports-classes.R'
     'reexports-coerce.R'
+    'reexports-methods.R'
     'reexports.R'
     'sampleData-methods.R'
     'sampleNames-methods.R'
