@@ -1,58 +1,3 @@
-#' @rdname aggregate
-#' @name aggregate
-#' @importFrom AcidGenerics aggregate
-#' @usage aggregate(x, ...)
-#' @export
-NULL
-
-
-
-#' @rdname aggregateCellsToSamples
-#' @name aggregateCellsToSamples
-#' @importFrom AcidGenerics aggregateCellsToSamples
-#' @usage aggregateCellsToSamples(x, ...)
-#' @export
-NULL
-
-
-
-#' @rdname aggregateCols
-#' @name aggregateCols
-#' @importFrom AcidGenerics aggregateCols
-#' @usage aggregateCols(x, ...)
-#' @export
-NULL
-
-
-
-#' @rdname aggregateRows
-#' @name aggregateRows
-#' @importFrom AcidGenerics aggregateRows
-#' @usage aggregateRows(x, ...)
-#' @export
-NULL
-
-
-
-#' @rdname autopadZeros
-#' @name autopadZeros
-#' @importFrom AcidGenerics autopadZeros
-#' @importMethodsFrom syntactic autopadZeros
-#' @usage autopadZeros(object, ...)
-#' @export
-NULL
-
-
-
-#' @rdname calculateMetrics
-#' @name calculateMetrics
-#' @importFrom AcidGenerics calculateMetrics
-#' @usage calculateMetrics(object, ...)
-#' @export
-NULL
-
-
-
 #' @rdname camelCase
 #' @name camelCase
 #' @importFrom AcidGenerics camelCase
@@ -72,88 +17,11 @@ NULL
 
 
 
-#' @rdname combine
-#' @name combine
-#' @importFrom AcidGenerics combine
-#' @usage combine(x, y, ...)
-#' @export
-NULL
-
-
-
-#' @rdname convertGenesToSymbols
-#' @name convertGenesToSymbols
-#' @importFrom AcidGenerics convertGenesToSymbols
-#' @usage convertGenesToSymbols(object, ...)
-#' @export
-NULL
-
-#' @rdname convertGenesToSymbols
-#' @name convertSymbolsToGenes
-#' @importFrom AcidGenerics convertSymbolsToGenes
-#' @usage convertSymbolsToGenes(object, ...)
-#' @export
-NULL
-
-
-
-#' @rdname convertSampleIDsToNames
-#' @name convertSampleIDsToNames
-#' @importFrom AcidGenerics convertSampleIDsToNames
-#' @usage convertSampleIDsToNames(object, ...)
-#' @export
-NULL
-
-
-
-#' @rdname convertTranscriptsToGenes
-#' @name convertTranscriptsToGenes
-#' @importFrom AcidGenerics convertTranscriptsToGenes
-#' @usage convertTranscriptsToGenes(object, ...)
-#' @export
-NULL
-
-
-
-#' @rdname correlation
-#' @name correlation
-#' @importFrom AcidGenerics correlation
-#' @usage correlation(x, y, ...)
-#' @export
-NULL
-
-
-
-#' @rdname counts
-#' @name counts
-#' @importFrom AcidGenerics counts
-#' @usage counts(object, ...)
-#' @export
-NULL
-
-#' @rdname counts
-#' @name counts<-
-#' @importFrom AcidGenerics counts<-
-#' @usage counts(object, ...) <- value
-#' @export
-NULL
-
-
-
 #' @rdname dottedCase
 #' @name dottedCase
 #' @importFrom AcidGenerics dottedCase
 #' @importMethodsFrom syntactic dottedCase
 #' @usage dottedCase(object, ...)
-#' @export
-NULL
-
-
-
-#' @rdname estimateSizeFactors
-#' @name estimateSizeFactors
-#' @importFrom AcidGenerics estimateSizeFactors
-#' @usage estimateSizeFactors(object, ...)
 #' @export
 NULL
 
@@ -172,15 +40,6 @@ NULL
 #' @name headtail
 #' @importFrom AcidGenerics headtail
 #' @usage headtail(x, ...)
-#' @export
-NULL
-
-
-
-#' @rdname humanize
-#' @name humanize
-#' @importFrom AcidGenerics humanize
-#' @usage humanize(object, ...)
 #' @export
 NULL
 
