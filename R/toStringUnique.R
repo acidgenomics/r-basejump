@@ -1,3 +1,7 @@
+## FIXME MOVE THIS TO ACIDBASE AND REEXPORT.
+
+
+
 #' Convert to a unique character string
 #'
 #' @note Updated 2019-08-16.

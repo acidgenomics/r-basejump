@@ -1,3 +1,7 @@
+## FIXME DEFINE THIS IN ACIDBASE.
+
+
+
 #' @name sem
 #' @inherit AcidGenerics::headtail
 #' @note `numeric` method is defined in AcidBase.
