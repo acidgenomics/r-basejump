@@ -65,19 +65,19 @@ NULL
         samples <- levels(cell2sample(object))
         return <- lapply(
             X = samples,
-            FUN = function(sampleID) {
-                subset <- selectSamples(object, sampleID = sampleID)
+            FUN = function(sampleId) {
+                subset <- selectSamples(object, sampleId = sampleId)
                 ## Skip if subset doesn't have enough cells.
                 if (ncol(subset) < minCells) {
-                    warning(sprintf(
+                    alertWarning(sprintf(
                         "'%s' didn't pass minimum cell cutoff.",
-                        sampleID
+                        sampleId
                     ))
                     return(NULL)
                 }
                 if (isTRUE(assignAndSave)) {
                     assignAndSaveData(
-                        name = sampleID,
+                        name = sampleId,
                         object = subset,
                         envir = envir,
                         dir = dir
