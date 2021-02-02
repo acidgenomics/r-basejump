@@ -8,29 +8,11 @@ NULL
 
 
 
-#' @rdname collapseToString
-#' @name collapseToString
-#' @importFrom AcidGenerics collapseToString
-#' @usage collapseToString(object, ...)
-#' @export
-NULL
-
-
-
 #' @rdname dottedCase
 #' @name dottedCase
 #' @importFrom AcidGenerics dottedCase
 #' @importMethodsFrom syntactic dottedCase
 #' @usage dottedCase(object, ...)
-#' @export
-NULL
-
-
-
-#' @rdname geometricMean
-#' @name geometricMean
-#' @importFrom AcidGenerics geometricMean
-#' @usage geometricMean(object, ...)
 #' @export
 NULL
 
