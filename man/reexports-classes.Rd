@@ -4,17 +4,29 @@
 \alias{reexports-classes}
 \alias{Ensembl2Entrez-class}
 \alias{Entrez2Ensembl-class}
+\alias{EnsemblGenes-class}
+\alias{EnsemblTranscripts-class}
+\alias{FlyBaseGenes-class}
+\alias{FlyBaseTranscripts-class}
+\alias{GencodeGenes-class}
+\alias{GencodeTranscripts-class}
 \alias{Gene2Symbol-class}
 \alias{HGNC-class}
 \alias{HGNC2Ensembl-class}
 \alias{MGI2Ensembl-class}
 \alias{Protein2Gene-class}
+\alias{RefSeqGenes-class}
+\alias{RefSeqTranscripts-class}
 \alias{Tx2Gene-class}
+\alias{UCSCGenes-class}
+\alias{UCSCTranscripts-class}
+\alias{WormBaseGenes-class}
+\alias{WormBaseTranscripts-class}
 \title{Reexport S4 classes}
 \description{
 Reexport S4 classes
 }
 \note{
-Updated 2020-10-09.
+Updated 2021-02-02.
 }
 \keyword{internal}

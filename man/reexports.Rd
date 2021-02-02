@@ -3,27 +3,35 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{basenameSansExt}
+\alias{appendToBody}
 \alias{barcodePattern}
+\alias{basenameSansExt}
+\alias{classContains}
 \alias{compress}
 \alias{compressExtPattern}
 \alias{decompress}
 \alias{dots}
+\alias{download}
 \alias{extPattern}
+\alias{fileDepth}
 \alias{fileExt}
+\alias{forceDetach}
 \alias{formalsList}
 \alias{genomeMetadataNames}
 \alias{initDir}
 \alias{lanePattern}
-\alias{matchArgsToDoCall}
+\alias{majorVersion}
 \alias{metadataBlacklist}
-\alias{metricsCols}
 \alias{methodFormals}
 \alias{methodFunction}
+\alias{metricsCols}
+\alias{minorVersion}
 \alias{pasteURL}
 \alias{printString}
 \alias{realpath}
 \alias{requireNamespaces}
+\alias{sanitizeVersion}
+\alias{shell}
 \alias{showSlotInfo}
 \alias{standardizeCall}
 \alias{updateMessage}
@@ -39,31 +47,36 @@
 \alias{MGI2Ensembl}
 \alias{Tx2Gene}
 \alias{annotable}
+\alias{currentEnsemblGenomeBuild}
 \alias{currentEnsemblVersion}
 \alias{currentFlyBaseVersion}
+\alias{currentGencodeGenomeBuild}
 \alias{currentGencodeVersion}
+\alias{currentRefSeqGenomeBuild}
 \alias{currentRefSeqVersion}
+\alias{currentUCSCGenomeBuild}
 \alias{currentWormBaseVersion}
 \alias{detectOrganism}
+\alias{downloadEnsemblGenome}
+\alias{downloadGencodeGenome}
+\alias{downloadRefSeqGenome}
+\alias{downloadUCSCGenome}
 \alias{emptyRanges}
 \alias{geneNames}
 \alias{geneSynonyms}
-\alias{getEnsDb}
 \alias{importTx2Gene}
 \alias{makeGRangesFromEnsDb}
 \alias{makeGRangesFromEnsembl}
 \alias{makeGRangesFromGFF}
-\alias{makeGRangesFromGTF}
 \alias{makeGene2SymbolFromEnsDb}
 \alias{makeGene2SymbolFromEnsembl}
 \alias{makeGene2SymbolFromGFF}
-\alias{makeGene2SymbolFromGTF}
 \alias{makeProtein2GeneFromEnsembl}
 \alias{makeTx2GeneFromEnsDb}
 \alias{makeTx2GeneFromEnsembl}
 \alias{makeTx2GeneFromFASTA}
 \alias{makeTx2GeneFromGFF}
-\alias{makeTx2GeneFromGTF}
+\alias{mapEnsemblBuildToUCSC}
 \alias{mapEnsemblReleaseToURL}
 \alias{mapHumanOrthologs}
 \alias{mapUCSCBuildToEnsembl}
@@ -116,7 +129,6 @@
 \alias{coerceToList}
 \alias{column_to_rownames}
 \alias{decode}
-\alias{download}
 \alias{encode}
 \alias{export}
 \alias{factorize}
@@ -155,11 +167,11 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AcidBase}{\code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{matchArgsToDoCall}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase]{updateMessage}}}
+  \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase]{updateMessage}}}
 
   \item{AcidGenerics}{\code{\link[AcidGenerics:reexports-bioc]{mcols}}, \code{\link[AcidGenerics:reexports-bioc]{mcols<-}}, \code{\link[AcidGenerics:reexports-bioc]{metadata}}, \code{\link[AcidGenerics:reexports-bioc]{metadata<-}}}
 
-  \item{AcidGenomes}{\code{\link[AcidGenomes]{Ensembl2Entrez}}, \code{\link[AcidGenomes:Ensembl2Entrez]{Entrez2Ensembl}}, \code{\link[AcidGenomes]{Gene2Symbol}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes]{Tx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{annotable}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneNames}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{getEnsDb}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGRangesFromGFF]{makeGRangesFromGTF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGTF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGTF}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}, \code{\link[AcidGenomes]{mapUCSCBuildToEnsembl}}, \code{\link[AcidGenomes]{organism}}, \code{\link[AcidGenomes:organism]{organism<-}}, \code{\link[AcidGenomes:stripTranscriptVersions]{stripGeneVersions}}, \code{\link[AcidGenomes]{stripTranscriptVersions}}}
+  \item{AcidGenomes}{\code{\link[AcidGenomes]{Ensembl2Entrez}}, \code{\link[AcidGenomes:Ensembl2Entrez]{Entrez2Ensembl}}, \code{\link[AcidGenomes]{Gene2Symbol}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes]{Tx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{annotable}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentEnsemblGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentGencodeGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentRefSeqGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentUCSCGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{downloadEnsemblGenome}}, \code{\link[AcidGenomes]{downloadGencodeGenome}}, \code{\link[AcidGenomes]{downloadRefSeqGenome}}, \code{\link[AcidGenomes]{downloadUCSCGenome}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneNames}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapEnsemblBuildToUCSC}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapUCSCBuildToEnsembl}}, \code{\link[AcidGenomes]{organism}}, \code{\link[AcidGenomes:organism]{organism<-}}, \code{\link[AcidGenomes:stripVersions]{stripGeneVersions}}, \code{\link[AcidGenomes:stripVersions]{stripTranscriptVersions}}}
 
   \item{AcidPlyr}{\code{\link[AcidPlyr:join]{antiJoin}}, \code{\link[AcidPlyr:join]{fullJoin}}, \code{\link[AcidPlyr:join]{innerJoin}}, \code{\link[AcidPlyr:join]{leftJoin}}, \code{\link[AcidPlyr:mutate]{mutateAll}}, \code{\link[AcidPlyr:mutate]{mutateAt}}, \code{\link[AcidPlyr:mutate]{mutateIf}}, \code{\link[AcidPlyr:join]{rightJoin}}, \code{\link[AcidPlyr:select]{selectIf}}, \code{\link[AcidPlyr:join]{semiJoin}}, \code{\link[AcidPlyr]{splitByLevel}}, \code{\link[AcidPlyr:mutate]{transmuteAt}}, \code{\link[AcidPlyr:mutate]{transmuteIf}}}
 

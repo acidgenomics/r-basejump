@@ -48,7 +48,7 @@ For objects containing a count matrix, the object rows will be
 collapsed to gene level using \code{aggregateRows}. This applies to our
 \code{SummarizedExperiment} method.
 
-Updated 2020-01-30.
+Updated 2021-02-02.
 }
 \examples{
 data(SummarizedExperiment_transcripts, package = "AcidTest")

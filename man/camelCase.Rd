@@ -16,17 +16,17 @@
 \usage{
 camelCase(object, ...)
 
-\S4method{camelCase}{atomic}(object, names = TRUE, strict = FALSE)
+\S4method{camelCase}{atomic}(object, names = TRUE, strict = TRUE)
 
-\S4method{camelCase}{factor}(object, names = TRUE, strict = FALSE)
+\S4method{camelCase}{factor}(object, names = TRUE, strict = TRUE)
 
-\S4method{camelCase}{list}(object, names = TRUE, strict = FALSE)
+\S4method{camelCase}{list}(object, names = TRUE, strict = TRUE)
 
-\S4method{camelCase}{matrix}(object, rownames = FALSE, colnames = TRUE, strict = FALSE)
+\S4method{camelCase}{matrix}(object, rownames = FALSE, colnames = TRUE, strict = TRUE)
 
-\S4method{camelCase}{data.frame}(object, rownames = FALSE, colnames = TRUE, strict = FALSE)
+\S4method{camelCase}{data.frame}(object, rownames = FALSE, colnames = TRUE, strict = TRUE)
 
-\S4method{camelCase}{Vector}(object, names = TRUE, mcols = TRUE, metadata = TRUE, strict = FALSE)
+\S4method{camelCase}{Vector}(object, names = TRUE, mcols = TRUE, metadata = TRUE, strict = TRUE)
 
 \S4method{camelCase}{DataFrame}(
   object,
@@ -34,12 +34,12 @@ camelCase(object, ...)
   colnames = TRUE,
   mcols = TRUE,
   metadata = TRUE,
-  strict = FALSE
+  strict = TRUE
 )
 
-\S4method{camelCase}{Ranges}(object, names = FALSE, mcols = TRUE, metadata = TRUE, strict = FALSE)
+\S4method{camelCase}{Ranges}(object, names = FALSE, mcols = TRUE, metadata = TRUE, strict = TRUE)
 
-\S4method{camelCase}{Matrix}(object, rownames = FALSE, colnames = TRUE, strict = FALSE)
+\S4method{camelCase}{Matrix}(object, rownames = FALSE, colnames = TRUE, strict = TRUE)
 
 \S4method{camelCase}{SummarizedExperiment}(
   object,
@@ -49,7 +49,7 @@ camelCase(object, ...)
   rowData = TRUE,
   colData = TRUE,
   metadata = TRUE,
-  strict = FALSE
+  strict = TRUE
 )
 }
 \arguments{
@@ -103,7 +103,7 @@ boundaries are defined by capitlization only (e.g. \code{thisIsCamelCase}).
 Camel case is recommended by Bioconductor for variable and function names.
 }
 \note{
-Updated 2020-05-11.
+Updated 2021-01-21.
 }
 \examples{
 data(syntactic, package = "AcidTest")
