@@ -18,14 +18,6 @@
 #'   [`colData()`][SummarizedExperiment::colData] for [aggregateCols()]. This
 #'   method will define the `groupings` automatically, and perform the
 #'   aggregation.
-#' - `SingleCellExperiment`:
-#'   Aggregate [`assays()`][SummarizedExperiment::assays] across cell-level
-#'   groupings, defined by a column in
-#'   [`colData()`][SummarizedExperiment::colData]. Inherits from
-#'   `SummarizedExperiment`, and still relies upon slotting an `aggregate`
-#'   column into [`colData()`][SummarizedExperiment::colData]. Note that these
-#'   groupings will map to cells, so care must be taken to properly aggregate
-#'   samples.
 #'
 #' @inheritParams aggregate
 #' @param col `character(1)`.
@@ -138,16 +130,13 @@ setMethod(
             isString(col),
             isString(fun)
         )
-
         ## Groupings -----------------------------------------------------------
         assert(isSubset(col, colnames(rowData(x))))
         by <- rowData(x)[[col]]
         assert(is.factor(by))
         names(by) <- rownames(x)
-
         ## Counts --------------------------------------------------------------
         counts <- aggregateRows(x = counts(x), by = by, fun = fun)
-
         ## Return --------------------------------------------------------------
         args <- list(
             assays = SimpleList(counts = counts),
