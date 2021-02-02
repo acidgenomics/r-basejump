@@ -47,7 +47,7 @@
 #'   suffix (i.e. `_LXXX`).
 #' @param pipeline `character(1)`.
 #'   Analysis pipeline:
-#'   - `"none"`: Simple mode, requiring only "sampleID" column.
+#'   - `"none"`: Simple mode, requiring only "sampleId" column.
 #'   - `"bcbio"`: bcbio mode. See section here in documentation for details.
 #'   - `"cellranger"`: Cell Ranger mode. Currently requires "directory" column.
 #'     Used by Chromium R package.
@@ -97,7 +97,7 @@ importSampleData <- function(
     }
     requiredCols <- switch(
         EXPR = pipeline,
-        "none" = "sampleID",
+        "none" = "sampleId",
         "bcbio" = "description",
         "cellranger" = "directory"
     )
@@ -105,18 +105,22 @@ importSampleData <- function(
     if (hasLength(lanes, n = 1L) && isTRUE(lanes > 1L)) {
         lanes <- seq_len(lanes)
     }
-
     ## Import ------------------------------------------------------------------
     data <- import(file, sheet = sheet)
     data <- as(data, "DataFrame")
-    data <- camelCase(data, rownames = FALSE, colnames = TRUE)
+    data <- camelCase(
+        object = data,
+        rownames = FALSE,
+        colnames = TRUE,
+        strict = TRUE
+    )
     data <- removeNA(data)
-    ## Manual "sampleID" column is not allowed for bcbio or Cell Ranger input.
+    ## Manual "sampleId" column is not allowed for bcbio or Cell Ranger input.
     if (isSubset(pipeline, c("bcbio", "cellranger"))) {
-        assert(areDisjointSets("sampleID", colnames(data)))
+        assert(areDisjointSets("sampleId", colnames(data)))
     }
     if (identical(pipeline, "none")) {
-        idCol <- "sampleID"
+        idCol <- "sampleId"
     } else if (identical(pipeline, "bcbio")) {
         ## Look for bcbio "samplename" column and rename to "fileName".
         if (isSubset("samplename", colnames(data))) {
@@ -126,7 +130,7 @@ importSampleData <- function(
         }
         idCol <- "description"
     } else if (identical(pipeline, "cellranger")) {
-        ## Consider renaming this to `sampleID`, for consistency.
+        ## Consider renaming this to `sampleId`, for consistency.
         idCol <- "directory"
     }
     ## Check that input passes blacklist, and has all required columns.
@@ -156,10 +160,10 @@ importSampleData <- function(
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- data[[idCol]]
         }
-        ## Requiring syntactically valid names on direct "sampleID" input.
+        ## Requiring syntactically valid names on direct "sampleId" input.
         ## Sanitize sample IDs into snake case, if necessary.
         if (
-            identical(idCol, "sampleID") &&
+            identical(idCol, "sampleId") &&
             !validNames(unique(data[[idCol]]))
         ) {
             cli_alert_info(paste0(
@@ -179,7 +183,6 @@ importSampleData <- function(
             sep = "\n"
         ))
     }
-
     ## Multiplexed samples -----------------------------------------------------
     ## This step applies to handling single-cell metadata.
     ## - bcbio subdirs (e.g. inDrops): `description`-`revcomp`.
@@ -207,7 +210,6 @@ importSampleData <- function(
         ## Match the sample directories exactly here, using the hyphen.
         data[[idCol]] <- paste(data[[idCol]], data[["revcomp"]], sep = "-")
     }
-
     ## Lane-split replicates ---------------------------------------------------
     ## Prepare metadata for lane split replicates. This step will expand rows
     ## into the number of desired replicates (e.g. "L001").
@@ -259,7 +261,6 @@ importSampleData <- function(
             )
         }
     }
-
     ## Return.
     rownames(data) <- makeNames(data[[idCol]], unique = TRUE)
     makeSampleData(data)
