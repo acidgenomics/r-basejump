@@ -11,6 +11,8 @@
 \alias{relevelRowRanges}
 \alias{flatFiles}
 \alias{flatFiles,SummarizedExperiment-method}
+\alias{markdown}
+\alias{markdown,SummarizedExperiment-method}
 \title{Defunct functions}
 \usage{
 theme_midnight(...)
@@ -28,6 +30,10 @@ relevelRowData(...)
 relevelRowRanges(...)
 
 \S4method{flatFiles}{SummarizedExperiment}(object)
+
+markdown(object, ...)
+
+\S4method{markdown}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{...}{Additional arguments.}

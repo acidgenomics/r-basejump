@@ -2,25 +2,12 @@
 % Please edit documentation in R/AllGenerics.R, R/metrics-methods.R
 \name{metrics}
 \alias{metrics}
-\alias{metricsPerSample}
 \alias{metrics,SummarizedExperiment-method}
-\alias{metrics,SingleCellExperiment-method}
-\alias{metricsPerSample,SingleCellExperiment-method}
 \title{Quality control metrics}
 \usage{
 metrics(object, ...)
 
-metricsPerSample(object, ...)
-
 \S4method{metrics}{SummarizedExperiment}(object, return = c("tbl_df", "DataFrame"))
-
-\S4method{metrics}{SingleCellExperiment}(object, return = c("tbl_df", "DataFrame"))
-
-\S4method{metricsPerSample}{SingleCellExperiment}(
-  object,
-  fun = c("mean", "median", "sum"),
-  return = c("tbl_df", "DataFrame")
-)
 }
 \arguments{
 \item{object}{Object.}
@@ -29,11 +16,11 @@ metricsPerSample(object, ...)
 Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
 to the first argument in the \code{character} vector.}
 
+\item{...}{Additional arguments.}
+
 \item{fun}{\code{character(1)}.
 Mathematical function name to apply.
 Uses \code{\link[base:match.arg]{match.arg()}} internally.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 Object of class determined by \code{return} argument.
@@ -51,37 +38,21 @@ ggplot2 internally.
 \section{Functions}{
 \itemize{
 \item \code{metrics,SummarizedExperiment-method}: Sample-level metrics.
-
-\item \code{metrics,SingleCellExperiment-method}: Cell-level metrics.
-
-\item \code{metricsPerSample,SingleCellExperiment-method}: Sample-level metrics.
 }}
 
 \note{
 These functions will error intentionally if no numeric columns are
 defined in \code{colData()}.
 
-Updated 2020-01-20.
+Updated 2021-02-02.
 }
 \examples{
-data(
-    RangedSummarizedExperiment,
-    SingleCellExperiment,
-    package = "AcidTest"
-)
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
 object <- calculateMetrics(object)
 x <- metrics(object)
-print(x)
-
-## SingleCellExperiment ====
-object <- SingleCellExperiment
-object <- calculateMetrics(object)
-x <- metrics(object)
-print(x)
-x <- metricsPerSample(object, fun = "mean")
 print(x)
 }
 \author{
