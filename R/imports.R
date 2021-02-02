@@ -1,3 +1,7 @@
+## FIXME ANY MATRIX METHODS NEED TO GO IN ACIDSINGLECELL.
+
+
+
 #' @importClassesFrom AcidGenerics AsIs
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList

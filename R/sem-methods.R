@@ -22,23 +22,3 @@ NULL
 
 
 
-## Necessary for dplyr mutate calls.
-##
-## Note that AsIs class requires import of BiocGenerics, so defining here
-## instead of AcidBase, to keep NAMESPACE more minimal in that package.
-##
-## Updated 2020-12-04.
-`sem,AsIs` <-  # nolint
-    function(x) {
-        sem(as.numeric(x))
-    }
-
-
-
-#' @rdname sem
-#' @export
-setMethod(
-    f = "sem",
-    signature = signature("AsIs"),
-    definition = `sem,AsIs`
-)

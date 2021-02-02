@@ -1,3 +1,6 @@
+## FIXME NEED AsIs method here.
+
+
 #' @name geometricMean
 #' @inherit AcidGenerics::geometricMean
 #'
@@ -54,7 +57,7 @@ NULL
             isFlag(removeNA),
             isFlag(zeroPropagate)
         )
-        ## Check for any negative numbers and return `NaN`
+        ## Check for any negative numbers and return `NaN`.
         if (any(object < 0L, na.rm = TRUE)) {
             return(NaN)
         }
@@ -104,6 +107,8 @@ setMethod(
 )
 
 
+
+## FIXME MOVE THIS TO ACIDSINGLECELL.
 
 ## Updated 2020-01-30.
 `geometricMean,Matrix` <-  # nolint
