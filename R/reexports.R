@@ -146,6 +146,10 @@ AcidGenomes::Tx2Gene
 #' @export
 AcidGenomes::annotable
 
+#' @importFrom AcidGenomes currentEnsemblGenomeBuild
+#' @export
+AcidGenomes::currentEnsemblGenomeBuild
+
 #' @importFrom AcidGenomes currentEnsemblVersion
 #' @export
 AcidGenomes::currentEnsemblVersion
@@ -154,13 +158,25 @@ AcidGenomes::currentEnsemblVersion
 #' @export
 AcidGenomes::currentFlyBaseVersion
 
+#' @importFrom AcidGenomes currentGencodeGenomeBuild
+#' @export
+AcidGenomes::currentGencodeGenomeBuild
+
 #' @importFrom AcidGenomes currentGencodeVersion
 #' @export
 AcidGenomes::currentGencodeVersion
 
+#' @importFrom AcidGenomes currentRefSeqGenomeBuild
+#' @export
+AcidGenomes::currentRefSeqGenomeBuild
+
 #' @importFrom AcidGenomes currentRefSeqVersion
 #' @export
 AcidGenomes::currentRefSeqVersion
+
+#' @importFrom AcidGenomes currentUCSCGenomeBuild
+#' @export
+AcidGenomes::currentUCSCGenomeBuild
 
 #' @importFrom AcidGenomes currentWormBaseVersion
 #' @export
@@ -169,6 +185,22 @@ AcidGenomes::currentWormBaseVersion
 #' @importFrom AcidGenomes detectOrganism
 #' @export
 AcidGenomes::detectOrganism
+
+#' @importFrom AcidGenomes downloadEnsemblGenome
+#' @export
+AcidGenomes::downloadEnsemblGenome
+
+#' @importFrom AcidGenomes downloadGencodeGenome
+#' @export
+AcidGenomes::downloadGencodeGenome
+
+#' @importFrom AcidGenomes downloadRefSeqGenome
+#' @export
+AcidGenomes::downloadRefSeqGenome
+
+#' @importFrom AcidGenomes downloadUCSCGenome
+#' @export
+AcidGenomes::downloadUCSCGenome
 
 #' @importFrom AcidGenomes emptyRanges
 #' @export
@@ -202,10 +234,6 @@ AcidGenomes::makeGRangesFromEnsembl
 #' @export
 AcidGenomes::makeGRangesFromGFF
 
-#' @importFrom AcidGenomes makeGRangesFromGTF
-#' @export
-AcidGenomes::makeGRangesFromGTF
-
 #' @importFrom AcidGenomes makeGene2SymbolFromEnsDb
 #' @export
 AcidGenomes::makeGene2SymbolFromEnsDb
@@ -217,10 +245,6 @@ AcidGenomes::makeGene2SymbolFromEnsembl
 #' @importFrom AcidGenomes makeGene2SymbolFromGFF
 #' @export
 AcidGenomes::makeGene2SymbolFromGFF
-
-#' @importFrom AcidGenomes makeGene2SymbolFromGTF
-#' @export
-AcidGenomes::makeGene2SymbolFromGTF
 
 #' @importFrom AcidGenomes makeProtein2GeneFromEnsembl
 #' @export
@@ -241,10 +265,6 @@ AcidGenomes::makeTx2GeneFromFASTA
 #' @importFrom AcidGenomes makeTx2GeneFromGFF
 #' @export
 AcidGenomes::makeTx2GeneFromGFF
-
-#' @importFrom AcidGenomes makeTx2GeneFromGTF
-#' @export
-AcidGenomes::makeTx2GeneFromGTF
 
 #' @importFrom AcidGenomes mapEnsemblReleaseToURL
 #' @export
