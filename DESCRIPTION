@@ -36,7 +36,7 @@ Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
     AcidBase (>= 0.3.5),
-    AcidCLI (>= 0.0.5),
+    AcidCLI (>= 0.0.6),
     AcidGenerics (>= 0.5.3),
     AcidGenomes (>= 0.2.0),
     AcidPlyr (>= 0.1.7),
@@ -72,38 +72,3 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Additional_repositories: https://r.acidgenomics.com
-Collate: 
-    'AllGlobals.R'
-    'AllClasses.R'
-    'AllGenerics.R'
-    'camelCase-methods.R'
-    'coerce-list-methods.R'
-    'collapseToString-methods.R'
-    'deprecated.R'
-    'detectHPC.R'
-    'detectLanes.R'
-    'dottedCase-methods.R'
-    'geometricMean-methods.R'
-    'headtail-methods.R'
-    'imports.R'
-    'internal.R'
-    'intersectAll-methods.R'
-    'intersectionMatrix-methods.R'
-    'logRatio-methods.R'
-    'markdownHeader.R'
-    'markdownLink.R'
-    'markdownList.R'
-    'markdownPlots.R'
-    'markdownTables.R'
-    'microplate.R'
-    'package.R'
-    'prepareTemplate.R'
-    'rankedMatrix-methods.R'
-    'reexports-classes.R'
-    'reexports-coerce.R'
-    'reexports-methods.R'
-    'reexports.R'
-    'sem-methods.R'
-    'showHeader.R'
-    'snakeCase-methods.R'
-    'upperCamelCase-methods.R'
