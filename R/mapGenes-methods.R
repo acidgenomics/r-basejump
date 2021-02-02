@@ -13,7 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @note Updated 2019-08-21.
+#' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param strict `logical(1)`.
@@ -33,31 +33,31 @@
 #' print(rownames)
 #'
 #' g2s <- Gene2Symbol(rse)
-#' geneIDs <- head(g2s[["geneID"]])
-#' print(geneIDs)
+#' geneIds <- head(g2s[["geneId"]])
+#' print(geneIds)
 #'
 #' geneNames <- head(g2s[["geneName"]])
 #' print(geneNames)
 #'
 #' ## Row names.
 #' mapGenesToRownames(rse, genes = rownames)
-#' mapGenesToRownames(rse, genes = geneIDs)
+#' mapGenesToRownames(rse, genes = geneIds)
 #' mapGenesToRownames(rse, genes = geneNames)
 #'
 #' ## Gene identifiers.
 #' mapGenesToIDs(rse, genes = rownames)
-#' mapGenesToIDs(rse, genes = geneIDs)
+#' mapGenesToIDs(rse, genes = geneIds)
 #' mapGenesToIDs(rse, genes = geneNames)
 #'
 #' ## Gene names (symbols).
 #' mapGenesToSymbols(rse, genes = rownames)
-#' mapGenesToSymbols(rse, genes = geneIDs)
+#' mapGenesToSymbols(rse, genes = geneIds)
 #' mapGenesToSymbols(rse, genes = geneNames)
 NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2021-02-02.
 .mapGenes <- function(object, genes, strict = TRUE) {
     validObject(object)
     assert(
@@ -65,14 +65,19 @@ NULL
         isCharacter(genes),
         isFlag(strict)
     )
+    cols <- c("geneId", "geneName")
+    if (!identical(cols, colnames(object))) {
+        colnames(object) <- cols
+    }
+    validObject(object)
     ## Prepare the match table.
     if (any(genes %in% rownames(object))) {
         table <- rownames(object)
     } else if (any(genes %in% object[["geneName"]])) {
         assert(matchesUniqueGeneNames(object, genes))
         table <- object[["geneName"]]
-    } else if (any(genes %in% object[["geneID"]])) {
-        table <- object[["geneID"]]
+    } else if (any(genes %in% object[["geneId"]])) {
+        table <- object[["geneId"]]
     } else {
         stop(sprintf(
             "All genes failed to map: %s.",
@@ -104,15 +109,15 @@ NULL
 
 
 ## mapGenesToRownames ==========================================================
-## Updated 2019-07-22.
+## Updated 2021-02-02.
 `mapGenesToRownames,Gene2Symbol` <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
             args = list(
-                object = object,
-                genes = genes,
-                strict = strict
+                "object" = object,
+                "genes" = genes,
+                "strict" = strict
             )
         )
         return <- rownames(object[mapped, , drop = FALSE])
@@ -133,7 +138,7 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2021-02-02.
 `mapGenesToRownames,SummarizedExperiment` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
@@ -154,9 +159,9 @@ setMethod(
             do.call(
                 what = mapGenesToRownames,
                 args = list(
-                    object = g2s,
-                    genes = genes,
-                    strict = strict
+                    "object" = g2s,
+                    "genes" = genes,
+                    "strict" = strict
                 )
             )
         } else {
@@ -197,19 +202,19 @@ setMethod(
 
 
 ## mapGenesToIDs ===============================================================
-## Updated 2019-07-22.
+## Updated 2021-02-02.
 `mapGenesToIDs,Gene2Symbol` <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
             args = list(
-                object = object,
-                genes = genes,
-                strict = strict
+                "object" = object,
+                "genes" = genes,
+                "strict" = strict
             )
         )
         return <- object[mapped, , drop = FALSE]
-        return <- return[["geneID"]]
+        return <- return[["geneId"]]
         return <- as.character(return)
         names(return) <- names(mapped)
         return
@@ -227,7 +232,7 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2021-02-02.
 `mapGenesToIDs,SummarizedExperiment` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
@@ -238,9 +243,9 @@ setMethod(
         do.call(
             what = mapGenesToIDs,
             args = list(
-                object = g2s,
-                genes = genes,
-                strict = strict
+                "object" = g2s,
+                "genes" = genes,
+                "strict" = strict
             )
         )
     }
@@ -258,15 +263,15 @@ setMethod(
 
 
 ## mapGenesToSymbols ===========================================================
-## Updated 2019-07-22.
+## Updated 2021-02-02.
 `mapGenesToSymbols,Gene2Symbol` <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
             args = list(
-                object = object,
-                genes = genes,
-                strict = strict
+                "object" = object,
+                "genes" = genes,
+                "strict" = strict
             )
         )
         return <- object[mapped, , drop = FALSE]
@@ -288,7 +293,7 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2021-02-02.
 `mapGenesToSymbols,SummarizedExperiment` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
@@ -299,9 +304,9 @@ setMethod(
         do.call(
             what = mapGenesToSymbols,
             args = list(
-                object = g2s,
-                genes = genes,
-                strict = strict
+                "object" = g2s,
+                "genes" = genes,
+                "strict" = strict
             )
         )
     }
