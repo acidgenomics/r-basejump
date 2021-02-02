@@ -192,6 +192,20 @@ setMethod(
 
 
 
+#' @rdname defunct
+#' @name mcolnames
+#' @importFrom AcidGenerics mcolnames
+#' @usage mcolnames(x, ...)
+#' @export
+NULL
+
+#' @rdname defunct
+#' @name mcolnames<-
+#' @importFrom AcidGenerics mcolnames<-
+#' @usage mcolnames(x, ...) <- value
+#' @export
+NULL
+
 `mcolnames,Vector` <-  # nolint
     function(x) {
         .Defunct()
