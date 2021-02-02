@@ -16,20 +16,20 @@
 #'
 #' g2s <- Gene2Symbol(
 #'     object = S4Vectors::DataFrame(
-#'         geneID = c("ENSG00000000003", "ENSG00000000005"),
-#'         geneName = c("TSPAN6", "TNMD"),
+#'         "geneId" = c("ENSG00000000003", "ENSG00000000005"),
+#'         "geneName" = c("TSPAN6", "TNMD"),
 #'         row.names = rownames(x)
 #'     )
 #' )
 #' print(g2s)
 #'
-#' geneIDs <- g2s[["geneID"]]
-#' print(geneIDs)
+#' geneIds <- g2s[["geneId"]]
+#' print(geneIds)
 #'
 #' geneNames <- g2s[["geneName"]]
 #' print(geneNames)
 #'
-#' matchesGene2Symbol(x = x, genes = geneIDs, gene2symbol = g2s)
+#' matchesGene2Symbol(x = x, genes = geneIds, gene2symbol = g2s)
 #' matchesGene2Symbol(x = x, genes = geneNames, gene2symbol = g2s)
 matchesGene2Symbol <- function(
     x,
