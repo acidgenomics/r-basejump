@@ -168,15 +168,6 @@ NULL
 
 
 
-#' @rdname filterCells
-#' @name filterCells
-#' @importFrom AcidGenerics filterCells
-#' @usage filterCells(object, ...)
-#' @export
-NULL
-
-
-
 #' @rdname geometricMean
 #' @name geometricMean
 #' @importFrom AcidGenerics geometricMean
@@ -294,6 +285,8 @@ NULL
 NULL
 
 
+
+## FIXME MAKE THIS DEFUNCT? VAGUE AND NOT VERY USEFUL.
 
 #' @rdname markdown
 #' @name markdown
