@@ -63,15 +63,6 @@ NULL
 
 
 
-#' @rdname cell2sample
-#' @name cell2sample
-#' @importFrom AcidGenerics cell2sample
-#' @usage cell2sample(object, ...)
-#' @export
-NULL
-
-
-
 #' @rdname collapseToString
 #' @name collapseToString
 #' @importFrom AcidGenerics collapseToString
@@ -286,17 +277,6 @@ NULL
 
 
 
-## FIXME MAKE THIS DEFUNCT? VAGUE AND NOT VERY USEFUL.
-
-#' @rdname markdown
-#' @name markdown
-#' @importFrom AcidGenerics markdown
-#' @usage markdown(object, ...)
-#' @export
-NULL
-
-
-
 #' @rdname matchSampleColumn
 #' @name matchSampleColumn
 #' @importFrom AcidGenerics matchSampleColumn
@@ -441,15 +421,6 @@ NULL
 
 
 
-#' @rdname topCellsPerSample
-#' @name topCellsPerSample
-#' @importFrom AcidGenerics topCellsPerSample
-#' @usage topCellsPerSample(object, ...)
-#' @export
-NULL
-
-
-
 #' @rdname tpm
 #' @name tpm
 #' @importFrom AcidGenerics tpm
@@ -473,14 +444,5 @@ NULL
 #' @importFrom AcidGenerics upperCamelCase
 #' @importMethodsFrom syntactic upperCamelCase
 #' @usage upperCamelCase(object, ...)
-#' @export
-NULL
-
-
-
-#' @rdname zerosVsDepth
-#' @name zerosVsDepth
-#' @importFrom AcidGenerics zerosVsDepth
-#' @usage zerosVsDepth(object, ...)
 #' @export
 NULL

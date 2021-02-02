@@ -109,7 +109,6 @@ Collate:
     'makeSampleData-methods.R'
     'makeSummarizedExperiment.R'
     'mapGenes-methods.R'
-    'markdown-methods.R'
     'markdownHeader.R'
     'markdownLink.R'
     'markdownList.R'

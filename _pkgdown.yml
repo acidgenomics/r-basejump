@@ -83,7 +83,6 @@ reference:
       - rankedMatrix
       - sem
       - sizeFactors
-      - zerosVsDepth
   - title: Markdown
     contents:
       - starts_with("markdown")
