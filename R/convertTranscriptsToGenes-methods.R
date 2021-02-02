@@ -4,7 +4,7 @@
 #' @note For objects containing a count matrix, the object rows will be
 #'   collapsed to gene level using `aggregateRows`. This applies to our
 #'   `SummarizedExperiment` method.
-#' @note Updated 2020-01-30.
+#' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param aggregate `logical(1)`.
@@ -57,7 +57,7 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2021-02-02.
 `convertTranscriptsToGenes,character` <-  # nolint
     function(object, tx2gene) {
         assert(
@@ -65,8 +65,13 @@ NULL
             hasNoDuplicates(object),
             is(tx2gene, "Tx2Gene")
         )
+        ## Arrange the tx2gene to match the input.
+        cols <- c("txId", "geneId")
+        if (identical(cols, colnames(tx2gene))) {
+            colnames(tx2gene) <- cols
+        }
         validObject(tx2gene)
-        missing <- setdiff(object, tx2gene[["transcriptID"]])
+        missing <- setdiff(object, tx2gene[["txId"]])
         if (length(missing) > 0L) {
             stop(sprintf(
                 "Failed to match transcripts: %s.",
@@ -74,12 +79,12 @@ NULL
             ))
         }
         tx2gene <- tx2gene[
-            match(x = object, table = tx2gene[["transcriptID"]]),
+            match(x = object, table = tx2gene[["txId"]]),
             ,
             drop = FALSE
         ]
-        out <- as.factor(tx2gene[["geneID"]])
-        names(out) <- tx2gene[["transcriptID"]]
+        out <- as.factor(tx2gene[["geneId"]])
+        names(out) <- tx2gene[["txId"]]
         out
     }
 
