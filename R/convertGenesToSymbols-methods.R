@@ -54,7 +54,7 @@ NULL
         )
         ## Arrange the gene2symbol to match the input.
         cols <- c("geneId", "geneName")
-        if (identical(cols, colnames(gene2symbol))) {
+        if (!identical(cols, colnames(gene2symbol))) {
             colnames(gene2symbol) <- cols
         }
         validObject(gene2symbol)
