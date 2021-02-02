@@ -246,25 +246,9 @@ AcidGenomes::geneNames
 #' @export
 AcidGenomes::geneSynonyms
 
-#' @importFrom AcidGenomes getEnsDb
-#' @export
-AcidGenomes::getEnsDb
-
-#' @importFrom AcidGenomes getGFFDirectives
-#' @export
-AcidGenomes::getGFFDirectives
-
-#' @importFrom AcidGenomes getGFFMetadata
-#' @export
-AcidGenomes::getGFFMetadata
-
 #' @importFrom AcidGenomes importTx2Gene
 #' @export
 AcidGenomes::importTx2Gene
-
-#' @importFrom AcidGenomes makeEnsDbFromGFF
-#' @export
-AcidGenomes::makeEnsDbFromGFF
 
 #' @importFrom AcidGenomes makeGRangesFromEnsDb
 #' @export
@@ -310,6 +294,10 @@ AcidGenomes::makeTx2GeneFromFASTA
 #' @export
 AcidGenomes::makeTx2GeneFromGFF
 
+#' @importFrom AcidGenomes mapEnsemblBuildToUCSC
+#' @export
+AcidGenomes::mapEnsemblBuildToUCSC
+
 #' @importFrom AcidGenomes mapEnsemblReleaseToURL
 #' @export
 AcidGenomes::mapEnsemblReleaseToURL
@@ -317,6 +305,10 @@ AcidGenomes::mapEnsemblReleaseToURL
 #' @importFrom AcidGenomes mapHumanOrthologs
 #' @export
 AcidGenomes::mapHumanOrthologs
+
+#' @importFrom AcidGenomes mapUCSCBuildToEnsembl
+#' @export
+AcidGenomes::mapUCSCBuildToEnsembl
 
 #' @importFrom AcidGenomes organism
 #' @export
