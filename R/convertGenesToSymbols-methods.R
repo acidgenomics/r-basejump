@@ -1,6 +1,6 @@
 #' @name convertGenesToSymbols
 #' @inherit AcidGenerics::convertGenesToSymbols
-#' @note Updated 2020-05-17.
+#' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -14,7 +14,7 @@
 #'
 #' g2s <- Gene2Symbol(object)
 #' print(g2s)
-#' genes <- head(g2s[["geneID"]])
+#' genes <- head(g2s[["geneId"]])
 #' print(genes)
 #'
 #' ## character ====
@@ -45,23 +45,27 @@ NULL
 
 
 ## Allowing duplicates here (unlike convertTranscriptsToGenes).
-## Updated 2020-05-17.
+## Updated 2021-02-02.
 `convertGenesToSymbols,character` <-  # nolint
     function(object, gene2symbol) {
         assert(
             isCharacter(object),
             is(gene2symbol, "Gene2Symbol")
         )
-        validObject(gene2symbol)
         ## Arrange the gene2symbol to match the input.
+        cols <- c("geneId", "geneName")
+        if (identical(cols, colnames(gene2symbol))) {
+            colnames(gene2symbol) <- cols
+        }
+        validObject(gene2symbol)
         gene2symbol <- gene2symbol[
-            match(x = object, table = gene2symbol[["geneID"]]),
+            match(x = object, table = gene2symbol[["geneId"]]),
             ,
             drop = FALSE
         ]
         out <- gene2symbol[["geneName"]]
-        names(out) <- gene2symbol[["geneID"]]
-        missing <- setdiff(object, gene2symbol[["geneID"]])
+        names(out) <- gene2symbol[["geneId"]]
+        missing <- setdiff(object, gene2symbol[["geneId"]])
         if (hasLength(missing)) {
             warning(sprintf(
                 "Failed to match genes: %s.",
@@ -85,17 +89,14 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2021-01-17.
 `convertGenesToSymbols,matrix` <-  # nolint
     function(object, gene2symbol) {
-        g2s <- do.call(
-            what = convertGenesToSymbols,
-            args = list(
-                object = rownames(object),
-                gene2symbol = gene2symbol
-            )
+        gene2symbol <- convertGenesToSymbols(
+            object = rownames(object),
+            gene2symbol = gene2symbol
         )
-        rownames(object) <- as.character(g2s)
+        rownames(object) <- as.character(gene2symbol)
         object
     }
 
@@ -127,12 +128,12 @@ setMethod(
 
 
 
-## Updated 2020-05-17.
+## Updated 2021-01-17.
 `convertGenesToSymbols,GRanges` <-  # nolint
     function(object) {
         validObject(object)
-        g2s <- Gene2Symbol(object)
-        symbols <- g2s[["geneName"]]
+        gene2symbol <- Gene2Symbol(object)
+        symbols <- gene2symbol[[2L]]
         assert(hasNoDuplicates(symbols))
         names(object) <- as.character(symbols)
         object
@@ -150,16 +151,14 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2021-01-17.
 `convertGenesToSymbols,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
-        g2s <- Gene2Symbol(object)
-        symbols <- g2s[["geneName"]]
+        gene2symbol <- Gene2Symbol(object)
+        symbols <- gene2symbol[[2L]]
         assert(hasNoDuplicates(symbols))
-        ## Update the object rownames.
         rownames(object) <- as.character(symbols)
-        ## Ensure all names get updated correctly.
         if (is(object, "RangedSummarizedExperiment")) {
             assert(identical(rownames(object), names(rowRanges(object))))
         }
@@ -178,16 +177,16 @@ setMethod(
 
 
 
-## Updated 2019-07-22.
+## Updated 2021-01-17.
 `convertSymbolsToGenes,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
-        g2s <- Gene2Symbol(object)
+        gene2symbol <- Gene2Symbol(object)
         assert(
-            identical(rownames(object), g2s[["geneName"]]),
-            hasNoDuplicates(g2s[["geneID"]])
+            identical(rownames(object), gene2symbol[[2L]]),
+            hasNoDuplicates(gene2symbol[[1L]])
         )
-        rownames(object) <- as.character(g2s[["geneID"]])
+        rownames(object) <- as.character(gene2symbol[[1L]])
         object
     }
 
