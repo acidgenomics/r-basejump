@@ -1,3 +1,7 @@
+## FIXME MOVE THIS TO ACIDBASE AND REEXPORT.
+
+
+
 #' Sort and make unique
 #'
 #' This is a convenience function to quickly sort and atomic vector and make the
