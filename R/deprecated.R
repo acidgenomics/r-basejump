@@ -11,11 +11,11 @@ NULL
 
 
 
-#' @name deprecated
-#' @inherit AcidRoxygen::deprecated description examples return seealso title
-#' @inheritParams AcidRoxygen::params
-#' @keywords internal
-NULL
+## #' @name deprecated
+## #' @inherit AcidRoxygen::deprecated description examples return seealso title
+## #' @inheritParams AcidRoxygen::params
+## #' @keywords internal
+## NULL
 
 
 
@@ -50,39 +50,34 @@ separatorBar <- function(...) {
 
 
 # v0.11.8 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 readFileByExtension <- function(...) {
-    .Deprecated("import")
-    import(...)
+    .Defunct("import")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 readGFF <- function(...) {
-    .Deprecated("import")
-    import(...)
+    .Defunct("import")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 readGTF <- function(...) {
-    .Deprecated("import")
-    import(...)
+    .Defunct("import")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 readJSON <- function(...) {
-    .Deprecated("import")
-    import(...)
+    .Defunct("import")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 readYAML <- function(...) {
-    .Deprecated("import")
-    import(...)
+    .Defunct("import")
 }
 
 #' @rdname defunct
@@ -106,152 +101,56 @@ relevelRowRanges <- function(...) {
 
 
 ## v0.11.11 ====================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 readSampleData <- function(...) {
-    .Deprecated("importSampleData")
-    importSampleData(...)
+    .Defunct("importSampleData")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 readTx2Gene <- function(...) {
-    .Deprecated("importTx2Gene")
-    importTx2Gene(...)
+    .Defunct("importTx2Gene")
 }
 
 
 
 ## v0.12.0 =====================================================================
-## These were previously deprecated in transformer package.
 #' @rdname defunct
-#' @name flatFiles
-#' @importFrom AcidGenerics flatFiles
-#' @export
-NULL
-
-#' @rdname deprecated
 #' @export
 coerceS4ToList <- function(...) {
-    .Deprecated("coerceToList")
-    coerceToList(...)
+    .Defunct("coerceToList")
 }
-
-`flatFiles,SummarizedExperiment` <-  # nolint
-    function(object) {
-        .Defunct("coerceToList")
-    }
-
-#' @rdname defunct
-#' @export
-setMethod(
-    f = "flatFiles",
-    signature = signature("SummarizedExperiment"),
-    definition = `flatFiles,SummarizedExperiment`
-)
 
 
 
 ## v0.13.0 =====================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 matchEnsemblReleaseToURL <- function(...) {
-    .Deprecated("mapEnsemblReleaseToURL")
-    mapEnsemblReleaseToURL(...)
+    .Defunct("mapEnsemblReleaseToURL")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 matchHumanOrthologs <- function(...) {
-    .Deprecated("mapHumanOrthologs")
-    mapHumanOrthologs(...)
+    .Defunct("mapHumanOrthologs")
 }
 
 
 
 ## v0.14.0 =====================================================================
 #' @rdname defunct
-#' @name markdown
-#' @importFrom AcidGenerics markdown
-#' @usage markdown(object, ...)
-#' @export
-NULL
-
-`markdown,ANY` <-  # nolint
-    function(object) {
-        .Defunct()
-    }
-
-#' @rdname defunct
-#' @export
-setMethod(
-    f = "markdown",
-    signature = signature("ANY"),
-    definition = `markdown,ANY`
-)
-
-
-
-#' @rdname defunct
-#' @name mcolnames
-#' @importFrom AcidGenerics mcolnames
-#' @usage mcolnames(x, ...)
-#' @export
-NULL
-
-#' @rdname defunct
-#' @name mcolnames<-
-#' @importFrom AcidGenerics mcolnames<-
-#' @usage mcolnames(x, ...) <- value
-#' @export
-NULL
-
-`mcolnames,Vector` <-  # nolint
-    function(x) {
-        .Defunct()
-    }
-
-#' @rdname defunct
-#' @export
-setMethod(
-    f = "mcolnames",
-    signature = signature(x = "Vector"),
-    definition = `mcolnames,Vector`
-)
-
-`mcolnames<-,Vector,character` <-  # nolint
-    function(x, value) {
-        .Defunct()
-    }
-
-#' @rdname mcolnames
-#' @export
-setMethod(
-    f = "mcolnames<-",
-    signature = signature(
-        x = "Vector",
-        value = "character"
-    ),
-    definition = `mcolnames<-,Vector,character`
-)
-
-
-
-#' @rdname defunct
 #' @export
 multiassignAsEnvir <- function(...) {
     .Defunct()
 }
-
-
 
 #' @rdname defunct
 #' @export
 sortUnique <- function(...) {
     .Defunct()
 }
-
-
 
 #' @rdname defunct
 #' @export
