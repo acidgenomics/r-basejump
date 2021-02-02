@@ -1,10 +1,6 @@
-## FIXME Consider not enforcing lower camel case here.
-
-
-
 #' @name makeSampleData
 #' @inherit AcidGenerics::makeSampleData
-#' @note Updated 2020-12-21.
+#' @note Updated 2021-02-02.
 #'
 #' Utility function that prepares metadata to be slotted into
 #' [`colData()`][SummarizedExperiment::colData].
@@ -13,7 +9,7 @@
 #'
 #' - Row names are required. Either define manually (recommended) or pass in as
 #'   a rownames column (data.table / tibble style).
-#'   Supported colnames: "sampleID", "rowname", "rn".
+#'   Supported colnames: "sampleId", "rowname", "rn".
 #' - All column names will be converted to lower camel case
 #'   (see [camelCase()] for details).
 #' - `sampleName` column is always placed first.
@@ -65,7 +61,7 @@ setMethod(
 
 
 
-## Updated 2019-10-09.
+## Updated 2021-01-14.
 `makeSampleData,DataFrame` <-  # nolint
     function(object) {
         ## Check for complex S4 columns, which are discouraged.
@@ -73,11 +69,17 @@ setMethod(
             allAreAtomic(object),
             hasColnames(object)
         )
-        object <- camelCase(object, rownames = FALSE, colnames = TRUE)
+        ## Enforcing strict as of 2021-01-14.
+        object <- camelCase(
+            object = object,
+            rownames = FALSE,
+            colnames = TRUE,
+            strict = TRUE
+        )
         object <- removeNA(object)
         ## Assign row names from column automatically, if applicable.
         if (!hasRownames(object)) {
-            rnCols <- c("sampleID", "rowname", "rn")
+            rnCols <- c("sampleId", "rowname", "rn")
             idCol <- as.integer(na.omit(match(
                 x = rnCols,
                 table = colnames(object)
@@ -91,14 +93,12 @@ setMethod(
         }
         assert(
             hasRownames(object),
-            ## Don't allow "*Id" columns (note case).
-            allAreNotMatchingRegex(x = colnames(object), pattern = "Id$"),
             ## Check for blacklisted columns.
             areDisjointSets(
                 x = c(
                     ## rn,
                     ## rowname,
-                    ## sampleID,
+                    ## sampleId,
                     "filename",
                     "id",
                     "interestingGroups",
