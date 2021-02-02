@@ -1,7 +1,7 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.13.5
+Version: 0.14.0
 Date: 2021-02-02
 Authors@R: c(
     person(
@@ -45,7 +45,6 @@ Imports:
     IRanges,
     Matrix (>= 1.3),
     S4Vectors,
-    SingleCellExperiment,
     SummarizedExperiment,
     goalie (>= 0.4.14),
     magrittr (>= 2.0),
@@ -110,7 +109,6 @@ Collate:
     'intersectionMatrix-methods.R'
     'logRatio-methods.R'
     'makeSampleData-methods.R'
-    'makeSingleCellExperiment.R'
     'makeSummarizedExperiment.R'
     'mapCellsToSamples.R'
     'mapGenes-methods.R'
