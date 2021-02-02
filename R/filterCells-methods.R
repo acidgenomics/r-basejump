@@ -1,6 +1,10 @@
+## FIXME MOVE THIS TO ACIDSINGLECELL PACKAGE?
+
+
+
 #' @name filterCells
 #' @inherit AcidGenerics::filterCells
-#' @note Updated 2020-01-20.
+#' @note Updated 2021-02-02.
 #'
 #' @details
 #' Apply feature (i.e. gene/transcript) detection, novelty score, and
@@ -61,7 +65,7 @@ NULL
 
 
 
-## Updated 2019-11-19.
+## Updated 2021-02-22.
 `filterCells,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -114,10 +118,10 @@ NULL
         }
         ## Using DataFrame with Rle instead of tibble for improved speed.
         metrics <- colData(object)
-        sampleIDs <- names(sampleNames(object))
-        assert(isSubset(sampleIDs, levels(metrics[["sampleID"]])))
+        colnames(metrics) <- camelCase(colnames(metrics), strict = TRUE)
+        sampleIds <- names(sampleNames(object))
+        assert(isSubset(sampleIds, levels(metrics[["sampleId"]])))
         originalDim <- dim(object)
-
         ## Detect low quality cells --------------------------------------------
         ## Check that the requested column names for filtering match.
         assert(isSubset(
@@ -126,13 +130,13 @@ NULL
         ))
         ## Standardize cell-level filtering args.
         args <- list(
-            minCounts = minCounts,
-            maxCounts = maxCounts,
-            minFeatures = minFeatures,
-            maxFeatures = maxFeatures,
-            minNovelty = minNovelty,
-            maxMitoRatio = maxMitoRatio,
-            nCells = nCells
+            "minCounts" = minCounts,
+            "maxCounts" = maxCounts,
+            "minFeatures" = minFeatures,
+            "maxFeatures" = maxFeatures,
+            "minNovelty" = minNovelty,
+            "maxMitoRatio" = maxMitoRatio,
+            "nCells" = nCells
         )
         ## Loop across the arguments and expand to match the number of samples,
         ## so we can run parameterized checks via `mapply()`.
@@ -140,10 +144,10 @@ NULL
             X = args,
             FUN = function(arg) {
                 if (hasLength(arg, n = 1L)) {
-                    arg <- rep(arg, times = length(sampleIDs))
-                    names(arg) <- sampleIDs
+                    arg <- rep(arg, times = length(sampleIds))
+                    names(arg) <- sampleIds
                 }
-                assert(identical(names(arg), sampleIDs))
+                assert(identical(names(arg), sampleIds))
                 arg
             }
         )
@@ -168,16 +172,16 @@ NULL
         names(operators) <- names(args)
         ## Map the cell arguments to the metrics column name.
         arg2col <- c(
-            minCounts = countsCol,
-            maxCounts = countsCol,
-            minFeatures = featuresCol,
-            maxFeatures = featuresCol,
-            minNovelty = noveltyCol,
-            maxMitoRatio = mitoRatioCol
+            "minCounts" = countsCol,
+            "maxCounts" = countsCol,
+            "minFeatures" = featuresCol,
+            "maxFeatures" = featuresCol,
+            "minNovelty" = noveltyCol,
+            "maxMitoRatio" = mitoRatioCol
         )
         ## Split the metrics per sample so we can perform parameterized
         ## filtering checks using `mapply()`.
-        split <- split(x = metrics, f = metrics[["sampleID"]])
+        split <- split(x = metrics, f = metrics[["sampleId"]])
         assert(is(split, "SplitDataFrameList"))
         ## Loop across the samples.
         filter <- DataFrameList(mapply(
@@ -226,7 +230,7 @@ NULL
         ## Keep top expected number of cells per sample.
         if (any(nCells < Inf)) {
             metrics <- metrics[cells, , drop = FALSE]
-            split <- split(x = metrics, f = metrics[["sampleID"]])
+            split <- split(x = metrics, f = metrics[["sampleId"]])
             topCellsPerSample <- mapply(
                 metrics = split,
                 n = nCells,
@@ -252,7 +256,6 @@ NULL
             assert(identical(names(cells), colnames(object)))
             object <- object[, cells, drop = FALSE]
         }
-
         ## Detect low quality features (i.e. genes) ----------------------------
         ## Important: remove the low quality cells prior to this calculation.
         if (minCellsPerFeature > 0L) {
@@ -273,7 +276,6 @@ NULL
             assert(identical(names(features), rownames(object)))
             object <- object[features, , drop = FALSE]
         }
-
         ## Summary statistics --------------------------------------------------
         assert(
             is.logical(cells),
@@ -308,7 +310,6 @@ NULL
         )
         totalPass <- Matrix::colSums(lgl, na.rm = TRUE)
         storage.mode(totalPass) <- "integer"
-
         ## Inform the user regarding filtering parameters.
         cli_text("Pre-filter:")
         cli_div(theme = list(body = list("margin-left" = 2L)))
@@ -374,7 +375,6 @@ NULL
             }
             ## > cli_verbatim(printString(perSamplePass))
         }
-
         ## Update object -------------------------------------------------------
         metadata <- SimpleList(
             cells = cells,
