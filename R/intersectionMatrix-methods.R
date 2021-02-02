@@ -1,15 +1,15 @@
 #' @name intersectionMatrix
 #' @inherit AcidGenerics::intersectionMatrix
-#' @note Updated 2020-08-18.
+#' @note Updated 2021-01-15.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
 #' object <- list(
-#'     a = c("a", "b", "c", "d", "e", "f"),
-#'     b = c("b", "c", "d", "e", "f", "g"),
-#'     c = c("c", "d", "e", "f", "g", "h")
+#'     "aaa" = c("a", "b", "c", "d", "e", "f"),
+#'     "bbb" = c("b", "c", "d", "e", "f", "g"),
+#'     "ccc" = c("c", "d", "e", "f", "g", "h")
 #' )
 #' mat <- intersectionMatrix(object)
 #' rowSums(mat)
@@ -21,16 +21,17 @@ NULL
 `intersectionMatrix,list` <-  # nolint
     function(object) {
         assert(length(object) > 1L)
-        rownames <- sort(unique(unlist(object)))
+        elements <- sort(unique(unlist(object)))
         mat <- vapply(
             X = object,
-            FUN = function(x) {
-                rownames %in% x
+            FUN = function(x, elements) {
+                elements %in% x
             },
-            FUN.VALUE = logical(length(rownames)),
+            elements = elements,
+            FUN.VALUE = logical(length(elements)),
             USE.NAMES = TRUE
         )
-        rownames(mat) <- rownames
+        rownames(mat) <- elements
         mat
     }
 
