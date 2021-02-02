@@ -79,15 +79,6 @@ NULL
 
 
 
-#' @rdname sem
-#' @name sem
-#' @importFrom AcidGenerics sem
-#' @usage sem(x, ...)
-#' @export
-NULL
-
-
-
 #' @rdname snakeCase
 #' @name snakeCase
 #' @importFrom AcidGenerics snakeCase
