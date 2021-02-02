@@ -169,5 +169,28 @@ matchHumanOrthologs <- function(...) {
 
 
 
+## v0.14.0 =====================================================================
+#' @rdname defunct
+#' @name markdown
+#' @importFrom AcidGenerics markdown
+#' @usage markdown(object, ...)
+#' @export
+NULL
+
+`markdown,SummarizedExperiment` <-  # nolint
+    function(object) {
+        .Defunct()
+    }
+
+#' @rdname defunct
+#' @export
+setMethod(
+    f = "markdown",
+    signature = signature("SummarizedExperiment"),
+    definition = `markdown,SummarizedExperiment`
+)
+
+
+
 ## nolint end
 ## nocov end
