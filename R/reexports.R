@@ -1,10 +1,18 @@
-#' @importFrom AcidBase basenameSansExt
+#' @importFrom AcidBase appendToBody
 #' @export
-AcidBase::basenameSansExt
+AcidBase::appendToBody
 
 #' @importFrom AcidBase barcodePattern
 #' @export
 AcidBase::barcodePattern
+
+#' @importFrom AcidBase basenameSansExt
+#' @export
+AcidBase::basenameSansExt
+
+#' @importFrom AcidBase classContains
+#' @export
+AcidBase::classContains
 
 #' @importFrom AcidBase compress
 #' @export
@@ -22,13 +30,25 @@ AcidBase::decompress
 #' @export
 AcidBase::dots
 
+#' @importFrom AcidBase download
+#' @export
+AcidBase::download
+
 #' @importFrom AcidBase extPattern
 #' @export
 AcidBase::extPattern
 
+#' @importFrom AcidBase fileDepth
+#' @export
+AcidBase::fileDepth
+
 #' @importFrom AcidBase fileExt
 #' @export
 AcidBase::fileExt
+
+#' @importFrom AcidBase forceDetach
+#' @export
+AcidBase::forceDetach
 
 #' @importFrom AcidBase formalsList
 #' @export
@@ -46,17 +66,13 @@ AcidBase::initDir
 #' @export
 AcidBase::lanePattern
 
-#' @importFrom AcidBase matchArgsToDoCall
+#' @importFrom AcidBase majorVersion
 #' @export
-AcidBase::matchArgsToDoCall
+AcidBase::majorVersion
 
 #' @importFrom AcidBase metadataBlacklist
 #' @export
 AcidBase::metadataBlacklist
-
-#' @importFrom AcidBase metricsCols
-#' @export
-AcidBase::metricsCols
 
 #' @importFrom AcidBase methodFormals
 #' @export
@@ -65,6 +81,14 @@ AcidBase::methodFormals
 #' @importFrom AcidBase methodFunction
 #' @export
 AcidBase::methodFunction
+
+#' @importFrom AcidBase metricsCols
+#' @export
+AcidBase::metricsCols
+
+#' @importFrom AcidBase minorVersion
+#' @export
+AcidBase::minorVersion
 
 #' @importFrom AcidBase pasteURL
 #' @export
@@ -81,6 +105,14 @@ AcidBase::realpath
 #' @importFrom AcidBase requireNamespaces
 #' @export
 AcidBase::requireNamespaces
+
+#' @importFrom AcidBase sanitizeVersion
+#' @export
+AcidBase::sanitizeVersion
+
+#' @importFrom AcidBase shell
+#' @export
+AcidBase::shell
 
 #' @importFrom AcidBase showSlotInfo
 #' @export
@@ -218,9 +250,21 @@ AcidGenomes::geneSynonyms
 #' @export
 AcidGenomes::getEnsDb
 
+#' @importFrom AcidGenomes getGFFDirectives
+#' @export
+AcidGenomes::getGFFDirectives
+
+#' @importFrom AcidGenomes getGFFMetadata
+#' @export
+AcidGenomes::getGFFMetadata
+
 #' @importFrom AcidGenomes importTx2Gene
 #' @export
 AcidGenomes::importTx2Gene
+
+#' @importFrom AcidGenomes makeEnsDbFromGFF
+#' @export
+AcidGenomes::makeEnsDbFromGFF
 
 #' @importFrom AcidGenomes makeGRangesFromEnsDb
 #' @export
