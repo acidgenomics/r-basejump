@@ -2,16 +2,11 @@
 % Please edit documentation in R/AllGenerics.R, R/sem-methods.R
 \name{sem}
 \alias{sem}
-\alias{sem,AsIs-method}
 \title{Return the first and last parts of an object}
 \usage{
 sem(x, ...)
-
-\S4method{sem}{AsIs}(x)
 }
 \arguments{
-\item{x}{Object.}
-
 \item{...}{Additional arguments.}
 }
 \value{

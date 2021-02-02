@@ -6,13 +6,22 @@
 \alias{theme_paperwhite}
 \alias{tx2geneFromGFF}
 \alias{separatorBar}
+\alias{readFileByExtension}
+\alias{readGFF}
+\alias{readGTF}
+\alias{readJSON}
+\alias{readYAML}
 \alias{relevelColData}
 \alias{relevelRowData}
 \alias{relevelRowRanges}
-\alias{flatFiles}
-\alias{flatFiles,SummarizedExperiment-method}
-\alias{markdown}
-\alias{markdown,SummarizedExperiment-method}
+\alias{readSampleData}
+\alias{readTx2Gene}
+\alias{coerceS4ToList}
+\alias{matchEnsemblReleaseToURL}
+\alias{matchHumanOrthologs}
+\alias{multiassignAsEnvir}
+\alias{sortUnique}
+\alias{toStringUnique}
 \title{Defunct functions}
 \usage{
 theme_midnight(...)
@@ -23,22 +32,40 @@ tx2geneFromGFF(...)
 
 separatorBar(...)
 
+readFileByExtension(...)
+
+readGFF(...)
+
+readGTF(...)
+
+readJSON(...)
+
+readYAML(...)
+
 relevelColData(...)
 
 relevelRowData(...)
 
 relevelRowRanges(...)
 
-\S4method{flatFiles}{SummarizedExperiment}(object)
+readSampleData(...)
 
-markdown(object, ...)
+readTx2Gene(...)
 
-\S4method{markdown}{SummarizedExperiment}(object)
+coerceS4ToList(...)
+
+matchEnsemblReleaseToURL(...)
+
+matchHumanOrthologs(...)
+
+multiassignAsEnvir(...)
+
+sortUnique(...)
+
+toStringUnique(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
-
-\item{object}{Object.}
 }
 \value{
 \code{.Defunct}.
