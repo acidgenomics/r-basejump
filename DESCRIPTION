@@ -43,7 +43,6 @@ Imports:
     Biostrings,
     GenomicRanges,
     IRanges,
-    Matrix (>= 1.3),
     S4Vectors,
     SummarizedExperiment,
     goalie (>= 0.4.14),

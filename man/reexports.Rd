@@ -35,6 +35,8 @@
 \alias{showSlotInfo}
 \alias{standardizeCall}
 \alias{updateMessage}
+\alias{as.SummarizedExperiment}
+\alias{geneNames}
 \alias{mcols}
 \alias{mcols<-}
 \alias{metadata}
@@ -62,7 +64,6 @@
 \alias{downloadRefSeqGenome}
 \alias{downloadUCSCGenome}
 \alias{emptyRanges}
-\alias{geneNames}
 \alias{geneSynonyms}
 \alias{importTx2Gene}
 \alias{makeGRangesFromEnsDb}
@@ -119,14 +120,13 @@
 \alias{\%$\%}
 \alias{\%>\%}
 \alias{\%T>\%}
-\alias{as.SummarizedExperiment}
+\alias{as.DataFrame}
 \alias{as.data.frame}
 \alias{as.data.table}
 \alias{as_tibble}
 \alias{assignAndSaveData}
 \alias{atomize}
 \alias{cacheURL}
-\alias{coerceToList}
 \alias{column_to_rownames}
 \alias{decode}
 \alias{encode}
@@ -169,9 +169,11 @@ below to see their documentation.
 \describe{
   \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase]{updateMessage}}}
 
+  \item{AcidExperiment}{\code{\link[AcidExperiment:coerce-SummarizedExperiment]{as.SummarizedExperiment}}, \code{\link[AcidExperiment]{geneNames}}}
+
   \item{AcidGenerics}{\code{\link[AcidGenerics:reexports-bioc]{mcols}}, \code{\link[AcidGenerics:reexports-bioc]{mcols<-}}, \code{\link[AcidGenerics:reexports-bioc]{metadata}}, \code{\link[AcidGenerics:reexports-bioc]{metadata<-}}}
 
-  \item{AcidGenomes}{\code{\link[AcidGenomes]{Ensembl2Entrez}}, \code{\link[AcidGenomes:Ensembl2Entrez]{Entrez2Ensembl}}, \code{\link[AcidGenomes]{Gene2Symbol}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes]{Tx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{annotable}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentEnsemblGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentGencodeGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentRefSeqGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentUCSCGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{downloadEnsemblGenome}}, \code{\link[AcidGenomes]{downloadGencodeGenome}}, \code{\link[AcidGenomes]{downloadRefSeqGenome}}, \code{\link[AcidGenomes]{downloadUCSCGenome}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneNames}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapEnsemblBuildToUCSC}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapUCSCBuildToEnsembl}}, \code{\link[AcidGenomes]{organism}}, \code{\link[AcidGenomes:organism]{organism<-}}, \code{\link[AcidGenomes:stripVersions]{stripGeneVersions}}, \code{\link[AcidGenomes:stripVersions]{stripTranscriptVersions}}}
+  \item{AcidGenomes}{\code{\link[AcidGenomes]{Ensembl2Entrez}}, \code{\link[AcidGenomes:Ensembl2Entrez]{Entrez2Ensembl}}, \code{\link[AcidGenomes]{Gene2Symbol}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes]{Tx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{annotable}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentEnsemblGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentGencodeGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentRefSeqGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentUCSCGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{downloadEnsemblGenome}}, \code{\link[AcidGenomes]{downloadGencodeGenome}}, \code{\link[AcidGenomes]{downloadRefSeqGenome}}, \code{\link[AcidGenomes]{downloadUCSCGenome}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapEnsemblBuildToUCSC}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapUCSCBuildToEnsembl}}, \code{\link[AcidGenomes]{organism}}, \code{\link[AcidGenomes:organism]{organism<-}}, \code{\link[AcidGenomes:stripVersions]{stripGeneVersions}}, \code{\link[AcidGenomes:stripVersions]{stripTranscriptVersions}}}
 
   \item{AcidPlyr}{\code{\link[AcidPlyr:join]{antiJoin}}, \code{\link[AcidPlyr:join]{fullJoin}}, \code{\link[AcidPlyr:join]{innerJoin}}, \code{\link[AcidPlyr:join]{leftJoin}}, \code{\link[AcidPlyr:mutate]{mutateAll}}, \code{\link[AcidPlyr:mutate]{mutateAt}}, \code{\link[AcidPlyr:mutate]{mutateIf}}, \code{\link[AcidPlyr:join]{rightJoin}}, \code{\link[AcidPlyr:select]{selectIf}}, \code{\link[AcidPlyr:join]{semiJoin}}, \code{\link[AcidPlyr]{splitByLevel}}, \code{\link[AcidPlyr:mutate]{transmuteAt}}, \code{\link[AcidPlyr:mutate]{transmuteIf}}}
 
@@ -181,7 +183,7 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
-  \item{pipette}{\code{\link[pipette:coerce-SummarizedExperiment]{as.SummarizedExperiment}}, \code{\link[pipette:coerce-data.frame]{as.data.frame}}, \code{\link[pipette:coerce-data.table]{as.data.table}}, \code{\link[pipette:coerce-tbl_df]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{atomize}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:coerce-list]{coerceToList}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette]{decode}}, \code{\link[pipette:reexports]{download}}, \code{\link[pipette]{encode}}, \code{\link[pipette]{export}}, \code{\link[pipette]{factorize}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{metadata2}}, \code{\link[pipette:metadata2]{metadata2<-}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{removeNA}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{sanitizeNA}}, \code{\link[pipette]{sanitizePercent}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
+  \item{pipette}{\code{\link[pipette:coerce-DataFrame]{as.DataFrame}}, \code{\link[pipette:coerce-data.frame]{as.data.frame}}, \code{\link[pipette:coerce-data.table]{as.data.table}}, \code{\link[pipette:coerce-tbl_df]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{atomize}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette]{decode}}, \code{\link[pipette:reexports]{download}}, \code{\link[pipette]{encode}}, \code{\link[pipette]{export}}, \code{\link[pipette]{factorize}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{metadata2}}, \code{\link[pipette:metadata2]{metadata2<-}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{removeNA}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{sanitizeNA}}, \code{\link[pipette]{sanitizePercent}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}}
 
