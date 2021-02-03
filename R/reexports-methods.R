@@ -1,11 +1,3 @@
-#' @importMethodsFrom AcidExperiment aggregate
-#' @exportMethod aggregate
-NULL
-
-#' @importMethodsFrom AcidExperiment aggregateCols
-#' @exportMethod aggregateCols
-NULL
-
 #' @importMethodsFrom AcidExperiment aggregateRows
 #' @exportMethod aggregateRows
 NULL
