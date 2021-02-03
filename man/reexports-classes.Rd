@@ -2,6 +2,7 @@
 % Please edit documentation in R/reexports-classes.R
 \name{reexports-classes}
 \alias{reexports-classes}
+\alias{AsIs-class}
 \alias{Ensembl2Entrez-class}
 \alias{Entrez2Ensembl-class}
 \alias{EnsemblGenes-class}
@@ -22,11 +23,12 @@
 \alias{UCSCTranscripts-class}
 \alias{WormBaseGenes-class}
 \alias{WormBaseTranscripts-class}
+\alias{missingOrNULL-class}
 \title{Reexport S4 classes}
 \description{
 Reexport S4 classes
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-02-03.
 }
 \keyword{internal}
