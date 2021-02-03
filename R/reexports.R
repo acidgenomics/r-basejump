@@ -128,6 +128,16 @@ AcidBase::updateMessage
 
 
 
+#' @importFrom AcidExperiment as.SummarizedExperiment
+#' @export
+AcidExperiment::as.SummarizedExperiment
+
+#' @importFrom AcidExperiment geneNames
+#' @export
+AcidExperiment::geneNames
+
+
+
 #' @importFrom AcidGenerics mcols
 #' @export
 AcidGenerics::mcols
@@ -237,10 +247,6 @@ AcidGenomes::downloadUCSCGenome
 #' @importFrom AcidGenomes emptyRanges
 #' @export
 AcidGenomes::emptyRanges
-
-#' @importFrom AcidGenomes geneNames
-#' @export
-AcidGenomes::geneNames
 
 #' @importFrom AcidGenomes geneSynonyms
 #' @export
@@ -481,9 +487,9 @@ magrittr::`%T>%`
 
 
 
-#' @importFrom pipette as.SummarizedExperiment
+#' @importFrom pipette as.DataFrame
 #' @export
-pipette::as.SummarizedExperiment
+pipette::as.DataFrame
 
 #' @importFrom pipette as.data.frame
 #' @export
@@ -508,10 +514,6 @@ pipette::atomize
 #' @importFrom pipette cacheURL
 #' @export
 pipette::cacheURL
-
-#' @importFrom pipette coerceToList
-#' @export
-pipette::coerceToList
 
 #' @importFrom pipette column_to_rownames
 #' @export

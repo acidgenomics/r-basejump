@@ -8,6 +8,15 @@ NULL
 
 
 
+#' @rdname coerce-list
+#' @name coerceToList
+#' @importFrom AcidGenerics coerceToList
+#' @usage coerceToList(object, ...)
+#' @export
+NULL
+
+
+
 #' @rdname dottedCase
 #' @name dottedCase
 #' @importFrom AcidGenerics dottedCase
