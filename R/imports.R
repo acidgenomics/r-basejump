@@ -12,9 +12,7 @@ NULL
 
 
 
-#' @importFrom AcidBase appendToBody bapply compress getNameInParent
-#'   matchArgsToDoCall methodFormals methodFunction printString
-#'   requireNamespaces
+#' @importFrom AcidBase requireNamespaces
 #' @importFrom AcidGenerics %in% aggregate as.data.frame as.list colSums
 #'   complete.cases cor decode do.call expand expand.grid head lapply match
 #'   mcols mcols<- merge metadata metadata<- na.omit order rowSums setdiff split
@@ -31,7 +29,7 @@ NULL
 #'   hasRownames hasSubset hasUniqueCols hasValidDimnames hasValidNames
 #'   isADirectory isAFile isAURL isAlpha isAny isCharacter isFlag isGGScale
 #'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
-#'   isInLeftOpenRange isInRange isInt isIntegerish isMatchingRegex
+#'   isInLeftOpenRange isInRange isInstalled isInt isIntegerish isMatchingRegex
 #'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
 #'   isSubset isSuperset matchesUniqueGeneNames validNames validate
 #'   validateClasses
@@ -40,8 +38,7 @@ NULL
 #'   setReplaceMethod setOldClass setValidity signature slot slotNames
 #'   validObject .hasSlot
 #' @importFrom stringr str_dup str_length str_pad
-#' @importFrom utils capture.output data getFromNamespace installed.packages
-#'   packageName packageVersion
+#' @importFrom utils packageName packageVersion
 NULL
 
 
