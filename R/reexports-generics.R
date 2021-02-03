@@ -16,17 +16,23 @@ AcidGenerics::aggregateCols
 #' @exportMethod aggregateRows
 AcidGenerics::aggregateRows
 
-#' @importFrom AcidGenerics autopadZeros
+#' @importFrom AcidGenerics antiJoin
 #' @export
-#' @importMethodsFrom AcidExperiment autopadZeros
-#' @exportMethod autopadZeros
-AcidGenerics::autopadZeros
+#' @importMethodsFrom AcidPlyr antiJoin
+#' @exportMethod antiJoin
+AcidGenerics::antiJoin
 
 #' @importFrom AcidGenerics as.SummarizedExperiment
 #' @export
 #' @importMethodsFrom AcidExperiment as.SummarizedExperiment
 #' @exportMethod as.SummarizedExperiment
 AcidGenerics::as.SummarizedExperiment
+
+#' @importFrom AcidGenerics autopadZeros
+#' @export
+#' @importMethodsFrom AcidExperiment autopadZeros
+#' @exportMethod autopadZeros
+AcidGenerics::autopadZeros
 
 #' @importFrom AcidGenerics export
 #' @export
@@ -35,11 +41,29 @@ AcidGenerics::as.SummarizedExperiment
 #' @exportMethod export
 AcidGenerics::export
 
+#' @importFrom AcidGenerics fullJoin
+#' @export
+#' @importMethodsFrom AcidPlyr fullJoin
+#' @exportMethod fullJoin
+AcidGenerics::fullJoin
+
 #' @importFrom AcidGenerics geneNames
 #' @export
 #' @importMethodsFrom AcidExperiment geneNames
 #' @exportMethod geneNames
 AcidGenerics::geneNames
+
+#' @importFrom AcidGenerics innerJoin
+#' @export
+#' @importMethodsFrom AcidPlyr innerJoin
+#' @exportMethod innerJoin
+AcidGenerics::innerJoin
+
+#' @importFrom AcidGenerics leftJoin
+#' @export
+#' @importMethodsFrom AcidPlyr leftJoin
+#' @exportMethod leftJoin
+AcidGenerics::leftJoin
 
 ## NOTE This doesn't work:
 ## > #' @importMethodsFrom AcidGenerics mcols
@@ -73,6 +97,24 @@ AcidGenerics::metadata
 #' @export
 AcidGenerics::`metadata<-`
 
+#' @importFrom AcidGenerics mutateAll
+#' @export
+#' @importMethodsFrom AcidPlyr mutateAll
+#' @exportMethod mutateAll
+AcidGenerics::mutateAll
+
+#' @importFrom AcidGenerics mutateAt
+#' @export
+#' @importMethodsFrom AcidPlyr mutateAt
+#' @exportMethod mutateAt
+AcidGenerics::mutateAt
+
+#' @importFrom AcidGenerics mutateIf
+#' @export
+#' @importMethodsFrom AcidPlyr mutateIf
+#' @exportMethod mutateIf
+AcidGenerics::mutateIf
+
 #' @importFrom AcidGenerics organism
 #' @export
 #' @importMethodsFrom AcidExperiment organism
@@ -85,6 +127,30 @@ AcidGenerics::organism
 #' @importMethodsFrom AcidGenomes organism<-
 #' @exportMethod organism<-
 AcidGenerics::`organism<-`
+
+#' @importFrom AcidGenerics rightJoin
+#' @export
+#' @importMethodsFrom AcidPlyr rightJoin
+#' @exportMethod rightJoin
+AcidGenerics::rightJoin
+
+#' @importFrom AcidGenerics selectIf
+#' @export
+#' @importMethodsFrom AcidPlyr selectIf
+#' @exportMethod selectIf
+AcidGenerics::selectIf
+
+#' @importFrom AcidGenerics semiJoin
+#' @export
+#' @importMethodsFrom AcidPlyr semiJoin
+#' @exportMethod semiJoin
+AcidGenerics::semiJoin
+
+#' @importFrom AcidGenerics splitByLevel
+#' @export
+#' @importMethodsFrom AcidPlyr splitByLevel
+#' @exportMethod splitByLevel
+AcidGenerics::splitByLevel
 
 #' @importFrom AcidGenerics stripGeneVersions
 #' @export
@@ -100,11 +166,17 @@ AcidGenerics::stripGeneVersions
 #' @exportMethod stripTranscriptVersions
 AcidGenerics::stripTranscriptVersions
 
+#' @importFrom AcidGenerics transmuteAt
+#' @export
+#' @importMethodsFrom AcidPlyr transmuteAt
+#' @exportMethod transmuteAt
+AcidGenerics::transmuteAt
 
-
-
-
-
+#' @importFrom AcidGenerics transmuteIf
+#' @export
+#' @importMethodsFrom AcidPlyr transmuteIf
+#' @exportMethod transmuteIf
+AcidGenerics::transmuteIf
 
 
 

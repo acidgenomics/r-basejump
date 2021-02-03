@@ -279,60 +279,6 @@ AcidGenomes::mapUCSCBuildToEnsembl
 
 ## FIXME ======================================================================
 
-#' @importFrom AcidPlyr antiJoin
-#' @export
-AcidPlyr::antiJoin
-
-#' @importFrom AcidPlyr fullJoin
-#' @export
-AcidPlyr::fullJoin
-
-#' @importFrom AcidPlyr innerJoin
-#' @export
-AcidPlyr::innerJoin
-
-#' @importFrom AcidPlyr leftJoin
-#' @export
-AcidPlyr::leftJoin
-
-#' @importFrom AcidPlyr mutateAll
-#' @export
-AcidPlyr::mutateAll
-
-#' @importFrom AcidPlyr mutateAt
-#' @export
-AcidPlyr::mutateAt
-
-#' @importFrom AcidPlyr mutateIf
-#' @export
-AcidPlyr::mutateIf
-
-#' @importFrom AcidPlyr rightJoin
-#' @export
-AcidPlyr::rightJoin
-
-#' @importFrom AcidPlyr selectIf
-#' @export
-AcidPlyr::selectIf
-
-#' @importFrom AcidPlyr semiJoin
-#' @export
-AcidPlyr::semiJoin
-
-#' @importFrom AcidPlyr splitByLevel
-#' @export
-AcidPlyr::splitByLevel
-
-#' @importFrom AcidPlyr transmuteAt
-#' @export
-AcidPlyr::transmuteAt
-
-#' @importFrom AcidPlyr transmuteIf
-#' @export
-AcidPlyr::transmuteIf
-
-
-
 #' @importFrom GenomicRanges GRanges
 #' @export
 GenomicRanges::GRanges
