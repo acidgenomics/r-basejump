@@ -47,7 +47,6 @@ Imports:
     SummarizedExperiment,
     goalie (>= 0.4.14),
     magrittr (>= 2.0),
-    matrixStats (>= 0.58),
     methods,
     pipette (>= 0.5.3),
     stringr (>= 1.4),
