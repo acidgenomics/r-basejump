@@ -2,7 +2,6 @@
 
 
 
-#' @importClassesFrom AcidGenerics AsIs
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix Matrix
@@ -28,9 +27,7 @@ NULL
 #'   mcols mcols<- merge metadata metadata<- na.omit order rowSums setdiff split
 #'   summary t tail unlist
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
-#' @importFrom Matrix fac2sparse
 #' @importFrom S4Vectors DataFrame List Rle SimpleList
-#' @importFrom SingleCellExperiment SingleCellExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-

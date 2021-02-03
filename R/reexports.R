@@ -367,16 +367,6 @@ S4Vectors::SimpleList
 
 
 
-#' @importFrom SingleCellExperiment reducedDims
-#' @export
-SingleCellExperiment::reducedDims
-
-#' @importFrom SingleCellExperiment reducedDims<-
-#' @export
-SingleCellExperiment::`reducedDims<-`
-
-
-
 #' @importFrom SummarizedExperiment assayNames
 #' @export
 SummarizedExperiment::assayNames
