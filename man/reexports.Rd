@@ -21,9 +21,6 @@
 \alias{Ensembl2Entrez}
 \alias{Entrez2Ensembl}
 \alias{Gene2Symbol}
-\alias{HGNC}
-\alias{HGNC2Ensembl}
-\alias{MGI2Ensembl}
 \alias{Tx2Gene}
 \alias{appendToBody}
 \alias{barcodePattern}
@@ -57,6 +54,9 @@
 \alias{showSlotInfo}
 \alias{standardizeCall}
 \alias{updateMessage}
+\alias{HGNC}
+\alias{HGNC2Ensembl}
+\alias{MGI2Ensembl}
 \alias{annotable}
 \alias{currentEnsemblGenomeBuild}
 \alias{currentEnsemblVersion}

@@ -128,6 +128,18 @@ AcidBase::updateMessage
 
 
 
+#' @importFrom AcidGenomes HGNC
+#' @export
+AcidGenomes::HGNC
+
+#' @importFrom AcidGenomes HGNC2Ensembl
+#' @export
+AcidGenomes::HGNC2Ensembl
+
+#' @importFrom AcidGenomes MGI2Ensembl
+#' @export
+AcidGenomes::MGI2Ensembl
+
 #' @importFrom AcidGenomes annotable
 #' @export
 AcidGenomes::annotable
