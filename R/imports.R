@@ -12,29 +12,26 @@ NULL
 
 
 
+## FIXME REDUCE THE NUMBER OF GOALIE IMPORTS.
+
 #' @importFrom AcidBase requireNamespaces
-#' @importFrom AcidGenerics %in% aggregate as.data.frame as.list colSums
-#'   complete.cases cor decode do.call expand expand.grid head lapply match
-#'   mcols mcols<- merge metadata metadata<- na.omit order rowSums setdiff split
-#'   summary t tail unlist
+#' @importFrom AcidGenerics %in% as.data.frame expand.grid lapply mcols mcols<-
+#'   metadata metadata<- unlist
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
-#' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
-#'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert false
-#'   hasColnames hasCols hasDimnames hasDims hasDuplicates hasInternet hasLength
-#'   hasMetrics hasNames hasNoDuplicates hasNonzeroRowsAndCols hasRows
-#'   hasRownames hasSubset hasUniqueCols hasValidDimnames hasValidNames
+#' @importFrom goalie areSameLength assert hasColnames hasDimnames hasLength
+#'   hasNames hasRownames
+#'
+#'   hasUniqueCols hasValidDimnames hasValidNames
 #'   isADirectory isAFile isAURL isAlpha isAny isCharacter isFlag isGGScale
 #'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
 #'   isInLeftOpenRange isInRange isInstalled isInt isIntegerish isMatchingRegex
 #'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
 #'   isSubset isSuperset matchesUniqueGeneNames validNames validate
 #'   validateClasses
-#' @importFrom methods as coerce getMethod is
-#'   setAs setClass setClassUnion setGeneric setMethod
-#'   setReplaceMethod setOldClass setValidity signature slot slotNames
-#'   validObject .hasSlot
+#' @importFrom methods as coerce getMethod is setAs setMethod signature slot
+#'   slotNames validObject .hasSlot
 #' @importFrom stringr str_dup str_length str_pad
 #' @importFrom utils packageName packageVersion
 NULL

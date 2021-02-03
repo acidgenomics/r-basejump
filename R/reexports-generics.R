@@ -206,6 +206,8 @@ AcidGenomes::Tx2Gene
 
 
 
+## FIXME NEED TO REWORK THESE.
+
 #' @importFrom pipette atomize
 #' @export
 pipette::atomize
