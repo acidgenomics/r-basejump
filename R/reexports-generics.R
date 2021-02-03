@@ -1,3 +1,15 @@
+#' @importFrom AcidGenerics as.data.frame
+#' @export
+#' @importMethodsFrom pipette as.data.frame
+#' @exportMethod as.data.frame
+AcidGenerics::as.data.frame
+
+
+
+
+
+
+
 #' @importFrom AcidGenerics aggregate
 #' @export
 #' @importMethodsFrom AcidExperiment aggregate
@@ -65,33 +77,17 @@ AcidGenerics::innerJoin
 #' @exportMethod leftJoin
 AcidGenerics::leftJoin
 
-## NOTE This doesn't work:
-## > #' @importMethodsFrom AcidGenerics mcols
-## > #' @exportMethod mcols
-
 #' @importFrom AcidGenerics mcols
 #' @export
 AcidGenerics::mcols
-
-## NOTE This doesn't work:
-## > #' @importMethodsFrom AcidGenerics mcols<-
-## > #' @exportMethod mcols<-
 
 #' @importFrom AcidGenerics mcols<-
 #' @export
 AcidGenerics::`mcols<-`
 
-## NOTE This doesn't work:
-## > #' @importMethodsFrom AcidGenerics metadata
-## > #' @exportMethod metadata
-
 #' @importFrom AcidGenerics metadata
 #' @export
 AcidGenerics::metadata
-
-## NOTE This doesn't work:
-## > #' @importMethodsFrom AcidGenerics metadata<-
-## > #' @exportMethod metadata<-
 
 #' @importFrom AcidGenerics metadata<-
 #' @export
