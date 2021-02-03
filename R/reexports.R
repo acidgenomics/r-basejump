@@ -130,58 +130,12 @@ AcidBase::updateMessage
 
 
 
+## FIXME ======================================================================
 
 
 
-## FIXME MOVE THESE TO METHODS...
 
 
-
-#' @importFrom AcidGenerics mcols
-#' @export
-AcidGenerics::mcols
-
-#' @importFrom AcidGenerics mcols<-
-#' @export
-AcidGenerics::`mcols<-`
-
-#' @importFrom AcidGenerics metadata
-#' @export
-AcidGenerics::metadata
-
-#' @importFrom AcidGenerics metadata<-
-#' @export
-AcidGenerics::`metadata<-`
-
-
-
-#' @importFrom AcidGenomes Ensembl2Entrez
-#' @export
-AcidGenomes::Ensembl2Entrez
-
-#' @importFrom AcidGenomes Entrez2Ensembl
-#' @export
-AcidGenomes::Entrez2Ensembl
-
-#' @importFrom AcidGenomes Gene2Symbol
-#' @export
-AcidGenomes::Gene2Symbol
-
-#' @importFrom AcidGenomes HGNC
-#' @export
-AcidGenomes::HGNC
-
-#' @importFrom AcidGenomes HGNC2Ensembl
-#' @export
-AcidGenomes::HGNC2Ensembl
-
-#' @importFrom AcidGenomes MGI2Ensembl
-#' @export
-AcidGenomes::MGI2Ensembl
-
-#' @importFrom AcidGenomes Tx2Gene
-#' @export
-AcidGenomes::Tx2Gene
 
 #' @importFrom AcidGenomes annotable
 #' @export
