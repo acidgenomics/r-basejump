@@ -128,15 +128,6 @@ AcidBase::updateMessage
 
 
 
-
-
-## FIXME ======================================================================
-
-
-
-
-
-
 #' @importFrom AcidGenomes annotable
 #' @export
 AcidGenomes::annotable
@@ -269,23 +260,12 @@ AcidGenomes::mapHumanOrthologs
 #' @export
 AcidGenomes::mapUCSCBuildToEnsembl
 
-#' @importFrom AcidGenomes organism
-#' @export
-AcidGenomes::organism
-
-#' @importFrom AcidGenomes organism<-
-#' @export
-AcidGenomes::`organism<-`
-
-#' @importFrom AcidGenomes stripGeneVersions
-#' @export
-AcidGenomes::stripGeneVersions
-
-#' @importFrom AcidGenomes stripTranscriptVersions
-#' @export
-AcidGenomes::stripTranscriptVersions
 
 
+
+
+
+## FIXME ======================================================================
 
 #' @importFrom AcidPlyr antiJoin
 #' @export

@@ -73,6 +73,43 @@ AcidGenerics::metadata
 #' @export
 AcidGenerics::`metadata<-`
 
+#' @importFrom AcidGenerics organism
+#' @export
+#' @importMethodsFrom AcidGenomes organism
+#' @exportMethod organism
+AcidGenerics::organism
+
+#' @importFrom AcidGenerics organism<-
+#' @export
+#' @importMethodsFrom AcidGenomes organism<-
+#' @exportMethod organism<-
+AcidGenerics::`organism<-`
+
+
+
+
+
+
+
+
+
+
+#' @importFrom AcidGenomes stripGeneVersions
+#' @export
+AcidGenomes::stripGeneVersions
+
+#' @importFrom AcidGenomes stripTranscriptVersions
+#' @export
+AcidGenomes::stripTranscriptVersions
+
+
+
+
+
+
+
+
+
 #' @importFrom AcidGenomes Ensembl2Entrez
 #' @export
 AcidGenomes::Ensembl2Entrez
