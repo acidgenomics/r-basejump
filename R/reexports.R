@@ -128,13 +128,12 @@ AcidBase::updateMessage
 
 
 
-#' @importFrom AcidExperiment as.SummarizedExperiment
-#' @export
-AcidExperiment::as.SummarizedExperiment
 
-#' @importFrom AcidExperiment geneNames
-#' @export
-AcidExperiment::geneNames
+
+
+
+
+## FIXME MOVE THESE TO METHODS...
 
 
 
