@@ -27,7 +27,6 @@ NULL
 #'   complete.cases cor decode do.call expand expand.grid head lapply match
 #'   mcols mcols<- merge metadata metadata<- na.omit order rowSums setdiff split
 #'   summary t tail unlist
-#' @importFrom Biostrings reverseComplement
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse
 #' @importFrom S4Vectors DataFrame List Rle SimpleList
@@ -35,8 +34,6 @@ NULL
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
-#' @importFrom cli cli_alert cli_alert_info cli_alert_success cli_alert_warning
-#'   cli_div cli_dl cli_end cli_li cli_text cli_ul cli_verbatim
 #' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
 #'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert false
 #'   hasColnames hasCols hasDimnames hasDims hasDuplicates hasInternet hasLength
@@ -53,8 +50,6 @@ NULL
 #'   new selectMethod setAs setClass setClassUnion setGeneric setMethod
 #'   setReplaceMethod setOldClass setValidity signature slot slotNames
 #'   validObject .hasSlot
-#' @importFrom scales percent
-#' @importFrom sessioninfo session_info
 #' @importFrom stringr boundary str_detect str_dup str_extract str_length
 #'   str_match str_pad str_replace_all str_split str_split_fixed str_subset
 #'   str_trunc
