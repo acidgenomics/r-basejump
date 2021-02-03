@@ -42,7 +42,6 @@ NULL
 #'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
 #'   isSubset isSuperset matchesUniqueGeneNames validNames validate
 #'   validateClasses
-#' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
 #'   new selectMethod setAs setClass setClassUnion setGeneric setMethod
 #'   setReplaceMethod setOldClass setValidity signature slot slotNames
