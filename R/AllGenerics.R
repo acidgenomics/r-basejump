@@ -1,27 +1,7 @@
-#' @rdname camelCase
-#' @name camelCase
-#' @importFrom AcidGenerics camelCase
-#' @importMethodsFrom syntactic camelCase
-#' @usage camelCase(object, ...)
-#' @export
-NULL
-
-
-
 #' @rdname coerce-list
 #' @name coerceToList
 #' @importFrom AcidGenerics coerceToList
 #' @usage coerceToList(object, ...)
-#' @export
-NULL
-
-
-
-#' @rdname dottedCase
-#' @name dottedCase
-#' @importFrom AcidGenerics dottedCase
-#' @importMethodsFrom syntactic dottedCase
-#' @usage dottedCase(object, ...)
 #' @export
 NULL
 
@@ -71,7 +51,23 @@ NULL
 
 
 
-#' @rdname snakeCase
+#' @rdname syntactic
+#' @name camelCase
+#' @importFrom AcidGenerics camelCase
+#' @importMethodsFrom syntactic camelCase
+#' @usage camelCase(object, ...)
+#' @export
+NULL
+
+#' @rdname syntactic
+#' @name dottedCase
+#' @importFrom AcidGenerics dottedCase
+#' @importMethodsFrom syntactic dottedCase
+#' @usage dottedCase(object, ...)
+#' @export
+NULL
+
+#' @rdname syntactic
 #' @name snakeCase
 #' @importFrom AcidGenerics snakeCase
 #' @importMethodsFrom syntactic snakeCase
@@ -79,9 +75,7 @@ NULL
 #' @export
 NULL
 
-
-
-#' @rdname upperCamelCase
+#' @rdname syntactic
 #' @name upperCamelCase
 #' @importFrom AcidGenerics upperCamelCase
 #' @importMethodsFrom syntactic upperCamelCase
