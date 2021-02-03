@@ -274,11 +274,6 @@ AcidGenomes::mapUCSCBuildToEnsembl
 
 
 
-
-
-
-## FIXME ======================================================================
-
 #' @importFrom GenomicRanges GRanges
 #' @export
 GenomicRanges::GRanges
@@ -368,29 +363,17 @@ magrittr::`%T>%`
 
 
 
-#' @importFrom pipette as.DataFrame
-#' @export
-pipette::as.DataFrame
-
-#' @importFrom pipette as.data.frame
-#' @export
-pipette::as.data.frame
-
 #' @importFrom pipette as.data.table
 #' @export
-pipette::as.data.table
+pipette::as.data.table  # data.table
 
 #' @importFrom pipette as_tibble
 #' @export
-pipette::as_tibble
+pipette::as_tibble  # tibble
 
 #' @importFrom pipette assignAndSaveData
 #' @export
 pipette::assignAndSaveData
-
-#' @importFrom pipette atomize
-#' @export
-pipette::atomize
 
 #' @importFrom pipette cacheURL
 #' @export
@@ -398,31 +381,7 @@ pipette::cacheURL
 
 #' @importFrom pipette column_to_rownames
 #' @export
-pipette::column_to_rownames
-
-#' @importFrom pipette decode
-#' @export
-pipette::decode
-
-#' @importFrom pipette download
-#' @export
-pipette::download
-
-#' @importMethodsFrom pipette droplevels
-#' @exportMethod droplevels
-NULL
-
-#' @importFrom pipette encode
-#' @export
-pipette::encode
-
-#' @importFrom pipette export
-#' @export
-pipette::export
-
-#' @importFrom pipette factorize
-#' @export
-pipette::factorize
+pipette::column_to_rownames  # tibble
 
 #' @importFrom pipette getURLDirList
 #' @export
@@ -448,33 +407,13 @@ pipette::loadRemoteData
 #' @export
 pipette::localOrRemoteFile
 
-#' @importFrom pipette metadata2
-#' @export
-pipette::metadata2
-
-#' @importFrom pipette metadata2<-
-#' @export
-pipette::`metadata2<-`
-
 #' @importFrom pipette naStrings
 #' @export
 pipette::naStrings
 
-#' @importFrom pipette removeNA
-#' @export
-pipette::removeNA
-
 #' @importFrom pipette rownames_to_column
 #' @export
-pipette::rownames_to_column
-
-#' @importFrom pipette sanitizeNA
-#' @export
-pipette::sanitizeNA
-
-#' @importFrom pipette sanitizePercent
-#' @export
-pipette::sanitizePercent
+pipette::rownames_to_column  # tibble
 
 #' @importFrom pipette saveData
 #' @export
@@ -482,58 +421,8 @@ pipette::saveData
 
 #' @importFrom pipette tibble
 #' @export
-pipette::tibble
+pipette::tibble  # tibble
 
 #' @importFrom pipette transmit
 #' @export
 pipette::transmit
-
-
-
-#' @importFrom syntactic camel
-#' @export
-syntactic::camel
-
-#' @importFrom syntactic capitalize
-#' @export
-syntactic::capitalize
-
-#' @importFrom syntactic dotted
-#' @export
-syntactic::dotted
-
-#' @importFrom syntactic kebab
-#' @export
-syntactic::kebab
-
-#' @importFrom syntactic kebabCase
-#' @export
-syntactic::kebabCase
-
-#' @importFrom syntactic makeDimnames
-#' @export
-syntactic::makeDimnames
-
-#' @importFrom syntactic makeLabel
-#' @export
-syntactic::makeLabel
-
-#' @importFrom syntactic makeNames
-#' @export
-syntactic::makeNames
-
-#' @importFrom syntactic makeTitle
-#' @export
-syntactic::makeTitle
-
-#' @importFrom syntactic makeWords
-#' @export
-syntactic::makeWords
-
-#' @importFrom syntactic snake
-#' @export
-syntactic::snake
-
-#' @importFrom syntactic upperCamel
-#' @export
-syntactic::upperCamel

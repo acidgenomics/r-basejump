@@ -1,15 +1,3 @@
-#' @importFrom AcidGenerics as.data.frame
-#' @export
-#' @importMethodsFrom pipette as.data.frame
-#' @exportMethod as.data.frame
-AcidGenerics::as.data.frame
-
-
-
-
-
-
-
 #' @importFrom AcidGenerics aggregate
 #' @export
 #' @importMethodsFrom AcidExperiment aggregate
@@ -34,11 +22,23 @@ AcidGenerics::aggregateRows
 #' @exportMethod antiJoin
 AcidGenerics::antiJoin
 
+#' @importFrom AcidGenerics as.DataFrame
+#' @export
+#' @importMethodsFrom pipette as.DataFrame
+#' @exportMethod as.DataFrame
+AcidGenerics::as.DataFrame
+
 #' @importFrom AcidGenerics as.SummarizedExperiment
 #' @export
 #' @importMethodsFrom AcidExperiment as.SummarizedExperiment
 #' @exportMethod as.SummarizedExperiment
 AcidGenerics::as.SummarizedExperiment
+
+#' @importFrom AcidGenerics as.data.frame
+#' @export
+#' @importMethodsFrom pipette as.data.frame
+#' @exportMethod as.data.frame
+AcidGenerics::as.data.frame
 
 #' @importFrom AcidGenerics autopadZeros
 #' @export
@@ -197,3 +197,85 @@ AcidGenomes::Gene2Symbol
 #' @importMethodsFrom AcidGenomes Tx2Gene
 #' @exportMethod Tx2Gene
 AcidGenomes::Tx2Gene
+
+
+
+
+
+
+
+
+
+#' @importFrom pipette atomize
+#' @export
+pipette::atomize
+
+#' @importFrom pipette decode
+#' @export
+pipette::decode
+
+#' @importMethodsFrom pipette droplevels
+#' @exportMethod droplevels
+NULL
+
+#' @importFrom pipette encode
+#' @export
+pipette::encode
+
+#' @importFrom pipette export
+#' @export
+pipette::export
+
+#' @importFrom pipette factorize
+#' @export
+pipette::factorize
+
+#' @importFrom pipette metadata2
+#' @export
+pipette::metadata2
+
+#' @importFrom pipette metadata2<-
+#' @export
+pipette::`metadata2<-`
+
+#' @importFrom pipette removeNA
+#' @export
+pipette::removeNA
+
+#' @importFrom pipette sanitizeNA
+#' @export
+pipette::sanitizeNA
+
+#' @importFrom pipette sanitizePercent
+#' @export
+pipette::sanitizePercent
+
+
+
+#' @importFrom syntactic capitalize
+#' @export
+syntactic::capitalize
+
+#' @importFrom syntactic kebabCase
+#' @export
+syntactic::kebabCase
+
+#' @importFrom syntactic makeDimnames
+#' @export
+syntactic::makeDimnames
+
+#' @importFrom syntactic makeLabel
+#' @export
+syntactic::makeLabel
+
+#' @importFrom syntactic makeNames
+#' @export
+syntactic::makeNames
+
+#' @importFrom syntactic makeTitle
+#' @export
+syntactic::makeTitle
+
+#' @importFrom syntactic makeWords
+#' @export
+syntactic::makeWords
