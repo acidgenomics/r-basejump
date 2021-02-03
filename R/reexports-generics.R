@@ -12,18 +12,33 @@ AcidGenerics::aggregateCols
 
 #' @importFrom AcidGenerics aggregateRows
 #' @export
+#' @importMethodsFrom AcidExperiment aggregateRows
+#' @exportMethod aggregateRows
 AcidGenerics::aggregateRows
 
 #' @importFrom AcidGenerics autopadZeros
 #' @export
+#' @importMethodsFrom AcidExperiment autopadZeros
+#' @exportMethod autopadZeros
 AcidGenerics::autopadZeros
 
 #' @importFrom AcidGenerics as.SummarizedExperiment
 #' @export
+#' @importMethodsFrom AcidExperiment as.SummarizedExperiment
+#' @exportMethod as.SummarizedExperiment
 AcidGenerics::as.SummarizedExperiment
+
+#' @importFrom AcidGenerics export
+#' @export
+#' @importMethodsFrom AcidExperiment export
+#' @importMethodsFrom AcidGenomes export
+#' @exportMethod export
+AcidGenerics::export
 
 #' @importFrom AcidGenerics geneNames
 #' @export
+#' @importMethodsFrom AcidExperiment geneNames
+#' @exportMethod geneNames
 AcidGenerics::geneNames
 
 ## FIXME
