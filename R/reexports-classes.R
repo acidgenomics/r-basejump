@@ -1,8 +1,16 @@
 #' Reexport S4 classes
 #'
 #' @name reexports-classes
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-03.
 #' @keywords internal
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name AsIs-class
+#' @importClassesFrom AcidGenerics AsIs
+#' @exportClass AsIs
 NULL
 
 
@@ -163,4 +171,12 @@ NULL
 #' @name WormBaseTranscripts-class
 #' @importClassesFrom AcidGenomes WormBaseTranscripts
 #' @exportClass WormBaseTranscripts
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name missingOrNULL-class
+#' @importClassesFrom AcidGenerics missingOrNULL
+#' @exportClass missingOrNULL
 NULL

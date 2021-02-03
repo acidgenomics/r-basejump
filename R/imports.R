@@ -17,8 +17,6 @@ NULL
 #'   complete.cases cor decode do.call expand expand.grid head lapply match
 #'   mcols mcols<- merge metadata metadata<- na.omit order rowSums setdiff split
 #'   summary t tail unlist
-#' @importFrom IRanges IRanges
-#' @importFrom S4Vectors DataFrame List Rle SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
@@ -33,8 +31,8 @@ NULL
 #'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
 #'   isSubset isSuperset matchesUniqueGeneNames validNames validate
 #'   validateClasses
-#' @importFrom methods as coerce formalArgs getGeneric getMethod is isGeneric
-#'   new selectMethod setAs setClass setClassUnion setGeneric setMethod
+#' @importFrom methods as coerce getMethod is
+#'   setAs setClass setClassUnion setGeneric setMethod
 #'   setReplaceMethod setOldClass setValidity signature slot slotNames
 #'   validObject .hasSlot
 #' @importFrom stringr str_dup str_length str_pad
