@@ -41,32 +41,37 @@ AcidGenerics::export
 #' @exportMethod geneNames
 AcidGenerics::geneNames
 
-## FIXME
-## > #' @importMethodsFrom AcidGenerics mcols mcols<-
-## > #' @exportMethod mcols mcols<-
-## > NULL
+## NOTE This doesn't work:
+## > #' @importMethodsFrom AcidGenerics mcols
+## > #' @exportMethod mcols
 
 #' @importFrom AcidGenerics mcols
 #' @export
 AcidGenerics::mcols
 
+## NOTE This doesn't work:
+## > #' @importMethodsFrom AcidGenerics mcols<-
+## > #' @exportMethod mcols<-
+
 #' @importFrom AcidGenerics mcols<-
 #' @export
 AcidGenerics::`mcols<-`
 
-## > #' @importMethodsFrom AcidGenerics metadata metadata<-
-## > #' @exportMethod metadata metadata<-
-## > NULL
+## NOTE This doesn't work:
+## > #' @importMethodsFrom AcidGenerics metadata
+## > #' @exportMethod metadata
 
 #' @importFrom AcidGenerics metadata
 #' @export
 AcidGenerics::metadata
 
+## NOTE This doesn't work:
+## > #' @importMethodsFrom AcidGenerics metadata<-
+## > #' @exportMethod metadata<-
+
 #' @importFrom AcidGenerics metadata<-
 #' @export
 AcidGenerics::`metadata<-`
-
-
 
 #' @importFrom AcidGenomes Ensembl2Entrez
 #' @export
