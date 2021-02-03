@@ -16,7 +16,7 @@
 #' - `bcbioRNASeq::prepareRNASeqTemplate()`.
 #' - `bcbioSingleCell::prepareSingleCellTemplate()`.
 #'
-#' @note Updated 2019-11-19.
+#' @note Updated 2021-02-03.
 #' @export
 #'
 #' @param package `character(1)` or `NULL`.
@@ -60,7 +60,7 @@ prepareTemplate <- function(package = NULL, overwrite = FALSE) {
     }
     ## Copy the shared files from the requested package, if necessary.
     if (!is.null(package)) {
-        assert(isSubset(package, rownames(installed.packages())))
+        assert(isInstalled(package))
         sourceDir <- system.file(
             "rmarkdown", "shared",
             package = package, mustWork = TRUE
