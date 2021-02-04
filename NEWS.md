@@ -1,4 +1,7 @@
-## basejump 0.13.5 (UNRELEASED)
+## basejump 0.14.0 (UNRELEASED)
+
+Reworked package to simply inherit and reexport functions from other Acid
+Genomics packages, rather than defining any code directly here.
 
 ### Major changes
 

@@ -53,18 +53,11 @@ Imports:
     syntactic (>= 0.4.4),
     tibble (>= 3.0),
     utils
-Suggests:
-    AcidTest (>= 0.4.1),
-    BiocStyle,
-    datasets,
-    knitr,
-    rmarkdown,
-    testthat
 biocViews:
     DataImport,
     GenomeAnnotation,
+    Infrastructure,
     Preprocessing
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-VignetteBuilder: knitr
 Additional_repositories: https://r.acidgenomics.com
