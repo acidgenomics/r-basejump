@@ -10,8 +10,13 @@
 \alias{as.DataFrame}
 \alias{as.SummarizedExperiment}
 \alias{as.data.frame}
+\alias{atomize}
 \alias{autopadZeros}
+\alias{decode}
+\alias{droplevels}
+\alias{encode}
 \alias{export}
+\alias{factorize}
 \alias{fullJoin}
 \alias{geneNames}
 \alias{innerJoin}
@@ -20,12 +25,17 @@
 \alias{mcols<-}
 \alias{metadata}
 \alias{metadata<-}
+\alias{metadata2}
+\alias{metadata2<-}
 \alias{mutateAll}
 \alias{mutateAt}
 \alias{mutateIf}
 \alias{organism}
 \alias{organism<-}
+\alias{removeNA}
 \alias{rightJoin}
+\alias{sanitizeNA}
+\alias{sanitizePercent}
 \alias{selectIf}
 \alias{semiJoin}
 \alias{splitByLevel}
@@ -37,16 +47,6 @@
 \alias{Entrez2Ensembl}
 \alias{Gene2Symbol}
 \alias{Tx2Gene}
-\alias{atomize}
-\alias{decode}
-\alias{droplevels}
-\alias{encode}
-\alias{factorize}
-\alias{metadata2}
-\alias{metadata2<-}
-\alias{removeNA}
-\alias{sanitizeNA}
-\alias{sanitizePercent}
 \alias{camelCase}
 \alias{capitalize}
 \alias{dottedCase}
@@ -171,7 +171,7 @@ below to see their documentation.
 \describe{
   \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase]{updateMessage}}}
 
-  \item{AcidGenerics}{\code{\link[AcidGenerics]{aggregate}}, \code{\link[AcidGenerics]{aggregateCols}}, \code{\link[AcidGenerics]{aggregateRows}}, \code{\link[AcidGenerics:join]{antiJoin}}, \code{\link[AcidGenerics]{as.DataFrame}}, \code{\link[AcidGenerics]{as.SummarizedExperiment}}, \code{\link[AcidGenerics]{as.data.frame}}, \code{\link[AcidGenerics]{atomize}}, \code{\link[AcidGenerics]{autopadZeros}}, \code{\link[AcidGenerics]{decode}}, \code{\link[AcidGenerics]{droplevels}}, \code{\link[AcidGenerics]{encode}}, \code{\link[AcidGenerics]{export}}, \code{\link[AcidGenerics]{export}}, \code{\link[AcidGenerics]{factorize}}, \code{\link[AcidGenerics:join]{fullJoin}}, \code{\link[AcidGenerics]{geneNames}}, \code{\link[AcidGenerics:join]{innerJoin}}, \code{\link[AcidGenerics:join]{leftJoin}}, \code{\link[AcidGenerics:reexports]{mcols}}, \code{\link[AcidGenerics:reexports]{mcols<-}}, \code{\link[AcidGenerics:reexports]{metadata}}, \code{\link[AcidGenerics]{metadata2}}, \code{\link[AcidGenerics:metadata2]{metadata2<-}}, \code{\link[AcidGenerics:reexports]{metadata<-}}, \code{\link[AcidGenerics:mutate]{mutateAll}}, \code{\link[AcidGenerics:mutate]{mutateAt}}, \code{\link[AcidGenerics:mutate]{mutateIf}}, \code{\link[AcidGenerics]{organism}}, \code{\link[AcidGenerics:organism]{organism<-}}, \code{\link[AcidGenerics]{removeNA}}, \code{\link[AcidGenerics:join]{rightJoin}}, \code{\link[AcidGenerics]{sanitizeNA}}, \code{\link[AcidGenerics]{sanitizePercent}}, \code{\link[AcidGenerics:select]{selectIf}}, \code{\link[AcidGenerics:join]{semiJoin}}, \code{\link[AcidGenerics]{splitByLevel}}, \code{\link[AcidGenerics]{stripGeneVersions}}, \code{\link[AcidGenerics]{stripTranscriptVersions}}, \code{\link[AcidGenerics:mutate]{transmuteAt}}, \code{\link[AcidGenerics:mutate]{transmuteIf}}}
+  \item{AcidGenerics}{\code{\link[AcidGenerics]{aggregate}}, \code{\link[AcidGenerics]{aggregateCols}}, \code{\link[AcidGenerics]{aggregateRows}}, \code{\link[AcidGenerics:join]{antiJoin}}, \code{\link[AcidGenerics]{as.DataFrame}}, \code{\link[AcidGenerics]{as.SummarizedExperiment}}, \code{\link[AcidGenerics]{as.data.frame}}, \code{\link[AcidGenerics]{atomize}}, \code{\link[AcidGenerics]{autopadZeros}}, \code{\link[AcidGenerics]{decode}}, \code{\link[AcidGenerics]{droplevels}}, \code{\link[AcidGenerics]{encode}}, \code{\link[AcidGenerics]{export}}, \code{\link[AcidGenerics]{factorize}}, \code{\link[AcidGenerics:join]{fullJoin}}, \code{\link[AcidGenerics]{geneNames}}, \code{\link[AcidGenerics:join]{innerJoin}}, \code{\link[AcidGenerics:join]{leftJoin}}, \code{\link[AcidGenerics:reexports]{mcols}}, \code{\link[AcidGenerics:reexports]{mcols<-}}, \code{\link[AcidGenerics:reexports]{metadata}}, \code{\link[AcidGenerics]{metadata2}}, \code{\link[AcidGenerics:metadata2]{metadata2<-}}, \code{\link[AcidGenerics:reexports]{metadata<-}}, \code{\link[AcidGenerics:mutate]{mutateAll}}, \code{\link[AcidGenerics:mutate]{mutateAt}}, \code{\link[AcidGenerics:mutate]{mutateIf}}, \code{\link[AcidGenerics]{organism}}, \code{\link[AcidGenerics:organism]{organism<-}}, \code{\link[AcidGenerics]{removeNA}}, \code{\link[AcidGenerics:join]{rightJoin}}, \code{\link[AcidGenerics]{sanitizeNA}}, \code{\link[AcidGenerics]{sanitizePercent}}, \code{\link[AcidGenerics:select]{selectIf}}, \code{\link[AcidGenerics:join]{semiJoin}}, \code{\link[AcidGenerics]{splitByLevel}}, \code{\link[AcidGenerics]{stripGeneVersions}}, \code{\link[AcidGenerics]{stripTranscriptVersions}}, \code{\link[AcidGenerics:mutate]{transmuteAt}}, \code{\link[AcidGenerics:mutate]{transmuteIf}}}
 
   \item{AcidGenomes}{\code{\link[AcidGenomes]{Ensembl2Entrez}}, \code{\link[AcidGenomes:Ensembl2Entrez]{Entrez2Ensembl}}, \code{\link[AcidGenomes]{Gene2Symbol}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes]{Tx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{annotable}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentEnsemblGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentGencodeGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentRefSeqGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentUCSCGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{downloadEnsemblGenome}}, \code{\link[AcidGenomes]{downloadGencodeGenome}}, \code{\link[AcidGenomes]{downloadRefSeqGenome}}, \code{\link[AcidGenomes]{downloadUCSCGenome}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapEnsemblBuildToUCSC}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapUCSCBuildToEnsembl}}}
 

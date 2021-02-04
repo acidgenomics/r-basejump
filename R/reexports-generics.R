@@ -40,18 +40,52 @@ AcidGenerics::as.SummarizedExperiment
 #' @exportMethod as.data.frame
 AcidGenerics::as.data.frame
 
+#' @importFrom AcidGenerics atomize
+#' @export
+#' @importMethodsFrom pipette atomize
+#' @exportMethod atomize
+AcidGenerics::atomize
+
 #' @importFrom AcidGenerics autopadZeros
 #' @export
 #' @importMethodsFrom AcidExperiment autopadZeros
 #' @exportMethod autopadZeros
 AcidGenerics::autopadZeros
 
+#' @importFrom AcidGenerics decode
+#' @export
+#' @importMethodsFrom AcidExperiment decode
+#' @importMethodsFrom pipette decode
+#' @exportMethod decode
+AcidGenerics::decode
+
+#' @importFrom AcidGenerics droplevels
+#' @export
+#' @importMethodsFrom AcidExperiment droplevels
+#' @importMethodsFrom pipette droplevels
+#' @exportMethod droplevels
+AcidGenerics::droplevels
+
+#' @importFrom AcidGenerics encode
+#' @export
+#' @importMethodsFrom AcidExperiment encode
+#' @importMethodsFrom pipette encode
+#' @exportMethod encode
+AcidGenerics::encode
+
 #' @importFrom AcidGenerics export
 #' @export
 #' @importMethodsFrom AcidExperiment export
 #' @importMethodsFrom AcidGenomes export
+#' @importMethodsFrom pipette export
 #' @exportMethod export
 AcidGenerics::export
+
+#' @importFrom AcidGenerics factorize
+#' @export
+#' @importMethodsFrom pipette factorize
+#' @exportMethod factorize
+AcidGenerics::factorize
 
 #' @importFrom AcidGenerics fullJoin
 #' @export
@@ -93,6 +127,18 @@ AcidGenerics::metadata
 #' @export
 AcidGenerics::`metadata<-`
 
+#' @importFrom AcidGenerics metadata2
+#' @export
+#' @importMethodsFrom pipette metadata2
+#' @exportMethod metadata2
+AcidGenerics::metadata2
+
+#' @importFrom AcidGenerics metadata2<-
+#' @export
+#' @importMethodsFrom pipette metadata2<-
+#' @exportMethod metadata2<-
+AcidGenerics::`metadata2<-`
+
 #' @importFrom AcidGenerics mutateAll
 #' @export
 #' @importMethodsFrom AcidPlyr mutateAll
@@ -124,11 +170,29 @@ AcidGenerics::organism
 #' @exportMethod organism<-
 AcidGenerics::`organism<-`
 
+#' @importFrom AcidGenerics removeNA
+#' @export
+#' @importMethodsFrom pipette removeNA
+#' @exportMethod removeNA
+AcidGenerics::removeNA
+
 #' @importFrom AcidGenerics rightJoin
 #' @export
 #' @importMethodsFrom AcidPlyr rightJoin
 #' @exportMethod rightJoin
 AcidGenerics::rightJoin
+
+#' @importFrom AcidGenerics sanitizeNA
+#' @export
+#' @importMethodsFrom pipette sanitizeNA
+#' @exportMethod sanitizeNA
+AcidGenerics::sanitizeNA
+
+#' @importFrom AcidGenerics sanitizePercent
+#' @export
+#' @importMethodsFrom pipette sanitizePercent
+#' @exportMethod sanitizePercent
+AcidGenerics::sanitizePercent
 
 #' @importFrom AcidGenerics selectIf
 #' @export
@@ -208,75 +272,7 @@ AcidGenomes::Tx2Gene
 
 ## FIXME NEED TO REWORK THESE.
 
-#' @importFrom AcidGenerics atomize
-#' @export
-#' @importMethodsFrom pipette atomize
-#' @exportMethod atomize
-AcidGenerics::atomize
 
-#' @importFrom AcidGenerics decode
-#' @export
-#' @importMethodsFrom AcidExperiment decode
-#' @importMethodsFrom pipette decode
-#' @exportMethod decode
-AcidGenerics::decode
-
-#' @importFrom AcidGenerics droplevels
-#' @export
-#' @importMethodsFrom AcidExperiment droplevels
-#' @importMethodsFrom pipette droplevels
-#' @exportMethod droplevels
-AcidGenerics::droplevels
-
-#' @importFrom AcidGenerics encode
-#' @export
-#' @importMethodsFrom AcidExperiment encode
-#' @importMethodsFrom pipette encode
-#' @exportMethod encode
-AcidGenerics::encode
-
-#' @importFrom AcidGenerics export
-#' @export
-#' @importMethodsFrom AcidExperiment export
-#' @importMethodsFrom pipette export
-#' @exportMethod export
-AcidGenerics::export
-
-#' @importFrom AcidGenerics factorize
-#' @export
-#' @importMethodsFrom pipette factorize
-#' @exportMethod factorize
-AcidGenerics::factorize
-
-#' @importFrom AcidGenerics metadata2
-#' @export
-#' @importMethodsFrom pipette metadata2
-#' @exportMethod metadata2
-AcidGenerics::metadata2
-
-#' @importFrom AcidGenerics metadata2<-
-#' @export
-#' @importMethodsFrom pipette metadata2<-
-#' @exportMethod metadata2<-
-AcidGenerics::`metadata2<-`
-
-#' @importFrom AcidGenerics removeNA
-#' @export
-#' @importMethodsFrom pipette removeNA
-#' @exportMethod removeNA
-AcidGenerics::removeNA
-
-#' @importFrom AcidGenerics sanitizeNA
-#' @export
-#' @importMethodsFrom pipette sanitizeNA
-#' @exportMethod sanitizeNA
-AcidGenerics::sanitizeNA
-
-#' @importFrom AcidGenerics sanitizePercent
-#' @export
-#' @importMethodsFrom pipette sanitizePercent
-#' @exportMethod sanitizePercent
-AcidGenerics::sanitizePercent
 
 
 
