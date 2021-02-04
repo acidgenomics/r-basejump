@@ -274,6 +274,52 @@ AcidGenomes::mapUCSCBuildToEnsembl
 
 
 
+#' @importFrom AcidMarkdown markdownHeader
+#' @export
+AcidMarkdown::markdownHeader
+
+#' @importFrom AcidMarkdown markdownLink
+#' @export
+AcidMarkdown::markdownLink
+
+#' @importFrom AcidMarkdown markdownList
+#' @export
+AcidMarkdown::markdownList
+
+#' @importFrom AcidMarkdown markdownPlots
+#' @export
+AcidMarkdown::markdownPlots
+
+#' @importFrom AcidMarkdown markdownTables
+#' @export
+AcidMarkdown::markdownTables
+
+#' @importFrom AcidMarkdown mdHeader
+#' @export
+AcidMarkdown::mdHeader
+
+#' @importFrom AcidMarkdown mdLink
+#' @export
+AcidMarkdown::mdLink
+
+#' @importFrom AcidMarkdown mdList
+#' @export
+AcidMarkdown::mdList
+
+#' @importFrom AcidMarkdown mdPlots
+#' @export
+AcidMarkdown::mdPlots
+
+#' @importFrom AcidMarkdown mdTables
+#' @export
+AcidMarkdown::mdTables
+
+#' @importFrom AcidMarkdown prepareTemplate
+#' @export
+AcidMarkdown::prepareTemplate
+
+
+
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
