@@ -208,55 +208,91 @@ AcidGenomes::Tx2Gene
 
 ## FIXME NEED TO REWORK THESE.
 
-#' @importFrom pipette atomize
+#' @importFrom AcidGenerics atomize
 #' @export
-pipette::atomize
+#' @importMethodsFrom pipette atomize
+#' @exportMethod atomize
+AcidGenerics::atomize
 
-#' @importFrom pipette decode
+#' @importFrom AcidGenerics decode
 #' @export
-pipette::decode
+#' @importMethodsFrom AcidExperiment decode
+#' @importMethodsFrom pipette decode
+#' @exportMethod decode
+AcidGenerics::decode
 
+#' @importFrom AcidGenerics droplevels
+#' @export
+#' @importMethodsFrom AcidExperiment droplevels
 #' @importMethodsFrom pipette droplevels
 #' @exportMethod droplevels
-NULL
+AcidGenerics::droplevels
 
-#' @importFrom pipette encode
+#' @importFrom AcidGenerics encode
 #' @export
-pipette::encode
+#' @importMethodsFrom AcidExperiment encode
+#' @importMethodsFrom pipette encode
+#' @exportMethod encode
+AcidGenerics::encode
 
-#' @importFrom pipette export
+#' @importFrom AcidGenerics export
 #' @export
-pipette::export
+#' @importMethodsFrom AcidExperiment export
+#' @importMethodsFrom pipette export
+#' @exportMethod export
+AcidGenerics::export
 
-#' @importFrom pipette factorize
+#' @importFrom AcidGenerics factorize
 #' @export
-pipette::factorize
+#' @importMethodsFrom pipette factorize
+#' @exportMethod factorize
+AcidGenerics::factorize
 
-#' @importFrom pipette metadata2
+#' @importFrom AcidGenerics metadata2
 #' @export
-pipette::metadata2
+#' @importMethodsFrom pipette metadata2
+#' @exportMethod metadata2
+AcidGenerics::metadata2
 
-#' @importFrom pipette metadata2<-
+#' @importFrom AcidGenerics metadata2<-
 #' @export
-pipette::`metadata2<-`
+#' @importMethodsFrom pipette metadata2<-
+#' @exportMethod metadata2<-
+AcidGenerics::`metadata2<-`
 
-#' @importFrom pipette removeNA
+#' @importFrom AcidGenerics removeNA
 #' @export
-pipette::removeNA
+#' @importMethodsFrom pipette removeNA
+#' @exportMethod removeNA
+AcidGenerics::removeNA
 
-#' @importFrom pipette sanitizeNA
+#' @importFrom AcidGenerics sanitizeNA
 #' @export
-pipette::sanitizeNA
+#' @importMethodsFrom pipette sanitizeNA
+#' @exportMethod sanitizeNA
+AcidGenerics::sanitizeNA
 
-#' @importFrom pipette sanitizePercent
+#' @importFrom AcidGenerics sanitizePercent
 #' @export
-pipette::sanitizePercent
+#' @importMethodsFrom pipette sanitizePercent
+#' @exportMethod sanitizePercent
+AcidGenerics::sanitizePercent
 
 
+
+## FIXME ACIDEXPERIMENT
+#' @importFrom syntactic camelCase
+#' @export
+syntactic::camelCase
 
 #' @importFrom syntactic capitalize
 #' @export
 syntactic::capitalize
+
+## FIXME ACIDEXPERIMENT
+#' @importFrom syntactic dottedCase
+#' @export
+syntactic::dottedCase
 
 #' @importFrom syntactic kebabCase
 #' @export
@@ -281,3 +317,13 @@ syntactic::makeTitle
 #' @importFrom syntactic makeWords
 #' @export
 syntactic::makeWords
+
+## FIXME ACIDEXPERIMENT
+#' @importFrom syntactic snakeCase
+#' @export
+syntactic::snakeCase
+
+## FIXME ACIDEXPERIMENT
+#' @importFrom syntactic upperCamelCase
+#' @export
+syntactic::upperCamelCase
