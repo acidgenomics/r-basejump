@@ -266,29 +266,25 @@ AcidGenomes::Tx2Gene
 
 
 
-
-
-
-
 ## FIXME NEED TO REWORK THESE.
 
-
-
-
-
-## FIXME ACIDEXPERIMENT
-#' @importFrom syntactic camelCase
+#' @importFrom AcidGenerics camelCase
 #' @export
-syntactic::camelCase
+#' @importMethodsFrom AcidExperiment camelCase
+#' @importMethodsFrom syntactic camelCase
+#' @exportMethod camelCase
+AcidGenerics::camelCase
 
 #' @importFrom syntactic capitalize
 #' @export
 syntactic::capitalize
 
-## FIXME ACIDEXPERIMENT
-#' @importFrom syntactic dottedCase
+#' @importFrom AcidGenerics dottedCase
 #' @export
-syntactic::dottedCase
+#' @importMethodsFrom AcidExperiment dottedCase
+#' @importMethodsFrom syntactic dottedCase
+#' @exportMethod dottedCase
+AcidGenerics::dottedCase
 
 #' @importFrom syntactic kebabCase
 #' @export
@@ -314,12 +310,16 @@ syntactic::makeTitle
 #' @export
 syntactic::makeWords
 
-## FIXME ACIDEXPERIMENT
-#' @importFrom syntactic snakeCase
+#' @importFrom AcidGenerics snakeCase
 #' @export
-syntactic::snakeCase
+#' @importMethodsFrom AcidExperiment snakeCase
+#' @importMethodsFrom syntactic snakeCase
+#' @exportMethod snakeCase
+AcidGenerics::snakeCase
 
-## FIXME ACIDEXPERIMENT
-#' @importFrom syntactic upperCamelCase
+#' @importFrom AcidGenerics upperCamelCase
 #' @export
-syntactic::upperCamelCase
+#' @importMethodsFrom AcidExperiment upperCamelCase
+#' @importMethodsFrom syntactic upperCamelCase
+#' @exportMethod upperCamelCase
+AcidGenerics::upperCamelCase
