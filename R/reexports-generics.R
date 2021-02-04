@@ -52,12 +52,32 @@ AcidGenerics::atomize
 #' @exportMethod autopadZeros
 AcidGenerics::autopadZeros
 
+#' @importFrom AcidGenerics camelCase
+#' @export
+#' @importMethodsFrom AcidExperiment camelCase
+#' @importMethodsFrom syntactic camelCase
+#' @exportMethod camelCase
+AcidGenerics::camelCase
+
+#' @importFrom AcidGenerics capitalize
+#' @export
+#' @importMethodsFrom syntactic capitalize
+#' @exportMethod capitalize
+AcidGenerics::capitalize
+
 #' @importFrom AcidGenerics decode
 #' @export
 #' @importMethodsFrom AcidExperiment decode
 #' @importMethodsFrom pipette decode
 #' @exportMethod decode
 AcidGenerics::decode
+
+#' @importFrom AcidGenerics dottedCase
+#' @export
+#' @importMethodsFrom AcidExperiment dottedCase
+#' @importMethodsFrom syntactic dottedCase
+#' @exportMethod dottedCase
+AcidGenerics::dottedCase
 
 #' @importFrom AcidGenerics droplevels
 #' @export
@@ -105,11 +125,48 @@ AcidGenerics::geneNames
 #' @exportMethod innerJoin
 AcidGenerics::innerJoin
 
+#' @importFrom AcidGenerics kebabCase
+#' @export
+#' @importMethodsFrom syntactic kebabCase
+#' @exportMethod kebabCase
+AcidGenerics::kebabCase
+
 #' @importFrom AcidGenerics leftJoin
 #' @export
 #' @importMethodsFrom AcidPlyr leftJoin
 #' @exportMethod leftJoin
 AcidGenerics::leftJoin
+
+#' @importFrom AcidGenerics makeDimnames
+#' @export
+#' @importMethodsFrom syntactic makeDimnames
+#' @exportMethod makeDimnames
+AcidGenerics::makeDimnames
+
+#' @importFrom AcidGenerics makeLabel
+#' @export
+#' @importMethodsFrom syntactic makeLabel
+#' @exportMethod makeLabel
+AcidGenerics::makeLabel
+
+#' @importFrom AcidGenerics makeNames
+#' @export
+#' @importMethodsFrom syntactic makeNames
+#' @exportMethod makeNames
+AcidGenerics::makeNames
+
+#' @importFrom AcidGenerics makeTitle
+#' @export
+#' @importMethodsFrom syntactic makeTitle
+#' @exportMethod makeTitle
+AcidGenerics::makeTitle
+
+#' @importFrom AcidGenerics makeWords
+#' @export
+#' @importMethodsFrom syntactic makeWords
+#' @exportMethod makeWords
+AcidGenerics::makeWords
+
 
 #' @importFrom AcidGenerics mcols
 #' @export
@@ -206,6 +263,13 @@ AcidGenerics::selectIf
 #' @exportMethod semiJoin
 AcidGenerics::semiJoin
 
+#' @importFrom AcidGenerics snakeCase
+#' @export
+#' @importMethodsFrom AcidExperiment snakeCase
+#' @importMethodsFrom syntactic snakeCase
+#' @exportMethod snakeCase
+AcidGenerics::snakeCase
+
 #' @importFrom AcidGenerics splitByLevel
 #' @export
 #' @importMethodsFrom AcidPlyr splitByLevel
@@ -238,6 +302,13 @@ AcidGenerics::transmuteAt
 #' @exportMethod transmuteIf
 AcidGenerics::transmuteIf
 
+#' @importFrom AcidGenerics upperCamelCase
+#' @export
+#' @importMethodsFrom AcidExperiment upperCamelCase
+#' @importMethodsFrom syntactic upperCamelCase
+#' @exportMethod upperCamelCase
+AcidGenerics::upperCamelCase
+
 
 
 #' @importFrom AcidGenomes Ensembl2Entrez
@@ -261,65 +332,3 @@ AcidGenomes::Gene2Symbol
 #' @importMethodsFrom AcidGenomes Tx2Gene
 #' @exportMethod Tx2Gene
 AcidGenomes::Tx2Gene
-
-
-
-
-
-## FIXME NEED TO REWORK THESE.
-
-#' @importFrom AcidGenerics camelCase
-#' @export
-#' @importMethodsFrom AcidExperiment camelCase
-#' @importMethodsFrom syntactic camelCase
-#' @exportMethod camelCase
-AcidGenerics::camelCase
-
-#' @importFrom syntactic capitalize
-#' @export
-syntactic::capitalize
-
-#' @importFrom AcidGenerics dottedCase
-#' @export
-#' @importMethodsFrom AcidExperiment dottedCase
-#' @importMethodsFrom syntactic dottedCase
-#' @exportMethod dottedCase
-AcidGenerics::dottedCase
-
-#' @importFrom syntactic kebabCase
-#' @export
-syntactic::kebabCase
-
-#' @importFrom syntactic makeDimnames
-#' @export
-syntactic::makeDimnames
-
-#' @importFrom syntactic makeLabel
-#' @export
-syntactic::makeLabel
-
-#' @importFrom syntactic makeNames
-#' @export
-syntactic::makeNames
-
-#' @importFrom syntactic makeTitle
-#' @export
-syntactic::makeTitle
-
-#' @importFrom syntactic makeWords
-#' @export
-syntactic::makeWords
-
-#' @importFrom AcidGenerics snakeCase
-#' @export
-#' @importMethodsFrom AcidExperiment snakeCase
-#' @importMethodsFrom syntactic snakeCase
-#' @exportMethod snakeCase
-AcidGenerics::snakeCase
-
-#' @importFrom AcidGenerics upperCamelCase
-#' @export
-#' @importMethodsFrom AcidExperiment upperCamelCase
-#' @importMethodsFrom syntactic upperCamelCase
-#' @exportMethod upperCamelCase
-AcidGenerics::upperCamelCase
