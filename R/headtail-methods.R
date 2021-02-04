@@ -1,3 +1,7 @@
+## FIXME MOVE TO ACIDEXPERIMENT.
+
+
+
 #' @name headtail
 #' @inherit AcidGenerics::headtail
 #' @note Updated 2020-10-07.
