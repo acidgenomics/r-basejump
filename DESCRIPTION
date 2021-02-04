@@ -45,11 +45,6 @@ Imports:
     pipette (>= 0.5.3),
     syntactic (>= 0.4.4),
     methods
-biocViews:
-    DataImport,
-    GenomeAnnotation,
-    Infrastructure,
-    Preprocessing
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Additional_repositories: https://r.acidgenomics.com
