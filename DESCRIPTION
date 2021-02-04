@@ -36,19 +36,15 @@ Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
     AcidBase (>= 0.3.5),
-    AcidCLI (>= 0.0.6),
     AcidGenerics (>= 0.5.3),
     AcidExperiment (>= 0.1.0),
     AcidGenomes (>= 0.2.0),
+    AcidMarkdown (>= 0.1.0),
     AcidPlyr (>= 0.1.7),
-    goalie (>= 0.4.14),
     magrittr (>= 2.0),
-    methods,
     pipette (>= 0.5.3),
-    stringr (>= 1.4),
     syntactic (>= 0.4.4),
-    tibble (>= 3.0),
-    utils
+    methods
 biocViews:
     DataImport,
     GenomeAnnotation,
