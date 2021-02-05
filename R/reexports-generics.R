@@ -75,6 +75,12 @@ AcidGenerics::camelCase
 #' @exportMethod capitalize
 AcidGenerics::capitalize
 
+#' @importFrom AcidGenerics coerceToList
+#' @export
+#' @importMethodsFrom AcidBase coerceToList
+#' @exportMethod coerceToList
+AcidGenerics::coerceToList
+
 #' @importFrom AcidGenerics collapseToString
 #' @export
 #' @importMethodsFrom AcidPlyr collapseToString
