@@ -140,6 +140,10 @@ AcidExperiment::importSampleData
 #' @export
 AcidExperiment::makeSummarizedExperiment
 
+#' @importFrom AcidExperiment matchInterestingGroups
+#' @export
+AcidExperiment::matchInterestingGroups
+
 #' @importFrom AcidExperiment matchesGene2Symbol
 #' @export
 AcidExperiment::matchesGene2Symbol
