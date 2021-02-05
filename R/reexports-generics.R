@@ -216,6 +216,45 @@ AcidGenerics::`interestingGroups<-`
 #' @exportMethod makeSampleData
 AcidGenerics::makeSampleData
 
+#' @importFrom AcidGenerics mapGenesToIDs
+#' @export
+#' @importMethodsFrom AcidExperiment mapGenesToIDs
+#' @exportMethod mapGenesToIDs
+AcidGenerics::mapGenesToIDs
+
+#' @importFrom AcidGenerics mapGenesToRownames
+#' @export
+#' @importMethodsFrom AcidExperiment mapGenesToRownames
+#' @exportMethod mapGenesToRownames
+AcidGenerics::mapGenesToRownames
+
+#' @importFrom AcidGenerics mapGenesToSymbols
+#' @export
+#' @importMethodsFrom AcidExperiment mapGenesToSymbols
+#' @exportMethod mapGenesToSymbols
+AcidGenerics::mapGenesToSymbols
+
+#' @importFrom AcidGenerics matchSampleColumn
+#' @export
+#' @importMethodsFrom AcidExperiment matchSampleColumn
+#' @exportMethod matchSampleColumn
+AcidGenerics::matchSampleColumn
+
+## FIXME ANY METHODS IN ACIDPLYR?
+#' @importFrom AcidGenerics melt
+#' @export
+#' @importMethodsFrom AcidExperiment melt
+#' @exportMethod melt
+AcidGenerics::melt
+
+#' @importFrom AcidGenerics metrics
+#' @export
+#' @importMethodsFrom AcidExperiment metrics
+#' @exportMethod metrics
+AcidGenerics::metrics
+
+
+
 
 
 

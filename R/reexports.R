@@ -132,6 +132,10 @@ AcidBase::updateMessage
 
 
 
+#' @importFrom AcidExperiment detectLanes
+#' @export
+AcidExperiment::detectLanes
+
 #' @importFrom AcidExperiment importSampleData
 #' @export
 AcidExperiment::importSampleData
@@ -139,6 +143,22 @@ AcidExperiment::importSampleData
 #' @importFrom AcidExperiment makeSummarizedExperiment
 #' @export
 AcidExperiment::makeSummarizedExperiment
+
+#' @importFrom AcidExperiment matchesGene2Symbol
+#' @export
+AcidExperiment::matchesGene2Symbol
+
+#' @importFrom AcidExperiment matchesInterestingGroups
+#' @export
+AcidExperiment::matchesInterestingGroups
+
+#' @importFrom AcidExperiment microplate
+#' @export
+AcidExperiment::microplate
+
+#' @importFrom AcidExperiment minimalSampleData
+#' @export
+AcidExperiment::minimalSampleData
 
 
 
