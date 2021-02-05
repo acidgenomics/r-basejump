@@ -52,6 +52,12 @@ AcidGenerics::atomize
 #' @exportMethod autopadZeros
 AcidGenerics::autopadZeros
 
+#' @importFrom AcidGenerics calculateMetrics
+#' @export
+#' @importMethodsFrom AcidExperiment calculateMetrics
+#' @exportMethod calculateMetrics
+AcidGenerics::calculateMetrics
+
 #' @importFrom AcidGenerics camelCase
 #' @export
 #' @importMethodsFrom AcidExperiment camelCase
@@ -64,6 +70,12 @@ AcidGenerics::camelCase
 #' @importMethodsFrom syntactic capitalize
 #' @exportMethod capitalize
 AcidGenerics::capitalize
+
+#' @importFrom AcidGenerics combine
+#' @export
+#' @importMethodsFrom AcidExperiment combine
+#' @exportMethod combine
+AcidGenerics::combine
 
 #' @importFrom AcidGenerics decode
 #' @export
