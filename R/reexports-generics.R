@@ -101,6 +101,24 @@ AcidGenerics::convertSymbolsToGenes
 #' @exportMethod convertTranscriptsToGenes
 AcidGenerics::convertTranscriptsToGenes
 
+#' @importFrom AcidGenerics correlation
+#' @export
+#' @importMethodsFrom AcidExperiment correlation
+#' @exportMethod correlation
+AcidGenerics::correlation
+
+#' @importFrom AcidGenerics counts
+#' @export
+#' @importMethodsFrom AcidExperiment counts
+#' @exportMethod counts
+AcidGenerics::counts
+
+#' @importFrom AcidGenerics counts<-
+#' @export
+#' @importMethodsFrom AcidExperiment counts<-
+#' @exportMethod counts<-
+AcidGenerics::`counts<-`
+
 
 
 
