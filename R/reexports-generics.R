@@ -201,6 +201,12 @@ AcidGenerics::factorize
 #' @exportMethod filterCells
 AcidGenerics::filterCells
 
+#' @importFrom AcidGenerics foldChangeToLogRatio
+#' @export
+#' @importMethodsFrom AcidBase foldChangeToLogRatio
+#' @exportMethod foldChangeToLogRatio
+AcidGenerics::foldChangeToLogRatio
+
 #' @importFrom AcidGenerics fullJoin
 #' @export
 #' @importMethodsFrom AcidPlyr fullJoin
@@ -256,6 +262,17 @@ AcidGenerics::interestingGroups
 #' @importMethodsFrom AcidExperiment interestingGroups<-
 #' @exportMethod interestingGroups<-
 AcidGenerics::`interestingGroups<-`
+#' @importFrom AcidGenerics intersectAll
+#' @export
+#' @importMethodsFrom AcidBase intersectAll
+#' @exportMethod intersectAll
+AcidGenerics::intersectAll
+
+#' @importFrom AcidGenerics intersectionMatrix
+#' @export
+#' @importMethodsFrom AcidBase intersectionMatrix
+#' @exportMethod intersectionMatrix
+AcidGenerics::intersectionMatrix
 
 #' @importFrom AcidGenerics kebabCase
 #' @export
@@ -268,6 +285,12 @@ AcidGenerics::kebabCase
 #' @importMethodsFrom AcidPlyr leftJoin
 #' @exportMethod leftJoin
 AcidGenerics::leftJoin
+
+#' @importFrom AcidGenerics logRatioToFoldChange
+#' @export
+#' @importMethodsFrom AcidBase logRatioToFoldChange
+#' @exportMethod logRatioToFoldChange
+AcidGenerics::logRatioToFoldChange
 
 #' @importFrom AcidGenerics makeDimnames
 #' @export
@@ -368,8 +391,15 @@ AcidGenerics::`metadata2<-`
 #' @importFrom AcidGenerics metrics
 #' @export
 #' @importMethodsFrom AcidExperiment metrics
+#' @importMethodsFrom AcidSingleCell metrics
 #' @exportMethod metrics
 AcidGenerics::metrics
+
+#' @importFrom AcidGenerics metricsPerSample
+#' @export
+#' @importMethodsFrom AcidSingleCell metricsPerSample
+#' @exportMethod metricsPerSample
+AcidGenerics::metricsPerSample
 
 #' @importFrom AcidGenerics mutateAll
 #' @export
@@ -408,6 +438,12 @@ AcidGenerics::organism
 #' @exportMethod organism<-
 AcidGenerics::`organism<-`
 
+#' @importFrom AcidGenerics rankedMatrix
+#' @export
+#' @importMethodsFrom AcidBase rankedMatrix
+#' @exportMethod rankedMatrix
+AcidGenerics::rankedMatrix
+
 #' @importFrom AcidGenerics removeNA
 #' @export
 #' @importMethodsFrom pipette removeNA
@@ -423,12 +459,14 @@ AcidGenerics::rightJoin
 #' @importFrom AcidGenerics sampleData
 #' @export
 #' @importMethodsFrom AcidExperiment sampleData
+#' @importMethodsFrom AcidSingleCell sampleData
 #' @exportMethod sampleData
 AcidGenerics::sampleData
 
 #' @importFrom AcidGenerics sampleData<-
 #' @export
 #' @importMethodsFrom AcidExperiment sampleData<-
+#' @importMethodsFrom AcidSingleCell sampleData<-
 #' @exportMethod sampleData<-
 AcidGenerics::`sampleData<-`
 
@@ -465,14 +503,27 @@ AcidGenerics::selectIf
 #' @importFrom AcidGenerics selectSamples
 #' @export
 #' @importMethodsFrom AcidExperiment selectSamples
+#' @importMethodsFrom AcidSingleCell selectSamples
 #' @exportMethod selectSamples
 AcidGenerics::selectSamples
+
+#' @importFrom AcidGenerics sem
+#' @export
+#' @importMethodsFrom AcidBase sem
+#' @exportMethod sem
+AcidGenerics::sem
 
 #' @importFrom AcidGenerics semiJoin
 #' @export
 #' @importMethodsFrom AcidPlyr semiJoin
 #' @exportMethod semiJoin
 AcidGenerics::semiJoin
+
+#' @importFrom AcidGenerics showHeader
+#' @export
+#' @importMethodsFrom AcidBase showHeader
+#' @exportMethod showHeader
+AcidGenerics::showHeader
 
 #' @importFrom AcidGenerics sizeFactors
 #' @export
@@ -513,6 +564,18 @@ AcidGenerics::stripGeneVersions
 #' @exportMethod stripTranscriptVersions
 AcidGenerics::stripTranscriptVersions
 
+#' @importFrom AcidGenerics subsetPerSample
+#' @export
+#' @importMethodsFrom AcidSingleCell subsetPerSample
+#' @exportMethod subsetPerSample
+AcidGenerics::subsetPerSample
+
+#' @importFrom AcidGenerics subsetPerSample
+#' @export
+#' @importMethodsFrom AcidSingleCell topCellsPerSample
+#' @exportMethod topCellsPerSample
+AcidGenerics::topCellsPerSample
+
 #' @importFrom AcidGenerics tpm
 #' @export
 #' @importMethodsFrom AcidExperiment tpm
@@ -549,6 +612,12 @@ AcidGenerics::unlistToDataFrame
 #' @importMethodsFrom syntactic upperCamelCase
 #' @exportMethod upperCamelCase
 AcidGenerics::upperCamelCase
+
+#' @importFrom AcidGenerics zerosVsDepth
+#' @export
+#' @importMethodsFrom AcidSingleCell zerosVsDepth
+#' @exportMethod zerosVsDepth
+AcidGenerics::zerosVsDepth
 
 
 

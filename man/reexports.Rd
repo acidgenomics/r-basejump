@@ -35,6 +35,7 @@
 \alias{export}
 \alias{factorize}
 \alias{filterCells}
+\alias{foldChangeToLogRatio}
 \alias{fullJoin}
 \alias{geneNames}
 \alias{geometricMean}
@@ -44,8 +45,11 @@
 \alias{integerCounts}
 \alias{interestingGroups}
 \alias{interestingGroups<-}
+\alias{intersectAll}
+\alias{intersectionMatrix}
 \alias{kebabCase}
 \alias{leftJoin}
+\alias{logRatioToFoldChange}
 \alias{makeDimnames}
 \alias{makeLabel}
 \alias{makeNames}
@@ -64,12 +68,14 @@
 \alias{metadata2}
 \alias{metadata2<-}
 \alias{metrics}
+\alias{metricsPerSample}
 \alias{mutateAll}
 \alias{mutateAt}
 \alias{mutateIf}
 \alias{nonzeroRowsAndCols}
 \alias{organism}
 \alias{organism<-}
+\alias{rankedMatrix}
 \alias{removeNA}
 \alias{rightJoin}
 \alias{sampleData}
@@ -80,19 +86,24 @@
 \alias{sanitizePercent}
 \alias{selectIf}
 \alias{selectSamples}
+\alias{sem}
 \alias{semiJoin}
+\alias{showHeader}
 \alias{sizeFactors}
 \alias{sizeFactors<-}
 \alias{snakeCase}
 \alias{splitByLevel}
 \alias{stripGeneVersions}
 \alias{stripTranscriptVersions}
+\alias{subsetPerSample}
+\alias{topCellsPerSample}
 \alias{tpm}
 \alias{transmuteAt}
 \alias{transmuteIf}
 \alias{uniteInterestingGroups}
 \alias{unlistToDataFrame}
 \alias{upperCamelCase}
+\alias{zerosVsDepth}
 \alias{Ensembl2Entrez}
 \alias{Entrez2Ensembl}
 \alias{Gene2Symbol}
@@ -217,7 +228,7 @@ below to see their documentation.
 
   \item{AcidExperiment}{\code{\link[AcidExperiment]{detectLanes}}, \code{\link[AcidExperiment]{importSampleData}}, \code{\link[AcidExperiment]{makeSummarizedExperiment}}, \code{\link[AcidExperiment]{matchesGene2Symbol}}, \code{\link[AcidExperiment]{matchesInterestingGroups}}, \code{\link[AcidExperiment]{microplate}}, \code{\link[AcidExperiment]{minimalSampleData}}, \code{\link[AcidExperiment]{sanitizeSampleData}}}
 
-  \item{AcidGenerics}{\code{\link[AcidGenerics]{aggregate}}, \code{\link[AcidGenerics]{aggregateCellsToSamples}}, \code{\link[AcidGenerics]{aggregateCols}}, \code{\link[AcidGenerics]{aggregateRows}}, \code{\link[AcidGenerics:join]{antiJoin}}, \code{\link[AcidGenerics]{as.DataFrame}}, \code{\link[AcidGenerics]{as.SummarizedExperiment}}, \code{\link[AcidGenerics]{as.data.frame}}, \code{\link[AcidGenerics]{atomize}}, \code{\link[AcidGenerics]{autopadZeros}}, \code{\link[AcidGenerics]{calculateMetrics}}, \code{\link[AcidGenerics]{camelCase}}, \code{\link[AcidGenerics]{capitalize}}, \code{\link[AcidGenerics]{cell2sample}}, \code{\link[AcidGenerics]{coerceToList}}, \code{\link[AcidGenerics]{collapseToString}}, \code{\link[AcidGenerics]{combine}}, \code{\link[AcidGenerics]{convertGenesToSymbols}}, \code{\link[AcidGenerics]{convertSampleIDsToNames}}, \code{\link[AcidGenerics]{convertSymbolsToGenes}}, \code{\link[AcidGenerics]{convertTranscriptsToGenes}}, \code{\link[AcidGenerics]{correlation}}, \code{\link[AcidGenerics]{counts}}, \code{\link[AcidGenerics:counts]{counts<-}}, \code{\link[AcidGenerics]{decode}}, \code{\link[AcidGenerics]{dottedCase}}, \code{\link[AcidGenerics]{droplevels}}, \code{\link[AcidGenerics]{encode}}, \code{\link[AcidGenerics]{estimateSizeFactors}}, \code{\link[AcidGenerics]{export}}, \code{\link[AcidGenerics]{factorize}}, \code{\link[AcidGenerics]{filterCells}}, \code{\link[AcidGenerics:join]{fullJoin}}, \code{\link[AcidGenerics]{geneNames}}, \code{\link[AcidGenerics]{geometricMean}}, \code{\link[AcidGenerics]{headtail}}, \code{\link[AcidGenerics]{humanize}}, \code{\link[AcidGenerics:join]{innerJoin}}, \code{\link[AcidGenerics]{integerCounts}}, \code{\link[AcidGenerics]{interestingGroups}}, \code{\link[AcidGenerics:interestingGroups]{interestingGroups<-}}, \code{\link[AcidGenerics]{kebabCase}}, \code{\link[AcidGenerics:join]{leftJoin}}, \code{\link[AcidGenerics]{makeDimnames}}, \code{\link[AcidGenerics]{makeLabel}}, \code{\link[AcidGenerics]{makeNames}}, \code{\link[AcidGenerics]{makeSampleData}}, \code{\link[AcidGenerics]{makeTitle}}, \code{\link[AcidGenerics]{makeWords}}, \code{\link[AcidGenerics]{mapGenesToIDs}}, \code{\link[AcidGenerics]{mapGenesToRownames}}, \code{\link[AcidGenerics]{mapGenesToSymbols}}, \code{\link[AcidGenerics]{matchSampleColumn}}, \code{\link[AcidGenerics:reexports]{mcols}}, \code{\link[AcidGenerics:reexports]{mcols<-}}, \code{\link[AcidGenerics]{melt}}, \code{\link[AcidGenerics:reexports]{metadata}}, \code{\link[AcidGenerics]{metadata2}}, \code{\link[AcidGenerics:metadata2]{metadata2<-}}, \code{\link[AcidGenerics:reexports]{metadata<-}}, \code{\link[AcidGenerics]{metrics}}, \code{\link[AcidGenerics:mutate]{mutateAll}}, \code{\link[AcidGenerics:mutate]{mutateAt}}, \code{\link[AcidGenerics:mutate]{mutateIf}}, \code{\link[AcidGenerics]{nonzeroRowsAndCols}}, \code{\link[AcidGenerics]{organism}}, \code{\link[AcidGenerics:organism]{organism<-}}, \code{\link[AcidGenerics]{removeNA}}, \code{\link[AcidGenerics:join]{rightJoin}}, \code{\link[AcidGenerics]{sampleData}}, \code{\link[AcidGenerics:sampleData]{sampleData<-}}, \code{\link[AcidGenerics]{sampleNames}}, \code{\link[AcidGenerics:sampleNames]{sampleNames<-}}, \code{\link[AcidGenerics]{sanitizeNA}}, \code{\link[AcidGenerics]{sanitizePercent}}, \code{\link[AcidGenerics:select]{selectIf}}, \code{\link[AcidGenerics]{selectSamples}}, \code{\link[AcidGenerics:join]{semiJoin}}, \code{\link[AcidGenerics]{sizeFactors}}, \code{\link[AcidGenerics:sizeFactors]{sizeFactors<-}}, \code{\link[AcidGenerics]{snakeCase}}, \code{\link[AcidGenerics]{splitByLevel}}, \code{\link[AcidGenerics]{stripGeneVersions}}, \code{\link[AcidGenerics]{stripTranscriptVersions}}, \code{\link[AcidGenerics]{tpm}}, \code{\link[AcidGenerics:mutate]{transmuteAt}}, \code{\link[AcidGenerics:mutate]{transmuteIf}}, \code{\link[AcidGenerics]{uniteInterestingGroups}}, \code{\link[AcidGenerics]{unlistToDataFrame}}, \code{\link[AcidGenerics]{upperCamelCase}}}
+  \item{AcidGenerics}{\code{\link[AcidGenerics]{aggregate}}, \code{\link[AcidGenerics]{aggregateCellsToSamples}}, \code{\link[AcidGenerics]{aggregateCols}}, \code{\link[AcidGenerics]{aggregateRows}}, \code{\link[AcidGenerics:join]{antiJoin}}, \code{\link[AcidGenerics]{as.DataFrame}}, \code{\link[AcidGenerics]{as.SummarizedExperiment}}, \code{\link[AcidGenerics]{as.data.frame}}, \code{\link[AcidGenerics]{atomize}}, \code{\link[AcidGenerics]{autopadZeros}}, \code{\link[AcidGenerics]{calculateMetrics}}, \code{\link[AcidGenerics]{camelCase}}, \code{\link[AcidGenerics]{capitalize}}, \code{\link[AcidGenerics]{cell2sample}}, \code{\link[AcidGenerics]{coerceToList}}, \code{\link[AcidGenerics]{collapseToString}}, \code{\link[AcidGenerics]{combine}}, \code{\link[AcidGenerics]{convertGenesToSymbols}}, \code{\link[AcidGenerics]{convertSampleIDsToNames}}, \code{\link[AcidGenerics]{convertSymbolsToGenes}}, \code{\link[AcidGenerics]{convertTranscriptsToGenes}}, \code{\link[AcidGenerics]{correlation}}, \code{\link[AcidGenerics]{counts}}, \code{\link[AcidGenerics:counts]{counts<-}}, \code{\link[AcidGenerics]{decode}}, \code{\link[AcidGenerics]{dottedCase}}, \code{\link[AcidGenerics]{droplevels}}, \code{\link[AcidGenerics]{encode}}, \code{\link[AcidGenerics]{estimateSizeFactors}}, \code{\link[AcidGenerics]{export}}, \code{\link[AcidGenerics]{factorize}}, \code{\link[AcidGenerics]{filterCells}}, \code{\link[AcidGenerics]{foldChangeToLogRatio}}, \code{\link[AcidGenerics:join]{fullJoin}}, \code{\link[AcidGenerics]{geneNames}}, \code{\link[AcidGenerics]{geometricMean}}, \code{\link[AcidGenerics]{headtail}}, \code{\link[AcidGenerics]{humanize}}, \code{\link[AcidGenerics:join]{innerJoin}}, \code{\link[AcidGenerics]{integerCounts}}, \code{\link[AcidGenerics]{interestingGroups}}, \code{\link[AcidGenerics:interestingGroups]{interestingGroups<-}}, \code{\link[AcidGenerics]{intersectAll}}, \code{\link[AcidGenerics]{intersectionMatrix}}, \code{\link[AcidGenerics]{kebabCase}}, \code{\link[AcidGenerics:join]{leftJoin}}, \code{\link[AcidGenerics]{logRatioToFoldChange}}, \code{\link[AcidGenerics]{makeDimnames}}, \code{\link[AcidGenerics]{makeLabel}}, \code{\link[AcidGenerics]{makeNames}}, \code{\link[AcidGenerics]{makeSampleData}}, \code{\link[AcidGenerics]{makeTitle}}, \code{\link[AcidGenerics]{makeWords}}, \code{\link[AcidGenerics]{mapGenesToIDs}}, \code{\link[AcidGenerics]{mapGenesToRownames}}, \code{\link[AcidGenerics]{mapGenesToSymbols}}, \code{\link[AcidGenerics]{matchSampleColumn}}, \code{\link[AcidGenerics:reexports]{mcols}}, \code{\link[AcidGenerics:reexports]{mcols<-}}, \code{\link[AcidGenerics]{melt}}, \code{\link[AcidGenerics:reexports]{metadata}}, \code{\link[AcidGenerics]{metadata2}}, \code{\link[AcidGenerics:metadata2]{metadata2<-}}, \code{\link[AcidGenerics:reexports]{metadata<-}}, \code{\link[AcidGenerics]{metrics}}, \code{\link[AcidGenerics]{metricsPerSample}}, \code{\link[AcidGenerics:mutate]{mutateAll}}, \code{\link[AcidGenerics:mutate]{mutateAt}}, \code{\link[AcidGenerics:mutate]{mutateIf}}, \code{\link[AcidGenerics]{nonzeroRowsAndCols}}, \code{\link[AcidGenerics]{organism}}, \code{\link[AcidGenerics:organism]{organism<-}}, \code{\link[AcidGenerics]{rankedMatrix}}, \code{\link[AcidGenerics]{removeNA}}, \code{\link[AcidGenerics:join]{rightJoin}}, \code{\link[AcidGenerics]{sampleData}}, \code{\link[AcidGenerics:sampleData]{sampleData<-}}, \code{\link[AcidGenerics]{sampleNames}}, \code{\link[AcidGenerics:sampleNames]{sampleNames<-}}, \code{\link[AcidGenerics]{sanitizeNA}}, \code{\link[AcidGenerics]{sanitizePercent}}, \code{\link[AcidGenerics:select]{selectIf}}, \code{\link[AcidGenerics]{selectSamples}}, \code{\link[AcidGenerics]{sem}}, \code{\link[AcidGenerics:join]{semiJoin}}, \code{\link[AcidGenerics]{showHeader}}, \code{\link[AcidGenerics]{sizeFactors}}, \code{\link[AcidGenerics:sizeFactors]{sizeFactors<-}}, \code{\link[AcidGenerics]{snakeCase}}, \code{\link[AcidGenerics]{splitByLevel}}, \code{\link[AcidGenerics]{stripGeneVersions}}, \code{\link[AcidGenerics]{stripTranscriptVersions}}, \code{\link[AcidGenerics]{subsetPerSample}}, \code{\link[AcidGenerics]{topCellsPerSample}}, \code{\link[AcidGenerics]{tpm}}, \code{\link[AcidGenerics:mutate]{transmuteAt}}, \code{\link[AcidGenerics:mutate]{transmuteIf}}, \code{\link[AcidGenerics]{uniteInterestingGroups}}, \code{\link[AcidGenerics]{unlistToDataFrame}}, \code{\link[AcidGenerics]{upperCamelCase}}, \code{\link[AcidGenerics]{zerosVsDepth}}}
 
   \item{AcidGenomes}{\code{\link[AcidGenomes]{Ensembl2Entrez}}, \code{\link[AcidGenomes:Ensembl2Entrez]{Entrez2Ensembl}}, \code{\link[AcidGenomes]{Gene2Symbol}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes]{Tx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{annotable}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentEnsemblGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentGencodeGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentRefSeqGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentUCSCGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{downloadEnsemblGenome}}, \code{\link[AcidGenomes]{downloadGencodeGenome}}, \code{\link[AcidGenomes]{downloadRefSeqGenome}}, \code{\link[AcidGenomes]{downloadUCSCGenome}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapEnsemblBuildToUCSC}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}, \code{\link[AcidGenomes:mapGenomeBuild]{mapUCSCBuildToEnsembl}}}
 
