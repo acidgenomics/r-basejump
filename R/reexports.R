@@ -132,6 +132,16 @@ AcidBase::updateMessage
 
 
 
+#' @importFrom AcidExperiment importSampleData
+#' @export
+AcidExperiment::importSampleData
+
+#' @importFrom AcidExperiment makeSummarizedExperiment
+#' @export
+AcidExperiment::makeSummarizedExperiment
+
+
+
 #' @importFrom AcidGenomes HGNC
 #' @export
 AcidGenomes::HGNC
