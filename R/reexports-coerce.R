@@ -1,4 +1,5 @@
 #' @importFrom methods coerce
+#' @export
 #' @importMethodsFrom pipette coerce
 #' @exportMethod coerce
-NULL
+methods::coerce
