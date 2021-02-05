@@ -1,4 +1,4 @@
-## basejump 0.14.0 (UNRELEASED)
+## basejump 0.14.0 (2020-02-05)
 
 Reworked package to simply inherit and reexport functions from other Acid
 Genomics packages, rather than defining any code directly here.
