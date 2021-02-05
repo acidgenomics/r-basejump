@@ -192,6 +192,29 @@ AcidGenerics::headtail
 #' @exportMethod humanize
 AcidGenerics::humanize
 
+#' @importFrom AcidGenerics integerCounts
+#' @export
+#' @importMethodsFrom AcidExperiment integerCounts
+#' @exportMethod integerCounts
+AcidGenerics::integerCounts
+
+#' @importFrom AcidGenerics interestingGroups
+#' @export
+#' @importMethodsFrom AcidExperiment interestingGroups
+#' @exportMethod interestingGroups
+AcidGenerics::interestingGroups
+
+#' @importFrom AcidGenerics interestingGroups<-
+#' @export
+#' @importMethodsFrom AcidExperiment interestingGroups<-
+#' @exportMethod interestingGroups<-
+AcidGenerics::`interestingGroups<-`
+
+#' @importFrom AcidGenerics makeSampleData
+#' @export
+#' @importMethodsFrom AcidExperiment makeSampleData
+#' @exportMethod makeSampleData
+AcidGenerics::makeSampleData
 
 
 
