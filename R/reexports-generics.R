@@ -353,6 +353,12 @@ AcidGenerics::mutateAt
 #' @exportMethod mutateIf
 AcidGenerics::mutateIf
 
+#' @importFrom AcidGenerics nonzeroRowsAndCols
+#' @export
+#' @importMethodsFrom AcidExperiment nonzeroRowsAndCols
+#' @exportMethod nonzeroRowsAndCols
+AcidGenerics::nonzeroRowsAndCols
+
 #' @importFrom AcidGenerics organism
 #' @export
 #' @importMethodsFrom AcidExperiment organism
@@ -378,6 +384,30 @@ AcidGenerics::removeNA
 #' @exportMethod rightJoin
 AcidGenerics::rightJoin
 
+#' @importFrom AcidGenerics sampleData
+#' @export
+#' @importMethodsFrom AcidExperiment sampleData
+#' @exportMethod sampleData
+AcidGenerics::sampleData
+
+#' @importFrom AcidGenerics sampleData<-
+#' @export
+#' @importMethodsFrom AcidExperiment sampleData<-
+#' @exportMethod sampleData<-
+AcidGenerics::`sampleData<-`
+
+#' @importFrom AcidGenerics sampleNames
+#' @export
+#' @importMethodsFrom AcidExperiment sampleNames
+#' @exportMethod sampleNames
+AcidGenerics::sampleNames
+
+#' @importFrom AcidGenerics sampleNames<-
+#' @export
+#' @importMethodsFrom AcidExperiment sampleNames<-
+#' @exportMethod sampleNames<-
+AcidGenerics::`sampleNames<-`
+
 #' @importFrom AcidGenerics sanitizeNA
 #' @export
 #' @importMethodsFrom pipette sanitizeNA
@@ -396,11 +426,29 @@ AcidGenerics::sanitizePercent
 #' @exportMethod selectIf
 AcidGenerics::selectIf
 
+#' @importFrom AcidGenerics selectSamples
+#' @export
+#' @importMethodsFrom AcidExperiment selectSamples
+#' @exportMethod selectSamples
+AcidGenerics::selectSamples
+
 #' @importFrom AcidGenerics semiJoin
 #' @export
 #' @importMethodsFrom AcidPlyr semiJoin
 #' @exportMethod semiJoin
 AcidGenerics::semiJoin
+
+#' @importFrom AcidGenerics sizeFactors
+#' @export
+#' @importMethodsFrom AcidExperiment sizeFactors
+#' @exportMethod sizeFactors
+AcidGenerics::sizeFactors
+
+#' @importFrom AcidGenerics sizeFactors<-
+#' @export
+#' @importMethodsFrom AcidExperiment sizeFactors<-
+#' @exportMethod sizeFactors<-
+AcidGenerics::`sizeFactors<-`
 
 #' @importFrom AcidGenerics snakeCase
 #' @export
@@ -429,6 +477,12 @@ AcidGenerics::stripGeneVersions
 #' @exportMethod stripTranscriptVersions
 AcidGenerics::stripTranscriptVersions
 
+#' @importFrom AcidGenerics tpm
+#' @export
+#' @importMethodsFrom AcidExperiment tpm
+#' @exportMethod tpm
+AcidGenerics::tpm
+
 #' @importFrom AcidGenerics transmuteAt
 #' @export
 #' @importMethodsFrom AcidPlyr transmuteAt
@@ -440,6 +494,12 @@ AcidGenerics::transmuteAt
 #' @importMethodsFrom AcidPlyr transmuteIf
 #' @exportMethod transmuteIf
 AcidGenerics::transmuteIf
+
+#' @importFrom AcidGenerics uniteInterestingGroups
+#' @export
+#' @importMethodsFrom AcidExperiment uniteInterestingGroups
+#' @exportMethod uniteInterestingGroups
+AcidGenerics::uniteInterestingGroups
 
 #' @importFrom AcidGenerics unlistToDataFrame
 #' @export

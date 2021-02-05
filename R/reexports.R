@@ -160,6 +160,10 @@ AcidExperiment::microplate
 #' @export
 AcidExperiment::minimalSampleData
 
+#' @importFrom AcidExperiment sanitizeSampleData
+#' @export
+AcidExperiment::sanitizeSampleData
+
 
 
 #' @importFrom AcidGenomes HGNC
