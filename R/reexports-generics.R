@@ -71,6 +71,12 @@ AcidGenerics::camelCase
 #' @exportMethod capitalize
 AcidGenerics::capitalize
 
+#' @importFrom AcidGenerics collapseToString
+#' @export
+#' @importMethodsFrom AcidPlyr collapseToString
+#' @exportMethod collapseToString
+AcidGenerics::collapseToString
+
 #' @importFrom AcidGenerics combine
 #' @export
 #' @importMethodsFrom AcidExperiment combine
@@ -192,6 +198,12 @@ AcidGenerics::headtail
 #' @exportMethod humanize
 AcidGenerics::humanize
 
+#' @importFrom AcidGenerics innerJoin
+#' @export
+#' @importMethodsFrom AcidPlyr innerJoin
+#' @exportMethod innerJoin
+AcidGenerics::innerJoin
+
 #' @importFrom AcidGenerics integerCounts
 #' @export
 #' @importMethodsFrom AcidExperiment integerCounts
@@ -209,62 +221,6 @@ AcidGenerics::interestingGroups
 #' @importMethodsFrom AcidExperiment interestingGroups<-
 #' @exportMethod interestingGroups<-
 AcidGenerics::`interestingGroups<-`
-
-#' @importFrom AcidGenerics makeSampleData
-#' @export
-#' @importMethodsFrom AcidExperiment makeSampleData
-#' @exportMethod makeSampleData
-AcidGenerics::makeSampleData
-
-#' @importFrom AcidGenerics mapGenesToIDs
-#' @export
-#' @importMethodsFrom AcidExperiment mapGenesToIDs
-#' @exportMethod mapGenesToIDs
-AcidGenerics::mapGenesToIDs
-
-#' @importFrom AcidGenerics mapGenesToRownames
-#' @export
-#' @importMethodsFrom AcidExperiment mapGenesToRownames
-#' @exportMethod mapGenesToRownames
-AcidGenerics::mapGenesToRownames
-
-#' @importFrom AcidGenerics mapGenesToSymbols
-#' @export
-#' @importMethodsFrom AcidExperiment mapGenesToSymbols
-#' @exportMethod mapGenesToSymbols
-AcidGenerics::mapGenesToSymbols
-
-#' @importFrom AcidGenerics matchSampleColumn
-#' @export
-#' @importMethodsFrom AcidExperiment matchSampleColumn
-#' @exportMethod matchSampleColumn
-AcidGenerics::matchSampleColumn
-
-## FIXME ANY METHODS IN ACIDPLYR?
-#' @importFrom AcidGenerics melt
-#' @export
-#' @importMethodsFrom AcidExperiment melt
-#' @exportMethod melt
-AcidGenerics::melt
-
-#' @importFrom AcidGenerics metrics
-#' @export
-#' @importMethodsFrom AcidExperiment metrics
-#' @exportMethod metrics
-AcidGenerics::metrics
-
-
-
-
-
-
-
-
-#' @importFrom AcidGenerics innerJoin
-#' @export
-#' @importMethodsFrom AcidPlyr innerJoin
-#' @exportMethod innerJoin
-AcidGenerics::innerJoin
 
 #' @importFrom AcidGenerics kebabCase
 #' @export
@@ -296,6 +252,12 @@ AcidGenerics::makeLabel
 #' @exportMethod makeNames
 AcidGenerics::makeNames
 
+#' @importFrom AcidGenerics makeSampleData
+#' @export
+#' @importMethodsFrom AcidExperiment makeSampleData
+#' @exportMethod makeSampleData
+AcidGenerics::makeSampleData
+
 #' @importFrom AcidGenerics makeTitle
 #' @export
 #' @importMethodsFrom syntactic makeTitle
@@ -308,6 +270,29 @@ AcidGenerics::makeTitle
 #' @exportMethod makeWords
 AcidGenerics::makeWords
 
+#' @importFrom AcidGenerics mapGenesToIDs
+#' @export
+#' @importMethodsFrom AcidExperiment mapGenesToIDs
+#' @exportMethod mapGenesToIDs
+AcidGenerics::mapGenesToIDs
+
+#' @importFrom AcidGenerics mapGenesToRownames
+#' @export
+#' @importMethodsFrom AcidExperiment mapGenesToRownames
+#' @exportMethod mapGenesToRownames
+AcidGenerics::mapGenesToRownames
+
+#' @importFrom AcidGenerics mapGenesToSymbols
+#' @export
+#' @importMethodsFrom AcidExperiment mapGenesToSymbols
+#' @exportMethod mapGenesToSymbols
+AcidGenerics::mapGenesToSymbols
+
+#' @importFrom AcidGenerics matchSampleColumn
+#' @export
+#' @importMethodsFrom AcidExperiment matchSampleColumn
+#' @exportMethod matchSampleColumn
+AcidGenerics::matchSampleColumn
 
 #' @importFrom AcidGenerics mcols
 #' @export
@@ -316,6 +301,13 @@ AcidGenerics::mcols
 #' @importFrom AcidGenerics mcols<-
 #' @export
 AcidGenerics::`mcols<-`
+
+#' @importFrom AcidGenerics melt
+#' @export
+#' @importMethodsFrom AcidExperiment melt
+#' @importMethodsFrom AcidPlyr melt
+#' @exportMethod melt
+AcidGenerics::melt
 
 #' @importFrom AcidGenerics metadata
 #' @export
@@ -336,6 +328,12 @@ AcidGenerics::metadata2
 #' @importMethodsFrom pipette metadata2<-
 #' @exportMethod metadata2<-
 AcidGenerics::`metadata2<-`
+
+#' @importFrom AcidGenerics metrics
+#' @export
+#' @importMethodsFrom AcidExperiment metrics
+#' @exportMethod metrics
+AcidGenerics::metrics
 
 #' @importFrom AcidGenerics mutateAll
 #' @export
@@ -442,6 +440,12 @@ AcidGenerics::transmuteAt
 #' @importMethodsFrom AcidPlyr transmuteIf
 #' @exportMethod transmuteIf
 AcidGenerics::transmuteIf
+
+#' @importFrom AcidGenerics unlistToDataFrame
+#' @export
+#' @importMethodsFrom AcidPlyr unlistToDataFrame
+#' @exportMethod unlistToDataFrame
+AcidGenerics::unlistToDataFrame
 
 #' @importFrom AcidGenerics upperCamelCase
 #' @export
