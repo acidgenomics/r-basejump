@@ -77,6 +77,37 @@ AcidGenerics::capitalize
 #' @exportMethod combine
 AcidGenerics::combine
 
+#' @importFrom AcidGenerics convertGenesToSymbols
+#' @export
+#' @importMethodsFrom AcidExperiment convertGenesToSymbols
+#' @exportMethod convertGenesToSymbols
+AcidGenerics::convertGenesToSymbols
+
+#' @importFrom AcidGenerics convertSampleIDsToNames
+#' @export
+#' @importMethodsFrom AcidExperiment convertSampleIDsToNames
+#' @exportMethod convertSampleIDsToNames
+AcidGenerics::convertSampleIDsToNames
+
+#' @importFrom AcidGenerics convertSymbolsToGenes
+#' @export
+#' @importMethodsFrom AcidExperiment convertSymbolsToGenes
+#' @exportMethod convertSymbolsToGenes
+AcidGenerics::convertSymbolsToGenes
+
+#' @importFrom AcidGenerics convertTranscriptsToGenes
+#' @export
+#' @importMethodsFrom AcidExperiment convertTranscriptsToGenes
+#' @exportMethod convertTranscriptsToGenes
+AcidGenerics::convertTranscriptsToGenes
+
+
+
+
+
+
+
+
 #' @importFrom AcidGenerics decode
 #' @export
 #' @importMethodsFrom AcidExperiment decode
