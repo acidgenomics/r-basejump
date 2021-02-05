@@ -119,13 +119,6 @@ AcidGenerics::counts
 #' @exportMethod counts<-
 AcidGenerics::`counts<-`
 
-
-
-
-
-
-
-
 #' @importFrom AcidGenerics decode
 #' @export
 #' @importMethodsFrom AcidExperiment decode
@@ -154,6 +147,12 @@ AcidGenerics::droplevels
 #' @exportMethod encode
 AcidGenerics::encode
 
+#' @importFrom AcidGenerics estimateSizeFactors
+#' @export
+#' @importMethodsFrom AcidExperiment estimateSizeFactors
+#' @exportMethod estimateSizeFactors
+AcidGenerics::estimateSizeFactors
+
 #' @importFrom AcidGenerics export
 #' @export
 #' @importMethodsFrom AcidExperiment export
@@ -179,6 +178,25 @@ AcidGenerics::fullJoin
 #' @importMethodsFrom AcidExperiment geneNames
 #' @exportMethod geneNames
 AcidGenerics::geneNames
+
+#' @importFrom AcidGenerics headtail
+#' @export
+#' @importMethodsFrom AcidBase headtail
+#' @importMethodsFrom AcidExperiment headtail
+#' @exportMethod headtail
+AcidGenerics::headtail
+
+#' @importFrom AcidGenerics humanize
+#' @export
+#' @importMethodsFrom AcidExperiment humanize
+#' @exportMethod humanize
+AcidGenerics::humanize
+
+
+
+
+
+
 
 #' @importFrom AcidGenerics innerJoin
 #' @export
