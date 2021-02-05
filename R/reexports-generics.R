@@ -1,3 +1,7 @@
+## FIXME aggregateCellsToSamples
+
+
+
 #' @importFrom AcidGenerics aggregate
 #' @export
 #' @importMethodsFrom AcidExperiment aggregate

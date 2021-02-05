@@ -41,6 +41,7 @@ Imports:
     AcidGenomes (>= 0.2.0),
     AcidMarkdown (>= 0.1.0),
     AcidPlyr (>= 0.1.7),
+    AcidSingleCell (>= 0.1.0),
     magrittr (>= 2.0),
     pipette (>= 0.5.3),
     syntactic (>= 0.4.4),
