@@ -1,16 +1,19 @@
-## FIXME aggregateCellsToSamples
-
-
-
 #' @importFrom AcidGenerics aggregate
 #' @export
 #' @importMethodsFrom AcidExperiment aggregate
 #' @exportMethod aggregate
 AcidGenerics::aggregate
 
+#' @importFrom AcidGenerics aggregateCellsToSamples
+#' @export
+#' @importMethodsFrom AcidSingleCell aggregateCellsToSamples
+#' @exportMethod aggregateCellsToSamples
+AcidGenerics::aggregateCellsToSamples
+
 #' @importFrom AcidGenerics aggregateCols
 #' @export
 #' @importMethodsFrom AcidExperiment aggregateCols
+#' @importMethodsFrom AcidSingleCell aggregateCols
 #' @exportMethod aggregateCols
 AcidGenerics::aggregateCols
 
@@ -75,6 +78,12 @@ AcidGenerics::camelCase
 #' @exportMethod capitalize
 AcidGenerics::capitalize
 
+#' @importFrom AcidGenerics cell2sample
+#' @export
+#' @importMethodsFrom AcidSingleCell cell2sample
+#' @exportMethod cell2sample
+AcidGenerics::cell2sample
+
 #' @importFrom AcidGenerics coerceToList
 #' @export
 #' @importMethodsFrom AcidBase coerceToList
@@ -90,6 +99,7 @@ AcidGenerics::collapseToString
 #' @importFrom AcidGenerics combine
 #' @export
 #' @importMethodsFrom AcidExperiment combine
+#' @importMethodsFrom AcidSingleCell combine
 #' @exportMethod combine
 AcidGenerics::combine
 
@@ -102,6 +112,7 @@ AcidGenerics::convertGenesToSymbols
 #' @importFrom AcidGenerics convertSampleIDsToNames
 #' @export
 #' @importMethodsFrom AcidExperiment convertSampleIDsToNames
+#' @importMethodsFrom AcidSingleCell convertSampleIDsToNames
 #' @exportMethod convertSampleIDsToNames
 AcidGenerics::convertSampleIDsToNames
 
@@ -173,6 +184,7 @@ AcidGenerics::estimateSizeFactors
 #' @export
 #' @importMethodsFrom AcidExperiment export
 #' @importMethodsFrom AcidGenomes export
+#' @importMethodsFrom AcidSingleCell export
 #' @importMethodsFrom pipette export
 #' @exportMethod export
 AcidGenerics::export
@@ -182,6 +194,12 @@ AcidGenerics::export
 #' @importMethodsFrom pipette factorize
 #' @exportMethod factorize
 AcidGenerics::factorize
+
+#' @importFrom AcidGenerics filterCells
+#' @export
+#' @importMethodsFrom AcidSingleCell filterCells
+#' @exportMethod filterCells
+AcidGenerics::filterCells
 
 #' @importFrom AcidGenerics fullJoin
 #' @export
@@ -194,6 +212,13 @@ AcidGenerics::fullJoin
 #' @importMethodsFrom AcidExperiment geneNames
 #' @exportMethod geneNames
 AcidGenerics::geneNames
+
+#' @importFrom AcidGenerics geometricMean
+#' @export
+#' @importMethodsFrom AcidBase geometricMean
+#' @importMethodsFrom AcidSingleCell geometricMean
+#' @exportMethod geometricMean
+AcidGenerics::geometricMean
 
 #' @importFrom AcidGenerics headtail
 #' @export
@@ -316,6 +341,7 @@ AcidGenerics::`mcols<-`
 #' @export
 #' @importMethodsFrom AcidExperiment melt
 #' @importMethodsFrom AcidPlyr melt
+#' @importMethodsFrom AcidSingleCell melt
 #' @exportMethod melt
 AcidGenerics::melt
 

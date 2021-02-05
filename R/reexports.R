@@ -354,6 +354,16 @@ AcidMarkdown::prepareTemplate
 
 
 
+#' @importFrom AcidSingleCell makeSingleCellExperiment
+#' @export
+AcidSingleCell::makeSingleCellExperiment
+
+#' @importFrom AcidSingleCell mapCellsToSamples
+#' @export
+AcidSingleCell::mapCellsToSamples
+
+
+
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
