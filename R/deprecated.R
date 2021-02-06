@@ -55,6 +55,12 @@ matchHumanOrthologs <- function(...) {
 ## v0.14.0 =====================================================================
 #' @rdname defunct
 #' @export
+basejumpTestsURL <- function(...) {
+    .Defunct()
+}
+
+#' @rdname defunct
+#' @export
 matchArgsToDoCall <- function(...) {
     .Defunct()
 }
