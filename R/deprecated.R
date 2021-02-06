@@ -19,93 +19,8 @@ NULL
 
 
 
-## v0.10.9 =====================================================================
-#' @rdname defunct
-#' @export
-theme_midnight <- function(...) {
-    .Defunct("acidplots::acid_theme_dark")
-}
-
-#' @rdname defunct
-#' @export
-theme_paperwhite <- function(...) {
-    .Defunct("acidplots::acid_theme_light")
-}
-
-#' @rdname defunct
-#' @export
-tx2geneFromGFF <- function(...) {
-    .Defunct("makeTx2GeneFromGFF")
-}
-
-
-
-# v0.11.6 ======================================================================
-#' @rdname defunct
-#' @export
-separatorBar <- function(...) {
-    .Defunct("separator")
-}
-
-
-
-# v0.11.8 ======================================================================
-#' @rdname deprecated
-#' @export
-readFileByExtension <- function(...) {
-    .Deprecated("import")
-    import(...)
-}
-
-#' @rdname deprecated
-#' @export
-readGFF <- function(...) {
-    .Deprecated("import")
-    import(...)
-}
-
-#' @rdname deprecated
-#' @export
-readGTF <- function(...) {
-    .Deprecated("import")
-    import(...)
-}
-
-#' @rdname deprecated
-#' @export
-readJSON <- function(...) {
-    .Deprecated("import")
-    import(...)
-}
-
-#' @rdname deprecated
-#' @export
-readYAML <- function(...) {
-    .Deprecated("import")
-    import(...)
-}
-
-#' @rdname defunct
-#' @export
-relevelColData <- function(...) {
-    .Defunct("droplevels")
-}
-
-#' @rdname defunct
-#' @export
-relevelRowData <- function(...) {
-    .Defunct("droplevels")
-}
-
-#' @rdname defunct
-#' @export
-relevelRowRanges <- function(...) {
-    .Defunct("droplevels")
-}
-
-
-
 ## v0.11.11 ====================================================================
+## NOTE This is still called by bcbioBase, need to update namespace.
 #' @rdname deprecated
 #' @export
 readSampleData <- function(...) {
@@ -122,49 +37,50 @@ readTx2Gene <- function(...) {
 
 
 
-## v0.12.0 =====================================================================
-## These were previously deprecated in transformer package.
-#' @rdname defunct
-#' @name flatFiles
-#' @importFrom AcidGenerics flatFiles
-#' @export
-NULL
-
-#' @rdname deprecated
-#' @export
-coerceS4ToList <- function(...) {
-    .Deprecated("coerceToList")
-    coerceToList(...)
-}
-
-`flatFiles,SummarizedExperiment` <-  # nolint
-    function(object) {
-        .Defunct("coerceToList")
-    }
-
-#' @rdname defunct
-#' @export
-setMethod(
-    f = "flatFiles",
-    signature = signature("SummarizedExperiment"),
-    definition = `flatFiles,SummarizedExperiment`
-)
-
-
-
 ## v0.13.0 =====================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 matchEnsemblReleaseToURL <- function(...) {
-    .Deprecated("mapEnsemblReleaseToURL")
-    mapEnsemblReleaseToURL(...)
+    .Defunct("mapEnsemblReleaseToURL")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 matchHumanOrthologs <- function(...) {
-    .Deprecated("mapHumanOrthologs")
-    mapHumanOrthologs(...)
+    .Defunct("mapHumanOrthologs")
+}
+
+
+
+## v0.14.0 =====================================================================
+#' @rdname defunct
+#' @export
+basejumpTestsURL <- function(...) {
+    .Defunct()
+}
+
+#' @rdname defunct
+#' @export
+matchArgsToDoCall <- function(...) {
+    .Defunct()
+}
+
+#' @rdname defunct
+#' @export
+multiassignAsEnvir <- function(...) {
+    .Defunct()
+}
+
+#' @rdname defunct
+#' @export
+sortUnique <- function(...) {
+    .Defunct()
+}
+
+#' @rdname defunct
+#' @export
+toStringUnique <- function(...) {
+    .Defunct()
 }
 
 

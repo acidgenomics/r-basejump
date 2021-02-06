@@ -2,37 +2,31 @@
 % Please edit documentation in R/deprecated.R
 \name{defunct}
 \alias{defunct}
-\alias{theme_midnight}
-\alias{theme_paperwhite}
-\alias{tx2geneFromGFF}
-\alias{separatorBar}
-\alias{relevelColData}
-\alias{relevelRowData}
-\alias{relevelRowRanges}
-\alias{flatFiles}
-\alias{flatFiles,SummarizedExperiment-method}
+\alias{matchEnsemblReleaseToURL}
+\alias{matchHumanOrthologs}
+\alias{basejumpTestsURL}
+\alias{matchArgsToDoCall}
+\alias{multiassignAsEnvir}
+\alias{sortUnique}
+\alias{toStringUnique}
 \title{Defunct functions}
 \usage{
-theme_midnight(...)
+matchEnsemblReleaseToURL(...)
 
-theme_paperwhite(...)
+matchHumanOrthologs(...)
 
-tx2geneFromGFF(...)
+basejumpTestsURL(...)
 
-separatorBar(...)
+matchArgsToDoCall(...)
 
-relevelColData(...)
+multiassignAsEnvir(...)
 
-relevelRowData(...)
+sortUnique(...)
 
-relevelRowRanges(...)
-
-\S4method{flatFiles}{SummarizedExperiment}(object)
+toStringUnique(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
-
-\item{object}{Object.}
 }
 \value{
 \code{.Defunct}.

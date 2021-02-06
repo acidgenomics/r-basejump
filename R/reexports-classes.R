@@ -1,8 +1,16 @@
 #' Reexport S4 classes
 #'
 #' @name reexports-classes
-#' @note Updated 2020-10-09.
+#' @note Updated 2021-02-03.
 #' @keywords internal
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name AsIs-class
+#' @importClassesFrom AcidGenerics AsIs
+#' @exportClass AsIs
 NULL
 
 
@@ -19,6 +27,54 @@ NULL
 #' @name Entrez2Ensembl-class
 #' @importClassesFrom AcidGenomes Entrez2Ensembl
 #' @exportClass Entrez2Ensembl
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name EnsemblGenes-class
+#' @importClassesFrom AcidGenomes EnsemblGenes
+#' @exportClass EnsemblGenes
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name EnsemblTranscripts-class
+#' @importClassesFrom AcidGenomes EnsemblTranscripts
+#' @exportClass EnsemblTranscripts
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name FlyBaseGenes-class
+#' @importClassesFrom AcidGenomes FlyBaseGenes
+#' @exportClass FlyBaseGenes
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name FlyBaseTranscripts-class
+#' @importClassesFrom AcidGenomes FlyBaseTranscripts
+#' @exportClass FlyBaseTranscripts
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name GencodeGenes-class
+#' @importClassesFrom AcidGenomes GencodeGenes
+#' @exportClass GencodeGenes
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name GencodeTranscripts-class
+#' @importClassesFrom AcidGenomes GencodeTranscripts
+#' @exportClass GencodeTranscripts
 NULL
 
 
@@ -64,7 +120,63 @@ NULL
 
 
 #' @rdname reexports-classes
+#' @name RefSeqGenes-class
+#' @importClassesFrom AcidGenomes RefSeqGenes
+#' @exportClass RefSeqGenes
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name RefSeqTranscripts-class
+#' @importClassesFrom AcidGenomes RefSeqTranscripts
+#' @exportClass RefSeqTranscripts
+NULL
+
+
+
+#' @rdname reexports-classes
 #' @name Tx2Gene-class
 #' @importClassesFrom AcidGenomes Tx2Gene
 #' @exportClass Tx2Gene
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name UCSCGenes-class
+#' @importClassesFrom AcidGenomes UCSCGenes
+#' @exportClass UCSCGenes
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name UCSCTranscripts-class
+#' @importClassesFrom AcidGenomes UCSCTranscripts
+#' @exportClass UCSCTranscripts
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name WormBaseGenes-class
+#' @importClassesFrom AcidGenomes WormBaseGenes
+#' @exportClass WormBaseGenes
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name WormBaseTranscripts-class
+#' @importClassesFrom AcidGenomes WormBaseTranscripts
+#' @exportClass WormBaseTranscripts
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name missingOrNULL-class
+#' @importClassesFrom AcidGenerics missingOrNULL
+#' @exportClass missingOrNULL
 NULL

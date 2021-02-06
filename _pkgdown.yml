@@ -1,6 +1,6 @@
 authors:
   Michael Steinbaugh:
-    href: https://steinbaugh.com/
+    href: https://mike.steinbaugh.com/
   Acid Genomics:
     href: https://acidgenomics.com/
 
@@ -14,89 +14,3 @@ navbar:
 
 news:
   - one_page: false
-
-reference:
-  - title: S4 classes
-    contents:
-      - matches("^[A-Z]")
-  - title: Gene identifier mapping
-    contents:
-      - starts_with("convert")
-      - mapGenes
-  - title: Counts
-    contents:
-      - counts
-      - integerCounts
-      - tpm
-  - title: Quality control
-    contents:
-      - calculateMetrics
-      - correlation
-      - filterCells
-      - metrics
-      - nonzeroRowsAndCols
-  - title: Import/export
-    contents:
-      - importSampleData
-  - title: Metadata
-    contents:
-      - headtail
-      - humanize
-      - interestingGroups
-      - mcolnames
-      - microplate
-      - uniteInterestingGroups
-  - title: Sample-level metadata
-    contents:
-      - makeSampleData
-      - makeSummarizedExperiment
-      - minimalSampleData
-      - starts_with("sample")
-      - selectSamples
-  - title: Cell-level metadata
-    contents:
-      - cell2sample
-      - makeSingleCellExperiment
-      - mapCellsToSamples
-      - subsetPerSample
-      - topCellsPerSample
-  - title: Sanitization
-    contents:
-      - autopadZeros
-      - collapseToString
-      - starts_with("sanitize")
-      - sortUnique
-      - starts_with("strip")
-      - toStringUnique
-  - title: Syntactic names
-    contents:
-      - ends_with("Case")
-  - title: Aggregation and normalization
-    contents:
-      - starts_with("aggregate")
-      - combine
-      - estimateSizeFactors
-      - geometricMean
-      - starts_with("intersect")
-      - logRatio
-      - melt
-      - rankedMatrix
-      - sem
-      - sizeFactors
-      - zerosVsDepth
-  - title: Markdown
-    contents:
-      - starts_with("markdown")
-      - prepareTemplate
-  - title: Developer
-    contents:
-      - detectHPC
-      - detectLanes
-      - matchInterestingGroups
-      - starts_with("matches")
-      - multiassignAsEnvir
-      - separator
-      - showHeader
-  - title: Reexports
-    contents:
-      - reexports
