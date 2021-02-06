@@ -11,11 +11,29 @@ NULL
 
 
 
-## #' @name deprecated
-## #' @inherit AcidRoxygen::deprecated description examples return seealso title
-## #' @inheritParams AcidRoxygen::params
-## #' @keywords internal
-## NULL
+#' @name deprecated
+#' @inherit AcidRoxygen::deprecated description examples return seealso title
+#' @inheritParams AcidRoxygen::params
+#' @keywords internal
+NULL
+
+
+
+## v0.11.11 ====================================================================
+## NOTE This is still called by bcbioBase, need to update namespace.
+#' @rdname deprecated
+#' @export
+readSampleData <- function(...) {
+    .Deprecated("importSampleData")
+    importSampleData(...)
+}
+
+#' @rdname deprecated
+#' @export
+readTx2Gene <- function(...) {
+    .Deprecated("importTx2Gene")
+    importTx2Gene(...)
+}
 
 
 
@@ -35,6 +53,12 @@ matchHumanOrthologs <- function(...) {
 
 
 ## v0.14.0 =====================================================================
+#' @rdname defunct
+#' @export
+matchArgsToDoCall <- function(...) {
+    .Defunct()
+}
+
 #' @rdname defunct
 #' @export
 multiassignAsEnvir <- function(...) {
