@@ -4,3 +4,8 @@
 #'
 #' @keywords internal
 "_PACKAGE"
+
+
+
+#' @importFrom methods getMethod setAs signature
+NULL
