@@ -4,6 +4,7 @@
 \alias{defunct}
 \alias{matchEnsemblReleaseToURL}
 \alias{matchHumanOrthologs}
+\alias{matchArgsToDoCall}
 \alias{multiassignAsEnvir}
 \alias{sortUnique}
 \alias{toStringUnique}
@@ -12,6 +13,8 @@
 matchEnsemblReleaseToURL(...)
 
 matchHumanOrthologs(...)
+
+matchArgsToDoCall(...)
 
 multiassignAsEnvir(...)
 
