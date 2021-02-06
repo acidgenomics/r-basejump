@@ -128,6 +128,12 @@ AcidBase::updateMessage
 
 
 
+#' @importFrom AcidCLI separator
+#' @export
+AcidCLI::separator
+
+
+
 #' @importFrom AcidExperiment detectLanes
 #' @export
 AcidExperiment::detectLanes
