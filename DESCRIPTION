@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.13.5
-Date: 2020-12-22
+Version: 0.14.0
+Date: 2021-02-06
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -33,124 +33,19 @@ URL:
 BugReports: https://github.com/acidgenomics/r-basejump/issues/
 License: GPL-3
 Encoding: UTF-8
-Depends:
-    R (>= 4.0),
-    S4Vectors
+Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.2.6),
-    AcidGenerics (>= 0.5.0),
-    AcidGenomes (>= 0.1.1),
-    AcidPlyr (>= 0.1.4),
-    Biostrings,
-    GenomicRanges,
-    IRanges,
-    Matrix (>= 1.2),
-    SingleCellExperiment,
-    SummarizedExperiment,
-    cli (>= 2.2),
-    goalie (>= 0.4.11),
+    AcidBase (>= 0.3.5),
+    AcidGenerics (>= 0.5.6),
+    AcidExperiment (>= 0.1.1),
+    AcidGenomes (>= 0.2.0),
+    AcidMarkdown (>= 0.1.0),
+    AcidPlyr (>= 0.1.8),
+    AcidSingleCell (>= 0.1.1),
     magrittr (>= 2.0),
-    matrixStats (>= 0.57),
-    methods,
-    pipette (>= 0.4.23),
-    scales (>= 1.1),
-    sessioninfo (>= 1.1),
-    stringr (>= 1.4),
-    syntactic (>= 0.4.3),
-    tibble (>= 3.0),
-    utils
-Suggests:
-    AcidTest (>= 0.4.0),
-    BiocStyle,
-    datasets,
-    knitr,
-    rmarkdown,
-    testthat
-biocViews:
-    DataImport,
-    GenomeAnnotation,
-    Preprocessing
+    pipette (>= 0.5.3),
+    syntactic (>= 0.4.4),
+    methods
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-VignetteBuilder: knitr
 Additional_repositories: https://r.acidgenomics.com
-Collate: 
-    'AllGlobals.R'
-    'AllClasses.R'
-    'AllGenerics.R'
-    'aggregate-methods.R'
-    'aggregateCellsToSamples-methods.R'
-    'aggregateCols-methods.R'
-    'aggregateRows-methods.R'
-    'autopadZeros-methods.R'
-    'calculateMetrics-methods.R'
-    'camelCase-methods.R'
-    'cell2sample-methods.R'
-    'collapseToString-methods.R'
-    'combine-methods.R'
-    'convertGenesToSymbols-methods.R'
-    'convertSampleIDsToNames-methods.R'
-    'convertTranscriptsToGenes-methods.R'
-    'correlation-methods.R'
-    'counts-methods.R'
-    'deprecated.R'
-    'detectHPC.R'
-    'detectLanes.R'
-    'dottedCase-methods.R'
-    'estimateSizeFactors-methods.R'
-    'filterCells-methods.R'
-    'geometricMean-methods.R'
-    'headtail-methods.R'
-    'humanize-methods.R'
-    'importSampleData.R'
-    'imports.R'
-    'integerCounts-methods.R'
-    'interestingGroups-methods.R'
-    'internal.R'
-    'intersectAll-methods.R'
-    'intersectionMatrix-methods.R'
-    'logRatio-methods.R'
-    'makeSampleData-methods.R'
-    'makeSingleCellExperiment.R'
-    'makeSummarizedExperiment.R'
-    'mapCellsToSamples.R'
-    'mapGenes-methods.R'
-    'markdown-methods.R'
-    'markdownHeader.R'
-    'markdownLink.R'
-    'markdownList.R'
-    'markdownPlots.R'
-    'markdownTables.R'
-    'matchInterestingGroups.R'
-    'matchesGene2Symbol.R'
-    'matchesInterestingGroups.R'
-    'mcolnames-methods.R'
-    'melt-methods.R'
-    'metrics-methods.R'
-    'microplate.R'
-    'minimalSampleData.R'
-    'multiassignAsEnvir.R'
-    'nonzeroRowsAndCols-methods.R'
-    'package.R'
-    'prepareTemplate.R'
-    'rankedMatrix.R'
-    'reexports-classes.R'
-    'reexports-coerce.R'
-    'reexports.R'
-    'sampleData-methods.R'
-    'sampleNames-methods.R'
-    'sanitizeSampleData.R'
-    'selectSamples-methods.R'
-    'sem-methods.R'
-    'separator.R'
-    'showHeader.R'
-    'sizeFactors-methods.R'
-    'snakeCase-methods.R'
-    'sortUnique.R'
-    'subsetPerSample-methods.R'
-    'toStringUnique.R'
-    'topCellsPerSample-methods.R'
-    'tpm-methods.R'
-    'uniteInterestingGroups-methods.R'
-    'upperCamelCase-methods.R'
-    'zerosVsDepth-methods.R'
