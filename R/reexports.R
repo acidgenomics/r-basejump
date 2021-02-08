@@ -128,9 +128,81 @@ AcidBase::updateMessage
 
 
 
+#' @importFrom AcidCLI alert
+#' @export
+AcidCLI::alert
+
+#' @importFrom AcidCLI alertDanger
+#' @export
+AcidCLI::alertDanger
+
+#' @importFrom AcidCLI alertInfo
+#' @export
+AcidCLI::alertInfo
+
+#' @importFrom AcidCLI alertSuccess
+#' @export
+AcidCLI::alertSuccess
+
+#' @importFrom AcidCLI alertWarning
+#' @export
+AcidCLI::alertWarning
+
+#' @importFrom AcidCLI dl
+#' @export
+AcidCLI::dl
+
+#' @importFrom AcidCLI h1
+#' @export
+AcidCLI::h1
+
+#' @importFrom AcidCLI h2
+#' @export
+AcidCLI::h2
+
+#' @importFrom AcidCLI h3
+#' @export
+AcidCLI::h3
+
+#' @importFrom AcidCLI h4
+#' @export
+AcidCLI::h4
+
+#' @importFrom AcidCLI h5
+#' @export
+AcidCLI::h5
+
+#' @importFrom AcidCLI h6
+#' @export
+AcidCLI::h6
+
+#' @importFrom AcidCLI h7
+#' @export
+AcidCLI::h7
+
+#' @importFrom AcidCLI ol
+#' @export
+AcidCLI::ol
+
 #' @importFrom AcidCLI separator
 #' @export
 AcidCLI::separator
+
+#' @importFrom AcidCLI toInlineString
+#' @export
+AcidCLI::toInlineString
+
+#' @importFrom AcidCLI txt
+#' @export
+AcidCLI::txt
+
+#' @importFrom AcidCLI ul
+#' @export
+AcidCLI::ul
+
+#' @importFrom AcidCLI verbatim
+#' @export
+AcidCLI::verbatim
 
 
 
