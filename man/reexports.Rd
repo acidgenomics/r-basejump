@@ -142,7 +142,25 @@
 \alias{showSlotInfo}
 \alias{standardizeCall}
 \alias{updateMessage}
+\alias{alert}
+\alias{alertDanger}
+\alias{alertInfo}
+\alias{alertSuccess}
+\alias{alertWarning}
+\alias{dl}
+\alias{h1}
+\alias{h2}
+\alias{h3}
+\alias{h4}
+\alias{h5}
+\alias{h6}
+\alias{h7}
+\alias{ol}
 \alias{separator}
+\alias{toInlineString}
+\alias{txt}
+\alias{ul}
+\alias{verbatim}
 \alias{detectLanes}
 \alias{importSampleData}
 \alias{makeSummarizedExperiment}
@@ -230,7 +248,7 @@ below to see their documentation.
 \describe{
   \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase]{updateMessage}}}
 
-  \item{AcidCLI}{\code{\link[AcidCLI]{separator}}}
+  \item{AcidCLI}{\code{\link[AcidCLI]{alert}}, \code{\link[AcidCLI:alert]{alertDanger}}, \code{\link[AcidCLI:alert]{alertInfo}}, \code{\link[AcidCLI:alert]{alertSuccess}}, \code{\link[AcidCLI:alert]{alertWarning}}, \code{\link[AcidCLI:list]{dl}}, \code{\link[AcidCLI:header]{h1}}, \code{\link[AcidCLI:header]{h2}}, \code{\link[AcidCLI:header]{h3}}, \code{\link[AcidCLI:header]{h4}}, \code{\link[AcidCLI:header]{h5}}, \code{\link[AcidCLI:header]{h6}}, \code{\link[AcidCLI:header]{h7}}, \code{\link[AcidCLI:list]{ol}}, \code{\link[AcidCLI]{separator}}, \code{\link[AcidCLI]{toInlineString}}, \code{\link[AcidCLI:text]{txt}}, \code{\link[AcidCLI:list]{ul}}, \code{\link[AcidCLI:text]{verbatim}}}
 
   \item{AcidExperiment}{\code{\link[AcidExperiment]{detectLanes}}, \code{\link[AcidExperiment]{importSampleData}}, \code{\link[AcidExperiment]{makeSummarizedExperiment}}, \code{\link[AcidExperiment]{matchInterestingGroups}}, \code{\link[AcidExperiment]{matchesGene2Symbol}}, \code{\link[AcidExperiment]{matchesInterestingGroups}}, \code{\link[AcidExperiment]{microplate}}, \code{\link[AcidExperiment]{minimalSampleData}}, \code{\link[AcidExperiment]{sanitizeSampleData}}}
 
