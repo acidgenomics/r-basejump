@@ -1,8 +1,16 @@
 #' Reexport S4 classes
 #'
 #' @name reexports-classes
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-02-08.
 #' @keywords internal
+NULL
+
+
+
+#' @rdname reexports-classes
+#' @name Annotated-class
+#' @importClassesFrom AcidGenerics Annotated
+#' @exportClass Annotated
 NULL
 
 

@@ -2,6 +2,7 @@
 % Please edit documentation in R/reexports-classes.R
 \name{reexports-classes}
 \alias{reexports-classes}
+\alias{Annotated-class}
 \alias{AsIs-class}
 \alias{Ensembl2Entrez-class}
 \alias{Entrez2Ensembl-class}
@@ -29,6 +30,6 @@
 Reexport S4 classes
 }
 \note{
-Updated 2021-02-03.
+Updated 2021-02-08.
 }
 \keyword{internal}
