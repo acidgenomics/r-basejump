@@ -2,7 +2,7 @@
 
 ### Minor changes
 
-- Now reexporting some other useful functions from SummarizedExperiment and
+- Now re-exporting some other useful functions from SummarizedExperiment and
   SingleCellExperiment, which are defined in AcidExperiment and AcidSingleCell
   respectively.
 
