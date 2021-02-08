@@ -37,7 +37,7 @@ Depends: R (>= 4.0)
 Imports:
     AcidBase (>= 0.3.5),
     AcidCLI (>= 0.0.6),
-    AcidGenerics (>= 0.5.6),
+    AcidGenerics (>= 0.5.8),
     AcidExperiment (>= 0.1.4),
     AcidGenomes (>= 0.2.0),
     AcidMarkdown (>= 0.1.0),
@@ -46,7 +46,8 @@ Imports:
     magrittr (>= 2.0),
     pipette (>= 0.5.3),
     syntactic (>= 0.4.4),
-    methods
+    methods,
+    stats
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Additional_repositories: https://r.acidgenomics.com

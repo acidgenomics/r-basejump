@@ -316,6 +316,20 @@ AcidExperiment::session_info
 
 
 
+#' @importFrom AcidGenerics %in%
+#' @export
+AcidGenerics::`%in%`
+
+#' @importFrom AcidGenerics colSums
+#' @export
+AcidGenerics::colSums
+
+#' @importFrom AcidGenerics var
+#' @export
+AcidGenerics::var
+
+
+
 #' @importFrom AcidGenomes GRanges
 #' @export
 AcidGenomes::GRanges
@@ -638,3 +652,33 @@ pipette::tibble  # tibble
 #' @importFrom pipette transmit
 #' @export
 pipette::transmit
+
+
+
+#' @importFrom stats as.formula
+#' @export
+stats::as.formula
+
+#' @importFrom stats dist
+#' @export
+stats::dist
+
+#' @importFrom stats ecdf
+#' @export
+stats::ecdf
+
+#' @importFrom stats hclust
+#' @export
+stats::hclust
+
+#' @importFrom stats prcomp
+#' @export
+stats::prcomp
+
+#' @importFrom stats quantile
+#' @export
+stats::quantile
+
+#' @importFrom stats reorder
+#' @export
+stats::reorder
