@@ -1,4 +1,12 @@
-## basejump 0.14.0 (2020-02-06)
+## basejump 0.14.1 (2021-02-08)
+
+### Minor changes
+
+- Now reexporting some other useful functions from SummarizedExperiment and
+  SingleCellExperiment, which are defined in AcidExperiment and AcidSingleCell
+  respectively.
+
+## basejump 0.14.0 (2021-02-06)
 
 Reworked package to simply inherit and reexport functions from other Acid
 Genomics packages, rather than defining any code directly here.
