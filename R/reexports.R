@@ -206,6 +206,58 @@ AcidCLI::verbatim
 
 
 
+#' @importFrom AcidExperiment DataFrame
+#' @export
+AcidExperiment::DataFrame
+
+#' @importFrom AcidExperiment Rle
+#' @export
+AcidExperiment::Rle
+
+#' @importFrom AcidExperiment SimpleList
+#' @export
+AcidExperiment::SimpleList
+
+#' @importFrom AcidExperiment SplitDataFrameList
+#' @export
+AcidExperiment::SplitDataFrameList
+
+#' @importFrom AcidExperiment SummarizedExperiment
+#' @export
+AcidExperiment::SummarizedExperiment
+
+#' @importFrom AcidExperiment assay
+#' @export
+AcidExperiment::assay
+
+#' @importFrom AcidExperiment assay<-
+#' @export
+AcidExperiment::`assay<-`
+
+#' @importFrom AcidExperiment assayNames
+#' @export
+AcidExperiment::assayNames
+
+#' @importFrom AcidExperiment assayNames<-
+#' @export
+AcidExperiment::`assayNames<-`
+
+#' @importFrom AcidExperiment assays
+#' @export
+AcidExperiment::assays
+
+#' @importFrom AcidExperiment assays<-
+#' @export
+AcidExperiment::`assays<-`
+
+#' @importFrom AcidExperiment colData
+#' @export
+AcidExperiment::colData
+
+#' @importFrom AcidExperiment colData<-
+#' @export
+AcidExperiment::`colData<-`
+
 #' @importFrom AcidExperiment detectLanes
 #' @export
 AcidExperiment::detectLanes
@@ -238,11 +290,39 @@ AcidExperiment::microplate
 #' @export
 AcidExperiment::minimalSampleData
 
+#' @importFrom AcidExperiment rowData
+#' @export
+AcidExperiment::rowData
+
+#' @importFrom AcidExperiment rowData<-
+#' @export
+AcidExperiment::`rowData<-`
+
+#' @importFrom AcidExperiment rowRanges
+#' @export
+AcidExperiment::rowRanges
+
+#' @importFrom AcidExperiment rowRanges<-
+#' @export
+AcidExperiment::`rowRanges<-`
+
 #' @importFrom AcidExperiment sanitizeSampleData
 #' @export
 AcidExperiment::sanitizeSampleData
 
+#' @importFrom AcidExperiment session_info
+#' @export
+AcidExperiment::session_info
 
+
+
+#' @importFrom AcidGenomes GRanges
+#' @export
+AcidGenomes::GRanges
+
+#' @importFrom AcidGenomes GRangesList
+#' @export
+AcidGenomes::GRangesList
 
 #' @importFrom AcidGenomes HGNC
 #' @export
@@ -251,6 +331,10 @@ AcidGenomes::HGNC
 #' @importFrom AcidGenomes HGNC2Ensembl
 #' @export
 AcidGenomes::HGNC2Ensembl
+
+#' @importFrom AcidGenomes IRanges
+#' @export
+AcidGenomes::IRanges
 
 #' @importFrom AcidGenomes MGI2Ensembl
 #' @export
@@ -436,6 +520,10 @@ AcidMarkdown::prepareTemplate
 
 
 
+#' @importFrom AcidSingleCell SingleCellExperiment
+#' @export
+AcidSingleCell::SingleCellExperiment
+
 #' @importFrom AcidSingleCell makeSingleCellExperiment
 #' @export
 AcidSingleCell::makeSingleCellExperiment
@@ -443,6 +531,30 @@ AcidSingleCell::makeSingleCellExperiment
 #' @importFrom AcidSingleCell mapCellsToSamples
 #' @export
 AcidSingleCell::mapCellsToSamples
+
+#' @importFrom AcidSingleCell reducedDim
+#' @export
+AcidSingleCell::reducedDim
+
+#' @importFrom AcidSingleCell reducedDim<-
+#' @export
+AcidSingleCell::`reducedDim<-`
+
+#' @importFrom AcidSingleCell reducedDimNames
+#' @export
+AcidSingleCell::reducedDimNames
+
+#' @importFrom AcidSingleCell reducedDimNames<-
+#' @export
+AcidSingleCell::`reducedDimNames<-`
+
+#' @importFrom AcidSingleCell reducedDims
+#' @export
+AcidSingleCell::reducedDims
+
+#' @importFrom AcidSingleCell reducedDims<-
+#' @export
+AcidSingleCell::`reducedDims<-`
 
 
 
