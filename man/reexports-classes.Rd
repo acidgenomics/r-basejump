@@ -17,8 +17,11 @@
 \alias{HGNC2Ensembl-class}
 \alias{MGI2Ensembl-class}
 \alias{Protein2Gene-class}
+\alias{RangedSummarizedExperiment-class}
 \alias{RefSeqGenes-class}
 \alias{RefSeqTranscripts-class}
+\alias{SingleCellExperiment-class}
+\alias{SummarizedExperiment-class}
 \alias{Tx2Gene-class}
 \alias{UCSCGenes-class}
 \alias{UCSCTranscripts-class}
@@ -30,6 +33,6 @@
 Reexport S4 classes
 }
 \note{
-Updated 2021-02-08.
+Updated 2021-02-09.
 }
 \keyword{internal}

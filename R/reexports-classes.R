@@ -1,7 +1,7 @@
 #' Reexport S4 classes
 #'
 #' @name reexports-classes
-#' @note Updated 2021-02-08.
+#' @note Updated 2021-02-09.
 #' @keywords internal
 NULL
 
@@ -13,15 +13,11 @@ NULL
 #' @exportClass Annotated
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name AsIs-class
 #' @importClassesFrom AcidGenerics AsIs
 #' @exportClass AsIs
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name Ensembl2Entrez-class
@@ -29,15 +25,11 @@ NULL
 #' @exportClass Ensembl2Entrez
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name Entrez2Ensembl-class
 #' @importClassesFrom AcidGenomes Entrez2Ensembl
 #' @exportClass Entrez2Ensembl
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name EnsemblGenes-class
@@ -45,15 +37,11 @@ NULL
 #' @exportClass EnsemblGenes
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name EnsemblTranscripts-class
 #' @importClassesFrom AcidGenomes EnsemblTranscripts
 #' @exportClass EnsemblTranscripts
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name FlyBaseGenes-class
@@ -61,15 +49,11 @@ NULL
 #' @exportClass FlyBaseGenes
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name FlyBaseTranscripts-class
 #' @importClassesFrom AcidGenomes FlyBaseTranscripts
 #' @exportClass FlyBaseTranscripts
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name GencodeGenes-class
@@ -77,15 +61,11 @@ NULL
 #' @exportClass GencodeGenes
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name GencodeTranscripts-class
 #' @importClassesFrom AcidGenomes GencodeTranscripts
 #' @exportClass GencodeTranscripts
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name Gene2Symbol-class
@@ -93,15 +73,11 @@ NULL
 #' @exportClass Gene2Symbol
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name HGNC-class
 #' @importClassesFrom AcidGenomes HGNC
 #' @exportClass HGNC
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name HGNC2Ensembl-class
@@ -109,15 +85,11 @@ NULL
 #' @exportClass HGNC2Ensembl
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name MGI2Ensembl-class
 #' @importClassesFrom AcidGenomes MGI2Ensembl
 #' @exportClass MGI2Ensembl
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name Protein2Gene-class
@@ -125,7 +97,11 @@ NULL
 #' @exportClass Protein2Gene
 NULL
 
-
+#' @rdname reexports-classes
+#' @name RangedSummarizedExperiment-class
+#' @importClassesFrom AcidExperiment RangedSummarizedExperiment
+#' @exportClass RangedSummarizedExperiment
+NULL
 
 #' @rdname reexports-classes
 #' @name RefSeqGenes-class
@@ -133,15 +109,23 @@ NULL
 #' @exportClass RefSeqGenes
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name RefSeqTranscripts-class
 #' @importClassesFrom AcidGenomes RefSeqTranscripts
 #' @exportClass RefSeqTranscripts
 NULL
 
+#' @rdname reexports-classes
+#' @name SingleCellExperiment-class
+#' @importClassesFrom AcidSingleCell SingleCellExperiment
+#' @exportClass SingleCellExperiment
+NULL
 
+#' @rdname reexports-classes
+#' @name SummarizedExperiment-class
+#' @importClassesFrom AcidExperiment SummarizedExperiment
+#' @exportClass SummarizedExperiment
+NULL
 
 #' @rdname reexports-classes
 #' @name Tx2Gene-class
@@ -149,15 +133,11 @@ NULL
 #' @exportClass Tx2Gene
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name UCSCGenes-class
 #' @importClassesFrom AcidGenomes UCSCGenes
 #' @exportClass UCSCGenes
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name UCSCTranscripts-class
@@ -165,23 +145,17 @@ NULL
 #' @exportClass UCSCTranscripts
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name WormBaseGenes-class
 #' @importClassesFrom AcidGenomes WormBaseGenes
 #' @exportClass WormBaseGenes
 NULL
 
-
-
 #' @rdname reexports-classes
 #' @name WormBaseTranscripts-class
 #' @importClassesFrom AcidGenomes WormBaseTranscripts
 #' @exportClass WormBaseTranscripts
 NULL
-
-
 
 #' @rdname reexports-classes
 #' @name missingOrNULL-class
