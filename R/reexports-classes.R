@@ -20,6 +20,18 @@ NULL
 NULL
 
 #' @rdname reexports-classes
+#' @name DataFrame-class
+#' @importClassesFrom pipette DataFrame
+#' @exportClass DataFrame
+NULL
+
+#' @rdname reexports-classes
+#' @name DataFrameList-class
+#' @importClassesFrom pipette DataFrameList
+#' @exportClass DataFrameList
+NULL
+
+#' @rdname reexports-classes
 #' @name Ensembl2Entrez-class
 #' @importClassesFrom AcidGenomes Ensembl2Entrez
 #' @exportClass Ensembl2Entrez
