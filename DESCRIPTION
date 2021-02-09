@@ -46,8 +46,11 @@ Imports:
     magrittr (>= 2.0),
     pipette (>= 0.5.3),
     syntactic (>= 0.4.4),
+    grDevices,
+    grid,
     methods,
-    stats
+    stats,
+    utils
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Additional_repositories: https://r.acidgenomics.com

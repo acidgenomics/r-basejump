@@ -271,10 +271,27 @@
 \alias{reducedDimNames<-}
 \alias{reducedDims}
 \alias{reducedDims<-}
+\alias{axisTicks}
+\alias{colorRampPalette}
+\alias{rgb}
+\alias{arrow}
+\alias{unit}
 \alias{\%<>\%}
 \alias{\%$\%}
 \alias{\%>\%}
 \alias{\%T>\%}
+\alias{as}
+\alias{formalArgs}
+\alias{is}
+\alias{new}
+\alias{setClass}
+\alias{setClassUnion}
+\alias{setGeneric}
+\alias{setMethod}
+\alias{setReplaceMethod}
+\alias{setValidity}
+\alias{signature}
+\alias{validObject}
 \alias{as.data.table}
 \alias{as_tibble}
 \alias{assignAndSaveData}
@@ -298,6 +315,8 @@
 \alias{prcomp}
 \alias{quantile}
 \alias{reorder}
+\alias{packageName}
+\alias{packageVersion}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -319,12 +338,18 @@ below to see their documentation.
 
   \item{AcidSingleCell}{\code{\link[AcidSingleCell:reexports]{SingleCellExperiment}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}, \code{\link[AcidSingleCell:reexports]{reducedDim}}, \code{\link[AcidSingleCell:reexports]{reducedDim<-}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames<-}}, \code{\link[AcidSingleCell:reexports]{reducedDims}}, \code{\link[AcidSingleCell:reexports]{reducedDims<-}}}
 
+  \item{grDevices}{\code{\link[grDevices]{axisTicks}}, \code{\link[grDevices:colorRamp]{colorRampPalette}}, \code{\link[grDevices]{rgb}}}
+
+  \item{grid}{\code{\link[grid]{arrow}}, \code{\link[grid]{unit}}}
+
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
-  \item{methods}{\code{\link[methods:setAs]{coerce}}}
+  \item{methods}{\code{\link[methods]{as}}, \code{\link[methods:setAs]{coerce}}, \code{\link[methods:setAs]{coerce}}, \code{\link[methods:methodUtilities]{formalArgs}}, \code{\link[methods]{is}}, \code{\link[methods]{new}}, \code{\link[methods]{setClass}}, \code{\link[methods]{setClassUnion}}, \code{\link[methods]{setGeneric}}, \code{\link[methods]{setMethod}}, \code{\link[methods:GenericFunctions]{setReplaceMethod}}, \code{\link[methods:validObject]{setValidity}}, \code{\link[methods:GenericFunctions]{signature}}, \code{\link[methods]{validObject}}}
 
   \item{pipette}{\code{\link[pipette:coerce]{as.data.table}}, \code{\link[pipette:coerce]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
 
   \item{stats}{\code{\link[stats:formula]{as.formula}}, \code{\link[stats]{dist}}, \code{\link[stats]{ecdf}}, \code{\link[stats]{hclust}}, \code{\link[stats]{prcomp}}, \code{\link[stats]{quantile}}, \code{\link[stats:reorder.factor]{reorder}}}
+
+  \item{utils}{\code{\link[utils]{packageName}}, \code{\link[utils:packageDescription]{packageVersion}}}
 }}
 
