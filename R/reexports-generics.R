@@ -1,3 +1,25 @@
+#' @importFrom AcidGenomes Ensembl2Entrez
+#' @export
+#' @importMethodsFrom AcidGenomes Ensembl2Entrez
+#' @exportMethod Ensembl2Entrez
+AcidGenomes::Ensembl2Entrez
+
+#' @importFrom AcidGenomes Entrez2Ensembl
+#' @export
+#' @importMethodsFrom AcidGenomes Entrez2Ensembl
+#' @exportMethod Entrez2Ensembl
+AcidGenomes::Entrez2Ensembl
+
+#' @importFrom AcidGenomes Gene2Symbol
+#' @export
+AcidGenomes::Gene2Symbol
+
+#' @importFrom AcidGenomes Tx2Gene
+#' @export
+#' @importMethodsFrom AcidGenomes Tx2Gene
+#' @exportMethod Tx2Gene
+AcidGenomes::Tx2Gene
+
 #' @importFrom AcidGenerics aggregate
 #' @export
 #' @importMethodsFrom AcidExperiment aggregate
@@ -618,27 +640,3 @@ AcidGenerics::upperCamelCase
 #' @importMethodsFrom AcidSingleCell zerosVsDepth
 #' @exportMethod zerosVsDepth
 AcidGenerics::zerosVsDepth
-
-
-
-#' @importFrom AcidGenomes Ensembl2Entrez
-#' @export
-#' @importMethodsFrom AcidGenomes Ensembl2Entrez
-#' @exportMethod Ensembl2Entrez
-AcidGenomes::Ensembl2Entrez
-
-#' @importFrom AcidGenomes Entrez2Ensembl
-#' @export
-#' @importMethodsFrom AcidGenomes Entrez2Ensembl
-#' @exportMethod Entrez2Ensembl
-AcidGenomes::Entrez2Ensembl
-
-#' @importFrom AcidGenomes Gene2Symbol
-#' @export
-AcidGenomes::Gene2Symbol
-
-#' @importFrom AcidGenomes Tx2Gene
-#' @export
-#' @importMethodsFrom AcidGenomes Tx2Gene
-#' @exportMethod Tx2Gene
-AcidGenomes::Tx2Gene
