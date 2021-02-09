@@ -4,6 +4,8 @@
 \alias{reexports-classes}
 \alias{Annotated-class}
 \alias{AsIs-class}
+\alias{DataFrame-class}
+\alias{DataFrameList-class}
 \alias{Ensembl2Entrez-class}
 \alias{Entrez2Ensembl-class}
 \alias{EnsemblGenes-class}

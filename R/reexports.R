@@ -2,6 +2,10 @@
 #' @export
 pipette::DataFrame
 
+#' @importFrom pipette DataFrameList
+#' @export
+pipette::DataFrameList
+
 #' @importFrom pipette GRanges
 #' @export
 pipette::GRanges
@@ -21,6 +25,14 @@ AcidGenomes::HGNC2Ensembl
 #' @importFrom pipette IRanges
 #' @export
 pipette::IRanges
+
+#' @importFrom pipette List
+#' @export
+pipette::List
+
+#' @importFrom pipette Matrix
+#' @export
+pipette::Matrix
 
 #' @importFrom AcidGenomes MGI2Ensembl
 #' @export
@@ -332,6 +344,10 @@ AcidGenomes::geneSynonyms
 #' @importFrom AcidBase genomeMetadataNames
 #' @export
 AcidBase::genomeMetadataNames
+
+#' @importFrom pipette getURL
+#' @export
+pipette::getURL
 
 #' @importFrom pipette getURLDirList
 #' @export
@@ -645,6 +661,10 @@ AcidBase::printString
 #' @export
 stats::quantile
 
+#' @importFrom pipette rbindlist
+#' @export
+pipette::rbindlist
+
 #' @importFrom AcidBase realpath
 #' @export
 AcidBase::realpath
@@ -780,6 +800,10 @@ methods::signature
 #' @importFrom AcidGenerics sort
 #' @export
 AcidGenerics::sort
+
+#' @importFrom pipette sparseMatrix
+#' @export
+pipette::sparseMatrix
 
 #' @importFrom AcidGenerics split
 #' @export
