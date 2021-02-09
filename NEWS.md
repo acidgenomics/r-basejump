@@ -1,3 +1,10 @@
+## basejump 0.14.2 (2021-02-09)
+
+### New functions
+
+- Added more reexports from base/recommended R packages, including grDevices,
+    grid, methods, stats, and utils.
+
 ## basejump 0.14.1 (2021-02-08)
 
 ### Minor changes
