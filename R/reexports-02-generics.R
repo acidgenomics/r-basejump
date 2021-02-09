@@ -106,6 +106,12 @@ AcidGenerics::capitalize
 #' @exportMethod cell2sample
 AcidGenerics::cell2sample
 
+#' @importFrom AcidGenerics coerce
+#' @export
+#' @importMethodsFrom pipette coerce
+#' @exportMethod coerce
+AcidGenerics::coerce
+
 #' @importFrom AcidGenerics coerceToList
 #' @export
 #' @importMethodsFrom AcidBase coerceToList

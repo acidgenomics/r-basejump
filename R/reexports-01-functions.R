@@ -121,6 +121,10 @@ pipette::as.data.table
 #' @export
 stats::as.formula
 
+#' @importFrom AcidGenerics as.list
+#' @export
+AcidGenerics::as.list
+
 #' @importFrom pipette as_tibble
 #' @export
 pipette::as_tibble
@@ -172,10 +176,6 @@ pipette::cacheURL
 #' @importFrom AcidBase classContains
 #' @export
 AcidBase::classContains
-
-#' @importFrom methods coerce
-#' @export
-methods::coerce
 
 #' @importFrom AcidExperiment colData
 #' @export
@@ -384,6 +384,10 @@ AcidCLI::h7
 #' @importFrom stats hclust
 #' @export
 stats::hclust
+
+#' @importFrom AcidGenerics head
+#' @export
+AcidGenerics::head
 
 #' @importFrom pipette import
 #' @export
@@ -813,6 +817,10 @@ AcidGenerics::split
 #' @export
 AcidBase::standardizeCall
 
+#' @importFrom AcidGenerics summary
+#' @export
+AcidGenerics::summary
+
 #' @importFrom AcidGenerics t
 #' @export
 AcidGenerics::t
@@ -820,6 +828,10 @@ AcidGenerics::t
 #' @importFrom AcidGenerics table
 #' @export
 AcidGenerics::table
+
+#' @importFrom AcidGenerics tail
+#' @export
+AcidGenerics::tail
 
 #' @importFrom pipette tibble
 #' @export
