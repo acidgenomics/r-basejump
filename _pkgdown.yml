@@ -16,6 +16,6 @@ news:
   - one_page: false
 
 reference:
-  - title: Reexported functions
+  - title: Reexported classes and functions
     contents:
     - reexports
