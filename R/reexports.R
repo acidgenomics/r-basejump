@@ -675,6 +675,30 @@ AcidSingleCell::`reducedDims<-`
 
 
 
+#' @importFrom grDevices axisTicks
+#' @export
+grDevices::axisTicks
+
+#' @importFrom grDevices colorRampPalette
+#' @export
+grDevices::colorRampPalette
+
+#' @importFrom grDevices rgb
+#' @export
+grDevices::rgb
+
+
+
+#' @importFrom grid arrow
+#' @export
+grid::arrow
+
+#' @importFrom grid unit
+#' @export
+grid::unit
+
+
+
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
@@ -689,6 +713,60 @@ magrittr::`%>%`
 #' @importFrom magrittr %T>%
 #' @export
 magrittr::`%T>%`
+
+
+
+#' @importFrom methods as
+#' @export
+methods::as
+
+#' @importFrom methods coerce
+#' @export
+methods::coerce
+
+#' @importFrom methods formalArgs
+#' @export
+methods::formalArgs
+
+#' @importFrom methods is
+#' @export
+methods::is
+
+#' @importFrom methods new
+#' @export
+methods::new
+
+#' @importFrom methods setClass
+#' @export
+methods::setClass
+
+#' @importFrom methods setClassUnion
+#' @export
+methods::setClassUnion
+
+#' @importFrom methods setGeneric
+#' @export
+methods::setGeneric
+
+#' @importFrom methods setMethod
+#' @export
+methods::setMethod
+
+#' @importFrom methods setReplaceMethod
+#' @export
+methods::setReplaceMethod
+
+#' @importFrom methods setValidity
+#' @export
+methods::setValidity
+
+#' @importFrom methods signature
+#' @export
+methods::signature
+
+#' @importFrom methods validObject
+#' @export
+methods::validObject
 
 
 
@@ -785,3 +863,13 @@ stats::quantile
 #' @importFrom stats reorder
 #' @export
 stats::reorder
+
+
+
+#' @importFrom utils packageName
+#' @export
+utils::packageName
+
+#' @importFrom utils packageVersion
+#' @export
+utils::packageVersion
