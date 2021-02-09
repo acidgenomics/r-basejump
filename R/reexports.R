@@ -206,22 +206,6 @@ AcidCLI::verbatim
 
 
 
-#' @importFrom AcidExperiment DataFrame
-#' @export
-AcidExperiment::DataFrame
-
-#' @importFrom AcidExperiment Rle
-#' @export
-AcidExperiment::Rle
-
-#' @importFrom AcidExperiment SimpleList
-#' @export
-AcidExperiment::SimpleList
-
-#' @importFrom AcidExperiment SplitDataFrameList
-#' @export
-AcidExperiment::SplitDataFrameList
-
 #' @importFrom AcidExperiment SummarizedExperiment
 #' @export
 AcidExperiment::SummarizedExperiment
@@ -433,14 +417,6 @@ AcidGenerics::var
 
 
 
-#' @importFrom AcidGenomes GRanges
-#' @export
-AcidGenomes::GRanges
-
-#' @importFrom AcidGenomes GRangesList
-#' @export
-AcidGenomes::GRangesList
-
 #' @importFrom AcidGenomes HGNC
 #' @export
 AcidGenomes::HGNC
@@ -448,10 +424,6 @@ AcidGenomes::HGNC
 #' @importFrom AcidGenomes HGNC2Ensembl
 #' @export
 AcidGenomes::HGNC2Ensembl
-
-#' @importFrom AcidGenomes IRanges
-#' @export
-AcidGenomes::IRanges
 
 #' @importFrom AcidGenomes MGI2Ensembl
 #' @export
@@ -769,6 +741,34 @@ methods::signature
 methods::validObject
 
 
+
+#' @importFrom pipette DataFrame
+#' @export
+pipette::DataFrame
+
+#' @importFrom pipette GRanges
+#' @export
+pipette::GRanges
+
+#' @importFrom pipette GRangesList
+#' @export
+pipette::GRangesList
+
+#' @importFrom pipette IRanges
+#' @export
+pipette::IRanges
+
+#' @importFrom pipette Rle
+#' @export
+pipette::Rle
+
+#' @importFrom pipette SimpleList
+#' @export
+pipette::SimpleList
+
+#' @importFrom pipette SplitDataFrameList
+#' @export
+pipette::SplitDataFrameList
 
 #' @importFrom pipette as.data.table
 #' @export
