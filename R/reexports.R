@@ -316,6 +316,9 @@ AcidExperiment::session_info
 
 
 
+## These are the Bioconductor S4 generics defined in BiocGenerics and S4Vectors
+## that are reexported in AcidGenerics.
+
 #' @importFrom AcidGenerics %in%
 #' @export
 AcidGenerics::`%in%`
@@ -323,6 +326,106 @@ AcidGenerics::`%in%`
 #' @importFrom AcidGenerics colSums
 #' @export
 AcidGenerics::colSums
+
+#' @importFrom AcidGenerics complete.cases
+#' @export
+AcidGenerics::complete.cases
+
+#' @importFrom AcidGenerics cor
+#' @export
+AcidGenerics::cor
+
+#' @importFrom AcidGenerics do.call
+#' @export
+AcidGenerics::do.call
+
+#' @importFrom AcidGenerics expand
+#' @export
+AcidGenerics::expand
+
+#' @importFrom AcidGenerics expand.grid
+#' @export
+AcidGenerics::expand.grid
+
+#' @importFrom AcidGenerics is.unsorted
+#' @export
+AcidGenerics::is.unsorted
+
+#' @importFrom AcidGenerics lapply
+#' @export
+AcidGenerics::lapply
+
+#' @importFrom AcidGenerics match
+#' @export
+AcidGenerics::match
+
+#' @importFrom AcidGenerics mcols
+#' @export
+AcidGenerics::mcols
+
+#' @importFrom AcidGenerics mcols<-
+#' @export
+AcidGenerics::`mcols<-`
+
+#' @importFrom AcidGenerics merge
+#' @export
+AcidGenerics::merge
+
+#' @importFrom AcidGenerics metadata
+#' @export
+AcidGenerics::metadata
+
+#' @importFrom AcidGenerics metadata<-
+#' @export
+AcidGenerics::`metadata<-`
+
+#' @importFrom AcidGenerics na.omit
+#' @export
+AcidGenerics::na.omit
+
+#' @importFrom AcidGenerics order
+#' @export
+AcidGenerics::order
+
+#' @importFrom AcidGenerics rowMeans
+#' @export
+AcidGenerics::rowMeans
+
+#' @importFrom AcidGenerics rowSums
+#' @export
+AcidGenerics::rowSums
+
+#' @importFrom AcidGenerics setdiff
+#' @export
+AcidGenerics::setdiff
+
+#' @importFrom AcidGenerics sort
+#' @export
+AcidGenerics::sort
+
+#' @importFrom AcidGenerics split
+#' @export
+AcidGenerics::split
+
+#' @importFrom AcidGenerics t
+#' @export
+AcidGenerics::t
+
+#' @importFrom AcidGenerics table
+#' @export
+AcidGenerics::table
+
+#' @importFrom AcidGenerics unique
+#' @export
+AcidGenerics::unique
+
+#' @importFrom AcidGenerics unlist
+#' @export
+AcidGenerics::unlist
+
+#' @importFrom AcidGenerics unsplit
+#' @export
+AcidGenerics::unsplit
 
 #' @importFrom AcidGenerics var
 #' @export
