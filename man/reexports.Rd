@@ -5,6 +5,10 @@
 \name{reexports}
 \alias{reexports}
 \alias{coerce}
+\alias{Ensembl2Entrez}
+\alias{Entrez2Ensembl}
+\alias{Gene2Symbol}
+\alias{Tx2Gene}
 \alias{aggregate}
 \alias{aggregateCellsToSamples}
 \alias{aggregateCols}
@@ -106,10 +110,6 @@
 \alias{unlistToDataFrame}
 \alias{upperCamelCase}
 \alias{zerosVsDepth}
-\alias{Ensembl2Entrez}
-\alias{Entrez2Ensembl}
-\alias{Gene2Symbol}
-\alias{Tx2Gene}
 \alias{appendToBody}
 \alias{barcodePattern}
 \alias{basenameSansExt}
