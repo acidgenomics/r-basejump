@@ -173,6 +173,14 @@ AcidBase::basenameSansExt
 #' @export
 pipette::cacheURL
 
+#' @importFrom utils capture.output
+#' @export
+utils::capture.output
+
+#' @importFrom AcidGenerics cbind
+#' @export
+AcidGenerics::cbind
+
 #' @importFrom AcidBase classContains
 #' @export
 AcidBase::classContains
@@ -344,6 +352,10 @@ AcidGenomes::geneSynonyms
 #' @importFrom AcidBase genomeMetadataNames
 #' @export
 AcidBase::genomeMetadataNames
+
+#' @importFrom utils getS3method
+#' @export
+utils::getS3method
 
 #' @importFrom pipette getURL
 #' @export
@@ -617,6 +629,10 @@ AcidExperiment::minimalSampleData
 #' @export
 AcidBase::minorVersion
 
+#' @importFrom stats model.matrix
+#' @export
+stats::model.matrix
+
 #' @importFrom AcidGenerics na.omit
 #' @export
 AcidGenerics::na.omit
@@ -665,6 +681,10 @@ AcidBase::printString
 #' @export
 stats::quantile
 
+#' @importFrom AcidGenerics rbind
+#' @export
+AcidGenerics::rbind
+
 #' @importFrom pipette rbindlist
 #' @export
 pipette::rbindlist
@@ -696,6 +716,10 @@ AcidSingleCell::reducedDims
 #' @importFrom AcidSingleCell reducedDims<-
 #' @export
 AcidSingleCell::`reducedDims<-`
+
+#' @importFrom stats relevel
+#' @export
+stats::relevel
 
 #' @importFrom stats reorder
 #' @export
