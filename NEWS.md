@@ -1,3 +1,10 @@
+## basejump 0.14.3 (2021-02-10)
+
+### New functions
+
+- Reexporting some functions used downstream in DESeqAnalysis: `capture.output`,
+  `cbind`, `getS3method`, `model.matrix`, `rbind`, and `relevel`.
+
 ## basejump 0.14.2 (2021-02-09)
 
 ### New functions
