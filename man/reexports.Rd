@@ -39,7 +39,6 @@
 \alias{annotable}
 \alias{appendToBody}
 \alias{arrow}
-\alias{as}
 \alias{as.data.table}
 \alias{as.formula}
 \alias{as.list}
@@ -96,7 +95,6 @@
 \alias{fileDepth}
 \alias{fileExt}
 \alias{forceDetach}
-\alias{formalArgs}
 \alias{formalsList}
 \alias{geneSynonyms}
 \alias{genomeMetadataNames}
@@ -115,7 +113,6 @@
 \alias{import}
 \alias{importSampleData}
 \alias{importTx2Gene}
-\alias{is}
 \alias{is.unsorted}
 \alias{initDir}
 \alias{lanePattern}
@@ -172,7 +169,6 @@
 \alias{model.matrix}
 \alias{na.omit}
 \alias{naStrings}
-\alias{new}
 \alias{ol}
 \alias{order}
 \alias{packageName}
@@ -208,16 +204,9 @@
 \alias{separator}
 \alias{session_info}
 \alias{sessionInfo}
-\alias{setClass}
-\alias{setClassUnion}
-\alias{setGeneric}
-\alias{setMethod}
-\alias{setReplaceMethod}
-\alias{setValidity}
 \alias{setdiff}
 \alias{shell}
 \alias{showSlotInfo}
-\alias{signature}
 \alias{sort}
 \alias{sparseMatrix}
 \alias{split}
@@ -236,7 +225,6 @@
 \alias{unlist}
 \alias{unsplit}
 \alias{updateMessage}
-\alias{validObject}
 \alias{var}
 \alias{verbatim}
 \alias{Ensembl2Entrez}
@@ -397,7 +385,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase:reexports]{arrow}}, \code{\link[AcidBase:reexports]{as}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase:reexports]{formalArgs}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase:reexports]{is}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase:reexports]{new}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase:reexports]{setClass}}, \code{\link[AcidBase:reexports]{setClassUnion}}, \code{\link[AcidBase:reexports]{setGeneric}}, \code{\link[AcidBase:reexports]{setMethod}}, \code{\link[AcidBase:reexports]{setReplaceMethod}}, \code{\link[AcidBase:reexports]{setValidity}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase:reexports]{signature}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase:reexports]{unit}}, \code{\link[AcidBase]{updateMessage}}, \code{\link[AcidBase:reexports]{validObject}}}
+  \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase:reexports]{arrow}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase:reexports]{unit}}, \code{\link[AcidBase]{updateMessage}}}
 
   \item{AcidCLI}{\code{\link[AcidCLI]{alert}}, \code{\link[AcidCLI:alert]{alertDanger}}, \code{\link[AcidCLI:alert]{alertInfo}}, \code{\link[AcidCLI:alert]{alertSuccess}}, \code{\link[AcidCLI:alert]{alertWarning}}, \code{\link[AcidCLI:list]{dl}}, \code{\link[AcidCLI:header]{h1}}, \code{\link[AcidCLI:header]{h2}}, \code{\link[AcidCLI:header]{h3}}, \code{\link[AcidCLI:header]{h4}}, \code{\link[AcidCLI:header]{h5}}, \code{\link[AcidCLI:header]{h6}}, \code{\link[AcidCLI:header]{h7}}, \code{\link[AcidCLI:list]{ol}}, \code{\link[AcidCLI]{separator}}, \code{\link[AcidCLI]{toInlineString}}, \code{\link[AcidCLI:text]{txt}}, \code{\link[AcidCLI:list]{ul}}, \code{\link[AcidCLI:text]{verbatim}}}
 

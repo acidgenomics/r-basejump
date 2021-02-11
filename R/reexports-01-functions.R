@@ -137,10 +137,6 @@ AcidBase::appendToBody
 #' @export
 AcidBase::arrow
 
-#' @importFrom AcidBase as
-#' @export
-AcidBase::as
-
 #' @importFrom pipette as.data.table
 #' @export
 pipette::as.data.table
@@ -365,10 +361,6 @@ AcidBase::fileExt
 #' @export
 AcidBase::forceDetach
 
-#' @importFrom AcidBase formalArgs
-#' @export
-AcidBase::formalArgs
-
 #' @importFrom AcidBase formalsList
 #' @export
 AcidBase::formalsList
@@ -440,10 +432,6 @@ AcidExperiment::importSampleData
 #' @importFrom AcidGenomes importTx2Gene
 #' @export
 AcidGenomes::importTx2Gene
-
-#' @importFrom AcidBase is
-#' @export
-AcidBase::is
 
 #' @importFrom AcidGenerics is.unsorted
 #' @export
@@ -669,10 +657,6 @@ AcidGenerics::na.omit
 #' @export
 pipette::naStrings
 
-#' @importFrom AcidBase new
-#' @export
-AcidBase::new
-
 #' @importFrom AcidCLI ol
 #' @export
 AcidCLI::ol
@@ -813,30 +797,6 @@ AcidExperiment::session_info
 #' @export
 utils::sessionInfo
 
-#' @importFrom AcidBase setClass
-#' @export
-AcidBase::setClass
-
-#' @importFrom AcidBase setClassUnion
-#' @export
-AcidBase::setClassUnion
-
-#' @importFrom AcidBase setGeneric
-#' @export
-AcidBase::setGeneric
-
-#' @importFrom AcidBase setMethod
-#' @export
-AcidBase::setMethod
-
-#' @importFrom AcidBase setReplaceMethod
-#' @export
-AcidBase::setReplaceMethod
-
-#' @importFrom AcidBase setValidity
-#' @export
-AcidBase::setValidity
-
 #' @importFrom AcidGenerics setdiff
 #' @export
 AcidGenerics::setdiff
@@ -848,10 +808,6 @@ AcidBase::shell
 #' @importFrom AcidBase showSlotInfo
 #' @export
 AcidBase::showSlotInfo
-
-#' @importFrom AcidBase signature
-#' @export
-AcidBase::signature
 
 #' @importFrom AcidGenerics sort
 #' @export
@@ -924,10 +880,6 @@ AcidGenerics::unsplit
 #' @importFrom AcidBase updateMessage
 #' @export
 AcidBase::updateMessage
-
-#' @importFrom AcidBase validObject
-#' @export
-AcidBase::validObject
 
 #' @importFrom AcidGenerics var
 #' @export
