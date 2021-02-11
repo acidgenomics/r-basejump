@@ -2,9 +2,9 @@
 #' @export
 pipette::CharacterList
 
-#' @importFrom pipette DataFrame
+#' @importFrom AcidGenerics DataFrame
 #' @export
-pipette::DataFrame
+AcidGenerics::DataFrame
 
 #' @importFrom pipette DataFrameList
 #' @export
@@ -38,9 +38,9 @@ pipette::IRanges
 #' @export
 pipette::IntegerList
 
-#' @importFrom pipette List
+#' @importFrom AcidGenerics List
 #' @export
-pipette::List
+AcidGenerics::List
 
 #' @importFrom pipette LogicalList
 #' @export
@@ -58,17 +58,17 @@ AcidGenomes::MGI2Ensembl
 #' @export
 pipette::NumericList
 
-#' @importFrom pipette Rle
+#' @importFrom AcidGenerics Rle
 #' @export
-pipette::Rle
+AcidGenerics::Rle
 
 #' @importFrom pipette RleList
 #' @export
 pipette::RleList
 
-#' @importFrom pipette SimpleList
+#' @importFrom AcidGenerics SimpleList
 #' @export
-pipette::SimpleList
+AcidGenerics::SimpleList
 
 #' @importFrom AcidSingleCell SingleCellExperiment
 #' @export
@@ -129,13 +129,13 @@ AcidGenomes::annotable
 #' @export
 AcidBase::appendToBody
 
-#' @importFrom grid arrow
+#' @importFrom AcidBase arrow
 #' @export
-grid::arrow
+AcidBase::arrow
 
-#' @importFrom methods as
+#' @importFrom AcidBase as
 #' @export
-methods::as
+AcidBase::as
 
 #' @importFrom pipette as.data.table
 #' @export
@@ -361,9 +361,9 @@ AcidBase::fileExt
 #' @export
 AcidBase::forceDetach
 
-#' @importFrom methods formalArgs
+#' @importFrom AcidBase formalArgs
 #' @export
-methods::formalArgs
+AcidBase::formalArgs
 
 #' @importFrom AcidBase formalsList
 #' @export
@@ -437,9 +437,9 @@ AcidExperiment::importSampleData
 #' @export
 AcidGenomes::importTx2Gene
 
-#' @importFrom methods is
+#' @importFrom AcidBase is
 #' @export
-methods::is
+AcidBase::is
 
 #' @importFrom AcidGenerics is.unsorted
 #' @export
@@ -665,9 +665,9 @@ AcidGenerics::na.omit
 #' @export
 pipette::naStrings
 
-#' @importFrom methods new
+#' @importFrom AcidBase new
 #' @export
-methods::new
+AcidBase::new
 
 #' @importFrom AcidCLI ol
 #' @export
@@ -809,29 +809,29 @@ AcidExperiment::session_info
 #' @export
 utils::sessionInfo
 
-#' @importFrom methods setClass
+#' @importFrom AcidBase setClass
 #' @export
-methods::setClass
+AcidBase::setClass
 
-#' @importFrom methods setClassUnion
+#' @importFrom AcidBase setClassUnion
 #' @export
-methods::setClassUnion
+AcidBase::setClassUnion
 
-#' @importFrom methods setGeneric
+#' @importFrom AcidBase setGeneric
 #' @export
-methods::setGeneric
+AcidBase::setGeneric
 
-#' @importFrom methods setMethod
+#' @importFrom AcidBase setMethod
 #' @export
-methods::setMethod
+AcidBase::setMethod
 
-#' @importFrom methods setReplaceMethod
+#' @importFrom AcidBase setReplaceMethod
 #' @export
-methods::setReplaceMethod
+AcidBase::setReplaceMethod
 
-#' @importFrom methods setValidity
+#' @importFrom AcidBase setValidity
 #' @export
-methods::setValidity
+AcidBase::setValidity
 
 #' @importFrom AcidGenerics setdiff
 #' @export
@@ -845,9 +845,9 @@ AcidBase::shell
 #' @export
 AcidBase::showSlotInfo
 
-#' @importFrom methods signature
+#' @importFrom AcidBase signature
 #' @export
-methods::signature
+AcidBase::signature
 
 #' @importFrom AcidGenerics sort
 #' @export
@@ -905,9 +905,9 @@ AcidCLI::ul
 #' @export
 AcidGenerics::unique
 
-#' @importFrom grid unit
+#' @importFrom AcidBase unit
 #' @export
-grid::unit
+AcidBase::unit
 
 #' @importFrom AcidGenerics unlist
 #' @export
@@ -921,9 +921,9 @@ AcidGenerics::unsplit
 #' @export
 AcidBase::updateMessage
 
-#' @importFrom methods validObject
+#' @importFrom AcidBase validObject
 #' @export
-methods::validObject
+AcidBase::validObject
 
 #' @importFrom AcidGenerics var
 #' @export

@@ -18,7 +18,7 @@ NULL
 
 #' @rdname reexports
 #' @name DataFrame-class
-#' @importClassesFrom pipette DataFrame
+#' @importClassesFrom AcidGenerics DataFrame
 #' @exportClass DataFrame
 NULL
 
@@ -126,7 +126,7 @@ NULL
 
 #' @rdname reexports
 #' @name List-class
-#' @importClassesFrom pipette List
+#' @importClassesFrom AcidGenerics List
 #' @exportClass List
 NULL
 
@@ -180,7 +180,7 @@ NULL
 
 #' @rdname reexports
 #' @name Rle-class
-#' @importClassesFrom pipette Rle
+#' @importClassesFrom AcidGenerics Rle
 #' @exportClass Rle
 NULL
 
@@ -192,7 +192,7 @@ NULL
 
 #' @rdname reexports
 #' @name SimpleList-class
-#' @importClassesFrom pipette SimpleList
+#' @importClassesFrom AcidGenerics SimpleList
 #' @exportClass SimpleList
 NULL
 
