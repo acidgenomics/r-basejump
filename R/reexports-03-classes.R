@@ -11,6 +11,12 @@ NULL
 NULL
 
 #' @rdname reexports
+#' @name AtomicList-class
+#' @importClassesFrom pipette AtomicList
+#' @exportClass AtomicList
+NULL
+
+#' @rdname reexports
 #' @name CharacterList-class
 #' @importClassesFrom pipette CharacterList
 #' @exportClass CharacterList
