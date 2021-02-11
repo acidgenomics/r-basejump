@@ -1,3 +1,7 @@
+#' @importFrom pipette CharacterList
+#' @export
+pipette::CharacterList
+
 #' @importFrom pipette DataFrame
 #' @export
 pipette::DataFrame
@@ -5,6 +9,10 @@ pipette::DataFrame
 #' @importFrom pipette DataFrameList
 #' @export
 pipette::DataFrameList
+
+#' @importFrom pipette FactorList
+#' @export
+pipette::FactorList
 
 #' @importFrom pipette GRanges
 #' @export
@@ -26,9 +34,17 @@ AcidGenomes::HGNC2Ensembl
 #' @export
 pipette::IRanges
 
+#' @importFrom pipette IntegerList
+#' @export
+pipette::IntegerList
+
 #' @importFrom pipette List
 #' @export
 pipette::List
+
+#' @importFrom pipette LogicalList
+#' @export
+pipette::LogicalList
 
 #' @importFrom pipette Matrix
 #' @export
@@ -38,9 +54,17 @@ pipette::Matrix
 #' @export
 AcidGenomes::MGI2Ensembl
 
+#' @importFrom pipette NumericList
+#' @export
+pipette::NumericList
+
 #' @importFrom pipette Rle
 #' @export
 pipette::Rle
+
+#' @importFrom pipette RleList
+#' @export
+pipette::RleList
 
 #' @importFrom pipette SimpleList
 #' @export
