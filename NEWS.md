@@ -1,3 +1,9 @@
+## basejump 0.14.4 (2021-02-11)
+
+- Now reexporting additional classes defined in IRanges via pipette:
+  `CharacterList`, `FactorList`, `IntegerList`, `LogicalList`, `NumericList`,
+  and `RleList`.
+
 ## basejump 0.14.3 (2021-02-10)
 
 ### New functions
