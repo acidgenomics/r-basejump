@@ -38,6 +38,10 @@ pipette::IRanges
 #' @export
 pipette::IntegerList
 
+#' @importFrom AcidGenerics LLint
+#' @export
+AcidGenerics::LLint
+
 #' @importFrom AcidGenerics List
 #' @export
 AcidGenerics::List

@@ -53,6 +53,12 @@ NULL
 NULL
 
 #' @rdname reexports
+#' @name Factor-class
+#' @importClassesFrom AcidGenerics Factor
+#' @exportClass Factor
+NULL
+
+#' @rdname reexports
 #' @name FactorList-class
 #' @importClassesFrom pipette FactorList
 #' @exportClass FactorList
@@ -125,6 +131,12 @@ NULL
 NULL
 
 #' @rdname reexports
+#' @name LLint-class
+#' @importClassesFrom AcidGenerics LLint
+#' @exportClass LLint
+NULL
+
+#' @rdname reexports
 #' @name List-class
 #' @importClassesFrom AcidGenerics List
 #' @exportClass List
@@ -164,6 +176,12 @@ NULL
 #' @name RangedSummarizedExperiment-class
 #' @importClassesFrom AcidExperiment RangedSummarizedExperiment
 #' @exportClass RangedSummarizedExperiment
+NULL
+
+#' @rdname reexports
+#' @name RectangularData-class
+#' @importClassesFrom AcidGenerics RectangularData
+#' @exportClass RectangularData
 NULL
 
 #' @rdname reexports
@@ -242,6 +260,18 @@ NULL
 #' @name WormBaseTranscripts-class
 #' @importClassesFrom AcidGenomes WormBaseTranscripts
 #' @exportClass WormBaseTranscripts
+NULL
+
+#' @rdname reexports
+#' @name Vector-class
+#' @importClassesFrom AcidGenerics Vector
+#' @exportClass Vector
+NULL
+
+#' @rdname reexports
+#' @name atomic-class
+#' @importClassesFrom AcidGenerics atomic
+#' @exportClass atomic
 NULL
 
 #' @rdname reexports
