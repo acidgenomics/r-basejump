@@ -4,17 +4,23 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{CharacterList}
 \alias{DataFrame}
 \alias{DataFrameList}
+\alias{FactorList}
 \alias{GRanges}
 \alias{GRangesList}
 \alias{HGNC}
 \alias{HGNC2Ensembl}
 \alias{IRanges}
+\alias{IntegerList}
 \alias{List}
+\alias{LogicalList}
 \alias{Matrix}
 \alias{MGI2Ensembl}
+\alias{NumericList}
 \alias{Rle}
+\alias{RleList}
 \alias{SimpleList}
 \alias{SingleCellExperiment}
 \alias{SplitDataFrameList}
@@ -336,12 +342,14 @@
 \alias{zerosVsDepth}
 \alias{Annotated-class}
 \alias{AsIs-class}
+\alias{CharacterList-class}
 \alias{DataFrame-class}
 \alias{DataFrameList-class}
 \alias{Ensembl2Entrez-class}
 \alias{Entrez2Ensembl-class}
 \alias{EnsemblGenes-class}
 \alias{EnsemblTranscripts-class}
+\alias{FactorList-class}
 \alias{FlyBaseGenes-class}
 \alias{FlyBaseTranscripts-class}
 \alias{GRanges-class}
@@ -352,14 +360,18 @@
 \alias{HGNC-class}
 \alias{HGNC2Ensembl-class}
 \alias{IRanges-class}
+\alias{IntegerList-class}
 \alias{List-class}
+\alias{LogicalList-class}
 \alias{Matrix-class}
 \alias{MGI2Ensembl-class}
+\alias{NumericList-class}
 \alias{Protein2Gene-class}
 \alias{RangedSummarizedExperiment-class}
 \alias{RefSeqGenes-class}
 \alias{RefSeqTranscripts-class}
 \alias{Rle-class}
+\alias{RleList-class}
 \alias{SimpleList-class}
 \alias{SingleCellExperiment-class}
 \alias{SplitDataFrameList-class}
@@ -400,7 +412,7 @@ below to see their documentation.
 
   \item{methods}{\code{\link[methods]{as}}, \code{\link[methods:methodUtilities]{formalArgs}}, \code{\link[methods]{is}}, \code{\link[methods]{new}}, \code{\link[methods]{setClass}}, \code{\link[methods]{setClassUnion}}, \code{\link[methods]{setGeneric}}, \code{\link[methods]{setMethod}}, \code{\link[methods:GenericFunctions]{setReplaceMethod}}, \code{\link[methods:validObject]{setValidity}}, \code{\link[methods:GenericFunctions]{signature}}, \code{\link[methods]{validObject}}}
 
-  \item{pipette}{\code{\link[pipette:reexports]{DataFrame}}, \code{\link[pipette:reexports]{DataFrameList}}, \code{\link[pipette:reexports]{GRanges}}, \code{\link[pipette:reexports]{GRangesList}}, \code{\link[pipette:reexports]{IRanges}}, \code{\link[pipette:reexports]{List}}, \code{\link[pipette:reexports]{Matrix}}, \code{\link[pipette:reexports]{Rle}}, \code{\link[pipette:reexports]{SimpleList}}, \code{\link[pipette:reexports]{SplitDataFrameList}}, \code{\link[pipette:coerce]{as.data.table}}, \code{\link[pipette:coerce]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{sparseMatrix}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
+  \item{pipette}{\code{\link[pipette:reexports]{CharacterList}}, \code{\link[pipette:reexports]{DataFrame}}, \code{\link[pipette:reexports]{DataFrameList}}, \code{\link[pipette:reexports]{FactorList}}, \code{\link[pipette:reexports]{GRanges}}, \code{\link[pipette:reexports]{GRangesList}}, \code{\link[pipette:reexports]{IRanges}}, \code{\link[pipette:reexports]{IntegerList}}, \code{\link[pipette:reexports]{List}}, \code{\link[pipette:reexports]{LogicalList}}, \code{\link[pipette:reexports]{Matrix}}, \code{\link[pipette:reexports]{NumericList}}, \code{\link[pipette:reexports]{Rle}}, \code{\link[pipette:reexports]{RleList}}, \code{\link[pipette:reexports]{SimpleList}}, \code{\link[pipette:reexports]{SplitDataFrameList}}, \code{\link[pipette:coerce]{as.data.table}}, \code{\link[pipette:coerce]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{sparseMatrix}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
 
   \item{stats}{\code{\link[stats:formula]{as.formula}}, \code{\link[stats]{dist}}, \code{\link[stats]{ecdf}}, \code{\link[stats]{hclust}}, \code{\link[stats]{model.matrix}}, \code{\link[stats]{prcomp}}, \code{\link[stats]{quantile}}, \code{\link[stats]{relevel}}, \code{\link[stats:reorder.factor]{reorder}}}
 

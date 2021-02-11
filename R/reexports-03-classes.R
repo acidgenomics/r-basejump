@@ -11,6 +11,12 @@ NULL
 NULL
 
 #' @rdname reexports
+#' @name CharacterList-class
+#' @importClassesFrom pipette CharacterList
+#' @exportClass CharacterList
+NULL
+
+#' @rdname reexports
 #' @name DataFrame-class
 #' @importClassesFrom pipette DataFrame
 #' @exportClass DataFrame
@@ -44,6 +50,12 @@ NULL
 #' @name EnsemblTranscripts-class
 #' @importClassesFrom AcidGenomes EnsemblTranscripts
 #' @exportClass EnsemblTranscripts
+NULL
+
+#' @rdname reexports
+#' @name FactorList-class
+#' @importClassesFrom pipette FactorList
+#' @exportClass FactorList
 NULL
 
 #' @rdname reexports
@@ -107,9 +119,21 @@ NULL
 NULL
 
 #' @rdname reexports
+#' @name IntegerList-class
+#' @importClassesFrom pipette IntegerList
+#' @exportClass IntegerList
+NULL
+
+#' @rdname reexports
 #' @name List-class
 #' @importClassesFrom pipette List
 #' @exportClass List
+NULL
+
+#' @rdname reexports
+#' @name LogicalList-class
+#' @importClassesFrom pipette LogicalList
+#' @exportClass LogicalList
 NULL
 
 #' @rdname reexports
@@ -122,6 +146,12 @@ NULL
 #' @name MGI2Ensembl-class
 #' @importClassesFrom AcidGenomes MGI2Ensembl
 #' @exportClass MGI2Ensembl
+NULL
+
+#' @rdname reexports
+#' @name NumericList-class
+#' @importClassesFrom pipette NumericList
+#' @exportClass NumericList
 NULL
 
 #' @rdname reexports
@@ -152,6 +182,12 @@ NULL
 #' @name Rle-class
 #' @importClassesFrom pipette Rle
 #' @exportClass Rle
+NULL
+
+#' @rdname reexports
+#' @name RleList-class
+#' @importClassesFrom pipette RleList
+#' @exportClass RleList
 NULL
 
 #' @rdname reexports
