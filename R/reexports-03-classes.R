@@ -12,13 +12,13 @@ NULL
 
 #' @rdname reexports
 #' @name AtomicList-class
-#' @importClassesFrom pipette AtomicList
+#' @importClassesFrom AcidGenerics AtomicList
 #' @exportClass AtomicList
 NULL
 
 #' @rdname reexports
 #' @name CharacterList-class
-#' @importClassesFrom pipette CharacterList
+#' @importClassesFrom AcidGenerics CharacterList
 #' @exportClass CharacterList
 NULL
 
@@ -30,7 +30,7 @@ NULL
 
 #' @rdname reexports
 #' @name DataFrameList-class
-#' @importClassesFrom pipette DataFrameList
+#' @importClassesFrom AcidGenerics DataFrameList
 #' @exportClass DataFrameList
 NULL
 
@@ -66,7 +66,7 @@ NULL
 
 #' @rdname reexports
 #' @name FactorList-class
-#' @importClassesFrom pipette FactorList
+#' @importClassesFrom AcidGenerics FactorList
 #' @exportClass FactorList
 NULL
 
@@ -126,13 +126,13 @@ NULL
 
 #' @rdname reexports
 #' @name IRanges-class
-#' @importClassesFrom pipette IRanges
+#' @importClassesFrom AcidGenerics IRanges
 #' @exportClass IRanges
 NULL
 
 #' @rdname reexports
 #' @name IntegerList-class
-#' @importClassesFrom pipette IntegerList
+#' @importClassesFrom AcidGenerics IntegerList
 #' @exportClass IntegerList
 NULL
 
@@ -150,7 +150,7 @@ NULL
 
 #' @rdname reexports
 #' @name LogicalList-class
-#' @importClassesFrom pipette LogicalList
+#' @importClassesFrom AcidGenerics LogicalList
 #' @exportClass LogicalList
 NULL
 
@@ -168,7 +168,7 @@ NULL
 
 #' @rdname reexports
 #' @name NumericList-class
-#' @importClassesFrom pipette NumericList
+#' @importClassesFrom AcidGenerics NumericList
 #' @exportClass NumericList
 NULL
 
@@ -210,7 +210,7 @@ NULL
 
 #' @rdname reexports
 #' @name RleList-class
-#' @importClassesFrom pipette RleList
+#' @importClassesFrom AcidGenerics RleList
 #' @exportClass RleList
 NULL
 
@@ -228,7 +228,7 @@ NULL
 
 #' @rdname reexports
 #' @name SplitDataFrameList-class
-#' @importClassesFrom pipette SplitDataFrameList
+#' @importClassesFrom AcidGenerics SplitDataFrameList
 #' @exportClass SplitDataFrameList
 NULL
 

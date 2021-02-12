@@ -1,21 +1,21 @@
 ## NOTE methods reexports here are used in bcbioRNASeq and pointillism.
 ## These are safe to remove once downstream packages are updated.
 
-#' @importFrom pipette CharacterList
+#' @importFrom AcidGenerics CharacterList
 #' @export
-pipette::CharacterList
+AcidGenerics::CharacterList
 
 #' @importFrom AcidGenerics DataFrame
 #' @export
 AcidGenerics::DataFrame
 
-#' @importFrom pipette DataFrameList
+#' @importFrom AcidGenerics DataFrameList
 #' @export
-pipette::DataFrameList
+AcidGenerics::DataFrameList
 
-#' @importFrom pipette FactorList
+#' @importFrom AcidGenerics FactorList
 #' @export
-pipette::FactorList
+AcidGenerics::FactorList
 
 #' @importFrom pipette GRanges
 #' @export
@@ -33,13 +33,13 @@ AcidGenomes::HGNC
 #' @export
 AcidGenomes::HGNC2Ensembl
 
-#' @importFrom pipette IRanges
+#' @importFrom AcidGenerics IRanges
 #' @export
-pipette::IRanges
+AcidGenerics::IRanges
 
-#' @importFrom pipette IntegerList
+#' @importFrom AcidGenerics IntegerList
 #' @export
-pipette::IntegerList
+AcidGenerics::IntegerList
 
 #' @importFrom AcidGenerics LLint
 #' @export
@@ -49,9 +49,9 @@ AcidGenerics::LLint
 #' @export
 AcidGenerics::List
 
-#' @importFrom pipette LogicalList
+#' @importFrom AcidGenerics LogicalList
 #' @export
-pipette::LogicalList
+AcidGenerics::LogicalList
 
 #' @importFrom pipette Matrix
 #' @export
@@ -61,17 +61,17 @@ pipette::Matrix
 #' @export
 AcidGenomes::MGI2Ensembl
 
-#' @importFrom pipette NumericList
+#' @importFrom AcidGenerics NumericList
 #' @export
-pipette::NumericList
+AcidGenerics::NumericList
 
 #' @importFrom AcidGenerics Rle
 #' @export
 AcidGenerics::Rle
 
-#' @importFrom pipette RleList
+#' @importFrom AcidGenerics RleList
 #' @export
-pipette::RleList
+AcidGenerics::RleList
 
 #' @importFrom AcidGenerics SimpleList
 #' @export
@@ -81,9 +81,9 @@ AcidGenerics::SimpleList
 #' @export
 AcidSingleCell::SingleCellExperiment
 
-#' @importFrom pipette SplitDataFrameList
+#' @importFrom AcidGenerics SplitDataFrameList
 #' @export
-pipette::SplitDataFrameList
+AcidGenerics::SplitDataFrameList
 
 #' @importFrom AcidExperiment SummarizedExperiment
 #' @export
