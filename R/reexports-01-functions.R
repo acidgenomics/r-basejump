@@ -685,6 +685,10 @@ AcidBase::unit
 #' @export
 AcidBase::updateMessage
 
+#' @importFrom methods validObject
+#' @export
+methods::validObject
+
 #' @importFrom AcidCLI verbatim
 #' @export
 AcidCLI::verbatim
