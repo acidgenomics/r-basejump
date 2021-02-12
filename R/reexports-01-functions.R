@@ -1,3 +1,6 @@
+## NOTE methods reexports here are used in bcbioRNASeq and pointillism.
+## These are safe to remove once downstream packages are updated.
+
 #' @importFrom pipette CharacterList
 #' @export
 pipette::CharacterList
@@ -552,6 +555,10 @@ stats::model.matrix
 #' @importFrom pipette naStrings
 #' @export
 pipette::naStrings
+
+#' @importFrom methods new
+#' @export
+methods::new
 
 #' @importFrom AcidCLI ol
 #' @export
