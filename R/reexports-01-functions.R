@@ -133,6 +133,10 @@ AcidBase::appendToBody
 #' @export
 AcidBase::arrow
 
+#' @importFrom methods as
+#' @export
+methods::as
+
 #' @importFrom stats as.formula
 #' @export
 stats::as.formula
