@@ -86,10 +86,6 @@ pipette::SplitDataFrameList
 #' @export
 AcidExperiment::SummarizedExperiment
 
-#' @importFrom AcidGenerics %in%
-#' @export
-AcidGenerics::`%in%`
-
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
@@ -137,45 +133,9 @@ AcidBase::appendToBody
 #' @export
 AcidBase::arrow
 
-#' @importFrom pipette as.data.table
-#' @export
-pipette::as.data.table
-
 #' @importFrom stats as.formula
 #' @export
 stats::as.formula
-
-#' @importFrom AcidGenerics as.list
-#' @export
-AcidGenerics::as.list
-
-#' @importFrom pipette as_tibble
-#' @export
-pipette::as_tibble
-
-#' @importFrom AcidExperiment assay
-#' @export
-AcidExperiment::assay
-
-#' @importFrom AcidExperiment assay<-
-#' @export
-AcidExperiment::`assay<-`
-
-#' @importFrom AcidExperiment assayNames
-#' @export
-AcidExperiment::assayNames
-
-#' @importFrom AcidExperiment assayNames<-
-#' @export
-AcidExperiment::`assayNames<-`
-
-#' @importFrom AcidExperiment assays
-#' @export
-AcidExperiment::assays
-
-#' @importFrom AcidExperiment assays<-
-#' @export
-AcidExperiment::`assays<-`
 
 #' @importFrom pipette assignAndSaveData
 #' @export
@@ -201,25 +161,9 @@ pipette::cacheURL
 #' @export
 utils::capture.output
 
-#' @importFrom AcidGenerics cbind
-#' @export
-AcidGenerics::cbind
-
 #' @importFrom AcidBase classContains
 #' @export
 AcidBase::classContains
-
-#' @importFrom AcidExperiment colData
-#' @export
-AcidExperiment::colData
-
-#' @importFrom AcidExperiment colData<-
-#' @export
-AcidExperiment::`colData<-`
-
-#' @importFrom AcidGenerics colSums
-#' @export
-AcidGenerics::colSums
 
 #' @importFrom grDevices colorRampPalette
 #' @export
@@ -229,10 +173,6 @@ grDevices::colorRampPalette
 #' @export
 pipette::column_to_rownames
 
-#' @importFrom AcidGenerics complete.cases
-#' @export
-AcidGenerics::complete.cases
-
 #' @importFrom AcidBase compress
 #' @export
 AcidBase::compress
@@ -240,10 +180,6 @@ AcidBase::compress
 #' @importFrom AcidBase compressExtPattern
 #' @export
 AcidBase::compressExtPattern
-
-#' @importFrom AcidGenerics cor
-#' @export
-AcidGenerics::cor
 
 #' @importFrom AcidGenomes currentEnsemblGenomeBuild
 #' @export
@@ -301,10 +237,6 @@ stats::dist
 #' @export
 AcidCLI::dl
 
-#' @importFrom AcidGenerics do.call
-#' @export
-AcidGenerics::do.call
-
 #' @importFrom AcidBase dots
 #' @export
 AcidBase::dots
@@ -336,14 +268,6 @@ stats::ecdf
 #' @importFrom AcidGenomes emptyRanges
 #' @export
 AcidGenomes::emptyRanges
-
-#' @importFrom AcidGenerics expand
-#' @export
-AcidGenerics::expand
-
-#' @importFrom AcidGenerics expand.grid
-#' @export
-AcidGenerics::expand.grid
 
 #' @importFrom AcidBase extPattern
 #' @export
@@ -417,10 +341,6 @@ AcidCLI::h7
 #' @export
 stats::hclust
 
-#' @importFrom AcidGenerics head
-#' @export
-AcidGenerics::head
-
 #' @importFrom pipette import
 #' @export
 pipette::import
@@ -433,10 +353,6 @@ AcidExperiment::importSampleData
 #' @export
 AcidGenomes::importTx2Gene
 
-#' @importFrom AcidGenerics is.unsorted
-#' @export
-AcidGenerics::is.unsorted
-
 #' @importFrom AcidBase initDir
 #' @export
 AcidBase::initDir
@@ -444,10 +360,6 @@ AcidBase::initDir
 #' @importFrom AcidBase lanePattern
 #' @export
 AcidBase::lanePattern
-
-#' @importFrom AcidGenerics lapply
-#' @export
-AcidGenerics::lapply
 
 #' @importFrom pipette loadData
 #' @export
@@ -561,10 +473,6 @@ AcidMarkdown::markdownPlots
 #' @export
 AcidMarkdown::markdownTables
 
-#' @importFrom AcidGenerics match
-#' @export
-AcidGenerics::match
-
 #' @importFrom AcidExperiment matchInterestingGroups
 #' @export
 AcidExperiment::matchInterestingGroups
@@ -576,14 +484,6 @@ AcidExperiment::matchesGene2Symbol
 #' @importFrom AcidExperiment matchesInterestingGroups
 #' @export
 AcidExperiment::matchesInterestingGroups
-
-#' @importFrom AcidGenerics mcols
-#' @export
-AcidGenerics::mcols
-
-#' @importFrom AcidGenerics mcols<-
-#' @export
-AcidGenerics::`mcols<-`
 
 #' @importFrom AcidMarkdown mdHeader
 #' @export
@@ -604,18 +504,6 @@ AcidMarkdown::mdPlots
 #' @importFrom AcidMarkdown mdTables
 #' @export
 AcidMarkdown::mdTables
-
-#' @importFrom AcidGenerics merge
-#' @export
-AcidGenerics::merge
-
-#' @importFrom AcidGenerics metadata
-#' @export
-AcidGenerics::metadata
-
-#' @importFrom AcidGenerics metadata<-
-#' @export
-AcidGenerics::`metadata<-`
 
 #' @importFrom AcidBase metadataBlacklist
 #' @export
@@ -649,10 +537,6 @@ AcidBase::minorVersion
 #' @export
 stats::model.matrix
 
-#' @importFrom AcidGenerics na.omit
-#' @export
-AcidGenerics::na.omit
-
 #' @importFrom pipette naStrings
 #' @export
 pipette::naStrings
@@ -660,10 +544,6 @@ pipette::naStrings
 #' @importFrom AcidCLI ol
 #' @export
 AcidCLI::ol
-
-#' @importFrom AcidGenerics order
-#' @export
-AcidGenerics::order
 
 #' @importFrom utils packageName
 #' @export
@@ -693,10 +573,6 @@ AcidBase::printString
 #' @export
 stats::quantile
 
-#' @importFrom AcidGenerics rbind
-#' @export
-AcidGenerics::rbind
-
 #' @importFrom pipette rbindlist
 #' @export
 pipette::rbindlist
@@ -704,30 +580,6 @@ pipette::rbindlist
 #' @importFrom AcidBase realpath
 #' @export
 AcidBase::realpath
-
-#' @importFrom AcidSingleCell reducedDim
-#' @export
-AcidSingleCell::reducedDim
-
-#' @importFrom AcidSingleCell reducedDim<-
-#' @export
-AcidSingleCell::`reducedDim<-`
-
-#' @importFrom AcidSingleCell reducedDimNames
-#' @export
-AcidSingleCell::reducedDimNames
-
-#' @importFrom AcidSingleCell reducedDimNames<-
-#' @export
-AcidSingleCell::`reducedDimNames<-`
-
-#' @importFrom AcidSingleCell reducedDims
-#' @export
-AcidSingleCell::reducedDims
-
-#' @importFrom AcidSingleCell reducedDims<-
-#' @export
-AcidSingleCell::`reducedDims<-`
 
 #' @importFrom stats relevel
 #' @export
@@ -744,30 +596,6 @@ AcidBase::requireNamespaces
 #' @importFrom grDevices rgb
 #' @export
 grDevices::rgb
-
-#' @importFrom AcidExperiment rowData
-#' @export
-AcidExperiment::rowData
-
-#' @importFrom AcidExperiment rowData<-
-#' @export
-AcidExperiment::`rowData<-`
-
-#' @importFrom AcidGenerics rowMeans
-#' @export
-AcidGenerics::rowMeans
-
-#' @importFrom AcidExperiment rowRanges
-#' @export
-AcidExperiment::rowRanges
-
-#' @importFrom AcidExperiment rowRanges<-
-#' @export
-AcidExperiment::`rowRanges<-`
-
-#' @importFrom AcidGenerics rowSums
-#' @export
-AcidGenerics::rowSums
 
 #' @importFrom pipette rownames_to_column
 #' @export
@@ -809,37 +637,13 @@ AcidBase::shell
 #' @export
 AcidBase::showSlotInfo
 
-#' @importFrom AcidGenerics sort
-#' @export
-AcidGenerics::sort
-
 #' @importFrom pipette sparseMatrix
 #' @export
 pipette::sparseMatrix
 
-#' @importFrom AcidGenerics split
-#' @export
-AcidGenerics::split
-
 #' @importFrom AcidBase standardizeCall
 #' @export
 AcidBase::standardizeCall
-
-#' @importFrom AcidGenerics summary
-#' @export
-AcidGenerics::summary
-
-#' @importFrom AcidGenerics t
-#' @export
-AcidGenerics::t
-
-#' @importFrom AcidGenerics table
-#' @export
-AcidGenerics::table
-
-#' @importFrom AcidGenerics tail
-#' @export
-AcidGenerics::tail
 
 #' @importFrom pipette tibble
 #' @export
@@ -861,29 +665,13 @@ AcidCLI::txt
 #' @export
 AcidCLI::ul
 
-#' @importFrom AcidGenerics unique
-#' @export
-AcidGenerics::unique
-
 #' @importFrom AcidBase unit
 #' @export
 AcidBase::unit
 
-#' @importFrom AcidGenerics unlist
-#' @export
-AcidGenerics::unlist
-
-#' @importFrom AcidGenerics unsplit
-#' @export
-AcidGenerics::unsplit
-
 #' @importFrom AcidBase updateMessage
 #' @export
 AcidBase::updateMessage
-
-#' @importFrom AcidGenerics var
-#' @export
-AcidGenerics::var
 
 #' @importFrom AcidCLI verbatim
 #' @export

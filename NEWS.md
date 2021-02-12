@@ -1,4 +1,18 @@
+## basejump 0.14.6 (UNRELEASED)
+
+### Minor changes
+
+- Now reexporting `end`, `start`, and `width` from AcidGenerics.
+
+## basejump 0.14.5 (2021-02-11)
+
+### Minor changes
+
+- Reworked the NAMESPACE to reduce the number of imported packages.
+
 ## basejump 0.14.4 (2021-02-11)
+
+### Minor changes
 
 - Now reexporting additional classes defined in IRanges via pipette:
   `CharacterList`, `FactorList`, `IntegerList`, `LogicalList`, `NumericList`,
