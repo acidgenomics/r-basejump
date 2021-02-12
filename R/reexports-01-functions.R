@@ -285,13 +285,13 @@ AcidBase::fileDepth
 #' @export
 AcidBase::fileExt
 
-#' @importFrom methods formalArgs
-#' @export
-methods::formalArgs
-
 #' @importFrom AcidBase forceDetach
 #' @export
 AcidBase::forceDetach
+
+#' @importFrom methods formalArgs
+#' @export
+methods::formalArgs
 
 #' @importFrom AcidBase formalsList
 #' @export
@@ -364,6 +364,10 @@ AcidGenomes::importTx2Gene
 #' @importFrom AcidBase initDir
 #' @export
 AcidBase::initDir
+
+#' @importFrom methods is
+#' @export
+methods::is
 
 #' @importFrom AcidBase lanePattern
 #' @export
