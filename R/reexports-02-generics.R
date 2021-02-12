@@ -1,3 +1,15 @@
+## S3 generics =================================================================
+#' @importFrom pipette as_tibble
+#' @export
+pipette::as_tibble
+
+#' @importFrom pipette as.data.table
+#' @export
+pipette::as.data.table
+
+
+
+## S4 generics =================================================================
 #' @importFrom AcidGenomes Ensembl2Entrez
 #' @export
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez
@@ -19,6 +31,10 @@ AcidGenomes::Gene2Symbol
 #' @importMethodsFrom AcidGenomes Tx2Gene
 #' @exportMethod Tx2Gene
 AcidGenomes::Tx2Gene
+
+#' @importFrom AcidGenerics %in%
+#' @export
+AcidGenerics::`%in%`
 
 #' @importFrom AcidGenerics aggregate
 #' @export
@@ -69,6 +85,34 @@ AcidGenerics::as.SummarizedExperiment
 #' @exportMethod as.data.frame
 AcidGenerics::as.data.frame
 
+#' @importFrom AcidGenerics as.list
+#' @export
+AcidGenerics::as.list
+
+#' @importFrom AcidExperiment assay
+#' @export
+AcidExperiment::assay
+
+#' @importFrom AcidExperiment assay<-
+#' @export
+AcidExperiment::`assay<-`
+
+#' @importFrom AcidExperiment assayNames
+#' @export
+AcidExperiment::assayNames
+
+#' @importFrom AcidExperiment assayNames<-
+#' @export
+AcidExperiment::`assayNames<-`
+
+#' @importFrom AcidExperiment assays
+#' @export
+AcidExperiment::assays
+
+#' @importFrom AcidExperiment assays<-
+#' @export
+AcidExperiment::`assays<-`
+
 #' @importFrom AcidGenerics atomize
 #' @export
 #' @importMethodsFrom pipette atomize
@@ -100,6 +144,10 @@ AcidGenerics::camelCase
 #' @exportMethod capitalize
 AcidGenerics::capitalize
 
+#' @importFrom AcidGenerics cbind
+#' @export
+AcidGenerics::cbind
+
 #' @importFrom AcidGenerics cell2sample
 #' @export
 #' @importMethodsFrom AcidSingleCell cell2sample
@@ -118,6 +166,18 @@ AcidGenerics::coerce
 #' @exportMethod coerceToList
 AcidGenerics::coerceToList
 
+#' @importFrom AcidExperiment colData
+#' @export
+AcidExperiment::colData
+
+#' @importFrom AcidExperiment colData<-
+#' @export
+AcidExperiment::`colData<-`
+
+#' @importFrom AcidGenerics colSums
+#' @export
+AcidGenerics::colSums
+
 #' @importFrom AcidGenerics collapseToString
 #' @export
 #' @importMethodsFrom AcidPlyr collapseToString
@@ -130,6 +190,10 @@ AcidGenerics::collapseToString
 #' @importMethodsFrom AcidSingleCell combine
 #' @exportMethod combine
 AcidGenerics::combine
+
+#' @importFrom AcidGenerics complete.cases
+#' @export
+AcidGenerics::complete.cases
 
 #' @importFrom AcidGenerics convertGenesToSymbols
 #' @export
@@ -156,6 +220,10 @@ AcidGenerics::convertSymbolsToGenes
 #' @exportMethod convertTranscriptsToGenes
 AcidGenerics::convertTranscriptsToGenes
 
+#' @importFrom AcidGenerics cor
+#' @export
+AcidGenerics::cor
+
 #' @importFrom AcidGenerics correlation
 #' @export
 #' @importMethodsFrom AcidExperiment correlation
@@ -181,6 +249,10 @@ AcidGenerics::`counts<-`
 #' @exportMethod decode
 AcidGenerics::decode
 
+#' @importFrom AcidGenerics do.call
+#' @export
+AcidGenerics::do.call
+
 #' @importFrom AcidGenerics dottedCase
 #' @export
 #' @importMethodsFrom AcidExperiment dottedCase
@@ -202,11 +274,23 @@ AcidGenerics::droplevels
 #' @exportMethod encode
 AcidGenerics::encode
 
+#' @importFrom AcidGenerics end
+#' @export
+AcidGenerics::end
+
 #' @importFrom AcidGenerics estimateSizeFactors
 #' @export
 #' @importMethodsFrom AcidExperiment estimateSizeFactors
 #' @exportMethod estimateSizeFactors
 AcidGenerics::estimateSizeFactors
+
+#' @importFrom AcidGenerics expand
+#' @export
+AcidGenerics::expand
+
+#' @importFrom AcidGenerics expand.grid
+#' @export
+AcidGenerics::expand.grid
 
 #' @importFrom AcidGenerics export
 #' @export
@@ -253,6 +337,10 @@ AcidGenerics::geneNames
 #' @importMethodsFrom AcidSingleCell geometricMean
 #' @exportMethod geometricMean
 AcidGenerics::geometricMean
+
+#' @importFrom AcidGenerics head
+#' @export
+AcidGenerics::head
 
 #' @importFrom AcidGenerics headtail
 #' @export
@@ -302,11 +390,19 @@ AcidGenerics::intersectAll
 #' @exportMethod intersectionMatrix
 AcidGenerics::intersectionMatrix
 
+#' @importFrom AcidGenerics is.unsorted
+#' @export
+AcidGenerics::is.unsorted
+
 #' @importFrom AcidGenerics kebabCase
 #' @export
 #' @importMethodsFrom syntactic kebabCase
 #' @exportMethod kebabCase
 AcidGenerics::kebabCase
+
+#' @importFrom AcidGenerics lapply
+#' @export
+AcidGenerics::lapply
 
 #' @importFrom AcidGenerics leftJoin
 #' @export
@@ -374,6 +470,10 @@ AcidGenerics::mapGenesToRownames
 #' @exportMethod mapGenesToSymbols
 AcidGenerics::mapGenesToSymbols
 
+#' @importFrom AcidGenerics match
+#' @export
+AcidGenerics::match
+
 #' @importFrom AcidGenerics matchSampleColumn
 #' @export
 #' @importMethodsFrom AcidExperiment matchSampleColumn
@@ -395,6 +495,10 @@ AcidGenerics::`mcols<-`
 #' @importMethodsFrom AcidSingleCell melt
 #' @exportMethod melt
 AcidGenerics::melt
+
+#' @importFrom AcidGenerics merge
+#' @export
+AcidGenerics::merge
 
 #' @importFrom AcidGenerics metadata
 #' @export
@@ -447,11 +551,19 @@ AcidGenerics::mutateAt
 #' @exportMethod mutateIf
 AcidGenerics::mutateIf
 
+#' @importFrom AcidGenerics na.omit
+#' @export
+AcidGenerics::na.omit
+
 #' @importFrom AcidGenerics nonzeroRowsAndCols
 #' @export
 #' @importMethodsFrom AcidExperiment nonzeroRowsAndCols
 #' @exportMethod nonzeroRowsAndCols
 AcidGenerics::nonzeroRowsAndCols
+
+#' @importFrom AcidGenerics order
+#' @export
+AcidGenerics::order
 
 #' @importFrom AcidGenerics organism
 #' @export
@@ -472,6 +584,34 @@ AcidGenerics::`organism<-`
 #' @exportMethod rankedMatrix
 AcidGenerics::rankedMatrix
 
+#' @importFrom AcidGenerics rbind
+#' @export
+AcidGenerics::rbind
+
+#' @importFrom AcidSingleCell reducedDim
+#' @export
+AcidSingleCell::reducedDim
+
+#' @importFrom AcidSingleCell reducedDim<-
+#' @export
+AcidSingleCell::`reducedDim<-`
+
+#' @importFrom AcidSingleCell reducedDimNames
+#' @export
+AcidSingleCell::reducedDimNames
+
+#' @importFrom AcidSingleCell reducedDimNames<-
+#' @export
+AcidSingleCell::`reducedDimNames<-`
+
+#' @importFrom AcidSingleCell reducedDims
+#' @export
+AcidSingleCell::reducedDims
+
+#' @importFrom AcidSingleCell reducedDims<-
+#' @export
+AcidSingleCell::`reducedDims<-`
+
 #' @importFrom AcidGenerics removeNA
 #' @export
 #' @importMethodsFrom pipette removeNA
@@ -483,6 +623,30 @@ AcidGenerics::removeNA
 #' @importMethodsFrom AcidPlyr rightJoin
 #' @exportMethod rightJoin
 AcidGenerics::rightJoin
+
+#' @importFrom AcidExperiment rowData
+#' @export
+AcidExperiment::rowData
+
+#' @importFrom AcidExperiment rowData<-
+#' @export
+AcidExperiment::`rowData<-`
+
+#' @importFrom AcidGenerics rowMeans
+#' @export
+AcidGenerics::rowMeans
+
+#' @importFrom AcidExperiment rowRanges
+#' @export
+AcidExperiment::rowRanges
+
+#' @importFrom AcidExperiment rowRanges<-
+#' @export
+AcidExperiment::`rowRanges<-`
+
+#' @importFrom AcidGenerics rowSums
+#' @export
+AcidGenerics::rowSums
 
 #' @importFrom AcidGenerics sampleData
 #' @export
@@ -572,11 +736,23 @@ AcidGenerics::`sizeFactors<-`
 #' @exportMethod snakeCase
 AcidGenerics::snakeCase
 
+#' @importFrom AcidGenerics sort
+#' @export
+AcidGenerics::sort
+
+#' @importFrom AcidGenerics split
+#' @export
+AcidGenerics::split
+
 #' @importFrom AcidGenerics splitByLevel
 #' @export
 #' @importMethodsFrom AcidPlyr splitByLevel
 #' @exportMethod splitByLevel
 AcidGenerics::splitByLevel
+
+#' @importFrom AcidGenerics start
+#' @export
+AcidGenerics::start
 
 #' @importFrom AcidGenerics stripGeneVersions
 #' @export
@@ -598,11 +774,27 @@ AcidGenerics::stripTranscriptVersions
 #' @exportMethod subsetPerSample
 AcidGenerics::subsetPerSample
 
+#' @importFrom AcidGenerics summary
+#' @export
+AcidGenerics::summary
+
 #' @importFrom AcidGenerics subsetPerSample
 #' @export
 #' @importMethodsFrom AcidSingleCell topCellsPerSample
 #' @exportMethod topCellsPerSample
 AcidGenerics::topCellsPerSample
+
+#' @importFrom AcidGenerics t
+#' @export
+AcidGenerics::t
+
+#' @importFrom AcidGenerics table
+#' @export
+AcidGenerics::table
+
+#' @importFrom AcidGenerics tail
+#' @export
+AcidGenerics::tail
 
 #' @importFrom AcidGenerics tpm
 #' @export
@@ -622,11 +814,19 @@ AcidGenerics::transmuteAt
 #' @exportMethod transmuteIf
 AcidGenerics::transmuteIf
 
+#' @importFrom AcidGenerics unique
+#' @export
+AcidGenerics::unique
+
 #' @importFrom AcidGenerics uniteInterestingGroups
 #' @export
 #' @importMethodsFrom AcidExperiment uniteInterestingGroups
 #' @exportMethod uniteInterestingGroups
 AcidGenerics::uniteInterestingGroups
+
+#' @importFrom AcidGenerics unlist
+#' @export
+AcidGenerics::unlist
 
 #' @importFrom AcidGenerics unlistToDataFrame
 #' @export
@@ -634,12 +834,24 @@ AcidGenerics::uniteInterestingGroups
 #' @exportMethod unlistToDataFrame
 AcidGenerics::unlistToDataFrame
 
+#' @importFrom AcidGenerics unsplit
+#' @export
+AcidGenerics::unsplit
+
 #' @importFrom AcidGenerics upperCamelCase
 #' @export
 #' @importMethodsFrom AcidExperiment upperCamelCase
 #' @importMethodsFrom syntactic upperCamelCase
 #' @exportMethod upperCamelCase
 AcidGenerics::upperCamelCase
+
+#' @importFrom AcidGenerics var
+#' @export
+AcidGenerics::var
+
+#' @importFrom AcidGenerics width
+#' @export
+AcidGenerics::width
 
 #' @importFrom AcidGenerics zerosVsDepth
 #' @export
