@@ -338,6 +338,14 @@ AcidGenerics::geneNames
 #' @exportMethod geometricMean
 AcidGenerics::geometricMean
 
+#' @importFrom AcidGenerics grep
+#' @export
+AcidGenerics::grep
+
+#' @importFrom AcidGenerics grepl
+#' @export
+AcidGenerics::grepl
+
 #' @importFrom AcidGenerics head
 #' @export
 AcidGenerics::head
