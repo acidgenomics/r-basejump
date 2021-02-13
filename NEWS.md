@@ -3,6 +3,7 @@
 ### Minor changes
 
 - Added more Bioconductor reexports from BiocGenerics and S4Vectors.
+- Updated dependency versions.
 
 ## basejump 0.14.7 (2021-02-12)
 
