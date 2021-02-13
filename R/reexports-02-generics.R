@@ -70,6 +70,14 @@ AcidGenerics::aggregateRows
 AcidGenerics::antiJoin
 
 #' @export
+#' @importFrom AcidGenerics anyDuplicated
+AcidGenerics::anyDuplicated
+
+#' @export
+#' @importFrom AcidGenerics append
+AcidGenerics::append
+
+#' @export
 #' @exportMethod as.DataFrame
 #' @importFrom AcidGenerics as.DataFrame
 #' @importMethodsFrom pipette as.DataFrame
@@ -88,8 +96,24 @@ AcidGenerics::as.SummarizedExperiment
 AcidGenerics::as.data.frame
 
 #' @export
+#' @importFrom AcidGenerics as.factor
+AcidGenerics::as.factor
+
+#' @export
 #' @importFrom AcidGenerics as.list
 AcidGenerics::as.list
+
+#' @export
+#' @importFrom AcidGenerics as.matrix
+AcidGenerics::as.matrix
+
+#' @export
+#' @importFrom AcidGenerics as.table
+AcidGenerics::as.table
+
+#' @export
+#' @importFrom AcidGenerics as.vector
+AcidGenerics::as.vector
 
 #' @export
 #' @importFrom AcidExperiment assay
@@ -126,6 +150,10 @@ AcidGenerics::atomize
 #' @importFrom AcidGenerics autopadZeros
 #' @importMethodsFrom AcidExperiment autopadZeros
 AcidGenerics::autopadZeros
+
+#' @export
+#' @importFrom AcidGenerics basename
+AcidGenerics::basename
 
 #' @export
 #' @exportMethod calculateMetrics
@@ -260,6 +288,14 @@ AcidGenerics::`counts<-`
 AcidGenerics::decode
 
 #' @export
+#' @importFrom AcidGenerics dims
+AcidGenerics::dims
+
+#' @export
+#' @importFrom AcidGenerics dirname
+AcidGenerics::dirname
+
+#' @export
 #' @importFrom AcidGenerics do.call
 AcidGenerics::do.call
 
@@ -276,6 +312,10 @@ AcidGenerics::dottedCase
 #' @importMethodsFrom AcidExperiment droplevels
 #' @importMethodsFrom pipette droplevels
 AcidGenerics::droplevels
+
+#' @export
+#' @importFrom AcidGenerics duplicated
+AcidGenerics::duplicated
 
 #' @export
 #' @exportMethod encode
@@ -297,6 +337,10 @@ AcidGenerics::`end<-`
 #' @importFrom AcidGenerics estimateSizeFactors
 #' @importMethodsFrom AcidExperiment estimateSizeFactors
 AcidGenerics::estimateSizeFactors
+
+#' @export
+#' @importFrom AcidGenerics eval
+AcidGenerics::eval
 
 #' @export
 #' @importFrom AcidGenerics expand
@@ -353,12 +397,20 @@ AcidGenerics::geneNames
 AcidGenerics::geometricMean
 
 #' @export
+#' @importFrom AcidGenerics get
+AcidGenerics::get
+
+#' @export
 #' @importFrom AcidGenerics grep
 AcidGenerics::grep
 
 #' @export
 #' @importFrom AcidGenerics grepl
 AcidGenerics::grepl
+
+#' @export
+#' @importFrom AcidGenerics gsub
+AcidGenerics::gsub
 
 #' @export
 #' @importFrom AcidGenerics head
@@ -400,6 +452,10 @@ AcidGenerics::interestingGroups
 #' @importFrom AcidGenerics interestingGroups<-
 #' @importMethodsFrom AcidExperiment interestingGroups<-
 AcidGenerics::`interestingGroups<-`
+
+#' @export
+#' @importFrom AcidGenerics intersect
+AcidGenerics::intersect
 
 #' @export
 #' @exportMethod intersectAll
@@ -494,6 +550,10 @@ AcidGenerics::mapGenesToRownames
 AcidGenerics::mapGenesToSymbols
 
 #' @export
+#' @importFrom AcidGenerics mapply
+AcidGenerics::mapply
+
+#' @export
 #' @importFrom AcidGenerics match
 AcidGenerics::match
 
@@ -510,6 +570,10 @@ AcidGenerics::mcols
 #' @export
 #' @importFrom AcidGenerics mcols<-
 AcidGenerics::`mcols<-`
+
+#' @export
+#' @importFrom AcidGenerics mean
+AcidGenerics::mean
 
 #' @export
 #' @exportMethod melt
@@ -557,6 +621,10 @@ AcidGenerics::metrics
 AcidGenerics::metricsPerSample
 
 #' @export
+#' @importFrom AcidGenerics mget
+AcidGenerics::mget
+
+#' @export
 #' @exportMethod mutateAll
 #' @importFrom AcidGenerics mutateAll
 #' @importMethodsFrom AcidPlyr mutateAll
@@ -579,10 +647,18 @@ AcidGenerics::mutateIf
 AcidGenerics::na.omit
 
 #' @export
+#' @importFrom AcidGenerics ncol
+AcidGenerics::ncol
+
+#' @export
 #' @exportMethod nonzeroRowsAndCols
 #' @importFrom AcidGenerics nonzeroRowsAndCols
 #' @importMethodsFrom AcidExperiment nonzeroRowsAndCols
 AcidGenerics::nonzeroRowsAndCols
+
+#' @export
+#' @importFrom AcidGenerics nrow
+AcidGenerics::nrow
 
 #' @export
 #' @importFrom AcidGenerics order
@@ -602,8 +678,36 @@ AcidGenerics::organism
 AcidGenerics::`organism<-`
 
 #' @export
+#' @importFrom AcidGenerics paste
+AcidGenerics::paste
+
+#' @export
+#' @importFrom AcidGenerics pmax
+AcidGenerics::pmax
+
+#' @export
+#' @importFrom AcidGenerics pmax.int
+AcidGenerics::pmax.int
+
+#' @export
+#' @importFrom AcidGenerics pmin
+AcidGenerics::pmin
+
+#' @export
+#' @importFrom AcidGenerics pmin.int
+AcidGenerics::pmin.int
+
+#' @export
 #' @importFrom AcidGenerics pos
 AcidGenerics::pos
+
+#' @export
+#' @importFrom AcidGenerics ranges
+AcidGenerics::ranges
+
+#' @export
+#' @importFrom AcidGenerics rank
+AcidGenerics::rank
 
 #' @export
 #' @exportMethod rankedMatrix
@@ -640,10 +744,18 @@ AcidSingleCell::reducedDims
 AcidSingleCell::`reducedDims<-`
 
 #' @export
+#' @importFrom AcidGenerics relist
+AcidGenerics::relist
+
+#' @export
 #' @exportMethod removeNA
 #' @importFrom AcidGenerics removeNA
 #' @importMethodsFrom pipette removeNA
 AcidGenerics::removeNA
+
+#' @export
+#' @importFrom AcidGenerics rep.int
+AcidGenerics::rep.int
 
 #' @export
 #' @exportMethod rightJoin
@@ -722,6 +834,10 @@ AcidGenerics::sanitizeNA
 AcidGenerics::sanitizePercent
 
 #' @export
+#' @importFrom AcidGenerics sd
+AcidGenerics::sd
+
+#' @export
 #' @exportMethod selectIf
 #' @importFrom AcidGenerics selectIf
 #' @importMethodsFrom AcidPlyr selectIf
@@ -745,6 +861,10 @@ AcidGenerics::sem
 #' @importFrom AcidGenerics semiJoin
 #' @importMethodsFrom AcidPlyr semiJoin
 AcidGenerics::semiJoin
+
+#' @export
+#' @importFrom AcidGenerics setdiff
+AcidGenerics::setdiff
 
 #' @export
 #' @exportMethod showHeader
@@ -808,6 +928,14 @@ AcidGenerics::stripGeneVersions
 AcidGenerics::stripTranscriptVersions
 
 #' @export
+#' @importFrom AcidGenerics sub
+AcidGenerics::sub
+
+#' @export
+#' @importFrom AcidGenerics subset
+AcidGenerics::subset
+
+#' @export
 #' @exportMethod subsetPerSample
 #' @importFrom AcidGenerics subsetPerSample
 #' @importMethodsFrom AcidSingleCell subsetPerSample
@@ -816,12 +944,6 @@ AcidGenerics::subsetPerSample
 #' @export
 #' @importFrom AcidGenerics summary
 AcidGenerics::summary
-
-#' @export
-#' @exportMethod topCellsPerSample
-#' @importFrom AcidGenerics subsetPerSample
-#' @importMethodsFrom AcidSingleCell topCellsPerSample
-AcidGenerics::topCellsPerSample
 
 #' @export
 #' @importFrom AcidGenerics t
@@ -834,6 +956,20 @@ AcidGenerics::table
 #' @export
 #' @importFrom AcidGenerics tail
 AcidGenerics::tail
+
+#' @export
+#' @importFrom AcidGenerics tapply
+AcidGenerics::tapply
+
+#' @export
+#' @exportMethod topCellsPerSample
+#' @importFrom AcidGenerics subsetPerSample
+#' @importMethodsFrom AcidSingleCell topCellsPerSample
+AcidGenerics::topCellsPerSample
+
+#' @export
+#' @importFrom AcidGenerics trim
+AcidGenerics::trim
 
 #' @export
 #' @exportMethod tpm
@@ -852,6 +988,10 @@ AcidGenerics::transmuteAt
 #' @importFrom AcidGenerics transmuteIf
 #' @importMethodsFrom AcidPlyr transmuteIf
 AcidGenerics::transmuteIf
+
+#' @export
+#' @importFrom AcidGenerics union
+AcidGenerics::union
 
 #' @export
 #' @importFrom AcidGenerics unique
@@ -887,6 +1027,18 @@ AcidGenerics::upperCamelCase
 #' @export
 #' @importFrom AcidGenerics var
 AcidGenerics::var
+
+#' @export
+#' @importFrom AcidGenerics which
+AcidGenerics::which
+
+#' @export
+#' @importFrom AcidGenerics which.max
+AcidGenerics::which.max
+
+#' @export
+#' @importFrom AcidGenerics which.min
+AcidGenerics::which.min
 
 #' @export
 #' @importFrom AcidGenerics width
