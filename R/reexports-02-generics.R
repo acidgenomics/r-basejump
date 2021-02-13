@@ -187,6 +187,14 @@ AcidGenerics::colSums
 AcidGenerics::collapseToString
 
 #' @export
+#' @importFrom AcidGenerics colnames
+AcidGenerics::colnames
+
+#' @export
+#' @importFrom AcidGenerics colnames<-
+AcidGenerics::`colnames<-`
+
+#' @export
 #' @exportMethod combine
 #' @importFrom AcidGenerics combine
 #' @importMethodsFrom AcidExperiment combine
@@ -279,6 +287,10 @@ AcidGenerics::encode
 #' @export
 #' @importFrom AcidGenerics end
 AcidGenerics::end
+
+#' @export
+#' @importFrom AcidGenerics end<-
+AcidGenerics::`end<-`
 
 #' @export
 #' @exportMethod estimateSizeFactors
@@ -590,6 +602,10 @@ AcidGenerics::organism
 AcidGenerics::`organism<-`
 
 #' @export
+#' @importFrom AcidGenerics pos
+AcidGenerics::pos
+
+#' @export
 #' @exportMethod rankedMatrix
 #' @importFrom AcidGenerics rankedMatrix
 #' @importMethodsFrom AcidBase rankedMatrix
@@ -658,6 +674,14 @@ AcidExperiment::`rowRanges<-`
 #' @export
 #' @importFrom AcidGenerics rowSums
 AcidGenerics::rowSums
+
+#' @export
+#' @importFrom AcidGenerics rownames
+AcidGenerics::rownames
+
+#' @export
+#' @importFrom AcidGenerics rownames<-
+AcidGenerics::`rownames<-`
 
 #' @export
 #' @exportMethod sampleData
@@ -766,6 +790,10 @@ AcidGenerics::splitByLevel
 AcidGenerics::start
 
 #' @export
+#' @importFrom AcidGenerics start<-
+AcidGenerics::`start<-`
+
+#' @export
 #' @exportMethod stripGeneVersions
 #' @importFrom AcidGenerics stripGeneVersions
 #' @importMethodsFrom AcidExperiment stripGeneVersions
@@ -863,6 +891,10 @@ AcidGenerics::var
 #' @export
 #' @importFrom AcidGenerics width
 AcidGenerics::width
+
+#' @export
+#' @importFrom AcidGenerics width<-
+AcidGenerics::`width<-`
 
 #' @export
 #' @exportMethod zerosVsDepth
