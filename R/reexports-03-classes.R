@@ -1,293 +1,293 @@
-#' @rdname reexports
-#' @name Annotated-class
-#' @importClassesFrom AcidGenerics Annotated
 #' @exportClass Annotated
+#' @importClassesFrom AcidGenerics Annotated
+#' @name Annotated-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name AsIs-class
-#' @importClassesFrom AcidGenerics AsIs
 #' @exportClass AsIs
+#' @importClassesFrom AcidGenerics AsIs
+#' @name AsIs-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name AtomicList-class
-#' @importClassesFrom AcidGenerics AtomicList
 #' @exportClass AtomicList
+#' @importClassesFrom AcidGenerics AtomicList
+#' @name AtomicList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name CharacterList-class
-#' @importClassesFrom AcidGenerics CharacterList
 #' @exportClass CharacterList
+#' @importClassesFrom AcidGenerics CharacterList
+#' @name CharacterList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name DataFrame-class
-#' @importClassesFrom AcidGenerics DataFrame
 #' @exportClass DataFrame
+#' @importClassesFrom AcidGenerics DataFrame
+#' @name DataFrame-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name DataFrameList-class
-#' @importClassesFrom AcidGenerics DataFrameList
 #' @exportClass DataFrameList
+#' @importClassesFrom AcidGenerics DataFrameList
+#' @name DataFrameList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Ensembl2Entrez-class
-#' @importClassesFrom AcidGenomes Ensembl2Entrez
 #' @exportClass Ensembl2Entrez
+#' @importClassesFrom AcidGenomes Ensembl2Entrez
+#' @name Ensembl2Entrez-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Entrez2Ensembl-class
-#' @importClassesFrom AcidGenomes Entrez2Ensembl
 #' @exportClass Entrez2Ensembl
+#' @importClassesFrom AcidGenomes Entrez2Ensembl
+#' @name Entrez2Ensembl-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name EnsemblGenes-class
-#' @importClassesFrom AcidGenomes EnsemblGenes
 #' @exportClass EnsemblGenes
+#' @importClassesFrom AcidGenomes EnsemblGenes
+#' @name EnsemblGenes-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name EnsemblTranscripts-class
-#' @importClassesFrom AcidGenomes EnsemblTranscripts
 #' @exportClass EnsemblTranscripts
+#' @importClassesFrom AcidGenomes EnsemblTranscripts
+#' @name EnsemblTranscripts-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Factor-class
-#' @importClassesFrom AcidGenerics Factor
 #' @exportClass Factor
+#' @importClassesFrom AcidGenerics Factor
+#' @name Factor-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name FactorList-class
-#' @importClassesFrom AcidGenerics FactorList
 #' @exportClass FactorList
+#' @importClassesFrom AcidGenerics FactorList
+#' @name FactorList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name FlyBaseGenes-class
-#' @importClassesFrom AcidGenomes FlyBaseGenes
 #' @exportClass FlyBaseGenes
+#' @importClassesFrom AcidGenomes FlyBaseGenes
+#' @name FlyBaseGenes-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name FlyBaseTranscripts-class
-#' @importClassesFrom AcidGenomes FlyBaseTranscripts
 #' @exportClass FlyBaseTranscripts
+#' @importClassesFrom AcidGenomes FlyBaseTranscripts
+#' @name FlyBaseTranscripts-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name GRanges-class
-#' @importClassesFrom pipette GRanges
 #' @exportClass GRanges
+#' @importClassesFrom pipette GRanges
+#' @name GRanges-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name GRangesList-class
-#' @importClassesFrom pipette GRangesList
 #' @exportClass GRangesList
+#' @importClassesFrom pipette GRangesList
+#' @name GRangesList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name GencodeGenes-class
-#' @importClassesFrom AcidGenomes GencodeGenes
 #' @exportClass GencodeGenes
+#' @importClassesFrom AcidGenomes GencodeGenes
+#' @name GencodeGenes-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name GencodeTranscripts-class
-#' @importClassesFrom AcidGenomes GencodeTranscripts
 #' @exportClass GencodeTranscripts
+#' @importClassesFrom AcidGenomes GencodeTranscripts
+#' @name GencodeTranscripts-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Gene2Symbol-class
-#' @importClassesFrom AcidGenomes Gene2Symbol
 #' @exportClass Gene2Symbol
+#' @importClassesFrom AcidGenomes Gene2Symbol
+#' @name Gene2Symbol-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name HGNC-class
-#' @importClassesFrom AcidGenomes HGNC
 #' @exportClass HGNC
+#' @importClassesFrom AcidGenomes HGNC
+#' @name HGNC-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name HGNC2Ensembl-class
-#' @importClassesFrom AcidGenomes HGNC2Ensembl
 #' @exportClass HGNC2Ensembl
+#' @importClassesFrom AcidGenomes HGNC2Ensembl
+#' @name HGNC2Ensembl-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name IRanges-class
-#' @importClassesFrom AcidGenerics IRanges
 #' @exportClass IRanges
+#' @importClassesFrom AcidGenerics IRanges
+#' @name IRanges-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name IntegerList-class
-#' @importClassesFrom AcidGenerics IntegerList
 #' @exportClass IntegerList
+#' @importClassesFrom AcidGenerics IntegerList
+#' @name IntegerList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name LLint-class
-#' @importClassesFrom AcidGenerics LLint
 #' @exportClass LLint
+#' @importClassesFrom AcidGenerics LLint
+#' @name LLint-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name List-class
-#' @importClassesFrom AcidGenerics List
 #' @exportClass List
+#' @importClassesFrom AcidGenerics List
+#' @name List-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name LogicalList-class
-#' @importClassesFrom AcidGenerics LogicalList
 #' @exportClass LogicalList
+#' @importClassesFrom AcidGenerics LogicalList
+#' @name LogicalList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Matrix-class
-#' @importClassesFrom pipette Matrix
 #' @exportClass Matrix
+#' @importClassesFrom pipette Matrix
+#' @name Matrix-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name MGI2Ensembl-class
-#' @importClassesFrom AcidGenomes MGI2Ensembl
 #' @exportClass MGI2Ensembl
+#' @importClassesFrom AcidGenomes MGI2Ensembl
+#' @name MGI2Ensembl-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name NumericList-class
-#' @importClassesFrom AcidGenerics NumericList
 #' @exportClass NumericList
+#' @importClassesFrom AcidGenerics NumericList
+#' @name NumericList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Protein2Gene-class
-#' @importClassesFrom AcidGenomes Protein2Gene
 #' @exportClass Protein2Gene
+#' @importClassesFrom AcidGenomes Protein2Gene
+#' @name Protein2Gene-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name RangedSummarizedExperiment-class
-#' @importClassesFrom AcidExperiment RangedSummarizedExperiment
 #' @exportClass RangedSummarizedExperiment
+#' @importClassesFrom AcidExperiment RangedSummarizedExperiment
+#' @name RangedSummarizedExperiment-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name RectangularData-class
-#' @importClassesFrom AcidGenerics RectangularData
 #' @exportClass RectangularData
+#' @importClassesFrom AcidGenerics RectangularData
+#' @name RectangularData-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name RefSeqGenes-class
-#' @importClassesFrom AcidGenomes RefSeqGenes
 #' @exportClass RefSeqGenes
+#' @importClassesFrom AcidGenomes RefSeqGenes
+#' @name RefSeqGenes-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name RefSeqTranscripts-class
-#' @importClassesFrom AcidGenomes RefSeqTranscripts
 #' @exportClass RefSeqTranscripts
+#' @importClassesFrom AcidGenomes RefSeqTranscripts
+#' @name RefSeqTranscripts-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Rle-class
-#' @importClassesFrom AcidGenerics Rle
 #' @exportClass Rle
+#' @importClassesFrom AcidGenerics Rle
+#' @name Rle-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name RleList-class
-#' @importClassesFrom AcidGenerics RleList
 #' @exportClass RleList
+#' @importClassesFrom AcidGenerics RleList
+#' @name RleList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name SimpleList-class
-#' @importClassesFrom AcidGenerics SimpleList
 #' @exportClass SimpleList
+#' @importClassesFrom AcidGenerics SimpleList
+#' @name SimpleList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name SingleCellExperiment-class
-#' @importClassesFrom AcidSingleCell SingleCellExperiment
 #' @exportClass SingleCellExperiment
+#' @importClassesFrom AcidSingleCell SingleCellExperiment
+#' @name SingleCellExperiment-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name SplitDataFrameList-class
-#' @importClassesFrom AcidGenerics SplitDataFrameList
 #' @exportClass SplitDataFrameList
+#' @importClassesFrom AcidGenerics SplitDataFrameList
+#' @name SplitDataFrameList-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name SummarizedExperiment-class
-#' @importClassesFrom AcidExperiment SummarizedExperiment
 #' @exportClass SummarizedExperiment
+#' @importClassesFrom AcidExperiment SummarizedExperiment
+#' @name SummarizedExperiment-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Tx2Gene-class
-#' @importClassesFrom AcidGenomes Tx2Gene
 #' @exportClass Tx2Gene
+#' @importClassesFrom AcidGenomes Tx2Gene
+#' @name Tx2Gene-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name UCSCGenes-class
-#' @importClassesFrom AcidGenomes UCSCGenes
 #' @exportClass UCSCGenes
+#' @importClassesFrom AcidGenomes UCSCGenes
+#' @name UCSCGenes-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name UCSCTranscripts-class
-#' @importClassesFrom AcidGenomes UCSCTranscripts
 #' @exportClass UCSCTranscripts
+#' @importClassesFrom AcidGenomes UCSCTranscripts
+#' @name UCSCTranscripts-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name WormBaseGenes-class
-#' @importClassesFrom AcidGenomes WormBaseGenes
 #' @exportClass WormBaseGenes
+#' @importClassesFrom AcidGenomes WormBaseGenes
+#' @name WormBaseGenes-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name WormBaseTranscripts-class
-#' @importClassesFrom AcidGenomes WormBaseTranscripts
 #' @exportClass WormBaseTranscripts
+#' @importClassesFrom AcidGenomes WormBaseTranscripts
+#' @name WormBaseTranscripts-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name Vector-class
-#' @importClassesFrom AcidGenerics Vector
 #' @exportClass Vector
+#' @importClassesFrom AcidGenerics Vector
+#' @name Vector-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name atomic-class
-#' @importClassesFrom AcidGenerics atomic
 #' @exportClass atomic
+#' @importClassesFrom AcidGenerics atomic
+#' @name atomic-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name missingOrNULL-class
-#' @importClassesFrom AcidGenerics missingOrNULL
 #' @exportClass missingOrNULL
+#' @importClassesFrom AcidGenerics missingOrNULL
+#' @name missingOrNULL-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name sparseMatrix-class
-#' @importClassesFrom pipette sparseMatrix
 #' @exportClass sparseMatrix
+#' @importClassesFrom pipette sparseMatrix
+#' @name sparseMatrix-class
+#' @rdname reexports
 NULL

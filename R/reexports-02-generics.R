@@ -1,868 +1,871 @@
 ## S3 generics =================================================================
-#' @importFrom pipette as_tibble
+
 #' @export
+#' @importFrom pipette as_tibble
 pipette::as_tibble
 
-#' @importFrom pipette as.data.table
 #' @export
+#' @importFrom pipette as.data.table
 pipette::as.data.table
 
 
 
 ## S4 generics =================================================================
-#' @importFrom AcidGenomes Ensembl2Entrez
+
 #' @export
-#' @importMethodsFrom AcidGenomes Ensembl2Entrez
 #' @exportMethod Ensembl2Entrez
+#' @importFrom AcidGenomes Ensembl2Entrez
+#' @importMethodsFrom AcidGenomes Ensembl2Entrez
 AcidGenomes::Ensembl2Entrez
 
-#' @importFrom AcidGenomes Entrez2Ensembl
 #' @export
-#' @importMethodsFrom AcidGenomes Entrez2Ensembl
 #' @exportMethod Entrez2Ensembl
+#' @importFrom AcidGenomes Entrez2Ensembl
+#' @importMethodsFrom AcidGenomes Entrez2Ensembl
 AcidGenomes::Entrez2Ensembl
 
-#' @importFrom AcidGenomes Gene2Symbol
 #' @export
+#' @importFrom AcidGenomes Gene2Symbol
 AcidGenomes::Gene2Symbol
 
-#' @importFrom AcidGenomes Tx2Gene
 #' @export
-#' @importMethodsFrom AcidGenomes Tx2Gene
 #' @exportMethod Tx2Gene
+#' @importFrom AcidGenomes Tx2Gene
+#' @importMethodsFrom AcidGenomes Tx2Gene
 AcidGenomes::Tx2Gene
 
-#' @importFrom AcidGenerics %in%
 #' @export
+#' @importFrom AcidGenerics %in%
 AcidGenerics::`%in%`
 
-#' @importFrom AcidGenerics aggregate
 #' @export
-#' @importMethodsFrom AcidExperiment aggregate
 #' @exportMethod aggregate
+#' @importFrom AcidGenerics aggregate
+#' @importMethodsFrom AcidExperiment aggregate
 AcidGenerics::aggregate
 
-#' @importFrom AcidGenerics aggregateCellsToSamples
 #' @export
-#' @importMethodsFrom AcidSingleCell aggregateCellsToSamples
 #' @exportMethod aggregateCellsToSamples
+#' @importFrom AcidGenerics aggregateCellsToSamples
+#' @importMethodsFrom AcidSingleCell aggregateCellsToSamples
 AcidGenerics::aggregateCellsToSamples
 
-#' @importFrom AcidGenerics aggregateCols
 #' @export
+#' @exportMethod aggregateCols
+#' @importFrom AcidGenerics aggregateCols
 #' @importMethodsFrom AcidExperiment aggregateCols
 #' @importMethodsFrom AcidSingleCell aggregateCols
-#' @exportMethod aggregateCols
 AcidGenerics::aggregateCols
 
-#' @importFrom AcidGenerics aggregateRows
 #' @export
-#' @importMethodsFrom AcidExperiment aggregateRows
 #' @exportMethod aggregateRows
+#' @importFrom AcidGenerics aggregateRows
+#' @importMethodsFrom AcidExperiment aggregateRows
 AcidGenerics::aggregateRows
 
-#' @importFrom AcidGenerics antiJoin
 #' @export
-#' @importMethodsFrom AcidPlyr antiJoin
 #' @exportMethod antiJoin
+#' @importFrom AcidGenerics antiJoin
+#' @importMethodsFrom AcidPlyr antiJoin
 AcidGenerics::antiJoin
 
-#' @importFrom AcidGenerics as.DataFrame
 #' @export
-#' @importMethodsFrom pipette as.DataFrame
 #' @exportMethod as.DataFrame
+#' @importFrom AcidGenerics as.DataFrame
+#' @importMethodsFrom pipette as.DataFrame
 AcidGenerics::as.DataFrame
 
-#' @importFrom AcidGenerics as.SummarizedExperiment
 #' @export
-#' @importMethodsFrom AcidExperiment as.SummarizedExperiment
 #' @exportMethod as.SummarizedExperiment
+#' @importFrom AcidGenerics as.SummarizedExperiment
+#' @importMethodsFrom AcidExperiment as.SummarizedExperiment
 AcidGenerics::as.SummarizedExperiment
 
-#' @importFrom AcidGenerics as.data.frame
 #' @export
-#' @importMethodsFrom pipette as.data.frame
 #' @exportMethod as.data.frame
+#' @importFrom AcidGenerics as.data.frame
+#' @importMethodsFrom pipette as.data.frame
 AcidGenerics::as.data.frame
 
-#' @importFrom AcidGenerics as.list
 #' @export
+#' @importFrom AcidGenerics as.list
 AcidGenerics::as.list
 
-#' @importFrom AcidExperiment assay
 #' @export
+#' @importFrom AcidExperiment assay
 AcidExperiment::assay
 
-#' @importFrom AcidExperiment assay<-
 #' @export
+#' @importFrom AcidExperiment assay<-
 AcidExperiment::`assay<-`
 
-#' @importFrom AcidExperiment assayNames
 #' @export
+#' @importFrom AcidExperiment assayNames
 AcidExperiment::assayNames
 
-#' @importFrom AcidExperiment assayNames<-
 #' @export
+#' @importFrom AcidExperiment assayNames<-
 AcidExperiment::`assayNames<-`
 
-#' @importFrom AcidExperiment assays
 #' @export
+#' @importFrom AcidExperiment assays
 AcidExperiment::assays
 
-#' @importFrom AcidExperiment assays<-
 #' @export
+#' @importFrom AcidExperiment assays<-
 AcidExperiment::`assays<-`
 
-#' @importFrom AcidGenerics atomize
 #' @export
-#' @importMethodsFrom pipette atomize
 #' @exportMethod atomize
+#' @importFrom AcidGenerics atomize
+#' @importMethodsFrom pipette atomize
 AcidGenerics::atomize
 
-#' @importFrom AcidGenerics autopadZeros
 #' @export
-#' @importMethodsFrom AcidExperiment autopadZeros
 #' @exportMethod autopadZeros
+#' @importFrom AcidGenerics autopadZeros
+#' @importMethodsFrom AcidExperiment autopadZeros
 AcidGenerics::autopadZeros
 
-#' @importFrom AcidGenerics calculateMetrics
 #' @export
-#' @importMethodsFrom AcidExperiment calculateMetrics
 #' @exportMethod calculateMetrics
+#' @importFrom AcidGenerics calculateMetrics
+#' @importMethodsFrom AcidExperiment calculateMetrics
 AcidGenerics::calculateMetrics
 
-#' @importFrom AcidGenerics camelCase
 #' @export
+#' @exportMethod camelCase
+#' @importFrom AcidGenerics camelCase
 #' @importMethodsFrom AcidExperiment camelCase
 #' @importMethodsFrom syntactic camelCase
-#' @exportMethod camelCase
 AcidGenerics::camelCase
 
-#' @importFrom AcidGenerics capitalize
 #' @export
-#' @importMethodsFrom syntactic capitalize
 #' @exportMethod capitalize
+#' @importFrom AcidGenerics capitalize
+#' @importMethodsFrom syntactic capitalize
 AcidGenerics::capitalize
 
-#' @importFrom AcidGenerics cbind
 #' @export
+#' @importFrom AcidGenerics cbind
 AcidGenerics::cbind
 
-#' @importFrom AcidGenerics cell2sample
 #' @export
-#' @importMethodsFrom AcidSingleCell cell2sample
 #' @exportMethod cell2sample
+#' @importFrom AcidGenerics cell2sample
+#' @importMethodsFrom AcidSingleCell cell2sample
 AcidGenerics::cell2sample
 
-#' @importFrom AcidGenerics coerce
 #' @export
-#' @importMethodsFrom pipette coerce
 #' @exportMethod coerce
+#' @importFrom AcidGenerics coerce
+#' @importMethodsFrom pipette coerce
 AcidGenerics::coerce
 
-#' @importFrom AcidGenerics coerceToList
 #' @export
-#' @importMethodsFrom AcidBase coerceToList
 #' @exportMethod coerceToList
+#' @importFrom AcidGenerics coerceToList
+#' @importMethodsFrom AcidBase coerceToList
 AcidGenerics::coerceToList
 
-#' @importFrom AcidExperiment colData
 #' @export
+#' @importFrom AcidExperiment colData
 AcidExperiment::colData
 
-#' @importFrom AcidExperiment colData<-
 #' @export
+#' @importFrom AcidExperiment colData<-
 AcidExperiment::`colData<-`
 
-#' @importFrom AcidGenerics colSums
 #' @export
+#' @importFrom AcidGenerics colSums
 AcidGenerics::colSums
 
-#' @importFrom AcidGenerics collapseToString
 #' @export
-#' @importMethodsFrom AcidPlyr collapseToString
 #' @exportMethod collapseToString
+#' @importFrom AcidGenerics collapseToString
+#' @importMethodsFrom AcidPlyr collapseToString
 AcidGenerics::collapseToString
 
-#' @importFrom AcidGenerics combine
 #' @export
+#' @exportMethod combine
+#' @importFrom AcidGenerics combine
 #' @importMethodsFrom AcidExperiment combine
 #' @importMethodsFrom AcidSingleCell combine
-#' @exportMethod combine
 AcidGenerics::combine
 
-#' @importFrom AcidGenerics complete.cases
 #' @export
+#' @importFrom AcidGenerics complete.cases
 AcidGenerics::complete.cases
 
-#' @importFrom AcidGenerics convertGenesToSymbols
 #' @export
-#' @importMethodsFrom AcidExperiment convertGenesToSymbols
 #' @exportMethod convertGenesToSymbols
+#' @importFrom AcidGenerics convertGenesToSymbols
+#' @importMethodsFrom AcidExperiment convertGenesToSymbols
 AcidGenerics::convertGenesToSymbols
 
-#' @importFrom AcidGenerics convertSampleIDsToNames
 #' @export
+#' @exportMethod convertSampleIDsToNames
+#' @importFrom AcidGenerics convertSampleIDsToNames
 #' @importMethodsFrom AcidExperiment convertSampleIDsToNames
 #' @importMethodsFrom AcidSingleCell convertSampleIDsToNames
-#' @exportMethod convertSampleIDsToNames
 AcidGenerics::convertSampleIDsToNames
 
-#' @importFrom AcidGenerics convertSymbolsToGenes
 #' @export
-#' @importMethodsFrom AcidExperiment convertSymbolsToGenes
 #' @exportMethod convertSymbolsToGenes
+#' @importFrom AcidGenerics convertSymbolsToGenes
+#' @importMethodsFrom AcidExperiment convertSymbolsToGenes
 AcidGenerics::convertSymbolsToGenes
 
-#' @importFrom AcidGenerics convertTranscriptsToGenes
 #' @export
-#' @importMethodsFrom AcidExperiment convertTranscriptsToGenes
 #' @exportMethod convertTranscriptsToGenes
+#' @importFrom AcidGenerics convertTranscriptsToGenes
+#' @importMethodsFrom AcidExperiment convertTranscriptsToGenes
 AcidGenerics::convertTranscriptsToGenes
 
-#' @importFrom AcidGenerics cor
 #' @export
+#' @importFrom AcidGenerics cor
 AcidGenerics::cor
 
-#' @importFrom AcidGenerics correlation
 #' @export
-#' @importMethodsFrom AcidExperiment correlation
 #' @exportMethod correlation
+#' @importFrom AcidGenerics correlation
+#' @importMethodsFrom AcidExperiment correlation
 AcidGenerics::correlation
 
-#' @importFrom AcidGenerics counts
 #' @export
-#' @importMethodsFrom AcidExperiment counts
 #' @exportMethod counts
+#' @importFrom AcidGenerics counts
+#' @importMethodsFrom AcidExperiment counts
 AcidGenerics::counts
 
-#' @importFrom AcidGenerics counts<-
 #' @export
-#' @importMethodsFrom AcidExperiment counts<-
 #' @exportMethod counts<-
+#' @importFrom AcidGenerics counts<-
+#' @importMethodsFrom AcidExperiment counts<-
 AcidGenerics::`counts<-`
 
-#' @importFrom AcidGenerics decode
 #' @export
+#' @exportMethod decode
+#' @importFrom AcidGenerics decode
 #' @importMethodsFrom AcidExperiment decode
 #' @importMethodsFrom pipette decode
-#' @exportMethod decode
 AcidGenerics::decode
 
-#' @importFrom AcidGenerics do.call
 #' @export
+#' @importFrom AcidGenerics do.call
 AcidGenerics::do.call
 
-#' @importFrom AcidGenerics dottedCase
 #' @export
+#' @exportMethod dottedCase
+#' @importFrom AcidGenerics dottedCase
 #' @importMethodsFrom AcidExperiment dottedCase
 #' @importMethodsFrom syntactic dottedCase
-#' @exportMethod dottedCase
 AcidGenerics::dottedCase
 
-#' @importFrom AcidGenerics droplevels
 #' @export
+#' @exportMethod droplevels
+#' @importFrom AcidGenerics droplevels
 #' @importMethodsFrom AcidExperiment droplevels
 #' @importMethodsFrom pipette droplevels
-#' @exportMethod droplevels
 AcidGenerics::droplevels
 
-#' @importFrom AcidGenerics encode
 #' @export
+#' @exportMethod encode
+#' @importFrom AcidGenerics encode
 #' @importMethodsFrom AcidExperiment encode
 #' @importMethodsFrom pipette encode
-#' @exportMethod encode
 AcidGenerics::encode
 
-#' @importFrom AcidGenerics end
 #' @export
+#' @importFrom AcidGenerics end
 AcidGenerics::end
 
-#' @importFrom AcidGenerics estimateSizeFactors
 #' @export
-#' @importMethodsFrom AcidExperiment estimateSizeFactors
 #' @exportMethod estimateSizeFactors
+#' @importFrom AcidGenerics estimateSizeFactors
+#' @importMethodsFrom AcidExperiment estimateSizeFactors
 AcidGenerics::estimateSizeFactors
 
-#' @importFrom AcidGenerics expand
 #' @export
+#' @importFrom AcidGenerics expand
 AcidGenerics::expand
 
-#' @importFrom AcidGenerics expand.grid
 #' @export
+#' @importFrom AcidGenerics expand.grid
 AcidGenerics::expand.grid
 
-#' @importFrom AcidGenerics export
 #' @export
+#' @exportMethod export
+#' @importFrom AcidGenerics export
 #' @importMethodsFrom AcidExperiment export
 #' @importMethodsFrom AcidGenomes export
 #' @importMethodsFrom AcidSingleCell export
 #' @importMethodsFrom pipette export
-#' @exportMethod export
 AcidGenerics::export
 
-#' @importFrom AcidGenerics factorize
 #' @export
-#' @importMethodsFrom pipette factorize
 #' @exportMethod factorize
+#' @importFrom AcidGenerics factorize
+#' @importMethodsFrom pipette factorize
 AcidGenerics::factorize
 
-#' @importFrom AcidGenerics filterCells
 #' @export
-#' @importMethodsFrom AcidSingleCell filterCells
 #' @exportMethod filterCells
+#' @importFrom AcidGenerics filterCells
+#' @importMethodsFrom AcidSingleCell filterCells
 AcidGenerics::filterCells
 
-#' @importFrom AcidGenerics foldChangeToLogRatio
 #' @export
-#' @importMethodsFrom AcidBase foldChangeToLogRatio
 #' @exportMethod foldChangeToLogRatio
+#' @importFrom AcidGenerics foldChangeToLogRatio
+#' @importMethodsFrom AcidBase foldChangeToLogRatio
 AcidGenerics::foldChangeToLogRatio
 
-#' @importFrom AcidGenerics fullJoin
 #' @export
-#' @importMethodsFrom AcidPlyr fullJoin
 #' @exportMethod fullJoin
+#' @importFrom AcidGenerics fullJoin
+#' @importMethodsFrom AcidPlyr fullJoin
 AcidGenerics::fullJoin
 
-#' @importFrom AcidGenerics geneNames
 #' @export
-#' @importMethodsFrom AcidExperiment geneNames
 #' @exportMethod geneNames
+#' @importFrom AcidGenerics geneNames
+#' @importMethodsFrom AcidExperiment geneNames
 AcidGenerics::geneNames
 
-#' @importFrom AcidGenerics geometricMean
 #' @export
+#' @exportMethod geometricMean
+#' @importFrom AcidGenerics geometricMean
 #' @importMethodsFrom AcidBase geometricMean
 #' @importMethodsFrom AcidSingleCell geometricMean
-#' @exportMethod geometricMean
 AcidGenerics::geometricMean
 
-#' @importFrom AcidGenerics grep
 #' @export
+#' @importFrom AcidGenerics grep
 AcidGenerics::grep
 
-#' @importFrom AcidGenerics grepl
 #' @export
+#' @importFrom AcidGenerics grepl
 AcidGenerics::grepl
 
-#' @importFrom AcidGenerics head
 #' @export
+#' @importFrom AcidGenerics head
 AcidGenerics::head
 
-#' @importFrom AcidGenerics headtail
 #' @export
+#' @exportMethod headtail
+#' @importFrom AcidGenerics headtail
 #' @importMethodsFrom AcidBase headtail
 #' @importMethodsFrom AcidExperiment headtail
-#' @exportMethod headtail
 AcidGenerics::headtail
 
-#' @importFrom AcidGenerics humanize
 #' @export
-#' @importMethodsFrom AcidExperiment humanize
 #' @exportMethod humanize
+#' @importFrom AcidGenerics humanize
+#' @importMethodsFrom AcidExperiment humanize
 AcidGenerics::humanize
 
-#' @importFrom AcidGenerics innerJoin
 #' @export
-#' @importMethodsFrom AcidPlyr innerJoin
 #' @exportMethod innerJoin
+#' @importFrom AcidGenerics innerJoin
+#' @importMethodsFrom AcidPlyr innerJoin
 AcidGenerics::innerJoin
 
-#' @importFrom AcidGenerics integerCounts
 #' @export
-#' @importMethodsFrom AcidExperiment integerCounts
 #' @exportMethod integerCounts
+#' @importFrom AcidGenerics integerCounts
+#' @importMethodsFrom AcidExperiment integerCounts
 AcidGenerics::integerCounts
 
-#' @importFrom AcidGenerics interestingGroups
 #' @export
-#' @importMethodsFrom AcidExperiment interestingGroups
 #' @exportMethod interestingGroups
+#' @importFrom AcidGenerics interestingGroups
+#' @importMethodsFrom AcidExperiment interestingGroups
 AcidGenerics::interestingGroups
 
-#' @importFrom AcidGenerics interestingGroups<-
 #' @export
-#' @importMethodsFrom AcidExperiment interestingGroups<-
 #' @exportMethod interestingGroups<-
+#' @importFrom AcidGenerics interestingGroups<-
+#' @importMethodsFrom AcidExperiment interestingGroups<-
 AcidGenerics::`interestingGroups<-`
-#' @importFrom AcidGenerics intersectAll
+
 #' @export
-#' @importMethodsFrom AcidBase intersectAll
 #' @exportMethod intersectAll
+#' @importFrom AcidGenerics intersectAll
+#' @importMethodsFrom AcidBase intersectAll
 AcidGenerics::intersectAll
 
-#' @importFrom AcidGenerics intersectionMatrix
 #' @export
-#' @importMethodsFrom AcidBase intersectionMatrix
 #' @exportMethod intersectionMatrix
+#' @importFrom AcidGenerics intersectionMatrix
+#' @importMethodsFrom AcidBase intersectionMatrix
 AcidGenerics::intersectionMatrix
 
-#' @importFrom AcidGenerics is.unsorted
 #' @export
+#' @importFrom AcidGenerics is.unsorted
 AcidGenerics::is.unsorted
 
-#' @importFrom AcidGenerics kebabCase
 #' @export
-#' @importMethodsFrom syntactic kebabCase
 #' @exportMethod kebabCase
+#' @importFrom AcidGenerics kebabCase
+#' @importMethodsFrom syntactic kebabCase
 AcidGenerics::kebabCase
 
-#' @importFrom AcidGenerics lapply
 #' @export
+#' @importFrom AcidGenerics lapply
 AcidGenerics::lapply
 
-#' @importFrom AcidGenerics leftJoin
 #' @export
-#' @importMethodsFrom AcidPlyr leftJoin
 #' @exportMethod leftJoin
+#' @importFrom AcidGenerics leftJoin
+#' @importMethodsFrom AcidPlyr leftJoin
 AcidGenerics::leftJoin
 
-#' @importFrom AcidGenerics logRatioToFoldChange
 #' @export
-#' @importMethodsFrom AcidBase logRatioToFoldChange
 #' @exportMethod logRatioToFoldChange
+#' @importFrom AcidGenerics logRatioToFoldChange
+#' @importMethodsFrom AcidBase logRatioToFoldChange
 AcidGenerics::logRatioToFoldChange
 
-#' @importFrom AcidGenerics makeDimnames
 #' @export
-#' @importMethodsFrom syntactic makeDimnames
 #' @exportMethod makeDimnames
+#' @importFrom AcidGenerics makeDimnames
+#' @importMethodsFrom syntactic makeDimnames
 AcidGenerics::makeDimnames
 
-#' @importFrom AcidGenerics makeLabel
 #' @export
-#' @importMethodsFrom syntactic makeLabel
 #' @exportMethod makeLabel
+#' @importFrom AcidGenerics makeLabel
+#' @importMethodsFrom syntactic makeLabel
 AcidGenerics::makeLabel
 
-#' @importFrom AcidGenerics makeNames
 #' @export
-#' @importMethodsFrom syntactic makeNames
 #' @exportMethod makeNames
+#' @importFrom AcidGenerics makeNames
+#' @importMethodsFrom syntactic makeNames
 AcidGenerics::makeNames
 
-#' @importFrom AcidGenerics makeSampleData
 #' @export
-#' @importMethodsFrom AcidExperiment makeSampleData
 #' @exportMethod makeSampleData
+#' @importFrom AcidGenerics makeSampleData
+#' @importMethodsFrom AcidExperiment makeSampleData
 AcidGenerics::makeSampleData
 
-#' @importFrom AcidGenerics makeTitle
 #' @export
-#' @importMethodsFrom syntactic makeTitle
 #' @exportMethod makeTitle
+#' @importFrom AcidGenerics makeTitle
+#' @importMethodsFrom syntactic makeTitle
 AcidGenerics::makeTitle
 
-#' @importFrom AcidGenerics makeWords
 #' @export
-#' @importMethodsFrom syntactic makeWords
 #' @exportMethod makeWords
+#' @importFrom AcidGenerics makeWords
+#' @importMethodsFrom syntactic makeWords
 AcidGenerics::makeWords
 
-#' @importFrom AcidGenerics mapGenesToIDs
 #' @export
-#' @importMethodsFrom AcidExperiment mapGenesToIDs
 #' @exportMethod mapGenesToIDs
+#' @importFrom AcidGenerics mapGenesToIDs
+#' @importMethodsFrom AcidExperiment mapGenesToIDs
 AcidGenerics::mapGenesToIDs
 
-#' @importFrom AcidGenerics mapGenesToRownames
 #' @export
-#' @importMethodsFrom AcidExperiment mapGenesToRownames
 #' @exportMethod mapGenesToRownames
+#' @importFrom AcidGenerics mapGenesToRownames
+#' @importMethodsFrom AcidExperiment mapGenesToRownames
 AcidGenerics::mapGenesToRownames
 
-#' @importFrom AcidGenerics mapGenesToSymbols
 #' @export
-#' @importMethodsFrom AcidExperiment mapGenesToSymbols
 #' @exportMethod mapGenesToSymbols
+#' @importFrom AcidGenerics mapGenesToSymbols
+#' @importMethodsFrom AcidExperiment mapGenesToSymbols
 AcidGenerics::mapGenesToSymbols
 
-#' @importFrom AcidGenerics match
 #' @export
+#' @importFrom AcidGenerics match
 AcidGenerics::match
 
-#' @importFrom AcidGenerics matchSampleColumn
 #' @export
-#' @importMethodsFrom AcidExperiment matchSampleColumn
 #' @exportMethod matchSampleColumn
+#' @importFrom AcidGenerics matchSampleColumn
+#' @importMethodsFrom AcidExperiment matchSampleColumn
 AcidGenerics::matchSampleColumn
 
-#' @importFrom AcidGenerics mcols
 #' @export
+#' @importFrom AcidGenerics mcols
 AcidGenerics::mcols
 
-#' @importFrom AcidGenerics mcols<-
 #' @export
+#' @importFrom AcidGenerics mcols<-
 AcidGenerics::`mcols<-`
 
-#' @importFrom AcidGenerics melt
 #' @export
+#' @exportMethod melt
+#' @importFrom AcidGenerics melt
 #' @importMethodsFrom AcidExperiment melt
 #' @importMethodsFrom AcidPlyr melt
 #' @importMethodsFrom AcidSingleCell melt
-#' @exportMethod melt
 AcidGenerics::melt
 
-#' @importFrom AcidGenerics merge
 #' @export
+#' @importFrom AcidGenerics merge
 AcidGenerics::merge
 
-#' @importFrom AcidGenerics metadata
 #' @export
+#' @importFrom AcidGenerics metadata
 AcidGenerics::metadata
 
-#' @importFrom AcidGenerics metadata<-
 #' @export
+#' @importFrom AcidGenerics metadata<-
 AcidGenerics::`metadata<-`
 
-#' @importFrom AcidGenerics metadata2
 #' @export
-#' @importMethodsFrom pipette metadata2
 #' @exportMethod metadata2
+#' @importFrom AcidGenerics metadata2
+#' @importMethodsFrom pipette metadata2
 AcidGenerics::metadata2
 
-#' @importFrom AcidGenerics metadata2<-
 #' @export
-#' @importMethodsFrom pipette metadata2<-
 #' @exportMethod metadata2<-
+#' @importFrom AcidGenerics metadata2<-
+#' @importMethodsFrom pipette metadata2<-
 AcidGenerics::`metadata2<-`
 
-#' @importFrom AcidGenerics metrics
 #' @export
+#' @exportMethod metrics
+#' @importFrom AcidGenerics metrics
 #' @importMethodsFrom AcidExperiment metrics
 #' @importMethodsFrom AcidSingleCell metrics
-#' @exportMethod metrics
 AcidGenerics::metrics
 
-#' @importFrom AcidGenerics metricsPerSample
 #' @export
-#' @importMethodsFrom AcidSingleCell metricsPerSample
 #' @exportMethod metricsPerSample
+#' @importFrom AcidGenerics metricsPerSample
+#' @importMethodsFrom AcidSingleCell metricsPerSample
 AcidGenerics::metricsPerSample
 
-#' @importFrom AcidGenerics mutateAll
 #' @export
-#' @importMethodsFrom AcidPlyr mutateAll
 #' @exportMethod mutateAll
+#' @importFrom AcidGenerics mutateAll
+#' @importMethodsFrom AcidPlyr mutateAll
 AcidGenerics::mutateAll
 
-#' @importFrom AcidGenerics mutateAt
 #' @export
-#' @importMethodsFrom AcidPlyr mutateAt
 #' @exportMethod mutateAt
+#' @importFrom AcidGenerics mutateAt
+#' @importMethodsFrom AcidPlyr mutateAt
 AcidGenerics::mutateAt
 
-#' @importFrom AcidGenerics mutateIf
 #' @export
-#' @importMethodsFrom AcidPlyr mutateIf
 #' @exportMethod mutateIf
+#' @importFrom AcidGenerics mutateIf
+#' @importMethodsFrom AcidPlyr mutateIf
 AcidGenerics::mutateIf
 
-#' @importFrom AcidGenerics na.omit
 #' @export
+#' @importFrom AcidGenerics na.omit
 AcidGenerics::na.omit
 
-#' @importFrom AcidGenerics nonzeroRowsAndCols
 #' @export
-#' @importMethodsFrom AcidExperiment nonzeroRowsAndCols
 #' @exportMethod nonzeroRowsAndCols
+#' @importFrom AcidGenerics nonzeroRowsAndCols
+#' @importMethodsFrom AcidExperiment nonzeroRowsAndCols
 AcidGenerics::nonzeroRowsAndCols
 
-#' @importFrom AcidGenerics order
 #' @export
+#' @importFrom AcidGenerics order
 AcidGenerics::order
 
-#' @importFrom AcidGenerics organism
 #' @export
+#' @exportMethod organism
+#' @importFrom AcidGenerics organism
 #' @importMethodsFrom AcidExperiment organism
 #' @importMethodsFrom AcidGenomes organism
-#' @exportMethod organism
 AcidGenerics::organism
 
-#' @importFrom AcidGenerics organism<-
 #' @export
-#' @importMethodsFrom AcidGenomes organism<-
 #' @exportMethod organism<-
+#' @importFrom AcidGenerics organism<-
+#' @importMethodsFrom AcidGenomes organism<-
 AcidGenerics::`organism<-`
 
-#' @importFrom AcidGenerics rankedMatrix
 #' @export
-#' @importMethodsFrom AcidBase rankedMatrix
 #' @exportMethod rankedMatrix
+#' @importFrom AcidGenerics rankedMatrix
+#' @importMethodsFrom AcidBase rankedMatrix
 AcidGenerics::rankedMatrix
 
-#' @importFrom AcidGenerics rbind
 #' @export
+#' @importFrom AcidGenerics rbind
 AcidGenerics::rbind
 
-#' @importFrom AcidSingleCell reducedDim
 #' @export
+#' @importFrom AcidSingleCell reducedDim
 AcidSingleCell::reducedDim
 
-#' @importFrom AcidSingleCell reducedDim<-
 #' @export
+#' @importFrom AcidSingleCell reducedDim<-
 AcidSingleCell::`reducedDim<-`
 
-#' @importFrom AcidSingleCell reducedDimNames
 #' @export
+#' @importFrom AcidSingleCell reducedDimNames
 AcidSingleCell::reducedDimNames
 
-#' @importFrom AcidSingleCell reducedDimNames<-
 #' @export
+#' @importFrom AcidSingleCell reducedDimNames<-
 AcidSingleCell::`reducedDimNames<-`
 
-#' @importFrom AcidSingleCell reducedDims
 #' @export
+#' @importFrom AcidSingleCell reducedDims
 AcidSingleCell::reducedDims
 
-#' @importFrom AcidSingleCell reducedDims<-
 #' @export
+#' @importFrom AcidSingleCell reducedDims<-
 AcidSingleCell::`reducedDims<-`
 
-#' @importFrom AcidGenerics removeNA
 #' @export
-#' @importMethodsFrom pipette removeNA
 #' @exportMethod removeNA
+#' @importFrom AcidGenerics removeNA
+#' @importMethodsFrom pipette removeNA
 AcidGenerics::removeNA
 
-#' @importFrom AcidGenerics rightJoin
 #' @export
-#' @importMethodsFrom AcidPlyr rightJoin
 #' @exportMethod rightJoin
+#' @importFrom AcidGenerics rightJoin
+#' @importMethodsFrom AcidPlyr rightJoin
 AcidGenerics::rightJoin
 
-#' @importFrom AcidExperiment rowData
 #' @export
+#' @importFrom AcidExperiment rowData
 AcidExperiment::rowData
 
-#' @importFrom AcidExperiment rowData<-
 #' @export
+#' @importFrom AcidExperiment rowData<-
 AcidExperiment::`rowData<-`
 
-#' @importFrom AcidGenerics rowMeans
 #' @export
+#' @importFrom AcidGenerics rowMeans
 AcidGenerics::rowMeans
 
-#' @importFrom AcidExperiment rowRanges
 #' @export
+#' @importFrom AcidExperiment rowRanges
 AcidExperiment::rowRanges
 
-#' @importFrom AcidExperiment rowRanges<-
 #' @export
+#' @importFrom AcidExperiment rowRanges<-
 AcidExperiment::`rowRanges<-`
 
-#' @importFrom AcidGenerics rowSums
 #' @export
+#' @importFrom AcidGenerics rowSums
 AcidGenerics::rowSums
 
-#' @importFrom AcidGenerics sampleData
 #' @export
+#' @exportMethod sampleData
+#' @importFrom AcidGenerics sampleData
 #' @importMethodsFrom AcidExperiment sampleData
 #' @importMethodsFrom AcidSingleCell sampleData
-#' @exportMethod sampleData
 AcidGenerics::sampleData
 
-#' @importFrom AcidGenerics sampleData<-
 #' @export
+#' @exportMethod sampleData<-
+#' @importFrom AcidGenerics sampleData<-
 #' @importMethodsFrom AcidExperiment sampleData<-
 #' @importMethodsFrom AcidSingleCell sampleData<-
-#' @exportMethod sampleData<-
 AcidGenerics::`sampleData<-`
 
-#' @importFrom AcidGenerics sampleNames
 #' @export
-#' @importMethodsFrom AcidExperiment sampleNames
 #' @exportMethod sampleNames
+#' @importFrom AcidGenerics sampleNames
+#' @importMethodsFrom AcidExperiment sampleNames
 AcidGenerics::sampleNames
 
-#' @importFrom AcidGenerics sampleNames<-
 #' @export
-#' @importMethodsFrom AcidExperiment sampleNames<-
 #' @exportMethod sampleNames<-
+#' @importFrom AcidGenerics sampleNames<-
+#' @importMethodsFrom AcidExperiment sampleNames<-
 AcidGenerics::`sampleNames<-`
 
-#' @importFrom AcidGenerics sanitizeNA
 #' @export
-#' @importMethodsFrom pipette sanitizeNA
 #' @exportMethod sanitizeNA
+#' @importFrom AcidGenerics sanitizeNA
+#' @importMethodsFrom pipette sanitizeNA
 AcidGenerics::sanitizeNA
 
-#' @importFrom AcidGenerics sanitizePercent
 #' @export
-#' @importMethodsFrom pipette sanitizePercent
 #' @exportMethod sanitizePercent
+#' @importFrom AcidGenerics sanitizePercent
+#' @importMethodsFrom pipette sanitizePercent
 AcidGenerics::sanitizePercent
 
-#' @importFrom AcidGenerics selectIf
 #' @export
-#' @importMethodsFrom AcidPlyr selectIf
 #' @exportMethod selectIf
+#' @importFrom AcidGenerics selectIf
+#' @importMethodsFrom AcidPlyr selectIf
 AcidGenerics::selectIf
 
-#' @importFrom AcidGenerics selectSamples
 #' @export
+#' @exportMethod selectSamples
+#' @importFrom AcidGenerics selectSamples
 #' @importMethodsFrom AcidExperiment selectSamples
 #' @importMethodsFrom AcidSingleCell selectSamples
-#' @exportMethod selectSamples
 AcidGenerics::selectSamples
 
-#' @importFrom AcidGenerics sem
 #' @export
-#' @importMethodsFrom AcidBase sem
 #' @exportMethod sem
+#' @importFrom AcidGenerics sem
+#' @importMethodsFrom AcidBase sem
 AcidGenerics::sem
 
-#' @importFrom AcidGenerics semiJoin
 #' @export
-#' @importMethodsFrom AcidPlyr semiJoin
 #' @exportMethod semiJoin
+#' @importFrom AcidGenerics semiJoin
+#' @importMethodsFrom AcidPlyr semiJoin
 AcidGenerics::semiJoin
 
-#' @importFrom AcidGenerics showHeader
 #' @export
-#' @importMethodsFrom AcidBase showHeader
 #' @exportMethod showHeader
+#' @importFrom AcidGenerics showHeader
+#' @importMethodsFrom AcidBase showHeader
 AcidGenerics::showHeader
 
-#' @importFrom AcidGenerics sizeFactors
 #' @export
-#' @importMethodsFrom AcidExperiment sizeFactors
 #' @exportMethod sizeFactors
+#' @importFrom AcidGenerics sizeFactors
+#' @importMethodsFrom AcidExperiment sizeFactors
 AcidGenerics::sizeFactors
 
-#' @importFrom AcidGenerics sizeFactors<-
 #' @export
-#' @importMethodsFrom AcidExperiment sizeFactors<-
 #' @exportMethod sizeFactors<-
+#' @importFrom AcidGenerics sizeFactors<-
+#' @importMethodsFrom AcidExperiment sizeFactors<-
 AcidGenerics::`sizeFactors<-`
 
-#' @importFrom AcidGenerics snakeCase
 #' @export
+#' @exportMethod snakeCase
+#' @importFrom AcidGenerics snakeCase
 #' @importMethodsFrom AcidExperiment snakeCase
 #' @importMethodsFrom syntactic snakeCase
-#' @exportMethod snakeCase
 AcidGenerics::snakeCase
 
-#' @importFrom AcidGenerics sort
 #' @export
+#' @importFrom AcidGenerics sort
 AcidGenerics::sort
 
-#' @importFrom AcidGenerics split
 #' @export
+#' @importFrom AcidGenerics split
 AcidGenerics::split
 
-#' @importFrom AcidGenerics splitByLevel
 #' @export
-#' @importMethodsFrom AcidPlyr splitByLevel
 #' @exportMethod splitByLevel
+#' @importFrom AcidGenerics splitByLevel
+#' @importMethodsFrom AcidPlyr splitByLevel
 AcidGenerics::splitByLevel
 
-#' @importFrom AcidGenerics start
 #' @export
+#' @importFrom AcidGenerics start
 AcidGenerics::start
 
-#' @importFrom AcidGenerics stripGeneVersions
 #' @export
+#' @exportMethod stripGeneVersions
+#' @importFrom AcidGenerics stripGeneVersions
 #' @importMethodsFrom AcidExperiment stripGeneVersions
 #' @importMethodsFrom AcidGenomes stripGeneVersions
-#' @exportMethod stripGeneVersions
 AcidGenerics::stripGeneVersions
 
-#' @importFrom AcidGenerics stripTranscriptVersions
 #' @export
+#' @exportMethod stripTranscriptVersions
+#' @importFrom AcidGenerics stripTranscriptVersions
 #' @importMethodsFrom AcidExperiment stripTranscriptVersions
 #' @importMethodsFrom AcidGenomes stripTranscriptVersions
-#' @exportMethod stripTranscriptVersions
 AcidGenerics::stripTranscriptVersions
 
-#' @importFrom AcidGenerics subsetPerSample
 #' @export
-#' @importMethodsFrom AcidSingleCell subsetPerSample
 #' @exportMethod subsetPerSample
+#' @importFrom AcidGenerics subsetPerSample
+#' @importMethodsFrom AcidSingleCell subsetPerSample
 AcidGenerics::subsetPerSample
 
-#' @importFrom AcidGenerics summary
 #' @export
+#' @importFrom AcidGenerics summary
 AcidGenerics::summary
 
-#' @importFrom AcidGenerics subsetPerSample
 #' @export
-#' @importMethodsFrom AcidSingleCell topCellsPerSample
 #' @exportMethod topCellsPerSample
+#' @importFrom AcidGenerics subsetPerSample
+#' @importMethodsFrom AcidSingleCell topCellsPerSample
 AcidGenerics::topCellsPerSample
 
-#' @importFrom AcidGenerics t
 #' @export
+#' @importFrom AcidGenerics t
 AcidGenerics::t
 
-#' @importFrom AcidGenerics table
 #' @export
+#' @importFrom AcidGenerics table
 AcidGenerics::table
 
-#' @importFrom AcidGenerics tail
 #' @export
+#' @importFrom AcidGenerics tail
 AcidGenerics::tail
 
-#' @importFrom AcidGenerics tpm
 #' @export
-#' @importMethodsFrom AcidExperiment tpm
 #' @exportMethod tpm
+#' @importFrom AcidGenerics tpm
+#' @importMethodsFrom AcidExperiment tpm
 AcidGenerics::tpm
 
-#' @importFrom AcidGenerics transmuteAt
 #' @export
-#' @importMethodsFrom AcidPlyr transmuteAt
 #' @exportMethod transmuteAt
+#' @importFrom AcidGenerics transmuteAt
+#' @importMethodsFrom AcidPlyr transmuteAt
 AcidGenerics::transmuteAt
 
-#' @importFrom AcidGenerics transmuteIf
 #' @export
-#' @importMethodsFrom AcidPlyr transmuteIf
 #' @exportMethod transmuteIf
+#' @importFrom AcidGenerics transmuteIf
+#' @importMethodsFrom AcidPlyr transmuteIf
 AcidGenerics::transmuteIf
 
-#' @importFrom AcidGenerics unique
 #' @export
+#' @importFrom AcidGenerics unique
 AcidGenerics::unique
 
-#' @importFrom AcidGenerics uniteInterestingGroups
 #' @export
-#' @importMethodsFrom AcidExperiment uniteInterestingGroups
 #' @exportMethod uniteInterestingGroups
+#' @importFrom AcidGenerics uniteInterestingGroups
+#' @importMethodsFrom AcidExperiment uniteInterestingGroups
 AcidGenerics::uniteInterestingGroups
 
-#' @importFrom AcidGenerics unlist
 #' @export
+#' @importFrom AcidGenerics unlist
 AcidGenerics::unlist
 
-#' @importFrom AcidGenerics unlistToDataFrame
 #' @export
-#' @importMethodsFrom AcidPlyr unlistToDataFrame
 #' @exportMethod unlistToDataFrame
+#' @importFrom AcidGenerics unlistToDataFrame
+#' @importMethodsFrom AcidPlyr unlistToDataFrame
 AcidGenerics::unlistToDataFrame
 
-#' @importFrom AcidGenerics unsplit
 #' @export
+#' @importFrom AcidGenerics unsplit
 AcidGenerics::unsplit
 
-#' @importFrom AcidGenerics upperCamelCase
 #' @export
+#' @exportMethod upperCamelCase
+#' @importFrom AcidGenerics upperCamelCase
 #' @importMethodsFrom AcidExperiment upperCamelCase
 #' @importMethodsFrom syntactic upperCamelCase
-#' @exportMethod upperCamelCase
 AcidGenerics::upperCamelCase
 
-#' @importFrom AcidGenerics var
 #' @export
+#' @importFrom AcidGenerics var
 AcidGenerics::var
 
-#' @importFrom AcidGenerics width
 #' @export
+#' @importFrom AcidGenerics width
 AcidGenerics::width
 
-#' @importFrom AcidGenerics zerosVsDepth
 #' @export
-#' @importMethodsFrom AcidSingleCell zerosVsDepth
 #' @exportMethod zerosVsDepth
+#' @importFrom AcidGenerics zerosVsDepth
+#' @importMethodsFrom AcidSingleCell zerosVsDepth
 AcidGenerics::zerosVsDepth
