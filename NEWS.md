@@ -1,4 +1,16 @@
-## basejump 0.14.6 (UNRELEASED)
+## basejump 0.14.8 (2021-02-13)
+
+### Minor changes
+
+- Added more Bioconductor reexports from BiocGenerics and S4Vectors.
+
+## basejump 0.14.7 (2021-02-12)
+
+### Minor changes
+
+- Migrated reexports of IRanges from pipette to AcidGenerics.
+
+## basejump 0.14.6 (2021-02-12)
 
 ### Minor changes
 
