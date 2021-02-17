@@ -79,6 +79,7 @@
 \alias{forceDetach}
 \alias{formalArgs}
 \alias{formalsList}
+\alias{formula}
 \alias{geneSynonyms}
 \alias{genomeMetadataNames}
 \alias{getS3method}
@@ -176,6 +177,7 @@
 \alias{txt}
 \alias{ul}
 \alias{unit}
+\alias{untar}
 \alias{updateMessage}
 \alias{validObject}
 \alias{verbatim}
@@ -440,7 +442,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase:reexports]{arrow}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase:reexports]{unit}}, \code{\link[AcidBase]{updateMessage}}}
+  \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase:reexports]{arrow}}, \code{\link[AcidBase:reexports]{as.formula}}, \code{\link[AcidBase:reexports]{axisTicks}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase:reexports]{capture.output}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase:reexports]{colorRampPalette}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase:reexports]{dist}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{ecdf}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase:reexports]{formula}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase:reexports]{getS3method}}, \code{\link[AcidBase:reexports]{hclust}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataBlacklist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase:reexports]{model.matrix}}, \code{\link[AcidBase:reexports]{packageName}}, \code{\link[AcidBase:reexports]{packageVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{prcomp}}, \code{\link[AcidBase:reexports]{printString}}, \code{\link[AcidBase:reexports]{quantile}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase:reexports]{relevel}}, \code{\link[AcidBase:reexports]{reorder}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase:reexports]{rgb}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase:reexports]{sessionInfo}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase:reexports]{unit}}, \code{\link[AcidBase:reexports]{untar}}, \code{\link[AcidBase]{updateMessage}}}
 
   \item{AcidCLI}{\code{\link[AcidCLI]{alert}}, \code{\link[AcidCLI:alert]{alertDanger}}, \code{\link[AcidCLI:alert]{alertInfo}}, \code{\link[AcidCLI:alert]{alertSuccess}}, \code{\link[AcidCLI:alert]{alertWarning}}, \code{\link[AcidCLI:list]{dl}}, \code{\link[AcidCLI:header]{h1}}, \code{\link[AcidCLI:header]{h2}}, \code{\link[AcidCLI:header]{h3}}, \code{\link[AcidCLI:header]{h4}}, \code{\link[AcidCLI:header]{h5}}, \code{\link[AcidCLI:header]{h6}}, \code{\link[AcidCLI:header]{h7}}, \code{\link[AcidCLI:list]{ol}}, \code{\link[AcidCLI]{separator}}, \code{\link[AcidCLI]{toInlineString}}, \code{\link[AcidCLI:text]{txt}}, \code{\link[AcidCLI:list]{ul}}, \code{\link[AcidCLI:text]{verbatim}}}
 
@@ -454,16 +456,10 @@ below to see their documentation.
 
   \item{AcidSingleCell}{\code{\link[AcidSingleCell:reexports]{SingleCellExperiment}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}, \code{\link[AcidSingleCell:reexports]{reducedDim}}, \code{\link[AcidSingleCell:reexports]{reducedDim<-}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames<-}}, \code{\link[AcidSingleCell:reexports]{reducedDims}}, \code{\link[AcidSingleCell:reexports]{reducedDims<-}}}
 
-  \item{grDevices}{\code{\link[grDevices]{axisTicks}}, \code{\link[grDevices:colorRamp]{colorRampPalette}}, \code{\link[grDevices]{rgb}}}
-
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
   \item{methods}{\code{\link[methods]{as}}, \code{\link[methods:methodUtilities]{formalArgs}}, \code{\link[methods]{is}}, \code{\link[methods]{new}}, \code{\link[methods]{validObject}}}
 
   \item{pipette}{\code{\link[pipette:reexports]{GRanges}}, \code{\link[pipette:reexports]{GRangesList}}, \code{\link[pipette:reexports]{Matrix}}, \code{\link[pipette:coerce]{as.data.table}}, \code{\link[pipette:coerce]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{sparseMatrix}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
-
-  \item{stats}{\code{\link[stats:formula]{as.formula}}, \code{\link[stats]{dist}}, \code{\link[stats]{ecdf}}, \code{\link[stats]{hclust}}, \code{\link[stats]{model.matrix}}, \code{\link[stats]{prcomp}}, \code{\link[stats]{quantile}}, \code{\link[stats]{relevel}}, \code{\link[stats:reorder.factor]{reorder}}}
-
-  \item{utils}{\code{\link[utils]{capture.output}}, \code{\link[utils]{getS3method}}, \code{\link[utils]{packageName}}, \code{\link[utils:packageDescription]{packageVersion}}, \code{\link[utils]{sessionInfo}}}
 }}
 
