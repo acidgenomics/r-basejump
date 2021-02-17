@@ -1,3 +1,11 @@
+## basejump 0.14.9 (2021-02-17)
+
+### Minor changes
+
+- Reexporting `formula` and `untar`, which are used in WormBase package.
+- Ensure grDevices, stats, and utils reexports inherit from AcidBase.
+- Updated dependency version cutoffs.
+
 ## basejump 0.14.8 (2021-02-13)
 
 ### Minor changes

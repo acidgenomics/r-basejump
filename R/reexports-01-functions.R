@@ -140,17 +140,17 @@ AcidBase::arrow
 #' @export
 methods::as
 
-#' @importFrom stats as.formula
+#' @importFrom AcidBase as.formula
 #' @export
-stats::as.formula
+AcidBase::as.formula
 
 #' @importFrom pipette assignAndSaveData
 #' @export
 pipette::assignAndSaveData
 
-#' @importFrom grDevices axisTicks
+#' @importFrom AcidBase axisTicks
 #' @export
-grDevices::axisTicks
+AcidBase::axisTicks
 
 #' @importFrom AcidBase barcodePattern
 #' @export
@@ -164,17 +164,17 @@ AcidBase::basenameSansExt
 #' @export
 pipette::cacheURL
 
-#' @importFrom utils capture.output
+#' @importFrom AcidBase capture.output
 #' @export
-utils::capture.output
+AcidBase::capture.output
 
 #' @importFrom AcidBase classContains
 #' @export
 AcidBase::classContains
 
-#' @importFrom grDevices colorRampPalette
+#' @importFrom AcidBase colorRampPalette
 #' @export
-grDevices::colorRampPalette
+AcidBase::colorRampPalette
 
 #' @importFrom pipette column_to_rownames
 #' @export
@@ -236,9 +236,9 @@ AcidExperiment::detectLanes
 #' @export
 AcidGenomes::detectOrganism
 
-#' @importFrom stats dist
+#' @importFrom AcidBase dist
 #' @export
-stats::dist
+AcidBase::dist
 
 #' @importFrom AcidCLI dl
 #' @export
@@ -268,9 +268,9 @@ AcidGenomes::downloadRefSeqGenome
 #' @export
 AcidGenomes::downloadUCSCGenome
 
-#' @importFrom stats ecdf
+#' @importFrom AcidBase ecdf
 #' @export
-stats::ecdf
+AcidBase::ecdf
 
 #' @importFrom AcidGenomes emptyRanges
 #' @export
@@ -300,6 +300,10 @@ methods::formalArgs
 #' @export
 AcidBase::formalsList
 
+#' @importFrom AcidBase formula
+#' @export
+AcidBase::formula
+
 #' @importFrom AcidGenomes geneSynonyms
 #' @export
 AcidGenomes::geneSynonyms
@@ -308,9 +312,9 @@ AcidGenomes::geneSynonyms
 #' @export
 AcidBase::genomeMetadataNames
 
-#' @importFrom utils getS3method
+#' @importFrom AcidBase getS3method
 #' @export
-utils::getS3method
+AcidBase::getS3method
 
 #' @importFrom pipette getURL
 #' @export
@@ -348,9 +352,9 @@ AcidCLI::h6
 #' @export
 AcidCLI::h7
 
-#' @importFrom stats hclust
+#' @importFrom AcidBase hclust
 #' @export
-stats::hclust
+AcidBase::hclust
 
 #' @importFrom pipette import
 #' @export
@@ -548,9 +552,9 @@ AcidExperiment::minimalSampleData
 #' @export
 AcidBase::minorVersion
 
-#' @importFrom stats model.matrix
+#' @importFrom AcidBase model.matrix
 #' @export
-stats::model.matrix
+AcidBase::model.matrix
 
 #' @importFrom pipette naStrings
 #' @export
@@ -564,21 +568,21 @@ methods::new
 #' @export
 AcidCLI::ol
 
-#' @importFrom utils packageName
+#' @importFrom AcidBase packageName
 #' @export
-utils::packageName
+AcidBase::packageName
 
-#' @importFrom utils packageVersion
+#' @importFrom AcidBase packageVersion
 #' @export
-utils::packageVersion
+AcidBase::packageVersion
 
 #' @importFrom AcidBase pasteURL
 #' @export
 AcidBase::pasteURL
 
-#' @importFrom stats prcomp
+#' @importFrom AcidBase prcomp
 #' @export
-stats::prcomp
+AcidBase::prcomp
 
 #' @importFrom AcidMarkdown prepareTemplate
 #' @export
@@ -588,9 +592,9 @@ AcidMarkdown::prepareTemplate
 #' @export
 AcidBase::printString
 
-#' @importFrom stats quantile
+#' @importFrom AcidBase quantile
 #' @export
-stats::quantile
+AcidBase::quantile
 
 #' @importFrom pipette rbindlist
 #' @export
@@ -600,21 +604,21 @@ pipette::rbindlist
 #' @export
 AcidBase::realpath
 
-#' @importFrom stats relevel
+#' @importFrom AcidBase relevel
 #' @export
-stats::relevel
+AcidBase::relevel
 
-#' @importFrom stats reorder
+#' @importFrom AcidBase reorder
 #' @export
-stats::reorder
+AcidBase::reorder
 
 #' @importFrom AcidBase requireNamespaces
 #' @export
 AcidBase::requireNamespaces
 
-#' @importFrom grDevices rgb
+#' @importFrom AcidBase rgb
 #' @export
-grDevices::rgb
+AcidBase::rgb
 
 #' @importFrom pipette rownames_to_column
 #' @export
@@ -640,9 +644,9 @@ AcidCLI::separator
 #' @export
 AcidExperiment::session_info
 
-#' @importFrom utils sessionInfo
+#' @importFrom AcidBase sessionInfo
 #' @export
-utils::sessionInfo
+AcidBase::sessionInfo
 
 #' @importFrom AcidGenerics setdiff
 #' @export
@@ -687,6 +691,10 @@ AcidCLI::ul
 #' @importFrom AcidBase unit
 #' @export
 AcidBase::unit
+
+#' @importFrom AcidBase untar
+#' @export
+AcidBase::untar
 
 #' @importFrom AcidBase updateMessage
 #' @export

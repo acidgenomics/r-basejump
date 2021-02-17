@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.14.8
-Date: 2021-02-13
+Version: 0.14.9
+Date: 2021-02-17
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -35,17 +35,17 @@ License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.3.7),
+    AcidBase (>= 0.3.8),
     AcidCLI (>= 0.0.6),
     AcidExperiment (>= 0.1.7),
     AcidGenerics (>= 0.5.14),
-    AcidGenomes (>= 0.2.4),
+    AcidGenomes (>= 0.2.5),
     AcidMarkdown (>= 0.1.0),
-    AcidPlyr (>= 0.1.10),
+    AcidPlyr (>= 0.1.11),
     AcidSingleCell (>= 0.1.4),
     magrittr (>= 2.0),
     methods,
-    pipette (>= 0.5.9),
+    pipette (>= 0.5.10),
     syntactic (>= 0.4.4)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
