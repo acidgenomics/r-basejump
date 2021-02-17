@@ -31,7 +31,7 @@ URL:
     https://r.acidgenomics.com/packages/basejump/,
     https://github.com/acidgenomics/r-basejump/
 BugReports: https://github.com/acidgenomics/r-basejump/issues/
-License: GPL-3
+License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
