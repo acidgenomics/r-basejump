@@ -550,6 +550,12 @@ AcidGenerics::mapGenesToRownames
 AcidGenerics::mapGenesToSymbols
 
 #' @export
+#' @exportMethod mapToDataFrame
+#' @importFrom AcidGenerics mapToDataFrame
+#' @importMethodsFrom AcidPlyr mapToDataFrame
+AcidGenerics::mapToDataFrame
+
+#' @export
 #' @importFrom AcidGenerics mapply
 AcidGenerics::mapply
 
@@ -718,6 +724,12 @@ AcidGenerics::rankedMatrix
 #' @export
 #' @importFrom AcidGenerics rbind
 AcidGenerics::rbind
+
+#' @export
+#' @exportMethod rbindToDataFrame
+#' @importFrom AcidGenerics rbindToDataFrame
+#' @importMethodsFrom AcidPlyr rbindToDataFrame
+AcidGenerics::rbindToDataFrame
 
 #' @export
 #' @importFrom AcidSingleCell reducedDim
@@ -1007,6 +1019,7 @@ AcidGenerics::uniteInterestingGroups
 #' @importFrom AcidGenerics unlist
 AcidGenerics::unlist
 
+## NOTE Remove this in a future update.
 #' @export
 #' @exportMethod unlistToDataFrame
 #' @importFrom AcidGenerics unlistToDataFrame
