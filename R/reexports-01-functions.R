@@ -89,6 +89,10 @@ AcidGenerics::SplitDataFrameList
 #' @export
 AcidExperiment::SummarizedExperiment
 
+#' @importFrom AcidBase URLencode
+#' @export
+AcidBase::URLencode
+
 #' @importFrom magrittr %<>%
 #' @export
 magrittr::`%<>%`
