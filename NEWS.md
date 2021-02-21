@@ -1,3 +1,11 @@
+## basejump 0.14.10 (2021-02-21)
+
+### Minor changes
+
+- Now reexporting `mapToDataFrame` and `rbindToDataFrame` from AcidPlyr.
+  Note that `unlistToDataFrame` is now deprecated, in favor of `mapToDataFrame`,
+  and will be removed in a future release.
+
 ## basejump 0.14.9 (2021-02-17)
 
 ### Minor changes
