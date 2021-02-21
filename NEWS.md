@@ -1,3 +1,10 @@
+## basejump 0.4.11 (2021-02-21)
+
+### Minor changes
+
+- Including `URLencode` from utils via AcidBase as a reexport, which is used
+  in the Cellosaurus package.
+
 ## basejump 0.14.10 (2021-02-21)
 
 ### Minor changes
