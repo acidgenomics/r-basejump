@@ -1,3 +1,9 @@
+## basejump 0.4.13 (2021-02-22)
+
+### Minor changes
+
+- Including `seqnames` in reexports, which is used in bcbioRNASeq.
+
 ## basejump 0.4.12 (2021-02-22)
 
 ### Minor changes
