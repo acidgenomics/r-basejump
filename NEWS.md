@@ -1,3 +1,10 @@
+## basejump 0.4.12 (2021-02-22)
+
+### Minor changes
+
+- Including `getListElement` from S4Vectors via AcidGenerics, which is used
+  in bcbioRNASeq.
+
 ## basejump 0.4.11 (2021-02-21)
 
 ### Minor changes
