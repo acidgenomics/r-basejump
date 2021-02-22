@@ -883,6 +883,10 @@ AcidGenerics::semiJoin
 AcidGenerics::setdiff
 
 #' @export
+#' @importFrom pipette seqnames
+pipette::seqnames
+
+#' @export
 #' @exportMethod showHeader
 #' @importFrom AcidGenerics showHeader
 #' @importMethodsFrom AcidBase showHeader

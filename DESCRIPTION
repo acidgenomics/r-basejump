@@ -1,7 +1,7 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.14.12
+Version: 0.14.13
 Date: 2021-02-22
 Authors@R: c(
     person(
@@ -45,7 +45,7 @@ Imports:
     AcidSingleCell (>= 0.1.4),
     magrittr (>= 2.0),
     methods,
-    pipette (>= 0.5.10),
+    pipette (>= 0.5.12),
     syntactic (>= 0.4.4)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
