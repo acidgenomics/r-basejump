@@ -401,6 +401,10 @@ AcidGenerics::geometricMean
 AcidGenerics::get
 
 #' @export
+#' @importFrom AcidGenerics getListElement
+AcidGenerics::getListElement
+
+#' @export
 #' @importFrom AcidGenerics grep
 AcidGenerics::grep
 
