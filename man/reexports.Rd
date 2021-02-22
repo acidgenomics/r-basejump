@@ -352,6 +352,7 @@
 \alias{selectSamples}
 \alias{sem}
 \alias{semiJoin}
+\alias{seqnames}
 \alias{showHeader}
 \alias{sizeFactors}
 \alias{sizeFactors<-}
@@ -464,6 +465,6 @@ below to see their documentation.
 
   \item{methods}{\code{\link[methods]{as}}, \code{\link[methods:methodUtilities]{formalArgs}}, \code{\link[methods]{is}}, \code{\link[methods]{new}}, \code{\link[methods]{validObject}}}
 
-  \item{pipette}{\code{\link[pipette:reexports]{GRanges}}, \code{\link[pipette:reexports]{GRangesList}}, \code{\link[pipette:reexports]{Matrix}}, \code{\link[pipette:coerce]{as.data.table}}, \code{\link[pipette:coerce]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{sparseMatrix}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
+  \item{pipette}{\code{\link[pipette:reexports]{GRanges}}, \code{\link[pipette:reexports]{GRangesList}}, \code{\link[pipette:reexports]{Matrix}}, \code{\link[pipette:coerce]{as.data.table}}, \code{\link[pipette:coerce]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{seqnames}}, \code{\link[pipette:reexports]{sparseMatrix}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
 }}
 
