@@ -13,6 +13,10 @@ AcidGenerics::DataFrame
 #' @export
 AcidGenerics::DataFrameList
 
+#' @importFrom AcidGenomes EntrezGeneInfo
+#' @export
+AcidGenomes::EntrezGeneInfo
+
 #' @importFrom AcidGenerics FactorList
 #' @export
 AcidGenerics::FactorList

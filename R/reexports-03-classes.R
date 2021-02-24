@@ -58,6 +58,12 @@ NULL
 #' @rdname reexports
 NULL
 
+#' @exportClass EntrezGeneInfo
+#' @importClassesFrom AcidGenomes EntrezGeneInfo
+#' @name EntrezGeneInfo-class
+#' @rdname reexports
+NULL
+
 #' @exportClass Factor
 #' @importClassesFrom AcidGenerics Factor
 #' @name Factor-class
