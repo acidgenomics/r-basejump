@@ -1,3 +1,11 @@
+## basejump 0.4.14 (2021-02-24)
+
+### Minor changes
+
+- Updated dependency versions.
+- Including some additional reexports from AcidGenomes, such as
+  `EntrezGeneInfo`.
+
 ## basejump 0.4.13 (2021-02-22)
 
 ### Minor changes
