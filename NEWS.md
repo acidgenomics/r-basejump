@@ -1,3 +1,10 @@
+## basejump 0.4.15 (2021-02-26)
+
+### Minor changes
+
+- Deprecated `metadataBlacklist` in favor of `metadataDenylist`.
+- Updated dependency version cutoffs.
+
 ## basejump 0.4.14 (2021-02-24)
 
 ### Minor changes

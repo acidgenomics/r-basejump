@@ -532,9 +532,9 @@ AcidMarkdown::mdPlots
 #' @export
 AcidMarkdown::mdTables
 
-#' @importFrom AcidBase metadataBlacklist
+#' @importFrom AcidBase metadataDenylist
 #' @export
-AcidBase::metadataBlacklist
+AcidBase::metadataDenylist
 
 #' @importFrom AcidBase methodFormals
 #' @export
