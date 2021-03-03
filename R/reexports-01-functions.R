@@ -232,6 +232,10 @@ AcidGenomes::currentUCSCGenomeBuild
 #' @export
 AcidGenomes::currentWormBaseVersion
 
+#' @importFrom AcidBase data
+#' @export
+AcidBase::data
+
 #' @importFrom AcidBase decompress
 #' @export
 AcidBase::decompress
@@ -531,6 +535,10 @@ AcidMarkdown::mdPlots
 #' @importFrom AcidMarkdown mdTables
 #' @export
 AcidMarkdown::mdTables
+
+#' @importFrom AcidBase median
+#' @export
+AcidBase::median
 
 #' @importFrom AcidBase metadataDenylist
 #' @export
