@@ -866,6 +866,10 @@ AcidGenerics::sanitizeNA
 AcidGenerics::sanitizePercent
 
 #' @export
+#' @importFrom AcidGenerics sapply
+AcidGenerics::sapply
+
+#' @export
 #' @importFrom AcidGenerics sd
 AcidGenerics::sd
 
