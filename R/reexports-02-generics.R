@@ -149,6 +149,7 @@ AcidGenerics::atomize
 #' @exportMethod autopadZeros
 #' @importFrom AcidGenerics autopadZeros
 #' @importMethodsFrom AcidExperiment autopadZeros
+#' @importMethodsFrom syntactic autopadZeros
 AcidGenerics::autopadZeros
 
 #' @export
@@ -897,6 +898,12 @@ AcidGenerics::sem
 #' @importFrom AcidGenerics semiJoin
 #' @importMethodsFrom AcidPlyr semiJoin
 AcidGenerics::semiJoin
+
+#' @export
+#' @exportMethod sentenceCase
+#' @importFrom AcidGenerics sentenceCase
+#' @importMethodsFrom syntactic sentenceCase
+AcidGenerics::sentenceCase
 
 #' @export
 #' @importFrom AcidGenerics setdiff
