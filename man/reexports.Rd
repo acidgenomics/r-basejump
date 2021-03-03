@@ -63,6 +63,7 @@
 \alias{currentRefSeqVersion}
 \alias{currentUCSCGenomeBuild}
 \alias{currentWormBaseVersion}
+\alias{data}
 \alias{decompress}
 \alias{detectLanes}
 \alias{detectOrganism}
@@ -138,6 +139,7 @@
 \alias{mdList}
 \alias{mdPlots}
 \alias{mdTables}
+\alias{median}
 \alias{metadataDenylist}
 \alias{methodFormals}
 \alias{methodFunction}
@@ -279,6 +281,8 @@
 \alias{lapply}
 \alias{leftJoin}
 \alias{logRatioToFoldChange}
+\alias{logcounts}
+\alias{logcounts<-}
 \alias{makeDimnames}
 \alias{makeLabel}
 \alias{makeNames}
@@ -310,6 +314,8 @@
 \alias{na.omit}
 \alias{ncol}
 \alias{nonzeroRowsAndCols}
+\alias{normcounts}
+\alias{normcounts<-}
 \alias{nrow}
 \alias{order}
 \alias{organism}
@@ -450,7 +456,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AcidBase}{\code{\link[AcidBase:reexports]{URLencode}}, \code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase:reexports]{arrow}}, \code{\link[AcidBase:reexports]{as.formula}}, \code{\link[AcidBase:reexports]{axisTicks}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase:reexports]{capture.output}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase:reexports]{colorRampPalette}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase:reexports]{dist}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{ecdf}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase:reexports]{formula}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase:reexports]{getS3method}}, \code{\link[AcidBase:reexports]{hclust}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase:metadataDenylist]{metadataBlacklist}}, \code{\link[AcidBase]{metadataDenylist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase:reexports]{model.matrix}}, \code{\link[AcidBase:reexports]{packageName}}, \code{\link[AcidBase:reexports]{packageVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{prcomp}}, \code{\link[AcidBase]{printString}}, \code{\link[AcidBase:reexports]{quantile}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase:reexports]{relevel}}, \code{\link[AcidBase:reexports]{reorder}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase:reexports]{rgb}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase:reexports]{sessionInfo}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase:reexports]{unit}}, \code{\link[AcidBase:reexports]{untar}}, \code{\link[AcidBase]{updateMessage}}}
+  \item{AcidBase}{\code{\link[AcidBase:reexports]{URLencode}}, \code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase:reexports]{arrow}}, \code{\link[AcidBase:reexports]{as.formula}}, \code{\link[AcidBase:reexports]{axisTicks}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase:reexports]{capture.output}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase:reexports]{colorRampPalette}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{compressExtPattern}}, \code{\link[AcidBase:reexports]{data}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase:reexports]{dist}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{ecdf}}, \code{\link[AcidBase:reexports]{extPattern}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{formalsList}}, \code{\link[AcidBase:reexports]{formula}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase:reexports]{getS3method}}, \code{\link[AcidBase:reexports]{hclust}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase:reexports]{median}}, \code{\link[AcidBase:metadataDenylist]{metadataBlacklist}}, \code{\link[AcidBase]{metadataDenylist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase:reexports]{model.matrix}}, \code{\link[AcidBase:reexports]{packageName}}, \code{\link[AcidBase:reexports]{packageVersion}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{prcomp}}, \code{\link[AcidBase]{printString}}, \code{\link[AcidBase:reexports]{quantile}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase:reexports]{relevel}}, \code{\link[AcidBase:reexports]{reorder}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase:reexports]{rgb}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase:reexports]{sessionInfo}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase:reexports]{unit}}, \code{\link[AcidBase:reexports]{untar}}, \code{\link[AcidBase]{updateMessage}}}
 
   \item{AcidCLI}{\code{\link[AcidCLI]{alert}}, \code{\link[AcidCLI:alert]{alertDanger}}, \code{\link[AcidCLI:alert]{alertInfo}}, \code{\link[AcidCLI:alert]{alertSuccess}}, \code{\link[AcidCLI:alert]{alertWarning}}, \code{\link[AcidCLI:list]{dl}}, \code{\link[AcidCLI:header]{h1}}, \code{\link[AcidCLI:header]{h2}}, \code{\link[AcidCLI:header]{h3}}, \code{\link[AcidCLI:header]{h4}}, \code{\link[AcidCLI:header]{h5}}, \code{\link[AcidCLI:header]{h6}}, \code{\link[AcidCLI:header]{h7}}, \code{\link[AcidCLI:list]{ol}}, \code{\link[AcidCLI]{separator}}, \code{\link[AcidCLI]{toInlineString}}, \code{\link[AcidCLI:text]{txt}}, \code{\link[AcidCLI:list]{ul}}, \code{\link[AcidCLI:text]{verbatim}}}
 
@@ -462,7 +468,7 @@ below to see their documentation.
 
   \item{AcidMarkdown}{\code{\link[AcidMarkdown]{markdownHeader}}, \code{\link[AcidMarkdown]{markdownLink}}, \code{\link[AcidMarkdown]{markdownList}}, \code{\link[AcidMarkdown]{markdownPlots}}, \code{\link[AcidMarkdown]{markdownTables}}, \code{\link[AcidMarkdown:markdownHeader]{mdHeader}}, \code{\link[AcidMarkdown:markdownLink]{mdLink}}, \code{\link[AcidMarkdown:markdownList]{mdList}}, \code{\link[AcidMarkdown:markdownPlots]{mdPlots}}, \code{\link[AcidMarkdown:markdownTables]{mdTables}}, \code{\link[AcidMarkdown]{prepareTemplate}}}
 
-  \item{AcidSingleCell}{\code{\link[AcidSingleCell:reexports]{SingleCellExperiment}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}, \code{\link[AcidSingleCell:reexports]{reducedDim}}, \code{\link[AcidSingleCell:reexports]{reducedDim<-}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames<-}}, \code{\link[AcidSingleCell:reexports]{reducedDims}}, \code{\link[AcidSingleCell:reexports]{reducedDims<-}}}
+  \item{AcidSingleCell}{\code{\link[AcidSingleCell:reexports]{SingleCellExperiment}}, \code{\link[AcidSingleCell:reexports]{logcounts}}, \code{\link[AcidSingleCell:reexports]{logcounts<-}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}, \code{\link[AcidSingleCell:reexports]{normcounts}}, \code{\link[AcidSingleCell:reexports]{normcounts<-}}, \code{\link[AcidSingleCell:reexports]{reducedDim}}, \code{\link[AcidSingleCell:reexports]{reducedDim<-}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames<-}}, \code{\link[AcidSingleCell:reexports]{reducedDims}}, \code{\link[AcidSingleCell:reexports]{reducedDims<-}}}
 
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 

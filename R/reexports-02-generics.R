@@ -500,6 +500,14 @@ AcidGenerics::leftJoin
 AcidGenerics::logRatioToFoldChange
 
 #' @export
+#' @importFrom AcidSingleCell logcounts
+AcidSingleCell::logcounts
+
+#' @export
+#' @importFrom AcidSingleCell logcounts<-
+AcidSingleCell::`logcounts<-`
+
+#' @export
 #' @exportMethod makeDimnames
 #' @importFrom AcidGenerics makeDimnames
 #' @importMethodsFrom syntactic makeDimnames
@@ -665,6 +673,14 @@ AcidGenerics::ncol
 #' @importFrom AcidGenerics nonzeroRowsAndCols
 #' @importMethodsFrom AcidExperiment nonzeroRowsAndCols
 AcidGenerics::nonzeroRowsAndCols
+
+#' @export
+#' @importFrom AcidSingleCell normcounts
+AcidSingleCell::normcounts
+
+#' @export
+#' @importFrom AcidSingleCell normcounts<-
+AcidSingleCell::`normcounts<-`
 
 #' @export
 #' @importFrom AcidGenerics nrow
