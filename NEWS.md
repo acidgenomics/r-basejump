@@ -1,3 +1,9 @@
+## basejump 0.4.16 (2021-03-02)
+
+### Minor changes
+
+- Including additional reexports used in pointillism package.
+
 ## basejump 0.4.15 (2021-02-26)
 
 ### Minor changes
