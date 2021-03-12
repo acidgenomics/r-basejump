@@ -1,3 +1,10 @@
+## basejump 0.4.17 (2021-03-12)
+
+### Minor changes
+
+- Including useful stringr reexports that are used in a number of downstream
+  packages.
+
 ## basejump 0.4.16 (2021-03-02)
 
 ### Minor changes
