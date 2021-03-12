@@ -684,6 +684,80 @@ pipette::sparseMatrix
 #' @export
 AcidBase::standardizeCall
 
+#' @importFrom stringr str_detect
+#' @export
+stringr::str_detect
+
+#' @importFrom stringr str_dup
+#' @export
+stringr::str_dup
+
+#' @importFrom stringr str_extract
+#' @export
+stringr::str_extract
+
+#' @importFrom stringr str_extract_all
+#' @export
+stringr::str_extract_all
+
+#' @importFrom stringr str_length
+#' @export
+stringr::str_length
+
+#' @importFrom stringr str_locate_all
+#' @export
+stringr::str_locate_all
+
+#' @importFrom stringr str_match
+#' @export
+stringr::str_match
+
+#' @importFrom stringr str_match_all
+#' @export
+stringr::str_match_all
+
+#' @importFrom stringr str_pad
+#' @export
+stringr::str_pad
+
+#' @importFrom stringr str_replace
+#' @export
+stringr::str_replace
+
+#' @importFrom stringr str_replace_all
+#' @export
+stringr::str_replace_all
+
+#' @importFrom stringr str_replace_na
+#' @export
+stringr::str_replace_na
+
+#' @importFrom stringr str_split
+#' @export
+stringr::str_split
+
+#' @importFrom stringr str_split_fixed
+#' @export
+stringr::str_split_fixed
+
+#' @importFrom stringr str_sub
+#' @export
+stringr::str_sub
+
+#' @importFrom stringr str_subset
+#' @export
+stringr::str_subset
+
+## Consider including these:
+## - str_to_lower
+## - str_to_sentence
+## - str_to_title
+## - str_to_upper
+
+#' @importFrom stringr str_trunc
+#' @export
+stringr::str_trunc
+
 #' @importFrom pipette tibble
 #' @export
 pipette::tibble

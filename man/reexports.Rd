@@ -176,6 +176,23 @@
 \alias{showSlotInfo}
 \alias{sparseMatrix}
 \alias{standardizeCall}
+\alias{str_detect}
+\alias{str_dup}
+\alias{str_extract}
+\alias{str_extract_all}
+\alias{str_length}
+\alias{str_locate_all}
+\alias{str_match}
+\alias{str_match_all}
+\alias{str_pad}
+\alias{str_replace}
+\alias{str_replace_all}
+\alias{str_replace_na}
+\alias{str_split}
+\alias{str_split_fixed}
+\alias{str_sub}
+\alias{str_subset}
+\alias{str_trunc}
 \alias{tibble}
 \alias{toInlineString}
 \alias{transmit}
@@ -477,5 +494,7 @@ below to see their documentation.
   \item{methods}{\code{\link[methods]{as}}, \code{\link[methods:methodUtilities]{formalArgs}}, \code{\link[methods]{is}}, \code{\link[methods]{new}}, \code{\link[methods]{validObject}}}
 
   \item{pipette}{\code{\link[pipette:reexports]{GRanges}}, \code{\link[pipette:reexports]{GRangesList}}, \code{\link[pipette:reexports]{Matrix}}, \code{\link[pipette:coerce]{as.data.table}}, \code{\link[pipette:coerce]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{import}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{localOrRemoteFile}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{seqnames}}, \code{\link[pipette:reexports]{sparseMatrix}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
+
+  \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_dup}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr:str_extract]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr:str_locate]{str_locate_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr:str_match]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr:str_replace]{str_replace_all}}, \code{\link[stringr]{str_replace_na}}, \code{\link[stringr]{str_split}}, \code{\link[stringr:str_split]{str_split_fixed}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}, \code{\link[stringr]{str_trunc}}}
 }}
 
