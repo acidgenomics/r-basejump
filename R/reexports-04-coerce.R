@@ -1,11 +1,3 @@
-#' @importFrom methods coerce
-#' @export
-#' @importMethodsFrom pipette coerce
-#' @exportMethod coerce
-methods::coerce
-
-
-
 setAs(
     from = "DataFrame",
     to = "data.table",
