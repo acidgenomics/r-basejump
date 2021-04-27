@@ -1,4 +1,123 @@
-## basejump 0.14.0 (2020-02-06)
+## basejump 0.4.17 (2021-03-12)
+
+### Minor changes
+
+- Including useful stringr reexports that are used in a number of downstream
+  packages.
+
+## basejump 0.4.16 (2021-03-02)
+
+### Minor changes
+
+- Including additional reexports used in pointillism package.
+
+## basejump 0.4.15 (2021-02-26)
+
+### Minor changes
+
+- Deprecated `metadataBlacklist` in favor of `metadataDenylist`.
+- Updated dependency version cutoffs.
+
+## basejump 0.4.14 (2021-02-24)
+
+### Minor changes
+
+- Updated dependency versions.
+- Including some additional reexports from AcidGenomes, such as
+  `EntrezGeneInfo`.
+
+## basejump 0.4.13 (2021-02-22)
+
+### Minor changes
+
+- Including `seqnames` in reexports, which is used in bcbioRNASeq.
+
+## basejump 0.4.12 (2021-02-22)
+
+### Minor changes
+
+- Including `getListElement` from S4Vectors via AcidGenerics, which is used
+  in bcbioRNASeq.
+
+## basejump 0.4.11 (2021-02-21)
+
+### Minor changes
+
+- Including `URLencode` from utils via AcidBase as a reexport, which is used
+  in the Cellosaurus package.
+
+## basejump 0.14.10 (2021-02-21)
+
+### Minor changes
+
+- Now reexporting `mapToDataFrame` and `rbindToDataFrame` from AcidPlyr.
+  Note that `unlistToDataFrame` is now deprecated, in favor of `mapToDataFrame`,
+  and will be removed in a future release.
+
+## basejump 0.14.9 (2021-02-17)
+
+### Minor changes
+
+- Reexporting `formula` and `untar`, which are used in WormBase package.
+- Ensure grDevices, stats, and utils reexports inherit from AcidBase.
+- Updated dependency version cutoffs.
+
+## basejump 0.14.8 (2021-02-13)
+
+### Minor changes
+
+- Added more Bioconductor reexports from BiocGenerics and S4Vectors.
+- Updated dependency versions.
+
+## basejump 0.14.7 (2021-02-12)
+
+### Minor changes
+
+- Migrated reexports of IRanges from pipette to AcidGenerics.
+
+## basejump 0.14.6 (2021-02-12)
+
+### Minor changes
+
+- Now reexporting `end`, `start`, and `width` from AcidGenerics.
+
+## basejump 0.14.5 (2021-02-11)
+
+### Minor changes
+
+- Reworked the NAMESPACE to reduce the number of imported packages.
+
+## basejump 0.14.4 (2021-02-11)
+
+### Minor changes
+
+- Now reexporting additional classes defined in IRanges via pipette:
+  `CharacterList`, `FactorList`, `IntegerList`, `LogicalList`, `NumericList`,
+  and `RleList`.
+
+## basejump 0.14.3 (2021-02-10)
+
+### New functions
+
+- Reexporting some functions used downstream in DESeqAnalysis: `capture.output`,
+  `cbind`, `getS3method`, `model.matrix`, `rbind`, and `relevel`.
+
+## basejump 0.14.2 (2021-02-09)
+
+### New functions
+
+- Added more reexports from base/recommended R packages, including grDevices,
+    grid, methods, stats, and utils.
+
+## basejump 0.14.1 (2021-02-08)
+
+### Minor changes
+
+- Now re-exporting some other useful functions from SummarizedExperiment and
+  SingleCellExperiment, which are defined in AcidExperiment and AcidSingleCell
+  respectively.
+
+## basejump 0.14.0 (2021-02-06)
 
 Reworked package to simply inherit and reexport functions from other Acid
 Genomics packages, rather than defining any code directly here.

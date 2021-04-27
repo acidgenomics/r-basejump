@@ -6,7 +6,7 @@ Base functions for bioinformatics and [R][] package development.
 
 ## Installation
 
-Requirements: [R][] >= 4.0, [Bioconductor][] >= 3.11.
+Requirements: [R][] >= 4.0, [Bioconductor][] >= 3.12.
 
 ### [R][] method
 
@@ -52,7 +52,6 @@ docker run -it \
 
 The papers and software cited in our workflows are available as a [shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
 
-[biocmanager]: https://cran.r-project.org/package=BiocManager
 [bioconda]: https://bioconda.github.io/
 [bioconductor]: https://bioconductor.org/
 [conda]: https://conda.io/

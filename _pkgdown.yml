@@ -3,7 +3,6 @@ authors:
     href: https://mike.steinbaugh.com/
   Acid Genomics:
     href: https://acidgenomics.com/
-
 navbar:
   components:
      acid:
@@ -11,6 +10,10 @@ navbar:
        href: https://acidgenomics.com/
   structure:
     right: [acid, github]
-
 news:
   - one_page: false
+reference:
+  - title: Reexported classes and functions
+    contents:
+    - reexports
+url: https://r.acidgenomics.com/packages/basejump

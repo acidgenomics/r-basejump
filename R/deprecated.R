@@ -85,5 +85,12 @@ toStringUnique <- function(...) {
 
 
 
+## v0.14.15 ====================================================================
+#' @importFrom AcidBase metadataBlacklist
+#' @export
+AcidBase::metadataBlacklist
+
+
+
 ## nolint end
 ## nocov end
