@@ -1,5 +1,0 @@
-** FIXME Bioconductor seems to be connected when the package is launched.
-    library(basejump)
-    Bioconductor version 3.12 (BiocManager 1.30.12),
-    ?BiocManager::install for help
-    Not sure why this is happening, need to fix
