@@ -97,21 +97,6 @@ AcidExperiment::SummarizedExperiment
 #' @export
 AcidBase::URLencode
 
-#' @importFrom magrittr %<>%
-#' @export
-magrittr::`%<>%`
-
-#' @importFrom magrittr %$%
-magrittr::`%$%`
-
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
-
-#' @importFrom magrittr %T>%
-#' @export
-magrittr::`%T>%`
-
 #' @importFrom AcidCLI alert
 #' @export
 AcidCLI::alert
