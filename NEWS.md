@@ -1,3 +1,10 @@
+## basejump 0.4.18 (2021-05-18)
+
+### Minor changes
+
+- Removed magrittr as an import, and removed magrittr pipes as reexports.
+  Base R now supports native pipe in 4.1 release.
+
 ## basejump 0.4.17 (2021-03-12)
 
 ### Minor changes
