@@ -35,16 +35,16 @@ License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.3.13),
-    AcidCLI (>= 0.1.0),
-    AcidExperiment (>= 0.1.10),
-    AcidGenerics (>= 0.5.17),
-    AcidGenomes (>= 0.2.12),
+    AcidBase (>= 0.3.14),
+    AcidCLI (>= 0.1.1),
+    AcidExperiment (>= 0.1.12),
+    AcidGenerics (>= 0.5.18),
+    AcidGenomes (>= 0.2.14),
     AcidMarkdown (>= 0.1.1),
-    AcidPlyr (>= 0.1.18),
+    AcidPlyr (>= 0.1.20),
     AcidSingleCell (>= 0.1.7),
     methods,
-    pipette (>= 0.5.15),
+    pipette (>= 0.6.2),
     stringr (>= 1.4.0),
     syntactic (>= 0.4.5)
 Roxygen: list(markdown = TRUE)

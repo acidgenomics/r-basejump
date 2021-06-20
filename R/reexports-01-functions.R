@@ -521,10 +521,6 @@ AcidMarkdown::mdPlots
 #' @export
 AcidMarkdown::mdTables
 
-#' @importFrom AcidBase median
-#' @export
-AcidBase::median
-
 #' @importFrom AcidBase metadataDenylist
 #' @export
 AcidBase::metadataDenylist
@@ -592,10 +588,6 @@ AcidMarkdown::prepareTemplate
 #' @importFrom AcidBase printString
 #' @export
 AcidBase::printString
-
-#' @importFrom AcidBase quantile
-#' @export
-AcidBase::quantile
 
 #' @importFrom pipette rbindlist
 #' @export

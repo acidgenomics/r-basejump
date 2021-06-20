@@ -1,3 +1,11 @@
+## basejump 0.4.19 (2021-06-20)
+
+### Minor changes
+
+- Updated `median` and `quantile` reexports to import from AcidGenerics instead
+  of AcidBase. This now refers to `median` and `quantile` generics defined in
+  IRanges package, which is useful for handling of `NumericList` objects.
+
 ## basejump 0.4.18 (2021-05-18)
 
 ### Minor changes
