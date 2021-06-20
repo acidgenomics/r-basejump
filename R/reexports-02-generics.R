@@ -595,6 +595,10 @@ AcidGenerics::`mcols<-`
 AcidGenerics::mean
 
 #' @export
+#' @importFrom AcidGenerics median
+AcidGenerics::median
+
+#' @export
 #' @exportMethod melt
 #' @importFrom AcidGenerics melt
 #' @importMethodsFrom AcidExperiment melt
@@ -727,6 +731,10 @@ AcidGenerics::pmin.int
 #' @export
 #' @importFrom AcidGenerics pos
 AcidGenerics::pos
+
+#' @export
+#' @importFrom AcidGenerics quantile
+AcidGenerics::quantile
 
 #' @export
 #' @importFrom AcidGenerics ranges
