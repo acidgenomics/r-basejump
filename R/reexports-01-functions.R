@@ -645,6 +645,10 @@ AcidBase::sessionInfo
 #' @export
 AcidGenerics::setdiff
 
+#' @importFrom AcidBase simpleClass
+#' @export
+AcidBase::simpleClass
+
 #' @importFrom AcidBase shell
 #' @export
 AcidBase::shell

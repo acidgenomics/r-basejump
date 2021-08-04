@@ -1,3 +1,10 @@
+## basejump 0.14.20 (2021-08-04)
+
+### Minor changes
+
+- Added `simpleClass` reexport from AcidBase package update.
+- Updated dependency package version cutoffs.
+
 ## basejump 0.4.19 (2021-06-20)
 
 ### Minor changes
