@@ -453,10 +453,6 @@ AcidBase::majorVersion
 #' @export
 AcidSingleCell::mapCellsToSamples
 
-#' @importFrom AcidGenomes mapEnsemblBuildToUCSC
-#' @export
-AcidGenomes::mapEnsemblBuildToUCSC
-
 #' @importFrom AcidGenomes mapEnsemblReleaseToURL
 #' @export
 AcidGenomes::mapEnsemblReleaseToURL
@@ -464,10 +460,6 @@ AcidGenomes::mapEnsemblReleaseToURL
 #' @importFrom AcidGenomes mapHumanOrthologs
 #' @export
 AcidGenomes::mapHumanOrthologs
-
-#' @importFrom AcidGenomes mapUCSCBuildToEnsembl
-#' @export
-AcidGenomes::mapUCSCBuildToEnsembl
 
 #' @importFrom AcidMarkdown markdownHeader
 #' @export
