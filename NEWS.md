@@ -1,3 +1,11 @@
+## basejump 0.14.21 (2021-08-09)
+
+### Minor changes
+
+- Updated dependency version cutoffs.
+- Removed `mapEnsemblBuildToUCSC` and `mapUCSCBuildToEnsembl`, which are no
+  longer exported in the AcidGenomes package.
+
 ## basejump 0.14.20 (2021-08-04)
 
 ### Minor changes
