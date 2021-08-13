@@ -1,3 +1,5 @@
+## FIXME Add abort, inform, and warn here.
+
 ## NOTE methods reexports here are used in bcbioRNASeq and pointillism.
 ## These are safe to remove once downstream packages are updated.
 
