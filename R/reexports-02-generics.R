@@ -1062,13 +1062,6 @@ AcidGenerics::uniteInterestingGroups
 #' @importFrom AcidGenerics unlist
 AcidGenerics::unlist
 
-## NOTE Remove this in a future update.
-#' @export
-#' @exportMethod unlistToDataFrame
-#' @importFrom AcidGenerics unlistToDataFrame
-#' @importMethodsFrom AcidPlyr unlistToDataFrame
-AcidGenerics::unlistToDataFrame
-
 #' @export
 #' @importFrom AcidGenerics unsplit
 AcidGenerics::unsplit

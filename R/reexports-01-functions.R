@@ -487,14 +487,6 @@ AcidMarkdown::markdownTables
 #' @export
 AcidExperiment::matchInterestingGroups
 
-#' @importFrom AcidExperiment matchesGene2Symbol
-#' @export
-AcidExperiment::matchesGene2Symbol
-
-#' @importFrom AcidExperiment matchesInterestingGroups
-#' @export
-AcidExperiment::matchesInterestingGroups
-
 #' @importFrom AcidMarkdown mdHeader
 #' @export
 AcidMarkdown::mdHeader
@@ -732,6 +724,10 @@ stringr::str_subset
 #' @importFrom stringr str_trunc
 #' @export
 stringr::str_trunc
+
+#' @importFrom syntactic syntacticRename
+#' @export
+syntactic::syntacticRename
 
 #' @importFrom pipette tibble
 #' @export
