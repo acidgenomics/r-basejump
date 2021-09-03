@@ -99,6 +99,10 @@ AcidExperiment::SummarizedExperiment
 #' @export
 AcidBase::URLencode
 
+#' @importFrom AcidCLI abort
+#' @export
+AcidCLI::abort
+
 #' @importFrom AcidCLI alert
 #' @export
 AcidCLI::alert
