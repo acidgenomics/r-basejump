@@ -563,6 +563,14 @@ AcidBase::packageName
 #' @export
 AcidBase::packageVersion
 
+#' @importFrom AcidBase parentDir
+#' @export
+AcidBase::parentDir
+
+#' @importFrom AcidBase parentDirectory
+#' @export
+AcidBase::parentDirectory
+
 #' @importFrom AcidBase pasteURL
 #' @export
 AcidBase::pasteURL
