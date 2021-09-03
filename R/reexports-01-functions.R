@@ -741,6 +741,10 @@ stringr::str_trunc
 #' @export
 syntactic::syntacticRename
 
+#' @importFrom AcidBase tar
+#' @export
+AcidBase::tar
+
 #' @importFrom pipette tibble
 #' @export
 pipette::tibble
