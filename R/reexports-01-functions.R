@@ -594,6 +594,10 @@ AcidBase::realpath
 #' @export
 AcidBase::relevel
 
+#' @importFrom AcidBase removeFromPath
+#' @export
+AcidBase::removeFromPath
+
 #' @importFrom AcidBase reorder
 #' @export
 AcidBase::reorder
@@ -653,6 +657,10 @@ AcidBase::showSlotInfo
 #' @importFrom pipette sparseMatrix
 #' @export
 pipette::sparseMatrix
+
+#' @importFrom AcidBase splitPathString
+#' @export
+AcidBase::splitPathString
 
 #' @importFrom AcidBase standardizeCall
 #' @export
@@ -759,6 +767,10 @@ AcidCLI::txt
 #' @importFrom AcidCLI ul
 #' @export
 AcidCLI::ul
+
+#' @importFrom AcidBase uniquePathString
+#' @export
+AcidBase::uniquePathString
 
 #' @importFrom AcidBase unit
 #' @export
