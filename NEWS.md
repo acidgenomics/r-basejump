@@ -1,4 +1,21 @@
-## basejump 0.4.22 (UNRELEASED)
+## basejump 0.4.22 (2021-09-08)
+
+### New functions
+
+- Added some reexports from AcidCLI: `abort`, `inform`, `warn`.
+
+### Removed functions
+
+- Removed some deprecated functions: `matchArgsToDoCall`,
+  `matchEnsemblReleaseToURL`, `matchHumanOrthologs`, `matchesInterestingGroups`,
+  `metadataBlacklist`, `multiassignAsEnvir`, `readSampleData`, `readTx2Gene`,
+  `sortUnique`, `toStringUnique`, and `unlistToDataFrame`.
+- Removed reexports from methods package: `as`, `formalArgs`, `is`, `new`, and
+  `validObject`.
+
+### Minor changes
+
+- Updated dependency version cutoffs.
 
 ## basejump 0.14.21 (2021-08-09)
 
