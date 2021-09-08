@@ -1,8 +1,3 @@
-## FIXME Add abort, inform, and warn here.
-
-## NOTE methods reexports here are used in bcbioRNASeq and pointillism.
-## These are safe to remove once downstream packages are updated.
-
 #' @importFrom AcidGenerics CharacterList
 #' @export
 AcidGenerics::CharacterList
@@ -134,10 +129,6 @@ AcidBase::appendToBody
 #' @importFrom AcidBase arrow
 #' @export
 AcidBase::arrow
-
-#' @importFrom methods as
-#' @export
-methods::as
 
 #' @importFrom AcidBase as.formula
 #' @export
@@ -295,10 +286,6 @@ AcidBase::fileExt
 #' @export
 AcidBase::forceDetach
 
-#' @importFrom methods formalArgs
-#' @export
-methods::formalArgs
-
 #' @importFrom AcidBase formalsList
 #' @export
 AcidBase::formalsList
@@ -371,13 +358,13 @@ AcidExperiment::importSampleData
 #' @export
 AcidGenomes::importTx2Gene
 
+#' @importFrom AcidCLI inform
+#' @export
+AcidCLI::inform
+
 #' @importFrom AcidBase initDir
 #' @export
 AcidBase::initDir
-
-#' @importFrom methods is
-#' @export
-methods::is
 
 #' @importFrom AcidBase lanePattern
 #' @export
@@ -546,10 +533,6 @@ AcidBase::model.matrix
 #' @importFrom pipette naStrings
 #' @export
 pipette::naStrings
-
-#' @importFrom methods new
-#' @export
-methods::new
 
 #' @importFrom AcidCLI ol
 #' @export
@@ -777,10 +760,10 @@ AcidBase::untar
 #' @export
 AcidBase::updateMessage
 
-#' @importFrom methods validObject
-#' @export
-methods::validObject
-
 #' @importFrom AcidCLI verbatim
 #' @export
 AcidCLI::verbatim
+
+#' @importFrom AcidCLI warn
+#' @export
+AcidCLI::warn
