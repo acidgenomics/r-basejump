@@ -98,6 +98,14 @@ AcidBase::URLencode
 #' @export
 AcidCLI::abort
 
+#' @importFrom AcidBase addToPathEnd
+#' @export
+AcidBase::addToPathEnd
+
+#' @importFrom AcidBase addToPathStart
+#' @export
+AcidBase::addToPathStart
+
 #' @importFrom AcidCLI alert
 #' @export
 AcidCLI::alert
@@ -161,6 +169,10 @@ AcidBase::capture.output
 #' @importFrom AcidBase classContains
 #' @export
 AcidBase::classContains
+
+#' @importFrom AcidBase collapseToPathString
+#' @export
+AcidBase::collapseToPathString
 
 #' @importFrom AcidBase colorRampPalette
 #' @export
