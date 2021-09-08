@@ -19,5 +19,27 @@ matchesGene2Symbol <- function(...) {
 
 
 
+#' @importFrom methods as
+#' @export
+methods::as
+
+#' @importFrom methods formalArgs
+#' @export
+methods::formalArgs
+
+#' @importFrom methods is
+#' @export
+methods::is
+
+#' @importFrom methods new
+#' @export
+methods::new
+
+#' @importFrom methods validObject
+#' @export
+methods::validObject
+
+
+
 ## nolint end
 ## nocov end
