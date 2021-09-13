@@ -1,3 +1,11 @@
+## basejump 0.4.23 (2021-09-13)
+
+### Minor changes
+
+- Reworked method exports for `aggregate` and `aggregateCols`, following update
+  in AcidSingleCell that improves the consistency of `aggregate` methods.
+- Updated dependency version cutoffs of other packages.
+
 ## basejump 0.4.22 (2021-09-08)
 
 ### New functions
