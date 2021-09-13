@@ -1,5 +1,4 @@
 ## S3 generics =================================================================
-
 #' @export
 #' @importFrom pipette as_tibble
 pipette::as_tibble
@@ -11,7 +10,6 @@ pipette::as.data.table
 
 
 ## S4 generics =================================================================
-
 #' @export
 #' @exportMethod Ensembl2Entrez
 #' @importFrom AcidGenomes Ensembl2Entrez
@@ -42,6 +40,7 @@ AcidGenerics::`%in%`
 #' @exportMethod aggregate
 #' @importFrom AcidGenerics aggregate
 #' @importMethodsFrom AcidExperiment aggregate
+#' @importMethodsFrom AcidSingleCell aggregate
 AcidGenerics::aggregate
 
 #' @export
@@ -54,7 +53,6 @@ AcidGenerics::aggregateCellsToSamples
 #' @exportMethod aggregateCols
 #' @importFrom AcidGenerics aggregateCols
 #' @importMethodsFrom AcidExperiment aggregateCols
-#' @importMethodsFrom AcidSingleCell aggregateCols
 AcidGenerics::aggregateCols
 
 #' @export
