@@ -182,9 +182,9 @@ AcidBase::colorRampPalette
 #' @export
 pipette::column_to_rownames
 
-#' @importFrom pipette compress
+#' @importFrom AcidBase compress
 #' @export
-pipette::compress
+AcidBase::compress
 
 #' @importFrom AcidGenomes currentEnsemblGenomeBuild
 #' @export
@@ -225,6 +225,10 @@ AcidGenomes::currentWormBaseVersion
 #' @importFrom AcidBase data
 #' @export
 AcidBase::data
+
+#' @importFrom AcidBase decompress
+#' @export
+AcidBase::decompress
 
 #' @importFrom AcidExperiment detectLanes
 #' @export
