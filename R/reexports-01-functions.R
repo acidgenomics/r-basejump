@@ -226,10 +226,6 @@ AcidGenomes::currentWormBaseVersion
 #' @export
 AcidBase::data
 
-#' @importFrom pipette decompress
-#' @export
-pipette::decompress
-
 #' @importFrom AcidExperiment detectLanes
 #' @export
 AcidExperiment::detectLanes
