@@ -182,13 +182,9 @@ AcidBase::colorRampPalette
 #' @export
 pipette::column_to_rownames
 
-#' @importFrom AcidBase compress
+#' @importFrom pipette compress
 #' @export
-AcidBase::compress
-
-#' @importFrom AcidBase compressExtPattern
-#' @export
-AcidBase::compressExtPattern
+pipette::compress
 
 #' @importFrom AcidGenomes currentEnsemblGenomeBuild
 #' @export
@@ -230,9 +226,9 @@ AcidGenomes::currentWormBaseVersion
 #' @export
 AcidBase::data
 
-#' @importFrom AcidBase decompress
+#' @importFrom pipette decompress
 #' @export
-AcidBase::decompress
+pipette::decompress
 
 #' @importFrom AcidExperiment detectLanes
 #' @export
@@ -281,10 +277,6 @@ AcidBase::ecdf
 #' @importFrom AcidGenomes emptyRanges
 #' @export
 AcidGenomes::emptyRanges
-
-#' @importFrom AcidBase extPattern
-#' @export
-AcidBase::extPattern
 
 #' @importFrom AcidBase fileDepth
 #' @export
