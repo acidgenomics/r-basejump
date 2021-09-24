@@ -287,10 +287,6 @@ AcidGenerics::`counts<-`
 AcidGenerics::decode
 
 #' @export
-#' @importFrom AcidGenerics decompress
-AcidGenerics::decompress
-
-#' @export
 #' @importFrom AcidGenerics dims
 AcidGenerics::dims
 
