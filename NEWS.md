@@ -1,3 +1,5 @@
+## basejump 0.4.24 (UNRELEASED)
+
 ## basejump 0.4.23 (2021-09-13)
 
 ### Minor changes
