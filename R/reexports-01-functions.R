@@ -290,10 +290,6 @@ AcidBase::fileExt
 #' @export
 AcidBase::forceDetach
 
-#' @importFrom AcidBase formalsList
-#' @export
-AcidBase::formalsList
-
 #' @importFrom AcidBase formula
 #' @export
 AcidBase::formula
@@ -385,10 +381,6 @@ pipette::loadDataAsName
 #' @importFrom pipette loadRemoteData
 #' @export
 pipette::loadRemoteData
-
-#' @importFrom pipette localOrRemoteFile
-#' @export
-pipette::localOrRemoteFile
 
 #' @importFrom AcidGenomes makeGRangesFromEnsDb
 #' @export
