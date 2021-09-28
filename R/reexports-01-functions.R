@@ -34,13 +34,13 @@ AcidGenomes::EntrezGeneInfo
 #' @export
 AcidGenerics::FactorList
 
-#' @importFrom pipette GRanges
+#' @importFrom AcidGenerics GRanges
 #' @export
-pipette::GRanges
+AcidGenerics::GRanges
 
-#' @importFrom pipette GRangesList
+#' @importFrom AcidGenerics GRangesList
 #' @export
-pipette::GRangesList
+AcidGenerics::GRangesList
 
 #' @importFrom AcidGenomes HGNC
 #' @export
@@ -361,10 +361,6 @@ AcidCLI::h7
 #' @importFrom AcidBase hclust
 #' @export
 AcidBase::hclust
-
-#' @importFrom pipette import
-#' @export
-pipette::import
 
 #' @importFrom AcidExperiment importSampleData
 #' @export
