@@ -89,13 +89,13 @@ NULL
 NULL
 
 #' @exportClass GRanges
-#' @importClassesFrom pipette GRanges
+#' @importClassesFrom AcidGenerics GRanges
 #' @name GRanges-class
 #' @rdname reexports
 NULL
 
 #' @exportClass GRangesList
-#' @importClassesFrom pipette GRangesList
+#' @importClassesFrom AcidGenerics GRangesList
 #' @name GRangesList-class
 #' @rdname reexports
 NULL
