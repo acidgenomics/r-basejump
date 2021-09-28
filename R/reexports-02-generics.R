@@ -438,6 +438,11 @@ AcidGenerics::headtail
 #' @importMethodsFrom AcidExperiment humanize
 AcidGenerics::humanize
 
+#' @importFrom AcidGenerics import
+#' @importMethodsFrom pipette import
+#' @export
+AcidGenerics::import
+
 #' @export
 #' @exportMethod innerJoin
 #' @importFrom AcidGenerics innerJoin
