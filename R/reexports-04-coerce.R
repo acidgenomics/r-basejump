@@ -1,3 +1,5 @@
+## FIXME Need to update with DFrame and GRanges coercion methods from pipette.
+
 setAs(
     from = "DataFrame",
     to = "data.table",
@@ -25,12 +27,12 @@ setAs(
 )
 
 setAs(
-    from = "GenomicRanges",
+    from = "GRanges",
     to = "data.table",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "GenomicRanges",
+            from = "GRanges",
             to = "data.table"
         ),
         where = "pipette"
@@ -38,12 +40,12 @@ setAs(
 )
 
 setAs(
-    from = "GenomicRanges",
+    from = "GRanges",
     to = "tbl_df",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "GenomicRanges",
+            from = "GRanges",
             to = "tbl_df"
         ),
         where = "pipette"
