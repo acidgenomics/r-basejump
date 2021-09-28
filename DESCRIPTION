@@ -43,6 +43,7 @@ Imports:
     AcidMarkdown (>= 0.1.4),
     AcidPlyr (>= 0.1.22),
     AcidSingleCell (>= 0.2.0),
+    magrittr (>= 2.0.1),
     methods,
     pipette (>= 0.8.0),
     stringr (>= 1.4.0),
