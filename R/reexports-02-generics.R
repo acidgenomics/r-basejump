@@ -76,6 +76,12 @@ AcidGenerics::anyDuplicated
 AcidGenerics::append
 
 #' @export
+#' @exportMethod as.DFrame
+#' @importFrom AcidGenerics as.DFrame
+#' @importMethodsFrom pipette as.DFrame
+AcidGenerics::as.DFrame
+
+#' @export
 #' @exportMethod as.DataFrame
 #' @importFrom AcidGenerics as.DataFrame
 #' @importMethodsFrom pipette as.DataFrame

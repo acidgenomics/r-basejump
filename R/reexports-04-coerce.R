@@ -1,4 +1,15 @@
-## FIXME Need to update with DFrame and GRanges coercion methods from pipette.
+setAs(
+    from = "DFrame",
+    to = "data.table",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "DFrame",
+            to = "data.table"
+        ),
+        where = "pipette"
+    )
+)
 
 setAs(
     from = "DataFrame",
@@ -8,6 +19,19 @@ setAs(
         signature(
             from = "DataFrame",
             to = "data.table"
+        ),
+        where = "pipette"
+    )
+)
+
+setAs(
+    from = "DFrame",
+    to = "tbl_df",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "DFrame",
+            to = "tbl_df"
         ),
         where = "pipette"
     )
@@ -86,6 +110,19 @@ setAs(
         signature(
             from = "IRanges",
             to = "tbl_df"
+        ),
+        where = "pipette"
+    )
+)
+
+setAs(
+    from = "Matrix",
+    to = "DFrame",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "Matrix",
+            to = "DFrame"
         ),
         where = "pipette"
     )
@@ -145,12 +182,38 @@ setAs(
 
 setAs(
     from = "data.table",
+    to = "DFrame",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "data.table",
+            to = "DFrame"
+        ),
+        where = "pipette"
+    )
+)
+
+setAs(
+    from = "data.table",
     to = "DataFrame",
     def = getMethod(
         f = "coerce",
         signature(
             from = "data.table",
             to = "DataFrame"
+        ),
+        where = "pipette"
+    )
+)
+
+setAs(
+    from = "tbl_df",
+    to = "DFrame",
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "tbl_df",
+            to = "DFrame"
         ),
         where = "pipette"
     )
