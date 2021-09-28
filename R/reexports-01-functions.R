@@ -1,3 +1,19 @@
+#' @importFrom magrittr %$%
+#' @export
+magrittr::`%$%`
+
+#' @importFrom magrittr %<>%
+#' @export
+magrittr::`%<>%`
+
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
+#' @importFrom magrittr %T>%
+#' @export
+magrittr::`%T>%`
+
 #' @importFrom AcidGenerics CharacterList
 #' @export
 AcidGenerics::CharacterList

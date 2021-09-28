@@ -9,6 +9,10 @@
 \alias{is}
 \alias{new}
 \alias{validObject}
+\alias{\%$\%}
+\alias{\%<>\%}
+\alias{\%>\%}
+\alias{\%T>\%}
 \alias{CharacterList}
 \alias{DataFrame}
 \alias{DataFrameList}
@@ -488,6 +492,8 @@ below to see their documentation.
   \item{AcidMarkdown}{\code{\link[AcidMarkdown]{markdownHeader}}, \code{\link[AcidMarkdown]{markdownLink}}, \code{\link[AcidMarkdown]{markdownList}}, \code{\link[AcidMarkdown]{markdownPlots}}, \code{\link[AcidMarkdown]{markdownTables}}, \code{\link[AcidMarkdown:markdownHeader]{mdHeader}}, \code{\link[AcidMarkdown:markdownLink]{mdLink}}, \code{\link[AcidMarkdown:markdownList]{mdList}}, \code{\link[AcidMarkdown:markdownPlots]{mdPlots}}, \code{\link[AcidMarkdown:markdownTables]{mdTables}}, \code{\link[AcidMarkdown]{prepareTemplate}}}
 
   \item{AcidSingleCell}{\code{\link[AcidSingleCell:reexports]{SingleCellExperiment}}, \code{\link[AcidSingleCell:reexports]{logcounts}}, \code{\link[AcidSingleCell:reexports]{logcounts<-}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}, \code{\link[AcidSingleCell:reexports]{normcounts}}, \code{\link[AcidSingleCell:reexports]{normcounts<-}}, \code{\link[AcidSingleCell:reexports]{reducedDim}}, \code{\link[AcidSingleCell:reexports]{reducedDim<-}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames<-}}, \code{\link[AcidSingleCell:reexports]{reducedDims}}, \code{\link[AcidSingleCell:reexports]{reducedDims<-}}}
+
+  \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
   \item{methods}{\code{\link[methods]{as}}, \code{\link[methods:methodUtilities]{formalArgs}}, \code{\link[methods]{is}}, \code{\link[methods]{new}}, \code{\link[methods]{validObject}}}
 
