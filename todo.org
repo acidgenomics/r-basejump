@@ -1,0 +1,1 @@
+** FIXME Put magrittr pipetes back into package.
