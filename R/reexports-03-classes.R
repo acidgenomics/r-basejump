@@ -22,9 +22,9 @@ NULL
 #' @rdname reexports
 NULL
 
-#' @exportClass DFrame
-#' @importClassesFrom AcidGenerics DFrame
-#' @name DFrame-class
+#' @exportClass DataFrame
+#' @importClassesFrom AcidGenerics DataFrame
+#' @name DataFrame-class
 #' @rdname reexports
 NULL
 
@@ -88,18 +88,6 @@ NULL
 #' @rdname reexports
 NULL
 
-#' @exportClass GRanges
-#' @importClassesFrom AcidGenerics GRanges
-#' @name GRanges-class
-#' @rdname reexports
-NULL
-
-#' @exportClass GRangesList
-#' @importClassesFrom AcidGenerics GRangesList
-#' @name GRangesList-class
-#' @rdname reexports
-NULL
-
 #' @exportClass GencodeGenes
 #' @importClassesFrom AcidGenomes GencodeGenes
 #' @name GencodeGenes-class
@@ -118,6 +106,18 @@ NULL
 #' @rdname reexports
 NULL
 
+#' @exportClass GenomicRanges
+#' @importClassesFrom AcidGenerics GenomicRanges
+#' @name GenomicRanges-class
+#' @rdname reexports
+NULL
+
+#' @exportClass GenomicRangesList
+#' @importClassesFrom AcidGenerics GenomicRangesList
+#' @name GenomicRangesList-class
+#' @rdname reexports
+NULL
+
 #' @exportClass HGNC
 #' @importClassesFrom AcidGenomes HGNC
 #' @name HGNC-class
@@ -130,9 +130,9 @@ NULL
 #' @rdname reexports
 NULL
 
-#' @exportClass IRanges
-#' @importClassesFrom AcidGenerics IRanges
-#' @name IRanges-class
+#' @exportClass IntegerRanges
+#' @importClassesFrom AcidGenerics IntegerRanges
+#' @name IntegerRanges-class
 #' @rdname reexports
 NULL
 

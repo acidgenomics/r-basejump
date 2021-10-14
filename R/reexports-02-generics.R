@@ -76,10 +76,10 @@ AcidGenerics::anyDuplicated
 AcidGenerics::append
 
 #' @export
-#' @exportMethod as.DFrame
-#' @importFrom AcidGenerics as.DFrame
-#' @importMethodsFrom pipette as.DFrame
-AcidGenerics::as.DFrame
+#' @exportMethod as.DataFrame
+#' @importFrom AcidGenerics as.DataFrame
+#' @importMethodsFrom pipette as.DataFrame
+AcidGenerics::as.DataFrame
 
 #' @export
 #' @exportMethod as.SummarizedExperiment
@@ -90,7 +90,6 @@ AcidGenerics::as.SummarizedExperiment
 #' @export
 #' @exportMethod as.data.frame
 #' @importFrom AcidGenerics as.data.frame
-#' @importMethodsFrom pipette as.data.frame
 AcidGenerics::as.data.frame
 
 #' @export
@@ -921,8 +920,8 @@ AcidGenerics::sentenceCase
 AcidGenerics::setdiff
 
 #' @export
-#' @importFrom pipette seqnames
-pipette::seqnames
+#' @importFrom AcidGenerics seqnames
+AcidGenerics::seqnames
 
 #' @export
 #' @exportMethod showHeader
@@ -970,6 +969,14 @@ AcidGenerics::start
 #' @export
 #' @importFrom AcidGenerics start<-
 AcidGenerics::`start<-`
+
+#' @export
+#' @importFrom AcidGenerics strand
+AcidGenerics::strand
+
+#' @export
+#' @importFrom AcidGenerics strand<-
+AcidGenerics::`strand<-`
 
 #' @export
 #' @exportMethod stripGeneVersions
