@@ -82,12 +82,6 @@ AcidGenerics::append
 AcidGenerics::as.DFrame
 
 #' @export
-#' @exportMethod as.DataFrame
-#' @importFrom AcidGenerics as.DataFrame
-#' @importMethodsFrom pipette as.DataFrame
-AcidGenerics::as.DataFrame
-
-#' @export
 #' @exportMethod as.SummarizedExperiment
 #' @importFrom AcidGenerics as.SummarizedExperiment
 #' @importMethodsFrom AcidExperiment as.SummarizedExperiment
