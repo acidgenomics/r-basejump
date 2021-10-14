@@ -1,10 +1,12 @@
+## Ensure that these remain current with pipette.
+
 setAs(
-    from = "DFrame",
+    from = "DataFrame",
     to = "data.table",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "DFrame",
+            from = "DataFrame",
             to = "data.table"
         ),
         where = "pipette"
@@ -12,12 +14,12 @@ setAs(
 )
 
 setAs(
-    from = "DFrame",
+    from = "DataFrame",
     to = "tbl_df",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "DFrame",
+            from = "DataFrame",
             to = "tbl_df"
         ),
         where = "pipette"
@@ -25,12 +27,12 @@ setAs(
 )
 
 setAs(
-    from = "GRanges",
+    from = "GenomicRanges",
     to = "data.table",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "GRanges",
+            from = "GenomicRanges",
             to = "data.table"
         ),
         where = "pipette"
@@ -38,12 +40,12 @@ setAs(
 )
 
 setAs(
-    from = "GRanges",
+    from = "GenomicRanges",
     to = "tbl_df",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "GRanges",
+            from = "GenomicRanges",
             to = "tbl_df"
         ),
         where = "pipette"
@@ -51,12 +53,12 @@ setAs(
 )
 
 setAs(
-    from = "IRanges",
+    from = "IntegerRanges",
     to = "data.frame",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "IRanges",
+            from = "IntegerRanges",
             to = "data.frame"
         ),
         where = "pipette"
@@ -64,12 +66,12 @@ setAs(
 )
 
 setAs(
-    from = "IRanges",
+    from = "IntegerRanges",
     to = "data.table",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "IRanges",
+            from = "IntegerRanges",
             to = "data.table"
         ),
         where = "pipette"
@@ -77,64 +79,12 @@ setAs(
 )
 
 setAs(
-    from = "IRanges",
+    from = "IntegerRanges",
     to = "tbl_df",
     def = getMethod(
         f = "coerce",
         signature(
-            from = "IRanges",
-            to = "tbl_df"
-        ),
-        where = "pipette"
-    )
-)
-
-setAs(
-    from = "Matrix",
-    to = "DFrame",
-    def = getMethod(
-        f = "coerce",
-        signature(
-            from = "Matrix",
-            to = "DFrame"
-        ),
-        where = "pipette"
-    )
-)
-
-setAs(
-    from = "Matrix",
-    to = "data.frame",
-    def = getMethod(
-        f = "coerce",
-        signature(
-            from = "Matrix",
-            to = "data.frame"
-        ),
-        where = "pipette"
-    )
-)
-
-setAs(
-    from = "data.frame",
-    to = "data.table",
-    def = getMethod(
-        f = "coerce",
-        signature(
-            from = "data.frame",
-            to = "data.table"
-        ),
-        where = "pipette"
-    )
-)
-
-setAs(
-    from = "data.frame",
-    to = "tbl_df",
-    def = getMethod(
-        f = "coerce",
-        signature(
-            from = "data.frame",
+            from = "IntegerRanges",
             to = "tbl_df"
         ),
         where = "pipette"
@@ -143,12 +93,12 @@ setAs(
 
 setAs(
     from = "data.table",
-    to = "DFrame",
+    to = "DataFrame",
     def = getMethod(
         f = "coerce",
         signature(
             from = "data.table",
-            to = "DFrame"
+            to = "DataFrame"
         ),
         where = "pipette"
     )
@@ -156,12 +106,12 @@ setAs(
 
 setAs(
     from = "tbl_df",
-    to = "DFrame",
+    to = "DataFrame",
     def = getMethod(
         f = "coerce",
         signature(
             from = "tbl_df",
-            to = "DFrame"
+            to = "DataFrame"
         ),
         where = "pipette"
     )
