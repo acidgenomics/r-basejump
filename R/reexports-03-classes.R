@@ -22,9 +22,9 @@ NULL
 #' @rdname reexports
 NULL
 
-#' @exportClass DataFrame
-#' @importClassesFrom AcidGenerics DataFrame
-#' @name DataFrame-class
+#' @exportClass DFrame
+#' @importClassesFrom AcidGenerics DFrame
+#' @name DFrame-class
 #' @rdname reexports
 NULL
 
