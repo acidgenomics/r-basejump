@@ -54,19 +54,6 @@ setAs(
 
 setAs(
     from = "IntegerRanges",
-    to = "data.frame",
-    def = getMethod(
-        f = "coerce",
-        signature(
-            from = "IntegerRanges",
-            to = "data.frame"
-        ),
-        where = "pipette"
-    )
-)
-
-setAs(
-    from = "IntegerRanges",
     to = "data.table",
     def = getMethod(
         f = "coerce",
