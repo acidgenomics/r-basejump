@@ -88,7 +88,6 @@ AcidGenerics::as.DataFrame
 AcidGenerics::as.SummarizedExperiment
 
 #' @export
-#' @exportMethod as.data.frame
 #' @importFrom AcidGenerics as.data.frame
 AcidGenerics::as.data.frame
 
