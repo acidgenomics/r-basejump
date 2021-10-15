@@ -12,16 +12,6 @@ pipette::as.data.table
 
 ## S4 generics =================================================================
 
-## FIXME barcodeRanksPerSample
-## FIXME cellCountsPerCluster
-## FIXME cellTypesPerCluster
-## FIXME clusters
-## FIXME cpm
-## FIXME diffExp
-## FIXME diffExpPerCluster
-## FIXME findMarkers
-## FIXME normalize
-
 #' @export
 #' @exportMethod Ensembl2Entrez
 #' @importFrom AcidGenomes Ensembl2Entrez
@@ -167,6 +157,12 @@ AcidGenerics::atomize
 AcidGenerics::autopadZeros
 
 #' @export
+#' @exportMethod barcodeRanksPerSample
+#' @importFrom AcidGenerics barcodeRanksPerSample
+#' @importMethodsFrom AcidSingleCell barcodeRanksPerSample
+AcidGenerics::barcodeRanksPerSample
+
+#' @export
 #' @importFrom AcidGenerics basename
 AcidGenerics::basename
 
@@ -198,6 +194,24 @@ AcidGenerics::cbind
 #' @importFrom AcidGenerics cell2sample
 #' @importMethodsFrom AcidSingleCell cell2sample
 AcidGenerics::cell2sample
+
+#' @export
+#' @exportMethod cellCountsPerCluster
+#' @importFrom AcidGenerics cellCountsPerCluster
+#' @importMethodsFrom AcidSingleCell cellCountsPerCluster
+AcidGenerics::cellCountsPerCluster
+
+#' @export
+#' @exportMethod cellTypesPerCluster
+#' @importFrom AcidGenerics cellTypesPerCluster
+#' @importMethodsFrom AcidSingleCell cellTypesPerCluster
+AcidGenerics::cellTypesPerCluster
+
+#' @export
+#' @exportMethod clusters
+#' @importFrom AcidGenerics clusters
+#' @importMethodsFrom AcidSingleCell clusters
+AcidGenerics::clusters
 
 #' @export
 #' @exportMethod coerce
@@ -296,11 +310,29 @@ AcidGenerics::counts
 AcidGenerics::`counts<-`
 
 #' @export
+#' @exportMethod cpm
+#' @importFrom AcidGenerics cpm
+#' @importMethodsFrom AcidSingleCell cpm
+AcidGenerics::cpm
+
+#' @export
 #' @exportMethod decode
 #' @importFrom AcidGenerics decode
 #' @importMethodsFrom AcidExperiment decode
 #' @importMethodsFrom pipette decode
 AcidGenerics::decode
+
+#' @export
+#' @exportMethod diffExp
+#' @importFrom AcidGenerics diffExp
+#' @importMethodsFrom AcidSingleCell diffExp
+AcidGenerics::diffExp
+
+#' @export
+#' @exportMethod diffExpPerCluster
+#' @importFrom AcidGenerics diffExpPerCluster
+#' @importMethodsFrom AcidSingleCell diffExpPerCluster
+AcidGenerics::diffExpPerCluster
 
 #' @export
 #' @importFrom AcidGenerics dims
@@ -385,6 +417,12 @@ AcidGenerics::factorize
 #' @importFrom AcidGenerics filterCells
 #' @importMethodsFrom AcidSingleCell filterCells
 AcidGenerics::filterCells
+
+#' @export
+#' @exportMethod findMarkers
+#' @importFrom AcidGenerics findMarkers
+#' @importMethodsFrom AcidSingleCell findMarkers
+AcidGenerics::findMarkers
 
 #' @export
 #' @exportMethod foldChangeToLogRatio
@@ -697,6 +735,12 @@ AcidGenerics::ncol
 #' @importFrom AcidGenerics nonzeroRowsAndCols
 #' @importMethodsFrom AcidExperiment nonzeroRowsAndCols
 AcidGenerics::nonzeroRowsAndCols
+
+#' @export
+#' @exportMethod normalize
+#' @importFrom AcidGenerics normalize
+#' @importMethodsFrom AcidSingleCell normalize
+AcidGenerics::normalize
 
 #' @export
 #' @importFrom AcidSingleCell normcounts
