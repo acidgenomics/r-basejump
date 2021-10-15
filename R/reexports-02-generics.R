@@ -12,6 +12,16 @@ pipette::as.data.table
 
 ## S4 generics =================================================================
 
+## FIXME barcodeRanksPerSample
+## FIXME cellCountsPerCluster
+## FIXME cellTypesPerCluster
+## FIXME clusters
+## FIXME cpm
+## FIXME diffExp
+## FIXME diffExpPerCluster
+## FIXME findMarkers
+## FIXME normalize
+
 #' @export
 #' @exportMethod Ensembl2Entrez
 #' @importFrom AcidGenomes Ensembl2Entrez
