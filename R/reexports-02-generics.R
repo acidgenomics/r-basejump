@@ -1,4 +1,5 @@
 ## S3 generics =================================================================
+
 #' @export
 #' @importFrom pipette as_tibble
 pipette::as_tibble
@@ -10,6 +11,7 @@ pipette::as.data.table
 
 
 ## S4 generics =================================================================
+
 #' @export
 #' @exportMethod Ensembl2Entrez
 #' @importFrom AcidGenomes Ensembl2Entrez
@@ -25,6 +27,12 @@ AcidGenomes::Entrez2Ensembl
 #' @export
 #' @importFrom AcidGenomes Gene2Symbol
 AcidGenomes::Gene2Symbol
+
+#' @export
+#' @exportMethod KnownMarkers
+#' @importFrom AcidSingleCell KnownMarkers
+#' @importMethodsFrom AcidSingleCell KnownMarkers
+AcidSingleCell::KnownMarkers
 
 #' @export
 #' @exportMethod Tx2Gene

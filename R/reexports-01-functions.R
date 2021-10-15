@@ -14,6 +14,14 @@ magrittr::`%>%`
 #' @export
 magrittr::`%T>%`
 
+#' @importFrom AcidSingleCell CellCycleMarkers
+#' @export
+AcidSingleCell::CellCycleMarkers
+
+#' @importFrom AcidSingleCell CellTypeMarkers
+#' @export
+AcidSingleCell::CellTypeMarkers
+
 #' @importFrom AcidGenerics CharacterList
 #' @export
 AcidGenerics::CharacterList
@@ -361,6 +369,14 @@ AcidCLI::h7
 #' @importFrom AcidBase hclust
 #' @export
 AcidBase::hclust
+
+#' @importFrom AcidSingleCell importCellCycleMarkers
+#' @export
+AcidSingleCell::importCellCycleMarkers
+
+#' @importFrom AcidSingleCell importCellTypeMarkers
+#' @export
+AcidSingleCell::importCellTypeMarkers
 
 #' @importFrom AcidExperiment importSampleData
 #' @export

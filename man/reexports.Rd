@@ -13,6 +13,8 @@
 \alias{\%<>\%}
 \alias{\%>\%}
 \alias{\%T>\%}
+\alias{CellCycleMarkers}
+\alias{CellTypeMarkers}
 \alias{CharacterList}
 \alias{DataFrame}
 \alias{DataFrameList}
@@ -100,6 +102,8 @@
 \alias{h6}
 \alias{h7}
 \alias{hclust}
+\alias{importCellCycleMarkers}
+\alias{importCellTypeMarkers}
 \alias{importSampleData}
 \alias{importTx2Gene}
 \alias{inform}
@@ -210,6 +214,7 @@
 \alias{Ensembl2Entrez}
 \alias{Entrez2Ensembl}
 \alias{Gene2Symbol}
+\alias{KnownMarkers}
 \alias{Tx2Gene}
 \alias{\%in\%}
 \alias{aggregate}
@@ -493,7 +498,7 @@ below to see their documentation.
 
   \item{AcidMarkdown}{\code{\link[AcidMarkdown]{markdownHeader}}, \code{\link[AcidMarkdown]{markdownLink}}, \code{\link[AcidMarkdown]{markdownList}}, \code{\link[AcidMarkdown]{markdownPlots}}, \code{\link[AcidMarkdown]{markdownTables}}, \code{\link[AcidMarkdown:markdownHeader]{mdHeader}}, \code{\link[AcidMarkdown:markdownLink]{mdLink}}, \code{\link[AcidMarkdown:markdownList]{mdList}}, \code{\link[AcidMarkdown:markdownPlots]{mdPlots}}, \code{\link[AcidMarkdown:markdownTables]{mdTables}}, \code{\link[AcidMarkdown]{prepareTemplate}}}
 
-  \item{AcidSingleCell}{\code{\link[AcidSingleCell:reexports]{SingleCellExperiment}}, \code{\link[AcidSingleCell:reexports]{logcounts}}, \code{\link[AcidSingleCell:reexports]{logcounts<-}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}, \code{\link[AcidSingleCell:reexports]{normcounts}}, \code{\link[AcidSingleCell:reexports]{normcounts<-}}, \code{\link[AcidSingleCell:reexports]{reducedDim}}, \code{\link[AcidSingleCell:reexports]{reducedDim<-}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames<-}}, \code{\link[AcidSingleCell:reexports]{reducedDims}}, \code{\link[AcidSingleCell:reexports]{reducedDims<-}}}
+  \item{AcidSingleCell}{\code{\link[AcidSingleCell]{CellCycleMarkers}}, \code{\link[AcidSingleCell]{CellTypeMarkers}}, \code{\link[AcidSingleCell]{KnownMarkers}}, \code{\link[AcidSingleCell:reexports]{SingleCellExperiment}}, \code{\link[AcidSingleCell:CellCycleMarkers]{importCellCycleMarkers}}, \code{\link[AcidSingleCell:CellTypeMarkers]{importCellTypeMarkers}}, \code{\link[AcidSingleCell:reexports]{logcounts}}, \code{\link[AcidSingleCell:reexports]{logcounts<-}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}, \code{\link[AcidSingleCell:reexports]{normcounts}}, \code{\link[AcidSingleCell:reexports]{normcounts<-}}, \code{\link[AcidSingleCell:reexports]{reducedDim}}, \code{\link[AcidSingleCell:reexports]{reducedDim<-}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames<-}}, \code{\link[AcidSingleCell:reexports]{reducedDims}}, \code{\link[AcidSingleCell:reexports]{reducedDims<-}}}
 
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
