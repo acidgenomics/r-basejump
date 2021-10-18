@@ -14,19 +14,23 @@ pipette::as.data.table
 
 #' @export
 #' @exportMethod Ensembl2Entrez
-#' @importFrom AcidGenomes Ensembl2Entrez
+#' @importFrom AcidGenerics Ensembl2Entrez
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez
-AcidGenomes::Ensembl2Entrez
+AcidGenerics::Ensembl2Entrez
 
 #' @export
 #' @exportMethod Entrez2Ensembl
-#' @importFrom AcidGenomes Entrez2Ensembl
+#' @importFrom AcidGenerics Entrez2Ensembl
 #' @importMethodsFrom AcidGenomes Entrez2Ensembl
-AcidGenomes::Entrez2Ensembl
+AcidGenerics::Entrez2Ensembl
 
 #' @export
-#' @importFrom AcidGenomes Gene2Symbol
-AcidGenomes::Gene2Symbol
+#' @exportMethod Gene2Symbol
+#' @importFrom AcidGenerics Gene2Symbol
+#' @importMethodsFrom AcidGenomes Gene2Symbol
+AcidGenerics::Gene2Symbol
+
+## FIXME This generic needs to migrate into AcidGenerics.
 
 #' @export
 #' @exportMethod KnownMarkers
@@ -36,9 +40,9 @@ AcidSingleCell::KnownMarkers
 
 #' @export
 #' @exportMethod Tx2Gene
-#' @importFrom AcidGenomes Tx2Gene
+#' @importFrom AcidGenerics Tx2Gene
 #' @importMethodsFrom AcidGenomes Tx2Gene
-AcidGenomes::Tx2Gene
+AcidGenerics::Tx2Gene
 
 #' @export
 #' @importFrom AcidGenerics %in%
