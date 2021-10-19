@@ -30,13 +30,9 @@ AcidGenerics::Entrez2Ensembl
 #' @importMethodsFrom AcidGenomes Gene2Symbol
 AcidGenerics::Gene2Symbol
 
-## FIXME This generic needs to migrate into AcidGenerics.
-
 #' @export
-#' @exportMethod KnownMarkers
-#' @importFrom AcidSingleCell KnownMarkers
-#' @importMethodsFrom AcidSingleCell KnownMarkers
-AcidSingleCell::KnownMarkers
+#' @importFrom AcidGenerics KnownMarkers
+AcidGenerics::KnownMarkers
 
 #' @export
 #' @exportMethod Tx2Gene
