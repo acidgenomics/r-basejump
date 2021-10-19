@@ -1,5 +1,23 @@
 ## basejump 0.5.0 (UNRELEASED)
 
+### Major changes
+
+- Reverted back to reexporting all useful magrittr pipes, for convenience.
+- Migrated some single-cell RNA-seq functions from pipette to AcidSingleCell,
+  which are now reexported here in basejump. These include: `CellCycleMarkers`,
+  `CellTypeMarkers`, `importCellCycleMarkers`, `importCellTypeMarkers`.
+  
+### Minor changes
+
+- Removed from reexports: `compressExtPattern`, `extPattern`
+  (removed from AcideBase; refer to goalie), and `localOrRemoteFile` (removed
+  from pipette).
+- Now reexporting `GenomicRanges`, `GenomicRangesList`, `IntegerRanges`
+  virtual classes, instead of `GRanges`, `GRangesList`, `IRanges`, respectively.
+  Downstream S4 methods should be declared against these virtual classes, and
+  never against `DFrame` directly (use `DataFrame` virtual class), for example.
+- Updated supported S4 coercion methods via `as` from pipette package.
+
 ## basejump 0.4.23 (2021-09-13)
 
 ### Minor changes
