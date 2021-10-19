@@ -1,9 +1,3 @@
-## FIXME CellCycleMarkers
-## FIXME CellTypeMarkers
-## FIXME KnownMarkers
-
-
-
 #' @exportClass Annotated
 #' @importClassesFrom AcidGenerics Annotated
 #' @name Annotated-class
@@ -19,6 +13,18 @@ NULL
 #' @exportClass AtomicList
 #' @importClassesFrom AcidGenerics AtomicList
 #' @name AtomicList-class
+#' @rdname reexports
+NULL
+
+#' @exportClass CellCycleMarkers
+#' @importClassesFrom AcidSingleCell CellCycleMarkers
+#' @name CellCycleMarkers-class
+#' @rdname reexports
+NULL
+
+#' @exportClass CellTypeMarkers
+#' @importClassesFrom AcidSingleCell CellTypeMarkers
+#' @name CellTypeMarkers-class
 #' @rdname reexports
 NULL
 
@@ -145,6 +151,12 @@ NULL
 #' @exportClass IntegerList
 #' @importClassesFrom AcidGenerics IntegerList
 #' @name IntegerList-class
+#' @rdname reexports
+NULL
+
+#' @exportClass KnownMarkers
+#' @importClassesFrom AcidSingleCell KnownMarkers
+#' @name KnownMarkers-class
 #' @rdname reexports
 NULL
 

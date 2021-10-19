@@ -441,6 +441,8 @@
 \alias{Annotated-class}
 \alias{AsIs-class}
 \alias{AtomicList-class}
+\alias{CellCycleMarkers-class}
+\alias{CellTypeMarkers-class}
 \alias{CharacterList-class}
 \alias{DataFrame-class}
 \alias{DataFrameList-class}
@@ -462,6 +464,7 @@
 \alias{HGNC2Ensembl-class}
 \alias{IntegerRanges-class}
 \alias{IntegerList-class}
+\alias{KnownMarkers-class}
 \alias{LLint-class}
 \alias{List-class}
 \alias{LogicalList-class}

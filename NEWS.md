@@ -6,6 +6,8 @@
 - Migrated some single-cell RNA-seq functions from pipette to AcidSingleCell,
   which are now reexported here in basejump. These include: `CellCycleMarkers`,
   `CellTypeMarkers`, `importCellCycleMarkers`, `importCellTypeMarkers`.
+- Reexporting new classes now defined in AcidSingleCell (previously in
+  pointillism): `CellCycleMarkers`, `CellTypeMarkers`, `KnownMarkers`.
   
 ### Minor changes
 
