@@ -1,5 +1,8 @@
 ## Ensure that these remain current with pipette.
 
+#' @importFrom methods getMethod setAs signature
+NULL
+
 setAs(
     from = "DataFrame",
     to = "data.table",
