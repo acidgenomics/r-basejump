@@ -1,1 +1,5 @@
-** FIXME Put magrittr pipetes back into package.
+#+TITLE: basejump
+#+STARTUP: content
+* Development
+** TODO Improve documentation on philosophy of the package.
+** TODO Add AcidPlots into the package?
