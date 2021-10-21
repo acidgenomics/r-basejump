@@ -2,4 +2,5 @@
 #+STARTUP: content
 * Development
 ** TODO Improve documentation on philosophy of the package.
+** TODO Need to improve the documentation in 'basejump-package.Rd' file.
 ** TODO Add AcidPlots into the package?
