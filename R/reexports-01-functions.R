@@ -98,6 +98,10 @@ AcidGenerics::Rle
 #' @export
 AcidGenerics::RleList
 
+#' @importFrom AcidGenerics Seqinfo
+#' @export
+AcidGenerics::Seqinfo
+
 #' @importFrom AcidGenerics SimpleList
 #' @export
 AcidGenerics::SimpleList

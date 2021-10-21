@@ -443,6 +443,14 @@ AcidGenerics::fullJoin
 AcidGenerics::geneNames
 
 #' @export
+#' @importFrom AcidGenerics genome
+AcidGenerics::genome
+
+#' @export
+#' @importFrom AcidGenerics genome<-
+AcidGenerics::`genome<-`
+
+#' @export
 #' @exportMethod geometricMean
 #' @importFrom AcidGenerics geometricMean
 #' @importMethodsFrom AcidBase geometricMean
@@ -977,12 +985,32 @@ AcidGenerics::semiJoin
 AcidGenerics::sentenceCase
 
 #' @export
-#' @importFrom AcidGenerics setdiff
-AcidGenerics::setdiff
+#' @importFrom AcidGenerics seqinfo
+AcidGenerics::seqinfo
+
+#' @export
+#' @importFrom AcidGenerics seqinfo<-
+AcidGenerics::`seqinfo<-`
+
+#' @export
+#' @importFrom AcidGenerics seqlevels
+AcidGenerics::seqlevels
+
+#' @export
+#' @importFrom AcidGenerics seqlevels<-
+AcidGenerics::`seqlevels<-`
 
 #' @export
 #' @importFrom AcidGenerics seqnames
 AcidGenerics::seqnames
+
+#' @export
+#' @importFrom AcidGenerics seqnames<-
+AcidGenerics::`seqnames<-`
+
+#' @export
+#' @importFrom AcidGenerics setdiff
+AcidGenerics::setdiff
 
 #' @export
 #' @exportMethod showHeader
