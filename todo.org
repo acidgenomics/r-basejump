@@ -1,6 +1,8 @@
 #+TITLE: basejump
 #+STARTUP: content
 * Development
+** TODO Need to keep flatFiles reexported to avoid breaking changes in
+    bcbio-nextgen 1.2.8 with bcbioRNASeq update in conda.
 ** TODO Improve documentation on philosophy of the package.
 ** TODO Need to improve the documentation in 'basejump-package.Rd' file.
 ** TODO Add AcidPlots into the package?
