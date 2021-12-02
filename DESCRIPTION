@@ -33,7 +33,7 @@ URL:
 BugReports: https://github.com/acidgenomics/r-basejump/issues/
 License: AGPL-3
 Encoding: UTF-8
-Depends: R (>= 4.0)
+Depends: R (>= 4.1)
 Imports:
     AcidBase (>= 0.4.6),
     AcidCLI (>= 0.1.8),
