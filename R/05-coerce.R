@@ -97,9 +97,13 @@ setAs(
 setAs(
     from = "IntegerRanges",
     to = "data.table",
-    def = signature(
-        from = "IntegerRanges",
-        to = "data.table"
+    def = getMethod(
+        f = "coerce",
+        signature(
+            from = "IntegerRanges",
+            to = "data.table"
+        ),
+        where = "pipette"
     )
 )
 
@@ -112,7 +116,7 @@ setAs(
         f = "coerce",
         signature(
             from = "IntegerRanges",
-            to = "data.table"
+            to = "tbl_df"
         ),
         where = "pipette"
     )
