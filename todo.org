@@ -1,39 +1,4 @@
 #+TITLE: basejump
 #+STARTUP: content
 * Development
-** TODO Need to keep flatFiles reexported to avoid breaking changes in
-    bcbio-nextgen 1.2.8 with bcbioRNASeq update in conda.
 ** TODO Improve documentation on philosophy of the package.
-** TODO Need to improve the documentation in 'basejump-package.Rd' file.
-** TODO Add AcidPlots into the package?
-** TODO Description of package is currently too concise.
-** TODO In the vignette, suggest using biobroom for tibble handling, coercion.
-** TODO Add BPPARAM to formalsList.
-** TODO Think about using BiocFileCache for caching large annotation files (e.g. GFFs).
-** TODO Rename `aggregateReplicates()` to `collapseReplicates()`, for consistency with DESeq2?
-** TODO sampleData assignment needs to factorize automatically.
-** TODO Consider using Rle on colData for SCE objects.
-** TODO calculateMetrics verbose mode?
-** TODO `Ensembl2Entrez()`: Consider returning as factor?
-    Check `summary()` method to see if it is informative enough.
-** TODO For gene/transcript level, consider using `featureType` instead of `level`.
-** TODO `import()`: Check that we have a `tryCatch()` call for invalid YAML that will stop on warnings.
-** TODO Integer counts generic? Consider defining this in DESeqAnalysis.
-** TODO Improve `loadData()` error message about file path.
-** TODO Add to sampleData metadata column blacklist: description, genomeBuild, qualityFormat, samRef.
-** TODO `dots()`: Consider using `return` formal instead of `character` boolean.
-** TODO Add `sanitizePercentage()` function?
-** TODO Add Ensembl and GENCODE FASTA / GTF download utility.
-    This is already defined in koopa. Consider exporting an alternate version
-    for R. Alternatively, can just define this in basejump and use internally
-    in koopa.
-** TODO RefSeq: Can we return with a better identifier than the gene/transcript symbol?
-    Can we get this to return as GRanges instead?
-** TODO RefSeq GFF: Can we get RefSeq to return genes/transcripts as `GRanges` instead of `GRangesList`?
-** TODO `makeGRangesFromGFF()`: Consolidate `.mergeGenesIntoTranscripts()` code with `makeGRangesFromEnsembl()`.
-** TODO Improve GFF support.
-    `makeGRangesFromGFF` todo: UCSC Support, FlyBase GFF support, and
-    WormBase GFF support. WormBase has some malformed entries in GTF
-    (e.g. Transcript:AC8.13). We may want to add a filter for these.
-** TODO Rework object to store gene sets directly in the object.
-    Currently relies on external file paths, which breaks easily.
