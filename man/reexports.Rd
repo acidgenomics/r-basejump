@@ -5,15 +5,16 @@
 \alias{Annotated-class}
 \alias{AsIs-class}
 \alias{AtomicList-class}
+\alias{BiocFile-class}
 \alias{CellCycleMarkers-class}
 \alias{CellTypeMarkers-class}
 \alias{CharacterList-class}
 \alias{DataFrame-class}
 \alias{DataFrameList-class}
 \alias{Ensembl2Entrez-class}
-\alias{Entrez2Ensembl-class}
 \alias{EnsemblGenes-class}
 \alias{EnsemblTranscripts-class}
+\alias{Entrez2Ensembl-class}
 \alias{EntrezGeneInfo-class}
 \alias{Factor-class}
 \alias{FactorList-class}
@@ -26,8 +27,8 @@
 \alias{GenomicRangesList-class}
 \alias{HGNC-class}
 \alias{HGNC2Ensembl-class}
-\alias{IntegerRanges-class}
 \alias{IntegerList-class}
+\alias{IntegerRanges-class}
 \alias{KnownMarkers-class}
 \alias{LLint-class}
 \alias{List-class}
@@ -37,6 +38,7 @@
 \alias{NumericList-class}
 \alias{Protein2Gene-class}
 \alias{RangedSummarizedExperiment-class}
+\alias{Ranges-class}
 \alias{RectangularData-class}
 \alias{RefSeqGenes-class}
 \alias{RefSeqTranscripts-class}
@@ -49,9 +51,9 @@
 \alias{Tx2Gene-class}
 \alias{UCSCGenes-class}
 \alias{UCSCTranscripts-class}
+\alias{Vector-class}
 \alias{WormBaseGenes-class}
 \alias{WormBaseTranscripts-class}
-\alias{Vector-class}
 \alias{atomic-class}
 \alias{missingOrNULL-class}
 \alias{sparseMatrix-class}
@@ -66,30 +68,23 @@
 \alias{DataFrame}
 \alias{DataFrameList}
 \alias{EntrezGeneInfo}
+\alias{Factor}
 \alias{FactorList}
 \alias{GRanges}
 \alias{GRangesList}
 \alias{HGNC}
 \alias{HGNC2Ensembl}
-\alias{IRanges}
-\alias{IntegerList}
-\alias{LLint}
-\alias{List}
-\alias{LogicalList}
 \alias{Matrix}
 \alias{MGI2Ensembl}
 \alias{NumericList}
 \alias{Rle}
 \alias{RleList}
-\alias{Seqinfo}
 \alias{SimpleList}
 \alias{SingleCellExperiment}
 \alias{SplitDataFrameList}
 \alias{SummarizedExperiment}
 \alias{URLencode}
 \alias{abort}
-\alias{addToPathEnd}
-\alias{addToPathStart}
 \alias{alert}
 \alias{alertDanger}
 \alias{alertInfo}
@@ -120,6 +115,7 @@
 \alias{currentUCSCGenomeBuild}
 \alias{currentWormBaseVersion}
 \alias{data}
+\alias{data.table}
 \alias{decompress}
 \alias{detectLanes}
 \alias{detectOrganism}
@@ -135,6 +131,7 @@
 \alias{emptyRanges}
 \alias{fileDepth}
 \alias{fileExt}
+\alias{fixed}
 \alias{forceDetach}
 \alias{formula}
 \alias{geneSynonyms}
@@ -208,8 +205,8 @@
 \alias{printString}
 \alias{rbindlist}
 \alias{realpath}
+\alias{regex}
 \alias{relevel}
-\alias{removeFromPath}
 \alias{reorder}
 \alias{requireNamespaces}
 \alias{rgb}
@@ -218,9 +215,8 @@
 \alias{sanitizeVersion}
 \alias{saveData}
 \alias{separator}
-\alias{session_info}
 \alias{sessionInfo}
-\alias{setdiff}
+\alias{session_info}
 \alias{simpleClass}
 \alias{shell}
 \alias{showSlotInfo}
@@ -243,6 +239,10 @@
 \alias{str_split_fixed}
 \alias{str_sub}
 \alias{str_subset}
+\alias{str_to_lower}
+\alias{str_to_sentence}
+\alias{str_to_title}
+\alias{str_to_upper}
 \alias{str_trunc}
 \alias{syntacticRename}
 \alias{tar}
@@ -251,7 +251,6 @@
 \alias{transmit}
 \alias{txt}
 \alias{ul}
-\alias{uniquePathString}
 \alias{unit}
 \alias{untar}
 \alias{updateMessage}
@@ -261,8 +260,13 @@
 \alias{as.data.table}
 \alias{Ensembl2Entrez}
 \alias{Entrez2Ensembl}
+\alias{Filter}
+\alias{Find}
 \alias{Gene2Symbol}
 \alias{KnownMarkers}
+\alias{Map}
+\alias{Position}
+\alias{Reduce}
 \alias{Tx2Gene}
 \alias{\%in\%}
 \alias{aggregate}
@@ -318,6 +322,7 @@
 \alias{counts<-}
 \alias{cpm}
 \alias{decode}
+\alias{design}
 \alias{diffExp}
 \alias{diffExpPerCluster}
 \alias{dims}
@@ -329,6 +334,7 @@
 \alias{encode}
 \alias{end}
 \alias{end<-}
+\alias{estimateDispersions}
 \alias{estimateSizeFactors}
 \alias{eval}
 \alias{expand}
@@ -403,7 +409,7 @@
 \alias{normcounts<-}
 \alias{nrow}
 \alias{order}
-\alias{organism}
+\alias{oragnism}
 \alias{organism<-}
 \alias{paste}
 \alias{pmax}
@@ -454,6 +460,7 @@
 \alias{seqlevels<-}
 \alias{seqnames}
 \alias{seqnames<-}
+\alias{setdiff}
 \alias{showHeader}
 \alias{sizeFactors}
 \alias{sizeFactors<-}
@@ -485,8 +492,10 @@
 \alias{uniteInterestingGroups}
 \alias{unlist}
 \alias{unsplit}
+\alias{updateObject}
 \alias{upperCamelCase}
 \alias{var}
+\alias{weights}
 \alias{which}
 \alias{which.max}
 \alias{which.min}
@@ -500,26 +509,46 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AcidBase}{\code{\link[AcidBase:reexports]{URLencode}}, \code{\link[AcidBase:modifyPathString]{addToPathEnd}}, \code{\link[AcidBase:modifyPathString]{addToPathStart}}, \code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase:reexports]{arrow}}, \code{\link[AcidBase:reexports]{as.formula}}, \code{\link[AcidBase:reexports]{axisTicks}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase:reexports]{capture.output}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{collapseToPathString}}, \code{\link[AcidBase:reexports]{colorRampPalette}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:reexports]{data}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase:reexports]{dist}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase:reexports]{ecdf}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase:reexports]{formula}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase:reexports]{getS3method}}, \code{\link[AcidBase:reexports]{hclust}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataDenylist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase:reexports]{model.matrix}}, \code{\link[AcidBase:reexports]{packageName}}, \code{\link[AcidBase:reexports]{packageVersion}}, \code{\link[AcidBase:parentDirectory]{parentDir}}, \code{\link[AcidBase]{parentDirectory}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase:reexports]{prcomp}}, \code{\link[AcidBase]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase:reexports]{relevel}}, \code{\link[AcidBase:modifyPathString]{removeFromPath}}, \code{\link[AcidBase:reexports]{reorder}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase:reexports]{rgb}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase:reexports]{sessionInfo}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{simpleClass}}, \code{\link[AcidBase]{splitPathString}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase:reexports]{tar}}, \code{\link[AcidBase]{uniquePathString}}, \code{\link[AcidBase:reexports]{unit}}, \code{\link[AcidBase:reexports]{untar}}, \code{\link[AcidBase]{updateMessage}}}
+  \item{AcidBase}{\code{\link[AcidBase]{appendToBody}}, \code{\link[AcidBase]{barcodePattern}}, \code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{collapseToPathString}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{dots}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{forceDetach}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{lanePattern}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase]{metadataDenylist}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{metricsCols}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase:parentDirectory]{parentDir}}, \code{\link[AcidBase]{parentDirectory}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase]{printString}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{simpleClass}}, \code{\link[AcidBase]{splitPathString}}, \code{\link[AcidBase]{standardizeCall}}, \code{\link[AcidBase]{updateMessage}}}
 
   \item{AcidCLI}{\code{\link[AcidCLI]{abort}}, \code{\link[AcidCLI]{alert}}, \code{\link[AcidCLI:alert]{alertDanger}}, \code{\link[AcidCLI:alert]{alertInfo}}, \code{\link[AcidCLI:alert]{alertSuccess}}, \code{\link[AcidCLI:alert]{alertWarning}}, \code{\link[AcidCLI:list]{dl}}, \code{\link[AcidCLI:header]{h1}}, \code{\link[AcidCLI:header]{h2}}, \code{\link[AcidCLI:header]{h3}}, \code{\link[AcidCLI:header]{h4}}, \code{\link[AcidCLI:header]{h5}}, \code{\link[AcidCLI:header]{h6}}, \code{\link[AcidCLI:header]{h7}}, \code{\link[AcidCLI:abort]{inform}}, \code{\link[AcidCLI:list]{ol}}, \code{\link[AcidCLI]{separator}}, \code{\link[AcidCLI]{toInlineString}}, \code{\link[AcidCLI:text]{txt}}, \code{\link[AcidCLI:list]{ul}}, \code{\link[AcidCLI:text]{verbatim}}, \code{\link[AcidCLI:abort]{warn}}}
 
-  \item{AcidExperiment}{\code{\link[AcidExperiment:reexports]{SummarizedExperiment}}, \code{\link[AcidExperiment:reexports]{assay}}, \code{\link[AcidExperiment:reexports]{assay<-}}, \code{\link[AcidExperiment:reexports]{assayNames}}, \code{\link[AcidExperiment:reexports]{assayNames<-}}, \code{\link[AcidExperiment:reexports]{assays}}, \code{\link[AcidExperiment:reexports]{assays<-}}, \code{\link[AcidExperiment:reexports]{colData}}, \code{\link[AcidExperiment:reexports]{colData<-}}, \code{\link[AcidExperiment]{detectLanes}}, \code{\link[AcidExperiment]{importSampleData}}, \code{\link[AcidExperiment]{makeSummarizedExperiment}}, \code{\link[AcidExperiment]{matchInterestingGroups}}, \code{\link[AcidExperiment]{microplate}}, \code{\link[AcidExperiment]{minimalSampleData}}, \code{\link[AcidExperiment:reexports]{rowData}}, \code{\link[AcidExperiment:reexports]{rowData<-}}, \code{\link[AcidExperiment:reexports]{rowRanges}}, \code{\link[AcidExperiment:reexports]{rowRanges<-}}, \code{\link[AcidExperiment]{sanitizeSampleData}}, \code{\link[AcidExperiment:reexports]{session_info}}}
-
-  \item{AcidGenerics}{\code{\link[AcidGenerics:reexports]{\%in\%}}, \code{\link[AcidGenerics:reexports]{CharacterList}}, \code{\link[AcidGenerics:reexports]{DataFrame}}, \code{\link[AcidGenerics:reexports]{DataFrameList}}, \code{\link[AcidGenerics]{Ensembl2Entrez}}, \code{\link[AcidGenerics]{Entrez2Ensembl}}, \code{\link[AcidGenerics:reexports]{FactorList}}, \code{\link[AcidGenerics:reexports]{GRanges}}, \code{\link[AcidGenerics:reexports]{GRangesList}}, \code{\link[AcidGenerics]{Gene2Symbol}}, \code{\link[AcidGenerics:reexports]{IRanges}}, \code{\link[AcidGenerics:reexports]{IntegerList}}, \code{\link[AcidGenerics]{KnownMarkers}}, \code{\link[AcidGenerics:reexports]{LLint}}, \code{\link[AcidGenerics:reexports]{List}}, \code{\link[AcidGenerics:reexports]{LogicalList}}, \code{\link[AcidGenerics:reexports]{NumericList}}, \code{\link[AcidGenerics:reexports]{Rle}}, \code{\link[AcidGenerics:reexports]{RleList}}, \code{\link[AcidGenerics:reexports]{Seqinfo}}, \code{\link[AcidGenerics:reexports]{SimpleList}}, \code{\link[AcidGenerics:reexports]{SplitDataFrameList}}, \code{\link[AcidGenerics]{Tx2Gene}}, \code{\link[AcidGenerics]{aggregate}}, \code{\link[AcidGenerics]{aggregateCellsToSamples}}, \code{\link[AcidGenerics]{aggregateCols}}, \code{\link[AcidGenerics]{aggregateRows}}, \code{\link[AcidGenerics:join]{antiJoin}}, \code{\link[AcidGenerics:reexports]{anyDuplicated}}, \code{\link[AcidGenerics:reexports]{append}}, \code{\link[AcidGenerics]{as.DataFrame}}, \code{\link[AcidGenerics]{as.SummarizedExperiment}}, \code{\link[AcidGenerics]{as.data.frame}}, \code{\link[AcidGenerics:reexports]{as.factor}}, \code{\link[AcidGenerics]{as.list}}, \code{\link[AcidGenerics:reexports]{as.matrix}}, \code{\link[AcidGenerics:reexports]{as.table}}, \code{\link[AcidGenerics:reexports]{as.vector}}, \code{\link[AcidGenerics]{atomize}}, \code{\link[AcidGenerics]{autopadZeros}}, \code{\link[AcidGenerics]{barcodeRanksPerSample}}, \code{\link[AcidGenerics:reexports]{basename}}, \code{\link[AcidGenerics]{calculateMetrics}}, \code{\link[AcidGenerics]{camelCase}}, \code{\link[AcidGenerics]{capitalize}}, \code{\link[AcidGenerics:reexports]{cbind}}, \code{\link[AcidGenerics]{cell2sample}}, \code{\link[AcidGenerics]{cellCountsPerCluster}}, \code{\link[AcidGenerics]{cellTypesPerCluster}}, \code{\link[AcidGenerics]{clusters}}, \code{\link[AcidGenerics]{coerce}}, \code{\link[AcidGenerics]{coerceToList}}, \code{\link[AcidGenerics:reexports]{colSums}}, \code{\link[AcidGenerics]{collapseToString}}, \code{\link[AcidGenerics:reexports]{colnames}}, \code{\link[AcidGenerics:reexports]{colnames<-}}, \code{\link[AcidGenerics]{combine}}, \code{\link[AcidGenerics:reexports]{complete.cases}}, \code{\link[AcidGenerics]{convertGenesToSymbols}}, \code{\link[AcidGenerics]{convertSampleIDsToNames}}, \code{\link[AcidGenerics]{convertSymbolsToGenes}}, \code{\link[AcidGenerics]{convertTranscriptsToGenes}}, \code{\link[AcidGenerics:reexports]{cor}}, \code{\link[AcidGenerics]{correlation}}, \code{\link[AcidGenerics]{counts}}, \code{\link[AcidGenerics:counts]{counts<-}}, \code{\link[AcidGenerics]{cpm}}, \code{\link[AcidGenerics]{decode}}, \code{\link[AcidGenerics]{diffExp}}, \code{\link[AcidGenerics]{diffExpPerCluster}}, \code{\link[AcidGenerics:reexports]{dims}}, \code{\link[AcidGenerics:reexports]{dirname}}, \code{\link[AcidGenerics:reexports]{do.call}}, \code{\link[AcidGenerics]{dottedCase}}, \code{\link[AcidGenerics]{droplevels}}, \code{\link[AcidGenerics:reexports]{duplicated}}, \code{\link[AcidGenerics]{encode}}, \code{\link[AcidGenerics:reexports]{end}}, \code{\link[AcidGenerics:reexports]{end<-}}, \code{\link[AcidGenerics]{estimateSizeFactors}}, \code{\link[AcidGenerics:reexports]{eval}}, \code{\link[AcidGenerics:reexports]{expand}}, \code{\link[AcidGenerics:reexports]{expand.grid}}, \code{\link[AcidGenerics:reexports]{export}}, \code{\link[AcidGenerics]{factorize}}, \code{\link[AcidGenerics]{filterCells}}, \code{\link[AcidGenerics]{findMarkers}}, \code{\link[AcidGenerics]{foldChangeToLogRatio}}, \code{\link[AcidGenerics:join]{fullJoin}}, \code{\link[AcidGenerics]{geneNames}}, \code{\link[AcidGenerics:reexports]{genome}}, \code{\link[AcidGenerics:reexports]{genome<-}}, \code{\link[AcidGenerics]{geometricMean}}, \code{\link[AcidGenerics:reexports]{get}}, \code{\link[AcidGenerics:reexports]{getListElement}}, \code{\link[AcidGenerics:reexports]{grep}}, \code{\link[AcidGenerics:reexports]{grepl}}, \code{\link[AcidGenerics:reexports]{gsub}}, \code{\link[AcidGenerics]{head}}, \code{\link[AcidGenerics]{headtail}}, \code{\link[AcidGenerics]{humanize}}, \code{\link[AcidGenerics:reexports]{import}}, \code{\link[AcidGenerics:join]{innerJoin}}, \code{\link[AcidGenerics]{integerCounts}}, \code{\link[AcidGenerics]{interestingGroups}}, \code{\link[AcidGenerics:interestingGroups]{interestingGroups<-}}, \code{\link[AcidGenerics:reexports]{intersect}}, \code{\link[AcidGenerics]{intersectAll}}, \code{\link[AcidGenerics]{intersectionMatrix}}, \code{\link[AcidGenerics:reexports]{is.unsorted}}, \code{\link[AcidGenerics]{kebabCase}}, \code{\link[AcidGenerics:reexports]{lapply}}, \code{\link[AcidGenerics:join]{leftJoin}}, \code{\link[AcidGenerics]{logRatioToFoldChange}}, \code{\link[AcidGenerics]{makeDimnames}}, \code{\link[AcidGenerics]{makeLabel}}, \code{\link[AcidGenerics]{makeNames}}, \code{\link[AcidGenerics]{makeSampleData}}, \code{\link[AcidGenerics]{makeTitle}}, \code{\link[AcidGenerics]{makeWords}}, \code{\link[AcidGenerics]{mapGenesToIDs}}, \code{\link[AcidGenerics]{mapGenesToRownames}}, \code{\link[AcidGenerics]{mapGenesToSymbols}}, \code{\link[AcidGenerics]{mapToDataFrame}}, \code{\link[AcidGenerics:reexports]{mapply}}, \code{\link[AcidGenerics:reexports]{match}}, \code{\link[AcidGenerics]{matchSampleColumn}}, \code{\link[AcidGenerics:reexports]{mcols}}, \code{\link[AcidGenerics:reexports]{mcols<-}}, \code{\link[AcidGenerics:reexports]{mean}}, \code{\link[AcidGenerics:reexports]{median}}, \code{\link[AcidGenerics]{melt}}, \code{\link[AcidGenerics:reexports]{merge}}, \code{\link[AcidGenerics:reexports]{metadata}}, \code{\link[AcidGenerics]{metadata2}}, \code{\link[AcidGenerics:metadata2]{metadata2<-}}, \code{\link[AcidGenerics:reexports]{metadata<-}}, \code{\link[AcidGenerics]{metrics}}, \code{\link[AcidGenerics]{metricsPerSample}}, \code{\link[AcidGenerics:reexports]{mget}}, \code{\link[AcidGenerics:mutate]{mutateAll}}, \code{\link[AcidGenerics:mutate]{mutateAt}}, \code{\link[AcidGenerics:mutate]{mutateIf}}, \code{\link[AcidGenerics:reexports]{na.omit}}, \code{\link[AcidGenerics:reexports]{ncol}}, \code{\link[AcidGenerics]{nonzeroRowsAndCols}}, \code{\link[AcidGenerics]{normalize}}, \code{\link[AcidGenerics:reexports]{nrow}}, \code{\link[AcidGenerics:reexports]{order}}, \code{\link[AcidGenerics]{organism}}, \code{\link[AcidGenerics:organism]{organism<-}}, \code{\link[AcidGenerics:reexports]{paste}}, \code{\link[AcidGenerics:reexports]{pmax}}, \code{\link[AcidGenerics:reexports]{pmax.int}}, \code{\link[AcidGenerics:reexports]{pmin}}, \code{\link[AcidGenerics:reexports]{pmin.int}}, \code{\link[AcidGenerics:reexports]{pos}}, \code{\link[AcidGenerics:reexports]{quantile}}, \code{\link[AcidGenerics:reexports]{ranges}}, \code{\link[AcidGenerics:reexports]{rank}}, \code{\link[AcidGenerics]{rankedMatrix}}, \code{\link[AcidGenerics:reexports]{rbind}}, \code{\link[AcidGenerics]{rbindToDataFrame}}, \code{\link[AcidGenerics:reexports]{relist}}, \code{\link[AcidGenerics]{removeNA}}, \code{\link[AcidGenerics:reexports]{rep.int}}, \code{\link[AcidGenerics:join]{rightJoin}}, \code{\link[AcidGenerics:reexports]{rowMeans}}, \code{\link[AcidGenerics:reexports]{rowSums}}, \code{\link[AcidGenerics:reexports]{rownames}}, \code{\link[AcidGenerics:reexports]{rownames<-}}, \code{\link[AcidGenerics]{sampleData}}, \code{\link[AcidGenerics:sampleData]{sampleData<-}}, \code{\link[AcidGenerics]{sampleNames}}, \code{\link[AcidGenerics:sampleNames]{sampleNames<-}}, \code{\link[AcidGenerics]{sanitizeNA}}, \code{\link[AcidGenerics]{sanitizePercent}}, \code{\link[AcidGenerics:reexports]{sapply}}, \code{\link[AcidGenerics:reexports]{sd}}, \code{\link[AcidGenerics:select]{selectIf}}, \code{\link[AcidGenerics]{selectSamples}}, \code{\link[AcidGenerics]{sem}}, \code{\link[AcidGenerics:join]{semiJoin}}, \code{\link[AcidGenerics]{sentenceCase}}, \code{\link[AcidGenerics:reexports]{seqinfo}}, \code{\link[AcidGenerics:reexports]{seqinfo<-}}, \code{\link[AcidGenerics:reexports]{seqlevels}}, \code{\link[AcidGenerics:reexports]{seqlevels<-}}, \code{\link[AcidGenerics:reexports]{seqnames}}, \code{\link[AcidGenerics:reexports]{seqnames<-}}, \code{\link[AcidGenerics:reexports]{setdiff}}, \code{\link[AcidGenerics:reexports]{setdiff}}, \code{\link[AcidGenerics]{showHeader}}, \code{\link[AcidGenerics]{sizeFactors}}, \code{\link[AcidGenerics:sizeFactors]{sizeFactors<-}}, \code{\link[AcidGenerics]{snakeCase}}, \code{\link[AcidGenerics:reexports]{sort}}, \code{\link[AcidGenerics:reexports]{split}}, \code{\link[AcidGenerics]{splitByLevel}}, \code{\link[AcidGenerics:reexports]{start}}, \code{\link[AcidGenerics:reexports]{start<-}}, \code{\link[AcidGenerics:reexports]{strand}}, \code{\link[AcidGenerics:reexports]{strand<-}}, \code{\link[AcidGenerics]{stripGeneVersions}}, \code{\link[AcidGenerics]{stripTranscriptVersions}}, \code{\link[AcidGenerics:reexports]{sub}}, \code{\link[AcidGenerics:reexports]{subset}}, \code{\link[AcidGenerics]{subsetPerSample}}, \code{\link[AcidGenerics]{summary}}, \code{\link[AcidGenerics:reexports]{t}}, \code{\link[AcidGenerics:reexports]{table}}, \code{\link[AcidGenerics]{tail}}, \code{\link[AcidGenerics:reexports]{tapply}}, \code{\link[AcidGenerics]{topCellsPerSample}}, \code{\link[AcidGenerics]{tpm}}, \code{\link[AcidGenerics:mutate]{transmuteAt}}, \code{\link[AcidGenerics:mutate]{transmuteIf}}, \code{\link[AcidGenerics:reexports]{trim}}, \code{\link[AcidGenerics:reexports]{union}}, \code{\link[AcidGenerics:reexports]{unique}}, \code{\link[AcidGenerics]{uniteInterestingGroups}}, \code{\link[AcidGenerics:reexports]{unlist}}, \code{\link[AcidGenerics:reexports]{unsplit}}, \code{\link[AcidGenerics]{upperCamelCase}}, \code{\link[AcidGenerics:reexports]{var}}, \code{\link[AcidGenerics:reexports]{which}}, \code{\link[AcidGenerics:reexports]{which.max}}, \code{\link[AcidGenerics:reexports]{which.min}}, \code{\link[AcidGenerics:reexports]{width}}, \code{\link[AcidGenerics:reexports]{width<-}}, \code{\link[AcidGenerics]{zerosVsDepth}}}
+  \item{AcidExperiment}{\code{\link[AcidExperiment]{detectLanes}}, \code{\link[AcidExperiment]{importSampleData}}, \code{\link[AcidExperiment]{makeSummarizedExperiment}}, \code{\link[AcidExperiment]{matchInterestingGroups}}, \code{\link[AcidExperiment]{microplate}}, \code{\link[AcidExperiment]{minimalSampleData}}, \code{\link[AcidExperiment]{sanitizeSampleData}}}
 
   \item{AcidGenomes}{\code{\link[AcidGenomes]{EntrezGeneInfo}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{annotable}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentEnsemblGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentGencodeGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentRefSeqGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentUCSCGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{downloadEnsemblGenome}}, \code{\link[AcidGenomes]{downloadGencodeGenome}}, \code{\link[AcidGenomes]{downloadRefSeqGenome}}, \code{\link[AcidGenomes]{downloadUCSCGenome}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}}
 
   \item{AcidMarkdown}{\code{\link[AcidMarkdown]{markdownHeader}}, \code{\link[AcidMarkdown]{markdownLink}}, \code{\link[AcidMarkdown]{markdownList}}, \code{\link[AcidMarkdown]{markdownPlots}}, \code{\link[AcidMarkdown]{markdownTables}}, \code{\link[AcidMarkdown:markdownHeader]{mdHeader}}, \code{\link[AcidMarkdown:markdownLink]{mdLink}}, \code{\link[AcidMarkdown:markdownList]{mdList}}, \code{\link[AcidMarkdown:markdownPlots]{mdPlots}}, \code{\link[AcidMarkdown:markdownTables]{mdTables}}, \code{\link[AcidMarkdown]{prepareTemplate}}}
 
-  \item{AcidSingleCell}{\code{\link[AcidSingleCell]{CellCycleMarkers}}, \code{\link[AcidSingleCell]{CellTypeMarkers}}, \code{\link[AcidSingleCell:reexports]{SingleCellExperiment}}, \code{\link[AcidSingleCell:CellCycleMarkers]{importCellCycleMarkers}}, \code{\link[AcidSingleCell:CellTypeMarkers]{importCellTypeMarkers}}, \code{\link[AcidSingleCell:reexports]{logcounts}}, \code{\link[AcidSingleCell:reexports]{logcounts<-}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}, \code{\link[AcidSingleCell:reexports]{normcounts}}, \code{\link[AcidSingleCell:reexports]{normcounts<-}}, \code{\link[AcidSingleCell:reexports]{reducedDim}}, \code{\link[AcidSingleCell:reexports]{reducedDim<-}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames}}, \code{\link[AcidSingleCell:reexports]{reducedDimNames<-}}, \code{\link[AcidSingleCell:reexports]{reducedDims}}, \code{\link[AcidSingleCell:reexports]{reducedDims<-}}}
+  \item{AcidSingleCell}{\code{\link[AcidSingleCell]{CellCycleMarkers}}, \code{\link[AcidSingleCell]{CellTypeMarkers}}, \code{\link[AcidSingleCell:CellCycleMarkers]{importCellCycleMarkers}}, \code{\link[AcidSingleCell:CellTypeMarkers]{importCellTypeMarkers}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}}
+
+  \item{GenomicRanges}{\code{\link[GenomicRanges:GRanges-class]{GRanges}}, \code{\link[GenomicRanges:GRanges-class]{GRanges}}, \code{\link[GenomicRanges:GRangesList-class]{GRangesList}}, \code{\link[GenomicRanges:GRangesList-class]{GRangesList}}}
+
+  \item{grDevices}{\code{\link[grDevices]{axisTicks}}, \code{\link[grDevices:colorRamp]{colorRampPalette}}, \code{\link[grDevices]{rgb}}}
+
+  \item{grid}{\code{\link[grid]{arrow}}, \code{\link[grid]{unit}}}
+
+  \item{IRanges}{\code{\link[IRanges:AtomicList-class]{CharacterList}}, \code{\link[IRanges:DataFrameList-class]{DataFrameList}}, \code{\link[IRanges:AtomicList-class]{FactorList}}, \code{\link[IRanges:AtomicList-class]{NumericList}}, \code{\link[IRanges:AtomicList-class]{RleList}}, \code{\link[IRanges:DataFrameList-class]{SplitDataFrameList}}}
 
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
-  \item{pipette}{\code{\link[pipette:reexports]{Matrix}}, \code{\link[pipette:coerce]{as.data.table}}, \code{\link[pipette:coerce]{as_tibble}}, \code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{sparseMatrix}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
+  \item{Matrix}{\code{\link[Matrix]{Matrix}}, \code{\link[Matrix]{sparseMatrix}}}
 
-  \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_dup}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr:str_extract]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr:str_locate]{str_locate_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr:str_match]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr:str_replace]{str_replace_all}}, \code{\link[stringr]{str_replace_na}}, \code{\link[stringr]{str_split}}, \code{\link[stringr:str_split]{str_split_fixed}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}, \code{\link[stringr]{str_trunc}}}
+  \item{pipette}{\code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{data.table}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
+
+  \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:Factor-class]{Factor}}, \code{\link[S4Vectors:Rle-class]{Rle}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}}
+
+  \item{sessioninfo}{\code{\link[sessioninfo]{session_info}}}
+
+  \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{SingleCellExperiment}}}
+
+  \item{stats}{\code{\link[stats:formula]{as.formula}}, \code{\link[stats]{dist}}, \code{\link[stats]{ecdf}}, \code{\link[stats]{formula}}, \code{\link[stats]{hclust}}, \code{\link[stats]{model.matrix}}, \code{\link[stats]{prcomp}}, \code{\link[stats]{relevel}}, \code{\link[stats:reorder.factor]{reorder}}}
+
+  \item{stringr}{\code{\link[stringr:modifiers]{fixed}}, \code{\link[stringr:modifiers]{regex}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_dup}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr:str_extract]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr:str_locate]{str_locate_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr:str_match]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr:str_replace]{str_replace_all}}, \code{\link[stringr]{str_replace_na}}, \code{\link[stringr]{str_split}}, \code{\link[stringr:str_split]{str_split_fixed}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}, \code{\link[stringr:case]{str_to_lower}}, \code{\link[stringr:case]{str_to_sentence}}, \code{\link[stringr:case]{str_to_title}}, \code{\link[stringr:case]{str_to_upper}}, \code{\link[stringr]{str_trunc}}}
+
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{SummarizedExperiment}}}
 
   \item{syntactic}{\code{\link[syntactic]{syntacticRename}}}
+
+  \item{utils}{\code{\link[utils]{URLencode}}, \code{\link[utils]{capture.output}}, \code{\link[utils]{data}}, \code{\link[utils]{getS3method}}, \code{\link[utils]{packageName}}, \code{\link[utils:packageDescription]{packageVersion}}, \code{\link[utils]{sessionInfo}}, \code{\link[utils]{tar}}, \code{\link[utils]{untar}}}
 }}
 
