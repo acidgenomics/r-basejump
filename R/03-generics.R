@@ -91,7 +91,7 @@ NULL
 
 #' @export
 #' @exportMethod aggregate
-#' @importFrom AcidGenerics aggregate
+#' @importFrom S4Vectors aggregate
 #' @importMethodsFrom AcidExperiment aggregate
 #' @importMethodsFrom AcidSingleCell aggregate
 #' @name aggregate
@@ -1204,7 +1204,7 @@ NULL
 #' @aliases sampleNames<-
 #' @export sampleNames sampleNames<-
 #' @exportMethod sampleNames sampleNames<-
-#' @importFrom AcidGenerics sampleNames sampleNames<-
+#' @importFrom Biobase sampleNames sampleNames<-
 #' @importMethodsFrom AcidExperiment sampleNames sampleNames<-
 #' @name sampleNames
 #' @rdname reexports
