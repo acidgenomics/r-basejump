@@ -409,7 +409,7 @@
 \alias{normcounts<-}
 \alias{nrow}
 \alias{order}
-\alias{oragnism}
+\alias{organism}
 \alias{organism<-}
 \alias{paste}
 \alias{pmax}

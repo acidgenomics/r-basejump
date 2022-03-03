@@ -1031,7 +1031,7 @@ NULL
 #' @importFrom BiocGenerics organism organism<-
 #' @importMethodsFrom AcidExperiment organism
 #' @importMethodsFrom AcidGenomes organism organism<-
-#' @name oragnism
+#' @name organism
 #' @rdname reexports
 NULL
 
