@@ -316,7 +316,7 @@ NULL
 #' @importFrom methods coerce
 #' @importMethodsFrom pipette coerce
 #' @name coerce
-#' @rdname reexports
+#' @rdname coerce
 NULL
 
 #' @export

@@ -302,7 +302,6 @@
 \alias{cellCountsPerCluster}
 \alias{cellTypesPerCluster}
 \alias{clusters}
-\alias{coerce}
 \alias{coerceToList}
 \alias{colData}
 \alias{colData<-}
