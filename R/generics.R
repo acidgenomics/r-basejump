@@ -80,6 +80,7 @@ NULL
 #' @exportMethod Tx2Gene
 #' @importFrom AcidGenerics Tx2Gene
 #' @importMethodsFrom AcidGenomes Tx2Gene
+#' @name Tx2Gene
 #' @rdname reexports
 NULL
 
@@ -118,6 +119,7 @@ NULL
 #' @exportMethod aggregateRows
 #' @importFrom AcidGenerics aggregateRows
 #' @importMethodsFrom AcidExperiment aggregateRows
+#' @name aggregateRows
 #' @rdname reexports
 NULL
 
@@ -359,7 +361,7 @@ NULL
 #' @importMethodsFrom AcidExperiment combine
 #' @importMethodsFrom AcidSingleCell combine
 #' @name combine
-#' @rdname exports
+#' @rdname reexports
 NULL
 
 #' @export
@@ -1507,7 +1509,7 @@ NULL
 #' @export
 #' @importFrom BiocGenerics updateObject
 #' @name updateObject
-#' @rdname exports
+#' @rdname reexports
 NULL
 
 #' @export
