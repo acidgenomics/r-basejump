@@ -5,9 +5,9 @@ authors:
     href: https://acidgenomics.com/
 navbar:
   components:
-     acid:
-       icon: "fas fa-vial fa-lg"
-       href: https://acidgenomics.com/
+    acid:
+      icon: 'fas fa-vial fa-lg'
+      href: https://acidgenomics.com/
   structure:
     right: [acid, github]
 news:
@@ -15,5 +15,7 @@ news:
 reference:
   - title: Reexported classes and functions
     contents:
-    - reexports
+      - reexports
+template:
+  bootstrap: 5
 url: https://r.acidgenomics.com/packages/basejump
