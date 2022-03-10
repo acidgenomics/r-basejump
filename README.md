@@ -6,9 +6,7 @@ Base functions for bioinformatics and [R][] package development.
 
 ## Installation
 
-Requirements: [R][] >= 4.0, [Bioconductor][] >= 3.12.
-
-### [R][] method
+This is an [R][] package.
 
 ```r
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
@@ -19,7 +17,8 @@ install.packages(
     repos = c(
         "https://r.acidgenomics.com",
         BiocManager::repositories()
-    )
+    ),
+    dependencies = TRUE
 )
 ```
 
