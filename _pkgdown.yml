@@ -15,6 +15,7 @@ news:
 reference:
   - title: Reexported classes and functions
     contents:
+      - coerce
       - reexports
 template:
   bootstrap: 5
