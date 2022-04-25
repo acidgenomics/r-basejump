@@ -1,3 +1,10 @@
+# basejump 0.5.1 (UNRELEASED)
+
+## Minor changes
+
+- Now exporting `droplevels2`, to avoid method collisions with changes in
+  `DataFrame` class handling introduced in Bioconductor 3.15.
+
 # basejump 0.5.0 (2022-03-11)
 
 ## Major changes
