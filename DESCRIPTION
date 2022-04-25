@@ -42,7 +42,7 @@ Imports:
     AcidGenomes (>= 0.3.0),
     AcidMarkdown (>= 0.1.5),
     AcidPlyr (>= 0.2.0),
-    AcidSingleCell (>= 0.2.0),
+    AcidSingleCell (>= 0.2.1),
     Biobase,
     BiocGenerics,
     BiocIO,

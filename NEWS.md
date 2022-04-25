@@ -4,6 +4,8 @@
 
 - Now exporting `droplevels2`, to avoid method collisions with changes in
   `DataFrame` class handling introduced in Bioconductor 3.15.
+- Updated dependencies on AcidExperiment, AcidGenomes, AcidSingleCell, and
+  pipette, to resolve breaking changes introduced by Bioconductor 3.15.
 
 # basejump 0.5.0 (2022-03-11)
 
