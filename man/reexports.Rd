@@ -329,6 +329,7 @@
 \alias{do.call}
 \alias{dottedCase}
 \alias{droplevels}
+\alias{droplevels2}
 \alias{duplicated}
 \alias{encode}
 \alias{end}

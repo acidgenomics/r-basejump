@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.15.0
-Date: 2022-03-11
+Version: 0.15.1.9000
+Date: 2022-04-25
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -37,7 +37,7 @@ Depends: R (>= 4.1)
 Imports:
     AcidBase (>= 0.5.0),
     AcidCLI (>= 0.2.0),
-    AcidExperiment (>= 0.3.0),
+    AcidExperiment (>= 0.3.1),
     AcidGenerics (>= 0.6.0),
     AcidGenomes (>= 0.3.0),
     AcidMarkdown (>= 0.1.5),
@@ -57,7 +57,7 @@ Imports:
     grid,
     magrittr,
     methods,
-    pipette (>= 0.8.0),
+    pipette (>= 0.8.1),
     sessioninfo,
     stringr,
     syntactic (>= 0.5.1),

@@ -493,11 +493,17 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod droplevels
 #' @importFrom S4Vectors droplevels
-#' @importMethodsFrom AcidExperiment droplevels
-#' @importMethodsFrom pipette droplevels
 #' @name droplevels
+#' @rdname reexports
+NULL
+
+#' @export
+#' @exportMethod droplevels2
+#' @importFrom AcidGenerics droplevels2
+#' @importMethodsFrom AcidExperiment droplevels2
+#' @importMethodsFrom pipette droplevels2
+#' @name droplevels2
 #' @rdname reexports
 NULL
 
