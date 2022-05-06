@@ -5,6 +5,8 @@
 - R 4.2 / Bioconductor 3.15 is now required.
 - Reduced the number of packages imported: grDevices, grid, utils.
 - No longer reexporting S4 classes or coercion methods.
+- Removed AcidCLI as a core package, as this shouldn't really be used in
+  basic analysis scripts.
 
 ## Minor changes
 

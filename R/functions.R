@@ -107,44 +107,12 @@ IRanges::SplitDataFrameList
 SummarizedExperiment::SummarizedExperiment
 
 #' @export
-#' @importFrom AcidCLI abort
-AcidCLI::abort
-
-#' @export
-#' @importFrom AcidCLI alert
-AcidCLI::alert
-
-#' @export
-#' @importFrom AcidCLI alertDanger
-AcidCLI::alertDanger
-
-#' @export
-#' @importFrom AcidCLI alertInfo
-AcidCLI::alertInfo
-
-#' @export
-#' @importFrom AcidCLI alertSuccess
-AcidCLI::alertSuccess
-
-#' @export
-#' @importFrom AcidCLI alertWarning
-AcidCLI::alertWarning
-
-#' @export
-#' @importFrom AcidBase appendToBody
-AcidBase::appendToBody
-
-#' @export
 #' @importFrom stats as.formula
 stats::as.formula
 
 #' @export
 #' @importFrom pipette assignAndSaveData
 pipette::assignAndSaveData
-
-#' @export
-#' @importFrom AcidBase barcodePattern
-AcidBase::barcodePattern
 
 #' @export
 #' @importFrom AcidBase basenameSansExt
@@ -157,14 +125,6 @@ pipette::cacheURL
 #' @export
 #' @importFrom AcidBase classContains
 AcidBase::classContains
-
-#' @export
-#' @importFrom AcidBase collapseToPathString
-AcidBase::collapseToPathString
-
-#' @export
-#' @importFrom tibble column_to_rownames
-tibble::column_to_rownames
 
 #' @export
 #' @importFrom AcidBase compress
@@ -207,10 +167,6 @@ AcidGenomes::currentUCSCGenomeBuild
 AcidGenomes::currentWormBaseVersion
 
 #' @export
-#' @importFrom data.table data.table
-data.table::data.table
-
-#' @export
 #' @importFrom AcidBase decompress
 AcidBase::decompress
 
@@ -225,14 +181,6 @@ AcidGenomes::detectOrganism
 #' @export
 #' @importFrom stats dist
 stats::dist
-
-#' @export
-#' @importFrom AcidCLI dl
-AcidCLI::dl
-
-#' @export
-#' @importFrom AcidBase dots
-AcidBase::dots
 
 #' @export
 #' @importFrom AcidBase download
@@ -259,20 +207,12 @@ AcidGenomes::downloadUCSCGenome
 stats::ecdf
 
 #' @export
-#' @importFrom AcidGenomes emptyRanges
-AcidGenomes::emptyRanges
-
-#' @export
 #' @importFrom AcidBase fileDepth
 AcidBase::fileDepth
 
 #' @export
 #' @importFrom AcidBase fileExt
 AcidBase::fileExt
-
-#' @export
-#' @importFrom AcidBase forceDetach
-AcidBase::forceDetach
 
 #' @export
 #' @importFrom stats formula
@@ -285,34 +225,6 @@ AcidGenomes::geneSynonyms
 #' @export
 #' @importFrom AcidBase genomeMetadataNames
 AcidBase::genomeMetadataNames
-
-#' @export
-#' @importFrom AcidCLI h1
-AcidCLI::h1
-
-#' @export
-#' @importFrom AcidCLI h2
-AcidCLI::h2
-
-#' @export
-#' @importFrom AcidCLI h3
-AcidCLI::h3
-
-#' @export
-#' @importFrom AcidCLI h4
-AcidCLI::h4
-
-#' @export
-#' @importFrom AcidCLI h5
-AcidCLI::h5
-
-#' @export
-#' @importFrom AcidCLI h6
-AcidCLI::h6
-
-#' @export
-#' @importFrom AcidCLI h7
-AcidCLI::h7
 
 #' @export
 #' @importFrom stats hclust
@@ -335,16 +247,8 @@ AcidExperiment::importSampleData
 AcidGenomes::importTx2Gene
 
 #' @export
-#' @importFrom AcidCLI inform
-AcidCLI::inform
-
-#' @export
 #' @importFrom AcidBase initDir
 AcidBase::initDir
-
-#' @export
-#' @importFrom AcidBase lanePattern
-AcidBase::lanePattern
 
 #' @export
 #' @importFrom pipette loadData
@@ -451,40 +355,12 @@ AcidMarkdown::markdownTables
 AcidExperiment::matchInterestingGroups
 
 #' @export
-#' @importFrom AcidMarkdown mdHeader
-AcidMarkdown::mdHeader
-
-#' @export
-#' @importFrom AcidMarkdown mdLink
-AcidMarkdown::mdLink
-
-#' @export
-#' @importFrom AcidMarkdown mdList
-AcidMarkdown::mdList
-
-#' @export
-#' @importFrom AcidMarkdown mdPlots
-AcidMarkdown::mdPlots
-
-#' @export
-#' @importFrom AcidMarkdown mdTables
-AcidMarkdown::mdTables
-
-#' @export
-#' @importFrom AcidBase metadataDenylist
-AcidBase::metadataDenylist
-
-#' @export
 #' @importFrom AcidBase methodFormals
 AcidBase::methodFormals
 
 #' @export
 #' @importFrom AcidBase methodFunction
 AcidBase::methodFunction
-
-#' @export
-#' @importFrom AcidBase metricsCols
-AcidBase::metricsCols
 
 #' @export
 #' @importFrom AcidExperiment microplate
@@ -501,14 +377,6 @@ AcidBase::minorVersion
 #' @export
 #' @importFrom stats model.matrix
 stats::model.matrix
-
-#' @export
-#' @importFrom pipette naStrings
-pipette::naStrings
-
-#' @export
-#' @importFrom AcidCLI ol
-AcidCLI::ol
 
 #' @export
 #' @importFrom AcidBase parentDir
@@ -531,10 +399,6 @@ stats::prcomp
 AcidMarkdown::prepareTemplate
 
 #' @export
-#' @importFrom AcidBase printString
-AcidBase::printString
-
-#' @export
 #' @importFrom AcidBase realpath
 AcidBase::realpath
 
@@ -551,10 +415,6 @@ stats::reorder
 AcidBase::requireNamespaces
 
 #' @export
-#' @importFrom tibble rownames_to_column
-tibble::rownames_to_column
-
-#' @export
 #' @importFrom AcidExperiment sanitizeSampleData
 AcidExperiment::sanitizeSampleData
 
@@ -565,10 +425,6 @@ AcidBase::sanitizeVersion
 #' @export
 #' @importFrom pipette saveData
 pipette::saveData
-
-#' @export
-#' @importFrom AcidCLI separator
-AcidCLI::separator
 
 #' @export
 #' @importFrom AcidBase simpleClass
@@ -587,41 +443,5 @@ AcidBase::showSlotInfo
 Matrix::sparseMatrix
 
 #' @export
-#' @importFrom AcidBase splitPathString
-AcidBase::splitPathString
-
-#' @export
-#' @importFrom AcidBase standardizeCall
-AcidBase::standardizeCall
-
-#' @export
-#' @importFrom tibble tibble
-tibble::tibble
-
-#' @export
-#' @importFrom AcidCLI toInlineString
-AcidCLI::toInlineString
-
-#' @export
 #' @importFrom pipette transmit
 pipette::transmit
-
-#' @export
-#' @importFrom AcidCLI txt
-AcidCLI::txt
-
-#' @export
-#' @importFrom AcidCLI ul
-AcidCLI::ul
-
-#' @export
-#' @importFrom AcidBase updateMessage
-AcidBase::updateMessage
-
-#' @export
-#' @importFrom AcidCLI verbatim
-AcidCLI::verbatim
-
-#' @export
-#' @importFrom AcidCLI warn
-AcidCLI::warn
