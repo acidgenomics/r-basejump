@@ -17,17 +17,13 @@ NULL
 ## S4 generics =================================================================
 
 #' @export
-#' @exportMethod Ensembl2Entrez
 #' @importFrom AcidGenerics Ensembl2Entrez
-#' @importMethodsFrom AcidGenomes Ensembl2Entrez
 #' @name Ensembl2Entrez
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod Entrez2Ensembl
 #' @importFrom AcidGenerics Entrez2Ensembl
-#' @importMethodsFrom AcidGenomes Entrez2Ensembl
 #' @name Entrez2Ensembl
 #' @rdname reexports
 NULL
@@ -45,9 +41,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod Gene2Symbol
 #' @importFrom AcidGenerics Gene2Symbol
-#' @importMethodsFrom AcidGenomes Gene2Symbol
 #' @name Gene2Symbol
 #' @rdname reexports
 NULL
@@ -77,9 +71,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod Tx2Gene
 #' @importFrom AcidGenerics Tx2Gene
-#' @importMethodsFrom AcidGenomes Tx2Gene
 #' @name Tx2Gene
 #' @rdname reexports
 NULL
@@ -91,42 +83,31 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod aggregate
 #' @importFrom S4Vectors aggregate
-#' @importMethodsFrom AcidExperiment aggregate
-#' @importMethodsFrom AcidSingleCell aggregate
 #' @name aggregate
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod aggregateCellsToSamples
 #' @importFrom AcidGenerics aggregateCellsToSamples
-#' @importMethodsFrom AcidSingleCell aggregateCellsToSamples
 #' @name aggregateCellsToSamples
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod aggregateCols
 #' @importFrom AcidGenerics aggregateCols
-#' @importMethodsFrom AcidExperiment aggregateCols
 #' @name aggregateCols
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod aggregateRows
 #' @importFrom AcidGenerics aggregateRows
-#' @importMethodsFrom AcidExperiment aggregateRows
 #' @name aggregateRows
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod antiJoin
 #' @importFrom AcidGenerics antiJoin
-#' @importMethodsFrom AcidPlyr antiJoin
 #' @name antiJoin
 #' @rdname reexports
 NULL
@@ -144,17 +125,13 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod as.DataFrame
 #' @importFrom AcidGenerics as.DataFrame
-#' @importMethodsFrom pipette as.DataFrame
 #' @name as.DataFrame
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod as.SummarizedExperiment
 #' @importFrom AcidGenerics as.SummarizedExperiment
-#' @importMethodsFrom AcidExperiment as.SummarizedExperiment
 #' @name as.SummarizedExperiment
 #' @rdname reexports
 NULL
@@ -218,26 +195,19 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod atomize
 #' @importFrom AcidGenerics atomize
-#' @importMethodsFrom pipette atomize
 #' @name atomize
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod autopadZeros
 #' @importFrom AcidGenerics autopadZeros
-#' @importMethodsFrom AcidExperiment autopadZeros
-#' @importMethodsFrom syntactic autopadZeros
 #' @name autopadZeros
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod barcodeRanksPerSample
 #' @importFrom AcidGenerics barcodeRanksPerSample
-#' @importMethodsFrom AcidSingleCell barcodeRanksPerSample
 #' @name barcodeRanksPerSample
 #' @rdname reexports
 NULL
@@ -249,26 +219,19 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod calculateMetrics
 #' @importFrom AcidGenerics calculateMetrics
-#' @importMethodsFrom AcidExperiment calculateMetrics
 #' @name calculateMetrics
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod camelCase
 #' @importFrom AcidGenerics camelCase
-#' @importMethodsFrom AcidExperiment camelCase
-#' @importMethodsFrom syntactic camelCase
 #' @name camelCase
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod capitalize
 #' @importFrom AcidGenerics capitalize
-#' @importMethodsFrom syntactic capitalize
 #' @name capitalize
 #' @rdname reexports
 NULL
@@ -280,41 +243,31 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod cell2sample
 #' @importFrom AcidGenerics cell2sample
-#' @importMethodsFrom AcidSingleCell cell2sample
 #' @name cell2sample
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod cellCountsPerCluster
 #' @importFrom AcidGenerics cellCountsPerCluster
-#' @importMethodsFrom AcidSingleCell cellCountsPerCluster
 #' @name cellCountsPerCluster
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod cellTypesPerCluster
 #' @importFrom AcidGenerics cellTypesPerCluster
-#' @importMethodsFrom AcidSingleCell cellTypesPerCluster
 #' @name cellTypesPerCluster
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod clusters
 #' @importFrom AcidGenerics clusters
-#' @importMethodsFrom AcidSingleCell clusters
 #' @name clusters
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod coerceToList
 #' @importFrom AcidGenerics coerceToList
-#' @importMethodsFrom AcidBase coerceToList
 #' @name coerceToList
 #' @rdname reexports
 NULL
@@ -333,9 +286,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod collapseToString
 #' @importFrom AcidGenerics collapseToString
-#' @importMethodsFrom AcidPlyr collapseToString
 #' @name collapseToString
 #' @rdname reexports
 NULL
@@ -348,10 +299,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod combine
 #' @importFrom BiocGenerics combine
-#' @importMethodsFrom AcidExperiment combine
-#' @importMethodsFrom AcidSingleCell combine
 #' @name combine
 #' @rdname reexports
 NULL
@@ -363,34 +311,25 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod convertGenesToSymbols
 #' @importFrom AcidGenerics convertGenesToSymbols
-#' @importMethodsFrom AcidExperiment convertGenesToSymbols
 #' @name convertGenesToSymbols
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod convertSampleIDsToNames
 #' @importFrom AcidGenerics convertSampleIDsToNames
-#' @importMethodsFrom AcidExperiment convertSampleIDsToNames
-#' @importMethodsFrom AcidSingleCell convertSampleIDsToNames
 #' @name convertSampleIDsToNames
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod convertSymbolsToGenes
 #' @importFrom AcidGenerics convertSymbolsToGenes
-#' @importMethodsFrom AcidExperiment convertSymbolsToGenes
 #' @name convertSymbolsToGenes
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod convertTranscriptsToGenes
 #' @importFrom AcidGenerics convertTranscriptsToGenes
-#' @importMethodsFrom AcidExperiment convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
 #' @rdname reexports
 NULL
@@ -402,35 +341,26 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod correlation
 #' @importFrom AcidGenerics correlation
-#' @importMethodsFrom AcidExperiment correlation
 #' @name correlation
 #' @rdname reexports
 NULL
 
 #' @aliases counts<-
 #' @export
-#' @exportMethod counts counts<-
 #' @importFrom BiocGenerics counts counts<-
-#' @importMethodsFrom AcidExperiment counts counts<-
 #' @name counts
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod cpm
 #' @importFrom AcidGenerics cpm
-#' @importMethodsFrom AcidSingleCell cpm
 #' @name cpm
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod decode
 #' @importFrom S4Vectors decode
-#' @importMethodsFrom AcidExperiment decode
-#' @importMethodsFrom pipette decode
 #' @name decode
 #' @rdname reexports
 NULL
@@ -442,17 +372,13 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod diffExp
 #' @importFrom AcidGenerics diffExp
-#' @importMethodsFrom AcidSingleCell diffExp
 #' @name diffExp
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod diffExpPerCluster
 #' @importFrom AcidGenerics diffExpPerCluster
-#' @importMethodsFrom AcidSingleCell diffExpPerCluster
 #' @name diffExpPerCluster
 #' @rdname reexports
 NULL
@@ -476,10 +402,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod dottedCase
 #' @importFrom AcidGenerics dottedCase
-#' @importMethodsFrom AcidExperiment dottedCase
-#' @importMethodsFrom syntactic dottedCase
 #' @name dottedCase
 #' @rdname reexports
 NULL
@@ -491,10 +414,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod droplevels2
 #' @importFrom AcidGenerics droplevels2
-#' @importMethodsFrom AcidExperiment droplevels2
-#' @importMethodsFrom pipette droplevels2
 #' @name droplevels2
 #' @rdname reexports
 NULL
@@ -506,10 +426,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod encode
 #' @importFrom AcidGenerics encode
-#' @importMethodsFrom AcidExperiment encode
-#' @importMethodsFrom pipette encode
 #' @name encode
 #' @rdname reexports
 NULL
@@ -528,9 +445,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod estimateSizeFactors
 #' @importFrom BiocGenerics estimateSizeFactors
-#' @importMethodsFrom AcidExperiment estimateSizeFactors
 #' @name estimateSizeFactors
 #' @rdname reexports
 NULL
@@ -554,60 +469,43 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod export
 #' @importFrom BiocIO export
-#' @importMethodsFrom AcidExperiment export
-#' @importMethodsFrom AcidGenomes export
-#' @importMethodsFrom AcidSingleCell export
-#' @importMethodsFrom pipette export
 #' @name export
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod factorize
 #' @importFrom AcidGenerics factorize
-#' @importMethodsFrom pipette factorize
 #' @name factorize
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod filterCells
 #' @importFrom AcidGenerics filterCells
-#' @importMethodsFrom AcidSingleCell filterCells
 #' @name filterCells
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod findMarkers
 #' @importFrom AcidGenerics findMarkers
-#' @importMethodsFrom AcidSingleCell findMarkers
 #' @name findMarkers
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod foldChangeToLogRatio
 #' @importFrom AcidGenerics foldChangeToLogRatio
-#' @importMethodsFrom AcidBase foldChangeToLogRatio
 #' @name foldChangeToLogRatio
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod fullJoin
 #' @importFrom AcidGenerics fullJoin
-#' @importMethodsFrom AcidPlyr fullJoin
 #' @name fullJoin
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod geneNames
 #' @importFrom AcidGenerics geneNames
-#' @importMethodsFrom AcidExperiment geneNames
 #' @name geneNames
 #' @rdname reexports
 NULL
@@ -620,10 +518,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod geometricMean
 #' @importFrom AcidGenerics geometricMean
-#' @importMethodsFrom AcidBase geometricMean
-#' @importMethodsFrom AcidSingleCell geometricMean
 #' @name geometricMean
 #' @rdname reexports
 NULL
@@ -665,50 +560,38 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod headtail
 #' @importFrom AcidGenerics headtail
-#' @importMethodsFrom AcidBase headtail
-#' @importMethodsFrom AcidExperiment headtail
 #' @name headtail
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod humanize
 #' @importFrom AcidGenerics humanize
-#' @importMethodsFrom AcidExperiment humanize
 #' @name humanize
 #' @rdname reexports
 NULL
 
 #' @export
 #' @importFrom BiocIO import
-#' @importMethodsFrom pipette import
 #' @name import
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod innerJoin
 #' @importFrom AcidGenerics innerJoin
-#' @importMethodsFrom AcidPlyr innerJoin
 #' @name innerJoin
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod integerCounts
 #' @importFrom AcidGenerics integerCounts
-#' @importMethodsFrom AcidExperiment integerCounts
 #' @name integerCounts
 #' @rdname reexports
 NULL
 
 #' @aliases interestingGroups<-
 #' @export interestingGroups interestingGroups<-
-#' @exportMethod interestingGroups interestingGroups<-
 #' @importFrom AcidGenerics interestingGroups interestingGroups<-
-#' @importMethodsFrom AcidExperiment interestingGroups interestingGroups<-
 #' @name interestingGroups
 #' @rdname reexports
 NULL
@@ -720,17 +603,13 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod intersectAll
 #' @importFrom AcidGenerics intersectAll
-#' @importMethodsFrom AcidBase intersectAll
 #' @name intersectAll
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod intersectionMatrix
 #' @importFrom AcidGenerics intersectionMatrix
-#' @importMethodsFrom AcidBase intersectionMatrix
 #' @name intersectionMatrix
 #' @rdname reexports
 NULL
@@ -742,9 +621,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod kebabCase
 #' @importFrom AcidGenerics kebabCase
-#' @importMethodsFrom syntactic kebabCase
 #' @name kebabCase
 #' @rdname reexports
 NULL
@@ -756,17 +633,13 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod leftJoin
 #' @importFrom AcidGenerics leftJoin
-#' @importMethodsFrom AcidPlyr leftJoin
 #' @name leftJoin
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod logRatioToFoldChange
 #' @importFrom AcidGenerics logRatioToFoldChange
-#' @importMethodsFrom AcidBase logRatioToFoldChange
 #' @name logRatioToFoldChange
 #' @rdname reexports
 NULL
@@ -779,81 +652,61 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod makeDimnames
 #' @importFrom AcidGenerics makeDimnames
-#' @importMethodsFrom syntactic makeDimnames
 #' @name makeDimnames
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod makeLabel
 #' @importFrom AcidGenerics makeLabel
-#' @importMethodsFrom syntactic makeLabel
 #' @name makeLabel
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod makeNames
 #' @importFrom AcidGenerics makeNames
-#' @importMethodsFrom syntactic makeNames
 #' @name makeNames
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod makeSampleData
 #' @importFrom AcidGenerics makeSampleData
-#' @importMethodsFrom AcidExperiment makeSampleData
 #' @name makeSampleData
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod makeTitle
 #' @importFrom AcidGenerics makeTitle
-#' @importMethodsFrom syntactic makeTitle
 #' @name makeTitle
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod makeWords
 #' @importFrom AcidGenerics makeWords
-#' @importMethodsFrom syntactic makeWords
 #' @name makeWords
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod mapGenesToIDs
 #' @importFrom AcidGenerics mapGenesToIDs
-#' @importMethodsFrom AcidExperiment mapGenesToIDs
 #' @name mapGenesToIDs
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod mapGenesToRownames
 #' @importFrom AcidGenerics mapGenesToRownames
-#' @importMethodsFrom AcidExperiment mapGenesToRownames
 #' @name mapGenesToRownames
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod mapGenesToSymbols
 #' @importFrom AcidGenerics mapGenesToSymbols
-#' @importMethodsFrom AcidExperiment mapGenesToSymbols
 #' @name mapGenesToSymbols
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod mapToDataFrame
 #' @importFrom AcidGenerics mapToDataFrame
-#' @importMethodsFrom AcidPlyr mapToDataFrame
 #' @name mapToDataFrame
 #' @rdname reexports
 NULL
@@ -871,9 +724,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod matchSampleColumn
 #' @importFrom AcidGenerics matchSampleColumn
-#' @importMethodsFrom AcidExperiment matchSampleColumn
 #' @name matchSampleColumn
 #' @rdname reexports
 NULL
@@ -898,11 +749,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod melt
 #' @importFrom AcidGenerics melt
-#' @importMethodsFrom AcidExperiment melt
-#' @importMethodsFrom AcidPlyr melt
-#' @importMethodsFrom AcidSingleCell melt
 #' @name melt
 #' @rdname reexports
 NULL
@@ -922,26 +769,19 @@ NULL
 
 #' @aliases metadata2<-
 #' @export metadata2 metadata2<-
-#' @exportMethod metadata2 metadata2<-
 #' @importFrom AcidGenerics metadata2 metadata2<-
-#' @importMethodsFrom pipette metadata2 metadata2<-
 #' @name metadata2
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod metrics
 #' @importFrom AcidGenerics metrics
-#' @importMethodsFrom AcidExperiment metrics
-#' @importMethodsFrom AcidSingleCell metrics
 #' @name metrics
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod metricsPerSample
 #' @importFrom AcidGenerics metricsPerSample
-#' @importMethodsFrom AcidSingleCell metricsPerSample
 #' @name metricsPerSample
 #' @rdname reexports
 NULL
@@ -953,25 +793,19 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod mutateAll
 #' @importFrom AcidGenerics mutateAll
-#' @importMethodsFrom AcidPlyr mutateAll
 #' @name mutateAll
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod mutateAt
 #' @importFrom AcidGenerics mutateAt
-#' @importMethodsFrom AcidPlyr mutateAt
 #' @name mutateAt
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod mutateIf
 #' @importFrom AcidGenerics mutateIf
-#' @importMethodsFrom AcidPlyr mutateIf
 #' @name mutateIf
 #' @rdname reexports
 NULL
@@ -989,17 +823,13 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod nonzeroRowsAndCols
 #' @importFrom AcidGenerics nonzeroRowsAndCols
-#' @importMethodsFrom AcidExperiment nonzeroRowsAndCols
 #' @name nonzeroRowsAndCols
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod normalize
 #' @importFrom BiocGenerics normalize
-#' @importMethodsFrom AcidSingleCell normalize
 #' @name normalize
 #' @rdname reexports
 NULL
@@ -1025,10 +855,7 @@ NULL
 
 #' @aliases organism<-
 #' @export
-#' @exportMethod organism organism<-
 #' @importFrom BiocGenerics organism organism<-
-#' @importMethodsFrom AcidExperiment organism
-#' @importMethodsFrom AcidGenomes organism organism<-
 #' @name organism
 #' @rdname reexports
 NULL
@@ -1088,9 +915,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod rankedMatrix
 #' @importFrom AcidGenerics rankedMatrix
-#' @importMethodsFrom AcidBase rankedMatrix
 #' @name rankedMatrix
 #' @rdname reexports
 NULL
@@ -1102,9 +927,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod rbindToDataFrame
 #' @importFrom AcidGenerics rbindToDataFrame
-#' @importMethodsFrom AcidPlyr rbindToDataFrame
 #' @name rbindToDataFrame
 #' @rdname reexports
 NULL
@@ -1137,9 +960,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod removeNA
 #' @importFrom AcidGenerics removeNA
-#' @importMethodsFrom pipette removeNA
 #' @name removeNA
 #' @rdname reexports
 NULL
@@ -1151,9 +972,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod rightJoin
 #' @importFrom AcidGenerics rightJoin
-#' @importMethodsFrom AcidPlyr rightJoin
 #' @name rightJoin
 #' @rdname reexports
 NULL
@@ -1193,35 +1012,26 @@ NULL
 
 #' @aliases sampleData<-
 #' @export sampleData sampleData<-
-#' @exportMethod sampleData sampleData<-
 #' @importFrom AcidGenerics sampleData sampleData<-
-#' @importMethodsFrom AcidExperiment sampleData sampleData<-
-#' @importMethodsFrom AcidSingleCell sampleData sampleData<-
 #' @name sampleData
 #' @rdname reexports
 NULL
 
 #' @aliases sampleNames<-
 #' @export sampleNames sampleNames<-
-#' @exportMethod sampleNames sampleNames<-
 #' @importFrom Biobase sampleNames sampleNames<-
-#' @importMethodsFrom AcidExperiment sampleNames sampleNames<-
 #' @name sampleNames
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod sanitizeNA
 #' @importFrom AcidGenerics sanitizeNA
-#' @importMethodsFrom pipette sanitizeNA
 #' @name sanitizeNA
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod sanitizePercent
 #' @importFrom AcidGenerics sanitizePercent
-#' @importMethodsFrom pipette sanitizePercent
 #' @name sanitizePercent
 #' @rdname reexports
 NULL
@@ -1239,42 +1049,31 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod selectIf
 #' @importFrom AcidGenerics selectIf
-#' @importMethodsFrom AcidPlyr selectIf
 #' @name selectIf
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod selectSamples
 #' @importFrom AcidGenerics selectSamples
-#' @importMethodsFrom AcidExperiment selectSamples
-#' @importMethodsFrom AcidSingleCell selectSamples
 #' @name selectSamples
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod sem
 #' @importFrom AcidGenerics sem
-#' @importMethodsFrom AcidBase sem
 #' @name sem
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod semiJoin
 #' @importFrom AcidGenerics semiJoin
-#' @importMethodsFrom AcidPlyr semiJoin
 #' @name semiJoin
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod sentenceCase
 #' @importFrom AcidGenerics sentenceCase
-#' @importMethodsFrom syntactic sentenceCase
 #' @name sentenceCase
 #' @rdname reexports
 NULL
@@ -1307,27 +1106,20 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod showHeader
 #' @importFrom AcidGenerics showHeader
-#' @importMethodsFrom AcidBase showHeader
 #' @name showHeader
 #' @rdname reexports
 NULL
 
 #' @aliases sizeFactors<-
 #' @export sizeFactors sizeFactors<-
-#' @exportMethod sizeFactors sizeFactors<-
 #' @importFrom BiocGenerics sizeFactors sizeFactors<-
-#' @importMethodsFrom AcidExperiment sizeFactors sizeFactors<-
 #' @name sizeFactors
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod snakeCase
 #' @importFrom AcidGenerics snakeCase
-#' @importMethodsFrom AcidExperiment snakeCase
-#' @importMethodsFrom syntactic snakeCase
 #' @name snakeCase
 #' @rdname reexports
 NULL
@@ -1345,9 +1137,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod splitByLevel
 #' @importFrom AcidGenerics splitByLevel
-#' @importMethodsFrom AcidPlyr splitByLevel
 #' @name splitByLevel
 #' @rdname reexports
 NULL
@@ -1367,19 +1157,13 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod stripGeneVersions
 #' @importFrom AcidGenerics stripGeneVersions
-#' @importMethodsFrom AcidExperiment stripGeneVersions
-#' @importMethodsFrom AcidGenomes stripGeneVersions
 #' @name stripGeneVersions
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod stripTranscriptVersions
 #' @importFrom AcidGenerics stripTranscriptVersions
-#' @importMethodsFrom AcidExperiment stripTranscriptVersions
-#' @importMethodsFrom AcidGenomes stripTranscriptVersions
 #' @name stripTranscriptVersions
 #' @rdname reexports
 NULL
@@ -1397,9 +1181,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod subsetPerSample
 #' @importFrom AcidGenerics subsetPerSample
-#' @importMethodsFrom AcidSingleCell subsetPerSample
 #' @name subsetPerSample
 #' @rdname reexports
 NULL
@@ -1435,9 +1217,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod topCellsPerSample
-#' @importFrom AcidGenerics subsetPerSample
-#' @importMethodsFrom AcidSingleCell topCellsPerSample
+#' @importFrom AcidGenerics topCellsPerSample
 #' @name topCellsPerSample
 #' @rdname reexports
 NULL
@@ -1449,25 +1229,19 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod tpm
 #' @importFrom AcidGenerics tpm
-#' @importMethodsFrom AcidExperiment tpm
 #' @name tpm
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod transmuteAt
 #' @importFrom AcidGenerics transmuteAt
-#' @importMethodsFrom AcidPlyr transmuteAt
 #' @name transmuteAt
 #' @rdname reexports
 NULL
 
 #' @export
-#' @exportMethod transmuteIf
 #' @importFrom AcidGenerics transmuteIf
-#' @importMethodsFrom AcidPlyr transmuteIf
 #' @name transmuteIf
 #' @rdname reexports
 NULL
@@ -1485,9 +1259,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod uniteInterestingGroups
 #' @importFrom AcidGenerics uniteInterestingGroups
-#' @importMethodsFrom AcidExperiment uniteInterestingGroups
 #' @name uniteInterestingGroups
 #' @rdname reexports
 NULL
@@ -1511,10 +1283,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod upperCamelCase
 #' @importFrom AcidGenerics upperCamelCase
-#' @importMethodsFrom AcidExperiment upperCamelCase
-#' @importMethodsFrom syntactic upperCamelCase
 #' @name upperCamelCase
 #' @rdname reexports
 NULL
@@ -1557,9 +1326,7 @@ NULL
 NULL
 
 #' @export
-#' @exportMethod zerosVsDepth
 #' @importFrom AcidGenerics zerosVsDepth
-#' @importMethodsFrom AcidSingleCell zerosVsDepth
 #' @name zerosVsDepth
 #' @rdname reexports
 NULL
