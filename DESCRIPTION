@@ -54,6 +54,7 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     data.table,
+    magrittr,
     methods,
     pipette,
     syntactic,

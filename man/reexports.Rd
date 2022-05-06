@@ -58,6 +58,10 @@
 \alias{missingOrNULL-class}
 \alias{sparseMatrix-class}
 \alias{reexports}
+\alias{\%$\%}
+\alias{\%<>\%}
+\alias{\%>\%}
+\alias{\%T>\%}
 \alias{CellCycleMarkers}
 \alias{CellTypeMarkers}
 \alias{CharacterList}
@@ -479,6 +483,8 @@ below to see their documentation.
   \item{GenomicRanges}{\code{\link[GenomicRanges:GRanges-class]{GRanges}}, \code{\link[GenomicRanges:GRanges-class]{GRanges}}, \code{\link[GenomicRanges:GRangesList-class]{GRangesList}}, \code{\link[GenomicRanges:GRangesList-class]{GRangesList}}}
 
   \item{IRanges}{\code{\link[IRanges:AtomicList-class]{CharacterList}}, \code{\link[IRanges:DataFrameList-class]{DataFrameList}}, \code{\link[IRanges:AtomicList-class]{FactorList}}, \code{\link[IRanges:AtomicList-class]{NumericList}}, \code{\link[IRanges:AtomicList-class]{RleList}}, \code{\link[IRanges:DataFrameList-class]{SplitDataFrameList}}}
+
+  \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}, \code{\link[Matrix]{sparseMatrix}}}
 
