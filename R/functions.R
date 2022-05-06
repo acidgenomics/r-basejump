@@ -1,20 +1,4 @@
 #' @export
-#' @importFrom magrittr %$%
-magrittr::`%$%`
-
-#' @export
-#' @importFrom magrittr %<>%
-magrittr::`%<>%`
-
-#' @export
-#' @importFrom magrittr %>%
-magrittr::`%>%`
-
-#' @export
-#' @importFrom magrittr %T>%
-magrittr::`%T>%`
-
-#' @export
 #' @importFrom AcidSingleCell CellCycleMarkers
 AcidSingleCell::CellCycleMarkers
 
@@ -107,10 +91,6 @@ IRanges::SplitDataFrameList
 SummarizedExperiment::SummarizedExperiment
 
 #' @export
-#' @importFrom utils URLencode
-utils::URLencode
-
-#' @export
 #' @importFrom AcidCLI abort
 AcidCLI::abort
 
@@ -135,16 +115,8 @@ AcidCLI::alertSuccess
 AcidCLI::alertWarning
 
 #' @export
-#' @importFrom AcidGenomes annotable
-AcidGenomes::annotable
-
-#' @export
 #' @importFrom AcidBase appendToBody
 AcidBase::appendToBody
-
-#' @export
-#' @importFrom grid arrow
-grid::arrow
 
 #' @export
 #' @importFrom stats as.formula
@@ -153,10 +125,6 @@ stats::as.formula
 #' @export
 #' @importFrom pipette assignAndSaveData
 pipette::assignAndSaveData
-
-#' @export
-#' @importFrom grDevices axisTicks
-grDevices::axisTicks
 
 #' @export
 #' @importFrom AcidBase barcodePattern
@@ -171,10 +139,6 @@ AcidBase::basenameSansExt
 pipette::cacheURL
 
 #' @export
-#' @importFrom utils capture.output
-utils::capture.output
-
-#' @export
 #' @importFrom AcidBase classContains
 AcidBase::classContains
 
@@ -183,12 +147,8 @@ AcidBase::classContains
 AcidBase::collapseToPathString
 
 #' @export
-#' @importFrom grDevices colorRampPalette
-grDevices::colorRampPalette
-
-#' @export
-#' @importFrom pipette column_to_rownames
-pipette::column_to_rownames  # tibble reexport
+#' @importFrom tibble column_to_rownames
+tibble::column_to_rownames
 
 #' @export
 #' @importFrom AcidBase compress
@@ -231,12 +191,8 @@ AcidGenomes::currentUCSCGenomeBuild
 AcidGenomes::currentWormBaseVersion
 
 #' @export
-#' @importFrom utils data
-utils::data
-
-#' @export
-#' @importFrom pipette data.table
-pipette::data.table  # data.table reexport
+#' @importFrom data.table data.table
+data.table::data.table
 
 #' @export
 #' @importFrom AcidBase decompress
@@ -299,10 +255,6 @@ AcidBase::fileDepth
 AcidBase::fileExt
 
 #' @export
-#' @importFrom stringr fixed
-stringr::fixed
-
-#' @export
 #' @importFrom AcidBase forceDetach
 AcidBase::forceDetach
 
@@ -317,18 +269,6 @@ AcidGenomes::geneSynonyms
 #' @export
 #' @importFrom AcidBase genomeMetadataNames
 AcidBase::genomeMetadataNames
-
-#' @export
-#' @importFrom utils getS3method
-utils::getS3method
-
-#' @export
-#' @importFrom pipette getURL
-pipette::getURL  # RCurl reexport
-
-#' @export
-#' @importFrom pipette getURLDirList
-pipette::getURLDirList
 
 #' @export
 #' @importFrom AcidCLI h1
@@ -555,14 +495,6 @@ pipette::naStrings
 AcidCLI::ol
 
 #' @export
-#' @importFrom utils packageName
-utils::packageName
-
-#' @export
-#' @importFrom utils packageVersion
-utils::packageVersion
-
-#' @export
 #' @importFrom AcidBase parentDir
 AcidBase::parentDir
 
@@ -587,16 +519,8 @@ AcidMarkdown::prepareTemplate
 AcidBase::printString
 
 #' @export
-#' @importFrom pipette rbindlist
-pipette::rbindlist
-
-#' @export
 #' @importFrom AcidBase realpath
 AcidBase::realpath
-
-#' @export
-#' @importFrom stringr regex
-stringr::regex
 
 #' @export
 #' @importFrom stats relevel
@@ -611,12 +535,8 @@ stats::reorder
 AcidBase::requireNamespaces
 
 #' @export
-#' @importFrom grDevices rgb
-grDevices::rgb
-
-#' @export
-#' @importFrom pipette rownames_to_column
-pipette::rownames_to_column  # tibble reexport
+#' @importFrom tibble rownames_to_column
+tibble::rownames_to_column
 
 #' @export
 #' @importFrom AcidExperiment sanitizeSampleData
@@ -633,14 +553,6 @@ pipette::saveData
 #' @export
 #' @importFrom AcidCLI separator
 AcidCLI::separator
-
-#' @export
-#' @importFrom utils sessionInfo
-utils::sessionInfo
-
-#' @export
-#' @importFrom sessioninfo session_info
-sessioninfo::session_info
 
 #' @export
 #' @importFrom AcidBase simpleClass
@@ -667,100 +579,8 @@ AcidBase::splitPathString
 AcidBase::standardizeCall
 
 #' @export
-#' @importFrom stringr str_detect
-stringr::str_detect
-
-#' @export
-#' @importFrom stringr str_dup
-stringr::str_dup
-
-#' @export
-#' @importFrom stringr str_extract
-stringr::str_extract
-
-#' @export
-#' @importFrom stringr str_extract_all
-stringr::str_extract_all
-
-#' @export
-#' @importFrom stringr str_length
-stringr::str_length
-
-#' @export
-#' @importFrom stringr str_locate_all
-stringr::str_locate_all
-
-#' @export
-#' @importFrom stringr str_match
-stringr::str_match
-
-#' @export
-#' @importFrom stringr str_match_all
-stringr::str_match_all
-
-#' @export
-#' @importFrom stringr str_pad
-stringr::str_pad
-
-#' @export
-#' @importFrom stringr str_replace
-stringr::str_replace
-
-#' @export
-#' @importFrom stringr str_replace_all
-stringr::str_replace_all
-
-#' @export
-#' @importFrom stringr str_replace_na
-stringr::str_replace_na
-
-#' @export
-#' @importFrom stringr str_split
-stringr::str_split
-
-#' @export
-#' @importFrom stringr str_split_fixed
-stringr::str_split_fixed
-
-#' @export
-#' @importFrom stringr str_sub
-stringr::str_sub
-
-#' @export
-#' @importFrom stringr str_subset
-stringr::str_subset
-
-#' @export
-#' @importFrom stringr str_to_lower
-stringr::str_to_lower
-
-#' @export
-#' @importFrom stringr str_to_sentence
-stringr::str_to_sentence
-
-#' @export
-#' @importFrom stringr str_to_title
-stringr::str_to_title
-
-#' @export
-#' @importFrom stringr str_to_upper
-stringr::str_to_upper
-
-#' @export
-#' @importFrom stringr str_trunc
-stringr::str_trunc
-
-#' @export
-#' @importFrom syntactic syntacticRename
-syntactic::syntacticRename
-
-#' @export
-#' @importFrom utils tar
-utils::tar
-
-#' @export
-#' @importFrom pipette tibble
-pipette::tibble  # tibble reexport
+#' @importFrom tibble tibble
+tibble::tibble
 
 #' @export
 #' @importFrom AcidCLI toInlineString
@@ -777,14 +597,6 @@ AcidCLI::txt
 #' @export
 #' @importFrom AcidCLI ul
 AcidCLI::ul
-
-#' @export
-#' @importFrom grid unit
-grid::unit
-
-#' @export
-#' @importFrom utils untar
-utils::untar
 
 #' @export
 #' @importFrom AcidBase updateMessage
