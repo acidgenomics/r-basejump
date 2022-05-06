@@ -58,10 +58,6 @@
 \alias{missingOrNULL-class}
 \alias{sparseMatrix-class}
 \alias{reexports}
-\alias{\%$\%}
-\alias{\%<>\%}
-\alias{\%>\%}
-\alias{\%T>\%}
 \alias{CellCycleMarkers}
 \alias{CellTypeMarkers}
 \alias{CharacterList}
@@ -83,26 +79,20 @@
 \alias{SingleCellExperiment}
 \alias{SplitDataFrameList}
 \alias{SummarizedExperiment}
-\alias{URLencode}
 \alias{abort}
 \alias{alert}
 \alias{alertDanger}
 \alias{alertInfo}
 \alias{alertSuccess}
 \alias{alertWarning}
-\alias{annotable}
 \alias{appendToBody}
-\alias{arrow}
 \alias{as.formula}
 \alias{assignAndSaveData}
-\alias{axisTicks}
 \alias{barcodePattern}
 \alias{basenameSansExt}
 \alias{cacheURL}
-\alias{capture.output}
 \alias{classContains}
 \alias{collapseToPathString}
-\alias{colorRampPalette}
 \alias{column_to_rownames}
 \alias{compress}
 \alias{currentEnsemblGenomeBuild}
@@ -114,7 +104,6 @@
 \alias{currentRefSeqVersion}
 \alias{currentUCSCGenomeBuild}
 \alias{currentWormBaseVersion}
-\alias{data}
 \alias{data.table}
 \alias{decompress}
 \alias{detectLanes}
@@ -131,14 +120,10 @@
 \alias{emptyRanges}
 \alias{fileDepth}
 \alias{fileExt}
-\alias{fixed}
 \alias{forceDetach}
 \alias{formula}
 \alias{geneSynonyms}
 \alias{genomeMetadataNames}
-\alias{getS3method}
-\alias{getURL}
-\alias{getURLDirList}
 \alias{h1}
 \alias{h2}
 \alias{h3}
@@ -195,64 +180,32 @@
 \alias{model.matrix}
 \alias{naStrings}
 \alias{ol}
-\alias{packageName}
-\alias{packageVersion}
 \alias{parentDir}
 \alias{parentDirectory}
 \alias{pasteURL}
 \alias{prcomp}
 \alias{prepareTemplate}
 \alias{printString}
-\alias{rbindlist}
 \alias{realpath}
-\alias{regex}
 \alias{relevel}
 \alias{reorder}
 \alias{requireNamespaces}
-\alias{rgb}
 \alias{rownames_to_column}
 \alias{sanitizeSampleData}
 \alias{sanitizeVersion}
 \alias{saveData}
 \alias{separator}
-\alias{sessionInfo}
-\alias{session_info}
 \alias{simpleClass}
 \alias{shell}
 \alias{showSlotInfo}
 \alias{sparseMatrix}
 \alias{splitPathString}
 \alias{standardizeCall}
-\alias{str_detect}
-\alias{str_dup}
-\alias{str_extract}
-\alias{str_extract_all}
-\alias{str_length}
-\alias{str_locate_all}
-\alias{str_match}
-\alias{str_match_all}
-\alias{str_pad}
-\alias{str_replace}
-\alias{str_replace_all}
-\alias{str_replace_na}
-\alias{str_split}
-\alias{str_split_fixed}
-\alias{str_sub}
-\alias{str_subset}
-\alias{str_to_lower}
-\alias{str_to_sentence}
-\alias{str_to_title}
-\alias{str_to_upper}
-\alias{str_trunc}
-\alias{syntacticRename}
-\alias{tar}
 \alias{tibble}
 \alias{toInlineString}
 \alias{transmit}
 \alias{txt}
 \alias{ul}
-\alias{unit}
-\alias{untar}
 \alias{updateMessage}
 \alias{verbatim}
 \alias{warn}
@@ -515,40 +468,30 @@ below to see their documentation.
 
   \item{AcidExperiment}{\code{\link[AcidExperiment]{detectLanes}}, \code{\link[AcidExperiment]{importSampleData}}, \code{\link[AcidExperiment]{makeSummarizedExperiment}}, \code{\link[AcidExperiment]{matchInterestingGroups}}, \code{\link[AcidExperiment]{microplate}}, \code{\link[AcidExperiment]{minimalSampleData}}, \code{\link[AcidExperiment]{sanitizeSampleData}}}
 
-  \item{AcidGenomes}{\code{\link[AcidGenomes]{EntrezGeneInfo}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{annotable}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentEnsemblGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentGencodeGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentRefSeqGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentUCSCGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{downloadEnsemblGenome}}, \code{\link[AcidGenomes]{downloadGencodeGenome}}, \code{\link[AcidGenomes]{downloadRefSeqGenome}}, \code{\link[AcidGenomes]{downloadUCSCGenome}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}}
+  \item{AcidGenomes}{\code{\link[AcidGenomes]{EntrezGeneInfo}}, \code{\link[AcidGenomes]{HGNC}}, \code{\link[AcidGenomes]{HGNC2Ensembl}}, \code{\link[AcidGenomes]{MGI2Ensembl}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentEnsemblGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentEnsemblVersion}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentFlyBaseVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentGencodeGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentGencodeVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentRefSeqGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentRefSeqVersion}}, \code{\link[AcidGenomes:currentGenomeBuild]{currentUCSCGenomeBuild}}, \code{\link[AcidGenomes:currentGenomeVersion]{currentWormBaseVersion}}, \code{\link[AcidGenomes]{detectOrganism}}, \code{\link[AcidGenomes]{downloadEnsemblGenome}}, \code{\link[AcidGenomes]{downloadGencodeGenome}}, \code{\link[AcidGenomes]{downloadRefSeqGenome}}, \code{\link[AcidGenomes]{downloadUCSCGenome}}, \code{\link[AcidGenomes]{emptyRanges}}, \code{\link[AcidGenomes]{geneSynonyms}}, \code{\link[AcidGenomes]{importTx2Gene}}, \code{\link[AcidGenomes:makeGRangesFromEnsembl]{makeGRangesFromEnsDb}}, \code{\link[AcidGenomes]{makeGRangesFromEnsembl}}, \code{\link[AcidGenomes]{makeGRangesFromGFF}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsDb}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromEnsembl}}, \code{\link[AcidGenomes:makeGene2Symbol]{makeGene2SymbolFromGFF}}, \code{\link[AcidGenomes:makeProtein2Gene]{makeProtein2GeneFromEnsembl}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsDb}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromEnsembl}}, \code{\link[AcidGenomes]{makeTx2GeneFromFASTA}}, \code{\link[AcidGenomes:makeTx2Gene]{makeTx2GeneFromGFF}}, \code{\link[AcidGenomes]{mapEnsemblReleaseToURL}}, \code{\link[AcidGenomes]{mapHumanOrthologs}}}
 
   \item{AcidMarkdown}{\code{\link[AcidMarkdown]{markdownHeader}}, \code{\link[AcidMarkdown]{markdownLink}}, \code{\link[AcidMarkdown]{markdownList}}, \code{\link[AcidMarkdown]{markdownPlots}}, \code{\link[AcidMarkdown]{markdownTables}}, \code{\link[AcidMarkdown:markdownHeader]{mdHeader}}, \code{\link[AcidMarkdown:markdownLink]{mdLink}}, \code{\link[AcidMarkdown:markdownList]{mdList}}, \code{\link[AcidMarkdown:markdownPlots]{mdPlots}}, \code{\link[AcidMarkdown:markdownTables]{mdTables}}, \code{\link[AcidMarkdown]{prepareTemplate}}}
 
   \item{AcidSingleCell}{\code{\link[AcidSingleCell]{CellCycleMarkers}}, \code{\link[AcidSingleCell]{CellTypeMarkers}}, \code{\link[AcidSingleCell:CellCycleMarkers]{importCellCycleMarkers}}, \code{\link[AcidSingleCell:CellTypeMarkers]{importCellTypeMarkers}}, \code{\link[AcidSingleCell]{makeSingleCellExperiment}}, \code{\link[AcidSingleCell]{mapCellsToSamples}}}
 
+  \item{data.table}{\code{\link[data.table]{data.table}}}
+
   \item{GenomicRanges}{\code{\link[GenomicRanges:GRanges-class]{GRanges}}, \code{\link[GenomicRanges:GRanges-class]{GRanges}}, \code{\link[GenomicRanges:GRangesList-class]{GRangesList}}, \code{\link[GenomicRanges:GRangesList-class]{GRangesList}}}
-
-  \item{grDevices}{\code{\link[grDevices]{axisTicks}}, \code{\link[grDevices:colorRamp]{colorRampPalette}}, \code{\link[grDevices]{rgb}}}
-
-  \item{grid}{\code{\link[grid]{arrow}}, \code{\link[grid]{unit}}}
 
   \item{IRanges}{\code{\link[IRanges:AtomicList-class]{CharacterList}}, \code{\link[IRanges:DataFrameList-class]{DataFrameList}}, \code{\link[IRanges:AtomicList-class]{FactorList}}, \code{\link[IRanges:AtomicList-class]{NumericList}}, \code{\link[IRanges:AtomicList-class]{RleList}}, \code{\link[IRanges:DataFrameList-class]{SplitDataFrameList}}}
 
-  \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
-
   \item{Matrix}{\code{\link[Matrix]{Matrix}}, \code{\link[Matrix]{sparseMatrix}}}
 
-  \item{pipette}{\code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette:reexports]{column_to_rownames}}, \code{\link[pipette:reexports]{data.table}}, \code{\link[pipette:reexports]{getURL}}, \code{\link[pipette]{getURLDirList}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette:reexports]{rbindlist}}, \code{\link[pipette:reexports]{rownames_to_column}}, \code{\link[pipette]{saveData}}, \code{\link[pipette:reexports]{tibble}}, \code{\link[pipette]{transmit}}}
+  \item{pipette}{\code{\link[pipette]{assignAndSaveData}}, \code{\link[pipette]{cacheURL}}, \code{\link[pipette]{loadData}}, \code{\link[pipette]{loadDataAsName}}, \code{\link[pipette]{loadRemoteData}}, \code{\link[pipette]{naStrings}}, \code{\link[pipette]{saveData}}, \code{\link[pipette]{transmit}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:Factor-class]{Factor}}, \code{\link[S4Vectors:Rle-class]{Rle}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}}
-
-  \item{sessioninfo}{\code{\link[sessioninfo]{session_info}}}
 
   \item{SingleCellExperiment}{\code{\link[SingleCellExperiment]{SingleCellExperiment}}}
 
   \item{stats}{\code{\link[stats:formula]{as.formula}}, \code{\link[stats]{dist}}, \code{\link[stats]{ecdf}}, \code{\link[stats]{formula}}, \code{\link[stats]{hclust}}, \code{\link[stats]{model.matrix}}, \code{\link[stats]{prcomp}}, \code{\link[stats]{relevel}}, \code{\link[stats:reorder.factor]{reorder}}}
 
-  \item{stringr}{\code{\link[stringr:modifiers]{fixed}}, \code{\link[stringr:modifiers]{regex}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_dup}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr:str_extract]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr:str_locate]{str_locate_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr:str_match]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr:str_replace]{str_replace_all}}, \code{\link[stringr]{str_replace_na}}, \code{\link[stringr]{str_split}}, \code{\link[stringr:str_split]{str_split_fixed}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}, \code{\link[stringr:case]{str_to_lower}}, \code{\link[stringr:case]{str_to_sentence}}, \code{\link[stringr:case]{str_to_title}}, \code{\link[stringr:case]{str_to_upper}}, \code{\link[stringr]{str_trunc}}}
-
   \item{SummarizedExperiment}{\code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{SummarizedExperiment}}}
 
-  \item{syntactic}{\code{\link[syntactic]{syntacticRename}}}
-
-  \item{utils}{\code{\link[utils]{URLencode}}, \code{\link[utils]{capture.output}}, \code{\link[utils]{data}}, \code{\link[utils]{getS3method}}, \code{\link[utils]{packageName}}, \code{\link[utils:packageDescription]{packageVersion}}, \code{\link[utils]{sessionInfo}}, \code{\link[utils]{tar}}, \code{\link[utils]{untar}}}
+  \item{tibble}{\code{\link[tibble:rownames]{column_to_rownames}}, \code{\link[tibble:rownames]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 }}
 

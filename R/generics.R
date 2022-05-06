@@ -1,13 +1,13 @@
 ## S3 generics =================================================================
 
 #' @export
-#' @importFrom pipette as_tibble
+#' @importFrom tibble as_tibble
 #' @name as_tibble
 #' @rdname reexports
 NULL
 
 #' @export
-#' @importFrom pipette as.data.table
+#' @importFrom data.table as.data.table
 #' @name as.data.table
 #' @rdname reexports
 NULL
@@ -309,14 +309,6 @@ NULL
 #' @importMethodsFrom AcidSingleCell clusters
 #' @name clusters
 #' @rdname reexports
-NULL
-
-#' @export
-#' @exportMethod coerce
-#' @importFrom methods coerce
-#' @importMethodsFrom pipette coerce
-#' @name coerce
-#' @rdname coerce
 NULL
 
 #' @export

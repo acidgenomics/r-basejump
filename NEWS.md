@@ -1,4 +1,9 @@
-# basejump 0.5.1 (UNRELEASED)
+# basejump 0.16.0 (UNRELEASED)
+
+## Major changes
+
+- R 4.2 / Bioconductor 3.15 is now required.
+- Reduced the number of packages imported: grDevices, grid, magrittr, utils.
 
 ## Minor changes
 
@@ -7,7 +12,7 @@
 - Updated dependencies on AcidExperiment, AcidGenomes, AcidSingleCell, and
   pipette, to resolve breaking changes introduced by Bioconductor 3.15.
 
-# basejump 0.5.0 (2022-03-11)
+# basejump 0.15.0 (2022-03-11)
 
 ## Major changes
 
@@ -29,7 +34,7 @@
   never against `DFrame` directly (use `DataFrame` virtual class), for example.
 - Updated supported S4 coercion methods via `as` from pipette package.
 
-# basejump 0.4.23 (2021-09-13)
+# basejump 0.14.23 (2021-09-13)
 
 ## Minor changes
 
@@ -37,7 +42,7 @@
   in AcidSingleCell that improves the consistency of `aggregate` methods.
 - Updated dependency version cutoffs of other packages.
 
-# basejump 0.4.22 (2021-09-08)
+# basejump 0.14.22 (2021-09-08)
 
 ## New functions
 
@@ -71,7 +76,7 @@
 - Added `simpleClass` reexport from AcidBase package update.
 - Updated dependency package version cutoffs.
 
-# basejump 0.4.19 (2021-06-20)
+# basejump 0.14.19 (2021-06-20)
 
 ## Minor changes
 
@@ -80,34 +85,34 @@
   IRanges package, which is useful for handling of `NumericList` objects.
 - Updated dependency version cutoffs.
 
-# basejump 0.4.18 (2021-05-18)
+# basejump 0.14.18 (2021-05-18)
 
 ## Minor changes
 
 - Removed magrittr as an import, and removed magrittr pipes as reexports.
   Base R now supports native pipe in 4.1 release.
 
-# basejump 0.4.17 (2021-03-12)
+# basejump 0.14.17 (2021-03-12)
 
 ## Minor changes
 
 - Including useful stringr reexports that are used in a number of downstream
   packages.
 
-# basejump 0.4.16 (2021-03-02)
+# basejump 0.14.16 (2021-03-02)
 
 ## Minor changes
 
 - Including additional reexports used in pointillism package.
 
-# basejump 0.4.15 (2021-02-26)
+# basejump 0.14.15 (2021-02-26)
 
 ## Minor changes
 
 - Deprecated `metadataBlacklist` in favor of `metadataDenylist`.
 - Updated dependency version cutoffs.
 
-# basejump 0.4.14 (2021-02-24)
+# basejump 0.14.14 (2021-02-24)
 
 ## Minor changes
 
@@ -115,20 +120,20 @@
 - Including some additional reexports from AcidGenomes, such as
   `EntrezGeneInfo`.
 
-# basejump 0.4.13 (2021-02-22)
+# basejump 0.14.13 (2021-02-22)
 
 ## Minor changes
 
 - Including `seqnames` in reexports, which is used in bcbioRNASeq.
 
-# basejump 0.4.12 (2021-02-22)
+# basejump 0.14.12 (2021-02-22)
 
 ## Minor changes
 
 - Including `getListElement` from S4Vectors via AcidGenerics, which is used
   in bcbioRNASeq.
 
-# basejump 0.4.11 (2021-02-21)
+# basejump 0.14.11 (2021-02-21)
 
 ## Minor changes
 
