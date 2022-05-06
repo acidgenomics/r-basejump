@@ -41,7 +41,6 @@ Imports:
     AcidGenerics,
     AcidGenomes,
     AcidMarkdown,
-    AcidPlyr,
     AcidSingleCell,
     Biobase,
     BiocGenerics,
@@ -56,8 +55,10 @@ Imports:
     data.table,
     magrittr,
     pipette,
-    syntactic,
     tibble
+Suggests:
+    AcidPlyr,
+    syntactic
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Additional_repositories: https://r.acidgenomics.com
