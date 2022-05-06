@@ -7,6 +7,7 @@
 - No longer reexporting S4 classes or coercion methods.
 - Removed AcidCLI as a core package, as this shouldn't really be used in
   basic analysis scripts.
+- Removed dependencies on data.table and tibble.
 
 ## Minor changes
 
