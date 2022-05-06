@@ -1,9 +1,9 @@
-# basejump 0.16.0 (UNRELEASED)
+# basejump 0.16.0 (2022-05-06)
 
 ## Major changes
 
 - R 4.2 / Bioconductor 3.15 is now required.
-- Reduced the number of packages imported: grDevices, grid, magrittr, utils.
+- Reduced the number of packages imported: grDevices, grid, utils.
 
 ## Minor changes
 
@@ -11,6 +11,8 @@
   `DataFrame` class handling introduced in Bioconductor 3.15.
 - Updated dependencies on AcidExperiment, AcidGenomes, AcidSingleCell, and
   pipette, to resolve breaking changes introduced by Bioconductor 3.15.
+- Reworked data.table and tibble reexports, which are no longer defined in
+  pipette package.
 
 # basejump 0.15.0 (2022-03-11)
 
