@@ -55,7 +55,6 @@ Imports:
     SummarizedExperiment,
     data.table,
     magrittr,
-    methods,
     pipette,
     syntactic,
     tibble
