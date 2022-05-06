@@ -36,7 +36,6 @@ Encoding: UTF-8
 Depends: R (>= 4.2)
 Imports:
     AcidBase,
-    AcidCLI,
     AcidExperiment,
     AcidGenerics,
     AcidGenomes,
@@ -52,10 +51,8 @@ Imports:
     S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
-    data.table,
     magrittr,
-    pipette,
-    tibble
+    pipette
 Suggests:
     AcidPlyr,
     syntactic

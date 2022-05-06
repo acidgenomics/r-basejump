@@ -1,21 +1,3 @@
-## S3 generics =================================================================
-
-#' @export
-#' @importFrom tibble as_tibble
-#' @name as_tibble
-#' @rdname reexports
-NULL
-
-#' @export
-#' @importFrom data.table as.data.table
-#' @name as.data.table
-#' @rdname reexports
-NULL
-
-
-
-## S4 generics =================================================================
-
 #' @export
 #' @importFrom AcidGenerics Ensembl2Entrez
 #' @name Ensembl2Entrez
