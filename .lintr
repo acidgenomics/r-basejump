@@ -1,4 +1,6 @@
-linters: with_defaults(
+linters: linters_with_defaults(
+    # Updated 2022-05-23.
+    # > help(topic = "linters", package = "lintr")
     absolute_path_linter(),
     any_duplicated_linter(),
     any_is_na_linter(),
@@ -11,7 +13,7 @@ linters: with_defaults(
     condition_message_linter(),
     conjunct_test_linter(),
     consecutive_stopifnot_linter(),
-    cyclocomp_linter(15),
+    cyclocomp_linter(),
     duplicate_argument_linter(),
     equals_na_linter(),
     expect_comparison_linter(),
@@ -36,7 +38,8 @@ linters: with_defaults(
     namespace_linter(),
     nested_ifelse_linter(),
     no_tab_linter(),
-    nonportable_path_linter(),
+    # This is currently returning too many false positives.
+    # > nonportable_path_linter = NULL,
     numeric_leading_zero_linter(),
     object_length_linter(40),
     object_name_linter("camelCase"),
@@ -55,7 +58,6 @@ linters: with_defaults(
     spaces_inside_linter(),
     spaces_left_parentheses_linter(),
     sprintf_linter(),
-    strings_as_factors_linter(),
     system_file_linter(),
     T_and_F_symbol_linter(),
     todo_comment_linter(),
@@ -66,8 +68,7 @@ linters: with_defaults(
     unneeded_concatenation_linter(),
     unreachable_code_linter(),
     vector_logic_linter(),
-    yoda_test_linter(),
-    default = default_linters)
+    yoda_test_linter())
 exclude: "# nolint"
 exclude_start: "# nolint start"
 exclude_end: "# nolint end"
