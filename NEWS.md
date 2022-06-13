@@ -2253,9 +2253,9 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [basejump]: https://r.acidgenomics.com/packages/basejump/
 [bb8]: https://bb8.acidgenomics.com/
 [bcbio]: https://github.com/bcbio/bcbio-nextgen/
-[bcbiobase]: https://bioinformatics.sph.harvard.edu/bcbioBase/
-[bcbiornaseq]: https://bioinformatics.sph.harvard.edu/bcbioRNASeq/
-[bcbiosinglecell]: https://bioinformatics.sph.harvard.edu/bcbioSingleCell/
+[bcbiobase]: https://r.acidgenomics.com/packages/bcbiobase/
+[bcbiornaseq]: https://r.acidgenomics.com/packages/bcbiornaseq/
+[bcbiosinglecell]: https://r.acidgenomics.com/packages/bcbiosinglecell/
 [biocinstaller]: https://bioconductor.org/packages/BiocInstaller/
 [biocmanager]: https://cran.r-project.org/package=BiocManager
 [bioconductor]: https://bioconductor.org/
@@ -2282,7 +2282,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [hgnc]: https://www.genenames.org/
 [hms rc]: https://rc.hms.harvard.edu/
 [koopa]: https://koopa.acidgenomics.com/
-[lintr]: https://github.com/jimhester/lintr/
+[lintr]: https://github.com/r-lib/lintr/
 [magrittr]: https://magrittr.tidyverse.org/
 [markdown]: https://daringfireball.net/projects/markdown/
 [mgi]: http://www.informatics.jax.org/
@@ -2303,7 +2303,7 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [tibble]: https://tibble.tidyverse.org/
 [tidyr]: https://tidyr.tidyverse.org/
 [tidyverse]: https://www.tidyverse.org/
-[travis ci]: https://travis-ci.com/
+[travis ci]: https://www.travis-ci.com/
 [ucsc]: https://genome.ucsc.edu/
 [windows]: https://www.microsoft.com/en-us/windows/
 [wormbase]: https://wormbase.org/
