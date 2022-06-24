@@ -28,7 +28,7 @@ Configure [Conda][] to use the [Bioconda][] channels.
 
 ```sh
 # Don't install recipe into base environment.
-name="r-basejump"
+name='r-basejump'
 conda create --name="$name" "$name"
 conda activate "$name"
 R
@@ -37,8 +37,8 @@ R
 ### [Docker][] method
 
 ```sh
-image="acidgenomics/r-basejump"
-workdir="/mnt/work"
+image='acidgenomics/r-packages:basejump'
+workdir='/mnt/work'
 docker pull "$image"
 docker run -it \
     --volume="${PWD}:${workdir}" \
