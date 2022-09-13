@@ -1,8 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
-Version: 0.16.0
-Date: 2022-05-06
+Version: 0.16.0.9000
+Date: 2022-09-13
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -58,4 +58,4 @@ Suggests:
     syntactic
 Additional_repositories: https://r.acidgenomics.com
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
