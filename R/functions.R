@@ -1,18 +1,18 @@
 #' @export
 #' @importFrom magrittr %$%
-magrittr::`%$%`
+magrittr::`%$%` # nolint
 
 #' @export
 #' @importFrom magrittr %<>%
-magrittr::`%<>%`
+magrittr::`%<>%` # nolint
 
 #' @export
 #' @importFrom magrittr %>%
-magrittr::`%>%`
+magrittr::`%>%` # nolint
 
 #' @export
 #' @importFrom magrittr %T>%
-magrittr::`%T>%`
+magrittr::`%T>%` # nolint
 
 #' @export
 #' @importFrom AcidSingleCell CellCycleMarkers
