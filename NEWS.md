@@ -1,3 +1,11 @@
+# basejump 0.16.1 (UNRELEASED)
+
+## Minor changes
+
+- Hardened dependency version cutoffs.
+- Added lintr exclusions for magrittr imports.
+- Updated roxygen2 documentation.
+
 # basejump 0.16.0 (2022-05-06)
 
 ## Major changes
