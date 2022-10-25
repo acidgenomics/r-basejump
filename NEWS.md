@@ -1,4 +1,4 @@
-# basejump 0.16.1 (UNRELEASED)
+# basejump 0.16.1 (2022-10-25)
 
 ## Minor changes
 
