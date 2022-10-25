@@ -43,16 +43,15 @@ docker pull "$image"
 docker run -it \
     --volume="${PWD}:${workdir}" \
     --workdir="$workdir" \
-    "$image" \
-    R
+    "$image"
 ```
 
 ## References
 
-The papers and software cited in our workflows are available as a [shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
+The papers and software cited in our workflows are available as a
+[shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
 
 [bioconda]: https://bioconda.github.io/
-[bioconductor]: https://bioconductor.org/
 [conda]: https://conda.io/
 [docker]: https://www.docker.com/
 [paperpile]: https://paperpile.com/
