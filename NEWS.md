@@ -1,5 +1,14 @@
 # Release notes
 
+## basejump 0.16.2 (2023-01-30)
+
+Minor changes:
+
+- Updated package dependencies, now requiring Bioconductor 3.16.
+- `minorVersion` has been removed in favor of `majorMinorVersion`.
+- Now including `euclidean` and `zscore` as reexports from AcidGenerics.
+  Methods for these are primarily defined in AcidBase.
+
 ## basejump 0.16.1 (2022-10-25)
 
 Minor changes:
