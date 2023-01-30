@@ -80,6 +80,7 @@
 \alias{makeTx2GeneFromEnsembl}
 \alias{makeTx2GeneFromFASTA}
 \alias{makeTx2GeneFromGFF}
+\alias{majorMinorVersion}
 \alias{majorVersion}
 \alias{mapCellsToSamples}
 \alias{mapEnsemblReleaseToURL}
@@ -94,7 +95,6 @@
 \alias{methodFunction}
 \alias{microplate}
 \alias{minimalSampleData}
-\alias{minorVersion}
 \alias{model.matrix}
 \alias{parentDir}
 \alias{parentDirectory}
@@ -191,6 +191,7 @@
 \alias{end<-}
 \alias{estimateDispersions}
 \alias{estimateSizeFactors}
+\alias{euclidean}
 \alias{eval}
 \alias{expand}
 \alias{expand.grid}
@@ -357,6 +358,7 @@
 \alias{width}
 \alias{width<-}
 \alias{zerosVsDepth}
+\alias{zscore}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -364,7 +366,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AcidBase}{\code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase]{minorVersion}}, \code{\link[AcidBase:parentDirectory]{parentDir}}, \code{\link[AcidBase]{parentDirectory}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{simpleClass}}}
+  \item{AcidBase}{\code{\link[AcidBase]{basenameSansExt}}, \code{\link[AcidBase]{classContains}}, \code{\link[AcidBase]{compress}}, \code{\link[AcidBase:compress]{decompress}}, \code{\link[AcidBase]{download}}, \code{\link[AcidBase]{fileDepth}}, \code{\link[AcidBase]{fileExt}}, \code{\link[AcidBase]{genomeMetadataNames}}, \code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{majorMinorVersion}}, \code{\link[AcidBase]{majorVersion}}, \code{\link[AcidBase:methodDefinition]{methodFormals}}, \code{\link[AcidBase:methodDefinition]{methodFunction}}, \code{\link[AcidBase:parentDirectory]{parentDir}}, \code{\link[AcidBase]{parentDirectory}}, \code{\link[AcidBase]{pasteURL}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{requireNamespaces}}, \code{\link[AcidBase]{sanitizeVersion}}, \code{\link[AcidBase]{shell}}, \code{\link[AcidBase]{showSlotInfo}}, \code{\link[AcidBase]{simpleClass}}}
 
   \item{AcidExperiment}{\code{\link[AcidExperiment]{detectLanes}}, \code{\link[AcidExperiment]{importSampleData}}, \code{\link[AcidExperiment]{makeSummarizedExperiment}}, \code{\link[AcidExperiment]{matchInterestingGroups}}, \code{\link[AcidExperiment]{microplate}}, \code{\link[AcidExperiment]{minimalSampleData}}, \code{\link[AcidExperiment]{sanitizeSampleData}}}
 

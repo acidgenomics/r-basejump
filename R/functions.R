@@ -315,6 +315,10 @@ AcidGenomes::makeTx2GeneFromFASTA
 AcidGenomes::makeTx2GeneFromGFF
 
 #' @export
+#' @importFrom AcidBase majorMinorVersion
+AcidBase::majorMinorVersion
+
+#' @export
 #' @importFrom AcidBase majorVersion
 AcidBase::majorVersion
 
@@ -369,10 +373,6 @@ AcidExperiment::microplate
 #' @export
 #' @importFrom AcidExperiment minimalSampleData
 AcidExperiment::minimalSampleData
-
-#' @export
-#' @importFrom AcidBase minorVersion
-AcidBase::minorVersion
 
 #' @export
 #' @importFrom stats model.matrix

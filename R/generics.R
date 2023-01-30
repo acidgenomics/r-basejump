@@ -433,6 +433,12 @@ NULL
 NULL
 
 #' @export
+#' @importFrom AcidGenerics euclidean
+#' @name euclidean
+#' @rdname reexports
+NULL
+
+#' @export
 #' @importFrom BiocGenerics eval
 #' @name eval
 #' @rdname reexports
@@ -1310,5 +1316,11 @@ NULL
 #' @export
 #' @importFrom AcidGenerics zerosVsDepth
 #' @name zerosVsDepth
+#' @rdname reexports
+NULL
+
+#' @export
+#' @importFrom AcidGenerics zscore
+#' @name zscore
 #' @rdname reexports
 NULL
