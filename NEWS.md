@@ -1,5 +1,12 @@
 # Release notes
 
+## basejump 0.16.3 (2023-02-07)
+
+Minor changes:
+
+- Removed `requireNamespaces` from reexports, as this function will be migrated
+  from AcidBase to goalie in a pending update.
+
 ## basejump 0.16.2 (2023-01-30)
 
 Minor changes:
