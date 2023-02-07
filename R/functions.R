@@ -411,10 +411,6 @@ stats::relevel
 stats::reorder
 
 #' @export
-#' @importFrom AcidBase requireNamespaces
-AcidBase::requireNamespaces
-
-#' @export
 #' @importFrom AcidExperiment sanitizeSampleData
 AcidExperiment::sanitizeSampleData
 
