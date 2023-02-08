@@ -236,7 +236,6 @@
 \alias{mapGenesToIDs}
 \alias{mapGenesToRownames}
 \alias{mapGenesToSymbols}
-\alias{mapToDataFrame}
 \alias{mapply}
 \alias{match}
 \alias{matchSampleColumn}
