@@ -694,12 +694,6 @@ NULL
 NULL
 
 #' @export
-#' @importFrom AcidGenerics mapToDataFrame
-#' @name mapToDataFrame
-#' @rdname reexports
-NULL
-
-#' @export
 #' @importFrom BiocGenerics mapply
 #' @name mapply
 #' @rdname reexports
