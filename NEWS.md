@@ -1,5 +1,13 @@
 # Release notes
 
+## basejump 0.16.4 (2023-02-09)
+
+Minor changes:
+
+- Removed `mapToDataFrame` from NAMESPACE, which will be made defunct in a
+  pending update to AcidPlyr and AcidGenerics packages. We recommend using
+  `rbindToDataFrame` instead.
+
 ## basejump 0.16.3 (2023-02-07)
 
 Minor changes:
