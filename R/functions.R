@@ -35,10 +35,6 @@ S4Vectors::DataFrame
 IRanges::DataFrameList
 
 #' @export
-#' @importFrom AcidGenomes EntrezGeneInfo
-AcidGenomes::EntrezGeneInfo
-
-#' @export
 #' @importFrom S4Vectors Factor
 S4Vectors::Factor
 
@@ -59,10 +55,6 @@ GenomicRanges::GRangesList
 AcidGenomes::HGNC
 
 #' @export
-#' @importFrom AcidGenomes HGNC2Ensembl
-AcidGenomes::HGNC2Ensembl
-
-#' @export
 #' @importFrom GenomicRanges GRanges
 GenomicRanges::GRanges
 
@@ -75,8 +67,8 @@ GenomicRanges::GRangesList
 Matrix::Matrix
 
 #' @export
-#' @importFrom AcidGenomes MGI2Ensembl
-AcidGenomes::MGI2Ensembl
+#' @importFrom AcidGenomes NcbiGeneInfo
+AcidGenomes::NcbiGeneInfo
 
 #' @export
 #' @importFrom IRanges NumericList
