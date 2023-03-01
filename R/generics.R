@@ -1,12 +1,6 @@
 #' @export
-#' @importFrom AcidGenerics Ensembl2Entrez
-#' @name Ensembl2Entrez
-#' @rdname reexports
-NULL
-
-#' @export
-#' @importFrom AcidGenerics Entrez2Ensembl
-#' @name Entrez2Ensembl
+#' @importFrom AcidGenerics Ensembl2Ncbi
+#' @name Ensembl2Ncbi
 #' @rdname reexports
 NULL
 
@@ -37,6 +31,12 @@ NULL
 #' @export
 #' @importFrom BiocGenerics Map
 #' @name Map
+#' @rdname reexports
+NULL
+
+#' @export
+#' @importFrom AcidGenerics Ncbi2Ensembl
+#' @name Ncbi2Ensembl
 #' @rdname reexports
 NULL
 
