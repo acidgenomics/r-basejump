@@ -279,10 +279,6 @@ AcidGenomes::makeGene2SymbolFromEnsembl
 AcidGenomes::makeGene2SymbolFromGFF
 
 #' @export
-#' @importFrom AcidGenomes makeProtein2GeneFromEnsembl
-AcidGenomes::makeProtein2GeneFromEnsembl
-
-#' @export
 #' @importFrom AcidSingleCell makeSingleCellExperiment
 AcidSingleCell::makeSingleCellExperiment
 
