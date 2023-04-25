@@ -211,10 +211,6 @@ AcidBase::fileExt
 stats::formula
 
 #' @export
-#' @importFrom AcidGenomes geneSynonyms
-AcidGenomes::geneSynonyms
-
-#' @export
 #' @importFrom AcidBase genomeMetadataNames
 AcidBase::genomeMetadataNames
 
