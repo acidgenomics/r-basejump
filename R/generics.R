@@ -262,7 +262,7 @@ NULL
 NULL
 
 #' @export
-#' @importFrom BiocGenerics colSums
+#' @importFrom Matrix colSums
 #' @name colSums
 #' @rdname reexports
 NULL
@@ -967,7 +967,7 @@ NULL
 NULL
 
 #' @export
-#' @importFrom BiocGenerics rowMeans
+#' @importFrom Matrix rowMeans
 #' @name rowMeans
 #' @rdname reexports
 NULL
@@ -980,7 +980,7 @@ NULL
 NULL
 
 #' @export
-#' @importFrom BiocGenerics rowSums
+#' @importFrom Matrix rowSums
 #' @name rowSums
 #' @rdname reexports
 NULL
