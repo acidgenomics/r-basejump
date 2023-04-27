@@ -1,5 +1,12 @@
 # Release notes
 
+## basejump 0.16.5 (2023-04-27)
+
+Minor changes:
+
+- Updated NAMESPACE for compatibility with Bioconductor 3.17.
+- Updated version pinnings on Acid Genomics dependencies.
+
 ## basejump 0.16.4 (2023-02-09)
 
 Minor changes:
