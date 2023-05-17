@@ -1,5 +1,16 @@
-## Updated 2023-05-17.
+## Inspired by tidyverse approach:
+## - https://github.com/tidyverse/tidyverse/blob/main/R/attach.R
+## - https://github.com/tidyverse/tidyverse/blob/main/R/zzz.R
+
+
+
+#' Core packages
+#'
+#' @note Updated 2023-05-17.
+#' @noRd
 .core <- c(
+    "SummarizedExperiment",
+    "SingleCellExperiment",
     "AcidBase",
     "syntactic",
     "pipette",
@@ -12,16 +23,23 @@
 
 
 
-## Updated 2023-05-17.
+#' Which core packages are unloaded, and not in the search path?
+#'
+#' @note Updated 2023-05-17.
+#' @noRd
 .coreUnloaded <- function() {
-    search <- paste0("package:", .core)
-    .core[!search %in% search()]
+    .core[!paste0("package:", .core) %in% search()]
 }
 
 
 
-# Attach the package from the same package library it was
-# loaded from before. https://github.com/tidyverse/tidyverse/issues/171
+#' Attach the package from the same package library it was loaded from before
+#'
+#' @note Updated 2023-05-17.
+#' @noRd
+#'
+#' @seealso
+#' - https://github.com/tidyverse/tidyverse/issues/171
 .sameLibrary <- function(pkg) {
     loc <- if (pkg %in% loadedNamespaces()) {
         dirname(getNamespaceInfo(pkg, "path"))
@@ -36,18 +54,22 @@
 
 
 
-## Updated 2023-05-17.
-.acidAttach <- function() {
+#' Code to run on package attachment
+#'
+#' @note Updated 2023-05-17.
+#' @noRd
+#'
+#' @details
+#' Note that `...` is necessary here, even though we're not using.
+#'
+#' The `suppressWarnings` wrapper is safe to remove once Bioconductor sorts out
+#' some of the new NAMESPACE issues in the 3.17 update.
+.onAttach <- function(...) {
     toLoad <- .coreUnloaded()
-    suppressPackageStartupMessages({
-        lapply(X = toLoad, FUN = .sameLibrary)
+    suppressWarnings({
+        suppressPackageStartupMessages({
+            lapply(X = toLoad, FUN = .sameLibrary)
+        })
     })
     invisible(toLoad)
-}
-
-
-
-## Updated 2023-05-17.
-.onAttach <- function(...) {
-    .acidAttach()
 }
