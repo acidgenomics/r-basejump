@@ -9,23 +9,21 @@
 #' @note Updated 2023-05-17.
 #' @noRd
 .corePkgs <- c(
+    ## CRAN ----
     "magrittr",
-    ## BiocGenerics
-    ## AcidGenerics
-    ## stats
-    ## GenomicRanges
-    ## IRanges
-    ## S4Vectors
+    ## Bioconductor ----
     "SummarizedExperiment",
     "SingleCellExperiment",
+    ## Acid Genomics ----
     "AcidBase",
-    "syntactic",
-    "pipette",
-    "AcidPlyr",
-    "AcidGenomes",
     "AcidExperiment",
+    "AcidGenomes",
+    "AcidMarkdown",
+    "AcidPlots",
+    "AcidPlyr",
     "AcidSingleCell",
-    "AcidMarkdown"
+    "pipette",
+    "syntactic"
 )
 
 
