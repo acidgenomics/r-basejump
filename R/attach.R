@@ -1,10 +1,3 @@
-# Warning: replacing previous import ‘S4Arrays::read_block’ by ‘DelayedArray::read_block’ when loading ‘SummarizedExperiment’
-# Error in nsenv[[f_name]](dirname(ns_path), package) :
-#     unused arguments (dirname(ns_path), package)
-# Calls: load_all -> <Anonymous> -> run_pkg_hook
-
-
-
 ## Updated 2023-05-17.
 .core <- c(
     "AcidBase",
@@ -30,8 +23,15 @@
 # Attach the package from the same package library it was
 # loaded from before. https://github.com/tidyverse/tidyverse/issues/171
 .sameLibrary <- function(pkg) {
-    loc <- if (pkg %in% loadedNamespaces()) dirname(getNamespaceInfo(pkg, "path"))
-    library(pkg, lib.loc = loc, character.only = TRUE, warn.conflicts = FALSE)
+    loc <- if (pkg %in% loadedNamespaces()) {
+        dirname(getNamespaceInfo(pkg, "path"))
+    }
+    library(
+        package = pkg,
+        lib.loc = loc,
+        character.only = TRUE,
+        warn.conflicts = FALSE
+    )
 }
 
 
@@ -40,7 +40,7 @@
 .acidAttach <- function() {
     toLoad <- .coreUnloaded()
     suppressPackageStartupMessages({
-        lapply(X = .toLoad, FUN = .sameLibrary)
+        lapply(X = toLoad, FUN = .sameLibrary)
     })
     invisible(toLoad)
 }
@@ -48,7 +48,6 @@
 
 
 ## Updated 2023-05-17.
-.onAttach <- function() {
+.onAttach <- function(...) {
     .acidAttach()
-    invisible(TRUE)
 }
