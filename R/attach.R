@@ -8,7 +8,14 @@
 #'
 #' @note Updated 2023-05-17.
 #' @noRd
-.core <- c(
+.corePkgs <- c(
+    "magrittr",
+    ## BiocGenerics
+    ## AcidGenerics
+    ## stats
+    ## GenomicRanges
+    ## IRanges
+    ## S4Vectors
     "SummarizedExperiment",
     "SingleCellExperiment",
     "AcidBase",
@@ -23,37 +30,6 @@
 
 
 
-#' Which core packages are unloaded, and not in the search path?
-#'
-#' @note Updated 2023-05-17.
-#' @noRd
-.coreUnloaded <- function() {
-    .core[!paste0("package:", .core) %in% search()]
-}
-
-
-
-#' Attach the package from the same package library it was loaded from before
-#'
-#' @note Updated 2023-05-17.
-#' @noRd
-#'
-#' @seealso
-#' - https://github.com/tidyverse/tidyverse/issues/171
-.sameLibrary <- function(pkg) {
-    loc <- if (pkg %in% loadedNamespaces()) {
-        dirname(getNamespaceInfo(pkg, "path"))
-    }
-    library(
-        package = pkg,
-        lib.loc = loc,
-        character.only = TRUE,
-        warn.conflicts = FALSE
-    )
-}
-
-
-
 #' Code to run on package attachment
 #'
 #' @note Updated 2023-05-17.
@@ -65,11 +41,16 @@
 #' The `suppressWarnings` wrapper is safe to remove once Bioconductor sorts out
 #' some of the new NAMESPACE issues in the 3.17 update.
 .onAttach <- function(...) {
-    toLoad <- .coreUnloaded()
+    pkgs <- .corePkgs
     suppressWarnings({
         suppressPackageStartupMessages({
-            lapply(X = toLoad, FUN = .sameLibrary)
+            lapply(
+                X = pkgs,
+                FUN = library,
+                character.only = TRUE,
+                warn.conflicts = FALSE
+            )
         })
     })
-    invisible(toLoad)
+    invisible(pkgs)
 }
