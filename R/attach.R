@@ -34,17 +34,15 @@
 #' @noRd
 #'
 #' @details
-#' Note that `...` is necessary here, even though we're not using.
-#'
 #' The `suppressWarnings` wrapper is safe to remove once Bioconductor sorts out
 #' some of the new NAMESPACE issues in the 3.17 update.
-.onAttach <- function(...) {
+.onAttach <- function(...) { # nolint
     pkgs <- .corePkgs
     suppressWarnings({
         suppressPackageStartupMessages({
             lapply(
                 X = pkgs,
-                FUN = library,
+                FUN = library, # nolint
                 character.only = TRUE,
                 warn.conflicts = FALSE
             )
