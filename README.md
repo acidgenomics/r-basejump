@@ -34,18 +34,6 @@ conda activate "$name"
 R
 ```
 
-### [Docker][] method
-
-```sh
-image='acidgenomics/r-packages:basejump'
-workdir='/mnt/work'
-docker pull "$image"
-docker run -it \
-    --volume="${PWD}:${workdir}" \
-    --workdir="$workdir" \
-    "$image"
-```
-
 ## References
 
 The papers and software cited in our workflows are available as a
@@ -53,6 +41,5 @@ The papers and software cited in our workflows are available as a
 
 [bioconda]: https://bioconda.github.io/
 [conda]: https://conda.io/
-[docker]: https://www.docker.com/
 [paperpile]: https://paperpile.com/
 [r]: https://www.r-project.org/
