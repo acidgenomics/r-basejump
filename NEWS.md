@@ -1,5 +1,16 @@
 # Release notes
 
+## basejump 0.17.0 (2023-05-17)
+
+Major changes:
+
+- AcidPlots is now included as a default package.
+- Simplified the package by making it simply attach the core Acid Genomics
+  packages and relevant Bioconductor packages. Functions are no longer
+  reexported in the NAMESPACE. For development, we recommend that you now
+  import code from the primary packages rather than relying on the basejump
+  NAMESPACE.
+
 ## basejump 0.16.5 (2023-04-27)
 
 Minor changes:
@@ -248,7 +259,7 @@ New functions:
 New functions:
 
 - Added more reexports from base/recommended R packages, including grDevices,
-    grid, methods, stats, and utils.
+  grid, methods, stats, and utils.
 
 ## basejump 0.14.1 (2021-02-08)
 
@@ -320,7 +331,7 @@ Minor changes:
   be named "counts". This isn't appropriate for `SummarizedExperiment` objects
   defined in the new DepMapAnalysis package.
 - `makeGRangesFromEnsembl`: Include `geneSynonyms` column for supported
-  organisms, including *Homo sapiens*.
+  organisms, including _Homo sapiens_.
 - Deprecated `matchEnsemblReleaseToURL` in favor of `mapEnsemblReleaseToURL`.
 
 ## basejump 0.12.16 (2020-09-29)
@@ -2066,7 +2077,7 @@ Deprecations:
 - Improved key value pair method for `loadDataAsName`. Now rather than
   using a named character vector for the `mappings` argument, the user can
   simply pass the key value pairs in as dots. For example, `newName1 =
-  "oldName1", newName2 = "oldName2"`. The legacy `mappings` method will still
+"oldName1", newName2 = "oldName2"`. The legacy `mappings` method will still
   work, as long as the dots argument is a length of 1.
 - [Ensembl][] release version now defaults to `NULL` instead of `current` for
   `annotable`, `gene2symbol`, `symbol2gene` and `tx2gene` functions.
