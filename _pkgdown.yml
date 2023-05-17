@@ -12,10 +12,6 @@ navbar:
     right: [acid, github]
 news:
   - one_page: false
-reference:
-  - title: Reexported classes and functions
-    contents:
-      - reexports
 template:
   bootstrap: 5
 url: https://r.acidgenomics.com/packages/basejump
