@@ -1,4 +1,5 @@
 #+TITLE: basejump
 #+STARTUP: content
 * Development
+** TODO Consider adding suggested packages: data.table, readr, etc.
 ** TODO Improve documentation on philosophy of the package.
