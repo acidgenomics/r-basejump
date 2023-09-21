@@ -50,3 +50,4 @@ Imports:
 Additional_repositories: https://r.acidgenomics.com
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+biocViews: Infrastructure
