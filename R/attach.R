@@ -6,15 +6,13 @@
 
 #' Core packages
 #'
-#' @note Updated 2023-05-17.
+#' @note Updated 2023-10-04.
 #' @noRd
 .corePkgs <- c(
-    ## CRAN ----
-    "magrittr",
-    ## Bioconductor ----
+    ## Bioconductor.
     "SummarizedExperiment",
     "SingleCellExperiment",
-    ## Acid Genomics ----
+    ## Acid Genomics.
     "AcidBase",
     "AcidExperiment",
     "AcidGenomes",

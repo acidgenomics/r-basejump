@@ -1,5 +1,13 @@
 # Release notes
 
+## basejump 0.18.0 (2023-10-04)
+
+Major changes:
+
+- Removed magrittr from package.
+- Updated Acid Genomics dependencies.
+- Now requiring R 4.3.
+
 ## basejump 0.17.0 (2023-05-17)
 
 Major changes:
