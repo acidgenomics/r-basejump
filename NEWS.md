@@ -1,5 +1,11 @@
 # Release notes
 
+## basejump 0.18.1 (2025-03-24)
+
+Minor changes:
+
+- Relaxed R dependency from 4.3 to 4.0.
+
 ## basejump 0.18.0 (2023-10-04)
 
 Major changes:
@@ -2320,7 +2326,7 @@ Deprecations:
 [biostrings]: https://bioconductor.org/packages/Biostrings/
 [cell ranger]: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger
 [checkmate]: https://cran.r-project.org/package=checkmate
-[conda]: https://conda.io/
+[conda]: https://docs.conda.io/
 [covr]: https://cran.r-project.org/package=covr
 [cran]: https://cran.r-project.org/
 [data.table]: https://cran.r-project.org/package=data.table

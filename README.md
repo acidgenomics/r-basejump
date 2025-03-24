@@ -34,12 +34,6 @@ conda activate "$name"
 R
 ```
 
-## References
-
-The papers and software cited in our workflows are available as a
-[shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
-
 [bioconda]: https://bioconda.github.io/
-[conda]: https://conda.io/
-[paperpile]: https://paperpile.com/
+[conda]: https://docs.conda.io/
 [r]: https://www.r-project.org/
