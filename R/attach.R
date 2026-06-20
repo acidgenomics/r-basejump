@@ -2,8 +2,6 @@
 ## - https://github.com/tidyverse/tidyverse/blob/main/R/attach.R
 ## - https://github.com/tidyverse/tidyverse/blob/main/R/zzz.R
 
-
-
 #' Core packages
 #'
 #' @note Updated 2023-10-04.
@@ -23,7 +21,6 @@
     "pipette",
     "syntactic"
 )
-
 
 
 #' Code to run on package attachment
