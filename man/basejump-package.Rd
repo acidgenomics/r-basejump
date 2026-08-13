@@ -11,7 +11,7 @@ Toolkit for bioinformatics and R package development.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://r.acidgenomics.com/packages/basejump/}
+  \item \url{https://r.acidgenomics.com/basejump/}
   \item \url{https://github.com/acidgenomics/r-basejump/}
   \item Report bugs at \url{https://github.com/acidgenomics/r-basejump/issues/}
 }

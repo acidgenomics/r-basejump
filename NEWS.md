@@ -1,5 +1,3 @@
-# Release notes
-
 ## basejump 0.18.2 (2026-06-19)
 
 License changes:
@@ -2320,17 +2318,17 @@ Deprecations:
 - Initial draft release.
 
 [acid genomics]: https://acidgenomics.com/
-[acidbase]: https://r.acidgenomics.com/packages/acidbase/
-[acidplots]: https://r.acidgenomics.com/packages/acidplots/
+[acidbase]: https://r.acidgenomics.com/acidbase/
+[acidplots]: https://r.acidgenomics.com/acidplots/
 [annotables]: https://github.com/stephenturner/annotables/
 [annotationhub]: https://bioconductor.org/packages/AnnotationHub/
 [appveyor ci]: https://ci.appveyor.com/
 [assertive]: https://cran.r-project.org/package=assertive
-[basejump]: https://r.acidgenomics.com/packages/basejump/
+[basejump]: https://r.acidgenomics.com/basejump/
 [bcbio]: https://github.com/bcbio/bcbio-nextgen/
-[bcbiobase]: https://r.acidgenomics.com/packages/bcbiobase/
-[bcbiornaseq]: https://r.acidgenomics.com/packages/bcbiornaseq/
-[bcbiosinglecell]: https://r.acidgenomics.com/packages/bcbiosinglecell/
+[bcbiobase]: https://r.acidgenomics.com/bcbiobase/
+[bcbiornaseq]: https://r.acidgenomics.com/bcbiornaseq/
+[bcbiosinglecell]: https://r.acidgenomics.com/bcbiosinglecell/
 [biocinstaller]: https://bioconductor.org/packages/BiocInstaller/
 [biocmanager]: https://cran.r-project.org/package=BiocManager
 [bioconductor]: https://bioconductor.org/
@@ -2352,7 +2350,7 @@ Deprecations:
 [ggplot2]: https://ggplot2.tidyverse.org/
 [github]: https://github.com/
 [glue]: https://glue.tidyverse.org/
-[goalie]: https://r.acidgenomics.com/packages/goalie/
+[goalie]: https://r.acidgenomics.com/goalie/
 [grch37]: https://grch37.ensembl.org/
 [hgnc]: https://www.genenames.org/
 [hms rc]: https://rc.hms.harvard.edu/
@@ -2364,8 +2362,8 @@ Deprecations:
 [nih]: https://www.nih.gov/
 [panther]: http://pantherdb.org/
 [pheatmap]: https://cran.r-project.org/package=pheatmap
-[pointillism]: https://r.acidgenomics.com/packages/pointillism/
-[r-wormbase]: https://r.acidgenomics.com/packages/wormbase/
+[pointillism]: https://r.acidgenomics.com/pointillism/
+[r-wormbase]: https://r.acidgenomics.com/wormbase/
 [r]: https://www.r-project.org/
 [readr]: https://readr.tidyverse.org/
 [rio]: https://cran.r-project.org/package=rio
@@ -2373,7 +2371,7 @@ Deprecations:
 [roxygen2]: https://cran.r-project.org/package=roxygen2
 [s4vectors]: https://bioconductor.org/packages/S4Vectors/
 [summarizedexperiment]: https://bioconductor.org/packages/SummarizedExperiment/
-[syntactic]: https://r.acidgenomics.com/packages/syntactic/
+[syntactic]: https://r.acidgenomics.com/syntactic/
 [testthat]: https://cran.r-project.org/package=testthat
 [tibble]: https://tibble.tidyverse.org/
 [tidyr]: https://tidyr.tidyverse.org/
